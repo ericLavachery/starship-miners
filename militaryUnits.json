@@ -1,0 +1,60 @@
+[
+{
+    "name": "Troopers",
+    "squads": 6,
+    "squadSize": 10,
+    "crew": 1,
+    "hp": 5,
+    "armor": 0,
+    "size": 3,
+    "stealth": 7,
+    "weapon": {
+        "name": "Rifle",
+        "range": 1,
+        "rof": 10,
+        "accuracy": 12,
+        "power": 3,
+        "aoe": 1
+        },
+    "weapon2": {
+        "name": "RPG",
+        "range": 1,
+        "rof": 1,
+        "accuracy": 6,
+        "power": 10,
+        "aoe": 1
+        },
+    "moveSpeed": 3,
+    "maxFlood": 4,
+    "maxScarp": 4
+},
+{
+    "name": "Light Tank",
+    "squads": 6,
+    "squadSize": 1,
+    "crew": 3,
+    "hp": 50,
+    "armor": 5,
+    "size": 8,
+    "stealth": 3,
+    "weapon": {
+        "name": "Cannon",
+        "range": 1,
+        "rof": 1,
+        "accuracy": 10,
+        "power": 15,
+        "aoe": 2
+        },
+    "weapon2": {
+        "name": "Machine Gun",
+        "range": 1,
+        "rof": 6,
+        "accuracy": 10,
+        "power": 5,
+        "aoe": 1
+        },
+    "moveSpeed": 3,
+    "maxFlood": 4,
+    "maxScarp": 4
+}
+]
