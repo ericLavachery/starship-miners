@@ -14,7 +14,7 @@
         "rof": 10,
         "accuracy": 12,
         "power": 3,
-        "aoe": 1
+        "aoe": "unit"
         },
     "weapon2": {
         "name": "RPG",
@@ -22,7 +22,7 @@
         "rof": 1,
         "accuracy": 6,
         "power": 10,
-        "aoe": 1
+        "aoe": "squad"
         },
     "moveSpeed": 3,
     "maxFlood": 4,
@@ -43,7 +43,7 @@
         "rof": 1,
         "accuracy": 10,
         "power": 15,
-        "aoe": 2
+        "aoe": "squad"
         },
     "weapon2": {
         "name": "Machine Gun",
@@ -51,7 +51,7 @@
         "rof": 6,
         "accuracy": 10,
         "power": 5,
-        "aoe": 1
+        "aoe": "unit"
         },
     "moveSpeed": 3,
     "maxFlood": 4,
