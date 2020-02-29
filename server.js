@@ -28,6 +28,15 @@ fs.readFile('militaryUnits.json', 'utf8', function (err, data) {
     console.error( e );
   }
 });
+fs.readFile('defaultUnitValues.json', 'utf8', function (err, data) {
+  if (err) throw err;
+  try {
+    unitDV = JSON.parse(data);
+    console.log(unitDV);
+  } catch (e) {
+    console.error( e );
+  }
+});
 
 io.sockets.on('connection', function (socket, pseudo) {
     // On LOGIN send tables
@@ -35,39 +44,9 @@ io.sockets.on('connection', function (socket, pseudo) {
         pseudo = ent.encode(pseudo);
         socket.pseudo = pseudo;
         console.log('login : '+pseudo);
+        socket.emit('unitDV_Load', unitDV);
         socket.emit('unitTypes_Load', unitTypes);
-        // let playerIndex = players.findIndex((obj => obj.pseudo == pseudo));
-        // let perso = players[playerIndex];
-        // if (isJSON.isJSON(perso.unitView) && isJSON.isJSON(perso.unitIdent) && isJSON.isJSON(perso.mapCarto) && isJSON.isJSON(perso.mapView) && isJSON.isJSON(perso.exploredTiles) && isJSON.isJSON(perso.enemies) && isJSON.isJSON(perso.allies) && isJSON.isJSON(perso.bldIdent) && isJSON.isJSON(perso.bldView) && isJSON.isJSON(perso.prefs)) {
-        //     perso.unitView = JSON.parse(perso.unitView);
-        //     perso.unitIdent = JSON.parse(perso.unitIdent);
-        //     perso.mapCarto = JSON.parse(perso.mapCarto);
-        //     perso.mapView = JSON.parse(perso.mapView);
-        //     perso.exploredTiles = JSON.parse(perso.exploredTiles);
-        //     perso.enemies = JSON.parse(perso.enemies);
-        //     perso.allies = JSON.parse(perso.allies);
-        //     perso.bldIdent = JSON.parse(perso.bldIdent);
-        //     perso.bldView = JSON.parse(perso.bldView);
-        //     perso.prefs = JSON.parse(perso.prefs);
-        //     console.log('login : '+pseudo);
-        // } else {
-        //     console.log('re-login : '+pseudo);
-        // }
-        // socket.emit('persoload', perso);
-        // socket.emit('terload', ter);
-        // socket.emit('mapload', world);
-        // socket.emit('popload', pop);
-        // socket.emit('ressload', ress);
-        // socket.emit('unitsCRUDload', unitTypes);
     });
-
-    // PLAYERS PERSO CHANGE
-    // socket.on('player_change', function(data) {
-    //     let objIndex = players.findIndex((obj => obj.id == data.id));
-    //     players.splice(objIndex, 1, data);
-    // });
-
-
 });
 
 server.listen(8080);

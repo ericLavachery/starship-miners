@@ -1,0 +1,30 @@
+{
+    "name": "Xxxxx",
+    "squads": 6,
+    "squadSize": 10,
+    "crew": 1,
+    "hp": 5,
+    "armor": 0,
+    "size": 3,
+    "stealth": 7,
+    "weapon": {
+        "name": "Rifle",
+        "range": 1,
+        "rof": 10,
+        "accuracy": 12,
+        "power": 3,
+        "aoe": "unit"
+        },
+    "weapon2": {
+        "name": "RPG",
+        "range": 1,
+        "rof": 1,
+        "accuracy": 6,
+        "power": 10,
+        "aoe": "squad"
+        },
+    "moveSpeed": 3,
+    "maxFlood": 4,
+    "maxScarp": 4,
+    "tagada": "Tsoin Tsoin"
+}
