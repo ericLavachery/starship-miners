@@ -8,20 +8,28 @@ socket.on('unitTypes_Load', function(ut) {
     // $('#con').append('<br><span class="jaune">Second Weapon : ' + unitTypes[1].weapon2.name + '</span>');
 
     let newObj = {};
-    let unitTypes = [];
     bareUnitTypes.forEach(function(type) {
         newObj = Object.assign({}, unitDV, type);
         unitTypes.push(newObj)
     });
-    console.log(unitTypes);
+    // console.log(unitTypes);
     bareUnitTypes = [];
-
-
-
+    createMap(15);
+    showMap(zone);
 });
 
 function createMap(size) {
-
+    let newTile = {};
+    let i = 0;
+    let theId = 0;
+    while (i < size*size) {
+        newTile = {};
+        newTile.id = i;
+        newTile["terrain"] = nextTile(i, size);
+        zone.push(newTile);
+        i++;
+    }
+    console.log(zone);
 };
 
 // Dessine la carte
@@ -33,36 +41,14 @@ function showMap(wmap) {
     let maxX = xOffset+numVTiles;
     let minY = yOffset+1;
     let maxY = yOffset+numHTiles;
-    let visMap = _.filter(wmap, function(tile) {
-        return (tile.x >= minX && tile.x <= maxX && tile.y >= minY && tile.y <= maxY);
-    });
-    let sortedVisMap = _.sortBy(_.sortBy(visMap,'y'),'x');
     let terclass = '';
     let tertitle = '';
-    // sortedVisMap.forEach(function(tile) {
-    //     if (perso.mapView.includes(tile.id) || mode == 'mapedit') {
-    //         terclass = 'ter'+tile.terrainId+tile.seed;
-    //         if (mode == 'mapedit') {
-    //             let terIndex = ter.findIndex((obj => obj.id == tile.terrainId));
-    //             tertitle = ter[terIndex].name+' ('+tile.seed+') #'+tile.id;
-    //         } else {
-    //             tertitle = '#'+tile.id;
-    //         }
-    //         $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="selectOrMove('+tile.id+')" title="'+tertitle+'"><span class="mapCity" id="c'+tile.id+'"></span><span class="mapNoteL" id="l'+tile.id+'"></span><span class="bigIcon" id="b'+tile.id+'"></span><span class="mapNoteR" id="r'+tile.id+'"></span><br><span class="smallIcons" id="s'+tile.id+'"></span><br></div>');
-    //         showTileTags(tile.id);
-    //     } else {
-    //         $('#zone_map').append('<div id="'+tile.id+'" class="grid-item fog" onclick="selectOrMove('+tile.id+')" title="#'+tile.id+'"><span class="bigIcon" id="b'+tile.id+'"></span><br><span class="smallIcons" id="s'+tile.id+'"></span><br></div>');
-    //     }
-    // });
+    zone.forEach(function(tile) {
+        terclass = 'ter'+tile.terrain;
+        $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'"><span class="bigIcon" id="b'+tile.id+'"><img src="/static/img/wtiles/empty.png"></span><br></div>');
+    });
+    console.log(zone);
 };
-
-// function isAdjacent(myTileIndex, thatTileIndex, mapSize) {
-//     if (thatTileIndex == myTileIndex+1 || thatTileIndex == myTileIndex-1 || thatTileIndex == myTileIndex+mapSize || thatTileIndex == myTileIndex+mapSize+1 || thatTileIndex == myTileIndex+mapSize-1 || thatTileIndex == myTileIndex-mapSize || thatTileIndex == myTileIndex-mapSize-1 || thatTileIndex == myTileIndex-mapSize+1) {
-//         return true;
-//     } else {
-//         return false;
-//     }
-// };
 
 function isAdjacent(myTileIndex, thatTileIndex) {
     let myTileX = zone[myTileIndex].x;
@@ -80,25 +66,30 @@ function isAdjacent(myTileIndex, thatTileIndex) {
     }
 };
 
-function nextTile(myTileIndex, mapSize) {
+function nextTile(myTileIndex, size) {
     // définir le tile à vérifier
     let tileCheck = 0;
-    if (myTileIndex >= mapSize) {
-        if (myTileIndex % mapSize === 0) {
+    if (myTileIndex >= size) {
+        if (myTileIndex % size === 0) {
             // not first line, first col
+            // console.log('not first line, first col');
             tileCheck = rand.rand(3,4);
-        } else if (myTileIndex+1 % mapSize === 0) {
+        } else if (myTileIndex+1 % size === 0) {
             // not first line, last col
+            // console.log('not first line, last col');
             tileCheck = rand.rand(1,3);
         } else {
             // middle
+            // console.log('middle');
             tileCheck = rand.rand(1,4);
         }
-    } else if (myTileIndex != 0) {
+    } else if (myTileIndex == 0) {
         // first tile
+        // console.log('first tile');
         tileCheck = 0;
     } else {
         // first line, not first tile
+        // console.log('first line, not first tile');
         tileCheck = 1;
     }
 
@@ -106,26 +97,27 @@ function nextTile(myTileIndex, mapSize) {
     let checkTileTerrain = "P";
     let checkTileIndex = 0;
     if (tileCheck == 0) {
-        checkTileType = "X";
+        checkTileTerrain = "X";
+    } else {
+        if (tileCheck == 1) {
+            checkTileIndex = myTileIndex-1;
+        }
+        if (tileCheck == 2) {
+            checkTileIndex = myTileIndex-size-1;
+        }
+        if (tileCheck == 3) {
+            checkTileIndex = myTileIndex-size;
+        }
+        if (tileCheck == 4) {
+            checkTileIndex = myTileIndex-size+1;
+        }
+        checkTileTerrain = zone[checkTileIndex].terrain;
     }
-    if (tileCheck == 1) {
-        checkTileIndex = myTileIndex-1;
-    }
-    if (tileCheck == 2) {
-        checkTileIndex = myTileIndex-mapSize-1;
-    }
-    if (tileCheck == 3) {
-        checkTileIndex = myTileIndex-mapSize;
-    }
-    if (tileCheck == 4) {
-        checkTileIndex = myTileIndex-mapSize+1;
-    }
-    checkTileTerrain = zone[checkTileIndex].terrain;
 
     // define next tile
-    let diceMax = 15;
+    let diceMax = 16;
     if (checkTileTerrain != "X") {
-        diceMax = diceMax*3;
+        diceMax = diceMax*terSeed;
     }
     let diceCheck = rand.rand(1,diceMax);
     if (diceCheck == 1) {
@@ -134,7 +126,7 @@ function nextTile(myTileIndex, mapSize) {
     if (diceCheck == 2 || diceCheck == 3) {
         return "H"; // Hills
     }
-    if (diceCheck == 4 || diceCheck == 5 || diceCheck == 6) {
+    if (diceCheck == 4 || diceCheck == 5 || diceCheck == 6 || diceCheck == 16) {
         return "P"; // Plains
     }
     if (diceCheck == 7 || diceCheck == 8 || diceCheck == 9) {
@@ -152,7 +144,7 @@ function nextTile(myTileIndex, mapSize) {
     if (diceCheck == 15) {
         return "W"; // Water
     }
-    if (diceCheck >= 16) {
+    if (diceCheck >= 17) {
         return checkTileTerrain; // Same as checkTile
     }
 

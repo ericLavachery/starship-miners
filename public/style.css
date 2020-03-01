@@ -16,6 +16,38 @@ body {
     background-image: url(/static/img/bg-forest-vdark.jpg);
     background-repeat: no-repeat;
 }
+.terM {
+    background-color: #291313;
+    background-image: url(/static/img/wtiles/montagnes.png);
+}
+.terH {
+    background-color: #4d3b15;
+    background-image: url(/static/img/wtiles/collines.png);
+}
+.terP {
+    background-color: #a7ac77;
+    background-image: url(/static/img/wtiles/plaine.png);
+}
+.terG {
+    background-color: #9bb989;
+    background-image: url(/static/img/wtiles/prairie.png);
+}
+.terB {
+    background-color: #597d43;
+    background-image: url(/static/img/wtiles/maquis.png);
+}
+.terF {
+    background-color: #22460c;
+    background-image: url(/static/img/wtiles/foretdense.png);
+}
+.terS {
+    background-color: #5b848c;
+    background-image: url(/static/img/wtiles/presale.png);
+}
+.terW {
+    background-color: #3697ac;
+    background-image: url(/static/img/wtiles/lac.png);
+}
 #cadreMap {
     background-color: #323232;
     padding: 3px 10px 10px 10px;
@@ -23,8 +55,8 @@ body {
 }
 .grid-container {
     display: inline-grid;
-    /* grid-template-columns: 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px; */
-    /* grid-template-rows: 72px 72px 72px 72px 72px 72px 72px 72px 72px; */
+    grid-template-columns: 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px;
+    grid-template-rows: 72px 72px 72px 72px 72px 72px 72px 72px 72px;
     background-image: url(/static/img/dawn-fog-big-dark2.jpg);
 }
 .grid-item {
