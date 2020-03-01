@@ -4,27 +4,32 @@
     "squads": 6,
     "squadSize": 10,
     "crew": 1,
-    "hp": 5,
+    "hp": 3,
     "armor": 0,
     "size": 3,
     "stealth": 7,
+    "ap": 12,
     "weapon": {
         "name": "Rifle",
+        "maxSalvo": 1,
         "range": 1,
         "rof": 10,
         "accuracy": 12,
         "power": 3,
-        "aoe": "unit"
+        "aoe": "unit",
+        "ammo": [ "standard", "hollow", "perfo", "tungsten", "uranium" ]
         },
     "weapon2": {
         "name": "RPG",
+        "maxSalvo": 1,
         "range": 1,
         "rof": 1,
         "accuracy": 6,
         "power": 10,
-        "aoe": "squad"
+        "aoe": "squad",
+        "ammo": [ "boom" ]
         },
-    "moveSpeed": 3,
+    "moveCost": 4,
     "maxFlood": 4,
     "maxScarp": 4
 },
@@ -33,28 +38,33 @@
     "squads": 6,
     "squadSize": 1,
     "crew": 3,
-    "hp": 50,
+    "hp": 30,
     "armor": 5,
     "size": 8,
     "stealth": 3,
+    "ap": 12,
     "weapon": {
         "name": "Cannon",
+        "maxSalvo": 1,
         "range": 1,
         "rof": 1,
         "accuracy": 10,
         "power": 15,
-        "aoe": "squad"
+        "aoe": "squad",
+        "ammo": [ "boom" ]
         },
     "weapon2": {
         "name": "Machine Gun",
+        "maxSalvo": 1,
         "range": 1,
         "rof": 6,
         "accuracy": 10,
         "power": 5,
-        "aoe": "unit"
+        "aoe": "unit",
+        "ammo": [ "standard", "hollow", "perfo", "tungsten", "uranium" ]
         },
-    "moveSpeed": 3,
-    "maxFlood": 4,
-    "maxScarp": 4
+    "moveCost": 3,
+    "maxFlood": 2,
+    "maxScarp": 2
 }
 ]
