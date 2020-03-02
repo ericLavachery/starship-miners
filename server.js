@@ -23,7 +23,7 @@ fs.readFile('militaryUnits.json', 'utf8', function (err, data) {
   if (err) throw err;
   try {
     unitTypes = JSON.parse(data);
-    console.log(unitTypes);
+    // console.log(unitTypes);
   } catch (e) {
     console.error( e );
   }
@@ -32,7 +32,7 @@ fs.readFile('defaultUnitValues.json', 'utf8', function (err, data) {
   if (err) throw err;
   try {
     unitDV = JSON.parse(data);
-    console.log(unitDV);
+    // console.log(unitDV);
   } catch (e) {
     console.error( e );
   }

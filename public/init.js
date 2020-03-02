@@ -22,10 +22,13 @@ function createMap(size) {
     let newTile = {};
     let i = 0;
     let theId = 0;
+    let thisTerrain = "P";
     while (i < size*size) {
         newTile = {};
         newTile.id = i;
-        newTile["terrain"] = nextTile(i, size);
+        newTile.terrain = nextTile(i, size);
+        thisTerrain = newTile.terrain;
+        newTile.seed = nextSeed(thisTerrain);
         zone.push(newTile);
         i++;
     }
@@ -44,7 +47,7 @@ function showMap(wmap) {
     let terclass = '';
     let tertitle = '';
     zone.forEach(function(tile) {
-        terclass = 'ter'+tile.terrain;
+        terclass = 'ter'+tile.terrain+tile.seed;
         $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'"><span class="bigIcon" id="b'+tile.id+'"><img src="/static/img/wtiles/empty.png"></span><br></div>');
     });
     console.log(zone);
@@ -117,9 +120,15 @@ function nextTile(myTileIndex, size) {
     // define next tile
     let diceMax = 16;
     if (checkTileTerrain != "X") {
-        diceMax = diceMax*terSeed;
+        if (checkTileTerrain == "S") {
+            diceMax = Math.round(diceMax*terSeed/1.5);
+        } else {
+            diceMax = diceMax*terSeed;
+        }
     }
     let diceCheck = rand.rand(1,diceMax);
+    let swampCheck = rand.rand(1,swampWater);
+    let mountCheck = rand.rand(1,mountHills);
     if (diceCheck == 1) {
         return "M"; // Mountains
     }
@@ -145,7 +154,32 @@ function nextTile(myTileIndex, size) {
         return "W"; // Water
     }
     if (diceCheck >= 17) {
-        return checkTileTerrain; // Same as checkTile
+        if (checkTileTerrain == "W" && swampCheck == 1) {
+            return "S"; // Swamps
+        } else {
+            if (checkTileTerrain == "S" && swampCheck == 1) {
+                return "W"; // Water
+            } else {
+                if (checkTileTerrain == "H" && mountCheck == 1) {
+                    return "M"; // Mountains
+                } else {
+                    if (checkTileTerrain == "M" && mountCheck == 1) {
+                        return "H"; // Hills
+                    } else {
+                        return checkTileTerrain; // Same as checkTile
+                    }
+                }
+            }
+        }
     }
+};
 
+function nextSeed(ter) {
+    if (ter == "M") {
+        return rand.rand(1,6);
+    } else if (ter == "W") {
+        return rand.rand(1,3);
+    } else {
+        return rand.rand(1,3);
+    }
 };
