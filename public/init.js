@@ -15,6 +15,7 @@ socket.on('unitTypes_Load', function(ut) {
     // console.log(unitTypes);
     bareUnitTypes = [];
     createMap(mapSize);
+    writeMapStyles();
     showMap(zone);
 });
 
@@ -113,7 +114,11 @@ function showMap(wmap) {
     let maxY = yOffset+numHTiles;
     let terclass = '';
     let tertitle = '';
-    zone.forEach(function(tile) {
+    let visMap = _.filter(wmap, function(tile) {
+        return (tile.x >= minX && tile.x <= maxX && tile.y >= minY && tile.y <= maxY);
+    });
+    let sortedVisMap = _.sortBy(_.sortBy(visMap,'y'),'x');
+    sortedVisMap.forEach(function(tile) {
         terclass = 'ter'+tile.terrain+tile.seed;
         $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'"><span class="bigIcon" id="b'+tile.id+'"></span><br></div>');
     });
@@ -239,4 +244,21 @@ function nextTile(myTileIndex, size) {
             }
         }
     }
+};
+
+function writeMapStyles() {
+    $('#mapStyles').empty();
+    $('#mapStyles').append('.grid-container {grid-template-columns:');
+    let i = 0;
+    while (i < numHTiles) {
+        $('#mapStyles').append(' 72px');
+        i++;
+    }
+    $('#mapStyles').append(';grid-template-rows:');
+    i = 0;
+    while (i < numVTiles) {
+        $('#mapStyles').append(' 72px');
+        i++;
+    }
+    $('#mapStyles').append(';}');
 };

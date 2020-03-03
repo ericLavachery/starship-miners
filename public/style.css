@@ -23,8 +23,8 @@ body {
 }
 .grid-container {
     display: inline-grid;
-    grid-template-columns: 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px;
-    grid-template-rows: 72px 72px 72px 72px 72px 72px 72px 72px 72px;
+    /* grid-template-columns: 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px; */
+    /* grid-template-rows: 72px 72px 72px 72px 72px 72px 72px 72px 72px; */
     background-image: url(/static/img/dawn-fog-big-dark2.jpg);
 }
 .grid-item {
