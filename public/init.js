@@ -115,7 +115,7 @@ function showMap(wmap) {
     let tertitle = '';
     zone.forEach(function(tile) {
         terclass = 'ter'+tile.terrain+tile.seed;
-        $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'"><span class="bigIcon" id="b'+tile.id+'"><img src="/static/img/wtiles/empty.png"></span><br></div>');
+        $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'"><span class="bigIcon" id="b'+tile.id+'"></span><br></div>');
     });
     console.log(zone);
 };
