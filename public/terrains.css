@@ -34,6 +34,18 @@
     background-color: #4d3b15;
     background-image: url(/static/img/wtiles/collines3.png);
 }
+.terH4 {
+    background-color: #4d3b15;
+    background-image: url(/static/img/wtiles/collinesvertes.png);
+}
+.terH5 {
+    background-color: #4d3b15;
+    background-image: url(/static/img/wtiles/collinesvertes2.png);
+}
+.terH6 {
+    background-color: #4d3b15;
+    background-image: url(/static/img/wtiles/collinesvertes3.png);
+}
 .terP1 {
     background-color: #a7ac77;
     background-image: url(/static/img/wtiles/plaine.png);
@@ -48,15 +60,27 @@
 }
 .terG1 {
     background-color: #9bb989;
-    background-image: url(/static/img/wtiles/prairie.png);
+    background-image: url(/static/img/wtiles/green.png);
 }
 .terG2 {
     background-color: #9bb989;
-    background-image: url(/static/img/wtiles/prairie2.png);
+    background-image: url(/static/img/wtiles/paquibis.png);
 }
 .terG3 {
     background-color: #9bb989;
-    background-image: url(/static/img/wtiles/prairie3.png);
+    background-image: url(/static/img/wtiles/green3.png);
+}
+.terG4 {
+    background-color: #9bb989;
+    background-image: url(/static/img/wtiles/paquis.png);
+}
+.terG5 {
+    background-color: #9bb989;
+    background-image: url(/static/img/wtiles/paquibis3.png);
+}
+.terG6 {
+    background-color: #9bb989;
+    background-image: url(/static/img/wtiles/paquis3.png);
 }
 .terB1 {
     background-color: #597d43;
@@ -81,6 +105,18 @@
 .terF3 {
     background-color: #22460c;
     background-image: url(/static/img/wtiles/foretdense3.png);
+}
+.terF4 {
+    background-color: #22460c;
+    background-image: url(/static/img/wtiles/mixvert.png);
+}
+.terF5 {
+    background-color: #22460c;
+    background-image: url(/static/img/wtiles/mixvert2.png);
+}
+.terF6 {
+    background-color: #22460c;
+    background-image: url(/static/img/wtiles/mixvert3.png);
 }
 .terS1 {
     background-color: #5b848c;

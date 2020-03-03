@@ -14,25 +14,92 @@ socket.on('unitTypes_Load', function(ut) {
     });
     // console.log(unitTypes);
     bareUnitTypes = [];
-    createMap(15);
+    createMap(mapSize);
     showMap(zone);
 });
 
 function createMap(size) {
     let newTile = {};
     let i = 0;
+    let x = 1;
+    let y = 1;
     let theId = 0;
     let thisTerrain = "P";
+    let lastSeed = 3;
+    let aboveSeed = 0;
     while (i < size*size) {
         newTile = {};
         newTile.id = i;
+        newTile.x = x;
+        newTile.y = y;
         newTile.terrain = nextTile(i, size);
         thisTerrain = newTile.terrain;
-        newTile.seed = nextSeed(thisTerrain);
+        if (i > mapSize) {
+            aboveSeed = zone[i-mapSize].seed;
+        } else {
+            aboveSeed = 0;
+        }
+        newTile.seed = nextSeed(thisTerrain, lastSeed, aboveSeed);
         zone.push(newTile);
+        lastSeed = newTile.seed;
         i++;
+        x++;
+        if (x > mapSize) {
+            x = 1;
+            y++;
+        }
     }
     console.log(zone);
+};
+
+function nextSeed(ter, ls, as) {
+    let newSeed = 1;
+    if (ter == "M") {
+        newSeed = rand.rand(1,6);
+        return rotateSeed(newSeed,ls,as);
+    } else if (ter != "S" && ter != "P" && ter != "B") {
+        if (rand.rand(1,specialSeed) == 1) {
+            newSeed = rand.rand(4,6);
+            return rotateSeed(newSeed,ls,as);
+        } else {
+            newSeed = rand.rand(1,3);
+            return rotateSeed(newSeed,ls,as);
+        }
+    } else {
+        newSeed = rand.rand(1,3);
+        return rotateSeed(newSeed,ls,as);
+    }
+};
+
+function rotateSeed(ns, ls, as) {
+    let goodSeed = 1;
+    if (ns == ls) {
+        if (ns == 1) {
+            goodSeed = 3;
+            if (goodSeed == as) {
+                goodSeed = 2;
+            }
+        } else {
+            goodSeed = ns-1;
+            if (goodSeed == as) {
+                if (goodSeed == 1) {
+                    goodSeed = 3;
+                } else {
+                    goodSeed = goodSeed-1;
+                }
+            }
+        }
+    } else {
+        goodSeed = ns;
+        if (goodSeed == as) {
+            if (goodSeed == 1) {
+                goodSeed = 3;
+            } else {
+                goodSeed = goodSeed-1;
+            }
+        }
+    }
+    return goodSeed;
 };
 
 // Dessine la carte
@@ -171,15 +238,5 @@ function nextTile(myTileIndex, size) {
                 }
             }
         }
-    }
-};
-
-function nextSeed(ter) {
-    if (ter == "M") {
-        return rand.rand(1,6);
-    } else if (ter == "W") {
-        return rand.rand(1,3);
-    } else {
-        return rand.rand(1,3);
     }
 };
