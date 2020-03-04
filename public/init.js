@@ -125,12 +125,21 @@ function filterMap(map) {
 };
 
 function filterParams() {
-    // get filter object
-    mapFilters.forEach(function(filter) {
-        if (filter.name == mapFilterDefault) {
-            filterBase = filter;
+    if (filterVariance) {
+        let diceMax = mapFilters.length+1;
+        let fdice = rand.rand(0,diceMax);
+        if (fdice > mapFilters.length-1) {
+            filterBase = mapFilters[0];
+        } else {
+            filterBase = mapFilters[fdice];
         }
-    });
+    } else {
+        mapFilters.forEach(function(filter) {
+            if (filter.name == mapFilterDefault) {
+                filterBase = filter;
+            }
+        });
+    }
     if (filterBase.spSeed != specialSeed) {
         specialSeed = filterBase.spSeed;
     }
@@ -141,22 +150,22 @@ function filterParams() {
             terSeed = 3;
             break;
             case 2:
-            terSeed = 5;
+            terSeed = 6;
             break;
             case 3:
-            terSeed = 8;
+            terSeed = 9;
             break;
             case 4:
             terSeed = 12;
             break;
             case 5:
-            terSeed = 25;
+            terSeed = 18;
             break;
             case 6:
-            terSeed = 50;
+            terSeed = 24;
             break;
             case 7:
-            terSeed = 100;
+            terSeed = 90;
             break;
             case 8:
             terSeed = 200;
@@ -165,8 +174,8 @@ function filterParams() {
             terSeed = terSeed;
         }
     }
-    // console.log(filterBase);
-    // console.log(terSeed);
+    console.log(filterBase);
+    console.log(terSeed);
     // console.log(specialSeed);
 };
 

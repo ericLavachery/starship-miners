@@ -23,6 +23,7 @@ let terrainTypes = [];
 let mapFilters = [];
 let mapFilterDefault = "Normal";
 let terSeedVariance = true;
+let filterVariance = true;
 let filterBase = {};
 let zone = [];
 let resources = [];
