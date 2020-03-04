@@ -67,7 +67,7 @@ function nextSeed(ter, ls, as) {
     if (ter == "M") {
         newSeed = rand.rand(1,6);
         return rotateSeed(newSeed,ls,as);
-    } else if (ter != "S" && ter != "P" && ter != "B") {
+    } else if (ter != "Z") {
         if (rand.rand(1,specialSeed) == 1) {
             newSeed = rand.rand(4,6);
             return rotateSeed(newSeed,ls,as);
@@ -131,7 +131,43 @@ function filterParams() {
             filterBase = filter;
         }
     });
-    console.log(filterBase);
+    if (filterBase.spSeed != specialSeed) {
+        specialSeed = filterBase.spSeed;
+    }
+    if (terSeedVariance) {
+        let dice = rand.rand(1,8);
+        switch (dice) {
+            case 1:
+            terSeed = 3;
+            break;
+            case 2:
+            terSeed = 5;
+            break;
+            case 3:
+            terSeed = 8;
+            break;
+            case 4:
+            terSeed = 12;
+            break;
+            case 5:
+            terSeed = 25;
+            break;
+            case 6:
+            terSeed = 50;
+            break;
+            case 7:
+            terSeed = 100;
+            break;
+            case 8:
+            terSeed = 200;
+            break;
+            default:
+            terSeed = terSeed;
+        }
+    }
+    // console.log(filterBase);
+    // console.log(terSeed);
+    // console.log(specialSeed);
 };
 
 // Dessine la carte
