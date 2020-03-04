@@ -1,12 +1,17 @@
 // UnitTypes
-socket.on('unitDV_Load', function(dv) {
-    unitDV = dv;
+socket.on('unitDV-Load', function(udv) {
+    unitDV = udv;
     // console.log(unitDV);
 });
-socket.on('unitTypes_Load', function(ut) {
+socket.on('terrainTypes-Load', function(tt) {
+    terrainTypes = tt;
+    // console.log(terrainTypes);
+    createMap(mapSize);
+    writeMapStyles();
+    showMap(zone);
+});
+socket.on('unitTypes-Load', function(ut) {
     bareUnitTypes = ut;
-    // $('#con').append('<br><span class="jaune">Second Weapon : ' + unitTypes[1].weapon2.name + '</span>');
-
     let newObj = {};
     bareUnitTypes.forEach(function(type) {
         newObj = Object.assign({}, unitDV, type);
@@ -14,9 +19,6 @@ socket.on('unitTypes_Load', function(ut) {
     });
     // console.log(unitTypes);
     bareUnitTypes = [];
-    createMap(mapSize);
-    writeMapStyles();
-    showMap(zone);
 });
 
 function createMap(size) {
@@ -50,7 +52,7 @@ function createMap(size) {
             y++;
         }
     }
-    console.log(zone);
+    // console.log(zone);
 };
 
 function nextSeed(ter, ls, as) {
@@ -122,7 +124,7 @@ function showMap(wmap) {
         terclass = 'ter'+tile.terrain+tile.seed;
         $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'"><span class="bigIcon" id="b'+tile.id+'"></span><br></div>');
     });
-    console.log(zone);
+    // console.log(zone);
 };
 
 function isAdjacent(myTileIndex, thatTileIndex) {

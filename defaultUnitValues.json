@@ -7,24 +7,31 @@
     "armor": 0,
     "size": 3,
     "stealth": 7,
+    "ap": 12,
+    "maxSalvo": 1,
     "weapon": {
         "name": "Rifle",
+        "cost": 4,
         "range": 1,
         "rof": 10,
         "accuracy": 12,
         "power": 3,
-        "aoe": "unit"
+        "aoe": "unit",
+        "ammo": [ "standard" ]
         },
     "weapon2": {
         "name": "RPG",
+        "cost": 4,
         "range": 1,
         "rof": 1,
         "accuracy": 6,
         "power": 10,
-        "aoe": "squad"
+        "aoe": "squad",
+        "ammo": [ "standard" ]
         },
-    "moveSpeed": 3,
+    "moveCost": 3,
     "maxFlood": 4,
     "maxScarp": 4,
+    "maxVeg": 4,
     "tagada": "Tsoin Tsoin"
 }

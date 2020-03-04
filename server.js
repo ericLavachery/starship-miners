@@ -37,6 +37,15 @@ fs.readFile('defaultUnitValues.json', 'utf8', function (err, data) {
     console.error( e );
   }
 });
+fs.readFile('terrainTypes.json', 'utf8', function (err, data) {
+  if (err) throw err;
+  try {
+    terrainTypes = JSON.parse(data);
+    // console.log(unitDV);
+  } catch (e) {
+    console.error( e );
+  }
+});
 
 io.sockets.on('connection', function (socket, pseudo) {
     // On LOGIN send tables
@@ -44,8 +53,9 @@ io.sockets.on('connection', function (socket, pseudo) {
         pseudo = ent.encode(pseudo);
         socket.pseudo = pseudo;
         console.log('login : '+pseudo);
-        socket.emit('unitDV_Load', unitDV);
-        socket.emit('unitTypes_Load', unitTypes);
+        socket.emit('terrainTypes-Load', terrainTypes);
+        socket.emit('unitDV-Load', unitDV);
+        socket.emit('unitTypes-Load', unitTypes);
     });
 });
 

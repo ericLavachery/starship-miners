@@ -9,9 +9,10 @@
     "size": 3,
     "stealth": 7,
     "ap": 12,
+    "maxSalvo": 1,
     "weapon": {
         "name": "Rifle",
-        "maxSalvo": 1,
+        "cost": 4,
         "range": 1,
         "rof": 10,
         "accuracy": 12,
@@ -21,7 +22,7 @@
         },
     "weapon2": {
         "name": "RPG",
-        "maxSalvo": 1,
+        "cost": 4,
         "range": 1,
         "rof": 1,
         "accuracy": 6,
@@ -29,9 +30,10 @@
         "aoe": "squad",
         "ammo": [ "boom" ]
         },
-    "moveCost": 4,
-    "maxFlood": 4,
-    "maxScarp": 4
+    "moveCost": 3,
+    "maxFlood": 3,
+    "maxScarp": 3,
+    "maxVeg": 3
 },
 {
     "name": "Light Tank",
@@ -43,9 +45,10 @@
     "size": 8,
     "stealth": 3,
     "ap": 12,
+    "maxSalvo": 1,
     "weapon": {
         "name": "Cannon",
-        "maxSalvo": 1,
+        "cost": 4,
         "range": 1,
         "rof": 1,
         "accuracy": 10,
@@ -55,7 +58,7 @@
         },
     "weapon2": {
         "name": "Machine Gun",
-        "maxSalvo": 1,
+        "cost": 4,
         "range": 1,
         "rof": 6,
         "accuracy": 10,
@@ -64,7 +67,8 @@
         "ammo": [ "standard", "hollow", "perfo", "tungsten", "uranium" ]
         },
     "moveCost": 3,
-    "maxFlood": 2,
-    "maxScarp": 2
+    "maxFlood": 1,
+    "maxScarp": 1,
+    "maxVeg": 2
 }
 ]

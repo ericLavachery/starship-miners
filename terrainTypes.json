@@ -1,0 +1,92 @@
+[
+    {
+        "name": "M",
+        "fullName": "Montagnes",
+        "scarp": 3,
+        "flood": 0,
+        "veg": 0,
+        "mc": 6,
+        "roadmc": 3,
+        "cover": 5
+    },
+    {
+        "name": "H",
+        "fullName": "Collines",
+        "scarp": 1,
+        "flood": 0,
+        "veg": 0,
+        "mc": 2,
+        "roadmc": 0,
+        "cover": 2
+    },
+    {
+        "name": "P",
+        "fullName": "Plaine",
+        "scarp": 0,
+        "flood": 0,
+        "veg": 0,
+        "mc": 0,
+        "roadmc": -1,
+        "cover": 1
+    },
+    {
+        "name": "G",
+        "fullName": "Prairie",
+        "scarp": 0,
+        "flood": 0,
+        "veg": 1,
+        "mc": 0,
+        "roadmc": -1,
+        "cover": 1
+    },
+    {
+        "name": "B",
+        "fullName": "Maquis",
+        "scarp": 0,
+        "flood": 0,
+        "veg": 2,
+        "mc": 0,
+        "roadmc": -1,
+        "cover": 2
+    },
+    {
+        "name": "F",
+        "fullName": "Forêt",
+        "scarp": 0,
+        "flood": 0,
+        "veg": 3,
+        "mc": 1,
+        "roadmc": -1,
+        "cover": 3
+    },
+    {
+        "name": "S",
+        "fullName": "Marécages",
+        "scarp": 0,
+        "flood": 1,
+        "veg": 1,
+        "mc": 3,
+        "roadmc": 0,
+        "cover": 0
+    },
+    {
+        "name": "W",
+        "fullName": "Etang",
+        "scarp": 0,
+        "flood": 2,
+        "veg": 0,
+        "mc": 4,
+        "roadmc": 1,
+        "cover": 0
+    },
+    {
+        "name": "R",
+        "fullName": "Rivière",
+        "scarp": 0,
+        "flood": 3,
+        "veg": 0,
+        "mc": 6,
+        "roadmc": 1,
+        "cover": 0
+    }
+]
