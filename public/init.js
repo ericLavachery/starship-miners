@@ -1,14 +1,21 @@
-// UnitTypes
-socket.on('unitDV-Load', function(udv) {
-    unitDV = udv;
-    // console.log(unitDV);
+// Terrains
+socket.on('mapFilters-Load', function(mf) {
+    mapFilters = mf;
+    // console.log(mapFilters);
 });
 socket.on('terrainTypes-Load', function(tt) {
     terrainTypes = tt;
     // console.log(terrainTypes);
+    filterParams();
     createMap(mapSize);
+    filterMap(zone);
     writeMapStyles();
     showMap(zone);
+});
+// UnitTypes
+socket.on('unitDV-Load', function(udv) {
+    unitDV = udv;
+    // console.log(unitDV);
 });
 socket.on('unitTypes-Load', function(ut) {
     bareUnitTypes = ut;
@@ -17,8 +24,8 @@ socket.on('unitTypes-Load', function(ut) {
         newObj = Object.assign({}, unitDV, type);
         unitTypes.push(newObj)
     });
-    // console.log(unitTypes);
     bareUnitTypes = [];
+    // console.log(unitTypes);
 });
 
 function createMap(size) {
@@ -103,6 +110,28 @@ function rotateSeed(ns, ls, as) {
         }
     }
     return goodSeed;
+};
+
+function filterMap(map) {
+    // change map
+    let mapIndex;
+    map.forEach(function(tile) {
+        if (tile.terrain != filterBase[tile.terrain]) {
+            mapIndex = zone.findIndex((obj => obj.id == tile.id));
+            zone[mapIndex].terrain = filterBase[tile.terrain];
+        }
+    });
+    // console.log(zone);
+};
+
+function filterParams() {
+    // get filter object
+    mapFilters.forEach(function(filter) {
+        if (filter.name == mapFilterDefault) {
+            filterBase = filter;
+        }
+    });
+    console.log(filterBase);
 };
 
 // Dessine la carte

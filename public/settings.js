@@ -15,11 +15,14 @@ if (yOffset == null) {
 } else {
     yOffsetForced = yOffset;
 }
-let terSeed = 10; // +grand = +grandes forêts etc...
-let specialSeed = 8; // +grand = moins de terrains spéciaux
-let swampWater = 5; // chance d'avoir un swamps à la place d'un water (ou l'inverse)
-let mountHills = 9; // chance d'avoir une montagne à la place d'une hills (ou l'inverse)
-let terTypes = [];
+let terSeed = 12; // def 12 +grand = +grandes forêts etc...
+let specialSeed = 8; // def 8 +grand = moins de terrains spéciaux
+let swampWater = 5; // def 5 chance d'avoir un swamps à la place d'un water (ou l'inverse)
+let mountHills = 9; // def 9 chance d'avoir une montagne à la place d'une hills (ou l'inverse)
+let terrainTypes = [];
+let mapFilters = [];
+let mapFilterDefault = "VegP2";
+let filterBase = {};
 let zone = [];
 let resources = [];
 
