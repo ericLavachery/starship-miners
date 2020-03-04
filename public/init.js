@@ -179,6 +179,29 @@ function filterParams() {
     // console.log(specialSeed);
 };
 
+function addRivers(map) {
+    let dice = rand.rand(1,5);
+    if (dice > 3) {
+        addEWRiver(map);
+    }
+    dice = rand.rand(1,6);
+    if (dice == 5) {
+        addNSRiver(map);
+    } else if (dice == 4) {
+        addSNRiver(map);
+    }
+};
+function addEWRiver(map) {
+    let startLine = rand.rand(10,50);
+    
+};
+function addNSRiver(map) {
+
+};
+function addSNRiver(map) {
+
+};
+
 // Dessine la carte
 function showMap(wmap) {
     // reset
