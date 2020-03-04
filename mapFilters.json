@@ -9,7 +9,7 @@
         "F": "F",
         "S": "S",
         "W": "W",
-        "spSeed": 8
+        "spSeed": 10
     },
     {
         "name": "VegM2",
@@ -69,7 +69,7 @@
         "F": "F",
         "S": "P",
         "W": "P",
-        "spSeed": 8
+        "spSeed": 10
     },
     {
         "name": "FloodM1",
@@ -81,7 +81,7 @@
         "F": "F",
         "S": "P",
         "W": "S",
-        "spSeed": 8
+        "spSeed": 10
     },
     {
         "name": "FloodP1",
@@ -117,7 +117,7 @@
         "F": "F",
         "S": "S",
         "W": "W",
-        "spSeed": 8
+        "spSeed": 6
     },
     {
         "name": "ScarpM1",
@@ -141,7 +141,7 @@
         "F": "F",
         "S": "S",
         "W": "W",
-        "spSeed": 8
+        "spSeed": 10
     },
     {
         "name": "ScarpP2",
@@ -153,6 +153,6 @@
         "F": "F",
         "S": "P",
         "W": "W",
-        "spSeed": 8
+        "spSeed": 10
     }
 ]

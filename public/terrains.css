@@ -60,15 +60,15 @@
 }
 .terP4 {
     background-color: #a7ac77;
-    background-image: url(/static/img/wtiles/plaine.png);
+    background-image: url(/static/img/wtiles/plainesable.png);
 }
 .terP5 {
     background-color: #a7ac77;
-    background-image: url(/static/img/wtiles/plaine2.png);
+    background-image: url(/static/img/wtiles/plainesable2.png);
 }
 .terP6 {
     background-color: #a7ac77;
-    background-image: url(/static/img/wtiles/plaine3.png);
+    background-image: url(/static/img/wtiles/plainearbre2.png);
 }
 .terG1 {
     background-color: #9bb989;
@@ -108,15 +108,15 @@
 }
 .terB4 {
     background-color: #597d43;
-    background-image: url(/static/img/wtiles/maquis.png);
+    background-image: url(/static/img/wtiles/mixvertclair.png);
 }
 .terB5 {
     background-color: #597d43;
-    background-image: url(/static/img/wtiles/maquis2.png);
+    background-image: url(/static/img/wtiles/mixvertclair2.png);
 }
 .terB6 {
     background-color: #597d43;
-    background-image: url(/static/img/wtiles/maquis3.png);
+    background-image: url(/static/img/wtiles/mixvertclair3.png);
 }
 .terF1 {
     background-color: #22460c;
@@ -156,15 +156,15 @@
 }
 .terS4 {
     background-color: #5b848c;
-    background-image: url(/static/img/wtiles/presale.png);
+    background-image: url(/static/img/wtiles/fagnes.png);
 }
 .terS5 {
     background-color: #5b848c;
-    background-image: url(/static/img/wtiles/presale2.png);
+    background-image: url(/static/img/wtiles/fagnes2.png);
 }
 .terS6 {
     background-color: #5b848c;
-    background-image: url(/static/img/wtiles/presale3.png);
+    background-image: url(/static/img/wtiles/fagnes3.png);
 }
 .terW1 {
     background-color: #3697ac;
