@@ -70,6 +70,15 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.emit('unitDV-Load', unitDV);
         socket.emit('unitTypes-Load', unitTypes);
     });
+
+    // Save Map
+    socket.on('save-map', function(zone) {
+        var jsonmap = JSON.stringify(zone);
+        fs.writeFile('currentMap.json', jsonmap, 'utf8', (err) => {
+            if (err) throw err;
+            console.log('Map writen to currentMap.json');
+        });
+    });
 });
 
 server.listen(8080);
