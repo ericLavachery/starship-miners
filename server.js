@@ -28,6 +28,7 @@ fs.readFile('militaryUnits.json', 'utf8', function (err, data) {
     console.error( e );
   }
 });
+var unitDV;
 fs.readFile('defaultUnitValues.json', 'utf8', function (err, data) {
   if (err) throw err;
   try {
@@ -37,6 +38,7 @@ fs.readFile('defaultUnitValues.json', 'utf8', function (err, data) {
     console.error( e );
   }
 });
+var terrainTypes;
 fs.readFile('terrainTypes.json', 'utf8', function (err, data) {
   if (err) throw err;
   try {
@@ -46,6 +48,7 @@ fs.readFile('terrainTypes.json', 'utf8', function (err, data) {
     console.error( e );
   }
 });
+var mapFilters;
 fs.readFile('mapFilters.json', 'utf8', function (err, data) {
   if (err) throw err;
   try {
