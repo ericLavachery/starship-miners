@@ -178,41 +178,41 @@ td {
     min-width: 140px;
 }
 #vuPriority {
-    background-image: url(/static/img/platerust-small.jpg);
+    background-image: url(/static/img/aged-dark-mid.jpg);
     background-position: 0% 0%;
 }
 #tileUnitList {
-    background-image: url(/static/img/platerust-small.jpg);
+    background-image: url(/static/img/aged-dark-mid.jpg);
     background-position: 0% 5%;
 }
 #unitInfos {
-    background-image: url(/static/img/platerust-small.jpg);
+    background-image: url(/static/img/aged-dark-mid.jpg);
     background-position: 0% 25%;
 }
 #nameInfos {
-    background-image: url(/static/img/platerust-small.jpg);
+    background-image: url(/static/img/aged-dark-mid.jpg);
     background-position: 0% 35%;
 }
 #tileInfos {
-    background-image: url(/static/img/platerust-small.jpg);
+    background-image: url(/static/img/aged-dark-mid.jpg);
     background-position: 0% 40%;
 }
 #tracksList {
-    background-image: url(/static/img/platerust-small.jpg);
+    background-image: url(/static/img/aged-dark-mid.jpg);
     background-position: 0% 50%;
 }
 #playerInfos {
-    background-image: url(/static/img/platerust-small.jpg);
+    background-image: url(/static/img/aged-dark-mid.jpg);
     background-position: right 0%;
     min-width: 130px;
 }
 #timeInfos {
-    background-image: url(/static/img/platerust-small.jpg);
+    background-image: url(/static/img/aged-dark-mid.jpg);
     background-position: right 10%;
     min-width: 130px;
 }
 #modesInfos {
-    background-image: url(/static/img/platerust-small.jpg);
+    background-image: url(/static/img/aged-dark-mid.jpg);
     background-position: right 20%;
     min-width: 130px;
 }
@@ -223,12 +223,12 @@ td {
     width: 760px;
 }
 #terrainDetails {
-    background-image: url(/static/img/platerust-small.jpg);
+    background-image: url(/static/img/aged-dark-mid.jpg);
     background-position: 0% 35%;
     width: 240px;
 }
 #tileDetails {
-    background-image: url(/static/img/platerust-small.jpg);
+    background-image: url(/static/img/aged-dark-mid.jpg);
     background-position: right 35%;
     width: 240px;
 }
