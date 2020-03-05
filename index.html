@@ -20,13 +20,46 @@
         <div id="con">
             <table>
                 <tr>
+                    <td class="sidebar" id="sidebarInfos">
+                        <div class="woodBlock" id="unitInfos"></div>
+                        <div id="tileName"></div>
+                        <div class="woodBlock" id="tileInfos"></div>
+                    </td>
+                    <td class="sidebar" id="sidebarCommand">
+                        <div class="woodBlock" id="playerInfos"><h1 id="pseu"></h1><br></div>
+                        <div class="woodBlock" id="modesInfos">
+                            <h3>Carte</h3><br>
+                            <div id="areaDropdown"></div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td class="rosevents"></td>
+                                                <td class="rosevents klik" onclick="areaMove('n')" title="nord"><i class="fas fa-angle-up"></i></td>
+                                                <td class="rosevents"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="rosevents klik" onclick="areaMove('w')" title="ouest"><i class="fas fa-angle-left"></i></td>
+                                                <td class="rosevents"></td>
+                                                <td class="rosevents klik" onclick="areaMove('e')" title="est"><i class="fas fa-angle-right"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="rosevents"></td>
+                                                <td class="rosevents klik" onclick="areaMove('s')" title="sud"><i class="fas fa-angle-down"></i></td>
+                                                <td class="rosevents"></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td><i class="fas fa-expand-arrows-alt mapSize klik" onclick="yourMapSize()" title="Changer la taille de la carte"></i></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
                     <td>
                         <div id="cadreMap">
                             <div class="grid-container" id="zone_map"></div>
                         </div>
-                    </td>
-                    <td>
-
                     </td>
                 </tr>
             </table>
@@ -40,6 +73,7 @@
         <script src="/static/login.js"></script>
         <script src="/static/init.js"></script>
         <script src="/static/mapgenerator.js"></script>
+        <script src="/static/mapconfig.js"></script>
         <!-- <script src="/static/broadcasts.js"></script> -->
     </body>
 </html>
