@@ -9,6 +9,7 @@ socket.on('terrainTypes-Load', function(tt) {
     filterParams();
     createMap(mapSize);
     filterMap(zone);
+    addRivers(zone);
     writeMapStyles();
     showMap(zone);
 });
@@ -53,10 +54,10 @@ function createMap(size) {
         zone.push(newTile);
         lastSeed = newTile.seed;
         i++;
-        x++;
-        if (x > mapSize) {
-            x = 1;
-            y++;
+        y++;
+        if (y > mapSize) {
+            y = 1;
+            x++;
         }
     }
     // console.log(zone);
@@ -174,32 +175,234 @@ function filterParams() {
             terSeed = terSeed;
         }
     }
-    console.log(filterBase);
-    console.log(terSeed);
+    riverCurve = rand.rand(3,5);
+    logFilters(filterBase.name, terSeed, riverCurve);
+};
+
+function logFilters(filtre, seed, curve) {
+    filtre = filtre.replace('Flood','Eau ');
+    filtre = filtre.replace('Veg','Végétation ');
+    filtre = filtre.replace('Scarp','Escarpement ');
+    filtre = filtre.replace(' M',' -');
+    filtre = filtre.replace(' P',' +');
+    console.log('Filtre: '+filtre);
+    let variance;
+    switch (seed) {
+        case 3:
+        variance = "très forte";
+        break;
+        case 6:
+        variance = "forte";
+        break;
+        case 9:
+        variance = "moyenne +";
+        break;
+        case 12:
+        variance = "moyenne";
+        break;
+        case 18:
+        variance = "moyenne -";
+        break;
+        case 24:
+        variance = "faible";
+        break;
+        case 90:
+        variance = "très faible";
+        break;
+        case 200:
+        variance = "extrèmement faible";
+        break;
+        default:
+        variance = "erreur !!";
+    }
+    console.log('Variabilité: '+variance+' (seed '+seed+')');
+    console.log('River Curve: '+curve);
     // console.log(specialSeed);
 };
 
 function addRivers(map) {
-    let dice = rand.rand(1,5);
-    if (dice > 3) {
-        addEWRiver(map);
+    let direction;
+    let dice = rand.rand(1,riverEW);
+    let isRiver = false;
+    if (dice < 3) {
+        direction = rand.rand(1,4); // 1 is North, 2 is South
+        addEWRiver(map,direction);
+        isRiver = true;
+        console.log('Rivière ouest-est');
     }
-    dice = rand.rand(1,6);
-    if (dice == 5) {
-        addNSRiver(map);
-    } else if (dice == 4) {
-        addSNRiver(map);
+    direction = rand.rand(1,2); // 1 is West, 2 is East
+    dice = rand.rand(1,riverNS);
+    if (dice < 3) {
+        addNSRiver(map,direction);
+        isRiver = true;
+        console.log('Rivière nord-sud');
+    }
+    dice = rand.rand(1,riverSN);
+    if (dice < 3) {
+        addSNRiver(map,direction);
+        isRiver = true;
+        console.log('Rivière sud-nord');
+    }
+    if (!isRiver) {
+        console.log('Pas de rivière');
     }
 };
-function addEWRiver(map) {
-    let startLine = rand.rand(10,50);
-    
+function addEWRiver(map, direction) {
+    // début de la rivière
+    let startLine = rand.rand(15,45);
+    let startTileIndex = map.findIndex(
+        obj => obj.x === startLine && obj.y === 1
+    );
+    let startTileId = map[startTileIndex].id;
+    zone[startTileId].terrain = "R";
+    zone[startTileId].river = "ew";
+    // suite de la rivière
+    let nextTileId = startTileId;
+    let dice;
+    let dirDice;
+    let i = 1
+    while (i < 500) {
+        dice = rand.rand(1,riverCurve);
+        dirDice = rand.rand(1,2);
+        if (i === 1) {
+            nextTileId = nextTileId+1;
+        } else {
+            if (dice === 1) {
+                if (direction === 2 & dirDice === 1) {
+                    nextTileId = nextTileId+mapSize;
+                } else {
+                    nextTileId = nextTileId-mapSize;
+                }
+            } else if (dice === 2) {
+                if (direction === 1 & dirDice === 1) {
+                    nextTileId = nextTileId-mapSize;
+                } else {
+                    nextTileId = nextTileId+mapSize;
+                }
+            } else {
+                nextTileId = nextTileId+1;
+            }
+        }
+        if (nextTileId < 0 || nextTileId > mapSize*mapSize-1) {
+            // en dehors de la carte
+            break;
+        }
+        if (zone[nextTileId].y == 60) {
+            // arrivée de l'autre côté
+            i = 500;
+        }
+        zone[nextTileId].terrain = "R";
+        zone[nextTileId].river = "ew";
+        i++;
+    }
 };
-function addNSRiver(map) {
-
+function addNSRiver(map, direction) {
+    // début de la rivière
+    let startLine = rand.rand(15,45);
+    let startTileIndex = map.findIndex(
+        obj => obj.x === 1 && obj.y === startLine
+    );
+    let startTileId = map[startTileIndex].id;
+    zone[startTileId].terrain = "R";
+    zone[startTileId].river = "ns";
+    // suite de la rivière
+    let nextTileId = startTileId;
+    let dice;
+    let dirDice;
+    let i = 1
+    while (i < 500) {
+        dice = rand.rand(1,riverCurve);
+        dirDice = rand.rand(1,2);
+        if (i === 1) {
+            nextTileId = nextTileId+mapSize;
+        } else {
+            if (dice === 1) {
+                if (direction === 2 & dirDice === 1) {
+                    nextTileId = nextTileId+1;
+                } else {
+                    nextTileId = nextTileId-1;
+                }
+            } else if (dice === 2) {
+                if (direction === 1 & dirDice === 1) {
+                    nextTileId = nextTileId-1;
+                } else {
+                    nextTileId = nextTileId+1;
+                }
+            } else {
+                nextTileId = nextTileId+mapSize;
+            }
+        }
+        if (nextTileId < 0 || nextTileId > mapSize*mapSize-1) {
+            // en dehors de la carte
+            break;
+        }
+        if (zone[nextTileId].x == 60) {
+            // arrivée de l'autre côté
+            i = 500;
+        }
+        if (zone[nextTileId].terrain === "R" && zone[nextTileId].river != "ns") {
+            // croise une autre rivière
+            break;
+        } else {
+            zone[nextTileId].terrain = "R";
+            zone[nextTileId].river = "ns";
+        }
+        i++;
+    }
 };
-function addSNRiver(map) {
-
+function addSNRiver(map, direction) {
+    // début de la rivière
+    let startLine = rand.rand(15,45);
+    let startTileIndex = map.findIndex(
+        obj => obj.x === 60 && obj.y === startLine
+    );
+    let startTileId = map[startTileIndex].id;
+    zone[startTileId].terrain = "R";
+    zone[startTileId].river = "sn";
+    // suite de la rivière
+    let nextTileId = startTileId;
+    let dice;
+    let dirDice;
+    let i = 1
+    while (i < 500) {
+        dice = rand.rand(1,riverCurve);
+        dirDice = rand.rand(1,2);
+        if (i === 1) {
+            nextTileId = nextTileId-mapSize;
+        } else {
+            if (dice === 1) {
+                if (direction === 2 & dirDice === 1) {
+                    nextTileId = nextTileId+1;
+                } else {
+                    nextTileId = nextTileId-1;
+                }
+            } else if (dice === 2) {
+                if (direction === 1 & dirDice === 1) {
+                    nextTileId = nextTileId-1;
+                } else {
+                    nextTileId = nextTileId+1;
+                }
+            } else {
+                nextTileId = nextTileId-mapSize;
+            }
+        }
+        if (nextTileId < 0 || nextTileId > mapSize*mapSize-1) {
+            // en dehors de la carte
+            break;
+        }
+        if (zone[nextTileId].x == 60) {
+            // arrivée de l'autre côté
+            i = 500;
+        }
+        if (zone[nextTileId].terrain === "R" && zone[nextTileId].river != "sn") {
+            // croise une autre rivière
+            break;
+        } else {
+            zone[nextTileId].terrain = "R";
+            zone[nextTileId].river = "sn";
+        }
+        i++;
+    }
 };
 
 // Dessine la carte
