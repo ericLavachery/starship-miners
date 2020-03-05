@@ -12,7 +12,7 @@ socket.on('terrainTypes-Load', function(tt) {
     addRivers(zone);
     writeMapStyles();
     showMap(zone);
-    socket.emit('save-map', zone);
+    // socket.emit('save-map', zone);
 });
 // UnitTypes
 socket.on('unitDV-Load', function(udv) {

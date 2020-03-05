@@ -11,15 +11,15 @@ function areaMove(direction) {
         break;
         case 's':
         x = Number(xOffset)+3;
-        if (x > 147) {
-            x = 147;
+        if (x > 60-numVTiles) {
+            x = 60-numVTiles;
         }
         y = Number(yOffset);
         break;
         case 'e':
         y = Number(yOffset)+3;
-        if (y > 117) {
-            y = 117;
+        if (y > 60-numHTiles) {
+            y = 60-numHTiles;
         }
         x = Number(xOffset);
         break;
