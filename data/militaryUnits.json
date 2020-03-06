@@ -1,6 +1,7 @@
 [
 {
-    "name": "Troopers",
+    "id": 0;
+    "name": "Fusilliers",
     "squads": 6,
     "squadSize": 10,
     "crew": 1,
@@ -31,11 +32,12 @@
         "ammo": [ "boom" ]
         },
     "moveCost": 3,
-    "maxFlood": 3,
+    "maxFlood": 1,
     "maxScarp": 3,
     "maxVeg": 3
 },
 {
+    "id": 1;
     "name": "Light Tank",
     "squads": 6,
     "squadSize": 1,
