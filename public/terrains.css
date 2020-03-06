@@ -1,3 +1,7 @@
+.terUnderSel {
+    background-color: #FFFFFF;
+    background-image: url(/static/img/wtiles/selected.png);
+}
 .terM1 {
     background-color: #291313;
     background-image: url(/static/img/wtiles/montagnes.png);

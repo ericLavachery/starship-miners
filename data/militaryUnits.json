@@ -2,7 +2,7 @@
 {
     "id": 0,
     "name": "Fusilliers",
-    "pic": "jeep-gun",
+    "pic": "winchester-rifle",
     "squads": 6,
     "squadSize": 10,
     "crew": 1,

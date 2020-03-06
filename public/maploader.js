@@ -22,6 +22,7 @@ function showMap(wmap) {
             }
         });
     });
+    selectMode();
     // console.log(zone);
 };
 
