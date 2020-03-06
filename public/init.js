@@ -14,13 +14,18 @@ socket.on('mapFilters-Load', function(mf) {
 socket.on('terrainTypes-Load', function(tt) {
     terrainTypes = tt;
     // console.log(terrainTypes);
-    filterParams();
-    createMap(mapSize);
-    filterMap(zone);
-    addRivers(zone);
-    writeMapStyles();
-    showMap(zone);
-    socket.emit('save-map', zone);
+});
+// Map
+socket.on('savedMap-Load', function(sm) {
+    savedMap = sm;
+    // console.log(savedMap);
+    if (savedMap.length >= (mapSize*mapSize)-1) {
+        zone = savedMap;
+        writeMapStyles();
+        showMap(zone);
+    } else {
+        generateNewMap();
+    }
 });
 // UnitTypes
 socket.on('unitDV-Load', function(udv) {

@@ -59,6 +59,7 @@ fs.readFile('./data/mapFilters.json', 'utf8', function (err, data) {
   }
 });
 var playerInfos = {};
+var savedMap = [];
 
 io.sockets.on('connection', function (socket, pseudo) {
     // On LOGIN send tables
@@ -75,25 +76,57 @@ io.sockets.on('connection', function (socket, pseudo) {
                     try {
                         playerInfos = JSON.parse(data);
                         // console.log(playerInfos);
-                        loadAll();
+                        loadMap();
                     } catch (e) {
                         console.error( e );
                     }
                 });
-            } else {                
-                loadAll();
+            } else {
+                loadMap();
             }
         } catch(err) {
             console.error(err)
         }
     });
 
-    function loadAll() {
-        console.log('loading...');
+    function loadMap() {
+        const mapPath = './data/players/'+socket.pseudo+'-currentMap.json'
+        try {
+            if (fs.existsSync(mapPath)) {
+                fs.readFile(mapPath, 'utf8', function (err, data) {
+                    if (err) throw err;
+                    try {
+                        savedMap = JSON.parse(data);
+                        // console.log(savedMap);
+                        sendAll();
+                    } catch (e) {
+                        console.error( e );
+                    }
+                });
+            } else {
+                sendAll();
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    };
+
+    function sendAll() {
+        console.log('loading player infos');
         socket.emit('playerInfos-Load', playerInfos);
+        console.log('loading map filters');
         socket.emit('mapFilters-Load', mapFilters);
+        console.log('loading terrain types');
         socket.emit('terrainTypes-Load', terrainTypes);
+        if (savedMap.length >= 3500) {
+            console.log('loading saved map');
+        } else {
+            console.log('no saved map, will generate a new one');
+        }
+        socket.emit('savedMap-Load', savedMap);
+        console.log('loading units default values');
         socket.emit('unitDV-Load', unitDV);
+        console.log('loading unit types');
         socket.emit('unitTypes-Load', unitTypes);
     };
 

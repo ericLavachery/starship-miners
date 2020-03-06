@@ -27,6 +27,7 @@ function connectMe(pseudo) {
     document.getElementById('pascon').style.display = 'none';
     // change le titre du doc
     document.title = 'Starship Miners - ' + pseudo;
+    document.getElementById("pseu").innerHTML = pseudo;
 }
 
 $('#hello').click(promptMe);

@@ -1,3 +1,14 @@
+function generateNewMap() {
+    zone = [];
+    filterParams();
+    createMap(mapSize);
+    filterMap(zone);
+    addRivers(zone);
+    writeMapStyles();
+    showMap(zone);
+    socket.emit('save-map', zone);
+};
+
 function createMap(size) {
     let newTile = {};
     let i = 0;
@@ -149,6 +160,7 @@ function filterParams() {
 };
 
 function logFilters(filtre, seed, curve) {
+    console.log('NOUVELLE CARTE -------------------------');
     filtre = filtre.replace('Flood','Eau ');
     filtre = filtre.replace('Veg','Végétation ');
     filtre = filtre.replace('Scarp','Escarpement ');

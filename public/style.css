@@ -195,6 +195,11 @@ td {
     background-position: right 0%;
     min-width: 130px;
 }
+#commandz {
+    background-image: url(/static/img/bg-wood-dark-small.jpg);
+    background-position: 20% 0%;
+    min-width: 130px;
+}
 #timeInfos {
     background-image: url(/static/img/bg-wood-dark-small.jpg);
     background-position: right 10%;
