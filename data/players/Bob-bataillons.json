@@ -1,0 +1,35 @@
+[
+    {
+        "id": 0,
+        "type": "Fusilliers",
+        "typeId": 0,
+        "loc": "zone",
+        "locId": 0,
+        "tileId": 124,
+        "squadsLeft": 6,
+        "apLeft": 12,
+        "ammo": "standard"
+    },
+    {
+        "id": 1,
+        "type": "Tank Léger",
+        "typeId": 1,
+        "loc": "zone",
+        "locId": 0,
+        "tileId": 183,
+        "squadsLeft": 6,
+        "apLeft": 12,
+        "ammo": "standard"
+    },
+    {
+        "id": 2,
+        "type": "Fusilliers",
+        "typeId": 0,
+        "loc": "mother",
+        "locId": 0,
+        "tileId": 0,
+        "squadsLeft": 6,
+        "apLeft": 12,
+        "ammo": "standard"
+    }
+]

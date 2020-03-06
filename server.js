@@ -59,6 +59,7 @@ fs.readFile('./data/mapFilters.json', 'utf8', function (err, data) {
   }
 });
 var playerInfos = {};
+var bataillons = [];
 var savedMap = [];
 
 io.sockets.on('connection', function (socket, pseudo) {
@@ -68,10 +69,10 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.pseudo = pseudo;
         console.log('login : '+pseudo);
 
-        const piPath = './data/players/'+pseudo+'-playerInfos.json'
+        const path = './data/players/'+pseudo+'-playerInfos.json'
         try {
-            if (fs.existsSync(piPath)) {
-                fs.readFile(piPath, 'utf8', function (err, data) {
+            if (fs.existsSync(path)) {
+                fs.readFile(path, 'utf8', function (err, data) {
                     if (err) throw err;
                     try {
                         playerInfos = JSON.parse(data);
@@ -90,14 +91,36 @@ io.sockets.on('connection', function (socket, pseudo) {
     });
 
     function loadMap() {
-        const mapPath = './data/players/'+socket.pseudo+'-currentMap.json'
+        const path = './data/players/'+socket.pseudo+'-currentMap.json'
         try {
-            if (fs.existsSync(mapPath)) {
-                fs.readFile(mapPath, 'utf8', function (err, data) {
+            if (fs.existsSync(path)) {
+                fs.readFile(path, 'utf8', function (err, data) {
                     if (err) throw err;
                     try {
                         savedMap = JSON.parse(data);
                         // console.log(savedMap);
+                        loadBataillons();
+                    } catch (e) {
+                        console.error( e );
+                    }
+                });
+            } else {
+                loadBataillons();
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    };
+
+    function loadBataillons() {
+        const path = './data/players/'+socket.pseudo+'-bataillons.json'
+        try {
+            if (fs.existsSync(path)) {
+                fs.readFile(path, 'utf8', function (err, data) {
+                    if (err) throw err;
+                    try {
+                        bataillons = JSON.parse(data);
+                        // console.log(bataillons);
                         sendAll();
                     } catch (e) {
                         console.error( e );
@@ -114,6 +137,12 @@ io.sockets.on('connection', function (socket, pseudo) {
     function sendAll() {
         console.log('loading player infos');
         socket.emit('playerInfos-Load', playerInfos);
+        console.log('loading player battalions');
+        socket.emit('bataillons-Load', bataillons);
+        console.log('loading units default values');
+        socket.emit('unitDV-Load', unitDV);
+        console.log('loading unit types');
+        socket.emit('unitTypes-Load', unitTypes);
         console.log('loading map filters');
         socket.emit('mapFilters-Load', mapFilters);
         console.log('loading terrain types');
@@ -124,10 +153,6 @@ io.sockets.on('connection', function (socket, pseudo) {
             console.log('no saved map, will generate a new one');
         }
         socket.emit('savedMap-Load', savedMap);
-        console.log('loading units default values');
-        socket.emit('unitDV-Load', unitDV);
-        console.log('loading unit types');
-        socket.emit('unitTypes-Load', unitTypes);
     };
 
     // Save Map

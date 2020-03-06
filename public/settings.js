@@ -34,4 +34,5 @@ let zone = [];
 let resources = [];
 // UNITS
 let unitTypes = [];
-let pop = [];
+let unitDV = {}
+let bataillons = [];

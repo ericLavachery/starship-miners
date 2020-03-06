@@ -16,8 +16,19 @@ function showMap(wmap) {
     sortedVisMap.forEach(function(tile) {
         terclass = 'ter'+tile.terrain+tile.seed;
         $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')"><span class="bigIcon" id="b'+tile.id+'"></span><br></div>');
+        bataillons.forEach(function(bat) {
+            if (bat.tileId === tile.id && bat.loc === "zone") {
+                showBataillon(bat);
+            }
+        });
     });
     // console.log(zone);
+};
+
+function showBataillon(bat) {
+    let unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
+    let batPic = unitTypes[unitIndex].pic;
+    $('#b'+bat.tileId).append('<img src="/static/img/units/'+batPic+'.svg" title="'+bat.squadsLeft+' '+bat.type+'">');
 };
 
 function writeMapStyles() {

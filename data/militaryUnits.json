@@ -1,7 +1,8 @@
 [
 {
-    "id": 0;
+    "id": 0,
     "name": "Fusilliers",
+    "pic": "jeep-gun",
     "squads": 6,
     "squadSize": 10,
     "crew": 1,
@@ -37,8 +38,9 @@
     "maxVeg": 3
 },
 {
-    "id": 1;
-    "name": "Light Tank",
+    "id": 1,
+    "name": "Tank Léger",
+    "pic": "great-war-tank",
     "squads": 6,
     "squadSize": 1,
     "crew": 3,

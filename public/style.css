@@ -34,8 +34,9 @@ body {
 .bigIcon {
     position: absolute;
     top: 3px;
-    left: 15px;
-    width: 42px;
+    /* left: 15px; */
+    left: 3px;
+    width: 66px;
     display: inline-block;
     z-index: 20;
 }

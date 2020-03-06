@@ -27,6 +27,11 @@ socket.on('savedMap-Load', function(sm) {
         generateNewMap();
     }
 });
+// Bataillons
+socket.on('bataillons-Load', function(bt) {
+    bataillons = bt;
+    console.log(bataillons);
+});
 // UnitTypes
 socket.on('unitDV-Load', function(udv) {
     unitDV = udv;
