@@ -38,3 +38,19 @@ function areaGo(x,y) {
     yOffset = y;
     showMap(zone);
 };
+function yourMapSize() {
+    let screenH = window.screen.availWidth;
+    let screenV = window.screen.availHeight;
+    let defV = 15;
+    let defH = 9;
+    if (screenH >= 2560) {
+        defH = 28;
+    }
+    if (screenV >= 1440) {
+        defV = 16;
+    }
+    numHTiles = Number(prompt('Nombre de terrains vus horizontalement (x)',defH));
+    numVTiles = Number(prompt('Nombre de terrains vus horizontalement (y)',defV));
+    writeMapStyles();
+    showMap(zone);
+};

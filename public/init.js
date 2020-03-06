@@ -1,3 +1,11 @@
+// Player
+socket.on('playerInfos-Load', function(pi) {
+    playerInfos = pi;
+    if (playerInfos.numHTiles > 1 && playerInfos.numVTiles > 1) {
+        numHTiles = playerInfos.numHTiles;
+        numVTiles = playerInfos.numVTiles;
+    }
+});
 // Terrains
 socket.on('mapFilters-Load', function(mf) {
     mapFilters = mf;
@@ -12,7 +20,7 @@ socket.on('terrainTypes-Load', function(tt) {
     addRivers(zone);
     writeMapStyles();
     showMap(zone);
-    // socket.emit('save-map', zone);
+    socket.emit('save-map', zone);
 });
 // UnitTypes
 socket.on('unitDV-Load', function(udv) {

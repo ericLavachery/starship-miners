@@ -1,18 +1,7 @@
-/*
-font-family: 'Raleway', sans-serif;
-font-family: 'Uncial Antiqua', cursive;
-font-family: 'Cinzel Decorative', cursive;
-font-family: 'Crushed', cursive;
-font-family: 'Montserrat Alternates', sans-serif;
-font-family: 'Roboto Condensed', sans-serif;
-font-family: 'Dosis', sans-serif;
-*/
 body {
     margin: 6px 2px 0 2px;
     font-family: 'Roboto Condensed', sans-serif;
     background-color: black;
-    /* background-image: url(/static/img/blackrockbg_dark.jpg); */
-    /* background-image: url(/static/img/bgwooddark.jpg); */
     background-image: url(/static/img/SinusRegion_purple.jpg);
     background-repeat: no-repeat;
 }
@@ -39,7 +28,7 @@ body {
 }
 .mapSize {
     margin: 28px 0 0 15px;
-    color: #dbd0e6;
+    color: #a5b896;
     font-size: 18px;
 }
 .bigIcon {
@@ -165,7 +154,7 @@ td {
     background-color: black;
     /* font-weight: 600; */
     font-size: 14px;
-    color: #dbd0e6;
+    color: #a5b896;
     padding: 8px 8px;
     border-style: solid;
     border-width: 2px;
@@ -178,41 +167,41 @@ td {
     min-width: 140px;
 }
 #vuPriority {
-    background-image: url(/static/img/aged-dark-mid.jpg);
+    background-image: url(/static/img/bg-wood-dark-small.jpg);
     background-position: 0% 0%;
 }
 #tileUnitList {
-    background-image: url(/static/img/aged-dark-mid.jpg);
+    background-image: url(/static/img/bg-wood-dark-small.jpg);
     background-position: 0% 5%;
 }
 #unitInfos {
-    background-image: url(/static/img/aged-dark-mid.jpg);
+    background-image: url(/static/img/bg-wood-dark-small.jpg);
     background-position: 0% 25%;
 }
 #nameInfos {
-    background-image: url(/static/img/aged-dark-mid.jpg);
+    background-image: url(/static/img/bg-wood-dark-small.jpg);
     background-position: 0% 35%;
 }
 #tileInfos {
-    background-image: url(/static/img/aged-dark-mid.jpg);
+    background-image: url(/static/img/bg-wood-dark-small.jpg);
     background-position: 0% 40%;
 }
 #tracksList {
-    background-image: url(/static/img/aged-dark-mid.jpg);
+    background-image: url(/static/img/bg-wood-dark-small.jpg);
     background-position: 0% 50%;
 }
 #playerInfos {
-    background-image: url(/static/img/aged-dark-mid.jpg);
+    background-image: url(/static/img/bg-wood-dark-small.jpg);
     background-position: right 0%;
     min-width: 130px;
 }
 #timeInfos {
-    background-image: url(/static/img/aged-dark-mid.jpg);
+    background-image: url(/static/img/bg-wood-dark-small.jpg);
     background-position: right 10%;
     min-width: 130px;
 }
 #modesInfos {
-    background-image: url(/static/img/aged-dark-mid.jpg);
+    background-image: url(/static/img/bg-wood-dark-small.jpg);
     background-position: right 20%;
     min-width: 130px;
 }
@@ -223,12 +212,12 @@ td {
     width: 760px;
 }
 #terrainDetails {
-    background-image: url(/static/img/aged-dark-mid.jpg);
+    background-image: url(/static/img/bg-wood-dark-small.jpg);
     background-position: 0% 35%;
     width: 240px;
 }
 #tileDetails {
-    background-image: url(/static/img/aged-dark-mid.jpg);
+    background-image: url(/static/img/bg-wood-dark-small.jpg);
     background-position: right 35%;
     width: 240px;
 }
@@ -252,11 +241,11 @@ td {
 }
 .loupe {
     display: inline-block;
-    color: #dbd0e6;
+    color: #a5b896;
     font-size: 19px;
 }
 .detailIcons {
-    color: #dbd0e6;
+    color: #a5b896;
     font-size: 18px;
 }
 .klik:hover {
@@ -275,7 +264,7 @@ td {
 }
 .sidebar a {
     text-decoration: none;
-    color: #dbd0e6;
+    color: #a5b896;
 }
 .sidebar a:hover {
     text-decoration: none;
@@ -426,7 +415,7 @@ h3 {
 }
 h4 {
     font-size: 22px;
-    color: #dbd0e6;
+    color: #a5b896;
     margin: 0;
     padding: 0px 0px 5px 0px;
 }
@@ -468,7 +457,7 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
     color: #5a6650;
 }
 .gris {
-    color: #dbd0e6;
+    color: #a5b896;
 }
 .blanc {
     color: #FFFFFF;

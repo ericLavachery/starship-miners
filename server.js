@@ -19,7 +19,7 @@ app.get('/', function (req, res) {
 });
 
 var unitTypes;
-fs.readFile('militaryUnits.json', 'utf8', function (err, data) {
+fs.readFile('./data/militaryUnits.json', 'utf8', function (err, data) {
   if (err) throw err;
   try {
     unitTypes = JSON.parse(data);
@@ -29,7 +29,7 @@ fs.readFile('militaryUnits.json', 'utf8', function (err, data) {
   }
 });
 var unitDV;
-fs.readFile('defaultUnitValues.json', 'utf8', function (err, data) {
+fs.readFile('./data/defaultUnitValues.json', 'utf8', function (err, data) {
   if (err) throw err;
   try {
     unitDV = JSON.parse(data);
@@ -39,7 +39,7 @@ fs.readFile('defaultUnitValues.json', 'utf8', function (err, data) {
   }
 });
 var terrainTypes;
-fs.readFile('terrainTypes.json', 'utf8', function (err, data) {
+fs.readFile('./data/terrainTypes.json', 'utf8', function (err, data) {
   if (err) throw err;
   try {
     terrainTypes = JSON.parse(data);
@@ -49,7 +49,7 @@ fs.readFile('terrainTypes.json', 'utf8', function (err, data) {
   }
 });
 var mapFilters;
-fs.readFile('mapFilters.json', 'utf8', function (err, data) {
+fs.readFile('./data/mapFilters.json', 'utf8', function (err, data) {
   if (err) throw err;
   try {
     mapFilters = JSON.parse(data);
@@ -58,6 +58,7 @@ fs.readFile('mapFilters.json', 'utf8', function (err, data) {
     console.error( e );
   }
 });
+var playerInfos = {};
 
 io.sockets.on('connection', function (socket, pseudo) {
     // On LOGIN send tables
@@ -65,18 +66,44 @@ io.sockets.on('connection', function (socket, pseudo) {
         pseudo = ent.encode(pseudo);
         socket.pseudo = pseudo;
         console.log('login : '+pseudo);
+
+        const piPath = './data/players/'+pseudo+'-playerInfos.json'
+        try {
+            if (fs.existsSync(piPath)) {
+                fs.readFile(piPath, 'utf8', function (err, data) {
+                    if (err) throw err;
+                    try {
+                        playerInfos = JSON.parse(data);
+                        // console.log(playerInfos);
+                        loadAll();
+                    } catch (e) {
+                        console.error( e );
+                    }
+                });
+            } else {                
+                loadAll();
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    });
+
+    function loadAll() {
+        console.log('loading...');
+        socket.emit('playerInfos-Load', playerInfos);
         socket.emit('mapFilters-Load', mapFilters);
         socket.emit('terrainTypes-Load', terrainTypes);
         socket.emit('unitDV-Load', unitDV);
         socket.emit('unitTypes-Load', unitTypes);
-    });
+    };
 
     // Save Map
     socket.on('save-map', function(zone) {
-        var jsonmap = JSON.stringify(zone);
-        fs.writeFile('currentMap.json', jsonmap, 'utf8', (err) => {
+        let jsonmap = JSON.stringify(zone);
+        let mapname = socket.pseudo+'-currentMap.json'
+        fs.writeFile('./data/players/'+mapname, jsonmap, 'utf8', (err) => {
             if (err) throw err;
-            console.log('Map writen to currentMap.json');
+            console.log('Map writen to '+mapname);
         });
     });
 });

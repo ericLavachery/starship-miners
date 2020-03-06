@@ -1,5 +1,5 @@
-let numHTiles = 25; // default 15
-let numVTiles = 15; // default 9
+let numHTiles = 15; // default 15
+let numVTiles = 9; // default 9
 let mapSize = 60; // default 60
 let xOffsetForced = 0;
 let xOffset = Number(new URLSearchParams(document.location.search).get("x"));
@@ -15,6 +15,7 @@ if (yOffset == null) {
 } else {
     yOffsetForced = yOffset;
 }
+// MAP GENERATOR
 let terSeed = 12; // def 12 +grand = +grandes forêts etc...
 let specialSeed = 10; // def 10 +grand = moins de terrains spéciaux
 let swampWater = 5; // def 5 chance d'avoir un swamps à la place d'un water (ou l'inverse)
@@ -31,6 +32,6 @@ let filterVariance = true;
 let filterBase = {};
 let zone = [];
 let resources = [];
-
+// UNITS
 let unitTypes = [];
 let pop = [];
