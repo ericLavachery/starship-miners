@@ -33,7 +33,7 @@
         "ammo": [ "boom" ]
         },
     "moveCost": 3,
-    "maxFlood": 1,
+    "maxFlood": 3,
     "maxScarp": 3,
     "maxVeg": 3
 },

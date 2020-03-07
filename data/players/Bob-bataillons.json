@@ -6,6 +6,7 @@
         "loc": "zone",
         "locId": 0,
         "tileId": 124,
+        "oldTileId": 124,
         "squadsLeft": 6,
         "apLeft": 12,
         "ammo": "standard"
@@ -17,6 +18,7 @@
         "loc": "zone",
         "locId": 0,
         "tileId": 183,
+        "oldTileId": 183,
         "squadsLeft": 6,
         "apLeft": 12,
         "ammo": "standard"
@@ -28,6 +30,7 @@
         "loc": "mother",
         "locId": 0,
         "tileId": 0,
+        "oldTileId": 0,
         "squadsLeft": 6,
         "apLeft": 12,
         "ammo": "standard"

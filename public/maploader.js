@@ -26,9 +26,21 @@ function showMap(wmap) {
     // console.log(zone);
 };
 
+function redrawTile(tileId,drawSelectedBat) {
+    $('#b'+tileId).empty();
+    bataillons.forEach(function(bat) {
+        if (bat.tileId === tileId && bat.loc === "zone") {
+            if (drawSelectedBat || bat.id != selectedBat.id) {
+                showBataillon(bat);
+            }
+        }
+    });
+};
+
 function showBataillon(bat) {
     let unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     let batPic = unitTypes[unitIndex].pic;
+    $('#b'+bat.tileId).empty();
     $('#b'+bat.tileId).append('<img src="/static/img/units/'+batPic+'.svg" title="'+bat.squadsLeft+' '+bat.type+'">');
 };
 

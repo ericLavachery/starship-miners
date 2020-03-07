@@ -16,6 +16,7 @@ function clickSelect(tileId) {
                 moveMode();
             } else {
                 selectMode();
+                batUnstack();
                 batSelect(bat);
             }
             ownBatHere = true;
@@ -23,6 +24,7 @@ function clickSelect(tileId) {
     });
     if (!ownBatHere) {
         selectMode();
+        batUnstack();
         batUnselect();
     }
     // console.log(mode);
