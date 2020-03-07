@@ -14,6 +14,7 @@ function clickSelect(tileId) {
             showBatInfos(bat);
             if (selectedBat == bat) {
                 moveMode();
+                moveInfos(selectedBat);
             } else {
                 selectMode();
                 batUnstack();

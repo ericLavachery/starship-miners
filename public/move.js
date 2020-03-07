@@ -12,13 +12,13 @@ function clickMove(tileId) {
     } else {
 
     }
-    // system for passing over own unit
     // return to first tile if left on occupied tile
     // save bataillons.json? or do it only each turn?
     if (isAdjacent(selectedBat.tileId,tileId)) {
         if (selectedBat.apLeft >= 1) {
             if (terrainAccess(selectedBat.id,tileId)) {
                 moveSelectedBat(tileId,false);
+                moveInfos(selectedBat);
             } else {
                 // terrain impraticable
             }
@@ -40,6 +40,28 @@ function clickMove(tileId) {
     }
 };
 
+function moveInfos(bat) {
+    cursorSwitch('.','grid-item','pointer');
+    let myTileX = zone[bat.tileId].x;
+    let myTileY = zone[bat.tileId].y;
+    zone.forEach(function(tile) {
+        // $("#"+tile.id).attr("title", "#"+tile.id);
+        if (tile.x == myTileX+1 || tile.x == myTileX || tile.x == myTileX-1) {
+            if (tile.y == myTileY+1 || tile.y == myTileY || tile.y == myTileY-1) {
+                if (tile.y == myTileY && tile.x == myTileX) {
+                    cursorSwitch('#',tile.id,'pointer');
+                } else {
+                    if (selectedBat.apLeft >= 1 && terrainAccess(selectedBat.id,tile.id)) {
+                        cursorSwitch('#',tile.id,'move');
+                    } else {
+                        cursorSwitch('#',tile.id,'stop');
+                    }
+                }
+            }
+        }
+    });
+};
+
 function moveSelectedBat(tileId,free) {
     let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
     // remove unit and redraw old tile
@@ -57,9 +79,9 @@ function moveSelectedBat(tileId,free) {
         selectedBat.apLeft = selectedBat.apLeft-apLost;
     }
     // move bat
-    if (!free) {
-        selectedBat.oldTileId = selectedBat.tileId;
-    }
+    // if (!free) {
+    //     selectedBat.oldTileId = selectedBat.tileId;
+    // }
     selectedBat.tileId = tileId;
     tileSelect(selectedBat);
     showBataillon(selectedBat);
@@ -77,6 +99,9 @@ function batUnstack() {
         }
     });
     if (stack) {
+        if (selectedBat.apLeft < 1) {
+            selectedBat.apLeft = 1;
+        }
         moveSelectedBat(selectedBat.oldTileId,true);
     }
 };
