@@ -32,6 +32,10 @@ function showBataillon(bat) {
     $('#b'+bat.tileId).append('<img src="/static/img/units/'+batPic+'.svg" title="'+bat.squadsLeft+' '+bat.type+'">');
 };
 
+function hideBataillon(bat) {
+    $('#b'+bat.tileId).empty();
+};
+
 function writeMapStyles() {
     $('#mapStyles').empty();
     $('#mapStyles').append('.grid-container {grid-template-columns:');
@@ -47,20 +51,4 @@ function writeMapStyles() {
         i++;
     }
     $('#mapStyles').append(';}');
-};
-
-function isAdjacent(myTileIndex, thatTileIndex) {
-    let myTileX = zone[myTileIndex].x;
-    let myTileY = zone[myTileIndex].y;
-    let thatTileX = zone[thatTileIndex].x;
-    let thatTileY = zone[thatTileIndex].y;
-    if (thatTileX == myTileX+1 || thatTileX == myTileX || thatTileX == myTileX-1) {
-        if (thatTileY == myTileY+1 || thatTileY == myTileY || thatTileY == myTileY-1) {
-            return true;
-        } else {
-            return false;
-        }
-    } else {
-        return false;
-    }
 };
