@@ -40,8 +40,9 @@ function redrawTile(tileId,drawSelectedBat) {
 function showBataillon(bat) {
     let unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     let batPic = unitTypes[unitIndex].pic;
+    let batCat = unitTypes[unitIndex].cat;
     $('#b'+bat.tileId).empty();
-    $('#b'+bat.tileId).append('<img src="/static/img/units/'+batPic+'.svg" title="'+bat.squadsLeft+' '+bat.type+'">');
+    $('#b'+bat.tileId).append('<img src="/static/img/units/'+batCat+'/'+batPic+'.svg" title="'+bat.squadsLeft+' '+bat.type+'">');
 };
 
 function hideBataillon(bat) {

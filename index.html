@@ -57,7 +57,11 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="woodBlock" id="commandz"><i class="fas fa-map mapSize klik" onclick="generateNewMap()" title="Générer une nouvelle carte"></i><br></div>
+                        <div class="woodBlock" id="commandz">
+                            <button type="button" class="boutonMauve iconButtons" id="mapeditButton" title=""><i class="fas fa-spider" onclick="nextTurn()"></i></button>
+                            <button type="button" class="boutonMauve iconButtons" id="mapeditButton" title=""><i class="fas fa-map" onclick="generateNewMap()"></i></button>
+                            <br>
+                        </div>
                     </td>
                     <td>
                         <div id="cadreMap">
@@ -83,6 +87,6 @@
         <script src="/static/move.js"></script>
         <script src="/static/infos.js"></script>
         <script src="/static/modes.js"></script>
-        <!-- <script src="/static/broadcasts.js"></script> -->
+        <script src="/static/nextturn.js"></script>
     </body>
 </html>

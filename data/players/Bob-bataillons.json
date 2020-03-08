@@ -34,5 +34,29 @@
         "squadsLeft": 6,
         "apLeft": 12,
         "ammo": "standard"
+    },
+    {
+        "id": 3,
+        "type": "Tourelle",
+        "typeId": 2,
+        "loc": "zone",
+        "locId": 0,
+        "tileId": 185,
+        "oldTileId": 185,
+        "squadsLeft": 6,
+        "apLeft": 12,
+        "ammo": "standard"
+    },
+    {
+        "id": 3,
+        "type": "Caserne",
+        "typeId": 3,
+        "loc": "zone",
+        "locId": 0,
+        "tileId": 244,
+        "oldTileId": 244,
+        "squadsLeft": 6,
+        "apLeft": 12,
+        "ammo": "standard"
     }
 ]

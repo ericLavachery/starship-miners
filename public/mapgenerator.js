@@ -6,7 +6,7 @@ function generateNewMap() {
     addRivers(zone);
     writeMapStyles();
     showMap(zone);
-    socket.emit('save-map', zone);
+    // socket.emit('save-map', zone);
 };
 
 function createMap(size) {
