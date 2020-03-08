@@ -42,10 +42,12 @@ function clickMove(tileId) {
 
 function moveInfos(bat) {
     cursorSwitch('.','grid-item','pointer');
+    let titleString;
+    let moveCost;
     let myTileX = zone[bat.tileId].x;
     let myTileY = zone[bat.tileId].y;
     zone.forEach(function(tile) {
-        // $("#"+tile.id).attr("title", "#"+tile.id);
+        $("#"+tile.id).attr("title", "#"+tile.id);
         if (tile.x == myTileX+1 || tile.x == myTileX || tile.x == myTileX-1) {
             if (tile.y == myTileY+1 || tile.y == myTileY || tile.y == myTileY-1) {
                 if (tile.y == myTileY && tile.x == myTileX) {
@@ -55,6 +57,11 @@ function moveInfos(bat) {
                         cursorSwitch('#',tile.id,'move');
                     } else {
                         cursorSwitch('#',tile.id,'stop');
+                    }
+                    if (terrainAccess(selectedBat.id,tile.id)) {
+                        moveCost = calcMoveCost(selectedBat.id,tile.id,isDiag(selectedBat.tileId,tile.id));
+                        titleString = moveCost+" ap";
+                        $("#"+tile.id).attr("title", titleString);
                     }
                 }
             }

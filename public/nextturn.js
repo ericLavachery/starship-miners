@@ -3,7 +3,6 @@ function nextTurn() {
     selectMode();
     batUnstack();
     batUnselect();
-    // récup d'ap des unités
     // check appartition d'aliens
     // constructions et production : système d'ap également
     let unitTypesIndex;

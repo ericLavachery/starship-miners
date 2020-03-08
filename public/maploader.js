@@ -42,7 +42,7 @@ function showBataillon(bat) {
     let batPic = unitTypes[unitIndex].pic;
     let batCat = unitTypes[unitIndex].cat;
     $('#b'+bat.tileId).empty();
-    $('#b'+bat.tileId).append('<img src="/static/img/units/'+batCat+'/'+batPic+'.svg" title="'+bat.squadsLeft+' '+bat.type+'">');
+    $('#b'+bat.tileId).append('<img src="/static/img/units/'+batCat+'/'+batPic+'.svg">');
 };
 
 function hideBataillon(bat) {
