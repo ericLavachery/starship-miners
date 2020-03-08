@@ -40,7 +40,7 @@
 {
     "id": 1,
     "name": "Tank Léger",
-    "pic": "great-war-tank",
+    "pic": "apc",
     "squads": 6,
     "squadSize": 1,
     "crew": 3,

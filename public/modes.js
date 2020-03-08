@@ -2,14 +2,14 @@ function selectMode() {
     mode = 'select';
     document.title = pseudo + ' - Select';
     cursorSwitch('.','grid-item','insp');
-    $('#cadreMap').css("background-color", "#2f372a");
+    // $('#cadreMap').css("background-color", "#2f372a");
 };
 
 function moveMode() {
     mode = 'move';
     document.title = pseudo + ' - Move';
     cursorSwitch('.','grid-item','pointer');
-    $('#cadreMap').css("background-color", "#1b3e8c");
+    // $('#cadreMap').css("background-color", "#1b3e8c");
 };
 
 function cursorSwitch(seltype,selvalue,kur) {

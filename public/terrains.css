@@ -2,6 +2,10 @@
     background-color: #FFFFFF;
     background-image: url(/static/img/wtiles/selected.png);
 }
+.terUnderMove {
+    background-color: #FFFFFF;
+    background-image: url(/static/img/wtiles/compass.png);
+}
 .terM1 {
     background-color: #291313;
     background-image: url(/static/img/wtiles/montagnes.png);

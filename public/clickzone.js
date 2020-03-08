@@ -24,6 +24,7 @@ function clickSelect(tileId) {
         }
     });
     if (!ownBatHere) {
+        $('#unitInfos').empty();
         selectMode();
         batUnstack();
         batUnselect();

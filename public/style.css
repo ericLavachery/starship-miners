@@ -6,7 +6,7 @@ body {
     background-repeat: no-repeat;
 }
 #cadreMap {
-    background-color: #323232;
+    background-color: #242424;
     padding: 3px 10px 10px 10px;
     border-radius: 9px;
 }
@@ -28,7 +28,7 @@ body {
 }
 .mapSize {
     margin: 28px 0 0 15px;
-    color: #a5b896;
+    color: #96a7b8;
     font-size: 18px;
 }
 .bigIcon {
@@ -155,11 +155,11 @@ td {
     background-color: black;
     /* font-weight: 600; */
     font-size: 14px;
-    color: #a5b896;
+    color: #96a7b8;
     padding: 8px 8px;
     border-style: solid;
     border-width: 2px;
-    border-color: #2f372a;
+    border-color: #444444;
     margin: 0 0 5px 0;
     border-radius: 6px;
     min-width: 280px;
@@ -168,46 +168,46 @@ td {
     min-width: 140px;
 }
 #vuPriority {
-    background-image: url(/static/img/bg-wood-dark-small.jpg);
+    background-image: url(/static/img/plate-dark-mid.jpg);
     background-position: 0% 0%;
 }
 #tileUnitList {
-    background-image: url(/static/img/bg-wood-dark-small.jpg);
+    background-image: url(/static/img/plate-dark-mid.jpg);
     background-position: 0% 5%;
 }
 #unitInfos {
-    background-image: url(/static/img/bg-wood-dark-small.jpg);
+    background-image: url(/static/img/plate-dark-mid.jpg);
     background-position: 0% 25%;
 }
 #nameInfos {
-    background-image: url(/static/img/bg-wood-dark-small.jpg);
+    background-image: url(/static/img/plate-dark-mid.jpg);
     background-position: 0% 35%;
 }
 #tileInfos {
-    background-image: url(/static/img/bg-wood-dark-small.jpg);
+    background-image: url(/static/img/plate-dark-mid.jpg);
     background-position: 0% 40%;
 }
 #tracksList {
-    background-image: url(/static/img/bg-wood-dark-small.jpg);
+    background-image: url(/static/img/plate-dark-mid.jpg);
     background-position: 0% 50%;
 }
 #playerInfos {
-    background-image: url(/static/img/bg-wood-dark-small.jpg);
+    background-image: url(/static/img/plate-dark-mid.jpg);
     background-position: right 0%;
     min-width: 130px;
 }
 #commandz {
-    background-image: url(/static/img/bg-wood-dark-small.jpg);
-    background-position: 20% 0%;
+    background-image: url(/static/img/plate-dark-mid.jpg);
+    background-position: 0% 25%;
     min-width: 130px;
 }
 #timeInfos {
-    background-image: url(/static/img/bg-wood-dark-small.jpg);
+    background-image: url(/static/img/plate-dark-mid.jpg);
     background-position: right 10%;
     min-width: 130px;
 }
 #modesInfos {
-    background-image: url(/static/img/bg-wood-dark-small.jpg);
+    background-image: url(/static/img/plate-dark-mid.jpg);
     background-position: right 20%;
     min-width: 130px;
 }
@@ -218,12 +218,12 @@ td {
     width: 760px;
 }
 #terrainDetails {
-    background-image: url(/static/img/bg-wood-dark-small.jpg);
+    background-image: url(/static/img/plate-dark-mid.jpg);
     background-position: 0% 35%;
     width: 240px;
 }
 #tileDetails {
-    background-image: url(/static/img/bg-wood-dark-small.jpg);
+    background-image: url(/static/img/plate-dark-mid.jpg);
     background-position: right 35%;
     width: 240px;
 }
@@ -239,7 +239,7 @@ td {
 }
 .terTypeButtonSel {
     margin: 0 0 0 0;
-    border: 2px solid #ff001f;
+    border: 2px solid #ba44c8;
 }
 .blockTitle {
     display: inline-block;
@@ -247,15 +247,15 @@ td {
 }
 .loupe {
     display: inline-block;
-    color: #a5b896;
+    color: #96a7b8;
     font-size: 19px;
 }
 .detailIcons {
-    color: #a5b896;
+    color: #96a7b8;
     font-size: 18px;
 }
 .klik:hover {
-    color: #ff001f;
+    color: #ba44c8;
     cursor: pointer;
 }
 .catButton {
@@ -270,11 +270,11 @@ td {
 }
 .sidebar a {
     text-decoration: none;
-    color: #a5b896;
+    color: #96a7b8;
 }
 .sidebar a:hover {
     text-decoration: none;
-    color: #ff001f;
+    color: #ba44c8;
 }
 .paramName {
     display: inline-block;
@@ -289,7 +289,7 @@ td {
 .paramIcon {
     text-align: center;
     margin-right: 3px;
-    color: #85633e;
+    color: #519449;
     width: 18px;
     display: inline-block;
 }
@@ -408,41 +408,41 @@ h1,h2,h3,h4 {
 }
 h1 {
     font-size: 22px;
-    color: #ff001f;
+    color: #ba44c8;
     /* margin: 0 0 3px 13px; */
     padding: 0;
 }
 h3 {
     font-size: 22px;
-    color: #85633e;
+    color: #519449;
     /* text-shadow: 1px 1px #241910; */
     margin: 0;
     padding: 0px 0px 5px 0px;
 }
 h4 {
     font-size: 22px;
-    color: #a5b896;
+    color: #96a7b8;
     margin: 0;
     padding: 0px 0px 5px 0px;
 }
 #serverReturn {
     font-family: 'Crushed', cursive;
     font-size: 22px;
-    color: #ff001f;
+    color: #ba44c8;
     margin: 15px 15px 0px 15px;
 }
 a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover,a.gris:hover,a.blanc:hover,.bleu:hover {
-    color: #ff001f;
+    color: #ba44c8;
     text-decoration: none;
 }
 .rouge {
-    color: #ff001f;
+    color: #ba44c8;
 }
 .rose {
     color: #ff9898;
 }
 .brun {
-    color: #85633e;
+    color: #519449;
 }
 .vert {
     color: #5f853e;
@@ -463,7 +463,7 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
     color: #5a6650;
 }
 .gris {
-    color: #a5b896;
+    color: #96a7b8;
 }
 .blanc {
     color: #FFFFFF;
