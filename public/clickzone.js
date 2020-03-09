@@ -38,12 +38,14 @@ function batSelect(bat) {
     // draw new selected unit
     tileSelect(bat);
     selectedBat = bat;
+    commandes();
 };
 
 function batUnselect() {
     // remove selection on old selected unit
     tileUnselect();
     selectedBat = {};
+    commandes();
 };
 
 function tileUnselect() {
@@ -52,14 +54,19 @@ function tileUnselect() {
         let tileIndex = zone.findIndex((obj => obj.id == selectedBat.tileId));
         let tile = zone[tileIndex];
         let terclass = 'ter'+tile.terrain+tile.seed;
-        $('#'+tile.id).removeClass('terUnderSel').addClass(terclass);
+        $('#'+tile.id).removeClass('terUnderBldSel').removeClass('terUnderSel').addClass(terclass);
     }
 };
 
 function tileSelect(bat) {
     // draw new selected unit
-    tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
-    tile = zone[tileIndex];
+    let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
+    let tile = zone[tileIndex];
+    let unitTypesIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     terclass = 'ter'+tile.terrain+tile.seed;
-    $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');
+    if (unitTypes[unitTypesIndex].cat == 'buildings') {
+        $('#'+tile.id).removeClass(terclass).addClass('terUnderBldSel');
+    } else {
+        $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');
+    }
 };

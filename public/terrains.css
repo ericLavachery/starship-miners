@@ -2,6 +2,10 @@
     background-color: #FFFFFF;
     background-image: url(/static/img/wtiles/selected.png);
 }
+.terUnderBldSel {
+    background-color: #FFFFFF;
+    background-image: url(/static/img/wtiles/selectedbld.png);
+}
 .terUnderMove {
     background-color: #FFFFFF;
     background-image: url(/static/img/wtiles/compass.png);

@@ -36,6 +36,7 @@ let resources = [];
 let unitTypes = [];
 let unitDV = {}
 let bataillons = [];
+let batList = [];
 // ACTIONS
 let mode = "select";
 let selectedBat = {};

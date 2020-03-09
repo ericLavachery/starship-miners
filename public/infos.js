@@ -8,7 +8,7 @@ function showTileInfos(tileId) {
 
 function showBatInfos(bat) {
     $('#unitInfos').empty();
-    let unitTypesIndex = unitTypes.findIndex((obj => obj.name == bat.type));
+    let unitTypesIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     let batUnitType = unitTypes[unitTypesIndex];
     let hourglass = 'start';
     if (bat.apLeft <= 0) {

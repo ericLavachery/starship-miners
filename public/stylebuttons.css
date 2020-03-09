@@ -141,6 +141,7 @@ select.crudButtons {
     min-width: 35px;
     font-size: 17px;
     padding: 4px 5px 3px 5px;
+	margin: 3px 0 3px 6px;
 }
 .iconButtonsRA i {
 	vertical-align: middle;
