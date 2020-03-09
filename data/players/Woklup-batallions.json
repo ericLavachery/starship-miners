@@ -1,35 +1,62 @@
 [
     {
-        "id": 0;
-        "type": "Fusilliers";
-        "typeId": 0;
-        "loc": "zone";
-        "locId": 0;
-        "tileId": 124;
-        "squadsLeft": 6;
-        "apLeft": 12;
+        "id": 0,
+        "type": "Fusilliers",
+        "typeId": 0,
+        "loc": "zone",
+        "locId": 0,
+        "tileId": 124,
+        "oldTileId": 124,
+        "squadsLeft": 6,
+        "apLeft": 12,
         "ammo": "standard"
     },
     {
-        "id": 1;
-        "type": "Fusilliers";
-        "typeId": 0;
-        "loc": "zone";
-        "locId": 0;
-        "tileId": 183;
-        "squadsLeft": 6;
-        "apLeft": 12;
+        "id": 1,
+        "type": "Tank Léger",
+        "typeId": 1,
+        "loc": "zone",
+        "locId": 0,
+        "tileId": 182,
+        "oldTileId": 182,
+        "squadsLeft": 6,
+        "apLeft": 12,
         "ammo": "standard"
     },
     {
-        "id": 2;
-        "type": "Fusilliers";
-        "typeId": 0;
-        "loc": "mother";
-        "locId": 0;
-        "tileId": 0;
-        "squadsLeft": 6;
-        "apLeft": 12;
+        "id": 2,
+        "type": "Fusilliers",
+        "typeId": 0,
+        "loc": "mother",
+        "locId": 0,
+        "tileId": 0,
+        "oldTileId": 0,
+        "squadsLeft": 6,
+        "apLeft": 12,
+        "ammo": "standard"
+    },
+    {
+        "id": 3,
+        "type": "Tourelle",
+        "typeId": 2,
+        "loc": "zone",
+        "locId": 0,
+        "tileId": 185,
+        "oldTileId": 185,
+        "squadsLeft": 6,
+        "apLeft": 12,
+        "ammo": "standard"
+    },
+    {
+        "id": 3,
+        "type": "Caserne",
+        "typeId": 3,
+        "loc": "zone",
+        "locId": 0,
+        "tileId": 244,
+        "oldTileId": 244,
+        "squadsLeft": 6,
+        "apLeft": 12,
         "ammo": "standard"
     }
 ]

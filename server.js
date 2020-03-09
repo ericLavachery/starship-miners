@@ -155,13 +155,33 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.emit('savedMap-Load', savedMap);
     };
 
-    // Save Map
+    // Save zone
     socket.on('save-map', function(zone) {
         let jsonmap = JSON.stringify(zone);
         let mapname = socket.pseudo+'-currentMap.json'
         fs.writeFile('./data/players/'+mapname, jsonmap, 'utf8', (err) => {
             if (err) throw err;
-            console.log('Map writen to '+mapname);
+            console.log('Map saved to '+mapname);
+        });
+    });
+
+    // Save Bataillons
+    socket.on('save-bataillons', function(bataillons) {
+        let json = JSON.stringify(bataillons);
+        let filename = socket.pseudo+'-bataillons.json'
+        fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
+            if (err) throw err;
+            console.log('Bataillons saved to '+filename);
+        });
+    });
+
+    // Save playerInfos
+    socket.on('save-playerInfos', function(playerInfos) {
+        let json = JSON.stringify(playerInfos);
+        let filename = socket.pseudo+'-playerInfos.json'
+        fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
+            if (err) throw err;
+            console.log('Player infos saved to '+filename);
         });
     });
 });

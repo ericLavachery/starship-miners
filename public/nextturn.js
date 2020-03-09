@@ -3,8 +3,10 @@ function nextTurn() {
     selectMode();
     batUnstack();
     batUnselect();
+    // reset oldTileId
     // check appartition d'aliens
     // constructions et production : système d'ap également
+    // sauvegarder zoneInfos
     let unitTypesIndex;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -13,8 +15,10 @@ function nextTurn() {
             if (bat.apLeft > unitTypes[unitIndex].ap) {
                 bat.apLeft = unitTypes[unitIndex].ap;
             }
+            bat.oldTileId = bat.tileId;
         }
     });
+    saveBataillons();
     createBatList();
 };
 

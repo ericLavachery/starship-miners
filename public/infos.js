@@ -3,7 +3,34 @@ function showTileInfos(tileId) {
     let tileIndex = zone.findIndex((obj => obj.id == tileId));
     let tile = zone[tileIndex];
     let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
-    $('#tileInfos').append('<span class="blockTitle"><h3>'+terrainTypes[terrainIndex].fullName+'</h3></span>');
+    let terrain = terrainTypes[terrainIndex];
+    $('#tileInfos').append('<span class="blockTitle"><h3>'+terrain.fullName+'</h3></span>');
+    // Move Cost
+    $('#tileInfos').append('<span class="paramName">Coûts de déplacement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">+'+terrain.mc+'</span><br>');
+    // Cover
+    let coverIcon = '';
+    if (terrain.cover >= 2) {
+        coverIcon = '<i class="fas fa-shield-alt"></i>'
+    }
+    $('#tileInfos').append('<span class="paramName">Couverture</span><span class="paramIcon">'+coverIcon+'</span><span class="paramValue">'+terrain.cover+'</span><br>');
+    // scarp, flood, veg
+    let sIcon = '';
+    let vIcon = '';
+    let fIcon = '';
+    if (terrain.veg >= 2) {
+        vIcon = '<i class="fab fa-pagelines"></i>'
+    }
+    if (terrain.scarp >= 1) {
+        sIcon = '<i class="fas fa-mountain"></i>'
+    }
+    if (terrain.flood >= 1) {
+        fIcon = '<i class="fas fa-water"></i>'
+    }
+    $('#tileInfos').append('<span class="paramName">Végétation</span><span class="paramIcon">'+vIcon+'</span><span class="paramValue">'+terrain.veg+'</span><br>');
+    $('#tileInfos').append('<span class="paramName">Escarpement</span><span class="paramIcon">'+sIcon+'</span><span class="paramValue">'+terrain.scarp+'</span><br>');
+    $('#tileInfos').append('<span class="paramName">Innondation</span><span class="paramIcon">'+fIcon+'</span><span class="paramValue">'+terrain.flood+'</span><br>');
+    // Coordonnées
+    $('#tileInfos').append('<span class="paramName">Coordonnées</span><span class="paramIcon"><i class="fas fa-map-marker-alt"></i></span><span class="paramValue">'+tile.x+'&lrhar;'+tile.y+'</span><br>');
 };
 
 function showBatInfos(bat) {

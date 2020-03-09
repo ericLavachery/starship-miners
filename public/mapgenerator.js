@@ -9,10 +9,6 @@ function generateNewMap() {
     // function saveMap();
 };
 
-function saveMap() {
-    socket.emit('save-map', zone);
-};
-
 function createMap(size) {
     let newTile = {};
     let i = 0;
