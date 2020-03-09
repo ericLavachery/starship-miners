@@ -44,5 +44,6 @@ function showBatInfos(bat) {
         hourglass = 'half';
     }
     $('#unitInfos').append('<span class="blockTitle"><h3>'+batUnitType.name+'</h3></span>');
+    $('#unitInfos').append('<span class="paramName">Escouades</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.squadsLeft+'/'+batUnitType.squads+'</span><br>');
     $('#unitInfos').append('<span class="paramName">Points d\'action</span><span class="paramIcon"><i class="fas fa-hourglass-'+hourglass+'"></i></span><span id="infosMovesLeft" class="paramValue">'+bat.apLeft+'/'+batUnitType.ap+'</span><br>');
 };
