@@ -1,15 +1,17 @@
 function selectMode() {
     mode = 'select';
     document.title = pseudo + ' - Select';
+    $('#mode').removeClass('modeMove').addClass('modeSelect');
+    $('#mode').empty().append('Mode Sélection');
     cursorSwitch('.','grid-item','insp');
-    // $('#cadreMap').css("background-color", "#2f372a");
 };
 
 function moveMode() {
     mode = 'move';
     document.title = pseudo + ' - Move';
+    $('#mode').removeClass('modeSelect').addClass('modeMove');
+    $('#mode').empty().append('Mode Mouvement');
     cursorSwitch('.','grid-item','pointer');
-    // $('#cadreMap').css("background-color", "#1b3e8c");
 };
 
 function cursorSwitch(seltype,selvalue,kur) {

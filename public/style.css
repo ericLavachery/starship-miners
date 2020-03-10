@@ -22,6 +22,12 @@ body {
     border-radius: 6px;
     min-width: 280px;
 }
+.modeSelect {
+    color: #d5cabd;
+}
+.modeMove {
+    color: #f77a28;
+}
 .klik:hover {
     color: #f77a28;
     cursor: pointer;
@@ -242,6 +248,7 @@ td {
 #unitInfos {
     background-image: url(/static/img/plate-dork-small.jpg);
     background-position: 0% 25%;
+    min-height: 81px;
 }
 #nameInfos {
     background-image: url(/static/img/plate-dork-small.jpg);
@@ -250,6 +257,7 @@ td {
 #tileInfos {
     background-image: url(/static/img/plate-dork-small.jpg);
     background-position: 0% 40%;
+    min-height: 81px;
 }
 #tracksList {
     background-image: url(/static/img/plate-dork-small.jpg);

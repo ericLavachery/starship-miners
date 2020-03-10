@@ -42,6 +42,7 @@ function batSelect(bat) {
 };
 
 function batUnselect() {
+    deleteMoveInfos();
     // remove selection on old selected unit
     tileUnselect();
     selectedBat = {};
@@ -64,7 +65,7 @@ function tileSelect(bat) {
     let tile = zone[tileIndex];
     let unitTypesIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     terclass = 'ter'+tile.terrain+tile.seed;
-    if (unitTypes[unitTypesIndex].cat == 'buildings') {
+    if (unitTypes[unitTypesIndex].cat != 'units') {
         $('#'+tile.id).removeClass(terclass).addClass('terUnderBldSel');
     } else {
         $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');

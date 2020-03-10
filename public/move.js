@@ -47,7 +47,7 @@ function moveInfos(bat) {
     let myTileX = zone[bat.tileId].x;
     let myTileY = zone[bat.tileId].y;
     zone.forEach(function(tile) {
-        $("#"+tile.id).attr("title", "#"+tile.id);
+        $("#"+tile.id).attr("title", "");
         if (tile.x == myTileX+1 || tile.x == myTileX || tile.x == myTileX-1) {
             if (tile.y == myTileY+1 || tile.y == myTileY || tile.y == myTileY-1) {
                 if (tile.y == myTileY && tile.x == myTileX) {
@@ -69,6 +69,13 @@ function moveInfos(bat) {
     });
 };
 
+function deleteMoveInfos() {
+    // remove move infos
+    zone.forEach(function(tile) {
+        $("#"+tile.id).attr("title", "");
+    });
+};
+
 function moveSelectedBat(tileId,free) {
     let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
     // remove unit and redraw old tile
@@ -85,10 +92,6 @@ function moveSelectedBat(tileId,free) {
         let apLost = about(moveCost,15);
         selectedBat.apLeft = selectedBat.apLeft-apLost;
     }
-    // move bat
-    // if (!free) {
-    //     selectedBat.oldTileId = selectedBat.tileId;
-    // }
     selectedBat.tileId = tileId;
     tileSelect(selectedBat);
     showBataillon(selectedBat);
@@ -106,8 +109,14 @@ function batUnstack() {
         }
     });
     if (stack) {
-        if (selectedBat.apLeft < 1) {
-            selectedBat.apLeft = 1;
+        let unitIndex = unitTypes.findIndex((obj => obj.id == selectedBat.typeId));
+        let selectedUnitType = unitTypes[unitIndex];
+        if (selectedBat.salvoLeft < selectedUnitType.maxSalvo) {
+            // le bataillon a tiré ce tour ci : pénalité
+            selectedBat.apLeft = 0-selectedUnitType.ap;
+        } else {
+            // le bataillon n'a pas tiré ce tour ci : regagne ses AP
+            selectedBat.apLeft = selectedBat.oldapLeft;
         }
         moveSelectedBat(selectedBat.oldTileId,true);
     }

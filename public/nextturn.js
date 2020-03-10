@@ -11,11 +11,13 @@ function nextTurn() {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
             unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
+            bat.salvoLeft = unitTypes[unitIndex].maxSalvo;
             bat.apLeft = bat.apLeft+unitTypes[unitIndex].ap;
             if (bat.apLeft > unitTypes[unitIndex].ap) {
                 bat.apLeft = unitTypes[unitIndex].ap;
             }
             bat.oldTileId = bat.tileId;
+            bat.oldapLeft = bat.apLeft;
         }
     });
     saveBataillons();
@@ -29,9 +31,13 @@ function createBatList() {
     });
     batList = _.sortBy(_.sortBy(zoneBatList,'id'),'typeId');
     commandes();
+    // console.log(batList);
 };
 
 function nextBat(removeActiveBat) {
+    selectMode();
+    batUnstack();
+    deleteMoveInfos();
     if (Object.keys(selectedBat).length >= 1) {
         let batIndex = batList.findIndex((obj => obj.id == selectedBat.id));
         if (removeActiveBat) {
@@ -47,4 +53,5 @@ function nextBat(removeActiveBat) {
     } else {
         batUnselect();
     }
+    // console.log(batList);
 };
