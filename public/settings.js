@@ -37,6 +37,7 @@ let unitTypes = [];
 let unitDV = {}
 let bataillons = [];
 let batList = [];
+let alienOccupiedTiles = [];
 // ACTIONS
 let mode = "select";
 let selectedBat = {};

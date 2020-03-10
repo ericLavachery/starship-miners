@@ -12,13 +12,15 @@ function clickMove(tileId) {
     } else {
 
     }
-    // return to first tile if left on occupied tile
-    // save bataillons.json? or do it only each turn?
     if (isAdjacent(selectedBat.tileId,tileId)) {
         if (selectedBat.apLeft >= 1) {
             if (terrainAccess(selectedBat.id,tileId)) {
-                moveSelectedBat(tileId,false);
-                moveInfos(selectedBat);
+                if (!alienOccupiedTiles.includes(tileId)) {
+                    moveSelectedBat(tileId,false);
+                    moveInfos(selectedBat);
+                } else {
+                    // terrain occupé par un alien
+                }
             } else {
                 // terrain impraticable
             }
@@ -54,10 +56,15 @@ function moveInfos(bat) {
                     cursorSwitch('#',tile.id,'pointer');
                 } else {
                     if (selectedBat.apLeft >= 1 && terrainAccess(selectedBat.id,tile.id)) {
-                        cursorSwitch('#',tile.id,'move');
+                        if (!alienOccupiedTiles.includes(tile.id)) {
+                            cursorSwitch('#',tile.id,'move');
+                        } else {
+                            cursorSwitch('#',tile.id,'pointer');
+                        }
                     } else {
                         cursorSwitch('#',tile.id,'stop');
                     }
+                    // montre le moveCost
                     if (terrainAccess(selectedBat.id,tile.id)) {
                         moveCost = calcMoveCost(selectedBat.id,tile.id,isDiag(selectedBat.tileId,tile.id));
                         titleString = moveCost+" ap";

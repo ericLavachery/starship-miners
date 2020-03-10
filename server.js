@@ -58,6 +58,16 @@ fs.readFile('./data/mapFilters.json', 'utf8', function (err, data) {
     console.error( e );
   }
 });
+var alienUnits;
+fs.readFile('./data/alienUnits.json', 'utf8', function (err, data) {
+  if (err) throw err;
+  try {
+    alienUnits = JSON.parse(data);
+    // console.log(unitDV);
+  } catch (e) {
+    console.error( e );
+  }
+});
 var playerInfos = {};
 var bataillons = [];
 var savedMap = [];
@@ -121,6 +131,28 @@ io.sockets.on('connection', function (socket, pseudo) {
                     try {
                         bataillons = JSON.parse(data);
                         // console.log(bataillons);
+                        loadAliens();
+                    } catch (e) {
+                        console.error( e );
+                    }
+                });
+            } else {
+                loadAliens();
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    };
+
+    function loadAliens() {
+        const path = './data/players/'+socket.pseudo+'-aliens.json'
+        try {
+            if (fs.existsSync(path)) {
+                fs.readFile(path, 'utf8', function (err, data) {
+                    if (err) throw err;
+                    try {
+                        aliens = JSON.parse(data);
+                        // console.log(aliens);
                         sendAll();
                     } catch (e) {
                         console.error( e );
@@ -135,6 +167,10 @@ io.sockets.on('connection', function (socket, pseudo) {
     };
 
     function sendAll() {
+        console.log('loading alien unit types');
+        socket.emit('alienUnits-Load', alienUnits);
+        console.log('loading aliens');
+        socket.emit('aliens-Load', aliens);
         console.log('loading player infos');
         socket.emit('playerInfos-Load', playerInfos);
         console.log('loading player battalions');

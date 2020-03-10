@@ -21,8 +21,14 @@ function showMap(wmap) {
                 showBataillon(bat);
             }
         });
+        aliens.forEach(function(alien) {
+            if (alien.tileId === tile.id && alien.loc === "zone") {
+                showAlien(alien);
+            }
+        });
     });
     selectMode();
+    alienOccupiedTileList();
     // console.log(zone);
 };
 
@@ -35,6 +41,14 @@ function redrawTile(tileId,drawSelectedBat) {
             }
         }
     });
+};
+
+function showAlien(bat) {
+    let unitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
+    let batPic = alienUnits[unitIndex].pic;
+    let batCat = alienUnits[unitIndex].cat;
+    $('#b'+bat.tileId).empty();
+    $('#b'+bat.tileId).append('<img src="/static/img/units/'+batCat+'/'+batPic+'.svg">');
 };
 
 function showBataillon(bat) {

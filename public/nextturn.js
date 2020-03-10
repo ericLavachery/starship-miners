@@ -3,10 +3,11 @@ function nextTurn() {
     selectMode();
     batUnstack();
     batUnselect();
-    // reset oldTileId
-    // check appartition d'aliens
     // constructions et production : système d'ap également
-    // sauvegarder zoneInfos
+    // check appartition d'aliens
+    // mouvement des aliens
+    // attaque des aliens
+    // sauvegarder zoneInfos (n° du tour etc...)
     let unitTypesIndex;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -22,6 +23,17 @@ function nextTurn() {
     });
     saveBataillons();
     createBatList();
+    alienOccupiedTileList();
+};
+
+function alienOccupiedTileList() {
+    alienOccupiedTiles = [];
+    aliens.forEach(function(alien) {
+        if (alien.loc === "zone") {
+            alienOccupiedTiles.push(alien.tileId);
+        }
+    });
+    // console.log(alienOccupiedTiles);
 };
 
 function createBatList() {
