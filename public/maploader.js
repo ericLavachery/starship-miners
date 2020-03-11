@@ -48,7 +48,8 @@ function showAlien(bat) {
     let batPic = alienUnits[unitIndex].pic;
     let batCat = alienUnits[unitIndex].cat;
     $('#b'+bat.tileId).empty();
-    $('#b'+bat.tileId).append('<img src="/static/img/units/'+batCat+'/'+batPic+'.svg">');
+    // $('#b'+bat.tileId).append('<img src="/static/img/units/'+batCat+'/'+batPic+'.svg">');
+    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png"></div>');
 };
 
 function showBataillon(bat) {
@@ -56,7 +57,8 @@ function showBataillon(bat) {
     let batPic = unitTypes[unitIndex].pic;
     let batCat = unitTypes[unitIndex].cat;
     $('#b'+bat.tileId).empty();
-    $('#b'+bat.tileId).append('<img src="/static/img/units/'+batCat+'/'+batPic+'.svg">');
+    // $('#b'+bat.tileId).append('<img src="/static/img/units/'+batCat+'/'+batPic+'.svg">');
+    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png"></div>');
 };
 
 function hideBataillon(bat) {

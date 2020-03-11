@@ -2,7 +2,7 @@
 {
     "id": 0,
     "name": "Fusilliers",
-    "pic": "winchester-rifle",
+    "pic": "rebel1",
     "cat": "units",
     "squads": 6,
     "squadSize": 10,
@@ -41,7 +41,7 @@
 {
     "id": 1,
     "name": "Tank Léger",
-    "pic": "apc",
+    "pic": "putilov",
     "cat": "units",
     "squads": 6,
     "squadSize": 3,
@@ -80,7 +80,7 @@
 {
     "id": 2,
     "name": "Tourelle",
-    "pic": "sentry-gun",
+    "pic": "zorgger",
     "cat": "turrets",
     "squads": 6,
     "squadSize": 1,
@@ -110,7 +110,7 @@
 {
     "id": 3,
     "name": "Caserne",
-    "pic": "barracks",
+    "pic": "fort1",
     "cat": "buildings",
     "squads": 6,
     "squadSize": 1,

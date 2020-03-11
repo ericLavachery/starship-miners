@@ -66,7 +66,7 @@ function tileSelect(bat) {
     let unitTypesIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     terclass = 'ter'+tile.terrain+tile.seed;
     if (unitTypes[unitTypesIndex].cat != 'units') {
-        $('#'+tile.id).removeClass(terclass).addClass('terUnderBldSel');
+        $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');
     } else {
         $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');
     }
