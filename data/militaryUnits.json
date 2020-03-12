@@ -2,7 +2,7 @@
 {
     "id": 0,
     "name": "Fusilliers",
-    "pic": "rebel1",
+    "pic": "combi2",
     "cat": "units",
     "squads": 6,
     "squadSize": 10,
@@ -80,7 +80,7 @@
 {
     "id": 2,
     "name": "Tourelle",
-    "pic": "zorgger",
+    "pic": "rotakanon",
     "cat": "turrets",
     "squads": 6,
     "squadSize": 1,

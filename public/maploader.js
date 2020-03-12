@@ -9,13 +9,15 @@ function showMap(wmap) {
     let maxY = yOffset+numHTiles;
     let terclass = '';
     let tertitle = '';
+    let resHere = '';
     let visMap = _.filter(wmap, function(tile) {
         return (tile.x >= minX && tile.x <= maxX && tile.y >= minY && tile.y <= maxY);
     });
     let sortedVisMap = _.sortBy(_.sortBy(visMap,'y'),'x');
     sortedVisMap.forEach(function(tile) {
+        resHere = showRes(tile.id);
         terclass = 'ter'+tile.terrain+tile.seed;
-        $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')"><span class="bigIcon" id="b'+tile.id+'"></span><br></div>');
+        $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')"><span class="bigIcon" id="b'+tile.id+'">'+resHere+'</span><br></div>');
         bataillons.forEach(function(bat) {
             if (bat.tileId === tile.id && bat.loc === "zone") {
                 showBataillon(bat);
@@ -43,12 +45,19 @@ function redrawTile(tileId,drawSelectedBat) {
     });
 };
 
+function showRes(tileId) {
+    if (zone[tileId].rq >= 1) {
+        return '<div class="mapInfos"><i class="fas fa-atom"></i></div>';
+    } else {
+        return '';
+    }
+};
+
 function showAlien(bat) {
     let unitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
     let batPic = alienUnits[unitIndex].pic;
     let batCat = alienUnits[unitIndex].cat;
     $('#b'+bat.tileId).empty();
-    // $('#b'+bat.tileId).append('<img src="/static/img/units/'+batCat+'/'+batPic+'.svg">');
     $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png"></div>');
 };
 
@@ -57,8 +66,8 @@ function showBataillon(bat) {
     let batPic = unitTypes[unitIndex].pic;
     let batCat = unitTypes[unitIndex].cat;
     $('#b'+bat.tileId).empty();
-    // $('#b'+bat.tileId).append('<img src="/static/img/units/'+batCat+'/'+batPic+'.svg">');
-    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png"></div>');
+    let resHere = showRes(bat.tileId);
+    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png"></div><div class="batInfos"><i class="fas fa-shield-alt"></i></div>'+resHere);
 };
 
 function hideBataillon(bat) {
