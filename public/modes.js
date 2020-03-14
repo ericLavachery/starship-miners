@@ -31,6 +31,7 @@ function fireMode(weapon) {
         selectedWeap = selectedBatUnitType.weapon2;
     }
     fireInfos(selectedBat);
+    showBatInfos(selectedBat);
     console.log(selectedWeap);
 };
 
