@@ -2,10 +2,10 @@
 {
     "id": 0,
     "name": "Fusilliers",
-    "pic": "combi3",
+    "pic": "zap",
     "cat": "units",
     "squads": 6,
-    "squadSize": 10,
+    "squadSize": 12,
     "crew": 1,
     "hp": 3,
     "armor": 0,
@@ -14,10 +14,10 @@
     "ap": 12,
     "maxSalvo": 1,
     "weapon": {
-        "name": "Rifle",
+        "name": "Fusil d'assault",
         "cost": 4,
         "range": 1,
-        "rof": 10,
+        "rof": 12,
         "accuracy": 12,
         "power": 3,
         "aoe": "unit",
@@ -31,17 +31,18 @@
         "accuracy": 6,
         "power": 10,
         "aoe": "squad",
-        "ammo": [ "boom" ]
+        "ammo": [ "standard" ]
         },
     "moveCost": 3,
     "maxFlood": 3,
     "maxScarp": 3,
-    "maxVeg": 3
+    "maxVeg": 3,
+    "skills": []
 },
 {
     "id": 1,
-    "name": "Tank Léger",
-    "pic": "putilov",
+    "name": "Scout",
+    "pic": "scoutank1",
     "cat": "units",
     "squads": 6,
     "squadSize": 3,
@@ -53,17 +54,17 @@
     "ap": 12,
     "maxSalvo": 1,
     "weapon": {
-        "name": "Cannon",
+        "name": "Canon",
         "cost": 4,
-        "range": 1,
+        "range": 2,
         "rof": 1,
         "accuracy": 10,
         "power": 15,
         "aoe": "squad",
-        "ammo": [ "boom" ]
+        "ammo": [ "standard" ]
         },
     "weapon2": {
-        "name": "Machine Gun",
+        "name": "Mitrailleuse",
         "cost": 4,
         "range": 1,
         "rof": 6,
@@ -75,7 +76,8 @@
     "moveCost": 3,
     "maxFlood": 1,
     "maxScarp": 1,
-    "maxVeg": 2
+    "maxVeg": 2,
+    "skills": []
 },
 {
     "id": 2,
@@ -92,20 +94,21 @@
     "ap": 12,
     "maxSalvo": 4,
     "weapon": {
-        "name": "Cannon",
+        "name": "Canon",
         "cost": 3,
         "range": 4,
         "rof": 6,
         "accuracy": 10,
         "power": 30,
         "aoe": "squad",
-        "ammo": [ "boom" ]
+        "ammo": [ "standard" ]
         },
     "weapon2": {},
     "moveCost": 99,
     "maxFlood": -1,
     "maxScarp": -1,
-    "maxVeg": -1
+    "maxVeg": -1,
+    "skills": []
 },
 {
     "id": 3,
@@ -121,20 +124,12 @@
     "stealth": 0,
     "ap": 12,
     "maxSalvo": 4,
-    "weapon": {
-        "name": "Cannon",
-        "cost": 3,
-        "range": 4,
-        "rof": 6,
-        "accuracy": 10,
-        "power": 30,
-        "aoe": "squad",
-        "ammo": [ "boom" ]
-        },
+    "weapon": {},
     "weapon2": {},
     "moveCost": 99,
     "maxFlood": -1,
     "maxScarp": -1,
-    "maxVeg": -1
+    "maxVeg": -1,
+    "skills": []
 }
 ]
