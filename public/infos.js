@@ -64,7 +64,17 @@ function showBatInfos(bat) {
         if (batUnitType.weapon === selectedWeap) {
             balise = 'h1';
         }
-        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w1`)"><i class="ra ra-bullets"></i></button>&nbsp; '+batUnitType.weapon.name+'</'+balise+'></span>');
+        let w1message = 'Salves épuisées';
+        if (bat.salvoLeft >= 1 && bat.apLeft >= batUnitType.weapon.cost) {
+            // assez d'ap et de salve
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w1`)"><i class="ra ra-bullets"></i></button>&nbsp; '+batUnitType.weapon.name+'</'+balise+'></span>');
+        } else {
+            // tir impossible
+            if (bat.apLeft < batUnitType.weapon.cost) {
+                w1message = 'PA épuisés';
+            }
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; '+batUnitType.weapon.name+'</'+balise+'></span>');
+        }
         $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
         $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon.cost+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon.range+'</span><br>');
@@ -79,7 +89,17 @@ function showBatInfos(bat) {
         if (batUnitType.weapon2 === selectedWeap) {
             balise = 'h1';
         }
-        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w2`)"><i class="ra ra-bullets"></i></button>&nbsp; '+batUnitType.weapon2.name+'</'+balise+'></span>');
+        let w2message = 'Salves épuisées';
+        if (bat.salvoLeft >= 1 && bat.apLeft >= batUnitType.weapon2.cost) {
+            // assez d'ap et de salve
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w2`)"><i class="ra ra-bullets"></i></button>&nbsp; '+batUnitType.weapon2.name+'</'+balise+'></span>');
+        } else {
+            // tir impossible
+            if (bat.apLeft < batUnitType.weapon2.cost) {
+                w2message = 'PA épuisés';
+            }
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; '+batUnitType.weapon2.name+'</'+balise+'></span>');
+        }
         $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
         $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon2.cost+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon2.range+'</span><br>');
