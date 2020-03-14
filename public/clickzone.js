@@ -3,6 +3,8 @@ function clickTile(tileId) {
         clickSelect(tileId);
     } else if (mode == 'move') {
         clickMove(tileId);
+    } else {
+        clickFire(tileId);
     }
 };
 

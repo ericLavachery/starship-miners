@@ -7,11 +7,6 @@ function clickMove(tileId) {
             ownBatHere = true;
         }
     });
-    if (!ownBatHere) {
-
-    } else {
-
-    }
     if (isAdjacent(selectedBat.tileId,tileId)) {
         if (selectedBat.apLeft >= 1) {
             if (terrainAccess(selectedBat.id,tileId)) {

@@ -59,7 +59,7 @@ function showBatInfos(bat) {
     $('#unitInfos').append('<span class="paramName">Discrétion</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.stealth+'</span><br>');
     // WEAPONS
     if (batUnitType.weapon.rof >= 1) {
-        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Attaquer" class="boutonGris iconButtons"><i class="ra ra-bullets" onclick="fireMode(weapon)"></i></button>&nbsp; '+batUnitType.weapon.name+'</h4></span>');
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Attaquer" class="boutonGris iconButtons"><i class="ra ra-bullets" onclick="fireMode(`w1`)"></i></button>&nbsp; '+batUnitType.weapon.name+'</h4></span>');
         $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
         $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon.cost+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon.range+'</span><br>');
@@ -70,7 +70,7 @@ function showBatInfos(bat) {
         $('#unitInfos').append('<span class="paramName">Munitions</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.ammo+'</span><br>');
     }
     if (batUnitType.weapon2.rof >= 1) {
-        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Attaquer" class="boutonGris iconButtons"><i class="ra ra-bullets" onclick="fireMode(weapon2)"></i></button>&nbsp; '+batUnitType.weapon2.name+'</h4></span>');
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Attaquer" class="boutonGris iconButtons"><i class="ra ra-bullets" onclick="fireMode(`w2`)"></i></button>&nbsp; '+batUnitType.weapon2.name+'</h4></span>');
         $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
         $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon2.cost+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon2.range+'</span><br>');

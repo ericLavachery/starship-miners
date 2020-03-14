@@ -26,6 +26,9 @@ body {
     color: #d5cabd;
 }
 .modeMove {
+    color: #3c8bf5;
+}
+.modeFire {
     color: #f77a28;
 }
 .klik:hover {

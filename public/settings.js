@@ -41,3 +41,5 @@ let alienOccupiedTiles = [];
 // ACTIONS
 let mode = "select";
 let selectedBat = {};
+let selectedWeap = {};
+let targetBat = {};
