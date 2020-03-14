@@ -1,19 +1,26 @@
 function clickFire(tileId) {
     let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
     showTileInfos(tileId);
+    let alienBatHere = false;
+    aliens.forEach(function(alien) {
+        if (alien.tileId === tileId && alien.loc === "zone") {
+            alienBatHere = true;
+            targetBat = alien;
+        }
+    });
     if (isInRange(selectedBat.tileId,tileId)) {
-        console.log('OK');
+        if (alienBatHere) {
+            console.log(targetBat);
+            combat(selectedBat,targetBat);
+        } else if (selectedBat.tileId === tileId) {
+            // re-click sur l'unité active : unselect
+            selectMode();
+            batUnstack();
+            batUnselect();
+        }
     } else {
-        console.log('NOTOK');
+        targetBat = {};
     }
-    // let alienBatHere = false;
-    // aliens.forEach(function(alien) {
-    //     if (alien.tileId === tileId && alien.loc === "zone") {
-    //         alienBatHere = true;
-    //         targetBat = alien;
-    //     }
-    // });
-    // console.log(targetBat);
 };
 
 function isInRange(myTileIndex,thatTileIndex) {
@@ -43,4 +50,32 @@ function isInRange(myTileIndex,thatTileIndex) {
             return true;
         }
     }
+};
+
+function fireInfos(bat) {
+    cursorSwitch('.','grid-item','pointer');
+    let myTileX = zone[bat.tileId].x;
+    let myTileY = zone[bat.tileId].y;
+    zone.forEach(function(tile) {
+        $("#"+tile.id).attr("title", "");
+        if (alienHere(tile.id)) {
+            if (isInRange(selectedBat.tileId,tile.id)) {
+                cursorSwitch('#',tile.id,'fire');
+            }
+        }
+    });
+};
+
+function alienHere(tileId) {
+    let alienBatHere = false;
+    aliens.forEach(function(alien) {
+        if (alien.tileId === tileId && alien.loc === "zone") {
+            alienBatHere = true;
+        }
+    });
+    return alienBatHere;
+};
+
+function combat(myBat,thatBat) {
+
 };

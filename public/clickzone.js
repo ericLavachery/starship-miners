@@ -48,6 +48,7 @@ function batUnselect() {
     // remove selection on old selected unit
     tileUnselect();
     selectedBat = {};
+    $('#unitInfos').empty();
     commandes();
 };
 

@@ -30,6 +30,7 @@ function fireMode(weapon) {
     } else if (weapon == 'w2') {
         selectedWeap = selectedBatUnitType.weapon2;
     }
+    fireInfos(selectedBat);
     console.log(selectedWeap);
 };
 
@@ -51,6 +52,9 @@ function cursorSwitch(seltype,selvalue,kur) {
         } else if (kur == 'copy') {
             defkur = 'copy';
             kur = 'writing';
+        } else if (kur == 'fire') {
+            defkur = 'crosshair';
+            kur = 'thor';
         }
         $(seltype+selvalue).css('cursor','url(/static/img/'+kur+'.cur),'+defkur);
     }
