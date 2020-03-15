@@ -77,6 +77,11 @@ function showBatInfos(bat) {
         }
         $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
         $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon.cost+'</span><br>');
+        let riposte = 'Oui';
+        if (batUnitType.weapon.cost > 6) {
+            riposte = 'Non';
+        }
+        $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+riposte+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon.range+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Cadence de tir</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon.rof+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon.accuracy+'</span><br>');

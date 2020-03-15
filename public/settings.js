@@ -43,3 +43,4 @@ let mode = "select";
 let selectedBat = {};
 let selectedWeap = {};
 let targetBat = {};
+let targetWeap = {};
