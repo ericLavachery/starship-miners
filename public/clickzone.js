@@ -40,6 +40,15 @@ function batSelect(bat) {
     // draw new selected unit
     tileSelect(bat);
     selectedBat = bat;
+    let batIndex;
+    if (selectedBat.team == 'player') {
+        batIndex = bataillons.findIndex((obj => obj.id == selectedBat.typeId));
+    } else if (selectedBat.team == 'aliens') {
+        batIndex = aliens.findIndex((obj => obj.id == selectedBat.typeId));
+    } else if (selectedBat.team == 'locals') {
+        batIndex = locals.findIndex((obj => obj.id == selectedBat.typeId));
+    }
+    selectedBatType = unitTypes[batIndex];
     commandes();
 };
 
@@ -48,6 +57,7 @@ function batUnselect() {
     // remove selection on old selected unit
     tileUnselect();
     selectedBat = {};
+    selectedBatType = {};
     $('#unitInfos').empty();
     commandes();
 };

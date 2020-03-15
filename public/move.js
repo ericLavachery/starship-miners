@@ -98,8 +98,8 @@ function moveSelectedBat(tileId,free) {
     tileSelect(selectedBat);
     showBataillon(selectedBat);
     showBatInfos(selectedBat);
-    // update bataillons
-    bataillons[batIndex] = selectedBat;
+    // update arrays 
+    selectedBatArrayUpdate();
 };
 
 function batUnstack() {

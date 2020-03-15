@@ -8,6 +8,15 @@ function clickFire(tileId) {
             targetBat = alien;
         }
     });
+    let targetBatIndex;
+    if (targetBat.team == 'player') {
+        targetBatIndex = bataillons.findIndex((obj => obj.id == targetBat.typeId));
+    } else if (targetBat.team == 'aliens') {
+        targetBatIndex = aliens.findIndex((obj => obj.id == targetBat.typeId));
+    } else if (targetBat.team == 'locals') {
+        targetBatIndex = locals.findIndex((obj => obj.id == targetBat.typeId));
+    }
+    targetBatType = unitTypes[targetBatIndex];
     if (isInRange(selectedBat.tileId,tileId)) {
         if (alienBatHere) {
             console.log(targetBat);
@@ -118,6 +127,57 @@ function combat(myBat,myWeap,thatBat) {
     } else {
         attack();
     }
+};
+
+function attack() {
+    // AOE Shots
+    let aoeShots = 1;
+    if (selectedWeap.aoe == "bat") {
+        aoeShots = targetBatType.squadSize*targetBat.squadsLeft;
+    } else if (selectedWeap.aoe == "squad") {
+        aoeShots = targetBatType.squadSize;
+    }
+    // rof*squadsLeft loop
+    let shots = selectedWeap.rof*selectedBat.squadsLeft;
+    i = 1;
+    while (i <= shots) {
+        if (aoeShots >= 2) {
+            blastA(aoeShots);
+        } else {
+            shotA();
+        }
+        if (i > 300) {break;}
+        i++
+    }
+    // remove ap & salvo
+    selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
+    selectedBat.salvoLeft = selectedBat.salvoLeft-1;
+    // update arrays
+    selectedBatArrayUpdate();
+    targetBatArrayUpdate();
+};
+
+function shotA() {
+    let cover = getCover(targetBat);
+    if (isHit(selectedBatType.accuracy,targetBatType.size,targetBatType.stealth,cover)) {
+
+    }
+};
+
+function blastA(aoeShots) {
+
+};
+
+function isHit(accuracy,size,stealth,cover) {
+    return true;
+};
+
+function getCover(bat) {
+    let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
+    let tile = zone[tileIndex];
+    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
+    let terrain = terrainTypes[terrainIndex];
+    return terrain.cover;
 };
 
 function calcSpeed(bat,weap,distance,attacking) {
