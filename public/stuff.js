@@ -34,20 +34,26 @@ function about(number,aleat) {
 
 function selectedBatArrayUpdate() {
     if (selectedBat.team == 'player') {
+        let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
         bataillons[batIndex] = selectedBat;
     } else if (selectedBat.team == 'aliens') {
+        let batIndex = aliens.findIndex((obj => obj.id == selectedBat.id));
         aliens[batIndex] = selectedBat;
     } else if (selectedBat.team == 'locals') {
+        let batIndex = locals.findIndex((obj => obj.id == selectedBat.id));
         locals[batIndex] = selectedBat;
     }
 };
 
 function targetBatArrayUpdate() {
     if (targetBat.team == 'player') {
+        let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
         bataillons[batIndex] = targetBat;
     } else if (targetBat.team == 'aliens') {
+        let batIndex = aliens.findIndex((obj => obj.id == selectedBat.id));
         aliens[batIndex] = targetBat;
     } else if (targetBat.team == 'locals') {
+        let batIndex = locals.findIndex((obj => obj.id == selectedBat.id));
         locals[batIndex] = targetBat;
     }
 };

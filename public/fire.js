@@ -8,15 +8,17 @@ function clickFire(tileId) {
             targetBat = alien;
         }
     });
-    let targetBatIndex;
+    let targetBatUnitIndex;
     if (targetBat.team == 'player') {
-        targetBatIndex = bataillons.findIndex((obj => obj.id == targetBat.typeId));
+        targetBatUnitIndex = unitTypes.findIndex((obj => obj.id == targetBat.typeId));
+        targetBatType = unitTypes[targetBatUnitIndex];
     } else if (targetBat.team == 'aliens') {
-        targetBatIndex = aliens.findIndex((obj => obj.id == targetBat.typeId));
+        targetBatUnitIndex = alienUnits.findIndex((obj => obj.id == targetBat.typeId));
+        targetBatType = alienUnits[targetBatUnitIndex];
     } else if (targetBat.team == 'locals') {
-        targetBatIndex = locals.findIndex((obj => obj.id == targetBat.typeId));
+        targetBatUnitIndex = localUnits.findIndex((obj => obj.id == targetBat.typeId));
+        targetBatType = localUnits[targetBatUnitIndex];
     }
-    targetBatType = unitTypes[targetBatIndex];
     if (isInRange(selectedBat.tileId,tileId)) {
         if (alienBatHere) {
             console.log(targetBat);
@@ -139,16 +141,24 @@ function attack() {
     }
     // rof*squadsLeft loop
     let shots = selectedWeap.rof*selectedBat.squadsLeft;
+    let totalDamage = 0;
     i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
-            blastA(aoeShots);
+            totalDamage = totalDamage+blastA(aoeShots);
         } else {
-            shotA();
+            totalDamage = totalDamage+shotA();
         }
         if (i > 300) {break;}
         i++
     }
+    console.log('Total Damage : '+totalDamage);
+    // remove squads?
+    let squadHP = targetBatType.squadSize*targetBatType.hp;
+    console.log('Squad HP : '+squadHP);
+    let squadsOut = Math.round(totalDamage/squadHP);
+    targetBat.squadsLeft = targetBat.squadsLeft-squadsOut;
+    console.log('Squads Out : '+squadsOut);
     // remove ap & salvo
     selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
     selectedBat.salvoLeft = selectedBat.salvoLeft-1;
@@ -157,19 +167,52 @@ function attack() {
     targetBatArrayUpdate();
 };
 
-function shotA() {
-    let cover = getCover(targetBat);
-    if (isHit(selectedBatType.accuracy,targetBatType.size,targetBatType.stealth,cover)) {
+function defense() {
 
+};
+
+function shotA() {
+    // returns damage
+    let damage = 0;
+    let cover = getCover(targetBat);
+    if (isHit(selectedWeap.accuracy,selectedWeap.aoe,targetBatType.size,targetBatType.stealth,cover)) {
+        damage = calcDamage(selectedWeap.power,targetBatType.armor);
+        if (damage > targetBatType.hp) {
+            damage = targetBatType.hp;
+        }
     }
+    return damage;
 };
 
 function blastA(aoeShots) {
+    // returns damage
 
 };
 
-function isHit(accuracy,size,stealth,cover) {
-    return true;
+function isHit(accuracy,aoe,size,stealth,cover) {
+    let prec = accuracy-cover;
+    if (aoe == 'unit') {
+        prec = Math.round(prec-(stealth/2));
+    }
+    let dice = rand.rand(1,100);
+    let hitChance = Math.round(Math.sqrt(size)*prec);
+    if (dice > hitChance) {
+        return false;
+    } else {
+        return true;
+    }
+};
+
+function calcDamage(power,armor) {
+    // powerDice is max 4x power
+    let powerDiceMin = Math.round(power/2.5);
+    let powerDiceMax = Math.round(power*1.6);
+    let powerDice = rand.rand(powerDiceMin,powerDiceMax);
+    if (powerDice == powerDiceMax) {
+        let bonusMax = Math.round(power*2.4);
+        powerDice = powerDice+rand.rand(0,bonusMax);
+    }
+    return powerDice-armor;
 };
 
 function getCover(bat) {

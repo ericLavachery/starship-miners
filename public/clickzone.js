@@ -40,15 +40,17 @@ function batSelect(bat) {
     // draw new selected unit
     tileSelect(bat);
     selectedBat = bat;
-    let batIndex;
+    let batTypeIndex;
     if (selectedBat.team == 'player') {
-        batIndex = bataillons.findIndex((obj => obj.id == selectedBat.typeId));
+        batTypeIndex = bataillons.findIndex((obj => obj.id == selectedBat.typeId));
+        selectedBatType = unitTypes[batTypeIndex];
     } else if (selectedBat.team == 'aliens') {
-        batIndex = aliens.findIndex((obj => obj.id == selectedBat.typeId));
+        batTypeIndex = alienUnits.findIndex((obj => obj.id == selectedBat.typeId));
+        selectedBatType = alienUnits[batTypeIndex];
     } else if (selectedBat.team == 'locals') {
-        batIndex = locals.findIndex((obj => obj.id == selectedBat.typeId));
+        batTypeIndex = localUnits.findIndex((obj => obj.id == selectedBat.typeId));
+        selectedBatType = localUnits[batTypeIndex];
     }
-    selectedBatType = unitTypes[batIndex];
     commandes();
 };
 
