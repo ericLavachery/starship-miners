@@ -5,7 +5,7 @@ function clickFire(tileId) {
     aliens.forEach(function(alien) {
         if (alien.tileId === tileId && alien.loc === "zone") {
             alienBatHere = true;
-            targetBat = alien;
+            targetBat = JSON.parse(JSON.stringify(alien));
         }
     });
     let targetBatUnitIndex;
@@ -23,6 +23,8 @@ function clickFire(tileId) {
         if (alienBatHere) {
             console.log(targetBat);
             combat(selectedBat,selectedWeap,targetBat);
+            selectMode();
+            showBatInfos(selectedBat);
         } else if (selectedBat.tileId === tileId) {
             // re-click sur l'unité active : unselect
             selectMode();
@@ -32,6 +34,57 @@ function clickFire(tileId) {
     } else {
         targetBat = {};
     }
+};
+
+function weaponSelect(weapon) {
+    if (weapon == 'w1') {
+        selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
+    } else if (weapon == 'w2') {
+        selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon2));
+    }
+    // bonus veterancy
+    let accuracy = Math.round(selectedWeap.accuracy*(selectedBat.vet+2)/2);
+    selectedWeap.accuracy = accuracy;
+    // bonus ammo
+};
+
+function weaponAdj(weapon,bat) {
+    // bonus veterancy
+    let thisWeapon = {};
+    let accuracy = Math.round(weapon.accuracy*(bat.vet+2)/2);
+    thisWeapon.accuracy = accuracy;
+    // bonus ammo
+    thisWeapon.name = weapon.name;
+    thisWeapon.cost = weapon.cost;
+    thisWeapon.range = weapon.range;
+    thisWeapon.rof = weapon.rof;
+    thisWeapon.accuracy = weapon.accuracy;
+    thisWeapon.power = weapon.power;
+    thisWeapon.perfoHard = 0;
+    thisWeapon.perfoSoft = 0;
+    thisWeapon.aoe = weapon.aoe;
+    if (bat.ammo == 'perfo') {
+        thisWeapon.perfoHard = thisWeapon.perfoHard+2;
+        thisWeapon.power = Math.round(thisWeapon.power*0.8);
+    }
+    if (bat.ammo == 'tungsten') {
+        thisWeapon.perfoHard = thisWeapon.perfoHard+4;
+    }
+    if (bat.ammo == 'uranium') {
+        thisWeapon.perfoHard = thisWeapon.perfoHard+6;
+    }
+    if (bat.ammo == 'teflon') {
+        thisWeapon.perfoSoft = thisWeapon.perfoSoft+4;
+        thisWeapon.power = Math.round(thisWeapon.power*0.8);
+    }
+    if (bat.ammo == 'titanium') {
+        thisWeapon.accuracy = Math.round(thisWeapon.accuracy*1.5);
+    }
+    if (bat.ammo == 'hollow') {
+        thisWeapon.perfoHard = thisWeapon.perfoHard-4;
+        thisWeapon.power = Math.round(thisWeapon.power*1.6);
+    }
+    return thisWeapon;
 };
 
 function isInRange(myTileIndex,thatTileIndex) {

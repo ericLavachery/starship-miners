@@ -14,7 +14,7 @@ function clickSelect(tileId) {
     bataillons.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
             showBatInfos(bat);
-            if (selectedBat == bat) {
+            if (selectedBat.id == bat.id && selectedBatType.moveCost < 99) {
                 moveMode();
                 moveInfos(selectedBat);
             } else {
@@ -39,17 +39,17 @@ function batSelect(bat) {
     tileUnselect();
     // draw new selected unit
     tileSelect(bat);
-    selectedBat = bat;
+    selectedBat = JSON.parse(JSON.stringify(bat));
     let batTypeIndex;
     if (selectedBat.team == 'player') {
         batTypeIndex = bataillons.findIndex((obj => obj.id == selectedBat.typeId));
-        selectedBatType = unitTypes[batTypeIndex];
+        selectedBatType = JSON.parse(JSON.stringify(unitTypes[batTypeIndex]));
     } else if (selectedBat.team == 'aliens') {
         batTypeIndex = alienUnits.findIndex((obj => obj.id == selectedBat.typeId));
-        selectedBatType = alienUnits[batTypeIndex];
+        selectedBatType = JSON.parse(JSON.stringify(alienUnits[batTypeIndex]));
     } else if (selectedBat.team == 'locals') {
         batTypeIndex = localUnits.findIndex((obj => obj.id == selectedBat.typeId));
-        selectedBatType = localUnits[batTypeIndex];
+        selectedBatType = JSON.parse(JSON.stringify(localUnits[batTypeIndex]));
     }
     commandes();
 };

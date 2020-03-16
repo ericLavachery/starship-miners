@@ -22,14 +22,7 @@ function fireMode(weapon) {
     $('#mode').removeClass('modeSelect').removeClass('moveMode').addClass('modeFire');
     $('#mode').empty().append('Mode Attaque');
     cursorSwitch('.','grid-item','pointer');
-    let unitTypesIndex = unitTypes.findIndex((obj => obj.id == selectedBat.typeId));
-    let selectedBatUnitType = unitTypes[unitTypesIndex];
-    // console.log(selectedBatUnitType);
-    if (weapon == 'w1') {
-        selectedWeap = selectedBatUnitType.weapon;
-    } else if (weapon == 'w2') {
-        selectedWeap = selectedBatUnitType.weapon2;
-    }
+    weaponSelect(weapon);
     fireInfos(selectedBat);
     showBatInfos(selectedBat);
     console.log(selectedWeap);

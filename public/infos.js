@@ -59,80 +59,75 @@ function showBatInfos(bat) {
     $('#unitInfos').append('<span class="paramName">Discrétion</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.stealth+'</span><br>');
     // WEAPONS
     let balise;
+    let thisWeapon = {};
     if (batUnitType.weapon.rof >= 1) {
+        thisWeapon = weaponAdj(batUnitType.weapon,bat);
         balise = 'h4';
-        if (batUnitType.weapon === selectedWeap) {
+        if (thisWeapon === selectedWeap) {
             balise = 'h1';
         }
         let w1message = 'Salves épuisées';
-        if (bat.salvoLeft >= 1 && bat.apLeft >= batUnitType.weapon.cost) {
+        if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost) {
             // assez d'ap et de salve
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w1`)"><i class="ra ra-bullets"></i></button>&nbsp; '+batUnitType.weapon.name+'</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w1`)"><i class="ra ra-bullets"></i></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
         } else {
             // tir impossible
-            if (bat.apLeft < batUnitType.weapon.cost) {
+            if (bat.apLeft < thisWeapon.cost) {
                 w1message = 'PA épuisés';
             }
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; '+batUnitType.weapon.name+'</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
         }
         $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon.cost+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.cost+'</span><br>');
         let riposte = 'Oui';
-        if (batUnitType.weapon.cost > 6) {
+        if (thisWeapon.cost > 6) {
             riposte = 'Non';
         }
         $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+riposte+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon.range+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Cadence de tir</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon.rof+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon.accuracy+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon.power+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon.aoe+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.range+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Cadence de tir</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.rof+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.accuracy+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.power+'</span><br>');
+        if (thisWeapon.perfoHard != 0) {
+            $('#unitInfos').append('<span class="paramName">Perforation</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.perfoHard+'</span><br>');
+        } else if (thisWeapon.perfoSoft != 0) {
+            $('#unitInfos').append('<span class="paramName">Perforation</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.perfoSoft+'-</span><br>');
+        }
+        $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.aoe+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Munitions</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.ammo+'</span><br>');
     }
     if (batUnitType.weapon2.rof >= 1) {
+        thisWeapon = weaponAdj(batUnitType.weapon2,bat);
         balise = 'h4';
-        if (batUnitType.weapon2 === selectedWeap) {
+        if (thisWeapon === selectedWeap) {
             balise = 'h1';
         }
         let w2message = 'Salves épuisées';
-        if (bat.salvoLeft >= 1 && bat.apLeft >= batUnitType.weapon2.cost) {
+        if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost) {
             // assez d'ap et de salve
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w2`)"><i class="ra ra-bullets"></i></button>&nbsp; '+batUnitType.weapon2.name+'</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w2`)"><i class="ra ra-bullets"></i></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
         } else {
             // tir impossible
-            if (bat.apLeft < batUnitType.weapon2.cost) {
+            if (bat.apLeft < thisWeapon.cost) {
                 w2message = 'PA épuisés';
             }
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; '+batUnitType.weapon2.name+'</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
         }
         $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon2.cost+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon2.range+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Cadence de tir</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon2.rof+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon2.accuracy+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon2.power+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.weapon2.aoe+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.cost+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.range+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Cadence de tir</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.rof+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.accuracy+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.power+'</span><br>');
+        if (thisWeapon.perfoHard != 0) {
+            $('#unitInfos').append('<span class="paramName">Perforation</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.perfoHard+'</span><br>');
+        } else if (thisWeapon.perfoSoft != 0) {
+            $('#unitInfos').append('<span class="paramName">Perforation</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.perfoSoft+'-</span><br>');
+        }
+        $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.aoe+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Munitions</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.ammo+'</span><br>');
     }
 
-    // "weapon": {
-    //     "range": 1,
-    //     "rof": 10,
-    //     "accuracy": 12,
-    //     "power": 3,
-    //     "aoe": "unit",
-    //     "ammo": [ "standard", "hollow", "perfo", "tungsten", "uranium" ]
-    //     },
-    // "weapon2": {
-    //     "name": "RPG",
-    //     "cost": 4,
-    //     "range": 1,
-    //     "rof": 1,
-    //     "accuracy": 6,
-    //     "power": 10,
-    //     "aoe": "squad",
-    //     "ammo": [ "standard" ]
-    //     },
     // "moveCost": 3,
     // "maxFlood": 3,
     // "maxScarp": 3,
