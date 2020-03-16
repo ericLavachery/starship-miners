@@ -152,13 +152,21 @@ function attack() {
         if (i > 300) {break;}
         i++
     }
-    console.log('Total Damage : '+totalDamage);
-    // remove squads?
-    let squadHP = targetBatType.squadSize*targetBatType.hp;
+    console.log('Damage : '+totalDamage);
+    // add damage! remove squads? remove bat?
+    console.log('Previous Damage : '+targetBat.damage);
+    totalDamage = totalDamage+targetBat.damage;
+    let squadHP = (targetBatType.squadSize*targetBatType.hp);
     console.log('Squad HP : '+squadHP);
-    let squadsOut = Math.round(totalDamage/squadHP);
+    let squadsOut = Math.floor(totalDamage/squadHP);
     targetBat.squadsLeft = targetBat.squadsLeft-squadsOut;
     console.log('Squads Out : '+squadsOut);
+    targetBat.damage = totalDamage-(squadsOut*squadHP);
+    console.log('Damage Left : '+targetBat.damage);
+    if (targetBat.squadsLeft <= 0) {
+        console.log('DEATH');
+        batDeath(targetBat);
+    }
     // remove ap & salvo
     selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
     selectedBat.salvoLeft = selectedBat.salvoLeft-1;
@@ -241,4 +249,8 @@ function calcSpeed(bat,weap,distance,attacking) {
         }
     }
     return speed;
+};
+
+function batDeath(bat) {
+
 };

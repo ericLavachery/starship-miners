@@ -211,6 +211,16 @@ io.sockets.on('connection', function (socket, pseudo) {
         });
     });
 
+    // Save Aliens
+    socket.on('save-aliens', function(aliens) {
+        let json = JSON.stringify(aliens);
+        let filename = socket.pseudo+'-aliens.json'
+        fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
+            if (err) throw err;
+            console.log('Aliens saved to '+filename);
+        });
+    });
+
     // Save playerInfos
     socket.on('save-playerInfos', function(playerInfos) {
         let json = JSON.stringify(playerInfos);

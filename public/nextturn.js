@@ -22,6 +22,7 @@ function nextTurn() {
         }
     });
     saveBataillons();
+    saveAliens();
     createBatList();
     alienOccupiedTileList();
 };

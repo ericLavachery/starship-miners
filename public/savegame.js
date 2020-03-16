@@ -1,6 +1,9 @@
 function saveBataillons() {
     socket.emit('save-bataillons', bataillons);
 };
+function saveAliens() {
+    socket.emit('save-aliens', aliens);
+};
 function savePlayerInfos() {
     socket.emit('save-playerInfos', playerInfos);
 };
