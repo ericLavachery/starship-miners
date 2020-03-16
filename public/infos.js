@@ -88,10 +88,8 @@ function showBatInfos(bat) {
         $('#unitInfos').append('<span class="paramName">Cadence de tir</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.rof+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.accuracy+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.power+'</span><br>');
-        if (thisWeapon.perfoHard != 0) {
-            $('#unitInfos').append('<span class="paramName">Perforation</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.perfoHard+'</span><br>');
-        } else if (thisWeapon.perfoSoft != 0) {
-            $('#unitInfos').append('<span class="paramName">Perforation</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.perfoSoft+'-</span><br>');
+        if (thisWeapon.armors != 1) {
+            $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
         }
         $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.aoe+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Munitions</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.ammo+'</span><br>');
@@ -119,10 +117,8 @@ function showBatInfos(bat) {
         $('#unitInfos').append('<span class="paramName">Cadence de tir</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.rof+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.accuracy+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.power+'</span><br>');
-        if (thisWeapon.perfoHard != 0) {
-            $('#unitInfos').append('<span class="paramName">Perforation</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.perfoHard+'</span><br>');
-        } else if (thisWeapon.perfoSoft != 0) {
-            $('#unitInfos').append('<span class="paramName">Perforation</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.perfoSoft+'-</span><br>');
+        if (thisWeapon.armors != 1) {
+            $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
         }
         $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.aoe+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Munitions</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.ammo+'</span><br>');

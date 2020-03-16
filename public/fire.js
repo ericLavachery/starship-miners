@@ -42,47 +42,44 @@ function weaponSelect(weapon) {
     } else if (weapon == 'w2') {
         selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon2));
     }
-    // bonus veterancy
-    let accuracy = Math.round(selectedWeap.accuracy*(selectedBat.vet+2)/2);
-    selectedWeap.accuracy = accuracy;
-    // bonus ammo
+    // bonus veterancy & ammo
+    selectedWeap = weaponAdj(selectedWeap,selectedBat);
 };
 
 function weaponAdj(weapon,bat) {
     // bonus veterancy
     let thisWeapon = {};
-    let accuracy = Math.round(weapon.accuracy*(bat.vet+2)/2);
+    let accuracy = Math.round(weapon.accuracy*(bat.vet+vetBonus)/vetBonus);
     thisWeapon.accuracy = accuracy;
     // bonus ammo
     thisWeapon.name = weapon.name;
     thisWeapon.cost = weapon.cost;
     thisWeapon.range = weapon.range;
     thisWeapon.rof = weapon.rof;
-    thisWeapon.accuracy = weapon.accuracy;
     thisWeapon.power = weapon.power;
-    thisWeapon.perfoHard = 0;
-    thisWeapon.perfoSoft = 0;
+    thisWeapon.armors = 1;
     thisWeapon.aoe = weapon.aoe;
     if (bat.ammo == 'perfo') {
-        thisWeapon.perfoHard = thisWeapon.perfoHard+2;
-        thisWeapon.power = Math.round(thisWeapon.power*0.8);
+        thisWeapon.power = thisWeapon.power-2;
+        thisWeapon.armors = 0.5;
     }
     if (bat.ammo == 'tungsten') {
-        thisWeapon.perfoHard = thisWeapon.perfoHard+4;
+        thisWeapon.armors = 0.5;
     }
     if (bat.ammo == 'uranium') {
-        thisWeapon.perfoHard = thisWeapon.perfoHard+6;
+        thisWeapon.armors = 0.5;
+        thisWeapon.power = thisWeapon.power+1;
     }
     if (bat.ammo == 'teflon') {
-        thisWeapon.perfoSoft = thisWeapon.perfoSoft+4;
-        thisWeapon.power = Math.round(thisWeapon.power*0.8);
+        thisWeapon.armors = 0.75;
     }
     if (bat.ammo == 'titanium') {
+        thisWeapon.power = thisWeapon.power-1;
         thisWeapon.accuracy = Math.round(thisWeapon.accuracy*1.5);
     }
     if (bat.ammo == 'hollow') {
-        thisWeapon.perfoHard = thisWeapon.perfoHard-4;
-        thisWeapon.power = Math.round(thisWeapon.power*1.6);
+        thisWeapon.power = thisWeapon.power+3;
+        thisWeapon.armors = 2;
     }
     return thisWeapon;
 };
@@ -293,7 +290,7 @@ function calcSpeed(bat,weap,distance,attacking) {
             crange = 12;
         }
     }
-    let speed = crange*weap.cost/bat.maxSalvo;
+    let speed = Math.round(crange*weap.cost/bat.maxSalvo);
     if (distance <= 1) {
         if (attacking) {
             speed = speed-bat.stealth-bat.stealth;
