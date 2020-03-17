@@ -25,7 +25,7 @@ function fireMode(weapon) {
     weaponSelect(weapon);
     fireInfos(selectedBat);
     showBatInfos(selectedBat);
-    console.log(selectedWeap);
+    // console.log(selectedWeap);
 };
 
 function cursorSwitch(seltype,selvalue,kur) {

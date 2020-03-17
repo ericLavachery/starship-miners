@@ -47,13 +47,13 @@ function selectedBatArrayUpdate() {
 
 function targetBatArrayUpdate() {
     if (targetBat.team == 'player') {
-        let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
+        let batIndex = bataillons.findIndex((obj => obj.id == targetBat.id));
         bataillons[batIndex] = targetBat;
     } else if (targetBat.team == 'aliens') {
-        let batIndex = aliens.findIndex((obj => obj.id == selectedBat.id));
+        let batIndex = aliens.findIndex((obj => obj.id == targetBat.id));
         aliens[batIndex] = targetBat;
     } else if (targetBat.team == 'locals') {
-        let batIndex = locals.findIndex((obj => obj.id == selectedBat.id));
+        let batIndex = locals.findIndex((obj => obj.id == targetBat.id));
         locals[batIndex] = targetBat;
     }
 };

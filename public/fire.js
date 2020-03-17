@@ -21,7 +21,7 @@ function clickFire(tileId) {
     }
     if (isInRange(selectedBat.tileId,tileId)) {
         if (alienBatHere) {
-            console.log(targetBat);
+            // console.log(targetBat);
             combat(selectedBat,selectedWeap,targetBat);
             selectMode();
             showBatInfos(selectedBat);
@@ -43,10 +43,10 @@ function weaponSelect(weapon) {
         selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon2));
     }
     // bonus veterancy & ammo
-    selectedWeap = weaponAdj(selectedWeap,selectedBat);
+    selectedWeap = weaponAdj(selectedWeap,selectedBat,weapon);
 };
 
-function weaponAdj(weapon,bat) {
+function weaponAdj(weapon,bat,wn) {
     // bonus veterancy
     let thisWeapon = {};
     let accuracy = Math.round(weapon.accuracy*(bat.vet+vetBonus)/vetBonus);
@@ -59,25 +59,29 @@ function weaponAdj(weapon,bat) {
     thisWeapon.power = weapon.power;
     thisWeapon.armors = 1;
     thisWeapon.aoe = weapon.aoe;
-    if (bat.ammo == 'perfo') {
+    let ammo = bat.ammo;
+    if (wn == 'w2') {
+        ammo = bat.ammo2;
+    }
+    if (ammo == 'perfo') {
         thisWeapon.power = thisWeapon.power-2;
         thisWeapon.armors = 0.5;
     }
-    if (bat.ammo == 'tungsten') {
+    if (ammo == 'tungsten') {
         thisWeapon.armors = 0.5;
     }
-    if (bat.ammo == 'uranium') {
+    if (ammo == 'uranium') {
         thisWeapon.armors = 0.5;
         thisWeapon.power = thisWeapon.power+1;
     }
-    if (bat.ammo == 'teflon') {
+    if (ammo == 'teflon') {
         thisWeapon.armors = 0.75;
     }
-    if (bat.ammo == 'titanium') {
+    if (ammo == 'titanium') {
         thisWeapon.power = thisWeapon.power-1;
         thisWeapon.accuracy = Math.round(thisWeapon.accuracy*1.5);
     }
-    if (bat.ammo == 'hollow') {
+    if (ammo == 'hollow') {
         thisWeapon.power = thisWeapon.power+3;
         thisWeapon.armors = 2;
     }
@@ -215,15 +219,14 @@ function attack() {
     targetBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+targetBat.damage);
     if (targetBat.squadsLeft <= 0) {
-        console.log('DEATH');
         batDeath(targetBat);
+    } else {
+        targetBatArrayUpdate();
     }
     // remove ap & salvo
     selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
     selectedBat.salvoLeft = selectedBat.salvoLeft-1;
-    // update arrays
     selectedBatArrayUpdate();
-    targetBatArrayUpdate();
 };
 
 function defense() {
@@ -303,13 +306,35 @@ function calcSpeed(bat,weap,distance,attacking) {
 };
 
 function batDeath(bat) {
-
+    console.log('DEATH');
+    deathSound();
+    if (bat.team == 'player') {
+        let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
+        bataillons.splice(batIndex,1);
+    } else if (bat.team == 'aliens') {
+        let batIndex = aliens.findIndex((obj => obj.id == bat.id));
+        aliens.splice(batIndex,1);
+    } else if (bat.team == 'locals') {
+        let batIndex = locals.findIndex((obj => obj.id == bat.id));
+        locals.splice(batIndex,1);
+    }
+    $('#b'+bat.tileId).empty();
+    let resHere = showRes(bat.tileId);
+    $('#b'+bat.tileId).append(resHere);
 };
 
 function shotSound() {
     // Juste un test : devrait aller chercher des sons différents selon l'arme :)
     var sound = new Howl({
         src: ['/static/sounds/PM_FSSF2_WEAPONS_D1_SHOT_323.mp3']
+    });
+    sound.play();
+};
+
+function deathSound() {
+    // Juste un test : devrait aller chercher des sons différents selon l'unité :)
+    var sound = new Howl({
+        src: ['/static/sounds/zapsplat_explosion_fireball_43738.mp3']
     });
     sound.play();
 };

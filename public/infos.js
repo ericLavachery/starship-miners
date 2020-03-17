@@ -61,7 +61,7 @@ function showBatInfos(bat) {
     let balise;
     let thisWeapon = {};
     if (batUnitType.weapon.rof >= 1) {
-        thisWeapon = weaponAdj(batUnitType.weapon,bat);
+        thisWeapon = weaponAdj(batUnitType.weapon,bat,'w1');
         balise = 'h4';
         if (thisWeapon === selectedWeap) {
             balise = 'h1';
@@ -95,7 +95,7 @@ function showBatInfos(bat) {
         $('#unitInfos').append('<span class="paramName">Munitions</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.ammo+'</span><br>');
     }
     if (batUnitType.weapon2.rof >= 1) {
-        thisWeapon = weaponAdj(batUnitType.weapon2,bat);
+        thisWeapon = weaponAdj(batUnitType.weapon2,bat,'w2');
         balise = 'h4';
         if (thisWeapon === selectedWeap) {
             balise = 'h1';
@@ -121,7 +121,7 @@ function showBatInfos(bat) {
             $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
         }
         $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.aoe+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Munitions</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.ammo+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Munitions</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.ammo2+'</span><br>');
     }
 
     // "moveCost": 3,
