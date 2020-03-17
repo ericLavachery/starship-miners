@@ -182,6 +182,7 @@ function combat(myBat,myWeap,thatBat) {
 };
 
 function attack() {
+    shotSound();
     // AOE Shots
     let aoeShots = 1;
     if (selectedWeap.aoe == "bat") {
@@ -303,4 +304,12 @@ function calcSpeed(bat,weap,distance,attacking) {
 
 function batDeath(bat) {
 
+};
+
+function shotSound() {
+    // Juste un test : devrait aller chercher des sons différents selon l'arme :)
+    var sound = new Howl({
+        src: ['/static/sounds/PM_FSSF2_WEAPONS_D1_SHOT_323.mp3']
+    });
+    sound.play();
 };
