@@ -18,9 +18,10 @@
         "cost": 4,
         "range": 0,
         "rof": 12,
-        "accuracy": 8,
+        "accuracy": 18,
         "power": 10,
         "aoe": "unit",
+        "sound": "SQUISH11",
         "ammo": [ "none" ]
         },
     "weapon2": {},
@@ -48,9 +49,10 @@
         "cost": 4,
         "range": 0,
         "rof": 3,
-        "accuracy": 4,
+        "accuracy": 14,
         "power": 30,
         "aoe": "unit",
+        "sound": "SQUISH11",
         "ammo": [ "none" ]
         },
     "weapon2": {},

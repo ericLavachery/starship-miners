@@ -46,6 +46,12 @@ function weaponSelect(weapon) {
     selectedWeap = weaponAdj(selectedWeap,selectedBat,weapon);
 };
 
+function weaponSelectRiposte() {
+    targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
+    // bonus veterancy & ammo
+    targetWeap = weaponAdj(targetWeap,targetBat,'w1');
+};
+
 function weaponAdj(weapon,bat,wn) {
     // bonus veterancy
     let thisWeapon = {};
@@ -163,13 +169,16 @@ function alienHere(tileId) {
 };
 
 function combat(myBat,myWeap,thatBat) {
+    weaponSelectRiposte();
+    // console.log(targetWeap);
     let distance = calcDistance(myBat.tileId,thatBat.tileId);
+    console.log('distance '+distance);
     // riposte?
     let riposte = false;
     let initiative = true;
-    if (distance <= 3 && targetWeap.cost <= 6) {
+    if (distance <= 3 && targetWeap.cost <= 6 && targetWeap.range >= distance) {
         riposte = true;
-        if (calcSpeed(thatBat,thatBat.weapon,distance,false) > calcSpeed(myBat,myWeap,distance,true)) {
+        if (calcSpeed(thatBat,targetWeap,distance,false) > calcSpeed(myBat,myWeap,distance,true)) {
             initiative = false;
         }
     }
@@ -187,6 +196,7 @@ function combat(myBat,myWeap,thatBat) {
 };
 
 function attack() {
+    console.log(selectedWeap);
     shotSound(selectedWeap);
     // AOE Shots
     let aoeShots = 1;
@@ -197,15 +207,13 @@ function attack() {
     }
     // rof*squadsLeft loop
     let shots = selectedWeap.rof*selectedBat.squadsLeft;
-    console.log(shots);
-    console.log(aoeShots);
     let totalDamage = 0;
     i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
-            totalDamage = totalDamage+blastA(aoeShots);
+            totalDamage = totalDamage+blast(aoeShots,selectedWeap,targetBat,targetBatType);
         } else {
-            totalDamage = totalDamage+shotA();
+            totalDamage = totalDamage+shot(selectedWeap,targetBat,targetBatType);
         }
         if (i > 300) {break;}
         i++
@@ -235,36 +243,84 @@ function attack() {
 };
 
 function defense() {
-
+    console.log(targetWeap);
+    shotSound(targetWeap);
+    // AOE Shots
+    let aoeShots = 1;
+    if (targetWeap.aoe == "bat") {
+        aoeShots = selectedBatType.squadSize*selectedBat.squadsLeft;
+    } else if (targetWeap.aoe == "squad") {
+        aoeShots = selectedBatType.squadSize;
+    }
+    // rof*squadsLeft loop
+    let shots = targetWeap.rof*targetBat.squadsLeft;
+    console.log(shots);
+    console.log(aoeShots);
+    let totalDamage = 0;
+    i = 1;
+    while (i <= shots) {
+        if (aoeShots >= 2) {
+            totalDamage = totalDamage+blast(aoeShots,targetWeap,selectedBat,selectedBatType);
+        } else {
+            totalDamage = totalDamage+shot(targetWeap,selectedBat,selectedBatType);
+        }
+        if (i > 300) {break;}
+        i++
+    }
+    console.log('Damage : '+totalDamage);
+    // add damage! remove squads? remove bat?
+    console.log('Previous Damage : '+selectedBat.damage);
+    totalDamage = totalDamage+selectedBat.damage;
+    let squadHP = (selectedBatType.squadSize*selectedBatType.hp);
+    console.log('Squad HP : '+squadHP);
+    let squadsOut = Math.floor(totalDamage/squadHP);
+    selectedBat.squadsLeft = selectedBat.squadsLeft-squadsOut;
+    console.log('Squads Out : '+squadsOut);
+    selectedBat.damage = totalDamage-(squadsOut*squadHP);
+    console.log('Damage Left : '+selectedBat.damage);
+    if (selectedBat.squadsLeft <= 0) {
+        setTimeout(function (){
+            batDeath(selectedBat);
+        }, 2000); // How long do you want the delay to be (in milliseconds)?
+    } else {
+        selectedBatArrayUpdate();
+    }
+    // remove ap & salvo
+    targetBat.apLeft = targetBat.apLeft-targetWeap.cost;
+    targetBat.salvoLeft = targetBat.salvoLeft-1;
+    targetBatArrayUpdate();
 };
 
-function shotA() {
+function shot(weapon,bat,batType) {
     // returns damage
     let damage = 0;
-    let cover = getCover(targetBat);
-    if (isHit(selectedWeap.accuracy,selectedWeap.aoe,targetBatType.size,targetBatType.stealth,cover)) {
-        damage = calcDamage(selectedWeap.power,targetBatType.armor);
-        if (damage > targetBatType.hp) {
-            damage = targetBatType.hp;
+    let cover = getCover(bat);
+    if (isHit(weapon.accuracy,weapon.aoe,batType.size,batType.stealth,cover)) {
+        damage = calcDamage(weapon.power,batType.armor);
+        if (damage > batType.hp) {
+            damage = batType.hp;
         }
     }
     return damage;
 };
 
-function blastA(aoeShots) {
+function blast(aoeShots,weapon,bat,batType) {
     // returns damage
+    // console.log('aoeShots = '+aoeShots);
     let damage = 0;
-    let power = selectedWeap.power;
-    let oldPower = selectedWeap.power;
-    let cover = getCover(targetBat);
+    let newDamage = 0;
+    let power = weapon.power;
+    let oldPower = weapon.power;
+    let cover = getCover(bat);
     ii = 1;
     while (ii <= aoeShots) {
-        console.log(power);
-        if (isHit(selectedWeap.accuracy,selectedWeap.aoe,targetBatType.size,targetBatType.stealth,cover)) {
-            damage = calcDamage(power,targetBatType.armor);
-            if (damage > targetBatType.hp) {
-                damage = targetBatType.hp;
+        // console.log('power'+power);
+        if (isHit(weapon.accuracy,weapon.aoe,batType.size,batType.stealth,cover)) {
+            newDamage = calcDamage(power,batType.armor);
+            if (newDamage > batType.hp) {
+                newDamage = batType.hp;
             }
+            damage = damage+newDamage;
         }
         if (ii > 100) {break;}
         oldPower = power;
@@ -281,12 +337,13 @@ function blastA(aoeShots) {
 };
 
 function isHit(accuracy,aoe,size,stealth,cover) {
-    let prec = accuracy-cover;
+    let prec = Math.round(accuracy-(cover*coverFactor));
     if (aoe == 'unit') {
         prec = Math.round(prec-(stealth/2));
     }
     let dice = rand.rand(1,100);
     let hitChance = Math.round(Math.sqrt(size)*prec);
+    console.log('hitChance '+hitChance);
     if (dice > hitChance) {
         return false;
     } else {

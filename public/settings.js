@@ -48,3 +48,4 @@ let targetBatType = {};
 let targetWeap = {};
 let vetBonus = 3; // plus grand = moins de bonus (3 = x2.3) (2 = x3)
 let nextExplosion = 1;
+let coverFactor = 1.5; // multiplie la cover du terrain (enlevé à accuracy)
