@@ -63,7 +63,7 @@ function showBatInfos(bat) {
     if (batUnitType.weapon.rof >= 1) {
         thisWeapon = weaponAdj(batUnitType.weapon,bat,'w1');
         balise = 'h4';
-        if (thisWeapon === selectedWeap) {
+        if (thisWeapon.name === selectedWeap.name) {
             balise = 'h1';
         }
         let w1message = 'Salves épuisées';
@@ -97,7 +97,7 @@ function showBatInfos(bat) {
     if (batUnitType.weapon2.rof >= 1) {
         thisWeapon = weaponAdj(batUnitType.weapon2,bat,'w2');
         balise = 'h4';
-        if (thisWeapon === selectedWeap) {
+        if (thisWeapon.name === selectedWeap.name) {
             balise = 'h1';
         }
         let w2message = 'Salves épuisées';

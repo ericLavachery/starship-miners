@@ -59,6 +59,7 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.power = weapon.power;
     thisWeapon.armors = 1;
     thisWeapon.aoe = weapon.aoe;
+    thisWeapon.sound = weapon.sound;
     let ammo = bat.ammo;
     if (wn == 'w2') {
         ammo = bat.ammo2;
@@ -186,7 +187,7 @@ function combat(myBat,myWeap,thatBat) {
 };
 
 function attack() {
-    shotSound();
+    shotSound(selectedWeap);
     // AOE Shots
     let aoeShots = 1;
     if (selectedWeap.aoe == "bat") {
@@ -219,7 +220,9 @@ function attack() {
     targetBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+targetBat.damage);
     if (targetBat.squadsLeft <= 0) {
-        batDeath(targetBat);
+        setTimeout(function (){
+            batDeath(targetBat);
+        }, 2000); // How long do you want the delay to be (in milliseconds)?
     } else {
         targetBatArrayUpdate();
     }
@@ -320,13 +323,21 @@ function batDeath(bat) {
     }
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
-    $('#b'+bat.tileId).append(resHere);
+    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/explosion'+nextExplosion+'.gif"></div>'+resHere);
+    nextExplosion = nextExplosion+1;
+    if (nextExplosion > 3) {
+        nextExplosion = 1;
+    }
+    setTimeout(function (){
+        $('#b'+bat.tileId).empty();
+        $('#b'+bat.tileId).append(resHere);
+    }, 2000); // How long do you want the delay to be (in milliseconds)?
 };
 
-function shotSound() {
+function shotSound(weapon) {
     // Juste un test : devrait aller chercher des sons différents selon l'arme :)
     var sound = new Howl({
-        src: ['/static/sounds/PM_FSSF2_WEAPONS_D1_SHOT_323.mp3']
+        src: ['/static/sounds/'+weapon.sound+'.mp3']
     });
     sound.play();
 };
