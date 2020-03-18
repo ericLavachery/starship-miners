@@ -197,6 +197,8 @@ function attack() {
     }
     // rof*squadsLeft loop
     let shots = selectedWeap.rof*selectedBat.squadsLeft;
+    console.log(shots);
+    console.log(aoeShots);
     let totalDamage = 0;
     i = 1;
     while (i <= shots) {
@@ -251,7 +253,31 @@ function shotA() {
 
 function blastA(aoeShots) {
     // returns damage
-
+    let damage = 0;
+    let power = selectedWeap.power;
+    let oldPower = selectedWeap.power;
+    let cover = getCover(targetBat);
+    ii = 1;
+    while (ii <= aoeShots) {
+        console.log(power);
+        if (isHit(selectedWeap.accuracy,selectedWeap.aoe,targetBatType.size,targetBatType.stealth,cover)) {
+            damage = calcDamage(power,targetBatType.armor);
+            if (damage > targetBatType.hp) {
+                damage = targetBatType.hp;
+            }
+        }
+        if (ii > 100) {break;}
+        oldPower = power;
+        power = Math.round(power*0.9);
+        if (power >= oldPower) {
+            power = power-1;
+        }
+        if (power < 3) {
+            break;
+        }
+        ii++
+    }
+    return damage;
 };
 
 function isHit(accuracy,aoe,size,stealth,cover) {
