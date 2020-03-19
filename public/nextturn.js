@@ -1,13 +1,17 @@
 function nextTurn() {
+    // stopMe = true;
+    blockMe(true);
     $('#unitInfos').empty();
     selectMode();
     batUnstack();
     batUnselect();
-    // constructions et production : système d'ap également
-    // check appartition d'aliens
+
     // mouvement des aliens
     // attaque des aliens
+    // constructions et production : système d'ap également
+    // check appartition d'aliens
     // sauvegarder zoneInfos (n° du tour etc...)
+
     let unitTypesIndex;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -25,6 +29,10 @@ function nextTurn() {
     saveAliens();
     createBatList();
     alienOccupiedTileList();
+    setTimeout(function (){
+        // stopMe = false;
+        blockMe(false);
+    }, 3000); // How long do you want the delay to be (in milliseconds)?
 };
 
 function alienOccupiedTileList() {

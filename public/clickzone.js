@@ -62,6 +62,10 @@ function batUnselect() {
     tileUnselect();
     selectedBat = {};
     selectedBatType = {};
+    selectedWeap = {};
+    targetBat = {};
+    targetBatType = {};
+    targetWeap = {};
     $('#unitInfos').empty();
     commandes();
 };

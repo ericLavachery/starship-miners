@@ -36,138 +36,6 @@ function clickFire(tileId) {
     }
 };
 
-function weaponSelect(weapon) {
-    if (weapon == 'w1') {
-        selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
-    } else if (weapon == 'w2') {
-        selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon2));
-    }
-    // bonus veterancy & ammo
-    selectedWeap = weaponAdj(selectedWeap,selectedBat,weapon);
-};
-
-function weaponSelectRiposte() {
-    targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
-    // bonus veterancy & ammo
-    targetWeap = weaponAdj(targetWeap,targetBat,'w1');
-};
-
-function weaponAdj(weapon,bat,wn) {
-    // bonus veterancy
-    let thisWeapon = {};
-    let accuracy = Math.round(weapon.accuracy*(bat.vet+vetBonus)/vetBonus);
-    thisWeapon.accuracy = accuracy;
-    // bonus ammo
-    thisWeapon.name = weapon.name;
-    thisWeapon.cost = weapon.cost;
-    thisWeapon.range = weapon.range;
-    thisWeapon.rof = weapon.rof;
-    thisWeapon.power = weapon.power;
-    thisWeapon.armors = 1;
-    thisWeapon.aoe = weapon.aoe;
-    thisWeapon.sound = weapon.sound;
-    let ammo = bat.ammo;
-    if (wn == 'w2') {
-        ammo = bat.ammo2;
-    }
-    if (ammo == 'perfo') {
-        thisWeapon.power = thisWeapon.power-2;
-        thisWeapon.armors = 0.5;
-    }
-    if (ammo == 'tungsten') {
-        thisWeapon.armors = 0.5;
-    }
-    if (ammo == 'uranium') {
-        thisWeapon.armors = 0.5;
-        thisWeapon.power = thisWeapon.power+1;
-    }
-    if (ammo == 'teflon') {
-        thisWeapon.armors = 0.75;
-    }
-    if (ammo == 'titanium') {
-        thisWeapon.power = thisWeapon.power-1;
-        thisWeapon.accuracy = Math.round(thisWeapon.accuracy*1.5);
-    }
-    if (ammo == 'hollow') {
-        thisWeapon.power = thisWeapon.power+3;
-        thisWeapon.armors = 2;
-    }
-    return thisWeapon;
-};
-
-function isInRange(myTileIndex,thatTileIndex) {
-    let myTileX = zone[myTileIndex].x;
-    let myTileY = zone[myTileIndex].y;
-    let thatTileX = zone[thatTileIndex].x;
-    let thatTileY = zone[thatTileIndex].y;
-    let distanceX = Math.abs(myTileX-thatTileX);
-    let distanceY = Math.abs(myTileY-thatTileY);
-    let distance;
-    if (distanceX > distanceY) {
-        distance = distanceX;
-    } else {
-        distance = distanceY;
-    }
-    let range = selectedWeap.range;
-    if (range === 0) {
-        if (myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
-            return true;
-        } else {
-            return false;
-        }
-    } else {
-        if (distance > range) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-};
-
-function calcDistance(myTileIndex,thatTileIndex) {
-    let myTileX = zone[myTileIndex].x;
-    let myTileY = zone[myTileIndex].y;
-    let thatTileX = zone[thatTileIndex].x;
-    let thatTileY = zone[thatTileIndex].y;
-    let distanceX = Math.abs(myTileX-thatTileX);
-    let distanceY = Math.abs(myTileY-thatTileY);
-    let distance;
-    if (distanceX > distanceY) {
-        distance = distanceX;
-    } else {
-        distance = distanceY;
-    }
-    if (myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
-        return 0;
-    } else {
-        return distance;
-    }
-};
-
-function fireInfos(bat) {
-    cursorSwitch('.','grid-item','pointer');
-    let myTileX = zone[bat.tileId].x;
-    let myTileY = zone[bat.tileId].y;
-    zone.forEach(function(tile) {
-        $("#"+tile.id).attr("title", "");
-        if (alienHere(tile.id)) {
-            if (isInRange(selectedBat.tileId,tile.id)) {
-                cursorSwitch('#',tile.id,'fire');
-            }
-        }
-    });
-};
-
-function alienHere(tileId) {
-    let alienBatHere = false;
-    aliens.forEach(function(alien) {
-        if (alien.tileId === tileId && alien.loc === "zone") {
-            alienBatHere = true;
-        }
-    });
-    return alienBatHere;
-};
-
 function combat(myBat,myWeap,thatBat) {
     weaponSelectRiposte();
     // console.log(targetWeap);
@@ -184,22 +52,30 @@ function combat(myBat,myWeap,thatBat) {
     }
     if (riposte) {
         if (initiative) {
-            stopMe = true;
+            // stopMe = true;
+            blockMe(true);
             attack();
             setTimeout(function (){
                 defense();
-                stopMe = false;
+                // stopMe = false;
+                blockMe(false);
             }, 2500); // How long do you want the delay to be (in milliseconds)?
         } else {
-            stopMe = true;
+            // stopMe = true;
+            blockMe(true);
             defense();
             setTimeout(function (){
                 attack();
-                stopMe = false;
+                // stopMe = false;
+                blockMe(false);
             }, 2500); // How long do you want the delay to be (in milliseconds)?
         }
     } else {
+        blockMe(true);
         attack();
+        setTimeout(function (){
+            blockMe(false);
+        }, 2000); // How long do you want the delay to be (in milliseconds)?
     }
 };
 
@@ -399,6 +275,79 @@ function calcSpeed(bat,weap,distance,attacking) {
     return speed;
 };
 
+function isInRange(myTileIndex,thatTileIndex) {
+    let myTileX = zone[myTileIndex].x;
+    let myTileY = zone[myTileIndex].y;
+    let thatTileX = zone[thatTileIndex].x;
+    let thatTileY = zone[thatTileIndex].y;
+    let distanceX = Math.abs(myTileX-thatTileX);
+    let distanceY = Math.abs(myTileY-thatTileY);
+    let distance;
+    if (distanceX > distanceY) {
+        distance = distanceX;
+    } else {
+        distance = distanceY;
+    }
+    let range = selectedWeap.range;
+    if (range === 0) {
+        if (myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        if (distance > range) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+};
+
+function calcDistance(myTileIndex,thatTileIndex) {
+    let myTileX = zone[myTileIndex].x;
+    let myTileY = zone[myTileIndex].y;
+    let thatTileX = zone[thatTileIndex].x;
+    let thatTileY = zone[thatTileIndex].y;
+    let distanceX = Math.abs(myTileX-thatTileX);
+    let distanceY = Math.abs(myTileY-thatTileY);
+    let distance;
+    if (distanceX > distanceY) {
+        distance = distanceX;
+    } else {
+        distance = distanceY;
+    }
+    if (myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
+        return 0;
+    } else {
+        return distance;
+    }
+};
+
+function fireInfos(bat) {
+    cursorSwitch('.','grid-item','pointer');
+    let myTileX = zone[bat.tileId].x;
+    let myTileY = zone[bat.tileId].y;
+    zone.forEach(function(tile) {
+        $("#"+tile.id).attr("title", "");
+        if (alienHere(tile.id)) {
+            if (isInRange(selectedBat.tileId,tile.id)) {
+                cursorSwitch('#',tile.id,'fire');
+            }
+        }
+    });
+};
+
+function alienHere(tileId) {
+    let alienBatHere = false;
+    aliens.forEach(function(alien) {
+        if (alien.tileId === tileId && alien.loc === "zone") {
+            alienBatHere = true;
+        }
+    });
+    return alienBatHere;
+};
+
 function batDeath(bat) {
     console.log('DEATH');
     deathSound();
@@ -439,4 +388,63 @@ function deathSound() {
         src: ['/static/sounds/zapsplat_explosion_fireball_43738.mp3']
     });
     sound.play();
+};
+
+function weaponSelect(weapon) {
+    if (weapon == 'w1') {
+        selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
+    } else if (weapon == 'w2') {
+        selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon2));
+    }
+    // bonus veterancy & ammo
+    selectedWeap = weaponAdj(selectedWeap,selectedBat,weapon);
+};
+
+function weaponSelectRiposte() {
+    targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
+    // bonus veterancy & ammo
+    targetWeap = weaponAdj(targetWeap,targetBat,'w1');
+};
+
+function weaponAdj(weapon,bat,wn) {
+    // bonus veterancy
+    let thisWeapon = {};
+    let accuracy = Math.round(weapon.accuracy*(bat.vet+vetBonus)/vetBonus);
+    thisWeapon.accuracy = accuracy;
+    // bonus ammo
+    thisWeapon.name = weapon.name;
+    thisWeapon.cost = weapon.cost;
+    thisWeapon.range = weapon.range;
+    thisWeapon.rof = weapon.rof;
+    thisWeapon.power = weapon.power;
+    thisWeapon.armors = 1;
+    thisWeapon.aoe = weapon.aoe;
+    thisWeapon.sound = weapon.sound;
+    let ammo = bat.ammo;
+    if (wn == 'w2') {
+        ammo = bat.ammo2;
+    }
+    if (ammo == 'perfo') {
+        thisWeapon.power = thisWeapon.power-2;
+        thisWeapon.armors = 0.5;
+    }
+    if (ammo == 'tungsten') {
+        thisWeapon.armors = 0.5;
+    }
+    if (ammo == 'uranium') {
+        thisWeapon.armors = 0.5;
+        thisWeapon.power = thisWeapon.power+1;
+    }
+    if (ammo == 'teflon') {
+        thisWeapon.armors = 0.75;
+    }
+    if (ammo == 'titanium') {
+        thisWeapon.power = thisWeapon.power-1;
+        thisWeapon.accuracy = Math.round(thisWeapon.accuracy*1.5);
+    }
+    if (ammo == 'hollow') {
+        thisWeapon.power = thisWeapon.power+3;
+        thisWeapon.armors = 2;
+    }
+    return thisWeapon;
 };

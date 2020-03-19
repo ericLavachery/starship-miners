@@ -57,3 +57,13 @@ function targetBatArrayUpdate() {
         locals[batIndex] = targetBat;
     }
 };
+
+function blockMe(stop) {
+    if (stop) {
+        stopMe = true;
+        $('body').css('background-image', 'url("/static/img/rayures-m.jpg")');
+    } else {
+        stopMe = false;
+        $('body').css('background-image', 'url("/static/img/rayures.jpg")');
+    }
+};
