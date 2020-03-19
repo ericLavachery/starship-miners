@@ -184,11 +184,19 @@ function combat(myBat,myWeap,thatBat) {
     }
     if (riposte) {
         if (initiative) {
+            stopMe = true;
             attack();
-            defense();
+            setTimeout(function (){
+                defense();
+                stopMe = false;
+            }, 2500); // How long do you want the delay to be (in milliseconds)?
         } else {
+            stopMe = true;
             defense();
-            attack();
+            setTimeout(function (){
+                attack();
+                stopMe = false;
+            }, 2500); // How long do you want the delay to be (in milliseconds)?
         }
     } else {
         attack();
@@ -414,7 +422,7 @@ function batDeath(bat) {
     setTimeout(function (){
         $('#b'+bat.tileId).empty();
         $('#b'+bat.tileId).append(resHere);
-    }, 2000); // How long do you want the delay to be (in milliseconds)?
+    }, 1500); // How long do you want the delay to be (in milliseconds)?
 };
 
 function shotSound(weapon) {

@@ -17,15 +17,17 @@ function moveMode() {
 };
 
 function fireMode(weapon) {
-    mode = 'fire';
-    document.title = pseudo + ' - Attaque';
-    $('#mode').removeClass('modeSelect').removeClass('moveMode').addClass('modeFire');
-    $('#mode').empty().append('Mode Attaque');
-    cursorSwitch('.','grid-item','pointer');
-    weaponSelect(weapon);
-    fireInfos(selectedBat);
-    showBatInfos(selectedBat);
-    // console.log(selectedWeap);
+    if (stopMe === false) {
+        mode = 'fire';
+        document.title = pseudo + ' - Attaque';
+        $('#mode').removeClass('modeSelect').removeClass('moveMode').addClass('modeFire');
+        $('#mode').empty().append('Mode Attaque');
+        cursorSwitch('.','grid-item','pointer');
+        weaponSelect(weapon);
+        fireInfos(selectedBat);
+        showBatInfos(selectedBat);
+        // console.log(selectedWeap);
+    }
 };
 
 function cursorSwitch(seltype,selvalue,kur) {
