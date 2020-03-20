@@ -37,16 +37,24 @@ function clickFire(tileId) {
 };
 
 function combat(myBat,myWeap,thatBat) {
+    attAlive = true;
+    defAlive = true;
+    $('#report').empty('');
+    $('#report').append('<span class="report or">'+myBat.type+'</span> <span class="report">vs</span> <span class="report or">'+thatBat.type+'</span><br>');
     weaponSelectRiposte();
     // console.log(targetWeap);
     let distance = calcDistance(myBat.tileId,thatBat.tileId);
-    console.log('distance '+distance);
+    // console.log('distance '+distance);
+    $('#report').append('<span class="report">distance '+distance+'</span><br>');
     // riposte?
     let riposte = false;
     let initiative = true;
     if (distance <= 3 && targetWeap.cost <= 6 && targetWeap.range >= distance) {
         riposte = true;
-        if (calcSpeed(thatBat,targetWeap,distance,false) > calcSpeed(myBat,myWeap,distance,true)) {
+        let aspeed = calcSpeed(selectedBat,selectedWeap,selectedBatType,distance,true);
+        let dspeed = calcSpeed(targetBat,targetWeap,targetBatType,distance,false);
+        $('#report').append('<span class="report">initiative '+aspeed+' vs '+dspeed+'</span><br>');
+        if (dspeed < aspeed) {
             initiative = false;
         }
     }
@@ -56,7 +64,9 @@ function combat(myBat,myWeap,thatBat) {
             blockMe(true);
             attack();
             setTimeout(function (){
-                defense();
+                if (defAlive) {
+                    defense();
+                }
                 // stopMe = false;
                 blockMe(false);
             }, 2500); // How long do you want the delay to be (in milliseconds)?
@@ -65,7 +75,9 @@ function combat(myBat,myWeap,thatBat) {
             blockMe(true);
             defense();
             setTimeout(function (){
-                attack();
+                if (attAlive) {
+                    attack();
+                }
                 // stopMe = false;
                 blockMe(false);
             }, 2500); // How long do you want the delay to be (in milliseconds)?
@@ -82,6 +94,7 @@ function combat(myBat,myWeap,thatBat) {
 function attack() {
     console.log(selectedWeap);
     shotSound(selectedWeap);
+    $('#report').append('<span class="report or">'+selectedBat.type+' ('+selectedWeap.name+')</span><br>');
     // AOE Shots
     let aoeShots = 1;
     if (selectedWeap.aoe == "bat") {
@@ -92,6 +105,7 @@ function attack() {
     // rof*squadsLeft loop
     let shots = selectedWeap.rof*selectedBat.squadsLeft;
     let totalDamage = 0;
+    toHit = 0;
     i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
@@ -103,6 +117,7 @@ function attack() {
         i++
     }
     console.log('Damage : '+totalDamage);
+    $('#report').append('<span class="report">('+totalDamage+')<br></span>');
     // add damage! remove squads? remove bat?
     console.log('Previous Damage : '+targetBat.damage);
     totalDamage = totalDamage+targetBat.damage;
@@ -111,11 +126,16 @@ function attack() {
     let squadsOut = Math.floor(totalDamage/squadHP);
     targetBat.squadsLeft = targetBat.squadsLeft-squadsOut;
     console.log('Squads Out : '+squadsOut);
+    if (squadsOut >= 1) {
+        $('#report').append('<span class="report cy">Escouades: -'+squadsOut+'<br></span>');
+    }
     targetBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+targetBat.damage);
     if (targetBat.squadsLeft <= 0) {
+        defAlive = false;
         setTimeout(function (){
             batDeath(targetBat);
+            $('#report').append('<span class="report cy">Bataillon détruit<br></span>');
         }, 2000); // How long do you want the delay to be (in milliseconds)?
     } else {
         targetBatArrayUpdate();
@@ -129,6 +149,7 @@ function attack() {
 function defense() {
     console.log(targetWeap);
     shotSound(targetWeap);
+    $('#report').append('<span class="report or">'+targetBat.type+' ('+targetWeap.name+')</span><br>');
     // AOE Shots
     let aoeShots = 1;
     if (targetWeap.aoe == "bat") {
@@ -141,6 +162,7 @@ function defense() {
     console.log(shots);
     console.log(aoeShots);
     let totalDamage = 0;
+    toHit = 0;
     i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
@@ -152,6 +174,7 @@ function defense() {
         i++
     }
     console.log('Damage : '+totalDamage);
+    $('#report').append('<span class="report">('+totalDamage+')<br></span>');
     // add damage! remove squads? remove bat?
     console.log('Previous Damage : '+selectedBat.damage);
     totalDamage = totalDamage+selectedBat.damage;
@@ -160,11 +183,16 @@ function defense() {
     let squadsOut = Math.floor(totalDamage/squadHP);
     selectedBat.squadsLeft = selectedBat.squadsLeft-squadsOut;
     console.log('Squads Out : '+squadsOut);
+    if (squadsOut >= 1) {
+        $('#report').append('<span class="report cy">Escouades: -'+squadsOut+'<br></span>');
+    }
     selectedBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+selectedBat.damage);
     if (selectedBat.squadsLeft <= 0) {
+        attAlive = false;
         setTimeout(function (){
             batDeath(selectedBat);
+            $('#report').append('<span class="report cy">Bataillon détruit<br></span>');
         }, 2000); // How long do you want the delay to be (in milliseconds)?
     } else {
         selectedBatArrayUpdate();
@@ -184,6 +212,7 @@ function shot(weapon,bat,batType) {
         if (damage > batType.hp) {
             damage = batType.hp;
         }
+        $('#report').append('<span class="report">'+damage+' </span>');
     }
     return damage;
 };
@@ -217,6 +246,7 @@ function blast(aoeShots,weapon,bat,batType) {
         }
         ii++
     }
+    $('#report').append('<span class="report">'+damage+' </span>');
     return damage;
 };
 
@@ -227,6 +257,10 @@ function isHit(accuracy,aoe,size,stealth,cover) {
     }
     let dice = rand.rand(1,100);
     let hitChance = Math.round(Math.sqrt(size)*prec);
+    if (toHit === 0) {
+        toHit = hitChance;
+        $('#report').append('<span class="report">Précision: '+toHit+'%</span><br><span class="report">Dégâts: </span>');
+    }
     console.log('hitChance '+hitChance);
     if (dice > hitChance) {
         return false;
@@ -255,8 +289,9 @@ function getCover(bat) {
     return terrain.cover;
 };
 
-function calcSpeed(bat,weap,distance,attacking) {
+function calcSpeed(bat,weap,type,distance,attacking) {
     let crange = weap.range;
+    // console.log('crange'+crange);
     if (weap.range === 0) {
         if (attacking) {
             crange = 1;
@@ -264,15 +299,20 @@ function calcSpeed(bat,weap,distance,attacking) {
             crange = 12;
         }
     }
-    let speed = Math.round(crange*weap.cost/bat.maxSalvo);
+    // console.log('cost'+weap.cost);
+    let speed = Math.round(crange*weap.cost);
     if (distance <= 1) {
         if (attacking) {
-            speed = speed-bat.stealth-bat.stealth;
+            speed = speed-type.stealth-type.stealth;
         } else {
-            speed = speed-bat.stealth;
+            speed = speed-type.stealth;
         }
     }
-    return speed;
+    // console.log('stealth'+type.stealth);
+    // console.log('speed'+speed);
+    let vetDice = vetInitiative*bat.vet;
+    // console.log('vetDice'+vetDice);
+    return speed+rand.rand(0,initiativeDice)-rand.rand(0,vetDice);
 };
 
 function isInRange(myTileIndex,thatTileIndex) {
@@ -409,7 +449,7 @@ function weaponSelectRiposte() {
 function weaponAdj(weapon,bat,wn) {
     // bonus veterancy
     let thisWeapon = {};
-    let accuracy = Math.round(weapon.accuracy*(bat.vet+vetBonus)/vetBonus);
+    let accuracy = Math.round(weapon.accuracy*(bat.vet+vetAccuracy)/vetAccuracy);
     thisWeapon.accuracy = accuracy;
     // bonus ammo
     thisWeapon.name = weapon.name;

@@ -26,6 +26,7 @@ function fireMode(weapon) {
         weaponSelect(weapon);
         fireInfos(selectedBat);
         showBatInfos(selectedBat);
+        $('#report').empty('');
         // console.log(selectedWeap);
     }
 };
