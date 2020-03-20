@@ -212,6 +212,9 @@ function shot(weapon,bat,batType) {
         if (damage > batType.hp) {
             damage = batType.hp;
         }
+        if (damage < 0) {
+            damage = 0;
+        }
         $('#report').append('<span class="report">'+damage+' </span>');
     }
     return damage;
@@ -232,6 +235,9 @@ function blast(aoeShots,weapon,bat,batType) {
             newDamage = calcDamage(power,batType.armor);
             if (newDamage > batType.hp) {
                 newDamage = batType.hp;
+            }
+            if (damage < 0) {
+                damage = 0;
             }
             damage = damage+newDamage;
         }

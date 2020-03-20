@@ -60,5 +60,36 @@
     "maxFlood": 3,
     "maxScarp": 3,
     "maxVeg": 3
+},
+{
+    "id": 2,
+    "name": "Mante",
+    "pic": "wtf",
+    "cat": "aliens",
+    "squads": 4,
+    "squadSize": 2,
+    "crew": 1,
+    "hp": 90,
+    "armor": 12,
+    "size": 65,
+    "stealth": 0,
+    "ap": 6,
+    "maxSalvo": 1,
+    "weapon": {
+        "name": "Eperons",
+        "cost": 2,
+        "range": 0,
+        "rof": 4,
+        "accuracy": 14,
+        "power": 35,
+        "aoe": "squad",
+        "sound": "SQUISH11",
+        "ammo": [ "none" ]
+        },
+    "weapon2": {},
+    "moveCost": 3,
+    "maxFlood": 3,
+    "maxScarp": 3,
+    "maxVeg": 3
 }
 ]

@@ -327,6 +327,7 @@ td {
     background-image: url(/static/img/plate-dork-small.jpg);
     background-position: 0% 0%;
     min-width: 130px;
+    max-width: 130px;
     line-height: 14px;
 }
 #timeInfos {
