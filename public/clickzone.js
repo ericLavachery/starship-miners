@@ -34,7 +34,7 @@ function clickSelect(tileId) {
             enemyBatHere = true;
         }
     });
-    console.log(enemyBatHere);
+    // console.log(enemyBatHere);
     if (!ownBatHere && !enemyBatHere) {
         $('#unitInfos').empty();
         selectMode();

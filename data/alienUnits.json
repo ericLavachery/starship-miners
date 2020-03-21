@@ -73,7 +73,7 @@
     "armor": 12,
     "size": 65,
     "stealth": 0,
-    "ap": 6,
+    "ap": 8,
     "maxSalvo": 1,
     "weapon": {
         "name": "Eperons",

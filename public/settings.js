@@ -54,5 +54,6 @@ let nextExplosion = 1;
 let coverFactor = 1.5; // multiplie la cover du terrain (enlevé à accuracy)
 let initiativeDice = 15 // ajoute 0-15
 let stopMe = false;
+let activeTurn = 'player';
 let toHit = 0;
 let isMelee = false;

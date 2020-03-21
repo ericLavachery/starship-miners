@@ -6,7 +6,7 @@ function alienTurn() {
 
 function alienMoveLoop(alien) {
     // move map at the end of the alien moves
-    // show attaqued bat 
+    // show attaqued bat
 };
 
 function createAlienList() {
@@ -15,24 +15,24 @@ function createAlienList() {
         return (bat.loc == 'zone' && bat.apLeft >= 1);
     });
     alienList = _.sortBy(_.sortBy(zoneAlienList,'id'),'typeId');
-    // commandes();
+    commandes();
     console.log(alienList);
 };
 
 function nextAlien() {
-
-    // selectMode();
-    // batUnstack();
-    // deleteMoveInfos();
+    // activated by click
     if (Object.keys(selectedBat).length >= 1) {
-        let batIndex = alienList.findIndex((obj => obj.id == selectedBat.id));
         alienList.shift();
     }
     if (alienList.length >= 1) {
-        batSelect(batList[0]);
+        batSelect(alienList[0]);
     } else {
         batUnselect();
+        // terminer le tour alien (et enregistrement)
+        nextTurnEnd();
     }
     alienMoveLoop(selectedBat);
+    console.log('----------------------');
     console.log(alienList);
+    console.log(selectedBat);
 };

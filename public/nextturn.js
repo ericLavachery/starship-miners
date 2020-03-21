@@ -1,6 +1,7 @@
 function nextTurn() {
     // stopMe = true;
     blockMe(true);
+    activeTurn = 'aliens';
     $('#unitInfos').empty();
     selectMode();
     batUnstack();
@@ -15,6 +16,10 @@ function nextTurn() {
     // check appartition d'aliens
     // sauvegarder zoneInfos (n° du tour etc...)
 
+    // nextTurnEnd(); est lancé à la fin des nextAlien() !!!!!!!!!!!!!!!!!!!!
+};
+
+function nextTurnEnd() {
     let unitTypesIndex;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -28,14 +33,16 @@ function nextTurn() {
             bat.oldapLeft = bat.apLeft;
         }
     });
-    saveBataillons();
-    saveAliens();
+    // saveBataillons(); !!!!!!!!!!!!!!!!!!!!!!!!
+    // saveAliens(); !!!!!!!!!!!!!!!!!!!!!!
     createBatList();
     alienOccupiedTileList();
     setTimeout(function (){
         // stopMe = false;
         blockMe(false);
-    }, 3000); // How long do you want the delay to be (in milliseconds)?
+        activeTurn = 'player';
+        commandes();
+    }, 1000); // How long do you want the delay to be (in milliseconds)?
 };
 
 function alienOccupiedTileList() {
