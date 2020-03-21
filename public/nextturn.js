@@ -6,8 +6,11 @@ function nextTurn() {
     batUnstack();
     batUnselect();
 
+    alienMovesLoop();
+
     // mouvement des aliens
     // attaque des aliens
+    // récup aliens (ap, salvo, regeneration)
     // constructions et production : système d'ap également
     // check appartition d'aliens
     // sauvegarder zoneInfos (n° du tour etc...)

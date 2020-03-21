@@ -19,20 +19,40 @@ function clickFire(tileId) {
         targetBatUnitIndex = localUnits.findIndex((obj => obj.id == targetBat.typeId));
         targetBatType = localUnits[targetBatUnitIndex];
     }
-    if (isInRange(selectedBat.tileId,tileId)) {
-        if (alienBatHere) {
-            // console.log(targetBat);
-            combat(selectedBat,selectedWeap,targetBat);
-            selectMode();
-            showBatInfos(selectedBat);
-        } else if (selectedBat.tileId === tileId) {
-            // re-click sur l'unité active : unselect
-            selectMode();
-            batUnstack();
-            batUnselect();
+    if (isMelee) {
+        // en mêlée : choix limité de cibles
+        if (isInMelee(selectedBat.tileId,tileId)) {
+            if (alienBatHere) {
+                // console.log(targetBat);
+                combat(selectedBat,selectedWeap,targetBat);
+                selectMode();
+                showBatInfos(selectedBat);
+            } else if (selectedBat.tileId === tileId) {
+                // re-click sur l'unité active : unselect
+                selectMode();
+                batUnstack();
+                batUnselect();
+            }
+        } else {
+            targetBat = {};
         }
     } else {
-        targetBat = {};
+        // hors mêlée
+        if (isInRange(selectedBat.tileId,tileId)) {
+            if (alienBatHere) {
+                // console.log(targetBat);
+                combat(selectedBat,selectedWeap,targetBat);
+                selectMode();
+                showBatInfos(selectedBat);
+            } else if (selectedBat.tileId === tileId) {
+                // re-click sur l'unité active : unselect
+                selectMode();
+                batUnstack();
+                batUnselect();
+            }
+        } else {
+            targetBat = {};
+        }
     }
 };
 
@@ -321,6 +341,18 @@ function calcSpeed(bat,weap,type,distance,attacking) {
     return speed+rand.rand(0,initiativeDice)-rand.rand(0,vetDice);
 };
 
+function isInMelee(myTileIndex,thatTileIndex) {
+    let myTileX = zone[myTileIndex].x;
+    let myTileY = zone[myTileIndex].y;
+    let thatTileX = zone[thatTileIndex].x;
+    let thatTileY = zone[thatTileIndex].y;
+    if (myTileIndex == thatTileIndex || myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
 function isInRange(myTileIndex,thatTileIndex) {
     let myTileX = zone[myTileIndex].x;
     let myTileY = zone[myTileIndex].y;
@@ -371,17 +403,29 @@ function calcDistance(myTileIndex,thatTileIndex) {
 };
 
 function fireInfos(bat) {
+    isMelee = false;
     cursorSwitch('.','grid-item','pointer');
     let myTileX = zone[bat.tileId].x;
     let myTileY = zone[bat.tileId].y;
     zone.forEach(function(tile) {
         $("#"+tile.id).attr("title", "");
         if (alienHere(tile.id)) {
-            if (isInRange(selectedBat.tileId,tile.id)) {
+            if (isInMelee(selectedBat.tileId,tile.id)) {
+                isMelee = true;
                 cursorSwitch('#',tile.id,'fire');
             }
         }
     });
+    if (!isMelee) {
+        zone.forEach(function(tile) {
+            $("#"+tile.id).attr("title", "");
+            if (alienHere(tile.id)) {
+                if (isInRange(selectedBat.tileId,tile.id)) {
+                    cursorSwitch('#',tile.id,'fire');
+                }
+            }
+        });
+    }
 };
 
 function alienHere(tileId) {
@@ -486,7 +530,7 @@ function weaponAdj(weapon,bat,wn) {
     }
     if (ammo == 'titanium') {
         thisWeapon.power = thisWeapon.power-1;
-        thisWeapon.accuracy = Math.round(thisWeapon.accuracy*1.5);
+        thisWeapon.accuracy = Math.round(thisWeapon.accuracy*1.25);
     }
     if (ammo == 'hollow') {
         thisWeapon.power = thisWeapon.power+3;
