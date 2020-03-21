@@ -217,9 +217,8 @@ function defense() {
     } else {
         selectedBatArrayUpdate();
     }
-    // remove ap & salvo
-    targetBat.apLeft = targetBat.apLeft-targetWeap.cost;
-    targetBat.salvoLeft = targetBat.salvoLeft-1;
+    // remove ap
+    targetBat.apLeft = targetBat.apLeft-1;
     targetBatArrayUpdate();
 };
 

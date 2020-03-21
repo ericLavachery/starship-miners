@@ -6,7 +6,7 @@ function nextTurn() {
     batUnstack();
     batUnselect();
 
-    alienMovesLoop();
+    alienTurn();
 
     // mouvement des aliens
     // attaque des aliens
