@@ -27,7 +27,15 @@ function clickSelect(tileId) {
             ownBatHere = true;
         }
     });
-    if (!ownBatHere) {
+    let enemyBatHere = false;
+    aliens.forEach(function(bat) {
+        if (bat.tileId === tileId && bat.loc === "zone") {
+            showEnemyBatInfos(bat);
+            enemyBatHere = true;
+        }
+    });
+    console.log(enemyBatHere);
+    if (!ownBatHere && !enemyBatHere) {
         $('#unitInfos').empty();
         selectMode();
         batUnstack();

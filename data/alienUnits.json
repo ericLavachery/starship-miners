@@ -17,7 +17,7 @@
         "name": "Mandibules",
         "cost": 4,
         "range": 0,
-        "rof": 12,
+        "rof": 6,
         "accuracy": 18,
         "power": 10,
         "aoe": "unit",

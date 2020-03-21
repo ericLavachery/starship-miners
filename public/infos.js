@@ -85,7 +85,7 @@ function showBatInfos(bat) {
         }
         $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+riposte+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.range+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Cadence de tir</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.rof+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Attaques (par escouade)</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.rof+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.accuracy+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.power+'</span><br>');
         if (thisWeapon.armors != 1) {
@@ -114,7 +114,7 @@ function showBatInfos(bat) {
         $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
         $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.cost+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.range+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Cadence de tir</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.rof+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Attaques (par escouade)</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.rof+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.accuracy+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.power+'</span><br>');
         if (thisWeapon.armors != 1) {
@@ -122,6 +122,40 @@ function showBatInfos(bat) {
         }
         $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.aoe+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Munitions</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+bat.ammo2+'</span><br>');
+    }
+
+    // "moveCost": 3,
+    // "maxFlood": 3,
+    // "maxScarp": 3,
+    // "maxVeg": 3,
+    // "skills": []
+};
+
+function showEnemyBatInfos(bat) {
+    $('#unitInfos').empty();
+    let alienUnitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
+    let batUnitType = alienUnits[alienUnitIndex];
+    $('#unitInfos').append('<span class="blockTitle"><h3>'+batUnitType.name+'</h3></span>');
+    // SQUADS
+    $('#unitInfos').append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span id="infosMovesLeft" class="paramValue">'+bat.squadsLeft+'/'+batUnitType.squads+'</span><br>');
+    $('#unitInfos').append('<span class="paramName">Unités par escouade</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.squadSize+'</span><br>');
+    // PROTECTION
+    $('#unitInfos').append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.hp+'</span><br>');
+    $('#unitInfos').append('<span class="paramName">Armure</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.armor+'</span><br>');
+    $('#unitInfos').append('<span class="paramName">Taille</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.size+'</span><br>');
+    $('#unitInfos').append('<span class="paramName">Discrétion</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.stealth+'</span><br>');
+    // WEAPONS
+    let balise;
+    let thisWeapon = {};
+    if (batUnitType.weapon.rof >= 1) {
+        thisWeapon = weaponAdj(batUnitType.weapon,bat,'w1');
+        balise = 'h4';
+        $('#unitInfos').append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span>');
+        $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.range+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Attaques (par escouade)</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.rof+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.accuracy+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.power+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+thisWeapon.aoe+'</span><br>');
     }
 
     // "moveCost": 3,
