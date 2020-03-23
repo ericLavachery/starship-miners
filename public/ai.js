@@ -17,6 +17,7 @@ function shootTarget() {
 
 function chooseTarget() {
     // peut-être des targets différents selon les types d'aliens?
+    checkPDM();
     targetBat = {};
     targetBatType = {};
     targetWeap = {};
@@ -73,6 +74,38 @@ function chooseTarget() {
     }
     console.log('inPlace '+inPlace);
     console.log(targetBat);
+};
+
+function checkPDM() {
+    pointDeMire = -1;
+    let lePlusProche = 100;
+    let shufBats = _.shuffle(bataillons);
+    // cherche un cible préférée
+    shufBats.forEach(function(bat) {
+        if (bat.loc === "zone" && bat.fuzz >= 1) {
+            distance = calcDistance(selectedBat.tileId,bat.tileId);
+            if (distance < lePlusProche) {
+                pointDeMire = bat.tileId;
+                lePlusProche = distance;
+            }
+        }
+    });
+    if (pointDeMire < 0) {
+        // se rabat sur une autre cible
+        shufBats.forEach(function(bat) {
+            if (bat.loc === "zone" && bat.fuzz == 0) {
+                distance = calcDistance(selectedBat.tileId,bat.tileId);
+                if (distance < lePlusProche) {
+                    pointDeMire = bat.tileId;
+                    lePlusProche = distance;
+                }
+            }
+        });
+    }
+    if (pointDeMire < 0) {
+        pointDeMire = 1800;
+    }
+    console.log('Point de mire: '+pointDeMire);
 };
 
 function checkPossibleMoves() {
@@ -156,6 +189,10 @@ function delPossibleMove(delId) {
     }
 };
 
+function moveToMelee() {
+    console.log('move to melee');
+};
+
 function moveOutOfMelee() {
     console.log('move out of melee');
     // bouge de 1 tile hors mêlée
@@ -178,10 +215,6 @@ function moveToIdealRange() {
 
 function moveToRange1() {
     console.log('move to range 1');
-};
-
-function moveToMelee() {
-    console.log('move to melee');
 };
 
 function anyTargetInRange() {
