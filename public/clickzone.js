@@ -92,11 +92,6 @@ function tileSelect(bat) {
     // draw new selected unit
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
-    let unitTypesIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     terclass = 'ter'+tile.terrain+tile.seed;
-    if (unitTypes[unitTypesIndex].cat != 'units') {
-        $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');
-    } else {
-        $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');
-    }
+    $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');
 };

@@ -29,7 +29,10 @@ function chooseTarget() {
             if (inPlace) {
                 shootTarget();
             } else {
-
+                inPlace = moveToMelee();
+                if (inPlace) {
+                    shootTarget();
+                }
             }
         }
     } else if (range === 1) {
@@ -42,24 +45,53 @@ function chooseTarget() {
             if (inPlace) {
                 shootTarget();
             } else {
-
+                inPlace = moveToRange1();
+                if (inPlace) {
+                    shootTarget();
+                }
             }
         }
     } else {
         // range 2+
         if (targetInRange()) {
             if (alienInMelee) {
-
+                inPlace = moveOutOfMelee();
+                shootTarget();
             } else {
                 inPlace = targetFarthest();
                 shootTarget();
             }
         } else {
-
+            inPlace = moveToIdealRange();
+            if (inPlace) {
+                shootTarget();
+            }
         }
     }
     console.log('inPlace '+inPlace);
     console.log(targetBat);
+};
+
+function moveOutOfMelee() {
+    console.log('move out of melee');
+    // return inPlace
+    // bouge de 1 tile hors mêlée
+};
+
+function moveToIdealRange() {
+    console.log('move to ideal range');
+    // return inPlace
+    // le plus loin possible sans être en mêlée
+};
+
+function moveToRange1() {
+    console.log('move to range 1');
+    // return inPlace
+};
+
+function moveToMelee() {
+    console.log('move to melee');
+    // return inPlace
 };
 
 function targetInRange() {
@@ -171,15 +203,15 @@ function nextAlien() {
     }
     if (alienList.length >= 1) {
         batSelect(alienList[0]);
+        selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
+        selectedWeap = weaponAdj(selectedWeap,selectedBat,'w1');
+        console.log('----------------------');
+        console.log(alienList);
+        console.log(selectedBat);
+        alienMoveLoop();
     } else {
         batUnselect();
         // terminer le tour alien (et enregistrement)
         nextTurnEnd();
     }
-    selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
-    selectedWeap = weaponAdj(selectedWeap,selectedBat,'w1');
-    console.log('----------------------');
-    console.log(alienList);
-    console.log(selectedBat);
-    alienMoveLoop();
 };
