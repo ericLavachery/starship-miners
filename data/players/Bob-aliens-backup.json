@@ -1,11 +1,11 @@
 [
-    {"id":0,"type":"Punaise","typeId":0,"loc":"zone","locId":0,"tileId":194,"oldTileId":194,"squadsLeft":6,"apLeft":12,"ammo":"none","ammo2":"none","oldapLeft":12,"salvoLeft":1,"team":"aliens","damage":0,"vet":0},
-    {"id":1,"type":"Punaise","typeId":0,"loc":"zone","locId":0,"tileId":485,"oldTileId":485,"squadsLeft":6,"apLeft":12,"ammo":"none","ammo2":"none","oldapLeft":12,"salvoLeft":1,"team":"aliens","damage":48,"vet":0},
-    {"id":2,"type":"Punaise","typeId":0,"loc":"zone","locId":0,"tileId":365,"oldTileId":365,"squadsLeft":6,"apLeft":12,"ammo":"none","ammo2":"none","oldapLeft":12,"salvoLeft":1,"team":"aliens","damage":64,"vet":0},
-    {"id":3,"type":"Larve","typeId":1,"loc":"zone","locId":0,"tileId":423,"oldTileId":423,"squadsLeft":6,"apLeft":12,"ammo":"none","ammo2":"none","oldapLeft":12,"salvoLeft":1,"team":"aliens","damage":48,"vet":0},
-    {"id":4,"type":"Mante","typeId":2,"loc":"zone","locId":0,"tileId":240,"oldTileId":240,"squadsLeft":4,"apLeft":8,"ammo":"none","ammo2":"none","oldapLeft":8,"salvoLeft":1,"team":"aliens","damage":0,"vet":0},
-    {"id":5,"type":"Glaireuse","typeId":4,"loc":"zone","locId":0,"tileId":484,"oldTileId":484,"squadsLeft":4,"apLeft":8,"ammo":"none","ammo2":"none","oldapLeft":8,"salvoLeft":1,"team":"aliens","damage":0,"vet":0},
-    {"id":6,"type":"Glaireuse","typeId":4,"loc":"zone","locId":0,"tileId":553,"oldTileId":553,"squadsLeft":4,"apLeft":8,"ammo":"none","ammo2":"none","oldapLeft":8,"salvoLeft":1,"team":"aliens","damage":0,"vet":0},
-    {"id":7,"type":"Cracheuse","typeId":3,"loc":"zone","locId":0,"tileId":663,"oldTileId":663,"squadsLeft":6,"apLeft":12,"ammo":"none","ammo2":"none","oldapLeft":12,"salvoLeft":1,"team":"aliens","damage":0,"vet":0},
-    {"id":8,"type":"Cracheuse","typeId":3,"loc":"zone","locId":0,"tileId":252,"oldTileId":252,"squadsLeft":6,"apLeft":12,"ammo":"none","ammo2":"none","oldapLeft":12,"salvoLeft":1,"team":"aliens","damage":0,"vet":0}
+    {"id":0,"type":"Punaise","typeId":0,"loc":"zone","locId":0,"tileId":194,"oldTileId":194,"squadsLeft":6,"apLeft":12,"ammo":"none","ammo2":"none","oldapLeft":12,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0},
+    {"id":1,"type":"Punaise","typeId":0,"loc":"zone","locId":0,"tileId":485,"oldTileId":485,"squadsLeft":6,"apLeft":12,"ammo":"none","ammo2":"none","oldapLeft":12,"salvoLeft":1,"team":"aliens","damage":48,"vet":0,"range":0},
+    {"id":2,"type":"Punaise","typeId":0,"loc":"zone","locId":0,"tileId":365,"oldTileId":365,"squadsLeft":6,"apLeft":12,"ammo":"none","ammo2":"none","oldapLeft":12,"salvoLeft":1,"team":"aliens","damage":64,"vet":0,"range":0},
+    {"id":3,"type":"Larve","typeId":1,"loc":"zone","locId":0,"tileId":423,"oldTileId":423,"squadsLeft":6,"apLeft":12,"ammo":"none","ammo2":"none","oldapLeft":12,"salvoLeft":1,"team":"aliens","damage":48,"vet":0,"range":0},
+    {"id":4,"type":"Mante","typeId":2,"loc":"zone","locId":0,"tileId":240,"oldTileId":240,"squadsLeft":4,"apLeft":8,"ammo":"none","ammo2":"none","oldapLeft":8,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0},
+    {"id":5,"type":"Glaireuse","typeId":4,"loc":"zone","locId":0,"tileId":484,"oldTileId":484,"squadsLeft":4,"apLeft":8,"ammo":"none","ammo2":"none","oldapLeft":8,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":3},
+    {"id":6,"type":"Glaireuse","typeId":4,"loc":"zone","locId":0,"tileId":553,"oldTileId":553,"squadsLeft":4,"apLeft":8,"ammo":"none","ammo2":"none","oldapLeft":8,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":3},
+    {"id":7,"type":"Cracheuse","typeId":3,"loc":"zone","locId":0,"tileId":663,"oldTileId":663,"squadsLeft":6,"apLeft":12,"ammo":"none","ammo2":"none","oldapLeft":12,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":1},
+    {"id":8,"type":"Cracheuse","typeId":3,"loc":"zone","locId":0,"tileId":252,"oldTileId":252,"squadsLeft":6,"apLeft":12,"ammo":"none","ammo2":"none","oldapLeft":12,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":1}
 ]

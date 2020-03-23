@@ -57,3 +57,4 @@ let stopMe = false;
 let activeTurn = 'player';
 let toHit = 0;
 let isMelee = false;
+let possibleMoves = []; // list of tile ids 

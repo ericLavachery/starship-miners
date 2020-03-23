@@ -60,7 +60,7 @@ function createBatList() {
     let zoneBatList = _.filter(allBatList, function(bat) {
         return (bat.loc == 'zone' && bat.apLeft >= 1);
     });
-    batList = _.sortBy(_.sortBy(zoneBatList,'id'),'typeId');
+    batList = _.sortBy(_.sortBy(_.sortBy(zoneBatList,'id'),'typeId'),'range');
     commandes();
     // console.log(batList);
 };
