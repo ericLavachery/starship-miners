@@ -24,7 +24,7 @@ function clickFire(tileId) {
         if (isInMelee(selectedBat.tileId,tileId)) {
             if (alienBatHere) {
                 // console.log(targetBat);
-                combat(selectedBat,selectedWeap,targetBat);
+                combat();
                 selectMode();
                 showBatInfos(selectedBat);
             } else if (selectedBat.tileId === tileId) {
@@ -41,7 +41,7 @@ function clickFire(tileId) {
         if (isInRange(selectedBat.tileId,tileId)) {
             if (alienBatHere) {
                 // console.log(targetBat);
-                combat(selectedBat,selectedWeap,targetBat);
+                combat();
                 selectMode();
                 showBatInfos(selectedBat);
             } else if (selectedBat.tileId === tileId) {
@@ -56,14 +56,14 @@ function clickFire(tileId) {
     }
 };
 
-function combat(myBat,myWeap,thatBat) {
+function combat() {
     attAlive = true;
     defAlive = true;
     $('#report').empty('');
-    $('#report').append('<span class="report or">'+myBat.type+'</span> <span class="report">vs</span> <span class="report or">'+thatBat.type+'</span><br>');
+    $('#report').append('<span class="report or">'+selectedBat.type+'</span> <span class="report">vs</span> <span class="report or">'+targetBat.type+'</span><br>');
     weaponSelectRiposte();
     // console.log(targetWeap);
-    let distance = calcDistance(myBat.tileId,thatBat.tileId);
+    let distance = calcDistance(selectedBat.tileId,targetBat.tileId);
     // console.log('distance '+distance);
     $('#report').append('<span class="report">distance '+distance+'</span><br>');
     // riposte?

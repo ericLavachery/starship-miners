@@ -27,14 +27,6 @@ function alienMoveLoop() {
     // si no salvo et reste bcp d'ap : move vers PDM de base (attention: garder le rapport de combat!)
 };
 
-function shootTarget() {
-    console.log('shoot '+targetBat.type);
-    // remove ap & salvo
-    selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
-    selectedBat.salvoLeft = selectedBat.salvoLeft-1;
-    selectedBatArrayUpdate();
-};
-
 function chooseTarget() {
     anyCloseTarget();
     let inPlace = false;
@@ -90,6 +82,14 @@ function chooseTarget() {
     }
     console.log('inPlace '+inPlace);
     console.log(targetBat);
+};
+
+function shootTarget() {
+    console.log('shoot '+targetBat.type);
+    // remove ap & salvo
+    selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
+    selectedBat.salvoLeft = selectedBat.salvoLeft-1;
+    selectedBatArrayUpdate();
 };
 
 function checkPDM() {
@@ -354,17 +354,6 @@ function delPossibleMove(delId) {
     }
 };
 
-function chooseMove() {
-    if (possibleMoves.length > 1) {
-        possibleMoves = [_.sample(possibleMoves)];
-    }
-};
-
-function doMove() {
-    let tileId = possibleMoves[0];
-    moveAlienBat(tileId);
-};
-
 function moveToPDM() {
     console.log('move to PDM');
     checkPossibleMoves();
@@ -390,6 +379,17 @@ function moveOutOfMelee() {
     chooseMove();
     doMove();
     console.log(possibleMoves);
+};
+
+function chooseMove() {
+    if (possibleMoves.length > 1) {
+        possibleMoves = [_.sample(possibleMoves)];
+    }
+};
+
+function doMove() {
+    let tileId = possibleMoves[0];
+    moveAlienBat(tileId);
 };
 
 function moveAlienBat(tileId) {
