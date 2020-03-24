@@ -119,24 +119,40 @@ function checkPDM() {
     if (pointDeMire < 0) {
         pointDeMire = 1800;
     }
-    console.log('Point de mire: '+pointDeMire);
+    console.log('PDM: '+pointDeMire);
 };
 
 function anyCloseTarget() {
     newPointDeMire = -1;
     let distance;
+    let lePlusProche = 100;
     let shufBats = _.shuffle(bataillons);
     shufBats.forEach(function(bat) {
-        if (bat.loc === "zone") {
+        if (bat.loc === "zone" && bat.fuzz >= 0) {
             distance = calcDistance(selectedBat.tileId,bat.tileId);
             if (distance <= closeTargetRange) {
-                newPointDeMire = bat.tileId;
+                if (distance < lePlusProche) {
+                    lePlusProche = distance;
+                    newPointDeMire = bat.tileId;
+                }
             }
         }
     });
     if (newPointDeMire > 0) {
         pointDeMire = newPointDeMire;
     }
+    console.log('new PDM: '+pointDeMire);
+};
+
+function pdmOffsets(tileId) {
+    // offsets x et y entre alien et PDM
+    myTileX = zone[tileId].x;
+    myTileY = zone[tileId].y;
+    pdmTileX = zone[pointDeMire].x;
+    pdmTileY = zone[pointDeMire].y;
+    xOff = Math.abs(myTileX-pdmTileX);
+    yOff = Math.abs(myTileY-pdmTileY);
+    return [xOff,yOff];
 };
 
 function checkPossibleMoves() {
@@ -168,7 +184,6 @@ function uncheckMeleeMoves() {
     // remove moves to melee from possible moves
     let thisTile;
     let meleeTile;
-    let pmIndex;
     zone.forEach(function(tile) {
         if (isAdjacent(selectedBat.tileId,tile.id)) {
             bataillons.forEach(function(bat) {
@@ -192,7 +207,6 @@ function uncheckRange1Moves() {
     // remove moves to range 1 from possible moves
     let thisTile;
     let r1Tile;
-    let pmIndex;
     zone.forEach(function(tile) {
         if (isAdjacent(selectedBat.tileId,tile.id)) {
             bataillons.forEach(function(bat) {
@@ -212,8 +226,50 @@ function uncheckRange1Moves() {
     });
 };
 
+function uncheckBadMoves() {
+    let alienOff = pdmOffsets(selectedBat.tileId);
+    // enlève les possibleMoves qui éloignent du PDM
+    zone.forEach(function(tile) {
+        if (isAdjacent(selectedBat.tileId,tile.id)) {
+            tileOff = pdmOffsets(tile.id);
+            if (alienOff[0] < tileOff[0] || alienOff[1] < tileOff[1]) {
+                delPossibleMove(tile.id);
+            }
+        }
+    });
+    // enlève les possibleMoves vers l'eau
+    if (possibleMoves.length > 1) {
+        zone.forEach(function(tile) {
+            if (isAdjacent(selectedBat.tileId,tile.id)) {
+                if (possibleMoves.length > 1) {
+                    if (tile.terrain == 'S' || tile.terrain == 'W' || tile.terrain == 'R') {
+                        delPossibleMove(tile.id);
+                    }
+                }
+            }
+        });
+    }
+    // enlève les possibleMoves qui ne rapproche pas du PDM quand l'unité est proche du but
+    if (possibleMoves.length > 1) {
+        zone.forEach(function(tile) {
+            if (isAdjacent(selectedBat.tileId,tile.id)) {
+                if (possibleMoves.length > 1) {
+                    tileOff = pdmOffsets(tile.id);
+                    if (alienOff[0] == tileOff[0] && alienOff[0] <= 4) {
+                        delPossibleMove(tile.id);
+                    }
+                    if (alienOff[1] == tileOff[1] && alienOff[1] <= 4) {
+                        delPossibleMove(tile.id);
+                    }
+                }
+            }
+        });
+    }
+};
+
 function delPossibleMove(delId) {
     // remove id from possible moves
+    let pmIndex;
     if (possibleMoves.includes(delId)) {
         pmIndex = possibleMoves.indexOf(delId);
         possibleMoves.splice(pmIndex,1);
@@ -222,6 +278,9 @@ function delPossibleMove(delId) {
 
 function moveToPDM() {
     console.log('move to PDM');
+    checkPossibleMoves();
+    uncheckBadMoves();
+    console.log(possibleMoves);
 };
 
 function moveToMelee() {

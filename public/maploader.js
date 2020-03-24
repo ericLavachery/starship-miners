@@ -17,7 +17,7 @@ function showMap(wmap) {
     sortedVisMap.forEach(function(tile) {
         resHere = showRes(tile.id);
         terclass = 'ter'+tile.terrain+tile.seed;
-        $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')"><span class="bigIcon" id="b'+tile.id+'">'+resHere+'</span><br></div>');
+        $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')" title="#'+tile.id+'"><span class="bigIcon" id="b'+tile.id+'">'+resHere+'</span><br></div>');
         bataillons.forEach(function(bat) {
             if (bat.tileId === tile.id && bat.loc === "zone") {
                 showBataillon(bat);
