@@ -7,7 +7,12 @@ function alienTurn() {
 function alienMoveLoop() {
     // move map at the end of the alien moves
     // show attaqued bat
+    checkPDM();
+    targetBat = {};
+    targetBatType = {};
+    targetWeap = {};
     checkPossibleMoves();
+    // loop this until no ap or no salvo
     chooseTarget();
 };
 
@@ -16,11 +21,7 @@ function shootTarget() {
 };
 
 function chooseTarget() {
-    // peut-être des targets différents selon les types d'aliens?
-    checkPDM();
-    targetBat = {};
-    targetBatType = {};
-    targetWeap = {};
+    anyCloseTarget();
     let inPlace = false;
     let alienInMelee = isAlienInMelee(selectedBat.tileId);
     let range = selectedWeap.range;
@@ -30,7 +31,7 @@ function chooseTarget() {
             inPlace = targetMelee();
             shootTarget();
         } else {
-            moveToMelee();
+            moveToPDM();
             inPlace = targetMelee();
             if (inPlace) {
                 shootTarget();
@@ -46,7 +47,7 @@ function chooseTarget() {
             if (inPlace) {
                 shootTarget();
             } else {
-                moveToRange1();
+                moveToPDM();
                 inPlace = targetClosest();
                 if (inPlace) {
                     shootTarget();
@@ -65,7 +66,7 @@ function chooseTarget() {
                 shootTarget();
             }
         } else {
-            moveToIdealRange();
+            moveToPDM();
             inPlace = targetFarthest();
             if (inPlace) {
                 shootTarget();
@@ -77,12 +78,13 @@ function chooseTarget() {
 };
 
 function checkPDM() {
+    // peut-être des targets différents selon les types d'aliens?
     pointDeMire = -1;
     let lePlusProche = 100;
     let shufBats = _.shuffle(bataillons);
     // cherche un cible préférée
     shufBats.forEach(function(bat) {
-        if (bat.loc === "zone" && bat.fuzz >= 1) {
+        if (bat.loc === "zone" && bat.fuzz >= 2) {
             distance = calcDistance(selectedBat.tileId,bat.tileId);
             if (distance < lePlusProche) {
                 pointDeMire = bat.tileId;
@@ -90,6 +92,18 @@ function checkPDM() {
             }
         }
     });
+    if (pointDeMire < 0) {
+        // se rabat sur une autre cible
+        shufBats.forEach(function(bat) {
+            if (bat.loc === "zone" && bat.fuzz == 1) {
+                distance = calcDistance(selectedBat.tileId,bat.tileId);
+                if (distance < lePlusProche) {
+                    pointDeMire = bat.tileId;
+                    lePlusProche = distance;
+                }
+            }
+        });
+    }
     if (pointDeMire < 0) {
         // se rabat sur une autre cible
         shufBats.forEach(function(bat) {
@@ -106,6 +120,23 @@ function checkPDM() {
         pointDeMire = 1800;
     }
     console.log('Point de mire: '+pointDeMire);
+};
+
+function anyCloseTarget() {
+    newPointDeMire = -1;
+    let distance;
+    let shufBats = _.shuffle(bataillons);
+    shufBats.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            distance = calcDistance(selectedBat.tileId,bat.tileId);
+            if (distance <= closeTargetRange) {
+                newPointDeMire = bat.tileId;
+            }
+        }
+    });
+    if (newPointDeMire > 0) {
+        pointDeMire = newPointDeMire;
+    }
 };
 
 function checkPossibleMoves() {
@@ -187,6 +218,10 @@ function delPossibleMove(delId) {
         pmIndex = possibleMoves.indexOf(delId);
         possibleMoves.splice(pmIndex,1);
     }
+};
+
+function moveToPDM() {
+    console.log('move to PDM');
 };
 
 function moveToMelee() {
@@ -344,6 +379,7 @@ function nextAlien() {
         console.log('----------------------');
         console.log(alienList);
         console.log(selectedBat);
+        closeTargetRange = rand.rand(1,closeTargetRangeDice)+rand.rand(1,closeTargetRangeDice);
         alienMoveLoop();
     } else {
         batUnselect();
