@@ -13,11 +13,26 @@ function alienMoveLoop() {
     targetWeap = {};
     checkPossibleMoves();
     // loop this until no ap or no salvo
-    chooseTarget();
+    i = 1;
+    while (i <= 20) {
+        console.log('ap:'+selectedBat.apLeft+' salvo:'+selectedBat.salvoLeft);
+        if (selectedBat.apLeft >= 1 && selectedBat.salvoLeft >= 1) {
+            chooseTarget();
+        } else {
+            break;
+        }
+        if (i > 20) {break;}
+        i++
+    }
+    // si no salvo et reste bcp d'ap : move vers PDM de base (attention: garder le rapport de combat!)
 };
 
 function shootTarget() {
     console.log('shoot '+targetBat.type);
+    // remove ap & salvo
+    selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
+    selectedBat.salvoLeft = selectedBat.salvoLeft-1;
+    selectedBatArrayUpdate();
 };
 
 function chooseTarget() {
@@ -185,21 +200,19 @@ function uncheckMeleeMoves() {
     let thisTile;
     let meleeTile;
     zone.forEach(function(tile) {
-        if (isAdjacent(selectedBat.tileId,tile.id)) {
-            bataillons.forEach(function(bat) {
-                if (bat.loc === "zone" && bat.tileId === tile.id) {
-                    thisTile = tile.id;
-                    meleeTile = thisTile-1;
-                    delPossibleMove(meleeTile);
-                    meleeTile = thisTile+1;
-                    delPossibleMove(meleeTile);
-                    meleeTile = thisTile-mapSize;
-                    delPossibleMove(meleeTile);
-                    meleeTile = thisTile+mapSize;
-                    delPossibleMove(meleeTile);
-                }
-            });
-        }
+        thisTile = tile.id;
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "zone" && bat.tileId === thisTile) {
+                meleeTile = thisTile-1;
+                delPossibleMove(meleeTile);
+                meleeTile = thisTile+1;
+                delPossibleMove(meleeTile);
+                meleeTile = thisTile-mapSize;
+                delPossibleMove(meleeTile);
+                meleeTile = thisTile+mapSize;
+                delPossibleMove(meleeTile);
+            }
+        });
     });
 };
 
@@ -208,35 +221,37 @@ function uncheckRange1Moves() {
     let thisTile;
     let r1Tile;
     zone.forEach(function(tile) {
-        if (isAdjacent(selectedBat.tileId,tile.id)) {
-            bataillons.forEach(function(bat) {
-                if (bat.loc === "zone" && bat.tileId === tile.id) {
-                    thisTile = tile.id;
-                    meleeTile = thisTile-mapSize-1;
-                    delPossibleMove(meleeTile);
-                    meleeTile = thisTile-mapSize+1;
-                    delPossibleMove(meleeTile);
-                    meleeTile = thisTile+mapSize-1;
-                    delPossibleMove(meleeTile);
-                    meleeTile = thisTile+mapSize+1;
-                    delPossibleMove(meleeTile);
-                }
-            });
-        }
+        thisTile = tile.id;
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "zone" && bat.tileId === thisTile) {
+                r1Tile = thisTile-mapSize-1;
+                delPossibleMove(r1Tile);
+                r1Tile = thisTile-mapSize+1;
+                delPossibleMove(r1Tile);
+                r1Tile = thisTile+mapSize-1;
+                delPossibleMove(r1Tile);
+                r1Tile = thisTile+mapSize+1;
+                delPossibleMove(r1Tile);
+            }
+        });
     });
 };
 
 function uncheckBadMoves() {
     let alienOff = pdmOffsets(selectedBat.tileId);
     // enlève les possibleMoves qui éloignent du PDM
-    zone.forEach(function(tile) {
-        if (isAdjacent(selectedBat.tileId,tile.id)) {
-            tileOff = pdmOffsets(tile.id);
-            if (alienOff[0] < tileOff[0] || alienOff[1] < tileOff[1]) {
-                delPossibleMove(tile.id);
+    if (possibleMoves.length > 1) {
+        zone.forEach(function(tile) {
+            if (isAdjacent(selectedBat.tileId,tile.id)) {
+                if (possibleMoves.length > 1) {
+                    tileOff = pdmOffsets(tile.id);
+                    if (alienOff[0] < tileOff[0] || alienOff[1] < tileOff[1]) {
+                        delPossibleMove(tile.id);
+                    }
+                }
             }
-        }
-    });
+        });
+    }
     // enlève les possibleMoves vers l'eau
     if (possibleMoves.length > 1) {
         zone.forEach(function(tile) {
@@ -255,15 +270,78 @@ function uncheckBadMoves() {
             if (isAdjacent(selectedBat.tileId,tile.id)) {
                 if (possibleMoves.length > 1) {
                     tileOff = pdmOffsets(tile.id);
-                    if (alienOff[0] == tileOff[0] && alienOff[0] <= 4) {
-                        delPossibleMove(tile.id);
-                    }
-                    if (alienOff[1] == tileOff[1] && alienOff[1] <= 4) {
-                        delPossibleMove(tile.id);
+                    if (alienOff[0] <= 4 && alienOff[1] <= 4) {
+                        if (alienOff[0] == tileOff[0]) {
+                            delPossibleMove(tile.id);
+                        }
+                        if (alienOff[1] == tileOff[1]) {
+                            delPossibleMove(tile.id);
+                        }
                     }
                 }
             }
         });
+    }
+};
+
+function checkGoodMoves() {
+    // vérifie s'il y a un (ou des) moves parfaits et si oui : remplace possibleMoves
+    let goodMoves = [];
+    let thisTile;
+    if (selectedWeap.range === 0) {
+        let meleeTile;
+        zone.forEach(function(tile) {
+            thisTile = tile.id;
+            bataillons.forEach(function(bat) {
+                if (bat.loc === "zone" && bat.tileId === thisTile) {
+                    meleeTile = thisTile-1;
+                    if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
+                        goodMoves.push(meleeTile);
+                    }
+                    meleeTile = thisTile+1;
+                    if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
+                        goodMoves.push(meleeTile);
+                    }
+                    meleeTile = thisTile-mapSize;
+                    if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
+                        goodMoves.push(meleeTile);
+                    }
+                    meleeTile = thisTile+mapSize;
+                    if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
+                        goodMoves.push(meleeTile);
+                    }
+                }
+            });
+        });
+    } else if (selectedWeap.range === 1) {
+        let r1Tile;
+        zone.forEach(function(tile) {
+            thisTile = tile.id;
+            bataillons.forEach(function(bat) {
+                if (bat.loc === "zone" && bat.tileId === thisTile) {
+                    r1Tile = thisTile-mapSize-1;
+                    if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
+                        goodMoves.push(r1Tile);
+                    }
+                    r1Tile = thisTile-mapSize+1;
+                    if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
+                        goodMoves.push(r1Tile);
+                    }
+                    r1Tile = thisTile+mapSize-1;
+                    if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
+                        goodMoves.push(r1Tile);
+                    }
+                    r1Tile = thisTile+mapSize+1;
+                    if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
+                        goodMoves.push(r1Tile);
+                    }
+                }
+            });
+        });
+    }
+    if (goodMoves.length >= 1) {
+        possibleMoves = goodMoves;
+        console.log('ideal move found');
     }
 };
 
@@ -276,15 +354,25 @@ function delPossibleMove(delId) {
     }
 };
 
+function chooseMove() {
+    if (possibleMoves.length > 1) {
+        possibleMoves = [_.sample(possibleMoves)];
+    }
+};
+
+function doMove() {
+    let tileId = possibleMoves[0];
+    moveAlienBat(tileId);
+};
+
 function moveToPDM() {
     console.log('move to PDM');
     checkPossibleMoves();
+    checkGoodMoves();
     uncheckBadMoves();
+    chooseMove();
+    doMove();
     console.log(possibleMoves);
-};
-
-function moveToMelee() {
-    console.log('move to melee');
 };
 
 function moveOutOfMelee() {
@@ -299,16 +387,30 @@ function moveOutOfMelee() {
     if (possibleMoves.length < 1) {
         possibleMoves = oldPossibleMoves;
     }
+    chooseMove();
+    doMove();
     console.log(possibleMoves);
 };
 
-function moveToIdealRange() {
-    console.log('move to ideal range');
-    // le plus loin possible sans être en mêlée
-};
-
-function moveToRange1() {
-    console.log('move to range 1');
+function moveAlienBat(tileId) {
+    // remove unit and redraw old tile
+    tileUnselect();
+    $('#b'+selectedBat.tileId).empty();
+    // remove ap
+    let moveCost;
+    if (isDiag(selectedBat.tileId,tileId)) {
+        moveCost = calcMoveCost(tileId,true);
+    } else {
+        moveCost = calcMoveCost(tileId,false);
+    }
+    let apLost = about(moveCost,15);
+    selectedBat.apLeft = selectedBat.apLeft-apLost;
+    // move
+    selectedBat.tileId = tileId;
+    tileSelect(selectedBat);
+    showAlien(selectedBat);
+    // update arrays
+    selectedBatArrayUpdate();
 };
 
 function anyTargetInRange() {
@@ -351,7 +453,7 @@ function targetFarthest() {
             if (bat.loc === "zone") {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance <= selectedWeap.range) {
-                    if (lePlusLoin > distance) {
+                    if (lePlusLoin < distance) {
                         lePlusLoin = distance;
                         targetBat = JSON.parse(JSON.stringify(bat));
                         inPlace = true;

@@ -61,7 +61,7 @@ function moveInfos(bat) {
                     }
                     // montre le moveCost
                     if (terrainAccess(selectedBat.id,tile.id)) {
-                        moveCost = calcMoveCost(selectedBat.id,tile.id,isDiag(selectedBat.tileId,tile.id));
+                        moveCost = calcMoveCost(tile.id,isDiag(selectedBat.tileId,tile.id));
                         titleString = moveCost+" ap";
                         $("#"+tile.id).attr("title", titleString);
                     }
@@ -87,9 +87,9 @@ function moveSelectedBat(tileId,free) {
         // remove ap
         let moveCost;
         if (isDiag(selectedBat.tileId,tileId)) {
-            moveCost = calcMoveCost(selectedBat.id,tileId,true);
+            moveCost = calcMoveCost(tileId,true);
         } else {
-            moveCost = calcMoveCost(selectedBat.id,tileId,false);
+            moveCost = calcMoveCost(tileId,false);
         }
         let apLost = about(moveCost,15);
         selectedBat.apLeft = selectedBat.apLeft-apLost;
@@ -98,7 +98,7 @@ function moveSelectedBat(tileId,free) {
     tileSelect(selectedBat);
     showBataillon(selectedBat);
     showBatInfos(selectedBat);
-    // update arrays 
+    // update arrays
     selectedBatArrayUpdate();
 };
 
@@ -175,11 +175,9 @@ function terrainAccess(batId,targetTileId) {
     }
 };
 
-function calcMoveCost(batId,targetTileId,diag) {
-    let batIndex = bataillons.findIndex((obj => obj.id == batId));
-    let unitTypesIndex = unitTypes.findIndex((obj => obj.name == bataillons[batIndex].type));
+function calcMoveCost(targetTileId,diag) {
     let terIndex = terrainTypes.findIndex((obj => obj.name == zone[targetTileId].terrain));
-    let moveCost = unitTypes[unitTypesIndex].moveCost+terrainTypes[terIndex].mc;
+    let moveCost = selectedBatType.moveCost+terrainTypes[terIndex].mc;
     if (diag) {
         moveCost = Math.round(moveCost*1.42);
     }
