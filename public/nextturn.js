@@ -49,8 +49,8 @@ function nextTurnEnd() {
             bat.oldapLeft = bat.apLeft;
         }
     });
-    saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
-    saveAliens(); // !!!!!!!!!!!!!!!!!!!!!!
+    // saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
+    // saveAliens(); // !!!!!!!!!!!!!!!!!!!!!!
     createBatList();
     alienOccupiedTileList();
     setTimeout(function (){
@@ -97,6 +97,8 @@ function nextBat(removeActiveBat) {
     }
     if (batList.length >= 1) {
         batSelect(batList[0]);
+        showBatInfos(selectedBat);
+        showTileInfos(selectedBat.tileId);
     } else {
         batUnselect();
     }

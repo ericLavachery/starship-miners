@@ -51,7 +51,7 @@ let vetAccuracy = 6; // plus grand = moins de bonus (3 = x2.3) (2 = x3)
 let vetInitiative = 10; // plus grand = mieux (retire max vetInitiative*vet)
 let vetAP = 1; // 1 = +1 ap par niveau
 let nextExplosion = 1;
-let coverFactor = 1.5; // multiplie la cover du terrain (enlevé à accuracy)
+let coverFactor = 2; // multiplie la cover du terrain (enlevé à accuracy)
 let initiativeDice = 15 // ajoute 0-15
 let stopMe = false;
 let toHit = 0;

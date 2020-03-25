@@ -6,6 +6,7 @@ function clickFire(tileId) {
         if (alien.tileId === tileId && alien.loc === "zone") {
             alienBatHere = true;
             targetBat = JSON.parse(JSON.stringify(alien));
+            tileTarget(targetBat);
         }
     });
     checkTargetBatType();
@@ -25,6 +26,8 @@ function clickFire(tileId) {
             }
         } else {
             targetBat = {};
+            targetBatType = {};
+            targetWeap = {};
         }
     } else {
         // hors mêlée
@@ -42,6 +45,8 @@ function clickFire(tileId) {
             }
         } else {
             targetBat = {};
+            targetBatType = {};
+            targetWeap = {};
         }
     }
 };

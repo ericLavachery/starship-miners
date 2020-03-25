@@ -47,6 +47,7 @@ function clickSelect(tileId) {
 function batSelect(bat) {
     // remove selection on old selected unit
     tileUnselect();
+    tileUntarget();
     // draw new selected unit
     tileSelect(bat);
     selectedBat = JSON.parse(JSON.stringify(bat));
@@ -68,6 +69,7 @@ function batUnselect() {
     deleteMoveInfos();
     // remove selection on old selected unit
     tileUnselect();
+    tileUntarget();
     selectedBat = {};
     selectedBatType = {};
     selectedWeap = {};
@@ -89,9 +91,25 @@ function tileUnselect() {
 };
 
 function tileSelect(bat) {
-    // draw new selected unit
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
     terclass = 'ter'+tile.terrain+tile.seed;
     $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');
+};
+
+function tileUntarget() {
+    let terclass;
+    zone.forEach(function(tile) {
+        if ($('#'+tile.id).hasClass("terTarget")) {
+            terclass = 'ter'+tile.terrain+tile.seed;
+            $('#'+tile.id).removeClass('terTarget').addClass(terclass);
+        }
+    });
+};
+
+function tileTarget(bat) {
+    let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
+    let tile = zone[tileIndex];
+    terclass = 'ter'+tile.terrain+tile.seed;
+    $('#'+tile.id).removeClass(terclass).addClass('terTarget');
 };

@@ -1,3 +1,7 @@
+.terTarget {
+    background-color: #FFFFFF;
+    background-image: url(/static/img/wtiles/target.png);
+}
 .terUnderSel {
     background-color: #FFFFFF;
     background-image: url(/static/img/wtiles/selected.png);

@@ -36,6 +36,8 @@ function selectedBatArrayUpdate() {
     if (selectedBat.team == 'player') {
         let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
         bataillons[batIndex] = selectedBat;
+        batIndex = batList.findIndex((obj => obj.id == selectedBat.id));
+        batList[batIndex] = selectedBat;
     } else if (selectedBat.team == 'aliens') {
         let batIndex = aliens.findIndex((obj => obj.id == selectedBat.id));
         aliens[batIndex] = selectedBat;

@@ -9,6 +9,7 @@ function alienMoveLoop() {
     // show attaqued bat
     $('#report').empty('');
     checkPDM();
+    tileUntarget();
     targetBat = {};
     targetBatType = {};
     targetWeap = {};
@@ -88,6 +89,7 @@ function chooseTarget() {
 function shootTarget() {
     console.log('shoot '+targetBat.type);
     checkTargetBatType();
+    tileTarget(targetBat);
     combat();
 };
 
@@ -534,6 +536,9 @@ function nextAlien() {
     }
     if (alienList.length >= 1) {
         batSelect(alienList[0]);
+        showEnemyBatInfos(selectedBat);
+        showTileInfos(selectedBat.tileId);
+        tileUntarget();
         selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
         selectedWeap = weaponAdj(selectedWeap,selectedBat,'w1');
         console.log('----------------------');
