@@ -156,7 +156,7 @@ function attack() {
     targetBat.squadsLeft = targetBat.squadsLeft-squadsOut;
     console.log('Squads Out : '+squadsOut);
     if (squadsOut >= 1) {
-        $('#report').append('<span class="report cy">Escouades: -'+squadsOut+'</span><span class="report">/'+targetBat.squadsLeft+'<br></span>');
+        $('#report').append('<span class="report cy">Escouades: -'+squadsOut+'</span><span class="report">('+targetBat.squadsLeft+')<br></span>');
     }
     targetBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+targetBat.damage);
@@ -213,7 +213,7 @@ function defense() {
     selectedBat.squadsLeft = selectedBat.squadsLeft-squadsOut;
     console.log('Squads Out : '+squadsOut);
     if (squadsOut >= 1) {
-        $('#report').append('<span class="report cy">Escouades: -'+squadsOut+'</span><span class="report">/'+selectedBat.squadsLeft+'<br></span>');
+        $('#report').append('<span class="report cy">Escouades: -'+squadsOut+'</span><span class="report">('+selectedBat.squadsLeft+')<br></span>');
     }
     selectedBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+selectedBat.damage);

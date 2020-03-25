@@ -49,12 +49,13 @@ function batSelect(bat) {
     tileUnselect();
     tileUntarget();
     selectedBat = JSON.parse(JSON.stringify(bat));
+    console.log(selectedBat);
     centerMap();
     // draw new selected unit
     tileSelect(bat);
     let batTypeIndex;
     if (selectedBat.team == 'player') {
-        batTypeIndex = bataillons.findIndex((obj => obj.id == selectedBat.typeId));
+        batTypeIndex = unitTypes.findIndex((obj => obj.id == selectedBat.typeId));
         selectedBatType = JSON.parse(JSON.stringify(unitTypes[batTypeIndex]));
     } else if (selectedBat.team == 'aliens') {
         batTypeIndex = alienUnits.findIndex((obj => obj.id == selectedBat.typeId));

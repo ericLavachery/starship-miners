@@ -49,8 +49,8 @@ function nextTurnEnd() {
             bat.oldapLeft = bat.apLeft;
         }
     });
-    // saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
-    // saveAliens(); // !!!!!!!!!!!!!!!!!!!!!!
+    saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
+    saveAliens(); // !!!!!!!!!!!!!!!!!!!!!!
     createBatList();
     alienOccupiedTileList();
     setTimeout(function (){
@@ -78,7 +78,7 @@ function createBatList() {
     });
     batList = _.sortBy(_.sortBy(_.sortBy(zoneBatList,'id'),'typeId'),'range');
     commandes();
-    // console.log(batList);
+    console.log(batList);
 };
 
 function nextBat(removeActiveBat) {
@@ -102,5 +102,5 @@ function nextBat(removeActiveBat) {
     } else {
         batUnselect();
     }
-    // console.log(batList);
+    console.log(batList);
 };
