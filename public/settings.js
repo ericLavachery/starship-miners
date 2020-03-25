@@ -54,7 +54,7 @@ let nextExplosion = 1;
 let coverFactor = 2; // multiplie la cover du terrain (enlevé à accuracy)
 let initiativeDice = 15 // ajoute 0-15
 let stopMe = false;
-let toHit = 0;
+let toHit = 999;
 let activeTurn = 'player';
 // ALIENS
 let pointDeMire = 1830; // tileId

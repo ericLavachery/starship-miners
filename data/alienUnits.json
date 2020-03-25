@@ -1,7 +1,7 @@
 [
 {
     "id": 0,
-    "name": "Punaise",
+    "name": "Bug",
     "pic": "spiderred",
     "cat": "aliens",
     "squads": 6,
@@ -145,6 +145,37 @@
         "accuracy": 20,
         "power": 20,
         "aoe": "squad",
+        "sound": "SQUISH11",
+        "ammo": [ "none" ]
+        },
+    "weapon2": {},
+    "moveCost": 2,
+    "maxFlood": 3,
+    "maxScarp": 3,
+    "maxVeg": 3
+},
+{
+    "id": 5,
+    "name": "Punaise",
+    "pic": "sspider",
+    "cat": "aliens",
+    "squads": 6,
+    "squadSize": 10,
+    "crew": 1,
+    "hp": 9,
+    "armor": 5,
+    "size": 4,
+    "stealth": 10,
+    "ap": 15,
+    "maxSalvo": 1,
+    "weapon": {
+        "name": "Mandibules",
+        "cost": 2,
+        "range": 0,
+        "rof": 10,
+        "accuracy": 22,
+        "power": 5,
+        "aoe": "unit",
         "sound": "SQUISH11",
         "ammo": [ "none" ]
         },

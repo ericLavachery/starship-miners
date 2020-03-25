@@ -67,7 +67,7 @@ function checkTargetBatType() {
 
 function combat() {
     attAlive = true;
-    defAlive = true;
+    defAlive = true;report
     $('#report').empty('');
     $('#report').append('<span class="report or">'+selectedBat.type+'</span> <span class="report">vs</span> <span class="report or">'+targetBat.type+'</span><br>');
     weaponSelectRiposte();
@@ -134,7 +134,7 @@ function attack() {
     // rof*squadsLeft loop
     let shots = selectedWeap.rof*selectedBat.squadsLeft;
     let totalDamage = 0;
-    toHit = 0;
+    toHit = 999;
     i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
@@ -156,7 +156,7 @@ function attack() {
     targetBat.squadsLeft = targetBat.squadsLeft-squadsOut;
     console.log('Squads Out : '+squadsOut);
     if (squadsOut >= 1) {
-        $('#report').append('<span class="report cy">Escouades: -'+squadsOut+'<br></span>');
+        $('#report').append('<span class="report cy">Escouades: -'+squadsOut+'</span><span class="report">/'+targetBat.squadsLeft+'<br></span>');
     }
     targetBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+targetBat.damage);
@@ -191,7 +191,7 @@ function defense() {
     console.log(shots);
     console.log(aoeShots);
     let totalDamage = 0;
-    toHit = 0;
+    toHit = 999;
     i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
@@ -213,7 +213,7 @@ function defense() {
     selectedBat.squadsLeft = selectedBat.squadsLeft-squadsOut;
     console.log('Squads Out : '+squadsOut);
     if (squadsOut >= 1) {
-        $('#report').append('<span class="report cy">Escouades: -'+squadsOut+'<br></span>');
+        $('#report').append('<span class="report cy">Escouades: -'+squadsOut+'</span><span class="report">/'+selectedBat.squadsLeft+'<br></span>');
     }
     selectedBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+selectedBat.damage);
@@ -291,7 +291,7 @@ function isHit(accuracy,aoe,size,stealth,cover) {
     }
     let dice = rand.rand(1,100);
     let hitChance = Math.round(Math.sqrt(size)*prec);
-    if (toHit === 0) {
+    if (toHit === 999) {
         toHit = hitChance;
         $('#report').append('<span class="report">Précision: '+toHit+'%</span><br><span class="report">Dégâts: </span>');
     }

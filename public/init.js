@@ -22,8 +22,9 @@ socket.on('savedMap-Load', function(sm) {
     if (savedMap.length >= (mapSize*mapSize)-1) {
         zone = savedMap;
         writeMapStyles();
+        xOffset = 30-Math.round(numVTiles/2);
+        yOffset = 30-Math.round(numHTiles/2);
         showMap(zone);
-        centerMapCenter();
     } else {
         generateNewMap();
     }
