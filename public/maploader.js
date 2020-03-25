@@ -20,6 +20,9 @@ function showMap(wmap) {
         $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')" title="#'+tile.id+'"><span class="bigIcon" id="b'+tile.id+'">'+resHere+'</span><br></div>');
         bataillons.forEach(function(bat) {
             if (bat.tileId === tile.id && bat.loc === "zone") {
+                if (bat.tileId === selectedBat.tileId) {
+                    tileSelect(bat);
+                }
                 showBataillon(bat);
             }
         });

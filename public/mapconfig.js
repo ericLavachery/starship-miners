@@ -33,11 +33,13 @@ function areaMove(direction) {
     }
     areaGo(x,y);
 };
+
 function areaGo(x,y) {
     xOffset = x;
     yOffset = y;
     showMap(zone);
 };
+
 function yourMapSize() {
     let screenH = window.screen.availWidth;
     let screenV = window.screen.availHeight;
@@ -52,5 +54,40 @@ function yourMapSize() {
     numHTiles = Number(prompt('Nombre de terrains vus horizontalement (x)',defH));
     numVTiles = Number(prompt('Nombre de terrains vus horizontalement (y)',defV));
     writeMapStyles();
+    showMap(zone);
+};
+
+function limitOffset() {
+    if (xOffset < 0) {
+        xOffset = 0;
+    }
+    if (yOffset < 0) {
+        yOffset = 0;
+    }
+    if (xOffset > 60-numVTiles) {
+        xOffset = 60-numVTiles;
+    }
+    if (yOffset > 60-numHTiles) {
+        yOffset = 60-numHTiles;
+    }
+};
+
+function centerMap() {
+    // center on selectedBat
+    myTileX = zone[selectedBat.tileId].x;
+    myTileY = zone[selectedBat.tileId].y;
+    xOffset = myTileX-Math.round(numVTiles/2);
+    yOffset = myTileY-Math.round(numHTiles/2);
+    limitOffset();
+    showMap(zone);
+};
+
+function centerMapCenter() {
+    // center on selectedBat
+    myTileX = zone[1830].x;
+    myTileY = zone[1830].y;
+    xOffset = myTileX-Math.round(numVTiles/2);
+    yOffset = myTileY-Math.round(numHTiles/2);
+    limitOffset();
     showMap(zone);
 };

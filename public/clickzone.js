@@ -48,9 +48,10 @@ function batSelect(bat) {
     // remove selection on old selected unit
     tileUnselect();
     tileUntarget();
+    selectedBat = JSON.parse(JSON.stringify(bat));
+    centerMap();
     // draw new selected unit
     tileSelect(bat);
-    selectedBat = JSON.parse(JSON.stringify(bat));
     let batTypeIndex;
     if (selectedBat.team == 'player') {
         batTypeIndex = bataillons.findIndex((obj => obj.id == selectedBat.typeId));

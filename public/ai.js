@@ -133,7 +133,7 @@ function checkPDM() {
         });
     }
     if (pointDeMire < 0) {
-        pointDeMire = 1800;
+        pointDeMire = 1830;
     }
     console.log('PDM: '+pointDeMire);
 };

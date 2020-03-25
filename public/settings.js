@@ -57,7 +57,7 @@ let stopMe = false;
 let toHit = 0;
 let activeTurn = 'player';
 // ALIENS
-let pointDeMire = 1800; // tileId
+let pointDeMire = 1830; // tileId
 let possibleMoves = []; // list of tile ids
 let isMelee = false;
 let closeTargetRange = 4; // à ce range, se dirige vers ce bataillon plutôt que vers le point de mire

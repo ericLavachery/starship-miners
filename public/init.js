@@ -23,6 +23,7 @@ socket.on('savedMap-Load', function(sm) {
         zone = savedMap;
         writeMapStyles();
         showMap(zone);
+        centerMapCenter();
     } else {
         generateNewMap();
     }
