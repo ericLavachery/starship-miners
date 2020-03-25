@@ -7,6 +7,7 @@ function alienTurn() {
 function alienMoveLoop() {
     // move map at the end of the alien moves
     // show attaqued bat
+    $('#report').empty('');
     checkPDM();
     targetBat = {};
     targetBatType = {};
@@ -86,10 +87,8 @@ function chooseTarget() {
 
 function shootTarget() {
     console.log('shoot '+targetBat.type);
-    // remove ap & salvo
-    selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
-    selectedBat.salvoLeft = selectedBat.salvoLeft-1;
-    selectedBatArrayUpdate();
+    checkTargetBatType();
+    combat();
 };
 
 function checkPDM() {

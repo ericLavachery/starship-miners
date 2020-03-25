@@ -54,11 +54,11 @@ let nextExplosion = 1;
 let coverFactor = 1.5; // multiplie la cover du terrain (enlevé à accuracy)
 let initiativeDice = 15 // ajoute 0-15
 let stopMe = false;
-let activeTurn = 'player';
 let toHit = 0;
+let activeTurn = 'player';
 // ALIENS
 let pointDeMire = 1800; // tileId
 let possibleMoves = []; // list of tile ids
 let isMelee = false;
 let closeTargetRange = 4; // à ce range, se dirige vers ce bataillon plutôt que vers le point de mire
-let closeTargetRangeDice = 3; // 2 dés 
+let closeTargetRangeDice = 3; // 2 dés

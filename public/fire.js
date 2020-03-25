@@ -8,17 +8,7 @@ function clickFire(tileId) {
             targetBat = JSON.parse(JSON.stringify(alien));
         }
     });
-    let targetBatUnitIndex;
-    if (targetBat.team == 'player') {
-        targetBatUnitIndex = unitTypes.findIndex((obj => obj.id == targetBat.typeId));
-        targetBatType = unitTypes[targetBatUnitIndex];
-    } else if (targetBat.team == 'aliens') {
-        targetBatUnitIndex = alienUnits.findIndex((obj => obj.id == targetBat.typeId));
-        targetBatType = alienUnits[targetBatUnitIndex];
-    } else if (targetBat.team == 'locals') {
-        targetBatUnitIndex = localUnits.findIndex((obj => obj.id == targetBat.typeId));
-        targetBatType = localUnits[targetBatUnitIndex];
-    }
+    checkTargetBatType();
     if (isMelee) {
         // en mêlée : choix limité de cibles
         if (isInMelee(selectedBat.tileId,tileId)) {
@@ -56,6 +46,20 @@ function clickFire(tileId) {
     }
 };
 
+function checkTargetBatType() {
+    let targetBatUnitIndex;
+    if (targetBat.team == 'player') {
+        targetBatUnitIndex = unitTypes.findIndex((obj => obj.id == targetBat.typeId));
+        targetBatType = unitTypes[targetBatUnitIndex];
+    } else if (targetBat.team == 'aliens') {
+        targetBatUnitIndex = alienUnits.findIndex((obj => obj.id == targetBat.typeId));
+        targetBatType = alienUnits[targetBatUnitIndex];
+    } else if (targetBat.team == 'locals') {
+        targetBatUnitIndex = localUnits.findIndex((obj => obj.id == targetBat.typeId));
+        targetBatType = localUnits[targetBatUnitIndex];
+    }
+};
+
 function combat() {
     attAlive = true;
     defAlive = true;
@@ -81,32 +85,32 @@ function combat() {
     if (riposte) {
         if (initiative) {
             // stopMe = true;
-            blockMe(true);
+            if (activeTurn == 'player') {blockMe(true);}
             attack();
             setTimeout(function (){
                 if (defAlive) {
                     defense();
                 }
                 // stopMe = false;
-                blockMe(false);
+                if (activeTurn == 'player') {blockMe(false);}
             }, 2500); // How long do you want the delay to be (in milliseconds)?
         } else {
             // stopMe = true;
-            blockMe(true);
+            if (activeTurn == 'player') {blockMe(true);}
             defense();
             setTimeout(function (){
                 if (attAlive) {
                     attack();
                 }
                 // stopMe = false;
-                blockMe(false);
+                if (activeTurn == 'player') {blockMe(false);}
             }, 2500); // How long do you want the delay to be (in milliseconds)?
         }
     } else {
-        blockMe(true);
+        if (activeTurn == 'player') {blockMe(true);}
         attack();
         setTimeout(function (){
-            blockMe(false);
+            if (activeTurn == 'player') {blockMe(false);}
         }, 2000); // How long do you want the delay to be (in milliseconds)?
     }
 };

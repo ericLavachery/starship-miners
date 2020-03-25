@@ -7,6 +7,20 @@ function nextTurn() {
     batUnstack();
     batUnselect();
 
+    // récup des aliens
+    let unitTypesIndex;
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            unitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
+            bat.salvoLeft = alienUnits[unitIndex].maxSalvo;
+            bat.apLeft = bat.apLeft+alienUnits[unitIndex].ap;
+            if (bat.apLeft > alienUnits[unitIndex].ap) {
+                bat.apLeft = alienUnits[unitIndex].ap;
+            }
+            bat.oldTileId = bat.tileId;
+            bat.oldapLeft = bat.apLeft;
+        }
+    });
     alienTurn();
 
     // mouvement des aliens
@@ -20,6 +34,8 @@ function nextTurn() {
 };
 
 function nextTurnEnd() {
+    $('#report').empty('');
+    // récup du player
     let unitTypesIndex;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -33,8 +49,8 @@ function nextTurnEnd() {
             bat.oldapLeft = bat.apLeft;
         }
     });
-    // saveBataillons(); !!!!!!!!!!!!!!!!!!!!!!!!
-    // saveAliens(); !!!!!!!!!!!!!!!!!!!!!!
+    saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
+    saveAliens(); // !!!!!!!!!!!!!!!!!!!!!!
     createBatList();
     alienOccupiedTileList();
     setTimeout(function (){
