@@ -74,12 +74,14 @@ function limitOffset() {
 
 function centerMap() {
     // center on selectedBat
-    myTileX = zone[selectedBat.tileId].x;
-    myTileY = zone[selectedBat.tileId].y;
-    xOffset = myTileX-Math.round(numVTiles/2);
-    yOffset = myTileY-Math.round(numHTiles/2);
-    limitOffset();
-    showMap(zone);
+    if (selectedBat.id > -1) {
+        myTileX = zone[selectedBat.tileId].x;
+        myTileY = zone[selectedBat.tileId].y;
+        xOffset = myTileX-Math.round(numVTiles/2);
+        yOffset = myTileY-Math.round(numHTiles/2);
+        limitOffset();
+        showMap(zone);
+    }
 };
 
 function centerMapCenter() {

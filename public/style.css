@@ -36,6 +36,12 @@ body {
     cursor: pointer;
     -webkit-text-stroke: 0;
 }
+.klyk:hover {
+    color: #f77a28;
+    cursor: pointer;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
+}
 h1,h2,h3,h4 {
     font-size: 16px;
     /* font-weight: bold; */
@@ -73,7 +79,14 @@ h4 {
     -webkit-text-stroke-color: #000000;
 }
 .mapSize {
-    margin: 35px 0 0 15px;
+    margin: 12px 0 0 13px;
+    color: #d5cabd;
+    font-size: 24px;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
+}
+.mapCenter {
+    margin: 17px 0 0 12px;
     color: #d5cabd;
     font-size: 24px;
     -webkit-text-stroke: 1px;

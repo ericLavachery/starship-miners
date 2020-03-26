@@ -46,11 +46,14 @@ function clickSelect(tileId) {
 
 function batSelect(bat) {
     // remove selection on old selected unit
+    $('#report').empty('');
     tileUnselect();
     tileUntarget();
     selectedBat = JSON.parse(JSON.stringify(bat));
     console.log(selectedBat);
-    centerMap();
+    if (activeTurn == 'aliens') {
+        centerMap();
+    }
     // draw new selected unit
     tileSelect(bat);
     let batTypeIndex;

@@ -38,22 +38,25 @@
                                         <table>
                                             <tr>
                                                 <td class="rosevents"></td>
-                                                <td class="rosevents klik" onclick="areaMove('n')" title="nord"><i class="fas fa-angle-up"></i></td>
+                                                <td class="rosevents klyk" onclick="areaMove('n')" title="nord"><i class="fas fa-angle-up"></i></td>
                                                 <td class="rosevents"></td>
                                             </tr>
                                             <tr>
-                                                <td class="rosevents klik" onclick="areaMove('w')" title="ouest"><i class="fas fa-angle-left"></i></td>
+                                                <td class="rosevents klyk" onclick="areaMove('w')" title="ouest"><i class="fas fa-angle-left"></i></td>
                                                 <td class="rosevents"></td>
-                                                <td class="rosevents klik" onclick="areaMove('e')" title="est"><i class="fas fa-angle-right"></i></td>
+                                                <td class="rosevents klyk" onclick="areaMove('e')" title="est"><i class="fas fa-angle-right"></i></td>
                                             </tr>
                                             <tr>
                                                 <td class="rosevents"></td>
-                                                <td class="rosevents klik" onclick="areaMove('s')" title="sud"><i class="fas fa-angle-down"></i></td>
+                                                <td class="rosevents klyk" onclick="areaMove('s')" title="sud"><i class="fas fa-angle-down"></i></td>
                                                 <td class="rosevents"></td>
                                             </tr>
                                         </table>
                                     </td>
-                                    <td><i class="fas fa-expand-arrows-alt mapSize klik" onclick="yourMapSize()" title="Changer la taille de la carte"></i></td>
+                                    <td>
+                                        <i class="fas fa-crosshairs mapCenter klyk" onclick="centerMap()" title="Centrer la carte sur le bataillon actif"></i><br>
+                                        <i class="fas fa-expand-arrows-alt mapSize klyk" onclick="yourMapSize()" title="Changer la taille de la carte"></i>
+                                    </td>
                                 </tr>
                             </table>
                         </div>

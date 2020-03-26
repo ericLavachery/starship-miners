@@ -111,7 +111,7 @@
         "cost": 4,
         "range": 1,
         "rof": 6,
-        "accuracy": 18,
+        "accuracy": 30,
         "power": 8,
         "aoe": "unit",
         "sound": "SQUISH11",

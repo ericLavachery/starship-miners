@@ -59,11 +59,11 @@
         "name": "Mitrailleuse",
         "cost": 4,
         "range": 1,
-        "rof": 9,
+        "rof": 12,
         "accuracy": 14,
         "power": 8,
         "aoe": "unit",
-        "sound": "MachineGun3b",
+        "sound": "warfare_gunshots_machine_gun_burst_005b",
         "ammo": [ "standard", "hollow", "perfo", "tungsten", "uranium" ]
         },
     "weapon2": {
@@ -74,7 +74,7 @@
         "accuracy": 10,
         "power": 25,
         "aoe": "squad",
-        "sound": "audio_hero_Explosion7LargeBoo_TE026301_348",
+        "sound": "audio_hero_GunCannon_DIGIJ02_20_6_370b",
         "ammo": [ "standard" ]
         },
     "moveCost": 3,
@@ -95,11 +95,11 @@
     "armor": 15,
     "size": 75,
     "stealth": 0,
-    "ap": 12,
+    "ap": 15,
     "maxSalvo": 4,
     "weapon": {
         "name": "Canon",
-        "cost": 3,
+        "cost": 5,
         "range": 4,
         "rof": 1,
         "accuracy": 12,

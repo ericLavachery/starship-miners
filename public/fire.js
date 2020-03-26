@@ -68,8 +68,10 @@ function checkTargetBatType() {
 function combat() {
     attAlive = true;
     defAlive = true;
+    let selectedBatUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
+    let targetBatUnits = targetBat.squadsLeft*targetBatType.squadSize;
     $('#report').empty('');
-    $('#report').append('<span class="report or">'+selectedBat.type+'</span> <span class="report">vs</span> <span class="report or">'+targetBat.type+'</span><br>');
+    $('#report').append('<span class="report or">'+selectedBatUnits+' '+selectedBat.type+'</span> <span class="report">vs</span> <span class="report or">'+targetBatUnits+' '+targetBat.type+'</span><br>');
     weaponSelectRiposte();
     // console.log(targetWeap);
     let distance = calcDistance(selectedBat.tileId,targetBat.tileId);

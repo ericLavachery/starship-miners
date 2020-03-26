@@ -6,8 +6,9 @@ function alienTurn() {
 
 function alienMoveLoop() {
     // move map at the end of the alien moves
-    // show attaqued bat
     $('#report').empty('');
+    attAlive = true;
+    defAlive = true;
     checkPDM();
     tileUntarget();
     targetBat = {};
@@ -19,7 +20,11 @@ function alienMoveLoop() {
     while (i <= 20) {
         console.log('ap:'+selectedBat.apLeft+' salvo:'+selectedBat.salvoLeft);
         if (selectedBat.apLeft >= 1 && selectedBat.salvoLeft >= 1) {
-            chooseTarget();
+            if (attAlive) {
+                chooseTarget();
+            } else {
+                break;
+            }
         } else {
             break;
         }
@@ -532,7 +537,8 @@ function createAlienList() {
 function nextAlien() {
     // activated by click
     if (Object.keys(selectedBat).length >= 1) {
-        alienList.shift();
+        let batIndex = alienList.findIndex((obj => obj.id == selectedBat.id));
+        alienList.splice(batIndex,1);
     }
     if (alienList.length >= 1) {
         batSelect(alienList[0]);

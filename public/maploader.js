@@ -60,18 +60,20 @@ function showAlien(bat) {
     let unitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
     let batPic = alienUnits[unitIndex].pic;
     let batCat = alienUnits[unitIndex].cat;
+    let unitsLeft = bat.squadsLeft*alienUnits[unitIndex].squadSize;
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
-    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png"></div>'+resHere);
+    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div>'+resHere);
 };
 
 function showBataillon(bat) {
     let unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     let batPic = unitTypes[unitIndex].pic;
     let batCat = unitTypes[unitIndex].cat;
+    let unitsLeft = bat.squadsLeft*unitTypes[unitIndex].squadSize;
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
-    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
+    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
 };
 
 function hideBataillon(bat) {

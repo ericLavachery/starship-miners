@@ -89,10 +89,7 @@ function nextBat(removeActiveBat) {
         let batIndex = batList.findIndex((obj => obj.id == selectedBat.id));
         if (removeActiveBat) {
             // remove bat from batList
-            // batList.shift();
-            if (batIndex > -1) {
-                batList.splice(batIndex,1);
-            }
+            batList.splice(batIndex,1);
         } else {
             // push the bat at the end of batList
             batList.push(batList.splice(batIndex,1)[0]);

@@ -38,7 +38,8 @@ function showBatInfos(bat) {
     $('#unitInfos').empty();
     let unitTypesIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     let batUnitType = unitTypes[unitTypesIndex];
-    $('#unitInfos').append('<span class="blockTitle"><h3>'+batUnitType.name+'</h3></span>');
+    let unitsLeft = bat.squadsLeft*batUnitType.squadSize;
+    $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batUnitType.name+'</h3></span>');
     // AP
     let hourglass = 'start';
     if (bat.apLeft <= 0) {
@@ -49,6 +50,8 @@ function showBatInfos(bat) {
     $('#unitInfos').append('<span class="paramName">Points d\'action</span><span class="paramIcon"><i class="fas fa-hourglass-'+hourglass+'"></i></span><span id="infosMovesLeft" class="paramValue">'+bat.apLeft+'/'+batUnitType.ap+'</span><br>');
     // SQUADS
     $('#unitInfos').append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span id="infosMovesLeft" class="paramValue">'+bat.squadsLeft+'/'+batUnitType.squads+'</span><br>');
+    let squadHP = batUnitType.squadSize*batUnitType.hp;
+    $('#unitInfos').append('<span class="paramName">Dégâts</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span id="infosMovesLeft" class="paramValue">'+bat.damage+'/'+squadHP+'</span><br>');
     $('#unitInfos').append('<span class="paramName">Unités par escouade</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.squadSize+'</span><br>');
     let totalCrew = batUnitType.crew*batUnitType.squadSize*batUnitType.squads;
     $('#unitInfos').append('<span class="paramName">Personnel</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+totalCrew+'</span><br>');
@@ -135,9 +138,12 @@ function showEnemyBatInfos(bat) {
     $('#unitInfos').empty();
     let alienUnitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
     let batUnitType = alienUnits[alienUnitIndex];
-    $('#unitInfos').append('<span class="blockTitle"><h3>'+batUnitType.name+'</h3></span>');
+    let unitsLeft = bat.squadsLeft*batUnitType.squadSize;
+    $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batUnitType.name+'</h3></span>');
     // SQUADS
     $('#unitInfos').append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span id="infosMovesLeft" class="paramValue">'+bat.squadsLeft+'/'+batUnitType.squads+'</span><br>');
+    let squadHP = batUnitType.squadSize*batUnitType.hp;
+    $('#unitInfos').append('<span class="paramName">Dégâts</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span id="infosMovesLeft" class="paramValue">'+bat.damage+'/'+squadHP+'</span><br>');
     $('#unitInfos').append('<span class="paramName">Unités par escouade</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.squadSize+'</span><br>');
     // PROTECTION
     $('#unitInfos').append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span id="infosMovesLeft" class="paramValue">'+batUnitType.hp+'</span><br>');
