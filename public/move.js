@@ -177,7 +177,12 @@ function terrainAccess(batId,targetTileId) {
 
 function calcMoveCost(targetTileId,diag) {
     let terIndex = terrainTypes.findIndex((obj => obj.name == zone[targetTileId].terrain));
-    let moveCost = selectedBatType.moveCost+terrainTypes[terIndex].mc;
+    let moveCost;
+    if (selectedBat.team == 'aliens') {
+        moveCost = selectedBatType.moveCost+terrainTypes[terIndex].alienmc;
+    } else {
+        moveCost = selectedBatType.moveCost+terrainTypes[terIndex].mc;
+    }
     if (diag) {
         moveCost = Math.round(moveCost*1.42);
     }

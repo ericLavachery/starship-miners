@@ -1,4 +1,5 @@
 function alienTurn() {
+    $('#report').empty('');
     createAlienList();
     // show the alien NEXT button
     // -> nextAlien

@@ -7,7 +7,9 @@
         "veg": 0,
         "mc": 6,
         "roadmc": 3,
-        "cover": 5
+        "alienmc": 2,
+        "cover": 9,
+        "aliencover": 9
     },
     {
         "name": "H",
@@ -17,7 +19,9 @@
         "veg": 0,
         "mc": 2,
         "roadmc": 0,
-        "cover": 2
+        "alienmc": 1,
+        "cover": 3,
+        "aliencover": 3
     },
     {
         "name": "P",
@@ -27,7 +31,9 @@
         "veg": 0,
         "mc": 0,
         "roadmc": -1,
-        "cover": 1
+        "alienmc": 0,
+        "cover": 0,
+        "aliencover": 0
     },
     {
         "name": "G",
@@ -37,7 +43,9 @@
         "veg": 1,
         "mc": 0,
         "roadmc": -1,
-        "cover": 1
+        "alienmc": 0,
+        "cover": 1,
+        "aliencover": 1
     },
     {
         "name": "B",
@@ -47,7 +55,9 @@
         "veg": 2,
         "mc": 0,
         "roadmc": -1,
-        "cover": 2
+        "alienmc": 0,
+        "cover": 4,
+        "aliencover": 4
     },
     {
         "name": "F",
@@ -57,7 +67,9 @@
         "veg": 3,
         "mc": 1,
         "roadmc": -1,
-        "cover": 3
+        "alienmc": 1,
+        "cover": 6,
+        "aliencover": 6
     },
     {
         "name": "S",
@@ -67,7 +79,9 @@
         "veg": 1,
         "mc": 3,
         "roadmc": 0,
-        "cover": 0
+        "alienmc": 4,
+        "cover": 0,
+        "aliencover": -3
     },
     {
         "name": "W",
@@ -77,7 +91,9 @@
         "veg": 0,
         "mc": 4,
         "roadmc": 1,
-        "cover": 0
+        "alienmc": 6,
+        "cover": -2,
+        "aliencover": -6
     },
     {
         "name": "R",
@@ -87,6 +103,8 @@
         "veg": 0,
         "mc": 6,
         "roadmc": 1,
-        "cover": 0
+        "alienmc": 7,
+        "cover": -2,
+        "aliencover": -8
     }
 ]

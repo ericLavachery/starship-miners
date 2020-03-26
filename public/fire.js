@@ -174,6 +174,11 @@ function attack() {
         }, 2000); // How long do you want the delay to be (in milliseconds)?
     } else {
         // targetBatArrayUpdate();
+        if (targetBat.team == 'player') {
+            showBataillon(targetBat);
+        } else {
+            showAlien(targetBat);
+        }
     }
     // remove ap & salvo
     selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
@@ -233,6 +238,11 @@ function defense() {
         }, 2000); // How long do you want the delay to be (in milliseconds)?
     } else {
         // selectedBatArrayUpdate();
+        if (selectedBat.team == 'player') {
+            showBataillon(selectedBat);
+        } else {
+            showAlien(selectedBat);
+        }
     }
     // remove ap
     targetBat.apLeft = targetBat.apLeft-1;
@@ -328,7 +338,11 @@ function getCover(bat) {
     let tile = zone[tileIndex];
     let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
     let terrain = terrainTypes[terrainIndex];
-    return terrain.cover;
+    if (bat.team == 'aliens') {
+        return terrain.aliencover;
+    } else {
+        return terrain.cover;
+    }
 };
 
 function calcSpeed(bat,weap,type,distance,attacking) {
@@ -466,6 +480,7 @@ function batDeath(bat) {
         let batIndex = locals.findIndex((obj => obj.id == bat.id));
         locals.splice(batIndex,1);
     }
+    alienOccupiedTileList();
 };
 
 function batDeathEffect(bat) {
