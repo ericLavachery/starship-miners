@@ -66,8 +66,10 @@ function checkTargetBatType() {
 };
 
 function combat() {
-    attAlive = true;
-    defAlive = true;
+    if (activeTurn == 'player') {
+        attAlive = true;
+        defAlive = true;
+    }
     let selectedBatUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
     let targetBatUnits = targetBat.squadsLeft*targetBatType.squadSize;
     $('#report').empty('');
@@ -137,7 +139,7 @@ function attack() {
     let shots = selectedWeap.rof*selectedBat.squadsLeft;
     let totalDamage = 0;
     toHit = 999;
-    i = 1;
+    let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
             totalDamage = totalDamage+blast(aoeShots,selectedWeap,targetBat,targetBatType);
@@ -162,14 +164,16 @@ function attack() {
     }
     targetBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+targetBat.damage);
+    targetBatArrayUpdate();
     if (targetBat.squadsLeft <= 0) {
         defAlive = false;
+        batDeath(targetBat);
         setTimeout(function (){
-            batDeath(targetBat);
+            batDeathEffect(targetBat);
             $('#report').append('<span class="report cy">Bataillon détruit<br></span>');
         }, 2000); // How long do you want the delay to be (in milliseconds)?
     } else {
-        targetBatArrayUpdate();
+        // targetBatArrayUpdate();
     }
     // remove ap & salvo
     selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
@@ -190,11 +194,11 @@ function defense() {
     }
     // rof*squadsLeft loop
     let shots = targetWeap.rof*targetBat.squadsLeft;
-    console.log(shots);
-    console.log(aoeShots);
+    // console.log(shots);
+    // console.log(aoeShots);
     let totalDamage = 0;
     toHit = 999;
-    i = 1;
+    let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
             totalDamage = totalDamage+blast(aoeShots,targetWeap,selectedBat,selectedBatType);
@@ -219,14 +223,16 @@ function defense() {
     }
     selectedBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+selectedBat.damage);
+    selectedBatArrayUpdate();
     if (selectedBat.squadsLeft <= 0) {
         attAlive = false;
+        batDeath(selectedBat);
         setTimeout(function (){
-            batDeath(selectedBat);
+            batDeathEffect(selectedBat);
             $('#report').append('<span class="report cy">Bataillon détruit<br></span>');
         }, 2000); // How long do you want the delay to be (in milliseconds)?
     } else {
-        selectedBatArrayUpdate();
+        // selectedBatArrayUpdate();
     }
     // remove ap
     targetBat.apLeft = targetBat.apLeft-1;
@@ -258,7 +264,7 @@ function blast(aoeShots,weapon,bat,batType) {
     let power = weapon.power;
     let oldPower = weapon.power;
     let cover = getCover(bat);
-    ii = 1;
+    let ii = 1;
     while (ii <= aoeShots) {
         // console.log('power'+power);
         if (isHit(weapon.accuracy,weapon.aoe,batType.size,batType.stealth,cover)) {
@@ -450,7 +456,6 @@ function alienHere(tileId) {
 
 function batDeath(bat) {
     console.log('DEATH');
-    deathSound();
     if (bat.team == 'player') {
         let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
         bataillons.splice(batIndex,1);
@@ -461,6 +466,10 @@ function batDeath(bat) {
         let batIndex = locals.findIndex((obj => obj.id == bat.id));
         locals.splice(batIndex,1);
     }
+};
+
+function batDeathEffect(bat) {
+    deathSound();
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
     $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/explosion'+nextExplosion+'.gif"></div>'+resHere);

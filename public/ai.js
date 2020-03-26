@@ -16,11 +16,11 @@ function alienMoveLoop() {
     targetWeap = {};
     checkPossibleMoves();
     // loop this until no ap or no salvo
-    i = 1;
-    while (i <= 20) {
+    let iter = 1;
+    while (iter <= 20) {
         console.log('ap:'+selectedBat.apLeft+' salvo:'+selectedBat.salvoLeft);
         if (selectedBat.apLeft >= 1 && selectedBat.salvoLeft >= 1) {
-            if (attAlive) {
+            if (attAlive && defAlive) {
                 chooseTarget();
             } else {
                 break;
@@ -28,13 +28,16 @@ function alienMoveLoop() {
         } else {
             break;
         }
-        if (i > 20) {break;}
-        i++
+        if (iter > 20) {break;}
+        iter++
     }
     // si no salvo et reste bcp d'ap : move vers PDM de base (attention: garder le rapport de combat!)
 };
 
 function chooseTarget() {
+    targetBat = {};
+    targetBatType = {};
+    targetWeap = {};
     anyCloseTarget();
     let inPlace = false;
     let alienInMelee = isAlienInMelee(selectedBat.tileId);

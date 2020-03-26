@@ -96,7 +96,7 @@
     "size": 75,
     "stealth": 0,
     "ap": 15,
-    "maxSalvo": 4,
+    "maxSalvo": 3,
     "weapon": {
         "name": "Canon",
         "cost": 5,
