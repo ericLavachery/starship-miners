@@ -67,7 +67,7 @@ function checkTargetBatType() {
 
 function combat() {
     attAlive = true;
-    defAlive = true;report
+    defAlive = true;
     $('#report').empty('');
     $('#report').append('<span class="report or">'+selectedBat.type+'</span> <span class="report">vs</span> <span class="report or">'+targetBat.type+'</span><br>');
     weaponSelectRiposte();

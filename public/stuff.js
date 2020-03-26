@@ -41,6 +41,8 @@ function selectedBatArrayUpdate() {
     } else if (selectedBat.team == 'aliens') {
         let batIndex = aliens.findIndex((obj => obj.id == selectedBat.id));
         aliens[batIndex] = selectedBat;
+        batIndex = alienList.findIndex((obj => obj.id == selectedBat.id));
+        alienList[batIndex] = selectedBat;
     } else if (selectedBat.team == 'locals') {
         let batIndex = locals.findIndex((obj => obj.id == selectedBat.id));
         locals[batIndex] = selectedBat;
