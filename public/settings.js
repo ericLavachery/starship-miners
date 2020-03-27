@@ -57,6 +57,7 @@ let initiativeDice = 15 // ajoute 0-15
 let stopMe = false;
 let toHit = 999;
 let activeTurn = 'player';
+// let report = '';
 // ALIENS
 let pointDeMire = 1830; // tileId
 let possibleMoves = []; // list of tile ids

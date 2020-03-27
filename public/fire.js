@@ -273,6 +273,11 @@ function defense() {
     targetBatArrayUpdate();
 };
 
+function combatReport() {
+    $('#report').append(report);
+    report = '';
+};
+
 function shot(weapon,bat,batType) {
     // returns damage
     let damage = 0;
