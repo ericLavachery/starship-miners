@@ -7,6 +7,7 @@ function alienTurn() {
 
 function alienMoveLoop() {
     // move map at the end of the alien moves
+    console.log('alienMoveLoop');
     $('#report').empty('');
     attAlive = true;
     defAlive = true;
@@ -17,9 +18,10 @@ function alienMoveLoop() {
     targetWeap = {};
     checkPossibleMoves();
     // loop this until no ap or no salvo
+    console.log('!!! Start Loop !!!');
     let iter = 1;
     while (iter <= 20) {
-        console.log('ap:'+selectedBat.apLeft+' salvo:'+selectedBat.salvoLeft);
+        console.log('loop '+iter+' || ap:'+selectedBat.apLeft+' salvo:'+selectedBat.salvoLeft);
         if (selectedBat.apLeft >= 1 && selectedBat.salvoLeft >= 1) {
             if (attAlive && defAlive) {
                 chooseTarget();
@@ -32,6 +34,7 @@ function alienMoveLoop() {
         if (iter > 20) {break;}
         iter++
     }
+    console.log('!!! End Loop !!!');
     // si no salvo et reste bcp d'ap : move vers PDM de base (attention: garder le rapport de combat!)
 };
 
@@ -96,8 +99,9 @@ function chooseTarget() {
 };
 
 function shootTarget() {
-    console.log('shoot '+targetBat.type);
     checkTargetBatType();
+    console.log('shoot '+targetBat.type);
+    console.log(targetBat);
     tileTarget(targetBat);
     combat();
 };
@@ -165,8 +169,8 @@ function anyCloseTarget() {
     });
     if (newPointDeMire > 0) {
         pointDeMire = newPointDeMire;
+        console.log('new PDM: '+pointDeMire);
     }
-    console.log('new PDM: '+pointDeMire);
 };
 
 function pdmOffsets(tileId) {
@@ -438,13 +442,14 @@ function anyTargetInRange() {
 };
 
 function targetMelee() {
+    console.log('targetMelee');
     let distance;
     let inPlace = false;
     let shufBats = _.shuffle(bataillons);
     shufBats.forEach(function(bat) {
         if (bat.loc === "zone") {
             distance = calcDistance(selectedBat.tileId,bat.tileId);
-            if (distance === 0) {
+            if (distance === 0 && inPlace === false) {
                 targetBat = JSON.parse(JSON.stringify(bat));
                 inPlace = true;
             }
@@ -454,6 +459,7 @@ function targetMelee() {
 };
 
 function targetFarthest() {
+    console.log('targetFarthest');
     let distance = 0;
     let lePlusLoin = 0;
     let inPlace = false;
@@ -486,6 +492,7 @@ function targetFarthest() {
 };
 
 function targetClosest() {
+    console.log('targetClosest');
     let inPlace = false;
     let distance = 100;
     let lePlusProche = 100;
@@ -535,7 +542,7 @@ function createAlienList() {
     });
     alienList = _.sortBy(_.sortBy(_.sortBy(zoneAlienList,'id'),'typeId'),'range');
     commandes();
-    console.log(alienList);
+    // console.log(alienList);
 };
 
 function nextAlien() {
@@ -553,6 +560,7 @@ function nextAlien() {
         selectedWeap = weaponAdj(selectedWeap,selectedBat,'w1');
         console.log('----------------------');
         console.log(alienList);
+        console.log('selectedBat :');
         console.log(selectedBat);
         closeTargetRange = rand.rand(1,closeTargetRangeDice)+rand.rand(1,closeTargetRangeDice);
         alienMoveLoop();

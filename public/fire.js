@@ -66,6 +66,7 @@ function checkTargetBatType() {
 };
 
 function combat() {
+    console.log('START COMBAT');
     if (activeTurn == 'player') {
         attAlive = true;
         defAlive = true;
@@ -92,31 +93,36 @@ function combat() {
         }
     }
     if (riposte) {
+        console.log('riposte');
         if (initiative) {
-            // stopMe = true;
+            console.log('initiative');
             if (activeTurn == 'player') {blockMe(true);}
+            shotSound(selectedWeap);
             attack();
-            setTimeout(function (){
-                if (defAlive) {
-                    defense();
-                }
-                // stopMe = false;
-                if (activeTurn == 'player') {blockMe(false);}
-            }, 2500); // How long do you want the delay to be (in milliseconds)?
+            if (defAlive) {
+                defense();
+                setTimeout(function (){
+                    shotSound(targetWeap);
+                    if (activeTurn == 'player') {blockMe(false);}
+                }, 2500); // How long do you want the delay to be (in milliseconds)?
+            }
         } else {
-            // stopMe = true;
+            console.log("pas d'initiative");
             if (activeTurn == 'player') {blockMe(true);}
+            shotSound(targetWeap);
             defense();
-            setTimeout(function (){
-                if (attAlive) {
-                    attack();
-                }
-                // stopMe = false;
-                if (activeTurn == 'player') {blockMe(false);}
-            }, 2500); // How long do you want the delay to be (in milliseconds)?
+            if (attAlive) {
+                attack();
+                setTimeout(function (){
+                    shotSound(selectedWeap);
+                    if (activeTurn == 'player') {blockMe(false);}
+                }, 2500); // How long do you want the delay to be (in milliseconds)?
+            }
         }
     } else {
+        console.log('pas de riposte');
         if (activeTurn == 'player') {blockMe(true);}
+        shotSound(selectedWeap);
         attack();
         setTimeout(function (){
             if (activeTurn == 'player') {blockMe(false);}
@@ -125,8 +131,8 @@ function combat() {
 };
 
 function attack() {
+    console.log('Attaque ->');
     console.log(selectedWeap);
-    shotSound(selectedWeap);
     $('#report').append('<span class="report or">'+selectedBat.type+' ('+selectedWeap.name+')</span><br>');
     // AOE Shots
     let aoeShots = 1;
@@ -168,9 +174,9 @@ function attack() {
     if (targetBat.squadsLeft <= 0) {
         defAlive = false;
         batDeath(targetBat);
+        $('#report').append('<span class="report cy">Bataillon détruit<br></span>');
         setTimeout(function (){
             batDeathEffect(targetBat);
-            $('#report').append('<span class="report cy">Bataillon détruit<br></span>');
         }, 2000); // How long do you want the delay to be (in milliseconds)?
     } else {
         // targetBatArrayUpdate();
@@ -187,8 +193,8 @@ function attack() {
 };
 
 function defense() {
+    console.log('Défense ->');
     console.log(targetWeap);
-    shotSound(targetWeap);
     $('#report').append('<span class="report or">'+targetBat.type+' ('+targetWeap.name+')</span><br>');
     // AOE Shots
     let aoeShots = 1;
@@ -232,9 +238,9 @@ function defense() {
     if (selectedBat.squadsLeft <= 0) {
         attAlive = false;
         batDeath(selectedBat);
+        $('#report').append('<span class="report cy">Bataillon détruit<br></span>');
         setTimeout(function (){
             batDeathEffect(selectedBat);
-            $('#report').append('<span class="report cy">Bataillon détruit<br></span>');
         }, 2000); // How long do you want the delay to be (in milliseconds)?
     } else {
         // selectedBatArrayUpdate();
@@ -319,6 +325,36 @@ function isHit(accuracy,aoe,size,stealth,cover) {
     } else {
         return true;
     }
+};
+
+function batDeath(bat) {
+    console.log('DEATH');
+    if (bat.team == 'player') {
+        let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
+        bataillons.splice(batIndex,1);
+    } else if (bat.team == 'aliens') {
+        let batIndex = aliens.findIndex((obj => obj.id == bat.id));
+        aliens.splice(batIndex,1);
+    } else if (bat.team == 'locals') {
+        let batIndex = locals.findIndex((obj => obj.id == bat.id));
+        locals.splice(batIndex,1);
+    }
+    alienOccupiedTileList();
+};
+
+function batDeathEffect(bat) {
+    deathSound();
+    $('#b'+bat.tileId).empty();
+    let resHere = showRes(bat.tileId);
+    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/explosion'+nextExplosion+'.gif"></div>'+resHere);
+    nextExplosion = nextExplosion+1;
+    if (nextExplosion > 3) {
+        nextExplosion = 1;
+    }
+    setTimeout(function (){
+        $('#b'+bat.tileId).empty();
+        $('#b'+bat.tileId).append(resHere);
+    }, 1500); // How long do you want the delay to be (in milliseconds)?
 };
 
 function calcDamage(power,armor) {
@@ -466,36 +502,6 @@ function alienHere(tileId) {
         }
     });
     return alienBatHere;
-};
-
-function batDeath(bat) {
-    console.log('DEATH');
-    if (bat.team == 'player') {
-        let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
-        bataillons.splice(batIndex,1);
-    } else if (bat.team == 'aliens') {
-        let batIndex = aliens.findIndex((obj => obj.id == bat.id));
-        aliens.splice(batIndex,1);
-    } else if (bat.team == 'locals') {
-        let batIndex = locals.findIndex((obj => obj.id == bat.id));
-        locals.splice(batIndex,1);
-    }
-    alienOccupiedTileList();
-};
-
-function batDeathEffect(bat) {
-    deathSound();
-    $('#b'+bat.tileId).empty();
-    let resHere = showRes(bat.tileId);
-    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/explosion'+nextExplosion+'.gif"></div>'+resHere);
-    nextExplosion = nextExplosion+1;
-    if (nextExplosion > 3) {
-        nextExplosion = 1;
-    }
-    setTimeout(function (){
-        $('#b'+bat.tileId).empty();
-        $('#b'+bat.tileId).append(resHere);
-    }, 1500); // How long do you want the delay to be (in milliseconds)?
 };
 
 function shotSound(weapon) {

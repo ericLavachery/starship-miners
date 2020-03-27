@@ -53,12 +53,9 @@ function nextTurnEnd() {
     saveAliens(); // !!!!!!!!!!!!!!!!!!!!!!
     createBatList();
     alienOccupiedTileList();
-    setTimeout(function (){
-        // stopMe = false;
-        blockMe(false);
-        activeTurn = 'player';
-        commandes();
-    }, 1000); // How long do you want the delay to be (in milliseconds)?
+    blockMe(false);
+    activeTurn = 'player';
+    commandes();
 };
 
 function alienOccupiedTileList() {
