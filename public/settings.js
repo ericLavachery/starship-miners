@@ -39,6 +39,7 @@ let bataillons = [];
 let batList = [];
 let alienList = [];
 let alienOccupiedTiles = [];
+let levelXP = [0,10,25,45,70];
 // ACTIONS
 let mode = "select";
 let selectedBat = {};

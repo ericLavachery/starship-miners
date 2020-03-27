@@ -1,62 +1,14 @@
 [
-    {
-        "id": 0,
-        "type": "Fusilliers",
-        "typeId": 0,
-        "loc": "zone",
-        "locId": 0,
-        "tileId": 124,
-        "oldTileId": 124,
-        "squadsLeft": 6,
-        "apLeft": 12,
-        "ammo": "standard"
-    },
-    {
-        "id": 1,
-        "type": "Tank Léger",
-        "typeId": 1,
-        "loc": "zone",
-        "locId": 0,
-        "tileId": 182,
-        "oldTileId": 182,
-        "squadsLeft": 6,
-        "apLeft": 12,
-        "ammo": "standard"
-    },
-    {
-        "id": 2,
-        "type": "Fusilliers",
-        "typeId": 0,
-        "loc": "mother",
-        "locId": 0,
-        "tileId": 0,
-        "oldTileId": 0,
-        "squadsLeft": 6,
-        "apLeft": 12,
-        "ammo": "standard"
-    },
-    {
-        "id": 3,
-        "type": "Tourelle",
-        "typeId": 2,
-        "loc": "zone",
-        "locId": 0,
-        "tileId": 185,
-        "oldTileId": 185,
-        "squadsLeft": 6,
-        "apLeft": 12,
-        "ammo": "standard"
-    },
-    {
-        "id": 3,
-        "type": "Caserne",
-        "typeId": 3,
-        "loc": "zone",
-        "locId": 0,
-        "tileId": 244,
-        "oldTileId": 244,
-        "squadsLeft": 6,
-        "apLeft": 12,
-        "ammo": "standard"
-    }
+    {"id":0,"type":"Fusilliers","typeId":0,"loc":"zone","locId":0,"tileId":1583,"oldTileId":1583,"squadsLeft":6,"apLeft":12,"ammo":"standard","ammo2":"standard","oldapLeft":12,"salvoLeft":1,"vet":1,"team":"player","damage":0,"range":1,"fuzz":0,"xp":15},
+    {"id":1,"type":"Scout","typeId":1,"loc":"zone","locId":0,"tileId":1829,"oldTileId":1829,"squadsLeft":4,"apLeft":12,"ammo":"perfo","ammo2":"standard","oldapLeft":12,"salvoLeft":1,"vet":3,"team":"player","damage":0,"range":2,"fuzz":0,"xp":50},
+    {"id":2,"type":"Fusilliers","typeId":0,"loc":"mother","locId":0,"tileId":0,"oldTileId":0,"squadsLeft":6,"apLeft":12,"ammo":"hollow","ammo2":"standard","salvoLeft":1,"oldapLeft":12,"vet":4,"team":"player","damage":0,"range":1,"fuzz":0,"xp":75},
+    {"id":3,"type":"Tourelle","typeId":2,"loc":"zone","locId":0,"tileId":1704,"oldTileId":1704,"squadsLeft":6,"apLeft":15,"ammo":"standard","ammo2":"standard","oldapLeft":12,"salvoLeft":3,"vet":2,"team":"player","damage":0,"range":4,"fuzz":-1,"xp":27},
+    {"id":4,"type":"Caserne","typeId":3,"loc":"zone","locId":0,"tileId":1883,"oldTileId":1883,"squadsLeft":6,"apLeft":12,"ammo":"standard","ammo2":"standard","oldapLeft":12,"salvoLeft":4,"vet":0,"team":"player","damage":0,"range":1,"fuzz":2,"xp":0},
+    {"id":5,"type":"Scout","typeId":1,"loc":"zone","locId":0,"tileId":1951,"oldTileId":1951,"squadsLeft":4,"apLeft":12,"ammo":"standard","ammo2":"standard","oldapLeft":12,"salvoLeft":1,"vet":4,"team":"player","damage":0,"range":2,"fuzz":0,"xp":80},
+    {"id":6,"type":"Fusilliers","typeId":0,"loc":"zone","locId":0,"tileId":2007,"oldTileId":2007,"squadsLeft":6,"apLeft":12,"ammo":"titanium","ammo2":"standard","oldapLeft":12,"salvoLeft":1,"vet":4,"team":"player","damage":0,"range":1,"fuzz":0,"xp":85},
+    {"id":7,"type":"Fusilliers","typeId":0,"loc":"zone","locId":0,"tileId":1827,"oldTileId":1827,"squadsLeft":6,"apLeft":12,"ammo":"teflon","ammo2":"standard","oldapLeft":12,"salvoLeft":1,"vet":0,"team":"player","damage":0,"range":1,"fuzz":0,"xp":15},
+    {"id":8,"type":"Fusilliers","typeId":0,"loc":"zone","locId":0,"tileId":1825,"oldTileId":1825,"squadsLeft":6,"apLeft":12,"ammo":"hollow","ammo2":"standard","salvoLeft":1,"oldapLeft":12,"vet":2,"team":"player","damage":0,"range":1,"fuzz":0,"xp":25},
+    {"id":9,"type":"Tourelle","typeId":2,"loc":"zone","locId":0,"tileId":2066,"oldTileId":2066,"squadsLeft":6,"apLeft":15,"ammo":"standard","ammo2":"standard","oldapLeft":12,"salvoLeft":3,"vet":0,"team":"player","damage":0,"range":4,"fuzz":-1,"xp":0},
+    {"id":10,"type":"Fusilliers","typeId":0,"loc":"zone","locId":0,"tileId":2000,"oldTileId":2000,"squadsLeft":6,"apLeft":12,"ammo":"hollow","ammo2":"standard","salvoLeft":1,"oldapLeft":12,"vet":0,"team":"player","damage":0,"range":1,"fuzz":0,"xp":0},
+    {"id":11,"type":"Fusilliers","typeId":0,"loc":"zone","locId":0,"tileId":1773,"oldTileId":1773,"squadsLeft":6,"apLeft":12,"ammo":"perfo","ammo2":"standard","salvoLeft":1,"oldapLeft":12,"vet":1,"team":"player","damage":0,"range":1,"fuzz":0,"xp":18}
 ]

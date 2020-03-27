@@ -47,6 +47,7 @@ function nextTurnEnd() {
             }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
+            levelUp(bat);
         }
     });
     saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
@@ -56,6 +57,26 @@ function nextTurnEnd() {
     blockMe(false);
     activeTurn = 'player';
     commandes();
+};
+
+function levelUp(bat) {
+    if (bat.xp >= levelXP[4]) {
+        if (bat.vet < 4) {
+            bat.vet = 4;
+        }
+    } else if (bat.xp >= levelXP[3]) {
+        if (bat.vet < 3) {
+            bat.vet = 3;
+        }
+    } else if (bat.xp >= levelXP[2]) {
+        if (bat.vet < 2) {
+            bat.vet = 2;
+        }
+    } else if (bat.xp >= levelXP[1]) {
+        if (bat.vet < 1) {
+            bat.vet = 1;
+        }
+    }
 };
 
 function alienOccupiedTileList() {

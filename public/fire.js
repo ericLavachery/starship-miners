@@ -105,6 +105,10 @@ function combat() {
                     shotSound(targetWeap);
                     if (activeTurn == 'player') {blockMe(false);}
                 }, 2500); // How long do you want the delay to be (in milliseconds)?
+            } else {
+                setTimeout(function (){
+                    if (activeTurn == 'player') {blockMe(false);}
+                }, 2000); // How long do you want the delay to be (in milliseconds)?
             }
         } else {
             console.log("pas d'initiative");
@@ -117,6 +121,10 @@ function combat() {
                     shotSound(selectedWeap);
                     if (activeTurn == 'player') {blockMe(false);}
                 }, 2500); // How long do you want the delay to be (in milliseconds)?
+            } else {
+                setTimeout(function (){
+                    if (activeTurn == 'player') {blockMe(false);}
+                }, 2000); // How long do you want the delay to be (in milliseconds)?
             }
         }
     } else {
@@ -166,7 +174,9 @@ function attack() {
     targetBat.squadsLeft = targetBat.squadsLeft-squadsOut;
     console.log('Squads Out : '+squadsOut);
     if (squadsOut >= 1) {
-        $('#report').append('<span class="report cy">Escouades: -'+squadsOut+'</span><span class="report">('+targetBat.squadsLeft+')<br></span>');
+        let deadUnits = targetBatType.squadSize*squadsOut;
+        let unitsLeft = targetBatType.squadSize*targetBat.squadsLeft;
+        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span> <span class="report">(reste '+unitsLeft+')<br></span>');
     }
     targetBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+targetBat.damage);
@@ -189,6 +199,9 @@ function attack() {
     // remove ap & salvo
     selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
     selectedBat.salvoLeft = selectedBat.salvoLeft-1;
+    if (squadsOut >= 1 && activeTurn == 'player') {
+        selectedBat.xp = selectedBat.xp+1;
+    }
     selectedBatArrayUpdate();
 };
 
@@ -230,7 +243,9 @@ function defense() {
     selectedBat.squadsLeft = selectedBat.squadsLeft-squadsOut;
     console.log('Squads Out : '+squadsOut);
     if (squadsOut >= 1) {
-        $('#report').append('<span class="report cy">Escouades: -'+squadsOut+'</span><span class="report">('+selectedBat.squadsLeft+')<br></span>');
+        let deadUnits = selectedBatType.squadSize*squadsOut;
+        let unitsLeft = selectedBatType.squadSize*selectedBat.squadsLeft;
+        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span> <span class="report">(reste '+unitsLeft+')<br></span>');
     }
     selectedBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+selectedBat.damage);
@@ -252,6 +267,9 @@ function defense() {
     }
     // remove ap
     targetBat.apLeft = targetBat.apLeft-1;
+    if (squadsOut >= 1 && activeTurn == 'aliens') {
+        targetBat.xp = targetBat.xp+1;
+    }
     targetBatArrayUpdate();
 };
 
