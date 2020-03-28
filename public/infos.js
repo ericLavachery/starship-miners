@@ -65,6 +65,17 @@ function showBatInfos(bat) {
     // XP
     $('#unitInfos').append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+bat.xp+' (lvl '+bat.vet+')</span><br>');
     // WEAPONS
+    weaponsInfos(bat,batUnitType);
+    skillsInfos(bat,batUnitType);
+
+    // "moveCost": 3,
+    // "maxFlood": 3,
+    // "maxScarp": 3,
+    // "maxVeg": 3,
+    // "skills": []
+};
+
+function weaponsInfos(bat,batUnitType) {
     let balise;
     let thisWeapon = {};
     if (batUnitType.weapon.rof >= 1) {
@@ -130,12 +141,19 @@ function showBatInfos(bat) {
         $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Munitions</span><span class="paramIcon"></span><span class="paramValue">'+bat.ammo2+'</span><br>');
     }
+};
 
-    // "moveCost": 3,
-    // "maxFlood": 3,
-    // "maxScarp": 3,
-    // "maxVeg": 3,
-    // "skills": []
+function skillsInfos(bat,batUnitType) {
+    if (batUnitType.skills.includes('medic')) {
+        if (bat.apLeft >= 4) {
+            // assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les bataillons adjacents" class="boutonGris iconButtons" onclick="medic()"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
+        } else {
+            // pas assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="PA épuisés" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Soins</h4></span>');
+        }
+        $('#unitInfos').append('<span class="paramName">PA/Soin</span><span class="paramIcon"></span><span class="paramValue">4</span><br>');
+    }
 };
 
 function showEnemyBatInfos(bat) {
