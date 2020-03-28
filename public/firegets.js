@@ -88,7 +88,15 @@ function getStealth(bat) {
         }
     }
     let vetStealth = Math.round(bat.vet*vetBonus.stealth);
-    return batType.stealth+stealthBonus+vetStealth;
+    let maxStealth = batType.stealth;
+    let coverAdj = Math.round((cover+3)*1.8);
+    if (batType.stealth > coverAdj) {
+        maxStealth = coverAdj;
+    }
+    if (maxStealth < 2) {
+        maxStealth = 2;
+    }
+    return maxStealth+stealthBonus+vetStealth;
 };
 
 function getAP(bat) {

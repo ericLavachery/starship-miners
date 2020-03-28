@@ -21,7 +21,7 @@
         "accuracy": 20,
         "power": 10,
         "aoe": "unit",
-        "sound": "SQUISH11",
+        "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
         "ammo": [ "none" ]
         },
     "weapon2": {},
@@ -52,7 +52,7 @@
         "accuracy": 15,
         "power": 30,
         "aoe": "unit",
-        "sound": "SQUISH11",
+        "sound": "zapsplat_household_screen_door_insect_slide_006_38119b",
         "ammo": [ "none" ]
         },
     "weapon2": {},
@@ -83,7 +83,7 @@
         "accuracy": 17,
         "power": 35,
         "aoe": "squad",
-        "sound": "SQUISH11",
+        "sound": "mante",
         "ammo": [ "none" ]
         },
     "weapon2": {},
@@ -114,7 +114,7 @@
         "accuracy": 30,
         "power": 8,
         "aoe": "unit",
-        "sound": "SQUISH11",
+        "sound": "zapsplat_cartoon_squish_squelch_wet_005_14504b",
         "ammo": [ "none" ]
         },
     "weapon2": {},
@@ -145,7 +145,7 @@
         "accuracy": 20,
         "power": 20,
         "aoe": "squad",
-        "sound": "SQUISH11",
+        "sound": "zapsplat_cartoon_squish_squelch_wet_007_14506b",
         "ammo": [ "none" ]
         },
     "weapon2": {},
@@ -176,7 +176,7 @@
         "accuracy": 22,
         "power": 5,
         "aoe": "unit",
-        "sound": "SQUISH11",
+        "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
         "ammo": [ "none" ]
         },
     "weapon2": {},

@@ -56,8 +56,8 @@
         "mc": 0,
         "roadmc": -1,
         "alienmc": 0,
-        "cover": 4,
-        "aliencover": 4
+        "cover": 5,
+        "aliencover": 5
     },
     {
         "name": "F",
@@ -68,8 +68,8 @@
         "mc": 1,
         "roadmc": -1,
         "alienmc": 1,
-        "cover": 6,
-        "aliencover": 6
+        "cover": 7,
+        "aliencover": 7
     },
     {
         "name": "S",

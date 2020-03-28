@@ -53,7 +53,7 @@
     "armor": 10,
     "size": 25,
     "stealth": 3,
-    "ap": 12,
+    "ap": 22,
     "maxSalvo": 1,
     "weapon": {
         "name": "Mitrailleuse",
@@ -77,7 +77,7 @@
         "sound": "audio_hero_GunCannon_DIGIJ02_20_6_370b",
         "ammo": [ "standard" ]
         },
-    "moveCost": 3,
+    "moveCost": 4,
     "maxFlood": 1,
     "maxScarp": 1,
     "maxVeg": 2,
@@ -162,6 +162,7 @@
         "sound": "zapsplat_science_fiction_weapon_gun_shoot_001_32194b",
         "ammo": [ "standard" ]
         },
+        "weapon2": {},
     "moveCost": 3,
     "maxFlood": 3,
     "maxScarp": 3,
@@ -190,7 +191,7 @@
         "accuracy": 10,
         "power": 4,
         "aoe": "unit",
-        "sound": "john_ruok_gun_tikka_t3_battue_308_007_Swpph_Mono_Shot_Strong_Edit",
+        "sound": "john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
         "ammo": [ "standard", "hollow", "perfo", "tungsten", "uranium" ]
         },
     "weapon2": {
