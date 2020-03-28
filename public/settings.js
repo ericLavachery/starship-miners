@@ -40,6 +40,16 @@ let batList = [];
 let alienList = [];
 let alienOccupiedTiles = [];
 let levelXP = [0,10,25,45,70];
+// let vetAccuracy = 4; // plus grand = moins de bonus (3 = x2.3) (2 = x3)
+// let vetInitiative = 10; // plus grand = mieux (retire max vetInitiative*vet)
+// let vetAP = 1; // 1 = +1 ap par niveau
+// let vetStealth = 2; // 2 = +2 stealth par niveau (si 5+ de base)
+let vetBonus = {
+    accuracy: 4,
+    initiative: 10,
+    ap: 1,
+    stealth: 1.4
+}
 // ACTIONS
 let mode = "select";
 let selectedBat = {};
@@ -48,9 +58,6 @@ let selectedWeap = {};
 let targetBat = {};
 let targetBatType = {};
 let targetWeap = {};
-let vetAccuracy = 4; // plus grand = moins de bonus (3 = x2.3) (2 = x3)
-let vetInitiative = 10; // plus grand = mieux (retire max vetInitiative*vet)
-let vetAP = 1; // 1 = +1 ap par niveau
 let nextExplosion = 1;
 let coverFactor = 1; // multiplie la cover du terrain (enlevé à accuracy)
 let initiativeDice = 15 // ajoute 0-15

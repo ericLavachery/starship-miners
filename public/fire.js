@@ -51,20 +51,6 @@ function clickFire(tileId) {
     }
 };
 
-function checkTargetBatType() {
-    let targetBatUnitIndex;
-    if (targetBat.team == 'player') {
-        targetBatUnitIndex = unitTypes.findIndex((obj => obj.id == targetBat.typeId));
-        targetBatType = unitTypes[targetBatUnitIndex];
-    } else if (targetBat.team == 'aliens') {
-        targetBatUnitIndex = alienUnits.findIndex((obj => obj.id == targetBat.typeId));
-        targetBatType = alienUnits[targetBatUnitIndex];
-    } else if (targetBat.team == 'locals') {
-        targetBatUnitIndex = localUnits.findIndex((obj => obj.id == targetBat.typeId));
-        targetBatType = localUnits[targetBatUnitIndex];
-    }
-};
-
 function combat() {
     console.log('START COMBAT');
     if (activeTurn == 'player') {
@@ -85,8 +71,8 @@ function combat() {
     let initiative = true;
     if (distance <= 3 && targetWeap.cost <= 6 && targetWeap.range >= distance) {
         riposte = true;
-        let aspeed = calcSpeed(selectedBat,selectedWeap,selectedBatType,distance,true);
-        let dspeed = calcSpeed(targetBat,targetWeap,targetBatType,distance,false);
+        let aspeed = calcSpeed(selectedBat,selectedWeap,distance,true);
+        let dspeed = calcSpeed(targetBat,targetWeap,distance,false);
         $('#report').append('<span class="report">initiative '+aspeed+' vs '+dspeed+'</span><br>');
         if (dspeed < aspeed) {
             initiative = false;
@@ -282,7 +268,8 @@ function shot(weapon,bat,batType) {
     // returns damage
     let damage = 0;
     let cover = getCover(bat);
-    if (isHit(weapon.accuracy,weapon.aoe,batType.size,batType.stealth,cover)) {
+    let stealth = getStealth(bat);
+    if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover)) {
         damage = calcDamage(weapon.power,batType.armor);
         if (damage > batType.hp) {
             damage = batType.hp;
@@ -303,10 +290,11 @@ function blast(aoeShots,weapon,bat,batType) {
     let power = weapon.power;
     let oldPower = weapon.power;
     let cover = getCover(bat);
+    let stealth = getStealth(bat);
     let ii = 1;
     while (ii <= aoeShots) {
         // console.log('power'+power);
-        if (isHit(weapon.accuracy,weapon.aoe,batType.size,batType.stealth,cover)) {
+        if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover)) {
             newDamage = calcDamage(power,batType.armor);
             if (newDamage > batType.hp) {
                 newDamage = batType.hp;
@@ -329,25 +317,6 @@ function blast(aoeShots,weapon,bat,batType) {
     }
     $('#report').append('<span class="report">'+damage+' </span>');
     return damage;
-};
-
-function isHit(accuracy,aoe,size,stealth,cover) {
-    let prec = Math.round(accuracy-(cover*coverFactor));
-    if (aoe == 'unit') {
-        prec = Math.round(prec-(stealth/2));
-    }
-    let dice = rand.rand(1,100);
-    let hitChance = Math.round(Math.sqrt(size)*prec);
-    if (toHit === 999) {
-        toHit = hitChance;
-        $('#report').append('<span class="report">Précision: '+toHit+'%</span><br><span class="report">Dégâts: </span>');
-    }
-    console.log('hitChance '+hitChance);
-    if (dice > hitChance) {
-        return false;
-    } else {
-        return true;
-    }
 };
 
 function batDeath(bat) {
@@ -378,226 +347,4 @@ function batDeathEffect(bat) {
         $('#b'+bat.tileId).empty();
         $('#b'+bat.tileId).append(resHere);
     }, 1500); // How long do you want the delay to be (in milliseconds)?
-};
-
-function calcDamage(power,armor) {
-    // powerDice is max 4x power
-    let powerDiceMin = Math.round(power/2.5);
-    let powerDiceMax = Math.round(power*1.6);
-    let powerDice = rand.rand(powerDiceMin,powerDiceMax);
-    if (powerDice == powerDiceMax) {
-        let bonusMax = Math.round(power*2.4);
-        powerDice = powerDice+rand.rand(0,bonusMax);
-    }
-    return powerDice-armor;
-};
-
-function getCover(bat) {
-    let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
-    let tile = zone[tileIndex];
-    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
-    let terrain = terrainTypes[terrainIndex];
-    if (bat.team == 'aliens') {
-        return terrain.aliencover;
-    } else {
-        return terrain.cover;
-    }
-};
-
-function calcSpeed(bat,weap,type,distance,attacking) {
-    let crange = weap.range;
-    // console.log('crange'+crange);
-    if (weap.range === 0) {
-        if (attacking) {
-            crange = 1;
-        } else {
-            crange = 12;
-        }
-    }
-    // console.log('cost'+weap.cost);
-    let speed = Math.round(crange*weap.cost);
-    if (distance <= 1) {
-        if (attacking) {
-            speed = speed-type.stealth-type.stealth;
-        } else {
-            speed = speed-type.stealth;
-        }
-    }
-    // console.log('stealth'+type.stealth);
-    // console.log('speed'+speed);
-    let vetDice = vetInitiative*bat.vet;
-    // console.log('vetDice'+vetDice);
-    return speed+rand.rand(0,initiativeDice)-rand.rand(0,vetDice);
-};
-
-function isInMelee(myTileIndex,thatTileIndex) {
-    let myTileX = zone[myTileIndex].x;
-    let myTileY = zone[myTileIndex].y;
-    let thatTileX = zone[thatTileIndex].x;
-    let thatTileY = zone[thatTileIndex].y;
-    if (myTileIndex == thatTileIndex || myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
-        return true;
-    } else {
-        return false;
-    }
-};
-
-function isInRange(myTileIndex,thatTileIndex) {
-    let myTileX = zone[myTileIndex].x;
-    let myTileY = zone[myTileIndex].y;
-    let thatTileX = zone[thatTileIndex].x;
-    let thatTileY = zone[thatTileIndex].y;
-    let distanceX = Math.abs(myTileX-thatTileX);
-    let distanceY = Math.abs(myTileY-thatTileY);
-    let distance;
-    if (distanceX > distanceY) {
-        distance = distanceX;
-    } else {
-        distance = distanceY;
-    }
-    let range = selectedWeap.range;
-    if (range === 0) {
-        if (myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
-            return true;
-        } else {
-            return false;
-        }
-    } else {
-        if (distance > range) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-};
-
-function calcDistance(myTileIndex,thatTileIndex) {
-    let myTileX = zone[myTileIndex].x;
-    let myTileY = zone[myTileIndex].y;
-    let thatTileX = zone[thatTileIndex].x;
-    let thatTileY = zone[thatTileIndex].y;
-    let distanceX = Math.abs(myTileX-thatTileX);
-    let distanceY = Math.abs(myTileY-thatTileY);
-    let distance;
-    if (distanceX > distanceY) {
-        distance = distanceX;
-    } else {
-        distance = distanceY;
-    }
-    if (myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
-        return 0;
-    } else {
-        return distance;
-    }
-};
-
-function fireInfos(bat) {
-    isMelee = false;
-    cursorSwitch('.','grid-item','pointer');
-    let myTileX = zone[bat.tileId].x;
-    let myTileY = zone[bat.tileId].y;
-    zone.forEach(function(tile) {
-        $("#"+tile.id).attr("title", "");
-        if (alienHere(tile.id)) {
-            if (isInMelee(selectedBat.tileId,tile.id)) {
-                isMelee = true;
-                cursorSwitch('#',tile.id,'fire');
-            }
-        }
-    });
-    if (!isMelee) {
-        zone.forEach(function(tile) {
-            $("#"+tile.id).attr("title", "");
-            if (alienHere(tile.id)) {
-                if (isInRange(selectedBat.tileId,tile.id)) {
-                    cursorSwitch('#',tile.id,'fire');
-                }
-            }
-        });
-    }
-};
-
-function alienHere(tileId) {
-    let alienBatHere = false;
-    aliens.forEach(function(alien) {
-        if (alien.tileId === tileId && alien.loc === "zone") {
-            alienBatHere = true;
-        }
-    });
-    return alienBatHere;
-};
-
-function shotSound(weapon) {
-    // Juste un test : devrait aller chercher des sons différents selon l'arme :)
-    var sound = new Howl({
-        src: ['/static/sounds/'+weapon.sound+'.mp3']
-    });
-    sound.play();
-};
-
-function deathSound() {
-    // Juste un test : devrait aller chercher des sons différents selon l'unité :)
-    var sound = new Howl({
-        src: ['/static/sounds/zapsplat_explosion_fireball_43738.mp3']
-    });
-    sound.play();
-};
-
-function weaponSelect(weapon) {
-    if (weapon == 'w1') {
-        selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
-    } else if (weapon == 'w2') {
-        selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon2));
-    }
-    // bonus veterancy & ammo
-    selectedWeap = weaponAdj(selectedWeap,selectedBat,weapon);
-};
-
-function weaponSelectRiposte() {
-    targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
-    // bonus veterancy & ammo
-    targetWeap = weaponAdj(targetWeap,targetBat,'w1');
-};
-
-function weaponAdj(weapon,bat,wn) {
-    // bonus veterancy
-    let thisWeapon = {};
-    let accuracy = Math.round(weapon.accuracy*(bat.vet+vetAccuracy)/vetAccuracy);
-    thisWeapon.accuracy = accuracy;
-    // bonus ammo
-    thisWeapon.name = weapon.name;
-    thisWeapon.cost = weapon.cost;
-    thisWeapon.range = weapon.range;
-    thisWeapon.rof = weapon.rof;
-    thisWeapon.power = weapon.power;
-    thisWeapon.armors = 1;
-    thisWeapon.aoe = weapon.aoe;
-    thisWeapon.sound = weapon.sound;
-    let ammo = bat.ammo;
-    if (wn == 'w2') {
-        ammo = bat.ammo2;
-    }
-    if (ammo == 'perfo') {
-        thisWeapon.power = thisWeapon.power-2;
-        thisWeapon.armors = 0.5;
-    }
-    if (ammo == 'tungsten') {
-        thisWeapon.armors = 0.5;
-    }
-    if (ammo == 'uranium') {
-        thisWeapon.armors = 0.5;
-        thisWeapon.power = thisWeapon.power+1;
-    }
-    if (ammo == 'teflon') {
-        thisWeapon.armors = 0.75;
-    }
-    if (ammo == 'titanium') {
-        thisWeapon.power = thisWeapon.power-1;
-        thisWeapon.accuracy = Math.round(thisWeapon.accuracy*1.25);
-    }
-    if (ammo == 'hollow') {
-        thisWeapon.power = thisWeapon.power+3;
-        thisWeapon.armors = 2;
-    }
-    return thisWeapon;
 };

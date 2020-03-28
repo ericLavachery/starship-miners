@@ -37,17 +37,19 @@ function nextTurnEnd() {
     $('#report').empty('');
     // récup du player
     let unitTypesIndex;
+    let ap;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
+            levelUp(bat);
+            ap = getAP(bat);
             unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
             bat.salvoLeft = unitTypes[unitIndex].maxSalvo;
-            bat.apLeft = bat.apLeft+unitTypes[unitIndex].ap;
-            if (bat.apLeft > unitTypes[unitIndex].ap) {
-                bat.apLeft = unitTypes[unitIndex].ap;
+            bat.apLeft = bat.apLeft+ap;
+            if (bat.apLeft > ap) {
+                bat.apLeft = ap;
             }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
-            levelUp(bat);
         }
     });
     saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
