@@ -18,6 +18,8 @@ function medic() {
     let totalAPCost = 0;
     let xpGain = 0.1;
     let apCost = 4+selectedBatType.squads-selectedBat.squadsLeft;
+    let batUnits;
+    let newBatUnits;
     console.log('apCost: '+apCost);
     let maxAPCost = Math.round(selectedBatType.ap*1.5);
     bataillons.forEach(function(bat) {
@@ -39,6 +41,7 @@ function medic() {
                             $('#report').append('<span class="report cy">'+bat.type+'<br></span><span class="report">dégâts soignés<br>');
                             showBataillon(bat);
                         } else if (bat.squadsLeft < batType.squads) {
+                            batUnits = bat.squadsLeft*batType.squadSize;
                             if (bat.id === selectedBat.id) {
                                 selectedBat.squadsLeft = selectedBat.squadsLeft+1;
                             } else {
@@ -46,7 +49,8 @@ function medic() {
                             }
                             totalAPCost = totalAPCost+apCost;
                             xpGain = xpGain+1;
-                            $('#report').append('<span class="report cy">'+bat.type+'<br></span><span class="report">escouade soignée</span><br>');
+                            newBatUnits = batUnits+batType.squadSize;
+                            $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">escouade rétablie (<span class="cy">'+newBatUnits+'</span>)</span><br>');
                             showBataillon(bat);
                         }
                         console.log(bat);

@@ -28,7 +28,8 @@
     "moveCost": 2,
     "maxFlood": 3,
     "maxScarp": 3,
-    "maxVeg": 3
+    "maxVeg": 3,
+    "skills": []
 },
 {
     "id": 1,
@@ -59,7 +60,8 @@
     "moveCost": 6,
     "maxFlood": 3,
     "maxScarp": 3,
-    "maxVeg": 3
+    "maxVeg": 3,
+    "skills": []
 },
 {
     "id": 2,
@@ -90,7 +92,8 @@
     "moveCost": 3,
     "maxFlood": 3,
     "maxScarp": 3,
-    "maxVeg": 3
+    "maxVeg": 3,
+    "skills": []
 },
 {
     "id": 3,
@@ -121,7 +124,8 @@
     "moveCost": 3,
     "maxFlood": 3,
     "maxScarp": 3,
-    "maxVeg": 3
+    "maxVeg": 3,
+    "skills": []
 },
 {
     "id": 4,
@@ -152,7 +156,8 @@
     "moveCost": 2,
     "maxFlood": 3,
     "maxScarp": 3,
-    "maxVeg": 3
+    "maxVeg": 3,
+    "skills": []
 },
 {
     "id": 5,
@@ -183,6 +188,29 @@
     "moveCost": 2,
     "maxFlood": 3,
     "maxScarp": 3,
-    "maxVeg": 3
+    "maxVeg": 3,
+    "skills": []
+},
+{
+    "id": 6,
+    "name": "Oeuf",
+    "pic": "egg",
+    "cat": "aliens",
+    "squads": 1,
+    "squadSize": 1,
+    "crew": 1,
+    "hp": 1200,
+    "armor": 0,
+    "size": 100,
+    "stealth": 0,
+    "ap": 8,
+    "maxSalvo": 0,
+    "weapon": {},
+    "weapon2": {},
+    "moveCost": 99,
+    "maxFlood": -1,
+    "maxScarp": -1,
+    "maxVeg": -1,
+    "skills": [ "ponte" ]
 }
 ]
