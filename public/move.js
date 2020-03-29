@@ -7,32 +7,39 @@ function clickMove(tileId) {
             ownBatHere = true;
         }
     });
-    if (isAdjacent(selectedBat.tileId,tileId)) {
-        if (selectedBat.apLeft >= 1) {
-            if (terrainAccess(selectedBat.id,tileId)) {
-                if (!alienOccupiedTiles.includes(tileId)) {
-                    moveSelectedBat(tileId,false);
-                    moveInfos(selectedBat);
+    if (hasShot() && ownBatHere) {
+        warning('Mouvement illégal:','Pas de mouvement par dessus une unité si vous avez déjà attaqué (ou utilisé une habileté).<br>Le dernier mouvement n\'a pas été éxécuté.');
+        selectMode();
+        batUnstack();
+        batUnselect();
+    } else {
+        if (isAdjacent(selectedBat.tileId,tileId)) {
+            if (selectedBat.apLeft >= 1) {
+                if (terrainAccess(selectedBat.id,tileId)) {
+                    if (!alienOccupiedTiles.includes(tileId)) {
+                        moveSelectedBat(tileId,false);
+                        moveInfos(selectedBat);
+                    } else {
+                        // terrain occupé par un alien
+                    }
                 } else {
-                    // terrain occupé par un alien
+                    // terrain impraticable
                 }
             } else {
-                // terrain impraticable
+                selectMode();
+                batUnstack();
+                batUnselect();
             }
         } else {
-            selectMode();
-            batUnstack();
-            batUnselect();
-        }
-    } else {
-        if (selectedBat.tileId === tileId) {
-            // re-click sur l'unité active : unselect
-            selectMode();
-            batUnstack();
-            batUnselect();
-        } else {
-            // terrain non adjacent : unselect
-            clickSelect(tileId);
+            if (selectedBat.tileId === tileId) {
+                // re-click sur l'unité active : unselect
+                selectMode();
+                batUnstack();
+                batUnselect();
+            } else {
+                // terrain non adjacent : unselect
+                clickSelect(tileId);
+            }
         }
     }
 };
@@ -126,6 +133,26 @@ function batUnstack() {
             selectedBat.apLeft = selectedBat.oldapLeft;
         }
         moveSelectedBat(selectedBat.oldTileId,true);
+        console.log('unstack');
+        warning('Mouvement illégal:','Vous ne pouvez pas rester sur la même case qu\'une autre unité.<br>Les mouvements de ce bataillon ont été annulés.');
+    }
+};
+
+function isStacked() {
+    let stack = false;
+    bataillons.forEach(function(bat) {
+        if (bat.tileId === selectedBat.tileId && bat.loc === "zone" && bat.id != selectedBat.id) {
+            stack = true;
+        }
+    });
+    return stack;
+};
+
+function hasShot() {
+    if (selectedBat.salvoLeft >= selectedBatType.maxSalvo) {
+        return false;
+    } else {
+        return true;
     }
 };
 

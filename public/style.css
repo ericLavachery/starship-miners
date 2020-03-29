@@ -92,6 +92,19 @@ h4 {
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }
+.wash {
+    margin: 0 0 0 107px;
+    color: #f77a28;
+    font-size: 24px;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
+}
+.wash:hover {
+    color: #7fd1ae;
+    cursor: pointer;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
+}
 #cadreMap {
     /* background-color: #0d0e11; */
     /* padding: 3px 10px 10px 10px; */
@@ -154,6 +167,13 @@ h4 {
     font-family: 'Roboto Condensed', sans-serif;
     text-align: right;
     font-size: 12px;
+    color: #d5cabd;
+    /* font-weight: bold; */
+}
+.warnings {
+    /* font-family: 'Roboto Condensed', sans-serif; */
+    text-align: right;
+    /* font-size: 14px; */
     color: #d5cabd;
     /* font-weight: bold; */
 }
@@ -342,6 +362,13 @@ td {
     min-width: 130px;
     max-width: 130px;
     line-height: 14px;
+}
+#warnings {
+    background-image: url(/static/img/plate-dork-small.jpg);
+    background-position: 0% 0%;
+    min-width: 130px;
+    max-width: 130px;
+    line-height: 17px;
 }
 #timeInfos {
     background-image: url(/static/img/plate-dork-small.jpg);

@@ -1,6 +1,7 @@
 function nextTurn() {
     // stopMe = true;
     blockMe(true);
+    $('#warnings').empty();
     activeTurn = 'aliens';
     $('#unitInfos').empty();
     selectMode();

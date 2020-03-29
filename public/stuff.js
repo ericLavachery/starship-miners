@@ -71,3 +71,12 @@ function blockMe(stop) {
         $('body').css('background-image', 'url("/static/img/rayures.jpg")');
     }
 };
+
+function washReports() {
+    $('#warnings').empty();
+    $('#report').empty();
+};
+
+function warning(title,body) {
+    $('#warnings').empty().append('<span class="warnings"><span class="or">'+title+'<br></span> '+body+'<br></span><i class="far fa-hand-paper wash" onclick="washReports()"></i>');
+};

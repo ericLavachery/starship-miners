@@ -63,13 +63,15 @@ function showBatInfos(bat) {
     let stealth = getStealth(bat);
     $('#unitInfos').append('<span class="paramName">Discrétion</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
     if (bat.tags.includes('guet')) {
-        $('#unitInfos').append('<span class="paramName">Guet</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+        $('#unitInfos').append('<span class="paramName cy">Guet</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
     // XP
     $('#unitInfos').append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+bat.xp+' (lvl '+bat.vet+')</span><br>');
     // WEAPONS
-    weaponsInfos(bat,batUnitType);
-    skillsInfos(bat,batUnitType);
+    if (!isStacked()) {
+        weaponsInfos(bat,batUnitType);
+        skillsInfos(bat,batUnitType);
+    }
 
     // "moveCost": 3,
     // "maxFlood": 3,
@@ -149,7 +151,7 @@ function weaponsInfos(bat,batUnitType) {
 function skillsInfos(bat,batUnitType) {
     // GUET
     if (batUnitType.weapon.rof >= 1) {
-        if (bat.apLeft >= batUnitType.ap-3) {
+        if (bat.apLeft >= batUnitType.ap-3 && !bat.tags.includes('guet')) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le guet (pas de malus à la riposte)" class="boutonGris iconButtons" onclick="guet()"><i class="fas fa-binoculars"></i></button>&nbsp; Guet</h4></span>');
         } else {
