@@ -302,8 +302,8 @@ function blast(aoeShots,weapon,bat,batType) {
             if (newDamage > batType.hp) {
                 newDamage = batType.hp;
             }
-            if (damage < 0) {
-                damage = 0;
+            if (newDamage < 0) {
+                newDamage = 0;
             }
             damage = damage+newDamage;
         }

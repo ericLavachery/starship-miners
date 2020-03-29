@@ -66,6 +66,7 @@ let toHit = 999;
 let activeTurn = 'player';
 let brideDef = 0.75; // multiple le rof de la riposte si pas de guet
 let minPrec = 3 // minimum de précision (même après ajustements)
+let watchInitBonus = 15; // retire à l'initiative si GUET 
 // let report = '';
 // ALIENS
 let pointDeMire = 1830; // tileId

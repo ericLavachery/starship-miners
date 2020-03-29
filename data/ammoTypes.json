@@ -1,5 +1,13 @@
 [
     {
+        "name": "none",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1,
+        "accuracy": 1
+    },
+    {
         "name": "standard",
         "range": 0,
         "rof": 1,

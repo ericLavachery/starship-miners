@@ -125,6 +125,10 @@ function calcSpeed(bat,weap,distance,attacking) {
         }
     }
     // console.log('stealth'+stealth);
+    if (bat.tags.includes('guet')) {
+        speed = speed-watchInitBonus-stealth;
+        console.log('bonus guet');
+    }
     // console.log('speed'+speed);
     let vetDice = vetBonus.initiative*bat.vet;
     // console.log('vetDice'+vetDice);
@@ -283,7 +287,7 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.range = thisWeapon.range+ammo.range;
     thisWeapon.rof = Math.round(thisWeapon.rof*ammo.rof);
     thisWeapon.power = thisWeapon.power+ammo.power;
-    thisWeapon.armors = Math.round(thisWeapon.armors*ammo.armors);
+    thisWeapon.armors = thisWeapon.armors*ammo.armors;
     thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
     return thisWeapon;
 };
