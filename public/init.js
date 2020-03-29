@@ -41,6 +41,11 @@ socket.on('unitDV-Load', function(udv) {
     unitDV = udv;
     // console.log(unitDV);
 });
+// ammoTypes
+socket.on('ammoTypes-Load', function(at) {
+    ammoTypes = at;
+    // console.log(ammoTypes);
+});
 socket.on('unitTypes-Load', function(ut) {
     bareUnitTypes = ut;
     let newObj = {};

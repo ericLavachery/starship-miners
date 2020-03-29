@@ -95,6 +95,11 @@ function moveSelectedBat(tileId,free) {
         selectedBat.apLeft = selectedBat.apLeft-apLost;
     }
     selectedBat.tileId = tileId;
+    // remove tag guet
+    if (selectedBat.tags.includes('guet')) {
+        tagIndex = selectedBat.tags.indexOf('guet');
+        selectedBat.tags.splice(tagIndex, 1);
+    }
     tileSelect(selectedBat);
     showBataillon(selectedBat);
     showBatInfos(selectedBat);

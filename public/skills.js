@@ -1,9 +1,11 @@
 function guet() {
     console.log('GUET');
-    // cost all salvo no ap
-    // mettre le tag guet
-    // le retirer en fin de tour
-
+    if (!selectedBat.tags.includes('guet')) {
+        selectedBat.tags.push('guet');
+    }
+    selectedBat.salvoLeft = 0;
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
 };
 
 function medic() {

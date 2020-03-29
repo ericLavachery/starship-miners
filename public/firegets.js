@@ -274,31 +274,16 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.armors = 1;
     thisWeapon.aoe = weapon.aoe;
     thisWeapon.sound = weapon.sound;
-    let ammo = bat.ammo;
+    let myAmmo = bat.ammo;
     if (wn == 'w2') {
-        ammo = bat.ammo2;
+        myAmmo = bat.ammo2;
     }
-    if (ammo == 'perfo') {
-        thisWeapon.power = thisWeapon.power-2;
-        thisWeapon.armors = 0.5;
-    }
-    if (ammo == 'tungsten') {
-        thisWeapon.armors = 0.5;
-    }
-    if (ammo == 'uranium') {
-        thisWeapon.armors = 0.5;
-        thisWeapon.power = thisWeapon.power+1;
-    }
-    if (ammo == 'teflon') {
-        thisWeapon.armors = 0.75;
-    }
-    if (ammo == 'titanium') {
-        thisWeapon.power = thisWeapon.power-1;
-        thisWeapon.accuracy = Math.round(thisWeapon.accuracy*1.25);
-    }
-    if (ammo == 'hollow') {
-        thisWeapon.power = thisWeapon.power+3;
-        thisWeapon.armors = 2;
-    }
+    let ammoIndex = ammoTypes.findIndex((obj => obj.name == myAmmo));
+    let ammo = ammoTypes[ammoIndex];
+    thisWeapon.range = thisWeapon.range+ammo.range;
+    thisWeapon.rof = Math.round(thisWeapon.rof*ammo.rof);
+    thisWeapon.power = thisWeapon.power+ammo.power;
+    thisWeapon.armors = Math.round(thisWeapon.armors*ammo.armors);
+    thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
     return thisWeapon;
 };

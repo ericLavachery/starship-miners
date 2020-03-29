@@ -68,6 +68,16 @@ fs.readFile('./data/alienUnits.json', 'utf8', function (err, data) {
     console.error( e );
   }
 });
+var ammoTypes;
+fs.readFile('./data/ammoTypes.json', 'utf8', function (err, data) {
+  if (err) throw err;
+  try {
+    ammoTypes = JSON.parse(data);
+    // console.log(unitDV);
+  } catch (e) {
+    console.error( e );
+  }
+});
 var playerInfos = {};
 var bataillons = [];
 var savedMap = [];
@@ -179,6 +189,8 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.emit('unitDV-Load', unitDV);
         console.log('loading unit types');
         socket.emit('unitTypes-Load', unitTypes);
+        console.log('loading ammo');
+        socket.emit('ammoTypes-Load', ammoTypes);
         console.log('loading map filters');
         socket.emit('mapFilters-Load', mapFilters);
         console.log('loading terrain types');

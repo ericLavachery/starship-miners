@@ -160,7 +160,7 @@
             "power": 12,
             "aoe": "unit",
             "sound": "zapsplat_science_fiction_weapon_gun_shoot_001_32194b",
-            "ammo": [ "standard" ]
+            "ammo": [ "vapo" ]
         },
         "weapon2": {},
         "moveCost": 3,

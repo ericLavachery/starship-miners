@@ -38,6 +38,7 @@ function nextTurnEnd() {
     // récup du player
     let unitTypesIndex;
     let ap;
+    let tagIndex;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
             levelUp(bat);
@@ -50,6 +51,11 @@ function nextTurnEnd() {
             }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
+            // remove tag guet
+            if (bat.tags.includes('guet')) {
+                tagIndex = bat.tags.indexOf('guet');
+                bat.tags.splice(tagIndex, 1);
+            }
         }
     });
     saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!

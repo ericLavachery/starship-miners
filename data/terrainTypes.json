@@ -53,9 +53,9 @@
         "scarp": 0,
         "flood": 0,
         "veg": 2,
-        "mc": 0,
+        "mc": 1,
         "roadmc": -1,
-        "alienmc": 0,
+        "alienmc": 1,
         "cover": 5,
         "aliencover": 5
     },
@@ -65,9 +65,9 @@
         "scarp": 0,
         "flood": 0,
         "veg": 3,
-        "mc": 1,
+        "mc": 2,
         "roadmc": -1,
-        "alienmc": 1,
+        "alienmc": 2,
         "cover": 7,
         "aliencover": 7
     },
