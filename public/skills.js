@@ -1,6 +1,13 @@
+function guet() {
+    console.log('GUET');
+    // cost all salvo no ap
+    // mettre le tag guet
+    // le retirer en fin de tour
+
+};
+
 function medic() {
     console.log('MEDIC SKILL');
-    // rapport (comme pour combat)
     console.log(selectedBatType);
     $('#report').empty();
     $('#report').append('<span class="report or">'+selectedBat.type+' (Soins)</span><br>');

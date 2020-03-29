@@ -144,6 +144,17 @@ function weaponsInfos(bat,batUnitType) {
 };
 
 function skillsInfos(bat,batUnitType) {
+    // GUET
+    if (batUnitType.weapon.rof >= 1) {
+        if (bat.apLeft >= batUnitType.ap-3 && bat.salvoLeft >= 1) {
+            // assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le guet (pas de malus à la riposte)" class="boutonGris iconButtons" onclick="guet()"><i class="fas fa-binoculars"></i></button>&nbsp; Guet</h4></span>');
+        } else {
+            // pas assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Pas assez de PA" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Guet</h4></span>');
+        }
+    }
+    // MEDIC
     if (batUnitType.skills.includes('medic')) {
         if (bat.apLeft >= 4) {
             // assez d'ap

@@ -39,7 +39,6 @@ let bataillons = [];
 let batList = [];
 let alienList = [];
 let alienOccupiedTiles = [];
-let levelXP = [0,10,25,45,70];
 // let vetAccuracy = 4; // plus grand = moins de bonus (3 = x2.3) (2 = x3)
 // let vetInitiative = 10; // plus grand = mieux (retire max vetInitiative*vet)
 // let vetAP = 1; // 1 = +1 ap par niveau
@@ -50,6 +49,7 @@ let vetBonus = {
     ap: 1,
     stealth: 1.4
 }
+let levelXP = [0,10,25,45,70];
 // ACTIONS
 let mode = "select";
 let selectedBat = {};
@@ -64,6 +64,8 @@ let initiativeDice = 15 // ajoute 0-15
 let stopMe = false;
 let toHit = 999;
 let activeTurn = 'player';
+let brideDef = 0.75; // multiple le rof de la riposte si pas de guet
+let minPrec = 3 // minimum de précision (même après ajustements)
 // let report = '';
 // ALIENS
 let pointDeMire = 1830; // tileId

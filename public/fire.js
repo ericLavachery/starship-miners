@@ -203,7 +203,10 @@ function defense() {
         aoeShots = selectedBatType.squadSize;
     }
     // rof*squadsLeft loop
-    let shots = targetWeap.rof*targetBat.squadsLeft;
+    let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);
+    if (targetBat.tags.includes('guet')) {
+        shots = targetWeap.rof*targetBat.squadsLeft;
+    }
     // console.log(shots);
     // console.log(aoeShots);
     let totalDamage = 0;

@@ -17,8 +17,8 @@ function isHit(accuracy,aoe,size,stealth,cover) {
     if (aoe == 'unit') {
         prec = Math.round(prec-(stealth/2));
     }
-    if (prec < 1) {
-        prec = 1;
+    if (prec < minPrec) {
+        prec = minPrec;
     }
     let dice = rand.rand(1,100);
     let hitChance = Math.round(Math.sqrt(size)*prec);
