@@ -97,6 +97,7 @@ function createBatList() {
         return (bat.loc == 'zone' && bat.apLeft >= 1);
     });
     batList = _.sortBy(_.sortBy(_.sortBy(zoneBatList,'id'),'typeId'),'range');
+    batList.reverse();
     commandes();
     console.log(batList);
 };

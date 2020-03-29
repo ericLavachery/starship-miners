@@ -217,7 +217,7 @@
         "pic": "medic",
         "cat": "infantry",
         "squads": 6,
-        "squadSize": 4,
+        "squadSize": 6,
         "crew": 1,
         "hp": 5,
         "armor": 1,

@@ -152,7 +152,8 @@ function skillsInfos(bat,batUnitType) {
             // pas assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="PA épuisés" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Soins</h4></span>');
         }
-        $('#unitInfos').append('<span class="paramName">PA/Soin</span><span class="paramIcon"></span><span class="paramValue">4</span><br>');
+        let apCost = 4+batUnitType.squads-bat.squadsLeft;
+        $('#unitInfos').append('<span class="paramName">PA/Soin</span><span class="paramIcon"></span><span class="paramValue">'+apCost+'</span><br>');
     }
 };
 

@@ -173,7 +173,7 @@ function attack() {
         $('#report').append('<span class="report cy">Bataillon détruit<br></span>');
         setTimeout(function (){
             batDeathEffect(targetBat);
-        }, 2000); // How long do you want the delay to be (in milliseconds)?
+        }, 3000); // How long do you want the delay to be (in milliseconds)?
     } else {
         // targetBatArrayUpdate();
         if (targetBat.team == 'player') {
@@ -242,7 +242,7 @@ function defense() {
         $('#report').append('<span class="report cy">Bataillon détruit<br></span>');
         setTimeout(function (){
             batDeathEffect(selectedBat);
-        }, 2000); // How long do you want the delay to be (in milliseconds)?
+        }, 3000); // How long do you want the delay to be (in milliseconds)?
     } else {
         // selectedBatArrayUpdate();
         if (selectedBat.team == 'player') {
