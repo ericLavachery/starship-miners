@@ -39,7 +39,7 @@
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": []
+        "skills": [ "fortif","cible" ]
     },
     {
         "id": 1,
@@ -81,7 +81,7 @@
         "maxFlood": 1,
         "maxScarp": 1,
         "maxVeg": 2,
-        "skills": []
+        "skills": [ "cible" ]
     },
     {
         "id": 2,
@@ -167,7 +167,7 @@
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": []
+        "skills": [ "fortif","cible" ]
     },
     {
         "id": 5,
@@ -209,7 +209,7 @@
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": []
+        "skills": [ "fortif" ]
     },
     {
         "id": 6,
@@ -241,6 +241,6 @@
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": [ "medic" ]
+        "skills": [ "medic","fortif" ]
     }
 ]

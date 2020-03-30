@@ -65,6 +65,10 @@ function showBatInfos(bat) {
     if (bat.tags.includes('guet')) {
         $('#unitInfos').append('<span class="paramName cy">Guet</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
+    let fortifCover = getCover(bat,true);
+    if (bat.tags.includes('fortif')) {
+        $('#unitInfos').append('<span class="paramName cy">Fortification</span><span class="paramIcon"></span><span class="paramValue cy">'+fortifCover+'</span><br>');
+    }
     // XP
     $('#unitInfos').append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+bat.xp+' (lvl '+bat.vet+')</span><br>');
     // WEAPONS
@@ -149,18 +153,35 @@ function weaponsInfos(bat,batUnitType) {
 };
 
 function skillsInfos(bat,batUnitType) {
+    let skillMessage;
     // GUET
     if (batUnitType.weapon.rof >= 1) {
         if (bat.apLeft >= batUnitType.ap-3 && !bat.tags.includes('guet')) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le guet (pas de malus à la riposte)" class="boutonGris iconButtons" onclick="guet()"><i class="fas fa-binoculars"></i></button>&nbsp; Guet</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le guet (pas de malus à la riposte) (3 PA)" class="boutonGris iconButtons" onclick="guet()"><i class="fas fa-binoculars"></i></button>&nbsp; Guet</h4></span>');
         } else {
             // pas assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Pas assez de PA" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Guet</h4></span>');
         }
     }
+    // FORTIFICATION
+    if (batUnitType.skills.includes('fortif')) {
+        if (bat.apLeft >= batUnitType.ap-10 && !bat.tags.includes('fortif') && !batInMelee(bat.tileId) && bat.salvoLeft >= batUnitType.maxSalvo) {
+            // assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se fortifier (bonus couverture) ('+batUnitType.ap+' PA)" class="boutonGris iconButtons" onclick="fortification()"><i class="fas fa-shield-alt"></i></button>&nbsp; Fortification</h4></span>');
+        } else {
+            // pas assez d'ap
+            if (batInMelee(bat.tileId)) {
+                skillMessage = "Vous ne pouvez pas vous fortifier en mêlée"
+            } else {
+                skillMessage = "Pas assez de PA ou de salve"
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Fortification</h4></span>');
+        }
+    }
     // TIR CIBLE
-    if (batUnitType.weapon.rof >= 1) {
+    // intéressant si précision en dessous de 10
+    if (batUnitType.skills.includes('cible')) {
         balise = 'h4';
         if (bat.tags.includes('vise')) {
             balise = 'h1';

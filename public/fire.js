@@ -275,7 +275,7 @@ function combatReport() {
 function shot(weapon,bat,batType) {
     // returns damage
     let damage = 0;
-    let cover = getCover(bat);
+    let cover = getCover(bat,true);
     let stealth = getStealth(bat);
     if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover)) {
         damage = calcDamage(weapon.power,batType.armor);
@@ -297,7 +297,7 @@ function blast(aoeShots,weapon,bat,batType) {
     let newDamage = 0;
     let power = weapon.power;
     let oldPower = weapon.power;
-    let cover = getCover(bat);
+    let cover = getCover(bat,true);
     let stealth = getStealth(bat);
     let ii = 1;
     while (ii <= aoeShots) {

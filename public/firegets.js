@@ -31,7 +31,7 @@ function isHit(accuracy,aoe,size,stealth,cover) {
     }
     if (toHit === 999) {
         toHit = hitChance;
-        $('#report').append('<span class="report">Précision: '+toHit+'%</span><br><span class="report">Dégâts: </span>');
+        $('#report').append('<span class="report">Précision '+prec+' >> '+hitChance+'%</span><br><span class="report">Dégâts: </span>');
         console.log('hitChance '+hitChance);
     }
     if (dice > hitChance) {
@@ -53,16 +53,26 @@ function calcDamage(power,armor) {
     return powerDice-armor;
 };
 
-function getCover(bat) {
+function getCover(bat,withFortif) {
+    let cover;
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
     let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
     let terrain = terrainTypes[terrainIndex];
     if (bat.team == 'aliens') {
-        return terrain.aliencover;
+        cover = terrain.aliencover;
     } else {
-        return terrain.cover;
+        cover = terrain.cover;
     }
+    // Fortification
+    if (bat.tags.includes('fortif')) {
+        if (cover >= 2) {
+            cover = 5+Math.round(cover/1.9);
+        } else if (cover >= 0) {
+            cover = 5;
+        }
+    }
+    return cover;
 };
 
 function getBatType(bat) {
@@ -82,7 +92,7 @@ function getBatType(bat) {
 };
 
 function getStealth(bat) {
-    let cover = getCover(bat);
+    let cover = getCover(bat,false);
     let batType = getBatType(bat);
     let stealthBonus = 0;
     if (cover >= 4) {
@@ -152,6 +162,18 @@ function isInMelee(myTileIndex,thatTileIndex) {
     } else {
         return false;
     }
+};
+
+function batInMelee(myTileIndex) {
+    let inMelee = false;
+    aliens.forEach(function(alien) {
+        if (alien.loc === "zone") {
+            if (myTileIndex == alien.tileId+1 || myTileIndex == alien.tileId-1 || myTileIndex == alien.tileId+mapSize || myTileIndex == alien.tileId-mapSize) {
+                inMelee = true;
+            }
+        }
+    });
+    return inMelee;
 };
 
 function isInRange(myTileIndex,thatTileIndex) {

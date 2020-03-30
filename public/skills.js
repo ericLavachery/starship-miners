@@ -4,7 +4,18 @@ function guet() {
         selectedBat.tags.push('guet');
     }
     selectedBat.salvoLeft = 0;
-    selectedBat.apLeft = selectedBat.apLeft-5;
+    selectedBat.apLeft = selectedBat.apLeft-3;
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
+function fortification() {
+    console.log('FORTIFICATION');
+    if (!selectedBat.tags.includes('fortif')) {
+        selectedBat.tags.push('fortif');
+    }
+    selectedBat.salvoLeft = 0;
+    selectedBat.apLeft = selectedBat.apLeft-selectedBatType.ap;
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };

@@ -102,10 +102,14 @@ function moveSelectedBat(tileId,free) {
         selectedBat.apLeft = selectedBat.apLeft-apLost;
     }
     selectedBat.tileId = tileId;
-    // remove tag guet
+    // remove tags
     if (selectedBat.tags.includes('guet')) {
         tagIndex = selectedBat.tags.indexOf('guet');
-        selectedBat.tags.splice(tagIndex, 1);
+        selectedBat.tags.splice(tagIndex,1);
+    }
+    if (selectedBat.tags.includes('fortif')) {
+        tagIndex = selectedBat.tags.indexOf('fortif');
+        selectedBat.tags.splice(tagIndex,1);
     }
     tileSelect(selectedBat);
     showBataillon(selectedBat);
