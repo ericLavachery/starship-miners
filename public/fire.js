@@ -137,6 +137,10 @@ function attack() {
     }
     // rof*squadsLeft loop
     let shots = selectedWeap.rof*selectedBat.squadsLeft;
+    // tir ciblé
+    if (selectedBat.tags.includes('vise')) {
+        shots = Math.round(shots*2/3);
+    }
     let totalDamage = 0;
     toHit = 999;
     let i = 1;
@@ -204,6 +208,7 @@ function defense() {
     }
     // rof*squadsLeft loop
     let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);
+    // Guet
     if (targetBat.tags.includes('guet')) {
         shots = targetWeap.rof*targetBat.squadsLeft;
     }

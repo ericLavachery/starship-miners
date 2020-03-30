@@ -159,17 +159,30 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Pas assez de PA" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Guet</h4></span>');
         }
     }
+    // TIR CIBLE
+    if (batUnitType.weapon.rof >= 1) {
+        balise = 'h4';
+        if (bat.tags.includes('vise')) {
+            balise = 'h1';
+        }
+        if (bat.apLeft >= 3 && !bat.tags.includes('vise')) {
+            // assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+5 précision, 2/3 cadence de tir (3 PA + coût de l\'arme)" class="boutonGris iconButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i></button>&nbsp; Tir ciblé</'+balise+'></span>');
+        } else {
+            // pas assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de PA" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Tir ciblé</'+balise+'></span>');
+        }
+    }
     // MEDIC
     if (batUnitType.skills.includes('medic')) {
+        let apCost = 4+batUnitType.squads-bat.squadsLeft;
         if (bat.apLeft >= 4) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les bataillons adjacents" class="boutonGris iconButtons" onclick="medic()"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les bataillons adjacents ('+apCost+' PA par bataillon)" class="boutonGris iconButtons" onclick="medic()"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
         } else {
             // pas assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="PA épuisés" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Soins</h4></span>');
         }
-        let apCost = 4+batUnitType.squads-bat.squadsLeft;
-        $('#unitInfos').append('<span class="paramName">PA/Soin</span><span class="paramIcon"></span><span class="paramValue">'+apCost+'</span><br>');
     }
 };
 

@@ -53,7 +53,7 @@
         "armor": 10,
         "size": 25,
         "stealth": 3,
-        "ap": 22,
+        "ap": 15,
         "maxSalvo": 1,
         "weapon": {
             "name": "Mitrailleuse",
@@ -77,7 +77,7 @@
             "sound": "audio_hero_GunCannon_DIGIJ02_20_6_370b",
             "ammo": [ "standard" ]
         },
-        "moveCost": 4,
+        "moveCost": 2,
         "maxFlood": 1,
         "maxScarp": 1,
         "maxVeg": 2,
@@ -159,7 +159,7 @@
             "accuracy": 16,
             "power": 12,
             "aoe": "unit",
-            "sound": "zapsplat_science_fiction_weapon_gun_shoot_001_32194b",
+            "sound": "PM_FSSF2_WEAPONS_D1_SHOT_323c",
             "ammo": [ "vapo" ]
         },
         "weapon2": {},

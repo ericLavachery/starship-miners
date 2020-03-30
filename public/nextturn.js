@@ -52,11 +52,7 @@ function nextTurnEnd() {
             }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
-            // remove tag guet
-            if (bat.tags.includes('guet')) {
-                tagIndex = bat.tags.indexOf('guet');
-                bat.tags.splice(tagIndex, 1);
-            }
+            tagsUpdate(bat);
         }
     });
     saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
@@ -66,6 +62,18 @@ function nextTurnEnd() {
     blockMe(false);
     activeTurn = 'player';
     commandes();
+};
+
+function tagsUpdate(bat) {
+    tagDelete(bat,'guet');
+    tagDelete(bat,'vise');
+};
+
+function tagDelete(bat,tag) {
+    if (bat.tags.includes(tag)) {
+        tagIndex = bat.tags.indexOf(tag);
+        bat.tags.splice(tagIndex,1);
+    }
 };
 
 function levelUp(bat) {

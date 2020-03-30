@@ -4,6 +4,17 @@ function guet() {
         selectedBat.tags.push('guet');
     }
     selectedBat.salvoLeft = 0;
+    selectedBat.apLeft = selectedBat.apLeft-5;
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
+function tirCible() {
+    console.log('TIR CIBLE');
+    if (!selectedBat.tags.includes('vise')) {
+        selectedBat.tags.push('vise');
+    }
+    selectedBat.apLeft = selectedBat.apLeft-3;
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };

@@ -20,13 +20,20 @@ function isHit(accuracy,aoe,size,stealth,cover) {
     if (prec < minPrec) {
         prec = minPrec;
     }
+    // tir ciblé
+    if (selectedBat.tags.includes('vise')) {
+        prec = prec+5;
+    }
     let dice = rand.rand(1,100);
     let hitChance = Math.round(Math.sqrt(size)*prec);
+    if (hitChance < size) {
+        hitChance = size;
+    }
     if (toHit === 999) {
         toHit = hitChance;
         $('#report').append('<span class="report">Précision: '+toHit+'%</span><br><span class="report">Dégâts: </span>');
+        console.log('hitChance '+hitChance);
     }
-    console.log('hitChance '+hitChance);
     if (dice > hitChance) {
         return false;
     } else {
