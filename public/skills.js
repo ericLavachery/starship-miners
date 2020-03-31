@@ -30,11 +30,15 @@ function tirCible() {
     showBatInfos(selectedBat);
 };
 
-function medic() {
+function medic(cat) {
     console.log('MEDIC SKILL');
     console.log(selectedBatType);
+    let denom = 'Soins';
+    if (cat != 'infantry') {
+        denom = 'Réparations';
+    }
     $('#report').empty();
-    $('#report').append('<span class="report or">'+selectedBat.type+' (Soins)</span><br>');
+    $('#report').append('<span class="report or">'+selectedBat.type+' ('+denom+')</span><br>');
     let unitIndex;
     let batType;
     let totalAPCost = 0;
@@ -51,7 +55,7 @@ function medic() {
                 if (distance === 0) {
                     unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
                     batType = unitTypes[unitIndex];
-                    if (batType.cat === 'infantry') {
+                    if (batType.cat === cat) {
                         if (bat.damage > 0) {
                             if (bat.id === selectedBat.id) {
                                 selectedBat.damage = 0
@@ -60,7 +64,11 @@ function medic() {
                             }
                             totalAPCost = totalAPCost+apCost;
                             xpGain = xpGain+0.45;
-                            $('#report').append('<span class="report cy">'+bat.type+'<br></span><span class="report">dégâts soignés<br>');
+                            if (cat == 'infantry') {
+                                $('#report').append('<span class="report cy">'+bat.type+'<br></span><span class="report">dégâts soignés<br>');
+                            } else {
+                                $('#report').append('<span class="report cy">'+bat.type+'<br></span><span class="report">dégâts réparés<br>');
+                            }
                             showBataillon(bat);
                         } else if (bat.squadsLeft < batType.squads) {
                             batUnits = bat.squadsLeft*batType.squadSize;

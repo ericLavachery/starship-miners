@@ -98,7 +98,7 @@ function moveSelectedBat(tileId,free) {
         } else {
             moveCost = calcMoveCost(tileId,false);
         }
-        let apLost = about(moveCost,15);
+        let apLost = moveCost;
         selectedBat.apLeft = selectedBat.apLeft-apLost;
     }
     selectedBat.tileId = tileId;

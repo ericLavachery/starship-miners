@@ -37,5 +37,9 @@
     {"id":35,"type":"Punaise","typeId":5,"loc":"zone","locId":0,"tileId":1354,"oldTileId":1354,"squadsLeft":6,"apLeft":15,"ammo":"none","ammo2":"none","oldapLeft":15,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]},
     {"id":36,"type":"Punaise","typeId":5,"loc":"zone","locId":0,"tileId":800,"oldTileId":800,"squadsLeft":6,"apLeft":15,"ammo":"none","ammo2":"none","oldapLeft":15,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]},
     {"id":37,"type":"Punaise","typeId":5,"loc":"zone","locId":0,"tileId":1094,"oldTileId":1094,"squadsLeft":6,"apLeft":15,"ammo":"none","ammo2":"none","oldapLeft":15,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]},
-    {"id":38,"type":"Oeuf","typeId":6,"loc":"zone","locId":0,"tileId":453,"oldTileId":453,"squadsLeft":1,"apLeft":1,"ammo":"none","ammo2":"none","oldapLeft":1,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]}
+    {"id":38,"type":"Oeuf","typeId":6,"loc":"zone","locId":0,"tileId":453,"oldTileId":453,"squadsLeft":1,"apLeft":1,"ammo":"none","ammo2":"none","oldapLeft":1,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]},
+    {"id":39,"type":"Bug","typeId":0,"loc":"zone","locId":0,"tileId":2134,"oldTileId":2134,"squadsLeft":6,"apLeft":12,"ammo":"none","ammo2":"none","oldapLeft":12,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]},
+    {"id":40,"type":"Punaise","typeId":5,"loc":"zone","locId":0,"tileId":2375,"oldTileId":2375,"squadsLeft":6,"apLeft":15,"ammo":"none","ammo2":"none","oldapLeft":15,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]},
+    {"id":41,"type":"Punaise","typeId":5,"loc":"zone","locId":0,"tileId":1954,"oldTileId":1954,"squadsLeft":6,"apLeft":15,"ammo":"none","ammo2":"none","oldapLeft":15,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]},
+    {"id":42,"type":"Punaise","typeId":5,"loc":"zone","locId":0,"tileId":2076,"oldTileId":2076,"squadsLeft":6,"apLeft":15,"ammo":"none","ammo2":"none","oldapLeft":15,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]}
 ]

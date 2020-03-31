@@ -87,7 +87,11 @@ function showBatInfos(bat) {
 function weaponsInfos(bat,batUnitType) {
     let balise;
     let thisWeapon = {};
-    if (batUnitType.weapon.rof >= 1) {
+    let showW1 = true;
+    if (batUnitType.weapon.rof >= 1 && batUnitType.weapon2.rof >= 1 && batUnitType.weapon.name == batUnitType.weapon2.name) {
+        showW1 = false;
+    }
+    if (batUnitType.weapon.rof >= 1 && showW1) {
         thisWeapon = weaponAdj(batUnitType.weapon,bat,'w1');
         balise = 'h4';
         if (thisWeapon.name === selectedWeap.name) {
@@ -199,10 +203,21 @@ function skillsInfos(bat,batUnitType) {
         let apCost = 4+batUnitType.squads-bat.squadsLeft;
         if (bat.apLeft >= 4) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les bataillons adjacents ('+apCost+' PA par bataillon)" class="boutonGris iconButtons" onclick="medic()"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes ('+apCost+' PA par bataillon)" class="boutonGris iconButtons" onclick="medic(`infantry`)"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
         } else {
             // pas assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="PA épuisés" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Soins</h4></span>');
+        }
+    }
+    // MECANO
+    if (batUnitType.skills.includes('mecano')) {
+        let apCost = 4+batUnitType.squads-bat.squadsLeft;
+        if (bat.apLeft >= 4) {
+            // assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA par bataillon)" class="boutonGris iconButtons" onclick="medic(`vehicles`)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
+        } else {
+            // pas assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="PA épuisés" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
         }
     }
 };
