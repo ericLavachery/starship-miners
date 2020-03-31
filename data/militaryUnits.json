@@ -269,7 +269,7 @@
         "maxSalvo": 1,
         "weapon": {
             "name": "Pistolet",
-            "cost": 3,
+            "cost": 2,
             "range": 1,
             "rof": 10,
             "accuracy": 10,
@@ -280,11 +280,11 @@
         },
         "weapon2": {
             "name": "Fusil de précision",
-            "cost": 6,
+            "cost": 5,
             "range": 2,
             "rof": 10,
-            "accuracy": 22,
-            "power": 9,
+            "accuracy": 25,
+            "power": 10,
             "aoe": "unit",
             "sound": "john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortc",
             "ammo": [ "standard","hollow","perfo","tungsten","uranium","explosive" ]

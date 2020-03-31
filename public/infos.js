@@ -86,6 +86,7 @@ function showBatInfos(bat) {
 
 function weaponsInfos(bat,batUnitType) {
     let balise;
+    let attaques;
     let thisWeapon = {};
     let showW1 = true;
     if (batUnitType.weapon.rof >= 1 && batUnitType.weapon2.rof >= 1 && batUnitType.weapon.name == batUnitType.weapon2.name) {
@@ -116,7 +117,8 @@ function weaponsInfos(bat,batUnitType) {
         }
         $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">'+riposte+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Attaques/Escouade</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.rof+'</span><br>');
+        attaques = thisWeapon.rof*bat.squadsLeft;
+        $('#unitInfos').append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
         if (thisWeapon.armors != 1) {
@@ -145,7 +147,8 @@ function weaponsInfos(bat,batUnitType) {
         $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
         $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.cost+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Attaques/Escouade</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.rof+'</span><br>');
+        attaques = thisWeapon.rof*bat.squadsLeft;
+        $('#unitInfos').append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
         if (thisWeapon.armors != 1) {
@@ -170,7 +173,7 @@ function skillsInfos(bat,batUnitType) {
     }
     // FORTIFICATION
     if (batUnitType.skills.includes('fortif')) {
-        if (bat.apLeft >= batUnitType.ap-10 && !bat.tags.includes('fortif') && !batInMelee(bat.tileId) && bat.salvoLeft >= batUnitType.maxSalvo) {
+        if (bat.apLeft >= batUnitType.ap && !bat.tags.includes('fortif') && !batInMelee(bat.tileId) && bat.salvoLeft >= batUnitType.maxSalvo) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se fortifier (bonus couverture) ('+batUnitType.ap+' PA)" class="boutonGris iconButtons" onclick="fortification()"><i class="fas fa-shield-alt"></i></button>&nbsp; Fortification</h4></span>');
         } else {
@@ -222,13 +225,22 @@ function skillsInfos(bat,batUnitType) {
     }
     // SELF REPAIR
     if (batUnitType.skills.includes('bldmecano')) {
+        let damaged = false;
+        if (batUnitType.squads > bat.squadsLeft || bat.damage >=1) {
+            damaged = true;
+        }
         let apCost = batUnitType.ap;
-        if (bat.apLeft >= batUnitType.ap) {
+        if (bat.apLeft >= batUnitType.ap && damaged) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment ('+apCost+' PA par bataillon)" class="boutonGris iconButtons" onclick="medic(`buildings`,'+apCost+',false)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`buildings`,'+apCost+',false)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
         } else {
             // pas assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="PA épuisés" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
+            if (!damaged) {
+                skillMessage = "Ce bâtiment n'a pas subit de dégâts"
+            } else {
+                skillMessage = "Pas assez de PA"
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
         }
     }
 };
@@ -258,7 +270,8 @@ function showEnemyBatInfos(bat) {
         balise = 'h4';
         $('#unitInfos').append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span>');
         $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Attaques/Escouade</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.rof+'</span><br>');
+        let attaques = thisWeapon.rof*bat.squadsLeft;
+        $('#unitInfos').append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
         $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
