@@ -203,7 +203,7 @@ function skillsInfos(bat,batUnitType) {
         let apCost = 4+batUnitType.squads-bat.squadsLeft;
         if (bat.apLeft >= 4) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes ('+apCost+' PA par bataillon)" class="boutonGris iconButtons" onclick="medic(`infantry`)"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes ('+apCost+' PA par bataillon)" class="boutonGris iconButtons" onclick="medic(`infantry`,4,true)"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
         } else {
             // pas assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="PA épuisés" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Soins</h4></span>');
@@ -214,7 +214,18 @@ function skillsInfos(bat,batUnitType) {
         let apCost = 4+batUnitType.squads-bat.squadsLeft;
         if (bat.apLeft >= 4) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA par bataillon)" class="boutonGris iconButtons" onclick="medic(`vehicles`)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA par bataillon)" class="boutonGris iconButtons" onclick="medic(`vehicles`,4,true)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
+        } else {
+            // pas assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="PA épuisés" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
+        }
+    }
+    // SELF REPAIR
+    if (batUnitType.skills.includes('bldmecano')) {
+        let apCost = batUnitType.ap;
+        if (bat.apLeft >= batUnitType.ap) {
+            // assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment ('+apCost+' PA par bataillon)" class="boutonGris iconButtons" onclick="medic(`buildings`,'+apCost+',false)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
         } else {
             // pas assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="PA épuisés" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
