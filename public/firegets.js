@@ -26,6 +26,10 @@ function isHit(accuracy,aoe,size,stealth,cover) {
     }
     let dice = rand.rand(1,100);
     let hitChance = Math.round(Math.sqrt(size)*prec);
+    // aoe : more chance than normal to hit small creatures 
+    if (aoe != 'unit' && size < 10) {
+        hitChance = Math.round(Math.sqrt(10)*prec);
+    }
     if (hitChance < size) {
         hitChance = size;
     }

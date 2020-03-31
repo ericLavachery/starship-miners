@@ -51,7 +51,7 @@ function medic(cat,cost,around) {
     if (around) {
         bataillons.forEach(function(bat) {
             if (apCost < maxAPCost) {
-                if (bat.loc === "zone" && bat.fuzz >= 0) {
+                if (bat.loc === "zone") {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
                     if (distance === 0) {
                         unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
@@ -119,3 +119,22 @@ function medic(cat,cost,around) {
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
+
+function numMedicTargets(myBat,cat) {
+    let numTargets = 0;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            distance = calcDistance(myBat.tileId,bat.tileId);
+            if (distance === 0) {
+                unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
+                batType = unitTypes[unitIndex];
+                if (batType.cat === cat) {
+                    if (bat.damage > 0 || bat.squadsLeft < batType.squads) {
+                        numTargets = numTargets+1;
+                    }
+                }
+            }
+        }
+    });
+    return numTargets;
+}

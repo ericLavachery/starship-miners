@@ -161,6 +161,8 @@ function weaponsInfos(bat,batUnitType) {
 
 function skillsInfos(bat,batUnitType) {
     let skillMessage;
+    let numTargets = 0;
+    let apCost;
     // GUET
     if (batUnitType.weapon.rof >= 1) {
         if (bat.apLeft >= batUnitType.ap-3 && !bat.tags.includes('guet')) {
@@ -203,24 +205,36 @@ function skillsInfos(bat,batUnitType) {
     }
     // MEDIC
     if (batUnitType.skills.includes('medic')) {
-        let apCost = 4+batUnitType.squads-bat.squadsLeft;
-        if (bat.apLeft >= 4) {
+        numTargets = numMedicTargets(bat,'infantry');
+        apCost = numTargets*(4+batUnitType.squads-bat.squadsLeft);
+        if (bat.apLeft >= 4 && numTargets >= 1) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes ('+apCost+' PA par bataillon)" class="boutonGris iconButtons" onclick="medic(`infantry`,4,true)"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,4,true)"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
         } else {
             // pas assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="PA épuisés" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Soins</h4></span>');
+            if (numTargets < 1) {
+                skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts"
+            } else {
+                skillMessage = "Pas assez de PA"
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Soins</h4></span>');
         }
     }
     // MECANO
     if (batUnitType.skills.includes('mecano')) {
-        let apCost = 4+batUnitType.squads-bat.squadsLeft;
-        if (bat.apLeft >= 4) {
+        numTargets = numMedicTargets(bat,'vehicles');
+        apCost = numTargets*(4+batUnitType.squads-bat.squadsLeft);
+        if (bat.apLeft >= 4 && numTargets >= 1) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA par bataillon)" class="boutonGris iconButtons" onclick="medic(`vehicles`,4,true)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,4,true)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
         } else {
             // pas assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="PA épuisés" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
+            if (numTargets < 1) {
+                skillMessage = "Aucun véhicule adjacent n'a pas subit de dégâts"
+            } else {
+                skillMessage = "Pas assez de PA"
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
         }
     }
     // SELF REPAIR

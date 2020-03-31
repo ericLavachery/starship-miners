@@ -56,6 +56,11 @@ function batSelect(bat) {
     }
     // draw new selected unit
     tileSelect(bat);
+    checkSelectedBatType();
+    commandes();
+};
+
+function checkSelectedBatType() {
     let batTypeIndex;
     if (selectedBat.team == 'player') {
         batTypeIndex = unitTypes.findIndex((obj => obj.id == selectedBat.typeId));
@@ -67,7 +72,6 @@ function batSelect(bat) {
         batTypeIndex = localUnits.findIndex((obj => obj.id == selectedBat.typeId));
         selectedBatType = JSON.parse(JSON.stringify(localUnits[batTypeIndex]));
     }
-    commandes();
 };
 
 function batUnselect() {
