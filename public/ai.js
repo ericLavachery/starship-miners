@@ -11,6 +11,7 @@ function alienMoveLoop() {
     $('#report').empty('');
     attAlive = true;
     defAlive = true;
+    isCamoBlock();
     checkPDM();
     tileUntarget();
     targetBat = {};
@@ -525,7 +526,7 @@ function isAlienInMelee(tileId) {
     let distance;
     let alienInMelee = false;
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone") {
+        if (bat.loc === "zone" && bat.fuzz >= -1) {
             distance = calcDistance(tileId,bat.tileId);
             if (distance === 0) {
                 alienInMelee = true;
@@ -533,6 +534,47 @@ function isAlienInMelee(tileId) {
         }
     });
     return alienInMelee;
+};
+
+function isCamoBlock() {
+    console.log('isCamoBlock?');
+    let alienAdjTiles = [];
+    alienAdjTiles.push(selectedBat.tileId-1);
+    alienAdjTiles.push(selectedBat.tileId+1);
+    alienAdjTiles.push(selectedBat.tileId-mapSize);
+    alienAdjTiles.push(selectedBat.tileId-mapSize+1);
+    alienAdjTiles.push(selectedBat.tileId-mapSize-1);
+    alienAdjTiles.push(selectedBat.tileId+mapSize);
+    alienAdjTiles.push(selectedBat.tileId+mapSize+1);
+    alienAdjTiles.push(selectedBat.tileId+mapSize-1);
+    let alienMeleeTiles = [];
+    alienMeleeTiles.push(selectedBat.tileId-1);
+    alienMeleeTiles.push(selectedBat.tileId+1);
+    alienMeleeTiles.push(selectedBat.tileId-mapSize);
+    alienMeleeTiles.push(selectedBat.tileId+mapSize);
+    console.log(alienAdjTiles);
+    let camoBlocks = 0;
+    let meleeBlocks = 0;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" && bat.fuzz <= -2 && alienAdjTiles.includes(bat.tileId)) {
+            camoBlocks = camoBlocks+1;
+            if (alienMeleeTiles.includes(bat.tileId)) {
+                meleeBlocks = meleeBlocks+1;
+            }
+        }
+    });
+    if (camoBlocks >= 2 && meleeBlocks >= 1) {
+        // CAMOBLOCK!!
+        let camoUnblocked = false;
+        let shufBats = _.shuffle(bataillons);
+        shufBats.forEach(function(bat) {
+            if (bat.loc === "zone" && bat.fuzz <= -2 && alienMeleeTiles.includes(bat.tileId) && !camoUnblocked) {
+                camoUnblocked = true;
+                bat.fuzz = -1;
+                console.log('CamoUnblock: '+bat.name);
+            }
+        });
+    }
 };
 
 function createAlienList() {

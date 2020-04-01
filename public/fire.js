@@ -58,7 +58,9 @@ function combat() {
         defAlive = true;
     }
     // sort du mode furtif
-    camoOut();
+    if (activeTurn == 'player') {
+        camoOut();
+    }
     let selectedBatUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
     let targetBatUnits = targetBat.squadsLeft*targetBatType.squadSize;
     $('#report').empty('');
@@ -137,6 +139,14 @@ function attack() {
     } else if (selectedWeap.aoe == "squad") {
         aoeShots = targetBatType.squadSize;
     }
+    // Feu dans l'eau
+    if (selectedWeap.ammo == 'feu') {
+        let terrain = getTerrain(targetBat);
+        if (terrain.name === 'S' || terrain.name === 'W' || terrain.name === 'R') {
+            aoeShots = 1;
+        }
+        console.log('fire in water: aoe '+aoeShots);
+    }
     // rof*squadsLeft loop
     let shots = selectedWeap.rof*selectedBat.squadsLeft;
     // tir ciblé
@@ -207,6 +217,14 @@ function defense() {
         aoeShots = selectedBatType.squadSize*selectedBat.squadsLeft;
     } else if (targetWeap.aoe == "squad") {
         aoeShots = selectedBatType.squadSize;
+    }
+    // Feu dans l'eau
+    if (targetWeap.ammo == 'feu') {
+        let terrain = getTerrain(selectedBat);
+        if (terrain.name === 'S' || terrain.name === 'W' || terrain.name === 'R') {
+            aoeShots = 1;
+        }
+        console.log('fire in water: aoe '+aoeShots);
     }
     // rof*squadsLeft loop
     let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);

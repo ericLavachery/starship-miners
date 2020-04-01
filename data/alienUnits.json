@@ -15,7 +15,7 @@
     "maxSalvo": 1,
     "weapon": {
         "name": "Mandibules",
-        "cost": 4,
+        "cost": 3,
         "range": 0,
         "rof": 6,
         "accuracy": 20,
@@ -143,7 +143,7 @@
     "maxSalvo": 1,
     "weapon": {
         "name": "Jet d'acide",
-        "cost": 3,
+        "cost": 5,
         "range": 3,
         "rof": 2,
         "accuracy": 20,

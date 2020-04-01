@@ -78,5 +78,13 @@
         "power": 0,
         "armors": 0.25,
         "accuracy": 1
+    },
+    {
+        "name": "feu",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1.5,
+        "accuracy": 1
     }
 ]
