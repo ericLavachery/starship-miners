@@ -111,6 +111,9 @@ function moveSelectedBat(tileId,free) {
         tagIndex = selectedBat.tags.indexOf('fortif');
         selectedBat.tags.splice(tagIndex,1);
     }
+    if (selectedBat.tags.includes('camo')) {
+        camouflage(true);
+    }
     tileSelect(selectedBat);
     showBataillon(selectedBat);
     showBatInfos(selectedBat);
@@ -219,10 +222,13 @@ function calcMoveCost(targetTileId,diag) {
     } else {
         moveCost = selectedBatType.moveCost+terrainTypes[terIndex].mc;
     }
-    if (diag) {
-        moveCost = Math.round(moveCost*1.42);
+    if (selectedBat.tags.includes('camo')) {
+        moveCost = moveCost+1.6;
     }
-    return moveCost;
+    if (diag) {
+        moveCost = moveCost*1.42;
+    }
+    return Math.round(moveCost);
 };
 
 function apLoss(batId,number,sloppy) {

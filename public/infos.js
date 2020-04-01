@@ -62,6 +62,9 @@ function showBatInfos(bat) {
     $('#unitInfos').append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.size+'</span><br>');
     let stealth = getStealth(bat);
     $('#unitInfos').append('<span class="paramName">Discrétion</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
+    if (bat.tags.includes('camo')) {
+        $('#unitInfos').append('<span class="paramName cy">Mode furtif</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    }
     if (bat.tags.includes('guet')) {
         $('#unitInfos').append('<span class="paramName cy">Guet</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
@@ -186,6 +189,21 @@ function skillsInfos(bat,batUnitType) {
                 skillMessage = "Pas assez de PA ou de salve"
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Fortification</h4></span>');
+        }
+    }
+    // CAMOUFLAGE
+    if (batUnitType.skills.includes('camo')) {
+        apCost = Math.floor(batUnitType.ap/3);
+        if (bat.apLeft >= apCost) {
+            // assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Camouflage ('+apCost+' PA)" class="boutonGris iconButtons" onclick="camouflage(false)"><i class="ra ra-grass"></i></button>&nbsp; Mode furtif</h4></span>');
+        } else {
+            // pas assez d'ap
+            skillMessage = "Pas assez de PA"
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Mode furtif</h4></span>');
+        }
+        if (bat.tags.includes('camo')) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Sortir du mode furtif" class="boutonGris iconButtons" onclick="camoOut()"><i class="fas fa-shoe-prints"></i></button>&nbsp; Mode non furtif</h4></span>');
         }
     }
     // TIR CIBLE

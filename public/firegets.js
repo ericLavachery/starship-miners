@@ -26,7 +26,7 @@ function isHit(accuracy,aoe,size,stealth,cover) {
     }
     let dice = rand.rand(1,100);
     let hitChance = Math.round(Math.sqrt(size)*prec);
-    // aoe : more chance than normal to hit small creatures 
+    // aoe : more chance than normal to hit small creatures
     if (aoe != 'unit' && size < 10) {
         hitChance = Math.round(Math.sqrt(10)*prec);
     }
@@ -77,6 +77,14 @@ function getCover(bat,withFortif) {
         }
     }
     return cover;
+};
+
+function getTerrain(bat) {
+    let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
+    let tile = zone[tileIndex];
+    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
+    let terrain = terrainTypes[terrainIndex];
+    return terrain;
 };
 
 function getBatType(bat) {

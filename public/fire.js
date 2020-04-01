@@ -57,6 +57,8 @@ function combat() {
         attAlive = true;
         defAlive = true;
     }
+    // sort du mode furtif
+    camoOut();
     let selectedBatUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
     let targetBatUnits = targetBat.squadsLeft*targetBatType.squadSize;
     $('#report').empty('');

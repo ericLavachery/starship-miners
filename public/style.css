@@ -330,7 +330,7 @@ td {
 }
 #unitInfos {
     background-image: url(/static/img/plate-dork-small.jpg);
-    background-position: 0% 25%;
+    background-position: 0% 0%;
     min-height: 81px;
 }
 #nameInfos {

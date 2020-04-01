@@ -431,7 +431,7 @@ function anyTargetInRange() {
     let distance;
     let inRange = false;
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone") {
+        if (bat.loc === "zone" && bat.fuzz >= -1) {
             distance = calcDistance(selectedBat.tileId,bat.tileId);
             if (distance <= selectedWeap.range) {
                 inRange = true;
@@ -447,7 +447,7 @@ function targetMelee() {
     let inPlace = false;
     let shufBats = _.shuffle(bataillons);
     shufBats.forEach(function(bat) {
-        if (bat.loc === "zone") {
+        if (bat.loc === "zone" && bat.fuzz >= -1) {
             distance = calcDistance(selectedBat.tileId,bat.tileId);
             if (distance === 0 && inPlace === false) {
                 targetBat = JSON.parse(JSON.stringify(bat));
@@ -466,7 +466,7 @@ function targetFarthest() {
     let shufBats = _.shuffle(bataillons);
     if (!isAlienInMelee(selectedBat.tileId)) {
         shufBats.forEach(function(bat) {
-            if (bat.loc === "zone") {
+            if (bat.loc === "zone" && bat.fuzz >= -1) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance <= selectedWeap.range) {
                     if (lePlusLoin < distance) {
@@ -479,7 +479,7 @@ function targetFarthest() {
         });
     } else {
         shufBats.forEach(function(bat) {
-            if (bat.loc === "zone") {
+            if (bat.loc === "zone" && bat.fuzz >= -1) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance === 0) {
                     targetBat = JSON.parse(JSON.stringify(bat));
@@ -499,7 +499,7 @@ function targetClosest() {
     let shufBats = _.shuffle(bataillons);
     if (!isAlienInMelee(selectedBat.tileId)) {
         shufBats.forEach(function(bat) {
-            if (bat.loc === "zone") {
+            if (bat.loc === "zone" && bat.fuzz >= -1) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance == selectedWeap.range) {
                     targetBat = JSON.parse(JSON.stringify(bat));
@@ -509,7 +509,7 @@ function targetClosest() {
         });
     } else {
         shufBats.forEach(function(bat) {
-            if (bat.loc === "zone") {
+            if (bat.loc === "zone" && bat.fuzz >= -1) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance === 0) {
                     targetBat = JSON.parse(JSON.stringify(bat));

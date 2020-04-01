@@ -20,6 +20,60 @@ function fortification() {
     showBatInfos(selectedBat);
 };
 
+function camouflage(free) {
+    console.log('MODE FURTIF');
+    if (!selectedBat.tags.includes('camo')) {
+        selectedBat.tags.push('camo');
+    }
+    let stealth = getStealth(selectedBat);
+    let terrain = getTerrain(selectedBat);
+    if (terrain.veg >= 1) {
+        stealth = stealth+terrain.veg+terrain.veg+2;
+    }
+    console.log('stealth '+stealth);
+    let camOK = false;
+    let camDice = rand.rand(1,100);
+    let camChance = Math.round(Math.sqrt(stealth)*19);
+    if (camChance > 98) {
+        camChance = 98;
+    }
+    console.log('camChance '+camChance);
+    if (camDice <= camChance) {
+        camOK = true;
+        selectedBat.fuzz = -2;
+    } else {
+        if (free) {
+            camOK = false;
+            selectedBat.fuzz = -1;
+        } else {
+            if (selectedBat.fuzz > -2) {
+                camOK = false;
+                selectedBat.fuzz = -1;
+            } else {
+                camOK = true;
+                selectedBat.fuzz = -2;
+            }
+        }
+    }
+    if (!free) {
+        selectedBat.apLeft = selectedBat.apLeft-Math.floor(selectedBatType.ap/3);
+    }
+    console.log(camOK);
+    console.log(selectedBat.fuzz);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
+function camoOut() {
+    console.log('MODE NON FURTIF');
+    if (selectedBat.tags.includes('camo')) {
+        tagIndex = selectedBat.tags.indexOf('camo');
+        selectedBat.tags.splice(tagIndex,1);
+    }
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
 function tirCible() {
     console.log('TIR CIBLE');
     if (!selectedBat.tags.includes('vise')) {
