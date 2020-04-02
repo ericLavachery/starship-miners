@@ -100,11 +100,15 @@ function chooseTarget() {
 };
 
 function shootTarget() {
-    checkTargetBatType();
-    console.log('shoot '+targetBat.type);
-    console.log(targetBat);
-    tileTarget(targetBat);
-    combat();
+    if (selectedWeap.range < 1 || selectedBat.apLeft >= selectedWeap.ap) {
+        checkTargetBatType();
+        console.log('shoot '+targetBat.type);
+        console.log(targetBat);
+        tileTarget(targetBat);
+        combat();
+    } else {
+        console.log('Pas assez de PA pour tirer');
+    }
 };
 
 function checkPDM() {

@@ -69,6 +69,8 @@ let minPrec = 3 // minimum de précision (même après ajustements)
 let watchInitBonus = 15; // retire à l'initiative si GUET
 let minFireAP = -10; // ne peut pas tirer si moins d'AP (ni attaque ni riposte)
 let stealthMaxChance = 93; // max chance de se rendre invisible
+let berserkEnemyDamage = 1.5;
+let berserkROF = 1.5;
 // let report = '';
 // ALIENS
 let pointDeMire = 1830; // tileId

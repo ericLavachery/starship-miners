@@ -149,6 +149,13 @@ function attack() {
     }
     // rof*squadsLeft loop
     let shots = selectedWeap.rof*selectedBat.squadsLeft;
+    // berserk (bonus ROF)
+    if (activeTurn === 'player') {
+        if (selectedBatType.skills.includes('berserk')) {
+            shots = Math.floor(shots*berserkROF);
+            console.log('bonus ROF berserk');
+        }
+    }
     // tir ciblé
     if (selectedBat.tags.includes('vise')) {
         shots = Math.round(shots*2/3);
@@ -171,9 +178,10 @@ function attack() {
     // add damage! remove squads? remove bat?
     if (selectedWeap.apdamage > 0) {
         apDamage = apDamage+Math.round(totalDamage*selectedWeap.apdamage);
+        targetBat.apLeft = targetBat.apLeft-apDamage;
+        console.log('AP Damage : '+apDamage);
+        $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
     }
-    targetBat.apLeft = targetBat.apLeft-apDamage;
-    console.log('AP Damage : '+apDamage);
     console.log('Previous Damage : '+targetBat.damage);
     totalDamage = totalDamage+targetBat.damage;
     let squadHP = (targetBatType.squadSize*targetBatType.hp);
@@ -184,7 +192,7 @@ function attack() {
     if (squadsOut >= 1) {
         let deadUnits = targetBatType.squadSize*squadsOut;
         let unitsLeft = targetBatType.squadSize*targetBat.squadsLeft;
-        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span> <span class="report">(reste '+unitsLeft+')<br></span>');
+        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span> <span class="report">(reste '+unitsLeft+' '+targetBat.type+')<br></span>');
     }
     targetBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+targetBat.damage);
@@ -253,14 +261,22 @@ function defense() {
         if (i > 300) {break;}
         i++
     }
+    // berserk (bonus damage des opposants)
+    if (activeTurn === 'player') {
+        if (selectedBatType.skills.includes('berserk')) {
+            totalDamage = Math.floor(totalDamage*berserkEnemyDamage);
+            console.log('bonus prec berserk');
+        }
+    }
     console.log('Damage : '+totalDamage);
     $('#report').append('<span class="report">('+totalDamage+')<br></span>');
     // add damage! remove squads? remove bat?
     if (targetWeap.apdamage > 0) {
         apDamage = apDamage+Math.round(totalDamage*targetWeap.apdamage);
+        selectedBat.apLeft = selectedBat.apLeft-apDamage;
+        console.log('AP Damage : '+apDamage);
+        $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
     }
-    selectedBat.apLeft = selectedBat.apLeft-apDamage;
-    console.log('AP Damage : '+apDamage);
     console.log('Previous Damage : '+selectedBat.damage);
     totalDamage = totalDamage+selectedBat.damage;
     let squadHP = (selectedBatType.squadSize*selectedBatType.hp);
@@ -271,7 +287,7 @@ function defense() {
     if (squadsOut >= 1) {
         let deadUnits = selectedBatType.squadSize*squadsOut;
         let unitsLeft = selectedBatType.squadSize*selectedBat.squadsLeft;
-        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span> <span class="report">(reste '+unitsLeft+')<br></span>');
+        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span> <span class="report">(reste '+unitsLeft+' '+selectedBat.type+')<br></span>');
     }
     selectedBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+selectedBat.damage);

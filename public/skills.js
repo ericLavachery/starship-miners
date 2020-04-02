@@ -100,6 +100,7 @@ function medic(cat,cost,around) {
     let apCost = cost+selectedBatType.squads-selectedBat.squadsLeft;
     let batUnits;
     let newBatUnits;
+    let catOK = false;
     console.log('apCost: '+apCost);
     let maxAPCost = Math.round(selectedBatType.ap*1.5);
     if (around) {
@@ -112,6 +113,13 @@ function medic(cat,cost,around) {
                         batType = unitTypes[unitIndex];
                         batUnits = bat.squadsLeft*batType.squadSize;
                         if (batType.cat === cat) {
+                            catOK = true;
+                        } else if (cat === 'vehicles' && batType.cat === 'buildings') {
+                            catOK = true;
+                        } else {
+                            catOK = false;
+                        }
+                        if (catOK) {
                             if (bat.damage > 0) {
                                 if (bat.id === selectedBat.id) {
                                     selectedBat.damage = 0
@@ -177,6 +185,7 @@ function medic(cat,cost,around) {
 
 function numMedicTargets(myBat,cat) {
     let numTargets = 0;
+    let catOK;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
             distance = calcDistance(myBat.tileId,bat.tileId);
@@ -184,6 +193,13 @@ function numMedicTargets(myBat,cat) {
                 unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
                 batType = unitTypes[unitIndex];
                 if (batType.cat === cat) {
+                    catOK = true;
+                } else if (cat === 'vehicles' && batType.cat === 'buildings') {
+                    catOK = true;
+                } else {
+                    catOK = false;
+                }
+                if (catOK) {
                     if (bat.damage > 0 || bat.squadsLeft < batType.squads) {
                         numTargets = numTargets+1;
                     }
