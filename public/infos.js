@@ -193,7 +193,7 @@ function skillsInfos(bat,batUnitType) {
     }
     // CAMOUFLAGE
     if (batUnitType.skills.includes('camo')) {
-        apCost = Math.floor(batUnitType.ap/3);
+        apCost = Math.floor(batUnitType.ap/2);
         if (bat.apLeft >= apCost) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Camouflage ('+apCost+' PA)" class="boutonGris iconButtons" onclick="camouflage(false)"><i class="ra ra-grass"></i></button>&nbsp; Mode furtif</h4></span>');

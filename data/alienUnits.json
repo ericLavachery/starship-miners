@@ -118,7 +118,7 @@
         "power": 8,
         "aoe": "unit",
         "sound": "zapsplat_cartoon_squish_squelch_wet_005_14504b",
-        "ammo": [ "none" ]
+        "ammo": [ "plasma" ]
         },
     "weapon2": {},
     "moveCost": 3,
@@ -142,7 +142,7 @@
     "ap": 8,
     "maxSalvo": 1,
     "weapon": {
-        "name": "Jet d'acide",
+        "name": "Glair acide",
         "cost": 5,
         "range": 3,
         "rof": 2,
@@ -150,7 +150,7 @@
         "power": 20,
         "aoe": "squad",
         "sound": "zapsplat_cartoon_squish_squelch_wet_007_14506b",
-        "ammo": [ "none" ]
+        "ammo": [ "glair" ]
         },
     "weapon2": {},
     "moveCost": 2,
@@ -212,5 +212,37 @@
     "maxScarp": -1,
     "maxVeg": -1,
     "skills": [ "ponte" ]
+},
+{
+    "id": 7,
+    "name": "Fourmis",
+    "pic": "redants",
+    "cat": "aliens",
+    "squads": 6,
+    "squadSize": 20,
+    "crew": 1,
+    "hp": 3,
+    "armor": 3,
+    "size": 1,
+    "stealth": 12,
+    "ap": 13,
+    "maxSalvo": 1,
+    "weapon": {
+        "name": "Mandibules",
+        "cost": 2,
+        "range": 0,
+        "rof": 20,
+        "accuracy": 25,
+        "power": 3,
+        "aoe": "unit",
+        "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
+        "ammo": [ "perceur" ]
+        },
+    "weapon2": {},
+    "moveCost": 2,
+    "maxFlood": 3,
+    "maxScarp": 3,
+    "maxVeg": 3,
+    "skills": []
 }
 ]

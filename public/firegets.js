@@ -165,28 +165,30 @@ function calcSpeed(bat,weap,distance,attacking) {
 };
 
 function isInMelee(myTileIndex,thatTileIndex) {
-    let myTileX = zone[myTileIndex].x;
-    let myTileY = zone[myTileIndex].y;
-    let thatTileX = zone[thatTileIndex].x;
-    let thatTileY = zone[thatTileIndex].y;
-    if (myTileIndex == thatTileIndex || myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
-        return true;
-    } else {
+    if (selectedBat.tags.includes('camo')) {
         return false;
+    } else {
+        let myTileX = zone[myTileIndex].x;
+        let myTileY = zone[myTileIndex].y;
+        let thatTileX = zone[thatTileIndex].x;
+        let thatTileY = zone[thatTileIndex].y;
+        if (myTileIndex == thatTileIndex || myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
+            return true;
+        } else {
+            return false;
+        }
     }
 };
 
 function batInMelee(myTileIndex) {
     let inMelee = false;
-    if (!selectedBat.tags.includes('camo')) {
-        aliens.forEach(function(alien) {
-            if (alien.loc === "zone") {
-                if (myTileIndex == alien.tileId+1 || myTileIndex == alien.tileId-1 || myTileIndex == alien.tileId+mapSize || myTileIndex == alien.tileId-mapSize) {
-                    inMelee = true;
-                }
+    aliens.forEach(function(alien) {
+        if (alien.loc === "zone") {
+            if (myTileIndex == alien.tileId+1 || myTileIndex == alien.tileId-1 || myTileIndex == alien.tileId+mapSize || myTileIndex == alien.tileId-mapSize) {
+                inMelee = true;
             }
-        });
-    }
+        }
+    });
     return inMelee;
 };
 

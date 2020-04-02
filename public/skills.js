@@ -56,7 +56,7 @@ function camouflage(free) {
         }
     }
     if (!free) {
-        selectedBat.apLeft = selectedBat.apLeft-Math.floor(selectedBatType.ap/3);
+        selectedBat.apLeft = selectedBat.apLeft-Math.floor(selectedBatType.ap/2);
     }
     console.log(camOK);
     console.log(selectedBat.fuzz);
@@ -170,6 +170,7 @@ function medic(cat,cost,around) {
     console.log('totalAPCost: '+totalAPCost);
     selectedBat.xp = selectedBat.xp+Math.round(xpGain);
     selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
+    selectedBat.salvoLeft = 0;
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };

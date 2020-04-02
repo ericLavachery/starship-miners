@@ -170,7 +170,7 @@
             "cost": 4,
             "range": 1,
             "rof": 10,
-            "accuracy": 18,
+            "accuracy": 16,
             "power": 12,
             "aoe": "unit",
             "sound": "PM_FSSF2_WEAPONS_D1_SHOT_323c",
