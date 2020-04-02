@@ -34,8 +34,8 @@ function camouflage(free) {
     let camOK = false;
     let camDice = rand.rand(1,100);
     let camChance = Math.round(Math.sqrt(stealth)*19);
-    if (camChance > 98) {
-        camChance = 98;
+    if (camChance > stealthMaxChance) {
+        camChance = stealthMaxChance;
     }
     console.log('camChance '+camChance);
     if (camDice <= camChance) {
