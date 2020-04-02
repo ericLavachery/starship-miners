@@ -9,14 +9,19 @@ function nextTurn() {
     batUnselect();
 
     // récup des aliens
-    let unitTypesIndex;
+    let unitIndex;
+    let batType;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             unitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
-            bat.salvoLeft = alienUnits[unitIndex].maxSalvo;
-            bat.apLeft = bat.apLeft+alienUnits[unitIndex].ap;
-            if (bat.apLeft > alienUnits[unitIndex].ap) {
-                bat.apLeft = alienUnits[unitIndex].ap;
+            batType = alienUnits[unitIndex];
+            bat.salvoLeft = batType.maxSalvo;
+            if (bat.apLeft < 0-batType.ap-batType.ap) {
+                bat.apLeft = 0-batType.ap-batType.ap;
+            }
+            bat.apLeft = bat.apLeft+batType.ap;
+            if (bat.apLeft > batType.ap) {
+                bat.apLeft = batType.ap;
             }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
@@ -37,7 +42,8 @@ function nextTurn() {
 function nextTurnEnd() {
     $('#report').empty('');
     // récup du player
-    let unitTypesIndex;
+    let unitIndex;
+    let batType;
     let ap;
     let tagIndex;
     bataillons.forEach(function(bat) {
@@ -45,7 +51,11 @@ function nextTurnEnd() {
             levelUp(bat);
             ap = getAP(bat);
             unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-            bat.salvoLeft = unitTypes[unitIndex].maxSalvo;
+            batType = unitTypes[unitIndex];
+            bat.salvoLeft = batType.maxSalvo;
+            if (bat.apLeft < 0-batType.ap-batType.ap) {
+                bat.apLeft = 0-batType.ap-batType.ap;
+            }
             bat.apLeft = bat.apLeft+ap;
             if (bat.apLeft > ap) {
                 bat.apLeft = ap;
@@ -125,10 +135,14 @@ function nextBat(removeActiveBat) {
         let batIndex = batList.findIndex((obj => obj.id == selectedBat.id));
         if (removeActiveBat) {
             // remove bat from batList
-            batList.splice(batIndex,1);
+            if (batIndex > -1) {
+                batList.splice(batIndex,1);
+            }
         } else {
             // push the bat at the end of batList
-            batList.push(batList.splice(batIndex,1)[0]);
+            if (batIndex > -1) {
+                batList.push(batList.splice(batIndex,1)[0]);
+            }
         }
     }
     if (batList.length >= 1) {

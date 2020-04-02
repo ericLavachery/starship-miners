@@ -89,7 +89,7 @@ function combat() {
             if (activeTurn == 'player') {blockMe(true);}
             shotSound(selectedWeap);
             attack();
-            if (defAlive) {
+            if (defAlive && targetBat.apLeft > minFireAP) {
                 defense();
                 setTimeout(function (){
                     shotSound(targetWeap);
@@ -105,7 +105,7 @@ function combat() {
             if (activeTurn == 'player') {blockMe(true);}
             shotSound(targetWeap);
             defense();
-            if (attAlive) {
+            if (attAlive && selectedBat.apLeft > minFireAP) {
                 attack();
                 setTimeout(function (){
                     shotSound(selectedWeap);
@@ -154,6 +154,7 @@ function attack() {
         shots = Math.round(shots*2/3);
     }
     let totalDamage = 0;
+    let apDamage = 0;
     toHit = 999;
     let i = 1;
     while (i <= shots) {
@@ -168,6 +169,11 @@ function attack() {
     console.log('Damage : '+totalDamage);
     $('#report').append('<span class="report">('+totalDamage+')<br></span>');
     // add damage! remove squads? remove bat?
+    if (selectedWeap.apdamage > 0) {
+        apDamage = apDamage+Math.round(totalDamage*selectedWeap.apdamage);
+    }
+    targetBat.apLeft = targetBat.apLeft-apDamage;
+    console.log('AP Damage : '+apDamage);
     console.log('Previous Damage : '+targetBat.damage);
     totalDamage = totalDamage+targetBat.damage;
     let squadHP = (targetBatType.squadSize*targetBatType.hp);
@@ -235,6 +241,7 @@ function defense() {
     // console.log(shots);
     // console.log(aoeShots);
     let totalDamage = 0;
+    let apDamage = 0;
     toHit = 999;
     let i = 1;
     while (i <= shots) {
@@ -249,6 +256,11 @@ function defense() {
     console.log('Damage : '+totalDamage);
     $('#report').append('<span class="report">('+totalDamage+')<br></span>');
     // add damage! remove squads? remove bat?
+    if (targetWeap.apdamage > 0) {
+        apDamage = apDamage+Math.round(totalDamage*targetWeap.apdamage);
+    }
+    selectedBat.apLeft = selectedBat.apLeft-apDamage;
+    console.log('AP Damage : '+apDamage);
     console.log('Previous Damage : '+selectedBat.damage);
     totalDamage = totalDamage+selectedBat.damage;
     let squadHP = (selectedBatType.squadSize*selectedBatType.hp);

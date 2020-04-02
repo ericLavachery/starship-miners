@@ -110,6 +110,7 @@ function medic(cat,cost,around) {
                     if (distance === 0) {
                         unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
                         batType = unitTypes[unitIndex];
+                        batUnits = bat.squadsLeft*batType.squadSize;
                         if (batType.cat === cat) {
                             if (bat.damage > 0) {
                                 if (bat.id === selectedBat.id) {
@@ -120,13 +121,12 @@ function medic(cat,cost,around) {
                                 totalAPCost = totalAPCost+apCost;
                                 xpGain = xpGain+0.45;
                                 if (cat == 'infantry') {
-                                    $('#report').append('<span class="report cy">'+bat.type+'<br></span><span class="report">dégâts soignés<br>');
+                                    $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">dégâts soignés<br>');
                                 } else {
-                                    $('#report').append('<span class="report cy">'+bat.type+'<br></span><span class="report">dégâts réparés<br>');
+                                    $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">dégâts réparés<br>');
                                 }
                                 showBataillon(bat);
                             } else if (bat.squadsLeft < batType.squads) {
-                                batUnits = bat.squadsLeft*batType.squadSize;
                                 if (bat.id === selectedBat.id) {
                                     selectedBat.squadsLeft = selectedBat.squadsLeft+1;
                                 } else {

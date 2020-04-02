@@ -178,13 +178,15 @@ function isInMelee(myTileIndex,thatTileIndex) {
 
 function batInMelee(myTileIndex) {
     let inMelee = false;
-    aliens.forEach(function(alien) {
-        if (alien.loc === "zone") {
-            if (myTileIndex == alien.tileId+1 || myTileIndex == alien.tileId-1 || myTileIndex == alien.tileId+mapSize || myTileIndex == alien.tileId-mapSize) {
-                inMelee = true;
+    if (!selectedBat.tags.includes('camo')) {
+        aliens.forEach(function(alien) {
+            if (alien.loc === "zone") {
+                if (myTileIndex == alien.tileId+1 || myTileIndex == alien.tileId-1 || myTileIndex == alien.tileId+mapSize || myTileIndex == alien.tileId-mapSize) {
+                    inMelee = true;
+                }
             }
-        }
-    });
+        });
+    }
     return inMelee;
 };
 
@@ -329,6 +331,7 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.range = thisWeapon.range+ammo.range;
     thisWeapon.rof = Math.round(thisWeapon.rof*ammo.rof);
     thisWeapon.power = thisWeapon.power+ammo.power;
+    thisWeapon.apdamage = ammo.apdamage;
     thisWeapon.armors = thisWeapon.armors*ammo.armors;
     thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
     // skills

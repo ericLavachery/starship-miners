@@ -308,7 +308,7 @@ function checkGoodMoves() {
         zone.forEach(function(tile) {
             thisTile = tile.id;
             bataillons.forEach(function(bat) {
-                if (bat.loc === "zone" && bat.tileId === thisTile) {
+                if (bat.loc === "zone" && bat.tileId === thisTile && bat.fuzz >= -1) {
                     meleeTile = thisTile-1;
                     if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
                         goodMoves.push(meleeTile);
@@ -333,7 +333,7 @@ function checkGoodMoves() {
         zone.forEach(function(tile) {
             thisTile = tile.id;
             bataillons.forEach(function(bat) {
-                if (bat.loc === "zone" && bat.tileId === thisTile) {
+                if (bat.loc === "zone" && bat.tileId === thisTile && bat.fuzz >= -1) {
                     r1Tile = thisTile-mapSize-1;
                     if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
                         goodMoves.push(r1Tile);
