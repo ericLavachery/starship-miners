@@ -175,13 +175,18 @@ function attack() {
     }
     let totalDamage = 0;
     let apDamage = 0;
+    // brochette
+    let skewer = false;
+    if (selectedBatType.skills.includes('brochette')) {
+        skewer = true;
+    }
     toHit = 999;
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
             totalDamage = totalDamage+blast(aoeShots,selectedWeap,targetBat,targetBatType);
         } else {
-            totalDamage = totalDamage+shot(selectedWeap,targetBat,targetBatType);
+            totalDamage = totalDamage+shot(skewer,selectedWeap,targetBat,targetBatType);
         }
         if (i > 300) {break;}
         i++
@@ -205,7 +210,10 @@ function attack() {
     if (squadsOut >= 1) {
         let deadUnits = targetBatType.squadSize*squadsOut;
         let unitsLeft = targetBatType.squadSize*targetBat.squadsLeft;
-        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span> <span class="report">(reste '+unitsLeft+' '+targetBat.type+')<br></span>');
+        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span>');
+        if (targetBat.squadsLeft >= 1) {
+            $('#report').append('<span class="report"> (reste '+unitsLeft+' '+targetBat.type+')<br></span>');
+        }
     }
     targetBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+targetBat.damage);
@@ -213,7 +221,7 @@ function attack() {
     if (targetBat.squadsLeft <= 0) {
         defAlive = false;
         batDeath(targetBat);
-        $('#report').append('<span class="report cy">Bataillon détruit<br></span>');
+        $('#report').append('<span class="report cy">Bataillon ('+targetBat.type+') détruit<br></span>');
         setTimeout(function (){
             batDeathEffect(targetBat);
         }, 3000); // How long do you want the delay to be (in milliseconds)?
@@ -263,13 +271,18 @@ function defense() {
     // console.log(aoeShots);
     let totalDamage = 0;
     let apDamage = 0;
+    // brochette
+    let skewer = false;
+    if (targetBatType.skills.includes('brochette')) {
+        skewer = true;
+    }
     toHit = 999;
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
             totalDamage = totalDamage+blast(aoeShots,targetWeap,selectedBat,selectedBatType);
         } else {
-            totalDamage = totalDamage+shot(targetWeap,selectedBat,selectedBatType);
+            totalDamage = totalDamage+shot(skewer,targetWeap,selectedBat,selectedBatType);
         }
         if (i > 300) {break;}
         i++
@@ -300,7 +313,10 @@ function defense() {
     if (squadsOut >= 1) {
         let deadUnits = selectedBatType.squadSize*squadsOut;
         let unitsLeft = selectedBatType.squadSize*selectedBat.squadsLeft;
-        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span> <span class="report">(reste '+unitsLeft+' '+selectedBat.type+')<br></span>');
+        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span>');
+        if (selectedBatType.squadsLeft >= 1) {
+            $('#report').append('<span class="report"> (reste '+unitsLeft+' '+selectedBat.type+')<br></span>');
+        }
     }
     selectedBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+selectedBat.damage);
@@ -308,7 +324,7 @@ function defense() {
     if (selectedBat.squadsLeft <= 0) {
         attAlive = false;
         batDeath(selectedBat);
-        $('#report').append('<span class="report cy">Bataillon détruit<br></span>');
+        $('#report').append('<span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
         setTimeout(function (){
             batDeathEffect(selectedBat);
         }, 3000); // How long do you want the delay to be (in milliseconds)?
@@ -333,14 +349,14 @@ function combatReport() {
     report = '';
 };
 
-function shot(weapon,bat,batType) {
+function shot(skewer,weapon,bat,batType) {
     // returns damage
     let damage = 0;
     let cover = getCover(bat,true);
     let stealth = getStealth(bat);
     if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover)) {
         damage = calcDamage(weapon.power,batType.armor);
-        if (damage > batType.hp) {
+        if (damage > batType.hp && !skewer) {
             damage = batType.hp;
         }
         if (damage < 0) {

@@ -100,7 +100,8 @@ function chooseTarget() {
 };
 
 function shootTarget() {
-    if (selectedWeap.range < 1 || selectedBat.apLeft >= selectedWeap.ap) {
+    console.log('ap '+selectedBat.apLeft+' cost '+selectedWeap.cost);
+    if (selectedWeap.range < 1 || selectedBat.apLeft >= selectedWeap.cost) {
         checkTargetBatType();
         console.log('shoot '+targetBat.type);
         console.log(targetBat);
