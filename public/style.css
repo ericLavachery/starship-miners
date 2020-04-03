@@ -185,6 +185,11 @@ h4 {
     color: #f77a28;
     font-weight: bold;
 }
+.rpg {
+    font-size: 19px;
+    vertical-align: bottom;
+    /* margin-bottom: 2px; */
+}
 .grid-container {
     display: inline-grid;
     /* grid-template-columns: 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px; */

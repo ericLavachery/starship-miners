@@ -133,14 +133,18 @@ function getAP(bat) {
     return batType.ap+Math.round(bat.vet*vetBonus.ap);
 };
 
-function calcSpeed(bat,weap,distance,attacking) {
+function calcSpeed(bat,weap,opweap,distance,attacking) {
     let crange = weap.range;
     // console.log('crange'+crange);
     if (weap.range === 0) {
         if (attacking) {
             crange = 1;
         } else {
-            crange = 12;
+            if (opweap.range === 0) {
+                crange = 1;
+            } else {
+                crange = 6;
+            }
         }
     }
     // console.log('cost'+weap.cost);

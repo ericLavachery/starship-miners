@@ -75,8 +75,14 @@ function combat() {
     let initiative = true;
     if (distance <= 3 && targetWeap.cost <= 6 && targetWeap.range >= distance) {
         riposte = true;
-        let aspeed = calcSpeed(selectedBat,selectedWeap,distance,true);
-        let dspeed = calcSpeed(targetBat,targetWeap,distance,false);
+        let aspeed = calcSpeed(selectedBat,selectedWeap,targetWeap,distance,true);
+        let dspeed = calcSpeed(targetBat,targetWeap,selectedWeap,distance,false);
+        // embuscade (initiative)
+        if (activeTurn === 'player') {
+            if (selectedBat.tags.includes('embuscade') && selectedBat.fuzz == -2) {
+                aspeed = -999;
+            }
+        }
         $('#report').append('<span class="report">initiative '+aspeed+' vs '+dspeed+'</span><br>');
         if (dspeed < aspeed) {
             initiative = false;
@@ -151,9 +157,16 @@ function attack() {
     let shots = selectedWeap.rof*selectedBat.squadsLeft;
     // berserk (bonus ROF)
     if (activeTurn === 'player') {
-        if (selectedBatType.skills.includes('berserk')) {
+        if (selectedBatType.skills.includes('berserk') && selectedBat.damage >= 1) {
             shots = Math.floor(shots*berserkROF);
             console.log('bonus ROF berserk');
+        }
+    }
+    // embuscade (bonus ROF)
+    if (activeTurn === 'player') {
+        if (selectedBat.tags.includes('embuscade') && selectedBat.fuzz == -2) {
+            shots = Math.floor(shots*berserkROF);
+            console.log('bonus ROF embuscade');
         }
     }
     // tir ciblé
@@ -263,7 +276,7 @@ function defense() {
     }
     // berserk (bonus damage des opposants)
     if (activeTurn === 'player') {
-        if (selectedBatType.skills.includes('berserk')) {
+        if (selectedBatType.skills.includes('berserk') && selectedBat.damage >= 1) {
             totalDamage = Math.floor(totalDamage*berserkEnemyDamage);
             console.log('bonus prec berserk');
         }

@@ -84,6 +84,16 @@ function tirCible() {
     showBatInfos(selectedBat);
 };
 
+function ambush() {
+    console.log('EMBUSCADE');
+    if (!selectedBat.tags.includes('embuscade')) {
+        selectedBat.tags.push('embuscade');
+    }
+    selectedBat.apLeft = selectedBat.apLeft-Math.ceil(selectedBatType.ap/2);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
 function medic(cat,cost,around) {
     console.log('MEDIC SKILL');
     console.log(selectedBatType);
