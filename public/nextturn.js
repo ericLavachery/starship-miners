@@ -25,6 +25,7 @@ function nextTurn() {
             }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
+            tagsEffect(bat,batType);
         }
     });
     alienTurn();
@@ -63,6 +64,7 @@ function nextTurnEnd() {
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
             tagsUpdate(bat);
+            tagsEffect(bat,batType);
         }
     });
     saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
@@ -78,6 +80,25 @@ function tagsUpdate(bat) {
     tagDelete(bat,'guet');
     tagDelete(bat,'vise');
     tagDelete(bat,'embuscade');
+};
+
+function tagsEffect(bat,batType) {
+    if (bat.tags.includes('venin')) {
+        let totalDamage = bat.damage+rand.rand((Math.round(venumDamage/3)),venumDamage);
+        let squadHP = batType.squadSize*batType.hp;
+        let squadsOut = Math.floor(totalDamage/squadHP);
+        bat.squadsLeft = bat.squadsLeft-squadsOut;
+        bat.damage = totalDamage-(squadsOut*squadHP);
+        // Mort !!!
+    }
+    if (bat.tags.includes('regeneration') || batType.skills.includes('regeneration')) {
+        let squadHP = batType.squadSize*batType.hp;
+        let batHP = squadHP*batType.squads;
+        let regen = Math.round(batHP/regenPower);
+        let batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
+        bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
+        bat.damage = (bat.squadsLeft*squadHP)-batHPLeft;
+    }
 };
 
 function tagDelete(bat,tag) {

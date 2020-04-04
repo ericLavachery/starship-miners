@@ -61,7 +61,7 @@
     "maxFlood": 3,
     "maxScarp": 3,
     "maxVeg": 3,
-    "skills": [ "brochette" ]
+    "skills": [ "brochette","regeneration" ]
 },
 {
     "id": 2,
@@ -236,7 +236,7 @@
         "power": 3,
         "aoe": "unit",
         "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
-        "ammo": [ "perceur" ]
+        "ammo": [ "creuseur" ]
         },
     "weapon2": {},
     "moveCost": 2,
@@ -244,5 +244,37 @@
     "maxScarp": 3,
     "maxVeg": 3,
     "skills": []
+},
+{
+    "id": 8,
+    "name": "Skolos",
+    "pic": "1000",
+    "cat": "aliens",
+    "squads": 6,
+    "squadSize": 8,
+    "crew": 1,
+    "hp": 15,
+    "armor": 5,
+    "size": 6,
+    "stealth": 10,
+    "ap": 15,
+    "maxSalvo": 1,
+    "weapon": {
+        "name": "Mandibules",
+        "cost": 2,
+        "range": 0,
+        "rof": 8,
+        "accuracy": 20,
+        "power": 10,
+        "aoe": "unit",
+        "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
+        "ammo": [ "venin" ]
+        },
+    "weapon2": {},
+    "moveCost": 2,
+    "maxFlood": 3,
+    "maxScarp": 3,
+    "maxVeg": 3,
+    "skills": [ "grip","regeneration" ]
 }
 ]

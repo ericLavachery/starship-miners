@@ -130,7 +130,14 @@ function medic(cat,cost,around) {
                             catOK = false;
                         }
                         if (catOK) {
-                            if (bat.damage > 0) {
+                            if (bat.tags.includes('venin') || bat.tags.includes('poison')) {
+                                totalAPCost = totalAPCost+apCost;
+                                xpGain = xpGain+1;
+                                tagDelete(bat,'venin');
+                                tagDelete(bat,'poison');
+                                $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">poison neutralisé<br></span>');
+                                showBataillon(bat);
+                            } else if (bat.damage > 0) {
                                 if (bat.id === selectedBat.id) {
                                     selectedBat.damage = 0
                                 } else {
@@ -139,9 +146,9 @@ function medic(cat,cost,around) {
                                 totalAPCost = totalAPCost+apCost;
                                 xpGain = xpGain+0.45;
                                 if (cat == 'infantry') {
-                                    $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">dégâts soignés<br>');
+                                    $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">dégâts soignés<br></span>');
                                 } else {
-                                    $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">dégâts réparés<br>');
+                                    $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">dégâts réparés<br></span>');
                                 }
                                 showBataillon(bat);
                             } else if (bat.squadsLeft < batType.squads) {
@@ -156,7 +163,11 @@ function medic(cat,cost,around) {
                                 $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">escouade rétablie (<span class="cy">'+newBatUnits+'</span>)</span><br>');
                                 showBataillon(bat);
                             }
-                            console.log(bat);
+                            if (bat.squadsLeft === batType.squads && bat.damage === 0 && bat.tags.includes('trou')) {
+                                tagDelete(bat,'trou');
+                                $('#report').append('<span class="report">trous bouchés<br></span>');
+                            }
+                            // console.log(bat);
                         }
                     }
                 }

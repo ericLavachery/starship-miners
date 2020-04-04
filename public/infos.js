@@ -76,7 +76,11 @@ function showBatInfos(bat) {
         $('#unitInfos').append('<span class="paramName cy">Fortification</span><span class="paramIcon"></span><span class="paramValue cy">'+fortifCover+'</span><br>');
     }
     if (batUnitType.skills.includes('berserk') && bat.damage >= 1) {
-        $('#unitInfos').append('<span class="paramName cy">Berserk</span><span class="paramIcon"></span><span class="paramValue cy">'+fortifCover+'</span><br>');
+        $('#unitInfos').append('<span class="paramName cy">Berserk</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    }
+    // BAD TAGS
+    if (bat.tags.includes('venin') || bat.tags.includes('poison')) {
+        $('#unitInfos').append('<span class="paramName or">Empoisonnement</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
     // XP
     $('#unitInfos').append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+bat.xp+' (lvl '+bat.vet+')</span><br>');

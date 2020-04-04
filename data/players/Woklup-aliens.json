@@ -47,5 +47,9 @@
     {"id":45,"type":"Fourmis","typeId":7,"loc":"zone","locId":0,"tileId":1592,"oldTileId":1592,"squadsLeft":6,"apLeft":13,"ammo":"perceur","ammo2":"none","oldapLeft":13,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]},
     {"id":46,"type":"Fourmis","typeId":7,"loc":"zone","locId":0,"tileId":2301,"oldTileId":2301,"squadsLeft":6,"apLeft":13,"ammo":"perceur","ammo2":"none","oldapLeft":13,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]},
     {"id":47,"type":"Cracheuse","typeId":3,"loc":"zone","locId":0,"tileId":1711,"oldTileId":1711,"squadsLeft":6,"apLeft":12,"ammo":"plasma","ammo2":"none","oldapLeft":12,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":1,"tags":[]},
-    {"id":48,"type":"Glaireuse","typeId":4,"loc":"zone","locId":0,"tileId":2371,"oldTileId":2371,"squadsLeft":3,"apLeft":8,"ammo":"glair","ammo2":"none","oldapLeft":8,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":3,"tags":[]}
+    {"id":48,"type":"Glaireuse","typeId":4,"loc":"zone","locId":0,"tileId":2371,"oldTileId":2371,"squadsLeft":3,"apLeft":8,"ammo":"glair","ammo2":"none","oldapLeft":8,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":3,"tags":[]},
+    {"id":49,"type":"Fourmis","typeId":7,"loc":"zone","locId":0,"tileId":1641,"oldTileId":1641,"squadsLeft":6,"apLeft":13,"ammo":"perceur","ammo2":"none","oldapLeft":13,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]},
+    {"id":50,"type":"Skolos","typeId":8,"loc":"zone","locId":0,"tileId":1588,"oldTileId":1588,"squadsLeft":6,"apLeft":15,"ammo":"perceur","ammo2":"none","oldapLeft":15,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]},
+    {"id":51,"type":"Skolos","typeId":8,"loc":"zone","locId":0,"tileId":2367,"oldTileId":2367,"squadsLeft":6,"apLeft":15,"ammo":"perceur","ammo2":"none","oldapLeft":15,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]},
+    {"id":52,"type":"Skolos","typeId":8,"loc":"zone","locId":0,"tileId":2183,"oldTileId":2183,"squadsLeft":6,"apLeft":15,"ammo":"perceur","ammo2":"none","oldapLeft":15,"salvoLeft":1,"team":"aliens","damage":0,"vet":0,"range":0,"tags":[]}
 ]

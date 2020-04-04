@@ -45,8 +45,13 @@ function isHit(accuracy,aoe,size,stealth,cover) {
     }
 };
 
-function calcDamage(power,armor) {
+function calcDamage(weapon,power,armor,defBat) {
     // powerDice is max 4x power
+    let modifiedArmor = Math.round(armor*weapon.armors);
+    // creuseur
+    if (weapon.ammo.includes('creuseur') && defBat.tags.includes('trou')) {
+        modifiedArmor = 0;
+    }
     let powerDiceMin = Math.round(power/2.5);
     let powerDiceMax = Math.round(power*1.6);
     let powerDice = rand.rand(powerDiceMin,powerDiceMax);
@@ -54,7 +59,7 @@ function calcDamage(power,armor) {
         let bonusMax = Math.round(power*2.4);
         powerDice = powerDice+rand.rand(0,bonusMax);
     }
-    return powerDice-armor;
+    return powerDice-modifiedArmor;
 };
 
 function getCover(bat,withFortif) {

@@ -80,3 +80,5 @@ let closeTargetRange = 4; // à ce range, se dirige vers ce bataillon plutôt qu
 let closeTargetRangeDice = 3; // 2 dés
 let attAlive = true;
 let defAlive = true;
+let venumDamage = 15; // 15 = 5-15 damage
+let regenPower = 10; // 10 = 1/10 des HP de base chaque tour 

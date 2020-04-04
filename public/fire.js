@@ -201,6 +201,39 @@ function attack() {
         $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
     }
     console.log('Previous Damage : '+targetBat.damage);
+    // agrippeur
+    if (selectedBatType.skills.includes('grip') && totalDamage >= 1 && selectedBatType.size > targetBat.size) {
+        let gripChance = (selectedBat.squadsLeft*5)-(targetBat.vet*3);
+        if (rand.rand(1,100 <= gripChance)) {
+            apDamage = selectedBat.squadsLeft*3;
+            if (targetWeap.range <= 0) {
+                apDamage = Math.round(apDamage/3);
+            }
+            targetBat.apLeft = targetBat.apLeft-apDamage;
+            console.log('AP Damage : '+apDamage);
+            $('#report').append('<span class="report">Agrippé: -'+apDamage+' PA<br></span>');
+        }
+    }
+    // venin
+    if (selectedWeap.ammo.includes('venin') && totalDamage >= 1 && targetBat.apLeft < -2 && targetBatType.cat == 'infantry') {
+        if (!targetBat.tags.includes('venin')) {
+            targetBat.tags.push('venin');
+        }
+        console.log('Venin!');
+        $('#report').append('<span class="report cy">Empoisonnement<br></span>');
+    }
+    // creuseur
+    let catOK = false;
+    if (targetBatType.cat == 'buildings' || targetBatType.cat == 'vehicles') {
+        catOK = true;
+    }
+    if (selectedWeap.ammo.includes('creuseur') && totalDamage >= 1 && catOK) {
+        if (!targetBat.tags.includes('trou')) {
+            targetBat.tags.push('trou');
+        }
+        console.log('Trou percé!');
+        $('#report').append('<span class="report cy">Blindage troué<br></span>');
+    }
     totalDamage = totalDamage+targetBat.damage;
     let squadHP = (targetBatType.squadSize*targetBatType.hp);
     console.log('Squad HP : '+squadHP);
@@ -355,7 +388,7 @@ function shot(skewer,weapon,bat,batType) {
     let cover = getCover(bat,true);
     let stealth = getStealth(bat);
     if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover)) {
-        damage = calcDamage(weapon.power,batType.armor);
+        damage = calcDamage(weapon,weapon.power,batType.armor,bat);
         if (damage > batType.hp && !skewer) {
             damage = batType.hp;
         }
@@ -380,7 +413,7 @@ function blast(aoeShots,weapon,bat,batType) {
     while (ii <= aoeShots) {
         // console.log('power'+power);
         if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover)) {
-            newDamage = calcDamage(power,batType.armor);
+            newDamage = calcDamage(weapon,power,batType.armor,bat);
             if (newDamage > batType.hp) {
                 newDamage = batType.hp;
             }
