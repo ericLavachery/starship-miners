@@ -51,28 +51,28 @@ function chooseTarget() {
         // range 0
         if (alienInMelee) {
             inPlace = targetMelee();
-            shootTarget();
+            shootTarget(false);
         } else {
             moveToPDM();
             inPlace = targetMelee();
             if (inPlace) {
-                shootTarget();
+                shootTarget(false);
             }
         }
     } else if (range === 1) {
         // range 1
         if (alienInMelee) {
             inPlace = targetMelee();
-            shootTarget();
+            shootTarget(false);
         } else {
             inPlace = targetClosest();
             if (inPlace) {
-                shootTarget();
+                shootTarget(false);
             } else {
                 moveToPDM();
                 inPlace = targetClosest();
                 if (inPlace) {
-                    shootTarget();
+                    shootTarget(false);
                 }
             }
         }
@@ -82,16 +82,16 @@ function chooseTarget() {
             if (alienInMelee) {
                 moveOutOfMelee();
                 inPlace = targetFarthest();
-                shootTarget();
+                shootTarget(true);
             } else {
                 inPlace = targetFarthest();
-                shootTarget();
+                shootTarget(false);
             }
         } else {
             moveToPDM();
             inPlace = targetFarthest();
             if (inPlace) {
-                shootTarget();
+                shootTarget(false);
             }
         }
     }
@@ -99,9 +99,9 @@ function chooseTarget() {
     console.log(targetBat);
 };
 
-function shootTarget() {
+function shootTarget(recul) {
     console.log('ap '+selectedBat.apLeft+' cost '+selectedWeap.cost);
-    if (selectedWeap.range < 1 || selectedBat.apLeft >= selectedWeap.cost) {
+    if (selectedWeap.range < 1 || selectedBat.apLeft >= selectedWeap.cost || recul) {
         checkTargetBatType();
         console.log('shoot '+targetBat.type);
         console.log(targetBat);

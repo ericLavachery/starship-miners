@@ -210,9 +210,9 @@ function attack() {
     if (squadsOut >= 1) {
         let deadUnits = targetBatType.squadSize*squadsOut;
         let unitsLeft = targetBatType.squadSize*targetBat.squadsLeft;
-        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span>');
+        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span> ');
         if (targetBat.squadsLeft >= 1) {
-            $('#report').append('<span class="report"> (reste '+unitsLeft+' '+targetBat.type+')<br></span>');
+            $('#report').append('<span class="report">(reste '+unitsLeft+' '+targetBat.type+')<br></span>');
         }
     }
     targetBat.damage = totalDamage-(squadsOut*squadHP);
@@ -313,9 +313,9 @@ function defense() {
     if (squadsOut >= 1) {
         let deadUnits = selectedBatType.squadSize*squadsOut;
         let unitsLeft = selectedBatType.squadSize*selectedBat.squadsLeft;
-        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span>');
-        if (selectedBatType.squadsLeft >= 1) {
-            $('#report').append('<span class="report"> (reste '+unitsLeft+' '+selectedBat.type+')<br></span>');
+        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span> ');
+        if (selectedBat.squadsLeft >= 1) {
+            $('#report').append('<span class="report">(reste '+unitsLeft+' '+selectedBat.type+')<br></span>');
         }
     }
     selectedBat.damage = totalDamage-(squadsOut*squadHP);
