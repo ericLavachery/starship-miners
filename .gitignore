@@ -1,5 +1,5 @@
 /node_modules
 /stock
-/data/players/Woklup-currentMap
-/data/players/Woklup-bataillons
-/data/players/Woklup-aliens
+/data/players/Woklup-currentMap.json
+/data/players/Woklup-bataillons.json
+/data/players/Woklup-aliens.json
