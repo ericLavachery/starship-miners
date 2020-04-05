@@ -362,3 +362,17 @@ function weaponAdj(weapon,bat,wn) {
 
     return thisWeapon;
 };
+
+function anyAlienInRange(tileId,range) {
+    let distance;
+    let inRange = false;
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            distance = calcDistance(tileId,bat.tileId);
+            if (distance <= range) {
+                inRange = true;
+            }
+        }
+    });
+    return inRange;
+};

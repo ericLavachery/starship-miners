@@ -99,7 +99,7 @@ function skillsInfos(bat,batUnitType) {
         apCost = numTargets*(4+batUnitType.squads-bat.squadsLeft);
         if (bat.apLeft >= 4 && numTargets >= 1) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,4,true)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,4,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
         } else {
             // pas assez d'ap
             if (numTargets < 1) {
@@ -129,5 +129,9 @@ function skillsInfos(bat,batUnitType) {
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
         }
+    }
+    // CONSTRUCTION TRICHE
+    if (batUnitType.skills.includes('bfc')) {
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris iconButtons" onclick="bfg()"><i class="fa fa-hammer"></i></button>&nbsp; Construction</h4></span>');
     }
 };

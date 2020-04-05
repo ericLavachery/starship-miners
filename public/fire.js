@@ -210,8 +210,11 @@ function attack() {
                 apDamage = Math.round(apDamage/3);
             }
             targetBat.apLeft = targetBat.apLeft-apDamage;
+            console.log('Grip OK');
             console.log('AP Damage : '+apDamage);
             $('#report').append('<span class="report">Agrippé: -'+apDamage+' PA<br></span>');
+        } else {
+            console.log('Grip raté');
         }
     }
     // venin
@@ -243,9 +246,9 @@ function attack() {
     if (squadsOut >= 1) {
         let deadUnits = targetBatType.squadSize*squadsOut;
         let unitsLeft = targetBatType.squadSize*targetBat.squadsLeft;
-        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span> ');
+        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span>');
         if (targetBat.squadsLeft >= 1) {
-            $('#report').append('<span class="report">(reste '+unitsLeft+' '+targetBat.type+')<br></span>');
+            $('#report').append('<span class="report"> (reste '+unitsLeft+' '+targetBat.type+')<br></span>');
         }
     }
     targetBat.damage = totalDamage-(squadsOut*squadHP);
@@ -254,7 +257,7 @@ function attack() {
     if (targetBat.squadsLeft <= 0) {
         defAlive = false;
         batDeath(targetBat);
-        $('#report').append('<span class="report cy">Bataillon ('+targetBat.type+') détruit<br></span>');
+        $('#report').append('<br><span class="report cy">Bataillon ('+targetBat.type+') détruit<br></span>');
         setTimeout(function (){
             batDeathEffect(targetBat);
         }, 3000); // How long do you want the delay to be (in milliseconds)?
@@ -346,9 +349,9 @@ function defense() {
     if (squadsOut >= 1) {
         let deadUnits = selectedBatType.squadSize*squadsOut;
         let unitsLeft = selectedBatType.squadSize*selectedBat.squadsLeft;
-        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span> ');
+        $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span>');
         if (selectedBat.squadsLeft >= 1) {
-            $('#report').append('<span class="report">(reste '+unitsLeft+' '+selectedBat.type+')<br></span>');
+            $('#report').append('<span class="report"> (reste '+unitsLeft+' '+selectedBat.type+')<br></span>');
         }
     }
     selectedBat.damage = totalDamage-(squadsOut*squadHP);
@@ -357,7 +360,7 @@ function defense() {
     if (selectedBat.squadsLeft <= 0) {
         attAlive = false;
         batDeath(selectedBat);
-        $('#report').append('<span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
+        $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
         setTimeout(function (){
             batDeathEffect(selectedBat);
         }, 3000); // How long do you want the delay to be (in milliseconds)?

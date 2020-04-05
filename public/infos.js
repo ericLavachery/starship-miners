@@ -102,22 +102,26 @@ function weaponsInfos(bat,batUnitType) {
     let attaques;
     let thisWeapon = {};
     let showW1 = true;
+    let anyTarget = false;
     if (batUnitType.weapon.rof >= 1 && batUnitType.weapon2.rof >= 1 && batUnitType.weapon.name == batUnitType.weapon2.name) {
         showW1 = false;
     }
     if (batUnitType.weapon.rof >= 1 && showW1) {
         thisWeapon = weaponAdj(batUnitType.weapon,bat,'w1');
+        anyTarget = anyAlienInRange(bat.tileId,thisWeapon.range);
         balise = 'h4';
         if (thisWeapon.name === selectedWeap.name) {
             balise = 'h1';
         }
         let w1message = 'Salves épuisées';
-        if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost) {
+        if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && anyTarget) {
             // assez d'ap et de salve
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w1`)"><i class="ra ra-bullets rpg"></i></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
         } else {
             // tir impossible
-            if (bat.apLeft < thisWeapon.cost) {
+            if (!anyTarget) {
+                w1message = 'Pas de cible';
+            }else if (bat.apLeft < thisWeapon.cost) {
                 w1message = 'PA épuisés';
             }
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
@@ -142,17 +146,20 @@ function weaponsInfos(bat,batUnitType) {
     }
     if (batUnitType.weapon2.rof >= 1) {
         thisWeapon = weaponAdj(batUnitType.weapon2,bat,'w2');
+        anyTarget = anyAlienInRange(bat.tileId,thisWeapon.range);
         balise = 'h4';
         if (thisWeapon.name === selectedWeap.name) {
             balise = 'h1';
         }
         let w2message = 'Salves épuisées';
-        if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost) {
+        if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && anyTarget) {
             // assez d'ap et de salve
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w2`)"><i class="ra ra-bullets rpg"></i></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
         } else {
             // tir impossible
-            if (bat.apLeft < thisWeapon.cost) {
+            if (!anyTarget) {
+                w2message = 'Pas de cible';
+            }else if (bat.apLeft < thisWeapon.cost) {
                 w2message = 'PA épuisés';
             }
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
