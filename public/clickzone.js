@@ -1,11 +1,15 @@
 function clickTile(tileId) {
     if (stopMe === false) {
-        if (mode == 'select') {
-            clickSelect(tileId);
-        } else if (mode == 'move') {
-            clickMove(tileId);
+        if (Object.keys(conselUnit).length >= 1) {
+            clickConstruct(tileId);
         } else {
-            clickFire(tileId);
+            if (mode == 'select') {
+                clickSelect(tileId);
+            } else if (mode == 'move') {
+                clickMove(tileId);
+            } else {
+                clickFire(tileId);
+            }
         }
     }
 };

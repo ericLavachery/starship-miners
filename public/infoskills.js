@@ -132,6 +132,6 @@ function skillsInfos(bat,batUnitType) {
     }
     // CONSTRUCTION TRICHE
     if (batUnitType.skills.includes('bfc')) {
-        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris iconButtons" onclick="bfg()"><i class="fa fa-hammer"></i></button>&nbsp; Construction</h4></span>');
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris iconButtons" onclick="bfconst()"><i class="fa fa-hammer"></i></button>&nbsp; Construction</h4></span>');
     }
 };

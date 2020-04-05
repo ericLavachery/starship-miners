@@ -131,6 +131,23 @@ h4 {
     display: inline-block;
     font-weight: bold;
 }
+.constIcon {
+    display: inline-block;
+    font-size: 12px;
+    text-align: center;
+    width: 22px;
+    margin-right: 4px;
+    color: #d5cabd;
+}
+.constName {
+    display: inline-block;
+    font-size: 14px;
+    text-align: right;
+    /* width: 170px; */
+    margin-right: 8px;
+    /* min-height: 21px; */
+    font-weight: bold;
+}
 .batInfos {
     font-size: 13px;
     color: #ffffff;
@@ -189,6 +206,9 @@ h4 {
     font-size: 19px;
     vertical-align: bottom;
     /* margin-bottom: 2px; */
+}
+#batloop {
+    margin-top: 6px;
 }
 .grid-container {
     display: inline-grid;
@@ -338,6 +358,11 @@ td {
     background-position: 0% 0%;
     min-height: 81px;
 }
+#construction {
+    background-image: url(/static/img/plate-dork-small.jpg);
+    background-position: 0% 0%;
+    /* min-height: 81px; */
+}
 #nameInfos {
     background-image: url(/static/img/plate-dork-small.jpg);
     background-position: 0% 35%;
@@ -345,7 +370,7 @@ td {
 #tileInfos {
     background-image: url(/static/img/plate-dork-small.jpg);
     background-position: 0% 40%;
-    min-height: 81px;
+    /* min-height: 81px; */
 }
 #tracksList {
     background-image: url(/static/img/plate-dork-small.jpg);

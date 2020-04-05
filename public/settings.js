@@ -81,4 +81,6 @@ let closeTargetRangeDice = 3; // 2 dés
 let attAlive = true;
 let defAlive = true;
 let venumDamage = 15; // 15 = 5-15 damage
-let regenPower = 10; // 10 = 1/10 des HP de base chaque tour 
+let regenPower = 10; // 10 = 1/10 des HP de base chaque tour
+// CONSTRUCTION
+let conselUnit = {};

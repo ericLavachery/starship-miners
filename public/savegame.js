@@ -10,3 +10,7 @@ function savePlayerInfos() {
 function saveMap() {
     socket.emit('save-map', zone);
 };
+function saveAllBats() {
+    saveBataillons();
+    saveAliens();
+};

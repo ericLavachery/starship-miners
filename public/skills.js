@@ -229,4 +229,4 @@ function numMedicTargets(myBat,cat) {
         }
     });
     return numTargets;
-}
+};
