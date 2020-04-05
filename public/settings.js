@@ -84,3 +84,4 @@ let venumDamage = 15; // 15 = 5-15 damage
 let regenPower = 10; // 10 = 1/10 des HP de base chaque tour
 // CONSTRUCTION
 let conselUnit = {};
+let conselAmmos = ['xxx','xxx'];

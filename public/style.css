@@ -112,6 +112,11 @@ h4 {
     margin: 0 0 0 4px;
     /* border-radius: 9px; */
 }
+.army {
+    font-weight: bold;
+    font-size: 15px;
+    color: #71695f;
+}
 .paramName {
     display: inline-block;
     width: 170px;

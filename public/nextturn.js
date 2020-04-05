@@ -143,7 +143,7 @@ function createBatList() {
     let zoneBatList = _.filter(allBatList, function(bat) {
         return (bat.loc == 'zone' && bat.apLeft >= 1);
     });
-    batList = _.sortBy(_.sortBy(_.sortBy(zoneBatList,'id'),'typeId'),'range');
+    batList = _.sortBy(_.sortBy(_.sortBy(zoneBatList,'typeId'),'range'),'army');
     batList.reverse();
     commandes();
     console.log(batList);

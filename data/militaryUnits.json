@@ -390,7 +390,7 @@
             "range": 3,
             "rof": 2,
             "accuracy": 10,
-            "power": 24,
+            "power": 32,
             "aoe": "squad",
             "sound": "audio_hero_Explosion7LargeBoo_TE026301_348",
             "ammo": [ "standard" ]
@@ -422,12 +422,12 @@
             "range": 1,
             "rof": 8,
             "accuracy": 14,
-            "power": 20,
+            "power": 28,
             "aoe": "unit",
             "sound": "audio_hero_Explosion7LargeBoo_TE026301_348",
             "ammo": [ "standard" ]
         },
-        "weapon": {},
+        "weapon2": {},
         "moveCost": 2,
         "maxFlood": 2,
         "maxScarp": 1,

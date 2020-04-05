@@ -84,10 +84,28 @@ function showBatInfos(bat) {
     }
     // XP
     $('#unitInfos').append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+bat.xp+' (lvl '+bat.vet+')</span><br>');
-    // WEAPONS
+    // WEAPONS & SKILLS
     if (!isStacked()) {
         weaponsInfos(bat,batUnitType);
         skillsInfos(bat,batUnitType);
+    }
+    // ARMIES
+    $('#unitInfos').append('<span class="blockTitle"><h3>Armée</h3></span><br>');
+    let army = 1;
+    let armycol = "";
+    if (army === bat.army) {
+        armycol = " cy";
+    }
+    $('#unitInfos').append('<span class="army klik'+armycol+'" onclick="armyAssign('+bat.id+','+army+')">'+army+'</span>');
+    while (army <= 9) {
+        army++
+        if (army === bat.army) {
+            armycol = " cy";
+        } else {
+            armycol = "";
+        }
+        $('#unitInfos').append('<span class="army"> &Star; <span class="klik'+armycol+'" onclick="armyAssign('+bat.id+','+army+')">'+army+'</span></span>');
+        if (army > 9) {break;}
     }
 
     // "moveCost": 3,

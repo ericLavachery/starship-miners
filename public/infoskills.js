@@ -93,6 +93,26 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Soins</h4></span>');
         }
     }
+    // FIRST AID
+    if (batUnitType.skills.includes('firstaid')) {
+        let damaged = false;
+        if (batUnitType.squads > bat.squadsLeft || bat.damage >=1) {
+            damaged = true;
+        }
+        let apCost = Math.round(batUnitType.ap*3/4);
+        if (bat.apLeft >= apCost && damaged) {
+            // assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false)"><i class="far fa-heart"></i></button>&nbsp; Premiers soins</h4></span>');
+        } else {
+            // pas assez d'ap
+            if (!damaged) {
+                skillMessage = "Ce bataillon n'a pas subit de dégâts"
+            } else {
+                skillMessage = "Pas assez de PA"
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Premiers soins</h4></span>');
+        }
+    }
     // MECANO
     if (batUnitType.skills.includes('mecano')) {
         numTargets = numMedicTargets(bat,'vehicles');

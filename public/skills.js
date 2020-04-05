@@ -230,3 +230,10 @@ function numMedicTargets(myBat,cat) {
     });
     return numTargets;
 };
+
+function armyAssign(batId,army) {
+    let index = bataillons.findIndex((obj => obj.id == batId));
+    let bat = bataillons[index];
+    bat.army = army;
+    showBatInfos(bat);
+};
