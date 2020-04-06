@@ -346,7 +346,8 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.armors = thisWeapon.armors*ammo.armors;
     thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
     // skills
-    if (wn == 'w2') {
+    // ELEVATION 
+    if (wn == 'w2' && bat.team == 'player') {
         let batTypeIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
         let batUnitType = unitTypes[batTypeIndex];
         if (batUnitType.skills.includes('elevation')) {
@@ -359,7 +360,19 @@ function weaponAdj(weapon,bat,wn) {
             }
         }
     }
-
+    if (bat.team == 'aliens') {
+        let batTypeIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
+        let batUnitType = alienUnits[batTypeIndex];
+        if (batUnitType.skills.includes('elevation')) {
+            let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
+            let tile = zone[tileIndex];
+            if (tile.terrain == 'H') {
+                thisWeapon.range = thisWeapon.range+1;
+            } else if (tile.terrain == 'M') {
+                thisWeapon.range = thisWeapon.range+2;
+            }
+        }
+    }
     return thisWeapon;
 };
 
