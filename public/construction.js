@@ -94,6 +94,17 @@ function clickConstruct(tileId) {
     });
 
     if (!batHere) {
+        putBat(tileId);
+        bfconst();
+    } else {
+        console.log('Impossible de superposer 2 bataillons');
+    }
+};
+
+function putBat(tileId) {
+    console.log('PUTBAT');
+    if (Object.keys(conselUnit).length >= 1) {
+        console.log(conselUnit);
         let nextId;
         let team;
         if (conselUnit.cat != 'aliens') {
@@ -117,6 +128,7 @@ function clickConstruct(tileId) {
         newBat.type = conselUnit.name;
         newBat.typeId = conselUnit.id;
         newBat.team = team;
+        newBat.creaTurn = playerInfos.mapTurn;
         newBat.loc = 'zone';
         newBat.locId = 0;
         newBat.tileId = tileId;
@@ -163,12 +175,11 @@ function clickConstruct(tileId) {
             console.log(aliens);
             showAlien(newBat);
         }
-        conselUnit = {};
-        conselAmmos = ['xxx','xxx'];
-        bfconst();
     } else {
-        console.log('Impossible de superposer 2 bataillons');
+        console.log('no conselUnit !');
     }
+    conselUnit = {};
+    conselAmmos = ['xxx','xxx'];
 };
 
 function conOut() {
@@ -176,4 +187,27 @@ function conOut() {
     $('#conAmmoList').empty();
     conselUnit = {};
     conselAmmos = ['xxx','xxx'];
+};
+
+function dismantle(batId) {
+    // récup de ressources
+    // création du bataillon de citoyens
+    let index = bataillons.findIndex((obj => obj.id == batId));
+    let bat = bataillons[index];
+    batUnselect();
+    batDeath(bat);
+    let batIndex = batList.findIndex((obj => obj.id == batId));
+    batList.splice(batIndex,1);
+    $('#b'+bat.tileId).empty();
+    let resHere = showRes(bat.tileId);
+    $('#b'+bat.tileId).append(resHere);
+};
+
+function deleteAlien(batId) {
+    let index = aliens.findIndex((obj => obj.id == batId));
+    let bat = aliens[index];
+    batDeath(bat);
+    $('#b'+bat.tileId).empty();
+    let resHere = showRes(bat.tileId);
+    $('#b'+bat.tileId).append(resHere);
 };

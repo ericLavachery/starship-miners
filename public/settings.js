@@ -39,6 +39,7 @@ let bataillons = [];
 let batList = [];
 let alienList = [];
 let alienOccupiedTiles = [];
+let playerOccupiedTiles = [];
 // let vetAccuracy = 4; // plus grand = moins de bonus (3 = x2.3) (2 = x3)
 // let vetInitiative = 10; // plus grand = mieux (retire max vetInitiative*vet)
 // let vetAP = 1; // 1 = +1 ap par niveau
@@ -85,3 +86,6 @@ let regenPower = 10; // 10 = 1/10 des HP de base chaque tour
 // CONSTRUCTION
 let conselUnit = {};
 let conselAmmos = ['xxx','xxx'];
+// INVASION
+let cumDrop = 5; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
+let noEggs = 15; // % pour un eggDrop sans oeufs

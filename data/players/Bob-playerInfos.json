@@ -1,5 +1,1 @@
-{
-    "pseudo": "Bob",
-    "numHTiles": 28,
-    "numVTiles": 16
-}
+{"pseudo":"Bob","numHTiles":28,"numVTiles":16,"currentMap":0,"mapDiff":4,"mapTurn":1,"mapDrop":0}

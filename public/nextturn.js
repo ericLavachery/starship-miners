@@ -28,6 +28,8 @@ function nextTurn() {
             tagsEffect(bat,batType);
         }
     });
+    checkEggsDrop();
+    eggsSpawns();
     alienTurn();
 
     // constructions et production : système d'ap également
@@ -64,6 +66,8 @@ function nextTurnEnd() {
             tagsEffect(bat,batType);
         }
     });
+    playerInfos.mapTurn = playerInfos.mapTurn+1;
+    savePlayerInfos();
     saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
     saveAliens(); // !!!!!!!!!!!!!!!!!!!!!!
     createBatList();
@@ -133,6 +137,16 @@ function alienOccupiedTileList() {
         }
     });
     // console.log(alienOccupiedTiles);
+};
+
+function playerOccupiedTileList() {
+    playerOccupiedTiles = [];
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            playerOccupiedTiles.push(bat.tileId);
+        }
+    });
+    // console.log(playerOccupiedTiles);
 };
 
 function createBatList() {

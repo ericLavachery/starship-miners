@@ -150,6 +150,8 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
         }
     }
+    // DISMANTLE
+    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Démanteler" class="boutonGris iconButtons" onclick="dismantle('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Démanteler</h4></span>');
     // CONSTRUCTION TRICHE
     if (batUnitType.skills.includes('bfc')) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris iconButtons" onclick="bfconst()"><i class="fa fa-hammer"></i></button>&nbsp; Construction</h4></span>');

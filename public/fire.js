@@ -445,6 +445,8 @@ function batDeath(bat) {
     if (bat.team == 'player') {
         let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
         bataillons.splice(batIndex,1);
+        batIndex = batList.findIndex((obj => obj.id == bat.id));
+        batList.splice(batIndex,1);
     } else if (bat.team == 'aliens') {
         let batIndex = aliens.findIndex((obj => obj.id == bat.id));
         aliens.splice(batIndex,1);

@@ -5,12 +5,26 @@ function saveAliens() {
     socket.emit('save-aliens', aliens);
 };
 function savePlayerInfos() {
+    playerInfos.numHTiles = numHTiles;
+    playerInfos.numVTiles = numVTiles;
     socket.emit('save-playerInfos', playerInfos);
 };
 function saveMap() {
     socket.emit('save-map', zone);
+    commandes();
 };
 function saveAllBats() {
     saveBataillons();
     saveAliens();
+    savePlayerInfos();
+    commandes();
+};
+function mapReset() {
+    saveBataillons();
+    aliens = [];
+    saveAliens();
+    playerInfos.mapTurn = 0;
+    playerInfos.mapDrop = 0;
+    savePlayerInfos();
+    commandes();
 };

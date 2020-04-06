@@ -12,10 +12,14 @@ function commandes() {
         } else {
             $('#batloop').append('<button type="button" title="Liste de bataillons vide : Cliquer pour re-créer" class="boutonGris iconButtons" onclick="createBatList()"><i class="fas fa-undo-alt"></i> <i class="fas fa-chevron-circle-right"></i></button>');
         }
+
         $('#commandz').append('<button type="button" title="Passer au tour suivant" class="boutonMauve iconButtons" onclick="nextTurn()"><i class="fas fa-spider"></i></button>');
+
         $('#commandz').append('<br>');
         $('#commandz').append('<button type="button" title="Générer une nouvelle carte" class="boutonGris iconButtons"><i class="fas fa-map" onclick="generateNewMap()"></i></button>');
         $('#commandz').append('<button type="button" title="Sauvegarder la carte" class="boutonGris iconButtons" onclick="saveMap()"><i class="fas fa-save"></i></button>');
+        $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les aliens)" class="boutonGris iconButtons" onclick="mapReset()"><i class="fas fa-power-off"></i></button>');
+
         $('#commandz').append('<br>');
         $('#commandz').append('<button type="button" title="Constriche" class="boutonGris iconButtons" onclick="bfconst()"><i class="fa fa-hammer"></i></button>');
         $('#commandz').append('<button type="button" title="Sauvegarder les bataillons" class="boutonGris iconButtons" onclick="saveAllBats()"><i class="far fa-save"></i></button>');
