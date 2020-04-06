@@ -1,4 +1,5 @@
 function checkEggsDrop() {
+    eggDropCount = 0;
     let drop = false;
     let dropTurn = Math.floor(((playerInfos.mapDrop*cumDrop)+playerInfos.mapTurn)/(cumDrop+1));
     let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapDiff));
@@ -17,6 +18,7 @@ function checkEggsDrop() {
 };
 
 function eggsDrop() {
+    console.log('EGGDROP');
     let numEggs;
     let eggDice = rand.rand(1,100);
     let threeEggsChance = Math.round((playerInfos.mapDiff/1.5)-2);
@@ -69,9 +71,129 @@ function dropEgg() {
     }
     if (tileOK) {
         putBat(dropTile);
+        eggDropCount = eggDropCount+1;
+        if (eggDropCount === 1) {
+            eggSound();
+        }
     }
 };
 
-function eggsSpawns() {
+function spawns() {
+    console.log('check eggs');
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            if (bat.type === 'Oeuf') {
+                eggSpawn(bat);
+            } else if (true) {
+                // autres pondeurs
+            }
+        }
+    });
+};
 
+function eggSpawn(bat) {
+    console.log('SPAWN');
+    let eggTurn = playerInfos.mapTurn-bat.creaTurn;
+    console.log('eggTurn='+eggTurn);
+    let spawnChance = eggTurn*20;
+    console.log('spawnChance='+spawnChance);
+    if (rand.rand(1,100) <= spawnChance) {
+        let maxSpawn = eggTurn-5;
+        if (maxSpawn < 1) {
+            maxSpawn = 1;
+        }
+        console.log('maxSpawn='+maxSpawn);
+        let spawnNum = 1;
+        if (maxSpawn >= 2) {
+            spawnNum = rand.rand(Math.ceil(maxSpawn/2),maxSpawn);
+        }
+        console.log('spawnNum='+spawnNum);
+        let classes = [];
+        classes.push('C');
+        if (eggTurn >= 7) {
+            classes.push('B');
+            if (eggTurn >= 13) {
+                classes.push('A');
+            }
+        }
+        console.log(classes);
+        let checkDiceMax = 0;
+        let checkDice;
+        let raritySum = 0;
+        let dropTile = -1;
+        let i = 1;
+        while (i <= spawnNum) {
+            conselUnit = {};
+            conselAmmos = ['xxx','xxx'];
+            checkDiceMax = 0;
+            alienUnits.forEach(function(unit) {
+                if (classes.includes(unit.class)) {
+                    checkDiceMax = checkDiceMax+unit.rarity;
+                }
+            });
+            console.log('checkDiceMax='+checkDiceMax);
+            checkDice = rand.rand(1,checkDiceMax);
+            console.log('checkDice='+checkDice);
+            raritySum = 0;
+            alienUnits.forEach(function(unit) {
+                if (classes.includes(unit.class) && Object.keys(conselUnit).length <= 0) {
+                    raritySum = raritySum+unit.rarity;
+                    console.log('raritySum='+raritySum);
+                    if (checkDice <= raritySum) {
+                        conselUnit = unit;
+                    }
+                }
+            });
+            console.log('spawned unit ->');
+            console.log(conselUnit);
+            if (Object.keys(conselUnit).length >= 1) {
+                dropTile = checkDrop(bat);
+                if (dropTile >= 0) {
+                    putBat(dropTile);
+                }
+            }
+            if (i > 8) {break;}
+            i++
+        }
+    } else {
+        console.log('no spawn');
+    }
+};
+
+function checkDrop(layBat) {
+    let possibleDrops = [];
+    let batHere = false;
+    let tileDrop = -1;
+    zone.forEach(function(tile) {
+        if (isAdjacent(layBat.tileId,tile.id)) {
+            batHere = false;
+            bataillons.forEach(function(bat) {
+                if (bat.loc === "zone" && bat.tileId === tile.id) {
+                    batHere = true;
+                }
+            });
+            if (!batHere) {
+                aliens.forEach(function(bat) {
+                    if (bat.loc === "zone" && bat.tileId === tile.id) {
+                        batHere = true;
+                    }
+                });
+            }
+            if (!batHere) {
+                possibleDrops.push(tile.id);
+            }
+        }
+    });
+    if (possibleDrops.length > 1) {
+        possibleDrops = [_.sample(possibleDrops)];
+        tileDrop = possibleDrops[0];
+    }
+    return tileDrop;
+};
+
+function eggSound() {
+    var sound = new Howl({
+        src: ['/static/sounds/smartsound_CINEMATIC_IMPACT_Eruption_01b.mp3']
+    });
+    sound.play();
 };

@@ -89,3 +89,4 @@ let conselAmmos = ['xxx','xxx'];
 // INVASION
 let cumDrop = 5; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
 let noEggs = 15; // % pour un eggDrop sans oeufs
+let eggDropCount = 0;
