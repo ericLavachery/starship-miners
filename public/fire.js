@@ -223,7 +223,17 @@ function attack() {
             targetBat.tags.push('venin');
         }
         console.log('Venin!');
-        $('#report').append('<span class="report cy">Empoisonnement<br></span>');
+        $('#report').append('<span class="report cy">Venin<br></span>');
+    }
+    // poison
+    if (totalDamage >= 1) {
+        if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('ppoison')) {
+            if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
+                targetBat.tags.push('poison');
+                console.log('Poison!');
+                $('#report').append('<span class="report cy">Poison<br></span>');
+            }
+        }
     }
     // creuseur
     let catOK = false;
@@ -298,11 +308,26 @@ function defense() {
         console.log('fire in water: aoe '+aoeShots);
     }
     // rof*squadsLeft loop
-    let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);
+    // BRIDAGE DEFENSE
+    let brideDef = 0.75;
+    if (selectedWeap.range === 0) {
+        brideDef = 1/Math.sqrt(targetWeap.cost-0.75);
+        if (brideDef > 1 || targetWeap.range === 0) {
+            brideDef = 1;
+        }
+    } else {
+        if (targetWeap.range === 0) {
+            brideDef = 0.5;
+        } else {
+            brideDef = 0.75;
+        }
+    }
     // Guet
     if (targetBat.tags.includes('guet')) {
-        shots = targetWeap.rof*targetBat.squadsLeft;
+        brideDef = 1;
     }
+    console.log('brideDef='+brideDef);
+    let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);
     // console.log(shots);
     // console.log(aoeShots);
     let totalDamage = 0;
@@ -340,6 +365,16 @@ function defense() {
         $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
     }
     console.log('Previous Damage : '+selectedBat.damage);
+    // poison
+    if (totalDamage >= 1) {
+        if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('ppoison')) {
+            if (selectedBatType.cat == 'infantry' || selectedBatType.cat == 'aliens') {
+                selectedBat.tags.push('poison');
+                console.log('Poison!');
+                $('#report').append('<span class="report cy">Poison<br></span>');
+            }
+        }
+    }
     totalDamage = totalDamage+selectedBat.damage;
     let squadHP = (selectedBatType.squadSize*selectedBatType.hp);
     console.log('Squad HP : '+squadHP);

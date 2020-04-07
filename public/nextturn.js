@@ -90,18 +90,44 @@ function tagsUpdate(bat) {
 };
 
 function tagsEffect(bat,batType) {
+    let totalDamage;
+    let squadHP;
+    let squadsOut;
     if (bat.tags.includes('venin')) {
-        let totalDamage = bat.damage+rand.rand((Math.round(venumDamage/3)),venumDamage);
-        let squadHP = batType.squadSize*batType.hp;
-        let squadsOut = Math.floor(totalDamage/squadHP);
+        totalDamage = bat.damage+rand.rand((Math.round(venumDamage/3)),venumDamage);
+        console.log('VenomDamage='+totalDamage);
+        squadHP = batType.squadSize*batType.hp;
+        squadsOut = Math.floor(totalDamage/squadHP);
         bat.squadsLeft = bat.squadsLeft-squadsOut;
         bat.damage = totalDamage-(squadsOut*squadHP);
         // Mort !!!
     }
+    if (bat.tags.includes('poison')) {
+        let allTags = _.countBy(bat.tags);
+        let poisonPower = allTags.poison*poisonDamage;
+        console.log('tags poison: '+allTags.poison);
+        totalDamage = bat.damage+rand.rand((Math.round(poisonPower/3)),poisonPower);
+        console.log('PoisonDamage='+totalDamage);
+        squadHP = batType.squadSize*batType.hp;
+        squadsOut = Math.floor(totalDamage/squadHP);
+        bat.squadsLeft = bat.squadsLeft-squadsOut;
+        bat.damage = totalDamage-(squadsOut*squadHP);
+        // Mort !!!
+        let i = 1;
+        while (i <= allTags.poison) {
+            if (rand.rand(1,10) === 1) {
+                tagDelete(bat,'poison');
+                console.log('tag poison out');
+            }
+            if (i > 10) {break;}
+            i++
+        }
+    }
     if (bat.tags.includes('regeneration') || batType.skills.includes('regeneration')) {
-        let squadHP = batType.squadSize*batType.hp;
+        squadHP = batType.squadSize*batType.hp;
         let batHP = squadHP*batType.squads;
         let regen = Math.round(batHP/regenPower);
+        console.log('regeneration='+regen);
         let batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
         bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
         bat.damage = (bat.squadsLeft*squadHP)-batHPLeft;

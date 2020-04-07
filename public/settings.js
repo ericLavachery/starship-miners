@@ -65,7 +65,6 @@ let initiativeDice = 15 // ajoute 0-15
 let stopMe = false;
 let toHit = 999;
 let activeTurn = 'player';
-let brideDef = 0.75; // multiple le rof de la riposte si pas de guet
 let minPrec = 3 // minimum de précision (même après ajustements)
 let watchInitBonus = 15; // retire à l'initiative si GUET
 let minFireAP = -10; // ne peut pas tirer si moins d'AP (ni attaque ni riposte)
@@ -81,7 +80,8 @@ let closeTargetRange = 4; // à ce range, se dirige vers ce bataillon plutôt qu
 let closeTargetRangeDice = 3; // 2 dés
 let attAlive = true;
 let defAlive = true;
-let venumDamage = 15; // 15 = 5-15 damage
+let venumDamage = 18; // 15 = 5-15 damage
+let poisonDamage = 9; // 5 = 3-9 damage
 let regenPower = 10; // 10 = 1/10 des HP de base chaque tour
 // CONSTRUCTION
 let conselUnit = {};
