@@ -28,10 +28,15 @@ function nextTurn() {
             tagsEffect(bat,batType);
         }
     });
-    alienSounds();
     checkEggsDrop();
     spawns();
-    alienTurn();
+    if (aliens.length >= 1) {
+        alienSounds();
+        alienTurn();
+    } else {
+        nextTurnEnd();
+    }
+
 
     // constructions et production : système d'ap également
     // check appartition d'aliens

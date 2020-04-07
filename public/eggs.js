@@ -1,4 +1,5 @@
 function checkEggsDrop() {
+    console.log('check egg drop');
     eggDropCount = 0;
     let drop = false;
     let dropTurn = Math.floor(((playerInfos.mapDrop*cumDrop)+playerInfos.mapTurn)/(cumDrop+1));
@@ -6,6 +7,7 @@ function checkEggsDrop() {
     if (playerInfos.mapTurn == 0) {
         dropChance = 100; // !!!!!!!!!!!!!!!! Seulement pour les TESTS :)
     }
+    console.log('dropChance='+dropChance);
     if (rand.rand(1,100) <= dropChance) {
         drop = true;
         eggsDrop();
@@ -35,6 +37,7 @@ function eggsDrop() {
     } else {
         numEggs = 1;
     }
+    console.log('eggDice='+eggDice);
     if (numEggs >= 1) {
         let i = 1;
         while (i <= numEggs) {
@@ -46,6 +49,7 @@ function eggsDrop() {
 };
 
 function dropEgg() {
+    console.log('dropping egg...');
     let unitIndex = alienUnits.findIndex((obj => obj.name === 'Oeuf'));
     conselUnit = alienUnits[unitIndex];
     conselAmmos = ['xxx','xxx'];
@@ -54,17 +58,20 @@ function dropEgg() {
     let tileOK = false;
     let maxTileId = (mapSize*mapSize)+1;
     let dropTile = rand.rand(0,maxTileId);
+    console.log('dropTile='+dropTile);
     if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
         tileOK = true;
     }
     if (!tileOK) {
         dropTile = rand.rand(0,maxTileId);
+        console.log('dropTile='+dropTile);
         if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
             tileOK = true;
         }
     }
     if (!tileOK) {
         dropTile = rand.rand(0,maxTileId);
+        console.log('dropTile='+dropTile);
         if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
             tileOK = true;
         }
