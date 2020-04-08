@@ -83,7 +83,7 @@ function showBatInfos(bat) {
         $('#unitInfos').append('<span class="paramName or">Empoisonnement</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
     // XP
-    $('#unitInfos').append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+bat.xp+' (lvl '+bat.vet+')</span><br>');
+    $('#unitInfos').append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+bat.xp+' (niv '+bat.vet+')</span><br>');
     // WEAPONS & SKILLS
     if (!isStacked()) {
         weaponsInfos(bat,batUnitType);

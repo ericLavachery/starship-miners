@@ -207,7 +207,11 @@ function terrainAccess(batId,targetTileId) {
     let batIndex = bataillons.findIndex((obj => obj.id == batId));
     let unitTypesIndex = unitTypes.findIndex((obj => obj.name == bataillons[batIndex].type));
     let terIndex = terrainTypes.findIndex((obj => obj.name == zone[targetTileId].terrain));
-    if (unitTypes[unitTypesIndex].maxFlood >= terrainTypes[terIndex].flood && unitTypes[unitTypesIndex].maxScarp >= terrainTypes[terIndex].scarp && unitTypes[unitTypesIndex].maxVeg >= terrainTypes[terIndex].veg) {
+    let terFlood = terrainTypes[terIndex].flood;
+    if (terFlood === 3 && zone[targetTileId].seed >= 4) {
+        terFlood = 2;
+    }
+    if (unitTypes[unitTypesIndex].maxFlood >= terFlood && unitTypes[unitTypesIndex].maxScarp >= terrainTypes[terIndex].scarp && unitTypes[unitTypesIndex].maxVeg >= terrainTypes[terIndex].veg) {
         return true;
     } else {
         return false;

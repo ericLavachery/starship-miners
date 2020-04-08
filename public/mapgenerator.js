@@ -48,7 +48,7 @@ function nextSeed(ter, ls, as) {
     if (ter == "M") {
         newSeed = rand.rand(1,6);
         return rotateSeed(newSeed,ls,as);
-    } else if (ter != "Z") {
+    } else if (ter != "R") {
         if (rand.rand(1,specialSeed) == 1) {
             newSeed = rand.rand(4,6);
             return rotateSeed(newSeed,ls,as);
@@ -57,8 +57,13 @@ function nextSeed(ter, ls, as) {
             return rotateSeed(newSeed,ls,as);
         }
     } else {
-        newSeed = rand.rand(1,3);
-        return rotateSeed(newSeed,ls,as);
+        if (rand.rand(1,specialSeed*2) == 1) {
+            newSeed = rand.rand(4,6);
+            return rotateSeed(newSeed,ls,as);
+        } else {
+            newSeed = rand.rand(1,3);
+            return rotateSeed(newSeed,ls,as);
+        }
     }
 };
 
@@ -228,6 +233,14 @@ function addRivers(map) {
         console.log('Pas de rivière');
     }
 };
+function checkRiverSeed() {
+    if (rand.rand(1,riverSeed) == 1) {
+        newSeed = rand.rand(4,6);
+    } else {
+        newSeed = rand.rand(1,3);
+    }
+    return newSeed;
+};
 function addEWRiver(map, direction) {
     // début de la rivière
     let startLine = rand.rand(15,45);
@@ -272,6 +285,7 @@ function addEWRiver(map, direction) {
             // arrivée de l'autre côté
             i = 500;
         }
+        zone[nextTileId].seed = checkRiverSeed();
         zone[nextTileId].terrain = "R";
         zone[nextTileId].river = "ew";
         i++;
@@ -325,6 +339,7 @@ function addNSRiver(map, direction) {
             // croise une autre rivière
             break;
         } else {
+            zone[nextTileId].seed = checkRiverSeed();
             zone[nextTileId].terrain = "R";
             zone[nextTileId].river = "ns";
         }
@@ -379,6 +394,7 @@ function addSNRiver(map, direction) {
             // croise une autre rivière
             break;
         } else {
+            zone[nextTileId].seed = checkRiverSeed();
             zone[nextTileId].terrain = "R";
             zone[nextTileId].river = "sn";
         }
