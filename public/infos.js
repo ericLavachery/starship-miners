@@ -165,20 +165,31 @@ function weaponsInfos(bat,batUnitType) {
     if (batUnitType.weapon2.rof >= 1) {
         thisWeapon = weaponAdj(batUnitType.weapon2,bat,'w2');
         anyTarget = anyAlienInRange(bat.tileId,thisWeapon.range);
+        let baseAmmo = 999;
+        if (thisWeapon.ammo == 'x1') {
+            baseAmmo = 1;
+        } else if (thisWeapon.ammo == 'x4') {
+            baseAmmo = 4;
+        }
+        let ammoLeft = calcAmmos(bat,baseAmmo);
         balise = 'h4';
         if (thisWeapon.name === selectedWeap.name) {
             balise = 'h1';
         }
         let w2message = 'Salves épuisées';
-        if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && anyTarget) {
+        if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && anyTarget && ammoLeft >= 1) {
             // assez d'ap et de salve
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w2`)"><i class="ra ra-bullets rpg"></i></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
         } else {
             // tir impossible
-            if (!anyTarget) {
-                w2message = 'Pas de cible';
-            }else if (bat.apLeft < thisWeapon.cost) {
-                w2message = 'PA épuisés';
+            if (ammoLeft < 1) {
+                w2message = 'Munitions épuisées';
+            } else {
+                if (!anyTarget) {
+                    w2message = 'Pas de cible';
+                } else if (bat.apLeft < thisWeapon.cost) {
+                    w2message = 'PA épuisés';
+                }
             }
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
         }
@@ -193,7 +204,12 @@ function weaponsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
         }
         $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Munitions</span><span class="paramIcon"></span><span class="paramValue">'+bat.ammo2+'</span><br>');
+        if (bat.ammo2 != 'x4' && bat.ammo2 != 'x1') {
+            $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+bat.ammo2+'</span><br>');
+        }
+        if (baseAmmo < 900) {
+            $('#unitInfos').append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'</span><br>');
+        }
     }
 };
 

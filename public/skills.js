@@ -237,3 +237,24 @@ function armyAssign(batId,army) {
     bat.army = army;
     showBatInfos(bat);
 };
+
+function calcAmmos(bat,startAmmo) {
+    let ammoLeft = startAmmo;
+    console.log('startAmmo='+startAmmo);
+    if (startAmmo === 1) {
+        if (bat.tags.includes('x1')) {
+            ammoLeft = 0;
+        }
+    } else if (startAmmo === 4) {
+        if (bat.tags.includes('x4')) {
+            let allTags = _.countBy(bat.tags);
+            ammoLeft = 4-allTags.x4;
+            console.log(allTags);
+            console.log(allTags.x4);
+        } else {
+            ammoLeft = startAmmo;
+        }
+    }
+    console.log('ammoLeft='+ammoLeft);
+    return ammoLeft;
+};

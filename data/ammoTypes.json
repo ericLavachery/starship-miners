@@ -18,6 +18,24 @@
         "apdamage": 0
     },
     {
+        "name": "x4",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0
+    },
+    {
+        "name": "x1",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0
+    },
+    {
         "name": "perfo",
         "range": 0,
         "rof": 1,

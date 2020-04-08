@@ -235,6 +235,15 @@ function attack() {
             }
         }
     }
+    // munitions limitées 
+    if (selectedWeap.ammo.includes('x4')) {
+        targetBat.tags.push('x4');
+    }
+    if (selectedWeap.ammo.includes('x1')) {
+        if (!selectedBat.tags.includes('x1')) {
+            selectedBat.tags.push('x1');
+        }
+    }
     // creuseur
     let catOK = false;
     if (targetBatType.cat == 'buildings' || targetBatType.cat == 'vehicles') {
