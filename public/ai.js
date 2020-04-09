@@ -43,7 +43,13 @@ function chooseTarget() {
     targetBat = {};
     targetBatType = {};
     targetWeap = {};
-    anyCloseTarget();
+    if (!selectedBatType.skills.includes('capbld')) {
+        if (!selectedBatType.skills.includes('capfar')) {
+            anyCloseTarget();
+        } else {
+            anyFarTarget();
+        }
+    }
     let inPlace = false;
     let alienInMelee = isAlienInMelee(selectedBat.tileId);
     let range = selectedWeap.range;
@@ -161,15 +167,37 @@ function anyCloseTarget() {
     newPointDeMire = -1;
     let distance;
     let lePlusProche = 100;
+    let minFuzz = 0;
+    if (selectedBatType.skills.includes('nez')) {
+        minFuzz = -2;
+    }
     let shufBats = _.shuffle(bataillons);
     shufBats.forEach(function(bat) {
-        if (bat.loc === "zone" && bat.fuzz >= 0) {
+        if (bat.loc === "zone" && bat.fuzz >= minFuzz) {
             distance = calcDistance(selectedBat.tileId,bat.tileId);
             if (distance <= closeTargetRange) {
                 if (distance < lePlusProche) {
                     lePlusProche = distance;
                     newPointDeMire = bat.tileId;
                 }
+            }
+        }
+    });
+    if (newPointDeMire > 0) {
+        pointDeMire = newPointDeMire;
+        console.log('new PDM: '+pointDeMire);
+    }
+};
+
+function anyFarTarget() {
+    newPointDeMire = -1;
+    let distance;
+    let shufBats = _.shuffle(bataillons);
+    shufBats.forEach(function(bat) {
+        if (bat.loc === "zone" && bat.fuzz >= -1) {
+            distance = calcDistance(selectedBat.tileId,bat.tileId);
+            if (distance <= 10) {
+                newPointDeMire = bat.tileId;
             }
         }
     });
@@ -308,12 +336,16 @@ function checkGoodMoves() {
     // vérifie s'il y a un (ou des) moves parfaits et si oui : remplace possibleMoves
     let goodMoves = [];
     let thisTile;
+    let minFuzz = -1;
+    if (selectedBatType.skills.includes('nez')) {
+        minFuzz = -2;
+    }
     if (selectedWeap.range === 0) {
         let meleeTile;
         zone.forEach(function(tile) {
             thisTile = tile.id;
             bataillons.forEach(function(bat) {
-                if (bat.loc === "zone" && bat.tileId === thisTile && bat.fuzz >= -1) {
+                if (bat.loc === "zone" && bat.tileId === thisTile && bat.fuzz >= minFuzz) {
                     meleeTile = thisTile-1;
                     if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
                         goodMoves.push(meleeTile);
@@ -338,7 +370,7 @@ function checkGoodMoves() {
         zone.forEach(function(tile) {
             thisTile = tile.id;
             bataillons.forEach(function(bat) {
-                if (bat.loc === "zone" && bat.tileId === thisTile && bat.fuzz >= -1) {
+                if (bat.loc === "zone" && bat.tileId === thisTile && bat.fuzz >= minFuzz) {
                     r1Tile = thisTile-mapSize-1;
                     if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
                         goodMoves.push(r1Tile);
@@ -436,8 +468,12 @@ function moveAlienBat(tileId) {
 function anyTargetInRange() {
     let distance;
     let inRange = false;
+    let minFuzz = -1;
+    if (selectedBatType.skills.includes('nez')) {
+        minFuzz = -2;
+    }
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone" && bat.fuzz >= -1) {
+        if (bat.loc === "zone" && bat.fuzz >= minFuzz) {
             distance = calcDistance(selectedBat.tileId,bat.tileId);
             if (distance <= selectedWeap.range) {
                 inRange = true;
@@ -451,9 +487,13 @@ function targetMelee() {
     console.log('targetMelee');
     let distance;
     let inPlace = false;
+    let minFuzz = -1;
+    if (selectedBatType.skills.includes('nez')) {
+        minFuzz = -2;
+    }
     let shufBats = _.shuffle(bataillons);
     shufBats.forEach(function(bat) {
-        if (bat.loc === "zone" && bat.fuzz >= -1) {
+        if (bat.loc === "zone" && bat.fuzz >= minFuzz) {
             distance = calcDistance(selectedBat.tileId,bat.tileId);
             if (distance === 0 && inPlace === false) {
                 targetBat = JSON.parse(JSON.stringify(bat));
@@ -469,10 +509,14 @@ function targetFarthest() {
     let distance = 0;
     let lePlusLoin = 0;
     let inPlace = false;
+    let minFuzz = -1;
+    if (selectedBatType.skills.includes('nez')) {
+        minFuzz = -2;
+    }
     let shufBats = _.shuffle(bataillons);
     if (!isAlienInMelee(selectedBat.tileId)) {
         shufBats.forEach(function(bat) {
-            if (bat.loc === "zone" && bat.fuzz >= -1) {
+            if (bat.loc === "zone" && bat.fuzz >= minFuzz) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance <= selectedWeap.range) {
                     if (lePlusLoin < distance) {
@@ -485,7 +529,7 @@ function targetFarthest() {
         });
     } else {
         shufBats.forEach(function(bat) {
-            if (bat.loc === "zone" && bat.fuzz >= -1) {
+            if (bat.loc === "zone" && bat.fuzz >= minFuzz) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance === 0) {
                     targetBat = JSON.parse(JSON.stringify(bat));
@@ -502,10 +546,14 @@ function targetClosest() {
     let inPlace = false;
     let distance = 100;
     let lePlusProche = 100;
+    let minFuzz = -1;
+    if (selectedBatType.skills.includes('nez')) {
+        minFuzz = -2;
+    }
     let shufBats = _.shuffle(bataillons);
     if (!isAlienInMelee(selectedBat.tileId)) {
         shufBats.forEach(function(bat) {
-            if (bat.loc === "zone" && bat.fuzz >= -1) {
+            if (bat.loc === "zone" && bat.fuzz >= minFuzz) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance == selectedWeap.range) {
                     targetBat = JSON.parse(JSON.stringify(bat));
@@ -515,7 +563,7 @@ function targetClosest() {
         });
     } else {
         shufBats.forEach(function(bat) {
-            if (bat.loc === "zone" && bat.fuzz >= -1) {
+            if (bat.loc === "zone" && bat.fuzz >= minFuzz) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance === 0) {
                     targetBat = JSON.parse(JSON.stringify(bat));
@@ -530,8 +578,12 @@ function targetClosest() {
 function isAlienInMelee(tileId) {
     let distance;
     let alienInMelee = false;
+    let minFuzz = -1;
+    if (selectedBatType.skills.includes('nez')) {
+        minFuzz = -2;
+    }
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone" && bat.fuzz >= -1) {
+        if (bat.loc === "zone" && bat.fuzz >= minFuzz) {
             distance = calcDistance(tileId,bat.tileId);
             if (distance === 0) {
                 alienInMelee = true;

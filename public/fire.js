@@ -467,6 +467,8 @@ function shot(skewer,weapon,bat,batType) {
         damage = calcDamage(weapon,weapon.power,batType.armor,bat);
         if (damage > batType.hp && !skewer) {
             damage = batType.hp;
+        } else if (damage > batType.hp*3 && skewer) {
+            damage = batType.hp*3;
         }
         if (damage < 0) {
             damage = 0;

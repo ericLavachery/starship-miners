@@ -102,10 +102,10 @@ function eggSpawn(bat) {
     console.log('SPAWN');
     let eggTurn = playerInfos.mapTurn-bat.creaTurn;
     console.log('eggTurn='+eggTurn);
-    let spawnChance = eggTurn*20;
+    let spawnChance = Math.round(eggTurn*20*bat.squadsLeft/6*Math.sqrt(playerInfos.mapDiff)/2);
     console.log('spawnChance='+spawnChance);
     if (rand.rand(1,100) <= spawnChance) {
-        let maxSpawn = eggTurn-5;
+        let maxSpawn = eggTurn-11+bat.squadsLeft;
         if (maxSpawn < 1) {
             maxSpawn = 1;
         }
@@ -116,10 +116,12 @@ function eggSpawn(bat) {
         }
         console.log('spawnNum='+spawnNum);
         let classes = [];
+        let minTurnB = 33-(playerInfos.mapDiff*3);
+        let minTurnA = 66-(playerInfos.mapDiff*6);
         classes.push('C');
-        if (eggTurn >= 7) {
+        if (eggTurn >= 7 && playerInfos.mapTurn >= minTurnB) {
             classes.push('B');
-            if (eggTurn >= 13) {
+            if (eggTurn >= 13 && playerInfos.mapTurn >= minTurnA) {
                 classes.push('A');
             }
         }

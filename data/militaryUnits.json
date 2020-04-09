@@ -29,7 +29,7 @@
             "cost":4,
             "range":0,
             "rof":10,
-            "accuracy":16,
+            "accuracy":18,
             "power":10,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
@@ -214,7 +214,7 @@
             "cost":4,
             "range":0,
             "rof":8,
-            "accuracy":14,
+            "accuracy":16,
             "power":16,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
@@ -488,7 +488,7 @@
             "range":1,
             "rof":10,
             "accuracy":18,
-            "power":5,
+            "power":4,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
             "ammo":["standard","poison"]
@@ -551,7 +551,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["Berserk"],
+        "skills":["berserk"],
         "fuzz":0
     },
     {
@@ -594,7 +594,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["Berserk"],
+        "skills":["berserk"],
         "fuzz":0
     },
     {
@@ -616,7 +616,7 @@
             "cost":3,
             "range":1,
             "rof":20,
-            "accuracy":20,
+            "accuracy":21,
             "power":5,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
@@ -756,8 +756,8 @@
             "cost":6,
             "range":0,
             "rof":6,
-            "accuracy":16,
-            "power":8,
+            "accuracy":18,
+            "power":10,
             "aoe":"squad",
             "sound":"audio_hero_MolotovCocktailThr_PE280101_381b",
             "ammo":["feu"]
@@ -799,8 +799,8 @@
             "cost":6,
             "range":2,
             "rof":3,
-            "accuracy":14,
-            "power":15,
+            "accuracy":16,
+            "power":14,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
             "ammo":["standard","feu","explosive"]
@@ -852,7 +852,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","mine"],
+        "skills":["fortif","cible","mine","brochette"],
         "fuzz":0
     },
     {
@@ -874,8 +874,8 @@
             "cost":6,
             "range":1,
             "rof":8,
-            "accuracy":18,
-            "power":10,
+            "accuracy":20,
+            "power":12,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
             "ammo":["feu"]
