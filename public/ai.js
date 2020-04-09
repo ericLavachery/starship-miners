@@ -587,7 +587,7 @@ function createAlienList() {
     let zoneAlienList = _.filter(allAlienList, function(bat) {
         return (bat.loc == 'zone' && bat.apLeft >= 1);
     });
-    alienList = _.sortBy(_.sortBy(_.sortBy(zoneAlienList,'id'),'typeId'),'range');
+    alienList = _.sortBy(zoneAlienList,'id');
     commandes();
     // console.log(alienList);
 };
