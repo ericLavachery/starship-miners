@@ -94,7 +94,7 @@ function ambush() {
     showBatInfos(selectedBat);
 };
 
-function medic(cat,cost,around) {
+function medic(cat,cost,around,deep) {
     console.log('MEDIC SKILL');
     console.log(selectedBatType);
     let denom = 'Soins';
@@ -130,12 +130,17 @@ function medic(cat,cost,around) {
                             catOK = false;
                         }
                         if (catOK) {
-                            if (bat.tags.includes('venin') || bat.tags.includes('poison')) {
+                            if (bat.tags.includes('poison')) {
+                                totalAPCost = totalAPCost+apCost;
+                                xpGain = xpGain+0.45;
+                                tagDelete(bat,'poison');
+                                $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">poison neutralisé<br></span>');
+                                showBataillon(bat);
+                            } else if (bat.tags.includes('venin') && deep) {
                                 totalAPCost = totalAPCost+apCost;
                                 xpGain = xpGain+1;
                                 tagDelete(bat,'venin');
-                                tagDelete(bat,'poison');
-                                $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">poison neutralisé<br></span>');
+                                $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">venin neutralisé<br></span>');
                                 showBataillon(bat);
                             } else if (bat.damage > 0) {
                                 if (bat.id === selectedBat.id) {
@@ -151,7 +156,7 @@ function medic(cat,cost,around) {
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">dégâts réparés<br></span>');
                                 }
                                 showBataillon(bat);
-                            } else if (bat.squadsLeft < batType.squads) {
+                            } else if (bat.squadsLeft < batType.squads && deep) {
                                 if (bat.id === selectedBat.id) {
                                     selectedBat.squadsLeft = selectedBat.squadsLeft+1;
                                 } else {
@@ -166,6 +171,10 @@ function medic(cat,cost,around) {
                             if (bat.squadsLeft === batType.squads && bat.damage === 0 && bat.tags.includes('trou')) {
                                 tagDelete(bat,'trou');
                                 $('#report').append('<span class="report">trous bouchés<br></span>');
+                            }
+                            if (bat.squadsLeft === batType.squads && bat.damage === 0 && bat.tags.includes('maladie') && deep) {
+                                tagDelete(bat,'maladie');
+                                $('#report').append('<span class="report">maladie guérie<br></span>');
                             }
                             // console.log(bat);
                         }

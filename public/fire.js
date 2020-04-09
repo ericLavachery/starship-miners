@@ -235,7 +235,17 @@ function attack() {
             }
         }
     }
-    // munitions limitées 
+    // maladie
+    if (totalDamage >= 1) {
+        if (selectedWeap.ammo.includes('maladie') || selectedWeap.ammo.includes('pmaladie')) {
+            if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
+                targetBat.tags.push('maladie');
+                console.log('Maladie!');
+                $('#report').append('<span class="report cy">Maladie<br></span>');
+            }
+        }
+    }
+    // munitions limitées
     if (selectedWeap.ammo.includes('x4')) {
         targetBat.tags.push('x4');
     }
@@ -278,7 +288,7 @@ function attack() {
         batDeath(targetBat);
         $('#report').append('<br><span class="report cy">Bataillon ('+targetBat.type+') détruit<br></span>');
         setTimeout(function (){
-            batDeathEffect(targetBat);
+            batDeathEffect(targetBat,false,'','');
         }, 3000); // How long do you want the delay to be (in milliseconds)?
     } else {
         // targetBatArrayUpdate();
@@ -288,11 +298,20 @@ function attack() {
             showAlien(targetBat);
         }
     }
-    // remove ap & salvo
-    selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
-    selectedBat.salvoLeft = selectedBat.salvoLeft-1;
-    if (squadsOut >= 1 && activeTurn == 'player') {
-        selectedBat.xp = selectedBat.xp+1;
+    // remove ap & salvo & life :)
+    if (selectedWeap.ammo.includes('suicide')) {
+        attAlive = false;
+        batDeath(selectedBat);
+        $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
+        setTimeout(function (){
+            batDeathEffect(selectedBat,false,'Bataillon détruit','Suicide');
+        }, 3000); // How long do you want the delay to be (in milliseconds)?
+    } else {
+        selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
+        selectedBat.salvoLeft = selectedBat.salvoLeft-1;
+        if (squadsOut >= 1 && activeTurn == 'player') {
+            selectedBat.xp = selectedBat.xp+1;
+        }
     }
     selectedBatArrayUpdate();
 };
@@ -384,6 +403,16 @@ function defense() {
             }
         }
     }
+    // maladie
+    if (totalDamage >= 1) {
+        if (targetWeap.ammo.includes('maladie') || targetWeap.ammo.includes('pmaladie')) {
+            if (selectedBatType.cat == 'infantry' || selectedBatType.cat == 'aliens') {
+                selectedBat.tags.push('maladie');
+                console.log('Maladie!');
+                $('#report').append('<span class="report cy">Maladie<br></span>');
+            }
+        }
+    }
     totalDamage = totalDamage+selectedBat.damage;
     let squadHP = (selectedBatType.squadSize*selectedBatType.hp);
     console.log('Squad HP : '+squadHP);
@@ -406,7 +435,7 @@ function defense() {
         batDeath(selectedBat);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
         setTimeout(function (){
-            batDeathEffect(selectedBat);
+            batDeathEffect(selectedBat,false,'','');
         }, 3000); // How long do you want the delay to be (in milliseconds)?
     } else {
         // selectedBatArrayUpdate();
@@ -501,17 +530,23 @@ function batDeath(bat) {
     alienOccupiedTileList();
 };
 
-function batDeathEffect(bat) {
-    deathSound();
+function batDeathEffect(bat,quiet,title,body) {
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
-    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/explosion'+nextExplosion+'.gif"></div>'+resHere);
-    nextExplosion = nextExplosion+1;
-    if (nextExplosion > 3) {
-        nextExplosion = 1;
-    }
-    setTimeout(function (){
+    if (!quiet) {
+        deathSound();
+        $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/explosion'+nextExplosion+'.gif"></div>'+resHere);
+        nextExplosion = nextExplosion+1;
+        if (nextExplosion > 3) {
+            nextExplosion = 1;
+        }
+        setTimeout(function (){
+            $('#b'+bat.tileId).empty();
+            $('#b'+bat.tileId).append(resHere);
+        }, 1500); // How long do you want the delay to be (in milliseconds)?
+    } else {
         $('#b'+bat.tileId).empty();
         $('#b'+bat.tileId).append(resHere);
-    }, 1500); // How long do you want the delay to be (in milliseconds)?
+        warning(title,body);
+    }
 };

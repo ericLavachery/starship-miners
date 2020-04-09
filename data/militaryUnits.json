@@ -33,7 +33,7 @@
             "power":10,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
-            "ammo":["standard"]
+            "ammo":["x1"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -297,7 +297,7 @@
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
         "moveCost":3,
-        "maxFlood":2,
+        "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","elevation","camo"],
@@ -763,7 +763,7 @@
             "ammo":["feu"]
         },
         "moveCost":3,
-        "maxFlood":2,
+        "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible"],
@@ -805,7 +805,7 @@
             "sound":"161622__ryanconway__grenade-throwb",
             "ammo":["standard","feu","explosive"]
         },
-        "moveCost":3,
+        "moveCost":4,
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
@@ -892,7 +892,7 @@
             "ammo":["standard","poison"]
         },
         "moveCost":4,
-        "maxFlood":2,
+        "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible"],

@@ -72,7 +72,8 @@ let minFireAP = -10; // ne peut pas tirer si moins d'AP (ni attaque ni riposte)
 let stealthMaxChance = 93; // max chance de se rendre invisible
 let berserkEnemyDamage = 1.5;
 let berserkROF = 1.5;
-// let report = '';
+let deadBatsList = [];
+let deadAliensList = [];
 // ALIENS
 let pointDeMire = 1830; // tileId
 let possibleMoves = []; // list of tile ids

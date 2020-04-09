@@ -160,7 +160,7 @@ function weaponsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
         }
         $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Munitions</span><span class="paramIcon"></span><span class="paramValue">'+bat.ammo+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+bat.ammo+'</span><br>');
     }
     if (batUnitType.weapon2.rof >= 1) {
         thisWeapon = weaponAdj(batUnitType.weapon2,bat,'w2');

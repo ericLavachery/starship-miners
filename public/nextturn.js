@@ -9,6 +9,7 @@ function nextTurn() {
     batUnselect();
 
     // récup des aliens
+    deadAliensList = [];
     let unitIndex;
     let batType;
     aliens.forEach(function(bat) {
@@ -28,8 +29,11 @@ function nextTurn() {
             tagsEffect(bat,batType);
         }
     });
+    killAlienList();
     checkEggsDrop();
     spawns();
+    conselUnit = {};
+    conselAmmos = ['xxx','xxx'];
     if (aliens.length >= 1) {
         alienSounds();
         alienTurn();
@@ -52,6 +56,7 @@ function nextTurnEnd() {
     let batType;
     let ap;
     let tagIndex;
+    deadBatsList = [];
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
             levelUp(bat);
@@ -72,6 +77,7 @@ function nextTurnEnd() {
             tagsEffect(bat,batType);
         }
     });
+    killBatList();
     playerInfos.mapTurn = playerInfos.mapTurn+1;
     savePlayerInfos();
     saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
@@ -93,6 +99,21 @@ function tagsEffect(bat,batType) {
     let totalDamage;
     let squadHP;
     let squadsOut;
+    // REGENERATION
+    if (bat.tags.includes('regeneration') || batType.skills.includes('regeneration')) {
+        squadHP = batType.squadSize*batType.hp;
+        let batHP = squadHP*batType.squads;
+        let regen = Math.round(batHP/regenPower);
+        console.log('regeneration='+regen);
+        let batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
+        bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
+        bat.damage = (bat.squadsLeft*squadHP)-batHPLeft;
+    }
+    // MALADIE
+    if (bat.tags.includes('maladie')) {
+        bat.apLeft = bat.apLeft-Math.floor(batType.ap/2);
+    }
+    // VENIN
     if (bat.tags.includes('venin')) {
         totalDamage = bat.damage+rand.rand((Math.round(venumDamage/3)),venumDamage);
         console.log('VenomDamage='+totalDamage);
@@ -100,8 +121,11 @@ function tagsEffect(bat,batType) {
         squadsOut = Math.floor(totalDamage/squadHP);
         bat.squadsLeft = bat.squadsLeft-squadsOut;
         bat.damage = totalDamage-(squadsOut*squadHP);
-        // Mort !!!
+        if (bat.squadsLeft <= 0) {
+            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le venin.');
+        }
     }
+    // POISON
     if (bat.tags.includes('poison')) {
         let allTags = _.countBy(bat.tags);
         let poisonPower = allTags.poison*poisonDamage;
@@ -112,7 +136,9 @@ function tagsEffect(bat,batType) {
         squadsOut = Math.floor(totalDamage/squadHP);
         bat.squadsLeft = bat.squadsLeft-squadsOut;
         bat.damage = totalDamage-(squadsOut*squadHP);
-        // Mort !!!
+        if (bat.squadsLeft <= 0) {
+            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le poison.');
+        }
         let i = 1;
         while (i <= allTags.poison) {
             if (rand.rand(1,10) === 1) {
@@ -123,15 +149,33 @@ function tagsEffect(bat,batType) {
             i++
         }
     }
-    if (bat.tags.includes('regeneration') || batType.skills.includes('regeneration')) {
-        squadHP = batType.squadSize*batType.hp;
-        let batHP = squadHP*batType.squads;
-        let regen = Math.round(batHP/regenPower);
-        console.log('regeneration='+regen);
-        let batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
-        bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
-        bat.damage = (bat.squadsLeft*squadHP)-batHPLeft;
+    checkDeath(bat,batType);
+};
+
+function checkDeath(bat,batType) {
+    if (bat.squadsLeft <= 0) {
+        if (bat.team == 'player') {
+            deadBatsList.push(bat.id);
+        } else if (bat.team == 'aliens') {
+            deadAliensList.push(bat.id);
+        }
     }
+};
+
+function killBatList() {
+    bataillons.slice().reverse().forEach(function(bat,index,object) {
+      if (deadBatsList.includes(bat.id)) {
+        bataillons.splice(object.length-1-index,1);
+      }
+    });
+};
+
+function killAlienList() {
+    aliens.slice().reverse().forEach(function(bat,index,object) {
+      if (deadAliensList.includes(bat.id)) {
+        aliens.splice(object.length-1-index,1);
+      }
+    });
 };
 
 function tagDelete(bat,tag) {

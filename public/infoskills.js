@@ -82,7 +82,7 @@ function skillsInfos(bat,batUnitType) {
         apCost = numTargets*(4+batUnitType.squads-bat.squadsLeft);
         if (bat.apLeft >= 4 && numTargets >= 1) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,4,true)"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,4,true,true)"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
         } else {
             // pas assez d'ap
             if (numTargets < 1) {
@@ -96,17 +96,17 @@ function skillsInfos(bat,batUnitType) {
     // FIRST AID
     if (batUnitType.skills.includes('firstaid')) {
         let damaged = false;
-        if (batUnitType.squads > bat.squadsLeft || bat.damage >=1) {
+        if (bat.damage >=1) {
             damaged = true;
         }
-        let apCost = Math.round(batUnitType.ap*3/4);
+        let apCost = 5;
         if (bat.apLeft >= apCost && damaged) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false)"><i class="far fa-heart"></i></button>&nbsp; Premiers soins</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false,false)"><i class="far fa-heart"></i></button>&nbsp; Premiers soins</h4></span>');
         } else {
             // pas assez d'ap
             if (!damaged) {
-                skillMessage = "Ce bataillon n'a pas subit de dégâts"
+                skillMessage = "Aucun dégâts soignable"
             } else {
                 skillMessage = "Pas assez de PA"
             }
@@ -119,7 +119,7 @@ function skillsInfos(bat,batUnitType) {
         apCost = numTargets*(4+batUnitType.squads-bat.squadsLeft);
         if (bat.apLeft >= 4 && numTargets >= 1) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,4,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,4,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
         } else {
             // pas assez d'ap
             if (numTargets < 1) {
@@ -139,7 +139,7 @@ function skillsInfos(bat,batUnitType) {
         let apCost = batUnitType.ap;
         if (bat.apLeft >= batUnitType.ap && damaged) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`buildings`,'+apCost+',false)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`buildings`,'+apCost+',false,true)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
         } else {
             // pas assez d'ap
             if (!damaged) {
