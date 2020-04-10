@@ -320,7 +320,7 @@
         "power": 2,
         "aoe": "unit",
         "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
-        "ammo": [ "poison" ]
+        "ammo": [ "maladie" ]
     },
     "weapon2": {},
     "moveCost": 6,
@@ -449,14 +449,14 @@
     "rarity": 4,
     "weapon": {
         "name": "Dard",
-        "cost": 3,
+        "cost": 2,
         "range": 1,
         "rof": 10,
-        "accuracy": 12,
+        "accuracy": 7,
         "power": 3,
         "aoe": "unit",
         "sound": "zapsplat_animals_insect_ant_drag_object_on_dirt_single_powerful_pull_18469b",
-        "ammo": [ "ppoison" ]
+        "ammo": [ "poison" ]
     },
     "weapon2": {},
     "moveCost": 1,

@@ -206,7 +206,7 @@
             "accuracy":16,
             "power":4,
             "aoe":"unit",
-            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "sound":"john_ruok_gun_tikka_t3_battue_308_007_Swpph_Mono_Shot_Strong_Edit-multi",
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
         "weapon2":{
@@ -662,7 +662,7 @@
             "accuracy":18,
             "power":4,
             "aoe":"unit",
-            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "sound":"john_ruok_gun_tikka_t3_battue_308_007_Swpph_Mono_Shot_Strong_Edit-multi",
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
         "weapon2":{
