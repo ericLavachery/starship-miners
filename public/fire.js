@@ -463,7 +463,7 @@ function shot(skewer,weapon,bat,batType) {
     let damage = 0;
     let cover = getCover(bat,true);
     let stealth = getStealth(bat);
-    if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover)) {
+    if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover,batType.speed)) {
         damage = calcDamage(weapon,weapon.power,batType.armor,bat);
         if (damage > batType.hp && !skewer) {
             damage = batType.hp;
@@ -490,7 +490,7 @@ function blast(aoeShots,weapon,bat,batType) {
     let ii = 1;
     while (ii <= aoeShots) {
         // console.log('power'+power);
-        if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover)) {
+        if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover,batType.speed)) {
             newDamage = calcDamage(weapon,power,batType.armor,bat);
             if (newDamage > batType.hp) {
                 newDamage = batType.hp;

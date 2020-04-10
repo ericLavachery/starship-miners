@@ -12,10 +12,10 @@ function checkTargetBatType() {
     }
 };
 
-function isHit(accuracy,aoe,size,stealth,cover) {
+function isHit(accuracy,aoe,size,stealth,cover,speed) {
     let prec = Math.round(accuracy-(cover*coverFactor));
     if (aoe == 'unit') {
-        prec = Math.round(prec-(stealth/2));
+        prec = Math.round(prec-(stealth/2)-speed);
     }
     if (prec < minPrec) {
         prec = minPrec;
@@ -346,7 +346,7 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.armors = thisWeapon.armors*ammo.armors;
     thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
     // skills
-    // ELEVATION 
+    // ELEVATION
     if (wn == 'w2' && bat.team == 'player') {
         let batTypeIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
         let batUnitType = unitTypes[batTypeIndex];
