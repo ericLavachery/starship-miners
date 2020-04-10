@@ -226,7 +226,7 @@ function attack() {
         $('#report').append('<span class="report cy">Venin<br></span>');
     }
     // poison
-    if (totalDamage >= 1) {
+    if (totalDamage >= 1 && rand.rand(1,2) === 1) {
         if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('ppoison')) {
             if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
                 targetBat.tags.push('poison');
@@ -236,7 +236,7 @@ function attack() {
         }
     }
     // maladie
-    if (totalDamage >= 1) {
+    if (totalDamage >= 1 && rand.rand(1,2) === 1) {
         if (selectedWeap.ammo.includes('maladie') || selectedWeap.ammo.includes('pmaladie')) {
             if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
                 targetBat.tags.push('maladie');
@@ -394,7 +394,7 @@ function defense() {
     }
     console.log('Previous Damage : '+selectedBat.damage);
     // poison
-    if (totalDamage >= 1) {
+    if (totalDamage >= 1 && rand.rand(1,2) === 1) {
         if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('ppoison')) {
             if (selectedBatType.cat == 'infantry' || selectedBatType.cat == 'aliens') {
                 selectedBat.tags.push('poison');
@@ -404,7 +404,7 @@ function defense() {
         }
     }
     // maladie
-    if (totalDamage >= 1) {
+    if (totalDamage >= 1 && rand.rand(1,2) === 1) {
         if (targetWeap.ammo.includes('maladie') || targetWeap.ammo.includes('pmaladie')) {
             if (selectedBatType.cat == 'infantry' || selectedBatType.cat == 'aliens') {
                 selectedBat.tags.push('maladie');

@@ -134,6 +134,10 @@ function medic(cat,cost,around,deep) {
                                 totalAPCost = totalAPCost+apCost;
                                 xpGain = xpGain+0.45;
                                 tagDelete(bat,'poison');
+                                if (deep) {
+                                    tagDelete(bat,'poison');
+                                    tagDelete(bat,'poison');
+                                }
                                 $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">poison neutralisé<br></span>');
                                 showBataillon(bat);
                             } else if (bat.tags.includes('venin') && deep) {
@@ -172,7 +176,7 @@ function medic(cat,cost,around,deep) {
                                 tagDelete(bat,'trou');
                                 $('#report').append('<span class="report">trous bouchés<br></span>');
                             }
-                            if (bat.squadsLeft === batType.squads && bat.damage === 0 && bat.tags.includes('maladie') && deep) {
+                            if (bat.squadsLeft === batType.squads && bat.damage === 0 && bat.tags.includes('maladie')) {
                                 tagDelete(bat,'maladie');
                                 $('#report').append('<span class="report">maladie guérie<br></span>');
                             }
@@ -183,16 +187,33 @@ function medic(cat,cost,around,deep) {
             }
         });
     } else {
-        if (selectedBat.damage > 0) {
+        batUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
+        if (selectedBat.tags.includes('poison')) {
+            totalAPCost = totalAPCost+apCost;
+            xpGain = xpGain+0.45;
+            tagDelete(selectedBat,'poison');
+            if (deep) {
+                tagDelete(selectedBat,'poison');
+                tagDelete(selectedBat,'poison');
+            }
+            $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">poison neutralisé<br></span>');
+            showBataillon(selectedBat);
+        } else if (selectedBat.tags.includes('venin') && deep) {
+            totalAPCost = totalAPCost+apCost;
+            xpGain = xpGain+1;
+            tagDelete(bat,'venin');
+            $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">venin neutralisé<br></span>');
+            showBataillon(bat);
+        } else if (selectedBat.damage > 0) {
             selectedBat.damage = 0
             totalAPCost = totalAPCost+apCost;
             if (cat == 'infantry') {
-                $('#report').append('<span class="report cy">'+bat.type+'<br></span><span class="report">dégâts soignés<br>');
+                $('#report').append('<span class="report cy">'+selectedBat.type+'<br></span><span class="report">dégâts soignés<br>');
             } else {
-                $('#report').append('<span class="report cy">'+bat.type+'<br></span><span class="report">dégâts réparés<br>');
+                $('#report').append('<span class="report cy">'+selectedBat.type+'<br></span><span class="report">dégâts réparés<br>');
             }
             showBataillon(selectedBat);
-        } else if (selectedBat.squadsLeft < selectedBatType.squads) {
+        } else if (selectedBat.squadsLeft < selectedBatType.squads && deep) {
             batUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
             selectedBat.squadsLeft = selectedBat.squadsLeft+1;
             totalAPCost = totalAPCost+apCost;
@@ -203,6 +224,14 @@ function medic(cat,cost,around,deep) {
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">escouade rétablie (<span class="cy">'+newBatUnits+'</span>)</span><br>');
             }
             showBataillon(selectedBat);
+        }
+        if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('trou')) {
+            tagDelete(selectedBat,'trou');
+            $('#report').append('<span class="report">trous bouchés<br></span>');
+        }
+        if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('maladie')) {
+            tagDelete(selectedBat,'maladie');
+            $('#report').append('<span class="report">maladie guérie<br></span>');
         }
     }
     console.log('totalAPCost: '+totalAPCost);

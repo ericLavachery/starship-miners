@@ -30,7 +30,7 @@
             "range":0,
             "rof":10,
             "accuracy":18,
-            "power":10,
+            "power":8,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
             "ammo":["x1"]
@@ -39,7 +39,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible"],
+        "skills":["fortif","cible","firstaid"],
         "fuzz":0
     },
     {
@@ -72,7 +72,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible"],
+        "skills":["fortif","cible","firstaid"],
         "fuzz":0
     },
     {
@@ -115,7 +115,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","camo","embuscade","guerrilla"],
+        "skills":["fortif","camo","embuscade","guerrilla","firstaid"],
         "fuzz":-1
     },
     {
@@ -191,7 +191,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","elevation","camo"],
+        "skills":["fortif","cible","elevation","camo","firstaid"],
         "fuzz":-1
     },
     {
@@ -277,7 +277,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","camo","guerrilla","embuscade"],
+        "skills":["cible","camo","guerrilla","embuscade","firstaid"],
         "fuzz":-1
     },
     {
@@ -296,7 +296,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet",
-            "cost":3,
+            "cost":2,
             "range":1,
             "rof":10,
             "accuracy":15,
@@ -406,7 +406,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible"],
+        "skills":["fortif","cible","firstaid"],
         "fuzz":0
     },
     {
@@ -439,7 +439,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible"],
+        "skills":["fortif","cible","firstaid"],
         "fuzz":0
     },
     {
@@ -501,7 +501,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet",
-            "cost":3,
+            "cost":2,
             "range":1,
             "rof":6,
             "accuracy":16,
@@ -516,7 +516,7 @@
             "range":0,
             "rof":6,
             "accuracy":18,
-            "power":10,
+            "power":8,
             "aoe":"squad",
             "sound":"audio_hero_MolotovCocktailThr_PE280101_381b",
             "ammo":["feu"]
@@ -631,10 +631,10 @@
         "weapon":{
             "name":"Lance-flammes",
             "cost":6,
-            "range":1,
+            "range":0,
             "rof":8,
             "accuracy":20,
-            "power":12,
+            "power":10,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
             "ammo":["feu"]

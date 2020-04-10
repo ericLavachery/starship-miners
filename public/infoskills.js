@@ -93,6 +93,26 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Soins</h4></span>');
         }
     }
+    // SELF MEDIC
+    if (batUnitType.skills.includes('selfmedic')) {
+        let damaged = false;
+        if (bat.damage >=1) {
+            damaged = true;
+        }
+        let apCost = 5;
+        if (bat.apLeft >= apCost && damaged) {
+            // assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se soigner ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false,true)"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
+        } else {
+            // pas assez d'ap
+            if (!damaged) {
+                skillMessage = "Aucun dégâts soignable"
+            } else {
+                skillMessage = "Pas assez de PA"
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Soins</h4></span>');
+        }
+    }
     // FIRST AID
     if (batUnitType.skills.includes('firstaid')) {
         let damaged = false;

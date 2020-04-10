@@ -79,11 +79,14 @@ function showBatInfos(bat) {
         $('#unitInfos').append('<span class="paramName cy">Berserk</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
     // BAD TAGS
+    if (bat.damage >= 1 || bat.squadsLeft < batUnitType.squads) {
+        $('#unitInfos').append('<span class="paramName or">Blessé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    }
     if (bat.tags.includes('venin') || bat.tags.includes('poison')) {
-        $('#unitInfos').append('<span class="paramName or">Empoisonnement</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+        $('#unitInfos').append('<span class="paramName or">Empoisonné</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
     if (bat.tags.includes('maladie')) {
-        $('#unitInfos').append('<span class="paramName or">Maladie</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+        $('#unitInfos').append('<span class="paramName or">Malade</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
     // XP
     $('#unitInfos').append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+bat.xp+' (niv '+bat.vet+')</span><br>');
