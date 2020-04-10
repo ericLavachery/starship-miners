@@ -14,7 +14,7 @@ function commandes() {
         }
 
         $('#commandz').append('<button type="button" title="Passer au tour suivant" class="boutonMauve iconButtons" onclick="nextTurn()"><i class="fas fa-spider"></i></button>');
-        $('#commandz').append('<button type="button" title="" class="boutonMauve iconButtons">'+aliens.length+'</button>');
+        $('#commandz').append('<button type="button" title="" class="boutonGris iconButtons" onclick="findEgg()">'+aliens.length+'</button>');
 
         $('#commandz').append('<br>');
         $('#commandz').append('<button type="button" title="Générer une nouvelle carte" class="boutonGris iconButtons"><i class="fas fa-map" onclick="generateNewMap()"></i></button>');

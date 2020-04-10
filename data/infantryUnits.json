@@ -223,9 +223,9 @@
             "name":"Arbalète",
             "cost":5,
             "range":1,
-            "rof":5,
+            "rof":7,
             "accuracy":20,
-            "power":5,
+            "power":7,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
             "ammo":["perceur","ppoison"]
@@ -257,7 +257,7 @@
             "range":1,
             "rof":10,
             "accuracy":18,
-            "power":4,
+            "power":5,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
             "ammo":["standard","poison"]
@@ -314,7 +314,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["perceur","ppoison"]
+            "ammo":["standard","poison"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -346,7 +346,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["perceur","ppoison"]
+            "ammo":["standard","poison"]
         },
         "weapon2":{
             "name":"Ceinture goodbye",
@@ -421,30 +421,20 @@
         "armor":1,
         "size":3,
         "stealth":7,
-        "ap":13,
+        "ap":14,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet automatique",
             "cost":1,
             "range":1,
-            "rof":15,
+            "rof":20,
             "accuracy":18,
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_007_Swpph_Mono_Shot_Strong_Edit-multi",
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
-        "weapon2":{
-            "name":"Calibre",
-            "cost":3,
-            "range":1,
-            "rof":10,
-            "accuracy":20,
-            "power":7,
-            "aoe":"unit",
-            "sound":"warfare_gunshots_x2_rifle_exterior",
-            "ammo":["standard"]
-        },
+        "weapon2":{},
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -569,7 +559,7 @@
             "range":2,
             "rof":3,
             "accuracy":16,
-            "power":14,
+            "power":11,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
             "ammo":["standard","feu","explosive"]

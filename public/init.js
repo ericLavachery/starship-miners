@@ -24,11 +24,12 @@ socket.on('savedMap-Load', function(sm) {
         writeMapStyles();
         xOffset = 30-Math.round(numVTiles/2);
         yOffset = 30-Math.round(numHTiles/2);
-        showMap(zone);
+        showMap(zone,false);
     } else {
         generateNewMap();
     }
     commandes();
+    $('#tour').empty().append('Tour '+playerInfos.mapTurn);
 });
 // Bataillons
 socket.on('bataillons-Load', function(bt) {

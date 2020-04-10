@@ -37,7 +37,7 @@ function areaMove(direction) {
 function areaGo(x,y) {
     xOffset = x;
     yOffset = y;
-    showMap(zone);
+    showMap(zone,true);
 };
 
 function yourMapSize() {
@@ -54,7 +54,7 @@ function yourMapSize() {
     numHTiles = Number(prompt('Nombre de terrains vus horizontalement (x)',defH));
     numVTiles = Number(prompt('Nombre de terrains vus horizontalement (y)',defV));
     writeMapStyles();
-    showMap(zone);
+    showMap(zone,false);
 };
 
 function limitOffset() {
@@ -72,6 +72,16 @@ function limitOffset() {
     }
 };
 
+function centerMapTo(tileId) {
+    // center on selectedBat
+    myTileX = zone[tileId].x;
+    myTileY = zone[tileId].y;
+    xOffset = myTileX-Math.round(numVTiles/2);
+    yOffset = myTileY-Math.round(numHTiles/2);
+    limitOffset();
+    showMap(zone,true);
+};
+
 function centerMap() {
     // center on selectedBat
     if (selectedBat.id > -1) {
@@ -80,7 +90,7 @@ function centerMap() {
         xOffset = myTileX-Math.round(numVTiles/2);
         yOffset = myTileY-Math.round(numHTiles/2);
         limitOffset();
-        showMap(zone);
+        showMap(zone,true);
     }
 };
 
@@ -91,5 +101,31 @@ function centerMapCenter() {
     xOffset = myTileX-Math.round(numVTiles/2);
     yOffset = myTileY-Math.round(numHTiles/2);
     limitOffset();
-    showMap(zone);
+    showMap(zone,true);
+};
+
+function findEgg() {
+    let eggsToShow = 0;
+    let myEgg = {};
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone" && bat.type === "Oeuf" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
+            eggsToShow = eggsToShow+1;
+            myEgg = bat;
+        }
+    });
+    if (eggsToShow <= 0) {
+        shownEggs = [];
+        myEgg = {};
+        aliens.forEach(function(bat) {
+            if (bat.loc === "zone" && bat.type === "Oeuf" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
+                eggsToShow = eggsToShow+1;
+                myEgg = bat;
+            }
+        });
+    }
+    if (Object.keys(myEgg).length >= 1) {
+        shownEggs.push(myEgg.id);
+        centerMapTo(myEgg.tileId);
+    }
+    commandes();
 };

@@ -108,6 +108,15 @@
         "apdamage": 0.05
     },
     {
+        "name": "web",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.25,
+        "accuracy": 1,
+        "apdamage": 0.08
+    },
+    {
         "name": "feu",
         "range": 0,
         "rof": 1,

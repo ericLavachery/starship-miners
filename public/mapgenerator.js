@@ -5,7 +5,7 @@ function generateNewMap() {
     filterMap(zone);
     addRivers(zone);
     writeMapStyles();
-    showMap(zone);
+    showMap(zone,false);
     // function saveMap();
 };
 

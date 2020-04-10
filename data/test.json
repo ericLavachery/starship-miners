@@ -1,6 +1,6 @@
 [
     {
-        "id": 10,
+        "id":10,
         "name": "Cafards",
         "pic": "",
         "cat": "aliens",
@@ -34,7 +34,7 @@
         "skills": [ "regeneration" ]
     },
     {
-        "id": 11,
+        "id":11,
         "name": "Mégacloporte",
         "pic": "",
         "cat": "aliens",
@@ -68,7 +68,7 @@
         "skills": [ "fear" ]
     },
     {
-        "id": 12,
+        "id":12,
         "name": "Bousiers",
         "pic": "",
         "cat": "aliens",
@@ -102,7 +102,7 @@
         "skills": [ "fouisseur" ]
     },
     {
-        "id": 12,
+        "id":12,
         "name": "Black scarab",
         "pic": "",
         "cat": "aliens",
@@ -136,7 +136,7 @@
         "skills": [ "regeneration","fear" ]
     },
     {
-        "id": 13,
+        "id":13,
         "name": "Spiders",
         "pic": "",
         "cat": "aliens",
@@ -170,7 +170,7 @@
         "skills": [ "none" ]
     },
     {
-        "id": 14,
+        "id":14,
         "name": "Dragonfly",
         "pic": "",
         "cat": "aliens",
@@ -204,7 +204,7 @@
         "skills": [ "fly" ]
     },
     {
-        "id": 15,
+        "id":15,
         "name": "Phasmes",
         "pic": "",
         "cat": "aliens",
@@ -238,7 +238,7 @@
         "skills": [ "furtif","regeneration" ]
     },
     {
-        "id": 16,
+        "id":16,
         "name": "Guêpes",
         "pic": "",
         "cat": "aliens",
@@ -272,7 +272,7 @@
         "skills": [ "fly" ]
     },
     {
-        "id": 17,
+        "id":17,
         "name": "Poilus",
         "pic": "",
         "cat": "aliens",
@@ -306,7 +306,7 @@
         "skills": [ "pondeur","regeneration"]
     },
     {
-        "id": 18,
+        "id":18,
         "name": "Chenilles",
         "pic": "",
         "cat": "aliens",
@@ -340,7 +340,7 @@
         "skills": [ "pondeur"]
     },
     {
-        "id": 20,
+        "id":20,
         "name": "Amibes",
         "pic": "",
         "cat": "aliens",

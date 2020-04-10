@@ -1,5 +1,5 @@
 // Dessine la carte
-function showMap(wmap) {
+function showMap(wmap,justMoved) {
     // reset
     $('#zone_map').empty();
     // fill
@@ -32,8 +32,10 @@ function showMap(wmap) {
             }
         });
     });
-    selectMode();
-    alienOccupiedTileList();
+    if (!justMoved) {
+        selectMode();
+        alienOccupiedTileList();
+    }
     // console.log(zone);
 };
 
