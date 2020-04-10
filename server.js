@@ -18,65 +18,105 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-var unitTypes;
-fs.readFile('./data/militaryUnits.json', 'utf8', function (err, data) {
-  if (err) throw err;
-  try {
-    unitTypes = JSON.parse(data);
-    // console.log(unitTypes);
-  } catch (e) {
-    console.error( e );
-  }
+let unitTypes;
+fs.readFile('./data/buildings.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    try {
+        unitTypes = JSON.parse(data);
+        // console.log(unitTypes);
+    } catch (e) {
+        console.error( e );
+    }
+});
+fs.readFile('./data/turrets.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    try {
+        let turrets = JSON.parse(data);
+        unitTypes = unitTypes.concat(turrets);
+        // console.log(unitTypes);
+    } catch (e) {
+        console.error( e );
+    }
+});
+fs.readFile('./data/civilianUnits.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    try {
+        let civilianUnits = JSON.parse(data);
+        unitTypes = unitTypes.concat(civilianUnits);
+        // console.log(unitTypes);
+    } catch (e) {
+        console.error( e );
+    }
+});
+fs.readFile('./data/infantryUnits.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    try {
+        let infantryUnits = JSON.parse(data);
+        unitTypes = unitTypes.concat(infantryUnits);
+        // console.log(unitTypes);
+    } catch (e) {
+        console.error( e );
+    }
+});
+fs.readFile('./data/motorisedUnits.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    try {
+        let motorisedUnits = JSON.parse(data);
+        unitTypes = unitTypes.concat(motorisedUnits);
+        // console.log(unitTypes);
+    } catch (e) {
+        console.error( e );
+    }
 });
 var unitDV;
 fs.readFile('./data/defaultUnitValues.json', 'utf8', function (err, data) {
-  if (err) throw err;
-  try {
-    unitDV = JSON.parse(data);
-    // console.log(unitDV);
-  } catch (e) {
-    console.error( e );
-  }
+    if (err) throw err;
+    try {
+        unitDV = JSON.parse(data);
+        // console.log(unitDV);
+    } catch (e) {
+        console.error( e );
+    }
 });
 var terrainTypes;
 fs.readFile('./data/terrainTypes.json', 'utf8', function (err, data) {
-  if (err) throw err;
-  try {
-    terrainTypes = JSON.parse(data);
-    // console.log(unitDV);
-  } catch (e) {
-    console.error( e );
-  }
+    if (err) throw err;
+    try {
+        terrainTypes = JSON.parse(data);
+        // console.log(unitDV);
+    } catch (e) {
+        console.error( e );
+    }
 });
 var mapFilters;
 fs.readFile('./data/mapFilters.json', 'utf8', function (err, data) {
-  if (err) throw err;
-  try {
-    mapFilters = JSON.parse(data);
-    // console.log(unitDV);
-  } catch (e) {
-    console.error( e );
-  }
+    if (err) throw err;
+    try {
+        mapFilters = JSON.parse(data);
+        // console.log(unitDV);
+    } catch (e) {
+        console.error( e );
+    }
 });
 var alienUnits;
 fs.readFile('./data/alienUnits.json', 'utf8', function (err, data) {
-  if (err) throw err;
-  try {
-    alienUnits = JSON.parse(data);
-    // console.log(unitDV);
-  } catch (e) {
-    console.error( e );
-  }
+    if (err) throw err;
+    try {
+        alienUnits = JSON.parse(data);
+        // console.log(unitDV);
+    } catch (e) {
+        console.error( e );
+    }
 });
 var ammoTypes;
 fs.readFile('./data/ammoTypes.json', 'utf8', function (err, data) {
-  if (err) throw err;
-  try {
-    ammoTypes = JSON.parse(data);
-    // console.log(unitDV);
-  } catch (e) {
-    console.error( e );
-  }
+    if (err) throw err;
+    try {
+        ammoTypes = JSON.parse(data);
+        // console.log(unitDV);
+    } catch (e) {
+        console.error( e );
+    }
 });
 var playerInfos = {};
 var bataillons = [];
