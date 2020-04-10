@@ -32,6 +32,7 @@ function nextTurn() {
     killAlienList();
     checkEggsDrop();
     spawns();
+    killAlienList();
     conselUnit = {};
     conselAmmos = ['xxx','xxx'];
     if (aliens.length >= 1) {
@@ -177,6 +178,7 @@ function killAlienList() {
         aliens.splice(object.length-1-index,1);
       }
     });
+    deadAliensList = [];
 };
 
 function tagDelete(bat,tag) {
