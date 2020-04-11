@@ -243,6 +243,39 @@ function checkPossibleMoves() {
     });
 };
 
+function checkPossibleJumps() {
+    possibleMoves = [];
+    let batHere = false;
+    let distance;
+    let maxDistance;
+    if (selectedBatType.skills.includes('fouisseur')) {
+        maxDistance = 5;
+    } else {
+        maxDistance = Math.round(selectedBat.apLeft/selectedBatType.moveCost);
+    }
+    zone.forEach(function(tile) {
+        distance = calcDistance(selectedBat.tileId,tile.id);
+        if (distance <= maxDistance) {
+            batHere = false;
+            bataillons.forEach(function(bat) {
+                if (bat.loc === "zone" && bat.tileId === tile.id) {
+                    batHere = true;
+                }
+            });
+            if (!batHere) {
+                aliens.forEach(function(bat) {
+                    if (bat.loc === "zone" && bat.tileId === tile.id) {
+                        batHere = true;
+                    }
+                });
+            }
+            if (!batHere) {
+                possibleMoves.push(tile.id);
+            }
+        }
+    });
+};
+
 function uncheckMeleeMoves() {
     // remove moves to melee from possible moves
     let thisTile;
@@ -287,9 +320,11 @@ function uncheckRange1Moves() {
 
 function uncheckBadMoves() {
     let alienOff = pdmOffsets(selectedBat.tileId);
+    let tileOff;
+    let shufZone = _.shuffle(zone);
     // enlève les possibleMoves qui éloignent du PDM
     if (possibleMoves.length > 1) {
-        zone.forEach(function(tile) {
+        shufZone.forEach(function(tile) {
             if (isAdjacent(selectedBat.tileId,tile.id)) {
                 if (possibleMoves.length > 1) {
                     tileOff = pdmOffsets(tile.id);
@@ -302,7 +337,7 @@ function uncheckBadMoves() {
     }
     // enlève les possibleMoves vers l'eau
     if (possibleMoves.length > 1) {
-        zone.forEach(function(tile) {
+        shufZone.forEach(function(tile) {
             if (isAdjacent(selectedBat.tileId,tile.id)) {
                 if (possibleMoves.length > 1) {
                     if (tile.terrain == 'S' || tile.terrain == 'W' || tile.terrain == 'R') {
@@ -314,7 +349,7 @@ function uncheckBadMoves() {
     }
     // enlève les possibleMoves qui ne rapproche pas du PDM quand l'unité est proche du but
     if (possibleMoves.length > 1) {
-        zone.forEach(function(tile) {
+        shufZone.forEach(function(tile) {
             if (isAdjacent(selectedBat.tileId,tile.id)) {
                 if (possibleMoves.length > 1) {
                     tileOff = pdmOffsets(tile.id);
@@ -326,6 +361,72 @@ function uncheckBadMoves() {
                             delPossibleMove(tile.id);
                         }
                     }
+                }
+            }
+        });
+    }
+};
+
+function uncheckBadJumps() {
+    let alienOff = pdmOffsets(selectedBat.tileId);
+    let tileOff;
+    let shufZone = _.shuffle(zone);
+    // enlève les possibleMoves qui éloignent du PDM
+    if (possibleMoves.length > 1) {
+        shufZone.forEach(function(tile) {
+            if (possibleMoves.length > 1) {
+                tileOff = pdmOffsets(tile.id);
+                if (alienOff[0] < tileOff[0] || alienOff[1] < tileOff[1]) {
+                    delPossibleMove(tile.id);
+                }
+            }
+        });
+    }
+    // enlève les possibleMoves vers l'eau
+    if (possibleMoves.length > 1) {
+        shufZone.forEach(function(tile) {
+            if (possibleMoves.length > 1) {
+                if (tile.terrain == 'S' || tile.terrain == 'W' || tile.terrain == 'R') {
+                    delPossibleMove(tile.id);
+                }
+            }
+        });
+    }
+    // enlève les possibleMoves qui ne rapproche pas du PDM quand l'unité est proche du but
+    if (possibleMoves.length > 1) {
+        shufZone.forEach(function(tile) {
+            if (possibleMoves.length > 1) {
+                tileOff = pdmOffsets(tile.id);
+                if (alienOff[0] <= 4 && alienOff[1] <= 4) {
+                    if (alienOff[0] == tileOff[0]) {
+                        delPossibleMove(tile.id);
+                    }
+                    if (alienOff[1] == tileOff[1]) {
+                        delPossibleMove(tile.id);
+                    }
+                }
+            }
+        });
+    }
+};
+
+function uncheckShortJumps() {
+    let longestJump = 1;
+    let distance;
+    // enlève les possibleMoves les plus courts
+    if (possibleMoves.length > 1) {
+        zone.forEach(function(tile) {
+            distance = calcDistance(selectedBat.tileId,tile.id);
+            if (distance > longestJump) {
+                longestJump = distance;
+            }
+        });
+        let shufZone = _.shuffle(zone);
+        shufZone.forEach(function(tile) {
+            if (possibleMoves.length > 1) {
+                distance = calcDistance(selectedBat.tileId,tile.id);
+                if (distance < longestJump) {
+                    delPossibleMove(tile.id);
                 }
             }
         });
@@ -397,6 +498,67 @@ function checkGoodMoves() {
     }
 };
 
+function checkAimMoves() {
+    // vérifie s'il y a un (ou des) moves qui mène au PDM : remplace possibleMoves
+    let goodMoves = [];
+    let thisTile;
+    let minFuzz = -1;
+    let distance;
+    if (selectedBatType.skills.includes('nez')) {
+        minFuzz = -2;
+    }
+    if (selectedWeap.range === 0) {
+        let meleeTile;
+        meleeTile = pointDeMire-1;
+        if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
+            goodMoves.push(meleeTile);
+        }
+        meleeTile = pointDeMire+1;
+        if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
+            goodMoves.push(meleeTile);
+        }
+        meleeTile = pointDeMire-mapSize;
+        if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
+            goodMoves.push(meleeTile);
+        }
+        meleeTile = pointDeMire+mapSize;
+        if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
+            goodMoves.push(meleeTile);
+        }
+    } else if (selectedWeap.range === 1) {
+        let r1Tile;
+        r1Tile = pointDeMire-mapSize-1;
+        if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
+            goodMoves.push(r1Tile);
+        }
+        r1Tile = pointDeMire-mapSize+1;
+        if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
+            goodMoves.push(r1Tile);
+        }
+        r1Tile = pointDeMire+mapSize-1;
+        if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
+            goodMoves.push(r1Tile);
+        }
+        r1Tile = pointDeMire+mapSize+1;
+        if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
+            goodMoves.push(r1Tile);
+        }
+    } else if (selectedWeap.range >= 2) {
+        zone.forEach(function(tile) {
+            if (possibleMoves.includes(tile.id) && !goodMoves.includes(tile.id)) {
+                distance = calcDistance(tile.id,pointDeMire);
+                if (distance <= selectedWeap.range) {
+                    goodMoves.push(tile.id);
+                }
+            }
+        });
+    }
+    if (goodMoves.length >= 1) {
+        possibleMoves = goodMoves;
+        console.log('PDM ideal move found');
+    }
+};
+
 function delPossibleMove(delId) {
     // remove id from possible moves
     let pmIndex;
@@ -408,11 +570,29 @@ function delPossibleMove(delId) {
 
 function moveToPDM() {
     console.log('move to PDM');
-    checkPossibleMoves();
-    checkGoodMoves();
-    uncheckBadMoves();
+    let jump = false;
+    if (selectedBatType.skills.includes('fouisseur') && rand.rand(1,3) === 1) {
+        jump = true;
+    }
+    if (selectedBatType.skills.includes('fly')) {
+        jump = true;
+    }
+    if (jump) {
+        checkPossibleJumps();
+        checkAimMoves();
+        uncheckBadJumps();
+        uncheckShortJumps();
+    } else {
+        checkPossibleMoves();
+        if (selectedBatType.skills.includes('capbld') || selectedBatType.skills.includes('capfar')) {
+            checkAimMoves();
+        } else {
+            checkGoodMoves();
+        }
+        uncheckBadMoves();
+    }
     chooseMove();
-    doMove();
+    doMove(jump);
     console.log(possibleMoves);
 };
 
@@ -429,7 +609,7 @@ function moveOutOfMelee() {
         possibleMoves = oldPossibleMoves;
     }
     chooseMove();
-    doMove();
+    doMove(false);
     console.log(possibleMoves);
 };
 
@@ -439,12 +619,12 @@ function chooseMove() {
     }
 };
 
-function doMove() {
+function doMove(jump) {
     let tileId = possibleMoves[0];
-    moveAlienBat(tileId);
+    moveAlienBat(tileId,jump);
 };
 
-function moveAlienBat(tileId) {
+function moveAlienBat(tileId,jump) {
     // remove unit and redraw old tile
     tileUnselect();
     $('#b'+selectedBat.tileId).empty();
@@ -455,7 +635,10 @@ function moveAlienBat(tileId) {
     } else {
         moveCost = calcMoveCost(tileId,false);
     }
-    let apLost = about(moveCost,15);
+    if (jump) {
+        moveCost = selectedBat.apLeft-4;
+    }
+    let apLost = moveCost;
     selectedBat.apLeft = selectedBat.apLeft-apLost;
     // move
     selectedBat.tileId = tileId;

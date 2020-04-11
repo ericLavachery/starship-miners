@@ -162,24 +162,6 @@
         "apdamage": 1
     },
     {
-        "name": "maladie",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 1,
-        "accuracy": 1,
-        "apdamage": 0
-    },
-    {
-        "name": "pmaladie",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 0.5,
-        "accuracy": 1,
-        "apdamage": 0
-    },
-    {
         "name": "poison",
         "range": 0,
         "rof": 1,

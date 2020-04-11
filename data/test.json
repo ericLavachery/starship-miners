@@ -194,14 +194,14 @@
             "power": 10,
             "aoe": "unit",
             "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
-            "ammo": [ "venin" ]
+            "ammo": [ "none" ]
         },
         "weapon2": {},
         "moveCost": 1,
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": [ "fly" ]
+        "skills": [ "fly","venin" ]
     },
     {
         "id":15,

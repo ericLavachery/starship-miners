@@ -202,7 +202,7 @@ function attack() {
     }
     console.log('Previous Damage : '+targetBat.damage);
     // agrippeur
-    if (selectedBatType.skills.includes('grip') && totalDamage >= 1 && selectedBatType.size > targetBat.size) {
+    if (selectedBatType.skills.includes('grip') && totalDamage >= 1 && selectedBatType.size > targetBatType.size) {
         let gripChance = (selectedBat.squadsLeft*5)-(targetBat.vet*3);
         if (rand.rand(1,100 <= gripChance)) {
             apDamage = selectedBat.squadsLeft*3;
@@ -218,7 +218,7 @@ function attack() {
         }
     }
     // venin
-    if (selectedWeap.ammo.includes('venin') && totalDamage >= 1 && targetBat.apLeft < -2 && targetBatType.cat == 'infantry') {
+    if (selectedBatType.skills.includes('venin') && totalDamage >= 1 && targetBat.apLeft < -2 && targetBatType.cat == 'infantry') {
         if (!targetBat.tags.includes('venin')) {
             targetBat.tags.push('venin');
         }
@@ -237,7 +237,7 @@ function attack() {
     }
     // maladie
     if (totalDamage >= 1 && rand.rand(1,2) === 1) {
-        if (selectedWeap.ammo.includes('maladie') || selectedWeap.ammo.includes('pmaladie')) {
+        if (selectedBatType.skills.includes('maladie')) {
             if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
                 targetBat.tags.push('maladie');
                 console.log('Maladie!');
@@ -405,7 +405,7 @@ function defense() {
     }
     // maladie
     if (totalDamage >= 1 && rand.rand(1,2) === 1) {
-        if (targetWeap.ammo.includes('maladie') || targetWeap.ammo.includes('pmaladie')) {
+        if (targetBatType.skills.includes('maladie')) {
             if (selectedBatType.cat == 'infantry' || selectedBatType.cat == 'aliens') {
                 selectedBat.tags.push('maladie');
                 console.log('Maladie!');

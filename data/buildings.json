@@ -42,7 +42,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":[],
+        "skills":["bldselfrepair"],
         "fuzz":2
     }
 ]

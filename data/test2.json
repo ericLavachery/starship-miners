@@ -478,7 +478,7 @@
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
         "weapon2":{
-            "name":"Mandibules venin",
+            "name":"Mandibules",
             "cost":3,
             "range":0,
             "rof":6,
@@ -486,7 +486,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"",
-            "ammo":["venin"]
+            "ammo":["poison"]
         },
         "moveCost":3,
         "maxFlood":2,
@@ -521,7 +521,7 @@
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
         "weapon2":{
-            "name":"Mandibules venin",
+            "name":"Mandibules",
             "cost":3,
             "range":0,
             "rof":6,
@@ -529,7 +529,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"",
-            "ammo":["venin"]
+            "ammo":["poison"]
         },
         "moveCost":3,
         "maxFlood":3,
