@@ -129,11 +129,16 @@ function weaponsInfos(bat,batUnitType) {
     let thisWeapon = {};
     let showW1 = true;
     let anyTarget = false;
+    let inMelee = batInMelee(bat.tileId);
+    let noFireMelee = false;
     if (batUnitType.weapon.rof >= 1 && batUnitType.weapon2.rof >= 1 && batUnitType.weapon.name == batUnitType.weapon2.name) {
         showW1 = false;
     }
     if (batUnitType.weapon.rof >= 1 && showW1) {
         thisWeapon = weaponAdj(batUnitType.weapon,bat,'w1');
+        if (inMelee && thisWeapon.noMelee) {
+            noFireMelee = true;
+        }
         anyTarget = anyAlienInRange(bat.tileId,thisWeapon.range);
         balise = 'h4';
         if (thisWeapon.name === selectedWeap.name) {
@@ -145,10 +150,14 @@ function weaponsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w1`)"><i class="ra ra-bullets rpg"></i></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
         } else {
             // tir impossible
-            if (!anyTarget) {
-                w1message = 'Pas de cible';
-            }else if (bat.apLeft < thisWeapon.cost) {
-                w1message = 'PA épuisés';
+            if (noFireMelee) {
+                w1message = 'Tir impossible en mêlée';
+            } else {
+                if (!anyTarget) {
+                    w1message = 'Pas de cible';
+                } else if (bat.apLeft < thisWeapon.cost) {
+                    w1message = 'PA épuisés';
+                }
             }
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
         }
@@ -172,6 +181,9 @@ function weaponsInfos(bat,batUnitType) {
     }
     if (batUnitType.weapon2.rof >= 1) {
         thisWeapon = weaponAdj(batUnitType.weapon2,bat,'w2');
+        if (inMelee && thisWeapon.noMelee) {
+            noFireMelee = true;
+        }
         anyTarget = anyAlienInRange(bat.tileId,thisWeapon.range);
         let baseAmmo = 999;
         if (thisWeapon.ammo == 'x1') {
@@ -185,18 +197,22 @@ function weaponsInfos(bat,batUnitType) {
             balise = 'h1';
         }
         let w2message = 'Salves épuisées';
-        if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && anyTarget && ammoLeft >= 1) {
+        if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && anyTarget && ammoLeft >= 1 && !noFireMelee) {
             // assez d'ap et de salve
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w2`)"><i class="ra ra-bullets rpg"></i></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
         } else {
             // tir impossible
-            if (ammoLeft < 1) {
-                w2message = 'Munitions épuisées';
+            if (noFireMelee) {
+                w2message = 'Tir impossible en mêlée';
             } else {
-                if (!anyTarget) {
-                    w2message = 'Pas de cible';
-                } else if (bat.apLeft < thisWeapon.cost) {
-                    w2message = 'PA épuisés';
+                if (ammoLeft < 1) {
+                    w2message = 'Munitions épuisées';
+                } else {
+                    if (!anyTarget) {
+                        w2message = 'Pas de cible';
+                    } else if (bat.apLeft < thisWeapon.cost) {
+                        w2message = 'PA épuisés';
+                    }
                 }
             }
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');

@@ -412,7 +412,7 @@
 {
     "id":12,
     "name": "Scarabs",
-    "pic": "redspider",
+    "pic": "bscarab",
     "cat": "aliens",
     "class": "B",
     "rarity": 5,
@@ -424,15 +424,15 @@
     "size": 10,
     "speed": 0,
     "stealth": 1,
-    "ap": 11,
+    "ap": 10,
     "maxSalvo": 1,
     "weapon": {
         "name": "Jet d'acide",
         "cost": 4,
         "range": 2,
         "rof": 7,
-        "accuracy": 6,
-        "power": 6,
+        "accuracy": 7,
+        "power": 7,
         "aoe": "squad",
         "sound": "zapsplat_cartoon_squish_squelch_wet_005_14504b",
         "ammo": [ "perceur" ]

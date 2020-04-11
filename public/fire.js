@@ -12,7 +12,7 @@ function clickFire(tileId) {
     checkTargetBatType();
     if (isMelee) {
         // en mêlée : choix limité de cibles
-        if (isInMelee(selectedBat.tileId,tileId)) {
+        if (sideBySideTiles(selectedBat.tileId,tileId)) {
             if (alienBatHere) {
                 // console.log(targetBat);
                 combat();

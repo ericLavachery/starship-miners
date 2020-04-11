@@ -173,7 +173,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
     return speed+rand.rand(0,initiativeDice)-rand.rand(0,vetDice);
 };
 
-function isInMelee(myTileIndex,thatTileIndex) {
+function sideBySideTiles(myTileIndex,thatTileIndex) {
     if (selectedBat.tags.includes('camo')) {
         return false;
     } else {
@@ -190,11 +190,14 @@ function isInMelee(myTileIndex,thatTileIndex) {
 };
 
 function batInMelee(myTileIndex) {
+    // Vérifie si le bataillon est VRAIMENT en mêlée : Range 0 ET alien range 0 en face
     let inMelee = false;
     aliens.forEach(function(alien) {
         if (alien.loc === "zone") {
             if (myTileIndex == alien.tileId+1 || myTileIndex == alien.tileId-1 || myTileIndex == alien.tileId+mapSize || myTileIndex == alien.tileId-mapSize) {
-                inMelee = true;
+                if (alien.range === 0) {
+                    inMelee = true;
+                }
             }
         }
     });
@@ -258,7 +261,7 @@ function fireInfos(bat) {
     zone.forEach(function(tile) {
         $("#"+tile.id).attr("title", "");
         if (alienHere(tile.id)) {
-            if (isInMelee(selectedBat.tileId,tile.id)) {
+            if (sideBySideTiles(selectedBat.tileId,tile.id)) {
                 isMelee = true;
                 cursorSwitch('#',tile.id,'fire');
             }
@@ -332,6 +335,7 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.armors = 1;
     thisWeapon.aoe = weapon.aoe;
     thisWeapon.sound = weapon.sound;
+    thisWeapon.noMelee = weapon.noMelee;
     let myAmmo = bat.ammo;
     if (wn == 'w2') {
         myAmmo = bat.ammo2;
