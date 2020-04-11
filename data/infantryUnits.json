@@ -86,7 +86,7 @@
         "hp":5,
         "armor":2,
         "size":3,
-        "stealth":12,
+        "stealth":10,
         "ap":12,
         "maxSalvo":1,
         "weapon":{
@@ -129,7 +129,7 @@
         "hp":5,
         "armor":1,
         "size":3,
-        "stealth":6,
+        "stealth":4,
         "ap":12,
         "maxSalvo":1,
         "weapon":{
@@ -162,7 +162,7 @@
         "hp":5,
         "armor":2,
         "size":3,
-        "stealth":15,
+        "stealth":12,
         "ap":11,
         "maxSalvo":1,
         "weapon":{
@@ -205,7 +205,7 @@
         "hp":5,
         "armor":0,
         "size":3,
-        "stealth":10,
+        "stealth":8,
         "ap":14,
         "maxSalvo":1,
         "weapon":{
@@ -291,7 +291,7 @@
         "hp":5,
         "armor":0,
         "size":3,
-        "stealth":5,
+        "stealth":4,
         "ap":15,
         "maxSalvo":1,
         "weapon":{
@@ -334,7 +334,7 @@
         "hp":5,
         "armor":0,
         "size":3,
-        "stealth":5,
+        "stealth":4,
         "ap":15,
         "maxSalvo":1,
         "weapon":{
@@ -377,7 +377,7 @@
         "hp":5,
         "armor":1,
         "size":3,
-        "stealth":7,
+        "stealth":6,
         "ap":13,
         "maxSalvo":1,
         "weapon":{
@@ -452,8 +452,8 @@
         "crew":1,
         "hp":5,
         "armor":2,
-        "size":3,
-        "stealth":7,
+        "size":4,
+        "stealth":3,
         "ap":12,
         "maxSalvo":1,
         "weapon":{
@@ -538,8 +538,8 @@
         "crew":1,
         "hp":5,
         "armor":2,
-        "size":3,
-        "stealth":7,
+        "size":4,
+        "stealth":4,
         "ap":12,
         "maxSalvo":1,
         "weapon":{
@@ -582,7 +582,7 @@
         "hp":5,
         "armor":1,
         "size":3,
-        "stealth":7,
+        "stealth":5,
         "ap":11,
         "maxSalvo":1,
         "weapon":{
