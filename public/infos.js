@@ -129,7 +129,7 @@ function weaponsInfos(bat,batUnitType) {
     let thisWeapon = {};
     let showW1 = true;
     let anyTarget = false;
-    let inMelee = batInMelee(bat.tileId);
+    let inMelee = batInMelee(bat);
     let noFireMelee = false;
     if (batUnitType.weapon.rof >= 1 && batUnitType.weapon2.rof >= 1 && batUnitType.weapon.name == batUnitType.weapon2.name) {
         showW1 = false;

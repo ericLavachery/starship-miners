@@ -2,7 +2,7 @@ function skillsInfos(bat,batUnitType) {
     let skillMessage;
     let numTargets = 0;
     let apCost;
-    let inMelee = batInMelee(bat.tileId);
+    let inMelee = batInMelee(bat);
     // GUET
     if (batUnitType.weapon.rof >= 1) {
         if (bat.apLeft >= batUnitType.ap-3 && !bat.tags.includes('guet')) {

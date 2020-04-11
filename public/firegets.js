@@ -189,13 +189,13 @@ function sideBySideTiles(myTileIndex,thatTileIndex) {
     }
 };
 
-function batInMelee(myTileIndex) {
+function batInMelee(bat) {
     // Vérifie si le bataillon est VRAIMENT en mêlée : Range 0 ET alien range 0 en face
     let inMelee = false;
     aliens.forEach(function(alien) {
         if (alien.loc === "zone") {
-            if (myTileIndex == alien.tileId+1 || myTileIndex == alien.tileId-1 || myTileIndex == alien.tileId+mapSize || myTileIndex == alien.tileId-mapSize) {
-                if (alien.range === 0) {
+            if (bat.tileId == alien.tileId+1 || bat.tileId == alien.tileId-1 || bat.tileId == alien.tileId+mapSize || bat.tileId == alien.tileId-mapSize) {
+                if (alien.range === 0 && !bat.tags.includes('camo')) {
                     inMelee = true;
                 }
             }
