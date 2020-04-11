@@ -76,6 +76,7 @@ function nextTurnEnd() {
             bat.oldapLeft = bat.apLeft;
             tagsUpdate(bat);
             tagsEffect(bat,batType);
+            blub(bat,batType);
         }
     });
     killBatList();
@@ -95,6 +96,31 @@ function tagsUpdate(bat) {
     tagDelete(bat,'guet');
     tagDelete(bat,'vise');
     tagDelete(bat,'embuscade');
+};
+
+function blub(bat,batType) {
+    let terrain = getTerrain(bat);
+    if (bat.tags.includes('blub')) {
+        if (terrain.name != 'W' && terrain.name != 'R') {
+            tagDelete(bat,'blub');
+        } else {
+            let totalDamage = bat.damage+rand.rand((Math.round(blubDamage/3)),blubDamage);
+            console.log('blubDamage='+totalDamage);
+            let squadHP = batType.squadSize*batType.hp;
+            let squadsOut = Math.floor(totalDamage/squadHP);
+            bat.squadsLeft = bat.squadsLeft-squadsOut;
+            bat.damage = totalDamage-(squadsOut*squadHP);
+            bat.apLeft = 2;
+            if (bat.squadsLeft <= 0) {
+                batDeathEffect(bat,true,'Bataillon détruit',bat.type+' noyé.');
+            }
+            checkDeath(bat,batType);
+        }
+    } else {
+        if (terrain.name === 'W' || terrain.name === 'R') {
+            bat.tags.push('blub');
+        }
+    }
 };
 
 function tagsEffect(bat,batType) {

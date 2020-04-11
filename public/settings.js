@@ -83,7 +83,8 @@ let closeTargetRangeDice = 3; // 2 dés
 let attAlive = true;
 let defAlive = true;
 let venumDamage = 18; // 15 = 5-15 damage
-let poisonDamage = 9; // 5 = 3-9 damage
+let poisonDamage = 9; // 9 = 3-9 damage
+let blubDamage = 3;
 let regenPower = 10; // 10 = 1/10 des HP de base chaque tour
 let shownEggs = [];
 // CONSTRUCTION
