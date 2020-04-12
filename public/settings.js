@@ -79,7 +79,7 @@ let pointDeMire = 1830; // tileId
 let possibleMoves = []; // list of tile ids
 let isMelee = false;
 let closeTargetRange = 4; // à ce range, se dirige vers ce bataillon plutôt que vers le point de mire
-let closeTargetRangeDice = 3; // 2 dés
+let closeTargetRangeDice = 8; // 1 dé 8
 let attAlive = true;
 let defAlive = true;
 let venumDamage = 18; // 15 = 5-15 damage

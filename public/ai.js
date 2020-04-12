@@ -844,7 +844,7 @@ function nextAlien() {
         console.log(alienList);
         console.log('selectedBat :');
         console.log(selectedBat);
-        closeTargetRange = rand.rand(1,closeTargetRangeDice)+rand.rand(1,closeTargetRangeDice);
+        closeTargetRange = rand.rand(1,closeTargetRangeDice);
         alienMoveLoop();
     } else {
         batUnselect();
