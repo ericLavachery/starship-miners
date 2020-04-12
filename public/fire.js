@@ -155,6 +155,10 @@ function attack() {
     }
     // rof*squadsLeft loop
     let shots = selectedWeap.rof*selectedBat.squadsLeft;
+    // autodestruction
+    if (selectedWeap.ammo.includes('autodestruction')) {
+        shots = selectedWeap.rof*selectedBatType.squads;
+    }
     // berserk (bonus ROF)
     if (activeTurn === 'player') {
         if (selectedBatType.skills.includes('berserk') && selectedBat.damage >= 1) {
@@ -299,7 +303,7 @@ function attack() {
         }
     }
     // remove ap & salvo & life :)
-    if (selectedWeap.ammo.includes('suicide')) {
+    if (selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('autodestruction')) {
         attAlive = false;
         batDeath(selectedBat);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');

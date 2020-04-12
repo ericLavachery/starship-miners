@@ -358,7 +358,7 @@
             "power":16,
             "aoe":"squad",
             "sound":"bottlerocket_Impact_Boom_Distorted_10b",
-            "ammo":["suicide"]
+            "ammo":["autodestruction"]
         },
         "moveCost":3,
         "maxFlood":3,

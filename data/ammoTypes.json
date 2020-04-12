@@ -196,5 +196,14 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0
+    },
+    {
+        "name": "autodestruction",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0
     }
 ]
