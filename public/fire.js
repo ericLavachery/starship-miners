@@ -73,7 +73,7 @@ function combat() {
     // riposte?
     let riposte = false;
     let initiative = true;
-    if (distance <= 3 && targetWeap.cost <= 6 && targetWeap.range >= distance) {
+    if (targetWeap.range >= distance) {
         riposte = true;
         let aspeed = calcSpeed(selectedBat,selectedWeap,targetWeap,distance,true);
         let dspeed = calcSpeed(targetBat,targetWeap,selectedWeap,distance,false);

@@ -112,9 +112,12 @@ function eggSpawn(bat) {
         let spawnChance = Math.round(eggTurn*20*bat.squadsLeft/6*Math.sqrt(playerInfos.mapDiff)/2*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
         console.log('spawnChance='+spawnChance);
         if (rand.rand(1,100) <= spawnChance) {
-            let maxSpawn = eggTurn-11+bat.squadsLeft;
+            let maxSpawn = eggTurn-11+bat.squadsLeft+Math.floor(Math.sqrt(playerInfos.mapDiff));
             if (maxSpawn < 1) {
                 maxSpawn = 1;
+            }
+            if (maxSpawn > 8) {
+                maxSpawn = 8;
             }
             console.log('maxSpawn='+maxSpawn);
             let spawnNum = 1;
