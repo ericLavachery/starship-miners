@@ -19,55 +19,71 @@ app.get('/', function (req, res) {
 });
 
 let unitTypes;
-fs.readFile('./data/buildings.json', 'utf8', function (err, data) {
-    if (err) throw err;
-    try {
-        unitTypes = JSON.parse(data);
-        // console.log(unitTypes);
-    } catch (e) {
-        console.error( e );
-    }
-});
-fs.readFile('./data/turrets.json', 'utf8', function (err, data) {
-    if (err) throw err;
-    try {
-        let turrets = JSON.parse(data);
-        unitTypes = unitTypes.concat(turrets);
-        // console.log(unitTypes);
-    } catch (e) {
-        console.error( e );
-    }
-});
-fs.readFile('./data/civilianUnits.json', 'utf8', function (err, data) {
-    if (err) throw err;
-    try {
-        let civilianUnits = JSON.parse(data);
-        unitTypes = unitTypes.concat(civilianUnits);
-        // console.log(unitTypes);
-    } catch (e) {
-        console.error( e );
-    }
-});
-fs.readFile('./data/infantryUnits.json', 'utf8', function (err, data) {
-    if (err) throw err;
-    try {
-        let infantryUnits = JSON.parse(data);
-        unitTypes = unitTypes.concat(infantryUnits);
-        // console.log(unitTypes);
-    } catch (e) {
-        console.error( e );
-    }
-});
-fs.readFile('./data/motorisedUnits.json', 'utf8', function (err, data) {
-    if (err) throw err;
-    try {
-        let motorisedUnits = JSON.parse(data);
-        unitTypes = unitTypes.concat(motorisedUnits);
-        // console.log(unitTypes);
-    } catch (e) {
-        console.error( e );
-    }
-});
+loadUnitTypes();
+
+function loadUnitTypes() {
+    fs.readFile('./data/buildings.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        try {
+            unitTypes = JSON.parse(data);
+            loadTurrets();
+            loadCivilianUnits();
+            loadInfantryUnits();
+            loadMotorisedUnits();
+            // console.log(unitTypes);
+        } catch (e) {
+            console.error( e );
+        }
+    });
+};
+function loadTurrets() {
+    fs.readFile('./data/turrets.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        try {
+            let turrets = JSON.parse(data);
+            unitTypes = unitTypes.concat(turrets);
+            // console.log(unitTypes);
+        } catch (e) {
+            console.error( e );
+        }
+    });
+};
+function loadCivilianUnits() {
+    fs.readFile('./data/civilianUnits.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        try {
+            let civilianUnits = JSON.parse(data);
+            unitTypes = unitTypes.concat(civilianUnits);
+            // console.log(unitTypes);
+        } catch (e) {
+            console.error( e );
+        }
+    });
+};
+function loadInfantryUnits() {
+    fs.readFile('./data/infantryUnits.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        try {
+            let infantryUnits = JSON.parse(data);
+            unitTypes = unitTypes.concat(infantryUnits);
+            // console.log(unitTypes);
+        } catch (e) {
+            console.error( e );
+        }
+    });
+};
+function loadMotorisedUnits() {
+    fs.readFile('./data/motorisedUnits.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        try {
+            let motorisedUnits = JSON.parse(data);
+            unitTypes = unitTypes.concat(motorisedUnits);
+            // console.log(unitTypes);
+        } catch (e) {
+            console.error( e );
+        }
+    });
+};
 var unitDV;
 fs.readFile('./data/defaultUnitValues.json', 'utf8', function (err, data) {
     if (err) throw err;

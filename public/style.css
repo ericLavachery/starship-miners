@@ -112,6 +112,9 @@ h4 {
     margin: 0 0 0 4px;
     /* border-radius: 9px; */
 }
+#miniMapCol {
+    display: none;
+}
 .army {
     font-weight: bold;
     font-size: 15px;
