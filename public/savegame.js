@@ -1,8 +1,8 @@
 function saveBataillons() {
-    socket.emit('save-bataillons', bataillons);
+    socket.emit('save-bataillons',bataillons);
 };
 function saveAliens() {
-    socket.emit('save-aliens', aliens);
+    socket.emit('save-aliens',aliens);
 };
 function savePlayerInfos() {
     playerInfos.numHTiles = numHTiles;
@@ -10,7 +10,7 @@ function savePlayerInfos() {
     socket.emit('save-playerInfos', playerInfos);
 };
 function saveMap() {
-    socket.emit('save-map', zone);
+    socket.emit('save-map',zone);
     commandes();
 };
 function saveAllBats() {

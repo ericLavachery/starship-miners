@@ -52,9 +52,17 @@ function redrawTile(tileId,drawSelectedBat) {
 
 function showRes(tileId) {
     if (zone[tileId].rq >= 1) {
-        return '<div class="mapInfos"><i class="fas fa-atom"></i></div>';
+        if (zone[tileId].tileName !== undefined && zone[tileId].tileName != '') {
+            return '<div class="mapInfos"><i class="fas fa-map-marker-alt"></i><i class="fas fa-atom"></i></div>';
+        } else {
+            return '<div class="mapInfos"><i class="fas fa-atom"></i></div>';
+        }
     } else {
-        return '';
+        if (zone[tileId].tileName !== undefined && zone[tileId].tileName != '') {
+            return '<div class="mapInfos"><i class="fas fa-map-marker-alt"></i></div>';
+        } else {
+            return '';
+        }
     }
 };
 

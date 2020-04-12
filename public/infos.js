@@ -5,6 +5,10 @@ function showTileInfos(tileId) {
     let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
     let terrain = terrainTypes[terrainIndex];
     $('#tileInfos').append('<span class="blockTitle"><h3>'+terrain.fullName+'</h3></span>');
+    // NOM
+    if (tile.tileName !== undefined && tile.tileName !== null && tile.tileName != '') {
+        $('#tileInfos').append('<span class="paramIcon"><i class="fas fa-map-signs"></i></span><span class="fullLine or"><b>'+tile.tileName+'</b></span><br>');
+    }
     // Move Cost
     $('#tileInfos').append('<span class="paramName">Coûts de déplacement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">+'+terrain.mc+'</span><br>');
     // Cover
@@ -32,6 +36,23 @@ function showTileInfos(tileId) {
     // Coordonnées
     $('#tileInfos').append('<span class="paramName">Coordonnées</span><span class="paramIcon"><i class="fas fa-map-marker-alt"></i></span><span class="paramValue">'+tile.x+'&lrhar;'+tile.y+'</span><br>');
     $('#tileInfos').append('<span class="paramName">Id</span><span class="paramIcon"></span><span class="paramValue">#'+tile.id+'</span><br>');
+    // RENOMMER
+    $('#tileInfos').append('<span class="blockTitle"><h4><button type="button" title="Nommer cet emplacement" class="boutonGris iconButtons" onclick="renameTile('+tileId+')"><i class="fas fa-map-signs"></i></button>&nbsp; Mettre une pancarte</h4></span>');
+};
+
+function renameTile(tileId) {
+    let newName = prompt('Donnez un nom à cet emplacement :');
+    if (newName != null) {
+        if (newName.length <= 24) {
+            let tileIndex = zone.findIndex((obj => obj.id == tileId));
+            zone[tileIndex].tileName = newName;
+            saveMap();
+            showMap(zone,false);
+            showTileInfos(tileId);
+        } else {
+            // message d'erreur
+        }
+    }
 };
 
 function showBatInfos(bat) {

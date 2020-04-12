@@ -120,6 +120,14 @@ h4 {
     font-size: 15px;
     color: #71695f;
 }
+.fullLine {
+    display: inline-block;
+    /* width: 170px; */
+    /* text-align: right; */
+    margin-right: 8px;
+    min-height: 21px;
+    /* font-weight: bold; */
+}
 .paramName {
     display: inline-block;
     width: 170px;
@@ -167,7 +175,7 @@ h4 {
     margin-top: -3px;
 }
 .mapInfos {
-    font-size: 13px;
+    font-size: 14px;
     color: #ffffff;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #404040;
