@@ -16,10 +16,10 @@ function commandes() {
         $('#commandz').append('<button type="button" title="Passer au tour suivant" class="boutonMauve iconButtons" onclick="nextTurn()"><i class="fas fa-spider"></i></button>');
         $('#commandz').append('<button type="button" title="" class="boutonGris iconButtons" onclick="findEgg()">'+aliens.length+'</button>');
 
-        $('#commandz').append('<br>');
+        $('#commandz').append('<hr>');
         $('#commandz').append('<button type="button" title="Générer une nouvelle carte" class="boutonGris iconButtons"><i class="fas fa-map" onclick="generateNewMap()"></i></button>');
         $('#commandz').append('<button type="button" title="Sauvegarder la carte" class="boutonGris iconButtons" onclick="saveMap()"><i class="fas fa-save"></i></button>');
-        $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les aliens)" class="boutonGris iconButtons" onclick="mapReset()"><i class="fas fa-power-off"></i></button>');
+        $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les aliens)" class="boutonRouge iconButtons" onclick="mapReset()"><i class="fas fa-power-off"></i></button>');
 
         $('#commandz').append('<br>');
         $('#commandz').append('<button type="button" title="Constriche" class="boutonGris iconButtons" onclick="bfconst()"><i class="fa fa-hammer"></i></button>');

@@ -179,10 +179,14 @@ h4 {
     color: #ffffff;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #404040;
-    text-align: left;
+    text-align: right;
     position: absolute;
-    margin-left: 56px;
+    width: 67px;
+    margin-right: -3px;
     margin-top: -3px;
+}
+.inficon {
+    margin-left: 2px;
 }
 .pUnits {
     background-color: rgba(255, 255, 255, 0.3);

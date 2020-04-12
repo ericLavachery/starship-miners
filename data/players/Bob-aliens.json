@@ -1,1 +1,1 @@
-[]
+[{"id":1,"type":"Oeuf","typeId":6,"team":"aliens","creaTurn":106,"loc":"zone","locId":0,"tileId":3127,"oldTileId":3127,"squadsLeft":6,"damage":0,"apLeft":8,"oldapLeft":8,"salvoLeft":0,"ammo":"none","ammo2":"none","vet":0,"xp":0,"range":0,"army":0,"tags":[]},{"id":2,"type":"Bugs","typeId":0,"team":"aliens","creaTurn":106,"loc":"zone","locId":0,"tileId":3013,"oldTileId":3188,"squadsLeft":6,"damage":0,"apLeft":-3,"oldapLeft":14,"salvoLeft":1,"ammo":"none","ammo2":"none","vet":0,"xp":0,"range":0,"army":0,"tags":[]}]

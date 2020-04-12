@@ -41,25 +41,31 @@ function showMap(wmap,justMoved) {
 
 function redrawTile(tileId,drawSelectedBat) {
     $('#b'+tileId).empty();
+    let batHere = false;
     bataillons.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
             if (drawSelectedBat || bat.id != selectedBat.id) {
                 showBataillon(bat);
+                batHere = true;
             }
         }
     });
+    if (!batHere) {
+        let resHere = showRes(tileId);
+        $('#b'+tileId).append(resHere);
+    }
 };
 
 function showRes(tileId) {
     if (zone[tileId].rq >= 1) {
         if (zone[tileId].tileName !== undefined && zone[tileId].tileName != '') {
-            return '<div class="mapInfos"><i class="fas fa-map-marker-alt"></i><i class="fas fa-atom"></i></div>';
+            return '<div class="mapInfos"><i class="fas fa-map-marker-alt inficon"></i><i class="fas fa-atom inficon"></i></div>';
         } else {
-            return '<div class="mapInfos"><i class="fas fa-atom"></i></div>';
+            return '<div class="mapInfos"><i class="fas fa-atom inficon"></i></div>';
         }
     } else {
         if (zone[tileId].tileName !== undefined && zone[tileId].tileName != '') {
-            return '<div class="mapInfos"><i class="fas fa-map-marker-alt"></i></div>';
+            return '<div class="mapInfos"><i class="fas fa-map-marker-alt inficon"></i></div>';
         } else {
             return '';
         }
