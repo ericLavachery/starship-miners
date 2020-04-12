@@ -100,7 +100,7 @@ function spawns() {
 
 function eggSpawn(bat) {
     console.log('SPAWN');
-    let eggTurn = playerInfos.mapTurn-bat.creaTurn;
+    let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     console.log('eggTurn='+eggTurn);
     if (eggTurn >= 15+playerInfos.mapDiff) {
         let batIndex = aliens.findIndex((obj => obj.id == bat.id));
