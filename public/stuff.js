@@ -1,4 +1,24 @@
 // STUFF
+function freeIds(side,db) {
+    let idz = [];
+    let i = 1;
+    while (i <= 150) {
+        idz.push(i);
+        if (i > 300) {break;}
+        i++
+    }
+    db.forEach(function(unit) {
+        if (idz.includes(unit.id)) {
+            idzIndex = idz.indexOf(unit.id);
+            idz.splice(idzIndex,1);
+        } else {
+            console.log('2x id '+unit.id);
+        }
+    });
+    console.log(side+' idz');
+    console.log(idz);
+};
+
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 };

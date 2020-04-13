@@ -56,10 +56,12 @@ socket.on('unitTypes-Load', function(ut) {
     });
     bareUnitTypes = [];
     // console.log(unitTypes);
+    freeIds('player',unitTypes);
 });
 socket.on('alienUnits-Load', function(au) {
     alienUnits = au;
     // console.log(alienUnits);
+    freeIds('aliens',alienUnits);
 });
 socket.on('aliens-Load', function(ab) {
     aliens = ab;

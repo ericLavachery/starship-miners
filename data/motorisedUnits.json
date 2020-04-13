@@ -110,7 +110,7 @@
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-multi",
             "ammo":["standard"]
         },
-        "weapon":{},
+        "weapon2":{},
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":1,

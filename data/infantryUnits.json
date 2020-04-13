@@ -33,7 +33,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
-            "ammo":["x1"]
+            "ammo":["x4"]
         },
         "moveCost":3,
         "maxFlood":3,

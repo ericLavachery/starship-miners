@@ -262,7 +262,7 @@ function createBatList() {
     batList = _.sortBy(_.sortBy(_.sortBy(zoneBatList,'typeId'),'range'),'army');
     batList.reverse();
     commandes();
-    console.log(batList);
+    // console.log(batList);
 };
 
 function nextBat(removeActiveBat) {
@@ -290,7 +290,7 @@ function nextBat(removeActiveBat) {
     } else {
         batUnselect();
     }
-    console.log(batList);
+    // console.log(batList);
 };
 
 function alienSounds() {
