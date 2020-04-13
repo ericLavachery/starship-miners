@@ -2,8 +2,8 @@
     {
         "id":50,
         "name":"Trackers",
-        "pic":"Trackers.png",
-        "cat":"vehicle",
+        "pic":"otoflam",
+        "cat":"vehicles",
         "squads":6,
         "squadSize":5,
         "crew":6,
@@ -14,7 +14,7 @@
         "ap":18,
         "maxSalvo":1,
         "weapon":{
-            "name":"Fusild'assault",
+            "name":"Fusil d'assault",
             "cost":3,
             "range":1,
             "rof":32,
@@ -25,7 +25,7 @@
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
         "weapon2":{
-            "name":"Lanceflammes",
+            "name":"Lance-flammes",
             "cost":6,
             "range":1,
             "rof":8,
@@ -40,14 +40,14 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":2,
-        "skills":["fortif","cible","gueria"],
+        "skills":["fortif","cible","guerrilla"],
         "fuzz":0
     },
     {
         "id":51,
-        "name":"TankInferno",
-        "pic":"Tankinferno.png",
-        "cat":"vehicle",
+        "name":"Tank Inferno",
+        "pic":"tanklight",
+        "cat":"vehicles",
         "squads":6,
         "squadSize":5,
         "crew":3,
@@ -58,7 +58,7 @@
         "ap":12,
         "maxSalvo":1,
         "weapon":{
-            "name":"Canoncourt",
+            "name":"Canon court",
             "cost":7,
             "range":2,
             "rof":5,
@@ -70,7 +70,7 @@
 
         },
         "weapon2":{
-            "name":"Lanceflammeslourd",
+            "name":"Lance-flammes lourd",
             "cost":6,
             "range":1,
             "rof":5,
@@ -85,14 +85,14 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","Brochette"],
+        "skills":["fortif","cible","brochette"],
         "fuzz":0
     },
     {
         "id":52,
-        "name":"TankPitbull",
-        "pic":"Tankpitbull.png",
-        "cat":"vehicle",
+        "name":"Tank Pitbull",
+        "pic":"moisso",
+        "cat":"vehicles",
         "squads":6,
         "squadSize":5,
         "crew":3,
@@ -103,7 +103,7 @@
         "ap":12,
         "maxSalvo":1,
         "weapon":{
-            "name":"Canoncourt",
+            "name":"Canon court",
             "cost":7,
             "range":2,
             "rof":5,
@@ -130,14 +130,14 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","Brochette"],
+        "skills":["fortif","cible","brochette"],
         "fuzz":0
     },
     {
         "id":53,
-        "name":"TankAvalanche",
-        "pic":"Tankavalanche.png",
-        "cat":"vehicle",
+        "name":"Tank Avalanche",
+        "pic":"misbuggy",
+        "cat":"vehicles",
         "squads":6,
         "squadSize":5,
         "crew":3,
@@ -159,7 +159,7 @@
             "ammo":["standard","feu","explosive"]
         },
         "weapon2":{
-            "name":"Missillesquash",
+            "name":"Missille squash",
             "cost":6,
             "range":6,
             "rof":5,
@@ -174,14 +174,14 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","Brochette"],
+        "skills":["fortif","cible"],
         "fuzz":0
     },
     {
         "id":54,
         "name":"Fatass",
-        "pic":"Tankfatass.png",
-        "cat":"vehicle",
+        "pic":"",
+        "cat":"vehicles",
         "squads":3,
         "squadSize":6,
         "crew":5,
@@ -204,7 +204,7 @@
 
         },
         "weapon2":{
-            "name":"obusier",
+            "name":"Obusier",
             "cost":6,
             "range":3,
             "rof":6,
@@ -225,7 +225,7 @@
         "id":55,
         "name":"Rave",
         "pic":"rave.png",
-        "cat":"véhicle",
+        "cat":"vehicles",
         "squads":3,
         "squadSize":3,
         "crew":3,
@@ -247,7 +247,7 @@
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
         "weapon2":{
-            "name":"Guidagelaser",
+            "name":"Guidage laser",
             "cost":4,
             "range":2,
             "rof":3,
@@ -279,7 +279,7 @@
         "ap":20,
         "maxSalvo":2,
         "weapon":{
-            "name":"FusilMitrailleur",
+            "name":"Fusil Mitrailleur",
             "cost":3,
             "range":1,
             "rof":9,
@@ -311,9 +311,9 @@
     },
     {
         "id":57,
-        "name":"DJBoss",
+        "name":"DJ Boss",
         "pic":"DJBoss.png",
-        "cat":"vehicle",
+        "cat":"vehicles",
         "squads":3,
         "squadSize":3,
         "crew":4,
@@ -324,7 +324,7 @@
         "ap":12,
         "maxSalvo":2,
         "weapon":{
-            "name":"FusilMitrailleur",
+            "name":"Fusil Mitrailleur",
             "cost":3,
             "range":1,
             "rof":9,
@@ -335,7 +335,7 @@
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
         "weapon2":{
-            "name":"Missillesquash",
+            "name":"Missille squash",
             "cost":6,
             "range":6,
             "rof":3,
@@ -354,9 +354,9 @@
     },
     {
         "id":58,
-        "name":"TheEye's",
+        "name":"The Eye's",
         "pic":"theyes.png",
-        "cat":"infantry",
+        "cat":"vehicles",
         "squads":3,
         "squadSize":6,
         "crew":3,
@@ -367,7 +367,7 @@
         "ap":24,
         "maxSalvo":1,
         "weapon":{
-            "name":"FusilMitrailleur",
+            "name":"Fusil Mitrailleur",
             "cost":3,
             "range":1,
             "rof":18,
@@ -393,14 +393,14 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","gueria","camo","detection"],
+        "skills":["fortif","cible","guerrilla","camo","detection"],
         "fuzz":0
     },
     {
         "id":59,
         "name":"Cavalerie",
         "pic":"Cavalerie.png",
-        "cat":"vehicle",
+        "cat":"vehicles",
         "squads":6,
         "squadSize":1,
         "crew":2,
@@ -411,7 +411,7 @@
         "ap":18,
         "maxSalvo":1,
         "weapon":{
-            "name":"Fusild'assaut",
+            "name":"Fusil d'assaut",
             "cost":3,
             "range":1,
             "rof":4,
@@ -445,7 +445,7 @@
         "id":60,
         "name":"Taxi",
         "pic":"Taxi.png",
-        "cat":"vehicle",
+        "cat":"vehicles",
         "squads":6,
         "squadSize":1,
         "crew":2,
@@ -490,7 +490,7 @@
         "id":61,
         "name":"Pusher",
         "pic":"Pusher.png",
-        "cat":"vehicle",
+        "cat":"vehicles",
         "squads":3,
         "squadSize":3,
         "crew":2,
@@ -501,7 +501,7 @@
         "ap":18,
         "maxSalvo":1,
         "weapon":{
-            "name":"Pistoletmitrailleur",
+            "name":"Pistolet mitrailleur",
             "cost":3,
             "range":1,
             "rof":4,
@@ -527,14 +527,14 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","mekano","constructeur"],
+        "skills":["fortif","cible","mecano","constructeur"],
         "fuzz":0
     },
     {
         "id":62,
         "name":"Hook",
         "pic":"Hook.png",
-        "cat":"vehicle",
+        "cat":"vehicles",
         "squads":3,
         "squadSize":3,
         "crew":3,
@@ -557,7 +557,7 @@
 
         },
         "weapon2":{
-            "name":"Canoncourt",
+            "name":"Canon court",
             "cost":7,
             "range":2,
             "rof":6,
@@ -571,7 +571,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":2,
-        "skills":["fortif","cible","mekano",],
+        "skills":["fortif","cible","mecano"],
         "fuzz":0
     },
     {
@@ -589,7 +589,7 @@
         "ap":18,
         "maxSalvo":1,
         "weapon":{
-            "name":"Lanceflammeslourd",
+            "name":"Lance-flammes lourd",
             "cost":6,
             "range":1,
             "rof":3,
@@ -616,14 +616,14 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","mekano","gueria"],
+        "skills":["fortif","cible","mecano","guerrilla"],
         "fuzz":0
     },
     {
         "id":64,
-        "name":"Thebox",
+        "name":"The box",
         "pic":"",
-        "cat":"vehicle",
+        "cat":"vehicles",
         "squads":6,
         "squadSize":1,
         "crew":3,
@@ -660,7 +660,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","transport","Medic"],
+        "skills":["fortif","cible","transport","medic"],
         "fuzz":0
     },
     {
@@ -690,7 +690,7 @@
 
         },
         "weapon2":{
-            "name":"obusier",
+            "name":"Obusier",
             "cost":6,
             "range":3,
             "rof":3,
@@ -705,7 +705,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":2,
-        "skills":["fortif","cible","Medic"],
+        "skills":["fortif","cible","medic"],
         "fuzz":0
     }
 ]

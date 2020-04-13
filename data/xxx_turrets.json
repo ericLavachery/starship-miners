@@ -1,51 +1,6 @@
 [
     {
         "id":999,
-        "name":"Miradors",
-        "pic":"helmetp",
-        "cat":"infantry",
-        "squads":1,
-        "squadSize":3,
-        "crew":2,
-        "hp":50,
-        "armor":3,
-        "size":25,
-        "stealth":0,
-        "ap":12,
-        "maxSalvo":1,
-        "weapon":{
-            "name":"Mitrailleuse",
-            "cost":6,
-            "range":3,
-            "rof":12,
-            "accuracy":14,
-            "power":8,
-            "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
-
-        },
-        "weapon2":{
-            "name":"RPG",
-            "cost":6,
-            "range":2,
-            "rof":4,
-            "accuracy":12,
-            "power":25,
-            "aoe":"unit",
-            "sound":"249298__klangfabrik__rpg-launcher-three-shots",
-            "ammo":["perfo","tungsten"]
-
-        },
-        "moveCost":99,
-        "maxFlood":-1,
-        "maxScarp":-1,
-        "maxVeg":-1,
-        "skills":[],
-        "fuzz":-1
-    },
-    {
-        "id":999,
         "name":"Barbelés",
         "pic":"",
         "cat":"Bld",

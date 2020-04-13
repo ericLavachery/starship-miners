@@ -10,7 +10,7 @@
         "hp":65,
         "armor":9,
         "size":18,
-        "stealth":3,
+        "stealth":2,
         "ap":15,
         "maxSalvo":1,
         "weapon":{
@@ -72,6 +72,7 @@
             "name":"Canon",
             "cost":5,
             "range":3,
+            "noMelee": true,
             "rof":2,
             "accuracy":12,
             "power":32,
