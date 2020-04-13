@@ -349,6 +349,9 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.apdamage = ammo.apdamage;
     thisWeapon.armors = thisWeapon.armors*ammo.armors;
     thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
+    if (ammo.aoe != '') {
+        thisWeapon.aoe = ammo.aoe;
+    }
     // skills
     // ELEVATION
     if (wn == 'w2' && bat.team == 'player') {

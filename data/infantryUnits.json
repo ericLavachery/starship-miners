@@ -61,7 +61,7 @@
             "cost":4,
             "range":1,
             "rof":10,
-            "accuracy":24,
+            "accuracy":25,
             "power":12,
             "aoe":"unit",
             "sound":"PM_FSSF2_WEAPONS_D1_SHOT_323c",
@@ -229,7 +229,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["perceur","ppoison"]
+            "ammo":["standard","poison"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -355,7 +355,7 @@
             "range":0,
             "rof":10,
             "accuracy":18,
-            "power":16,
+            "power":20,
             "aoe":"squad",
             "sound":"bottlerocket_Impact_Boom_Distorted_10b",
             "ammo":["autodestruction"]
@@ -444,6 +444,49 @@
         "fuzz":0
     },
     {
+        "id":20,
+        "name":"Barmans",
+        "pic":"barmans",
+        "cat":"infantry",
+        "squads":6,
+        "squadSize":8,
+        "crew":1,
+        "hp":5,
+        "armor":1,
+        "size":3,
+        "stealth":7,
+        "ap":14,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Pistolet",
+            "cost":2,
+            "range":1,
+            "rof":8,
+            "accuracy":17,
+            "power":4,
+            "aoe":"unit",
+            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+        },
+        "weapon2":{
+            "name":"Molotov",
+            "cost":6,
+            "range":0,
+            "rof":8,
+            "accuracy":18,
+            "power":8,
+            "aoe":"squad",
+            "sound":"audio_hero_MolotovCocktailThr_PE280101_381b",
+            "ammo":["feu"]
+        },
+        "moveCost":3,
+        "maxFlood":3,
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["fortif","cible","inflammable"],
+        "fuzz":0
+    },
+    {
         "id":19,
         "name":"Douilles",
         "pic":"douilles",
@@ -469,38 +512,6 @@
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
         "weapon2":{
-            "name":"Lame",
-            "cost":1,
-            "range":0,
-            "rof":6,
-            "accuracy":17,
-            "power":4,
-            "aoe":"unit",
-            "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","poison"]
-        },
-        "moveCost":4,
-        "maxFlood":2,
-        "maxScarp":3,
-        "maxVeg":3,
-        "skills":["fortif","cible"],
-        "fuzz":0
-    },
-    {
-        "id":20,
-        "name":"Barmans",
-        "pic":"barmans",
-        "cat":"infantry",
-        "squads":6,
-        "squadSize":8,
-        "crew":1,
-        "hp":5,
-        "armor":1,
-        "size":3,
-        "stealth":7,
-        "ap":14,
-        "maxSalvo":1,
-        "weapon":{
             "name":"Pistolet",
             "cost":2,
             "range":1,
@@ -511,19 +522,8 @@
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
-        "weapon2":{
-            "name":"Molotov",
-            "cost":6,
-            "range":0,
-            "rof":6,
-            "accuracy":18,
-            "power":8,
-            "aoe":"squad",
-            "sound":"audio_hero_MolotovCocktailThr_PE280101_381b",
-            "ammo":["feu"]
-        },
-        "moveCost":3,
-        "maxFlood":3,
+        "moveCost":4,
+        "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible"],
@@ -564,7 +564,7 @@
             "power":12,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
-            "ammo":["standard","feu","explosive"]
+            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"]
         },
         "moveCost":4,
         "maxFlood":2,
@@ -596,18 +596,18 @@
             "power":7,
             "aoe":"unit",
             "sound":"warfare_gunshots_x2_rifle_exterior",
-            "ammo":["standard"]
+            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
         "weapon2":{
             "name":"RPG",
             "cost":6,
             "range":1,
             "rof":8,
-            "accuracy":15,
-            "power":25,
+            "accuracy":14,
+            "power":22,
             "aoe":"unit",
             "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
-            "ammo":["perfo","tungsten"]
+            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-homing"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -656,7 +656,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible"],
+        "skills":["fortif","cible","inflammable"],
         "fuzz":0
     }
 ]

@@ -17,7 +17,7 @@
             "name":"Mitrailleuse",
             "cost":4,
             "range":1,
-            "rof":18,
+            "rof":24,
             "accuracy":18,
             "power":8,
             "aoe":"unit",
@@ -28,12 +28,13 @@
             "name":"Canon",
             "cost":4,
             "range":2,
+            "noMelee": true,
             "rof":6,
             "accuracy":14,
-            "power":16,
+            "power":18,
             "aoe":"squad",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
-            "ammo":["standard"]
+            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"]
         },
         "moveCost":2,
         "maxFlood":0,
@@ -60,7 +61,7 @@
             "name":"Mitrailleuse",
             "cost":4,
             "range":1,
-            "rof":16,
+            "rof":20,
             "accuracy":17,
             "power":8,
             "aoe":"unit",
@@ -72,11 +73,11 @@
             "cost":5,
             "range":3,
             "rof":2,
-            "accuracy":13,
-            "power":28,
+            "accuracy":12,
+            "power":32,
             "aoe":"squad",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
-            "ammo":["standard"]
+            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"]
         },
         "moveCost":2,
         "maxFlood":0,
@@ -87,7 +88,7 @@
     },
     {
         "id":11,
-        "name":"Phat",
+        "name":"Bull",
         "pic":"multitank",
         "cat":"vehicles",
         "squads":3,
@@ -104,18 +105,18 @@
             "cost":5,
             "range":1,
             "rof":8,
-            "accuracy":15,
-            "power":22,
-            "aoe":"unit",
+            "accuracy":16,
+            "power":28,
+            "aoe":"squad",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-multi",
-            "ammo":["standard"]
+            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"]
         },
         "weapon2":{},
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["cible","brochette"],
+        "skills":["cible"],
         "fuzz":0
     }
 ]

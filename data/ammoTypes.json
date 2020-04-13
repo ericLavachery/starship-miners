@@ -6,7 +6,8 @@
         "power": 0,
         "armors": 1,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "standard",
@@ -15,7 +16,8 @@
         "power": 0,
         "armors": 1,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "x4",
@@ -24,7 +26,8 @@
         "power": 0,
         "armors": 1,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "x1",
@@ -33,7 +36,8 @@
         "power": 0,
         "armors": 1,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "perfo",
@@ -42,7 +46,8 @@
         "power": -2,
         "armors": 0.5,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "tungsten",
@@ -51,7 +56,8 @@
         "power": 0,
         "armors": 0.5,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "uranium",
@@ -60,7 +66,8 @@
         "power": 1,
         "armors": 0.4,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "teflon",
@@ -69,7 +76,8 @@
         "power": 0,
         "armors": 0.75,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "titanium",
@@ -78,7 +86,8 @@
         "power": -1,
         "armors": 1,
         "accuracy": 1.25,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "hollow",
@@ -87,7 +96,8 @@
         "power": 3,
         "armors": 2,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "explosive",
@@ -96,7 +106,8 @@
         "power": 5,
         "armors": 0.85,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "plasma",
@@ -105,7 +116,8 @@
         "power": 0,
         "armors": 0.25,
         "accuracy": 1,
-        "apdamage": 0.05
+        "apdamage": 0.05,
+        "aoe": ""
     },
     {
         "name": "web",
@@ -114,7 +126,8 @@
         "power": 0,
         "armors": 0.25,
         "accuracy": 1,
-        "apdamage": 0.08
+        "apdamage": 0.08,
+        "aoe": ""
     },
     {
         "name": "feu",
@@ -123,7 +136,8 @@
         "power": 0,
         "armors": 1.5,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "creuseur",
@@ -132,7 +146,8 @@
         "power": 0,
         "armors": 0.25,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "glair",
@@ -141,7 +156,8 @@
         "power": 0,
         "armors": 2,
         "accuracy": 1,
-        "apdamage": 0.1
+        "apdamage": 0.1,
+        "aoe": ""
     },
     {
         "name": "venin",
@@ -150,7 +166,8 @@
         "power": 0,
         "armors": 0,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "glue",
@@ -159,7 +176,8 @@
         "power": 0,
         "armors": 0,
         "accuracy": 1,
-        "apdamage": 1
+        "apdamage": 1,
+        "aoe": ""
     },
     {
         "name": "poison",
@@ -168,7 +186,8 @@
         "power": 0,
         "armors": 1,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "ppoison",
@@ -177,7 +196,8 @@
         "power": 0,
         "armors": 0.5,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "perceur",
@@ -186,7 +206,8 @@
         "power": 0,
         "armors": 0.5,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "suicide",
@@ -195,7 +216,8 @@
         "power": 0,
         "armors": 1,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
     },
     {
         "name": "autodestruction",
@@ -204,6 +226,87 @@
         "power": 0,
         "armors": 1,
         "accuracy": 1,
-        "apdamage": 0
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "obus",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.75,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "obus-tungsten",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "obus-heat",
+        "range": 0,
+        "rof": 1,
+        "power": 4,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "obus-fleche",
+        "range": 0,
+        "rof": 1,
+        "power": 2,
+        "armors": 0.25,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "obus-incendiaire",
+        "range": 0,
+        "rof": 1,
+        "power": 6,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "obus-napalm",
+        "range": 0,
+        "rof": 1,
+        "power": 6,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "bat"
+    },
+    {
+        "name": "obus-homing",
+        "range": 1,
+        "rof": 1,
+        "power": 4,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "missile-homing",
+        "range": 2,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.25,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
     }
 ]

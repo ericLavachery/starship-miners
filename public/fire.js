@@ -195,8 +195,6 @@ function attack() {
         if (i > 300) {break;}
         i++
     }
-    console.log('Damage : '+totalDamage);
-    $('#report').append('<span class="report">('+totalDamage+')<br></span>');
     // add damage! remove squads? remove bat?
     if (selectedWeap.apdamage > 0) {
         apDamage = apDamage+Math.round(totalDamage*selectedWeap.apdamage);
@@ -205,6 +203,13 @@ function attack() {
         $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
     }
     console.log('Previous Damage : '+targetBat.damage);
+    // inflammable
+    if (selectedWeap.ammo == 'feu' || selectedWeap.ammo == 'obus-incendiaire' || selectedWeap.ammo == 'obus-napalm') {
+        if (targetBatType.skills.includes('inflammable')) {
+            totalDamage = totalDamage*2;
+            console.log('inflammable!');
+        }
+    }
     // agrippeur
     if (selectedBatType.skills.includes('grip') && totalDamage >= 1 && selectedBatType.size > targetBatType.size) {
         let gripChance = (selectedBat.squadsLeft*5)-(targetBat.vet*3);
@@ -270,6 +275,8 @@ function attack() {
         console.log('Trou percé!');
         $('#report').append('<span class="report cy">Blindage troué<br></span>');
     }
+    console.log('Damage : '+totalDamage);
+    $('#report').append('<span class="report">('+totalDamage+')<br></span>');
     totalDamage = totalDamage+targetBat.damage;
     let squadHP = (targetBatType.squadSize*targetBatType.hp);
     console.log('Squad HP : '+squadHP);
@@ -387,8 +394,13 @@ function defense() {
             console.log('bonus prec berserk');
         }
     }
-    console.log('Damage : '+totalDamage);
-    $('#report').append('<span class="report">('+totalDamage+')<br></span>');
+    // inflammable
+    if (targetWeap.ammo == 'feu' || targetWeap.ammo == 'obus-incendiaire' || targetWeap.ammo == 'obus-napalm') {
+        if (selectedBatType.skills.includes('inflammable')) {
+            totalDamage = totalDamage*2;
+            console.log('inflammable!');
+        }
+    }
     // add damage! remove squads? remove bat?
     if (targetWeap.apdamage > 0) {
         apDamage = apDamage+Math.round(totalDamage*targetWeap.apdamage);
@@ -417,6 +429,8 @@ function defense() {
             }
         }
     }
+    console.log('Damage : '+totalDamage);
+    $('#report').append('<span class="report">('+totalDamage+')<br></span>');
     totalDamage = totalDamage+selectedBat.damage;
     let squadHP = (selectedBatType.squadSize*selectedBatType.hp);
     console.log('Squad HP : '+squadHP);

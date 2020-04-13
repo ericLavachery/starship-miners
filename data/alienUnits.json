@@ -232,7 +232,7 @@
     "maxFlood": -1,
     "maxScarp": -1,
     "maxVeg": -1,
-    "skills": [ "ponte" ]
+    "skills": [ "ponte","inflammable" ]
 },
 {
     "id":7,
@@ -407,7 +407,7 @@
     "maxFlood": 3,
     "maxScarp": 3,
     "maxVeg": 3,
-    "skills": [ "elevation" ]
+    "skills": [ "elevation","inflammable" ]
 },
 {
     "id":12,
@@ -477,7 +477,7 @@
     "maxFlood": 3,
     "maxScarp": 3,
     "maxVeg": 3,
-    "skills": [ "fly","capfar" ]
+    "skills": [ "fly","capfar","inflammable" ]
 },
 {
     "id":14,
@@ -617,6 +617,6 @@
     "maxFlood": -1,
     "maxScarp": -1,
     "maxVeg": -1,
-    "skills": [ "ponte" ]
+    "skills": [ "ponte","inflammable" ]
 }
 ]
