@@ -4,15 +4,15 @@
         "name":"Barbelés",
         "pic":"",
         "cat":"Bld",
-        "squads":1,
-        "squadSize":6,
+        "squads":6,
+        "squadSize":1,
         "crew":0,
         "hp":50,
         "armor":3,
         "size":12,
         "stealth":1,
-        "ap":3,
-        "maxSalvo":1,
+        "ap":0,
+        "maxSalvo":0,
         "weapon":{
             "name":"Barbelés",
             "cost":3,
@@ -25,18 +25,7 @@
             "ammo":["standard","poison","electrique"]
 
         },
-        "weapon2":{
-            "name":"RPG",
-            "cost":6,
-            "range":2,
-            "rof":4,
-            "accuracy":12,
-            "power":25,
-            "aoe":"unit",
-            "sound":"249298__klangfabrik__rpg-launcher-three-shots",
-            "ammo":["perfo","tungsten"]
-
-        },
+        "weapon2":{},
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,

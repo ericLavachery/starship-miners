@@ -198,6 +198,9 @@ function weaponsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
         }
         $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
+        if (thisWeapon.noFly) {
+            $('#unitInfos').append('<span class="paramName">Tir aérien</span><span class="paramIcon"></span><span class="paramValue">Non</span><br>');
+        }
         $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+bat.ammo+'</span><br>');
     }
     if (batUnitType.weapon2.rof >= 1) {
@@ -206,12 +209,7 @@ function weaponsInfos(bat,batUnitType) {
             noFireMelee = true;
         }
         anyTarget = anyAlienInRange(bat.tileId,thisWeapon.range);
-        let baseAmmo = 999;
-        if (thisWeapon.ammo == 'x1') {
-            baseAmmo = 1;
-        } else if (thisWeapon.ammo == 'x4') {
-            baseAmmo = 4;
-        }
+        let baseAmmo = thisWeapon.maxAmmo;
         let ammoLeft = calcAmmos(bat,baseAmmo);
         balise = 'h4';
         if (thisWeapon.name === selectedWeap.name) {
@@ -249,10 +247,13 @@ function weaponsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
         }
         $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
-        if (bat.ammo2 != 'x4' && bat.ammo2 != 'x1') {
+        if (thisWeapon.noFly) {
+            $('#unitInfos').append('<span class="paramName">Tir aérien</span><span class="paramIcon"></span><span class="paramValue">Non</span><br>');
+        }
+        if (baseAmmo == 99) {
             $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+bat.ammo2+'</span><br>');
         }
-        if (baseAmmo < 900) {
+        if (baseAmmo < 99) {
             $('#unitInfos').append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'</span><br>');
         }
     }

@@ -74,18 +74,20 @@ function combat() {
     let riposte = false;
     let initiative = true;
     if (targetWeap.range >= distance) {
-        riposte = true;
-        let aspeed = calcSpeed(selectedBat,selectedWeap,targetWeap,distance,true);
-        let dspeed = calcSpeed(targetBat,targetWeap,selectedWeap,distance,false);
-        // embuscade (initiative)
-        if (activeTurn === 'player') {
-            if (selectedBat.tags.includes('embuscade') && selectedBat.fuzz == -2) {
-                aspeed = -999;
+        if (!targetWeap.noFly || !selectedBatType.skills.includes('fly')) {
+            riposte = true;
+            let aspeed = calcSpeed(selectedBat,selectedWeap,targetWeap,distance,true);
+            let dspeed = calcSpeed(targetBat,targetWeap,selectedWeap,distance,false);
+            // embuscade (initiative)
+            if (activeTurn === 'player') {
+                if (selectedBat.tags.includes('embuscade') && selectedBat.fuzz == -2) {
+                    aspeed = -999;
+                }
             }
-        }
-        $('#report').append('<span class="report">initiative '+aspeed+' vs '+dspeed+'</span><br>');
-        if (dspeed < aspeed) {
-            initiative = false;
+            $('#report').append('<span class="report">initiative '+aspeed+' vs '+dspeed+'</span><br>');
+            if (dspeed < aspeed) {
+                initiative = false;
+            }
         }
     }
     if (riposte) {
@@ -255,13 +257,9 @@ function attack() {
         }
     }
     // munitions limitées
-    if (selectedWeap.ammo.includes('x4')) {
-        targetBat.tags.push('x4');
-    }
-    if (selectedWeap.ammo.includes('x1')) {
-        if (!selectedBat.tags.includes('x1')) {
-            selectedBat.tags.push('x1');
-        }
+    console.log('maxAmmo'+selectedWeap.maxAmmo);
+    if (selectedWeap.maxAmmo < 99) {
+        selectedBat.tags.push('ammoUsed');
     }
     // creuseur
     let catOK = false;

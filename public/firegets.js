@@ -336,6 +336,8 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.aoe = weapon.aoe;
     thisWeapon.sound = weapon.sound;
     thisWeapon.noMelee = weapon.noMelee;
+    thisWeapon.noFly = weapon.noFly;
+    thisWeapon.maxAmmo = weapon.maxAmmo;
     let myAmmo = bat.ammo;
     if (wn == 'w2') {
         myAmmo = bat.ammo2;
@@ -380,6 +382,7 @@ function weaponAdj(weapon,bat,wn) {
             }
         }
     }
+    console.log(thisWeapon);
     return thisWeapon;
 };
 
