@@ -34,7 +34,7 @@
             "power":10,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
-            "ammo":["standard"],
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire"],
             "maxAmmo": 2
         },
         "moveCost":3,
@@ -92,14 +92,14 @@
         "ap":12,
         "maxSalvo":1,
         "weapon":{
-            "name":"Pistolet automatique",
+            "name":"Pistolet mitrailleur",
             "cost":2,
             "range":1,
-            "rof":12,
-            "accuracy":16,
+            "rof":24,
+            "accuracy":15,
             "power":4,
             "aoe":"unit",
-            "sound":"john_ruok_gun_tikka_t3_battue_308_007_Swpph_Mono_Shot_Strong_Edit-multi",
+            "sound":"weapon_gun_ppsh_P_18-uzi",
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
         "weapon2":{
@@ -112,7 +112,7 @@
             "power":11,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
-            "ammo":["dynamite"],
+            "ammo":["dynamite","dynamite-na"],
             "maxAmmo": 4
         },
         "moveCost":3,

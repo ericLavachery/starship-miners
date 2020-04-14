@@ -76,7 +76,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throw",
-            "ammo":["standard","explosive","Feu"]
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -744,7 +744,7 @@
             "power":8,
             "aoe":"Squad",
             "sound":"163458__lemudcrab__grenade-launcher",
-            "ammo":["standard","explosive","feu"]
+            "ammo":["grenade","grenade-flashbang","grenade-antichar","grenade-gaz","grenade-incendiaire"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1088,7 +1088,7 @@
             "power":8,
             "aoe":"Squad",
             "sound":"163458__lemudcrab__grenade-launcher",
-            "ammo":["standard","explosive", "feu","unique"]
+            "ammo":["grenade","grenade-flashbang","grenade-antichar","grenade-gaz","grenade-incendiaire"]
         },
         "moveCost":3,
         "maxFlood":3,
