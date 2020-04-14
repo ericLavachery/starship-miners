@@ -99,7 +99,7 @@
             "power":12,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["feu"]
+            "ammo":["feu","napalm"]
         },
         "moveCost":99,
         "maxFlood":-1,

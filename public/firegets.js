@@ -10,6 +10,24 @@ function checkTargetBatType() {
         targetBatUnitIndex = localUnits.findIndex((obj => obj.id == targetBat.typeId));
         targetBatType = localUnits[targetBatUnitIndex];
     }
+    // if (targetBatType.weapon.maxAmmo === undefined) {
+    //     targetBatType.weapon.maxAmmo = 99;
+    // }
+    // if (targetBatType.weapon.noFly === undefined) {
+    //     targetBatType.weapon.noFly = false;
+    // }
+    // if (targetBatType.weapon.noMelee === undefined) {
+    //     targetBatType.weapon.noMelee = false;
+    // }
+    // if (targetBatType.weapon2.maxAmmo === undefined) {
+    //     targetBatType.weapon2.maxAmmo = 99;
+    // }
+    // if (targetBatType.weapon2.noFly === undefined) {
+    //     targetBatType.weapon2.noFly = false;
+    // }
+    // if (targetBatType.weapon2.noMelee === undefined) {
+    //     targetBatType.weapon2.noMelee = false;
+    // }
 };
 
 function isHit(accuracy,aoe,size,stealth,cover,speed) {
@@ -253,26 +271,67 @@ function calcDistance(myTileIndex,thatTileIndex) {
     }
 };
 
+function anyAlienInRange(tileId,weapon) {
+    let distance;
+    let inRange = false;
+    let batIndex;
+    let batType;
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            distance = calcDistance(tileId,bat.tileId);
+            if (distance <= weapon.range) {
+                batIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
+                batType = alienUnits[batIndex];
+                if (!weapon.noFly || !batType.skills.includes('fly')) {
+                    inRange = true;
+                }
+            }
+        }
+    });
+    return inRange;
+};
+
+function checkFlyTarget(weapon,batType) {
+    if (weapon.noFly && batType.skills.includes('fly')) {
+        return false;
+    } else {
+        return true;
+    }
+};
+
 function fireInfos(bat) {
     isMelee = false;
     cursorSwitch('.','grid-item','pointer');
     let myTileX = zone[bat.tileId].x;
     let myTileY = zone[bat.tileId].y;
+    let alien = {};
+    let alienIndex;
+    let alienType;
     zone.forEach(function(tile) {
         $("#"+tile.id).attr("title", "");
-        if (alienHere(tile.id)) {
+        alien = alienHere(tile.id);
+        if (Object.keys(alien).length >= 1) {
             if (sideBySideTiles(selectedBat.tileId,tile.id)) {
                 isMelee = true;
-                cursorSwitch('#',tile.id,'fire');
+                alienIndex = alienUnits.findIndex((obj => obj.id == alien.typeId));
+                alienType = alienUnits[alienIndex];
+                if (checkFlyTarget(selectedWeap,alienType)) {
+                    cursorSwitch('#',tile.id,'fire');
+                }
             }
         }
     });
     if (!isMelee) {
         zone.forEach(function(tile) {
             $("#"+tile.id).attr("title", "");
-            if (alienHere(tile.id)) {
+            alien = alienHere(tile.id);
+            if (Object.keys(alien).length >= 1) {
                 if (isInRange(selectedBat.tileId,tile.id)) {
-                    cursorSwitch('#',tile.id,'fire');
+                    alienIndex = alienUnits.findIndex((obj => obj.id == alien.typeId));
+                    alienType = alienUnits[alienIndex];
+                    if (checkFlyTarget(selectedWeap,alienType)) {
+                        cursorSwitch('#',tile.id,'fire');
+                    }
                 }
             }
         });
@@ -280,21 +339,22 @@ function fireInfos(bat) {
 };
 
 function alienHere(tileId) {
-    let alienBatHere = false;
+    let alienBatHere = {};
     aliens.forEach(function(alien) {
         if (alien.tileId === tileId && alien.loc === "zone") {
-            alienBatHere = true;
+            alienBatHere = alien;
         }
     });
     return alienBatHere;
 };
 
 function shotSound(weapon) {
-    // Juste un test : devrait aller chercher des sons différents selon l'arme :)
+    console.log(weapon);
     var sound = new Howl({
         src: ['/static/sounds/'+weapon.sound+'.mp3']
     });
     sound.play();
+    console.log(sound);
 };
 
 function deathSound() {
@@ -335,9 +395,21 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.armors = 1;
     thisWeapon.aoe = weapon.aoe;
     thisWeapon.sound = weapon.sound;
-    thisWeapon.noMelee = weapon.noMelee;
-    thisWeapon.noFly = weapon.noFly;
-    thisWeapon.maxAmmo = weapon.maxAmmo;
+    if (weapon.noMelee === undefined) {
+        thisWeapon.noMelee = false;
+    } else {
+        thisWeapon.noMelee = weapon.noMelee;
+    }
+    if (weapon.noFly === undefined) {
+        thisWeapon.noFly = false;
+    } else {
+        thisWeapon.noFly = weapon.noFly;
+    }
+    if (weapon.maxAmmo === undefined) {
+        thisWeapon.maxAmmo = 99;
+    } else {
+        thisWeapon.maxAmmo = weapon.maxAmmo;
+    }
     let myAmmo = bat.ammo;
     if (wn == 'w2') {
         myAmmo = bat.ammo2;
@@ -384,18 +456,4 @@ function weaponAdj(weapon,bat,wn) {
     }
     console.log(thisWeapon);
     return thisWeapon;
-};
-
-function anyAlienInRange(tileId,range) {
-    let distance;
-    let inRange = false;
-    aliens.forEach(function(bat) {
-        if (bat.loc === "zone") {
-            distance = calcDistance(tileId,bat.tileId);
-            if (distance <= range) {
-                inRange = true;
-            }
-        }
-    });
-    return inRange;
 };

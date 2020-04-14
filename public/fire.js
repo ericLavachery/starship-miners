@@ -6,15 +6,15 @@ function clickFire(tileId) {
         if (alien.tileId === tileId && alien.loc === "zone") {
             alienBatHere = true;
             targetBat = JSON.parse(JSON.stringify(alien));
-            tileTarget(targetBat);
         }
     });
     checkTargetBatType();
     if (isMelee) {
         // en mêlée : choix limité de cibles
         if (sideBySideTiles(selectedBat.tileId,tileId)) {
-            if (alienBatHere) {
+            if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType)) {
                 // console.log(targetBat);
+                tileTarget(targetBat);
                 combat();
                 selectMode();
                 showBatInfos(selectedBat);
@@ -32,8 +32,9 @@ function clickFire(tileId) {
     } else {
         // hors mêlée
         if (isInRange(selectedBat.tileId,tileId)) {
-            if (alienBatHere) {
+            if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType)) {
                 // console.log(targetBat);
+                tileTarget(targetBat);
                 combat();
                 selectMode();
                 showBatInfos(selectedBat);
@@ -53,6 +54,7 @@ function clickFire(tileId) {
 
 function combat() {
     console.log('START COMBAT');
+    let soundWeap;
     if (activeTurn == 'player') {
         attAlive = true;
         defAlive = true;
@@ -95,12 +97,14 @@ function combat() {
         if (initiative) {
             console.log('initiative');
             if (activeTurn == 'player') {blockMe(true);}
-            shotSound(selectedWeap);
+            soundWeap = selectedWeap;
+            shotSound(soundWeap);
             attack();
             if (defAlive && targetBat.apLeft > minFireAP) {
                 defense();
+                soundWeap = targetWeap;
                 setTimeout(function (){
-                    shotSound(targetWeap);
+                    shotSound(soundWeap);
                     if (activeTurn == 'player') {blockMe(false);}
                 }, 2500); // How long do you want the delay to be (in milliseconds)?
             } else {
@@ -111,12 +115,14 @@ function combat() {
         } else {
             console.log("pas d'initiative");
             if (activeTurn == 'player') {blockMe(true);}
-            shotSound(targetWeap);
+            soundWeap = targetWeap;
+            shotSound(soundWeap);
             defense();
             if (attAlive && selectedBat.apLeft > minFireAP) {
                 attack();
+                soundWeap = selectedWeap;
                 setTimeout(function (){
-                    shotSound(selectedWeap);
+                    shotSound(soundWeap);
                     if (activeTurn == 'player') {blockMe(false);}
                 }, 2500); // How long do you want the delay to be (in milliseconds)?
             } else {

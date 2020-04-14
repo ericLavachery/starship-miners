@@ -643,11 +643,11 @@
             "cost":6,
             "range":0,
             "rof":8,
-            "accuracy":20,
+            "accuracy":18,
             "power":10,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["feu"]
+            "ammo":["feu","napalm"]
         },
         "weapon2":{
             "name":"Lame",

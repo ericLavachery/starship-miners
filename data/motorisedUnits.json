@@ -153,11 +153,11 @@
             "cost":6,
             "range":0,
             "rof":6,
-            "accuracy":20,
-            "power":14,
+            "accuracy":16,
+            "power":12,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["feu"]
+            "ammo":["feu","napalm"]
 
         },
         "moveCost":2,

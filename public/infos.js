@@ -1,60 +1,3 @@
-function showTileInfos(tileId) {
-    $('#tileInfos').empty();
-    let tileIndex = zone.findIndex((obj => obj.id == tileId));
-    let tile = zone[tileIndex];
-    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
-    let terrain = terrainTypes[terrainIndex];
-    $('#tileInfos').append('<span class="blockTitle"><h3>'+terrain.fullName+'</h3></span>');
-    // NOM
-    if (tile.tileName !== undefined && tile.tileName !== null && tile.tileName != '') {
-        $('#tileInfos').append('<span class="paramIcon"><i class="fas fa-map-signs"></i></span><span class="fullLine or"><b>'+tile.tileName+'</b></span><br>');
-    }
-    // Move Cost
-    $('#tileInfos').append('<span class="paramName">Coûts de déplacement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">+'+terrain.mc+'</span><br>');
-    // Cover
-    let coverIcon = '';
-    if (terrain.cover >= 2) {
-        coverIcon = '<i class="fas fa-shield-alt"></i>'
-    }
-    $('#tileInfos').append('<span class="paramName">Couverture</span><span class="paramIcon">'+coverIcon+'</span><span class="paramValue">'+terrain.cover+'</span><br>');
-    // scarp, flood, veg
-    let sIcon = '';
-    let vIcon = '';
-    let fIcon = '';
-    if (terrain.veg >= 2) {
-        vIcon = '<i class="fab fa-pagelines"></i>'
-    }
-    if (terrain.scarp >= 1) {
-        sIcon = '<i class="fas fa-mountain"></i>'
-    }
-    if (terrain.flood >= 1) {
-        fIcon = '<i class="fas fa-water"></i>'
-    }
-    $('#tileInfos').append('<span class="paramName">Végétation</span><span class="paramIcon">'+vIcon+'</span><span class="paramValue">'+terrain.veg+'</span><br>');
-    $('#tileInfos').append('<span class="paramName">Escarpement</span><span class="paramIcon">'+sIcon+'</span><span class="paramValue">'+terrain.scarp+'</span><br>');
-    $('#tileInfos').append('<span class="paramName">Innondation</span><span class="paramIcon">'+fIcon+'</span><span class="paramValue">'+terrain.flood+'</span><br>');
-    // Coordonnées
-    $('#tileInfos').append('<span class="paramName">Coordonnées</span><span class="paramIcon"><i class="fas fa-map-marker-alt"></i></span><span class="paramValue">'+tile.x+'&lrhar;'+tile.y+'</span><br>');
-    $('#tileInfos').append('<span class="paramName">Id</span><span class="paramIcon"></span><span class="paramValue">#'+tile.id+'</span><br>');
-    // RENOMMER
-    $('#tileInfos').append('<span class="blockTitle"><h4><button type="button" title="Nommer cet emplacement" class="boutonGris iconButtons" onclick="renameTile('+tileId+')"><i class="fas fa-map-signs"></i></button>&nbsp; Mettre une pancarte</h4></span>');
-};
-
-function renameTile(tileId) {
-    let newName = prompt('Donnez un nom à cet emplacement :');
-    if (newName != null) {
-        if (newName.length <= 24) {
-            let tileIndex = zone.findIndex((obj => obj.id == tileId));
-            zone[tileIndex].tileName = newName;
-            saveMap();
-            showMap(zone,false);
-            showTileInfos(tileId);
-        } else {
-            // message d'erreur
-        }
-    }
-};
-
 function showBatInfos(bat) {
     $('#unitInfos').empty();
     let unitTypesIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
@@ -144,121 +87,6 @@ function showBatInfos(bat) {
     // "skills": []
 };
 
-function weaponsInfos(bat,batUnitType) {
-    let balise;
-    let attaques;
-    let thisWeapon = {};
-    let showW1 = true;
-    let anyTarget = false;
-    let inMelee = batInMelee(bat);
-    let noFireMelee = false;
-    if (batUnitType.weapon.rof >= 1 && batUnitType.weapon2.rof >= 1 && batUnitType.weapon.name == batUnitType.weapon2.name) {
-        showW1 = false;
-    }
-    if (batUnitType.weapon.rof >= 1 && showW1) {
-        thisWeapon = weaponAdj(batUnitType.weapon,bat,'w1');
-        if (inMelee && thisWeapon.noMelee) {
-            noFireMelee = true;
-        }
-        anyTarget = anyAlienInRange(bat.tileId,thisWeapon.range);
-        balise = 'h4';
-        if (thisWeapon.name === selectedWeap.name) {
-            balise = 'h1';
-        }
-        let w1message = 'Salves épuisées';
-        if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && anyTarget) {
-            // assez d'ap et de salve
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w1`)"><i class="ra ra-bullets rpg"></i></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
-        } else {
-            // tir impossible
-            if (noFireMelee) {
-                w1message = 'Tir impossible en mêlée';
-            } else {
-                if (!anyTarget) {
-                    w1message = 'Pas de cible';
-                } else if (bat.apLeft < thisWeapon.cost) {
-                    w1message = 'PA épuisés';
-                }
-            }
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
-        }
-        $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.cost+'</span><br>');
-        let riposte = 'Oui';
-        if (thisWeapon.cost > 6) {
-            riposte = 'Non';
-        }
-        $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">'+riposte+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');
-        attaques = thisWeapon.rof*bat.squadsLeft;
-        $('#unitInfos').append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
-        if (thisWeapon.armors != 1) {
-            $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
-        }
-        $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
-        if (thisWeapon.noFly) {
-            $('#unitInfos').append('<span class="paramName">Tir aérien</span><span class="paramIcon"></span><span class="paramValue">Non</span><br>');
-        }
-        $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+bat.ammo+'</span><br>');
-    }
-    if (batUnitType.weapon2.rof >= 1) {
-        thisWeapon = weaponAdj(batUnitType.weapon2,bat,'w2');
-        if (inMelee && thisWeapon.noMelee) {
-            noFireMelee = true;
-        }
-        anyTarget = anyAlienInRange(bat.tileId,thisWeapon.range);
-        let baseAmmo = thisWeapon.maxAmmo;
-        let ammoLeft = calcAmmos(bat,baseAmmo);
-        balise = 'h4';
-        if (thisWeapon.name === selectedWeap.name) {
-            balise = 'h1';
-        }
-        let w2message = 'Salves épuisées';
-        if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && anyTarget && ammoLeft >= 1 && !noFireMelee) {
-            // assez d'ap et de salve
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w2`)"><i class="ra ra-bullets rpg"></i></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
-        } else {
-            // tir impossible
-            if (noFireMelee) {
-                w2message = 'Tir impossible en mêlée';
-            } else {
-                if (ammoLeft < 1) {
-                    w2message = 'Munitions épuisées';
-                } else {
-                    if (!anyTarget) {
-                        w2message = 'Pas de cible';
-                    } else if (bat.apLeft < thisWeapon.cost) {
-                        w2message = 'PA épuisés';
-                    }
-                }
-            }
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
-        }
-        $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.cost+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');
-        attaques = thisWeapon.rof*bat.squadsLeft;
-        $('#unitInfos').append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
-        if (thisWeapon.armors != 1) {
-            $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
-        }
-        $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
-        if (thisWeapon.noFly) {
-            $('#unitInfos').append('<span class="paramName">Tir aérien</span><span class="paramIcon"></span><span class="paramValue">Non</span><br>');
-        }
-        if (baseAmmo == 99) {
-            $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+bat.ammo2+'</span><br>');
-        }
-        if (baseAmmo < 99) {
-            $('#unitInfos').append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'</span><br>');
-        }
-    }
-};
-
 function showEnemyBatInfos(bat) {
     $('#unitInfos').empty();
     let alienUnitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
@@ -298,4 +126,61 @@ function showEnemyBatInfos(bat) {
     // "maxScarp": 3,
     // "maxVeg": 3,
     // "skills": []
+};
+
+function showTileInfos(tileId) {
+    $('#tileInfos').empty();
+    let tileIndex = zone.findIndex((obj => obj.id == tileId));
+    let tile = zone[tileIndex];
+    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
+    let terrain = terrainTypes[terrainIndex];
+    $('#tileInfos').append('<span class="blockTitle"><h3>'+terrain.fullName+'</h3></span>');
+    // NOM
+    if (tile.tileName !== undefined && tile.tileName !== null && tile.tileName != '') {
+        $('#tileInfos').append('<span class="paramIcon"><i class="fas fa-map-signs"></i></span><span class="fullLine or"><b>'+tile.tileName+'</b></span><br>');
+    }
+    // Move Cost
+    $('#tileInfos').append('<span class="paramName">Coûts de déplacement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">+'+terrain.mc+'</span><br>');
+    // Cover
+    let coverIcon = '';
+    if (terrain.cover >= 2) {
+        coverIcon = '<i class="fas fa-shield-alt"></i>'
+    }
+    $('#tileInfos').append('<span class="paramName">Couverture</span><span class="paramIcon">'+coverIcon+'</span><span class="paramValue">'+terrain.cover+'</span><br>');
+    // scarp, flood, veg
+    let sIcon = '';
+    let vIcon = '';
+    let fIcon = '';
+    if (terrain.veg >= 2) {
+        vIcon = '<i class="fab fa-pagelines"></i>'
+    }
+    if (terrain.scarp >= 1) {
+        sIcon = '<i class="fas fa-mountain"></i>'
+    }
+    if (terrain.flood >= 1) {
+        fIcon = '<i class="fas fa-water"></i>'
+    }
+    $('#tileInfos').append('<span class="paramName">Végétation</span><span class="paramIcon">'+vIcon+'</span><span class="paramValue">'+terrain.veg+'</span><br>');
+    $('#tileInfos').append('<span class="paramName">Escarpement</span><span class="paramIcon">'+sIcon+'</span><span class="paramValue">'+terrain.scarp+'</span><br>');
+    $('#tileInfos').append('<span class="paramName">Innondation</span><span class="paramIcon">'+fIcon+'</span><span class="paramValue">'+terrain.flood+'</span><br>');
+    // Coordonnées
+    $('#tileInfos').append('<span class="paramName">Coordonnées</span><span class="paramIcon"><i class="fas fa-map-marker-alt"></i></span><span class="paramValue">'+tile.x+'&lrhar;'+tile.y+'</span><br>');
+    $('#tileInfos').append('<span class="paramName">Id</span><span class="paramIcon"></span><span class="paramValue">#'+tile.id+'</span><br>');
+    // RENOMMER
+    $('#tileInfos').append('<span class="blockTitle"><h4><button type="button" title="Nommer cet emplacement" class="boutonGris iconButtons" onclick="renameTile('+tileId+')"><i class="fas fa-map-signs"></i></button>&nbsp; Mettre une pancarte</h4></span>');
+};
+
+function renameTile(tileId) {
+    let newName = prompt('Donnez un nom à cet emplacement :');
+    if (newName != null) {
+        if (newName.length <= 24) {
+            let tileIndex = zone.findIndex((obj => obj.id == tileId));
+            zone[tileIndex].tileName = newName;
+            saveMap();
+            showMap(zone,false);
+            showTileInfos(tileId);
+        } else {
+            // message d'erreur
+        }
+    }
 };

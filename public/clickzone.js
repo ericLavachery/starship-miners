@@ -76,6 +76,24 @@ function checkSelectedBatType() {
         batTypeIndex = localUnits.findIndex((obj => obj.id == selectedBat.typeId));
         selectedBatType = JSON.parse(JSON.stringify(localUnits[batTypeIndex]));
     }
+    // if (selectedBatType.weapon.maxAmmo === undefined) {
+    //     selectedBatType.weapon.maxAmmo = 99;
+    // }
+    // if (selectedBatType.weapon.noFly === undefined) {
+    //     selectedBatType.weapon.noFly = false;
+    // }
+    // if (selectedBatType.weapon.noMelee === undefined) {
+    //     selectedBatType.weapon.noMelee = false;
+    // }
+    // if (selectedBatType.weapon2.maxAmmo === undefined) {
+    //     selectedBatType.weapon2.maxAmmo = 99;
+    // }
+    // if (selectedBatType.weapon2.noFly === undefined) {
+    //     selectedBatType.weapon2.noFly = false;
+    // }
+    // if (selectedBatType.weapon2.noMelee === undefined) {
+    //     selectedBatType.weapon2.noMelee = false;
+    // }
 };
 
 function batUnselect() {

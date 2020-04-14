@@ -227,7 +227,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["feu"]
+            "ammo":["feu","napalm"]
         },
         "weapon2":{
             "name":"Mitrailleuse",
@@ -313,7 +313,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["feu"]
+            "ammo":["feu","napalm"]
         },
         "weapon2":{
             "name":"RPG",
@@ -744,7 +744,7 @@
             "power":8,
             "aoe":"Squad",
             "sound":"163458__lemudcrab__grenade-launcher",
-            "ammo":["standard","explosive","feu","unique"]
+            "ammo":["standard","explosive","feu"]
         },
         "moveCost":3,
         "maxFlood":3,
