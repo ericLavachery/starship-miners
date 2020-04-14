@@ -1,5 +1,6 @@
 function alienTurn() {
     $('#report').empty('');
+    alienBonus();
     createAlienList();
     // show the alien NEXT button
     // -> nextAlien
@@ -865,4 +866,19 @@ function nextAlien() {
         // terminer le tour alien (et enregistrement)
         nextTurnEnd();
     }
+};
+
+function alienBonus() {
+    bugROF = 1;
+    let batIndex;
+    let batType;
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            batIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
+            batType = alienUnits[batIndex];
+            if (batType.skills.includes('bugboost')) {
+                bugROF = 1.5;
+            }
+        }
+    });
 };

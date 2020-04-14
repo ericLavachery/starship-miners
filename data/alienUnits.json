@@ -27,7 +27,7 @@
             "power": 5,
             "aoe": "unit",
             "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
-            "ammo": [ "none" ]
+            "ammo": [ "creuseur" ]
         },
         "weapon2": {},
         "moveCost": 2,
@@ -78,7 +78,7 @@
         "name": "Mante",
         "pic": "wtf",
         "cat": "aliens",
-        "kind": "bug",
+        "kind": "swarm",
         "class": "A",
         "rarity": 4,
         "squads": 3,
@@ -207,10 +207,10 @@
             "noFly": true,
             "rof": 15,
             "accuracy": 14,
-            "power": 3,
+            "power": 4,
             "aoe": "unit",
             "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
-            "ammo": [ "perceur" ]
+            "ammo": [ "creuseur" ]
         },
         "weapon2": {},
         "moveCost": 2,
@@ -273,7 +273,7 @@
             "power": 3,
             "aoe": "unit",
             "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
-            "ammo": [ "creuseur" ]
+            "ammo": [ "troueur" ]
         },
         "weapon2": {},
         "moveCost": 2,
@@ -347,7 +347,7 @@
             "power": 2,
             "aoe": "unit",
             "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
-            "ammo": [ "none" ]
+            "ammo": [ "creuseur" ]
         },
         "weapon2": {},
         "moveCost": 6,
@@ -412,7 +412,7 @@
         "ap": 18,
         "maxSalvo": 1,
         "weapon": {
-            "name": "Glue",
+            "name": "Glu",
             "cost": 1,
             "range": 5,
             "rof": 8,
@@ -437,12 +437,12 @@
         "kind": "bug",
         "class": "B",
         "rarity": 5,
-        "squads": 5,
-        "squadSize": 4,
+        "squads": 4,
+        "squadSize": 3,
         "crew": 1,
-        "hp": 60,
+        "hp": 100,
         "armor": 8,
-        "size": 15,
+        "size": 25,
         "speed": 0,
         "stealth": 1,
         "ap": 10,
@@ -451,9 +451,9 @@
             "name": "Jet d'acide",
             "cost": 4,
             "range": 2,
-            "rof": 7,
-            "accuracy": 9,
-            "power": 8,
+            "rof": 3,
+            "accuracy": 11,
+            "power": 9,
             "aoe": "squad",
             "sound": "zapsplat_cartoon_squish_squelch_wet_005_14504b",
             "ammo": [ "perceur" ]
@@ -676,7 +676,7 @@
             "power": 2,
             "aoe": "unit",
             "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
-            "ammo": [ "glue" ]
+            "ammo": [ "web" ]
         },
         "weapon2": {},
         "moveCost": 2,
@@ -713,7 +713,7 @@
             "power": 3,
             "aoe": "unit",
             "sound": "zapsplat_cartoon_squish_squelch_wet_005_14504b",
-            "ammo": [ "creuseur" ]
+            "ammo": [ "troueur" ]
         },
         "weapon2": {},
         "moveCost": 6,
@@ -823,7 +823,7 @@
             "power": 4,
             "aoe": "unit",
             "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
-            "ammo": [ "perceur" ]
+            "ammo": [ "creuseur" ]
         },
         "weapon2": {},
         "moveCost": 5,
@@ -905,5 +905,41 @@
         "maxScarp": 3,
         "maxVeg": 3,
         "skills": [ "grip","venin","tail" ]
+    },
+    {
+        "id": 25,
+        "name": "Bug Boss",
+        "pic": "bigkox",
+        "cat": "aliens",
+        "kind": "bug",
+        "class": "A",
+        "rarity": 5,
+        "squads": 5,
+        "squadSize": 2,
+        "crew": 1,
+        "hp": 215,
+        "armor": 18,
+        "size": 38,
+        "speed": 0,
+        "stealth": 0,
+        "ap": 10,
+        "maxSalvo": 1,
+        "weapon": {
+            "name": "Mandibules",
+            "cost": 4,
+            "range": 0,
+            "rof": 3,
+            "accuracy": 18,
+            "power": 26,
+            "aoe": "unit",
+            "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473c",
+            "ammo": [ "troueur" ]
+        },
+        "weapon2": {},
+        "moveCost": 2,
+        "maxFlood": 3,
+        "maxScarp": 3,
+        "maxVeg": 3,
+        "skills": [ "capbld","bugboost" ]
     }
 ]

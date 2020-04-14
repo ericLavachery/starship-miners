@@ -167,6 +167,10 @@ function attack() {
     if (selectedWeap.ammo.includes('autodestruction')) {
         shots = selectedWeap.rof*selectedBatType.squads;
     }
+    // bugROF
+    if (bugROF > 1 && selectedBatType.kind === 'bug') {
+        shots = Math.round(shots*bugROF);
+    }
     // berserk (bonus ROF)
     if (activeTurn === 'player') {
         if (selectedBatType.skills.includes('berserk') && selectedBat.damage >= 1) {
@@ -286,7 +290,7 @@ function attack() {
     if (targetBatType.cat == 'buildings' || targetBatType.cat == 'vehicles') {
         catOK = true;
     }
-    if (selectedWeap.ammo.includes('creuseur') && totalDamage >= 1 && catOK) {
+    if (selectedWeap.ammo.includes('troueur') && totalDamage >= 1 && catOK) {
         if (!targetBat.tags.includes('trou')) {
             targetBat.tags.push('trou');
         }
@@ -385,6 +389,10 @@ function defense() {
     }
     console.log('brideDef='+brideDef);
     let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);
+    // bugROF
+    if (bugROF > 1 && targetBatType.kind === 'bug') {
+        shots = Math.round(shots*bugROF);
+    }
     // console.log(shots);
     // console.log(aoeShots);
     let totalDamage = 0;

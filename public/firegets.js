@@ -67,8 +67,10 @@ function calcDamage(weapon,power,armor,defBat) {
     // powerDice is max 4x power
     let modifiedArmor = Math.round(armor*weapon.armors);
     // creuseur
-    if (weapon.ammo.includes('creuseur') && defBat.tags.includes('trou')) {
-        modifiedArmor = 0;
+    if (weapon.ammo.includes('troueur') && weapon.ammo.includes('creuseur')) {
+        if (defBat.tags.includes('trou')) {
+            modifiedArmor = 0;
+        }
     }
     let powerDiceMin = Math.round(power/2.5);
     let powerDiceMax = Math.round(power*1.6);
