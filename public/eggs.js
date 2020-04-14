@@ -90,30 +90,45 @@ function spawns() {
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type === 'Oeuf') {
-                eggSpawn(bat);
-            } else if (true) {
-                // autres pondeurs
+                eggSpawn(bat,true);
+            } else if (bat.type === 'Compost') {
+                eggSpawn(bat,false);
             }
         }
     });
 };
 
-function eggSpawn(bat) {
+function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     console.log('eggTurn='+eggTurn);
-    if (eggTurn >= 15+playerInfos.mapDiff) {
+    if (eggTurn >= 15+playerInfos.mapDiff && fromEgg) {
+        // TRANFORMATION EN COMPOST !
+        let putTile = bat.tileId;
+        // delete Egg
         let batIndex = aliens.findIndex((obj => obj.id == bat.id));
         aliens.splice(batIndex,1);
-        let resHere = showRes(bat.tileId);
-        $('#b'+bat.tileId).empty().append(resHere);
         deadAliensList.push(bat.id);
+        // put Compost
+        let unitIndex = alienUnits.findIndex((obj => obj.name == 'Compost'));
+        conselUnit = alienUnits[unitIndex];
+        conselAmmos = ['xxx','xxx'];
+        putBat(putTile);
+        // ceci est pour détruire l'oeuf :
+        // let batIndex = aliens.findIndex((obj => obj.id == bat.id));
+        // aliens.splice(batIndex,1);
+        // let resHere = showRes(bat.tileId);
+        // $('#b'+bat.tileId).empty().append(resHere);
+        // deadAliensList.push(bat.id);
     } else {
         let spawnChance = Math.round(eggTurn*20*bat.squadsLeft/6*Math.sqrt(playerInfos.mapDiff)/2*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
+        if (!fromEgg) {
+            spawnChance = 100;
+        }
         console.log('spawnChance='+spawnChance);
         if (rand.rand(1,100) <= spawnChance) {
             let maxSpawn = eggTurn-11+bat.squadsLeft+Math.floor(Math.sqrt(playerInfos.mapDiff));
-            if (maxSpawn < 1) {
+            if (maxSpawn < 1 || !fromEgg) {
                 maxSpawn = 1;
             }
             if (maxSpawn > 8) {

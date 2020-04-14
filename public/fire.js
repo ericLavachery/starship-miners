@@ -212,7 +212,7 @@ function attack() {
     }
     console.log('Previous Damage : '+targetBat.damage);
     // inflammable
-    if (selectedWeap.ammo == 'feu' || selectedWeap.ammo == 'obus-incendiaire' || selectedWeap.ammo == 'obus-napalm') {
+    if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm')) {
         if (targetBatType.skills.includes('inflammable')) {
             totalDamage = totalDamage*2;
             console.log('inflammable!');
@@ -253,8 +253,15 @@ function attack() {
         }
     }
     // maladie
-    if (totalDamage >= 1 && rand.rand(1,2) === 1) {
-        if (selectedBatType.skills.includes('maladie')) {
+    if (totalDamage >= 1) {
+        let infected = false;
+        if (selectedBatType.skills.includes('maladie') && rand.rand(1,2) === 1) {
+            infected = true;
+        }
+        if (selectedBatType.skills.includes('chancre')) {
+            infected = true;
+        }
+        if (infected) {
             if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
                 targetBat.tags.push('maladie');
                 console.log('Maladie!');
@@ -399,7 +406,7 @@ function defense() {
         }
     }
     // inflammable
-    if (targetWeap.ammo == 'feu' || targetWeap.ammo == 'obus-incendiaire' || targetWeap.ammo == 'obus-napalm') {
+    if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm')) {
         if (selectedBatType.skills.includes('inflammable')) {
             totalDamage = totalDamage*2;
             console.log('inflammable!');
@@ -425,7 +432,14 @@ function defense() {
     }
     // maladie
     if (totalDamage >= 1 && rand.rand(1,2) === 1) {
-        if (targetBatType.skills.includes('maladie')) {
+        let infected = false;
+        if (targetBatType.skills.includes('maladie') && rand.rand(1,2) === 1) {
+            infected = true;
+        }
+        if (targetBatType.skills.includes('chancre')) {
+            infected = true;
+        }
+        if (infected) {
             if (selectedBatType.cat == 'infantry' || selectedBatType.cat == 'aliens') {
                 selectedBat.tags.push('maladie');
                 console.log('Maladie!');
