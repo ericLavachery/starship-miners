@@ -93,9 +93,26 @@ function spawns() {
                 eggSpawn(bat,true);
             } else if (bat.type === 'Compost') {
                 eggSpawn(bat,false);
+            } else if (bat.type === 'Vermisseaux' && rand.rand(1,3) === 1) {
+                alienSpawn(bat,'Moucherons');
             }
         }
     });
+};
+
+function alienSpawn(bat,crea) {
+    console.log('SPAWN: '+crea);
+    let dropTile = -1;
+    let unitIndex = alienUnits.findIndex((obj => obj.name == crea));
+    conselUnit = alienUnits[unitIndex];
+    conselAmmos = ['xxx','xxx'];
+    console.log(conselUnit);
+    if (Object.keys(conselUnit).length >= 1) {
+        dropTile = checkDrop(bat);
+        if (dropTile >= 0) {
+            putBat(dropTile);
+        }
+    }
 };
 
 function eggSpawn(bat,fromEgg) {
