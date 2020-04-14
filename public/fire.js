@@ -220,11 +220,18 @@ function attack() {
     }
     // agrippeur
     if (selectedBatType.skills.includes('grip') && totalDamage >= 1 && selectedBatType.size > targetBatType.size) {
-        let gripChance = (selectedBat.squadsLeft*5)-(targetBat.vet*3);
+        let gripbonus = 0;
+        if (selectedBatType.name == 'Androks') {
+            gripbonus = 30;
+        }
+        let gripChance = (selectedBat.squadsLeft*5)+gripbonus-(targetBat.vet*3);
         if (rand.rand(1,100 <= gripChance)) {
+            if (selectedBatType.skills.includes('tail')) {
+                totalDamage = totalDamage+targetBatType.hp;
+            }
             apDamage = selectedBat.squadsLeft*3;
             if (targetWeap.range <= 0) {
-                apDamage = Math.round(apDamage/3);
+                apDamage = Math.round(apDamage/4);
             }
             targetBat.apLeft = targetBat.apLeft-apDamage;
             console.log('Grip OK');
