@@ -13,7 +13,7 @@
         "stealth": 5,
         "ap": 16,
         "maxSalvo": 1,
-        "Class": "C",
+        "class": "C",
         "rarity": 9,
         "weapon":{
             "name": "Mandibules acérées",
@@ -47,7 +47,7 @@
         "stealth": 1,
         "ap": 12,
         "maxSalvo": 1,
-        "Class": "C",
+        "class": "C",
         "rarity": 2,
         "weapon": {
             "name": "Jet d'acide",
@@ -81,7 +81,7 @@
         "stealth": 10,
         "ap": 16,
         "maxSalvo": 1,
-        "Class": "C",
+        "class": "C",
         "rarity": 5,
         "weapon": {
             "name": "Boule de pierre",
@@ -115,7 +115,7 @@
         "stealth": 2,
         "ap": 20,
         "maxSalvo": 1,
-        "Class": "B",
+        "class": "B",
         "rarity": 6,
         "weapon":{
             "name": "Mandibules venin",
@@ -149,7 +149,7 @@
         "stealth": 15,
         "ap": 12,
         "maxSalvo": 1,
-        "Class": "B",
+        "class": "B",
         "rarity": 5,
         "weapon":{
             "name": "Parasite",
@@ -183,7 +183,7 @@
         "stealth": 4,
         "ap": 12,
         "maxSalvo": 1,
-        "Class": "C",
+        "class": "C",
         "rarity": 5,
         "weapon": {
             "name": "Dard",
@@ -217,7 +217,7 @@
         "stealth": 5,
         "ap": 16,
         "maxSalvo": 1,
-        "Class": "c",
+        "class": "c",
         "rarity": 3,
         "weapon": {
             "name": "jet urticant",
@@ -251,7 +251,7 @@
         "stealth": 5,
         "ap": 12,
         "maxSalvo": 1,
-        "Class": "B",
+        "class": "B",
         "rarity": 7,
         "weapon": {
             "name": "Parasite",
@@ -285,7 +285,7 @@
         "stealth": 8,
         "ap": 15,
         "maxSalvo": 1,
-        "Class": "c",
+        "class": "c",
         "rarity": 4,
         "weapon": {
             "name": "Parasite",
