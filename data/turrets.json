@@ -143,7 +143,8 @@
             "power":22,
             "aoe":"unit",
             "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-homing"]
+            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-homing"],
+            "maxAmmo": 12
 
         },
         "moveCost":99,

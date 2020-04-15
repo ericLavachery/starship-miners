@@ -35,7 +35,8 @@
             "power":18,
             "aoe":"squad",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"]
+            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"],
+            "maxAmmo": 6
         },
         "moveCost":2,
         "maxFlood":0,

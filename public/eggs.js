@@ -122,6 +122,8 @@ function eggSpawn(bat,fromEgg) {
     if (eggTurn >= 15+playerInfos.mapDiff && fromEgg) {
         // TRANFORMATION EN COMPOST !
         let putTile = bat.tileId;
+        let eTags = bat.tags;
+        let eCreaTurn = bat.creaTurn;
         // delete Egg
         let batIndex = aliens.findIndex((obj => obj.id == bat.id));
         aliens.splice(batIndex,1);
@@ -131,12 +133,11 @@ function eggSpawn(bat,fromEgg) {
         conselUnit = alienUnits[unitIndex];
         conselAmmos = ['xxx','xxx'];
         putBat(putTile);
-        // ceci est pour détruire l'oeuf :
-        // let batIndex = aliens.findIndex((obj => obj.id == bat.id));
-        // aliens.splice(batIndex,1);
-        // let resHere = showRes(bat.tileId);
-        // $('#b'+bat.tileId).empty().append(resHere);
-        // deadAliensList.push(bat.id);
+        // eggTurn & eggCat
+        batIndex = aliens.findIndex((obj => obj.tileId == putTile));
+        let newColony = aliens[batIndex];
+        newColony.tags = eTags;
+        newColony.creaTurn = eCreaTurn;
     } else {
         let spawnChance = Math.round(eggTurn*20*bat.squadsLeft/6*Math.sqrt(playerInfos.mapDiff)/2*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
         if (!fromEgg) {

@@ -250,6 +250,16 @@
         "aoe": ""
     },
     {
+        "name": "bombe-thermos",
+        "range": 0,
+        "rof": 1,
+        "power": 5,
+        "armors": 0.25,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
         "name": "obus",
         "range": 0,
         "rof": 1,

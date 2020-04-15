@@ -96,7 +96,7 @@
             "cost":2,
             "range":1,
             "rof":24,
-            "accuracy":15,
+            "accuracy":16,
             "power":4,
             "aoe":"unit",
             "sound":"weapon_gun_ppsh_P_18-uzi",
@@ -112,7 +112,7 @@
             "power":11,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
-            "ammo":["dynamite","dynamite-na"],
+            "ammo":["dynamite","dynamite-na","bombe-thermos"],
             "maxAmmo": 4
         },
         "moveCost":3,
@@ -652,15 +652,15 @@
             "ammo":["feu","napalm"]
         },
         "weapon2":{
-            "name":"Lame",
-            "cost":1,
-            "range":0,
-            "rof":8,
-            "accuracy":18,
+            "name":"Pistolet",
+            "cost":2,
+            "range":1,
+            "rof":6,
+            "accuracy":16,
             "power":4,
             "aoe":"unit",
-            "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","poison"]
+            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
         "moveCost":3,
         "maxFlood":3,
