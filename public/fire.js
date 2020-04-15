@@ -553,7 +553,7 @@ function blast(aoeShots,weapon,bat,batType) {
         }
         if (ii > 100) {break;}
         oldPower = power;
-        power = Math.round(power*0.9);
+        power = Math.round(power*0.8);
         if (power >= oldPower) {
             power = power-1;
         }

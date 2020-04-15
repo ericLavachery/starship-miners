@@ -168,26 +168,27 @@ function eggSpawn(bat,fromEgg) {
                 }
             }
             console.log(classes);
+            let eggCat = checkEggCat(bat);
+            console.log('eggCat: '+eggCat);
             let checkDiceMax = 0;
             let checkDice;
             let raritySum = 0;
             let dropTile = -1;
+            alienUnits.forEach(function(unit) {
+                if (classes.includes(unit.class) && unit.kind.includes(eggCat)) {
+                    checkDiceMax = checkDiceMax+unit.rarity;
+                }
+            });
+            console.log('checkDiceMax='+checkDiceMax);
             let i = 1;
             while (i <= spawnNum) {
                 conselUnit = {};
                 conselAmmos = ['xxx','xxx'];
-                checkDiceMax = 0;
-                alienUnits.forEach(function(unit) {
-                    if (classes.includes(unit.class)) {
-                        checkDiceMax = checkDiceMax+unit.rarity;
-                    }
-                });
-                console.log('checkDiceMax='+checkDiceMax);
                 checkDice = rand.rand(1,checkDiceMax);
                 console.log('checkDice='+checkDice);
                 raritySum = 0;
                 alienUnits.forEach(function(unit) {
-                    if (classes.includes(unit.class) && Object.keys(conselUnit).length <= 0) {
+                    if (classes.includes(unit.class) && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat)) {
                         raritySum = raritySum+unit.rarity;
                         console.log('raritySum='+raritySum);
                         if (checkDice <= raritySum) {
@@ -201,6 +202,7 @@ function eggSpawn(bat,fromEgg) {
                     dropTile = checkDrop(bat);
                     if (dropTile >= 0) {
                         putBat(dropTile);
+                        putEggCat(bat,conselUnit.kind);
                     }
                 }
                 if (i > 8) {break;}
@@ -209,6 +211,28 @@ function eggSpawn(bat,fromEgg) {
         } else {
             console.log('no spawn');
         }
+    }
+};
+
+function putEggCat(bat,kind) {
+    if (!bat.tags.includes('bug') && !bat.tags.includes('larve') && !bat.tags.includes('swarm') && !bat.tags.includes('spider') && !bat.tags.includes('blob')) {
+        bat.tags.push(kind);
+    }
+};
+
+function checkEggCat(bat) {
+    if (bat.tags.includes('bug')) {
+        return 'bug';
+    } else if (bat.tags.includes('larve')) {
+        return 'larve';
+    } else if (bat.tags.includes('spider')) {
+        return 'spider';
+    } else if (bat.tags.includes('swarm')) {
+        return 'swarm';
+    } else if (bat.tags.includes('blob')) {
+        return 'blob';
+    } else {
+        return '';
     }
 };
 
