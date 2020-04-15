@@ -30,7 +30,7 @@ function checkTargetBatType() {
     // }
 };
 
-function isHit(accuracy,aoe,size,stealth,cover,speed) {
+function isHit(accuracy,aoe,size,stealth,cover,speed,shotDice) {
     let prec = Math.round(accuracy-(cover*coverFactor));
     if (aoe == 'unit') {
         prec = Math.round(prec-(stealth/2)-speed);
@@ -42,7 +42,7 @@ function isHit(accuracy,aoe,size,stealth,cover,speed) {
     if (selectedBat.tags.includes('vise')) {
         prec = prec+5;
     }
-    let dice = rand.rand(1,100);
+    let dice = rand.rand(1,shotDice);
     let hitChance = Math.round(Math.sqrt(size)*prec);
     // aoe : more chance than normal to hit small creatures
     if (aoe != 'unit' && size < 10) {
@@ -458,4 +458,29 @@ function weaponAdj(weapon,bat,wn) {
     }
     console.log(thisWeapon);
     return thisWeapon;
+};
+
+function calcShotDice(bat,luckyshot) {
+    if (bat.team == 'player') {
+        let luckDice = rand.rand(1,100);
+        if (luckyshot) {
+            $('#report').append('<span class="report cy">Lucky shot!</span><br>');
+            bat.tags.push('lucky');
+            return 33;
+        } else if (luckDice <= luckCheck[0]) {
+            $('#report').append('<span class="report cy">Lucky shot!</span><br>');
+            return 50;
+        } else if (luckDice <= luckCheck[1]) {
+            $('#report').append('<span class="report">Good shot!</span><br>');
+            return 75;
+        } else if (luckDice <= luckCheck[2]) {
+            return 100;
+        } else {
+            $('#report').append('<span class="report cy">Fumble!</span><br>');
+            tagDelete(bat,'lucky');
+            return 150;
+        }
+    } else {
+        return 100;
+    }
 };

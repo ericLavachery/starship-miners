@@ -196,13 +196,22 @@ function attack() {
     if (selectedBatType.skills.includes('brochette')) {
         skewer = true;
     }
+    // lucky shot
+    let shotDice = 100;
+    if (selectedBat.tags.includes('luckyshot')) {
+        shotDice = calcShotDice(selectedBat,true);
+        tagDelete(selectedBat,'luckyshot');
+    } else {
+        shotDice = calcShotDice(selectedBat,false);
+    }
+    console.log('shotDice='+shotDice);
     toHit = 999;
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
-            totalDamage = totalDamage+blast(aoeShots,selectedWeap,targetBat,targetBatType);
+            totalDamage = totalDamage+blast(aoeShots,selectedWeap,targetBat,targetBatType,shotDice);
         } else {
-            totalDamage = totalDamage+shot(skewer,selectedWeap,targetBat,targetBatType);
+            totalDamage = totalDamage+shot(skewer,selectedWeap,targetBat,targetBatType,shotDice);
         }
         if (i > 300) {break;}
         i++
@@ -212,7 +221,6 @@ function attack() {
         apDamage = apDamage+Math.round(totalDamage*selectedWeap.apdamage);
         targetBat.apLeft = targetBat.apLeft-apDamage;
         console.log('AP Damage : '+apDamage);
-        $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
     }
     console.log('Previous Damage : '+targetBat.damage);
     // inflammable
@@ -240,7 +248,7 @@ function attack() {
             targetBat.apLeft = targetBat.apLeft-apDamage;
             console.log('Grip OK');
             console.log('AP Damage : '+apDamage);
-            $('#report').append('<span class="report">Agrippé: -'+apDamage+' PA<br></span>');
+            $('#report').append('<span class="report">Agrippé<br></span>');
         } else {
             console.log('Grip raté');
         }
@@ -299,11 +307,19 @@ function attack() {
     }
     console.log('Damage : '+totalDamage);
     $('#report').append('<span class="report">('+totalDamage+')<br></span>');
+    if (apDamage >= 1) {
+        $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
+    }
     totalDamage = totalDamage+targetBat.damage;
     let squadHP = (targetBatType.squadSize*targetBatType.hp);
     console.log('Squad HP : '+squadHP);
     let squadsOut = Math.floor(totalDamage/squadHP);
     targetBat.squadsLeft = targetBat.squadsLeft-squadsOut;
+    // survivor
+    if (targetBat.squadsLeft <= 0 && !targetBat.tags.includes('lucky') && targetBatType.skills.includes('survivor')) {
+        targetBat.squadsLeft = 1;
+        targetBat.tags.push('lucky');
+    }
     console.log('Squads Out : '+squadsOut);
     if (squadsOut >= 1) {
         let deadUnits = targetBatType.squadSize*squadsOut;
@@ -402,13 +418,14 @@ function defense() {
     if (targetBatType.skills.includes('brochette')) {
         skewer = true;
     }
+    let shotDice = calcShotDice(targetBat,false);
     toHit = 999;
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
-            totalDamage = totalDamage+blast(aoeShots,targetWeap,selectedBat,selectedBatType);
+            totalDamage = totalDamage+blast(aoeShots,targetWeap,selectedBat,selectedBatType,shotDice);
         } else {
-            totalDamage = totalDamage+shot(skewer,targetWeap,selectedBat,selectedBatType);
+            totalDamage = totalDamage+shot(skewer,targetWeap,selectedBat,selectedBatType,shotDice);
         }
         if (i > 300) {break;}
         i++
@@ -432,7 +449,6 @@ function defense() {
         apDamage = apDamage+Math.round(totalDamage*targetWeap.apdamage);
         selectedBat.apLeft = selectedBat.apLeft-apDamage;
         console.log('AP Damage : '+apDamage);
-        $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
     }
     console.log('Previous Damage : '+selectedBat.damage);
     // poison
@@ -464,11 +480,19 @@ function defense() {
     }
     console.log('Damage : '+totalDamage);
     $('#report').append('<span class="report">('+totalDamage+')<br></span>');
+    if (apDamage >= 1) {
+        $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
+    }
     totalDamage = totalDamage+selectedBat.damage;
     let squadHP = (selectedBatType.squadSize*selectedBatType.hp);
     console.log('Squad HP : '+squadHP);
     let squadsOut = Math.floor(totalDamage/squadHP);
     selectedBat.squadsLeft = selectedBat.squadsLeft-squadsOut;
+    // survivor
+    if (selectedBat.squadsLeft <= 0 && !selectedBat.tags.includes('lucky') && selectedBatType.skills.includes('survivor')) {
+        selectedBat.squadsLeft = 1;
+        selectedBat.tags.push('lucky');
+    }
     console.log('Squads Out : '+squadsOut);
     if (squadsOut >= 1) {
         let deadUnits = selectedBatType.squadSize*squadsOut;
@@ -509,12 +533,12 @@ function combatReport() {
     report = '';
 };
 
-function shot(skewer,weapon,bat,batType) {
+function shot(skewer,weapon,bat,batType,shotDice) {
     // returns damage
     let damage = 0;
     let cover = getCover(bat,true);
     let stealth = getStealth(bat);
-    if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover,batType.speed)) {
+    if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover,batType.speed,shotDice)) {
         damage = calcDamage(weapon,weapon.power,batType.armor,bat);
         if (damage > batType.hp && !skewer) {
             damage = batType.hp;
@@ -529,7 +553,7 @@ function shot(skewer,weapon,bat,batType) {
     return damage;
 };
 
-function blast(aoeShots,weapon,bat,batType) {
+function blast(aoeShots,weapon,bat,batType,shotDice) {
     // returns damage
     // console.log('aoeShots = '+aoeShots);
     let damage = 0;
@@ -541,7 +565,7 @@ function blast(aoeShots,weapon,bat,batType) {
     let ii = 1;
     while (ii <= aoeShots) {
         // console.log('power'+power);
-        if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover,batType.speed)) {
+        if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover,batType.speed,shotDice)) {
             newDamage = calcDamage(weapon,power,batType.armor,bat);
             if (newDamage > batType.hp) {
                 newDamage = batType.hp;

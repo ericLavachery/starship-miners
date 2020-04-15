@@ -11,7 +11,7 @@
         "armor":9,
         "size":18,
         "stealth":2,
-        "ap":15,
+        "ap":18,
         "maxSalvo":1,
         "weapon":{
             "name":"Mitrailleuse",
@@ -56,7 +56,7 @@
         "armor":12,
         "size":35,
         "stealth":0,
-        "ap":12,
+        "ap":13,
         "maxSalvo":1,
         "weapon":{
             "name":"Mitrailleuse",
@@ -101,7 +101,7 @@
         "armor":16,
         "size":42,
         "stealth":0,
-        "ap":13,
+        "ap":14,
         "maxSalvo":2,
         "weapon":{
             "name":"Canon",
@@ -135,7 +135,7 @@
         "armor":10,
         "size":24,
         "stealth":0,
-        "ap":14,
+        "ap":16,
         "maxSalvo":1,
         "weapon":{
             "name":"Fusil d'assaut",
@@ -158,7 +158,6 @@
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
             "ammo":["feu","napalm"]
-
         },
         "moveCost":2,
         "maxFlood":2,

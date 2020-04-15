@@ -84,6 +84,15 @@ function tirCible() {
     showBatInfos(selectedBat);
 };
 
+function luckyShot() {
+    console.log('LUCKY SHOT');
+    if (!selectedBat.tags.includes('lucky') && !selectedBat.tags.includes('luckyshot')) {
+        selectedBat.tags.push('luckyshot');
+    }
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
 function ambush() {
     console.log('EMBUSCADE');
     if (!selectedBat.tags.includes('embuscade')) {

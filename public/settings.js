@@ -74,6 +74,7 @@ let berserkEnemyDamage = 1.5;
 let berserkROF = 1.5;
 let deadBatsList = [];
 let deadAliensList = [];
+let luckCheck = [7,19,86,100];
 // ALIENS
 let pointDeMire = 1830; // tileId
 let possibleMoves = []; // list of tile ids

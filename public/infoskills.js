@@ -77,6 +77,18 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de PA" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Tir ciblé</'+balise+'></span>');
         }
     }
+    // LUCKY SHOT
+    if (batUnitType.skills.includes('luckyshot')) {
+        balise = 'h4';
+        if (bat.tags.includes('luckyshot')) {
+            balise = 'h1';
+        }
+        if (!bat.tags.includes('luckyshot') && !bat.tags.includes('lucky')) {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lucky shot automatique sur cette attaque" class="boutonGris iconButtons" onclick="luckyShot()"><i class="fas fa-dice-six"></i></button>&nbsp; Lucky shot</'+balise+'></span>');
+        } else {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de bol" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Lucky shot</'+balise+'></span>');
+        }
+    }
     // MEDIC
     if (batUnitType.skills.includes('medic')) {
         numTargets = numMedicTargets(bat,'infantry');
@@ -149,10 +161,10 @@ function skillsInfos(bat,batUnitType) {
     // MECANO
     if (batUnitType.skills.includes('mecano')) {
         numTargets = numMedicTargets(bat,'vehicles');
-        apCost = numTargets*(4+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= 4 && numTargets >= 1 && !inMelee) {
+        apCost = numTargets*(6+batUnitType.squads-bat.squadsLeft);
+        if (bat.apLeft >= 6 && numTargets >= 1 && !inMelee) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,4,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,6,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
         } else {
             // pas assez d'ap
             if (inMelee) {
