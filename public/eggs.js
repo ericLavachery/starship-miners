@@ -201,8 +201,8 @@ function eggSpawn(bat,fromEgg) {
                 if (Object.keys(conselUnit).length >= 1) {
                     dropTile = checkDrop(bat);
                     if (dropTile >= 0) {
-                        putBat(dropTile);
                         putEggCat(bat,conselUnit.kind);
+                        putBat(dropTile);
                     }
                 }
                 if (i > 8) {break;}
