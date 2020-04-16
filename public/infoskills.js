@@ -3,6 +3,17 @@ function skillsInfos(bat,batUnitType) {
     let numTargets = 0;
     let apCost;
     let inMelee = batInMelee(bat);
+    // RAVITAILLEMENT
+    let anyRavit = checkRavit(bat);
+    if (anyRavit && bat.tags.includes('ammoUsed')) {
+        let apCost = batUnitType.ap;
+        if (bat.apLeft >= apCost) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de munitions ('+apCost+' PA)" class="boutonGris iconButtons" onclick="goRavit('+apCost+')"><i class="ra ra-ammo-bag rpg"></i></button>&nbsp; Ravitaillement</h4></span>');
+        } else {
+            skillMessage = "Pas assez de PA"
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Ravitaillement</h4></span>');
+        }
+    }
     // GUET
     if (batUnitType.weapon.rof >= 1) {
         if (bat.apLeft >= batUnitType.ap-3 && !bat.tags.includes('guet')) {
@@ -161,10 +172,31 @@ function skillsInfos(bat,batUnitType) {
     // MECANO
     if (batUnitType.skills.includes('mecano')) {
         numTargets = numMedicTargets(bat,'vehicles');
-        apCost = numTargets*(6+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= 6 && numTargets >= 1 && !inMelee) {
+        apCost = numTargets*(7+batUnitType.squads-bat.squadsLeft);
+        if (bat.apLeft >= 7 && numTargets >= 1 && !inMelee) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,6,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,7,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
+        } else {
+            // pas assez d'ap
+            if (inMelee) {
+                skillMessage = "Pas de réparations en mêlée"
+            } else {
+                if (numTargets < 1) {
+                    skillMessage = "Aucun véhicule adjacent n'a pas subit de dégâts"
+                } else {
+                    skillMessage = "Pas assez de PA"
+                }
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
+        }
+    }
+    // REPAIR
+    if (batUnitType.skills.includes('repair')) {
+        numTargets = numMedicTargets(bat,'buildings');
+        apCost = numTargets*(10+batUnitType.squads-bat.squadsLeft);
+        if (bat.apLeft >= 10 && numTargets >= 1 && !inMelee) {
+            // assez d'ap
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les bâtiments adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`buildings`,10,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
         } else {
             // pas assez d'ap
             if (inMelee) {

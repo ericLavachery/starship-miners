@@ -62,8 +62,9 @@ function nextTurnEnd() {
         if (bat.loc === "zone") {
             levelUp(bat);
             ap = getAP(bat);
-            unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-            batType = unitTypes[unitIndex];
+            // unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
+            // batType = unitTypes[unitIndex];
+            batType = getBatType(bat);
             bat.salvoLeft = batType.maxSalvo;
             if (bat.apLeft < 0-batType.ap-batType.ap) {
                 bat.apLeft = 0-batType.ap-batType.ap;

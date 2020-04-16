@@ -109,8 +109,9 @@ function chooseTarget() {
 };
 
 function checkAlienFlyTarget(weapon,bat) {
-    let batIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-    let batType = unitTypes[batIndex];
+    // let batIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
+    // let batType = unitTypes[batIndex];
+    let batType = getBatType(bat);
     if (weapon.noFly && batType.skills.includes('fly')) {
         return false;
     } else {
@@ -896,10 +897,11 @@ function fearFactor() {
             if (bat.loc === "zone") {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance === 0) {
-                    batIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-                    batType = unitTypes[batIndex];
+                    // batIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
+                    // batType = unitTypes[batIndex];
+                    batType = getBatType(bat);
                     if (batType.moveCost < 99) {
-                        fearChance = Math.round(75-(batType.size*2.5)-(bat.vet*10));
+                        fearChance = Math.round(75-(batType.size*2.5)-(bat.vet*12)+(batType.stealth*2));
                         console.log('fearChance='+fearChance);
                         if (rand.rand(1,100) <= fearChance) {
                             getAway(bat,selectedBat.tileId);

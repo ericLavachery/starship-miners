@@ -128,12 +128,13 @@ function medic(cat,cost,around,deep) {
                 if (bat.loc === "zone") {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
                     if (distance === 0) {
-                        unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-                        batType = unitTypes[unitIndex];
+                        // unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
+                        // batType = unitTypes[unitIndex];
+                        batType = getBatType(bat);
                         batUnits = bat.squadsLeft*batType.squadSize;
                         if (batType.cat === cat) {
                             catOK = true;
-                        } else if (cat === 'vehicles' && batType.cat === 'buildings') {
+                        } else if (cat === 'any') {
                             catOK = true;
                         } else {
                             catOK = false;
@@ -255,11 +256,12 @@ function numMedicTargets(myBat,cat) {
         if (bat.loc === "zone") {
             distance = calcDistance(myBat.tileId,bat.tileId);
             if (distance === 0) {
-                unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-                batType = unitTypes[unitIndex];
+                // unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
+                // batType = unitTypes[unitIndex];
+                batType = getBatType(bat);
                 if (batType.cat === cat) {
                     catOK = true;
-                } else if (cat === 'vehicles' && batType.cat === 'buildings') {
+                } else if (cat === 'any') {
                     catOK = true;
                 } else {
                     catOK = false;
@@ -273,6 +275,79 @@ function numMedicTargets(myBat,cat) {
         }
     });
     return numTargets;
+};
+
+function goRavit(apCost) {
+    if (selectedBat.tags.includes('ammoUsed')) {
+        let batType;
+        let ravitBat = {};
+        let ravitLeft = 0;
+        let biggestRavit = 0;
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                batType = getBatType(bat);
+                if (batType.skills.includes('ravitaillement')) {
+                    ravitLeft = calcRavit(bat);
+                    if (calcDistance(selectedBat.tileId,bat.tileId) <= 1 && ravitLeft >= 1) {
+                        if (biggestRavit < ravitLeft) {
+                            biggestRavit = ravitLeft;
+                            ravitBat = bat;
+                        }
+                    }
+                }
+            }
+        });
+        if (biggestRavit < 99) {
+            ravitBat.tags.push('skillUsed');
+            selectedBat.apLeft = selectedBat.apLeft-apCost;
+            selectedBat.salvoLeft = 0;
+            let i = 1;
+            while (i <= 50) {
+                if (selectedBat.tags.includes('ammoUsed')) {
+                    tagIndex = selectedBat.tags.indexOf('ammoUsed');
+                    selectedBat.tags.splice(tagIndex,1);
+                } else {
+                    break;
+                }
+                if (i > 50) {break;}
+                i++
+            }
+            selectedBatArrayUpdate();
+            showBatInfos(selectedBat);
+        }
+    }
+};
+
+function checkRavit(myBat) {
+    let batType;
+    let anyRavit = false;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            batType = getBatType(bat);
+            if (batType.skills.includes('ravitaillement')) {
+                if (calcDistance(myBat.tileId,bat.tileId) <= 1 && calcRavit(bat) >= 1) {
+                    anyRavit = true;
+                }
+            }
+        }
+    });
+    return anyRavit;
+};
+
+function calcRavit(bat) {
+    let batType = getBatType(bat);
+    let ravitLeft = batType.maxSKill;
+    console.log('startRavit='+ravitLeft);
+    if (ravitLeft < 99) {
+        if (bat.tags.includes('skillUsed')) {
+            let allTags = _.countBy(bat.tags);
+            ravitLeft = ravitLeft-allTags.skillUsed;
+            // console.log(allTags);
+            // console.log(allTags.ammoUsed);
+        }
+    }
+    console.log('ravitLeft='+ravitLeft);
+    return ravitLeft;
 };
 
 function armyAssign(batId,army) {
@@ -289,8 +364,8 @@ function calcAmmos(bat,startAmmo) {
         if (bat.tags.includes('ammoUsed')) {
             let allTags = _.countBy(bat.tags);
             ammoLeft = startAmmo-allTags.ammoUsed;
-            console.log(allTags);
-            console.log(allTags.ammoUsed);
+            // console.log(allTags);
+            // console.log(allTags.ammoUsed);
         } else {
             ammoLeft = startAmmo;
         }

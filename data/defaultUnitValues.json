@@ -24,7 +24,7 @@
         "aoe": "unit",
         "ammo": [ "standard" ],
         "maxAmmo": 99
-        },
+    },
     "weapon2": {
         "name": "Aucune",
         "cost": 4,
@@ -37,10 +37,12 @@
         "aoe": "unit",
         "ammo": [ "standard" ],
         "maxAmmo": 99
-        },
+    },
     "moveCost": 3,
     "maxFlood": 4,
     "maxScarp": 4,
     "maxVeg": 4,
-    "skills": []
+    "skills": [],
+    "maxSKill": 99,
+    "fuzz": 0
 }

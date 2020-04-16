@@ -121,9 +121,6 @@ function getBatType(bat) {
     } else if (bat.team == 'aliens') {
         unitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
         batType = alienUnits[unitIndex];
-    } else if (bat.team == 'locals') {
-        unitIndex = localUnits.findIndex((obj => obj.id == bat.typeId));
-        batType = localUnits[unitIndex];
     }
     return batType;
 };
@@ -431,8 +428,9 @@ function weaponAdj(weapon,bat,wn) {
     // skills
     // ELEVATION
     if (wn == 'w2' && bat.team == 'player') {
-        let batTypeIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-        let batUnitType = unitTypes[batTypeIndex];
+        // let batTypeIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
+        // let batUnitType = unitTypes[batTypeIndex];
+        let batUnitType = getBatType(bat);
         if (batUnitType.skills.includes('elevation')) {
             let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
             let tile = zone[tileIndex];
@@ -444,8 +442,9 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     if (bat.team == 'aliens') {
-        let batTypeIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
-        let batUnitType = alienUnits[batTypeIndex];
+        // let batTypeIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
+        // let batUnitType = alienUnits[batTypeIndex];
+        let batUnitType = getBatType(bat);
         if (batUnitType.skills.includes('elevation')) {
             let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
             let tile = zone[tileIndex];
