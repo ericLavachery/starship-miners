@@ -18,6 +18,8 @@ function alienMoveLoop() {
     targetBat = {};
     targetBatType = {};
     targetWeap = {};
+    console.log('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+    fearFactor();
     checkPossibleMoves();
     // loop this until no ap or no salvo
     console.log('!!! Start Loop !!!');
@@ -881,4 +883,73 @@ function alienBonus() {
             }
         }
     });
+};
+
+function fearFactor() {
+    console.log('FEAR');
+    if (selectedBatType.skills.includes('fear')) {
+        let distance;
+        let fearChance;
+        let batIndex;
+        let batType;
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                distance = calcDistance(selectedBat.tileId,bat.tileId);
+                if (distance === 0) {
+                    batIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
+                    batType = unitTypes[batIndex];
+                    if (batType.moveCost < 99) {
+                        fearChance = Math.round(75-(batType.size*2.5)-(bat.vet*10));
+                        console.log('fearChance='+fearChance);
+                        if (rand.rand(1,100) <= fearChance) {
+                            getAway(bat,selectedBat.tileId);
+                        } else {
+                            console.log('noFear');
+                        }
+                    }
+                }
+            }
+        });
+    }
+};
+
+function getAway(bat,fromTileId) {
+    console.log('getAway');
+    console.log(bat);
+    let distFromTile;
+    let distFromSelf;
+    let getAwayTile = -1;
+    let apCost = 0;
+    let shufZone = _.shuffle(zone);
+    alienOccupiedTileList();
+    playerOccupiedTileList();
+    shufZone.forEach(function(tile) {
+        distFromTile = calcDistance(fromTileId,tile.id);
+        distFromSelf = calcDistance(bat.tileId,tile.id);
+        if (distFromSelf === 1 && distFromTile >= 1 && !playerOccupiedTiles.includes(tile.id) && !alienOccupiedTiles.includes(tile.id) && getAwayTile < 0) {
+            getAwayTile = tile.id;
+            apCost = 6;
+        }
+    });
+    if (getAwayTile < 0) {
+        shufZone.forEach(function(tile) {
+            distFromTile = calcDistance(fromTileId,tile.id);
+            distFromSelf = calcDistance(bat.tileId,tile.id);
+            if (distFromSelf === 2 && distFromTile >= 1 && !playerOccupiedTiles.includes(tile.id) && !alienOccupiedTiles.includes(tile.id) && getAwayTile < 0) {
+                getAwayTile = tile.id;
+                apCost = 12;
+            }
+        });
+    }
+    let resHere = showRes(bat.tileId);
+    $('#b'+bat.tileId).empty().append(resHere);
+    bat.tileId = getAwayTile;
+    bat.apLeft = bat.apLeft-apCost;
+    tagDelete(bat,'guet');
+    tagDelete(bat,'fortif');
+    if (bat.tags.includes('camo')) {
+        bat.fuzz = -1;
+    }
+    tagDelete(bat,'camo');
+    showBataillon(bat);
 };

@@ -139,7 +139,7 @@ function tagsEffect(bat,batType) {
     }
     // MALADIE
     if (bat.tags.includes('maladie')) {
-        bat.apLeft = bat.apLeft-Math.floor(batType.ap/3);
+        bat.apLeft = bat.apLeft-Math.floor(batType.ap/2.2);
     }
     // VENIN
     if (bat.tags.includes('venin')) {
