@@ -198,9 +198,9 @@
             "name":"Lance-flammes",
             "cost":6,
             "range":0,
-            "rof":6,
+            "rof":9,
             "accuracy":16,
-            "power":14,
+            "power":15,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
             "ammo":["feu","napalm"]
@@ -243,12 +243,12 @@
             "cost":2,
             "range":0,
             "noFly": true,
-            "rof":9,
+            "rof":12,
             "accuracy":24,
             "power":8,
             "aoe":"squad",
             "sound":"industrial_vehicle_combine_harvester_approach_passb",
-            "ammo":["standard"]
+            "ammo":["standard","monomolecular"]
 
         },
         "moveCost":2,

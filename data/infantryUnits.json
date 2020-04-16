@@ -233,7 +233,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison"]
+            "ammo":["standard","poison","monomolecular"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -265,7 +265,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison"]
+            "ammo":["standard","poison","monomolecular"]
         },
         "weapon2":{
             "name":"Lame",
@@ -276,7 +276,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","poison"]
+            "ammo":["standard","poison","monomolecular"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -319,7 +319,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","poison"]
+            "ammo":["standard","poison","monomolecular"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -351,7 +351,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","poison"]
+            "ammo":["standard","poison","monomolecular"]
         },
         "weapon2":{
             "name":"Ceinture goodbye",
@@ -405,7 +405,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["perceur","ppoison"]
+            "ammo":["perceur","ppoison","monomolecular"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -558,7 +558,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","poison"]
+            "ammo":["standard","poison","monomolecular"]
         },
         "weapon2":{
             "name":"Mortier léger",
