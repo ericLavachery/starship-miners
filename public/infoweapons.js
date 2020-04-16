@@ -104,9 +104,7 @@ function weaponsInfos(bat,batUnitType) {
         if (thisWeapon.noFly) {
             $('#unitInfos').append('<span class="paramName">Tir aérien</span><span class="paramIcon"></span><span class="paramValue">Non</span><br>');
         }
-        if (baseAmmo == 99) {
-            $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+bat.ammo2+'</span><br>');
-        }
+        $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+bat.ammo2+'</span><br>');
         if (baseAmmo < 99) {
             $('#unitInfos').append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'</span><br>');
         }

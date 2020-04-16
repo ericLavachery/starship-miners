@@ -57,8 +57,10 @@ function showBatInfos(bat) {
     // XP
     $('#unitInfos').append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+bat.xp+' (niv '+bat.vet+')</span><br>');
     // AUTOSKILLS
-    let ravitNum = calcRavit(bat);
-    $('#unitInfos').append('<span class="paramName cy">Ravitaillements</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'</span><br>');
+    if (batUnitType.skills.includes('ravitaillement')) {
+        let ravitNum = calcRavit(bat);
+        $('#unitInfos').append('<span class="paramName cy">Ravitaillements</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'</span><br>');
+    }
     // WEAPONS & SKILLS
     if (!isStacked()) {
         weaponsInfos(bat,batUnitType);
