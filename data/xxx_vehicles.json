@@ -1,95 +1,5 @@
 [
     {
-        "id":51,
-        "name":"Tank Inferno",
-        "pic":"tanklight",
-        "cat":"vehicles",
-        "squads":6,
-        "squadSize":5,
-        "crew":3,
-        "hp":80,
-        "armor":12,
-        "size":24,
-        "stealth":1,
-        "ap":12,
-        "maxSalvo":1,
-        "weapon":{
-            "name":"Canon court",
-            "cost":7,
-            "range":2,
-            "rof":5,
-            "accuracy":16,
-            "power":20,
-            "aoe":"unit",
-            "sound":"249298__klangfabrik__rpg-launcher-three-shots",
-            "ammo":["standard","perfo","uranium","explosive","feu"]
-
-        },
-        "weapon2":{
-            "name":"Lance-flammes lourd",
-            "cost":6,
-            "range":1,
-            "rof":5,
-            "accuracy":20,
-            "power":12,
-            "aoe":"squad",
-            "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["feu","napalm"]
-
-        },
-        "moveCost":2,
-        "maxFlood":2,
-        "maxScarp":2,
-        "maxVeg":2,
-        "skills":["fortif","cible","brochette"],
-        "fuzz":0
-    },
-    {
-        "id":52,
-        "name":"Tank Pitbull",
-        "pic":"moisso",
-        "cat":"vehicles",
-        "squads":6,
-        "squadSize":5,
-        "crew":3,
-        "hp":80,
-        "armor":12,
-        "size":24,
-        "stealth":1,
-        "ap":12,
-        "maxSalvo":1,
-        "weapon":{
-            "name":"Canon court",
-            "cost":7,
-            "range":2,
-            "rof":5,
-            "accuracy":16,
-            "power":20,
-            "aoe":"unit",
-            "sound":"249298__klangfabrik__rpg-launcher-three-shots",
-            "ammo":["standard","perfo","uranium","explosive","feu"]
-
-        },
-        "weapon2":{
-            "name":"Moissonneuse",
-            "cost":6,
-            "range":0,
-            "rof":12,
-            "accuracy":20,
-            "power":10,
-            "aoe":"squad",
-            "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["standard"]
-
-        },
-        "moveCost":2,
-        "maxFlood":2,
-        "maxScarp":2,
-        "maxVeg":2,
-        "skills":["fortif","cible","brochette"],
-        "fuzz":0
-    },
-    {
         "id":53,
         "name":"Tank Avalanche",
         "pic":"misbuggy",
@@ -98,8 +8,8 @@
         "squadSize":5,
         "crew":3,
         "hp":80,
-        "armor":12,
-        "size":26,
+        "armor":9,
+        "size":24,
         "stealth":0,
         "ap":12,
         "maxSalvo":2,
@@ -134,58 +44,14 @@
         "fuzz":0
     },
     {
-        "id":54,
-        "name":"Fatass",
-        "pic":"",
-        "cat":"vehicles",
-        "squads":3,
-        "squadSize":6,
-        "crew":5,
-        "hp":200,
-        "armor":18,
-        "size":45,
-        "stealth":0,
-        "ap":12,
-        "maxSalvo":2,
-        "weapon":{
-            "name":"Canon",
-            "cost":6,
-            "range":3,
-            "rof":6,
-            "accuracy":16,
-            "power":30,
-            "aoe":"unit",
-            "sound":"249298__klangfabrik__rpg-launcher-three-shots",
-            "ammo":["standard","perfo","uranium","explosive","feu"]
-
-        },
-        "weapon2":{
-            "name":"Obusier",
-            "cost":6,
-            "range":3,
-            "rof":6,
-            "accuracy":14,
-            "power":30,
-            "aoe":"squad",
-            "sound":"435415__v-ktor__explosion10",
-            "ammo":["standard","feu","explosive"]
-        },
-        "moveCost":4,
-        "maxFlood":1,
-        "maxScarp":2,
-        "maxVeg":3,
-        "skills":["fortif","cible"],
-        "fuzz":0
-    },
-    {
         "id":55,
         "name":"Rave",
-        "pic":"rave.png",
+        "pic":"mechinf",
         "cat":"vehicles",
         "squads":3,
         "squadSize":3,
         "crew":3,
-        "hp":80,
+        "hp":75,
         "armor":14,
         "size":22,
         "stealth":2,
@@ -223,7 +89,7 @@
     {
         "id":56,
         "name":"Spear",
-        "pic":"Spear.png",
+        "pic":"jeeptank",
         "cat":"vehicle",
         "squads":3,
         "squadSize":3,
@@ -268,7 +134,7 @@
     {
         "id":57,
         "name":"DJ Boss",
-        "pic":"DJBoss.png",
+        "pic":"tankanon2",
         "cat":"vehicles",
         "squads":3,
         "squadSize":3,
@@ -310,8 +176,8 @@
     },
     {
         "id":58,
-        "name":"The Eye's",
-        "pic":"theyes.png",
+        "name":"The Eyes",
+        "pic":"vab",
         "cat":"vehicles",
         "squads":3,
         "squadSize":6,
@@ -355,7 +221,7 @@
     {
         "id":59,
         "name":"Cavalerie",
-        "pic":"Cavalerie.png",
+        "pic":"camionvert",
         "cat":"vehicles",
         "squads":6,
         "squadSize":1,
@@ -400,7 +266,7 @@
     {
         "id":60,
         "name":"Taxi",
-        "pic":"Taxi.png",
+        "pic":"camionmil",
         "cat":"vehicles",
         "squads":6,
         "squadSize":1,
@@ -421,7 +287,6 @@
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
-
         },
         "weapon2":{
             "name":"Bélier",
@@ -433,7 +298,6 @@
             "aoe":"unit",
             "sound":"none",
             "ammo":["standard","brochette"]
-
         },
         "moveCost":3,
         "maxFlood":,
@@ -445,7 +309,7 @@
     {
         "id":61,
         "name":"Pusher",
-        "pic":"Pusher.png",
+        "pic":"warbul",
         "cat":"vehicles",
         "squads":3,
         "squadSize":3,
@@ -489,7 +353,7 @@
     {
         "id":62,
         "name":"Hook",
-        "pic":"Hook.png",
+        "pic":"hemadeatank",
         "cat":"vehicles",
         "squads":3,
         "squadSize":3,
@@ -533,7 +397,7 @@
     {
         "id":63,
         "name":"Bigman",
-        "pic":"Bigman.png",
+        "pic":"krusher",
         "cat":"infantry",
         "squads":6,
         "squadSize":1,
@@ -554,7 +418,6 @@
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
             "ammo":["feu","napalm"]
-
         },
         "weapon2":{
             "name":"RPG",
