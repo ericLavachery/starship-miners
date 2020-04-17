@@ -94,7 +94,7 @@ function nextTurnEnd() {
 };
 
 function tagsUpdate(bat) {
-    tagDelete(bat,'guet');
+    // tagDelete(bat,'guet');
     tagDelete(bat,'vise');
     tagDelete(bat,'embuscade');
 };

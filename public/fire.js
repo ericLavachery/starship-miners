@@ -146,6 +146,11 @@ function attack() {
     console.log('Attaque ->');
     console.log(selectedWeap);
     $('#report').append('<span class="report or">'+selectedBat.type+' ('+selectedWeap.name+')</span><br>');
+    // remove guet
+    if (selectedBat.tags.includes('guet')) {
+        tagIndex = selectedBat.tags.indexOf('guet');
+        selectedBat.tags.splice(tagIndex,1);
+    }
     // AOE Shots
     let aoeShots = 1;
     if (selectedWeap.aoe == "bat") {

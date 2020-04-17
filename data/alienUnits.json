@@ -456,7 +456,7 @@
             "power": 9,
             "aoe": "squad",
             "sound": "zapsplat_cartoon_squish_squelch_wet_005_14504b",
-            "ammo": [ "perceur" ]
+            "ammo": [ "acide" ]
         },
         "weapon2": {},
         "moveCost": 3,
