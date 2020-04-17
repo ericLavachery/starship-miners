@@ -94,7 +94,7 @@ function spawns() {
             } else if (bat.type === 'Compost') {
                 eggSpawn(bat,false);
             } else if (bat.type === 'Vermisseaux' && rand.rand(1,3) === 1) {
-                alienSpawn(bat,'Moucherons');
+                alienSpawn(bat,'Lucioles');
             }
         }
     });

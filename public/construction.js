@@ -50,7 +50,7 @@ function conSelect(unitId,player) {
                 // } else {
                 //     $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                 // }
-                $('#conAmmoList').append('<span class="constName klik" onclick="selectAmmo(`'+ammo+'`,`w1`)">'+ammo+'</span><br>');
+                $('#conAmmoList').append('<span class="constName klik" onclick="selectAmmo(`'+ammo+'`,`w1`)">'+showAmmo(ammo)+'</span><br>');
             });
         }
     }
@@ -63,7 +63,7 @@ function conSelect(unitId,player) {
                 // } else {
                 //     $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                 // }
-                $('#conAmmoList').append('<span class="constName klik" onclick="selectAmmo(`'+ammo+'`,`w2`)">'+ammo+'</span><br>');
+                $('#conAmmoList').append('<span class="constName klik" onclick="selectAmmo(`'+ammo+'`,`w2`)">'+showAmmo(ammo)+'</span><br>');
             });
         }
     }

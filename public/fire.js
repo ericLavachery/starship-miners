@@ -236,9 +236,18 @@ function attack() {
     // add damage! remove squads? remove bat?
     if (selectedWeap.apdamage > 0) {
         apDamage = apDamage+Math.round(totalDamage*selectedWeap.apdamage);
-        targetBat.apLeft = targetBat.apLeft-apDamage;
         console.log('AP Damage : '+apDamage);
     }
+    // electric
+    if (totalDamage >= 1) {
+        if (targetBatType.cat == 'vehicles') {
+            apDamage = apDamage+Math.round(totalDamage*0.08);
+        } else {
+            apDamage = apDamage+Math.round(totalDamage*0.02);
+        }
+        console.log('Electric AP Damage : '+apDamage);
+    }
+    targetBat.apLeft = targetBat.apLeft-apDamage;
     console.log('Previous Damage : '+targetBat.damage);
     // inflammable
     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm')) {
@@ -471,9 +480,18 @@ function defense() {
     // add damage! remove squads? remove bat?
     if (targetWeap.apdamage > 0) {
         apDamage = apDamage+Math.round(totalDamage*targetWeap.apdamage);
-        selectedBat.apLeft = selectedBat.apLeft-apDamage;
         console.log('AP Damage : '+apDamage);
     }
+    // electric
+    if (totalDamage >= 1) {
+        if (selectedBatType.cat == 'vehicles') {
+            apDamage = apDamage+Math.round(totalDamage*0.08);
+        } else {
+            apDamage = apDamage+Math.round(totalDamage*0.02);
+        }
+        console.log('Electric AP Damage : '+apDamage);
+    }
+    selectedBat.apLeft = selectedBat.apLeft-apDamage;
     console.log('Previous Damage : '+selectedBat.damage);
     // poison
     if (totalDamage >= 1 && rand.rand(1,2) === 1) {

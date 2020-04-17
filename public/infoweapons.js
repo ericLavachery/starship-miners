@@ -63,7 +63,7 @@ function weaponsInfos(bat,batUnitType) {
         if (thisWeapon.noFly) {
             $('#unitInfos').append('<span class="paramName">Tir aérien</span><span class="paramIcon"></span><span class="paramValue">Non</span><br>');
         }
-        $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+bat.ammo+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+showAmmo(bat.ammo)+'</span><br>');
         if (baseAmmo < 99) {
             $('#unitInfos').append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'</span><br>');
         }
@@ -115,9 +115,20 @@ function weaponsInfos(bat,batUnitType) {
         if (thisWeapon.noFly) {
             $('#unitInfos').append('<span class="paramName">Tir aérien</span><span class="paramIcon"></span><span class="paramValue">Non</span><br>');
         }
-        $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+bat.ammo2+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+showAmmo(bat.ammo2)+'</span><br>');
         if (baseAmmo < 99) {
             $('#unitInfos').append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'</span><br>');
         }
     }
+};
+
+function showAmmo(ammo) {
+    let ammoView = ammo;
+    ammoView = ammoView.replace('dynamite-','');
+    ammoView = ammoView.replace('bombe-','');
+    ammoView = ammoView.replace('obus-','');
+    ammoView = ammoView.replace('grenade-','');
+    ammoView = ammoView.replace('missile-homing','missile');
+    ammoView = ammoView.replace('autodestruction','bombe');
+    return ammoView;
 };
