@@ -7,7 +7,7 @@
         "squads":5,
         "squadSize":3,
         "crew":3,
-        "hp":65,
+        "hp":38,
         "armor":9,
         "size":18,
         "stealth":2,
@@ -53,7 +53,7 @@
         "squads":4,
         "squadSize":2,
         "crew":3,
-        "hp":175,
+        "hp":100,
         "armor":12,
         "size":35,
         "stealth":0,
@@ -99,7 +99,7 @@
         "squads":3,
         "squadSize":2,
         "crew":3,
-        "hp":230,
+        "hp":130,
         "armor":16,
         "size":42,
         "stealth":0,
@@ -115,7 +115,8 @@
             "power":28,
             "aoe":"squad",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-multi",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"]
+            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
+            "maxAmmo": 20
         },
         "weapon2":{},
         "moveCost":2,
@@ -133,7 +134,7 @@
         "squads":4,
         "squadSize":3,
         "crew":6,
-        "hp":90,
+        "hp":60,
         "armor":10,
         "size":27,
         "stealth":0,
@@ -159,7 +160,8 @@
             "power":12,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["feu","napalm"]
+            "ammo":["feu","napalm"],
+            "maxAmmo": 12
         },
         "moveCost":2,
         "maxFlood":2,
@@ -176,7 +178,7 @@
         "squads":4,
         "squadSize":3,
         "crew":3,
-        "hp":100,
+        "hp":75,
         "armor":13,
         "size":30,
         "stealth":0,
@@ -192,7 +194,8 @@
             "power":24,
             "aoe":"unit",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire"]
+            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire"],
+            "maxAmmo": 16
         },
         "weapon2":{
             "name":"Lance-flammes",
@@ -203,7 +206,8 @@
             "power":15,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["feu","napalm"]
+            "ammo":["feu","napalm"],
+            "maxAmmo": 12
         },
         "moveCost":2,
         "maxFlood":3,
@@ -220,7 +224,7 @@
         "squads":4,
         "squadSize":3,
         "crew":3,
-        "hp":90,
+        "hp":60,
         "armor":12,
         "size":27,
         "stealth":0,
@@ -236,7 +240,8 @@
             "power":22,
             "aoe":"unit",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire"]
+            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire"],
+            "maxAmmo": 16
         },
         "weapon2":{
             "name":"Moissonneuse",
@@ -249,7 +254,6 @@
             "aoe":"squad",
             "sound":"industrial_vehicle_combine_harvester_approach_passb",
             "ammo":["standard","monomolecular"]
-
         },
         "moveCost":2,
         "maxFlood":2,
@@ -266,7 +270,7 @@
         "squads":3,
         "squadSize":2,
         "crew":5,
-        "hp":245,
+        "hp":150,
         "armor":18,
         "size":45,
         "stealth":0,

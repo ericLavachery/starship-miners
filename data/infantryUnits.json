@@ -572,7 +572,7 @@
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"],
-            "maxAmmo":10
+            "maxAmmo":8
         },
         "moveCost":4,
         "maxFlood":2,
@@ -649,7 +649,8 @@
             "power":10,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["feu","napalm"]
+            "ammo":["feu","napalm"],
+            "maxAmmo": 8
         },
         "weapon2":{
             "name":"Pistolet",

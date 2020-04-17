@@ -375,9 +375,28 @@ function weaponSelect(weapon) {
 };
 
 function weaponSelectRiposte() {
+    let baseAmmo = 99;
+    let ammoLeft = 99);
     targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
-    // bonus veterancy & ammo
     targetWeap = weaponAdj(targetWeap,targetBat,'w1');
+    if (activeTurn == 'aliens') {
+        baseAmmo = targetWeap.maxAmmo;
+        ammoLeft = calcAmmos(targetBat,baseAmmo);
+        if (ammoLeft <= 0) {
+            if (Object.keys(targetBatType.weapon2).length >= 1) {
+                targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon2));
+                targetWeap = weaponAdj(targetWeap,targetBat,'w2');
+                baseAmmo = targetWeap.maxAmmo;
+                ammoLeft = calcAmmos(targetBat,baseAmmo);
+            } else {
+                ammoLeft = 0);
+            }            
+            if (ammoLeft <= 0) {
+                targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
+                targetWeap = weaponAdj(targetWeap,targetBat,'w1');
+            }
+        }
+    }
 };
 
 function weaponAdj(weapon,bat,wn) {

@@ -6,6 +6,8 @@ function weaponsInfos(bat,batUnitType) {
     let anyTarget = false;
     let inMelee = batInMelee(bat);
     let noFireMelee = false;
+    let baseAmmo = 99;
+    let ammoLeft = 99;
     if (batUnitType.weapon.rof >= 1 && batUnitType.weapon2.rof >= 1 && batUnitType.weapon.name == batUnitType.weapon2.name) {
         showW1 = false;
     }
@@ -15,12 +17,14 @@ function weaponsInfos(bat,batUnitType) {
             noFireMelee = true;
         }
         anyTarget = anyAlienInRange(bat.tileId,thisWeapon);
+        baseAmmo = thisWeapon.maxAmmo;
+        ammoLeft = calcAmmos(bat,baseAmmo);
         balise = 'h4';
         if (thisWeapon.name === selectedWeap.name) {
             balise = 'h1';
         }
         let w1message = 'Salves épuisées';
-        if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && anyTarget) {
+        if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && ammoLeft >= 1 && anyTarget) {
             // assez d'ap et de salve
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w1`)"><i class="ra ra-bullets rpg"></i></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
         } else {
@@ -28,10 +32,14 @@ function weaponsInfos(bat,batUnitType) {
             if (noFireMelee) {
                 w1message = 'Tir impossible en mêlée';
             } else {
-                if (!anyTarget) {
-                    w1message = 'Pas de cible';
-                } else if (bat.apLeft < thisWeapon.cost) {
-                    w1message = 'PA épuisés';
+                if (ammoLeft < 1) {
+                    w1message = 'Munitions épuisées';
+                } else {
+                    if (!anyTarget) {
+                        w1message = 'Pas de cible';
+                    } else if (bat.apLeft < thisWeapon.cost) {
+                        w1message = 'PA épuisés';
+                    }
                 }
             }
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
@@ -56,6 +64,9 @@ function weaponsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="paramName">Tir aérien</span><span class="paramIcon"></span><span class="paramValue">Non</span><br>');
         }
         $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+bat.ammo+'</span><br>');
+        if (baseAmmo < 99) {
+            $('#unitInfos').append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'</span><br>');
+        }
     }
     if (batUnitType.weapon2.rof >= 1) {
         thisWeapon = weaponAdj(batUnitType.weapon2,bat,'w2');
@@ -63,8 +74,8 @@ function weaponsInfos(bat,batUnitType) {
             noFireMelee = true;
         }
         anyTarget = anyAlienInRange(bat.tileId,thisWeapon);
-        let baseAmmo = thisWeapon.maxAmmo;
-        let ammoLeft = calcAmmos(bat,baseAmmo);
+        baseAmmo = thisWeapon.maxAmmo;
+        ammoLeft = calcAmmos(bat,baseAmmo);
         balise = 'h4';
         if (thisWeapon.name === selectedWeap.name) {
             balise = 'h1';

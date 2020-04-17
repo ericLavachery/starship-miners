@@ -72,10 +72,17 @@ function combat() {
     let distance = calcDistance(selectedBat.tileId,targetBat.tileId);
     // console.log('distance '+distance);
     $('#report').append('<span class="report">distance '+distance+'</span><br>');
+    // ammo
+    let baseAmmo = 99;
+    let ammoLeft = 99);
+    if (activeTurn == 'aliens') {
+        baseAmmo = targetWeap.maxAmmo;
+        ammoLeft = calcAmmos(targetBat,baseAmmo);
+    }
     // riposte?
     let riposte = false;
     let initiative = true;
-    if (targetWeap.range >= distance) {
+    if (targetWeap.range >= distance && ammoLeft >= 1) {
         if (!targetWeap.noFly || !selectedBatType.skills.includes('fly')) {
             riposte = true;
             let aspeed = calcSpeed(selectedBat,selectedWeap,targetWeap,distance,true);
@@ -222,7 +229,7 @@ function attack() {
         i++
     }
     // lucky shot damage
-    if (tohit > 35 && shotDice === 50) {
+    if (toHit > 35 && shotDice === 50) {
         totalDamage = Math.round(totalDamage*1.3);
         console.log('lucky shot on damage');
     }
@@ -308,7 +315,14 @@ function attack() {
     if (targetBatType.cat == 'buildings' || targetBatType.cat == 'vehicles') {
         catOK = true;
     }
-    if (selectedWeap.ammo.includes('troueur') && totalDamage >= 1 && catOK) {
+    let trouOK = false;
+    if (selectedWeap.ammo.includes('troueur') && totalDamage >= 1) {
+        trouOK = true;
+    }
+    if (selectedWeap.ammo.includes('acide') && totalDamage >= 5) {
+        trouOK = true;
+    }
+    if (trouOK && catOK) {
         if (!targetBat.tags.includes('trou')) {
             targetBat.tags.push('trou');
         }
@@ -487,6 +501,11 @@ function defense() {
                 $('#report').append('<span class="report cy">Maladie<br></span>');
             }
         }
+    }
+    // munitions limitées
+    console.log('maxAmmo'+targetWeap.maxAmmo);
+    if (targetWeap.maxAmmo < 99) {
+        targetBat.tags.push('ammoUsed');
     }
     console.log('Damage : '+totalDamage);
     $('#report').append('<span class="report">('+totalDamage+')<br></span>');

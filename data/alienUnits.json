@@ -603,7 +603,7 @@
             "power": 10,
             "aoe": "unit",
             "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
-            "ammo": [ "none" ]
+            "ammo": [ "perceur" ]
         },
         "weapon2": {},
         "moveCost": 3,
