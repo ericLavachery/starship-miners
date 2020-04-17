@@ -74,7 +74,7 @@ function combat() {
     $('#report').append('<span class="report">distance '+distance+'</span><br>');
     // ammo
     let baseAmmo = 99;
-    let ammoLeft = 99);
+    let ammoLeft = 99;
     if (activeTurn == 'aliens') {
         baseAmmo = targetWeap.maxAmmo;
         ammoLeft = calcAmmos(targetBat,baseAmmo);

@@ -376,7 +376,7 @@ function weaponSelect(weapon) {
 
 function weaponSelectRiposte() {
     let baseAmmo = 99;
-    let ammoLeft = 99);
+    let ammoLeft = 99;
     targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
     targetWeap = weaponAdj(targetWeap,targetBat,'w1');
     if (activeTurn == 'aliens') {
@@ -389,8 +389,8 @@ function weaponSelectRiposte() {
                 baseAmmo = targetWeap.maxAmmo;
                 ammoLeft = calcAmmos(targetBat,baseAmmo);
             } else {
-                ammoLeft = 0);
-            }            
+                ammoLeft = 0;
+            }
             if (ammoLeft <= 0) {
                 targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
                 targetWeap = weaponAdj(targetWeap,targetBat,'w1');
