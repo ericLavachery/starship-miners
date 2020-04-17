@@ -239,7 +239,7 @@ function attack() {
         console.log('AP Damage : '+apDamage);
     }
     // electric
-    if (totalDamage >= 1) {
+    if (totalDamage >= 1 && selectedWeap.ammo.includes('electric')) {
         if (targetBatType.cat == 'vehicles') {
             apDamage = apDamage+Math.round(totalDamage*0.08);
         } else {
@@ -483,7 +483,7 @@ function defense() {
         console.log('AP Damage : '+apDamage);
     }
     // electric
-    if (totalDamage >= 1) {
+    if (totalDamage >= 1 && targetWeap.ammo.includes('electric')) {
         if (selectedBatType.cat == 'vehicles') {
             apDamage = apDamage+Math.round(totalDamage*0.08);
         } else {
