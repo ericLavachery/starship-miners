@@ -172,10 +172,10 @@ function skillsInfos(bat,batUnitType) {
     // MECANO
     if (batUnitType.skills.includes('mecano')) {
         numTargets = numMedicTargets(bat,'vehicles');
-        apCost = numTargets*(7+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= 7 && numTargets >= 1 && !inMelee) {
+        apCost = numTargets*(10+batUnitType.squads-bat.squadsLeft);
+        if (bat.apLeft >= 8 && numTargets >= 1 && !inMelee) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,7,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,10,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
         } else {
             // pas assez d'ap
             if (inMelee) {
@@ -193,10 +193,10 @@ function skillsInfos(bat,batUnitType) {
     // REPAIR
     if (batUnitType.skills.includes('repair')) {
         numTargets = numMedicTargets(bat,'buildings');
-        apCost = numTargets*(10+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= 10 && numTargets >= 1 && !inMelee) {
+        apCost = numTargets*(15+batUnitType.squads-bat.squadsLeft);
+        if (bat.apLeft >= 8 && numTargets >= 1 && !inMelee) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les bâtiments adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`buildings`,10,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les bâtiments adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`buildings`,15,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
         } else {
             // pas assez d'ap
             if (inMelee) {
