@@ -462,6 +462,9 @@ function weaponAdj(weapon,bat,wn) {
 function calcShotDice(bat,luckyshot) {
     if (bat.team == 'player') {
         let luckDice = rand.rand(1,100);
+        if (bat.tags.includes('lucky')) {
+            luckDice = rand.rand(1,115);
+        }
         if (luckyshot) {
             $('#report').append('<span class="report cy">Lucky shot!</span><br>');
             bat.tags.push('lucky');
@@ -470,7 +473,6 @@ function calcShotDice(bat,luckyshot) {
             $('#report').append('<span class="report cy">Lucky shot!</span><br>');
             return 50;
         } else if (luckDice <= luckCheck[1]) {
-            $('#report').append('<span class="report">Good shot!</span><br>');
             return 75;
         } else if (luckDice <= luckCheck[2]) {
             return 100;

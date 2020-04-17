@@ -221,6 +221,11 @@ function attack() {
         if (i > 300) {break;}
         i++
     }
+    // lucky shot damage
+    if (tohit > 35 && shotDice === 50) {
+        totalDamage = Math.round(totalDamage*1.3);
+        console.log('lucky shot on damage');
+    }
     // add damage! remove squads? remove bat?
     if (selectedWeap.apdamage > 0) {
         apDamage = apDamage+Math.round(totalDamage*selectedWeap.apdamage);

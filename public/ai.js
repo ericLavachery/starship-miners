@@ -18,7 +18,6 @@ function alienMoveLoop() {
     targetBat = {};
     targetBatType = {};
     targetWeap = {};
-    console.log('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
     fearFactor();
     checkPossibleMoves();
     // loop this until no ap or no salvo
@@ -177,6 +176,24 @@ function checkPDM() {
     console.log('PDM: '+pointDeMire);
 };
 
+function isSurrounded(bat) {
+    let distance;
+    let surroundingAliens = 0;
+    aliens.forEach(function(alien) {
+        if (bat.loc === "zone") {
+            distance = calcDistance(bat.tileId,alien.tileId);
+            if (distance <= 1) {
+                surroundingAliens++;
+            }
+        }
+    });
+    if (surroundingAliens >= 6) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
 function anyCloseTarget() {
     newPointDeMire = -1;
     let distance;
@@ -189,17 +206,19 @@ function anyCloseTarget() {
     shufBats.forEach(function(bat) {
         if (checkAlienFlyTarget(selectedWeap,bat)) {
             if (bat.loc === "zone" && bat.fuzz >= minFuzz) {
-                distance = calcDistance(selectedBat.tileId,bat.tileId);
-                if (distance <= closeTargetRange) {
-                    if (distance < lePlusProche) {
-                        lePlusProche = distance;
-                        newPointDeMire = bat.tileId;
+                if (!isSurrounded(bat)) {
+                    distance = calcDistance(selectedBat.tileId,bat.tileId);
+                    if (distance <= closeTargetRange) {
+                        if (distance < lePlusProche) {
+                            lePlusProche = distance;
+                            newPointDeMire = bat.tileId;
+                        }
                     }
                 }
             }
         }
     });
-    if (newPointDeMire > 0) {
+    if (newPointDeMire >= 0) {
         pointDeMire = newPointDeMire;
         console.log('new PDM: '+pointDeMire);
     }
@@ -340,24 +359,51 @@ function uncheckBadMoves() {
     let alienOff = pdmOffsets(selectedBat.tileId);
     let tileOff;
     let shufZone = _.shuffle(zone);
-    // enlève les possibleMoves qui éloignent du PDM
+    // enlève les possibleMoves qui éloignent fortement du PDM
     if (possibleMoves.length > 1) {
         shufZone.forEach(function(tile) {
             if (isAdjacent(selectedBat.tileId,tile.id)) {
                 if (possibleMoves.length > 1) {
                     tileOff = pdmOffsets(tile.id);
-                    if (alienOff[0] < tileOff[0] || alienOff[1] < tileOff[1]) {
-                        delPossibleMove(tile.id);
+                    if (alienOff[0] > alienOff[1]) {
+                        if (alienOff[0] < tileOff[0]) {
+                            delPossibleMove(tile.id);
+                        } else if (alienOff[0] == tileOff[0] && alienOff[1] < tileOff[1]) {
+                            delPossibleMove(tile.id);
+                        }
+                    } else if (alienOff[0] < alienOff[1]) {
+                        if (alienOff[1] < tileOff[1]) {
+                            delPossibleMove(tile.id);
+                        } else if (alienOff[1] == tileOff[1] && alienOff[0] < tileOff[0]) {
+                            delPossibleMove(tile.id);
+                        }
+                    } else {
+                        if (alienOff[0] < tileOff[0] || alienOff[1] < tileOff[1]) {
+                            delPossibleMove(tile.id);
+                        }
                     }
                 }
             }
         });
     }
+    // enlève les possibleMoves qui éloignent du PDM
+    // if (possibleMoves.length > 1) {
+    //     shufZone.forEach(function(tile) {
+    //         if (isAdjacent(selectedBat.tileId,tile.id)) {
+    //             if (possibleMoves.length > 1) {
+    //                 tileOff = pdmOffsets(tile.id);
+    //                 if (alienOff[0] < tileOff[0] || alienOff[1] < tileOff[1]) {
+    //                     delPossibleMove(tile.id);
+    //                 }
+    //             }
+    //         }
+    //     });
+    // }
     // enlève les possibleMoves vers l'eau
-    if (possibleMoves.length > 1) {
+    if (possibleMoves.length >= 3 && rand.rand(1,2) === 1) {
         shufZone.forEach(function(tile) {
             if (isAdjacent(selectedBat.tileId,tile.id)) {
-                if (possibleMoves.length > 1) {
+                if (possibleMoves.length >= 3) {
                     if (tile.terrain == 'S' || tile.terrain == 'W' || tile.terrain == 'R') {
                         delPossibleMove(tile.id);
                     }
