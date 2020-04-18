@@ -108,18 +108,22 @@ function findEgg() {
     let eggsToShow = 0;
     let myEgg = {};
     aliens.forEach(function(bat) {
-        if (bat.loc === "zone" && bat.type === "Oeuf" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
-            eggsToShow = eggsToShow+1;
-            myEgg = bat;
+        if (bat.loc === "zone" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
+            if (bat.type === "Oeuf" || bat.type === "Ruche") {
+                eggsToShow = eggsToShow+1;
+                myEgg = bat;
+            }            
         }
     });
     if (eggsToShow <= 0) {
         shownEggs = [];
         myEgg = {};
         aliens.forEach(function(bat) {
-            if (bat.loc === "zone" && bat.type === "Oeuf" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
-                eggsToShow = eggsToShow+1;
-                myEgg = bat;
+            if (bat.loc === "zone" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
+                if (bat.type === "Oeuf" || bat.type === "Ruche") {
+                    eggsToShow = eggsToShow+1;
+                    myEgg = bat;
+                }
             }
         });
     }

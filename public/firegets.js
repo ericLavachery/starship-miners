@@ -10,24 +10,6 @@ function checkTargetBatType() {
         targetBatUnitIndex = localUnits.findIndex((obj => obj.id == targetBat.typeId));
         targetBatType = localUnits[targetBatUnitIndex];
     }
-    // if (targetBatType.weapon.maxAmmo === undefined) {
-    //     targetBatType.weapon.maxAmmo = 99;
-    // }
-    // if (targetBatType.weapon.noFly === undefined) {
-    //     targetBatType.weapon.noFly = false;
-    // }
-    // if (targetBatType.weapon.noMelee === undefined) {
-    //     targetBatType.weapon.noMelee = false;
-    // }
-    // if (targetBatType.weapon2.maxAmmo === undefined) {
-    //     targetBatType.weapon2.maxAmmo = 99;
-    // }
-    // if (targetBatType.weapon2.noFly === undefined) {
-    //     targetBatType.weapon2.noFly = false;
-    // }
-    // if (targetBatType.weapon2.noMelee === undefined) {
-    //     targetBatType.weapon2.noMelee = false;
-    // }
 };
 
 function isHit(accuracy,aoe,size,stealth,cover,speed,shotDice) {

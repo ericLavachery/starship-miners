@@ -965,7 +965,7 @@
             "cost": 2,
             "range": 1,
             "rof": 10,
-            "accuracy": 12,
+            "accuracy": 11,
             "power": 4,
             "aoe": "unit",
             "sound": "zapsplat_sound_design_electricity_zap_spark_28906b",

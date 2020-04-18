@@ -95,7 +95,7 @@ function spawns() {
             if (bat.type === 'Oeuf') {
                 batType = getBatType(bat);
                 eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
-                vomiCheck = ((batType.squads-bat.squadsLeft)*vomiChance)+eggTurn;
+                vomiCheck = ((batType.squads-bat.squadsLeft)*vomiChance)+(eggTurn*2);
                 if (rand.rand(1,100) <= vomiCheck) {
                     vomiSpawn(bat);
                 }
