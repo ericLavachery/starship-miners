@@ -85,11 +85,24 @@ function dropEgg() {
     }
 };
 
+function morphList() {
+    let transList = [];
+    if (rand.rand(1,1) === 1) {
+        transList.push('Asticots');
+    }
+    if (rand.rand(1,1) === 1) {
+        transList.push('Larves');
+    }
+    console.log(transList);
+    return transList;
+};
+
 function spawns() {
     console.log('check eggs');
     let batType;
     let vomiCheck;
     let eggTurn;
+    let transList = morphList();
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type === 'Oeuf') {
@@ -104,6 +117,10 @@ function spawns() {
                 eggSpawn(bat,false);
             } else if (bat.type === 'Vermisseaux' && rand.rand(1,3) === 1) {
                 alienSpawn(bat,'Lucioles');
+            } else if (transList.includes('Asticots') && bat.type === 'Asticots') {
+                alienMorph(bat,'Moucherons');
+            } else if (transList.includes('Larves') && bat.type === 'Larves') {
+                alienMorph(bat,'Wurms');
             }
         }
     });
@@ -166,29 +183,50 @@ function alienSpawn(bat,crea) {
     }
 };
 
+function alienMorph(bat,newBatName) {
+    let putTile = bat.tileId;
+    let eTags = bat.tags;
+    let eCreaTurn = bat.creaTurn;
+    // delete bat
+    deadAliensList.push(bat.id);
+    // let batIndex = aliens.findIndex((obj => obj.id == bat.id));
+    // aliens.splice(batIndex,1);
+    // put new
+    let unitIndex = alienUnits.findIndex((obj => obj.name == newBatName));
+    conselUnit = alienUnits[unitIndex];
+    conselAmmos = ['xxx','xxx'];
+    putBat(putTile);
+    // Turn & Tags
+    batIndex = aliens.findIndex((obj => obj.tileId == putTile));
+    let newAlien = aliens[batIndex];
+    newAlien.tags = eTags;
+    newAlien.creaTurn = eCreaTurn;
+};
+
 function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     console.log('eggTurn='+eggTurn);
     if (eggTurn >= 15+playerInfos.mapDiff && fromEgg) {
         // TRANFORMATION EN RUCHE !
-        let putTile = bat.tileId;
-        let eTags = bat.tags;
-        let eCreaTurn = bat.creaTurn;
-        // delete Egg
-        let batIndex = aliens.findIndex((obj => obj.id == bat.id));
-        aliens.splice(batIndex,1);
-        deadAliensList.push(bat.id);
-        // put Ruche
-        let unitIndex = alienUnits.findIndex((obj => obj.name == 'Ruche'));
-        conselUnit = alienUnits[unitIndex];
-        conselAmmos = ['xxx','xxx'];
-        putBat(putTile);
-        // eggTurn & eggCat
-        batIndex = aliens.findIndex((obj => obj.tileId == putTile));
-        let newColony = aliens[batIndex];
-        newColony.tags = eTags;
-        newColony.creaTurn = eCreaTurn;
+        alienMorph(bat,'Ruche');
+        // let putTile = bat.tileId;
+        // let eTags = bat.tags;
+        // let eCreaTurn = bat.creaTurn;
+        // // delete Egg
+        // let batIndex = aliens.findIndex((obj => obj.id == bat.id));
+        // aliens.splice(batIndex,1);
+        // deadAliensList.push(bat.id);
+        // // put Ruche
+        // let unitIndex = alienUnits.findIndex((obj => obj.name == 'Ruche'));
+        // conselUnit = alienUnits[unitIndex];
+        // conselAmmos = ['xxx','xxx'];
+        // putBat(putTile);
+        // // eggTurn & eggCat
+        // batIndex = aliens.findIndex((obj => obj.tileId == putTile));
+        // let newColony = aliens[batIndex];
+        // newColony.tags = eTags;
+        // newColony.creaTurn = eCreaTurn;
     } else {
         let spawnChance = Math.round(eggTurn*20*bat.squadsLeft/6*Math.sqrt(playerInfos.mapDiff)/2*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
         if (!fromEgg) {

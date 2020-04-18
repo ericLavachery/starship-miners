@@ -234,7 +234,7 @@ function anyFarTarget() {
         if (bat.loc === "zone" && bat.fuzz >= -1) {
             if (checkAlienFlyTarget(selectedWeap,bat)) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
-                if (distance <= 10) {
+                if (distance <= 8) {
                     newPointDeMire = bat.tileId;
                 }
             }
@@ -290,7 +290,7 @@ function checkPossibleJumps() {
     if (selectedBatType.skills.includes('fouisseur')) {
         maxDistance = 5;
     } else {
-        maxDistance = Math.round(selectedBat.apLeft/selectedBatType.moveCost);
+        maxDistance = Math.round(selectedBat.apLeft/selectedBatType.moveCost/1.2);
     }
     zone.forEach(function(tile) {
         distance = calcDistance(selectedBat.tileId,tile.id);

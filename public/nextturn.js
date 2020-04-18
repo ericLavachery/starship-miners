@@ -132,10 +132,13 @@ function tagsEffect(bat,batType) {
     let squadHP;
     let squadsOut;
     // REGENERATION
-    if (bat.tags.includes('regeneration') || batType.skills.includes('regeneration')) {
+    if (bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg')) {
         squadHP = batType.squadSize*batType.hp;
         let batHP = squadHP*batType.squads;
-        let regen = Math.round(batHP/regenPower);
+        let regen = Math.round(batHP*regenPower/100);
+        if (batType.skills.includes('slowreg')) {
+            regen = Math.round(batHP*slowregPower/100);
+        }
         console.log('regeneration='+regen);
         let batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
         bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
