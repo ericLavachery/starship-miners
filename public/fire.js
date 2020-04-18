@@ -235,17 +235,12 @@ function attack() {
     }
     // add damage! remove squads? remove bat?
     if (selectedWeap.apdamage > 0) {
-        apDamage = apDamage+Math.round(totalDamage*selectedWeap.apdamage);
-        console.log('AP Damage : '+apDamage);
-    }
-    // electric
-    if (totalDamage >= 1 && selectedWeap.ammo.includes('electric')) {
-        if (targetBatType.cat == 'vehicles') {
-            apDamage = apDamage+Math.round(totalDamage*0.08);
-        } else {
-            apDamage = apDamage+Math.round(totalDamage*0.02);
+        let wapd = selectedWeap.apdamage;
+        if (selectedWeap.ammo.includes('electric') && targetBatType.cat == 'vehicles') {
+            wapd = wapd*2.5;
         }
-        console.log('Electric AP Damage : '+apDamage);
+        apDamage = apDamage+Math.round(totalDamage*wapd);
+        console.log('AP Damage : '+apDamage);
     }
     targetBat.apLeft = targetBat.apLeft-apDamage;
     console.log('Previous Damage : '+targetBat.damage);
@@ -479,17 +474,12 @@ function defense() {
     }
     // add damage! remove squads? remove bat?
     if (targetWeap.apdamage > 0) {
-        apDamage = apDamage+Math.round(totalDamage*targetWeap.apdamage);
-        console.log('AP Damage : '+apDamage);
-    }
-    // electric
-    if (totalDamage >= 1 && targetWeap.ammo.includes('electric')) {
-        if (selectedBatType.cat == 'vehicles') {
-            apDamage = apDamage+Math.round(totalDamage*0.08);
-        } else {
-            apDamage = apDamage+Math.round(totalDamage*0.02);
+        let wapd = targetWeap.apdamage;
+        if (targetWeap.ammo.includes('electric') && selectedBatType.cat == 'vehicles') {
+            wapd = wapd*2.5;
         }
-        console.log('Electric AP Damage : '+apDamage);
+        apDamage = apDamage+Math.round(totalDamage*wapd);
+        console.log('AP Damage : '+apDamage);
     }
     selectedBat.apLeft = selectedBat.apLeft-apDamage;
     console.log('Previous Damage : '+selectedBat.damage);

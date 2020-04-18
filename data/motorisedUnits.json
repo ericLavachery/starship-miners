@@ -248,6 +248,7 @@
             "cost":2,
             "range":0,
             "noFly": true,
+            "noDef": true,
             "rof":12,
             "accuracy":24,
             "power":8,

@@ -386,8 +386,12 @@ function weaponSelectRiposte() {
             if (Object.keys(targetBatType.weapon2).length >= 1) {
                 targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon2));
                 targetWeap = weaponAdj(targetWeap,targetBat,'w2');
-                baseAmmo = targetWeap.maxAmmo;
-                ammoLeft = calcAmmos(targetBat,baseAmmo);
+                if (!targetWeap.noDef) {
+                    baseAmmo = targetWeap.maxAmmo;
+                    ammoLeft = calcAmmos(targetBat,baseAmmo);
+                } else {
+                    ammoLeft = 0;
+                }
             } else {
                 ammoLeft = 0;
             }
@@ -413,6 +417,11 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.armors = 1;
     thisWeapon.aoe = weapon.aoe;
     thisWeapon.sound = weapon.sound;
+    if (weapon.noDef === undefined) {
+        thisWeapon.noDef = false;
+    } else {
+        thisWeapon.noDef = weapon.noDef;
+    }
     if (weapon.noMelee === undefined) {
         thisWeapon.noMelee = false;
     } else {
