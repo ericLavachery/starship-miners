@@ -106,7 +106,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible"],
+        "skills":["bldselfrepair","cible"],
         "fuzz":-1
     },
     {
