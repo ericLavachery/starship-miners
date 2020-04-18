@@ -91,7 +91,7 @@ function spawns() {
         if (bat.loc === "zone") {
             if (bat.type === 'Oeuf') {
                 eggSpawn(bat,true);
-            } else if (bat.type === 'Compost') {
+            } else if (bat.type === 'Ruche') {
                 eggSpawn(bat,false);
             } else if (bat.type === 'Vermisseaux' && rand.rand(1,3) === 1) {
                 alienSpawn(bat,'Lucioles');
@@ -120,7 +120,7 @@ function eggSpawn(bat,fromEgg) {
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     console.log('eggTurn='+eggTurn);
     if (eggTurn >= 15+playerInfos.mapDiff && fromEgg) {
-        // TRANFORMATION EN COMPOST !
+        // TRANFORMATION EN RUCHE !
         let putTile = bat.tileId;
         let eTags = bat.tags;
         let eCreaTurn = bat.creaTurn;
@@ -128,8 +128,8 @@ function eggSpawn(bat,fromEgg) {
         let batIndex = aliens.findIndex((obj => obj.id == bat.id));
         aliens.splice(batIndex,1);
         deadAliensList.push(bat.id);
-        // put Compost
-        let unitIndex = alienUnits.findIndex((obj => obj.name == 'Compost'));
+        // put Ruche
+        let unitIndex = alienUnits.findIndex((obj => obj.name == 'Ruche'));
         conselUnit = alienUnits[unitIndex];
         conselAmmos = ['xxx','xxx'];
         putBat(putTile);

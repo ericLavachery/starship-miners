@@ -222,7 +222,7 @@
     {
         "id": 6,
         "name": "Oeuf",
-        "pic": "egg",
+        "pic": "bigblob",
         "cat": "aliens",
         "kind": "egg",
         "class": "X",
@@ -614,8 +614,8 @@
     },
     {
         "id": 17,
-        "name": "Compost",
-        "pic": "colony",
+        "name": "Ruche",
+        "pic": "grulb",
         "cat": "aliens",
         "kind": "egg",
         "class": "X",
@@ -633,7 +633,7 @@
         "weapon": {
             "name": "Eruption",
             "cost": 3,
-            "range": 4,
+            "range": 3,
             "rof": 6,
             "accuracy": 12,
             "power": 20,
