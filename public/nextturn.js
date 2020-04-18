@@ -140,6 +140,10 @@ function tagsEffect(bat,batType) {
         let batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
         bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
         bat.damage = (bat.squadsLeft*squadHP)-batHPLeft;
+        if (bat.squadsLeft > batType.squads) {
+            bat.squadsLeft = batType.squads;
+            bat.damage = 0;
+        }
     }
     // MALADIE
     if (bat.tags.includes('maladie')) {
