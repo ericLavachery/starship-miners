@@ -12,13 +12,15 @@ function alienMoveLoop() {
     $('#report').empty('');
     attAlive = true;
     defAlive = true;
+    alienOccupiedTileList();
+    playerOccupiedTileList();
     isCamoBlock();
     checkPDM();
     tileUntarget();
     targetBat = {};
     targetBatType = {};
     targetWeap = {};
-    fearFactor();
+    fearFactor(selectedBat,false);
     checkPossibleMoves();
     // loop this until no ap or no salvo
     console.log('!!! Start Loop !!!');
@@ -932,25 +934,30 @@ function alienBonus() {
     });
 };
 
-function fearFactor() {
-    console.log('FEAR');
-    if (selectedBatType.skills.includes('fear')) {
+function fearFactor(myBat,blob) {
+    let myBatType = getBatType(myBat);
+    if (myBatType.skills.includes('fear') || blob) {
+        console.log('FEAR');
         let distance;
         let fearChance;
         let batIndex;
         let batType;
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone") {
-                distance = calcDistance(selectedBat.tileId,bat.tileId);
+                distance = calcDistance(myBat.tileId,bat.tileId);
                 if (distance === 0) {
                     // batIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
                     // batType = unitTypes[batIndex];
                     batType = getBatType(bat);
                     if (batType.moveCost < 99) {
-                        fearChance = Math.round(75-(batType.size*2.5)-(bat.vet*12)+(batType.stealth*2));
+                        if (blob) {
+                            fearChance = 100;
+                        } else {
+                            fearChance = Math.round(75-(batType.size*2.5)-(bat.vet*12)+(batType.stealth*2));
+                        }
                         console.log('fearChance='+fearChance);
                         if (rand.rand(1,100) <= fearChance) {
-                            getAway(bat,selectedBat.tileId);
+                            getAway(bat,myBat.tileId,blob);
                         } else {
                             console.log('noFear');
                         }
@@ -961,7 +968,7 @@ function fearFactor() {
     }
 };
 
-function getAway(bat,fromTileId) {
+function getAway(bat,fromTileId,blob) {
     console.log('getAway');
     console.log(bat);
     let distFromTile;
@@ -989,15 +996,42 @@ function getAway(bat,fromTileId) {
             }
         });
     }
-    let resHere = showRes(bat.tileId);
-    $('#b'+bat.tileId).empty().append(resHere);
-    bat.tileId = getAwayTile;
-    bat.apLeft = bat.apLeft-apCost;
-    tagDelete(bat,'guet');
-    tagDelete(bat,'fortif');
-    if (bat.tags.includes('camo')) {
-        bat.fuzz = -1;
+    if (getAwayTile >= 0) {
+        let resHere = showRes(bat.tileId);
+        $('#b'+bat.tileId).empty().append(resHere);
+        bat.tileId = getAwayTile;
+        bat.apLeft = bat.apLeft-apCost;
+        tagDelete(bat,'guet');
+        tagDelete(bat,'fortif');
+        if (bat.tags.includes('camo')) {
+            bat.fuzz = -1;
+        }
+        tagDelete(bat,'camo');
+        showBataillon(bat);
+        if (!blob) {
+            warning('Répulsion',bat.type+' a pris la fuite...');
+        } else {
+            warning('Vomissure',bat.type+' a dû fuir pour ne pas être digéré par la vomissure de l\'oeuf.');
+        }
+    } else {
+        if (!blob) {
+            let batType = getBatType(bat);
+            bat.apLeft = 0-Math.round(batType.ap/4*3);
+            tagDelete(bat,'guet');
+            tagDelete(bat,'fortif');
+            if (bat.tags.includes('camo')) {
+                bat.fuzz = -1;
+            }
+            tagDelete(bat,'camo');
+            if (!bat.tags.includes('stun')) {
+                bat.tags.push('stun');
+            }
+            warning('Répulsion',bat.type+' paralysé de peur...');
+        } else {
+            let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
+            bataillons.splice(batIndex,1);
+            batDeathEffect(bat,true,'Bataillon digéré',bat.type+' englouti par la vomissure...');
+        }
     }
-    tagDelete(bat,'camo');
-    showBataillon(bat);
+    playerOccupiedTileList();
 };

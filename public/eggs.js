@@ -87,9 +87,18 @@ function dropEgg() {
 
 function spawns() {
     console.log('check eggs');
+    let batType;
+    let vomiCheck;
+    let eggTurn;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type === 'Oeuf') {
+                batType = getBatType(bat);
+                eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
+                vomiCheck = ((batType.squads-bat.squadsLeft)*vomiChance)+eggTurn;
+                if (rand.rand(1,100) <= vomiCheck) {
+                    vomiSpawn(bat);
+                }
                 eggSpawn(bat,true);
             } else if (bat.type === 'Ruche') {
                 eggSpawn(bat,false);
@@ -98,6 +107,48 @@ function spawns() {
             }
         }
     });
+};
+
+function vomiSpawn(bat) {
+    console.log('SPAWN: Vomissure');
+    fearFactor(bat,true);
+    let dropTile = -1;
+    let unitIndex = alienUnits.findIndex((obj => obj.name == 'Vomissure'));
+    conselUnit = alienUnits[unitIndex];
+    conselAmmos = ['xxx','xxx'];
+    console.log(conselUnit);
+    if (Object.keys(conselUnit).length >= 1) {
+        dropTile = checkDropBlob(bat);
+        if (dropTile >= 0) {
+            putBat(dropTile);
+        }
+    }
+};
+
+function checkDropBlob(layBat) {
+    let possibleDrops = [];
+    let batHere = false;
+    let tileDrop = -1;
+    let distance;
+    zone.forEach(function(tile) {
+        distance = calcDistance(layBat.tileId,tile.id);
+        if (distance == 0) {
+            batHere = false;
+            aliens.forEach(function(bat) {
+                if (bat.loc === "zone" && bat.tileId === tile.id) {
+                    batHere = true;
+                }
+            });
+            if (!batHere) {
+                possibleDrops.push(tile.id);
+            }
+        }
+    });
+    if (possibleDrops.length > 1) {
+        possibleDrops = [_.sample(possibleDrops)];
+        tileDrop = possibleDrops[0];
+    }
+    return tileDrop;
 };
 
 function alienSpawn(bat,crea) {

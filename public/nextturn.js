@@ -97,6 +97,9 @@ function tagsUpdate(bat) {
     // tagDelete(bat,'guet');
     tagDelete(bat,'vise');
     tagDelete(bat,'embuscade');
+    if (rand.rand(1,3) <= 2) {
+        tagDelete(bat,'stun');
+    }
 };
 
 function blub(bat,batType) {

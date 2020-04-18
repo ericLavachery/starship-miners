@@ -89,6 +89,7 @@ let blubDamage = 3;
 let bugROF = 1;
 let regenPower = 10; // 10 = 1/10 des HP de base chaque tour
 let shownEggs = [];
+let vomiChance = 5; // 5% par oeuf manquant
 // CONSTRUCTION
 let conselUnit = {};
 let conselAmmos = ['xxx','xxx'];

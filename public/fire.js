@@ -210,9 +210,14 @@ function attack() {
     }
     // lucky shot
     let shotDice = 100;
+     {
+
+    }
     if (selectedBat.tags.includes('luckyshot')) {
         shotDice = calcShotDice(selectedBat,true);
         tagDelete(selectedBat,'luckyshot');
+    } else if (targetBat.tags.includes('stun')) {
+        shotDice = 50;
     } else {
         shotDice = calcShotDice(selectedBat,false);
     }

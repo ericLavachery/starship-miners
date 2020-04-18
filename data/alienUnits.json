@@ -243,7 +243,7 @@
         "maxFlood": -1,
         "maxScarp": -1,
         "maxVeg": -1,
-        "skills": [ "ponte","inflammable" ]
+        "skills": [ "ponte","inflammable","regeneration" ]
     },
     {
         "id": 7,
@@ -977,5 +977,31 @@
         "maxScarp": 3,
         "maxVeg": 3,
         "skills": [ "fly","capfar" ]
+    },
+    {
+        "id": 27,
+        "name": "Vomissure",
+        "pic": "bigblob",
+        "cat": "aliens",
+        "kind": "egg",
+        "class": "X",
+        "rarity": 0,
+        "squads": 6,
+        "squadSize": 1,
+        "crew": 1,
+        "hp": 200,
+        "armor": 0,
+        "size": 100,
+        "speed": 0,
+        "stealth": 0,
+        "ap": 8,
+        "maxSalvo": 0,
+        "weapon": {},
+        "weapon2": {},
+        "moveCost": 99,
+        "maxFlood": -1,
+        "maxScarp": -1,
+        "maxVeg": -1,
+        "skills": [ "ponte","inflammable" ]
     }
 ]
