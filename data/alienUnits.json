@@ -180,7 +180,7 @@
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": [ "fear" ]
+        "skills": [ "fear","ponte" ]
     },
     {
         "id": 5,

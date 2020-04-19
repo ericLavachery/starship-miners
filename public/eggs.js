@@ -131,6 +131,8 @@ function spawns() {
                 alienSpawn(bat,'Fourmis');
             } else if (bat.type === 'Cafards' && rand.rand(1,4) === 1) {
                 alienSpawn(bat,'Cafards');
+            } else if (bat.type === 'Glaireuse' && rand.rand(1,3) === 1) {
+                alienSpawn(bat,'Gluantes');
             }
         }
     });
