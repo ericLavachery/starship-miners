@@ -87,10 +87,10 @@ function dropEgg() {
 
 function morphList() {
     let transList = [];
-    if (rand.rand(1,1) === 1) {
+    if (rand.rand(1,15) === 1) {
         transList.push('Asticots');
     }
-    if (rand.rand(1,1) === 1) {
+    if (rand.rand(1,15) === 1) {
         transList.push('Larves');
     }
     console.log(transList);

@@ -196,6 +196,25 @@ function isSurrounded(bat) {
     }
 };
 
+function targetLogic(bat) {
+    let tFuzz = 0;
+    let batType = getBatType(bat);
+    let modifiedArmor = Math.round(batType.armor*selectedWeap.armors);
+    let averageDamage = selectedWeap.power-modifiedArmor;
+    let armorPiercing = selectedWeap.armors;
+    if (armorPiercing >= 0.75 && armorPiercing <= 1) {
+        armorPiercing = 1;
+    }
+    let twistedArmor = Math.round(batType.armor*armorPiercing);
+    let twistedDamage = selectedWeap.power-twistedArmor;
+    if (averageDamage >= selectedWeap.power/2) {
+        tFuzz = twistedDamage+batType.armor+rand.rand(0,4);
+    } else {
+        tFuzz = averageDamage;
+    }
+    return Math.round(tFuzz);
+};
+
 function anyCloseTarget() {
     newPointDeMire = -1;
     let distance;
@@ -204,6 +223,8 @@ function anyCloseTarget() {
     if (selectedBatType.skills.includes('nez')) {
         minFuzz = -2;
     }
+    let bestLogic = -99;
+    let tLogic;
     let shufBats = _.shuffle(bataillons);
     shufBats.forEach(function(bat) {
         if (checkAlienFlyTarget(selectedWeap,bat)) {
@@ -211,10 +232,15 @@ function anyCloseTarget() {
                 if (!isSurrounded(bat)) {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
                     if (distance <= closeTargetRange) {
-                        if (distance < lePlusProche) {
-                            lePlusProche = distance;
+                        tLogic = targetLogic(bat);
+                        if (tLogic > bestLogic) {
+                            bestLogic = tLogic;
                             newPointDeMire = bat.tileId;
                         }
+                        // if (distance < lePlusProche) {
+                        //     lePlusProche = distance;
+                        //     newPointDeMire = bat.tileId;
+                        // }
                     }
                 }
             }
@@ -229,13 +255,19 @@ function anyCloseTarget() {
 function anyFarTarget() {
     newPointDeMire = -1;
     let distance;
+    let bestLogic = -99;
+    let tLogic;
     let shufBats = _.shuffle(bataillons);
     shufBats.forEach(function(bat) {
         if (bat.loc === "zone" && bat.fuzz >= -1) {
             if (checkAlienFlyTarget(selectedWeap,bat)) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
-                if (distance <= 8) {
-                    newPointDeMire = bat.tileId;
+                if (distance <= 10) {
+                    tLogic = targetLogic(bat);
+                    if (tLogic > bestLogic) {
+                        bestLogic = tLogic;
+                        newPointDeMire = bat.tileId;
+                    }
                 }
             }
         }
@@ -507,27 +539,46 @@ function checkGoodMoves() {
     if (selectedBatType.skills.includes('nez')) {
         minFuzz = -2;
     }
+    let bestLogic = -99;
+    let tLogic;
+    let shufBats = _.shuffle(bataillons);
     if (selectedWeap.range === 0) {
         let meleeTile;
         zone.forEach(function(tile) {
             thisTile = tile.id;
-            bataillons.forEach(function(bat) {
+            shufBats.forEach(function(bat) {
                 if (bat.loc === "zone" && bat.tileId === thisTile && bat.fuzz >= minFuzz && checkAlienFlyTarget(selectedWeap,bat)) {
                     meleeTile = thisTile-1;
                     if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
-                        goodMoves.push(meleeTile);
+                        tLogic = targetLogic(bat);
+                        if (tLogic >= bestLogic) {
+                            bestLogic = tLogic;
+                            goodMoves.push(meleeTile);
+                        }
                     }
                     meleeTile = thisTile+1;
                     if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
-                        goodMoves.push(meleeTile);
+                        tLogic = targetLogic(bat);
+                        if (tLogic >= bestLogic) {
+                            bestLogic = tLogic;
+                            goodMoves.push(meleeTile);
+                        }
                     }
                     meleeTile = thisTile-mapSize;
                     if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
-                        goodMoves.push(meleeTile);
+                        tLogic = targetLogic(bat);
+                        if (tLogic >= bestLogic) {
+                            bestLogic = tLogic;
+                            goodMoves.push(meleeTile);
+                        }
                     }
                     meleeTile = thisTile+mapSize;
                     if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
-                        goodMoves.push(meleeTile);
+                        tLogic = targetLogic(bat);
+                        if (tLogic >= bestLogic) {
+                            bestLogic = tLogic;
+                            goodMoves.push(meleeTile);
+                        }
                     }
                 }
             });
@@ -536,23 +587,39 @@ function checkGoodMoves() {
         let r1Tile;
         zone.forEach(function(tile) {
             thisTile = tile.id;
-            bataillons.forEach(function(bat) {
+            shufBats.forEach(function(bat) {
                 if (bat.loc === "zone" && bat.tileId === thisTile && bat.fuzz >= minFuzz && checkAlienFlyTarget(selectedWeap,bat)) {
                     r1Tile = thisTile-mapSize-1;
                     if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
-                        goodMoves.push(r1Tile);
+                        tLogic = targetLogic(bat);
+                        if (tLogic >= bestLogic) {
+                            bestLogic = tLogic;
+                            goodMoves.push(r1Tile);
+                        }
                     }
                     r1Tile = thisTile-mapSize+1;
                     if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
-                        goodMoves.push(r1Tile);
+                        tLogic = targetLogic(bat);
+                        if (tLogic >= bestLogic) {
+                            bestLogic = tLogic;
+                            goodMoves.push(r1Tile);
+                        }
                     }
                     r1Tile = thisTile+mapSize-1;
                     if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
-                        goodMoves.push(r1Tile);
+                        tLogic = targetLogic(bat);
+                        if (tLogic >= bestLogic) {
+                            bestLogic = tLogic;
+                            goodMoves.push(r1Tile);
+                        }
                     }
                     r1Tile = thisTile+mapSize+1;
                     if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
-                        goodMoves.push(r1Tile);
+                        tLogic = targetLogic(bat);
+                        if (tLogic >= bestLogic) {
+                            bestLogic = tLogic;
+                            goodMoves.push(r1Tile);
+                        }
                     }
                 }
             });
@@ -740,13 +807,19 @@ function targetMelee() {
     if (selectedBatType.skills.includes('nez')) {
         minFuzz = -2;
     }
+    let bestLogic = -99;
+    let tLogic;
     let shufBats = _.shuffle(bataillons);
     shufBats.forEach(function(bat) {
         if (bat.loc === "zone" && bat.fuzz >= minFuzz && checkAlienFlyTarget(selectedWeap,bat)) {
             distance = calcDistance(selectedBat.tileId,bat.tileId);
             if (distance === 0 && inPlace === false) {
-                targetBat = JSON.parse(JSON.stringify(bat));
-                inPlace = true;
+                tLogic = targetLogic(bat);
+                if (tLogic > bestLogic) {
+                    bestLogic = tLogic;
+                    targetBat = JSON.parse(JSON.stringify(bat));
+                    inPlace = true;
+                }
             }
         }
     });
@@ -762,17 +835,25 @@ function targetFarthest() {
     if (selectedBatType.skills.includes('nez')) {
         minFuzz = -2;
     }
+    let bestLogic = -99;
+    let tLogic;
     let shufBats = _.shuffle(bataillons);
     if (!isAlienInMelee(selectedBat.tileId)) {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= minFuzz && checkAlienFlyTarget(selectedWeap,bat)) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance <= selectedWeap.range) {
-                    if (lePlusLoin < distance) {
-                        lePlusLoin = distance;
+                    tLogic = targetLogic(bat);
+                    if (tLogic > bestLogic) {
+                        bestLogic = tLogic;
                         targetBat = JSON.parse(JSON.stringify(bat));
                         inPlace = true;
                     }
+                    // if (lePlusLoin < distance) {
+                    //     lePlusLoin = distance;
+                    //     targetBat = JSON.parse(JSON.stringify(bat));
+                    //     inPlace = true;
+                    // }
                 }
             }
         });
@@ -781,8 +862,12 @@ function targetFarthest() {
             if (bat.loc === "zone" && bat.fuzz >= minFuzz && checkAlienFlyTarget(selectedWeap,bat)) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance === 0) {
-                    targetBat = JSON.parse(JSON.stringify(bat));
-                    inPlace = true;
+                    tLogic = targetLogic(bat);
+                    if (tLogic > bestLogic) {
+                        bestLogic = tLogic;
+                        targetBat = JSON.parse(JSON.stringify(bat));
+                        inPlace = true;
+                    }
                 }
             }
         });
@@ -799,14 +884,20 @@ function targetClosest() {
     if (selectedBatType.skills.includes('nez')) {
         minFuzz = -2;
     }
+    let bestLogic = -99;
+    let tLogic;
     let shufBats = _.shuffle(bataillons);
     if (!isAlienInMelee(selectedBat.tileId)) {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= minFuzz && checkAlienFlyTarget(selectedWeap,bat)) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance == selectedWeap.range) {
-                    targetBat = JSON.parse(JSON.stringify(bat));
-                    inPlace = true;
+                    tLogic = targetLogic(bat);
+                    if (tLogic > bestLogic) {
+                        bestLogic = tLogic;
+                        targetBat = JSON.parse(JSON.stringify(bat));
+                        inPlace = true;
+                    }
                 }
             }
         });
@@ -815,8 +906,12 @@ function targetClosest() {
             if (bat.loc === "zone" && bat.fuzz >= minFuzz && checkAlienFlyTarget(selectedWeap,bat)) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance === 0) {
-                    targetBat = JSON.parse(JSON.stringify(bat));
-                    inPlace = true;
+                    tLogic = targetLogic(bat);
+                    if (tLogic > bestLogic) {
+                        bestLogic = tLogic;
+                        targetBat = JSON.parse(JSON.stringify(bat));
+                        inPlace = true;
+                    }
                 }
             }
         });

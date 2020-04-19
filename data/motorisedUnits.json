@@ -256,8 +256,8 @@
             "maxAmmo":12
         },
         "moveCost":2,
-        "maxFlood":2,
-        "maxScarp":0,
+        "maxFlood":0,
+        "maxScarp":1,
         "maxVeg":2,
         "skills":["fortif","cible"],
         "fuzz":0
