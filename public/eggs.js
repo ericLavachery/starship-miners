@@ -271,7 +271,7 @@ function eggSpawn(bat,fromEgg) {
                     classes.push('A');
                     const index = classes.indexOf('C');
                     if (index > -1) {
-                        array.splice(index,1);
+                        classes.splice(index,1);
                     }
                 }
             }
