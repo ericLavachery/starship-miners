@@ -511,7 +511,7 @@
             "cost":9,
             "range":2,
             "rof":30,
-            "accuracy":19,
+            "accuracy":18,
             "power":8,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",

@@ -350,7 +350,60 @@ function calcRavit(bat) {
     return ravitLeft;
 };
 
+function goStock(apCost) {
+    if (selectedBat.tags.includes('skillUsed')) {
+        let batType;
+        let stocktBat = {};
+        let stockOK = false;
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                batType = getBatType(bat);
+                if (batType.skills.includes('stock')) {
+                    if (calcDistance(selectedBat.tileId,bat.tileId) <= 1) {
+                        stockOK = true;
+                        stocktBat = bat;
+                    }
+                }
+            }
+        });
+        if (stockOK) {
+            selectedBat.apLeft = selectedBat.apLeft-apCost;
+            selectedBat.salvoLeft = 0;
+            let i = 1;
+            while (i <= 50) {
+                if (selectedBat.tags.includes('skillUsed')) {
+                    tagIndex = selectedBat.tags.indexOf('skillUsed');
+                    selectedBat.tags.splice(tagIndex,1);
+                } else {
+                    break;
+                }
+                if (i > 50) {break;}
+                i++
+            }
+            selectedBatArrayUpdate();
+            showBatInfos(selectedBat);
+        }
+    }
+};
+
+function checkStock(myBat) {
+    let batType;
+    let anyStock = false;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            batType = getBatType(bat);
+            if (batType.skills.includes('stock')) {
+                if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
+                    anyStock = true;
+                }
+            }
+        }
+    });
+    return anyStock;
+};
+
 function armyAssign(batId,army) {
+    // le faire avec selectedBat puis arrayUpdate
     let index = bataillons.findIndex((obj => obj.id == batId));
     let bat = bataillons[index];
     bat.army = army;

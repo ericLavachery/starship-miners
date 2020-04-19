@@ -14,6 +14,17 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Ravitaillement</h4></span>');
         }
     }
+    // STOCKS
+    let anyStock = checkStock(bat);
+    if (anyStock && bat.tags.includes('skillUsed')) {
+        let apCost = batUnitType.ap;
+        if (bat.apLeft >= apCost) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de ravitaillements ('+apCost+' PA)" class="boutonGris iconButtons" onclick="goStock('+apCost+')"><i class="fas fa-cubes"></i></button>&nbsp; Réapprovisionnement</h4></span>');
+        } else {
+            skillMessage = "Pas assez de PA"
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réapprovisionnement</h4></span>');
+        }
+    }
     // GUET
     if (batUnitType.weapon.rof >= 1) {
         if (bat.apLeft >= batUnitType.ap-3 && !bat.tags.includes('guet')) {
@@ -127,7 +138,7 @@ function skillsInfos(bat,batUnitType) {
         if (bat.damage >=1) {
             damaged = true;
         }
-        let apCost = 5;
+        let apCost = batUnitType.ap;
         if (bat.apLeft >= apCost && damaged && !inMelee) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se soigner ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false,true)"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
@@ -151,7 +162,7 @@ function skillsInfos(bat,batUnitType) {
         if (bat.damage >=1) {
             damaged = true;
         }
-        let apCost = 5;
+        let apCost = batUnitType.ap;
         if (bat.apLeft >= apCost && damaged && !inMelee) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false,false)"><i class="far fa-heart"></i></button>&nbsp; Premiers soins</h4></span>');
