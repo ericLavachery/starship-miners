@@ -629,10 +629,10 @@
         "speed": 0,
         "stealth": 0,
         "ap": 8,
-        "maxSalvo": 0,
+        "maxSalvo": 2,
         "weapon": {
             "name": "Eruption",
-            "cost": 3,
+            "cost": 4,
             "range": 3,
             "rof": 6,
             "accuracy": 12,
