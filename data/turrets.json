@@ -131,7 +131,7 @@
             "accuracy":25,
             "power":15,
             "aoe":"unit",
-            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "sound":"warfare_gunshot_rifle_exterior_004b",
             "ammo":["antichar","ac-tungsten","ac-uranium","ac-explosive"]
         },
         "weapon2":{
