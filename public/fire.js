@@ -481,7 +481,7 @@ function defense() {
     if (targetWeap.apdamage > 0) {
         let wapd = targetWeap.apdamage;
         if (targetWeap.ammo.includes('electric') && selectedBatType.cat == 'vehicles') {
-            wapd = wapd*2.5*25/targetBatType.size;;
+            wapd = wapd*2.5*25/selectedBatType.size;
         }
         apDamage = apDamage+Math.round(totalDamage*wapd);
         console.log('AP Damage : '+apDamage);
