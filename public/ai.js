@@ -702,48 +702,52 @@ function delPossibleMove(delId) {
 };
 
 function moveToPDM() {
-    console.log('move to PDM');
-    let jump = false;
-    if (selectedBatType.skills.includes('fouisseur') && rand.rand(1,3) === 1) {
-        jump = true;
-    }
-    if (selectedBatType.skills.includes('fly')) {
-        jump = true;
-    }
-    if (jump) {
-        checkPossibleJumps();
-        checkAimMoves();
-        uncheckBadJumps();
-        uncheckShortJumps();
-    } else {
-        checkPossibleMoves();
-        if (selectedBatType.skills.includes('capbld') || selectedBatType.skills.includes('capfar')) {
-            checkAimMoves();
-        } else {
-            checkGoodMoves();
+    if (selectedBatType.moveCost < 99) {
+        console.log('move to PDM');
+        let jump = false;
+        if (selectedBatType.skills.includes('fouisseur') && rand.rand(1,3) === 1) {
+            jump = true;
         }
-        uncheckBadMoves();
+        if (selectedBatType.skills.includes('fly')) {
+            jump = true;
+        }
+        if (jump) {
+            checkPossibleJumps();
+            checkAimMoves();
+            uncheckBadJumps();
+            uncheckShortJumps();
+        } else {
+            checkPossibleMoves();
+            if (selectedBatType.skills.includes('capbld') || selectedBatType.skills.includes('capfar')) {
+                checkAimMoves();
+            } else {
+                checkGoodMoves();
+            }
+            uncheckBadMoves();
+        }
+        chooseMove();
+        doMove(jump);
+        console.log(possibleMoves);
     }
-    chooseMove();
-    doMove(jump);
-    console.log(possibleMoves);
 };
 
 function moveOutOfMelee() {
-    console.log('move out of melee');
-    // bouge de 1 tile hors mêlée
-    checkPossibleMoves();
-    uncheckMeleeMoves();
-    oldPossibleMoves = possibleMoves;
-    if (possibleMoves.length > 1) {
-        uncheckRange1Moves();
+    if (selectedBatType.moveCost < 99) {
+        console.log('move out of melee');
+        // bouge de 1 tile hors mêlée
+        checkPossibleMoves();
+        uncheckMeleeMoves();
+        oldPossibleMoves = possibleMoves;
+        if (possibleMoves.length > 1) {
+            uncheckRange1Moves();
+        }
+        if (possibleMoves.length < 1) {
+            possibleMoves = oldPossibleMoves;
+        }
+        chooseMove();
+        doMove(false);
+        console.log(possibleMoves);
     }
-    if (possibleMoves.length < 1) {
-        possibleMoves = oldPossibleMoves;
-    }
-    chooseMove();
-    doMove(false);
-    console.log(possibleMoves);
 };
 
 function chooseMove() {
@@ -753,8 +757,10 @@ function chooseMove() {
 };
 
 function doMove(jump) {
-    let tileId = possibleMoves[0];
-    moveAlienBat(tileId,jump);
+    if (selectedBatType.moveCost < 99) {
+        let tileId = possibleMoves[0];
+        moveAlienBat(tileId,jump);
+    }   
 };
 
 function moveAlienBat(tileId,jump) {
