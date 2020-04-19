@@ -280,7 +280,7 @@
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": [ "capbld" ]
+        "skills": [ "capbld","ponte" ]
     },
     {
         "id": 8,
@@ -823,14 +823,14 @@
             "power": 4,
             "aoe": "unit",
             "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
-            "ammo": [ "creuseur" ]
+            "ammo": [ "none" ]
         },
         "weapon2": {},
         "moveCost": 5,
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": [ "regeneration" ]
+        "skills": [ "regeneration","ponte" ]
     },
     {
         "id": 23,
@@ -904,7 +904,7 @@
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": [ "grip","venin","tail" ]
+        "skills": [ "grip","venin","tail","ponte" ]
     },
     {
         "id": 25,
@@ -940,7 +940,7 @@
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": [ "capbld","bugboost" ]
+        "skills": [ "capbld","bugboost","ponte" ]
     },
     {
         "id": 26,

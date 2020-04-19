@@ -115,12 +115,22 @@ function spawns() {
                 eggSpawn(bat,true);
             } else if (bat.type === 'Ruche') {
                 eggSpawn(bat,false);
-            } else if (bat.type === 'Vermisseaux' && rand.rand(1,3) === 1) {
+            } else if (bat.type === 'Vermisseaux' && rand.rand(1,2) === 1) {
                 alienSpawn(bat,'Lucioles');
             } else if (transList.includes('Asticots') && bat.type === 'Asticots') {
-                alienMorph(bat,'Moucherons');
+                alienMorph(bat,'Moucherons',false);
             } else if (transList.includes('Larves') && bat.type === 'Larves') {
-                alienMorph(bat,'Wurms');
+                alienMorph(bat,'Wurms',false);
+            } else if (rand.rand(1,25) === 1 && bat.type === 'Vomissure') {
+                alienMorph(bat,'Ruche',true);
+            } else if (bat.type === 'Bug Boss' && rand.rand(1,2) === 1) {
+                alienSpawn(bat,'Bugs');
+            } else if (bat.type === 'Androks' && rand.rand(1,2) === 1) {
+                alienSpawn(bat,'Scorpions');
+            } else if (bat.type === 'Fourmis' && rand.rand(1,6) === 1) {
+                alienSpawn(bat,'Fourmis');
+            } else if (bat.type === 'Cafards' && rand.rand(1,4) === 1) {
+                alienSpawn(bat,'Cafards');
             }
         }
     });
@@ -183,7 +193,7 @@ function alienSpawn(bat,crea) {
     }
 };
 
-function alienMorph(bat,newBatName) {
+function alienMorph(bat,newBatName,reset) {
     let putTile = bat.tileId;
     let eTags = bat.tags;
     let eCreaTurn = bat.creaTurn;
@@ -199,8 +209,10 @@ function alienMorph(bat,newBatName) {
     // Turn & Tags
     batIndex = aliens.findIndex((obj => obj.tileId == putTile));
     let newAlien = aliens[batIndex];
-    newAlien.tags = eTags;
-    newAlien.creaTurn = eCreaTurn;
+    if (!reset) {
+        newAlien.tags = eTags;
+        newAlien.creaTurn = eCreaTurn;
+    }
 };
 
 function eggSpawn(bat,fromEgg) {
@@ -209,7 +221,7 @@ function eggSpawn(bat,fromEgg) {
     console.log('eggTurn='+eggTurn);
     if (eggTurn >= 15+playerInfos.mapDiff && fromEgg) {
         // TRANFORMATION EN RUCHE !
-        alienMorph(bat,'Ruche');
+        alienMorph(bat,'Ruche',false);
         // let putTile = bat.tileId;
         // let eTags = bat.tags;
         // let eCreaTurn = bat.creaTurn;
@@ -255,6 +267,10 @@ function eggSpawn(bat,fromEgg) {
                 classes.push('B');
                 if (eggTurn >= 13 && playerInfos.mapTurn >= minTurnA) {
                     classes.push('A');
+                    const index = classes.indexOf('C');
+                    if (index > -1) {
+                        array.splice(index,1);
+                    }
                 }
             }
             console.log(classes);

@@ -299,6 +299,7 @@ function nextBat(removeActiveBat) {
         showBatInfos(selectedBat);
         showTileInfos(selectedBat.tileId);
     } else {
+        saveAllBats();
         batUnselect();
     }
     // console.log(batList);
