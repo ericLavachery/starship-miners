@@ -22,7 +22,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"warfare_gunshots_x2_rifle_exterior",
-            "ammo":["standard","hollow","perfo","tungsten","uranium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -100,7 +100,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"weapon_gun_ppsh_P_18-uzi",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{
             "name":"Dynamite",
@@ -145,7 +145,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{},
         "moveCost":3,
@@ -178,7 +178,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{
             "name":"Fusil de précision",
@@ -190,7 +190,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"warfare_gunshot_rifle_exterior_004b",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -308,7 +308,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{
             "name":"Lame",
@@ -394,7 +394,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{
             "name":"Baïonnette",
@@ -437,7 +437,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_007_Swpph_Mono_Shot_Strong_Edit-multi",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{},
         "moveCost":3,
@@ -470,7 +470,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{
             "name":"Molotov",
@@ -515,7 +515,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{
             "name":"Pistolet",
@@ -526,7 +526,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "moveCost":4,
         "maxFlood":2,
@@ -604,7 +604,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"warfare_gunshots_x2_rifle_exterior",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{
             "name":"RPG",
@@ -661,7 +661,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -693,7 +693,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -738,7 +738,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"warfare_gunshots_x2_rifle_exterior",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{},
         "moveCost":3,
@@ -772,7 +772,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"warfare_gunshots_x2_rifle_exterior",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{},
         "moveCost":3,

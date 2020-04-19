@@ -22,7 +22,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{
             "name":"Canon",
@@ -103,7 +103,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{
             "name":"Lance-flammes",
@@ -240,7 +240,7 @@
             "power":12,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{
             "name":"Obusier",

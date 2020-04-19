@@ -138,7 +138,7 @@ function skillsInfos(bat,batUnitType) {
         if (bat.damage >=1) {
             damaged = true;
         }
-        let apCost = batUnitType.ap;
+        apCost = batUnitType.ap;
         if (bat.apLeft >= apCost && damaged && !inMelee) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se soigner ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false,true)"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
@@ -162,7 +162,7 @@ function skillsInfos(bat,batUnitType) {
         if (bat.damage >=1) {
             damaged = true;
         }
-        let apCost = batUnitType.ap;
+        apCost = Math.round(batUnitType.ap*1.5);
         if (bat.apLeft >= apCost && damaged && !inMelee) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false,false)"><i class="far fa-heart"></i></button>&nbsp; Premiers soins</h4></span>');
@@ -183,10 +183,10 @@ function skillsInfos(bat,batUnitType) {
     // MECANO
     if (batUnitType.skills.includes('mecano')) {
         numTargets = numMedicTargets(bat,'vehicles');
-        apCost = numTargets*(10+batUnitType.squads-bat.squadsLeft);
+        apCost = numTargets*(10+(batUnitType.squads*2)-(bat.squadsLeft*2));
         if (bat.apLeft >= 8 && numTargets >= 1 && !inMelee) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,10,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,10,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Dépannage</h4></span>');
         } else {
             // pas assez d'ap
             if (inMelee) {
@@ -198,13 +198,13 @@ function skillsInfos(bat,batUnitType) {
                     skillMessage = "Pas assez de PA"
                 }
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Dépannage</h4></span>');
         }
     }
     // REPAIR
     if (batUnitType.skills.includes('repair')) {
         numTargets = numMedicTargets(bat,'buildings');
-        apCost = numTargets*(15+batUnitType.squads-bat.squadsLeft);
+        apCost = numTargets*(15+(batUnitType.squads*3)-(bat.squadsLeft*3));
         if (bat.apLeft >= 8 && numTargets >= 1 && !inMelee) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les bâtiments adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`buildings`,15,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
@@ -228,7 +228,7 @@ function skillsInfos(bat,batUnitType) {
         if (batUnitType.squads > bat.squadsLeft || bat.damage >=1) {
             damaged = true;
         }
-        let apCost = batUnitType.ap;
+        apCost = Math.round(batUnitType.ap*2);
         if (bat.apLeft >= batUnitType.ap && damaged) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`buildings`,'+apCost+',false,true)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');

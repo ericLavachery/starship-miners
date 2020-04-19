@@ -88,7 +88,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{
             "name":"Lance-flammes",
@@ -124,16 +124,15 @@
         "ap":10,
         "maxSalvo":1,
         "weapon":{
-            "name":"Mitrailleuse",
-            "cost":6,
+            "name":"Fusil antichar",
+            "cost":7,
             "range":3,
-            "rof":15,
-            "accuracy":15,
-            "power":8,
+            "rof":3,
+            "accuracy":25,
+            "power":15,
             "aoe":"unit",
-            "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
-
+            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "ammo":["antichar","ac-tungsten","ac-uranium","ac-explosive"]
         },
         "weapon2":{
             "name":"RPG",
@@ -147,7 +146,6 @@
             "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-homing"],
             "maxAmmo": 12
-
         },
         "moveCost":99,
         "maxFlood":-1,
