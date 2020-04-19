@@ -104,6 +104,20 @@ function centerMapCenter() {
     showMap(zone,true);
 };
 
+function isVisible(tileId) {
+    let tileX = zone[tileId].x;
+    let tileY = zone[tileId].y;
+    let minX = xOffset+1;
+    let maxX = xOffset+numVTiles;
+    let minY = yOffset+1;
+    let maxY = yOffset+numHTiles;
+    if (tileX < minX || tileX > maxX || tileY < minY || tileY > maxY) {
+        return false;
+    } else {
+        return true;
+    }
+};
+
 function findEgg() {
     let eggsToShow = 0;
     let myEgg = {};
@@ -112,7 +126,7 @@ function findEgg() {
             if (bat.type === "Oeuf" || bat.type === "Ruche") {
                 eggsToShow = eggsToShow+1;
                 myEgg = bat;
-            }            
+            }
         }
     });
     if (eggsToShow <= 0) {

@@ -653,7 +653,7 @@
         "name": "Gluantes",
         "pic": "spiderz",
         "cat": "aliens",
-        "kind": "spiders",
+        "kind": "spider",
         "class": "C",
         "rarity": 7,
         "squads": 6,

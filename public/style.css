@@ -612,25 +612,19 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
     color: #ba44c8;
 }
 .rose {
-    color: #ff9898;
+    color: #d08db0;
 }
 .brun {
-    color: #519449;
-}
-.vert {
-    color: #5f853e;
+    color: #e6ad72;
 }
 .bleu {
     color: #2f8490;
 }
-.mauve {
-    color: #e000e4;
-}
 .ciel {
-    color: #00e3fa;
+    color: #96c7d7;
 }
 .jaune {
-    color: #f8e71c;
+    color: #ced19b;
 }
 .grisf {
     color: #5a6650;
@@ -640,6 +634,12 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
 }
 .blanc {
     color: #FFFFFF;
+}
+.vert {
+    color: #6db979;
+}
+.mauve {
+    color: #c395cb;
 }
 .low {
     color: #758569;

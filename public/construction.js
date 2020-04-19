@@ -2,6 +2,7 @@ function bfconst() {
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();
+    let color = '';
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer Constriche</span><br>');
     $('#conUnitList').append('<span class="constName or">LES GENTILS</span><br>');
@@ -13,21 +14,49 @@ function bfconst() {
         } else {
             $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
         }
-        $('#conUnitList').append('<span class="constName klik" onclick="conSelect('+unit.id+',`player`)">'+unit.name+'</span><br>');
+        color = catColor(unit.cat,unit.kind);
+        $('#conUnitList').append('<span class="constName klik '+color+'" onclick="conSelect('+unit.id+',`player`)">'+unit.name+'</span><br>');
     });
     $('#conUnitList').append('<span class="constName or">LES MECHANTS</span><br>');
     let allALiensList = alienUnits.slice();
-    sortedAliensList = _.sortBy(_.sortBy(_.sortBy(allALiensList,'name'),'name'),'name');
+    sortedAliensList = _.sortBy(_.sortBy(_.sortBy(allALiensList,'name'),'name'),'kind');
     sortedAliensList.forEach(function(unit) {
         if (conselUnit.id === unit.id && conselUnit.cat === 'aliens') {
             $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
         } else {
             $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
         }
-        $('#conUnitList').append('<span class="constName klik" onclick="conSelect('+unit.id+',`aliens`)">'+unit.name+'</span><br>');
+        color = catColor(unit.cat,unit.kind);
+        $('#conUnitList').append('<span class="constName klik '+color+'" onclick="conSelect('+unit.id+',`aliens`)">'+unit.name+'</span><br>');
     });
     commandes();
 }
+
+function catColor(cat,kind) {
+    if (cat === 'aliens') {
+        if (kind === 'bug') {
+            return 'rose';
+        }
+        if (kind === 'spider') {
+            return 'vert';
+        }
+        if (kind === 'larve') {
+            return 'brun';
+        }
+        if (kind === 'swarm') {
+            return 'jaune';
+        }
+    }
+    if (cat === 'infantry') {
+        return 'jaune';
+    }
+    if (cat === 'vehicles') {
+        return 'vert';
+    }
+    if (cat === 'buildings') {
+        return 'rose';
+    }
+};
 
 function conSelect(unitId,player) {
     conselAmmos = ['xxx','xxx'];
