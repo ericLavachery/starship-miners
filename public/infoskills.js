@@ -163,7 +163,7 @@ function skillsInfos(bat,batUnitType) {
             damaged = true;
         }
         apCost = Math.round(batUnitType.ap*1.5);
-        if (bat.apLeft >= apCost && damaged && !inMelee) {
+        if (bat.apLeft >= batUnitType.ap && damaged && !inMelee) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false,false)"><i class="far fa-heart"></i></button>&nbsp; Premiers soins</h4></span>');
         } else {
