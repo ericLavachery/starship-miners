@@ -330,20 +330,23 @@ function alienHere(tileId) {
 };
 
 function shotSound(weapon) {
-    console.log(weapon);
-    var sound = new Howl({
-        src: ['/static/sounds/'+weapon.sound+'.mp3']
-    });
-    sound.play();
-    console.log(sound);
+    if (!isFFW) {
+        console.log(weapon);
+        var sound = new Howl({
+            src: ['/static/sounds/'+weapon.sound+'.mp3']
+        });
+        sound.play();
+        console.log(sound);
+    }
 };
 
 function deathSound() {
-    // Juste un test : devrait aller chercher des sons différents selon l'unité :)
-    var sound = new Howl({
-        src: ['/static/sounds/zapsplat_explosion_fireball_43738.mp3']
-    });
-    sound.play();
+    if (!isFFW) {
+        var sound = new Howl({
+            src: ['/static/sounds/zapsplat_explosion_fireball_43738.mp3']
+        });
+        sound.play();
+    }
 };
 
 function weaponSelect(weapon) {

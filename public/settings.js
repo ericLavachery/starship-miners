@@ -76,6 +76,7 @@ let deadBatsList = [];
 let deadAliensList = [];
 let luckCheck = [7,21,93,100];
 // ALIENS
+let isFFW = false;
 let pointDeMire = 1830; // tileId
 let possibleMoves = []; // list of tile ids
 let isMelee = false;

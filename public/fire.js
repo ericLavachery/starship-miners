@@ -104,48 +104,64 @@ function combat() {
         if (initiative) {
             console.log('initiative');
             if (activeTurn == 'player') {blockMe(true);}
-            soundWeap = selectedWeap;
-            shotSound(soundWeap);
+            if (!isFFW) {
+                soundWeap = selectedWeap;
+                shotSound(soundWeap);
+            }
             attack();
             if (defAlive && targetBat.apLeft > minFireAP) {
                 defense();
-                soundWeap = targetWeap;
-                setTimeout(function (){
-                    shotSound(soundWeap);
-                    if (activeTurn == 'player') {blockMe(false);}
-                }, 2500); // How long do you want the delay to be (in milliseconds)?
+                if (!isFFW) {
+                    soundWeap = targetWeap;
+                    setTimeout(function (){
+                        shotSound(soundWeap);
+                        if (activeTurn == 'player') {blockMe(false);}
+                    }, 2500); // How long do you want the delay to be (in milliseconds)?
+                }
             } else {
-                setTimeout(function (){
-                    if (activeTurn == 'player') {blockMe(false);}
-                }, 2000); // How long do you want the delay to be (in milliseconds)?
+                if (!isFFW) {
+                    setTimeout(function (){
+                        if (activeTurn == 'player') {blockMe(false);}
+                    }, 2000); // How long do you want the delay to be (in milliseconds)?
+                }
             }
         } else {
             console.log("pas d'initiative");
             if (activeTurn == 'player') {blockMe(true);}
-            soundWeap = targetWeap;
-            shotSound(soundWeap);
+            if (!isFFW) {
+                soundWeap = targetWeap;
+                shotSound(soundWeap);
+            }
             defense();
             if (attAlive && selectedBat.apLeft > minFireAP) {
                 attack();
-                soundWeap = selectedWeap;
-                setTimeout(function (){
-                    shotSound(soundWeap);
-                    if (activeTurn == 'player') {blockMe(false);}
-                }, 2500); // How long do you want the delay to be (in milliseconds)?
+                if (!isFFW) {
+                    soundWeap = selectedWeap;
+                    setTimeout(function (){
+                        shotSound(soundWeap);
+                        if (activeTurn == 'player') {blockMe(false);}
+                    }, 2500); // How long do you want the delay to be (in milliseconds)?
+                }
             } else {
-                setTimeout(function (){
-                    if (activeTurn == 'player') {blockMe(false);}
-                }, 2000); // How long do you want the delay to be (in milliseconds)?
+                if (!isFFW) {
+                    setTimeout(function (){
+                        if (activeTurn == 'player') {blockMe(false);}
+                    }, 2000); // How long do you want the delay to be (in milliseconds)?
+                }
             }
         }
     } else {
         console.log('pas de riposte');
         if (activeTurn == 'player') {blockMe(true);}
-        shotSound(selectedWeap);
+        if (!isFFW) {
+            shotSound(selectedWeap);
+        }
         attack();
-        setTimeout(function (){
-            if (activeTurn == 'player') {blockMe(false);}
-        }, 2000); // How long do you want the delay to be (in milliseconds)?
+        if (!isFFW) {
+            setTimeout(function (){
+                if (activeTurn == 'player') {blockMe(false);}
+            }, 2000); // How long do you want the delay to be (in milliseconds)?
+        }
     }
 };
 
@@ -369,9 +385,13 @@ function attack() {
         defAlive = false;
         batDeath(targetBat);
         $('#report').append('<br><span class="report cy">Bataillon ('+targetBat.type+') détruit<br></span>');
-        setTimeout(function (){
+        if (!isFFW) {
+            setTimeout(function (){
+                batDeathEffect(targetBat,false,'','');
+            }, 3000); // How long do you want the delay to be (in milliseconds)?
+        } else {
             batDeathEffect(targetBat,false,'','');
-        }, 3000); // How long do you want the delay to be (in milliseconds)?
+        }
     } else {
         // targetBatArrayUpdate();
         if (targetBat.team == 'player') {
@@ -385,9 +405,13 @@ function attack() {
         attAlive = false;
         batDeath(selectedBat);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
-        setTimeout(function (){
+        if (!isFFW) {
+            setTimeout(function (){
+                batDeathEffect(selectedBat,false,'Bataillon détruit','Suicide');
+            }, 3000); // How long do you want the delay to be (in milliseconds)?
+        } else {
             batDeathEffect(selectedBat,false,'Bataillon détruit','Suicide');
-        }, 3000); // How long do you want the delay to be (in milliseconds)?
+        }
     } else {
         selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
         selectedBat.salvoLeft = selectedBat.salvoLeft-1;
@@ -551,9 +575,13 @@ function defense() {
         attAlive = false;
         batDeath(selectedBat);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
-        setTimeout(function (){
+        if (!isFFW) {
+            setTimeout(function (){
+                batDeathEffect(selectedBat,false,'','');
+            }, 3000); // How long do you want the delay to be (in milliseconds)?
+        } else {
             batDeathEffect(selectedBat,false,'','');
-        }, 3000); // How long do you want the delay to be (in milliseconds)?
+        }
     } else {
         // selectedBatArrayUpdate();
         if (selectedBat.team == 'player') {
@@ -652,7 +680,7 @@ function batDeath(bat) {
 function batDeathEffect(bat,quiet,title,body) {
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
-    if (!quiet) {
+    if (!quiet || !isFFW) {
         deathSound();
         $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/explosion'+nextExplosion+'.gif"></div>'+resHere);
         nextExplosion = nextExplosion+1;

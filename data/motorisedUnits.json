@@ -36,7 +36,7 @@
             "aoe":"squad",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"],
-            "maxAmmo": 6
+            "maxAmmo": 9
         },
         "moveCost":2,
         "maxFlood":0,
@@ -70,7 +70,7 @@
             "aoe":"squad",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-multi",
             "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
-            "maxAmmo": 20
+            "maxAmmo": 24
         },
         "weapon2":{},
         "moveCost":2,
@@ -115,7 +115,7 @@
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
             "ammo":["feu","napalm"],
-            "maxAmmo": 12
+            "maxAmmo":18
         },
         "moveCost":2,
         "maxFlood":2,
@@ -139,17 +139,15 @@
         "ap":13,
         "maxSalvo":1,
         "weapon":{
-            "name":"Canon",
-            "cost":5,
+            "name":"Mitrailleuse",
+            "cost":4,
             "range":2,
-            "noFly": true,
-            "rof":3,
-            "accuracy":16,
-            "power":24,
+            "rof":15,
+            "accuracy":17,
+            "power":8,
             "aoe":"unit",
-            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire"],
-            "maxAmmo": 16
+            "sound":"warfare_gunshots_machine_gun_burst_005b",
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "weapon2":{
             "name":"Lance-flammes",
@@ -161,10 +159,10 @@
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
             "ammo":["feu","napalm"],
-            "maxAmmo": 12
+            "maxAmmo":24
         },
         "moveCost":2,
-        "maxFlood":3,
+        "maxFlood":2,
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","brochette"],
@@ -195,7 +193,7 @@
             "aoe":"unit",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
             "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire"],
-            "maxAmmo": 16
+            "maxAmmo":24
         },
         "weapon2":{
             "name":"Moissonneuse",
@@ -253,7 +251,7 @@
             "aoe":"squad",
             "sound":"audio_hero_ClaymoreAntiMine_PE230101_339b",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"],
-            "maxAmmo":12
+            "maxAmmo":24
         },
         "moveCost":2,
         "maxFlood":0,
