@@ -173,7 +173,23 @@ function vomiSpawn(bat) {
         dropTile = checkDropBlob(bat);
         if (dropTile >= 0) {
             putBat(dropTile);
+            blobEat(dropTile);
         }
+    }
+};
+
+function blobEat(layBlob) {
+    let batId = -1;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'zone' && bat.tileId === layBlob) {
+            batId = bat.id;
+        }
+    });
+    const index = array.indexOf(5);
+    let unitIndex = bataillons.findIndex((obj => obj.id == batId));
+    if (unitIndex > -1) {
+        bataillons.splice(unitIndex,1);
+        warning('Bataillon englouti',bat.type+' a été détruit par la vomissure.');
     }
 };
 

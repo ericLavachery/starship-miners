@@ -299,6 +299,9 @@ function goRavit(apCost) {
         });
         if (biggestRavit < 99) {
             ravitBat.tags.push('skillUsed');
+            if (rand.rand(1,3) === 1) {
+                ravitBat.xp = ravitBat.xp+1;
+            }
             selectedBat.apLeft = selectedBat.apLeft-apCost;
             selectedBat.salvoLeft = 0;
             let i = 1;
