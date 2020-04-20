@@ -25,17 +25,17 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium"]
         },
         "weapon2":{
-            "name":"Grenade",
-            "cost":4,
-            "range":0,
+            "name":"Lance-grenade",
+            "cost":6,
+            "range":1,
             "noFly":true,
             "rof":10,
             "accuracy":11,
             "power":10,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
-            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire"],
-            "maxAmmo":4
+            "ammo":["grenade","grenade-flashbang","grenade-antichar","grenade-gaz","grenade-incendiaire"],
+            "maxAmmo":8
         },
         "moveCost":3,
         "maxFlood":3,
