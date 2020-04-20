@@ -680,17 +680,23 @@ function batDeath(bat) {
 function batDeathEffect(bat,quiet,title,body) {
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
-    if (!quiet || !isFFW) {
-        deathSound();
-        $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/explosion'+nextExplosion+'.gif"></div>'+resHere);
-        nextExplosion = nextExplosion+1;
-        if (nextExplosion > 3) {
-            nextExplosion = 1;
-        }
-        setTimeout(function (){
+    if (!isFFW) {
+        if (!quiet) {
+            deathSound();
+            $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/explosion'+nextExplosion+'.gif"></div>'+resHere);
+            nextExplosion = nextExplosion+1;
+            if (nextExplosion > 3) {
+                nextExplosion = 1;
+            }
+            setTimeout(function (){
+                $('#b'+bat.tileId).empty();
+                $('#b'+bat.tileId).append(resHere);
+            }, 1500); // How long do you want the delay to be (in milliseconds)?
+        } else {
             $('#b'+bat.tileId).empty();
             $('#b'+bat.tileId).append(resHere);
-        }, 1500); // How long do you want the delay to be (in milliseconds)?
+            warning(title,body);
+        }
     } else {
         $('#b'+bat.tileId).empty();
         $('#b'+bat.tileId).append(resHere);

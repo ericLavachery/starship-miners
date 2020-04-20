@@ -189,6 +189,11 @@ function putBat(tileId) {
         newBat.xp = 0;
         if (Object.keys(conselUnit.weapon).length >= 1) {
             newBat.range = conselUnit.weapon.range;
+            if (Object.keys(conselUnit.weapon2).length >= 1) {
+                if (conselUnit.weapon2.range > conselUnit.weapon.range) {
+                    newBat.range = conselUnit.weapon2.range;
+                }
+            }
         } else {
             newBat.range = 0;
         }
