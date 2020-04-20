@@ -93,7 +93,7 @@
         "maxSalvo": 1,
         "weapon": {
             "name": "Eperons",
-            "cost": 2,
+            "cost": 4,
             "range": 0,
             "noFly": true,
             "rof": 4,
@@ -302,7 +302,7 @@
         "maxSalvo": 1,
         "weapon": {
             "name": "Mandibules",
-            "cost": 2,
+            "cost": 3,
             "range": 0,
             "noFly": true,
             "rof": 8,
@@ -376,7 +376,7 @@
         "maxSalvo": 1,
         "weapon": {
             "name": "Mandibules",
-            "cost": 4,
+            "cost": 6,
             "range": 0,
             "noFly": true,
             "rof": 2,
@@ -668,7 +668,7 @@
         "maxSalvo": 1,
         "weapon": {
             "name": "Mandibules",
-            "cost": 2,
+            "cost": 1,
             "range": 0,
             "noFly": true,
             "rof": 15,
@@ -705,8 +705,8 @@
         "maxSalvo": 1,
         "weapon": {
             "name": "Jet d'acide",
-            "cost": 3,
-            "range": 0,
+            "cost": 1,
+            "range": 1,
             "noFly": true,
             "rof": 15,
             "accuracy": 14,
@@ -926,7 +926,7 @@
         "maxSalvo": 1,
         "weapon": {
             "name": "Boule de feu",
-            "cost": 4,
+            "cost": 5,
             "range": 3,
             "rof": 4,
             "accuracy": 12,

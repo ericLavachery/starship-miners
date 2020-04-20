@@ -127,7 +127,6 @@
             "name":"Fusil de précision",
             "cost":6,
             "range":4,
-            "noMelee":true,
             "rof":4,
             "accuracy":30,
             "power":8,

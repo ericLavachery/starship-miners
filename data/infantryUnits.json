@@ -60,14 +60,14 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Fusil plasma",
-            "cost":4,
+            "cost":3,
             "range":1,
             "rof":10,
             "accuracy":25,
             "power":12,
             "aoe":"unit",
             "sound":"PM_FSSF2_WEAPONS_D1_SHOT_323c",
-            "ammo":["plasma"]
+            "ammo":["plasma","plastanium","nanite","uridium"]
         },
         "weapon2":{},
         "moveCost":3,
