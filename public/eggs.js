@@ -97,12 +97,35 @@ function morphList() {
     return transList;
 };
 
+function aliensCount() {
+    let aliensNums = {lucioles:0,bugs:0,scorpions:0,fourmis:0,cafards:0,gluantes:0};
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            if (bat.type === 'Lucioles') {
+                aliensNums.lucioles = aliensNums.lucioles+1
+            } else if (bat.type === 'Bugs') {
+                aliensNums.bugs = aliensNums.bugs+1
+            } else if (bat.type === 'Scorpions') {
+                aliensNums.scorpions = aliensNums.scorpions+1
+            } else if (bat.type === 'Fourmis') {
+                aliensNums.fourmis = aliensNums.fourmis+1
+            } else if (bat.type === 'Cafards') {
+                aliensNums.cafards = aliensNums.cafards+1
+            } else if (bat.type === 'Gluantes') {
+                aliensNums.gluantes = aliensNums.gluantes+1
+            }
+        }
+    });
+    return aliensNums;
+};
+
 function spawns() {
     console.log('check eggs');
     let batType;
     let vomiCheck;
     let eggTurn;
     let transList = morphList();
+    let aliensNums = aliensCount();
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type === 'Oeuf') {
@@ -115,7 +138,7 @@ function spawns() {
                 eggSpawn(bat,true);
             } else if (bat.type === 'Ruche') {
                 eggSpawn(bat,false);
-            } else if (bat.type === 'Vermisseaux' && rand.rand(1,2) === 1) {
+            } else if (bat.type === 'Vermisseaux' && rand.rand(1,2) === 1 && aliensNums.lucioles < 8) {
                 alienSpawn(bat,'Lucioles');
             } else if (transList.includes('Asticots') && bat.type === 'Asticots') {
                 alienMorph(bat,'Moucherons',false);
@@ -123,15 +146,15 @@ function spawns() {
                 alienMorph(bat,'Wurms',false);
             } else if (rand.rand(1,25) === 1 && bat.type === 'Vomissure') {
                 alienMorph(bat,'Ruche',true);
-            } else if (bat.type === 'Bug Boss' && rand.rand(1,2) === 1) {
+            } else if (bat.type === 'Bug Boss' && aliensNums.bugs < 16) {
                 alienSpawn(bat,'Bugs');
-            } else if (bat.type === 'Androks' && rand.rand(1,2) === 1) {
+            } else if (bat.type === 'Androks' && aliensNums.scorpions < 12) {
                 alienSpawn(bat,'Scorpions');
-            } else if (bat.type === 'Fourmis' && rand.rand(1,6) === 1) {
+            } else if (bat.type === 'Fourmis' && rand.rand(1,6) === 1 && aliensNums.fourmis < 16) {
                 alienSpawn(bat,'Fourmis');
-            } else if (bat.type === 'Cafards' && rand.rand(1,4) === 1) {
+            } else if (bat.type === 'Cafards' && rand.rand(1,4) === 1 && aliensNums.fourmis < 24) {
                 alienSpawn(bat,'Cafards');
-            } else if (bat.type === 'Glaireuse' && rand.rand(1,3) === 1) {
+            } else if (bat.type === 'Glaireuse' && aliensNums.gluantes < 8) {
                 alienSpawn(bat,'Gluantes');
             }
         }

@@ -757,10 +757,10 @@ function chooseMove() {
 };
 
 function doMove(jump) {
-    if (selectedBatType.moveCost < 99) {
+    if (selectedBatType.moveCost < 99 && possibleMoves.length >= 1) {
         let tileId = possibleMoves[0];
         moveAlienBat(tileId,jump);
-    }   
+    }
 };
 
 function moveAlienBat(tileId,jump) {
