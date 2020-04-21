@@ -743,7 +743,7 @@
         "weapon": {
             "name": "Mandibules",
             "cost": 3,
-            "range": 1,
+            "range": 0,
             "rof": 6,
             "accuracy": 18,
             "power": 15,
