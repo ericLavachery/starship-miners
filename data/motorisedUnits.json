@@ -308,7 +308,7 @@
         "id":33,
         "name":"Monster truck",
         "pic":"monster",
-        "cat":"vehicle",
+        "cat":"vehicles",
         "squads":4,
         "squadSize":2,
         "crew":3,
