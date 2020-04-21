@@ -39,9 +39,9 @@
             "maxAmmo": 9
         },
         "moveCost":2,
-        "maxFlood":0,
-        "maxScarp":1,
-        "maxVeg":2,
+        "maxFlood":1,
+        "maxScarp":2,
+        "maxVeg":3,
         "skills":["cible"],
         "fuzz":0
     },
@@ -74,8 +74,8 @@
         },
         "weapon2":{},
         "moveCost":2,
-        "maxFlood":2,
-        "maxScarp":1,
+        "maxFlood":1,
+        "maxScarp":2,
         "maxVeg":2,
         "skills":["cible"],
         "fuzz":0
@@ -118,7 +118,7 @@
             "maxAmmo":18
         },
         "moveCost":2,
-        "maxFlood":2,
+        "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","guerrilla"],
@@ -162,7 +162,7 @@
             "maxAmmo":24
         },
         "moveCost":2,
-        "maxFlood":2,
+        "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","brochette"],
@@ -209,7 +209,7 @@
             "ammo":["standard","monomolecular"]
         },
         "moveCost":2,
-        "maxFlood":2,
+        "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","brochette"],
@@ -255,7 +255,7 @@
         },
         "moveCost":2,
         "maxFlood":0,
-        "maxScarp":1,
+        "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible"],
         "fuzz":0
@@ -264,7 +264,7 @@
         "id":10,
         "name":"Buggies",
         "pic":"jeep",
-        "cat":"vehicle",
+        "cat":"vehicles",
         "squads":5,
         "squadSize":4,
         "crew":2,
@@ -298,10 +298,53 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
         "moveCost":2,
-        "maxFlood":2,
+        "maxFlood":1,
         "maxScarp":2,
-        "maxVeg":2,
+        "maxVeg":3,
         "skills":["cible","guerrilla"],
+        "fuzz":0
+    },
+    {
+        "id":33,
+        "name":"Monster truck",
+        "pic":"monster",
+        "cat":"vehicle",
+        "squads":4,
+        "squadSize":2,
+        "crew":3,
+        "hp":75,
+        "armor":8,
+        "size":30,
+        "stealth":0,
+        "ap":14,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Moissonneuse",
+            "cost":2,
+            "range":0,
+            "rof":8,
+            "accuracy":24,
+            "power":12,
+            "aoe":"squad",
+            "sound":"industrial_vehicle_combine_harvester_approach_passb",
+            "ammo":["standard","monomolecular"]
+        },
+        "weapon2":{
+            "name":"Baliste",
+            "cost":7,
+            "range":2,
+            "rof":2,
+            "accuracy":14,
+            "power":16,
+            "aoe":"unit",
+            "sound":"321552__brendan89__regular-arrow-shotb",
+            "ammo":["standard","poison"]
+        },
+        "moveCost":2,
+        "maxFlood":0,
+        "maxScarp":0,
+        "maxVeg":2,
+        "skills":["fortif","cible","brochette"],
         "fuzz":0
     }
 ]
