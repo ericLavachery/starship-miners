@@ -445,13 +445,17 @@ function weaponAdj(weapon,bat,wn) {
         // let batTypeIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
         // let batUnitType = unitTypes[batTypeIndex];
         let batUnitType = getBatType(bat);
-        if (batUnitType.skills.includes('elevation')) {
+        if (batUnitType.skills.includes('elevation') || batUnitType.skills.includes('selevation')) {
             let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
             let tile = zone[tileIndex];
             if (tile.terrain == 'H') {
                 thisWeapon.range = thisWeapon.range+1;
             } else if (tile.terrain == 'M') {
-                thisWeapon.range = thisWeapon.range+2;
+                if (batUnitType.skills.includes('selevation')) {
+                    thisWeapon.range = thisWeapon.range+1;
+                } else {
+                    thisWeapon.range = thisWeapon.range+2;
+                }
             }
         }
     }

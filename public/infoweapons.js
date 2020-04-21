@@ -132,6 +132,8 @@ function showAmmo(ammo) {
     ammoView = ammoView.replace('dynamite-','');
     ammoView = ammoView.replace('bombe-','');
     ammoView = ammoView.replace('obus-','');
+    ammoView = ammoView.replace('ac-','');
+    ammoView = ammoView.replace('sm-','');
     ammoView = ammoView.replace('grenade-','');
     ammoView = ammoView.replace('missile-homing','missile');
     ammoView = ammoView.replace('autodestruction','bombe');

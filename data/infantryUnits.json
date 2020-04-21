@@ -41,7 +41,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid"],
+        "skills":["fortif","cible","firstaid","selevation"],
         "fuzz":0
     },
     {
@@ -100,7 +100,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"weapon_gun_ppsh_P_18-uzi",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
         },
         "weapon2":{
             "name":"Dynamite",
@@ -145,7 +145,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
         },
         "weapon2":{},
         "moveCost":3,
@@ -178,7 +178,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
         },
         "weapon2":{
             "name":"Fusil de précision",
@@ -308,7 +308,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
         },
         "weapon2":{
             "name":"Lame",
@@ -437,7 +437,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_007_Swpph_Mono_Shot_Strong_Edit-multi",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
         },
         "weapon2":{},
         "moveCost":3,
@@ -470,7 +470,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
         },
         "weapon2":{
             "name":"Molotov",
@@ -526,7 +526,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
         },
         "moveCost":4,
         "maxFlood":2,
@@ -563,7 +563,7 @@
         "weapon2":{
             "name":"Mortier léger",
             "cost":9,
-            "range":2,
+            "range":3,
             "noMelee":true,
             "noFly":true,
             "rof":3,
@@ -578,7 +578,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","elevation"],
+        "skills":["fortif","cible","selevation"],
         "fuzz":0
     },
     {
@@ -623,7 +623,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","mine","brochette"],
+        "skills":["fortif","cible","mine","brochette","selevation"],
         "fuzz":0
     },
     {
@@ -661,7 +661,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -740,7 +740,19 @@
             "sound":"warfare_gunshots_x2_rifle_exterior",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
         },
-        "weapon2":{},
+        "weapon2":{
+            "name":"Grenade",
+            "cost":5,
+            "range":0,
+            "noFly":true,
+            "rof":10,
+            "accuracy":9,
+            "power":10,
+            "aoe":"squad",
+            "sound":"161622__ryanconway__grenade-throwb",
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire"],
+            "maxAmmo":12
+        },
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,

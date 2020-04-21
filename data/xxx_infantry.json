@@ -65,7 +65,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shot",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -399,7 +399,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shot",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
         },
         "weapon2":{},
         "moveCost":1,
@@ -510,17 +510,6 @@
         "ap":16,
         "maxSalvo":1,
         "weapon":{
-            "name":"Fusil de précision",
-            "cost":6,
-            "range":2,
-            "rof":18,
-            "accuracy":20,
-            "power":8,
-            "aoe":"unit",
-            "sound":"warfare_gunshot_rifle_exterior_004b",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
-        },
-        "weapon2":{
             "name":"Mandibules",
             "cost":3,
             "range":0,
@@ -530,6 +519,17 @@
             "aoe":"unit",
             "sound":"",
             "ammo":["poison"]
+        },
+        "weapon2":{
+            "name":"Fusil de précision",
+            "cost":6,
+            "range":2,
+            "rof":18,
+            "accuracy":20,
+            "power":8,
+            "aoe":"unit",
+            "sound":"warfare_gunshot_rifle_exterior_004b",
+            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -687,10 +687,10 @@
             "range":1,
             "rof":12,
             "accuracy":18,
-            "power":5,
+            "power":4,
             "aoe":"unit",
             "sound":"418433__craftyindividual__uzi-burst",
-            "ammo":["standard","perfo","tungsten"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
         },
         "weapon2":{
             "name":"Fusil de précision",
@@ -750,7 +750,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","embuscade","firstaid","leader","elevation"],
+        "skills":["fortif","cible","embuscade","firstaid","leader","selevation"],
         "fuzz":0,
     },
     {
@@ -859,10 +859,10 @@
             "range":1,
             "rof":12,
             "accuracy":18,
-            "power":5,
+            "power":4,
             "aoe":"unit",
             "sound":"418433__craftyindividual__uzi-burst",
-            "ammo":["standard","perfo","tungsten"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
         },
         "weapon2":{
             "name":"Guidage laser",
@@ -988,10 +988,10 @@
             "range":1,
             "rof":8,
             "accuracy":14,
-            "power":5,
+            "power":4,
             "aoe":"unit",
             "sound":"418433__craftyindividual__uzi-burst",
-            "ammo":["standard","perfo","tungsten"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
         },
         "weapon2":{
             "name":"Lame",
@@ -1031,10 +1031,10 @@
             "range":1,
             "rof":8,
             "accuracy":14,
-            "power":5,
+            "power":4,
             "aoe":"unit",
             "sound":"418433__craftyindividual__uzi-burst",
-            "ammo":["standard","perfo","tungsten"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
         },
         "weapon2":{
             "name":"Fusil de précision",
