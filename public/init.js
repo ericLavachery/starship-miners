@@ -29,7 +29,8 @@ socket.on('savedMap-Load', function(sm) {
         generateNewMap();
     }
     commandes();
-    $('#tour').empty().append('Tour '+playerInfos.mapTurn);
+    $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
+    $('#tour').append('Difficulté '+playerInfos.mapDiff);
 });
 // Bataillons
 socket.on('bataillons-Load', function(bt) {

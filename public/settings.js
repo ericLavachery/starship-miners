@@ -92,6 +92,7 @@ let regenPower = 10; // 10 = 1/10 des HP de base chaque tour
 let slowregPower = 3; // 10 = 1/10 des HP de base chaque tour
 let shownEggs = [];
 let vomiChance = 5; // 5% par oeuf manquant
+let stopForFight = false;
 // CONSTRUCTION
 let conselUnit = {};
 let conselAmmos = ['xxx','xxx'];

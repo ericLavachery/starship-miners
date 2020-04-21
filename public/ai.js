@@ -127,6 +127,7 @@ function shootTarget(recul) {
         console.log('shoot '+targetBat.type);
         console.log(targetBat);
         tileTarget(targetBat);
+        stopForFight = true;
         combat();
     } else {
         console.log('Pas assez de PA pour tirer');

@@ -82,7 +82,8 @@ function nextTurnEnd() {
     });
     killBatList();
     playerInfos.mapTurn = playerInfos.mapTurn+1;
-    $('#tour').empty().append('Tour '+playerInfos.mapTurn);
+    $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
+    $('#tour').append('Difficulté '+playerInfos.mapDiff);
     savePlayerInfos();
     saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
     saveAliens(); // !!!!!!!!!!!!!!!!!!!!!!

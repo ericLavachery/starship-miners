@@ -4,9 +4,6 @@ function checkEggsDrop() {
     let drop = false;
     let dropTurn = Math.floor(((playerInfos.mapDrop*cumDrop)+playerInfos.mapTurn)/(cumDrop+1));
     let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapDiff));
-    // if (playerInfos.mapTurn == 0) {
-    //     dropChance = 100; // !!!!!!!!!!!!!!!! Seulement pour les TESTS :)
-    // }
     console.log('dropChance='+dropChance);
     if (rand.rand(1,100) <= dropChance) {
         drop = true;
@@ -185,7 +182,6 @@ function blobEat(layBlob) {
             batId = bat.id;
         }
     });
-    const index = array.indexOf(5);
     let unitIndex = bataillons.findIndex((obj => obj.id == batId));
     if (unitIndex > -1) {
         bataillons.splice(unitIndex,1);
