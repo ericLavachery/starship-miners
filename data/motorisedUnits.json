@@ -324,7 +324,7 @@
             "range":2,
             "rof":2,
             "accuracy":14,
-            "power":16,
+            "power":18,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
             "ammo":["standard","poison"]
