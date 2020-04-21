@@ -267,7 +267,7 @@ function numMedicTargets(myBat,cat) {
                     catOK = false;
                 }
                 if (catOK) {
-                    if (bat.damage > 0 || bat.squadsLeft < batType.squads) {
+                    if (bat.damage > 0 || bat.squadsLeft < batType.squads || bat.tags.includes('poison') || bat.tags.includes('venin') || bat.tags.includes('maladie') || bat.tags.includes('trou')) {
                         numTargets = numTargets+1;
                     }
                 }
