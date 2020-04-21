@@ -245,9 +245,9 @@
             "cost":6,
             "range":3,
             "noFly": true,
-            "rof":2,
-            "accuracy":12,
-            "power":32,
+            "rof":4,
+            "accuracy":10,
+            "power":36,
             "aoe":"squad",
             "sound":"audio_hero_ClaymoreAntiMine_PE230101_339b",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"],
@@ -346,7 +346,7 @@
         "maxFlood":0,
         "maxScarp":0,
         "maxVeg":2,
-        "skills":["fortif","cible","brochette"],
+        "skills":["fortif","cible","brochette","selevation"],
         "fuzz":0
     }
 ]
