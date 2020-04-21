@@ -44,7 +44,7 @@ function nextAlien() {
 
 function ffw() {
     console.log('$$$$$$$ START FFW');
-    let batIndex;
+    let outOfList = [];
     isFFW = true;
     for(let bat of alienList){
         stopForFight = false;
@@ -68,8 +68,7 @@ function ffw() {
         closeTargetRange = rand.rand(1,closeTargetRangeDice);
         alienMoveLoop();
         if (Object.keys(selectedBat).length >= 1) {
-            batIndex = alienList.findIndex((obj => obj.id == selectedBat.id));
-            alienList.splice(batIndex,1);
+            outOfList.push(selectedBat.id);
         }
         if (stopForFight) {
             console.log('$$$$$$$ STOP AFTER COMBAT');
@@ -77,27 +76,14 @@ function ffw() {
             break;
         }
     }
-    // alienList.forEach(function(bat) {
-    //     // batSelect()
-    //     $('#report').empty('');
-    //     tileUnselect();
-    //     tileUntarget();
-    //     selectedBat = JSON.parse(JSON.stringify(bat));
-    //     console.log(selectedBat);
-    //     // draw new selected unit
-    //     tileSelect(bat);
-    //     checkSelectedBatType();
-    //     // let's go
-    //     tileUntarget();
-    //     selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
-    //     selectedWeap = weaponAdj(selectedWeap,selectedBat,'w1');
-    //     console.log('----------------------');
-    //     console.log(alienList);
-    //     console.log('selectedBat :');
-    //     console.log(selectedBat);
-    //     closeTargetRange = rand.rand(1,closeTargetRangeDice);
-    //     alienMoveLoop();
-    // });
+    // Remove outOfList units from alienList
+    alienList.slice().reverse().forEach(function(bat,index,object) {
+        if (outOfList.includes(bat.id)) {
+            alienList.splice(object.length-1-index,1);
+        }
+    });
+    outOfList = [];
+    // End Alien Turn
     if (alienList.length < 1) {
         batUnselect();
         nextTurnEnd();

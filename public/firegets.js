@@ -282,6 +282,7 @@ function checkFlyTarget(weapon,batType) {
 
 function fireInfos(bat) {
     isMelee = false;
+    let batType = getBatType(bat);
     cursorSwitch('.','grid-item','pointer');
     let myTileX = zone[bat.tileId].x;
     let myTileY = zone[bat.tileId].y;
@@ -292,7 +293,7 @@ function fireInfos(bat) {
         $("#"+tile.id).attr("title", "");
         alien = alienHere(tile.id);
         if (Object.keys(alien).length >= 1) {
-            if (sideBySideTiles(selectedBat.tileId,tile.id)) {
+            if (sideBySideTiles(selectedBat.tileId,tile.id) && !batType.skills.includes('longshot')) {
                 isMelee = true;
                 alienIndex = alienUnits.findIndex((obj => obj.id == alien.typeId));
                 alienType = alienUnits[alienIndex];
