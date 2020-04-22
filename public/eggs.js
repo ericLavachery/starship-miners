@@ -3,7 +3,7 @@ function checkEggsDrop() {
     eggDropCount = 0;
     let drop = false;
     let dropTurn = Math.floor(((playerInfos.mapDrop*cumDrop)+playerInfos.mapTurn)/(cumDrop+1));
-    let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapDiff));
+    let dropChance = Math.round((dropTurn*Math.sqrt(playerInfos.mapDiff))+playerInfos.mapDiff-1);
     console.log('dropChance='+dropChance);
     if (rand.rand(1,100) <= dropChance) {
         drop = true;

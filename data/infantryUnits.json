@@ -682,7 +682,7 @@
         "armor":0,
         "size":3,
         "stealth":4,
-        "ap":10,
+        "ap":9,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet",
