@@ -291,8 +291,8 @@
             "cost":4,
             "range":2,
             "rof":20,
-            "accuracy":15,
-            "power":8,
+            "accuracy":17,
+            "power":6,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]

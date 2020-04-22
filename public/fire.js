@@ -405,15 +405,16 @@ function attack() {
     if (selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('autodestruction')) {
         attAlive = false;
         batDeath(selectedBat);
-        $('#unitInfos').empty();
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
                 batDeathEffect(selectedBat,false,'Bataillon détruit','Suicide');
+                $('#unitInfos').empty();
             }, 3000); // How long do you want the delay to be (in milliseconds)?
         } else {
             batDeathEffect(selectedBat,false,'Bataillon détruit','Suicide');
         }
+        $('#unitInfos').empty();
     } else {
         selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
         selectedBat.salvoLeft = selectedBat.salvoLeft-1;
@@ -576,7 +577,6 @@ function defense() {
     if (selectedBat.squadsLeft <= 0) {
         attAlive = false;
         batDeath(selectedBat);
-        $('#unitInfos').empty();
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){

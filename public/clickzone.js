@@ -54,6 +54,7 @@ function batSelect(bat) {
     tileUnselect();
     tileUntarget();
     selectedBat = JSON.parse(JSON.stringify(bat));
+    targetBat = {};
     console.log(selectedBat);
     if (activeTurn == 'aliens' || !isVisible(bat.tileId)) {
         centerMap();
