@@ -75,7 +75,7 @@
         "weapon2":{
             "name":"Mitrailleuse",
             "cost":4,
-            "range":2,
+            "range":1,
             "rof":15,
             "accuracy":16,
             "power":8,

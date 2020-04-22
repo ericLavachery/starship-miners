@@ -14,7 +14,12 @@ function clickMove(tileId) {
         batUnselect();
     } else {
         if (isAdjacent(selectedBat.tileId,tileId)) {
-            if (selectedBat.apLeft >= 1) {
+            let moveLeft = selectedBat.apLeft;
+            // Guerrilla
+            if (selectedBatType.skills.includes('guerrilla')) {
+                moveLeft = selectedBat.apLeft+4;
+            }
+            if (moveLeft >= 1) {
                 if (terrainAccess(selectedBat.id,tileId)) {
                     if (!alienOccupiedTiles.includes(tileId)) {
                         moveSelectedBat(tileId,false);
@@ -48,6 +53,8 @@ function moveInfos(bat) {
     cursorSwitch('.','grid-item','pointer');
     let titleString;
     let moveCost;
+    let moveLeft;
+    let batType = getBatType(bat);
     let myTileX = zone[bat.tileId].x;
     let myTileY = zone[bat.tileId].y;
     zone.forEach(function(tile) {
@@ -57,7 +64,12 @@ function moveInfos(bat) {
                 if (tile.y == myTileY && tile.x == myTileX) {
                     cursorSwitch('#',tile.id,'pointer');
                 } else {
-                    if (selectedBat.apLeft >= 1 && terrainAccess(selectedBat.id,tile.id)) {
+                    moveLeft = selectedBat.apLeft;
+                    // Guerrilla
+                    if (batType.skills.includes('guerrilla')) {
+                        moveLeft = selectedBat.apLeft+4;
+                    }
+                    if (moveLeft >= 1 && terrainAccess(selectedBat.id,tile.id)) {
                         if (!alienOccupiedTiles.includes(tile.id)) {
                             cursorSwitch('#',tile.id,'move');
                         } else {
