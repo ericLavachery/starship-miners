@@ -1,0 +1,22 @@
+[
+    {
+        "require":{
+            "techreq":"plasma",
+            "gangreq":[
+                {"Detrua":4},
+                {"Brasier":6},
+                {"Rednecks":6}
+            ],
+            "bldlogic":"or";
+            "bldreq":["Atelier","Labo"],
+            "bldreplace":[
+                {"Detrua":7},
+                {"Rednecks":9}
+            ]
+        },
+        "rescost":[
+            {"cuivre":5,"plomb":2,"bois":3},
+            {"cuivre":8,"bois":3}
+        ]
+    }
+]
