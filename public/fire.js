@@ -63,6 +63,7 @@ function combat() {
     if (activeTurn == 'player') {
         camoOut();
     }
+    centerMap();
     let selectedBatUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
     let targetBatUnits = targetBat.squadsLeft*targetBatType.squadSize;
     $('#report').empty('');

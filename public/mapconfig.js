@@ -91,6 +91,12 @@ function centerMap() {
         yOffset = myTileY-Math.round(numHTiles/2);
         limitOffset();
         showMap(zone,true);
+        if (Object.keys(selectedBat).length >= 1) {
+            tileSelect(selectedBat);
+        }
+        if (Object.keys(targetBat).length >= 1) {
+            tileTarget(targetBat);
+        }
     }
 };
 
