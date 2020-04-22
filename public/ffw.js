@@ -85,8 +85,9 @@ function ffw() {
     outOfList = [];
     // End Alien Turn
     if (alienList.length < 1) {
-        batUnselect();
-        nextTurnEnd();
-        isFFW = false;
+        // batUnselect();
+        // nextTurnEnd();
     }
+    commandes();
+    isFFW = false;
 };

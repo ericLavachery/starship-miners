@@ -314,7 +314,7 @@
             "range":0,
             "rof":10,
             "accuracy":14,
-            "power":20,
+            "power":45,
             "aoe":"squad",
             "sound":"bottlerocket_Impact_Boom_Distorted_10b",
             "ammo":["autodestruction"]

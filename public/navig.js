@@ -25,8 +25,8 @@ function commandes() {
         $('#commandz').append('<button type="button" title="Constriche" class="boutonGris iconButtons" onclick="bfconst()"><i class="fa fa-hammer"></i></button>');
         $('#commandz').append('<button type="button" title="Sauvegarder les bataillons" class="boutonGris iconButtons" onclick="saveAllBats()"><i class="far fa-save"></i></button>');
     } else if (activeTurn == 'aliens') {
-        if (alienList.length >= 1) {
-            $('#commandz').append('<button type="button" title="Passer au bataillon suivant" class="boutonMauve iconButtons" onclick="nextAlien()"><i class="fas fa-chevron-circle-right"></i></button>');
+        $('#commandz').append('<button type="button" title="Passer au bataillon suivant" class="boutonMauve iconButtons" onclick="nextAlien()"><i class="fas fa-chevron-circle-right"></i></button>');
+        if (alienList.length >= 2) {
             $('#commandz').append('<button type="button" title="" class="boutonMauve iconButtons" onclick="ffw()"><i class="fas fa-fast-forward"></i></button>');
         }
         $('#commandz').append('<button type="button" title="" class="boutonGris iconButtons" onclick="findEgg()">'+aliens.length+'</button>');

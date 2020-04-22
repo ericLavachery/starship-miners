@@ -405,6 +405,7 @@ function attack() {
     if (selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('autodestruction')) {
         attAlive = false;
         batDeath(selectedBat);
+        $('#unitInfos').empty();
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
@@ -575,6 +576,7 @@ function defense() {
     if (selectedBat.squadsLeft <= 0) {
         attAlive = false;
         batDeath(selectedBat);
+        $('#unitInfos').empty();
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
