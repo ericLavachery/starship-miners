@@ -929,7 +929,7 @@
             "cost": 5,
             "range": 3,
             "rof": 4,
-            "accuracy": 12,
+            "accuracy": 9,
             "power": 24,
             "aoe": "squad",
             "sound": "Blastwave_FX_FlameThrowerBurst_BW.55025b",

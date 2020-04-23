@@ -501,7 +501,7 @@
     },
     {
         "name": "missile-homing",
-        "range": 2,
+        "range": 3,
         "rof": 1,
         "power": 0,
         "armors": 0.25,
