@@ -545,7 +545,7 @@
         "rof": 1,
         "power": -4,
         "armors": 0,
-        "accuracy": 1,
+        "accuracy": 1.5,
         "apdamage": 0.1,
         "aoe": ""
     },
