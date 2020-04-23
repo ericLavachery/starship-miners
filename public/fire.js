@@ -192,8 +192,8 @@ function attack() {
     }
     // rof*squadsLeft loop
     let shots = selectedWeap.rof*selectedBat.squadsLeft;
-    // autodestruction
-    if (selectedWeap.ammo.includes('autodestruction')) {
+    // autodestruction or undead
+    if (selectedWeap.ammo.includes('autodestruction') || selectedBatType.skills.includes('undead')) {
         shots = selectedWeap.rof*selectedBatType.squads;
     }
     // bugROF
@@ -465,6 +465,9 @@ function defense() {
     }
     console.log('brideDef='+brideDef);
     let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);
+    if (targetBatType.skills.includes('undead')) {
+        shots = Math.round(targetWeap.rof*targetBatType.squads*brideDef);
+    }
     // bugROF
     if (bugROF > 1 && targetBatType.kind === 'bug') {
         shots = Math.round(shots*bugROF);

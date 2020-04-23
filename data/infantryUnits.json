@@ -280,7 +280,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["berserk"],
+        "skills":["berserk","undead"],
         "fuzz":0
     },
     {
@@ -323,7 +323,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["berserk"],
+        "skills":["berserk","undead"],
         "fuzz":0
     },
     {
