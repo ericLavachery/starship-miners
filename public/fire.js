@@ -285,7 +285,7 @@ function attack() {
                 totalDamage = totalDamage+targetBatType.hp;
             }
             apDamage = selectedBat.squadsLeft*3;
-            if (targetWeap.range <= 0) {
+            if (targetWeap.isMelee) {
                 apDamage = Math.round(apDamage/4);
             }
             targetBat.apLeft = targetBat.apLeft-apDamage;
@@ -460,7 +460,7 @@ function defense() {
         }
     }
     // Guet
-    if (targetBat.tags.includes('guet')) {
+    if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle')) {
         brideDef = 1;
     }
     console.log('brideDef='+brideDef);

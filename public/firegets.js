@@ -138,6 +138,7 @@ function getAP(bat) {
 };
 
 function calcSpeed(bat,weap,opweap,distance,attacking) {
+    let batType = getBatType(bat);
     let crange = weap.range;
     // console.log('crange'+crange);
     if (weap.range === 0) {
@@ -162,7 +163,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
         }
     }
     // console.log('stealth'+stealth);
-    if (bat.tags.includes('guet')) {
+    if (bat.tags.includes('guet') || batType.skills.includes('sentinelle')) {
         speed = speed-watchInitBonus-stealth;
         console.log('bonus guet');
     }
@@ -422,6 +423,11 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.maxAmmo = 99;
     } else {
         thisWeapon.maxAmmo = weapon.maxAmmo;
+    }
+    if (weapon.isMelee === undefined) {
+        thisWeapon.isMelee = false;
+    } else {
+        thisWeapon.isMelee = weapon.isMelee;
     }
     let myAmmo = bat.ammo;
     if (wn == 'w2') {

@@ -34,7 +34,7 @@ function showBatInfos(bat) {
     if (bat.tags.includes('embuscade')) {
         $('#unitInfos').append('<span class="paramName cy">Embuscade</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
-    if (bat.tags.includes('guet')) {
+    if (bat.tags.includes('guet') || batUnitType.skills.includes('sentinelle')) {
         $('#unitInfos').append('<span class="paramName cy">Guet</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
     let fortifCover = getCover(bat,true);

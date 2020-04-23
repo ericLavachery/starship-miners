@@ -26,7 +26,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // GUET
-    if (batUnitType.weapon.rof >= 1) {
+    if (batUnitType.weapon.rof >= 1 && !batUnitType.skills.includes('sentinelle')) {
         if (bat.apLeft >= batUnitType.ap-3 && !bat.tags.includes('guet')) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le guet (pas de malus à la riposte) (3 PA)" class="boutonGris iconButtons" onclick="guet()"><i class="fas fa-binoculars"></i></button>&nbsp; Guet</h4></span>');
