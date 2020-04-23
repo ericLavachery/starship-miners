@@ -54,6 +54,9 @@ function showBatInfos(bat) {
     if (bat.tags.includes('maladie')) {
         $('#unitInfos').append('<span class="paramName or">Malade</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
+    if (bat.tags.includes('trou')) {
+        $('#unitInfos').append('<span class="paramName or">Blindage troué</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    }
     // XP
     $('#unitInfos').append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+bat.xp+' (niv '+bat.vet+')</span><br>');
     // AUTOSKILLS

@@ -634,10 +634,10 @@
             "name": "Eruption",
             "cost": 4,
             "range": 3,
-            "rof": 6,
-            "accuracy": 12,
+            "rof": 3,
+            "accuracy": 9,
             "power": 20,
-            "aoe": "squad",
+            "aoe": "unit",
             "sound": "S_Laser01bBas",
             "ammo": [ "none" ]
         },

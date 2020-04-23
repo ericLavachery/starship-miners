@@ -267,7 +267,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible"],
+        "skills":["fortif","cible","selevation"],
         "fuzz":0
     },
     {
