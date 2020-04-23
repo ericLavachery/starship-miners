@@ -183,10 +183,12 @@ function medic(cat,cost,around,deep) {
                                 showBataillon(bat);
                             } else if (bat.squadsLeft === batType.squads && bat.damage === 0 && bat.tags.includes('maladie') && deep) {
                                 tagDelete(bat,'maladie');
+                                totalAPCost = totalAPCost+apCost;
                                 xpGain = xpGain+0.45;
                                 $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">maladie guérie<br></span>');
                             } else if (bat.squadsLeft === batType.squads && bat.damage === 0 && bat.tags.includes('trou') && deep) {
                                 tagDelete(bat,'trou');
+                                totalAPCost = totalAPCost+apCost;
                                 xpGain = xpGain+0.45;
                                 $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">trous bouchés<br></span>');
                             }
@@ -234,10 +236,12 @@ function medic(cat,cost,around,deep) {
         }
         if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('trou')) {
             tagDelete(selectedBat,'trou');
+            totalAPCost = totalAPCost+apCost;
             $('#report').append('<span class="report">trous bouchés<br></span>');
         }
         if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('maladie')) {
             tagDelete(selectedBat,'maladie');
+            totalAPCost = totalAPCost+apCost;
             $('#report').append('<span class="report">maladie guérie<br></span>');
         }
     }
