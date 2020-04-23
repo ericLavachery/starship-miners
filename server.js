@@ -295,7 +295,7 @@ io.sockets.on('connection', function (socket, pseudo) {
         let filename = socket.pseudo+'-playerInfos.json'
         fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
             if (err) throw err;
-            console.log('Player infos saved to '+filename);
+            console.log('Player infos saved to '+filename+' on turn '+playerInfos.mapTurn);
         });
     });
 });

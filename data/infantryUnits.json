@@ -194,7 +194,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo","guerrilla"],
+        "skills":["fortif","cible","camo","guerrilla","firstaid"],
         "fuzz":-1
     },
     {
@@ -667,7 +667,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","luckyshot","survivor","guerrilla"],
+        "skills":["fortif","cible","luckyshot","survivor","guerrilla","firstaid"],
         "fuzz":0
     },
     {
@@ -746,7 +746,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","extraction"],
+        "skills":["fortif","extraction","firstaid"],
         "fuzz":0
     }
 ]

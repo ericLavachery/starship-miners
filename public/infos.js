@@ -68,7 +68,7 @@ function showBatInfos(bat) {
     }
     // ARMIES
     $('#unitInfos').append('<span class="blockTitle"><h3>Armée</h3></span><br>');
-    let army = 1;
+    let army = 0;
     let armycol = "";
     if (army === bat.army) {
         armycol = " cy";
