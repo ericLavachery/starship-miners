@@ -414,19 +414,6 @@ function uncheckBadMoves() {
             }
         });
     }
-    // enlève les possibleMoves qui éloignent du PDM
-    // if (possibleMoves.length > 1) {
-    //     shufZone.forEach(function(tile) {
-    //         if (isAdjacent(selectedBat.tileId,tile.id)) {
-    //             if (possibleMoves.length > 1) {
-    //                 tileOff = pdmOffsets(tile.id);
-    //                 if (alienOff[0] < tileOff[0] || alienOff[1] < tileOff[1]) {
-    //                     delPossibleMove(tile.id);
-    //                 }
-    //             }
-    //         }
-    //     });
-    // }
     // enlève les possibleMoves vers l'eau
     if (possibleMoves.length >= 3 && rand.rand(1,2) === 1) {
         shufZone.forEach(function(tile) {

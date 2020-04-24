@@ -67,7 +67,7 @@
             "power":12,
             "aoe":"unit",
             "sound":"PM_FSSF2_WEAPONS_D1_SHOT_323c",
-            "ammo":["plasma","plastanium","nanite","uridium"]
+            "ammo":["plasma","plastanium","uridium"]
         },
         "weapon2":{},
         "moveCost":3,
@@ -809,28 +809,28 @@
         "squadSize":10,
         "crew":1,
         "hp":5,
-        "armor":1,
+        "armor":3,
         "size":3,
         "stealth":6,
-        "ap":12,
+        "ap":10,
         "maxSalvo":1,
         "weapon":{
-            "name":"Fusil d'assaut",
-            "cost":3,
+            "name":"Blaster plasma",
+            "cost":5,
             "range":1,
-            "rof":20,
-            "accuracy":21,
-            "power":5,
+            "rof":5,
+            "accuracy":25,
+            "power":16,
             "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive"]
+            "sound":"PM_FSSF2_WEAPONS_D1_SHOT_323c",
+            "ammo":["plasma","nanite","uridium"]
         },
         "weapon2":{},
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid","sentinelle","embuscade"],
+        "skills":["fortif","cible","firstaid","sentinelle"],
         "fuzz":0
     }
 ]
