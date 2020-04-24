@@ -332,6 +332,7 @@
             "name":"Baliste",
             "cost":7,
             "range":2,
+            "isBow":true,
             "rof":3,
             "accuracy":14,
             "power":18,

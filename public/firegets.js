@@ -441,6 +441,13 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.isMelee = false;
     } else {
         thisWeapon.isMelee = weapon.isMelee;
+        thisWeapon.accuracy = thisWeapon.accuracy+Math.round(bat.vet*1.2);
+    }
+    if (weapon.isBow === undefined) {
+        thisWeapon.isBow = false;
+    } else {
+        thisWeapon.isBow = weapon.isBow;
+        thisWeapon.accuracy = thisWeapon.accuracy+Math.round(bat.vet*1.7);
     }
     let myAmmo = bat.ammo;
     if (wn == 'w2') {
