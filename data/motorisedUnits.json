@@ -131,7 +131,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","guerrilla"],
+        "skills":["fortif","cible","guerrilla","inflammable"],
         "fuzz":0
     },
     {
@@ -175,7 +175,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","brochette"],
+        "skills":["fortif","cible","brochette","inflammable"],
         "fuzz":0
     },
     {

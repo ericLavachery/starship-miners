@@ -20,7 +20,7 @@ body {
     border-color: #464a4a;
     margin: 9px 0 10px 0;
     border-radius: 6px;
-    min-width: 280px;
+    min-width: 285px;
 }
 .modeSelect {
     color: #d5cabd;
@@ -118,7 +118,7 @@ h4 {
 .army {
     font-weight: bold;
     font-size: 15px;
-    color: #71695f;
+    color: #b3a391;
 }
 .fullLine {
     display: inline-block;
@@ -130,15 +130,15 @@ h4 {
 }
 .paramName {
     display: inline-block;
-    width: 145px;
+    width: 128px;
     text-align: right;
-    margin-right: 8px;
+    margin-right: 3px;
     min-height: 21px;
     /* font-weight: bold; */
 }
 .paramIcon {
     text-align: center;
-    margin-right: 8px;
+    margin-right: 3px;
     color: #d5cabd;
     width: 18px;
     display: inline-block;
@@ -366,67 +366,67 @@ td {
     min-width: 140px;
 }
 #vuPriority {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 0%;
 }
 #tileUnitList {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 5%;
 }
 #unitInfos {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 0%;
     min-height: 81px;
 }
 #construction {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 0%;
     /* min-height: 81px; */
 }
 #nameInfos {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 35%;
 }
 #tileInfos {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 40%;
     /* min-height: 81px; */
 }
 #tracksList {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 50%;
 }
 #playerInfos {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: right 0%;
     min-width: 130px;
 }
 #commandz {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 25%;
     min-width: 130px;
 }
 #report {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 0%;
     min-width: 130px;
     max-width: 130px;
     line-height: 14px;
 }
 #warnings {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 0%;
     min-width: 130px;
     max-width: 130px;
     line-height: 17px;
 }
 #timeInfos {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: right 10%;
     min-width: 130px;
 }
 #modesInfos {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: right 20%;
     min-width: 130px;
 }
@@ -437,12 +437,12 @@ td {
     width: 760px;
 }
 #terrainDetails {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 35%;
     width: 240px;
 }
 #tileDetails {
-    background-image: url(/static/img/plate-dork-small.jpg);
+    background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: right 35%;
     width: 240px;
 }

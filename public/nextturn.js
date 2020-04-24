@@ -41,12 +41,7 @@ function nextTurn() {
     } else {
         nextTurnEnd();
     }
-
-
     // constructions et production : système d'ap également
-    // check appartition d'aliens
-    // sauvegarder zoneInfos (n° du tour etc...)
-
     // nextTurnEnd(); est lancé à la fin des nextAlien() !!!!!!!!!!!!!!!!!!!!
 };
 
@@ -75,8 +70,8 @@ function nextTurnEnd() {
             }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
-            tagsUpdate(bat);
             tagsEffect(bat,batType);
+            tagsUpdate(bat);
             blub(bat,batType);
         }
     });
@@ -100,6 +95,41 @@ function tagsUpdate(bat) {
     tagDelete(bat,'embuscade');
     if (rand.rand(1,3) <= 2) {
         tagDelete(bat,'stun');
+    }
+    if (rand.rand(1,10) === 1) {
+        if (bat.tags.includes('kirin')) {
+            tagIndex = bat.tags.indexOf('kirin');
+            bat.tags.splice(tagIndex,1);
+            drugDown(bat);
+        }
+    }
+    if (rand.rand(1,7) === 1) {
+        if (bat.tags.includes('sila')) {
+            tagIndex = bat.tags.indexOf('sila');
+            bat.tags.splice(tagIndex,1);
+            drugDown(bat);
+        }
+    }
+    if (rand.rand(1,10) === 1) {
+        if (bat.tags.includes('bliss')) {
+            tagIndex = bat.tags.indexOf('bliss');
+            bat.tags.splice(tagIndex,1);
+            drugDown(bat);
+        }
+    }
+    if (rand.rand(1,4) === 1) {
+        if (bat.tags.includes('blaze')) {
+            tagIndex = bat.tags.indexOf('blaze');
+            bat.tags.splice(tagIndex,1);
+            drugDown(bat);
+        }
+    }
+};
+
+function drugDown(bat) {
+    bat.tags.push('poison');
+    if (rand.rand(1,toxChance) === 1) {
+        bat.tags.push('tox');
     }
 };
 
@@ -132,8 +162,13 @@ function tagsEffect(bat,batType) {
     let totalDamage;
     let squadHP;
     let squadsOut;
-    // REGENERATION
-    if (bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg')) {
+    // BLAZE DRUG
+    if (bat.tags.includes('blaze')) {
+        bat.apLeft = bat.apLeft+8;
+        bat.salvoLeft = bat.salvoLeft+1;
+    }
+    // REGENERATION & KIRIN DRUG
+    if (bat.tags.includes('kirin') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg')) {
         squadHP = batType.squadSize*batType.hp;
         let batHP = squadHP*batType.squads;
         let regen = Math.round(batHP*regenPower/100);

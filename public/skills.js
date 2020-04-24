@@ -283,6 +283,8 @@ function numMedicTargets(myBat,cat) {
 
 function goRavit(apCost) {
     if (selectedBat.tags.includes('ammoUsed')) {
+        // console.log('RAVIT');
+        // console.log(selectedBat);
         let batType;
         let ravitBat = {};
         let ravitLeft = 0;
@@ -296,15 +298,24 @@ function goRavit(apCost) {
                         if (biggestRavit < ravitLeft) {
                             biggestRavit = ravitLeft;
                             ravitBat = bat;
+                            // console.log('ravit bat: '+ravitBat.type);
                         }
                     }
                 }
             }
         });
-        if (biggestRavit < 99) {
-            ravitBat.tags.push('skillUsed');
-            if (rand.rand(1,3) === 1) {
-                ravitBat.xp = ravitBat.xp+1;
+        if (Object.keys(ravitBat).length >= 1) {
+            if (biggestRavit < 99) {
+                if (ravitBat.id == selectedBat.id) {
+                    selectedBat.tags.push('skillUsed');
+                    // console.log('sel');
+                } else {
+                    ravitBat.tags.push('skillUsed');
+                    if (rand.rand(1,3) === 1) {
+                        ravitBat.xp = ravitBat.xp+1;
+                    }
+                    // console.log('nosel');
+                }
             }
             selectedBat.apLeft = selectedBat.apLeft-apCost;
             selectedBat.salvoLeft = 0;
@@ -432,4 +443,98 @@ function calcAmmos(bat,startAmmo) {
     }
     console.log('ammoLeft='+ammoLeft);
     return ammoLeft;
+};
+
+function goDrug(apCost,drug) {
+    console.log('DRUG DEAL');
+    console.log(selectedBat);
+    let batType;
+    let ravitBat = {};
+    let ravitLeft = 0;
+    let biggestRavit = 0;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            batType = getBatType(bat);
+            if (batType.skills.includes('dealer') && batType.skills.includes(drug)) {
+                ravitLeft = calcRavit(bat);
+                if (calcDistance(selectedBat.tileId,bat.tileId) <= 1 && ravitLeft >= 1) {
+                    if (biggestRavit < ravitLeft) {
+                        biggestRavit = ravitLeft;
+                        ravitBat = bat;
+                        console.log('ravit bat: '+ravitBat.type);
+                    }
+                }
+            }
+        }
+    });
+    if (Object.keys(ravitBat).length >= 1) {
+        if (biggestRavit < 99) {
+            if (ravitBat.id == selectedBat.id) {
+                selectedBat.tags.push('skillUsed');
+                console.log('sel');
+            } else {
+                ravitBat.tags.push('skillUsed');
+                if (rand.rand(1,2) === 1) {
+                    ravitBat.xp = ravitBat.xp+1;
+                }
+                console.log('nosel');
+            }
+        }
+        selectedBat.apLeft = selectedBat.apLeft-apCost;
+        selectedBat.salvoLeft = 0;
+        if (!selectedBat.tags.includes(drug)) {
+            selectedBat.tags.push(drug);
+            // blaze instant bonus 
+            if (drug === 'blaze') {
+                selectedBat.apLeft = selectedBat.apLeft+8;
+                selectedBat.salvoLeft = selectedBat.salvoLeft+1;
+            }
+        }
+        selectedBatArrayUpdate();
+        showBatInfos(selectedBat);
+    }
+};
+
+function checkDrugs(myBat) {
+    let batType;
+    let allDrugs = [];
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            batType = getBatType(bat);
+            if (batType.skills.includes('dealer')) {
+                if (calcDistance(myBat.tileId,bat.tileId) <= 1 && calcRavit(bat) >= 1) {
+                    if (batType.skills.includes('bliss')) {
+                        allDrugs.push('bliss');
+                    }
+                    if (batType.skills.includes('sila')) {
+                        allDrugs.push('sila');
+                    }
+                    if (batType.skills.includes('blaze')) {
+                        allDrugs.push('blaze');
+                    }
+                    if (batType.skills.includes('kirin')) {
+                        allDrugs.push('kirin');
+                    }
+                }
+            }
+        }
+    });
+    return allDrugs;
+};
+
+function checkBatDrugs(bat) {
+    let myDrugs = [];
+    if (bat.tags.includes('kirin')) {
+        myDrugs.push('kirin');
+    }
+    if (bat.tags.includes('bliss')) {
+        myDrugs.push('bliss');
+    }
+    if (bat.tags.includes('blaze')) {
+        myDrugs.push('blaze');
+    }
+    if (bat.tags.includes('sila')) {
+        myDrugs.push('sila');
+    }
+    return myDrugs;
 };

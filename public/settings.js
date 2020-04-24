@@ -75,6 +75,7 @@ let berserkROF = 1.5;
 let deadBatsList = [];
 let deadAliensList = [];
 let luckCheck = [7,21,93,100];
+let toxChance = 20;
 // ALIENS
 let isFFW = false;
 let pointDeMire = 1830; // tileId

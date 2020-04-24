@@ -61,7 +61,16 @@ function calcDamage(weapon,power,armor,defBat) {
         let bonusMax = Math.round(power*2.4);
         powerDice = powerDice+rand.rand(0,bonusMax);
     }
-    return powerDice-modifiedArmor;
+    // bliss drug
+    let dmgReduct = 0;
+    if (defBat.tags.includes('bliss')) {
+        dmgReduct = 2;
+    }
+    let calculatedDmg = powerDice-modifiedArmor-dmgReduct;
+    if (calculatedDmg < 0) {
+        calculatedDmg = 0;
+    }
+    return calculatedDmg;
 };
 
 function getCover(bat,withFortif) {
@@ -401,6 +410,10 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.range = weapon.range;
     thisWeapon.rof = weapon.rof;
     thisWeapon.power = weapon.power;
+    // sila drug
+    if (bat.tags.includes('sila') && thisWeapon.isMelee) {
+        thisWeapon.power = thisWeapon.power+4;
+    }
     thisWeapon.armors = 1;
     thisWeapon.aoe = weapon.aoe;
     thisWeapon.sound = weapon.sound;
