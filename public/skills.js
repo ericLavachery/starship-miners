@@ -481,13 +481,13 @@ function goDrug(apCost,drug) {
             }
         }
         selectedBat.apLeft = selectedBat.apLeft-apCost;
-        selectedBat.salvoLeft = 0;
         if (!selectedBat.tags.includes(drug)) {
             selectedBat.tags.push(drug);
-            // blaze instant bonus 
+            // blaze instant bonus
             if (drug === 'blaze') {
                 selectedBat.apLeft = selectedBat.apLeft+8;
                 selectedBat.salvoLeft = selectedBat.salvoLeft+1;
+                console.log('blaze bonus');
             }
         }
         selectedBatArrayUpdate();
