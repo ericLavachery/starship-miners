@@ -23,7 +23,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shot",
-            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite"]
         },
         "weapon2":{
             "name":"Molotov",

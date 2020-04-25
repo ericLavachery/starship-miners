@@ -933,7 +933,7 @@
             "power": 24,
             "aoe": "squad",
             "sound": "Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo": [ "napalm" ]
+            "ammo": [ "feu" ]
         },
         "weapon2": {},
         "moveCost": 2,

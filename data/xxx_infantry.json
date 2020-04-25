@@ -65,7 +65,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shot",
-            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -399,7 +399,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shot",
-            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite"]
         },
         "weapon2":{},
         "moveCost":1,
@@ -690,7 +690,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"418433__craftyindividual__uzi-burst",
-            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite"]
         },
         "weapon2":{
             "name":"Fusil de précision",
@@ -862,7 +862,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"418433__craftyindividual__uzi-burst",
-            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite"]
         },
         "weapon2":{
             "name":"Guidage laser",
@@ -948,7 +948,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"418433__craftyindividual__uzi-burst",
-            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite"]
         },
         "weapon2":{
             "name":"Lame",
@@ -991,7 +991,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"418433__craftyindividual__uzi-burst",
-            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite"]
         },
         "weapon2":{
             "name":"Fusil de précision",

@@ -1,7 +1,7 @@
 [
     {
         "id":53,
-        "name":"Tank Avalanche",
+        "name":"Avalanche",
         "pic":"misbuggy",
         "cat":"vehicles",
         "squads":6,
@@ -253,7 +253,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shot",
-            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite"]
 
         },
         "moveCost":3,
@@ -329,7 +329,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"418433__craftyindividual__uzi-burst",
-            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite"]
 
         },
         "weapon2":{
@@ -461,7 +461,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shot",
-            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive"]
+            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite"]
         },
         "weapon2":{
             "name":"Calibre",

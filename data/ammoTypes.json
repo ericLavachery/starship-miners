@@ -30,11 +30,21 @@
         "aoe": ""
     },
     {
+        "name": "plasblade",
+        "range": 0,
+        "rof": 1,
+        "power": 10,
+        "armors": 0.35,
+        "accuracy": 1,
+        "apdamage": 0.03,
+        "aoe": ""
+    },
+    {
         "name": "perfo",
         "range": 0,
         "rof": 1,
         "power": -2,
-        "armors": 0.5,
+        "armors": 0.4,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
@@ -54,7 +64,7 @@
         "range": 0,
         "rof": 1,
         "power": 1,
-        "armors": 0.4,
+        "armors": 0.35,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
@@ -74,7 +84,7 @@
         "range": 0,
         "rof": 1,
         "power": -1,
-        "armors": 1,
+        "armors": 0.75,
         "accuracy": 1.25,
         "apdamage": 0,
         "aoe": ""
@@ -90,12 +100,42 @@
         "aoe": ""
     },
     {
+        "name": "dunium",
+        "range": 0,
+        "rof": 1,
+        "power": 8,
+        "armors": 1.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
         "name": "explosive",
         "range": 0,
         "rof": 1,
         "power": 5,
-        "armors": 0.85,
+        "armors": 0.75,
         "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "timonium",
+        "range": 0,
+        "rof": 1,
+        "power": 3,
+        "armors": 0.35,
+        "accuracy": 1,
+        "apdamage": 0.03,
+        "aoe": ""
+    },
+    {
+        "name": "salite",
+        "range": 1,
+        "rof": 1.25,
+        "power": 0,
+        "armors": 0.75,
+        "accuracy": 1.5,
         "apdamage": 0,
         "aoe": ""
     },
@@ -123,8 +163,8 @@
         "name": "ac-uranium",
         "range": 0,
         "rof": 1,
-        "power": 2,
-        "armors": 0.2,
+        "power": 6,
+        "armors": 0.25,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
@@ -133,9 +173,29 @@
         "name": "ac-explosive",
         "range": 0,
         "rof": 1,
-        "power": 5,
-        "armors": 0.4,
+        "power": 9,
+        "armors": 0.5,
         "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "ac-timonium",
+        "range": 0,
+        "rof": 1,
+        "power": 8,
+        "armors": 0.2,
+        "accuracy": 1,
+        "apdamage": 0.03,
+        "aoe": ""
+    },
+    {
+        "name": "ac-salite",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.4,
+        "accuracy": 1.5,
         "apdamage": 0,
         "aoe": ""
     },
@@ -144,7 +204,7 @@
         "range": 0,
         "rof": 1,
         "power": -1,
-        "armors": 0.65,
+        "armors": 0.6,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
@@ -184,7 +244,7 @@
         "range": 0,
         "rof": 1,
         "power": -1,
-        "armors": 1,
+        "armors": 0.75,
         "accuracy": 1.25,
         "apdamage": 0,
         "aoe": ""
@@ -200,12 +260,42 @@
         "aoe": ""
     },
     {
+        "name": "sm-dunium",
+        "range": 0,
+        "rof": 1,
+        "power": 5,
+        "armors": 1.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
         "name": "sm-explosive",
         "range": 0,
         "rof": 1,
         "power": 3,
-        "armors": 0.85,
+        "armors": 0.8,
         "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "sm-timonium",
+        "range": 0,
+        "rof": 1,
+        "power": 2,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0.03,
+        "aoe": ""
+    },
+    {
+        "name": "sm-salite",
+        "range": 1,
+        "rof": 1.25,
+        "power": 0,
+        "armors": 0.75,
+        "accuracy": 1.5,
         "apdamage": 0,
         "aoe": ""
     },
@@ -244,7 +334,7 @@
         "range": 0,
         "rof": 1,
         "power": 4,
-        "armors": 0,
+        "armors": 0.1,
         "accuracy": 1.25,
         "apdamage": 0.07,
         "aoe": ""
@@ -274,7 +364,7 @@
         "range": 0,
         "rof": 1,
         "power": 0,
-        "armors": 2,
+        "armors": 1.5,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
@@ -283,8 +373,8 @@
         "name": "napalm",
         "range": 0,
         "rof": 1,
-        "power": 2,
-        "armors": 1.5,
+        "power": 4,
+        "armors": 1.25,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
@@ -473,9 +563,9 @@
         "name": "obus-incendiaire",
         "range": 0,
         "rof": 1,
-        "power": 6,
+        "power": 8,
         "armors": 1,
-        "accuracy": 1,
+        "accuracy": 1.5,
         "apdamage": 0,
         "aoe": ""
     },
@@ -483,14 +573,14 @@
         "name": "obus-napalm",
         "range": 0,
         "rof": 1,
-        "power": 6,
+        "power": 8,
         "armors": 1,
-        "accuracy": 1,
+        "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "bat"
     },
     {
-        "name": "obus-homing",
+        "name": "obus-heatseeker",
         "range": 1,
         "rof": 1,
         "power": 4,
@@ -500,11 +590,81 @@
         "aoe": ""
     },
     {
+        "name": "missile",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.66,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "missile-tungsten",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.3,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "missile-heat",
+        "range": 0,
+        "rof": 1,
+        "power": 8,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "missile-fleche",
+        "range": 0,
+        "rof": 1,
+        "power": 5,
+        "armors": 0.25,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "missile-incendiaire",
+        "range": 0,
+        "rof": 1,
+        "power": 10,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "missile-napalm",
+        "range": 0,
+        "rof": 1,
+        "power": 12,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "bat"
+    },
+    {
+        "name": "missile-heatseeker",
+        "range": 1,
+        "rof": 1,
+        "power": 8,
+        "armors": 0.5,
+        "accuracy": 1.2,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
         "name": "missile-homing",
         "range": 3,
         "rof": 1,
-        "power": 0,
-        "armors": 0.25,
+        "power": 8,
+        "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
