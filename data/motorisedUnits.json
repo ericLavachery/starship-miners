@@ -383,7 +383,7 @@
             "power":10,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
 
         },
         "weapon2":{
@@ -395,7 +395,7 @@
             "power":22,
             "aoe":"unit",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
-            "ammo":["standard","perfo","uranium","explosive","feu"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire"],
             "maxAmmo":15
         },
         "moveCost":2,
