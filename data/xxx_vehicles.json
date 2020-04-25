@@ -351,50 +351,6 @@
         "fuzz":0
     },
     {
-        "id":62,
-        "name":"Hook",
-        "pic":"hemadeatank",
-        "cat":"vehicles",
-        "squads":3,
-        "squadSize":3,
-        "crew":3,
-        "hp":80,
-        "armor":11,
-        "size":24,
-        "stealth":0,
-        "ap":18,
-        "maxSalvo":1,
-        "weapon":{
-            "name":"Mitrailleuse",
-            "cost":6,
-            "range":2,
-            "rof":9,
-            "accuracy":14,
-            "power":8,
-            "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
-
-        },
-        "weapon2":{
-            "name":"Canon court",
-            "cost":7,
-            "range":2,
-            "rof":6,
-            "accuracy":16,
-            "power":20,
-            "aoe":"unit",
-            "sound":"249298__klangfabrik__rpg-launcher-three-shots",
-            "ammo":["standard","perfo","uranium","explosive","feu"]
-        },
-        "moveCost":3,
-        "maxFlood":2,
-        "maxScarp":3,
-        "maxVeg":2,
-        "skills":["fortif","cible","mecano"],
-        "fuzz":0
-    },
-    {
         "id":63,
         "name":"Bigman",
         "pic":"krusher",

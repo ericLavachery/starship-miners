@@ -359,5 +359,50 @@
         "maxVeg":2,
         "skills":["fortif","cible","brochette","selevation"],
         "fuzz":0
+    },
+    {
+        "id":36,
+        "name":"Hook",
+        "pic":"hemadeatank",
+        "cat":"vehicles",
+        "squads":4,
+        "squadSize":3,
+        "crew":3,
+        "hp":60,
+        "armor":11,
+        "size":27,
+        "stealth":0,
+        "ap":14,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Mitrailleuse",
+            "cost":4,
+            "range":2,
+            "rof":15,
+            "accuracy":16,
+            "power":10,
+            "aoe":"unit",
+            "sound":"warfare_gunshots_machine_gun_burst_005b",
+            "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
+
+        },
+        "weapon2":{
+            "name":"Canon",
+            "cost":6,
+            "range":2,
+            "rof":1,
+            "accuracy":14,
+            "power":22,
+            "aoe":"unit",
+            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
+            "ammo":["standard","perfo","uranium","explosive","feu"],
+            "maxAmmo":15
+        },
+        "moveCost":2,
+        "maxFlood":1,
+        "maxScarp":2,
+        "maxVeg":2,
+        "skills":["fortif","cible","mecano"],
+        "fuzz":0
     }
 ]
