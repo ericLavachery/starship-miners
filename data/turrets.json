@@ -130,7 +130,7 @@
             "noAtt":true,
             "noFly":true,
             "rof":6,
-            "accuracy":9,
+            "accuracy":12,
             "power":2,
             "aoe":"squad",
             "sound":"zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",

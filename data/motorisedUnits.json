@@ -545,5 +545,51 @@
         "maxVeg":2,
         "skills":["bldselfrepair","cible","longshot","selevation"],
         "fuzz":-1
+    },
+    {
+        "id":38,
+        "name":"War truck",
+        "pic":"monster",
+        "cat":"vehicles",
+        "squads":5,
+        "squadSize":2,
+        "crew":8,
+        "hp":75,
+        "armor":10,
+        "size":30,
+        "stealth":0,
+        "ap":14,
+        "maxSalvo":2,
+        "weapon":{
+            "name":"Baliste",
+            "cost":5,
+            "range":2,
+            "isBow":true,
+            "rof":2,
+            "accuracy":14,
+            "power":18,
+            "aoe":"unit",
+            "sound":"321552__brendan89__regular-arrow-shotb",
+            "ammo":["standard","poison"]
+        },
+        "weapon2":{
+            "name":"Bélier",
+            "cost":2,
+            "range":0,
+            "noFly": true,
+            "noDef": true,
+            "rof":4,
+            "accuracy":20,
+            "power":30,
+            "aoe":"unit",
+            "sound":"industrial_vehicle_combine_harvester_approach_passb",
+            "ammo":["standard"]
+        },
+        "moveCost":2,
+        "maxFlood":0,
+        "maxScarp":1,
+        "maxVeg":2,
+        "skills":["fortif","cible","brochette"],
+        "fuzz":0
     }
 ]
