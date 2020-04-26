@@ -180,7 +180,7 @@
     },
     {
         "id":999,
-        "name":"B2earthquake",
+        "name":"B2 earthquake",
         "pic":"planestrange",
         "cat":"vehicle",
         "squads":6,
@@ -225,7 +225,7 @@
     },
     {
         "id":999,
-        "name":"B2Greengiant",
+        "name":"B2 Greengiant",
         "pic":"planestrange",
         "cat":"vehicle",
         "squads":6,
@@ -250,7 +250,7 @@
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
         },
         "weapon2":{
-            "name":"AgentVert",
+            "name":"Agent Vert",
             "cost":4,
             "range":0,
             "rof":18,

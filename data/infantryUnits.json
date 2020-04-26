@@ -20,7 +20,7 @@
             "rof":10,
             "accuracy":25,
             "power":8,
-            "aoe":"unit",
+            "aoe":"brochette",
             "sound":"warfare_gunshots_x2_rifle_exterior",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium"]
         },
@@ -321,7 +321,7 @@
             "rof":10,
             "accuracy":14,
             "power":45,
-            "aoe":"squad",
+            "aoe":"bat",
             "sound":"bottlerocket_Impact_Boom_Distorted_10b",
             "ammo":["autodestruction"]
         },
@@ -577,16 +577,16 @@
             "rof":6,
             "accuracy":14,
             "power":22,
-            "aoe":"unit",
+            "aoe":"brochette",
             "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-heatseeker"],
+            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
             "maxAmmo":9
         },
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","mine","brochette","selevation"],
+        "skills":["fortif","cible","mine","selevation"],
         "fuzz":0
     },
     {
@@ -778,7 +778,7 @@
             "rof":6,
             "accuracy":22,
             "power":8,
-            "aoe":"unit",
+            "aoe":"brochette",
             "sound":"warfare_gunshots_x2_rifle_exterior",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium"]
         },

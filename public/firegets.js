@@ -14,7 +14,7 @@ function checkTargetBatType() {
 
 function isHit(accuracy,aoe,size,stealth,cover,speed,shotDice) {
     let prec = Math.round(accuracy-(cover*coverFactor));
-    if (aoe == 'unit') {
+    if (aoe == 'unit' || aoe == 'brochette') {
         prec = Math.round(prec-(stealth/2)-speed);
     }
     if (prec < minPrec) {
@@ -27,7 +27,7 @@ function isHit(accuracy,aoe,size,stealth,cover,speed,shotDice) {
     let dice = rand.rand(1,shotDice);
     let hitChance = Math.round(Math.sqrt(size)*prec);
     // aoe : more chance than normal to hit small creatures
-    if (aoe != 'unit' && size < 10) {
+    if (aoe != 'unit' && aoe != 'brochette' && size < 10) {
         hitChance = Math.round(Math.sqrt(10)*prec);
     }
     if (hitChance < size) {

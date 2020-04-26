@@ -401,7 +401,7 @@
             "sound":"321552__brendan89__regular-arrow-shot",
             "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite"]
         },
-        "weapon2":{},
+        "weapon2":{"visée laser"},
         "moveCost":1,
         "maxFlood":2,
         "maxScarp":2,

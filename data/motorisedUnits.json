@@ -175,7 +175,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","brochette","inflammable"],
+        "skills":["fortif","cible","inflammable"],
         "fuzz":0
     },
     {
@@ -200,7 +200,7 @@
             "rof":3,
             "accuracy":16,
             "power":22,
-            "aoe":"unit",
+            "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire"],
             "maxAmmo":24
@@ -222,7 +222,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","brochette"],
+        "skills":["fortif","cible"],
         "fuzz":0
     },
     {
@@ -292,7 +292,7 @@
             "rof":10,
             "accuracy":21,
             "power":8,
-            "aoe":"unit",
+            "aoe":"brochette",
             "sound":"warfare_gunshots_x2_rifle_exterior",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium"]
         },
@@ -336,7 +336,7 @@
             "rof":3,
             "accuracy":14,
             "power":18,
-            "aoe":"unit",
+            "aoe":"brochette",
             "sound":"321552__brendan89__regular-arrow-shotb",
             "ammo":["standard","poison"]
         },
@@ -357,7 +357,7 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","brochette","selevation"],
+        "skills":["fortif","cible","selevation"],
         "fuzz":0
     },
     {
@@ -393,7 +393,7 @@
             "rof":1,
             "accuracy":14,
             "power":22,
-            "aoe":"unit",
+            "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire"],
             "maxAmmo":15
@@ -477,9 +477,9 @@
             "aoe":"bat",
             "sound":"262436__ramston__real-explosionsb",
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-heatseeker","missile-homing"],
-            "maxAmmo":16
+            "maxAmmo":24
         },
-        "weapon":{
+        "weapon2":{
             "name":"Lance-missiles",
             "cost":7,
             "range":9,
@@ -492,7 +492,7 @@
             "aoe":"bat",
             "sound":"262436__ramston__real-explosionsb",
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-heatseeker","missile-homing"],
-            "maxAmmo":16
+            "maxAmmo":24
         },
         "moveCost":12,
         "maxFlood":0,
@@ -534,10 +534,10 @@
             "rof":4,
             "accuracy":14,
             "power":22,
-            "aoe":"unit",
+            "aoe":"brochette",
             "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-heatseeker"],
-            "maxAmmo":18
+            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
+            "maxAmmo":32
         },
         "moveCost":7,
         "maxFlood":0,
@@ -548,12 +548,12 @@
     },
     {
         "id":38,
-        "name":"War truck",
+        "name":"Wartruck",
         "pic":"monster",
         "cat":"vehicles",
         "squads":5,
         "squadSize":2,
-        "crew":8,
+        "crew":5,
         "hp":75,
         "armor":10,
         "size":30,
@@ -568,7 +568,7 @@
             "rof":2,
             "accuracy":14,
             "power":18,
-            "aoe":"unit",
+            "aoe":"brochette",
             "sound":"321552__brendan89__regular-arrow-shotb",
             "ammo":["standard","poison"]
         },
@@ -581,7 +581,7 @@
             "rof":4,
             "accuracy":20,
             "power":30,
-            "aoe":"unit",
+            "aoe":"brochette",
             "sound":"industrial_vehicle_combine_harvester_approach_passb",
             "ammo":["standard"]
         },
@@ -589,7 +589,57 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["fortif","cible","brochette"],
+        "skills":["fortif","cible"],
+        "fuzz":0
+    },
+    {
+        "id":39,
+        "name":"Avalanche",
+        "pic":"misbuggy",
+        "cat":"vehicles",
+        "squads":4,
+        "squadSize":3,
+        "crew":3,
+        "hp":47,
+        "armor":9,
+        "size":24,
+        "stealth":0,
+        "ap":12,
+        "maxSalvo":2,
+        "weapon":{
+            "name":"Mortier",
+            "cost":5,
+            "range":3,
+            "noMelee":true,
+            "noFly":true,
+            "rof":3,
+            "accuracy":10,
+            "power":18,
+            "aoe":"squad",
+            "sound":"161622__ryanconway__grenade-throwb",
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"],
+            "maxAmmo":24
+        },
+        "weapon2":{
+            "name":"Missille squash",
+            "cost":7,
+            "range":6,
+            "noMelee":true,
+            "noFly":true,
+            "noDef":true,
+            "rof":3,
+            "accuracy":14,
+            "power":40,
+            "aoe":"squad",
+            "sound":"262436__ramston__real-explosionsb",
+            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-heatseeker","missile-homing"],
+            "maxAmmo":8
+        },
+        "moveCost":2,
+        "maxFlood":1,
+        "maxScarp":2,
+        "maxVeg":2,
+        "skills":["fortif","cible"],
         "fuzz":0
     }
 ]

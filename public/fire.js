@@ -222,14 +222,11 @@ function attack() {
     let apDamage = 0;
     // brochette
     let skewer = false;
-    if (selectedBatType.skills.includes('brochette')) {
+    if (selectedWeap.aoe == 'brochette') {
         skewer = true;
     }
     // lucky shot
     let shotDice = 100;
-     {
-
-    }
     if (selectedBat.tags.includes('luckyshot')) {
         shotDice = calcShotDice(selectedBat,true);
         tagDelete(selectedBat,'luckyshot');
@@ -481,7 +478,7 @@ function defense() {
     let apDamage = 0;
     // brochette
     let skewer = false;
-    if (targetBatType.skills.includes('brochette')) {
+    if (targetWeap.aeo == 'brochette') {
         skewer = true;
     }
     let shotDice = calcShotDice(targetBat,false);
