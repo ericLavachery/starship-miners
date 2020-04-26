@@ -95,21 +95,23 @@ function morphList() {
 };
 
 function aliensCount() {
-    let aliensNums = {lucioles:0,bugs:0,scorpions:0,fourmis:0,cafards:0,gluantes:0};
+    let aliensNums = {lucioles:0,moucherons:0,bugs:0,scorpions:0,fourmis:0,cafards:0,gluantes:0};
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type === 'Lucioles') {
-                aliensNums.lucioles = aliensNums.lucioles+1
+                aliensNums.lucioles = aliensNums.lucioles+1;
             } else if (bat.type === 'Bugs') {
-                aliensNums.bugs = aliensNums.bugs+1
+                aliensNums.bugs = aliensNums.bugs+1;
             } else if (bat.type === 'Scorpions') {
-                aliensNums.scorpions = aliensNums.scorpions+1
+                aliensNums.scorpions = aliensNums.scorpions+1;
             } else if (bat.type === 'Fourmis') {
-                aliensNums.fourmis = aliensNums.fourmis+1
+                aliensNums.fourmis = aliensNums.fourmis+1;
             } else if (bat.type === 'Cafards') {
-                aliensNums.cafards = aliensNums.cafards+1
+                aliensNums.cafards = aliensNums.cafards+1;
             } else if (bat.type === 'Gluantes') {
-                aliensNums.gluantes = aliensNums.gluantes+1
+                aliensNums.gluantes = aliensNums.gluantes+1;
+            } else if (bat.type === 'Moucherons') {
+                aliensNums.moucherons = aliensNums.moucherons+1;
             }
         }
     });
@@ -126,8 +128,10 @@ function spawns() {
     let aliensNums = aliensCount();
     let vomiToRuche = 27-(playerInfos.mapDiff*2);
     let maxPonte = playerInfos.mapDiff+3;
+    let flyDice;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
+            flyDice = rand.rand(1,6);
             if (bat.type === 'Oeuf') {
                 batType = getBatType(bat);
                 eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
@@ -139,8 +143,10 @@ function spawns() {
                 eggSpawn(bat,true);
             } else if (bat.type === 'Ruche') {
                 eggSpawn(bat,false);
-            } else if (bat.type === 'Vermisseaux' && rand.rand(1,2) === 1 && aliensNums.lucioles < maxPonte) {
+            } else if (bat.type === 'Vermisseaux' && flyDice === 1 && aliensNums.lucioles < maxPonte) {
                 alienSpawn(bat,'Lucioles');
+            } else if (bat.type === 'Vermisseaux' && flyDice >= 5 && aliensNums.moucherons < Math.round(maxPonte*1.5)) {
+                alienSpawn(bat,'Moucherons');
             } else if (transList.includes('Asticots') && bat.type === 'Asticots') {
                 alienMorph(bat,'Moucherons',false);
             } else if (transList.includes('Larves') && bat.type === 'Larves') {

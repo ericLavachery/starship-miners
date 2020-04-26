@@ -204,7 +204,7 @@ h4 {
     border-color: rgba(252, 255, 175, 0.4);
     border-radius: 8px;
     position: absolute;
-    margin: 1px 1px 1px 1px;
+    /* margin: 1px 1px 1px 1px; */
 }
 .report {
     font-family: 'Roboto Condensed', sans-serif;

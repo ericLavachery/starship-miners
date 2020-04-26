@@ -406,7 +406,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid"],
+        "skills":["fortif","cible","firstaid","guerrilla"],
         "fuzz":0
     },
     {
@@ -444,7 +444,7 @@
             "power":10,
             "aoe":"squad",
             "sound":"audio_hero_MolotovCocktailThr_PE280101_381b",
-            "ammo":["feu"],
+            "ammo":["feu","napalm"],
             "maxAmmo":12
         },
         "moveCost":3,
