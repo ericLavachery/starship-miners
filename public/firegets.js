@@ -417,6 +417,11 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.armors = 1;
     thisWeapon.aoe = weapon.aoe;
     thisWeapon.sound = weapon.sound;
+    if (weapon.noAtt === undefined) {
+        thisWeapon.noAtt = false;
+    } else {
+        thisWeapon.noAtt = weapon.noAtt;
+    }
     if (weapon.noDef === undefined) {
         thisWeapon.noDef = false;
     } else {

@@ -30,6 +30,16 @@
         "aoe": ""
     },
     {
+        "name": "taser",
+        "range": 0,
+        "rof": 1,
+        "power": 2,
+        "armors": 0.25,
+        "accuracy": 1,
+        "apdamage": 0.03,
+        "aoe": ""
+    },
+    {
         "name": "scrap",
         "range": 0,
         "rof": 1,

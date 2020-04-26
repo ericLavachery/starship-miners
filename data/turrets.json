@@ -108,5 +108,40 @@
         "maxVeg":-1,
         "skills":["bldselfrepair","cible","longshot"],
         "fuzz":-1
+    },
+    {
+        "id":37,
+        "name":"Barbelés",
+        "pic":"barbed",
+        "cat":"buildings",
+        "squads":6,
+        "squadSize":1,
+        "crew":0,
+        "hp":50,
+        "armor":3,
+        "size":12,
+        "stealth":0,
+        "ap":0,
+        "maxSalvo":0,
+        "weapon":{
+            "name":"Barbelés",
+            "cost":8,
+            "range":0,
+            "noAtt":true,
+            "noFly":true,
+            "rof":6,
+            "accuracy":9,
+            "power":2,
+            "aoe":"squad",
+            "sound":"zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
+            "ammo":["standard","poison","monomolecular","taser"]
+        },
+        "weapon2":{},
+        "moveCost":99,
+        "maxFlood":-1,
+        "maxScarp":-1,
+        "maxVeg":-1,
+        "skills":[],
+        "fuzz":-1
     }
 ]

@@ -79,7 +79,7 @@ function showAlien(bat) {
     let unitsLeft = bat.squadsLeft*alienUnits[unitIndex].squadSize;
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
-    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div>'+resHere);
+    $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div>'+resHere);
 };
 
 function showBataillon(bat) {
