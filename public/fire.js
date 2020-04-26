@@ -333,6 +333,7 @@ function attack() {
     }
     // munitions limitées
     console.log('maxAmmo'+selectedWeap.maxAmmo);
+    ammoFired(selectedBat.id);
     if (selectedWeap.maxAmmo < 99) {
         selectedBat.tags.push('ammoUsed');
     }
@@ -550,6 +551,7 @@ function defense() {
     }
     // munitions limitées
     console.log('maxAmmo'+targetWeap.maxAmmo);
+    ammoFired(targetBat.id);
     if (targetWeap.maxAmmo < 99) {
         targetBat.tags.push('ammoUsed');
     }

@@ -399,9 +399,34 @@ function weaponSelectRiposte() {
     }
 };
 
+function ammoFired(batId) {
+    if (batId === selectedBat.id) {
+        if (selectedWeap.maxAmmo < 99) {
+            if (selectedWeap.num == 1) {
+                selectedBat.ammoLeft = selectedBat.ammoLeft-1;
+            } else {
+                selectedBat.ammo2Left = selectedBat.ammo2Left-1;
+            }
+        }
+    } else if (batId === targetBat.id) {
+        if (targetWeap.maxAmmo < 99) {
+            if (targetWeap.num == 1) {
+                targetBat.ammoLeft = targetBat.ammoLeft-1;
+            } else {
+                targetBat.ammo2Left = targetBat.ammo2Left-1;
+            }
+        }
+    }
+};
+
 function weaponAdj(weapon,bat,wn) {
     // bonus veterancy
     let thisWeapon = {};
+    if (wn == 'w2') {
+        thisWeapon.num = 2;
+    } else {
+        thisWeapon.num = 1;
+    }
     let accuracy = Math.round(weapon.accuracy*(bat.vet+vetBonus.accuracy)/vetBonus.accuracy);
     thisWeapon.accuracy = accuracy;
     // bonus ammo

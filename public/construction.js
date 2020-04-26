@@ -176,6 +176,7 @@ function putBat(tileId) {
                 newBat.ammo = 'none';
             }
         }
+        newBat.ammoLeft = conselUnit.weapon.maxAmmo;
         if (conselAmmos[1] != 'xxx') {
             newBat.ammo2 = conselAmmos[1];
         } else {
@@ -185,6 +186,7 @@ function putBat(tileId) {
                 newBat.ammo2 = 'none';
             }
         }
+        newBat.ammo2Left = conselUnit.weapon2.maxAmmo;
         newBat.vet = 0;
         newBat.xp = 0;
         if (Object.keys(conselUnit.weapon).length >= 1) {
