@@ -255,7 +255,8 @@
         "hp":7,
         "armor":0,
         "size":3,
-        "stealth":4,
+        "stealth":7,
+        "speed":2,
         "ap":15,
         "maxSalvo":1,
         "weapon":{
@@ -299,7 +300,8 @@
         "hp":7,
         "armor":0,
         "size":3,
-        "stealth":4,
+        "stealth":7,
+        "speed":2,
         "ap":15,
         "maxSalvo":1,
         "weapon":{
@@ -521,7 +523,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","scrap","poison","monomolecular","plasblade"]
+            "ammo":["standard","scrap","poison","monomolecular","adamantium","plasblade"]
         },
         "weapon2":{
             "name":"Mortier léger",
@@ -769,6 +771,7 @@
         "armor":1,
         "size":3,
         "stealth":8,
+        "speed":2,
         "ap":14,
         "maxSalvo":1,
         "weapon":{
