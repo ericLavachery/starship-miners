@@ -351,50 +351,6 @@
         "fuzz":0
     },
     {
-        "id":64,
-        "name":"The box",
-        "pic":"",
-        "cat":"vehicles",
-        "squads":6,
-        "squadSize":1,
-        "crew":3,
-        "hp":65,
-        "armor":8,
-        "size":20,
-        "stealth":1,
-        "ap":16,
-        "maxSalvo":1,
-        "weapon":{
-            "name":"Pistolet",
-            "cost":2,
-            "range":1,
-            "rof":2,
-            "accuracy":14,
-            "power":4,
-            "aoe":"unit",
-            "sound":"321552__brendan89__regular-arrow-shot",
-            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite"]
-        },
-        "weapon2":{
-            "name":"Calibre",
-            "cost":3,
-            "range":1,
-            "rof":2,
-            "accuracy":14,
-            "power":7,
-            "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard"]
-
-        },
-        "moveCost":2,
-        "maxFlood":1,
-        "maxScarp":2,
-        "maxVeg":2,
-        "skills":["fortif","cible","transport","medic"],
-        "fuzz":0
-    },
-    {
         "id":65,
         "name":"Injection",
         "pic":"Injection.png",

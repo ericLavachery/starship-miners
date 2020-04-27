@@ -15,7 +15,7 @@
         "size": 3,
         "speed": 0,
         "stealth": 4,
-        "ap": 13,
+        "ap": 14,
         "maxSalvo": 1,
         "weapon": {
             "name": "Mandibules",
@@ -30,7 +30,7 @@
             "ammo": [ "creuseur" ]
         },
         "weapon2": {},
-        "moveCost": 2,
+        "moveCost": 3,
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
@@ -126,7 +126,7 @@
         "size": 12,
         "speed": 0,
         "stealth": 0,
-        "ap": 12,
+        "ap": 13,
         "maxSalvo": 1,
         "weapon": {
             "name": "Jet d'acide",
@@ -162,7 +162,7 @@
         "size": 50,
         "speed": 0,
         "stealth": 0,
-        "ap": 8,
+        "ap": 12,
         "maxSalvo": 1,
         "weapon": {
             "name": "Glair acide",
@@ -176,7 +176,7 @@
             "ammo": [ "glair" ]
         },
         "weapon2": {},
-        "moveCost": 2,
+        "moveCost": 3,
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
@@ -198,7 +198,7 @@
         "size": 2,
         "speed": 1,
         "stealth": 6,
-        "ap": 14,
+        "ap": 16,
         "maxSalvo": 1,
         "weapon": {
             "name": "Mandibules",
@@ -213,7 +213,7 @@
             "ammo": [ "creuseur" ]
         },
         "weapon2": {},
-        "moveCost": 2,
+        "moveCost": 3,
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
@@ -261,7 +261,7 @@
         "size": 1,
         "speed": 2,
         "stealth": 9,
-        "ap": 13,
+        "ap": 14,
         "maxSalvo": 1,
         "weapon": {
             "name": "Mandibules",
@@ -276,7 +276,7 @@
             "ammo": [ "troueur" ]
         },
         "weapon2": {},
-        "moveCost": 2,
+        "moveCost": 3,
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
@@ -298,7 +298,7 @@
         "size": 6,
         "stealth": 4,
         "speed": 0,
-        "ap": 12,
+        "ap": 15,
         "maxSalvo": 1,
         "weapon": {
             "name": "Mandibules",
@@ -313,7 +313,7 @@
             "ammo": [ "none" ]
         },
         "weapon2": {},
-        "moveCost": 2,
+        "moveCost": 3,
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
@@ -409,7 +409,7 @@
         "size": 12,
         "speed": 0,
         "stealth": 12,
-        "ap": 18,
+        "ap": 20,
         "maxSalvo": 1,
         "weapon": {
             "name": "Glu",
@@ -423,7 +423,7 @@
             "ammo": [ "glue" ]
         },
         "weapon2": {},
-        "moveCost": 2,
+        "moveCost": 3,
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
@@ -445,7 +445,7 @@
         "size": 25,
         "speed": 0,
         "stealth": 1,
-        "ap": 10,
+        "ap": 11,
         "maxSalvo": 1,
         "weapon": {
             "name": "Jet d'acide",
@@ -517,7 +517,7 @@
         "size": 14,
         "speed": 0,
         "stealth": 0,
-        "ap": 10,
+        "ap": 12,
         "maxSalvo": 1,
         "weapon": {
             "name": "Mandibules",
@@ -554,7 +554,7 @@
         "size": 7,
         "speed": 0,
         "stealth": 2,
-        "ap": 10,
+        "ap": 11,
         "maxSalvo": 1,
         "weapon": {
             "name": "Mandibules",
@@ -569,7 +569,7 @@
             "ammo": [ "none" ]
         },
         "weapon2": {},
-        "moveCost": 2,
+        "moveCost": 3,
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
@@ -664,7 +664,7 @@
         "size": 2,
         "speed": 0,
         "stealth": 10,
-        "ap": 17,
+        "ap": 18,
         "maxSalvo": 1,
         "weapon": {
             "name": "Mandibules",
@@ -679,8 +679,8 @@
             "ammo": [ "web" ]
         },
         "weapon2": {},
-        "moveCost": 2,
-        "maxFlood": 2,
+        "moveCost": 3,
+        "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
         "skills": []
@@ -738,7 +738,7 @@
         "size": 27,
         "speed": 2,
         "stealth": 10,
-        "ap": 15,
+        "ap": 20,
         "maxSalvo": 1,
         "weapon": {
             "name": "Mandibules",
@@ -752,7 +752,7 @@
             "ammo": [ "poison" ]
         },
         "weapon2": {},
-        "moveCost": 2,
+        "moveCost": 3,
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
@@ -774,7 +774,7 @@
         "size": 15,
         "speed": 0,
         "stealth": 2,
-        "ap": 10,
+        "ap": 15,
         "maxSalvo": 1,
         "weapon": {
             "name": "Mandibules",
@@ -789,7 +789,7 @@
             "ammo": [ "none" ]
         },
         "weapon2": {},
-        "moveCost": 2,
+        "moveCost": 3,
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
@@ -936,7 +936,7 @@
             "ammo": [ "feu" ]
         },
         "weapon2": {},
-        "moveCost": 2,
+        "moveCost": 3,
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,

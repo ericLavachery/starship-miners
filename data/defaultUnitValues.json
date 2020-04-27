@@ -43,6 +43,7 @@
     "maxScarp": 4,
     "maxVeg": 4,
     "skills": [],
+    "medicCost":6,
     "maxSKill": 99,
     "fuzz": 0
 }

@@ -114,10 +114,11 @@ function skillsInfos(bat,batUnitType) {
     // MEDIC
     if (batUnitType.skills.includes('medic')) {
         numTargets = numMedicTargets(bat,'infantry');
-        apCost = numTargets*(4+batUnitType.squads-bat.squadsLeft);
+        let baseMedicCost = batUnitType.medicCost;
+        apCost = numTargets*(baseMedicCost+batUnitType.squads-bat.squadsLeft);
         if (bat.apLeft >= 4 && numTargets >= 1 && !inMelee) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,4,true,true)"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,'+baseMedicCost+',true,true)"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
         } else {
             // pas assez d'ap
             if (inMelee) {
