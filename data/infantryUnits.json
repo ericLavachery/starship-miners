@@ -25,17 +25,15 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","timonium","salite","dunium"]
         },
         "weapon2":{
-            "name":"Lance-grenade",
-            "cost":6,
+            "name":"Revolver",
+            "cost":2,
             "range":1,
-            "noFly":true,
             "rof":10,
-            "accuracy":11,
-            "power":10,
+            "accuracy":18,
+            "power":5,
             "aoe":"squad",
-            "sound":"161622__ryanconway__grenade-throwb",
-            "ammo":["grenade","grenade-flashbang","grenade-antichar","grenade-gaz","grenade-incendiaire"],
-            "maxAmmo":8
+            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -260,15 +258,15 @@
         "ap":15,
         "maxSalvo":1,
         "weapon":{
-            "name":"Pistolet",
+            "name":"Revolver",
             "cost":2,
             "range":1,
             "rof":10,
             "accuracy":17,
-            "power":4,
+            "power":5,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
             "name":"Lame",
@@ -618,15 +616,15 @@
             "maxAmmo":12
         },
         "weapon2":{
-            "name":"Pistolet",
+            "name":"Revolver",
             "cost":2,
             "range":1,
             "rof":8,
             "accuracy":17,
-            "power":4,
+            "power":5,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -801,7 +799,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","undead","firstaid","dealer","bliss","sila","blaze","kirin"],
+        "skills":["fortif","cible","undead","firstaid","dealer","bliss","sila","blaze","kirin","skupiac"],
         "maxSKill": 12,
         "fuzz":0
     }

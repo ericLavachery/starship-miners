@@ -100,35 +100,44 @@ function tagsUpdate(bat) {
         if (bat.tags.includes('kirin')) {
             tagIndex = bat.tags.indexOf('kirin');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat);
+            drugDown(bat,false,true);
         }
     }
-    if (rand.rand(1,7) === 1) {
+    if (rand.rand(1,10) === 1) {
         if (bat.tags.includes('sila')) {
             tagIndex = bat.tags.indexOf('sila');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat);
+            drugDown(bat,true,true);
         }
     }
     if (rand.rand(1,10) === 1) {
         if (bat.tags.includes('bliss')) {
             tagIndex = bat.tags.indexOf('bliss');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat);
+            drugDown(bat,true,false);
         }
     }
-    if (rand.rand(1,4) === 1) {
+    if (rand.rand(1,6) === 1) {
         if (bat.tags.includes('blaze')) {
             tagIndex = bat.tags.indexOf('blaze');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat);
+            drugDown(bat,true,true);
+        }
+    }
+    if (rand.rand(1,10) === 1) {
+        if (bat.tags.includes('skupiac')) {
+            tagIndex = bat.tags.indexOf('skupiac');
+            bat.tags.splice(tagIndex,1);
+            drugDown(bat,true,false);
         }
     }
 };
 
-function drugDown(bat) {
-    bat.tags.push('poison');
-    if (rand.rand(1,toxChance) === 1) {
+function drugDown(bat,poison,addict) {
+    if (poison) {
+        bat.tags.push('poison');
+    }
+    if (rand.rand(1,toxChance) === 1 && addict) {
         bat.tags.push('tox');
     }
 };
@@ -166,6 +175,10 @@ function tagsEffect(bat,batType) {
     if (bat.tags.includes('blaze')) {
         bat.apLeft = bat.apLeft+8;
         bat.salvoLeft = bat.salvoLeft+1;
+    }
+    // BLISS DRUG
+    if (bat.tags.includes('bliss')) {
+        bat.apLeft = bat.apLeft-2;
     }
     // REGENERATION & KIRIN DRUG
     if (bat.tags.includes('kirin') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg')) {

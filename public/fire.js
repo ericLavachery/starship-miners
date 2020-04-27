@@ -68,10 +68,10 @@ function combat() {
     let targetBatUnits = targetBat.squadsLeft*targetBatType.squadSize;
     $('#report').empty('');
     $('#report').append('<span class="report or">'+selectedBatUnits+' '+selectedBat.type+'</span> <span class="report">vs</span> <span class="report or">'+targetBatUnits+' '+targetBat.type+'</span><br>');
-    weaponSelectRiposte();
-    // console.log(targetWeap);
     let distance = calcDistance(selectedBat.tileId,targetBat.tileId);
     // console.log('distance '+distance);
+    weaponSelectRiposte(distance);
+    // console.log(targetWeap);
     $('#report').append('<span class="report">distance '+distance+'</span><br>');
     // ammo
     let baseAmmo = 99;
@@ -83,7 +83,7 @@ function combat() {
     // riposte?
     let riposte = false;
     let initiative = true;
-    if (targetWeap.range >= distance && ammoLeft >= 1) {
+    if (targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef) {
         if (!targetWeap.noFly || !selectedBatType.skills.includes('fly')) {
             riposte = true;
             let aspeed = calcSpeed(selectedBat,selectedWeap,targetWeap,distance,true);
@@ -619,7 +619,12 @@ function shot(skewer,weapon,bat,batType,shotDice) {
     let damage = 0;
     let cover = getCover(bat,true);
     let stealth = getStealth(bat);
-    if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover,batType.speed,shotDice)) {
+    let batSpeed = batType.speed;
+    // skupiac drug
+    if (bat.tags.includes('skupiac')) {
+        batSpeed = batSpeed+3;
+    }
+    if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
         damage = calcDamage(weapon,weapon.power,batType.armor,bat);
         if (damage > batType.hp && !skewer) {
             damage = batType.hp;
@@ -643,10 +648,15 @@ function blast(aoeShots,weapon,bat,batType,shotDice) {
     let oldPower = weapon.power;
     let cover = getCover(bat,true);
     let stealth = getStealth(bat);
+    let batSpeed = batType.speed;
+    // skupiac drug
+    if (bat.tags.includes('skupiac')) {
+        batSpeed = batSpeed+3;
+    }
     let ii = 1;
     while (ii <= aoeShots) {
         // console.log('power'+power);
-        if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover,batType.speed,shotDice)) {
+        if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
             newDamage = calcDamage(weapon,power,batType.armor,bat);
             if (newDamage > batType.hp) {
                 newDamage = batType.hp;

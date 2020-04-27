@@ -515,6 +515,9 @@ function checkDrugs(myBat) {
                     if (batType.skills.includes('kirin')) {
                         allDrugs.push('kirin');
                     }
+                    if (batType.skills.includes('skupiac')) {
+                        allDrugs.push('skupiac');
+                    }
                 }
             }
         }
@@ -525,16 +528,19 @@ function checkDrugs(myBat) {
 function checkBatDrugs(bat) {
     let myDrugs = [];
     if (bat.tags.includes('kirin')) {
-        myDrugs.push('kirin');
+        myDrugs.push('kr');
     }
     if (bat.tags.includes('bliss')) {
-        myDrugs.push('bliss');
+        myDrugs.push('bi');
     }
     if (bat.tags.includes('blaze')) {
-        myDrugs.push('blaze');
+        myDrugs.push('bz');
     }
     if (bat.tags.includes('sila')) {
-        myDrugs.push('sila');
+        myDrugs.push('si');
+    }
+    if (bat.tags.includes('skupiac')) {
+        myDrugs.push('sk');
     }
     return myDrugs;
 };

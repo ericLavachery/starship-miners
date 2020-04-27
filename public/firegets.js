@@ -370,7 +370,7 @@ function weaponSelect(weapon) {
     selectedWeap = weaponAdj(selectedWeap,selectedBat,weapon);
 };
 
-function weaponSelectRiposte() {
+function weaponSelectRiposte(distance) {
     let baseAmmo = 99;
     let ammoLeft = 99;
     targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
@@ -378,11 +378,11 @@ function weaponSelectRiposte() {
     if (activeTurn == 'aliens') {
         baseAmmo = targetWeap.maxAmmo;
         ammoLeft = calcAmmos(targetBat,baseAmmo);
-        if (ammoLeft <= 0) {
+        if (ammoLeft <= 0 || distance > targetWeap.range || targetWeap.noDef) {
             if (Object.keys(targetBatType.weapon2).length >= 1) {
                 targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon2));
                 targetWeap = weaponAdj(targetWeap,targetBat,'w2');
-                if (!targetWeap.noDef) {
+                if (!targetWeap.noDef && distance <= targetWeap.range) {
                     baseAmmo = targetWeap.maxAmmo;
                     ammoLeft = calcAmmos(targetBat,baseAmmo);
                 } else {
@@ -438,6 +438,11 @@ function weaponAdj(weapon,bat,wn) {
     // sila drug
     if (bat.tags.includes('sila') && thisWeapon.isMelee) {
         thisWeapon.power = thisWeapon.power+4;
+    }
+    // skupiac drug
+    if (bat.tags.includes('skupiac')) {
+        thisWeapon.accuracy = thisWeapon.accuracy+6;
+        thisWeapon.power = thisWeapon.power+1;
     }
     thisWeapon.armors = 1;
     thisWeapon.aoe = weapon.aoe;
