@@ -457,6 +457,11 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.noDef = weapon.noDef;
     }
+    if (weapon.noBis === undefined) {
+        thisWeapon.noBis = false;
+    } else {
+        thisWeapon.noBis = weapon.noBis;
+    }
     if (weapon.noMelee === undefined) {
         thisWeapon.noMelee = false;
     } else {

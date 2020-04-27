@@ -337,6 +337,9 @@ function attack() {
     if (selectedWeap.maxAmmo < 99) {
         selectedBat.tags.push('ammoUsed');
     }
+    if (selectedWeap.noBis) {
+        selectedBat.tags.push('noBis');
+    }
     // creuseur
     let catOK = false;
     if (targetBatType.cat == 'buildings' || targetBatType.cat == 'vehicles') {

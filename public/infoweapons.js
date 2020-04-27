@@ -6,6 +6,7 @@ function weaponsInfos(bat,batUnitType) {
     let anyTarget = false;
     let inMelee = batInMelee(bat);
     let noFireMelee = false;
+    let noBisOK = true;
     let baseAmmo = 99;
     let ammoLeft = 99;
     if (batUnitType.weapon.rof >= 1 && batUnitType.weapon2.rof >= 1 && batUnitType.weapon.name == batUnitType.weapon2.name) {
@@ -24,8 +25,12 @@ function weaponsInfos(bat,batUnitType) {
             if (thisWeapon.name === selectedWeap.name) {
                 balise = 'h1';
             }
+            noBisOK = true;
+            if (thisWeapon.noBis && bat.tags.includes('noBis')) {
+                noBisOK = false;
+            }
             let w1message = 'Salves épuisées';
-            if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && ammoLeft >= 1 && anyTarget) {
+            if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && ammoLeft >= 1 && anyTarget && noBisOK) {
                 // assez d'ap et de salve
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w1`)"><i class="ra ra-bullets rpg"></i></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
             } else {
@@ -83,8 +88,12 @@ function weaponsInfos(bat,batUnitType) {
             if (thisWeapon.name === selectedWeap.name) {
                 balise = 'h1';
             }
+            noBisOK = true;
+            if (thisWeapon.noBis && bat.tags.includes('noBis')) {
+                noBisOK = false;
+            }
             let w2message = 'Salves épuisées';
-            if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && anyTarget && ammoLeft >= 1 && !noFireMelee) {
+            if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && anyTarget && ammoLeft >= 1 && !noFireMelee && noBisOK) {
                 // assez d'ap et de salve
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w2`)"><i class="ra ra-bullets rpg"></i></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
             } else {
