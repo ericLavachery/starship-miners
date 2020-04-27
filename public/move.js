@@ -7,13 +7,29 @@ function clickMove(tileId) {
             ownBatHere = true;
         }
     });
-    if (hasShot() && ownBatHere) {
-        warning('Mouvement illégal:','Pas de mouvement par dessus une unité si vous avez déjà attaqué (ou utilisé une habileté).<br>Le dernier mouvement n\'a pas été éxécuté.');
-        selectMode();
-        batUnstack();
-        batUnselect();
-    } else {
-        if (isAdjacent(selectedBat.tileId,tileId)) {
+    let distance;
+    let moveOK = false;
+    let stackOK = true;
+    if (isAdjacent(selectedBat.tileId,tileId)) {
+        moveOK = true;
+    }
+    if (selectedBatType.skills.includes('fly')) {
+        stackOK = false;
+        distance = calcDistance(selectedBat.tileId,tileId);
+        if (distance <= Math.ceil(selectedBat.apLeft/selectedBatType.moveCost)) {
+            moveOK = true;
+        }
+    }
+    if (hasShot()) {
+        stackOK = false;
+    }
+    if (moveOK) {
+        if (!stackOK && ownBatHere) {
+            warning('Mouvement illégal:','Pas de mouvement par dessus une unité si vous avez déjà attaqué (ou utilisé une habileté).<br>Le dernier mouvement n\'a pas été éxécuté.');
+            selectMode();
+            batUnstack();
+            batUnselect();
+        } else {
             let moveLeft = selectedBat.apLeft;
             // Guerrilla
             if (selectedBatType.skills.includes('guerrilla')) {
@@ -35,16 +51,16 @@ function clickMove(tileId) {
                 batUnstack();
                 batUnselect();
             }
+        }
+    } else {
+        if (selectedBat.tileId === tileId) {
+            // re-click sur l'unité active : unselect
+            selectMode();
+            batUnstack();
+            batUnselect();
         } else {
-            if (selectedBat.tileId === tileId) {
-                // re-click sur l'unité active : unselect
-                selectMode();
-                batUnstack();
-                batUnselect();
-            } else {
-                // terrain non adjacent : unselect
-                clickSelect(tileId);
-            }
+            // terrain non adjacent : unselect
+            clickSelect(tileId);
         }
     }
 };

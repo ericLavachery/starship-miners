@@ -750,13 +750,14 @@ function moveAlienBat(tileId,jump) {
     $('#b'+selectedBat.tileId).empty();
     // remove ap
     let moveCost;
-    if (isDiag(selectedBat.tileId,tileId)) {
-        moveCost = calcMoveCost(tileId,true);
-    } else {
-        moveCost = calcMoveCost(tileId,false);
-    }
     if (jump) {
-        moveCost = selectedBat.apLeft-4;
+        moveCost = selectedBat.apLeft;
+    } else {
+        if (isDiag(selectedBat.tileId,tileId)) {
+            moveCost = calcMoveCost(tileId,true);
+        } else {
+            moveCost = calcMoveCost(tileId,false);
+        }
     }
     let apLost = moveCost;
     selectedBat.apLeft = selectedBat.apLeft-apLost;
@@ -836,11 +837,6 @@ function targetFarthest() {
                         targetBat = JSON.parse(JSON.stringify(bat));
                         inPlace = true;
                     }
-                    // if (lePlusLoin < distance) {
-                    //     lePlusLoin = distance;
-                    //     targetBat = JSON.parse(JSON.stringify(bat));
-                    //     inPlace = true;
-                    // }
                 }
             }
         });

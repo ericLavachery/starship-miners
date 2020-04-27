@@ -894,5 +894,50 @@
         "skills":["fortif","cible","medic","camo"],
         "medicCost":6,
         "fuzz":0
+    },
+    {
+        "id":42,
+        "name":"Jumpers",
+        "pic":"jumpers",
+        "cat":"infantry",
+        "squads":6,
+        "squadSize":8,
+        "crew":1,
+        "hp":5,
+        "armor":2,
+        "size":3,
+        "stealth":1,
+        "speed":4,
+        "ap":16,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Fusil d'assaut",
+            "cost":3,
+            "range":1,
+            "rof":16,
+            "accuracy":21,
+            "power":5,
+            "aoe":"unit",
+            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+        },
+        "weapon2":{
+            "name":"Baïonnette",
+            "cost":1,
+            "range":0,
+            "isMelee":true,
+            "rof":8,
+            "accuracy":17,
+            "power":4,
+            "aoe":"unit",
+            "sound":"axe",
+            "ammo":["perceur","ppoison","monomolecular","plasblade"]
+        },
+        "moveCost":2,
+        "maxFlood":3,
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["fortif","cible","Fly"],
+        "fuzz":0
     }
 ]
