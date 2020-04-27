@@ -17,12 +17,17 @@ function clickTile(tileId) {
 function clickSelect(tileId) {
     showTileInfos(tileId);
     let ownBatHere = false;
+    let jump = false;
     bataillons.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
             showBatInfos(bat);
             if (selectedBat.id == bat.id && selectedBatType.moveCost < 99) {
+                // let batType = getBatType(bat);
+                if (selectedBatType.skills.includes('fly')) {
+                    jump = true;
+                }
                 moveMode();
-                moveInfos(selectedBat);
+                moveInfos(selectedBat,jump);
             } else {
                 selectMode();
                 batUnstack();

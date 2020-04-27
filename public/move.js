@@ -8,15 +8,17 @@ function clickMove(tileId) {
         }
     });
     let distance;
+    let jump = false;
     let moveOK = false;
     let stackOK = true;
     if (isAdjacent(selectedBat.tileId,tileId)) {
         moveOK = true;
     }
     if (selectedBatType.skills.includes('fly')) {
+        jump = true;
         stackOK = false;
-        distance = calcDistance(selectedBat.tileId,tileId);
-        if (distance <= Math.ceil(selectedBat.apLeft/selectedBatType.moveCost)) {
+        distance = calcJumpDistance(selectedBat.tileId,tileId);
+        if (Math.floor(distance) <= Math.ceil(selectedBat.apLeft/selectedBatType.moveCost)) {
             moveOK = true;
         }
     }
@@ -38,8 +40,8 @@ function clickMove(tileId) {
             if (moveLeft >= 1) {
                 if (terrainAccess(selectedBat.id,tileId)) {
                     if (!alienOccupiedTiles.includes(tileId)) {
-                        moveSelectedBat(tileId,false);
-                        moveInfos(selectedBat);
+                        moveSelectedBat(tileId,false,jump);
+                        moveInfos(selectedBat,jump);
                     } else {
                         // terrain occupé par un alien
                     }
@@ -65,7 +67,7 @@ function clickMove(tileId) {
     }
 };
 
-function moveInfos(bat) {
+function moveInfos(bat,jump) {
     cursorSwitch('.','grid-item','pointer');
     let titleString;
     let moveCost;
@@ -75,17 +77,43 @@ function moveInfos(bat) {
     let myTileY = zone[bat.tileId].y;
     zone.forEach(function(tile) {
         $("#"+tile.id).attr("title", "");
-        if (tile.x == myTileX+1 || tile.x == myTileX || tile.x == myTileX-1) {
-            if (tile.y == myTileY+1 || tile.y == myTileY || tile.y == myTileY-1) {
+        if (!jump) {
+            if (tile.x == myTileX+1 || tile.x == myTileX || tile.x == myTileX-1) {
+                if (tile.y == myTileY+1 || tile.y == myTileY || tile.y == myTileY-1) {
+                    if (tile.y == myTileY && tile.x == myTileX) {
+                        cursorSwitch('#',tile.id,'pointer');
+                    } else {
+                        moveLeft = selectedBat.apLeft;
+                        // Guerrilla
+                        if (batType.skills.includes('guerrilla')) {
+                            moveLeft = selectedBat.apLeft+4;
+                        }
+                        if (moveLeft >= 1 && terrainAccess(selectedBat.id,tile.id)) {
+                            if (!alienOccupiedTiles.includes(tile.id)) {
+                                cursorSwitch('#',tile.id,'move');
+                            } else {
+                                cursorSwitch('#',tile.id,'pointer');
+                            }
+                        } else {
+                            cursorSwitch('#',tile.id,'stop');
+                        }
+                        // montre le moveCost
+                        if (terrainAccess(selectedBat.id,tile.id)) {
+                            moveCost = calcMoveCost(tile.id,isDiag(selectedBat.tileId,tile.id));
+                            titleString = moveCost+" ap";
+                            $("#"+tile.id).attr("title", titleString);
+                        }
+                    }
+                }
+            }
+        } else {
+            distance = calcJumpDistance(selectedBat.tileId,tile.id);
+            if (Math.floor(distance) <= Math.ceil(selectedBat.apLeft/selectedBatType.moveCost)) {
                 if (tile.y == myTileY && tile.x == myTileX) {
                     cursorSwitch('#',tile.id,'pointer');
                 } else {
                     moveLeft = selectedBat.apLeft;
-                    // Guerrilla
-                    if (batType.skills.includes('guerrilla')) {
-                        moveLeft = selectedBat.apLeft+4;
-                    }
-                    if (moveLeft >= 1 && terrainAccess(selectedBat.id,tile.id)) {
+                    if (moveLeft >= 1) {
                         if (!alienOccupiedTiles.includes(tile.id)) {
                             cursorSwitch('#',tile.id,'move');
                         } else {
@@ -95,11 +123,10 @@ function moveInfos(bat) {
                         cursorSwitch('#',tile.id,'stop');
                     }
                     // montre le moveCost
-                    if (terrainAccess(selectedBat.id,tile.id)) {
-                        moveCost = calcMoveCost(tile.id,isDiag(selectedBat.tileId,tile.id));
-                        titleString = moveCost+" ap";
-                        $("#"+tile.id).attr("title", titleString);
-                    }
+                    let distance = calcJumpDistance(selectedBat.tileId,tile.id);
+                    moveCost = Math.round(distance*selectedBatType.moveCost);
+                    titleString = moveCost+" ap";
+                    $("#"+tile.id).attr("title", titleString);
                 }
             }
         }
@@ -113,20 +140,26 @@ function deleteMoveInfos() {
     });
 };
 
-function moveSelectedBat(tileId,free) {
+function moveSelectedBat(tileId,free,jump) {
     let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
     // remove unit and redraw old tile
     tileUnselect();
     redrawTile(selectedBat.tileId,false);
     if (!free) {
         // remove ap
-        let moveCost;
-        if (isDiag(selectedBat.tileId,tileId)) {
-            moveCost = calcMoveCost(tileId,true);
+        let apLost;
+        if (!jump) {
+            let moveCost;
+            if (isDiag(selectedBat.tileId,tileId)) {
+                moveCost = calcMoveCost(tileId,true);
+            } else {
+                moveCost = calcMoveCost(tileId,false);
+            }
+            apLost = moveCost;
         } else {
-            moveCost = calcMoveCost(tileId,false);
+            let distance = calcJumpDistance(selectedBat.tileId,tileId);
+            apLost = Math.round(distance*selectedBatType.moveCost);
         }
-        let apLost = moveCost;
         selectedBat.apLeft = selectedBat.apLeft-apLost;
     }
     selectedBat.tileId = tileId;
@@ -149,6 +182,35 @@ function moveSelectedBat(tileId,free) {
     selectedBatArrayUpdate();
 };
 
+function calcJumpDistance(myTileIndex,thatTileIndex) {
+    // let distance = calcDistance(myTileIndex,thatTileIndex);
+    let jumpDistance = 0;
+    // if (distance === 0) {
+    //     jumpDistance = 1
+    // } else if (distance === 1) {
+    //     jumpDistance = 2;
+    // } else {
+        let batOff = batOffsets(thatTileIndex);
+        if (batOff[0] > batOff[1]) {
+            jumpDistance = batOff[0]-batOff[1]+(batOff[1]*1.42);
+        } else {
+            jumpDistance = batOff[1]-batOff[0]+(batOff[0]*1.42);
+        }
+    // }
+    return jumpDistance;
+};
+
+function batOffsets(tileId) {
+    // offsets x et y entre selectedBat et tileId
+    theTileX = zone[tileId].x;
+    theTileY = zone[tileId].y;
+    batTileX = zone[selectedBat.tileId].x;
+    batTileY = zone[selectedBat.tileId].y;
+    xOff = Math.abs(batTileX-theTileX);
+    yOff = Math.abs(batTileY-theTileY);
+    return [xOff,yOff];
+};
+
 function batUnstack() {
     // return selectedBat to start position if stacked on another unit
     let stack = false;
@@ -167,7 +229,7 @@ function batUnstack() {
             // le bataillon n'a pas tiré ce tour ci : regagne ses AP
             selectedBat.apLeft = selectedBat.oldapLeft;
         }
-        moveSelectedBat(selectedBat.oldTileId,true);
+        moveSelectedBat(selectedBat.oldTileId,true,false);
         console.log('unstack');
         warning('Mouvement illégal:','Vous ne pouvez pas rester sur la même case qu\'une autre unité.<br>Les mouvements de ce bataillon ont été annulés.');
     }
