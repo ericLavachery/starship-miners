@@ -285,7 +285,7 @@ function attack() {
                 totalDamage = totalDamage+targetBatType.hp;
             }
             apDamage = selectedBat.squadsLeft*3;
-            if (targetWeap.isMelee) {
+            if (targetBat.weapon.isMelee || targetBat.weapon2.isMelee) {
                 apDamage = Math.round(apDamage/4);
             }
             targetBat.apLeft = targetBat.apLeft-apDamage;
