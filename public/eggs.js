@@ -157,8 +157,6 @@ function spawns() {
                 alienSpawn(bat,'Bugs');
             } else if (bat.type === 'Androks' && aliensNums.scorpions < Math.round(maxPonte*1.5)) {
                 alienSpawn(bat,'Scorpions');
-            } else if (bat.type === 'Fourmis' && rand.rand(1,9) === 1 && aliensNums.fourmis < maxPonte*2) {
-                alienSpawn(bat,'Fourmis');
             } else if (bat.type === 'Cafards' && rand.rand(1,6) === 1 && aliensNums.fourmis < maxPonte*3) {
                 alienSpawn(bat,'Cafards');
             } else if (bat.type === 'Glaireuse' && aliensNums.gluantes < maxPonte) {

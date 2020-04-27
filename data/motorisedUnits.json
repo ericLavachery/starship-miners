@@ -109,7 +109,7 @@
             "cost":3,
             "range":1,
             "rof":24,
-            "accuracy":16,
+            "accuracy":18,
             "power":5,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
@@ -290,11 +290,11 @@
             "cost":3,
             "range":0,
             "rof":10,
-            "accuracy":21,
+            "accuracy":23,
             "power":8,
             "aoe":"brochette",
             "sound":"warfare_gunshots_x2_rifle_exterior",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","timonium","salite","dunium"]
         },
         "weapon2":{
             "name":"Mitrailleuse",
