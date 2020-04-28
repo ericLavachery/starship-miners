@@ -6,7 +6,9 @@ function alienMoveLoop() {
     defAlive = true;
     alienOccupiedTileList();
     playerOccupiedTileList();
-    isCamoBlock();
+    if (selectedBatType.moveCost < 99) {
+        isCamoBlock();
+    }
     checkPDM();
     tileUntarget();
     targetBat = {};
@@ -1078,7 +1080,7 @@ function getAway(bat,fromTileId,blob) {
         bat.apLeft = bat.apLeft-apCost;
         tagDelete(bat,'guet');
         tagDelete(bat,'fortif');
-        if (bat.tags.includes('camo')) {
+        if (bat.tags.includes('camo') && !blob) {
             bat.fuzz = -1;
         }
         tagDelete(bat,'camo');

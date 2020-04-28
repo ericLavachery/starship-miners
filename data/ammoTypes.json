@@ -466,7 +466,7 @@
         "power": 0,
         "armors": 0,
         "accuracy": 1,
-        "apdamage": 1,
+        "apdamage": 0.33,
         "aoe": ""
     },
     {
