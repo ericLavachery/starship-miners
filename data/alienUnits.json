@@ -413,11 +413,11 @@
         "maxSalvo": 1,
         "weapon": {
             "name": "Glu",
-            "cost": 1,
+            "cost": 5,
             "range": 5,
             "rof": 8,
             "accuracy": 25,
-            "power": 6,
+            "power": 4,
             "aoe": "unit",
             "sound": "zapsplat_cartoon_squish_squelch_wet_007_14506b",
             "ammo": [ "glue" ]
