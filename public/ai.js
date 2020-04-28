@@ -939,15 +939,48 @@ function isCamoBlock() {
     console.log(alienAdjTiles);
     let camoBlocks = 0;
     let meleeBlocks = 0;
+    let allBlocks = 0;
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone" && bat.fuzz <= -2 && alienAdjTiles.includes(bat.tileId)) {
-            camoBlocks = camoBlocks+1;
-            if (alienMeleeTiles.includes(bat.tileId)) {
-                meleeBlocks = meleeBlocks+1;
+        if (bat.loc === "zone" && alienAdjTiles.includes(bat.tileId)) {
+            if (bat.fuzz <= -2) {
+                camoBlocks = camoBlocks+1;
+                if (alienMeleeTiles.includes(bat.tileId)) {
+                    meleeBlocks = meleeBlocks+1;
+                }
             }
+            allBlocks = allBlocks+1;
         }
     });
-    if (camoBlocks >= 2 && meleeBlocks >= 1) {
+    let camoGroup = false;
+    let lastCamo = -1;
+    let distance;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" && alienAdjTiles.includes(bat.tileId) && bat.fuzz <= -2) {
+            lastCamo = bat.tileId;
+            bataillons.forEach(function(camoBat) {
+                if (camoBat.loc === "zone" && alienAdjTiles.includes(camoBat.tileId) && camoBat.fuzz <= -2) {
+                    if (lastCamo != camoBat.tileId) {
+                        distance = calcDistance(lastCamo,camoBat.tileId);
+                        if (distance <= 1) {
+                            camoGroup = true;
+                        }
+                    }
+                }
+            });
+        }
+    });
+    console.log('camoGroup: '+camoGroup);
+    console.log('camoBlocks: '+camoBlocks);
+    console.log('meleeBlocks: '+meleeBlocks);
+    console.log('allBlocks: '+allBlocks);
+    let blocked = false;
+    if (camoBlocks >= 2 && meleeBlocks >= 1 && allBlocks >= 3) {
+        blocked = true;
+    }
+    if (camoGroup) {
+        blocked = true;
+    }
+    if (blocked) {
         // CAMOBLOCK!!
         let camoUnblocked = false;
         let shufBats = _.shuffle(bataillons);
@@ -955,7 +988,7 @@ function isCamoBlock() {
             if (bat.loc === "zone" && bat.fuzz <= -2 && alienMeleeTiles.includes(bat.tileId) && !camoUnblocked) {
                 camoUnblocked = true;
                 bat.fuzz = -1;
-                console.log('CamoUnblock: '+bat.name);
+                console.log('camoUnblock: '+bat.name);
             }
         });
     }

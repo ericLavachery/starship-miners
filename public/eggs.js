@@ -53,7 +53,7 @@ function dropEgg() {
     alienOccupiedTileList();
     playerOccupiedTileList();
     let tileOK = false;
-    let maxTileId = (mapSize*mapSize)+1;
+    let maxTileId = (mapSize*mapSize)-1;
     let dropTile = rand.rand(0,maxTileId);
     console.log('dropTile='+dropTile);
     if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
