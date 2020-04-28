@@ -280,7 +280,7 @@ function skillsInfos(bat,batUnitType) {
         if (allDrugs.includes('skupiac') && !bat.tags.includes('skupiac')) {
             let apCost = 3;
             if (bat.apLeft >= apCost) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Concentration: +6 précision ('+apCost+' PA)" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="fas fa-fist-raised"></i></button>&nbsp; Skupiac</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Concentration: +6 précision ('+apCost+' PA)" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i></button>&nbsp; Skupiac</h4></span>');
             } else {
                 skillMessage = "Pas assez de PA"
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Skupiac</h4></span>');

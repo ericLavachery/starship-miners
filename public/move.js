@@ -183,20 +183,13 @@ function moveSelectedBat(tileId,free,jump) {
 };
 
 function calcJumpDistance(myTileIndex,thatTileIndex) {
-    // let distance = calcDistance(myTileIndex,thatTileIndex);
     let jumpDistance = 0;
-    // if (distance === 0) {
-    //     jumpDistance = 1
-    // } else if (distance === 1) {
-    //     jumpDistance = 2;
-    // } else {
-        let batOff = batOffsets(thatTileIndex);
-        if (batOff[0] > batOff[1]) {
-            jumpDistance = batOff[0]-batOff[1]+(batOff[1]*1.42);
-        } else {
-            jumpDistance = batOff[1]-batOff[0]+(batOff[0]*1.42);
-        }
-    // }
+    let batOff = batOffsets(thatTileIndex);
+    if (batOff[0] > batOff[1]) {
+        jumpDistance = batOff[0]-batOff[1]+(batOff[1]*1.42);
+    } else {
+        jumpDistance = batOff[1]-batOff[0]+(batOff[0]*1.42);
+    }
     return jumpDistance;
 };
 

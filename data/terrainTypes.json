@@ -24,6 +24,18 @@
         "aliencover": 3
     },
     {
+        "name": "E",
+        "fullName": "Reg",
+        "scarp": 1,
+        "flood": 0,
+        "veg": 0,
+        "mc": 1,
+        "roadmc": 0,
+        "alienmc": 1,
+        "cover": 2,
+        "aliencover": 2
+    },
+    {
         "name": "P",
         "fullName": "Plaine",
         "scarp": 0,
