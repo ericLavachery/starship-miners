@@ -31,7 +31,7 @@
             "rof":10,
             "accuracy":18,
             "power":5,
-            "aoe":"squad",
+            "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
@@ -39,7 +39,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid","selevation"],
+        "skills":["fortif","cible","firstaid"],
         "fuzz":0
     },
     {
