@@ -11,7 +11,7 @@
         "armor":9,
         "size":18,
         "stealth":0,
-        "ap":18,
+        "ap":17,
         "maxSalvo":1,
         "weapon":{
             "name":"Mitrailleuse",
@@ -31,8 +31,8 @@
             "noMelee": true,
             "noFly": true,
             "rof":6,
-            "accuracy":14,
-            "power":18,
+            "accuracy":13,
+            "power":16,
             "aoe":"squad",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"],
@@ -202,7 +202,7 @@
             "power":22,
             "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
-            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":24
         },
         "weapon2":{
@@ -397,7 +397,7 @@
             "power":22,
             "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
-            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":15
         },
         "moveCost":2,
@@ -678,5 +678,39 @@
         "skills":["fortif","cible","transport","medic"],
         "medicCost":3,
         "fuzz":0
+    },
+    {
+        "id":44,
+        "name":"Spenders",
+        "pic":"wirbelwind",
+        "cat":"vehicles",
+        "squads":4,
+        "squadSize":3,
+        "crew":4,
+        "hp":50,
+        "armor":10,
+        "size":24,
+        "stealth":4,
+        "ap":16,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Fusil mitrailleur",
+            "cost":3,
+            "range":1,
+            "rof":27,
+            "accuracy":18,
+            "power":6,
+            "aoe":"unit",
+            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+        },
+        "weapon2":{},
+        "moveCost":2,
+        "maxFlood":2,
+        "maxScarp":2,
+        "maxVeg":2,
+        "skills":["fortif","cible","guerrilla","camo","landmine"],
+        "maxSKill": 3,
+        "fuzz":-1
     }
 ]

@@ -143,5 +143,39 @@
         "maxVeg":-1,
         "skills":[],
         "fuzz":-1
+    },
+    {
+        "id":43,
+        "name":"Champs de mines",
+        "pic":"landmine2",
+        "cat":"buildings",
+        "squads":6,
+        "squadSize":20,
+        "crew":0,
+        "hp":2,
+        "armor":2,
+        "size":12,
+        "stealth":20,
+        "ap":99,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Explosifs",
+            "cost":2,
+            "range":0,
+            "noFly":true,
+            "rof":20,
+            "accuracy":12,
+            "power":27,
+            "aoe":"squad",
+            "sound":"bottlerocket_Impact_Boom_Distorted_10b",
+            "ammo":["autodestruction"]
+        },
+        "weapon2":{},
+        "moveCost":99,
+        "maxFlood":-1,
+        "maxScarp":-1,
+        "maxVeg":-1,
+        "skills":[],
+        "fuzz":-2
     }
 ]
