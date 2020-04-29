@@ -755,7 +755,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","extraction","firstaid"],
+        "skills":["fortif","extraction","firstaid","dynamite"],
+        "maxSKill": 2,
         "fuzz":0
     },
     {

@@ -19,7 +19,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["mecano","bldselfrepair"],
+        "skills":["mecano","deepselfrepair"],
         "fuzz":2
     },
     {
@@ -42,7 +42,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["bldselfrepair"],
+        "skills":["deepselfrepair"],
         "fuzz":2
     },
     {
@@ -65,7 +65,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["bldselfrepair","ravitaillement","stock"],
+        "skills":["deepselfrepair","ravitaillement","stock"],
         "fuzz":2
     }
 ]

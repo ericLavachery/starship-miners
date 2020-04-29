@@ -19,7 +19,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["bldselfrepair","transorbital"],
+        "skills":["deepselfrepair","transorbital"],
         "fuzz":1
     },
     {
@@ -63,7 +63,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["bldselfrepair","cible","longshot"],
+        "skills":["deepselfrepair","cible","longshot"],
         "fuzz":-1
     },
     {
@@ -106,7 +106,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["bldselfrepair","cible","longshot"],
+        "skills":["deepselfrepair","cible","longshot"],
         "fuzz":-1
     },
     {
@@ -179,6 +179,54 @@
             "noFly":true,
             "noDef":true,
             "rof":20,
+            "accuracy":12,
+            "power":27,
+            "aoe":"squad",
+            "sound":"bottlerocket_Impact_Boom_Distorted_10b",
+            "ammo":["suicide"]
+        },
+        "moveCost":99,
+        "maxFlood":-1,
+        "maxScarp":-1,
+        "maxVeg":-1,
+        "skills":[],
+        "fuzz":-2
+    },
+    {
+        "id":45,
+        "name":"Explosifs",
+        "pic":"dynamite",
+        "cat":"buildings",
+        "squads":6,
+        "squadSize":8,
+        "crew":0,
+        "hp":2,
+        "armor":0,
+        "size":2,
+        "stealth":0,
+        "speed":-50,
+        "ap":60,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Explosifs",
+            "cost":15,
+            "range":0,
+            "noFly":true,
+            "noAtt":true,
+            "rof":2,
+            "accuracy":12,
+            "power":27,
+            "aoe":"squad",
+            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
+            "ammo":["dynamite"]
+        },
+        "weapon2":{
+            "name":"Explosion",
+            "cost":1,
+            "range":0,
+            "noFly":true,
+            "noDef":true,
+            "rof":8,
             "accuracy":12,
             "power":27,
             "aoe":"squad",
