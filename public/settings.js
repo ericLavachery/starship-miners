@@ -74,7 +74,7 @@ let berserkEnemyDamage = 1.5;
 let berserkROF = 1.5;
 let deadBatsList = [];
 let deadAliensList = [];
-let luckCheck = [7,21,93,100];
+let luckCheck = [7,14,21,86,93,100];
 let toxChance = 30;
 // ALIENS
 let isFFW = false;

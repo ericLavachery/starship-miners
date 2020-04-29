@@ -121,7 +121,6 @@ function clickConstruct(tileId) {
             batHere = true;
         }
     });
-
     if (!batHere) {
         putBat(tileId);
         bfconst();
@@ -164,9 +163,15 @@ function putBat(tileId) {
         newBat.oldTileId = tileId;
         newBat.squadsLeft = conselUnit.squads;
         newBat.damage = 0;
-        newBat.apLeft = conselUnit.ap;
-        newBat.oldapLeft = conselUnit.ap;
-        newBat.salvoLeft = conselUnit.maxSalvo;
+        if (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs') {
+            newBat.apLeft = 0;
+            newBat.oldapLeft = 0;
+            newBat.salvoLeft = 0;
+        } else {
+            newBat.apLeft = conselUnit.ap;
+            newBat.oldapLeft = conselUnit.ap;
+            newBat.salvoLeft = conselUnit.maxSalvo;
+        }
         if (conselAmmos[0] != 'xxx') {
             newBat.ammo = conselAmmos[0];
         } else {

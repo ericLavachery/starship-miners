@@ -3,6 +3,7 @@ function skillsInfos(bat,batUnitType) {
     let numTargets = 0;
     let apCost;
     let inMelee = batInMelee(bat);
+    console.log('inMelee='+inMelee);
     // RAVITAILLEMENT
     let anyRavit = checkRavit(bat);
     if (anyRavit && bat.tags.includes('ammoUsed')) {
@@ -10,7 +11,7 @@ function skillsInfos(bat,batUnitType) {
         if (bat.apLeft >= apCost) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de munitions ('+apCost+' PA)" class="boutonGris iconButtons" onclick="goRavit('+apCost+')"><i class="ra ra-ammo-bag rpg"></i></button>&nbsp; Ravitaillement</h4></span>');
         } else {
-            skillMessage = "Pas assez de PA"
+            skillMessage = "Pas assez de PA";
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Ravitaillement</h4></span>');
         }
     }
@@ -21,7 +22,7 @@ function skillsInfos(bat,batUnitType) {
         if (bat.apLeft >= apCost) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de ravitaillements ('+apCost+' PA)" class="boutonGris iconButtons" onclick="goStock('+apCost+')"><i class="fas fa-cubes"></i></button>&nbsp; Réapprovisionnement</h4></span>');
         } else {
-            skillMessage = "Pas assez de PA"
+            skillMessage = "Pas assez de PA";
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réapprovisionnement</h4></span>');
         }
     }
@@ -38,14 +39,12 @@ function skillsInfos(bat,batUnitType) {
     // FORTIFICATION
     if (batUnitType.skills.includes('fortif')) {
         if (bat.apLeft >= batUnitType.ap && !bat.tags.includes('fortif') && !inMelee && bat.salvoLeft >= batUnitType.maxSalvo) {
-            // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se fortifier (bonus couverture) ('+batUnitType.ap+' PA)" class="boutonGris iconButtons" onclick="fortification()"><i class="fas fa-shield-alt"></i></button>&nbsp; Fortification</h4></span>');
         } else {
-            // pas assez d'ap
             if (inMelee) {
-                skillMessage = "Vous ne pouvez pas vous fortifier en mêlée"
+                skillMessage = "Vous ne pouvez pas vous fortifier en mêlée";
             } else {
-                skillMessage = "Pas assez de PA ou de salve"
+                skillMessage = "Pas assez de PA ou de salve";
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Fortification</h4></span>');
         }
@@ -53,16 +52,15 @@ function skillsInfos(bat,batUnitType) {
     // CAMOUFLAGE
     if (batUnitType.skills.includes('camo')) {
         apCost = Math.floor(batUnitType.ap/2);
-        if (bat.apLeft >= apCost) {
-            // assez d'ap
-            skillMessage = "Mode furtif"
-            if (bat.tags.includes('camo')) {
-                skillMessage = "Améliorer le mode furtif"
-            }
+        if (bat.apLeft >= apCost && bat.fuzz >= -1) {
+            skillMessage = "Mode furtif";
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+' ('+apCost+' PA)" class="boutonGris iconButtons" onclick="camouflage(false)"><i class="ra ra-grass rpg"></i></button>&nbsp; Mode furtif</h4></span>');
         } else {
-            // pas assez d'ap
-            skillMessage = "Pas assez de PA"
+            if (bat.fuzz <= -2) {
+                skillMessage = "Déjà en mode furtif";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Mode furtif</h4></span>');
         }
         if (bat.tags.includes('camo')) {
@@ -73,13 +71,11 @@ function skillsInfos(bat,batUnitType) {
     if (batUnitType.skills.includes('embuscade')) {
         apCost = Math.ceil(batUnitType.ap/2);
         if (bat.apLeft >= apCost && bat.tags.includes('camo')) {
-            // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embuscade (Initiative + Cadence de tir 150%) ('+apCost+' PA)" class="boutonGris iconButtons" onclick="ambush()"><i class="ra ra-hood rpg"></i></button>&nbsp; Embuscade</h4></span>');
         } else {
-            // pas assez d'ap
-            skillMessage = "Pas assez de PA"
+            skillMessage = "Pas assez de PA";
             if (!bat.tags.includes('camo')) {
-                skillMessage = "Vous n'êtes pas en mode furtif"
+                skillMessage = "Vous n'êtes pas en mode furtif";
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Embuscade</h4></span>');
         }
@@ -92,10 +88,8 @@ function skillsInfos(bat,batUnitType) {
             balise = 'h1';
         }
         if (bat.apLeft >= 3 && !bat.tags.includes('vise')) {
-            // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+5 précision, 2/3 cadence de tir (3 PA + coût de l\'arme)" class="boutonGris iconButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i></button>&nbsp; Tir ciblé</'+balise+'></span>');
         } else {
-            // pas assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de PA" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Tir ciblé</'+balise+'></span>');
         }
     }
@@ -117,17 +111,15 @@ function skillsInfos(bat,batUnitType) {
         let baseMedicCost = batUnitType.medicCost;
         apCost = numTargets*(baseMedicCost+batUnitType.squads-bat.squadsLeft);
         if (bat.apLeft >= 4 && numTargets >= 1 && !inMelee) {
-            // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,'+baseMedicCost+',true,true)"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
         } else {
-            // pas assez d'ap
             if (inMelee) {
-                skillMessage = "Pas de soins en mêlée"
+                skillMessage = "Pas de soins en mêlée";
             } else {
                 if (numTargets < 1) {
-                    skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts"
+                    skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
                 } else {
-                    skillMessage = "Pas assez de PA"
+                    skillMessage = "Pas assez de PA";
                 }
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Soins</h4></span>');
@@ -141,17 +133,15 @@ function skillsInfos(bat,batUnitType) {
         }
         apCost = batUnitType.ap;
         if (bat.apLeft >= apCost && damaged && !inMelee) {
-            // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se soigner ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false,true)"><i class="far fa-heart"></i></button>&nbsp; Soins</h4></span>');
         } else {
-            // pas assez d'ap
             if (inMelee) {
-                skillMessage = "Pas de soins en mêlée"
+                skillMessage = "Pas de soins en mêlée";
             } else {
                 if (!damaged) {
-                    skillMessage = "Aucun dégâts soignable"
+                    skillMessage = "Aucun dégâts soignable";
                 } else {
-                    skillMessage = "Pas assez de PA"
+                    skillMessage = "Pas assez de PA";
                 }
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Soins</h4></span>');
@@ -165,17 +155,15 @@ function skillsInfos(bat,batUnitType) {
         }
         apCost = Math.round(batUnitType.ap*1.5);
         if (bat.apLeft >= batUnitType.ap && damaged && !inMelee) {
-            // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false,false)"><i class="far fa-heart"></i></button>&nbsp; Premiers soins</h4></span>');
         } else {
-            // pas assez d'ap
             if (inMelee) {
-                skillMessage = "Pas de soins en mêlée"
+                skillMessage = "Pas de soins en mêlée";
             } else {
                 if (!damaged) {
-                    skillMessage = "Aucun dégâts soignable"
+                    skillMessage = "Aucun dégâts soignable";
                 } else {
-                    skillMessage = "Pas assez de PA"
+                    skillMessage = "Pas assez de PA";
                 }
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Premiers soins</h4></span>');
@@ -186,17 +174,15 @@ function skillsInfos(bat,batUnitType) {
         numTargets = numMedicTargets(bat,'vehicles');
         apCost = numTargets*(10+(batUnitType.squads*2)-(bat.squadsLeft*2));
         if (bat.apLeft >= 8 && numTargets >= 1 && !inMelee) {
-            // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,10,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Dépannage</h4></span>');
         } else {
-            // pas assez d'ap
             if (inMelee) {
-                skillMessage = "Pas de réparations en mêlée"
+                skillMessage = "Pas de réparations en mêlée";
             } else {
                 if (numTargets < 1) {
-                    skillMessage = "Aucun véhicule adjacent n'a pas subit de dégâts"
+                    skillMessage = "Aucun véhicule adjacent n'a pas subit de dégâts";
                 } else {
-                    skillMessage = "Pas assez de PA"
+                    skillMessage = "Pas assez de PA";
                 }
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Dépannage</h4></span>');
@@ -207,17 +193,15 @@ function skillsInfos(bat,batUnitType) {
         numTargets = numMedicTargets(bat,'buildings');
         apCost = numTargets*(15+(batUnitType.squads*3)-(bat.squadsLeft*3));
         if (bat.apLeft >= 8 && numTargets >= 1 && !inMelee) {
-            // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les bâtiments adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`buildings`,15,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
         } else {
-            // pas assez d'ap
             if (inMelee) {
-                skillMessage = "Pas de réparations en mêlée"
+                skillMessage = "Pas de réparations en mêlée";
             } else {
                 if (numTargets < 1) {
-                    skillMessage = "Aucun véhicule adjacent n'a pas subit de dégâts"
+                    skillMessage = "Aucun véhicule adjacent n'a pas subit de dégâts";
                 } else {
-                    skillMessage = "Pas assez de PA"
+                    skillMessage = "Pas assez de PA";
                 }
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
@@ -231,16 +215,35 @@ function skillsInfos(bat,batUnitType) {
         }
         apCost = Math.round(batUnitType.ap*2);
         if (bat.apLeft >= batUnitType.ap && damaged) {
-            // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`buildings`,'+apCost+',false,true)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
         } else {
-            // pas assez d'ap
             if (!damaged) {
-                skillMessage = "Ce bâtiment n'a pas subit de dégâts"
+                skillMessage = "Ce bâtiment n'a pas subit de dégâts";
             } else {
-                skillMessage = "Pas assez de PA"
+                skillMessage = "Pas assez de PA";
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
+        }
+    }
+    // POSE CHAMP DE MINES
+    if (batUnitType.skills.includes('landmine')) {
+        let minesLeft = calcRavit(bat);
+        balise = 'h4';
+        if (Object.keys(conselUnit).length >= 1) {
+            balise = 'h1';
+        }
+        apCost = Math.round(batUnitType.ap*2.1);
+        if (minesLeft >= 1 && bat.apLeft >= batUnitType.ap && !inMelee) {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines ('+apCost+' PA)" class="boutonGris iconButtons" onclick="dropMine('+apCost+',`champ`)"><i class="fas fa-coins"></i></button>&nbsp; Champ de mines</'+balise+'></span>');
+        } else {
+            if (minesLeft <= 0) {
+                skillMessage = "Plus de mines";
+            } else if (inMelee) {
+                skillMessage = "Ne peut pas se faire en mêlée";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Champ de mines</h4></span>');
         }
     }
     // DROGUES
@@ -252,7 +255,7 @@ function skillsInfos(bat,batUnitType) {
             if (bat.apLeft >= apCost) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Régénération ('+apCost+' PA)" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="ra ra-heart-bottle rpg"></i></button>&nbsp; Kirin</h4></span>');
             } else {
-                skillMessage = "Pas assez de PA"
+                skillMessage = "Pas assez de PA";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Kirin</h4></span>');
             }
         }
@@ -262,7 +265,7 @@ function skillsInfos(bat,batUnitType) {
             if (bat.apLeft >= apCost) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Dégâts reçus réduits mais -2 PA, immunisé à la peur ('+apCost+' PA)" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i></button>&nbsp; Bliss</h4></span>');
             } else {
-                skillMessage = "Pas assez de PA"
+                skillMessage = "Pas assez de PA";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Bliss</h4></span>');
             }
         }
@@ -272,7 +275,7 @@ function skillsInfos(bat,batUnitType) {
             if (bat.apLeft >= apCost) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+8 PA & +1 salve ('+apCost+' PA)" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i></button>&nbsp; Blaze</h4></span>');
             } else {
-                skillMessage = "Pas assez de PA"
+                skillMessage = "Pas assez de PA";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Blaze</h4></span>');
             }
         }
@@ -282,7 +285,7 @@ function skillsInfos(bat,batUnitType) {
             if (bat.apLeft >= apCost) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Concentration: +6 précision ('+apCost+' PA)" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i></button>&nbsp; Skupiac</h4></span>');
             } else {
-                skillMessage = "Pas assez de PA"
+                skillMessage = "Pas assez de PA";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Skupiac</h4></span>');
             }
         }
@@ -292,7 +295,7 @@ function skillsInfos(bat,batUnitType) {
             if (bat.apLeft >= apCost) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+4 puissance aux armes de mêlée ('+apCost+' PA)" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i></button>&nbsp; Sila</h4></span>');
             } else {
-                skillMessage = "Pas assez de PA"
+                skillMessage = "Pas assez de PA";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Sila</h4></span>');
             }
         }

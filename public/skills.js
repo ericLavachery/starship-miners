@@ -544,3 +544,44 @@ function checkBatDrugs(bat) {
     }
     return myDrugs;
 };
+
+function dropMine(apCost,mineType) {
+    let unitIndex;
+    if (mineType === 'champ') {
+        unitIndex = unitTypes.findIndex((obj => obj.name === 'Champ de mines'));
+    } else {
+        unitIndex = unitTypes.findIndex((obj => obj.name === 'Explosifs'));
+    }
+    conselUnit = unitTypes[unitIndex];
+    conselAmmos = ['xxx','xxx'];
+    selectedBat.tags.push('skillUsed');
+    selectedBat.apLeft = selectedBat.apLeft-apCost;
+    selectedBat.salvoLeft = 0;
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
+function clickMine(clicTileId,poseurTileId) {
+    let distance = calcDistance(poseurTileId,clicTileId);
+    if (distance === 0) {
+        let batHere = false;
+        bataillons.forEach(function(bat) {
+            if (bat.tileId === clicTileId && bat.loc === "zone") {
+                batHere = true;
+            }
+        });
+        aliens.forEach(function(bat) {
+            if (bat.tileId === clicTileId && bat.loc === "zone") {
+                batHere = true;
+            }
+        });
+        if (!batHere) {
+            putBat(clicTileId);
+            showBatInfos(selectedBat);
+        } else {
+            console.log('Impossible de superposer 2 bataillons');
+        }
+    } else {
+        console.log('Trop loin');
+    }
+};

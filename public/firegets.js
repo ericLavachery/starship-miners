@@ -14,7 +14,7 @@ function checkTargetBatType() {
 
 function isHit(accuracy,aoe,size,stealth,cover,speed,shotDice) {
     let prec = Math.round(accuracy-(cover*coverFactor));
-    if (aoe == 'unit' || aoe == 'brochette') {
+    if (aoe == 'unit' || aoe == 'brochette' || speed < 0) {
         prec = Math.round(prec-(stealth/2)-speed);
     }
     if (prec < minPrec) {
@@ -564,7 +564,11 @@ function calcShotDice(bat,luckyshot) {
         } else if (luckDice <= luckCheck[1]) {
             return 75;
         } else if (luckDice <= luckCheck[2]) {
+            return 85;
+        } else if (luckDice <= luckCheck[3]) {
             return 100;
+        } else if (luckDice <= luckCheck[4]) {
+            return 115;
         } else {
             $('#report').append('<span class="report cy">Fumble!</span><br>');
             tagDelete(bat,'lucky');

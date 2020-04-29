@@ -1,7 +1,11 @@
 function clickTile(tileId) {
     if (stopMe === false) {
         if (Object.keys(conselUnit).length >= 1) {
-            clickConstruct(tileId);
+            if (selectedBat.tileId >= 0 && (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs')) {
+                clickMine(tileId,selectedBat.tileId);
+            } else {
+                clickConstruct(tileId);
+            }
         } else {
             if (mode == 'select') {
                 clickSelect(tileId);

@@ -3,7 +3,11 @@ function showBatInfos(bat) {
     let unitTypesIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     let batUnitType = unitTypes[unitTypesIndex];
     let unitsLeft = bat.squadsLeft*batUnitType.squadSize;
-    $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batUnitType.name+'</h3></span>');
+    if (batUnitType.name == 'Champ de mines') {
+        $('#unitInfos').append('<span class="blockTitle"><h3>'+batUnitType.name+'</h3></span>');
+    } else {
+        $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batUnitType.name+'</h3></span>');
+    }
     // AP
     let ap = getAP(bat);
     let hourglass = 'start';
@@ -75,6 +79,10 @@ function showBatInfos(bat) {
     if (batUnitType.skills.includes('dealer')) {
         let ravitNum = calcRavit(bat);
         $('#unitInfos').append('<span class="paramName cy">Drogues</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'</span><br>');
+    }
+    if (batUnitType.skills.includes('landmine')) {
+        let ravitNum = calcRavit(bat);
+        $('#unitInfos').append('<span class="paramName cy">Mines</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'</span><br>');
     }
     // WEAPONS & SKILLS
     if (!isStacked()) {

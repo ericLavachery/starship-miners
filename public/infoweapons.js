@@ -9,9 +9,12 @@ function weaponsInfos(bat,batUnitType) {
     let noBisOK = true;
     let baseAmmo = 99;
     let ammoLeft = 99;
-    if (batUnitType.weapon.rof >= 1 && batUnitType.weapon2.rof >= 1 && batUnitType.weapon.name == batUnitType.weapon2.name) {
+    if (batUnitType.weapon.rof >= 1 && batUnitType.weapon2.rof >= 1 && batUnitType.weapon.name === batUnitType.weapon2.name) {
         showW1 = false;
     }
+    console.log('rofs');
+    console.log(batUnitType.weapon.rof);
+    console.log(batUnitType.weapon2.rof);
     if (batUnitType.weapon.rof >= 1 && showW1) {
         thisWeapon = weaponAdj(batUnitType.weapon,bat,'w1');
         if (!thisWeapon.noAtt) {
