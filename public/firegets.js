@@ -85,11 +85,13 @@ function getCover(bat,withFortif) {
         cover = terrain.cover;
     }
     // Fortification
-    if (bat.tags.includes('fortif')) {
-        if (cover >= 2) {
-            cover = 5+Math.round(cover/1.9);
-        } else if (cover >= 0) {
-            cover = 5;
+    if (withFortif) {
+        if (bat.tags.includes('fortif')) {
+            if (cover >= 2) {
+                cover = 5+Math.round(cover/1.9);
+            } else if (cover >= 0) {
+                cover = 5;
+            }
         }
     }
     return cover;

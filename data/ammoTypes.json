@@ -36,7 +36,7 @@
         "power": 10,
         "armors": 0.35,
         "accuracy": 1,
-        "apdamage": 0.05,
+        "apdamage": 0.06,
         "aoe": ""
     },
     {
@@ -593,11 +593,11 @@
         "name": "obus-fleche",
         "range": 0,
         "rof": 1,
-        "power": 2,
+        "power": 8,
         "armors": 0.25,
-        "accuracy": 1,
+        "accuracy": 1.75,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "brochette"
     },
     {
         "name": "obus-incendiaire",
@@ -663,11 +663,11 @@
         "name": "missile-fleche",
         "range": 0,
         "rof": 1,
-        "power": 5,
+        "power": 15,
         "armors": 0.25,
-        "accuracy": 1,
+        "accuracy": 1.75,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "brochette"
     },
     {
         "name": "missile-incendiaire",

@@ -166,7 +166,7 @@
             "noFly":true,
             "noAtt":true,
             "rof":5,
-            "accuracy":8,
+            "accuracy":12,
             "power":27,
             "aoe":"squad",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
