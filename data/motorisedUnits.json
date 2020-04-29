@@ -87,7 +87,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible"],
+        "skills":["cible","selfmecano"],
         "fuzz":0
     },
     {
@@ -131,7 +131,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","guerrilla","inflammable"],
+        "skills":["fortif","cible","guerrilla","inflammable","selfmecano"],
         "fuzz":0
     },
     {
@@ -175,7 +175,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","inflammable"],
+        "skills":["fortif","cible","inflammable","selfmecano"],
         "fuzz":0
     },
     {
@@ -223,7 +223,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible"],
+        "skills":["fortif","cible","selfmecano"],
         "fuzz":0
     },
     {
@@ -268,7 +268,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selevation"],
+        "skills":["fortif","cible","selevation","selfmecano"],
         "fuzz":0
     },
     {
@@ -359,7 +359,7 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selevation"],
+        "skills":["fortif","cible","selevation","selfmecano"],
         "fuzz":0
     },
     {
@@ -449,7 +449,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["bldselfrepair","cible"],
+        "skills":["selfmecano","cible"],
         "fuzz":-1
     },
     {
@@ -500,7 +500,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["bldselfrepair","cible"],
+        "skills":["selfmecano","cible"],
         "fuzz":-1
     },
     {
@@ -545,7 +545,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["bldselfrepair","cible","longshot","selevation"],
+        "skills":["selfmecano","cible","longshot","selevation"],
         "fuzz":-1
     },
     {
@@ -592,7 +592,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["fortif","cible"],
+        "skills":["fortif","cible","selfmecano"],
         "fuzz":0
     },
     {
@@ -642,7 +642,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible"],
+        "skills":["fortif","cible","selfmecano"],
         "fuzz":0
     },
     {
@@ -675,7 +675,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","transport","medic"],
+        "skills":["fortif","cible","transport","medic","selfmecano"],
         "medicCost":3,
         "fuzz":0
     },
@@ -709,7 +709,7 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","guerrilla","camo","landmine"],
+        "skills":["fortif","cible","guerrilla","camo","landmine","selfmecano"],
         "maxSKill": 3,
         "fuzz":-1
     }

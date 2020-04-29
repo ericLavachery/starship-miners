@@ -234,13 +234,11 @@ function medic(cat,cost,around,deep) {
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">escouade rétablie (<span class="cy">'+newBatUnits+'</span>)</span><br>');
             }
             showBataillon(selectedBat);
-        }
-        if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('trou')) {
+        } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('trou') && deep) {
             tagDelete(selectedBat,'trou');
             totalAPCost = totalAPCost+apCost;
             $('#report').append('<span class="report">trous bouchés<br></span>');
-        }
-        if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('maladie')) {
+        } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('maladie') && deep) {
             tagDelete(selectedBat,'maladie');
             totalAPCost = totalAPCost+apCost;
             $('#report').append('<span class="report">maladie guérie<br></span>');

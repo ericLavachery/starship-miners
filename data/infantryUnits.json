@@ -495,7 +495,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible"],
+        "skills":["fortif","cible","firstaid"],
         "fuzz":0
     },
     {
@@ -846,7 +846,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","cible","guerrilla"],
+        "skills":["fortif","cible","guerrilla","firstaid"],
         "fuzz":0
     },
     {
@@ -931,7 +931,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["perceur","ppoison","monomolecular","plasblade"]
+            "ammo":["perceur","ppoison","monomolecular","plasblade","firstaid"]
         },
         "moveCost":2,
         "maxFlood":3,

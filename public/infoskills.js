@@ -153,7 +153,7 @@ function skillsInfos(bat,batUnitType) {
         if (bat.damage >=1) {
             damaged = true;
         }
-        apCost = Math.round(batUnitType.ap*1.5);
+        apCost = Math.round(batUnitType.ap*1.4);
         if (bat.apLeft >= batUnitType.ap && damaged && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false,false)"><i class="far fa-heart"></i></button>&nbsp; Premiers soins</h4></span>');
         } else {
@@ -188,12 +188,30 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Dépannage</h4></span>');
         }
     }
+    // SELF MECANO
+    if (batUnitType.skills.includes('selfmecano')) {
+        let damaged = false;
+        if (batUnitType.squads > bat.squadsLeft || bat.damage >=1) {
+            damaged = true;
+        }
+        apCost = Math.round(batUnitType.ap*2);
+        if (bat.apLeft >= batUnitType.ap && damaged) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Retaper le véhicule ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`vehicles`,'+apCost+',false,false)"><i class="fa fa-hammer"></i></button>&nbsp; Dépannage</h4></span>');
+        } else {
+            if (!damaged) {
+                skillMessage = "Ce véhicule n'a pas subit de dégâts";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Dépannage</h4></span>');
+        }
+    }
     // REPAIR
     if (batUnitType.skills.includes('repair')) {
         numTargets = numMedicTargets(bat,'buildings');
         apCost = numTargets*(15+(batUnitType.squads*3)-(bat.squadsLeft*3));
         if (bat.apLeft >= 8 && numTargets >= 1 && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les bâtiments adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`buildings`,15,true,true)"><i class="fa fa-wrench"></i></button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les bâtiments adjacents ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`buildings`,15,true,true)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Pas de réparations en mêlée";
@@ -207,7 +225,25 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
         }
     }
-    // BUILDINGS SELF REPAIR
+    // SELF REPAIR
+    if (batUnitType.skills.includes('selfrepair')) {
+        let damaged = false;
+        if (batUnitType.squads > bat.squadsLeft || bat.damage >=1) {
+            damaged = true;
+        }
+        apCost = Math.round(batUnitType.ap*2);
+        if (bat.apLeft >= batUnitType.ap && damaged) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`all`,'+apCost+',false,false)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
+        } else {
+            if (!damaged) {
+                skillMessage = "Ce bâtiment n'a pas subit de dégâts";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons">&nbsp;</button>&nbsp; Réparations</h4></span>');
+        }
+    }
+    // SELF REPAIR DEEP
     if (batUnitType.skills.includes('bldselfrepair')) {
         let damaged = false;
         if (batUnitType.squads > bat.squadsLeft || bat.damage >=1) {
@@ -215,7 +251,7 @@ function skillsInfos(bat,batUnitType) {
         }
         apCost = Math.round(batUnitType.ap*2);
         if (bat.apLeft >= batUnitType.ap && damaged) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`buildings`,'+apCost+',false,true)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment ('+apCost+' PA)" class="boutonGris iconButtons" onclick="medic(`all`,'+apCost+',false,true)"><i class="fa fa-hammer"></i></button>&nbsp; Réparations</h4></span>');
         } else {
             if (!damaged) {
                 skillMessage = "Ce bâtiment n'a pas subit de dégâts";
@@ -232,7 +268,7 @@ function skillsInfos(bat,batUnitType) {
         if (Object.keys(conselUnit).length >= 1) {
             balise = 'h1';
         }
-        apCost = Math.round(batUnitType.ap*2.1);
+        apCost = Math.round(batUnitType.ap*1.8);
         if (minesLeft >= 1 && bat.apLeft >= batUnitType.ap && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines ('+apCost+' PA)" class="boutonGris iconButtons" onclick="dropMine('+apCost+',`champ`)"><i class="fas fa-coins"></i></button>&nbsp; Champ de mines</'+balise+'></span>');
         } else {

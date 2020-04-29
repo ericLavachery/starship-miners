@@ -19,7 +19,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["transorbital"],
+        "skills":["bldselfrepair","transorbital"],
         "fuzz":1
     },
     {
