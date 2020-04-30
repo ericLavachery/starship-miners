@@ -1032,7 +1032,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","embuscade","camo","guerrilla"],
-        "fuzz":-1,
+        "fuzz":-1
     },
     {
         "id":48,
@@ -1121,7 +1121,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","embuscade","firstaid","guerrilla"],
-        "fuzz":0,
+        "fuzz":0
     },
     {
         "id":50,
