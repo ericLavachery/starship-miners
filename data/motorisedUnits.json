@@ -11,6 +11,7 @@
         "armor":9,
         "size":18,
         "stealth":0,
+        "speed": 4,
         "ap":17,
         "maxSalvo":1,
         "weapon":{
@@ -57,6 +58,7 @@
         "armor":16,
         "size":42,
         "stealth":0,
+        "speed": 1,
         "ap":13,
         "maxSalvo":2,
         "weapon":{
@@ -102,6 +104,7 @@
         "armor":10,
         "size":27,
         "stealth":0,
+        "speed": 3,
         "ap":16,
         "maxSalvo":1,
         "weapon":{
@@ -146,6 +149,7 @@
         "armor":13,
         "size":30,
         "stealth":0,
+        "speed": 1,
         "ap":13,
         "maxSalvo":2,
         "weapon":{
@@ -190,6 +194,7 @@
         "armor":12,
         "size":27,
         "stealth":0,
+        "speed": 1,
         "ap":13,
         "maxSalvo":2,
         "weapon":{
@@ -238,6 +243,7 @@
         "armor":18,
         "size":45,
         "stealth":0,
+        "speed": 0,
         "ap":11,
         "maxSalvo":2,
         "weapon":{
@@ -283,7 +289,7 @@
         "armor":5,
         "size":10,
         "stealth":0,
-        "speed":4,
+        "speed":5,
         "ap":18,
         "maxSalvo":1,
         "weapon":{
@@ -327,6 +333,7 @@
         "armor":7,
         "size":20,
         "stealth":0,
+        "speed": 2,
         "ap":19,
         "maxSalvo":1,
         "weapon":{
@@ -339,7 +346,7 @@
             "power":18,
             "aoe":"brochette",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison"]
+            "ammo":["standard","poison","taser"]
         },
         "weapon2":{
             "name":"Moissonneuse",
@@ -374,6 +381,7 @@
         "armor":11,
         "size":27,
         "stealth":0,
+        "speed": 1,
         "ap":13,
         "maxSalvo":1,
         "weapon":{
@@ -560,6 +568,7 @@
         "armor":10,
         "size":30,
         "stealth":0,
+        "speed": 2,
         "ap":14,
         "maxSalvo":2,
         "weapon":{
@@ -572,7 +581,7 @@
             "power":18,
             "aoe":"brochette",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison"]
+            "ammo":["standard","poison","taser"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -607,6 +616,7 @@
         "armor":9,
         "size":24,
         "stealth":0,
+        "speed": 1,
         "ap":12,
         "maxSalvo":2,
         "weapon":{
@@ -657,6 +667,7 @@
         "armor":8,
         "size":20,
         "stealth":0,
+        "speed": 3,
         "ap":16,
         "maxSalvo":1,
         "weapon":{
@@ -691,6 +702,7 @@
         "armor":10,
         "size":24,
         "stealth":4,
+        "speed": 2,
         "ap":16,
         "maxSalvo":1,
         "weapon":{

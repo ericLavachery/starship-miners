@@ -57,8 +57,6 @@ function nextTurnEnd() {
         if (bat.loc === "zone") {
             levelUp(bat);
             ap = getAP(bat);
-            // unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-            // batType = unitTypes[unitIndex];
             batType = getBatType(bat);
             bat.salvoLeft = batType.maxSalvo;
             if (bat.apLeft < 0-batType.ap-batType.ap) {
@@ -201,6 +199,18 @@ function tagsEffect(bat,batType) {
     // MALADIE
     if (bat.tags.includes('maladie')) {
         bat.apLeft = bat.apLeft-Math.floor(batType.ap/2.2);
+    }
+    // PARASITE
+    if (bat.tags.includes('parasite')) {
+        totalDamage = bat.damage+rand.rand((Math.round(parasiteDamage/3)),parasiteDamage);
+        console.log('parasiteDamage='+totalDamage);
+        squadHP = batType.squadSize*batType.hp;
+        squadsOut = Math.floor(totalDamage/squadHP);
+        bat.squadsLeft = bat.squadsLeft-squadsOut;
+        bat.damage = totalDamage-(squadsOut*squadHP);
+        if (bat.squadsLeft <= 0) {
+            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le parasite.');
+        }
     }
     // VENIN
     if (bat.tags.includes('venin')) {

@@ -65,6 +65,9 @@ function showBatInfos(bat) {
     if (bat.tags.includes('venin') || bat.tags.includes('poison')) {
         $('#unitInfos').append('<span class="paramName or">Empoisonné</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
+    if (bat.tags.includes('parasite')) {
+        $('#unitInfos').append('<span class="paramName or">Parasite</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    }
     if (bat.tags.includes('maladie')) {
         $('#unitInfos').append('<span class="paramName or">Malade</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
@@ -82,7 +85,7 @@ function showBatInfos(bat) {
         let ravitNum = calcRavit(bat);
         $('#unitInfos').append('<span class="paramName cy">Drogues</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'</span><br>');
     }
-    if (batUnitType.skills.includes('landmine')) {
+    if (batUnitType.skills.includes('landmine') || batUnitType.skills.includes('dynamite')) {
         let ravitNum = calcRavit(bat);
         $('#unitInfos').append('<span class="paramName cy">Mines</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'</span><br>');
     }

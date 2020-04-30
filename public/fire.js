@@ -83,6 +83,7 @@ function combat() {
     // riposte?
     let riposte = false;
     let initiative = true;
+    let minimumFireAP;
     if (targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef) {
         if (!targetWeap.noFly || !selectedBatType.skills.includes('fly')) {
             riposte = true;
@@ -110,7 +111,11 @@ function combat() {
                 shotSound(soundWeap);
             }
             attack();
-            if (defAlive && targetBat.apLeft > minFireAP) {
+            minimumFireAP = minFireAP;
+            if (targetBatType.skills.includes('guerrilla')) {
+                minimumFireAP = minFireAP-5;
+            }
+            if (defAlive && targetBat.apLeft > minimumFireAP) {
                 defense();
                 if (!isFFW) {
                     soundWeap = targetWeap;
@@ -134,7 +139,11 @@ function combat() {
                 shotSound(soundWeap);
             }
             defense();
-            if (attAlive && selectedBat.apLeft > minFireAP) {
+            minimumFireAP = minFireAP;
+            if (selectedBatType.skills.includes('guerrilla')) {
+                minimumFireAP = minFireAP-5;
+            }
+            if (attAlive && selectedBat.apLeft > minimumFireAP) {
                 attack();
                 if (!isFFW) {
                     soundWeap = selectedWeap;
@@ -264,8 +273,6 @@ function attack() {
         apDamage = apDamage+Math.round(totalDamage*wapd);
         console.log('AP Damage : '+apDamage);
     }
-    targetBat.apLeft = targetBat.apLeft-apDamage;
-    console.log('Previous Damage : '+targetBat.damage);
     // inflammable
     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm')) {
         if (targetBatType.skills.includes('inflammable')) {
@@ -273,6 +280,19 @@ function attack() {
             console.log('inflammable!');
         }
     }
+    // munitions limitées
+    console.log('maxAmmo'+selectedWeap.maxAmmo);
+    ammoFired(selectedBat.id);
+    if (selectedWeap.maxAmmo < 99) {
+        selectedBat.tags.push('ammoUsed');
+    }
+    if (selectedWeap.noBis) {
+        selectedBat.tags.push('noBis');
+    }
+    console.log('Previous Damage : '+targetBat.damage);
+    console.log('Damage : '+totalDamage);
+    $('#report').append('<span class="report">('+totalDamage+')<br></span>');
+    // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
     // agrippeur
     if (selectedBatType.skills.includes('grip') && totalDamage >= 1 && selectedBatType.size > targetBatType.size) {
         let gripbonus = 0;
@@ -284,61 +304,16 @@ function attack() {
             if (selectedBatType.skills.includes('tail')) {
                 totalDamage = totalDamage+targetBatType.hp;
             }
-            apDamage = selectedBat.squadsLeft*3;
             if (targetBatType.weapon.isMelee || targetBatType.weapon2.isMelee) {
-                apDamage = Math.round(apDamage/4);
+                apDamage = apDamage+Math.round(selectedBat.squadsLeft*3/4);
+            } else {
+                apDamage = apDamage+selectedBat.squadsLeft*3;
             }
-            targetBat.apLeft = targetBat.apLeft-apDamage;
             console.log('Grip OK');
-            console.log('AP Damage : '+apDamage);
             $('#report').append('<span class="report">Agrippé<br></span>');
         } else {
             console.log('Grip raté');
         }
-    }
-    // venin
-    if (selectedBatType.skills.includes('venin') && totalDamage >= 1 && targetBat.apLeft < -2 && targetBatType.cat == 'infantry') {
-        if (!targetBat.tags.includes('venin')) {
-            targetBat.tags.push('venin');
-        }
-        console.log('Venin!');
-        $('#report').append('<span class="report cy">Venin<br></span>');
-    }
-    // poison
-    if (totalDamage >= 1 && rand.rand(1,2) === 1) {
-        if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('ppoison')) {
-            if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
-                targetBat.tags.push('poison');
-                console.log('Poison!');
-                $('#report').append('<span class="report cy">Poison<br></span>');
-            }
-        }
-    }
-    // maladie
-    if (totalDamage >= 1) {
-        let infected = false;
-        if (selectedBatType.skills.includes('maladie') && rand.rand(1,2) === 1) {
-            infected = true;
-        }
-        if (selectedBatType.skills.includes('chancre')) {
-            infected = true;
-        }
-        if (infected) {
-            if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
-                targetBat.tags.push('maladie');
-                console.log('Maladie!');
-                $('#report').append('<span class="report cy">Maladie<br></span>');
-            }
-        }
-    }
-    // munitions limitées
-    console.log('maxAmmo'+selectedWeap.maxAmmo);
-    ammoFired(selectedBat.id);
-    if (selectedWeap.maxAmmo < 99) {
-        selectedBat.tags.push('ammoUsed');
-    }
-    if (selectedWeap.noBis) {
-        selectedBat.tags.push('noBis');
     }
     // creuseur
     let catOK = false;
@@ -359,11 +334,54 @@ function attack() {
         console.log('Trou percé!');
         $('#report').append('<span class="report cy">Blindage troué<br></span>');
     }
-    console.log('Damage : '+totalDamage);
-    $('#report').append('<span class="report">('+totalDamage+')<br></span>');
+    // venin
+    if (selectedBatType.skills.includes('venin') && totalDamage >= 1 && targetBat.apLeft < -2 && targetBatType.cat == 'infantry') {
+        if (!targetBat.tags.includes('venin')) {
+            targetBat.tags.push('venin');
+        }
+        console.log('Venin!');
+        $('#report').append('<span class="report cy">Venin<br></span>');
+    }
+    // poison
+    if (totalDamage >= 5 || (totalDamage >= 1 && rand.rand(1,2) === 1)) {
+        if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('ppoison')) {
+            if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
+                targetBat.tags.push('poison');
+                console.log('Poison!');
+                $('#report').append('<span class="report cy">Poison<br></span>');
+            }
+        }
+    }
+    // parasite
+    if (totalDamage >= 1 && selectedWeap.ammo.includes('parasite')) {
+        if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
+            targetBat.tags.push('parasite');
+            console.log('Parasite!');
+            $('#report').append('<span class="report cy">Parasite<br></span>');
+        }
+    }
+    // maladie
+    if (totalDamage >= 1) {
+        let infected = false;
+        if (selectedBatType.skills.includes('maladie') && rand.rand(1,2) === 1) {
+            infected = true;
+        }
+        if (selectedBatType.skills.includes('chancre')) {
+            infected = true;
+        }
+        if (infected) {
+            if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
+                targetBat.tags.push('maladie');
+                console.log('Maladie!');
+                $('#report').append('<span class="report cy">Maladie<br></span>');
+            }
+        }
+    }
+    // ---------------------------------------------------------------------------------------------------------------------------
     if (apDamage >= 1) {
         $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
     }
+    targetBat.apLeft = targetBat.apLeft-apDamage;
     totalDamage = totalDamage+targetBat.damage;
     let squadHP = (targetBatType.squadSize*targetBatType.hp);
     console.log('Squad HP : '+squadHP);
@@ -523,16 +541,31 @@ function defense() {
         apDamage = apDamage+Math.round(totalDamage*wapd);
         console.log('AP Damage : '+apDamage);
     }
-    selectedBat.apLeft = selectedBat.apLeft-apDamage;
-    console.log('Previous Damage : '+selectedBat.damage);
+    // munitions limitées
+    console.log('maxAmmo'+targetWeap.maxAmmo);
+    ammoFired(targetBat.id);
+    if (targetWeap.maxAmmo < 99) {
+        targetBat.tags.push('ammoUsed');
+    }
+    console.log('Damage : '+totalDamage);
+    $('#report').append('<span class="report">('+totalDamage+')<br></span>');
+    // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
     // poison
-    if (totalDamage >= 1 && rand.rand(1,2) === 1) {
+    if (totalDamage >= 5 || (totalDamage >= 1 && rand.rand(1,2) === 1)) {
         if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('ppoison')) {
             if (selectedBatType.cat == 'infantry' || selectedBatType.cat == 'aliens') {
                 selectedBat.tags.push('poison');
                 console.log('Poison!');
                 $('#report').append('<span class="report cy">Poison<br></span>');
             }
+        }
+    }
+    // parasite
+    if (totalDamage >= 1 && targetWeap.ammo.includes('parasite')) {
+        if (selectedBatType.cat == 'infantry' || selectedBatType.cat == 'aliens') {
+            selectedBat.tags.push('parasite');
+            console.log('Parasite!');
+            $('#report').append('<span class="report cy">Parasite<br></span>');
         }
     }
     // maladie
@@ -552,17 +585,12 @@ function defense() {
             }
         }
     }
-    // munitions limitées
-    console.log('maxAmmo'+targetWeap.maxAmmo);
-    ammoFired(targetBat.id);
-    if (targetWeap.maxAmmo < 99) {
-        targetBat.tags.push('ammoUsed');
-    }
-    console.log('Damage : '+totalDamage);
-    $('#report').append('<span class="report">('+totalDamage+')<br></span>');
+    // ---------------------------------------------------------------------------------------------------------------------------
     if (apDamage >= 1) {
         $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
     }
+    selectedBat.apLeft = selectedBat.apLeft-apDamage;
+    console.log('Previous Damage : '+selectedBat.damage);
     totalDamage = totalDamage+selectedBat.damage;
     let squadHP = (selectedBatType.squadSize*selectedBatType.hp);
     console.log('Squad HP : '+squadHP);

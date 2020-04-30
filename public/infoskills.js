@@ -297,7 +297,7 @@ function skillsInfos(bat,batUnitType) {
         }
         apCost = Math.round(batUnitType.ap);
         if (minesLeft >= 1 && bat.apLeft >= batUnitType.ap && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des explosifs ('+apCost+' PA)" class="boutonGris iconButtons" onclick="dropMine('+apCost+',`champ`)"><i class="ra ra-bomb-explosion rpg"></i></button>&nbsp; Explosifs</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des explosifs ('+apCost+' PA)" class="boutonGris iconButtons" onclick="dropMine('+apCost+',`dynamite`)"><i class="ra ra-bomb-explosion rpg"></i></button>&nbsp; Explosifs</'+balise+'></span>');
         } else {
             if (minesLeft <= 0) {
                 skillMessage = "Plus de mines";

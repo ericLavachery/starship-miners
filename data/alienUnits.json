@@ -280,7 +280,7 @@
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": [ "capbld","ponte" ]
+        "skills": [ "capbld","fouisseur" ]
     },
     {
         "id": 8,
@@ -751,7 +751,7 @@
             "power": 15,
             "aoe": "brochette",
             "sound": "zapsplat_household_screen_door_insect_slide_006_38119b",
-            "ammo": [ "poison" ]
+            "ammo": [ "parasite" ]
         },
         "weapon2": {},
         "moveCost": 3,
@@ -915,7 +915,7 @@
         "cat": "aliens",
         "kind": "bug",
         "class": "A",
-        "rarity": 5,
+        "rarity": 4,
         "squads": 5,
         "squadSize": 2,
         "crew": 1,
