@@ -52,7 +52,7 @@ function skillsInfos(bat,batUnitType) {
     // CAMOUFLAGE
     if (batUnitType.skills.includes('camo')) {
         apCost = Math.floor(batUnitType.ap/3);
-        if (bat.apLeft >= apCost && bat.fuzz >= -1) {
+        if (bat.apLeft >= 1 && bat.fuzz >= -1) {
             skillMessage = "Mode furtif";
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+' ('+apCost+' PA)" class="boutonGris iconButtons" onclick="camouflage(false)"><i class="ra ra-grass rpg"></i></button>&nbsp; Mode furtif</h4></span>');
         } else {

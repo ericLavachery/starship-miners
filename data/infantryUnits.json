@@ -1076,7 +1076,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo"],
+        "skills":["fortif","cible","camo","firstaid"],
         "fuzz":-1
     },
     {
@@ -1098,7 +1098,7 @@
             "cost":3,
             "range":1,
             "rof":30,
-            "accuracy":22,
+            "accuracy":19,
             "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",

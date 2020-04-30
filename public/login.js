@@ -29,6 +29,9 @@ function connectMe(pseudo) {
     document.title = 'Starship Miners - ' + pseudo;
     document.getElementById("pseu").innerHTML = pseudo;
 }
+function testConnect(pseudo) {
+    socket.emit('testcon', pseudo);
+}
 
 $('#hello').click(promptMe);
 

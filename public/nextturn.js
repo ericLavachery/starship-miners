@@ -85,6 +85,7 @@ function nextTurnEnd() {
     blockMe(false);
     activeTurn = 'player';
     commandes();
+    // testConnect(pseudo);
 };
 
 function tagsUpdate(bat) {
@@ -337,6 +338,7 @@ function createBatList() {
 };
 
 function nextBat(removeActiveBat) {
+    // testConnect(pseudo);
     selectMode();
     batUnstack();
     deleteMoveInfos();

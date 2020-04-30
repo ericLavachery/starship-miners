@@ -68,3 +68,8 @@ socket.on('aliens-Load', function(ab) {
     aliens = ab;
     // console.log(aliens);
 });
+socket.on('testcon-failed', function(pseutest) {
+    connectMe(pseutest);
+    warning('Reconnexion:','Le serveur à été redémarré et vous n\'avez pas actualisé la page.<br>Vos dernières actions n\'ont pas été enregistrées.');
+    console.log('pseudo test failed! *********************************');
+});

@@ -138,13 +138,21 @@ var playerInfos = {};
 var bataillons = [];
 var savedMap = [];
 
+// socket.on('testcon', function(pseutest) {
+//     if (pseutest === pseudo) {
+//         console.log('pseudo test OK : '+pseutest+'=='+pseudo);
+//     } else {
+//         console.log('pseudo test failed : '+pseutest+'!='+pseudo);
+//         socket.emit('testcon-failed',pseutest);
+//     }
+// });
+
 io.sockets.on('connection', function (socket, pseudo) {
     // On LOGIN send tables
     socket.on('newcli', function(pseudo) {
         pseudo = ent.encode(pseudo);
         socket.pseudo = pseudo;
         console.log('login : '+pseudo);
-
         const path = './data/players/'+pseudo+'-playerInfos.json'
         try {
             if (fs.existsSync(path)) {
