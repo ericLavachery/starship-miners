@@ -963,7 +963,7 @@ function isCamoBlock() {
                 if (camoBat.loc === "zone" && alienAdjTiles.includes(camoBat.tileId) && camoBat.fuzz <= -2) {
                     if (lastCamo != camoBat.tileId) {
                         distance = calcDistance(lastCamo,camoBat.tileId);
-                        if (distance <= 1) {
+                        if (distance <= 0) {
                             camoGroup = true;
                         }
                     }
