@@ -1212,6 +1212,6 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","basemecano"],
-        "fuzz":0,
+        "fuzz":0
     }
 ]
