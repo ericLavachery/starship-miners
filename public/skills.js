@@ -164,12 +164,24 @@ function medic(cat,cost,around,deep) {
                                     bat.damage = 0;
                                 }
                                 totalAPCost = totalAPCost+apCost;
-                                xpGain = xpGain+0.35;
+                                xpGain = xpGain+0.15;
                                 if (cat == 'infantry') {
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">dégâts soignés<br></span>');
                                 } else {
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">dégâts réparés<br></span>');
                                 }
+                                showBataillon(bat);
+                            } else if (bat.squadsLeft < batType.squads-1 && deep && cat != 'infantry' && batType.hp <= 50) {
+                                // double soin pour petites unités
+                                if (bat.id === selectedBat.id) {
+                                    selectedBat.squadsLeft = selectedBat.squadsLeft+2;
+                                } else {
+                                    bat.squadsLeft = bat.squadsLeft+2;
+                                }
+                                newBatUnits = batUnits+batType.squadSize+batType.squadSize;
+                                totalAPCost = totalAPCost+apCost;
+                                xpGain = xpGain+0.45;
+                                $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">escouade rétablie (<span class="cy">'+newBatUnits+'</span>)</span><br>');
                                 showBataillon(bat);
                             } else if (bat.squadsLeft < batType.squads && deep) {
                                 if (bat.id === selectedBat.id) {
@@ -177,9 +189,9 @@ function medic(cat,cost,around,deep) {
                                 } else {
                                     bat.squadsLeft = bat.squadsLeft+1;
                                 }
-                                totalAPCost = totalAPCost+apCost;
-                                xpGain = xpGain+0.85;
                                 newBatUnits = batUnits+batType.squadSize;
+                                totalAPCost = totalAPCost+apCost;
+                                xpGain = xpGain+0.45;
                                 $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">escouade rétablie (<span class="cy">'+newBatUnits+'</span>)</span><br>');
                                 showBataillon(bat);
                             } else if (bat.squadsLeft === batType.squads && bat.damage === 0 && bat.tags.includes('parasite') && deep) {
@@ -254,7 +266,7 @@ function medic(cat,cost,around,deep) {
         }
     }
     console.log('totalAPCost: '+totalAPCost);
-    selectedBat.xp = selectedBat.xp+Math.round(xpGain);
+    selectedBat.xp = selectedBat.xp+xpGain;
     selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
     selectedBat.salvoLeft = 0;
     selectedBatArrayUpdate();
@@ -268,7 +280,7 @@ function numMedicTargets(myBat,cat,around,deep) {
     let batType;
     if (!around) {
         if (deep) {
-            if (myBat.damage > 0 || myBat.squadsLeft < myBatType.squads || myBat.tags.includes('poison') || myBat.tags.includes('venin') || myBat.tags.includes('maladie') || myBat.tags.includes('trou')) {
+            if (myBat.damage > 0 || myBat.squadsLeft < myBatType.squads || myBat.tags.includes('poison') || myBat.tags.includes('venin') || myBat.tags.includes('maladie') || myBat.tags.includes('parasite') || myBat.tags.includes('trou')) {
                 numTargets = numTargets+1;
             }
         } else {
@@ -291,7 +303,7 @@ function numMedicTargets(myBat,cat,around,deep) {
                     }
                     if (catOK) {
                         if (deep) {
-                            if (bat.damage > 0 || bat.squadsLeft < batType.squads || bat.tags.includes('poison') || bat.tags.includes('venin') || bat.tags.includes('maladie') || bat.tags.includes('trou')) {
+                            if (bat.damage > 0 || bat.squadsLeft < batType.squads || bat.tags.includes('poison') || bat.tags.includes('venin') || bat.tags.includes('maladie') || bat.tags.includes('parasite') || bat.tags.includes('trou')) {
                                 numTargets = numTargets+1;
                             }
                         } else {

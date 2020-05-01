@@ -75,7 +75,7 @@ function showBatInfos(bat) {
         $('#unitInfos').append('<span class="paramName or">Blindage troué</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
     // XP
-    $('#unitInfos').append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+bat.xp+' (niveau '+bat.vet+')</span><br>');
+    $('#unitInfos').append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+Math.floor(bat.xp)+' (niveau '+bat.vet+')</span><br>');
     // AUTOSKILLS
     if (batUnitType.skills.includes('ravitaillement')) {
         let ravitNum = calcRavit(bat);

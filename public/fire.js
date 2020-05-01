@@ -178,6 +178,10 @@ function combat() {
 function attack() {
     console.log('Attaque ->');
     console.log(selectedWeap);
+    let xpFactor = 12/selectedBatType.maxSalvo/10;
+    if (selectedBatType.maxSalvo >= 5) {
+        xpFactor = 0.2;
+    }
     $('#report').append('<span class="report or">'+selectedBat.type+' ('+selectedWeap.name+')</span><br>');
     // remove guet
     if (selectedBat.tags.includes('guet')) {
@@ -441,7 +445,7 @@ function attack() {
         selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
         selectedBat.salvoLeft = selectedBat.salvoLeft-1;
         if (squadsOut >= 1 && activeTurn == 'player') {
-            selectedBat.xp = selectedBat.xp+1;
+            selectedBat.xp = selectedBat.xp+xpFactor;
         }
     }
     selectedBatArrayUpdate();
@@ -450,6 +454,10 @@ function attack() {
 function defense() {
     console.log('Défense ->');
     console.log(targetWeap);
+    let xpFactor = 12/selectedBatType.maxSalvo/10;
+    if (selectedBatType.maxSalvo >= 5) {
+        xpFactor = 0.2;
+    }
     $('#report').append('<span class="report or">'+targetBat.type+' ('+targetWeap.name+')</span><br>');
     // AOE Shots
     let aoeShots = 1;
@@ -635,7 +643,7 @@ function defense() {
     // remove ap
     targetBat.apLeft = targetBat.apLeft-1;
     if (squadsOut >= 1 && activeTurn == 'aliens') {
-        targetBat.xp = targetBat.xp+1;
+        targetBat.xp = targetBat.xp+xpFactor;
     }
     targetBatArrayUpdate();
 };

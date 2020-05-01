@@ -80,7 +80,7 @@ function showAlien(bat) {
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
     // <img src="/static/img/avet.png" width="15">
-    $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div><div class="aliInfos"><img src="/static/img/avet.png" width="15"></div>'+resHere);
+    $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div>'+resHere);
 };
 
 function showBataillon(bat) {
