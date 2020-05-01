@@ -72,6 +72,9 @@ h4 {
     margin: 0;
     padding: 0px 0px 5px 0px;
 }
+.small {
+    font-size: 14px;
+}
 .rosevents {
     padding: 0 0 0 8px;
     font-size: 24px;
@@ -130,7 +133,7 @@ h4 {
 }
 .paramName {
     display: inline-block;
-    width: 128px;
+    width: 135px;
     text-align: right;
     margin-right: 3px;
     min-height: 21px;

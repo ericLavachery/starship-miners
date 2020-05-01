@@ -1165,7 +1165,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","elevation","camo"],
+        "skills":["fortif","cible","elevation","camo","firstaid"],
         "fuzz":-1
     }
 ]
