@@ -72,8 +72,8 @@ function skillsInfos(bat,batUnitType) {
     }
     // EMBUSCADE
     if (batUnitType.skills.includes('embuscade')) {
-        apCost = Math.ceil(batUnitType.ap/2);
-        if (bat.apLeft >= apCost && bat.tags.includes('camo')) {
+        apCost = 2;
+        if (bat.apLeft >= apCost && bat.tags.includes('camo') && bat.apLeft >= apCost+cheapWeapCost) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embuscade (Initiative + Cadence de tir 150%)" class="boutonGris iconButtons" onclick="ambush()"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</h4></span>');
         } else {
             skillMessage = "Pas assez de PA";
@@ -103,7 +103,7 @@ function skillsInfos(bat,batUnitType) {
         if (bat.tags.includes('luckyshot')) {
             balise = 'h1';
         }
-        if (!bat.tags.includes('luckyshot') && !bat.tags.includes('lucky')) {
+        if (!bat.tags.includes('luckyshot') && !bat.tags.includes('lucky') && bat.apLeft >= cheapWeapCost) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lucky shot automatique sur cette attaque" class="boutonGris iconButtons" onclick="luckyShot()"><i class="fas fa-dice-six"></i> <span class="small">0</span></button>&nbsp; Lucky shot</'+balise+'></span>');
         } else {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de bol" class="boutonGris iconButtons gf"><i class="fas fa-dice-six"></i> <span class="small">'+apCost+'</span></button>&nbsp; Lucky shot</'+balise+'></span>');

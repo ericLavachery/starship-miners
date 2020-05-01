@@ -99,7 +99,7 @@ function ambush() {
     if (!selectedBat.tags.includes('embuscade')) {
         selectedBat.tags.push('embuscade');
     }
-    selectedBat.apLeft = selectedBat.apLeft-Math.ceil(selectedBatType.ap/2);
+    selectedBat.apLeft = selectedBat.apLeft-2;
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
