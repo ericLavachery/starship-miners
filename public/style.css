@@ -193,18 +193,18 @@ h4 {
 }
 .pUnits {
     background-color: rgba(255, 255, 255, 0.3);
-    /* border-style: solid;
-    border-width: 1px;
-    border-color: rgba(255, 255, 255, 0.5); */
-    border-radius: 8px;
-    position: absolute;
-    margin: 1px 1px 1px 1px;
-}
-.aUnits {
-    background-color: rgba(252, 252, 215, 0.3);
     border-style: solid;
     border-width: 1px;
-    border-color: rgba(252, 255, 175, 0.4);
+    border-color: rgba(247, 255, 85, 0.5);
+    border-radius: 8px;
+    position: absolute;
+    /* margin: 1px 1px 1px 1px; */
+}
+.aUnits {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(255, 85, 85, 0.5);
     border-radius: 8px;
     position: absolute;
     /* margin: 1px 1px 1px 1px; */

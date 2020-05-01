@@ -113,7 +113,7 @@
             "range":1,
             "rof":24,
             "accuracy":18,
-            "power":5,
+            "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
