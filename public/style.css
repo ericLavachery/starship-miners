@@ -177,6 +177,16 @@ h4 {
     margin-left: -3px;
     margin-top: -3px;
 }
+.aliInfos {
+    font-size: 10px;
+    color: #ffffff;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #522167;
+    text-align: left;
+    position: absolute;
+    margin-left: -3px;
+    margin-top: -3px;
+}
 .mapInfos {
     font-size: 14px;
     color: #ffffff;
@@ -195,16 +205,16 @@ h4 {
     background-color: rgba(255, 255, 255, 0.3);
     border-style: solid;
     border-width: 1px;
-    border-color: rgba(247, 255, 85, 0.5);
+    border-color: rgba(255, 255, 255, 0.4);
     border-radius: 8px;
     position: absolute;
     /* margin: 1px 1px 1px 1px; */
 }
 .aUnits {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 254, 177, 0.3);
     border-style: solid;
     border-width: 1px;
-    border-color: rgba(255, 85, 85, 0.5);
+    border-color: rgba(255, 249, 115, 0.4);
     border-radius: 8px;
     position: absolute;
     /* margin: 1px 1px 1px 1px; */
