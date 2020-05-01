@@ -111,7 +111,7 @@ function skillsInfos(bat,batUnitType) {
     }
     // MEDIC
     if (batUnitType.skills.includes('medic')) {
-        numTargets = numMedicTargets(bat,'infantry');
+        numTargets = numMedicTargets(bat,'infantry',true,true);
         let baseMedicCost = batUnitType.medicCost;
         apCost = numTargets*(baseMedicCost+batUnitType.squads-bat.squadsLeft);
         if (bat.apLeft >= 4 && numTargets >= 1 && !inMelee) {
@@ -131,18 +131,15 @@ function skillsInfos(bat,batUnitType) {
     }
     // SELF MEDIC
     if (batUnitType.skills.includes('selfmedic')) {
-        let damaged = false;
-        if (bat.damage >=1) {
-            damaged = true;
-        }
+        numTargets = numMedicTargets(bat,'infantry',false,true);
         apCost = batUnitType.ap;
-        if (bat.apLeft >= apCost && damaged && !inMelee) {
+        if (bat.apLeft >= apCost && numTargets >= 1 && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se soigner" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false,true)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Pas de soins en mêlée";
             } else {
-                if (!damaged) {
+                if (numTargets <= 0) {
                     skillMessage = "Aucun dégâts soignable";
                 } else {
                     skillMessage = "Pas assez de PA";
@@ -153,18 +150,15 @@ function skillsInfos(bat,batUnitType) {
     }
     // FIRST AID
     if (batUnitType.skills.includes('firstaid')) {
-        let damaged = false;
-        if (bat.damage >=1) {
-            damaged = true;
-        }
+        numTargets = numMedicTargets(bat,'infantry',false,false);
         apCost = Math.round(batUnitType.ap*1.4);
-        if (bat.apLeft >= batUnitType.ap && damaged && !inMelee) {
+        if (bat.apLeft >= batUnitType.ap && numTargets >= 1 && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Pas de soins en mêlée";
             } else {
-                if (!damaged) {
+                if (numTargets <= 0) {
                     skillMessage = "Aucun dégâts soignable";
                 } else {
                     skillMessage = "Pas assez de PA";
@@ -175,7 +169,7 @@ function skillsInfos(bat,batUnitType) {
     }
     // MECANO
     if (batUnitType.skills.includes('mecano')) {
-        numTargets = numMedicTargets(bat,'vehicles');
+        numTargets = numMedicTargets(bat,'vehicles',true,true);
         apCost = numTargets*(10+(batUnitType.squads*2)-(bat.squadsLeft*2));
         if (bat.apLeft >= 8 && numTargets >= 1 && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents" class="boutonGris iconButtons" onclick="medic(`vehicles`,10,true,true)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
@@ -192,17 +186,33 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
         }
     }
+    // BASE MECANO
+    if (batUnitType.skills.includes('basemecano')) {
+        numTargets = numMedicTargets(bat,'vehicles',true,false);
+        apCost = numTargets*(15+(batUnitType.squads*2)-(bat.squadsLeft*2));
+        if (bat.apLeft >= 8 && numTargets >= 1 && !inMelee) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents" class="boutonGris iconButtons" onclick="medic(`vehicles`,10,true,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+        } else {
+            if (inMelee) {
+                skillMessage = "Pas de réparations en mêlée";
+            } else {
+                if (numTargets < 1) {
+                    skillMessage = "Aucun véhicule adjacent n'a pas subit de dégâts";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+        }
+    }
     // SELF MECANO
     if (batUnitType.skills.includes('selfmecano')) {
-        let damaged = false;
-        if (batUnitType.squads > bat.squadsLeft || bat.damage >=1) {
-            damaged = true;
-        }
-        apCost = Math.round(batUnitType.ap*2);
-        if (bat.apLeft >= batUnitType.ap && damaged && !inMelee) {
+        numTargets = numMedicTargets(bat,'vehicles',false,false);
+        apCost = Math.round(batUnitType.ap*1.4);
+        if (bat.apLeft >= batUnitType.ap && numTargets >= 1 && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Retaper le véhicule" class="boutonGris iconButtons" onclick="medic(`vehicles`,'+apCost+',false,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
         } else {
-            if (!damaged) {
+            if (numTargets <= 0) {
                 skillMessage = "Ce véhicule n'a pas subit de dégâts";
             } else if (inMelee) {
                 skillMessage = "Pas de réparations en mêlée";
@@ -214,7 +224,7 @@ function skillsInfos(bat,batUnitType) {
     }
     // REPAIR
     if (batUnitType.skills.includes('repair') && !inMelee) {
-        numTargets = numMedicTargets(bat,'buildings');
+        numTargets = numMedicTargets(bat,'buildings',true,true);
         apCost = numTargets*(15+(batUnitType.squads*3)-(bat.squadsLeft*3));
         if (bat.apLeft >= 8 && numTargets >= 1 && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les bâtiments adjacents" class="boutonGris iconButtons" onclick="medic(`buildings`,15,true,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
@@ -233,15 +243,12 @@ function skillsInfos(bat,batUnitType) {
     }
     // SELF REPAIR
     if (batUnitType.skills.includes('selfrepair')) {
-        let damaged = false;
-        if (batUnitType.squads > bat.squadsLeft || bat.damage >=1) {
-            damaged = true;
-        }
+        numTargets = numMedicTargets(bat,'buildings',false,false);
         apCost = Math.round(batUnitType.ap*2);
-        if (bat.apLeft >= batUnitType.ap && damaged && !inMelee) {
+        if (bat.apLeft >= batUnitType.ap && numTargets >= 1 && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment" class="boutonGris iconButtons" onclick="medic(`all`,'+apCost+',false,false)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
         } else {
-            if (!damaged) {
+            if (numTargets <= 0) {
                 skillMessage = "Ce bâtiment n'a pas subit de dégâts";
             } else if (inMelee) {
                 skillMessage = "Pas de réparations en mêlée";
@@ -253,15 +260,12 @@ function skillsInfos(bat,batUnitType) {
     }
     // SELF REPAIR DEEP
     if (batUnitType.skills.includes('deepselfrepair')) {
-        let damaged = false;
-        if (batUnitType.squads > bat.squadsLeft || bat.damage >=1) {
-            damaged = true;
-        }
+        numTargets = numMedicTargets(bat,'buildings',false,true);
         apCost = Math.round(batUnitType.ap*2);
-        if (bat.apLeft >= batUnitType.ap && damaged && !inMelee) {
+        if (bat.apLeft >= batUnitType.ap && numTargets >= 1 && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment" class="boutonGris iconButtons" onclick="medic(`all`,'+apCost+',false,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
         } else {
-            if (!damaged) {
+            if (numTargets <= 0) {
                 skillMessage = "Ce bâtiment n'a pas subit de dégâts";
             } else if (inMelee) {
                 skillMessage = "Pas de réparations en mêlée";

@@ -261,31 +261,49 @@ function medic(cat,cost,around,deep) {
     showBatInfos(selectedBat);
 };
 
-function numMedicTargets(myBat,cat) {
+function numMedicTargets(myBat,cat,around,deep) {
     let numTargets = 0;
     let catOK;
-    bataillons.forEach(function(bat) {
-        if (bat.loc === "zone") {
-            distance = calcDistance(myBat.tileId,bat.tileId);
-            if (distance === 0) {
-                // unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-                // batType = unitTypes[unitIndex];
-                batType = getBatType(bat);
-                if (batType.cat === cat) {
-                    catOK = true;
-                } else if (cat === 'any') {
-                    catOK = true;
-                } else {
-                    catOK = false;
-                }
-                if (catOK) {
-                    if (bat.damage > 0 || bat.squadsLeft < batType.squads || bat.tags.includes('poison') || bat.tags.includes('venin') || bat.tags.includes('maladie') || bat.tags.includes('trou')) {
-                        numTargets = numTargets+1;
+    let myBatType = getBatType(myBat);
+    let batType;
+    if (!around) {
+        if (deep) {
+            if (myBat.damage > 0 || myBat.squadsLeft < myBatType.squads || myBat.tags.includes('poison') || myBat.tags.includes('venin') || myBat.tags.includes('maladie') || myBat.tags.includes('trou')) {
+                numTargets = numTargets+1;
+            }
+        } else {
+            if (myBat.damage > 0 || myBat.tags.includes('poison')) {
+                numTargets = numTargets+1;
+            }
+        }
+    } else {
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                distance = calcDistance(myBat.tileId,bat.tileId);
+                if (distance === 0) {
+                    batType = getBatType(bat);
+                    if (batType.cat === cat) {
+                        catOK = true;
+                    } else if (cat === 'any') {
+                        catOK = true;
+                    } else {
+                        catOK = false;
+                    }
+                    if (catOK) {
+                        if (deep) {
+                            if (bat.damage > 0 || bat.squadsLeft < batType.squads || bat.tags.includes('poison') || bat.tags.includes('venin') || bat.tags.includes('maladie') || bat.tags.includes('trou')) {
+                                numTargets = numTargets+1;
+                            }
+                        } else {
+                            if (bat.damage > 0 || bat.tags.includes('poison')) {
+                                numTargets = numTargets+1;
+                            }
+                        }
                     }
                 }
             }
-        }
-    });
+        });
+    }
     return numTargets;
 };
 
