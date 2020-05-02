@@ -1276,7 +1276,7 @@
         "ap":16,
         "maxSalvo":1,
         "weapon":{
-            "name":"Mitrailleuse co2",
+            "name":"Mitrailleuse pneumatique",
             "cost":5,
             "range":1,
             "rof":16,
@@ -1366,14 +1366,14 @@
         "ap":14,
         "maxSalvo":1,
         "weapon":{
-            "name":"Fusil co2",
+            "name":"Fusil pneumatique",
             "cost":3,
             "range":1,
-            "rof":8,
+            "rof":12,
             "accuracy":32,
             "power":6,
             "aoe":"unit",
-            "sound":"321552__brendan89__regular-arrow-shotb",
+            "sound":"johnj_wafare_gun_pistol_silenced_walther_pp7c",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{

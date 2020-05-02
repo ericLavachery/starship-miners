@@ -302,7 +302,7 @@ function skillsInfos(bat,batUnitType) {
         if (Object.keys(conselUnit).length >= 1) {
             balise = 'h1';
         }
-        apCost = Math.round(batUnitType.ap*1.8);
+        apCost = Math.round(batUnitType.ap*1.5);
         if (minesLeft >= 1 && bat.apLeft >= batUnitType.ap && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines" class="boutonGris iconButtons" onclick="dropMine('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');
         } else {

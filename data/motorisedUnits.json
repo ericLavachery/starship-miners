@@ -630,8 +630,7 @@
             "power":18,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
-            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"],
-            "maxAmmo":24
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"]
         },
         "weapon2":{
             "name":"Missille squash",
@@ -762,5 +761,53 @@
         "transMaxSize":9,
         "transTotal":800,
         "fuzz":-1
+    },
+    {
+        "id":57,
+        "name":"DJ Boss",
+        "pic":"djboss",
+        "cat":"vehicles",
+        "squads":5,
+        "squadSize":3,
+        "crew":4,
+        "hp":62,
+        "armor":12,
+        "size":24,
+        "stealth":1,
+        "ap":21,
+        "maxSalvo":2,
+        "weapon":{
+            "name":"Canon plasma",
+            "cost":6,
+            "range":1,
+            "rof":3,
+            "accuracy":22,
+            "power":24,
+            "aoe":"unit",
+            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
+            "ammo":["plasma","plastanium","uridium","nanite"]
+        },
+        "weapon2":{
+            "name":"Missille squash",
+            "cost":7,
+            "range":6,
+            "noMelee":true,
+            "noFly":true,
+            "noDef":true,
+            "noBis":true,
+            "rof":3,
+            "accuracy":14,
+            "power":30,
+            "aoe":"squad",
+            "sound":"262436__ramston__real-explosionsb",
+            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-heatseeker","missile-homing"],
+            "maxAmmo":4
+        },
+        "moveCost":3,
+        "maxFlood":3,
+        "maxScarp":2,
+        "maxVeg":2,
+        "skills":["fortif","cible","selfmecano","leader"],
+        "fuzz":0
     }
 ]
