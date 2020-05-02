@@ -675,7 +675,7 @@
             "noFly": true,
             "rof": 15,
             "accuracy": 12,
-            "power": 2,
+            "power": 0,
             "aoe": "unit",
             "sound": "zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
             "ammo": [ "web" ]
@@ -685,7 +685,7 @@
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": []
+        "skills": ["venin"]
     },
     {
         "id": 19,

@@ -688,6 +688,8 @@
         "maxVeg":2,
         "skills":["cible","transport","medic","selfmecano"],
         "medicCost":3,
+        "transMaxSize":9,
+        "transTotal":200,
         "fuzz":0
     },
     {
@@ -723,6 +725,42 @@
         "maxVeg":2,
         "skills":["fortif","cible","guerrilla","camo","landmine","selfmecano"],
         "maxSKill": 3,
+        "fuzz":-1
+    },
+    {
+        "id":54,
+        "name":"Whizz",
+        "pic":"wizz",
+        "cat":"vehicles",
+        "squads":4,
+        "squadSize":3,
+        "crew":3,
+        "hp":90,
+        "armor":6,
+        "size":30,
+        "stealth":6,
+        "ap":20,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Baliste",
+            "cost":4,
+            "range":2,
+            "isBow":true,
+            "rof":2,
+            "accuracy":14,
+            "power":16,
+            "aoe":"brochette",
+            "sound":"321552__brendan89__regular-arrow-shotb",
+            "ammo":["standard","poison","taser"]
+        },
+        "weapon2":{},
+        "moveCost":3,
+        "maxFlood":1,
+        "maxScarp":2,
+        "maxVeg":3,
+        "skills":["cible","transport","camo"],
+        "transMaxSize":9,
+        "transTotal":800,
         "fuzz":-1
     }
 ]

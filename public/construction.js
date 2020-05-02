@@ -206,6 +206,10 @@ function putBat(tileId) {
         }
         newBat.army = 0;
         newBat.fuzz = conselUnit.fuzz;
+        if (conselUnit.transTotal >= 1) {
+            newBat.trans = 0;
+            newBat.transIds = [];
+        }
         newBat.tags = [];
         if (newBat.team === 'player') {
             bataillons.push(newBat);

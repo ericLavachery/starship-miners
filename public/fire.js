@@ -233,6 +233,8 @@ function attack() {
     }
     let totalDamage = 0;
     let apDamage = 0;
+    let shotResult = {damage:0,hits:0};
+    let totalHits = 0;
     // brochette
     let skewer = false;
     if (selectedWeap.aoe == 'brochette') {
@@ -253,10 +255,12 @@ function attack() {
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
-            totalDamage = totalDamage+blast(aoeShots,selectedWeap,targetBat,targetBatType,shotDice);
+            shotResult = blast(aoeShots,selectedWeap,targetBat,targetBatType,shotDice);
         } else {
-            totalDamage = totalDamage+shot(skewer,selectedWeap,targetBat,targetBatType,shotDice);
+            shotResult = shot(skewer,selectedWeap,targetBat,targetBatType,shotDice);
         }
+        totalDamage = totalDamage+shotResult.damage;
+        totalHits = totalHits+shotResult.hits;
         if (i > 300) {break;}
         i++
     }
@@ -276,6 +280,12 @@ function attack() {
         }
         apDamage = apDamage+Math.round(totalDamage*wapd);
         console.log('AP Damage : '+apDamage);
+    }
+    // web
+    if (selectedWeap.ammo.includes('web')) {
+        let webDamage = totalHits;
+        webDamage = Math.ceil(webDamage/Math.sqrt(targetBatType.size));
+        apDamage = apDamage+webDamage;
     }
     // inflammable
     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm')) {
@@ -506,6 +516,8 @@ function defense() {
     // console.log(aoeShots);
     let totalDamage = 0;
     let apDamage = 0;
+    let shotResult = {damage:0,hits:0};
+    let totalHits = 0;
     // brochette
     let skewer = false;
     if (targetWeap.aeo == 'brochette') {
@@ -516,10 +528,12 @@ function defense() {
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
-            totalDamage = totalDamage+blast(aoeShots,targetWeap,selectedBat,selectedBatType,shotDice);
+            shotResult = blast(aoeShots,targetWeap,selectedBat,selectedBatType,shotDice);
         } else {
-            totalDamage = totalDamage+shot(skewer,targetWeap,selectedBat,selectedBatType,shotDice);
+            shotResult = shot(skewer,targetWeap,selectedBat,selectedBatType,shotDice);
         }
+        totalDamage = totalDamage+shotResult.damage;
+        totalHits = totalHits+shotResult.hits;
         if (i > 300) {break;}
         i++
     }
@@ -548,6 +562,12 @@ function defense() {
         }
         apDamage = apDamage+Math.round(totalDamage*wapd);
         console.log('AP Damage : '+apDamage);
+    }
+    // web
+    if (targetWeap.ammo.includes('web')) {
+        let webDamage = totalHits;
+        webDamage = Math.ceil(webDamage/Math.sqrt(selectedBatType.size));
+        apDamage = apDamage+webDamage;
     }
     // munitions limitées
     console.log('maxAmmo'+targetWeap.maxAmmo);
@@ -655,7 +675,7 @@ function combatReport() {
 
 function shot(skewer,weapon,bat,batType,shotDice) {
     // returns damage
-    let damage = 0;
+    let result = {damage:0,hits:0};
     let cover = getCover(bat,true);
     let stealth = getStealth(bat);
     let batSpeed = batType.speed;
@@ -664,24 +684,30 @@ function shot(skewer,weapon,bat,batType,shotDice) {
         batSpeed = batSpeed+3;
     }
     if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
-        damage = calcDamage(weapon,weapon.power,batType.armor,bat);
-        if (damage > batType.hp && !skewer) {
-            damage = batType.hp;
-        } else if (damage > batType.hp*3 && skewer) {
-            damage = batType.hp*3;
+        if (weapon.power >= 1) {
+            result.damage = calcDamage(weapon,weapon.power,batType.armor,bat);
+        } else {
+            result.damage = 0;
         }
-        if (damage < 0) {
-            damage = 0;
+        result.hits = 1;
+        if (result.damage > batType.hp && !skewer) {
+            result.damage = batType.hp;
+        } else if (result.damage > batType.hp*3 && skewer) {
+            result.damage = batType.hp*3;
+            result.hits = 2;
         }
-        $('#report').append('<span class="report">'+damage+' </span>');
+        if (result.damage < 0) {
+            result.damage = 0;
+        }
+        $('#report').append('<span class="report">'+result.damage+' </span>');
     }
-    return damage;
+    return result;
 };
 
 function blast(aoeShots,weapon,bat,batType,shotDice) {
     // returns damage
     // console.log('aoeShots = '+aoeShots);
-    let damage = 0;
+    let result = {damage:0,hits:0};
     let newDamage = 0;
     let power = weapon.power;
     let oldPower = weapon.power;
@@ -696,14 +722,19 @@ function blast(aoeShots,weapon,bat,batType,shotDice) {
     while (ii <= aoeShots) {
         // console.log('power'+power);
         if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
-            newDamage = calcDamage(weapon,power,batType.armor,bat);
+            if (weapon.power >= 1) {
+                newDamage = calcDamage(weapon,power,batType.armor,bat);
+            } else {
+                newDamage = 0;
+            }
+            result.hits = result.hits+1;
             if (newDamage > batType.hp) {
                 newDamage = batType.hp;
             }
             if (newDamage < 0) {
                 newDamage = 0;
             }
-            damage = damage+newDamage;
+            result.damage = result.damage+newDamage;
         }
         if (ii > 100) {break;}
         oldPower = power;
@@ -716,8 +747,8 @@ function blast(aoeShots,weapon,bat,batType,shotDice) {
         }
         ii++
     }
-    $('#report').append('<span class="report">'+damage+' </span>');
-    return damage;
+    $('#report').append('<span class="report">'+result.damage+' </span>');
+    return result;
 };
 
 function batDeath(bat) {
