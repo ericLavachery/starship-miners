@@ -284,7 +284,7 @@ function attack() {
     // web
     if (selectedWeap.ammo.includes('web')) {
         let webDamage = totalHits;
-        webDamage = Math.ceil(webDamage/Math.sqrt(targetBatType.size));
+        webDamage = Math.ceil(webDamage*18/Math.sqrt(targetBatType.hp)/(targetBatType.size+7));
         apDamage = apDamage+webDamage;
     }
     // inflammable
@@ -566,7 +566,7 @@ function defense() {
     // web
     if (targetWeap.ammo.includes('web')) {
         let webDamage = totalHits;
-        webDamage = Math.ceil(webDamage/Math.sqrt(selectedBatType.size));
+        webDamage = Math.ceil(webDamage*18/Math.sqrt(selectedBatType.hp)/(selectedBatType.size+7));
         apDamage = apDamage+webDamage;
     }
     // munitions limitées
