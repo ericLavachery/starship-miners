@@ -89,7 +89,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","selfmecano"],
+        "skills":["fortif","cible","selfmecano"],
         "fuzz":0
     },
     {
@@ -228,7 +228,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selfmecano"],
+        "skills":["cible","selfmecano"],
         "fuzz":0
     },
     {
@@ -366,7 +366,7 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selevation","selfmecano"],
+        "skills":["cible","selevation","selfmecano"],
         "fuzz":0
     },
     {
@@ -558,7 +558,7 @@
     },
     {
         "id":38,
-        "name":"Wartruck",
+        "name":"Wartrucks",
         "pic":"monster",
         "cat":"vehicles",
         "squads":5,
@@ -601,7 +601,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["fortif","cible","selfmecano"],
+        "skills":["cible","mecano"],
         "fuzz":0
     },
     {
@@ -686,7 +686,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","transport","medic","selfmecano"],
+        "skills":["cible","transport","medic","selfmecano"],
         "medicCost":3,
         "fuzz":0
     },

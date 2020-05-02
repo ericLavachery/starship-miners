@@ -523,7 +523,7 @@ function goDrug(apCost,drug) {
             selectedBat.tags.push(drug);
             // blaze instant bonus
             if (drug === 'blaze') {
-                selectedBat.apLeft = selectedBat.apLeft+8;
+                selectedBat.apLeft = selectedBat.apLeft+6;
                 selectedBat.salvoLeft = selectedBat.salvoLeft+1;
                 console.log('blaze bonus');
             }

@@ -129,6 +129,26 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
         }
     }
+    // BAD MEDIC
+    if (batUnitType.skills.includes('badmedic')) {
+        numTargets = numMedicTargets(bat,'infantry',true,false);
+        let baseMedicCost = batUnitType.medicCost;
+        apCost = numTargets*(baseMedicCost+batUnitType.squads-bat.squadsLeft);
+        if (bat.apLeft >= 4 && numTargets >= 1 && !inMelee) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonGris iconButtons" onclick="medic(`infantry`,'+baseMedicCost+',true,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+        } else {
+            if (inMelee) {
+                skillMessage = "Pas de soins en mêlée";
+            } else {
+                if (numTargets < 1) {
+                    skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+        }
+    }
     // SELF MEDIC
     if (batUnitType.skills.includes('selfmedic')) {
         numTargets = numMedicTargets(bat,'infantry',false,true);
@@ -318,7 +338,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // DROGUES
-    if (!batUnitType.skills.includes('mutant') && batUnitType.cat === 'infantry') {
+    if (!batUnitType.skills.includes('mutant') && !batUnitType.skills.includes('cyborg') && batUnitType.cat === 'infantry') {
         let allDrugs = checkDrugs(bat);
         // KIRIN
         if (allDrugs.includes('kirin') && !bat.tags.includes('kirin')) {

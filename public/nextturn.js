@@ -100,21 +100,21 @@ function tagsUpdate(bat) {
         if (bat.tags.includes('kirin')) {
             tagIndex = bat.tags.indexOf('kirin');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat,false,true);
+            drugDown(bat,false,false);
         }
     }
     if (rand.rand(1,10) === 1) {
         if (bat.tags.includes('sila')) {
             tagIndex = bat.tags.indexOf('sila');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat,true,true);
+            drugDown(bat,true,false);
         }
     }
     if (rand.rand(1,10) === 1) {
         if (bat.tags.includes('bliss')) {
             tagIndex = bat.tags.indexOf('bliss');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat,true,false);
+            drugDown(bat,false,true);
         }
     }
     if (rand.rand(1,6) === 1) {
@@ -173,7 +173,7 @@ function tagsEffect(bat,batType) {
     let squadsOut;
     // BLAZE DRUG
     if (bat.tags.includes('blaze')) {
-        bat.apLeft = bat.apLeft+8;
+        bat.apLeft = bat.apLeft+6;
         bat.salvoLeft = bat.salvoLeft+1;
     }
     // BLISS DRUG
