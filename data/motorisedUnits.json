@@ -782,9 +782,9 @@
             "range":1,
             "rof":3,
             "accuracy":22,
-            "power":24,
-            "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
+            "power":28,
+            "aoe":"brochette",
+            "sound":"zapsplat_science_fiction_weapon_gun_shoot_001_32194c",
             "ammo":["plasma","plastanium","uridium","nanite"]
         },
         "weapon2":{
@@ -797,7 +797,7 @@
             "noBis":true,
             "rof":3,
             "accuracy":14,
-            "power":30,
+            "power":35,
             "aoe":"squad",
             "sound":"262436__ramston__real-explosionsb",
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-heatseeker","missile-homing"],

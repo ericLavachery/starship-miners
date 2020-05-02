@@ -354,7 +354,7 @@
         "range": 0,
         "rof": 1,
         "power": 0,
-        "armors": 0.25,
+        "armors": 0.50,
         "accuracy": 1,
         "apdamage": 0.05,
         "aoe": ""
@@ -364,7 +364,7 @@
         "range": 1,
         "rof": 1.5,
         "power": 0,
-        "armors": 0.25,
+        "armors": 0.67,
         "accuracy": 1.5,
         "apdamage": 0.04,
         "aoe": ""
@@ -374,13 +374,53 @@
         "range": 0,
         "rof": 1,
         "power": 4,
-        "armors": 0.25,
+        "armors": 0.50,
         "accuracy": 0.67,
         "apdamage": 0.03,
         "aoe": "squad"
     },
     {
         "name": "uridium",
+        "range": 0,
+        "rof": 1,
+        "power": 4,
+        "armors": 0.25,
+        "accuracy": 1.25,
+        "apdamage": 0.08,
+        "aoe": ""
+    },
+    {
+        "name": "cn-plasma",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.25,
+        "accuracy": 1,
+        "apdamage": 0.05,
+        "aoe": ""
+    },
+    {
+        "name": "cn-plastanium",
+        "range": 1,
+        "rof": 1.5,
+        "power": 0,
+        "armors": 0.33,
+        "accuracy": 1.5,
+        "apdamage": 0.04,
+        "aoe": ""
+    },
+    {
+        "name": "cn-nanite",
+        "range": 0,
+        "rof": 1,
+        "power": 4,
+        "armors": 0.25,
+        "accuracy": 0.67,
+        "apdamage": 0.03,
+        "aoe": "squad"
+    },
+    {
+        "name": "cn-uridium",
         "range": 0,
         "rof": 1,
         "power": 4,
