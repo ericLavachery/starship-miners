@@ -1033,7 +1033,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","embuscade","camo","guerrilla","ranger","sentinelle"],
+        "skills":["fortif","cible","embuscade","camo","guerrilla","ranger","sentinelle","firstaid"],
         "fuzz":-1
     },
     {
