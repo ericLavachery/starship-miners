@@ -340,11 +340,11 @@
         "aoe": ""
     },
     {
-        "name": "particules",
+        "name": "bfg",
         "range": 0,
         "rof": 1,
         "power": 0,
-        "armors": 0.25,
+        "armors": 0.67,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
@@ -373,7 +373,7 @@
         "name": "nanite",
         "range": 0,
         "rof": 1,
-        "power": 4,
+        "power": 0,
         "armors": 0.50,
         "accuracy": 0.67,
         "apdamage": 0.03,

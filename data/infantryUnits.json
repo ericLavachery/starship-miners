@@ -242,7 +242,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","camo","guerrilla","embuscade","firstaid","ranger"],
+        "skills":["cible","camo","guerrilla","embuscade","firstaid","ranger","sentinelle"],
         "fuzz":-1
     },
     {
@@ -723,7 +723,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","luckyshot","survivor","guerrilla","firstaid"],
+        "skills":["fortif","cible","luckyshot","survivor","guerrilla","firstaid","sentinelle"],
         "fuzz":0
     },
     {
@@ -1033,7 +1033,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","embuscade","camo","guerrilla","ranger"],
+        "skills":["fortif","cible","embuscade","camo","guerrilla","ranger","sentinelle"],
         "fuzz":-1
     },
     {
@@ -1078,7 +1078,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo","firstaid","ranger"],
+        "skills":["fortif","cible","camo","firstaid","ranger","sentinelle"],
         "fuzz":-1
     },
     {
@@ -1276,7 +1276,7 @@
         "ap":16,
         "maxSalvo":1,
         "weapon":{
-            "name":"Mitrailleuse pneumatique",
+            "name":"Mitrailleuse pneu",
             "cost":5,
             "range":1,
             "rof":16,
@@ -1366,7 +1366,7 @@
         "ap":14,
         "maxSalvo":1,
         "weapon":{
-            "name":"Fusil pneumatique",
+            "name":"Fusil pneu",
             "cost":3,
             "range":1,
             "rof":12,
@@ -1394,5 +1394,49 @@
         "maxVeg":3,
         "skills":["fortif","cible","camo","guerrilla","selfmedic","embuscade","berserk","ranger"],
         "fuzz":-1
+    },
+    {
+        "id":60,
+        "name":"Radios",
+        "pic":"radios",
+        "cat":"infantry",
+        "squads":7,
+        "squadSize":8,
+        "crew":1,
+        "hp":5,
+        "armor":4,
+        "size":3,
+        "stealth":12,
+        "ap":12,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Pistolet mitrailleur",
+            "cost":2,
+            "range":1,
+            "rof":24,
+            "accuracy":17,
+            "power":4,
+            "aoe":"unit",
+            "sound":"weapon_gun_ppsh_P_18-uzi",
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+        },
+        "weapon2":{
+            "name":"BFG",
+            "cost":4,
+            "range":1,
+            "rof":8,
+            "accuracy":30,
+            "power":20,
+            "aoe":"bat",
+            "sound":"PM_FSSF2_WEAPONS_J2_SHOT_325c",
+            "ammo":["bfg"],
+            "maxAmmo":12
+        },
+        "moveCost":3,
+        "maxFlood":3,
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["fortif","cible","selfmedic","leader","selevation","camo"],
+        "fuzz":0
     }
 ]
