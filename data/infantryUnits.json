@@ -196,7 +196,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo","guerrilla","firstaid"],
+        "skills":["fortif","cible","camo","guerrilla","firstaid","ranger"],
         "fuzz":-1
     },
     {
@@ -242,7 +242,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","camo","guerrilla","embuscade","firstaid"],
+        "skills":["cible","camo","guerrilla","embuscade","firstaid","ranger"],
         "fuzz":-1
     },
     {
@@ -454,7 +454,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid","guerrilla"],
+        "skills":["fortif","cible","firstaid","guerrilla","ranger"],
         "fuzz":0
     },
     {
@@ -940,7 +940,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","medic","camo","dealer","kirin","sila"],
+        "skills":["fortif","cible","medic","camo","dealer","kirin","sila","ranger"],
         "maxSKill": 12,
         "medicCost":6,
         "fuzz":-1
@@ -1033,7 +1033,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","embuscade","camo","guerrilla"],
+        "skills":["fortif","cible","embuscade","camo","guerrilla","ranger"],
         "fuzz":-1
     },
     {
@@ -1078,7 +1078,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo","firstaid"],
+        "skills":["fortif","cible","camo","firstaid","ranger"],
         "fuzz":-1
     },
     {
@@ -1122,7 +1122,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","embuscade","firstaid","guerrilla"],
+        "skills":["fortif","cible","firstaid","guerrilla","ranger"],
         "fuzz":0
     },
     {
@@ -1392,7 +1392,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo","guerrilla","selfmedic","embuscade","berserk"],
+        "skills":["fortif","cible","camo","guerrilla","selfmedic","embuscade","berserk","ranger"],
         "fuzz":-1
     }
 ]

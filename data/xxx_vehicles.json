@@ -389,7 +389,7 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","amphibie"],
+        "skills":["fortif","cible","hover"],
         "fuzz":0
     },
     {

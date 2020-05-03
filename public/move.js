@@ -306,6 +306,10 @@ function calcMoveCost(targetTileId,diag) {
     let moveCost;
     if (selectedBat.team == 'aliens') {
         moveCost = selectedBatType.moveCost+terrainTypes[terIndex].alienmc;
+    } else if (selectedBatType.skills.includes('ranger')) {
+        moveCost = selectedBatType.moveCost+terrainTypes[terIndex].rangermc;
+    } else if (selectedBatType.skills.includes('hover')) {
+        moveCost = selectedBatType.moveCost+terrainTypes[terIndex].hovermc;
     } else {
         moveCost = selectedBatType.moveCost+terrainTypes[terIndex].mc;
     }
