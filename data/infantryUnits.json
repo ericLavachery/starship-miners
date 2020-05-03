@@ -987,7 +987,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","fly","firstaid"],
+        "skills":["fortif","cible","fly","firstaid","longshot"],
         "fuzz":0
     },
     {
@@ -1406,8 +1406,9 @@
         "hp":5,
         "armor":4,
         "size":3,
-        "stealth":12,
-        "ap":12,
+        "stealth":6,
+        "speed":4,
+        "ap":13,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet mitrailleur",
@@ -1432,11 +1433,11 @@
             "ammo":["bfg"],
             "maxAmmo":12
         },
-        "moveCost":3,
+        "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","selfmedic","leader","selevation","camo"],
+        "skills":["fortif","cible","selfmedic","leader","fly","sentinelle","longshot"],
         "fuzz":0
     }
 ]
