@@ -66,7 +66,6 @@
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
             "ammo":["standard","hollow","perfo","tungsten","uranium","explosive"]
-
         },
         "weapon2":{
             "name":"Autocanon",
@@ -78,7 +77,6 @@
             "aoe":"squad",
             "sound":"182792__qubodup__mk-19-auto-grenade-launcher",
             "ammo":["standard","perfo","uranium","explosive",]
-
         },
         "moveCost":2,
         "maxFlood":2,
