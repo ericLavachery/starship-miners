@@ -852,7 +852,7 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","hover"],
+        "skills":["cible","hover","selfmecano"],
         "fuzz":0
     },
     {
@@ -909,7 +909,7 @@
             "cost":4,
             "range":2,
             "rof":18,
-            "accuracy":22,
+            "accuracy":24,
             "power":9,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_distantc",
@@ -920,7 +920,7 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","cible","medic","ravitaillement","camo"],
+        "skills":["fortif","cible","medic","ravitaillement","camo","selfmecano"],
         "medicCost":3,
         "maxSKill":10,
         "fuzz":-1
