@@ -51,7 +51,7 @@ function calcDamage(weapon,power,armor,defBat) {
     // creuseur
     if (weapon.ammo.includes('troueur') && weapon.ammo.includes('creuseur')) {
         if (defBat.tags.includes('trou')) {
-            modifiedArmor = 0;
+            modifiedArmor = 0.15;
         }
     }
     let powerDiceMin = Math.round(power/2.5);

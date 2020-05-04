@@ -335,10 +335,10 @@ function attack() {
         catOK = true;
     }
     let trouOK = false;
-    if (selectedWeap.ammo.includes('troueur') && totalDamage >= 1) {
+    if (selectedWeap.ammo.includes('troueur') && totalDamage >= 3) {
         trouOK = true;
     }
-    if (selectedWeap.ammo.includes('acide') && totalDamage >= 5) {
+    if (selectedWeap.ammo.includes('acide') && totalDamage >= 10) {
         trouOK = true;
     }
     if (trouOK && catOK) {
