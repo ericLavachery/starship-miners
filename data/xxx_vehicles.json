@@ -39,7 +39,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":2,
-        "skills":["fortif","cible","firtsaid","leader"],
+        "skills":["fortif","cible","firtsaid"],
         "fuzz":0
     },
     {
