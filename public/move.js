@@ -314,7 +314,7 @@ function calcMoveCost(targetTileId,diag) {
         moveCost = selectedBatType.moveCost+terrainTypes[terIndex].mc;
     }
     if (selectedBat.tags.includes('camo')) {
-        moveCost = moveCost+1.6;
+        moveCost = moveCost+0.8;
     }
     if (diag) {
         moveCost = moveCost*1.42;
