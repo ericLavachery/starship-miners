@@ -63,7 +63,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","cible","longshot"],
+        "skills":["deepselfrepair","cible","longshot","defense"],
         "fuzz":-1
     },
     {
@@ -106,7 +106,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","cible","longshot"],
+        "skills":["deepselfrepair","cible","longshot","defense"],
         "fuzz":-1
     },
     {

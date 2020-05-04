@@ -503,6 +503,13 @@ function defense() {
     if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle')) {
         brideDef = 1;
     }
+    if (targetBatType.skills.includes('defense')) {
+        if (targetBat.tags.includes('guet')) {
+            brideDef = 2.5;
+        } else {
+            brideDef = 2;
+        }
+    }
     console.log('brideDef='+brideDef);
     let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);
     if (targetBatType.skills.includes('undead')) {
