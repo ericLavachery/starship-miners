@@ -242,6 +242,23 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
         }
     }
+    // DEEP SELF MECANO
+    if (batUnitType.skills.includes('deepselfmecano')) {
+        numTargets = numMedicTargets(bat,'vehicles',false,true);
+        apCost = Math.round(batUnitType.ap*1.4);
+        if (bat.apLeft >= batUnitType.ap && numTargets >= 1 && !inMelee) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Retaper le véhicule" class="boutonGris iconButtons" onclick="medic(`vehicles`,'+apCost+',false,true)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+        } else {
+            if (numTargets <= 0) {
+                skillMessage = "Ce véhicule n'a pas subit de dégâts";
+            } else if (inMelee) {
+                skillMessage = "Pas de réparations en mêlée";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+        }
+    }
     // REPAIR
     if (batUnitType.skills.includes('repair') && !inMelee) {
         numTargets = numMedicTargets(bat,'buildings',true,true);
