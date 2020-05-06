@@ -173,7 +173,11 @@ function moveSelectedBat(tileId,free,jump) {
         selectedBat.tags.splice(tagIndex,1);
     }
     if (selectedBat.tags.includes('camo')) {
-        camouflage(true);
+        if (selectedBatType.skills.includes('fly') || selectedBatType.cat === 'vehicles') {
+            camoOut();
+        } else {
+            camouflage(true);
+        }
     }
     tileSelect(selectedBat);
     showBataillon(selectedBat);

@@ -810,7 +810,7 @@
     {
         "id":59,
         "name":"Drones",
-        "pic":"drone1",
+        "pic":"drone3",
         "cat":"vehicles",
         "squads":8,
         "squadSize":6,
@@ -828,7 +828,7 @@
             "range":1,
             "rof":6,
             "accuracy":22,
-            "power":8,
+            "power":7,
             "aoe":"unit",
             "sound":"PM_FSSF2_WEAPONS_H2_SHOT_324b",
             "ammo":["plasma","plastanium","nanite"]
@@ -1101,7 +1101,7 @@
         "size":7,
         "stealth":0,
         "speed":5,
-        "ap":15,
+        "ap":17,
         "maxSalvo":1,
         "weapon":{
             "name":"Shotgun",
