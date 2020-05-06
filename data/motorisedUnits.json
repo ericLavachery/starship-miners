@@ -1087,5 +1087,51 @@
         "maxVeg":2,
         "skills":["fortif","cible","deepselfmecano"],
         "fuzz":0
+    },
+    {
+        "id":74,
+        "name":"Autogire chiken",
+        "pic":"toyplane",
+        "cat":"vehicles",
+        "squads":6,
+        "squadSize":6,
+        "crew":1,
+        "hp":9,
+        "armor":3,
+        "size":7,
+        "stealth":0,
+        "speed":5,
+        "ap":15,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Shotgun",
+            "cost":3,
+            "range":1,
+            "rof":6,
+            "accuracy":22,
+            "power":8,
+            "aoe":"brochette",
+            "sound":"warfare_gunshots_x2_rifle_exterior",
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","timonium","salite","dunium"]
+        },
+        "weapon2":{
+            "name":"Dynamite",
+            "cost":5,
+            "range":1,
+            "noFly":true,
+            "rof":6,
+            "accuracy":14,
+            "power":12,
+            "aoe":"brochette",
+            "sound":"firework_faulty_fizzle_then_goes_outb",
+            "ammo":["dynamite","dynamite-na"],
+            "maxAmmo":10
+        },
+        "moveCost":2,
+        "maxFlood":3,
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["cible","fly","longshot"],
+        "fuzz":0
     }
 ]

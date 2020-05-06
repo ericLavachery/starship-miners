@@ -359,7 +359,7 @@ function attack() {
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('ppoison')) {
-            if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
+            if ((targetBatType.cat == 'infantry' && !targetBatType.skills.includes('mutant')) || targetBatType.cat == 'aliens') {
                 targetBat.tags.push('poison');
                 console.log('Poison!');
                 $('#report').append('<span class="report cy">Poison<br></span>');
@@ -384,7 +384,7 @@ function attack() {
             infected = true;
         }
         if (infected) {
-            if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
+            if ((targetBatType.cat == 'infantry' && !targetBatType.skills.includes('mutant')) || targetBatType.cat == 'aliens') {
                 targetBat.tags.push('maladie');
                 console.log('Maladie!');
                 $('#report').append('<span class="report cy">Maladie<br></span>');
@@ -589,7 +589,7 @@ function defense() {
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('ppoison')) {
-            if (selectedBatType.cat == 'infantry' || selectedBatType.cat == 'aliens') {
+            if ((selectedBatType.cat == 'infantry' && !selectedBatType.skills.includes('mutant')) || selectedBatType.cat == 'aliens') {
                 selectedBat.tags.push('poison');
                 console.log('Poison!');
                 $('#report').append('<span class="report cy">Poison<br></span>');
@@ -614,7 +614,7 @@ function defense() {
             infected = true;
         }
         if (infected) {
-            if (selectedBatType.cat == 'infantry' || selectedBatType.cat == 'aliens') {
+            if ((selectedBatType.cat == 'infantry' && !selectedBatType.skills.includes('mutant')) || selectedBatType.cat == 'aliens') {
                 selectedBat.tags.push('maladie');
                 console.log('Maladie!');
                 $('#report').append('<span class="report cy">Maladie<br></span>');
