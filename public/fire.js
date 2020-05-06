@@ -404,6 +404,7 @@ function attack() {
     // survivor
     if (targetBat.squadsLeft <= 0 && !targetBat.tags.includes('lucky') && targetBatType.skills.includes('survivor')) {
         targetBat.squadsLeft = 1;
+        targetBat.apLeft = targetBatType.ap;
         targetBat.tags.push('lucky');
     }
     console.log('Squads Out : '+squadsOut);
@@ -634,6 +635,7 @@ function defense() {
     // survivor
     if (selectedBat.squadsLeft <= 0 && !selectedBat.tags.includes('lucky') && selectedBatType.skills.includes('survivor')) {
         selectedBat.squadsLeft = 1;
+        selectedBat.apLeft = selectedBatType.ap;
         selectedBat.tags.push('lucky');
     }
     console.log('Squads Out : '+squadsOut);

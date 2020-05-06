@@ -873,7 +873,7 @@
         "maxScarp":2,
         "maxVeg":3,
         "skills":["fortif","cible","medic","ravitaillement","camo","selfmecano"],
-        "medicCost":3,
+        "medicCost":2,
         "maxSKill":10,
         "fuzz":-1
     },
