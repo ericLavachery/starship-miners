@@ -309,7 +309,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fly","gueria"],
-        "fuzz":0,
+        "fuzz":0
     },
     {
         "id":999,
