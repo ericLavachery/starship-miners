@@ -338,7 +338,7 @@ function attack() {
     if (selectedWeap.ammo.includes('troueur') && totalDamage >= 3) {
         trouOK = true;
     }
-    if (selectedWeap.ammo.includes('acide') && totalDamage >= 10) {
+    if (selectedWeap.ammo.includes('acide') && totalDamage >= 75) {
         trouOK = true;
     }
     if (trouOK && catOK) {
@@ -357,7 +357,7 @@ function attack() {
         $('#report').append('<span class="report cy">Venin<br></span>');
     }
     // poison
-    if (totalDamage >= 5 || (totalDamage >= 1 && rand.rand(1,2) === 1)) {
+    if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('ppoison')) {
             if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
                 targetBat.tags.push('poison');
@@ -587,7 +587,7 @@ function defense() {
     $('#report').append('<span class="report">('+totalDamage+')<br></span>');
     // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
     // poison
-    if (totalDamage >= 5 || (totalDamage >= 1 && rand.rand(1,2) === 1)) {
+    if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('ppoison')) {
             if (selectedBatType.cat == 'infantry' || selectedBatType.cat == 'aliens') {
                 selectedBat.tags.push('poison');
