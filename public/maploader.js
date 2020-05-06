@@ -79,8 +79,9 @@ function showAlien(bat) {
     let unitsLeft = bat.squadsLeft*alienUnits[unitIndex].squadSize;
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
+    let degNum = getDamageBar(bat);
     // <img src="/static/img/avet.png" width="15">
-    $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div>'+resHere);
+    $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'.png" width="7"></div>'+resHere);
 };
 
 function showBataillon(bat) {
@@ -90,7 +91,28 @@ function showBataillon(bat) {
     let unitsLeft = bat.squadsLeft*unitTypes[unitIndex].squadSize;
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
-    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
+    let degNum = getDamageBar(bat);
+    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'.png" width="7"></div>'+resHere);
+};
+
+function getDamageBar(bat) {
+    let batType = getBatType(bat);
+    let degNum = 7;
+    let degPerc = Math.round(100*bat.squadsLeft/batType.squads);
+    if (bat.squadsLeft === 1) {
+        degNum = 1;
+    } else if (degPerc < 35) {
+        degNum = 2;
+    } else if (degPerc < 55) {
+        degNum = 3;
+    } else if (degPerc < 70) {
+        degNum = 4;
+    } else if (degPerc < 86) {
+        degNum = 5;
+    } else if (degPerc === 100 && bat.damage > 1) {
+        degNum = 6;
+    }
+    return degNum;
 };
 
 function hideBataillon(bat) {

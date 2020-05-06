@@ -1086,8 +1086,8 @@ function getAway(bat,fromTileId,blob) {
         tagDelete(bat,'fortif');
         if (bat.tags.includes('camo') && !blob) {
             bat.fuzz = -1;
+            tagDelete(bat,'camo');
         }
-        tagDelete(bat,'camo');
         showBataillon(bat);
         if (!blob) {
             warning('Répulsion',bat.type+' a pris la fuite...');
