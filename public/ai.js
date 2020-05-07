@@ -135,19 +135,9 @@ function checkPDM() {
     let lePlusProche = 100;
     let shufBats = _.shuffle(bataillons);
     // cherche un cible préférée
-    shufBats.forEach(function(bat) {
-        if (bat.loc === "zone" && bat.fuzz >= 2) {
-            distance = calcDistance(selectedBat.tileId,bat.tileId);
-            if (distance < lePlusProche) {
-                pointDeMire = bat.tileId;
-                lePlusProche = distance;
-            }
-        }
-    });
-    if (pointDeMire < 0) {
-        // se rabat sur une autre cible
+    if (!selectedBatType.skills.includes('anycap')) {
         shufBats.forEach(function(bat) {
-            if (bat.loc === "zone" && bat.fuzz == 1) {
+            if (bat.loc === "zone" && bat.fuzz >= 2) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance < lePlusProche) {
                     pointDeMire = bat.tileId;
@@ -155,11 +145,33 @@ function checkPDM() {
                 }
             }
         });
-    }
-    if (pointDeMire < 0) {
-        // se rabat sur une autre cible
+        if (pointDeMire < 0) {
+            // se rabat sur une autre cible
+            shufBats.forEach(function(bat) {
+                if (bat.loc === "zone" && bat.fuzz == 1) {
+                    distance = calcDistance(selectedBat.tileId,bat.tileId);
+                    if (distance < lePlusProche) {
+                        pointDeMire = bat.tileId;
+                        lePlusProche = distance;
+                    }
+                }
+            });
+        }
+        if (pointDeMire < 0) {
+            // se rabat sur une autre cible
+            shufBats.forEach(function(bat) {
+                if (bat.loc === "zone" && bat.fuzz == 0) {
+                    distance = calcDistance(selectedBat.tileId,bat.tileId);
+                    if (distance < lePlusProche) {
+                        pointDeMire = bat.tileId;
+                        lePlusProche = distance;
+                    }
+                }
+            });
+        }
+    } else {
         shufBats.forEach(function(bat) {
-            if (bat.loc === "zone" && bat.fuzz == 0) {
+            if (bat.loc === "zone" && bat.fuzz >= 0) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance < lePlusProche) {
                     pointDeMire = bat.tileId;

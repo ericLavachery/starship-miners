@@ -75,12 +75,17 @@ function calcDamage(weapon,power,armor,defBat) {
 
 function getCover(bat,withFortif) {
     let cover;
+    let batType = getBatType(bat);
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
     let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
     let terrain = terrainTypes[terrainIndex];
     if (bat.team == 'aliens') {
-        cover = terrain.aliencover;
+        if (batType.skills.includes('hover')) {
+            cover = terrain.fishcover;
+        } else {
+            cover = terrain.aliencover;
+        }
     } else {
         cover = terrain.cover;
     }
