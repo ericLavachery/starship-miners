@@ -251,8 +251,8 @@
             "cost":4,
             "range":1,
             "rof":20,
-            "accuracy":17,
-            "power":12,
+            "accuracy":16,
+            "power":10,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -532,7 +532,7 @@
             "power":18,
             "aoe":"brochette",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison","taser"]
+            "ammo":["standard","poison","poraz","shinda","taser"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -702,7 +702,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison","taser"]
+            "ammo":["standard","poison","poraz","shinda","taser"]
         },
         "weapon2":{},
         "moveCost":3,
@@ -897,8 +897,8 @@
             "cost":7,
             "range":2,
             "rof":45,
-            "accuracy":15,
-            "power":10,
+            "accuracy":16,
+            "power":8,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -1019,7 +1019,7 @@
             "power":18,
             "aoe":"brochette",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison","taser"]
+            "ammo":["standard","poison","poraz","shinda","taser"]
         },
         "weapon2":{
             "name":"Moissonneuse",

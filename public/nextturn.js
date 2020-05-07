@@ -212,6 +212,18 @@ function tagsEffect(bat,batType) {
             batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le parasite.');
         }
     }
+    // SHINDA
+    if (bat.tags.includes('shinda')) {
+        totalDamage = bat.damage+rand.rand((Math.round(venumDamage/3)),venumDamage);
+        console.log('VenomDamage='+totalDamage);
+        squadHP = batType.squadSize*batType.hp;
+        squadsOut = Math.floor(totalDamage/squadHP);
+        bat.squadsLeft = bat.squadsLeft-squadsOut;
+        bat.damage = totalDamage-(squadsOut*squadHP);
+        if (bat.squadsLeft <= 0) {
+            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par la toxine.');
+        }
+    }
     // VENIN
     if (bat.tags.includes('venin')) {
         totalDamage = bat.damage+rand.rand((Math.round(venumDamage/3)),venumDamage);

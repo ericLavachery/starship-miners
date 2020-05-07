@@ -227,7 +227,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["perceur","ppoison","plasblade"]
+            "ammo":["perceur","ppoison","poraz","shinda","plasblade"]
         },
         "weapon2":{
             "name":"Arbalète",
@@ -239,7 +239,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison","monomolecular","taser"]
+            "ammo":["standard","poison","poraz","shinda","monomolecular","taser"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -274,7 +274,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison","monomolecular","taser"]
+            "ammo":["standard","poison","poraz","shinda","monomolecular","taser"]
         },
         "weapon2":{
             "name":"Lame",
@@ -286,7 +286,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","scrap","poison","monomolecular","plasblade"]
+            "ammo":["standard","scrap","poison","poraz","shinda","monomolecular","plasblade"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -332,7 +332,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","scrap","poison","monomolecular","plasblade"]
+            "ammo":["standard","scrap","poison","poraz","shinda","monomolecular","plasblade"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -378,7 +378,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["perceur","ppoison","plasblade"]
+            "ammo":["perceur","ppoison","poraz","shinda","plasblade"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -413,7 +413,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","scrap","poison","monomolecular","plasblade"]
+            "ammo":["standard","scrap","poison","poraz","shinda","monomolecular","plasblade"]
         },
         "weapon2":{
             "name":"Ceinture goodbye",
@@ -906,7 +906,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["perceur","ppoison","plasblade"]
+            "ammo":["perceur","ppoison","poraz","shinda","plasblade"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -988,7 +988,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison","monomolecular","taser"]
+            "ammo":["standard","poison","poraz","shinda","monomolecular","taser"]
         },
         "weapon2":{
             "name":"Lame",
@@ -1000,7 +1000,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","scrap","poison","monomolecular","plasblade"]
+            "ammo":["standard","scrap","poison","poraz","shinda","monomolecular","plasblade"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1083,7 +1083,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["monomolecular","plasblade"]
+            "ammo":["monomolecular","poraz","shinda","plasblade"]
         },
         "weapon2":{
             "name":"Arbalète",
@@ -1095,7 +1095,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison","monomolecular","taser"]
+            "ammo":["standard","poison","poraz","shinda","monomolecular","taser"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1405,7 +1405,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison","monomolecular","taser"]
+            "ammo":["standard","poison","poraz","shinda","monomolecular","taser"]
         },
         "weapon2":{
             "name":"Bolas",
@@ -1463,7 +1463,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["plasblade"]
+            "ammo":["plasblade","poraz","shinda"]
         },
         "moveCost":3,
         "maxFlood":3,

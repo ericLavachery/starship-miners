@@ -36,7 +36,7 @@
         "power": 10,
         "armors": 0.35,
         "accuracy": 1,
-        "apdamage": 0.04,
+        "apdamage": 0.1,
         "aoe": ""
     },
     {
@@ -46,7 +46,7 @@
         "power": 2,
         "armors": 0.25,
         "accuracy": 1,
-        "apdamage": 0.06,
+        "apdamage": 0.08,
         "aoe": ""
     },
     {
@@ -356,7 +356,7 @@
         "power": 0,
         "armors": 0.50,
         "accuracy": 1,
-        "apdamage": 0.04,
+        "apdamage": 0.1,
         "aoe": ""
     },
     {
@@ -366,7 +366,7 @@
         "power": 0,
         "armors": 0.67,
         "accuracy": 1.5,
-        "apdamage": 0.03,
+        "apdamage": 0.08,
         "aoe": ""
     },
     {
@@ -376,7 +376,7 @@
         "power": 0,
         "armors": 0.50,
         "accuracy": 0.67,
-        "apdamage": 0.03,
+        "apdamage": 0.06,
         "aoe": "squad"
     },
     {
@@ -385,8 +385,8 @@
         "rof": 1,
         "power": 4,
         "armors": 0.25,
-        "accuracy": 1.25,
-        "apdamage": 0.06,
+        "accuracy": 0.8,
+        "apdamage": 0.12,
         "aoe": ""
     },
     {
@@ -396,7 +396,7 @@
         "power": 0,
         "armors": 0.25,
         "accuracy": 1,
-        "apdamage": 0.05,
+        "apdamage": 0.1,
         "aoe": ""
     },
     {
@@ -406,7 +406,7 @@
         "power": 0,
         "armors": 0.33,
         "accuracy": 1.5,
-        "apdamage": 0.04,
+        "apdamage": 0.08,
         "aoe": ""
     },
     {
@@ -416,7 +416,7 @@
         "power": 4,
         "armors": 0.25,
         "accuracy": 0.67,
-        "apdamage": 0.03,
+        "apdamage": 0.06,
         "aoe": "squad"
     },
     {
@@ -425,8 +425,8 @@
         "rof": 1,
         "power": 4,
         "armors": 0.1,
-        "accuracy": 1.25,
-        "apdamage": 0.08,
+        "accuracy": 0.8,
+        "apdamage": 0.13,
         "aoe": ""
     },
     {
@@ -436,7 +436,7 @@
         "power": 0,
         "armors": 0,
         "accuracy": 1,
-        "apdamage": 0.30,
+        "apdamage": 0,
         "aoe": ""
     },
     {
@@ -554,6 +554,26 @@
         "range": 0,
         "rof": 1,
         "power": 0,
+        "armors": 0.75,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "poraz",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.67,
+        "accuracy": 1,
+        "apdamage": 0.12,
+        "aoe": ""
+    },
+    {
+        "name": "shinda",
+        "range": 0,
+        "rof": 1,
+        "power": 4,
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,

@@ -269,14 +269,18 @@ function attack() {
         totalDamage = Math.round(totalDamage*1.3);
         console.log('lucky shot on damage');
     }
-    // add damage! remove squads? remove bat?
+    // AP DAMAGE!
     if (selectedWeap.apdamage > 0) {
         let wapd = selectedWeap.apdamage;
-        if (selectedWeap.ammo.includes('electric') && targetBatType.cat == 'vehicles') {
-            wapd = wapd*2.25*20/targetBatType.size;
-        }
-        if (selectedWeap.ammo.includes('electric') && targetBatType.cat == 'buildings') {
-            wapd = wapd*20/targetBatType.size;
+        if (selectedWeap.ammo.includes('electric')) {
+            if (targetBatType.cat == 'vehicles') {
+                wapd = wapd*2.25*20/targetBatType.size;
+            }
+            if (targetBatType.cat == 'buildings') {
+                wapd = wapd*20/targetBatType.size;
+            }
+        } else {
+            wapd = wapd*1.75/Math.sqrt(targetBatType.size);
         }
         apDamage = apDamage+Math.round(totalDamage*wapd);
         console.log('AP Damage : '+apDamage);
@@ -363,6 +367,16 @@ function attack() {
                 targetBat.tags.push('poison');
                 console.log('Poison!');
                 $('#report').append('<span class="report cy">Poison<br></span>');
+            }
+        }
+    }
+    // shinda
+    if (totalDamage >= 5 || (totalDamage >= 1 && rand.rand(1,2) === 1)) {
+        if (selectedWeap.ammo.includes('shinda')) {
+            if (targetBatType.skills.includes('mutant') || targetBatType.cat == 'aliens') {
+                targetBat.tags.push('shinda');
+                console.log('Shinda!');
+                $('#report').append('<span class="report cy">Shinda<br></span>');
             }
         }
     }
@@ -559,14 +573,18 @@ function defense() {
             console.log('inflammable!');
         }
     }
-    // add damage! remove squads? remove bat?
+    // AP DAMAGE!
     if (targetWeap.apdamage > 0) {
         let wapd = targetWeap.apdamage;
-        if (targetWeap.ammo.includes('electric') && selectedBatType.cat == 'vehicles') {
-            wapd = wapd*2.25*20/selectedBatType.size;
-        }
-        if (targetWeap.ammo.includes('electric') && selectedBatType.cat == 'buildings') {
-            wapd = wapd*20/selectedBatType.size;
+        if (targetWeap.ammo.includes('electric')) {
+            if (selectedBatType.cat == 'vehicles') {
+                wapd = wapd*2.25*20/selectedBatType.size;
+            }
+            if (selectedBatType.cat == 'buildings') {
+                wapd = wapd*20/selectedBatType.size;
+            }
+        } else {
+            wapd = wapd*1.75/Math.sqrt(selectedBatType.size);
         }
         apDamage = apDamage+Math.round(totalDamage*wapd);
         console.log('AP Damage : '+apDamage);
@@ -593,6 +611,16 @@ function defense() {
                 selectedBat.tags.push('poison');
                 console.log('Poison!');
                 $('#report').append('<span class="report cy">Poison<br></span>');
+            }
+        }
+    }
+    // shinda
+    if (totalDamage >= 5 || (totalDamage >= 1 && rand.rand(1,2) === 1)) {
+        if (targetWeap.ammo.includes('shinda')) {
+            if (selectedBatType.skills.includes('mutant') || selectedBatType.cat == 'aliens') {
+                selectedBat.tags.push('shinda');
+                console.log('Shinda!');
+                $('#report').append('<span class="report cy">Shinda<br></span>');
             }
         }
     }
