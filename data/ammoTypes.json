@@ -617,7 +617,7 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "brochette"
     },
     {
         "name": "dynamite-na",
@@ -627,7 +627,7 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "bombe-thermos",
@@ -637,7 +637,7 @@
         "armors": 0.25,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "brochette"
     },
     {
         "name": "obus",
@@ -647,7 +647,7 @@
         "armors": 0.66,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "brochette"
     },
     {
         "name": "obus-scrap",
@@ -667,7 +667,7 @@
         "armors": 0.4,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "brochette"
     },
     {
         "name": "obus-heat",
@@ -677,7 +677,7 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "obus-fleche",
@@ -697,7 +697,7 @@
         "armors": 1,
         "accuracy": 1.3,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "obus-napalm",
@@ -707,7 +707,7 @@
         "armors": 1,
         "accuracy": 1.5,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "obus-heatseeker",
@@ -717,7 +717,7 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "missile",
@@ -727,7 +727,7 @@
         "armors": 0.66,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "missile-tungsten",
@@ -737,7 +737,7 @@
         "armors": 0.4,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "missile-heat",
@@ -747,7 +747,7 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "missile-fleche",
@@ -767,7 +767,7 @@
         "armors": 1,
         "accuracy": 1.35,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "missile-napalm",
@@ -777,7 +777,7 @@
         "armors": 1,
         "accuracy": 1.5,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "missile-heatseeker",
@@ -787,7 +787,7 @@
         "armors": 0.5,
         "accuracy": 1.25,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "missile-homing",
@@ -797,7 +797,7 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "grenade",
@@ -807,7 +807,7 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "grenade-flashbang",
@@ -817,7 +817,7 @@
         "armors": 0,
         "accuracy": 1,
         "apdamage": 0.2,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "grenade-incendiaire",
@@ -827,7 +827,7 @@
         "armors": 1.5,
         "accuracy": 1.25,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "grenade-gaz",
@@ -837,7 +837,7 @@
         "armors": 0,
         "accuracy": 1.5,
         "apdamage": 0.1,
-        "aoe": ""
+        "aoe": "squad"
     },
     {
         "name": "grenade-antichar",
@@ -847,6 +847,6 @@
         "armors": 0.25,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "unit"
+        "aoe": "brochette"
     }
 ]

@@ -19,7 +19,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","transorbital"],
+        "skills":["deepselfrepair","transorbital","ravitaillement","stock"],
         "fuzz":1
     },
     {

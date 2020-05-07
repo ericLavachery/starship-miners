@@ -214,7 +214,7 @@ function tagsEffect(bat,batType) {
     }
     // SHINDA
     if (bat.tags.includes('shinda')) {
-        totalDamage = bat.damage+rand.rand((Math.round(venumDamage/3)),venumDamage);
+        totalDamage = bat.damage+rand.rand((Math.round(venumDamage/2)),venumDamage*2);
         console.log('VenomDamage='+totalDamage);
         squadHP = batType.squadSize*batType.hp;
         squadsOut = Math.floor(totalDamage/squadHP);

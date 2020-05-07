@@ -520,9 +520,9 @@ function defense() {
     }
     if (targetBatType.skills.includes('defense')) {
         if (targetBat.tags.includes('guet')) {
-            brideDef = 2.5;
-        } else {
             brideDef = 2;
+        } else {
+            brideDef = 1.75;
         }
     }
     console.log('brideDef='+brideDef);

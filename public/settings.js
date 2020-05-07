@@ -86,8 +86,8 @@ let closeTargetRange = 4; // à ce range, se dirige vers ce bataillon plutôt qu
 let closeTargetRangeDice = 8; // 1 dé 8
 let attAlive = true;
 let defAlive = true;
-let venumDamage = 32; // 15 = 5-15 damage
-let poisonDamage = 12; // 9 = 3-9 damage
+let venumDamage = 33; // 33 = 11-33 damage (22) (shinda 40)
+let poisonDamage = 12; // 12 = 4-12 damage (8)
 let parasiteDamage = 90;
 let blubDamage = 3;
 let bugROF = 1;
