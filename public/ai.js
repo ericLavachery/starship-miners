@@ -132,10 +132,37 @@ function shootTarget(recul) {
 function checkPDM() {
     // peut-être des targets différents selon les types d'aliens?
     pointDeMire = -1;
+    let batType;
     let lePlusProche = 100;
     let shufBats = _.shuffle(bataillons);
     // cherche un cible préférée
-    if (!selectedBatType.skills.includes('anycap')) {
+    if (selectedBatType.skills.includes('anycap')) {
+        shufBats.forEach(function(bat) {
+            if (bat.loc === "zone" && bat.fuzz >= 0 ) {
+                batType = getBatType(bat);
+                if (!batType.skills.includes('fly')) {
+                    distance = calcDistance(selectedBat.tileId,bat.tileId);
+                    if (distance < lePlusProche) {
+                        pointDeMire = bat.tileId;
+                        lePlusProche = distance;
+                    }
+                }
+            }
+        });
+    } else if (selectedBatType.skills.includes('capmen')) {
+        shufBats.forEach(function(bat) {
+            if (bat.loc === "zone" && bat.fuzz >= 0) {
+                batType = getBatType(bat);
+                if (batType.cat === 'infantry' && !batType.skills.includes('fly')) {
+                    distance = calcDistance(selectedBat.tileId,bat.tileId);
+                    if (distance < lePlusProche) {
+                        pointDeMire = bat.tileId;
+                        lePlusProche = distance;
+                    }
+                }
+            }
+        });
+    } else {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= 2) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
@@ -169,16 +196,6 @@ function checkPDM() {
                 }
             });
         }
-    } else {
-        shufBats.forEach(function(bat) {
-            if (bat.loc === "zone" && bat.fuzz >= 0) {
-                distance = calcDistance(selectedBat.tileId,bat.tileId);
-                if (distance < lePlusProche) {
-                    pointDeMire = bat.tileId;
-                    lePlusProche = distance;
-                }
-            }
-        });
     }
     if (pointDeMire < 0) {
         pointDeMire = 1830;

@@ -758,7 +758,7 @@
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": [ "fear" ]
+        "skills": [ "fear","anycap" ]
     },
     {
         "id": 21,
@@ -1008,7 +1008,7 @@
     },
     {
         "id": 28,
-        "name": "Termites",
+        "name": "Necros",
         "pic": "minibug",
         "cat": "aliens",
         "kind": "swarm",
@@ -1041,7 +1041,7 @@
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": ["fouisseur","anycap"]
+        "skills": ["fouisseur","capmen"]
     },
     {
         "id": 29,
@@ -1114,6 +1114,6 @@
         "maxFlood": 3,
         "maxScarp": 3,
         "maxVeg": 3,
-        "skills": [ "chancre","hover","anycap" ]
+        "skills": [ "chancre","hover","capmen" ]
     }
 ]
