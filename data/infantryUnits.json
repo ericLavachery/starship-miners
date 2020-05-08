@@ -865,7 +865,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","extraction","firstaid","dynamite"],
+        "skills":["fortif","extraction","firstaid","dynamite","constructeur"],
         "maxSKill": 2,
         "fuzz":0
     },
@@ -1054,7 +1054,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","fly","firstaid","longshot"],
+        "skills":["fortif","cible","fly","firstaid","longshot","inflammable"],
         "fuzz":0
     },
     {
@@ -1330,7 +1330,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo","medic","elevation","fly"],
+        "skills":["fortif","cible","camo","medic","elevation","fly","inflammable"],
         "medicCost":5,
         "fuzz":-1
     },
@@ -1515,7 +1515,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","selfmedic","leader","fly","sentinelle","longshot","guerrilla","survivor"],
+        "skills":["fortif","cible","selfmedic","leader","fly","sentinelle","longshot","guerrilla","survivor","inflammable"],
         "fuzz":0
     },
     {

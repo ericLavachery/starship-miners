@@ -116,6 +116,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","mecano","guerrilla","inflammable"],
+        "medicCost":7,
         "fuzz":0
     },
     {

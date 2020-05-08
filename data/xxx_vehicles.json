@@ -174,50 +174,6 @@
         "fuzz":0
     },
     {
-        "id":61,
-        "name":"Pusher",
-        "pic":"warbul",
-        "cat":"vehicles",
-        "squads":3,
-        "squadSize":3,
-        "crew":2,
-        "hp":70,
-        "armor":9,
-        "size":18,
-        "stealth":0,
-        "ap":18,
-        "maxSalvo":1,
-        "weapon":{
-            "name":"Pistolet mitrailleur",
-            "cost":3,
-            "range":1,
-            "rof":4,
-            "accuracy":14,
-            "power":5,
-            "aoe":"unit",
-            "sound":"418433__craftyindividual__uzi-burst",
-            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite"]
-
-        },
-        "weapon2":{
-            "name":"Bélier",
-            "cost":6,
-            "range":0,
-            "rof":6,
-            "accuracy":20,
-            "power":30,
-            "aoe":"unit",
-            "sound":"none",
-            "ammo":["standard","brochette"]
-        },
-        "moveCost":3,
-        "maxFlood":2,
-        "maxScarp":3,
-        "maxVeg":3,
-        "skills":["fortif","cible","mecano","constructeur"],
-        "fuzz":0
-    },
-    {
         "id":63,
         "name":"Bigman",
         "pic":"krusher",
@@ -258,7 +214,8 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","mecano","guerrilla"],
+        "skills":["fortif","cible","mecano","repair","guerrilla"],
+        "medicCost":4,
         "fuzz":0
     },
     {
