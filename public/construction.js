@@ -206,9 +206,10 @@ function putBat(tileId) {
         }
         newBat.army = 0;
         newBat.fuzz = conselUnit.fuzz;
-        if (conselUnit.transTotal >= 1) {
-            newBat.trans = 0;
+        if (conselUnit.transUnits >= 1 || conselUnit.transRes >= 1) {
+            newBat.transUnits = 0;
             newBat.transIds = [];
+            newBat.transRes = 0;
         }
         newBat.tags = [];
         if (newBat.team === 'player') {
