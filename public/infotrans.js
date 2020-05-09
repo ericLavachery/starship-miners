@@ -11,13 +11,20 @@ function transInfos(bat,batUnitType) {
 };
 
 function unloadInfos(myBat,myBatUnitType) {
+    let balise = 'h4';
     if (myBat.transIds != undefined) {
         if (myBat.transIds.length >= 1) {
             let apCost = 0;
             bataillons.forEach(function(bat) {
                 if (bat.loc === "trans" && bat.locId == myBat.id) {
                     batType = getBatType(bat);
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Débarquer '+batType.name+'" class="boutonGris iconButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Débarquer</h4></span>');
+                    balise = 'h4';
+                    if (Object.keys(batDebarq).length >= 1) {
+                        if (batDebarq.id === bat.id) {
+                            balise = 'h1';
+                        }
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+'" class="boutonGris iconButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Débarquer</'+balise+'></span>');
                 }
             });
         }
@@ -76,6 +83,7 @@ function debarquement(debId) {
     let debBat = bataillons[debIndex];
     selectMode();
     batDebarq = debBat;
+    showBatInfos(selectedBat);
 };
 
 function clickDebarq(tileId) {
@@ -86,13 +94,12 @@ function clickDebarq(tileId) {
             ownBatHere = true;
         }
     });
-
     if (isAdjacent(selectedBat.tileId,tileId) && !ownBatHere && terrainAccess(batDebarq.id,tileId) && !alienOccupiedTiles.includes(tileId)) {
         tileOK = true;
     } else {
         batDebarq = {};
+        showBatInfos(selectedBat);
     }
-
     if (tileOK) {
         if (selectedBat.transIds.includes(batDebarq.id)) {
             tagIndex = selectedBat.tags.indexOf(batDebarq.id);
