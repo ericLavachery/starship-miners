@@ -686,7 +686,7 @@
             "power":22,
             "aoe":"brochette",
             "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
+            "ammo":["obus","obus-explosif","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
             "maxAmmo":9
         },
         "moveCost":3,
@@ -1554,7 +1554,7 @@
             "power":18,
             "aoe":"brochette",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
-            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"],
             "maxAmmo":16
         },
         "moveCost":12,
@@ -1602,7 +1602,7 @@
             "power":22,
             "aoe":"brochette",
             "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
+            "ammo":["obus","obus-explosif","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
             "maxAmmo":9
         },
         "moveCost":3,
@@ -1833,7 +1833,7 @@
             "power":22,
             "aoe":"brochette",
             "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
+            "ammo":["obus","obus-explosif","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
             "maxAmmo":16
         },
         "moveCost":3,
