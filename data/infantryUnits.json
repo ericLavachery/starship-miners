@@ -1396,21 +1396,9 @@
         "ap":20,
         "maxSalvo":1,
         "weapon":{
-            "name":"Arbalète",
-            "cost":5,
-            "range":1,
-            "isBow":true,
-            "rof":6,
-            "accuracy":16,
-            "power":7,
-            "aoe":"unit",
-            "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison","poraz","shinda","monomolecular","taser"]
-        },
-        "weapon2":{
             "name":"Bolas",
             "cost":3,
-            "range":0,
+            "range":1,
             "noDef":true,
             "rof":8,
             "accuracy":24,
@@ -1418,6 +1406,18 @@
             "aoe":"unit",
             "sound":"leisure_toy_boomerang_pass_whoosh_001b",
             "ammo":["web"]
+        },
+        "weapon":{
+            "name":"Lance",
+            "cost":2,
+            "range":0,
+            "noBis":true,
+            "rof":8,
+            "accuracy":16,
+            "power":12,
+            "aoe":"unit",
+            "sound":"axe",
+            "ammo":["perceur","ppoison","poraz","shinda","monomolecular","taser"]
         },
         "moveCost":2,
         "maxFlood":1,

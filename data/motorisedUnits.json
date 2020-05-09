@@ -1009,7 +1009,7 @@
         "size":20,
         "stealth":0,
         "speed": 2,
-        "ap":19,
+        "ap":15,
         "maxSalvo":1,
         "weapon":{
             "name":"Baliste",
@@ -1037,7 +1037,7 @@
             "sound":"industrial_vehicle_combine_harvester_approach_passb",
             "ammo":["standard","monomolecular"]
         },
-        "moveCost":3,
+        "moveCost":2,
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,
