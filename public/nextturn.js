@@ -54,7 +54,7 @@ function nextTurnEnd() {
     let tagIndex;
     deadBatsList = [];
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone") {
+        if (bat.loc === "zone" || bat.loc === "trans") {
             levelUp(bat);
             ap = getAP(bat);
             batType = getBatType(bat);

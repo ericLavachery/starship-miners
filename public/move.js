@@ -2,9 +2,20 @@ function clickMove(tileId) {
     let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
     showTileInfos(tileId);
     let ownBatHere = false;
+    let ownTransHere = false;
+    let batTransUnitsLeft;
+    let myBatWeight = selectedBatType.size*selectedBatType.squadSize*selectedBatType.squads;
+    let batType;
     bataillons.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
             ownBatHere = true;
+            batType = getBatType(bat);
+            if (batType.transMaxSize >= selectedBatType.size) {
+                batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
+                if (myBatWeight <= batTransUnitsLeft) {
+                    ownTransHere = true;
+                }
+            }
         }
     });
     let distance;
@@ -16,14 +27,18 @@ function clickMove(tileId) {
     }
     if (selectedBatType.skills.includes('fly')) {
         jump = true;
-        stackOK = false;
+        if (!ownTransHere) {
+            stackOK = false;
+        }
         distance = calcJumpDistance(selectedBat.tileId,tileId);
         if (Math.floor(distance) <= Math.ceil(selectedBat.apLeft/selectedBatType.moveCost)) {
             moveOK = true;
         }
     }
     if (hasShot()) {
-        stackOK = false;
+        if (!ownTransHere) {
+            stackOK = false;
+        }
     }
     if (moveOK) {
         if (!stackOK && ownBatHere) {

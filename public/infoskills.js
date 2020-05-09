@@ -27,6 +27,8 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-cubes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réapprovisionnement</h4></span>');
         }
     }
+    // DEBARQUER
+    unloadInfos(bat,batUnitType);
     // GUET
     if (batUnitType.weapon.rof >= 1 && !batUnitType.skills.includes('sentinelle') && batUnitType.ap >= 1) {
         apCost = 3;

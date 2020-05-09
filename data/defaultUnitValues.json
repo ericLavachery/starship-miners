@@ -46,6 +46,7 @@
     "medicCost":6,
     "maxSKill": 99,
     "transMaxSize":0,
-    "transTotal":0,
+    "transUnits":0,
+    "transRes":0,
     "fuzz": 0
 }

@@ -78,6 +78,7 @@ let luckCheck = [7,14,21,86,93,100];
 let toxChance = 30;
 let cheapWeapCost = 99;
 let mecanoHP = 60;
+let batDebarq = {};
 // ALIENS
 let isFFW = false;
 let pointDeMire = 1830; // tileId

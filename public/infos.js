@@ -58,6 +58,9 @@ function showBatInfos(bat) {
         let myDrugs = checkBatDrugs(bat);
         $('#unitInfos').append('<span class="paramName cy">Drogue</span><span class="paramIcon"></span><span class="paramValue cy">'+myDrugs.toString()+'</span><br>');
     }
+    if (batUnitType.skills.includes('regeneration')) {
+        $('#unitInfos').append('<span class="paramName cy">Régénération</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    }
     // BAD TAGS
     if (bat.damage >= 1 || bat.squadsLeft < batUnitType.squads) {
         $('#unitInfos').append('<span class="paramName or">Blessé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
@@ -93,6 +96,8 @@ function showBatInfos(bat) {
     if (!isStacked()) {
         weaponsInfos(bat,batUnitType);
         skillsInfos(bat,batUnitType);
+    } else {
+        transInfos(bat,batUnitType);
     }
     // ARMIES
     $('#unitInfos').append('<span class="blockTitle"><h3>Armée</h3></span><br>');
@@ -117,7 +122,6 @@ function showBatInfos(bat) {
     // "maxFlood": 3,
     // "maxScarp": 3,
     // "maxVeg": 3,
-    // "skills": []
 };
 
 function showEnemyBatInfos(bat) {

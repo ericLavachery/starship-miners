@@ -1,6 +1,8 @@
 function clickTile(tileId) {
     if (stopMe === false) {
-        if (Object.keys(conselUnit).length >= 1) {
+        if (Object.keys(batDebarq).length >= 1) {
+            clickDebarq(tileId);
+        } else if (Object.keys(conselUnit).length >= 1) {
             if (selectedBat.tileId >= 0 && (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs')) {
                 clickMine(tileId,selectedBat.tileId);
             } else {
