@@ -1406,7 +1406,7 @@
             "sound":"leisure_toy_boomerang_pass_whoosh_001b",
             "ammo":["web"]
         },
-        "weapon":{
+        "weapon2":{
             "name":"Lance",
             "cost":2,
             "range":0,
