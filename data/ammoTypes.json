@@ -470,6 +470,16 @@
         "aoe": ""
     },
     {
+        "name": "oxycombustion",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.35,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
         "name": "creuseur",
         "range": 0,
         "rof": 1,

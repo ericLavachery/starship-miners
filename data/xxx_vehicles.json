@@ -129,51 +129,6 @@
         "fuzz":0
     },
     {
-        "id":63,
-        "name":"Bigman",
-        "pic":"krusher",
-        "cat":"infantry",
-        "squads":6,
-        "squadSize":1,
-        "crew":1,
-        "hp":80,
-        "armor":1,
-        "size":14,
-        "stealth":3,
-        "ap":18,
-        "maxSalvo":1,
-        "weapon":{
-            "name":"Lance-flammes lourd",
-            "cost":6,
-            "range":1,
-            "rof":3,
-            "accuracy":20,
-            "power":12,
-            "aoe":"squad",
-            "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["feu","napalm"]
-        },
-        "weapon2":{
-            "name":"RPG",
-            "cost":6,
-            "range":1,
-            "rof":6,
-            "accuracy":12,
-            "power":25,
-            "aoe":"unit",
-            "sound":"249298__klangfabrik__rpg-launcher-three-shots",
-            "ammo":["perfo","tungsten"]
-
-        },
-        "moveCost":2,
-        "maxFlood":2,
-        "maxScarp":3,
-        "maxVeg":3,
-        "skills":["fortif","cible","mecano","repair","guerrilla"],
-        "medicCost":4,
-        "fuzz":0
-    },
-    {
         "id":21,
         "name":"Warcar",
         "pic":"",
