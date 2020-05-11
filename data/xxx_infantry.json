@@ -213,48 +213,5 @@
         "maxVeg":3,
         "skills":["fortif","cible","firstaid"],
         "fuzz":0
-    },
-    {
-        "id":999,
-        "name":"Rainbowgun",
-        "pic":"",
-        "cat":"infantry",
-        "squads":6,
-        "squadSize":2,
-        "crew":1,
-        "hp":5,
-        "armor":3,
-        "size":4,
-        "stealth":0,
-        "ap":14,
-        "maxSalvo":1,
-        "weapon":{
-            "name":"Calibre",
-            "cost":3,
-            "range":1,
-            "rof":48,
-            "accuracy":14,
-            "power":7,
-            "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard"]
-        },
-        "weapon2":{
-            "name":"Rainbowgun",
-            "cost":6,
-            "range":3,
-            "rof":12,
-            "accuracy":18,
-            "power":6,
-            "aoe":"Squad",
-            "sound":"249298__klangfabrik__rpg-launcher-three-shots",
-            "ammo":["poison"]
-        },
-        "moveCost":3,
-        "maxFlood":1,
-        "maxScarp":2,
-        "maxVeg":3,
-        "skills":["fortif","cible","elevation"],
-        "fuzz":0
     }
 ]
