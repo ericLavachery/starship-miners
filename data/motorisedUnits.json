@@ -585,7 +585,7 @@
             "noMelee":true,
             "noFly":true,
             "rof":3,
-            "accuracy":10,
+            "accuracy":13,
             "power":20,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",

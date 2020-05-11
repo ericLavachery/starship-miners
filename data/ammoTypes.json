@@ -856,7 +856,7 @@
         "power": 0,
         "armors": 0,
         "accuracy": 1,
-        "apdamage": 0.1,
+        "apdamage": 0.06,
         "aoe": ""
     },
     {
@@ -876,7 +876,7 @@
         "power": -7,
         "armors": 0,
         "accuracy": 1,
-        "apdamage": 0.2,
+        "apdamage": 0.12,
         "aoe": "squad"
     },
     {
@@ -896,7 +896,7 @@
         "power": -4,
         "armors": 0,
         "accuracy": 1.5,
-        "apdamage": 0.1,
+        "apdamage": 0.07,
         "aoe": "squad"
     },
     {
