@@ -30,6 +30,8 @@ function showBatInfos(bat) {
     // $('#unitInfos').append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.hp+'</span><br>');
     // $('#unitInfos').append('<span class="paramName">Armure</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.armor+'</span><br>');
     // $('#unitInfos').append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.size+'</span><br>');
+    let volume = calcVolume(batUnitType);
+    $('#unitInfos').append('<span class="paramName">Volume</span><span class="paramIcon"></span><span class="paramValue">'+volume+'</span><br>');
     let stealth = getStealth(bat);
     $('#unitInfos').append('<span class="paramName">Discrétion</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
     if (bat.tags.includes('camo')) {

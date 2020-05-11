@@ -31,11 +31,15 @@ function unloadInfos(myBat,myBatUnitType) {
     }
 };
 
+function calcVolume(batType) {
+    return Math.round(batType.size*batType.squadSize*batType.squads/1.7*Math.sqrt(batType.size));
+};
+
 function checkTransportId(myBat,myBatType) {
     let transId = -1;
     let batType;
     let batTransUnitsLeft;
-    let myBatWeight = myBatType.size*myBatType.squadSize*myBatType.squads;
+    let myBatWeight = calcVolume(myBatType);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" && bat.tileId == myBat.tileId) {
             batType = getBatType(bat);
@@ -56,7 +60,7 @@ function calcTransUnitsLeft(myBat,myBatType) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "trans" && bat.locId == myBat.id) {
             batType = getBatType(bat);
-            batWeight = batType.size*batType.squadSize*batType.squads;
+            batWeight = calcVolume(batType);
             myBatTransUnitsLeft = myBatTransUnitsLeft-batWeight;
         }
     });
