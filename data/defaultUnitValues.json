@@ -8,6 +8,7 @@
     "hp": 5,
     "armor": 0,
     "size": 3,
+    "volume":1,
     "speed": 0,
     "stealth": 7,
     "ap": 12,

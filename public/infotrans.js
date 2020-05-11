@@ -32,7 +32,7 @@ function unloadInfos(myBat,myBatUnitType) {
 };
 
 function calcVolume(batType) {
-    return Math.round(batType.size*batType.squadSize*batType.squads/1.7*Math.sqrt(batType.size));
+    return Math.round(batType.size*batType.squadSize*batType.squads/3*Math.sqrt(batType.size+6)*batType.volume);
 };
 
 function checkTransportId(myBat,myBatType) {
