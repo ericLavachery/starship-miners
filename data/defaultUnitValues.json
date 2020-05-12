@@ -2,6 +2,7 @@
     "name": "Xxxxx",
     "pic": "lee-enfield",
     "cat": "units",
+    "kind":"none",
     "squads": 6,
     "squadSize": 10,
     "crew": 1,

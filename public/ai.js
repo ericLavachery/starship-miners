@@ -104,11 +104,17 @@ function chooseTarget() {
 };
 
 function checkAlienFlyTarget(weapon,bat) {
-    // let batIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-    // let batType = unitTypes[batIndex];
     let batType = getBatType(bat);
-    if (weapon.noFly && batType.skills.includes('fly')) {
-        return false;
+    if (weapon.noFly) {
+        if (batType.skills.includes('fly') && bat.apLeft > -5 && !batType.skills.includes('jetpack')) {
+            return false;
+        } else {
+            if (batType.skills.includes('fly') && bat.apLeft > 0 && batType.skills.includes('jetpack')) {
+                return false;
+            } else {
+                return true;
+            }
+        }
     } else {
         return true;
     }
