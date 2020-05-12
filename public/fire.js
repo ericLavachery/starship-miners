@@ -291,6 +291,12 @@ function attack() {
         webDamage = Math.ceil(webDamage*18/Math.sqrt(targetBatType.hp)/(targetBatType.size+7));
         apDamage = apDamage+webDamage;
     }
+    // disco
+    if (selectedWeap.ammo.includes('disco')) {
+        let webDamage = totalHits;
+        webDamage = Math.ceil(webDamage*18/Math.sqrt(targetBatType.hp)/10);
+        apDamage = apDamage+webDamage;
+    }
     // inflammable
     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm')) {
         if (targetBatType.skills.includes('inflammable')) {

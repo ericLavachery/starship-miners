@@ -156,7 +156,6 @@ function getAP(bat) {
 function calcSpeed(bat,weap,opweap,distance,attacking) {
     let batType = getBatType(bat);
     let crange = weap.range;
-    // console.log('crange'+crange);
     if (weap.range === 0) {
         if (attacking) {
             crange = 1;
@@ -168,7 +167,6 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
             }
         }
     }
-    // console.log('cost'+weap.cost);
     let speed = Math.round(crange*weap.cost);
     let stealth = getStealth(bat);
     if (distance <= 1) {
@@ -178,14 +176,14 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
             speed = speed-stealth;
         }
     }
-    // console.log('stealth'+stealth);
     if (bat.tags.includes('guet') || batType.skills.includes('sentinelle')) {
         speed = speed-watchInitBonus-stealth;
         console.log('bonus guet');
     }
-    // console.log('speed'+speed);
+    if (weap.ammo.includes('disco') && attacking) {
+        speed = speed-20;
+    }
     let vetDice = vetBonus.initiative*bat.vet;
-    // console.log('vetDice'+vetDice);
     return speed+rand.rand(0,initiativeDice)-rand.rand(0,vetDice);
 };
 
