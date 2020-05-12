@@ -556,8 +556,8 @@ function weaponAdj(weapon,bat,wn) {
 };
 
 function calcShotDice(bat,luckyshot) {
+    let luckDice = rand.rand(1,100);
     if (bat.team == 'player') {
-        let luckDice = rand.rand(1,100);
         if (bat.tags.includes('lucky')) {
             luckDice = rand.rand(1,115);
         }
@@ -582,6 +582,20 @@ function calcShotDice(bat,luckyshot) {
             return 150;
         }
     } else {
-        return 100;
+        if (luckDice <= luckCheck[0]) {
+            $('#report').append('<span class="report cy">Lucky shot!</span><br>');
+            return 70;
+        } else if (luckDice <= luckCheck[1]) {
+            return 85;
+        } else if (luckDice <= luckCheck[2]) {
+            return 100;
+        } else if (luckDice <= luckCheck[3]) {
+            return 100;
+        } else if (luckDice <= luckCheck[4]) {
+            return 120;
+        } else {
+            $('#report').append('<span class="report cy">Fumble!</span><br>');
+            return 150;
+        }
     }
 };
