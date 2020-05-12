@@ -1577,7 +1577,7 @@
         "kind":"drogmuloj",
         "squads":4,
         "squadSize":3,
-        "crew":10,
+        "crew":15,
         "hp":80,
         "armor":6,
         "size":28,
@@ -1587,22 +1587,9 @@
         "ap":14,
         "maxSalvo":2,
         "weapon":{
-            "name":"Calibre",
-            "cost":4,
-            "range":1,
-            "rof":24,
-            "accuracy":20,
-            "power":7,
-            "aoe":"unit",
-            "sound":"warfare_gunshots_x2_rifle_exterior",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
-        },
-        "weapon2":{
             "name":"Disco death",
             "cost":1,
             "range":0,
-            "noDef":true,
-            "noBis":true,
             "rof":36,
             "accuracy":12,
             "power":0,
@@ -1610,11 +1597,22 @@
             "sound":"sono",
             "ammo":["disco"]
         },
+        "weapon2":{
+            "name":"Calibre",
+            "cost":4,
+            "range":1,
+            "rof":36,
+            "accuracy":20,
+            "power":7,
+            "aoe":"unit",
+            "sound":"warfare_gunshots_x2_rifle_exterior",
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+        },
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["undead"],
+        "skills":["undead","cible"],
         "fuzz":1
     }
 ]

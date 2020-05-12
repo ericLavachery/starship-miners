@@ -601,6 +601,12 @@ function defense() {
         webDamage = Math.ceil(webDamage*18/Math.sqrt(selectedBatType.hp)/(selectedBatType.size+7));
         apDamage = apDamage+webDamage;
     }
+    // disco
+    if (targetWeap.ammo.includes('disco')) {
+        let webDamage = totalHits;
+        webDamage = Math.ceil(webDamage*18/Math.sqrt(selectedBatType.hp)/10);
+        apDamage = apDamage+webDamage;
+    }
     // munitions limitées
     console.log('maxAmmo'+targetWeap.maxAmmo);
     ammoFired(targetBat.id);
