@@ -2248,7 +2248,7 @@
             "noDef":true,
             "noBis":true,
             "noFly":true,
-            "rof":6,
+            "rof":4,
             "accuracy":22,
             "power":4,
             "aoe":"bat",

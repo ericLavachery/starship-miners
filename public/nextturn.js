@@ -7,7 +7,6 @@ function nextTurn() {
     selectMode();
     batUnstack();
     batUnselect();
-
     // récup des aliens
     deadAliensList = [];
     let unitIndex;
@@ -48,16 +47,29 @@ function nextTurn() {
 function nextTurnEnd() {
     $('#report').empty('');
     // récup du player
-    let unitIndex;
     let batType;
     let ap;
     let tagIndex;
     deadBatsList = [];
+    let boostedTeams = [];
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" || bat.loc === "trans") {
+            batType = getBatType(bat);
+            if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {
+                boostedTeams.push(batType.kind);
+            }
+        }
+    });
+    console.log('Boosted Teams');
+    console.log(boostedTeams);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             levelUp(bat);
             ap = getAP(bat);
             batType = getBatType(bat);
+            if (boostedTeams.includes(batType.kind)) {
+                ap = ap+1;
+            }
             bat.salvoLeft = batType.maxSalvo;
             if (bat.apLeft < 0-batType.ap-batType.ap) {
                 bat.apLeft = 0-batType.ap-batType.ap;
