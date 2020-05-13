@@ -1,1 +1,1 @@
-# starship-miners
+# Scrapship Miners
