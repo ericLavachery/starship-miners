@@ -20,6 +20,7 @@ function saveAllBats() {
     commandes();
 };
 function mapReset() {
+    bataillons = [];
     saveBataillons();
     aliens = [];
     saveAliens();
