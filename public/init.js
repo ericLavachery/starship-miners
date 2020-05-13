@@ -5,6 +5,7 @@ socket.on('playerInfos-Load', function(pi) {
         numHTiles = playerInfos.numHTiles;
         numVTiles = playerInfos.numVTiles;
     }
+    playerSkills();
 });
 // Terrains
 socket.on('mapFilters-Load', function(mf) {
@@ -38,7 +39,7 @@ socket.on('bataillons-Load', function(bt) {
     // console.log(bataillons);
     createBatList();
 });
-// UnitTypes
+// UnitTypes Default Values
 socket.on('unitDV-Load', function(udv) {
     unitDV = udv;
     // console.log(unitDV);
@@ -48,6 +49,7 @@ socket.on('ammoTypes-Load', function(at) {
     ammoTypes = at;
     // console.log(ammoTypes);
 });
+// UnitTypes
 socket.on('unitTypes-Load', function(ut) {
     bareUnitTypes = ut;
     let newObj = {};
@@ -57,6 +59,9 @@ socket.on('unitTypes-Load', function(ut) {
     });
     bareUnitTypes = [];
     // console.log(unitTypes);
+    if (playerInfos.skills.includes('cam1') || playerInfos.skills.includes('cam2') || playerInfos.skills.includes('cam3') || playerInfos.medLevel >= 3) {
+        playerSkillsUTChanges();
+    }
     freeIds('player',unitTypes);
 });
 socket.on('alienUnits-Load', function(au) {

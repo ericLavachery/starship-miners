@@ -360,7 +360,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // DROGUES
-    if (!batUnitType.skills.includes('mutant') && !batUnitType.skills.includes('cyborg') && batUnitType.cat === 'infantry') {
+    if (!batUnitType.skills.includes('mutant') && !batUnitType.skills.includes('cyber') && batUnitType.cat === 'infantry') {
         let allDrugs = checkDrugs(bat);
         // KIRIN
         if (allDrugs.includes('kirin') && !bat.tags.includes('kirin')) {

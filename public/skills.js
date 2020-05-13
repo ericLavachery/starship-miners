@@ -26,9 +26,16 @@ function camouflage(free) {
         selectedBat.tags.push('camo');
     }
     let stealth = getStealth(selectedBat);
+    if (stealth < 3) {
+        stealth = 3;
+    }
     let terrain = getTerrain(selectedBat);
     if (terrain.veg >= 1) {
         stealth = stealth+terrain.veg+terrain.veg+2;
+    }
+    // size
+    if (selectedBatType.size > 3) {
+        stealth = Math.ceil(stealth*Math.sqrt(selectedBatType.size)/1.73);
     }
     console.log('stealth '+stealth);
     let camOK = false;
@@ -56,7 +63,7 @@ function camouflage(free) {
         }
     }
     if (!free) {
-        selectedBat.apLeft = selectedBat.apLeft-Math.floor(selectedBatType.ap/2);
+        selectedBat.apLeft = selectedBat.apLeft-Math.floor(selectedBatType.ap/3);
     }
     console.log(camOK);
     console.log(selectedBat.fuzz);

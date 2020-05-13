@@ -199,7 +199,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","elevation","ranger"],
+        "skills":["fortif","cible","elevation","ranger","maycamo"],
         "fuzz":0
     },
     {
@@ -341,7 +341,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["berserk","undead"],
+        "skills":["berserk","undead","maycamo"],
         "fuzz":0
     },
     {
@@ -387,7 +387,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["berserk","undead"],
+        "skills":["berserk","undead","maycamo"],
         "fuzz":0
     },
     {
@@ -434,7 +434,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["berserk","undead"],
+        "skills":["berserk","undead","maycamo"],
         "fuzz":0
     },
     {
@@ -575,7 +575,7 @@
         "armor":2,
         "size":4,
         "volume":1.3,
-        "stealth":4,
+        "stealth":5,
         "ap":12,
         "maxSalvo":1,
         "weapon":{
@@ -604,7 +604,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid"],
+        "skills":["fortif","cible","firstaid","maycamo"],
         "fuzz":0
     },
     {
@@ -620,7 +620,7 @@
         "armor":2,
         "size":4,
         "volume":2,
-        "stealth":3,
+        "stealth":6,
         "ap":12,
         "maxSalvo":1,
         "weapon":{
@@ -653,7 +653,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","selevation"],
+        "skills":["fortif","cible","selevation","maycamo"],
         "fuzz":0
     },
     {
@@ -700,7 +700,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","selevation"],
+        "skills":["fortif","cible","selevation","maycamo"],
         "fuzz":0
     },
     {
@@ -761,7 +761,7 @@
         "hp":5,
         "armor":1,
         "size":3,
-        "stealth":8,
+        "stealth":10,
         "ap":13,
         "maxSalvo":1,
         "weapon":{
@@ -792,7 +792,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","luckyshot","survivor","guerrilla","firstaid","sentinelle","ranger"],
+        "skills":["fortif","cible","luckyshot","survivor","guerrilla","firstaid","sentinelle","ranger","maycamo"],
         "fuzz":0
     },
     {
@@ -839,7 +839,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","ravitaillement"],
+        "skills":["fortif","ravitaillement","maycamo"],
         "maxSKill":3,
         "fuzz":0
     },
@@ -922,7 +922,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","undead","badmedic","dealer","bliss","sila","blaze","kirin","skupiac"],
+        "skills":["fortif","cible","undead","badmedic","dealer","bliss","sila","blaze","kirin","skupiac","maycamo"],
         "maxSKill":24,
         "medicCost":6,
         "fuzz":0
@@ -1206,7 +1206,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid","guerrilla","ranger","survivor"],
+        "skills":["fortif","cible","firstaid","guerrilla","ranger","survivor","maycamo"],
         "fuzz":0
     },
     {
@@ -1410,7 +1410,7 @@
         "armor":3,
         "size":5,
         "volume":1.2,
-        "stealth":0,
+        "stealth":5,
         "speed":4,
         "ap":20,
         "maxSalvo":1,
@@ -1441,7 +1441,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","cible","guerrilla","firstaid"],
+        "skills":["fortif","cible","guerrilla","firstaid","maycamo"],
         "fuzz":0
     },
     {
@@ -1910,7 +1910,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","fly","regeneration","survivor","longshot"],
+        "skills":["fortif","cible","fly","regeneration","survivor","longshot","mutant"],
         "fuzz":0
     },
     {
@@ -1925,7 +1925,7 @@
         "hp":6,
         "armor":5,
         "size":3,
-        "stealth":0,
+        "stealth":4,
         "ap":12,
         "maxSalvo":1,
         "weapon":{
@@ -1944,7 +1944,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","sentinelle"],
+        "skills":["fortif","cible","sentinelle","maycamo","robot"],
         "fuzz":0
     },
     {
@@ -1990,7 +1990,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible"],
+        "skills":["fortif","cible","robot"],
         "fuzz":0
     },
     {
@@ -2005,7 +2005,7 @@
         "hp":4,
         "armor":5,
         "size":2,
-        "stealth":0,
+        "stealth":8,
         "speed":2,
         "ap":12,
         "maxSalvo":1,
@@ -2037,7 +2037,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["undead","ranger"],
+        "skills":["undead","ranger","camo","robot"],
         "fuzz":0
     },
     {
@@ -2082,7 +2082,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","mecano","repair"],
+        "skills":["fortif","mecano","repair","cyber"],
         "medicCost":4,
         "fuzz":0
     },
@@ -2118,7 +2118,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","basemecano","badmedic","guerrilla","selevation"],
+        "skills":["fortif","cible","basemecano","badmedic","guerrilla","selevation","cyber"],
         "medicCost":3,
         "fuzz":0
     },
@@ -2165,7 +2165,7 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","cible","inflammable","selevation","sentinelle","firstaid"],
+        "skills":["fortif","cible","inflammable","selevation","sentinelle","firstaid","cyber"],
         "fuzz":0
     },
     {
@@ -2211,7 +2211,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","firstaid"],
+        "skills":["fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","firstaid","cyber"],
         "fuzz":0
     },
     {
@@ -2272,11 +2272,11 @@
         "squads":6,
         "squadSize":3,
         "crew":2,
-        "hp":5,
+        "hp":8,
         "armor":4,
         "size":10,
         "volume":1.7,
-        "stealth":3,
+        "stealth":5,
         "ap":12,
         "maxSalvo":2,
         "weapon":{
@@ -2307,7 +2307,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selevation","defense"],
+        "skills":["fortif","cible","selevation","defense","maycamo"],
         "fuzz":0
     }
 ]

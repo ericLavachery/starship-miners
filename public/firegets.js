@@ -176,9 +176,12 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
             speed = speed-stealth;
         }
     }
-    if (bat.tags.includes('guet') || batType.skills.includes('sentinelle')) {
+    if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle')) && !attacking) {
         speed = speed-watchInitBonus-stealth;
         console.log('bonus guet');
+    }
+    if (batType.skills.includes('defense') && !attacking) {
+        speed = speed-10;
     }
     if (weap.ammo.includes('disco') && attacking) {
         speed = speed-20;

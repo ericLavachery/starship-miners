@@ -52,6 +52,7 @@ function nextTurnEnd() {
     let tagIndex;
     deadBatsList = [];
     let boostedTeams = [];
+    let thisAPBonus;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
@@ -66,8 +67,20 @@ function nextTurnEnd() {
         if (bat.loc === "zone" || bat.loc === "trans") {
             levelUp(bat);
             ap = getAP(bat);
+            thisAPBonus = 0;
             batType = getBatType(bat);
             if (boostedTeams.includes(batType.kind)) {
+                ap = ap+1;
+                thisAPBonus = 1;
+            }
+            if (playerInfos.medLevel >= 1 && batType.name === 'Toubibs') {
+                ap = ap+1;
+            }
+            if (playerInfos.medLevel >= 2 && batType.name === 'Hosto') {
+                ap = ap+2;
+                thisAPBonus = 2;
+            }
+            if (playerInfos.skills.includes('trans2') && batType.cat === 'vehicles' && !batType.skills.includes('robot') && thisAPBonus == 0) {
                 ap = ap+1;
             }
             bat.salvoLeft = batType.maxSalvo;

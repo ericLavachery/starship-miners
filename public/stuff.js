@@ -19,6 +19,58 @@ function freeIds(side,db) {
     console.log(idz);
 };
 
+function playerSkills() {
+    // Con. ALiens
+    let caLevel = 0;
+    if (playerInfos.skills.includes('ca1')) {
+        caLevel = 1;
+    }
+    if (playerInfos.skills.includes('ca2')) {
+        caLevel = 2;
+    }
+    if (playerInfos.skills.includes('ca3')) {
+        caLevel = 3;
+    }
+    if (playerInfos.skills.includes('ca4')) {
+        caLevel = 4;
+    }
+    if (playerInfos.skills.includes('ca5')) {
+        caLevel = 5;
+    }
+    playerInfos.caLevel = caLevel;
+    // Médecine
+    let medLevel = 0;
+    if (playerInfos.skills.includes('med1')) {
+        medLevel = 1;
+    }
+    if (playerInfos.skills.includes('med2')) {
+        medLevel = 2;
+    }
+    if (playerInfos.skills.includes('med3')) {
+        medLevel = 3;
+    }
+    playerInfos.medLevel = medLevel;
+};
+
+function playerSkillsUTChanges() {
+    unitTypes.forEach(function(unit) {
+        if (playerInfos.skills.includes('cam1') && unit.skills.includes('maycamo') && unit.cat === 'infantry') {
+            unit.skills.push('camo');
+        }
+        if (playerInfos.skills.includes('cam2') && unit.skills.includes('maycamo') && unit.cat === 'vehicles') {
+            unit.skills.push('camo');
+        }
+        if (playerInfos.skills.includes('cam3') && unit.skills.includes('maycamo') && unit.cat === 'buildings') {
+            unit.skills.push('camo');
+        }
+        if (unit.skills.includes('medic') || unit.skills.includes('badmedic')) {
+            if (playerInfos.medLevel >= 3 && unit.medicCost >= 3) {
+                unit.medicCost = unit.medicCost-1;
+            }
+        }
+    });
+};
+
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 };

@@ -280,7 +280,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selevation","selfmecano"],
+        "skills":["fortif","cible","selevation","selfmecano","maycamo"],
         "fuzz":0
     },
     {
@@ -371,7 +371,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","mecano"],
+        "skills":["fortif","cible","mecano","maycamo"],
         "medicCost":5,
         "fuzz":0
     },
@@ -568,7 +568,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["cible","mecano","transport"],
+        "skills":["cible","mecano","transport","maycamo"],
         "medicCost":6,
         "transMaxSize":9,
         "transUnits":350,
@@ -831,7 +831,7 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","hover","selfmecano"],
+        "skills":["cible","hover","selfmecano","maycamo"],
         "fuzz":0
     },
     {
@@ -867,7 +867,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","laser"],
+        "skills":["fly","laser","sentinelle","robot"],
         "fuzz":0
     },
     {
@@ -1039,7 +1039,7 @@
         "hp":55,
         "armor":7,
         "size":20,
-        "stealth":0,
+        "stealth":5,
         "speed": 2,
         "ap":15,
         "maxSalvo":1,
@@ -1073,7 +1073,7 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","selfmecano","ranger"],
+        "skills":["cible","selfmecano","ranger","maycamo"],
         "fuzz":0
     },
     {
@@ -1120,7 +1120,7 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","deepselfmecano"],
+        "skills":["fortif","cible","deepselfmecano","maycamo"],
         "fuzz":0
     },
     {
@@ -1168,7 +1168,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","fly","longshot","inflammable"],
+        "skills":["cible","fly","longshot","inflammable","maycamo"],
         "fuzz":0
     },
     {
@@ -1513,7 +1513,7 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","cible","transport"],
+        "skills":["fortif","cible","transport","maycamo"],
         "transMaxSize":9,
         "transUnits":1000,
         "transRes":300,
@@ -1563,7 +1563,7 @@
         "maxFlood":1,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["fortif","recycle","transport"],
+        "skills":["fortif","recycle","transport","maycamo"],
         "transMaxSize":9,
         "transUnits":400,
         "transRes":800,
