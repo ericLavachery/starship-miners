@@ -289,6 +289,9 @@ function attack() {
     if (selectedWeap.ammo.includes('web')) {
         let webDamage = totalHits;
         webDamage = Math.ceil(webDamage*18/Math.sqrt(targetBatType.hp)/(targetBatType.size+7));
+        if (targetBatType.cat != 'aliens') {
+            webDamage = Math.ceil(webDamage/(playerInfos.caLevel+4)*6);
+        }
         apDamage = apDamage+webDamage;
     }
     // disco
@@ -324,6 +327,9 @@ function attack() {
             gripbonus = 30;
         }
         let gripChance = (selectedBat.squadsLeft*5)+gripbonus-(targetBat.vet*3);
+        if (targetBatType.cat != 'aliens') {
+            gripChance = Math.ceil(gripChance/(playerInfos.caLevel+5)*7);
+        }
         if (rand.rand(1,100 <= gripChance)) {
             if (selectedBatType.skills.includes('tail')) {
                 totalDamage = totalDamage+targetBatType.hp;
@@ -369,7 +375,7 @@ function attack() {
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('ppoison')) {
-            if ((targetBatType.cat == 'infantry' && !targetBatType.skills.includes('mutant')) || targetBatType.cat == 'aliens') {
+            if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.caLevel < 3)) || targetBatType.cat == 'aliens') {
                 targetBat.tags.push('poison');
                 console.log('Poison!');
                 $('#report').append('<span class="report cy">Poison<br></span>');
@@ -395,9 +401,9 @@ function attack() {
         }
     }
     // maladie
-    if (totalDamage >= 1) {
+    if ((totalDamage >= 1 && playerInfos.caLevel < 3) || totalDamage >= 5) {
         let infected = false;
-        if (selectedBatType.skills.includes('maladie') && rand.rand(1,2) === 1) {
+        if (selectedBatType.skills.includes('maladie') && rand.rand(1,playerInfos.caLevel+1) === 1) {
             infected = true;
         }
         if (selectedBatType.skills.includes('chancre')) {
@@ -599,6 +605,9 @@ function defense() {
     if (targetWeap.ammo.includes('web')) {
         let webDamage = totalHits;
         webDamage = Math.ceil(webDamage*18/Math.sqrt(selectedBatType.hp)/(selectedBatType.size+7));
+        if (selectedBatType.cat != 'aliens') {
+            webDamage = Math.ceil(webDamage/(playerInfos.caLevel+4)*6);
+        }
         apDamage = apDamage+webDamage;
     }
     // disco
@@ -619,7 +628,7 @@ function defense() {
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('ppoison')) {
-            if ((selectedBatType.cat == 'infantry' && !selectedBatType.skills.includes('mutant')) || selectedBatType.cat == 'aliens') {
+            if ((selectedBatType.cat == 'infantry' && (!selectedBatType.skills.includes('mutant') || playerInfos.caLevel < 3)) || selectedBatType.cat == 'aliens') {
                 selectedBat.tags.push('poison');
                 console.log('Poison!');
                 $('#report').append('<span class="report cy">Poison<br></span>');
@@ -645,9 +654,9 @@ function defense() {
         }
     }
     // maladie
-    if (totalDamage >= 1 && rand.rand(1,2) === 1) {
+    if ((totalDamage >= 1 && playerInfos.caLevel < 3) || totalDamage >= 5) {
         let infected = false;
-        if (targetBatType.skills.includes('maladie') && rand.rand(1,2) === 1) {
+        if (targetBatType.skills.includes('maladie') && rand.rand(1,playerInfos.caLevel+1) === 1) {
             infected = true;
         }
         if (targetBatType.skills.includes('chancre')) {

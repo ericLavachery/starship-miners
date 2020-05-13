@@ -275,9 +275,13 @@ function tagsEffect(bat,batType) {
         if (bat.squadsLeft <= 0) {
             batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le poison.');
         }
+        let stopPoison = 10;
+        if (batType.cat != 'aliens') {
+            stopPoison = 14-(playerInfos.caLevel*2);
+        }
         let i = 1;
         while (i <= allTags.poison) {
-            if (rand.rand(1,10) === 1) {
+            if (rand.rand(1,stopPoison) === 1) {
                 tagDelete(bat,'poison');
                 console.log('tag poison out');
             }

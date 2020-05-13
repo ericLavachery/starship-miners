@@ -40,7 +40,7 @@ function camouflage(free) {
     console.log('stealth '+stealth);
     let camOK = false;
     let camDice = rand.rand(1,100);
-    let camChance = Math.round(Math.sqrt(stealth)*19);
+    let camChance = Math.round(Math.sqrt(stealth)*(playerInfos.caLevel+16));
     if (camChance > stealthMaxChance) {
         camChance = stealthMaxChance;
     }
@@ -159,7 +159,7 @@ function medic(cat,cost,around,deep) {
                                     }
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">poison neutralisé<br></span>');
                                     showBataillon(bat);
-                                } else if (bat.tags.includes('venin') && deep) {
+                                } else if (bat.tags.includes('venin') && (deep || playerInfos.caLevel >= 4)) {
                                     totalAPCost = totalAPCost+apCost;
                                     xpGain = xpGain+0.25;
                                     tagDelete(bat,'venin');
@@ -263,7 +263,7 @@ function medic(cat,cost,around,deep) {
             }
             $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">poison neutralisé<br></span>');
             showBataillon(selectedBat);
-        } else if (selectedBat.tags.includes('venin') && deep) {
+        } else if (selectedBat.tags.includes('venin') && (deep || playerInfos.caLevel >= 4)) {
             totalAPCost = totalAPCost+apCost;
             tagDelete(bat,'venin');
             $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">venin neutralisé<br></span>');
@@ -316,7 +316,9 @@ function numMedicTargets(myBat,cat,around,deep) {
     let myBatType = getBatType(myBat);
     let batType;
     if (!around) {
-        if (deep) {
+        if ((deep || playerInfos.caLevel >= 4) && myBat.tags.includes('venin')) {
+            numTargets = numTargets+1;
+        } else if (deep) {
             if (myBat.damage > 0 || myBat.squadsLeft < myBatType.squads || myBat.tags.includes('poison') || myBat.tags.includes('venin') || myBat.tags.includes('maladie') || myBat.tags.includes('parasite') || myBat.tags.includes('trou')) {
                 numTargets = numTargets+1;
             }
@@ -343,6 +345,8 @@ function numMedicTargets(myBat,cat,around,deep) {
                             if (bat.damage > 0 || bat.squadsLeft < batType.squads || bat.tags.includes('poison') || bat.tags.includes('venin') || bat.tags.includes('maladie') || bat.tags.includes('parasite') || bat.tags.includes('trou')) {
                                 numTargets = numTargets+1;
                             }
+                        } else if (playerInfos.caLevel >= 4 && bat.tags.includes('venin')) {
+                            numTargets = numTargets+1;
                         } else {
                             if (bat.damage > 0 || bat.tags.includes('poison')) {
                                 numTargets = numTargets+1;
