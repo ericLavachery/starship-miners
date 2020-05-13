@@ -106,7 +106,9 @@ function chooseTarget() {
 function checkAlienFlyTarget(weapon,bat) {
     let batType = getBatType(bat);
     if (weapon.noFly) {
-        if (batType.skills.includes('fly') && bat.apLeft > -5 && !batType.skills.includes('jetpack')) {
+        if (batType.skills.includes('fly') && bat.tags.includes('camo')) {
+            return true;
+        } else if (batType.skills.includes('fly') && bat.apLeft > -5 && !batType.skills.includes('jetpack')) {
             return false;
         } else {
             if (batType.skills.includes('fly') && bat.apLeft > 0 && batType.skills.includes('jetpack')) {
