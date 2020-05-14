@@ -918,5 +918,35 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "brochette"
+    },
+    {
+        "name": "fireball",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "squad"
+    },
+    {
+        "name": "fireglue",
+        "range": 0,
+        "rof": 1,
+        "power": 5,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "brochette"
+    },
+    {
+        "name": "fireblast",
+        "range": 0,
+        "rof": 1,
+        "power": 3,
+        "armors": 1.5,
+        "accuracy": 1.5,
+        "apdamage": 0,
+        "aoe": "squad"
     }
 ]
