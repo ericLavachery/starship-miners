@@ -56,13 +56,44 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // CAMOUFLAGE
+    let camoufOK = true;
     if (batUnitType.skills.includes('camo')) {
-        apCost = Math.floor(batUnitType.ap/3);
-        if (bat.apLeft >= 1 && bat.fuzz >= -1) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Mode furtif" class="boutonGris iconButtons" onclick="camouflage(false)"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</h4></span>');
+        if (batUnitType.cat == 'buildings') {
+            apCost = batUnitType.ap*3;
+            apReq = batUnitType.ap;
+            if (inMelee) {
+                camoufOK = false;
+            }
+        } else if (batUnitType.cat == 'vehicles') {
+            if (batUnitType.skills.includes('maycamo')) {
+                apCost = Math.floor(batUnitType.ap*Math.sqrt(batUnitType.size)/5);
+                apReq = Math.floor(batUnitType.ap/2);
+                if (inMelee) {
+                    camoufOK = false;
+                }
+            } else {
+                apCost = Math.floor(batUnitType.ap/2);
+                apReq = 3;
+                if (inMelee) {
+                    camoufOK = false;
+                }
+            }
+        } else {
+            if (batUnitType.skills.includes('maycamo')) {
+                apCost = Math.floor(batUnitType.ap/2);
+                apReq = 3;
+            } else {
+                apCost = Math.floor(batUnitType.ap/3);
+                apReq = 1;
+            }
+        }
+        if (bat.apLeft >= apReq && bat.fuzz >= -1 && camoufOK) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Mode furtif" class="boutonGris iconButtons" onclick="camouflage('+apCost+')"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</h4></span>');
         } else {
             if (bat.fuzz <= -2) {
                 skillMessage = "Déjà en mode furtif";
+            } else if (!camoufOK) {
+                skillMessage = "Impossible en mêlée";
             } else {
                 skillMessage = "Pas assez de PA";
             }

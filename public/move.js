@@ -191,7 +191,7 @@ function moveSelectedBat(tileId,free,jump) {
         if (selectedBatType.skills.includes('fly') || selectedBatType.cat === 'vehicles') {
             camoOut();
         } else {
-            camouflage(true);
+            camouflage(0);
         }
     }
     tileSelect(selectedBat);

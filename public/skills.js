@@ -20,7 +20,7 @@ function fortification() {
     showBatInfos(selectedBat);
 };
 
-function camouflage(free) {
+function camouflage(apCost) {
     console.log('MODE FURTIF');
     if (!selectedBat.tags.includes('camo')) {
         selectedBat.tags.push('camo');
@@ -45,25 +45,26 @@ function camouflage(free) {
         camChance = stealthMaxChance;
     }
     console.log('camChance '+camChance);
+    let naturalFuzz = selectedBatType.fuzz;
     if (camDice <= camChance) {
         camOK = true;
         selectedBat.fuzz = -2;
     } else {
-        if (free) {
+        if (apCost === 0) {
             camOK = false;
-            selectedBat.fuzz = -1;
+            selectedBat.fuzz = naturalFuzz;
         } else {
             if (selectedBat.fuzz > -2) {
                 camOK = false;
-                selectedBat.fuzz = -1;
+                selectedBat.fuzz = naturalFuzz;
             } else {
                 camOK = true;
                 selectedBat.fuzz = -2;
             }
         }
     }
-    if (!free) {
-        selectedBat.apLeft = selectedBat.apLeft-Math.floor(selectedBatType.ap/3);
+    if (apCost >= 1) {
+        selectedBat.apLeft = selectedBat.apLeft-apCost;
     }
     console.log(camOK);
     console.log(selectedBat.fuzz);
