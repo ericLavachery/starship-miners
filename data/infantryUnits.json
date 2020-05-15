@@ -1067,7 +1067,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","fly","jetpack","firstaid","longshot","inflammable"],
+        "skills":["fortif","cible","fly","jetpack","longshot","inflammable"],
         "fuzz":2
     },
     {
@@ -1880,7 +1880,7 @@
         "size":3,
         "stealth":0,
         "speed":6,
-        "ap":21,
+        "ap":18,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet plasma",
@@ -2212,7 +2212,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","firstaid","cyber"],
+        "skills":["fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber"],
         "fuzz":2
     },
     {

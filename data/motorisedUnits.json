@@ -925,7 +925,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Mitrailleuses",
-            "cost":7,
+            "cost":4,
             "range":2,
             "rof":45,
             "accuracy":16,
