@@ -6,9 +6,13 @@ function bfconst() {
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer Constriche</span><br>');
     $('#conUnitList').append('<span class="constName or">LES GENTILS</span><br>');
+    let lastKind = '';
     let allUnitsList = unitTypes.slice();
     sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'cat'),'kind');
     sortedUnitsList.forEach(function(unit) {
+        if (lastKind != unit.kind) {
+            $('#conUnitList').append('<span class="constName or">'+unit.kind+'</span><br>');
+        }
         if (conselUnit.id === unit.id && conselUnit.cat != 'aliens') {
             $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
         } else {
@@ -16,6 +20,7 @@ function bfconst() {
         }
         color = catColor(unit.cat,unit.kind);
         $('#conUnitList').append('<span class="constName klik '+color+'" onclick="conSelect('+unit.id+',`player`)">'+unit.name+'</span><br>');
+        lastKind = unit.kind;
     });
     $('#conUnitList').append('<span class="constName or">LES MECHANTS</span><br>');
     let allALiensList = alienUnits.slice();
