@@ -146,7 +146,7 @@ function checkPDM() {
     // cherche un cible préférée
     if (selectedBatType.skills.includes('anycap')) {
         shufBats.forEach(function(bat) {
-            if (bat.loc === "zone" && bat.fuzz >= 0 ) {
+            if (bat.loc === "zone" && bat.fuzz >= 0) {
                 batType = getBatType(bat);
                 if (!batType.skills.includes('fly')) {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
@@ -172,7 +172,7 @@ function checkPDM() {
         });
     } else {
         shufBats.forEach(function(bat) {
-            if (bat.loc === "zone" && bat.fuzz >= 2) {
+            if (bat.loc === "zone" && bat.fuzz >= 3) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance < lePlusProche) {
                     pointDeMire = bat.tileId;
@@ -183,7 +183,7 @@ function checkPDM() {
         if (pointDeMire < 0) {
             // se rabat sur une autre cible
             shufBats.forEach(function(bat) {
-                if (bat.loc === "zone" && bat.fuzz == 1) {
+                if (bat.loc === "zone" && bat.fuzz >= 1) {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
                     if (distance < lePlusProche) {
                         pointDeMire = bat.tileId;

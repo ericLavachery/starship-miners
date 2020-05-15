@@ -40,8 +40,8 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":2,
-        "skills":["fortif","cible","firtsaid"],
-        "fuzz":0
+        "skills":["fortif","cible","firtsaid","maycamo"],
+        "fuzz":1
     },
     {
         "id":56,
@@ -85,7 +85,7 @@
         "maxScarp":3,
         "maxVeg":2,
         "skills":["fortif","cible","firtsaid","leader"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":999,
@@ -131,7 +131,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fly"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":999,
@@ -176,6 +176,6 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fly"],
-        "fuzz":0
+        "fuzz":2
     }
 ]

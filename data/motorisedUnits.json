@@ -45,7 +45,7 @@
         "maxScarp":2,
         "maxVeg":3,
         "skills":["cible"],
-        "fuzz":0
+        "fuzz":1
     },
     {
         "id":11,
@@ -92,7 +92,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":22,
@@ -138,7 +138,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","guerrilla","inflammable","selfmecano"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":30,
@@ -184,7 +184,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","inflammable","selfmecano"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":31,
@@ -234,7 +234,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["cible","selfmecano"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":32,
@@ -249,7 +249,7 @@
         "armor":18,
         "size":45,
         "stealth":0,
-        "speed": 0,
+        "speed":0,
         "ap":11,
         "maxSalvo":2,
         "weapon":{
@@ -281,7 +281,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selevation","selfmecano","maycamo"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":10,
@@ -326,7 +326,7 @@
         "maxScarp":2,
         "maxVeg":3,
         "skills":["cible","guerrilla","ranger"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":36,
@@ -373,7 +373,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","mecano","maycamo"],
         "medicCost":5,
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":2,
@@ -420,7 +420,7 @@
         "maxScarp":1,
         "maxVeg":2,
         "skills":["selfmecano","cible"],
-        "fuzz":-1
+        "fuzz":5
     },
     {
         "id":5,
@@ -473,7 +473,7 @@
         "maxScarp":1,
         "maxVeg":2,
         "skills":["selfmecano","cible"],
-        "fuzz":-1
+        "fuzz":5
     },
     {
         "id":34,
@@ -520,7 +520,7 @@
         "maxScarp":1,
         "maxVeg":2,
         "skills":["selfmecano","cible","longshot","selevation"],
-        "fuzz":-1
+        "fuzz":5
     },
     {
         "id":38,
@@ -573,7 +573,7 @@
         "transMaxSize":9,
         "transUnits":350,
         "transRes":350,
-        "fuzz":0
+        "fuzz":1
     },
     {
         "id":39,
@@ -624,7 +624,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":64,
@@ -664,7 +664,7 @@
         "transMaxSize":9,
         "transUnits":200,
         "transRes":80,
-        "fuzz":0
+        "fuzz":1
     },
     {
         "id":44,
@@ -700,7 +700,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","guerrilla","camo","landmine","selfmecano"],
         "maxSKill": 3,
-        "fuzz":-1
+        "fuzz":0
     },
     {
         "id":54,
@@ -786,7 +786,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano","leader"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":58,
@@ -832,7 +832,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["cible","hover","selfmecano","maycamo"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":59,
@@ -905,7 +905,7 @@
         "skills":["fortif","cible","medic","ravitaillement","camo","selfmecano","defense"],
         "medicCost":2,
         "maxSKill":4,
-        "fuzz":-1
+        "fuzz":0
     },
     {
         "id":62,
@@ -940,7 +940,7 @@
         "maxScarp":1,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":65,
@@ -977,7 +977,7 @@
         "skills":["medic","selfmecano","dealer","kirin"],
         "medicCost":2,
         "maxSKill":24,
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":33,
@@ -1025,7 +1025,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["cible","selfmecano","ranger"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":67,
@@ -1074,7 +1074,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["cible","selfmecano","ranger","maycamo"],
-        "fuzz":0
+        "fuzz":1
     },
     {
         "id":69,
@@ -1121,7 +1121,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","deepselfmecano","maycamo"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":74,
@@ -1169,7 +1169,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","fly","longshot","inflammable","maycamo"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":75,
@@ -1218,7 +1218,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","mecano","repair","constructeur"],
         "medicCost":7,
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":76,
@@ -1267,7 +1267,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","mecano","repair","constructeur"],
         "medicCost":3,
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":79,
@@ -1314,7 +1314,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":80,
@@ -1351,7 +1351,7 @@
         "transMaxSize":9,
         "transUnits":800,
         "transRes":400,
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":81,
@@ -1388,7 +1388,7 @@
         "transMaxSize":9,
         "transUnits":400,
         "transRes":800,
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":90,
@@ -1427,7 +1427,7 @@
         "transMaxSize":9,
         "transUnits":900,
         "transRes":600,
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":92,
@@ -1465,7 +1465,7 @@
         "transMaxSize":9,
         "transUnits":230,
         "transRes":150,
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":93,
@@ -1517,7 +1517,7 @@
         "transMaxSize":9,
         "transUnits":1000,
         "transRes":300,
-        "fuzz":0
+        "fuzz":1
     },
     {
         "id":94,
@@ -1567,7 +1567,7 @@
         "transMaxSize":9,
         "transUnits":400,
         "transRes":800,
-        "fuzz":0
+        "fuzz":2
     },
     {
         "id":95,
@@ -1613,7 +1613,7 @@
         "maxScarp":1,
         "maxVeg":2,
         "skills":["undead","cible"],
-        "fuzz":1
+        "fuzz":4
     },
     {
         "id":99,
@@ -1662,6 +1662,6 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","inflammable"],
-        "fuzz":0
+        "fuzz":2
     }
 ]
