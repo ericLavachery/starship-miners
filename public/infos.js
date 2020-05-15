@@ -33,7 +33,7 @@ function showBatInfos(bat) {
     let volume = calcVolume(batUnitType);
     $('#unitInfos').append('<span class="paramName">Volume</span><span class="paramIcon"></span><span class="paramValue">'+volume+'</span><br>');
     let stealth = getStealth(bat);
-    $('#unitInfos').append('<span class="paramName">Discrétion</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
+    $('#unitInfos').append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
     if (bat.tags.includes('camo')) {
         if (bat.fuzz <= -2) {
             $('#unitInfos').append('<span class="paramName cy">Mode furtif</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
@@ -41,6 +41,8 @@ function showBatInfos(bat) {
             $('#unitInfos').append('<span class="paramName or">Mode furtif</span><span class="paramIcon"></span><span class="paramValue or">Loupé</span><br>');
         }
     }
+    let batFuzz = calcBatFuzz(bat);
+    $('#unitInfos').append('<span class="paramName">Discrétion</span><span class="paramIcon"></span><span class="paramValue">'+batFuzz+'</span><br>');
     if (bat.tags.includes('embuscade')) {
         $('#unitInfos').append('<span class="paramName cy">Embuscade</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
