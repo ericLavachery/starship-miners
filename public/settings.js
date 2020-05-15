@@ -80,6 +80,8 @@ let cheapWeapCost = 99;
 let mecanoHP = 60;
 let batDebarq = {};
 // ALIENS
+let mapAdjDiff = 1;
+let fuzzDiv = 35; // fuzzTotal/fuzzDiv = bonus mapDiff;
 let isFFW = false;
 let pointDeMire = 1830; // tileId
 let possibleMoves = []; // list of tile ids

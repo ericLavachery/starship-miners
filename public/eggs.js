@@ -3,7 +3,7 @@ function checkEggsDrop() {
     eggDropCount = 0;
     let drop = false;
     let dropTurn = Math.floor(((playerInfos.mapDrop*cumDrop)+playerInfos.mapTurn)/(cumDrop+1));
-    let dropChance = Math.round((dropTurn*Math.sqrt(playerInfos.mapDiff))+playerInfos.mapDiff-1);
+    let dropChance = Math.round((dropTurn*Math.sqrt(mapAdjDiff))+mapAdjDiff-1);
     console.log('dropChance='+dropChance);
     if (rand.rand(1,100) <= dropChance) {
         drop = true;
@@ -20,11 +20,11 @@ function eggsDrop() {
     console.log('EGGDROP');
     let numEggs;
     let eggDice = rand.rand(1,100);
-    let threeEggsChance = Math.round((playerInfos.mapDiff/1.5)-2);
+    let threeEggsChance = Math.round((mapAdjDiff/1.5)-2);
     if (threeEggsChance < 0) {
         threeEggsChance = 0;
     }
-    let twoEggsChance = playerInfos.mapDiff;
+    let twoEggsChance = mapAdjDiff;
     if (eggDice <= noEggs) {
         numEggs = 0;
     } else if (eggDice <= noEggs+twoEggsChance) {
@@ -126,8 +126,11 @@ function spawns() {
     let eggModTurn;
     let transList = morphList();
     let aliensNums = aliensCount();
-    let vomiToRuche = 27-(playerInfos.mapDiff*2);
-    let maxPonte = playerInfos.mapDiff+3;
+    let vomiToRuche = 27-(mapAdjDiff*2);
+    if (vomiToRuche < 7) {
+        vomiToRuche = 7;
+    }
+    let maxPonte = mapAdjDiff+3;
     let flyDice;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -135,7 +138,7 @@ function spawns() {
             if (bat.type === 'Oeuf') {
                 batType = getBatType(bat);
                 eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
-                eggModTurn = eggTurn+playerInfos.mapDiff-5;
+                eggModTurn = eggTurn+mapAdjDiff-5;
                 vomiCheck = ((batType.squads-bat.squadsLeft)*vomiChance)+(eggModTurn*2);
                 if (rand.rand(1,100) <= vomiCheck) {
                     vomiSpawn(bat);
@@ -263,19 +266,19 @@ function alienMorph(bat,newBatName,reset) {
 function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
-    let eggModTurn = eggTurn+playerInfos.mapDiff-5;
+    let eggModTurn = eggTurn+mapAdjDiff-5;
     console.log('eggTurn='+eggTurn);
-    if (eggTurn >= 15+playerInfos.mapDiff && fromEgg) {
+    if (eggTurn >= 15+mapAdjDiff && fromEgg) {
         // TRANFORMATION EN RUCHE !
         alienMorph(bat,'Ruche',false);
     } else {
-        let spawnChance = Math.round(eggTurn*20*bat.squadsLeft/6*Math.sqrt(playerInfos.mapDiff)/2*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
+        let spawnChance = Math.round(eggTurn*20*bat.squadsLeft/6*Math.sqrt(mapAdjDiff)/2*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
         if (!fromEgg) {
             spawnChance = 100;
         }
         console.log('spawnChance='+spawnChance);
         if (rand.rand(1,100) <= spawnChance) {
-            let maxSpawn = eggTurn-11+bat.squadsLeft+Math.floor(Math.sqrt(playerInfos.mapDiff));
+            let maxSpawn = eggTurn-11+bat.squadsLeft+Math.floor(Math.sqrt(mapAdjDiff));
             if (maxSpawn < 1 || !fromEgg) {
                 maxSpawn = 1;
             }
@@ -289,8 +292,8 @@ function eggSpawn(bat,fromEgg) {
             }
             console.log('spawnNum='+spawnNum);
             let classes = [];
-            let minTurnB = 33-(playerInfos.mapDiff*3);
-            let minTurnA = 66-(playerInfos.mapDiff*6);
+            let minTurnB = 33-(mapAdjDiff*3);
+            let minTurnA = 66-(mapAdjDiff*6);
             classes.push('C');
             if (eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB) {
                 classes.push('B');

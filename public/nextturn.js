@@ -47,6 +47,7 @@ function nextTurn() {
 function nextTurnEnd() {
     $('#report').empty('');
     // récup du player
+    let fuzzTotal = 0;
     let batType;
     let ap;
     let tagIndex;
@@ -55,6 +56,10 @@ function nextTurnEnd() {
     let thisAPBonus;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
+            fuzzTotal = fuzzTotal+bat.fuzz+2;
+            if (bat.fuzz >= 2) {
+                fuzzTotal = fuzzTotal+bat.fuzz-1;
+            }
             batType = getBatType(bat);
             if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {
                 boostedTeams.push(batType.kind);
@@ -100,8 +105,11 @@ function nextTurnEnd() {
     });
     killBatList();
     playerInfos.mapTurn = playerInfos.mapTurn+1;
+    playerInfos.fuzzTotal = fuzzTotal;
+    mapAdjDiff = playerInfos.mapDiff+Math.floor(fuzzTotal/fuzzDiv);
     $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
-    $('#tour').append('Difficulté '+playerInfos.mapDiff);
+    $('#tour').append('Fuzz '+playerInfos.fuzzTotal+'<br>');
+    $('#tour').append('Difficulté '+mapAdjDiff+'/'+playerInfos.mapDiff);
     savePlayerInfos();
     saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
     saveAliens(); // !!!!!!!!!!!!!!!!!!!!!!
