@@ -4,7 +4,7 @@
         "name":"Rave",
         "pic":"mechinf",
         "cat":"vehicles",
-        "kind":"none",
+        "kind":"zero",
         "squads":3,
         "squadSize":3,
         "crew":3,

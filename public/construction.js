@@ -7,7 +7,7 @@ function bfconst() {
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer Constriche</span><br>');
     $('#conUnitList').append('<span class="constName or">LES GENTILS</span><br>');
     let allUnitsList = unitTypes.slice();
-    sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'name'),'cat');
+    sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'cat'),'kind');
     sortedUnitsList.forEach(function(unit) {
         if (conselUnit.id === unit.id && conselUnit.cat != 'aliens') {
             $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
