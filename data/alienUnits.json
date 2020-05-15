@@ -637,7 +637,7 @@
             "cost": 4,
             "range": 3,
             "rof": 3,
-            "accuracy": 14,
+            "accuracy": 18,
             "power": 20,
             "aoe": "brochette",
             "sound": "S_Laser01bBas",
