@@ -503,7 +503,7 @@ function defense() {
     let aoeShots = 1;
     if (targetWeap.aoe == "bat") {
         aoeShots = selectedBatType.squadSize*selectedBat.squadsLeft;
-    } else if (targetWeap.aoe != "squad") {
+    } else if (targetWeap.aoe != "unit") {
         aoeShots = selectedBatType.squadSize;
         if (aoeShots < 2) {
             aoeShots = 2;
