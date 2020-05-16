@@ -697,11 +697,12 @@
         "ap":15,
         "maxSalvo":1,
         "weapon":{
-            "name":"Fusil mitrailleur",
+            "name":"Mitrailleuses",
             "cost":3,
             "range":1,
             "rof":27,
             "accuracy":18,
+            "dca":1.5,
             "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
