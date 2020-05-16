@@ -88,50 +88,5 @@
         "maxVeg":3,
         "skills":["fly"],
         "fuzz":2
-    },
-    {
-        "id":999,
-        "name":"Speeder",
-        "pic":"avionz",
-        "cat":"vehicles",
-        "kind":"tiradores",
-        "squads":6,
-        "squadSize":6,
-        "crew":2,
-        "hp":36,
-        "armor":4,
-        "size":9,
-        "stealth":0,
-        "speed":2,
-        "ap":18,
-        "maxSalvo":2,
-        "weapon":{
-            "name":"MitrailleusesJumelées",
-            "cost":6,
-            "range":2,
-            "rof":9,
-            "accuracy":12,
-            "power":8,
-            "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","hollow","perfo","tungsten","uranium",]
-        },
-        "weapon2":{
-            "name":"MissileSunburst",
-            "cost":6,
-            "range":3,
-            "rof":6,
-            "accuracy":18,
-            "power":30,
-            "aoe":"unit",
-            "sound":"435415__v-ktor__explosion10",
-            "ammo":["standard","explosive","feu","unique","laser"]
-        },
-        "moveCost":1,
-        "maxFlood":3,
-        "maxScarp":3,
-        "maxVeg":3,
-        "skills":["fly"],
-        "fuzz":2
     }
 ]
