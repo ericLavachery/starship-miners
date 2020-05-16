@@ -2146,7 +2146,7 @@
             "rof":9,
             "accuracy":20,
             "power":16,
-            "aoe":"brochette",
+            "aoe":"unit",
             "sound":"warfare_gunshot_rifle_exterior_004b",
             "ammo":["antichar","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite"]
         },

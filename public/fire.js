@@ -192,8 +192,11 @@ function attack() {
     let aoeShots = 1;
     if (selectedWeap.aoe == "bat") {
         aoeShots = targetBatType.squadSize*targetBat.squadsLeft;
-    } else if (selectedWeap.aoe == "squad") {
+    } else if (selectedWeap.aoe != "unit") {
         aoeShots = targetBatType.squadSize;
+        if (aoeShots < 2) {
+            aoeShots = 2;
+        }
     }
     // Feu dans l'eau
     if (selectedWeap.ammo == 'feu') {
@@ -236,9 +239,9 @@ function attack() {
     let shotResult = {damage:0,hits:0};
     let totalHits = 0;
     // brochette
-    let skewer = false;
+    let brochette = false;
     if (selectedWeap.aoe == 'brochette') {
-        skewer = true;
+        brochette = true;
     }
     // lucky shot
     let shotDice = 100;
@@ -255,9 +258,9 @@ function attack() {
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
-            shotResult = blast(aoeShots,selectedWeap,targetBat,targetBatType,shotDice);
+            shotResult = blast(brochette,aoeShots,selectedWeap,targetBat,targetBatType,shotDice);
         } else {
-            shotResult = shot(skewer,selectedWeap,targetBat,targetBatType,shotDice);
+            shotResult = shot(selectedWeap,targetBat,targetBatType,shotDice);
         }
         totalDamage = totalDamage+shotResult.damage;
         totalHits = totalHits+shotResult.hits;
@@ -500,8 +503,11 @@ function defense() {
     let aoeShots = 1;
     if (targetWeap.aoe == "bat") {
         aoeShots = selectedBatType.squadSize*selectedBat.squadsLeft;
-    } else if (targetWeap.aoe == "squad") {
+    } else if (targetWeap.aoe != "squad") {
         aoeShots = selectedBatType.squadSize;
+        if (aoeShots < 2) {
+            aoeShots = 2;
+        }
     }
     // Feu dans l'eau
     if (targetWeap.ammo == 'feu') {
@@ -553,18 +559,18 @@ function defense() {
     let shotResult = {damage:0,hits:0};
     let totalHits = 0;
     // brochette
-    let skewer = false;
+    let brochette = false;
     if (targetWeap.aeo == 'brochette') {
-        skewer = true;
+        brochette = true;
     }
     let shotDice = calcShotDice(targetBat,false);
     toHit = 999;
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
-            shotResult = blast(aoeShots,targetWeap,selectedBat,selectedBatType,shotDice);
+            shotResult = blast(brochette,aoeShots,targetWeap,selectedBat,selectedBatType,shotDice);
         } else {
-            shotResult = shot(skewer,targetWeap,selectedBat,selectedBatType,shotDice);
+            shotResult = shot(targetWeap,selectedBat,selectedBatType,shotDice);
         }
         totalDamage = totalDamage+shotResult.damage;
         totalHits = totalHits+shotResult.hits;
@@ -731,7 +737,7 @@ function combatReport() {
     report = '';
 };
 
-function shot(skewer,weapon,bat,batType,shotDice) {
+function shot(weapon,bat,batType,shotDice) {
     // returns damage
     let result = {damage:0,hits:0};
     let cover = getCover(bat,true);
@@ -748,11 +754,8 @@ function shot(skewer,weapon,bat,batType,shotDice) {
             result.damage = 0;
         }
         result.hits = 1;
-        if (result.damage > batType.hp && !skewer) {
+        if (result.damage > batType.hp) {
             result.damage = batType.hp;
-        } else if (result.damage > batType.hp*3 && skewer) {
-            result.damage = batType.hp*3;
-            result.hits = 2;
         }
         if (result.damage < 0) {
             result.damage = 0;
@@ -762,7 +765,7 @@ function shot(skewer,weapon,bat,batType,shotDice) {
     return result;
 };
 
-function blast(aoeShots,weapon,bat,batType,shotDice) {
+function blast(brochette,aoeShots,weapon,bat,batType,shotDice) {
     // returns damage
     // console.log('aoeShots = '+aoeShots);
     let result = {damage:0,hits:0};
@@ -796,7 +799,11 @@ function blast(aoeShots,weapon,bat,batType,shotDice) {
         }
         if (ii > 100) {break;}
         oldPower = power;
-        power = Math.round(power*0.8);
+        if (!brochette) {
+            power = Math.round(power*0.8);
+        } else {
+            power = Math.round(power*0.5);
+        }
         if (power >= oldPower) {
             power = power-1;
         }

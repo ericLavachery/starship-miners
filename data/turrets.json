@@ -97,7 +97,7 @@
         "weapon2":{
             "name":"Fusil antichar",
             "cost":5,
-            "range":3,
+            "range":4,
             "rof":1,
             "accuracy":28,
             "power":15,
@@ -221,8 +221,8 @@
             "noAtt":true,
             "rof":2,
             "accuracy":9,
-            "power":20,
-            "aoe":"squad",
+            "power":16,
+            "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
             "ammo":["dynamite"]
         },
@@ -234,8 +234,8 @@
             "noDef":true,
             "rof":8,
             "accuracy":9,
-            "power":20,
-            "aoe":"squad",
+            "power":16,
+            "aoe":"brochette",
             "sound":"bottlerocket_Impact_Boom_Distorted_10b",
             "ammo":["suicide"]
         },
