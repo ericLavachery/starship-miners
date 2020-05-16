@@ -583,7 +583,7 @@
         "maxScarp":1,
         "maxVeg":2,
         "skills":["cible","mecano","transport","maycamo"],
-        "medicCost":6,
+        "medicCost":7,
         "transMaxSize":9,
         "transUnits":350,
         "transRes":350,

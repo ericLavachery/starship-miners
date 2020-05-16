@@ -59,8 +59,10 @@ function nextTurnEnd() {
     let thisAPBonus;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
-            batFuzz = calcBatFuzz(bat);
-            fuzzTotal = fuzzTotal+batFuzz;
+            if (bat.loc === "zone") {
+                batFuzz = calcBatFuzz(bat);
+                fuzzTotal = fuzzTotal+batFuzz;
+            }
             batType = getBatType(bat);
             if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {
                 boostedTeams.push(batType.kind);

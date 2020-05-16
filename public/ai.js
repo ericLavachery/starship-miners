@@ -1067,7 +1067,7 @@ function fearFactor(myBat,blob) {
                         if (blob) {
                             fearChance = 100;
                         } else {
-                            if (batType.skills.includes('berserk') || batType.skills.includes('mutant')) {
+                            if (batType.skills.includes('berserk') || batType.skills.includes('mutant') || batType.skills.includes('robot')) {
                                 fearChance = 0;
                             } else {
                                 fearChance = Math.round(75-(batType.size*2.5)-(bat.vet*12)+(batType.stealth*2));
