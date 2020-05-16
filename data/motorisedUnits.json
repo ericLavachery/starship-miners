@@ -27,10 +27,9 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
-            "name":"Canon",
+            "name":"Mortier",
             "cost":4,
             "range":2,
-            "noMelee":true,
             "noFly":true,
             "rof":6,
             "accuracy":13,
@@ -38,13 +37,13 @@
             "aoe":"squad",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
             "ammo":["obus","obus-scrap","obus-explosif","obus-heat","obus-incendiaire","obus-napalm"],
-            "maxAmmo": 9
+            "maxAmmo":9
         },
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["cible"],
+        "skills":["forftif","cible","selevation"],
         "fuzz":1
     },
     {
@@ -1695,7 +1694,6 @@
             "name":"Canon",
             "cost":3,
             "range":2,
-            "noMelee":true,
             "noFly":true,
             "rof":6,
             "accuracy":14,
