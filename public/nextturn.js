@@ -1,4 +1,6 @@
 function nextTurn() {
+    console.log('NOUVEAU TOUR');
+    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
     // stopMe = true;
     blockMe(true);
     $('#warnings').empty();

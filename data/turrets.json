@@ -20,7 +20,10 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","transorbital","ravitaillement","stock"],
+        "skills":["deepselfrepair","transorbital","ravitaillement","stock","transport"],
+        "transMaxSize":33,
+        "transUnits":3000,
+        "transRes":3000,
         "fuzz":2
     },
     {
