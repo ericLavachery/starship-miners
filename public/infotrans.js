@@ -74,6 +74,10 @@ function embarquement(transId) {
     selectedBat.apLeft = selectedBat.apLeft-3;
     selectedBat.loc = 'trans';
     selectedBat.locId = transId;
+    let batListIndex = batList.findIndex((obj => obj.id == selectedBat.id));
+    if (batListIndex > -1) {
+        batList.splice(batListIndex,1);
+    }
     selectedBatArrayUpdate();
     showBataillon(transBat);
     batSelect(transBat);

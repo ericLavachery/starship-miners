@@ -497,6 +497,11 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.isBow = weapon.isBow;
         thisWeapon.accuracy = thisWeapon.accuracy+Math.round(bat.vet*2);
     }
+    if (weapon.dca === undefined) {
+        thisWeapon.dca = 1;
+    } else {
+        thisWeapon.dca = weapon.dca;
+    }
     let myAmmo = bat.ammo;
     if (wn == 'w2') {
         myAmmo = bat.ammo2;

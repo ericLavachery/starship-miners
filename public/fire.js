@@ -742,12 +742,17 @@ function shot(weapon,bat,batType,shotDice) {
     let result = {damage:0,hits:0};
     let cover = getCover(bat,true);
     let stealth = getStealth(bat);
-    let batSpeed = batType.speed;
     // skupiac drug
+    let batSpeed = batType.speed;
     if (bat.tags.includes('skupiac')) {
         batSpeed = batSpeed+3;
     }
-    if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
+    // fly
+    let weapAccu = weapon.accuracy;
+    if (batType.skills.includes('fly')) {
+        weapAccu = Math.round(weapAccu*weapon.dca);
+    }
+    if (isHit(weapAccu,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
         if (weapon.power >= 1) {
             result.damage = calcDamage(weapon,weapon.power,batType.armor,bat);
         } else {
@@ -774,15 +779,20 @@ function blast(brochette,aoeShots,weapon,bat,batType,shotDice) {
     let oldPower = weapon.power;
     let cover = getCover(bat,true);
     let stealth = getStealth(bat);
-    let batSpeed = batType.speed;
     // skupiac drug
+    let batSpeed = batType.speed;
     if (bat.tags.includes('skupiac')) {
         batSpeed = batSpeed+3;
+    }
+    // fly
+    let weapAccu = weapon.accuracy;
+    if (batType.skills.includes('fly')) {
+        weapAccu = Math.round(weapAccu*weapon.dca);
     }
     let ii = 1;
     while (ii <= aoeShots) {
         // console.log('power'+power);
-        if (isHit(weapon.accuracy,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
+        if (isHit(weapAccu,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
             if (weapon.power >= 1) {
                 newDamage = calcDamage(weapon,power,batType.armor,bat);
             } else {
