@@ -81,7 +81,7 @@ let mecanoHP = 90;
 let batDebarq = {};
 // ALIENS
 let mapAdjDiff = 1;
-let fuzzDiv = 75; // fuzzTotal/fuzzDiv = bonus mapDiff;
+let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;
 let isFFW = false;
 let pointDeMire = 1830; // tileId
 let possibleMoves = []; // list of tile ids

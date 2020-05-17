@@ -109,7 +109,7 @@ function nextTurnEnd() {
     killBatList();
     playerInfos.mapTurn = playerInfos.mapTurn+1;
     playerInfos.fuzzTotal = fuzzTotal;
-    let bonusDiff = Math.floor((fuzzTotal+rand.rand(0,50)-25)/fuzzDiv);
+    let bonusDiff = Math.floor((fuzzTotal+rand.rand(0,fuzzDiv)-(fuzzDiv/2))/fuzzDiv);
     mapAdjDiff = playerInfos.mapDiff+bonusDiff;
     if (mapAdjDiff < 1) {
         mapAdjDiff = 1;
