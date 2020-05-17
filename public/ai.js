@@ -172,7 +172,7 @@ function checkPDM() {
         });
     } else {
         shufBats.forEach(function(bat) {
-            if (bat.loc === "zone" && bat.fuzz >= 3) {
+            if (bat.loc === "zone" && bat.fuzz >= 4) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance < lePlusProche) {
                     pointDeMire = bat.tileId;

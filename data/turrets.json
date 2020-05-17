@@ -24,7 +24,7 @@
         "transMaxSize":33,
         "transUnits":5000,
         "transRes":5000,
-        "fuzz":2
+        "fuzz":5
     },
     {
         "id":103,
@@ -51,7 +51,7 @@
         "transMaxSize":50,
         "transUnits":10000,
         "transRes":10000,
-        "fuzz":2
+        "fuzz":5
     },
     {
         "id":104,
@@ -78,7 +78,7 @@
         "transMaxSize":100,
         "transUnits":25000,
         "transRes":20000,
-        "fuzz":2
+        "fuzz":8
     },
     {
         "id":105,
@@ -105,7 +105,7 @@
         "transMaxSize":50,
         "transUnits":9000,
         "transRes":18000,
-        "fuzz":2
+        "fuzz":5
     },
     {
         "id":106,
@@ -132,7 +132,61 @@
         "transMaxSize":100,
         "transUnits":20000,
         "transRes":15000,
-        "fuzz":2
+        "fuzz":9
+    },
+    {
+        "id":108,
+        "name":"Thundership",
+        "pic":"thundership",
+        "cat":"vehicles",
+        "kind":"zero",
+        "squads":6,
+        "squadSize":1,
+        "crew":10,
+        "hp":300,
+        "armor":7,
+        "size":100,
+        "stealth":0,
+        "ap":12,
+        "maxSalvo":0,
+        "weapon":{},
+        "weapon2":{},
+        "moveCost":99,
+        "maxFlood":-1,
+        "maxScarp":-1,
+        "maxVeg":-1,
+        "skills":["deepselfrepair","transorbital","ravitaillement","stock","transport"],
+        "transMaxSize":20,
+        "transUnits":1200,
+        "transRes":600,
+        "fuzz":5
+    },
+    {
+        "id":109,
+        "name":"Liberator",
+        "pic":"liberator",
+        "cat":"vehicles",
+        "kind":"zero",
+        "squads":6,
+        "squadSize":1,
+        "crew":10,
+        "hp":300,
+        "armor":7,
+        "size":100,
+        "stealth":0,
+        "ap":12,
+        "maxSalvo":0,
+        "weapon":{},
+        "weapon2":{},
+        "moveCost":99,
+        "maxFlood":-1,
+        "maxScarp":-1,
+        "maxVeg":-1,
+        "skills":["deepselfrepair","transorbital","ravitaillement","stock","transport"],
+        "transMaxSize":33,
+        "transUnits":4000,
+        "transRes":3000,
+        "fuzz":7
     },
     {
         "id":8,
@@ -177,7 +231,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["deepselfrepair","cible","longshot","defense"],
-        "fuzz":2
+        "fuzz":4
     },
     {
         "id":12,
@@ -223,7 +277,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["deepselfrepair","cible","longshot","defense"],
-        "fuzz":2
+        "fuzz":5
     },
     {
         "id":37,

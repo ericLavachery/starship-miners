@@ -564,7 +564,7 @@
         "range": 0,
         "rof": 1,
         "power": 0,
-        "armors": 0.67,
+        "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0.12,
         "aoe": ""
@@ -574,7 +574,7 @@
         "range": 0,
         "rof": 1,
         "power": 4,
-        "armors": 0.75,
+        "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
@@ -635,7 +635,7 @@
         "rof": 1,
         "power": 0,
         "armors": 0.75,
-        "accuracy": 1,
+        "accuracy": 0.75,
         "apdamage": 0,
         "aoe": "brochette"
     },

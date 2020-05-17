@@ -22,7 +22,7 @@
         "maxVeg":-1,
         "skills":["mecano","deepselfrepair"],
         "medicCost":3,
-        "fuzz":3
+        "fuzz":5
     },
     {
         "id":9,
@@ -46,7 +46,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["deepselfrepair","maycamo","extraction"],
-        "fuzz":3
+        "fuzz":4
     },
     {
         "id":29,
@@ -69,7 +69,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","ravitaillement","stock"],
-        "fuzz":2
+        "skills":["deepselfrepair","ravitaillement","stock","maycamo"],
+        "fuzz":1
     }
 ]

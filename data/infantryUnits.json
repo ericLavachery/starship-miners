@@ -442,7 +442,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["berserk","undead","maycamo"],
-        "fuzz":0
+        "fuzz":-1
     },
     {
         "id":17,
@@ -488,7 +488,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","firstaid"],
-        "fuzz":1
+        "fuzz":1.5
     },
     {
         "id":18,
@@ -757,7 +757,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","inflammable"],
-        "fuzz":1
+        "fuzz":0
     },
     {
         "id":23,
@@ -888,7 +888,7 @@
         "maxVeg":3,
         "skills":["fortif","extraction","firstaid","dynamite","constructeur"],
         "maxSKill":2,
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":35,
@@ -1083,7 +1083,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","fly","jetpack","longshot","inflammable"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":47,
@@ -1416,7 +1416,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","slowreg","mutant"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":55,
@@ -1558,7 +1558,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","selfmedic","leader","fly","jetpack","sentinelle","longshot","guerrilla","survivor","inflammable"],
-        "fuzz":1
+        "fuzz":3
     },
     {
         "id":63,
@@ -1890,7 +1890,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","mutant","selevation","ranger","berserk"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":78,
@@ -1937,7 +1937,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","fly","longshot","mutant"],
-        "fuzz":2
+        "fuzz":3.5
     },
     {
         "id":82,
@@ -2196,7 +2196,7 @@
         "maxScarp":2,
         "maxVeg":3,
         "skills":["fortif","cible","inflammable","selevation","sentinelle","firstaid","cyber"],
-        "fuzz":2
+        "fuzz":2.5
     },
     {
         "id":88,
@@ -2243,7 +2243,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber"],
-        "fuzz":2
+        "fuzz":3.5
     },
     {
         "id":89,
@@ -2339,7 +2339,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selevation","defense","maycamo"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":96,

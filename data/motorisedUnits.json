@@ -95,7 +95,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":22,
@@ -242,7 +242,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["cible","selfmecano"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":32,
@@ -291,7 +291,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selevation","selfmecano","maycamo"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":10,
@@ -339,7 +339,7 @@
         "maxScarp":2,
         "maxVeg":3,
         "skills":["cible","guerrilla","ranger"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":36,
@@ -389,7 +389,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","mecano","maycamo"],
         "medicCost":5,
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":2,
@@ -438,7 +438,7 @@
         "maxScarp":1,
         "maxVeg":2,
         "skills":["selfmecano","cible"],
-        "fuzz":7
+        "fuzz":8
     },
     {
         "id":5,
@@ -540,7 +540,7 @@
         "maxScarp":1,
         "maxVeg":2,
         "skills":["selfmecano","cible","longshot","selevation"],
-        "fuzz":6
+        "fuzz":7
     },
     {
         "id":38,
@@ -594,7 +594,7 @@
         "transMaxSize":9,
         "transUnits":350,
         "transRes":350,
-        "fuzz":1
+        "fuzz":2
     },
     {
         "id":39,
@@ -645,7 +645,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":64,
@@ -810,7 +810,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano","leader"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":58,
@@ -858,7 +858,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["cible","hover","selfmecano","maycamo"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":59,
@@ -895,7 +895,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fly","laser","sentinelle","robot"],
-        "fuzz":0
+        "fuzz":-1
     },
     {
         "id":61,
@@ -970,7 +970,7 @@
         "maxScarp":1,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":65,
@@ -1007,7 +1007,7 @@
         "skills":["medic","selfmecano","dealer","kirin"],
         "medicCost":2,
         "maxSKill":24,
-        "fuzz":2
+        "fuzz":1
     },
     {
         "id":33,
@@ -1156,7 +1156,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","deepselfmecano","maycamo"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":74,
@@ -1205,7 +1205,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","fly","longshot","inflammable","maycamo"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":75,
@@ -1254,12 +1254,12 @@
         "maxVeg":3,
         "skills":["fortif","cible","mecano","repair","constructeur"],
         "medicCost":7,
-        "fuzz":2
+        "fuzz":1
     },
     {
         "id":76,
         "name":"Workship",
-        "pic":"minemech2",
+        "pic":"workship",
         "cat":"vehicles",
         "kind":"zero",
         "squads":3,
@@ -1352,7 +1352,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":80,
@@ -1467,7 +1467,7 @@
         "transMaxSize":9,
         "transUnits":900,
         "transRes":600,
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":92,
@@ -1655,7 +1655,7 @@
         "maxScarp":1,
         "maxVeg":2,
         "skills":["undead","cible"],
-        "fuzz":4
+        "fuzz":5
     },
     {
         "id":99,
@@ -1841,7 +1841,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","fly","longshot"],
-        "fuzz":2
+        "fuzz":3
     },
     {
         "id":107,
@@ -1891,6 +1891,6 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["cible","fortif","longshot","selfmecano","defense"],
-        "fuzz":2
+        "fuzz":3
     }
 ]
