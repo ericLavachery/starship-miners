@@ -109,7 +109,11 @@ function nextTurnEnd() {
     killBatList();
     playerInfos.mapTurn = playerInfos.mapTurn+1;
     playerInfos.fuzzTotal = fuzzTotal;
-    mapAdjDiff = playerInfos.mapDiff+Math.floor(fuzzTotal/fuzzDiv);
+    let bonusDiff = Math.floor((fuzzTotal+rand.rand(0,50)-25)/fuzzDiv);
+    mapAdjDiff = playerInfos.mapDiff+bonusDiff;
+    if (mapAdjDiff < 1) {
+        mapAdjDiff = 1;
+    }
     $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
     $('#tour').append('Discrétion '+playerInfos.fuzzTotal+'<br>');
     $('#tour').append('Difficulté '+mapAdjDiff+'/'+playerInfos.mapDiff);
