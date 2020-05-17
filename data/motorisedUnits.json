@@ -23,6 +23,7 @@
             "accuracy":18,
             "dca":1,
             "power":8,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -84,6 +85,7 @@
             "accuracy":16,
             "dca":1,
             "power":8,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -167,6 +169,7 @@
             "accuracy":17,
             "dca":1,
             "power":8,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -265,6 +268,7 @@
             "accuracy":14,
             "dca":0.8,
             "power":10,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -310,12 +314,12 @@
             "cost":3,
             "range":0,
             "rof":10,
-            "accuracy":23,
-            "dca":1,
+            "accuracy":17,
             "power":8,
+            "armors":1.5,
             "aoe":"brochette",
             "sound":"warfare_gunshots_x2_rifle_exterior",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","timonium","salite","dunium"]
+            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium"]
         },
         "weapon2":{
             "name":"Mitrailleuse",
@@ -325,6 +329,7 @@
             "accuracy":16,
             "dca":0.8,
             "power":7,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -360,6 +365,7 @@
             "accuracy":16,
             "dca":1.5,
             "power":10,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -511,6 +517,7 @@
             "accuracy":18,
             "dca":1,
             "power":10,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -704,6 +711,7 @@
             "accuracy":18,
             "dca":1.5,
             "power":6,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -828,6 +836,7 @@
             "accuracy":16,
             "dca":1,
             "power":10,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -950,6 +959,7 @@
             "accuracy":16,
             "dca":1,
             "power":8,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -1023,6 +1033,7 @@
             "accuracy":14,
             "dca":1,
             "power":10,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -1122,6 +1133,7 @@
             "accuracy":16,
             "dca":0.8,
             "power":8,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -1166,14 +1178,14 @@
         "weapon":{
             "name":"Shotgun",
             "cost":3,
-            "range":1,
+            "range":0,
             "rof":6,
-            "accuracy":22,
-            "dca":1,
+            "accuracy":16,
             "power":8,
+            "armors":1.5,
             "aoe":"brochette",
             "sound":"warfare_gunshots_x2_rifle_exterior",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","timonium","salite","dunium"]
+            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium"]
         },
         "weapon2":{
             "name":"Dynamite",
@@ -1317,6 +1329,7 @@
             "accuracy":16,
             "dca":1,
             "power":10,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -1440,6 +1453,7 @@
             "accuracy":14,
             "dca":1,
             "power":10,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -1518,6 +1532,7 @@
             "accuracy":19,
             "dca":1.5,
             "power":9,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -1713,7 +1728,7 @@
             "cost":2,
             "range":2,
             "rof":12,
-            "accuracy":24,
+            "accuracy":25,
             "dca":1,
             "power":8,
             "aoe":"unit",
@@ -1764,6 +1779,7 @@
             "accuracy":14,
             "dca":2,
             "power":7,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -1802,6 +1818,7 @@
             "accuracy":13,
             "dca":1.5,
             "power":7,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -1864,6 +1881,7 @@
             "accuracy":14,
             "dca":1,
             "power":8,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]

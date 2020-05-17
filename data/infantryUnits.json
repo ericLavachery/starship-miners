@@ -19,11 +19,12 @@
             "cost":3,
             "range":0,
             "rof":10,
-            "accuracy":27,
+            "accuracy":21,
             "power":8,
+            "armors":1.5,
             "aoe":"brochette",
             "sound":"warfare_gunshots_x2_rifle_exterior",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","timonium","salite","dunium"]
+            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium"]
         },
         "weapon2":{
             "name":"Revolver",
@@ -32,6 +33,7 @@
             "rof":10,
             "accuracy":18,
             "power":5,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -147,6 +149,7 @@
             "rof":5,
             "accuracy":35,
             "power":9,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshot_rifle_exterior_004b",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -190,7 +193,7 @@
             "range":1,
             "rof":6,
             "accuracy":27,
-            "power":7,
+            "power":8,
             "aoe":"unit",
             "sound":"warfare_gunshot_rifle_exterior_004b",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -227,9 +230,10 @@
             "rof":8,
             "accuracy":20,
             "power":6,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["perceur","ppoison","poraz","shinda","plasblade"]
+            "ammo":["standard","poison","poraz","shinda","plasblade"]
         },
         "weapon2":{
             "name":"Arbalète",
@@ -287,6 +291,7 @@
             "rof":8,
             "accuracy":20,
             "power":4,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
             "ammo":["standard","scrap","poison","poraz","shinda","monomolecular","plasblade"]
@@ -321,6 +326,7 @@
             "rof":10,
             "accuracy":17,
             "power":5,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -379,9 +385,10 @@
             "rof":10,
             "accuracy":19,
             "power":6,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["perceur","ppoison","poraz","shinda","plasblade"]
+            "ammo":["standard","poison","poraz","shinda","plasblade"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -471,9 +478,10 @@
             "rof":10,
             "accuracy":17,
             "power":4,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["perceur","ppoison","monomolecular","plasblade"]
+            "ammo":["standard","poison","monomolecular","plasblade"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -585,6 +593,7 @@
             "rof":30,
             "accuracy":18,
             "power":8,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -738,6 +747,7 @@
             "rof":8,
             "accuracy":17,
             "power":5,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -866,6 +876,7 @@
             "rof":10,
             "accuracy":16,
             "power":5,
+            "armors":1.2,
             "aoe":"unit",
             "sound":"warfare_gunshots_x2_rifle_exterior",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -900,11 +911,12 @@
             "cost":3,
             "range":0,
             "rof":6,
-            "accuracy":25,
+            "accuracy":19,
             "power":8,
+            "armors":1.5,
             "aoe":"brochette",
             "sound":"warfare_gunshots_x2_rifle_exterior",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","timonium","salite","dunium"]
+            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium"]
         },
         "weapon2":{
             "name":"Hache",
@@ -914,9 +926,10 @@
             "rof":6,
             "accuracy":17,
             "power":6,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["perceur","ppoison","poraz","shinda","plasblade"]
+            "ammo":["standard","poison","poraz","shinda","plasblade"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -963,9 +976,10 @@
             "rof":8,
             "accuracy":18,
             "power":6,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["perceur","ppoison","plasblade"]
+            "ammo":["standard","poison","plasblade"]
         },
         "moveCost":2,
         "maxFlood":1,
@@ -1059,9 +1073,10 @@
             "rof":8,
             "accuracy":17,
             "power":4,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["perceur","ppoison","monomolecular","plasblade"]
+            "ammo":["standard","poison","monomolecular","plasblade"]
         },
         "moveCost":2,
         "maxFlood":3,
@@ -1140,6 +1155,7 @@
             "rof":10,
             "accuracy":18,
             "power":5,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -1186,6 +1202,7 @@
             "rof":30,
             "accuracy":19,
             "power":6,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -1198,6 +1215,7 @@
             "rof":10,
             "accuracy":22,
             "power":5,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
             "ammo":["standard","poison","monomolecular","plasblade"]
@@ -1226,16 +1244,17 @@
         "ap":12,
         "maxSalvo":1,
         "weapon":{
-            "name":"Tronçonneuse",
-            "cost":4,
+            "name":"Scies",
+            "cost":3,
             "range":0,
             "isMelee":true,
             "rof":10,
-            "accuracy":15,
-            "power":12,
-            "aoe":"brochette",
+            "accuracy":17,
+            "power":8,
+            "armors":0.3,
+            "aoe":"unit",
             "sound":"498501__16f-panska-veltrusky-david__chainsawb",
-            "ammo":["perceur","monomolecular"]
+            "ammo":["standard","monomolecular"]
         },
         "weapon2":{
             "name":"Fusil magnétique",
@@ -1245,9 +1264,10 @@
             "rof":5,
             "accuracy":38,
             "power":15,
+            "armors":0.5,
             "aoe":"unit",
             "sound":"warfare_gunshot_rifle_exterior_004b",
-            "ammo":["antichar","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite"]
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1386,9 +1406,10 @@
             "rof":10,
             "accuracy":15,
             "power":12,
+            "armors":0.5,
             "aoe":"brochette",
             "sound":"498501__16f-panska-veltrusky-david__chainsawb",
-            "ammo":["perceur","monomolecular"]
+            "ammo":["standard","monomolecular"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1432,10 +1453,11 @@
             "noBis":true,
             "rof":8,
             "accuracy":16,
-            "power":12,
+            "power":10,
+            "armors":0.5,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["perceur","ppoison","poraz","shinda","monomolecular","taser"]
+            "ammo":["standard","poison","poraz","shinda","monomolecular","taser"]
         },
         "moveCost":2,
         "maxFlood":1,
@@ -1479,6 +1501,7 @@
             "rof":8,
             "accuracy":22,
             "power":7,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
             "ammo":["plasblade","poraz","shinda"]
@@ -1609,6 +1632,7 @@
             "rof":12,
             "accuracy":17,
             "power":6,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -1668,6 +1692,7 @@
             "rof":4,
             "accuracy":35,
             "power":9,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshot_rifle_exterior_004b",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -1842,9 +1867,10 @@
             "rof":8,
             "accuracy":16,
             "power":16,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["perceur","ppoison","poraz","shinda","plasblade"]
+            "ammo":["standard","poison","poraz","shinda","plasblade"]
         },
         "weapon2":{
             "name":"RPG",
@@ -1982,9 +2008,10 @@
             "rof":7,
             "accuracy":18,
             "power":8,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["perceur","ppoison","poraz","shinda","plasblade"]
+            "ammo":["standard","poison","poraz","shinda","plasblade"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -2017,9 +2044,10 @@
             "rof":20,
             "accuracy":20,
             "power":8,
+            "armors":0.3,
             "aoe":"unit",
             "sound":"498501__16f-panska-veltrusky-david__chainsawb",
-            "ammo":["troueur"]
+            "ammo":["standard"]
         },
         "weapon2":{
             "name":"Autodestruction",
@@ -2146,9 +2174,10 @@
             "rof":9,
             "accuracy":20,
             "power":16,
+            "armors":0.5,
             "aoe":"unit",
             "sound":"warfare_gunshot_rifle_exterior_004b",
-            "ammo":["antichar","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite"]
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite"]
         },
         "weapon2":{
             "name":"Lance-flammes",
@@ -2204,6 +2233,7 @@
             "rof":24,
             "accuracy":17,
             "power":6,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
@@ -2436,7 +2466,7 @@
             "range":1,
             "rof":8,
             "accuracy":24,
-            "power":7,
+            "power":8,
             "aoe":"unit",
             "sound":"warfare_gunshot_rifle_exterior_004b",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]

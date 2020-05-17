@@ -27,7 +27,7 @@ function isHit(accuracy,aoe,size,stealth,cover,speed,shotDice) {
     let dice = rand.rand(1,shotDice);
     let hitChance = Math.round(Math.sqrt(size)*prec);
     // aoe : more chance than normal to hit small creatures
-    if (aoe != 'unit' && size < 10) {
+    if (aoe != 'unit' && aoe != 'brochette' && size < 10) {
         hitChance = Math.round(Math.sqrt(10)*prec);
     }
     if (hitChance < size) {
@@ -452,7 +452,11 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.accuracy = thisWeapon.accuracy+6;
         thisWeapon.power = thisWeapon.power+1;
     }
-    thisWeapon.armors = 1;
+    if (weapon.armors === undefined) {
+        thisWeapon.armors = 1;
+    } else {
+        thisWeapon.armors = weapon.armors;
+    }
     thisWeapon.aoe = weapon.aoe;
     thisWeapon.sound = weapon.sound;
     if (weapon.noAtt === undefined) {
