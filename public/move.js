@@ -311,7 +311,7 @@ function terrainAccess(batId,targetTileId) {
     let terIndex = terrainTypes.findIndex((obj => obj.name == zone[targetTileId].terrain));
     let terFlood = terrainTypes[terIndex].flood;
     if (terFlood === 3 && zone[targetTileId].seed >= 4) {
-        terFlood = 1;
+        terFlood = 0;
     }
     if (unitTypes[unitTypesIndex].maxFlood >= terFlood && unitTypes[unitTypesIndex].maxScarp >= terrainTypes[terIndex].scarp && unitTypes[unitTypesIndex].maxVeg >= terrainTypes[terIndex].veg) {
         return true;
