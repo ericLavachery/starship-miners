@@ -107,3 +107,7 @@ let conselAmmos = ['xxx','xxx'];
 let cumDrop = 5; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
 let noEggs = 15; // % pour un eggDrop sans oeufs
 let eggDropCount = 0;
+let musicTracks = ['Dunwich Beach','Lizard Point','Patrolling Wire Borders','Rising Thermal','Tal Coat','The Plateaux Of Mirror','airports22'];
+let theMusic = new Howl({
+    src: ['/static/sounds/music/Patrolling Wire Borders.mp3']
+});

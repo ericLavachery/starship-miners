@@ -125,6 +125,7 @@ function nextTurnEnd() {
     blockMe(false);
     activeTurn = 'player';
     commandes();
+    playmusic();
     // testConnect(pseudo);
 };
 
@@ -429,4 +430,17 @@ function alienSounds() {
         src: ['/static/sounds/little_robot_sound_factory_Ambience_AlienHive_00.mp3']
     });
     sound.play();
+};
+
+function playmusic() {
+    let track = [_.sample(musicTracks)];
+    if (!theMusic.playing()) {
+        theMusic = new Howl({
+            src: ['/static/sounds/music/'+track+'.mp3']
+        });
+        theMusic.play();
+        console.log('PLAYING: '+track);
+    } else {
+        console.log('ALREADY PLAYING');
+    }
 };
