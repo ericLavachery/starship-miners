@@ -454,7 +454,7 @@ function uncheckBadMoves() {
         });
     }
     // enlève les possibleMoves vers l'eau
-    if (possibleMoves.length >= 3 && rand.rand(1,2) === 1) {
+    if (possibleMoves.length >= 3 && rand.rand(1,2) === 1 && !selectedBatType.skills.includes('hover')) {
         shufZone.forEach(function(tile) {
             if (isAdjacent(selectedBat.tileId,tile.id)) {
                 if (possibleMoves.length >= 3) {
@@ -466,7 +466,7 @@ function uncheckBadMoves() {
         });
     }
     // enlève les possibleMoves qui ne rapproche pas du PDM quand l'unité est proche du but
-    if (possibleMoves.length > 1) {
+    if (possibleMoves.length >= 2) {
         shufZone.forEach(function(tile) {
             if (isAdjacent(selectedBat.tileId,tile.id)) {
                 if (possibleMoves.length > 1) {
@@ -501,7 +501,7 @@ function uncheckBadJumps() {
         });
     }
     // enlève les possibleMoves vers l'eau
-    if (possibleMoves.length > 1) {
+    if (possibleMoves.length >= 2 && !selectedBatType.skills.includes('hover')) {
         shufZone.forEach(function(tile) {
             if (possibleMoves.length > 1) {
                 if (tile.terrain == 'S' || tile.terrain == 'W' || tile.terrain == 'R') {

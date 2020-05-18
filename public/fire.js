@@ -324,7 +324,7 @@ function attack() {
     $('#report').append('<span class="report">('+totalDamage+')<br></span>');
     // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
     // agrippeur
-    if (selectedBatType.skills.includes('grip') && totalDamage >= 1 && selectedBatType.size > targetBatType.size) {
+    if (selectedBatType.skills.includes('grip') && totalDamage >= 1 && selectedBatType.size*2 >= targetBatType.size) {
         let gripbonus = 0;
         if (selectedBatType.name == 'Androks') {
             gripbonus = 30;

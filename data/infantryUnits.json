@@ -1951,6 +1951,7 @@
         "hp":6,
         "armor":5,
         "size":3,
+        "volume":0.8,
         "stealth":4,
         "ap":12,
         "maxSalvo":1,
