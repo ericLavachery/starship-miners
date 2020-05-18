@@ -201,7 +201,9 @@ function blub(bat,batType) {
         }
     } else {
         if (terrain.name === 'W' || terrain.name === 'R') {
-            bat.tags.push('blub');
+            if ((!batType.skills.includes('fly') && !batType.skills.includes('hover')) || batType.skills.includes('jetpack')) {
+                bat.tags.push('blub');
+            }
         }
     }
 };

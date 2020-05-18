@@ -88,6 +88,10 @@ function showBatInfos(bat) {
         let ravitNum = calcRavit(bat);
         $('#unitInfos').append('<span class="paramName cy">Ravitaillements</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'</span><br>');
     }
+    if (batUnitType.transUnits >= 1) {
+        let transLeft = calcTransUnitsLeft(bat,batUnitType);
+        $('#unitInfos').append('<span class="paramName cy">Transport</span><span class="paramIcon"></span><span class="paramValue cy">'+transLeft+'</span><br>');
+    }
     if (batUnitType.skills.includes('dealer')) {
         let ravitNum = calcRavit(bat);
         $('#unitInfos').append('<span class="paramName cy">Drogues</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'</span><br>');
