@@ -884,7 +884,7 @@
             "rof":6,
             "accuracy":22,
             "dca":1,
-            "power":7,
+            "power":5,
             "aoe":"unit",
             "sound":"PM_FSSF2_WEAPONS_H2_SHOT_324b",
             "ammo":["plasma","plastanium","nanite"]
