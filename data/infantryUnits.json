@@ -1250,7 +1250,7 @@
             "isMelee":true,
             "rof":10,
             "accuracy":17,
-            "power":8,
+            "power":6,
             "armors":0.3,
             "aoe":"unit",
             "sound":"498501__16f-panska-veltrusky-david__chainsawb",
