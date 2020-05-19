@@ -134,16 +134,18 @@ function combat() {
         } else {
             console.log("pas d'initiative");
             if (activeTurn == 'player') {blockMe(true);}
-            if (!isFFW) {
-                soundWeap = targetWeap;
-                shotSound(soundWeap);
-            }
-            defense();
             minimumFireAP = minFireAP;
-            if (selectedBatType.skills.includes('guerrilla')) {
+            if (targetBatType.skills.includes('guerrilla')) {
                 minimumFireAP = minFireAP-5;
             }
-            if (attAlive && selectedBat.apLeft > minimumFireAP) {
+            if (targetBat.apLeft > minimumFireAP) {
+                defense();
+                if (!isFFW) {
+                    soundWeap = targetWeap;
+                    shotSound(soundWeap);
+                }
+            }
+            if (attAlive) {
                 attack();
                 if (!isFFW) {
                     soundWeap = selectedWeap;

@@ -42,7 +42,7 @@ function showBatInfos(bat) {
         }
     }
     let batFuzz = calcBatFuzz(bat);
-    $('#unitInfos').append('<span class="paramName">Discrétion</span><span class="paramIcon"></span><span class="paramValue">'+batFuzz+'</span><br>');
+    $('#unitInfos').append('<span class="paramName">Attraction</span><span class="paramIcon"></span><span class="paramValue">'+batFuzz+'</span><br>');
     if (bat.tags.includes('embuscade')) {
         $('#unitInfos').append('<span class="paramName cy">Embuscade</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
