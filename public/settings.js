@@ -113,7 +113,7 @@ let eggDropCount = 0;
 // SOUNDS
 let musicVolume = 0.5;
 let fxVolume = 0.5;
-let musicTracks = ['Lizard Point','Patrolling Wire Borders','Tal Coat','airports22','Drifter','An Ending','The Secret Place'];
+let musicTracks = ['Lizard Point','Aftermath','Aftermath','Damnation','It Is Raped','Life','The Secret Place','Parallel Dimensions','The Reaction'];
 let theMusic = new Howl({
     src: ['/static/sounds/music/Patrolling Wire Borders.mp3']
 });
