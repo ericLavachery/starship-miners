@@ -490,7 +490,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["selfmecano","cible"],
+        "skills":["selfmecano","cible","longshot"],
         "fuzz":10
     },
     {
@@ -1198,7 +1198,7 @@
             "aoe":"brochette",
             "sound":"firework_faulty_fizzle_then_goes_outb",
             "ammo":["dynamite","dynamite-na"],
-            "maxAmmo":10
+            "maxAmmo":9
         },
         "moveCost":2,
         "maxFlood":3,
@@ -1440,7 +1440,7 @@
         "hp":95,
         "armor":5,
         "size":35,
-        "volume":1.2,
+        "volume":1,
         "stealth":0,
         "speed":5,
         "ap":10,
@@ -1824,24 +1824,24 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
-            "name":"Minibombe",
+            "name":"Minibombes",
             "cost":3,
             "range":1,
             "noFly":true,
             "rof":4,
-            "accuracy":12,
+            "accuracy":10,
             "power":16,
-            "aoe":"squad",
+            "aoe":"bat",
             "sound":"161622__ryanconway__grenade-throwb",
             "ammo":["grenade","grenade-antichar","grenade-incendiaire"],
-            "maxAmmo":6
+            "maxAmmo":3
         },
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","fly","longshot"],
-        "fuzz":3
+        "fuzz":5
     },
     {
         "id":107,
@@ -1892,5 +1892,55 @@
         "maxVeg":2,
         "skills":["cible","fortif","longshot","selfmecano","defense"],
         "fuzz":3
+    },
+    {
+        "id":110,
+        "name":"Wyverns",
+        "pic":"bomber",
+        "cat":"vehicles",
+        "kind":"zero",
+        "squads":3,
+        "squadSize":3,
+        "crew":4,
+        "hp":95,
+        "armor":5,
+        "size":35,
+        "volume":1.2,
+        "stealth":0,
+        "speed":5,
+        "ap":15,
+        "maxSalvo":2,
+        "weapon":{
+            "name":"Mitrailleuses",
+            "cost":3,
+            "range":2,
+            "rof":24,
+            "accuracy":13,
+            "dca":1.5,
+            "power":7,
+            "armors":0.85,
+            "aoe":"unit",
+            "sound":"warfare_gunshots_machine_gun_burst_005b",
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+        },
+        "weapon2":{
+            "name":"Bombes",
+            "cost":3,
+            "range":1,
+            "noFly":true,
+            "rof":4,
+            "accuracy":14,
+            "power":16,
+            "aoe":"bat",
+            "sound":"161622__ryanconway__grenade-throwb",
+            "ammo":["grenade","grenade-antichar","grenade-incendiaire"],
+            "maxAmmo":9
+        },
+        "moveCost":1,
+        "maxFlood":3,
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["cible","fly","longshot"],
+        "fuzz":10
     }
 ]

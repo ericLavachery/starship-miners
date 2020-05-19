@@ -148,7 +148,7 @@ function checkPDM() {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= 0) {
                 batType = getBatType(bat);
-                if (!batType.skills.includes('fly')) {
+                if (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly) {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
                     if (distance < lePlusProche) {
                         pointDeMire = bat.tileId;
@@ -161,7 +161,7 @@ function checkPDM() {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= 0) {
                 batType = getBatType(bat);
-                if (batType.cat === 'infantry' && !batType.skills.includes('fly')) {
+                if (batType.cat === 'infantry' && (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly)) {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
                     if (distance < lePlusProche) {
                         pointDeMire = bat.tileId;
@@ -173,10 +173,13 @@ function checkPDM() {
     } else {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= 4) {
-                distance = calcDistance(selectedBat.tileId,bat.tileId);
-                if (distance < lePlusProche) {
-                    pointDeMire = bat.tileId;
-                    lePlusProche = distance;
+                batType = getBatType(bat);
+                if (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly) {
+                    distance = calcDistance(selectedBat.tileId,bat.tileId);
+                    if (distance < lePlusProche) {
+                        pointDeMire = bat.tileId;
+                        lePlusProche = distance;
+                    }
                 }
             }
         });
@@ -184,10 +187,13 @@ function checkPDM() {
             // se rabat sur une autre cible
             shufBats.forEach(function(bat) {
                 if (bat.loc === "zone" && bat.fuzz >= 1) {
-                    distance = calcDistance(selectedBat.tileId,bat.tileId);
-                    if (distance < lePlusProche) {
-                        pointDeMire = bat.tileId;
-                        lePlusProche = distance;
+                    batType = getBatType(bat);
+                    if (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly) {
+                        distance = calcDistance(selectedBat.tileId,bat.tileId);
+                        if (distance < lePlusProche) {
+                            pointDeMire = bat.tileId;
+                            lePlusProche = distance;
+                        }
                     }
                 }
             });
@@ -196,10 +202,13 @@ function checkPDM() {
             // se rabat sur une autre cible
             shufBats.forEach(function(bat) {
                 if (bat.loc === "zone" && bat.fuzz == 0) {
-                    distance = calcDistance(selectedBat.tileId,bat.tileId);
-                    if (distance < lePlusProche) {
-                        pointDeMire = bat.tileId;
-                        lePlusProche = distance;
+                    batType = getBatType(bat);
+                    if (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly) {
+                        distance = calcDistance(selectedBat.tileId,bat.tileId);
+                        if (distance < lePlusProche) {
+                            pointDeMire = bat.tileId;
+                            lePlusProche = distance;
+                        }
                     }
                 }
             });
@@ -213,6 +222,16 @@ function checkPDM() {
 
 function isSurrounded(bat) {
     let distance;
+    let surroundingTiles = 0;
+    zone.forEach(function(tile) {
+        distance = calcDistance(bat.tileId,tile.id);
+        if (distance <= 1) {
+            surroundingTiles++;
+        }
+    });
+    if (surroundingTiles < 8) {
+        surroundingTiles = surroundingTiles+1;
+    }
     let surroundingAliens = 0;
     aliens.forEach(function(alien) {
         if (bat.loc === "zone") {
@@ -222,7 +241,7 @@ function isSurrounded(bat) {
             }
         }
     });
-    if (surroundingAliens >= 6) {
+    if (surroundingAliens >= surroundingTiles-2) {
         return true;
     } else {
         return false;
@@ -263,17 +282,16 @@ function anyCloseTarget() {
         if (checkAlienFlyTarget(selectedWeap,bat)) {
             if (bat.loc === "zone" && bat.fuzz >= minFuzz) {
                 if (!isSurrounded(bat)) {
-                    distance = calcDistance(selectedBat.tileId,bat.tileId);
-                    if (distance <= closeTargetRange) {
-                        tLogic = targetLogic(bat);
-                        if (tLogic > bestLogic) {
-                            bestLogic = tLogic;
-                            newPointDeMire = bat.tileId;
+                    batType = getBatType(bat);
+                    if (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly) {
+                        distance = calcDistance(selectedBat.tileId,bat.tileId);
+                        if (distance <= closeTargetRange) {
+                            tLogic = targetLogic(bat);
+                            if (tLogic > bestLogic) {
+                                bestLogic = tLogic;
+                                newPointDeMire = bat.tileId;
+                            }
                         }
-                        // if (distance < lePlusProche) {
-                        //     lePlusProche = distance;
-                        //     newPointDeMire = bat.tileId;
-                        // }
                     }
                 }
             }
