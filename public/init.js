@@ -5,6 +5,9 @@ socket.on('playerInfos-Load', function(pi) {
         numHTiles = playerInfos.numHTiles;
         numVTiles = playerInfos.numVTiles;
     }
+    if (playerInfos.eggPause === undefined) {
+        playerInfos.eggPause = false;
+    }
     playerSkills();
 });
 // Terrains

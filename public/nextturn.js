@@ -125,7 +125,6 @@ function nextTurnEnd() {
     blockMe(false);
     activeTurn = 'player';
     commandes();
-    playmusic();
     // testConnect(pseudo);
 };
 
@@ -397,6 +396,7 @@ function createBatList() {
 
 function nextBat(removeActiveBat) {
     // testConnect(pseudo);
+    playmusic();
     selectMode();
     batUnstack();
     deleteMoveInfos();

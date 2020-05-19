@@ -106,8 +106,10 @@ let conselAmmos = ['xxx','xxx'];
 // INVASION
 let cumDrop = 5; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
 let noEggs = 15; // % pour un eggDrop sans oeufs
+let eggPause = false;
+let eggPauseEnd = 12; // 1 chance sur 12: fin de pause
 let eggDropCount = 0;
-let musicTracks = ['Dunwich Beach','Lizard Point','Patrolling Wire Borders','Rising Thermal','Tal Coat','The Plateaux Of Mirror','airports22'];
+let musicTracks = ['Dunwich Beach','Lizard Point','Patrolling Wire Borders','Rising Thermal','Tal Coat','airports22','Drifter'];
 let theMusic = new Howl({
     src: ['/static/sounds/music/Patrolling Wire Borders.mp3']
 });

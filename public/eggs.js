@@ -9,8 +9,11 @@ function checkEggsDrop() {
         drop = true;
         eggsDrop();
     }
-    if (drop) {
+    if (drop || playerInfos.eggPause) {
         playerInfos.mapDrop = 0;
+        if (rand.rand(1,eggPauseEnd) === 1) {
+            playerInfos.eggPause = false;
+        }
     } else {
         playerInfos.mapDrop = playerInfos.mapDrop+1;
     }
@@ -20,13 +23,19 @@ function eggsDrop() {
     console.log('EGGDROP');
     let numEggs;
     let eggDice = rand.rand(1,100);
-    let threeEggsChance = Math.round((mapAdjDiff/1.5)-2);
+    let threeEggsChance = mapAdjDiff-4;
     if (threeEggsChance < 0) {
         threeEggsChance = 0;
     }
-    let twoEggsChance = mapAdjDiff;
+    let twoEggsChance = Math.floor(mapAdjDiff*1.25)-2;
+    if (twoEggsChance < 0) {
+        twoEggsChance = 0;
+    }
     if (eggDice <= noEggs) {
         numEggs = 0;
+        if (rand.rand(1,5) === 1) {
+            playerInfos.eggPause = true;
+        }
     } else if (eggDice <= noEggs+twoEggsChance) {
         numEggs = 2;
     } else if (eggDice <= noEggs+twoEggsChance+threeEggsChance) {
