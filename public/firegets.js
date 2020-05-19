@@ -352,7 +352,8 @@ function shotSound(weapon) {
     if (!isFFW) {
         console.log(weapon);
         var sound = new Howl({
-            src: ['/static/sounds/'+weapon.sound+'.mp3']
+            src: ['/static/sounds/'+weapon.sound+'.mp3'],
+            volume: fxVolume
         });
         sound.play();
         console.log(sound);
@@ -362,7 +363,8 @@ function shotSound(weapon) {
 function deathSound() {
     if (!isFFW) {
         var sound = new Howl({
-            src: ['/static/sounds/zapsplat_explosion_fireball_43738.mp3']
+            src: ['/static/sounds/zapsplat_explosion_fireball_43738.mp3'],
+            volume: fxVolume
         });
         sound.play();
     }

@@ -1182,13 +1182,13 @@
             "name":"Jet d'acide",
             "cost":4,
             "range":2,
-            "rof":10,
+            "rof":5,
             "accuracy":20,
             "dca":1.5,
             "power":4,
             "aoe":"unit",
             "sound":"zapsplat_cartoon_squish_squelch_wet_005_14504b",
-            "ammo":["spit"]
+            "ammo":["spitbug"]
         },
         "weapon2":{},
         "moveCost":3,

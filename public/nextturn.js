@@ -427,7 +427,8 @@ function nextBat(removeActiveBat) {
 
 function alienSounds() {
     var sound = new Howl({
-        src: ['/static/sounds/little_robot_sound_factory_Ambience_AlienHive_00.mp3']
+        src: ['/static/sounds/little_robot_sound_factory_Ambience_AlienHive_00.mp3'],
+        volume: fxVolume
     });
     sound.play();
 };
@@ -436,7 +437,8 @@ function playmusic() {
     let track = [_.sample(musicTracks)];
     if (!theMusic.playing()) {
         theMusic = new Howl({
-            src: ['/static/sounds/music/'+track+'.mp3']
+            src: ['/static/sounds/music/'+track+'.mp3'],
+            volume: musicVolume
         });
         theMusic.play();
         console.log('PLAYING: '+track);

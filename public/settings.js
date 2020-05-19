@@ -110,6 +110,9 @@ let noEggs = 15; // % pour un eggDrop sans oeufs
 let eggPause = false;
 let eggPauseEnd = 12; // 1 chance sur 12: fin de pause
 let eggDropCount = 0;
+// SOUNDS
+let musicVolume = 0.5;
+let fxVolume = 0.5;
 let musicTracks = ['Lizard Point','Patrolling Wire Borders','Tal Coat','airports22','Drifter','An Ending','The Secret Place'];
 let theMusic = new Howl({
     src: ['/static/sounds/music/Patrolling Wire Borders.mp3']
