@@ -129,6 +129,11 @@ function medic(cat,cost,around,deep) {
     let batUnits;
     let newBatUnits;
     let catOK = false;
+    let oldSquadsLeft;
+    let squadHP;
+    let batHP;
+    let regen;
+    let batHPLeft;
     console.log('apCost: '+apCost);
     let maxAPCost = Math.round(selectedBatType.ap*1.5);
     if (around) {
@@ -222,16 +227,30 @@ function medic(cat,cost,around,deep) {
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">dégâts réparés<br></span>');
                                     showBataillon(bat);
                                 } else if (bat.squadsLeft < batType.squads && deep) {
-                                    let oldSquadsLeft = bat.squadsLeft;
-                                    let squadHP = batType.squadSize*batType.hp;
-                                    let batHP = squadHP*batType.squads;
-                                    let regen = mecanoHP;
-                                    let batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
-                                    bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
-                                    bat.damage = (bat.squadsLeft*squadHP)-batHPLeft;
-                                    if (bat.squadsLeft > batType.squads) {
-                                        bat.squadsLeft = batType.squads;
-                                        bat.damage = 0;
+                                    if (bat.id === selectedBat.id) {
+                                        oldSquadsLeft = selectedBat.squadsLeft;
+                                        squadHP = selectedBatType.squadSize*selectedBatType.hp;
+                                        batHP = squadHP*selectedBatType.squads;
+                                        regen = mecanoHP;
+                                        batHPLeft = (selectedBat.squadsLeft*squadHP)-selectedBat.damage+regen;
+                                        selectedBat.squadsLeft = Math.ceil(batHPLeft/squadHP);
+                                        selectedBat.damage = (selectedBat.squadsLeft*squadHP)-batHPLeft;
+                                        if (selectedBat.squadsLeft > selectedBatType.squads) {
+                                            selectedBat.squadsLeft = selectedBatType.squads;
+                                            selectedBat.damage = 0;
+                                        }
+                                    } else {
+                                        oldSquadsLeft = bat.squadsLeft;
+                                        squadHP = batType.squadSize*batType.hp;
+                                        batHP = squadHP*batType.squads;
+                                        regen = mecanoHP;
+                                        batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
+                                        bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
+                                        bat.damage = (bat.squadsLeft*squadHP)-batHPLeft;
+                                        if (bat.squadsLeft > batType.squads) {
+                                            bat.squadsLeft = batType.squads;
+                                            bat.damage = 0;
+                                        }
                                     }
                                     newBatUnits = batUnits+batType.squadSize;
                                     totalAPCost = totalAPCost+apCost;
