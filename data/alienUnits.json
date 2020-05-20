@@ -687,7 +687,7 @@
             "range":0,
             "noFly":false,
             "rof":15,
-            "accuracy":12,
+            "accuracy":9,
             "dca":1.5,
             "power":0,
             "aoe":"unit",

@@ -21,6 +21,7 @@ function checkEggsDrop() {
     eggDropCount = 0;
     let drop = false;
     let dropTurn = Math.floor(((playerInfos.mapDrop*cumDrop)+playerInfos.mapTurn)/(cumDrop+1));
+    console.log(mapAdjDiff);
     let dropChance = Math.round((dropTurn*Math.sqrt(mapAdjDiff))+mapAdjDiff-1);
     console.log('dropChance='+dropChance);
     if (rand.rand(1,100) <= dropChance && aliens.length < maxAliens && !playerInfos.eggPause) {
@@ -73,7 +74,6 @@ function eggsDrop() {
 };
 
 function dropEgg(alienUnit) {
-    playMusic();
     console.log('dropping egg...');
     let unitIndex = alienUnits.findIndex((obj => obj.name === alienUnit));
     conselUnit = alienUnits[unitIndex];
@@ -107,6 +107,7 @@ function dropEgg(alienUnit) {
             eggDropCount = eggDropCount+1;
             if (eggDropCount === 1) {
                 eggSound();
+                playMusic();
             }
         }
     }

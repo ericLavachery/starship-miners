@@ -1,10 +1,10 @@
 function transInfos(bat,batUnitType) {
     console.log('transInfos');
     let transId = checkTransportId(bat,batUnitType);
-    let transIndex = bataillons.findIndex((obj => obj.id == transId));
-    let transBatName = bataillons[transIndex].type;
-    let apCost;
     if (transId >= 0) {
+        let transIndex = bataillons.findIndex((obj => obj.id == transId));
+        let transBatName = bataillons[transIndex].type;
+        let apCost;
         apCost = 3;
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer dans '+transBatName+'" class="boutonGris iconButtons" onclick="embarquement('+transId+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
     }

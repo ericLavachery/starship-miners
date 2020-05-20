@@ -8,6 +8,7 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.eggPause === undefined) {
         playerInfos.eggPause = false;
     }
+    mapAdjDiff = playerInfos.mapDiff+3;
     playerSkills();
 });
 // Terrains
