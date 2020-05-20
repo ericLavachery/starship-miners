@@ -115,7 +115,7 @@ function nextTurnEnd() {
         mapAdjDiff = 1;
     }
     $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
-    $('#tour').append('Discrétion '+playerInfos.fuzzTotal+'<br>');
+    $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
     $('#tour').append('Difficulté '+mapAdjDiff+'/'+playerInfos.mapDiff);
     savePlayerInfos();
     saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!

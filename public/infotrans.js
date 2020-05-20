@@ -110,8 +110,8 @@ function clickDebarq(tileId) {
     }
     if (tileOK) {
         if (selectedBat.transIds.includes(batDebarq.id)) {
-            tagIndex = selectedBat.tags.indexOf(batDebarq.id);
-            selectedBat.tags.splice(tagIndex,1);
+            tagIndex = selectedBat.transIds.indexOf(batDebarq.id);
+            selectedBat.transIds.splice(tagIndex,1);
         }
         selectedBatArrayUpdate();
         batUnselect();

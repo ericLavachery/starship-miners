@@ -308,7 +308,7 @@ function eggSpawn(bat,fromEgg) {
                 classes.push('B');
                 if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA) {
                     classes.push('A');
-                    if (eggModTurn >= 20 && playerInfos.mapTurn >= minTurnA) {
+                    if (eggModTurn >= 20 && playerInfos.mapTurn >= minTurnA && fromEgg) {
                         const index = classes.indexOf('C');
                         if (index > -1) {
                             classes.splice(index,1);

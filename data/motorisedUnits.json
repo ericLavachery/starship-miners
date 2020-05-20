@@ -17,7 +17,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Mitrailleuse",
-            "cost":4,
+            "cost":2,
             "range":1,
             "rof":15,
             "accuracy":18,
@@ -30,13 +30,13 @@
         },
         "weapon2":{
             "name":"Mortier",
-            "cost":4,
+            "cost":3,
             "range":2,
             "noFly":true,
             "rof":6,
             "accuracy":13,
             "power":18,
-            "aoe":"squad",
+            "aoe":"brochette",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
             "ammo":["obus","obus-scrap","obus-explosif","obus-heat","obus-incendiaire","obus-napalm"],
             "maxAmmo":9
@@ -1438,7 +1438,7 @@
         "squadSize":3,
         "crew":4,
         "hp":95,
-        "armor":5,
+        "armor":6,
         "size":35,
         "volume":1,
         "stealth":0,
@@ -1463,11 +1463,11 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","fly","transport"],
+        "skills":["cible","fly","transport","longshot"],
         "transMaxSize":9,
         "transUnits":900,
         "transRes":600,
-        "fuzz":3
+        "fuzz":6
     },
     {
         "id":92,
@@ -1993,5 +1993,43 @@
         "maxVeg":3,
         "skills":["cible","fly","longshot"],
         "fuzz":7
+    },
+    {
+        "id":113,
+        "name":"Cygognes",
+        "pic":"cygognes",
+        "cat":"vehicles",
+        "kind":"zero",
+        "squads":5,
+        "squadSize":3,
+        "crew":4,
+        "hp":40,
+        "armor":5,
+        "size":20,
+        "volume":1,
+        "stealth":0,
+        "speed":6,
+        "ap":12,
+        "maxSalvo":2,
+        "weapon":{
+            "name":"Canon",
+            "cost":4,
+            "range":2,
+            "rof":3,
+            "accuracy":11,
+            "power":18,
+            "aoe":"brochette",
+            "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
+            "ammo":["obus","obus-scrap","obus-explosif","obus-heat","obus-incendiaire","obus-napalm"],
+            "maxAmmo":8
+        },
+        "weapon2":{},
+        "moveCost":1,
+        "maxFlood":3,
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["cible","fly","ravitaillement","longshot"],
+        "maxSKill":10,
+        "fuzz":5
     }
 ]
