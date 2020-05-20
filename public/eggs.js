@@ -1,3 +1,21 @@
+function checkStartingAliens() {
+    if (playerInfos.mapDiff >= 8) {
+        let numRuches = rand.rand(1,2);
+        if (playerInfos.mapDiff === 9) {
+            numRuches = rand.rand(3,5);
+        }
+        if (playerInfos.mapDiff === 10) {
+            numRuches = rand.rand(6,12);
+        }
+        let i = 1;
+        while (i <= numRuches) {
+            dropEgg('Ruche');
+            if (i > 20) {break;}
+            i++
+        }
+    }
+};
+
 function checkEggsDrop() {
     console.log('check egg drop');
     eggDropCount = 0;
@@ -47,16 +65,16 @@ function eggsDrop() {
     if (numEggs >= 1) {
         let i = 1;
         while (i <= numEggs) {
-            dropEgg();
-            if (i > 3) {break;}
+            dropEgg('Oeuf');
+            if (i > 4) {break;}
             i++
         }
     }
 };
 
-function dropEgg() {
+function dropEgg(alienUnit) {
     console.log('dropping egg...');
-    let unitIndex = alienUnits.findIndex((obj => obj.name === 'Oeuf'));
+    let unitIndex = alienUnits.findIndex((obj => obj.name === alienUnit));
     conselUnit = alienUnits[unitIndex];
     conselAmmos = ['xxx','xxx'];
     alienOccupiedTileList();
@@ -84,9 +102,11 @@ function dropEgg() {
     }
     if (tileOK) {
         putBat(dropTile);
-        eggDropCount = eggDropCount+1;
-        if (eggDropCount === 1) {
-            eggSound();
+        if (alienUnit === 'Oeuf') {
+            eggDropCount = eggDropCount+1;
+            if (eggDropCount === 1) {
+                eggSound();
+            }
         }
     }
 };

@@ -9,6 +9,9 @@ function nextTurn() {
     selectMode();
     batUnstack();
     batUnselect();
+    if (playerInfos.mapTurn === 0) {
+        checkStartingAliens();
+    }
     // récup des aliens
     deadAliensList = [];
     let unitIndex;
