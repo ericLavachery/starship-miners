@@ -174,7 +174,7 @@ function checkPDM() {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= 4) {
                 batType = getBatType(bat);
-                if (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly) {
+                if (!batType.skills.includes('fly')) {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
                     if (distance < lePlusProche) {
                         pointDeMire = bat.tileId;
@@ -188,7 +188,7 @@ function checkPDM() {
             shufBats.forEach(function(bat) {
                 if (bat.loc === "zone" && bat.fuzz >= 1) {
                     batType = getBatType(bat);
-                    if (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly) {
+                    if (!batType.skills.includes('fly')) {
                         distance = calcDistance(selectedBat.tileId,bat.tileId);
                         if (distance < lePlusProche) {
                             pointDeMire = bat.tileId;
@@ -203,7 +203,7 @@ function checkPDM() {
             shufBats.forEach(function(bat) {
                 if (bat.loc === "zone" && bat.fuzz == 0) {
                     batType = getBatType(bat);
-                    if (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly) {
+                    if (!batType.skills.includes('fly')) {
                         distance = calcDistance(selectedBat.tileId,bat.tileId);
                         if (distance < lePlusProche) {
                             pointDeMire = bat.tileId;

@@ -24,7 +24,7 @@
         "transMaxSize":33,
         "transUnits":5000,
         "transRes":5000,
-        "fuzz":5
+        "fuzz":4
     },
     {
         "id":103,
@@ -51,7 +51,7 @@
         "transMaxSize":50,
         "transUnits":10000,
         "transRes":10000,
-        "fuzz":5
+        "fuzz":4
     },
     {
         "id":104,
@@ -105,7 +105,7 @@
         "transMaxSize":50,
         "transUnits":9000,
         "transRes":18000,
-        "fuzz":5
+        "fuzz":6
     },
     {
         "id":106,
@@ -155,7 +155,7 @@
         "transMaxSize":100,
         "transUnits":20000,
         "transRes":15000,
-        "fuzz":9
+        "fuzz":10
     },
     {
         "id":108,
@@ -182,7 +182,7 @@
         "transMaxSize":20,
         "transUnits":1200,
         "transRes":600,
-        "fuzz":5
+        "fuzz":3
     },
     {
         "id":109,
@@ -209,7 +209,7 @@
         "transMaxSize":33,
         "transUnits":4000,
         "transRes":3000,
-        "fuzz":7
+        "fuzz":4
     },
     {
         "id":8,
@@ -254,7 +254,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["deepselfrepair","cible","longshot","defense"],
-        "fuzz":4
+        "fuzz":1.5
     },
     {
         "id":12,
@@ -300,7 +300,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["deepselfrepair","cible","longshot","defense"],
-        "fuzz":5
+        "fuzz":1.5
     },
     {
         "id":37,
