@@ -11,6 +11,7 @@ function nextTurn() {
     batUnselect();
     if (playerInfos.mapTurn === 0) {
         checkStartingAliens();
+        playMusic();
     }
     // récup des aliens
     deadAliensList = [];
@@ -40,7 +41,6 @@ function nextTurn() {
     conselUnit = {};
     conselAmmos = ['xxx','xxx'];
     if (aliens.length >= 1) {
-        alienSounds();
         alienTurn();
     } else {
         nextTurnEnd();
@@ -399,7 +399,6 @@ function createBatList() {
 
 function nextBat(removeActiveBat) {
     // testConnect(pseudo);
-    playmusic();
     selectMode();
     batUnstack();
     deleteMoveInfos();
@@ -436,7 +435,7 @@ function alienSounds() {
     sound.play();
 };
 
-function playmusic() {
+function playMusic() {
     let track = [_.sample(musicTracks)];
     if (!theMusic.playing()) {
         theMusic = new Howl({

@@ -113,7 +113,7 @@ let eggDropCount = 0;
 // SOUNDS
 let musicVolume = 0.4;
 let fxVolume = 0.6;
-let musicTracks = ['Lizard Point','Aftermath','Aftermath','Damnation','It Is Raped','Life','The Secret Place','Parallel Dimensions','The Reaction'];
+let musicTracks = ['Cloudwalker II','Sphere of No-Form','Poa Alpina','Microgravity','Stars','The Secret Place','airports22'];
 let theMusic = new Howl({
-    src: ['/static/sounds/music/Patrolling Wire Borders.mp3']
+    src: ['/static/sounds/music/Microgravity.mp3']
 });

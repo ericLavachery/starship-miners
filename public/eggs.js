@@ -73,6 +73,7 @@ function eggsDrop() {
 };
 
 function dropEgg(alienUnit) {
+    playMusic();
     console.log('dropping egg...');
     let unitIndex = alienUnits.findIndex((obj => obj.name === alienUnit));
     conselUnit = alienUnits[unitIndex];
