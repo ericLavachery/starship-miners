@@ -941,12 +941,23 @@
             "sound":"PM_FSSF2_WEAPONS_H2_SHOT_324b",
             "ammo":["plasma","plastanium","nanite"]
         },
+        "weapon2":{
+            "name":"Guidage laser",
+            "cost":4,
+            "range":3,
+            "rof":6,
+            "accuracy":100,
+            "power":0,
+            "aoe":"unit",
+            "sound":"262436__ramston__real-explosionsb",
+            "ammo":["guidage"]
+        },
         "weapon2":{},
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","laser","sentinelle","robot"],
+        "skills":["fly","sentinelle","robot"],
         "fuzz":0
     },
     {

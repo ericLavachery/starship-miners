@@ -2523,5 +2523,50 @@
         "maxVeg":3,
         "skills":["fortif","cible","firstaid","sentinelle","selevation"],
         "fuzz":1
+    },
+    {
+        "id":116,
+        "name":"Cyclopes",
+        "pic":"cyclopes",
+        "cat":"infantry",
+        "kind":"detruas",
+        "squads":8,
+        "squadSize":8,
+        "crew":1,
+        "hp":6,
+        "armor":2,
+        "size":3,
+        "volume":0.9,
+        "stealth":16,
+        "ap":14,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Pistolet mitrailleur",
+            "cost":2,
+            "range":1,
+            "rof":24,
+            "accuracy":19,
+            "power":5,
+            "aoe":"unit",
+            "sound":"weapon_gun_ppsh_P_18-uzi",
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+        },
+        "weapon2":{
+            "name":"Guidage laser",
+            "cost":4,
+            "range":2,
+            "rof":6,
+            "accuracy":100,
+            "power":0,
+            "aoe":"unit",
+            "sound":"262436__ramston__real-explosionsb",
+            "ammo":["guidage"]
+        },
+        "moveCost":3,
+        "maxFlood":3,
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["fortif","cible","elevation","camo"],
+        "fuzz":-1
     }
 ]
