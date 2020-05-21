@@ -80,7 +80,6 @@ let cheapWeapCost = 99;
 let mecanoHP = 90;
 let batDebarq = {};
 // ALIENS
-let mapAdjDiff = 1;
 let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;
 let isFFW = false;
 let pointDeMire = 1830; // tileId
@@ -108,6 +107,7 @@ let maxAliens = 300;
 let cumDrop = 5; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
 let noEggs = 15; // % pour un eggDrop sans oeufs
 let eggPause = false;
+let pauseCount = 15; // pause tous les 15 oeufs tués
 let eggPauseEnd = 12; // 1 chance sur 12: fin de pause
 let eggDropCount = 0;
 // SOUNDS

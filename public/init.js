@@ -8,7 +8,18 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.eggPause === undefined) {
         playerInfos.eggPause = false;
     }
-    mapAdjDiff = playerInfos.mapDiff+3;
+    if (playerInfos.mapAdjDiff === undefined) {
+        playerInfos.mapAdjDiff = playerInfos.mapDiff;
+    }
+    if (playerInfos.aliensKilled === undefined) {
+        playerInfos.aliensKilled = 0;
+    }
+    if (playerInfos.eggsKilled === undefined) {
+        playerInfos.eggsKilled = 0;
+    }
+    if (playerInfos.unitsLost === undefined) {
+        playerInfos.unitsLost = 0;
+    }
     playerSkills();
 });
 // Terrains

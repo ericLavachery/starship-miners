@@ -113,13 +113,14 @@ function nextTurnEnd() {
     playerInfos.mapTurn = playerInfos.mapTurn+1;
     playerInfos.fuzzTotal = fuzzTotal;
     let bonusDiff = Math.floor((fuzzTotal+rand.rand(0,fuzzDiv)-(fuzzDiv/2))/fuzzDiv);
-    mapAdjDiff = playerInfos.mapDiff+bonusDiff;
-    if (mapAdjDiff < 1) {
-        mapAdjDiff = 1;
+    playerInfos.mapAdjDiff = playerInfos.mapDiff+bonusDiff;
+    if (playerInfos.mapAdjDiff < 1) {
+        playerInfos.mapAdjDiff = 1;
     }
     $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
     $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
-    $('#tour').append('Difficulté '+mapAdjDiff+'/'+playerInfos.mapDiff);
+    $('#tour').append('Difficulté '+playerInfos.mapAdjDiff+' / '+playerInfos.mapDiff+'<br>');
+    $('#tour').append('Morts <span class="or">'+playerInfos.unitsLost+'</span> / '+playerInfos.aliensKilled+' / <span class="cy">'+playerInfos.eggsKilled+'</span>');
     savePlayerInfos();
     saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
     saveAliens(); // !!!!!!!!!!!!!!!!!!!!!!
@@ -316,8 +317,13 @@ function checkDeath(bat,batType) {
     if (bat.squadsLeft <= 0) {
         if (bat.team == 'player') {
             deadBatsList.push(bat.id);
+            playerInfos.unitsLost = playerInfos.unitsLost+1;
         } else if (bat.team == 'aliens') {
             deadAliensList.push(bat.id);
+            if (bat.type === 'Oeuf') {
+                playerInfos.eggsKilled = playerInfos.eggsKilled+1;
+            }
+            playerInfos.aliensKilled = playerInfos.aliensKilled+1;
         }
     }
 };
