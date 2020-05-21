@@ -537,9 +537,9 @@
         },
         "moveCost":7,
         "maxFlood":0,
-        "maxScarp":1,
+        "maxScarp":2,
         "maxVeg":2,
-        "skills":["selfmecano","cible","longshot","selevation"],
+        "skills":["selfmecano","cible","longshot","selevation","hardmove"],
         "fuzz":5
     },
     {
@@ -756,7 +756,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["cible","transport","camo"],
+        "skills":["cible","transport","camo","hardmove"],
         "transMaxSize":9,
         "transUnits":900,
         "fuzz":0
@@ -929,7 +929,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","cible","medic","ravitaillement","camo","selfmecano","defense"],
+        "skills":["fortif","cible","medic","ravitaillement","camo","selfmecano","defense","hardmove"],
         "medicCost":2,
         "maxSKill":4,
         "fuzz":1
@@ -1248,10 +1248,10 @@
             "ammo":["standard"]
         },
         "moveCost":3,
-        "maxFlood":1,
-        "maxScarp":2,
+        "maxFlood":3,
+        "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","mecano","repair","constructeur"],
+        "skills":["fortif","cible","mecano","repair","constructeur","hardmove"],
         "medicCost":7,
         "fuzz":1.5
     },
@@ -1297,10 +1297,10 @@
             "ammo":["standard"]
         },
         "moveCost":4,
-        "maxFlood":1,
-        "maxScarp":2,
+        "maxFlood":3,
+        "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","mecano","repair","constructeur"],
+        "skills":["fortif","cible","mecano","repair","constructeur","hardmove"],
         "medicCost":3,
         "fuzz":2.5
     },
@@ -1347,7 +1347,7 @@
             "maxAmmo": 24
         },
         "moveCost":3,
-        "maxFlood":2,
+        "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
@@ -1384,7 +1384,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","transport"],
+        "skills":["cible","transport","hardmove"],
         "transMaxSize":9,
         "transUnits":800,
         "transRes":400,
@@ -1421,7 +1421,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","transport","selfmecano"],
+        "skills":["cible","transport","selfmecano","hardmove"],
         "transMaxSize":9,
         "transUnits":400,
         "transRes":800,
@@ -1499,8 +1499,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","transport","ravitaillement","selfmecano"],
-        "maxSKill":16,
+        "skills":["cible","transport","ravitaillement","stock","selfmecano","hardmove"],
         "transMaxSize":9,
         "transUnits":230,
         "transRes":150,
@@ -1703,7 +1702,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","inflammable"],
+        "skills":["fortif","cible","inflammable","hardmove"],
         "fuzz":2
     },
     {

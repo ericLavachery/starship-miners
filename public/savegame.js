@@ -26,6 +26,13 @@ function mapReset() {
     saveAliens();
     playerInfos.mapTurn = 0;
     playerInfos.mapDrop = 0;
+    playerInfos.eggPause = false;
+    playerInfos.aliensKilled = 0;
+    playerInfos.eggsKilled = 0;
+    playerInfos.unitsLost = 0;
+    playerInfos.mapAdjDiff = playerInfos.mapDiff;
+    playerInfos.fuzzTotal = 0;
+    playerInfos.pauseSeed = rand.rand(1,8);
     savePlayerInfos();
     commandes();
 };

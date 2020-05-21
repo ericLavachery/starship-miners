@@ -110,7 +110,7 @@ function dropEgg(alienUnit) {
                 playMusic();
             }
         }
-        if (playerInfos.eggsKilled >=1 && playerInfos.eggsKilled % pauseCount === 0) {
+        if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;
         }
     }
