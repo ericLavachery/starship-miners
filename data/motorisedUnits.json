@@ -38,7 +38,7 @@
             "power":18,
             "aoe":"brochette",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
-            "ammo":["obus","obus-scrap","obus-explosif","obus-heat","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-explosif","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo":9
         },
         "moveCost":2,
@@ -283,7 +283,7 @@
             "power":33,
             "aoe":"squad",
             "sound":"audio_hero_ClaymoreAntiMine_PE230101_339b",
-            "ammo":["obus-explosif","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-heatseeker"],
+            "ammo":["obus-explosif","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
             "maxAmmo":24
         },
         "moveCost":2,
@@ -417,7 +417,7 @@
             "power":42,
             "aoe":"squad",
             "sound":"audio_hero_ClaymoreAntiMine_PE230101_339b",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-gaz","missile-fleche","missile-heatseeker"],
             "maxAmmo":32
         },
         "weapon2":{
@@ -430,7 +430,7 @@
             "power":42,
             "aoe":"squad",
             "sound":"audio_hero_ClaymoreAntiMine_PE230101_339b",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-gaz","missile-fleche","missile-heatseeker"],
             "maxAmmo":32
         },
         "moveCost":9,
@@ -468,7 +468,7 @@
             "power":65,
             "aoe":"bat",
             "sound":"262436__ramston__real-explosionsb",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-heatseeker","missile-homing"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing"],
             "maxAmmo":24
         },
         "weapon2":{
@@ -483,7 +483,7 @@
             "power":65,
             "aoe":"bat",
             "sound":"262436__ramston__real-explosionsb",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-heatseeker","missile-homing"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing"],
             "maxAmmo":24
         },
         "moveCost":12,
@@ -623,7 +623,7 @@
             "power":20,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
-            "ammo":["obus-explosif","obus-scrap","obus-heat","obus-incendiaire","obus-napalm"]
+            "ammo":["obus-explosif","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"]
         },
         "weapon2":{
             "name":"Missille squash",
@@ -637,7 +637,7 @@
             "power":40,
             "aoe":"squad",
             "sound":"262436__ramston__real-explosionsb",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-heatseeker","missile-homing"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing"],
             "maxAmmo":8
         },
         "moveCost":2,
@@ -801,7 +801,7 @@
             "power":40,
             "aoe":"squad",
             "sound":"262436__ramston__real-explosionsb",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-heatseeker","missile-homing"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing"],
             "maxAmmo":4
         },
         "moveCost":3,
@@ -849,7 +849,7 @@
             "power":27,
             "aoe":"squad",
             "sound":"audio_hero_ClaymoreAntiMine_PE230101_339b",
-            "ammo":["obus-explosif","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-heatseeker"],
+            "ammo":["obus-explosif","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
             "maxAmmo":15
         },
         "moveCost":2,
@@ -1160,7 +1160,7 @@
     {
         "id":74,
         "name":"Autogire chicken",
-        "pic":"toyplane",
+        "pic":"chicken",
         "cat":"vehicles",
         "kind":"rednecks",
         "squads":6,
@@ -1203,8 +1203,58 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","fly","longshot","inflammable","maycamo"],
+        "skills":["cible","fly","longshot","maycamo"],
         "fuzz":2.5
+    },
+    {
+        "id":114,
+        "name":"ULM Shakers",
+        "pic":"shakers",
+        "cat":"vehicles",
+        "kind":"brasier",
+        "squads":6,
+        "squadSize":6,
+        "crew":1,
+        "hp":9,
+        "armor":3,
+        "size":7,
+        "volume":1.5,
+        "stealth":0,
+        "speed":5,
+        "ap":19,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Revolver",
+            "cost":2,
+            "range":1,
+            "rof":6,
+            "accuracy":18,
+            "dca":1.3,
+            "power":5,
+            "armors":0.85,
+            "aoe":"unit",
+            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+        },
+        "weapon2":{
+            "name":"Drop grenade",
+            "cost":4,
+            "range":1,
+            "noFly":true,
+            "rof":6,
+            "accuracy":16,
+            "power":13,
+            "aoe":"squad",
+            "sound":"161622__ryanconway__grenade-throwb",
+            "ammo":["fireball","fireglue","fireblast"],
+            "maxAmmo":16
+        },
+        "moveCost":2,
+        "maxFlood":3,
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["cible","fly","longshot","inflammable","maycamo"],
+        "fuzz":2
     },
     {
         "id":75,
@@ -1343,7 +1393,7 @@
             "power":38,
             "aoe":"squad",
             "sound":"audio_hero_ClaymoreAntiMine_PE230101_339b",
-            "ammo":["obus-explosif","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
+            "ammo":["obus-explosif","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo": 24
         },
         "moveCost":3,
@@ -1794,7 +1844,7 @@
     {
         "id":102,
         "name":"Speeders",
-        "pic":"soucoupe1",
+        "pic":"speeder",
         "cat":"vehicles",
         "kind":"tiradores",
         "squads":6,
@@ -1868,7 +1918,7 @@
             "power":28,
             "aoe":"squad",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
-            "ammo":["obus-explosif","obus-incendiaire","obus-napalm"],
+            "ammo":["obus-explosif","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo":32
         },
         "weapon2":{
@@ -1932,7 +1982,7 @@
             "power":32,
             "aoe":"bat",
             "sound":"161622__ryanconway__grenade-throwb",
-            "ammo":["obus-explosif","obus-heat","obus-incendiaire","obus-napalm"],
+            "ammo":["obus-explosif","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo":6
         },
         "moveCost":1,
@@ -1945,7 +1995,7 @@
     {
         "id":111,
         "name":"Hawks",
-        "pic":"fighter",
+        "pic":"hawk",
         "cat":"vehicles",
         "kind":"zero",
         "squads":7,

@@ -42,51 +42,5 @@
         "maxVeg":2,
         "skills":["fortif","cible","firtsaid","maycamo"],
         "fuzz":1
-    },
-    {
-        "id":999,
-        "name":"U.L.M.Shakers",
-        "pic":"",
-        "cat":"vehicles",
-        "kind":"brasier",
-        "squads":6,
-        "squadSize":6,
-        "crew":1,
-        "hp":8,
-        "armor":1,
-        "size":6,
-        "stealth":0,
-        "speed":0,
-        "ap":12,
-        "maxSalvo":1,
-        "weapon":{
-            "name":"Pistolet",
-            "cost":2,
-            "range":1,
-            "rof":6,
-            "accuracy":12,
-            "power":4,
-            "aoe":"unit",
-            "sound":"321552__brendan89__regular-arrow-shot",
-            "ammo":["standard","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite"]
-        },
-        "weapon2":{
-            "name":"Molotov",
-            "cost":6,
-            "range":0,
-            "noFly":true,
-            "rof":6,
-            "accuracy":14,
-            "power":8,
-            "aoe":"squad",
-            "sound":"audio_hero_MolotovCocktailThr_PE280101_381b",
-            "ammo":["Feu"]
-        },
-        "moveCost":1,
-        "maxFlood":3,
-        "maxScarp":3,
-        "maxVeg":3,
-        "skills":["fly"],
-        "fuzz":2
     }
 ]
