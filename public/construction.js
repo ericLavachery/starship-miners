@@ -1,4 +1,6 @@
 function bfconst() {
+    $("#conUnitList").css("display","block");
+    $("#conAmmoList").css("display","block");
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();
@@ -63,8 +65,10 @@ function catColor(cat,kind) {
     }
 };
 
-function conSelect(unitId,player) {
-    conselAmmos = ['xxx','xxx'];
+function conSelect(unitId,player,noRefresh) {
+    if (!noRefresh) {
+        conselAmmos = ['xxx','xxx'];
+    }
     if (player === 'player') {
         let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
         conselUnit = unitTypes[unitIndex];
@@ -75,43 +79,47 @@ function conSelect(unitId,player) {
     console.log(conselUnit);
     $('#conAmmoList').empty();
     $('#conAmmoList').append('<br>');
+    let listNum = 1;
     if (Object.keys(conselUnit.weapon).length >= 1) {
-        if (conselUnit.weapon.ammo.length >= 2) {
-            $('#conAmmoList').append('<span class="constName or">Munitions-1</span><br>');
+        if (conselUnit.weapon.ammo.length >= 1) {
+            $('#conAmmoList').append('<span class="constName or">'+conselUnit.weapon.name+'</span><br>');
             conselUnit.weapon.ammo.forEach(function(ammo) {
-                // if (conselAmmos[0] == ammo) {
-                //     $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                // } else {
-                //     $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-                // }
-                $('#conAmmoList').append('<span class="constName klik" onclick="selectAmmo(`'+ammo+'`,`w1`)">'+showAmmo(ammo)+'</span><br>');
+                if (conselAmmos[0] == ammo || (conselAmmos[0] === 'xxx' && listNum === 1)) {
+                    $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                } else {
+                    $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                }
+                $('#conAmmoList').append('<span class="constName klik" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
+                listNum++;
             });
         }
     }
+    listNum = 1;
     if (Object.keys(conselUnit.weapon2).length >= 1) {
-        if (conselUnit.weapon2.ammo.length >= 2) {
-            $('#conAmmoList').append('<span class="constName or">Munitions-2</span><br>');
+        if (conselUnit.weapon2.ammo.length >= 1) {
+            $('#conAmmoList').append('<span class="constName or">'+conselUnit.weapon2.name+'</span><br>');
             conselUnit.weapon2.ammo.forEach(function(ammo) {
-                // if (conselAmmos[1] == ammo) {
-                //     $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                // } else {
-                //     $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-                // }
-                $('#conAmmoList').append('<span class="constName klik" onclick="selectAmmo(`'+ammo+'`,`w2`)">'+showAmmo(ammo)+'</span><br>');
+                if (conselAmmos[1] == ammo || (conselAmmos[1] === 'xxx' && listNum === 1)) {
+                    $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                } else {
+                    $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                }
+                $('#conAmmoList').append('<span class="constName klik" onclick="selectAmmo(`'+ammo+'`,`w2`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
+                listNum++;
             });
         }
     }
     bfconst();
 };
 
-function selectAmmo(ammo,weapon) {
+function selectAmmo(ammo,weapon,unitId) {
     if (weapon === 'w1') {
         conselAmmos[0] = ammo;
     } else {
         conselAmmos[1] = ammo;
     }
     console.log(conselAmmos);
-    // bfconst();
+    conSelect(unitId,'player',true);
 };
 
 function clickConstruct(tileId) {
@@ -129,6 +137,7 @@ function clickConstruct(tileId) {
     if (!batHere) {
         putBat(tileId);
         bfconst();
+        $('#conAmmoList').empty();
     } else {
         console.log('Impossible de superposer 2 bataillons');
     }
@@ -238,6 +247,8 @@ function conOut() {
     $('#conAmmoList').empty();
     conselUnit = {};
     conselAmmos = ['xxx','xxx'];
+    $("#conUnitList").css("display","none");
+    $("#conAmmoList").css("display","none");
 };
 
 function dismantle(batId) {

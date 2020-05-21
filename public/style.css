@@ -407,9 +407,14 @@ td {
     background-position: 0% 0%;
     min-height: 81px;
 }
-#construction {
+#conUnitList,#conAmmoList {
     background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 0%;
+    scroll-behavior: auto;
+    scrollbar-color: #4C4845 #17161A;
+    overflow-y: scroll;
+    display: none;
+    height: 300px;
     /* min-height: 81px; */
 }
 #nameInfos {
