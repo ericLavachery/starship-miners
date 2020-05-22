@@ -35,4 +35,11 @@ function mapReset() {
     playerInfos.pauseSeed = rand.rand(1,8);
     savePlayerInfos();
     commandes();
+    $("#reset2").css("display","none");
+    $("#reset1").css("display","inline-block");
+};
+function showMapReset() {
+    commandes();
+    $("#reset1").css("display","none");
+    $("#reset2").css("display","inline-block");
 };

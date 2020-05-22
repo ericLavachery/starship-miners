@@ -534,7 +534,12 @@ function weaponAdj(weapon,bat,wn) {
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
     // ELEVATION
+    console.log(thisWeapon.elevation);
+    console.log(tile.terrain);
     if (thisWeapon.elevation >= 1 && tile.terrain == 'H') {
+        thisWeapon.range = thisWeapon.range+1;
+    }
+    if (thisWeapon.elevation === 1 && tile.terrain == 'M') {
         thisWeapon.range = thisWeapon.range+1;
     }
     if (thisWeapon.elevation === 2 && tile.terrain == 'M') {

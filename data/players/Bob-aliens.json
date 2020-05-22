@@ -1,1 +1,1 @@
-[]
+[{"id":1,"type":"Oeuf","typeId":6,"team":"aliens","creaTurn":16,"loc":"zone","locId":0,"tileId":3498,"oldTileId":3498,"squadsLeft":6,"damage":0,"apLeft":8,"oldapLeft":8,"salvoLeft":0,"ammo":"none","ammo2":"none","vet":0,"xp":0,"range":0,"army":0,"tags":["swarm"]},{"id":2,"type":"Cafards","typeId":22,"team":"aliens","creaTurn":16,"loc":"zone","locId":0,"tileId":3315,"oldTileId":3557,"squadsLeft":6,"damage":0,"apLeft":-3,"oldapLeft":30,"salvoLeft":1,"ammo":"none","ammo2":"none","vet":0,"xp":0,"range":0,"army":0,"tags":[]}]

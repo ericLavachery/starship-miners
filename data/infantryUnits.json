@@ -2601,7 +2601,7 @@
             "name":"Pistolet mitrailleur",
             "cost":2,
             "range":1,
-            "rof":21,
+            "rof":18,
             "accuracy":17,
             "power":4,
             "aoe":"unit",

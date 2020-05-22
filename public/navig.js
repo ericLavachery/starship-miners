@@ -19,7 +19,8 @@ function commandes() {
         $('#commandz').append('<hr>');
         $('#commandz').append('<button type="button" title="Générer une nouvelle carte" class="boutonVert iconButtons"><i class="fas fa-map" onclick="generateNewMap()"></i></button>');
         $('#commandz').append('<button type="button" title="Sauvegarder la carte" class="boutonVert iconButtons" onclick="saveMap()"><i class="fas fa-save"></i></button>');
-        $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les aliens)" class="boutonRouge iconButtons" onclick="mapReset()"><i class="fas fa-power-off"></i></button>');
+        $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les aliens)" class="boutonRouge iconButtons" onclick="showMapReset()" id="reset1"><i class="fas fa-power-off"></i></button>');
+        $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les aliens)" class="boutonRouge iconButtons" onclick="mapReset()" id="reset2"><i class="fas fa-skull-crossbones"></i></button>');
 
         $('#commandz').append('<br>');
         $('#commandz').append('<button type="button" title="Constriche" class="boutonGris iconButtons" onclick="bfconst()"><i class="fa fa-hammer"></i></button>');
