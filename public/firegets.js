@@ -461,6 +461,11 @@ function weaponAdj(weapon,bat,wn) {
     }
     thisWeapon.aoe = weapon.aoe;
     thisWeapon.sound = weapon.sound;
+    if (weapon.elevation === undefined) {
+        thisWeapon.elevation = 0;
+    } else {
+        thisWeapon.elevation = weapon.elevation;
+    }
     if (weapon.noAtt === undefined) {
         thisWeapon.noAtt = false;
     } else {
@@ -529,31 +534,11 @@ function weaponAdj(weapon,bat,wn) {
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
     // ELEVATION
-    if (wn == 'w2' && bat.team == 'player') {
-        // let batTypeIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-        // let batUnitType = unitTypes[batTypeIndex];
-        if (batUnitType.skills.includes('elevation') || batUnitType.skills.includes('selevation')) {
-            if (tile.terrain == 'H') {
-                thisWeapon.range = thisWeapon.range+1;
-            } else if (tile.terrain == 'M') {
-                if (batUnitType.skills.includes('selevation')) {
-                    thisWeapon.range = thisWeapon.range+1;
-                } else {
-                    thisWeapon.range = thisWeapon.range+2;
-                }
-            }
-        }
+    if (thisWeapon.elevation >= 1 && tile.terrain == 'H') {
+        thisWeapon.range = thisWeapon.range+1;
     }
-    if (bat.team == 'aliens') {
-        // let batTypeIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
-        // let batUnitType = alienUnits[batTypeIndex];
-        if (batUnitType.skills.includes('elevation')) {
-            if (tile.terrain == 'H') {
-                thisWeapon.range = thisWeapon.range+1;
-            } else if (tile.terrain == 'M') {
-                thisWeapon.range = thisWeapon.range+2;
-            }
-        }
+    if (thisWeapon.elevation === 2 && tile.terrain == 'M') {
+        thisWeapon.range = thisWeapon.range+2;
     }
     // Forêt (range)
     if (thisWeapon.range >= 2 && tile.terrain == 'F') {

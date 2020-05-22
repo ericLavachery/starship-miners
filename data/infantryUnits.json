@@ -145,6 +145,7 @@
             "name":"Fusil de précision",
             "cost":6,
             "range":2,
+            "elevation":2,
             "noMelee":true,
             "rof":5,
             "accuracy":35,
@@ -158,7 +159,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","elevation","camo","firstaid"],
+        "skills":["fortif","cible","camo","firstaid"],
         "fuzz":-1
     },
     {
@@ -191,6 +192,7 @@
             "name":"Fusil de chasse",
             "cost":3,
             "range":1,
+            "elevation":2,
             "rof":6,
             "accuracy":27,
             "power":8,
@@ -202,7 +204,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","elevation","ranger","maycamo"],
+        "skills":["fortif","cible","ranger","maycamo"],
         "fuzz":0
     },
     {
@@ -648,6 +650,7 @@
             "name":"Mortier léger",
             "cost":7,
             "range":3,
+            "elevation":1,
             "noMelee":true,
             "noFly":true,
             "rof":3,
@@ -662,7 +665,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","selevation","maycamo"],
+        "skills":["fortif","cible","maycamo"],
         "fuzz":2
     },
     {
@@ -696,6 +699,7 @@
             "name":"RPG",
             "cost":6,
             "range":1,
+            "elevation":1,
             "noFly":true,
             "rof":6,
             "accuracy":14,
@@ -709,7 +713,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","selevation","maycamo"],
+        "skills":["fortif","cible","maycamo"],
         "fuzz":1.5
     },
     {
@@ -818,7 +822,7 @@
         "armor":0,
         "size":3,
         "volume":1.2,
-        "stealth":4,
+        "stealth":6,
         "ap":9,
         "maxSalvo":1,
         "weapon":{
@@ -910,6 +914,7 @@
             "name":"Calibre",
             "cost":4,
             "range":1,
+            "elevation":1,
             "rof":10,
             "accuracy":19,
             "power":7,
@@ -917,22 +922,12 @@
             "sound":"warfare_gunshots_x2_rifle_exterior",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
-        "weapon2":{
-            "name":"Calibre",
-            "cost":4,
-            "range":1,
-            "rof":10,
-            "accuracy":19,
-            "power":7,
-            "aoe":"unit",
-            "sound":"warfare_gunshots_x2_rifle_exterior",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
-        },
+        "weapon2":{},
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","extraction","firstaid","constructeur","maycamo","selevation"],
+        "skills":["fortif","extraction","firstaid","constructeur","maycamo"],
         "fuzz":0
     },
     {
@@ -1095,7 +1090,7 @@
         "armor":2,
         "size":3,
         "volume":1.2,
-        "stealth":1,
+        "stealth":3,
         "speed":4,
         "ap":16,
         "maxSalvo":1,
@@ -1305,6 +1300,7 @@
             "name":"Fusil magnétique",
             "cost":6,
             "range":3,
+            "elevation":2,
             "noMelee":true,
             "rof":5,
             "accuracy":38,
@@ -1318,7 +1314,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","elevation","camo","firstaid"],
+        "skills":["fortif","cible","camo","firstaid"],
         "fuzz":-1
     },
     {
@@ -1400,6 +1396,7 @@
             "name":"Fusil laser",
             "cost":5,
             "range":3,
+            "elevation":2,
             "noMelee":true,
             "rof":8,
             "accuracy":50,
@@ -1412,7 +1409,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo","medic","elevation","fly","jetpack","inflammable"],
+        "skills":["fortif","cible","camo","medic","fly","jetpack","inflammable"],
         "medicCost":5,
         "fuzz":-1
     },
@@ -1571,8 +1568,8 @@
         "armor":5,
         "size":3,
         "volume":1.2,
-        "stealth":6,
-        "speed":4,
+        "stealth":5,
+        "speed":3,
         "ap":14,
         "maxSalvo":1,
         "weapon":{
@@ -1636,6 +1633,7 @@
             "name":"Canon",
             "cost":8,
             "range":1,
+            "elevation":1,
             "noFly":true,
             "noBis":true,
             "rof":1,
@@ -1650,7 +1648,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid","selevation","defense"],
+        "skills":["fortif","cible","firstaid","defense"],
         "fuzz":1
     },
     {
@@ -1686,6 +1684,7 @@
             "name":"RPG",
             "cost":4,
             "range":1,
+            "elevation":1,
             "noFly":true,
             "noBis":true,
             "rof":2,
@@ -1700,7 +1699,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","embuscade","selfmedic","leader","camo","selevation","sentinelle","survivor","undead"],
+        "skills":["fortif","cible","embuscade","selfmedic","leader","camo","sentinelle","survivor","undead"],
         "fuzz":2
     },
     {
@@ -1733,6 +1732,7 @@
             "name":"Fusil de précision",
             "cost":7,
             "range":2,
+            "elevation":2,
             "noMelee":true,
             "rof":4,
             "accuracy":35,
@@ -1746,7 +1746,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","selfmedic","leader","elevation","survivor","luckyshot","defense","sentinelle","ranger"],
+        "skills":["fortif","cible","selfmedic","leader","survivor","luckyshot","defense","sentinelle","ranger"],
         "fuzz":1.5
     },
     {
@@ -1826,6 +1826,7 @@
             "name":"LG intégré",
             "cost":3,
             "range":1,
+            "elevation":1,
             "noFly":true,
             "rof":8,
             "accuracy":12,
@@ -1839,7 +1840,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid","selevation"],
+        "skills":["fortif","cible","firstaid"],
         "fuzz":1.5
     },
     {
@@ -1875,6 +1876,7 @@
             "name":"Fusil pneu",
             "cost":3,
             "range":1,
+            "elevation":1,
             "rof":8,
             "accuracy":36,
             "power":6,
@@ -1886,7 +1888,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","elevation","camo","regeneration","embuscade","mutant","ranger","undead","survivor","sentinelle"],
+        "skills":["fortif","cible","camo","regeneration","embuscade","mutant","ranger","undead","survivor","sentinelle"],
         "fuzz":-1
     },
     {
@@ -1921,6 +1923,7 @@
             "name":"RPG",
             "cost":6,
             "range":1,
+            "elevation":1,
             "noFly":true,
             "rof":4,
             "accuracy":14,
@@ -1934,7 +1937,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","mutant","selevation","ranger","berserk"],
+        "skills":["fortif","cible","mutant","ranger","berserk"],
         "fuzz":2
     },
     {
@@ -2181,6 +2184,7 @@
             "name":"Fusil laser",
             "cost":3,
             "range":3,
+            "elevation":1,
             "rof":8,
             "accuracy":50,
             "power":10,
@@ -2188,22 +2192,12 @@
             "sound":"pm_ag_1_2_abstract_guns_281c",
             "ammo":["laser"]
         },
-        "weapon2":{
-            "name":"Fusil laser",
-            "cost":3,
-            "range":3,
-            "rof":8,
-            "accuracy":50,
-            "power":10,
-            "aoe":"unit",
-            "sound":"pm_ag_1_2_abstract_guns_281c",
-            "ammo":["laser"]
-        },
+        "weapon2":{},
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","basemecano","badmedic","guerrilla","selevation","cyber"],
+        "skills":["fortif","cible","basemecano","badmedic","guerrilla","cyber"],
         "medicCost":3,
         "fuzz":1
     },
@@ -2239,6 +2233,7 @@
             "name":"Lance-flammes",
             "cost":4,
             "range":0,
+            "elevation":1,
             "rof":9,
             "accuracy":18,
             "power":13,
@@ -2251,7 +2246,7 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","cible","inflammable","selevation","sentinelle","firstaid","cyber"],
+        "skills":["fortif","cible","inflammable","sentinelle","firstaid","cyber"],
         "fuzz":2.5
     },
     {
@@ -2267,7 +2262,7 @@
         "armor":6,
         "size":4,
         "volume":1.2,
-        "stealth":0,
+        "stealth":3,
         "speed":5,
         "ap":19,
         "maxSalvo":1,
@@ -2331,6 +2326,7 @@
             "name":"Rainbow gun",
             "cost":6,
             "range":2,
+            "elevation":1,
             "noMelee":true,
             "noDef":true,
             "noBis":true,
@@ -2347,7 +2343,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","selevation","undead"],
+        "skills":["fortif","cible","undead"],
         "fuzz":2
     },
     {
@@ -2370,6 +2366,7 @@
             "name":"Canon",
             "cost":5,
             "range":2,
+            "elevation":1,
             "noFly":true,
             "rof":3,
             "accuracy":16,
@@ -2394,7 +2391,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selevation","defense","maycamo"],
+        "skills":["fortif","cible","defense","maycamo"],
         "fuzz":3
     },
     {
@@ -2427,6 +2424,7 @@
             "name":"Molotov",
             "cost":5,
             "range":0,
+            "elevation":1,
             "noFly":true,
             "rof":8,
             "accuracy":13,
@@ -2440,7 +2438,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","maycamo","selevation","guerrilla"],
+        "skills":["fortif","cible","maycamo","guerrilla"],
         "fuzz":0
     },
     {
@@ -2473,6 +2471,7 @@
             "name":"Sling grenade",
             "cost":5,
             "range":1,
+            "elevation":1,
             "noFly":true,
             "rof":10,
             "accuracy":16,
@@ -2486,7 +2485,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","selevation"],
+        "skills":["fortif","cible"],
         "fuzz":0
     },
     {
@@ -2520,6 +2519,7 @@
             "name":"Fusil de chasse",
             "cost":3,
             "range":1,
+            "elevation":1,
             "rof":8,
             "accuracy":24,
             "power":8,
@@ -2531,7 +2531,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid","sentinelle","selevation"],
+        "skills":["fortif","cible","firstaid","sentinelle"],
         "fuzz":1
     },
     {
@@ -2565,6 +2565,7 @@
             "name":"Guidage laser",
             "cost":4,
             "range":2,
+            "elevation":2,
             "rof":6,
             "accuracy":100,
             "power":0,
@@ -2576,7 +2577,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","elevation","camo"],
+        "skills":["fortif","cible","camo"],
         "fuzz":-1
     },
     {
@@ -2592,7 +2593,7 @@
         "armor":3,
         "size":3,
         "volume":1.2,
-        "stealth":12,
+        "stealth":8,
         "speed":4,
         "ap":15,
         "maxSalvo":1,
@@ -2611,6 +2612,7 @@
             "name":"Canon laser",
             "cost":5,
             "range":3,
+            "elevation":2,
             "noMelee":true,
             "rof":4,
             "accuracy":50,
@@ -2623,7 +2625,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","badmedic","leader","fly","jetpack","longshot","elevation","survivor","inflammable"],
+        "skills":["fortif","cible","badmedic","leader","fly","jetpack","longshot","survivor","inflammable"],
         "medicCost":5,
         "fuzz":2
     }
