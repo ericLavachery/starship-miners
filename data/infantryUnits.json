@@ -2635,7 +2635,7 @@
             "rof":4,
             "accuracy":50,
             "power":17,
-            "aoe":"brochette",
+            "aoe":"unit",
             "sound":"pm_ag_1_2_abstract_guns_281c",
             "ammo":["laser"]
         },
