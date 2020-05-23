@@ -423,7 +423,7 @@
             "dca":0.7,
             "power":42,
             "aoe":"squad",
-            "sound":"audio_hero_ClaymoreAntiMine_PE230101_339b",
+            "sound":"audio_hero_ClaymoreAntiMine_PE230101_339c",
             "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-gaz","missile-fleche","missile-heatseeker"],
             "maxAmmo":32
         },
@@ -550,7 +550,7 @@
             "accuracy":10,
             "power":23,
             "aoe":"brochette",
-            "sound":"321552__brendan89__regular-arrow-shotb",
+            "sound":"zapsplat_warfare_slingshot_fire_001_15871c",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire"]
         },
         "weapon2":{
@@ -604,7 +604,7 @@
             "accuracy":13,
             "power":20,
             "aoe":"squad",
-            "sound":"161622__ryanconway__grenade-throwb",
+            "sound":"161622__ryanconway__grenade-throw-mortar",
             "ammo":["obus-explosif","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"]
         },
         "weapon2":{
@@ -731,7 +731,7 @@
             "accuracy":14,
             "power":19,
             "aoe":"brochette",
-            "sound":"321552__brendan89__regular-arrow-shotb",
+            "sound":"321552__brendan89__regular-arrow-shotc",
             "ammo":["standard","poison","poraz","shinda","taser"]
         },
         "weapon2":{},
@@ -1134,7 +1134,7 @@
             "dca":1,
             "power":21,
             "aoe":"brochette",
-            "sound":"321552__brendan89__regular-arrow-shotb",
+            "sound":"321552__brendan89__regular-arrow-shotc",
             "ammo":["standard","poison","poraz","shinda","taser"]
         },
         "weapon2":{
@@ -1294,8 +1294,8 @@
             "range":1,
             "noFly":true,
             "rof":6,
-            "accuracy":16,
-            "power":13,
+            "accuracy":14,
+            "power":10,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
             "ammo":["fireball","fireglue","fireblast"],
@@ -1445,7 +1445,7 @@
             "accuracy":16,
             "power":38,
             "aoe":"squad",
-            "sound":"audio_hero_ClaymoreAntiMine_PE230101_339b",
+            "sound":"audio_hero_ClaymoreAntiMine_PE230101_339c",
             "ammo":["obus-explosif","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo": 24
         },
@@ -1931,7 +1931,7 @@
             "accuracy":12,
             "power":18,
             "aoe":"bat",
-            "sound":"161622__ryanconway__grenade-throwb",
+            "sound":"explosion_distant_003-1",
             "ammo":["grenade","grenade-antichar","grenade-incendiaire"],
             "maxAmmo":3
         },
@@ -2032,7 +2032,7 @@
             "accuracy":12,
             "power":32,
             "aoe":"bat",
-            "sound":"161622__ryanconway__grenade-throwb",
+            "sound":"zapsplat_warfare_missiles_x4_incoming_whizz_by_then_explosions_31170",
             "ammo":["obus-explosif","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo":6
         },
@@ -2082,7 +2082,7 @@
             "accuracy":12,
             "power":18,
             "aoe":"bat",
-            "sound":"161622__ryanconway__grenade-throwb",
+            "sound":"explosion_distant_003-2",
             "ammo":["grenade","grenade-antichar","grenade-incendiaire"],
             "maxAmmo":3
         },
