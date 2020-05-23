@@ -243,7 +243,8 @@
             "name":"Lance-flammes",
             "cost":6,
             "range":0,
-            "rof":4,
+            "noBis":true,
+            "rof":8,
             "accuracy":16,
             "power":10,
             "aoe":"squad",
@@ -266,7 +267,7 @@
         "kind":"zero",
         "squads":6,
         "squadSize":1,
-        "crew":4,
+        "crew":6,
         "hp":90,
         "armor":5,
         "size":40,
@@ -277,7 +278,7 @@
             "name":"Fusil de précision",
             "cost":5,
             "range":4,
-            "rof":2,
+            "rof":3,
             "accuracy":35,
             "power":9,
             "armors":0.75,
@@ -289,7 +290,7 @@
             "name":"Fusil antichar",
             "cost":5,
             "range":4,
-            "rof":2,
+            "rof":3,
             "accuracy":20,
             "power":15,
             "armors":0.5,
@@ -353,7 +354,7 @@
         "armor":2,
         "size":2,
         "stealth":0,
-        "speed":-50,
+        "speed":-20,
         "ap":60,
         "maxSalvo":1,
         "weapon":{
@@ -384,7 +385,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":[],
+        "skills":["sentinelle","defense"],
         "fuzz":-2
     },
     {
@@ -400,7 +401,7 @@
         "armor":0,
         "size":2,
         "stealth":0,
-        "speed":-50,
+        "speed":-20,
         "ap":60,
         "maxSalvo":1,
         "weapon":{
@@ -409,8 +410,8 @@
             "range":0,
             "noAtt":true,
             "rof":2,
-            "accuracy":9,
-            "power":16,
+            "accuracy":10,
+            "power":18,
             "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
             "ammo":["dynamite"]
@@ -421,8 +422,8 @@
             "range":0,
             "noDef":true,
             "rof":8,
-            "accuracy":9,
-            "power":16,
+            "accuracy":10,
+            "power":18,
             "aoe":"brochette",
             "sound":"bottlerocket_Impact_Boom_Distorted_10b",
             "ammo":["suicide"]
@@ -431,7 +432,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":[],
+        "skills":["sentinelle","defense"],
         "fuzz":-2
     }
 ]
