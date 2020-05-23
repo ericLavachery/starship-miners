@@ -430,6 +430,7 @@ function ammoFired(batId) {
 };
 
 function weaponAdj(weapon,bat,wn) {
+    batType = getBatType(bat);
     // bonus veterancy
     let thisWeapon = {};
     if (wn == 'w2') {
@@ -557,6 +558,10 @@ function weaponAdj(weapon,bat,wn) {
         } else {
             thisWeapon.range = 1;
         }
+    }
+    // Water (range)
+    if (thisWeapon.range >= 2 && (tile.terrain == 'W' || tile.terrain == 'R') && !batType.skills.includes('fly')) {
+        thisWeapon.range = thisWeapon.range-1;
     }
     console.log(thisWeapon);
     return thisWeapon;
