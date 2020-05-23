@@ -47,7 +47,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["forftif","cible"],
+        "skills":["forftif","cible","guerrilla"],
         "fuzz":2.5
     },
     {
@@ -928,6 +928,7 @@
             "name":"Guidage laser",
             "cost":4,
             "range":3,
+            "noDef":true,
             "rof":6,
             "accuracy":100,
             "power":0,
@@ -1252,7 +1253,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","fly","longshot","maycamo"],
+        "skills":["cible","fly","longshot","maycamo","guerrilla"],
         "fuzz":2.5
     },
     {
@@ -1802,7 +1803,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","inflammable","hardmove"],
+        "skills":["fortif","cible","inflammable","hardmove","guerrilla"],
         "fuzz":2
     },
     {
@@ -1850,7 +1851,7 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","leader","selfmecano"],
+        "skills":["fortif","cible","leader","selfmecano","guerrilla"],
         "fuzz":2
     },
     {
@@ -2089,7 +2090,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","fly","longshot"],
+        "skills":["cible","fly","longshot","guerrilla"],
         "fuzz":5
     },
     {

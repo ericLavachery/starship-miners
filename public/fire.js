@@ -113,7 +113,7 @@ function combat() {
             attack();
             minimumFireAP = minFireAP;
             if (targetBatType.skills.includes('guerrilla')) {
-                minimumFireAP = minFireAP-5;
+                minimumFireAP = minFireAP-7;
             }
             if (defAlive && targetBat.apLeft > minimumFireAP) {
                 defense();
@@ -136,7 +136,7 @@ function combat() {
             if (activeTurn == 'player') {blockMe(true);}
             minimumFireAP = minFireAP;
             if (targetBatType.skills.includes('guerrilla')) {
-                minimumFireAP = minFireAP-5;
+                minimumFireAP = minFireAP-7;
             }
             if (targetBat.apLeft > minimumFireAP) {
                 defense();
@@ -329,7 +329,10 @@ function attack() {
     if (selectedBatType.skills.includes('grip') && totalDamage >= 1 && selectedBatType.size*2 >= targetBatType.size) {
         let gripbonus = 0;
         if (selectedBatType.name == 'Androks') {
-            gripbonus = 30;
+            gripbonus = 40;
+        }
+        if (selectedBatType.name == 'Bourdons') {
+            gripbonus = -20;
         }
         let gripChance = (selectedBat.squadsLeft*5)+gripbonus-(targetBat.vet*3);
         if (targetBatType.cat != 'aliens') {
@@ -339,7 +342,7 @@ function attack() {
             if (selectedBatType.skills.includes('tail')) {
                 totalDamage = totalDamage+targetBatType.hp;
             }
-            if (targetBatType.weapon.isMelee || targetBatType.weapon2.isMelee) {
+            if (targetBatType.weapon.isMelee || targetBatType.weapon2.isMelee || targetBatType.weapon.isShort || targetBatType.weapon2.isShort) {
                 apDamage = apDamage+Math.round(selectedBat.squadsLeft*3/4);
             } else {
                 apDamage = apDamage+selectedBat.squadsLeft*3;

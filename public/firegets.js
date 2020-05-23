@@ -502,6 +502,11 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.isMelee = weapon.isMelee;
         thisWeapon.accuracy = thisWeapon.accuracy+Math.round(bat.vet*1);
     }
+    if (weapon.isShort === undefined) {
+        thisWeapon.isShort = false;
+    } else {
+        thisWeapon.isShort = weapon.isShort;
+    }
     if (weapon.isBow === undefined) {
         thisWeapon.isBow = false;
     } else {
