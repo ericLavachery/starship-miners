@@ -11,7 +11,7 @@ function nextTurn() {
     batUnselect();
     if (playerInfos.mapTurn === 0) {
         checkStartingAliens();
-        playMusic();
+        playMusic('start',false);
     }
     // récup des aliens
     deadAliensList = [];
@@ -321,6 +321,7 @@ function checkDeath(bat,batType) {
         if (bat.team == 'player') {
             deadBatsList.push(bat.id);
             playerInfos.unitsLost = playerInfos.unitsLost+1;
+            playMusic('rip',false);
         } else if (bat.team == 'aliens') {
             deadAliensList.push(bat.id);
             if (bat.type === 'Oeuf') {
@@ -444,9 +445,12 @@ function alienSounds() {
     sound.play();
 };
 
-function playMusic() {
+function playMusic(piste,interrupt) {
     let track = [_.sample(musicTracks)];
-    if (!theMusic.playing()) {
+    if (piste != 'any') {
+        track = piste;
+    }
+    if (!theMusic.playing() || interrupt) {
         theMusic = new Howl({
             src: ['/static/sounds/music/'+track+'.mp3'],
             volume: musicVolume

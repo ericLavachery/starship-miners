@@ -455,7 +455,7 @@ function attack() {
     targetBatArrayUpdate();
     if (targetBat.squadsLeft <= 0) {
         defAlive = false;
-        batDeath(targetBat);
+        batDeath(targetBat,true);
         $('#report').append('<br><span class="report cy">Bataillon ('+targetBat.type+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
@@ -475,7 +475,7 @@ function attack() {
     // remove ap & salvo & life :)
     if (selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('autodestruction')) {
         attAlive = false;
-        batDeath(selectedBat);
+        batDeath(selectedBat,true);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
@@ -712,7 +712,7 @@ function defense() {
     selectedBatArrayUpdate();
     if (selectedBat.squadsLeft <= 0) {
         attAlive = false;
-        batDeath(selectedBat);
+        batDeath(selectedBat,true);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
@@ -831,21 +831,27 @@ function blast(brochette,aoeShots,weapon,bat,batType,shotDice) {
     return result;
 };
 
-function batDeath(bat) {
+function batDeath(bat,count) {
     console.log('DEATH');
     if (bat.team == 'player') {
         let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
         bataillons.splice(batIndex,1);
-        playerInfos.unitsLost = playerInfos.unitsLost+1;
+        if (count) {
+            playerInfos.unitsLost = playerInfos.unitsLost+1;
+            playMusic('rip',false);
+        }
         batIndex = batList.findIndex((obj => obj.id == bat.id));
         batList.splice(batIndex,1);
     } else if (bat.team == 'aliens') {
         let batIndex = aliens.findIndex((obj => obj.id == bat.id));
         aliens.splice(batIndex,1);
-        if (bat.type === 'Oeuf') {
-            playerInfos.eggsKilled = playerInfos.eggsKilled+1;
+        if (count) {
+            if (bat.type === 'Oeuf') {
+                playerInfos.eggsKilled = playerInfos.eggsKilled+1;
+                playMusic('eggKill',false);
+            }
+            playerInfos.aliensKilled = playerInfos.aliensKilled+1;
         }
-        playerInfos.aliensKilled = playerInfos.aliensKilled+1;
     } else if (bat.team == 'locals') {
         let batIndex = locals.findIndex((obj => obj.id == bat.id));
         locals.splice(batIndex,1);

@@ -107,7 +107,7 @@ function dropEgg(alienUnit) {
             eggDropCount = eggDropCount+1;
             if (eggDropCount === 1) {
                 eggSound();
-                playMusic();
+                playMusic('newEgg',false);
             }
         }
         if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {

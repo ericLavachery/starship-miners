@@ -257,7 +257,7 @@ function dismantle(batId) {
     let index = bataillons.findIndex((obj => obj.id == batId));
     let bat = bataillons[index];
     batUnselect();
-    batDeath(bat);
+    batDeath(bat,false);
     let batIndex = batList.findIndex((obj => obj.id == batId));
     batList.splice(batIndex,1);
     $('#b'+bat.tileId).empty();
@@ -268,7 +268,7 @@ function dismantle(batId) {
 function deleteAlien(batId) {
     let index = aliens.findIndex((obj => obj.id == batId));
     let bat = aliens[index];
-    batDeath(bat);
+    batDeath(bat,false);
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
     $('#b'+bat.tileId).append(resHere);
