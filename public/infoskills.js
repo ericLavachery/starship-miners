@@ -9,7 +9,7 @@ function skillsInfos(bat,batUnitType) {
     let anyRavit = checkRavit(bat);
     if (anyRavit && bat.tags.includes('ammoUsed')) {
         let apCost = batUnitType.ap;
-        if (bat.apLeft >= apCost) {
+        if (bat.apLeft >= 4) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de munitions" class="boutonGris iconButtons" onclick="goRavit('+apCost+')"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ravitaillement</h4></span>');
         } else {
             skillMessage = "Pas assez de PA";
@@ -20,7 +20,7 @@ function skillsInfos(bat,batUnitType) {
     let anyStock = checkStock(bat);
     if (anyStock && bat.tags.includes('skillUsed')) {
         let apCost = batUnitType.ap;
-        if (bat.apLeft >= apCost) {
+        if (bat.apLeft >= 4) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de ravitaillements" class="boutonGris iconButtons" onclick="goStock('+apCost+')"><i class="fas fa-cubes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réapprovisionnement</h4></span>');
         } else {
             skillMessage = "Pas assez de PA";
@@ -44,7 +44,7 @@ function skillsInfos(bat,batUnitType) {
     // FORTIFICATION
     if (batUnitType.skills.includes('fortif')) {
         apCost = batUnitType.ap;
-        if (bat.apLeft >= apCost && !bat.tags.includes('fortif') && !inMelee && bat.salvoLeft >= batUnitType.maxSalvo) {
+        if (bat.apLeft >= apCost-2 && !bat.tags.includes('fortif') && !inMelee && bat.salvoLeft >= batUnitType.maxSalvo) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se fortifier (bonus couverture)" class="boutonGris iconButtons" onclick="fortification()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</h4></span>');
         } else {
             if (inMelee) {
@@ -106,7 +106,12 @@ function skillsInfos(bat,batUnitType) {
     // EMBUSCADE
     if (batUnitType.skills.includes('embuscade')) {
         apCost = 2;
-        if (bat.apLeft >= apCost && bat.tags.includes('camo') && bat.apLeft >= apCost+cheapWeapCost) {
+        if (batUnitType.weapon2.rof >= 1 && batUnitType.weapon.cost > batUnitType.weapon2.rof) {
+            apReq = 2+batUnitType.weapon2.rof;
+        } else {
+            apReq = 2+batUnitType.weapon.rof;
+        }
+        if (bat.apLeft >= apReq && bat.tags.includes('camo') && bat.apLeft >= apCost+cheapWeapCost) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embuscade (Initiative + Cadence de tir 150%)" class="boutonGris iconButtons" onclick="ambush()"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</h4></span>');
         } else {
             skillMessage = "Pas assez de PA";
@@ -120,11 +125,16 @@ function skillsInfos(bat,batUnitType) {
     // intéressant si précision en dessous de 10
     if (batUnitType.skills.includes('cible')) {
         apCost = 3;
+        if (batUnitType.weapon2.rof >= 1 && batUnitType.weapon.cost > batUnitType.weapon2.rof) {
+            apReq = 3+batUnitType.weapon2.rof;
+        } else {
+            apReq = 3+batUnitType.weapon.rof;
+        }
         balise = 'h4';
         if (bat.tags.includes('vise')) {
             balise = 'h1';
         }
-        if (bat.apLeft >= apCost && !bat.tags.includes('vise') && bat.apLeft >= apCost+cheapWeapCost) {
+        if (bat.apLeft >= apReq && !bat.tags.includes('vise') && bat.apLeft >= apCost+cheapWeapCost) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+5 précision, 2/3 cadence de tir (3 PA + coût de l\'arme)" class="boutonGris iconButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
         } else {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de PA" class="boutonGris iconButtons gf"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
@@ -132,14 +142,19 @@ function skillsInfos(bat,batUnitType) {
     }
     // LUCKY SHOT
     if (batUnitType.skills.includes('luckyshot')) {
+        if (batUnitType.weapon2.rof >= 1 && batUnitType.weapon.cost > batUnitType.weapon2.rof) {
+            apReq = batUnitType.weapon2.rof;
+        } else {
+            apReq = batUnitType.weapon.rof;
+        }
         balise = 'h4';
         if (bat.tags.includes('luckyshot')) {
             balise = 'h1';
         }
-        if (!bat.tags.includes('luckyshot') && !bat.tags.includes('lucky') && bat.apLeft >= cheapWeapCost) {
+        if (bat.apLeft >= apReq && !bat.tags.includes('luckyshot') && !bat.tags.includes('lucky') && bat.apLeft >= cheapWeapCost) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lucky shot automatique sur cette attaque" class="boutonGris iconButtons" onclick="luckyShot()"><i class="fas fa-dice-six"></i> <span class="small">0</span></button>&nbsp; Lucky shot</'+balise+'></span>');
         } else {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de bol" class="boutonGris iconButtons gf"><i class="fas fa-dice-six"></i> <span class="small">'+apCost+'</span></button>&nbsp; Lucky shot</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de bol ou de PA" class="boutonGris iconButtons gf"><i class="fas fa-dice-six"></i> <span class="small">'+apCost+'</span></button>&nbsp; Lucky shot</'+balise+'></span>');
         }
     }
     // MEDIC
