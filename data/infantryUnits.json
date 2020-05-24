@@ -2233,7 +2233,7 @@
         "size":6,
         "volume":1.2,
         "stealth":0,
-        "ap":18,
+        "ap":19,
         "maxSalvo":1,
         "weapon":{
             "name":"Lance-flammes",
