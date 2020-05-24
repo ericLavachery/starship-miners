@@ -1544,6 +1544,7 @@
             "name":"Fusil pneu",
             "cost":3,
             "range":1,
+            "elevation":1,
             "rof":12,
             "accuracy":32,
             "power":6,
@@ -1811,7 +1812,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","embuscade","camo","ranger","selfmedic","survivor","leader"],
+        "skills":["fortif","cible","embuscade","camo","ranger","selfmedic","survivor","leader","defense"],
         "fuzz":-1
     },
     {
