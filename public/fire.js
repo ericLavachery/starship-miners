@@ -306,7 +306,7 @@ function attack() {
         apDamage = apDamage+webDamage;
     }
     // inflammable
-    if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm')) {
+    if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire')) {
         if (targetBatType.skills.includes('inflammable')) {
             totalDamage = totalDamage*2;
             console.log('inflammable!');
@@ -590,7 +590,7 @@ function defense() {
         }
     }
     // inflammable
-    if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm')) {
+    if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire')) {
         if (selectedBatType.skills.includes('inflammable')) {
             totalDamage = totalDamage*2;
             console.log('inflammable!');

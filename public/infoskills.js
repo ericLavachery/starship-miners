@@ -107,9 +107,9 @@ function skillsInfos(bat,batUnitType) {
     if (batUnitType.skills.includes('embuscade')) {
         apCost = 2;
         if (batUnitType.weapon2.rof >= 1 && batUnitType.weapon.cost > batUnitType.weapon2.rof) {
-            apReq = 2+batUnitType.weapon2.rof;
+            apReq = 2+batUnitType.weapon2.cost;
         } else {
-            apReq = 2+batUnitType.weapon.rof;
+            apReq = 2+batUnitType.weapon.cost;
         }
         if (bat.apLeft >= apReq && bat.tags.includes('camo') && bat.apLeft >= apCost+cheapWeapCost) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embuscade (Initiative + Cadence de tir 150%)" class="boutonGris iconButtons" onclick="ambush()"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</h4></span>');
@@ -126,9 +126,9 @@ function skillsInfos(bat,batUnitType) {
     if (batUnitType.skills.includes('cible')) {
         apCost = 3;
         if (batUnitType.weapon2.rof >= 1 && batUnitType.weapon.cost > batUnitType.weapon2.rof) {
-            apReq = 3+batUnitType.weapon2.rof;
+            apReq = 3+batUnitType.weapon2.cost;
         } else {
-            apReq = 3+batUnitType.weapon.rof;
+            apReq = 3+batUnitType.weapon.cost;
         }
         balise = 'h4';
         if (bat.tags.includes('vise')) {
@@ -143,9 +143,9 @@ function skillsInfos(bat,batUnitType) {
     // LUCKY SHOT
     if (batUnitType.skills.includes('luckyshot')) {
         if (batUnitType.weapon2.rof >= 1 && batUnitType.weapon.cost > batUnitType.weapon2.rof) {
-            apReq = batUnitType.weapon2.rof;
+            apReq = batUnitType.weapon2.cost;
         } else {
-            apReq = batUnitType.weapon.rof;
+            apReq = batUnitType.weapon.cost;
         }
         balise = 'h4';
         if (bat.tags.includes('luckyshot')) {
