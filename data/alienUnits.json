@@ -420,14 +420,14 @@
         "weapon":{
             "name":"Glu",
             "cost":5,
-            "range":5,
+            "range":4,
             "elevation":2,
             "noFly":false,
             "noDef":true,
             "noMelee":true,
             "rof":10,
-            "accuracy":25,
-            "power":4,
+            "accuracy":20,
+            "power":5,
             "aoe":"unit",
             "sound":"zapsplat_cartoon_squish_squelch_wet_007_14506b",
             "ammo":["glue"]
