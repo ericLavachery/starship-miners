@@ -573,8 +573,6 @@ function calcAmmos(bat,startAmmo) {
         if (bat.tags.includes('ammoUsed')) {
             let allTags = _.countBy(bat.tags);
             ammoLeft = startAmmo-allTags.ammoUsed;
-            // console.log(allTags);
-            // console.log(allTags.ammoUsed);
         } else {
             ammoLeft = startAmmo;
         }

@@ -410,7 +410,7 @@ function skillsInfos(bat,batUnitType) {
         let allDrugs = checkDrugs(bat);
         // KIRIN
         if (allDrugs.includes('kirin') && !bat.tags.includes('kirin')) {
-            let apCost = 3;
+            apCost = 3;
             if (bat.apLeft >= apCost) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Régénération" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</h4></span>');
             } else {
@@ -420,7 +420,7 @@ function skillsInfos(bat,batUnitType) {
         }
         // BLISS
         if (allDrugs.includes('bliss') && !bat.tags.includes('bliss')) {
-            let apCost = 3;
+            apCost = 3;
             if (bat.apLeft >= apCost) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Dégâts reçus réduits mais -2 PA, immunisé à la peur" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</h4></span>');
             } else {
@@ -430,7 +430,7 @@ function skillsInfos(bat,batUnitType) {
         }
         // BLAZE
         if (allDrugs.includes('blaze') && !bat.tags.includes('blaze')) {
-            let apCost = 3;
+            apCost = 3;
             if (bat.apLeft >= apCost) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+8 PA & +1 salve" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</h4></span>');
             } else {
@@ -440,7 +440,7 @@ function skillsInfos(bat,batUnitType) {
         }
         // SKUPIAC
         if (allDrugs.includes('skupiac') && !bat.tags.includes('skupiac')) {
-            let apCost = 3;
+            apCost = 3;
             if (bat.apLeft >= apCost) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Concentration: +6 précision" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</h4></span>');
             } else {
@@ -450,7 +450,7 @@ function skillsInfos(bat,batUnitType) {
         }
         // SILA
         if (allDrugs.includes('sila') && !bat.tags.includes('sila')) {
-            let apCost = 3;
+            apCost = 3;
             if (bat.apLeft >= apCost) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+4 puissance aux armes de mêlée" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</h4></span>');
             } else {
@@ -460,9 +460,10 @@ function skillsInfos(bat,batUnitType) {
         }
         // STARKA
         if (allDrugs.includes('starka') && !bat.tags.includes('starka')) {
-            let apCost = 0;
-            if (bat.oldTileId === bat.tileId) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+'+batUnitType.ap+' PA, maximum '+batUnitType.ap+' au total" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</h4></span>');
+            apCost = 0;
+            let maxStarkaPA = batUnitType.ap+1;
+            if (bat.oldTileId === bat.tileId && bat.apLeft < maxStarkaPA) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+'+batUnitType.ap+' PA, maximum '+maxStarkaPA+' au total" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</h4></span>');
             } else {
                 skillMessage = "Conditions non requises";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</h4></span>');

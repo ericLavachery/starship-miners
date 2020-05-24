@@ -8,6 +8,7 @@ function showBatInfos(bat) {
     } else {
         $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batUnitType.name+'</h3></span>');
     }
+    let allTags = _.countBy(bat.tags);
     // AP
     let ap = getAP(bat);
     let hourglass = 'start';
@@ -69,8 +70,11 @@ function showBatInfos(bat) {
     if (bat.damage >= 1 || bat.squadsLeft < batUnitType.squads) {
         $('#unitInfos').append('<span class="paramName or">Blessé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
-    if (bat.tags.includes('venin') || bat.tags.includes('poison')) {
-        $('#unitInfos').append('<span class="paramName or">Empoisonné</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    if (bat.tags.includes('poison')) {
+        $('#unitInfos').append('<span class="paramName or">Poison</span><span class="paramIcon"></span><span class="paramValue or">'+allTags.poison+'</span><br>');
+    }
+    if (bat.tags.includes('venin')) {
+        $('#unitInfos').append('<span class="paramName or">Venin</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
     if (bat.tags.includes('parasite')) {
         $('#unitInfos').append('<span class="paramName or">Parasite</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');

@@ -382,11 +382,28 @@ function attack() {
     }
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
-        if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('ppoison')) {
+        if (selectedWeap.ammo.includes('poison')) {
             if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.caLevel < 3)) || targetBatType.cat == 'aliens') {
                 targetBat.tags.push('poison');
                 console.log('Poison!');
                 $('#report').append('<span class="report cy">Poison<br></span>');
+            }
+        }
+    }
+    // Toxine veuve
+    let poisonVeuve = 0;
+    if (totalDamage >= 1) {
+        if (selectedWeap.ammo.includes('toxine')) {
+            if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
+                poisonVeuve = Math.ceil(totalDamage/(12+playerInfos.caLevel));
+                let i = 1;
+                while (i <= poisonVeuve) {
+                    targetBat.tags.push('poison');
+                    if (i > 8) {break;}
+                    i++
+                }
+                console.log('Toxine!');
+                $('#report').append('<span class="report cy">Toxine<br></span>');
             }
         }
     }
@@ -638,7 +655,7 @@ function defense() {
     // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
-        if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('ppoison')) {
+        if (targetWeap.ammo.includes('poison')) {
             if ((selectedBatType.cat == 'infantry' && (!selectedBatType.skills.includes('mutant') || playerInfos.caLevel < 3)) || selectedBatType.cat == 'aliens') {
                 selectedBat.tags.push('poison');
                 console.log('Poison!');

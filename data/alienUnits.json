@@ -117,7 +117,7 @@
         "cat":"aliens",
         "kind":"spider",
         "class":"C",
-        "rarity":5,
+        "rarity":4,
         "squads":6,
         "squadSize":5,
         "crew":1,
@@ -418,9 +418,9 @@
         "ap":20,
         "maxSalvo":1,
         "weapon":{
-            "name":"Glu",
+            "name":"Jet de poison",
             "cost":5,
-            "range":4,
+            "range":3,
             "elevation":2,
             "noFly":false,
             "noDef":true,
@@ -430,14 +430,14 @@
             "power":5,
             "aoe":"unit",
             "sound":"zapsplat_cartoon_squish_squelch_wet_007_14506b",
-            "ammo":["glue"]
+            "ammo":["toxine"]
         },
         "weapon2":{},
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["inflammable"]
+        "skills":["capmen"]
     },
     {
         "id":12,
@@ -675,7 +675,7 @@
         "cat":"aliens",
         "kind":"spider",
         "class":"C",
-        "rarity":7,
+        "rarity":6,
         "squads":6,
         "squadSize":15,
         "crew":1,
@@ -688,7 +688,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Mandibules",
-            "cost":1,
+            "cost":2,
             "range":0,
             "noFly":false,
             "rof":15,
@@ -696,7 +696,7 @@
             "dca":1.5,
             "power":0,
             "aoe":"unit",
-            "sound":"zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
+            "sound":"toy_suction_pad_stick_to_bathtub_squelchc",
             "ammo":["web"]
         },
         "weapon2":{},
@@ -1294,5 +1294,43 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fly","capfar","grip"]
+    },
+    {
+        "id":35,
+        "name":"Surfeuses",
+        "pic":"waterspider",
+        "cat":"aliens",
+        "kind":"spider",
+        "class":"C",
+        "rarity":4,
+        "squads":6,
+        "squadSize":12,
+        "crew":1,
+        "hp":5,
+        "armor":3,
+        "size":3,
+        "speed":0,
+        "stealth":5,
+        "ap":18,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Mandibules",
+            "cost":1,
+            "range":0,
+            "noFly":true,
+            "rof":15,
+            "accuracy":12,
+            "power":3,
+            "armors":0.75,
+            "aoe":"unit",
+            "sound":"zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
+            "ammo":["poison"]
+        },
+        "weapon2":{},
+        "moveCost":3,
+        "maxFlood":3,
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["hover"]
     }
 ]
