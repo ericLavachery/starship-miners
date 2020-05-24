@@ -201,9 +201,9 @@ function attack() {
         }
     }
     // Feu dans l'eau
-    if (selectedWeap.ammo == 'feu') {
+    if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire')) {
         let terrain = getTerrain(targetBat);
-        if (terrain.name === 'S' || terrain.name === 'W' || terrain.name === 'R') {
+        if (terrain.name === 'W' || terrain.name === 'R') {
             aoeShots = 1;
         }
         console.log('fire in water: aoe '+aoeShots);
@@ -515,9 +515,9 @@ function defense() {
         }
     }
     // Feu dans l'eau
-    if (targetWeap.ammo == 'feu') {
+    if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire')) {
         let terrain = getTerrain(selectedBat);
-        if (terrain.name === 'S' || terrain.name === 'W' || terrain.name === 'R') {
+        if (terrain.name === 'W' || terrain.name === 'R') {
             aoeShots = 1;
         }
         console.log('fire in water: aoe '+aoeShots);

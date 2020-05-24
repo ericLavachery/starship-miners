@@ -36,6 +36,12 @@ function checkEggsDrop() {
     } else {
         playerInfos.mapDrop = playerInfos.mapDrop+1;
     }
+    if (eggDropCount >= 1) {
+        eggSound();
+        playMusic('newEgg',false);
+    } else {
+        playMusic('noEgg',false);
+    }
 };
 
 function eggsDrop() {
@@ -105,10 +111,6 @@ function dropEgg(alienUnit) {
         putBat(dropTile);
         if (alienUnit === 'Oeuf') {
             eggDropCount = eggDropCount+1;
-            if (eggDropCount === 1) {
-                eggSound();
-                playMusic('newEgg',false);
-            }
         }
         if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;

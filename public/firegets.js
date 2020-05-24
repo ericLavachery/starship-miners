@@ -560,7 +560,7 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     // Water (range)
-    if (thisWeapon.range >= 2 && (tile.terrain == 'W' || tile.terrain == 'R') && !batType.skills.includes('fly')) {
+    if (thisWeapon.range >= 2 && (tile.terrain == 'W' || tile.terrain == 'R') && !batType.skills.includes('fly') && !batType.skills.includes('hover')) {
         thisWeapon.range = thisWeapon.range-1;
     }
     console.log(thisWeapon);

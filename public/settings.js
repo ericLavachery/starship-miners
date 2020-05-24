@@ -118,4 +118,4 @@ let musicTracks = ['nero1','nero2','nero3','nero4','nero5','nero6','nero7','nero
 let theMusic = new Howl({
     src: ['/static/sounds/music/nero1.mp3']
 });
-let musicChance = 12;
+let musicChance = 8;
