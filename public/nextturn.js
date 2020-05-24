@@ -59,6 +59,7 @@ function nextTurnEnd() {
     let tagIndex;
     deadBatsList = [];
     let boostedTeams = [];
+    medicalTransports = [];
     let thisAPBonus;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
@@ -70,8 +71,16 @@ function nextTurnEnd() {
             if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {
                 boostedTeams.push(batType.kind);
             }
+            if (!medicalTransports.includes(bat.locId) && bat.loc === "trans" && (batType.skills.includes('medic') || batType.skills.includes('badmedic'))) {
+                medicalTransports.push(bat.locId);
+            }
+            if (!medicalTransports.includes(bat.id) && batType.transUnits >= 1 && batType.skills.includes('medic')) {
+                medicalTransports.push(bat.id);
+            }
         }
     });
+    console.log('Medical Transports');
+    console.log(medicalTransports);
     console.log('Boosted Teams');
     console.log(boostedTeams);
     bataillons.forEach(function(bat) {
@@ -249,68 +258,70 @@ function tagsEffect(bat,batType) {
     if (bat.tags.includes('maladie')) {
         bat.apLeft = bat.apLeft-Math.floor(batType.ap/2.2);
     }
-    // PARASITE
-    if (bat.tags.includes('parasite')) {
-        totalDamage = bat.damage+rand.rand((Math.round(parasiteDamage/3)),parasiteDamage);
-        console.log('parasiteDamage='+totalDamage);
-        squadHP = batType.squadSize*batType.hp;
-        squadsOut = Math.floor(totalDamage/squadHP);
-        bat.squadsLeft = bat.squadsLeft-squadsOut;
-        bat.damage = totalDamage-(squadsOut*squadHP);
-        if (bat.squadsLeft <= 0) {
-            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le parasite.');
-        }
-    }
-    // SHINDA
-    if (bat.tags.includes('shinda')) {
-        totalDamage = bat.damage+rand.rand((Math.round(venumDamage/2)),venumDamage*2);
-        console.log('VenomDamage='+totalDamage);
-        squadHP = batType.squadSize*batType.hp;
-        squadsOut = Math.floor(totalDamage/squadHP);
-        bat.squadsLeft = bat.squadsLeft-squadsOut;
-        bat.damage = totalDamage-(squadsOut*squadHP);
-        if (bat.squadsLeft <= 0) {
-            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par la toxine.');
-        }
-    }
-    // VENIN
-    if (bat.tags.includes('venin')) {
-        totalDamage = bat.damage+rand.rand((Math.round(venumDamage/3)),venumDamage);
-        console.log('VenomDamage='+totalDamage);
-        squadHP = batType.squadSize*batType.hp;
-        squadsOut = Math.floor(totalDamage/squadHP);
-        bat.squadsLeft = bat.squadsLeft-squadsOut;
-        bat.damage = totalDamage-(squadsOut*squadHP);
-        if (bat.squadsLeft <= 0) {
-            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le venin.');
-        }
-    }
-    // POISON
-    if (bat.tags.includes('poison')) {
-        let allTags = _.countBy(bat.tags);
-        let poisonPower = allTags.poison*poisonDamage;
-        console.log('tags poison: '+allTags.poison);
-        totalDamage = bat.damage+rand.rand((Math.round(poisonPower/3)),poisonPower);
-        console.log('PoisonDamage='+totalDamage);
-        squadHP = batType.squadSize*batType.hp;
-        squadsOut = Math.floor(totalDamage/squadHP);
-        bat.squadsLeft = bat.squadsLeft-squadsOut;
-        bat.damage = totalDamage-(squadsOut*squadHP);
-        if (bat.squadsLeft <= 0) {
-            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le poison.');
-        }
-        let stopPoison = 10;
-        if (batType.cat != 'aliens') {
-            stopPoison = 14-(playerInfos.caLevel*2);
-        }
-        let i = 1;
-        while (i <= allTags.poison) {
-            if (rand.rand(1,stopPoison) === 1) {
-                tagDelete(bat,'poison');
-                console.log('tag poison out');
+    if (!medicalTransports.includes(bat.locId) || bat.loc != 'trans') {
+        // PARASITE
+        if (bat.tags.includes('parasite')) {
+            totalDamage = bat.damage+rand.rand((Math.round(parasiteDamage/3)),parasiteDamage);
+            console.log('parasiteDamage='+totalDamage);
+            squadHP = batType.squadSize*batType.hp;
+            squadsOut = Math.floor(totalDamage/squadHP);
+            bat.squadsLeft = bat.squadsLeft-squadsOut;
+            bat.damage = totalDamage-(squadsOut*squadHP);
+            if (bat.squadsLeft <= 0) {
+                batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le parasite.');
             }
-            if (i > 10) {break;}
-            i++
+        }
+        // SHINDA
+        if (bat.tags.includes('shinda')) {
+            totalDamage = bat.damage+rand.rand((Math.round(venumDamage/2)),venumDamage*2);
+            console.log('VenomDamage='+totalDamage);
+            squadHP = batType.squadSize*batType.hp;
+            squadsOut = Math.floor(totalDamage/squadHP);
+            bat.squadsLeft = bat.squadsLeft-squadsOut;
+            bat.damage = totalDamage-(squadsOut*squadHP);
+            if (bat.squadsLeft <= 0) {
+                batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par la toxine.');
+            }
+        }
+        // VENIN
+        if (bat.tags.includes('venin')) {
+            totalDamage = bat.damage+rand.rand((Math.round(venumDamage/3)),venumDamage);
+            console.log('VenomDamage='+totalDamage);
+            squadHP = batType.squadSize*batType.hp;
+            squadsOut = Math.floor(totalDamage/squadHP);
+            bat.squadsLeft = bat.squadsLeft-squadsOut;
+            bat.damage = totalDamage-(squadsOut*squadHP);
+            if (bat.squadsLeft <= 0) {
+                batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le venin.');
+            }
+        }
+        // POISON
+        if (bat.tags.includes('poison')) {
+            let allTags = _.countBy(bat.tags);
+            let poisonPower = allTags.poison*poisonDamage;
+            console.log('tags poison: '+allTags.poison);
+            totalDamage = bat.damage+rand.rand((Math.round(poisonPower/3)),poisonPower);
+            console.log('PoisonDamage='+totalDamage);
+            squadHP = batType.squadSize*batType.hp;
+            squadsOut = Math.floor(totalDamage/squadHP);
+            bat.squadsLeft = bat.squadsLeft-squadsOut;
+            bat.damage = totalDamage-(squadsOut*squadHP);
+            if (bat.squadsLeft <= 0) {
+                batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le poison.');
+            }
+            let stopPoison = 10;
+            if (batType.cat != 'aliens') {
+                stopPoison = 14-(playerInfos.caLevel*2);
+            }
+            let i = 1;
+            while (i <= allTags.poison) {
+                if (rand.rand(1,stopPoison) === 1) {
+                    tagDelete(bat,'poison');
+                    console.log('tag poison out');
+                }
+                if (i > 10) {break;}
+                i++
+            }
         }
     }
     checkDeath(bat,batType);

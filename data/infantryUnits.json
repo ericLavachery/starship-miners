@@ -2494,7 +2494,7 @@
             "elevation":1,
             "noFly":true,
             "rof":10,
-            "accuracy":16,
+            "accuracy":13,
             "power":9,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
@@ -2518,9 +2518,9 @@
         "squadSize":8,
         "crew":1,
         "hp":7,
-        "armor":4,
+        "armor":3,
         "size":3,
-        "stealth":4,
+        "stealth":14,
         "ap":15,
         "maxSalvo":1,
         "weapon":{
@@ -2551,7 +2551,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid","sentinelle","survivor"],
+        "skills":["fortif","cible","firstaid","sentinelle","camo"],
         "fuzz":1
     },
     {

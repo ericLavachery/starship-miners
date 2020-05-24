@@ -79,6 +79,7 @@ let toxChance = 30;
 let cheapWeapCost = 99;
 let mecanoHP = 90;
 let batDebarq = {};
+let medicalTransports = [];
 // ALIENS
 let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;
 let isFFW = false;
