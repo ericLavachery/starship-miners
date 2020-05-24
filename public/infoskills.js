@@ -458,6 +458,16 @@ function skillsInfos(bat,batUnitType) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</h4></span>');
             }
         }
+        // STARKA
+        if (allDrugs.includes('starka') && !bat.tags.includes('starka')) {
+            let apCost = 0;
+            if (bat.oldTileId === bat.tileId) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+'+batUnitType.ap+' PA, maximum '+batUnitType.ap+' au total" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</h4></span>');
+            } else {
+                skillMessage = "Conditions non requises";
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</h4></span>');
+            }
+        }
     }
     // DISMANTLE
     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Démanteler" class="boutonRouge iconButtons" onclick="dismantle('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Démanteler</h4></span>');

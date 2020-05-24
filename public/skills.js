@@ -221,6 +221,17 @@ function medic(cat,cost,around,deep) {
                                         selectedBat.damage = 0
                                     } else {
                                         bat.damage = 0;
+                                        if (bat.apLeft > 5) {
+                                            bat.apLeft = bat.apLeft-3;
+                                            if (bat.apLeft < 5) {
+                                                bat.apLeft = 5;
+                                            }
+                                        } else if (bat.apLeft < 5) {
+                                            bat.apLeft = bat.apLeft+5;
+                                            if (bat.apLeft > 5) {
+                                                bat.apLeft = 5;
+                                            }
+                                        }
                                     }
                                     totalAPCost = totalAPCost+apCost;
                                     xpGain = xpGain+0.15;
@@ -251,6 +262,17 @@ function medic(cat,cost,around,deep) {
                                             bat.squadsLeft = batType.squads;
                                             bat.damage = 0;
                                         }
+                                        if (bat.apLeft > 5) {
+                                            bat.apLeft = bat.apLeft-3;
+                                            if (bat.apLeft < 5) {
+                                                bat.apLeft = 5;
+                                            }
+                                        } else if (bat.apLeft < 5) {
+                                            bat.apLeft = bat.apLeft+5;
+                                            if (bat.apLeft > 5) {
+                                                bat.apLeft = 5;
+                                            }
+                                        }
                                     }
                                     newBatUnits = batUnits+batType.squadSize;
                                     totalAPCost = totalAPCost+apCost;
@@ -262,9 +284,26 @@ function medic(cat,cost,around,deep) {
                                     }
                                 } else if (bat.squadsLeft === batType.squads && bat.damage === 0 && bat.tags.includes('trou') && deep) {
                                     tagDelete(bat,'trou');
+                                    if (bat.apLeft > 5) {
+                                        bat.apLeft = bat.apLeft-3;
+                                        if (bat.apLeft < 5) {
+                                            bat.apLeft = 5;
+                                        }
+                                    } else if (bat.apLeft < 5) {
+                                        bat.apLeft = bat.apLeft+5;
+                                        if (bat.apLeft > 5) {
+                                            bat.apLeft = 5;
+                                        }
+                                    }
                                     totalAPCost = totalAPCost+apCost;
                                     xpGain = xpGain+0.35;
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">trous bouchés<br></span>');
+                                } else if (bat.apLeft < 5) {
+                                    bat.apLeft = bat.apLeft+5;
+                                    if (bat.apLeft > 5) {
+                                        bat.apLeft = 5;
+                                    }
+                                    totalAPCost = totalAPCost+apCost;
                                 }
                             }
                             // console.log(bat);
@@ -362,13 +401,13 @@ function numMedicTargets(myBat,cat,around,deep) {
                     }
                     if (catOK) {
                         if (deep) {
-                            if (bat.damage > 0 || bat.squadsLeft < batType.squads || bat.tags.includes('poison') || bat.tags.includes('venin') || bat.tags.includes('maladie') || bat.tags.includes('parasite') || bat.tags.includes('trou')) {
+                            if (bat.damage > 0 || bat.squadsLeft < batType.squads || bat.tags.includes('poison') || bat.tags.includes('venin') || bat.tags.includes('maladie') || bat.tags.includes('parasite') || bat.tags.includes('trou') || (bat.apLeft < 5 && batType.cat === 'vehicles' && bat.oldTileId === bat.tileId)) {
                                 numTargets = numTargets+1;
                             }
                         } else if (playerInfos.caLevel >= 4 && bat.tags.includes('venin')) {
                             numTargets = numTargets+1;
                         } else {
-                            if (bat.damage > 0 || bat.tags.includes('poison')) {
+                            if (bat.damage > 0 || bat.tags.includes('poison') || (bat.apLeft < 5 && batType.cat === 'vehicles' && bat.oldTileId === bat.tileId)) {
                                 numTargets = numTargets+1;
                             }
                         }
@@ -588,6 +627,14 @@ function goDrug(apCost,drug) {
                 selectedBat.salvoLeft = selectedBat.salvoLeft+1;
                 console.log('blaze bonus');
             }
+            // starka instant bonus
+            if (drug === 'starka') {
+                selectedBat.apLeft = selectedBat.apLeft+selectedBatType.ap;
+                if (selectedBat.apLeft >= selectedBatType.ap+1) {
+                    selectedBat.apLeft = selectedBatType.ap+1;
+                }
+                console.log('starka bonus');
+            }
         }
         selectedBatArrayUpdate();
         showBatInfos(selectedBat);
@@ -617,6 +664,9 @@ function checkDrugs(myBat) {
                     if (batType.skills.includes('skupiac')) {
                         allDrugs.push('skupiac');
                     }
+                    if (batType.skills.includes('starka')) {
+                        allDrugs.push('starka');
+                    }
                 }
             }
         }
@@ -640,6 +690,9 @@ function checkBatDrugs(bat) {
     }
     if (bat.tags.includes('skupiac')) {
         myDrugs.push('sk');
+    }
+    if (bat.tags.includes('starka')) {
+        myDrugs.push('st');
     }
     return myDrugs;
 };

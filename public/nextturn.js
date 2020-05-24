@@ -186,6 +186,11 @@ function tagsUpdate(bat) {
             drugDown(bat,true,false);
         }
     }
+    if (bat.tags.includes('starka')) {
+        tagIndex = bat.tags.indexOf('starka');
+        bat.tags.splice(tagIndex,1);
+        drugDown(bat,false,false);
+    }
 };
 
 function drugDown(bat,poison,addict) {

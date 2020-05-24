@@ -1086,7 +1086,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","medic","camo","dealer","kirin","sila","ranger"],
-        "speed":12,
+        "maxSKill":12,
         "medicCost":7,
         "fuzz":-1
     },
@@ -1425,7 +1425,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo","medic","fly","jetpack","inflammable"],
+        "skills":["fortif","cible","camo","medic","fly","jetpack","inflammable","dealer","starka","kirin"],
+        "maxSKill":8,
         "medicCost":5,
         "fuzz":-1
     },
@@ -2551,7 +2552,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid","sentinelle","camo"],
+        "skills":["fortif","cible","selfmedic","sentinelle","camo"],
         "fuzz":1
     },
     {
