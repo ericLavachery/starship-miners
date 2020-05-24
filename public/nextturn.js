@@ -409,6 +409,9 @@ function createBatList() {
 
 function nextBat(removeActiveBat) {
     // testConnect(pseudo);
+    if (rand.rand(1,musicChance) === 1) {
+        playMusic('any',false);
+    }
     selectMode();
     batUnstack();
     deleteMoveInfos();

@@ -113,7 +113,8 @@ let eggDropCount = 0;
 // SOUNDS
 let musicVolume = 0.4;
 let fxVolume = 0.6;
-let musicTracks = ['Microgravity','Stars','The Secret Place','airports22'];
+let musicTracks = ['nero1','nero2','nero3','nero4','nero5','nero6','nero7','nero8'];
 let theMusic = new Howl({
-    src: ['/static/sounds/music/Microgravity.mp3']
+    src: ['/static/sounds/music/nero1.mp3']
 });
+let musicChance = 12;
