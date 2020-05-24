@@ -744,7 +744,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Lance-flammes",
-            "cost":6,
+            "cost":5,
             "range":0,
             "rof":8,
             "accuracy":18,
@@ -2514,14 +2514,14 @@
         "pic":"thermo",
         "cat":"infantry",
         "kind":"brasier",
-        "squads":7,
+        "squads":8,
         "squadSize":8,
         "crew":1,
         "hp":7,
-        "armor":3,
+        "armor":4,
         "size":3,
         "stealth":4,
-        "ap":11,
+        "ap":15,
         "maxSalvo":1,
         "weapon":{
             "name":"Lance thermique",
@@ -2547,11 +2547,11 @@
             "sound":"warfare_gunshot_rifle_exterior_004b",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
-        "moveCost":3,
+        "moveCost":4,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid","sentinelle"],
+        "skills":["fortif","cible","firstaid","sentinelle","survivor"],
         "fuzz":1
     },
     {
