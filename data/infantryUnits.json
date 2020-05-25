@@ -2141,7 +2141,7 @@
         "id":85,
         "name":"Bigman",
         "pic":"krusher",
-        "cat":"infantry",
+        "cat":"vehicles",
         "kind":"zero",
         "squads":6,
         "squadSize":4,
@@ -2181,8 +2181,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","mecano","repair","cyber"],
-        "medicCost":4,
-        "fuzz":1
+        "medicCost":5,
+        "fuzz":1.5
     },
     {
         "id":86,

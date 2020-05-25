@@ -188,7 +188,7 @@ function moveSelectedBat(tileId,free,jump) {
         selectedBat.tags.splice(tagIndex,1);
     }
     if (selectedBat.tags.includes('camo')) {
-        if (selectedBatType.skills.includes('fly') || selectedBatType.cat === 'vehicles') {
+        if (selectedBatType.skills.includes('fly') || (selectedBatType.cat === 'vehicles' && selectedBatType.name != 'Whizz' && !selectedBatType.skills.includes('robot')) || selectedBatType.name === 'Riders' || selectedBatType.name === 'Chevaliers' || selectedBatType.name === 'Kasseurs') {
             camoOut();
         } else {
             camouflage(0);
