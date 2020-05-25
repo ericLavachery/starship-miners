@@ -530,7 +530,7 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.rof = Math.round(thisWeapon.rof*ammo.rof);
     thisWeapon.power = thisWeapon.power+ammo.power;
     thisWeapon.apdamage = ammo.apdamage;
-    thisWeapon.armors = thisWeapon.armors*ammo.armors;
+    thisWeapon.armors = Math.round(thisWeapon.armors*ammo.armors*100)/100;    
     thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
     if (ammo.aoe != '') {
         thisWeapon.aoe = ammo.aoe;
