@@ -240,7 +240,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"industrial_vehicle_combine_harvester_approach_passb",
-            "ammo":["standard","monomolecular"]
+            "ammo":["lame","lame-mono"]
         },
         "moveCost":2,
         "maxFlood":0,
@@ -732,7 +732,7 @@
             "power":19,
             "aoe":"brochette",
             "sound":"321552__brendan89__regular-arrow-shotc",
-            "ammo":["standard","poison","poraz","shinda","taser"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-poison","fleche-poraz","fleche-shinda"]
         },
         "weapon2":{},
         "moveCost":3,
@@ -1102,7 +1102,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"industrial_vehicle_combine_harvester_approach_passb",
-            "ammo":["standard","monomolecular"]
+            "ammo":["lame","lame-mono"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1138,7 +1138,7 @@
             "power":21,
             "aoe":"brochette",
             "sound":"321552__brendan89__regular-arrow-shotc",
-            "ammo":["standard","poison","poraz","shinda","taser"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-poison","fleche-poraz","fleche-shinda"]
         },
         "weapon2":{
             "name":"Moissonneuse",
@@ -1152,7 +1152,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"industrial_vehicle_combine_harvester_approach_passb",
-            "ammo":["standard","monomolecular"]
+            "ammo":["lame","lame-mono"]
         },
         "moveCost":2,
         "maxFlood":3,
@@ -1703,7 +1703,7 @@
             "power":10,
             "aoe":"squad",
             "sound":"industrial_vehicle_combine_harvester_approach_passb",
-            "ammo":["standard","monomolecular"]
+            "ammo":["lame","lame-mono"]
         },
         "moveCost":2,
         "maxFlood":0,

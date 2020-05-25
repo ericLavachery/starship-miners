@@ -1,70 +1,10 @@
 [
     {
-        "name": "none",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 1,
-        "accuracy": 1,
-        "apdamage": 0,
-        "aoe": ""
-    },
-    {
         "name": "guidage",
         "range": 0,
         "rof": 1,
         "power": 0,
         "armors": 1,
-        "accuracy": 1,
-        "apdamage": 0,
-        "aoe": ""
-    },
-    {
-        "name": "adamantium",
-        "range": 0,
-        "rof": 1.5,
-        "power": 1,
-        "armors": 0.5,
-        "accuracy": 1.5,
-        "apdamage": 0,
-        "aoe": ""
-    },
-    {
-        "name": "monomolecular",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 0,
-        "accuracy": 1.5,
-        "apdamage": 0,
-        "aoe": ""
-    },
-    {
-        "name": "plasblade",
-        "range": 0,
-        "rof": 0.67,
-        "power": 10,
-        "armors": 0.35,
-        "accuracy": 1,
-        "apdamage": 0.1,
-        "aoe": ""
-    },
-    {
-        "name": "taser",
-        "range": 0,
-        "rof": 1,
-        "power": 2,
-        "armors": 0.25,
-        "accuracy": 1,
-        "apdamage": 0.08,
-        "aoe": ""
-    },
-    {
-        "name": "scrap",
-        "range": 0,
-        "rof": 1,
-        "power": -1,
-        "armors": 1.5,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
@@ -430,17 +370,7 @@
         "aoe": ""
     },
     {
-        "name": "disco",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 0,
-        "accuracy": 1,
-        "apdamage": 0,
-        "aoe": ""
-    },
-    {
-        "name": "web",
+        "name": "fleche",
         "range": 0,
         "rof": 1,
         "power": 0,
@@ -450,37 +380,27 @@
         "aoe": ""
     },
     {
-        "name": "electric",
+        "name": "fleche-scrap",
         "range": 0,
         "rof": 1,
-        "power": 0,
-        "armors": 0,
-        "accuracy": 1,
-        "apdamage": 0.04,
-        "aoe": ""
-    },
-    {
-        "name": "feu",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
+        "power": -1,
         "armors": 1.5,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
     },
     {
-        "name": "napalm",
+        "name": "fleche-tungten",
         "range": 0,
         "rof": 1,
-        "power": 4,
-        "armors": 1.25,
+        "power": 0,
+        "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
     },
     {
-        "name": "oxycombustion",
+        "name": "fleche-mono",
         "range": 0,
         "rof": 1,
         "power": 0,
@@ -490,7 +410,7 @@
         "aoe": ""
     },
     {
-        "name": "creuseur",
+        "name": "fleche-poison",
         "range": 0,
         "rof": 1,
         "power": 0,
@@ -500,123 +420,103 @@
         "aoe": ""
     },
     {
-        "name": "troueur",
+        "name": "fleche-poraz",
         "range": 0,
         "rof": 1,
-        "power": 0,
-        "armors": 0.3,
-        "accuracy": 1,
-        "apdamage": 0,
-        "aoe": ""
-    },
-    {
-        "name": "spit",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 0.5,
-        "accuracy": 1,
-        "apdamage": 0.15,
-        "aoe": ""
-    },
-    {
-        "name": "spitbug",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 0.67,
-        "accuracy": 1,
-        "apdamage": 0.1,
-        "aoe": ""
-    },
-    {
-        "name": "glair",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 1,
-        "accuracy": 1,
-        "apdamage": 0.1,
-        "aoe": ""
-    },
-    {
-        "name": "acide",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 0.5,
-        "accuracy": 1,
-        "apdamage": 0,
-        "aoe": ""
-    },
-    {
-        "name": "venin",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 0,
-        "accuracy": 1,
-        "apdamage": 0,
-        "aoe": ""
-    },
-    {
-        "name": "parasite",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 1,
-        "accuracy": 1,
-        "apdamage": 0,
-        "aoe": ""
-    },
-    {
-        "name": "glue",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 0.25,
-        "accuracy": 1,
-        "apdamage": 0.1,
-        "aoe": ""
-    },
-    {
-        "name": "toxine",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 0.25,
-        "accuracy": 1,
-        "apdamage": 0,
-        "aoe": ""
-    },
-    {
-        "name": "poison",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 1,
-        "accuracy": 1,
-        "apdamage": 0,
-        "aoe": ""
-    },
-    {
-        "name": "poraz",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
+        "power": 3,
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0.2,
         "aoe": ""
     },
     {
-        "name": "shinda",
+        "name": "fleche-shinda",
         "range": 0,
         "rof": 1,
-        "power": 4,
+        "power": 0,
+        "armors": 0.75,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "lame",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "lame-scrap",
+        "range": 0,
+        "rof": 1,
+        "power": -1,
+        "armors": 1.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "lame-mono",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "lame-plasma",
+        "range": 0,
+        "rof": 0.67,
+        "power": 10,
+        "armors": 0.25,
+        "accuracy": 0.67,
+        "apdamage": 0.1,
+        "aoe": ""
+    },
+    {
+        "name": "lame-adamantium",
+        "range": 0,
+        "rof": 1.5,
+        "power": 0,
+        "armors": 0.5,
+        "accuracy": 1.5,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "lame-poison",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "lame-poraz",
+        "range": 0,
+        "rof": 1,
+        "power": 3,
+        "armors": 0.75,
+        "accuracy": 1,
+        "apdamage": 0.2,
+        "aoe": ""
+    },
+    {
+        "name": "lame-taser",
+        "range": 0,
+        "rof": 1,
+        "power": 2,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0.08,
         "aoe": ""
     },
     {
@@ -900,16 +800,6 @@
         "aoe": "squad"
     },
     {
-        "name": "gaz",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 0,
-        "accuracy": 1,
-        "apdamage": 0.09,
-        "aoe": ""
-    },
-    {
         "name": "grenade",
         "range": 0,
         "rof": 1,
@@ -960,6 +850,56 @@
         "aoe": "brochette"
     },
     {
+        "name": "disco",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "gaz",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0,
+        "accuracy": 1,
+        "apdamage": 0.09,
+        "aoe": ""
+    },
+    {
+        "name": "feu",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "napalm",
+        "range": 0,
+        "rof": 1,
+        "power": 4,
+        "armors": 1.25,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "oxycombustion",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
         "name": "fireball",
         "range": 0,
         "rof": 1,
@@ -988,5 +928,195 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "bat"
+    },
+    {
+        "name": "none",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "creuseur",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "troueur",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.3,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "web",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "electric",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0,
+        "accuracy": 1,
+        "apdamage": 0.04,
+        "aoe": ""
+    },
+    {
+        "name": "spit",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0.15,
+        "aoe": ""
+    },
+    {
+        "name": "spitbug",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.67,
+        "accuracy": 1,
+        "apdamage": 0.1,
+        "aoe": ""
+    },
+    {
+        "name": "glair",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0.1,
+        "aoe": ""
+    },
+    {
+        "name": "acide",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "venin",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "parasite",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "glue",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.25,
+        "accuracy": 1,
+        "apdamage": 0.1,
+        "aoe": ""
+    },
+    {
+        "name": "toxine",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.25,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "poison",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "adamantium",
+        "range": 0,
+        "rof": 1.5,
+        "power": 1,
+        "armors": 0.5,
+        "accuracy": 1.5,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "monomolecular",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0,
+        "accuracy": 1.5,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "plasblade",
+        "range": 0,
+        "rof": 0.67,
+        "power": 10,
+        "armors": 0.35,
+        "accuracy": 1,
+        "apdamage": 0.1,
+        "aoe": ""
+    },
+    {
+        "name": "taser",
+        "range": 0,
+        "rof": 1,
+        "power": 2,
+        "armors": 0.25,
+        "accuracy": 1,
+        "apdamage": 0.08,
+        "aoe": ""
+    },
+    {
+        "name": "scrap",
+        "range": 0,
+        "rof": 1,
+        "power": -1,
+        "armors": 1.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
     }
 ]

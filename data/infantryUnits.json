@@ -239,7 +239,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["standard","poison","poraz","shinda","plasblade"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"Arbalète",
@@ -252,7 +252,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison","poraz","shinda","monomolecular","taser"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -289,7 +289,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison","poraz","shinda","monomolecular","taser"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda"]
         },
         "weapon2":{
             "name":"Lame",
@@ -302,7 +302,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","scrap","poison","poraz","shinda","monomolecular","plasblade"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -350,7 +350,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","scrap","poison","poraz","shinda","monomolecular","plasblade"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -397,7 +397,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["standard","poison","poraz","shinda","plasblade"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -432,7 +432,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","scrap","poison","poraz","shinda","monomolecular","plasblade"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-mono","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"Ceinture goodbye",
@@ -490,7 +490,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["standard","poison","monomolecular","plasblade"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -654,7 +654,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","scrap","poison","monomolecular","adamantium","plasblade"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"Mortier léger",
@@ -981,7 +981,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["standard","poison","poraz","shinda","plasblade"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1031,7 +1031,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["standard","poison","plasblade"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-plasma","lame-adamantium"]
         },
         "moveCost":2,
         "maxFlood":1,
@@ -1067,7 +1067,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison","poraz","shinda","monomolecular","taser"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda"]
         },
         "weapon2":{
             "name":"Lame",
@@ -1079,7 +1079,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","scrap","poison","poraz","shinda","monomolecular","plasblade"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1129,7 +1129,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["standard","poison","monomolecular","plasblade"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":2,
         "maxFlood":3,
@@ -1165,7 +1165,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["monomolecular","poraz","shinda","plasblade"]
+            "ammo":["lame","lame-poison","lame-poraz","lame-mono","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"Arbalète",
@@ -1178,7 +1178,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["standard","poison","poraz","shinda","monomolecular","taser"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1273,7 +1273,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"147289__smokebomb99__axe-slash-2b",
-            "ammo":["standard","poison","monomolecular","plasblade"]
+            "ammo":["lame","lame-poison","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":4,
         "maxFlood":3,
@@ -1309,7 +1309,7 @@
             "armors":0.3,
             "aoe":"unit",
             "sound":"498501__16f-panska-veltrusky-david__chainsawb",
-            "ammo":["standard","monomolecular"]
+            "ammo":["lame","lame-mono"]
         },
         "weapon2":{
             "name":"Fusil magnétique",
@@ -1467,7 +1467,7 @@
             "armors":0.5,
             "aoe":"brochette",
             "sound":"498501__16f-panska-veltrusky-david__chainsawb",
-            "ammo":["standard","monomolecular"]
+            "ammo":["lame","lame-mono"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1515,7 +1515,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["standard","poison","poraz","shinda","monomolecular","taser"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-plasma"]
         },
         "moveCost":2,
         "maxFlood":1,
@@ -1563,7 +1563,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["plasblade","poraz","shinda"]
+            "ammo":["lame","lame-poison","lame-poraz","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1936,7 +1936,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["standard","poison","poraz","shinda","plasblade"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"RPG",
@@ -2080,7 +2080,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe",
-            "ammo":["standard","poison","poraz","shinda","plasblade"]
+            "ammo":["lame","lame-taser","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -2116,7 +2116,7 @@
             "armors":0.3,
             "aoe":"unit",
             "sound":"498501__16f-panska-veltrusky-david__chainsawb",
-            "ammo":["standard"]
+            "ammo":["lame","lame-mono"]
         },
         "weapon2":{
             "name":"Autodestruction",

@@ -159,6 +159,9 @@ function showAmmo(ammo) {
     ammoView = ammoView.replace('boulet-','');
     ammoView = ammoView.replace('ac-','');
     ammoView = ammoView.replace('sm-','');
+    ammoView = ammoView.replace('cn-','');
+    ammoView = ammoView.replace('fleche-','');
+    ammoView = ammoView.replace('lame-','');
     ammoView = ammoView.replace('grenade-','');
     ammoView = ammoView.replace('missile-','');
     ammoView = ammoView.replace('autodestruction','bombe');
