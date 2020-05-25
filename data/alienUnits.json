@@ -694,7 +694,7 @@
             "rof":15,
             "accuracy":9,
             "dca":1.5,
-            "power":0,
+            "power":1,
             "aoe":"unit",
             "sound":"toy_suction_pad_stick_to_bathtub_squelchc",
             "ammo":["web"]

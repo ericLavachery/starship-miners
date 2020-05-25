@@ -54,12 +54,21 @@ function calcDamage(weapon,power,armor,defBat) {
             modifiedArmor = 0.15;
         }
     }
-    let powerDiceMin = Math.round(power/2.5);
-    let powerDiceMax = Math.round(power*1.6);
-    let powerDice = rand.rand(powerDiceMin,powerDiceMax);
-    if (powerDice == powerDiceMax) {
-        let bonusMax = Math.round(power*2.4);
-        powerDice = powerDice+rand.rand(0,bonusMax);
+    let powerDice;
+    if (power >= 3) {
+        let powerDiceMin = Math.round(power/2.5);
+        let powerDiceMax = Math.round(power*1.6);
+        powerDice = rand.rand(powerDiceMin,powerDiceMax);
+        if (powerDice == powerDiceMax) {
+            let bonusMax = Math.round(power*2.4);
+            powerDice = powerDice+rand.rand(0,bonusMax);
+        }
+    } else if (power === 2) {
+        powerDice = rand.rand(0,4);
+    } else if (power === 1) {
+        powerDice = Math.floor(rand.rand(0,4)/4);
+    } else {
+        powerDice = 0;
     }
     // bliss drug
     let dmgReduct = 0;
@@ -530,7 +539,7 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.rof = Math.round(thisWeapon.rof*ammo.rof);
     thisWeapon.power = thisWeapon.power+ammo.power;
     thisWeapon.apdamage = ammo.apdamage;
-    thisWeapon.armors = Math.round(thisWeapon.armors*ammo.armors*100)/100;    
+    thisWeapon.armors = Math.round(thisWeapon.armors*ammo.armors*100)/100;
     thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
     if (ammo.aoe != '') {
         thisWeapon.aoe = ammo.aoe;
