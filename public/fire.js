@@ -853,7 +853,7 @@ function batDeath(bat,count) {
     if (bat.team == 'player') {
         let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
         bataillons.splice(batIndex,1);
-        if (count) {
+        if (count && bat.type != 'Barbelés' && bat.type != 'Champ de mines' && bat.type != 'Explosifs') {
             playerInfos.unitsLost = playerInfos.unitsLost+1;
             playMusic('rip',false);
         }

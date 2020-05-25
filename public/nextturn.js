@@ -336,8 +336,10 @@ function checkDeath(bat,batType) {
     if (bat.squadsLeft <= 0) {
         if (bat.team == 'player') {
             deadBatsList.push(bat.id);
-            playerInfos.unitsLost = playerInfos.unitsLost+1;
-            playMusic('rip',false);
+            if (bat.type != 'Barbelés' && bat.type != 'Champ de mines' && bat.type != 'Explosifs') {
+                playerInfos.unitsLost = playerInfos.unitsLost+1;
+                playMusic('rip',false);
+            }
         } else if (bat.team == 'aliens') {
             deadAliensList.push(bat.id);
             if (bat.type === 'Oeuf') {

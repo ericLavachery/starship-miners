@@ -174,8 +174,8 @@ function spawns() {
             if (bat.type === 'Oeuf') {
                 batType = getBatType(bat);
                 eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
-                eggModTurn = eggTurn+playerInfos.mapAdjDiff-5;
-                vomiCheck = ((batType.squads-bat.squadsLeft)*vomiChance)+(eggModTurn*2);
+                eggModTurn = eggTurn+playerInfos.mapAdjDiff-8;
+                vomiCheck = ((batType.squads-bat.squadsLeft)*vomiChance)+(eggModTurn*3);
                 if (rand.rand(1,100) <= vomiCheck) {
                     vomiSpawn(bat);
                 }
@@ -302,7 +302,7 @@ function alienMorph(bat,newBatName,reset) {
 function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
-    let eggModTurn = eggTurn+playerInfos.mapAdjDiff-5;
+    let eggModTurn = eggTurn+playerInfos.mapAdjDiff-8;
     console.log('eggTurn='+eggTurn);
     if (eggTurn >= 15+playerInfos.mapAdjDiff && fromEgg) {
         // TRANFORMATION EN RUCHE !
@@ -328,8 +328,8 @@ function eggSpawn(bat,fromEgg) {
             }
             console.log('spawnNum='+spawnNum);
             let classes = [];
-            let minTurnB = 33-(playerInfos.mapAdjDiff*3);
-            let minTurnA = 66-(playerInfos.mapAdjDiff*6);
+            let minTurnB = 33-Math.round(playerInfos.mapAdjDiff*2);
+            let minTurnA = 66-Math.round(playerInfos.mapAdjDiff*3);
             classes.push('C');
             if (eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB) {
                 classes.push('B');
