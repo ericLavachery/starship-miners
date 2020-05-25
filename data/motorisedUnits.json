@@ -303,7 +303,7 @@
     {
         "id":10,
         "name":"Buggies",
-        "pic":"jeep",
+        "pic":"buggy",
         "cat":"vehicles",
         "kind":"rednecks",
         "squads":6,
@@ -1215,7 +1215,7 @@
     {
         "id":74,
         "name":"Autogire chicken",
-        "pic":"chicken",
+        "pic":"autogire",
         "cat":"vehicles",
         "kind":"rednecks",
         "squads":6,
