@@ -1037,7 +1037,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","cible","guerrilla","firstaid"],
+        "skills":["fortif","cible","guerrilla","firstaid","moto"],
         "fuzz":2
     },
     {
@@ -1377,7 +1377,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","basemecano"],
+        "skills":["fortif","cible","basemecano","moto"],
         "fuzz":1.5
     },
     {
@@ -1521,7 +1521,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","cible","guerrilla","firstaid","maycamo"],
+        "skills":["fortif","cible","guerrilla","firstaid","maycamo","moto"],
         "fuzz":1
     },
     {

@@ -850,10 +850,11 @@ function blast(brochette,aoeShots,weapon,bat,batType,shotDice) {
 
 function batDeath(bat,count) {
     console.log('DEATH');
+    let batType = getBatType(bat);
     if (bat.team == 'player') {
         let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
         bataillons.splice(batIndex,1);
-        if (count && bat.type != 'Barbelés' && bat.type != 'Champ de mines' && bat.type != 'Explosifs') {
+        if (count && !batType.skills.includes('nodeathcount')) {
             playerInfos.unitsLost = playerInfos.unitsLost+1;
             playMusic('rip',false);
         }

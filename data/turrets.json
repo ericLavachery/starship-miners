@@ -338,7 +338,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":[],
+        "skills":["nodeathcount"],
         "fuzz":-1
     },
     {
@@ -385,7 +385,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["sentinelle","defense"],
+        "skills":["sentinelle","defense","nonumname","nodeathcount"],
         "fuzz":-2
     },
     {
@@ -432,7 +432,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["sentinelle","defense"],
+        "skills":["sentinelle","defense","nonumname","nodeathcount"],
         "fuzz":-2
     }
 ]

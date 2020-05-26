@@ -335,9 +335,10 @@ function tagsEffect(bat,batType) {
 
 function checkDeath(bat,batType) {
     if (bat.squadsLeft <= 0) {
+        let batType = getBatType(bat);
         if (bat.team == 'player') {
             deadBatsList.push(bat.id);
-            if (bat.type != 'Barbelés' && bat.type != 'Champ de mines' && bat.type != 'Explosifs') {
+            if (!batType.skills.includes('nodeathcount')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
                 playMusic('rip',false);
             }
