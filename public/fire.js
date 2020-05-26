@@ -864,7 +864,7 @@ function batDeath(bat,count) {
         let batIndex = aliens.findIndex((obj => obj.id == bat.id));
         aliens.splice(batIndex,1);
         if (count) {
-            if (bat.type === 'Oeuf') {
+            if (bat.type === 'Oeuf' || bat.type === 'Coque'|| bat.type === 'Ruche') {
                 playerInfos.eggsKilled = playerInfos.eggsKilled+1;
                 playMusic('eggKill',false);
             }

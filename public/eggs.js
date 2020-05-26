@@ -72,7 +72,11 @@ function eggsDrop() {
     if (numEggs >= 1) {
         let i = 1;
         while (i <= numEggs) {
-            dropEgg('Oeuf');
+            if (rand.rand(1,100) <= coqueChance) {
+                dropEgg('Coque');
+            } else {
+                dropEgg('Oeuf');
+            }
             if (i > 4) {break;}
             i++
         }
@@ -109,7 +113,7 @@ function dropEgg(alienUnit) {
     }
     if (tileOK) {
         putBat(dropTile);
-        if (alienUnit === 'Oeuf') {
+        if (alienUnit === 'Oeuf' || alienUnit === 'Coque') {
             eggDropCount = eggDropCount+1;
         }
         if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
@@ -171,12 +175,12 @@ function spawns() {
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             flyDice = rand.rand(1,6);
-            if (bat.type === 'Oeuf') {
+            if (bat.type === 'Oeuf' || bat.type === 'Coque') {
                 batType = getBatType(bat);
                 eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
                 eggModTurn = eggTurn+playerInfos.mapAdjDiff-8;
                 vomiCheck = ((batType.squads-bat.squadsLeft)*vomiChance)+(eggModTurn*3);
-                if (rand.rand(1,100) <= vomiCheck) {
+                if (rand.rand(1,100) <= vomiCheck && bat.type === 'Oeuf') {
                     vomiSpawn(bat);
                 }
                 eggSpawn(bat,true);
@@ -304,9 +308,18 @@ function eggSpawn(bat,fromEgg) {
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     let eggModTurn = eggTurn+playerInfos.mapAdjDiff-8;
     console.log('eggTurn='+eggTurn);
-    if (eggTurn >= 15+playerInfos.mapAdjDiff && fromEgg) {
+    let eggLife = 10+playerInfos.mapAdjDiff;
+    if (bat.type === 'Coque') {
+        eggLife = 5+Math.floor(playerInfos.mapDiff/1.4);
+        eggModTurn = eggTurn+playerInfos.mapDiff-3;
+    }
+    if (eggTurn >= eggLife && fromEgg) {
         // TRANFORMATION EN RUCHE !
-        alienMorph(bat,'Ruche',false);
+        if (bat.type === 'Oeuf') {
+            alienMorph(bat,'Ruche',false);
+        } else {
+            alienMorph(bat,'Volcan',false);
+        }
     } else {
         let spawnChance = Math.round(eggTurn*20*bat.squadsLeft/6*Math.sqrt(playerInfos.mapAdjDiff)/2*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
         if (!fromEgg) {
@@ -315,7 +328,7 @@ function eggSpawn(bat,fromEgg) {
         console.log('spawnChance='+spawnChance);
         if (rand.rand(1,100) <= spawnChance) {
             let maxSpawn = eggTurn-11+bat.squadsLeft+Math.floor(Math.sqrt(playerInfos.mapAdjDiff));
-            if (maxSpawn < 1 || !fromEgg) {
+            if (maxSpawn < 1 || !fromEgg || bat.type === 'Coque') {
                 maxSpawn = 1;
             }
             if (maxSpawn > 8) {

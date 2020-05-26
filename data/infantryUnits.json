@@ -238,7 +238,7 @@
             "power":6,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"axe",
+            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
             "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
@@ -396,7 +396,7 @@
             "power":6,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"axe",
+            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
             "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
@@ -489,7 +489,7 @@
             "power":4,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"axe",
+            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
             "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
@@ -980,7 +980,7 @@
             "power":6,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"axe",
+            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
             "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
@@ -1030,7 +1030,7 @@
             "power":6,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"axe",
+            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
             "ammo":["lame","lame-scrap","lame-poison","lame-plasma","lame-adamantium"]
         },
         "moveCost":2,
@@ -1128,7 +1128,7 @@
             "power":4,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"axe",
+            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
             "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":2,
@@ -1514,7 +1514,7 @@
             "power":10,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"axe",
+            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
             "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-plasma"]
         },
         "moveCost":2,
@@ -1562,7 +1562,7 @@
             "power":7,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"axe",
+            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
             "ammo":["lame","lame-poison","lame-poraz","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
@@ -1935,7 +1935,7 @@
             "power":16,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"axe",
+            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
             "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
@@ -2079,7 +2079,7 @@
             "power":8,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"axe",
+            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
             "ammo":["lame","lame-taser","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,

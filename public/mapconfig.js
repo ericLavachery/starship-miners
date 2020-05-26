@@ -129,7 +129,7 @@ function findEgg() {
     let myEgg = {};
     aliens.forEach(function(bat) {
         if (bat.loc === "zone" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
-            if (bat.type === "Oeuf") {
+            if (bat.type === "Oeuf" || bat.type === "Coque") {
                 eggsToShow = eggsToShow+1;
                 myEgg = bat;
             }
@@ -140,7 +140,7 @@ function findEgg() {
         myEgg = {};
         aliens.forEach(function(bat) {
             if (bat.loc === "zone" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
-                if (bat.type === "Oeuf") {
+                if (bat.type === "Oeuf" || bat.type === "Coque") {
                     eggsToShow = eggsToShow+1;
                     myEgg = bat;
                 }
