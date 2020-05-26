@@ -109,7 +109,7 @@ function getDamageBar(bat) {
         degNum = 4;
     } else if (degPerc < 86) {
         degNum = 5;
-    } else if (degPerc === 100 && bat.damage > 1) {
+    } else if (degPerc < 100 || (degPerc == 100 && bat.damage > 1)) {
         degNum = 6;
     }
     return degNum;
