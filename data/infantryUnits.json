@@ -1087,7 +1087,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","medic","camo","dealer","kirin","sila","ranger"],
         "maxSKill":12,
-        "medicCost":7,
+        "medicCost":8,
         "fuzz":-1
     },
     {

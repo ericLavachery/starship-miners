@@ -146,13 +146,19 @@ function combat() {
                 }
             }
             if (attAlive) {
-                attack();
-                if (!isFFW) {
-                    soundWeap = selectedWeap;
-                    setTimeout(function (){
-                        shotSound(soundWeap);
-                        if (activeTurn == 'player') {blockMe(false);}
-                    }, 2500); // How long do you want the delay to be (in milliseconds)?
+                minimumFireAP = minFireAP;
+                if (selectedBatType.skills.includes('guerrilla')) {
+                    minimumFireAP = minFireAP-7;
+                }
+                if (selectedBat.apLeft > minimumFireAP) {
+                    attack();
+                    if (!isFFW) {
+                        soundWeap = selectedWeap;
+                        setTimeout(function (){
+                            shotSound(soundWeap);
+                            if (activeTurn == 'player') {blockMe(false);}
+                        }, 2500); // How long do you want the delay to be (in milliseconds)?
+                    }
                 }
             } else {
                 if (!isFFW) {
