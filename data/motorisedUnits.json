@@ -527,7 +527,7 @@
     {
         "id":38,
         "name":"Wartrucks",
-        "pic":"monster",
+        "pic":"wartruck",
         "cat":"vehicles",
         "kind":"blades",
         "squads":5,
