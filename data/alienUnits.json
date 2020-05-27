@@ -1344,7 +1344,7 @@
         "squads":6,
         "squadSize":1,
         "crew":1,
-        "hp":700,
+        "hp":1000,
         "armor":24,
         "size":75,
         "speed":0,

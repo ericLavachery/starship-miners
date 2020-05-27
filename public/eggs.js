@@ -328,7 +328,7 @@ function eggSpawn(bat,fromEgg) {
         console.log('spawnChance='+spawnChance);
         if (rand.rand(1,100) <= spawnChance) {
             let maxSpawn = eggTurn-11+bat.squadsLeft+Math.floor(Math.sqrt(playerInfos.mapAdjDiff));
-            if (maxSpawn < 1 || !fromEgg || bat.type === 'Coque') {
+            if (maxSpawn < 1 || !fromEgg) {
                 maxSpawn = 1;
             }
             if (maxSpawn > 8) {
