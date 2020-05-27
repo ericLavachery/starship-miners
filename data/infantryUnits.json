@@ -23,7 +23,7 @@
             "power":8,
             "armors":1.5,
             "aoe":"brochette",
-            "sound":"warfare_gunshots_x2_rifle_exterior",
+            "sound":"warfare_gunshots_x2_rifle_exterior_shotgun",
             "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium"]
         },
         "weapon2":{
@@ -36,7 +36,7 @@
             "power":5,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "sound":"238916__qubodup__rifle-shooting_revo",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "moveCost":3,
@@ -155,7 +155,7 @@
             "power":9,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"warfare_gunshot_rifle_exterior_004b",
+            "sound":"351777__kennysvoice__sniper-rifle-m24-sfx_sniper",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "moveCost":3,
@@ -201,7 +201,7 @@
             "accuracy":27,
             "power":8,
             "aoe":"unit",
-            "sound":"warfare_gunshot_rifle_exterior_004b",
+            "sound":"87562__knufds__rifle-223-cal-take-1_hunting",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "moveCost":3,
@@ -337,7 +337,7 @@
             "power":5,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "sound":"238916__qubodup__rifle-shooting_revo",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
@@ -383,7 +383,7 @@
             "accuracy":19,
             "power":7,
             "aoe":"unit",
-            "sound":"warfare_gunshots_x2_rifle_exterior",
+            "sound":"82459__threetails__50bmg_calibre",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
@@ -523,7 +523,7 @@
             "accuracy":18,
             "power":4,
             "aoe":"unit",
-            "sound":"john_ruok_gun_tikka_t3_battue_308_007_Swpph_Mono_Shot_Strong_Edit-multi",
+            "sound":"238916__qubodup__rifle-shooting_multi",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
         },
         "weapon2":{},
@@ -702,7 +702,7 @@
             "accuracy":20,
             "power":7,
             "aoe":"unit",
-            "sound":"warfare_gunshots_x2_rifle_exterior",
+            "sound":"82459__threetails__50bmg_calibre",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
@@ -764,7 +764,7 @@
             "power":5,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "sound":"238916__qubodup__rifle-shooting_revo",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "moveCost":3,
@@ -894,7 +894,7 @@
             "power":5,
             "armors":1.2,
             "aoe":"unit",
-            "sound":"warfare_gunshots_x2_rifle_exterior",
+            "sound":"410442__superphat__enfieldrifle_badc",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{},
@@ -931,7 +931,7 @@
             "accuracy":19,
             "power":7,
             "aoe":"unit",
-            "sound":"warfare_gunshots_x2_rifle_exterior",
+            "sound":"410442__superphat__enfieldrifle_badc",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{},
@@ -967,7 +967,7 @@
             "power":8,
             "armors":1.5,
             "aoe":"brochette",
-            "sound":"warfare_gunshots_x2_rifle_exterior",
+            "sound":"warfare_gunshots_x2_rifle_exterior_shotgun",
             "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium"]
         },
         "weapon2":{
@@ -1212,7 +1212,7 @@
             "power":5,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "sound":"238916__qubodup__rifle-shooting_revo",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
@@ -1322,7 +1322,7 @@
             "power":15,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"warfare_gunshot_rifle_exterior_004b",
+            "sound":"517058__invisible-inks__scifi-sniper-rifle",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite"]
         },
         "moveCost":3,
@@ -1758,7 +1758,7 @@
             "power":9,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"warfare_gunshot_rifle_exterior_004b",
+            "sound":"351777__kennysvoice__sniper-rifle-m24-sfx_sniper",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "moveCost":3,
@@ -2260,7 +2260,7 @@
             "power":16,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"warfare_gunshot_rifle_exterior_004b",
+            "sound":"386842__nioczkus__m1-garand-rifle_antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite"]
         },
         "moveCost":4,
@@ -2341,7 +2341,7 @@
             "accuracy":19,
             "power":7,
             "aoe":"unit",
-            "sound":"warfare_gunshots_x2_rifle_exterior",
+            "sound":"82459__threetails__50bmg_calibre",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
@@ -2406,7 +2406,7 @@
             "accuracy":19,
             "power":7,
             "aoe":"unit",
-            "sound":"warfare_gunshots_x2_rifle_exterior",
+            "sound":"82459__threetails__50bmg_calibre",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "moveCost":10,
@@ -2439,7 +2439,7 @@
             "accuracy":20,
             "power":7,
             "aoe":"unit",
-            "sound":"warfare_gunshots_x2_rifle_exterior",
+            "sound":"82459__threetails__50bmg_calibre",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
@@ -2486,7 +2486,7 @@
             "accuracy":20,
             "power":7,
             "aoe":"unit",
-            "sound":"warfare_gunshots_x2_rifle_exterior",
+            "sound":"82459__threetails__50bmg_calibre",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
@@ -2546,7 +2546,7 @@
             "accuracy":24,
             "power":8,
             "aoe":"unit",
-            "sound":"warfare_gunshot_rifle_exterior_004b",
+            "sound":"87562__knufds__rifle-223-cal-take-1_hunting",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "moveCost":4,
@@ -2643,7 +2643,7 @@
             "accuracy":50,
             "power":17,
             "aoe":"unit",
-            "sound":"little_robot_sound_factory_Laser_02b",
+            "sound":"little_robot_sound_factory_Laser_02c",
             "ammo":["laser"]
         },
         "moveCost":2,
