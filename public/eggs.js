@@ -166,9 +166,9 @@ function spawns() {
     let eggModTurn;
     let transList = morphList();
     let aliensNums = aliensCount();
-    let vomiToRuche = 27-(playerInfos.mapAdjDiff*2);
-    if (vomiToRuche < 7) {
-        vomiToRuche = 7;
+    let vomiToRuche = 20-Math.round(playerInfos.mapDiff*1.5);
+    if (vomiToRuche < 5) {
+        vomiToRuche = 5;
     }
     let maxPonte = playerInfos.mapAdjDiff+3;
     let flyDice;
@@ -306,13 +306,13 @@ function alienMorph(bat,newBatName,reset) {
 function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
-    let eggModTurn = eggTurn+playerInfos.mapAdjDiff-8;
-    console.log('eggTurn='+eggTurn);
-    let eggLife = 10+playerInfos.mapAdjDiff;
+    let eggModTurn = eggTurn+playerInfos.mapDiff-3;
+    let eggLife = 10+Math.round(playerInfos.mapDiff*1.5);
     if (bat.type === 'Coque') {
-        eggLife = 5+Math.floor(playerInfos.mapDiff/1.4);
         eggModTurn = eggTurn+playerInfos.mapDiff-3;
+        eggLife = 5+Math.round(playerInfos.mapDiff/1.4);
     }
+    console.log('eggTurn='+eggTurn);
     if (eggTurn >= eggLife && fromEgg) {
         // TRANFORMATION EN RUCHE !
         if (bat.type === 'Oeuf') {
@@ -331,8 +331,8 @@ function eggSpawn(bat,fromEgg) {
             if (maxSpawn < 1 || !fromEgg) {
                 maxSpawn = 1;
             }
-            if (maxSpawn > 8) {
-                maxSpawn = 8;
+            if (maxSpawn > 6) {
+                maxSpawn = 6;
             }
             console.log('maxSpawn='+maxSpawn);
             let spawnNum = 1;
