@@ -48,7 +48,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["deepselfrepair","transorbital","ravitaillement","stock","transport","maycamo","survivor"],
-        "transMaxSize":50,
+        "transMaxSize":55,
         "transUnits":10000,
         "transRes":10000,
         "fuzz":4

@@ -384,9 +384,10 @@
             "range":1,
             "rof":10,
             "accuracy":19,
-            "power":7,
+            "power":8,
+            "armors":0.85,
             "aoe":"unit",
-            "sound":"82459__threetails__50bmg_calibre",
+            "sound":"396271__greenfiresound__groscalibre",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
