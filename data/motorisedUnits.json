@@ -842,7 +842,7 @@
             "maxAmmo":9
         },
         "moveCost":3,
-        "maxFlood":0,
+        "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano","leader","defense"],
@@ -1528,8 +1528,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["cible","transport","selfmecano","hardmove"],
-        "transMaxSize":9,
-        "transUnits":400,
+        "transMaxSize":12,
+        "transUnits":450,
         "transRes":800,
         "fuzz":2
     },
