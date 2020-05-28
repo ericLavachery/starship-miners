@@ -332,7 +332,7 @@ function attack() {
     $('#report').append('<span class="report">('+totalDamage+')<br></span>');
     // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
     // agrippeur
-    if (selectedBatType.skills.includes('grip') && totalDamage >= 1 && selectedBatType.size+3 >= targetBatType.size) {
+    if (selectedBatType.skills.includes('grip') && totalDamage >= 1 && (selectedBatType.size+3 >= targetBatType.size || selectedBatType.name == 'Androks')) {
         let gripbonus = 0;
         if (selectedBatType.name == 'Androks') {
             gripbonus = 40;
@@ -346,7 +346,11 @@ function attack() {
         }
         if (rand.rand(1,100 <= gripChance)) {
             if (selectedBatType.skills.includes('tail')) {
-                totalDamage = totalDamage+targetBatType.hp;
+                let tailDamage = 75-(targetBatType.armor*3);
+                if (tailDamage > targetBatType.hp) {
+                    tailDamage = targetBatType.hp;
+                }
+                totalDamage = totalDamage+(tailDamage*selectedBat.squadsLeft*selectedBatType.squads);
             }
             if (targetBatType.weapon.isMelee || targetBatType.weapon2.isMelee || targetBatType.weapon.isShort || targetBatType.weapon2.isShort) {
                 apDamage = apDamage+Math.round(selectedBat.squadsLeft*3/4);
