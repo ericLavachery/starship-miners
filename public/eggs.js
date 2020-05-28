@@ -188,7 +188,7 @@ function spawns() {
                 eggSpawn(bat,true);
             } else if (bat.type === 'Ruche') {
                 eggSpawn(bat,false);
-            } else if (bat.type === 'Vermisseaux' && flyDice === 1 && aliensNums.lucioles < maxPonte) {
+            } else if (bat.type === 'Vermisseaux' && flyDice === 1 && aliensNums.lucioles < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Lucioles');
             } else if (bat.type === 'Vermisseaux' && flyDice >= 5 && aliensNums.moucherons < Math.round(maxPonte*1.5)) {
                 alienSpawn(bat,'Moucherons');
