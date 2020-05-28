@@ -838,7 +838,7 @@
         "hp":6,
         "armor":0,
         "size":3,
-        "volume":1.2,
+        "volume":1.1,
         "stealth":6,
         "ap":9,
         "maxSalvo":1,
@@ -865,13 +865,13 @@
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
             "ammo":["grenade"],
-            "maxAmmo":12
+            "maxAmmo":9
         },
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","ravitaillement","maycamo"],
+        "skills":["fortif","ravitaillement","maycamo","fastempty"],
         "maxSKill":3,
         "fuzz":0
     },

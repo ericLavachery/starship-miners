@@ -61,6 +61,7 @@ function nextTurnEnd() {
     let boostedTeams = [];
     medicalTransports = [];
     let thisAPBonus;
+    let ravitNum;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             if (bat.loc === "zone") {
@@ -110,6 +111,12 @@ function nextTurnEnd() {
             bat.apLeft = bat.apLeft+ap;
             if (bat.apLeft > ap) {
                 bat.apLeft = ap;
+            }
+            if (batType.skills.includes('fastempty')) {
+                ravitNum = calcRavit(bat);
+                if (ravitNum === 0) {
+                    bat.apLeft = bat.apLeft+5;
+                }
             }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
