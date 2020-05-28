@@ -1190,7 +1190,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","capbld","fear","hover"]
+        "skills":["regeneration","capbld","fear","hover","ponte"]
     },
     {
         "id":34,

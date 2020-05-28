@@ -565,7 +565,7 @@
             "accuracy":12,
             "power":30,
             "aoe":"squad",
-            "sound":"industrial_vehicle_combine_harvester_approach_passb",
+            "sound":"489771__nickronk123__truckrunning_belier",
             "ammo":["standard"]
         },
         "moveCost":2,
@@ -1349,7 +1349,7 @@
             "accuracy":12,
             "power":18,
             "aoe":"brochette",
-            "sound":"industrial_vehicle_combine_harvester_approach_passb",
+            "sound":"489771__nickronk123__truckrunning_belier",
             "ammo":["standard"]
         },
         "moveCost":3,
@@ -1398,7 +1398,7 @@
             "accuracy":12,
             "power":25,
             "aoe":"brochette",
-            "sound":"industrial_vehicle_combine_harvester_approach_passb",
+            "sound":"489771__nickronk123__truckrunning_belier",
             "ammo":["standard"]
         },
         "moveCost":4,
@@ -1652,7 +1652,7 @@
             "accuracy":12,
             "power":20,
             "aoe":"brochette",
-            "sound":"industrial_vehicle_combine_harvester_approach_passb",
+            "sound":"489771__nickronk123__truckrunning_belier",
             "ammo":["standard"]
         },
         "moveCost":2,

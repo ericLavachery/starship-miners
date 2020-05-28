@@ -135,7 +135,7 @@ function morphList() {
 };
 
 function aliensCount() {
-    let aliensNums = {lucioles:0,moucherons:0,bugs:0,scorpions:0,fourmis:0,cafards:0,gluantes:0};
+    let aliensNums = {lucioles:0,moucherons:0,bugs:0,scorpions:0,fourmis:0,cafards:0,gluantes:0,larves:0};
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type === 'Lucioles') {
@@ -144,6 +144,8 @@ function aliensCount() {
                 aliensNums.bugs = aliensNums.bugs+1;
             } else if (bat.type === 'Scorpions') {
                 aliensNums.scorpions = aliensNums.scorpions+1;
+            } else if (bat.type === 'Larves') {
+                aliensNums.larves = aliensNums.larves+1;
             } else if (bat.type === 'Fourmis') {
                 aliensNums.fourmis = aliensNums.fourmis+1;
             } else if (bat.type === 'Cafards') {
@@ -199,6 +201,8 @@ function spawns() {
             } else if (bat.type === 'Bug Boss' && aliensNums.bugs < maxPonte*2) {
                 alienSpawn(bat,'Bugs');
             } else if (bat.type === 'Androks' && aliensNums.scorpions < Math.round(maxPonte*1.5)) {
+                alienSpawn(bat,'Scorpions');
+            } else if (bat.type === 'Megagrubz' && rand.rand(1,2) === 1 && aliensNums.larves < maxPonte) {
                 alienSpawn(bat,'Scorpions');
             } else if (bat.type === 'Cafards' && rand.rand(1,6) === 1 && aliensNums.fourmis < maxPonte*3) {
                 alienSpawn(bat,'Cafards');
@@ -331,8 +335,11 @@ function eggSpawn(bat,fromEgg) {
             if (maxSpawn < 1 || !fromEgg) {
                 maxSpawn = 1;
             }
-            if (maxSpawn > 6) {
-                maxSpawn = 6;
+            if (maxSpawn > Math.round((playerInfos.mapAdjDiff+8)/3)) {
+                maxSpawn = Math.round((playerInfos.mapAdjDiff+8)/3);
+            }
+            if (maxSpawn > 8) {
+                maxSpawn = 8;
             }
             console.log('maxSpawn='+maxSpawn);
             let spawnNum = 1;
