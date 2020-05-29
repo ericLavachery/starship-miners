@@ -113,8 +113,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["medic"],
+        "skills":["medic","dealer","starka"],
         "medicCost":5,
+        "maxSKill":8,
         "fuzz":0
     },
     {
@@ -1835,7 +1836,7 @@
         "cat":"infantry",
         "kind":"detruas",
         "squads":6,
-        "squadSize":10,
+        "squadSize":9,
         "crew":1,
         "hp":6,
         "armor":3,
@@ -2428,9 +2429,9 @@
         },
         "moveCost":10,
         "maxFlood":1,
-        "maxScarp":2,
-        "maxVeg":2,
-        "skills":["fortif","cible","defense","maycamo"],
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["fortif","cible","defense","maycamo","hardmove"],
         "fuzz":3
     },
     {
