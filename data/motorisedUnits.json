@@ -593,11 +593,11 @@
         "size":24,
         "stealth":0,
         "speed":1,
-        "ap":12,
+        "ap":18,
         "maxSalvo":2,
         "weapon":{
             "name":"Mortier",
-            "cost":5,
+            "cost":4,
             "range":3,
             "noMelee":true,
             "noFly":true,
@@ -624,7 +624,7 @@
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing"],
             "maxAmmo":8
         },
-        "moveCost":2,
+        "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
