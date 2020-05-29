@@ -466,28 +466,3 @@ function nextBat(removeActiveBat) {
     }
     // console.log(batList);
 };
-
-function alienSounds() {
-    var sound = new Howl({
-        src: ['/static/sounds/little_robot_sound_factory_Ambience_AlienHive_00.mp3'],
-        volume: fxVolume
-    });
-    sound.play();
-};
-
-function playMusic(piste,interrupt) {
-    let track = [_.sample(musicTracks)];
-    if (piste != 'any') {
-        track = piste;
-    }
-    if (!theMusic.playing() || interrupt) {
-        theMusic = new Howl({
-            src: ['/static/sounds/music/'+track+'.mp3'],
-            volume: musicVolume
-        });
-        theMusic.play();
-        console.log('PLAYING: '+track);
-    } else {
-        console.log('ALREADY PLAYING');
-    }
-};

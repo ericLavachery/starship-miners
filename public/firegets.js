@@ -357,28 +357,6 @@ function alienHere(tileId) {
     return alienBatHere;
 };
 
-function shotSound(weapon) {
-    if (!isFFW) {
-        console.log(weapon);
-        var sound = new Howl({
-            src: ['/static/sounds/'+weapon.sound+'.mp3'],
-            volume: fxVolume
-        });
-        sound.play();
-        console.log(sound);
-    }
-};
-
-function deathSound() {
-    if (!isFFW) {
-        var sound = new Howl({
-            src: ['/static/sounds/zapsplat_explosion_fireball_43738.mp3'],
-            volume: fxVolume
-        });
-        sound.play();
-    }
-};
-
 function weaponSelect(weapon) {
     if (weapon == 'w1') {
         selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));

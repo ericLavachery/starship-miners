@@ -47,7 +47,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","transorbital","ravitaillement","stock","transport","maycamo","survivor"],
+        "skills":["deepselfrepair","transorbital","ravitaillement","stock","transport","survivor"],
         "transMaxSize":55,
         "transUnits":10000,
         "transRes":10000,

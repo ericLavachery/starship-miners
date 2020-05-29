@@ -25,11 +25,19 @@ function commandes() {
         $('#commandz').append('<br>');
         $('#commandz').append('<button type="button" title="Constriche" class="boutonGris iconButtons" onclick="bfconst()"><i class="fa fa-hammer"></i></button>');
         $('#commandz').append('<button type="button" title="Sauvegarder les bataillons" class="boutonGris iconButtons" onclick="saveAllBats()"><i class="far fa-save"></i></button>');
+        $('#commandz').append('<br>');
     } else if (activeTurn == 'aliens') {
         $('#commandz').append('<button type="button" title="Passer au bataillon suivant" class="boutonMauve iconButtons" onclick="nextAlien()"><i class="fas fa-chevron-circle-right"></i></button>');
         if (alienList.length >= 2) {
             $('#commandz').append('<button type="button" title="" class="boutonMauve iconButtons" onclick="ffw()"><i class="fas fa-fast-forward"></i></button>');
         }
         $('#commandz').append('<button type="button" title="" class="boutonGris iconButtons" onclick="findEgg()">'+aliens.length+'</button>');
+        $('#commandz').append('<br>');
     }
+    $('#commandz').append('<button type="button" title="Stopper/Redémarrer la musique" class="boutonGris iconButtons" onclick="soundVolume(`mute`,`music`)"><i class="fas fa-volume-mute"></i></button>');
+    $('#commandz').append('<button type="button" title="Augmenter le volume de la musique" class="boutonGris iconButtons" onclick="soundVolume(`down`,`music`)"><i class="fas fa-volume-down"></i></button>');
+    $('#commandz').append('<button type="button" title="Augmenter le volume de la musique" class="boutonGris iconButtons" onclick="soundVolume(`up`,`music`)"><i class="fas fa-volume-up"></i></button><br>');
+    $('#commandz').append('<button type="button" title="Stopper/Redémarrer les effets" class="boutonGris iconButtons" onclick="soundVolume(`mute`,`fx`)"><i class="fas fa-volume-mute"></i></button>');
+    $('#commandz').append('<button type="button" title="Augmenter le volume des effets" class="boutonGris iconButtons" onclick="soundVolume(`down`,`fx`)"><i class="fas fa-volume-down"></i></button>');
+    $('#commandz').append('<button type="button" title="Augmenter le volume des effets" class="boutonGris iconButtons" onclick="soundVolume(`up`,`fx`)"><i class="fas fa-volume-up"></i></button><br>');
 };

@@ -462,11 +462,3 @@ function checkDrop(layBat) {
     }
     return tileDrop;
 };
-
-function eggSound() {
-    var sound = new Howl({
-        src: ['/static/sounds/smartsound_CINEMATIC_IMPACT_Eruption_01b.mp3'],
-        volume: fxVolume
-    });
-    sound.play();
-};
