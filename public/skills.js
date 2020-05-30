@@ -20,7 +20,30 @@ function fortification() {
     showBatInfos(selectedBat);
 };
 
+function calcCamo(bat) {
+    let batType = getBatType(bat);
+    let stealth = getStealth(bat);
+    if (stealth < 3) {
+        stealth = 3;
+    }
+    let terrain = getTerrain(bat);
+    if (terrain.veg >= 1) {
+        stealth = stealth+terrain.veg+terrain.veg+2;
+    }
+    let camDice = rand.rand(1,100);
+    let camChance = Math.round(Math.sqrt(stealth)*(playerInfos.caLevel+16))+(stealth*2)-30;
+    // size
+    if (batType.size > 3) {
+        camChance = Math.ceil(camChance/Math.sqrt(Math.sqrt(batType.size))*1.31);
+    }
+    if (camChance > stealthMaxChance) {
+        camChance = stealthMaxChance;
+    }
+    return camChance;
+};
+
 function camouflage(apCost) {
+    // changer aussi dans calcCamo !!!!!
     console.log('MODE FURTIF');
     if (!selectedBat.tags.includes('camo')) {
         selectedBat.tags.push('camo');
@@ -33,14 +56,14 @@ function camouflage(apCost) {
     if (terrain.veg >= 1) {
         stealth = stealth+terrain.veg+terrain.veg+2;
     }
-    // size
-    if (selectedBatType.size > 3) {
-        stealth = Math.ceil(stealth*Math.sqrt(selectedBatType.size)/1.73);
-    }
     console.log('stealth '+stealth);
     let camOK = false;
     let camDice = rand.rand(1,100);
-    let camChance = Math.round(Math.sqrt(stealth)*(playerInfos.caLevel+16));
+    let camChance = Math.round(Math.sqrt(stealth)*(playerInfos.caLevel+16))+(stealth*2)-30;
+    // size
+    if (batType.size > 3) {
+        camChance = Math.ceil(camChance/Math.sqrt(Math.sqrt(batType.size))*1.31);
+    }
     if (camChance > stealthMaxChance) {
         camChance = stealthMaxChance;
     }

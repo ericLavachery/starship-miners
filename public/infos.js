@@ -34,7 +34,12 @@ function showBatInfos(bat) {
     let volume = calcVolume(batUnitType);
     $('#unitInfos').append('<span class="paramName">Volume</span><span class="paramIcon"></span><span class="paramValue">'+volume+'</span><br>');
     let stealth = getStealth(bat);
-    $('#unitInfos').append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
+    let camChance = calcCamo(bat);
+    if (batUnitType.skills.includes('camo') || batUnitType.skills.includes('maycamo')) {
+        $('#unitInfos').append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+' ('+camChance+'%)</span><br>');
+    } else {
+        $('#unitInfos').append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
+    }
     if (bat.tags.includes('camo')) {
         if (bat.fuzz <= -2) {
             $('#unitInfos').append('<span class="paramName cy">Mode furtif</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
