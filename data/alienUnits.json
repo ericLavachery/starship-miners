@@ -1318,7 +1318,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","regeneration"]
+        "skills":["ponte","regeneration","inflammable"]
     },
     {
         "id":17,

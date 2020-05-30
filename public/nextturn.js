@@ -62,6 +62,7 @@ function nextTurnEnd() {
     medicalTransports = [];
     let thisAPBonus;
     let ravitNum;
+    let emptyBonus;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             if (bat.loc === "zone") {
@@ -109,13 +110,14 @@ function nextTurnEnd() {
                 bat.apLeft = 0-(batType.ap*2);
             }
             bat.apLeft = bat.apLeft+ap;
-            if (bat.apLeft > Math.round(ap*1.5)) {
-                bat.apLeft = Math.round(ap*1.5);
+            if (bat.apLeft > Math.floor(ap*1.5)) {
+                bat.apLeft = Math.floor(ap*1.5);
             }
             if (batType.skills.includes('fastempty')) {
                 ravitNum = calcRavit(bat);
-                if (ravitNum === 0) {
-                    bat.apLeft = bat.apLeft+5;
+                if (ravitNum > batType.maxSKill) {
+                    emptyBonus = Math.round((batType.maxSKill-ravitNum)/batType.maxSKill*5);
+                    bat.apLeft = bat.apLeft+emptyBonus;
                 }
             }
             bat.oldTileId = bat.tileId;
