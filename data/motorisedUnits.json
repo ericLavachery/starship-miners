@@ -47,7 +47,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["forftif","cible","guerrilla"],
+        "skills":["forftif","cible","guerrilla","maycamo"],
         "fuzz":2.5
     },
     {
@@ -297,7 +297,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selfmecano","maycamo"],
+        "skills":["fortif","cible","selfmecano"],
         "fuzz":3.5
     },
     {
@@ -894,7 +894,7 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","hover","selfmecano","maycamo"],
+        "skills":["cible","hover","selfmecano"],
         "fuzz":3
     },
     {
@@ -1018,7 +1018,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["fortif","cible","selfmecano"],
+        "skills":["fortif","cible","selfmecano","maycamo"],
         "fuzz":3
     },
     {
@@ -1855,7 +1855,7 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","leader","selfmecano","guerrilla"],
+        "skills":["fortif","cible","leader","selfmecano","guerrilla","maycamo"],
         "fuzz":2
     },
     {
@@ -1892,7 +1892,7 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","cible","mecano"],
+        "skills":["fortif","cible","mecano","maycamo"],
         "medicCost":6,
         "fuzz":2
     },
@@ -2303,7 +2303,7 @@
             "maxAmmo":9
         },
         "moveCost":2,
-        "maxFlood":0,
+        "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
         "skills":["fortif","cible","hardmove","ravitaillement","fastempty"],

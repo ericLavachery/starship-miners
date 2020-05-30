@@ -105,12 +105,12 @@ function nextTurnEnd() {
                 ap = ap+1;
             }
             bat.salvoLeft = batType.maxSalvo;
-            if (bat.apLeft < 0-batType.ap-batType.ap) {
-                bat.apLeft = 0-batType.ap-batType.ap;
+            if (bat.apLeft < 0-(batType.ap*2)) {
+                bat.apLeft = 0-(batType.ap*2);
             }
             bat.apLeft = bat.apLeft+ap;
-            if (bat.apLeft > ap) {
-                bat.apLeft = ap;
+            if (bat.apLeft > Math.round(ap*1.5)) {
+                bat.apLeft = Math.round(ap*1.5);
             }
             if (batType.skills.includes('fastempty')) {
                 ravitNum = calcRavit(bat);

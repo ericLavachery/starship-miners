@@ -2431,7 +2431,7 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","defense","maycamo","hardmove"],
+        "skills":["fortif","cible","defense","maycamo","hardmove","machine"],
         "fuzz":3
     },
     {
