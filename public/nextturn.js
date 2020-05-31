@@ -115,7 +115,7 @@ function nextTurnEnd() {
             }
             if (batType.skills.includes('fastempty')) {
                 ravitNum = calcRavit(bat);
-                if (ravitNum > batType.maxSKill) {
+                if (ravitNum < batType.maxSKill) {
                     emptyBonus = Math.round((batType.maxSKill-ravitNum)/batType.maxSKill*5);
                     bat.apLeft = bat.apLeft+emptyBonus;
                 }
