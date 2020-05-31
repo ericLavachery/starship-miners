@@ -582,7 +582,7 @@
     {
         "id":39,
         "name":"Avalanche",
-        "pic":"misbuggy",
+        "pic":"avalanche",
         "cat":"vehicles",
         "kind":"detruas",
         "squads":5,
@@ -2307,7 +2307,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","cible","hardmove","ravitaillement","fastempty"],
+        "skills":["fortif","cible","ravitaillement","fastempty"],
         "maxSKill":6,
         "fuzz":2
     },
