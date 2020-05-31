@@ -71,7 +71,7 @@ function embarquement(transId) {
     let transIndex = bataillons.findIndex((obj => obj.id == transId));
     let transBat = bataillons[transIndex];
     transBat.transIds.push(selectedBat.id);
-    selectedBat.apLeft = selectedBat.apLeft-3;
+    selectedBat.apLeft = selectedBat.apLeft-2;
     selectedBat.loc = 'trans';
     selectedBat.locId = transId;
     let batListIndex = batList.findIndex((obj => obj.id == selectedBat.id));

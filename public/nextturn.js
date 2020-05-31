@@ -110,8 +110,8 @@ function nextTurnEnd() {
                 bat.apLeft = 0-(batType.ap*2);
             }
             bat.apLeft = bat.apLeft+ap;
-            if (bat.apLeft > Math.floor(ap*1.5)) {
-                bat.apLeft = Math.floor(ap*1.5);
+            if (bat.apLeft > ap) {
+                bat.apLeft = ap;
             }
             if (batType.skills.includes('fastempty')) {
                 ravitNum = calcRavit(bat);
