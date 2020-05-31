@@ -250,7 +250,7 @@
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
             "ammo":["feu","napalm"],
-            "maxAmmo": 24
+            "maxAmmo":24
         },
         "moveCost":99,
         "maxFlood":-1,
@@ -317,7 +317,7 @@
         "hp":500,
         "armor":20,
         "size":60,
-        "stealth":16,
+        "stealth":20,
         "ap":15,
         "maxSalvo":2,
         "weapon":{

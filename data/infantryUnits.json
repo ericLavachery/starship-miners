@@ -419,12 +419,12 @@
         "cat":"infantry",
         "kind":"drogmuloj",
         "squads":6,
-        "squadSize":10,
+        "squadSize":6,
         "crew":1,
         "hp":7,
         "armor":0,
         "size":3,
-        "stealth":10,
+        "stealth":12,
         "speed":1,
         "ap":15,
         "maxSalvo":1,
@@ -433,7 +433,7 @@
             "cost":1,
             "range":0,
             "isMelee":true,
-            "rof":10,
+            "rof":6,
             "accuracy":20,
             "power":4,
             "aoe":"unit",
@@ -448,7 +448,7 @@
             "rof":20,
             "accuracy":12,
             "power":27,
-            "aoe":"squad",
+            "aoe":"bat",
             "sound":"bottlerocket_Impact_Boom_Distorted_10b",
             "ammo":["autodestruction"]
         },
@@ -759,7 +759,7 @@
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
             "ammo":["feu","napalm"],
-            "maxAmmo":9
+            "maxAmmo":12
         },
         "weapon2":{
             "name":"Revolver",
@@ -1236,7 +1236,7 @@
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire"],
-            "maxAmmo":18
+            "maxAmmo":16
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1725,7 +1725,7 @@
             "aoe":"brochette",
             "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
             "ammo":["obus","obus-explosif","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
-            "maxAmmo":9
+            "maxAmmo":6
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1966,7 +1966,7 @@
             "aoe":"brochette",
             "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
             "ammo":["obus","obus-explosif","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
-            "maxAmmo":16
+            "maxAmmo":12
         },
         "moveCost":3,
         "maxFlood":2,
@@ -2014,7 +2014,7 @@
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire"],
-            "maxAmmo":6
+            "maxAmmo":8
         },
         "moveCost":2,
         "maxFlood":3,
@@ -2191,7 +2191,7 @@
             "aoe":"unit",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
             "ammo":["oxycombustion"],
-            "maxAmmo":16
+            "maxAmmo":20
         },
         "moveCost":3,
         "maxFlood":3,
@@ -2472,7 +2472,7 @@
             "aoe":"squad",
             "sound":"audio_hero_MolotovCocktailThr_PE280101_381b",
             "ammo":["feu","napalm"],
-            "maxAmmo":16
+            "maxAmmo":12
         },
         "moveCost":3,
         "maxFlood":3,
@@ -2520,7 +2520,7 @@
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
             "ammo":["fireball","fireglue","fireblast"],
-            "maxAmmo":16
+            "maxAmmo":12
         },
         "moveCost":3,
         "maxFlood":3,

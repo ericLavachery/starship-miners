@@ -41,7 +41,7 @@
             "aoe":"brochette",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
             "ammo":["obus","obus-scrap","obus-explosif","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
-            "maxAmmo":9
+            "maxAmmo":16
         },
         "moveCost":2,
         "maxFlood":1,
@@ -78,11 +78,11 @@
             "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-multi",
             "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
-            "maxAmmo": 24
+            "maxAmmo":24
         },
         "weapon2":{
             "name":"Mitrailleuse",
-            "cost":4,
+            "cost":3,
             "range":1,
             "elevation":1,
             "rof":15,
@@ -141,7 +141,7 @@
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
             "ammo":["feu","napalm"],
-            "maxAmmo":18
+            "maxAmmo":24
         },
         "moveCost":2,
         "maxFlood":1,
@@ -190,7 +190,7 @@
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
             "ammo":["feu","napalm"],
-            "maxAmmo":24
+            "maxAmmo":32
         },
         "moveCost":2,
         "maxFlood":0,
@@ -388,7 +388,7 @@
             "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
             "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
-            "maxAmmo":15
+            "maxAmmo":16
         },
         "moveCost":2,
         "maxFlood":1,
@@ -425,7 +425,7 @@
             "aoe":"squad",
             "sound":"audio_hero_ClaymoreAntiMine_PE230101_339c",
             "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-gaz","missile-fleche","missile-heatseeker"],
-            "maxAmmo":32
+            "maxAmmo":36
         },
         "weapon2":{},
         "moveCost":9,
@@ -863,7 +863,7 @@
         "stealth":0,
         "speed":3,
         "ap":21,
-        "maxSalvo":1,
+        "maxSalvo":2,
         "weapon":{
             "name":"Mitrailleuse",
             "cost":4,
@@ -882,13 +882,14 @@
             "cost":6,
             "range":3,
             "noFly":true,
+            "noBis":true,
             "rof":4,
             "accuracy":12,
             "power":27,
             "aoe":"squad",
             "sound":"audio_hero_ClaymoreAntiMine_PE230101_339b",
             "ammo":["obus-explosif","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
-            "maxAmmo":15
+            "maxAmmo":16
         },
         "moveCost":2,
         "maxFlood":3,
@@ -1302,7 +1303,7 @@
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
             "ammo":["fireball","fireglue","fireblast"],
-            "maxAmmo":16
+            "maxAmmo":12
         },
         "moveCost":2,
         "maxFlood":3,
@@ -1450,7 +1451,7 @@
             "aoe":"squad",
             "sound":"audio_hero_ClaymoreAntiMine_PE230101_339c",
             "ammo":["obus-explosif","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz"],
-            "maxAmmo": 24
+            "maxAmmo":32
         },
         "moveCost":3,
         "maxFlood":1,
@@ -1801,7 +1802,7 @@
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
             "ammo":["feu","napalm"],
-            "maxAmmo":13
+            "maxAmmo":12
         },
         "moveCost":2,
         "maxFlood":0,
@@ -1849,7 +1850,7 @@
             "aoe":"squad",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
             "ammo":["obus","obus-scrap","obus-explosif","obus-heat","obus-incendiaire","obus-napalm"],
-            "maxAmmo": 12
+            "maxAmmo":16
         },
         "moveCost":2,
         "maxFlood":2,
@@ -2248,7 +2249,7 @@
             "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
             "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
-            "maxAmmo":24
+            "maxAmmo":16
         },
         "moveCost":4,
         "maxFlood":3,
