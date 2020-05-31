@@ -404,7 +404,7 @@ function medic(cat,cost,around,deep) {
     xpGain = Math.round(xpGain*100)/100;
     selectedBat.xp = selectedBat.xp+xpGain;
     selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
-    selectedBat.salvoLeft = 0;
+    // selectedBat.salvoLeft = 0;
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };

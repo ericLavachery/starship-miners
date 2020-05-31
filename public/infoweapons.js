@@ -58,7 +58,11 @@ function weaponsInfos(bat,batUnitType) {
                 }
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGris iconButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
             }
-            $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
+            if (bat.salvoLeft >= 1) {
+                $('#unitInfos').append('<span class="paramName cy">Salves</span><span class="paramIcon"></span><span class="paramValue cy">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
+            } else {
+                $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
+            }
             // $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.cost+'</span><br>');
             let riposte = 'Oui';
             if (thisWeapon.noDef) {
@@ -124,7 +128,11 @@ function weaponsInfos(bat,batUnitType) {
                 }
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGris iconButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
             }
-            $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
+            if (bat.salvoLeft >= 1) {
+                $('#unitInfos').append('<span class="paramName cy">Salves</span><span class="paramIcon"></span><span class="paramValue cy">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
+            } else {
+                $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+bat.salvoLeft+'/'+batUnitType.maxSalvo+'</span><br>');
+            }
             // $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.cost+'</span><br>');
             riposte = 'Oui';
             if (thisWeapon.noDef) {
