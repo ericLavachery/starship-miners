@@ -41,10 +41,8 @@ function showBatInfos(bat) {
         $('#unitInfos').append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
     }
     let camoEnCours = false;
-    if (typeof bat.camoAP != 'undefined') {
-        if (bat.camoAP >= 0) {
-            camoEnCours = true;
-        }
+    if (bat.camoAP >= 1) {
+        camoEnCours = true;
     }
     if (camoEnCours) {
         $('#unitInfos').append('<span class="paramName cy">Mode furtif</span><span class="paramIcon"></span><span class="paramValue cy">En cours... ('+bat.camoAP+')</span><br>');

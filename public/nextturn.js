@@ -118,10 +118,8 @@ function nextTurnEnd() {
                 }
             }
             // camoAP
-            if (typeof bat.camoAP != 'undefined') {
-                if (bat.camoAP >= 0) {
-                    camoEnCours = true;
-                }
+            if (bat.camoAP >= 1) {
+                camoEnCours = true;
             }
             oldAP = ap;
             if (camoEnCours) {
