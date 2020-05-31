@@ -69,15 +69,33 @@ function camouflage(apCost) {
         if (apCost >= 1) {
             selectedBat.apLeft = selectedBat.apLeft-apCost;
         }
-        if (!selectedBat.tags.includes('camo')) {
-            selectedBat.tags.push('camo');
-        }
     } else {
         selectedBat.camoAP = apCost-Math.floor(selectedBatType.ap/2);
         selectedBat.apLeft = selectedBat.apLeft-Math.floor(selectedBatType.ap/2);
+        console.log('camoAP'+selectedBat.camoAP);
+    }
+    if (!selectedBat.tags.includes('camo')) {
+        selectedBat.tags.push('camo');
     }
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
+};
+
+function longCamo(bat) {
+    console.log('Camouflage en fin de tour');
+    let batType = getBatType(bat);
+    let camChance = calcCamo(bat);
+    let camOK = false;
+    let camDice = rand.rand(1,100);
+    console.log('camChance '+camChance);
+    let naturalFuzz = batType.fuzz;
+    if (camDice <= camChance) {
+        camOK = true;
+        bat.fuzz = -2;
+    } else {
+        camOK = false;
+        bat.fuzz = naturalFuzz;
+    }
 };
 
 function camoOut() {
@@ -87,6 +105,7 @@ function camoOut() {
         selectedBat.tags.splice(tagIndex,1);
         selectedBat.fuzz = selectedBatType.fuzz;
     }
+    selectedBat.camoAP = -1;
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };

@@ -40,11 +40,21 @@ function showBatInfos(bat) {
     } else {
         $('#unitInfos').append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
     }
-    if (bat.tags.includes('camo')) {
-        if (bat.fuzz <= -2) {
-            $('#unitInfos').append('<span class="paramName cy">Mode furtif</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
-        } else {
-            $('#unitInfos').append('<span class="paramName or">Mode furtif</span><span class="paramIcon"></span><span class="paramValue or">Loupé</span><br>');
+    let camoEnCours = false;
+    if (typeof bat.camoAP != 'undefined') {
+        if (bat.camoAP >= 0) {
+            camoEnCours = true;
+        }
+    }
+    if (camoEnCours) {
+        $('#unitInfos').append('<span class="paramName cy">Mode furtif</span><span class="paramIcon"></span><span class="paramValue cy">En cours... ('+bat.camoAP+')</span><br>');
+    } else {
+        if (bat.tags.includes('camo')) {
+            if (bat.fuzz <= -2) {
+                $('#unitInfos').append('<span class="paramName cy">Mode furtif</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+            } else {
+                $('#unitInfos').append('<span class="paramName or">Mode furtif</span><span class="paramIcon"></span><span class="paramValue or">Loupé</span><br>');
+            }
         }
     }
     let batFuzz = calcBatFuzz(bat);

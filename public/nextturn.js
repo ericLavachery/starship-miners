@@ -56,6 +56,7 @@ function nextTurnEnd() {
     let batFuzz;
     let batType;
     let ap;
+    let oldAP;
     let tagIndex;
     deadBatsList = [];
     let boostedTeams = [];
@@ -63,6 +64,9 @@ function nextTurnEnd() {
     let thisAPBonus;
     let ravitNum;
     let emptyBonus;
+    let minAP;
+    let apRest;
+    let camoEnCours = false;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             if (bat.loc === "zone") {
@@ -105,28 +109,46 @@ function nextTurnEnd() {
             if (playerInfos.skills.includes('trans2') && batType.cat === 'vehicles' && !batType.skills.includes('robot') && thisAPBonus == 0) {
                 ap = ap+1;
             }
-            bat.salvoLeft = batType.maxSalvo;
-            if (bat.apLeft < 0-(batType.ap*2)) {
-                bat.apLeft = 0-(batType.ap*2);
-            }
-            bat.apLeft = bat.apLeft+ap;
-            if (bat.apLeft > ap) {
-                bat.apLeft = ap;
-            }
             // fastempty
             if (batType.skills.includes('fastempty')) {
                 ravitNum = calcRavit(bat);
                 if (ravitNum < batType.maxSKill) {
                     emptyBonus = Math.round((batType.maxSKill-ravitNum)/batType.maxSKill*5);
-                    bat.apLeft = bat.apLeft+emptyBonus;
+                    ap = ap+emptyBonus;
                 }
             }
             // camoAP
             if (typeof bat.camoAP != 'undefined') {
                 if (bat.camoAP >= 0) {
-                    
+                    camoEnCours = true;
                 }
             }
+            oldAP = ap;
+            if (camoEnCours) {
+                console.log('Camouflage en cours');
+                minAP = Math.ceil(batType.ap/2);
+                apRest = bat.apLeft-minAP;
+                bat.apLeft = minAP;
+                console.log('camoAP '+bat.camoAP);
+                bat.camoAP = bat.camoAP-ap-apRest;
+                if (bat.camoAP <= 0) {
+                    longCamo(bat);
+                    ap = 0-bat.camoAP;
+                    bat.camoAP = -1;
+                    console.log('fin!');
+                } else {
+                    ap = 0;
+                }
+                console.log('camoAP '+bat.camoAP);
+            }
+            bat.apLeft = bat.apLeft+ap;
+            if (bat.apLeft < 0-(batType.ap*2)) {
+                bat.apLeft = 0-(batType.ap*2);
+            }
+            if (bat.apLeft > oldAP) {
+                bat.apLeft = oldAP;
+            }
+            bat.salvoLeft = batType.maxSalvo;
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
             tagsEffect(bat,batType);
