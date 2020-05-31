@@ -73,7 +73,7 @@ function limitOffset() {
 };
 
 function centerMapTo(tileId) {
-    // center on selectedBat
+    // center on tile
     myTileX = zone[tileId].x;
     myTileY = zone[tileId].y;
     xOffset = myTileX-Math.round(numVTiles/2);

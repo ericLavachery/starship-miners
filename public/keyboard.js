@@ -11,6 +11,9 @@ $(document).keypress(function(e) {
     if (e.which == 113) {
         areaMove('w');
     }
+    if (e.which == 99) {
+        centerMap();
+    }
     // fuck (poubelle)
     // if (e.which == 102) {
     //     nextBat(true);

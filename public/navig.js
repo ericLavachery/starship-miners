@@ -16,15 +16,9 @@ function commandes() {
         $('#commandz').append('<button type="button" title="Passer au tour suivant" class="boutonMauve iconButtons" onclick="nextTurn()"><i class="fas fa-spider"></i></button>');
         $('#commandz').append('<button type="button" title="" class="boutonGris iconButtons" onclick="findEgg()">'+aliens.length+'</button>');
 
-        $('#commandz').append('<hr>');
-        $('#commandz').append('<button type="button" title="Générer une nouvelle carte" class="boutonVert iconButtons"><i class="fas fa-map" onclick="generateNewMap()"></i></button>');
-        $('#commandz').append('<button type="button" title="Sauvegarder la carte" class="boutonVert iconButtons" onclick="saveMap()"><i class="fas fa-save"></i></button>');
-        $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les aliens)" class="boutonRouge iconButtons" onclick="showMapReset()" id="reset1"><i class="fas fa-power-off"></i></button>');
-        $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les aliens)" class="boutonRouge iconButtons" onclick="mapReset()" id="reset2"><i class="fas fa-skull-crossbones"></i></button>');
-
         $('#commandz').append('<br>');
         $('#commandz').append('<button type="button" title="Constriche" class="boutonGris iconButtons" onclick="bfconst()"><i class="fa fa-hammer"></i></button>');
-        $('#commandz').append('<button type="button" title="Sauvegarder les bataillons" class="boutonGris iconButtons" onclick="saveAllBats()"><i class="far fa-save"></i></button>');
+        $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveAllBats()"><i class="far fa-save"></i> &nbsp;<span class="small">Save</span></button>');
         $('#commandz').append('<br>');
     } else if (activeTurn == 'aliens') {
         $('#commandz').append('<button type="button" title="Passer au bataillon suivant" class="boutonMauve iconButtons" onclick="nextAlien()"><i class="fas fa-chevron-circle-right"></i></button>');
@@ -34,10 +28,18 @@ function commandes() {
         $('#commandz').append('<button type="button" title="" class="boutonGris iconButtons" onclick="findEgg()">'+aliens.length+'</button>');
         $('#commandz').append('<br>');
     }
+    $('#commandz').append('<hr>');
     $('#commandz').append('<button type="button" title="Stopper/Redémarrer la musique" class="boutonGris iconButtons" onclick="soundVolume(`mute`,`music`)"><i class="fas fa-volume-mute"></i></button>');
     $('#commandz').append('<button type="button" title="Augmenter le volume de la musique" class="boutonGris iconButtons" onclick="soundVolume(`down`,`music`)"><i class="fas fa-volume-down"></i></button>');
     $('#commandz').append('<button type="button" title="Augmenter le volume de la musique" class="boutonGris iconButtons" onclick="soundVolume(`up`,`music`)"><i class="fas fa-volume-up"></i></button><br>');
     $('#commandz').append('<button type="button" title="Stopper/Redémarrer les effets" class="boutonGris iconButtons" onclick="soundVolume(`mute`,`fx`)"><i class="fas fa-volume-mute"></i></button>');
     $('#commandz').append('<button type="button" title="Augmenter le volume des effets" class="boutonGris iconButtons" onclick="soundVolume(`down`,`fx`)"><i class="fas fa-volume-down"></i></button>');
     $('#commandz').append('<button type="button" title="Augmenter le volume des effets" class="boutonGris iconButtons" onclick="soundVolume(`up`,`fx`)"><i class="fas fa-volume-up"></i></button><br>');
+    if (activeTurn == 'player') {
+        $('#commandz').append('<hr>');
+        $('#commandz').append('<button type="button" title="Générer une nouvelle carte" class="boutonRouge iconButtons"><i class="fas fa-map" onclick="generateNewMap()"></i></button>');
+        $('#commandz').append('<button type="button" title="Sauvegarder la carte" class="boutonRouge iconButtons" onclick="saveMap()"><i class="fas fa-save"></i></button>');
+        $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les bataillons)" class="boutonRouge iconButtons" onclick="showMapReset()" id="reset1"><i class="fas fa-power-off"></i></button>');
+        $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les bataillons)" class="boutonRouge iconButtons" onclick="mapReset()" id="reset2"><i class="fas fa-skull-crossbones"></i></button>');
+    }
 };
