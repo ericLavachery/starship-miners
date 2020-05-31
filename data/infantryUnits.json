@@ -632,7 +632,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid","maycamo"],
+        "skills":["fortif","cible","firstaid","maycamo","embuscade"],
         "fuzz":2
     },
     {
@@ -682,7 +682,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","maycamo"],
+        "skills":["fortif","cible","maycamo","embuscade"],
         "fuzz":2
     },
     {
@@ -824,7 +824,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","luckyshot","survivor","guerrilla","firstaid","sentinelle","ranger","maycamo"],
+        "skills":["fortif","cible","luckyshot","survivor","guerrilla","firstaid","sentinelle","ranger","maycamo","embuscade"],
         "fuzz":1
     },
     {
@@ -1242,7 +1242,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo","firstaid","ranger","sentinelle","guerrilla"],
+        "skills":["fortif","cible","camo","firstaid","ranger","sentinelle","guerrilla","embuscade"],
         "fuzz":-1
     },
     {
@@ -1289,7 +1289,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid","guerrilla","ranger","survivor","maycamo"],
+        "skills":["fortif","cible","firstaid","guerrilla","ranger","survivor","maycamo","embuscade"],
         "fuzz":1
     },
     {
@@ -1680,7 +1680,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid","defense","maycamo"],
+        "skills":["fortif","cible","firstaid","defense","maycamo","embuscade"],
         "fuzz":1
     },
     {
@@ -1779,7 +1779,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","selfmedic","leader","survivor","luckyshot","defense","sentinelle","ranger","guerrilla","maycamo"],
+        "skills":["fortif","cible","selfmedic","leader","survivor","luckyshot","defense","sentinelle","ranger","guerrilla","maycamo","embuscade"],
         "fuzz":1.5
     },
     {
@@ -2431,7 +2431,7 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","defense","maycamo","hardmove","machine"],
+        "skills":["fortif","cible","defense","maycamo","hardmove","machine","embuscade"],
         "fuzz":3
     },
     {
@@ -2478,7 +2478,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","maycamo","guerrilla"],
+        "skills":["fortif","cible","maycamo","guerrilla","embuscade"],
         "fuzz":0
     },
     {
@@ -2526,7 +2526,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","maycamo"],
+        "skills":["fortif","cible","maycamo","embuscade"],
         "fuzz":0
     },
     {

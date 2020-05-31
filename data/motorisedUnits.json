@@ -739,7 +739,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["cible","transport","camo","hardmove","emoteur","selfmecano"],
+        "skills":["cible","transport","camo","hardmove","emoteur","selfmecano","embuscade"],
         "transMaxSize":9,
         "transUnits":900,
         "fuzz":0

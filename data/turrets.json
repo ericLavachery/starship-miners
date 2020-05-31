@@ -101,7 +101,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","transorbital","ravitaillement","stock","transport","maycamo","extraction","survivor"],
+        "skills":["deepselfrepair","transorbital","ravitaillement","stock","transport","extraction","survivor"],
         "transMaxSize":50,
         "transUnits":9000,
         "transRes":18000,
@@ -351,7 +351,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","cible","defense","camo"],
+        "skills":["deepselfrepair","cible","defense","camo","embuscade"],
         "fuzz":-1
     },
     {
