@@ -177,6 +177,7 @@ function putBat(tileId) {
         newBat.oldTileId = tileId;
         newBat.squadsLeft = conselUnit.squads;
         newBat.damage = 0;
+        newBat.camoAP = -1;
         if (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs') {
             newBat.apLeft = 0;
             newBat.oldapLeft = 0;

@@ -30,7 +30,6 @@ function calcCamo(bat) {
     if (terrain.veg >= 1) {
         stealth = stealth+terrain.veg+terrain.veg+2;
     }
-    let camDice = rand.rand(1,100);
     let camChance = Math.round(Math.sqrt(stealth)*(playerInfos.caLevel+16))+(stealth*2)-30;
     // size
     if (batType.size > 3) {
@@ -43,54 +42,40 @@ function calcCamo(bat) {
 };
 
 function camouflage(apCost) {
-    // changer aussi dans calcCamo !!!!!
     console.log('MODE FURTIF');
-    if (!selectedBat.tags.includes('camo')) {
-        selectedBat.tags.push('camo');
-    }
-    let stealth = getStealth(selectedBat);
-    if (stealth < 3) {
-        stealth = 3;
-    }
-    let terrain = getTerrain(selectedBat);
-    if (terrain.veg >= 1) {
-        stealth = stealth+terrain.veg+terrain.veg+2;
-    }
-    console.log('stealth '+stealth);
-    let camOK = false;
-    let camDice = rand.rand(1,100);
-    let camChance = Math.round(Math.sqrt(stealth)*(playerInfos.caLevel+16))+(stealth*2)-30;
-    // size
-    if (batType.size > 3) {
-        camChance = Math.ceil(camChance/Math.sqrt(Math.sqrt(batType.size))*1.31);
-    }
-    if (camChance > stealthMaxChance) {
-        camChance = stealthMaxChance;
-    }
-    console.log('camChance '+camChance);
-    let naturalFuzz = selectedBatType.fuzz;
-    if (camDice <= camChance) {
-        camOK = true;
-        selectedBat.fuzz = -2;
-    } else {
-        if (apCost === 0) {
-            camOK = false;
-            selectedBat.fuzz = naturalFuzz;
+    if (apCost <= selectedBatType.ap) {
+        let camChance = calcCamo(selectedBat);
+        let camOK = false;
+        let camDice = rand.rand(1,100);
+        console.log('camChance '+camChance);
+        let naturalFuzz = selectedBatType.fuzz;
+        if (camDice <= camChance) {
+            camOK = true;
+            selectedBat.fuzz = -2;
         } else {
-            if (selectedBat.fuzz > -2) {
+            if (apCost === 0) {
                 camOK = false;
                 selectedBat.fuzz = naturalFuzz;
             } else {
-                camOK = true;
-                selectedBat.fuzz = -2;
+                if (selectedBat.fuzz > -2) {
+                    camOK = false;
+                    selectedBat.fuzz = naturalFuzz;
+                } else {
+                    camOK = true;
+                    selectedBat.fuzz = -2;
+                }
             }
         }
+        if (apCost >= 1) {
+            selectedBat.apLeft = selectedBat.apLeft-apCost;
+        }
+        if (!selectedBat.tags.includes('camo')) {
+            selectedBat.tags.push('camo');
+        }
+    } else {
+        selectedBat.camoAP = apCost-Math.floor(selectedBatType.ap/2);
+        selectedBat.apLeft = selectedBat.apLeft-Math.floor(selectedBatType.ap/2);
     }
-    if (apCost >= 1) {
-        selectedBat.apLeft = selectedBat.apLeft-apCost;
-    }
-    console.log(camOK);
-    console.log(selectedBat.fuzz);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };

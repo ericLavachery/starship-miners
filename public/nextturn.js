@@ -113,11 +113,18 @@ function nextTurnEnd() {
             if (bat.apLeft > ap) {
                 bat.apLeft = ap;
             }
+            // fastempty
             if (batType.skills.includes('fastempty')) {
                 ravitNum = calcRavit(bat);
                 if (ravitNum < batType.maxSKill) {
                     emptyBonus = Math.round((batType.maxSKill-ravitNum)/batType.maxSKill*5);
                     bat.apLeft = bat.apLeft+emptyBonus;
+                }
+            }
+            // camoAP
+            if (typeof bat.camoAP != 'undefined') {
+                if (bat.camoAP >= 0) {
+                    
                 }
             }
             bat.oldTileId = bat.tileId;
