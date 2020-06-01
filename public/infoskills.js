@@ -253,7 +253,7 @@ function skillsInfos(bat,batUnitType) {
         baseMedicCost = batUnitType.medicCost;
         apCost = numTargets*(baseMedicCost+batUnitType.squads-bat.squadsLeft);
         if (bat.apLeft >= baseMedicCost/2 && numTargets >= 1 && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents" class="boutonGris iconButtons" onclick="medic(`vehicles`,10,true,true)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents" class="boutonGris iconButtons" onclick="medic(`vehicles`,'+baseMedicCost+',true,true)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Pas de réparations en mêlée";
@@ -272,7 +272,7 @@ function skillsInfos(bat,batUnitType) {
         numTargets = numMedicTargets(bat,'vehicles',true,false);
         apCost = numTargets*(8+batUnitType.squads-bat.squadsLeft);
         if (bat.apLeft >= 4 && numTargets >= 1 && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents" class="boutonGris iconButtons" onclick="medic(`vehicles`,10,true,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents" class="boutonGris iconButtons" onclick="medic(`vehicles`,8,true,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Pas de réparations en mêlée";
@@ -326,7 +326,7 @@ function skillsInfos(bat,batUnitType) {
         baseMedicCost = batUnitType.medicCost;
         apCost = numTargets*(baseMedicCost+batUnitType.squads-bat.squadsLeft);
         if (bat.apLeft >= baseMedicCost/2 && numTargets >= 1 && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les bâtiments adjacents" class="boutonGris iconButtons" onclick="medic(`buildings`,15,true,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les bâtiments adjacents" class="boutonGris iconButtons" onclick="medic(`buildings`,'+baseMedicCost+',true,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Pas de réparations en mêlée";

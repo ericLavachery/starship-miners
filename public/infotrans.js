@@ -1,7 +1,8 @@
 function transInfos(bat,batUnitType) {
     console.log('transInfos');
+    let isCharged = checkCharged(bat);
     let transId = checkTransportId(bat,batUnitType);
-    if (transId >= 0) {
+    if (transId >= 0 && !isCharged) {
         let transIndex = bataillons.findIndex((obj => obj.id == transId));
         let transBatName = bataillons[transIndex].type;
         let apCost;
@@ -43,6 +44,16 @@ function unloadInfos(myBat,myBatUnitType) {
 
 function calcVolume(batType) {
     return Math.round(batType.size*batType.squadSize*batType.squads/4*Math.sqrt(batType.size+13)*batType.volume);
+};
+
+function checkCharged(myBat) {
+    let isCharged = false;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "trans" && bat.locId == myBat.id) {
+            isCharged = true;
+        }
+    });
+    return isCharged;
 };
 
 function checkTransportId(myBat,myBatType) {
