@@ -115,8 +115,8 @@ function camoOut() {
     if (selectedBat.tags.includes('camo')) {
         tagIndex = selectedBat.tags.indexOf('camo');
         selectedBat.tags.splice(tagIndex,1);
-        selectedBat.fuzz = selectedBatType.fuzz;
     }
+    selectedBat.fuzz = selectedBatType.fuzz;
     selectedBat.camoAP = -1;
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);

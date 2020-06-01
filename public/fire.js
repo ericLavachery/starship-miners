@@ -186,7 +186,7 @@ function combat() {
 function attack() {
     console.log('Attaque ->');
     console.log(selectedWeap);
-    let xpFactor = 12/selectedBatType.maxSalvo/10;
+    let xpFactor = Math.round(100*12/selectedBatType.maxSalvo/10)/100;
     if (selectedBatType.maxSalvo >= 5) {
         xpFactor = 0.2;
     }
@@ -527,7 +527,7 @@ function attack() {
 function defense() {
     console.log('Défense ->');
     console.log(targetWeap);
-    let xpFactor = 12/selectedBatType.maxSalvo/10;
+    let xpFactor = Math.round(100*12/selectedBatType.maxSalvo/10)/100;
     if (selectedBatType.maxSalvo >= 5) {
         xpFactor = 0.2;
     }
