@@ -143,7 +143,7 @@ function clickConstruct(tileId) {
     }
 };
 
-function putBat(tileId) {
+function putBat(tileId,citoyens) {
     console.log('PUTBAT');
     if (Object.keys(conselUnit).length >= 1) {
         console.log(conselUnit);
@@ -175,7 +175,12 @@ function putBat(tileId) {
         newBat.locId = 0;
         newBat.tileId = tileId;
         newBat.oldTileId = tileId;
-        newBat.squadsLeft = conselUnit.squads;
+        if (citoyens >= 1) {
+            newBat.citoyens = citoyens;
+            newBat.squadsLeft = Math.ceil(citoyens/conselUnit.squadSize);
+        } else {
+            newBat.squadsLeft = conselUnit.squads;
+        }
         newBat.damage = 0;
         newBat.camoAP = -1;
         if (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs') {
