@@ -35,8 +35,8 @@
         "crew":15,
         "hp":400,
         "armor":7,
-        "size":35,
-        "stealth":10,
+        "size":60,
+        "stealth":0,
         "ap":12,
         "maxSalvo":1,
         "weapon":{},
@@ -45,7 +45,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","maycamo","extraction"],
+        "skills":["deepselfrepair","maycamo","extraction","underground"],
         "fuzz":4
     },
     {

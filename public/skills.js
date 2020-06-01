@@ -23,6 +23,10 @@ function fortification() {
 function calcCamo(bat) {
     let batType = getBatType(bat);
     let stealth = getStealth(bat);
+    // underground
+    if (batType.skills.includes('underground')) {
+        stealth = stealth+10;
+    }
     if (stealth < 3) {
         stealth = 3;
     }
@@ -35,8 +39,16 @@ function calcCamo(bat) {
     if (batType.size > 3) {
         camChance = Math.ceil(camChance/Math.sqrt(Math.sqrt(batType.size))*1.31);
     }
-    if (camChance > stealthMaxChance) {
-        camChance = stealthMaxChance;
+    // max
+    if (batType.skills.includes('underground')) {
+        camChance = camChance+65;
+        if (camChance > 100) {
+            camChance = 100;
+        }
+    } else {
+        if (camChance > stealthMaxChance) {
+            camChance = stealthMaxChance;
+        }
     }
     return camChance;
 };

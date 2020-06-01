@@ -317,7 +317,7 @@
         "hp":500,
         "armor":20,
         "size":60,
-        "stealth":20,
+        "stealth":15,
         "ap":15,
         "maxSalvo":2,
         "weapon":{
@@ -351,7 +351,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","cible","defense","camo","embuscade"],
+        "skills":["deepselfrepair","cible","defense","camo","embuscade","underground"],
         "fuzz":-1
     },
     {
