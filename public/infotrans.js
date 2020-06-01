@@ -12,19 +12,29 @@ function transInfos(bat,batUnitType) {
 
 function unloadInfos(myBat,myBatUnitType) {
     let balise = 'h4';
+    let damageIcon = '';
+    let tagsIcon = '';
     if (myBat.transIds != undefined) {
         if (myBat.transIds.length >= 1) {
             let apCost = 0;
             bataillons.forEach(function(bat) {
                 if (bat.loc === "trans" && bat.locId == myBat.id) {
                     batType = getBatType(bat);
+                    damageIcon = '';
+                    if (bat.damage >= 1 || bat.squadsLeft < batType.squads) {
+                        damageIcon = ' <i class="ra ra-bleeding-hearts"></i>'
+                    }
+                    tagsIcon = '';
+                    if (bat.tags.includes('maladie') || bat.tags.includes('parasite') || bat.tags.includes('venin') || bat.tags.includes('poison')) {
+                        tagsIcon = ' <i class="fas fa-skull-crossbones"></i>'
+                    }
                     balise = 'h4';
                     if (Object.keys(batDebarq).length >= 1) {
                         if (batDebarq.id === bat.id) {
                             balise = 'h1';
                         }
                     }
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+bat.apLeft+' PA" class="boutonGris iconButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</'+balise+'></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+bat.apLeft+' PA" class="boutonGris iconButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+damageIcon+tagsIcon+'</'+balise+'></span>');
                 }
             });
         }

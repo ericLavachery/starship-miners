@@ -622,7 +622,7 @@
             "aoe":"squad",
             "sound":"262436__ramston__real-explosionsb",
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing"],
-            "maxAmmo":8
+            "maxAmmo":12
         },
         "moveCost":3,
         "maxFlood":0,
