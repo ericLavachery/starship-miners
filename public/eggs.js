@@ -20,9 +20,15 @@ function checkEggsDrop() {
     console.log('check egg drop');
     eggDropCount = 0;
     let drop = false;
-    let dropTurn = Math.floor(((playerInfos.mapDrop*cumDrop)+playerInfos.mapTurn)/(cumDrop+1));
+    let adjMapDrop = playerInfos.mapDrop;
+    let adjMapTurn = playerInfos.mapTurn-10+playerInfos.mapDiff;
+    if (adjMapTurn <= 0) {
+        adjMapTurn = 0;
+        adjMapDrop = 0;
+    }
+    let dropTurn = Math.floor(((adjMapDrop*cumDrop)+adjMapTurn)/(cumDrop+1));
     console.log(playerInfos.mapAdjDiff);
-    let dropChance = Math.round((dropTurn*Math.sqrt(playerInfos.mapAdjDiff))+playerInfos.mapAdjDiff-1);
+    let dropChance = Math.round((dropTurn*Math.sqrt(playerInfos.mapAdjDiff)*dropMod)+playerInfos.mapAdjDiff-1);
     console.log('dropChance='+dropChance);
     if (rand.rand(1,100) <= dropChance && aliens.length < maxAliens && !playerInfos.eggPause) {
         drop = true;
@@ -311,10 +317,10 @@ function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     let eggModTurn = eggTurn+playerInfos.mapDiff-3;
-    let eggLife = 10+Math.round(playerInfos.mapDiff*1.5);
+    let eggLife = eggLifeStart+Math.floor(playerInfos.mapDiff*eggLifeFactor);
     if (bat.type === 'Coque') {
         eggModTurn = eggTurn+playerInfos.mapDiff-3;
-        eggLife = 5+Math.round(playerInfos.mapDiff/1.4);
+        eggLife = coqLifeStart+Math.floor(playerInfos.mapDiff*coqLifeFactor);
     }
     console.log('eggTurn='+eggTurn);
     if (eggTurn >= eggLife && fromEgg) {

@@ -107,6 +107,11 @@ let conselAmmos = ['xxx','xxx'];
 // INVASION
 let maxAliens = 300;
 let cumDrop = 5; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
+let dropMod = 1.5; //
+let eggLifeStart = 11; //
+let eggLifeFactor = 0.5; //
+let coqLifeStart = 6; //
+let coqLifeFactor = 0.5; //
 let noEggs = 15; // % pour un eggDrop sans oeufs
 let eggPause = false;
 let pauseCount = 15; // pause tous les 15 oeufs tués
