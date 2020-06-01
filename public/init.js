@@ -92,7 +92,7 @@ socket.on('aliens-Load', function(ab) {
     // console.log(aliens);
 });
 socket.on('testcon-failed', function(pseutest) {
-    connectMe(pseutest);
-    warning('Reconnexion:','Le serveur à été redémarré et vous n\'avez pas actualisé la page.<br>Vos dernières actions n\'ont pas été enregistrées.');
+    warning('Déconnexion:','Le serveur à été redémarré et vous n\'avez pas actualisé la page.<br>Vos dernières actions n\'ont peut-être pas été enregistrées.');
+    alert("Le serveur à été redémarré et vous n'avez pas actualisé la page. Vos dernières actions n'ont peut-être pas été enregistrées.");
     console.log('pseudo test failed! *********************************');
 });

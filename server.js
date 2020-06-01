@@ -297,6 +297,15 @@ io.sockets.on('connection', function (socket, pseudo) {
             console.log('Player infos saved to '+filename+' on turn '+playerInfos.mapTurn);
         });
     });
+
+    // Save TEST
+    socket.on('testcon', function(test) {
+        if (socket.pseudo == undefined) {
+            let pseutest = socket.pseudo;
+            console.log('UNDEFINED PLAYER');
+            socket.emit('testcon-failed',pseutest);
+        }
+    });
 });
 
 server.listen(8080);

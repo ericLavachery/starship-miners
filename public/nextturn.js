@@ -1,4 +1,5 @@
 function nextTurn() {
+    testConnect(pseudo);
     console.log('NOUVEAU TOUR');
     console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
     // stopMe = true;
@@ -464,7 +465,7 @@ function createBatList() {
 };
 
 function nextBat(removeActiveBat) {
-    // testConnect(pseudo);
+    testConnect(pseudo);
     if (rand.rand(1,musicChance) === 1) {
         playMusic('any',false);
     }
