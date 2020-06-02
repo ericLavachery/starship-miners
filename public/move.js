@@ -187,7 +187,7 @@ function moveSelectedBat(tileId,free,jump) {
         tagIndex = selectedBat.tags.indexOf('fortif');
         selectedBat.tags.splice(tagIndex,1);
     }
-    if (selectedBat.tags.includes('camo')) {
+    if (selectedBat.tags.includes('camo') || selectedBat.fuzz <= -2) {
         if (selectedBatType.skills.includes('fly') || (selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('emoteur') && !selectedBatType.skills.includes('robot')) || selectedBatType.skills.includes('moto') || selectedBatType.skills.includes('maycamo')) {
             camoOut();
         } else {

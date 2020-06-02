@@ -108,6 +108,9 @@ function longCamo(bat) {
         camOK = false;
         bat.fuzz = naturalFuzz;
     }
+    if (!bat.tags.includes('camo')) {
+        bat.tags.push('camo');
+    }
 };
 
 function camoOut() {
