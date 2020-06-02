@@ -106,8 +106,8 @@ let conselUnit = {};
 let conselAmmos = ['xxx','xxx'];
 // INVASION
 let maxAliens = 300;
-let cumDrop = 7; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
-let dropMod = 1.5; //
+let cumDrop = 8; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
+let dropMod = 1.6; //
 let eggLifeStart = 11; //
 let eggLifeFactor = 0.5; //
 let coqLifeStart = 6; //

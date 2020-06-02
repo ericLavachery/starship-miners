@@ -28,7 +28,7 @@ function checkEggsDrop() {
     }
     let dropTurn = Math.floor(((adjMapDrop*cumDrop)+adjMapTurn)/(cumDrop+1));
     console.log(playerInfos.mapAdjDiff);
-    let dropChance = Math.round((dropTurn*Math.sqrt(playerInfos.mapAdjDiff)*dropMod)+playerInfos.mapAdjDiff-5);
+    let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapAdjDiff)*dropMod);
     if (dropChance < 0) {
         dropChance = 0;
     }
