@@ -122,6 +122,17 @@ function camoOut() {
     showBatInfos(selectedBat);
 };
 
+function camoStop(bat) {
+    console.log('MODE NON FURTIF');
+    let batType = getBatType(bat);
+    if (bat.tags.includes('camo')) {
+        tagIndex = bat.tags.indexOf('camo');
+        bat.tags.splice(tagIndex,1);
+    }
+    bat.fuzz = batType.fuzz;
+    bat.camoAP = -1;
+};
+
 function tirCible() {
     console.log('TIR CIBLE');
     if (!selectedBat.tags.includes('vise')) {

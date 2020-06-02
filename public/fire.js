@@ -478,7 +478,9 @@ function attack() {
         }
     }
     targetBat.damage = totalDamage-(squadsOut*squadHP);
-    targetBat.camoAP = -1;
+    if (targetBat.camoAP >= 0) {
+        camoStop(targetBat);
+    }
     console.log('Damage Left : '+targetBat.damage);
     targetBatArrayUpdate();
     if (targetBat.squadsLeft <= 0) {
