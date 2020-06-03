@@ -870,7 +870,7 @@
         "aoe": ""
     },
     {
-        "name": "feu",
+        "name": "molotov-feu",
         "range": 0,
         "rof": 1,
         "power": 0,
@@ -880,7 +880,27 @@
         "aoe": ""
     },
     {
-        "name": "napalm",
+        "name": "molotov-napalm",
+        "range": 0,
+        "rof": 1,
+        "power": 4,
+        "armors": 1.25,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "lf-feu",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 1.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "lf-napalm",
         "range": 0,
         "rof": 1,
         "power": 4,
@@ -1070,71 +1090,21 @@
         "aoe": ""
     },
     {
-        "name": "adamantium",
-        "range": 0,
-        "rof": 1.5,
-        "power": 1,
-        "armors": 0.5,
-        "accuracy": 1.5,
-        "apdamage": 0,
-        "aoe": ""
-    },
-    {
-        "name": "monomolecular",
+        "name": "feu",
         "range": 0,
         "rof": 1,
         "power": 0,
-        "armors": 0,
-        "accuracy": 1.5,
-        "apdamage": 0,
-        "aoe": ""
-    },
-    {
-        "name": "plasblade",
-        "range": 0,
-        "rof": 0.67,
-        "power": 10,
-        "armors": 0.35,
-        "accuracy": 1,
-        "apdamage": 0.1,
-        "aoe": ""
-    },
-    {
-        "name": "taser",
-        "range": 0,
-        "rof": 1,
-        "power": 2,
-        "armors": 0.25,
-        "accuracy": 1,
-        "apdamage": 0.08,
-        "aoe": ""
-    },
-    {
-        "name": "scrap",
-        "range": 0,
-        "rof": 1,
-        "power": -1,
         "armors": 1.5,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
     },
     {
-        "name": "poraz",
+        "name": "napalm",
         "range": 0,
         "rof": 1,
-        "power": 3,
-        "armors": 0.75,
-        "accuracy": 1,
-        "apdamage": 0.2,
-        "aoe": ""
-    },
-    {
-        "name": "shinda",
-        "range": 0,
-        "rof": 1,
-        "power": 0,
-        "armors": 0.75,
+        "power": 4,
+        "armors": 1.25,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""

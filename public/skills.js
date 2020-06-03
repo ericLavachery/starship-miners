@@ -592,12 +592,41 @@ function calcRavit(bat) {
         if (bat.tags.includes('skillUsed')) {
             let allTags = _.countBy(bat.tags);
             ravitLeft = ravitLeft-allTags.skillUsed;
-            // console.log(allTags);
-            // console.log(allTags.ammoUsed);
         }
     }
     console.log('ravitLeft='+ravitLeft);
     return ravitLeft;
+};
+
+function calcRavitVolume(bat) {
+    let batType = getBatType(bat);
+    let ravitVolume = [0,0];
+    let ammoVolume;
+    let ammoLeft;
+    if (batType.weapon.maxAmmo < 99) {
+        if (bat.ammo.includes('obus') || bat.ammo.includes('boulet') || bat.ammo.includes('lf-')) {
+            ammoVolume = 2*batType.weapon.power;
+        } else if (bat.ammo.includes('missile')) {
+            ammoVolume = 8*batType.weapon.power;
+        } else {
+            ammoVolume = 0.4*batType.weapon.power;
+        }
+        ravitVolume[0] = Math.ceil(batType.squads*batType.weapon.rof*ammoVolume*batType.weapon.maxAmmo/2000);
+        ammoLeft = calcAmmos(bat,batType.weapon.maxAmmo);
+        ravitVolume[1] = ravitVolume[0]-Math.floor(ravitVolume[0]*ammoLeft/batType.weapon.maxAmmo);
+    } else if (batType.weapon2.maxAmmo < 99) {
+        if (bat.ammo2.includes('obus') || bat.ammo2.includes('boulet') || bat.ammo2.includes('lf-')) {
+            ammoVolume = 2*batType.weapon2.power;
+        } else if (bat.ammo2.includes('missile')) {
+            ammoVolume = 8*batType.weapon2.power;
+        } else {
+            ammoVolume = 0.4*batType.weapon2.power;
+        }
+        ravitVolume[0] = Math.ceil(batType.squads*batType.weapon2.rof*ammoVolume*batType.weapon2.maxAmmo/2000);
+        ammoLeft = calcAmmos(bat,batType.weapon2.maxAmmo);
+        ravitVolume[1] = ravitVolume[0]-Math.floor(ravitVolume[0]*ammoLeft/batType.weapon2.maxAmmo);
+    }
+    return ravitVolume;
 };
 
 function goStock(apCost) {

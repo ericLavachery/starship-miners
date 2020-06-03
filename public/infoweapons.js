@@ -9,6 +9,7 @@ function weaponsInfos(bat,batUnitType) {
     let noBisOK = true;
     let baseAmmo = 99;
     let ammoLeft = 99;
+    let ravitVolume = 0;
     cheapWeapCost = 99;
     if (batUnitType.weapon.rof >= 1 && batUnitType.weapon2.rof >= 1 && batUnitType.weapon.name === batUnitType.weapon2.name) {
         showW1 = false;
@@ -84,6 +85,8 @@ function weaponsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+showAmmo(bat.ammo)+'</span><br>');
             if (baseAmmo < 99) {
                 $('#unitInfos').append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
+                ravitVolume = calcRavitVolume(bat);
+                $('#unitInfos').append('<span class="paramName" title="Volume du ravitaillement">Volume</span><span class="paramIcon"></span><span class="paramValue">'+ravitVolume[1]+'/'+ravitVolume[0]+'</span><br>');
             }
         }
     }
@@ -154,6 +157,8 @@ function weaponsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+showAmmo(bat.ammo2)+'</span><br>');
             if (baseAmmo < 99) {
                 $('#unitInfos').append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
+                ravitVolume = calcRavitVolume(bat);
+                $('#unitInfos').append('<span class="paramName" title="Volume du ravitaillement">Volume</span><span class="paramIcon"></span><span class="paramValue">'+ravitVolume[1]+'/'+ravitVolume[0]+'</span><br>');
             }
         }
     }
@@ -172,6 +177,8 @@ function showAmmo(ammo) {
     ammoView = ammoView.replace('lame-','');
     ammoView = ammoView.replace('grenade-','');
     ammoView = ammoView.replace('missile-','');
+    ammoView = ammoView.replace('lf-','');
+    ammoView = ammoView.replace('molotov-','');
     ammoView = ammoView.replace('autodestruction','bombe');
     ammoView = ammoView.replace('monomolecular','mono');
     return ammoView;

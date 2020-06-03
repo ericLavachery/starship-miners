@@ -576,9 +576,9 @@
             "rof":8,
             "accuracy":11,
             "power":10,
-            "aoe":"squad",
+            "aoe":"brochette",
             "sound":"audio_hero_MolotovCocktailThr_PE280101_381b",
-            "ammo":["feu","napalm"],
+            "ammo":["molotov-feu","molotov-napalm"],
             "maxAmmo":12
         },
         "moveCost":3,
@@ -755,10 +755,10 @@
             "range":0,
             "rof":8,
             "accuracy":18,
-            "power":10,
+            "power":12,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["feu","napalm"],
+            "ammo":["lf-feu","lf-napalm"],
             "maxAmmo":12
         },
         "weapon2":{
@@ -2261,10 +2261,10 @@
             "elevation":1,
             "rof":9,
             "accuracy":18,
-            "power":13,
+            "power":15,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["feu","napalm"],
+            "ammo":["lf-feu","lf-napalm"],
             "maxAmmo":18
         },
         "weapon2":{
@@ -2469,9 +2469,9 @@
             "rof":8,
             "accuracy":13,
             "power":12,
-            "aoe":"squad",
+            "aoe":"brochette",
             "sound":"audio_hero_MolotovCocktailThr_PE280101_381b",
-            "ammo":["feu","napalm"],
+            "ammo":["molotov-feu","molotov-napalm"],
             "maxAmmo":12
         },
         "moveCost":3,
