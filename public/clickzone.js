@@ -43,9 +43,13 @@ function clickSelect(tileId) {
         }
     });
     let enemyBatHere = false;
+    let batType;
     aliens.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
-            showEnemyBatInfos(bat);
+            batType = getBatType(bat);
+            if (!batType.skills.includes('invisible')) {
+                showEnemyBatInfos(bat);
+            }
             enemyBatHere = true;
         }
     });
