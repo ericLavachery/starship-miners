@@ -1433,6 +1433,6 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capmen","invisible"]
+        "skills":["capmen","invisible","fouisseur"]
     }
 ]
