@@ -119,6 +119,7 @@ function nextTurnEnd() {
                 }
             }
             // camoAP
+            camoEnCours = false;
             if (bat.camoAP >= 1) {
                 camoEnCours = true;
             }
@@ -431,6 +432,7 @@ function levelUp(bat) {
             bat.vet = 1;
         }
     }
+    bat.xp = Math.round(100*bat.xp)/100;
 };
 
 function alienOccupiedTileList() {
