@@ -110,7 +110,7 @@ function skillsInfos(bat,batUnitType) {
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</h4></span>');
         }
-        if (bat.tags.includes('camo')) {
+        if (bat.tags.includes('camo') || (bat.fuzz <= -2 && (batUnitType.skills.includes('camo') || batUnitType.skills.includes('maycamo')))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Sortir du mode furtif" class="boutonGris iconButtons" onclick="camoOut()"><i class="ra ra-footprint rpg"></i> <span class="small">0</span></button>&nbsp; Mode non furtif</h4></span>');
         }
     }

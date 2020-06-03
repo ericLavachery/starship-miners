@@ -320,7 +320,7 @@
         "squads":4,
         "squadSize":2,
         "crew":8,
-        "hp":500,
+        "hp":300,
         "armor":20,
         "size":60,
         "stealth":15,
