@@ -83,9 +83,13 @@ function eggsDrop() {
         let i = 1;
         while (i <= numEggs) {
             eggTypeDice = rand.rand(1,100);
-            invisibleChance = (playerInfos.mapDiff*2)-6;
+            invisibleChance = Math.floor(playerInfos.mapDiff*1.5)-4;
             if (invisibleChance < 0) {
                 invisibleChance = 0;
+            } else {
+                if (i > 1) {
+                    invisibleChance = invisibleChance*2;
+                }
             }
             if (eggTypeDice <= coqueChance) {
                 dropEgg('Coque');

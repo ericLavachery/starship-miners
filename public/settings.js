@@ -108,8 +108,8 @@ let conselAmmos = ['xxx','xxx'];
 let maxAliens = 300;
 let cumDrop = 8; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
 let dropMod = 1.6; //
-let eggLifeStart = 11; //
-let eggLifeFactor = 0.5; //
+let eggLifeStart = 12; //
+let eggLifeFactor = 0.7; //
 let coqLifeStart = 6; //
 let coqLifeFactor = 0.5; //
 let noEggs = 15; // % pour un eggDrop sans oeufs
