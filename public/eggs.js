@@ -79,10 +79,18 @@ function eggsDrop() {
     }
     console.log('eggDice='+eggDice);
     if (numEggs >= 1) {
+        let eggTypeDice;
         let i = 1;
         while (i <= numEggs) {
-            if (rand.rand(1,100) <= coqueChance) {
+            eggTypeDice = rand.rand(1,100);
+            invisibleChance = (playerInfos.mapDiff*2)-6;
+            if (invisibleChance < 0) {
+                invisibleChance = 0;
+            }
+            if (eggTypeDice <= coqueChance) {
                 dropEgg('Coque');
+            } else if (eggTypeDice <= coqueChance+invisibleChance) {
+                dropEgg('Oeuf voilé');
             } else {
                 dropEgg('Oeuf');
             }
@@ -122,7 +130,7 @@ function dropEgg(alienUnit) {
     }
     if (tileOK) {
         putBat(dropTile);
-        if (alienUnit === 'Oeuf' || alienUnit === 'Coque') {
+        if (alienUnit.includes('Oeuf') || alienUnit === 'Coque') {
             eggDropCount = eggDropCount+1;
         }
         if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
@@ -186,7 +194,7 @@ function spawns() {
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             flyDice = rand.rand(1,6);
-            if (bat.type === 'Oeuf' || bat.type === 'Coque') {
+            if (bat.type.includes('Oeuf') || bat.type === 'Coque') {
                 batType = getBatType(bat);
                 eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
                 eggModTurn = eggTurn+playerInfos.mapAdjDiff-8;
@@ -328,7 +336,7 @@ function eggSpawn(bat,fromEgg) {
     console.log('eggTurn='+eggTurn);
     if (eggTurn >= eggLife && fromEgg) {
         // TRANFORMATION EN RUCHE !
-        if (bat.type === 'Oeuf') {
+        if (bat.type.includes('Oeuf')) {
             alienMorph(bat,'Ruche',false);
         } else {
             alienMorph(bat,'Volcan',false);
