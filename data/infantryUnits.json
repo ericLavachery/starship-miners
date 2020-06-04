@@ -44,7 +44,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","firstaid","maycamo"],
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
         "id":4,
@@ -78,7 +79,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","firstaid","sentinelle","maycamo"],
-        "fuzz":0
+        "fuzz":0,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":6,
@@ -116,7 +118,8 @@
         "skills":["medic","dealer","starka","maycamo"],
         "medicCost":5,
         "maxSKill":8,
-        "fuzz":0
+        "fuzz":0,
+        "deathFx":"13797__sweetneo85__wilhelm"
     },
     {
         "id":21,
@@ -164,7 +167,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","camo","firstaid"],
-        "fuzz":-1
+        "fuzz":-1,
+        "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
     {
         "id":66,
@@ -211,7 +215,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","ranger","maycamo","guerrilla"],
-        "fuzz":0
+        "fuzz":0,
+        "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
         "id":13,
@@ -262,7 +267,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","camo","guerrilla","firstaid","ranger"],
-        "fuzz":-1
+        "fuzz":-1,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":14,
@@ -313,7 +319,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","camo","guerrilla","embuscade","firstaid","ranger","sentinelle"],
-        "fuzz":-1
+        "fuzz":-1,
+        "deathFx":"219149__musability__female-wilhelm-scream-audacity"
     },
     {
         "id":15,
@@ -361,7 +368,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["berserk","undead","maycamo"],
-        "fuzz":0
+        "fuzz":0,
+        "deathFx":"13797__sweetneo85__wilhelm"
     },
     {
         "id":46,
@@ -410,7 +418,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["berserk","undead","maycamo"],
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
         "id":16,
@@ -504,7 +513,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","firstaid","maycamo"],
-        "fuzz":1.5
+        "fuzz":1.5,
+        "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
         "id":18,
@@ -539,7 +549,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","firstaid","guerrilla","ranger","maycamo"],
-        "fuzz":0
+        "fuzz":0,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":20,
@@ -586,7 +597,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","inflammable","maycamo"],
-        "fuzz":0
+        "fuzz":0,
+        "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
     {
         "id":19,
@@ -633,7 +645,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","firstaid","maycamo","embuscade"],
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
         "id":25,
@@ -683,7 +696,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","maycamo","embuscade"],
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
         "id":24,
@@ -731,7 +745,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","maycamo"],
-        "fuzz":1.5
+        "fuzz":1.5,
+        "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
         "id":26,
@@ -779,7 +794,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","inflammable","maycamo"],
-        "fuzz":0
+        "fuzz":0,
+        "deathFx":"219149__musability__female-wilhelm-scream-audacity"
     },
     {
         "id":23,
@@ -825,7 +841,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","luckyshot","survivor","guerrilla","firstaid","sentinelle","ranger","maycamo","embuscade"],
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":27,
@@ -874,7 +891,8 @@
         "maxVeg":3,
         "skills":["fortif","ravitaillement","maycamo","fastempty"],
         "maxSKill":3,
-        "fuzz":0
+        "fuzz":0,
+        "deathFx":"13797__sweetneo85__wilhelm"
     },
     {
         "id":28,
@@ -911,7 +929,8 @@
         "maxVeg":3,
         "skills":["fortif","extraction","firstaid","dynamite","constructeur"],
         "maxSKill":2,
-        "fuzz":1.5
+        "fuzz":1.5,
+        "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
     {
         "id":112,
@@ -947,7 +966,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","extraction","firstaid","constructeur","maycamo","ranger"],
-        "fuzz":0
+        "fuzz":0,
+        "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
     {
         "id":35,
@@ -998,7 +1018,8 @@
         "skills":["fortif","cible","undead","badmedic","dealer","bliss","sila","blaze","kirin","skupiac","maycamo"],
         "maxSKill":24,
         "medicCost":6,
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
     {
         "id":40,
@@ -1047,7 +1068,8 @@
         "maxScarp":2,
         "maxVeg":3,
         "skills":["fortif","cible","guerrilla","firstaid","moto"],
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":41,
@@ -1097,7 +1119,8 @@
         "skills":["fortif","cible","medic","camo","dealer","kirin","sila","ranger"],
         "maxSKill":12,
         "medicCost":8,
-        "fuzz":-1
+        "fuzz":-1,
+        "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
     {
         "id":42,
@@ -1145,7 +1168,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","fly","jetpack","longshot","inflammable"],
-        "fuzz":2.5
+        "fuzz":2.5,
+        "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
     {
         "id":47,
@@ -1195,7 +1219,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","embuscade","camo","guerrilla","ranger","sentinelle","firstaid","survivor"],
-        "fuzz":-1
+        "fuzz":-1,
+        "deathFx":"219149__musability__female-wilhelm-scream-audacity"
     },
     {
         "id":48,
@@ -1243,7 +1268,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","camo","firstaid","ranger","sentinelle","guerrilla","embuscade"],
-        "fuzz":-1
+        "fuzz":-1,
+        "deathFx":"219149__musability__female-wilhelm-scream-audacity"
     },
     {
         "id":49,
@@ -1290,7 +1316,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","firstaid","guerrilla","ranger","survivor","maycamo","embuscade"],
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":50,
@@ -1340,7 +1367,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","camo","firstaid"],
-        "fuzz":-1
+        "fuzz":-1,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":51,
@@ -1388,7 +1416,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","basemecano","moto"],
-        "fuzz":1.5
+        "fuzz":1.5,
+        "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
         "id":52,
@@ -1438,7 +1467,8 @@
         "skills":["fortif","cible","camo","medic","fly","jetpack","inflammable","dealer","starka","kirin"],
         "maxSKill":8,
         "medicCost":5,
-        "fuzz":-1
+        "fuzz":-1,
+        "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
     {
         "id":53,
@@ -1484,7 +1514,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","slowreg","mutant","maycamo"],
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"137036__pyrocamancer__beast-death"
     },
     {
         "id":55,
@@ -1535,7 +1566,8 @@
         "maxScarp":2,
         "maxVeg":3,
         "skills":["fortif","cible","guerrilla","firstaid","maycamo","moto"],
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
         "id":56,
@@ -1584,7 +1616,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","camo","guerrilla","selfmedic","embuscade","berserk","ranger"],
-        "fuzz":-1
+        "fuzz":-1,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":60,
@@ -1632,7 +1665,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","selfmedic","leader","fly","jetpack","sentinelle","longshot","guerrilla","survivor","inflammable","maycamo"],
-        "fuzz":3.5
+        "fuzz":3.5,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":63,
@@ -1681,7 +1715,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","firstaid","defense","maycamo","embuscade"],
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
         "id":68,
@@ -1732,7 +1767,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","embuscade","selfmedic","leader","camo","sentinelle","survivor","undead","defense"],
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":70,
@@ -1780,7 +1816,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","selfmedic","leader","survivor","luckyshot","defense","sentinelle","ranger","guerrilla","maycamo","embuscade"],
-        "fuzz":1.5
+        "fuzz":1.5,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":71,
@@ -1827,7 +1864,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","embuscade","camo","ranger","selfmedic","survivor","leader","defense"],
-        "fuzz":-1
+        "fuzz":-1,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":72,
@@ -1874,7 +1912,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","firstaid","guerrilla","maycamo"],
-        "fuzz":1.5
+        "fuzz":1.5,
+        "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
         "id":73,
@@ -1923,7 +1962,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","camo","regeneration","embuscade","mutant","ranger","undead","survivor","sentinelle","guerrilla"],
-        "fuzz":-1
+        "fuzz":-1,
+        "deathFx":"137036__pyrocamancer__beast-death"
     },
     {
         "id":77,
@@ -1973,7 +2013,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","mutant","ranger","berserk"],
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"137036__pyrocamancer__beast-death"
     },
     {
         "id":78,
@@ -2021,7 +2062,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","fly","longshot","mutant"],
-        "fuzz":3
+        "fuzz":3,
+        "deathFx":"137036__pyrocamancer__beast-death"
     },
     {
         "id":82,
@@ -2056,7 +2098,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","sentinelle","maycamo","robot"],
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"395378__skylar1146__machinepoweroff"
     },
     {
         "id":83,
@@ -2103,7 +2146,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","robot"],
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"144469__psychedelic-hands__robot-death"
     },
     {
         "id":84,
@@ -2151,7 +2195,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["undead","ranger","maycamo","robot"],
-        "fuzz":0
+        "fuzz":0,
+        "deathFx":"505751__thehorriblejoke__computer-breaking-sound"
     },
     {
         "id":85,
@@ -2199,7 +2244,8 @@
         "maxVeg":3,
         "skills":["fortif","mecano","repair","cyber"],
         "medicCost":5,
-        "fuzz":1.5
+        "fuzz":1.5,
+        "deathFx":"144469__psychedelic-hands__robot-death"
     },
     {
         "id":86,
@@ -2236,7 +2282,8 @@
         "maxVeg":3,
         "skills":["fortif","cible","basemecano","badmedic","guerrilla","cyber","maycamo"],
         "medicCost":3,
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"396806__scorpion67890__cyborg-death-1"
     },
     {
         "id":87,
@@ -2285,7 +2332,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","inflammable","sentinelle","firstaid","cyber","hardmove"],
-        "fuzz":2.5
+        "fuzz":2.5,
+        "deathFx":"144469__psychedelic-hands__robot-death"
     },
     {
         "id":88,
@@ -2333,7 +2381,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber","sentinelle"],
-        "fuzz":3.5
+        "fuzz":3.5,
+        "deathFx":"396806__scorpion67890__cyborg-death-1"
     },
     {
         "id":89,
@@ -2384,7 +2433,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","undead","maycamo"],
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
     {
         "id":91,
@@ -2432,7 +2482,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","defense","maycamo","hardmove","machine","embuscade"],
-        "fuzz":3
+        "fuzz":3,
+        "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
         "id":96,
@@ -2479,7 +2530,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","maycamo","guerrilla","embuscade"],
-        "fuzz":0
+        "fuzz":0,
+        "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
         "id":97,
@@ -2527,7 +2579,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","maycamo","embuscade"],
-        "fuzz":0
+        "fuzz":0,
+        "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
     {
         "id":98,
@@ -2573,7 +2626,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","selfmedic","sentinelle","camo"],
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":116,
@@ -2621,7 +2675,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","camo","guerrilla"],
-        "fuzz":-1
+        "fuzz":-1,
+        "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
     {
         "id":117,
@@ -2671,7 +2726,8 @@
         "maxVeg":3,
         "skills":["fortif","cible","badmedic","leader","fly","jetpack","longshot","survivor","inflammable","guerrilla","maycamo"],
         "medicCost":5,
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":126,
@@ -2707,6 +2763,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":[],
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"13797__sweetneo85__wilhelm"
     }
 ]

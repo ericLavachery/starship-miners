@@ -895,7 +895,7 @@ function batDeathEffect(bat,quiet,title,body) {
     let resHere = showRes(bat.tileId);
     if (!isFFW) {
         if (!quiet) {
-            deathSound();
+            deathSound(bat);
             $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/explosion'+nextExplosion+'.gif"></div>'+resHere);
             nextExplosion = nextExplosion+1;
             if (nextExplosion > 3) {

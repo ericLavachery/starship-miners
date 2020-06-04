@@ -76,10 +76,11 @@ function shotSound(weapon) {
     }
 };
 
-function deathSound() {
+function deathSound(bat) {
+    let batType = getBatType(bat);
     if (!isFFW) {
         var sound = new Howl({
-            src: ['/static/sounds/zapsplat_explosion_fireball_43738.mp3'],
+            src: ['/static/sounds/'+batType.deathFx+'.mp3'],
             volume: fxVolume
         });
         sound.play();

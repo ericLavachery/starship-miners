@@ -48,7 +48,8 @@
         "maxScarp":2,
         "maxVeg":3,
         "skills":["forftif","cible","guerrilla","maycamo"],
-        "fuzz":2.5
+        "fuzz":2.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":11,
@@ -99,7 +100,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
-        "fuzz":3.5
+        "fuzz":3.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":22,
@@ -148,7 +150,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","guerrilla","inflammable","selfmecano"],
-        "fuzz":2.5
+        "fuzz":2.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":30,
@@ -197,7 +200,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","inflammable","selfmecano"],
-        "fuzz":3
+        "fuzz":3,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":31,
@@ -247,7 +251,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["cible","selfmecano"],
-        "fuzz":3
+        "fuzz":3,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":32,
@@ -298,7 +303,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
-        "fuzz":3.5
+        "fuzz":3.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":10,
@@ -346,7 +352,8 @@
         "maxScarp":2,
         "maxVeg":3,
         "skills":["cible","guerrilla","ranger"],
-        "fuzz":3
+        "fuzz":3,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":36,
@@ -396,7 +403,8 @@
         "maxVeg":2,
         "skills":["fortif","cible","mecano","maycamo"],
         "medicCost":5,
-        "fuzz":3
+        "fuzz":3,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":2,
@@ -433,7 +441,8 @@
         "maxScarp":1,
         "maxVeg":2,
         "skills":["selfmecano","cible","defense"],
-        "fuzz":6
+        "fuzz":6,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":5,
@@ -473,7 +482,8 @@
         "maxScarp":1,
         "maxVeg":2,
         "skills":["selfmecano","cible","longshot"],
-        "fuzz":7
+        "fuzz":7,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":34,
@@ -523,7 +533,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["deepselfmecano","cible","longshot","hardmove"],
-        "fuzz":5
+        "fuzz":5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":38,
@@ -578,7 +589,8 @@
         "transMaxSize":9,
         "transUnits":350,
         "transRes":350,
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":39,
@@ -631,7 +643,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
-        "fuzz":3.5
+        "fuzz":3.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":64,
@@ -671,7 +684,8 @@
         "transMaxSize":9,
         "transUnits":200,
         "transRes":80,
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":44,
@@ -707,7 +721,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","guerrilla","camo","landmine","selfmecano","emoteur"],
-        "fuzz":3
+        "fuzz":3,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":54,
@@ -744,7 +759,8 @@
         "skills":["cible","transport","camo","hardmove","emoteur","selfmecano","embuscade"],
         "transMaxSize":9,
         "transUnits":900,
-        "fuzz":0
+        "fuzz":0,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":57,
@@ -796,7 +812,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano","leader","sentinelle"],
-        "fuzz":3
+        "fuzz":3,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":115,
@@ -848,7 +865,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano","leader","defense"],
-        "fuzz":3
+        "fuzz":3,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":58,
@@ -898,7 +916,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["cible","hover","selfmecano"],
-        "fuzz":3
+        "fuzz":3,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":59,
@@ -947,7 +966,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fly","sentinelle","robot"],
-        "fuzz":0
+        "fuzz":0,
+        "deathFx":"505751__thehorriblejoke__computer-breaking-sound"
     },
     {
         "id":61,
@@ -985,7 +1005,8 @@
         "skills":["fortif","cible","medic","ravitaillement","camo","selfmecano","defense","hardmove","emoteur"],
         "medicCost":2,
         "maxSKill":4,
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":62,
@@ -1022,7 +1043,8 @@
         "maxScarp":1,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano","maycamo"],
-        "fuzz":3
+        "fuzz":3,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":65,
@@ -1063,7 +1085,8 @@
         "transRes":0,
         "medicCost":2,
         "maxSKill":24,
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":33,
@@ -1113,7 +1136,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["cible","selfmecano","ranger"],
-        "fuzz":2.5
+        "fuzz":2.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":67,
@@ -1163,7 +1187,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["cible","ranger","maycamo"],
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":69,
@@ -1214,7 +1239,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","deepselfmecano","maycamo"],
-        "fuzz":3
+        "fuzz":3,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":74,
@@ -1263,7 +1289,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","fly","longshot","maycamo","guerrilla"],
-        "fuzz":2.5
+        "fuzz":2.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":114,
@@ -1313,7 +1340,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","fly","longshot","inflammable"],
-        "fuzz":2.5
+        "fuzz":2.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":75,
@@ -1362,7 +1390,8 @@
         "maxVeg":3,
         "skills":["fortif","cible","mecano","repair","constructeur","hardmove"],
         "medicCost":7,
-        "fuzz":1.5
+        "fuzz":1.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":76,
@@ -1412,7 +1441,8 @@
         "maxVeg":3,
         "skills":["fortif","cible","mecano","repair","constructeur","hardmove"],
         "medicCost":3,
-        "fuzz":2.5
+        "fuzz":2.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":79,
@@ -1462,7 +1492,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano","longshot","defense"],
-        "fuzz":3.5
+        "fuzz":3.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":80,
@@ -1499,7 +1530,8 @@
         "transMaxSize":9,
         "transUnits":800,
         "transRes":400,
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":81,
@@ -1536,7 +1568,8 @@
         "transMaxSize":12,
         "transUnits":450,
         "transRes":800,
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":90,
@@ -1577,7 +1610,8 @@
         "transMaxSize":18,
         "transUnits":900,
         "transRes":600,
-        "fuzz":4
+        "fuzz":4,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":92,
@@ -1614,7 +1648,8 @@
         "transMaxSize":9,
         "transUnits":230,
         "transRes":150,
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":93,
@@ -1668,7 +1703,8 @@
         "transMaxSize":9,
         "transUnits":1000,
         "transRes":300,
-        "fuzz":2.5
+        "fuzz":2.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":94,
@@ -1719,7 +1755,8 @@
         "transMaxSize":9,
         "transUnits":400,
         "transRes":800,
-        "fuzz":2.5
+        "fuzz":2.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":95,
@@ -1765,7 +1802,8 @@
         "maxScarp":1,
         "maxVeg":2,
         "skills":["undead","cible"],
-        "fuzz":5
+        "fuzz":5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":99,
@@ -1813,7 +1851,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","inflammable","hardmove","guerrilla"],
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":100,
@@ -1861,7 +1900,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","leader","selfmecano","guerrilla","maycamo"],
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":101,
@@ -1899,7 +1939,8 @@
         "maxVeg":3,
         "skills":["fortif","cible","mecano","maycamo"],
         "medicCost":6,
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":102,
@@ -1949,7 +1990,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","fly","longshot"],
-        "fuzz":4
+        "fuzz":4,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":107,
@@ -1999,7 +2041,8 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["cible","fortif","longshot","selfmecano","defense"],
-        "fuzz":3.5
+        "fuzz":3.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":110,
@@ -2050,7 +2093,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","fly","longshot"],
-        "fuzz":7
+        "fuzz":7,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":111,
@@ -2100,7 +2144,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","fly","longshot","guerrilla","sentinelle"],
-        "fuzz":5
+        "fuzz":5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":113,
@@ -2138,7 +2183,8 @@
         "maxVeg":3,
         "skills":["cible","fly","ravitaillement","longshot"],
         "maxSKill":10,
-        "fuzz":4
+        "fuzz":4,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":118,
@@ -2174,7 +2220,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","deepselfmecano","extraction","hardmove"],
-        "fuzz":4.5
+        "fuzz":4.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":119,
@@ -2210,7 +2257,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","selfmecano","extraction","hardmove"],
-        "fuzz":4
+        "fuzz":4,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":120,
@@ -2263,7 +2311,8 @@
         "transMaxSize":18,
         "transUnits":1000,
         "transRes":2000,
-        "fuzz":3.75
+        "fuzz":3.75,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":121,
@@ -2313,7 +2362,8 @@
         "maxVeg":3,
         "skills":["fortif","cible","ravitaillement","fastempty"],
         "maxSKill":6,
-        "fuzz":2
+        "fuzz":2,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":122,
@@ -2351,6 +2401,7 @@
         "transMaxSize":40,
         "transUnits":900,
         "transRes":900,
-        "fuzz":2.5
+        "fuzz":2.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     }
 ]

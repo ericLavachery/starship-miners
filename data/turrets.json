@@ -25,7 +25,8 @@
         "transMaxSize":33,
         "transUnits":5000,
         "transRes":5000,
-        "fuzz":4
+        "fuzz":4,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":103,
@@ -53,7 +54,8 @@
         "transMaxSize":55,
         "transUnits":10000,
         "transRes":10000,
-        "fuzz":4
+        "fuzz":4,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":104,
@@ -81,7 +83,8 @@
         "transMaxSize":100,
         "transUnits":25000,
         "transRes":20000,
-        "fuzz":8
+        "fuzz":8,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":105,
@@ -109,7 +112,8 @@
         "transMaxSize":50,
         "transUnits":9000,
         "transRes":18000,
-        "fuzz":6
+        "fuzz":6,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":106,
@@ -162,7 +166,8 @@
         "transMaxSize":100,
         "transUnits":20000,
         "transRes":15000,
-        "fuzz":10
+        "fuzz":10,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":108,
@@ -189,7 +194,8 @@
         "transMaxSize":20,
         "transUnits":1200,
         "transRes":600,
-        "fuzz":3
+        "fuzz":3,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":109,
@@ -217,7 +223,8 @@
         "transMaxSize":33,
         "transUnits":4000,
         "transRes":3000,
-        "fuzz":4
+        "fuzz":4,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":8,
@@ -263,7 +270,8 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["deepselfrepair","cible","longshot","defense"],
-        "fuzz":1.5
+        "fuzz":1.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":12,
@@ -308,8 +316,9 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","cible","longshot","defense","maycamo"],
-        "fuzz":1.5
+        "skills":["deepselfrepair","cible","longshot","defense"],
+        "fuzz":1.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":125,
@@ -346,7 +355,8 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["deepselfrepair","cible","defense","maycamo","embuscade","underground"],
-        "fuzz":1.5
+        "fuzz":1.5,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":127,
@@ -393,7 +403,8 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["deepselfrepair","cible","defense","camo","embuscade","underground"],
-        "fuzz":-1
+        "fuzz":-1,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":37,
@@ -429,7 +440,8 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["nodeathcount"],
-        "fuzz":-1
+        "fuzz":-1,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":43,
@@ -476,7 +488,8 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["sentinelle","nonumname","nodeathcount"],
-        "fuzz":-2
+        "fuzz":-2,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":45,
@@ -523,6 +536,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["sentinelle","nonumname","nodeathcount"],
-        "fuzz":-2
+        "fuzz":-2,
+        "deathFx":"zapsplat_explosion_fireball_43738"
     }
 ]

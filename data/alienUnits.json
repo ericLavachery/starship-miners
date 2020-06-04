@@ -34,7 +34,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[]
+        "skills":[],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":1,
@@ -71,7 +72,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","capbld","fouisseur"]
+        "skills":["regeneration","capbld","fouisseur"],
+        "deathFx":"76974__michel88__piggrunt2"
     },
     {
         "id":2,
@@ -108,7 +110,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[]
+        "skills":[],
+        "deathFx":"185366__anwul__monster"
     },
     {
         "id":3,
@@ -147,7 +150,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[]
+        "skills":[],
+        "deathFx":"76974__michel88__piggrunt1"
     },
     {
         "id":4,
@@ -185,7 +189,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fear","ponte"]
+        "skills":["fear","ponte"],
+        "deathFx":"185366__anwul__monster"
     },
     {
         "id":5,
@@ -222,7 +227,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[]
+        "skills":[],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":7,
@@ -259,7 +265,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capbld","fouisseur"]
+        "skills":["capbld","fouisseur"],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":8,
@@ -296,7 +303,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["grip","venin"]
+        "skills":["grip","venin"],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":9,
@@ -334,7 +342,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["furtif","nez","maladie"]
+        "skills":["furtif","nez","maladie"],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":10,
@@ -371,7 +380,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capbld","fear"]
+        "skills":["capbld","fear"],
+        "deathFx":"76974__michel88__piggrunt2"
     },
     {
         "id":11,
@@ -411,7 +421,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capmen"]
+        "skills":["capmen"],
+        "deathFx":"76974__michel88__piggrunt2"
     },
     {
         "id":12,
@@ -450,7 +461,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[]
+        "skills":[],
+        "deathFx":"76974__michel88__piggrunt2"
     },
     {
         "id":13,
@@ -487,7 +499,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","capfar","inflammable"]
+        "skills":["fly","capfar","inflammable"],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":14,
@@ -525,7 +538,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","nez"]
+        "skills":["regeneration","nez"],
+        "deathFx":"76974__michel88__piggrunt2"
     },
     {
         "id":15,
@@ -563,7 +577,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["chancre","venin","regeneration"]
+        "skills":["chancre","venin","regeneration"],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":16,
@@ -601,7 +616,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[]
+        "skills":[],
+        "deathFx":"76974__michel88__piggrunt2"
     },
     {
         "id":18,
@@ -639,7 +655,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["venin"]
+        "skills":["venin"],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":19,
@@ -676,7 +693,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["furtif","chancre","capbld","ponte"]
+        "skills":["furtif","chancre","capbld","ponte"],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":20,
@@ -713,7 +731,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fear","anycap"]
+        "skills":["fear","anycap"],
+        "deathFx":"185366__anwul__monster"
     },
     {
         "id":21,
@@ -750,7 +769,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["grip","regeneration"]
+        "skills":["grip","regeneration"],
+        "deathFx":"76974__michel88__piggrunt2"
     },
     {
         "id":22,
@@ -787,7 +807,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","ponte"]
+        "skills":["regeneration","ponte"],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":23,
@@ -825,7 +846,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[]
+        "skills":[],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":24,
@@ -863,7 +885,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["grip","venin","tail","ponte"]
+        "skills":["grip","venin","tail","ponte"],
+        "deathFx":"185366__anwul__monster"
     },
     {
         "id":25,
@@ -901,7 +924,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capbld","bugboost","ponte"]
+        "skills":["capbld","bugboost","ponte"],
+        "deathFx":"185366__anwul__monster"
     },
     {
         "id":26,
@@ -938,7 +962,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","capfar"]
+        "skills":["fly","capfar"],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":27,
@@ -964,7 +989,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","inflammable"]
+        "skills":["ponte","inflammable"],
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":28,
@@ -1001,7 +1027,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouisseur","capmen"]
+        "skills":["fouisseur","capmen"],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":29,
@@ -1040,7 +1067,8 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[]
+        "skills":[],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":30,
@@ -1077,7 +1105,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["chancre","hover","capmen"]
+        "skills":["chancre","hover","capmen"],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":31,
@@ -1115,7 +1144,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouisseur","grip"]
+        "skills":["fouisseur","grip"],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":32,
@@ -1153,7 +1183,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[]
+        "skills":[],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":33,
@@ -1190,7 +1221,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","capbld","fear","hover","ponte"]
+        "skills":["regeneration","capbld","fear","hover","ponte"],
+        "deathFx":"185366__anwul__monster"
     },
     {
         "id":34,
@@ -1220,7 +1252,7 @@
             "power":4,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
+            "sound":"315908__arnaud-coutancier__big-flying-insects",
             "ammo":["none"]
         },
         "weapon2":{},
@@ -1228,7 +1260,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","capfar","grip"]
+        "skills":["fly","capfar","grip"],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":35,
@@ -1266,7 +1299,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["hover"]
+        "skills":["hover"],
+        "deathFx":"76973__michel88__piggrunt1"
     },
     {
         "id":6,
@@ -1292,7 +1326,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","inflammable"]
+        "skills":["ponte","inflammable"],
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":36,
@@ -1318,7 +1353,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","regeneration","inflammable"]
+        "skills":["ponte","regeneration","inflammable"],
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":17,
@@ -1357,7 +1393,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","inflammable"]
+        "skills":["ponte","inflammable"],
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":37,
@@ -1394,7 +1431,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["regeneration"]
+        "skills":["regeneration"],
+        "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
         "id":38,
@@ -1433,6 +1471,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capmen","invisible","fouisseur"]
+        "skills":["capmen","invisible","fouisseur"],
+        "deathFx":"76974__michel88__piggrunt2"
     }
 ]
