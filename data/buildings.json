@@ -22,7 +22,8 @@
         "maxVeg":-1,
         "skills":["mecano","deepselfrepair"],
         "medicCost":3,
-        "fuzz":5
+        "fuzz":5,
+        "deathFx":"S_Explosion02"
     },
     {
         "id":9,
@@ -46,7 +47,8 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["deepselfrepair","maycamo","extraction","underground"],
-        "fuzz":4
+        "fuzz":4,
+        "deathFx":"S_Explosion02"
     },
     {
         "id":123,
@@ -70,7 +72,8 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["deepselfrepair","extraction"],
-        "fuzz":4
+        "fuzz":4,
+        "deathFx":"S_Explosion02"
     },
     {
         "id":124,
@@ -94,7 +97,8 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["deepselfrepair","extraction"],
-        "fuzz":4
+        "fuzz":4,
+        "deathFx":"S_Explosion02"
     },
     {
         "id":29,
@@ -118,6 +122,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["deepselfrepair","ravitaillement","stock","maycamo"],
-        "fuzz":1
+        "fuzz":1,
+        "deathFx":"S_Explosion02"
     }
 ]

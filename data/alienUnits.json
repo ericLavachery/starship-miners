@@ -1327,7 +1327,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["ponte","inflammable"],
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"bombwaterexplo"
     },
     {
         "id":36,
@@ -1354,7 +1354,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["ponte","regeneration","inflammable"],
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"bombwaterexplo"
     },
     {
         "id":17,

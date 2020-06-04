@@ -119,7 +119,7 @@
         "medicCost":5,
         "maxSKill":8,
         "fuzz":0,
-        "deathFx":"13797__sweetneo85__wilhelm"
+        "deathFx":"human3"
     },
     {
         "id":21,
@@ -168,7 +168,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","camo","firstaid"],
         "fuzz":-1,
-        "deathFx":"516766__gentlemanwalrus__death-rattle"
+        "deathFx":"human1"
     },
     {
         "id":66,
@@ -369,7 +369,7 @@
         "maxVeg":3,
         "skills":["berserk","undead","maycamo"],
         "fuzz":0,
-        "deathFx":"13797__sweetneo85__wilhelm"
+        "deathFx":"human2"
     },
     {
         "id":46,
@@ -598,7 +598,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","inflammable","maycamo"],
         "fuzz":0,
-        "deathFx":"516766__gentlemanwalrus__death-rattle"
+        "deathFx":"human1"
     },
     {
         "id":19,
@@ -646,7 +646,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","firstaid","maycamo","embuscade"],
         "fuzz":2,
-        "deathFx":"195954__minian89__death-blood-splatter"
+        "deathFx":"human1"
     },
     {
         "id":25,
@@ -967,7 +967,7 @@
         "maxVeg":3,
         "skills":["fortif","extraction","firstaid","constructeur","maycamo","ranger"],
         "fuzz":0,
-        "deathFx":"516766__gentlemanwalrus__death-rattle"
+        "deathFx":"human3"
     },
     {
         "id":35,
@@ -1069,7 +1069,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","guerrilla","firstaid","moto"],
         "fuzz":2,
-        "deathFx":"162157__mediapaja2009__agony"
+        "deathFx":"human2"
     },
     {
         "id":41,
@@ -1120,7 +1120,7 @@
         "maxSKill":12,
         "medicCost":8,
         "fuzz":-1,
-        "deathFx":"516766__gentlemanwalrus__death-rattle"
+        "deathFx":"human1"
     },
     {
         "id":42,
@@ -1169,7 +1169,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","fly","jetpack","longshot","inflammable"],
         "fuzz":2.5,
-        "deathFx":"516766__gentlemanwalrus__death-rattle"
+        "deathFx":"human2"
     },
     {
         "id":47,
@@ -1417,7 +1417,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","basemecano","moto"],
         "fuzz":1.5,
-        "deathFx":"195954__minian89__death-blood-splatter"
+        "deathFx":"human2"
     },
     {
         "id":52,
@@ -1468,7 +1468,7 @@
         "maxSKill":8,
         "medicCost":5,
         "fuzz":-1,
-        "deathFx":"516766__gentlemanwalrus__death-rattle"
+        "deathFx":"human2"
     },
     {
         "id":53,
@@ -1666,7 +1666,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","selfmedic","leader","fly","jetpack","sentinelle","longshot","guerrilla","survivor","inflammable","maycamo"],
         "fuzz":3.5,
-        "deathFx":"162157__mediapaja2009__agony"
+        "deathFx":"human1"
     },
     {
         "id":63,
@@ -1716,7 +1716,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","firstaid","defense","maycamo","embuscade"],
         "fuzz":1,
-        "deathFx":"195954__minian89__death-blood-splatter"
+        "deathFx":"human3"
     },
     {
         "id":68,
@@ -1768,7 +1768,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","embuscade","selfmedic","leader","camo","sentinelle","survivor","undead","defense"],
         "fuzz":2,
-        "deathFx":"162157__mediapaja2009__agony"
+        "deathFx":"human2"
     },
     {
         "id":70,
@@ -1865,7 +1865,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","embuscade","camo","ranger","selfmedic","survivor","leader","defense"],
         "fuzz":-1,
-        "deathFx":"162157__mediapaja2009__agony"
+        "deathFx":"human3"
     },
     {
         "id":72,
@@ -2580,7 +2580,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","maycamo","embuscade"],
         "fuzz":0,
-        "deathFx":"516766__gentlemanwalrus__death-rattle"
+        "deathFx":"human1"
     },
     {
         "id":98,
@@ -2627,7 +2627,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","selfmedic","sentinelle","camo"],
         "fuzz":1,
-        "deathFx":"162157__mediapaja2009__agony"
+        "deathFx":"human1"
     },
     {
         "id":116,
@@ -2676,7 +2676,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","camo","guerrilla"],
         "fuzz":-1,
-        "deathFx":"516766__gentlemanwalrus__death-rattle"
+        "deathFx":"human2"
     },
     {
         "id":117,

@@ -26,7 +26,7 @@
         "transUnits":5000,
         "transRes":5000,
         "fuzz":4,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploground2"
     },
     {
         "id":103,
@@ -55,7 +55,7 @@
         "transUnits":10000,
         "transRes":10000,
         "fuzz":4,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploground2"
     },
     {
         "id":104,
@@ -84,7 +84,7 @@
         "transUnits":25000,
         "transRes":20000,
         "fuzz":8,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploground2"
     },
     {
         "id":105,
@@ -113,7 +113,7 @@
         "transUnits":9000,
         "transRes":18000,
         "fuzz":6,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploground2"
     },
     {
         "id":106,
@@ -167,7 +167,7 @@
         "transUnits":20000,
         "transRes":15000,
         "fuzz":10,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploground2"
     },
     {
         "id":108,
@@ -195,7 +195,7 @@
         "transUnits":1200,
         "transRes":600,
         "fuzz":3,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploground2"
     },
     {
         "id":109,
@@ -224,7 +224,7 @@
         "transUnits":4000,
         "transRes":3000,
         "fuzz":4,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploground2"
     },
     {
         "id":8,
@@ -271,7 +271,7 @@
         "maxVeg":-1,
         "skills":["deepselfrepair","cible","longshot","defense"],
         "fuzz":1.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"S_Explosion02"
     },
     {
         "id":12,
@@ -318,7 +318,7 @@
         "maxVeg":-1,
         "skills":["deepselfrepair","cible","longshot","defense"],
         "fuzz":1.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"S_Explosion02"
     },
     {
         "id":125,
@@ -356,7 +356,7 @@
         "maxVeg":-1,
         "skills":["deepselfrepair","cible","defense","maycamo","embuscade","underground"],
         "fuzz":1.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"S_Explosion02"
     },
     {
         "id":127,
@@ -404,7 +404,7 @@
         "maxVeg":-1,
         "skills":["deepselfrepair","cible","defense","camo","embuscade","underground"],
         "fuzz":-1,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"S_Explosion02"
     },
     {
         "id":37,

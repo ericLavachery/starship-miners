@@ -49,7 +49,7 @@
         "maxVeg":3,
         "skills":["forftif","cible","guerrilla","maycamo"],
         "fuzz":2.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"S_CarExplosion02"
     },
     {
         "id":11,
@@ -101,7 +101,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
         "fuzz":3.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":22,
@@ -151,7 +151,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","guerrilla","inflammable","selfmecano"],
         "fuzz":2.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":30,
@@ -201,7 +201,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","inflammable","selfmecano"],
         "fuzz":3,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":31,
@@ -252,7 +252,7 @@
         "maxVeg":2,
         "skills":["cible","selfmecano"],
         "fuzz":3,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":32,
@@ -304,7 +304,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
         "fuzz":3.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":10,
@@ -353,7 +353,7 @@
         "maxVeg":3,
         "skills":["cible","guerrilla","ranger"],
         "fuzz":3,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"S_CarExplosion02"
     },
     {
         "id":36,
@@ -404,7 +404,7 @@
         "skills":["fortif","cible","mecano","maycamo"],
         "medicCost":5,
         "fuzz":3,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":2,
@@ -442,7 +442,7 @@
         "maxVeg":2,
         "skills":["selfmecano","cible","defense"],
         "fuzz":6,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":5,
@@ -483,7 +483,7 @@
         "maxVeg":2,
         "skills":["selfmecano","cible","longshot"],
         "fuzz":7,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":34,
@@ -534,7 +534,7 @@
         "maxVeg":2,
         "skills":["deepselfmecano","cible","longshot","hardmove"],
         "fuzz":5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":38,
@@ -590,7 +590,7 @@
         "transUnits":350,
         "transRes":350,
         "fuzz":2,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":39,
@@ -644,7 +644,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano"],
         "fuzz":3.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":64,
@@ -685,7 +685,7 @@
         "transUnits":200,
         "transRes":80,
         "fuzz":1,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"S_CarExplosion02"
     },
     {
         "id":44,
@@ -722,7 +722,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","guerrilla","camo","landmine","selfmecano","emoteur"],
         "fuzz":3,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":54,
@@ -760,7 +760,7 @@
         "transMaxSize":9,
         "transUnits":900,
         "fuzz":0,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":57,
@@ -813,7 +813,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano","leader","sentinelle"],
         "fuzz":3,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":115,
@@ -866,7 +866,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano","leader","defense"],
         "fuzz":3,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":58,
@@ -917,7 +917,7 @@
         "maxVeg":2,
         "skills":["cible","hover","selfmecano"],
         "fuzz":3,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":59,
@@ -1006,7 +1006,7 @@
         "medicCost":2,
         "maxSKill":4,
         "fuzz":1,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":62,
@@ -1044,7 +1044,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano","maycamo"],
         "fuzz":3,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":65,
@@ -1086,7 +1086,7 @@
         "medicCost":2,
         "maxSKill":24,
         "fuzz":1,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":33,
@@ -1137,7 +1137,7 @@
         "maxVeg":2,
         "skills":["cible","selfmecano","ranger"],
         "fuzz":2.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"S_CarExplosion02"
     },
     {
         "id":67,
@@ -1188,7 +1188,7 @@
         "maxVeg":2,
         "skills":["cible","ranger","maycamo"],
         "fuzz":1,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"S_CarExplosion02"
     },
     {
         "id":69,
@@ -1240,7 +1240,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","deepselfmecano","maycamo"],
         "fuzz":3,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":74,
@@ -1290,7 +1290,7 @@
         "maxVeg":3,
         "skills":["cible","fly","longshot","maycamo","guerrilla"],
         "fuzz":2.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"SmallExplosion_05"
     },
     {
         "id":114,
@@ -1341,7 +1341,7 @@
         "maxVeg":3,
         "skills":["cible","fly","longshot","inflammable"],
         "fuzz":2.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"SmallExplosion_05"
     },
     {
         "id":75,
@@ -1391,7 +1391,7 @@
         "skills":["fortif","cible","mecano","repair","constructeur","hardmove"],
         "medicCost":7,
         "fuzz":1.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":76,
@@ -1442,7 +1442,7 @@
         "skills":["fortif","cible","mecano","repair","constructeur","hardmove"],
         "medicCost":3,
         "fuzz":2.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":79,
@@ -1493,7 +1493,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","selfmecano","longshot","defense"],
         "fuzz":3.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":80,
@@ -1531,7 +1531,7 @@
         "transUnits":800,
         "transRes":400,
         "fuzz":2,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":81,
@@ -1569,7 +1569,7 @@
         "transUnits":450,
         "transRes":800,
         "fuzz":2,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":90,
@@ -1611,7 +1611,7 @@
         "transUnits":900,
         "transRes":600,
         "fuzz":4,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"vehicleexplo3"
     },
     {
         "id":92,
@@ -1649,7 +1649,7 @@
         "transUnits":230,
         "transRes":150,
         "fuzz":2,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":93,
@@ -1704,7 +1704,7 @@
         "transUnits":1000,
         "transRes":300,
         "fuzz":2.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":94,
@@ -1756,7 +1756,7 @@
         "transUnits":400,
         "transRes":800,
         "fuzz":2.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":95,
@@ -1803,7 +1803,7 @@
         "maxVeg":2,
         "skills":["undead","cible"],
         "fuzz":5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":99,
@@ -1852,7 +1852,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","inflammable","hardmove","guerrilla"],
         "fuzz":2,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"S_CarExplosion02"
     },
     {
         "id":100,
@@ -1901,7 +1901,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","leader","selfmecano","guerrilla","maycamo"],
         "fuzz":2,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":101,
@@ -1940,7 +1940,7 @@
         "skills":["fortif","cible","mecano","maycamo"],
         "medicCost":6,
         "fuzz":2,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":102,
@@ -1991,7 +1991,7 @@
         "maxVeg":3,
         "skills":["cible","fly","longshot"],
         "fuzz":4,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"SmallExplosion_05"
     },
     {
         "id":107,
@@ -2042,7 +2042,7 @@
         "maxVeg":2,
         "skills":["cible","fortif","longshot","selfmecano","defense"],
         "fuzz":3.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":110,
@@ -2094,7 +2094,7 @@
         "maxVeg":3,
         "skills":["cible","fly","longshot"],
         "fuzz":7,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"vehicleexplo3"
     },
     {
         "id":111,
@@ -2145,7 +2145,7 @@
         "maxVeg":3,
         "skills":["cible","fly","longshot","guerrilla","sentinelle"],
         "fuzz":5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"vehicleexplo3"
     },
     {
         "id":113,
@@ -2184,7 +2184,7 @@
         "skills":["cible","fly","ravitaillement","longshot"],
         "maxSKill":10,
         "fuzz":4,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"vehicleexplo3"
     },
     {
         "id":118,
@@ -2221,7 +2221,7 @@
         "maxVeg":3,
         "skills":["cible","deepselfmecano","extraction","hardmove"],
         "fuzz":4.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":119,
@@ -2258,7 +2258,7 @@
         "maxVeg":3,
         "skills":["cible","selfmecano","extraction","hardmove"],
         "fuzz":4,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     },
     {
         "id":120,
@@ -2312,7 +2312,7 @@
         "transUnits":1000,
         "transRes":2000,
         "fuzz":3.75,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair3"
     },
     {
         "id":121,
@@ -2363,7 +2363,7 @@
         "skills":["fortif","cible","ravitaillement","fastempty"],
         "maxSKill":6,
         "fuzz":2,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"S_CarExplosion02"
     },
     {
         "id":122,
@@ -2402,6 +2402,6 @@
         "transUnits":900,
         "transRes":900,
         "fuzz":2.5,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"planeexploair1"
     }
 ]
