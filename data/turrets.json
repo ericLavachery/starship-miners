@@ -153,7 +153,7 @@
             "dca":0.7,
             "power":42,
             "aoe":"squad",
-            "sound":"audio_hero_ClaymoreAntiMine_PE230101_339b",
+            "sound":"audio_hero_ClaymoreAntiMine_PE230101_339c",
             "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker"],
             "maxAmmo":32
         },
