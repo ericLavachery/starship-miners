@@ -149,6 +149,12 @@ function morphList() {
         transList.push('Asticots');
     }
     if (rand.rand(1,15) === 1) {
+        transList.push('Vers');
+    }
+    if (rand.rand(1,15) === 1) {
+        transList.push('Ombres');
+    }
+    if (rand.rand(1,15) === 1) {
         transList.push('Larves');
     }
     console.log(transList);
@@ -215,8 +221,12 @@ function spawns() {
                 alienSpawn(bat,'Moucherons');
             } else if (transList.includes('Asticots') && bat.type === 'Asticots') {
                 alienMorph(bat,'Moucherons',false);
+            } else if (transList.includes('Vers') && bat.type === 'Vers') {
+                alienMorph(bat,'Lucioles',false);
             } else if (transList.includes('Larves') && bat.type === 'Larves') {
                 alienMorph(bat,'Wurms',false);
+            } else if (transList.includes('Ombres') && bat.type === 'Ombres') {
+                alienMorph(bat,'Fantômes',false);
             } else if (rand.rand(1,vomiToRuche) === 1 && bat.type === 'Vomissure') {
                 alienMorph(bat,'Ruche',true);
             } else if (bat.type === 'Bug Boss' && aliensNums.bugs < maxPonte*2) {
