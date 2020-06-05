@@ -42,60 +42,78 @@ function chooseTarget() {
     targetBatType = {};
     targetWeap = {};
     if (!selectedBatType.skills.includes('capbld')) {
-        if (!selectedBatType.skills.includes('capfar')) {
-            anyCloseTarget();
+        if (selectedBatType.skills.includes('capfar') || selectedBatType.skills.includes('errant')) {
+            anyFarTarget(); // change PDM
         } else {
-            anyFarTarget();
+            anyCloseTarget(); // change PDM
         }
+    }
+    let sheep = 4;
+    if (selectedBatType.skills.includes('errant')) {
+        sheep = 2;
+    }
+    if (selectedBatType.skills.includes('anycap') || selectedBatType.skills.includes('capmen') || selectedBatType.skills.includes('capbld')) {
+        sheep = 3;
+    }
+    if (selectedBat.apLeft < 4) {
+        sheep = 100;
+    }
+    let noThanks = false;
+    if (rand.rand(1,sheep) === 1) {
+        noThanks = true;
     }
     let inPlace = false;
     let alienInMelee = isAlienInMelee(selectedBat.tileId);
     let range = selectedWeap.range;
-    if (range === 0) {
-        // range 0
-        if (alienInMelee) {
-            inPlace = targetMelee();
-            shootTarget(false);
-        } else {
-            moveToPDM();
-            inPlace = targetMelee();
-            if (inPlace) {
-                shootTarget(false);
-            }
-        }
-    } else if (range === 1) {
-        // range 1
-        if (alienInMelee) {
-            inPlace = targetMelee();
-            shootTarget(false);
-        } else {
-            inPlace = targetClosest();
-            if (inPlace) {
+    if (noThanks) {
+        moveToPDM();
+    } else {
+        if (range === 0) {
+            // range 0
+            if (alienInMelee) {
+                inPlace = targetMelee();
                 shootTarget(false);
             } else {
                 moveToPDM();
-                inPlace = targetClosest();
+                inPlace = targetMelee();
                 if (inPlace) {
                     shootTarget(false);
                 }
             }
-        }
-    } else {
-        // range 2+
-        if (anyTargetInRange()) {
+        } else if (range === 1) {
+            // range 1
             if (alienInMelee) {
-                moveOutOfMelee();
-                inPlace = targetFarthest();
-                shootTarget(true);
-            } else {
-                inPlace = targetFarthest();
+                inPlace = targetMelee();
                 shootTarget(false);
+            } else {
+                inPlace = targetClosest();
+                if (inPlace) {
+                    shootTarget(false);
+                } else {
+                    moveToPDM();
+                    inPlace = targetClosest();
+                    if (inPlace) {
+                        shootTarget(false);
+                    }
+                }
             }
         } else {
-            moveToPDM();
-            inPlace = targetFarthest();
-            if (inPlace) {
-                shootTarget(false);
+            // range 2+
+            if (anyTargetInRange()) {
+                if (alienInMelee) {
+                    moveOutOfMelee();
+                    inPlace = targetFarthest();
+                    shootTarget(true);
+                } else {
+                    inPlace = targetFarthest();
+                    shootTarget(false);
+                }
+            } else {
+                moveToPDM();
+                inPlace = targetFarthest();
+                if (inPlace) {
+                    shootTarget(false);
+                }
             }
         }
     }
@@ -144,7 +162,33 @@ function checkPDM() {
     let lePlusProche = 100;
     let shufBats = _.shuffle(bataillons);
     // cherche un cible préférée
-    if (selectedBatType.skills.includes('anycap')) {
+    if (selectedBatType.skills.includes('errant')) {
+        shufBats.forEach(function(bat) {
+            if (bat.loc === "zone" && bat.fuzz >= 0) {
+                batType = getBatType(bat);
+                if (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly) {
+                    distance = calcDistance(selectedBat.tileId,bat.tileId);
+                    if (distance < 6) {
+                        pointDeMire = bat.tileId;
+                    }
+                }
+            }
+        });
+        if (pointDeMire < 0) {
+            shufBats.forEach(function(bat) {
+                if (bat.loc === "zone" && bat.fuzz >= 0) {
+                    batType = getBatType(bat);
+                    if (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly) {
+                        distance = calcDistance(selectedBat.tileId,bat.tileId);
+                        if (distance < lePlusProche) {
+                            pointDeMire = bat.tileId;
+                            lePlusProche = distance;
+                        }
+                    }
+                }
+            });
+        }
+    } else if (selectedBatType.skills.includes('anycap')) {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= 0) {
                 batType = getBatType(bat);
@@ -370,8 +414,12 @@ function checkPossibleJumps() {
     let batHere = false;
     let distance;
     let maxDistance;
-    if (selectedBatType.skills.includes('fouisseur')) {
-        maxDistance = 5;
+    if (selectedBatType.skills.includes('fouisseur') || selectedBatType.skills.includes('sauteur')) {
+        if (selectedBatType.skills.includes('errant')) {
+            maxDistance = 8;
+        } else {
+            maxDistance = 5;
+        }
     } else {
         maxDistance = Math.round(selectedBat.apLeft/selectedBatType.moveCost/1.2);
     }
@@ -743,7 +791,7 @@ function moveToPDM() {
     if (selectedBatType.moveCost < 99) {
         console.log('move to PDM');
         let jump = false;
-        if (selectedBatType.skills.includes('fouisseur') && rand.rand(1,3) === 1) {
+        if ((selectedBatType.skills.includes('fouisseur') || selectedBatType.skills.includes('sauteur')) && rand.rand(1,3) === 1) {
             jump = true;
         }
         if (selectedBatType.skills.includes('fly')) {

@@ -111,7 +111,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capmen","invisible","fouisseur","chancre"],
+        "skills":["invisible","fouisseur","errant","chancre"],
         "deathFx":"76974__michel88__piggrunt2"
     },
     {
@@ -150,7 +150,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capmen","invisible","fouisseur"],
+        "skills":["invisible","fouisseur","errant"],
         "deathFx":"76974__michel88__piggrunt2"
     },
     {
@@ -1144,7 +1144,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouisseur","capmen"],
+        "skills":["fouisseur","errant"],
         "deathFx":"76973__michel88__piggrunt1"
     },
     {
@@ -1261,7 +1261,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouisseur","grip"],
+        "skills":["sauteur","grip"],
         "deathFx":"76973__michel88__piggrunt1"
     },
     {
