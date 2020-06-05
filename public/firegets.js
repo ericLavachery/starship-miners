@@ -200,7 +200,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
 };
 
 function sideBySideTiles(myTileIndex,thatTileIndex) {
-    if (selectedBat.tags.includes('camo')) {
+    if (selectedBat.fuzz <= -2) {
         return false;
     } else {
         let myTileX = zone[myTileIndex].x;
