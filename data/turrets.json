@@ -373,7 +373,7 @@
         "stealth":15,
         "ap":15,
         "maxSalvo":2,
-        "weapon1":{
+        "weapon":{
             "name":"Lance-flammes",
             "cost":6,
             "range":0,

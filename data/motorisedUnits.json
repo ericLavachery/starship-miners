@@ -348,7 +348,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "moveCost":2,
-        "maxFlood":0,
+        "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
         "skills":["cible","guerrilla","ranger"],
