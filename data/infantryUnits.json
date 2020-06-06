@@ -927,8 +927,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","extraction","firstaid","dynamite","constructeur"],
+        "skills":["fortif","extraction","firstaid","dynamite","constructeur","fret"],
         "maxSKill":2,
+        "transRes":30,
         "fuzz":1.5,
         "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
@@ -978,7 +979,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","extraction","firstaid","constructeur","camo","ranger"],
+        "skills":["fortif","extraction","firstaid","constructeur","camo","ranger","fret"],
+        "transRes":30,
         "fuzz":0,
         "deathFx":"human3"
     },
@@ -2775,7 +2777,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[],
+        "skills":["fret"],
+        "transRes":30,
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
     }
