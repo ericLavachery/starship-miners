@@ -2448,8 +2448,7 @@
         "weapon":{
             "name":"Canon",
             "cost":4,
-            "range":1,
-            "elevation":1,
+            "range":2,
             "noFly":true,
             "rof":4,
             "accuracy":16,

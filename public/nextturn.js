@@ -53,8 +53,6 @@ function nextTurn() {
 function nextTurnEnd() {
     $('#report').empty('');
     // récup du player
-    let fuzzTotal = 0;
-    let batFuzz;
     let batType;
     let ap;
     let oldAP;
@@ -72,10 +70,6 @@ function nextTurnEnd() {
     let alienType;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
-            if (bat.loc === "zone") {
-                batFuzz = calcBatFuzz(bat);
-                fuzzTotal = fuzzTotal+batFuzz;
-            }
             batType = getBatType(bat);
             if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {
                 boostedTeams.push(batType.kind);
@@ -170,6 +164,27 @@ function nextTurnEnd() {
     });
     killBatList();
     playerInfos.mapTurn = playerInfos.mapTurn+1;
+    turnInfo();
+    savePlayerInfos();
+    saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
+    saveAliens(); // !!!!!!!!!!!!!!!!!!!!!!
+    createBatList();
+    alienOccupiedTileList();
+    blockMe(false);
+    activeTurn = 'player';
+    commandes();
+    // testConnect(pseudo);
+};
+
+function turnInfo() {
+    console.log('TURN INFO');
+    let fuzzTotal = 0;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            batFuzz = calcBatFuzz(bat);
+            fuzzTotal = fuzzTotal+batFuzz;
+        }
+    });
     playerInfos.fuzzTotal = fuzzTotal;
     let bonusDiff = Math.floor((fuzzTotal+rand.rand(0,fuzzDiv)-(fuzzDiv/2))/fuzzDiv);
     playerInfos.mapAdjDiff = playerInfos.mapDiff+bonusDiff;
@@ -183,15 +198,6 @@ function nextTurnEnd() {
         $('#tour').append('<span class="cy">Pause</span><br>');
     }
     $('#tour').append('Morts <span class="or">'+playerInfos.unitsLost+'</span> / '+playerInfos.aliensKilled+' / <span class="cy">'+playerInfos.eggsKilled+'</span>');
-    savePlayerInfos();
-    saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
-    saveAliens(); // !!!!!!!!!!!!!!!!!!!!!!
-    createBatList();
-    alienOccupiedTileList();
-    blockMe(false);
-    activeTurn = 'player';
-    commandes();
-    // testConnect(pseudo);
 };
 
 function tagsUpdate(bat) {
