@@ -68,6 +68,8 @@ function nextTurnEnd() {
     let minAP;
     let apRest;
     let camoEnCours = false;
+    let distance;
+    let alienType;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             if (bat.loc === "zone") {
@@ -83,6 +85,16 @@ function nextTurnEnd() {
             }
             if (!medicalTransports.includes(bat.id) && batType.transUnits >= 1 && batType.skills.includes('medic')) {
                 medicalTransports.push(bat.id);
+            }
+            // nolist
+            if (bat.loc === "zone" && bat.tags.includes('nolist')) {
+                aliens.forEach(function(alien) {
+                    distance = calcDistance(bat.tileId,alien.tileId);
+                    alienType = getBatType(alien);
+                    if (distance <= 8 && !alienType.skills.includes('invisible')) {
+                        tagDelete(bat,'nolist');
+                    }
+                });
             }
         }
     });
@@ -458,7 +470,7 @@ function playerOccupiedTileList() {
 function createBatList() {
     let allBatList = bataillons.slice();
     let zoneBatList = _.filter(allBatList, function(bat) {
-        return (bat.loc == 'zone' && bat.apLeft >= 1);
+        return (bat.loc == 'zone' && bat.apLeft >= 1 && !bat.tags.includes('nolist'));
     });
     batList = _.sortBy(_.sortBy(_.sortBy(zoneBatList,'typeId'),'range'),'army');
     batList.reverse();
@@ -466,7 +478,7 @@ function createBatList() {
     // console.log(batList);
 };
 
-function nextBat(removeActiveBat) {
+function nextBat(removeActiveBat,removeForever) {
     testConnect(pseudo);
     if (rand.rand(1,musicChance) === 1) {
         playMusic('any',false);
@@ -480,6 +492,10 @@ function nextBat(removeActiveBat) {
             // remove bat from batList
             if (batIndex > -1) {
                 batList.splice(batIndex,1);
+            }
+            if (removeForever && !selectedBat.tags.includes('nolist')) {
+                selectedBat.tags.push('nolist');
+                selectedBatArrayUpdate();
             }
         } else {
             // push the bat at the end of batList

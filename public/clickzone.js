@@ -68,6 +68,9 @@ function batSelect(bat) {
     $('#report').empty('');
     tileUnselect();
     tileUntarget();
+    if (bat.tags.includes('nolist')) {
+        tagDelete(bat,'nolist');
+    }
     selectedBat = JSON.parse(JSON.stringify(bat));
     targetBat = {};
     console.log(selectedBat);

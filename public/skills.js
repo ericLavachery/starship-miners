@@ -683,9 +683,10 @@ function checkStock(myBat) {
 
 function armyAssign(batId,army) {
     // le faire avec selectedBat puis arrayUpdate
-    let index = bataillons.findIndex((obj => obj.id == batId));
-    let bat = bataillons[index];
-    bat.army = army;
+    // let index = bataillons.findIndex((obj => obj.id == batId));
+    // let bat = bataillons[index];
+    selectedBat.army = army;
+    selectedBatArrayUpdate();
     showBatInfos(bat);
 };
 
