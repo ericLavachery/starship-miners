@@ -214,7 +214,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","ranger","maycamo","guerrilla"],
+        "skills":["fortif","cible","ranger","maycamo","guerrilla","badmedic"],
+        "medicCost":6,
         "fuzz":0,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -1282,7 +1283,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo","firstaid","ranger","sentinelle","guerrilla","embuscade"],
+        "skills":["fortif","cible","camo","ranger","sentinelle","guerrilla","embuscade","badmedic"],
+        "medicCost":6,
         "fuzz":-1,
         "deathFx":"219149__musability__female-wilhelm-scream-audacity"
     },
@@ -1430,7 +1432,8 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","basemecano","moto"],
+        "skills":["fortif","cible","badmecano","badmedic","moto"],
+        "medicCost":7,
         "fuzz":1.5,
         "deathFx":"human2"
     },
@@ -2295,7 +2298,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","basemecano","badmedic","guerrilla","cyber","maycamo"],
+        "skills":["fortif","cible","badmecano","badmedic","guerrilla","cyber","maycamo"],
         "medicCost":3,
         "fuzz":1,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
@@ -2593,7 +2596,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","maycamo","embuscade"],
+        "skills":["fortif","cible","maycamo","embuscade","badmedic"],
+        "medicCost":6,
         "fuzz":0,
         "deathFx":"human1"
     },

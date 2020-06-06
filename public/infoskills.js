@@ -268,7 +268,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // BASE MECANO
-    if (batUnitType.skills.includes('basemecano')) {
+    if (batUnitType.skills.includes('badmecano')) {
         numTargets = numMedicTargets(bat,'vehicles',true,false);
         apCost = numTargets*(8+batUnitType.squads-bat.squadsLeft);
         if (bat.apLeft >= 4 && numTargets >= 1 && !inMelee) {
