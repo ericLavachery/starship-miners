@@ -212,7 +212,7 @@ function skillsInfos(bat,batUnitType) {
     // SELF MEDIC
     if (batUnitType.skills.includes('selfmedic')) {
         numTargets = numMedicTargets(bat,'infantry',false,true);
-        apCost = batUnitType.ap;
+        apCost = Math.round(batUnitType.ap/1.5);
         if (bat.apLeft >= apCost && numTargets >= 1 && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se soigner" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false,true)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
         } else {
@@ -231,8 +231,8 @@ function skillsInfos(bat,batUnitType) {
     // FIRST AID (SELF BAD MEDIC)
     if (batUnitType.skills.includes('firstaid')) {
         numTargets = numMedicTargets(bat,'infantry',false,false);
-        apCost = Math.round(batUnitType.ap*1.4);
-        if (bat.apLeft >= batUnitType.ap && numTargets >= 1 && !inMelee) {
+        apCost = Math.round(batUnitType.ap/1.5);
+        if (bat.apLeft >= apCost && numTargets >= 1 && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins" class="boutonGris iconButtons" onclick="medic(`infantry`,'+apCost+',false,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
         } else {
             if (inMelee) {
