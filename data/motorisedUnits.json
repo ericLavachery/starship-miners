@@ -370,7 +370,7 @@
         "stealth":0,
         "speed":1,
         "ap":13,
-        "maxSalvo":1,
+        "maxSalvo":2,
         "weapon":{
             "name":"Mitrailleuse",
             "cost":4,
