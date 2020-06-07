@@ -54,7 +54,7 @@ socket.on('savedMap-Load', function(sm) {
 });
 // resources
 socket.on('resTypes-Load', function(rt) {
-    ammoTypes = rt;
+    resTypes = rt;
     // console.log(resTypes);
 });
 // Bataillons
