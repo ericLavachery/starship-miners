@@ -323,7 +323,7 @@ function fireInfos(bat) {
         alien = alienHere(tile.id);
         if (Object.keys(alien).length >= 1) {
             alienType = getBatType(alien);
-            if (sideBySideTiles(selectedBat.tileId,tile.id) && !batType.skills.includes('longshot') && alienType.maxSalvo >= 1) {
+            if (sideBySideTiles(selectedBat.tileId,tile.id) && !batType.skills.includes('longshot')) {
                 isMelee = true;
                 if (checkFlyTarget(selectedWeap,alienType)) {
                     cursorSwitch('#',tile.id,'fire');

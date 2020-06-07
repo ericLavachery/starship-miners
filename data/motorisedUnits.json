@@ -1329,7 +1329,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","deepselfmecano","maycamo","defense"],
+        "skills":["fortif","cible","deepselfmecano","maycamo"],
         "fuzz":3,
         "deathFx":"planeexploair3"
     },
