@@ -139,7 +139,12 @@ function clickConstruct(tileId) {
         bfconst();
         $('#conAmmoList').empty();
     } else {
-        console.log('Impossible de superposer 2 bataillons');
+        conselUnit = {};
+        conselAmmos = ['xxx','xxx'];
+        $('#unitInfos').empty();
+        selectMode();
+        batUnstack();
+        batUnselect();
     }
 };
 

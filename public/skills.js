@@ -853,7 +853,12 @@ function clickMine(clicTileId,poseurTileId) {
             putBat(clicTileId);
             showBatInfos(selectedBat);
         } else {
-            console.log('Impossible de superposer 2 bataillons');
+            conselUnit = {};
+            conselAmmos = ['xxx','xxx'];
+            $('#unitInfos').empty();
+            selectMode();
+            batUnstack();
+            batUnselect();
         }
     } else {
         console.log('Trop loin');
