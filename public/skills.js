@@ -687,7 +687,7 @@ function armyAssign(batId,army) {
     // let bat = bataillons[index];
     selectedBat.army = army;
     selectedBatArrayUpdate();
-    showBatInfos(bat);
+    showBatInfos(selectedBat);
 };
 
 function calcAmmos(bat,startAmmo) {
