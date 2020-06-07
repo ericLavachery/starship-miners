@@ -183,6 +183,7 @@ function showAmmo(ammo) {
     ammoView = ammoView.replace('grenade-','');
     ammoView = ammoView.replace('missile-','');
     ammoView = ammoView.replace('lf-','');
+    ammoView = ammoView.replace('lt-','');
     ammoView = ammoView.replace('molotov-','');
     ammoView = ammoView.replace('autodestruction','bombe');
     ammoView = ammoView.replace('monomolecular','mono');
