@@ -1,0 +1,170 @@
+[
+    {
+        "name": "Plomb",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Silicium",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Cuivre",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Calcium",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Zinc",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Phosphore",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Soufre",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Nickel",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Potassium",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Aluminium",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Bore",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Titane",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Cobalt",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Tungstène",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Plutonium",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Uranium",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Platine",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Or",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Lithium",
+        "type": "Minerai",
+        "level": 1,
+        "rarity": 30,
+        "batch": 5
+    },
+    {
+        "name": "Eau",
+        "type": "Eau",
+        "level": 1,
+        "rarity": 100,
+        "batch": 10
+    },
+    {
+        "name": "Hydrocarbure",
+        "type": "Hydrocarbure",
+        "level": 1,
+        "rarity": 15,
+        "batch": 10
+    },
+    {
+        "name": "Argon",
+        "type": "Gaz",
+        "level": 1,
+        "rarity": 15,
+        "batch": 2
+    },
+    {
+        "name": "Végétaux",
+        "type": "Végétal",
+        "level": 1,
+        "rarity": 15,
+        "batch": 10
+    },
+    {
+        "name": "Bugium",
+        "type": "Animal",
+        "level": 1,
+        "rarity": 15,
+        "batch": 10
+    }
+]

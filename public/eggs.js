@@ -357,8 +357,11 @@ function eggSpawn(bat,fromEgg) {
         }
     } else {
         let spawnChance = Math.round(eggTurn*20*bat.squadsLeft/6*Math.sqrt(playerInfos.mapAdjDiff)/2*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
-        if (!fromEgg || bat.type === 'Coque') {
-            spawnChance = 100;
+        if (!fromEgg) {
+            spawnChance = 100-(eggTurn*5);
+            if (spawnChance < 25) {
+                spawnChance = 25;
+            }
         }
         console.log('spawnChance='+spawnChance);
         if (rand.rand(1,100) <= spawnChance) {

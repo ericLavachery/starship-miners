@@ -27,7 +27,6 @@ function loadUnitTypes() {
         try {
             unitTypes = JSON.parse(data);
             loadTurrets();
-            loadCivilianUnits();
             loadInfantryUnits();
             loadMotorisedUnits();
             // console.log(unitTypes);
@@ -42,18 +41,6 @@ function loadTurrets() {
         try {
             let turrets = JSON.parse(data);
             unitTypes = unitTypes.concat(turrets);
-            // console.log(unitTypes);
-        } catch (e) {
-            console.error( e );
-        }
-    });
-};
-function loadCivilianUnits() {
-    fs.readFile('./data/civilianUnits.json', 'utf8', function (err, data) {
-        if (err) throw err;
-        try {
-            let civilianUnits = JSON.parse(data);
-            unitTypes = unitTypes.concat(civilianUnits);
             // console.log(unitTypes);
         } catch (e) {
             console.error( e );
@@ -99,6 +86,16 @@ fs.readFile('./data/terrainTypes.json', 'utf8', function (err, data) {
     if (err) throw err;
     try {
         terrainTypes = JSON.parse(data);
+        // console.log(unitDV);
+    } catch (e) {
+        console.error( e );
+    }
+});
+var resTypes;
+fs.readFile('./data/resTypes.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    try {
+        resTypes = JSON.parse(data);
         // console.log(unitDV);
     } catch (e) {
         console.error( e );
@@ -250,6 +247,8 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.emit('mapFilters-Load', mapFilters);
         console.log('loading terrain types');
         socket.emit('terrainTypes-Load', terrainTypes);
+        console.log('loading resources types');
+        socket.emit('resTypes-Load', resTypes);
         if (savedMap.length >= 3500) {
             console.log('loading saved map');
         } else {

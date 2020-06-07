@@ -52,6 +52,11 @@ socket.on('savedMap-Load', function(sm) {
     // $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
     // $('#tour').append('Difficulté '+playerInfos.mapDiff);
 });
+// resources
+socket.on('resTypes-Load', function(rt) {
+    ammoTypes = rt;
+    // console.log(resTypes);
+});
 // Bataillons
 socket.on('bataillons-Load', function(bt) {
     bataillons = bt;
