@@ -218,10 +218,12 @@ function sideBySideTiles(myTileIndex,thatTileIndex) {
 function batInMelee(bat) {
     // Vérifie si le bataillon est VRAIMENT en mêlée : Range 0 ET alien range 0 en face
     let inMelee = false;
+    let alienType;
     aliens.forEach(function(alien) {
         if (alien.loc === "zone") {
             if (bat.tileId == alien.tileId+1 || bat.tileId == alien.tileId-1 || bat.tileId == alien.tileId+mapSize || bat.tileId == alien.tileId-mapSize) {
-                if (alien.range === 0 && !bat.tags.includes('camo')) {
+                alienType = getBatType(alien);
+                if (alien.range === 0 && !bat.tags.includes('camo') && alienType.maxSalvo >= 1) {
                     inMelee = true;
                 }
             }
@@ -320,10 +322,9 @@ function fireInfos(bat) {
         $("#"+tile.id).attr("title", "");
         alien = alienHere(tile.id);
         if (Object.keys(alien).length >= 1) {
-            if (sideBySideTiles(selectedBat.tileId,tile.id) && !batType.skills.includes('longshot')) {
+            alienType = getBatType(alien);
+            if (sideBySideTiles(selectedBat.tileId,tile.id) && !batType.skills.includes('longshot') && alienType.maxSalvo >= 1) {
                 isMelee = true;
-                alienIndex = alienUnits.findIndex((obj => obj.id == alien.typeId));
-                alienType = alienUnits[alienIndex];
                 if (checkFlyTarget(selectedWeap,alienType)) {
                     cursorSwitch('#',tile.id,'fire');
                 }
@@ -336,8 +337,7 @@ function fireInfos(bat) {
             alien = alienHere(tile.id);
             if (Object.keys(alien).length >= 1) {
                 if (isInRange(selectedBat.tileId,tile.id)) {
-                    alienIndex = alienUnits.findIndex((obj => obj.id == alien.typeId));
-                    alienType = alienUnits[alienIndex];
+                    alienType = getBatType(alien);
                     if (checkFlyTarget(selectedWeap,alienType) && !alienType.skills.includes('invisible')) {
                         cursorSwitch('#',tile.id,'fire');
                     }

@@ -9,45 +9,50 @@ function clickFire(tileId) {
         }
     });
     checkTargetBatType();
-    if (isMelee) {
-        // en mêlée : choix limité de cibles
-        if (sideBySideTiles(selectedBat.tileId,tileId)) {
-            if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType)) {
-                // console.log(targetBat);
-                tileTarget(targetBat);
-                combat();
-                selectMode();
-                showBatInfos(selectedBat);
-            } else if (selectedBat.tileId === tileId) {
-                // re-click sur l'unité active : unselect
-                selectMode();
-                batUnstack();
-                batUnselect();
-            }
-        } else {
-            targetBat = {};
-            targetBatType = {};
-            targetWeap = {};
-        }
+    if (selectedBat.tileId === tileId) {
+        // re-click sur l'unité active : unselect
+        selectMode();
+        batUnstack();
+        batUnselect();
     } else {
-        // hors mêlée
-        if (isInRange(selectedBat.tileId,tileId)) {
-            if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && !targetBatType.skills.includes('invisible')) {
-                // console.log(targetBat);
-                tileTarget(targetBat);
-                combat();
-                selectMode();
-                showBatInfos(selectedBat);
-            } else if (selectedBat.tileId === tileId) {
-                // re-click sur l'unité active : unselect
-                selectMode();
-                batUnstack();
-                batUnselect();
+        if (isMelee) {
+            // en mêlée : choix limité de cibles
+            if (sideBySideTiles(selectedBat.tileId,tileId)) {
+                if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType)) {
+                    // console.log(targetBat);
+                    tileTarget(targetBat);
+                    combat();
+                    selectMode();
+                    showBatInfos(selectedBat);
+                } else {
+                    targetBat = {};
+                    targetBatType = {};
+                    targetWeap = {};
+                }
+            } else {
+                targetBat = {};
+                targetBatType = {};
+                targetWeap = {};
             }
         } else {
-            targetBat = {};
-            targetBatType = {};
-            targetWeap = {};
+            // hors mêlée
+            if (isInRange(selectedBat.tileId,tileId)) {
+                if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && !targetBatType.skills.includes('invisible')) {
+                    // console.log(targetBat);
+                    tileTarget(targetBat);
+                    combat();
+                    selectMode();
+                    showBatInfos(selectedBat);
+                } else {
+                    targetBat = {};
+                    targetBatType = {};
+                    targetWeap = {};
+                }
+            } else {
+                targetBat = {};
+                targetBatType = {};
+                targetWeap = {};
+            }
         }
     }
 };
