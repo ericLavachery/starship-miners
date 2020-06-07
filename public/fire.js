@@ -575,7 +575,7 @@ function defense() {
         if (targetBat.tags.includes('guet')) {
             brideDef = 2;
         } else {
-            brideDef = 1.75;
+            brideDef = 1.5;
         }
     }
     console.log('brideDef='+brideDef);

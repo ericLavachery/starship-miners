@@ -11,6 +11,7 @@ function weaponsInfos(bat,batUnitType) {
     let ammoLeft = 99;
     let ravitVolume = 0;
     cheapWeapCost = 99;
+    let accFly;
     if (batUnitType.weapon.rof >= 1 && batUnitType.weapon2.rof >= 1 && batUnitType.weapon.name === batUnitType.weapon2.name) {
         showW1 = false;
     }
@@ -73,15 +74,17 @@ function weaponsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
             $('#unitInfos').append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
-            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
+            if (thisWeapon.noFly) {
+                accFly = 0;
+            } else {
+                accFly = Math.round(thisWeapon.accuracy*thisWeapon.dca);
+            }
+            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'/'+accFly+'</span><br>');
             $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
             if (thisWeapon.armors != 1) {
                 $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
             }
             $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
-            if (thisWeapon.noFly) {
-                $('#unitInfos').append('<span class="paramName">Tir aérien</span><span class="paramIcon"></span><span class="paramValue">Non</span><br>');
-            }
             $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+showAmmo(bat.ammo)+'</span><br>');
             if (baseAmmo < 99) {
                 $('#unitInfos').append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
@@ -145,15 +148,17 @@ function weaponsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
             $('#unitInfos').append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
-            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
+            if (thisWeapon.noFly) {
+                accFly = 0;
+            } else {
+                accFly = Math.round(thisWeapon.accuracy*thisWeapon.dca);
+            }
+            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'/'+accFly+'</span><br>');
             $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
             if (thisWeapon.armors != 1) {
                 $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
             }
             $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
-            if (thisWeapon.noFly) {
-                $('#unitInfos').append('<span class="paramName">Tir aérien</span><span class="paramIcon"></span><span class="paramValue">Non</span><br>');
-            }
             $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+showAmmo(bat.ammo2)+'</span><br>');
             if (baseAmmo < 99) {
                 $('#unitInfos').append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
