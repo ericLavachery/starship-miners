@@ -2307,7 +2307,7 @@
         "id":87,
         "name":"Mechas",
         "pic":"mechas",
-        "cat":"infantry",
+        "cat":"vehicles",
         "kind":"zero",
         "squads":6,
         "squadSize":6,

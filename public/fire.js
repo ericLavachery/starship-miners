@@ -441,7 +441,7 @@ function attack() {
         }
     }
     // maladie
-    if ((totalDamage >= 1 && playerInfos.caLevel < 3) || totalDamage >= 5) {
+    if (((totalDamage >= 1 && playerInfos.caLevel < 3) || totalDamage >= 5) && !targetBat.tags.includes('maladie')) {
         let infected = false;
         if (selectedBatType.skills.includes('maladie') && rand.rand(1,playerInfos.caLevel+1) === 1) {
             infected = true;
@@ -700,7 +700,7 @@ function defense() {
         }
     }
     // maladie
-    if ((totalDamage >= 1 && playerInfos.caLevel < 3) || totalDamage >= 5) {
+    if (((totalDamage >= 1 && playerInfos.caLevel < 3) || totalDamage >= 5) && !selectedBat.tags.includes('maladie')) {
         let infected = false;
         if (targetBatType.skills.includes('maladie') && rand.rand(1,playerInfos.caLevel+1) === 1) {
             infected = true;
