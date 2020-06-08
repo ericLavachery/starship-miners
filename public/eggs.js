@@ -16,10 +16,28 @@ function checkStartingAliens() {
     }
 };
 
+function calcEggPause() {
+    let eggPauseDice = eggPauseEnd;
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            if (bat.type.includes('Oeuf')) {
+                eggPauseDice = eggPauseDice+5;
+            } else if (bat.type == 'Ruche' || bat.type == 'Coque') {
+                eggPauseDice = eggPauseDice+1;
+            }
+        }
+    });
+    if (eggPauseDice > 20) {
+        eggPauseDice = 20;
+    }
+    return eggPauseDice;
+};
+
 function checkEggsDrop() {
     console.log('check egg drop');
     eggDropCount = 0;
     let drop = false;
+    let eggPauseDice = calcEggPause();
     let adjMapDrop = playerInfos.mapDrop;
     let adjMapTurn = playerInfos.mapTurn-10+playerInfos.mapDiff;
     if (adjMapTurn <= 0) {
@@ -39,7 +57,7 @@ function checkEggsDrop() {
     }
     if (drop || playerInfos.eggPause) {
         playerInfos.mapDrop = 0;
-        if (rand.rand(1,eggPauseEnd) === 1) {
+        if (rand.rand(1,eggPauseDice) === 1) {
             playerInfos.eggPause = false;
         }
     } else {
