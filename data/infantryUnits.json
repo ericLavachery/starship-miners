@@ -1476,7 +1476,7 @@
             "power":10,
             "aoe":"unit",
             "sound":"pm_ag_1_2_abstract_guns_281c",
-            "ammo":["laser"]
+            "ammo":["laser","laser-g2"]
         },
         "moveCost":2,
         "maxFlood":3,
@@ -2291,7 +2291,7 @@
             "power":10,
             "aoe":"unit",
             "sound":"pm_ag_1_2_abstract_guns_281c",
-            "ammo":["laser"]
+            "ammo":["laser","laser-g2"]
         },
         "weapon2":{},
         "moveCost":3,
@@ -2729,7 +2729,7 @@
         "weapon2":{
             "name":"Canon laser",
             "cost":5,
-            "range":3,
+            "range":4,
             "elevation":2,
             "noMelee":true,
             "rof":4,
@@ -2737,7 +2737,7 @@
             "power":17,
             "aoe":"unit",
             "sound":"little_robot_sound_factory_Laser_02c",
-            "ammo":["laser"]
+            "ammo":["laser","laser-g2"]
         },
         "moveCost":2,
         "maxFlood":3,

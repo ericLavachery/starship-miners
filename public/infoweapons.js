@@ -71,7 +71,11 @@ function weaponsInfos(bat,batUnitType) {
                 riposte = 'Non';
                 $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">'+riposte+'</span><br>');
             }
-            $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');
+            let elev = '';
+            if (thisWeapon.elevation >= 1) {
+                elev = ' (e'+thisWeapon.elevation+')';
+            }
+            $('#unitInfos').append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
             $('#unitInfos').append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
             if (thisWeapon.noFly) {
@@ -145,7 +149,11 @@ function weaponsInfos(bat,batUnitType) {
                 riposte = 'Non';
                 $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">'+riposte+'</span><br>');
             }
-            $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');
+            let elev = '';
+            if (thisWeapon.elevation >= 1) {
+                elev = ' (e'+thisWeapon.elevation+')';
+            }
+            $('#unitInfos').append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
             $('#unitInfos').append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
             if (thisWeapon.noFly) {
@@ -184,6 +192,7 @@ function showAmmo(ammo) {
     ammoView = ammoView.replace('missile-','');
     ammoView = ammoView.replace('lf-','');
     ammoView = ammoView.replace('lt-','');
+    ammoView = ammoView.replace('laser-','');
     ammoView = ammoView.replace('molotov-','');
     ammoView = ammoView.replace('autodestruction','bombe');
     ammoView = ammoView.replace('monomolecular','mono');
