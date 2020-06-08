@@ -421,11 +421,11 @@
         "armor":6,
         "size":25,
         "stealth":0,
-        "ap":18,
+        "ap":12,
         "maxSalvo":1,
         "weapon":{
             "name":"Missille squash",
-            "cost":6,
+            "cost":7,
             "range":6,
             "noMelee":true,
             "noFly":true,
@@ -436,7 +436,7 @@
             "aoe":"squad",
             "sound":"262436__ramston__real-explosionsb",
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing"],
-            "maxAmmo":3
+            "maxAmmo":6
         },
         "weapon2":{},
         "moveCost":99,

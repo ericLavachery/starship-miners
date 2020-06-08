@@ -1069,7 +1069,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","medic","ravitaillement","camo","selfmecano","defense","hardmove","emoteur"],
         "medicCost":2,
-        "maxSKill":4,
+        "maxSKill":24,
         "fuzz":1,
         "deathFx":"planeexploair1"
     },
@@ -2325,7 +2325,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","fly","ravitaillement","longshot"],
-        "maxSKill":10,
+        "maxSKill":40,
         "fuzz":4,
         "deathFx":"vehicleexplo3"
     },
@@ -2517,7 +2517,7 @@
             "cost":5,
             "range":0,
             "noFly":true,
-            "rof":4,
+            "rof":8,
             "accuracy":9,
             "power":10,
             "aoe":"squad",
@@ -2530,7 +2530,7 @@
         "maxScarp":2,
         "maxVeg":3,
         "skills":["fortif","cible","ravitaillement","fastempty"],
-        "maxSKill":6,
+        "maxSKill":24,
         "fuzz":2,
         "deathFx":"S_CarExplosion02"
     },

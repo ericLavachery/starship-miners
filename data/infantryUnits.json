@@ -884,14 +884,14 @@
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
             "ammo":["grenade"],
-            "maxAmmo":9
+            "maxAmmo":6
         },
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","ravitaillement","maycamo","fastempty"],
-        "maxSKill":3,
+        "maxSKill":9,
         "fuzz":0,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
