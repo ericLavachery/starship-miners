@@ -99,7 +99,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selfmecano"],
+        "skills":["fortif","cible","selfmecano","longshot"],
         "fuzz":3.5,
         "deathFx":"planeexploair3"
     },
@@ -199,7 +199,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","inflammable","selfmecano","defense"],
+        "skills":["fortif","cible","inflammable","selfmecano","defense","longshot"],
         "fuzz":3,
         "deathFx":"planeexploair3"
     },
@@ -250,7 +250,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","selfmecano"],
+        "skills":["cible","selfmecano","longshot"],
         "fuzz":3,
         "deathFx":"planeexploair3"
     },
@@ -302,7 +302,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selfmecano","defense"],
+        "skills":["fortif","cible","selfmecano","defense","longshot"],
         "fuzz":3.5,
         "deathFx":"planeexploair3"
     },
@@ -454,7 +454,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["selfmecano","cible","defense"],
+        "skills":["selfmecano","cible","defense","longshot"],
         "fuzz":6,
         "deathFx":"planeexploair3"
     },
@@ -611,7 +611,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["cible","mecano","transport","fret","maycamo","defense"],
+        "skills":["cible","mecano","transport","fret","maycamo","defense","longshot"],
         "medicCost":7,
         "transMaxSize":9,
         "transUnits":350,
@@ -1330,7 +1330,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","deepselfmecano","maycamo"],
+        "skills":["fortif","cible","deepselfmecano","maycamo","longshot"],
         "fuzz":3,
         "deathFx":"planeexploair3"
     },
@@ -1415,7 +1415,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
-            "name":"Drop grenade",
+            "name":"Sling grenade",
             "cost":4,
             "range":1,
             "noFly":true,
