@@ -1817,7 +1817,7 @@
         },
         "weapon2":{
             "name":"Fusil de précision",
-            "cost":7,
+            "cost":6,
             "range":2,
             "elevation":2,
             "noMelee":true,
@@ -2785,5 +2785,54 @@
         "transRes":30,
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
+    },
+    {
+        "id":130,
+        "name":"Luchandos",
+        "pic":"luchandos",
+        "cat":"infantry",
+        "kind":"tiradores",
+        "squads":8,
+        "squadSize":8,
+        "crew":1,
+        "hp":7,
+        "armor":2,
+        "size":3,
+        "stealth":12,
+        "ap":14,
+        "maxSalvo":2,
+        "weapon":{
+            "name":"Revolvers",
+            "cost":2,
+            "range":1,
+            "isShort":true,
+            "rof":12,
+            "accuracy":20,
+            "power":5,
+            "armors":0.85,
+            "aoe":"unit",
+            "sound":"238916__qubodup__rifle-shooting_multi",
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+        },
+        "weapon2":{
+            "name":"Fusil antichar",
+            "cost":6,
+            "range":2,
+            "elevation":2,
+            "rof":4,
+            "accuracy":24,
+            "power":15,
+            "armors":0.5,
+            "aoe":"unit",
+            "sound":"386842__nioczkus__m1-garand-rifle_antichar",
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite"]
+        },
+        "moveCost":3,
+        "maxFlood":3,
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["fortif","cible","selfmedic","leader","survivor","camo","defense","guerrilla","embuscade"],
+        "fuzz":-1,
+        "deathFx":"162157__mediapaja2009__agony"
     }
 ]

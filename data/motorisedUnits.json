@@ -2030,7 +2030,7 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","leader","selfmecano","guerrilla","maycamo"],
+        "skills":["fortif","cible","selfmecano","guerrilla","maycamo"],
         "fuzz":2,
         "deathFx":"planeexploair1"
     },
