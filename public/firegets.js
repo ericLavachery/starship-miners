@@ -318,6 +318,7 @@ function fireInfos(bat) {
     let alien = {};
     let alienIndex;
     let alienType;
+    let longMelee = false;
     zone.forEach(function(tile) {
         $("#"+tile.id).attr("title", "");
         alien = alienHere(tile.id);
@@ -338,7 +339,7 @@ function fireInfos(bat) {
             if (Object.keys(alien).length >= 1) {
                 if (isInRange(selectedBat.tileId,tile.id)) {
                     alienType = getBatType(alien);
-                    if (checkFlyTarget(selectedWeap,alienType) && !alienType.skills.includes('invisible')) {
+                    if (checkFlyTarget(selectedWeap,alienType) && (!alienType.skills.includes('invisible') || sideBySideTiles(selectedBat.tileId,tile.id))) {
                         cursorSwitch('#',tile.id,'fire');
                     }
                 }

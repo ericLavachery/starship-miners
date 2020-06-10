@@ -37,7 +37,7 @@ function clickFire(tileId) {
         } else {
             // hors mêlée
             if (isInRange(selectedBat.tileId,tileId)) {
-                if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && !targetBatType.skills.includes('invisible')) {
+                if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && (!targetBatType.skills.includes('invisible') || sideBySideTiles(selectedBat.tileId,tileId))) {
                     // console.log(targetBat);
                     tileTarget(targetBat);
                     combat();
