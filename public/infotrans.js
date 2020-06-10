@@ -42,8 +42,14 @@ function unloadInfos(myBat,myBatUnitType) {
     }
 };
 
-function calcVolume(batType) {
-    return Math.round(batType.size*batType.squadSize*batType.squads/4*Math.sqrt(batType.size+13)*batType.volume);
+function calcVolume(bat,batType) {
+    let batVolume;
+    if (bat.citoyens >= 1) {
+        batVolume = Math.round(bat.citoyens*2.4);
+    } else {
+        batVolume = Math.round(batType.size*batType.squadSize*batType.squads/4*Math.sqrt(batType.size+13)*batType.volume);
+    }
+    return batVolume;
 };
 
 function checkCharged(myBat) {
@@ -60,7 +66,7 @@ function checkTransportId(myBat,myBatType) {
     let transId = -1;
     let batType;
     let batTransUnitsLeft;
-    let myBatWeight = calcVolume(myBatType);
+    let myBatWeight = calcVolume(myBat,myBatType);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" && bat.tileId == myBat.tileId) {
             batType = getBatType(bat);
@@ -81,7 +87,7 @@ function calcTransUnitsLeft(myBat,myBatType) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "trans" && bat.locId == myBat.id) {
             batType = getBatType(bat);
-            batWeight = calcVolume(batType);
+            batWeight = calcVolume(bat,batType);
             myBatTransUnitsLeft = myBatTransUnitsLeft-batWeight;
         }
     });

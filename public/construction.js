@@ -135,7 +135,7 @@ function clickConstruct(tileId) {
         }
     });
     if (!batHere) {
-        putBat(tileId);
+        putBat(tileId,0);
         bfconst();
         $('#conAmmoList').empty();
     } else {
@@ -184,6 +184,7 @@ function putBat(tileId,citoyens) {
             newBat.citoyens = citoyens;
             newBat.squadsLeft = Math.ceil(citoyens/conselUnit.squadSize);
         } else {
+            newBat.citoyens = conselUnit.citoyens;
             newBat.squadsLeft = conselUnit.squads;
         }
         newBat.damage = 0;

@@ -6,6 +6,7 @@
     "squads": 6,
     "squadSize": 10,
     "crew": 1,
+    "citoyens": 0,
     "hp": 5,
     "armor": 0,
     "size": 3,

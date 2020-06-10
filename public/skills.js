@@ -667,7 +667,7 @@ function clickMine(clicTileId,poseurTileId) {
             }
         });
         if (!batHere) {
-            putBat(clicTileId);
+            putBat(clicTileId,0);
             showBatInfos(selectedBat);
         } else {
             conselUnit = {};
