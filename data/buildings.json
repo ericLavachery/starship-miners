@@ -7,7 +7,7 @@
         "kind":"zero",
         "squads":6,
         "squadSize":1,
-        "crew":10,
+        "crew":6,
         "hp":400,
         "armor":7,
         "size":100,

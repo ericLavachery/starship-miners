@@ -2754,7 +2754,7 @@
         "pic":"civil",
         "cat":"infantry",
         "kind":"zero",
-        "squads":10,
+        "squads":12,
         "squadSize":6,
         "crew":1,
         "hp":5,
