@@ -52,6 +52,9 @@ function nextTurn() {
 
 function nextTurnEnd() {
     $('#report').empty('');
+    if (playerInfos.mapDiff % 50 === 0 && playerInfos.mapDiff >= 1) {
+        playerInfos.mapDiff++;
+    }
     // récup du player
     let batType;
     let ap;

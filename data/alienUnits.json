@@ -1173,7 +1173,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouisseur","errant"],
+        "skills":["fouisseur","capmen"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"bugium":1,"swarmine":2}
     },
