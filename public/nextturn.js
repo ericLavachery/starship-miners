@@ -273,7 +273,7 @@ function blub(bat,batType) {
             let squadsOut = Math.floor(totalDamage/squadHP);
             bat.squadsLeft = bat.squadsLeft-squadsOut;
             bat.damage = totalDamage-(squadsOut*squadHP);
-            bat.apLeft = 2;
+            bat.apLeft = Math.round(batType.ap/2);
             if (bat.squadsLeft <= 0) {
                 batDeathEffect(bat,true,'Bataillon détruit',bat.type+' noyé.');
             }

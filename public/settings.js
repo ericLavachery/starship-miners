@@ -93,7 +93,7 @@ let defAlive = true;
 let venumDamage = 33; // 33 = 11-33 damage (22) (shinda 40)
 let poisonDamage = 12; // 12 = 4-12 damage (8)
 let parasiteDamage = 90;
-let blubDamage = 3;
+let blubDamage = 6;
 let bugROF = 1;
 let regenPower = 10; // 10 = 1/10 des HP de base chaque tour
 let slowregPower = 3; // 10 = 1/10 des HP de base chaque tour

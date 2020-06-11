@@ -85,7 +85,7 @@
     {
         "id":6,
         "name":"Toubibs",
-        "pic":"medic",
+        "pic":"toubib",
         "cat":"infantry",
         "kind":"bulbo kapos",
         "squads":4,
