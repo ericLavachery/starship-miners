@@ -413,6 +413,7 @@ function checkDeath(bat,batType) {
                 playerInfos.eggsKilled = playerInfos.eggsKilled+1;
             }
             playerInfos.aliensKilled = playerInfos.aliensKilled+1;
+            addAlienRes(bat);
         }
     }
 };

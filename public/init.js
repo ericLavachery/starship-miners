@@ -23,6 +23,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.pauseSeed === undefined) {
         playerInfos.pauseSeed = rand.rand(1,8);
     }
+    if (playerInfos.alienRes === undefined) {
+        playerInfos.alienRes = {};
+    }
     playerSkills();
 });
 // Terrains

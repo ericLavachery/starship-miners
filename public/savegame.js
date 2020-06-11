@@ -33,6 +33,7 @@ function mapReset() {
     playerInfos.mapAdjDiff = playerInfos.mapDiff;
     playerInfos.fuzzTotal = 0;
     playerInfos.pauseSeed = rand.rand(1,8);
+    playerInfos.res = {};
     savePlayerInfos();
     commandes();
     $("#reset2").css("display","none");

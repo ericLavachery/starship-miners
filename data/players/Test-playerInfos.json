@@ -1,1 +1,1 @@
-{"pseudo":"Test","numHTiles":28,"numVTiles":15,"currentMap":0,"mapDiff":2,"mapTurn":51,"mapDrop":4,"skills":["cam1","cam2","cam3"],"caLevel":0,"medLevel":0,"fuzzTotal":16.5,"eggPause":false,"mapAdjDiff":2,"aliensKilled":0,"eggsKilled":0,"unitsLost":0,"pauseSeed":2}
+{"pseudo":"Test","numHTiles":28,"numVTiles":15,"currentMap":0,"mapDiff":2,"mapTurn":0,"mapDrop":0,"skills":["cam1","cam2","cam3"],"caLevel":0,"medLevel":0,"fuzzTotal":0,"eggPause":false,"mapAdjDiff":2,"aliensKilled":0,"eggsKilled":0,"unitsLost":0,"pauseSeed":2,"alienRes":{}}

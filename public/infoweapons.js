@@ -15,16 +15,16 @@ function weaponsInfos(bat,batUnitType) {
     if (batUnitType.weapon.rof >= 1 && batUnitType.weapon2.rof >= 1 && batUnitType.weapon.name === batUnitType.weapon2.name) {
         showW1 = false;
     }
-    console.log('rofs');
-    console.log(batUnitType.weapon.rof);
-    console.log(batUnitType.weapon2.rof);
+    // console.log('rofs');
+    // console.log(batUnitType.weapon.rof);
+    // console.log(batUnitType.weapon2.rof);
     if (batUnitType.weapon.rof >= 1 && showW1) {
         thisWeapon = weaponAdj(batUnitType.weapon,bat,'w1');
         if (!thisWeapon.noAtt) {
             if (inMelee && thisWeapon.noMelee) {
                 noFireMelee = true;
             }
-            console.log('tileId='+bat.tileId);
+            // console.log('tileId='+bat.tileId);
             anyTarget = anyAlienInRange(bat.tileId,thisWeapon);
             baseAmmo = thisWeapon.maxAmmo;
             ammoLeft = calcAmmos(bat,baseAmmo);

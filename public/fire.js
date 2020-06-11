@@ -887,6 +887,7 @@ function batDeath(bat,count) {
                 playMusic('eggKill',false);
             }
             playerInfos.aliensKilled = playerInfos.aliensKilled+1;
+            addAlienRes(bat);
         }
     } else if (bat.team == 'locals') {
         let batIndex = locals.findIndex((obj => obj.id == bat.id));
