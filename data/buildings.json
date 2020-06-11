@@ -21,7 +21,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["mecano","deepselfrepair"],
-        "medicCost":3,
+        "skillCost":3,
         "fuzz":5,
         "deathFx":"S_Explosion02"
     },

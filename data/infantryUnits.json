@@ -116,7 +116,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["medic","dealer","starka","maycamo"],
-        "medicCost":5,
+        "skillCost":5,
         "maxSKill":8,
         "fuzz":0,
         "deathFx":"human3"
@@ -215,7 +215,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","ranger","maycamo","guerrilla","badmedic"],
-        "medicCost":6,
+        "skillCost":6,
         "fuzz":0,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -1033,7 +1033,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","undead","badmedic","dealer","bliss","sila","blaze","kirin","skupiac","maycamo"],
         "maxSKill":24,
-        "medicCost":6,
+        "skillCost":6,
         "fuzz":1,
         "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
@@ -1134,7 +1134,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","medic","camo","dealer","kirin","sila","ranger"],
         "maxSKill":12,
-        "medicCost":8,
+        "skillCost":8,
         "fuzz":-1,
         "deathFx":"human1"
     },
@@ -1284,7 +1284,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","camo","ranger","sentinelle","guerrilla","embuscade","badmedic"],
-        "medicCost":6,
+        "skillCost":6,
         "fuzz":-1,
         "deathFx":"219149__musability__female-wilhelm-scream-audacity"
     },
@@ -1433,7 +1433,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","cible","badmecano","badmedic","moto"],
-        "medicCost":7,
+        "skillCost":7,
         "fuzz":1.5,
         "deathFx":"human2"
     },
@@ -1484,7 +1484,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","camo","medic","fly","jetpack","inflammable","dealer","starka","kirin"],
         "maxSKill":8,
-        "medicCost":5,
+        "skillCost":5,
         "fuzz":-1,
         "deathFx":"human2"
     },
@@ -1698,7 +1698,7 @@
         "hp":5,
         "armor":5,
         "size":3,
-        "volume":2,
+        "volume":1,
         "stealth":15,
         "ap":14,
         "maxSalvo":2,
@@ -2237,10 +2237,10 @@
             "range":0,
             "isMelee":true,
             "rof":8,
-            "accuracy":16,
+            "accuracy":18,
             "dca":0.85,
             "power":16,
-            "aoe":"brochette",
+            "aoe":"unit",
             "sound":"axe",
             "ammo":["standard"]
         },
@@ -2260,8 +2260,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","mecano","repair","cyber"],
-        "medicCost":5,
+        "skills":["fortif","mecano","repair","constructeur","cyber"],
+        "skillCost":6,
         "fuzz":1.5,
         "deathFx":"144469__psychedelic-hands__robot-death"
     },
@@ -2299,7 +2299,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","badmecano","badmedic","guerrilla","cyber","maycamo"],
-        "medicCost":3,
+        "skillCost":3,
         "fuzz":1,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
     },
@@ -2597,7 +2597,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","maycamo","embuscade","badmedic"],
-        "medicCost":6,
+        "skillCost":6,
         "fuzz":0,
         "deathFx":"human1"
     },
@@ -2744,7 +2744,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","badmedic","leader","fly","jetpack","longshot","survivor","inflammable","guerrilla","maycamo"],
-        "medicCost":5,
+        "skillCost":5,
         "fuzz":2,
         "deathFx":"162157__mediapaja2009__agony"
     },

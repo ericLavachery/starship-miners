@@ -46,7 +46,7 @@
     "maxScarp": 4,
     "maxVeg": 4,
     "skills": [],
-    "medicCost":6,
+    "skillCost":6,
     "maxSKill": 999,
     "transMaxSize":0,
     "transUnits":0,
