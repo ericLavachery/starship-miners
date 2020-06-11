@@ -709,7 +709,7 @@
         "skillCost":3,
         "maxSKill":16,
         "transMaxSize":9,
-        "transUnits":200,
+        "transUnits":220,
         "transRes":0,
         "fuzz":1,
         "deathFx":"S_CarExplosion02"
@@ -1069,9 +1069,12 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","cible","medic","ravitaillement","camo","selfmecano","defense","hardmove","emoteur"],
+        "skills":["fortif","cible","medic","ravitaillement","camo","selfmecano","defense","hardmove","emoteur","transport"],
         "skillCost":2,
         "maxSKill":9,
+        "transMaxSize":9,
+        "transUnits":250,
+        "transRes":0,
         "fuzz":1,
         "deathFx":"planeexploair1"
     },
