@@ -52,9 +52,6 @@ function nextTurn() {
 
 function nextTurnEnd() {
     $('#report').empty('');
-    if (playerInfos.mapDiff % 50 === 0 && playerInfos.mapDiff >= 1) {
-        playerInfos.mapDiff++;
-    }
     // récup du player
     let batType;
     let ap;
@@ -167,6 +164,9 @@ function nextTurnEnd() {
     });
     killBatList();
     playerInfos.mapTurn = playerInfos.mapTurn+1;
+    if (playerInfos.mapTurn % 50 === 0 && playerInfos.mapTurn >= 1) {
+        playerInfos.mapDiff++;
+    }
     turnInfo();
     savePlayerInfos();
     saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
@@ -305,12 +305,18 @@ function tagsEffect(bat,batType) {
     if (bat.tags.includes('kirin') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg')) {
         squadHP = batType.squadSize*batType.hp;
         let batHP = squadHP*batType.squads;
+        if (bat.citoyens >= 1) {
+            batHP = bat.citoyens*batType.hp;
+        }
         let regen = Math.round(batHP*regenPower/100);
         if (batType.skills.includes('slowreg')) {
             regen = Math.round(batHP*slowregPower/100);
         }
-        console.log('regeneration='+regen);
+        // console.log('regeneration='+regen);
         let batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
+        if (batHPLeft > batHP) {
+            batHPLeft = batHP;
+        }
         bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
         bat.damage = (bat.squadsLeft*squadHP)-batHPLeft;
         if (bat.squadsLeft > batType.squads) {
