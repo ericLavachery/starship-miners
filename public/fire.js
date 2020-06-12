@@ -207,8 +207,14 @@ function attack() {
         aoeShots = targetBatType.squadSize*targetBat.squadsLeft;
     } else if (selectedWeap.aoe != "unit") {
         aoeShots = targetBatType.squadSize;
-        if (aoeShots < 2) {
-            aoeShots = 2;
+        if (selectedWeap.aoe == "squad") {
+            if (aoeShots < 3) {
+                aoeShots = 3;
+            }
+        } else if (selectedWeap.aoe == "brochette") {
+            if (aoeShots < 2) {
+                aoeShots = 2;
+            }
         }
     }
     // Feu dans l'eau
@@ -545,8 +551,14 @@ function defense() {
         aoeShots = selectedBatType.squadSize*selectedBat.squadsLeft;
     } else if (targetWeap.aoe != "unit") {
         aoeShots = selectedBatType.squadSize;
-        if (aoeShots < 2) {
-            aoeShots = 2;
+        if (targetWeap.aoe == "squad") {
+            if (aoeShots < 3) {
+                aoeShots = 3;
+            }
+        } else if (targetWeap.aoe == "brochette") {
+            if (aoeShots < 2) {
+                aoeShots = 2;
+            }
         }
     }
     // Feu dans l'eau
