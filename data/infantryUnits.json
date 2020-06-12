@@ -1652,7 +1652,7 @@
         "volume":1.2,
         "stealth":5,
         "speed":3,
-        "ap":18,
+        "ap":19,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet plasma",
@@ -1668,14 +1668,14 @@
         },
         "weapon2":{
             "name":"BFG",
-            "cost":4,
+            "cost":6,
             "range":1,
             "rof":7,
             "accuracy":30,
             "power":20,
             "aoe":"bat",
             "sound":"PM_FSSF2_WEAPONS_J2_SHOT_325c",
-            "ammo":["bfg"],
+            "ammo":["bfg","bfg-g2"],
             "maxAmmo":12
         },
         "moveCost":2,
