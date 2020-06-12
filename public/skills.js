@@ -34,7 +34,14 @@ function calcCamo(bat) {
     if (terrain.veg >= 1) {
         stealth = stealth+terrain.veg+terrain.veg+2;
     }
-    let camChance = Math.round(Math.sqrt(stealth)*(playerInfos.caLevel+16))+(stealth*2)-30;
+    if (terrain.scarp >= 2) {
+        stealth = stealth+terrain.scarp+terrain.scarp;
+    }
+    let camChance = Math.round(Math.sqrt(stealth)*(playerInfos.caLevel+16))+(stealth*2)-35;
+    let minChance = Math.round((terrain.veg+terrain.scarp)*8);
+    if (camChance < minChance) {
+        camChance = minChance;
+    }
     // size
     if (batType.size > 3) {
         camChance = Math.ceil(camChance/Math.sqrt(Math.sqrt(batType.size))*1.31);
