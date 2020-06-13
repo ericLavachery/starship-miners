@@ -1079,7 +1079,7 @@
         "size":22,
         "stealth":9,
         "speed":3,
-        "ap":15,
+        "ap":16,
         "maxSalvo":2,
         "weapon":{
             "name":"Mitrailleuse pneu",
@@ -1875,7 +1875,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","cible","transport","fret","maycamo","selfmecano"],
+        "skills":["fortif","cible","transport","fret","maycamo","selfmecano","hardmove"],
         "transMaxSize":9,
         "transUnits":1000,
         "transRes":300,

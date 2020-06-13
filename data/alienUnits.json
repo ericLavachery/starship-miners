@@ -47,11 +47,11 @@
         "class":"B",
         "rarity":3,
         "squads":4,
-        "squadSize":3,
+        "squadSize":2,
         "crew":1,
-        "hp":150,
+        "hp":750,
         "armor":3,
-        "size":28,
+        "size":80,
         "speed":0,
         "stealth":0,
         "ap":12,
@@ -61,9 +61,10 @@
             "cost":4,
             "range":0,
             "noFly":true,
-            "rof":3,
-            "accuracy":10,
-            "power":28,
+            "rof":2,
+            "accuracy":11,
+            "power":45,
+            "armors":0.65,
             "aoe":"brochette",
             "sound":"zapsplat_household_screen_door_insect_slide_006_38119b",
             "ammo":["none"]
@@ -75,7 +76,7 @@
         "maxVeg":3,
         "skills":["regeneration","capbld","fouisseur"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"bugium":5,"mendium":2,"larvium":3}
+        "killRes":{"bugium":8,"mendium":3,"larvium":5}
     },
     {
         "id":38,
@@ -408,9 +409,9 @@
         "hp":1,
         "armor":0,
         "size":1,
-        "speed":-5,
+        "speed":-8,
         "stealth":12,
-        "ap":12,
+        "ap":6,
         "maxSalvo":1,
         "weapon":{
             "name":"Mandibules",
@@ -426,7 +427,7 @@
             "ammo":["creuseur"]
         },
         "weapon2":{},
-        "moveCost":6,
+        "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
@@ -448,9 +449,9 @@
         "hp":1,
         "armor":0,
         "size":1,
-        "speed":-5,
+        "speed":-8,
         "stealth":12,
-        "ap":12,
+        "ap":6,
         "maxSalvo":1,
         "weapon":{
             "name":"Mandibules",
@@ -466,7 +467,7 @@
             "ammo":["creuseur"]
         },
         "weapon2":{},
-        "moveCost":6,
+        "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
@@ -643,12 +644,12 @@
         "kind":"larve",
         "class":"C",
         "rarity":6,
-        "squads":5,
-        "squadSize":4,
+        "squads":4,
+        "squadSize":3,
         "crew":1,
-        "hp":65,
+        "hp":155,
         "armor":1,
-        "size":16,
+        "size":30,
         "speed":0,
         "stealth":0,
         "ap":12,
@@ -658,9 +659,9 @@
             "cost":4,
             "range":0,
             "noFly":true,
-            "rof":4,
-            "accuracy":7,
-            "power":14,
+            "rof":3,
+            "accuracy":8,
+            "power":25,
             "armors":0.65,
             "aoe":"brochette",
             "sound":"zapsplat_household_screen_door_insect_slide_006_38119b",
@@ -673,7 +674,7 @@
         "maxVeg":3,
         "skills":["regeneration","nez","fouisseur"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"bugium":2,"larvium":3,"mendium":1}
+        "killRes":{"bugium":4,"larvium":3,"mendium":1}
     },
     {
         "id":15,
@@ -1579,7 +1580,7 @@
         "maxVeg":-1,
         "skills":["ponte","inflammable"],
         "deathFx":"zapsplat_explosion_fireball_43738",
-        "killRes":{"bugium":10,"bossium":1,"creatite":3,"slime":4}
+        "killRes":{"bugium":10,"creatite":3,"slime":4}
     },
     {
         "id":37,
@@ -1618,6 +1619,6 @@
         "maxVeg":-1,
         "skills":["regeneration"],
         "deathFx":"zapsplat_explosion_fireball_43738",
-        "killRes":{"bugium":7,"mendium":4,"bossium":1,"pyrus":2}
+        "killRes":{"bugium":7,"mendium":4,"pyrus":2}
     }
 ]
