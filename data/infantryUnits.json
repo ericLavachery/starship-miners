@@ -934,8 +934,14 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","extraction","firstaid","dynamite","constructeur","fret"],
-        "maxSKill":2,
+        "mining":{
+            "level":1,
+            "rate":5,
+            "multi":false,
+            "types":["Minerai","Végétal","Eau"]
+        },
         "transRes":30,
+        "maxSKill":2,
         "fuzz":1.5,
         "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
@@ -986,6 +992,12 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","extraction","firstaid","constructeur","camo","ranger","fret"],
+        "mining":{
+            "level":2,
+            "rate":2,
+            "multi":false,
+            "types":["Minerai","Végétal","Eau"]
+        },
         "transRes":30,
         "fuzz":0,
         "deathFx":"human3"
@@ -2267,8 +2279,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","mecano","repair","constructeur","cyber"],
+        "skills":["fortif","mecano","repair","constructeur","cyber","fret"],
         "skillCost":6,
+        "transRes":60,
         "fuzz":1.5,
         "deathFx":"144469__psychedelic-hands__robot-death"
     },

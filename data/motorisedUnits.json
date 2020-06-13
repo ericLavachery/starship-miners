@@ -149,7 +149,8 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","guerrilla","inflammable","selfmecano"],
+        "skills":["fortif","cible","guerrilla","inflammable","selfmecano","fret"],
+        "transRes":90,
         "fuzz":2.5,
         "deathFx":"planeexploair1"
     },
@@ -704,12 +705,12 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["cible","transport","medic","selfmecano","dealer","kirin","starka"],
+        "skills":["cible","transport","fret","medic","selfmecano","dealer","kirin","starka"],
         "skillCost":3,
         "maxSKill":16,
         "transMaxSize":9,
         "transUnits":220,
-        "transRes":0,
+        "transRes":90,
         "fuzz":1,
         "deathFx":"S_CarExplosion02"
     },
@@ -968,7 +969,8 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","hover","selfmecano"],
+        "skills":["cible","hover","selfmecano","fret"],
+        "transRes":90,
         "fuzz":3,
         "deathFx":"planeexploair1"
     },
@@ -1114,7 +1116,6 @@
         "maxSKill":9,
         "transMaxSize":9,
         "transUnits":250,
-        "transRes":0,
         "fuzz":1,
         "deathFx":"planeexploair1"
     },
@@ -1165,7 +1166,8 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["fortif","cible","selfmecano","maycamo"],
+        "skills":["fortif","cible","selfmecano","maycamo","fret"],
+        "transRes":90,
         "fuzz":3,
         "deathFx":"planeexploair1"
     },
@@ -1218,7 +1220,6 @@
         "skills":["medic","selfmecano","dealer","kirin","starka","transport"],
         "transMaxSize":9,
         "transUnits":520,
-        "transRes":0,
         "skillCost":2,
         "maxSKill":24,
         "fuzz":1,
@@ -2370,7 +2371,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","fly","ravitaillement","longshot","mecano"],
+        "skills":["cible","fly","ravitaillement","longshot","mecano","fret"],
+        "transRes":90,
         "maxSKill":60,
         "skillCost":5,
         "fuzz":4,
@@ -2422,7 +2424,14 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","deepselfmecano","extraction","hardmove"],
+        "skills":["cible","deepselfmecano","extraction","hardmove","fret"],
+        "mining":{
+            "level":3,
+            "rate":25,
+            "multi":true,
+            "types":["Minerai","Végétal","Eau","Hydrocarbure","Gaz","Air"]
+        },
+        "transRes":2000,
         "fuzz":4.5,
         "deathFx":"planeexploair3"
     },
@@ -2472,7 +2481,14 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","selfmecano","extraction","hardmove"],
+        "skills":["cible","selfmecano","extraction","hardmove","fret"],
+        "mining":{
+            "level":3,
+            "rate":15,
+            "multi":true,
+            "types":["Minerai","Végétal","Eau","Hydrocarbure","Gaz","Air"]
+        },
+        "transRes":1000,
         "fuzz":4,
         "deathFx":"planeexploair1"
     },

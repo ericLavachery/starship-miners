@@ -162,7 +162,7 @@
     },
     {
         "name": "Bugium",
-        "type": "Animal",
+        "type": "Alien",
         "level": 1,
         "rarity": 15,
         "batch": 10

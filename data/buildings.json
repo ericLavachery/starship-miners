@@ -46,7 +46,14 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","maycamo","extraction","underground"],
+        "skills":["deepselfrepair","maycamo","extraction","underground","fret"],
+        "mining":{
+            "level":3,
+            "rate":20,
+            "multi":true,
+            "types":["Minerai"]
+        },
+        "transRes":4000,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -71,7 +78,14 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","extraction"],
+        "skills":["deepselfrepair","extraction","fret"],
+        "mining":{
+            "level":3,
+            "rate":20,
+            "multi":true,
+            "types":["Eau","Air"]
+        },
+        "transRes":4000,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -96,7 +110,14 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","extraction"],
+        "skills":["deepselfrepair","extraction","fret"],
+        "mining":{
+            "level":3,
+            "rate":20,
+            "multi":true,
+            "types":["Hydrocarbure","Gaz"]
+        },
+        "transRes":4000,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
