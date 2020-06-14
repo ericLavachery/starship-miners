@@ -1380,7 +1380,7 @@
             "power":5,
             "armors":0.3,
             "aoe":"unit",
-            "sound":"498501__16f-panska-veltrusky-david__chainsawb",
+            "sound":"construction-circular-saw",
             "ammo":["lame","lame-mono"]
         },
         "weapon2":{
@@ -2212,7 +2212,7 @@
             "power":5,
             "armors":0.3,
             "aoe":"unit",
-            "sound":"498501__16f-panska-veltrusky-david__chainsawb",
+            "sound":"construction-circular-saw",
             "ammo":["lame","lame-mono"]
         },
         "weapon2":{
