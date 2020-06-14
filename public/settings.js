@@ -101,6 +101,8 @@ let shownEggs = [];
 let vomiChance = 5; // 5% par oeuf manquant
 let coqueChance = 20; // 20% pour une coque
 let stopForFight = false;
+let alienTypesList = [];
+let spawnType = {};
 // CONSTRUCTION
 let conselUnit = {};
 let conselAmmos = ['xxx','xxx'];

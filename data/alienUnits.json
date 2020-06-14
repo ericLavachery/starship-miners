@@ -116,7 +116,8 @@
         "maxVeg":3,
         "skills":["invisible","fouisseur","errant","chancre"],
         "deathFx":"76974__michel88__piggrunt2",
-        "spawnFx":"125388__thegoose09__monster-screech",
+        "spawnFx":"443727__cabusta9__15-arana-ghost",
+        "fxPriority":1,
         "killRes":{"bugium":6,"blendium":3,"larvium":6,"germium":2}
     },
     {
@@ -157,7 +158,8 @@
         "maxVeg":3,
         "skills":["invisible","fouisseur","errant"],
         "deathFx":"76974__michel88__piggrunt2",
-        "spawnFx":"125388__thegoose09__monster-screech",
+        "spawnFx":"443727__cabusta9__15-arana-ghost",
+        "fxPriority":1,
         "killRes":{"bugium":2,"blendium":1,"larvium":2}
     },
     {
@@ -197,6 +199,8 @@
         "maxVeg":3,
         "skills":["shield"],
         "deathFx":"185366__anwul__monster",
+        "spawnFx":"195733__nornalbion__large-monster-mante",
+        "fxPriority":7,
         "killRes":{"bugium":8,"swarmine":8,"bossium":3}
     },
     {
@@ -278,6 +282,8 @@
         "maxVeg":3,
         "skills":["fear","ponte"],
         "deathFx":"185366__anwul__monster",
+        "spawnFx":"436570__magicthighs__corellas-screeching_glaireuse",
+        "fxPriority":5,
         "killRes":{"bugium":8,"aranium":8,"bossium":3,"creatite":1,"slime":8}
     },
     {
@@ -556,6 +562,8 @@
         "maxVeg":3,
         "skills":["capmen"],
         "deathFx":"76974__michel88__piggrunt2",
+        "spawnFx":"125388__thegoose09__monster-screech_veuve",
+        "fxPriority":6,
         "killRes":{"bugium":6,"aranium":12,"mephitis":18,"bossium":2,"slime":6}
     },
     {
@@ -874,6 +882,8 @@
         "maxVeg":3,
         "skills":["fear","capmen"],
         "deathFx":"185366__anwul__monster",
+        "spawnFx":"shriek_mygale",
+        "fxPriority":3,
         "killRes":{"bugium":7,"aranium":7}
     },
     {
@@ -1032,6 +1042,8 @@
         "maxVeg":3,
         "skills":["grip","venin","tail","ponte"],
         "deathFx":"185366__anwul__monster",
+        "spawnFx":"82082__rmw2861__1000000009_Androks",
+        "fxPriority":4,
         "killRes":{"bugium":6,"swarmine":6,"mephitis":9,"bossium":3,"creatite":1}
     },
     {
@@ -1072,6 +1084,8 @@
         "maxVeg":3,
         "skills":["capbld","bugboost","ponte"],
         "deathFx":"185366__anwul__monster",
+        "spawnFx":"423009__ogsoundfx__dragon-spit-fire-1_bugboss",
+        "fxPriority":8,
         "killRes":{"bugium":15,"bossium":5,"creatite":1,"pyrus":5}
     },
     {
@@ -1377,6 +1391,8 @@
         "maxVeg":3,
         "skills":["regeneration","capbld","fear","hover","ponte"],
         "deathFx":"185366__anwul__monster",
+        "spawnFx":"142932__1pjladd2__burp-monster_megagrubz",
+        "fxPriority":2,
         "killRes":{"bugium":9,"larvium":9,"mendium":6,"bossium":3,"creatite":1}
     },
     {

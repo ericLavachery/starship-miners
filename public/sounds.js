@@ -107,15 +107,47 @@ function alienSounds() {
     sound.play();
 };
 
-function spawnSound(bat) {
-    let batType = getBatType(bat);
-    var sound = new Howl({
-        src: ['/static/sounds/fx/'+batType.spawnFx+'.mp3'],
-        volume: fxVolume
-    });
-    setTimeout(function (){
-        sound.play();
-    }, 2000); // How long do you want the delay to be (in milliseconds)?
+function checkSpawnType(alienType) {
+    if (alienType.fxPriority >= 1) {
+        let typeOK = false;
+        if (Object.keys(spawnType).length >= 1) {
+            if (alienTypesList.includes(spawnType.name)) {
+                if (!alienTypesList.includes(alienType.name)) {
+                    spawnType = alienType;
+                    typeOK = true;
+                }
+            } else {
+                if (alienTypesList.includes(alienType.name)) {
+                    typeOK = true;
+                }
+            }
+        } else {
+            spawnType = alienType;
+            typeOK = true;
+        }
+        if (!typeOK) {
+            if (alienType.fxPriority > spawnType.fxPriority) {
+                spawnType = alienType;
+            }
+        }
+        console.log('XWXWXWXWXWXWX : '+spawnType.name);
+        console.log(spawnType);
+    } else {
+        console.log('XWXWXWXWXWXWX : no SOUND');
+    }
+};
+
+function spawnSound() {
+    if (Object.keys(spawnType).length >= 1) {
+        let spawnSound = spawnType.spawnFx;
+        var sound = new Howl({
+            src: ['/static/sounds/fx/'+spawnSound+'.mp3'],
+            volume: fxVolume
+        });
+        setTimeout(function (){
+            sound.play();
+        }, 2000); // How long do you want the delay to be (in milliseconds)?
+    }
 };
 
 function playMusic(piste,interrupt) {

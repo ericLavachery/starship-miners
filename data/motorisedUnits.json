@@ -2714,7 +2714,7 @@
         "speed":3,
         "ap":16,
         "maxSalvo":2,
-        "weapon1":{
+        "weapon":{
             "name":"Canon",
             "cost":4,
             "range":4,

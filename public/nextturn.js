@@ -16,12 +16,15 @@ function nextTurn() {
     }
     // récup des aliens
     deadAliensList = [];
+    alienTypesList = [];
     let unitIndex;
     let batType;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
-            unitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
-            batType = alienUnits[unitIndex];
+            batType = getBatType(bat);
+            if (!alienTypesList.includes(batType.name)) {
+                alienTypesList.push(batType.name);
+            }
             bat.salvoLeft = batType.maxSalvo;
             if (bat.apLeft < 0-batType.ap-batType.ap) {
                 bat.apLeft = 0-batType.ap-batType.ap;
@@ -39,9 +42,11 @@ function nextTurn() {
     killAlienList();
     checkEggsDrop();
     spawns();
+    spawnSound();
     killAlienList();
     conselUnit = {};
     conselAmmos = ['xxx','xxx'];
+    spawnType = {};
     if (aliens.length >= 1) {
         alienTurn();
     } else {

@@ -260,7 +260,7 @@ function attack() {
             targetBat.tags.push('shield');
         }
         if (targetBat.tags.includes('shield')) {
-            shots = Math.ceil(shots/5);
+            shots = Math.ceil(shots/10);
         }
     }
     // tir ciblé
