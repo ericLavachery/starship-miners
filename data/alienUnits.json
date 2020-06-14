@@ -882,7 +882,7 @@
         "maxVeg":3,
         "skills":["fear","capmen"],
         "deathFx":"185366__anwul__monster",
-        "spawnFx":"shriek_mygale",
+        "spawnFx":"213842__sihil__lizardgargle_mygale",
         "fxPriority":3,
         "killRes":{"bugium":7,"aranium":7}
     },

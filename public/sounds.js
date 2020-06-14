@@ -141,12 +141,12 @@ function spawnSound() {
     if (Object.keys(spawnType).length >= 1) {
         let spawnSound = spawnType.spawnFx;
         var sound = new Howl({
-            src: ['/static/sounds/fx/'+spawnSound+'.mp3'],
+            src: ['/static/sounds/fx/'+spawnSound+'_x.mp3'],
             volume: fxVolume
         });
         setTimeout(function (){
             sound.play();
-        }, 5000); // How long do you want the delay to be (in milliseconds)?
+        }, 8000); // How long do you want the delay to be (in milliseconds)?
     }
 };
 
