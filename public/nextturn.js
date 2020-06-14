@@ -33,6 +33,7 @@ function nextTurn() {
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
             tagsEffect(bat,batType);
+            tagDelete(bat,'shield');
         }
     });
     killAlienList();

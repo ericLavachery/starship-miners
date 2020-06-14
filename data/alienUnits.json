@@ -116,6 +116,7 @@
         "maxVeg":3,
         "skills":["invisible","fouisseur","errant","chancre"],
         "deathFx":"76974__michel88__piggrunt2",
+        "spawnFx":"125388__thegoose09__monster-screech",
         "killRes":{"bugium":6,"blendium":3,"larvium":6,"germium":2}
     },
     {
@@ -156,6 +157,7 @@
         "maxVeg":3,
         "skills":["invisible","fouisseur","errant"],
         "deathFx":"76974__michel88__piggrunt2",
+        "spawnFx":"125388__thegoose09__monster-screech",
         "killRes":{"bugium":2,"blendium":1,"larvium":2}
     },
     {
@@ -193,7 +195,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[],
+        "skills":["shield"],
         "deathFx":"185366__anwul__monster",
         "killRes":{"bugium":8,"swarmine":8,"bossium":3}
     },
@@ -578,7 +580,7 @@
             "name":"Jet d'acide",
             "cost":1,
             "range":2,
-            "elevation":1,
+            "elevation":2,
             "noFly":false,
             "rof":4,
             "accuracy":12,
@@ -593,7 +595,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[],
+        "skills":["shield"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"bugium":9,"bossium":1,"slime":4}
     },
@@ -712,7 +714,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["chancre","venin","regeneration"],
+        "skills":["chancre","venin","regeneration","shield"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"bugium":4,"mendium":1,"germium":2,"mephitis":1}
     },
@@ -1004,7 +1006,7 @@
         "squadSize":3,
         "crew":1,
         "hp":170,
-        "armor":22,
+        "armor":25,
         "size":32,
         "speed":0,
         "stealth":0,
@@ -1053,15 +1055,15 @@
         "weapon":{
             "name":"Boule de feu",
             "cost":5,
-            "range":3,
+            "range":4,
             "elevation":2,
             "noFly":false,
             "rof":6,
-            "accuracy":9,
-            "power":24,
+            "accuracy":11,
+            "power":26,
             "aoe":"squad",
-            "sound":"zapsplat_sound_design_cinematic_whoosh_fire_ball_fizz_002_29901b",
-            "ammo":["feu"]
+            "sound":"423009__ogsoundfx__dragon-spit-fire-1-wav",
+            "ammo":["napalm"]
         },
         "weapon2":{},
         "moveCost":3,
@@ -1324,7 +1326,7 @@
             "rof":5,
             "accuracy":20,
             "dca":1.5,
-            "power":4,
+            "power":5,
             "aoe":"unit",
             "sound":"zapsplat_cartoon_squish_squelch_wet_005_14504b",
             "ammo":["spitbug"]
@@ -1362,7 +1364,7 @@
             "range":0,
             "noFly":true,
             "rof":2,
-            "accuracy":12,
+            "accuracy":14,
             "power":40,
             "aoe":"brochette",
             "sound":"zapsplat_household_screen_door_insect_slide_006_38119b",

@@ -1173,8 +1173,8 @@
         "name": "napalm",
         "range": 0,
         "rof": 1,
-        "power": 4,
-        "armors": 1.25,
+        "power": 0,
+        "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""

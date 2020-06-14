@@ -107,6 +107,17 @@ function alienSounds() {
     sound.play();
 };
 
+function spawnSound(bat) {
+    let batType = getBatType(bat);
+    var sound = new Howl({
+        src: ['/static/sounds/fx/'+batType.spawnFx+'.mp3'],
+        volume: fxVolume
+    });
+    setTimeout(function (){
+        sound.play();
+    }, 2000); // How long do you want the delay to be (in milliseconds)?
+};
+
 function playMusic(piste,interrupt) {
     let track = [_.sample(musicTracks)];
     if (piste != 'any') {

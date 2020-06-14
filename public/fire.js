@@ -254,6 +254,15 @@ function attack() {
             console.log('bonus ROF embuscade');
         }
     }
+    // SHIELD
+    if (activeTurn === 'player' && targetBatType.skills.includes('shield')) {
+        if (rand.rand(1,3) >= 2 && !targetBat.tags.includes('shield')) {
+            targetBat.tags.push('shield');
+        }
+        if (targetBat.tags.includes('shield')) {
+            shots = Math.ceil(shots/5);
+        }
+    }
     // tir ciblé
     if (selectedBat.tags.includes('vise')) {
         shots = Math.round(shots*2/3);
