@@ -146,7 +146,7 @@ function spawnSound() {
         });
         setTimeout(function (){
             sound.play();
-        }, 2000); // How long do you want the delay to be (in milliseconds)?
+        }, 5000); // How long do you want the delay to be (in milliseconds)?
     }
 };
 
