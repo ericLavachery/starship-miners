@@ -60,6 +60,7 @@ function clickFire(tileId) {
 function combat() {
     console.log('START COMBAT');
     let soundWeap;
+    let soundBat;
     if (activeTurn == 'player') {
         attAlive = true;
         defAlive = true;
@@ -113,7 +114,8 @@ function combat() {
             if (activeTurn == 'player') {blockMe(true);}
             if (!isFFW) {
                 soundWeap = selectedWeap;
-                shotSound(soundWeap);
+                soundBat = selectedBat;
+                shotSound(soundWeap,soundBat);
             }
             attack();
             minimumFireAP = minFireAP;
@@ -124,8 +126,9 @@ function combat() {
                 defense();
                 if (!isFFW) {
                     soundWeap = targetWeap;
+                    soundBat = targetBat;
                     setTimeout(function (){
-                        shotSound(soundWeap);
+                        shotSound(soundWeap,soundBat);
                         if (activeTurn == 'player') {blockMe(false);}
                     }, 2500); // How long do you want the delay to be (in milliseconds)?
                 }
@@ -147,7 +150,8 @@ function combat() {
                 defense();
                 if (!isFFW) {
                     soundWeap = targetWeap;
-                    shotSound(soundWeap);
+                    soundBat = targetBat;
+                    shotSound(soundWeap,soundBat);
                 }
             }
             if (attAlive) {
@@ -159,8 +163,9 @@ function combat() {
                     attack();
                     if (!isFFW) {
                         soundWeap = selectedWeap;
+                        soundBat = selectedBat;
                         setTimeout(function (){
-                            shotSound(soundWeap);
+                            shotSound(soundWeap,soundBat);
                             if (activeTurn == 'player') {blockMe(false);}
                         }, 2500); // How long do you want the delay to be (in milliseconds)?
                     }
@@ -177,7 +182,7 @@ function combat() {
         console.log('pas de riposte');
         if (activeTurn == 'player') {blockMe(true);}
         if (!isFFW) {
-            shotSound(selectedWeap);
+            shotSound(selectedWeap,selectedBat);
         }
         attack();
         if (!isFFW) {

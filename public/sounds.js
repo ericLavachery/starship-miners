@@ -58,17 +58,23 @@ function soundVolume(vol,source) {
 
 function eggSound() {
     var sound = new Howl({
-        src: ['/static/sounds/smartsound_CINEMATIC_IMPACT_Eruption_01b.mp3'],
+        src: ['/static/sounds/fx/smartsound_CINEMATIC_IMPACT_Eruption_01b.mp3'],
         volume: fxVolume
     });
     sound.play();
 };
 
-function shotSound(weapon) {
+function shotSound(weapon,bat) {
+    let soundDir;
+    if (bat.team === 'aliens') {
+        soundDir = 'aliens';
+    } else {
+        soundDir = 'humans';
+    }
     if (!isFFW) {
         console.log(weapon);
         var sound = new Howl({
-            src: ['/static/sounds/'+weapon.sound+'.mp3'],
+            src: ['/static/sounds/'+soundDir+'/'+weapon.sound+'.mp3'],
             volume: fxVolume
         });
         sound.play();
@@ -78,9 +84,15 @@ function shotSound(weapon) {
 
 function deathSound(bat) {
     let batType = getBatType(bat);
+    let soundDir;
+    if (bat.team === 'aliens') {
+        soundDir = 'aliens';
+    } else {
+        soundDir = 'humans';
+    }
     if (!isFFW) {
         var sound = new Howl({
-            src: ['/static/sounds/'+batType.deathFx+'.mp3'],
+            src: ['/static/sounds/'+soundDir+'/death/'+batType.deathFx+'.mp3'],
             volume: fxVolume
         });
         sound.play();
@@ -89,7 +101,7 @@ function deathSound(bat) {
 
 function alienSounds() {
     var sound = new Howl({
-        src: ['/static/sounds/little_robot_sound_factory_Ambience_AlienHive_00.mp3'],
+        src: ['/static/sounds/fx/little_robot_sound_factory_Ambience_AlienHive_00.mp3'],
         volume: fxVolume
     });
     sound.play();

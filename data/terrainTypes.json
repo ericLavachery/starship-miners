@@ -13,7 +13,7 @@
         "alienmc": 2,
         "cover": 9,
         "aliencover": 9,
-        "fishcover": 6
+        "fishcover": 4
     },
     {
         "name": "H",
@@ -29,7 +29,7 @@
         "alienmc": 1,
         "cover": 3,
         "aliencover": 3,
-        "fishcover": 3
+        "fishcover": 1
     },
     {
         "name": "E",
@@ -45,7 +45,7 @@
         "alienmc": 1,
         "cover": 2,
         "aliencover": 2,
-        "fishcover": 2
+        "fishcover": 0
     },
     {
         "name": "P",
@@ -77,7 +77,7 @@
         "alienmc": 0,
         "cover": 1,
         "aliencover": 1,
-        "fishcover": 2
+        "fishcover": 1
     },
     {
         "name": "B",
@@ -93,7 +93,7 @@
         "alienmc": 1,
         "cover": 5,
         "aliencover": 5,
-        "fishcover": 6
+        "fishcover": 2
     },
     {
         "name": "F",
@@ -109,7 +109,7 @@
         "alienmc": 2,
         "cover": 7,
         "aliencover": 7,
-        "fishcover": 7
+        "fishcover": 2
     },
     {
         "name": "S",
@@ -141,7 +141,7 @@
         "alienmc": 6,
         "cover": -2,
         "aliencover": -6,
-        "fishcover": 7
+        "fishcover": 10
     },
     {
         "name": "R",
@@ -157,6 +157,6 @@
         "alienmc": 7,
         "cover": -2,
         "aliencover": -8,
-        "fishcover": 6
+        "fishcover": 12
     }
 ]
