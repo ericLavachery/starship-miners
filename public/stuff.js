@@ -71,7 +71,7 @@ function playerSkillsUTChanges() {
         if (playerInfos.skills.includes('cam3') && unit.skills.includes('maycamo') && unit.cat === 'buildings') {
             unit.skills.push('camo');
         }
-        if (unit.skills.includes('medic') || unit.skills.includes('badmedic')) {
+        if (unit.skills.includes('medic')) {
             if (playerInfos.medLevel >= 3 && unit.skillCost >= 3) {
                 unit.skillCost = unit.skillCost-1;
             }

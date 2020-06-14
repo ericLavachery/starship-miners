@@ -491,7 +491,7 @@
             "power":2,
             "aoe":"squad",
             "sound":"zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
-            "ammo":["standard","poison","monomolecular","taser"]
+            "ammo":["lame","lame-poison","lame-taser"]
         },
         "weapon2":{},
         "moveCost":99,
