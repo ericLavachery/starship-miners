@@ -377,7 +377,7 @@ function attack() {
                 }
                 totalDamage = totalDamage+(tailDamage*selectedBat.squadsLeft*selectedBatType.squads);
             }
-            if (targetBatType.weapon.isMelee || targetBatType.weapon2.isMelee || targetBatType.weapon.isShort || targetBatType.weapon2.isShort) {
+            if (targetBatType.weapon.isShort || targetBatType.weapon2.isShort) {
                 apDamage = apDamage+Math.round(selectedBat.squadsLeft*3/4);
             } else {
                 apDamage = apDamage+selectedBat.squadsLeft*3;
