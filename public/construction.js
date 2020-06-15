@@ -148,7 +148,7 @@ function clickConstruct(tileId) {
     }
 };
 
-function putBat(tileId,citoyens) {
+function putBat(tileId,citoyens,startTag) {
     console.log('PUTBAT');
     if (Object.keys(conselUnit).length >= 1) {
         console.log(conselUnit);
@@ -237,7 +237,11 @@ function putBat(tileId,citoyens) {
             newBat.transIds = [];
             newBat.transRes = 0;
         }
-        newBat.tags = [];
+        if (startTag != undefined) {
+            newBat.tags = [startTag];
+        } else {
+            newBat.tags = [];
+        }
         if (newBat.team === 'player') {
             bataillons.push(newBat);
             console.log(bataillons);

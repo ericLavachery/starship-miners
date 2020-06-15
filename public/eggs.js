@@ -451,7 +451,11 @@ function eggSpawn(bat,fromEgg) {
                     if (dropTile >= 0) {
                         checkSpawnType(conselUnit);
                         putEggCat(bat,conselUnit.kind);
-                        putBat(dropTile,0);
+                        if (bat.type === 'Oeuf voilé') {
+                            putBat(dropTile,0,'invisible');
+                        } else {
+                            putBat(dropTile,0);
+                        }
                     }
                 }
                 if (i > 8) {break;}
