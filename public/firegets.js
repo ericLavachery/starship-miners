@@ -496,6 +496,11 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.isShort = weapon.isShort;
     }
+    if (weapon.noShield === undefined) {
+        thisWeapon.noShield = false;
+    } else {
+        thisWeapon.noShield = weapon.noShield;
+    }
     if (weapon.isBow === undefined) {
         thisWeapon.isBow = false;
     } else {

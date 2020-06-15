@@ -255,7 +255,7 @@ function attack() {
         }
     }
     // SHIELD
-    if (activeTurn === 'player' && targetBatType.skills.includes('shield')) {
+    if (activeTurn === 'player' && targetBatType.skills.includes('shield') && selectedWeap.isMelee === false && selectedWeap.noShield === false) {
         if (rand.rand(1,3) >= 2 && !targetBat.tags.includes('shield')) {
             targetBat.tags.push('shield');
         }
