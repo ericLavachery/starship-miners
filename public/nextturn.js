@@ -91,7 +91,7 @@ function nextTurnEnd() {
                 aliens.forEach(function(alien) {
                     distance = calcDistance(bat.tileId,alien.tileId);
                     alienType = getBatType(alien);
-                    if (distance <= 8 && !alienType.skills.includes('invisible')) {
+                    if (distance <= 8 && !alienType.skills.includes('invisible') && !alien.tags.includes('invisible')) {
                         tagDelete(bat,'nolist');
                     }
                 });

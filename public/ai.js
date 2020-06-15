@@ -144,6 +144,7 @@ function shootTarget(recul) {
     console.log('ap '+selectedBat.apLeft+' cost '+selectedWeap.cost);
     if (selectedWeap.range < 1 || selectedBat.apLeft >= selectedWeap.cost || recul || selectedBatType.skills.includes('fly')) {
         checkTargetBatType();
+        tagDelete(selectedBat,'invisible');
         console.log('shoot '+targetBat.type);
         console.log(targetBat);
         tileTarget(targetBat);

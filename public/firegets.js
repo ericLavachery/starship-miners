@@ -292,7 +292,7 @@ function anyAlienInRange(tileId,weapon) {
             if (distance <= weapon.range) {
                 batIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
                 batType = alienUnits[batIndex];
-                if ((!weapon.noFly || !batType.skills.includes('fly')) && (!batType.skills.includes('invisible') || distance === 0)) {
+                if ((!weapon.noFly || !batType.skills.includes('fly')) && ((!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) || distance === 0)) {
                     inRange = true;
                 }
             }
@@ -339,7 +339,7 @@ function fireInfos(bat) {
             if (Object.keys(alien).length >= 1) {
                 if (isInRange(selectedBat.tileId,tile.id)) {
                     alienType = getBatType(alien);
-                    if (checkFlyTarget(selectedWeap,alienType) && (!alienType.skills.includes('invisible') || sideBySideTiles(selectedBat.tileId,tile.id))) {
+                    if (checkFlyTarget(selectedWeap,alienType) && ((!alienType.skills.includes('invisible') && !alien.tags.includes('invisible')) || sideBySideTiles(selectedBat.tileId,tile.id))) {
                         cursorSwitch('#',tile.id,'fire');
                     }
                 }

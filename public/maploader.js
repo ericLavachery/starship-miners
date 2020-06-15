@@ -79,12 +79,12 @@ function showAlien(bat) {
     let unitsLeft = bat.squadsLeft*batType.squadSize;
     $('#b'+bat.tileId).empty();
     let alienClass = 'aUnits';
-    if (batType.skills.includes('invisible')) {
+    if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
         alienClass = 'iUnits';
     }
     let resHere = showRes(bat.tileId);
     let degNum = getDamageBar(bat);
-    if (batType.skills.includes('invisible')) {
+    if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
         $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
     } else {
         $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
@@ -119,7 +119,7 @@ function getDamageBar(bat) {
     } else if (degPerc < 100 || (degPerc == 100 && bat.damage > 1)) {
         degNum = 6;
     }
-    if (batType.skills.includes('invisible')) {
+    if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
         degNum = 0;
     }
     return degNum;

@@ -47,7 +47,7 @@ function clickSelect(tileId) {
     aliens.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
             batType = getBatType(bat);
-            if (!batType.skills.includes('invisible')) {
+            if (!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) {
                 showEnemyBatInfos(bat);
             }
             enemyBatHere = true;
