@@ -940,7 +940,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","extraction","firstaid","dynamite","constructeur","fret"],
+        "skills":["fortif","extraction","firstaid","dynamite","fret"],
         "mining":{
             "level":1,
             "rate":5,
