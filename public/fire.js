@@ -377,11 +377,17 @@ function attack() {
                 }
                 totalDamage = totalDamage+(tailDamage*selectedBat.squadsLeft*selectedBatType.squads);
             }
+            let gripDiv = 1;
             if (targetBatType.weapon.isShort || targetBatType.weapon2.isShort) {
-                apDamage = apDamage+Math.round(selectedBat.squadsLeft*3/4);
-            } else {
-                apDamage = apDamage+selectedBat.squadsLeft*3;
+                gripDiv = gripDiv+1.5;
             }
+            if (targetBatType.weapon.isMelee || targetBatType.weapon2.isMelee) {
+                gripDiv = gripDiv+1;
+            }
+            if (targetWeap.isMelee || targetWeap.isShort) {
+                gripDiv = gripDiv+1;
+            }
+            apDamage = apDamage+Math.round(selectedBat.squadsLeft*3/gripDiv);
             console.log('Grip OK');
             $('#report').append('<span class="report">Agrippé<br></span>');
         } else {
