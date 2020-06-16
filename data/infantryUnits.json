@@ -2976,7 +2976,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","firstaid","guerrilla","cyber","maycamo"],
+        "skills":["fortif","cible","firstaid","guerrilla","cyber","maycamo","berserk","undead"],
         "fuzz":1,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
     },
