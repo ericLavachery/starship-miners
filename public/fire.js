@@ -331,6 +331,10 @@ function attack() {
         }
         apDamage = apDamage+webDamage;
     }
+    // marquage
+    if (selectedWeap.ammo.includes('marquage') && totalHits >= 1 && !targetBat.tags.includes('fluo')) {
+        targetBat.tags.push('fluo');
+    }
     // disco
     if (selectedWeap.ammo.includes('disco')) {
         let webDamage = totalHits;
@@ -824,6 +828,10 @@ function shot(weapon,bat,batType,shotDice) {
     let weapAccu = weapon.accuracy;
     if (batType.skills.includes('fly')) {
         weapAccu = Math.round(weapAccu*weapon.dca);
+    }
+    // marquage
+    if (bat.tags.includes('fluo')) {
+        weapAccu = weapAccu+10;
     }
     if (isHit(weapAccu,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
         if (weapon.power >= 1) {

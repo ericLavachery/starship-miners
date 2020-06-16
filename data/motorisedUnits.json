@@ -1051,16 +1051,16 @@
             "ammo":["plasma","plastanium","nanite"]
         },
         "weapon2":{
-            "name":"Guidage laser",
-            "cost":4,
+            "name":"Marquage",
+            "cost":2,
             "range":3,
             "noDef":true,
-            "rof":1,
-            "accuracy":100,
+            "rof":6,
+            "accuracy":35,
             "power":0,
             "aoe":"unit",
-            "sound":"262436__ramston__real-explosionsb",
-            "ammo":["guidage"]
+            "sound":"burkay__laser-gun1",
+            "ammo":["marquage"]
         },
         "moveCost":1,
         "maxFlood":3,

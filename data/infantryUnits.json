@@ -1507,7 +1507,7 @@
             "accuracy":50,
             "power":10,
             "aoe":"unit",
-            "sound":"pm_ag_1_2_abstract_guns_281c",
+            "sound":"pm_ag_1_2_abstract_guns_281b",
             "ammo":["laser","laser-g2"]
         },
         "moveCost":2,
@@ -2383,7 +2383,7 @@
             "accuracy":50,
             "power":10,
             "aoe":"unit",
-            "sound":"pm_ag_1_2_abstract_guns_281c",
+            "sound":"pm_ag_1_2_abstract_guns_281b",
             "ammo":["laser","laser-g2"]
         },
         "weapon2":{},
@@ -2830,7 +2830,7 @@
             "accuracy":50,
             "power":17,
             "aoe":"unit",
-            "sound":"little_robot_sound_factory_Laser_02c",
+            "sound":"daycraftmc__laser-5",
             "ammo":["laser","laser-g2"]
         },
         "moveCost":2,

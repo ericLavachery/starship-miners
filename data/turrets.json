@@ -157,7 +157,7 @@
             "accuracy":40,
             "power":20,
             "aoe":"brochette",
-            "sound":"little_robot_sound_factory_Laser_02c",
+            "sound":"daycraftmc__laser-5",
             "ammo":["laser","laser-g2"]
         },
         "weapon2":{
