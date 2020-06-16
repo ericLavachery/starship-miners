@@ -9,7 +9,6 @@ function clickFire(tileId) {
         }
     });
     checkTargetBatType();
-    tagDelete(targetBat,'invisible');
     if (selectedBat.tileId === tileId) {
         // re-click sur l'unité active : unselect
         selectMode();
@@ -21,6 +20,7 @@ function clickFire(tileId) {
             if (sideBySideTiles(selectedBat.tileId,tileId)) {
                 if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType)) {
                     // console.log(targetBat);
+                    tagDelete(targetBat,'invisible');
                     tileTarget(targetBat);
                     combat();
                     selectMode();
@@ -40,6 +40,7 @@ function clickFire(tileId) {
             if (isInRange(selectedBat.tileId,tileId)) {
                 if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && ((!targetBatType.skills.includes('invisible') && !targetBat.tags.includes('invisible')) || sideBySideTiles(selectedBat.tileId,tileId))) {
                     // console.log(targetBat);
+                    tagDelete(targetBat,'invisible');
                     tileTarget(targetBat);
                     combat();
                     selectMode();
