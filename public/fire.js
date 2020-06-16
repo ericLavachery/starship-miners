@@ -831,7 +831,7 @@ function shot(weapon,bat,batType,shotDice) {
     }
     // marquage
     if (bat.tags.includes('fluo')) {
-        weapAccu = weapAccu+10;
+        weapAccu = weapAccu+15;
     }
     if (isHit(weapAccu,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
         if (weapon.power >= 1) {
