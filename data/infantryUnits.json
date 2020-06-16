@@ -2945,7 +2945,7 @@
         "size":3,
         "stealth":6,
         "speed":2,
-        "ap":12,
+        "ap":19,
         "maxSalvo":1,
         "weapon":{
             "name":"Calibre",
@@ -2972,7 +2972,7 @@
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire"],
             "maxAmmo":12
         },
-        "moveCost":2,
+        "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
