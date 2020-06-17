@@ -1042,7 +1042,8 @@
             "name":"Arme plasma",
             "cost":2,
             "range":1,
-            "rof":6,
+            "noBis":true,
+            "rof":9,
             "accuracy":22,
             "dca":1,
             "power":5,
@@ -1052,7 +1053,7 @@
         },
         "weapon2":{
             "name":"Marquage",
-            "cost":2,
+            "cost":1,
             "range":3,
             "noDef":true,
             "rof":6,

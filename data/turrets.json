@@ -474,10 +474,11 @@
         "squads":6,
         "squadSize":1,
         "crew":0,
-        "hp":20,
+        "hp":30,
         "armor":3,
         "size":12,
         "stealth":0,
+        "speed":-20,
         "ap":0,
         "maxSalvo":0,
         "weapon":{
