@@ -300,22 +300,18 @@ function isSurrounded(bat) {
 function targetLogic(bat) {
     let tFuzz = 0;
     let batType = getBatType(bat);
-    if (batType.skills.includes('notarget')) {
-        tFuzz = -99;
+    let modifiedArmor = Math.round(batType.armor*selectedWeap.armors);
+    let averageDamage = selectedWeap.power-modifiedArmor;
+    let armorPiercing = selectedWeap.armors;
+    if (armorPiercing >= 0.75 && armorPiercing <= 1) {
+        armorPiercing = 1;
+    }
+    let twistedArmor = Math.round(batType.armor*armorPiercing);
+    let twistedDamage = selectedWeap.power-twistedArmor;
+    if (averageDamage >= selectedWeap.power/2) {
+        tFuzz = twistedDamage+batType.armor+rand.rand(0,2);
     } else {
-        let modifiedArmor = Math.round(batType.armor*selectedWeap.armors);
-        let averageDamage = selectedWeap.power-modifiedArmor;
-        let armorPiercing = selectedWeap.armors;
-        if (armorPiercing >= 0.75 && armorPiercing <= 1) {
-            armorPiercing = 1;
-        }
-        let twistedArmor = Math.round(batType.armor*armorPiercing);
-        let twistedDamage = selectedWeap.power-twistedArmor;
-        if (averageDamage >= selectedWeap.power/2) {
-            tFuzz = twistedDamage+batType.armor+rand.rand(0,2);
-        } else {
-            tFuzz = averageDamage;
-        }
+        tFuzz = averageDamage;
     }
     return Math.round(tFuzz);
 };
