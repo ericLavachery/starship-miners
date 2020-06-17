@@ -474,7 +474,7 @@
         "squads":6,
         "squadSize":1,
         "crew":0,
-        "hp":50,
+        "hp":20,
         "armor":3,
         "size":12,
         "stealth":0,
@@ -498,7 +498,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount"],
+        "skills":["nodeathcount","notarget"],
         "fuzz":-1,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
