@@ -546,7 +546,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["sentinelle","nonumname","nodeathcount"],
+        "skills":["sentinelle","nonumname","nodeathcount","notarget"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -594,7 +594,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["sentinelle","nonumname","nodeathcount"],
+        "skills":["sentinelle","nonumname","nodeathcount","notarget"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     }

@@ -163,6 +163,9 @@ function nextTurnEnd() {
             bat.salvoLeft = batType.maxSalvo;
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
+            if (batType.skills.includes('notarget') && bat.fuzz > -2) {
+                bat.fuzz = -2;
+            }
             tagsEffect(bat,batType);
             tagsUpdate(bat);
             blub(bat,batType);
