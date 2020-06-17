@@ -499,7 +499,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["nodeathcount","notarget"],
-        "fuzz":-1,
+        "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
     {
