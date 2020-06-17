@@ -187,6 +187,20 @@ function nextTurnEnd() {
 
 function turnInfo() {
     console.log('TURN INFO');
+    let numberOfEggs = 0;
+    let numberOfAliens = 0;
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            batType = getBatType(bat);
+            if (bat.type == 'Oeuf' || bat.type == 'Coque') {
+                numberOfEggs++;
+            } else if (!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) {
+                numberOfAliens++;
+            }
+        }
+    });
+    eggsNum = numberOfEggs;
+    aliensNum = numberOfAliens;
     let fuzzTotal = 0;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {

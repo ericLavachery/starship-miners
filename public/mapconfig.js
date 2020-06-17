@@ -127,7 +127,8 @@ function isVisible(tileId) {
 function findEgg() {
     let eggsToShow = 0;
     let myEgg = {};
-    aliens.forEach(function(bat) {
+    let sortedAliens = _.sortBy(aliens,'tileId');
+    sortedAliens.forEach(function(bat) {
         if (bat.loc === "zone" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
             if (bat.type === "Oeuf" || bat.type === "Coque") {
                 eggsToShow = eggsToShow+1;
@@ -138,7 +139,7 @@ function findEgg() {
     if (eggsToShow <= 0) {
         shownEggs = [];
         myEgg = {};
-        aliens.forEach(function(bat) {
+        sortedAliens.forEach(function(bat) {
             if (bat.loc === "zone" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
                 if (bat.type === "Oeuf" || bat.type === "Coque") {
                     eggsToShow = eggsToShow+1;

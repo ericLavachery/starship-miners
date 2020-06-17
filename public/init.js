@@ -50,8 +50,8 @@ socket.on('savedMap-Load', function(sm) {
     } else {
         generateNewMap();
     }
-    commandes();
     turnInfo();
+    commandes();
     // $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
     // $('#tour').append('Difficulté '+playerInfos.mapDiff);
 });

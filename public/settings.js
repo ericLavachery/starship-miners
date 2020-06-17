@@ -103,6 +103,8 @@ let coqueChance = 20; // 20% pour une coque
 let stopForFight = false;
 let alienTypesList = [];
 let spawnType = {};
+let eggsNum = 0;
+let aliensNum = 0;
 // CONSTRUCTION
 let conselUnit = {};
 let conselAmmos = ['xxx','xxx'];
