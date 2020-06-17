@@ -434,6 +434,9 @@ function checkDeath(bat,batType) {
             deadAliensList.push(bat.id);
             if (bat.type.includes('Oeuf') || bat.type === 'Coque' || bat.type === 'Ruche') {
                 playerInfos.eggsKilled = playerInfos.eggsKilled+1;
+                if (bat.type === 'Coque' || bat.type === 'Oeuf') {
+                    eggsNum = eggsNum-1;
+                }
             }
             playerInfos.aliensKilled = playerInfos.aliensKilled+1;
             addAlienRes(bat);

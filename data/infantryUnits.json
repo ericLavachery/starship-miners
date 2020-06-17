@@ -2934,7 +2934,7 @@
     {
         "id":135,
         "name":"Runners",
-        "pic":"mengines",
+        "pic":"runners",
         "cat":"infantry",
         "kind":"zero",
         "squads":8,

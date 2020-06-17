@@ -926,6 +926,9 @@ function batDeath(bat,count) {
         if (count) {
             if (bat.type.includes('Oeuf') || bat.type === 'Coque' || bat.type === 'Ruche') {
                 playerInfos.eggsKilled = playerInfos.eggsKilled+1;
+                if (bat.type === 'Coque' || bat.type === 'Oeuf') {
+                    eggsNum = eggsNum-1;
+                }
                 playMusic('eggKill',false);
             }
             playerInfos.aliensKilled = playerInfos.aliensKilled+1;
