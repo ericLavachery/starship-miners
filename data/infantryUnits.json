@@ -2998,7 +2998,7 @@
         "maxSalvo":2,
         "weapon":{
             "name":"Fusil magnétique",
-            "cost":5,
+            "cost":4,
             "range":2,
             "elevation":1,
             "noBis":true,
@@ -3012,7 +3012,7 @@
         },
         "weapon2":{
             "name":"Marquage",
-            "cost":2,
+            "cost":1,
             "range":2,
             "elevation":1,
             "noDef":true,
