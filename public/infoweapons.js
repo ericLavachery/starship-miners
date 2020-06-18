@@ -64,8 +64,12 @@ function weaponsInfos(bat,batUnitType) {
             let resteSalves = bat.salvoLeft;
             if (thisWeapon.noBis) {
                 maxSalves = 1;
-                if (resteSalves > 1) {
-                    resteSalves = 1;
+                if (resteSalves >= 1) {
+                    if (bat.tags.includes('noBis')) {
+                        resteSalves = 0;
+                    } else {
+                        resteSalves = 1;
+                    }
                 }
             }
             if (bat.salvoLeft >= 1) {
@@ -150,8 +154,12 @@ function weaponsInfos(bat,batUnitType) {
             let resteSalves = bat.salvoLeft;
             if (thisWeapon.noBis) {
                 maxSalves = 1;
-                if (resteSalves > 1) {
-                    resteSalves = 1;
+                if (resteSalves >= 1) {
+                    if (bat.tags.includes('noBis')) {
+                        resteSalves = 0;
+                    } else {
+                        resteSalves = 1;
+                    }
                 }
             }
             if (bat.salvoLeft >= 1) {

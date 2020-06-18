@@ -514,7 +514,9 @@ function createBatList() {
     let zoneBatList = _.filter(allBatList, function(bat) {
         return (bat.loc == 'zone' && bat.apLeft >= 1 && !bat.tags.includes('nolist'));
     });
-    batList = _.sortBy(_.sortBy(_.sortBy(zoneBatList,'typeId'),'range'),'army');
+    batList = _.sortBy(zoneBatList,'fuzz');
+    batList.reverse();
+    batList = _.sortBy(_.sortBy(batList,'range'),'army');
     batList.reverse();
     commandes();
     // console.log(batList);
