@@ -154,6 +154,9 @@ function dropEgg(alienUnit) {
         putBat(dropTile,0);
         if (alienUnit.includes('Oeuf') || alienUnit === 'Coque') {
             eggDropCount = eggDropCount+1;
+            if (alienUnit === 'Oeuf' || alienUnit === 'Coque') {
+                eggsNum++;
+            }
         }
         if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;

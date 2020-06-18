@@ -1514,7 +1514,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo","medic","fly","jetpack","inflammable","dealer","starka","kirin"],
+        "skills":["fortif","cible","camo","medic","fly","jetpack","longshot","inflammable","dealer","starka","kirin"],
         "maxSKill":8,
         "skillCost":5,
         "fuzz":-1,
@@ -1636,7 +1636,7 @@
         "size":3,
         "stealth":14,
         "speed":0,
-        "ap":14,
+        "ap":19,
         "maxSalvo":1,
         "weapon":{
             "name":"Fusil pneu",
@@ -1665,11 +1665,11 @@
             "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
             "ammo":["lame","lame-poison","lame-poraz","lame-plasma","lame-adamantium"]
         },
-        "moveCost":3,
+        "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo","guerrilla","selfmedic","embuscade","berserk","ranger"],
+        "skills":["fortif","cible","camo","guerrilla","selfmedic","embuscade","berserk","fly","jetpack","longshot","inflammable"],
         "fuzz":-1,
         "deathFx":"162157__mediapaja2009__agony"
     },
