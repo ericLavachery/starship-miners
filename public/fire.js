@@ -61,6 +61,8 @@ function clickFire(tileId) {
 
 function combat() {
     console.log('START COMBAT');
+    tagDelete(selectedBat,'mining');
+    tagDelete(targetBat,'mining');
     let soundWeap;
     let soundBat;
     if (activeTurn == 'player') {

@@ -35,10 +35,10 @@ function skillsInfos(bat,batUnitType) {
         apReq = batUnitType.ap-3;
         if (bat.apLeft >= apReq && !bat.tags.includes('guet')) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le guet (pas de malus à la riposte)" class="boutonGris iconButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apCost+'</span></button>&nbsp; Guet</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le guet (pas de malus à la riposte)" class="boutonGris iconButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</h4></span>');
         } else {
             // pas assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Vous devez avoir '+apReq+' PA restant, même si le coût n\'est que de 3" class="boutonGris iconButtons gf"><i class="fas fa-binoculars"></i> <span class="small">'+apCost+'</span></button>&nbsp; Guet</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Pas assez de PA" class="boutonGris iconButtons gf"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</h4></span>');
         }
     }
     // FORTIFICATION
@@ -479,6 +479,27 @@ function skillsInfos(bat,batUnitType) {
                 skillMessage = "Conditions non requises";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</h4></span>');
             }
+        }
+    }
+    // EXTRACTION
+    if (batUnitType.skills.includes('extraction')) {
+        balise = 'h4';
+        if (bat.tags.includes('mining')) {
+            balise = 'h1';
+        }
+        apCost = 5;
+        apReq = 7;
+        if (bat.apLeft >= apReq && !bat.tags.includes('mining') && !inMelee) {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Extraire des ressources" class="boutonGris iconButtons" onclick="extraction('+apCost+')"><i class="fas fa-shield-alt"></i> <span class="small">'+apReq+'</span></button>&nbsp; Extraction</'+balise+'></span>');
+        } else {
+            if (inMelee) {
+                skillMessage = "Impossible en mêlée";
+            } else if (bat.tags.includes('mining')) {
+                skillMessage = "Déjà en train d'extraire";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-shield-alt"></i> <span class="small">'+apReq+'</span></button>&nbsp; Extraction</'+balise+'></span>');
         }
     }
     // DISMANTLE

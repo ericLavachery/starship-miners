@@ -1,3 +1,18 @@
+function extraction(apCost) {
+    console.log('EXTRACTION');
+    if (!selectedBat.tags.includes('mining')) {
+        selectedBat.tags.push('mining');
+    }
+    selectedBat.apLeft = selectedBat.apLeft-apCost;
+    camoOut();
+    tagDelete(selectedBat,'guet');
+    tagDelete(selectedBat,'fortif');
+    tagDelete(selectedBat,'vise');
+    tagDelete(selectedBat,'luckyshot');
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
 function guet() {
     console.log('GUET');
     if (!selectedBat.tags.includes('guet')) {
@@ -5,6 +20,7 @@ function guet() {
     }
     selectedBat.salvoLeft = 0;
     selectedBat.apLeft = selectedBat.apLeft-3;
+    tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
@@ -16,6 +32,7 @@ function fortification() {
     }
     selectedBat.salvoLeft = 0;
     selectedBat.apLeft = selectedBat.apLeft-selectedBatType.ap;
+    tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
@@ -96,6 +113,7 @@ function camouflage(apCost) {
     if (!selectedBat.tags.includes('camo')) {
         selectedBat.tags.push('camo');
     }
+    tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
@@ -476,6 +494,7 @@ function medic(cat,cost,around,deep) {
     xpGain = Math.round(xpGain*100)/100;
     selectedBat.xp = selectedBat.xp+xpGain;
     selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
+    tagDelete(selectedBat,'mining');
     // selectedBat.salvoLeft = 0;
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
