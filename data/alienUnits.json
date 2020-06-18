@@ -1624,8 +1624,8 @@
             "range":3,
             "noFly":false,
             "rof":3,
-            "accuracy":10,
-            "power":24,
+            "accuracy":12,
+            "power":30,
             "aoe":"squad",
             "sound":"zapsplat_sound_design_cinematic_whoosh_fire_ball_fizz_002_29901b",
             "ammo":["feu"]
