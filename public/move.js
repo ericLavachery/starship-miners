@@ -179,6 +179,10 @@ function moveSelectedBat(tileId,free,jump) {
     }
     selectedBat.tileId = tileId;
     // remove tags
+    if (selectedBat.tags.includes('mining')) {
+        tagIndex = selectedBat.tags.indexOf('mining');
+        selectedBat.tags.splice(tagIndex,1);
+    }
     if (selectedBat.tags.includes('guet')) {
         tagIndex = selectedBat.tags.indexOf('guet');
         selectedBat.tags.splice(tagIndex,1);
