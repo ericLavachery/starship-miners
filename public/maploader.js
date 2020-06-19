@@ -84,10 +84,23 @@ function showAlien(bat) {
     }
     let resHere = showRes(bat.tileId);
     let degNum = getDamageBar(bat);
+    let tagz = '';
+    if (bat.tags.includes('fluo')) {
+        tagz = tagz+' (marqué)';
+    }
+    if (bat.tags.includes('poison')) {
+        tagz = tagz+' (poison)';
+    }
+    if (bat.tags.includes('shinda')) {
+        tagz = tagz+' (shinda)';
+    }
+    if (bat.tags.includes('shield')) {
+        tagz = tagz+' (bouclier)';
+    }
     if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
         $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
     } else {
-        $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
+        $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+tagz+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
     }
 };
 
