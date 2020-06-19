@@ -372,7 +372,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["berserk","undead","maycamo"],
+        "skills":["berserk","undead","camo","nofear"],
         "fuzz":0,
         "deathFx":"human2"
     },
@@ -472,7 +472,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["berserk","undead","maycamo"],
+        "skills":["berserk","undead","camo"],
         "fuzz":-1
     },
     {
