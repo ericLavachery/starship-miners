@@ -3007,7 +3007,7 @@
             "power":9,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"517058__invisible-inks__scifi-sniper-rifle",
+            "sound":"517058__invisible-inks__scifi-sniper-rifle_gunbot",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
