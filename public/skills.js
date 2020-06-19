@@ -1,18 +1,3 @@
-function extraction(apCost) {
-    console.log('EXTRACTION');
-    if (!selectedBat.tags.includes('mining')) {
-        selectedBat.tags.push('mining');
-    }
-    selectedBat.apLeft = selectedBat.apLeft-apCost;
-    camoOut();
-    tagDelete(selectedBat,'guet');
-    tagDelete(selectedBat,'fortif');
-    tagDelete(selectedBat,'vise');
-    tagDelete(selectedBat,'luckyshot');
-    selectedBatArrayUpdate();
-    showBatInfos(selectedBat);
-};
-
 function guet() {
     console.log('GUET');
     if (!selectedBat.tags.includes('guet')) {

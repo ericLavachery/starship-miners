@@ -104,6 +104,7 @@ function nextTurnEnd() {
     console.log(boostedTeams);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
+            mining(bat);
             levelUp(bat);
             ap = getAP(bat);
             thisAPBonus = 0;

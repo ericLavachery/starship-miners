@@ -111,14 +111,6 @@ function getCover(bat,withFortif) {
     return cover;
 };
 
-function getTerrain(bat) {
-    let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
-    let tile = zone[tileIndex];
-    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
-    let terrain = terrainTypes[terrainIndex];
-    return terrain;
-};
-
 function getBatType(bat) {
     let unitIndex;
     let batType;
