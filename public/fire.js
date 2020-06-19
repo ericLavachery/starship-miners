@@ -295,9 +295,9 @@ function attack() {
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
-            shotResult = blast(brochette,aoeShots,selectedWeap,targetBat,targetBatType,shotDice);
+            shotResult = blast(brochette,selectedBatType,aoeShots,selectedWeap,targetBat,targetBatType,shotDice);
         } else {
-            shotResult = shot(selectedWeap,targetBat,targetBatType,shotDice);
+            shotResult = shot(selectedWeap,selectedBatType,targetBat,targetBatType,shotDice);
         }
         totalDamage = totalDamage+shotResult.damage;
         totalHits = totalHits+shotResult.hits;
@@ -648,9 +648,9 @@ function defense() {
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
-            shotResult = blast(brochette,aoeShots,targetWeap,selectedBat,selectedBatType,shotDice);
+            shotResult = blast(brochette,targetBatType,aoeShots,targetWeap,selectedBat,selectedBatType,shotDice);
         } else {
-            shotResult = shot(targetWeap,selectedBat,selectedBatType,shotDice);
+            shotResult = shot(targetWeap,targetBatType,selectedBat,selectedBatType,shotDice);
         }
         totalDamage = totalDamage+shotResult.damage;
         totalHits = totalHits+shotResult.hits;
@@ -817,7 +817,7 @@ function combatReport() {
     report = '';
 };
 
-function shot(weapon,bat,batType,shotDice) {
+function shot(weapon,attBatType,bat,batType,shotDice) {
     // returns damage
     let result = {damage:0,hits:0};
     let cover = getCover(bat,true);
@@ -836,7 +836,12 @@ function shot(weapon,bat,batType,shotDice) {
     if (bat.tags.includes('fluo')) {
         weapAccu = weapAccu+15;
     }
-    if (isHit(weapAccu,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
+    // minaccu
+    let minAccu = 0;
+    if (attBatType.skills.includes('minaccu')) {
+        minAccu = 15;
+    }
+    if (isHit(weapAccu,minAccu,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
         if (weapon.power >= 1) {
             result.damage = calcDamage(weapon,weapon.power,batType.armor,bat);
         } else {
@@ -854,7 +859,7 @@ function shot(weapon,bat,batType,shotDice) {
     return result;
 };
 
-function blast(brochette,aoeShots,weapon,bat,batType,shotDice) {
+function blast(brochette,attBatType,aoeShots,weapon,bat,batType,shotDice) {
     // returns damage
     // console.log('aoeShots = '+aoeShots);
     let result = {damage:0,hits:0};
@@ -873,10 +878,15 @@ function blast(brochette,aoeShots,weapon,bat,batType,shotDice) {
     if (batType.skills.includes('fly')) {
         weapAccu = Math.round(weapAccu*weapon.dca);
     }
+    // minaccu
+    let minAccu = 0;
+    if (attBatType.skills.includes('minaccu')) {
+        minAccu = 15;
+    }
     let ii = 1;
     while (ii <= aoeShots) {
         // console.log('power'+power);
-        if (isHit(weapAccu,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
+        if (isHit(weapAccu,minAccu,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
             if (weapon.power >= 1) {
                 newDamage = calcDamage(weapon,power,batType.armor,bat);
             } else {

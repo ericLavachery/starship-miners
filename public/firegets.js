@@ -12,13 +12,16 @@ function checkTargetBatType() {
     }
 };
 
-function isHit(accuracy,aoe,size,stealth,cover,speed,shotDice) {
+function isHit(accuracy,minAccu,aoe,size,stealth,cover,speed,shotDice) {
     let prec = Math.round(accuracy-(cover*coverFactor));
     if (aoe == 'unit' || aoe == 'brochette' || speed < 0) {
         prec = Math.round(prec-(stealth/2)-speed);
     }
     if (prec < minPrec) {
         prec = minPrec;
+    }
+    if (prec < minAccu) {
+        prec = minAccu;
     }
     // tir ciblé
     if (selectedBat.tags.includes('vise')) {
