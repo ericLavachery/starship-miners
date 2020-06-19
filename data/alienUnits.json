@@ -1527,7 +1527,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","inflammable","invisible"],
+        "skills":["ponte","inflammable"],
         "deathFx":"bombwaterexplo",
         "killRes":{"bugium":15,"creatite":5}
     },

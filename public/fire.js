@@ -923,19 +923,22 @@ function batDeath(bat,count) {
         batIndex = batList.findIndex((obj => obj.id == bat.id));
         batList.splice(batIndex,1);
     } else if (bat.team == 'aliens') {
-        let batIndex = aliens.findIndex((obj => obj.id == bat.id));
-        aliens.splice(batIndex,1);
         if (count) {
             if (bat.type.includes('Oeuf') || bat.type === 'Coque' || bat.type === 'Ruche') {
                 playerInfos.eggsKilled = playerInfos.eggsKilled+1;
                 if (bat.type === 'Coque' || bat.type === 'Oeuf') {
                     eggsNum = eggsNum-1;
                 }
+                if (bat.type === 'Oeuf voilé') {
+                    unveilAliens(bat);
+                }
                 playMusic('eggKill',false);
             }
             playerInfos.aliensKilled = playerInfos.aliensKilled+1;
             addAlienRes(bat);
         }
+        let batIndex = aliens.findIndex((obj => obj.id == bat.id));
+        aliens.splice(batIndex,1);
     } else if (bat.team == 'locals') {
         let batIndex = locals.findIndex((obj => obj.id == bat.id));
         locals.splice(batIndex,1);

@@ -151,7 +151,11 @@ function dropEgg(alienUnit) {
         }
     }
     if (tileOK) {
-        putBat(dropTile,0);
+        if (alienUnit === 'Oeuf voilé') {
+            putBat(dropTile,0,'invisible');
+        } else {
+            putBat(dropTile,0);
+        }
         if (alienUnit.includes('Oeuf') || alienUnit === 'Coque') {
             eggDropCount = eggDropCount+1;
             if (alienUnit === 'Oeuf' || alienUnit === 'Coque') {
@@ -521,4 +525,49 @@ function checkDrop(layBat) {
         tileDrop = possibleDrops[0];
     }
     return tileDrop;
+};
+
+function unveilAliens(myBat) {
+    let myKind = getEggKind(myBat);
+    console.log('MY KIND: '+myKind);
+    let thisKind;
+    let veiledKinds = [];
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            if (bat.id != myBat.id) {
+                if (bat.type == 'Oeuf voilé') {
+                    thisKind = getEggKind(bat);
+                    if (!veiledKinds.includes(thisKind)) {
+                        veiledKinds.push(thisKind);
+                    }
+                }
+            }
+        }
+    });
+    console.log(veiledKinds);
+    if (!veiledKinds.includes(myKind)) {
+        aliens.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                batType = getBatType(bat);
+                if (bat.tags.includes('invisible') && batType.kind == myKind) {
+                    tagDelete(bat,'invisible');
+                }
+            }
+        });
+    }
+    centerMap();
+};
+
+function getEggKind(bat) {
+    let eggKind = '';
+    if (bat.tags.includes('bug')) {
+        eggKind = 'bug';
+    } else if (bat.tags.includes('larve')) {
+        eggKind = 'larve';
+    } else if (bat.tags.includes('spider')) {
+        eggKind = 'spider';
+    } else if (bat.tags.includes('swarm')) {
+        eggKind = 'swarm';
+    }
+    return eggKind;
 };

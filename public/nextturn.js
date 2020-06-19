@@ -12,7 +12,6 @@ function nextTurn() {
     batUnselect();
     if (playerInfos.mapTurn === 0) {
         checkStartingAliens();
-        playMusic('start',false);
     }
     // récup des aliens
     deadAliensList = [];
@@ -426,21 +425,24 @@ function checkDeath(bat,batType) {
     if (bat.squadsLeft <= 0) {
         let batType = getBatType(bat);
         if (bat.team == 'player') {
-            deadBatsList.push(bat.id);
             if (!batType.skills.includes('nodeathcount')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
                 playMusic('rip',false);
             }
+            deadBatsList.push(bat.id);
         } else if (bat.team == 'aliens') {
-            deadAliensList.push(bat.id);
             if (bat.type.includes('Oeuf') || bat.type === 'Coque' || bat.type === 'Ruche') {
                 playerInfos.eggsKilled = playerInfos.eggsKilled+1;
                 if (bat.type === 'Coque' || bat.type === 'Oeuf') {
                     eggsNum = eggsNum-1;
                 }
+                if (bat.type === 'Oeuf voilé') {
+                    unveilAliens(bat);
+                }
             }
             playerInfos.aliensKilled = playerInfos.aliensKilled+1;
             addAlienRes(bat);
+            deadAliensList.push(bat.id);
         }
     }
 };

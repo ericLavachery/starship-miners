@@ -52,6 +52,7 @@ socket.on('savedMap-Load', function(sm) {
     }
     turnInfo();
     commandes();
+    playMusic('start',true);
     // $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
     // $('#tour').append('Difficulté '+playerInfos.mapDiff);
 });
