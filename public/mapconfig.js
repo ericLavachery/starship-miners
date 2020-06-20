@@ -129,8 +129,8 @@ function findEgg() {
     let myEgg = {};
     let sortedAliens = _.sortBy(aliens,'tileId');
     sortedAliens.forEach(function(bat) {
-        if (bat.loc === "zone" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
-            if (bat.type === "Oeuf" || bat.type === "Coque") {
+        if (bat.loc === "zone" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0 && !bat.tags.includes('invisible')) {
+            if (bat.type.includes('Oeuf') || bat.type.includes('Coque')) {
                 eggsToShow = eggsToShow+1;
                 myEgg = bat;
             }
@@ -140,8 +140,8 @@ function findEgg() {
         shownEggs = [];
         myEgg = {};
         sortedAliens.forEach(function(bat) {
-            if (bat.loc === "zone" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
-                if (bat.type === "Oeuf" || bat.type === "Coque") {
+            if (bat.loc === "zone" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0 && !bat.tags.includes('invisible')) {
+                if (bat.type.includes('Oeuf') || bat.type.includes('Coque')) {
                     eggsToShow = eggsToShow+1;
                     myEgg = bat;
                 }
