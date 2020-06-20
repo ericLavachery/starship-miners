@@ -74,7 +74,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","capbld","fouisseur"],
+        "skills":["regeneration","capbld","fouisseur","nez"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"bugium":8,"mendium":3,"larvium":5}
     },
@@ -682,7 +682,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","nez","fouisseur"],
+        "skills":["regeneration","nez","fouisseur","capbld"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"bugium":4,"larvium":3,"mendium":1}
     },
