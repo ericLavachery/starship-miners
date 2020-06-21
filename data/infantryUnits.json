@@ -2464,7 +2464,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet plasma",
-            "cost":1,
+            "cost":2,
             "range":1,
             "isShort":true,
             "rof":9,
@@ -2478,7 +2478,7 @@
             "name":"Fusil mitrailleur",
             "cost":3,
             "range":1,
-            "rof":24,
+            "rof":18,
             "accuracy":17,
             "power":6,
             "armors":0.85,
@@ -2490,7 +2490,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber","sentinelle"],
+        "skills":["fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber"],
         "fuzz":3.5,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
     },
