@@ -17,7 +17,7 @@ function mining(bat) {
     if (bat.tags.includes('mining')) {
         if (bat.apLeft >= 1) {
             let batType = getBatType(bat);
-            let rate = Math.round(bat.apLeft*batType.mining.rate/batType.ap);
+            let rate = Math.round(batType.mining.rate*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads);
             let dispoRes = getRes(bat,batType);
 
         }

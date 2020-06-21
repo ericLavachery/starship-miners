@@ -560,6 +560,16 @@
         "aoe": ""
     },
     {
+        "name": "lame-tungsten",
+        "range": 0,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.6,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
         "name": "suicide",
         "range": 0,
         "rof": 1,

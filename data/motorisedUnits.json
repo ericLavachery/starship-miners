@@ -246,7 +246,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"industrial_vehicle_combine_harvester_approach_passb",
-            "ammo":["lame","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-mono"]
         },
         "moveCost":2,
         "maxFlood":0,
@@ -1274,7 +1274,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"industrial_vehicle_combine_harvester_approach_passb",
-            "ammo":["lame","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-mono"]
         },
         "moveCost":2,
         "maxFlood":3,
@@ -1326,7 +1326,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"industrial_vehicle_combine_harvester_approach_passb",
-            "ammo":["lame","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-mono"]
         },
         "moveCost":2,
         "maxFlood":3,
@@ -1937,7 +1937,7 @@
             "power":12,
             "aoe":"squad",
             "sound":"industrial_vehicle_combine_harvester_approach_passb",
-            "ammo":["lame","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-mono"]
         },
         "moveCost":2,
         "maxFlood":0,
@@ -2798,10 +2798,10 @@
             "rof":6,
             "accuracy":12,
             "power":24,
-            "armors":0.3,
+            "armors":0.5,
             "aoe":"unit",
             "sound":"construction-circular-saw",
-            "ammo":["lame"]
+            "ammo":["lame-tungsten"]
         },
         "weapon2":{},
         "moveCost":1,
