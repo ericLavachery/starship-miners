@@ -52,6 +52,14 @@ function getTerrain(bat) {
     return terrain;
 };
 
+function getTileTerrain(tileId) {
+    let tileIndex = zone.findIndex((obj => obj.id == tileId));
+    let tile = zone[tileIndex];
+    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
+    let terrain = terrainTypes[terrainIndex];
+    return terrain;
+};
+
 function getTile(bat) {
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];

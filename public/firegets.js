@@ -540,11 +540,15 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.range = thisWeapon.range+2;
     }
     // Forêt (range)
-    if (thisWeapon.range >= 2 && tile.terrain == 'F') {
-        if (thisWeapon.range >= 3) {
-            thisWeapon.range = 2;
-        } else {
-            thisWeapon.range = 1;
+    if (tile.terrain == 'F') {
+        if (checkDeepForest(tile)) {
+            if (thisWeapon.range >= 2) {
+                if (thisWeapon.range >= 3) {
+                    thisWeapon.range = 2;
+                } else {
+                    thisWeapon.range = 1;
+                }
+            }
         }
     }
     // Water (range)
@@ -553,6 +557,24 @@ function weaponAdj(weapon,bat,wn) {
     }
     console.log(thisWeapon);
     return thisWeapon;
+};
+
+function checkDeepForest(tile) {
+    let deepForest = false;
+    if (tile.terrain == 'F') {
+        if (getTileTerrainName(tile.id+1) === 'F' && getTileTerrainName(tile.id-1) === 'F' && getTileTerrainName(tile.id+mapSize) === 'F' && getTileTerrainName(tile.id-mapSize) === 'F') {
+            deepForest = true;
+        }
+    }
+    return deepForest;
+};
+
+function getTileTerrainName(tileId) {
+    let tileIndex = zone.findIndex((obj => obj.id == tileId));
+    let tile = zone[tileIndex];
+    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
+    let terrain = terrainTypes[terrainIndex];
+    return terrain.name;
 };
 
 function calcShotDice(bat,luckyshot) {

@@ -1014,7 +1014,7 @@
         "maxVeg":2,
         "skills":["cible","hover","selfmecano","transport","fret"],
         "transMaxSize":9,
-        "transUnits":600,
+        "transUnits":700,
         "transRes":350,
         "fuzz":2,
         "deathFx":"planeexploair1"
