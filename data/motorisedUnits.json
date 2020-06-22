@@ -1805,15 +1805,18 @@
         "ap":13,
         "maxSalvo":1,
         "weapon":{
-            "name":"Fusil d'assaut",
+            "name":"Lance grenade",
             "cost":3,
             "range":1,
-            "rof":12,
-            "accuracy":18,
-            "power":6,
-            "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "elevation":1,
+            "noFly":true,
+            "rof":6,
+            "accuracy":11,
+            "power":10,
+            "aoe":"squad",
+            "sound":"161622__ryanconway__grenade-throw-mortar",
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire"],
+            "maxAmmo":12
         },
         "weapon2":{
             "name":"Boutoir",
@@ -2076,7 +2079,7 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
-            "name":"Canon",
+            "name":"Autocanon",
             "cost":3,
             "range":2,
             "noFly":true,

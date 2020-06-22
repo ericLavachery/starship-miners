@@ -1180,7 +1180,7 @@
         "volume":1.2,
         "stealth":3,
         "speed":4,
-        "ap":18,
+        "ap":16,
         "maxSalvo":1,
         "weapon":{
             "name":"Fusil d'assaut",
@@ -1483,7 +1483,7 @@
         "size":3,
         "volume":1.2,
         "stealth":15,
-        "ap":18,
+        "ap":16,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet plasma",
@@ -1500,7 +1500,7 @@
         "weapon2":{
             "name":"Fusil laser",
             "cost":5,
-            "range":3,
+            "range":4,
             "elevation":2,
             "noMelee":true,
             "rof":8,
@@ -1636,7 +1636,7 @@
         "size":3,
         "stealth":14,
         "speed":0,
-        "ap":19,
+        "ap":17,
         "maxSalvo":1,
         "weapon":{
             "name":"Fusil pneu",
@@ -1688,7 +1688,7 @@
         "volume":1.2,
         "stealth":5,
         "speed":3,
-        "ap":19,
+        "ap":17,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet plasma",
@@ -2379,8 +2379,8 @@
             "range":3,
             "elevation":1,
             "rof":8,
-            "accuracy":50,
-            "power":9,
+            "accuracy":40,
+            "power":8,
             "aoe":"unit",
             "sound":"pm_ag_1_2_abstract_guns_281b",
             "ammo":["laser","laser-g2"]
@@ -2460,7 +2460,7 @@
         "volume":1.2,
         "stealth":3,
         "speed":5,
-        "ap":22,
+        "ap":18,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet plasma",
@@ -2805,7 +2805,7 @@
         "volume":1.2,
         "stealth":8,
         "speed":4,
-        "ap":19,
+        "ap":17,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet mitrailleur",
