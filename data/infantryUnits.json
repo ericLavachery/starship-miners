@@ -328,7 +328,7 @@
     {
         "id":15,
         "name":"Toxs",
-        "pic":"tox2",
+        "pic":"toxaxe",
         "cat":"infantry",
         "kind":"drogmuloj",
         "squads":6,
@@ -381,7 +381,7 @@
     {
         "id":46,
         "name":"Toxs Guns",
-        "pic":"toxgun",
+        "pic":"toxsaw",
         "cat":"infantry",
         "kind":"drogmuloj",
         "squads":6,
@@ -431,7 +431,7 @@
     {
         "id":16,
         "name":"Toxs Bombs",
-        "pic":"toxbomb",
+        "pic":"toxshot",
         "cat":"infantry",
         "kind":"drogmuloj",
         "squads":5,
@@ -1057,7 +1057,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","undead","badmedic","dealer","bliss","sila","blaze","kirin","skupiac","maycamo"],
-        "maxSKill":24,
+        "maxSKill":32,
         "skillCost":6,
         "fuzz":1,
         "deathFx":"516766__gentlemanwalrus__death-rattle"

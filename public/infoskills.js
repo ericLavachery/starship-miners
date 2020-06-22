@@ -417,7 +417,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // DROGUES
-    if (!batUnitType.skills.includes('mutant') && !batUnitType.skills.includes('cyber') && batUnitType.cat === 'infantry') {
+    if (!batUnitType.skills.includes('cyber') && batUnitType.cat === 'infantry') {
         let allDrugs = checkDrugs(bat);
         // KIRIN
         if (allDrugs.includes('kirin') && !bat.tags.includes('kirin')) {
@@ -453,7 +453,7 @@ function skillsInfos(bat,batUnitType) {
         if (allDrugs.includes('skupiac') && !bat.tags.includes('skupiac')) {
             apCost = 3;
             if (bat.apLeft >= apCost) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Concentration: +6 précision" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Concentration: +6 précision / guérit les maladies" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</h4></span>');
             } else {
                 skillMessage = "Pas assez de PA";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</h4></span>');

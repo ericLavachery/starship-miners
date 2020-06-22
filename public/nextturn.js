@@ -349,7 +349,11 @@ function tagsEffect(bat,batType) {
     }
     // MALADIE
     if (bat.tags.includes('maladie')) {
-        bat.apLeft = bat.apLeft-Math.floor(batType.ap/2.2);
+        if (bat.tags.includes('skupiac')) {
+            tagDelete(bat,'maladie');
+        } else {
+            bat.apLeft = bat.apLeft-Math.floor(batType.ap/2.2);
+        }
     }
     if (!medicalTransports.includes(bat.locId) || bat.loc != 'trans') {
         // PARASITE
