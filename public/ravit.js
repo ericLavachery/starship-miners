@@ -90,24 +90,18 @@ function goRavit(apCost) {
     }
 };
 
-function checkRavit(myBat) {
-    // vérifie si il y a un ravitaillement possible à côté de l'unité
+function checkRavitDrug(myBat) {
+    // vérifie si il y a un ravitaillement possible EN DROGUE à côté de l'unité
     let batType;
     let anyRavit = false;
     let ravitLeft;
-    let ravitVolume = calcRavitVolume(myBat);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
             if (batType.skills.includes('ravitaillement')) {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
                     ravitLeft = calcRavit(bat);
-                    console.log('RAVIT-BAT');
-                    console.log(bat.type);
-                    console.log(batType.maxSKill);
-                    console.log(ravitVolume[0]);
-                    if (ravitLeft >= 1 && ravitVolume[0] <= batType.maxSKill && (ravitVolume[2] != 'missile') || batType.skills.includes('stock')) {
-                        console.log('ok');
+                    if (ravitLeft >= 1 || batType.skills.includes('stock')) {
                         anyRavit = true;
                     }
                 }
@@ -214,4 +208,67 @@ function checkStock(myBat) {
         }
     });
     return anyStock;
+};
+
+function checkRavit(myBat) {
+    // vérifie si il y a un ravitaillement possible à côté de l'unité
+    let batType;
+    let anyRavit = false;
+    let ravitLeft;
+    let ravitVolume = calcRavitVolume(myBat);
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            batType = getBatType(bat);
+            if (batType.skills.includes('ravitaillement')) {
+                if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
+                    ravitLeft = calcRavit(bat);
+                    if (ravitLeft >= 1 && ravitVolume[0] <= batType.maxSKill && (ravitVolume[2] != 'missile') || batType.skills.includes('stock')) {
+                        anyRavit = true;
+                    }
+                }
+            }
+        }
+    });
+    return anyRavit;
+};
+
+function goRavitDrug(apCost) {
+    if (selectedBat.tags.includes('skillUsed')) {
+        let batType;
+        let ravitBat = {};
+        let ravitLeft = 0;
+        let biggestRavit = 0;
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                batType = getBatType(bat);
+                if (batType.skills.includes('ravitaillement')) {
+                    ravitLeft = calcRavit(bat);
+                    if (calcDistance(selectedBat.tileId,bat.tileId) <= 1 && ravitLeft >= 1) {
+                        if (biggestRavit < ravitLeft) {
+                            biggestRavit = ravitLeft;
+                            ravitBat = bat;
+                        }
+                    }
+                }
+            }
+        });
+        if (Object.keys(ravitBat).length >= 1) {
+            selectedBat.apLeft = selectedBat.apLeft-apCost;
+            selectedBat.salvoLeft = 0;
+            let i = 1;
+            while (i <= 120) {
+                if (selectedBat.tags.includes('skillUsed')) {
+                    tagIndex = selectedBat.tags.indexOf('skillUsed');
+                    selectedBat.tags.splice(tagIndex,1);
+                } else {
+                    break;
+                }
+                if (i > 120) {break;}
+                i++;
+            }
+            ravitBat.tags.push('skillUsed');
+            selectedBatArrayUpdate();
+            showBatInfos(selectedBat);
+        }
+    }
 };

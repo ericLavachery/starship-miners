@@ -5,8 +5,19 @@ function skillsInfos(bat,batUnitType) {
     let apReq;
     let inMelee = batInMelee(bat);
     console.log('inMelee='+inMelee);
+    // RAVITAILLEMENT DROGUES
+    let anyRavit = checkRavitDrug(bat);
+    if (anyRavit && bat.tags.includes('skillUsed') && batUnitType.skills.includes('dealer')) {
+        let apCost = Math.round(batUnitType.ap/2);
+        if (bat.apLeft >= 2) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de drogues" class="boutonGris iconButtons" onclick="goRavitDrug('+apCost+')"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp;  Approvisionnement</h4></span>');
+        } else {
+            skillMessage = "Pas assez de PA";
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp; Approvisionnement</h4></span>');
+        }
+    }
     // RAVITAILLEMENT
-    let anyRavit = checkRavit(bat);
+    anyRavit = checkRavit(bat);
     if (anyRavit && bat.tags.includes('ammoUsed')) {
         let apCost = batUnitType.ap;
         if (bat.apLeft >= 4) {
@@ -504,7 +515,7 @@ function skillsInfos(bat,batUnitType) {
     }
     // CONSTRUCTION TRICHE
     if (batUnitType.skills.includes('constructeur')) {
-        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris iconButtons" onclick="bfconst()"><i class="fa fa-hammer"></i></button>&nbsp; Construction</h4></span>');
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris iconButtons" onclick="bfconst()"><i class="fas fa-drafting-compass"></i></button>&nbsp; Construction</h4></span>');
     }
     // DISMANTLE
     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Démanteler" class="boutonRouge iconButtons" onclick="dismantle('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Démanteler</h4></span>');
