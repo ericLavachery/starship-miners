@@ -2086,7 +2086,7 @@
         "size":3,
         "stealth":0,
         "speed":6,
-        "ap":20,
+        "ap":21,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet plasma",
@@ -2532,7 +2532,7 @@
             "noFly":true,
             "rof":4,
             "accuracy":22,
-            "power":4,
+            "power":5,
             "aoe":"bat",
             "sound":"187200__joyce137298__civil-war-caplock-rifle_rainbow",
             "ammo":["gaz"],
