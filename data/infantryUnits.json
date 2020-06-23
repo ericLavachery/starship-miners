@@ -400,13 +400,13 @@
             "range":0,
             "isShort":true,
             "noShield":true,
-            "rof":10,
+            "rof":15,
             "accuracy":15,
             "power":5,
             "armors":0.3,
             "aoe":"unit",
             "sound":"construction-circular-saw",
-            "ammo":["lame","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-mono"]
         },
         "weapon2":{
             "name":"Calibre",
@@ -1395,7 +1395,7 @@
             "armors":0.3,
             "aoe":"unit",
             "sound":"construction-circular-saw",
-            "ammo":["lame","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-mono"]
         },
         "weapon2":{
             "name":"Fusil magnétique",
@@ -1559,7 +1559,7 @@
             "armors":0.5,
             "aoe":"brochette",
             "sound":"498501__16f-panska-veltrusky-david__chainsawb",
-            "ammo":["lame","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-mono"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -2234,7 +2234,7 @@
             "armors":0.3,
             "aoe":"unit",
             "sound":"construction-circular-saw",
-            "ammo":["lame","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-mono"]
         },
         "weapon2":{
             "name":"Autodestruction",
