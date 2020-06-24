@@ -702,7 +702,7 @@ function clickMine(clicTileId,poseurTileId) {
             }
         });
         if (!batHere) {
-            putBat(clicTileId,0);
+            putBat(clicTileId,0,0);
             showBatInfos(selectedBat);
         } else {
             conselUnit = {};

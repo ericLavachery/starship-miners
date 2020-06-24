@@ -152,9 +152,9 @@ function dropEgg(alienUnit) {
     }
     if (tileOK) {
         if (alienUnit === 'Oeuf voilé') {
-            putBat(dropTile,0,'invisible');
+            putBat(dropTile,0,0,'invisible');
         } else {
-            putBat(dropTile,0);
+            putBat(dropTile,0,0);
         }
         if (alienUnit.includes('Oeuf') || alienUnit === 'Coque') {
             eggDropCount = eggDropCount+1;
@@ -280,7 +280,7 @@ function vomiSpawn(bat) {
     if (Object.keys(conselUnit).length >= 1) {
         dropTile = checkDropBlob(bat);
         if (dropTile >= 0) {
-            putBat(dropTile,0);
+            putBat(dropTile,0,0);
             blobEat(dropTile);
         }
     }
@@ -336,7 +336,7 @@ function alienSpawn(bat,crea) {
     if (Object.keys(conselUnit).length >= 1) {
         dropTile = checkDrop(bat);
         if (dropTile >= 0) {
-            putBat(dropTile,0);
+            putBat(dropTile,0,0);
         }
     }
 };
@@ -353,7 +353,7 @@ function alienMorph(bat,newBatName,reset) {
     let unitIndex = alienUnits.findIndex((obj => obj.name == newBatName));
     conselUnit = alienUnits[unitIndex];
     conselAmmos = ['xxx','xxx'];
-    putBat(putTile,0);
+    putBat(putTile,0,0);
     // Turn & Tags
     batIndex = aliens.findIndex((obj => obj.tileId == putTile));
     let newAlien = aliens[batIndex];
@@ -459,9 +459,9 @@ function eggSpawn(bat,fromEgg) {
                         checkSpawnType(conselUnit);
                         putEggCat(bat,conselUnit.kind);
                         if (bat.type === 'Oeuf voilé') {
-                            putBat(dropTile,0,'invisible');
+                            putBat(dropTile,0,0,'invisible');
                         } else {
-                            putBat(dropTile,0);
+                            putBat(dropTile,0,0);
                         }
                     }
                 }

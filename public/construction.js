@@ -135,7 +135,7 @@ function clickConstruct(tileId) {
         }
     });
     if (!batHere) {
-        putBat(tileId,0);
+        putBat(tileId,0,0);
         bfconst();
         $('#conAmmoList').empty();
     } else {
@@ -148,7 +148,7 @@ function clickConstruct(tileId) {
     }
 };
 
-function putBat(tileId,citoyens,startTag) {
+function putBat(tileId,citoyens,xp,startTag) {
     console.log('PUTBAT');
     if (Object.keys(conselUnit).length >= 1) {
         console.log(conselUnit);
@@ -219,7 +219,7 @@ function putBat(tileId,citoyens,startTag) {
         }
         newBat.ammo2Left = conselUnit.weapon2.maxAmmo;
         newBat.vet = 0;
-        newBat.xp = 0;
+        newBat.xp = xp;
         if (Object.keys(conselUnit.weapon).length >= 1) {
             newBat.range = conselUnit.weapon.range;
             if (Object.keys(conselUnit.weapon2).length >= 1) {
@@ -272,6 +272,11 @@ function dismantle(batId) {
     // création du bataillon de citoyens
     let index = bataillons.findIndex((obj => obj.id == batId));
     let bat = bataillons[index];
+    let batType = getBatType(bat);
+    let tileId = bat.tileId;
+    let citoyens = batType.squads*batType.squadSize*batType.crew;
+    // console.log('CITOYENS:'+citoyens);
+    let xp = getXp(bat);
     batUnselect();
     batDeath(bat,false);
     let batIndex = batList.findIndex((obj => obj.id == batId));
@@ -279,6 +284,30 @@ function dismantle(batId) {
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
     $('#b'+bat.tileId).append(resHere);
+    recupCitoyens(126,tileId,citoyens,xp);
+};
+
+function recupCitoyens(unitId,tileId,citoyens,xp) {
+    let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
+    conselUnit = unitTypes[unitIndex];
+    conselAmmos = ['xxx','xxx'];
+    putBat(tileId,citoyens,xp);
+};
+
+function getXp(bat) {
+    let xp;
+    if (bat.xp >= levelXP[4]) {
+        xp = levelXP[4];
+    } else if (bat.xp >= levelXP[3]) {
+        xp = levelXP[3];
+    } else if (bat.xp >= levelXP[2]) {
+        xp = levelXP[2];
+    } else if (bat.xp >= levelXP[1]) {
+        xp = levelXP[1];
+    } else {
+        xp = 0;
+    }
+    return xp;
 };
 
 function deleteAlien(batId) {

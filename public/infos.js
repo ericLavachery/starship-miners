@@ -3,11 +3,15 @@ function showBatInfos(bat) {
     let unitTypesIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     let batUnitType = unitTypes[unitTypesIndex];
     let unitsLeft = bat.squadsLeft*batUnitType.squadSize;
+    if (bat.citoyens >= 1) {
+        unitsLeft = bat.citoyens;
+    }
     if (batUnitType.skills.includes('nonumname')) {
         $('#unitInfos').append('<span class="blockTitle"><h3>'+batUnitType.name+'</h3></span>');
     } else {
         $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batUnitType.name+'</h3></span>');
     }
+
     let allTags = _.countBy(bat.tags);
     // AP
     let ap = getAP(bat);
