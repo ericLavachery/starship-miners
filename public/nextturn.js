@@ -168,7 +168,9 @@ function nextTurnEnd() {
             }
             tagsEffect(bat,batType);
             tagsUpdate(bat);
-            blub(bat,batType);
+            if (bat.loc === "zone") {
+                blub(bat,batType);
+            }
         }
     });
     killBatList();
