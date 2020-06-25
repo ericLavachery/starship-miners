@@ -548,6 +548,21 @@ function numMedicTargets(myBat,cat,around,deep) {
     return numTargets;
 };
 
+function isHurt(bat) {
+    hurt = true;
+    batType = getBatType(bat);
+    batHPLeft = (bat.squadsLeft*batType.squadSize*batType.hp)-bat.damage;
+    if (bat.citoyens >= 1) {
+        batHP = bat.citoyens*batType.hp;
+    } else {
+        batHP = batType.squads*batType.squadSize*batType.hp;
+    }
+    if (batHPLeft >= batHP) {
+        hurt = false;
+    }
+    return hurt;
+};
+
 function armyAssign(batId,army) {
     // le faire avec selectedBat puis arrayUpdate
     // let index = bataillons.findIndex((obj => obj.id == batId));

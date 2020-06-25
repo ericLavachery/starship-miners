@@ -118,19 +118,22 @@ function showBataillon(bat) {
 function getDamageBar(bat) {
     let batType = getBatType(bat);
     let degNum = 7;
-    let degPerc = Math.round(100*bat.squadsLeft/batType.squads);
-    if (bat.squadsLeft === 1) {
-        degNum = 1;
-    } else if (degPerc < 35) {
-        degNum = 2;
-    } else if (degPerc < 55) {
-        degNum = 3;
-    } else if (degPerc < 70) {
-        degNum = 4;
-    } else if (degPerc < 86) {
-        degNum = 5;
-    } else if (degPerc < 100 || (degPerc == 100 && bat.damage > 1)) {
-        degNum = 6;
+    let hurt = isHurt(bat);
+    if (hurt) {
+        let degPerc = Math.round(100*bat.squadsLeft/batType.squads);
+        if (bat.squadsLeft === 1) {
+            degNum = 1;
+        } else if (degPerc < 35) {
+            degNum = 2;
+        } else if (degPerc < 55) {
+            degNum = 3;
+        } else if (degPerc < 70) {
+            degNum = 4;
+        } else if (degPerc < 86) {
+            degNum = 5;
+        } else if (degPerc < 100 || (degPerc == 100 && bat.damage > 1)) {
+            degNum = 6;
+        }
     }
     if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
         degNum = 0;
