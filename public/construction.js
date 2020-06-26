@@ -284,7 +284,9 @@ function dismantle(batId) {
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
     $('#b'+bat.tileId).append(resHere);
-    recupCitoyens(126,tileId,citoyens,xp);
+    if (batType.name != 'Citoyens') {
+        recupCitoyens(126,tileId,citoyens,xp);
+    }
 };
 
 function recupCitoyens(unitId,tileId,citoyens,xp) {

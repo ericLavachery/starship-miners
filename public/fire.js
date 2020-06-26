@@ -904,9 +904,9 @@ function blast(brochette,attBatType,aoeShots,weapon,bat,batType,shotDice) {
         if (ii > 100) {break;}
         oldPower = power;
         if (!brochette) {
-            power = Math.round(power*0.8);
+            power = Math.floor(power*0.8);
         } else {
-            power = Math.round(power*0.5);
+            power = Math.floor(power*0.5);
         }
         if (power >= oldPower) {
             power = power-1;

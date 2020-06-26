@@ -376,7 +376,7 @@
             "rof":3,
             "accuracy":50,
             "power":17,
-            "aoe":"unit",
+            "aoe":"brochette",
             "sound":"daycraftmc__laser-5",
             "ammo":["laser","laser-g2"]
         },

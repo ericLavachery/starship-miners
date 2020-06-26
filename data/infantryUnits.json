@@ -374,7 +374,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["berserk","undead","camo","nofear"],
+        "skills":["fortif","cible","berserk","undead","camo","nofear"],
         "fuzz":0,
         "deathFx":"human2"
     },
@@ -424,7 +424,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["berserk","undead","maycamo"],
+        "skills":["fortif","cible","berserk","undead","maycamo"],
         "fuzz":1,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -472,7 +472,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["berserk","undead","camo"],
+        "skills":["fortif","cible","berserk","undead","camo"],
         "fuzz":-1
     },
     {
@@ -2831,7 +2831,7 @@
             "rof":4,
             "accuracy":50,
             "power":17,
-            "aoe":"unit",
+            "aoe":"brochette",
             "sound":"daycraftmc__laser-5",
             "ammo":["laser","laser-g2"]
         },
@@ -3033,5 +3033,41 @@
         "skills":["fortif","cible","sentinelle","maycamo","robot"],
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
+    },
+    {
+        "id":138,
+        "name":"Clones",
+        "pic":"clone",
+        "cat":"infantry",
+        "kind":"zero",
+        "squads":6,
+        "squadSize":10,
+        "crew":1,
+        "hp":5,
+        "armor":0,
+        "size":3,
+        "stealth":4,
+        "speed":0,
+        "ap":14,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Calibre",
+            "cost":3,
+            "range":1,
+            "rof":10,
+            "accuracy":18,
+            "power":7,
+            "aoe":"unit",
+            "sound":"82459__threetails__50bmg_calibre",
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten"]
+        },
+        "weapon2":{},
+        "moveCost":3,
+        "maxFlood":3,
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["fortif","cible"],
+        "fuzz":1,
+        "deathFx":"13797__sweetneo85__wilhelm"
     }
 ]
