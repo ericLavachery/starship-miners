@@ -72,8 +72,10 @@ function combat() {
     // sort du mode furtif
     if (activeTurn == 'player') {
         camoOut();
+        centerMapTarget();
+    } else {
+        centerMap();
     }
-    centerMap();
     let selectedBatUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
     let targetBatUnits = targetBat.squadsLeft*targetBatType.squadSize;
     $('#report').empty('');

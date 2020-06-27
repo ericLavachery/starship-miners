@@ -190,6 +190,9 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
     if (weap.ammo.includes('disco') && attacking) {
         speed = speed-20;
     }
+    if (bat.apLeft < 0 && !batType.skills.includes('guerrilla')) {
+        speed = speed-(bat.apLeft*5);
+    }
     let vetDice = vetBonus.initiative*bat.vet;
     return speed+rand.rand(0,initiativeDice)-rand.rand(0,vetDice);
 };

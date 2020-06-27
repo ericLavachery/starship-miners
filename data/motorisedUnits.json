@@ -1916,15 +1916,16 @@
         "ap":10,
         "maxSalvo":2,
         "weapon":{
-            "name":"Calibre",
+            "name":"Mitrailleuse",
             "cost":3,
-            "range":1,
-            "rof":9,
-            "accuracy":20,
+            "range":2,
+            "rof":15,
+            "accuracy":18,
+            "dca":1,
             "power":8,
-            "armors":0.85,
+            "armors":0.75,
             "aoe":"unit",
-            "sound":"396271__greenfiresound__groscalibre",
+            "sound":"warfare_gunshots_machine_gun_burst_005b",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{

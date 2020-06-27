@@ -100,6 +100,24 @@ function centerMap() {
     }
 };
 
+function centerMapTarget() {
+    // center on targetBat
+    if (targetBat.id > -1) {
+        myTileX = zone[targetBat.tileId].x;
+        myTileY = zone[targetBat.tileId].y;
+        xOffset = myTileX-Math.round(numVTiles/2);
+        yOffset = myTileY-Math.round(numHTiles/2);
+        limitOffset();
+        showMap(zone,true);
+        if (Object.keys(selectedBat).length >= 1) {
+            tileSelect(selectedBat);
+        }
+        if (Object.keys(targetBat).length >= 1) {
+            tileTarget(targetBat);
+        }
+    }
+};
+
 function centerMapCenter() {
     // center on selectedBat
     myTileX = zone[1830].x;
