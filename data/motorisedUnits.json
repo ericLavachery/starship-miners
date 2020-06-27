@@ -229,7 +229,7 @@
             "accuracy":18,
             "power":28,
             "aoe":"brochette",
-            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
+            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
             "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":24
         },
@@ -382,7 +382,7 @@
             "accuracy":16,
             "power":25,
             "aoe":"brochette",
-            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
+            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
             "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":16
         },
@@ -1362,7 +1362,7 @@
             "accuracy":16,
             "power":21,
             "aoe":"unit",
-            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
+            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
             "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":24
         },
@@ -2230,7 +2230,7 @@
             "dca":5,
             "power":20,
             "aoe":"squad",
-            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
+            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
             "ammo":["obus-explosif","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo":32
         },
@@ -2541,7 +2541,7 @@
             "accuracy":18,
             "power":30,
             "aoe":"brochette",
-            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
+            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
             "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":16
         },

@@ -1648,7 +1648,7 @@
             "accuracy":32,
             "power":6,
             "aoe":"unit",
-            "sound":"johnj_wafare_gun_pistol_silenced_walther_pp7c",
+            "sound":"johnj_wafare_gun_pistol_silenced_walther_pp7-multi",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "weapon2":{
@@ -2012,7 +2012,7 @@
             "accuracy":36,
             "power":6,
             "aoe":"unit",
-            "sound":"johnj_wafare_gun_pistol_silenced_walther_pp7c",
+            "sound":"johnj_wafare_gun_pistol_silenced_walther_pp7-multi",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
         },
         "moveCost":3,
@@ -2575,7 +2575,7 @@
             "accuracy":16,
             "power":28,
             "aoe":"brochette",
-            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
+            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
             "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":20
         },
