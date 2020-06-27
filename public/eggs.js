@@ -75,11 +75,11 @@ function eggsDrop() {
     console.log('EGGDROP');
     let numEggs;
     let eggDice = rand.rand(1,100);
-    let threeEggsChance = playerInfos.mapAdjDiff-4;
+    let threeEggsChance = Math.floor(playerInfos.mapAdjDiff*1.25)-4;
     if (threeEggsChance < 0) {
         threeEggsChance = 0;
     }
-    let twoEggsChance = Math.floor(playerInfos.mapAdjDiff*1.25)-2;
+    let twoEggsChance = Math.floor(playerInfos.mapAdjDiff*2)-3;
     if (twoEggsChance < 0) {
         twoEggsChance = 0;
     }
