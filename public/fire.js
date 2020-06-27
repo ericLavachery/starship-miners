@@ -17,7 +17,7 @@ function clickFire(tileId) {
     } else {
         if (isMelee) {
             // en mêlée : choix limité de cibles
-            if (sideBySideTiles(selectedBat.tileId,tileId)) {
+            if (sideBySideTiles(selectedBat.tileId,tileId,true)) {
                 if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType)) {
                     // console.log(targetBat);
                     tagDelete(targetBat,'invisible');
@@ -38,7 +38,7 @@ function clickFire(tileId) {
         } else {
             // hors mêlée
             if (isInRange(selectedBat.tileId,tileId)) {
-                if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && ((!targetBatType.skills.includes('invisible') && !targetBat.tags.includes('invisible')) || sideBySideTiles(selectedBat.tileId,tileId))) {
+                if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && ((!targetBatType.skills.includes('invisible') && !targetBat.tags.includes('invisible')) || sideBySideTiles(selectedBat.tileId,tileId,false))) {
                     // console.log(targetBat);
                     tagDelete(targetBat,'invisible');
                     tileTarget(targetBat);

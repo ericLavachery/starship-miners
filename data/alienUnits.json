@@ -1529,7 +1529,7 @@
         "maxVeg":-1,
         "skills":["ponte","inflammable"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"bugium":15,"creatite":5}
+        "killRes":{"bugium":15,"creatite":5,"blendium":15}
     },
     {
         "id":36,

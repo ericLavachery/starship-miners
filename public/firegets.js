@@ -190,15 +190,15 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
     if (weap.ammo.includes('disco') && attacking) {
         speed = speed-20;
     }
-    if (bat.apLeft < 0 && !batType.skills.includes('guerrilla')) {
+    if ((bat.apLeft < 0 && !batType.skills.includes('guerrilla')) || bat.apLeft > 0) {
         speed = speed-(bat.apLeft*5);
     }
     let vetDice = vetBonus.initiative*bat.vet;
     return speed+rand.rand(0,initiativeDice)-rand.rand(0,vetDice);
 };
 
-function sideBySideTiles(myTileIndex,thatTileIndex) {
-    if (selectedBat.fuzz <= -2) {
+function sideBySideTiles(myTileIndex,thatTileIndex,fuzzThing) {
+    if (selectedBat.fuzz <= -2 && fuzzThing) {
         return false;
     } else {
         let myTileX = zone[myTileIndex].x;
@@ -322,7 +322,7 @@ function fireInfos(bat) {
         alien = alienHere(tile.id);
         if (Object.keys(alien).length >= 1) {
             alienType = getBatType(alien);
-            if (sideBySideTiles(selectedBat.tileId,tile.id) && !batType.skills.includes('longshot')) {
+            if (sideBySideTiles(selectedBat.tileId,tile.id,true) && !batType.skills.includes('longshot')) {
                 isMelee = true;
                 if (checkFlyTarget(selectedWeap,alienType)) {
                     cursorSwitch('#',tile.id,'fire');
@@ -337,7 +337,7 @@ function fireInfos(bat) {
             if (Object.keys(alien).length >= 1) {
                 if (isInRange(selectedBat.tileId,tile.id)) {
                     alienType = getBatType(alien);
-                    if (checkFlyTarget(selectedWeap,alienType) && ((!alienType.skills.includes('invisible') && !alien.tags.includes('invisible')) || sideBySideTiles(selectedBat.tileId,tile.id))) {
+                    if (checkFlyTarget(selectedWeap,alienType) && ((!alienType.skills.includes('invisible') && !alien.tags.includes('invisible')) || sideBySideTiles(selectedBat.tileId,tile.id,false))) {
                         cursorSwitch('#',tile.id,'fire');
                     }
                 }
