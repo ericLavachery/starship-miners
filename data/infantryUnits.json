@@ -1057,7 +1057,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","undead","badmedic","dealer","bliss","sila","blaze","kirin","skupiac","camo"],
+        "skills":["fortif","cible","undead","badmedic","dealer","bliss","sila","blaze","kirin","skupiac","starka","camo"],
         "maxSKill":32,
         "skillCost":6,
         "fuzz":1,

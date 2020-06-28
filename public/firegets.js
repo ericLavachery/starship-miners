@@ -187,7 +187,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
     if (batType.skills.includes('defense') && !attacking) {
         speed = speed-10;
     }
-    if (weap.ammo.includes('disco') && attacking) {
+    if (weap.ammo.includes('disco')) {
         speed = speed-20;
     }
     if ((bat.apLeft < 0 && !batType.skills.includes('guerrilla')) || bat.apLeft > 0) {
