@@ -72,6 +72,7 @@ function combat() {
     // sort du mode furtif
     if (activeTurn == 'player') {
         camoOut();
+        tagAction();
         centerMapTarget();
     } else {
         centerMap();

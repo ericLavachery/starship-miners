@@ -246,6 +246,7 @@ function medic(cat,cost,around,deep) {
                                     if (bat.loc === "zone") {
                                         showBataillon(bat);
                                     }
+                                    putTagAction(bat);
                                 } else if (bat.tags.includes('venin') && (deep || playerInfos.caLevel >= 4)) {
                                     totalAPCost = totalAPCost+apCost;
                                     console.log('venin');
@@ -256,6 +257,7 @@ function medic(cat,cost,around,deep) {
                                     if (bat.loc === "zone") {
                                         showBataillon(bat);
                                     }
+                                    putTagAction(bat);
                                 } else if (bat.damage > 0 && !fullBat) {
                                     if (bat.id === selectedBat.id) {
                                         selectedBat.damage = 0
@@ -270,6 +272,7 @@ function medic(cat,cost,around,deep) {
                                     if (bat.loc === "zone") {
                                         showBataillon(bat);
                                     }
+                                    putTagAction(bat);
                                 } else if (bat.squadsLeft < batType.squads-1 && deep && batType.squads >= 10 && !fullBat) {
                                     // double soin pour unités ayant bcp de squads
                                     if (bat.id === selectedBat.id) {
@@ -286,6 +289,7 @@ function medic(cat,cost,around,deep) {
                                     if (bat.loc === "zone") {
                                         showBataillon(bat);
                                     }
+                                    putTagAction(bat);
                                 } else if (bat.squadsLeft < batType.squads && deep && !fullBat) {
                                     if (bat.id === selectedBat.id) {
                                         selectedBat.squadsLeft = selectedBat.squadsLeft+1;
@@ -301,6 +305,7 @@ function medic(cat,cost,around,deep) {
                                     if (bat.loc === "zone") {
                                         showBataillon(bat);
                                     }
+                                    putTagAction(bat);
                                 } else if (((bat.squadsLeft === batType.squads && bat.damage === 0) || fullBat) && bat.tags.includes('parasite') && deep) {
                                     tagDelete(bat,'parasite');
                                     totalAPCost = totalAPCost+apCost;
@@ -308,6 +313,7 @@ function medic(cat,cost,around,deep) {
                                     console.log('totalAPCost '+totalAPCost);
                                     xpGain = xpGain+1;
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">parasite tué<br></span>');
+                                    putTagAction(bat);
                                 } else if (((bat.squadsLeft === batType.squads && bat.damage === 0) || fullBat) && bat.tags.includes('maladie') && deep) {
                                     tagDelete(bat,'maladie');
                                     totalAPCost = totalAPCost+apCost;
@@ -315,6 +321,7 @@ function medic(cat,cost,around,deep) {
                                     console.log('totalAPCost '+totalAPCost);
                                     xpGain = xpGain+0.35;
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">maladie guérie<br></span>');
+                                    putTagAction(bat);
                                 }
                             } else {
                                 if (bat.squadsLeft === batType.squads && bat.damage > 0) {
@@ -342,6 +349,7 @@ function medic(cat,cost,around,deep) {
                                     if (bat.loc === "zone") {
                                         showBataillon(bat);
                                     }
+                                    putTagAction(bat);
                                 } else if (bat.squadsLeft < batType.squads && deep) {
                                     if (bat.id === selectedBat.id) {
                                         oldSquadsLeft = selectedBat.squadsLeft;
@@ -392,6 +400,7 @@ function medic(cat,cost,around,deep) {
                                     if (bat.loc === "zone") {
                                         showBataillon(bat);
                                     }
+                                    putTagAction(bat);
                                 } else if (bat.squadsLeft === batType.squads && bat.damage === 0 && bat.tags.includes('trou') && deep) {
                                     tagDelete(bat,'trou');
                                     if (bat.id != selectedBat.id) {
@@ -412,6 +421,7 @@ function medic(cat,cost,around,deep) {
                                     console.log('totalAPCost '+totalAPCost);
                                     xpGain = xpGain+0.35;
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">trous bouchés<br></span>');
+                                    putTagAction(bat);
                                 } else if (bat.apLeft < 5) {
                                     if (bat.id != selectedBat.id) {
                                         bat.apLeft = bat.apLeft+5;
@@ -480,6 +490,7 @@ function medic(cat,cost,around,deep) {
     selectedBat.xp = selectedBat.xp+xpGain;
     selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
     tagDelete(selectedBat,'mining');
+    tagAction();
     // selectedBat.salvoLeft = 0;
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -625,6 +636,7 @@ function goDrug(apCost,drug) {
                 console.log('starka bonus');
             }
         }
+        tagAction();
         selectedBatArrayUpdate();
         showBatInfos(selectedBat);
     }
@@ -698,6 +710,7 @@ function dropMine(apCost,mineType) {
     selectedBat.tags.push('skillUsed');
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     selectedBat.salvoLeft = 0;
+    tagAction();
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };

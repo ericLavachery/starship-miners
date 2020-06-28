@@ -262,11 +262,14 @@ function isStacked() {
 };
 
 function hasShot() {
-    if (selectedBat.salvoLeft >= selectedBatType.maxSalvo) {
-        return false;
-    } else {
-        return true;
+    let action = false;
+    if (selectedBatType.maxSalvo > selectedBat.salvoLeft) {
+        action = true;
     }
+    if (selectedBat.tags.includes('action')) {
+        action = true;
+    }
+    return action;
 };
 
 function isAdjacent(myTileIndex,thatTileIndex) {

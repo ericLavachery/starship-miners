@@ -235,6 +235,7 @@ function tagsUpdate(bat) {
     tagDelete(bat,'vise');
     tagDelete(bat,'embuscade');
     tagDelete(bat,'noBis');
+    tagDelete(bat,'action');
     if (rand.rand(1,3) <= 2) {
         tagDelete(bat,'stun');
     }
@@ -478,6 +479,15 @@ function tagDelete(bat,tag) {
         tagIndex = bat.tags.indexOf(tag);
         bat.tags.splice(tagIndex,1);
     }
+};
+
+function tagAction() {
+    selectedBat.tags.push('action');
+    selectedBatArrayUpdate();
+};
+
+function putTagAction(bat) {
+    bat.tags.push('action');
 };
 
 function levelUp(bat) {

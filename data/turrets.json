@@ -354,7 +354,7 @@
         "armor":14,
         "size":40,
         "stealth":0,
-        "ap":12,
+        "ap":18,
         "maxSalvo":2,
         "weapon":{
             "name":"Fusil plasma",
