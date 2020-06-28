@@ -36,6 +36,9 @@ function nextTurn() {
             bat.oldapLeft = bat.apLeft;
             tagsEffect(bat,batType);
             tagDelete(bat,'shield');
+            if (playerInfos.mapTurn > bat.creaTurn+10 && bat.type != 'Oeuf voilé') {
+                tagDelete(bat,'invisible');
+            }
         }
     });
     killAlienList();
