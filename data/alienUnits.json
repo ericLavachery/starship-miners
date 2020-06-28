@@ -1478,7 +1478,7 @@
     {
         "id":6,
         "name":"Oeuf",
-        "pic":"bigblob",
+        "pic":"oeuf",
         "cat":"aliens",
         "kind":"egg",
         "class":"X",
@@ -1506,7 +1506,7 @@
     {
         "id":39,
         "name":"Oeuf voilé",
-        "pic":"bigblob",
+        "pic":"oeufinv",
         "cat":"aliens",
         "kind":"egg",
         "class":"X",

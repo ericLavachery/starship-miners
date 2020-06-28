@@ -36,6 +36,9 @@ function nextTurn() {
             bat.oldapLeft = bat.apLeft;
             tagsEffect(bat,batType);
             tagDelete(bat,'shield');
+            if (rand.rand(1,3) <= 2) {
+                tagDelete(bat,'stun');
+            }
             if (playerInfos.mapTurn > bat.creaTurn+10 && bat.type != 'Oeuf voilé') {
                 tagDelete(bat,'invisible');
             }
@@ -250,7 +253,7 @@ function tagsUpdate(bat) {
         if (bat.tags.includes('sila')) {
             tagIndex = bat.tags.indexOf('sila');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat,true,false);
+            drugDown(bat,false,false);
         }
     }
     if (rand.rand(1,10) === 1) {
@@ -264,14 +267,14 @@ function tagsUpdate(bat) {
         if (bat.tags.includes('blaze')) {
             tagIndex = bat.tags.indexOf('blaze');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat,true,true);
+            drugDown(bat,false,true);
         }
     }
     if (rand.rand(1,10) === 1) {
         if (bat.tags.includes('skupiac')) {
             tagIndex = bat.tags.indexOf('skupiac');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat,true,false);
+            drugDown(bat,false,false);
         }
     }
     if (bat.tags.includes('starka')) {

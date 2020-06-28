@@ -494,6 +494,10 @@ function attack() {
             }
         }
     }
+    // Stun
+    if (selectedWeap.ammo.includes('poraz') || selectedWeap.ammo.includes('disco') || selectedWeap.ammo === 'gaz') {
+        targetBat.tags.push('stun');
+    }
     // ---------------------------------------------------------------------------------------------------------------------------
     if (apDamage >= 1) {
         $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
@@ -758,6 +762,10 @@ function defense() {
                 $('#report').append('<span class="report cy">Maladie<br></span>');
             }
         }
+    }
+    // Stun
+    if (targetWeap.ammo.includes('poraz') || targetWeap.ammo.includes('disco') || targetWeap.ammo === 'gaz') {
+        selectedBat.tags.push('stun');
     }
     // ---------------------------------------------------------------------------------------------------------------------------
     if (apDamage >= 1) {
