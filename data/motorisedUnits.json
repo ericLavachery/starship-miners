@@ -27,7 +27,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Mortier léger",
@@ -93,7 +93,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":2,
         "maxFlood":0,
@@ -129,7 +129,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Lance-flammes",
@@ -142,7 +142,7 @@
             "power":14,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["lf-feu","lf-napalm","lf-pyratol"],
+            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":24
         },
         "moveCost":2,
@@ -181,7 +181,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Lance-flammes",
@@ -193,7 +193,7 @@
             "power":17,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["lf-feu","lf-napalm","lf-pyratol"],
+            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":32
         },
         "moveCost":2,
@@ -284,7 +284,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005c",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Obusier",
@@ -334,7 +334,7 @@
             "armors":1.35,
             "aoe":"brochette",
             "sound":"warfare_gunshots_x2_rifle_exterior_shotgun",
-            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium"]
+            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Mitrailleuse",
@@ -347,7 +347,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_003b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":2,
         "maxFlood":1,
@@ -397,7 +397,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005c",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":2,
         "maxFlood":1,
@@ -542,7 +542,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005c",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"RPG",
@@ -701,7 +701,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"82459__threetails__50bmg_calibre",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
         "moveCost":2,
@@ -743,7 +743,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_distantc",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -794,7 +794,7 @@
             "power":19,
             "aoe":"brochette",
             "sound":"321552__brendan89__regular-arrow-shotc",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-poison","fleche-poraz","fleche-shinda"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -902,7 +902,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Missiles sunburst",
@@ -953,7 +953,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005c",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Obusier",
@@ -1005,7 +1005,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
         "moveCost":2,
@@ -1095,7 +1095,7 @@
             "power":10,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_distantc",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -1151,7 +1151,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -1203,7 +1203,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -1259,7 +1259,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005c",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Moissonneuse",
@@ -1311,7 +1311,7 @@
             "power":21,
             "aoe":"brochette",
             "sound":"321552__brendan89__regular-arrow-shotc",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-poison","fleche-poraz","fleche-shinda"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze"]
         },
         "weapon2":{
             "name":"Moissonneuse",
@@ -1378,7 +1378,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":4,
         "maxFlood":0,
@@ -1415,7 +1415,7 @@
             "armors":1.35,
             "aoe":"brochette",
             "sound":"warfare_gunshots_x2_rifle_exterior_shotgun",
-            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium"]
+            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Dynamite",
@@ -1466,7 +1466,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"238916__qubodup__rifle-shooting_revo",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Sling grenade",
@@ -1478,7 +1478,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
-            "ammo":["fireball","fireglue","fireblast"],
+            "ammo":["fireball","fireglue","fireslime","fireblast"],
             "maxAmmo":12
         },
         "moveCost":2,
@@ -1514,7 +1514,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -1566,7 +1566,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"82459__threetails__50bmg_calibre",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -1633,7 +1633,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005c",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
         "maxFlood":1,
@@ -1667,7 +1667,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -1719,7 +1719,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -1775,7 +1775,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005c",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
         "moveCost":1,
@@ -1872,7 +1872,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -1926,7 +1926,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Moissonneuse",
@@ -1992,7 +1992,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"82459__threetails__50bmg_calibre_multi",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":2,
         "maxFlood":0,
@@ -2028,7 +2028,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"87562__knufds__rifle-223-cal-take-1_hunting",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Lance-flammes",
@@ -2040,7 +2040,7 @@
             "power":12,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["lf-feu","lf-napalm","lf-pyratol"],
+            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":12
         },
         "moveCost":2,
@@ -2077,7 +2077,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_distantc",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Autocanon",
@@ -2127,7 +2127,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_003b",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -2182,7 +2182,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_003b",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Minibombes",
@@ -2246,7 +2246,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
         "maxFlood":0,
@@ -2284,7 +2284,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005c",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Bombes",
@@ -2427,7 +2427,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"87562__knufds__rifle-223-cal-take-1_hunting",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -2485,7 +2485,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"87562__knufds__rifle-223-cal-take-1_hunting",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -2599,7 +2599,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -2648,7 +2648,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"82459__threetails__50bmg_calibre",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -2700,7 +2700,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Boutoir",

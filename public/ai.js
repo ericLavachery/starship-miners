@@ -6,7 +6,7 @@ function alienMoveLoop() {
     defAlive = true;
     alienOccupiedTileList();
     playerOccupiedTileList();
-    if (selectedBatType.moveCost < 99) {
+    if (selectedBatType.moveCost < 99 && !selectedBat.tags.includes('freeze')) {
         isCamoBlock();
     }
     checkPDM();
@@ -863,7 +863,7 @@ function chooseMove() {
 };
 
 function doMove(jump) {
-    if (selectedBatType.moveCost < 99 && possibleMoves.length >= 1) {
+    if (selectedBatType.moveCost < 99 && possibleMoves.length >= 1 && !selectedBat.tags.includes('freeze')) {
         let tileId = possibleMoves[0];
         moveAlienBat(tileId,jump);
     }

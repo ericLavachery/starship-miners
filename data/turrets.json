@@ -269,7 +269,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Lance-flammes",
@@ -281,7 +281,7 @@
             "power":12,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["lf-feu","lf-napalm","lf-pyratol"],
+            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":24
         },
         "moveCost":99,
@@ -318,7 +318,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"351777__kennysvoice__sniper-rifle-m24-sfx_sniper",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Fusil antichar",
@@ -331,7 +331,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"386842__nioczkus__m1-garand-rifle_antichar",
-            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite"]
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
         "moveCost":99,
         "maxFlood":-1,
@@ -450,7 +450,7 @@
             "power":12,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["lf-feu","lf-napalm","lf-pyratol"],
+            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":32
         },
         "weapon2":{
@@ -464,7 +464,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"386842__nioczkus__m1-garand-rifle_antichar",
-            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite"]
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
         "moveCost":99,
         "maxFlood":-1,
@@ -514,7 +514,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":99,
         "maxFlood":-1,

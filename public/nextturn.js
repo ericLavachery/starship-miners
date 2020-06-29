@@ -39,6 +39,9 @@ function nextTurn() {
             if (rand.rand(1,3) <= 2) {
                 tagDelete(bat,'stun');
             }
+            if (rand.rand(1,6) === 1) {
+                tagDelete(bat,'freeze');
+            }
             if (playerInfos.mapTurn > bat.creaTurn+10 && bat.type != 'Oeuf voilé') {
                 tagDelete(bat,'invisible');
             }
@@ -246,7 +249,7 @@ function tagsUpdate(bat) {
         if (bat.tags.includes('kirin')) {
             tagIndex = bat.tags.indexOf('kirin');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat,false,false);
+            drugDown(bat,true,false);
         }
     }
     if (rand.rand(1,10) === 1) {
@@ -267,14 +270,14 @@ function tagsUpdate(bat) {
         if (bat.tags.includes('blaze')) {
             tagIndex = bat.tags.indexOf('blaze');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat,false,true);
+            drugDown(bat,true,true);
         }
     }
     if (rand.rand(1,10) === 1) {
         if (bat.tags.includes('skupiac')) {
             tagIndex = bat.tags.indexOf('skupiac');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat,false,false);
+            drugDown(bat,true,false);
         }
     }
     if (bat.tags.includes('starka')) {
@@ -284,9 +287,11 @@ function tagsUpdate(bat) {
     }
 };
 
-function drugDown(bat,poison,addict) {
-    if (poison) {
-        bat.tags.push('poison');
+function drugDown(bat,fatigue,addict) {
+    if (fatigue) {
+        if (bat.apLeft > 1) {
+            bat.apLeft = 1;
+        }
     }
     if (rand.rand(1,toxChance) === 1 && addict) {
         bat.tags.push('tox');
@@ -362,6 +367,17 @@ function tagsEffect(bat,batType) {
             tagDelete(bat,'maladie');
         } else {
             bat.apLeft = bat.apLeft-Math.floor(batType.ap/2.2);
+        }
+    }
+    // BLAZE
+    if (bat.tags.includes('blaze')) {
+        totalDamage = bat.damage+rand.rand((Math.round(poisonDamage/3)),poisonDamage);
+        squadHP = batType.squadSize*batType.hp;
+        squadsOut = Math.floor(totalDamage/squadHP);
+        bat.squadsLeft = bat.squadsLeft-squadsOut;
+        bat.damage = totalDamage-(squadsOut*squadHP);
+        if (bat.squadsLeft <= 0) {
+            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par la drogue.');
         }
     }
     if (!medicalTransports.includes(bat.locId) || bat.loc != 'trans') {
@@ -485,12 +501,16 @@ function tagDelete(bat,tag) {
 };
 
 function tagAction() {
-    selectedBat.tags.push('action');
-    selectedBatArrayUpdate();
+    if (!selectedBat.tags.includes('action')) {
+        selectedBat.tags.push('action');
+        selectedBatArrayUpdate();
+    }
 };
 
 function putTagAction(bat) {
-    bat.tags.push('action');
+    if (!bat.tags.includes('action')) {
+        bat.tags.push('action');
+    }
 };
 
 function levelUp(bat) {

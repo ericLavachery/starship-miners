@@ -24,7 +24,7 @@
             "armors":1.35,
             "aoe":"brochette",
             "sound":"warfare_gunshots_x2_rifle_exterior_shotgun",
-            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium"]
+            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Revolver",
@@ -37,7 +37,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"238916__qubodup__rifle-shooting_revo",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -108,7 +108,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{},
         "moveCost":3,
@@ -146,7 +146,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Fusil de précision",
@@ -160,7 +160,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"351777__kennysvoice__sniper-rifle-m24-sfx_sniper",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -195,7 +195,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"weapon_gun_ppsh_P_18-uzi",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Fusil de chasse",
@@ -208,7 +208,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"87562__knufds__rifle-223-cal-take-1_hunting",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -262,7 +262,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -301,7 +301,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze"]
         },
         "weapon2":{
             "name":"Lame",
@@ -353,7 +353,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"238916__qubodup__rifle-shooting_revo",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Hache",
@@ -418,7 +418,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"396271__greenfiresound__groscalibre",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -454,7 +454,7 @@
             "armors":1.35,
             "aoe":"brochette",
             "sound":"warfare_gunshots_x2_rifle_exterior_shotgun",
-            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium"]
+            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Ceinture goodbye",
@@ -499,7 +499,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Baïonnette",
@@ -550,7 +550,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"238916__qubodup__rifle-shooting_multi",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{},
         "moveCost":3,
@@ -587,7 +587,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Molotov",
@@ -599,7 +599,7 @@
             "power":10,
             "aoe":"squad",
             "sound":"audio_hero_MolotovCocktailThr_PE280101_381b",
-            "ammo":["molotov-feu","molotov-napalm"],
+            "ammo":["molotov-feu","molotov-slime"],
             "maxAmmo":12
         },
         "moveCost":3,
@@ -637,7 +637,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Pistolet",
@@ -649,7 +649,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "moveCost":4,
         "maxFlood":2,
@@ -737,7 +737,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"82459__threetails__50bmg_calibre",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"RPG",
@@ -787,7 +787,7 @@
             "power":12,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["lf-feu","lf-napalm","lf-pyratol"],
+            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":12
         },
         "weapon2":{
@@ -801,7 +801,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"238916__qubodup__rifle-shooting_revo",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -835,7 +835,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -884,7 +884,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -934,7 +934,7 @@
             "armors":1.2,
             "aoe":"unit",
             "sound":"410442__superphat__enfieldrifle_badc",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
         "moveCost":3,
@@ -979,7 +979,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"87562__knufds__rifle-223-cal-take-1_hunting",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Pioche",
@@ -1036,7 +1036,7 @@
             "armors":1.35,
             "aoe":"brochette",
             "sound":"warfare_gunshots_x2_rifle_exterior_shotgun",
-            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium"]
+            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Hache",
@@ -1089,7 +1089,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Hache",
@@ -1141,7 +1141,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze"]
         },
         "weapon2":{
             "name":"Lame",
@@ -1192,7 +1192,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Baïonnette",
@@ -1258,7 +1258,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1295,7 +1295,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"238916__qubodup__rifle-shooting_revo",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -1344,7 +1344,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_003b",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Lame",
@@ -1410,7 +1410,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"517058__invisible-inks__scifi-sniper-rifle",
-            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite"]
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1446,7 +1446,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"LG intégré",
@@ -1546,7 +1546,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_distantc",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Tronçonneuse",
@@ -1649,7 +1649,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"johnj_wafare_gun_pistol_silenced_walther_pp7-multi",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Hache",
@@ -1748,7 +1748,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Canon",
@@ -1800,7 +1800,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_003b",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"RPG",
@@ -1851,7 +1851,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"weapon_gun_ppsh_P_18-uzi",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Fusil de précision",
@@ -1865,7 +1865,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"351777__kennysvoice__sniper-rifle-m24-sfx_sniper",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1899,7 +1899,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_distantc",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Filet électrique",
@@ -1949,7 +1949,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"LG intégré",
@@ -2013,7 +2013,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"johnj_wafare_gun_pistol_silenced_walther_pp7-multi",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -2150,7 +2150,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
         "moveCost":3,
@@ -2186,7 +2186,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_005b",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Lame",
@@ -2425,7 +2425,7 @@
             "power":15,
             "aoe":"squad",
             "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
-            "ammo":["lf-feu","lf-napalm","lf-pyratol"],
+            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":18
         },
         "weapon2":{
@@ -2439,7 +2439,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"386842__nioczkus__m1-garand-rifle_antichar",
-            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite"]
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
         "moveCost":4,
         "maxFlood":3,
@@ -2488,7 +2488,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"warfare_gunshots_machine_gun_burst_003b",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":2,
         "maxFlood":3,
@@ -2523,7 +2523,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"396271__greenfiresound__groscalibre",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Rainbow gun",
@@ -2589,7 +2589,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"82459__threetails__50bmg_calibre",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":10,
         "maxFlood":1,
@@ -2623,7 +2623,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"82459__threetails__50bmg_calibre",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Molotov",
@@ -2636,7 +2636,7 @@
             "power":11,
             "aoe":"squad",
             "sound":"audio_hero_MolotovCocktailThr_PE280101_381b",
-            "ammo":["molotov-feu","molotov-napalm","molotov-pyratol"],
+            "ammo":["molotov-feu","molotov-slime","molotov-pyratol"],
             "maxAmmo":12
         },
         "moveCost":3,
@@ -2672,7 +2672,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"396271__greenfiresound__groscalibre",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Sling grenade",
@@ -2685,7 +2685,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throwb",
-            "ammo":["fireball","fireglue","fireblast"],
+            "ammo":["fireball","fireglue","fireslime","fireblast"],
             "maxAmmo":12
         },
         "moveCost":3,
@@ -2735,7 +2735,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"87562__knufds__rifle-223-cal-take-1_hunting",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":4,
         "maxFlood":3,
@@ -2771,7 +2771,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"weapon_gun_ppsh_P_18-uzi",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Guidage laser",
@@ -2821,7 +2821,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"weapon_gun_ppsh_P_18-uzi",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Canon laser",
@@ -2912,7 +2912,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"238916__qubodup__rifle-shooting_multi",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Fusil antichar",
@@ -2925,7 +2925,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"386842__nioczkus__m1-garand-rifle_antichar",
-            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite"]
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -2961,7 +2961,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"396271__greenfiresound__groscalibre",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"LG intégré",
@@ -3012,7 +3012,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"517058__invisible-inks__scifi-sniper-rifle_gunbot",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Marquage",

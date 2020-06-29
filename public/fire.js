@@ -293,6 +293,9 @@ function attack() {
     } else {
         shotDice = calcShotDice(selectedBat,false);
     }
+    if (playerInfos.pseudo === 'Test') {
+        shotDice = 100;
+    }
     console.log('shotDice='+shotDice);
     toHit = 999;
     let i = 1;
@@ -466,6 +469,16 @@ function attack() {
                 targetBat.tags.push('shinda');
                 console.log('Shinda!');
                 $('#report').append('<span class="report cy">Shinda<br></span>');
+            }
+        }
+    }
+    // freeze
+    if (totalDamage >= 50) {
+        if (selectedWeap.ammo.includes('freeze')) {
+            if (targetBatType.skills.includes('mutant') || targetBatType.cat == 'aliens') {
+                targetBat.tags.push('freeze');
+                console.log('Bossium Freeze!');
+                $('#report').append('<span class="report cy">Freeze<br></span>');
             }
         }
     }
@@ -650,7 +663,15 @@ function defense() {
     if (targetWeap.aeo == 'brochette') {
         brochette = true;
     }
-    let shotDice = calcShotDice(targetBat,false);
+    let shotDice = 100;
+    if (selectedBat.tags.includes('stun')) {
+        shotDice = 50;
+    } else {
+        shotDice = calcShotDice(targetBat,false);
+    }
+    if (playerInfos.pseudo === 'Test') {
+        shotDice = 100;
+    }
     toHit = 999;
     let i = 1;
     while (i <= shots) {
@@ -735,6 +756,16 @@ function defense() {
                 selectedBat.tags.push('shinda');
                 console.log('Shinda!');
                 $('#report').append('<span class="report cy">Shinda<br></span>');
+            }
+        }
+    }
+    // freeze
+    if (totalDamage >= 50) {
+        if (targetWeap.ammo.includes('freeze')) {
+            if (selectedBatType.skills.includes('mutant') || selectedBatType.cat == 'aliens') {
+                selectedBat.tags.push('freeze');
+                console.log('Bossium Freeze!');
+                $('#report').append('<span class="report cy">Freeze<br></span>');
             }
         }
     }

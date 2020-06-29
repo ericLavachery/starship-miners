@@ -149,6 +149,10 @@ function getStealth(bat) {
     if (batType.stealth > coverAdj) {
         maxStealth = coverAdj;
     }
+    // Starka drug
+    if (bat.tags.includes('starka')) {
+        maxStealth = Math.floor(maxStealth/2);
+    }
     return maxStealth+stealthBonus+vetStealth;
 };
 
@@ -434,7 +438,10 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.power = weapon.power;
     // sila drug
     if (bat.tags.includes('sila') && thisWeapon.isMelee) {
-        thisWeapon.power = thisWeapon.power+4;
+        thisWeapon.power = thisWeapon.power+5;
+    }
+    if (bat.tags.includes('sila') && !thisWeapon.isMelee) {
+        thisWeapon.accuracy = thisWeapon.accuracy-2;
     }
     // skupiac drug
     if (bat.tags.includes('skupiac')) {
