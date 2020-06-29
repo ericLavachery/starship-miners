@@ -121,7 +121,7 @@ function chooseTarget() {
             }
         }
     }
-    console.log('inPlace '+inPlace);
+    // console.log('inPlace '+inPlace);
     console.log(targetBat);
 };
 
@@ -150,7 +150,7 @@ function shootTarget(recul) {
         checkTargetBatType();
         tagDelete(selectedBat,'invisible');
         console.log('shoot '+targetBat.type);
-        console.log(targetBat);
+        // console.log(targetBat);
         tileTarget(targetBat);
         stopForFight = true;
         isFFW = false;
@@ -266,7 +266,7 @@ function checkPDM() {
     if (pointDeMire < 0) {
         pointDeMire = 1830;
     }
-    console.log('PDM: '+pointDeMire);
+    // console.log('PDM: '+pointDeMire);
 };
 
 function isSurrounded(bat) {
@@ -348,7 +348,7 @@ function anyCloseTarget() {
     });
     if (newPointDeMire >= 0) {
         pointDeMire = newPointDeMire;
-        console.log('new PDM: '+pointDeMire);
+        // console.log('new PDM: '+pointDeMire);
     }
 };
 
@@ -376,7 +376,7 @@ function anyFarTarget() {
     });
     if (newPointDeMire > 0) {
         pointDeMire = newPointDeMire;
-        console.log('new PDM: '+pointDeMire);
+        // console.log('new PDM: '+pointDeMire);
     }
 };
 
@@ -733,7 +733,7 @@ function checkGoodMoves() {
     }
     if (goodMoves.length >= 1) {
         possibleMoves = goodMoves;
-        console.log('ideal move found');
+        // console.log('ideal move found');
     }
 };
 
@@ -794,7 +794,7 @@ function checkAimMoves() {
     }
     if (goodMoves.length >= 1) {
         possibleMoves = goodMoves;
-        console.log('PDM ideal move found');
+        // console.log('PDM ideal move found');
     }
 };
 
@@ -809,7 +809,7 @@ function delPossibleMove(delId) {
 
 function moveToPDM() {
     if (selectedBatType.moveCost < 99) {
-        console.log('move to PDM');
+        // console.log('move to PDM');
         let jump = false;
         if ((selectedBatType.skills.includes('fouisseur') || selectedBatType.skills.includes('sauteur')) && rand.rand(1,3) === 1) {
             jump = true;
@@ -833,13 +833,13 @@ function moveToPDM() {
         }
         chooseMove();
         doMove(jump);
-        console.log(possibleMoves);
+        // console.log(possibleMoves);
     }
 };
 
 function moveOutOfMelee() {
     if (selectedBatType.moveCost < 99) {
-        console.log('move out of melee');
+        // console.log('move out of melee');
         // bouge de 1 tile hors mêlée
         checkPossibleMoves();
         uncheckMeleeMoves();
@@ -852,7 +852,7 @@ function moveOutOfMelee() {
         }
         chooseMove();
         doMove(false);
-        console.log(possibleMoves);
+        // console.log(possibleMoves);
     }
 };
 
@@ -914,7 +914,7 @@ function anyTargetInRange() {
 };
 
 function targetMelee() {
-    console.log('targetMelee');
+    // console.log('targetMelee');
     let distance;
     let inPlace = false;
     let minFuzz = -1;
@@ -941,7 +941,7 @@ function targetMelee() {
 };
 
 function targetFarthest() {
-    console.log('targetFarthest');
+    // console.log('targetFarthest');
     let distance = 0;
     let lePlusLoin = 0;
     let inPlace = false;
@@ -985,7 +985,7 @@ function targetFarthest() {
 };
 
 function targetClosest() {
-    console.log('targetClosest');
+    // console.log('targetClosest');
     let inPlace = false;
     let distance = 100;
     let lePlusProche = 100;
@@ -1047,7 +1047,7 @@ function isAlienInMelee(tileId) {
 };
 
 function isCamoBlock() {
-    console.log('isCamoBlock?');
+    // console.log('isCamoBlock?');
     let alienAdjTiles = [];
     alienAdjTiles.push(selectedBat.tileId-1);
     alienAdjTiles.push(selectedBat.tileId+1);
@@ -1062,7 +1062,7 @@ function isCamoBlock() {
     alienMeleeTiles.push(selectedBat.tileId+1);
     alienMeleeTiles.push(selectedBat.tileId-mapSize);
     alienMeleeTiles.push(selectedBat.tileId+mapSize);
-    console.log(alienAdjTiles);
+    // console.log(alienAdjTiles);
     let camoBlocks = 0;
     let meleeBlocks = 0;
     let allBlocks = 0;
@@ -1095,10 +1095,10 @@ function isCamoBlock() {
             });
         }
     });
-    console.log('camoGroup: '+camoGroup);
-    console.log('camoBlocks: '+camoBlocks);
-    console.log('meleeBlocks: '+meleeBlocks);
-    console.log('allBlocks: '+allBlocks);
+    // console.log('camoGroup: '+camoGroup);
+    // console.log('camoBlocks: '+camoBlocks);
+    // console.log('meleeBlocks: '+meleeBlocks);
+    // console.log('allBlocks: '+allBlocks);
     let blocked = false;
     if (camoBlocks >= 2 && meleeBlocks >= 1 && allBlocks >= 3) {
         blocked = true;
@@ -1138,7 +1138,7 @@ function alienBonus() {
 function fearFactor(myBat,blob) {
     let myBatType = getBatType(myBat);
     if (myBatType.skills.includes('fear') || blob) {
-        console.log('FEAR');
+        // console.log('FEAR');
         let distance;
         let fearChance;
         let batIndex;
@@ -1160,11 +1160,11 @@ function fearFactor(myBat,blob) {
                                 fearChance = Math.round(75-(batType.size*2.5)-(bat.vet*12)+(batType.stealth*2));
                             }
                         }
-                        console.log('fearChance='+fearChance);
+                        // console.log('fearChance='+fearChance);
                         if (rand.rand(1,100) <= fearChance) {
                             getAway(bat,myBat.tileId,blob);
                         } else {
-                            console.log('noFear');
+                            // console.log('noFear');
                         }
                     }
                 }
@@ -1174,8 +1174,8 @@ function fearFactor(myBat,blob) {
 };
 
 function getAway(bat,fromTileId,blob) {
-    console.log('getAway');
-    console.log(bat);
+    // console.log('getAway');
+    // console.log(bat);
     let distFromTile;
     let distFromSelf;
     let getAwayTile = -1;

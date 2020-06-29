@@ -73,7 +73,7 @@ function batSelect(bat) {
     }
     selectedBat = JSON.parse(JSON.stringify(bat));
     targetBat = {};
-    console.log(selectedBat);
+    // console.log(selectedBat);
     if (activeTurn == 'aliens' || !isVisible(bat.tileId)) {
         centerMap();
     }

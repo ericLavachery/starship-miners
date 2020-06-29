@@ -1913,7 +1913,7 @@
         "armor":12,
         "size":33,
         "stealth":0,
-        "ap":10,
+        "ap":15,
         "maxSalvo":2,
         "weapon":{
             "name":"Mitrailleuse",
@@ -1943,11 +1943,12 @@
             "sound":"industrial_vehicle_combine_harvester_approach_passb",
             "ammo":["lame","lame-tungsten","lame-mono"]
         },
-        "moveCost":2,
+        "moveCost":3,
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["fortif","recycle","transport","fret","maycamo","deepselfmecano","defense"],
+        "skills":["fortif","recycle","transport","fret","maycamo","mecano","defense"],
+        "skillCost":10,
         "transMaxSize":9,
         "transUnits":400,
         "transRes":800,

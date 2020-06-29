@@ -76,7 +76,7 @@ function conSelect(unitId,player,noRefresh) {
         let unitIndex = alienUnits.findIndex((obj => obj.id == unitId));
         conselUnit = alienUnits[unitIndex];
     }
-    console.log(conselUnit);
+    // console.log(conselUnit);
     $('#conAmmoList').empty();
     $('#conAmmoList').append('<br>');
     let listNum = 1;
@@ -118,7 +118,7 @@ function selectAmmo(ammo,weapon,unitId) {
     } else {
         conselAmmos[1] = ammo;
     }
-    console.log(conselAmmos);
+    // console.log(conselAmmos);
     conSelect(unitId,'player',true);
 };
 
@@ -169,7 +169,7 @@ function putBat(tileId,citoyens,xp,startTag) {
             }
             team = 'aliens';
         }
-        console.log('next ID '+nextId);
+        // console.log('next ID '+nextId);
         let newBat = {};
         newBat.id = nextId;
         newBat.type = conselUnit.name;
@@ -244,11 +244,11 @@ function putBat(tileId,citoyens,xp,startTag) {
         }
         if (newBat.team === 'player') {
             bataillons.push(newBat);
-            console.log(bataillons);
+            // console.log(bataillons);
             showBataillon(newBat);
         } else {
             aliens.push(newBat);
-            console.log(aliens);
+            // console.log(aliens);
             showAlien(newBat);
         }
     } else {
