@@ -100,6 +100,9 @@ function showAlien(bat) {
     if (bat.tags.includes('stun')) {
         tagz = tagz+' (stun)';
     }
+    if (bat.tags.includes('freeze')) {
+        tagz = tagz+' (freeze)';
+    }
     if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
         $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
     } else {
