@@ -442,9 +442,9 @@ function skillsInfos(bat,batUnitType) {
         }
         // BLISS
         if (allDrugs.includes('bliss') && !bat.tags.includes('bliss')) {
-            apCost = 3;
+            apCost = 1;
             if (bat.apLeft >= apCost) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Dégâts reçus réduits mais -2 PA, immunisé à la peur" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Dégâts reçus réduits / immunisé à la peur" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</h4></span>');
             } else {
                 skillMessage = "Pas assez de PA";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</h4></span>');
@@ -454,7 +454,7 @@ function skillsInfos(bat,batUnitType) {
         if (allDrugs.includes('blaze') && !bat.tags.includes('blaze')) {
             apCost = 3;
             if (bat.apLeft >= apCost) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+8 PA & +1 salve" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+6 PA & +1 salve" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</h4></span>');
             } else {
                 skillMessage = "Pas assez de PA";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</h4></span>');
@@ -464,7 +464,7 @@ function skillsInfos(bat,batUnitType) {
         if (allDrugs.includes('skupiac') && !bat.tags.includes('skupiac')) {
             apCost = 3;
             if (bat.apLeft >= apCost) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Concentration: +6 précision / guérit les maladies" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Concentration: +6 précision / +3 défense / guérit les maladies" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</h4></span>');
             } else {
                 skillMessage = "Pas assez de PA";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</h4></span>');
@@ -474,7 +474,7 @@ function skillsInfos(bat,batUnitType) {
         if (allDrugs.includes('sila') && !bat.tags.includes('sila')) {
             apCost = 3;
             if (bat.apLeft >= apCost) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+4 puissance aux armes de mêlée" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+5 puissance aux armes de mêlée" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</h4></span>');
             } else {
                 skillMessage = "Pas assez de PA";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</h4></span>');

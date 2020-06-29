@@ -443,6 +443,10 @@ function weaponAdj(weapon,bat,wn) {
     if (bat.tags.includes('sila') && !thisWeapon.isMelee) {
         thisWeapon.accuracy = thisWeapon.accuracy-2;
     }
+    // blaze drug
+    if (bat.tags.includes('blaze') && !thisWeapon.isMelee) {
+        thisWeapon.accuracy = thisWeapon.accuracy-2;
+    }
     // skupiac drug
     if (bat.tags.includes('skupiac')) {
         thisWeapon.accuracy = thisWeapon.accuracy+6;
