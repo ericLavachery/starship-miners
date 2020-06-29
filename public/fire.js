@@ -864,6 +864,9 @@ function shot(weapon,attBatType,bat,batType,shotDice) {
     let result = {damage:0,hits:0};
     let cover = getCover(bat,true);
     let stealth = getStealth(bat);
+    if (weapon.isMelee) {
+        stealth = Math.round(stealth/2);
+    }
     // skupiac drug
     let batSpeed = batType.speed;
     if (bat.tags.includes('skupiac')) {
@@ -910,6 +913,9 @@ function blast(brochette,attBatType,aoeShots,weapon,bat,batType,shotDice) {
     let oldPower = weapon.power;
     let cover = getCover(bat,true);
     let stealth = getStealth(bat);
+    if (weapon.isMelee) {
+        stealth = Math.round(stealth/2);
+    }
     // skupiac drug
     let batSpeed = batType.speed;
     if (bat.tags.includes('skupiac')) {

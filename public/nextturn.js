@@ -289,8 +289,8 @@ function tagsUpdate(bat) {
 
 function drugDown(bat,fatigue,addict) {
     if (fatigue) {
-        if (bat.apLeft > 1) {
-            bat.apLeft = 1;
+        if (bat.apLeft > 3) {
+            bat.apLeft = 3;
         }
     }
     if (rand.rand(1,toxChance) === 1 && addict) {
