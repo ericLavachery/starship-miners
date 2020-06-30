@@ -532,7 +532,7 @@ function weaponAdj(weapon,bat,wn) {
     let ammoIndex = ammoTypes.findIndex((obj => obj.name == myAmmo));
     let ammo = ammoTypes[ammoIndex];
     thisWeapon.ammo = myAmmo;
-    if (thisWeapon.range === 0 && ammo.range > 0) {
+    if (thisWeapon.range === 0 && ammo.range > 1) {
         thisWeapon.range = 1;
     } else {
         thisWeapon.range = Math.ceil(thisWeapon.range*ammo.range);
