@@ -1,7 +1,7 @@
 [
     {
         "name": "guidage",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0,
@@ -11,7 +11,7 @@
     },
     {
         "name": "marquage",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0,
@@ -21,7 +21,7 @@
     },
     {
         "name": "standard",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -31,7 +31,7 @@
     },
     {
         "name": "scrap",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": -1,
         "armors": 1.5,
@@ -41,7 +41,7 @@
     },
     {
         "name": "perfo",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": -2,
         "armors": 0.4,
@@ -51,7 +51,7 @@
     },
     {
         "name": "tungsten",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.5,
@@ -61,7 +61,7 @@
     },
     {
         "name": "uranium",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 1,
         "armors": 0.35,
@@ -71,7 +71,7 @@
     },
     {
         "name": "teflon",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.75,
@@ -81,7 +81,7 @@
     },
     {
         "name": "titanium",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": -1,
         "armors": 0.7,
@@ -91,7 +91,7 @@
     },
     {
         "name": "hollow",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 3,
         "armors": 2,
@@ -101,7 +101,7 @@
     },
     {
         "name": "dunium",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 10,
         "armors": 1.25,
@@ -111,7 +111,7 @@
     },
     {
         "name": "explosive",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 5,
         "armors": 0.75,
@@ -121,7 +121,7 @@
     },
     {
         "name": "timonium",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 3,
         "armors": 0.35,
@@ -131,7 +131,7 @@
     },
     {
         "name": "salite",
-        "range": 1,
+        "range": 1.4,
         "rof": 1.25,
         "power": 0,
         "armors": 0.7,
@@ -151,7 +151,7 @@
     },
     {
         "name": "ac-tungsten",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.5,
@@ -161,7 +161,7 @@
     },
     {
         "name": "ac-uranium",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 6,
         "armors": 0.35,
@@ -171,7 +171,7 @@
     },
     {
         "name": "ac-explosive",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 9,
         "armors": 0.75,
@@ -181,7 +181,7 @@
     },
     {
         "name": "ac-timonium",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 8,
         "armors": 0.35,
@@ -201,7 +201,7 @@
     },
     {
         "name": "ac-salite",
-        "range": 1,
+        "range": 1.4,
         "rof": 1,
         "power": 0,
         "armors": 0.75,
@@ -211,7 +211,7 @@
     },
     {
         "name": "sm-perfo",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": -1,
         "armors": 0.6,
@@ -221,7 +221,7 @@
     },
     {
         "name": "sm-tungsten",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.65,
@@ -231,7 +231,7 @@
     },
     {
         "name": "sm-uranium",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 1,
         "armors": 0.5,
@@ -241,7 +241,7 @@
     },
     {
         "name": "sm-teflon",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.75,
@@ -251,7 +251,7 @@
     },
     {
         "name": "sm-titanium",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": -1,
         "armors": 0.7,
@@ -261,7 +261,7 @@
     },
     {
         "name": "sm-hollow",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 2,
         "armors": 2,
@@ -271,7 +271,7 @@
     },
     {
         "name": "sm-dunium",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 7,
         "armors": 1.25,
@@ -281,7 +281,7 @@
     },
     {
         "name": "sm-explosive",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 3,
         "armors": 0.8,
@@ -291,7 +291,7 @@
     },
     {
         "name": "sm-timonium",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 2,
         "armors": 0.5,
@@ -301,7 +301,7 @@
     },
     {
         "name": "sm-salite",
-        "range": 1,
+        "range": 1.4,
         "rof": 1.25,
         "power": 0,
         "armors": 0.7,
@@ -321,7 +321,7 @@
     },
     {
         "name": "laser",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.5,
@@ -331,7 +331,7 @@
     },
     {
         "name": "laser-g2",
-        "range": 2,
+        "range": 1.6,
         "rof": 1,
         "power": 0,
         "armors": 0.5,
@@ -341,7 +341,7 @@
     },
     {
         "name": "bfg",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.75,
@@ -351,7 +351,7 @@
     },
     {
         "name": "bfg-g2",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 5,
         "armors": 0.5,
@@ -361,7 +361,7 @@
     },
     {
         "name": "plasma",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.5,
@@ -371,7 +371,7 @@
     },
     {
         "name": "plastanium",
-        "range": 1,
+        "range": 1.4,
         "rof": 1.5,
         "power": 0,
         "armors": 0.67,
@@ -381,7 +381,7 @@
     },
     {
         "name": "nanite",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.67,
@@ -391,7 +391,7 @@
     },
     {
         "name": "uridium",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 4,
         "armors": 0.25,
@@ -401,7 +401,7 @@
     },
     {
         "name": "cn-plasma",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.25,
@@ -421,7 +421,7 @@
     },
     {
         "name": "cn-nanite",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 4,
         "armors": 0.5,
@@ -431,7 +431,7 @@
     },
     {
         "name": "cn-uridium",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 4,
         "armors": 0.1,
@@ -441,7 +441,7 @@
     },
     {
         "name": "fleche",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -451,7 +451,7 @@
     },
     {
         "name": "fleche-scrap",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": -1,
         "armors": 1.5,
@@ -461,7 +461,7 @@
     },
     {
         "name": "fleche-tungten",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.75,
@@ -471,7 +471,7 @@
     },
     {
         "name": "fleche-mono",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": -2,
         "armors": 0,
@@ -481,7 +481,7 @@
     },
     {
         "name": "fleche-poison",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -491,7 +491,7 @@
     },
     {
         "name": "fleche-poraz",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 3,
         "armors": 0.75,
@@ -501,7 +501,7 @@
     },
     {
         "name": "fleche-shinda",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.75,
@@ -511,7 +511,7 @@
     },
     {
         "name": "fleche-freeze",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.75,
@@ -520,8 +520,18 @@
         "aoe": ""
     },
     {
+        "name": "fleche-homing",
+        "range": 1.4,
+        "rof": 1,
+        "power": 2,
+        "armors": 0.75,
+        "accuracy": 1.5,
+        "apdamage": 0.12,
+        "aoe": ""
+    },
+    {
         "name": "lame",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -531,7 +541,7 @@
     },
     {
         "name": "lame-scrap",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": -1,
         "armors": 1.5,
@@ -541,7 +551,7 @@
     },
     {
         "name": "lame-mono",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": -1,
         "armors": 0,
@@ -551,7 +561,7 @@
     },
     {
         "name": "lame-plasma",
-        "range": 0,
+        "range": 1,
         "rof": 0.67,
         "power": 10,
         "armors": 0.25,
@@ -561,7 +571,7 @@
     },
     {
         "name": "lame-adamantium",
-        "range": 0,
+        "range": 1,
         "rof": 1.5,
         "power": 0,
         "armors": 0.5,
@@ -571,7 +581,7 @@
     },
     {
         "name": "lame-poison",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -581,7 +591,7 @@
     },
     {
         "name": "lame-poraz",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 3,
         "armors": 0.75,
@@ -591,7 +601,7 @@
     },
     {
         "name": "lame-taser",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 2,
         "armors": 1,
@@ -601,7 +611,7 @@
     },
     {
         "name": "lame-tungsten",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.5,
@@ -611,7 +621,7 @@
     },
     {
         "name": "suicide",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.5,
@@ -621,7 +631,7 @@
     },
     {
         "name": "autodestruction",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.5,
@@ -631,7 +641,7 @@
     },
     {
         "name": "dynamite",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.67,
@@ -641,7 +651,7 @@
     },
     {
         "name": "dynamite-nitrate",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 4,
         "armors": 0.4,
@@ -651,7 +661,7 @@
     },
     {
         "name": "dynamite-nanite",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 10,
         "armors": 0.4,
@@ -661,7 +671,7 @@
     },
     {
         "name": "bombe-thermos",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 5,
         "armors": 0.25,
@@ -671,7 +681,7 @@
     },
     {
         "name": "boulet",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.75,
@@ -681,7 +691,7 @@
     },
     {
         "name": "boulet-explosif",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.67,
@@ -691,7 +701,7 @@
     },
     {
         "name": "boulet-incendiaire",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 6,
         "armors": 1,
@@ -701,7 +711,7 @@
     },
     {
         "name": "obus",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.66,
@@ -711,7 +721,7 @@
     },
     {
         "name": "obus-scrap",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": -4,
         "armors": 1,
@@ -721,7 +731,7 @@
     },
     {
         "name": "obus-tungsten",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.4,
@@ -731,7 +741,7 @@
     },
     {
         "name": "obus-explosif",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.66,
@@ -741,7 +751,7 @@
     },
     {
         "name": "obus-heat",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 4,
         "armors": 0.5,
@@ -751,7 +761,7 @@
     },
     {
         "name": "obus-fleche",
-        "range": 0,
+        "range": 1.1,
         "rof": 1,
         "power": 12,
         "armors": 0.25,
@@ -761,7 +771,7 @@
     },
     {
         "name": "obus-incendiaire",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 6,
         "armors": 1,
@@ -771,7 +781,7 @@
     },
     {
         "name": "obus-napalm",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 9,
         "armors": 1,
@@ -781,7 +791,7 @@
     },
     {
         "name": "obus-gaz",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": -12,
         "armors": 0,
@@ -791,7 +801,7 @@
     },
     {
         "name": "obus-heatseeker",
-        "range": 1,
+        "range": 1.4,
         "rof": 1,
         "power": 4,
         "armors": 0.5,
@@ -801,7 +811,7 @@
     },
     {
         "name": "missile-sunburst",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.25,
@@ -811,7 +821,7 @@
     },
     {
         "name": "missile-vanguard",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.5,
@@ -821,7 +831,7 @@
     },
     {
         "name": "missile",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.66,
@@ -831,7 +841,7 @@
     },
     {
         "name": "missile-tungsten",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.4,
@@ -841,7 +851,7 @@
     },
     {
         "name": "missile-heat",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 8,
         "armors": 0.5,
@@ -851,7 +861,7 @@
     },
     {
         "name": "missile-fleche",
-        "range": 0,
+        "range": 1.1,
         "rof": 1,
         "power": 20,
         "armors": 0.25,
@@ -861,7 +871,7 @@
     },
     {
         "name": "missile-incendiaire",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 8,
         "armors": 1,
@@ -871,7 +881,7 @@
     },
     {
         "name": "missile-napalm",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 12,
         "armors": 1,
@@ -881,7 +891,7 @@
     },
     {
         "name": "missile-gaz",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": -20,
         "armors": 0,
@@ -891,7 +901,7 @@
     },
     {
         "name": "missile-heatseeker",
-        "range": 1,
+        "range": 1.1,
         "rof": 1,
         "power": 8,
         "armors": 0.5,
@@ -901,7 +911,7 @@
     },
     {
         "name": "missile-homing",
-        "range": 3,
+        "range": 1.4,
         "rof": 1,
         "power": 8,
         "armors": 0.5,
@@ -911,7 +921,7 @@
     },
     {
         "name": "grenade",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.75,
@@ -921,7 +931,7 @@
     },
     {
         "name": "grenade-flashbang",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": -7,
         "armors": 0,
@@ -931,7 +941,7 @@
     },
     {
         "name": "grenade-incendiaire",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 2,
         "armors": 1.25,
@@ -941,7 +951,7 @@
     },
     {
         "name": "grenade-gaz",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": -4,
         "armors": 0,
@@ -951,7 +961,7 @@
     },
     {
         "name": "grenade-antichar",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 6,
         "armors": 0.25,
@@ -961,7 +971,7 @@
     },
     {
         "name": "disco",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0,
@@ -971,7 +981,7 @@
     },
     {
         "name": "gaz",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0,
@@ -981,7 +991,7 @@
     },
     {
         "name": "molotov-feu",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -991,7 +1001,7 @@
     },
     {
         "name": "molotov-slime",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.75,
@@ -1001,7 +1011,7 @@
     },
     {
         "name": "molotov-pyratol",
-        "range": 0,
+        "range": 1,
         "rof": 2,
         "power": 4,
         "armors": 0.75,
@@ -1011,7 +1021,7 @@
     },
     {
         "name": "lf-feu",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1.5,
@@ -1021,7 +1031,7 @@
     },
     {
         "name": "lf-napalm",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 4,
         "armors": 1.25,
@@ -1031,7 +1041,7 @@
     },
     {
         "name": "lf-slime",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -1041,7 +1051,7 @@
     },
     {
         "name": "lf-pyratol",
-        "range": 1,
+        "range": 1.4,
         "rof": 2,
         "power": 4,
         "armors": 0.9,
@@ -1051,7 +1061,7 @@
     },
     {
         "name": "lt-o2",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0,
@@ -1061,7 +1071,7 @@
     },
     {
         "name": "lt-nanite",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.25,
@@ -1071,7 +1081,7 @@
     },
     {
         "name": "fireball",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1.25,
@@ -1081,7 +1091,7 @@
     },
     {
         "name": "fireglue",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 5,
         "armors": 0.5,
@@ -1091,7 +1101,7 @@
     },
     {
         "name": "fireslime",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -1101,7 +1111,7 @@
     },
     {
         "name": "fireblast",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 3,
         "armors": 1.75,
@@ -1111,7 +1121,7 @@
     },
     {
         "name": "none",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -1121,7 +1131,7 @@
     },
     {
         "name": "creuseur",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -1131,7 +1141,7 @@
     },
     {
         "name": "troueur",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.3,
@@ -1141,7 +1151,7 @@
     },
     {
         "name": "web",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -1151,7 +1161,7 @@
     },
     {
         "name": "electric",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0,
@@ -1161,7 +1171,7 @@
     },
     {
         "name": "spit",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.5,
@@ -1171,7 +1181,7 @@
     },
     {
         "name": "spitbug",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.67,
@@ -1181,7 +1191,7 @@
     },
     {
         "name": "glair",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -1191,7 +1201,7 @@
     },
     {
         "name": "acide",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.5,
@@ -1201,7 +1211,7 @@
     },
     {
         "name": "venin",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0,
@@ -1211,7 +1221,7 @@
     },
     {
         "name": "parasite",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -1221,7 +1231,7 @@
     },
     {
         "name": "glue",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.25,
@@ -1231,7 +1241,7 @@
     },
     {
         "name": "toxine",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0.25,
@@ -1241,7 +1251,7 @@
     },
     {
         "name": "poison",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -1251,7 +1261,7 @@
     },
     {
         "name": "feu",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1.5,
@@ -1261,7 +1271,7 @@
     },
     {
         "name": "napalm",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 1,
@@ -1271,7 +1281,7 @@
     },
     {
         "name": "oxycombustion",
-        "range": 0,
+        "range": 1,
         "rof": 1,
         "power": 0,
         "armors": 0,

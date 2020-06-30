@@ -262,7 +262,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -301,7 +301,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
             "name":"Lame",
@@ -1141,7 +1141,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
             "name":"Lame",
@@ -1258,7 +1258,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"321552__brendan89__regular-arrow-shotb",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "moveCost":3,
         "maxFlood":3,

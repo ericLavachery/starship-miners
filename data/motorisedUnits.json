@@ -794,7 +794,7 @@
             "power":19,
             "aoe":"brochette",
             "sound":"321552__brendan89__regular-arrow-shotc",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -848,7 +848,7 @@
             "power":30,
             "aoe":"brochette",
             "sound":"zapsplat_science_fiction_weapon_gun_shoot_001_32194c",
-            "ammo":["plasma","plastanium","uridium","nanite"]
+            "ammo":["cn-plasma","cn-plastanium","cn-uridium","cn-nanite"]
         },
         "weapon2":{
             "name":"Missiles squash",
@@ -1311,7 +1311,7 @@
             "power":21,
             "aoe":"brochette",
             "sound":"321552__brendan89__regular-arrow-shotc",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
             "name":"Moissonneuse",
@@ -2337,7 +2337,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"PM_FSSF2_WEAPONS_D1_SHOT_323c",
-            "ammo":["plasma","plastanium","nanite"]
+            "ammo":["cn-plasma","cn-plastanium","cn-nanite"]
         },
         "weapon2":{
             "name":"Minibombes",
