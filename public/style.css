@@ -218,19 +218,19 @@ h4 {
     margin-left: 2px;
 }
 .pUnits {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(221, 248, 252, 0.3);
     border-style: solid;
     border-width: 1px;
-    border-color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(221, 248, 252, 0.5);
     border-radius: 8px;
     position: absolute;
     /* margin: 1px 1px 1px 1px; */
 }
 .aUnits {
-    background-color: rgba(255, 254, 177, 0.3);
+    background-color: rgba(251, 250, 148, 0.3);
     border-style: solid;
     border-width: 1px;
-    border-color: rgba(255, 249, 115, 0.4);
+    border-color: rgba(251, 250, 148, 0.5);
     border-radius: 8px;
     position: absolute;
     /* margin: 1px 1px 1px 1px; */

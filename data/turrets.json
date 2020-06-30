@@ -372,7 +372,6 @@
             "cost":5,
             "range":5,
             "elevation":1,
-            "noMelee":true,
             "rof":4,
             "accuracy":50,
             "power":18,
