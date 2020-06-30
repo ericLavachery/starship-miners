@@ -369,17 +369,6 @@ function tagsEffect(bat,batType) {
             bat.apLeft = bat.apLeft-Math.floor(batType.ap/2.2);
         }
     }
-    // BLAZE
-    if (bat.tags.includes('blaze')) {
-        totalDamage = bat.damage+rand.rand((Math.round(poisonDamage/3)),poisonDamage);
-        squadHP = batType.squadSize*batType.hp;
-        squadsOut = Math.floor(totalDamage/squadHP);
-        bat.squadsLeft = bat.squadsLeft-squadsOut;
-        bat.damage = totalDamage-(squadsOut*squadHP);
-        if (bat.squadsLeft <= 0) {
-            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par la drogue.');
-        }
-    }
     if (!medicalTransports.includes(bat.locId) || bat.loc != 'trans') {
         // PARASITE
         if (bat.tags.includes('parasite')) {
@@ -404,6 +393,17 @@ function tagsEffect(bat,batType) {
             bat.damage = totalDamage-(squadsOut*squadHP);
             if (bat.squadsLeft <= 0) {
                 batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par la toxine.');
+            }
+        }
+        // BLAZE
+        if (bat.tags.includes('blaze')) {
+            totalDamage = bat.damage+rand.rand((Math.round(poisonDamage/3)),poisonDamage);
+            squadHP = batType.squadSize*batType.hp;
+            squadsOut = Math.floor(totalDamage/squadHP);
+            bat.squadsLeft = bat.squadsLeft-squadsOut;
+            bat.damage = totalDamage-(squadsOut*squadHP);
+            if (bat.squadsLeft <= 0) {
+                batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par la drogue.');
             }
         }
         // VENIN
@@ -452,10 +452,13 @@ function tagsEffect(bat,batType) {
 
 function checkDeath(bat,batType) {
     if (bat.squadsLeft <= 0) {
+        let deadId = bat.id;
+        let tileId = bat.tileId;
         let batType = getBatType(bat);
         if (bat.team == 'player') {
             if (!batType.skills.includes('nodeathcount')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
+                transDestroy(deadId,tileId);
                 playMusic('rip',false);
             }
             deadBatsList.push(bat.id);

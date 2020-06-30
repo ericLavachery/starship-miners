@@ -970,12 +970,15 @@ function blast(brochette,attBatType,aoeShots,weapon,bat,batType,shotDice) {
 
 function batDeath(bat,count) {
     console.log('DEATH');
+    let deadId = bat.id;
+    let tileId = bat.tileId;
     let batType = getBatType(bat);
     if (bat.team == 'player') {
         let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
         bataillons.splice(batIndex,1);
         if (count && !batType.skills.includes('nodeathcount')) {
             playerInfos.unitsLost = playerInfos.unitsLost+1;
+            transDestroy(deadId,tileId);
             playMusic('rip',false);
         }
         batIndex = batList.findIndex((obj => obj.id == bat.id));
@@ -1029,4 +1032,52 @@ function batDeathEffect(bat,quiet,title,body) {
         $('#b'+bat.tileId).append(resHere);
         warning(title,body);
     }
+};
+
+function transDestroy(deadId,tileId) {
+    alienOccupiedTileList();
+    playerOccupiedTileList();
+    let savedBats = 0;
+    let crashBats = [];
+    let batIndex;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "trans" && bat.locId === deadId) {
+            crashBats.push(bat);
+        }
+    });
+    let crashEscapeTile = -1;
+    crashBats.forEach(function(bat) {
+        crashEscapeTile = -1;
+        if (rand.rand(1,2) === 1) {
+            crashEscapeTile = getCrashEscapeTile(tileId);
+        }
+        if (crashEscapeTile >= 0) {
+            bat.loc = 'zone';
+            bat.tileId = crashEscapeTile;
+            bat.oldTileId = crashEscapeTile;
+            savedBats++;
+        } else {
+            batIndex = bataillons.findIndex((obj => obj.id == bat.id));
+            bataillons.splice(batIndex,1);
+            playerInfos.unitsLost = playerInfos.unitsLost+1;
+        }
+    });
+    if (savedBats >= 1) {
+        centerMapTo(tileId);
+    }
+};
+
+function getCrashEscapeTile(tileId) {
+    let escTile = -1;
+    let shufZone = _.shuffle(zone);
+    let distance;
+    shufZone.forEach(function(tile) {
+        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+            distance = calcDistance(tile.id,tileId);
+            if (distance <= 1) {
+                escTile = tile.id;
+            }
+        }
+    });
+    return escTile;
 };
