@@ -169,6 +169,10 @@ function nextTurnEnd() {
             if (bat.apLeft > oldAP) {
                 bat.apLeft = oldAP;
             }
+            // nostun
+            if (batType.skills.includes('nostun') && bat.apLeft < 1) {
+                bat.apLeft = 1;
+            }
             bat.salvoLeft = batType.maxSalvo;
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;

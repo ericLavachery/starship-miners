@@ -428,7 +428,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // DROGUES
-    if (!batUnitType.skills.includes('cyber') && batUnitType.cat === 'infantry') {
+    if (batUnitType.cat === 'infantry') {
         let allDrugs = checkDrugs(bat);
         // KIRIN
         if (allDrugs.includes('kirin') && !bat.tags.includes('kirin')) {
@@ -441,7 +441,7 @@ function skillsInfos(bat,batUnitType) {
             }
         }
         // BLISS
-        if (allDrugs.includes('bliss') && !bat.tags.includes('bliss')) {
+        if (allDrugs.includes('bliss') && !bat.tags.includes('bliss') && !batUnitType.skills.includes('cyber')) {
             apCost = 1;
             if (bat.apLeft >= apCost) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Dégâts reçus réduits / immunisé à la peur" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</h4></span>');
@@ -451,7 +451,7 @@ function skillsInfos(bat,batUnitType) {
             }
         }
         // BLAZE
-        if (allDrugs.includes('blaze') && !bat.tags.includes('blaze')) {
+        if (allDrugs.includes('blaze') && !bat.tags.includes('blaze') && !batUnitType.skills.includes('cyber')) {
             apCost = 3;
             if (bat.apLeft >= apCost) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+6 PA & +1 salve" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</h4></span>');
@@ -461,7 +461,7 @@ function skillsInfos(bat,batUnitType) {
             }
         }
         // SKUPIAC
-        if (allDrugs.includes('skupiac') && !bat.tags.includes('skupiac')) {
+        if (allDrugs.includes('skupiac') && !bat.tags.includes('skupiac') && !batUnitType.skills.includes('cyber')) {
             apCost = 3;
             if (bat.apLeft >= apCost) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Concentration: +6 précision / +3 défense / guérit les maladies" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</h4></span>');
@@ -471,7 +471,7 @@ function skillsInfos(bat,batUnitType) {
             }
         }
         // SILA
-        if (allDrugs.includes('sila') && !bat.tags.includes('sila')) {
+        if (allDrugs.includes('sila') && !bat.tags.includes('sila') && !batUnitType.skills.includes('cyber')) {
             apCost = 3;
             if (bat.apLeft >= apCost) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+5 puissance aux armes de mêlée" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</h4></span>');
