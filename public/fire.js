@@ -297,6 +297,10 @@ function attack() {
         shotDice = 100;
     }
     console.log('shotDice='+shotDice);
+    // noBig
+    if (targetBatType.size > Math.round(selectedBatType.size/2) && selectedWeap.noBig) {
+        selectedWeap.power = Math.round(selectedWeap.power*selectedBatType.size/2/targetBatType.size);
+    }
     toHit = 999;
     let i = 1;
     while (i <= shots) {
@@ -671,6 +675,10 @@ function defense() {
     }
     if (playerInfos.pseudo === 'Test') {
         shotDice = 100;
+    }
+    // noBig
+    if (selectedBatType.size > Math.round(targetBatType.size/2) && targetWeap.noBig) {
+        targetWeap.power = Math.round(targetWeap.power*targetBatType.size/2/selectedBatType.size);
     }
     toHit = 999;
     let i = 1;
