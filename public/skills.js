@@ -326,20 +326,9 @@ function medic(cat,cost,around,deep) {
                             } else {
                                 if (bat.squadsLeft === batType.squads && bat.damage > 0) {
                                     if (bat.id === selectedBat.id) {
-                                        selectedBat.damage = 0
+                                        selectedBat.damage = 0;
                                     } else {
                                         bat.damage = 0;
-                                        if (bat.apLeft > 5) {
-                                            bat.apLeft = bat.apLeft-3;
-                                            if (bat.apLeft < 5) {
-                                                bat.apLeft = 5;
-                                            }
-                                        } else if (bat.apLeft < 5) {
-                                            bat.apLeft = bat.apLeft+5;
-                                            if (bat.apLeft > 5) {
-                                                bat.apLeft = 5;
-                                            }
-                                        }
                                     }
                                     totalAPCost = totalAPCost+apCost;
                                     console.log('damage');
@@ -375,17 +364,6 @@ function medic(cat,cost,around,deep) {
                                             bat.squadsLeft = batType.squads;
                                             bat.damage = 0;
                                         }
-                                        if (bat.apLeft > 5) {
-                                            bat.apLeft = bat.apLeft-3;
-                                            if (bat.apLeft < 5) {
-                                                bat.apLeft = 5;
-                                            }
-                                        } else if (bat.apLeft < 5) {
-                                            bat.apLeft = bat.apLeft+5;
-                                            if (bat.apLeft > 5) {
-                                                bat.apLeft = 5;
-                                            }
-                                        }
                                     }
                                     newBatUnits = batUnits+batType.squadSize;
                                     totalAPCost = totalAPCost+apCost;
@@ -403,32 +381,12 @@ function medic(cat,cost,around,deep) {
                                     putTagAction(bat);
                                 } else if (bat.squadsLeft === batType.squads && bat.damage === 0 && bat.tags.includes('trou') && deep) {
                                     tagDelete(bat,'trou');
-                                    if (bat.id != selectedBat.id) {
-                                        if (bat.apLeft > 5) {
-                                            bat.apLeft = bat.apLeft-3;
-                                            if (bat.apLeft < 5) {
-                                                bat.apLeft = 5;
-                                            }
-                                        } else if (bat.apLeft < 5) {
-                                            bat.apLeft = bat.apLeft+5;
-                                            if (bat.apLeft > 5) {
-                                                bat.apLeft = 5;
-                                            }
-                                        }
-                                    }
                                     totalAPCost = totalAPCost+apCost;
                                     console.log('trou');
                                     console.log('totalAPCost '+totalAPCost);
                                     xpGain = xpGain+0.35;
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">trous bouchés<br></span>');
                                     putTagAction(bat);
-                                } else if (bat.apLeft < 5) {
-                                    if (bat.id != selectedBat.id) {
-                                        bat.apLeft = bat.apLeft+5;
-                                        if (bat.apLeft > 5) {
-                                            bat.apLeft = 5;
-                                        }
-                                    }
                                 }
                             }
                         }
@@ -541,13 +499,13 @@ function numMedicTargets(myBat,cat,around,deep) {
                     }
                     if (catOK) {
                         if (deep) {
-                            if ((bat.damage > 0 && !fullBat) || (bat.squadsLeft < batType.squads && !fullBat) || bat.tags.includes('poison') || bat.tags.includes('venin') || bat.tags.includes('maladie') || bat.tags.includes('parasite') || bat.tags.includes('trou') || (bat.apLeft < 5 && batType.cat === 'vehicles' && bat.oldTileId === bat.tileId)) {
+                            if ((bat.damage > 0 && !fullBat) || (bat.squadsLeft < batType.squads && !fullBat) || bat.tags.includes('poison') || bat.tags.includes('venin') || bat.tags.includes('maladie') || bat.tags.includes('parasite') || bat.tags.includes('trou')) {
                                 numTargets = numTargets+1;
                             }
                         } else if (playerInfos.caLevel >= 4 && bat.tags.includes('venin')) {
                             numTargets = numTargets+1;
                         } else {
-                            if ((bat.damage > 0 && !fullBat) || bat.tags.includes('poison') || (bat.apLeft < 5 && batType.cat === 'vehicles' && bat.oldTileId === bat.tileId && bat.id != myBat.id)) {
+                            if ((bat.damage > 0 && !fullBat) || bat.tags.includes('poison')) {
                                 numTargets = numTargets+1;
                             }
                         }

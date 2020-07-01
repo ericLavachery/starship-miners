@@ -171,7 +171,7 @@ function checkPDM() {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= 0) {
                 batType = getBatType(bat);
-                if (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly) {
+                if (!batType.skills.includes('fly') || !selectedWeap.noFly) {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
                     if (distance < 6) {
                         pointDeMire = bat.tileId;
@@ -183,7 +183,7 @@ function checkPDM() {
             shufBats.forEach(function(bat) {
                 if (bat.loc === "zone" && bat.fuzz >= 0) {
                     batType = getBatType(bat);
-                    if (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly) {
+                    if (!batType.skills.includes('fly') || !selectedWeap.noFly) {
                         distance = calcDistance(selectedBat.tileId,bat.tileId);
                         if (distance < lePlusProche) {
                             pointDeMire = bat.tileId;
@@ -197,7 +197,7 @@ function checkPDM() {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= 0) {
                 batType = getBatType(bat);
-                if (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly) {
+                if (!batType.skills.includes('fly') || !selectedWeap.noFly) {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
                     if (distance < lePlusProche) {
                         pointDeMire = bat.tileId;
@@ -210,7 +210,7 @@ function checkPDM() {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= 0) {
                 batType = getBatType(bat);
-                if (batType.cat === 'infantry' && (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly)) {
+                if (batType.cat === 'infantry' && (!batType.skills.includes('fly') || !selectedWeap.noFly)) {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
                     if (distance < lePlusProche) {
                         pointDeMire = bat.tileId;
@@ -332,7 +332,7 @@ function anyCloseTarget() {
             if (bat.loc === "zone" && bat.fuzz >= minFuzz) {
                 if (!isSurrounded(bat)) {
                     batType = getBatType(bat);
-                    if (!batType.skills.includes('fly') || !selectedBatType.weapon.noFly) {
+                    if (!batType.skills.includes('fly') || !selectedWeap.noFly) {
                         distance = calcDistance(selectedBat.tileId,bat.tileId);
                         if (distance <= closeTargetRange) {
                             tLogic = targetLogic(bat);

@@ -27,8 +27,9 @@ function nextAlien() {
         showEnemyBatInfos(selectedBat);
         showTileInfos(selectedBat.tileId);
         tileUntarget();
-        selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
-        selectedWeap = weaponAdj(selectedWeap,selectedBat,'w1');
+        alienWeaponSelect();
+        // selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
+        // selectedWeap = weaponAdj(selectedWeap,selectedBat,'w1');
         console.log('----------------------');
         console.log(alienList);
         console.log('selectedBat :');
@@ -59,8 +60,9 @@ function ffw() {
         checkSelectedBatType();
         // let's go
         tileUntarget();
-        selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
-        selectedWeap = weaponAdj(selectedWeap,selectedBat,'w1');
+        alienWeaponSelect();
+        // selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
+        // selectedWeap = weaponAdj(selectedWeap,selectedBat,'w1');
         console.log('LOOP ----------------------------------------------------------------------------------------------');
         console.log(alienList);
         console.log('selectedBat= '+selectedBat.type+' **********');
@@ -90,4 +92,21 @@ function ffw() {
     }
     commandes();
     isFFW = false;
+};
+
+function alienWeaponSelect() {
+    let weapUsed = 1;
+    let lifeTurn = playerInfos.mapTurn-selectedBat.creaTurn;
+    if (selectedBat.w2chance >= 1) {
+        if (lifeTurn % selectedBat.w2chance === 0) {
+            weapUsed = 2;
+        }
+    }
+    if (weapUsed === 2) {
+        selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon2));
+        selectedWeap = weaponAdj(selectedWeap,selectedBat,'w2');
+    } else {
+        selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
+        selectedWeap = weaponAdj(selectedWeap,selectedBat,'w1');
+    }
 };
