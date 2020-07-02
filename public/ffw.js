@@ -96,9 +96,9 @@ function ffw() {
 
 function alienWeaponSelect() {
     let weapUsed = 1;
-    let lifeTurn = playerInfos.mapTurn-selectedBat.creaTurn;
-    if (selectedBat.w2chance >= 1) {
-        if (lifeTurn % selectedBat.w2chance === 0) {
+    let lifeTurn = selectedBat.creaTurn+1;
+    if (selectedBatType.w2chance >= 1) {
+        if (lifeTurn % selectedBatType.w2chance === 0) {
             weapUsed = 2;
         }
     }

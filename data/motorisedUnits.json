@@ -40,7 +40,7 @@
             "power":18,
             "aoe":"brochette",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
-            "ammo":["obus","obus-scrap","obus-explosif","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
+            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo":16
         },
         "moveCost":2,
@@ -78,7 +78,7 @@
             "power":24,
             "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-multi",
-            "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":28
         },
         "weapon2":{
@@ -230,7 +230,7 @@
             "power":28,
             "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
-            "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":24
         },
         "weapon2":{
@@ -297,7 +297,7 @@
             "power":33,
             "aoe":"squad",
             "sound":"audio_hero_ClaymoreAntiMine_PE230101_339c",
-            "ammo":["obus-explosif","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
+            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
             "maxAmmo":24
         },
         "moveCost":3,
@@ -383,7 +383,7 @@
             "power":25,
             "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
-            "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":16
         },
         "weapon2":{
@@ -555,7 +555,7 @@
             "power":22,
             "aoe":"brochette",
             "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
-            "ammo":["obus","obus-explosif","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
+            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
             "maxAmmo":32
         },
         "moveCost":7,
@@ -651,7 +651,7 @@
             "power":20,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throw-mortar",
-            "ammo":["obus-explosif","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"]
+            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"]
         },
         "weapon2":{
             "name":"Missiles squash",
@@ -966,7 +966,7 @@
             "power":27,
             "aoe":"squad",
             "sound":"audio_hero_ClaymoreAntiMine_PE230101_339c",
-            "ammo":["obus-explosif","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
+            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
             "maxAmmo":16
         },
         "moveCost":2,
@@ -1363,7 +1363,7 @@
             "power":21,
             "aoe":"unit",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
-            "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":24
         },
         "weapon2":{
@@ -1618,7 +1618,7 @@
             "power":38,
             "aoe":"squad",
             "sound":"audio_hero_ClaymoreAntiMine_PE230101_339c",
-            "ammo":["obus-explosif","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz"],
+            "ammo":["obus","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo":32
         },
         "weapon2":{
@@ -2094,7 +2094,7 @@
             "power":15,
             "aoe":"squad",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
-            "ammo":["obus","obus-scrap","obus-explosif","obus-heat","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm"],
             "maxAmmo":16
         },
         "moveCost":2,
@@ -2238,7 +2238,7 @@
             "power":20,
             "aoe":"squad",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
-            "ammo":["obus-explosif","obus-incendiaire","obus-napalm","obus-gaz"],
+            "ammo":["obus","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo":32
         },
         "weapon2":{
@@ -2303,7 +2303,7 @@
             "power":32,
             "aoe":"bat",
             "sound":"zapsplat_warfare_missiles_x4_incoming_whizz_by_then_explosions_31170",
-            "ammo":["obus-explosif","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
+            "ammo":["obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo":6
         },
         "moveCost":1,
@@ -2392,7 +2392,7 @@
             "power":18,
             "aoe":"brochette",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
-            "ammo":["obus","obus-scrap","obus-explosif","obus-heat","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm"],
             "maxAmmo":8
         },
         "weapon2":{},
@@ -2551,7 +2551,7 @@
             "power":30,
             "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
-            "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":16
         },
         "weapon2":{
@@ -2764,7 +2764,7 @@
             "power":18,
             "aoe":"brochette",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
-            "ammo":["obus","obus-scrap","obus-explosif","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
+            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo":20
         },
         "weapon2":{
@@ -2861,7 +2861,7 @@
             "power":20,
             "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
-            "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":24
         },
         "weapon2":{

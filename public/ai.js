@@ -321,7 +321,7 @@ function anyCloseTarget() {
     let distance;
     let lePlusProche = 100;
     let minFuzz = 0;
-    if (selectedBatType.skills.includes('nez')) {
+    if (selectedBatType.skills.includes('nez') || selectedBat.tags.includes('nez')) {
         minFuzz = -2;
     }
     let bestLogic = -99;
@@ -641,7 +641,7 @@ function checkGoodMoves() {
     let goodMoves = [];
     let thisTile;
     let minFuzz = -1;
-    if (selectedBatType.skills.includes('nez')) {
+    if (selectedBatType.skills.includes('nez') || selectedBat.tags.includes('nez')) {
         minFuzz = -2;
     }
     let bestLogic = -99;
@@ -743,7 +743,7 @@ function checkAimMoves() {
     let thisTile;
     let minFuzz = -1;
     let distance;
-    if (selectedBatType.skills.includes('nez')) {
+    if (selectedBatType.skills.includes('nez') || selectedBat.tags.includes('nez')) {
         minFuzz = -2;
     }
     if (selectedWeap.range === 0) {
@@ -898,7 +898,7 @@ function anyTargetInRange() {
     let distance;
     let inRange = false;
     let minFuzz = -1;
-    if (selectedBatType.skills.includes('nez')) {
+    if (selectedBatType.skills.includes('nez') || selectedBat.tags.includes('nez')) {
         minFuzz = -2;
     }
     let batType;
@@ -918,7 +918,7 @@ function targetMelee() {
     let distance;
     let inPlace = false;
     let minFuzz = -1;
-    if (selectedBatType.skills.includes('nez')) {
+    if (selectedBatType.skills.includes('nez') || selectedBat.tags.includes('nez')) {
         minFuzz = -2;
     }
     let bestLogic = -99;
@@ -946,7 +946,7 @@ function targetFarthest() {
     let lePlusLoin = 0;
     let inPlace = false;
     let minFuzz = -1;
-    if (selectedBatType.skills.includes('nez')) {
+    if (selectedBatType.skills.includes('nez') || selectedBat.tags.includes('nez')) {
         minFuzz = -2;
     }
     let bestLogic = -99;
@@ -990,7 +990,7 @@ function targetClosest() {
     let distance = 100;
     let lePlusProche = 100;
     let minFuzz = -1;
-    if (selectedBatType.skills.includes('nez')) {
+    if (selectedBatType.skills.includes('nez') || selectedBat.tags.includes('nez')) {
         minFuzz = -2;
     }
     let bestLogic = -99;
@@ -1032,7 +1032,7 @@ function isAlienInMelee(tileId) {
     let distance;
     let alienInMelee = false;
     let minFuzz = -1;
-    if (selectedBatType.skills.includes('nez')) {
+    if (selectedBatType.skills.includes('nez') || selectedBat.tags.includes('nez')) {
         minFuzz = -2;
     }
     bataillons.forEach(function(bat) {
@@ -1109,14 +1109,17 @@ function isCamoBlock() {
     if (blocked) {
         // CAMOBLOCK!!
         let camoUnblocked = false;
-        let shufBats = _.shuffle(bataillons);
-        shufBats.forEach(function(bat) {
-            if (bat.loc === "zone" && bat.fuzz <= -2 && alienMeleeTiles.includes(bat.tileId) && !camoUnblocked) {
-                camoUnblocked = true;
-                bat.fuzz = -1;
-                console.log('camoUnblock: '+bat.name);
-            }
-        });
+        if (!selectedBat.tags.includes('nez')) {
+            selectedBat.tags.push('nez');
+        }
+        // let shufBats = _.shuffle(bataillons);
+        // shufBats.forEach(function(bat) {
+        //     if (bat.loc === "zone" && bat.fuzz <= -2 && alienMeleeTiles.includes(bat.tileId) && !camoUnblocked) {
+        //         camoUnblocked = true;
+        //         bat.fuzz = -1;
+        //         console.log('camoUnblock: '+bat.name);
+        //     }
+        // });
     }
 };
 

@@ -701,7 +701,7 @@
             "power":14,
             "aoe":"squad",
             "sound":"161622__ryanconway__grenade-throw-mortar",
-            "ammo":["obus-explosif","obus-scrap","obus-heat","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm"],
             "maxAmmo":16
         },
         "moveCost":4,
@@ -751,7 +751,7 @@
             "power":22,
             "aoe":"brochette",
             "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
-            "ammo":["obus","obus-explosif","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
+            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
             "maxAmmo":10
         },
         "moveCost":3,
@@ -1762,7 +1762,7 @@
             "power":18,
             "aoe":"brochette",
             "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
-            "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"],
             "maxAmmo":16
         },
         "moveCost":12,
@@ -1815,7 +1815,7 @@
             "power":22,
             "aoe":"brochette",
             "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
-            "ammo":["obus","obus-explosif","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
+            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
             "maxAmmo":8
         },
         "moveCost":3,
@@ -2065,7 +2065,7 @@
             "power":22,
             "aoe":"brochette",
             "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
-            "ammo":["obus","obus-explosif","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
+            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
             "maxAmmo":12
         },
         "moveCost":3,
@@ -2577,7 +2577,7 @@
             "power":28,
             "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
-            "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":20
         },
         "weapon2":{

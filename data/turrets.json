@@ -413,7 +413,7 @@
             "power":22,
             "aoe":"brochette",
             "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
-            "ammo":["obus","obus-scrap","obus-explosif","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":40
         },
         "weapon2":{},

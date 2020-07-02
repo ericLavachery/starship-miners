@@ -36,6 +36,7 @@ function nextTurn() {
             bat.oldapLeft = bat.apLeft;
             tagsEffect(bat,batType);
             tagDelete(bat,'shield');
+            tagDelete(bat,'nez');
             if (rand.rand(1,3) <= 2) {
                 tagDelete(bat,'stun');
             }
