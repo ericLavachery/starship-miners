@@ -358,7 +358,7 @@
         "weapon":{
             "name":"Glair acide",
             "cost":5,
-            "range":3,
+            "range":5,
             "elevation":1,
             "noFly":false,
             "isMelee":false,
@@ -645,7 +645,7 @@
         "size":12,
         "speed":0,
         "stealth":8,
-        "ap":20,
+        "ap":24,
         "maxSalvo":1,
         "weapon":{
             "name":"Dard",
@@ -663,7 +663,7 @@
         "weapon2":{
             "name":"Jet de poison",
             "cost":5,
-            "range":3,
+            "range":6,
             "elevation":2,
             "noFly":false,
             "noDef":true,
