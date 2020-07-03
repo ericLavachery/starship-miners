@@ -188,6 +188,10 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
         speed = speed-watchInitBonus-stealth;
         console.log('bonus guet');
     }
+    if (batType.skills.includes('initiative')) {
+        speed = speed-200;
+        console.log('bonus initiative');
+    }
     if (batType.skills.includes('defense') && !attacking) {
         speed = speed-10;
     }

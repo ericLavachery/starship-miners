@@ -41,7 +41,7 @@ function skillsInfos(bat,batUnitType) {
     // DEBARQUER
     unloadInfos(bat,batUnitType);
     // GUET
-    if (batUnitType.weapon.rof >= 1 && !batUnitType.skills.includes('sentinelle') && batUnitType.ap >= 1) {
+    if (batUnitType.weapon.rof >= 1 && !batUnitType.skills.includes('sentinelle') && !batUnitType.skills.includes('initiative') && batUnitType.ap >= 1) {
         apCost = 3;
         apReq = batUnitType.ap-3;
         if (bat.apLeft >= apReq && !bat.tags.includes('guet')) {

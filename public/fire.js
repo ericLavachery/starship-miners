@@ -637,7 +637,7 @@ function defense() {
         }
     }
     // Guet
-    if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle')) {
+    if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative')) {
         brideDef = 1;
     }
     if (targetBatType.skills.includes('defense')) {
@@ -871,7 +871,7 @@ function shot(weapon,attBatType,bat,batType,shotDice) {
     // returns damage
     let result = {damage:0,hits:0};
     let cover = getCover(bat,true);
-    if (weapon.isMelee) {
+    if (weapon.isMelee || weapon.noShield || attBatType.skills.includes('halfcover')) {
         cover = Math.round(cover/2);
     }
     let stealth = getStealth(bat);
@@ -920,7 +920,7 @@ function blast(brochette,attBatType,aoeShots,weapon,bat,batType,shotDice) {
     let power = weapon.power;
     let oldPower = weapon.power;
     let cover = getCover(bat,true);
-    if (weapon.isMelee) {
+    if (weapon.isMelee || weapon.noShield || attBatType.skills.includes('halfcover')) {
         cover = Math.round(cover/2);
     }
     let stealth = getStealth(bat);
