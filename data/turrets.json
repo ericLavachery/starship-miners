@@ -157,7 +157,7 @@
             "accuracy":40,
             "power":20,
             "aoe":"brochette",
-            "sound":"daycraftmc__laser-5",
+            "sound":"laser_canon",
             "ammo":["laser","laser-g2"]
         },
         "weapon2":{
@@ -171,7 +171,7 @@
             "dca":0.7,
             "power":45,
             "aoe":"squad",
-            "sound":"audio_hero_ClaymoreAntiMine_PE230101_339c",
+            "sound":"obusier",
             "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker"],
             "maxAmmo":32
         },
@@ -268,7 +268,7 @@
             "accuracy":18,
             "power":6,
             "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
+            "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -280,7 +280,7 @@
             "accuracy":22,
             "power":12,
             "aoe":"squad",
-            "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
+            "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":24
         },
@@ -290,7 +290,7 @@
         "maxVeg":-1,
         "skills":["cible","longshot","defense"],
         "fuzz":1.5,
-        "deathFx":"S_Explosion02"
+        "deathFx":"explo1"
     },
     {
         "id":12,
@@ -317,7 +317,7 @@
             "power":9,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"351777__kennysvoice__sniper-rifle-m24-sfx_sniper",
+            "sound":"sniper",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -330,7 +330,7 @@
             "power":15,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"386842__nioczkus__m1-garand-rifle_antichar",
+            "sound":"antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
         "moveCost":99,
@@ -339,7 +339,7 @@
         "maxVeg":-1,
         "skills":["cible","longshot","defense"],
         "fuzz":1.5,
-        "deathFx":"S_Explosion02"
+        "deathFx":"explo1"
     },
     {
         "id":137,
@@ -364,7 +364,7 @@
             "accuracy":25,
             "power":12,
             "aoe":"unit",
-            "sound":"PM_FSSF2_WEAPONS_D1_SHOT_323c",
+            "sound":"plasma_fusil",
             "ammo":["plasma","plastanium","uridium","nanite"]
         },
         "weapon2":{
@@ -376,7 +376,7 @@
             "accuracy":50,
             "power":18,
             "aoe":"brochette",
-            "sound":"daycraftmc__laser-5",
+            "sound":"laser_canon",
             "ammo":["laser","laser-g2"]
         },
         "moveCost":99,
@@ -385,7 +385,7 @@
         "maxVeg":-1,
         "skills":["cible","longshot","defense","sentinelle"],
         "fuzz":1.5,
-        "deathFx":"S_Explosion02"
+        "deathFx":"explo1"
     },
     {
         "id":125,
@@ -412,7 +412,7 @@
             "accuracy":17,
             "power":22,
             "aoe":"brochette",
-            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
+            "sound":"canon_big_x2",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":40
         },
@@ -423,7 +423,7 @@
         "maxVeg":-1,
         "skills":["cible","defense","maycamo","embuscade","underground"],
         "fuzz":1.5,
-        "deathFx":"S_Explosion02"
+        "deathFx":"explo1"
     },
     {
         "id":127,
@@ -448,7 +448,7 @@
             "accuracy":22,
             "power":12,
             "aoe":"squad",
-            "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
+            "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":32
         },
@@ -462,7 +462,7 @@
             "power":15,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"386842__nioczkus__m1-garand-rifle_antichar",
+            "sound":"antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
         "moveCost":99,
@@ -471,7 +471,7 @@
         "maxVeg":-1,
         "skills":["cible","defense","camo","embuscade","underground"],
         "fuzz":-1,
-        "deathFx":"S_Explosion02"
+        "deathFx":"explo1"
     },
     {
         "id":129,
@@ -499,7 +499,7 @@
             "accuracy":18,
             "power":40,
             "aoe":"squad",
-            "sound":"262436__ramston__real-explosionsb",
+            "sound":"miss",
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing"],
             "maxAmmo":6
         },
@@ -512,7 +512,7 @@
             "dca":1,
             "power":6,
             "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
+            "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":99,
@@ -521,7 +521,7 @@
         "maxVeg":-1,
         "skills":[],
         "fuzz":-1,
-        "deathFx":"S_Explosion02"
+        "deathFx":"explo1"
     },
     {
         "id":37,
@@ -586,7 +586,7 @@
             "accuracy":12,
             "power":27,
             "aoe":"squad",
-            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
+            "sound":"canon_big",
             "ammo":["dynamite"]
         },
         "weapon2":{
@@ -598,7 +598,7 @@
             "accuracy":12,
             "power":27,
             "aoe":"squad",
-            "sound":"bottlerocket_Impact_Boom_Distorted_10b",
+            "sound":"canon_big_multi",
             "ammo":["suicide"]
         },
         "moveCost":99,
@@ -634,7 +634,7 @@
             "accuracy":10,
             "power":18,
             "aoe":"brochette",
-            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348b",
+            "sound":"canon_big",
             "ammo":["dynamite"]
         },
         "weapon2":{
@@ -646,7 +646,7 @@
             "accuracy":12,
             "power":18,
             "aoe":"brochette",
-            "sound":"bottlerocket_Impact_Boom_Distorted_10b",
+            "sound":"canon_big_multi",
             "ammo":["suicide"]
         },
         "moveCost":99,

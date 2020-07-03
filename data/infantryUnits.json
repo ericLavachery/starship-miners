@@ -1,4 +1,4 @@
-[
+cal_bad[
     {
         "id":0,
         "name":"Rednecks",
@@ -23,7 +23,7 @@
             "power":8,
             "armors":1.35,
             "aoe":"brochette",
-            "sound":"warfare_gunshots_x2_rifle_exterior_shotgun",
+            "sound":"shotgun",
             "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -36,7 +36,7 @@
             "power":5,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"238916__qubodup__rifle-shooting_revo",
+            "sound":"revolver_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
@@ -70,7 +70,7 @@
             "accuracy":25,
             "power":12,
             "aoe":"unit",
-            "sound":"PM_FSSF2_WEAPONS_D1_SHOT_323c",
+            "sound":"plasma_fusil",
             "ammo":["plasma","plastanium","uridium","nanite"]
         },
         "weapon2":{},
@@ -107,7 +107,7 @@
             "accuracy":13,
             "power":4,
             "aoe":"unit",
-            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "sound":"pistol_x2",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{},
@@ -145,7 +145,7 @@
             "accuracy":16,
             "power":4,
             "aoe":"unit",
-            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "sound":"pistol_x2",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
@@ -159,7 +159,7 @@
             "power":9,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"351777__kennysvoice__sniper-rifle-m24-sfx_sniper",
+            "sound":"sniper",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
@@ -194,7 +194,7 @@
             "accuracy":16,
             "power":4,
             "aoe":"unit",
-            "sound":"weapon_gun_ppsh_P_18-uzi",
+            "sound":"uzi",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
@@ -207,7 +207,7 @@
             "dca":1.25,
             "power":8,
             "aoe":"unit",
-            "sound":"87562__knufds__rifle-223-cal-take-1_hunting",
+            "sound":"cal_hunt",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
@@ -248,7 +248,7 @@
             "power":6,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
+            "sound":"axe_x2",
             "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
@@ -261,7 +261,7 @@
             "accuracy":18,
             "power":7,
             "aoe":"unit",
-            "sound":"321552__brendan89__regular-arrow-shotb",
+            "sound":"bow",
             "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "moveCost":3,
@@ -300,7 +300,7 @@
             "dca":1.25,
             "power":5,
             "aoe":"unit",
-            "sound":"321552__brendan89__regular-arrow-shotb",
+            "sound":"bow",
             "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
@@ -314,7 +314,7 @@
             "power":4,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"147289__smokebomb99__axe-slash-2b",
+            "sound":"lame",
             "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
@@ -352,7 +352,7 @@
             "power":5,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"238916__qubodup__rifle-shooting_revo",
+            "sound":"revolver_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -367,7 +367,7 @@
             "power":6,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
+            "sound":"axe_x2",
             "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
@@ -405,7 +405,7 @@
             "power":5,
             "armors":0.3,
             "aoe":"unit",
-            "sound":"construction-circular-saw",
+            "sound":"saw",
             "ammo":["lame","lame-tungsten","lame-mono"]
         },
         "weapon2":{
@@ -417,7 +417,7 @@
             "power":8,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"396271__greenfiresound__groscalibre",
+            "sound":"cal_big",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
@@ -453,7 +453,7 @@
             "power":8,
             "armors":1.35,
             "aoe":"brochette",
-            "sound":"warfare_gunshots_x2_rifle_exterior_shotgun",
+            "sound":"shotgun",
             "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -465,7 +465,7 @@
             "accuracy":12,
             "power":28,
             "aoe":"bat",
-            "sound":"bottlerocket_Impact_Boom_Distorted_10b",
+            "sound":"belt",
             "ammo":["autodestruction"]
         },
         "moveCost":3,
@@ -498,7 +498,7 @@
             "accuracy":22,
             "power":6,
             "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
+            "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -513,7 +513,7 @@
             "power":4,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
+            "sound":"axe_x2",
             "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
@@ -549,7 +549,7 @@
             "accuracy":18,
             "power":4,
             "aoe":"unit",
-            "sound":"238916__qubodup__rifle-shooting_multi",
+            "sound":"revolver_multi",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{},
@@ -586,7 +586,7 @@
             "accuracy":18,
             "power":4,
             "aoe":"unit",
-            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "sound":"pistol_x2",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
@@ -598,7 +598,7 @@
             "accuracy":12,
             "power":10,
             "aoe":"squad",
-            "sound":"audio_hero_MolotovCocktailThr_PE280101_381b",
+            "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime"],
             "maxAmmo":12
         },
@@ -636,7 +636,7 @@
             "power":8,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"warfare_gunshots_machine_gun_burst_005b",
+            "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -648,7 +648,7 @@
             "accuracy":16,
             "power":4,
             "aoe":"unit",
-            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "sound":"pistol_x2",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "moveCost":4,
@@ -686,7 +686,7 @@
             "accuracy":18,
             "power":4,
             "aoe":"unit",
-            "sound":"147289__smokebomb99__axe-slash-2b",
+            "sound":"lame",
             "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
@@ -700,7 +700,7 @@
             "accuracy":14,
             "power":14,
             "aoe":"squad",
-            "sound":"161622__ryanconway__grenade-throw-mortar",
+            "sound":"mortier",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm"],
             "maxAmmo":16
         },
@@ -736,7 +736,7 @@
             "accuracy":20,
             "power":7,
             "aoe":"unit",
-            "sound":"82459__threetails__50bmg_calibre",
+            "sound":"cal",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -750,7 +750,7 @@
             "accuracy":14,
             "power":22,
             "aoe":"brochette",
-            "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
+            "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
             "maxAmmo":10
         },
@@ -786,7 +786,7 @@
             "accuracy":22,
             "power":12,
             "aoe":"squad",
-            "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
+            "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":12
         },
@@ -800,7 +800,7 @@
             "power":5,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"238916__qubodup__rifle-shooting_revo",
+            "sound":"revolver_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
@@ -834,7 +834,7 @@
             "accuracy":22,
             "power":6,
             "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
+            "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -846,7 +846,7 @@
             "accuracy":10,
             "power":13,
             "aoe":"squad",
-            "sound":"161622__ryanconway__grenade-throwb",
+            "sound":"grenade",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire"],
             "maxAmmo":6
         },
@@ -883,7 +883,7 @@
             "accuracy":16,
             "power":4,
             "aoe":"unit",
-            "sound":"john_ruok_gun_tikka_t3_battue_308_005_Swpph_Mono_Shot_Strong_Edit_Shortb",
+            "sound":"pistol_x2",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
@@ -895,7 +895,7 @@
             "accuracy":8,
             "power":13,
             "aoe":"squad",
-            "sound":"161622__ryanconway__grenade-throwb",
+            "sound":"grenade",
             "ammo":["grenade"],
             "maxAmmo":6
         },
@@ -933,7 +933,7 @@
             "power":5,
             "armors":1.2,
             "aoe":"unit",
-            "sound":"410442__superphat__enfieldrifle_badc",
+            "sound":"cal_bad",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
@@ -978,7 +978,7 @@
             "accuracy":24,
             "power":7,
             "aoe":"unit",
-            "sound":"87562__knufds__rifle-223-cal-take-1_hunting",
+            "sound":"cal_hunt",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -992,7 +992,7 @@
             "power":6,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
+            "sound":"axe_x2",
             "ammo":["lame"]
         },
         "moveCost":3,
@@ -1035,7 +1035,7 @@
             "power":8,
             "armors":1.35,
             "aoe":"brochette",
-            "sound":"warfare_gunshots_x2_rifle_exterior_shotgun",
+            "sound":"shotgun",
             "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -1050,7 +1050,7 @@
             "power":6,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
+            "sound":"axe_x2",
             "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
@@ -1088,7 +1088,7 @@
             "accuracy":21,
             "power":6,
             "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
+            "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -1103,7 +1103,7 @@
             "power":6,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
+            "sound":"axe_x2",
             "ammo":["lame","lame-scrap","lame-poison","lame-plasma","lame-adamantium"]
         },
         "moveCost":2,
@@ -1140,7 +1140,7 @@
             "accuracy":15,
             "power":5,
             "aoe":"unit",
-            "sound":"321552__brendan89__regular-arrow-shotb",
+            "sound":"bow",
             "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
@@ -1153,7 +1153,7 @@
             "accuracy":18,
             "power":4,
             "aoe":"unit",
-            "sound":"147289__smokebomb99__axe-slash-2b",
+            "sound":"lame",
             "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
@@ -1191,7 +1191,7 @@
             "accuracy":21,
             "power":6,
             "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
+            "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -1205,7 +1205,7 @@
             "power":4,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
+            "sound":"axe_x2",
             "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":2,
@@ -1243,7 +1243,7 @@
             "accuracy":25,
             "power":5,
             "aoe":"unit",
-            "sound":"147289__smokebomb99__axe-slash-2b",
+            "sound":"lame",
             "ammo":["lame","lame-poison","lame-poraz","lame-mono","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
@@ -1257,7 +1257,7 @@
             "dca":1.25,
             "power":7,
             "aoe":"unit",
-            "sound":"321552__brendan89__regular-arrow-shotb",
+            "sound":"bow",
             "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "moveCost":3,
@@ -1294,7 +1294,7 @@
             "power":5,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"238916__qubodup__rifle-shooting_revo",
+            "sound":"revolver_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -1306,7 +1306,7 @@
             "accuracy":10,
             "power":13,
             "aoe":"squad",
-            "sound":"161622__ryanconway__grenade-throwb",
+            "sound":"grenade",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire"],
             "maxAmmo":16
         },
@@ -1343,7 +1343,7 @@
             "power":6,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"warfare_gunshots_machine_gun_burst_003b",
+            "sound":"mit_light2",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -1357,7 +1357,7 @@
             "power":5,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"147289__smokebomb99__axe-slash-2b",
+            "sound":"lame",
             "ammo":["lame","lame-poison","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":4,
@@ -1395,7 +1395,7 @@
             "power":5,
             "armors":0.3,
             "aoe":"unit",
-            "sound":"construction-circular-saw",
+            "sound":"saw",
             "ammo":["lame","lame-tungsten","lame-mono"]
         },
         "weapon2":{
@@ -1409,7 +1409,7 @@
             "power":16,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"517058__invisible-inks__scifi-sniper-rifle",
+            "sound":"fmag",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
         "moveCost":3,
@@ -1445,7 +1445,7 @@
             "accuracy":19,
             "power":6,
             "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
+            "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -1457,7 +1457,7 @@
             "accuracy":10,
             "power":13,
             "aoe":"squad",
-            "sound":"161622__ryanconway__grenade-throw-mortar",
+            "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire"],
             "maxAmmo":6
         },
@@ -1495,7 +1495,7 @@
             "accuracy":20,
             "power":7,
             "aoe":"unit",
-            "sound":"PM_FSSF2_WEAPONS_H2_SHOT_324b",
+            "sound":"plasma_pistol",
             "ammo":["plasma"]
         },
         "weapon2":{
@@ -1508,7 +1508,7 @@
             "accuracy":50,
             "power":8,
             "aoe":"unit",
-            "sound":"pm_ag_1_2_abstract_guns_281b",
+            "sound":"laser_fusil",
             "ammo":["laser","laser-g2"]
         },
         "moveCost":2,
@@ -1545,7 +1545,7 @@
             "accuracy":25,
             "power":8,
             "aoe":"unit",
-            "sound":"warfare_gunshots_machine_gun_burst_distantc",
+            "sound":"mit_pneu",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -1559,7 +1559,7 @@
             "power":12,
             "armors":0.5,
             "aoe":"brochette",
-            "sound":"498501__16f-panska-veltrusky-david__chainsawb",
+            "sound":"chainsaw",
             "ammo":["lame","lame-tungsten","lame-mono"]
         },
         "moveCost":3,
@@ -1596,7 +1596,7 @@
             "dca":1.5,
             "power":0,
             "aoe":"unit",
-            "sound":"leisure_toy_boomerang_pass_whoosh_001b",
+            "sound":"bolas",
             "ammo":["web"]
         },
         "weapon2":{
@@ -1612,7 +1612,7 @@
             "power":10,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"192387__madmini__ktm65cc-jumping_chev",
+            "sound":"moto_impact",
             "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-plasma"]
         },
         "moveCost":2,
@@ -1648,7 +1648,7 @@
             "accuracy":32,
             "power":6,
             "aoe":"unit",
-            "sound":"johnj_wafare_gun_pistol_silenced_walther_pp7-multi",
+            "sound":"fpneu_x3",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -1663,7 +1663,7 @@
             "power":7,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
+            "sound":"axe_x2",
             "ammo":["lame","lame-poison","lame-poraz","lame-plasma","lame-adamantium"]
         },
         "moveCost":2,
@@ -1700,7 +1700,7 @@
             "accuracy":22,
             "power":7,
             "aoe":"unit",
-            "sound":"PM_FSSF2_WEAPONS_H2_SHOT_324b",
+            "sound":"plasma_pistol",
             "ammo":["plasma"]
         },
         "weapon2":{
@@ -1711,7 +1711,7 @@
             "accuracy":30,
             "power":20,
             "aoe":"bat",
-            "sound":"PM_FSSF2_WEAPONS_J2_SHOT_325c",
+            "sound":"bfg",
             "ammo":["bfg","bfg-g2"],
             "maxAmmo":8
         },
@@ -1747,7 +1747,7 @@
             "accuracy":20,
             "power":6,
             "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
+            "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -1761,7 +1761,7 @@
             "accuracy":13,
             "power":18,
             "aoe":"brochette",
-            "sound":"audio_hero_GunCannon_DIGIJ02_20_6_370b",
+            "sound":"canon_small",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm"],
             "maxAmmo":16
         },
@@ -1799,7 +1799,7 @@
             "power":6,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"warfare_gunshots_machine_gun_burst_003b",
+            "sound":"mit_light2",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -1814,7 +1814,7 @@
             "accuracy":14,
             "power":22,
             "aoe":"brochette",
-            "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
+            "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
             "maxAmmo":8
         },
@@ -1850,7 +1850,7 @@
             "accuracy":19,
             "power":4,
             "aoe":"unit",
-            "sound":"weapon_gun_ppsh_P_18-uzi",
+            "sound":"uzi",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
@@ -1864,7 +1864,7 @@
             "power":9,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"351777__kennysvoice__sniper-rifle-m24-sfx_sniper",
+            "sound":"sniper",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
@@ -1898,7 +1898,7 @@
             "accuracy":25,
             "power":5,
             "aoe":"unit",
-            "sound":"warfare_gunshots_machine_gun_burst_distantc",
+            "sound":"mit_pneu",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -1948,7 +1948,7 @@
             "accuracy":21,
             "power":6,
             "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
+            "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -1961,7 +1961,7 @@
             "accuracy":10,
             "power":13,
             "aoe":"squad",
-            "sound":"161622__ryanconway__grenade-throw-mortar",
+            "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire"],
             "maxAmmo":12
         },
@@ -2000,7 +2000,7 @@
             "dca":1.25,
             "power":6,
             "aoe":"unit",
-            "sound":"zapsplat_cartoon_squish_squelch_wet_005_14504b",
+            "sound":"squish",
             "ammo":["spitbug"]
         },
         "weapon2":{
@@ -2012,7 +2012,7 @@
             "accuracy":36,
             "power":6,
             "aoe":"unit",
-            "sound":"johnj_wafare_gun_pistol_silenced_walther_pp7-multi",
+            "sound":"fpneu_x3",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
@@ -2049,7 +2049,7 @@
             "power":16,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
+            "sound":"axe_x2",
             "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
@@ -2064,7 +2064,7 @@
             "accuracy":14,
             "power":22,
             "aoe":"brochette",
-            "sound":"249298__klangfabrik__rpg-launcher-three-shotsb",
+            "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
             "maxAmmo":12
         },
@@ -2101,7 +2101,7 @@
             "accuracy":20,
             "power":7,
             "aoe":"unit",
-            "sound":"PM_FSSF2_WEAPONS_H2_SHOT_324b",
+            "sound":"plasma_pistol",
             "ammo":["plasma"]
         },
         "weapon2":{
@@ -2113,7 +2113,7 @@
             "accuracy":9,
             "power":13,
             "aoe":"squad",
-            "sound":"161622__ryanconway__grenade-throwb",
+            "sound":"grenade",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire"],
             "maxAmmo":8
         },
@@ -2149,7 +2149,7 @@
             "accuracy":20,
             "power":6,
             "aoe":"unit",
-            "sound":"weapon_gun_carl_gustav_m45_swedish_k_G_35b",
+            "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
@@ -2185,7 +2185,7 @@
             "accuracy":18,
             "power":8,
             "aoe":"unit",
-            "sound":"warfare_gunshots_machine_gun_burst_005b",
+            "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -2199,7 +2199,7 @@
             "power":8,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"zapsplat_horror_axe_chop_impact_person_fleshy_wound_guts_001_14319b",
+            "sound":"axe_x2",
             "ammo":["lame","lame-taser","lame-mono","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
@@ -2237,7 +2237,7 @@
             "power":5,
             "armors":0.3,
             "aoe":"unit",
-            "sound":"construction-circular-saw",
+            "sound":"saw",
             "ammo":["lame","lame-tungsten","lame-mono"]
         },
         "weapon2":{
@@ -2249,7 +2249,7 @@
             "accuracy":12,
             "power":28,
             "aoe":"squad",
-            "sound":"bottlerocket_Impact_Boom_Distorted_10b",
+            "sound":"belt",
             "ammo":["autodestruction"]
         },
         "moveCost":3,
@@ -2287,7 +2287,7 @@
             "power":5,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"construction-circular-saw",
+            "sound":"saw",
             "ammo":["lame-scrap"]
         },
         "weapon2":{
@@ -2299,7 +2299,7 @@
             "accuracy":12,
             "power":18,
             "aoe":"squad",
-            "sound":"bottlerocket_Impact_Boom_Distorted_10b",
+            "sound":"belt",
             "ammo":["autodestruction"]
         },
         "moveCost":2,
@@ -2336,7 +2336,7 @@
             "dca":0.85,
             "power":16,
             "aoe":"unit",
-            "sound":"axe",
+            "sound":"sprotch",
             "ammo":["standard"]
         },
         "weapon2":{
@@ -2348,7 +2348,7 @@
             "accuracy":14,
             "power":15,
             "aoe":"unit",
-            "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
+            "sound":"flamme",
             "ammo":["lt-o2","lt-nanite"],
             "maxAmmo":20
         },
@@ -2386,7 +2386,7 @@
             "accuracy":40,
             "power":7,
             "aoe":"unit",
-            "sound":"pm_ag_1_2_abstract_guns_281b",
+            "sound":"laser_fusil",
             "ammo":["laser","laser-g2"]
         },
         "weapon2":{},
@@ -2424,7 +2424,7 @@
             "accuracy":18,
             "power":15,
             "aoe":"squad",
-            "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
+            "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":18
         },
@@ -2438,7 +2438,7 @@
             "power":16,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"386842__nioczkus__m1-garand-rifle_antichar",
+            "sound":"antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
         "moveCost":4,
@@ -2475,7 +2475,7 @@
             "accuracy":23,
             "power":7,
             "aoe":"unit",
-            "sound":"PM_FSSF2_WEAPONS_H2_SHOT_324b",
+            "sound":"plasma_pistol",
             "ammo":["plasma"]
         },
         "weapon2":{
@@ -2487,7 +2487,7 @@
             "power":6,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"warfare_gunshots_machine_gun_burst_003b",
+            "sound":"mit_light2",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":2,
@@ -2522,7 +2522,7 @@
             "power":8,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"396271__greenfiresound__groscalibre",
+            "sound":"cal_big",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -2538,7 +2538,7 @@
             "accuracy":22,
             "power":5,
             "aoe":"bat",
-            "sound":"187200__joyce137298__civil-war-caplock-rifle_rainbow",
+            "sound":"rainbow",
             "ammo":["gaz"],
             "maxAmmo":16
         },
@@ -2576,7 +2576,7 @@
             "accuracy":16,
             "power":28,
             "aoe":"brochette",
-            "sound":"audio_hero_Explosion7LargeBoo_TE026301_348-two",
+            "sound":"canon_big_x2",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":20
         },
@@ -2588,7 +2588,7 @@
             "accuracy":19,
             "power":7,
             "aoe":"unit",
-            "sound":"82459__threetails__50bmg_calibre",
+            "sound":"cal",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":10,
@@ -2622,7 +2622,7 @@
             "accuracy":20,
             "power":7,
             "aoe":"unit",
-            "sound":"82459__threetails__50bmg_calibre",
+            "sound":"cal",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -2635,7 +2635,7 @@
             "accuracy":13,
             "power":11,
             "aoe":"squad",
-            "sound":"audio_hero_MolotovCocktailThr_PE280101_381b",
+            "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyratol"],
             "maxAmmo":12
         },
@@ -2671,7 +2671,7 @@
             "power":8,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"396271__greenfiresound__groscalibre",
+            "sound":"cal_big",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -2684,7 +2684,7 @@
             "accuracy":15,
             "power":8,
             "aoe":"squad",
-            "sound":"161622__ryanconway__grenade-throwb",
+            "sound":"grenade",
             "ammo":["fireball","fireglue","fireslime","fireblast"],
             "maxAmmo":12
         },
@@ -2721,7 +2721,7 @@
             "accuracy":14,
             "power":15,
             "aoe":"unit",
-            "sound":"Blastwave_FX_FlameThrowerBurst_BW.55025b",
+            "sound":"flamme",
             "ammo":["lt-o2","lt-nanite"],
             "maxAmmo":16
         },
@@ -2734,7 +2734,7 @@
             "accuracy":24,
             "power":8,
             "aoe":"unit",
-            "sound":"87562__knufds__rifle-223-cal-take-1_hunting",
+            "sound":"cal_hunt",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":4,
@@ -2770,7 +2770,7 @@
             "accuracy":19,
             "power":5,
             "aoe":"unit",
-            "sound":"weapon_gun_ppsh_P_18-uzi",
+            "sound":"uzi",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
@@ -2783,7 +2783,7 @@
             "accuracy":100,
             "power":0,
             "aoe":"unit",
-            "sound":"262436__ramston__real-explosionsb",
+            "sound":"miss",
             "ammo":["guidage"]
         },
         "moveCost":3,
@@ -2820,7 +2820,7 @@
             "accuracy":17,
             "power":4,
             "aoe":"unit",
-            "sound":"weapon_gun_ppsh_P_18-uzi",
+            "sound":"uzi",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
@@ -2833,7 +2833,7 @@
             "accuracy":50,
             "power":17,
             "aoe":"brochette",
-            "sound":"daycraftmc__laser-5",
+            "sound":"laser_canon",
             "ammo":["laser","laser-g2"]
         },
         "moveCost":2,
@@ -2872,7 +2872,7 @@
             "accuracy":16,
             "power":4,
             "aoe":"unit",
-            "sound":"147289__smokebomb99__axe-slash-2b",
+            "sound":"lame",
             "ammo":["lame-scrap"]
         },
         "weapon2":{},
@@ -2911,7 +2911,7 @@
             "power":5,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"238916__qubodup__rifle-shooting_multi",
+            "sound":"revolver_multi",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -2924,7 +2924,7 @@
             "power":15,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"386842__nioczkus__m1-garand-rifle_antichar",
+            "sound":"antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
         "moveCost":3,
@@ -2960,7 +2960,7 @@
             "power":9,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"396271__greenfiresound__groscalibre",
+            "sound":"cal_big",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -2972,7 +2972,7 @@
             "accuracy":12,
             "power":7,
             "aoe":"squad",
-            "sound":"161622__ryanconway__grenade-throw-mortar",
+            "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire"],
             "maxAmmo":12
         },
@@ -3011,7 +3011,7 @@
             "power":10,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"517058__invisible-inks__scifi-sniper-rifle_gunbot",
+            "sound":"fmag_small",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -3024,7 +3024,7 @@
             "accuracy":35,
             "power":0,
             "aoe":"unit",
-            "sound":"burkay__laser-gun1",
+            "sound":"mark",
             "ammo":["marquage"]
         },
         "moveCost":3,
@@ -3059,7 +3059,7 @@
             "accuracy":18,
             "power":7,
             "aoe":"unit",
-            "sound":"82459__threetails__50bmg_calibre",
+            "sound":"cal",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten"]
         },
         "weapon2":{},
