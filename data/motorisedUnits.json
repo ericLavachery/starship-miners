@@ -700,7 +700,7 @@
             "accuracy":17,
             "power":7,
             "aoe":"unit",
-            "sound":"cal",
+            "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
@@ -1565,7 +1565,7 @@
             "accuracy":18,
             "power":7,
             "aoe":"unit",
-            "sound":"cal",
+            "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -1996,7 +1996,7 @@
             "accuracy":20,
             "power":7,
             "aoe":"unit",
-            "sound":"cal_multi",
+            "sound":"calibre_multi",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":2,
@@ -2032,7 +2032,7 @@
             "accuracy":24,
             "power":8,
             "aoe":"unit",
-            "sound":"cal_hunt",
+            "sound":"calibre_hunt",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -2432,7 +2432,7 @@
             "accuracy":24,
             "power":8,
             "aoe":"unit",
-            "sound":"cal_hunt",
+            "sound":"calibre_hunt",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -2491,7 +2491,7 @@
             "accuracy":24,
             "power":8,
             "aoe":"unit",
-            "sound":"cal_hunt",
+            "sound":"calibre_hunt",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -2656,7 +2656,7 @@
             "accuracy":18,
             "power":7,
             "aoe":"unit",
-            "sound":"cal",
+            "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{

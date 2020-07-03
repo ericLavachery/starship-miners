@@ -1,4 +1,4 @@
-cal_bad[
+[
     {
         "id":0,
         "name":"Rednecks",
@@ -207,7 +207,7 @@ cal_bad[
             "dca":1.25,
             "power":8,
             "aoe":"unit",
-            "sound":"cal_hunt",
+            "sound":"calibre_hunt",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
@@ -414,10 +414,10 @@ cal_bad[
             "range":1,
             "rof":10,
             "accuracy":19,
-            "power":8,
-            "armors":0.85,
+            "power":9,
+            "armors":0.75,
             "aoe":"unit",
-            "sound":"cal_big",
+            "sound":"calibre_heavy_x1",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
@@ -736,7 +736,7 @@ cal_bad[
             "accuracy":20,
             "power":7,
             "aoe":"unit",
-            "sound":"cal",
+            "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -933,7 +933,7 @@ cal_bad[
             "power":5,
             "armors":1.2,
             "aoe":"unit",
-            "sound":"cal_bad",
+            "sound":"calibre_bad_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
@@ -978,7 +978,7 @@ cal_bad[
             "accuracy":24,
             "power":7,
             "aoe":"unit",
-            "sound":"cal_hunt",
+            "sound":"calibre_hunt",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -2522,7 +2522,7 @@ cal_bad[
             "power":8,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"cal_big",
+            "sound":"calibre_pierce_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -2588,7 +2588,7 @@ cal_bad[
             "accuracy":19,
             "power":7,
             "aoe":"unit",
-            "sound":"cal",
+            "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":10,
@@ -2622,7 +2622,7 @@ cal_bad[
             "accuracy":20,
             "power":7,
             "aoe":"unit",
-            "sound":"cal",
+            "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -2671,7 +2671,7 @@ cal_bad[
             "power":8,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"cal_big",
+            "sound":"calibre_pierce_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -2734,7 +2734,7 @@ cal_bad[
             "accuracy":24,
             "power":8,
             "aoe":"unit",
-            "sound":"cal_hunt",
+            "sound":"calibre_hunt",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":4,
@@ -2960,7 +2960,7 @@ cal_bad[
             "power":9,
             "armors":0.85,
             "aoe":"unit",
-            "sound":"cal_big",
+            "sound":"calibre_pierce_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -3059,7 +3059,7 @@ cal_bad[
             "accuracy":18,
             "power":7,
             "aoe":"unit",
-            "sound":"cal",
+            "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten"]
         },
         "weapon2":{},
