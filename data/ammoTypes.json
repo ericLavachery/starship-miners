@@ -4,7 +4,7 @@
         "range": 1,
         "rof": 1,
         "power": 0,
-        "armors": 0,
+        "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
@@ -14,7 +14,7 @@
         "range": 1,
         "rof": 1,
         "power": 0,
-        "armors": 0,
+        "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
