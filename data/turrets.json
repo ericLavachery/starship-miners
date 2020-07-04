@@ -416,7 +416,20 @@
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":40
         },
-        "weapon2":{},
+        "weapon2":{
+            "name":"Fusil de précision",
+            "cost":5,
+            "range":2,
+            "elevation":2,
+            "rof":4,
+            "accuracy":25,
+            "dca":1.5,
+            "power":9,
+            "armors":0.75,
+            "aoe":"unit",
+            "sound":"sniper",
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
+        },
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
