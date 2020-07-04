@@ -1014,8 +1014,8 @@
         "maxVeg":2,
         "skills":["cible","hover","selfmecano","transport","fret"],
         "transMaxSize":9,
-        "transUnits":700,
-        "transRes":350,
+        "transUnits":800,
+        "transRes":400,
         "fuzz":2,
         "deathFx":"planeexploair1"
     },
@@ -1624,8 +1624,7 @@
         "weapon2":{
             "name":"Mitrailleuses",
             "cost":4,
-            "range":1,
-            "elevation":1,
+            "range":2,
             "rof":20,
             "accuracy":17,
             "dca":1.5,
@@ -2244,7 +2243,7 @@
         "weapon2":{
             "name":"Mitrailleuse",
             "cost":3,
-            "range":1,
+            "range":2,
             "rof":10,
             "accuracy":17,
             "dca":1,

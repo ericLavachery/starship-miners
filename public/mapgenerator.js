@@ -23,14 +23,14 @@ function createMap(size) {
         newTile.id = i;
         newTile.x = x;
         newTile.y = y;
-        newTile.terrain = nextTile(i, size);
+        newTile.terrain = nextTile(i,size);
         thisTerrain = newTile.terrain;
         if (i > mapSize) {
             aboveSeed = zone[i-mapSize].seed;
         } else {
             aboveSeed = 0;
         }
-        newTile.seed = nextSeed(thisTerrain, lastSeed, aboveSeed);
+        newTile.seed = nextSeed(thisTerrain,lastSeed,aboveSeed);
         zone.push(newTile);
         lastSeed = newTile.seed;
         i++;
@@ -43,7 +43,7 @@ function createMap(size) {
     // console.log(zone);
 };
 
-function nextSeed(ter, ls, as) {
+function nextSeed(ter,ls,as) {
     let newSeed = 1;
     if (ter == "M") {
         newSeed = rand.rand(1,6);
