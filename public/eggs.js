@@ -271,6 +271,7 @@ function spawns() {
 
 function vomiSpawn(bat) {
     console.log('SPAWN: Vomissure');
+    let kindTag = getEggKind(bat);
     fearFactor(bat,true);
     let dropTile = -1;
     let unitIndex = alienUnits.findIndex((obj => obj.name == 'Vomissure'));
@@ -280,7 +281,7 @@ function vomiSpawn(bat) {
     if (Object.keys(conselUnit).length >= 1) {
         dropTile = checkDropBlob(bat);
         if (dropTile >= 0) {
-            putBat(dropTile,0,0);
+            putBat(dropTile,0,0,kindTag);
             blobEat(dropTile);
         }
     }
@@ -359,7 +360,6 @@ function alienMorph(bat,newBatName,reset) {
     let newAlien = aliens[batIndex];
     if (!reset) {
         newAlien.tags = eTags;
-        newAlien.creaTurn = eCreaTurn;
     }
 };
 
@@ -373,7 +373,7 @@ function eggSpawn(bat,fromEgg) {
         eggLife = coqLifeStart+Math.floor(playerInfos.mapDiff*coqLifeFactor);
     }
     console.log('eggTurn='+eggTurn);
-    if (eggTurn >= eggLife && fromEgg) {
+    if (eggTurn > eggLife && fromEgg) {
         // TRANFORMATION EN RUCHE !
         if (bat.type.includes('Oeuf')) {
             alienMorph(bat,'Ruche',false);
@@ -520,7 +520,31 @@ function checkDrop(layBat) {
             }
         }
     });
-    if (possibleDrops.length > 1) {
+    if (possibleDrops.length < 1) {
+        let distance;
+        zone.forEach(function(tile) {
+            distance = calcDistance(layBat.tileId,tile.id);
+            if (distance === 2) {
+                batHere = false;
+                bataillons.forEach(function(bat) {
+                    if (bat.loc === "zone" && bat.tileId === tile.id) {
+                        batHere = true;
+                    }
+                });
+                if (!batHere) {
+                    aliens.forEach(function(bat) {
+                        if (bat.loc === "zone" && bat.tileId === tile.id) {
+                            batHere = true;
+                        }
+                    });
+                }
+                if (!batHere) {
+                    possibleDrops.push(tile.id);
+                }
+            }
+        });
+    }
+    if (possibleDrops.length >= 1) {
         possibleDrops = [_.sample(possibleDrops)];
         tileDrop = possibleDrops[0];
     }
