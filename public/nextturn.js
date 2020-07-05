@@ -170,6 +170,10 @@ function nextTurnEnd() {
             if (bat.apLeft > oldAP) {
                 bat.apLeft = oldAP;
             }
+            // tracking
+            if (checkTracking(bat)) {
+                bat.apLeft = bat.apLeft-4;
+            }
             // nostun
             if (batType.skills.includes('nostun') && bat.apLeft < 1) {
                 bat.apLeft = 1;

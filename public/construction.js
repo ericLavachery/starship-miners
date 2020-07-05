@@ -274,7 +274,7 @@ function dismantle(batId) {
     let bat = bataillons[index];
     let batType = getBatType(bat);
     let tileId = bat.tileId;
-    let citoyens = batType.squads*batType.squadSize*batType.crew;
+    let crew = batType.squads*batType.squadSize*batType.crew;
     // console.log('CITOYENS:'+citoyens);
     let xp = getXp(bat);
     batUnselect();
@@ -284,7 +284,7 @@ function dismantle(batId) {
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
     $('#b'+bat.tileId).append(resHere);
-    if (batType.name != 'Citoyens' && citoyens >= 1) {
+    if (batType.skills.includes('recupcit')) {
         recupCitoyens(126,tileId,citoyens,xp);
     }
 };

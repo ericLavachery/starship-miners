@@ -63,17 +63,22 @@ function checkCharged(myBat) {
 };
 
 function checkTransportId(myBat,myBatType) {
+    // vérifie si le transport (en dessous de l'unité) peut la prendre, et retourn son Id
     let transId = -1;
     let batType;
     let batTransUnitsLeft;
     let myBatWeight = calcVolume(myBat,myBatType);
+    let tracking;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" && bat.tileId == myBat.tileId) {
             batType = getBatType(bat);
             if (batType.transMaxSize >= myBatType.size) {
-                batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
-                if (myBatWeight <= batTransUnitsLeft) {
-                    transId = bat.id;
+                tracking = checkTracking(bat);
+                if (!myBatType.skills.includes('tracked') || !tracking) {
+                    batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
+                    if (myBatWeight <= batTransUnitsLeft) {
+                        transId = bat.id;
+                    }
                 }
             }
         }
@@ -94,9 +99,29 @@ function calcTransUnitsLeft(myBat,myBatType) {
     return myBatTransUnitsLeft;
 };
 
+function checkTracking(myBat) {
+    let tracking = false;
+    let myBatType = getBatType(myBat);
+    if (myBatType.transMaxSize < 10) {
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "trans" && bat.locId == myBat.id) {
+                batType = getBatType(bat);
+                if (batType.skills.includes('tracked')) {
+                    tracking = true;
+                }
+            }
+        });
+    }
+    return tracking;
+};
+
 function embarquement(transId) {
     let transIndex = bataillons.findIndex((obj => obj.id == transId));
     let transBat = bataillons[transIndex];
+    let transBatType = getBatType(transBat);
+    if (selectedBatType.skills.includes('tracked') && transBatType.transMaxSize < 10) {
+        transBat.apLeft = transBat.apLeft-4;
+    }
     transBat.transIds.push(selectedBat.id);
     selectedBat.apLeft = selectedBat.apLeft-2;
     selectedBat.loc = 'trans';
