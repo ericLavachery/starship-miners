@@ -892,7 +892,7 @@ function shot(weapon,attBatType,bat,batType,shotDice) {
     // minaccu
     let minAccu = 0;
     if (attBatType.skills.includes('minaccu')) {
-        minAccu = 15;
+        minAccu = Math.ceil(weapon.accuracy/2);
     }
     if (isHit(weapAccu,minAccu,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
         if (weapon.power >= 1) {
@@ -937,7 +937,7 @@ function blast(brochette,attBatType,aoeShots,weapon,bat,batType,shotDice) {
     // minaccu
     let minAccu = 0;
     if (attBatType.skills.includes('minaccu')) {
-        minAccu = 15;
+        minAccu = Math.ceil(weapon.accuracy/2);
     }
     let ii = 1;
     while (ii <= aoeShots) {
