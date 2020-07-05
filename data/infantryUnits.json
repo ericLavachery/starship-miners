@@ -1920,8 +1920,9 @@
             "accuracy":30,
             "dca":0.75,
             "power":5,
+            "armors":0,
             "aoe":"unit",
-            "sound":"zapsplat_sound_design_electricity_zap_spark_28906b",
+            "sound":"electricity",
             "ammo":["web"]
         },
         "moveCost":3,
