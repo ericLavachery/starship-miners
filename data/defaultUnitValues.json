@@ -47,6 +47,8 @@
     "maxVeg": 4,
     "skills": [],
     "skillCost":6,
+    "mediCost":30,
+    "mecanoCost":30,
     "maxSKill": 999,
     "transMaxSize":0,
     "transUnits":0,

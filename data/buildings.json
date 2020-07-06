@@ -20,8 +20,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["mecano","deepselfrepair"],
-        "skillCost":3,
+        "skills":["mecano","selfrepair"],
+        "mecanoCost":3,
         "fuzz":5,
         "deathFx":"S_Explosion02"
     },
@@ -46,7 +46,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","maycamo","extraction","underground","fret"],
+        "skills":["maycamo","extraction","underground","fret"],
         "mining":{
             "level":3,
             "rate":20,
@@ -78,7 +78,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","extraction","fret"],
+        "skills":["extraction","fret"],
         "mining":{
             "level":3,
             "rate":20,
@@ -110,7 +110,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","extraction","fret"],
+        "skills":["extraction","fret"],
         "mining":{
             "level":3,
             "rate":20,
@@ -142,7 +142,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["deepselfrepair","ravitaillement","stock","maycamo"],
+        "skills":["ravitaillement","stock","maycamo"],
         "fuzz":1,
         "deathFx":"S_Explosion02"
     }

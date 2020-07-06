@@ -72,8 +72,8 @@ function playerSkillsUTChanges() {
             unit.skills.push('camo');
         }
         if (unit.skills.includes('medic')) {
-            if (playerInfos.medLevel >= 3 && unit.skillCost >= 3) {
-                unit.skillCost = unit.skillCost-1;
+            if (playerInfos.medLevel >= 3 && unit.mediCost >= 3) {
+                unit.mediCost = unit.mediCost-1;
             }
         }
     });
