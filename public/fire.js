@@ -230,7 +230,7 @@ function attack() {
         }
     }
     // Feu dans l'eau
-    if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire')) {
+    if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov')) {
         let terrain = getTerrain(targetBat);
         if (terrain.name === 'W' || terrain.name === 'R') {
             aoeShots = 1;
@@ -355,10 +355,17 @@ function attack() {
         apDamage = apDamage+webDamage;
     }
     // inflammable
-    if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire')) {
+    if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('pyratol') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov')) {
         if (targetBatType.skills.includes('inflammable')) {
             totalDamage = totalDamage*2;
             console.log('inflammable!');
+        }
+    }
+    // résistance au feu
+    if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('pyratol') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov')) {
+        if (targetBatType.skills.includes('resistfeu')) {
+            totalDamage = Math.round(totalDamage/1.5);
+            console.log('résistance au feu!');
         }
     }
     // munitions limitées
@@ -614,7 +621,7 @@ function defense() {
         }
     }
     // Feu dans l'eau
-    if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire')) {
+    if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov')) {
         let terrain = getTerrain(selectedBat);
         if (terrain.name === 'W' || terrain.name === 'R') {
             aoeShots = 1;
@@ -701,10 +708,17 @@ function defense() {
         }
     }
     // inflammable
-    if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire')) {
+    if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('pyratol') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov')) {
         if (selectedBatType.skills.includes('inflammable')) {
             totalDamage = totalDamage*2;
             console.log('inflammable!');
+        }
+    }
+    // résistance au feu
+    if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('pyratol') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov')) {
+        if (selectedBatType.skills.includes('resistfeu')) {
+            totalDamage = Math.round(totalDamage/1.5);
+            console.log('résistance au feu!');
         }
     }
     // AP DAMAGE!

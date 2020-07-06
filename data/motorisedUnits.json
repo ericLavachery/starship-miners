@@ -805,7 +805,7 @@
             "power":19,
             "aoe":"brochette",
             "sound":"balista",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -1331,7 +1331,7 @@
             "power":21,
             "aoe":"brochette",
             "sound":"balista",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
             "name":"Moissonneuse",
