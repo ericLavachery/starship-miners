@@ -1133,7 +1133,7 @@
     {
         "id":41,
         "name":"Scalpels",
-        "pic":"scalp",
+        "pic":"scalpel",
         "cat":"infantry",
         "kind":"blades",
         "squads":4,
@@ -1649,7 +1649,7 @@
     {
         "id":56,
         "name":"Berserkers",
-        "pic":"berserkers",
+        "pic":"berserk",
         "cat":"infantry",
         "kind":"blades",
         "squads":7,

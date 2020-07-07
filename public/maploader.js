@@ -85,6 +85,9 @@ function showAlien(bat) {
     let resHere = showRes(bat.tileId);
     let degNum = getDamageBar(bat);
     let tagz = '';
+    if (bat.tags.includes('guide')) {
+        tagz = tagz+' (guidage)';
+    }
     if (bat.tags.includes('fluo')) {
         tagz = tagz+' (marqué)';
     }
