@@ -658,6 +658,10 @@ function defense() {
             brideDef = 1.5;
         }
     }
+    // bigDef
+    if (targetWeap.bigDef && selectedBatType.size >= 4) {
+        targetWeap.power = Math.ceil(targetWeap.power+Math.sqrt(selectedBatType.size));
+    }
     console.log('brideDef='+brideDef);
     let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);
     if (targetBatType.skills.includes('undead')) {

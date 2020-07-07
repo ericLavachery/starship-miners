@@ -285,7 +285,7 @@ function dismantle(batId) {
     let resHere = showRes(bat.tileId);
     $('#b'+bat.tileId).append(resHere);
     if (batType.skills.includes('recupcit')) {
-        recupCitoyens(126,tileId,citoyens,xp);
+        recupCitoyens(126,tileId,crew,xp);
     }
 };
 
