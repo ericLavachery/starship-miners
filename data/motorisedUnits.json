@@ -2807,7 +2807,7 @@
             "accuracy":100,
             "power":0,
             "aoe":"unit",
-            "sound":"miss",
+            "sound":"mark",
             "ammo":["guidage"]
         },
         "moveCost":2,

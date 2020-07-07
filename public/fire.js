@@ -37,7 +37,7 @@ function clickFire(tileId) {
             }
         } else {
             // hors mêlée
-            if (isInRange(selectedBat.tileId,tileId)) {
+            if (isInRange(selectedBat.tileId,tileId) || checkGuidage(selectedWeap,targetBat)) {
                 if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && ((!targetBatType.skills.includes('invisible') && !targetBat.tags.includes('invisible')) || sideBySideTiles(selectedBat.tileId,tileId,false))) {
                     // console.log(targetBat);
                     tagDelete(targetBat,'invisible');
@@ -347,6 +347,10 @@ function attack() {
     // marquage
     if (selectedWeap.ammo.includes('marquage') && totalHits >= 1 && !targetBat.tags.includes('fluo')) {
         targetBat.tags.push('fluo');
+    }
+    // guidage
+    if (selectedWeap.ammo.includes('guidage') && totalHits >= 1 && !targetBat.tags.includes('guide')) {
+        targetBat.tags.push('guide');
     }
     // disco
     if (selectedWeap.ammo.includes('disco')) {

@@ -25,7 +25,7 @@ function weaponsInfos(bat,batUnitType) {
                 noFireMelee = true;
             }
             // console.log('tileId='+bat.tileId);
-            anyTarget = anyAlienInRange(bat.tileId,thisWeapon);
+            anyTarget = anyAlienInRange(bat,thisWeapon);
             baseAmmo = thisWeapon.maxAmmo;
             ammoLeft = calcAmmos(bat,baseAmmo);
             balise = 'h4';
@@ -115,7 +115,7 @@ function weaponsInfos(bat,batUnitType) {
             if (inMelee && thisWeapon.noMelee) {
                 noFireMelee = true;
             }
-            anyTarget = anyAlienInRange(bat.tileId,thisWeapon);
+            anyTarget = anyAlienInRange(bat,thisWeapon);
             baseAmmo = thisWeapon.maxAmmo;
             ammoLeft = calcAmmos(bat,baseAmmo);
             balise = 'h4';

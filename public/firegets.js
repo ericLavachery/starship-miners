@@ -291,7 +291,8 @@ function calcDistance(myTileIndex,thatTileIndex) {
     }
 };
 
-function anyAlienInRange(tileId,weapon) {
+function anyAlienInRange(myBat,weapon) {
+    let tileId = myBat.tileId;
     let distance;
     let inRange = false;
     let batIndex;
@@ -299,7 +300,7 @@ function anyAlienInRange(tileId,weapon) {
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             distance = calcDistance(tileId,bat.tileId);
-            if (distance <= weapon.range) {
+            if (distance <= weapon.range || checkGuidage(weapon,bat)) {
                 batIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
                 batType = alienUnits[batIndex];
                 if ((!weapon.noFly || !batType.skills.includes('fly')) && ((!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) || distance === 0)) {
@@ -329,6 +330,7 @@ function fireInfos(bat) {
     let alienIndex;
     let alienType;
     let longMelee = false;
+    let guideTarget = false;
     zone.forEach(function(tile) {
         $("#"+tile.id).attr("title", "");
         alien = alienHere(tile.id);
@@ -347,7 +349,8 @@ function fireInfos(bat) {
             $("#"+tile.id).attr("title", "");
             alien = alienHere(tile.id);
             if (Object.keys(alien).length >= 1) {
-                if (isInRange(selectedBat.tileId,tile.id)) {
+                guideTarget = checkGuidage(selectedWeap,alien);
+                if (isInRange(selectedBat.tileId,tile.id) || guideTarget) {
                     alienType = getBatType(alien);
                     if (checkFlyTarget(selectedWeap,alienType) && ((!alienType.skills.includes('invisible') && !alien.tags.includes('invisible')) || sideBySideTiles(selectedBat.tileId,tile.id,false))) {
                         cursorSwitch('#',tile.id,'fire');
@@ -357,6 +360,16 @@ function fireInfos(bat) {
         });
     }
 };
+
+function checkGuidage(weapon,alien) {
+    let guideTarget = false;
+    if (alien.tags.includes('guide')) {
+        if (weapon.ammo.includes('missile') && !weapon.name.includes('Comet')) {
+            guideTarget = true;
+        }
+    }
+    return guideTarget;
+}
 
 function alienHere(tileId) {
     let alienBatHere = {};
