@@ -597,7 +597,7 @@
             "noFly":true,
             "isBow":true,
             "rof":2,
-            "accuracy":15,
+            "accuracy":13,
             "power":23,
             "aoe":"brochette",
             "sound":"catapult",

@@ -50,6 +50,7 @@ function goRavit(apCost) {
             }
         });
         if (Object.keys(ravitBat).length >= 1) {
+            let maxRavit = calcRavit(ravitBat);
             // xp
             if (biggestRavit < 999) {
                 if (ravitBat.id != selectedBat.id) {
@@ -59,14 +60,20 @@ function goRavit(apCost) {
             selectedBat.apLeft = selectedBat.apLeft-apCost;
             selectedBat.salvoLeft = 0;
             let numAmmo = 0;
+            let numberRavit = 0;
             let i = 1;
             while (i <= 120) {
-                if (selectedBat.tags.includes('ammoUsed')) {
-                    tagIndex = selectedBat.tags.indexOf('ammoUsed');
-                    selectedBat.tags.splice(tagIndex,1);
-                    numAmmo++;
-                } else {
+                if (numberRavit+singleAmmoVolume > maxRavit) {
                     break;
+                } else {
+                    if (selectedBat.tags.includes('ammoUsed')) {
+                        tagIndex = selectedBat.tags.indexOf('ammoUsed');
+                        selectedBat.tags.splice(tagIndex,1);
+                        numAmmo++;
+                        numberRavit = numberRavit+singleAmmoVolume;
+                    } else {
+                        break;
+                    }
                 }
                 if (i > 120) {break;}
                 i++;
