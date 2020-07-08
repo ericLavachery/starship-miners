@@ -829,7 +829,8 @@
         "skills":["cible","transport","camo","hardmove","emoteur","selfbadmecano","embuscade"],
         "mecanoCost":20,
         "transMaxSize":9,
-        "transUnits":900,
+        "transUnits":870,
+        "transRes":220,
         "fuzz":0,
         "deathFx":"planeexploair1"
     },
@@ -1667,7 +1668,7 @@
     {
         "id":80,
         "name":"Cavalerie",
-        "pic":"camionvert",
+        "pic":"cavalerie",
         "cat":"vehicles",
         "kind":"zero",
         "squads":4,

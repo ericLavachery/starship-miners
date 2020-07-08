@@ -213,7 +213,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -227,7 +227,7 @@
     {
         "id":144,
         "name":"Bandidos",
-        "pic":"banddido",
+        "pic":"bandido",
         "cat":"infantry",
         "kind":"tiradores",
         "squads":6,
@@ -292,7 +292,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"Arbalète",
@@ -359,7 +359,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -399,7 +399,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-plasma"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-taser","lame-plasma"]
         },
         "weapon2":{
             "name":"Arbalète",
@@ -614,7 +614,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -791,7 +791,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"Mortier léger",
@@ -1211,7 +1211,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":2,
         "maxFlood":1,
@@ -1262,7 +1262,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1314,7 +1314,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":2,
         "maxFlood":3,
@@ -1352,7 +1352,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-poison","lame-poraz","lame-mono","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-poison","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"Arbalète",
@@ -1468,7 +1468,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-poison","lame-mono","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-poison","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":4,
         "maxFlood":3,
@@ -1727,7 +1727,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"moto_impact",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-plasma"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-taser","lame-plasma"]
         },
         "moveCost":2,
         "maxFlood":1,
@@ -1780,7 +1780,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-poison","lame-poraz","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":2,
         "maxFlood":3,
@@ -2037,7 +2037,7 @@
             "armors":0,
             "aoe":"unit",
             "sound":"electricity",
-            "ammo":["web"]
+            "ammo":["webtaser"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -2174,7 +2174,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"RPG",
@@ -2324,7 +2324,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-taser","lame-mono","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-taser","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
