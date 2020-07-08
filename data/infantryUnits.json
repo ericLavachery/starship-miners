@@ -572,7 +572,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","berserk","undead","camo"],
+        "skills":["fortif","cible","berserk","undead","camo","clone"],
         "fuzz":-1
     },
     {
@@ -3201,7 +3201,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible"],
+        "skills":["fortif","cible","clone"],
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
     }
