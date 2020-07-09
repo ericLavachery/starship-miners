@@ -40,7 +40,7 @@ function nextTurn() {
             if (rand.rand(1,3) <= 2) {
                 tagDelete(bat,'stun');
             }
-            if (rand.rand(1,6) === 1) {
+            if (rand.rand(1,3) === 1) {
                 tagDelete(bat,'freeze');
             }
             if (playerInfos.mapTurn > bat.creaTurn+10 && bat.type != 'Oeuf voilé') {

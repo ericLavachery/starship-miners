@@ -509,7 +509,10 @@ function attack() {
     if (totalDamage >= 50) {
         if (selectedWeap.ammo.includes('freeze')) {
             if (targetBatType.skills.includes('mutant') || targetBatType.cat == 'aliens') {
-                targetBat.tags.push('freeze');
+                if (!targetBat.tags.includes('freeze')) {
+                    targetBat.tags.push('freeze');
+                    targetBat.tags.push('freeze');
+                }
                 console.log('Bossium Freeze!');
                 $('#report').append('<span class="report cy">Freeze<br></span>');
             }
@@ -828,7 +831,10 @@ function defense() {
     if (totalDamage >= 50) {
         if (targetWeap.ammo.includes('freeze')) {
             if (selectedBatType.skills.includes('mutant') || selectedBatType.cat == 'aliens') {
-                selectedBat.tags.push('freeze');
+                if (!selectedBat.tags.includes('freeze')) {
+                    selectedBat.tags.push('freeze');
+                    selectedBat.tags.push('freeze');
+                }
                 console.log('Bossium Freeze!');
                 $('#report').append('<span class="report cy">Freeze<br></span>');
             }
