@@ -33,7 +33,7 @@ function weaponsInfos(bat,batUnitType) {
                 balise = 'h1';
             }
             noBisOK = true;
-            if (thisWeapon.noBis && bat.tags.includes('noBis')) {
+            if (thisWeapon.noBis && bat.tags.includes('noBis1')) {
                 noBisOK = false;
             }
             let w1message = 'Salves épuisées';
@@ -65,7 +65,7 @@ function weaponsInfos(bat,batUnitType) {
             if (thisWeapon.noBis) {
                 maxSalves = 1;
                 if (resteSalves >= 1) {
-                    if (bat.tags.includes('noBis')) {
+                    if (bat.tags.includes('noBis1')) {
                         resteSalves = 0;
                     } else {
                         resteSalves = 1;
@@ -123,7 +123,7 @@ function weaponsInfos(bat,batUnitType) {
                 balise = 'h1';
             }
             noBisOK = true;
-            if (thisWeapon.noBis && bat.tags.includes('noBis')) {
+            if (thisWeapon.noBis && bat.tags.includes('noBis2')) {
                 noBisOK = false;
             }
             let w2message = 'Salves épuisées';
@@ -155,7 +155,7 @@ function weaponsInfos(bat,batUnitType) {
             if (thisWeapon.noBis) {
                 maxSalves = 1;
                 if (resteSalves >= 1) {
-                    if (bat.tags.includes('noBis')) {
+                    if (bat.tags.includes('noBis2')) {
                         resteSalves = 0;
                     } else {
                         resteSalves = 1;

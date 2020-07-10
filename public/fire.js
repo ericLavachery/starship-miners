@@ -397,7 +397,7 @@ function attack() {
         selectedBat.tags.push('ammoUsed');
     }
     if (selectedWeap.noBis) {
-        selectedBat.tags.push('noBis');
+        selectedBat.tags.push('noBis'+selectedWeap.num);
     }
     console.log('Previous Damage : '+targetBat.damage);
     console.log('Damage : '+totalDamage);

@@ -250,7 +250,8 @@ function turnInfo() {
 function tagsUpdate(bat) {
     tagDelete(bat,'vise');
     tagDelete(bat,'embuscade');
-    tagDelete(bat,'noBis');
+    tagDelete(bat,'noBis1');
+    tagDelete(bat,'noBis2');
     tagDelete(bat,'action');
     if (rand.rand(1,3) <= 2) {
         tagDelete(bat,'stun');

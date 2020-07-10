@@ -38,7 +38,7 @@
             "rof":6,
             "accuracy":14,
             "power":18,
-            "aoe":"brochette",
+            "aoe":"squad",
             "sound":"canon_small_x2",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo":16
@@ -76,7 +76,7 @@
             "rof":8,
             "accuracy":16,
             "power":24,
-            "aoe":"brochette",
+            "aoe":"squad",
             "sound":"canon_big_multi",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":28
@@ -231,7 +231,7 @@
             "rof":3,
             "accuracy":18,
             "power":28,
-            "aoe":"brochette",
+            "aoe":"squad",
             "sound":"canon_big_x2",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":24
@@ -386,7 +386,7 @@
             "rof":3,
             "accuracy":16,
             "power":25,
-            "aoe":"brochette",
+            "aoe":"squad",
             "sound":"canon_big_x2",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":16
@@ -560,7 +560,7 @@
             "rof":6,
             "accuracy":14,
             "power":22,
-            "aoe":"brochette",
+            "aoe":"squad",
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
             "maxAmmo":32
@@ -596,6 +596,7 @@
             "range":3,
             "noFly":true,
             "isBow":true,
+            "noBis":true,
             "rof":2,
             "accuracy":13,
             "power":23,
@@ -2417,7 +2418,7 @@
             "rof":3,
             "accuracy":15,
             "power":18,
-            "aoe":"brochette",
+            "aoe":"squad",
             "sound":"canon_small_x2",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm"],
             "maxAmmo":8
@@ -2578,7 +2579,7 @@
             "rof":4,
             "accuracy":18,
             "power":30,
-            "aoe":"brochette",
+            "aoe":"squad",
             "sound":"canon_big_x2",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":16
@@ -2792,7 +2793,7 @@
             "accuracy":14,
             "dca":2,
             "power":18,
-            "aoe":"brochette",
+            "aoe":"squad",
             "sound":"canon_small_x3",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo":20
@@ -2891,7 +2892,7 @@
             "rof":4,
             "accuracy":18,
             "power":20,
-            "aoe":"brochette",
+            "aoe":"squad",
             "sound":"canon_big_x2",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
             "maxAmmo":24

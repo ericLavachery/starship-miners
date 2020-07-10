@@ -356,7 +356,7 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
         }
     }
-    // SELF REPAIR
+    // SELF BAD REPAIR
     if (batUnitType.skills.includes('selfbadrepair')) {
         numTargets = numMedicTargets(bat,'buildings',false,false);
         baseskillCost = batUnitType.mecanoCost;
@@ -374,7 +374,7 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
         }
     }
-    // SELF REPAIR DEEP
+    // SELF REPAIR
     if (batUnitType.skills.includes('selfrepair')) {
         numTargets = numMedicTargets(bat,'buildings',false,true);
         baseskillCost = batUnitType.mecanoCost;
