@@ -84,7 +84,11 @@ function showAlien(bat) {
     }
     let resHere = showRes(bat.tileId);
     let degNum = getDamageBar(bat);
-    let tagz = '';
+    let myKind = getEggKind(bat);
+    let tagz = ' '+myKind;
+    if (bat.tags.includes('shield')) {
+        tagz = tagz+' (bouclier)';
+    }
     if (bat.tags.includes('guide')) {
         tagz = tagz+' (guidage)';
     }
@@ -96,9 +100,6 @@ function showAlien(bat) {
     }
     if (bat.tags.includes('shinda')) {
         tagz = tagz+' (shinda)';
-    }
-    if (bat.tags.includes('shield')) {
-        tagz = tagz+' (bouclier)';
     }
     if (bat.tags.includes('stun')) {
         tagz = tagz+' (stun)';

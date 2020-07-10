@@ -249,7 +249,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"harvest",
-            "ammo":["lame","lame-tungsten","lame-mono"]
+            "ammo":["lame","lame-tungsten"]
         },
         "moveCost":2,
         "maxFlood":0,
@@ -1294,7 +1294,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"harvest",
-            "ammo":["lame","lame-tungsten","lame-mono"]
+            "ammo":["lame","lame-tungsten"]
         },
         "moveCost":2,
         "maxFlood":3,
@@ -1347,7 +1347,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"harvest",
-            "ammo":["lame","lame-tungsten","lame-mono"]
+            "ammo":["lame","lame-tungsten"]
         },
         "moveCost":2,
         "maxFlood":3,
@@ -1970,7 +1970,7 @@
             "power":12,
             "aoe":"squad",
             "sound":"harvest",
-            "ammo":["lame","lame-tungsten","lame-mono"]
+            "ammo":["lame","lame-tungsten"]
         },
         "moveCost":3,
         "maxFlood":0,

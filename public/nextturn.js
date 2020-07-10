@@ -189,6 +189,7 @@ function nextTurnEnd() {
             if (bat.loc === "zone") {
                 blub(bat,batType);
             }
+            bat.xp = Math.round(bat.xp*100)/100;
         }
     });
     killBatList();
