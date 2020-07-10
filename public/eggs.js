@@ -346,6 +346,7 @@ function alienMorph(bat,newBatName,reset) {
     let putTile = bat.tileId;
     let eTags = bat.tags;
     let eCreaTurn = bat.creaTurn;
+    let kindTag = getEggKind(bat);
     // delete bat
     deadAliensList.push(bat.id);
     // let batIndex = aliens.findIndex((obj => obj.id == bat.id));
@@ -354,13 +355,10 @@ function alienMorph(bat,newBatName,reset) {
     let unitIndex = alienUnits.findIndex((obj => obj.name == newBatName));
     conselUnit = alienUnits[unitIndex];
     conselAmmos = ['xxx','xxx'];
-    putBat(putTile,0,0);
+    putBat(putTile,0,0,kindTag);
     // Turn & Tags
     batIndex = aliens.findIndex((obj => obj.tileId == putTile));
     let newAlien = aliens[batIndex];
-    if (!reset) {
-        newAlien.tags = eTags;
-    }
 };
 
 function eggSpawn(bat,fromEgg) {
