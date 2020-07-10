@@ -379,9 +379,9 @@
             "cost":5,
             "range":5,
             "elevation":1,
-            "rof":4,
+            "rof":3,
             "accuracy":50,
-            "power":18,
+            "power":17,
             "aoe":"brochette",
             "sound":"laser_canon",
             "ammo":["laser","laser-g2"]
