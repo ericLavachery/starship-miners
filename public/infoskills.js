@@ -40,6 +40,8 @@ function skillsInfos(bat,batUnitType) {
     }
     // DEBARQUER
     unloadInfos(bat,batUnitType);
+    // RECONSTRUIRE
+    refabInfos(bat,batUnitType);
     // GUET
     if (batUnitType.weapon.rof >= 1 && !batUnitType.skills.includes('sentinelle') && !batUnitType.skills.includes('initiative') && batUnitType.ap >= 1) {
         apCost = 3;

@@ -128,6 +128,7 @@ function showBatInfos(bat) {
         skillsInfos(bat,batUnitType);
     } else {
         transInfos(bat,batUnitType);
+        defabInfos(bat,batUnitType);
     }
     // ARMIES
     $('#unitInfos').append('<span class="blockTitle"><h3>Armée</h3></span><br>');

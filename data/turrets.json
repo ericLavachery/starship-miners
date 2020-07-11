@@ -295,7 +295,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","longshot","defense","recupcit"],
+        "skills":["cible","longshot","defense","recupcit","prefab"],
         "fuzz":1.5,
         "deathFx":"explo1"
     },
@@ -344,7 +344,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","longshot","defense","recupcit"],
+        "skills":["cible","longshot","defense","recupcit","prefab"],
         "fuzz":1.5,
         "deathFx":"explo1"
     },
@@ -390,7 +390,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","longshot","defense","sentinelle","recupcit"],
+        "skills":["cible","longshot","defense","sentinelle","recupcit","prefab"],
         "fuzz":1.5,
         "deathFx":"explo1"
     },
@@ -537,7 +537,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["recupcit"],
+        "skills":["recupcit","prefab"],
         "fuzz":6,
         "deathFx":"explo1"
     },
@@ -593,7 +593,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","maycamo","recupcit","selfbadrepair"],
+        "skills":["cible","maycamo","recupcit","selfbadrepair","prefab"],
         "mecanoCost":10,
         "fuzz":2,
         "deathFx":"explo1"
@@ -633,7 +633,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget"],
+        "skills":["nodeathcount","notarget","prefab"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },

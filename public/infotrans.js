@@ -1,6 +1,6 @@
 function transInfos(bat,batUnitType) {
     console.log('transInfos');
-    let isCharged = checkCharged(bat);
+    let isCharged = checkCharged(bat,'trans');
     let transId = checkTransportId(bat,batUnitType);
     if (transId >= 0 && !isCharged) {
         let transIndex = bataillons.findIndex((obj => obj.id == transId));
@@ -52,10 +52,10 @@ function calcVolume(bat,batType) {
     return batVolume;
 };
 
-function checkCharged(myBat) {
+function checkCharged(myBat,where) {
     let isCharged = false;
     bataillons.forEach(function(bat) {
-        if (bat.loc === "trans" && bat.locId == myBat.id) {
+        if (bat.loc === where && bat.locId == myBat.id) {
             isCharged = true;
         }
     });
@@ -154,7 +154,8 @@ function clickDebarq(tileId) {
             ownBatHere = true;
         }
     });
-    if (isAdjacent(selectedBat.tileId,tileId) && !ownBatHere && terrainAccess(batDebarq.id,tileId) && !alienOccupiedTiles.includes(tileId)) {
+    let batDebarqType = getBatType(batDebarq);
+    if (isAdjacent(selectedBat.tileId,tileId) && !ownBatHere && (terrainAccess(batDebarq.id,tileId) || batDebarqType.cat === 'buildings') && !alienOccupiedTiles.includes(tileId)) {
         tileOK = true;
     } else {
         batDebarq = {};
@@ -165,17 +166,23 @@ function clickDebarq(tileId) {
             tagIndex = selectedBat.transIds.indexOf(batDebarq.id);
             selectedBat.transIds.splice(tagIndex,1);
         }
+        if (batDebarqType.cat === 'buildings') {
+            tagDelete(selectedBat,'loaded');
+            selectedBat.apLeft = selectedBat.apLeft-selectedBatType.mecanoCost*4;
+        }
         selectedBatArrayUpdate();
         batUnselect();
         batDebarq.loc = 'zone';
         batDebarq.locId = 0;
         batDebarq.tileId = tileId;
         batDebarq.oldTileId = tileId;
-        batDebarq.apLeft = batDebarq.apLeft-1;
-        batDebarq.oldapLeft = batDebarq.apLeft-1;
-        if (batDebarq.apLeft < 1) {
-            batDebarq.apLeft = 1;
-            batDebarq.oldapLeft = 1;
+        if (batDebarqType.cat != 'buildings') {
+            batDebarq.apLeft = batDebarq.apLeft-1;
+            batDebarq.oldapLeft = batDebarq.apLeft-1;
+            if (batDebarq.apLeft < 1) {
+                batDebarq.apLeft = 1;
+                batDebarq.oldapLeft = 1;
+            }
         }
         showBataillon(batDebarq);
         batSelect(batDebarq);
