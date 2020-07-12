@@ -59,6 +59,10 @@ function calcCamo(bat) {
             camChance = stealthMaxChance;
         }
     }
+    // min
+    if (camChance < (batType.stealth-6)*3) {
+        camChance = (batType.stealth-6)*3;
+    }
     return camChance;
 };
 

@@ -512,6 +512,8 @@ function attack() {
                 if (!targetBat.tags.includes('freeze')) {
                     targetBat.tags.push('freeze');
                     targetBat.tags.push('freeze');
+                } else {
+                    targetBat.tags.push('freeze');
                 }
                 console.log('Bossium Freeze!');
                 $('#report').append('<span class="report cy">Freeze<br></span>');
@@ -833,6 +835,8 @@ function defense() {
             if (selectedBatType.skills.includes('mutant') || selectedBatType.cat == 'aliens') {
                 if (!selectedBat.tags.includes('freeze')) {
                     selectedBat.tags.push('freeze');
+                    selectedBat.tags.push('freeze');
+                } else {
                     selectedBat.tags.push('freeze');
                 }
                 console.log('Bossium Freeze!');

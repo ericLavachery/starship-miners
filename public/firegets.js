@@ -457,22 +457,6 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.range = weapon.range;
     thisWeapon.rof = weapon.rof;
     thisWeapon.power = weapon.power;
-    // sila drug
-    if (bat.tags.includes('sila') && thisWeapon.isMelee) {
-        thisWeapon.power = thisWeapon.power+5;
-    }
-    if (bat.tags.includes('sila') && !thisWeapon.isMelee) {
-        thisWeapon.accuracy = thisWeapon.accuracy-2;
-    }
-    // blaze drug
-    if (bat.tags.includes('blaze') && !thisWeapon.isMelee) {
-        thisWeapon.accuracy = thisWeapon.accuracy-2;
-    }
-    // skupiac drug
-    if (bat.tags.includes('skupiac')) {
-        thisWeapon.accuracy = thisWeapon.accuracy+6;
-        thisWeapon.power = thisWeapon.power+1;
-    }
     if (weapon.armors === undefined) {
         thisWeapon.armors = 1;
     } else {
@@ -571,6 +555,22 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
     if (ammo.aoe != '') {
         thisWeapon.aoe = ammo.aoe;
+    }
+    // sila drug
+    if (bat.tags.includes('sila') && thisWeapon.isMelee) {
+        thisWeapon.power = thisWeapon.power+5;
+    }
+    if (bat.tags.includes('sila') && !thisWeapon.isMelee) {
+        thisWeapon.accuracy = thisWeapon.accuracy-2;
+    }
+    // blaze drug
+    if (bat.tags.includes('blaze') && !thisWeapon.isMelee) {
+        thisWeapon.accuracy = thisWeapon.accuracy-2;
+    }
+    // skupiac drug
+    if (bat.tags.includes('skupiac')) {
+        thisWeapon.accuracy = thisWeapon.accuracy+6;
+        thisWeapon.power = thisWeapon.power+1;
     }
     // skills
     let batUnitType = getBatType(bat);
