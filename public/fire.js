@@ -1064,9 +1064,9 @@ function batDeath(bat,count) {
         batList.splice(batIndex,1);
     } else if (bat.team == 'aliens') {
         if (count) {
-            if (bat.type.includes('Oeuf') || bat.type === 'Coque' || bat.type === 'Ruche') {
+            if (bat.type.includes('Oeuf') || bat.type === 'Coque' || bat.type === 'Ruche' || bat.type === 'Cocon') {
                 playerInfos.eggsKilled = playerInfos.eggsKilled+1;
-                if (bat.type === 'Coque' || bat.type === 'Oeuf') {
+                if (bat.type === 'Coque' || bat.type === 'Oeuf' || bat.type === 'Cocon') {
                     eggsNum = eggsNum-1;
                 }
                 if (bat.type === 'Oeuf voilé') {

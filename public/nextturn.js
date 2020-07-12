@@ -219,7 +219,7 @@ function turnInfo() {
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
-            if (bat.type == 'Oeuf' || bat.type == 'Coque') {
+            if (bat.type == 'Oeuf' || bat.type == 'Coque' || bat.type === 'Cocon') {
                 numberOfEggs++;
             } else if (!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) {
                 numberOfAliens++;
@@ -477,9 +477,9 @@ function checkDeath(bat,batType) {
             }
             deadBatsList.push(bat.id);
         } else if (bat.team == 'aliens') {
-            if (bat.type.includes('Oeuf') || bat.type === 'Coque' || bat.type === 'Ruche') {
+            if (bat.type.includes('Oeuf') || bat.type === 'Coque' || bat.type === 'Ruche' || bat.type === 'Cocon') {
                 playerInfos.eggsKilled = playerInfos.eggsKilled+1;
-                if (bat.type === 'Coque' || bat.type === 'Oeuf') {
+                if (bat.type === 'Coque' || bat.type === 'Oeuf' || bat.type === 'Cocon') {
                     eggsNum = eggsNum-1;
                 }
                 if (bat.type === 'Oeuf voilé') {

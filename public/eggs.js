@@ -147,9 +147,9 @@ function dropEgg(alienUnit,edge) {
         } else {
             putBat(dropTile,0,0);
         }
-        if (alienUnit.includes('Oeuf') || alienUnit === 'Coque') {
+        if (alienUnit.includes('Oeuf') || alienUnit === 'Coque' || alienUnit === 'Cocon') {
             eggDropCount = eggDropCount+1;
-            if (alienUnit === 'Oeuf' || alienUnit === 'Coque') {
+            if (alienUnit === 'Oeuf' || alienUnit === 'Coque' || alienUnit === 'Cocon') {
                 eggsNum++;
             }
         }
@@ -242,7 +242,7 @@ function eggDropTile(eggName,edge) {
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
                 distance = calcDistance(tile.id,targetTile);
-                if (distance > 5 && distance < 13) {
+                if (distance > 9 && distance < 13) {
                     if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
@@ -349,6 +349,8 @@ function spawns() {
                 alienSpawn(bat,'Cafards');
             } else if (bat.type === 'Glaireuse' && aliensNums.gluantes < maxPonte) {
                 alienSpawn(bat,'Gluantes');
+            } else if (bat.type === 'Cocon') {
+                cocoonSpawn(bat);
             }
         }
     });
@@ -444,6 +446,91 @@ function alienMorph(bat,newBatName,reset) {
     // Turn & Tags
     batIndex = aliens.findIndex((obj => obj.tileId == putTile));
     let newAlien = aliens[batIndex];
+};
+
+function cocoonSpawn(bat) {
+    console.log('SPAWN');
+    let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
+    let eggLife = 3;
+    console.log('eggTurn='+eggTurn);
+    if (eggTurn > eggLife) {
+        // TRANFORMATION EN VOLCAN !
+        alienMorph(bat,'Volcan',false);
+    } else {
+        if (eggTurn === 2) {
+            let spawnNum = 8;
+            console.log('spawnNum='+spawnNum);
+            let classes = [];
+            if (playerInfos.mapDiff >= 10) {
+                classes.push('A');
+            } else if (playerInfos.mapDiff >= 8) {
+                classes.push('A');
+                classes.push('B');
+            } else if (playerInfos.mapDiff >= 6) {
+                classes.push('A');
+                classes.push('B');
+                classes.push('C');
+            } else if (playerInfos.mapDiff >= 4) {
+                classes.push('B');
+                classes.push('C');
+            } else {
+                classes.push('C');
+            }
+            console.log(classes);
+            let eggCat = newEggCat();
+            console.log('eggCat: '+eggCat);
+            let checkDiceMax = 0;
+            let checkDice;
+            let raritySum = 0;
+            let dropTile = -1;
+            alienUnits.forEach(function(unit) {
+                if (classes.includes(unit.class) && unit.kind.includes(eggCat)) {
+                    checkDiceMax = checkDiceMax+unit.rarity;
+                }
+            });
+            let i = 1;
+            while (i <= spawnNum) {
+                conselUnit = {};
+                conselAmmos = ['xxx','xxx'];
+                checkDice = rand.rand(1,checkDiceMax);
+                console.log('checkDice='+checkDice);
+                raritySum = 0;
+                alienUnits.forEach(function(unit) {
+                    if (classes.includes(unit.class) && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat)) {
+                        raritySum = raritySum+unit.rarity;
+                        if (checkDice <= raritySum) {
+                            conselUnit = unit;
+                        }
+                    }
+                });
+                console.log('spawned unit ->');
+                console.log(conselUnit);
+                if (Object.keys(conselUnit).length >= 1) {
+                    dropTile = checkDrop(bat);
+                    if (dropTile >= 0) {
+                        putBat(dropTile,0,0);
+                    }
+                }
+                if (i > 8) {break;}
+                i++
+            }
+        } else {
+            console.log('no spawn');
+        }
+    }
+};
+
+function newEggCat() {
+    let eggCat = 'bug';
+    let dice = rand.rand(1,16);
+    if (dice <= 2) {
+        eggCat = 'larve';
+    } else if (dice <= 6) {
+        eggCat = 'swarm';
+    } else if (dice <= 10) {
+        eggCat = 'spider';
+    }
+    return eggCat;
 };
 
 function eggSpawn(bat,fromEgg) {
