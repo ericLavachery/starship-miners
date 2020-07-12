@@ -4,8 +4,10 @@ function defabInfos(bat,batUnitType) {
     let prefabId = checkPrefabId(bat,batUnitType);
     if (prefabId >= 0 && !isLoaded && batUnitType.skills.includes('constructeur')) {
         let prefabIndex = bataillons.findIndex((obj => obj.id == prefabId));
+        let prefabBat = bataillons[prefabIndex];
+        let prefabBatType = getBatType(prefabBat);
         let prefabBatName = bataillons[prefabIndex].type;
-        let apCost = batUnitType.mecanoCost*4;
+        let apCost = Math.round(batUnitType.mecanoCost*prefabBatType.size/10);
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire '+prefabBatName+'" class="boutonGris iconButtons" onclick="deconstruction('+prefabId+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
     }
 };
@@ -29,7 +31,7 @@ function deconstruction(prefabId) {
     let prefabIndex = bataillons.findIndex((obj => obj.id == prefabId));
     let prefabBat = bataillons[prefabIndex];
     let prefabBatType = getBatType(prefabBat);
-    selectedBat.apLeft = selectedBat.apLeft-selectedBatType.mecanoCost*4;
+    selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*prefabBatType.size/10);
     selectedBat.tags.push('loaded');
     prefabBat.loc = 'load';
     prefabBat.locId = selectedBat.id;
