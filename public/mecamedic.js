@@ -167,7 +167,11 @@ function medic(cat,cost,around,deep) {
                                         oldSquadsLeft = selectedBat.squadsLeft;
                                         squadHP = selectedBatType.squadSize*selectedBatType.hp;
                                         batHP = squadHP*selectedBatType.squads;
-                                        regen = mecanoHP;
+                                        if (selectedBatType.cat === 'buildings') {
+                                            regen = mecanoHP*2;
+                                        } else {
+                                            regen = mecanoHP;
+                                        }
                                         batHPLeft = (selectedBat.squadsLeft*squadHP)-selectedBat.damage+regen;
                                         selectedBat.squadsLeft = Math.ceil(batHPLeft/squadHP);
                                         selectedBat.damage = (selectedBat.squadsLeft*squadHP)-batHPLeft;
@@ -179,7 +183,11 @@ function medic(cat,cost,around,deep) {
                                         oldSquadsLeft = bat.squadsLeft;
                                         squadHP = batType.squadSize*batType.hp;
                                         batHP = squadHP*batType.squads;
-                                        regen = mecanoHP;
+                                        if (batType.cat === 'buildings') {
+                                            regen = mecanoHP*2;
+                                        } else {
+                                            regen = mecanoHP;
+                                        }
                                         batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
                                         bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
                                         bat.damage = (bat.squadsLeft*squadHP)-batHPLeft;
@@ -272,7 +280,11 @@ function medic(cat,cost,around,deep) {
                 oldSquadsLeft = selectedBat.squadsLeft;
                 squadHP = selectedBatType.squadSize*selectedBatType.hp;
                 batHP = squadHP*selectedBatType.squads;
-                regen = mecanoHP;
+                if (selectedBatType.cat === 'buildings') {
+                    regen = mecanoHP*2;
+                } else {
+                    regen = mecanoHP;
+                }
                 batHPLeft = (selectedBat.squadsLeft*squadHP)-selectedBat.damage+regen;
                 selectedBat.squadsLeft = Math.ceil(batHPLeft/squadHP);
                 selectedBat.damage = (selectedBat.squadsLeft*squadHP)-batHPLeft;

@@ -619,11 +619,15 @@ function checkDeepForest(tile) {
 };
 
 function getTileTerrainName(tileId) {
-    let tileIndex = zone.findIndex((obj => obj.id == tileId));
-    let tile = zone[tileIndex];
-    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
-    let terrain = terrainTypes[terrainIndex];
-    return terrain.name;
+    let tername = 'P';
+    if (tileId < 3600 && tileId >= 0) {
+        let tileIndex = zone.findIndex((obj => obj.id == tileId));
+        let tile = zone[tileIndex];
+        let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
+        let terrain = terrainTypes[terrainIndex];
+        tername = terrain.name;
+    }
+    return tername;
 };
 
 function calcShotDice(bat,luckyshot) {
