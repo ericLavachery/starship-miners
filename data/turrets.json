@@ -209,7 +209,7 @@
         "weapon2":{
             "name":"Missiles Comet",
             "cost":7,
-            "range":4,
+            "range":6,
             "noBis":true,
             "elevation":1,
             "rof":6,

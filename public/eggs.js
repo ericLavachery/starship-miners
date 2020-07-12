@@ -451,7 +451,7 @@ function alienMorph(bat,newBatName,reset) {
 function cocoonSpawn(bat) {
     console.log('SPAWN');
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
-    let eggLife = 3;
+    let eggLife = 2;
     console.log('eggTurn='+eggTurn);
     if (eggTurn > eggLife) {
         // TRANFORMATION EN VOLCAN !
