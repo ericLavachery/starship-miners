@@ -9,7 +9,7 @@ function checkStartingAliens() {
         }
         let i = 1;
         while (i <= numRuches) {
-            dropEgg('Ruche');
+            dropEgg('Ruche',false);
             if (i > 20) {break;}
             i++
         }
@@ -27,8 +27,12 @@ function calcEggPause() {
             }
         }
     });
-    if (eggPauseDice > 20) {
-        eggPauseDice = 20;
+    let eggPauseMax = 20;
+    if (playerInfos.mapDiff >= 10) {
+        eggPauseMax = 5;
+    }
+    if (eggPauseDice > eggPauseMax) {
+        eggPauseDice = eggPauseMax;
     }
     return eggPauseDice;
 };
@@ -66,8 +70,15 @@ function checkEggsDrop() {
     if (eggDropCount >= 1) {
         eggSound();
         playMusic('newEgg',false);
+        if (Math.floor(playerInfos.mapTurn/50) > playerInfos.cocons) {
+            dropEgg('Cocon',false);
+            playerInfos.cocons = playerInfos.cocons+1;
+        }
     } else {
         playMusic('noEgg',false);
+    }
+    if (playerInfos.mapTurn % 25 === 0 && playerInfos.mapTurn > 1) {
+        dropEgg('Ruche',true);
     }
 };
 
@@ -110,11 +121,11 @@ function eggsDrop() {
                 }
             }
             if (eggTypeDice <= coqueChance) {
-                dropEgg('Coque');
+                dropEgg('Coque',false);
             } else if (eggTypeDice <= coqueChance+invisibleChance) {
-                dropEgg('Oeuf voilé');
+                dropEgg('Oeuf voilé',false);
             } else {
-                dropEgg('Oeuf');
+                dropEgg('Oeuf',false);
             }
             if (i > 4) {break;}
             i++
@@ -122,35 +133,15 @@ function eggsDrop() {
     }
 };
 
-function dropEgg(alienUnit) {
+function dropEgg(alienUnit,edge) {
     console.log('dropping egg...');
     let unitIndex = alienUnits.findIndex((obj => obj.name === alienUnit));
     conselUnit = alienUnits[unitIndex];
     conselAmmos = ['xxx','xxx'];
     alienOccupiedTileList();
     playerOccupiedTileList();
-    let tileOK = false;
-    let maxTileId = (mapSize*mapSize)-1;
-    let dropTile = rand.rand(0,maxTileId);
-    console.log('dropTile='+dropTile);
-    if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
-        tileOK = true;
-    }
-    if (!tileOK) {
-        dropTile = rand.rand(0,maxTileId);
-        console.log('dropTile='+dropTile);
-        if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
-            tileOK = true;
-        }
-    }
-    if (!tileOK) {
-        dropTile = rand.rand(0,maxTileId);
-        console.log('dropTile='+dropTile);
-        if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
-            tileOK = true;
-        }
-    }
-    if (tileOK) {
+    let dropTile = eggDropTile(alienUnit,edge);
+    if (dropTile >= 0) {
         if (alienUnit === 'Oeuf voilé') {
             putBat(dropTile,0,0,'invisible');
         } else {
@@ -167,6 +158,100 @@ function dropEgg(alienUnit) {
         }
     }
 };
+
+function eggDropTile(eggName,edge) {
+    let theTile = -1;
+    let area = 'any';
+    let targetTile = -1;
+    if (edge) {
+        area = 'edge';
+    } else {
+        if (eggName.includes('Ruche')) {
+            area = 'nocenter';
+        } else if (eggName.includes('Cocon')) {
+            area = 'target';
+        }
+    }
+    // ANY
+    if (area === 'any') {
+        let tileOK = false;
+        let maxTileId = (mapSize*mapSize)-1;
+        let dropTile = rand.rand(0,maxTileId);
+        console.log('dropTile='+dropTile);
+        if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
+            tileOK = true;
+        }
+        if (!tileOK) {
+            dropTile = rand.rand(0,maxTileId);
+            console.log('dropTile='+dropTile);
+            if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
+                tileOK = true;
+            }
+        }
+        if (!tileOK) {
+            dropTile = rand.rand(0,maxTileId);
+            console.log('dropTile='+dropTile);
+            if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
+                tileOK = true;
+            }
+        }
+        if (tileOK) {
+            theTile = dropTile;
+        }
+    }
+    // EDGE
+    if (area === 'edge') {
+        let shufZone = _.shuffle(zone);
+        shufZone.forEach(function(tile) {
+            if (theTile < 0) {
+                if (tile.x >= 58 || tile.x <= 3 || tile.y >= 58 || tile.y <= 3) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        theTile = tile.id;
+                    }
+                }
+            }
+        });
+    }
+    // NOCENTER
+    if (area === 'nocenter') {
+        let shufZone = _.shuffle(zone);
+        shufZone.forEach(function(tile) {
+            if (theTile < 0) {
+                if (tile.x < 17 || tile.x > 43 || tile.y < 17 || tile.y > 43) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        theTile = tile.id;
+                    }
+                }
+            }
+        });
+    }
+    // TARGET
+    if (area === 'target') {
+        let shufBats = _.shuffle(bataillons);
+        let bestFuzz = -3;
+        shufBats.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                if (bat.fuzz > bestFuzz) {
+                    targetTile = bat.tileId;
+                    bestFuzz = bat.fuzz;
+                }
+            }
+        });
+        let shufZone = _.shuffle(zone);
+        let distance;
+        shufZone.forEach(function(tile) {
+            if (theTile < 0) {
+                distance = calcDistance(tile.id,targetTile);
+                if (distance > 5 && distance < 13) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        theTile = tile.id;
+                    }
+                }
+            }
+        });
+    }
+    return theTile;
+}
 
 function morphList() {
     let transList = [];

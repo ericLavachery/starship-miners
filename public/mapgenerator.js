@@ -102,7 +102,7 @@ function filterMap(map) {
     // change map
     let mapIndex;
     map.forEach(function(tile) {
-        if (tile.terrain != filterBase[tile.terrain]) {
+        if (tile.terrain != filterBase[tile.terrain] && rand.rand(1,filterEffect) > 1) {
             mapIndex = zone.findIndex((obj => obj.id == tile.id));
             zone[mapIndex].terrain = filterBase[tile.terrain];
         }
