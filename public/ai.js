@@ -527,7 +527,7 @@ function uncheckBadMoves() {
         });
     }
     // enlève les possibleMoves vers l'eau
-    if (possibleMoves.length >= 3 && rand.rand(1,2) === 1 && !selectedBatType.skills.includes('hover')) {
+    if (possibleMoves.length >= 2 && rand.rand(1,3) != 1 && !selectedBatType.skills.includes('hover')) {
         shufZone.forEach(function(tile) {
             if (isAdjacent(selectedBat.tileId,tile.id)) {
                 if (possibleMoves.length >= 3) {
