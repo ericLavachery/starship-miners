@@ -242,6 +242,9 @@ function putBat(tileId,citoyens,xp,startTag) {
         } else {
             newBat.tags = [];
         }
+        if (conselUnit.skills.includes('hide')) {
+            newBat.tags.push('invisible');
+        }
         if (newBat.team === 'player') {
             bataillons.push(newBat);
             // console.log(bataillons);

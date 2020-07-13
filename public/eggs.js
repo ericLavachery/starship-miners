@@ -457,27 +457,41 @@ function cocoonSpawn(bat) {
         // TRANFORMATION EN VOLCAN !
         alienMorph(bat,'Volcan',false);
     } else {
-        if (eggTurn === 2) {
-            let spawnNum = 8;
-            console.log('spawnNum='+spawnNum);
+        if (eggTurn < 3) {
             let classes = [];
-            if (playerInfos.mapDiff >= 10) {
-                classes.push('A');
-            } else if (playerInfos.mapDiff >= 8) {
-                classes.push('A');
-                classes.push('B');
-            } else if (playerInfos.mapDiff >= 6) {
-                classes.push('A');
-                classes.push('B');
-                classes.push('C');
-            } else if (playerInfos.mapDiff >= 4) {
-                classes.push('B');
-                classes.push('C');
+            let spawnNum = 4;
+            if (eggTurn === 2) {
+                spawnNum = 10;
+                if (playerInfos.mapDiff >= 10) {
+                    classes.push('A');
+                } else if (playerInfos.mapDiff >= 8) {
+                    classes.push('A');
+                    classes.push('B');
+                } else if (playerInfos.mapDiff >= 6) {
+                    classes.push('A');
+                    classes.push('B');
+                    classes.push('C');
+                } else if (playerInfos.mapDiff >= 4) {
+                    classes.push('B');
+                    classes.push('C');
+                } else {
+                    classes.push('C');
+                }
             } else {
-                classes.push('C');
+                spawnNum = playerInfos.mapDiff+(rand.rand(1,4));
+                if (playerInfos.mapDiff >= 8) {
+                    classes.push('B');
+                    classes.push('C');
+                } else {
+                    classes.push('C');
+                }
             }
+            console.log('spawnNum='+spawnNum);
             console.log(classes);
-            let eggCat = newEggCat();
+            let eggCat = checkEggCat(bat);
+            if (eggCat === '') {
+                eggCat = newEggCat();
+            }
             console.log('eggCat: '+eggCat);
             let checkDiceMax = 0;
             let checkDice;
@@ -508,6 +522,8 @@ function cocoonSpawn(bat) {
                 if (Object.keys(conselUnit).length >= 1) {
                     dropTile = checkDrop(bat);
                     if (dropTile >= 0) {
+                        checkSpawnType(conselUnit);
+                        putEggCat(bat,conselUnit.kind);
                         putBat(dropTile,0,0);
                     }
                 }
@@ -670,7 +686,8 @@ function checkDrop(layBat) {
     let possibleDrops = [];
     let batHere = false;
     let tileDrop = -1;
-    zone.forEach(function(tile) {
+    let shufZone = _.shuffle(zone);
+    shufZone.forEach(function(tile) {
         if (isAdjacent(layBat.tileId,tile.id)) {
             batHere = false;
             bataillons.forEach(function(bat) {
@@ -692,7 +709,7 @@ function checkDrop(layBat) {
     });
     if (possibleDrops.length < 1) {
         let distance;
-        zone.forEach(function(tile) {
+        shufZone.forEach(function(tile) {
             distance = calcDistance(layBat.tileId,tile.id);
             if (distance === 2) {
                 batHere = false;
