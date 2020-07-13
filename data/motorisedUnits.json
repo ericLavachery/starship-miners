@@ -541,16 +541,15 @@
         "ap":15,
         "maxSalvo":2,
         "weapon":{
-            "name":"Mitrailleuse",
-            "cost":4,
+            "name":"Minigun",
+            "cost":6,
             "range":3,
-            "rof":30,
-            "accuracy":20,
-            "dca":1,
-            "power":10,
+            "rof":36,
+            "accuracy":16,
+            "power":12,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"mit_heavy3",
+            "sound":"mit_minigun",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
