@@ -523,7 +523,7 @@ function attack() {
         }
     }
     // parasite
-    if (totalDamage >= 1 && selectedWeap.ammo.includes('parasite')) {
+    if (totalDamage >= 1 && selectedWeap.ammo.includes('parasite') && rand.rand(1,selectedBatType.squads) >= selectedBat.squadsLeft) {
         if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
             targetBat.tags.push('parasite');
             console.log('Parasite!');
@@ -849,7 +849,7 @@ function defense() {
         }
     }
     // parasite
-    if (totalDamage >= 20 && targetWeap.ammo.includes('parasite')) {
+    if (totalDamage >= 20 && targetWeap.ammo.includes('parasite') && rand.rand(1,targetBatType.squads) >= targetBat.squadsLeft) {
         if (selectedBatType.cat == 'infantry' || selectedBatType.cat == 'aliens') {
             selectedBat.tags.push('parasite');
             console.log('Parasite!');

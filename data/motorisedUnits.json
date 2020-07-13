@@ -2641,15 +2641,15 @@
         "ap":18,
         "maxSalvo":1,
         "weapon":{
-            "name":"Pistolet",
+            "name":"Pistolet automatique",
             "cost":2,
             "range":1,
             "isShort":true,
-            "rof":8,
-            "accuracy":16,
+            "rof":12,
+            "accuracy":17,
             "power":4,
             "aoe":"unit",
-            "sound":"pistol_x2",
+            "sound":"pistol_x4",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
@@ -2745,14 +2745,14 @@
         "ap":20,
         "maxSalvo":1,
         "weapon":{
-            "name":"Pistolet",
+            "name":"Pistolet automatique",
             "cost":3,
             "range":1,
-            "rof":4,
-            "accuracy":14,
+            "rof":6,
+            "accuracy":15,
             "power":4,
             "aoe":"unit",
-            "sound":"pistol_x2",
+            "sound":"pistol_x4",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{
