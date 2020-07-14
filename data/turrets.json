@@ -363,11 +363,11 @@
         "armor":16,
         "size":100,
         "stealth":0,
-        "ap":10,
+        "ap":14,
         "maxSalvo":2,
         "weapon":{
             "name":"Mitrailleuse",
-            "cost":7,
+            "cost":4,
             "range":3,
             "rof":36,
             "accuracy":20,
@@ -379,7 +379,7 @@
         },
         "weapon2":{
             "name":"Lance-flammes",
-            "cost":6,
+            "cost":5,
             "range":1,
             "noBis":true,
             "rof":12,

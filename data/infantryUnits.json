@@ -826,7 +826,7 @@
             "range":2,
             "elevation":1,
             "rof":48,
-            "accuracy":16,
+            "accuracy":18,
             "power":12,
             "armors":0.75,
             "aoe":"unit",

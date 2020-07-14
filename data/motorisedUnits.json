@@ -459,7 +459,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "moveCost":9,
+        "moveCost":7,
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
@@ -515,7 +515,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "moveCost":11,
+        "moveCost":8,
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
@@ -545,7 +545,7 @@
             "cost":6,
             "range":3,
             "rof":36,
-            "accuracy":16,
+            "accuracy":20,
             "power":12,
             "armors":0.75,
             "aoe":"unit",
@@ -566,7 +566,7 @@
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
             "maxAmmo":32
         },
-        "moveCost":7,
+        "moveCost":6,
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,

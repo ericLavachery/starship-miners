@@ -74,13 +74,13 @@ function skillsInfos(bat,batUnitType) {
         if (batUnitType.cat == 'buildings') {
             if (batUnitType.skills.includes('maycamo')) {
                 apCost = Math.floor(batUnitType.ap*3.5);
-                apReq = batUnitType.ap;
+                apReq = Math.floor(batUnitType.ap/1.5);
                 if (inMelee) {
                     camoufOK = false;
                 }
             } else {
                 apCost = Math.floor(batUnitType.ap*2);
-                apReq = batUnitType.ap;
+                apReq = Math.floor(batUnitType.ap/1.5);
                 if (inMelee) {
                     camoufOK = false;
                 }
@@ -88,7 +88,7 @@ function skillsInfos(bat,batUnitType) {
         } else if (batUnitType.cat == 'vehicles' || batUnitType.skills.includes('machine')) {
             if (batUnitType.skills.includes('maycamo')) {
                 apCost = Math.floor(batUnitType.ap*Math.sqrt(batUnitType.size)/1.8);
-                apReq = batUnitType.ap;
+                apReq = Math.floor(batUnitType.ap/1.5);
                 if (inMelee) {
                     camoufOK = false;
                 }
@@ -102,7 +102,7 @@ function skillsInfos(bat,batUnitType) {
         } else {
             if (batUnitType.skills.includes('maycamo')) {
                 apCost = Math.floor(batUnitType.ap*Math.sqrt(batUnitType.size)/1.15);
-                apReq = batUnitType.ap;
+                apReq = Math.floor(batUnitType.ap/1.5);
                 if (inMelee) {
                     camoufOK = false;
                 }
