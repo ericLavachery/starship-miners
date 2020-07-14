@@ -162,13 +162,14 @@ function clickDebarq(tileId) {
         showBatInfos(selectedBat);
     }
     if (tileOK) {
-        if (selectedBat.transIds.includes(batDebarq.id)) {
-            tagIndex = selectedBat.transIds.indexOf(batDebarq.id);
-            selectedBat.transIds.splice(tagIndex,1);
-        }
         if (batDebarqType.cat === 'buildings') {
             tagDelete(selectedBat,'loaded');
             selectedBat.apLeft = selectedBat.apLeft-selectedBatType.mecanoCost*4;
+        } else {
+            if (selectedBat.transIds.includes(batDebarq.id)) {
+                tagIndex = selectedBat.transIds.indexOf(batDebarq.id);
+                selectedBat.transIds.splice(tagIndex,1);
+            }
         }
         selectedBatArrayUpdate();
         batUnselect();
@@ -183,11 +184,17 @@ function clickDebarq(tileId) {
                 batDebarq.apLeft = 1;
                 batDebarq.oldapLeft = 1;
             }
+        } else {
+            batDebarq.apLeft = batDebarqType.ap-Math.round(batDebarqType.size*batDebarqType.ap/25);
         }
         showBataillon(batDebarq);
         batSelect(batDebarq);
         moveMode();
-        moveSelectedBat(tileId,false,false);
+        if (batDebarqType.cat === 'buildings') {
+            moveSelectedBat(tileId,true,false);
+        } else {
+            moveSelectedBat(tileId,false,false);
+        }
         moveInfos(selectedBat,false);
         showBatInfos(selectedBat);
         showTileInfos(selectedBat.tileId);
