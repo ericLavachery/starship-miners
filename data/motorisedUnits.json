@@ -3000,7 +3000,7 @@
         "size":18,
         "volume":0.8,
         "stealth":0,
-        "ap":15,
+        "ap":16,
         "maxSalvo":1,
         "weapon":{
             "name":"Fusil d'assaut",
@@ -3055,7 +3055,7 @@
         "size":20,
         "volume":0.8,
         "stealth":0,
-        "ap":14,
+        "ap":15,
         "maxSalvo":1,
         "weapon":{
             "name":"Calibre",
