@@ -475,8 +475,8 @@
         "weapon":{
             "name":"Canon",
             "cost":5,
-            "range":2,
-            "elevation":2,
+            "range":3,
+            "elevation":1,
             "noFly":true,
             "rof":6,
             "accuracy":17,
@@ -535,7 +535,7 @@
         "weapon2":{
             "name":"Fusil antichar",
             "cost":5,
-            "range":2,
+            "range":3,
             "elevation":2,
             "rof":12,
             "accuracy":20,

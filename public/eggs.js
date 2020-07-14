@@ -231,7 +231,7 @@ function eggDropTile(eggName,edge) {
         let bestFuzz = -3;
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone") {
-                if (bat.fuzz > bestFuzz) {
+                if (bat.fuzz+rand.rand(0,2) > bestFuzz) {
                     targetTile = bat.tileId;
                     bestFuzz = bat.fuzz;
                 }
