@@ -159,7 +159,7 @@
     {
         "id":30,
         "name":"Inferno",
-        "pic":"inferno1",
+        "pic":"inferno2",
         "cat":"vehicles",
         "kind":"brasier",
         "squads":4,
@@ -2251,7 +2251,7 @@
     {
         "id":107,
         "name":"Flaks",
-        "pic":"flak",
+        "pic":"flak2",
         "cat":"vehicles",
         "kind":"zero",
         "squads":3,

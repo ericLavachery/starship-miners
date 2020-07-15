@@ -347,6 +347,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["cible","longshot","defense","recupcit","prefab"],
+        "refabTime":50,
         "fuzz":1.5,
         "deathFx":"explo1"
     },
@@ -395,6 +396,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["cible","longshot","defense","recupcit","prefab"],
+        "refabTime":90,
         "fuzz":1.5,
         "deathFx":"explo1"
     },
@@ -444,6 +446,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["cible","longshot","defense","recupcit","prefab"],
+        "refabTime":35,
         "fuzz":1.5,
         "deathFx":"explo1"
     },
@@ -490,6 +493,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["cible","longshot","defense","sentinelle","recupcit","prefab"],
+        "refabTime":50,
         "fuzz":1.5,
         "deathFx":"explo1"
     },
@@ -538,6 +542,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["cible","defense","maycamo","embuscade","underground","recupcit","prefab"],
+        "refabTime":85,
         "fuzz":1.5,
         "deathFx":"explo1"
     },
@@ -586,6 +591,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["cible","defense","camo","embuscade","underground","recupcit","prefab"],
+        "refabTime":85,
         "fuzz":-1,
         "deathFx":"explo1"
     },
@@ -637,6 +643,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["recupcit","prefab"],
+        "refabTime":45,
         "fuzz":6,
         "deathFx":"explo1"
     },
@@ -653,7 +660,7 @@
         "armor":8,
         "size":25,
         "stealth":5,
-        "ap":10,
+        "ap":12,
         "maxSalvo":2,
         "weapon":{
             "name":"Lance",
@@ -694,6 +701,7 @@
         "maxVeg":-1,
         "skills":["cible","maycamo","recupcit","selfbadrepair","prefab"],
         "mecanoCost":10,
+        "refabTime":18,
         "fuzz":2,
         "deathFx":"explo1"
     },
@@ -733,6 +741,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["nodeathcount","notarget","prefab"],
+        "refabTime":1,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -780,7 +789,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["initiative","nonumname","nodeathcount","notarget","halfcover"],
+        "skills":["initiative","nonumname","nodeathcount","notarget","halfcover","prefab"],
+        "refabTime":25,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -828,7 +838,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["initiative","nonumname","nodeathcount","notarget","halfcover"],
+        "skills":["initiative","nonumname","nodeathcount","notarget","halfcover","prefab"],
+        "refabTime":25,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     }

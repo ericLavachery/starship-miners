@@ -86,7 +86,7 @@ function nextTurnEnd() {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
-            if (bat.apLeft < 0-(batType.ap*2)) {
+            if (bat.apLeft < 0-(batType.ap*2) && batType.cat != 'buildings') {
                 bat.apLeft = 0-(batType.ap*2);
             }
             if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {

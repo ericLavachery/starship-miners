@@ -50,6 +50,7 @@
     "mediCost":30,
     "mecanoCost":30,
     "maxSKill": 999,
+    "refabTime":25,
     "transMaxSize":0,
     "transUnits":0,
     "transRes":0,
