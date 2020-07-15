@@ -45,26 +45,28 @@ function deconstruction(prefabId) {
 };
 
 function refabInfos(myBat,myBatUnitType) {
-    let balise = 'h4';
-    let apCost = myBatUnitType.mecanoCost*4;
-    if (myBat.tags.includes('loaded')) {
-        bataillons.forEach(function(bat) {
-            if (bat.loc === "load" && bat.locId == myBat.id) {
-                batType = getBatType(bat);
-                if (myBat.apLeft >= Math.round(myBatUnitType.ap/3)) {
-                    balise = 'h4';
-                    if (Object.keys(batDebarq).length >= 1) {
-                        if (batDebarq.id === bat.id) {
-                            balise = 'h1';
+    if (myBatUnitType.skills.includes('constructeur')) {
+        let balise = 'h4';
+        let apCost = myBatUnitType.mecanoCost*4;
+        if (myBat.tags.includes('loaded')) {
+            bataillons.forEach(function(bat) {
+                if (bat.loc === "load" && bat.locId == myBat.id) {
+                    batType = getBatType(bat);
+                    if (myBat.apLeft >= Math.round(myBatUnitType.ap/3)) {
+                        balise = 'h4';
+                        if (Object.keys(batDebarq).length >= 1) {
+                            if (batDebarq.id === bat.id) {
+                                balise = 'h1';
+                            }
                         }
+                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Reconstruire '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+')" class="boutonGris iconButtons" onclick="reconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</'+balise+'></span>');
+                    } else {
+                        skillMessage = "PA épuisés";
+                        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</h4></span>');
                     }
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Reconstruire '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+')" class="boutonGris iconButtons" onclick="reconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</'+balise+'></span>');
-                } else {
-                    skillMessage = "PA épuisés";
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</h4></span>');
                 }
-            }
-        });
+            });
+        }
     }
 };
 

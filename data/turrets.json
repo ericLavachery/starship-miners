@@ -779,11 +779,11 @@
             "noFly":true,
             "rof":6,
             "accuracy":8,
-            "power":3,
+            "power":4,
             "armors":1,
             "aoe":"brochette",
-            "sound":"zapsplat_animals_insect_caterpillar_bite_eat_leaf_004_18473b",
-            "ammo":["lame","lame-poison","lame-taser"]
+            "sound":"bite",
+            "ammo":["lame-scrap","lame","lame-taser"]
         },
         "weapon2":{},
         "moveCost":99,
