@@ -296,6 +296,7 @@
             "range":3,
             "elevation":1,
             "noFly":true,
+            "noMelee":true,
             "rof":4,
             "accuracy":14,
             "power":33,
@@ -980,6 +981,7 @@
             "range":3,
             "noFly":true,
             "noBis":true,
+            "noMelee":true,
             "rof":4,
             "accuracy":12,
             "power":27,
@@ -1217,7 +1219,7 @@
         "volume":0.9,
         "stealth":0,
         "speed":0,
-        "ap":10,
+        "ap":12,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet",
@@ -1255,7 +1257,7 @@
         "mecanoCost":14,
         "transMaxSize":9,
         "transUnits":520,
-        "maxSKill":24,
+        "maxSKill":32,
         "fuzz":1,
         "deathFx":"planeexploair1"
     },

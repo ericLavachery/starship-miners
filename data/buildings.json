@@ -145,5 +145,43 @@
         "skills":["ravitaillement","stock","maycamo","recupcit"],
         "fuzz":1,
         "deathFx":"S_Explosion02"
+    },
+    {
+        "id":150,
+        "name":"Infirmerie",
+        "pic":"infirmerie",
+        "cat":"buildings",
+        "kind":"zero",
+        "squads":6,
+        "squadSize":1,
+        "crew":6,
+        "hp":200,
+        "armor":5,
+        "size":35,
+        "stealth":5,
+        "ap":13,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Pistolet",
+            "cost":3,
+            "range":1,
+            "rof":6,
+            "accuracy":13,
+            "power":4,
+            "aoe":"unit",
+            "sound":"pistol_x2",
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
+        },
+        "weapon2":{},
+        "moveCost":99,
+        "maxFlood":-1,
+        "maxScarp":-1,
+        "maxVeg":-1,
+        "skills":["medic","dealer","kirin","starka","maycamo"],
+        "mediCost":5,
+        "refabTime":18,
+        "maxSKill":18,
+        "fuzz":2,
+        "deathFx":"S_Explosion02"
     }
 ]
