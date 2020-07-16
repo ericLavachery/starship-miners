@@ -10,7 +10,7 @@ function calcBatFuzz(bat) {
 function freeIds(side,db) {
     let idz = [];
     let i = 1;
-    while (i <= 150) {
+    while (i <= 250) {
         idz.push(i);
         if (i > 300) {break;}
         i++
