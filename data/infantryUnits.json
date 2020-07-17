@@ -2820,7 +2820,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber"],
+        "skills":["fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber","selfbadmedic"],
+        "mediCost":12,
         "fuzz":3.5,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
     },

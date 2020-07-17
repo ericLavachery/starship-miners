@@ -685,7 +685,7 @@
         "deathFx":"76974__michel88__piggrunt2",
         "spawnFx":"125388__thegoose09__monster-screech_veuve",
         "fxPriority":6,
-        "killRes":{"bugium":6,"aranium":12,"mephitis":18,"bossium":2,"slime":6,"mendium":3}
+        "killRes":{"bugium":6,"aranium":12,"mephitis":12,"bossium":2,"slime":6,"mendium":3}
     },
     {
         "id":12,
@@ -824,7 +824,7 @@
         "maxVeg":3,
         "skills":["chancre","venin","regeneration","shield","minaccu"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"bugium":4,"mendium":1,"germium":2,"mephitis":1,"egidium":3}
+        "killRes":{"bugium":4,"mendium":1,"germium":2,"egidium":3}
     },
     {
         "id":16,
@@ -1160,7 +1160,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"82082__rmw2861__1000000009_Androks",
         "fxPriority":4,
-        "killRes":{"bugium":6,"swarmine":6,"mephitis":9,"bossium":3,"creatite":1,"egidium":3}
+        "killRes":{"bugium":6,"swarmine":6,"mephitis":3,"bossium":3,"creatite":1,"egidium":3}
     },
     {
         "id":25,
