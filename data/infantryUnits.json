@@ -2499,7 +2499,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Mitrailleuse",
-            "cost":4,
+            "cost":3,
             "range":2,
             "rof":35,
             "accuracy":18,
@@ -2526,7 +2526,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","robot","sentinelle","selfbadmecano","hardmove"],
+        "skills":["fortif","cible","robot","sentinelle","selfbadmecano"],
         "mecanoCost":10,
         "fuzz":2,
         "deathFx":"144469__psychedelic-hands__robot-death"
@@ -2681,7 +2681,7 @@
         "maxVeg":3,
         "skills":["fortif","mecano","repair","constructeur","cyber","fret"],
         "mecanoCost":6,
-        "maxSkill":3,
+        "maxSkill":5,
         "transRes":60,
         "fuzz":1.5,
         "deathFx":"144469__psychedelic-hands__robot-death"

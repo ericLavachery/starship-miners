@@ -88,6 +88,9 @@ function showBatInfos(bat) {
     if (hurt) {
         $('#unitInfos').append('<span class="paramName or">Blessé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
+    if (bat.tags.includes('blub')) {
+        $('#unitInfos').append('<span class="paramName or">Noyade</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    }
     if (bat.tags.includes('poison')) {
         $('#unitInfos').append('<span class="paramName or">Poison</span><span class="paramIcon"></span><span class="paramValue or">'+allTags.poison+'</span><br>');
     }
