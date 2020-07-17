@@ -108,7 +108,7 @@ function showBatInfos(bat) {
     // AUTOSKILLS
     if (batUnitType.skills.includes('ravitaillement')) {
         let ravitNum = calcRavit(bat);
-        $('#unitInfos').append('<span class="paramName cy">Ravitaillements</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'/'+batUnitType.maxSKill+'</span><br>');
+        $('#unitInfos').append('<span class="paramName cy">Ravitaillements</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
     }
     if (batUnitType.transUnits >= 1) {
         let transLeft = calcTransUnitsLeft(bat,batUnitType);
@@ -116,11 +116,15 @@ function showBatInfos(bat) {
     }
     if (batUnitType.skills.includes('dealer')) {
         let ravitNum = calcRavit(bat);
-        $('#unitInfos').append('<span class="paramName cy">Drogues</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'/'+batUnitType.maxSKill+'</span><br>');
+        $('#unitInfos').append('<span class="paramName cy">Drogues</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
     }
     if (batUnitType.skills.includes('landmine') || batUnitType.skills.includes('dynamite')) {
         let ravitNum = calcRavit(bat);
-        $('#unitInfos').append('<span class="paramName cy">Mines</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'/'+batUnitType.maxSKill+'</span><br>');
+        $('#unitInfos').append('<span class="paramName cy">Mines</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
+    }
+    if (batUnitType.skills.includes('constructeur')) {
+        let ravitNum = calcRavit(bat);
+        $('#unitInfos').append('<span class="paramName cy">Barbelés</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
     }
     // WEAPONS & SKILLS
     if (!isStacked()) {

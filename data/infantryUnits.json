@@ -119,7 +119,7 @@
         "maxVeg":3,
         "skills":["medic","dealer","starka","maycamo"],
         "mediCost":5,
-        "maxSKill":8,
+        "maxSkill":8,
         "fuzz":0,
         "deathFx":"human3"
     },
@@ -1153,7 +1153,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","ravitaillement","maycamo","fastempty"],
-        "maxSKill":9,
+        "maxSkill":9,
         "fuzz":0,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -1199,7 +1199,7 @@
             "types":["Minerai","Végétal","Eau"]
         },
         "transRes":30,
-        "maxSKill":2,
+        "maxSkill":2,
         "fuzz":1.5,
         "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
@@ -1307,7 +1307,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","fortif","camo","landmine"],
-        "maxSKill":4,
+        "maxSkill":4,
         "fuzz":0,
         "deathFx":"human3"
     },
@@ -1360,7 +1360,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","undead","badmedic","dealer","bliss","sila","blaze","kirin","skupiac","starka","camo"],
         "mediCost":6,
-        "maxSKill":32,
+        "maxSkill":32,
         "fuzz":1,
         "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
@@ -1464,7 +1464,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","medic","camo","dealer","kirin","sila","starka","ranger"],
         "mediCost":8,
-        "maxSKill":18,
+        "maxSkill":18,
         "fuzz":-1,
         "deathFx":"human1"
     },
@@ -1825,7 +1825,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","camo","medic","fly","jetpack","longshot","inflammable","dealer","starka","kirin"],
         "mediCost":5,
-        "maxSKill":8,
+        "maxSkill":8,
         "fuzz":-1,
         "deathFx":"human2"
     },
@@ -2681,6 +2681,7 @@
         "maxVeg":3,
         "skills":["fortif","mecano","repair","constructeur","cyber","fret"],
         "mecanoCost":6,
+        "maxSkill":3,
         "transRes":60,
         "fuzz":1.5,
         "deathFx":"144469__psychedelic-hands__robot-death"

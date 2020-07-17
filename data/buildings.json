@@ -180,7 +180,7 @@
         "skills":["medic","dealer","kirin","starka","maycamo"],
         "mediCost":5,
         "refabTime":18,
-        "maxSKill":18,
+        "maxSkill":18,
         "fuzz":2,
         "deathFx":"S_Explosion02"
     }

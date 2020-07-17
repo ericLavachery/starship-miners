@@ -303,12 +303,14 @@ function checkBatDrugs(bat) {
     return myDrugs;
 };
 
-function dropMine(apCost,mineType) {
+function dropStuff(apCost,mineType) {
     let unitIndex;
     if (mineType === 'champ') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Champ de mines'));
-    } else {
+    } else if (mineType === 'dynamite') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Explosifs'));
+    } else if (mineType === 'barb') {
+        unitIndex = unitTypes.findIndex((obj => obj.name === 'Barbelés'));
     }
     conselUnit = unitTypes[unitIndex];
     conselAmmos = ['xxx','xxx'];
@@ -348,4 +350,20 @@ function clickMine(clicTileId,poseurTileId) {
     } else {
         console.log('Trop loin');
     }
+};
+
+function checkFreeConsTile(bat) {
+    let freeTile = false;
+    let distance;
+    alienOccupiedTileList();
+    playerOccupiedTileList();
+    zone.forEach(function(tile) {
+        distance = calcDistance(tile.id,bat.tileId);
+        if (distance === 0) {
+            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                freeTile = true;
+            }
+        }
+    });
+    return freeTile;
 };

@@ -411,7 +411,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","mecano","maycamo","longshot","ravitaillement"],
         "mecanoCost":5,
-        "maxSKill":32,
+        "maxSkill":32,
         "fuzz":3,
         "deathFx":"planeexploair1"
     },
@@ -723,7 +723,7 @@
         "skills":["cible","transport","fret","medic","selfbadmecano","dealer","kirin","starka"],
         "mediCost":3,
         "mecanoCost":20,
-        "maxSKill":16,
+        "maxSkill":16,
         "transMaxSize":4,
         "transUnits":220,
         "transRes":90,
@@ -780,7 +780,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","guerrilla","camo","landmine","selfbadmecano","emoteur"],
         "mecanoCost":20,
-        "maxSKill":12,
+        "maxSkill":12,
         "fuzz":3,
         "deathFx":"planeexploair1"
     },
@@ -1143,7 +1143,7 @@
         "skills":["fortif","cible","medic","ravitaillement","camo","selfbadmecano","defense","hardmove","emoteur","transport"],
         "mediCost":2,
         "mecanoCost":16,
-        "maxSKill":9,
+        "maxSkill":9,
         "transMaxSize":9,
         "transUnits":250,
         "fuzz":1,
@@ -1257,7 +1257,7 @@
         "mecanoCost":14,
         "transMaxSize":9,
         "transUnits":520,
-        "maxSKill":32,
+        "maxSkill":32,
         "fuzz":1,
         "deathFx":"planeexploair1"
     },
@@ -1569,6 +1569,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","mecano","repair","constructeur","hardmove"],
         "mecanoCost":7,
+        "maxSkill":6,
         "fuzz":1.5,
         "deathFx":"planeexploair1"
     },
@@ -1622,6 +1623,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","mecano","repair","constructeur","hardmove"],
         "mecanoCost":3,
+        "maxSkill":12,
         "fuzz":2.5,
         "deathFx":"planeexploair3"
     },
@@ -2195,7 +2197,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","mecano","maycamo","ravitaillement"],
         "mecanoCost":6,
-        "maxSKill":18,
+        "maxSkill":18,
         "fuzz":2,
         "deathFx":"planeexploair1"
     },
@@ -2443,7 +2445,7 @@
         "skills":["cible","fly","ravitaillement","longshot","mecano","fret"],
         "mecanoCost":5,
         "transRes":90,
-        "maxSKill":60,
+        "maxSkill":60,
         "fuzz":4,
         "deathFx":"vehicleexplo3"
     },
@@ -2671,7 +2673,7 @@
         "maxScarp":2,
         "maxVeg":3,
         "skills":["fortif","cible","ravitaillement","fastempty"],
-        "maxSKill":24,
+        "maxSkill":24,
         "fuzz":2,
         "deathFx":"S_CarExplosion02"
     },

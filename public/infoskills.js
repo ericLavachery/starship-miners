@@ -4,6 +4,7 @@ function skillsInfos(bat,batUnitType) {
     let apCost;
     let apReq;
     let inMelee = batInMelee(bat);
+    let freeConsTile = false;
     console.log('inMelee='+inMelee);
     // RAVITAILLEMENT DROGUES
     let anyRavit = checkRavitDrug(bat);
@@ -396,44 +397,74 @@ function skillsInfos(bat,batUnitType) {
     }
     // POSE CHAMP DE MINES
     if (batUnitType.skills.includes('landmine')) {
-        let minesLeft = calcRavit(bat);
-        balise = 'h4';
-        if (Object.keys(conselUnit).length >= 1) {
-            balise = 'h1';
-        }
-        apCost = Math.round(batUnitType.ap*1.5);
-        if (minesLeft >= 1 && bat.apLeft >= batUnitType.ap && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines" class="boutonGris iconButtons" onclick="dropMine('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');
-        } else {
-            if (minesLeft <= 0) {
-                skillMessage = "Plus de mines";
-            } else if (inMelee) {
-                skillMessage = "Ne peut pas se faire en mêlée";
-            } else {
-                skillMessage = "Pas assez de PA";
+        freeConsTile = checkFreeConsTile(bat);
+        if (freeConsTile) {
+            let minesLeft = calcRavit(bat);
+            balise = 'h4';
+            if (Object.keys(conselUnit).length >= 1) {
+                balise = 'h1';
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</h4></span>');
+            apCost = Math.round(batUnitType.ap*1.5);
+            if (minesLeft >= 1 && bat.apLeft >= batUnitType.ap && !inMelee) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');
+            } else {
+                if (minesLeft <= 0) {
+                    skillMessage = "Plus de mines";
+                } else if (inMelee) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</h4></span>');
+            }
         }
     }
     // POSE DYNAMITE
     if (batUnitType.skills.includes('dynamite')) {
-        let minesLeft = calcRavit(bat);
-        balise = 'h4';
-        if (Object.keys(conselUnit).length >= 1) {
-            balise = 'h1';
-        }
-        apCost = Math.round(batUnitType.ap);
-        if (minesLeft >= 1 && bat.apLeft >= batUnitType.ap && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des explosifs" class="boutonGris iconButtons" onclick="dropMine('+apCost+',`dynamite`)"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</'+balise+'></span>');
-        } else {
-            if (minesLeft <= 0) {
-                skillMessage = "Plus de mines";
-            } else if (inMelee) {
-                skillMessage = "Ne peut pas se faire en mêlée";
-            } else {
-                skillMessage = "Pas assez de PA";
+        freeConsTile = checkFreeConsTile(bat);
+        if (freeConsTile) {
+            let minesLeft = calcRavit(bat);
+            balise = 'h4';
+            if (Object.keys(conselUnit).length >= 1) {
+                balise = 'h1';
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</h4></span>');
+            apCost = Math.round(batUnitType.ap);
+            if (minesLeft >= 1 && bat.apLeft >= batUnitType.ap && !inMelee) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des explosifs" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`dynamite`)"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</'+balise+'></span>');
+            } else {
+                if (minesLeft <= 0) {
+                    skillMessage = "Plus de mines";
+                } else if (inMelee) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</h4></span>');
+            }
+        }
+    }
+    // POSE BARBELES
+    if (batUnitType.skills.includes('constructeur')) {
+        freeConsTile = checkFreeConsTile(bat);
+        if (freeConsTile) {
+            let barbLeft = calcRavit(bat);
+            balise = 'h4';
+            if (Object.keys(conselUnit).length >= 1) {
+                balise = 'h1';
+            }
+            apCost = batUnitType.mecanoCost;
+            if (barbLeft >= 1 && bat.apLeft >= apCost && !inMelee) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des barbelés" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`barb`)"><i class="ra ra-crown-of-thorns rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Barbelés</'+balise+'></span>');
+            } else {
+                if (barbLeft <= 0) {
+                    skillMessage = "Plus de barbelés";
+                } else if (inMelee) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-crown-of-thorns rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Barbelés</h4></span>');
+            }
         }
     }
     // DROGUES
@@ -523,7 +554,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // CONSTRUCTION TRICHE
-    if (batUnitType.skills.includes('constructeur')) {
+    if (batUnitType.skills.includes('triche')) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris iconButtons" onclick="bfconst()"><i class="fas fa-drafting-compass"></i></button>&nbsp; Construction</h4></span>');
     }
     // DISMANTLE

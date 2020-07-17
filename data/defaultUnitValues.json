@@ -49,7 +49,7 @@
     "skillCost":6,
     "mediCost":30,
     "mecanoCost":30,
-    "maxSKill": 999,
+    "maxSkill": 999,
     "refabTime":25,
     "transMaxSize":0,
     "transUnits":0,

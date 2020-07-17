@@ -138,8 +138,8 @@ function nextTurnEnd() {
             // fastempty
             if (batType.skills.includes('fastempty')) {
                 ravitNum = calcRavit(bat);
-                if (ravitNum < batType.maxSKill) {
-                    emptyBonus = Math.round((batType.maxSKill-ravitNum)/batType.maxSKill*5);
+                if (ravitNum < batType.maxSkill) {
+                    emptyBonus = Math.round((batType.maxSkill-ravitNum)/batType.maxSkill*5);
                     ap = ap+emptyBonus;
                 }
             }

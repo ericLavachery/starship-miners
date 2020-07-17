@@ -120,7 +120,7 @@ function checkRavitDrug(myBat) {
 
 function calcRavit(bat) {
     let batType = getBatType(bat);
-    let ravitLeft = batType.maxSKill;
+    let ravitLeft = batType.maxSkill;
     console.log('startRavit='+ravitLeft);
     if (ravitLeft < 999) {
         if (bat.tags.includes('skillUsed')) {
@@ -229,7 +229,7 @@ function checkRavit(myBat) {
             if (batType.skills.includes('ravitaillement')) {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
                     ravitLeft = calcRavit(bat);
-                    if (ravitLeft >= 1 && ravitVolume[0] <= batType.maxSKill && (ravitVolume[2] != 'missile') || batType.skills.includes('stock')) {
+                    if (ravitLeft >= 1 && ravitVolume[0] <= batType.maxSkill && (ravitVolume[2] != 'missile') || batType.skills.includes('stock')) {
                         anyRavit = true;
                     }
                 }
