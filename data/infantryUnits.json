@@ -2526,7 +2526,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","robot","sentinelle","selfbadmecano"],
+        "skills":["fortif","cible","robot","sentinelle","selfbadmecano","hscarpmove"],
         "mecanoCost":10,
         "fuzz":2,
         "deathFx":"144469__psychedelic-hands__robot-death"
@@ -2679,7 +2679,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","mecano","repair","constructeur","cyber","fret"],
+        "skills":["fortif","mecano","repair","constructeur","cyber","fret","hscarpmove"],
         "mecanoCost":6,
         "maxSkill":5,
         "transRes":60,

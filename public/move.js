@@ -340,6 +340,8 @@ function calcMoveCost(targetTileId,diag) {
         moveCost = selectedBatType.moveCost+terrainTypes[terIndex].hovermc;
     } else if (selectedBatType.skills.includes('hardmove')) {
         moveCost = selectedBatType.moveCost+terrainTypes[terIndex].hardmc;
+    } else if (selectedBatType.skills.includes('hscarpmove')) {
+        moveCost = selectedBatType.moveCost+terrainTypes[terIndex].hscarpmc;
     } else {
         moveCost = selectedBatType.moveCost+terrainTypes[terIndex].mc;
     }
