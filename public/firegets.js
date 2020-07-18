@@ -104,11 +104,7 @@ function getCover(bat,withFortif) {
     // Fortification
     if (withFortif) {
         if (bat.tags.includes('fortif')) {
-            if (cover >= 2) {
-                cover = 5+Math.round(cover/1.9);
-            } else if (cover >= 0) {
-                cover = 5;
-            }
+            cover = terrain.fortifcover;
         }
     }
     return cover;

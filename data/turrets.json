@@ -389,7 +389,7 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
-            "maxAmmo":24
+            "maxAmmo":32
         },
         "moveCost":99,
         "maxFlood":-1,
@@ -744,7 +744,7 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
-            "maxAmmo":32
+            "maxAmmo":36
         },
         "moveCost":99,
         "maxFlood":-1,
