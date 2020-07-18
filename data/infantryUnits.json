@@ -884,7 +884,7 @@
             "aoe":"unit",
             "sound":"mit_minigun",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"],
-            "maxAmmo":16
+            "maxAmmo":32
         },
         "weapon2":{
             "name":"Pistolet automatique",

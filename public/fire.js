@@ -343,9 +343,10 @@ function attack() {
         if (selectedWeap.ammo.includes('electric')) {
             if (targetBatType.cat == 'vehicles') {
                 wapd = wapd*2.25*20/targetBatType.size;
-            }
-            if (targetBatType.cat == 'buildings') {
+            } else if (targetBatType.cat == 'buildings') {
                 wapd = wapd*20/targetBatType.size;
+            } else if (targetBatType.skills.includes('cyber')) {
+                wapd = wapd*2*20/targetBatType.size;
             }
         } else {
             wapd = wapd*1.75/Math.sqrt(targetBatType.size);
@@ -777,9 +778,10 @@ function defense() {
         if (targetWeap.ammo.includes('electric')) {
             if (selectedBatType.cat == 'vehicles') {
                 wapd = wapd*2.25*20/selectedBatType.size;
-            }
-            if (selectedBatType.cat == 'buildings') {
+            } else if (selectedBatType.cat == 'buildings') {
                 wapd = wapd*20/selectedBatType.size;
+            } else if (selectedBatType.skills.includes('cyber')) {
+                wapd = wapd*2*20/selectedBatType.size;
             }
         } else {
             wapd = wapd*1.75/Math.sqrt(selectedBatType.size);

@@ -143,6 +143,8 @@ function calcRavitVolume(bat) {
         } else if (bat.ammo.includes('missile')) {
             ammoVolume = 8*batType.weapon.power;
             ravitVolume[2] = 'missile';
+        } else if (batType.weapon.ammo.includes('standard')) {
+            ammoVolume = 0.05*batType.weapon.power;
         } else {
             ammoVolume = 0.4*batType.weapon.power;
         }
@@ -155,6 +157,8 @@ function calcRavitVolume(bat) {
         } else if (bat.ammo2.includes('missile')) {
             ammoVolume = 8*batType.weapon2.power;
             ravitVolume[2] = 'missile';
+        } else if (batType.weapon2.ammo.includes('standard')) {
+            ammoVolume = 0.05*batType.weapon2.power;
         } else {
             ammoVolume = 0.4*batType.weapon2.power;
         }
