@@ -177,7 +177,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["medic","dealer","kirin","starka","maycamo"],
+        "skills":["medic","dealer","kirin","starka","maycamo","recupcit"],
         "mediCost":5,
         "refabTime":18,
         "maxSkill":18,
