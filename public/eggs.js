@@ -16,12 +16,12 @@ function checkStartingAliens() {
     }
 };
 
-function calcEggPause() {
+function calcEggPause(noMax) {
     let eggPauseDice = eggPauseEnd;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type.includes('Oeuf')) {
-                eggPauseDice = eggPauseDice+5;
+                eggPauseDice = eggPauseDice+4;
             } else if (bat.type == 'Ruche' || bat.type == 'Coque') {
                 eggPauseDice = eggPauseDice+1;
             }
@@ -30,6 +30,9 @@ function calcEggPause() {
     let eggPauseMax = 20;
     if (playerInfos.mapDiff >= 10) {
         eggPauseMax = 5;
+    }
+    if (noMax) {
+        eggPauseMax = 50;
     }
     if (eggPauseDice > eggPauseMax) {
         eggPauseDice = eggPauseMax;
@@ -41,7 +44,7 @@ function checkEggsDrop() {
     console.log('check egg drop');
     eggDropCount = 0;
     let drop = false;
-    let eggPauseDice = calcEggPause();
+    let eggPauseDice = calcEggPause(false);
     let adjMapDrop = playerInfos.mapDrop;
     let adjMapTurn = playerInfos.mapTurn-10+playerInfos.mapDiff;
     if (adjMapTurn <= 0) {
@@ -86,6 +89,8 @@ function eggsDrop() {
     console.log('EGGDROP');
     let numEggs;
     let eggDice = rand.rand(1,100);
+    let eggPausePerc = calcEggPause(true);
+    eggPausePerc = eggPausePerc*2;
     let threeEggsChance = Math.floor(playerInfos.mapAdjDiff*1.25)-4;
     if (threeEggsChance < 0) {
         threeEggsChance = 0;
@@ -96,7 +101,7 @@ function eggsDrop() {
     }
     if (eggDice <= noEggs) {
         numEggs = 0;
-        if (rand.rand(1,5) === 1) {
+        if (rand.rand(1,100) <= eggPausePerc) {
             playerInfos.eggPause = true;
         }
     } else if (eggDice <= noEggs+twoEggsChance) {
