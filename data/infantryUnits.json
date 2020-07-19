@@ -509,7 +509,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","fortif","sentinelle","defense","maycamo","ranger","selfbadmedic"],
+        "skills":["cible","fortif","sentinelle","bastion","maycamo","ranger","selfbadmedic"],
         "mediCost":9,
         "fuzz":0,
         "deathFx":"human2"
@@ -2083,7 +2083,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","selfbadmedic","defense","maycamo","embuscade"],
+        "skills":["fortif","cible","selfbadmedic","bastion","maycamo","embuscade"],
         "mediCost":9,
         "fuzz":1,
         "deathFx":"human3"
@@ -2922,7 +2922,7 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","defense","maycamo","hardmove","machine","embuscade","tracked"],
+        "skills":["fortif","cible","bastion","maycamo","hardmove","machine","embuscade","tracked"],
         "fuzz":3,
         "deathFx":"195954__minian89__death-blood-splatter"
     },

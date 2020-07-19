@@ -191,6 +191,9 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
     if (batType.skills.includes('defense') && !attacking) {
         speed = speed-10;
     }
+    if (batType.skills.includes('bastion') && !attacking) {
+        speed = speed-20;
+    }
     // Skupiac drug
     if (bat.tags.includes('skupiac')) {
         speed = speed-15;
@@ -395,7 +398,7 @@ function weaponSelectRiposte(distance) {
     if (activeTurn == 'aliens') {
         baseAmmo = targetWeap.maxAmmo;
         ammoLeft = calcAmmos(targetBat,baseAmmo);
-        if (ammoLeft <= 0 || distance > targetWeap.range || targetWeap.noDef) {
+        if (ammoLeft <= 0 || distance > targetWeap.range || targetWeap.noDef || (targetWeap.noMelee && selectedBat.tileId === selectedBat.oldTileId)) {
             if (Object.keys(targetBatType.weapon2).length >= 1) {
                 targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon2));
                 targetWeap = weaponAdj(targetWeap,targetBat,'w2');

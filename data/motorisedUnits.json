@@ -99,7 +99,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selfbadmecano","longshot"],
+        "skills":["fortif","cible","selfbadmecano","longshot","defense"],
         "mecanoCost":12,
         "fuzz":3.5,
         "deathFx":"planeexploair3"
@@ -255,7 +255,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","selfbadmecano","longshot"],
+        "skills":["cible","selfbadmecano","longshot","defense"],
         "mecanoCost":12,
         "fuzz":3,
         "deathFx":"planeexploair3"
@@ -571,7 +571,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["selfmecano","cible","longshot","hscarpmove"],
+        "skills":["selfmecano","cible","longshot","hscarpmove","defense"],
         "mecanoCost":15,
         "fuzz":5,
         "deathFx":"planeexploair3"
@@ -1414,7 +1414,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selfmecano","maycamo","longshot"],
+        "skills":["fortif","cible","selfmecano","maycamo","longshot","defense"],
         "mecanoCost":20,
         "fuzz":3,
         "deathFx":"planeexploair3"
@@ -1673,7 +1673,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selfbadmecano","longshot","defense"],
+        "skills":["fortif","cible","selfbadmecano","longshot","bastion"],
         "mecanoCost":24,
         "fuzz":3.5,
         "deathFx":"planeexploair3"
@@ -2933,7 +2933,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","selfbadmecano","longshot"],
+        "skills":["cible","selfbadmecano","longshot","defense"],
         "mecanoCost":20,
         "fuzz":3,
         "deathFx":"planeexploair3"

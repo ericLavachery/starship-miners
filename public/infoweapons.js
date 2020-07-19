@@ -21,6 +21,7 @@ function weaponsInfos(bat,batUnitType) {
     if (batUnitType.weapon.rof >= 1 && showW1) {
         thisWeapon = weaponAdj(batUnitType.weapon,bat,'w1');
         if (!thisWeapon.noAtt) {
+            noFireMelee = false;
             if (inMelee && thisWeapon.noMelee) {
                 noFireMelee = true;
             }
@@ -37,7 +38,7 @@ function weaponsInfos(bat,batUnitType) {
                 noBisOK = false;
             }
             let w1message = 'Salves épuisées';
-            if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && ammoLeft >= 1 && anyTarget && noBisOK) {
+            if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && ammoLeft >= 1 && anyTarget && noBisOK && !noFireMelee) {
                 // assez d'ap et de salve
                 if (cheapWeapCost > thisWeapon.cost) {
                     cheapWeapCost = thisWeapon.cost;
@@ -112,6 +113,7 @@ function weaponsInfos(bat,batUnitType) {
     if (batUnitType.weapon2.rof >= 1) {
         thisWeapon = weaponAdj(batUnitType.weapon2,bat,'w2');
         if (!thisWeapon.noAtt) {
+            noFireMelee = false;
             if (inMelee && thisWeapon.noMelee) {
                 noFireMelee = true;
             }

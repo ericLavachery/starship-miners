@@ -31,7 +31,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","recupcit","defense"],
+        "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","recupcit","bastion"],
         "mediCost":9,
         "mecanoCost":9,
         "transMaxSize":33,
@@ -71,7 +71,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","extraction","fret","recupcit","defense"],
+        "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","extraction","fret","recupcit","bastion"],
         "mediCost":7,
         "mecanoCost":7,
         "mining":{
@@ -117,7 +117,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","extraction","fret","recupcit","defense"],
+        "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","extraction","fret","recupcit","bastion"],
         "mediCost":5,
         "mecanoCost":5,
         "mining":{
@@ -163,7 +163,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["transorbital","ravitaillement","stock","transport","longshot","extraction","survivor","mecano","medic","fret","recupcit","defense"],
+        "skills":["transorbital","ravitaillement","stock","transport","longshot","extraction","survivor","mecano","medic","fret","recupcit","bastion"],
         "mediCost":7,
         "mecanoCost":7,
         "mining":{
@@ -224,7 +224,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","recupcit","defense"],
+        "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","recupcit","bastion"],
         "mediCost":6,
         "mecanoCost":6,
         "transMaxSize":100,
@@ -264,7 +264,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["transorbital","ravitaillement","stock","transport","longshot","fret","badmedic","badmecano","recupcit","defense"],
+        "skills":["transorbital","ravitaillement","stock","transport","longshot","fret","badmedic","badmecano","recupcit","bastion"],
         "mediCost":10,
         "mecanoCost":10,
         "transMaxSize":20,
@@ -305,7 +305,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","recupcit","defense"],
+        "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","recupcit","bastion"],
         "mediCost":7,
         "mecanoCost":7,
         "transMaxSize":33,
@@ -346,7 +346,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","longshot","defense","recupcit","prefab"],
+        "skills":["cible","longshot","bastion","recupcit","prefab"],
         "refabTime":50,
         "fuzz":1.5,
         "deathFx":"explo1"
@@ -395,7 +395,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","longshot","defense","recupcit","prefab"],
+        "skills":["cible","longshot","bastion","recupcit","prefab"],
         "refabTime":90,
         "fuzz":1.5,
         "deathFx":"explo1"
@@ -445,7 +445,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","longshot","defense","recupcit","prefab"],
+        "skills":["cible","longshot","bastion","recupcit","prefab"],
         "refabTime":35,
         "fuzz":1.5,
         "deathFx":"explo1"
@@ -492,7 +492,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","longshot","defense","sentinelle","recupcit","prefab"],
+        "skills":["cible","longshot","bastion","sentinelle","recupcit","prefab"],
         "refabTime":50,
         "fuzz":1.5,
         "deathFx":"explo1"
@@ -541,7 +541,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","defense","maycamo","embuscade","underground","recupcit","prefab"],
+        "skills":["cible","bastion","maycamo","embuscade","underground","recupcit","prefab"],
         "refabTime":85,
         "fuzz":1.5,
         "deathFx":"explo1"
@@ -590,7 +590,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","defense","camo","embuscade","underground","recupcit","prefab"],
+        "skills":["cible","bastion","camo","embuscade","underground","recupcit","prefab"],
         "refabTime":85,
         "fuzz":-1,
         "deathFx":"explo1"
@@ -721,17 +721,6 @@
         "ap":12,
         "maxSalvo":2,
         "weapon":{
-            "name":"Fusil d'assaut",
-            "cost":3,
-            "range":1,
-            "rof":24,
-            "accuracy":19,
-            "power":6,
-            "aoe":"unit",
-            "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
-        },
-        "weapon2":{
             "name":"Obusier",
             "cost":5,
             "range":4,
@@ -746,11 +735,22 @@
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
             "maxAmmo":36
         },
+        "weapon2":{
+            "name":"Fusil d'assaut",
+            "cost":3,
+            "range":1,
+            "rof":24,
+            "accuracy":19,
+            "power":6,
+            "aoe":"unit",
+            "sound":"kalach",
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
+        },
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","recupcit","prefab"],
+        "skills":["cible","recupcit","prefab","defense"],
         "refabTime":18,
         "fuzz":3.5,
         "deathFx":"explo1"

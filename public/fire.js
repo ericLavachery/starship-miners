@@ -690,15 +690,22 @@ function defense() {
             brideDef = 0.75;
         }
     }
-    // Guet
-    if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative')) {
-        brideDef = 1;
-    }
-    if (targetBatType.skills.includes('defense')) {
-        if (targetBat.tags.includes('guet')) {
+    // Guet, Defense, Bastion
+    if (targetBatType.skills.includes('bastion')) {
+        if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative')) {
             brideDef = 2;
         } else {
             brideDef = 1.5;
+        }
+    } else if (targetBatType.skills.includes('defense')) {
+        if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative')) {
+            brideDef = 1.65;
+        } else {
+            brideDef = 1.2;
+        }
+    } else {
+        if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative')) {
+            brideDef = 1;
         }
     }
     // bigDef
