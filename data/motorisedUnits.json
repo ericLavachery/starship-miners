@@ -539,11 +539,11 @@
         "size":55,
         "volume":1.7,
         "stealth":0,
-        "ap":15,
+        "ap":17,
         "maxSalvo":2,
         "weapon":{
             "name":"Minigun",
-            "cost":6,
+            "cost":4,
             "range":3,
             "rof":36,
             "accuracy":20,
