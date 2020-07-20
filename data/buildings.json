@@ -158,7 +158,7 @@
         "hp":200,
         "armor":5,
         "size":35,
-        "stealth":5,
+        "stealth":10,
         "ap":13,
         "maxSalvo":1,
         "weapon":{

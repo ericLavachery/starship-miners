@@ -307,13 +307,21 @@ function dropStuff(apCost,mineType) {
     let unitIndex;
     if (mineType === 'champ') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Champ de mines'));
+        conselAmmos = ['xxx','xxx'];
     } else if (mineType === 'dynamite') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Explosifs'));
-    } else if (mineType === 'barb') {
+        conselAmmos = ['xxx','xxx'];
+    } else if (mineType.includes('barb')) {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Barbelés'));
+        if (mineType === 'barb-taser') {
+            conselAmmos = ['lame-taser','xxx'];
+        } else if (mineType === 'barb-fer') {
+            conselAmmos = ['lame','xxx'];
+        } else {
+            conselAmmos = ['lame-scrap','xxx'];
+        }
     }
     conselUnit = unitTypes[unitIndex];
-    conselAmmos = ['xxx','xxx'];
     selectedBat.tags.push('skillUsed');
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     selectedBat.salvoLeft = 0;

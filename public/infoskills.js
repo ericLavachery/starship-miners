@@ -454,7 +454,7 @@ function skillsInfos(bat,batUnitType) {
             }
             apCost = batUnitType.mecanoCost;
             if (barbLeft >= 1 && bat.apLeft >= apCost && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des barbelés" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`barb`)"><i class="ra ra-crown-of-thorns rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Barbelés</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des barbelés (scrap)" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`barb-scrap`)"><i class="ra ra-crown-of-thorns rpg"></i></button><button type="button" title="Déposer des barbelés (acier)" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`barb-fer`)"><i class="ra ra-crown-of-thorns rpg"></i></button><button type="button" title="Déposer des barbelés (taser)" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`barb-taser`)"><i class="ra ra-crown-of-thorns rpg"></i></button>&nbsp; Barbelés</'+balise+'></span>');
             } else {
                 if (barbLeft <= 0) {
                     skillMessage = "Plus de barbelés";

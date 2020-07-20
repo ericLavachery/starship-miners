@@ -157,7 +157,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["medic","maycamo"],
-        "mediCost":9,
+        "mediCost":8,
         "fuzz":0,
         "deathFx":"human3"
     },
@@ -2526,7 +2526,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","robot","sentinelle","selfbadmecano","hscarpmove"],
+        "skills":["fortif","cible","robot","sentinelle","selfbadmecano","hscarpmove","undead"],
         "mecanoCost":10,
         "fuzz":2,
         "deathFx":"144469__psychedelic-hands__robot-death"
