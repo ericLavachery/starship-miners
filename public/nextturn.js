@@ -216,18 +216,27 @@ function turnInfo() {
     console.log('TURN INFO');
     let numberOfEggs = 0;
     let numberOfAliens = 0;
+    let realNumberOfEggs = 0;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
             if (bat.type == 'Oeuf' || bat.type == 'Coque' || bat.type === 'Cocon') {
                 numberOfEggs++;
+                if (bat.type != 'Cocon') {
+                    realNumberOfEggs++;
+                }
             } else if (!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) {
                 numberOfAliens++;
+            } else if (bat.type.includes('Oeuf')) {
+                realNumberOfEggs++;
             }
         }
     });
     eggsNum = numberOfEggs;
     aliensNum = numberOfAliens;
+    if (realNumberOfEggs >= 10) {
+        playerInfos.eggPause = true;
+    }
     let fuzzTotal = 0;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
