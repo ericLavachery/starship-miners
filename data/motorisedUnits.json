@@ -1588,7 +1588,7 @@
         "volume":0.85,
         "stealth":0,
         "speed":0,
-        "ap":19,
+        "ap":18,
         "maxSalvo":1,
         "weapon":{
             "name":"Calibre",
@@ -1617,7 +1617,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "moveCost":4,
+        "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,

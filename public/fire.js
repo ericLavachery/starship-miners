@@ -285,7 +285,8 @@ function attack() {
             targetBat.tags.push('shield');
         }
         if (targetBat.tags.includes('shield')) {
-            shots = Math.ceil(shots/10);
+            let shieldValue = rand.rand(5,15);
+            shots = Math.ceil(shots/shieldValue);
         }
     }
     // tir ciblé

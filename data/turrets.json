@@ -592,7 +592,7 @@
         "maxVeg":-1,
         "skills":["cible","bastion","camo","embuscade","underground","recupcit","prefab"],
         "refabTime":85,
-        "fuzz":-1,
+        "fuzz":1,
         "deathFx":"explo1"
     },
     {
@@ -613,7 +613,7 @@
         "weapon":{
             "name":"Missiles squash",
             "cost":6,
-            "range":6,
+            "range":7,
             "noMelee":true,
             "noFly":true,
             "noDef":true,
@@ -733,7 +733,7 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
-            "maxAmmo":36
+            "maxAmmo":30
         },
         "weapon2":{
             "name":"Fusil d'assaut",
