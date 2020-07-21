@@ -84,6 +84,7 @@ function nextTurnEnd() {
     let camoEnCours = false;
     let distance;
     let alienType;
+    let noStuck = false;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
@@ -120,11 +121,19 @@ function nextTurnEnd() {
     console.log(boostedTeams);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
+            batType = getBatType(bat);
             mining(bat);
             levelUp(bat);
+            // Motorised noStuck
+            noStuck = false;
+            if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !bat.tags.includes('action') && bat.apLeft < 0) {
+                if (bat.apLeft < -5) {
+                    noStuck = true;
+                }
+                bat.apLeft = 0;
+            }
             ap = getAP(bat);
             thisAPBonus = 0;
-            batType = getBatType(bat);
             if (boostedTeams.includes(batType.kind)) {
                 ap = ap+1;
                 thisAPBonus = 1;
@@ -189,7 +198,11 @@ function nextTurnEnd() {
             if (batType.skills.includes('nostun') && bat.apLeft < 1) {
                 bat.apLeft = 1;
             }
-            bat.salvoLeft = batType.maxSalvo;
+            if (noStuck && batType.maxSalvo <= 2) {
+                bat.salvoLeft = 0;
+            } else {
+                bat.salvoLeft = batType.maxSalvo;
+            }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
             if (batType.skills.includes('notarget') && bat.fuzz > -2) {
