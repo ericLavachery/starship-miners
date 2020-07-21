@@ -74,6 +74,7 @@ function nextTurnEnd() {
     let tagIndex;
     deadBatsList = [];
     let boostedTeams = [];
+    let prayedTeams = [];
     medicalTransports = [];
     let thisAPBonus;
     let ravitNum;
@@ -92,7 +93,10 @@ function nextTurnEnd() {
             if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {
                 boostedTeams.push(batType.kind);
             }
-            if (!medicalTransports.includes(bat.locId) && bat.loc === "trans" && (batType.skills.includes('medic') || batType.skills.includes('badmedic'))) {
+            if (bat.tags.includes('prayer') && !prayedTeams.includes(batType.kind)) {
+                prayedTeams.push(batType.kind);
+            }
+            if (!medicalTransports.includes(bat.locId) && bat.loc === "trans" && batType.skills.includes('medic')) {
                 medicalTransports.push(bat.locId);
             }
             if (!medicalTransports.includes(bat.id) && batType.transUnits >= 1 && batType.skills.includes('medic')) {
@@ -125,6 +129,10 @@ function nextTurnEnd() {
                 ap = ap+1;
                 thisAPBonus = 1;
             }
+            if (prayedTeams.includes(batType.kind)) {
+                ap = ap+1;
+                thisAPBonus = 1;
+            }
             if (playerInfos.medLevel >= 1 && batType.name === 'Toubibs') {
                 ap = ap+1;
             }
@@ -132,7 +140,7 @@ function nextTurnEnd() {
                 ap = ap+2;
                 thisAPBonus = 2;
             }
-            if (playerInfos.skills.includes('trans2') && batType.cat === 'vehicles' && !batType.skills.includes('robot') && thisAPBonus == 0) {
+            if (playerInfos.skills.includes('trans2') && batType.cat === 'vehicles' && !batType.skills.includes('robot') && thisAPBonus <= 1) {
                 ap = ap+1;
             }
             // fastempty
@@ -265,6 +273,12 @@ function tagsUpdate(bat) {
     tagDelete(bat,'noBis1');
     tagDelete(bat,'noBis2');
     tagDelete(bat,'action');
+    if (!bat.tags.includes('prayer') && rand.rand(1,6) === 1) {
+        tagDelete(bat,'spirit');
+    }
+    if (rand.rand(1,3) === 1) {
+        tagDelete(bat,'prayer');
+    }
     if (rand.rand(1,3) <= 2) {
         tagDelete(bat,'stun');
     }

@@ -182,6 +182,24 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de bol ou de PA" class="boutonGris iconButtons gf"><i class="fas fa-dice-six"></i> <span class="small">'+apCost+'</span></button>&nbsp; Lucky shot</'+balise+'></span>');
         }
     }
+    // PRIERE
+    if (batUnitType.skills.includes('prayer')) {
+        apCost = 7;
+        if (bat.apLeft >= apCost && !bat.tags.includes('prayer') && !bat.tags.includes('spirit') && !inMelee) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Prier" class="boutonGris iconButtons" onclick="gloireASatan()"><i class="fas fa-hamsa"></i> <span class="small">'+apCost+'</span></button>&nbsp; Prière</h4></span>');
+        } else {
+            if (inMelee) {
+                skillMessage = "Vous ne pouvez pas prier en mêlée";
+            } else if (bat.tags.includes('prayer')) {
+                skillMessage = "Encore sous l'effet de la prière";
+            } else if (bat.tags.includes('spirit')) {
+                skillMessage = "Aucun signe des Dieux";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-hamsa"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</h4></span>');
+        }
+    }
     // MEDIC
     let baseskillCost;
     if (batUnitType.skills.includes('medic')) {

@@ -21,6 +21,6 @@
     },
 
     {
-        "skills":["fortif","cible","selevation","elevation","regeneration","undead","selfbadmedic","badmedic","selfmedic","medic","survivor","luckyshot","camo","maycamo","embuscade","guerrilla","ranger","hover","berserk","longshot","defense","sentinelle","mutant","cyber","leader","fly","dealer","ravitaillement","stock","mine","landmine","dynamite","laser","selfmecano","badmecano","deepselfmecano","mecano","inflammable","extraction","transport","selfrepair","deepselfrepair","repair"],
+        "skills":["fortif","cible","regeneration","undead","selfbadmedic","badmedic","selfmedic","medic","survivor","luckyshot","camo","maycamo","embuscade","guerrilla","ranger","hover","berserk","longshot","defense","sentinelle","mutant","cyber","leader","fly","dealer","ravitaillement","stock","mine","landmine","dynamite","laser","selfmecano","badmecano","deepselfmecano","mecano","inflammable","extraction","transport","selfrepair","deepselfrepair","repair"],
     }
 ]

@@ -22,6 +22,19 @@ function fortification() {
     showBatInfos(selectedBat);
 };
 
+function gloireASatan() {
+    console.log('GLOIRE A SATAN');
+    if (!selectedBat.tags.includes('prayer')) {
+        selectedBat.tags.push('prayer');
+        selectedBat.tags.push('prayer');
+        selectedBat.tags.push('spirit');
+    }
+    selectedBat.salvoLeft = 0;
+    selectedBat.apLeft = selectedBat.apLeft-7;
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
 function calcCamo(bat) {
     let batType = getBatType(bat);
     let stealth = getStealth(bat);
