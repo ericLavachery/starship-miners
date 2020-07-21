@@ -1743,7 +1743,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Fusil mitrailleur",
-            "cost":3,
+            "cost":4,
             "range":1,
             "elevation":1,
             "rof":30,
@@ -2210,7 +2210,7 @@
         "maxSalvo":2,
         "weapon":{
             "name":"Fusil mitrailleur",
-            "cost":3,
+            "cost":4,
             "range":1,
             "elevation":1,
             "rof":16,
@@ -2223,7 +2223,7 @@
         },
         "weapon2":{
             "name":"RPG",
-            "cost":4,
+            "cost":6,
             "range":1,
             "elevation":1,
             "noFly":true,
@@ -2908,7 +2908,7 @@
         },
         "weapon2":{
             "name":"Fusil mitrailleur",
-            "cost":3,
+            "cost":4,
             "range":1,
             "elevation":1,
             "rof":18,
