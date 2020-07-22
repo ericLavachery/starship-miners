@@ -216,6 +216,8 @@ h4 {
 }
 .inficon {
     margin-left: 2px;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
 }
 .pUnits {
     background-color: rgba(221, 248, 252, 0.3);
@@ -265,6 +267,18 @@ h4 {
 .or {
     color: #f77a28;
     font-weight: bold;
+}
+.rq1 {
+    color: #FFFFFF;
+}
+.rq2 {
+    color: #ffff00;
+}
+.rq3 {
+    color: #ff006b;
+}
+.rq4 {
+    color: #00fff0;
 }
 .rpg {
     font-size: 19px;

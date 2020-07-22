@@ -769,7 +769,7 @@
         "maxVeg":3,
         "skills":["fly","capfar","inflammable"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"bugium":1,"larvium":1,"wingium":1}
+        "killRes":{"bugium":1,"larvium":1,"wingium":1,"noxis":1}
     },
     {
         "id":15,
@@ -1116,7 +1116,7 @@
         "maxVeg":3,
         "skills":[],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"bugium":1,"swarmine":1}
+        "killRes":{"bugium":1,"swarmine":1,"noxis":1}
     },
     {
         "id":24,
@@ -1370,7 +1370,7 @@
         "maxVeg":3,
         "skills":["chancre","hover","capmen"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"bugium":2,"larvium":2,"germium":1}
+        "killRes":{"bugium":2,"larvium":2,"germium":1,"noxis":1}
     },
     {
         "id":31,
@@ -1593,7 +1593,7 @@
         "maxVeg":3,
         "skills":["hover"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"bugium":1,"aranium":1}
+        "killRes":{"bugium":1,"aranium":1,"noxis":1}
     },
     {
         "id":43,

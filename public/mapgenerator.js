@@ -18,11 +18,22 @@ function createMap(size) {
     let thisTerrain = "P";
     let lastSeed = 3;
     let aboveSeed = 0;
+    let resLevelDice;
     while (i < size*size) {
         newTile = {};
         newTile.id = i;
         newTile.x = x;
         newTile.y = y;
+        if (rand.rand(1,50) === 1) {
+            resLevelDice = rand.rand(1,100);
+            if (resLevelDice <= 65) {
+                newTile.rq = 1;
+            } else if (resLevelDice <= 90) {
+                newTile.rq = 2;
+            } else {
+                newTile.rq = 3;
+            }
+        }
         newTile.terrain = nextTile(i,size);
         thisTerrain = newTile.terrain;
         if (i > mapSize) {

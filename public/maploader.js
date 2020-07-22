@@ -57,14 +57,15 @@ function redrawTile(tileId,drawSelectedBat) {
 };
 
 function showRes(tileId) {
-    if (zone[tileId].rq >= 1) {
-        if (zone[tileId].tileName !== undefined && zone[tileId].tileName != '') {
-            return '<div class="mapInfos"><i class="fas fa-map-marker-alt inficon"></i><i class="fas fa-atom inficon"></i></div>';
+    let tile = zone[tileId];
+    if (tile.rq >= 1) {
+        if (tile.tileName !== undefined && tile.tileName != '') {
+            return '<div class="mapInfos"><i class="fas fa-map-marker-alt inficon"></i><i class="fas fa-atom inficon rq'+tile.rq+'"></i></div>';
         } else {
-            return '<div class="mapInfos"><i class="fas fa-atom inficon"></i></div>';
+            return '<div class="mapInfos"><i class="fas fa-atom inficon rq'+tile.rq+'"></i></div>';
         }
     } else {
-        if (zone[tileId].tileName !== undefined && zone[tileId].tileName != '') {
+        if (tile.tileName !== undefined && tile.tileName != '') {
             return '<div class="mapInfos"><i class="fas fa-map-marker-alt inficon"></i></div>';
         } else {
             return '';
