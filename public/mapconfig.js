@@ -38,6 +38,7 @@ function areaGo(x,y) {
     xOffset = x;
     yOffset = y;
     showMap(zone,true);
+    confirmMode();
 };
 
 function yourMapSize() {
@@ -80,6 +81,7 @@ function centerMapTo(tileId) {
     yOffset = myTileY-Math.round(numHTiles/2);
     limitOffset();
     showMap(zone,true);
+    confirmMode();
 };
 
 function centerMap() {
@@ -91,6 +93,7 @@ function centerMap() {
         yOffset = myTileY-Math.round(numHTiles/2);
         limitOffset();
         showMap(zone,true);
+        confirmMode();
         if (Object.keys(selectedBat).length >= 1) {
             tileSelect(selectedBat);
         }
@@ -109,6 +112,7 @@ function centerMapTarget() {
         yOffset = myTileY-Math.round(numHTiles/2);
         limitOffset();
         showMap(zone,true);
+        confirmMode();
         if (Object.keys(selectedBat).length >= 1) {
             tileSelect(selectedBat);
         }
@@ -126,6 +130,7 @@ function centerMapCenter() {
     yOffset = myTileY-Math.round(numHTiles/2);
     limitOffset();
     showMap(zone,true);
+    confirmMode();
 };
 
 function isVisible(tileId) {
