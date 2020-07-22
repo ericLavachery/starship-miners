@@ -45,6 +45,7 @@ function checkEggsDrop() {
     eggDropCount = 0;
     let drop = false;
     let eggPauseDice = calcEggPause(false);
+    console.log('PAUSE! Chance to quit: 1/'+eggPauseDice);
     let adjMapDrop = playerInfos.mapDrop;
     let adjMapTurn = playerInfos.mapTurn-10+playerInfos.mapDiff;
     if (adjMapTurn <= 0) {
@@ -639,7 +640,6 @@ function eggSpawn(bat,fromEgg) {
                 alienUnits.forEach(function(unit) {
                     if (classes.includes(unit.class) && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat)) {
                         raritySum = raritySum+unit.rarity;
-                        console.log('raritySum='+raritySum);
                         if (checkDice <= raritySum) {
                             conselUnit = unit;
                         }

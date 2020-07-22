@@ -292,7 +292,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"195733__nornalbion__large-monster-mante",
         "fxPriority":7,
-        "killRes":{"bugium":8,"swarmine":8,"bossium":3,"egidium":18}
+        "killRes":{"bugium":8,"swarmine":8,"bossium":3,"egidium":8}
     },
     {
         "id":3,
@@ -627,7 +627,7 @@
         "maxVeg":3,
         "skills":["capbld","fear"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"bugium":9,"egidium":1}
+        "killRes":{"bugium":9}
     },
     {
         "id":11,
@@ -728,7 +728,7 @@
         "maxVeg":3,
         "skills":["shield","inflammable"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"bugium":9,"bossium":1,"slime":4,"egidium":7}
+        "killRes":{"bugium":9,"bossium":1,"slime":4,"egidium":3}
     },
     {
         "id":13,
@@ -824,7 +824,7 @@
         "maxVeg":3,
         "skills":["chancre","venin","regeneration","shield","minaccu"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"bugium":4,"mendium":1,"germium":2,"egidium":3}
+        "killRes":{"bugium":4,"mendium":1,"germium":2,"egidium":1}
     },
     {
         "id":16,
@@ -1160,7 +1160,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"82082__rmw2861__1000000009_Androks",
         "fxPriority":4,
-        "killRes":{"bugium":6,"swarmine":6,"mephitis":3,"bossium":3,"creatite":1,"egidium":3}
+        "killRes":{"bugium":6,"swarmine":6,"mephitis":3,"bossium":3,"creatite":1}
     },
     {
         "id":25,
@@ -1204,7 +1204,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"347410__zerokingfull__monster-roar-02_bugboss",
         "fxPriority":8,
-        "killRes":{"bugium":15,"bossium":5,"creatite":1,"pyrus":5,"egidium":2}
+        "killRes":{"bugium":15,"bossium":5,"creatite":1,"pyrus":5}
     },
     {
         "id":26,
@@ -1764,7 +1764,7 @@
         "maxVeg":-1,
         "skills":["ponte","regeneration","resistfeu"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"mendium":5,"creatite":3,"egidium":3}
+        "killRes":{"mendium":5,"creatite":3}
     },
     {
         "id":42,
@@ -1793,7 +1793,7 @@
         "maxVeg":-1,
         "skills":["ponte","regeneration"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"mendium":5,"creatite":3,"egidium":3}
+        "killRes":{"mendium":5,"creatite":3}
     },
     {
         "id":17,
@@ -1900,6 +1900,6 @@
         "maxVeg":-1,
         "skills":["regeneration","resistfeu"],
         "deathFx":"zapsplat_explosion_fireball_43738",
-        "killRes":{"bugium":7,"mendium":4,"pyrus":2,"egidium":1}
+        "killRes":{"bugium":7,"mendium":4,"pyrus":2}
     }
 ]

@@ -33,25 +33,27 @@ function fireMode(weapon) {
 };
 
 function confirmMode() {
-    if (Object.keys(selectedBat).length >= 1) {
-        if (mode === 'fire') {
-            if (selectedWeap.num === 2) {
-                fireMode('w2');
-            } else {
-                fireMode('w1');
+    if (activeTurn === 'player') {
+        if (Object.keys(selectedBat).length >= 1) {
+            if (mode === 'fire') {
+                if (selectedWeap.num === 2) {
+                    fireMode('w2');
+                } else {
+                    fireMode('w1');
+                }
+            } else if (mode === 'move') {
+                moveMode();
+                let jump = false;
+                if (selectedBatType.skills.includes('fly')) {
+                    jump = true;
+                }
+                moveInfos(selectedBat,jump);
+            } else if (mode === 'select') {
+                selectMode();
             }
-        } else if (mode === 'move') {
-            moveMode();
-            let jump = false;
-            if (selectedBatType.skills.includes('fly')) {
-                jump = true;
-            }
-            moveInfos(selectedBat,jump);
-        } else if (mode === 'select') {
+        } else {
             selectMode();
         }
-    } else {
-        selectMode();
     }
 };
 

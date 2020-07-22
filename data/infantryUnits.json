@@ -2854,7 +2854,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"nailgun",
-            "ammo":["lame","lame-tungten","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-mono"]
         },
         "weapon2":{
             "name":"Revolver",
@@ -2873,8 +2873,9 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","mecano","cyber"],
+        "skills":["fortif","cible","mecano","selfmedic","cyber"],
         "mecanoCost":8,
+        "mediCost":8,
         "fuzz":1,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
     },
