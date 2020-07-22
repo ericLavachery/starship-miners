@@ -24,6 +24,9 @@ function nextTurn() {
             if (!alienTypesList.includes(batType.name)) {
                 alienTypesList.push(batType.name);
             }
+            if (batType.skills.includes('hide') && !bat.tags.includes('invisible') && bat.salvoLeft >= 1) {
+                bat.tags.push('invisible');
+            }
             bat.salvoLeft = batType.maxSalvo;
             if (bat.apLeft < 0-batType.ap-batType.ap) {
                 bat.apLeft = 0-batType.ap-batType.ap;
@@ -43,7 +46,7 @@ function nextTurn() {
             if (rand.rand(1,3) === 1) {
                 tagDelete(bat,'freeze');
             }
-            if (playerInfos.mapTurn > bat.creaTurn+10 && bat.type != 'Oeuf voilé') {
+            if (playerInfos.mapTurn > bat.creaTurn+10 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide')) {
                 tagDelete(bat,'invisible');
             }
         }

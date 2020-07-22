@@ -567,6 +567,9 @@ function eggSpawn(bat,fromEgg) {
     if (eggTurn > eggLife && fromEgg) {
         // TRANFORMATION EN RUCHE !
         if (bat.type.includes('Oeuf')) {
+            if (bat.type === 'Oeuf voilé') {
+                unveilAliens(bat);
+            }
             alienMorph(bat,'Ruche',false);
         } else {
             alienMorph(bat,'Volcan',false);
@@ -745,7 +748,6 @@ function checkDrop(layBat) {
 
 function unveilAliens(myBat) {
     let myKind = getEggKind(myBat);
-    console.log('MY KIND: '+myKind);
     let thisKind;
     let veiledKinds = [];
     aliens.forEach(function(bat) {
@@ -760,12 +762,11 @@ function unveilAliens(myBat) {
             }
         }
     });
-    console.log(veiledKinds);
     if (!veiledKinds.includes(myKind)) {
         aliens.forEach(function(bat) {
             if (bat.loc === "zone") {
                 batType = getBatType(bat);
-                if (bat.tags.includes('invisible') && batType.kind == myKind) {
+                if (bat.tags.includes('invisible') && batType.kind == myKind && !batType.skills.includes('hide')) {
                     tagDelete(bat,'invisible');
                 }
             }
