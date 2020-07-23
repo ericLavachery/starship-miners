@@ -1,170 +1,426 @@
 [
     {
         "name": "Plomb",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 80,
+        "cat": "white",
+        "batch": 5
+    },
+    {
+        "name": "Fer",
+        "bld": "Mine",
+        "level": 1,
+        "rarity": 80,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Silicium",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 15,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Cuivre",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 80,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Calcium",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
         "rarity": 30,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Zinc",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
         "rarity": 30,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Phosphore",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
         "rarity": 30,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Soufre",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 80,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Nickel",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
         "rarity": 30,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Potassium",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
         "rarity": 30,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Aluminium",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
         "rarity": 30,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Bore",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 20,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Titane",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 10,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Cobalt",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 25,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Tungstène",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 20,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Plutonium",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 20,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Uranium",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 10,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Platine",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 10,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Or",
-        "type": "Minerai",
+        "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 20,
+        "cat": "white",
         "batch": 5
     },
     {
-        "name": "Lithium",
-        "type": "Minerai",
+        "name": "Palladium",
+        "bld": "Mine",
+        "level": 1,
+        "rarity": 7,
+        "cat": "white",
+        "batch": 5
+    },
+    {
+        "name": "Mercure",
+        "bld": "Mine",
         "level": 1,
         "rarity": 30,
+        "cat": "white",
         "batch": 5
     },
     {
         "name": "Eau",
-        "type": "Eau",
+        "bld": "Pompe",
         "level": 1,
         "rarity": 100,
-        "batch": 10
+        "cat": "none",
+        "batch": 5
     },
     {
         "name": "Hydrocarbure",
-        "type": "Hydrocarbure",
+        "bld": "Derrick",
         "level": 1,
-        "rarity": 15,
-        "batch": 10
+        "rarity": 20,
+        "cat": "white",
+        "batch": 5
     },
     {
-        "name": "Argon",
-        "type": "Gaz",
+        "name": "Huile",
+        "bld": "",
         "level": 1,
-        "rarity": 15,
-        "batch": 2
+        "rarity": 30,
+        "cat": "none",
+        "batch": 5
     },
     {
         "name": "Végétaux",
-        "type": "Végétal",
+        "bld": "",
+        "level": 1,
+        "rarity": 100,
+        "cat": "none",
+        "batch": 5
+    },
+    {
+        "name": "Hydrogène",
+        "bld": "Derrick",
+        "level": 1,
+        "rarity": 80,
+        "cat": "white",
+        "batch": 5
+    },
+    {
+        "name": "Oxygène",
+        "bld": "Pompe",
+        "level": 1,
+        "rarity": 40,
+        "cat": "white",
+        "batch": 5
+    },
+    {
+        "name": "Azote",
+        "bld": "Derrick",
+        "level": 1,
+        "rarity": 30,
+        "cat": "white",
+        "batch": 5
+    },
+    {
+        "name": "Chlore",
+        "bld": "Derrick",
+        "level": 1,
+        "rarity": 30,
+        "cat": "white",
+        "batch": 5
+    },
+    {
+        "name": "Argon",
+        "bld": "Derrick",
+        "level": 1,
+        "rarity": 10,
+        "cat": "white",
+        "batch": 5
+    },
+    {
+        "name": "Hélium",
+        "bld": "Derrick",
+        "level": 1,
+        "rarity": 10,
+        "cat": "white",
+        "batch": 5
+    },
+    {
+        "name": "Dunium",
+        "bld": "Mine",
         "level": 1,
         "rarity": 15,
-        "batch": 10
+        "cat": "blue",
+        "batch": 2
+    },
+    {
+        "name": "Timonium",
+        "bld": "Mine",
+        "level": 1,
+        "rarity": 3,
+        "cat": "sky",
+        "batch": 2
+    },
+    {
+        "name": "Salite",
+        "bld": "Mine",
+        "level": 1,
+        "rarity": 3,
+        "cat": "sky",
+        "batch": 2
+    },
+    {
+        "name": "Plastanium",
+        "bld": "Mine",
+        "level": 1,
+        "rarity": 5,
+        "cat": "sky",
+        "batch": 2
+    },
+    {
+        "name": "Uridium",
+        "bld": "Mine",
+        "level": 1,
+        "rarity": 5,
+        "cat": "sky",
+        "batch": 2
+    },
+    {
+        "name": "Nanite",
+        "bld": "Mine",
+        "level": 1,
+        "rarity": 3,
+        "cat": "blue",
+        "batch": 2
+    },
+    {
+        "name": "Adamantium",
+        "bld": "Mine",
+        "level": 1,
+        "rarity": 2,
+        "cat": "sky",
+        "batch": 2
     },
     {
         "name": "Bugium",
-        "type": "Alien",
+        "bld": "",
+        "level": 1,
+        "rarity": 100,
+        "cat": "alien",
+        "batch": 10
+    },
+    {
+        "name": "Swarmine",
+        "bld": "",
+        "level": 1,
+        "rarity": 60,
+        "cat": "alien",
+        "batch": 10
+    },
+    {
+        "name": "Larvium",
+        "bld": "",
+        "level": 1,
+        "rarity": 40,
+        "cat": "alien",
+        "batch": 10
+    },
+    {
+        "name": "Aranium",
+        "bld": "",
+        "level": 1,
+        "rarity": 60,
+        "cat": "alien",
+        "batch": 10
+    },
+    {
+        "name": "Creatite",
+        "bld": "",
+        "level": 1,
+        "rarity": 50,
+        "cat": "alien",
+        "batch": 10
+    },
+    {
+        "name": "Slime",
+        "bld": "",
+        "level": 1,
+        "rarity": 30,
+        "cat": "alien",
+        "batch": 10
+    },
+    {
+        "name": "Mendium",
+        "bld": "",
+        "level": 1,
+        "rarity": 30,
+        "cat": "alien",
+        "batch": 10
+    },
+    {
+        "name": "Noxis",
+        "bld": "",
         "level": 1,
         "rarity": 15,
+        "cat": "alien",
+        "batch": 10
+    },
+    {
+        "name": "Germium",
+        "bld": "",
+        "level": 1,
+        "rarity": 15,
+        "cat": "alien",
+        "batch": 10
+    },
+    {
+        "name": "Wingium",
+        "bld": "",
+        "level": 1,
+        "rarity": 10,
+        "cat": "alien",
+        "batch": 10
+    },
+    {
+        "name": "Blendium",
+        "bld": "",
+        "level": 1,
+        "rarity": 10,
+        "cat": "alien",
+        "batch": 10
+    },
+    {
+        "name": "Mephitis",
+        "bld": "",
+        "level": 1,
+        "rarity": 10,
+        "cat": "alien",
+        "batch": 10
+    },
+    {
+        "name": "Egidium",
+        "bld": "",
+        "level": 1,
+        "rarity": 10,
+        "cat": "alien",
+        "batch": 10
+    },
+    {
+        "name": "Bossium",
+        "bld": "",
+        "level": 1,
+        "rarity": 5,
+        "cat": "alien",
+        "batch": 10
+    },
+    {
+        "name": "Pyrus",
+        "bld": "",
+        "level": 1,
+        "rarity": 5,
+        "cat": "alien",
         "batch": 10
     }
 ]

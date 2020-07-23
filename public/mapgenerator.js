@@ -517,39 +517,128 @@ function addRes(zone) {
     let numBadTer = 0;
     let shufZone = _.shuffle(zone);
     shufZone.forEach(function(tile) {
-        terrain = getTileTerrain(tile.id);
-        if (terrain.name === 'S' || terrain.name === 'W' || terrain.name === 'F') {
-            numBadTer++;
-        }
-        if (rand.rand(1,terrain.minChance) === 1) {
-            resLevelDice = checkResLevel(tile);
-            if (resLevelDice >= 4 && mythicNum >= mythicMax) {
-                tile.rq = 1;
-            } else {
-                tile.rq = resLevelDice;
+        if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
+            terrain = getTileTerrain(tile.id);
+            if (terrain.name === 'S' || terrain.name === 'W' || terrain.name === 'F') {
+                numBadTer++;
+            }
+            if (rand.rand(1,terrain.minChance) === 1) {
+                resLevelDice = checkResLevel(tile);
+                if (resLevelDice >= 4 && mythicNum >= mythicMax) {
+                    tile.rq = 1;
+                } else {
+                    tile.rq = resLevelDice;
+                }
             }
         }
     });
     // silver mythics
-    let silverChance = Math.round(50000000/numBadTer/((playerInfos.mapDiff+2)*(playerInfos.mapDiff+2)));
+    let silverChance = Math.round(60000000/numBadTer/((playerInfos.mapDiff+3)*(playerInfos.mapDiff+3)));
     shufZone.forEach(function(tile) {
-        terrain = getTileTerrain(tile.id);
-        if (terrain.name === 'S' || terrain.name === 'F') {
-            if (rand.rand(1,silverChance) === 1) {
-                tile.rq = 4;
-                mythicNum = mythicNum+0.5;
+        if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
+            terrain = getTileTerrain(tile.id);
+            if (terrain.name === 'S' || terrain.name === 'F') {
+                if (rand.rand(1,silverChance) === 1) {
+                    tile.rq = 4;
+                    mythicNum = mythicNum+0.5;
+                }
             }
         }
     });
+    // not enough mythics
     if (mythicNum < mythicMin) {
         shufZone.forEach(function(tile) {
-            if (tile.rq === undefined) {
-                if (mythicNum < mythicMin) {
-                    tile.rq = 5;
-                    mythicNum++;
+            if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
+                if (tile.rq === undefined) {
+                    if (mythicNum < mythicMin) {
+                        tile.rq = 5;
+                        mythicNum++;
+                    }
                 }
             }
         });
+    }
+    // débordement rouge
+    let adjTile;
+    zone.forEach(function(tile) {
+        if (tile.rq === 3) {
+            adjTile = tile.id-mapSize-1;
+            checkAdjRes(adjTile);
+            adjTile = tile.id-mapSize;
+            checkAdjRes(adjTile);
+            adjTile = tile.id-mapSize+1;
+            checkAdjRes(adjTile);
+            adjTile = tile.id-1;
+            checkAdjRes(adjTile);
+            adjTile = tile.id+1;
+            checkAdjRes(adjTile);
+            adjTile = tile.id+mapSize-1;
+            checkAdjRes(adjTile);
+            adjTile = tile.id+mapSize;
+            checkAdjRes(adjTile);
+            adjTile = tile.id+mapSize+1;
+            checkAdjRes(adjTile);
+        }
+    });
+    // RESSOURCES
+    // adjust res rarity
+    let rarityDice;
+    let bestRarity = 0;
+    let resDefault;
+    resTypes.forEach(function(res) {
+        if (res.cat === 'white') {
+            rarityDice = rand.rand(1,10);
+            altDice = rand.rand(1,10);
+            if (altDice < rarityDice) {
+                rarityDice = altDice;
+            }
+            res.adjRarity = Math.floor(res.rarity*rarityDice/5.5);
+            res.adjBatch = Math.ceil(res.batch*rarityDice/5);
+            if (res.adjRarity > bestRarity) {
+                bestRarity = res.adjRarity;
+                resDefault = res;
+            }
+        }
+    });
+    // check res
+    let resChance;
+    zone.forEach(function(tile) {
+        if (tile.rq >= 1) {
+            tile.rs = {};
+        }
+        if (tile.rq == 5) {
+
+        } else if (tile.rq == 4) {
+
+        } else if (tile.rq >= 1) {
+            resTypes.forEach(function(res) {
+                if (res.cat === 'white') {
+                    resChance = Math.round(res.adjRarity*tile.rq*tile.rq/9);
+                    if (rand.rand(1,100) <= resChance) {
+                        tile.rs[res.name] = res.adjBatch*tile.rq*tile.rq*rand.rand(3,9);
+                    }
+                }
+            });
+            if (Object.keys(tile.rs).length <= 0) {
+                tile.rs[resDefault.name] = resDefault.adjBatch*tile.rq*tile.rq*rand.rand(3,9);
+            }
+        }
+    });
+    console.log(zone);
+};
+
+function checkAdjRes(adjTile) {
+    if (adjTile >= 0 && adjTile <= 3599) {
+        if (zone[adjTile].rq === undefined) {
+            let terrain = getTileTerrain(adjTile);
+            if (rand.rand(1,Math.ceil(terrain.minChance/5)) === 1) {
+                if (rand.rand(1,2) === 1) {
+                    zone[adjTile].rq = 1;
+                } else {
+                    zone[adjTile].rq = 2;
+                }
+            }
+        }
     }
 };
 

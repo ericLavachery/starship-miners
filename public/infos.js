@@ -247,6 +247,15 @@ function showTileInfos(tileId) {
     // Coordonnées
     $('#tileInfos').append('<span class="paramName">Coordonnées</span><span class="paramIcon"><i class="fas fa-map-marker-alt"></i></span><span class="paramValue">'+tile.x+'&lrhar;'+tile.y+'</span><br>');
     $('#tileInfos').append('<span class="paramName">Id</span><span class="paramIcon"></span><span class="paramValue">#'+tile.id+'</span><br>');
+    // RESSOURCES
+    if (tile.rs !== undefined) {
+        Object.entries(tile.rs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            $('#tileInfos').append('<span class="paramName cy">'+key+'</span><span class="paramIcon"></span><span class="paramValue cy">'+value+'</span><br>');
+            console.log(key,value);
+        });
+    }
     // RENOMMER
     $('#tileInfos').append('<span class="blockTitle"><h4><button type="button" title="Nommer cet emplacement" class="boutonGris iconButtons" onclick="renameTile('+tileId+')"><i class="fas fa-map-signs"></i></button>&nbsp; Mettre une pancarte</h4></span>');
 };
