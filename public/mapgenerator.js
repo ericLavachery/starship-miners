@@ -4,6 +4,7 @@ function generateNewMap() {
     createMap(mapSize);
     filterMap(zone);
     addRivers(zone);
+    addRes(zone);
     writeMapStyles();
     showMap(zone,false);
     // function saveMap();
@@ -18,22 +19,11 @@ function createMap(size) {
     let thisTerrain = "P";
     let lastSeed = 3;
     let aboveSeed = 0;
-    let resLevelDice;
     while (i < size*size) {
         newTile = {};
         newTile.id = i;
         newTile.x = x;
         newTile.y = y;
-        if (rand.rand(1,50) === 1) {
-            resLevelDice = rand.rand(1,100);
-            if (resLevelDice <= 65) {
-                newTile.rq = 1;
-            } else if (resLevelDice <= 90) {
-                newTile.rq = 2;
-            } else {
-                newTile.rq = 3;
-            }
-        }
         newTile.terrain = nextTile(i,size);
         thisTerrain = newTile.terrain;
         if (i > mapSize) {
@@ -515,5 +505,64 @@ function nextTile(myTileIndex, size) {
                 }
             }
         }
+    }
+};
+
+function addRes(zone) {
+    let resLevelDice;
+    let mythicMin = Math.floor(playerInfos.mapDiff/2)-2;
+    let mythicMax = playerInfos.mapDiff;
+    let mythicNum = 0;
+    let terrain;
+    let numBadTer = 0;
+    let shufZone = _.shuffle(zone);
+    shufZone.forEach(function(tile) {
+        terrain = getTileTerrain(tile.id);
+        if (terrain.name === 'S' || terrain.name === 'W' || terrain.name === 'F') {
+            numBadTer++;
+        }
+        if (rand.rand(1,terrain.minChance) === 1) {
+            resLevelDice = checkResLevel(tile);
+            if (resLevelDice >= 4 && mythicNum >= mythicMax) {
+                tile.rq = 1;
+            } else {
+                tile.rq = resLevelDice;
+            }
+        }
+    });
+    // silver mythics
+    let silverChance = Math.round(50000000/numBadTer/((playerInfos.mapDiff+2)*(playerInfos.mapDiff+2)));
+    shufZone.forEach(function(tile) {
+        terrain = getTileTerrain(tile.id);
+        if (terrain.name === 'S' || terrain.name === 'F') {
+            if (rand.rand(1,silverChance) === 1) {
+                tile.rq = 4;
+                mythicNum = mythicNum+0.5;
+            }
+        }
+    });
+    if (mythicNum < mythicMin) {
+        shufZone.forEach(function(tile) {
+            if (tile.rq === undefined) {
+                if (mythicNum < mythicMin) {
+                    tile.rq = 5;
+                    mythicNum++;
+                }
+            }
+        });
+    }
+};
+
+function checkResLevel(tile) {
+    let resLevelDice = rand.rand(1,100);
+    let mythicChance = Math.round((playerInfos.mapDiff+2)*(playerInfos.mapDiff+2)/18);
+    if (resLevelDice <= mythicChance) {
+        return 5;
+    } else if (resLevelDice <= 58) {
+        return 1;
+    } else if (resLevelDice <= 86) {
+        return 2;
+    } else {
+        return 3;
     }
 };

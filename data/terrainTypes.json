@@ -15,7 +15,8 @@
         "cover":8,
         "fortifcover":11,
         "aliencover":8,
-        "fishcover":4
+        "fishcover":4,
+        "minChance":10
     },
     {
         "name":"H",
@@ -33,7 +34,8 @@
         "cover":3,
         "fortifcover":7,
         "aliencover":3,
-        "fishcover":1
+        "fishcover":1,
+        "minChance":20
     },
     {
         "name":"E",
@@ -51,7 +53,8 @@
         "cover":2,
         "fortifcover":5,
         "aliencover":2,
-        "fishcover":0
+        "fishcover":0,
+        "minChance":50
     },
     {
         "name":"P",
@@ -69,7 +72,8 @@
         "cover":0,
         "fortifcover":4,
         "aliencover":0,
-        "fishcover":0
+        "fishcover":0,
+        "minChance":100
     },
     {
         "name":"G",
@@ -87,7 +91,8 @@
         "cover":1,
         "fortifcover":5,
         "aliencover":1,
-        "fishcover":1
+        "fishcover":1,
+        "minChance":200
     },
     {
         "name":"B",
@@ -105,7 +110,8 @@
         "cover":5,
         "fortifcover":7,
         "aliencover":5,
-        "fishcover":2
+        "fishcover":2,
+        "minChance":200
     },
     {
         "name":"F",
@@ -123,7 +129,8 @@
         "cover":6,
         "fortifcover":8,
         "aliencover":6,
-        "fishcover":2
+        "fishcover":2,
+        "minChance":200
     },
     {
         "name":"S",
@@ -141,7 +148,8 @@
         "cover":3,
         "fortifcover":6,
         "aliencover":-3,
-        "fishcover":8
+        "fishcover":8,
+        "minChance":100
     },
     {
         "name":"W",
@@ -159,7 +167,8 @@
         "cover":-2,
         "fortifcover":0,
         "aliencover":-6,
-        "fishcover":10
+        "fishcover":10,
+        "minChance":500
     },
     {
         "name":"R",
@@ -177,6 +186,7 @@
         "cover":-2,
         "fortifcover":-2,
         "aliencover":-8,
-        "fishcover":12
+        "fishcover":12,
+        "minChance":500
     }
 ]
