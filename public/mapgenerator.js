@@ -585,14 +585,18 @@ function addRes(zone) {
     let rarityDice;
     let bestRarity = 0;
     let resDefault;
+    let maxDice = Math.floor(playerInfos.mapDiff/2)+5;
     resTypes.forEach(function(res) {
         if (res.cat === 'white') {
-            rarityDice = rand.rand(1,10);
-            altDice = rand.rand(1,10);
+            rarityDice = rand.rand(1,maxDice);
+            altDice = rand.rand(1,maxDice);
             if (altDice < rarityDice) {
                 rarityDice = altDice;
             }
-            res.adjRarity = Math.floor(res.rarity*rarityDice/5.5);
+            if (rarityDice <= Math.ceil(maxDice/2)-1) {
+                rarityDice == 1;
+            }
+            res.adjRarity = Math.floor(res.rarity*rarityDice/5);
             res.adjBatch = Math.ceil(res.batch*rarityDice/5);
             if (res.adjRarity > bestRarity) {
                 bestRarity = res.adjRarity;
