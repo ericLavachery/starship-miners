@@ -533,7 +533,7 @@ function addRes(zone) {
         }
     });
     // silver mythics
-    let silverChance = Math.round(60000000/numBadTer/((playerInfos.mapDiff+3)*(playerInfos.mapDiff+3)));
+    let silverChance = Math.round(40000000/numBadTer/((playerInfos.mapDiff+3)*(playerInfos.mapDiff+3)));
     shufZone.forEach(function(tile) {
         if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
             terrain = getTileTerrain(tile.id);
@@ -586,6 +586,8 @@ function addRes(zone) {
     let bestRarity = 0;
     let resDefault;
     let maxDice = Math.floor(playerInfos.mapDiff/2)+5;
+    let blueSum = 0;
+    let skySum = 0;
     resTypes.forEach(function(res) {
         if (res.cat === 'white') {
             rarityDice = rand.rand(1,maxDice);
@@ -602,20 +604,42 @@ function addRes(zone) {
                 bestRarity = res.adjRarity;
                 resDefault = res;
             }
+        } else if (res.cat === 'blue') {
+            blueSum = blueSum+res.rarity;
+            skySum = skySum+res.rarity;
+        } else if (res.cat === 'sky') {
+            skySum = skySum+res.rarity;
         }
     });
     // check res
+    let sortedRes = _.sortBy(_.sortBy(resTypes,'rarity'),'adjRarity').reverse();
     let resChance;
+    let mythicDice;
+    let mythicSum = 0;
+    let mythicRes = {};
     zone.forEach(function(tile) {
         if (tile.rq >= 1) {
             tile.rs = {};
         }
-        if (tile.rq == 5) {
-
-        } else if (tile.rq == 4) {
-
-        } else if (tile.rq >= 1) {
+        if (tile.rq >= 4) {
+            if (tile.rq === 5) {
+                mythicDice = rand.rand(1,skySum);
+            } else {
+                mythicDice = rand.rand(1,blueSum);
+            }
+            mythicSum = 0;
+            mythicRes = {};
             resTypes.forEach(function(res) {
+                if (res.cat === 'blue' || (res.cat === 'sky' && tile.rq === 5)) {
+                    mythicSum = mythicSum+res.rarity;
+                    if (mythicSum >= mythicDice && Object.keys(mythicRes).length <= 0) {
+                        mythicRes = res;
+                    }
+                }
+            });
+            tile.rs[mythicRes.name] = mythicRes.batch*(tile.rq-2)*(tile.rq-3)*rand.rand(3,9);
+        } else if (tile.rq >= 1) {
+            sortedRes.forEach(function(res) {
                 if (res.cat === 'white') {
                     resChance = Math.round(res.adjRarity*tile.rq*tile.rq/9);
                     if (rand.rand(1,100) <= resChance) {

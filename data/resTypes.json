@@ -152,14 +152,6 @@
         "batch": 5
     },
     {
-        "name": "Palladium",
-        "bld": "Mine",
-        "level": 1,
-        "rarity": 7,
-        "cat": "white",
-        "batch": 5
-    },
-    {
         "name": "Mercure",
         "bld": "Mine",
         "level": 1,
@@ -251,57 +243,89 @@
         "name": "Dunium",
         "bld": "Mine",
         "level": 1,
-        "rarity": 15,
+        "rarity": 4,
         "cat": "blue",
-        "batch": 2
+        "batch": 5
     },
     {
         "name": "Timonium",
         "bld": "Mine",
         "level": 1,
-        "rarity": 3,
+        "rarity": 8,
         "cat": "sky",
-        "batch": 2
+        "batch": 5
     },
     {
         "name": "Salite",
         "bld": "Mine",
         "level": 1,
-        "rarity": 3,
+        "rarity": 8,
         "cat": "sky",
-        "batch": 2
+        "batch": 5
     },
     {
         "name": "Plastanium",
         "bld": "Mine",
         "level": 1,
-        "rarity": 5,
-        "cat": "sky",
-        "batch": 2
+        "rarity": 4,
+        "cat": "blue",
+        "batch": 5
     },
     {
         "name": "Uridium",
-        "bld": "Mine",
+        "bld": "Derrick",
         "level": 1,
-        "rarity": 5,
+        "rarity": 8,
         "cat": "sky",
-        "batch": 2
+        "batch": 5
     },
     {
         "name": "Nanite",
-        "bld": "Mine",
+        "bld": "Derrick",
         "level": 1,
-        "rarity": 3,
+        "rarity": 4,
         "cat": "blue",
-        "batch": 2
+        "batch": 5
     },
     {
         "name": "Adamantium",
         "bld": "Mine",
         "level": 1,
-        "rarity": 2,
+        "rarity": 8,
         "cat": "sky",
         "batch": 2
+    },
+    {
+        "name": "Pyratol",
+        "bld": "Derrick",
+        "level": 1,
+        "rarity": 4,
+        "cat": "blue",
+        "batch": 5
+    },
+    {
+        "name": "Palladium",
+        "bld": "Mine",
+        "level": 1,
+        "rarity": 4,
+        "cat": "blue",
+        "batch": 5
+    },
+    {
+        "name": "Octiron",
+        "bld": "Derrick",
+        "level": 1,
+        "rarity": 8,
+        "cat": "blue",
+        "batch": 5
+    },
+    {
+        "name": "Atium",
+        "bld": "Derrick",
+        "level": 1,
+        "rarity": 8,
+        "cat": "blue",
+        "batch": 5
     },
     {
         "name": "Bugium",
