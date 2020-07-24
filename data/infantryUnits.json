@@ -1299,7 +1299,7 @@
             "level":1,
             "rate":5,
             "multi":false,
-            "types":["Minerai","Végétal","Eau"]
+            "types":["Mine","Pompe"]
         },
         "transRes":30,
         "maxSkill":2,
@@ -1358,7 +1358,7 @@
             "level":2,
             "rate":2,
             "multi":false,
-            "types":["Minerai","Végétal","Eau"]
+            "types":["Mine"]
         },
         "transRes":30,
         "fuzz":0,

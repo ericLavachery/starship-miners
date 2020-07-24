@@ -2511,13 +2511,13 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","selfmecano","extraction","hardmove","fret"],
+        "skills":["cible","selfmecano","extraction","hardmove","fret","noblub"],
         "mecanoCost":16,
         "mining":{
             "level":3,
             "rate":25,
             "multi":true,
-            "types":["Minerai","Végétal","Eau","Hydrocarbure","Gaz","Air"]
+            "types":["Mine","Derrick","Pompe"]
         },
         "transRes":2000,
         "fuzz":4.5,
@@ -2578,7 +2578,7 @@
             "level":3,
             "rate":15,
             "multi":true,
-            "types":["Minerai","Végétal","Eau","Hydrocarbure","Gaz","Air"]
+            "types":["Mine","Derrick"]
         },
         "transRes":1000,
         "fuzz":4,
@@ -2894,7 +2894,7 @@
             "level":2,
             "rate":12,
             "multi":true,
-            "types":["Minerai","Végétal"]
+            "types":["Mine"]
         },
         "transRes":150,
         "fuzz":2,

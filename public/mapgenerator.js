@@ -513,9 +513,13 @@ function addRes(zone) {
     let mythicMin = Math.floor(playerInfos.mapDiff/2)-2;
     let mythicMax = playerInfos.mapDiff;
     let mythicNum = 0;
+    let baseMin = 10+(playerInfos.mapDiff*3);
+    let baseNum = 0;
     let terrain;
     let numBadTer = 0;
     let shufZone = _.shuffle(zone);
+    console.log('baseMin:'+baseMin);
+    console.log('mythicMin:'+mythicMin);
     shufZone.forEach(function(tile) {
         if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
             terrain = getTileTerrain(tile.id);
@@ -523,6 +527,7 @@ function addRes(zone) {
                 numBadTer++;
             }
             if (rand.rand(1,terrain.minChance) === 1) {
+                baseNum++;
                 resLevelDice = checkResLevel(tile);
                 if (resLevelDice >= 4 && mythicNum >= mythicMax) {
                     tile.rq = 1;
@@ -532,7 +537,30 @@ function addRes(zone) {
             }
         }
     });
-    // silver mythics
+    // not enough base
+    if (baseNum < baseMin) {
+        console.log('rebelotte');
+        shufZone.forEach(function(tile) {
+            if (tile.rq === undefined) {
+                if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
+                    terrain = getTileTerrain(tile.id);
+                    if (rand.rand(1,terrain.minChance) === 1) {
+                        if (baseNum < baseMin) {
+                            resLevelDice = checkResLevel(tile);
+                            if (resLevelDice >= 4 && mythicNum >= mythicMax) {
+                                tile.rq = 1;
+                            } else {
+                                tile.rq = resLevelDice;
+                            }
+                            baseNum++;
+                        }
+                    }
+                }
+            }
+        });
+    }
+    console.log('baseNum:'+baseNum);
+    // blue mythics
     let silverChance = Math.round(40000000/numBadTer/((playerInfos.mapDiff+3)*(playerInfos.mapDiff+3)));
     shufZone.forEach(function(tile) {
         if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
@@ -558,6 +586,7 @@ function addRes(zone) {
             }
         });
     }
+    console.log('mythicNum:'+mythicNum);
     // débordement rouge
     let adjTile;
     zone.forEach(function(tile) {

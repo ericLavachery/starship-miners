@@ -51,7 +51,7 @@
             "level":3,
             "rate":20,
             "multi":true,
-            "types":["Minerai"]
+            "types":["Mine"]
         },
         "transRes":4000,
         "fuzz":4,
@@ -78,12 +78,12 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["extraction","fret","recupcit"],
+        "skills":["extraction","fret","recupcit","noblub"],
         "mining":{
             "level":3,
             "rate":20,
             "multi":true,
-            "types":["Eau","Air"]
+            "types":["Pompe"]
         },
         "transRes":4000,
         "fuzz":4,
@@ -115,7 +115,7 @@
             "level":3,
             "rate":20,
             "multi":true,
-            "types":["Hydrocarbure","Gaz"]
+            "types":["Derrick"]
         },
         "transRes":4000,
         "fuzz":4,

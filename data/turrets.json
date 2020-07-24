@@ -71,15 +71,9 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","extraction","fret","recupcit","bastion"],
+        "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","recupcit","bastion"],
         "mediCost":7,
         "mecanoCost":7,
-        "mining":{
-            "level":1,
-            "rate":10,
-            "multi":true,
-            "types":["Eau","Air"]
-        },
         "transMaxSize":55,
         "transUnits":10000,
         "transRes":10000,
@@ -117,15 +111,9 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","extraction","fret","recupcit","bastion"],
+        "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","recupcit","bastion"],
         "mediCost":5,
         "mecanoCost":5,
-        "mining":{
-            "level":1,
-            "rate":20,
-            "multi":true,
-            "types":["Eau","Air"]
-        },
         "transMaxSize":100,
         "transUnits":25000,
         "transRes":20000,
@@ -170,7 +158,7 @@
             "level":3,
             "rate":35,
             "multi":true,
-            "types":["Minerai","Végétal","Eau","Hydrocarbure","Gaz","Air"]
+            "types":["Mine","Derrick","Pompe"]
         },
         "transMaxSize":50,
         "transUnits":9000,
