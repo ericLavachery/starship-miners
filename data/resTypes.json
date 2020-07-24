@@ -177,7 +177,7 @@
     },
     {
         "name": "Huile",
-        "bld": "",
+        "bld": "Collecte",
         "level": 1,
         "rarity": 30,
         "cat": "none",
@@ -185,18 +185,18 @@
     },
     {
         "name": "Végétaux",
-        "bld": "",
+        "bld": "Collecte",
         "level": 1,
         "rarity": 100,
         "cat": "none",
         "batch": 5
     },
     {
-        "name": "Hydrogène",
-        "bld": "Derrick",
+        "name": "Bois",
+        "bld": "Collecte",
         "level": 1,
-        "rarity": 80,
-        "cat": "white",
+        "rarity": 100,
+        "cat": "none",
         "batch": 5
     },
     {
@@ -204,6 +204,14 @@
         "bld": "Pompe",
         "level": 1,
         "rarity": 40,
+        "cat": "white",
+        "batch": 5
+    },
+    {
+        "name": "Hydrogène",
+        "bld": "Derrick",
+        "level": 1,
+        "rarity": 80,
         "cat": "white",
         "batch": 5
     },
@@ -244,8 +252,8 @@
         "bld": "Mine",
         "level": 1,
         "rarity": 4,
-        "cat": "blue",
-        "batch": 5
+        "cat": "blue-sky",
+        "batch": 3
     },
     {
         "name": "Timonium",
@@ -253,7 +261,7 @@
         "level": 1,
         "rarity": 8,
         "cat": "sky",
-        "batch": 5
+        "batch": 3
     },
     {
         "name": "Salite",
@@ -261,37 +269,37 @@
         "level": 1,
         "rarity": 8,
         "cat": "sky",
-        "batch": 5
+        "batch": 3
     },
     {
         "name": "Plastanium",
-        "bld": "Mine",
+        "bld": "Derrick",
         "level": 1,
         "rarity": 4,
-        "cat": "blue",
-        "batch": 5
+        "cat": "blue-sky",
+        "batch": 3
     },
     {
         "name": "Uridium",
-        "bld": "Derrick",
+        "bld": "Mine",
         "level": 1,
         "rarity": 8,
         "cat": "sky",
-        "batch": 5
+        "batch": 3
     },
     {
         "name": "Nanite",
         "bld": "Derrick",
         "level": 1,
         "rarity": 4,
-        "cat": "blue",
-        "batch": 5
+        "cat": "blue-sky",
+        "batch": 3
     },
     {
         "name": "Adamantium",
         "bld": "Mine",
         "level": 1,
-        "rarity": 8,
+        "rarity": 4,
         "cat": "sky",
         "batch": 2
     },
@@ -300,20 +308,20 @@
         "bld": "Derrick",
         "level": 1,
         "rarity": 4,
-        "cat": "blue",
+        "cat": "blue-sky",
         "batch": 5
     },
     {
         "name": "Palladium",
         "bld": "Mine",
         "level": 1,
-        "rarity": 4,
-        "cat": "blue",
-        "batch": 5
+        "rarity": 8,
+        "cat": "sky",
+        "batch": 3
     },
     {
         "name": "Octiron",
-        "bld": "Derrick",
+        "bld": "Collecte",
         "level": 1,
         "rarity": 8,
         "cat": "blue",
@@ -321,7 +329,7 @@
     },
     {
         "name": "Atium",
-        "bld": "Derrick",
+        "bld": "Collecte",
         "level": 1,
         "rarity": 8,
         "cat": "blue",
@@ -333,7 +341,7 @@
         "level": 1,
         "rarity": 100,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     },
     {
         "name": "Swarmine",
@@ -341,7 +349,7 @@
         "level": 1,
         "rarity": 60,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     },
     {
         "name": "Larvium",
@@ -349,7 +357,7 @@
         "level": 1,
         "rarity": 40,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     },
     {
         "name": "Aranium",
@@ -357,7 +365,7 @@
         "level": 1,
         "rarity": 60,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     },
     {
         "name": "Creatite",
@@ -365,7 +373,7 @@
         "level": 1,
         "rarity": 50,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     },
     {
         "name": "Slime",
@@ -373,7 +381,7 @@
         "level": 1,
         "rarity": 30,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     },
     {
         "name": "Mendium",
@@ -381,7 +389,7 @@
         "level": 1,
         "rarity": 30,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     },
     {
         "name": "Noxis",
@@ -389,7 +397,7 @@
         "level": 1,
         "rarity": 15,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     },
     {
         "name": "Germium",
@@ -397,7 +405,7 @@
         "level": 1,
         "rarity": 15,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     },
     {
         "name": "Wingium",
@@ -405,7 +413,7 @@
         "level": 1,
         "rarity": 10,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     },
     {
         "name": "Blendium",
@@ -413,7 +421,7 @@
         "level": 1,
         "rarity": 10,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     },
     {
         "name": "Mephitis",
@@ -421,7 +429,7 @@
         "level": 1,
         "rarity": 10,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     },
     {
         "name": "Egidium",
@@ -429,7 +437,7 @@
         "level": 1,
         "rarity": 10,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     },
     {
         "name": "Bossium",
@@ -437,7 +445,7 @@
         "level": 1,
         "rarity": 5,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     },
     {
         "name": "Pyrus",
@@ -445,6 +453,6 @@
         "level": 1,
         "rarity": 5,
         "cat": "alien",
-        "batch": 10
+        "batch": 1
     }
 ]

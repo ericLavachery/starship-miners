@@ -122,6 +122,38 @@
         "deathFx":"S_Explosion02"
     },
     {
+        "id":157,
+        "name":"Comptoir",
+        "pic":"collector",
+        "cat":"buildings",
+        "kind":"zero",
+        "squads":6,
+        "squadSize":1,
+        "crew":15,
+        "hp":400,
+        "armor":7,
+        "size":100,
+        "stealth":0,
+        "ap":12,
+        "maxSalvo":1,
+        "weapon":{},
+        "weapon2":{},
+        "moveCost":99,
+        "maxFlood":-1,
+        "maxScarp":-1,
+        "maxVeg":-1,
+        "skills":["extraction","fret","recupcit"],
+        "mining":{
+            "level":3,
+            "rate":30,
+            "multi":true,
+            "types":["Collecte"]
+        },
+        "transRes":4000,
+        "fuzz":4,
+        "deathFx":"S_Explosion02"
+    },
+    {
         "id":29,
         "name":"Poudrière",
         "pic":"bunker4",

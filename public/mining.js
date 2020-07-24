@@ -16,32 +16,55 @@ function extraction(apCost) {
 function mining(bat) {
     if (bat.tags.includes('mining')) {
         if (bat.apLeft >= 1) {
+            console.log('MINING');
             let batType = getBatType(bat);
             let rate = Math.round(batType.mining.rate*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads);
-            let dispoRes = getRes(bat,batType);
-
+            console.log('rate'+rate);
+            let allRes = getAllRes(bat);
         }
     }
 };
 
-function getRes(bat,batType) {
-    let dispoRes = {};
+function getAllRes(bat) {
     let tile = getTile(bat);
     let terrain = getTerrain(bat);
+    let srs = getTerrainRes(terrain);
+    let allRes = {};
+    if (tile.rq === undefined) {
+        allRes = srs;
+    } else {
+        let rs = tile.rs;
+        allRes = {...rs,...srs};
+    }
+    console.log(allRes);
+    return allRes;
+};
+
+function getTerrainRes(terrain) {
+    let srs = {};
+    // Bois
+    if (terrain.name === 'F') {
+        srs.Bois = 500;
+    } else if (terrain.name === 'B') {
+        srs.Bois = 25;
+    }
+    // Végétaux
+    if (terrain.name === 'F') {
+        srs.Végétaux = 150;
+    } else if (terrain.veg >= 1) {
+        srs.Végétaux = Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*25;
+    }
     // Eau
     if (terrain.name === 'R') {
-        dispoRes.eau = 100;
+        srs.Eau = 1000;
     } else if (terrain.name === 'W') {
-        dispoRes.eau = 75;
+        srs.Eau = 750;
     } else if (terrain.name === 'S') {
-        dispoRes.eau = 25;
+        srs.Eau = 150;
     }
     // Air
-    dispoRes.oxygène = 78;
-    dispoRes.azote = 21;
-    dispoRes.argon = 1;
-    console.log(dispoRes);
-    return dispoRes;
+    srs.Oxygène = 500;
+    return srs;
 };
 
 function getTerrain(bat) {
@@ -64,4 +87,9 @@ function getTile(bat) {
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
     return tile;
+};
+
+function chooseRes() {
+    console.log('CHOOSE RES');
+    console.log(selectedBat);
 };

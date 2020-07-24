@@ -249,10 +249,37 @@ function showTileInfos(tileId) {
     $('#tileInfos').append('<span class="paramName">Id</span><span class="paramIcon"></span><span class="paramValue">#'+tile.id+'</span><br>');
     // RESSOURCES
     if (tile.rs !== undefined) {
+        let tileIndex;
+        let res;
+        let bldReq;
         Object.entries(tile.rs).map(entry => {
             let key = entry[0];
             let value = entry[1];
-            $('#tileInfos').append('<span class="paramName cy">'+key+'</span><span class="paramIcon"></span><span class="paramValue cy">'+value+'</span><br>');
+            resIndex = resTypes.findIndex((obj => obj.name == key));
+            res = resTypes[resIndex];
+            bldReq = onlyFirstLetter(res.bld);
+            if (res.bld === 'Pompe') {
+                bldReq = 'd';
+            }
+            $('#tileInfos').append('<span class="paramName cy">'+key+'</span><span class="paramIcon"></span><span class="paramValue cy">'+value+' <span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
+            console.log(key,value);
+        });
+    }
+    let srs = getTerrainRes(terrain);
+    if (Object.keys(srs).length >= 1) {
+        let tileIndex;
+        let res;
+        let bldReq;
+        Object.entries(srs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            resIndex = resTypes.findIndex((obj => obj.name == key));
+            res = resTypes[resIndex];
+            bldReq = onlyFirstLetter(res.bld);
+            if (bldReq != '') {
+                bldReq = ' ('+bldReq+')'
+            }
+            $('#tileInfos').append('<span class="paramName sky">'+key+'</span><span class="paramIcon"></span><span class="paramValue sky">'+value+'<span class="gf">'+bldReq+'</span></span><br>');
             console.log(key,value);
         });
     }

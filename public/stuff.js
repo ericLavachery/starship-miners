@@ -83,6 +83,10 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
+function onlyFirstLetter(string) {
+    return string.charAt(0).toLowerCase();
+};
+
 function isDiv(n,d) {
    return n % d == 0;
 };

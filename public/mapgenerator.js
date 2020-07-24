@@ -633,10 +633,11 @@ function addRes(zone) {
                 bestRarity = res.adjRarity;
                 resDefault = res;
             }
-        } else if (res.cat === 'blue') {
+        }
+        if (res.cat.includes('blue')) {
             blueSum = blueSum+res.rarity;
-            skySum = skySum+res.rarity;
-        } else if (res.cat === 'sky') {
+        }
+        if (res.cat.includes('sky')) {
             skySum = skySum+res.rarity;
         }
     });
@@ -659,7 +660,7 @@ function addRes(zone) {
             mythicSum = 0;
             mythicRes = {};
             resTypes.forEach(function(res) {
-                if (res.cat === 'blue' || (res.cat === 'sky' && tile.rq === 5)) {
+                if ((res.cat.includes('blue') && tile.rq === 4) || (res.cat.includes('sky') && tile.rq === 5)) {
                     mythicSum = mythicSum+res.rarity;
                     if (mythicSum >= mythicDice && Object.keys(mythicRes).length <= 0) {
                         mythicRes = res;

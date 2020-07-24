@@ -2517,7 +2517,7 @@
             "level":3,
             "rate":25,
             "multi":true,
-            "types":["Mine","Derrick","Pompe"]
+            "types":["Mine","Derrick","Pompe","Collecte"]
         },
         "transRes":2000,
         "fuzz":4.5,
@@ -2578,7 +2578,7 @@
             "level":3,
             "rate":15,
             "multi":true,
-            "types":["Mine","Derrick"]
+            "types":["Mine","Derrick","Collecte"]
         },
         "transRes":1000,
         "fuzz":4,
@@ -2894,7 +2894,7 @@
             "level":2,
             "rate":12,
             "multi":true,
-            "types":["Mine"]
+            "types":["Mine","Collecte"]
         },
         "transRes":150,
         "fuzz":2,
