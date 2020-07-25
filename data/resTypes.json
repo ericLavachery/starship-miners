@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "name": "Plomb",
         "bld": "Mine",
         "level": 1,
@@ -8,6 +9,7 @@
         "batch": 5
     },
     {
+        "id": 2,
         "name": "Fer",
         "bld": "Mine",
         "level": 1,
@@ -16,6 +18,7 @@
         "batch": 5
     },
     {
+        "id": 3,
         "name": "Silicium",
         "bld": "Mine",
         "level": 1,
@@ -24,6 +27,7 @@
         "batch": 5
     },
     {
+        "id": 4,
         "name": "Cuivre",
         "bld": "Mine",
         "level": 1,
@@ -32,6 +36,7 @@
         "batch": 5
     },
     {
+        "id": 5,
         "name": "Calcium",
         "bld": "Mine",
         "level": 1,
@@ -40,6 +45,7 @@
         "batch": 5
     },
     {
+        "id": 6,
         "name": "Zinc",
         "bld": "Mine",
         "level": 1,
@@ -48,6 +54,7 @@
         "batch": 5
     },
     {
+        "id": 7,
         "name": "Phosphore",
         "bld": "Mine",
         "level": 1,
@@ -56,6 +63,7 @@
         "batch": 5
     },
     {
+        "id": 8,
         "name": "Soufre",
         "bld": "Mine",
         "level": 1,
@@ -64,6 +72,7 @@
         "batch": 5
     },
     {
+        "id": 9,
         "name": "Nickel",
         "bld": "Mine",
         "level": 1,
@@ -72,6 +81,7 @@
         "batch": 5
     },
     {
+        "id": 10,
         "name": "Potassium",
         "bld": "Mine",
         "level": 1,
@@ -80,6 +90,7 @@
         "batch": 5
     },
     {
+        "id": 11,
         "name": "Aluminium",
         "bld": "Mine",
         "level": 1,
@@ -88,6 +99,7 @@
         "batch": 5
     },
     {
+        "id": 12,
         "name": "Bore",
         "bld": "Mine",
         "level": 1,
@@ -96,6 +108,7 @@
         "batch": 5
     },
     {
+        "id": 13,
         "name": "Titane",
         "bld": "Mine",
         "level": 1,
@@ -104,6 +117,7 @@
         "batch": 5
     },
     {
+        "id": 14,
         "name": "Cobalt",
         "bld": "Mine",
         "level": 1,
@@ -112,6 +126,7 @@
         "batch": 5
     },
     {
+        "id": 15,
         "name": "Tungstène",
         "bld": "Mine",
         "level": 1,
@@ -120,6 +135,7 @@
         "batch": 5
     },
     {
+        "id": 16,
         "name": "Plutonium",
         "bld": "Mine",
         "level": 1,
@@ -128,6 +144,7 @@
         "batch": 5
     },
     {
+        "id": 17,
         "name": "Uranium",
         "bld": "Mine",
         "level": 1,
@@ -136,6 +153,7 @@
         "batch": 5
     },
     {
+        "id": 18,
         "name": "Platine",
         "bld": "Mine",
         "level": 1,
@@ -144,6 +162,7 @@
         "batch": 5
     },
     {
+        "id": 19,
         "name": "Or",
         "bld": "Mine",
         "level": 1,
@@ -152,6 +171,7 @@
         "batch": 5
     },
     {
+        "id": 20,
         "name": "Mercure",
         "bld": "Mine",
         "level": 1,
@@ -160,6 +180,7 @@
         "batch": 5
     },
     {
+        "id": 21,
         "name": "Eau",
         "bld": "Pompe",
         "level": 1,
@@ -168,6 +189,7 @@
         "batch": 5
     },
     {
+        "id": 22,
         "name": "Hydrocarbure",
         "bld": "Derrick",
         "level": 1,
@@ -176,6 +198,7 @@
         "batch": 5
     },
     {
+        "id": 23,
         "name": "Huile",
         "bld": "Collecte",
         "level": 1,
@@ -184,6 +207,7 @@
         "batch": 5
     },
     {
+        "id": 24,
         "name": "Végétaux",
         "bld": "Collecte",
         "level": 1,
@@ -192,6 +216,7 @@
         "batch": 5
     },
     {
+        "id": 25,
         "name": "Bois",
         "bld": "Collecte",
         "level": 1,
@@ -200,14 +225,25 @@
         "batch": 5
     },
     {
-        "name": "Oxygène",
+        "id": 26,
+        "name": "Air",
         "bld": "Pompe",
+        "level": 1,
+        "rarity": 100,
+        "cat": "white",
+        "batch": 5
+    },
+    {
+        "id": 27,
+        "name": "Oxygène",
+        "bld": "Derrick",
         "level": 1,
         "rarity": 40,
         "cat": "white",
         "batch": 5
     },
     {
+        "id": 28,
         "name": "Hydrogène",
         "bld": "Derrick",
         "level": 1,
@@ -216,6 +252,7 @@
         "batch": 5
     },
     {
+        "id": 29,
         "name": "Azote",
         "bld": "Derrick",
         "level": 1,
@@ -224,6 +261,7 @@
         "batch": 5
     },
     {
+        "id": 30,
         "name": "Chlore",
         "bld": "Derrick",
         "level": 1,
@@ -232,6 +270,7 @@
         "batch": 5
     },
     {
+        "id": 31,
         "name": "Argon",
         "bld": "Derrick",
         "level": 1,
@@ -240,6 +279,7 @@
         "batch": 5
     },
     {
+        "id": 32,
         "name": "Hélium",
         "bld": "Derrick",
         "level": 1,
@@ -248,6 +288,7 @@
         "batch": 5
     },
     {
+        "id": 33,
         "name": "Dunium",
         "bld": "Mine",
         "level": 1,
@@ -256,6 +297,7 @@
         "batch": 3
     },
     {
+        "id": 34,
         "name": "Timonium",
         "bld": "Mine",
         "level": 1,
@@ -264,6 +306,7 @@
         "batch": 3
     },
     {
+        "id": 35,
         "name": "Salite",
         "bld": "Mine",
         "level": 1,
@@ -272,6 +315,7 @@
         "batch": 3
     },
     {
+        "id": 36,
         "name": "Plastanium",
         "bld": "Derrick",
         "level": 1,
@@ -280,6 +324,7 @@
         "batch": 3
     },
     {
+        "id": 37,
         "name": "Uridium",
         "bld": "Mine",
         "level": 1,
@@ -288,6 +333,7 @@
         "batch": 3
     },
     {
+        "id": 38,
         "name": "Nanite",
         "bld": "Derrick",
         "level": 1,
@@ -296,6 +342,7 @@
         "batch": 3
     },
     {
+        "id": 39,
         "name": "Adamantium",
         "bld": "Mine",
         "level": 1,
@@ -304,6 +351,7 @@
         "batch": 2
     },
     {
+        "id": 40,
         "name": "Pyratol",
         "bld": "Derrick",
         "level": 1,
@@ -312,6 +360,7 @@
         "batch": 5
     },
     {
+        "id": 41,
         "name": "Palladium",
         "bld": "Mine",
         "level": 1,
@@ -320,6 +369,7 @@
         "batch": 3
     },
     {
+        "id": 42,
         "name": "Octiron",
         "bld": "Collecte",
         "level": 1,
@@ -328,6 +378,7 @@
         "batch": 5
     },
     {
+        "id": 43,
         "name": "Atium",
         "bld": "Collecte",
         "level": 1,
@@ -336,6 +387,7 @@
         "batch": 5
     },
     {
+        "id": 44,
         "name": "Bugium",
         "bld": "",
         "level": 1,
@@ -344,6 +396,7 @@
         "batch": 1
     },
     {
+        "id": 45,
         "name": "Swarmine",
         "bld": "",
         "level": 1,
@@ -352,6 +405,7 @@
         "batch": 1
     },
     {
+        "id": 46,
         "name": "Larvium",
         "bld": "",
         "level": 1,
@@ -360,6 +414,7 @@
         "batch": 1
     },
     {
+        "id": 47,
         "name": "Aranium",
         "bld": "",
         "level": 1,
@@ -368,6 +423,7 @@
         "batch": 1
     },
     {
+        "id": 48,
         "name": "Creatite",
         "bld": "",
         "level": 1,
@@ -376,6 +432,7 @@
         "batch": 1
     },
     {
+        "id": 49,
         "name": "Slime",
         "bld": "",
         "level": 1,
@@ -384,6 +441,7 @@
         "batch": 1
     },
     {
+        "id": 50,
         "name": "Mendium",
         "bld": "",
         "level": 1,
@@ -392,6 +450,7 @@
         "batch": 1
     },
     {
+        "id": 51,
         "name": "Noxis",
         "bld": "",
         "level": 1,
@@ -400,6 +459,7 @@
         "batch": 1
     },
     {
+        "id": 52,
         "name": "Germium",
         "bld": "",
         "level": 1,
@@ -408,6 +468,7 @@
         "batch": 1
     },
     {
+        "id": 53,
         "name": "Wingium",
         "bld": "",
         "level": 1,
@@ -416,6 +477,7 @@
         "batch": 1
     },
     {
+        "id": 54,
         "name": "Blendium",
         "bld": "",
         "level": 1,
@@ -424,6 +486,7 @@
         "batch": 1
     },
     {
+        "id": 55,
         "name": "Mephitis",
         "bld": "",
         "level": 1,
@@ -432,6 +495,7 @@
         "batch": 1
     },
     {
+        "id": 56,
         "name": "Egidium",
         "bld": "",
         "level": 1,
@@ -440,6 +504,7 @@
         "batch": 1
     },
     {
+        "id": 57,
         "name": "Bossium",
         "bld": "",
         "level": 1,
@@ -448,6 +513,7 @@
         "batch": 1
     },
     {
+        "id": 58,
         "name": "Pyrus",
         "bld": "",
         "level": 1,

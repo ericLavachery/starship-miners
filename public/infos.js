@@ -1,5 +1,6 @@
 function showBatInfos(bat) {
     $('#unitInfos').empty();
+    conOut();
     let unitTypesIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     let batUnitType = unitTypes[unitTypesIndex];
     let unitsLeft = bat.squadsLeft*batUnitType.squadSize;
@@ -258,9 +259,6 @@ function showTileInfos(tileId) {
             resIndex = resTypes.findIndex((obj => obj.name == key));
             res = resTypes[resIndex];
             bldReq = onlyFirstLetter(res.bld);
-            if (res.bld === 'Pompe') {
-                bldReq = 'd';
-            }
             $('#tileInfos').append('<span class="paramName cy">'+key+'</span><span class="paramIcon"></span><span class="paramValue cy">'+value+' <span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
             console.log(key,value);
         });

@@ -552,23 +552,31 @@ function skillsInfos(bat,batUnitType) {
     }
     // EXTRACTION
     if (batUnitType.skills.includes('extraction')) {
+        let extractOK = false;
+        if (bat.extracted !== undefined) {
+            if (bat.extracted.length >= 1) {
+                extractOK = true;
+            }
+        }
         balise = 'h4';
         if (bat.tags.includes('mining')) {
             balise = 'h1';
         }
         apCost = 5;
         apReq = 7;
-        if (bat.apLeft >= apReq && !bat.tags.includes('mining') && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Extraire les ressources" class="boutonGris iconButtons" onclick="extraction('+apCost+')"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apReq+'</span></button><button type="button" title="Choisir les ressources" class="boutonGris iconButtons" onclick="chooseRes()"><i class="fas fa-list"></i></button>&nbsp; Extraction</'+balise+'></span>');
+        if (bat.apLeft >= apReq && !bat.tags.includes('mining') && !inMelee && extractOK) {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Extraire les ressources" class="boutonGris iconButtons" onclick="extraction('+apCost+')"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apReq+'</span></button><button type="button" title="Choisir les ressources" class="boutonGris iconButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>&nbsp; Extraction</'+balise+'></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Impossible en mêlée";
+            } else if (!extractOK) {
+                skillMessage = "Aucune ressource choisie";
             } else if (bat.tags.includes('mining')) {
                 skillMessage = "Déjà en train d'extraire";
             } else {
                 skillMessage = "Pas assez de PA";
             }
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apReq+'</span></button><button type="button" title="Choisir les ressources" class="boutonGris iconButtons" onclick="chooseRes()"><i class="fas fa-list"></i></button>&nbsp; Extraction</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apReq+'</span></button><button type="button" title="Choisir les ressources" class="boutonGris iconButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>&nbsp; Extraction</'+balise+'></span>');
         }
     }
     // CONSTRUCTION TRICHE

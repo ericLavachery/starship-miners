@@ -18,11 +18,16 @@ function mining(bat) {
         if (bat.apLeft >= 1) {
             console.log('MINING');
             let batType = getBatType(bat);
-            let rate = Math.round(batType.mining.rate*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads);
+            let rate = getMiningRate(bat);
             console.log('rate'+rate);
             let allRes = getAllRes(bat);
         }
     }
+};
+
+function getMiningRate(bat) {
+    let batType = getBatType(bat);
+    return Math.round(batType.mining.rate*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads);
 };
 
 function getAllRes(bat) {
@@ -63,7 +68,7 @@ function getTerrainRes(terrain) {
         srs.Eau = 150;
     }
     // Air
-    srs.Oxygène = 500;
+    srs.Air = 500;
     return srs;
 };
 
@@ -89,7 +94,69 @@ function getTile(bat) {
     return tile;
 };
 
-function chooseRes() {
-    console.log('CHOOSE RES');
+function getResMiningRate(bat,ressource,value) {
+    let batRate = getMiningRate(selectedBat);
+    let resRate = Math.ceil(value*batRate/100);
+    return resRate;
+};
+
+function getResByName(resName) {
+    let resIndex = resTypes.findIndex((obj => obj.name == resName));
+    let res = resTypes[resIndex];
+    return res;
+};
+function getResById(resId) {
+    let resIndex = resTypes.findIndex((obj => obj.id == resId));
+    let res = resTypes[resIndex];
+    return res;
+};
+
+function chooseRes(again) {
+    if (!again) {
+        console.log('CHOOSE RES');
+        console.log(selectedBat);
+        tagDelete(selectedBat,'mining');
+        // reset bat.extracted
+        if (selectedBat.extracted === undefined) {
+            selectedBat.extracted = [];
+        }
+        selectedBatArrayUpdate();
+    }
+    // show res list
+    $("#conUnitList").css("display","block");
+    $("#conUnitList").css("display","block");
+    $('#unitInfos').empty();
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
+    $('#conUnitList').append('<span class="constName or">RESSOURCES</span><br>');
+    let rate = getMiningRate(selectedBat);
+    let allRes = getAllRes(selectedBat);
+    Object.entries(allRes).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        res = getResByName(key);
+        if (selectedBatType.mining.types.includes(res.bld)) {
+            let resMiningRate = getResMiningRate(selectedBat,res,value);
+            if (selectedBat.extracted.includes(res.name)) {
+                $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+            } else {
+                $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+            }
+            $('#conUnitList').append('<span class="constName klik" onclick="resSelect('+res.id+')">'+res.name+' : '+resMiningRate+'</span><br>');
+        }
+    });
+};
+
+function resSelect(resId) {
     console.log(selectedBat);
+    let res = getResById(resId);
+    if (!selectedBat.extracted.includes(res.name)) {
+        selectedBat.extracted.push(res.name);
+    } else {
+        let tagIndex = selectedBat.extracted.indexOf(res.name);
+        selectedBat.extracted.splice(tagIndex,1);
+    }
+    selectedBatArrayUpdate();
+    chooseRes(true);
 };
