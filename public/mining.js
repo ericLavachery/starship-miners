@@ -1,5 +1,5 @@
 function extraction(apCost) {
-    console.log('EXTRACTION');
+    // console.log('EXTRACTION');
     if (!selectedBat.tags.includes('mining')) {
         selectedBat.tags.push('mining');
     }
@@ -21,13 +21,19 @@ function mining(bat) {
             let rate = getMiningRate(bat);
             console.log('rate'+rate);
             let allRes = getAllRes(bat);
+            Object.entries(allRes).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                res = getResByName(key);
+                if (batType.mining.types.includes(res.bld)) {
+                    let resMiningRate = getResMiningRate(bat,res,value);
+                    if (bat.extracted.includes(res.name)) {
+                        console.log(res.name+' : '+resMiningRate);
+                    }
+                }
+            });
         }
     }
-};
-
-function getMiningRate(bat) {
-    let batType = getBatType(bat);
-    return Math.round(batType.mining.rate*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads);
 };
 
 function getAllRes(bat) {
@@ -41,7 +47,7 @@ function getAllRes(bat) {
         let rs = tile.rs;
         allRes = {...rs,...srs};
     }
-    console.log(allRes);
+    // console.log(allRes);
     return allRes;
 };
 
@@ -94,9 +100,14 @@ function getTile(bat) {
     return tile;
 };
 
+function getMiningRate(bat) {
+    let batType = getBatType(bat);
+    return Math.round(batType.mining.rate*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads);
+};
+
 function getResMiningRate(bat,ressource,value) {
-    let batRate = getMiningRate(selectedBat);
-    let resRate = Math.ceil(value*batRate/100);
+    let batRate = getMiningRate(bat);
+    let resRate = Math.ceil(value*batRate/mineRateDiv);
     return resRate;
 };
 
@@ -113,8 +124,8 @@ function getResById(resId) {
 
 function chooseRes(again) {
     if (!again) {
-        console.log('CHOOSE RES');
-        console.log(selectedBat);
+        // console.log('CHOOSE RES');
+        // console.log(selectedBat);
         tagDelete(selectedBat,'mining');
         // reset bat.extracted
         if (selectedBat.extracted === undefined) {
@@ -149,7 +160,7 @@ function chooseRes(again) {
 };
 
 function resSelect(resId) {
-    console.log(selectedBat);
+    // console.log(selectedBat);
     let res = getResById(resId);
     if (!selectedBat.extracted.includes(res.name)) {
         selectedBat.extracted.push(res.name);

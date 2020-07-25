@@ -183,7 +183,9 @@ function moveSelectedBat(tileId,free,jump) {
         tagIndex = selectedBat.tags.indexOf('mining');
         selectedBat.tags.splice(tagIndex,1);
     }
-    selectedBat.extracted = [];
+    if (selectedBatType.skills.includes('extraction')) {
+        selectedBat.extracted = [];
+    }
     if (selectedBat.tags.includes('guet')) {
         tagIndex = selectedBat.tags.indexOf('guet');
         selectedBat.tags.splice(tagIndex,1);

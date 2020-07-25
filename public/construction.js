@@ -232,10 +232,11 @@ function putBat(tileId,citoyens,xp,startTag) {
         }
         newBat.army = 0;
         newBat.fuzz = conselUnit.fuzz;
-        if (conselUnit.transUnits >= 1 || conselUnit.transRes >= 1) {
-            newBat.transUnits = 0;
+        if (conselUnit.transUnits >= 1) {
             newBat.transIds = [];
-            newBat.transRes = 0;
+        }
+        if (conselUnit.transRes >= 1) {
+            newBat.transRes = {};
         }
         if (startTag != undefined) {
             newBat.tags = [startTag];

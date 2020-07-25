@@ -25,9 +25,13 @@ function unloadInfos(myBat,myBatUnitType) {
                     if (bat.damage >= 1 || bat.squadsLeft < batType.squads) {
                         damageIcon = ' <i class="ra ra-bleeding-hearts"></i>'
                     }
-                    tagsIcon = '';
-                    if (bat.tags.includes('maladie') || bat.tags.includes('parasite') || bat.tags.includes('venin') || bat.tags.includes('poison')) {
-                        tagsIcon = ' <i class="fas fa-skull-crossbones"></i>'
+                    poisonIcon = '';
+                    if (bat.tags.includes('parasite') || bat.tags.includes('venin') || bat.tags.includes('poison')) {
+                        poisonIcon = ' <i class="fas fa-skull-crossbones"></i>'
+                    }
+                    maladieIcon = '';
+                    if (bat.tags.includes('maladie')) {
+                        maladieIcon = ' <i class="fas fa-thermometer"></i>'
                     }
                     balise = 'h4';
                     if (Object.keys(batDebarq).length >= 1) {
@@ -35,7 +39,7 @@ function unloadInfos(myBat,myBatUnitType) {
                             balise = 'h1';
                         }
                     }
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+bat.apLeft+' PA" class="boutonGris iconButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+damageIcon+tagsIcon+'</'+balise+'></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+bat.apLeft+' PA" class="boutonGris iconButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
                 }
             });
         }

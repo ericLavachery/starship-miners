@@ -260,7 +260,7 @@ function showTileInfos(tileId) {
             res = resTypes[resIndex];
             bldReq = onlyFirstLetter(res.bld);
             $('#tileInfos').append('<span class="paramName cy">'+key+'</span><span class="paramIcon"></span><span class="paramValue cy">'+value+' <span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
-            console.log(key,value);
+            // console.log(key,value);
         });
     }
     let srs = getTerrainRes(terrain);
@@ -278,7 +278,7 @@ function showTileInfos(tileId) {
                 bldReq = ' ('+bldReq+')'
             }
             $('#tileInfos').append('<span class="paramName sky">'+key+'</span><span class="paramIcon"></span><span class="paramValue sky">'+value+'<span class="gf">'+bldReq+'</span></span><br>');
-            console.log(key,value);
+            // console.log(key,value);
         });
     }
     // RENOMMER
