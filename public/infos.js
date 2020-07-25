@@ -157,6 +157,26 @@ function showBatInfos(bat) {
         if (army > 9) {break;}
     }
 
+    // RESSOURCES transportées
+    if (batType.transRes >= 1) {
+        if (Object.keys(bat.transRes).length >= 1) {
+            $('#unitInfos').append('<span class="blockTitle"><h3>Ressources</h3></span><br>');
+            let transportedRes = JSON.stringify(bat.transRes);
+            transportedRes = transportedRes.replace(/"/g,"");
+            transportedRes = transportedRes.replace(/{/g,"");
+            transportedRes = transportedRes.replace(/}/g,"");
+            transportedRes = transportedRes.replace(/,/g," &nbsp;&horbar;&nbsp; ");
+            transportedRes = transportedRes.replace(/:/g," ");
+            let restSpace = checkResSpace(bat);
+            let showSpace = '<span class="cy">'+restSpace+'</span>';
+            if (restSpace <= 0) {
+                showSpace = '<span class="or">0</span>'
+            }
+            $('#unitInfos').append('<span class="paramValue">'+transportedRes+' &nbsp;('+showSpace+')</span><br>');
+        }
+    }
+
+
     // "moveCost": 3,
     // "maxFlood": 3,
     // "maxScarp": 3,

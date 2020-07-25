@@ -46,7 +46,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["maycamo","extraction","underground","fret","recupcit"],
+        "skills":["maycamo","extraction","underground","fret","recupcit","dumper"],
         "mining":{
             "level":3,
             "rate":20,
@@ -78,7 +78,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["extraction","fret","recupcit","noblub"],
+        "skills":["extraction","fret","recupcit","noblub","dumper"],
         "mining":{
             "level":3,
             "rate":20,
@@ -110,7 +110,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["extraction","fret","recupcit"],
+        "skills":["extraction","fret","recupcit","dumper"],
         "mining":{
             "level":3,
             "rate":20,
@@ -142,7 +142,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["extraction","fret","recupcit"],
+        "skills":["extraction","fret","recupcit","dumper"],
         "mining":{
             "level":3,
             "rate":30,
