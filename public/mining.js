@@ -141,10 +141,17 @@ function getResByName(resName) {
     let res = resTypes[resIndex];
     return res;
 };
+
 function getResById(resId) {
     let resIndex = resTypes.findIndex((obj => obj.id == resId));
     let res = resTypes[resIndex];
     return res;
+};
+
+function getBatById(batId) {
+    let index = bataillons.findIndex((obj => obj.id == batId));
+    let bat = bataillons[index];
+    return bat;
 };
 
 function chooseRes(again) {
@@ -270,14 +277,15 @@ function checkResLoad(bat) {
 };
 
 function loadRes() {
-    // let myBatType = getBatType(myBat);
+    let restSpace = checkResSpace(selectedBat);
+    let restSpace = Math.round(restSpace*1.2);
     $("#conUnitList").css("display","block");
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
-    $('#conUnitList').append('<span class="constName or">RESSOURCES à charger</span><br>');
+    $('#conUnitList').append('<span class="constName or">RESSOURCES à charger</span> <span class="cy">(max '+restSpace+')</span><br>');
     let batType;
     let distance;
     let resLoad;
@@ -299,11 +307,35 @@ function loadRes() {
                             } else {
                                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                             }
-                            $('#conUnitList').append('<span class="constName klik" onclick="resSelectLoad('+res.id+','+bat.id+')">'+res.name+' : '+value+'</span><br>');
+                            $('#conUnitList').append('<span class="constName klik" onclick="resSelectLoad('+value+','+res.id+','+bat.id+')">'+res.name+' : '+value+'</span><br>');
                         });
                     }
                 }
             }
         }
     });
+};
+
+function resSelectLoad(value,resId,batId) {
+    let res = getResById(resId);
+    let bat = getBatById(batId);
+    let restSpace = checkResSpace(selectedBat);
+    if (Math.round(restSpace*1.2) >= value) {
+        if (selectedBat.transRes[res.name] === undefined) {
+            selectedBat.transRes[res.name] = value;
+        } else {
+            selectedBat.transRes[res.name] = selectedBat.transRes[res.name]+value;
+        }
+        delete bat.transRes[res.name];
+    } else {
+        let maxTransfert = Math.round(restSpace*1.2);
+        if (selectedBat.transRes[res.name] === undefined) {
+            selectedBat.transRes[res.name] = maxTransfert;
+        } else {
+            selectedBat.transRes[res.name] = selectedBat.transRes[res.name]+maxTransfert;
+        }
+        bat.transRes[res.name] = bat.transRes[res.name]-maxTransfert;
+    }
+    selectedBatArrayUpdate();
+    loadRes();
 };
