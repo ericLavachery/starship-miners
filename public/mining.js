@@ -160,12 +160,11 @@ function chooseRes(again) {
     }
     // show res list
     $("#conUnitList").css("display","block");
-    $("#conUnitList").css("display","block");
     $('#unitInfos').empty();
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
-    $('#conUnitList').append('<span class="constName or">RESSOURCES</span><br>');
+    $('#conUnitList').append('<span class="constName or">RESSOURCES à extraire</span><br>');
     let rate = getMiningRate(selectedBat);
     let allRes = getAllRes(selectedBat);
     Object.entries(allRes).map(entry => {
@@ -268,4 +267,43 @@ function checkResLoad(bat) {
         }
     }
     return resLoaded;
+};
+
+function loadRes() {
+    // let myBatType = getBatType(myBat);
+    $("#conUnitList").css("display","block");
+    $('#unitInfos').empty();
+    $('#tileInfos').empty();
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
+    $('#conUnitList').append('<span class="constName or">RESSOURCES à charger</span><br>');
+    let batType;
+    let distance;
+    let resLoad;
+    bataillons.forEach(function(bat) {
+        if (bat.id != selectedBat.id) {
+            batType = getBatType(bat);
+            if (batType.skills.includes('fret')) {
+                distance = calcDistance(bat.tileId,selectedBat.tileId);
+                if (distance <= 1) {
+                    resLoad = checkResLoad(bat);
+                    if (resLoad >= 1) {
+                        $('#conUnitList').append('<span class="constName cy">'+bat.type+'</span><br>');
+                        Object.entries(bat.transRes).map(entry => {
+                            let key = entry[0];
+                            let value = entry[1];
+                            res = getResByName(key);
+                            if (false) {
+                                $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                            } else {
+                                $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                            }
+                            $('#conUnitList').append('<span class="constName klik" onclick="resSelectLoad('+res.id+','+bat.id+')">'+res.name+' : '+value+'</span><br>');
+                        });
+                    }
+                }
+            }
+        }
+    });
 };
