@@ -1,4 +1,5 @@
 function guet() {
+    selectMode();
     console.log('GUET');
     if (!selectedBat.tags.includes('guet')) {
         selectedBat.tags.push('guet');
@@ -11,6 +12,7 @@ function guet() {
 };
 
 function fortification() {
+    selectMode();
     console.log('FORTIFICATION');
     if (!selectedBat.tags.includes('fortif')) {
         selectedBat.tags.push('fortif');
@@ -164,6 +166,7 @@ function camoStop(bat) {
 };
 
 function tirCible() {
+    selectMode();
     console.log('TIR CIBLE');
     if (!selectedBat.tags.includes('vise')) {
         selectedBat.tags.push('vise');
@@ -174,6 +177,7 @@ function tirCible() {
 };
 
 function luckyShot() {
+    selectMode();
     console.log('LUCKY SHOT');
     if (!selectedBat.tags.includes('lucky') && !selectedBat.tags.includes('luckyshot')) {
         selectedBat.tags.push('luckyshot');
@@ -183,6 +187,7 @@ function luckyShot() {
 };
 
 function ambush() {
+    selectMode();
     console.log('EMBUSCADE');
     if (!selectedBat.tags.includes('embuscade')) {
         selectedBat.tags.push('embuscade');
@@ -317,6 +322,7 @@ function checkBatDrugs(bat) {
 };
 
 function dropStuff(apCost,mineType) {
+    selectMode();
     let unitIndex;
     if (mineType === 'champ') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Champ de mines'));

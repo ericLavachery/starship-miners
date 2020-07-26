@@ -1,4 +1,5 @@
 function extraction(apCost) {
+    selectMode();
     // console.log('EXTRACTION');
     if (!selectedBat.tags.includes('mining')) {
         selectedBat.tags.push('mining');
@@ -155,6 +156,7 @@ function getBatById(batId) {
 };
 
 function chooseRes(again) {
+    selectMode();
     if (!again) {
         // console.log('CHOOSE RES');
         // console.log(selectedBat);
@@ -277,8 +279,10 @@ function checkResLoad(bat) {
 };
 
 function loadRes() {
+    selectMode();
     let restSpace = checkResSpace(selectedBat);
-    let restSpace = Math.round(restSpace*1.2);
+    // restSpace = Math.round(restSpace*1.2);
+    if (restSpace < 0) {restSpace = 0;}
     $("#conUnitList").css("display","block");
     $('#unitInfos').empty();
     $('#tileInfos').empty();
@@ -289,37 +293,42 @@ function loadRes() {
     let batType;
     let distance;
     let resLoad;
-    bataillons.forEach(function(bat) {
-        if (bat.id != selectedBat.id) {
-            batType = getBatType(bat);
-            if (batType.skills.includes('fret')) {
-                distance = calcDistance(bat.tileId,selectedBat.tileId);
-                if (distance <= 1) {
-                    resLoad = checkResLoad(bat);
-                    if (resLoad >= 1) {
-                        $('#conUnitList').append('<span class="constName cy">'+bat.type+'</span><br>');
-                        Object.entries(bat.transRes).map(entry => {
-                            let key = entry[0];
-                            let value = entry[1];
-                            res = getResByName(key);
-                            if (false) {
-                                $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                            } else {
-                                $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-                            }
-                            $('#conUnitList').append('<span class="constName klik" onclick="resSelectLoad('+value+','+res.id+','+bat.id+')">'+res.name+' : '+value+'</span><br>');
-                        });
+    if (restSpace >= 1) {
+        bataillons.forEach(function(bat) {
+            if (bat.id != selectedBat.id) {
+                batType = getBatType(bat);
+                if (batType.skills.includes('fret')) {
+                    distance = calcDistance(bat.tileId,selectedBat.tileId);
+                    if (distance <= 1) {
+                        resLoad = checkResLoad(bat);
+                        if (resLoad >= 1) {
+                            $('#conUnitList').append('<span class="constName cy">'+bat.type+'</span><br>');
+                            Object.entries(bat.transRes).map(entry => {
+                                let key = entry[0];
+                                let value = entry[1];
+                                res = getResByName(key);
+                                if (false) {
+                                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                                } else {
+                                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                                }
+                                $('#conUnitList').append('<span class="constName klik" onclick="resSelectLoad('+value+','+res.id+','+bat.id+')">'+res.name+' : '+value+'</span><br>');
+                            });
+                        }
                     }
                 }
             }
-        }
-    });
+        });
+    } else {
+        $('#conUnitList').append('<span class="constName">Plus de place!</span><br>');
+    }
 };
 
 function resSelectLoad(value,resId,batId) {
     let res = getResById(resId);
     let bat = getBatById(batId);
     let restSpace = checkResSpace(selectedBat);
+    if (restSpace < 0) {restSpace = 0;}
     if (Math.round(restSpace*1.2) >= value) {
         if (selectedBat.transRes[res.name] === undefined) {
             selectedBat.transRes[res.name] = value;

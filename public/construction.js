@@ -1,4 +1,5 @@
 function bfconst() {
+    selectMode();
     $("#conUnitList").css("display","block");
     $("#conAmmoList").css("display","block");
     $('#unitInfos').empty();
@@ -272,6 +273,7 @@ function conOut() {
 };
 
 function dismantle(batId) {
+    selectMode();
     // récup de ressources
     // création du bataillon de citoyens
     let index = bataillons.findIndex((obj => obj.id == batId));
