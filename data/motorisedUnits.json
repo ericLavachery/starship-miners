@@ -630,7 +630,7 @@
         "mecanoCost":7,
         "transMaxSize":9,
         "transUnits":350,
-        "transRes":350,
+        "transRes":450,
         "fuzz":2,
         "deathFx":"planeexploair3"
     },
@@ -1735,7 +1735,7 @@
         "skills":["cible","transport","fret","hardmove","dumper"],
         "transMaxSize":9,
         "transUnits":1000,
-        "transRes":500,
+        "transRes":600,
         "fuzz":2,
         "deathFx":"planeexploair1"
     },
@@ -1787,11 +1787,11 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","transport","fret","selfbadmecano","hardmove","dumper"],
+        "skills":["cible","transport","fret","selfbadmecano","hardmove","dumper","realdumper"],
         "mecanoCost":24,
         "transMaxSize":12,
         "transUnits":450,
-        "transRes":800,
+        "transRes":1200,
         "fuzz":2,
         "deathFx":"planeexploair1"
     },
@@ -1834,7 +1834,7 @@
         "mediCost":8,
         "transMaxSize":18,
         "transUnits":900,
-        "transRes":600,
+        "transRes":750,
         "fuzz":4,
         "deathFx":"vehicleexplo3"
     },
@@ -2003,7 +2003,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["fortif","recycle","transport","fret","maycamo","mecano","defense","dumper"],
+        "skills":["fortif","recycle","transport","fret","maycamo","mecano","defense","dumper","realdumper"],
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":400,
@@ -2580,7 +2580,7 @@
             "multi":true,
             "types":["Mine","Derrick","Collecte"]
         },
-        "transRes":1000,
+        "transRes":1200,
         "fuzz":4,
         "deathFx":"planeexploair1"
     },
@@ -2633,11 +2633,11 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":2,
-        "skills":["fortif","cible","selfbadmecano","transport","fret","hardmove","defense","dumper"],
+        "skills":["fortif","cible","selfbadmecano","transport","fret","hardmove","defense","dumper","realdumper"],
         "mecanoCost":25,
         "transMaxSize":18,
         "transUnits":1000,
-        "transRes":2000,
+        "transRes":2500,
         "fuzz":3.75,
         "deathFx":"planeexploair3"
     },
@@ -2740,11 +2740,11 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","transport","fret","selfbadmecano","ranger","dumper"],
+        "skills":["cible","transport","fret","selfbadmecano","ranger","dumper","realdumper"],
         "mecanoCost":28,
         "transMaxSize":40,
         "transUnits":950,
-        "transRes":950,
+        "transRes":1500,
         "fuzz":2.5,
         "deathFx":"planeexploair1"
     },
@@ -2796,7 +2796,7 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","fret","camo","emoteur","dumper"],
+        "skills":["cible","fret","camo","emoteur","dumper","realdumper"],
         "transRes":250,
         "fuzz":0,
         "deathFx":"S_CarExplosion02"
@@ -3005,7 +3005,7 @@
         "skills":["cible","transport","fret","hardmove","dumper"],
         "transMaxSize":4,
         "transUnits":430,
-        "transRes":270,
+        "transRes":200,
         "fuzz":1.5,
         "deathFx":"S_CarExplosion02"
     },
@@ -3061,7 +3061,7 @@
         "mecanoCost":15,
         "transMaxSize":4,
         "transUnits":440,
-        "transRes":330,
+        "transRes":250,
         "fuzz":1,
         "deathFx":"S_CarExplosion02"
     },

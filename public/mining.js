@@ -243,12 +243,20 @@ function getDumperQuality(bat) {
     let dq = 0;
     let batType = getBatType(bat);
     if (batType.skills.includes('transorbital')) {
-        dq = 4;
+        dq = 6;
     } else if (batType.moveCost < 90) {
-        if (!batType.skills.includes('extraction')) {
-            dq = 3;
+        if (batType.skills.includes('realdumper')) {
+            if (!batType.skills.includes('extraction')) {
+                dq = 5;
+            } else {
+                dq = 4;
+            }
         } else {
-            dq = 2;
+            if (!batType.skills.includes('extraction')) {
+                dq = 3;
+            } else {
+                dq = 2;
+            }
         }
     } else {
         dq = 1;
@@ -302,17 +310,25 @@ function loadRes() {
                     if (distance <= 1) {
                         resLoad = checkResLoad(bat);
                         if (resLoad >= 1) {
-                            $('#conUnitList').append('<span class="constName cy">'+bat.type+'</span><br>');
+                            if (batType.skills.includes('transorbital')) {
+                                $('#conUnitList').append('<span class="constName sky">'+bat.type+' ???</span><br>');
+                            } else {
+                                $('#conUnitList').append('<span class="constName cy">'+bat.type+'</span><br>');
+                            }
                             Object.entries(bat.transRes).map(entry => {
                                 let key = entry[0];
                                 let value = entry[1];
                                 res = getResByName(key);
-                                if (false) {
-                                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                                if (Math.round(restSpace*1.2) >= value) {
+                                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle"></i></span>');
                                 } else {
-                                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-times-circle or"></i></span>');
                                 }
-                                $('#conUnitList').append('<span class="constName klik" onclick="resSelectLoad('+value+','+res.id+','+bat.id+')">'+res.name+' : '+value+'</span><br>');
+                                if (value > 50 && Math.round(restSpace*1.2) >= 50) {
+                                    $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span> | <span class="klik" onclick="resSelectLoad('+value+',50,'+res.id+','+bat.id+')" title="Charger 50 '+res.name+'">50</span></span><br>');
+                                } else {
+                                    $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span></span><br>');
+                                }
                             });
                         }
                     }
@@ -324,12 +340,12 @@ function loadRes() {
     }
 };
 
-function resSelectLoad(value,resId,batId) {
+function resSelectLoad(value,pickValue,resId,batId) {
     let res = getResById(resId);
     let bat = getBatById(batId);
     let restSpace = checkResSpace(selectedBat);
     if (restSpace < 0) {restSpace = 0;}
-    if (Math.round(restSpace*1.2) >= value) {
+    if (Math.round(restSpace*1.2) >= value && pickValue === value) {
         if (selectedBat.transRes[res.name] === undefined) {
             selectedBat.transRes[res.name] = value;
         } else {
@@ -338,6 +354,9 @@ function resSelectLoad(value,resId,batId) {
         delete bat.transRes[res.name];
     } else {
         let maxTransfert = Math.round(restSpace*1.2);
+        if (pickValue < maxTransfert) {
+            maxTransfert = pickValue;
+        }
         if (selectedBat.transRes[res.name] === undefined) {
             selectedBat.transRes[res.name] = maxTransfert;
         } else {

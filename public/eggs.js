@@ -81,7 +81,7 @@ function checkEggsDrop() {
     } else {
         playMusic('noEgg',false);
     }
-    if (playerInfos.mapTurn % 25 === 0 && playerInfos.mapTurn > 1 && rand.rand(1,100) <= Math.round(playerInfos.fuzzTotal/3)) {
+    if (playerInfos.mapTurn % 25 === 0 && playerInfos.mapTurn > 1 && rand.rand(1,100) <= Math.round(playerInfos.fuzzTotal*playerInfos.fuzzTotal/1000)) {
         dropEgg('Ruche',true);
     }
 };

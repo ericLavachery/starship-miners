@@ -3416,7 +3416,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fret"],
-        "transRes":30,
+        "transRes":15,
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
