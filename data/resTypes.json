@@ -4,7 +4,7 @@
         "name": "Plomb",
         "bld": "Mine",
         "level": 1,
-        "rarity": 120,
+        "rarity": 150,
         "cat": "white",
         "batch": 5
     },
@@ -13,7 +13,7 @@
         "name": "Fer",
         "bld": "Mine",
         "level": 1,
-        "rarity": 120,
+        "rarity": 150,
         "cat": "white",
         "batch": 5
     },
@@ -31,7 +31,7 @@
         "name": "Cuivre",
         "bld": "Mine",
         "level": 1,
-        "rarity": 120,
+        "rarity": 150,
         "cat": "white",
         "batch": 5
     },
@@ -67,7 +67,7 @@
         "name": "Soufre",
         "bld": "Mine",
         "level": 1,
-        "rarity": 120,
+        "rarity": 150,
         "cat": "white",
         "batch": 5
     },
@@ -130,7 +130,7 @@
         "name": "Tungstène",
         "bld": "Mine",
         "level": 1,
-        "rarity": 45,
+        "rarity": 50,
         "cat": "white",
         "batch": 5
     },
@@ -193,7 +193,7 @@
         "name": "Hydrocarbure",
         "bld": "Derrick",
         "level": 1,
-        "rarity": 75,
+        "rarity": 90,
         "cat": "white",
         "batch": 5
     },
@@ -247,7 +247,7 @@
         "name": "Hydrogène",
         "bld": "Derrick",
         "level": 1,
-        "rarity": 65,
+        "rarity": 75,
         "cat": "white",
         "batch": 5
     },
@@ -294,7 +294,7 @@
         "level": 1,
         "rarity": 4,
         "cat": "blue-sky",
-        "batch": 3
+        "batch": 6
     },
     {
         "id": 34,
@@ -303,7 +303,7 @@
         "level": 1,
         "rarity": 8,
         "cat": "sky",
-        "batch": 3
+        "batch": 6
     },
     {
         "id": 35,
@@ -312,7 +312,7 @@
         "level": 1,
         "rarity": 8,
         "cat": "sky",
-        "batch": 3
+        "batch": 6
     },
     {
         "id": 36,
@@ -321,7 +321,7 @@
         "level": 1,
         "rarity": 4,
         "cat": "blue-sky",
-        "batch": 3
+        "batch": 6
     },
     {
         "id": 37,
@@ -330,7 +330,7 @@
         "level": 1,
         "rarity": 8,
         "cat": "sky",
-        "batch": 3
+        "batch": 6
     },
     {
         "id": 38,
@@ -339,7 +339,7 @@
         "level": 1,
         "rarity": 4,
         "cat": "blue-sky",
-        "batch": 3
+        "batch": 6
     },
     {
         "id": 39,
@@ -348,7 +348,7 @@
         "level": 1,
         "rarity": 4,
         "cat": "sky",
-        "batch": 2
+        "batch": 3
     },
     {
         "id": 40,
@@ -357,7 +357,7 @@
         "level": 1,
         "rarity": 4,
         "cat": "blue-sky",
-        "batch": 5
+        "batch": 10
     },
     {
         "id": 41,
@@ -366,7 +366,7 @@
         "level": 1,
         "rarity": 8,
         "cat": "sky",
-        "batch": 3
+        "batch": 6
     },
     {
         "id": 42,
@@ -375,7 +375,7 @@
         "level": 1,
         "rarity": 8,
         "cat": "blue",
-        "batch": 5
+        "batch": 10
     },
     {
         "id": 43,
@@ -384,7 +384,7 @@
         "level": 1,
         "rarity": 8,
         "cat": "blue",
-        "batch": 5
+        "batch": 10
     },
     {
         "id": 44,

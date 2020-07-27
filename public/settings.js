@@ -35,6 +35,9 @@ let baseFilterChance = 4; // minimum 1 !!!
 let filterBase = {};
 let zone = [];
 let resources = [];
+let mineRateDiv = 300; // divise le mining rate : def 100
+let resFoundDiv = 7; // default 9
+let resBatchDiv = 6;
 // UNITS
 let unitTypes = [];
 let unitDV = {}
@@ -82,7 +85,6 @@ let cheapWeapCost = 99;
 let mecanoHP = 90;
 let batDebarq = {};
 let medicalTransports = [];
-let mineRateDiv = 300; // divise le mining rate : def 100
 // ALIENS
 let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;
 let isFFW = false;
