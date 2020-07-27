@@ -31,6 +31,7 @@ let filterEffect = 10;
 let mapFilterDefault = "Normal";
 let terSeedVariance = true;
 let filterVariance = true;
+let baseFilterChance = 4; // minimum 1 !!!
 let filterBase = {};
 let zone = [];
 let resources = [];

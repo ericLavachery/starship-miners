@@ -108,12 +108,11 @@ function filterMap(map) {
             zone[mapIndex].terrain = filterBase[tile.terrain];
         }
     });
-    // console.log(zone);
 };
 
 function filterParams() {
     if (filterVariance) {
-        let diceMax = mapFilters.length+1;
+        let diceMax = mapFilters.length+baseFilterChance-2;
         let fdice = rand.rand(0,diceMax);
         if (fdice > mapFilters.length-1) {
             filterBase = mapFilters[0];
@@ -131,7 +130,7 @@ function filterParams() {
         specialSeed = filterBase.spSeed;
     }
     if (terSeedVariance) {
-        let dice = rand.rand(1,8);
+        let dice = rand.rand(1,17);
         switch (dice) {
             case 1:
             terSeed = 3;
@@ -140,21 +139,48 @@ function filterParams() {
             terSeed = 6;
             break;
             case 3:
-            terSeed = 9;
+            terSeed = 6;
             break;
             case 4:
-            terSeed = 12;
+            terSeed = 9;
             break;
             case 5:
-            terSeed = 18;
+            terSeed = 9;
             break;
             case 6:
-            terSeed = 24;
+            terSeed = 9;
             break;
             case 7:
-            terSeed = 90;
+            terSeed = 12;
             break;
             case 8:
+            terSeed = 12;
+            break;
+            case 9:
+            terSeed = 12;
+            break;
+            case 10:
+            terSeed = 12;
+            break;
+            case 11:
+            terSeed = 18;
+            break;
+            case 12:
+            terSeed = 18;
+            break;
+            case 13:
+            terSeed = 24;
+            break;
+            case 14:
+            terSeed = 24;
+            break;
+            case 15:
+            terSeed = 90;
+            break;
+            case 16:
+            terSeed = 90;
+            break;
+            case 17:
             terSeed = 200;
             break;
             default:
