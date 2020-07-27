@@ -4,7 +4,7 @@
         "name": "Plomb",
         "bld": "Mine",
         "level": 1,
-        "rarity": 80,
+        "rarity": 120,
         "cat": "white",
         "batch": 5
     },
@@ -13,7 +13,7 @@
         "name": "Fer",
         "bld": "Mine",
         "level": 1,
-        "rarity": 80,
+        "rarity": 120,
         "cat": "white",
         "batch": 5
     },
@@ -22,7 +22,7 @@
         "name": "Silicium",
         "bld": "Mine",
         "level": 1,
-        "rarity": 15,
+        "rarity": 35,
         "cat": "white",
         "batch": 5
     },
@@ -31,7 +31,7 @@
         "name": "Cuivre",
         "bld": "Mine",
         "level": 1,
-        "rarity": 80,
+        "rarity": 120,
         "cat": "white",
         "batch": 5
     },
@@ -40,7 +40,7 @@
         "name": "Calcium",
         "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 35,
         "cat": "white",
         "batch": 5
     },
@@ -67,7 +67,7 @@
         "name": "Soufre",
         "bld": "Mine",
         "level": 1,
-        "rarity": 80,
+        "rarity": 120,
         "cat": "white",
         "batch": 5
     },
@@ -85,7 +85,7 @@
         "name": "Potassium",
         "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 55,
         "cat": "white",
         "batch": 5
     },
@@ -94,7 +94,7 @@
         "name": "Aluminium",
         "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 45,
         "cat": "white",
         "batch": 5
     },
@@ -130,7 +130,7 @@
         "name": "Tungstène",
         "bld": "Mine",
         "level": 1,
-        "rarity": 20,
+        "rarity": 45,
         "cat": "white",
         "batch": 5
     },
@@ -193,7 +193,7 @@
         "name": "Hydrocarbure",
         "bld": "Derrick",
         "level": 1,
-        "rarity": 50,
+        "rarity": 75,
         "cat": "white",
         "batch": 5
     },
