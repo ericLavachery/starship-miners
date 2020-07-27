@@ -1297,7 +1297,7 @@
         "mediCost":9,
         "mining":{
             "level":1,
-            "rate":5,
+            "rate":10,
             "multi":false,
             "types":["Mine","Collecte"]
         },
@@ -1356,7 +1356,7 @@
         "mediCost":7,
         "mining":{
             "level":2,
-            "rate":2,
+            "rate":6,
             "multi":false,
             "types":["Mine","Collecte"]
         },
@@ -1479,7 +1479,7 @@
         "hp":6,
         "armor":1,
         "size":5,
-        "volume":1.2,
+        "volume":1,
         "stealth":0,
         "speed":4,
         "ap":20,
@@ -1842,7 +1842,7 @@
         "hp":5,
         "armor":3,
         "size":5,
-        "volume":1.2,
+        "volume":1.1,
         "stealth":0,
         "speed":4,
         "ap":18,
@@ -1994,7 +1994,7 @@
         "hp":6,
         "armor":3,
         "size":5,
-        "volume":1.2,
+        "volume":1,
         "stealth":5,
         "speed":4,
         "ap":20,

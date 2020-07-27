@@ -128,7 +128,7 @@ function getTile(bat) {
 
 function getMiningRate(bat) {
     let batType = getBatType(bat);
-    return Math.round(batType.mining.rate*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads);
+    return Math.ceil(batType.mining.rate*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads);
 };
 
 function getResMiningRate(bat,ressource,value) {
@@ -243,23 +243,35 @@ function getDumperQuality(bat) {
     let dq = 0;
     let batType = getBatType(bat);
     if (batType.skills.includes('transorbital')) {
-        dq = 6;
-    } else if (batType.moveCost < 90) {
-        if (batType.skills.includes('realdumper')) {
+        dq = 9;
+    } else if (batType.skills.includes('realdumper')) {
+        if (batType.moveCost < 90) {
             if (!batType.skills.includes('extraction')) {
-                dq = 5;
+                dq = 8;
             } else {
-                dq = 4;
+                dq = 7;
             }
         } else {
             if (!batType.skills.includes('extraction')) {
-                dq = 3;
+                dq = 6;
             } else {
-                dq = 2;
+                dq = 5;
             }
         }
     } else {
-        dq = 1;
+        if (batType.moveCost < 90) {
+            if (!batType.skills.includes('extraction')) {
+                dq = 4;
+            } else {
+                dq = 3;
+            }
+        } else {
+            if (!batType.skills.includes('extraction')) {
+                dq = 2;
+            } else {
+                dq = 1;
+            }
+        }
     }
     return dq;
 };

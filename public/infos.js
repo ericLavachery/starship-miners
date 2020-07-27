@@ -1,6 +1,6 @@
 function showBatInfos(bat) {
     $('#unitInfos').empty();
-    conOut();
+    conWindowOut();
     let unitTypesIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     let batUnitType = unitTypes[unitTypesIndex];
     let unitsLeft = bat.squadsLeft*batUnitType.squadSize;

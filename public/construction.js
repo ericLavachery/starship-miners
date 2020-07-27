@@ -272,6 +272,13 @@ function conOut() {
     $("#conAmmoList").css("display","none");
 };
 
+function conWindowOut() {
+    $('#conUnitList').empty();
+    $('#conAmmoList').empty();
+    $("#conUnitList").css("display","none");
+    $("#conAmmoList").css("display","none");
+};
+
 function dismantle(batId) {
     selectMode();
     // récup de ressources

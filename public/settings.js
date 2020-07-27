@@ -81,7 +81,7 @@ let cheapWeapCost = 99;
 let mecanoHP = 90;
 let batDebarq = {};
 let medicalTransports = [];
-let mineRateDiv = 100; // divise le mining rate : def 100
+let mineRateDiv = 300; // divise le mining rate : def 100
 // ALIENS
 let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;
 let isFFW = false;

@@ -2515,7 +2515,7 @@
         "mecanoCost":16,
         "mining":{
             "level":3,
-            "rate":25,
+            "rate":28,
             "multi":true,
             "types":["Mine","Derrick","Pompe","Collecte"]
         },
@@ -2576,7 +2576,7 @@
         "mecanoCost":18,
         "mining":{
             "level":3,
-            "rate":15,
+            "rate":17,
             "multi":true,
             "types":["Mine","Derrick","Collecte"]
         },
@@ -2892,7 +2892,7 @@
         "mecanoCost":12,
         "mining":{
             "level":2,
-            "rate":12,
+            "rate":13,
             "multi":true,
             "types":["Mine","Collecte"]
         },
@@ -3004,7 +3004,7 @@
         "maxVeg":2,
         "skills":["cible","transport","fret","hardmove","dumper"],
         "transMaxSize":4,
-        "transUnits":430,
+        "transUnits":435,
         "transRes":200,
         "fuzz":1.5,
         "deathFx":"S_CarExplosion02"
@@ -3060,7 +3060,7 @@
         "skills":["cible","transport","fret","maycamo","selfbadmecano","dumper"],
         "mecanoCost":15,
         "transMaxSize":4,
-        "transUnits":440,
+        "transUnits":450,
         "transRes":250,
         "fuzz":1,
         "deathFx":"S_CarExplosion02"

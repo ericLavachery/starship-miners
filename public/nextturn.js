@@ -130,8 +130,14 @@ function nextTurnEnd() {
             // Motorised noStuck
             noStuck = false;
             if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !bat.tags.includes('action') && bat.apLeft < 0) {
-                if (bat.apLeft < -5) {
-                    noStuck = true;
+                if (batType.skills.includes('guerrilla')) {
+                    if (bat.apLeft < -11) {
+                        noStuck = true;
+                    }
+                } else {
+                    if (bat.apLeft < -5) {
+                        noStuck = true;
+                    }
                 }
                 bat.apLeft = 0;
             }
