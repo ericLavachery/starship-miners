@@ -761,7 +761,7 @@ function addRes(zone) {
             }
             // PASS 4
             if (Object.keys(tile.rs).length <= 0) {
-                tile.rs[resDefault.name] = Math.round(res.adjBatch*(tile.rq+1)*(tile.rq+1)*rand.rand(3,8)*4/resBatchDiv);
+                tile.rs[resDefault.name] = Math.round(resDefault.adjBatch*(tile.rq+1)*(tile.rq+1)*rand.rand(3,8)*4/resBatchDiv);
             }
         }
     });
