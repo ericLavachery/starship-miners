@@ -669,6 +669,7 @@ function addRes(zone) {
             });
             tile.rs[mythicRes.name] = mythicRes.batch*(tile.rq-2)*(tile.rq-3)*rand.rand(3,9);
         } else if (tile.rq >= 1) {
+            // PASS 1
             sortedRes.forEach(function(res) {
                 if (res.cat === 'white') {
                     resChance = Math.round(res.adjRarity*tile.rq*tile.rq/9);
@@ -677,6 +678,62 @@ function addRes(zone) {
                     }
                 }
             });
+            if (tile.rq === 2) {
+                if (Object.keys(tile.rs).length <= 1) {
+                    // PASS 2
+                    sortedRes.forEach(function(res) {
+                        if (res.cat === 'white') {
+                            if (Object.keys(tile.rs).length <= 1) {
+                                if (tile.rs[res.name] === undefined) {
+                                    if (rand.rand(1,8) === 1) {
+                                        tile.rs[res.name] = res.adjBatch*tile.rq*tile.rq*rand.rand(3,9);
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+                if (Object.keys(tile.rs).length <= 1) {
+                    // PASS 3
+                    sortedRes.forEach(function(res) {
+                        if (res.cat === 'white') {
+                            if (Object.keys(tile.rs).length <= 1) {
+                                if (tile.rs[res.name] === undefined) {
+                                    tile.rs[res.name] = res.adjBatch*tile.rq*tile.rq*rand.rand(3,9);
+                                }
+                            }
+                        }
+                    });
+                }
+            } else if (tile.rq === 3) {
+                if (Object.keys(tile.rs).length <= 3) {
+                    // PASS 2
+                    sortedRes.forEach(function(res) {
+                        if (res.cat === 'white') {
+                            if (Object.keys(tile.rs).length <= 3) {
+                                if (tile.rs[res.name] === undefined) {
+                                    if (rand.rand(1,8) === 1) {
+                                        tile.rs[res.name] = res.adjBatch*tile.rq*tile.rq*rand.rand(3,9);
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+                if (Object.keys(tile.rs).length <= 3) {
+                    // PASS 3
+                    sortedRes.forEach(function(res) {
+                        if (res.cat === 'white') {
+                            if (Object.keys(tile.rs).length <= 3) {
+                                if (tile.rs[res.name] === undefined) {
+                                    tile.rs[res.name] = res.adjBatch*tile.rq*tile.rq*rand.rand(3,9);
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+            // PASS 4
             if (Object.keys(tile.rs).length <= 0) {
                 tile.rs[resDefault.name] = resDefault.adjBatch*tile.rq*tile.rq*rand.rand(3,9);
             }
