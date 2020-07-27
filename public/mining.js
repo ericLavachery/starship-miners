@@ -65,7 +65,7 @@ function mining(bat) {
 function getAllRes(bat) {
     let tile = getTile(bat);
     let terrain = getTerrain(bat);
-    let srs = getTerrainRes(terrain);
+    let srs = getTerrainRes(terrain,tile);
     let allRes = {};
     if (tile.rq === undefined) {
         allRes = srs;
@@ -77,19 +77,33 @@ function getAllRes(bat) {
     return allRes;
 };
 
-function getTerrainRes(terrain) {
+function getTerrainRes(terrain,tile) {
     let srs = {};
     // Bois
     if (terrain.name === 'F') {
         srs.Bois = 500;
+    } else if (terrain.name === 'B' && tile.seed >= 4) {
+        srs.Bois = 150;
     } else if (terrain.name === 'B') {
         srs.Bois = 25;
     }
     // Végétaux
     if (terrain.name === 'F') {
         srs.Végétaux = 150;
+    } else if (terrain.name === 'B' && tile.seed >= 4) {
+        srs.Végétaux = 150;
     } else if (terrain.veg >= 1) {
         srs.Végétaux = Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*25;
+    }
+    // Huile
+    if (terrain.name === 'F' && tile.seed === 5) {
+        srs.Huile = 20;
+    } else if (terrain.name === 'B' && tile.seed === 6) {
+        srs.Huile = 10;
+    } else if (terrain.name === 'S' && tile.seed === 6) {
+        srs.Huile = 60;
+    } else if (terrain.name === 'S' && tile.seed >= 4) {
+        srs.Huile = 10;
     }
     // Eau
     if (terrain.name === 'R') {

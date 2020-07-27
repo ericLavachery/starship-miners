@@ -158,8 +158,11 @@ function showBatInfos(bat) {
     }
 
     // RESSOURCES transportées
-    if (batType.transRes >= 1) {
+    console.log('HERE');
+    if (batUnitType.transRes >= 1) {
+        console.log('btres');
         if (Object.keys(bat.transRes).length >= 1) {
+            console.log('bres');
             $('#unitInfos').append('<span class="blockTitle"><h3>Ressources</h3></span><br>');
             let transportedRes = JSON.stringify(bat.transRes);
             transportedRes = transportedRes.replace(/"/g,"");
@@ -283,7 +286,7 @@ function showTileInfos(tileId) {
             // console.log(key,value);
         });
     }
-    let srs = getTerrainRes(terrain);
+    let srs = getTerrainRes(terrain,tile);
     if (Object.keys(srs).length >= 1) {
         let tileIndex;
         let res;

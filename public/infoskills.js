@@ -582,8 +582,7 @@ function skillsInfos(bat,batUnitType) {
     // CHARGER RESSOURCES
     if (batUnitType.skills.includes('fret')) {
         balise = 'h4';
-        apCost = 5;
-        apReq = 5;
+        apReq = 1;
         if (bat.apLeft >= apReq && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Charger des ressources" class="boutonGris iconButtons" onclick="loadRes()"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
         } else {
