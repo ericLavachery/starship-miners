@@ -700,7 +700,7 @@ function addRes(zone) {
                 if (res.cat === 'white') {
                     resChance = Math.round(res.adjRarity*tile.rq*tile.rq/resFoundDiv);
                     if (rand.rand(1,100) <= resChance) {
-                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+1)*(tile.rq+1)*rand.rand(3,8)*4/resBatchDiv);
+                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
                     }
                 }
             });
@@ -712,7 +712,7 @@ function addRes(zone) {
                             if (Object.keys(tile.rs).length <= 1) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,8) === 1) {
-                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+1)*(tile.rq+1)*rand.rand(3,8)*4/resBatchDiv);
+                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
                                     }
                                 }
                             }
@@ -725,7 +725,7 @@ function addRes(zone) {
                         if (res.cat === 'white') {
                             if (Object.keys(tile.rs).length <= 1) {
                                 if (tile.rs[res.name] === undefined) {
-                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+1)*(tile.rq+1)*rand.rand(3,8)*4/resBatchDiv);
+                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
                                 }
                             }
                         }
@@ -739,7 +739,7 @@ function addRes(zone) {
                             if (Object.keys(tile.rs).length <= 3) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,8) === 1) {
-                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+1)*(tile.rq+1)*rand.rand(3,8)*4/resBatchDiv);
+                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
                                     }
                                 }
                             }
@@ -752,7 +752,7 @@ function addRes(zone) {
                         if (res.cat === 'white') {
                             if (Object.keys(tile.rs).length <= 3) {
                                 if (tile.rs[res.name] === undefined) {
-                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+1)*(tile.rq+1)*rand.rand(3,8)*4/resBatchDiv);
+                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
                                 }
                             }
                         }
@@ -761,7 +761,7 @@ function addRes(zone) {
             }
             // PASS 4
             if (Object.keys(tile.rs).length <= 0) {
-                tile.rs[resDefault.name] = Math.round(resDefault.adjBatch*(tile.rq+1)*(tile.rq+1)*rand.rand(3,8)*4/resBatchDiv);
+                tile.rs[resDefault.name] = Math.round(resDefault.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
             }
         }
     });

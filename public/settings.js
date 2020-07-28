@@ -36,8 +36,8 @@ let filterBase = {};
 let zone = [];
 let resources = [];
 let mineRateDiv = 300; // divise le mining rate : def 100
-let resFoundDiv = 7; // default 9
-let resBatchDiv = 6;
+let resFoundDiv = 9; // default 9
+let resBatchDiv = 12;
 // UNITS
 let unitTypes = [];
 let unitDV = {}
