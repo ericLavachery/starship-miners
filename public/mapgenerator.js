@@ -541,6 +541,8 @@ function addRes(zone) {
     let mythicNum = 0;
     let baseMin = 10+(playerInfos.mapDiff*3);
     let baseNum = 0;
+    let redMin = Math.floor(playerInfos.mapDiff/2)+3;
+    let redNum = 0;
     let terrain;
     let numBadTer = 0;
     let shufZone = _.shuffle(zone);
@@ -559,24 +561,30 @@ function addRes(zone) {
                     tile.rq = 1;
                 } else {
                     tile.rq = resLevelDice;
+                    if (resLevelDice === 3) {
+                        redNum++;
+                    }
                 }
             }
         }
     });
     // not enough base
     if (baseNum < baseMin) {
-        console.log('rebelotte');
+        console.log('rebelote');
         shufZone.forEach(function(tile) {
             if (tile.rq === undefined) {
                 if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
                     terrain = getTileTerrain(tile.id);
                     if (rand.rand(1,terrain.minChance) === 1) {
-                        if (baseNum < baseMin) {
+                        if (baseNum < baseMin || rand.rand(1,4) === 1) {
                             resLevelDice = checkResLevel(tile);
                             if (resLevelDice >= 4 && mythicNum >= mythicMax) {
                                 tile.rq = 1;
                             } else {
                                 tile.rq = resLevelDice;
+                                if (resLevelDice === 3) {
+                                    redNum++;
+                                }
                             }
                             baseNum++;
                         }
@@ -585,7 +593,26 @@ function addRes(zone) {
             }
         });
     }
+    // not enough red
+    if (redNum < redMin) {
+        console.log('red rebelotte');
+        shufZone.forEach(function(tile) {
+            if (tile.rq === undefined) {
+                if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
+                    terrain = getTileTerrain(tile.id);
+                    if (rand.rand(1,terrain.minChance) === 1) {
+                        if (redNum < redMin) {
+                            tile.rq = 3;
+                            redNum++;
+                            baseNum++;
+                        }
+                    }
+                }
+            }
+        });
+    }
     console.log('baseNum:'+baseNum);
+    console.log('redNum:'+redNum);
     // blue mythics
     let silverChance = Math.round(40000000/numBadTer/((playerInfos.mapDiff+3)*(playerInfos.mapDiff+3)));
     shufZone.forEach(function(tile) {
@@ -788,9 +815,9 @@ function checkResLevel(tile) {
     let mythicChance = Math.round((playerInfos.mapDiff+2)*(playerInfos.mapDiff+2)/18);
     if (resLevelDice <= mythicChance) {
         return 5;
-    } else if (resLevelDice <= 58) {
+    } else if (resLevelDice <= 52) {
         return 1;
-    } else if (resLevelDice <= 86) {
+    } else if (resLevelDice <= 84) {
         return 2;
     } else {
         return 3;
