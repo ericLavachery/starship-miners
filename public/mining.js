@@ -19,7 +19,7 @@ function mining(bat) {
         if (bat.apLeft >= 1) {
             console.log('MINING');
             let batType = getBatType(bat);
-            let rate = getMiningRate(bat);
+            let rate = getMiningRate(bat,false);
             console.log('rate'+rate);
             let allRes = getAllRes(bat);
             let bestDumper = getBestDumper(bat);
@@ -30,7 +30,7 @@ function mining(bat) {
                     res = getResByName(key);
                     if (batType.mining.types.includes(res.bld)) {
                         if (bat.extracted.includes(res.name)) {
-                            let resMiningRate = getResMiningRate(bat,res,value);
+                            let resMiningRate = getResMiningRate(bat,res,value,false);
                             // console.log(res.name+' : '+resMiningRate);
                             if (bestDumper.transRes[res.name] === undefined) {
                                 bestDumper.transRes[res.name] = resMiningRate;
@@ -140,13 +140,17 @@ function getTile(bat) {
     return tile;
 };
 
-function getMiningRate(bat) {
+function getMiningRate(bat,fullRate) {
     let batType = getBatType(bat);
-    return Math.ceil(batType.mining.rate*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads);
+    if (fullRate) {
+        return Math.ceil(batType.mining.rate*bat.squadsLeft/batType.squads);
+    } else {
+        return Math.ceil(batType.mining.rate*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads);
+    }
 };
 
-function getResMiningRate(bat,ressource,value) {
-    let batRate = getMiningRate(bat);
+function getResMiningRate(bat,ressource,value,fullRate) {
+    let batRate = getMiningRate(bat,fullRate);
     let resRate = Math.ceil(value*batRate/mineRateDiv);
     return resRate;
 };
@@ -188,14 +192,14 @@ function chooseRes(again) {
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
     $('#conUnitList').append('<span class="constName or">RESSOURCES à extraire</span><br>');
-    let rate = getMiningRate(selectedBat);
+    let rate = getMiningRate(selectedBat,true);
     let allRes = getAllRes(selectedBat);
     Object.entries(allRes).map(entry => {
         let key = entry[0];
         let value = entry[1];
         res = getResByName(key);
         if (selectedBatType.mining.types.includes(res.bld)) {
-            let resMiningRate = getResMiningRate(selectedBat,res,value);
+            let resMiningRate = getResMiningRate(selectedBat,res,value,true);
             if (selectedBat.extracted.includes(res.name)) {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
             } else {

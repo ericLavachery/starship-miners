@@ -45,7 +45,6 @@ function checkEggsDrop() {
     eggDropCount = 0;
     let drop = false;
     let eggPauseDice = calcEggPause(false);
-    console.log('PAUSE! Chance to quit: 1/'+eggPauseDice);
     let adjMapDrop = playerInfos.mapDrop;
     let adjMapTurn = playerInfos.mapTurn-10+playerInfos.mapDiff;
     if (adjMapTurn <= 0) {
@@ -92,6 +91,7 @@ function eggsDrop() {
     let eggDice = rand.rand(1,100);
     let eggPausePerc = calcEggPause(true);
     eggPausePerc = eggPausePerc*2;
+    // chance for multiple eggs
     let threeEggsChance = Math.floor(playerInfos.mapAdjDiff*1.25)-4;
     if (threeEggsChance < 0) {
         threeEggsChance = 0;
@@ -100,10 +100,20 @@ function eggsDrop() {
     if (twoEggsChance < 0) {
         twoEggsChance = 0;
     }
+    // minimum turn for multiple eggs
+    let twoEggsMinTurn = 43-(playerInfos.mapDiff*3);
+    if (playerInfos.mapTurn < twoEggsMinTurn) {
+        twoEggsChance = 0;
+    }
+    let threeEggsMinTurn = 70-(playerInfos.mapDiff*5);
+    if (playerInfos.mapTurn < threeEggsMinTurn) {
+        threeEggsChance = 0;
+    }
     if (eggDice <= noEggs) {
         numEggs = 0;
         if (rand.rand(1,100) <= eggPausePerc) {
             playerInfos.eggPause = true;
+            console.log('PAUSE! Chance to quit: 1/'+eggPauseDice);
         }
     } else if (eggDice <= noEggs+twoEggsChance) {
         numEggs = 2;
@@ -161,6 +171,7 @@ function dropEgg(alienUnit,edge) {
         }
         if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;
+            console.log('PAUSE! Chance to quit: 1/'+eggPauseDice);
         }
     }
 };
