@@ -53,7 +53,7 @@
             "multi":true,
             "types":["Mine"]
         },
-        "transRes":4000,
+        "transRes":2500,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -85,7 +85,7 @@
             "multi":true,
             "types":["Pompe"]
         },
-        "transRes":4000,
+        "transRes":2500,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -117,7 +117,7 @@
             "multi":true,
             "types":["Derrick"]
         },
-        "transRes":4000,
+        "transRes":2500,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -149,14 +149,14 @@
             "multi":true,
             "types":["Collecte"]
         },
-        "transRes":4000,
+        "transRes":3500,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
     {
         "id":29,
         "name":"Poudrière",
-        "pic":"bunker4",
+        "pic":"bunker5",
         "cat":"buildings",
         "kind":"zero",
         "squads":6,
@@ -174,19 +174,19 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ravitaillement","stock","maycamo","recupcit"],
-        "fuzz":1,
+        "skills":["ravitaillement","stock","underground","camo","recupcit"],
+        "fuzz":-1,
         "deathFx":"S_Explosion02"
     },
     {
         "id":158,
         "name":"Silo",
-        "pic":"bunker3",
+        "pic":"bunker6",
         "cat":"buildings",
         "kind":"zero",
         "squads":6,
         "squadSize":1,
-        "crew":1,
+        "crew":0,
         "hp":400,
         "armor":7,
         "size":65,
@@ -199,9 +199,9 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["recupcit","fret","dumper","realdumper"],
-        "transRes":4000,
-        "fuzz":1,
+        "skills":["fret","dumper","realdumper","underground","camo"],
+        "transRes":5000,
+        "fuzz":-1,
         "deathFx":"S_Explosion02"
     },
     {
