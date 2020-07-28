@@ -364,6 +364,9 @@ function blub(bat,batType) {
             tagDelete(bat,'blub');
         } else {
             let totalDamage = bat.damage+rand.rand((Math.round(blubDamage/3)),blubDamage);
+            if (batType.skills.includes('bigblub')) {
+                totalDamage = totalDamage*10;
+            }
             console.log('blubDamage='+totalDamage);
             let squadHP = batType.squadSize*batType.hp;
             let squadsOut = Math.floor(totalDamage/squadHP);

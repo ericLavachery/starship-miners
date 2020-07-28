@@ -539,14 +539,15 @@ function addRes(zone) {
     let mythicMin = Math.floor(playerInfos.mapDiff/2)-2;
     let mythicMax = playerInfos.mapDiff;
     let mythicNum = 0;
-    let baseMin = 10+(playerInfos.mapDiff*3);
+    let baseMin = 17+(playerInfos.mapDiff*3);
     let baseNum = 0;
-    let redMin = Math.floor(playerInfos.mapDiff/2)+3;
+    let redMin = Math.floor(playerInfos.mapDiff/1.5)+5;
     let redNum = 0;
     let terrain;
     let numBadTer = 0;
     let shufZone = _.shuffle(zone);
     console.log('baseMin:'+baseMin);
+    console.log('redMin:'+redMin);
     console.log('mythicMin:'+mythicMin);
     shufZone.forEach(function(tile) {
         if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
@@ -570,7 +571,7 @@ function addRes(zone) {
     });
     // not enough base
     if (baseNum < baseMin) {
-        console.log('rebelote');
+        console.log('rebelote !!!');
         shufZone.forEach(function(tile) {
             if (tile.rq === undefined) {
                 if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
@@ -595,7 +596,7 @@ function addRes(zone) {
     }
     // not enough red
     if (redNum < redMin) {
-        console.log('red rebelotte');
+        console.log('red rebelotte !!!');
         shufZone.forEach(function(tile) {
             if (tile.rq === undefined) {
                 if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
@@ -613,6 +614,11 @@ function addRes(zone) {
     }
     console.log('baseNum:'+baseNum);
     console.log('redNum:'+redNum);
+    let fewRedRarityAdj = 50+Math.round(33*redMin*3/redNum);
+    if (fewRedRarityAdj < 100) {
+        fewRedRarityAdj = 100;
+    }
+    console.log('fewRedRarityAdj:'+fewRedRarityAdj);
     // blue mythics
     let silverChance = Math.round(40000000/numBadTer/((playerInfos.mapDiff+3)*(playerInfos.mapDiff+3)));
     shufZone.forEach(function(tile) {
@@ -680,8 +686,8 @@ function addRes(zone) {
             if (rarityDice <= Math.ceil(maxDice/2)-1) {
                 rarityDice == 1;
             }
-            res.adjRarity = Math.floor(res.rarity*rarityDice/5);
-            res.adjBatch = Math.ceil(res.batch*rarityDice/5);
+            res.adjRarity = Math.floor(res.rarity*rarityDice/5*fewRedRarityAdj/100);
+            res.adjBatch = Math.ceil(res.batch*rarityDice/5*fewRedRarityAdj/100);
             if (res.adjRarity > bestRarity) {
                 bestRarity = res.adjRarity;
                 resDefault = res;
