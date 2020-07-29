@@ -1,4 +1,6 @@
-function bfconst() {
+function bfconst(cat,triche) {
+    conselCat = cat;
+    conselTriche = triche;
     selectMode();
     $("#conUnitList").css("display","block");
     $("#conAmmoList").css("display","block");
@@ -7,36 +9,40 @@ function bfconst() {
     $('#conUnitList').empty();
     let color = '';
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer Constriche</span><br>');
+    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer Constriche</span><br><br>');
     $('#conUnitList').append('<span class="constName or">LES GENTILS</span><br>');
     let lastKind = '';
     let allUnitsList = unitTypes.slice();
     sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'cat'),'kind');
     sortedUnitsList.forEach(function(unit) {
-        if (lastKind != unit.kind) {
-            $('#conUnitList').append('<span class="constName or">'+unit.kind+'</span><br>');
+        if (triche || (unit.cat === cat && unit.refabTime >= 1)) {
+            if (lastKind != unit.kind) {
+                $('#conUnitList').append('<span class="constName or">'+unit.kind+'</span><br>');
+            }
+            if (conselUnit.id === unit.id && conselUnit.cat != 'aliens') {
+                $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+            } else {
+                $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+            }
+            color = catColor(unit.cat,unit.kind);
+            $('#conUnitList').append('<span class="constName klik '+color+'" onclick="conSelect('+unit.id+',`player`)">'+unit.name+'</span><br>');
+            lastKind = unit.kind;
         }
-        if (conselUnit.id === unit.id && conselUnit.cat != 'aliens') {
-            $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-        } else {
-            $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-        }
-        color = catColor(unit.cat,unit.kind);
-        $('#conUnitList').append('<span class="constName klik '+color+'" onclick="conSelect('+unit.id+',`player`)">'+unit.name+'</span><br>');
-        lastKind = unit.kind;
     });
-    $('#conUnitList').append('<span class="constName or">LES MECHANTS</span><br>');
-    let allALiensList = alienUnits.slice();
-    sortedAliensList = _.sortBy(_.sortBy(_.sortBy(allALiensList,'name'),'name'),'kind');
-    sortedAliensList.forEach(function(unit) {
-        if (conselUnit.id === unit.id && conselUnit.cat === 'aliens') {
-            $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-        } else {
-            $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-        }
-        color = catColor(unit.cat,unit.kind);
-        $('#conUnitList').append('<span class="constName klik '+color+'" onclick="conSelect('+unit.id+',`aliens`)">'+unit.name+'</span><br>');
-    });
+    if (triche) {
+        $('#conUnitList').append('<span class="constName or">LES MECHANTS</span><br>');
+        let allALiensList = alienUnits.slice();
+        sortedAliensList = _.sortBy(_.sortBy(_.sortBy(allALiensList,'name'),'name'),'kind');
+        sortedAliensList.forEach(function(unit) {
+            if (conselUnit.id === unit.id && conselUnit.cat === 'aliens') {
+                $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+            } else {
+                $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+            }
+            color = catColor(unit.cat,unit.kind);
+            $('#conUnitList').append('<span class="constName klik '+color+'" onclick="conSelect('+unit.id+',`aliens`)">'+unit.name+'</span><br>');
+        });
+    }
     commandes();
 }
 
@@ -110,7 +116,7 @@ function conSelect(unitId,player,noRefresh) {
             });
         }
     }
-    bfconst();
+    bfconst(conselCat,conselTriche);
 };
 
 function selectAmmo(ammo,weapon,unitId) {
@@ -123,7 +129,7 @@ function selectAmmo(ammo,weapon,unitId) {
     conSelect(unitId,'player',true);
 };
 
-function clickConstruct(tileId) {
+function clickConstruct(tileId,free) {
     let batHere = false;
     bataillons.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
@@ -136,9 +142,17 @@ function clickConstruct(tileId) {
         }
     });
     if (!batHere) {
+        if (!free) {
+            selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*conselUnit.refabTime/10);
+            selectedBatArrayUpdate();
+        }
         putBat(tileId,0,0);
-        bfconst();
-        $('#conAmmoList').empty();
+        if (conselTriche) {
+            bfconst(conselCat,conselTriche);
+            $('#conAmmoList').empty();
+        } else {
+            conOut();
+        }
     } else {
         conselUnit = {};
         conselAmmos = ['xxx','xxx'];
@@ -190,14 +204,26 @@ function putBat(tileId,citoyens,xp,startTag) {
         }
         newBat.damage = 0;
         newBat.camoAP = -1;
-        if (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs') {
-            newBat.apLeft = 0;
-            newBat.oldapLeft = 0;
-            newBat.salvoLeft = 0;
-        } else {
+        if (conselTriche) {
             newBat.apLeft = conselUnit.ap;
             newBat.oldapLeft = conselUnit.ap;
             newBat.salvoLeft = conselUnit.maxSalvo;
+        } else {
+            if (conselUnit.refabTime >= 1) {
+                if (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs') {
+                    newBat.apLeft = 0;
+                    newBat.oldapLeft = 0;
+                    newBat.salvoLeft = 0;
+                } else {
+                    newBat.apLeft = conselUnit.ap-Math.round(conselUnit.refabTime*conselUnit.ap/25);
+                    newBat.oldapLeft = conselUnit.ap-Math.round(conselUnit.refabTime*conselUnit.ap/25);
+                    newBat.salvoLeft = conselUnit.maxSalvo;
+                }
+            } else {
+                newBat.apLeft = conselUnit.ap;
+                newBat.oldapLeft = conselUnit.ap;
+                newBat.salvoLeft = conselUnit.maxSalvo;
+            }
         }
         if (conselAmmos[0] != 'xxx') {
             newBat.ammo = conselAmmos[0];
@@ -268,6 +294,7 @@ function conOut() {
     $('#conAmmoList').empty();
     conselUnit = {};
     conselAmmos = ['xxx','xxx'];
+    conselTriche = false;
     $("#conUnitList").css("display","none");
     $("#conAmmoList").css("display","none");
 };

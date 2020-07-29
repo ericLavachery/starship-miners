@@ -159,7 +159,14 @@ function getMiningRate(bat,fullRate) {
 
 function getResMiningRate(bat,ressource,value,fullRate) {
     let batRate = getMiningRate(bat,fullRate);
-    let resRate = Math.ceil(value*batRate/mineRateDiv);
+    let multiExtractAdj = 1;
+    if (bat.extracted.length >= 2) {
+        multiExtractAdj = 1-((bat.extracted.length-1)/12);
+    }
+    if (multiExtractAdj < 0.4) {
+        multiExtractAdj = 0.4;
+    }
+    let resRate = Math.ceil(value*batRate/mineRateDiv*multiExtractAdj);
     return resRate;
 };
 
@@ -186,7 +193,7 @@ function chooseRes(again) {
     if (!again) {
         // console.log('CHOOSE RES');
         // console.log(selectedBat);
-        tagDelete(selectedBat,'mining');
+        // tagDelete(selectedBat,'mining');
         // reset bat.extracted
         if (selectedBat.extracted === undefined) {
             selectedBat.extracted = [];
@@ -198,10 +205,11 @@ function chooseRes(again) {
     $('#unitInfos').empty();
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
+    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="constName or">RESSOURCES à extraire</span><br>');
     let rate = getMiningRate(selectedBat,true);
     let allRes = getAllRes(selectedBat);
+    let totalExRes = 0;
     Object.entries(allRes).map(entry => {
         let key = entry[0];
         let value = entry[1];
@@ -210,12 +218,14 @@ function chooseRes(again) {
             let resMiningRate = getResMiningRate(selectedBat,res,value,true);
             if (selectedBat.extracted.includes(res.name)) {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                totalExRes = totalExRes+resMiningRate;
             } else {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
             }
             $('#conUnitList').append('<span class="constName klik" onclick="resSelect('+res.id+')">'+res.name+' : '+resMiningRate+'</span><br>');
         }
     });
+    $('#conUnitList').append('<span class="constName">Total de ressources : <span class="cy">'+totalExRes+'</span></span><br>');
 };
 
 function resSelect(resId) {

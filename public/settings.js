@@ -113,6 +113,8 @@ let aliensNum = 0;
 // CONSTRUCTION
 let conselUnit = {};
 let conselAmmos = ['xxx','xxx'];
+let conselCat;
+let conselTriche;
 // INVASION
 let maxAliens = 300;
 let cumDrop = 7; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)

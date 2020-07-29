@@ -22,6 +22,7 @@
         "maxVeg":-1,
         "skills":["mecano","selfrepair","recupcit"],
         "mecanoCost":3,
+        "refabTime":90,
         "fuzz":5,
         "deathFx":"S_Explosion02"
     },
@@ -51,9 +52,10 @@
             "level":3,
             "rate":20,
             "multi":true,
-            "types":["Mine"]
+            "types":["Mine","Scrap"]
         },
         "transRes":2500,
+        "refabTime":90,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -86,6 +88,7 @@
             "types":["Pompe"]
         },
         "transRes":2500,
+        "refabTime":25,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -118,6 +121,7 @@
             "types":["Derrick"]
         },
         "transRes":2500,
+        "refabTime":90,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -147,9 +151,10 @@
             "level":3,
             "rate":30,
             "multi":true,
-            "types":["Collecte"]
+            "types":["Comptoir","Scrap"]
         },
         "transRes":3500,
+        "refabTime":25,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -175,6 +180,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["ravitaillement","stock","underground","camo","recupcit"],
+        "refabTime":25,
         "fuzz":-1,
         "deathFx":"S_Explosion02"
     },
@@ -201,6 +207,7 @@
         "maxVeg":-1,
         "skills":["fret","dumper","realdumper","underground","camo"],
         "transRes":5000,
+        "refabTime":25,
         "fuzz":-1,
         "deathFx":"S_Explosion02"
     },
@@ -235,10 +242,10 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["medic","dealer","kirin","starka","maycamo","recupcit"],
+        "skills":["medic","dealer","kirin","starka","maycamo","recupcit","prefab"],
         "mediCost":5,
-        "refabTime":18,
         "maxSkill":18,
+        "refabTime":18,
         "fuzz":2,
         "deathFx":"S_Explosion02"
     }

@@ -3,10 +3,19 @@ function clickTile(tileId) {
         if (Object.keys(batDebarq).length >= 1) {
             clickDebarq(tileId);
         } else if (Object.keys(conselUnit).length >= 1) {
-            if (selectedBat.tileId >= 0 && (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs' || conselUnit.name == 'Barbelés')) {
+            if (selectedBat.tileId >= 0 && (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs' || conselUnit.name == 'Barbelés') && !conselTriche) {
                 clickMine(tileId,selectedBat.tileId);
             } else {
-                clickConstruct(tileId);
+                if (conselTriche) {
+                    clickConstruct(tileId,true);
+                } else {
+                    if (selectedBat.tileId >= 0) {
+                        let distance = calcDistance(selectedBat.tileId,tileId);
+                        if (distance === 0) {
+                            clickConstruct(tileId,false);
+                        }
+                    }
+                }
             }
         } else {
             if (mode == 'select') {

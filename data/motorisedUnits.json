@@ -2169,8 +2169,14 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["fortif","recycle","transport","fret","maycamo","mecano","defense","dumper","realdumper"],
+        "skills":["fortif","recycle","transport","fret","maycamo","mecano","defense","dumper","realdumper","extraction"],
         "mecanoCost":10,
+        "mining":{
+            "level":1,
+            "rate":15,
+            "multi":false,
+            "types":["Scrap"]
+        },
         "transMaxSize":9,
         "transUnits":400,
         "transRes":800,
@@ -2683,7 +2689,7 @@
             "level":3,
             "rate":28,
             "multi":true,
-            "types":["Mine","Derrick","Pompe","Collecte"]
+            "types":["Mine","Derrick","Pompe","Comptoir","Scrap"]
         },
         "transRes":2000,
         "fuzz":4.5,
@@ -2744,7 +2750,7 @@
             "level":3,
             "rate":17,
             "multi":true,
-            "types":["Mine","Derrick","Collecte"]
+            "types":["Mine","Derrick","Comptoir","Scrap"]
         },
         "transRes":1200,
         "fuzz":4,
@@ -2894,7 +2900,7 @@
             "level":2,
             "rate":13,
             "multi":true,
-            "types":["Mine","Collecte"]
+            "types":["Mine","Comptoir","Scrap"]
         },
         "transRes":150,
         "fuzz":2,

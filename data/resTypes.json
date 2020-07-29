@@ -1,5 +1,14 @@
 [
     {
+        "id": 0,
+        "name": "Scrap",
+        "bld": "Scrap",
+        "level": 1,
+        "rarity": 25,
+        "cat": "white",
+        "batch": 10
+    },
+    {
         "id": 1,
         "name": "Plomb",
         "bld": "Mine",
@@ -200,7 +209,7 @@
     {
         "id": 23,
         "name": "Huile",
-        "bld": "Collecte",
+        "bld": "Comptoir",
         "level": 1,
         "rarity": 30,
         "cat": "none",
@@ -209,7 +218,7 @@
     {
         "id": 24,
         "name": "Végétaux",
-        "bld": "Collecte",
+        "bld": "Comptoir",
         "level": 1,
         "rarity": 100,
         "cat": "none",
@@ -218,7 +227,7 @@
     {
         "id": 25,
         "name": "Bois",
-        "bld": "Collecte",
+        "bld": "Comptoir",
         "level": 1,
         "rarity": 100,
         "cat": "none",
@@ -371,7 +380,7 @@
     {
         "id": 42,
         "name": "Octiron",
-        "bld": "Collecte",
+        "bld": "Comptoir",
         "level": 1,
         "rarity": 8,
         "cat": "blue",
@@ -380,7 +389,7 @@
     {
         "id": 43,
         "name": "Atium",
-        "bld": "Collecte",
+        "bld": "Comptoir",
         "level": 1,
         "rarity": 8,
         "cat": "blue",
