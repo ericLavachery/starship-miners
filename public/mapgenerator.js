@@ -670,25 +670,35 @@ function addRes(zone) {
     });
     // RESSOURCES
     // adjust res rarity
-    let rarityDice;
     let bestRarity = 0;
     let resDefault;
     let maxDice = Math.floor(playerInfos.mapDiff/2)+5;
+    let rarityDice;
+    let altDice;
+    let minDice = 1;
     let blueSum = 0;
     let skySum = 0;
     resTypes.forEach(function(res) {
         if (res.cat === 'white') {
-            rarityDice = rand.rand(1,maxDice);
-            altDice = rand.rand(1,maxDice);
+            minDice = 1;
+            if (res.name === 'Scrap') {
+                minDice = 0;
+            }
+            rarityDice = rand.rand(minDice,maxDice);
+            altDice = rand.rand(minDice,maxDice);
             if (altDice < rarityDice) {
                 rarityDice = altDice;
             }
             if (rarityDice <= Math.ceil(maxDice/2)-1) {
-                rarityDice == 1;
+                if (res.name === 'Scrap') {
+                    rarityDice = 0;
+                } else {
+                    rarityDice == 1;
+                }
             }
             res.adjRarity = Math.floor(res.rarity*rarityDice/5*fewRedRarityAdj/100);
             res.adjBatch = Math.ceil(res.batch*rarityDice/5*fewRedRarityAdj/100);
-            if (res.adjRarity > bestRarity) {
+            if (res.adjRarity > bestRarity && res.name != 'Scrap') {
                 bestRarity = res.adjRarity;
                 resDefault = res;
             }
