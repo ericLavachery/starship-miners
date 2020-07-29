@@ -179,6 +179,13 @@ function moveSelectedBat(tileId,free,jump) {
     }
     selectedBat.tileId = tileId;
     // remove tags
+    if (selectedBat.tags.includes('blub')) {
+        let terrain = getTerrainById(tileId);
+        if (terrain.name != 'W' && terrain.name != 'R') {
+            tagIndex = selectedBat.tags.indexOf('blub');
+            selectedBat.tags.splice(tagIndex,1);
+        }
+    }
     if (selectedBat.tags.includes('mining')) {
         tagIndex = selectedBat.tags.indexOf('mining');
         selectedBat.tags.splice(tagIndex,1);

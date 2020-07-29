@@ -164,8 +164,18 @@
         "range": 1,
         "rof": 1,
         "power": 0,
-        "armors": 0.5,
+        "armors": 1,
         "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "fireshells-pyratol",
+        "range": 1,
+        "rof": 1,
+        "power": 3,
+        "armors": 0.58,
+        "accuracy": 1.75,
         "apdamage": 0,
         "aoe": ""
     },
