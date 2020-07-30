@@ -126,10 +126,13 @@ function nextTurnEnd() {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             mining(bat);
+            if (batType.skills.includes('unload')) {
+                autoUnload(bat);
+            }
             levelUp(bat);
             // Motorised noStuck
             noStuck = false;
-            if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !bat.tags.includes('action') && bat.apLeft < 0 && !bat.tags.includes('construction')) {
+            if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !bat.tags.includes('action') && bat.apLeft < 0 && !bat.tags.includes('construction') && bat.oldTileId === bat.tileId) {
                 if (batType.skills.includes('guerrilla')) {
                     if (bat.apLeft <= -12) {
                         noStuck = true;

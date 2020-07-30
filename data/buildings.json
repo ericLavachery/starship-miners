@@ -205,7 +205,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fret","dumper","realdumper","underground","camo"],
+        "skills":["fret","dumper","realdumper","underground","camo","unload"],
         "transRes":5000,
         "refabTime":25,
         "fuzz":-1,

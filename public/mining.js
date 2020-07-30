@@ -40,23 +40,7 @@ function mining(bat) {
                         }
                     }
                 });
-                bestDumper = getBestDumper(bat);
-                if (bestDumper.id != bat.id) {
-                    let resSpace = checkResSpace(bestDumper);
-                    let resLoad = checkResLoad(bat);
-                    if (Math.round(resSpace*1.2) >= resLoad) {
-                        Object.entries(bat.transRes).map(entry => {
-                            let key = entry[0];
-                            let value = entry[1];
-                            if (bestDumper.transRes[key] === undefined) {
-                                bestDumper.transRes[key] = value;
-                            } else {
-                                bestDumper.transRes[key] = bestDumper.transRes[key]+value;
-                            }
-                        });
-                        bat.transRes = {};
-                    }
-                }
+                autoUnload(bat);
             }
         }
     }
@@ -243,6 +227,26 @@ function resSelect(resId) {
     }
     selectedBatArrayUpdate();
     chooseRes(true);
+};
+
+function autoUnload(bat) {
+    let bestDumper = getBestDumper(bat);
+    if (bestDumper.id != bat.id) {
+        let resSpace = checkResSpace(bestDumper);
+        let resLoad = checkResLoad(bat);
+        if (Math.round(resSpace*1.2) >= resLoad) {
+            Object.entries(bat.transRes).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                if (bestDumper.transRes[key] === undefined) {
+                    bestDumper.transRes[key] = value;
+                } else {
+                    bestDumper.transRes[key] = bestDumper.transRes[key]+value;
+                }
+            });
+            bat.transRes = {};
+        }
+    }
 };
 
 function getBestDumper(myBat) {

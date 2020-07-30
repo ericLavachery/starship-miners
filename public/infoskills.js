@@ -580,7 +580,8 @@ function skillsInfos(bat,batUnitType) {
                 balise = 'h1';
             }
             apCost = batUnitType.mecanoCost;
-            if (barbLeft >= 1 && bat.apLeft >= apCost && !inMelee) {
+            apReq = Math.round(batUnitType.mecanoCost/2);
+            if (barbLeft >= 1 && bat.apLeft >= apReq && !inMelee) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des barbelés (scrap)" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`barb-scrap`)"><i class="ra ra-crown-of-thorns rpg"></i></button><button type="button" title="Déposer des barbelés (acier)" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`barb-fer`)"><i class="ra ra-crown-of-thorns rpg"></i></button><button type="button" title="Déposer des barbelés (taser)" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`barb-taser`)"><i class="ra ra-crown-of-thorns rpg"></i></button>&nbsp; Barbelés</'+balise+'></span>');
             } else {
                 if (barbLeft <= 0) {
@@ -594,9 +595,19 @@ function skillsInfos(bat,batUnitType) {
             }
         }
     }
-    // CONSTRUCTION TRICHE
+    // CONSTRUCTION
     if (batUnitType.skills.includes('constructeur')) {
-        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris iconButtons" onclick="bfconst(`buildings`,false)"><i class="fas fa-drafting-compass"></i></button>&nbsp; Construction</h4></span>');
+        apReq = 5;
+        if (bat.apLeft >= apReq && !inMelee) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Bâtiments)" class="boutonGris iconButtons" onclick="bfconst(`buildings`,false)"><i class="fas fa-drafting-compass"></i> <span class="small">'+apReq+'</span></button>&nbsp; Construction</h4></span>');
+        } else {
+            if (inMelee) {
+                skillMessage = "Ne peut pas se faire en mêlée";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-drafting-compass"></i> <span class="small">'+apReq+'</span></button>&nbsp; Construction</h4></span>');
+        }
     }
     // CONSTRUCTION TRICHE
     if (batUnitType.skills.includes('triche')) {
