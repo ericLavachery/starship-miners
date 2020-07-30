@@ -1,8 +1,8 @@
 [
     {
         "id":1,
-        "name":"Scout",
-        "pic":"toy",
+        "name":"Scouts",
+        "pic":"scout",
         "cat":"vehicles",
         "kind":"zero",
         "squads":5,
@@ -53,8 +53,8 @@
     },
     {
         "id":11,
-        "name":"Brimstone",
-        "pic":"multitank",
+        "name":"Brimstones",
+        "pic":"brimstone",
         "cat":"vehicles",
         "kind":"zero",
         "squads":4,
@@ -107,7 +107,7 @@
     {
         "id":22,
         "name":"Trackers",
-        "pic":"otoflam",
+        "pic":"tracker",
         "cat":"vehicles",
         "kind":"brasier",
         "squads":4,
@@ -158,8 +158,8 @@
     },
     {
         "id":30,
-        "name":"Inferno",
-        "pic":"inferno2",
+        "name":"Infernos",
+        "pic":"inferno",
         "cat":"vehicles",
         "kind":"brasier",
         "squads":4,
@@ -209,8 +209,8 @@
     },
     {
         "id":31,
-        "name":"Pitbull",
-        "pic":"moisso",
+        "name":"Pitbulls",
+        "pic":"pitbull",
         "cat":"vehicles",
         "kind":"rednecks",
         "squads":5,
@@ -263,7 +263,7 @@
     {
         "id":32,
         "name":"Fatass",
-        "pic":"imadeatank",
+        "pic":"fatass",
         "cat":"vehicles",
         "kind":"detruas",
         "squads":4,
@@ -365,8 +365,8 @@
     },
     {
         "id":36,
-        "name":"Hook",
-        "pic":"hemadeatank",
+        "name":"Hooks",
+        "pic":"hook",
         "cat":"vehicles",
         "kind":"rednecks",
         "squads":4,
@@ -418,7 +418,7 @@
     {
         "id":2,
         "name":"Dronistos",
-        "pic":"dune1",
+        "pic":"dronisto",
         "cat":"vehicles",
         "kind":"zero",
         "squads":3,
@@ -472,7 +472,7 @@
     {
         "id":5,
         "name":"Drakos",
-        "pic":"dune2",
+        "pic":"drako",
         "cat":"vehicles",
         "kind":"zero",
         "squads":4,
@@ -636,7 +636,7 @@
     },
     {
         "id":39,
-        "name":"Avalanche",
+        "name":"Avalanches",
         "pic":"avalanche",
         "cat":"vehicles",
         "kind":"detruas",
@@ -691,7 +691,7 @@
     {
         "id":64,
         "name":"The Box",
-        "pic":"6roues",
+        "pic":"box",
         "cat":"vehicles",
         "kind":"bulbo kapos",
         "squads":4,
@@ -733,7 +733,7 @@
     {
         "id":44,
         "name":"Spenders",
-        "pic":"wirbelwind",
+        "pic":"spender",
         "cat":"vehicles",
         "kind":"bulbo kapos",
         "squads":5,
@@ -1046,7 +1046,7 @@
     {
         "id":59,
         "name":"Drones",
-        "pic":"drone3",
+        "pic":"drone",
         "cat":"vehicles",
         "kind":"zero",
         "squads":8,
@@ -1152,7 +1152,7 @@
     },
     {
         "id":62,
-        "name":"Amigo",
+        "name":"Amigos",
         "pic":"amigo",
         "cat":"vehicles",
         "kind":"tiradores",
@@ -1208,7 +1208,7 @@
     },
     {
         "id":65,
-        "name":"Hosto",
+        "name":"Hostos",
         "pic":"hosto",
         "cat":"vehicles",
         "kind":"zero",
@@ -1266,8 +1266,8 @@
     },
     {
         "id":33,
-        "name":"Monster truck",
-        "pic":"madmax",
+        "name":"Monster trucks",
+        "pic":"monster",
         "cat":"vehicles",
         "kind":"rednecks",
         "squads":5,
@@ -1321,7 +1321,7 @@
     {
         "id":67,
         "name":"Reapers",
-        "pic":"madmax2",
+        "pic":"reaper",
         "cat":"vehicles",
         "kind":"blades",
         "squads":5,
@@ -1373,8 +1373,8 @@
     },
     {
         "id":69,
-        "name":"Old bastard",
-        "pic":"mark",
+        "name":"Old bastards",
+        "pic":"oldbastard",
         "cat":"vehicles",
         "kind":"rednecks",
         "squads":4,
@@ -1426,7 +1426,7 @@
     },
     {
         "id":74,
-        "name":"Autogire chicken",
+        "name":"Autogires chicken",
         "pic":"autogire",
         "cat":"vehicles",
         "kind":"rednecks",
@@ -1527,8 +1527,8 @@
     },
     {
         "id":75,
-        "name":"Pusher",
-        "pic":"warbul",
+        "name":"Pushers",
+        "pic":"pusher",
         "cat":"vehicles",
         "kind":"zero",
         "squads":4,
@@ -1581,7 +1581,7 @@
     },
     {
         "id":76,
-        "name":"Workship",
+        "name":"Workships",
         "pic":"workship",
         "cat":"vehicles",
         "kind":"zero",
@@ -1637,7 +1637,7 @@
     {
         "id":79,
         "name":"The Void",
-        "pic":"sturmtiger",
+        "pic":"void",
         "cat":"vehicles",
         "kind":"zero",
         "squads":4,
@@ -1687,7 +1687,7 @@
     },
     {
         "id":80,
-        "name":"Cavalerie",
+        "name":"Cavaleries",
         "pic":"cavalerie",
         "cat":"vehicles",
         "kind":"zero",
@@ -1742,7 +1742,7 @@
     {
         "id":81,
         "name":"Dumpers",
-        "pic":"camionbleu",
+        "pic":"dumper",
         "cat":"vehicles",
         "kind":"zero",
         "squads":3,
@@ -2007,7 +2007,7 @@
     {
         "id":92,
         "name":"Shelltrucks",
-        "pic":"camionbeige",
+        "pic":"shelltruck",
         "cat":"vehicles",
         "kind":"zero",
         "squads":4,
@@ -2065,7 +2065,7 @@
     {
         "id":93,
         "name":"Taxis",
-        "pic":"camionmil",
+        "pic":"taxi",
         "cat":"vehicles",
         "kind":"zero",
         "squads":5,
@@ -2440,7 +2440,7 @@
     {
         "id":107,
         "name":"Flaktanks",
-        "pic":"flak2",
+        "pic":"flaktank",
         "cat":"vehicles",
         "kind":"zero",
         "squads":3,
@@ -2492,7 +2492,7 @@
     {
         "id":110,
         "name":"Wyverns",
-        "pic":"hideki",
+        "pic":"wyvern",
         "cat":"vehicles",
         "kind":"zero",
         "squads":4,
@@ -2963,7 +2963,7 @@
     {
         "id":140,
         "name":"Tacots",
-        "pic":"voiture",
+        "pic":"tacot",
         "cat":"vehicles",
         "kind":"zero",
         "squads":5,
@@ -3018,7 +3018,7 @@
     {
         "id":141,
         "name":"Jeeps",
-        "pic":"jeept2",
+        "pic":"jeeps",
         "cat":"vehicles",
         "kind":"zero",
         "squads":5,

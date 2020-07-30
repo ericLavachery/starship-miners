@@ -2,7 +2,7 @@
     {
         "id":0,
         "name":"Rednecks",
-        "pic":"redneck3",
+        "pic":"redneck",
         "cat":"infantry",
         "kind":"rednecks",
         "squads":6,
@@ -51,7 +51,7 @@
     {
         "id":4,
         "name":"Vapos",
-        "pic":"vapo2",
+        "pic":"vapo",
         "cat":"infantry",
         "kind":"bulbo kapos",
         "squads":6,
@@ -164,7 +164,7 @@
     {
         "id":154,
         "name":"Adeptes",
-        "pic":"adept",
+        "pic":"adepte",
         "cat":"infantry",
         "kind":"brasier",
         "squads":4,
@@ -268,7 +268,7 @@
     {
         "id":21,
         "name":"Shooters",
-        "pic":"sniper2",
+        "pic":"shooter",
         "cat":"infantry",
         "kind":"bulbo kapos",
         "squads":10,
@@ -567,7 +567,7 @@
     {
         "id":143,
         "name":"Piquiers",
-        "pic":"pique",
+        "pic":"piquier",
         "cat":"infantry",
         "kind":"blades",
         "squads":6,
@@ -723,7 +723,7 @@
     {
         "id":16,
         "name":"Toxs Bombs",
-        "pic":"toxshot",
+        "pic":"toxbomb",
         "cat":"infantry",
         "kind":"drogmuloj",
         "squads":5,
@@ -737,19 +737,17 @@
         "ap":15,
         "maxSalvo":1,
         "weapon":{
-            "name":"Hache",
-            "cost":2,
+            "name":"Lame",
+            "cost":1,
             "range":0,
             "isMelee":true,
             "isShort":true,
-            "rof":6,
-            "accuracy":17,
-            "dca":0.85,
-            "power":6,
-            "armors":0.75,
+            "rof":8,
+            "accuracy":18,
+            "power":4,
             "aoe":"unit",
-            "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
+            "sound":"lame",
+            "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"Ceinture goodbye",
@@ -1065,7 +1063,7 @@
     {
         "id":24,
         "name":"Bombastiks",
-        "pic":"rpg2",
+        "pic":"bombastick",
         "cat":"infantry",
         "kind":"detruas",
         "squads":6,
@@ -1115,7 +1113,7 @@
     {
         "id":26,
         "name":"Hot girls",
-        "pic":"petroleuses",
+        "pic":"hotgirl",
         "cat":"infantry",
         "kind":"brasier",
         "squads":6,
@@ -1164,7 +1162,7 @@
     {
         "id":23,
         "name":"Lucky bastards",
-        "pic":"rebel2",
+        "pic":"lucky",
         "cat":"infantry",
         "kind":"rednecks",
         "squads":8,
@@ -1262,7 +1260,7 @@
     {
         "id":28,
         "name":"Mineurs",
-        "pic":"mecano",
+        "pic":"mineur",
         "cat":"infantry",
         "kind":"zero",
         "squads":6,
@@ -1365,8 +1363,8 @@
     },
     {
         "id":153,
-        "name":"Lovushka",
-        "pic":"poseur",
+        "name":"Lovushkas",
+        "pic":"lovushka",
         "cat":"infantry",
         "kind":"detruas",
         "squads":9,
@@ -1469,7 +1467,7 @@
     {
         "id":40,
         "name":"Riders",
-        "pic":"moto2",
+        "pic":"rider",
         "cat":"infantry",
         "kind":"rednecks",
         "squads":6,
@@ -1623,7 +1621,7 @@
     {
         "id":47,
         "name":"Scyths",
-        "pic":"sith",
+        "pic":"scyth",
         "cat":"infantry",
         "kind":"blades",
         "squads":7,
@@ -1676,7 +1674,7 @@
     {
         "id":48,
         "name":"Snowballs",
-        "pic":"bombe2",
+        "pic":"snowball",
         "cat":"infantry",
         "kind":"detruas",
         "squads":10,
@@ -1778,7 +1776,7 @@
     },
     {
         "id":50,
-        "name":"Groskal",
+        "name":"Groskals",
         "pic":"grokal",
         "cat":"infantry",
         "kind":"bulbo kapos",
@@ -1832,7 +1830,7 @@
     {
         "id":51,
         "name":"Kasseurs",
-        "pic":"moto1",
+        "pic":"kasseur",
         "cat":"infantry",
         "kind":"rednecks",
         "squads":6,
@@ -1882,7 +1880,7 @@
     },
     {
         "id":52,
-        "name":"Doc & Roll",
+        "name":"Doc & Rolls",
         "pic":"docroll",
         "cat":"infantry",
         "kind":"bulbo kapos",
@@ -2142,7 +2140,7 @@
     {
         "id":63,
         "name":"Barricades",
-        "pic":"sable",
+        "pic":"barricade",
         "cat":"infantry",
         "kind":"zero",
         "squads":12,
@@ -2398,7 +2396,7 @@
     {
         "id":73,
         "name":"Exodarks",
-        "pic":"darks",
+        "pic":"exodark",
         "cat":"infantry",
         "kind":"zero",
         "squads":9,
@@ -2738,7 +2736,7 @@
     {
         "id":85,
         "name":"Bigman",
-        "pic":"krusher",
+        "pic":"bigman",
         "cat":"vehicles",
         "kind":"zero",
         "squads":6,
@@ -3033,7 +3031,7 @@
     {
         "id":89,
         "name":"Spectres",
-        "pic":"rainbow",
+        "pic":"spectre",
         "cat":"infantry",
         "kind":"drogmuloj",
         "squads":6,
@@ -3382,7 +3380,7 @@
     {
         "id":117,
         "name":"Light knights",
-        "pic":"lk",
+        "pic":"lightknight",
         "cat":"infantry",
         "kind":"brasier",
         "squads":10,
