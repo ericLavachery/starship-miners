@@ -815,7 +815,7 @@ function checkAdjRes(adjTile) {
     if (adjTile >= 0 && adjTile <= 3599) {
         if (zone[adjTile].rq === undefined) {
             let terrain = getTileTerrain(adjTile);
-            if (rand.rand(1,Math.ceil(terrain.minChance/5)) === 1) {
+            if (rand.rand(1,Math.ceil((terrain.minChance+100)/50)) === 1) {
                 if (rand.rand(1,2) === 1) {
                     zone[adjTile].rq = 1;
                 } else {

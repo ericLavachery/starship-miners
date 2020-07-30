@@ -144,6 +144,9 @@ function clickConstruct(tileId,free) {
     if (!batHere) {
         if (!free) {
             selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*conselUnit.refabTime/10);
+            if (!selectedBat.tags.includes('construction')) {
+                selectedBat.tags.push('construction');
+            }
             selectedBatArrayUpdate();
         }
         putBat(tileId,0,0);

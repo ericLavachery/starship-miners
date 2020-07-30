@@ -36,7 +36,7 @@
         "mecanoCost":9,
         "transMaxSize":33,
         "transUnits":5000,
-        "transRes":5000,
+        "transRes":7500,
         "fuzz":4,
         "deathFx":"planeexploground2"
     },
@@ -75,8 +75,8 @@
         "mediCost":7,
         "mecanoCost":7,
         "transMaxSize":55,
-        "transUnits":10000,
-        "transRes":10000,
+        "transUnits":15000,
+        "transRes":20000,
         "fuzz":4,
         "deathFx":"planeexploground2"
     },
@@ -115,8 +115,8 @@
         "mediCost":5,
         "mecanoCost":5,
         "transMaxSize":100,
-        "transUnits":25000,
-        "transRes":20000,
+        "transUnits":30000,
+        "transRes":50000,
         "fuzz":8,
         "deathFx":"planeexploground2"
     },
@@ -161,8 +161,8 @@
             "types":["Mine","Derrick","Pompe","Comptoir","Scrap"]
         },
         "transMaxSize":50,
-        "transUnits":9000,
-        "transRes":18000,
+        "transUnits":15000,
+        "transRes":30000,
         "fuzz":6,
         "deathFx":"planeexploground2"
     },
@@ -216,8 +216,8 @@
         "mediCost":6,
         "mecanoCost":6,
         "transMaxSize":100,
-        "transUnits":20000,
-        "transRes":15000,
+        "transUnits":25000,
+        "transRes":30000,
         "fuzz":10,
         "deathFx":"planeexploground2"
     },
@@ -256,8 +256,8 @@
         "mediCost":10,
         "mecanoCost":10,
         "transMaxSize":20,
-        "transUnits":1200,
-        "transRes":600,
+        "transUnits":2000,
+        "transRes":2000,
         "fuzz":3,
         "deathFx":"planeexploground2"
     },
@@ -297,8 +297,8 @@
         "mediCost":7,
         "mecanoCost":7,
         "transMaxSize":33,
-        "transUnits":4000,
-        "transRes":3000,
+        "transUnits":7500,
+        "transRes":7500,
         "fuzz":4,
         "deathFx":"planeexploground2"
     },

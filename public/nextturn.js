@@ -91,7 +91,7 @@ function nextTurnEnd() {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
-            if (bat.apLeft < 0-(batType.ap*2) && batType.cat != 'buildings') {
+            if (bat.apLeft < 0-(batType.ap*2) && batType.cat != 'buildings' && !bat.tags.includes('construction')) {
                 bat.apLeft = 0-(batType.ap*2);
             }
             if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {
@@ -129,17 +129,23 @@ function nextTurnEnd() {
             levelUp(bat);
             // Motorised noStuck
             noStuck = false;
-            if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !bat.tags.includes('action') && bat.apLeft < 0) {
+            if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !bat.tags.includes('action') && bat.apLeft < 0 && !bat.tags.includes('construction')) {
                 if (batType.skills.includes('guerrilla')) {
-                    if (bat.apLeft < -11) {
+                    if (bat.apLeft <= -12) {
                         noStuck = true;
                     }
                 } else {
-                    if (bat.apLeft < -5) {
+                    if (bat.apLeft <= -6) {
                         noStuck = true;
                     }
                 }
-                bat.apLeft = 0;
+                bat.apLeft = bat.apLeft+batType.ap;
+                if (bat.apLeft > 0) {
+                    bat.apLeft = 0;
+                }
+                if (bat.apLeft < 0-Math.round(batType.ap-4)) {
+                    bat.apLeft = 0-Math.round(batType.ap-4);
+                }
             }
             ap = getAP(bat);
             thisAPBonus = 0;
