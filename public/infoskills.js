@@ -599,7 +599,7 @@ function skillsInfos(bat,batUnitType) {
     if (batUnitType.skills.includes('constructeur')) {
         apReq = 5;
         if (bat.apLeft >= apReq && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Bâtiments)" class="boutonGris iconButtons" onclick="bfconst(`buildings`,false)"><i class="fas fa-drafting-compass"></i> <span class="small">'+apReq+'</span></button>&nbsp; Construction</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (bâtiments)" class="boutonGris iconButtons" onclick="bfconst(`buildings`,false)"><i class="fas fa-drafting-compass"></i> <span class="small">'+apReq+'</span></button>&nbsp; Construction</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Ne peut pas se faire en mêlée";
@@ -607,6 +607,26 @@ function skillsInfos(bat,batUnitType) {
                 skillMessage = "Pas assez de PA";
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-drafting-compass"></i> <span class="small">'+apReq+'</span></button>&nbsp; Construction</h4></span>');
+        }
+    }
+    // ROUTES / PONTS
+    if (batUnitType.skills.includes('constructeur')) {
+        let tile = getTile(bat);
+        if (!tile.rd) {
+            apReq = batUnitType.mecanoCost*2;
+            if (apReq > batUnitType.ap) {
+                apReq = batUnitType.ap;
+            }
+            if (bat.apLeft >= apReq && !inMelee) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (routes et ponts)" class="boutonGris iconButtons" onclick="putRoad()"><i class="fas fa-road"></i> <span class="small">'+apReq+'</span></button>&nbsp; Route / Pont</h4></span>');
+            } else {
+                if (inMelee) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-road"></i> <span class="small">'+apReq+'</span></button>&nbsp; Route / Pont</h4></span>');
+            }
         }
     }
     // CONSTRUCTION TRICHE

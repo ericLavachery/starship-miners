@@ -5,7 +5,7 @@ function medic(cat,cost,around,deep) {
     if (cat != 'infantry') {
         denom = 'Réparations';
     }
-    $('#report').empty();
+    washReports();
     $('#report').append('<span class="report or">'+selectedBat.type+' ('+denom+')</span><br>');
     let unitIndex;
     let batType;

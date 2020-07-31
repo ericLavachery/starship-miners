@@ -369,7 +369,8 @@ function drugDown(bat,fatigue,addict) {
 function blub(bat,batType) {
     let terrain = getTerrain(bat);
     if (bat.tags.includes('blub')) {
-        if (terrain.name != 'W' && terrain.name != 'R') {
+        let tile = getTile(bat);
+        if ((terrain.name != 'W' && terrain.name != 'R') || tile.rd) {
             tagDelete(bat,'blub');
         } else {
             let totalDamage = bat.damage+rand.rand((Math.round(blubDamage/3)),blubDamage);
@@ -381,7 +382,9 @@ function blub(bat,batType) {
             let squadsOut = Math.floor(totalDamage/squadHP);
             bat.squadsLeft = bat.squadsLeft-squadsOut;
             bat.damage = totalDamage-(squadsOut*squadHP);
-            bat.apLeft = Math.round(batType.ap/2);
+            if (bat.apLeft > Math.round(batType.ap/2)) {
+                bat.apLeft = Math.round(batType.ap/2);
+            }
             if (bat.squadsLeft <= 0) {
                 batDeathEffect(bat,true,'Bataillon détruit',bat.type+' noyé.');
             }
@@ -389,8 +392,11 @@ function blub(bat,batType) {
         }
     } else {
         if (terrain.name === 'W' || terrain.name === 'R') {
-            if ((!batType.skills.includes('fly') && !batType.skills.includes('hover') && !batType.skills.includes('noblub')) || batType.skills.includes('jetpack')) {
-                bat.tags.push('blub');
+            let tile = getTile(bat);
+            if ((tile.seed <= 3 || terrain.name === 'W') && !tile.rd) {
+                if ((!batType.skills.includes('fly') && !batType.skills.includes('hover') && !batType.skills.includes('noblub')) || batType.skills.includes('jetpack')) {
+                    bat.tags.push('blub');
+                }
             }
         }
     }

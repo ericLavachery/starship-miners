@@ -74,7 +74,7 @@ function clickSelect(tileId) {
 
 function batSelect(bat) {
     // remove selection on old selected unit
-    $('#report').empty('');
+    washReports();
     tileUnselect();
     tileUntarget();
     if (bat.tags.includes('nolist')) {

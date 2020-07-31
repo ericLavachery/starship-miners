@@ -327,24 +327,27 @@ function isDiag(myTileIndex,thatTileIndex) {
 };
 
 function terrainAccess(batId,targetTileId) {
-    let batIndex = bataillons.findIndex((obj => obj.id == batId));
-    let unitTypesIndex = unitTypes.findIndex((obj => obj.name == bataillons[batIndex].type));
-    let terIndex = terrainTypes.findIndex((obj => obj.name == zone[targetTileId].terrain));
-    let terFlood = terrainTypes[terIndex].flood;
+    let access = false;
+    let bat = getBatById(batId);
+    let batType = getBatType(bat);
+    let terrain = getTerrainById(targetTileId);
+    let terFlood = terrain.flood;
     if (terFlood === 3 && zone[targetTileId].seed >= 4) {
         terFlood = 0;
     }
-    if (unitTypes[unitTypesIndex].maxFlood >= terFlood && unitTypes[unitTypesIndex].maxScarp >= terrainTypes[terIndex].scarp && unitTypes[unitTypesIndex].maxVeg >= terrainTypes[terIndex].veg) {
-        return true;
-    } else {
-        return false;
+    if (zone[targetTileId].rd) {
+        access = true;
     }
+    if (batType.maxFlood >= terFlood && batType.maxScarp >= terrain.scarp && batType.maxVeg >= terrain.veg) {
+        access = true;
+    }
+    return access;
 };
 
 function calcMoveCost(targetTileId,diag) {
     let terIndex = terrainTypes.findIndex((obj => obj.name == zone[targetTileId].terrain));
     let moveCost;
-    if (zone[targetTileId].road) {
+    if (zone[targetTileId].rd) {
         moveCost = selectedBatType.moveCost+terrainTypes[terIndex].roadmc;
     } else if (selectedBat.team == 'aliens' && !selectedBatType.skills.includes('hover')) {
         moveCost = selectedBatType.moveCost+terrainTypes[terIndex].alienmc;

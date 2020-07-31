@@ -16,7 +16,8 @@
         "fortifcover":11,
         "aliencover":8,
         "fishcover":4,
-        "minChance":10
+        "minChance":10,
+        "roadBuild":12
     },
     {
         "name":"H",
@@ -29,13 +30,14 @@
         "hovermc":4,
         "hardmc":4,
         "hscarpmc":4,
-        "roadmc":0,
+        "roadmc":1,
         "alienmc":1,
         "cover":3,
         "fortifcover":7,
         "aliencover":3,
         "fishcover":1,
-        "minChance":20
+        "minChance":20,
+        "roadBuild":8
     },
     {
         "name":"E",
@@ -48,13 +50,14 @@
         "hovermc":2,
         "hardmc":1,
         "hscarpmc":1,
-        "roadmc":-1,
+        "roadmc":0,
         "alienmc":1,
         "cover":2,
         "fortifcover":5,
         "aliencover":2,
         "fishcover":0,
-        "minChance":50
+        "minChance":50,
+        "roadBuild":6
     },
     {
         "name":"P",
@@ -67,13 +70,14 @@
         "hovermc":1,
         "hardmc":0,
         "hscarpmc":0,
-        "roadmc":-1,
+        "roadmc":0,
         "alienmc":0,
         "cover":0,
         "fortifcover":4,
         "aliencover":0,
         "fishcover":0,
-        "minChance":100
+        "minChance":100,
+        "roadBuild":5
     },
     {
         "name":"G",
@@ -86,13 +90,14 @@
         "hovermc":1,
         "hardmc":0,
         "hscarpmc":0,
-        "roadmc":-1,
+        "roadmc":0,
         "alienmc":0,
         "cover":1,
         "fortifcover":5,
         "aliencover":1,
         "fishcover":1,
-        "minChance":200
+        "minChance":200,
+        "roadBuild":5
     },
     {
         "name":"B",
@@ -105,13 +110,14 @@
         "hovermc":3,
         "hardmc":1,
         "hscarpmc":1,
-        "roadmc":-1,
+        "roadmc":0,
         "alienmc":1,
         "cover":5,
         "fortifcover":7,
         "aliencover":5,
         "fishcover":2,
-        "minChance":200
+        "minChance":200,
+        "roadBuild":6
     },
     {
         "name":"F",
@@ -124,13 +130,14 @@
         "hovermc":6,
         "hardmc":9,
         "hscarpmc":2,
-        "roadmc":-1,
+        "roadmc":0,
         "alienmc":2,
         "cover":6,
         "fortifcover":8,
         "aliencover":6,
         "fishcover":2,
-        "minChance":200
+        "minChance":200,
+        "roadBuild":7
     },
     {
         "name":"S",
@@ -143,13 +150,14 @@
         "hovermc":0,
         "hardmc":6,
         "hscarpmc":3,
-        "roadmc":0,
+        "roadmc":1,
         "alienmc":4,
         "cover":3,
         "fortifcover":6,
         "aliencover":-3,
         "fishcover":8,
-        "minChance":100
+        "minChance":100,
+        "roadBuild":8
     },
     {
         "name":"W",
@@ -162,13 +170,14 @@
         "hovermc":0,
         "hardmc":6,
         "hscarpmc":6,
-        "roadmc":1,
+        "roadmc":2,
         "alienmc":6,
         "cover":-2,
         "fortifcover":0,
         "aliencover":-6,
         "fishcover":10,
-        "minChance":500
+        "minChance":500,
+        "roadBuild":16
     },
     {
         "name":"R",
@@ -181,12 +190,13 @@
         "hovermc":0,
         "hardmc":9,
         "hscarpmc":9,
-        "roadmc":1,
+        "roadmc":2,
         "alienmc":7,
         "cover":-2,
         "fortifcover":-2,
         "aliencover":-8,
         "fishcover":12,
-        "minChance":500
+        "minChance":500,
+        "roadBuild":16
     }
 ]

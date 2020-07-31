@@ -58,19 +58,32 @@ function redrawTile(tileId,drawSelectedBat) {
 
 function showRes(tileId) {
     let tile = zone[tileId];
+    let mapIndicators = '';
+    let res = '';
     if (tile.rq >= 1) {
-        if (tile.tileName !== undefined && tile.tileName != '') {
-            return '<div class="mapInfos"><i class="fas fa-map-marker-alt inficon"></i><i class="fas fa-atom inficon rq'+tile.rq+'"></i></div>';
-        } else {
-            return '<div class="mapInfos"><i class="fas fa-atom inficon rq'+tile.rq+'"></i></div>';
-        }
-    } else {
-        if (tile.tileName !== undefined && tile.tileName != '') {
-            return '<div class="mapInfos"><i class="fas fa-map-marker-alt inficon"></i></div>';
-        } else {
-            return '';
-        }
+        res = JSON.stringify(tile.rs);
+        res = res.replace(/"/g,"");
+        res = res.replace(/{/g,"");
+        res = res.replace(/}/g,"");
+        res = res.replace(/,/g," &nbsp;&horbar;&nbsp; ");
+        res = res.replace(/:/g," ");
     }
+    if (tile.rd || tile.rq >= 1 || (tile.tileName !== undefined && tile.tileName != '')) {
+        mapIndicators = mapIndicators+'<div class="mapInfos" title="'+res+'">';
+    }
+    if (tile.rd) {
+        mapIndicators = mapIndicators+'<i class="fas fa-ellipsis-v road"></i>';
+    }
+    if (tile.tileName !== undefined && tile.tileName != '') {
+        mapIndicators = mapIndicators+'<i class="fas fa-map-marker-alt inficon"></i>';
+    }
+    if (tile.rq >= 1) {
+        mapIndicators = mapIndicators+'<i class="fas fa-atom inficon rq'+tile.rq+'"></i>';
+    }
+    if (tile.rd || tile.rq >= 1 || (tile.tileName !== undefined && tile.tileName != '')) {
+        mapIndicators = mapIndicators+'</div>';
+    }
+    return mapIndicators;
 };
 
 function showAlien(bat) {

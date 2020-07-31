@@ -205,17 +205,24 @@ h4 {
 }
 .mapInfos {
     font-size: 14px;
-    color: #ffffff;
-    -webkit-text-stroke: 1px;
-    -webkit-text-stroke-color: #404040;
+    /* -webkit-text-stroke: 1px; */
+    /* -webkit-text-stroke-color: #404040; */
     text-align: right;
     position: absolute;
     width: 68px;
     margin-right: -3px;
     margin-top: -3px;
+    z-index: -5;
 }
 .inficon {
     margin-left: 2px;
+    color: #ffffff;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
+}
+.road {
+    margin-left: 2px;
+    color: #be9fd5;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }
@@ -352,10 +359,6 @@ h4 {
     top: 0px;
     left: 8px;
     display: inline-block;
-}
-.road {
-    font-size: 13px;
-    color: rgba(0, 0, 0, 1);
 }
 .karto {
     font-size: 11px;

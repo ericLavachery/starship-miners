@@ -363,3 +363,20 @@ function deleteAlien(batId) {
     let resHere = showRes(bat.tileId);
     $('#b'+bat.tileId).append(resHere);
 };
+
+function putRoad() {
+    console.log('PUTROAD');
+    let tile = getTile(selectedBat);
+    let terrain = getTileTerrain(selectedBat.tileId);
+    let apCost = Math.round(selectedBatType.mecanoCost*terrain.roadBuild/2);
+    console.log('apCost:'+apCost);
+    selectedBat.apLeft = selectedBat.apLeft-apCost;
+    if (!selectedBat.tags.includes('construction')) {
+        selectedBat.tags.push('construction');
+    }
+    selectedBatArrayUpdate();
+    tile.rd = true;
+    saveMap();
+    showMap(zone,false);
+    showBatInfos(selectedBat);
+};
