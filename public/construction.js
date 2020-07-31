@@ -10,14 +10,29 @@ function bfconst(cat,triche) {
     let color = '';
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer Constriche</span><br><br>');
-    $('#conUnitList').append('<span class="constName or">LES GENTILS</span><br>');
+    $('#conUnitList').append('<span class="constName or" id="gentils">LES GENTILS</span><br>');
     let lastKind = '';
+    let showkind = '';
     let allUnitsList = unitTypes.slice();
     sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'cat'),'kind');
+    // MENU
+    if (triche) {
+        sortedUnitsList.forEach(function(unit) {
+            if (lastKind != unit.kind) {
+                showkind = unit.kind.replace(/zero-/g,"");
+                $('#conUnitList').append('<a href="#kind-'+unit.kind+'"><span class="constMenu mlow klik">'+showkind+'</span></a>&nbsp;&middot;&nbsp;');
+            }
+            lastKind = unit.kind;
+        });
+        $('#conUnitList').append('<a href="#mechants"><span class="constMenu mlow klik">aliens</span></a>');
+        $('#conUnitList').append('<br>');
+    }
+    // LIST
     sortedUnitsList.forEach(function(unit) {
         if (triche || (unit.cat === cat && unit.refabTime >= 1)) {
             if (lastKind != unit.kind) {
-                $('#conUnitList').append('<span class="constName or">'+unit.kind+'</span><br>');
+                showkind = unit.kind.replace(/zero-/g,"");
+                $('#conUnitList').append('<br><a href="#gentils"><span class="constName or" id="kind-'+unit.kind+'">'+showkind+'</span></a><br>');
             }
             if (conselUnit.id === unit.id && conselUnit.cat != 'aliens') {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
@@ -30,7 +45,7 @@ function bfconst(cat,triche) {
         }
     });
     if (triche) {
-        $('#conUnitList').append('<span class="constName or">LES MECHANTS</span><br>');
+        $('#conUnitList').append('<br><span class="constName or" id="mechants">LES MECHANTS</span><br><br>');
         let allALiensList = alienUnits.slice();
         sortedAliensList = _.sortBy(_.sortBy(_.sortBy(allALiensList,'name'),'name'),'kind');
         sortedAliensList.forEach(function(unit) {
@@ -43,6 +58,7 @@ function bfconst(cat,triche) {
             $('#conUnitList').append('<span class="constName klik '+color+'" onclick="conSelect('+unit.id+',`aliens`)">'+unit.name+'</span><br>');
         });
     }
+    $('#conUnitList').append('<br>');
     commandes();
 }
 

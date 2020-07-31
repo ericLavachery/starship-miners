@@ -168,10 +168,21 @@ h4 {
     display: inline-block;
     font-size: 14px;
     text-align: right;
-    /* width: 170px; */
     margin-right: 8px;
-    /* min-height: 21px; */
     font-weight: bold;
+}
+.constMenu {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #d5cabd;
+    display: inline-block;
+    font-size: 14px;
+    text-align: right;
+    /* margin-right: 8px; */
+    font-weight: bold;
+}
+.mlow {
+    color: #a69d93;
+    font-weight: lighter;
 }
 .degInfos {
     font-size: 13px;
@@ -562,7 +573,7 @@ td {
 }
 .sidebar a:hover {
     text-decoration: none;
-    color: #ba44c8;
+    color: #f77a28;
 }
 .tracksList {
     display: inline-block;
@@ -678,7 +689,7 @@ td {
     margin: 15px 15px 0px 15px;
 }
 a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover,a.gris:hover,a.blanc:hover,.bleu:hover {
-    color: #ba44c8;
+    color: #f77a28;
     text-decoration: none;
 }
 .rouge {
