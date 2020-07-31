@@ -738,10 +738,24 @@ function addRes(zone) {
             });
             tile.rs[mythicRes.name] = mythicRes.batch*(tile.rq-2)*(tile.rq-3)*rand.rand(3,9);
         } else if (tile.rq >= 1) {
+            terrain = getTileTerrain(tile.id);
             // PASS 1
             sortedRes.forEach(function(res) {
                 if (res.cat === 'white') {
                     resChance = Math.round(res.adjRarity*tile.rq*tile.rq/resFoundDiv);
+                    if (res.bld === 'Derrick') {
+                        if (terrain.scarp <= 1) {
+                            resChance = Math.round(resChance*1.6);
+                        } else {
+                            resChance = Math.round(resChance*0.67);
+                        }
+                    } else if (res.bld === 'Mine') {
+                        if (terrain.scarp >= 2) {
+                            resChance = Math.round(resChance*1.1);
+                        } else {
+                            resChance = Math.round(resChance*0.33);
+                        }
+                    }
                     if (rand.rand(1,100) <= resChance) {
                         tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
                     }
