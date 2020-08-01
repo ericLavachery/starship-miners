@@ -323,6 +323,9 @@ function checkResSpace(bat) {
     let batType = getBatType(bat);
     let resLoaded = checkResLoad(bat);
     let resSpace = batType.transRes-resLoaded;
+    if (resSpace < 0) {
+        resSpace = 0;
+    }
     return resSpace;
 };
 

@@ -118,6 +118,10 @@ function showBatInfos(bat) {
         let transLeft = calcTransUnitsLeft(bat,batUnitType);
         $('#unitInfos').append('<span class="paramName cy">Transport</span><span class="paramIcon"></span><span class="paramValue cy">'+transLeft+'/'+batUnitType.transUnits+'</span><br>');
     }
+    if (batUnitType.transRes >= 1) {
+        let restSpace = checkResSpace(bat);
+        $('#unitInfos').append('<span class="paramName cy">Fret</span><span class="paramIcon"></span><span class="paramValue cy">'+restSpace+'/'+batUnitType.transRes+'</span><br>');
+    }
     if (batUnitType.skills.includes('dealer')) {
         let ravitNum = calcRavit(bat);
         $('#unitInfos').append('<span class="paramName cy">Drogues</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
@@ -170,12 +174,9 @@ function showBatInfos(bat) {
             transportedRes = transportedRes.replace(/}/g,"");
             transportedRes = transportedRes.replace(/,/g," &nbsp;&horbar;&nbsp; ");
             transportedRes = transportedRes.replace(/:/g," ");
-            let restSpace = checkResSpace(bat);
-            let showSpace = '<span class="cy">'+restSpace+'</span>';
-            if (restSpace <= 0) {
-                showSpace = '<span class="or">0</span>'
-            }
-            $('#unitInfos').append('<span class="paramValue">'+transportedRes+' &nbsp;('+showSpace+')</span><br>');
+            let resLoaded = checkResLoad(bat);
+            let showTotal = '<span class="cy">'+resLoaded+'</span>/'+batUnitType.transRes;
+            $('#unitInfos').append('<span class="paramValue">'+transportedRes+' &nbsp;('+showTotal+')</span><br>');
         }
     }
 
