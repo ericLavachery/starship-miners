@@ -247,6 +247,7 @@ function nextTurnEnd() {
     alienOccupiedTileList();
     blockMe(false);
     activeTurn = 'player';
+    nextTurnOK = false;
     commandes();
     // testConnect(pseudo);
 };

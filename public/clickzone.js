@@ -74,6 +74,7 @@ function clickSelect(tileId) {
 
 function batSelect(bat) {
     // remove selection on old selected unit
+    nextTurnOK = true;
     washReports();
     tileUnselect();
     tileUntarget();

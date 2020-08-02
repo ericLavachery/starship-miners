@@ -69,6 +69,7 @@ let nextExplosion = 1;
 let coverFactor = 1; // multiplie la cover du terrain (enlevé à accuracy)
 let initiativeDice = 15 // ajoute 0-15
 let stopMe = false;
+let nextTurnOK = false;
 let toHit = 999;
 let activeTurn = 'player';
 let minPrec = 3 // minimum de précision (même après ajustements)

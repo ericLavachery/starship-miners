@@ -347,8 +347,11 @@ function terrainAccess(batId,targetTileId) {
 function calcMoveCost(targetTileId,diag) {
     let terIndex = terrainTypes.findIndex((obj => obj.name == zone[targetTileId].terrain));
     let moveCost;
-    if (zone[targetTileId].rd) {
+    if (zone[targetTileId].rd && !selectedBatType.skills.includes('hover')) {
         moveCost = selectedBatType.moveCost+terrainTypes[terIndex].roadmc;
+        if (moveCost == 1) {
+            moveCost = 1.5;
+        }
     } else if (selectedBat.team == 'aliens' && !selectedBatType.skills.includes('hover')) {
         moveCost = selectedBatType.moveCost+terrainTypes[terIndex].alienmc;
     } else if (selectedBatType.skills.includes('ranger')) {
@@ -371,7 +374,7 @@ function calcMoveCost(targetTileId,diag) {
             moveCost = 2;
         }
     }
-    return Math.round(moveCost);
+    return Math.round(10*moveCost)/10;
 };
 
 function apLoss(batId,number,sloppy) {

@@ -1125,7 +1125,7 @@
         "size":3,
         "volume":1.3,
         "stealth":4,
-        "ap":11,
+        "ap":12,
         "maxSalvo":1,
         "weapon":{
             "name":"Lance-flammes",
@@ -1156,7 +1156,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","inflammable","maycamo"],
+        "skills":["fortif","cible","inflammable","maycamo","selfbadmedic"],
+        "mediCost":6,
         "fuzz":0,
         "deathFx":"219149__musability__female-wilhelm-scream-audacity"
     },
@@ -2883,7 +2884,7 @@
         "ap":13,
         "maxSalvo":1,
         "weapon":{
-            "name":"Blistergun (auto)",
+            "name":"Blister gun (auto)",
             "cost":5,
             "range":1,
             "elevation":1,
@@ -2897,7 +2898,7 @@
             "maxAmmo":18
         },
         "weapon2":{
-            "name":"Blistergun",
+            "name":"Blister gun",
             "cost":4,
             "range":2,
             "elevation":1,

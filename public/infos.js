@@ -22,7 +22,8 @@ function showBatInfos(bat) {
     } else if (bat.apLeft < ap) {
         hourglass = 'half';
     }
-    $('#unitInfos').append('<span class="paramName">Points d\'action</span><span class="paramIcon"><i class="fas fa-hourglass-'+hourglass+'"></i></span><span class="paramValue">'+bat.apLeft+'/'+ap+'</span><br>');
+    let roundApLeft = Math.round(bat.apLeft);
+    $('#unitInfos').append('<span class="paramName">Points d\'action</span><span class="paramIcon"><i class="fas fa-hourglass-'+hourglass+'"></i></span><span class="paramValue">'+roundApLeft+'/'+ap+'</span><br>');
     // SQUADS
     $('#unitInfos').append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.squadsLeft+'/'+batUnitType.squads+'</span><br>');
     let squadHP = batUnitType.squadSize*batUnitType.hp;
