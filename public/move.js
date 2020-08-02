@@ -52,7 +52,7 @@ function clickMove(tileId) {
             if (selectedBatType.skills.includes('guerrilla')) {
                 moveLeft = selectedBat.apLeft+4;
             }
-            if (moveLeft >= 1) {
+            if (moveLeft > 0) {
                 if (terrainAccess(selectedBat.id,tileId)) {
                     if (!alienOccupiedTiles.includes(tileId)) {
                         moveSelectedBat(tileId,false,jump);
@@ -103,7 +103,7 @@ function moveInfos(bat,jump) {
                         if (batType.skills.includes('guerrilla')) {
                             moveLeft = selectedBat.apLeft+4;
                         }
-                        if (moveLeft >= 1 && terrainAccess(selectedBat.id,tile.id)) {
+                        if (moveLeft > 0 && terrainAccess(selectedBat.id,tile.id)) {
                             if (!alienOccupiedTiles.includes(tile.id)) {
                                 cursorSwitch('#',tile.id,'move');
                             } else {
@@ -115,7 +115,7 @@ function moveInfos(bat,jump) {
                         // montre le moveCost
                         if (terrainAccess(selectedBat.id,tile.id)) {
                             moveCost = calcMoveCost(tile.id,isDiag(selectedBat.tileId,tile.id));
-                            titleString = moveCost+" ap";
+                            titleString = Math.round(moveCost)+" ap";
                             $("#"+tile.id).attr("title", titleString);
                         }
                     }
@@ -140,7 +140,7 @@ function moveInfos(bat,jump) {
                     // montre le moveCost
                     let distance = calcJumpDistance(selectedBat.tileId,tile.id);
                     moveCost = Math.round(distance*selectedBatType.moveCost);
-                    titleString = moveCost+" ap";
+                    titleString = Math.round(moveCost)+" ap";
                     $("#"+tile.id).attr("title", titleString);
                 }
             }
@@ -374,7 +374,7 @@ function calcMoveCost(targetTileId,diag) {
             moveCost = 2;
         }
     }
-    return Math.round(10*moveCost)/10;
+    return moveCost;
 };
 
 function apLoss(batId,number,sloppy) {

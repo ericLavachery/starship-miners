@@ -205,7 +205,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
         speed = speed-(bat.apLeft*5);
     }
     let vetDice = vetBonus.initiative*bat.vet;
-    return speed+rand.rand(0,initiativeDice)-rand.rand(0,vetDice);
+    return Math.round(speed+rand.rand(0,initiativeDice)-rand.rand(0,vetDice));
 };
 
 function sideBySideTiles(myTileIndex,thatTileIndex,fuzzThing) {

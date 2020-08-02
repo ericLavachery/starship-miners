@@ -398,6 +398,28 @@ function loadRes() {
     }
 };
 
+function isResToLoad(myBat) {
+    let resToLoad = false;
+    let restSpace = checkResSpace(myBat);
+    if (restSpace >= 1) {
+        bataillons.forEach(function(bat) {
+            if (bat.id != selectedBat.id && resToLoad === false) {
+                batType = getBatType(bat);
+                if (batType.skills.includes('fret')) {
+                    distance = calcDistance(bat.tileId,myBat.tileId);
+                    if (distance <= 1) {
+                        resLoad = checkResLoad(bat);
+                        if (resLoad >= 1) {
+                            resToLoad = true;
+                        }
+                    }
+                }
+            }
+        });
+    }
+    return resToLoad;
+};
+
 function resSelectLoad(value,pickValue,resId,batId) {
     let res = getResById(resId);
     let bat = getBatById(batId);

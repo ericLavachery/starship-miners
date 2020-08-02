@@ -319,6 +319,8 @@ function attack() {
     // noBig
     if (targetBatType.size > Math.round(selectedBatType.size/2) && selectedWeap.noBig) {
         selectedWeap.power = Math.round(selectedWeap.power*selectedBatType.size/2/targetBatType.size);
+    } else if (Math.round(selectedBatType.size/3) > targetBatType.size && selectedWeap.noBig) {
+        selectedWeap.power = Math.round(selectedWeap.power*selectedBatType.size/3/targetBatType.size);
     }
     toHit = 999;
     let i = 1;
@@ -745,6 +747,8 @@ function defense() {
     // noBig
     if (selectedBatType.size > Math.round(targetBatType.size/2) && targetWeap.noBig) {
         targetWeap.power = Math.round(targetWeap.power*targetBatType.size/2/selectedBatType.size);
+    } else if (Math.round(targetBatType.size/3) > selectedBatType.size && targetWeap.noBig) {
+        targetWeap.power = Math.round(targetWeap.power*targetBatType.size/3/selectedBatType.size);
     }
     toHit = 999;
     let i = 1;

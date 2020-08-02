@@ -1577,7 +1577,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","mecano","repair","constructeur","hscarpmove","noblub"],
         "mecanoCost":7,
-        "maxSkill":5,
+        "maxSkill":8,
         "fuzz":1.5,
         "deathFx":"planeexploair1"
     },
@@ -1632,7 +1632,7 @@
         "maxVeg":3,
         "skills":["fortif","cible","mecano","repair","constructeur","hardmove","noblub"],
         "mecanoCost":3,
-        "maxSkill":15,
+        "maxSkill":24,
         "fuzz":2.5,
         "deathFx":"planeexploair3"
     },

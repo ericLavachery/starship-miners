@@ -2798,10 +2798,10 @@
             "isMelee":true,
             "isShort":true,
             "rof":8,
-            "accuracy":18,
+            "accuracy":16,
             "dca":0.85,
             "power":12,
-            "aoe":"unit",
+            "aoe":"brochette",
             "sound":"sprotch",
             "ammo":["standard"]
         },
@@ -2824,7 +2824,7 @@
         "maxVeg":3,
         "skills":["fortif","mecano","repair","constructeur","cyber","fret","hscarpmove","noblub"],
         "mecanoCost":6,
-        "maxSkill":5,
+        "maxSkill":8,
         "transRes":60,
         "fuzz":1.5,
         "deathFx":"144469__psychedelic-hands__robot-death"

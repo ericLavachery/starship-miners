@@ -91,6 +91,7 @@ function nextTurnEnd() {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
+            bat.apLeft = Math.ceil(bat.apLeft);
             if (bat.apLeft < 0-(batType.ap*2) && batType.cat != 'buildings' && !bat.tags.includes('construction')) {
                 bat.apLeft = 0-(batType.ap*2);
             }

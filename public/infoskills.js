@@ -3,6 +3,7 @@ function skillsInfos(bat,batUnitType) {
     let numTargets = 0;
     let apCost;
     let apReq;
+    let tile = getTile(bat);
     let inMelee = batInMelee(bat);
     let freeConsTile = false;
     console.log('inMelee='+inMelee);
@@ -479,7 +480,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // EXTRACTION
-    if (batUnitType.skills.includes('extraction')) {
+    if (batUnitType.skills.includes('extraction') && tile.rq >= 1) {
         let extractOK = false;
         if (bat.extracted !== undefined) {
             if (bat.extracted.length >= 1) {
@@ -509,17 +510,20 @@ function skillsInfos(bat,batUnitType) {
     }
     // CHARGER RESSOURCES
     if (batUnitType.skills.includes('fret')) {
-        balise = 'h4';
-        apReq = 1;
-        if (bat.apLeft >= apReq && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Charger des ressources" class="boutonGris iconButtons" onclick="loadRes()"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
-        } else {
-            if (inMelee) {
-                skillMessage = "Impossible en mêlée";
+        let resToLoad = isResToLoad(bat);
+        if (resToLoad) {
+            balise = 'h4';
+            apReq = 1;
+            if (bat.apLeft >= apReq && !inMelee) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Charger des ressources" class="boutonGris iconButtons" onclick="loadRes()"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
             } else {
-                skillMessage = "Pas assez de PA";
+                if (inMelee) {
+                    skillMessage = "Impossible en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
             }
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
         }
     }
     // POSE CHAMP DE MINES
@@ -579,8 +583,8 @@ function skillsInfos(bat,batUnitType) {
             if (Object.keys(conselUnit).length >= 1) {
                 balise = 'h1';
             }
-            apCost = batUnitType.mecanoCost;
-            apReq = Math.round(batUnitType.mecanoCost/2);
+            apCost = Math.ceil(batUnitType.mecanoCost/4);
+            apReq = Math.ceil(batUnitType.mecanoCost/4);
             if (barbLeft >= 1 && bat.apLeft >= apReq && !inMelee) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des barbelés (scrap)" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`barb-scrap`)"><i class="ra ra-crown-of-thorns rpg"></i></button><button type="button" title="Déposer des barbelés (acier)" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`barb-fer`)"><i class="ra ra-crown-of-thorns rpg"></i></button><button type="button" title="Déposer des barbelés (taser)" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`barb-taser`)"><i class="ra ra-crown-of-thorns rpg"></i></button>&nbsp; Barbelés</'+balise+'></span>');
             } else {
@@ -597,12 +601,8 @@ function skillsInfos(bat,batUnitType) {
     }
     // ROUTES / PONTS
     if (batUnitType.skills.includes('constructeur')) {
-        let tile = getTile(bat);
         if (!tile.rd) {
-            apReq = batUnitType.mecanoCost*2;
-            if (apReq > batUnitType.ap) {
-                apReq = batUnitType.ap;
-            }
+            apReq = batUnitType.mecanoCost;
             if (bat.apLeft >= apReq && !inMelee) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (routes et ponts)" class="boutonGris iconButtons" onclick="putRoad()"><i class="fas fa-road"></i> <span class="small">'+apReq+'</span></button>&nbsp; Route / Pont</h4></span>');
             } else {
