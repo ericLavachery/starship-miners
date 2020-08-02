@@ -746,7 +746,7 @@
     {
         "id":37,
         "name":"Barbelés",
-        "pic":"barbed",
+        "pic":"barbs",
         "cat":"buildings",
         "kind":"zero-construction",
         "squads":6,
@@ -778,7 +778,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","prefab","noblub"],
+        "skills":["nodeathcount","notarget","prefab","noblub","nolist"],
         "refabTime":1,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
@@ -827,7 +827,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["initiative","nonumname","nodeathcount","notarget","halfcover","prefab","noblub"],
+        "skills":["initiative","nonumname","nodeathcount","notarget","halfcover","prefab","noblub","nolist"],
         "refabTime":25,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
@@ -876,7 +876,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["initiative","nonumname","nodeathcount","notarget","halfcover","prefab","bigblub"],
+        "skills":["initiative","nonumname","nodeathcount","notarget","halfcover","prefab","bigblub","nolist"],
         "refabTime":25,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
