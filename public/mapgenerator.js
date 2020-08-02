@@ -697,7 +697,7 @@ function addRes(zone) {
                 }
             }
             res.adjRarity = Math.floor(res.rarity*rarityDice/5*fewRedRarityAdj/100);
-            res.adjBatch = Math.ceil(res.batch*rarityDice/5*fewRedRarityAdj/100);
+            res.adjBatch = Math.ceil(res.batch*Math.sqrt(rarityDice)/2*fewRedRarityAdj/100);
             if (res.adjRarity > bestRarity && res.name != 'Scrap') {
                 bestRarity = res.adjRarity;
                 resDefault = res;

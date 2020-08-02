@@ -1296,7 +1296,7 @@
         "mediCost":9,
         "mining":{
             "level":1,
-            "rate":10,
+            "rate":15,
             "multi":false,
             "types":["Mine","Comptoir","Scrap"]
         },
@@ -1355,7 +1355,7 @@
         "mediCost":7,
         "mining":{
             "level":2,
-            "rate":8,
+            "rate":10,
             "multi":false,
             "types":["Mine","Comptoir","Scrap"]
         },

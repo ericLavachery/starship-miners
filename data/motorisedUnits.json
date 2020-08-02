@@ -3007,7 +3007,7 @@
         "mecanoCost":12,
         "mining":{
             "level":2,
-            "rate":13,
+            "rate":15,
             "multi":true,
             "types":["Mine","Comptoir","Scrap"]
         },
