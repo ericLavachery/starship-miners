@@ -992,7 +992,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"213842__sihil__lizardgargle_mygale",
         "fxPriority":3,
-        "killRes":{"bugium":7,"aranium":7}
+        "killRes":{"bugium":7,"aranium":7,"mephitis":7}
     },
     {
         "id":21,
