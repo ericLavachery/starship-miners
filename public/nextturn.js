@@ -464,6 +464,9 @@ function tagsEffect(bat,batType) {
         // SHINDA
         if (bat.tags.includes('shinda')) {
             let shindaDamage = Math.round(Math.sqrt(batType.hp)*14);
+            if (batType.skills.includes('reactpoison') || bat.tags.includes('reactpoison')) {
+                shindaDamage = shindaDamage*3;
+            }
             totalDamage = bat.damage+rand.rand((Math.round(shindaDamage/2)),Math.round(shindaDamage*1.5));
             console.log('VenomDamage='+totalDamage);
             squadHP = batType.squadSize*batType.hp;
@@ -486,7 +489,7 @@ function tagsEffect(bat,batType) {
             }
         }
         // VENIN
-        if (bat.tags.includes('venin')) {
+        if (bat.tags.includes('venin') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison')) {
             totalDamage = bat.damage+rand.rand((Math.round(venumDamage/3)),venumDamage);
             console.log('VenomDamage='+totalDamage);
             squadHP = batType.squadSize*batType.hp;
@@ -498,9 +501,12 @@ function tagsEffect(bat,batType) {
             }
         }
         // POISON
-        if (bat.tags.includes('poison')) {
+        if (bat.tags.includes('poison') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison')) {
             let allTags = _.countBy(bat.tags);
             let poisonPower = allTags.poison*poisonDamage;
+            if (batType.skills.includes('reactpoison') || bat.tags.includes('reactpoison')) {
+                poisonPower = poisonPower*3;
+            }
             console.log('tags poison: '+allTags.poison);
             totalDamage = bat.damage+rand.rand((Math.round(poisonPower/3)),poisonPower);
             console.log('PoisonDamage='+totalDamage);

@@ -91,7 +91,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","nez","fouisseur","capbld"],
+        "skills":["regeneration","nez","fouisseur","capbld","reactpoison"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"bugium":4,"larvium":3,"mendium":1}
     },
@@ -146,7 +146,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","capbld","fouisseur","nez"],
+        "skills":["regeneration","capbld","fouisseur","nez","reactpoison"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"bugium":8,"mendium":3,"larvium":5}
     },
@@ -500,7 +500,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["grip","venin"],
+        "skills":["grip","venin","resistpoison"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"bugium":2,"swarmine":2,"mephitis":1}
     },
@@ -625,7 +625,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capbld","fear"],
+        "skills":["capbld","fear","reactpoison"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"bugium":9}
     },
@@ -681,7 +681,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capmen","regeneration","minaccu","inflammable"],
+        "skills":["capmen","regeneration","minaccu","inflammable","resistpoison"],
         "deathFx":"76974__michel88__piggrunt2",
         "spawnFx":"125388__thegoose09__monster-screech_veuve",
         "fxPriority":6,
@@ -947,7 +947,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["furtif","chancre","capbld","ponte","minaccu"],
+        "skills":["furtif","chancre","capbld","ponte","minaccu","resistpoison"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"bugium":4,"larvium":8,"germium":2,"bossium":2,"creatite":1,"slime":1}
     },
@@ -1072,7 +1072,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","ponte"],
+        "skills":["regeneration","ponte","reactpoison"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"swarmine":1}
     },
@@ -1114,7 +1114,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[],
+        "skills":["resistpoison"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"bugium":1,"swarmine":1,"noxis":2}
     },
@@ -1156,7 +1156,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["grip","venin","tail","ponte","minaccu","fear"],
+        "skills":["grip","venin","tail","ponte","minaccu","fear","resistpoison"],
         "deathFx":"185366__anwul__monster",
         "spawnFx":"82082__rmw2861__1000000009_Androks",
         "fxPriority":4,
@@ -1327,7 +1327,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[],
+        "skills":["reactpoison"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"bugium":4,"swarmine":4,"slime":4}
     },
@@ -1505,7 +1505,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","capbld","fear","hover","ponte","resistfeu"],
+        "skills":["regeneration","capbld","fear","hover","ponte","resistfeu","resistpoison"],
         "deathFx":"185366__anwul__monster",
         "spawnFx":"142932__1pjladd2__burp-monster_megagrubz",
         "fxPriority":2,
@@ -1549,7 +1549,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","capfar","grip","inflammable"],
+        "skills":["fly","capfar","grip","inflammable","reactpoison"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"bugium":3,"swarmine":3,"wingium":2}
     },
@@ -1762,7 +1762,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","regeneration","resistfeu"],
+        "skills":["ponte","regeneration","resistfeu","reactpoison"],
         "deathFx":"bombwaterexplo",
         "killRes":{"mendium":5,"creatite":3}
     },
@@ -1898,7 +1898,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["regeneration","resistfeu"],
+        "skills":["slowreg","resistfeu","reactpoison"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"bugium":7,"mendium":4,"pyrus":2}
     }
