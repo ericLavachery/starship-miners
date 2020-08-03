@@ -52,7 +52,7 @@
             "level":3,
             "rate":20,
             "multi":true,
-            "types":["Mine","Scrap"]
+            "types":["Mine","Scrap","Derrick"]
         },
         "transRes":2500,
         "refabTime":90,
@@ -116,7 +116,7 @@
         "skills":["extraction","fret","recupcit","dumper"],
         "mining":{
             "level":3,
-            "rate":20,
+            "rate":60,
             "multi":true,
             "types":["Derrick"]
         },

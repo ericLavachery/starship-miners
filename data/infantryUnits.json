@@ -1341,7 +1341,7 @@
             "level":1,
             "rate":15,
             "multi":false,
-            "types":["Mine","Comptoir","Scrap"]
+            "types":["Mine","Comptoir","Scrap","Derrick"]
         },
         "transRes":36,
         "maxSkill":2,
@@ -1401,7 +1401,7 @@
             "level":2,
             "rate":10,
             "multi":false,
-            "types":["Mine","Comptoir","Scrap"]
+            "types":["Mine","Comptoir","Scrap","Derrick"]
         },
         "transRes":60,
         "fuzz":0,
