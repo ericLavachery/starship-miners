@@ -480,7 +480,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // EXTRACTION
-    if (batUnitType.skills.includes('extraction') && tile.rq >= 1) {
+    if (batUnitType.skills.includes('extraction')) {
         let extractOK = false;
         if (bat.extracted !== undefined) {
             if (bat.extracted.length >= 1) {

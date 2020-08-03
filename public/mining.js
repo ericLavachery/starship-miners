@@ -75,7 +75,7 @@ function getTerrainRes(terrain,tile) {
     if (terrain.name === 'F') {
         srs.Végétaux = 50;
     } else if (terrain.name === 'B' && tile.seed >= 4) {
-        srs.Végétaux = 50;
+        srs.Végétaux = 85;
     } else if (terrain.veg >= 1) {
         srs.Végétaux = Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*8;
     }
