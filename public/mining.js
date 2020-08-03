@@ -322,7 +322,11 @@ function getDumperQuality(bat) {
 function checkResSpace(bat) {
     let batType = getBatType(bat);
     let resLoaded = checkResLoad(bat);
-    let resSpace = batType.transRes-resLoaded;
+    let resMax = batType.transRes;
+    if (bat.citoyens > 0) {
+        resMax = bat.citoyens;
+    }
+    let resSpace = resMax-resLoaded;
     if (resSpace < 0) {
         resSpace = 0;
     }
