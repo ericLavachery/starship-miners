@@ -65,29 +65,29 @@ function getTerrainRes(terrain,tile) {
     let srs = {};
     // Bois
     if (terrain.name === 'F') {
-        srs.Bois = 500;
+        srs.Bois = 200;
     } else if (terrain.name === 'B' && tile.seed >= 4) {
-        srs.Bois = 150;
+        srs.Bois = 50;
     } else if (terrain.name === 'B') {
-        srs.Bois = 25;
+        srs.Bois = 10;
     }
     // Végétaux
     if (terrain.name === 'F') {
-        srs.Végétaux = 150;
+        srs.Végétaux = 50;
     } else if (terrain.name === 'B' && tile.seed >= 4) {
-        srs.Végétaux = 150;
+        srs.Végétaux = 50;
     } else if (terrain.veg >= 1) {
-        srs.Végétaux = Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*25;
+        srs.Végétaux = Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*8;
     }
     // Huile
     if (terrain.name === 'F' && tile.seed === 5) {
-        srs.Huile = 20;
+        srs.Huile = 7;
     } else if (terrain.name === 'B' && tile.seed === 6) {
-        srs.Huile = 10;
+        srs.Huile = 3;
     } else if (terrain.name === 'S' && tile.seed === 6) {
-        srs.Huile = 60;
+        srs.Huile = 20;
     } else if (terrain.name === 'S' && tile.seed >= 4) {
-        srs.Huile = 10;
+        srs.Huile = 3;
     }
     // Eau
     if (terrain.name === 'R') {

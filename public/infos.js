@@ -7,8 +7,8 @@ function showBatInfos(bat) {
     if (bat.citoyens >= 1) {
         unitsLeft = bat.citoyens;
     }
-    let resMax = batType.transRes;
-    if (bat.citoyens > 0) {
+    let resMax = batUnitType.transRes;
+    if (bat.citoyens >= 1) {
         resMax = bat.citoyens;
     }
     if (batUnitType.skills.includes('nonumname')) {
@@ -287,6 +287,9 @@ function showTileInfos(tileId) {
             let value = entry[1];
             resIndex = resTypes.findIndex((obj => obj.name == key));
             res = resTypes[resIndex];
+            if (res.bld === 'Derrick') {
+                value = value*3;
+            }
             bldReq = onlyFirstLetter(res.bld);
             $('#tileInfos').append('<span class="paramName cy">'+key+'</span><span class="paramIcon"></span><span class="paramValue cy">'+value+' <span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
             // console.log(key,value);
@@ -302,6 +305,9 @@ function showTileInfos(tileId) {
             let value = entry[1];
             resIndex = resTypes.findIndex((obj => obj.name == key));
             res = resTypes[resIndex];
+            if (res.bld === 'Comptoir') {
+                value = value*3;
+            }
             bldReq = onlyFirstLetter(res.bld);
             if (bldReq != '') {
                 bldReq = ' ('+bldReq+')'

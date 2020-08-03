@@ -618,7 +618,7 @@
         "armor":3,
         "size":3,
         "volume":1,
-        "stealth":8,
+        "stealth":10,
         "speed":0,
         "ap":12,
         "maxSalvo":1,
@@ -653,7 +653,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","fortif","sentinelle","bastion","maycamo","ranger","selfbadmedic"],
+        "skills":["cible","fortif","sentinelle","bastion","camo","ranger","selfbadmedic"],
         "mediCost":9,
         "fuzz":0,
         "deathFx":"human2"
