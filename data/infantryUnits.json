@@ -157,7 +157,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["medic","dealer","starka","maycamo"],
+        "skills":["medic","dealer","starka","octiron","maycamo"],
         "mediCost":5,
         "maxSkill":8,
         "fuzz":0,
@@ -196,8 +196,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["medic","maycamo"],
+        "skills":["medic","maycamo","dealer","octiron"],
         "mediCost":8,
+        "maxSkill":6,
         "fuzz":0,
         "deathFx":"human3"
     },
@@ -247,7 +248,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","medic","dealer","starka"],
+        "skills":["fortif","cible","medic","dealer","starka","octiron"],
         "mediCost":9,
         "maxSkill":6,
         "fuzz":0,
@@ -300,7 +301,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","medic","dealer","starka","kirin","prayer","survivor","luckyshot"],
+        "skills":["fortif","cible","medic","dealer","starka","kirin","octiron","prayer","survivor","luckyshot"],
         "mediCost":8,
         "maxSkill":12,
         "fuzz":0,
@@ -397,14 +398,15 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","ranger","maycamo","guerrilla","selfbadmedic"],
+        "skills":["fortif","cible","ranger","maycamo","guerrilla","selfbadmedic","dealer","octiron"],
         "mediCost":6,
+        "maxSkill":6,
         "fuzz":0,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -449,14 +451,15 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","ranger","camo","embuscade","selfbadmedic"],
+        "skills":["fortif","cible","ranger","camo","embuscade","selfbadmedic","dealer","octiron"],
         "mediCost":9,
+        "maxSkill":6,
         "fuzz":-1,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -527,7 +530,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"Arbalète",
@@ -540,7 +543,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -580,7 +583,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
             "name":"Lame",
@@ -594,7 +597,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -630,11 +633,12 @@
             "bigDef":true,
             "rof":10,
             "accuracy":18,
+            "dca":1.25,
             "power":8,
             "armors":0.5,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-taser","lame-plasma"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-plasma"]
         },
         "weapon2":{
             "name":"Arbalète",
@@ -647,7 +651,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -701,7 +705,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -789,7 +793,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"Ceinture goodbye",
@@ -849,7 +853,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1077,7 +1081,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"Mortier léger",
@@ -1447,7 +1451,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":4,
         "maxFlood":3,
@@ -1499,13 +1503,13 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","undead","badmedic","dealer","bliss","sila","blaze","kirin","skupiac","starka","camo"],
+        "skills":["fortif","cible","undead","badmedic","dealer","bliss","sila","blaze","kirin","octiron","skupiac","starka","camo"],
         "mediCost":6,
         "maxSkill":32,
         "fuzz":1,
@@ -1552,7 +1556,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":2,
         "maxFlood":1,
@@ -1590,7 +1594,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
             "name":"Lame",
@@ -1603,13 +1607,13 @@
             "power":4,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","medic","camo","dealer","kirin","sila","starka","ranger"],
+        "skills":["fortif","cible","medic","camo","dealer","kirin","octiron","sila","starka","ranger"],
         "mediCost":8,
         "maxSkill":18,
         "fuzz":-1,
@@ -1655,7 +1659,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":2,
         "maxFlood":3,
@@ -1693,7 +1697,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-poison","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-poison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"Arbalète",
@@ -1707,7 +1711,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1810,7 +1814,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-poison","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-poison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":4,
         "maxFlood":3,
@@ -1919,9 +1923,10 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","badmecano","badmedic","moto"],
+        "skills":["fortif","cible","badmecano","badmedic","moto","dealer","octiron"],
         "mediCost":7,
         "mecanoCost":7,
+        "maxSkill":6,
         "fuzz":1.5,
         "deathFx":"human2"
     },
@@ -1970,7 +1975,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo","medic","fly","jetpack","longshot","inflammable","dealer","starka","kirin"],
+        "skills":["fortif","cible","camo","medic","fly","jetpack","longshot","inflammable","dealer","starka","kirin","octiron"],
         "mediCost":5,
         "maxSkill":8,
         "fuzz":-1,
@@ -2111,7 +2116,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"moto_impact",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-mono","lame-taser","lame-plasma"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-plasma"]
         },
         "moveCost":2,
         "maxFlood":1,
@@ -2164,7 +2169,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-poison","lame-atium","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "moveCost":2,
         "maxFlood":3,
@@ -2558,7 +2563,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"RPG",
@@ -3463,8 +3468,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","camo","guerrilla","badmedic","embuscade"],
+        "skills":["fortif","cible","camo","guerrilla","badmedic","embuscade","dealer","octiron"],
         "mediCost":8,
+        "maxSkill":6,
         "fuzz":-1,
         "deathFx":"human2"
     },

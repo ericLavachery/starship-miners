@@ -84,6 +84,7 @@ let luckCheck = [7,14,21,86,93,100];
 let toxChance = 30;
 let cheapWeapCost = 99;
 let mecanoHP = 90;
+let roadAPCost = 8;
 let batDebarq = {};
 let medicalTransports = [];
 // ALIENS
@@ -101,8 +102,8 @@ let poisonDamage = 15; // 15 = 5-15 damage (10)
 let parasiteDamage = 120;
 let blubDamage = 6;
 let bugROF = 1;
-let regenPower = 10; // 10 = 1/10 des HP de base chaque tour
-let slowregPower = 3; // 10 = 1/10 des HP de base chaque tour
+let regenPower = 10; // 10%
+let slowregPower = 3; // 3%
 let shownEggs = [];
 let vomiChance = 5; // 5% par oeuf manquant
 let coqueChance = 20; // 20% pour une coque

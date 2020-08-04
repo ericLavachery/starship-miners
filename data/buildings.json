@@ -157,7 +157,7 @@
         "skills":["extraction","fret","recupcit","dumper","transport"],
         "mining":{
             "level":3,
-            "rate":60,
+            "rate":90,
             "multi":true,
             "types":["Comptoir","Scrap"]
         },
@@ -256,7 +256,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["medic","dealer","kirin","starka","maycamo","recupcit","prefab","transport"],
+        "skills":["medic","dealer","kirin","octiron","starka","maycamo","recupcit","prefab","transport"],
         "mediCost":5,
         "transMaxSize":9,
         "transUnits":1500,

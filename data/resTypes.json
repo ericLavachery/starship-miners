@@ -40,7 +40,7 @@
         "name": "Cuivre",
         "bld": "Mine",
         "level": 1,
-        "rarity": 150,
+        "rarity": 100,
         "cat": "white",
         "batch": 6
     },
@@ -60,7 +60,7 @@
         "level": 1,
         "rarity": 30,
         "cat": "white",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 7,
@@ -69,7 +69,7 @@
         "level": 1,
         "rarity": 30,
         "cat": "white",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 8,
@@ -87,7 +87,7 @@
         "level": 1,
         "rarity": 30,
         "cat": "white",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 10,
@@ -96,7 +96,7 @@
         "level": 1,
         "rarity": 55,
         "cat": "white",
-        "batch": 6
+        "batch": 5
     },
     {
         "id": 11,
@@ -105,7 +105,7 @@
         "level": 1,
         "rarity": 45,
         "cat": "white",
-        "batch": 6
+        "batch": 5
     },
     {
         "id": 12,
@@ -114,7 +114,7 @@
         "level": 1,
         "rarity": 20,
         "cat": "white",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 13,
@@ -123,7 +123,7 @@
         "level": 1,
         "rarity": 10,
         "cat": "white",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 14,
@@ -132,16 +132,16 @@
         "level": 1,
         "rarity": 25,
         "cat": "white",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 15,
         "name": "Tungstène",
         "bld": "Mine",
         "level": 1,
-        "rarity": 50,
+        "rarity": 25,
         "cat": "white",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 16,
@@ -150,7 +150,7 @@
         "level": 1,
         "rarity": 20,
         "cat": "white",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 17,
@@ -159,7 +159,7 @@
         "level": 1,
         "rarity": 10,
         "cat": "white",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 18,
@@ -168,7 +168,7 @@
         "level": 1,
         "rarity": 10,
         "cat": "white",
-        "batch": 6
+        "batch": 3
     },
     {
         "id": 19,
@@ -177,7 +177,7 @@
         "level": 1,
         "rarity": 20,
         "cat": "white",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 20,
@@ -186,7 +186,7 @@
         "level": 1,
         "rarity": 30,
         "cat": "white",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 21,
@@ -283,9 +283,9 @@
         "name": "Argon",
         "bld": "Derrick",
         "level": 1,
-        "rarity": 10,
+        "rarity": 15,
         "cat": "white",
-        "batch": 2
+        "batch": 1
     },
     {
         "id": 32,
@@ -294,7 +294,7 @@
         "level": 1,
         "rarity": 10,
         "cat": "white",
-        "batch": 2
+        "batch": 1
     },
     {
         "id": 33,
@@ -339,7 +339,7 @@
         "level": 1,
         "rarity": 8,
         "cat": "sky",
-        "batch": 6
+        "batch": 5
     },
     {
         "id": 38,

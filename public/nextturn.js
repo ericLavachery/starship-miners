@@ -316,38 +316,57 @@ function tagsUpdate(bat) {
         tagDelete(bat,'stun');
     }
     if (rand.rand(1,10) === 1) {
+        if (bat.tags.includes('octiron')) {
+            tagIndex = bat.tags.indexOf('octiron');
+            bat.tags.splice(tagIndex,1);
+            if (!bat.tags.includes('octiron')) {
+                drugDown(bat,false,false);
+            }
+        }
+    }
+    if (rand.rand(1,5) === 1) {
         if (bat.tags.includes('kirin')) {
             tagIndex = bat.tags.indexOf('kirin');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat,true,false);
+            if (!bat.tags.includes('kirin')) {
+                drugDown(bat,true,false);
+            }
         }
     }
-    if (rand.rand(1,10) === 1) {
+    if (rand.rand(1,5) === 1) {
         if (bat.tags.includes('sila')) {
             tagIndex = bat.tags.indexOf('sila');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat,false,false);
+            if (!bat.tags.includes('sila')) {
+                drugDown(bat,false,false);
+            }
         }
     }
-    if (rand.rand(1,10) === 1) {
+    if (rand.rand(1,5) === 1) {
         if (bat.tags.includes('bliss')) {
             tagIndex = bat.tags.indexOf('bliss');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat,false,true);
+            if (!bat.tags.includes('bliss')) {
+                drugDown(bat,false,true);
+            }
         }
     }
-    if (rand.rand(1,6) === 1) {
+    if (rand.rand(1,3) === 1) {
         if (bat.tags.includes('blaze')) {
             tagIndex = bat.tags.indexOf('blaze');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat,true,true);
+            if (!bat.tags.includes('blaze')) {
+                drugDown(bat,true,true);
+            }
         }
     }
-    if (rand.rand(1,10) === 1) {
+    if (rand.rand(1,5) === 1) {
         if (bat.tags.includes('skupiac')) {
             tagIndex = bat.tags.indexOf('skupiac');
             bat.tags.splice(tagIndex,1);
-            drugDown(bat,true,false);
+            if (!bat.tags.includes('skupiac')) {
+                drugDown(bat,true,false);
+            }
         }
     }
     if (bat.tags.includes('starka')) {
@@ -418,14 +437,16 @@ function tagsEffect(bat,batType) {
         bat.apLeft = bat.apLeft-2;
     }
     // REGENERATION & KIRIN DRUG
-    if (bat.tags.includes('kirin') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg')) {
+    if (bat.tags.includes('kirin') || bat.tags.includes('octiron') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg')) {
         squadHP = batType.squadSize*batType.hp;
         let batHP = squadHP*batType.squads;
         if (bat.citoyens >= 1) {
             batHP = bat.citoyens*batType.hp;
         }
-        let regen = Math.round(batHP*regenPower/100);
-        if (batType.skills.includes('slowreg')) {
+        let regen;
+        if (bat.tags.includes('kirin') || batType.skills.includes('regeneration')) {
+            regen = Math.round(batHP*regenPower/100);
+        } else {
             regen = Math.round(batHP*slowregPower/100);
         }
         // console.log('regeneration='+regen);
@@ -442,7 +463,7 @@ function tagsEffect(bat,batType) {
     }
     // MALADIE
     if (bat.tags.includes('maladie')) {
-        if (bat.tags.includes('skupiac')) {
+        if (bat.tags.includes('skupiac') || bat.tags.includes('octiron')) {
             tagDelete(bat,'maladie');
         } else {
             bat.apLeft = bat.apLeft-Math.floor(batType.ap/2.2);
@@ -501,11 +522,14 @@ function tagsEffect(bat,batType) {
             }
         }
         // POISON
-        if (bat.tags.includes('poison') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison')) {
+        if (bat.tags.includes('poison') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron')) {
             let allTags = _.countBy(bat.tags);
             let poisonPower = allTags.poison*poisonDamage;
             if (batType.skills.includes('reactpoison') || bat.tags.includes('reactpoison')) {
                 poisonPower = poisonPower*3;
+            }
+            if (batType.cat === 'aliens') {
+                poisonPower = Math.round(poisonPower*1.5);
             }
             console.log('tags poison: '+allTags.poison);
             totalDamage = bat.damage+rand.rand((Math.round(poisonPower/3)),poisonPower);

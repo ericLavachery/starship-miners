@@ -72,7 +72,7 @@ function showRes(tileId) {
         mapIndicators = mapIndicators+'<div class="mapInfos" title="'+res+'">';
     }
     if (tile.rd) {
-        mapIndicators = mapIndicators+'<i class="fas fa-ellipsis-v road"></i>';
+        mapIndicators = mapIndicators+'<i class="fas fa-shoe-prints fa-rotate-270 road"></i>';
     }
     if (tile.tileName !== undefined && tile.tileName != '') {
         mapIndicators = mapIndicators+'<i class="fas fa-map-marker-alt inficon"></i>';

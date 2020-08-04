@@ -76,7 +76,7 @@ function calcDamage(weapon,power,armor,defBat) {
     // bliss drug
     let dmgReduct = 0;
     if (defBat.tags.includes('bliss')) {
-        dmgReduct = 2;
+        dmgReduct = 3;
     }
     let calculatedDmg = powerDice-modifiedArmor-dmgReduct;
     if (calculatedDmg < 0) {
@@ -556,11 +556,15 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.aoe = ammo.aoe;
     }
     // sila drug
-    if (bat.tags.includes('sila') && thisWeapon.isMelee) {
-        thisWeapon.power = thisWeapon.power+5;
-    }
-    if (bat.tags.includes('sila') && !thisWeapon.isMelee) {
-        thisWeapon.accuracy = thisWeapon.accuracy-2;
+    if (bat.tags.includes('sila')) {
+        if (thisWeapon.isMelee) {
+            thisWeapon.power = thisWeapon.power+5;
+        } else if (thisWeapon.isBow) {
+            thisWeapon.accuracy = thisWeapon.accuracy+3;
+            thisWeapon.power = thisWeapon.power+1;
+        } else if (!thisWeapon.isMelee) {
+            thisWeapon.accuracy = thisWeapon.accuracy-2;
+        }
     }
     // blaze drug
     if (bat.tags.includes('blaze') && !thisWeapon.isMelee) {

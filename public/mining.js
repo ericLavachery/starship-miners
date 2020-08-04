@@ -81,13 +81,13 @@ function getTerrainRes(terrain,tile) {
     }
     // Huile
     if (terrain.name === 'F' && tile.seed === 5) {
-        srs.Huile = 7;
+        srs.Huile = 10;
     } else if (terrain.name === 'B' && tile.seed === 6) {
-        srs.Huile = 3;
+        srs.Huile = 5;
     } else if (terrain.name === 'S' && tile.seed === 6) {
-        srs.Huile = 20;
+        srs.Huile = 30;
     } else if (terrain.name === 'S' && tile.seed >= 4) {
-        srs.Huile = 3;
+        srs.Huile = 5;
     }
     // Eau
     if (terrain.name === 'R') {

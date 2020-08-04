@@ -4,6 +4,7 @@ function skillsInfos(bat,batUnitType) {
     let apCost;
     let apReq;
     let tile = getTile(bat);
+    let terrain = getTerrain(bat);
     let inMelee = batInMelee(bat);
     let freeConsTile = false;
     console.log('inMelee='+inMelee);
@@ -421,10 +422,20 @@ function skillsInfos(bat,batUnitType) {
         if (allDrugs.includes('kirin') && !bat.tags.includes('kirin')) {
             apCost = 3;
             if (bat.apLeft >= apCost) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Régénération" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Régénération rapide" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</h4></span>');
             } else {
                 skillMessage = "Pas assez de PA";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</h4></span>');
+            }
+        }
+        // OCTIRON
+        if (allDrugs.includes('octiron') && !bat.tags.includes('octiron')) {
+            apCost = 3;
+            if (bat.apLeft >= apCost) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Régénération, protection poison et maladie" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</h4></span>');
+            } else {
+                skillMessage = "Pas assez de PA";
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</h4></span>');
             }
         }
         // BLISS
@@ -602,9 +613,10 @@ function skillsInfos(bat,batUnitType) {
     // ROUTES / PONTS
     if (batUnitType.skills.includes('constructeur')) {
         if (!tile.rd) {
-            apReq = batUnitType.mecanoCost;
+            apCost = Math.round(batUnitType.mecanoCost*terrain.roadBuild*roadAPCost/30);
+            apReq = Math.ceil(batUnitType.mecanoCost/2);
             if (bat.apLeft >= apReq && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (routes et ponts)" class="boutonGris iconButtons" onclick="putRoad()"><i class="fas fa-road"></i> <span class="small">'+apReq+'</span></button>&nbsp; Route / Pont</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (routes et ponts)" class="boutonGris iconButtons" onclick="putRoad()"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; Route / Pont</h4></span>');
             } else {
                 if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";

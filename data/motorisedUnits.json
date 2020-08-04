@@ -720,7 +720,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["cible","transport","fret","medic","selfbadmecano","dealer","kirin","starka"],
+        "skills":["cible","transport","fret","medic","selfbadmecano","dealer","kirin","octiron","starka"],
         "mediCost":3,
         "mecanoCost":20,
         "maxSkill":16,
@@ -811,7 +811,7 @@
             "power":19,
             "aoe":"brochette",
             "sound":"balista",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -1257,7 +1257,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["medic","selfbadmecano","dealer","kirin","starka","transport"],
+        "skills":["medic","selfbadmecano","dealer","kirin","octiron","starka","transport"],
         "mediCost":3,
         "mecanoCost":14,
         "transMaxSize":9,
@@ -1348,7 +1348,7 @@
             "power":21,
             "aoe":"brochette",
             "sound":"balista",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-poison","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
             "name":"Moissonneuse",

@@ -244,6 +244,7 @@ function goDrug(apCost,drug) {
         selectedBat.apLeft = selectedBat.apLeft-apCost;
         if (!selectedBat.tags.includes(drug)) {
             selectedBat.tags.push(drug);
+            selectedBat.tags.push(drug);
             // blaze instant bonus
             if (drug === 'blaze') {
                 selectedBat.apLeft = selectedBat.apLeft+6;
@@ -285,6 +286,9 @@ function checkDrugs(myBat) {
                     if (batType.skills.includes('kirin')) {
                         allDrugs.push('kirin');
                     }
+                    if (batType.skills.includes('octiron')) {
+                        allDrugs.push('octiron');
+                    }
                     if (batType.skills.includes('skupiac')) {
                         allDrugs.push('skupiac');
                     }
@@ -302,6 +306,9 @@ function checkBatDrugs(bat) {
     let myDrugs = [];
     if (bat.tags.includes('kirin')) {
         myDrugs.push('kr');
+    }
+    if (bat.tags.includes('octiron')) {
+        myDrugs.push('oc');
     }
     if (bat.tags.includes('bliss')) {
         myDrugs.push('bi');
