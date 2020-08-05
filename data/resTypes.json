@@ -27,6 +27,15 @@
         "batch": 6
     },
     {
+        "id": 59,
+        "name": "Graphite",
+        "bld": "Mine",
+        "level": 1,
+        "rarity": 20,
+        "cat": "white",
+        "batch": 4
+    },
+    {
         "id": 3,
         "name": "Silicium",
         "bld": "Mine",
