@@ -419,74 +419,102 @@ function skillsInfos(bat,batUnitType) {
     if (batUnitType.cat === 'infantry') {
         let allDrugs = checkDrugs(bat);
         // KIRIN
-        if (allDrugs.includes('kirin') && !bat.tags.includes('kirin')) {
+        if (allDrugs.includes('kirin') || bat.tags.includes('kirin')) {
+            balise = 'h4';
+            if (bat.tags.includes('kirin')) {
+                balise = 'h1';
+            }
             apCost = 3;
-            if (bat.apLeft >= apCost) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Régénération rapide" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</h4></span>');
+            if (bat.apLeft >= apCost && !bat.tags.includes('kirin')) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Régénération rapide" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
             } else {
                 skillMessage = "Pas assez de PA";
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
             }
         }
         // OCTIRON
-        if (allDrugs.includes('octiron') && !bat.tags.includes('octiron')) {
+        if (allDrugs.includes('octiron') || bat.tags.includes('octiron')) {
+            balise = 'h4';
+            if (bat.tags.includes('octiron')) {
+                balise = 'h1';
+            }
             apCost = 3;
-            if (bat.apLeft >= apCost) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Régénération, protection poison et maladie" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</h4></span>');
+            if (bat.apLeft >= apCost && !bat.tags.includes('octiron')) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Régénération, protection poison et maladie" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
             } else {
                 skillMessage = "Pas assez de PA";
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
             }
         }
         // BLISS
-        if (allDrugs.includes('bliss') && !bat.tags.includes('bliss') && !batUnitType.skills.includes('cyber')) {
+        if ((allDrugs.includes('bliss') && !batUnitType.skills.includes('cyber')) || bat.tags.includes('bliss')) {
+            balise = 'h4';
+            if (bat.tags.includes('bliss')) {
+                balise = 'h1';
+            }
             apCost = 1;
-            if (bat.apLeft >= apCost) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Dégâts reçus réduits / immunisé à la peur" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</h4></span>');
+            if (bat.apLeft >= apCost && !bat.tags.includes('bliss')) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Dégâts reçus réduits / immunisé à la peur" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
             } else {
                 skillMessage = "Pas assez de PA";
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
             }
         }
         // BLAZE
-        if (allDrugs.includes('blaze') && !bat.tags.includes('blaze') && !batUnitType.skills.includes('cyber')) {
+        if ((allDrugs.includes('blaze') && !batUnitType.skills.includes('cyber')) || bat.tags.includes('blaze')) {
+            balise = 'h4';
+            if (bat.tags.includes('blaze')) {
+                balise = 'h1';
+            }
             apCost = 3;
-            if (bat.apLeft >= apCost) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+6 PA & +1 salve" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</h4></span>');
+            if (bat.apLeft >= apCost && !bat.tags.includes('blaze')) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+6 PA & +1 salve" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</'+balise+'></span>');
             } else {
                 skillMessage = "Pas assez de PA";
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</'+balise+'></span>');
             }
         }
         // SKUPIAC
-        if (allDrugs.includes('skupiac') && !bat.tags.includes('skupiac') && !batUnitType.skills.includes('cyber')) {
+        if ((allDrugs.includes('skupiac') && !batUnitType.skills.includes('cyber')) || bat.tags.includes('skupiac')) {
+            balise = 'h4';
+            if (bat.tags.includes('skupiac')) {
+                balise = 'h1';
+            }
             apCost = 3;
-            if (bat.apLeft >= apCost) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Concentration: +6 précision / +3 défense / guérit les maladies" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</h4></span>');
+            if (bat.apLeft >= apCost && !bat.tags.includes('skupiac')) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Concentration: +6 précision / +3 défense / guérit les maladies" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</'+balise+'></span>');
             } else {
                 skillMessage = "Pas assez de PA";
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</'+balise+'></span>');
             }
         }
         // SILA
-        if (allDrugs.includes('sila') && !bat.tags.includes('sila') && !batUnitType.skills.includes('cyber')) {
+        if ((allDrugs.includes('sila') && !batUnitType.skills.includes('cyber')) || bat.tags.includes('sila')) {
+            balise = 'h4';
+            if (bat.tags.includes('sila')) {
+                balise = 'h1';
+            }
             apCost = 3;
-            if (bat.apLeft >= apCost) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+5 puissance aux armes de mêlée" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</h4></span>');
+            if (bat.apLeft >= apCost && !bat.tags.includes('sila')) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+5 puissance aux armes de mêlée" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
             } else {
                 skillMessage = "Pas assez de PA";
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
             }
         }
         // STARKA
-        if (allDrugs.includes('starka') && !bat.tags.includes('starka')) {
+        if (allDrugs.includes('starka') || bat.tags.includes('starka')) {
+            balise = 'h4';
+            if (bat.tags.includes('starka')) {
+                balise = 'h1';
+            }
             apCost = 0;
             let maxStarkaPA = batUnitType.ap+1;
-            if (bat.oldTileId === bat.tileId && bat.apLeft < maxStarkaPA) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+'+batUnitType.ap+' PA, maximum '+maxStarkaPA+' au total" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</h4></span>');
+            if (bat.oldTileId === bat.tileId && bat.apLeft < maxStarkaPA && !bat.tags.includes('starka')) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+batUnitType.ap+' PA, maximum '+maxStarkaPA+' au total" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
             } else {
                 skillMessage = "Conditions non requises";
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris iconButtons gf"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
             }
         }
     }

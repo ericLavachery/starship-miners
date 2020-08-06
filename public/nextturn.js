@@ -233,6 +233,10 @@ function nextTurnEnd() {
                 blub(bat,batType);
             }
             bat.xp = Math.round(bat.xp*100)/100;
+            // nolist
+            if (batType.skills.includes('nolist') && !bat.tags.includes('nolist')) {
+                bat.tags.push('nolist');
+            }
         }
     });
     killBatList();
