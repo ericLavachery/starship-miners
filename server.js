@@ -131,6 +131,16 @@ fs.readFile('./data/ammoTypes.json', 'utf8', function (err, data) {
         console.error( e );
     }
 });
+var armorTypes;
+fs.readFile('./data/armorTypes.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    try {
+        armorTypes = JSON.parse(data);
+        // console.log(unitDV);
+    } catch (e) {
+        console.error( e );
+    }
+});
 var playerInfos = {};
 var bataillons = [];
 var savedMap = [];
@@ -243,6 +253,8 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.emit('unitTypes-Load', unitTypes);
         console.log('loading ammo');
         socket.emit('ammoTypes-Load', ammoTypes);
+        console.log('loading armors');
+        socket.emit('armorTypes-Load', armorTypes);
         console.log('loading map filters');
         socket.emit('mapFilters-Load', mapFilters);
         console.log('loading terrain types');

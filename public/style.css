@@ -49,15 +49,13 @@ body {
     display: none;
 }
 h1,h2,h3,h4 {
-    font-size: 16px;
+    font-size: 19px;
     /* font-weight: bold; */
     display: inline;
     font-weight: normal;
     /* font-family: 'Crushed', cursive; */
-    /* font-family: 'Special Elite', cursive; */
-    /* font-family: 'Bungee Inline', cursive; */
-    font-family: 'Rock Salt', cursive;
-    /* font-family: 'Londrina Shadow', cursive; */
+    font-family: 'Special Elite', cursive;
+    /* font-family: 'Raleway', cursive; */
     /* letter-spacing: 1px; */
 }
 h1 {
@@ -74,12 +72,15 @@ h3 {
     padding: 0px 0px 5px 0px;
 }
 h4 {
-    color: #d5cabd;
+    color: #dde2a4;
     margin: 0;
     padding: 0px 0px 5px 0px;
 }
-.small {
+.notsosmall {
     font-size: 14px;
+}
+.small {
+    font-size: 12px;
 }
 .rosevents {
     padding: 0 0 0 8px;
@@ -142,7 +143,7 @@ h4 {
     width: 135px;
     text-align: right;
     margin-right: 3px;
-    min-height: 21px;
+    min-height: 19px;
     /* font-weight: bold; */
 }
 .paramIcon {
@@ -306,8 +307,8 @@ h4 {
     color: #00fff0;
 }
 .rpg {
-    font-size: 19px;
-    vertical-align: bottom;
+    font-size: 13px;
+    vertical-align: top;
     /* margin-bottom: 2px; */
 }
 #batloop {
@@ -635,6 +636,10 @@ td {
 }
 .hSpace {
     height: 64px;
+    padding: 0;
+}
+.shSpace {
+    height: 4px;
     padding: 0;
 }
 .smSpace {

@@ -43,7 +43,8 @@ function weaponsInfos(bat,batUnitType) {
                 if (cheapWeapCost > thisWeapon.cost) {
                     cheapWeapCost = thisWeapon.cost;
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w1`)"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
+                $('#unitInfos').append('<div class="shSpace"></div>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris skillButtons" onclick="fireMode(`w1`)"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
             } else {
                 // tir impossible
                 if (noFireMelee) {
@@ -59,7 +60,7 @@ function weaponsInfos(bat,batUnitType) {
                         }
                     }
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGris iconButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGris skillButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
             }
             let maxSalves = batUnitType.maxSalvo;
             let resteSalves = bat.salvoLeft;
@@ -134,7 +135,8 @@ function weaponsInfos(bat,batUnitType) {
                 if (cheapWeapCost > thisWeapon.cost) {
                     cheapWeapCost = thisWeapon.cost;
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris iconButtons" onclick="fireMode(`w2`)"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
+                $('#unitInfos').append('<div class="shSpace"></div>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris skillButtons" onclick="fireMode(`w2`)"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
             } else {
                 // tir impossible
                 if (noFireMelee) {
@@ -150,7 +152,7 @@ function weaponsInfos(bat,batUnitType) {
                         }
                     }
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGris iconButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGris skillButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
             }
             let maxSalves = batUnitType.maxSalvo;
             let resteSalves = bat.salvoLeft;

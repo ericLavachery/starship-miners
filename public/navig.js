@@ -23,7 +23,7 @@ function commandes() {
 
         $('#commandz').append('<br>');
         $('#commandz').append('<button type="button" title="Constriche" class="boutonGris iconButtons" onclick="bfconst(`all`,true)"><i class="fa fa-hammer"></i></button>');
-        $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveAllBats()"><i class="far fa-save"></i> &nbsp;<span class="small">Save</span></button>');
+        $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveAllBats()"><i class="far fa-save"></i> &nbsp;<span class="notsosmall">Save</span></button>');
         $('#commandz').append('<br>');
     } else if (activeTurn == 'aliens') {
         if (alienList.length >= 2) {

@@ -16,6 +16,7 @@ function showBatInfos(bat) {
     } else {
         $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batUnitType.name+'</h3> &nbsp;(a<span class="cy">'+bat.army+'</span>)</span>');
     }
+    $('#unitInfos').append('<div class="shSpace"></div>');
 
     let allTags = _.countBy(bat.tags);
     // AP
@@ -142,12 +143,14 @@ function showBatInfos(bat) {
     // WEAPONS & SKILLS
     if (!isStacked()) {
         weaponsInfos(bat,batUnitType);
+        $('#unitInfos').append('<div class="shSpace"></div>');
         skillsInfos(bat,batUnitType);
     } else {
         transInfos(bat,batUnitType);
         defabInfos(bat,batUnitType);
     }
     // ARMIES
+    $('#unitInfos').append('<div class="shSpace"></div>');
     $('#unitInfos').append('<span class="blockTitle"><h3>Armée</h3></span><br>');
     let army = 0;
     let armycol = "";
@@ -165,6 +168,9 @@ function showBatInfos(bat) {
         $('#unitInfos').append('<span class="army"> &Star; <span class="klik'+armycol+'" onclick="armyAssign('+bat.id+','+army+')">'+army+'</span></span>');
         if (army > 9) {break;}
     }
+    // DISMANTLE
+    $('#unitInfos').append('<hr>');
+    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Démanteler" class="boutonRouge skillButtons" onclick="dismantle('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Démanteler</h4></span>');
 
     // RESSOURCES transportées
     console.log('HERE');
@@ -230,7 +236,7 @@ function showEnemyBatInfos(bat) {
         $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
     }
     // DISMANTLE
-    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Supprimer (Tu triches!)" class="boutonGris iconButtons" onclick="deleteAlien('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
+    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Supprimer (Tu triches!)" class="boutonGris skillButtons" onclick="deleteAlien('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
 
     // "moveCost": 3,
     // "maxFlood": 3,
@@ -246,6 +252,7 @@ function showTileInfos(tileId) {
     let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
     let terrain = terrainTypes[terrainIndex];
     $('#tileInfos').append('<span class="blockTitle"><h3>'+terrain.fullName+'</h3></span>');
+    $('#unitInfos').append('<div class="shSpace"></div>');
     // NOM
     if (tile.tileName !== undefined && tile.tileName !== null && tile.tileName != '') {
         $('#tileInfos').append('<span class="paramIcon"><i class="fas fa-map-signs"></i></span><span class="fullLine or"><b>'+tile.tileName+'</b></span><br>');
@@ -317,7 +324,7 @@ function showTileInfos(tileId) {
         });
     }
     // RENOMMER
-    $('#tileInfos').append('<span class="blockTitle"><h4><button type="button" title="Nommer cet emplacement" class="boutonGris iconButtons" onclick="renameTile('+tileId+')"><i class="fas fa-map-signs"></i></button>&nbsp; Mettre une pancarte</h4></span>');
+    $('#tileInfos').append('<span class="blockTitle"><h4><button type="button" title="Nommer cet emplacement" class="boutonGris skillButtons" onclick="renameTile('+tileId+')"><i class="fas fa-map-signs"></i></button>&nbsp; Mettre une pancarte</h4></span>');
 };
 
 function renameTile(tileId) {

@@ -82,6 +82,11 @@ socket.on('ammoTypes-Load', function(at) {
     ammoTypes = at;
     // console.log(ammoTypes);
 });
+// armorTypes
+socket.on('armorTypes-Load', function(at) {
+    armorTypes = at;
+    // console.log(armorTypes);
+});
 // UnitTypes
 socket.on('unitTypes-Load', function(ut) {
     bareUnitTypes = ut;

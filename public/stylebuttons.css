@@ -162,6 +162,12 @@ button:active {
 select.crudButtons {
     padding: 3px 10px;
 }
+.skillButtons {
+    min-width: 25px;
+    font-size: 12px;
+    padding: 4px 5px 3px 5px;
+	margin: 3px 0 3px 6px;
+}
 .iconButtons,.iconButtonsRA {
     min-width: 35px;
     font-size: 17px;

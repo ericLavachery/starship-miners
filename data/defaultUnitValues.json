@@ -41,6 +41,7 @@
         "ammo": [ "standard" ],
         "maxAmmo": 99
     },
+    "protection":["none","scrap","bugium","kevlar","acier","combo","titane","nano","adamantite","egidium","battlesuit"],
     "moveCost": 3,
     "maxFlood": 4,
     "maxScarp": 4,

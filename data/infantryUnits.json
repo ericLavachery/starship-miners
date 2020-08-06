@@ -153,7 +153,6 @@
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-dunium","sm-freeze"]
         },
         "weapon2":{},
-        "protection":["none","scrap","bugium","kevlar","acier","combo","titane","nano","adamantite","egidium","battlesuit"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
