@@ -2209,7 +2209,7 @@
     {
         "id":60,
         "name":"Radios",
-        "pic":"bfg3",
+        "pic":"radios",
         "cat":"infantry",
         "kind":"bulbo kapos",
         "squads":8,
