@@ -149,7 +149,7 @@ h4 {
 .paramIcon {
     text-align: center;
     margin-right: 3px;
-    color: #d5cabd;
+    color: #676056;
     width: 18px;
     display: inline-block;
 }
@@ -717,6 +717,9 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
 }
 .gf {
     color: #a39d95;
+}
+.gff {
+    color: #676056;
 }
 .gris {
     color: #b6a7b5;

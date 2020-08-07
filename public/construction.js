@@ -102,7 +102,36 @@ function conSelect(unitId,player,noRefresh) {
     // console.log(conselUnit);
     $('#conAmmoList').empty();
     $('#conAmmoList').append('<br>');
+    let armorIndex;
+    let batArmor;
+    let armorSkills = '';
     let listNum = 1;
+    if (conselUnit.protection.length >= 1) {
+        console.log(conselUnit.protection);
+        $('#conAmmoList').append('<span class="constName or">Armure</span><br>');
+        conselUnit.protection.forEach(function(armor) {
+            if (conselAmmos[2] == armor || (conselAmmos[2] === 'xxx' && listNum === 1)) {
+                $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+            } else {
+                $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+            }
+            armorIndex = armorTypes.findIndex((obj => obj.name == armor));
+            batArmor = armorTypes[armorIndex];
+            armorSkills = '';
+            if (batArmor.skills.includes('slowreg')) {
+                armorSkills = armorSkills+' slowreg';
+            }
+            if (batArmor.skills.includes('resistacide')) {
+                armorSkills = armorSkills+' resistacide';
+            }
+            if (batArmor.skills.includes('resistfeu')) {
+                armorSkills = armorSkills+' resistfeu';
+            }
+            $('#conAmmoList').append('<span class="constName klik" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+            listNum++;
+        });
+    }
+    listNum = 1;
     if (Object.keys(conselUnit.weapon).length >= 1) {
         if (conselUnit.weapon.ammo.length >= 1) {
             $('#conAmmoList').append('<span class="constName or">'+conselUnit.weapon.name+'</span><br>');
@@ -131,20 +160,6 @@ function conSelect(unitId,player,noRefresh) {
                 listNum++;
             });
         }
-    }
-    listNum = 1;
-    if (conselUnit.protection.length >= 1) {
-        console.log(conselUnit.protection);
-        $('#conAmmoList').append('<span class="constName or">Armure</span><br>');
-        conselUnit.protection.forEach(function(armor) {
-            if (conselAmmos[2] == armor || (conselAmmos[2] === 'xxx' && listNum === 1)) {
-                $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-            } else {
-                $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-            }
-            $('#conAmmoList').append('<span class="constName klik" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+'</span><br>');
-            listNum++;
-        });
     }
     bfconst(conselCat,conselTriche);
 };
@@ -320,8 +335,14 @@ function putBat(tileId,citoyens,xp,startTag) {
         if (conselUnit.skills.includes('hide')) {
             newBat.tags.push('invisible');
         }
-        if (batArmor.slowreg) {
+        if (batArmor.skills.includes('slowreg')) {
             newBat.tags.push('slowreg');
+        }
+        if (batArmor.skills.includes('resistfeu')) {
+            newBat.tags.push('resistfeu');
+        }
+        if (batArmor.skills.includes('resistacide')) {
+            newBat.tags.push('resistacide');
         }
         if (newBat.team === 'player') {
             bataillons.push(newBat);

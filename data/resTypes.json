@@ -441,6 +441,15 @@
         "batch": 1
     },
     {
+        "id": 50,
+        "name": "Mendium",
+        "bld": "",
+        "level": 1,
+        "rarity": 50,
+        "cat": "alien",
+        "batch": 1
+    },
+    {
         "id": 48,
         "name": "Creatite",
         "bld": "",
@@ -452,15 +461,6 @@
     {
         "id": 49,
         "name": "Slime",
-        "bld": "",
-        "level": 1,
-        "rarity": 30,
-        "cat": "alien",
-        "batch": 1
-    },
-    {
-        "id": 50,
-        "name": "Mendium",
         "bld": "",
         "level": 1,
         "rarity": 30,

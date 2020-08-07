@@ -319,7 +319,7 @@ function tagsUpdate(bat) {
     if (rand.rand(1,3) <= 2) {
         tagDelete(bat,'stun');
     }
-    if (rand.rand(1,10) === 1) {
+    if (rand.rand(1,5) === 1) {
         if (bat.tags.includes('octiron')) {
             tagIndex = bat.tags.indexOf('octiron');
             bat.tags.splice(tagIndex,1);
@@ -473,10 +473,24 @@ function tagsEffect(bat,batType) {
             bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
         }
     }
+    // OCTIRON & POISONS
+    if (bat.tags.includes('octiron')) {
+        if (bat.tags.includes('venin')) {
+            tagDelete(bat,'venin');
+        }
+        if (bat.tags.includes('poison')) {
+            tagDelete(bat,'poison');
+            tagDelete(bat,'poison');
+            tagDelete(bat,'poison');
+        }
+    }
     if (!medicalTransports.includes(bat.locId) || bat.loc != 'trans') {
         // PARASITE
         if (bat.tags.includes('parasite')) {
             totalDamage = bat.damage+rand.rand((Math.round(parasiteDamage/3)),parasiteDamage);
+            if (bat.tags.includes('octiron')) {
+                totalDamage = Math.round(totalDamage/10);
+            }
             console.log('parasiteDamage='+totalDamage);
             squadHP = batType.squadSize*batType.hp;
             squadsOut = Math.floor(totalDamage/squadHP);
@@ -514,7 +528,7 @@ function tagsEffect(bat,batType) {
             }
         }
         // VENIN
-        if (bat.tags.includes('venin') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison')) {
+        if (bat.tags.includes('venin') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron')) {
             totalDamage = bat.damage+rand.rand((Math.round(venumDamage/3)),venumDamage);
             console.log('VenomDamage='+totalDamage);
             squadHP = batType.squadSize*batType.hp;

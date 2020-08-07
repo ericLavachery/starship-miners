@@ -389,9 +389,16 @@ function attack() {
     }
     // résistance au feu
     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('pyratol') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov')) {
-        if (targetBatType.skills.includes('resistfeu')) {
+        if (targetBatType.skills.includes('resistfeu') || targetBat.tags.includes('resistfeu')) {
             totalDamage = Math.round(totalDamage/1.5);
             console.log('résistance au feu!');
+        }
+    }
+    // résistance acide
+    if (selectedWeap.name.includes('acide')) {
+        if (targetBatType.skills.includes('resistacide') || targetBat.tags.includes('resistacide')) {
+            totalDamage = Math.round(totalDamage/1.5);
+            console.log('résistance acide!');
         }
     }
     // munitions limitées
@@ -783,9 +790,16 @@ function defense() {
     }
     // résistance au feu
     if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('pyratol') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov')) {
-        if (selectedBatType.skills.includes('resistfeu')) {
+        if (selectedBatType.skills.includes('resistfeu') || selectedBat.tags.includes('resistfeu')) {
             totalDamage = Math.round(totalDamage/1.5);
             console.log('résistance au feu!');
+        }
+    }
+    // résistance acide
+    if (targetWeap.name.includes('acide')) {
+        if (selectedBatType.skills.includes('resistacide') || selectedBat.tags.includes('resistacide')) {
+            totalDamage = Math.round(totalDamage/1.5);
+            console.log('résistance acide!');
         }
     }
     // AP DAMAGE!

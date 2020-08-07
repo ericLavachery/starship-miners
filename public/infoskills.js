@@ -440,7 +440,7 @@ function skillsInfos(bat,batUnitType) {
             }
             apCost = 3;
             if (bat.apLeft >= apCost && !bat.tags.includes('octiron')) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Régénération, protection poison et maladie" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Régénération, protection poisons et maladies" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
             } else {
                 skillMessage = "Pas assez de PA";
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
