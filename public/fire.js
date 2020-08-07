@@ -422,7 +422,7 @@ function attack() {
         }
         if (rand.rand(1,100 <= gripChance)) {
             if (selectedBatType.skills.includes('tail')) {
-                let tailDamage = 75-(targetBatType.armor*3);
+                let tailDamage = 75-(targetBat.armor*3);
                 if (tailDamage > targetBatType.hp) {
                     tailDamage = targetBatType.hp;
                 }
@@ -572,7 +572,7 @@ function attack() {
     // survivor
     if (targetBat.squadsLeft <= 0 && !targetBat.tags.includes('lucky') && targetBatType.skills.includes('survivor')) {
         targetBat.squadsLeft = 1;
-        targetBat.apLeft = targetBatType.ap;
+        targetBat.apLeft = targetBat.ap;
         targetBat.tags.push('lucky');
     }
     console.log('Squads Out : '+squadsOut);
@@ -913,7 +913,7 @@ function defense() {
     // survivor
     if (selectedBat.squadsLeft <= 0 && !selectedBat.tags.includes('lucky') && selectedBatType.skills.includes('survivor')) {
         selectedBat.squadsLeft = 1;
-        selectedBat.apLeft = selectedBatType.ap;
+        selectedBat.apLeft = selectedBat.ap;
         selectedBat.tags.push('lucky');
     }
     console.log('Squads Out : '+squadsOut);
@@ -989,7 +989,7 @@ function shot(weapon,attBatType,bat,batType,shotDice) {
     }
     if (isHit(weapAccu,minAccu,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
         if (weapon.power >= 1) {
-            result.damage = calcDamage(weapon,weapon.power,batType.armor,bat);
+            result.damage = calcDamage(weapon,weapon.power,bat.armor,bat);
         } else {
             result.damage = 0;
         }
@@ -1037,7 +1037,7 @@ function blast(brochette,attBatType,aoeShots,weapon,bat,batType,shotDice) {
         // console.log('power'+power);
         if (isHit(weapAccu,minAccu,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
             if (weapon.power >= 1) {
-                newDamage = calcDamage(weapon,power,batType.armor,bat);
+                newDamage = calcDamage(weapon,power,bat.armor,bat);
             } else {
                 newDamage = 0;
             }

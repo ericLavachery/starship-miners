@@ -116,7 +116,7 @@ let eggsNum = 0;
 let aliensNum = 0;
 // CONSTRUCTION
 let conselUnit = {};
-let conselAmmos = ['xxx','xxx'];
+let conselAmmos = ['xxx','xxx','xxx'];
 let conselCat;
 let conselTriche;
 // INVASION

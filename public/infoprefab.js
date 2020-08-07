@@ -52,7 +52,7 @@ function refabInfos(myBat,myBatUnitType) {
             bataillons.forEach(function(bat) {
                 if (bat.loc === "load" && bat.locId == myBat.id) {
                     batType = getBatType(bat);
-                    if (myBat.apLeft >= Math.round(myBatUnitType.ap/3)) {
+                    if (myBat.apLeft >= Math.round(myBat.ap/3)) {
                         balise = 'h4';
                         if (Object.keys(batDebarq).length >= 1) {
                             if (batDebarq.id === bat.id) {

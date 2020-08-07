@@ -254,7 +254,7 @@ function batUnstack() {
         let selectedUnitType = unitTypes[unitIndex];
         if (selectedBat.salvoLeft < selectedUnitType.maxSalvo) {
             // le bataillon a tiré ce tour ci : pénalité
-            selectedBat.apLeft = 0-selectedUnitType.ap;
+            selectedBat.apLeft = 0-selectedUnit.ap;
         } else {
             // le bataillon n'a pas tiré ce tour ci : regagne ses AP
             selectedBat.apLeft = selectedBat.oldapLeft;

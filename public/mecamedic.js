@@ -25,7 +25,7 @@ function medic(cat,cost,around,deep) {
     let batHPLeft;
     let fullBat;
     console.log('apCost: '+apCost);
-    let maxAPCost = Math.round(selectedBatType.ap*1.5);
+    let maxAPCost = Math.round(selectedBat.ap*1.5);
     if (around) {
         bataillons.forEach(function(bat) {
             if (totalAPCost < maxAPCost) {

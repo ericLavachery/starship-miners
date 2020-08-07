@@ -90,7 +90,7 @@ function catColor(cat,kind) {
 
 function conSelect(unitId,player,noRefresh) {
     if (!noRefresh) {
-        conselAmmos = ['xxx','xxx'];
+        conselAmmos = ['xxx','xxx','xxx'];
     }
     if (player === 'player') {
         let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
@@ -132,6 +132,20 @@ function conSelect(unitId,player,noRefresh) {
             });
         }
     }
+    listNum = 1;
+    if (conselUnit.protection.length >= 1) {
+        console.log(conselUnit.protection);
+        $('#conAmmoList').append('<span class="constName or">Armure</span><br>');
+        conselUnit.protection.forEach(function(armor) {
+            if (conselAmmos[2] == armor || (conselAmmos[2] === 'xxx' && listNum === 1)) {
+                $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+            } else {
+                $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+            }
+            $('#conAmmoList').append('<span class="constName klik" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+'</span><br>');
+            listNum++;
+        });
+    }
     bfconst(conselCat,conselTriche);
 };
 
@@ -142,6 +156,12 @@ function selectAmmo(ammo,weapon,unitId) {
         conselAmmos[1] = ammo;
     }
     // console.log(conselAmmos);
+    conSelect(unitId,'player',true);
+};
+
+function selectArmor(armor,unitId) {
+    conselAmmos[2] = armor;
+    console.log(conselAmmos);
     conSelect(unitId,'player',true);
 };
 
@@ -174,7 +194,7 @@ function clickConstruct(tileId,free) {
         }
     } else {
         conselUnit = {};
-        conselAmmos = ['xxx','xxx'];
+        conselAmmos = ['xxx','xxx','xxx'];
         $('#unitInfos').empty();
         selectMode();
         batUnstack();
@@ -223,6 +243,14 @@ function putBat(tileId,citoyens,xp,startTag) {
         }
         newBat.damage = 0;
         newBat.camoAP = -1;
+        let armorName = conselAmmos[2];
+        if (armorName === 'xxx') {
+            armorName = 'aucune';
+        }
+        let armorIndex = armorTypes.findIndex((obj => obj.name == armorName));
+        let batArmor = armorTypes[armorIndex];
+        newBat.armor = conselUnit.armor+batArmor.armor;
+        newBat.ap = conselUnit.ap+batArmor.ap;
         if (conselTriche) {
             newBat.apLeft = conselUnit.ap;
             newBat.oldapLeft = conselUnit.ap;
@@ -292,6 +320,9 @@ function putBat(tileId,citoyens,xp,startTag) {
         if (conselUnit.skills.includes('hide')) {
             newBat.tags.push('invisible');
         }
+        if (batArmor.slowreg) {
+            newBat.tags.push('slowreg');
+        }
         if (newBat.team === 'player') {
             bataillons.push(newBat);
             // console.log(bataillons);
@@ -305,14 +336,14 @@ function putBat(tileId,citoyens,xp,startTag) {
         console.log('no conselUnit !');
     }
     conselUnit = {};
-    conselAmmos = ['xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx'];
 };
 
 function conOut() {
     $('#conUnitList').empty();
     $('#conAmmoList').empty();
     conselUnit = {};
-    conselAmmos = ['xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx'];
     conselTriche = false;
     $("#conUnitList").css("display","none");
     $("#conAmmoList").css("display","none");
@@ -351,7 +382,7 @@ function dismantle(batId) {
 function recupCitoyens(unitId,tileId,citoyens,xp) {
     let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
     conselUnit = unitTypes[unitIndex];
-    conselAmmos = ['xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx'];
     putBat(tileId,citoyens,xp);
 };
 

@@ -27,6 +27,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -67,6 +68,7 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -107,6 +109,7 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -148,6 +151,7 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -209,6 +213,7 @@
             "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker"],
             "maxAmmo":32
         },
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -249,6 +254,7 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -290,6 +296,7 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -331,6 +338,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -382,6 +390,7 @@
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":32
         },
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -434,6 +443,7 @@
             "sound":"antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -483,6 +493,7 @@
             "sound":"laser_canon",
             "ammo":["laser","laser-g2"]
         },
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -534,6 +545,7 @@
             "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -585,6 +597,7 @@
             "sound":"antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -639,6 +652,7 @@
             "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -696,6 +710,7 @@
             "ammo":["boulet","boulet-explosif","boulet-incendiaire"],
             "maxAmmo":36
         },
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -747,6 +762,7 @@
             "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -787,6 +803,7 @@
             "ammo":["lame-scrap","lame","lame-taser"]
         },
         "weapon2":{},
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -836,6 +853,7 @@
             "sound":"canon_big_multi",
             "ammo":["suicide"]
         },
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -885,6 +903,7 @@
             "sound":"canon_big_multi",
             "ammo":["suicide"]
         },
+        "protection":["aucune"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,

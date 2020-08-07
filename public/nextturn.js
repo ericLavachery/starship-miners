@@ -28,12 +28,12 @@ function nextTurn() {
                 bat.tags.push('invisible');
             }
             bat.salvoLeft = batType.maxSalvo;
-            if (bat.apLeft < 0-batType.ap-batType.ap) {
-                bat.apLeft = 0-batType.ap-batType.ap;
+            if (bat.apLeft < 0-bat.ap-bat.ap) {
+                bat.apLeft = 0-bat.ap-bat.ap;
             }
-            bat.apLeft = bat.apLeft+batType.ap;
-            if (bat.apLeft > batType.ap) {
-                bat.apLeft = batType.ap;
+            bat.apLeft = bat.apLeft+bat.ap;
+            if (bat.apLeft > bat.ap) {
+                bat.apLeft = bat.ap;
             }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
@@ -57,7 +57,7 @@ function nextTurn() {
     spawnSound();
     killAlienList();
     conselUnit = {};
-    conselAmmos = ['xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx'];
     spawnType = {};
     if (aliens.length >= 1) {
         alienTurn();
@@ -92,8 +92,8 @@ function nextTurnEnd() {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             bat.apLeft = Math.ceil(bat.apLeft);
-            if (bat.apLeft < 0-(batType.ap*2) && batType.cat != 'buildings' && !bat.tags.includes('construction')) {
-                bat.apLeft = 0-(batType.ap*2);
+            if (bat.apLeft < 0-(bat.ap*2) && batType.cat != 'buildings' && !bat.tags.includes('construction')) {
+                bat.apLeft = 0-(bat.ap*2);
             }
             if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {
                 boostedTeams.push(batType.kind);
@@ -143,12 +143,12 @@ function nextTurnEnd() {
                         noStuck = true;
                     }
                 }
-                bat.apLeft = bat.apLeft+batType.ap;
+                bat.apLeft = bat.apLeft+bat.ap;
                 if (bat.apLeft > 0) {
                     bat.apLeft = 0;
                 }
-                if (bat.apLeft < 0-Math.round(batType.ap-4)) {
-                    bat.apLeft = 0-Math.round(batType.ap-4);
+                if (bat.apLeft < 0-Math.round(bat.ap-4)) {
+                    bat.apLeft = 0-Math.round(bat.ap-4);
                 }
             }
             ap = getAP(bat);
@@ -187,7 +187,7 @@ function nextTurnEnd() {
             oldAP = ap;
             if (camoEnCours) {
                 console.log('Camouflage en cours');
-                minAP = Math.ceil(batType.ap/2);
+                minAP = Math.ceil(bat.ap/2);
                 apRest = bat.apLeft-minAP;
                 bat.apLeft = minAP;
                 console.log('camoAP '+bat.camoAP);
@@ -203,8 +203,8 @@ function nextTurnEnd() {
                 console.log('camoAP '+bat.camoAP);
             }
             bat.apLeft = bat.apLeft+ap;
-            if (bat.apLeft < 0-(batType.ap*2)) {
-                bat.apLeft = 0-(batType.ap*2);
+            if (bat.apLeft < 0-(bat.ap*2)) {
+                bat.apLeft = 0-(bat.ap*2);
             }
             if (bat.apLeft > oldAP) {
                 bat.apLeft = oldAP;
@@ -407,8 +407,8 @@ function blub(bat,batType) {
             let squadsOut = Math.floor(totalDamage/squadHP);
             bat.squadsLeft = bat.squadsLeft-squadsOut;
             bat.damage = totalDamage-(squadsOut*squadHP);
-            if (bat.apLeft > Math.round(batType.ap/2)) {
-                bat.apLeft = Math.round(batType.ap/2);
+            if (bat.apLeft > Math.round(bat.ap/2)) {
+                bat.apLeft = Math.round(bat.ap/2);
             }
             if (bat.squadsLeft <= 0) {
                 batDeathEffect(bat,true,'Bataillon détruit',bat.type+' noyé.');
@@ -441,7 +441,7 @@ function tagsEffect(bat,batType) {
         bat.apLeft = bat.apLeft-2;
     }
     // REGENERATION & KIRIN DRUG
-    if (bat.tags.includes('kirin') || bat.tags.includes('octiron') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg')) {
+    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg')) {
         squadHP = batType.squadSize*batType.hp;
         let batHP = squadHP*batType.squads;
         if (bat.citoyens >= 1) {
@@ -470,7 +470,7 @@ function tagsEffect(bat,batType) {
         if (bat.tags.includes('skupiac') || bat.tags.includes('octiron')) {
             tagDelete(bat,'maladie');
         } else {
-            bat.apLeft = bat.apLeft-Math.floor(batType.ap/2.2);
+            bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
         }
     }
     if (!medicalTransports.includes(bat.locId) || bat.loc != 'trans') {

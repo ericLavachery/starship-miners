@@ -156,7 +156,7 @@ function dropEgg(alienUnit,edge) {
     console.log('dropping egg...');
     let unitIndex = alienUnits.findIndex((obj => obj.name === alienUnit));
     conselUnit = alienUnits[unitIndex];
-    conselAmmos = ['xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx'];
     alienOccupiedTileList();
     playerOccupiedTileList();
     let dropTile = eggDropTile(alienUnit,edge);
@@ -383,7 +383,7 @@ function vomiSpawn(bat) {
     let dropTile = -1;
     let unitIndex = alienUnits.findIndex((obj => obj.name == 'Vomissure'));
     conselUnit = alienUnits[unitIndex];
-    conselAmmos = ['xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx'];
     console.log(conselUnit);
     if (Object.keys(conselUnit).length >= 1) {
         dropTile = checkDropBlob(bat);
@@ -439,7 +439,7 @@ function alienSpawn(bat,crea) {
     let dropTile = -1;
     let unitIndex = alienUnits.findIndex((obj => obj.name == crea));
     conselUnit = alienUnits[unitIndex];
-    conselAmmos = ['xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx'];
     console.log(conselUnit);
     if (Object.keys(conselUnit).length >= 1) {
         dropTile = checkDrop(bat);
@@ -461,7 +461,7 @@ function alienMorph(bat,newBatName,reset) {
     // put new
     let unitIndex = alienUnits.findIndex((obj => obj.name == newBatName));
     conselUnit = alienUnits[unitIndex];
-    conselAmmos = ['xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx'];
     putBat(putTile,0,0,kindTag);
     // Turn & Tags
     batIndex = aliens.findIndex((obj => obj.tileId == putTile));
@@ -525,7 +525,7 @@ function cocoonSpawn(bat) {
             let i = 1;
             while (i <= spawnNum) {
                 conselUnit = {};
-                conselAmmos = ['xxx','xxx'];
+                conselAmmos = ['xxx','xxx','xxx'];
                 checkDice = rand.rand(1,checkDiceMax);
                 console.log('checkDice='+checkDice);
                 raritySum = 0;
@@ -647,7 +647,7 @@ function eggSpawn(bat,fromEgg) {
             let i = 1;
             while (i <= spawnNum) {
                 conselUnit = {};
-                conselAmmos = ['xxx','xxx'];
+                conselAmmos = ['xxx','xxx','xxx'];
                 checkDice = rand.rand(1,checkDiceMax);
                 console.log('checkDice='+checkDice);
                 raritySum = 0;

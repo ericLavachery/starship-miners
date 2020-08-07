@@ -137,7 +137,7 @@ function getMiningRate(bat,fullRate) {
     if (fullRate) {
         return Math.ceil(batType.mining.rate*bat.squadsLeft/batType.squads);
     } else {
-        return Math.ceil(batType.mining.rate*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads);
+        return Math.ceil(batType.mining.rate*bat.apLeft/bat.ap*bat.squadsLeft/batType.squads);
     }
 };
 

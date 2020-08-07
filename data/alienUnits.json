@@ -93,7 +93,7 @@
         "maxVeg":3,
         "skills":["regeneration","nez","fouisseur","capbld","reactpoison"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"bugium":4,"larvium":3,"mendium":4}
+        "killRes":{"bugium":4,"larvium":4,"mendium":4}
     },
     {
         "id":1,
@@ -148,7 +148,7 @@
         "maxVeg":3,
         "skills":["regeneration","capbld","fouisseur","nez","reactpoison"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"bugium":8,"mendium":12,"larvium":5}
+        "killRes":{"bugium":8,"mendium":12,"larvium":8}
     },
     {
         "id":38,

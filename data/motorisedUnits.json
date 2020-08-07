@@ -43,6 +43,7 @@
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo":16
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -95,6 +96,7 @@
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -146,6 +148,7 @@
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":24
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -198,6 +201,7 @@
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":32
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -251,6 +255,7 @@
             "sound":"harvest",
             "ammo":["lame","lame-tungsten"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -305,6 +310,7 @@
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
             "maxAmmo":24
         },
+        "protection":["aucune"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -355,6 +361,7 @@
             "sound":"mit_light2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -405,6 +412,7 @@
             "sound":"mit_heavy3",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -460,6 +468,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":6,
         "maxFlood":0,
         "maxScarp":1,
@@ -516,6 +525,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":7,
         "maxFlood":0,
         "maxScarp":1,
@@ -567,6 +577,7 @@
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
             "maxAmmo":32
         },
+        "protection":["aucune"],
         "moveCost":6,
         "maxFlood":0,
         "maxScarp":2,
@@ -622,6 +633,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":1,
@@ -679,6 +691,7 @@
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing"],
             "maxAmmo":12
         },
+        "protection":["aucune"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -716,6 +729,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -774,6 +788,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":2,
@@ -829,6 +844,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -886,6 +902,7 @@
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing"],
             "maxAmmo":6
         },
+        "protection":["aucune"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -939,6 +956,7 @@
             "ammo":["missile-sunburst"],
             "maxAmmo":9
         },
+        "protection":["aucune"],
         "moveCost":3,
         "maxFlood":1,
         "maxScarp":2,
@@ -992,6 +1010,7 @@
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
             "maxAmmo":16
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":2,
@@ -1033,6 +1052,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":2,
@@ -1087,6 +1107,7 @@
             "sound":"mark",
             "ammo":["marquage"]
         },
+        "protection":["aucune"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -1139,6 +1160,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -1198,6 +1220,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":1,
@@ -1253,6 +1276,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":1,
@@ -1311,6 +1335,7 @@
             "sound":"harvest",
             "ammo":["lame","lame-tungsten"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":2,
@@ -1365,6 +1390,7 @@
             "sound":"harvest",
             "ammo":["lame","lame-tungsten"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":2,
@@ -1417,6 +1443,7 @@
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
+        "protection":["aucune"],
         "moveCost":4,
         "maxFlood":0,
         "maxScarp":2,
@@ -1468,6 +1495,7 @@
             "ammo":["dynamite","dynamite-nitrate","dynamite-nanite"],
             "maxAmmo":9
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
@@ -1519,6 +1547,7 @@
             "ammo":["fireball","fireglue","fireslime","fireblast"],
             "maxAmmo":12
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
@@ -1571,6 +1600,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -1626,6 +1656,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -1678,6 +1709,7 @@
             "sound":"mit_heavy3",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
+        "protection":["aucune"],
         "moveCost":3,
         "maxFlood":1,
         "maxScarp":2,
@@ -1731,6 +1763,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -1786,6 +1819,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -1842,6 +1876,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":4,
         "maxFlood":3,
         "maxScarp":2,
@@ -1898,6 +1933,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -1951,6 +1987,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":4,
         "maxFlood":1,
         "maxScarp":2,
@@ -1994,6 +2031,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
+        "protection":["aucune"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -2049,6 +2087,7 @@
             "sound":"laser_canon",
             "ammo":["laser","laser-g2"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
@@ -2102,6 +2141,7 @@
             "sound":"firemg_heavy_sa",
             "ammo":["fireshells","fireshells-pyratol"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
@@ -2159,6 +2199,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -2218,6 +2259,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -2274,6 +2316,7 @@
             "sound":"harvest",
             "ammo":["lame","lame-tungsten"]
         },
+        "protection":["aucune"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":1,
@@ -2332,6 +2375,7 @@
             "sound":"calibre_multi",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":1,
@@ -2381,6 +2425,7 @@
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
             "maxAmmo":12
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -2430,6 +2475,7 @@
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm"],
             "maxAmmo":16
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":2,
@@ -2485,6 +2531,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":2,
@@ -2538,6 +2585,7 @@
             "ammo":["grenade","grenade-antichar","grenade-incendiaire"],
             "maxAmmo":3
         },
+        "protection":["aucune"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -2589,6 +2637,7 @@
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
+        "protection":["aucune"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -2642,6 +2691,7 @@
             "ammo":["obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
             "maxAmmo":9
         },
+        "protection":["aucune"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -2694,6 +2744,7 @@
             "ammo":["grenade","grenade-antichar","grenade-incendiaire"],
             "maxAmmo":6
         },
+        "protection":["aucune"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -2732,6 +2783,7 @@
             "maxAmmo":8
         },
         "weapon2":{},
+        "protection":["aucune"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -2789,6 +2841,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":4,
         "maxFlood":3,
         "maxScarp":3,
@@ -2851,6 +2904,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -2909,6 +2963,7 @@
             "ammo":["grenade"],
             "maxAmmo":9
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -2960,6 +3015,7 @@
             "sound":"mark",
             "ammo":["guidage"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -3001,6 +3057,7 @@
             "ammo":["lame-tungsten"]
         },
         "weapon2":{},
+        "protection":["aucune"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -3062,6 +3119,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -3116,6 +3174,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -3171,6 +3230,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":2,
@@ -3229,6 +3289,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
+        "protection":["aucune"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,

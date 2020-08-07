@@ -11,7 +11,7 @@ function skillsInfos(bat,batUnitType) {
     // RAVITAILLEMENT DROGUES
     let anyRavit = checkRavitDrug(bat);
     if (anyRavit && bat.tags.includes('skillUsed') && batUnitType.skills.includes('dealer')) {
-        let apCost = Math.round(batUnitType.ap/2);
+        let apCost = Math.round(bat.ap/2);
         if (bat.apLeft >= 2) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de drogues" class="boutonGris skillButtons" onclick="goRavitDrug('+apCost+')"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp;  Approvisionnement</h4></span>');
         } else {
@@ -22,7 +22,7 @@ function skillsInfos(bat,batUnitType) {
     // RAVITAILLEMENT
     anyRavit = checkRavit(bat);
     if (anyRavit && bat.tags.includes('ammoUsed')) {
-        let apCost = batUnitType.ap;
+        let apCost = bat.ap;
         if (bat.apLeft >= 4) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de munitions" class="boutonGris skillButtons" onclick="goRavit('+apCost+')"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ravitaillement</h4></span>');
         } else {
@@ -33,7 +33,7 @@ function skillsInfos(bat,batUnitType) {
     // STOCKS
     let anyStock = checkStock(bat);
     if (anyStock && bat.tags.includes('skillUsed')) {
-        let apCost = batUnitType.ap;
+        let apCost = bat.ap;
         if (bat.apLeft >= 4) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de ravitaillements" class="boutonGris skillButtons" onclick="goStock('+apCost+')"><i class="fas fa-cubes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réapprovisionnement</h4></span>');
         } else {
@@ -46,9 +46,9 @@ function skillsInfos(bat,batUnitType) {
     // RECONSTRUIRE
     refabInfos(bat,batUnitType);
     // GUET
-    if (batUnitType.weapon.rof >= 1 && !batUnitType.skills.includes('sentinelle') && !batUnitType.skills.includes('initiative') && batUnitType.ap >= 1) {
+    if (batUnitType.weapon.rof >= 1 && !batUnitType.skills.includes('sentinelle') && !batUnitType.skills.includes('initiative') && bat.ap >= 1) {
         apCost = 3;
-        apReq = batUnitType.ap-3;
+        apReq = bat.ap-3;
         if (bat.apLeft >= apReq && !bat.tags.includes('guet')) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le guet (pas de malus à la riposte)" class="boutonGris skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</h4></span>');
@@ -59,7 +59,7 @@ function skillsInfos(bat,batUnitType) {
     }
     // FORTIFICATION
     if (batUnitType.skills.includes('fortif')) {
-        apCost = batUnitType.ap;
+        apCost = bat.ap;
         if (bat.apLeft >= apCost-2 && !bat.tags.includes('fortif') && !inMelee && bat.salvoLeft >= batUnitType.maxSalvo) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se fortifier (bonus couverture)" class="boutonGris skillButtons" onclick="fortification()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</h4></span>');
         } else {
@@ -76,27 +76,27 @@ function skillsInfos(bat,batUnitType) {
     if (batUnitType.skills.includes('camo')) {
         if (batUnitType.cat == 'buildings') {
             if (batUnitType.skills.includes('maycamo')) {
-                apCost = Math.floor(batUnitType.ap*3.5);
-                apReq = Math.floor(batUnitType.ap/1.5);
+                apCost = Math.floor(bat.ap*3.5);
+                apReq = Math.floor(bat.ap/1.5);
                 if (inMelee) {
                     camoufOK = false;
                 }
             } else {
-                apCost = Math.floor(batUnitType.ap*2);
-                apReq = Math.floor(batUnitType.ap/1.5);
+                apCost = Math.floor(bat.ap*2);
+                apReq = Math.floor(bat.ap/1.5);
                 if (inMelee) {
                     camoufOK = false;
                 }
             }
         } else if (batUnitType.cat == 'vehicles' || batUnitType.skills.includes('machine')) {
             if (batUnitType.skills.includes('maycamo')) {
-                apCost = Math.floor(batUnitType.ap*Math.sqrt(batUnitType.size)/1.8);
-                apReq = Math.floor(batUnitType.ap/1.5);
+                apCost = Math.floor(bat.ap*Math.sqrt(batUnitType.size)/1.8);
+                apReq = Math.floor(bat.ap/1.5);
                 if (inMelee) {
                     camoufOK = false;
                 }
             } else {
-                apCost = Math.floor(batUnitType.ap/2);
+                apCost = Math.floor(bat.ap/2);
                 apReq = 3;
                 if (inMelee) {
                     camoufOK = false;
@@ -104,13 +104,13 @@ function skillsInfos(bat,batUnitType) {
             }
         } else {
             if (batUnitType.skills.includes('maycamo')) {
-                apCost = Math.floor(batUnitType.ap*Math.sqrt(batUnitType.size)/1.15);
-                apReq = Math.floor(batUnitType.ap/1.5);
+                apCost = Math.floor(bat.ap*Math.sqrt(batUnitType.size)/1.15);
+                apReq = Math.floor(bat.ap/1.5);
                 if (inMelee) {
                     camoufOK = false;
                 }
             } else {
-                apCost = Math.floor(batUnitType.ap/3);
+                apCost = Math.floor(bat.ap/3);
                 apReq = 1;
             }
         }
@@ -509,9 +509,9 @@ function skillsInfos(bat,batUnitType) {
                 balise = 'h1';
             }
             apCost = 0;
-            let maxStarkaPA = batUnitType.ap+1;
+            let maxStarkaPA = bat.ap+1;
             if (bat.oldTileId === bat.tileId && bat.apLeft < maxStarkaPA && !bat.tags.includes('starka')) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+batUnitType.ap+' PA, maximum '+maxStarkaPA+' au total" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+bat.ap+' PA, maximum '+maxStarkaPA+' au total" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
             } else {
                 skillMessage = "Conditions non requises";
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
@@ -574,8 +574,8 @@ function skillsInfos(bat,batUnitType) {
             if (Object.keys(conselUnit).length >= 1) {
                 balise = 'h1';
             }
-            apCost = Math.round(batUnitType.ap*1.5);
-            if (minesLeft >= 1 && bat.apLeft >= batUnitType.ap && !inMelee) {
+            apCost = Math.round(bat.ap*1.5);
+            if (minesLeft >= 1 && bat.apLeft >= bat.ap && !inMelee) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {
@@ -598,8 +598,8 @@ function skillsInfos(bat,batUnitType) {
             if (Object.keys(conselUnit).length >= 1) {
                 balise = 'h1';
             }
-            apCost = Math.round(batUnitType.ap);
-            if (minesLeft >= 1 && bat.apLeft >= batUnitType.ap && !inMelee) {
+            apCost = Math.round(bat.ap);
+            if (minesLeft >= 1 && bat.apLeft >= bat.ap && !inMelee) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des explosifs" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`dynamite`)"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {

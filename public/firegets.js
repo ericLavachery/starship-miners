@@ -154,7 +154,7 @@ function getStealth(bat) {
 
 function getAP(bat) {
     let batType = getBatType(bat);
-    return batType.ap+Math.round(bat.vet*vetBonus.ap);
+    return bat.ap+Math.round(bat.vet*vetBonus.ap);
 };
 
 function calcSpeed(bat,weap,opweap,distance,attacking) {

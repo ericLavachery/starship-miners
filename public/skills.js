@@ -18,7 +18,7 @@ function fortification() {
         selectedBat.tags.push('fortif');
     }
     selectedBat.salvoLeft = 0;
-    selectedBat.apLeft = selectedBat.apLeft-selectedBatType.ap;
+    selectedBat.apLeft = selectedBat.apLeft-selectedBat.ap;
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -83,7 +83,7 @@ function calcCamo(bat) {
 
 function camouflage(apCost) {
     console.log('MODE FURTIF');
-    if (apCost <= selectedBatType.ap) {
+    if (apCost <= selectedBat.ap) {
         let camChance = calcCamo(selectedBat);
         let camOK = false;
         let camDice = rand.rand(1,100);
@@ -110,8 +110,8 @@ function camouflage(apCost) {
             selectedBat.apLeft = selectedBat.apLeft-apCost;
         }
     } else {
-        selectedBat.camoAP = apCost-Math.floor(selectedBatType.ap/2);
-        selectedBat.apLeft = selectedBat.apLeft-Math.floor(selectedBatType.ap/2);
+        selectedBat.camoAP = apCost-Math.floor(selectedBat.ap/2);
+        selectedBat.apLeft = selectedBat.apLeft-Math.floor(selectedBat.ap/2);
         console.log('camoAP'+selectedBat.camoAP);
     }
     if (!selectedBat.tags.includes('camo')) {
@@ -253,9 +253,9 @@ function goDrug(apCost,drug) {
             }
             // starka instant bonus
             if (drug === 'starka') {
-                selectedBat.apLeft = selectedBat.apLeft+selectedBatType.ap;
-                if (selectedBat.apLeft >= selectedBatType.ap+1) {
-                    selectedBat.apLeft = selectedBatType.ap+1;
+                selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap;
+                if (selectedBat.apLeft >= selectedBat.ap+1) {
+                    selectedBat.apLeft = selectedBat.ap+1;
                 }
                 console.log('starka bonus');
             }
@@ -333,18 +333,18 @@ function dropStuff(apCost,mineType) {
     let unitIndex;
     if (mineType === 'champ') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Champ de mines'));
-        conselAmmos = ['xxx','xxx'];
+        conselAmmos = ['xxx','xxx','xxx'];
     } else if (mineType === 'dynamite') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Explosifs'));
-        conselAmmos = ['xxx','xxx'];
+        conselAmmos = ['xxx','xxx','xxx'];
     } else if (mineType.includes('barb')) {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Barbelés'));
         if (mineType === 'barb-taser') {
-            conselAmmos = ['lame-taser','xxx'];
+            conselAmmos = ['lame-taser','xxx','xxx'];
         } else if (mineType === 'barb-fer') {
-            conselAmmos = ['lame','xxx'];
+            conselAmmos = ['lame','xxx','xxx'];
         } else {
-            conselAmmos = ['lame-scrap','xxx'];
+            conselAmmos = ['lame-scrap','xxx','xxx'];
         }
     }
     conselUnit = unitTypes[unitIndex];
@@ -375,7 +375,7 @@ function clickMine(clicTileId,poseurTileId) {
             showBatInfos(selectedBat);
         } else {
             conselUnit = {};
-            conselAmmos = ['xxx','xxx'];
+            conselAmmos = ['xxx','xxx','xxx'];
             $('#unitInfos').empty();
             selectMode();
             batUnstack();

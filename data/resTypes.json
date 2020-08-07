@@ -132,7 +132,7 @@
         "level": 1,
         "rarity": 10,
         "cat": "white",
-        "batch": 4
+        "batch": 3
     },
     {
         "id": 14,
@@ -168,7 +168,7 @@
         "level": 1,
         "rarity": 10,
         "cat": "white",
-        "batch": 4
+        "batch": 3
     },
     {
         "id": 18,
@@ -177,7 +177,7 @@
         "level": 1,
         "rarity": 10,
         "cat": "white",
-        "batch": 3
+        "batch": 2
     },
     {
         "id": 19,
@@ -312,7 +312,7 @@
         "level": 1,
         "rarity": 4,
         "cat": "blue-sky",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 34,
@@ -321,7 +321,7 @@
         "level": 1,
         "rarity": 8,
         "cat": "sky",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 35,
@@ -330,7 +330,7 @@
         "level": 1,
         "rarity": 8,
         "cat": "sky",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 36,
@@ -339,7 +339,7 @@
         "level": 1,
         "rarity": 4,
         "cat": "blue-sky",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 37,
@@ -348,7 +348,7 @@
         "level": 1,
         "rarity": 8,
         "cat": "sky",
-        "batch": 5
+        "batch": 3
     },
     {
         "id": 38,
@@ -375,7 +375,7 @@
         "level": 1,
         "rarity": 4,
         "cat": "blue-sky",
-        "batch": 10
+        "batch": 8
     },
     {
         "id": 41,

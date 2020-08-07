@@ -40,7 +40,7 @@ function showBatInfos(bat) {
     // $('#unitInfos').append('<span class="paramName">'+terrainNoGo+'</span><span class="paramIcon"></span><span class="paramValue"></span><br>');
     // PROTECTION
     // $('#unitInfos').append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.hp+'</span><br>');
-    // $('#unitInfos').append('<span class="paramName">Armure</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.armor+'</span><br>');
+    // $('#unitInfos').append('<span class="paramName">Armure</span><span class="paramIcon"></span><span class="paramValue">'+bat.armor+'</span><br>');
     // $('#unitInfos').append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.size+'</span><br>');
     let volume = calcVolume(bat,batUnitType);
     $('#unitInfos').append('<span class="paramName">Volume</span><span class="paramIcon"></span><span class="paramValue">'+volume+'</span><br>');
@@ -168,16 +168,13 @@ function showBatInfos(bat) {
         $('#unitInfos').append('<span class="army"> &Star; <span class="klik'+armycol+'" onclick="armyAssign('+bat.id+','+army+')">'+army+'</span></span>');
         if (army > 9) {break;}
     }
-    // DISMANTLE
-    $('#unitInfos').append('<hr>');
-    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Démanteler" class="boutonRouge skillButtons" onclick="dismantle('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Démanteler</h4></span>');
-
     // RESSOURCES transportées
     console.log('HERE');
     if (batUnitType.transRes >= 1) {
         console.log('btres');
         if (Object.keys(bat.transRes).length >= 1) {
             console.log('bres');
+            $('#unitInfos').append('<div class="shSpace"></div>');
             $('#unitInfos').append('<span class="blockTitle"><h3>Ressources</h3></span><br>');
             let transportedRes = JSON.stringify(bat.transRes);
             transportedRes = transportedRes.replace(/"/g,"");
@@ -191,6 +188,9 @@ function showBatInfos(bat) {
         }
     }
 
+    // DISMANTLE
+    $('#unitInfos').append('<hr>');
+    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Démanteler" class="boutonRouge skillButtons" onclick="dismantle('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Démanteler</h4></span>');
 
     // "moveCost": 3,
     // "maxFlood": 3,
@@ -211,7 +211,7 @@ function showEnemyBatInfos(bat) {
     $('#unitInfos').append('<span class="paramName">Unités/Escouade</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.squadSize+'</span><br>');
     // PROTECTION
     $('#unitInfos').append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.hp+'</span><br>');
-    $('#unitInfos').append('<span class="paramName">Armure</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.armor+'</span><br>');
+    $('#unitInfos').append('<span class="paramName">Armure</span><span class="paramIcon"></span><span class="paramValue">'+bat.armor+'</span><br>');
     $('#unitInfos').append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.size+'</span><br>');
     let stealth = getStealth(bat);
     $('#unitInfos').append('<span class="paramName">Discrétion</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
