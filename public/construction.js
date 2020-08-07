@@ -265,7 +265,11 @@ function putBat(tileId,citoyens,xp,startTag) {
         let armorIndex = armorTypes.findIndex((obj => obj.name == armorName));
         let batArmor = armorTypes[armorIndex];
         newBat.armor = conselUnit.armor+batArmor.armor;
-        newBat.ap = conselUnit.ap+batArmor.ap;
+        if ((conselUnit.skills.includes('moto') || conselUnit.skills.includes('fly')) && batArmor.ap < 0) {
+            newBat.ap = conselUnit.ap+batArmor.ap+batArmor.ap;
+        } else {
+            newBat.ap = conselUnit.ap+batArmor.ap;
+        }
         if (conselTriche) {
             newBat.apLeft = conselUnit.ap;
             newBat.oldapLeft = conselUnit.ap;

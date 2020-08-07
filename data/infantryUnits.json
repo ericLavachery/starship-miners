@@ -1653,7 +1653,7 @@
         "volume":1.2,
         "stealth":3,
         "speed":4,
-        "ap":18,
+        "ap":20,
         "maxSalvo":1,
         "weapon":{
             "name":"Fusil d'assaut",
@@ -1967,7 +1967,7 @@
         "size":3,
         "volume":1.2,
         "stealth":15,
-        "ap":19,
+        "ap":20,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet plasma",
@@ -2167,7 +2167,7 @@
         "volume":1.2,
         "stealth":14,
         "speed":0,
-        "ap":19,
+        "ap":20,
         "maxSalvo":1,
         "weapon":{
             "name":"Fusil pneu",
@@ -2221,7 +2221,7 @@
         "volume":1.2,
         "stealth":5,
         "speed":3,
-        "ap":19,
+        "ap":20,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet plasma",
@@ -3128,7 +3128,7 @@
         "volume":1.2,
         "stealth":3,
         "speed":5,
-        "ap":20,
+        "ap":22,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet plasma",
@@ -3533,7 +3533,7 @@
         "volume":1.2,
         "stealth":8,
         "speed":4,
-        "ap":19,
+        "ap":20,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet mitrailleur",
