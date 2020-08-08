@@ -224,7 +224,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fret","dumper","realdumper","underground","camo","unload","transport"],
+        "skills":["fret","dumper","realdumper","underground","camo","unload","transport","nodeathcount"],
         "transMaxSize":9,
         "transUnits":1500,
         "transRes":5000,

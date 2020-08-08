@@ -349,11 +349,11 @@ function spawns() {
                 alienSpawn(bat,'Lucioles');
             } else if (bat.type === 'Vermisseaux' && flyDice >= 5 && aliensNums.moucherons < Math.round(maxPonte*1.5)) {
                 alienSpawn(bat,'Moucherons');
-            } else if (transList.includes('Asticots') && bat.type === 'Asticots') {
+            } else if (transList.includes('Asticots') && bat.squadsLeft >= 5 && bat.type === 'Asticots') {
                 alienMorph(bat,'Moucherons',false);
-            } else if (transList.includes('Vers') && bat.type === 'Vers') {
+            } else if (transList.includes('Vers') && bat.squadsLeft >= 5 && bat.type === 'Vers') {
                 alienMorph(bat,'Lucioles',false);
-            } else if (transList.includes('Larves') && bat.type === 'Larves') {
+            } else if (transList.includes('Larves') && bat.squadsLeft >= 3 && bat.type === 'Larves') {
                 alienMorph(bat,'Wurms',false);
             } else if (transList.includes('Ombres') && bat.type === 'Ombres') {
                 alienMorph(bat,'Fantômes',false);
@@ -365,7 +365,7 @@ function spawns() {
                 alienSpawn(bat,'Scorpions');
             } else if (bat.type === 'Megagrubz' && rand.rand(1,2) === 1 && aliensNums.larves < maxPonte) {
                 alienSpawn(bat,'Scorpions');
-            } else if (bat.type === 'Cafards' && rand.rand(1,6) === 1 && aliensNums.cafards < maxPonte*3) {
+            } else if (bat.type === 'Cafards' && bat.squadsLeft >= 4 && rand.rand(1,6) === 1 && aliensNums.cafards < maxPonte*3) {
                 alienSpawn(bat,'Cafards');
             } else if (bat.type === 'Glaireuse' && aliensNums.gluantes < maxPonte) {
                 alienSpawn(bat,'Gluantes');
