@@ -795,7 +795,7 @@
             "noAtt":true,
             "noFly":true,
             "rof":6,
-            "accuracy":8,
+            "accuracy":10,
             "power":4,
             "armors":1,
             "aoe":"brochette",

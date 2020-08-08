@@ -2292,7 +2292,7 @@
             "noFly":true,
             "noBis":true,
             "rof":1,
-            "accuracy":13,
+            "accuracy":15,
             "power":18,
             "aoe":"squad",
             "sound":"canon_small",
@@ -2303,7 +2303,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","selfbadmedic","bastion","maycamo","embuscade","longshot","recupcit"],
+        "skills":["fortif","cible","selfbadmedic","bastion","camo","embuscade","longshot","recupcit"],
         "mediCost":9,
         "fuzz":1,
         "deathFx":"human3"
