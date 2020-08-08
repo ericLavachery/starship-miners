@@ -42,7 +42,7 @@
         "level": 1,
         "rarity": 35,
         "cat": "white",
-        "batch": 6
+        "batch": 5
     },
     {
         "id": 4,
@@ -51,7 +51,7 @@
         "level": 1,
         "rarity": 100,
         "cat": "white",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 5,
@@ -60,7 +60,7 @@
         "level": 1,
         "rarity": 35,
         "cat": "white",
-        "batch": 6
+        "batch": 5
     },
     {
         "id": 6,
@@ -123,7 +123,7 @@
         "level": 1,
         "rarity": 20,
         "cat": "white",
-        "batch": 4
+        "batch": 3
     },
     {
         "id": 13,
@@ -132,7 +132,7 @@
         "level": 1,
         "rarity": 10,
         "cat": "white",
-        "batch": 3
+        "batch": 2
     },
     {
         "id": 14,
@@ -141,7 +141,7 @@
         "level": 1,
         "rarity": 25,
         "cat": "white",
-        "batch": 4
+        "batch": 3
     },
     {
         "id": 15,
@@ -150,7 +150,7 @@
         "level": 1,
         "rarity": 25,
         "cat": "white",
-        "batch": 4
+        "batch": 3
     },
     {
         "id": 16,
@@ -159,7 +159,7 @@
         "level": 1,
         "rarity": 20,
         "cat": "white",
-        "batch": 4
+        "batch": 3
     },
     {
         "id": 17,
@@ -186,7 +186,7 @@
         "level": 1,
         "rarity": 20,
         "cat": "white",
-        "batch": 4
+        "batch": 3
     },
     {
         "id": 20,
@@ -195,7 +195,7 @@
         "level": 1,
         "rarity": 30,
         "cat": "white",
-        "batch": 4
+        "batch": 3
     },
     {
         "id": 21,
