@@ -1,3 +1,7 @@
+Number.prototype.toFixedNumber = function(digits, base){
+  var pow = Math.pow(base||10, digits);
+  return Math.round(this*pow) / pow;
+}
 // Player
 socket.on('playerInfos-Load', function(pi) {
     playerInfos = pi;

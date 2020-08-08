@@ -312,7 +312,8 @@ function medic(cat,cost,around,deep) {
         }
     }
     console.log('totalAPCost: '+totalAPCost);
-    xpGain = Math.round(xpGain*100)/100;
+    // xpGain = Math.round(xpGain*100)/100;
+    xpGain = xpGain.toFixedNumber(2);
     selectedBat.xp = selectedBat.xp+xpGain;
     selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
     tagDelete(selectedBat,'mining');

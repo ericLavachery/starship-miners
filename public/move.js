@@ -374,6 +374,7 @@ function calcMoveCost(targetTileId,diag) {
             moveCost = 2;
         }
     }
+    moveCost = moveCost.toFixedNumber(1);
     return moveCost;
 };
 

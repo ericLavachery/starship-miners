@@ -232,7 +232,9 @@ function nextTurnEnd() {
             if (bat.loc === "zone") {
                 blub(bat,batType);
             }
-            bat.xp = Math.round(bat.xp*100)/100;
+            // bat.xp = Math.round(bat.xp*100)/100;
+            bat.xp = bat.xp.toFixedNumber(2);
+            bat.apLeft = bat.apLeft.toFixedNumber(1);
             // nolist
             if (batType.skills.includes('nolist') && !bat.tags.includes('nolist')) {
                 bat.tags.push('nolist');
@@ -661,7 +663,8 @@ function levelUp(bat) {
             bat.vet = 1;
         }
     }
-    bat.xp = Math.round(100*bat.xp)/100;
+    // bat.xp = Math.round(100*bat.xp)/100;
+    bat.xp = bat.xp.toFixedNumber(2);
 };
 
 function alienOccupiedTileList() {
