@@ -1606,7 +1606,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","mecano","repair","constructeur","noblub"],
-        "mecanoCost":7,
+        "mecanoCost":6,
         "maxSkill":8,
         "fuzz":1.5,
         "deathFx":"planeexploair1"

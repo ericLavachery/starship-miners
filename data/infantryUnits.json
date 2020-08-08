@@ -1122,7 +1122,7 @@
     {
         "id":24,
         "name":"Bombastiks",
-        "pic":"bombastick",
+        "pic":"bombastik",
         "cat":"infantry",
         "kind":"detruas",
         "squads":6,
@@ -2911,7 +2911,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","mecano","repair","constructeur","cyber","fret","noblub","resistfeu"],
-        "mecanoCost":6,
+        "mecanoCost":5,
         "maxSkill":8,
         "transRes":60,
         "fuzz":1.5,
