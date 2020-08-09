@@ -1,6 +1,7 @@
 function showBatInfos(bat) {
     $('#unitInfos').empty();
     conWindowOut();
+    let tagColor = 'cy';
     let unitTypesIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     let batUnitType = unitTypes[unitTypesIndex];
     let unitsLeft = bat.squadsLeft*batUnitType.squadSize;
@@ -40,7 +41,11 @@ function showBatInfos(bat) {
     // $('#unitInfos').append('<span class="paramName">'+terrainNoGo+'</span><span class="paramIcon"></span><span class="paramValue"></span><br>');
     // PROTECTION
     // $('#unitInfos').append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.hp+'</span><br>');
-    $('#unitInfos').append('<span class="paramName">Armure</span><span class="paramIcon"><i class="fas fa-shield-alt"></i></span><span class="paramValue">'+bat.armor+'</span><br>');
+    let armure = bat.armor;
+    if (bat.tags.includes('fortif') && batUnitType.skills.includes('bigfortif')) {
+        armure = armure+2;
+    }
+    $('#unitInfos').append('<span class="paramName">Armure</span><span class="paramIcon"><i class="fas fa-shield-alt"></i></span><span class="paramValue">'+armure+'</span><br>');
     // $('#unitInfos').append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.size+'</span><br>');
     let volume = calcVolume(bat,batUnitType);
     $('#unitInfos').append('<span class="paramName">Volume</span><span class="paramIcon"><i class="fas fa-weight-hanging"></i></span><span class="paramValue">'+volume+'</span><br>');
@@ -68,6 +73,7 @@ function showBatInfos(bat) {
     }
     let batFuzz = calcBatFuzz(bat);
     $('#unitInfos').append('<span class="paramName">Attraction</span><span class="paramIcon"></span><span class="paramValue">'+batFuzz+'</span><br>');
+    // TAGS
     if (bat.tags.includes('embuscade')) {
         $('#unitInfos').append('<span class="paramName cy">Embuscade</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
@@ -122,7 +128,8 @@ function showBatInfos(bat) {
     // AUTOSKILLS
     if (batUnitType.skills.includes('ravitaillement')) {
         let ravitNum = calcRavit(bat);
-        $('#unitInfos').append('<span class="paramName cy">Ravitaillements</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
+        if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
+        $('#unitInfos').append('<span class="paramName '+tagColor+'">Ravitaillements</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
     }
     if (batUnitType.transUnits >= 1) {
         let transLeft = calcTransUnitsLeft(bat,batUnitType);
@@ -130,19 +137,23 @@ function showBatInfos(bat) {
     }
     if (batUnitType.transRes >= 1) {
         let restSpace = checkResSpace(bat);
-        $('#unitInfos').append('<span class="paramName cy">Fret</span><span class="paramIcon"></span><span class="paramValue cy">'+restSpace+'/'+resMax+'</span><br>');
+        if (restSpace < 1) {tagColor = 'or';} else {tagColor = 'cy';}
+        $('#unitInfos').append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/'+resMax+'</span><br>');
     }
     if (batUnitType.skills.includes('dealer')) {
         let ravitNum = calcRavit(bat);
-        $('#unitInfos').append('<span class="paramName cy">Drogues</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
+        if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
+        $('#unitInfos').append('<span class="paramName '+tagColor+'">Drogues</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
     }
     if (batUnitType.skills.includes('landmine') || batUnitType.skills.includes('dynamite')) {
         let ravitNum = calcRavit(bat);
-        $('#unitInfos').append('<span class="paramName cy">Mines</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
+        if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
+        $('#unitInfos').append('<span class="paramName '+tagColor+'">Mines</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
     }
     if (batUnitType.skills.includes('constructeur')) {
         let ravitNum = calcRavit(bat);
-        $('#unitInfos').append('<span class="paramName cy">Barbelés</span><span class="paramIcon"></span><span class="paramValue cy">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
+        if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
+        $('#unitInfos').append('<span class="paramName '+tagColor+'">Barbelés</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
     }
     // WEAPONS & SKILLS
     if (!isStacked()) {

@@ -50,13 +50,19 @@ function isHit(accuracy,minAccu,aoe,size,stealth,cover,speed,shotDice) {
 
 function calcDamage(weapon,power,armor,defBat) {
     // powerDice is max 4x power
-    let modifiedArmor = Math.round(armor*weapon.armors);
+    // bigfortif
+    let defBatType = getBatType(defBat);
+    if (defBat.tags.includes('fortif') && defBatType.skills.includes('bigfortif')) {
+        armor = armor+2;
+    }
+    let armorModifier = weapon.armors;
     // creuseur
-    if (weapon.ammo.includes('troueur') && weapon.ammo.includes('creuseur')) {
+    if (weapon.ammo.includes('troueur') || weapon.ammo.includes('creuseur')) {
         if (defBat.tags.includes('trou')) {
-            modifiedArmor = 0.15;
+            armorModifier = 0.15;
         }
     }
+    let modifiedArmor = Math.round(armor*armorModifier);
     let powerDice;
     if (power >= 3) {
         let powerDiceMin = Math.round(power/2.5);
@@ -105,6 +111,9 @@ function getCover(bat,withFortif) {
     if (withFortif) {
         if (bat.tags.includes('fortif')) {
             cover = terrain.fortifcover;
+            if (batType.skills.includes('bigfortif')) {
+                cover = cover+3;
+            }
         }
     }
     return cover;
