@@ -347,6 +347,7 @@
         "transMaxSize":9,
         "transUnits":1000,
         "refabTime":50,
+        "bldCost":{"Scrap":360,"Fer":120,"Soufre":162,"Plomb":162},
         "fuzz":1.5,
         "deathFx":"explo1"
     },

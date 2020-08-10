@@ -52,6 +52,7 @@
     "mecanoCost":30,
     "maxSkill": 999,
     "refabTime":-1,
+    "bldCost":{},
     "transMaxSize":0,
     "transUnits":0,
     "transRes":0,

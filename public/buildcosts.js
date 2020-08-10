@@ -11,11 +11,14 @@ function voirReserve() {
     let dispoCit = getDispoCit();
     $('#conUnitList').append('<span class="paramName">Citoyens</span><span class="paramIcon"></span><span class="paramValue">'+dispoCit+'</span><br>');
     let dispoRes;
-    let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'bld'),'cat');
+    let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'bld'),'cat'),'cat');
     sortedResTypes.reverse();
+    sortedResTypes = _.sortBy(sortedResTypes,'level')
     sortedResTypes.forEach(function(res) {
         dispoRes = getDispoRes(res.name);
-        $('#conUnitList').append('<span class="paramName">'+res.name+'</span><span class="paramIcon"></span><span class="paramValue">'+dispoRes+'</span><br>');
+        if (dispoRes >= 1) {
+            $('#conUnitList').append('<span class="paramName">'+res.name+'</span><span class="paramIcon"></span><span class="paramValue">'+dispoRes+'</span><br>');
+        }
     });
 };
 
