@@ -89,6 +89,7 @@ let mecanoHP = 90;
 let roadAPCost = 8;
 let batDebarq = {};
 let medicalTransports = [];
+let landers = [];
 // ALIENS
 let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;
 let isFFW = false;

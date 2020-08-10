@@ -61,7 +61,7 @@ function checkEggsDrop() {
         dropChance = 0;
     }
     console.log('dropChance='+dropChance);
-    if (rand.rand(1,100) <= dropChance && aliens.length < maxAliens && !playerInfos.eggPause) {
+    if (rand.rand(1,100) <= dropChance && aliens.length < maxAliens && !playerInfos.eggPause && playerInfos.mapDiff >= 1) {
         drop = true;
         eggsDrop();
     }

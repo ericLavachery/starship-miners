@@ -79,6 +79,7 @@ function nextTurnEnd() {
     let boostedTeams = [];
     let prayedTeams = [];
     medicalTransports = [];
+    landers = [];
     let thisAPBonus;
     let ravitNum;
     let emptyBonus;
@@ -91,6 +92,9 @@ function nextTurnEnd() {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
+            if (batType.skills.includes('transorbital')) {
+                landers.push(bat);
+            }
             bat.apLeft = Math.ceil(bat.apLeft);
             if (bat.apLeft < 0-(bat.ap*2) && batType.cat != 'buildings' && !bat.tags.includes('construction')) {
                 bat.apLeft = 0-(bat.ap*2);
