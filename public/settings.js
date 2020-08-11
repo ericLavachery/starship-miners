@@ -80,6 +80,7 @@ let minFireAP = -7; // ne peut pas tirer si moins d'AP (ni attaque ni riposte)
 let stealthMaxChance = 96; // max chance de se rendre invisible
 let berserkEnemyDamage = 1.5;
 let berserkROF = 1.5;
+let minesExploded = 0;
 let deadBatsList = [];
 let deadAliensList = [];
 let luckCheck = [7,14,21,86,93,100];

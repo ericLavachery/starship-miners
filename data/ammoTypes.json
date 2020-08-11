@@ -690,6 +690,16 @@
         "aoe": ""
     },
     {
+        "name": "mine",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
         "name": "autodestruction",
         "range": 1,
         "rof": 1,

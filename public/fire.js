@@ -63,6 +63,7 @@ function combat() {
     console.log('START COMBAT');
     tagDelete(selectedBat,'mining');
     tagDelete(targetBat,'mining');
+    minesExploded = 0;
     let soundWeap;
     let soundBat;
     if (activeTurn == 'player') {
@@ -129,7 +130,7 @@ function combat() {
             if (targetBatType.skills.includes('guerrilla')) {
                 minimumFireAP = minFireAP-7;
             }
-            if (defAlive && targetBat.apLeft > minimumFireAP) {
+            if ((defAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo === 'mine') {
                 defense();
                 if (!isFFW) {
                     soundWeap = targetWeap;
@@ -203,6 +204,7 @@ function combat() {
 function attack() {
     console.log('Attaque ->');
     console.log(selectedWeap);
+    minesExploded = 0;
     let xpFactor = Math.round(12/selectedBatType.maxSalvo/10);
     xpFactor = xpFactor.toFixedNumber(2);
     if (selectedBatType.maxSalvo >= 5) {
@@ -571,6 +573,13 @@ function attack() {
     if (apDamage >= 1) {
         $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
     }
+    // Champs de mines
+    if (targetWeap.ammo === 'mine') {
+        minesExploded = Math.floor(totalDamage/targetBatType.hp);
+        if (minesExploded > targetBatType.squadSize*targetBatType.squads) {
+            minesExploded = targetBatType.squadSize*targetBatType.squads;
+        }
+    }
     targetBat.apLeft = targetBat.apLeft-apDamage;
     totalDamage = totalDamage+targetBat.damage;
     let squadHP = (targetBatType.squadSize*targetBatType.hp);
@@ -720,7 +729,7 @@ function defense() {
             brideDef = 1.2;
         }
     } else {
-        if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative')) {
+        if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative') || targetBatType.skills.includes('after')) {
             brideDef = 1;
         }
     }
@@ -736,6 +745,11 @@ function defense() {
     // bugROF
     if (bugROF > 1 && targetBatType.kind === 'bug') {
         shots = Math.round(shots*bugROF);
+    }
+    // Champs de mines
+    if (targetWeap.ammo === 'mine') {
+        shots = minesExploded;
+        console.log('shots: '+shots);
     }
     // console.log(shots);
     // console.log(aoeShots);

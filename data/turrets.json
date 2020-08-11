@@ -840,7 +840,7 @@
             "power":27,
             "aoe":"squad",
             "sound":"canon_big",
-            "ammo":["dynamite"]
+            "ammo":["mine"]
         },
         "weapon2":{
             "name":"Explosion",
@@ -850,7 +850,7 @@
             "rof":12,
             "accuracy":17,
             "power":27,
-            "aoe":"squad",
+            "aoe":"bat",
             "sound":"canon_big_multi",
             "ammo":["suicide"]
         },
@@ -859,7 +859,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["initiative","nonumname","nodeathcount","notarget","halfcover","prefab","noblub","nolist","norepair"],
+        "skills":["after","nonumname","nodeathcount","notarget","halfcover","prefab","noblub","nolist","norepair"],
         "refabTime":25,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
@@ -886,11 +886,11 @@
             "range":0,
             "noAtt":true,
             "rof":1,
-            "accuracy":25,
-            "power":20,
+            "accuracy":17,
+            "power":14,
             "aoe":"brochette",
             "sound":"canon_big",
-            "ammo":["dynamite"]
+            "ammo":["mine"]
         },
         "weapon2":{
             "name":"Explosion",
@@ -898,9 +898,9 @@
             "range":0,
             "noDef":true,
             "rof":12,
-            "accuracy":25,
-            "power":20,
-            "aoe":"brochette",
+            "accuracy":17,
+            "power":14,
+            "aoe":"squad",
             "sound":"canon_big_multi",
             "ammo":["suicide"]
         },
@@ -909,7 +909,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["initiative","nonumname","nodeathcount","notarget","halfcover","prefab","bigblub","nolist","norepair"],
+        "skills":["after","nonumname","nodeathcount","notarget","halfcover","prefab","bigblub","nolist","norepair"],
         "refabTime":25,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"

@@ -46,7 +46,7 @@ function skillsInfos(bat,batUnitType) {
     // RECONSTRUIRE
     refabInfos(bat,batUnitType);
     // GUET
-    if (batUnitType.weapon.rof >= 1 && !batUnitType.skills.includes('sentinelle') && !batUnitType.skills.includes('initiative') && bat.ap >= 1) {
+    if (batUnitType.weapon.rof >= 1 && !batUnitType.skills.includes('sentinelle') && !batUnitType.skills.includes('initiative') && !batUnitType.skills.includes('after') && bat.ap >= 1) {
         apCost = 3;
         apReq = bat.ap-3;
         if (bat.apLeft >= apReq && !bat.tags.includes('guet')) {
