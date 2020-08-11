@@ -41,7 +41,7 @@ function medic(cat,cost,around,deep) {
                         } else {
                             catOK = false;
                         }
-                        if (catOK) {
+                        if (catOK && !batType.skills.includes('norepair')) {
                             console.log('catOK');
                             console.log(bat);
                             if (cat === 'infantry') {
@@ -366,7 +366,7 @@ function numMedicTargets(myBat,cat,around,deep) {
                     } else {
                         catOK = false;
                     }
-                    if (catOK) {
+                    if (catOK && !batType.skills.includes('norepair')) {
                         if (deep) {
                             if ((bat.damage > 0 && !fullBat) || (bat.squadsLeft < batType.squads && !fullBat) || bat.tags.includes('poison') || bat.tags.includes('venin') || bat.tags.includes('maladie') || bat.tags.includes('parasite') || bat.tags.includes('trou')) {
                                 numTargets = numTargets+1;

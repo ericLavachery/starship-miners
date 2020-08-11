@@ -83,6 +83,12 @@ function showRes(tileId) {
     if (tile.rd || tile.rq >= 1 || (tile.tileName !== undefined && tile.tileName != '')) {
         mapIndicators = mapIndicators+'</div>';
     }
+    if (tile.ruins) {
+        mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/ruins.png"></div>'
+    }
+    if (tile.talus) {
+        mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/talus.png"></div>'
+    }
     return mapIndicators;
 };
 

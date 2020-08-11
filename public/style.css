@@ -226,6 +226,13 @@ h4 {
     margin-top: -3px;
     z-index: -5;
 }
+.ruins {
+    position: absolute;
+    /* width: 68px; */
+    margin-right: -3px;
+    margin-top: -3px;
+    z-index: -5;
+}
 .inficon {
     margin-left: 2px;
     color: #ffffff;

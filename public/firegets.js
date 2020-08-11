@@ -592,14 +592,20 @@ function weaponAdj(weapon,bat,wn) {
     // ELEVATION
     console.log(thisWeapon.elevation);
     console.log(tile.terrain);
-    if (thisWeapon.elevation >= 1 && tile.terrain == 'H') {
-        thisWeapon.range = thisWeapon.range+1;
-    }
-    if (thisWeapon.elevation === 1 && tile.terrain == 'M') {
-        thisWeapon.range = thisWeapon.range+1;
-    }
-    if (thisWeapon.elevation === 2 && tile.terrain == 'M') {
-        thisWeapon.range = thisWeapon.range+2;
+    if (tile.terrain == 'M') {
+        if (thisWeapon.elevation === 1) {
+            thisWeapon.range = thisWeapon.range+1;
+        } else if (thisWeapon.elevation === 2) {
+            thisWeapon.range = thisWeapon.range+2;
+        }
+    } else if (tile.terrain == 'H') {
+        if (thisWeapon.elevation >= 1) {
+            thisWeapon.range = thisWeapon.range+1;
+        }
+    } else if (tile.talus) {
+        if (thisWeapon.elevation >= 1) {
+            thisWeapon.range = thisWeapon.range+1;
+        }
     }
     // Forêt (range)
     if (tile.terrain == 'F') {

@@ -242,7 +242,7 @@
             "isShort":true,
             "rof":5,
             "accuracy":17,
-            "power":3,
+            "power":4,
             "aoe":"unit",
             "sound":"lame",
             "ammo":["feu"]

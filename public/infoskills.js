@@ -199,7 +199,7 @@ function skillsInfos(bat,batUnitType) {
             } else {
                 skillMessage = "Pas assez de PA";
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-hamsa"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-hamsa"></i> <span class="small">'+apCost+'</span></button>&nbsp; Prière</h4></span>');
         }
     }
     // MEDIC
@@ -652,6 +652,23 @@ function skillsInfos(bat,batUnitType) {
                     skillMessage = "Pas assez de PA";
                 }
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-road"></i> <span class="small">'+apReq+'</span></button>&nbsp; Route / Pont</h4></span>');
+            }
+        }
+    }
+    // TALUS
+    if (batUnitType.skills.includes('constructeur')) {
+        if (!tile.talus && !tile.ruins && tile.terrain != 'M' && tile.terrain != 'H' && tile.terrain != 'F' && tile.terrain != 'W' && tile.terrain != 'R') {
+            apCost = Math.round(batUnitType.mecanoCost*terrain.roadBuild*terrain.roadBuild/8);
+            apReq = batUnitType.mecanoCost;
+            if (bat.apLeft >= apReq && !inMelee) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (talus)" class="boutonGris skillButtons" onclick="putTalus()"><i class="fas fa-mountain"></i> <span class="small">'+apCost+'</span></button>&nbsp; Talus</h4></span>');
+            } else {
+                if (inMelee) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-mountain"></i> <span class="small">'+apReq+'</span></button>&nbsp; Talus</h4></span>');
             }
         }
     }
