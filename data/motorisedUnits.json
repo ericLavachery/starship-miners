@@ -3294,8 +3294,14 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["cible","transport","fret","hardmove","selfbadmecano","dumper"],
+        "skills":["cible","transport","fret","hardmove","selfbadmecano","dumper","extraction"],
         "mecanoCost":10,
+        "mining":{
+            "level":1,
+            "rate":5,
+            "multi":false,
+            "types":["Scrap"]
+        },
         "transMaxSize":9,
         "transUnits":615,
         "transRes":615,

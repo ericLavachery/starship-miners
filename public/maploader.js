@@ -60,7 +60,7 @@ function showRes(tileId) {
     let tile = zone[tileId];
     let mapIndicators = '';
     let res = '';
-    if (tile.rq >= 1) {
+    if (tile.rq != undefined) {
         res = JSON.stringify(tile.rs);
         res = res.replace(/"/g,"");
         res = res.replace(/{/g,"");
@@ -68,7 +68,7 @@ function showRes(tileId) {
         res = res.replace(/,/g," &nbsp;&horbar;&nbsp; ");
         res = res.replace(/:/g," ");
     }
-    if (tile.rd || tile.rq >= 1 || (tile.tileName !== undefined && tile.tileName != '')) {
+    if (tile.rd || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
         mapIndicators = mapIndicators+'<div class="mapInfos" title="'+res+'">';
     }
     if (tile.rd) {
@@ -77,10 +77,10 @@ function showRes(tileId) {
     if (tile.tileName !== undefined && tile.tileName != '') {
         mapIndicators = mapIndicators+'<i class="fas fa-map-marker-alt inficon"></i>';
     }
-    if (tile.rq >= 1) {
+    if (tile.rq != undefined) {
         mapIndicators = mapIndicators+'<i class="fas fa-atom inficon rq'+tile.rq+'"></i>';
     }
-    if (tile.rd || tile.rq >= 1 || (tile.tileName !== undefined && tile.tileName != '')) {
+    if (tile.rd || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
         mapIndicators = mapIndicators+'</div>';
     }
     if (tile.ruins) {

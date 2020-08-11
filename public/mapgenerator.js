@@ -678,6 +678,7 @@ function addRes(zone) {
     let minDice = 1;
     let blueSum = 0;
     let skySum = 0;
+    let scrapRarity;
     resTypes.forEach(function(res) {
         if (res.cat === 'white') {
             minDice = 1;
@@ -698,6 +699,9 @@ function addRes(zone) {
             }
             res.adjRarity = Math.floor(res.rarity*rarityDice/5*fewRedRarityAdj/100);
             res.adjBatch = Math.ceil(res.batch*Math.sqrt(rarityDice)/2*fewRedRarityAdj/100);
+            if (res.name === 'Scrap') {
+                scrapRarity = res.adjRarity;
+            }
             if (res.adjRarity > bestRarity && res.name != 'Scrap') {
                 bestRarity = res.adjRarity;
                 resDefault = res;
@@ -708,6 +712,20 @@ function addRes(zone) {
         }
         if (res.cat.includes('sky')) {
             skySum = skySum+res.rarity;
+        }
+    });
+    console.log('scrapRarity: '+scrapRarity);
+    // check RUINS
+    let ruinChance = Math.floor(((scrapRarity*ruinRarity/5)+ruinRarity)/3);
+    let resName = 'Scrap';
+    zone.forEach(function(tile) {
+        if (tile.rq === undefined && tile.terrain != 'W' && tile.terrain != 'R') {
+            if (rand.rand(1,2000) <= ruinChance) {
+                tile.ruins = true;
+                tile.rq = 0;
+                tile.rs = {};
+                tile.rs[resName] = Math.round(97*rand.rand(30,90)/resBatchDiv);
+            }
         }
     });
     // check res
