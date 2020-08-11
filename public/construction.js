@@ -457,7 +457,7 @@ function putTalus() {
     console.log('TALUS');
     let tile = getTile(selectedBat);
     let terrain = getTileTerrain(selectedBat.tileId);
-    let apCost = Math.round(selectedBatType.mecanoCost*terrain.roadBuild*terrain.roadBuild/8);
+    let apCost = Math.round(Math.sqrt(selectedBatType.mecanoCost)*10);
     console.log('apCost:'+apCost);
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     if (!selectedBat.tags.includes('construction')) {

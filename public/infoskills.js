@@ -657,8 +657,8 @@ function skillsInfos(bat,batUnitType) {
     }
     // TALUS
     if (batUnitType.skills.includes('constructeur')) {
-        if (!tile.talus && !tile.ruins && tile.terrain != 'M' && tile.terrain != 'H' && tile.terrain != 'F' && tile.terrain != 'W' && tile.terrain != 'R') {
-            apCost = Math.round(batUnitType.mecanoCost*terrain.roadBuild*terrain.roadBuild/8);
+        if (!tile.talus && !tile.ruins && (tile.terrain === 'P' || tile.terrain === 'G')) {
+            apCost = Math.round(Math.sqrt(batUnitType.mecanoCost)*10);
             apReq = batUnitType.mecanoCost;
             if (bat.apLeft >= apReq && !inMelee) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (talus)" class="boutonGris skillButtons" onclick="putTalus()"><i class="fas fa-mountain"></i> <span class="small">'+apCost+'</span></button>&nbsp; Talus</h4></span>');

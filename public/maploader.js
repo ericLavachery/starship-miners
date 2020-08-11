@@ -87,7 +87,11 @@ function showRes(tileId) {
         mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/ruins.png"></div>'
     }
     if (tile.talus) {
-        mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/talus.png"></div>'
+        if (tile.terrain === 'P') {
+            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/talusP.png"></div>'
+        } else if (tile.terrain === 'G') {
+            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/talusG.png"></div>'
+        }
     }
     return mapIndicators;
 };
