@@ -473,7 +473,7 @@ function voirRessources() {
     showResOpen = true;
     selectMode();
     $("#conUnitList").css("display","block");
-    $('#conUnitList').css("height","600px");
+    $('#conUnitList').css("height","800px");
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();
@@ -513,7 +513,7 @@ function voirRessources() {
         tileRes = tileRes.replace(/}/g,"");
         tileRes = tileRes.replace(/,/g," &nbsp;&middot;&nbsp; ");
         tileRes = tileRes.replace(/:/g," ");
-        $('#rf'+tile.id).append('<i class="fas fa-atom inficon rq'+tile.rq+'"></i><span class="listRes gff klik" onclick="markMap('+tile.id+')">&nbsp;'+tile.x+'&lrhar;'+tile.y+'</span><br>');
+        $('#rf'+tile.id).append('<i class="fas fa-atom inficon rq'+tile.rq+'"></i><span class="listRes gff klik" onclick="markMap('+tile.id+')">&nbsp;'+tile.y+'&lrhar;'+tile.x+'</span>');
         $('#rf'+tile.id).append('<span class="listRes">'+tileRes+'</span><br>');
     });
     // let filteredResTypes = _.filter(resTypes,function(res) {
@@ -533,7 +533,9 @@ function showedTilesReset() {
     if (showResOpen) {
         voirRessources();
     }
-    centerMapCenter();
+    showMap(zone,true);
+    confirmMode();
+    // centerMapCenter();
 };
 
 function toggleResView() {
