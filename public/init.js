@@ -33,6 +33,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.alienRes === undefined) {
         playerInfos.alienRes = {};
     }
+    if (playerInfos.showedTiles === undefined) {
+        playerInfos.showedTiles = [];
+    }
     playerSkills();
 });
 // Terrains

@@ -367,9 +367,11 @@ function putBat(tileId,citoyens,xp,startTag) {
 function conOut() {
     $('#conUnitList').empty();
     $('#conAmmoList').empty();
+    $('#conUnitList').css("height","300px");
     conselUnit = {};
     conselAmmos = ['xxx','xxx','xxx'];
     conselTriche = false;
+    showResOpen = false;
     $("#conUnitList").css("display","none");
     $("#conAmmoList").css("display","none");
 };

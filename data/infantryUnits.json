@@ -1159,7 +1159,7 @@
             "aoe":"squad",
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
-            "maxAmmo":10
+            "maxAmmo":12
         },
         "moveCost":3,
         "maxFlood":3,

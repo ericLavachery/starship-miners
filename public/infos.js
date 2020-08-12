@@ -269,6 +269,7 @@ function showEnemyBatInfos(bat) {
 
 function showTileInfos(tileId) {
     $('#tileInfos').empty();
+    selectedTile = tileId;
     let tileIndex = zone.findIndex((obj => obj.id == tileId));
     let tile = zone[tileIndex];
     let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));

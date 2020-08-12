@@ -1,11 +1,12 @@
 function voirReserve() {
     selectMode();
     $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","800px");
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer Constriche</span><br><br>');
+    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="constName or" id="gentils">RESERVE</span><br>');
     findLanders();
     let dispoCit = getDispoCit();

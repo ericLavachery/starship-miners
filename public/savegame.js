@@ -38,6 +38,7 @@ function mapReset() {
     playerInfos.pauseSeed = rand.rand(1,8);
     playerInfos.res = {};
     playerInfos.alienRes = {};
+    playerInfos.showedTiles = [];
     savePlayerInfos();
     commandes();
     $("#reset2").css("display","none");

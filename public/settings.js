@@ -41,6 +41,9 @@ let mineRateDiv = 250; // divise le mining rate : def 100
 let resFoundDiv = 9; // default 9
 let resBatchDiv = 12;
 let ruinRarity = 8;
+let selectedTile = -1;
+let showResOpen = false;
+let showAllRes = false;
 // UNITS
 let unitTypes = [];
 let unitDV = {}

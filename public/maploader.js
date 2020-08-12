@@ -93,6 +93,9 @@ function showRes(tileId) {
             mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/talusG.png"></div>'
         }
     }
+    if (playerInfos.showedTiles.includes(tileId)) {
+        mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/showTile.png"></div>'
+    }
     return mapIndicators;
 };
 

@@ -451,3 +451,134 @@ function resSelectLoad(value,pickValue,resId,batId) {
     selectedBatArrayUpdate();
     loadRes();
 };
+
+function addAlienRes(bat) {
+    let batType = getBatType(bat);
+    if (Object.keys(batType.killRes).length >= 1) {
+        for (var prop in batType.killRes) {
+            if (Object.prototype.hasOwnProperty.call(batType.killRes,prop)) {
+                // console.log(prop);
+                // console.log(batType.killRes[prop]);
+                if (playerInfos.alienRes[prop] >=1) {
+                    playerInfos.alienRes[prop] = playerInfos.alienRes[prop]+batType.killRes[prop];
+                } else {
+                    playerInfos.alienRes[prop] = batType.killRes[prop];
+                }
+            }
+        }
+    }
+};
+
+function voirRessources() {
+    showResOpen = true;
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","600px");
+    $('#unitInfos').empty();
+    $('#tileInfos').empty();
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
+    $('#conUnitList').append('<span class="constName or" id="gentils">RESSOURCES</span>');
+    $('#conUnitList').append('<button type="button" title="Effacer tous les indicateurs" class="boutonGris iconButtons" onclick="showedTilesReset()"><i class="fas fa-eraser"></i></button>');
+    let visMap = [];
+    if (showAllRes) {
+        $('#conUnitList').append('<button type="button" title="Lister uniquement les points visibles à l\'écran" class="boutonGris iconButtons" onclick="toggleResView()"><i class="far fa-eye"></i></button>');
+        visMap = zone;
+    } else {
+        $('#conUnitList').append('<button type="button" title="Lister tous les points" class="boutonGris iconButtons" onclick="toggleResView()"><i class="far fa-eye"></i></button>');
+        let minX = xOffset+1;
+        let maxX = xOffset+numVTiles;
+        let minY = yOffset+1;
+        let maxY = yOffset+numHTiles;
+        visMap = _.filter(zone,function(tile) {
+            return (tile.x >= minX && tile.x <= maxX && tile.y >= minY && tile.y <= maxY);
+        });
+    }
+    let tileRes;
+    let blockType;
+    let filteredZone = _.filter(visMap,function(tile) {
+        return (tile.rq != undefined);
+    });
+    filteredZone.forEach(function(tile) {
+        if (playerInfos.showedTiles.includes(tile.id)) {
+            blockType = 'resBlockCheck';
+        } else {
+            blockType = 'resBlock';
+        }
+        $('#conUnitList').append('<div class="'+blockType+'" id="rf'+tile.id+'"></div>');
+        tileRes = JSON.stringify(tile.rs);
+        tileRes = tileRes.replace(/"/g,"");
+        tileRes = tileRes.replace(/{/g,"");
+        tileRes = tileRes.replace(/}/g,"");
+        tileRes = tileRes.replace(/,/g," &nbsp;&middot;&nbsp; ");
+        tileRes = tileRes.replace(/:/g," ");
+        $('#rf'+tile.id).append('<i class="fas fa-atom inficon rq'+tile.rq+'"></i><span class="listRes gff klik" onclick="markMap('+tile.id+')">&nbsp;'+tile.x+'&lrhar;'+tile.y+'</span><br>');
+        $('#rf'+tile.id).append('<span class="listRes">'+tileRes+'</span><br>');
+    });
+    // let filteredResTypes = _.filter(resTypes,function(res) {
+    //     return (res.cat != 'alien');
+    // });
+    // let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(filteredResTypes,'rarity'),'bld'),'cat'),'cat');
+    // sortedResTypes.reverse();
+    // sortedResTypes = _.sortBy(sortedResTypes,'level')
+    // sortedResTypes.forEach(function(res) {
+    //     $('#conUnitList').append('<span class="constName sky">'+res.name+'</span><br>');
+    //
+    // });
+};
+
+function showedTilesReset() {
+    playerInfos.showedTiles = [];
+    if (showResOpen) {
+        voirRessources();
+    }
+    centerMapCenter();
+};
+
+function toggleResView() {
+    if (showAllRes) {
+        showAllRes = false;
+    } else {
+        showAllRes = true;
+    }
+    voirRessources();
+};
+
+function markMap(tileId) {
+    if (showAllRes) {
+        myTileX = zone[tileId].x;
+        myTileY = zone[tileId].y;
+        xOffset = myTileX-Math.round(numVTiles/2);
+        yOffset = myTileY-Math.round(numHTiles/2);
+        if (!playerInfos.showedTiles.includes(tileId)) {
+            playerInfos.showedTiles.push(tileId)
+        }
+        limitOffset();
+        showMap(zone,true);
+        confirmMode();
+    } else {
+        if (!playerInfos.showedTiles.includes(tileId)) {
+            playerInfos.showedTiles.push(tileId)
+        }
+        showMap(zone,true);
+    }
+    voirRessources();
+};
+
+function toggleShowedTile(tileId) {
+    if (selectedBat.tileId != tileId) {
+        if (playerInfos.showedTiles.includes(tileId)) {
+            let index = playerInfos.showedTiles.indexOf(tileId);
+            playerInfos.showedTiles.splice(index,1);
+        } else {
+            if (selectedTile === tileId) {
+                playerInfos.showedTiles.push(tileId);
+            }
+        }
+        redrawTile(tileId,true);
+        if (showResOpen) {
+            voirRessources();
+        }
+    }
+};

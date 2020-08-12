@@ -20,6 +20,7 @@ function clickTile(tileId) {
         } else {
             if (mode == 'select') {
                 clickSelect(tileId);
+                toggleShowedTile(tileId);
             } else if (mode == 'move') {
                 clickMove(tileId);
             } else {

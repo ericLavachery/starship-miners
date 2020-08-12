@@ -23,7 +23,8 @@ function commandes() {
 
         $('#commandz').append('<br>');
         $('#commandz').append('<button type="button" title="Constriche" class="boutonGris iconButtons" onclick="bfconst(`all`,true)"><i class="fa fa-hammer"></i></button>');
-        $('#commandz').append('<button type="button" title="Réserve" class="boutonGris iconButtons" onclick="voirReserve()"><i class="far fa-gem"></i></button>');
+        $('#commandz').append('<button type="button" title="Réserve" class="boutonGris iconButtons" onclick="voirReserve()"><i class="fas fa-piggy-bank"></i></button>');
+        $('#commandz').append('<button type="button" title="Ressources présentes dans la zone" class="boutonGris iconButtons" onclick="voirRessources()"><i class="far fa-gem"></i></button>');
         $('#commandz').append('<br>');
         $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveAllBats()"><i class="far fa-save"></i> &nbsp;<span class="notsosmall">Save Game</span></button>');
         $('#commandz').append('<br>');

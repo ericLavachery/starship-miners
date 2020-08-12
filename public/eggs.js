@@ -365,7 +365,7 @@ function spawns() {
                 alienSpawn(bat,'Scorpions');
             } else if (bat.type === 'Megagrubz' && rand.rand(1,2) === 1 && aliensNums.larves < maxPonte) {
                 alienSpawn(bat,'Scorpions');
-            } else if (bat.type === 'Cafards' && bat.squadsLeft >= 4 && rand.rand(1,6) === 1 && aliensNums.cafards < maxPonte*3) {
+            } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && rand.rand(1,6) === 1 && aliensNums.cafards < maxPonte*3) {
                 alienSpawn(bat,'Cafards');
             } else if (bat.type === 'Glaireuse' && aliensNums.gluantes < maxPonte) {
                 alienSpawn(bat,'Gluantes');

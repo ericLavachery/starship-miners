@@ -100,6 +100,8 @@ function centerMap() {
         if (Object.keys(targetBat).length >= 1) {
             tileTarget(targetBat);
         }
+    } else {
+        centerMapCenter();
     }
 };
 
