@@ -28,7 +28,7 @@ function findLanders() {
     bataillons.forEach(function(bat) {
         if (bat.loc === 'zone') {
             batType = getBatType(bat);
-            if (batType.skills.includes('transorbital')) {
+            if (batType.skills.includes('transorbital') || bat.tags.includes('reserve')) {
                 landers.push(bat);
             }
         }

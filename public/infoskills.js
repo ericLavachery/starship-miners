@@ -575,7 +575,7 @@ function skillsInfos(bat,batUnitType) {
                 balise = 'h1';
             }
             apCost = Math.round(bat.ap*1.5);
-            if (minesLeft >= 1 && bat.apLeft >= bat.ap && !inMelee) {
+            if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {
@@ -599,7 +599,7 @@ function skillsInfos(bat,batUnitType) {
                 balise = 'h1';
             }
             apCost = Math.round(bat.ap);
-            if (minesLeft >= 1 && bat.apLeft >= bat.ap && !inMelee) {
+            if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des explosifs" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`dynamite`)"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {

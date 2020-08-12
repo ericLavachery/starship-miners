@@ -140,6 +140,13 @@ function showBatInfos(bat) {
         if (restSpace < 1) {tagColor = 'or';} else {tagColor = 'cy';}
         $('#unitInfos').append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/'+resMax+'</span><br>');
     }
+    if (batUnitType.skills.includes('reserve') || batUnitType.skills.includes('transorbital')) {
+        if (bat.tags.includes('reserve') || batUnitType.skills.includes('transorbital')) {
+            $('#unitInfos').append('<span class="paramName cy">Réserve</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+        } else {
+            $('#unitInfos').append('<span class="paramName or">Réserve</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
+        }
+    }
     if (batUnitType.skills.includes('dealer')) {
         let ravitNum = calcRavit(bat);
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}

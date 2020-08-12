@@ -89,11 +89,39 @@ function nextTurnEnd() {
     let distance;
     let alienType;
     let noStuck = false;
+    let landerAdjTiles = [];
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
-            if (batType.skills.includes('transorbital')) {
+            if (batType.skills.includes('transorbital') || bat.tags.includes('reserve')) {
                 landers.push(bat);
+            }
+            if (batType.skills.includes('transorbital')) {
+                landerAdjTiles.push(bat.tileId);
+                if (!landerAdjTiles.includes(bat.tileId-1)) {
+                    landerAdjTiles.push(bat.tileId-1);
+                }
+                if (!landerAdjTiles.includes(bat.tileId+1)) {
+                    landerAdjTiles.push(bat.tileId+1);
+                }
+                if (!landerAdjTiles.includes(bat.tileId+mapSize-1)) {
+                    landerAdjTiles.push(bat.tileId+mapSize-1);
+                }
+                if (!landerAdjTiles.includes(bat.tileId+mapSize+1)) {
+                    landerAdjTiles.push(bat.tileId+mapSize+1);
+                }
+                if (!landerAdjTiles.includes(bat.tileId+mapSize)) {
+                    landerAdjTiles.push(bat.tileId+mapSize);
+                }
+                if (!landerAdjTiles.includes(bat.tileId-mapSize)) {
+                    landerAdjTiles.push(bat.tileId-mapSize);
+                }
+                if (!landerAdjTiles.includes(bat.tileId-mapSize+1)) {
+                    landerAdjTiles.push(bat.tileId-mapSize+1);
+                }
+                if (!landerAdjTiles.includes(bat.tileId-mapSize-1)) {
+                    landerAdjTiles.push(bat.tileId-mapSize-1);
+                }
             }
             bat.apLeft = Math.ceil(bat.apLeft);
             if (bat.apLeft < 0-(bat.ap*2) && batType.cat != 'buildings' && !bat.tags.includes('construction')) {
@@ -236,12 +264,15 @@ function nextTurnEnd() {
             if (bat.loc === "zone") {
                 blub(bat,batType);
             }
-            // bat.xp = Math.round(bat.xp*100)/100;
             bat.xp = bat.xp.toFixedNumber(2);
             bat.apLeft = bat.apLeft.toFixedNumber(1);
             // nolist
             if (batType.skills.includes('nolist') && !bat.tags.includes('nolist')) {
                 bat.tags.push('nolist');
+            }
+            // réserves
+            if (batType.skills.includes('reserve') && !bat.tags.includes('reserve') && landerAdjTiles.includes(bat.tileId)) {
+                bat.tags.push('reserve');
             }
         }
     });
