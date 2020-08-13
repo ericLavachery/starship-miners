@@ -35,6 +35,7 @@ function showMap(wmap,justMoved) {
     if (!justMoved) {
         selectMode();
         alienOccupiedTileList();
+        playerOccupiedTileList();
     }
     // console.log(zone);
 };

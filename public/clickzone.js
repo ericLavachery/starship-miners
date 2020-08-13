@@ -92,6 +92,9 @@ function batSelect(bat) {
     tileSelect(bat);
     checkSelectedBatType();
     commandes();
+    if (showMini) {
+        minimap();
+    }
 };
 
 function checkSelectedBatType() {

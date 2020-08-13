@@ -614,7 +614,9 @@ function minimap() {
     $("#minimap").css("display","block");
     $('#minimap').empty();
     $('#minimap').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    $('#minimap').append('<span class="constName klik cy" onclick="miniOut()">Fermer</span><br><br>');
+    $('#minimap').append('<span class="constName klik cy" onclick="miniOut()">Fermer</span>');
+    $('#minimap').append('<button type="button" title="Montrer les repaires" class="boutonGris skillButtons" onclick="dotsView()"><i class="fas fa-map-pin"></i></button>');
+    $('#minimap').append('<button type="button" title="Montrer les unités" class="boutonGris skillButtons" onclick="unitsView()"><i class="fas fa-bug"></i></button><br><br>');
     $('#minimap').append('<div class="shSpace"></div>');
     zone.forEach(function(tile) {
         if (tile.y === 1) {
@@ -623,15 +625,33 @@ function minimap() {
         if (tile.id === selectedTile || tile.id === selectedBat.tileId) {
             $('#minimap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
         } else {
-            if (alienOccupiedTiles.includes(tile.id)) {
+            if (alienOccupiedTiles.includes(tile.id) && miniDots === 'units') {
                 $('#minimap').append('<span class="mini mAlien" onclick="centerFromMinimap('+tile.id+')"></span>');
             } else {
-                $('#minimap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                if (playerOccupiedTiles.includes(tile.id) && miniDots === 'units') {
+                    $('#minimap').append('<span class="mini mBoys" onclick="centerFromMinimap('+tile.id+')"></span>');
+                } else {
+                    if (playerInfos.showedTiles.includes(tile.id) && miniDots === 'points') {
+                        $('#minimap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
+                    } else {
+                        $('#minimap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                    }
+                }
             }
         }
     });
     $('#minimap').append('<br>');
     $('#minimap').append('<div class="shSpace"></div>');
+};
+
+function dotsView() {
+    miniDots = 'points';
+    minimap();
+};
+
+function unitsView() {
+    miniDots = 'units';
+    minimap();
 };
 
 function miniOut() {
