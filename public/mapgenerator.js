@@ -7,6 +7,7 @@ function generateNewMap() {
     addRes(zone);
     writeMapStyles();
     showMap(zone,false);
+    minimap();
     // function saveMap();
 };
 

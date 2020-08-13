@@ -565,6 +565,10 @@ function markMap(tileId) {
         }
         showMap(zone,true);
     }
+    selectedTile = tileId;
+    if (showMini) {
+        minimap();
+    }
     voirRessources();
 };
 
