@@ -10,6 +10,7 @@ function savePlayerInfos() {
     socket.emit('save-playerInfos', playerInfos);
 };
 function saveMap() {
+    showedTilesReset();
     socket.emit('save-map',zone);
     commandes();
 };

@@ -1,3 +1,50 @@
+#minimap {
+    font-size: 0px;
+    background-image: url(/static/img/plate-vdork-small.jpg);
+    background-position: 0% 40%;
+    display: none;
+}
+.mini {
+    min-width: 4px;
+    min-height: 4px;
+    display: inline-block;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    line-height: 0px;
+}
+.mSelect {
+    background-color: #ff0000;
+}
+.mM {
+    background-color: #382d1d;
+}
+.mH {
+    background-color: #55492c;
+}
+.mE {
+    background-color: #8b7d3f;
+}
+.mP {
+    background-color: #9c8d4b;
+}
+.mG {
+    background-color: #80a72c;
+}
+.mB {
+    background-color: #6f6e13;
+}
+.mF {
+    background-color: #1b632f;
+}
+.mS {
+    background-color: #566878;
+}
+.mW {
+    background-color: #437c9a;
+}
+.mR {
+    background-color: #1378c1;
+}
 .terTarget {
     background-color: #FFFFFF;
     background-image: url(/static/img/wtiles/target.png);

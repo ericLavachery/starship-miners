@@ -312,7 +312,7 @@
         "level": 2,
         "rarity": 4,
         "cat": "blue-sky",
-        "batch": 4
+        "batch": 3
     },
     {
         "id": 34,
@@ -321,7 +321,7 @@
         "level": 3,
         "rarity": 8,
         "cat": "sky",
-        "batch": 4
+        "batch": 3
     },
     {
         "id": 35,
@@ -330,7 +330,7 @@
         "level": 3,
         "rarity": 8,
         "cat": "sky",
-        "batch": 4
+        "batch": 3
     },
     {
         "id": 36,
@@ -339,7 +339,7 @@
         "level": 2,
         "rarity": 4,
         "cat": "blue-sky",
-        "batch": 4
+        "batch": 2
     },
     {
         "id": 37,
@@ -348,7 +348,7 @@
         "level": 3,
         "rarity": 8,
         "cat": "sky",
-        "batch": 3
+        "batch": 2
     },
     {
         "id": 38,
@@ -357,7 +357,7 @@
         "level": 2,
         "rarity": 4,
         "cat": "blue-sky",
-        "batch": 6
+        "batch": 2
     },
     {
         "id": 39,
@@ -366,16 +366,16 @@
         "level": 3,
         "rarity": 4,
         "cat": "sky",
-        "batch": 3
+        "batch": 2
     },
     {
         "id": 40,
         "name": "Pyratol",
         "bld": "Derrick",
         "level": 2,
-        "rarity": 4,
+        "rarity": 5,
         "cat": "blue-sky",
-        "batch": 8
+        "batch": 2
     },
     {
         "id": 41,
@@ -384,16 +384,16 @@
         "level": 3,
         "rarity": 8,
         "cat": "sky",
-        "batch": 6
+        "batch": 4
     },
     {
         "id": 42,
         "name": "Octiron",
         "bld": "Comptoir",
         "level": 2,
-        "rarity": 8,
+        "rarity": 10,
         "cat": "blue",
-        "batch": 10
+        "batch": 8
     },
     {
         "id": 43,
@@ -402,7 +402,7 @@
         "level": 2,
         "rarity": 8,
         "cat": "blue",
-        "batch": 10
+        "batch": 8
     },
     {
         "id": 44,

@@ -578,9 +578,71 @@ function toggleShowedTile(tileId) {
                 playerInfos.showedTiles.push(tileId);
             }
         }
-        redrawTile(tileId,true);
+        let alienHere = isAlienHere(tileId);
+        if (!alienHere) {
+            redrawTile(tileId,true);
+        }
         if (showResOpen) {
             voirRessources();
         }
+        selectedTile = tileId;
+        if (showMini) {
+            minimap();
+        }
     }
+};
+
+function isAlienHere(tileId) {
+    let alienHere = false;
+    aliens.forEach(function(bat) {
+        if (bat.tileId === tileId && bat.loc === "zone") {
+            batType = getBatType(bat);
+            if (!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) {
+                alienHere = true;
+            }
+        }
+    });
+    return alienHere;
+};
+
+function minimap() {
+    showMini = true;
+    $("#minimap").css("display","block");
+    $('#minimap').empty();
+    $('#minimap').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
+    $('#minimap').append('<span class="constName klik cy" onclick="miniOut()">Fermer</span><br><br>');
+    $('#minimap').append('<div class="shSpace"></div>');
+    zone.forEach(function(tile) {
+        if (tile.y === 1) {
+            $('#minimap').append('<br>');
+        }
+        if (tile.id === selectedTile || tile.id === selectedBat.tileId) {
+            $('#minimap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
+        } else {
+            $('#minimap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+        }
+    });
+    $('#minimap').append('<br>');
+    $('#minimap').append('<div class="shSpace"></div>');
+};
+
+function miniOut() {
+    $('#minimap').empty();
+    $("#minimap").css("display","none");
+    showMini = false;
+};
+
+function centerFromMinimap(tileId) {
+    $('#unitInfos').empty();
+    $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
+    myTileX = zone[tileId].x;
+    myTileY = zone[tileId].y;
+    xOffset = myTileX-Math.round(numVTiles/2);
+    yOffset = myTileY-Math.round(numHTiles/2);
+    limitOffset();
+    showMap(zone,true);
+    confirmMode();
+    selectedTile = tileId;
+    minimap();
 };

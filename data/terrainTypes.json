@@ -17,7 +17,8 @@
         "aliencover":8,
         "fishcover":4,
         "minChance":10,
-        "roadBuild":12
+        "roadBuild":12,
+        "color":"#382d1d"
     },
     {
         "name":"H",
@@ -37,7 +38,8 @@
         "aliencover":3,
         "fishcover":1,
         "minChance":20,
-        "roadBuild":8
+        "roadBuild":8,
+        "color":"#55492c"
     },
     {
         "name":"E",
@@ -57,7 +59,8 @@
         "aliencover":2,
         "fishcover":0,
         "minChance":50,
-        "roadBuild":6
+        "roadBuild":6,
+        "color":"#8b7d3f"
     },
     {
         "name":"P",
@@ -77,7 +80,8 @@
         "aliencover":0,
         "fishcover":0,
         "minChance":100,
-        "roadBuild":5
+        "roadBuild":5,
+        "color":"#9c8d4b"
     },
     {
         "name":"G",
@@ -97,7 +101,8 @@
         "aliencover":1,
         "fishcover":1,
         "minChance":200,
-        "roadBuild":5
+        "roadBuild":5,
+        "color":"#80a72c"
     },
     {
         "name":"B",
@@ -117,7 +122,8 @@
         "aliencover":5,
         "fishcover":2,
         "minChance":200,
-        "roadBuild":6
+        "roadBuild":6,
+        "color":"#6f6e13"
     },
     {
         "name":"F",
@@ -137,7 +143,8 @@
         "aliencover":6,
         "fishcover":2,
         "minChance":200,
-        "roadBuild":7
+        "roadBuild":7,
+        "color":"#1b632f"
     },
     {
         "name":"S",
@@ -157,7 +164,8 @@
         "aliencover":-3,
         "fishcover":8,
         "minChance":100,
-        "roadBuild":8
+        "roadBuild":8,
+        "color":"#566878"
     },
     {
         "name":"W",
@@ -177,7 +185,8 @@
         "aliencover":-6,
         "fishcover":10,
         "minChance":500,
-        "roadBuild":16
+        "roadBuild":16,
+        "color":"#437c9a"
     },
     {
         "name":"R",
@@ -197,6 +206,7 @@
         "aliencover":-8,
         "fishcover":12,
         "minChance":500,
-        "roadBuild":16
+        "roadBuild":16,
+        "color":"#1378c1"
     }
 ]

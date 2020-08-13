@@ -82,6 +82,10 @@ function centerMapTo(tileId) {
     limitOffset();
     showMap(zone,true);
     confirmMode();
+    selectedTile = tileId;
+    if (showMini) {
+        minimap();
+    }
 };
 
 function centerMap() {
@@ -99,6 +103,10 @@ function centerMap() {
         }
         if (Object.keys(targetBat).length >= 1) {
             tileTarget(targetBat);
+        }
+        selectedTile = selectedBat.tileId;
+        if (showMini) {
+            minimap();
         }
     } else {
         centerMapCenter();
@@ -121,6 +129,10 @@ function centerMapTarget() {
         if (Object.keys(targetBat).length >= 1) {
             tileTarget(targetBat);
         }
+        selectedTile = targetBat.tileId;
+        if (showMini) {
+            minimap();
+        }
     }
 };
 
@@ -133,6 +145,10 @@ function centerMapCenter() {
     limitOffset();
     showMap(zone,true);
     confirmMode();
+    selectedTile = 1830;
+    if (showMini) {
+        minimap();
+    }
 };
 
 function isVisible(tileId) {

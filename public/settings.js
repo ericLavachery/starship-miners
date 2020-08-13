@@ -42,6 +42,7 @@ let resFoundDiv = 9; // default 9
 let resBatchDiv = 12;
 let ruinRarity = 8;
 let selectedTile = -1;
+let showMini = false;
 let showResOpen = false;
 let showAllRes = false;
 // UNITS

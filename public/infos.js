@@ -221,6 +221,7 @@ function showBatInfos(bat) {
 };
 
 function showEnemyBatInfos(bat) {
+    $("#unitInfos").css("display","block");
     $('#unitInfos').empty();
     let alienUnitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
     let batUnitType = alienUnits[alienUnitIndex];
@@ -268,6 +269,7 @@ function showEnemyBatInfos(bat) {
 };
 
 function showTileInfos(tileId) {
+    $("#tileInfos").css("display","block");
     $('#tileInfos').empty();
     selectedTile = tileId;
     let tileIndex = zone.findIndex((obj => obj.id == tileId));
@@ -275,7 +277,7 @@ function showTileInfos(tileId) {
     let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
     let terrain = terrainTypes[terrainIndex];
     $('#tileInfos').append('<span class="blockTitle"><h3>'+terrain.fullName+'</h3></span>');
-    $('#unitInfos').append('<div class="shSpace"></div>');
+    $('#tileInfos').append('<div class="shSpace"></div>');
     // NOM
     if (tile.tileName !== undefined && tile.tileName !== null && tile.tileName != '') {
         $('#tileInfos').append('<span class="paramIcon"><i class="fas fa-map-signs"></i></span><span class="fullLine or"><b>'+tile.tileName+'</b></span><br>');
@@ -295,7 +297,7 @@ function showTileInfos(tileId) {
     if (terrain.veg >= 2) {
         vIcon = '<i class="fab fa-pagelines"></i>'
     }
-    if (terrain.scarp >= 1) {
+    if (terrain.scarp >= 2) {
         sIcon = '<i class="fas fa-mountain"></i>'
     }
     if (terrain.flood >= 1) {

@@ -22,11 +22,12 @@ function commandes() {
         $('#commandz').append('<button type="button" title="Nombres d\'oeufs en vue" class="boutonGris iconButtons" onclick="findEgg()">'+eggsNum+'</button>');
 
         $('#commandz').append('<br>');
-        $('#commandz').append('<button type="button" title="Constriche" class="boutonGris iconButtons" onclick="bfconst(`all`,true)"><i class="fa fa-hammer"></i></button>');
         $('#commandz').append('<button type="button" title="Réserve" class="boutonGris iconButtons" onclick="voirReserve()"><i class="fas fa-piggy-bank"></i></button>');
         $('#commandz').append('<button type="button" title="Ressources présentes dans la zone" class="boutonGris iconButtons" onclick="voirRessources()"><i class="far fa-gem"></i></button>');
+        $('#commandz').append('<button type="button" title="Minimap" class="boutonGris iconButtons" onclick="minimap()"><i class="far fa-map"></i></button>');
         $('#commandz').append('<br>');
-        $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveAllBats()"><i class="far fa-save"></i> &nbsp;<span class="notsosmall">Save Game</span></button>');
+        $('#commandz').append('<button type="button" title="Constriche" class="boutonGris iconButtons" onclick="bfconst(`all`,true)"><i class="fa fa-hammer"></i></button>');
+        $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveAllBats()"><i class="far fa-save"></i> &nbsp;<span class="notsosmall">Save</span></button>');
         $('#commandz').append('<br>');
     } else if (activeTurn == 'aliens') {
         if (alienList.length >= 2) {

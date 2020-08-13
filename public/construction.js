@@ -376,6 +376,8 @@ function conOut() {
     $("#conAmmoList").css("display","none");
 };
 
+$("#minimap").css("display","block");
+
 function conWindowOut() {
     $('#conUnitList').empty();
     $('#conAmmoList').empty();

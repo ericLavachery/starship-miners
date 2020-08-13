@@ -620,7 +620,7 @@ function addRes(zone) {
     }
     console.log('fewRedRarityAdj:'+fewRedRarityAdj);
     // blue mythics
-    let silverChance = Math.round(40000000/numBadTer/((playerInfos.mapDiff+3)*(playerInfos.mapDiff+3)));
+    let silverChance = Math.round(30000000/numBadTer/((playerInfos.mapDiff+3)*(playerInfos.mapDiff+3)));
     shufZone.forEach(function(tile) {
         if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
             terrain = getTileTerrain(tile.id);
