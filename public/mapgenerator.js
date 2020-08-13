@@ -120,6 +120,7 @@ function filterParams() {
         } else {
             filterBase = mapFilters[fdice];
         }
+        maxTileCheck = rand.rand(4,5);
     } else {
         mapFilters.forEach(function(filter) {
             if (filter.name == mapFilterDefault) {
@@ -231,6 +232,11 @@ function logFilters(filtre, seed, curve) {
     }
     console.log('Variabilité: '+variance+' (seed '+seed+')');
     console.log('River Curve: '+curve);
+    if (maxTileCheck === 4) {
+        console.log('Tendance: Transversale');
+    } else {
+        console.log('Tendance: Droite');
+    }
     // console.log(specialSeed);
 };
 
@@ -430,7 +436,7 @@ function addSNRiver(map, direction) {
     }
 };
 
-function nextTile(myTileIndex, size) {
+function nextTile(myTileIndex,size) {
     // définir le tile à vérifier
     let tileCheck = 0;
     if (myTileIndex >= size) {
@@ -445,7 +451,7 @@ function nextTile(myTileIndex, size) {
         } else {
             // middle
             // console.log('middle');
-            tileCheck = rand.rand(1,4);
+            tileCheck = rand.rand(1,maxTileCheck);
         }
     } else if (myTileIndex == 0) {
         // first tile
@@ -474,6 +480,13 @@ function nextTile(myTileIndex, size) {
         }
         if (tileCheck == 4) {
             checkTileIndex = myTileIndex-size+1;
+        }
+        if (tileCheck == 5) {
+            if (rand.rand(1,3) === 1) {
+                checkTileIndex = myTileIndex-size+1;
+            } else {
+                checkTileIndex = myTileIndex-size;
+            }
         }
         checkTileTerrain = zone[checkTileIndex].terrain;
     }

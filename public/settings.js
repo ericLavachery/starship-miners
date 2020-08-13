@@ -25,6 +25,7 @@ let riverEW = 4; // chance pour une rivière Est-Ouest (2- = 100%) +grand = moin
 let riverNS = 5; // chance pour une rivière Nord-Sud (2- = 100%) +grand = moins de chance
 let riverSN = 5; // chance pour une rivière Nord-Sud (2- = 100%) +grand = moins de chance
 let riverCurve = 3; // +grand = rivières plus droites (minimum 3)
+let maxTileCheck = 5; // 4 = tendance transversale / 5 = tendance droite
 let terrainTypes = [];
 let armorTypes = [];
 let ammoTypes = [];

@@ -722,7 +722,14 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","berserk","undead","camo","nofear"],
+        "skills":["fortif","cible","berserk","undead","camo","nofear","extraction","fret"],
+        "mining":{
+            "level":1,
+            "rate":4,
+            "multi":false,
+            "types":["Scrap"]
+        },
+        "transRes":30,
         "fuzz":0,
         "deathFx":"human2"
     },

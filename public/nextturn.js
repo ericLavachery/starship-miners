@@ -282,6 +282,9 @@ function nextTurnEnd() {
         playerInfos.mapDiff++;
     }
     turnInfo();
+    if (showMini) {
+        minimap();
+    }
     savePlayerInfos();
     saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
     saveAliens(); // !!!!!!!!!!!!!!!!!!!!!!

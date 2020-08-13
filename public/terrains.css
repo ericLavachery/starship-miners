@@ -12,8 +12,31 @@
     padding: 0 0 0 0;
     line-height: 0px;
 }
+
+.quadrat {
+  width: 50px;
+  height: 50px;
+
+}
+
+@-webkit-keyframes alienBlink {
+  0%, 49% {
+    background-color: #ff00fc;
+  }
+  50%, 100% {
+    background-color: #ffff00;
+  }
+}
+
 .mSelect {
     background-color: #ff0000;
+}
+.mAlien {
+    /* background-color: #fa00ff; */
+    -webkit-animation: alienBlink 1s infinite;  /* Safari 4+ */
+    -moz-animation: alienBlink 1s infinite;  /* Fx 5+ */
+    -o-animation: alienBlink 1s infinite;  /* Opera 12+ */
+    animation: alienBlink 1s infinite;  /* IE 10+, Fx 29+ */
 }
 .mM {
     background-color: #413421;

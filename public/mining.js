@@ -623,7 +623,11 @@ function minimap() {
         if (tile.id === selectedTile || tile.id === selectedBat.tileId) {
             $('#minimap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
         } else {
-            $('#minimap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+            if (alienOccupiedTiles.includes(tile.id)) {
+                $('#minimap').append('<span class="mini mAlien" onclick="centerFromMinimap('+tile.id+')"></span>');
+            } else {
+                $('#minimap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+            }
         }
     });
     $('#minimap').append('<br>');
