@@ -479,7 +479,7 @@ function voirRessources() {
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
-    $('#conUnitList').append('<span class="constName or" id="gentils">RESSOURCES</span>');
+    // $('#conUnitList').append('<span class="constName or" id="gentils">RESSOURCES</span>');
     $('#conUnitList').append('<button type="button" title="Effacer tous les indicateurs" class="boutonGris iconButtons" onclick="showedTilesReset()"><i class="fas fa-eraser"></i></button>');
     let visMap = [];
     if (showAllRes) {
@@ -495,37 +495,54 @@ function voirRessources() {
             return (tile.x >= minX && tile.x <= maxX && tile.y >= minY && tile.y <= maxY);
         });
     }
+    $('#conUnitList').append('<span class="butSpace"></span><span class="smSpace"></span>');
+    $('#conUnitList').append('<select class="boutonGris" id="resFind" onchange="showFoundRes()"></select>');
+    $('#resFind').append('<option value="">'+showOneRes+'</option>');
+    $('#resFind').append('<option value="Toutes">Toutes</option>');
+    let filteredResTypes = _.filter(resTypes,function(res) {
+        return (res.cat != 'alien' && res.cat != 'none');
+    });
+    let sortedResTypes = _.sortBy(filteredResTypes,'name');
+    sortedResTypes.forEach(function(res) {
+        $('#resFind').append('<option value="'+res.name+'">'+res.name+'</option>');
+    });
     let tileRes;
     let blockType;
     let filteredZone = _.filter(visMap,function(tile) {
         return (tile.rq != undefined);
     });
+    oneResTileIds = [];
     filteredZone.forEach(function(tile) {
-        if (playerInfos.showedTiles.includes(tile.id)) {
-            blockType = 'resBlockCheck';
-        } else {
-            blockType = 'resBlock';
-        }
-        $('#conUnitList').append('<div class="'+blockType+'" id="rf'+tile.id+'"></div>');
         tileRes = JSON.stringify(tile.rs);
-        tileRes = tileRes.replace(/"/g,"");
-        tileRes = tileRes.replace(/{/g,"");
-        tileRes = tileRes.replace(/}/g,"");
-        tileRes = tileRes.replace(/,/g," &nbsp;&middot;&nbsp; ");
-        tileRes = tileRes.replace(/:/g," ");
-        $('#rf'+tile.id).append('<i class="fas fa-atom inficon rq'+tile.rq+'"></i><span class="listRes gff klik" onclick="markMap('+tile.id+')">&nbsp;'+tile.y+'&lrhar;'+tile.x+'</span>');
-        $('#rf'+tile.id).append('<span class="listRes">'+tileRes+'</span><br>');
+        if (showOneRes === 'Toutes' || tileRes.includes(showOneRes)) {
+            if (playerInfos.showedTiles.includes(tile.id)) {
+                blockType = 'resBlockCheck';
+            } else {
+                blockType = 'resBlock';
+            }
+            $('#conUnitList').append('<div class="'+blockType+'" id="rf'+tile.id+'"></div>');
+            $('#rf'+tile.id).append('<i class="fas fa-atom inficon rq'+tile.rq+'"></i><span class="listRes gff klik" onclick="markMap('+tile.id+')">&nbsp;'+tile.y+'&lrhar;'+tile.x+'</span>');
+            tileRes = tileRes.replace(/"/g,"");
+            tileRes = tileRes.replace(/{/g,"");
+            tileRes = tileRes.replace(/}/g,"");
+            tileRes = tileRes.replace(/,/g," &nbsp;&middot;&nbsp; ");
+            tileRes = tileRes.replace(/:/g," ");
+            $('#rf'+tile.id).append('<span class="listRes">'+tileRes+'</span><br>');
+            if (tileRes.includes(showOneRes)) {
+                oneResTileIds.push(tile.id);
+            }
+        }
     });
-    // let filteredResTypes = _.filter(resTypes,function(res) {
-    //     return (res.cat != 'alien');
-    // });
-    // let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(filteredResTypes,'rarity'),'bld'),'cat'),'cat');
-    // sortedResTypes.reverse();
-    // sortedResTypes = _.sortBy(sortedResTypes,'level')
-    // sortedResTypes.forEach(function(res) {
-    //     $('#conUnitList').append('<span class="constName sky">'+res.name+'</span><br>');
-    //
-    // });
+};
+
+function showFoundRes() {
+    let value = document.getElementById("resFind").value;
+    showOneRes = value;
+    voirRessources();
+    if (showMini) {
+        oneResView();
+    }
+    console.log(showOneRes);
 };
 
 function showedTilesReset() {
@@ -535,7 +552,9 @@ function showedTilesReset() {
     }
     showMap(zone,true);
     confirmMode();
-    // centerMapCenter();
+    if (showMini) {
+        minimap();
+    }
 };
 
 function toggleResView() {
@@ -612,41 +631,55 @@ function isAlienHere(tileId) {
 function minimap() {
     showMini = true;
     $("#minimap").css("display","block");
-    $('#minimap').empty();
-    $('#minimap').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    $('#minimap').append('<span class="constName klik cy" onclick="miniOut()">Fermer</span>');
-    $('#minimap').append('<button type="button" title="Montrer les repaires" class="boutonGris skillButtons" onclick="dotsView()"><i class="fas fa-map-pin"></i></button>');
-    $('#minimap').append('<button type="button" title="Montrer les unités" class="boutonGris skillButtons" onclick="unitsView()"><i class="fas fa-bug"></i></button><br><br>');
-    $('#minimap').append('<div class="shSpace"></div>');
+    $('#themmap').empty();
+    $('#thenavig').empty();
+    $('#thenavig').append('<span class="constIcon"><i class="fas fa-times-circle klik" onclick="miniOut()"></i></span><br>');
+    // $('#minimap').append('<span class="constName klik cy">Fermer</span>');
+    $('#thenavig').append('<button type="button" title="Montrer les unités" class="boutonGris miniButtons" onclick="unitsView()"><i class="fas fa-bug"></i></button><br>');
+    $('#thenavig').append('<button type="button" title="Montrer les repaires" class="boutonGris miniButtons" onclick="dotsView()"><i class="fas fa-map-pin"></i></button><br>');
+    if (showOneRes != 'Toutes') {
+        $('#thenavig').append('<button type="button" title="Montrer la ressource recherchée" class="boutonGris miniButtons" onclick="oneResView()"><i class="far fa-gem"></i></button><br>');
+    }
+    // $('#minimap').append('<div class="shSpace"></div>');
     zone.forEach(function(tile) {
         if (tile.y === 1) {
-            $('#minimap').append('<br>');
+            $('#themmap').append('<br>');
         }
-        if (tile.id === selectedTile || tile.id === selectedBat.tileId) {
-            $('#minimap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
+        if ((tile.id === selectedTile || tile.id === selectedBat.tileId) && miniDots === 'units') {
+            $('#themmap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
         } else {
             if (alienOccupiedTiles.includes(tile.id) && miniDots === 'units') {
-                $('#minimap').append('<span class="mini mAlien" onclick="centerFromMinimap('+tile.id+')"></span>');
+                $('#themmap').append('<span class="mini mAlien" onclick="centerFromMinimap('+tile.id+')"></span>');
             } else {
                 if (playerOccupiedTiles.includes(tile.id) && miniDots === 'units') {
-                    $('#minimap').append('<span class="mini mBoys" onclick="centerFromMinimap('+tile.id+')"></span>');
+                    $('#themmap').append('<span class="mini mBoys" onclick="centerFromMinimap('+tile.id+')"></span>');
                 } else {
                     if (playerInfos.showedTiles.includes(tile.id) && miniDots === 'points') {
-                        $('#minimap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
+                        $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
                     } else {
-                        $('#minimap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                        if (oneResTileIds.includes(tile.id) && miniDots === 'oneres') {
+                            $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
+                        } else {
+                            $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                        }
                     }
                 }
             }
         }
     });
-    $('#minimap').append('<br>');
-    $('#minimap').append('<div class="shSpace"></div>');
+    $('#themmap').append('<br>');
+    // $('#minimap').append('<div class="shSpace"></div>');
 };
 
 function dotsView() {
     miniDots = 'points';
     minimap();
+};
+
+function oneResView() {
+    miniDots = 'oneres';
+    minimap();
+    voirRessources();
 };
 
 function unitsView() {
@@ -655,7 +688,8 @@ function unitsView() {
 };
 
 function miniOut() {
-    $('#minimap').empty();
+    $('#themmap').empty();
+    $('#thenavig').empty();
     $("#minimap").css("display","none");
     showMini = false;
 };

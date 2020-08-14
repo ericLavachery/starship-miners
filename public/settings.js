@@ -47,6 +47,8 @@ let showMini = false;
 let miniDots = 'units';
 let showResOpen = false;
 let showAllRes = false;
+let showOneRes = 'Toutes';
+let oneResTileIds = [];
 // UNITS
 let unitTypes = [];
 let unitDV = {}
