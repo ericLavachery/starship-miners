@@ -77,7 +77,7 @@
         "mediCost":8,
         "mecanoCost":8,
         "transMaxSize":33,
-        "transUnits":8500,
+        "transUnits":9000,
         "transRes":12000,
         "fuzz":4,
         "deathFx":"planeexploground2"
