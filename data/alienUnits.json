@@ -919,7 +919,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["venin","inflammable"],
+        "skills":["venin","inflammable","longshot"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Aranium":1,"Slime":1}
     },

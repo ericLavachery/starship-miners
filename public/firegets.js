@@ -106,6 +106,9 @@ function getCover(bat,withFortif) {
         }
     } else {
         cover = terrain.cover;
+        if (tile.talus) {
+            cover = cover+2;
+        }
     }
     // Fortification
     if (withFortif) {

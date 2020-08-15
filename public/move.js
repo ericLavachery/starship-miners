@@ -370,9 +370,6 @@ function calcMoveCost(targetTileId,diag) {
     }
     if (diag) {
         moveCost = moveCost*1.42;
-        if (moveCost == 1) {
-            moveCost = 2;
-        }
     }
     moveCost = moveCost.toFixedNumber(1);
     return moveCost;
