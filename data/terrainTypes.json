@@ -162,7 +162,7 @@
         "cover":3,
         "fortifcover":6,
         "aliencover":-3,
-        "fishcover":8,
+        "fishcover":3,
         "minChance":100,
         "roadBuild":8,
         "color":"#566878"
@@ -183,7 +183,7 @@
         "cover":-2,
         "fortifcover":0,
         "aliencover":-6,
-        "fishcover":10,
+        "fishcover":5,
         "minChance":500,
         "roadBuild":16,
         "color":"#437c9a"
@@ -204,7 +204,7 @@
         "cover":-2,
         "fortifcover":-2,
         "aliencover":-8,
-        "fishcover":12,
+        "fishcover":6,
         "minChance":500,
         "roadBuild":16,
         "color":"#1378c1"

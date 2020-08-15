@@ -329,7 +329,7 @@ function spawns() {
     if (vomiToRuche < 5) {
         vomiToRuche = 5;
     }
-    let maxPonte = playerInfos.mapAdjDiff+3;
+    let maxPonte = playerInfos.mapDiff+playerInfos.mapDiff+2;
     let flyDice;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -337,7 +337,7 @@ function spawns() {
             if (bat.type.includes('Oeuf') || bat.type === 'Coque') {
                 batType = getBatType(bat);
                 eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
-                eggModTurn = eggTurn+playerInfos.mapAdjDiff-8;
+                eggModTurn = eggTurn+playerInfos.mapDiff-8;
                 vomiCheck = ((batType.squads-bat.squadsLeft)*vomiChance)+(eggModTurn*3);
                 if (rand.rand(1,100) <= vomiCheck && bat.type === 'Oeuf') {
                     vomiSpawn(bat);
@@ -590,7 +590,7 @@ function eggSpawn(bat,fromEgg) {
             alienMorph(bat,'Volcan',false);
         }
     } else {
-        let spawnChance = Math.round(eggTurn*20*bat.squadsLeft/6*Math.sqrt(playerInfos.mapAdjDiff)/2*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
+        let spawnChance = Math.round(eggTurn*15*bat.squadsLeft/6*Math.sqrt(playerInfos.mapDiff)*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
         if (!fromEgg) {
             spawnChance = 100-(eggTurn*5);
             if (spawnChance < 25) {
@@ -616,12 +616,12 @@ function eggSpawn(bat,fromEgg) {
             }
             console.log('spawnNum='+spawnNum);
             let classes = [];
-            let minTurnB = 33-Math.round(playerInfos.mapAdjDiff*2);
-            let minTurnA = 66-Math.round(playerInfos.mapAdjDiff*3);
+            let minTurnB = 33-Math.round(playerInfos.mapDiff*3);
+            let minTurnA = 66-Math.round(playerInfos.mapDiff*5);
             classes.push('C');
-            if (eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB) {
+            if (eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB && playerInfos.mapDiff >= 2) {
                 classes.push('B');
-                if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA) {
+                if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA && playerInfos.mapDiff >= 6) {
                     classes.push('A');
                     if (eggModTurn >= 20 && playerInfos.mapTurn >= minTurnA && fromEgg) {
                         const index = classes.indexOf('C');
