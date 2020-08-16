@@ -686,6 +686,21 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-drafting-compass"></i> <span class="small">'+apReq+'</span></button>&nbsp; Construction</h4></span>');
         }
     }
+    // FOUILLE DE RUINES
+    if (batUnitType.skills.includes('fouille') && tile.ruins && tile.sh >= 1) {
+        apReq = 5;
+        apCost = Math.round(bat.ap*1.5);
+        if (bat.apLeft >= apReq && !inMelee) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Fouiller les ruines" class="boutonGris skillButtons" onclick="searchRuins('+apCost+')"><i class="fas fa-search"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fouille</h4></span>');
+        } else {
+            if (inMelee) {
+                skillMessage = "Ne peut pas se faire en mêlée";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-search"></i> <span class="small">'+apReq+'</span></button>&nbsp; Fouille</h4></span>');
+        }
+    }
     // CONSTRUCTION TRICHE
     if (batUnitType.skills.includes('triche')) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris skillButtons" onclick="bfconst(`all`,true)"><i class="fas fa-drafting-compass"></i></button>&nbsp; Construction</h4></span>');

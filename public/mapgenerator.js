@@ -732,6 +732,7 @@ function addRes(zone) {
     // check RUINS
     let ruinChance = Math.floor(((scrapRarity*ruinRarity/5)+ruinRarity)/3);
     let resName = 'Scrap';
+    let numRuins = 0;
     zone.forEach(function(tile) {
         if (tile.rq === undefined && tile.terrain != 'W' && tile.terrain != 'R') {
             if (rand.rand(1,2000) <= ruinChance) {
@@ -739,7 +740,13 @@ function addRes(zone) {
                 tile.rq = 0;
                 tile.rs = {};
                 tile.rs[resName] = Math.round(97*rand.rand(30,90)/resBatchDiv);
+                numRuins++;
             }
+        }
+    });
+    zone.forEach(function(tile) {
+        if (tile.ruins) {
+            tile.sh = numRuins;
         }
     });
     // check res
