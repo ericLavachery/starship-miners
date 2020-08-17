@@ -18,6 +18,7 @@ function mining(bat) {
     if (bat.tags.includes('mining')) {
         if (bat.apLeft >= 1) {
             console.log('MINING');
+            let tile = getTile(bat);
             let batType = getBatType(bat);
             let rate = getMiningRate(bat,false);
             console.log('rate'+rate);
@@ -36,6 +37,10 @@ function mining(bat) {
                                 bestDumper.transRes[res.name] = resMiningRate;
                             } else {
                                 bestDumper.transRes[res.name] = bestDumper.transRes[res.name]+resMiningRate;
+                            }
+                            // diminution des gisements
+                            if (!permaRes) {
+                                tile.rs[res.name] = tile.rs[res.name]-Math.ceil(resMiningRate/10);
                             }
                         }
                     }
@@ -142,6 +147,11 @@ function getMiningRate(bat,fullRate) {
 };
 
 function getResMiningRate(bat,ressource,value,fullRate) {
+    let batType = getBatType(bat);
+    let resHere = value;
+    if (resHere < minResForRate) {
+        resHere = minResForRate;
+    }
     let batRate = getMiningRate(bat,fullRate);
     let multiExtractAdj = 1;
     if (bat.extracted.length >= 2) {
@@ -150,7 +160,13 @@ function getResMiningRate(bat,ressource,value,fullRate) {
     if (multiExtractAdj < 0.4) {
         multiExtractAdj = 0.4;
     }
-    let resRate = Math.ceil(value*batRate/mineRateDiv*multiExtractAdj);
+    let resRate = Math.ceil(resHere*batRate/mineRateDiv*multiExtractAdj);
+    if (batType.mining.types.includes('Mine') && res.bld === 'Derrick') {
+        resRate = Math.ceil(resRate/3);
+    }
+    if (value <= 0) {
+        resRate = 0;
+    }
     return resRate;
 };
 

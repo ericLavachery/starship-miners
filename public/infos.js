@@ -319,9 +319,6 @@ function showTileInfos(tileId) {
             let value = entry[1];
             resIndex = resTypes.findIndex((obj => obj.name == key));
             res = resTypes[resIndex];
-            if (res.bld === 'Derrick') {
-                value = value*3;
-            }
             bldReq = onlyFirstLetter(res.bld);
             $('#tileInfos').append('<span class="paramName cy">'+key+'</span><span class="paramIcon"></span><span class="paramValue cy">'+value+' <span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
             // console.log(key,value);

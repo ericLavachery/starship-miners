@@ -4,6 +4,7 @@ function bfconst(cat,triche) {
     selectMode();
     $("#conUnitList").css("display","block");
     $("#conAmmoList").css("display","block");
+    $('#conUnitList').css("height","300px");
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();

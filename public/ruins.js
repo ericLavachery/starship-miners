@@ -1,24 +1,28 @@
 function searchRuins(apCost) {
-    console.log('RUINS');
-    selectedBat.apLeft = selectedBat.apLeft-apCost;
     let tile = getTile(selectedBat);
-    checkRuinsCit(tile);
-    checkRuinsAliens(tile);
-    checkRuinsRes(tile);
-    if (selectedBat.tags.includes('mining')) {
-        tagIndex = selectedBat.tags.indexOf('mining');
-        selectedBat.tags.splice(tagIndex,1);
+    if (tile.ruins && tile.sh >= 1) {
+        console.log('RUINS');
+        selectedBat.apLeft = selectedBat.apLeft-apCost;
+        checkRuinsCit(tile);
+        checkRuinsAliens(tile);
+        checkRuinsRes(tile);
+        if (selectedBat.tags.includes('mining')) {
+            tagIndex = selectedBat.tags.indexOf('mining');
+            selectedBat.tags.splice(tagIndex,1);
+        }
+        if (selectedBat.tags.includes('guet')) {
+            tagIndex = selectedBat.tags.indexOf('guet');
+            selectedBat.tags.splice(tagIndex,1);
+        }
+        if (selectedBat.tags.includes('fortif')) {
+            tagIndex = selectedBat.tags.indexOf('fortif');
+            selectedBat.tags.splice(tagIndex,1);
+        }
+        tile.sh = -1;
+        saveMap();
+        selectedBatArrayUpdate();
+        showBatInfos(selectedBat);
     }
-    if (selectedBat.tags.includes('guet')) {
-        tagIndex = selectedBat.tags.indexOf('guet');
-        selectedBat.tags.splice(tagIndex,1);
-    }
-    if (selectedBat.tags.includes('fortif')) {
-        tagIndex = selectedBat.tags.indexOf('fortif');
-        selectedBat.tags.splice(tagIndex,1);
-    }
-    selectedBatArrayUpdate();
-    showBatInfos(selectedBat);
 };
 
 function checkRuinsCit(tile) {
@@ -95,6 +99,7 @@ function checkRuinsAliens(tile) {
                 i++
             }
         }
+        selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap;
     }
 };
 

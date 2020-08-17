@@ -61,7 +61,7 @@
         "transMaxSize":9,
         "transUnits":1500,
         "transRes":2500,
-        "refabTime":90,
+        "refabTime":60,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -126,14 +126,14 @@
         "skills":["extraction","fret","recupcit","dumper","transport","inflammable"],
         "mining":{
             "level":3,
-            "rate":60,
+            "rate":20,
             "multi":true,
             "types":["Derrick"]
         },
         "transMaxSize":9,
         "transUnits":1000,
         "transRes":2500,
-        "refabTime":90,
+        "refabTime":60,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },

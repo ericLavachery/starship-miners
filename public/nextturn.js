@@ -286,8 +286,9 @@ function nextTurnEnd() {
         minimap();
     }
     savePlayerInfos();
-    saveBataillons(); // !!!!!!!!!!!!!!!!!!!!!!!!
-    saveAliens(); // !!!!!!!!!!!!!!!!!!!!!!
+    saveBataillons();
+    saveAliens();
+    saveMap();
     createBatList();
     alienOccupiedTileList();
     blockMe(false);

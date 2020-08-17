@@ -41,6 +41,8 @@ let resources = [];
 let mineRateDiv = 250; // divise le mining rate : def 100
 let resFoundDiv = 9; // default 9
 let resBatchDiv = 12;
+let permaRes = false;
+let minResForRate = 100;
 let ruinRarity = 8;
 let ruinsCitBase = 50; // def 50
 let ruinsBugBase = 50; // def 50
@@ -48,7 +50,7 @@ let selectedTile = -1;
 let showMini = false;
 let miniDots = 'units';
 let showResOpen = false;
-let showAllRes = false;
+let showAllRes = true;
 let showOneRes = 'Toutes';
 let oneResTileIds = [];
 // UNITS
