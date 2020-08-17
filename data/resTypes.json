@@ -4,9 +4,9 @@
         "name": "Scrap",
         "bld": "Scrap",
         "level": 1,
-        "rarity": 20,
+        "rarity": 40,
         "cat": "white",
-        "batch": 6
+        "batch": 3
     },
     {
         "id": 1,

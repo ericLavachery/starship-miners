@@ -580,6 +580,9 @@ function toggleResView() {
         showAllRes = true;
     }
     voirRessources();
+    if (showMini) {
+        minimap();
+    }
 };
 
 function markMap(tileId) {
