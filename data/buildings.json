@@ -162,7 +162,7 @@
         "skills":["extraction","fret","recupcit","dumper","transport"],
         "mining":{
             "level":3,
-            "rate":90,
+            "rate":40,
             "multi":true,
             "types":["Comptoir","Scrap"]
         },
