@@ -662,6 +662,14 @@ function minimap() {
         $('#thenavig').append('<button type="button" title="Montrer la ressource recherchée" class="boutonGris miniButtons" onclick="oneResView()"><i class="far fa-gem"></i></button><br>');
     }
     // $('#minimap').append('<div class="shSpace"></div>');
+    let visibleAliens = [];
+    let alienType;
+    aliens.forEach(function(alien) {
+        alienType = getBatType(alien);
+        if (alien.loc === "zone" && !alien.tags.includes('invisible') && !alienType.skills.includes('invisible')) {
+            visibleAliens.push(alien.tileId);
+        }
+    });
     zone.forEach(function(tile) {
         if (tile.y === 1) {
             $('#themmap').append('<br>');
@@ -669,7 +677,7 @@ function minimap() {
         if ((tile.id === selectedTile || tile.id === selectedBat.tileId) && miniDots === 'units') {
             $('#themmap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
         } else {
-            if (alienOccupiedTiles.includes(tile.id) && miniDots === 'units') {
+            if (visibleAliens.includes(tile.id) && miniDots === 'units') {
                 $('#themmap').append('<span class="mini mAlien" onclick="centerFromMinimap('+tile.id+')"></span>');
             } else {
                 if (playerOccupiedTiles.includes(tile.id) && miniDots === 'units') {

@@ -102,7 +102,7 @@
         "armor":0,
         "size":3,
         "stealth":4,
-        "ap":13,
+        "ap":16,
         "maxSalvo":1,
         "weapon":{
             "name":"Fusil plasma",
@@ -116,8 +116,21 @@
             "sound":"plasma_fusil",
             "ammo":["plasma","plastanium","uridium","nanite"]
         },
-        "weapon2":{},
-        "moveCost":3,
+        "weapon2":{
+            "name":"Lame",
+            "cost":1,
+            "range":0,
+            "isMelee":true,
+            "isShort":true,
+            "rof":10,
+            "accuracy":18,
+            "power":4,
+            "armors":0.85,
+            "aoe":"unit",
+            "sound":"lame",
+            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
+        },
+        "moveCost":4,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,

@@ -131,7 +131,7 @@ function eggsDrop() {
         let i = 1;
         while (i <= numEggs) {
             eggTypeDice = rand.rand(1,100);
-            invisibleChance = Math.floor(playerInfos.mapDiff*1)-3;
+            invisibleChance = Math.floor(playerInfos.mapDiff*1.5)-8;
             if (invisibleChance < 0) {
                 invisibleChance = 0;
             } else {
