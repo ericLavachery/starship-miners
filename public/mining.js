@@ -464,6 +464,8 @@ function resSelectLoad(value,pickValue,resId,batId) {
         }
         bat.transRes[res.name] = bat.transRes[res.name]-maxTransfert;
     }
+    putTagAction(bat);
+    putTagAction(selectedBat);
     selectedBatArrayUpdate();
     loadRes();
 };

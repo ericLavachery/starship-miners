@@ -2321,7 +2321,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["fortif","recycle","transport","fret","maycamo","mecano","defense","dumper","realdumper","extraction"],
+        "skills":["fouille","fortif","recycle","transport","fret","maycamo","mecano","defense","dumper","realdumper","extraction"],
         "mecanoCost":10,
         "mining":{
             "level":1,
@@ -2846,7 +2846,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","selfmecano","extraction","hardmove","fret","noblub","dumper"],
+        "skills":["fouille","cible","selfmecano","extraction","hardmove","fret","noblub","dumper"],
         "mecanoCost":16,
         "mining":{
             "level":3,
@@ -2909,7 +2909,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","selfbadmecano","extraction","hardmove","fret","dumper"],
+        "skills":["fouille","cible","selfbadmecano","extraction","hardmove","fret","dumper"],
         "mecanoCost":18,
         "mining":{
             "level":3,
