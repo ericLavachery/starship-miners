@@ -38,7 +38,7 @@
         "maxVeg":3,
         "skills":[],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":1}
+        "killRes":{"Bugium":2}
     },
     {
         "id":14,
@@ -93,7 +93,7 @@
         "maxVeg":3,
         "skills":["regeneration","nez","fouisseur","capbld","reactpoison"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"Bugium":1,"Larvium":4,"Mendium":4}
+        "killRes":{"Bugium":1,"Larvium":10,"Mendium":9}
     },
     {
         "id":1,
@@ -148,7 +148,7 @@
         "maxVeg":3,
         "skills":["regeneration","capbld","fouisseur","nez","reactpoison"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"Bugium":4,"Mendium":12,"Larvium":8}
+        "killRes":{"Bugium":5,"Mendium":30,"Larvium":30}
     },
     {
         "id":38,
@@ -205,7 +205,7 @@
         "deathFx":"76974__michel88__piggrunt2",
         "spawnFx":"71906__cmusounddesign__je-monster_ghost",
         "fxPriority":1,
-        "killRes":{"Bugium":4,"Blendium":3,"Larvium":6,"Germium":2}
+        "killRes":{"Bugium":6,"Blendium":21,"Larvium":11,"Germium":18,"Bossium":5}
     },
     {
         "id":41,
@@ -249,7 +249,7 @@
         "deathFx":"76974__michel88__piggrunt2",
         "spawnFx":"71906__cmusounddesign__je-monster_ghost",
         "fxPriority":1,
-        "killRes":{"Bugium":1,"Blendium":1,"Larvium":3}
+        "killRes":{"Bugium":2,"Blendium":9,"Larvium":5}
     },
     {
         "id":2,
@@ -292,7 +292,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"195733__nornalbion__large-monster-mante",
         "fxPriority":7,
-        "killRes":{"Bugium":15,"Swarmine":8,"Bossium":3,"Egidium":8}
+        "killRes":{"Bugium":26,"Swarmine":33,"Bossium":36,"Egidium":50}
     },
     {
         "id":3,
@@ -335,7 +335,7 @@
         "maxVeg":3,
         "skills":[],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":1,"Aranium":2,"Slime":1}
+        "killRes":{"Bugium":2,"Aranium":5,"Slime":7}
     },
     {
         "id":4,
@@ -379,7 +379,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"436570__magicthighs__corellas-screeching_glaireuse",
         "fxPriority":5,
-        "killRes":{"Bugium":3,"Aranium":8,"Bossium":3,"Creatite":1,"Slime":8}
+        "killRes":{"Bugium":5,"Aranium":34,"Bossium":40,"Creatite":6,"Slime":42}
     },
     {
         "id":5,
@@ -420,7 +420,7 @@
         "maxVeg":3,
         "skills":[],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":2}
+        "killRes":{"Bugium":3}
     },
     {
         "id":7,
@@ -461,7 +461,7 @@
         "maxVeg":3,
         "skills":["capbld","fouisseur"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":2,"Swarmine":3}
+        "killRes":{"Bugium":2,"Swarmine":7}
     },
     {
         "id":8,
@@ -502,7 +502,7 @@
         "maxVeg":3,
         "skills":["grip","venin","resistpoison"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":2,"Swarmine":2,"Mephitis":1}
+        "killRes":{"Bugium":2,"Swarmine":3,"Mephitis":6}
     },
     {
         "id":9,
@@ -544,7 +544,7 @@
         "maxVeg":3,
         "skills":["furtif","nez","maladie"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Larvium":2}
+        "killRes":{"Larvium":4,"Germium":2}
     },
     {
         "id":40,
@@ -586,7 +586,7 @@
         "maxVeg":3,
         "skills":["furtif","nez"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Larvium":2}
+        "killRes":{"Larvium":4}
     },
     {
         "id":10,
@@ -627,7 +627,7 @@
         "maxVeg":3,
         "skills":["capbld","fear","reactpoison"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"Bugium":12}
+        "killRes":{"Bugium":15}
     },
     {
         "id":11,
@@ -685,7 +685,7 @@
         "deathFx":"76974__michel88__piggrunt2",
         "spawnFx":"125388__thegoose09__monster-screech_veuve",
         "fxPriority":6,
-        "killRes":{"Bugium":2,"Aranium":12,"Mephitis":6,"Bossium":2,"Slime":6,"Mendium":4}
+        "killRes":{"Bugium":4,"Aranium":25,"Mephitis":40,"Bossium":31,"Slime":28,"Mendium":7}
     },
     {
         "id":12,
@@ -728,7 +728,7 @@
         "maxVeg":3,
         "skills":["shield","inflammable"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"Bugium":12,"Bossium":1,"Slime":4,"Egidium":3}
+        "killRes":{"Bugium":13,"Bossium":18,"Slime":22,"Egidium":24}
     },
     {
         "id":13,
@@ -769,7 +769,7 @@
         "maxVeg":3,
         "skills":["fly","capfar","inflammable"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":1,"Larvium":1,"Wingium":1,"Noxis":1}
+        "killRes":{"Larvium":2,"Wingium":3,"Mephitis":1}
     },
     {
         "id":15,
@@ -824,7 +824,7 @@
         "maxVeg":3,
         "skills":["chancre","venin","regeneration","shield","minaccu"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":4,"Mendium":3,"Germium":2,"Egidium":1}
+        "killRes":{"Bugium":3,"Mendium":3,"Germium":10,"Egidium":3,"Mephitis":4}
     },
     {
         "id":16,
@@ -866,7 +866,7 @@
         "maxVeg":3,
         "skills":["resistfeu"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"Bugium":7}
+        "killRes":{"Bugium":8}
     },
     {
         "id":18,
@@ -903,7 +903,7 @@
         "weapon2":{
             "name":"Toile",
             "cost":4,
-            "range":0,
+            "range":2,
             "noFly":false,
             "isMelee":false,
             "rof":10,
@@ -921,7 +921,7 @@
         "maxVeg":3,
         "skills":["venin","inflammable","longshot"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Aranium":1,"Slime":1}
+        "killRes":{"Aranium":3,"Slime":1,"Mephitis":1}
     },
     {
         "id":19,
@@ -962,7 +962,7 @@
         "maxVeg":3,
         "skills":["furtif","chancre","capbld","ponte","minaccu","resistpoison"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":1,"Larvium":8,"Germium":2,"Bossium":2,"Creatite":1,"Slime":1}
+        "killRes":{"Larvium":4,"Germium":4,"Bossium":30,"Creatite":6,"Slime":3}
     },
     {
         "id":20,
@@ -1005,7 +1005,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"213842__sihil__lizardgargle_mygale",
         "fxPriority":3,
-        "killRes":{"Bugium":3,"Aranium":7,"Mephitis":7}
+        "killRes":{"Bugium":4,"Aranium":24,"Mephitis":28,"Bossium":5}
     },
     {
         "id":21,
@@ -1046,7 +1046,7 @@
         "maxVeg":3,
         "skills":["grip","regeneration"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"Bugium":1,"Aranium":3,"Mendium":3}
+        "killRes":{"Bugium":2,"Aranium":12,"Mendium":8}
     },
     {
         "id":22,
@@ -1087,7 +1087,7 @@
         "maxVeg":3,
         "skills":["regeneration","ponte","reactpoison"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Swarmine":1,"Mendium":1}
+        "killRes":{"Swarmine":2,"Mendium":2,"Creatite":1}
     },
     {
         "id":23,
@@ -1129,7 +1129,7 @@
         "maxVeg":3,
         "skills":["resistpoison"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":1,"Swarmine":1,"Noxis":2}
+        "killRes":{"Bugium":1,"Swarmine":5,"Mephitis":3}
     },
     {
         "id":24,
@@ -1173,7 +1173,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"82082__rmw2861__1000000009_Androks",
         "fxPriority":4,
-        "killRes":{"Bugium":20,"Swarmine":6,"Noxis":6,"Bossium":3,"Creatite":1}
+        "killRes":{"Bugium":31,"Swarmine":19,"Mephitis":16,"Bossium":36,"Creatite":6}
     },
     {
         "id":25,
@@ -1217,7 +1217,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"347410__zerokingfull__monster-roar-02_bugboss",
         "fxPriority":8,
-        "killRes":{"Bugium":25,"Bossium":5,"Creatite":1,"Pyrus":5}
+        "killRes":{"Bugium":23,"Bossium":55,"Creatite":6,"Pyrus":75}
     },
     {
         "id":26,
@@ -1258,7 +1258,7 @@
         "maxVeg":3,
         "skills":["fly","capfar","inflammable"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":1,"Larvium":2,"Wingium":1}
+        "killRes":{"Bugium":1,"Larvium":2,"Wingium":5}
     },
     {
         "id":28,
@@ -1299,7 +1299,7 @@
         "maxVeg":3,
         "skills":["capmen"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":1,"Swarmine":2}
+        "killRes":{"Bugium":2,"Swarmine":5}
     },
     {
         "id":29,
@@ -1342,7 +1342,7 @@
         "maxVeg":3,
         "skills":["reactpoison"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":2,"Swarmine":4,"Slime":4}
+        "killRes":{"Bugium":2,"Swarmine":4,"Slime":15}
     },
     {
         "id":30,
@@ -1383,7 +1383,7 @@
         "maxVeg":3,
         "skills":["chancre","hover","capmen"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Larvium":2,"Germium":1,"Noxis":1}
+        "killRes":{"Larvium":5,"Germium":8,"Mephitis":5}
     },
     {
         "id":31,
@@ -1425,7 +1425,7 @@
         "maxVeg":3,
         "skills":["sauteur","grip","inflammable"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":2}
+        "killRes":{"Bugium":2,"Wingium":2}
     },
     {
         "id":32,
@@ -1467,7 +1467,7 @@
         "maxVeg":3,
         "skills":["minaccu","resistfeu"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":3,"Slime":2}
+        "killRes":{"Bugium":3,"Slime":9}
     },
     {
         "id":33,
@@ -1477,8 +1477,8 @@
         "kind":"larve",
         "class":"A",
         "rarity":3,
-        "squads":4,
-        "squadSize":2,
+        "squads":3,
+        "squadSize":3,
         "crew":1,
         "hp":500,
         "armor":10,
@@ -1493,7 +1493,7 @@
             "range":0,
             "noFly":true,
             "isMelee":true,
-            "rof":2,
+            "rof":3,
             "accuracy":18,
             "power":40,
             "aoe":"brochette",
@@ -1506,7 +1506,7 @@
             "range":5,
             "noFly":false,
             "isMelee":false,
-            "rof":6,
+            "rof":9,
             "accuracy":25,
             "power":25,
             "aoe":"squad",
@@ -1522,7 +1522,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"142932__1pjladd2__burp-monster_megagrubz",
         "fxPriority":2,
-        "killRes":{"Bugium":9,"Larvium":9,"Mendium":12,"Bossium":3,"Creatite":1,"Slime":3}
+        "killRes":{"Bugium":11,"Larvium":23,"Mendium":23,"Bossium":37,"Creatite":6,"Slime":25}
     },
     {
         "id":34,
@@ -1564,7 +1564,7 @@
         "maxVeg":3,
         "skills":["fly","capfar","grip","inflammable","reactpoison"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":2,"Swarmine":3,"Wingium":2}
+        "killRes":{"Bugium":2,"Swarmine":5,"Wingium":15}
     },
     {
         "id":35,
@@ -1606,7 +1606,7 @@
         "maxVeg":3,
         "skills":["hover"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":1,"Aranium":1,"Noxis":1}
+        "killRes":{"Bugium":1,"Aranium":3,"Mephitis":4}
     },
     {
         "id":43,
@@ -1661,7 +1661,7 @@
         "maxVeg":3,
         "skills":["sauteur","anycap","maladie","hide","venin"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":2,"Aranium":3,"Mephitis":1,"Blendium":1}
+        "killRes":{"Bugium":3,"Aranium":8,"Mephitis":5,"Germium":5,"Slime":5,"Blendium":4}
     },
     {
         "id":6,
@@ -1690,7 +1690,7 @@
         "maxVeg":-1,
         "skills":["ponte","inflammable"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"Creatite":5}
+        "killRes":{"Creatite":18}
     },
     {
         "id":27,
@@ -1719,7 +1719,7 @@
         "maxVeg":-1,
         "skills":["inflammable"],
         "deathFx":"zapsplat_explosion_fireball_43738",
-        "killRes":{"Creatite":1}
+        "killRes":{"Creatite":3}
     },
     {
         "id":39,
@@ -1748,7 +1748,7 @@
         "maxVeg":-1,
         "skills":["ponte","inflammable"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"Creatite":5,"Blendium":15}
+        "killRes":{"Creatite":18,"Blendium":60}
     },
     {
         "id":36,
@@ -1777,7 +1777,7 @@
         "maxVeg":-1,
         "skills":["ponte","regeneration","resistfeu","reactpoison"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"Mendium":9,"Creatite":3}
+        "killRes":{"Bugium":36,"Mendium":30,"Creatite":12}
     },
     {
         "id":42,
@@ -1806,7 +1806,7 @@
         "maxVeg":-1,
         "skills":["ponte","regeneration"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"Mendium":9,"Creatite":3}
+        "killRes":{"Bugium":36,"Mendium":30,"Creatite":9}
     },
     {
         "id":17,
@@ -1861,7 +1861,7 @@
         "maxVeg":-1,
         "skills":["ponte","inflammable"],
         "deathFx":"zapsplat_explosion_fireball_43738",
-        "killRes":{"Bugium":10,"Creatite":3,"Slime":4}
+        "killRes":{"Bugium":5,"Creatite":9,"Slime":31}
     },
     {
         "id":37,
@@ -1913,6 +1913,6 @@
         "maxVeg":-1,
         "skills":["slowreg","resistfeu","reactpoison"],
         "deathFx":"zapsplat_explosion_fireball_43738",
-        "killRes":{"Bugium":7,"Mendium":5,"Pyrus":2}
+        "killRes":{"Bugium":12,"Mendium":15,"Pyrus":26}
     }
 ]
