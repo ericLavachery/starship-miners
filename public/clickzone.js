@@ -92,7 +92,7 @@ function batSelect(bat) {
     tileSelect(bat);
     checkSelectedBatType();
     commandes();
-    if (showMini) {
+    if (showMini && activeTurn == 'player') {
         minimap();
     }
 };

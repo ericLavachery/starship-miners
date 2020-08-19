@@ -16,11 +16,15 @@ function nextTurn() {
     // récup des aliens
     deadAliensList = [];
     alienTypesList = [];
+    visibleAliens = [];
     let unitIndex;
     let batType;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
+            if (!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) {
+                visibleAliens.push(bat.tileId);
+            }
             if (!alienTypesList.includes(batType.name)) {
                 alienTypesList.push(batType.name);
             }

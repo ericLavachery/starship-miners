@@ -83,7 +83,7 @@ function centerMapTo(tileId) {
     showMap(zone,true);
     confirmMode();
     selectedTile = tileId;
-    if (showMini) {
+    if (showMini && activeTurn == 'player') {
         minimap();
     }
 };
@@ -105,7 +105,7 @@ function centerMap() {
             tileTarget(targetBat);
         }
         selectedTile = selectedBat.tileId;
-        if (showMini) {
+        if (showMini && activeTurn == 'player') {
             minimap();
         }
     } else {
@@ -130,7 +130,7 @@ function centerMapTarget() {
             tileTarget(targetBat);
         }
         selectedTile = targetBat.tileId;
-        if (showMini) {
+        if (showMini && activeTurn == 'player') {
             minimap();
         }
     }
@@ -146,7 +146,7 @@ function centerMapCenter() {
     showMap(zone,true);
     confirmMode();
     selectedTile = 1830;
-    if (showMini) {
+    if (showMini && activeTurn == 'player') {
         minimap();
     }
 };
