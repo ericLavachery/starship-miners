@@ -136,7 +136,7 @@ let conselAmmos = ['xxx','xxx','xxx'];
 let conselCat;
 let conselTriche;
 // INVASION
-let maxAliens = 300;
+let maxAliens = 250;
 let cumDrop = 7; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
 let dropMod = 1.8; //
 let eggLifeStart = 12; //
