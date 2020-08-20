@@ -337,8 +337,8 @@ function spawns() {
             if ((bat.type.includes('Oeuf') || bat.type === 'Coque') && aliens.length < maxAliens) {
                 batType = getBatType(bat);
                 eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
-                eggModTurn = eggTurn+playerInfos.mapDiff-8;
-                vomiCheck = ((batType.squads-bat.squadsLeft)*vomiChance)+(eggModTurn*3);
+                eggModTurn = eggTurn+(playerInfos.mapDiff*2)-12;
+                vomiCheck = ((batType.squads-bat.squadsLeft)*vomiChance)+(eggModTurn*1);
                 if (rand.rand(1,100) <= vomiCheck && bat.type === 'Oeuf') {
                     vomiSpawn(bat);
                 }
