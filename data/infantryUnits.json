@@ -1965,7 +1965,7 @@
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
-        "maxVeg":2,
+        "maxVeg":3,
         "skills":["fouille","fortif","cible","badmecano","badmedic","moto","dealer","octiron"],
         "mediCost":7,
         "mecanoCost":7,

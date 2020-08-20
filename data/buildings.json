@@ -228,7 +228,7 @@
         "transMaxSize":9,
         "transUnits":1500,
         "transRes":5000,
-        "refabTime":25,
+        "refabTime":20,
         "fuzz":-1,
         "deathFx":"S_Explosion02"
     },

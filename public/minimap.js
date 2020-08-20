@@ -64,6 +64,8 @@ function oneResView() {
 };
 
 function unitsView() {
+    checkVisibleAliens();
+    playerOccupiedTileList();
     miniDots = 'units';
     minimap();
 };

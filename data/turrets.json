@@ -457,7 +457,7 @@
         "armor":16,
         "size":100,
         "stealth":0,
-        "ap":14,
+        "ap":16,
         "maxSalvo":2,
         "weapon":{
             "name":"Mitrailleuse",
@@ -488,7 +488,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","longshot","bastion","recupcit","prefab","transport"],
+        "skills":["cible","longshot","bastion","recupcit","prefab","transport","repair"],
+        "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1000,
         "refabTime":90,

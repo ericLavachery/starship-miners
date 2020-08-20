@@ -2325,7 +2325,7 @@
         "mecanoCost":10,
         "mining":{
             "level":1,
-            "rate":15,
+            "rate":25,
             "multi":false,
             "types":["Scrap"]
         },
@@ -3298,7 +3298,7 @@
         "mecanoCost":9,
         "mining":{
             "level":1,
-            "rate":4,
+            "rate":10,
             "multi":false,
             "types":["Scrap"]
         },

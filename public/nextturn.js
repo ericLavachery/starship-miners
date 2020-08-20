@@ -737,7 +737,7 @@ function createBatList() {
     });
     batList = _.sortBy(zoneBatList,'fuzz');
     batList.reverse();
-    batList = _.sortBy(_.sortBy(batList,'range'),'army');
+    batList = _.sortBy(_.sortBy(_.sortBy(batList,'tileId'),'type'),'army');
     batList.reverse();
     commandes();
     // console.log(batList);
