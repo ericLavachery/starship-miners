@@ -755,7 +755,7 @@
         "rof": 1,
         "power": 0,
         "armors": 0.75,
-        "accuracy": 0.75,
+        "accuracy": 1,
         "apdamage": 0,
         "aoe": "brochette"
     },
