@@ -1388,7 +1388,7 @@
     {
         "id":31,
         "name":"Grabbers",
-        "pic":"jumpbug",
+        "pic":"wingbug",
         "cat":"aliens",
         "kind":"bug",
         "class":"C",
