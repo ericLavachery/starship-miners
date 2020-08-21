@@ -162,7 +162,9 @@ function nextTurnEnd() {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
-            mining(bat);
+            if (batType.skills.includes('extraction')) {
+                mining(bat);
+            }
             if (batType.skills.includes('unload')) {
                 autoUnload(bat);
             }

@@ -509,7 +509,7 @@
         "armor":8,
         "size":40,
         "stealth":0,
-        "ap":12,
+        "ap":13,
         "maxSalvo":2,
         "weapon":{
             "name":"Fusil de précision",
