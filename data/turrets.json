@@ -521,7 +521,7 @@
             "power":10,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"sniper",
+            "sound":"calibre_sniper",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -534,7 +534,7 @@
             "power":15,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"antichar",
+            "sound":"calibre_antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
         "protection":["aucune"],
@@ -688,7 +688,7 @@
             "power":15,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"antichar",
+            "sound":"calibre_antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
         "protection":["aucune"],

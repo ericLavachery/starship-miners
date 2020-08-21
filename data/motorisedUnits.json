@@ -345,7 +345,7 @@
             "power":8,
             "armors":1.35,
             "aoe":"brochette",
-            "sound":"shotgun",
+            "sound":"calibre_shotgun",
             "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -1479,7 +1479,7 @@
             "power":8,
             "armors":1.35,
             "aoe":"brochette",
-            "sound":"shotgun",
+            "sound":"calibre_shotgun",
             "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
         },
         "weapon2":{

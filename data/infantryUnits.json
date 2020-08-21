@@ -64,7 +64,7 @@
             "power":8,
             "armors":1.35,
             "aoe":"brochette",
-            "sound":"shotgun",
+            "sound":"calibre_shotgun",
             "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -364,7 +364,7 @@
             "power":10,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"sniper",
+            "sound":"calibre_sniper",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "moveCost":3,
@@ -1525,7 +1525,7 @@
             "power":8,
             "armors":1.35,
             "aoe":"brochette",
-            "sound":"shotgun",
+            "sound":"calibre_shotgun",
             "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -2422,7 +2422,7 @@
             "power":10,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"sniper",
+            "sound":"calibre_sniper",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "protection":["kevlar","combo","kapton","mendium","titane","nano","adamantite","battlesuit"],
@@ -3122,7 +3122,7 @@
             "power":16,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"antichar",
+            "sound":"calibre_antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
         "protection":["aucune"],
@@ -3328,7 +3328,7 @@
             "power":8,
             "armors":1.35,
             "aoe":"brochette",
-            "sound":"shotgun",
+            "sound":"calibre_shotgun",
             "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
         },
         "moveCost":10,
@@ -3630,7 +3630,7 @@
             "power":15,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"antichar",
+            "sound":"calibre_antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
         "protection":["kevlar","acier","combo","kapton","mendium","titane","nano","adamantite","aegis","battlesuit"],
