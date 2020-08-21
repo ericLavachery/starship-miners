@@ -188,7 +188,7 @@
             "dca":1.25,
             "power":7,
             "aoe":"unit",
-            "sound":"calibre_hunt",
+            "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
@@ -333,7 +333,7 @@
             "dca":1.25,
             "power":7,
             "aoe":"unit",
-            "sound":"calibre_hunt",
+            "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
@@ -429,7 +429,7 @@
             "dca":1.25,
             "power":7,
             "aoe":"unit",
-            "sound":"calibre_hunt",
+            "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "protection":["aucune"],
@@ -902,7 +902,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","prefab","noblub","nolist"],
+        "skills":["nodeathcount","notarget","prefab","noblub","nolist","nobld"],
         "refabTime":1,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
@@ -952,7 +952,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nonumname","nodeathcount","notarget","halfcover","prefab","noblub","nolist","norepair"],
+        "skills":["after","nonumname","nodeathcount","notarget","halfcover","prefab","noblub","nolist","norepair","nobld"],
         "refabTime":25,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
@@ -1002,7 +1002,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nonumname","nodeathcount","notarget","halfcover","prefab","bigblub","nolist","norepair"],
+        "skills":["after","nonumname","nodeathcount","notarget","halfcover","prefab","bigblub","nolist","norepair","nobld"],
         "refabTime":25,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"

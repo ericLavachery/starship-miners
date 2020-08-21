@@ -402,7 +402,7 @@
             "dca":1.25,
             "power":7,
             "aoe":"unit",
-            "sound":"calibre_hunt",
+            "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
@@ -456,7 +456,7 @@
             "dca":1.25,
             "power":7,
             "aoe":"unit",
-            "sound":"calibre_hunt",
+            "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{

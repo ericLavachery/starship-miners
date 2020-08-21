@@ -400,3 +400,56 @@ function isHurt(bat) {
     }
     return hurt;
 };
+
+function checkRepairBat(tileId) {
+    console.log('CHECK REPAIR BAT');
+    console.log(tileId);
+    let bestRepairBat = {};
+    let batType;
+    let bestRepairCost = 99;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'zone') {
+            if (bat.tileId === tileId+1 || bat.tileId === tileId-1 || bat.tileId === tileId+mapSize || bat.tileId === tileId-mapSize || bat.tileId === tileId+mapSize+1 || bat.tileId === tileId-mapSize+1 || bat.tileId === tileId+mapSize-1 || bat.tileId === tileId-mapSize-1) {
+                console.log(bat);
+                batType = getBatType(bat);
+                if (batType.skills.includes('repair') && bat.apLeft >= Math.round(batType.mecanoCost/2) && batType.mecanoCost < bestRepairCost) {
+                    bestRepairCost = batType.mecanoCost;
+                    bestRepairBat = bat;
+                }
+            }
+        }
+    });
+    console.log('Repair Bat');
+    console.log(bestRepairBat);
+    return bestRepairBat;
+}
+
+function diagRepair(repairBatId) {
+    let repairBat = getBatById(repairBatId);
+    let repairBatType = getBatType(repairBat);
+    repairBat.apLeft = repairBat.apLeft-repairBatType.mecanoCost;
+    let batUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
+    let oldSquadsLeft = selectedBat.squadsLeft;
+    let squadHP = selectedBatType.squadSize*selectedBatType.hp;
+    let batHP = squadHP*selectedBatType.squads;
+    let regen = mecanoHP*2;
+    let batHPLeft = (selectedBat.squadsLeft*squadHP)-selectedBat.damage+regen;
+    selectedBat.squadsLeft = Math.ceil(batHPLeft/squadHP);
+    selectedBat.damage = (selectedBat.squadsLeft*squadHP)-batHPLeft;
+    if (selectedBat.squadsLeft > selectedBatType.squads) {
+        selectedBat.squadsLeft = selectedBatType.squads;
+        selectedBat.damage = 0;
+    }
+    selectedBat.apLeft = selectedBat.apLeft-3;
+    let newBatUnits = batUnits+selectedBatType.squadSize;
+    washReports();
+    $('#report').append('<span class="report or">'+selectedBat.type+' (Réparations)</span><br>');
+    if (selectedBat.squadsLeft > oldSquadsLeft) {
+        $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">section reconstruite (<span class="cy">'+newBatUnits+'</span>)</span><br>');
+    } else {
+        $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">dégâts réparés<br></span>');
+    }
+    showBataillon(selectedBat);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+}

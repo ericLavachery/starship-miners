@@ -415,6 +415,20 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
         }
     }
+    // REPAIR DIAG
+    if (batUnitType.cat === 'buildings' && !batUnitType.skills.includes('nobld') && !batUnitType.skills.includes('norepair') && (bat.damage >= 1 || bat.squadsLeft < batUnitType.squads)) {
+        let repairBat = checkRepairBat(bat.tileId);
+        if (Object.keys(repairBat).length >= 1) {
+            apReq = 5;
+            apCost = bat.ap;
+            if (repairBat.apLeft >= 1) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment avec '+repairBat.type+'" class="boutonGris skillButtons" onclick="diagRepair('+repairBat.id+')"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+            } else {
+                skillMessage = "Pas assez de PA";
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+            }
+        }
+    }
     // DROGUES
     if (batUnitType.cat === 'infantry') {
         let allDrugs = checkDrugs(bat);
