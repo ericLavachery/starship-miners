@@ -74,12 +74,12 @@ function showBatInfos(bat) {
     let batFuzz = calcBatFuzz(bat);
     $('#unitInfos').append('<span class="paramName">Attraction</span><span class="paramIcon"></span><span class="paramValue">'+batFuzz+'</span><br>');
     // TAGS
-    if (bat.tags.includes('embuscade')) {
-        $('#unitInfos').append('<span class="paramName cy">Embuscade</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
-    }
-    if (bat.tags.includes('guet') || batUnitType.skills.includes('sentinelle') || batUnitType.skills.includes('initiative')) {
-        $('#unitInfos').append('<span class="paramName cy">Guet</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
-    }
+    // if (bat.tags.includes('embuscade')) {
+    //     $('#unitInfos').append('<span class="paramName cy">Embuscade</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    // }
+    // if (bat.tags.includes('guet') || batUnitType.skills.includes('sentinelle') || batUnitType.skills.includes('initiative')) {
+    //     $('#unitInfos').append('<span class="paramName cy">Guet</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    // }
     let fortifCover = getCover(bat,true);
     if (bat.tags.includes('fortif')) {
         $('#unitInfos').append('<span class="paramName cy">Fortification</span><span class="paramIcon"></span><span class="paramValue cy">'+fortifCover+'</span><br>');
@@ -89,10 +89,10 @@ function showBatInfos(bat) {
     if (batUnitType.skills.includes('berserk') && bat.damage >= 1) {
         $('#unitInfos').append('<span class="paramName cy">Berserk</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
-    if (bat.tags.includes('kirin') || bat.tags.includes('sila') || bat.tags.includes('bliss') || bat.tags.includes('blaze') || bat.tags.includes('skupiac') || bat.tags.includes('starka') || bat.tags.includes('octiron')) {
-        let myDrugs = checkBatDrugs(bat);
-        $('#unitInfos').append('<span class="paramName cy">Drogue</span><span class="paramIcon"></span><span class="paramValue cy">'+myDrugs.toString()+'</span><br>');
-    }
+    // if (bat.tags.includes('kirin') || bat.tags.includes('sila') || bat.tags.includes('bliss') || bat.tags.includes('blaze') || bat.tags.includes('skupiac') || bat.tags.includes('starka') || bat.tags.includes('octiron')) {
+    //     let myDrugs = checkBatDrugs(bat);
+    //     $('#unitInfos').append('<span class="paramName cy">Drogue</span><span class="paramIcon"></span><span class="paramValue cy">'+myDrugs.toString()+'</span><br>');
+    // }
     if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || batUnitType.skills.includes('regeneration') || batUnitType.skills.includes('slowreg')) {
         let regenType = 'lente';
         if (bat.tags.includes('kirin') || batUnitType.skills.includes('regeneration')) {
