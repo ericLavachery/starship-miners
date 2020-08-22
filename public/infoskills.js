@@ -47,28 +47,36 @@ function skillsInfos(bat,batUnitType) {
     refabInfos(bat,batUnitType);
     // GUET
     if (batUnitType.weapon.rof >= 1 && !batUnitType.skills.includes('sentinelle') && !batUnitType.skills.includes('initiative') && !batUnitType.skills.includes('after') && bat.ap >= 1) {
+        balise = 'h4';
+        if (bat.tags.includes('guet') || batUnitType.skills.includes('sentinelle') || batUnitType.skills.includes('initiative')) {
+            balise = 'h3';
+        }
         apCost = 3;
         apReq = bat.ap-3;
         if (bat.apLeft >= apReq && !bat.tags.includes('guet')) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le guet (pas de malus à la riposte)" class="boutonGris skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Faire le guet (pas de malus à la riposte)" class="boutonGris skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</'+balise+'></span>');
         } else {
             // pas assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Pas assez de PA" class="boutonGris skillButtons gf"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de PA" class="boutonGris skillButtons gf"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</'+balise+'></span>');
         }
     }
     // FORTIFICATION
     if (batUnitType.skills.includes('fortif')) {
+        balise = 'h4';
+        if (bat.tags.includes('fortif')) {
+            balise = 'h3';
+        }
         apCost = bat.ap;
         if (bat.apLeft >= apCost-2 && !bat.tags.includes('fortif') && !inMelee && bat.salvoLeft >= batUnitType.maxSalvo) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se fortifier (bonus couverture)" class="boutonGris skillButtons" onclick="fortification()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Se fortifier (bonus couverture)" class="boutonGris skillButtons" onclick="fortification()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Vous ne pouvez pas vous fortifier en mêlée";
             } else {
                 skillMessage = "Pas assez de PA ou de salve";
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
         }
     }
     // CAMOUFLAGE
@@ -114,8 +122,12 @@ function skillsInfos(bat,batUnitType) {
                 apReq = 1;
             }
         }
+        balise = 'h4';
+        if (bat.fuzz <= -2) {
+            balise = 'h3';
+        }
         if (bat.apLeft >= apReq && bat.fuzz >= -1 && camoufOK) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Mode furtif" class="boutonGris skillButtons" onclick="camouflage('+apCost+')"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Mode furtif" class="boutonGris skillButtons" onclick="camouflage('+apCost+')"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
         } else {
             if (bat.fuzz <= -2) {
                 skillMessage = "Déjà en mode furtif";
@@ -124,7 +136,7 @@ function skillsInfos(bat,batUnitType) {
             } else {
                 skillMessage = "Pas assez de PA";
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
         }
         if (bat.tags.includes('camo') || (bat.fuzz <= -2 && (batUnitType.skills.includes('camo') || batUnitType.skills.includes('maycamo')))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Sortir du mode furtif" class="boutonGris skillButtons" onclick="camoOut()"><i class="ra ra-footprint rpg"></i> <span class="small">0</span></button>&nbsp; Mode non furtif</h4></span>');
@@ -138,14 +150,20 @@ function skillsInfos(bat,batUnitType) {
         } else {
             apReq = 2+batUnitType.weapon.cost;
         }
-        if (bat.apLeft >= apReq && bat.tags.includes('camo') && bat.apLeft >= apCost+cheapWeapCost) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embuscade (Initiative + Cadence de tir 150%)" class="boutonGris skillButtons" onclick="ambush()"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</h4></span>');
+        balise = 'h4';
+        if (bat.tags.includes('embuscade')) {
+            balise = 'h3';
+        }
+        if (bat.apLeft >= apReq && bat.fuzz <= -2 && bat.apLeft >= apCost+cheapWeapCost && !bat.tags.includes('noemb')) {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Embuscade (Initiative + Cadence de tir 150%)" class="boutonGris skillButtons" onclick="ambush()"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</'+balise+'></span>');
         } else {
             skillMessage = "Pas assez de PA";
-            if (!bat.tags.includes('camo')) {
+            if (bat.fuzz > -2) {
                 skillMessage = "Vous n'êtes pas en mode furtif";
+            } else if (bat.tags.includes('noemb')) {
+                skillMessage = "Vous devez bouger ou attendre avant de pouvoir refaire une embuscade";
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</'+balise+'></span>');
         }
     }
     // TIR CIBLE
@@ -159,7 +177,7 @@ function skillsInfos(bat,batUnitType) {
         }
         balise = 'h4';
         if (bat.tags.includes('vise')) {
-            balise = 'h1';
+            balise = 'h3';
         }
         if (bat.apLeft >= apReq && !bat.tags.includes('vise') && bat.apLeft >= apCost+cheapWeapCost) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+5 précision, 2/3 cadence de tir (3 PA + coût de l\'arme)" class="boutonGris skillButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
@@ -176,7 +194,7 @@ function skillsInfos(bat,batUnitType) {
         }
         balise = 'h4';
         if (bat.tags.includes('luckyshot')) {
-            balise = 'h1';
+            balise = 'h3';
         }
         if (bat.apLeft >= apReq && !bat.tags.includes('luckyshot') && !bat.tags.includes('lucky') && bat.apLeft >= cheapWeapCost) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lucky shot automatique sur cette attaque" class="boutonGris skillButtons" onclick="luckyShot()"><i class="fas fa-dice-six"></i> <span class="small">0</span></button>&nbsp; Lucky shot</'+balise+'></span>');
@@ -186,9 +204,13 @@ function skillsInfos(bat,batUnitType) {
     }
     // PRIERE
     if (batUnitType.skills.includes('prayer')) {
+        balise = 'h4';
+        if (bat.tags.includes('prayer')) {
+            balise = 'h3';
+        }
         apCost = 7;
         if (bat.apLeft >= apCost && !bat.tags.includes('prayer') && !bat.tags.includes('spirit') && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Prier" class="boutonGris skillButtons" onclick="gloireASatan()"><i class="fas fa-hamsa"></i> <span class="small">'+apCost+'</span></button>&nbsp; Prière</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Prier" class="boutonGris skillButtons" onclick="gloireASatan()"><i class="fas fa-hamsa"></i> <span class="small">'+apCost+'</span></button>&nbsp; Prière</'+balise+'></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Vous ne pouvez pas prier en mêlée";
@@ -199,7 +221,7 @@ function skillsInfos(bat,batUnitType) {
             } else {
                 skillMessage = "Pas assez de PA";
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-hamsa"></i> <span class="small">'+apCost+'</span></button>&nbsp; Prière</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-hamsa"></i> <span class="small">'+apCost+'</span></button>&nbsp; Prière</'+balise+'></span>');
         }
     }
     // MEDIC
@@ -436,7 +458,7 @@ function skillsInfos(bat,batUnitType) {
         if (allDrugs.includes('kirin') || bat.tags.includes('kirin')) {
             balise = 'h4';
             if (bat.tags.includes('kirin')) {
-                balise = 'h1';
+                balise = 'h3';
             }
             apCost = 3;
             if (bat.apLeft >= apCost && !bat.tags.includes('kirin')) {
@@ -450,7 +472,7 @@ function skillsInfos(bat,batUnitType) {
         if (allDrugs.includes('octiron') || bat.tags.includes('octiron')) {
             balise = 'h4';
             if (bat.tags.includes('octiron')) {
-                balise = 'h1';
+                balise = 'h3';
             }
             apCost = 3;
             if (bat.apLeft >= apCost && !bat.tags.includes('octiron')) {
@@ -464,7 +486,7 @@ function skillsInfos(bat,batUnitType) {
         if ((allDrugs.includes('bliss') && !batUnitType.skills.includes('cyber')) || bat.tags.includes('bliss')) {
             balise = 'h4';
             if (bat.tags.includes('bliss')) {
-                balise = 'h1';
+                balise = 'h3';
             }
             apCost = 1;
             if (bat.apLeft >= apCost && !bat.tags.includes('bliss')) {
@@ -478,7 +500,7 @@ function skillsInfos(bat,batUnitType) {
         if ((allDrugs.includes('blaze') && !batUnitType.skills.includes('cyber')) || bat.tags.includes('blaze')) {
             balise = 'h4';
             if (bat.tags.includes('blaze')) {
-                balise = 'h1';
+                balise = 'h3';
             }
             apCost = 3;
             if (bat.apLeft >= apCost && !bat.tags.includes('blaze')) {
@@ -492,7 +514,7 @@ function skillsInfos(bat,batUnitType) {
         if ((allDrugs.includes('skupiac') && !batUnitType.skills.includes('cyber')) || bat.tags.includes('skupiac')) {
             balise = 'h4';
             if (bat.tags.includes('skupiac')) {
-                balise = 'h1';
+                balise = 'h3';
             }
             apCost = 3;
             if (bat.apLeft >= apCost && !bat.tags.includes('skupiac')) {
@@ -506,7 +528,7 @@ function skillsInfos(bat,batUnitType) {
         if ((allDrugs.includes('sila') && !batUnitType.skills.includes('cyber')) || bat.tags.includes('sila')) {
             balise = 'h4';
             if (bat.tags.includes('sila')) {
-                balise = 'h1';
+                balise = 'h3';
             }
             apCost = 3;
             if (bat.apLeft >= apCost && !bat.tags.includes('sila')) {
@@ -520,7 +542,7 @@ function skillsInfos(bat,batUnitType) {
         if (allDrugs.includes('starka') || bat.tags.includes('starka')) {
             balise = 'h4';
             if (bat.tags.includes('starka')) {
-                balise = 'h1';
+                balise = 'h3';
             }
             apCost = 0;
             let maxStarkaPA = bat.ap+1;
@@ -542,12 +564,12 @@ function skillsInfos(bat,batUnitType) {
         }
         balise = 'h4';
         if (bat.tags.includes('mining')) {
-            balise = 'h1';
+            balise = 'h3';
         }
         apCost = 5;
         apReq = 7;
         if (bat.apLeft >= apReq && !bat.tags.includes('mining') && !inMelee && extractOK) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Extraire les ressources" class="boutonGris skillButtons" onclick="extraction('+apCost+')"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apReq+'</span></button><button type="button" title="Choisir les ressources" class="boutonGris skillButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>&nbsp; Extraction</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h5><button type="button" title="Extraire les ressources" class="boutonGris skillButtons" onclick="extraction('+apCost+')"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apReq+'</span></button><button type="button" title="Choisir les ressources" class="boutonGris skillButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>&nbsp; Extraction</h5></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Impossible en mêlée";
@@ -586,7 +608,7 @@ function skillsInfos(bat,batUnitType) {
             let minesLeft = calcRavit(bat);
             balise = 'h4';
             if (Object.keys(conselUnit).length >= 1) {
-                balise = 'h1';
+                balise = 'h3';
             }
             apCost = Math.round(bat.ap*1.5);
             if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee) {
@@ -610,7 +632,7 @@ function skillsInfos(bat,batUnitType) {
             let minesLeft = calcRavit(bat);
             balise = 'h4';
             if (Object.keys(conselUnit).length >= 1) {
-                balise = 'h1';
+                balise = 'h3';
             }
             apCost = Math.round(bat.ap);
             if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee) {
@@ -634,7 +656,7 @@ function skillsInfos(bat,batUnitType) {
             let barbLeft = calcRavit(bat);
             balise = 'h4';
             if (Object.keys(conselUnit).length >= 1) {
-                balise = 'h1';
+                balise = 'h3';
             }
             apCost = Math.ceil(batUnitType.mecanoCost/4);
             apReq = Math.ceil(batUnitType.mecanoCost/4);

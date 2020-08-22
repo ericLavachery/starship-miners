@@ -36,7 +36,7 @@ function unloadInfos(myBat,myBatUnitType) {
                     balise = 'h4';
                     if (Object.keys(batDebarq).length >= 1) {
                         if (batDebarq.id === bat.id) {
-                            balise = 'h1';
+                            balise = 'h3';
                         }
                     }
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+bat.apLeft+' PA" class="boutonGris skillButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
@@ -159,7 +159,8 @@ function clickDebarq(tileId) {
         }
     });
     let batDebarqType = getBatType(batDebarq);
-    if (isAdjacent(selectedBat.tileId,tileId) && !ownBatHere && (terrainAccess(batDebarq.id,tileId) || batDebarqType.cat === 'buildings') && !alienOccupiedTiles.includes(tileId)) {
+    let distance = calcDistance(selectedBat.tileId,tileId);
+    if (distance <= 1 && !ownBatHere && (terrainAccess(batDebarq.id,tileId) || batDebarqType.cat === 'buildings') && !alienOccupiedTiles.includes(tileId)) {
         tileOK = true;
     } else {
         batDebarq = {};
@@ -168,7 +169,7 @@ function clickDebarq(tileId) {
     if (tileOK) {
         if (batDebarqType.cat === 'buildings') {
             tagDelete(selectedBat,'loaded');
-            selectedBat.apLeft = selectedBat.apLeft-selectedBatType.mecanoCost*4;
+            selectedBat.apLeft = selectedBat.apLeft-(selectedBatType.mecanoCost*4)-(distance*3);
         } else {
             if (selectedBat.transIds.includes(batDebarq.id)) {
                 tagIndex = selectedBat.transIds.indexOf(batDebarq.id);

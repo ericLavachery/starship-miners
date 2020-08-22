@@ -278,7 +278,7 @@ function attack() {
     // embuscade (bonus ROF)
     if (activeTurn === 'player') {
         if (selectedBat.tags.includes('embuscade') && selectedBat.fuzz == -2) {
-            shots = Math.floor(shots*berserkROF);
+            shots = Math.floor(shots*2);
             console.log('bonus ROF embuscade');
         }
     }

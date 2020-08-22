@@ -980,7 +980,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","inflammable","maycamo"],
+        "skills":["fouille","fortif","cible","inflammable","maycamo","selfbadmedic"],
+        "mediCost":9,
         "fuzz":0,
         "deathFx":"human1"
     },

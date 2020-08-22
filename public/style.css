@@ -48,7 +48,7 @@ body {
 #reset2 {
     display: none;
 }
-h1,h2,h3,h4 {
+h1,h2,h3,h4,h5 {
     font-size: 19px;
     /* font-weight: bold; */
     display: inline;
@@ -60,21 +60,36 @@ h1,h2,h3,h4 {
 }
 h1 {
     color: #f77a28;
-    /* color: #f77a28; */
-    /* margin: 0 0 3px 13px; */
-    padding: 0;
+    margin: 0;
+    padding: 0px 0px 5px 0px;
 }
 h3 {
-    color: #7fd1ae;
-    /* color: #f77a28; */
-    /* text-shadow: 1px 1px #241910; */
+    color: #6be9b4;
+    /* color: #7fd1ae; */
     margin: 0;
     padding: 0px 0px 5px 0px;
 }
 h4 {
-    color: #dde2a4;
+    color: #cacf9c;
     margin: 0;
     padding: 0px 0px 5px 0px;
+}
+h5 {
+    /* color: #f77a28; */
+    margin: 0;
+    padding: 0px 0px 5px 0px;
+    -webkit-animation: hBlink .5s infinite;  /* Safari 4+ */
+    -moz-animation: hBlink .5s infinite;  /* Fx 5+ */
+    -o-animation: hBlink .5s infinite;  /* Opera 12+ */
+    animation: hBlink .5s infinite;  /* IE 10+, Fx 29+ */
+}
+@-webkit-keyframes hBlink {
+  0%, 49% {
+    color: #f77a28;
+  }
+  50%, 100% {
+    color: #676056;
+  }
 }
 .notsosmall {
     font-size: 14px;
@@ -110,7 +125,7 @@ h4 {
     -webkit-text-stroke-color: #000000;
 }
 .wash:hover {
-    color: #7fd1ae;
+    color: #6be9b4;
     cursor: pointer;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
@@ -316,7 +331,7 @@ h4 {
     /* font-weight: bold; */
 }
 .cy {
-    color: #7fd1ae;
+    color: #6be9b4;
     font-weight: bold;
 }
 .sky {

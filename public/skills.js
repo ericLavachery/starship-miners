@@ -358,7 +358,7 @@ function dropStuff(apCost,mineType) {
 
 function clickMine(clicTileId,poseurTileId) {
     let distance = calcDistance(poseurTileId,clicTileId);
-    if (distance === 0) {
+    if (distance <= 1) {
         let batHere = false;
         bataillons.forEach(function(bat) {
             if (bat.tileId === clicTileId && bat.loc === "zone") {

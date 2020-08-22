@@ -11,7 +11,7 @@ function clickTile(tileId) {
                 } else {
                     if (selectedBat.tileId >= 0) {
                         let distance = calcDistance(selectedBat.tileId,tileId);
-                        if (distance === 0) {
+                        if (distance <= 1) {
                             clickConstruct(tileId,false);
                         }
                     }

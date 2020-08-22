@@ -195,7 +195,8 @@ function clickConstruct(tileId,free) {
     });
     if (!batHere) {
         if (!free) {
-            selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*conselUnit.refabTime/10);
+            let distance = calcDistance(selectedBat.tileId,tileId);
+            selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*conselUnit.refabTime/10)-(distance*3);
             if (!selectedBat.tags.includes('construction')) {
                 selectedBat.tags.push('construction');
             }

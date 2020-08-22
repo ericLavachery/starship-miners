@@ -353,6 +353,13 @@ function turnInfo() {
 
 function tagsUpdate(bat) {
     tagDelete(bat,'vise');
+    if (rand.rand(1,3) === 1) {
+        tagDelete(bat,'noemb');
+    }
+    if (bat.tags.includes('embuscade')) {
+        bat.tags.push('noemb');
+        bat.tags.push('noemb');
+    }
     tagDelete(bat,'embuscade');
     tagDelete(bat,'noBis1');
     tagDelete(bat,'noBis2');

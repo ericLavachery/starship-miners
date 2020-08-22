@@ -190,6 +190,12 @@ function moveSelectedBat(tileId,free,jump) {
         tagIndex = selectedBat.tags.indexOf('mining');
         selectedBat.tags.splice(tagIndex,1);
     }
+    if (selectedBat.tags.includes('noemb')) {
+        tagIndex = selectedBat.tags.indexOf('noemb');
+        selectedBat.tags.splice(tagIndex,1);
+        tagIndex = selectedBat.tags.indexOf('noemb');
+        selectedBat.tags.splice(tagIndex,1);
+    }
     if (selectedBat.tags.includes('construction')) {
         tagIndex = selectedBat.tags.indexOf('construction');
         selectedBat.tags.splice(tagIndex,1);
