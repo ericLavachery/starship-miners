@@ -154,14 +154,14 @@ function skillsInfos(bat,batUnitType) {
         if (bat.tags.includes('embuscade')) {
             balise = 'h3';
         }
-        if (bat.apLeft >= apReq && bat.fuzz <= -2 && bat.apLeft >= apCost+cheapWeapCost && !bat.tags.includes('noemb')) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Embuscade (Initiative + Cadence de tir 150%)" class="boutonGris skillButtons" onclick="ambush()"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</'+balise+'></span>');
+        if (bat.apLeft >= apReq && bat.fuzz <= -2 && bat.apLeft >= apCost+cheapWeapCost && !bat.tags.includes('noemb') && !bat.tags.includes('embuscade')) {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Embuscade (Initiative + Cadence de tir x2)" class="boutonGris skillButtons" onclick="ambush()"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</'+balise+'></span>');
         } else {
             skillMessage = "Pas assez de PA";
-            if (bat.fuzz > -2) {
-                skillMessage = "Vous n'êtes pas en mode furtif";
-            } else if (bat.tags.includes('noemb')) {
+            if (bat.tags.includes('noemb')) {
                 skillMessage = "Vous devez bouger ou attendre avant de pouvoir refaire une embuscade";
+            } else if (bat.fuzz > -2) {
+                skillMessage = "Vous n'êtes pas en mode furtif";
             }
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</'+balise+'></span>');
         }
