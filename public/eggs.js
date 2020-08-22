@@ -116,7 +116,7 @@ function eggsDrop() {
         numEggs = 0;
         if (rand.rand(1,100) <= eggPausePerc) {
             playerInfos.eggPause = true;
-            console.log('PAUSE! Chance to quit: 1/'+eggPauseDice);
+            console.log('PAUSE!');
         }
     } else if (eggDice <= noEggs+twoEggsChance) {
         numEggs = 2;
@@ -174,7 +174,7 @@ function dropEgg(alienUnit,edge) {
         }
         if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;
-            console.log('PAUSE! Chance to quit: 1/'+eggPauseDice);
+            console.log('PAUSE!');
         }
     }
 };
@@ -281,7 +281,7 @@ function morphList() {
     if (rand.rand(1,15) === 1) {
         transList.push('Vers');
     }
-    if (rand.rand(1,15) === 1) {
+    if (rand.rand(1,15) === 1 && playerInfos.mapDiff >= 6) {
         transList.push('Ombres');
     }
     if (rand.rand(1,15) === 1) {
