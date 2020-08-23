@@ -443,7 +443,7 @@
         "armor":0,
         "size":3,
         "volume":0.95,
-        "stealth":13,
+        "stealth":9,
         "ap":14,
         "maxSalvo":1,
         "weapon":{

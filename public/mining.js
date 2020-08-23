@@ -137,6 +137,12 @@ function getTile(bat) {
     return tile;
 };
 
+function getTileById(tileId) {
+    let tileIndex = zone.findIndex((obj => obj.id == tileId));
+    let tile = zone[tileIndex];
+    return tile;
+};
+
 function getMiningRate(bat,fullRate) {
     let batType = getBatType(bat);
     if (fullRate) {

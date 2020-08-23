@@ -110,12 +110,22 @@ function getCover(bat,withFortif) {
             cover = cover+2;
         }
     }
+    if (tile.ruins) {
+        if (cover > 5) {
+            cover = cover+2;
+        } else {
+            cover = 5+Math.floor(cover/2);
+        }
+    }
     // Fortification
     if (withFortif) {
         if (bat.tags.includes('fortif')) {
             cover = terrain.fortifcover;
             if (batType.skills.includes('bigfortif')) {
                 cover = cover+3;
+            }
+            if (tile.ruins) {
+                cover = cover+2;
             }
         }
     }

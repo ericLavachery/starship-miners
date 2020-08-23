@@ -212,7 +212,7 @@ function moveSelectedBat(tileId,free,jump) {
         selectedBat.tags.splice(tagIndex,1);
     }
     if (selectedBat.tags.includes('camo') || selectedBat.fuzz <= -2) {
-        if (selectedBatType.skills.includes('fly') || (selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('emoteur') && !selectedBatType.skills.includes('robot')) || selectedBatType.skills.includes('moto') || selectedBatType.skills.includes('maycamo')) {
+        if (selectedBatType.skills.includes('fly') || (selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('emoteur') && !selectedBatType.skills.includes('robot')) || selectedBatType.skills.includes('moto') || selectedBatType.skills.includes('maycamo') || !selectedBatType.skills.includes('camo')) {
             camoOut();
         } else {
             camouflage(0);
@@ -351,6 +351,7 @@ function terrainAccess(batId,targetTileId) {
 };
 
 function calcMoveCost(targetTileId,diag) {
+    let tile = getTileById(targetTileId);
     let terIndex = terrainTypes.findIndex((obj => obj.name == zone[targetTileId].terrain));
     let moveCost;
     if (zone[targetTileId].rd && !selectedBatType.skills.includes('hover')) {
@@ -373,6 +374,9 @@ function calcMoveCost(targetTileId,diag) {
     }
     if (selectedBat.tags.includes('camo')) {
         moveCost = moveCost+0.8;
+    }
+    if (tile.ruins) {
+        moveCost = moveCost+1;
     }
     if (diag) {
         moveCost = moveCost*1.42;
