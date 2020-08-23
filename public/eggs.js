@@ -75,6 +75,14 @@ function checkEggsDrop() {
         playerInfos.mapDrop = 0;
         if (rand.rand(1,eggPauseDice) === 1) {
             playerInfos.eggPause = false;
+            console.log('END PAUSE! 1/'+eggPauseDice);
+            if (playerInfos.pseudo === 'Bob') {
+                warning('Fin de la pause','Check 1/'+eggPauseDice+' réussi.');
+            }
+        } else {
+            if (playerInfos.pseudo === 'Bob') {
+                warning('La pause continue','Check 1/'+eggPauseDice+' raté.');
+            }
         }
     } else {
         playerInfos.mapDrop = playerInfos.mapDrop+1;
@@ -122,7 +130,10 @@ function eggsDrop() {
         numEggs = 0;
         if (rand.rand(1,100) <= eggPausePerc) {
             playerInfos.eggPause = true;
-            console.log('PAUSE!');
+            console.log('PAUSE! '+eggPausePerc+'%');
+            if (playerInfos.pseudo === 'Bob') {
+                warning('Nouvelle pause','Check '+eggPausePerc+'% réussi après la chute de 0 oeuf ('+noEggs+'%)');
+            }
         }
     } else if (eggDice <= noEggs+twoEggsChance) {
         numEggs = 2;
@@ -180,7 +191,10 @@ function dropEgg(alienUnit,edge) {
         }
         if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;
-            console.log('PAUSE!');
+            console.log('PAUSE! '+playerInfos.eggsKilled+' eggs killed');
+            if (playerInfos.pseudo === 'Bob') {
+                warning('Nouvelle pause',playerInfos.eggsKilled+' oeufs tués.');
+            }
         }
     }
 };

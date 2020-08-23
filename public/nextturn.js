@@ -328,6 +328,10 @@ function turnInfo() {
     aliensNum = numberOfAliens;
     if (realNumberOfEggs >= 10) {
         playerInfos.eggPause = true;
+        console.log('PAUSE! 10+ eggs');
+        if (playerInfos.pseudo === 'Bob') {
+            warning('Nouvelle pause','10 oeufs ou plus en jeu.');
+        }
     }
     let fuzzTotal = 0;
     bataillons.forEach(function(bat) {

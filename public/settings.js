@@ -146,7 +146,7 @@ let coqLifeFactor = 0.5; //
 let noEggs = 15; // % pour un eggDrop sans oeufs
 let eggPause = false;
 let pauseCount = 15; // pause tous les 15 oeufs tués
-let eggPauseEnd = 5; // 1 chance sur 12: fin de pause (+compte des oeufs)
+let eggPauseEnd = 3; // 1 chance sur 12: fin de pause (+compte des oeufs)
 let eggDropCount = 0;
 // SOUNDS
 let musicVolume = 0.4;
