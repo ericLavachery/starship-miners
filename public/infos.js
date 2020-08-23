@@ -4,6 +4,7 @@ function showBatInfos(bat) {
     let tagColor = 'cy';
     let unitTypesIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
     let batUnitType = unitTypes[unitTypesIndex];
+    let tile = getTile(bat);
     let unitsLeft = bat.squadsLeft*batUnitType.squadSize;
     if (bat.citoyens >= 1) {
         unitsLeft = bat.citoyens;
@@ -51,7 +52,7 @@ function showBatInfos(bat) {
     $('#unitInfos').append('<span class="paramName">Volume</span><span class="paramIcon"><i class="fas fa-weight-hanging"></i></span><span class="paramValue">'+volume+'</span><br>');
     let stealth = getStealth(bat);
     let camChance = calcCamo(bat);
-    if (batUnitType.skills.includes('camo') || batUnitType.skills.includes('maycamo')) {
+    if (batUnitType.skills.includes('camo') || batUnitType.skills.includes('maycamo') || tile.ruins) {
         $('#unitInfos').append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+' ('+camChance+'%)</span><br>');
     } else {
         $('#unitInfos').append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
