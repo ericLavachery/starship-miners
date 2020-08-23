@@ -52,8 +52,12 @@ function calcDamage(weapon,power,armor,defBat) {
     // powerDice is max 4x power
     // bigfortif
     let defBatType = getBatType(defBat);
-    if (defBat.tags.includes('fortif') && defBatType.skills.includes('bigfortif')) {
-        armor = armor+2;
+    if (defBat.tags.includes('fortif')) {
+        if (defBatType.skills.includes('bigfortif')) {
+            armor = armor+2;
+        } else if (armor < 2) {
+            armor = armor+1;
+        }
     }
     let armorModifier = weapon.armors;
     // creuseur

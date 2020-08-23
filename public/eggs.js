@@ -27,9 +27,14 @@ function calcEggPause(noMax) {
             }
         }
     });
+    eggPauseDice = eggPauseDice+Math.round(aliens.length/10);
+    eggPauseDice = eggPauseDice-20;
+    if (eggPauseDice < eggPauseEnd) {
+        eggPauseDice = eggPauseEnd;
+    }
     let eggPauseMax = 20;
     if (playerInfos.mapDiff >= 10) {
-        eggPauseMax = 5;
+        eggPauseMax = eggPauseEnd;
     }
     if (noMax) {
         eggPauseMax = 50;
@@ -37,6 +42,7 @@ function calcEggPause(noMax) {
     if (eggPauseDice > eggPauseMax) {
         eggPauseDice = eggPauseMax;
     }
+    console.log('EGG PAUSE DICE = '+eggPauseDice);
     return eggPauseDice;
 };
 

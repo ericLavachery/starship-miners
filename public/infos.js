@@ -43,8 +43,12 @@ function showBatInfos(bat) {
     // PROTECTION
     // $('#unitInfos').append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.hp+'</span><br>');
     let armure = bat.armor;
-    if (bat.tags.includes('fortif') && batUnitType.skills.includes('bigfortif')) {
-        armure = armure+2;
+    if (bat.tags.includes('fortif')) {
+        if (batUnitType.skills.includes('bigfortif')) {
+            armure = armure+2;
+        } else if (armure < 2) {
+            armure = armure+1;
+        }
     }
     $('#unitInfos').append('<span class="paramName">Armure</span><span class="paramIcon"><i class="fas fa-shield-alt"></i></span><span class="paramValue">'+armure+'</span><br>');
     // $('#unitInfos').append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.size+'</span><br>');
