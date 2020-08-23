@@ -73,15 +73,17 @@ function checkEggsDrop() {
     }
     if (drop || playerInfos.eggPause) {
         playerInfos.mapDrop = 0;
-        if (rand.rand(1,eggPauseDice) === 1) {
-            playerInfos.eggPause = false;
-            console.log('END PAUSE! 1/'+eggPauseDice);
-            if (playerInfos.pseudo === 'Bob') {
-                warning('Fin de la pause','Check 1/'+eggPauseDice+' réussi.');
-            }
-        } else {
-            if (playerInfos.pseudo === 'Bob') {
-                warning('La pause continue','Check 1/'+eggPauseDice+' raté.');
+        if (playerInfos.eggPause) {
+            if (rand.rand(1,eggPauseDice) === 1) {
+                playerInfos.eggPause = false;
+                console.log('END PAUSE! 1/'+eggPauseDice);
+                if (playerInfos.pseudo === 'Bob') {
+                    warning('Fin de la pause','Check 1/'+eggPauseDice+' réussi.');
+                }
+            } else {
+                if (playerInfos.pseudo === 'Bob') {
+                    warning('La pause continue','Check 1/'+eggPauseDice+' raté.');
+                }
             }
         }
     } else {

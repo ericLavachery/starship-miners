@@ -87,7 +87,7 @@ function showBatInfos(bat) {
     // }
     let fortifCover = getCover(bat,true);
     if (bat.tags.includes('fortif')) {
-        $('#unitInfos').append('<span class="paramName cy">Fortification</span><span class="paramIcon"></span><span class="paramValue cy">'+fortifCover+'</span><br>');
+        $('#unitInfos').append('<span class="paramName">Couverture</span><span class="paramIcon"></span><span class="paramValue cy">'+fortifCover+'</span><br>');
     } else {
         $('#unitInfos').append('<span class="paramName">Couverture</span><span class="paramIcon"></span><span class="paramValue">'+fortifCover+'</span><br>');
     }
