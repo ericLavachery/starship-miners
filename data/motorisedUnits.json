@@ -3294,7 +3294,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["cible","transport","fret","hardmove","mecano","dumper","extraction"],
+        "skills":["cible","transport","fret","mecano","dumper","extraction"],
         "mecanoCost":9,
         "mining":{
             "level":1,
