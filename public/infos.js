@@ -51,6 +51,12 @@ function showBatInfos(bat) {
         }
     }
     $('#unitInfos').append('<span class="paramName">Armure</span><span class="paramIcon"><i class="fas fa-shield-alt"></i></span><span class="paramValue">'+armure+'</span><br>');
+    let fortifCover = getCover(bat,true);
+    if (bat.tags.includes('fortif')) {
+        $('#unitInfos').append('<span class="paramName">Couverture</span><span class="paramIcon"></span><span class="paramValue">'+fortifCover+'</span><br>');
+    } else {
+        $('#unitInfos').append('<span class="paramName">Couverture</span><span class="paramIcon"></span><span class="paramValue">'+fortifCover+'</span><br>');
+    }
     // $('#unitInfos').append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.size+'</span><br>');
     let volume = calcVolume(bat,batUnitType);
     $('#unitInfos').append('<span class="paramName">Volume</span><span class="paramIcon"><i class="fas fa-weight-hanging"></i></span><span class="paramValue">'+volume+'</span><br>');
@@ -85,12 +91,6 @@ function showBatInfos(bat) {
     // if (bat.tags.includes('guet') || batUnitType.skills.includes('sentinelle') || batUnitType.skills.includes('initiative')) {
     //     $('#unitInfos').append('<span class="paramName cy">Guet</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     // }
-    let fortifCover = getCover(bat,true);
-    if (bat.tags.includes('fortif')) {
-        $('#unitInfos').append('<span class="paramName">Couverture</span><span class="paramIcon"></span><span class="paramValue cy">'+fortifCover+'</span><br>');
-    } else {
-        $('#unitInfos').append('<span class="paramName">Couverture</span><span class="paramIcon"></span><span class="paramValue">'+fortifCover+'</span><br>');
-    }
     if (batUnitType.skills.includes('berserk') && bat.damage >= 1) {
         $('#unitInfos').append('<span class="paramName cy">Berserk</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }

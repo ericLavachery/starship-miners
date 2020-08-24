@@ -17,7 +17,8 @@ function checkStartingAliens() {
 };
 
 function calcEggPause(noMax) {
-    let eggPauseDice = eggPauseEnd;
+    let eggPauseDice = eggPauseBase;
+    eggPauseDice = eggPauseDice+Math.round(Math.sqrt(aliens.length)*2);
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type.includes('Oeuf')) {
@@ -27,21 +28,22 @@ function calcEggPause(noMax) {
             }
         }
     });
-    eggPauseDice = eggPauseDice+Math.round(aliens.length/10);
-    eggPauseDice = eggPauseDice-20;
-    if (eggPauseDice < eggPauseEnd) {
-        eggPauseDice = eggPauseEnd;
+    if (eggPauseDice < eggPauseMin) {
+        eggPauseDice = eggPauseMin;
     }
-    let eggPauseMax = 20;
     if (playerInfos.mapDiff >= 10) {
-        eggPauseMax = eggPauseEnd;
+        eggPauseDice = eggPauseMin;
     }
-    if (noMax) {
-        eggPauseMax = 50;
+    if (!noMax) {
+        if (eggPauseDice > eggPauseMax) {
+            eggPauseDice = eggPauseMax;
+        }
+    } else {
+        if (eggPauseDice > 50) {
+            eggPauseMax = 50;
+        }
     }
-    if (eggPauseDice > eggPauseMax) {
-        eggPauseDice = eggPauseMax;
-    }
+
     console.log('EGG PAUSE DICE = '+eggPauseDice);
     return eggPauseDice;
 };
@@ -109,7 +111,7 @@ function eggsDrop() {
     let numEggs;
     let eggDice = rand.rand(1,100);
     let eggPausePerc = calcEggPause(true);
-    eggPausePerc = eggPausePerc*2;
+    eggPausePerc = Math.round(eggPausePerc*1.5);
     // chance for multiple eggs
     let threeEggsChance = Math.floor(playerInfos.mapAdjDiff*1.25)-4;
     if (threeEggsChance < 0) {
