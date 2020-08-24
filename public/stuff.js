@@ -162,5 +162,5 @@ function washReports() {
 };
 
 function warning(title,body) {
-    $('#warnings').empty().append('<span class="warnings"><span class="or">'+title+'<br></span> '+body+'<br></span><i class="far fa-hand-paper wash" onclick="washReports()" title="Cacher l\'alerte"></i>');
+    $('#warnings').append('<span class="warnings"><span class="or">'+title+'<br></span> '+body+'<br></span><i class="far fa-hand-paper wash" onclick="washReports()" title="Cacher l\'alerte"></i>');
 };

@@ -434,7 +434,11 @@ function tagsUpdate(bat) {
     if (bat.tags.includes('starka')) {
         tagIndex = bat.tags.indexOf('starka');
         bat.tags.splice(tagIndex,1);
-        drugDown(bat,false,false);
+        tagIndex = bat.tags.indexOf('starka');
+        bat.tags.splice(tagIndex,1);
+        if (!bat.tags.includes('skupiac')) {
+            drugDown(bat,false,false);
+        }
     }
 };
 

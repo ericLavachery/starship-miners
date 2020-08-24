@@ -31,7 +31,7 @@ function weaponsInfos(bat,batUnitType) {
             ammoLeft = calcAmmos(bat,baseAmmo);
             balise = 'h4';
             if (thisWeapon.name === selectedWeap.name) {
-                balise = 'h3';
+                balise = 'h1';
             }
             noBisOK = true;
             if (thisWeapon.noBis && bat.tags.includes('noBis1')) {
@@ -123,7 +123,7 @@ function weaponsInfos(bat,batUnitType) {
             ammoLeft = calcAmmos(bat,baseAmmo);
             balise = 'h4';
             if (thisWeapon.name === selectedWeap.name) {
-                balise = 'h3';
+                balise = 'h1';
             }
             noBisOK = true;
             if (thisWeapon.noBis && bat.tags.includes('noBis2')) {

@@ -68,8 +68,17 @@ function checkEggsDrop() {
     if (eggsNum >= 2 && playerInfos.mapDiff <= 1) {
         dropChance = 0;
     }
+    if (aliens.length >= maxAliens) {
+        dropChance = 0;
+    }
+    if (playerInfos.eggPause) {
+        dropChance = 0;
+    }
     console.log('dropChance='+dropChance);
-    if (rand.rand(1,100) <= dropChance && aliens.length < maxAliens && !playerInfos.eggPause && playerInfos.mapDiff >= 1) {
+    if (playerInfos.pseudo === 'Bob') {
+        warning('Oeufs','Check '+dropChance+'%');
+    }
+    if (rand.rand(1,100) <= dropChance && playerInfos.mapDiff >= 1) {
         drop = true;
         eggsDrop();
     }

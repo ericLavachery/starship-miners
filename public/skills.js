@@ -393,7 +393,7 @@ function checkFreeConsTile(bat) {
     playerOccupiedTileList();
     zone.forEach(function(tile) {
         distance = calcDistance(tile.id,bat.tileId);
-        if (distance === 0) {
+        if (distance <= 1) {
             if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                 freeTile = true;
             }
