@@ -734,16 +734,22 @@ function addRes(zone) {
     console.log('scrapRarity: '+scrapRarity);
     // check RUINS
     let ruinChance = Math.floor(((scrapRarity*ruinRarity/10)+ruinRarity)/3);
+    if (ruinChance > 15) {
+        ruinChance = 15;
+    }
+    if (ruinChance < 3) {
+        ruinChance = 3;
+    }
     let resName = 'Scrap';
     let numRuins = 0;
     zone.forEach(function(tile) {
         if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
             if (tile.rq === undefined && tile.terrain != 'W' && tile.terrain != 'R') {
-                if (rand.rand(1,2000) <= ruinChance) {
+                if (rand.rand(1,1500) <= ruinChance) {
                     tile.ruins = true;
                     tile.rq = 0;
                     tile.rs = {};
-                    tile.rs[resName] = Math.round(57*rand.rand(25,90)/resBatchDiv)+rand.rand(0,9);
+                    tile.rs[resName] = Math.round(77*rand.rand(25,90)/resBatchDiv)+rand.rand(0,9);
                     numRuins++;
                 }
             }
