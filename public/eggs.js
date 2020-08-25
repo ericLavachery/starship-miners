@@ -22,12 +22,15 @@ function calcEggPause(noMax) {
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type.includes('Oeuf')) {
-                eggPauseDice = eggPauseDice+4;
-            } else if (bat.type == 'Ruche' || bat.type == 'Coque') {
+                eggPauseDice = eggPauseDice+3;
+            } else if (bat.type == 'Ruche') {
+                eggPauseDice = eggPauseDice+0.5;
+            } else if (bat.type == 'Coque') {
                 eggPauseDice = eggPauseDice+1;
             }
         }
     });
+    eggPauseDice = Math.floor(eggPauseDice);
     if (eggPauseDice < eggPauseMin) {
         eggPauseDice = eggPauseMin;
     }
