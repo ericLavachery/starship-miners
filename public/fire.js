@@ -130,6 +130,9 @@ function combat() {
             if (targetBatType.skills.includes('guerrilla')) {
                 minimumFireAP = minFireAP-7;
             }
+            if (targetBatType.cat === 'buildings') {
+                minimumFireAP = -999;
+            }
             if ((defAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo === 'mine') {
                 defense();
                 if (!isFFW) {
@@ -154,6 +157,9 @@ function combat() {
             if (targetBatType.skills.includes('guerrilla')) {
                 minimumFireAP = minFireAP-7;
             }
+            if (targetBatType.cat === 'buildings') {
+                minimumFireAP = -999;
+            }
             if (targetBat.apLeft > minimumFireAP) {
                 defense();
                 if (!isFFW) {
@@ -166,6 +172,9 @@ function combat() {
                 minimumFireAP = minFireAP;
                 if (selectedBatType.skills.includes('guerrilla')) {
                     minimumFireAP = minFireAP-7;
+                }
+                if (selectedBatType.cat === 'buildings') {
+                    minimumFireAP = -999;
                 }
                 if (selectedBat.apLeft > minimumFireAP) {
                     attack();

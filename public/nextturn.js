@@ -260,6 +260,10 @@ function nextTurnEnd() {
             } else {
                 bat.salvoLeft = batType.maxSalvo;
             }
+            // priest praying
+            if (bat.tags.includes('prayer')) {
+                bat.apLeft = bat.apLeft-2;
+            }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
             if (batType.skills.includes('notarget') && bat.fuzz > -2) {
@@ -368,10 +372,10 @@ function tagsUpdate(bat) {
     tagDelete(bat,'noBis1');
     tagDelete(bat,'noBis2');
     tagDelete(bat,'action');
-    if (!bat.tags.includes('prayer') && rand.rand(1,6) === 1) {
+    if (!bat.tags.includes('prayer') && rand.rand(1,4) === 1) {
         tagDelete(bat,'spirit');
     }
-    if (rand.rand(1,3) === 1) {
+    if (rand.rand(1,4) === 1) {
         tagDelete(bat,'prayer');
     }
     if (rand.rand(1,3) <= 2) {
@@ -754,7 +758,7 @@ function createBatList() {
     });
     batList = _.sortBy(zoneBatList,'fuzz');
     batList.reverse();
-    batList = _.sortBy(_.sortBy(_.sortBy(batList,'tileId'),'type'),'army');
+    batList = _.sortBy(_.sortBy(_.sortBy(_.sortBy(batList,'tileId'),'type'),'range'),'army');
     batList.reverse();
     commandes();
     // console.log(batList);

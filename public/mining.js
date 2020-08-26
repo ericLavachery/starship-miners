@@ -546,6 +546,14 @@ function voirRessources() {
             }
             $('#conUnitList').append('<div class="'+blockType+'" id="rf'+tile.id+'"></div>');
             $('#rf'+tile.id).append('<i class="fas fa-atom inficon rq'+tile.rq+'"></i><span class="listRes gff klik" onclick="markMap('+tile.id+')">&nbsp;'+tile.y+'&lrhar;'+tile.x+'</span>');
+            if (tile.ruins) {
+                if (tile.sh <= -1) {
+                    $('#rf'+tile.id).append('<i class="fas fa-city inficon rq'+tile.rq+'"></i> &nbsp');
+                    $('#rf'+tile.id).append('<i class="fas fa-check-circle inficon rq'+tile.rq+'"></i> &nbsp');
+                } else {
+                    $('#rf'+tile.id).append('<i class="fas fa-city inficon cy"></i> &nbsp');
+                }
+            }
             tileRes = tileRes.replace(/"/g,"");
             tileRes = tileRes.replace(/{/g,"");
             tileRes = tileRes.replace(/}/g,"");

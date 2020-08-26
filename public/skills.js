@@ -33,6 +33,14 @@ function gloireASatan() {
     }
     selectedBat.salvoLeft = 0;
     selectedBat.apLeft = selectedBat.apLeft-7;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" || bat.loc === "trans") {
+            batType = getBatType(bat);
+            if (batType.kind === selectedBatType.kind) {
+                bat.apLeft = bat.apLeft+3;
+            }
+        }
+    });
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
