@@ -876,7 +876,11 @@ function moveAlienBat(tileId,jump) {
     // remove ap
     let moveCost;
     if (jump) {
-        moveCost = selectedBat.apLeft;
+        if (selectedBatType.skills.includes('fouisseur')) {
+            moveCost = selectedBat.apLeft+8;
+        } else {
+            moveCost = selectedBat.apLeft;
+        }
     } else {
         if (isDiag(selectedBat.tileId,tileId)) {
             moveCost = calcMoveCost(tileId,true);
