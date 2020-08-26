@@ -41,10 +41,6 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-cubes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réapprovisionnement</h4></span>');
         }
     }
-    // DEBARQUER
-    unloadInfos(bat,batUnitType);
-    // RECONSTRUIRE
-    refabInfos(bat,batUnitType);
     // GUET
     if (batUnitType.weapon.rof >= 1 && !batUnitType.skills.includes('sentinelle') && !batUnitType.skills.includes('initiative') && !batUnitType.skills.includes('after') && bat.ap >= 1) {
         balise = 'h4';
@@ -737,6 +733,10 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-search"></i> <span class="small">'+apReq+'</span></button>&nbsp; Fouille</h4></span>');
         }
     }
+    // DEBARQUER
+    unloadInfos(bat,batUnitType);
+    // RECONSTRUIRE
+    refabInfos(bat,batUnitType);
     // CONSTRUCTION TRICHE
     if (batUnitType.skills.includes('triche')) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris skillButtons" onclick="bfconst(`all`,true)"><i class="fas fa-drafting-compass"></i></button>&nbsp; Construction</h4></span>');

@@ -325,6 +325,11 @@ function putBat(tileId,citoyens,xp,startTag) {
         } else {
             newBat.range = 0;
         }
+        if (conselUnit.sort != undefined) {
+            newBat.sort = conselUnit.sort;
+        } else {
+            newBat.sort = newBat.range*10;
+        }
         newBat.army = 0;
         newBat.fuzz = conselUnit.fuzz;
         if (conselUnit.transUnits >= 1) {

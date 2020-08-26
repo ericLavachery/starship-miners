@@ -67,6 +67,18 @@ socket.on('savedMap-Load', function(sm) {
     if (playerInfos.pseudo != 'Test') {
         playMusic('start',true);
     }
+    let thisBatType;
+    // !!!!!!!!!!!!!!!!!!!!!!!! A ENLEVER une fois que les "sort" sont tous OK
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" || bat.loc === "trans") {
+            thisBatType = getBatType(bat);
+            if (thisBatType.sort === undefined) {
+                bat.sort = bat.range*10;
+            } else {
+                bat.sort = thisBatType.sort;
+            }
+        }
+    });
     // $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
     // $('#tour').append('Difficulté '+playerInfos.mapDiff);
 });
