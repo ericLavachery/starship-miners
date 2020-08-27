@@ -242,7 +242,7 @@ function eggDropTile(eggName,edge) {
         } else if (eggName.includes('Cocon')) {
             area = 'target';
         } else if (eggName.includes('Sentinelles')) {
-            if (rand.rand(1,8) === 1) {
+            if (rand.rand(1,6) === 1) {
                 area = 'nocenter';
             } else {
                 area = 'around';
