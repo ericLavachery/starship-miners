@@ -15,14 +15,14 @@ function checkStartingAliens() {
             i++
         }
     }
-    let numVomi = Math.round((playerInfos.mapDiff+1)*2*rand.rand(8,20)/14);
+    let numVomi = Math.floor((playerInfos.mapDiff+2)*rand.rand(8,20)/14);
     let ii = 1;
     while (ii <= numVomi) {
         dropEgg('Vomissure',false);
         if (ii > 50) {break;}
         ii++
     }
-    let numSent = Math.ceil((playerInfos.mapDiff+1)*2*rand.rand(8,20)/8);
+    let numSent = Math.ceil((playerInfos.mapDiff+2)*rand.rand(8,20)/8);
     ii = 1;
     while (ii <= numSent) {
         dropEgg('Sentinelles',false);
@@ -405,7 +405,7 @@ function spawns() {
     let eggModTurn;
     let transList = morphList();
     let aliensNums = aliensCount();
-    let vomiToRuche = 20-Math.round(playerInfos.mapDiff*1.5);
+    let vomiToRuche = 22-Math.round(playerInfos.mapDiff*1.5);
     if (vomiToRuche < 5) {
         vomiToRuche = 5;
     }
@@ -437,7 +437,7 @@ function spawns() {
                 alienMorph(bat,'Wurms',false);
             } else if (transList.includes('Ombres') && bat.type === 'Ombres') {
                 alienMorph(bat,'Fantômes',false);
-            } else if (rand.rand(1,vomiToRuche) === 1 && bat.type === 'Vomissure') {
+            } else if (rand.rand(1,vomiToRuche) === 1 && playerInfos.mapTurn >= Math.ceil(vomiToRuche/1.5) && bat.type === 'Vomissure') {
                 alienMorph(bat,'Ruche',true);
             } else if (bat.type === 'Bug Boss' && aliens.length < maxAliens && aliensNums.bugs < maxPonte*2) {
                 alienSpawn(bat,'Bugs');
