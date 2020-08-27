@@ -17,6 +17,7 @@ function unloadInfos(myBat,myBatUnitType) {
     let tagsIcon = '';
     if (myBat.transIds != undefined) {
         if (myBat.transIds.length >= 1) {
+            $('#unitInfos').append('<hr>');
             let apCost = 0;
             bataillons.forEach(function(bat) {
                 if (bat.loc === "trans" && bat.locId == myBat.id) {

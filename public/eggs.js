@@ -1,6 +1,7 @@
 function checkStartingAliens() {
+    let numRuches;
     if (playerInfos.mapDiff >= 8) {
-        let numRuches = rand.rand(1,2);
+        numRuches = rand.rand(1,2);
         if (playerInfos.mapDiff === 9) {
             numRuches = rand.rand(3,5);
         }
@@ -13,6 +14,20 @@ function checkStartingAliens() {
             if (i > 20) {break;}
             i++
         }
+    }
+    let numVomi = Math.round((playerInfos.mapDiff+1)*2*rand.rand(8,20)/14);
+    let ii = 1;
+    while (ii <= numVomi) {
+        dropEgg('Vomissure',false);
+        if (ii > 50) {break;}
+        ii++
+    }
+    let numSent = Math.ceil((playerInfos.mapDiff+1)*2*rand.rand(8,20)/8);
+    ii = 1;
+    while (ii <= numSent) {
+        dropEgg('Sentinelles',false);
+        if (ii > 50) {break;}
+        ii++
     }
 };
 
@@ -222,10 +237,16 @@ function eggDropTile(eggName,edge) {
     if (edge) {
         area = 'edge';
     } else {
-        if (eggName.includes('Ruche')) {
+        if (eggName.includes('Ruche') || eggName.includes('Vomissure')) {
             area = 'nocenter';
         } else if (eggName.includes('Cocon')) {
             area = 'target';
+        } else if (eggName.includes('Sentinelles')) {
+            if (rand.rand(1,8) === 1) {
+                area = 'nocenter';
+            } else {
+                area = 'around';
+            }
         }
     }
     // ANY
@@ -299,6 +320,29 @@ function eggDropTile(eggName,edge) {
             if (theTile < 0) {
                 distance = calcDistance(tile.id,targetTile);
                 if (distance > 9 && distance < 13) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        theTile = tile.id;
+                    }
+                }
+            }
+        });
+    }
+    // AROUND
+    if (area === 'around') {
+        let shufAliens = _.shuffle(aliens);
+        shufAliens.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                if (bat.type === 'Vomissure') {
+                    targetTile = bat.tileId;
+                }
+            }
+        });
+        let shufZone = _.shuffle(zone);
+        let distance;
+        shufZone.forEach(function(tile) {
+            if (theTile < 0) {
+                distance = calcDistance(tile.id,targetTile);
+                if (distance <= 3 || (tile.terrain === 'H' && distance <= 4) || (tile.terrain === 'M' && distance <= 5)) {
                     if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
