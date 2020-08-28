@@ -262,7 +262,7 @@ function nextTurnEnd() {
             }
             // priest praying
             if (bat.tags.includes('prayer')) {
-                bat.apLeft = bat.apLeft-2;
+                bat.apLeft = bat.apLeft-3;
             }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;

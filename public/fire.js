@@ -227,6 +227,7 @@ function attack() {
     }
     // Dans l'eau
     let terrain = getTerrain(targetBat);
+    let tile = getTile(targetBat);
     if (terrain.name === 'W' || terrain.name === 'R' || terrain.name === 'S') {
         if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov')) {
             selectedWeap.power = Math.round(selectedWeap.power*0.75);
@@ -239,7 +240,7 @@ function attack() {
         if (!targetBatType.skills.includes('fly')) {
             if (selectedWeap.ammo.includes('taser') || selectedWeap.ammo.includes('electric')) {
                 selectedWeap.power = Math.round(selectedWeap.power+7);
-                if (terrain.name === 'W' || terrain.name === 'R') {
+                if ((terrain.name === 'W' || terrain.name === 'R') && !tile.rd) {
                     if (selectedWeap.aoe == 'unit') {
                         selectedWeap.aoe = 'brochette';
                     } else if (selectedWeap.aoe == 'brochette') {
@@ -670,6 +671,7 @@ function defense() {
     $('#report').append('<span class="report or">'+targetBat.type+' ('+targetWeap.name+')</span><br>');
     // Dans l'eau
     let terrain = getTerrain(selectedBat);
+    let tile = getTile(selectedBat);
     if (terrain.name === 'W' || terrain.name === 'R' || terrain.name === 'S') {
         if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov')) {
             targetWeap.power = Math.round(targetWeap.power*0.75);
@@ -682,7 +684,7 @@ function defense() {
         if (!selectedBatType.skills.includes('fly')) {
             if (targetWeap.ammo.includes('taser') || targetWeap.ammo.includes('electric')) {
                 targetWeap.power = Math.round(targetWeap.power+7);
-                if (terrain.name === 'W' || terrain.name === 'R') {
+                if ((terrain.name === 'W' || terrain.name === 'R') && !tile.rd) {
                     if (targetWeap.aoe == 'unit') {
                         targetWeap.aoe = 'brochette';
                     } else if (targetWeap.aoe == 'brochette') {

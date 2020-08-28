@@ -787,6 +787,19 @@ function addRes(zone) {
                 }
             });
             tile.rs[mythicRes.name] = mythicRes.batch*(tile.rq-2)*(tile.rq-3)*rand.rand(3,9);
+            if (mythicRes.bld === 'Derrick' || mythicRes.bld === 'Mine') {
+                let bldFactor = 2;
+                if (mythicRes.bld === 'Derrick') {
+                    bldFactor = 6;
+                }
+                resTypes.forEach(function(res) {
+                    if (res.bld === mythicRes.bld) {
+                        if (rand.rand(1,100) <= Math.round((res.rarity+9)/12*bldFactor)) {
+                            tile.rs[res.name] = res.batch*res.batch*rand.rand(6,12);
+                        }
+                    }
+                });
+            }
         } else if (tile.rq >= 1) {
             terrain = getTileTerrain(tile.id);
             // PASS 1
