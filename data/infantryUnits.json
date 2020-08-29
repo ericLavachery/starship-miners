@@ -2935,7 +2935,7 @@
             "power":26,
             "aoe":"unit",
             "sound":"flamme",
-            "ammo":["lt-o2","lt-nanite"],
+            "ammo":["lt-o2","lt-nanite","lt-plastanium"],
             "maxAmmo":20
         },
         "protection":["aucune"],
@@ -3475,7 +3475,7 @@
             "power":22,
             "aoe":"unit",
             "sound":"flamme",
-            "ammo":["lt-o2","lt-nanite"],
+            "ammo":["lt-o2","lt-nanite","lt-plastanium"],
             "maxAmmo":16
         },
         "weapon2":{

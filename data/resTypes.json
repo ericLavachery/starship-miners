@@ -13,7 +13,7 @@
         "name": "Plomb",
         "bld": "Mine",
         "level": 1,
-        "rarity": 150,
+        "rarity": 100,
         "cat": "white",
         "batch": 6
     },
@@ -22,7 +22,7 @@
         "name": "Fer",
         "bld": "Mine",
         "level": 1,
-        "rarity": 150,
+        "rarity": 120,
         "cat": "white",
         "batch": 6
     },
@@ -49,7 +49,7 @@
         "name": "Cuivre",
         "bld": "Mine",
         "level": 1,
-        "rarity": 100,
+        "rarity": 85,
         "cat": "white",
         "batch": 4
     },
@@ -85,7 +85,7 @@
         "name": "Soufre",
         "bld": "Mine",
         "level": 1,
-        "rarity": 150,
+        "rarity": 100,
         "cat": "white",
         "batch": 6
     },

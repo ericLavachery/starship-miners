@@ -18,7 +18,7 @@ function checkStartingAliens() {
     let numVomi = Math.floor((playerInfos.mapDiff+2)*rand.rand(8,20)/14);
     let ii = 1;
     while (ii <= numVomi) {
-        dropEgg('Vomissure',false);
+        dropEgg('Flaque',false);
         if (ii > 50) {break;}
         ii++
     }
@@ -237,7 +237,7 @@ function eggDropTile(eggName,edge) {
     if (edge) {
         area = 'edge';
     } else {
-        if (eggName.includes('Ruche') || eggName.includes('Vomissure')) {
+        if (eggName.includes('Ruche') || eggName.includes('Vomissure') || eggName.includes('Flaque')) {
             area = 'nocenter';
         } else if (eggName.includes('Cocon')) {
             area = 'target';
@@ -332,7 +332,7 @@ function eggDropTile(eggName,edge) {
         let shufAliens = _.shuffle(aliens);
         shufAliens.forEach(function(bat) {
             if (bat.loc === "zone") {
-                if (bat.type === 'Vomissure') {
+                if (bat.type === 'Flaque') {
                     targetTile = bat.tileId;
                 }
             }
