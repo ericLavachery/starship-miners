@@ -507,10 +507,12 @@ function voirRessources() {
     $('#conUnitList').append('<button type="button" title="Effacer tous les indicateurs" class="boutonGris iconButtons" onclick="showedTilesReset()"><i class="fas fa-eraser"></i></button>');
     let visMap = [];
     if (showAllRes) {
+        $('#conUnitList').append('<button type="button" title="Tous les points de la carte sont listés" class="boutonVert iconButtons"><i class="fas fa-map"></i></button>');
         $('#conUnitList').append('<button type="button" title="Lister uniquement les points visibles à l\'écran" class="boutonGris iconButtons" onclick="toggleResView()"><i class="far fa-eye"></i></button>');
         visMap = zone;
     } else {
-        $('#conUnitList').append('<button type="button" title="Lister tous les points" class="boutonGris iconButtons" onclick="toggleResView()"><i class="far fa-eye"></i></button>');
+        $('#conUnitList').append('<button type="button" title="Lister tous les points de la carte" class="boutonGris iconButtons" onclick="toggleResView()"><i class="fas fa-map"></i></button>');
+        $('#conUnitList').append('<button type="button" title="Seulement les points visibles à l\'écran sont listés" class="boutonVert iconButtons"><i class="far fa-eye"></i></button>');
         let minX = xOffset+1;
         let maxX = xOffset+numVTiles;
         let minY = yOffset+1;

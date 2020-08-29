@@ -1186,6 +1186,7 @@
         "hp":75,
         "armor":6,
         "size":27,
+        "volume":0.9,
         "stealth":0,
         "speed":2,
         "ap":14,

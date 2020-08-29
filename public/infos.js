@@ -138,7 +138,11 @@ function showBatInfos(bat) {
     }
     if (batUnitType.transUnits >= 1) {
         let transLeft = calcTransUnitsLeft(bat,batUnitType);
-        $('#unitInfos').append('<span class="paramName cy">Transport</span><span class="paramIcon"></span><span class="paramValue cy">'+transLeft+'/'+batUnitType.transUnits+'</span><br>');
+        let transBase = batUnitType.transUnits;
+        if (batUnitType.skills.includes('transorbital')) {
+            transBase = Math.round(transBase*bonusTransRetour);
+        }
+        $('#unitInfos').append('<span class="paramName cy">Transport</span><span class="paramIcon"></span><span class="paramValue cy">'+transLeft+'/'+transBase+'</span><br>');
     }
     if (batUnitType.transRes >= 1) {
         let restSpace = checkResSpace(bat);

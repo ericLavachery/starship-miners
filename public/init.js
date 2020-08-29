@@ -34,7 +34,7 @@ socket.on('playerInfos-Load', function(pi) {
         playerInfos.alienRes = {};
     }
     if (playerInfos.showedTiles === undefined) {
-        playerInfos.showedTiles = [];
+        playerInfos.showedTiles = [1830];
     }
     playerSkills();
 });

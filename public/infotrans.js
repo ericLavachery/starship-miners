@@ -93,6 +93,9 @@ function checkTransportId(myBat,myBatType) {
 
 function calcTransUnitsLeft(myBat,myBatType) {
     let myBatTransUnitsLeft = myBatType.transUnits;
+    if (myBatType.skills.includes('transorbital')) {
+        myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*bonusTransRetour);
+    }
     let batWeight;
     bataillons.forEach(function(bat) {
         if (bat.loc === "trans" && bat.locId == myBat.id) {
@@ -101,6 +104,7 @@ function calcTransUnitsLeft(myBat,myBatType) {
             myBatTransUnitsLeft = myBatTransUnitsLeft-batWeight;
         }
     });
+    console.log('myBatTransUnitsLeft'+myBatTransUnitsLeft);
     return myBatTransUnitsLeft;
 };
 

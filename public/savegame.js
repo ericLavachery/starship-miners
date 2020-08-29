@@ -10,7 +10,7 @@ function savePlayerInfos() {
     socket.emit('save-playerInfos', playerInfos);
 };
 function saveMap() {
-    showedTilesReset();
+    // showedTilesReset();
     socket.emit('save-map',zone);
     commandes();
 };
@@ -39,7 +39,7 @@ function mapReset() {
     playerInfos.pauseSeed = rand.rand(1,8);
     playerInfos.res = {};
     playerInfos.alienRes = {};
-    playerInfos.showedTiles = [];
+    playerInfos.showedTiles = [1830];
     savePlayerInfos();
     commandes();
     $("#reset2").css("display","none");
