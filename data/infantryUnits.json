@@ -1018,7 +1018,7 @@
         "volume":1.2,
         "stealth":6,
         "speed":-3,
-        "ap":13,
+        "ap":14,
         "maxSalvo":1,
         "weapon":{
             "name":"Mitrailleuse",
@@ -1069,7 +1069,7 @@
         "volume":1.7,
         "stealth":6,
         "speed":-3,
-        "ap":13,
+        "ap":14,
         "maxSalvo":1,
         "weapon":{
             "name":"Minigun",
@@ -3277,7 +3277,7 @@
         "size":9,
         "volume":0.8,
         "stealth":8,
-        "ap":13,
+        "ap":14,
         "maxSalvo":2,
         "weapon":{
             "name":"Canon",
@@ -3329,7 +3329,7 @@
         "size":9,
         "volume":0.8,
         "stealth":8,
-        "ap":13,
+        "ap":14,
         "maxSalvo":2,
         "weapon":{
             "name":"Flak canon",
