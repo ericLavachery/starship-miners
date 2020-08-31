@@ -41,6 +41,7 @@ function gloireASatan() {
             }
         }
     });
+    tagDelete(selectedBat,'guet');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
@@ -360,6 +361,7 @@ function dropStuff(apCost,mineType) {
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     selectedBat.salvoLeft = 0;
     tagAction();
+    tagDelete(selectedBat,'guet');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };

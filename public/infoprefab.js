@@ -39,6 +39,7 @@ function deconstruction(prefabId) {
     if (batListIndex > -1) {
         batList.splice(batListIndex,1);
     }
+    tagDelete(selectedBat,'guet');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
     selectMode();
@@ -75,5 +76,6 @@ function reconstruction(debId) {
     let debBat = bataillons[debIndex];
     selectMode();
     batDebarq = debBat;
+    tagDelete(selectedBat,'guet');
     showBatInfos(selectedBat);
 };

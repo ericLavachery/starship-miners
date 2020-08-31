@@ -220,11 +220,6 @@ function attack() {
         xpFactor = 0.2;
     }
     $('#report').append('<span class="report or">'+selectedBat.type+' ('+selectedWeap.name+')</span><br>');
-    // remove guet
-    if (selectedBat.tags.includes('guet')) {
-        tagIndex = selectedBat.tags.indexOf('guet');
-        selectedBat.tags.splice(tagIndex,1);
-    }
     // Dans l'eau
     let terrain = getTerrain(targetBat);
     let tile = getTile(targetBat);

@@ -317,6 +317,7 @@ function medic(cat,cost,around,deep) {
     selectedBat.xp = selectedBat.xp+xpGain;
     selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
     tagDelete(selectedBat,'mining');
+    tagDelete(selectedBat,'guet');
     tagAction();
     // selectedBat.salvoLeft = 0;
     selectedBatArrayUpdate();

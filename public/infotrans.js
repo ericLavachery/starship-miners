@@ -139,6 +139,8 @@ function embarquement(transId) {
     if (batListIndex > -1) {
         batList.splice(batListIndex,1);
     }
+    tagDelete(selectedBat,'guet');
+    camoOut();
     selectedBatArrayUpdate();
     showBataillon(transBat);
     batSelect(transBat);

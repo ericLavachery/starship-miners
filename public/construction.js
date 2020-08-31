@@ -200,6 +200,8 @@ function clickConstruct(tileId,free) {
             if (!selectedBat.tags.includes('construction')) {
                 selectedBat.tags.push('construction');
             }
+            tagDelete(selectedBat,'guet');
+            camoOut();
             selectedBatArrayUpdate();
         }
         putBat(tileId,0,0);
@@ -457,6 +459,8 @@ function putRoad() {
     if (!selectedBat.tags.includes('construction')) {
         selectedBat.tags.push('construction');
     }
+    tagDelete(selectedBat,'guet');
+    camoOut();
     selectedBatArrayUpdate();
     tile.rd = true;
     saveMap();
@@ -474,6 +478,8 @@ function putTalus() {
     if (!selectedBat.tags.includes('construction')) {
         selectedBat.tags.push('construction');
     }
+    tagDelete(selectedBat,'guet');
+    camoOut();
     selectedBatArrayUpdate();
     tile.talus = true;
     saveMap();
