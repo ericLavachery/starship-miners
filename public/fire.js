@@ -443,17 +443,20 @@ function attack() {
                 }
                 totalDamage = totalDamage+(tailDamage*selectedBat.squadsLeft*selectedBatType.squads);
             }
-            let gripDiv = 1;
+            let gripDiv = 1.25;
             if (targetBatType.weapon.isShort || targetBatType.weapon2.isShort) {
-                gripDiv = gripDiv+1.5;
+                gripDiv = gripDiv+0.5;
             }
             if (targetBatType.weapon.isMelee || targetBatType.weapon2.isMelee) {
+                gripDiv = gripDiv+0.5;
+            }
+            if (targetWeap.isShort) {
+                gripDiv = gripDiv+0.75;
+            }
+            if (targetWeap.isMelee) {
                 gripDiv = gripDiv+1;
             }
-            if (targetWeap.isMelee || targetWeap.isShort) {
-                gripDiv = gripDiv+1;
-            }
-            apDamage = apDamage+Math.round(selectedBat.squadsLeft*3/gripDiv);
+            apDamage = apDamage+Math.round((selectedBat.squadsLeft+rand.rand(0,10)-5)*3/gripDiv);
             console.log('Grip OK');
             $('#report').append('<span class="report">Agrippé<br></span>');
         } else {

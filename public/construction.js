@@ -148,7 +148,7 @@ function conSelect(unitId,player,noRefresh) {
         }
     }
     listNum = 1;
-    if (Object.keys(conselUnit.weapon2).length >= 1) {
+    if (Object.keys(conselUnit.weapon2).length >= 1 && !conselUnit.skills.includes('unemun')) {
         if (conselUnit.weapon2.ammo.length >= 1) {
             $('#conAmmoList').append('<span class="constName or">'+conselUnit.weapon2.name+'</span><br>');
             conselUnit.weapon2.ammo.forEach(function(ammo) {
@@ -166,10 +166,15 @@ function conSelect(unitId,player,noRefresh) {
 };
 
 function selectAmmo(ammo,weapon,unitId) {
-    if (weapon === 'w1') {
+    if (conselUnit.skills.includes('unemun')) {
         conselAmmos[0] = ammo;
-    } else {
         conselAmmos[1] = ammo;
+    } else {
+        if (weapon === 'w1') {
+            conselAmmos[0] = ammo;
+        } else {
+            conselAmmos[1] = ammo;
+        }
     }
     // console.log(conselAmmos);
     conSelect(unitId,'player',true);

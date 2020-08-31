@@ -2148,7 +2148,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","fly","inflammable","transport","fret","longshot","dumper","realdumper"],
+        "skills":["cible","fly","inflammable","transport","fret","longshot","dumper","realdumper","unemun"],
         "transMaxSize":25,
         "transUnits":1750,
         "transRes":3000,
