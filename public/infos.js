@@ -57,9 +57,6 @@ function showBatInfos(bat) {
     } else {
         $('#unitInfos').append('<span class="paramName">Couverture</span><span class="paramIcon"></span><span class="paramValue">'+fortifCover+'</span><br>');
     }
-    // $('#unitInfos').append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.size+'</span><br>');
-    let volume = calcVolume(bat,batUnitType);
-    $('#unitInfos').append('<span class="paramName">Volume</span><span class="paramIcon"><i class="fas fa-weight-hanging"></i></span><span class="paramValue">'+volume+'</span><br>');
     let stealth = getStealth(bat);
     let camChance = calcCamo(bat);
     if (batUnitType.skills.includes('camo') || batUnitType.skills.includes('maycamo') || tile.ruins) {
@@ -130,6 +127,10 @@ function showBatInfos(bat) {
     }
     // XP
     $('#unitInfos').append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+Math.floor(bat.xp)+' (niveau '+bat.vet+')</span><br>');
+    // Volume
+    let volume = calcVolume(bat,batUnitType);
+    $('#unitInfos').append('<span class="paramName">Volume</span><span class="paramIcon"><i class="fas fa-weight-hanging"></i></span><span class="paramValue">'+volume+'</span><br>');
+    // $('#unitInfos').append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.size+'</span><br>');
     // AUTOSKILLS
     if (batUnitType.skills.includes('ravitaillement')) {
         let ravitNum = calcRavit(bat);

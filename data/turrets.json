@@ -659,6 +659,7 @@
             "name":"Fusil d'assaut",
             "cost":3,
             "range":1,
+            "noBis":true,
             "rof":27,
             "accuracy":18,
             "power":6,

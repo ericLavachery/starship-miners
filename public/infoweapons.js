@@ -9,6 +9,8 @@ function weaponsInfos(bat,batUnitType) {
     let noBisOK = true;
     let baseAmmo = 99;
     let ammoLeft = 99;
+    let defDef;
+    let guetDef;
     let ravitVolume = 0;
     cheapWeapCost = 99;
     let accFly;
@@ -92,12 +94,34 @@ function weaponsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
             $('#unitInfos').append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
+            // DEFENSE
+            if (thisWeapon.noMelee || thisWeapon.noDef) {
+                defDef = 0;
+                guetDef = 0;
+            } else {
+                defDef = calcBrideDef(bat,batUnitType,thisWeapon,0,false);
+                defDef = Math.round(defDef*100);
+                guetDef = calcBrideDef(bat,batUnitType,thisWeapon,0,true);
+                guetDef = Math.round(guetDef*100);
+            }
+            $('#unitInfos').append('<span class="paramName">Défense en mêlée</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+            if (thisWeapon.noDef) {
+                defDef = 0;
+                guetDef = 0;
+            } else {
+                defDef = calcBrideDef(bat,batUnitType,thisWeapon,1,false);
+                defDef = Math.round(defDef*100);
+                guetDef = calcBrideDef(bat,batUnitType,thisWeapon,1,true);
+                guetDef = Math.round(guetDef*100);
+            }
+            $('#unitInfos').append('<span class="paramName">Défense à distance</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+            // ACCURACY
             if (thisWeapon.noFly) {
                 accFly = 0;
             } else {
                 accFly = Math.round(thisWeapon.accuracy*thisWeapon.dca);
             }
-            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'/'+accFly+'</span><br>');
+            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+' / '+accFly+'</span><br>');
             $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
             if (thisWeapon.armors != 1) {
                 $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
@@ -184,12 +208,34 @@ function weaponsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
             $('#unitInfos').append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
+            // DEFENSE
+            if (thisWeapon.noMelee || thisWeapon.noDef) {
+                defDef = 0;
+                guetDef = 0;
+            } else {
+                defDef = calcBrideDef(bat,batUnitType,thisWeapon,0,false);
+                defDef = Math.round(defDef*100);
+                guetDef = calcBrideDef(bat,batUnitType,thisWeapon,0,true);
+                guetDef = Math.round(guetDef*100);
+            }
+            $('#unitInfos').append('<span class="paramName">Défense en mêlée</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+            if (thisWeapon.noDef) {
+                defDef = 0;
+                guetDef = 0;
+            } else {
+                defDef = calcBrideDef(bat,batUnitType,thisWeapon,1,false);
+                defDef = Math.round(defDef*100);
+                guetDef = calcBrideDef(bat,batUnitType,thisWeapon,1,true);
+                guetDef = Math.round(guetDef*100);
+            }
+            $('#unitInfos').append('<span class="paramName">Défense à distance</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+            // ACCURACY
             if (thisWeapon.noFly) {
                 accFly = 0;
             } else {
                 accFly = Math.round(thisWeapon.accuracy*thisWeapon.dca);
             }
-            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'/'+accFly+'</span><br>');
+            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+' / '+accFly+'</span><br>');
             $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
             if (thisWeapon.armors != 1) {
                 $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');

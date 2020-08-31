@@ -719,3 +719,55 @@ function calcShotDice(bat,luckyshot) {
         }
     }
 };
+
+function calcBrideDef(bat,batType,weap,attRange,guet) {
+    let brideDef = 0.75;
+    if (attRange === 0) {
+        brideDef = 1/Math.sqrt(weap.cost-0.75);
+        if (brideDef > 1) {
+            brideDef = 1;
+        }
+        if (weap.range === 0) {
+            brideDef = 0.75;
+        }
+    } else {
+        if (weap.range === 0) {
+            brideDef = 0.5;
+        } else {
+            brideDef = 0.75;
+        }
+    }
+    // Guet, Defense, Bastion
+    if (batType.skills.includes('bastion') && (weap.num === 1 || !weap.noBis)) {
+        if (guet || batType.skills.includes('sentinelle') || batType.skills.includes('initiative')) {
+            brideDef = 2;
+        } else {
+            brideDef = 1.5;
+        }
+        if (attRange >= 1 && weap.range === 0) {
+            brideDef = brideDef/2;
+        }
+    } else if (batType.skills.includes('defense') && (weap.num === 1 || !weap.noBis)) {
+        if (guet || batType.skills.includes('sentinelle') || batType.skills.includes('initiative')) {
+            brideDef = 1.65;
+        } else {
+            brideDef = 1.2;
+        }
+        if (attRange >= 1 && weap.range === 0) {
+            brideDef = brideDef/2;
+        }
+    } else {
+        if (guet || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+            brideDef = 1;
+        }
+    }
+    // embuscade on bridage def
+    if (batType.skills.includes('baddef')) {
+        if (guet || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+            brideDef = brideDef/1.17;
+        } else {
+            brideDef = brideDef/1.5;
+        }
+    }
+    return brideDef;
+}

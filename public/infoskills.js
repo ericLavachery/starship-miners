@@ -42,19 +42,24 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // GUET
-    if (batUnitType.weapon.rof >= 1 && !batUnitType.skills.includes('sentinelle') && !batUnitType.skills.includes('initiative') && !batUnitType.skills.includes('after') && bat.ap >= 1) {
+    if (batUnitType.weapon.rof >= 1 && bat.ap >= 1) {
         balise = 'h4';
-        if (bat.tags.includes('guet') || batUnitType.skills.includes('sentinelle') || batUnitType.skills.includes('initiative')) {
+        if (bat.tags.includes('guet') || batUnitType.skills.includes('sentinelle') || batUnitType.skills.includes('initiative') || batUnitType.skills.includes('after')) {
             balise = 'h3';
         }
         apCost = 3;
         apReq = bat.ap-3;
-        if (bat.apLeft >= apReq && !bat.tags.includes('guet')) {
+        if (bat.apLeft >= apReq && !bat.tags.includes('guet') && !batUnitType.skills.includes('sentinelle') && !batUnitType.skills.includes('initiative') && !batUnitType.skills.includes('after')) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Faire le guet (pas de malus à la riposte)" class="boutonGris skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</'+balise+'></span>');
         } else {
+            if (batUnitType.skills.includes('sentinelle') || batUnitType.skills.includes('initiative') || batUnitType.skills.includes('after')) {
+                skillMessage = "Sentinelle";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
             // pas assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de PA" class="boutonGris skillButtons gf"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</'+balise+'></span>');
         }
     }
     // FORTIFICATION

@@ -714,36 +714,48 @@ function defense() {
     }
     // BRIDAGE DEFENSE
     let brideDef = 0.75;
-    if (selectedWeap.range === 0) {
-        brideDef = 1/Math.sqrt(targetWeap.cost-0.75);
-        if (brideDef > 1 || targetWeap.range === 0) {
-            brideDef = 1;
-        }
-    } else {
-        if (targetWeap.range === 0) {
-            brideDef = 0.5;
-        } else {
-            brideDef = 0.75;
-        }
+    let isGuet = false;
+    if (targetBat.tags.includes('guet')) {
+        isGuet = true;
     }
-    // Guet, Defense, Bastion
-    if (targetBatType.skills.includes('bastion')) {
-        if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative')) {
-            brideDef = 2;
-        } else {
-            brideDef = 1.5;
-        }
-    } else if (targetBatType.skills.includes('defense')) {
-        if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative')) {
-            brideDef = 1.65;
-        } else {
-            brideDef = 1.2;
-        }
-    } else {
-        if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative') || targetBatType.skills.includes('after')) {
-            brideDef = 1;
-        }
-    }
+    brideDef = calcBrideDef(targetBat,targetBatType,targetWeap,selectedWeap.range,isGuet);
+    //
+    // let brideDef = 0.75;
+    // if (selectedWeap.range === 0) {
+    //     brideDef = 1/Math.sqrt(targetWeap.cost-0.75);
+    //     if (brideDef > 1 || targetWeap.range === 0) {
+    //         brideDef = 1;
+    //     }
+    // } else {
+    //     if (targetWeap.range === 0) {
+    //         brideDef = 0.5;
+    //     } else {
+    //         brideDef = 0.75;
+    //     }
+    // }
+    // // Guet, Defense, Bastion
+    // if (targetBatType.skills.includes('bastion')) {
+    //     if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative')) {
+    //         brideDef = 2;
+    //     } else {
+    //         brideDef = 1.5;
+    //     }
+    // } else if (targetBatType.skills.includes('defense')) {
+    //     if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative')) {
+    //         brideDef = 1.65;
+    //     } else {
+    //         brideDef = 1.2;
+    //     }
+    // } else {
+    //     if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative') || targetBatType.skills.includes('after')) {
+    //         brideDef = 1;
+    //     }
+    // }
+    // // embuscade on bridage def
+    // if (targetBatType.skills.includes('embuscade')) {
+    //     brideDef = brideDef/1.5;
+    // }
+    //
     // bigDef
     if (targetWeap.bigDef && selectedBatType.size >= 4) {
         targetWeap.power = Math.ceil(targetWeap.power+Math.sqrt(selectedBatType.size));
