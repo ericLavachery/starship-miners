@@ -139,7 +139,7 @@ let conselTriche;
 // INVASION
 let maxAliens = 250;
 let cumDrop = 12; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
-let dropMod = 2; //
+let dropMod = 2.5; //
 let eggLifeStart = 12; //
 let eggLifeFactor = 0.7; //
 let coqLifeStart = 6; //
