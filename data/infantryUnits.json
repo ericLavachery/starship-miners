@@ -534,7 +534,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","camo","embuscade","baddef","unemun"],
+        "skills":["fouille","fortif","cible","camo","embuscade","baddef","unemun","ranger"],
         "fuzz":1.5,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -1938,7 +1938,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","camo","selfbadmedic"],
+        "skills":["fouille","fortif","cible","camo","selfbadmedic","baddef"],
         "mediCost":6,
         "fuzz":-1,
         "deathFx":"162157__mediapaja2009__agony"
@@ -2295,7 +2295,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","selfmedic","leader","fly","jetpack","sentinelle","longshot","guerrilla","survivor","inflammable","maycamo"],
+        "skills":["fouille","fortif","cible","selfmedic","leader","fly","jetpack","sentinelle","longshot","guerrilla","survivor","inflammable","maycamo","baddef"],
         "mediCost":9,
         "fuzz":3.5,
         "deathFx":"human1"
