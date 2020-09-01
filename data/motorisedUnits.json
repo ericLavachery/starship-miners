@@ -3284,7 +3284,7 @@
         "skills":["cible","transport","fret","maycamo","selfbadmecano","dumper"],
         "mecanoCost":15,
         "transMaxSize":4,
-        "transUnits":560,
+        "transUnits":565,
         "transRes":250,
         "fuzz":1,
         "deathFx":"S_CarExplosion02"
