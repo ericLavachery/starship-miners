@@ -157,7 +157,7 @@
         "size":3,
         "volume":1,
         "stealth":4,
-        "ap":12,
+        "ap":14,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet",
@@ -179,7 +179,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","medic","dealer","starka","kirin","octiron","maycamo"],
         "mediCost":5,
-        "maxSkill":9,
+        "maxSkill":18,
         "fuzz":0,
         "deathFx":"human3"
     },
@@ -198,7 +198,7 @@
         "size":3,
         "volume":1,
         "stealth":4,
-        "ap":12,
+        "ap":14,
         "maxSalvo":1,
         "weapon":{
             "name":"Pistolet",
@@ -220,7 +220,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","medic","maycamo","dealer","starka","octiron"],
         "mediCost":8,
-        "maxSkill":6,
+        "maxSkill":12,
         "fuzz":0,
         "deathFx":"human3"
     },
@@ -273,8 +273,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","fortif","cible","medic","dealer","starka","octiron"],
-        "mediCost":9,
-        "maxSkill":6,
+        "mediCost":8,
+        "maxSkill":12,
         "fuzz":0,
         "deathFx":"human1"
     },
@@ -328,8 +328,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","fortif","cible","medic","dealer","starka","kirin","octiron","prayer","survivor","luckyshot"],
-        "mediCost":8,
-        "maxSkill":12,
+        "mediCost":7,
+        "maxSkill":18,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -1570,7 +1570,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","cible","undead","badmedic","dealer","bliss","sila","blaze","kirin","octiron","skupiac","starka","camo"],
         "mediCost":6,
-        "maxSkill":32,
+        "maxSkill":36,
         "fuzz":1,
         "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
@@ -2044,7 +2044,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","cible","camo","medic","fly","jetpack","longshot","inflammable","dealer","starka","kirin","octiron"],
         "mediCost":5,
-        "maxSkill":8,
+        "maxSkill":18,
         "fuzz":-1,
         "deathFx":"human2"
     },

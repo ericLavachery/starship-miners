@@ -11,7 +11,7 @@ function skillsInfos(bat,batUnitType) {
     // RAVITAILLEMENT DROGUES
     let anyRavit = checkRavitDrug(bat);
     if (anyRavit && bat.tags.includes('skillUsed') && batUnitType.skills.includes('dealer')) {
-        let apCost = Math.round(bat.ap/2);
+        let apCost = Math.round(bat.ap/3);
         if (bat.apLeft >= 2) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de drogues" class="boutonGris skillButtons" onclick="goRavitDrug('+apCost+')"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp;  Approvisionnement</h4></span>');
         } else {
@@ -22,7 +22,7 @@ function skillsInfos(bat,batUnitType) {
     // RAVITAILLEMENT
     anyRavit = checkRavit(bat);
     if (anyRavit && bat.tags.includes('ammoUsed')) {
-        let apCost = bat.ap;
+        let apCost = Math.round(bat.ap/1.5);
         if (bat.apLeft >= 4) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de munitions" class="boutonGris skillButtons" onclick="goRavit('+apCost+')"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ravitaillement</h4></span>');
         } else {

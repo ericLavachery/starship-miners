@@ -316,7 +316,7 @@
         "mediCost":5,
         "transMaxSize":9,
         "transUnits":1500,
-        "maxSkill":18,
+        "maxSkill":60,
         "refabTime":18,
         "fuzz":2,
         "deathFx":"S_Explosion02"

@@ -738,7 +738,7 @@
         "skills":["cible","transport","fret","medic","selfbadmecano","dealer","kirin","octiron","starka"],
         "mediCost":3,
         "mecanoCost":20,
-        "maxSkill":16,
+        "maxSkill":36,
         "transMaxSize":4,
         "transUnits":220,
         "transRes":90,
@@ -1288,7 +1288,7 @@
         "mecanoCost":14,
         "transMaxSize":9,
         "transUnits":380,
-        "maxSkill":32,
+        "maxSkill":60,
         "fuzz":1,
         "deathFx":"planeexploair1"
     },

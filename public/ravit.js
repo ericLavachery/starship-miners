@@ -247,6 +247,7 @@ function goRavitDrug(apCost) {
     if (selectedBat.tags.includes('skillUsed')) {
         let batType;
         let ravitBat = {};
+        let ravitBatType;
         let ravitLeft = 0;
         let biggestRavit = 0;
         bataillons.forEach(function(bat) {
@@ -277,7 +278,13 @@ function goRavitDrug(apCost) {
                 if (i > 120) {break;}
                 i++;
             }
-            ravitBat.tags.push('skillUsed');
+            if (true) {
+
+            }
+            ravitBatType = getBatType(ravitBat);
+            if (ravitBatType.maxSkill < 999) {
+                ravitBat.tags.push('skillUsed');
+            }
             selectedBatArrayUpdate();
             showBatInfos(selectedBat);
         }
