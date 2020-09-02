@@ -245,7 +245,14 @@ function resSelect(resId) {
             selectedBat.extracted.splice(tagIndex,1);
         }
     } else {
-        selectedBat.extracted = [res.name];
+        if (!selectedBat.extracted.includes(res.name)) {
+            if (selectedBat.extracted.length <= 1) {
+                selectedBat.extracted.push(res.name);
+            }
+        } else {
+            let tagIndex = selectedBat.extracted.indexOf(res.name);
+            selectedBat.extracted.splice(tagIndex,1);
+        }
     }
     selectedBatArrayUpdate();
     chooseRes(true);

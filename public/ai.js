@@ -425,7 +425,11 @@ function checkPossibleJumps() {
         if (selectedBatType.skills.includes('errant')) {
             maxDistance = 8;
         } else {
-            maxDistance = 5;
+            if (selectedBatType.skills.includes('sauteur')) {
+                maxDistance = 5;
+            } else {
+                maxDistance = 4;
+            }
         }
     } else {
         maxDistance = Math.round(selectedBat.apLeft/selectedBatType.moveCost/1.2);
