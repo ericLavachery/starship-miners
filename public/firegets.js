@@ -629,7 +629,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.range = thisWeapon.range+1;
         }
     } else if (tile.talus) {
-        if (thisWeapon.elevation >= 1) {
+        if (thisWeapon.elevation >= 1 && (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber'))) {
             thisWeapon.range = thisWeapon.range+1;
         }
     }

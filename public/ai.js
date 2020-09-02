@@ -881,7 +881,9 @@ function moveAlienBat(tileId,jump) {
     let moveCost;
     if (jump) {
         if (selectedBatType.skills.includes('fouisseur')) {
-            moveCost = selectedBat.apLeft+8;
+            // moveCost = selectedBat.apLeft+8;
+            moveCost = selectedBat.apLeft;
+            selectedBat.salvoLeft = 0;
         } else {
             moveCost = selectedBat.apLeft;
         }
