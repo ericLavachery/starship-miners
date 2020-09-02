@@ -93,7 +93,7 @@ function checkTransportId(myBat,myBatType) {
 
 function calcTransUnitsLeft(myBat,myBatType) {
     let myBatTransUnitsLeft = myBatType.transUnits;
-    if (myBatType.skills.includes('transorbital')) {
+    if (myBatType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
         myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*bonusTransRetour);
     }
     let batWeight;

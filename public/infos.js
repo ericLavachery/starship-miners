@@ -140,7 +140,7 @@ function showBatInfos(bat) {
     if (batUnitType.transUnits >= 1) {
         let transLeft = calcTransUnitsLeft(bat,batUnitType);
         let transBase = batUnitType.transUnits;
-        if (batUnitType.skills.includes('transorbital')) {
+        if (batUnitType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
             transBase = Math.round(transBase*bonusTransRetour);
         }
         $('#unitInfos').append('<span class="paramName cy">Transport</span><span class="paramIcon"></span><span class="paramValue cy">'+transLeft+'/'+transBase+'</span><br>');
