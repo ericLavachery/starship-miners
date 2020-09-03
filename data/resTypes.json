@@ -31,7 +31,7 @@
         "name": "Graphite",
         "bld": "Mine",
         "level": 1,
-        "rarity": 20,
+        "rarity": 30,
         "cat": "white",
         "batch": 4
     },
@@ -67,7 +67,7 @@
         "name": "Zinc",
         "bld": "Mine",
         "level": 1,
-        "rarity": 30,
+        "rarity": 45,
         "cat": "white",
         "batch": 4
     },
@@ -121,7 +121,7 @@
         "name": "Bore",
         "bld": "Mine",
         "level": 1,
-        "rarity": 20,
+        "rarity": 35,
         "cat": "white",
         "batch": 3
     },

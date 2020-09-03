@@ -86,20 +86,24 @@ function showRes(tileId) {
     }
     if (tile.ruins) {
         if (tile.sh === -1) {
-            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/ruinsf.png"></div>'
+            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/ruinsf.png"></div>';
         } else {
-            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/ruins.png"></div>'
+            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/ruins.png"></div>';
         }
     }
     if (tile.talus) {
         if (tile.terrain === 'P') {
-            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/talusP.png"></div>'
+            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/talusP.png"></div>';
         } else if (tile.terrain === 'G') {
-            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/talusG.png"></div>'
+            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/talusG.png"></div>';
         }
     }
     if (playerInfos.showedTiles.includes(tileId)) {
-        mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/showTile.png"></div>'
+        if (tileId === 1830) {
+            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/showCenterTile.png"></div>';
+        } else {
+            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/showTile.png"></div>';
+        }
     }
     return mapIndicators;
 };
