@@ -223,23 +223,33 @@ function checkStock(myBat) {
 
 function checkRavit(myBat) {
     // vérifie si il y a un ravitaillement possible à côté de l'unité
-    let batType;
     let anyRavit = false;
-    let ravitLeft;
-    let ravitVolume = calcRavitVolume(myBat);
-    bataillons.forEach(function(bat) {
-        if (bat.loc === "zone") {
-            batType = getBatType(bat);
-            if (batType.skills.includes('ravitaillement')) {
-                if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
-                    ravitLeft = calcRavit(bat);
-                    if (ravitLeft >= 1 && ravitVolume[0] <= batType.maxSkill && (ravitVolume[2] != 'missile') || batType.skills.includes('stock')) {
-                        anyRavit = true;
+    let myBatType = getBatType(myBat);
+    let bldReq = '';
+    if (myBatType.weapon.ravitBld != undefined) {
+        bldReq = myBatType.weapon.ravitBld;
+    }
+    if (myBatType.weapon2.ravitBld != undefined) {
+        bldReq = myBatType.weapon2.ravitBld;
+    }
+    if (playerInfos.bldList.includes(bldReq) || bldReq === '') {
+        let batType;
+        let ravitLeft;
+        let ravitVolume = calcRavitVolume(myBat);
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                batType = getBatType(bat);
+                if (batType.skills.includes('ravitaillement')) {
+                    if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
+                        ravitLeft = calcRavit(bat);
+                        if (ravitLeft >= 1 && ravitVolume[0] <= batType.maxSkill && (ravitVolume[2] != 'missile' || batType.skills.includes('stock'))) {
+                            anyRavit = true;
+                        }
                     }
                 }
             }
-        }
-    });
+        });
+    }
     return anyRavit;
 };
 

@@ -339,6 +339,7 @@ function checkBatDrugs(bat) {
 
 function dropStuff(apCost,mineType) {
     selectMode();
+    conOut();
     let unitIndex;
     if (mineType === 'champ') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Champ de mines'));

@@ -41,7 +41,8 @@
             "aoe":"squad",
             "sound":"canon_small_x2",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
-            "maxAmmo":16
+            "maxAmmo":16,
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune"],
         "moveCost":2,
@@ -80,7 +81,8 @@
             "aoe":"squad",
             "sound":"canon_big_multi",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
-            "maxAmmo":28
+            "maxAmmo":28,
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Mitrailleuse",
@@ -147,7 +149,8 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
-            "maxAmmo":24
+            "maxAmmo":24,
+            "ravitBld":"Derrick"
         },
         "protection":["aucune"],
         "moveCost":2,
@@ -200,7 +203,8 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
-            "maxAmmo":32
+            "maxAmmo":32,
+            "ravitBld":"Derrick"
         },
         "protection":["aucune"],
         "moveCost":2,
@@ -239,7 +243,8 @@
             "aoe":"squad",
             "sound":"canon_big_x2",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
-            "maxAmmo":24
+            "maxAmmo":24,
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Moissonneuse",
@@ -309,7 +314,8 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
-            "maxAmmo":24
+            "maxAmmo":24,
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune"],
         "moveCost":3,
@@ -398,7 +404,8 @@
             "aoe":"squad",
             "sound":"canon_big_x2",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
-            "maxAmmo":16
+            "maxAmmo":16,
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Mitrailleuse",
@@ -451,7 +458,8 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-gaz","missile-fleche","missile-heatseeker"],
-            "maxAmmo":36
+            "maxAmmo":36,
+            "ravitBld":"Arsenal"
         },
         "weapon2":{
             "name":"Boutoir",
@@ -508,7 +516,8 @@
             "aoe":"bat",
             "sound":"miss",
             "ammo":["missile-vanguard"],
-            "maxAmmo":24
+            "maxAmmo":24,
+            "ravitBld":"Arsenal"
         },
         "weapon2":{
             "name":"Boutoir",
@@ -576,7 +585,8 @@
             "aoe":"squad",
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker"],
-            "maxAmmo":32
+            "maxAmmo":32,
+            "ravitBld":"Armurerie"
         },
         "protection":["aucune"],
         "moveCost":6,
@@ -617,7 +627,8 @@
             "aoe":"brochette",
             "sound":"catapult",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire"],
-            "maxAmmo":24
+            "maxAmmo":24,
+            "ravitBld":"Atelier"
         },
         "weapon2":{
             "name":"Bélier",
@@ -690,7 +701,8 @@
             "aoe":"squad",
             "sound":"miss",
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing"],
-            "maxAmmo":12
+            "maxAmmo":12,
+            "ravitBld":"Arsenal"
         },
         "protection":["aucune"],
         "moveCost":3,
@@ -901,7 +913,8 @@
             "aoe":"squad",
             "sound":"miss",
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing"],
-            "maxAmmo":6
+            "maxAmmo":6,
+            "ravitBld":"Arsenal"
         },
         "protection":["aucune"],
         "moveCost":3,
@@ -955,7 +968,8 @@
             "aoe":"brochette",
             "sound":"miss",
             "ammo":["missile-sunburst"],
-            "maxAmmo":9
+            "maxAmmo":9,
+            "ravitBld":"Arsenal"
         },
         "protection":["aucune"],
         "moveCost":3,
@@ -1009,7 +1023,8 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
-            "maxAmmo":16
+            "maxAmmo":16,
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune"],
         "moveCost":2,
@@ -1430,7 +1445,8 @@
             "aoe":"unit",
             "sound":"canon_big_x2",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
-            "maxAmmo":24
+            "maxAmmo":24,
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Mitrailleuse",
@@ -1496,7 +1512,8 @@
             "aoe":"brochette",
             "sound":"dynamite",
             "ammo":["dynamite","dynamite-nitrate","dynamite-nanite"],
-            "maxAmmo":9
+            "maxAmmo":9,
+            "ravitBld":"Atelier"
         },
         "protection":["aucune"],
         "moveCost":2,
@@ -1548,7 +1565,8 @@
             "aoe":"squad",
             "sound":"grenade",
             "ammo":["fireball","fireglue","fireslime","fireblast"],
-            "maxAmmo":12
+            "maxAmmo":12,
+            "ravitBld":"Atelier"
         },
         "protection":["aucune"],
         "moveCost":2,
@@ -1697,7 +1715,8 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz"],
-            "maxAmmo":32
+            "maxAmmo":32,
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Mitrailleuses",
@@ -2184,7 +2203,8 @@
             "aoe":"squad",
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire"],
-            "maxAmmo":12
+            "maxAmmo":12,
+            "ravitBld":"Armurerie"
         },
         "weapon2":{
             "name":"Boutoir",
@@ -2426,7 +2446,8 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
-            "maxAmmo":12
+            "maxAmmo":12,
+            "ravitBld":"Derrick"
         },
         "protection":["aucune"],
         "moveCost":2,
@@ -2476,7 +2497,8 @@
             "aoe":"squad",
             "sound":"canon_auto_x6",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm"],
-            "maxAmmo":16
+            "maxAmmo":16,
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune"],
         "moveCost":2,
@@ -2587,7 +2609,8 @@
             "aoe":"bat",
             "sound":"canon_soft_x1",
             "ammo":["grenade","grenade-antichar","grenade-incendiaire"],
-            "maxAmmo":3
+            "maxAmmo":3,
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune"],
         "moveCost":1,
@@ -2626,7 +2649,8 @@
             "aoe":"squad",
             "sound":"canon_mid_x3",
             "ammo":["obus","obus-incendiaire","obus-napalm","obus-gaz"],
-            "maxAmmo":32
+            "maxAmmo":32,
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Mitrailleuse",
@@ -2694,7 +2718,8 @@
             "aoe":"bat",
             "sound":"bombing",
             "ammo":["obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
-            "maxAmmo":9
+            "maxAmmo":9,
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune"],
         "moveCost":1,
@@ -2748,7 +2773,8 @@
             "aoe":"bat",
             "sound":"canon_soft_x3",
             "ammo":["grenade","grenade-antichar","grenade-incendiaire"],
-            "maxAmmo":6
+            "maxAmmo":6,
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune"],
         "moveCost":1,
@@ -2786,7 +2812,8 @@
             "aoe":"squad",
             "sound":"canon_small_x2",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm"],
-            "maxAmmo":8
+            "maxAmmo":8,
+            "ravitBld":"Poudrière"
         },
         "weapon2":{},
         "protection":["aucune"],
@@ -2967,7 +2994,8 @@
             "aoe":"squad",
             "sound":"grenade",
             "ammo":["grenade"],
-            "maxAmmo":9
+            "maxAmmo":9,
+            "ravitBld":"Armurerie"
         },
         "protection":["aucune"],
         "moveCost":2,
@@ -3047,7 +3075,8 @@
             "aoe":"squad",
             "sound":"canon_small_x3",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz"],
-            "maxAmmo":20
+            "maxAmmo":20,
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Guidage laser",
@@ -3148,7 +3177,8 @@
             "aoe":"squad",
             "sound":"canon_big_x2",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
-            "maxAmmo":24
+            "maxAmmo":24,
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Bélier",

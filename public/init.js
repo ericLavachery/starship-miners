@@ -39,6 +39,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.stopBarbs === undefined) {
         playerInfos.stopBarbs = false;
     }
+    if (playerInfos.bldList === undefined) {
+        playerInfos.bldList = [];
+    }
     playerSkills();
 });
 // Terrains

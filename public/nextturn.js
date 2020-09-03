@@ -83,6 +83,7 @@ function nextTurnEnd() {
     let boostedTeams = [];
     let prayedTeams = [];
     medicalTransports = [];
+    playerInfos.bldList = [];
     landers = [];
     let thisAPBonus;
     let ravitNum;
@@ -99,6 +100,18 @@ function nextTurnEnd() {
             batType = getBatType(bat);
             if (batType.skills.includes('transorbital') || bat.tags.includes('reserve')) {
                 landers.push(bat);
+            }
+            if (batType.cat === 'buildings' && !batType.skills.includes('nolist')) {
+                if (!playerInfos.bldList.includes(batType.name)) {
+                    playerInfos.bldList.push(batType.name);
+                }
+                if (batType.bldEquiv.length >= 1) {
+                    batType.bldEquiv.forEach(function(bldName) {
+                        if (!playerInfos.bldList.includes(bldName)) {
+                            playerInfos.bldList.push(bldName);
+                        }
+                    });
+                }
             }
             if (batType.skills.includes('transorbital')) {
                 landerAdjTiles.push(bat.tileId);

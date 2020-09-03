@@ -40,6 +40,7 @@ function mapReset() {
     playerInfos.res = {};
     playerInfos.alienRes = {};
     playerInfos.showedTiles = [1830];
+    playerInfos.bldList = [];
     savePlayerInfos();
     commandes();
     $("#reset2").css("display","none");

@@ -264,7 +264,8 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker"],
-            "maxAmmo":32
+            "maxAmmo":32,
+            "ravitBld":"Arsenal"
         },
         "protection":["aucune"],
         "moveCost":99,
@@ -435,7 +436,8 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
-            "maxAmmo":24
+            "maxAmmo":24,
+            "ravitBld":"Derrick"
         },
         "weapon2":{
             "name":"Carabine",
@@ -653,7 +655,8 @@
             "aoe":"squad",
             "sound":"canon_big_x2",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
-            "maxAmmo":40
+            "maxAmmo":40,
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Fusil d'assaut",
@@ -706,7 +709,8 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
-            "maxAmmo":32
+            "maxAmmo":32,
+            "ravitBld":"Derrick"
         },
         "weapon2":{
             "name":"Fusil antichar",
@@ -762,7 +766,8 @@
             "aoe":"squad",
             "sound":"miss",
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing"],
-            "maxAmmo":6
+            "maxAmmo":6,
+            "ravitBld":"Arsenal"
         },
         "weapon2":{
             "name":"Fusil d'assaut",
@@ -834,7 +839,8 @@
             "aoe":"brochette",
             "sound":"catapult",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire"],
-            "maxAmmo":36
+            "maxAmmo":36,
+            "ravitBld":"Atelier"
         },
         "protection":["aucune"],
         "moveCost":99,
@@ -876,7 +882,8 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
-            "maxAmmo":30
+            "maxAmmo":30,
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Fusil d'assaut",

@@ -47,6 +47,7 @@
     "maxScarp": 4,
     "maxVeg": 4,
     "skills": [],
+    "bldEquiv":[],
     "skillCost":6,
     "mediCost":30,
     "mecanoCost":30,
