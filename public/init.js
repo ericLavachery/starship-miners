@@ -36,6 +36,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.showedTiles === undefined) {
         playerInfos.showedTiles = [1830];
     }
+    if (playerInfos.stopBarbs === undefined) {
+        playerInfos.stopBarbs = false;
+    }
     playerSkills();
 });
 // Terrains

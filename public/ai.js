@@ -152,8 +152,10 @@ function shootTarget(recul) {
         console.log('shoot '+targetBat.type);
         // console.log(targetBat);
         tileTarget(targetBat);
-        stopForFight = true;
-        isFFW = false;
+        if (!targetBat.type.includes('Barbelés') || playerInfos.stopBarbs) {
+            stopForFight = true;
+            isFFW = false;
+        }
         combat();
     } else {
         console.log('Pas assez de PA pour tirer');
