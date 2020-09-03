@@ -515,6 +515,10 @@ function tagsEffect(bat,batType) {
         bat.apLeft = bat.apLeft+6;
         bat.salvoLeft = bat.salvoLeft+1;
     }
+    // OCTIRON DRUG
+    if (bat.tags.includes('octiron')) {
+        bat.apLeft = bat.apLeft+2;
+    }
     // BLISS DRUG
     if (bat.tags.includes('bliss')) {
         bat.apLeft = bat.apLeft-2;

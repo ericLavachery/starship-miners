@@ -260,6 +260,11 @@ function goDrug(apCost,drug) {
                 selectedBat.salvoLeft = selectedBat.salvoLeft+1;
                 console.log('blaze bonus');
             }
+            // octiron instant bonus
+            if (drug === 'octiron') {
+                selectedBat.apLeft = selectedBat.apLeft+2;
+                console.log('octiron bonus');
+            }
             // starka instant bonus
             if (drug === 'starka') {
                 selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap;
@@ -283,25 +288,25 @@ function checkDrugs(myBat) {
             batType = getBatType(bat);
             if (batType.skills.includes('dealer')) {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1 && calcRavit(bat) >= 1) {
-                    if (batType.skills.includes('bliss')) {
+                    if (batType.skills.includes('bliss') && playerInfos.drugs.includes('Bliss')) {
                         allDrugs.push('bliss');
                     }
-                    if (batType.skills.includes('sila')) {
+                    if (batType.skills.includes('sila') && playerInfos.drugs.includes('Sila')) {
                         allDrugs.push('sila');
                     }
-                    if (batType.skills.includes('blaze')) {
+                    if (batType.skills.includes('blaze') && playerInfos.drugs.includes('Blaze')) {
                         allDrugs.push('blaze');
                     }
-                    if (batType.skills.includes('kirin')) {
+                    if (batType.skills.includes('kirin') && playerInfos.drugs.includes('Kirin')) {
                         allDrugs.push('kirin');
                     }
-                    if (batType.skills.includes('octiron')) {
+                    if (batType.skills.includes('octiron') && playerInfos.drugs.includes('Octiron')) {
                         allDrugs.push('octiron');
                     }
-                    if (batType.skills.includes('skupiac')) {
+                    if (batType.skills.includes('skupiac') && playerInfos.drugs.includes('Skupiac')) {
                         allDrugs.push('skupiac');
                     }
-                    if (batType.skills.includes('starka')) {
+                    if (batType.skills.includes('starka') && playerInfos.drugs.includes('Starka')) {
                         allDrugs.push('starka');
                     }
                 }

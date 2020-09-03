@@ -41,6 +41,7 @@ function mapReset() {
     playerInfos.alienRes = {};
     playerInfos.showedTiles = [1830];
     playerInfos.bldList = [];
+    playerInfos.drugs = ["Starka","Kirin","Sila","Skupiac","Bliss"];
     savePlayerInfos();
     commandes();
     $("#reset2").css("display","none");

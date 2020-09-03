@@ -42,6 +42,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.bldList === undefined) {
         playerInfos.bldList = [];
     }
+    if (playerInfos.drugs === undefined) {
+        playerInfos.drugs = ["Starka","Kirin","Sila","Skupiac","Bliss"];
+    }
     playerSkills();
 });
 // Terrains
