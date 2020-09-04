@@ -220,7 +220,7 @@ function dropEgg(alienUnit,edge) {
                 eggsNum++;
             }
         }
-        if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
+        if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) >= 1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;
             console.log('PAUSE! '+playerInfos.eggsKilled+' eggs killed');
             if (playerInfos.pseudo === 'Bob') {
