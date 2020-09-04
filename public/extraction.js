@@ -39,7 +39,7 @@ function mining(bat) {
                                 bestDumper.transRes[res.name] = bestDumper.transRes[res.name]+resMiningRate;
                             }
                             // diminution des gisements
-                            if (!permaRes) {
+                            if (!permaRes && res.cat != 'none') {
                                 tile.rs[res.name] = tile.rs[res.name]-Math.ceil(resMiningRate/10);
                             }
                         }
