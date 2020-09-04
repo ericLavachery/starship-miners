@@ -557,7 +557,7 @@ function tagsEffect(bat,batType) {
         }
     }
     // OCTIRON & POISONS
-    if (bat.tags.includes('octiron')) {
+    if (bat.tags.includes('octiron') || targetBatType.skills.includes('resistpoison')) {
         if (bat.tags.includes('venin')) {
             tagDelete(bat,'venin');
         }

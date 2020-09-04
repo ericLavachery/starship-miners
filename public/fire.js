@@ -483,7 +483,7 @@ function attack() {
         $('#report').append('<span class="report cy">Blindage troué<br></span>');
     }
     // venin
-    if (selectedBatType.skills.includes('venin') && totalDamage >= 1 && targetBat.apLeft < -2 && targetBatType.cat == 'infantry') {
+    if (selectedBatType.skills.includes('venin') && totalDamage >= 1 && targetBat.apLeft < -2 && targetBatType.cat == 'infantry' && !targetBatType.skills.includes('resistpoison')) {
         if (!targetBat.tags.includes('venin')) {
             targetBat.tags.push('venin');
         }
@@ -493,14 +493,16 @@ function attack() {
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium')) {
-            if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.caLevel < 3)) || targetBatType.cat == 'aliens') {
-                targetBat.tags.push('poison');
-                if (selectedWeap.ammo.includes('atium')) {
+            if (!targetBatType.skills.includes('resistpoison')) {
+                if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.caLevel < 3)) || targetBatType.cat == 'aliens') {
                     targetBat.tags.push('poison');
-                    targetBat.tags.push('poison');
-                }
-                console.log('Poison!');
-                $('#report').append('<span class="report cy">Poison<br></span>');
+                    if (selectedWeap.ammo.includes('atium')) {
+                        targetBat.tags.push('poison');
+                        targetBat.tags.push('poison');
+                    }
+                    console.log('Poison!');
+                    $('#report').append('<span class="report cy">Poison<br></span>');
+                }                
             }
         }
     }
