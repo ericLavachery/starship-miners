@@ -1047,7 +1047,27 @@
         "armors": 0,
         "accuracy": 1,
         "apdamage": 0.09,
-        "aoe": ""
+        "aoe": "bat"
+    },
+    {
+        "name": "gaz-pluto",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "armors": 0,
+        "accuracy": 1.5,
+        "apdamage": 0.09,
+        "aoe": "bat"
+    },
+    {
+        "name": "gaz-uridium",
+        "range": 1,
+        "rof": 2,
+        "power": 0,
+        "armors": 0,
+        "accuracy": 1,
+        "apdamage": 0.12,
+        "aoe": "bat"
     },
     {
         "name": "molotov-feu",

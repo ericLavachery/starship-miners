@@ -557,13 +557,22 @@ function tagsEffect(bat,batType) {
         }
     }
     // OCTIRON & POISONS
-    if (bat.tags.includes('octiron') || targetBatType.skills.includes('resistpoison')) {
+    if (bat.tags.includes('octiron') || batType.skills.includes('resistpoison')) {
         if (bat.tags.includes('venin')) {
             tagDelete(bat,'venin');
         }
         if (bat.tags.includes('poison')) {
             tagDelete(bat,'poison');
             tagDelete(bat,'poison');
+            tagDelete(bat,'poison');
+        }
+    }
+    // KIRIN & POISONS
+    if (bat.tags.includes('kirin')) {
+        if (bat.tags.includes('venin') && rand.rand(1,6) === 1) {
+            tagDelete(bat,'venin');
+        }
+        if (bat.tags.includes('poison') && rand.rand(1,6) === 1) {
             tagDelete(bat,'poison');
         }
     }
