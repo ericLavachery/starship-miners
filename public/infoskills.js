@@ -752,7 +752,13 @@ function skillsInfos(bat,batUnitType) {
     // FOUILLE DE RUINES
     if (batUnitType.skills.includes('fouille') && tile.ruins && tile.sh >= 1) {
         apReq = 5;
-        apCost = Math.round(bat.ap*1.5);
+        apCost = Math.round(1250/bat.squadsLeft/batUnitType.squadSize/batUnitType.crew);
+        if (batUnitType.cat === 'infantry' && !batUnitType.skills.includes('moto') && !batUnitType.skills.includes('fly')) {
+            apCost = Math.floor(apCost/bat.ap*11);
+        }
+        if (apCost > bat.ap*1.5 || batUnitType.skills.includes('moto') || batUnitType.skills.includes('fly')) {
+            apCost = Math.round(bat.ap*1.5);
+        }
         if (bat.apLeft >= apReq && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Fouiller les ruines" class="boutonGris skillButtons" onclick="searchRuins('+apCost+')"><i class="fas fa-search"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fouille</h4></span>');
         } else {
