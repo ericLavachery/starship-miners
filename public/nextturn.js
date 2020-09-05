@@ -579,7 +579,7 @@ function tagsEffect(bat,batType) {
     if (!medicalTransports.includes(bat.locId) || bat.loc != 'trans') {
         // PARASITE
         if (bat.tags.includes('parasite')) {
-            totalDamage = bat.damage+rand.rand((Math.round(parasiteDamage/3)),parasiteDamage);
+            totalDamage = bat.damage+Math.round(rand.rand((Math.round(parasiteDamage/3)),parasiteDamage)*batType.squads*batType.squadSize/60);
             if (bat.tags.includes('octiron')) {
                 totalDamage = Math.round(totalDamage/10);
             }
@@ -610,7 +610,7 @@ function tagsEffect(bat,batType) {
         }
         // BLAZE
         if (bat.tags.includes('blaze')) {
-            totalDamage = bat.damage+rand.rand((Math.round(poisonDamage/3)),poisonDamage);
+            totalDamage = bat.damage+Math.round(rand.rand((Math.round(poisonDamage/3)),poisonDamage)*batType.squads*batType.squadSize/60);
             squadHP = batType.squadSize*batType.hp;
             squadsOut = Math.floor(totalDamage/squadHP);
             bat.squadsLeft = bat.squadsLeft-squadsOut;
@@ -621,7 +621,7 @@ function tagsEffect(bat,batType) {
         }
         // VENIN
         if (bat.tags.includes('venin') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron')) {
-            totalDamage = bat.damage+rand.rand((Math.round(venumDamage/3)),venumDamage);
+            totalDamage = bat.damage+Math.round(rand.rand((Math.round(venumDamage/3)),venumDamage)*batType.squads*batType.squadSize/60);
             console.log('VenomDamage='+totalDamage);
             squadHP = batType.squadSize*batType.hp;
             squadsOut = Math.floor(totalDamage/squadHP);
@@ -635,11 +635,17 @@ function tagsEffect(bat,batType) {
         if (bat.tags.includes('poison') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron')) {
             let allTags = _.countBy(bat.tags);
             let poisonPower = allTags.poison*poisonDamage;
+            if (bat.team === 'player') {
+                poisonPower = Math.round(poisonPower*batType.squads*batType.squadSize/60);
+            }
             if (batType.skills.includes('reactpoison') || bat.tags.includes('reactpoison')) {
                 poisonPower = poisonPower*3;
             }
             if (batType.cat === 'aliens') {
                 poisonPower = Math.round(poisonPower*1.5);
+            }
+            if (bat.tags.includes('bliss')) {
+                poisonPower = Math.round(poisonPower/1.5);
             }
             console.log('tags poison: '+allTags.poison);
             totalDamage = bat.damage+rand.rand((Math.round(poisonPower/3)),poisonPower);

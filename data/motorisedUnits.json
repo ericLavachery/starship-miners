@@ -1874,6 +1874,7 @@
             "name":"Fusil à pompe",
             "cost":2,
             "range":1,
+            "noBis":true,
             "rof":36,
             "accuracy":19,
             "power":8,
