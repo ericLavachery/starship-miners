@@ -1549,16 +1549,16 @@
         "ap":15,
         "maxSalvo":1,
         "weapon":{
-            "name":"Shotgun",
-            "cost":3,
-            "range":0,
-            "rof":6,
+            "name":"Fusil à pompe",
+            "cost":2,
+            "range":1,
+            "rof":9,
             "accuracy":19,
             "power":8,
-            "armors":1.35,
-            "aoe":"brochette",
-            "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
+            "armors":0.85,
+            "aoe":"unit",
+            "sound":"calibre_pierce_x2",
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Hache",
@@ -3255,16 +3255,16 @@
         "ap":15,
         "maxSalvo":1,
         "weapon":{
-            "name":"Fusil à pompe",
-            "cost":2,
-            "range":1,
-            "rof":9,
+            "name":"Shotgun",
+            "cost":3,
+            "range":0,
+            "rof":6,
             "accuracy":19,
             "power":8,
-            "armors":0.85,
-            "aoe":"unit",
-            "sound":"calibre_pierce_x2",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
+            "armors":1.35,
+            "aoe":"brochette",
+            "sound":"calibre_shotgun",
+            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","dunium","freeze"]
         },
         "weapon2":{
             "name":"Rainbow gun",
