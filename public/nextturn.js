@@ -305,15 +305,15 @@ function nextTurnEnd() {
         playerInfos.mapDiff++;
     }
     turnInfo();
-    if (showMini) {
-        minimap();
-    }
     savePlayerInfos();
     saveBataillons();
     saveAliens();
     saveMap();
     createBatList();
     alienOccupiedTileList();
+    if (showMini) {
+        minimap();
+    }
     blockMe(false);
     activeTurn = 'player';
     nextTurnOK = false;

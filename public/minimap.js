@@ -4,13 +4,11 @@ function minimap() {
     $('#themmap').empty();
     $('#thenavig').empty();
     $('#thenavig').append('<span class="constIcon"><i class="fas fa-times-circle klik" onclick="miniOut()"></i></span><br>');
-    // $('#minimap').append('<span class="constName klik cy">Fermer</span>');
     $('#thenavig').append('<button type="button" title="Montrer les unités" class="boutonGris miniButtons" onclick="unitsView()"><i class="fas fa-bug"></i></button><br>');
     $('#thenavig').append('<button type="button" title="Montrer les repaires" class="boutonGris miniButtons" onclick="dotsView()"><i class="fas fa-map-pin"></i></button><br>');
     if (showOneRes != 'Toutes') {
         $('#thenavig').append('<button type="button" title="Montrer la ressource recherchée" class="boutonGris miniButtons" onclick="oneResView()"><i class="far fa-gem"></i></button><br>');
     }
-    // $('#minimap').append('<div class="shSpace"></div>');
     zone.forEach(function(tile) {
         if (tile.y === 1) {
             $('#themmap').append('<br>');
@@ -38,7 +36,6 @@ function minimap() {
         }
     });
     $('#themmap').append('<br>');
-    // $('#minimap').append('<div class="shSpace"></div>');
 };
 
 function checkVisibleAliens() {

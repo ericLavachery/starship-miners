@@ -269,6 +269,10 @@ function attack() {
     if (selectedWeap.ammo.includes('autodestruction') || selectedBatType.skills.includes('undead')) {
         shots = selectedWeap.rof*selectedBatType.squads;
     }
+    // SCIES (noGrip)
+    if (targetWeap.noGrip && selectedWeap.range === 0 && selectedBatType.size*5 >= targetBatType.size) {
+        shots = Math.round(shots/1.5);
+    }
     // bugROF
     if (bugROF > 1 && selectedBatType.kind === 'bug') {
         shots = Math.round(shots*bugROF);
@@ -450,11 +454,17 @@ function attack() {
             if (targetBatType.weapon.isMelee || targetBatType.weapon2.isMelee) {
                 gripDiv = gripDiv+0.5;
             }
+            if (targetBatType.weapon.noGrip || targetBatType.weapon2.noGrip) {
+                gripDiv = gripDiv+1;
+            }
             if (targetWeap.isShort) {
                 gripDiv = gripDiv+0.75;
             }
             if (targetWeap.isMelee) {
                 gripDiv = gripDiv+1;
+            }
+            if (targetWeap.noGrip) {
+                gripDiv = gripDiv+3;
             }
             apDamage = apDamage+Math.round((selectedBat.squadsLeft+rand.rand(0,10)-5)*3/gripDiv);
             console.log('Grip OK');
@@ -502,7 +512,7 @@ function attack() {
                     }
                     console.log('Poison!');
                     $('#report').append('<span class="report cy">Poison<br></span>');
-                }                
+                }
             }
         }
     }
@@ -719,43 +729,6 @@ function defense() {
         isGuet = true;
     }
     brideDef = calcBrideDef(targetBat,targetBatType,targetWeap,selectedWeap.range,isGuet);
-    //
-    // let brideDef = 0.75;
-    // if (selectedWeap.range === 0) {
-    //     brideDef = 1/Math.sqrt(targetWeap.cost-0.75);
-    //     if (brideDef > 1 || targetWeap.range === 0) {
-    //         brideDef = 1;
-    //     }
-    // } else {
-    //     if (targetWeap.range === 0) {
-    //         brideDef = 0.5;
-    //     } else {
-    //         brideDef = 0.75;
-    //     }
-    // }
-    // // Guet, Defense, Bastion
-    // if (targetBatType.skills.includes('bastion')) {
-    //     if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative')) {
-    //         brideDef = 2;
-    //     } else {
-    //         brideDef = 1.5;
-    //     }
-    // } else if (targetBatType.skills.includes('defense')) {
-    //     if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative')) {
-    //         brideDef = 1.65;
-    //     } else {
-    //         brideDef = 1.2;
-    //     }
-    // } else {
-    //     if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBatType.skills.includes('initiative') || targetBatType.skills.includes('after')) {
-    //         brideDef = 1;
-    //     }
-    // }
-    // // embuscade on bridage def
-    // if (targetBatType.skills.includes('embuscade')) {
-    //     brideDef = brideDef/1.5;
-    // }
-    //
     // bigDef
     if (targetWeap.bigDef && selectedBatType.size >= 4) {
         targetWeap.power = Math.ceil(targetWeap.power+Math.sqrt(selectedBatType.size));
@@ -764,6 +737,10 @@ function defense() {
     let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);
     if (targetBatType.skills.includes('undead')) {
         shots = Math.round(targetWeap.rof*targetBatType.squads*brideDef);
+    }
+    // SCIES (noGrip)
+    if (selectedWeap.noGrip && targetWeap.range === 0 && targetBatType.size*5 >= selectedBatType.size) {
+        shots = Math.round(shots/1.5);
     }
     // bugROF
     if (bugROF > 1 && targetBatType.kind === 'bug') {
