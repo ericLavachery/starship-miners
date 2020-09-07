@@ -552,7 +552,7 @@ function voirRessources() {
     oneResTileIds = [];
     filteredZone.forEach(function(tile) {
         tileRes = JSON.stringify(tile.rs);
-        if (((showOneRes === 'Toutes' || tileRes.includes(showOneRes)) && !showMarkedOnly) || (playerInfos.showedTiles.includes(tile.id) && showMarkedOnly)) {
+        if (((showOneRes === 'Toutes' || tileRes.includes(showOneRes)) && !showMarkedOnly) || ((showOneRes === 'Toutes' || tileRes.includes(showOneRes)) && playerInfos.showedTiles.includes(tile.id) && showMarkedOnly)) {
             if (playerInfos.showedTiles.includes(tile.id)) {
                 blockType = 'resBlockCheck';
             } else {
