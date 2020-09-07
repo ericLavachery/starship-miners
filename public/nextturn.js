@@ -1,5 +1,9 @@
 function nextTurn() {
     testConnect(pseudo);
+    savePlayerInfos();
+    saveBataillons();
+    saveAliens();
+    saveMap();
     console.log('NOUVEAU TOUR');
     console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
     // stopMe = true;
@@ -312,7 +316,7 @@ function nextTurnEnd() {
     createBatList();
     alienOccupiedTileList();
     if (showMini) {
-        minimap();
+        unitsView(); // minimap radar
     }
     blockMe(false);
     activeTurn = 'player';
