@@ -511,15 +511,15 @@ function voirRessources() {
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     // $('#conUnitList').append('<span class="constName or" id="gentils">RESSOURCES</span>');
-    $('#conUnitList').append('<button type="button" title="Effacer tous les indicateurs" class="boutonGris iconButtons" onclick="showedTilesReset()"><i class="fas fa-eraser"></i></button>');
+    $('#conUnitList').append('<button type="button" title="Effacer tous les indicateurs" class="boutonGris miniButtons" onclick="showedTilesReset()"><i class="fas fa-eraser"></i></button><span class="butSpace"></span>');
     let visMap = [];
     if (showAllRes) {
-        $('#conUnitList').append('<button type="button" title="Tous les points de la carte sont listés" class="boutonVert iconButtons"><i class="fas fa-map"></i></button>');
-        $('#conUnitList').append('<button type="button" title="Lister uniquement les points visibles à l\'écran" class="boutonGris iconButtons" onclick="toggleResView()"><i class="far fa-eye"></i></button>');
+        $('#conUnitList').append('<button type="button" title="Tous les points de la carte sont listés" class="boutonVert miniButtons"><i class="fas fa-map"></i></button><span class="butSpace"></span>');
+        $('#conUnitList').append('<button type="button" title="Lister uniquement les points visibles à l\'écran" class="boutonGris miniButtons" onclick="toggleResView()"><i class="far fa-eye"></i></button><span class="butSpace"></span>');
         visMap = zone;
     } else {
-        $('#conUnitList').append('<button type="button" title="Lister tous les points de la carte" class="boutonGris iconButtons" onclick="toggleResView()"><i class="fas fa-map"></i></button>');
-        $('#conUnitList').append('<button type="button" title="Seulement les points visibles à l\'écran sont listés" class="boutonVert iconButtons"><i class="far fa-eye"></i></button>');
+        $('#conUnitList').append('<button type="button" title="Lister tous les points de la carte" class="boutonGris miniButtons" onclick="toggleResView()"><i class="fas fa-map"></i></button><span class="butSpace"></span>');
+        $('#conUnitList').append('<button type="button" title="Seulement les points visibles à l\'écran sont listés" class="boutonVert miniButtons"><i class="far fa-eye"></i></button><span class="butSpace"></span>');
         let minX = xOffset+1;
         let maxX = xOffset+numVTiles;
         let minY = yOffset+1;
@@ -528,6 +528,7 @@ function voirRessources() {
             return (tile.x >= minX && tile.x <= maxX && tile.y >= minY && tile.y <= maxY);
         });
     }
+    $('#conUnitList').append('<button type="button" title="Seulement les points marqués" class="boutonGris miniButtons" onclick="toggleMarkedView()"><i class="fas fa-map-pin"></i></button>');
     $('#conUnitList').append('<span class="butSpace"></span><span class="smSpace"></span>');
     $('#conUnitList').append('<select class="boutonGris" id="resFind" onchange="showFoundRes()"></select>');
     $('#resFind').append('<option value="">'+showOneRes+'</option>');
@@ -537,7 +538,11 @@ function voirRessources() {
     });
     let sortedResTypes = _.sortBy(filteredResTypes,'name');
     sortedResTypes.forEach(function(res) {
-        $('#resFind').append('<option value="'+res.name+'">'+res.name+'</option>');
+        if (allZoneRes.includes(res.name)) {
+            $('#resFind').append('<option value="'+res.name+'">&check; '+res.name+'</option>');
+        } else {
+            $('#resFind').append('<option value="'+res.name+'">&cross; '+res.name+'</option>');
+        }
     });
     let tileRes;
     let blockType;
@@ -547,7 +552,7 @@ function voirRessources() {
     oneResTileIds = [];
     filteredZone.forEach(function(tile) {
         tileRes = JSON.stringify(tile.rs);
-        if (showOneRes === 'Toutes' || tileRes.includes(showOneRes)) {
+        if (((showOneRes === 'Toutes' || tileRes.includes(showOneRes)) && !showMarkedOnly) || (playerInfos.showedTiles.includes(tile.id) && showMarkedOnly)) {
             if (playerInfos.showedTiles.includes(tile.id)) {
                 blockType = 'resBlockCheck';
             } else {
@@ -576,6 +581,16 @@ function voirRessources() {
     });
 };
 
+function addZoneRes(tileRes) {
+    Object.entries(tileRes).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        if (!allZoneRes.includes(key)) {
+            allZoneRes.push(key);
+        }
+    });
+};
+
 function showFoundRes() {
     let value = document.getElementById("resFind").value;
     showOneRes = value;
@@ -587,7 +602,7 @@ function showFoundRes() {
 };
 
 function showedTilesReset() {
-    playerInfos.showedTiles = [];
+    playerInfos.showedTiles = [1830];
     if (showResOpen) {
         voirRessources();
     }
@@ -608,6 +623,15 @@ function toggleResView() {
     if (showMini) {
         minimap();
     }
+};
+
+function toggleMarkedView() {
+    if (showMarkedOnly) {
+        showMarkedOnly = false;
+    } else {
+        showMarkedOnly = true;
+    }
+    voirRessources();
 };
 
 function markMap(tileId) {

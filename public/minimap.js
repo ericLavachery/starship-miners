@@ -1,5 +1,10 @@
 function minimap() {
     showMini = true;
+    if (allZoneRes.length === 0) {
+        checkRes = true;
+    } else {
+        checkRes = false;
+    }
     $("#minimap").css("display","block");
     $('#themmap').empty();
     $('#thenavig').empty();
@@ -34,8 +39,14 @@ function minimap() {
                 }
             }
         }
+        if (tile.rq >= 0 && checkRes) {
+            addZoneRes(tile.rs);
+        }
     });
     $('#themmap').append('<br>');
+    if (checkRes) {
+        console.log(allZoneRes);
+    }
 };
 
 function checkVisibleAliens() {

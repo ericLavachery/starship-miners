@@ -51,8 +51,10 @@ let showMini = false;
 let miniDots = 'units';
 let showResOpen = false;
 let showAllRes = true;
+let showMarkedOnly = false;
 let showOneRes = 'Toutes';
 let oneResTileIds = [];
+let allZoneRes = [];
 // UNITS
 let unitTypes = [];
 let unitDV = {}
