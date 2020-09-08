@@ -14,6 +14,7 @@ function weaponsInfos(bat,batUnitType) {
     let ravitVolume = 0;
     cheapWeapCost = 99;
     let accFly;
+    let accGround;
     if (batUnitType.weapon.rof >= 1 && batUnitType.weapon2.rof >= 1 && batUnitType.weapon.name === batUnitType.weapon2.name) {
         showW1 = false;
     }
@@ -121,7 +122,12 @@ function weaponsInfos(bat,batUnitType) {
             } else {
                 accFly = Math.round(thisWeapon.accuracy*thisWeapon.dca);
             }
-            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+' / '+accFly+'</span><br>');
+            if (thisWeapon.noGround) {
+                accGround = 0;
+            } else {
+                accGround = thisWeapon.accuracy;
+            }
+            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+accGround+' &Map; '+accFly+'</span><br>');
             $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
             if (thisWeapon.armors != 1) {
                 $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
@@ -235,7 +241,12 @@ function weaponsInfos(bat,batUnitType) {
             } else {
                 accFly = Math.round(thisWeapon.accuracy*thisWeapon.dca);
             }
-            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+' / '+accFly+'</span><br>');
+            if (thisWeapon.noGround) {
+                accGround = 0;
+            } else {
+                accGround = thisWeapon.accuracy;
+            }
+            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+accGround+' &Map; '+accFly+'</span><br>');
             $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
             if (thisWeapon.armors != 1) {
                 $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');

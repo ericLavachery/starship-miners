@@ -528,7 +528,7 @@ function voirRessources() {
             return (tile.x >= minX && tile.x <= maxX && tile.y >= minY && tile.y <= maxY);
         });
     }
-    $('#conUnitList').append('<button type="button" title="Seulement les points marqués" class="boutonGris miniButtons" onclick="toggleMarkedView()"><i class="fas fa-map-pin"></i></button>');
+    $('#conUnitList').append('<button type="button" title="Seulement les repaires" class="boutonGris miniButtons" onclick="toggleMarkedView()"><i class="fas fa-map-pin"></i></button>');
     $('#conUnitList').append('<span class="butSpace"></span><span class="smSpace"></span>');
     $('#conUnitList').append('<select class="boutonGris" id="resFind" onchange="showFoundRes()"></select>');
     $('#resFind').append('<option value="">'+showOneRes+'</option>');

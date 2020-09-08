@@ -337,7 +337,7 @@ function anyAlienInRange(myBat,weapon) {
             if (distance <= weapon.range || checkGuidage(weapon,bat)) {
                 batIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
                 batType = alienUnits[batIndex];
-                if ((!weapon.noFly || !batType.skills.includes('fly')) && ((!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) || distance === 0)) {
+                if ((!weapon.noFly || !batType.skills.includes('fly')) && (!weapon.noGround || batType.skills.includes('fly')) && ((!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) || distance === 0)) {
                     inRange = true;
                 }
             }
@@ -350,7 +350,11 @@ function checkFlyTarget(weapon,batType) {
     if (weapon.noFly && batType.skills.includes('fly')) {
         return false;
     } else {
-        return true;
+        if (weapon.noGround && !batType.skills.includes('fly')) {
+            return false;
+        } else {
+            return true;
+        }
     }
 };
 
@@ -532,6 +536,11 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.noFly = false;
     } else {
         thisWeapon.noFly = weapon.noFly;
+    }
+    if (weapon.noGround === undefined) {
+        thisWeapon.noGround = false;
+    } else {
+        thisWeapon.noGround = weapon.noGround;
     }
     if (weapon.maxAmmo === undefined) {
         thisWeapon.maxAmmo = 99;

@@ -705,7 +705,7 @@ function skillsInfos(bat,batUnitType) {
     if (batUnitType.skills.includes('constructeur')) {
         if (!tile.rd) {
             apCost = Math.round(batUnitType.mecanoCost*terrain.roadBuild*roadAPCost/30);
-            apReq = Math.ceil(batUnitType.mecanoCost/2);
+            apReq = Math.ceil(apCost/10);
             if (bat.apLeft >= apReq && !inMelee) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (routes et ponts)" class="boutonGris skillButtons" onclick="putRoad()"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; Route / Pont</h4></span>');
             } else {
