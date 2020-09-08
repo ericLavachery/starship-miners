@@ -337,7 +337,7 @@ function anyAlienInRange(myBat,weapon) {
             if (distance <= weapon.range || checkGuidage(weapon,bat)) {
                 batIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
                 batType = alienUnits[batIndex];
-                if ((!weapon.noFly || !batType.skills.includes('fly')) && (!weapon.noGround || batType.skills.includes('fly')) && ((!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) || distance === 0)) {
+                if ((!weapon.noFly || !batType.skills.includes('fly')) && (!weapon.noGround || batType.skills.includes('fly') || batType.skills.includes('sauteur')) && ((!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) || distance === 0)) {
                     inRange = true;
                 }
             }
@@ -350,7 +350,7 @@ function checkFlyTarget(weapon,batType) {
     if (weapon.noFly && batType.skills.includes('fly')) {
         return false;
     } else {
-        if (weapon.noGround && !batType.skills.includes('fly')) {
+        if (weapon.noGround && !batType.skills.includes('fly') && !batType.skills.includes('sauteur')) {
             return false;
         } else {
             return true;

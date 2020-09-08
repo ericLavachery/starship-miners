@@ -99,7 +99,7 @@ function combat() {
     let initiative = true;
     let minimumFireAP;
     if (distance <= 3 && targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef) {
-        if ((!targetWeap.noFly || !selectedBatType.skills.includes('fly')) && (!targetWeap.noGround || selectedBatType.skills.includes('fly'))) {
+        if ((!targetWeap.noFly || !selectedBatType.skills.includes('fly')) && (!targetWeap.noGround || selectedBatType.skills.includes('fly') || selectedBatType.skills.includes('sauteur'))) {
             riposte = true;
             let aspeed = calcSpeed(selectedBat,selectedWeap,targetWeap,distance,true);
             let dspeed = calcSpeed(targetBat,targetWeap,selectedWeap,distance,false);
