@@ -3368,7 +3368,7 @@
         "weapon":{
             "name":"Flak canon",
             "cost":5,
-            "range":4,
+            "range":5,
             "noGround":true,
             "rof":3,
             "accuracy":38,
@@ -3383,6 +3383,7 @@
             "name":"Flak canon (ground)",
             "cost":5,
             "range":2,
+            "elevation":1,
             "noFly":true,
             "noDef":true,
             "rof":3,
