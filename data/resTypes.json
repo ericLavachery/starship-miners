@@ -33,7 +33,7 @@
         "level": 1,
         "rarity": 30,
         "cat": "white",
-        "batch": 4
+        "batch": 8
     },
     {
         "id": 3,
@@ -150,7 +150,7 @@
         "level": 1,
         "rarity": 25,
         "cat": "white",
-        "batch": 3
+        "batch": 5
     },
     {
         "id": 16,
@@ -211,9 +211,9 @@
         "name": "Hydrocarbure",
         "bld": "Derrick",
         "level": 1,
-        "rarity": 90,
+        "rarity": 75,
         "cat": "white",
-        "batch": 6
+        "batch": 8
     },
     {
         "id": 23,

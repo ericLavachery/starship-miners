@@ -1028,7 +1028,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","prefab","noblub","nolist"],
+        "skills":["nodeathcount","notarget","prefab","bigblub","nolist"],
         "refabTime":1,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"

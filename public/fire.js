@@ -250,12 +250,23 @@ function attack() {
     // AOE Shots
     let aoeShots = 1;
     if (selectedWeap.aoe == "bat") {
-        aoeShots = targetBatType.squadSize*targetBat.squadsLeft;
+        if (targetBatType.squads === 6 && targetBatType.squadSize === 1 && !selectedWeap.ammo.includes('gaz')) {
+            aoeShots = 12;
+        } else {
+            aoeShots = targetBatType.squadSize*targetBat.squadsLeft;
+        }
+        if (aoeShots < 9) {
+            aoeShots = 9;
+        }
     } else if (selectedWeap.aoe != "unit") {
-        aoeShots = targetBatType.squadSize;
+        if (targetBatType.squads === 6 && targetBatType.squadSize === 1) {
+            aoeShots = 6;
+        } else {
+            aoeShots = targetBatType.squadSize;
+        }
         if (selectedWeap.aoe == "squad") {
-            if (aoeShots < 3) {
-                aoeShots = 3;
+            if (aoeShots < 4) {
+                aoeShots = 4;
             }
         } else if (selectedWeap.aoe == "brochette") {
             if (aoeShots < 2) {
@@ -706,15 +717,25 @@ function defense() {
             }
         }
     }
-    // AOE Shots
     let aoeShots = 1;
     if (targetWeap.aoe == "bat") {
-        aoeShots = selectedBatType.squadSize*selectedBat.squadsLeft;
+        if (selectedBatType.squads === 6 && selectedBatType.squadSize === 1 && !targetWeap.ammo.includes('gaz')) {
+            aoeShots = 12;
+        } else {
+            aoeShots = selectedBatType.squadSize*selectedBat.squadsLeft;
+        }
+        if (aoeShots < 9) {
+            aoeShots = 9;
+        }
     } else if (targetWeap.aoe != "unit") {
-        aoeShots = selectedBatType.squadSize;
+        if (selectedBatType.squads === 6 && selectedBatType.squadSize === 1) {
+            aoeShots = 6;
+        } else {
+            aoeShots = selectedBatType.squadSize;
+        }
         if (targetWeap.aoe == "squad") {
-            if (aoeShots < 3) {
-                aoeShots = 3;
+            if (aoeShots < 4) {
+                aoeShots = 4;
             }
         } else if (targetWeap.aoe == "brochette") {
             if (aoeShots < 2) {

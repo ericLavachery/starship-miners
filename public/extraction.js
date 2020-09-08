@@ -632,6 +632,9 @@ function toggleMarkedView() {
         showMarkedOnly = true;
     }
     voirRessources();
+    if (showMini) {
+        dotsView();
+    }
 };
 
 function markMap(tileId) {
