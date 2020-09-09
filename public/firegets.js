@@ -437,7 +437,7 @@ function weaponSelectRiposte(distance) {
     if (activeTurn == 'aliens') {
         baseAmmo = targetWeap.maxAmmo;
         ammoLeft = calcAmmos(targetBat,baseAmmo);
-        if (ammoLeft <= 0 || distance > targetWeap.range || targetWeap.noDef || (targetWeap.noMelee && selectedBat.tileId === selectedBat.oldTileId)) {
+        if (ammoLeft <= 0 || distance > targetWeap.range || targetWeap.noDef || (targetWeap.noMelee && distance === 0 && selectedBat.tileId === selectedBat.oldTileId) || (targetWeap.noFly && selectedBatType.skills.includes('fly')) || (targetWeap.noGround && !selectedBatType.skills.includes('sauteur') && !selectedBatType.skills.includes('fly'))) {
             if (Object.keys(targetBatType.weapon2).length >= 1) {
                 targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon2));
                 targetWeap = weaponAdj(targetWeap,targetBat,'w2');

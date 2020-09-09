@@ -3385,7 +3385,6 @@
             "range":2,
             "elevation":1,
             "noFly":true,
-            "noDef":true,
             "rof":3,
             "accuracy":11,
             "power":20,
