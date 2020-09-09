@@ -702,7 +702,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // ROUTES / PONTS
-    if (batUnitType.skills.includes('constructeur')) {
+    if (batUnitType.skills.includes('routes')) {
         if (!tile.rd) {
             apCost = Math.round(batUnitType.mecanoCost*terrain.roadBuild*roadAPCost/30);
             apReq = Math.ceil(apCost/10);

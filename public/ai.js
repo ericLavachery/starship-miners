@@ -73,13 +73,13 @@ function chooseTarget() {
             if (alienInMelee) {
                 inPlace = targetMelee();
                 if (inPlace) {
-                    shootTarget(false);
+                    shootTarget(false,true);
                 }
             } else {
                 moveToPDM();
                 inPlace = targetMelee();
                 if (inPlace) {
-                    shootTarget(false);
+                    shootTarget(false,true);
                 }
             }
         } else if (range === 1) {
@@ -87,17 +87,17 @@ function chooseTarget() {
             if (alienInMelee) {
                 inPlace = targetMelee();
                 if (inPlace) {
-                    shootTarget(false);
+                    shootTarget(false,false);
                 }
             } else {
                 inPlace = targetClosest();
                 if (inPlace) {
-                    shootTarget(false);
+                    shootTarget(false,false);
                 } else {
                     moveToPDM();
                     inPlace = targetClosest();
                     if (inPlace) {
-                        shootTarget(false);
+                        shootTarget(false,false);
                     }
                 }
             }
@@ -107,16 +107,16 @@ function chooseTarget() {
                 if (alienInMelee) {
                     moveOutOfMelee();
                     inPlace = targetFarthest();
-                    shootTarget(true);
+                    shootTarget(true,false);
                 } else {
                     inPlace = targetFarthest();
-                    shootTarget(false);
+                    shootTarget(false,false);
                 }
             } else {
                 moveToPDM();
                 inPlace = targetFarthest();
                 if (inPlace) {
-                    shootTarget(false);
+                    shootTarget(false,false);
                 }
             }
         }
@@ -144,7 +144,7 @@ function checkAlienFlyTarget(weapon,bat) {
     }
 };
 
-function shootTarget(recul) {
+function shootTarget(recul,melee) {
     // console.log('ap '+selectedBat.apLeft+' cost '+selectedWeap.cost);
     if (selectedWeap.range < 1 || selectedBat.apLeft >= selectedWeap.cost || recul || selectedBatType.skills.includes('fly')) {
         checkTargetBatType();
@@ -156,7 +156,7 @@ function shootTarget(recul) {
             stopForFight = true;
             isFFW = false;
         }
-        combat();
+        combat(melee);
     } else {
         // console.log('Pas assez de PA pour tirer');
     }

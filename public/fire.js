@@ -22,7 +22,7 @@ function clickFire(tileId) {
                     // console.log(targetBat);
                     tagDelete(targetBat,'invisible');
                     tileTarget(targetBat);
-                    combat();
+                    combat(true);
                     selectMode();
                     showBatInfos(selectedBat);
                 } else {
@@ -42,7 +42,7 @@ function clickFire(tileId) {
                     // console.log(targetBat);
                     tagDelete(targetBat,'invisible');
                     tileTarget(targetBat);
-                    combat();
+                    combat(false);
                     selectMode();
                     showBatInfos(selectedBat);
                 } else {
@@ -59,7 +59,7 @@ function clickFire(tileId) {
     }
 };
 
-function combat() {
+function combat(melee) {
     console.log('START COMBAT');
     tagDelete(selectedBat,'mining');
     tagDelete(targetBat,'mining');
@@ -125,7 +125,7 @@ function combat() {
                 soundBat = selectedBat;
                 shotSound(soundWeap,soundBat);
             }
-            attack();
+            attack(melee);
             minimumFireAP = minFireAP;
             if (targetBatType.skills.includes('guerrilla')) {
                 minimumFireAP = minFireAP-7;
@@ -134,7 +134,7 @@ function combat() {
                 minimumFireAP = -999;
             }
             if ((defAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo === 'mine') {
-                defense();
+                defense(melee);
                 if (!isFFW) {
                     soundWeap = targetWeap;
                     soundBat = targetBat;
@@ -161,7 +161,7 @@ function combat() {
                 minimumFireAP = -999;
             }
             if (targetBat.apLeft > minimumFireAP) {
-                defense();
+                defense(melee);
                 if (!isFFW) {
                     soundWeap = targetWeap;
                     soundBat = targetBat;
@@ -177,7 +177,7 @@ function combat() {
                     minimumFireAP = -999;
                 }
                 if (selectedBat.apLeft > minimumFireAP) {
-                    attack();
+                    attack(melee);
                     if (!isFFW) {
                         soundWeap = selectedWeap;
                         soundBat = selectedBat;
@@ -201,7 +201,7 @@ function combat() {
         if (!isFFW) {
             shotSound(selectedWeap,selectedBat);
         }
-        attack();
+        attack(melee);
         if (!isFFW) {
             setTimeout(function (){
                 if (activeTurn == 'player') {blockMe(false);}
@@ -210,7 +210,7 @@ function combat() {
     }
 };
 
-function attack() {
+function attack(melee) {
     console.log('Attaque ->');
     console.log(selectedWeap);
     minesExploded = 0;
@@ -344,6 +344,10 @@ function attack() {
         selectedWeap.power = Math.round(selectedWeap.power*selectedBatType.size/2/targetBatType.size);
     } else if (Math.round(selectedBatType.size/3) > targetBatType.size && selectedWeap.noBig) {
         selectedWeap.power = Math.round(selectedWeap.power*selectedBatType.size/3/targetBatType.size);
+    }
+    // isShort range 0
+    if (selectedWeap.isShort && selectedWeap.range >= 1 && melee) {
+        selectedWeap.accuracy = selectedWeap.accuracy+5;
     }
     toHit = 999;
     let i = 1;
@@ -681,7 +685,7 @@ function attack() {
     selectedBatArrayUpdate();
 };
 
-function defense() {
+function defense(melee) {
     console.log('Défense ->');
     console.log(targetWeap);
     let xpFactor = Math.round(12/selectedBatType.maxSalvo/10);
@@ -797,6 +801,10 @@ function defense() {
         targetWeap.power = Math.round(targetWeap.power*targetBatType.size/2/selectedBatType.size);
     } else if (Math.round(targetBatType.size/3) > selectedBatType.size && targetWeap.noBig) {
         targetWeap.power = Math.round(targetWeap.power*targetBatType.size/3/selectedBatType.size);
+    }
+    // isShort range 0
+    if (targetWeap.isShort && targetWeap.range >= 1 && melee) {
+        targetWeap.accuracy = targetWeap.accuracy+5;
     }
     toHit = 999;
     let i = 1;
