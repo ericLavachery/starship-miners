@@ -335,7 +335,7 @@
         "transUnits":1500,
         "transRes":5000,
         "refabTime":20,
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"S_Explosion02"
     },
     {
