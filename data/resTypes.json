@@ -42,7 +42,7 @@
         "level": 1,
         "rarity": 35,
         "cat": "white",
-        "batch": 5
+        "batch": 4
     },
     {
         "id": 4,
@@ -60,7 +60,7 @@
         "level": 1,
         "rarity": 35,
         "cat": "white",
-        "batch": 5
+        "batch": 4
     },
     {
         "id": 6,
@@ -105,7 +105,7 @@
         "level": 1,
         "rarity": 55,
         "cat": "white",
-        "batch": 5
+        "batch": 4
     },
     {
         "id": 11,
@@ -186,7 +186,7 @@
         "level": 1,
         "rarity": 20,
         "cat": "white",
-        "batch": 3
+        "batch": 2
     },
     {
         "id": 20,
@@ -256,9 +256,9 @@
         "name": "Oxygène",
         "bld": "Derrick",
         "level": 1,
-        "rarity": 40,
+        "rarity": 35,
         "cat": "white",
-        "batch": 4
+        "batch": 5
     },
     {
         "id": 28,
