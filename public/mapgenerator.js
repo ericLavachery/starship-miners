@@ -268,6 +268,7 @@ function addRivers(map) {
     }
 };
 function checkRiverSeed() {
+    let newSeed;
     if (rand.rand(1,riverSeed) == 1) {
         newSeed = rand.rand(4,6);
     } else {

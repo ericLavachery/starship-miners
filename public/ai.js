@@ -336,6 +336,7 @@ function targetLogic(bat) {
 };
 
 function calcMinFuzz() {
+    console.log('calcMinFuzz');
     let minFuzz = {};
     minFuzz.bld = 0;
     if (selectedBatType.skills.includes('nez') || selectedBat.tags.includes('nez')) {
@@ -343,6 +344,7 @@ function calcMinFuzz() {
     } else {
         minFuzz.unit = 0;
     }
+    console.log(minFuzz);
     return minFuzz;
 }
 
@@ -898,7 +900,7 @@ function moveAlienBat(tileId,jump) {
             moveCost = selectedBat.apLeft;
             selectedBat.salvoLeft = 0;
         } else {
-            moveCost = selectedBat.apLeft;
+            moveCost = selectedBat.apLeft-2;
         }
     } else {
         if (isDiag(selectedBat.tileId,tileId)) {
@@ -1124,10 +1126,10 @@ function isCamoBlock() {
             });
         }
     });
-    // console.log('camoGroup: '+camoGroup);
-    // console.log('camoBlocks: '+camoBlocks);
-    // console.log('meleeBlocks: '+meleeBlocks);
-    // console.log('allBlocks: '+allBlocks);
+    console.log('camoGroup: '+camoGroup);
+    console.log('camoBlocks: '+camoBlocks);
+    console.log('meleeBlocks: '+meleeBlocks);
+    console.log('allBlocks: '+allBlocks);
     let blocked = false;
     if (camoBlocks >= 2 && meleeBlocks >= 1 && allBlocks >= 3) {
         blocked = true;

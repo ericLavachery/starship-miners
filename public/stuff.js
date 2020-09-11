@@ -65,7 +65,7 @@ function playerSkillsUTChanges() {
         if (playerInfos.skills.includes('cam1') && unit.skills.includes('maycamo') && unit.cat === 'infantry') {
             unit.skills.push('camo');
         }
-        if (playerInfos.skills.includes('cam2') && unit.skills.includes('maycamo') && unit.cat === 'vehicles') {
+        if (playerInfos.skills.includes('cam2') && unit.skills.includes('maycamo') && (unit.cat === 'vehicles' || unit.cat === 'devices')) {
             unit.skills.push('camo');
         }
         if (playerInfos.skills.includes('cam3') && unit.skills.includes('maycamo') && unit.cat === 'buildings') {

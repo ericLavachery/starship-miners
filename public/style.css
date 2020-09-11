@@ -756,7 +756,10 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
     color: #ba44c8;
 }
 .rose {
-    color: #d08db0;
+    color: #c67da3;
+}
+.vio {
+    color: #cca3dd;
 }
 .brun {
     color: #e6ad72;

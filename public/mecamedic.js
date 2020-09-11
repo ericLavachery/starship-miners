@@ -34,7 +34,7 @@ function medic(cat,cost,around,deep) {
                     if (distance === 0 || (bat.loc === "trans" && bat.locId === selectedBat.id)) {
                         batType = getBatType(bat);
                         batUnits = bat.squadsLeft*batType.squadSize;
-                        if (batType.cat === cat) {
+                        if (batType.cat === cat || (batType.cat === 'devices' && cat === 'buildings')) {
                             catOK = true;
                         } else if (cat === 'any') {
                             catOK = true;
@@ -167,7 +167,7 @@ function medic(cat,cost,around,deep) {
                                         oldSquadsLeft = selectedBat.squadsLeft;
                                         squadHP = selectedBatType.squadSize*selectedBatType.hp;
                                         batHP = squadHP*selectedBatType.squads;
-                                        if (selectedBatType.cat === 'buildings') {
+                                        if (selectedBatType.cat === 'buildings' || selectedBatType.cat === 'devices') {
                                             regen = mecanoHP*2;
                                         } else {
                                             regen = mecanoHP;
@@ -183,7 +183,7 @@ function medic(cat,cost,around,deep) {
                                         oldSquadsLeft = bat.squadsLeft;
                                         squadHP = batType.squadSize*batType.hp;
                                         batHP = squadHP*batType.squads;
-                                        if (batType.cat === 'buildings') {
+                                        if (batType.cat === 'buildings' || batType.cat === 'devices') {
                                             regen = mecanoHP*2;
                                         } else {
                                             regen = mecanoHP;
@@ -280,7 +280,7 @@ function medic(cat,cost,around,deep) {
                 oldSquadsLeft = selectedBat.squadsLeft;
                 squadHP = selectedBatType.squadSize*selectedBatType.hp;
                 batHP = squadHP*selectedBatType.squads;
-                if (selectedBatType.cat === 'buildings') {
+                if (selectedBatType.cat === 'buildings' || selectedBatType.cat === 'devices') {
                     regen = mecanoHP*2;
                 } else {
                     regen = mecanoHP;
@@ -360,7 +360,7 @@ function numMedicTargets(myBat,cat,around,deep) {
                     if (batHPLeft >= batHP) {
                         fullBat = true;
                     }
-                    if (batType.cat === cat) {
+                    if (batType.cat === cat || (batType.cat === 'devices' && cat === 'buildings')) {
                         catOK = true;
                     } else if (cat === 'any') {
                         catOK = true;

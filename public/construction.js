@@ -87,6 +87,9 @@ function catColor(cat,kind) {
     if (cat === 'buildings') {
         return 'rose';
     }
+    if (cat === 'devices') {
+        return 'vio';
+    }
 };
 
 function conSelect(unitId,player,noRefresh) {

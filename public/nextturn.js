@@ -145,7 +145,7 @@ function nextTurnEnd() {
                 }
             }
             bat.apLeft = Math.ceil(bat.apLeft);
-            if (bat.apLeft < 0-(bat.ap*2) && batType.cat != 'buildings' && !bat.tags.includes('construction')) {
+            if (bat.apLeft < 0-(bat.ap*2) && batType.cat != 'buildings' && batType.cat != 'devices' && !bat.tags.includes('construction')) {
                 bat.apLeft = 0-(bat.ap*2);
             }
             if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {

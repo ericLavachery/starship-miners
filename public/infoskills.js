@@ -97,7 +97,7 @@ function skillsInfos(bat,batUnitType) {
                     camoufOK = false;
                 }
             }
-        } else if (batUnitType.cat == 'vehicles' || batUnitType.skills.includes('machine')) {
+        } else if (batUnitType.cat == 'vehicles' || batUnitType.skills.includes('machine') || batUnitType.cat == 'devices') {
             if (batUnitType.skills.includes('maycamo') && !tile.ruins) {
                 apCost = Math.floor(bat.ap*Math.sqrt(batUnitType.size)/1.8);
                 apReq = Math.floor(bat.ap/1.5);
@@ -439,7 +439,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // REPAIR DIAG
-    if (batUnitType.cat === 'buildings' && !batUnitType.skills.includes('nobld') && !batUnitType.skills.includes('norepair') && (bat.damage >= 1 || bat.squadsLeft < batUnitType.squads)) {
+    if ((batUnitType.cat === 'buildings' || batUnitType.cat === 'devices') && !batUnitType.skills.includes('nobld') && !batUnitType.skills.includes('norepair') && (bat.damage >= 1 || bat.squadsLeft < batUnitType.squads)) {
         let repairBat = checkRepairBat(bat.tileId);
         if (Object.keys(repairBat).length >= 1) {
             let repairBatType = getBatType(repairBat);
