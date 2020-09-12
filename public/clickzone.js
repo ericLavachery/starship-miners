@@ -133,6 +133,9 @@ function tileUnselect() {
         let tileIndex = zone.findIndex((obj => obj.id == selectedBat.tileId));
         let tile = zone[tileIndex];
         let terclass = 'ter'+tile.terrain+tile.seed;
+        if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
+            terclass = 'terFog';
+        }
         $('#'+tile.id).removeClass('terUnderBldSel').removeClass('terUnderSel').addClass(terclass);
     }
 };
@@ -141,6 +144,9 @@ function tileSelect(bat) {
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
     terclass = 'ter'+tile.terrain+tile.seed;
+    if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
+        terclass = 'terFog';
+    }
     $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');
 };
 
@@ -149,6 +155,9 @@ function tileUntarget() {
     zone.forEach(function(tile) {
         if ($('#'+tile.id).hasClass("terTarget")) {
             terclass = 'ter'+tile.terrain+tile.seed;
+            if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
+                terclass = 'terFog';
+            }
             $('#'+tile.id).removeClass('terTarget').addClass(terclass);
         }
     });
@@ -158,5 +167,8 @@ function tileTarget(bat) {
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
     terclass = 'ter'+tile.terrain+tile.seed;
+    if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
+        terclass = 'terFog';
+    }
     $('#'+tile.id).removeClass(terclass).addClass('terTarget');
 };

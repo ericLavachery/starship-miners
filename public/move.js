@@ -218,11 +218,17 @@ function moveSelectedBat(tileId,free,jump) {
             camouflage(0);
         }
     }
+    if (playerInfos.dark && activeTurn === 'player') {
+        undarkAround(selectedBat);
+    }
     tileSelect(selectedBat);
     showBataillon(selectedBat);
     showBatInfos(selectedBat);
     // update arrays
     selectedBatArrayUpdate();
+    if (playerInfos.dark && activeTurn === 'player') {
+        showMap(zone,true);
+    }
 };
 
 function calcJumpDistance(myTileIndex,thatTileIndex) {

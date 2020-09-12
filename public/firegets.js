@@ -624,20 +624,24 @@ function weaponAdj(weapon,bat,wn) {
     let batUnitType = getBatType(bat);
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
+    let vision = 1;
     // ELEVATION
     console.log(thisWeapon.elevation);
     console.log(tile.terrain);
     if (tile.terrain == 'M') {
+        vision = 3;
         if (thisWeapon.elevation === 1) {
             thisWeapon.range = thisWeapon.range+1;
         } else if (thisWeapon.elevation === 2) {
             thisWeapon.range = thisWeapon.range+2;
         }
     } else if (tile.terrain == 'H') {
+        vision = 2;
         if (thisWeapon.elevation >= 1) {
             thisWeapon.range = thisWeapon.range+1;
         }
     } else if (tile.talus) {
+        vision = 2;
         if (thisWeapon.elevation >= 1 && (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber'))) {
             thisWeapon.range = thisWeapon.range+1;
         }
@@ -657,6 +661,9 @@ function weaponAdj(weapon,bat,wn) {
     // Water (range)
     if (thisWeapon.range >= 2 && (tile.terrain == 'W' || tile.terrain == 'R') && !batType.skills.includes('fly') && !batType.skills.includes('hover')) {
         thisWeapon.range = thisWeapon.range-1;
+    }
+    if (playerInfos.dark && thisWeapon.range > vision) {
+        thisWeapon.range = vision;
     }
     console.log(thisWeapon);
     return thisWeapon;

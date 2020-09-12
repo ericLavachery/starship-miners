@@ -17,7 +17,15 @@ function showMap(wmap,justMoved) {
     let sortedVisMap = _.sortBy(_.sortBy(visMap,'y'),'x');
     sortedVisMap.forEach(function(tile) {
         resHere = showRes(tile.id);
-        terclass = 'ter'+tile.terrain+tile.seed;
+        if (playerInfos.dark) {
+            if (playerInfos.undarkOnce.includes(tile.id)) {
+                terclass = 'ter'+tile.terrain+tile.seed;
+            } else {
+                terclass = 'terFog';
+            }
+        } else {
+            terclass = 'ter'+tile.terrain+tile.seed;
+        }
         $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')" title="#'+tile.id+'"><span class="bigIcon" id="b'+tile.id+'">'+resHere+'</span><br></div>');
         bataillons.forEach(function(bat) {
             if (bat.tileId === tile.id && bat.loc === "zone") {
@@ -62,7 +70,11 @@ function showRes(tileId) {
     let tile = zone[tileId];
     let mapIndicators = '';
     let res = '';
-    if (tile.rq != undefined) {
+    let view = true;
+    if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
+        view = false;
+    }
+    if (tile.rq != undefined && view) {
         res = JSON.stringify(tile.rs);
         res = res.replace(/"/g,"");
         res = res.replace(/{/g,"");
@@ -70,29 +82,31 @@ function showRes(tileId) {
         res = res.replace(/,/g," &nbsp;&horbar;&nbsp; ");
         res = res.replace(/:/g," ");
     }
-    if (tile.rd || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
-        mapIndicators = mapIndicators+'<div class="mapInfos" title="'+res+'">';
+    if (view) {
+        if (tile.rd || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
+            mapIndicators = mapIndicators+'<div class="mapInfos" title="'+res+'">';
+        }
+        if (tile.rd) {
+            mapIndicators = mapIndicators+'<i class="fas fa-shoe-prints fa-rotate-270 road"></i>';
+        }
+        if (tile.tileName !== undefined && tile.tileName != '') {
+            mapIndicators = mapIndicators+'<i class="fas fa-map-marker-alt inficon"></i>';
+        }
+        if (tile.rq != undefined) {
+            mapIndicators = mapIndicators+'<i class="fas fa-atom inficon rq'+tile.rq+'"></i>';
+        }
+        if (tile.rd || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
+            mapIndicators = mapIndicators+'</div>';
+        }
     }
-    if (tile.rd) {
-        mapIndicators = mapIndicators+'<i class="fas fa-shoe-prints fa-rotate-270 road"></i>';
-    }
-    if (tile.tileName !== undefined && tile.tileName != '') {
-        mapIndicators = mapIndicators+'<i class="fas fa-map-marker-alt inficon"></i>';
-    }
-    if (tile.rq != undefined) {
-        mapIndicators = mapIndicators+'<i class="fas fa-atom inficon rq'+tile.rq+'"></i>';
-    }
-    if (tile.rd || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
-        mapIndicators = mapIndicators+'</div>';
-    }
-    if (tile.ruins) {
+    if (tile.ruins && view) {
         if (tile.sh === -1) {
             mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/ruinsf.png"></div>';
         } else {
             mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/ruins.png"></div>';
         }
     }
-    if (tile.talus) {
+    if (tile.talus && view) {
         if (tile.terrain === 'P') {
             mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/talusP.png"></div>';
         } else if (tile.terrain === 'G') {
@@ -144,7 +158,7 @@ function showAlien(bat) {
     if (bat.tags.includes('freeze')) {
         tagz = tagz+' (freeze)';
     }
-    if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
+    if (batType.skills.includes('invisible') || bat.tags.includes('invisible') || (playerInfos.dark && !undarkNow.includes(bat.tileId))) {
         $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
     } else {
         $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+tagz+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);

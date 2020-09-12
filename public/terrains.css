@@ -91,6 +91,9 @@
 .mR {
     background-color: #1378c1;
 }
+.terFog {
+    background-color: #000000;
+}
 .terTarget {
     background-color: #FFFFFF;
     background-image: url(/static/img/wtiles/target.png);

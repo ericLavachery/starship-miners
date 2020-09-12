@@ -4,6 +4,9 @@ function nextTurn() {
     saveBataillons();
     saveAliens();
     saveMap();
+    if (playerInfos.dark) {
+        checkUndark();
+    }
     console.log('NOUVEAU TOUR');
     console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
     // stopMe = true;

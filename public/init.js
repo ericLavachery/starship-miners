@@ -39,6 +39,12 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.stopBarbs === undefined) {
         playerInfos.stopBarbs = false;
     }
+    if (playerInfos.dark === undefined) {
+        playerInfos.dark = false;
+    }
+    if (playerInfos.undarkOnce === undefined) {
+        playerInfos.undarkOnce = [];
+    }
     if (playerInfos.bldList === undefined) {
         playerInfos.bldList = [];
     }
@@ -62,6 +68,7 @@ socket.on('savedMap-Load', function(sm) {
     // console.log(savedMap);
     if (savedMap.length >= (mapSize*mapSize)-1) {
         zone = savedMap;
+        checkUndark();
         writeMapStyles();
         xOffset = 30-Math.round(numVTiles/2);
         yOffset = 30-Math.round(numHTiles/2);
@@ -69,6 +76,7 @@ socket.on('savedMap-Load', function(sm) {
     } else {
         generateNewMap();
     }
+    checkUndark();
     turnInfo();
     commandes();
     checkVisibleAliens();
