@@ -32,7 +32,7 @@ function skillsInfos(bat,batUnitType) {
     }
     // STOCKS
     let anyStock = checkStock(bat);
-    if (anyStock && bat.tags.includes('skillUsed')) {
+    if (anyStock && bat.tags.includes('skillUsed') && !batUnitType.skills.includes('dealer')) {
         let apCost = Math.round(bat.ap*1.5);
         if (bat.apLeft >= 4) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de ravitaillements" class="boutonGris skillButtons" onclick="goStock('+apCost+')"><i class="fas fa-cubes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réapprovisionnement</h4></span>');

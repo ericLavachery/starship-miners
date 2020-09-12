@@ -409,7 +409,7 @@ function checkRepairBat(tileId) {
     let batType;
     let bestRepairCost = 99;
     bataillons.forEach(function(bat) {
-        if (bat.loc === 'zone') {
+        if (bat.loc === 'zone' || bat.loc === 'trans') {
             if (bat.tileId === tileId+1 || bat.tileId === tileId-1 || bat.tileId === tileId+mapSize || bat.tileId === tileId-mapSize || bat.tileId === tileId+mapSize+1 || bat.tileId === tileId-mapSize+1 || bat.tileId === tileId+mapSize-1 || bat.tileId === tileId-mapSize-1) {
                 console.log(bat);
                 batType = getBatType(bat);

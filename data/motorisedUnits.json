@@ -579,7 +579,7 @@
             "range":2,
             "elevation":1,
             "rof":6,
-            "accuracy":12,
+            "accuracy":10,
             "dca":0.5,
             "power":22,
             "aoe":"squad",
