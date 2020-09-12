@@ -120,6 +120,13 @@ function showRes(tileId) {
             mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/showTile.png"></div>';
         }
     }
+    if (playerInfos.dark) {
+        if (undarkNow.includes(tile.id)) {
+            mapIndicators = mapIndicators+'<div class="dark"><img src="/static/img/dark.png"></div>';
+        } else {
+            mapIndicators = mapIndicators+'<div class="dark"><img src="/static/img/vdark.png"></div>';
+        }
+    }
     return mapIndicators;
 };
 

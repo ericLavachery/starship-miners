@@ -275,7 +275,14 @@ h5 {
     /* margin-right: -3px; */
     margin-left: -3px;
     margin-top: -3px;
-    z-index: -4;
+    z-index: -10;
+}
+.dark {
+    position: absolute;
+    /* margin-right: -3px; */
+    margin-left: -3px;
+    margin-top: -3px;
+    z-index: -6;
 }
 .inficon {
     margin-left: 2px;
