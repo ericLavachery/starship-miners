@@ -109,6 +109,7 @@ let bonusTransRetour = 1.1;
 let batDebarq = {};
 let medicalTransports = [];
 let landers = [];
+let startLander = 5;
 // ALIENS
 let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;
 let isFFW = false;

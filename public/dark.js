@@ -1,7 +1,7 @@
 function checkUndark() {
     if (playerInfos.dark) {
         let noBat = {};
-        undarkAround(noBat,true);
+        undarkCenter();
         let terrain;
         undarkNow = [];
         bataillons.forEach(function(bat) {
@@ -10,6 +10,16 @@ function checkUndark() {
             }
         });
     }
+};
+
+function undarkCenter() {
+    let distance;
+    zone.forEach(function(tile) {
+        distance = calcDistance(1830,tile.id);
+        if (distance <= startLander) {
+            unDark(tile.id);
+        }
+    });
 };
 
 function undarkAround(bat,center) {
