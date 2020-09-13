@@ -219,7 +219,7 @@ function moveSelectedBat(tileId,free,jump) {
         }
     }
     if (playerInfos.dark && activeTurn === 'player') {
-        undarkAround(selectedBat);
+        undarkAround(selectedBat,false);
     }
     tileSelect(selectedBat);
     showBataillon(selectedBat);

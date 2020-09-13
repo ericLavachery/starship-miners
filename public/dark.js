@@ -1,119 +1,137 @@
 function checkUndark() {
     if (playerInfos.dark) {
+        let noBat = {};
+        undarkAround(noBat,true);
         let terrain;
         undarkNow = [];
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone") {
-                undarkAround(bat);
+                undarkAround(bat,false);
             }
         });
     }
 };
 
-function undarkAround(bat) {
-    let thisTile = bat.tileId;
+function undarkAround(bat,center) {
+    let batTileId = bat.tileId;
+    let batType = {};
+    let terrain = {};
+    let vision = false;
+    let vvision = false;
+    if (center) {
+        batTileId = 1830;
+        terrain = getTerrainById(1830);
+    } else {
+        batType = getBatType(bat);
+        if (batType.skills.includes('vision')) {
+            vision = false;
+        }
+        if (batType.skills.includes('vvision')) {
+            vvision = true;
+        }
+        terrain = getTerrain(bat);
+    }
+    let thisTile = batTileId;
     unDark(thisTile);
-    let batType = getBatType(bat);
-    if (batType.crew >=1 || batType.skills.includes('vision') || batType.skills.includes('vvision')) {
-        thisTile = bat.tileId-1;
+    if (batType.crew >=1 || vision || vvision || center) {
+        thisTile = batTileId-1;
         unDark(thisTile);
-        thisTile = bat.tileId+1;
+        thisTile = batTileId+1;
         unDark(thisTile);
-        thisTile = bat.tileId-1-mapSize;
+        thisTile = batTileId-1-mapSize;
         unDark(thisTile);
-        thisTile = bat.tileId+1-mapSize;
+        thisTile = batTileId+1-mapSize;
         unDark(thisTile);
-        thisTile = bat.tileId-mapSize;
+        thisTile = batTileId-mapSize;
         unDark(thisTile);
-        thisTile = bat.tileId-1+mapSize;
+        thisTile = batTileId-1+mapSize;
         unDark(thisTile);
-        thisTile = bat.tileId+1+mapSize;
+        thisTile = batTileId+1+mapSize;
         unDark(thisTile);
-        thisTile = bat.tileId+mapSize;
+        thisTile = batTileId+mapSize;
         unDark(thisTile);
-        let terrain = getTerrain(bat);
-        if (terrain.scarp >= 2 || batType.skills.includes('vision') || batType.skills.includes('vvision')) {
-            thisTile = bat.tileId-mapSize-mapSize-2;
+        if (terrain.scarp >= 2 || vision || vvision || center) {
+            thisTile = batTileId-mapSize-mapSize-2;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize-mapSize-1;
+            thisTile = batTileId-mapSize-mapSize-1;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize-mapSize;
+            thisTile = batTileId-mapSize-mapSize;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize-mapSize+1;
+            thisTile = batTileId-mapSize-mapSize+1;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize-mapSize+2;
+            thisTile = batTileId-mapSize-mapSize+2;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+mapSize-2;
+            thisTile = batTileId+mapSize+mapSize-2;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+mapSize-1;
+            thisTile = batTileId+mapSize+mapSize-1;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+mapSize;
+            thisTile = batTileId+mapSize+mapSize;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+mapSize+1;
+            thisTile = batTileId+mapSize+mapSize+1;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+mapSize+2;
+            thisTile = batTileId+mapSize+mapSize+2;
             unDark(thisTile);
-            thisTile = bat.tileId+2;
+            thisTile = batTileId+2;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize+2;
+            thisTile = batTileId-mapSize+2;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+2;
+            thisTile = batTileId+mapSize+2;
             unDark(thisTile);
-            thisTile = bat.tileId-2;
+            thisTile = batTileId-2;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize-2;
+            thisTile = batTileId-mapSize-2;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize-2;
+            thisTile = batTileId+mapSize-2;
             unDark(thisTile);
         }
-        if (terrain.scarp >= 3 || batType.skills.includes('vvision')) {
-            thisTile = bat.tileId-mapSize-mapSize-mapSize-3;
+        if (terrain.scarp >= 3 || vvision || center) {
+            thisTile = batTileId-mapSize-mapSize-mapSize-3;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize-mapSize-mapSize-2;
+            thisTile = batTileId-mapSize-mapSize-mapSize-2;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize-mapSize-mapSize-1;
+            thisTile = batTileId-mapSize-mapSize-mapSize-1;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize-mapSize-mapSize;
+            thisTile = batTileId-mapSize-mapSize-mapSize;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize-mapSize-mapSize+1;
+            thisTile = batTileId-mapSize-mapSize-mapSize+1;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize-mapSize-mapSize+2;
+            thisTile = batTileId-mapSize-mapSize-mapSize+2;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize-mapSize-mapSize+3;
+            thisTile = batTileId-mapSize-mapSize-mapSize+3;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+mapSize+mapSize-3;
+            thisTile = batTileId+mapSize+mapSize+mapSize-3;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+mapSize+mapSize-2;
+            thisTile = batTileId+mapSize+mapSize+mapSize-2;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+mapSize+mapSize-1;
+            thisTile = batTileId+mapSize+mapSize+mapSize-1;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+mapSize+mapSize;
+            thisTile = batTileId+mapSize+mapSize+mapSize;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+mapSize+mapSize+1;
+            thisTile = batTileId+mapSize+mapSize+mapSize+1;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+mapSize+mapSize+2;
+            thisTile = batTileId+mapSize+mapSize+mapSize+2;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+mapSize+mapSize+3;
+            thisTile = batTileId+mapSize+mapSize+mapSize+3;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+mapSize-3;
+            thisTile = batTileId+mapSize+mapSize-3;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize-3;
+            thisTile = batTileId+mapSize-3;
             unDark(thisTile);
-            thisTile = bat.tileId-3;
+            thisTile = batTileId-3;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize-3;
+            thisTile = batTileId-mapSize-3;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize-mapSize-3;
+            thisTile = batTileId-mapSize-mapSize-3;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+mapSize+3;
+            thisTile = batTileId+mapSize+mapSize+3;
             unDark(thisTile);
-            thisTile = bat.tileId+mapSize+3;
+            thisTile = batTileId+mapSize+3;
             unDark(thisTile);
-            thisTile = bat.tileId+3;
+            thisTile = batTileId+3;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize+3;
+            thisTile = batTileId-mapSize+3;
             unDark(thisTile);
-            thisTile = bat.tileId-mapSize-mapSize+3;
+            thisTile = batTileId-mapSize-mapSize+3;
             unDark(thisTile);
         }
     }
