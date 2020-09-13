@@ -5,6 +5,8 @@ function generateNewMap() {
     filterMap(zone);
     addRivers(zone);
     addRes(zone);
+    washReports();
+    zoneReport(zone);
     writeMapStyles();
     showMap(zone,false);
     minimap();
@@ -927,4 +929,65 @@ function checkResLevel(tile) {
     } else {
         return 3;
     }
+};
+
+function zoneReport(zone) {
+    let percM = 0;
+    let percH = 0;
+    let percP = 0;
+    let percG = 0;
+    let percB = 0;
+    let percF = 0;
+    let percS = 0;
+    let percW = 0;
+    let percR = 0;
+    let terName;
+    zone.forEach(function(tile) {
+        terName = getTileTerrainName(tile.id);
+        if (terName === 'M') {
+            percM++;
+        }
+        if (terName === 'H') {
+            percH++;
+        }
+        if (terName === 'P') {
+            percP++;
+        }
+        if (terName === 'G') {
+            percG++;
+        }
+        if (terName === 'B') {
+            percB++;
+        }
+        if (terName === 'F') {
+            percF++;
+        }
+        if (terName === 'S') {
+            percS++;
+        }
+        if (terName === 'W') {
+            percW++;
+        }
+        if (terName === 'R') {
+            percR++;
+        }
+    });
+    percM = Math.round(percM/36);
+    warning('Montagnes',percM+'%',true);
+    percH = Math.round(percH/36);
+    warning('Collines',percH+'%',true);
+    percP = Math.round(percP/36);
+    warning('Plaines',percP+'%',true);
+    percG = Math.round(percG/36);
+    warning('Prairies',percG+'%',true);
+    percB = Math.round(percB/36);
+    warning('Maquis',percB+'%',true);
+    percF = Math.round(percF/36);
+    warning('Forêts',percF+'%',true);
+    percS = Math.round(percS/36);
+    warning('Marécages',percS+'%',true);
+    percW = Math.round(percW/36);
+    warning('Etangs',percW+'%',true);
+    percR = Math.round(percR/36);
+    warning('Rivières',percR+'%');
 };

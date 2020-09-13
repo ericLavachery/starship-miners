@@ -34,7 +34,7 @@ function undarkAround(bat,center) {
     } else {
         batType = getBatType(bat);
         if (batType.skills.includes('vision')) {
-            vision = false;
+            vision = true;
         }
         if (batType.skills.includes('vvision')) {
             vvision = true;
