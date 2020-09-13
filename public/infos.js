@@ -286,77 +286,90 @@ function showTileInfos(tileId) {
     let tile = zone[tileIndex];
     let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
     let terrain = terrainTypes[terrainIndex];
-    $('#tileInfos').append('<span class="blockTitle"><h3>'+terrain.fullName+'</h3></span>');
-    $('#tileInfos').append('<div class="shSpace"></div>');
-    // NOM
-    if (tile.tileName !== undefined && tile.tileName !== null && tile.tileName != '') {
-        $('#tileInfos').append('<span class="paramIcon"><i class="fas fa-map-signs"></i></span><span class="fullLine or"><b>'+tile.tileName+'</b></span><br>');
+    let view = true;
+    if (playerInfos.dark && !playerInfos.undarkOnce.includes(selectedTile)) {
+        view = false;
     }
-    // Move Cost
-    $('#tileInfos').append('<span class="paramName">Coûts de déplacement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">+'+terrain.mc+'</span><br>');
-    // Cover
-    let coverIcon = '';
-    if (terrain.cover >= 2) {
-        coverIcon = '<i class="fas fa-shield-alt"></i>'
+    if (view) {
+        $('#tileInfos').append('<span class="blockTitle"><h3>'+terrain.fullName+'</h3></span>');
+        $('#tileInfos').append('<div class="shSpace"></div>');
+        // NOM
+        if (tile.tileName !== undefined && tile.tileName !== null && tile.tileName != '') {
+            $('#tileInfos').append('<span class="paramIcon"><i class="fas fa-map-signs"></i></span><span class="fullLine or"><b>'+tile.tileName+'</b></span><br>');
+        }
+        // Aménagements
+        if (tile.ruins) {
+            $('#tileInfos').append('<span class="paramName cy">Ruines</span><span class="paramIcon"><i class="fas fa-city"></i></span><span class="paramValue cy">Oui</span><br>');
+        }
+        if (tile.talus) {
+            $('#tileInfos').append('<span class="paramName cy">Talus</span><span class="paramIcon"><i class="fas fa-mountain"></i></span><span class="paramValue cy">Oui</span><br>');
+        }
+        // Move Cost
+        $('#tileInfos').append('<span class="paramName">Coûts de déplacement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">+'+terrain.mc+'</span><br>');
+        // Cover
+        let coverIcon = '';
+        if (terrain.cover >= 2) {
+            coverIcon = '<i class="fas fa-shield-alt"></i>'
+        }
+        $('#tileInfos').append('<span class="paramName">Couverture</span><span class="paramIcon">'+coverIcon+'</span><span class="paramValue">'+terrain.cover+'</span><br>');
+        // scarp, flood, veg
+        let sIcon = '';
+        let vIcon = '';
+        let fIcon = '';
+        if (terrain.veg >= 2) {
+            vIcon = '<i class="fab fa-pagelines"></i>'
+        }
+        if (terrain.scarp >= 2) {
+            sIcon = '<i class="fas fa-mountain"></i>'
+        }
+        if (terrain.flood >= 1) {
+            fIcon = '<i class="fas fa-water"></i>'
+        }
+        $('#tileInfos').append('<span class="paramName">Végétation</span><span class="paramIcon">'+vIcon+'</span><span class="paramValue">'+terrain.veg+'</span><br>');
+        $('#tileInfos').append('<span class="paramName">Escarpement</span><span class="paramIcon">'+sIcon+'</span><span class="paramValue">'+terrain.scarp+'</span><br>');
+        $('#tileInfos').append('<span class="paramName">Innondation</span><span class="paramIcon">'+fIcon+'</span><span class="paramValue">'+terrain.flood+'</span><br>');
+        // Coordonnées
+        $('#tileInfos').append('<span class="paramName">Coordonnées</span><span class="paramIcon"><i class="fas fa-map-marker-alt"></i></span><span class="paramValue">'+tile.y+'&lrhar;'+tile.x+'</span><br>');
+        $('#tileInfos').append('<span class="paramName">Id</span><span class="paramIcon"></span><span class="paramValue">#'+tile.id+'</span><br>');
+        // RESSOURCES
+        if (tile.rs !== undefined) {
+            let tileIndex;
+            let res;
+            let bldReq;
+            Object.entries(tile.rs).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                resIndex = resTypes.findIndex((obj => obj.name == key));
+                res = resTypes[resIndex];
+                bldReq = onlyFirstLetter(res.bld);
+                $('#tileInfos').append('<span class="paramName cy">'+key+'</span><span class="paramIcon"></span><span class="paramValue cy">'+value+' <span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
+                // console.log(key,value);
+            });
+        }
+        let srs = getTerrainRes(terrain,tile);
+        if (Object.keys(srs).length >= 1) {
+            let tileIndex;
+            let res;
+            let bldReq;
+            Object.entries(srs).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                resIndex = resTypes.findIndex((obj => obj.name == key));
+                res = resTypes[resIndex];
+                if (res.bld === 'Comptoir') {
+                    value = value*3;
+                }
+                bldReq = onlyFirstLetter(res.bld);
+                if (bldReq != '') {
+                    bldReq = ' ('+bldReq+')'
+                }
+                $('#tileInfos').append('<span class="paramName sky">'+key+'</span><span class="paramIcon"></span><span class="paramValue sky">'+value+'<span class="gf">'+bldReq+'</span></span><br>');
+                // console.log(key,value);
+            });
+        }
+        // RENOMMER
+        $('#tileInfos').append('<span class="blockTitle"><h4><button type="button" title="Nommer cet emplacement" class="boutonGris skillButtons" onclick="renameTile('+tileId+')"><i class="fas fa-map-signs"></i></button>&nbsp; Mettre une pancarte</h4></span>');
     }
-    $('#tileInfos').append('<span class="paramName">Couverture</span><span class="paramIcon">'+coverIcon+'</span><span class="paramValue">'+terrain.cover+'</span><br>');
-    // scarp, flood, veg
-    let sIcon = '';
-    let vIcon = '';
-    let fIcon = '';
-    if (terrain.veg >= 2) {
-        vIcon = '<i class="fab fa-pagelines"></i>'
-    }
-    if (terrain.scarp >= 2) {
-        sIcon = '<i class="fas fa-mountain"></i>'
-    }
-    if (terrain.flood >= 1) {
-        fIcon = '<i class="fas fa-water"></i>'
-    }
-    $('#tileInfos').append('<span class="paramName">Végétation</span><span class="paramIcon">'+vIcon+'</span><span class="paramValue">'+terrain.veg+'</span><br>');
-    $('#tileInfos').append('<span class="paramName">Escarpement</span><span class="paramIcon">'+sIcon+'</span><span class="paramValue">'+terrain.scarp+'</span><br>');
-    $('#tileInfos').append('<span class="paramName">Innondation</span><span class="paramIcon">'+fIcon+'</span><span class="paramValue">'+terrain.flood+'</span><br>');
-    // Coordonnées
-    $('#tileInfos').append('<span class="paramName">Coordonnées</span><span class="paramIcon"><i class="fas fa-map-marker-alt"></i></span><span class="paramValue">'+tile.y+'&lrhar;'+tile.x+'</span><br>');
-    $('#tileInfos').append('<span class="paramName">Id</span><span class="paramIcon"></span><span class="paramValue">#'+tile.id+'</span><br>');
-    // RESSOURCES
-    if (tile.rs !== undefined) {
-        let tileIndex;
-        let res;
-        let bldReq;
-        Object.entries(tile.rs).map(entry => {
-            let key = entry[0];
-            let value = entry[1];
-            resIndex = resTypes.findIndex((obj => obj.name == key));
-            res = resTypes[resIndex];
-            bldReq = onlyFirstLetter(res.bld);
-            $('#tileInfos').append('<span class="paramName cy">'+key+'</span><span class="paramIcon"></span><span class="paramValue cy">'+value+' <span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
-            // console.log(key,value);
-        });
-    }
-    let srs = getTerrainRes(terrain,tile);
-    if (Object.keys(srs).length >= 1) {
-        let tileIndex;
-        let res;
-        let bldReq;
-        Object.entries(srs).map(entry => {
-            let key = entry[0];
-            let value = entry[1];
-            resIndex = resTypes.findIndex((obj => obj.name == key));
-            res = resTypes[resIndex];
-            if (res.bld === 'Comptoir') {
-                value = value*3;
-            }
-            bldReq = onlyFirstLetter(res.bld);
-            if (bldReq != '') {
-                bldReq = ' ('+bldReq+')'
-            }
-            $('#tileInfos').append('<span class="paramName sky">'+key+'</span><span class="paramIcon"></span><span class="paramValue sky">'+value+'<span class="gf">'+bldReq+'</span></span><br>');
-            // console.log(key,value);
-        });
-    }
-    // RENOMMER
-    $('#tileInfos').append('<span class="blockTitle"><h4><button type="button" title="Nommer cet emplacement" class="boutonGris skillButtons" onclick="renameTile('+tileId+')"><i class="fas fa-map-signs"></i></button>&nbsp; Mettre une pancarte</h4></span>');
 };
 
 function renameTile(tileId) {
