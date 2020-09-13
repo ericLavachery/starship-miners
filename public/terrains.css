@@ -61,6 +61,9 @@
     -o-animation: pointsBlink .5s infinite;  /* Opera 12+ */
     animation: pointsBlink .5s infinite;  /* IE 10+, Fx 29+ */
 }
+.mDark {
+    background-color: #000000;
+}
 .mM {
     background-color: #413421;
 }

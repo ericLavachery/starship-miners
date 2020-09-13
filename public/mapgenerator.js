@@ -558,6 +558,12 @@ function addRes(zone) {
     let baseNum = 0;
     let redMin = Math.floor(playerInfos.mapDiff/1.5)+5;
     let redNum = 0;
+    if (playerInfos.dark) {
+        mythicMin = mythicMin+3+Math.floor(playerInfos.mapDiff/2);
+        mythicMax = mythicMax+3+Math.floor(playerInfos.mapDiff/2);
+        baseMin = baseMin+10+(playerInfos.mapDiff*2);
+        redMin = redMin+5+playerInfos.mapDiff;
+    }
     let terrain;
     let numBadTer = 0;
     let shufZone = _.shuffle(zone);
@@ -694,6 +700,7 @@ function addRes(zone) {
     let blueSum = 0;
     let skySum = 0;
     let scrapRarity;
+    let resRarity;
     resTypes.forEach(function(res) {
         if (res.cat === 'white') {
             minDice = 1;
@@ -712,7 +719,11 @@ function addRes(zone) {
                     rarityDice == 1;
                 }
             }
-            res.adjRarity = Math.floor(res.rarity*rarityDice/5*fewRedRarityAdj/100);
+            resRarity = res.rarity;
+            if (playerInfos.dark && resRarity < 25) {
+                resRarity = 25;
+            }
+            res.adjRarity = Math.floor(resRarity*rarityDice/5*fewRedRarityAdj/100);
             res.adjBatch = Math.ceil(res.batch*Math.sqrt(rarityDice)/2*fewRedRarityAdj/100);
             if (res.adjBatch < 1) {
                 res.adjBatch = 1;

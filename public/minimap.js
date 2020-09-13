@@ -14,14 +14,24 @@ function minimap() {
     if (showOneRes != 'Toutes') {
         $('#thenavig').append('<button type="button" title="Montrer la ressource recherchée" class="boutonGris miniButtons" onclick="oneResView()"><i class="far fa-gem"></i></button><br>');
     }
+    let alienView;
     zone.forEach(function(tile) {
+        if (playerInfos.dark) {
+            if (undarkNow.includes(tile.id)) {
+                alienView = true;
+            } else {
+                alienView = false;
+            }
+        } else {
+            alienView = true;
+        }
         if (tile.y === 1) {
             $('#themmap').append('<br>');
         }
         if ((tile.id === selectedTile || tile.id === selectedBat.tileId) && miniDots === 'units') {
             $('#themmap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
         } else {
-            if (visibleAliens.includes(tile.id) && miniDots === 'units') {
+            if (visibleAliens.includes(tile.id) && miniDots === 'units' && alienView) {
                 $('#themmap').append('<span class="mini mAlien" onclick="centerFromMinimap('+tile.id+')"></span>');
             } else {
                 if (playerOccupiedTiles.includes(tile.id) && miniDots === 'units') {
@@ -33,7 +43,17 @@ function minimap() {
                         if (oneResTileIds.includes(tile.id) && miniDots === 'oneres') {
                             $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
                         } else {
-                            $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                            if (playerInfos.dark) {
+                                if (undarkNow.includes(tile.id)) {
+                                    $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                } else if (playerInfos.undarkOnce.includes(tile.id)) {
+                                    $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                } else {
+                                    $('#themmap').append('<span class="mini mDark" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                }
+                            } else {
+                                $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                            }
                         }
                     }
                 }
