@@ -36,6 +36,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.showedTiles === undefined) {
         playerInfos.showedTiles = [1830];
     }
+    if (playerInfos.myCenter === undefined) {
+        playerInfos.myCenter = 1830;
+    }
     if (playerInfos.stopBarbs === undefined) {
         playerInfos.stopBarbs = false;
     }
@@ -70,8 +73,8 @@ socket.on('savedMap-Load', function(sm) {
         zone = savedMap;
         checkUndark();
         writeMapStyles();
-        xOffset = 30-Math.round(numVTiles/2);
-        yOffset = 30-Math.round(numHTiles/2);
+        xOffset = 31-Math.round(numVTiles/2);
+        yOffset = 31-Math.round(numHTiles/2);
         showMap(zone,false);
     } else {
         generateNewMap();

@@ -138,14 +138,14 @@ function centerMapTarget() {
 
 function centerMapCenter() {
     // center on selectedBat
-    myTileX = zone[1830].x;
-    myTileY = zone[1830].y;
+    myTileX = zone[playerInfos.myCenter].x;
+    myTileY = zone[playerInfos.myCenter].y;
     xOffset = myTileX-Math.round(numVTiles/2);
     yOffset = myTileY-Math.round(numHTiles/2);
     limitOffset();
     showMap(zone,true);
     confirmMode();
-    selectedTile = 1830;
+    selectedTile = playerInfos.myCenter;
     if (showMini && activeTurn == 'player') {
         minimap();
     }

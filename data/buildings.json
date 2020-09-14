@@ -123,7 +123,7 @@
         "skills":["routes"],
         "mecanoCost":12,
         "refabTime":50,
-        "fuzz":-1,
+        "fuzz":4,
         "deathFx":"S_Explosion02"
     },
     {
@@ -311,7 +311,7 @@
         "transMaxSize":9,
         "transUnits":1500,
         "refabTime":35,
-        "fuzz":-1,
+        "fuzz":1,
         "deathFx":"S_Explosion02"
     },
     {
@@ -344,7 +344,7 @@
         "transUnits":1500,
         "transRes":5000,
         "refabTime":20,
-        "fuzz":0,
+        "fuzz":1,
         "deathFx":"S_Explosion02"
     },
     {
