@@ -75,7 +75,15 @@ function shotSound(weapon,bat) {
         console.log(weapon);
         var sound = new Howl({
             src: ['/static/sounds/'+soundDir+'/'+weapon.sound+'.mp3'],
-            volume: fxVolume
+            volume: fxVolume,
+            onload: function() {
+                soundDuration = sound.duration();
+                soundDuration = Math.round(800*soundDuration)-500;
+                if (soundDuration < 100) {
+                    soundDuration = 100;
+                }
+                console.log('soundDuration='+soundDuration);
+            },
         });
         sound.play();
         console.log(sound);

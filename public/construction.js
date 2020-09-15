@@ -410,20 +410,26 @@ function dismantle(batId) {
     // création du bataillon de citoyens
     let index = bataillons.findIndex((obj => obj.id == batId));
     let bat = bataillons[index];
-    let batType = getBatType(bat);
-    let tileId = bat.tileId;
-    let crew = batType.squads*batType.squadSize*batType.crew;
-    // console.log('CITOYENS:'+citoyens);
-    let xp = getXp(bat);
-    batUnselect();
-    batDeath(bat,false);
-    let batIndex = batList.findIndex((obj => obj.id == batId));
-    batList.splice(batIndex,1);
-    $('#b'+bat.tileId).empty();
-    let resHere = showRes(bat.tileId);
-    $('#b'+bat.tileId).append(resHere);
-    if (batType.skills.includes('recupcit')) {
-        recupCitoyens(126,tileId,crew,xp);
+    let isCharged = checkCharged(bat,'trans');
+    let isLoaded = checkCharged(bat,'load');
+    if (!isCharged && !isLoaded) {
+        let batType = getBatType(bat);
+        let tileId = bat.tileId;
+        let crew = batType.squads*batType.squadSize*batType.crew;
+        // console.log('CITOYENS:'+citoyens);
+        let xp = getXp(bat);
+        batUnselect();
+        batDeath(bat,false);
+        let batIndex = batList.findIndex((obj => obj.id == batId));
+        batList.splice(batIndex,1);
+        $('#b'+bat.tileId).empty();
+        let resHere = showRes(bat.tileId);
+        $('#b'+bat.tileId).append(resHere);
+        if (batType.skills.includes('recupcit')) {
+            recupCitoyens(126,tileId,crew,xp);
+        }
+    } else {
+        alert("Vous devez vider le bataillon avant de le démanteler.");
     }
 };
 

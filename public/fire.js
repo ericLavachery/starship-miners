@@ -64,6 +64,7 @@ function combat(melee) {
     tagDelete(selectedBat,'mining');
     tagDelete(targetBat,'mining');
     minesExploded = 0;
+    soundDuration = 2000;
     let soundWeap;
     let soundBat;
     if (activeTurn == 'player') {
@@ -139,9 +140,11 @@ function combat(melee) {
                     soundWeap = targetWeap;
                     soundBat = targetBat;
                     setTimeout(function (){
-                        shotSound(soundWeap,soundBat);
-                        if (activeTurn == 'player') {blockMe(false);}
-                    }, 2500); // How long do you want the delay to be (in milliseconds)?
+                        setTimeout(function (){
+                            shotSound(soundWeap,soundBat);
+                            if (activeTurn == 'player') {blockMe(false);}
+                        }, soundDuration);
+                    }, 500);
                 }
             } else {
                 if (!isFFW) {
@@ -182,9 +185,11 @@ function combat(melee) {
                         soundWeap = selectedWeap;
                         soundBat = selectedBat;
                         setTimeout(function (){
-                            shotSound(soundWeap,soundBat);
-                            if (activeTurn == 'player') {blockMe(false);}
-                        }, 2500); // How long do you want the delay to be (in milliseconds)?
+                            setTimeout(function (){
+                                shotSound(soundWeap,soundBat);
+                                if (activeTurn == 'player') {blockMe(false);}
+                            }, soundDuration);
+                        }, 500);
                     }
                 }
             } else {
