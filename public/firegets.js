@@ -121,6 +121,11 @@ function getCover(bat,withFortif) {
             cover = 5+Math.floor(cover/2);
         }
     }
+    if (cover < 0) {
+        if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
+            cover = 0;
+        }
+    }
     // Fortification
     if (withFortif) {
         if (bat.tags.includes('fortif')) {

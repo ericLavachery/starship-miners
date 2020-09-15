@@ -336,7 +336,6 @@ function targetLogic(bat) {
 };
 
 function calcMinFuzz() {
-    console.log('calcMinFuzz');
     let minFuzz = {};
     minFuzz.bld = 0;
     if (selectedBatType.skills.includes('nez') || selectedBat.tags.includes('nez')) {
@@ -344,7 +343,6 @@ function calcMinFuzz() {
     } else {
         minFuzz.unit = 0;
     }
-    console.log(minFuzz);
     return minFuzz;
 }
 

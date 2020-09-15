@@ -18,6 +18,7 @@ function createAlienList() {
 
 function nextAlien() {
     // activated by click
+    washReports();
     if (Object.keys(selectedBat).length >= 1) {
         let batIndex = alienList.findIndex((obj => obj.id == selectedBat.id));
         alienList.splice(batIndex,1);
