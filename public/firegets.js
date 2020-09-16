@@ -125,6 +125,9 @@ function getCover(bat,withFortif,forAOE) {
         if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
             cover = 0;
         }
+        if (forAOE) {
+            cover = Math.round(cover/2);
+        }
     }
     if (forAOE) {
         cover = cover+coverAOE;
