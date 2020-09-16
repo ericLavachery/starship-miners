@@ -126,6 +126,9 @@ let poisonDamage = 15; // 15 = 5-15 damage (10)
 let parasiteDamage = 120;
 let blubDamage = 6;
 let bugROF = 1;
+let spiderREG = false;
+let bugSHIELD = false;
+let larveHIDE = false;
 let regenPower = 10; // 10%
 let slowregPower = 3; // 3%
 let shownEggs = [];

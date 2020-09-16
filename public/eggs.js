@@ -372,7 +372,7 @@ function morphList() {
 };
 
 function aliensCount() {
-    let aliensNums = {lucioles:0,moucherons:0,bugs:0,scorpions:0,fourmis:0,cafards:0,gluantes:0,larves:0};
+    let aliensNums = {lucioles:0,moucherons:0,bugs:0,scorpions:0,fourmis:0,cafards:0,gluantes:0,larves:0,homards:0};
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type === 'Lucioles') {
@@ -391,6 +391,8 @@ function aliensCount() {
                 aliensNums.gluantes = aliensNums.gluantes+1;
             } else if (bat.type === 'Moucherons') {
                 aliensNums.moucherons = aliensNums.moucherons+1;
+            } else if (bat.type === 'Homards') {
+                aliensNums.homards = aliensNums.homards+1;
             }
         }
     });
@@ -445,8 +447,16 @@ function spawns() {
                 alienSpawn(bat,'Scorpions');
             } else if (bat.type === 'Megagrubz' && rand.rand(1,2) === 1 && aliens.length < maxAliens && aliensNums.larves < maxPonte) {
                 alienSpawn(bat,'Scorpions');
-            } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && rand.rand(1,6) === 1 && aliens.length < maxAliens && aliensNums.cafards < maxPonte*3) {
-                alienSpawn(bat,'Cafards');
+            } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && rand.rand(1,3) === 1) {
+                if (aliensNums.homards >= 1) {
+                    if (rand.rand(1,2) === 1) {
+                        alienMorph(bat,'Homards',false);
+                    } else {
+                        alienSpawn(bat,'Cafards');
+                    }
+                } else if (aliens.length < maxAliens && aliensNums.cafards < maxPonte*3 && rand.rand(1,2) === 1) {
+                    alienSpawn(bat,'Cafards');
+                }
             } else if (bat.type === 'Glaireuse' && aliens.length < maxAliens && aliensNums.gluantes < maxPonte) {
                 alienSpawn(bat,'Gluantes');
             } else if (bat.type === 'Cocon') {
@@ -651,6 +661,10 @@ function newEggCat() {
 
 function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
+    let saturation = false;
+    if (aliens.length >= 200) {
+        saturation = true;
+    }
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     let eggModTurn = eggTurn+playerInfos.mapDiff-3;
     let eggLife = eggLifeStart+Math.floor(playerInfos.mapDiff*eggLifeFactor);
@@ -701,8 +715,11 @@ function eggSpawn(bat,fromEgg) {
             classes.push('C');
             if (eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB && playerInfos.mapDiff >= 2) {
                 classes.push('B');
-                if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA && playerInfos.mapDiff >= 6) {
+                if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA && (playerInfos.mapDiff >= 6 || saturation)) {
                     classes.push('A');
+                    if ((saturation && playerInfos.mapDiff >= 6) || playerInfos.mapDiff >= 10) {
+                        classes.push('S');
+                    }
                     if (eggModTurn >= 20 && playerInfos.mapTurn >= minTurnA && fromEgg) {
                         const index = classes.indexOf('C');
                         if (index > -1) {
@@ -732,7 +749,7 @@ function eggSpawn(bat,fromEgg) {
                 console.log('checkDice='+checkDice);
                 raritySum = 0;
                 alienUnits.forEach(function(unit) {
-                    if (classes.includes(unit.class) && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat)) {
+                    if (classes.includes(unit.class) && unit.kind.includes(eggCat) && Object.keys(conselUnit).length <= 0) {
                         raritySum = raritySum+unit.rarity;
                         if (checkDice <= raritySum) {
                             conselUnit = unit;

@@ -451,6 +451,8 @@ function checkPossibleJumps() {
         } else {
             if (selectedBatType.skills.includes('sauteur')) {
                 maxDistance = 5;
+            } else if (larveHIDE) {
+                maxDistance = 7;
             } else {
                 maxDistance = 4;
             }
@@ -893,7 +895,7 @@ function moveAlienBat(tileId,jump) {
     // remove ap
     let moveCost;
     if (jump) {
-        if (selectedBatType.skills.includes('fouisseur')) {
+        if (selectedBatType.skills.includes('fouisseur') && !selectedBatType.skills.includes('errant')) {
             // moveCost = selectedBat.apLeft+8;
             moveCost = selectedBat.apLeft;
             selectedBat.salvoLeft = 0;
@@ -1146,6 +1148,9 @@ function isCamoBlock() {
 
 function alienBonus() {
     bugROF = 1;
+    spiderREG = false;
+    bugSHIELD = false;
+    larveHIDE = false;
     let batIndex;
     let batType;
     aliens.forEach(function(bat) {
@@ -1154,6 +1159,15 @@ function alienBonus() {
             batType = alienUnits[batIndex];
             if (batType.skills.includes('bugboost')) {
                 bugROF = 1.5;
+            }
+            if (batType.skills.includes('spiderreg')) {
+                spiderREG = true;
+            }
+            if (batType.skills.includes('larvehide')) {
+                larveHIDE = true;
+            }
+            if (batType.skills.includes('bugshield')) {
+                bugSHIELD = true;
             }
         }
     });

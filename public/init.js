@@ -83,6 +83,7 @@ socket.on('savedMap-Load', function(sm) {
     turnInfo();
     commandes();
     checkVisibleAliens();
+    alienBonus();
     minimap();
     if (playerInfos.pseudo != 'Test') {
         playMusic('start',true);

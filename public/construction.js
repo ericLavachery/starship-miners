@@ -355,8 +355,11 @@ function putBat(tileId,citoyens,xp,startTag) {
         } else {
             newBat.tags = [];
         }
-        if (conselUnit.skills.includes('hide')) {
+        if (conselUnit.skills.includes('hide') || (conselUnit.kind === 'larve' && larveHIDE)) {
             newBat.tags.push('invisible');
+        }
+        if (conselUnit.kind === 'spider' && spiderREG) {
+            newBat.tags.push('regeneration');
         }
         if (batArmor.skills.includes('slowreg')) {
             newBat.tags.push('slowreg');

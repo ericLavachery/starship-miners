@@ -310,7 +310,14 @@ function attack(melee) {
         }
     }
     // SHIELD
-    if (activeTurn === 'player' && targetBatType.skills.includes('shield') && selectedWeap.isMelee === false && selectedWeap.noShield === false) {
+    let hasShield = false;
+    if (targetBatType.skills.includes('shield')) {
+        hasShield = true;
+    }
+    if (targetBatType.kind === 'bug' && bugSHIELD) {
+        hasShield = true;
+    }
+    if (activeTurn === 'player' && hasShield && selectedWeap.isMelee === false && selectedWeap.noShield === false) {
         if (rand.rand(1,3) >= 2 && !targetBat.tags.includes('shield')) {
             targetBat.tags.push('shield');
         }
@@ -451,7 +458,7 @@ function attack(melee) {
     // agrippeur
     if (selectedBatType.skills.includes('grip') && totalDamage >= 1 && (selectedBatType.size+3 >= targetBatType.size || selectedBatType.name == 'Androks')) {
         let gripbonus = 0;
-        if (selectedBatType.name == 'Androks') {
+        if (selectedBatType.name == 'Androks' || selectedBatType.name == 'Homards') {
             gripbonus = 40;
         }
         if (selectedBatType.name == 'Bourdons') {

@@ -26,6 +26,7 @@ function nextTurn() {
     visibleAliens = [];
     let unitIndex;
     let batType;
+    let hasHide = false;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
@@ -35,8 +36,18 @@ function nextTurn() {
             if (!alienTypesList.includes(batType.name)) {
                 alienTypesList.push(batType.name);
             }
-            if (batType.skills.includes('hide') && !bat.tags.includes('invisible') && bat.salvoLeft >= 1) {
+            hasHide = false;
+            if (batType.skills.includes('hide')) {
+                hasHide = true;
+            }
+            if (batType.kind === 'larve' && larveHIDE) {
+                hasHide = true;
+            }
+            if (hasHide && !bat.tags.includes('invisible') && bat.salvoLeft >= 1) {
                 bat.tags.push('invisible');
+            }
+            if (batType.kind === 'spider' && spiderREG && !bat.tags.includes('regeneration')) {
+                bat.tags.push('regeneration');
             }
             bat.salvoLeft = batType.maxSalvo;
             if (bat.apLeft < 0-bat.ap-bat.ap) {
@@ -57,7 +68,7 @@ function nextTurn() {
             if (rand.rand(1,3) === 1) {
                 tagDelete(bat,'freeze');
             }
-            if (playerInfos.mapTurn > bat.creaTurn+10 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide')) {
+            if (playerInfos.mapTurn > bat.creaTurn+10 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !larveHIDE) {
                 tagDelete(bat,'invisible');
             }
         }
@@ -531,14 +542,14 @@ function tagsEffect(bat,batType) {
         bat.apLeft = bat.apLeft-2;
     }
     // REGENERATION & KIRIN DRUG
-    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg')) {
+    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg')) {
         squadHP = batType.squadSize*batType.hp;
         let batHP = squadHP*batType.squads;
         if (bat.citoyens >= 1) {
             batHP = bat.citoyens*batType.hp;
         }
         let regen;
-        if (bat.tags.includes('kirin') || batType.skills.includes('regeneration')) {
+        if (bat.tags.includes('kirin') || batType.skills.includes('regeneration') || bat.tags.includes('regeneration')) {
             regen = Math.round(batHP*regenPower/100);
         } else {
             regen = Math.round(batHP*slowregPower/100);
