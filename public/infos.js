@@ -51,7 +51,7 @@ function showBatInfos(bat) {
         }
     }
     $('#unitInfos').append('<span class="paramName">Armure</span><span class="paramIcon"><i class="fas fa-shield-alt"></i></span><span class="paramValue">'+armure+'</span><br>');
-    let fortifCover = getCover(bat,true);
+    let fortifCover = getCover(bat,true,false);
     if (bat.tags.includes('fortif')) {
         $('#unitInfos').append('<span class="paramName">Couverture</span><span class="paramIcon"></span><span class="paramValue">'+fortifCover+'</span><br>');
     } else {

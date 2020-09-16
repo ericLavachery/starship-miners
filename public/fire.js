@@ -131,7 +131,7 @@ function combat(melee) {
             if (targetBatType.skills.includes('guerrilla')) {
                 minimumFireAP = minFireAP-7;
             }
-            if (targetBatType.cat === 'buildings') {
+            if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('after')) {
                 minimumFireAP = -999;
             }
             if ((defAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo === 'mine') {
@@ -160,7 +160,7 @@ function combat(melee) {
             if (targetBatType.skills.includes('guerrilla')) {
                 minimumFireAP = minFireAP-7;
             }
-            if (targetBatType.cat === 'buildings') {
+            if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('after')) {
                 minimumFireAP = -999;
             }
             if (targetBat.apLeft > minimumFireAP) {
@@ -176,7 +176,7 @@ function combat(melee) {
                 if (selectedBatType.skills.includes('guerrilla')) {
                     minimumFireAP = minFireAP-7;
                 }
-                if (selectedBatType.cat === 'buildings') {
+                if (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('after')) {
                     minimumFireAP = -999;
                 }
                 if (selectedBat.apLeft > minimumFireAP) {
@@ -1031,7 +1031,7 @@ function combatReport() {
 function shot(weapon,attBatType,bat,batType,shotDice) {
     // returns damage
     let result = {damage:0,hits:0};
-    let cover = getCover(bat,true);
+    let cover = getCover(bat,true,false);
     if (weapon.isMelee || weapon.noShield || attBatType.skills.includes('halfcover')) {
         cover = Math.round(cover/2);
     }
@@ -1080,7 +1080,11 @@ function blast(brochette,attBatType,aoeShots,weapon,bat,batType,shotDice) {
     let newDamage = 0;
     let power = weapon.power;
     let oldPower = weapon.power;
-    let cover = getCover(bat,true);
+    let forAOE = true;
+    if (brochette) {
+        forAOE = false;
+    }
+    let cover = getCover(bat,true,forAOE);
     if (weapon.isMelee || weapon.noShield || attBatType.skills.includes('halfcover')) {
         cover = Math.round(cover/2);
     }

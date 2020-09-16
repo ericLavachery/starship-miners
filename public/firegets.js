@@ -95,7 +95,7 @@ function calcDamage(weapon,power,armor,defBat) {
     return calculatedDmg;
 };
 
-function getCover(bat,withFortif) {
+function getCover(bat,withFortif,forAOE) {
     let cover;
     let batType = getBatType(bat);
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
@@ -125,6 +125,12 @@ function getCover(bat,withFortif) {
         if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
             cover = 0;
         }
+        if (forAOE) {
+            cover = 0;
+        }
+    }
+    if (forAOE) {
+        cover = cover+coverAOE;
     }
     // Fortification
     if (withFortif) {
@@ -155,7 +161,7 @@ function getBatType(bat) {
 };
 
 function getStealth(bat) {
-    let cover = getCover(bat,false);
+    let cover = getCover(bat,false,false);
     let batType = getBatType(bat);
     let stealthBonus = 0;
     if (cover >= 4) {
@@ -602,7 +608,7 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.armors = thisWeapon.armors*ammo.armors;
     thisWeapon.armors = thisWeapon.armors.toFixedNumber(2);
     thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
-    if (ammo.aoe != '') {
+    if (ammo.aoe != '' && thisWeapon.aoe != 'bat') {
         thisWeapon.aoe = ammo.aoe;
     }
     // sila drug

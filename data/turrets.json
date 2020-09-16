@@ -263,7 +263,7 @@
             "power":45,
             "aoe":"squad",
             "sound":"obusier",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker","missile-uridium","missile-nanite","missile-plastanium"],
             "maxAmmo":32,
             "ravitBld":"Arsenal"
         },
@@ -658,7 +658,7 @@
             "power":22,
             "aoe":"squad",
             "sound":"canon_big_x2",
-            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":40,
             "ravitBld":"Poudrière"
         },
@@ -771,7 +771,7 @@
             "power":40,
             "aoe":"squad",
             "sound":"miss",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium"],
             "maxAmmo":6,
             "ravitBld":"Arsenal"
         },
@@ -888,7 +888,7 @@
             "power":33,
             "aoe":"squad",
             "sound":"obusier",
-            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker"],
+            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":30,
             "ravitBld":"Poudrière"
         },

@@ -167,7 +167,7 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "brochette"
     },
     {
         "name": "fireshells-pyratol",
@@ -177,7 +177,17 @@
         "armors": 0.58,
         "accuracy": 1.75,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "brochette"
+    },
+    {
+        "name": "fireshells-nanite",
+        "range": 1,
+        "rof": 1,
+        "power": 3,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "squad"
     },
     {
         "name": "ac-tungsten",
@@ -803,7 +813,7 @@
         "name": "obus-tungsten",
         "range": 1,
         "rof": 1,
-        "power": 0,
+        "power": 4,
         "armors": 0.4,
         "accuracy": 1,
         "apdamage": 0,
@@ -817,6 +827,16 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
+        "aoe": "squad"
+    },
+    {
+        "name": "obus-uridium",
+        "range": 1,
+        "rof": 1,
+        "power": 7,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0.02,
         "aoe": "squad"
     },
     {
@@ -850,12 +870,22 @@
         "aoe": "squad"
     },
     {
+        "name": "obus-nanite",
+        "range": 1,
+        "rof": 1,
+        "power": 6,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "bat"
+    },
+    {
         "name": "obus-gaz",
         "range": 1,
         "rof": 1,
         "power": -12,
         "armors": 0,
-        "accuracy": 1.5,
+        "accuracy": 2,
         "apdamage": 0.03,
         "aoe": "bat"
     },
@@ -863,9 +893,19 @@
         "name": "obus-heatseeker",
         "range": 1.4,
         "rof": 1,
-        "power": 4,
+        "power": 0,
         "armors": 0.5,
-        "accuracy": 1,
+        "accuracy": 1.25,
+        "apdamage": 0,
+        "aoe": "squad"
+    },
+    {
+        "name": "obus-plastanium",
+        "range": 1.4,
+        "rof": 1,
+        "power": 4,
+        "armors": 0.75,
+        "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "squad"
     },
@@ -920,6 +960,16 @@
         "aoe": "squad"
     },
     {
+        "name": "missile-uridium",
+        "range": 1,
+        "rof": 1,
+        "power": 12,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0.02,
+        "aoe": "squad"
+    },
+    {
         "name": "missile-fleche",
         "range": 1.1,
         "rof": 1,
@@ -950,12 +1000,22 @@
         "aoe": "squad"
     },
     {
+        "name": "missile-nanite",
+        "range": 1,
+        "rof": 1,
+        "power": 10,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "bat"
+    },
+    {
         "name": "missile-gaz",
         "range": 1,
         "rof": 1,
         "power": -20,
         "armors": 0,
-        "accuracy": 1.5,
+        "accuracy": 2,
         "apdamage": 0.05,
         "aoe": "bat"
     },
@@ -963,9 +1023,19 @@
         "name": "missile-heatseeker",
         "range": 1.1,
         "rof": 1,
-        "power": 8,
+        "power": 0,
         "armors": 0.5,
         "accuracy": 1.25,
+        "apdamage": 0,
+        "aoe": "squad"
+    },
+    {
+        "name": "missile-plastanium",
+        "range": 1.1,
+        "rof": 1,
+        "power": 8,
+        "armors": 0.75,
+        "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "squad"
     },
@@ -973,7 +1043,7 @@
         "name": "missile-homing",
         "range": 1.4,
         "rof": 1,
-        "power": 8,
+        "power": 4,
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
@@ -1006,6 +1076,16 @@
         "power": 2,
         "armors": 1.25,
         "accuracy": 1.35,
+        "apdamage": 0,
+        "aoe": "squad"
+    },
+    {
+        "name": "grenade-nanite",
+        "range": 1,
+        "rof": 1,
+        "power": 3,
+        "armors": 0.8,
+        "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "squad"
     },
