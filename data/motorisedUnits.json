@@ -2671,7 +2671,7 @@
             "accuracy":10,
             "power":18,
             "aoe":"bat",
-            "sound":"canon_soft_x1",
+            "sound":"bomb_mini_x1",
             "ammo":["grenade","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":3,
             "ravitBld":"Poudrière"
@@ -2711,7 +2711,7 @@
             "dca":4,
             "power":16,
             "aoe":"squad",
-            "sound":"canon_mid_x3",
+            "sound":"bomb_mini_x3",
             "ammo":["obus","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":32,
             "ravitBld":"Poudrière"
@@ -2835,7 +2835,7 @@
             "accuracy":12,
             "power":18,
             "aoe":"bat",
-            "sound":"canon_soft_x3",
+            "sound":"bomb_mini_x3",
             "ammo":["grenade","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":6,
             "ravitBld":"Poudrière"
