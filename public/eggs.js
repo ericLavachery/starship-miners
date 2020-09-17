@@ -798,10 +798,19 @@ function checkEggCat(bat) {
         return 'spider';
     } else if (bat.tags.includes('swarm')) {
         return 'swarm';
-    } else if (bat.tags.includes('blob')) {
-        return 'blob';
     } else {
-        return '';
+        let terName = getTileTerrainName(bat.tileId);
+        if (terName === 'M' || terName === 'C') {
+            return 'bug';
+        } else if (terName === 'F') {
+            return 'spider';
+        } else if (terName === 'S') {
+            return 'larve';
+        } else if (terName === 'B') {
+            return 'swarm';
+        } else {
+            return '';
+        }
     }
 };
 

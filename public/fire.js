@@ -452,7 +452,7 @@ function attack(melee) {
     if (targetBatType.skills.includes('resistpoison') || targetBat.tags.includes('resistpoison')) {
         if (selectedWeap.ammo.includes('gaz')) {
             totalDamage = Math.round(totalDamage/2);
-            console.log('résistance au blast!');
+            console.log('résistance au gaz!');
         }
     }
     // résistance acide
@@ -893,7 +893,7 @@ function defense(melee) {
     if (selectedBatType.skills.includes('resistpoison') || selectedBat.tags.includes('resistpoison')) {
         if (targetWeap.ammo.includes('gaz')) {
             totalDamage = Math.round(totalDamage/2);
-            console.log('résistance au blast!');
+            console.log('résistance au gaz!');
         }
     }
     // résistance acide
