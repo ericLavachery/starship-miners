@@ -952,7 +952,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","prefab","noblub","nolist"],
+        "skills":["nodeathcount","notarget","prefab","noblub","nolist","norepair"],
         "refabTime":1,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
@@ -994,7 +994,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","prefab","noblub","nolist"],
+        "skills":["nodeathcount","notarget","prefab","noblub","nolist","norepair"],
         "refabTime":1,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
@@ -1036,7 +1036,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","prefab","bigblub","nolist"],
+        "skills":["nodeathcount","notarget","prefab","bigblub","nolist","norepair"],
         "refabTime":1,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
