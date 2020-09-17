@@ -99,7 +99,11 @@ function combat(melee) {
     let riposte = false;
     let initiative = true;
     let minimumFireAP;
-    if (distance <= 3 && targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef) {
+    let negSalvo = -4;
+    if (targetBatType.skills.includes('guerrilla') || targetBatType.skills.includes('baddef')) {
+        negSalvo = -3;
+    }
+    if (distance <= 3 && targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef && targetBat.salvoLeft > negSalvo) {
         if ((!targetWeap.noFly || !selectedBatType.skills.includes('fly')) && (!targetWeap.noGround || selectedBatType.skills.includes('fly') || selectedBatType.skills.includes('sauteur'))) {
             riposte = true;
             let aspeed = calcSpeed(selectedBat,selectedWeap,targetWeap,distance,true);
@@ -682,8 +686,10 @@ function attack(melee) {
         $('#report').append('<br><span class="report cy">Bataillon ('+targetBat.type+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
-                batDeathEffect(targetBat,false,'','');
-            }, 3000); // How long do you want the delay to be (in milliseconds)?
+                setTimeout(function (){
+                    batDeathEffect(targetBat,false,'','');
+                }, soundDuration);
+            }, 500);
         } else {
             batDeathEffect(targetBat,false,'','');
         }
@@ -702,9 +708,11 @@ function attack(melee) {
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
-                batDeathEffect(selectedBat,false,'Bataillon détruit','Suicide');
-                $('#unitInfos').empty();
-            }, 3000); // How long do you want the delay to be (in milliseconds)?
+                setTimeout(function (){
+                    batDeathEffect(selectedBat,false,'Bataillon détruit','Suicide');
+                    $('#unitInfos').empty();
+                }, soundDuration);
+            }, 500);
         } else {
             batDeathEffect(selectedBat,false,'Bataillon détruit','Suicide');
         }
@@ -1049,8 +1057,10 @@ function defense(melee) {
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
-                batDeathEffect(selectedBat,false,'','');
-            }, 3000); // How long do you want the delay to be (in milliseconds)?
+                setTimeout(function (){
+                    batDeathEffect(selectedBat,false,'','');
+                }, soundDuration);
+            }, 500);
         } else {
             batDeathEffect(selectedBat,false,'','');
         }
@@ -1063,7 +1073,14 @@ function defense(melee) {
         }
     }
     // remove ap
-    targetBat.apLeft = targetBat.apLeft-1;
+    if (!targetBatType.skills.includes('guerrilla')) {
+        targetBat.apLeft = targetBat.apLeft-1;
+    }
+    if (targetBat.salvoLeft >= 1) {
+        targetBat.salvoLeft = 0;
+    } else {
+        targetBat.salvoLeft = targetBat.salvoLeft-1;
+    }
     if (squadsOut >= 1 && activeTurn == 'aliens') {
         targetBat.xp = targetBat.xp+xpFactor;
     }
