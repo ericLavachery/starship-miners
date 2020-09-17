@@ -448,6 +448,8 @@ function checkPossibleJumps() {
     if (selectedBatType.skills.includes('fouisseur') || selectedBatType.skills.includes('sauteur')) {
         if (selectedBatType.skills.includes('errant')) {
             maxDistance = 8;
+        } else if (selectedBatType.skills.includes('anycap')) {
+            maxDistance = 6;
         } else {
             if (selectedBatType.skills.includes('sauteur')) {
                 maxDistance = 5;
@@ -1148,7 +1150,7 @@ function isCamoBlock() {
 
 function alienBonus() {
     bugROF = 1;
-    spiderREG = false;
+    spiderRG = false;
     bugSHIELD = false;
     larveHIDE = false;
     let batIndex;
@@ -1160,8 +1162,8 @@ function alienBonus() {
             if (batType.skills.includes('bugboost')) {
                 bugROF = 1.5;
             }
-            if (batType.skills.includes('spiderreg')) {
-                spiderREG = true;
+            if (batType.skills.includes('spiderrange')) {
+                spiderRG = true;
             }
             if (batType.skills.includes('larvehide')) {
                 larveHIDE = true;

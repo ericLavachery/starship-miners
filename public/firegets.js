@@ -602,6 +602,16 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.range = Math.ceil(thisWeapon.range*ammo.range);
     }
+    // spiderRG
+    if (!thisWeapon.isMelee && spiderRG && batType.kind === 'spider') {
+        if (thisWeapon.range === 0) {
+            thisWeapon.range = 1;
+        } else if (thisWeapon.range === 1) {
+            thisWeapon.range = 2;
+        } else {
+            thisWeapon.range = Math.ceil(thisWeapon.range*1.5);
+        }
+    }
     thisWeapon.rof = Math.round(thisWeapon.rof*ammo.rof);
     thisWeapon.power = thisWeapon.power+ammo.power;
     thisWeapon.apdamage = ammo.apdamage;
@@ -637,8 +647,8 @@ function weaponAdj(weapon,bat,wn) {
     let tile = zone[tileIndex];
     let vision = 1;
     // ELEVATION
-    console.log(thisWeapon.elevation);
-    console.log(tile.terrain);
+    // console.log(thisWeapon.elevation);
+    // console.log(tile.terrain);
     if (tile.terrain == 'M') {
         vision = 3;
         if (thisWeapon.elevation === 1) {

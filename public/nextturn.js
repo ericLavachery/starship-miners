@@ -46,9 +46,6 @@ function nextTurn() {
             if (hasHide && !bat.tags.includes('invisible') && bat.salvoLeft >= 1) {
                 bat.tags.push('invisible');
             }
-            if (batType.kind === 'spider' && spiderREG && !bat.tags.includes('regeneration')) {
-                bat.tags.push('regeneration');
-            }
             bat.salvoLeft = batType.maxSalvo;
             if (bat.apLeft < 0-bat.ap-bat.ap) {
                 bat.apLeft = 0-bat.ap-bat.ap;

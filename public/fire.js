@@ -295,6 +295,10 @@ function attack(melee) {
     if (bugROF > 1 && selectedBatType.kind === 'bug') {
         shots = Math.round(shots*bugROF);
     }
+    // spiderRG
+    if (spiderRG && selectedBatType.kind === 'spider') {
+        shots = Math.round(shots*1.25);
+    }
     // berserk (bonus ROF)
     if (activeTurn === 'player') {
         if (selectedBatType.skills.includes('berserk') && selectedBat.damage >= 1) {
@@ -431,14 +435,30 @@ function attack(melee) {
     // résistance au feu
     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('pyratol') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov')) {
         if (targetBatType.skills.includes('resistfeu') || targetBat.tags.includes('resistfeu')) {
-            totalDamage = Math.round(totalDamage/1.5);
+            totalDamage = Math.round(totalDamage/2);
             console.log('résistance au feu!');
+        }
+    }
+    // résistance blast
+    if (targetBatType.skills.includes('resistblast') || targetBat.tags.includes('resistblast')) {
+        if (selectedWeap.ammo.includes('bfg') || selectedWeap.ammo.includes('nanite') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('dynamite') || selectedWeap.ammo.includes('bombe') || selectedWeap.ammo.includes('explosif') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('grenade') || selectedWeap.ammo.includes('disco')) {
+            if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm')) {
+                totalDamage = Math.round(totalDamage/2);
+                console.log('résistance au blast!');
+            }
+        }
+    }
+    // résistance poison (gaz)
+    if (targetBatType.skills.includes('resistpoison') || targetBat.tags.includes('resistpoison')) {
+        if (selectedWeap.ammo.includes('gaz')) {
+            totalDamage = Math.round(totalDamage/2);
+            console.log('résistance au blast!');
         }
     }
     // résistance acide
     if (selectedWeap.name.includes('acide')) {
         if (targetBatType.skills.includes('resistacide') || targetBat.tags.includes('resistacide')) {
-            totalDamage = Math.round(totalDamage/1.5);
+            totalDamage = Math.round(totalDamage/2);
             console.log('résistance acide!');
         }
     }
@@ -787,6 +807,10 @@ function defense(melee) {
     if (bugROF > 1 && targetBatType.kind === 'bug') {
         shots = Math.round(shots*bugROF);
     }
+    // spiderRG
+    if (spiderRG && targetBatType.kind === 'spider') {
+        shots = Math.round(shots*1.25);
+    }
     // Champs de mines
     if (targetWeap.ammo === 'mine') {
         shots = minesExploded;
@@ -852,14 +876,30 @@ function defense(melee) {
     // résistance au feu
     if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('pyratol') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov')) {
         if (selectedBatType.skills.includes('resistfeu') || selectedBat.tags.includes('resistfeu')) {
-            totalDamage = Math.round(totalDamage/1.5);
+            totalDamage = Math.round(totalDamage/2);
             console.log('résistance au feu!');
+        }
+    }
+    // résistance blast
+    if (selectedBatType.skills.includes('resistblast') || selectedBat.tags.includes('resistblast')) {
+        if (targetWeap.ammo.includes('bfg') || targetWeap.ammo.includes('nanite') || targetWeap.ammo.includes('suicide') || targetWeap.ammo.includes('mine') || targetWeap.ammo.includes('autodestruction') || targetWeap.ammo.includes('dynamite') || targetWeap.ammo.includes('bombe') || targetWeap.ammo.includes('explosif') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('grenade') || targetWeap.ammo.includes('disco')) {
+            if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm')) {
+                totalDamage = Math.round(totalDamage/2);
+                console.log('résistance au blast!');
+            }
+        }
+    }
+    // résistance poison (gaz)
+    if (selectedBatType.skills.includes('resistpoison') || selectedBat.tags.includes('resistpoison')) {
+        if (targetWeap.ammo.includes('gaz')) {
+            totalDamage = Math.round(totalDamage/2);
+            console.log('résistance au blast!');
         }
     }
     // résistance acide
     if (targetWeap.name.includes('acide')) {
         if (selectedBatType.skills.includes('resistacide') || selectedBat.tags.includes('resistacide')) {
-            totalDamage = Math.round(totalDamage/1.5);
+            totalDamage = Math.round(totalDamage/2);
             console.log('résistance acide!');
         }
     }
