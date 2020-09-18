@@ -569,19 +569,20 @@ function cocoonSpawn(bat) {
     } else {
         if (eggTurn < 3) {
             let classes = [];
+            let eggLevel = playerInfos.mapDiff+Math.floor(playerInfos.mapTurn/50)-1;
             let spawnNum = 4;
             if (eggTurn === 2) {
-                spawnNum = 6+Math.floor(playerInfos.mapTurn/20);
-                if (playerInfos.mapDiff >= 10) {
+                spawnNum = 6+Math.floor(playerInfos.mapTurn/25);
+                if (eggLevel >= 10) {
                     classes.push('A');
-                } else if (playerInfos.mapDiff >= 8 || playerInfos.mapTurn >= 200) {
+                } else if (eggLevel >= 8) {
                     classes.push('A');
                     classes.push('B');
-                } else if (playerInfos.mapDiff >= 6 || playerInfos.mapTurn >= 150) {
+                } else if (eggLevel >= 6) {
                     classes.push('A');
                     classes.push('B');
                     classes.push('C');
-                } else if (playerInfos.mapDiff >= 4 || playerInfos.mapTurn >= 100) {
+                } else if (eggLevel >= 4) {
                     classes.push('B');
                     classes.push('C');
                 } else {
@@ -589,7 +590,7 @@ function cocoonSpawn(bat) {
                 }
             } else {
                 spawnNum = playerInfos.mapDiff+(rand.rand(1,4));
-                if (playerInfos.mapDiff >= 8) {
+                if (playerInfos.mapDiff >= 7) {
                     classes.push('B');
                     classes.push('C');
                 } else {

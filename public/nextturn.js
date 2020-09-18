@@ -98,6 +98,7 @@ function nextTurnEnd() {
     let boostedTeams = [];
     let prayedTeams = [];
     medicalTransports = [];
+    let transBat = {};
     playerInfos.bldList = [];
     landers = [];
     let thisAPBonus;
@@ -170,6 +171,11 @@ function nextTurnEnd() {
             }
             if (!medicalTransports.includes(bat.id) && batType.transUnits >= 1 && batType.skills.includes('medic')) {
                 medicalTransports.push(bat.id);
+            }
+            if (bat.loc === "trans") {
+                transBat = getBatById(bat.locId);
+                bat.tileId = transBat.tileId;
+                bat.oldTileId = transBat.tileId;
             }
             // nolist
             if (bat.loc === "zone" && bat.tags.includes('nolist')) {

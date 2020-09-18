@@ -223,7 +223,7 @@ function goDrug(apCost,drug) {
     let ravitLeft = 0;
     let biggestRavit = 0;
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone") {
+        if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             if (batType.skills.includes('dealer') && batType.skills.includes(drug)) {
                 ravitLeft = calcRavit(bat);
@@ -284,7 +284,7 @@ function checkDrugs(myBat) {
     let batType;
     let allDrugs = [];
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone") {
+        if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             if (batType.skills.includes('dealer')) {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1 && calcRavit(bat) >= 1) {
