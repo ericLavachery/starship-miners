@@ -539,14 +539,16 @@ function tagsEffect(bat,batType) {
         bat.apLeft = bat.apLeft-2;
     }
     // REGENERATION & KIRIN DRUG
-    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg')) {
+    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('heal')) {
         squadHP = batType.squadSize*batType.hp;
         let batHP = squadHP*batType.squads;
         if (bat.citoyens >= 1) {
             batHP = bat.citoyens*batType.hp;
         }
         let regen;
-        if (bat.tags.includes('kirin') || batType.skills.includes('regeneration') || bat.tags.includes('regeneration')) {
+        if (batType.skills.includes('heal')) {
+            regen = batHP;
+        } else if (bat.tags.includes('kirin') || batType.skills.includes('regeneration') || bat.tags.includes('regeneration')) {
             regen = Math.round(batHP*regenPower/100);
         } else {
             regen = Math.round(batHP*slowregPower/100);

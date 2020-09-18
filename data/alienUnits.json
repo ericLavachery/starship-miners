@@ -288,11 +288,11 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["shield","minaccu"],
+        "skills":["shield","minaccu","regeneration","reactpoison"],
         "deathFx":"185366__anwul__monster",
         "spawnFx":"195733__nornalbion__large-monster-mante",
         "fxPriority":7,
-        "killRes":{"Bugium":26,"Swarmine":33,"Bossium":36,"Egidium":50}
+        "killRes":{"Bugium":26,"Swarmine":33,"Bossium":36,"Egidium":50,"Mendium":14}
     },
     {
         "id":3,
@@ -349,7 +349,7 @@
         "squadSize":3,
         "crew":1,
         "hp":350,
-        "armor":3,
+        "armor":8,
         "size":50,
         "speed":0,
         "stealth":0,
@@ -375,11 +375,11 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fear","ponte"],
+        "skills":["fear","ponte","heal"],
         "deathFx":"185366__anwul__monster",
         "spawnFx":"436570__magicthighs__corellas-screeching_glaireuse",
         "fxPriority":5,
-        "killRes":{"Bugium":5,"Aranium":34,"Bossium":40,"Creatite":6,"Slime":42}
+        "killRes":{"Bugium":13,"Aranium":34,"Bossium":40,"Creatite":6,"Slime":42,"Mendium":47}
     },
     {
         "id":5,
@@ -663,7 +663,7 @@
         "weapon2":{
             "name":"Jet de poison",
             "cost":5,
-            "range":6,
+            "range":8,
             "elevation":2,
             "noFly":false,
             "noDef":true,
@@ -708,7 +708,7 @@
         "weapon":{
             "name":"Jet d'acide",
             "cost":1,
-            "range":2,
+            "range":3,
             "elevation":2,
             "noFly":false,
             "isMelee":false,
@@ -726,9 +726,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["shield","inflammable"],
+        "skills":["shield","inflammable","slowreg","resistblast"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"Bugium":13,"Bossium":18,"Slime":22,"Egidium":24}
+        "killRes":{"Bugium":13,"Bossium":18,"Slime":22,"Egidium":24,"Mendium":5}
     },
     {
         "id":13,
@@ -1518,11 +1518,11 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","capbld","fear","hover","ponte","resistfeu","resistpoison","fouisseur"],
+        "skills":["heal","capbld","fear","hover","ponte","resistfeu","fouisseur"],
         "deathFx":"185366__anwul__monster",
         "spawnFx":"142932__1pjladd2__burp-monster_megagrubz",
         "fxPriority":2,
-        "killRes":{"Bugium":11,"Larvium":23,"Mendium":23,"Bossium":37,"Creatite":6,"Slime":25}
+        "killRes":{"Bugium":11,"Larvium":23,"Mendium":68,"Bossium":37,"Creatite":6,"Slime":25}
     },
     {
         "id":34,
