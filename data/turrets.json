@@ -406,7 +406,7 @@
         "skills":["cible","longshot","defense","recupcit","prefab","routes","vision"],
         "mecanoCost":15,
         "refabTime":25,
-        "bldCost":{"Scrap":360,"Fer":120,"Soufre":162,"Plomb":162},
+        "resCost":{"Scrap":360,"Fer":120,"Soufre":162,"Plomb":162},
         "fuzz":1,
         "deathFx":"explo1"
     },

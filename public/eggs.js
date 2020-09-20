@@ -89,7 +89,7 @@ function checkEggsDrop() {
     if (aliens.length >= maxAliens) {
         dropChance = 0;
     }
-    if (playerInfos.eggPause) {
+    if (playerInfos.eggPause || playerInfos.bldList.includes('Champ de force')) {
         dropChance = 0;
     }
     console.log('dropChance='+dropChance);

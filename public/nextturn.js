@@ -117,7 +117,7 @@ function nextTurnEnd() {
             if (batType.skills.includes('transorbital') || bat.tags.includes('reserve')) {
                 landers.push(bat);
             }
-            if (batType.cat === 'buildings' && !batType.skills.includes('nolist')) {
+            if (batType.cat === 'buildings' && !batType.skills.includes('nolist') && !bat.tags.includes('construction')) {
                 if (!playerInfos.bldList.includes(batType.name)) {
                     playerInfos.bldList.push(batType.name);
                 }
@@ -315,6 +315,14 @@ function nextTurnEnd() {
             if (batType.skills.includes('reserve') && !bat.tags.includes('reserve') && landerAdjTiles.includes(bat.tileId)) {
                 bat.tags.push('reserve');
             }
+            // fin champ de force
+            if (bat.type === 'Champ de force') {
+                if (playerInfos.mapTurn >= bat.creaTurn+25) {
+                    batDeathEffect(bat,true,'Bataillon détruit',bat.type+' expiré.');
+                    bat.squadsLeft = 0;
+                    checkDeath(bat,batType);
+                }
+            }
         }
     });
     killBatList();
@@ -384,7 +392,7 @@ function turnInfo() {
     $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
     $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
     $('#tour').append('Difficulté '+playerInfos.mapAdjDiff+' / '+playerInfos.mapDiff+'<br>');
-    if (playerInfos.eggPause) {
+    if (playerInfos.eggPause || playerInfos.bldList.includes('Champ de force')) {
         $('#tour').append('<span class="cy">Pause</span><br>');
     }
     $('#tour').append('Morts <span class="or">'+playerInfos.unitsLost+'</span> / '+playerInfos.aliensKilled+' / <span class="cy">'+playerInfos.eggsKilled+'</span>');
