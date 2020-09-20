@@ -198,6 +198,15 @@
         "batch": 3
     },
     {
+        "id": 41,
+        "name": "Palladium",
+        "bld": "Mine",
+        "level": 3,
+        "rarity": 8,
+        "cat": "white",
+        "batch": 2
+    },
+    {
         "id": 21,
         "name": "Eau",
         "bld": "Pompe",
@@ -376,15 +385,6 @@
         "rarity": 5,
         "cat": "blue-sky",
         "batch": 6
-    },
-    {
-        "id": 41,
-        "name": "Palladium",
-        "bld": "Mine",
-        "level": 3,
-        "rarity": 8,
-        "cat": "sky",
-        "batch": 4
     },
     {
         "id": 42,

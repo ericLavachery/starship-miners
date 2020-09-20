@@ -297,9 +297,19 @@ function putBat(tileId,citoyens,xp,startTag) {
                     newBat.oldapLeft = 0;
                     newBat.salvoLeft = 0;
                 } else {
-                    newBat.apLeft = conselUnit.ap-Math.round(conselUnit.refabTime*conselUnit.ap/25);
-                    newBat.oldapLeft = conselUnit.ap-Math.round(conselUnit.refabTime*conselUnit.ap/25);
-                    newBat.salvoLeft = conselUnit.maxSalvo;
+                    if (conselUnit.skills.includes('domeconst')) {
+                        newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/25)*10);
+                        newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/25)*10);
+                        newBat.salvoLeft = conselUnit.maxSalvo;
+                    } else if (conselUnit.skills.includes('longconst')) {
+                        newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/25)*3);
+                        newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/25)*3);
+                        newBat.salvoLeft = conselUnit.maxSalvo;
+                    } else {
+                        newBat.apLeft = conselUnit.ap-Math.round(conselUnit.refabTime*conselUnit.ap/25);
+                        newBat.oldapLeft = conselUnit.ap-Math.round(conselUnit.refabTime*conselUnit.ap/25);
+                        newBat.salvoLeft = conselUnit.maxSalvo;
+                    }
                 }
             } else {
                 newBat.apLeft = conselUnit.ap;
@@ -356,6 +366,9 @@ function putBat(tileId,citoyens,xp,startTag) {
             newBat.tags = [startTag];
         } else {
             newBat.tags = [];
+        }
+        if (!conselTriche) {
+            newBat.tags.push('construction');
         }
         if (conselUnit.skills.includes('hide') || (conselUnit.kind === 'larve' && larveHIDE)) {
             newBat.tags.push('invisible');

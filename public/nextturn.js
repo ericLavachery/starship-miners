@@ -275,9 +275,6 @@ function nextTurnEnd() {
                 console.log('camoAP '+bat.camoAP);
             }
             bat.apLeft = bat.apLeft+ap;
-            if (bat.apLeft < 0-(bat.ap*2)) {
-                bat.apLeft = 0-(bat.ap*2);
-            }
             if (bat.apLeft > oldAP) {
                 bat.apLeft = oldAP;
             }
@@ -406,6 +403,9 @@ function tagsUpdate(bat) {
     tagDelete(bat,'noBis1');
     tagDelete(bat,'noBis2');
     tagDelete(bat,'action');
+    if (bat.apLeft >= 1) {
+        tagDelete(bat,'construction');
+    }
     if (!bat.tags.includes('prayer') && rand.rand(1,4) === 1) {
         tagDelete(bat,'spirit');
     }
