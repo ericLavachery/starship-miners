@@ -553,12 +553,12 @@ function nextTile(myTileIndex,size) {
 
 function addRes(zone) {
     let resLevelDice;
-    let mythicMin = Math.floor(playerInfos.mapDiff/2)-2;
-    let mythicMax = playerInfos.mapDiff;
+    let mythicMin = Math.floor(playerInfos.mapDiff/1.42)-2;
+    let mythicMax = playerInfos.mapDiff+1;
     let mythicNum = 0;
     let baseMin = 17+(playerInfos.mapDiff*3);
     let baseNum = 0;
-    let redMin = Math.floor(playerInfos.mapDiff/1.5)+5;
+    let redMin = Math.floor(playerInfos.mapDiff/1.42)+5;
     let redNum = 0;
     if (playerInfos.dark) {
         mythicMin = mythicMin+3+Math.floor(playerInfos.mapDiff/2);

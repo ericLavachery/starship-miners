@@ -599,7 +599,7 @@ function cocoonSpawn(bat) {
             }
             console.log('spawnNum='+spawnNum);
             console.log(classes);
-            let eggCat = checkEggCat(bat);
+            let eggCat = checkputEggKind(bat);
             if (eggCat === '') {
                 eggCat = newEggCat();
             }
@@ -734,7 +734,7 @@ function eggSpawn(bat,fromEgg) {
                 }
             }
             console.log(classes);
-            let eggCat = checkEggCat(bat);
+            let eggCat = checkputEggKind(bat);
             console.log('eggCat: '+eggCat);
             let checkDiceMax = 0;
             let checkDice;
@@ -785,12 +785,26 @@ function eggSpawn(bat,fromEgg) {
 };
 
 function putEggCat(bat,kind) {
-    if (!bat.tags.includes('bug') && !bat.tags.includes('larve') && !bat.tags.includes('swarm') && !bat.tags.includes('spider') && !bat.tags.includes('blob')) {
+    if (!bat.tags.includes('bug') && !bat.tags.includes('larve') && !bat.tags.includes('swarm') && !bat.tags.includes('spider')) {
         bat.tags.push(kind);
     }
 };
 
-function checkEggCat(bat) {
+function getEggKind(bat) {
+    let eggKind = '';
+    if (bat.tags.includes('bug')) {
+        eggKind = 'bug';
+    } else if (bat.tags.includes('larve')) {
+        eggKind = 'larve';
+    } else if (bat.tags.includes('spider')) {
+        eggKind = 'spider';
+    } else if (bat.tags.includes('swarm')) {
+        eggKind = 'swarm';
+    }
+    return eggKind;
+};
+
+function checkputEggKind(bat) {
     if (bat.tags.includes('bug')) {
         return 'bug';
     } else if (bat.tags.includes('larve')) {
@@ -802,12 +816,16 @@ function checkEggCat(bat) {
     } else {
         let terName = getTileTerrainName(bat.tileId);
         if (terName === 'M' || terName === 'C') {
+            bat.tags.push('bug');
             return 'bug';
         } else if (terName === 'F') {
+            bat.tags.push('spider');
             return 'spider';
         } else if (terName === 'S') {
+            bat.tags.push('larve');
             return 'larve';
         } else if (terName === 'B') {
+            bat.tags.push('swarm');
             return 'swarm';
         } else {
             return '';
@@ -898,18 +916,4 @@ function unveilAliens(myBat) {
         });
     }
     centerMap();
-};
-
-function getEggKind(bat) {
-    let eggKind = '';
-    if (bat.tags.includes('bug')) {
-        eggKind = 'bug';
-    } else if (bat.tags.includes('larve')) {
-        eggKind = 'larve';
-    } else if (bat.tags.includes('spider')) {
-        eggKind = 'spider';
-    } else if (bat.tags.includes('swarm')) {
-        eggKind = 'swarm';
-    }
-    return eggKind;
 };

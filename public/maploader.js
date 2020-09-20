@@ -143,6 +143,7 @@ function showAlien(bat) {
     let resHere = showRes(bat.tileId);
     let degNum = getDamageBar(bat);
     let myKind = getEggKind(bat);
+    // console.log('myKind='+myKind);
     let tagz = ' '+myKind;
     if (bat.tags.includes('shield')) {
         tagz = tagz+' (bouclier)';
