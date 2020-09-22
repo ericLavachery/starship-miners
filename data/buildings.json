@@ -459,7 +459,7 @@
     {
         "id":175,
         "name":"Dôme",
-        "pic":"forcefield",
+        "pic":"dome",
         "cat":"buildings",
         "kind":"zero-construction",
         "sort":5,
