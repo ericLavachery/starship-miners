@@ -103,6 +103,9 @@ function combat(melee) {
     if (targetBatType.skills.includes('guerrilla') || targetBatType.skills.includes('baddef')) {
         negSalvo = -3;
     }
+    if (targetBatType.skills.includes('gooddef')) {
+        negSalvo = -6;
+    }
     if (distance <= 3 && targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef && targetBat.salvoLeft > negSalvo) {
         if ((!targetWeap.noFly || !selectedBatType.skills.includes('fly')) && (!targetWeap.noGround || selectedBatType.skills.includes('fly') || selectedBatType.skills.includes('sauteur'))) {
             riposte = true;
