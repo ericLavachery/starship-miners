@@ -690,6 +690,26 @@
         "aoe": ""
     },
     {
+        "name": "trap",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.75,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "trap-suicide",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "armors": 0.75,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
         "name": "suicide",
         "range": 1,
         "rof": 1,

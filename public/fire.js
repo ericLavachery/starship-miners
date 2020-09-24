@@ -410,7 +410,7 @@ function attack(melee) {
         console.log('AP Damage : '+apDamage);
     }
     // web
-    if (selectedWeap.ammo.includes('web')) {
+    if (selectedWeap.ammo.includes('web') || selectedWeap.ammo.includes('trap')) {
         let webDamage = totalHits;
         webDamage = Math.ceil(webDamage*18/Math.sqrt(targetBatType.hp)/(targetBatType.size+7));
         if (targetBatType.cat != 'aliens') {
@@ -558,11 +558,20 @@ function attack(melee) {
     }
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
-        if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium')) {
+        if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium') || selectedWeap.ammo.includes('trap')) {
             if (!targetBatType.skills.includes('resistpoison')) {
                 if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.caLevel < 3)) || targetBatType.cat == 'aliens') {
                     targetBat.tags.push('poison');
                     if (selectedWeap.ammo.includes('atium')) {
+                        targetBat.tags.push('poison');
+                        targetBat.tags.push('poison');
+                    }
+                    if (selectedWeap.ammo.includes('trap')) {
+                        targetBat.tags.push('poison');
+                    }
+                    if (selectedWeap.ammo.includes('trap-suicide')) {
+                        targetBat.tags.push('poison');
+                        targetBat.tags.push('poison');
                         targetBat.tags.push('poison');
                         targetBat.tags.push('poison');
                     }
@@ -932,7 +941,7 @@ function defense(melee) {
         console.log('AP Damage : '+apDamage);
     }
     // web
-    if (targetWeap.ammo.includes('web')) {
+    if (targetWeap.ammo.includes('web') || targetWeap.ammo.includes('trap')) {
         let webDamage = totalHits;
         webDamage = Math.ceil(webDamage*18/Math.sqrt(selectedBatType.hp)/(selectedBatType.size+7));
         if (selectedBatType.cat != 'aliens') {
@@ -957,11 +966,14 @@ function defense(melee) {
     // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
-        if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium')) {
+        if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium') || targetWeap.ammo.includes('trap')) {
             if ((selectedBatType.cat == 'infantry' && (!selectedBatType.skills.includes('mutant') || playerInfos.caLevel < 3)) || selectedBatType.cat == 'aliens') {
                 selectedBat.tags.push('poison');
                 if (targetWeap.ammo.includes('atium')) {
                     selectedBat.tags.push('poison');
+                    selectedBat.tags.push('poison');
+                }
+                if (targetWeap.ammo.includes('trap')) {
                     selectedBat.tags.push('poison');
                 }
                 console.log('Poison!');
