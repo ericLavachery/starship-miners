@@ -644,8 +644,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","camo","guerrilla","embuscade","selfbadmedic","ranger","sentinelle","noblub"],
+        "skills":["fouille","fortif","cible","camo","guerrilla","embuscade","selfbadmedic","ranger","sentinelle","noblub","pieges"],
         "mediCost":6,
+        "maxSkill":4,
         "fuzz":-1,
         "deathFx":"219149__musability__female-wilhelm-scream-audacity"
     },
@@ -1792,8 +1793,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","embuscade","camo","guerrilla","ranger","sentinelle","selfbadmedic","survivor","noblub","baddef"],
+        "skills":["fouille","fortif","cible","embuscade","camo","guerrilla","ranger","sentinelle","selfbadmedic","survivor","noblub","baddef","pieges"],
         "mediCost":8,
+        "maxSkill":4,
         "fuzz":-1,
         "deathFx":"219149__musability__female-wilhelm-scream-audacity"
     },
@@ -2205,8 +2207,9 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","guerrilla","selfbadmedic","maycamo","moto","defense"],
+        "skills":["fouille","fortif","cible","guerrilla","selfbadmedic","maycamo","moto","defense","pieges"],
         "mediCost":15,
+        "maxSkill":8,
         "fuzz":1,
         "deathFx":"195954__minian89__death-blood-splatter"
     },

@@ -292,7 +292,7 @@ function putBat(tileId,citoyens,xp,startTag) {
             newBat.salvoLeft = conselUnit.maxSalvo;
         } else {
             if (conselUnit.refabTime >= 1) {
-                if (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs') {
+                if (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs' || conselUnit.name == 'Pièges') {
                     newBat.apLeft = 0;
                     newBat.oldapLeft = 0;
                     newBat.salvoLeft = 0;
@@ -367,7 +367,7 @@ function putBat(tileId,citoyens,xp,startTag) {
         } else {
             newBat.tags = [];
         }
-        if (!conselTriche) {
+        if (!conselTriche && conselUnit.cat != 'aliens') {
             newBat.tags.push('construction');
         }
         if (conselUnit.skills.includes('hide') || (conselUnit.kind === 'larve' && larveHIDE)) {

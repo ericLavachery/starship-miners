@@ -141,7 +141,7 @@ function combat(melee) {
             if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('after')) {
                 minimumFireAP = -999;
             }
-            if ((defAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo === 'mine') {
+            if ((defAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap') {
                 defense(melee);
                 if (!isFFW) {
                     soundWeap = targetWeap;
@@ -659,7 +659,7 @@ function attack(melee) {
         $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
     }
     // Champs de mines
-    if (targetWeap.ammo === 'mine') {
+    if (targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap') {
         minesExploded = Math.floor(totalDamage/targetBatType.hp);
         if (minesExploded > targetBatType.squadSize*targetBatType.squads) {
             minesExploded = targetBatType.squadSize*targetBatType.squads;
@@ -832,7 +832,7 @@ function defense(melee) {
         shots = Math.round(shots*1.25);
     }
     // Champs de mines
-    if (targetWeap.ammo === 'mine') {
+    if (targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap') {
         shots = minesExploded;
         console.log('shots: '+shots);
     }

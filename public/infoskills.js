@@ -623,6 +623,30 @@ function skillsInfos(bat,batUnitType) {
             }
         }
     }
+    // POSE PIEGES
+    if (batUnitType.skills.includes('pieges')) {
+        freeConsTile = checkFreeConsTile(bat);
+        if (freeConsTile) {
+            let minesLeft = calcRavit(bat);
+            balise = 'h4';
+            if (Object.keys(conselUnit).length >= 1) {
+                balise = 'h3';
+            }
+            apCost = Math.round(bat.ap*1.5);
+            if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`piege`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Pièges</'+balise+'></span>');
+            } else {
+                if (minesLeft <= 0) {
+                    skillMessage = "Plus pièges";
+                } else if (inMelee) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Pièges</h4></span>');
+            }
+        }
+    }
     // POSE CHAMP DE MINES
     if (batUnitType.skills.includes('landmine')) {
         freeConsTile = checkFreeConsTile(bat);

@@ -356,6 +356,8 @@ function dropStuff(apCost,mineType) {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Barbelés (scrap)'));
     } else if (mineType === 'barb-taser') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Barbelés (taser)'));
+    } else if (mineType === 'piege') {
+        unitIndex = unitTypes.findIndex((obj => obj.name === 'Pièges'));
     }
     conselUnit = unitTypes[unitIndex];
     conselAmmos = ['xxx','xxx','xxx'];

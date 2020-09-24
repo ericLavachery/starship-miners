@@ -1082,11 +1082,11 @@
         "kind":"zero-defense",
         "sort":0,
         "squads":6,
-        "squadSize":12,
+        "squadSize":6,
         "crew":0,
-        "hp":3,
+        "hp":10,
         "armor":0,
-        "size":2,
+        "size":6,
         "stealth":0,
         "speed":-35,
         "ap":60,
@@ -1096,9 +1096,9 @@
             "cost":15,
             "range":1,
             "noAtt":true,
-            "rof":5,
+            "rof":3,
             "accuracy":50,
-            "power":9,
+            "power":7,
             "aoe":"unit",
             "sound":"bow",
             "ammo":["trap"]
@@ -1108,9 +1108,9 @@
             "cost":1,
             "range":1,
             "noDef":true,
-            "rof":60,
+            "rof":36,
             "accuracy":25,
-            "power":9,
+            "power":7,
             "aoe":"unit",
             "sound":"bow",
             "ammo":["trap-suicide"]
@@ -1123,7 +1123,7 @@
         "skills":["after","nodeathcount","notarget","halfcover","prefab","nolist","norepair","nobld"],
         "refabTime":35,
         "fuzz":-2,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"bow"
     },
     {
         "id":43,
