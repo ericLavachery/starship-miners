@@ -637,7 +637,7 @@ function skillsInfos(bat,batUnitType) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`piege`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Pièges</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {
-                    skillMessage = "Plus pièges";
+                    skillMessage = "Plus de pièges";
                 } else if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else {
