@@ -30,6 +30,7 @@ function nextTurn() {
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
+            deFog(bat,batType);
             if (!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) {
                 visibleAliens.push(bat.tileId);
             }
@@ -114,6 +115,7 @@ function nextTurnEnd() {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
+            deFog(bat,batType);
             if (batType.skills.includes('transorbital') || bat.tags.includes('reserve')) {
                 landers.push(bat);
             }
@@ -322,6 +324,10 @@ function nextTurnEnd() {
                     bat.squadsLeft = 0;
                     checkDeath(bat,batType);
                 }
+            }
+            // FOG
+            if (bat.tags.includes('fog')) {
+                fogEffect(bat);
             }
         }
     });

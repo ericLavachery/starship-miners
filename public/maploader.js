@@ -166,6 +166,9 @@ function showAlien(bat) {
     if (bat.tags.includes('freeze')) {
         tagz = tagz+' (freeze)';
     }
+    if (bat.tags.includes('fogged')) {
+        tagz = tagz+' (fog)';
+    }
     if (batType.skills.includes('invisible') || bat.tags.includes('invisible') || (playerInfos.dark && !undarkNow.includes(bat.tileId))) {
         $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
     } else {

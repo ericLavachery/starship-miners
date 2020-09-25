@@ -415,3 +415,83 @@ function checkFreeConsTile(bat) {
     });
     return freeTile;
 };
+
+function fogEffect(myBat) {
+    let fogRange = 5;
+    let fogPoison = 1;
+    let distance;
+    let batType = {};
+    let i = 1;
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            distance = calcDistance(myBat.tileId,bat.tileId);
+            if (distance <= fogRange) {
+                if (!bat.tags.includes('invisible')) {
+                    bat.tags.push('invisible');
+                }
+                if (!bat.tags.includes('fogged')) {
+                    bat.tags.push('fogged');
+                }
+                batType = getBatType(bat);
+                fogPoison = Math.ceil(Math.sqrt(batType.size)/2);
+                i = 1;
+                while (i <= fogPoison) {
+                    bat.tags.push('poison');
+                    if (i > 6) {break;}
+                    i++
+                }
+            }
+        }
+    });
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" || bat.loc === "trans") {
+            distance = calcDistance(myBat.tileId,bat.tileId);
+            if (distance <= fogRange) {
+                if (!bat.tags.includes('fogged')) {
+                    bat.tags.push('fogged');
+                }
+                bat.fuzz = -2;
+            }
+        }
+    });
+};
+
+function deFog(bat,batType) {
+    if (bat.tags.includes('fogged')) {
+        tagDelete(bat,'fogged');
+        if (batType.cat === 'aliens') {
+            if (!batType.skills.includes('hide') && !batType.skills.includes('invisible') && bat.tags.includes('invisible')) {
+                tagDelete(bat,'invisible');
+            }
+        } else {
+            if (!bat.tags.includes('camo')) {
+                bat.fuzz = batType.fuzz;
+            }
+        }
+    }
+}
+
+function fogStart() {
+    selectMode();
+    console.log('FOG start');
+    if (!selectedBat.tags.includes('fog')) {
+        selectedBat.tags.push('fog');
+    }
+    selectedBat.apLeft = selectedBat.apLeft-2;
+    selectedBat.fuzz = 3;
+    tagDelete(selectedBat,'mining');
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
+function fogStop() {
+    selectMode();
+    console.log('FOG stop');
+    if (selectedBat.tags.includes('fog')) {
+        tagIndex = selectedBat.tags.indexOf('fog');
+        selectedBat.tags.splice(tagIndex,1);
+    }
+    tagDelete(selectedBat,'mining');
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};

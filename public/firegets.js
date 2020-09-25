@@ -689,6 +689,9 @@ function weaponAdj(weapon,bat,wn) {
     if (playerInfos.dark && thisWeapon.range > vision) {
         thisWeapon.range = vision;
     }
+    if (bat.tags.includes('fogged') && thisWeapon.range > 1) {
+        thisWeapon.range = 1;
+    }
     console.log(thisWeapon);
     return thisWeapon;
 };

@@ -531,17 +531,35 @@ function voirRessources() {
     $('#conUnitList').append('<button type="button" title="Seulement les repaires" class="boutonGris miniButtons" onclick="toggleMarkedView()"><i class="fas fa-map-pin"></i></button>');
     $('#conUnitList').append('<span class="butSpace"></span><span class="smSpace"></span>');
     $('#conUnitList').append('<select class="boutonGris" id="resFind" onchange="showFoundRes()"></select>');
-    $('#resFind').append('<option value="">'+showOneRes+'</option>');
+    // $('#resFind').append('<option value="">'+showOneRes+'</option>');
     $('#resFind').append('<option value="Toutes">Toutes</option>');
     let filteredResTypes = _.filter(resTypes,function(res) {
         return (res.cat != 'alien' && res.cat != 'none');
     });
+    let resIcon = '';
     let sortedResTypes = _.sortBy(filteredResTypes,'name');
     sortedResTypes.forEach(function(res) {
-        if (allZoneRes.includes(res.name)) {
-            $('#resFind').append('<option value="'+res.name+'">&check; '+res.name+'</option>');
+        if (res.cat.includes('sky')) {
+            resIcon = '&starf;';
+        } else if (res.rarity <= 20 || res.cat === 'blue') {
+            resIcon = '&star;';
+        } else if (res.rarity <= 30) {
+            resIcon = '&dtri;';
         } else {
-            $('#resFind').append('<option value="'+res.name+'">&cross; '+res.name+'</option>');
+            resIcon = '';
+        }
+        if (res.name === showOneRes) {
+            if (allZoneRes.includes(res.name)) {
+                $('#resFind').append('<option value="'+res.name+'" selected>&check; '+res.name+' '+resIcon+'</option>');
+            } else {
+                $('#resFind').append('<option value="'+res.name+'" selected disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+'</option>');
+            }
+        } else {
+            if (allZoneRes.includes(res.name)) {
+                $('#resFind').append('<option value="'+res.name+'">&check; '+res.name+' '+resIcon+'</option>');
+            } else {
+                $('#resFind').append('<option value="'+res.name+'" disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+'</option>');
+            }
         }
     });
     let tileRes;

@@ -225,6 +225,18 @@ function skillsInfos(bat,batUnitType) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-hamsa"></i> <span class="small">'+apCost+'</span></button>&nbsp; Prière</'+balise+'></span>');
         }
     }
+    // FOG
+    if (batUnitType.skills.includes('fog')) {
+        balise = 'h4';
+        if (bat.tags.includes('fog')) {
+            balise = 'h1';
+        }
+        if (!bat.tags.includes('fog')) {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Envoyer le fog" class="boutonGris skillButtons" onclick="fogStart()"><i class="fas fa-cloud"></i> <span class="small">2</span></button>&nbsp; Fog</'+balise+'></span>');
+        } else {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter le fog" class="boutonGris skillButtons" onclick="fogStop()"><i class="fas fa-cloud"></i> <span class="small">0</span></button>&nbsp; Fog</'+balise+'></span>');
+        }
+    }
     // MEDIC
     let baseskillCost;
     if (batUnitType.skills.includes('medic')) {

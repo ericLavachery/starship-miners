@@ -125,6 +125,9 @@ function showBatInfos(bat) {
     if (bat.tags.includes('trou')) {
         $('#unitInfos').append('<span class="paramName or">Blindage troué</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
+    if (bat.tags.includes('fogged')) {
+        $('#unitInfos').append('<span class="paramName or">Fog</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    }
     // XP
     $('#unitInfos').append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+Math.floor(bat.xp)+' (niveau '+bat.vet+')</span><br>');
     // Volume
