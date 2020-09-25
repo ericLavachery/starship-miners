@@ -126,6 +126,10 @@ function showRes(tileId) {
         } else {
             mapIndicators = mapIndicators+'<div class="dark"><img src="/static/img/vdark.png"></div>';
         }
+    } else {
+        if (foggedTiles.includes(tile.id)) {
+            mapIndicators = mapIndicators+'<div class="dark"><img src="/static/img/fdark.png"></div>';
+        }
     }
     return mapIndicators;
 };

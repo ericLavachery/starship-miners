@@ -355,6 +355,7 @@ function nextTurnEnd() {
 
 function turnInfo() {
     console.log('TURN INFO');
+
     let numberOfEggs = 0;
     let numberOfAliens = 0;
     let realNumberOfEggs = 0;
@@ -383,10 +384,14 @@ function turnInfo() {
         }
     }
     let fuzzTotal = 0;
+    foggersTiles = [];
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
             batFuzz = calcBatFuzz(bat);
             fuzzTotal = fuzzTotal+batFuzz;
+            if (bat.type === 'Fog' && bat.tags.includes('fog')) {
+                foggersTiles.push(bat.tileId);
+            }
         }
     });
     playerInfos.fuzzTotal = fuzzTotal;
@@ -395,6 +400,17 @@ function turnInfo() {
     if (playerInfos.mapAdjDiff < 1) {
         playerInfos.mapAdjDiff = 1;
     }
+    // foggedTiles
+    let distance;
+    foggedTiles = [];
+    zone.forEach(function(tile) {
+        foggersTiles.forEach(function(foggTile) {
+            distance = calcDistance(tile.id,foggTile);
+            if (distance <= 5) {
+                foggedTiles.push(tile.id);
+            }
+        });
+    });
     $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
     $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
     $('#tour').append('Difficulté '+playerInfos.mapAdjDiff+' / '+playerInfos.mapDiff+'<br>');

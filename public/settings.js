@@ -110,6 +110,9 @@ let bonusTransRetour = 1.1;
 let batDebarq = {};
 let medicalTransports = [];
 let landers = [];
+let fogRange = 5;
+let foggersTiles = [];
+let foggedTiles = [];
 let startLander = 5;
 // ALIENS
 let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;

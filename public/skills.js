@@ -417,7 +417,6 @@ function checkFreeConsTile(bat) {
 };
 
 function fogEffect(myBat) {
-    let fogRange = 5;
     let fogPoison = 1;
     let distance;
     let batType = {};
@@ -432,13 +431,15 @@ function fogEffect(myBat) {
                 if (!bat.tags.includes('fogged')) {
                     bat.tags.push('fogged');
                 }
-                batType = getBatType(bat);
-                fogPoison = Math.ceil(Math.sqrt(batType.size)/2);
-                i = 1;
-                while (i <= fogPoison) {
-                    bat.tags.push('poison');
-                    if (i > 6) {break;}
-                    i++
+                if (!bat.tags.includes('poison')) {
+                    batType = getBatType(bat);
+                    fogPoison = Math.ceil(Math.sqrt(batType.size)/2);
+                    i = 1;
+                    while (i <= fogPoison) {
+                        bat.tags.push('poison');
+                        if (i > 6) {break;}
+                        i++
+                    }
                 }
             }
         }
@@ -477,10 +478,10 @@ function fogStart() {
     if (!selectedBat.tags.includes('fog')) {
         selectedBat.tags.push('fog');
     }
-    selectedBat.apLeft = selectedBat.apLeft-2;
     selectedBat.fuzz = 3;
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
+    checkFoggedTiles();
     showBatInfos(selectedBat);
 };
 
@@ -493,5 +494,30 @@ function fogStop() {
     }
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
+    checkFoggedTiles();
     showBatInfos(selectedBat);
 };
+
+function checkFoggedTiles() {
+    foggersTiles = [];
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            if (bat.type === 'Fog' && bat.tags.includes('fog')) {
+                foggersTiles.push(bat.tileId);
+            }
+        }
+    });
+    let distance;
+    foggedTiles = [];
+    zone.forEach(function(tile) {
+        foggersTiles.forEach(function(foggTile) {
+            distance = calcDistance(tile.id,foggTile);
+            if (distance <= 5) {
+                foggedTiles.push(tile.id);
+            }
+        });
+    });
+    centerMap();
+    console.log('foggedTiles');
+    console.log(foggedTiles);
+}
