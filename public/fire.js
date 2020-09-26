@@ -37,7 +37,7 @@ function clickFire(tileId) {
             }
         } else {
             // hors mêlée
-            if (isInRange(selectedBat.tileId,tileId) || checkGuidage(selectedWeap,targetBat)) {
+            if (isInRange(selectedBat,tileId,selectedWeap) || checkGuidage(selectedWeap,targetBat)) {
                 if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && ((!targetBatType.skills.includes('invisible') && !targetBat.tags.includes('invisible')) || sideBySideTiles(selectedBat.tileId,tileId,false))) {
                     // console.log(targetBat);
                     tagDelete(targetBat,'invisible');

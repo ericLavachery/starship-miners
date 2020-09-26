@@ -290,7 +290,7 @@ function batInMelee(bat) {
     return inMelee;
 };
 
-function isInRange(myTileIndex,thatTileIndex) {
+function isInRangeOld(myTileIndex,thatTileIndex) {
     let myTileX = zone[myTileIndex].x;
     let myTileY = zone[myTileIndex].y;
     let thatTileX = zone[thatTileIndex].x;
@@ -319,7 +319,7 @@ function isInRange(myTileIndex,thatTileIndex) {
     }
 };
 
-function calcDistance(myTileIndex,thatTileIndex) {
+function calcDistanceOld(myTileIndex,thatTileIndex) {
     let myTileX = zone[myTileIndex].x;
     let myTileY = zone[myTileIndex].y;
     let thatTileX = zone[thatTileIndex].x;
@@ -339,6 +339,79 @@ function calcDistance(myTileIndex,thatTileIndex) {
     }
 };
 
+function isInRange(myBat,thatTileId,myWeapon) {
+    let myBatType = getBatType(myBat);
+    let onWall = false;
+    if (myBatType.skills.includes('fly')) {
+        onWall = true;
+    }
+    if (myBatType.size <= 12) {
+        if (myBatType.cat === 'infantry') {
+            onWall = true;
+        }
+        if (myBatType.cat === 'vehicles') {
+            if (myBatType.skills.includes('robot') || myBatType.skills.includes('cyber')) {
+                onWall = true;
+            }
+        }
+    }
+    let inRange = false;
+    let range = myWeapon.range;
+    let distance = calcDistance(myBat.tileId,thatTileId);
+    if (distance > range) {
+        if (distance > range+2) {
+            inRange = false;
+        } else {
+            if (onWall) {
+                bataillons.forEach(function(bat) {
+                    if (bat.loc === "zone") {
+                        if (bat.type === 'Palissades' || bat.type === 'Remparts' || bat.type === 'Murailles') {
+                            if (bat.tileId === myBat.tileId+1 || bat.tileId === myBat.tileId-1 || bat.tileId === myBat.tileId+mapSize || bat.tileId === myBat.tileId-mapSize) {
+                                distance = calcDistance(bat.tileId,thatTileId);
+                                console.log('MUR:');
+                                console.log(bat);
+                                if (distance <= range) {
+                                    inRange = true;
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    } else {
+        inRange = true;
+    }
+    return inRange;
+};
+
+function calcDistance(myTileIndex,thatTileIndex) {
+    let distance = 0;
+    let batOff = calcOffsets(myTileIndex,thatTileIndex);
+    if (batOff[0] > batOff[1]) {
+        distance = batOff[0]-batOff[1]+(batOff[1]*1.42);
+    } else {
+        distance = batOff[1]-batOff[0]+(batOff[0]*1.42);
+    }
+    distance = Math.floor(distance*1);
+    if (myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
+        return 0;
+    } else {
+        return distance;
+    }
+};
+
+function calcOffsets(myTileId,tileId) {
+    // offsets x et y entre myTileId et tileId
+    theTileX = zone[tileId].x;
+    theTileY = zone[tileId].y;
+    myTileX = zone[myTileId].x;
+    myTileY = zone[myTileId].y;
+    xOff = Math.abs(myTileX-theTileX);
+    yOff = Math.abs(myTileY-theTileY);
+    return [xOff,yOff];
+};
+
 function anyAlienInRange(myBat,weapon) {
     let tileId = myBat.tileId;
     let distance;
@@ -347,8 +420,7 @@ function anyAlienInRange(myBat,weapon) {
     let batType;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
-            distance = calcDistance(tileId,bat.tileId);
-            if (distance <= weapon.range || checkGuidage(weapon,bat)) {
+            if (isInRange(myBat,bat.tileId,weapon) || checkGuidage(weapon,bat)) {
                 batIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
                 batType = alienUnits[batIndex];
                 if ((!weapon.noFly || !batType.skills.includes('fly')) && (!weapon.noGround || batType.skills.includes('fly') || batType.skills.includes('sauteur')) && ((!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) || distance === 0)) {
@@ -402,7 +474,7 @@ function fireInfos(bat) {
             alien = alienHere(tile.id);
             if (Object.keys(alien).length >= 1) {
                 guideTarget = checkGuidage(selectedWeap,alien);
-                if (isInRange(selectedBat.tileId,tile.id) || guideTarget) {
+                if (isInRange(selectedBat,tile.id,selectedWeap) || guideTarget) {
                     alienType = getBatType(alien);
                     if (checkFlyTarget(selectedWeap,alienType) && ((!alienType.skills.includes('invisible') && !alien.tags.includes('invisible')) || sideBySideTiles(selectedBat.tileId,tile.id,false))) {
                         cursorSwitch('#',tile.id,'fire');

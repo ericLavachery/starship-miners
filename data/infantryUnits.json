@@ -2725,7 +2725,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","mutant","ranger","berserk","defense","noblub","slowreg"],
+        "skills":["fouille","fortif","cible","mutant","ranger","berserk","defense","noblub","slowreg","resistacide"],
         "fuzz":2,
         "deathFx":"137036__pyrocamancer__beast-death"
     },

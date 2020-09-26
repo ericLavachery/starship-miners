@@ -512,7 +512,7 @@ function checkFoggedTiles() {
     zone.forEach(function(tile) {
         foggersTiles.forEach(function(foggTile) {
             distance = calcDistance(tile.id,foggTile);
-            if (distance <= 5) {
+            if (distance <= fogRange) {
                 foggedTiles.push(tile.id);
             }
         });

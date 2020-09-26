@@ -355,7 +355,6 @@ function nextTurnEnd() {
 
 function turnInfo() {
     console.log('TURN INFO');
-
     let numberOfEggs = 0;
     let numberOfAliens = 0;
     let realNumberOfEggs = 0;
@@ -406,11 +405,12 @@ function turnInfo() {
     zone.forEach(function(tile) {
         foggersTiles.forEach(function(foggTile) {
             distance = calcDistance(tile.id,foggTile);
-            if (distance <= 5) {
+            if (distance <= fogRange) {
                 foggedTiles.push(tile.id);
             }
         });
     });
+    centerMap();
     $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
     $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
     $('#tour').append('Difficulté '+playerInfos.mapAdjDiff+' / '+playerInfos.mapDiff+'<br>');
