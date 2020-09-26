@@ -71,7 +71,7 @@ function showBatInfos(bat) {
     if (camoEnCours) {
         $('#unitInfos').append('<span class="paramName cy">Mode furtif</span><span class="paramIcon"></span><span class="paramValue cy">En cours... ('+bat.camoAP+')</span><br>');
     } else {
-        if (bat.tags.includes('camo')) {
+        if (bat.tags.includes('camo') || bat.fuzz <= -2) {
             if (bat.fuzz <= -2) {
                 $('#unitInfos').append('<span class="paramName cy">Mode furtif</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
             } else {

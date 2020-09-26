@@ -82,7 +82,7 @@ function skillsInfos(bat,batUnitType) {
     }
     // CAMOUFLAGE
     let camoufOK = true;
-    if (batUnitType.skills.includes('camo') || (tile.ruins && batUnitType.size < 20)) {
+    if (batUnitType.skills.includes('camo') || (tile.ruins && batUnitType.size < 20) || bat.fuzz <= -2) {
         if (batUnitType.cat == 'buildings') {
             if (batUnitType.skills.includes('maycamo') && !tile.ruins) {
                 apCost = Math.floor(bat.ap*3.5);
