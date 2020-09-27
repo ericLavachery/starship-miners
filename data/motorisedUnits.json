@@ -2165,7 +2165,7 @@
         "hp":130,
         "armor":8,
         "size":35,
-        "volume":1.2,
+        "volume":1.3,
         "stealth":0,
         "speed":5,
         "ap":13,
@@ -2192,7 +2192,7 @@
         "skills":["cible","fly","transport","fret","longshot","medic","dumper"],
         "mediCost":8,
         "transMaxSize":18,
-        "transUnits":1000,
+        "transUnits":1200,
         "transRes":900,
         "fuzz":4,
         "deathFx":"vehicleexplo3"
@@ -2305,7 +2305,7 @@
         "skills":["cible","fly","inflammable","transport","fret","longshot","dumper","realdumper","gooddef","selfmecano","resistacide"],
         "mecanoCost":4,
         "transMaxSize":25,
-        "transUnits":1750,
+        "transUnits":2000,
         "transRes":3000,
         "fuzz":4,
         "deathFx":"planeexploground2"
@@ -3304,7 +3304,7 @@
         "stealth":8,
         "speed":3,
         "ap":16,
-        "maxSalvo":1,
+        "maxSalvo":2,
         "weapon":{
             "name":"Mortier",
             "cost":4,

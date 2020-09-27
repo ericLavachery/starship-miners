@@ -2,6 +2,7 @@ function clickFire(tileId) {
     let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
     showTileInfos(tileId);
     let alienBatHere = false;
+    let guidageOK = false;
     aliens.forEach(function(alien) {
         if (alien.tileId === tileId && alien.loc === "zone") {
             alienBatHere = true;
@@ -39,7 +40,11 @@ function clickFire(tileId) {
             }
         } else {
             // hors mêlée
-            if (isInRange(selectedBat,tileId,selectedWeap) || checkGuidage(selectedWeap,targetBat)) {
+            guidageOK = false;
+            if (Object.keys(targetBat).length >= 1) {
+                guidageOK = checkGuidage(selectedWeap,targetBat);
+            }
+            if (isInRange(selectedBat,tileId,selectedWeap) || guidageOK) {
                 if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && ((!targetBatType.skills.includes('invisible') && !targetBat.tags.includes('invisible')) || sideBySideTiles(selectedBat.tileId,tileId,false))) {
                     // console.log(targetBat);
                     tagDelete(targetBat,'invisible');
