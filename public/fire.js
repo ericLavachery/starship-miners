@@ -14,6 +14,7 @@ function clickFire(tileId) {
         selectMode();
         batUnstack();
         batUnselect();
+        $(".targ").remove();
     } else {
         if (isMelee) {
             // en mêlée : choix limité de cibles
@@ -25,6 +26,7 @@ function clickFire(tileId) {
                     combat(true);
                     selectMode();
                     showBatInfos(selectedBat);
+                    $(".targ").remove();
                 } else {
                     targetBat = {};
                     targetBatType = {};
@@ -45,6 +47,7 @@ function clickFire(tileId) {
                     combat(false);
                     selectMode();
                     showBatInfos(selectedBat);
+                    $(".targ").remove();
                 } else {
                     targetBat = {};
                     targetBatType = {};

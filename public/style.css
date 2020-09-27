@@ -282,6 +282,13 @@ h5 {
     /* margin-right: -3px; */
     margin-left: -3px;
     margin-top: -3px;
+    z-index: -7;
+}
+.targ {
+    position: absolute;
+    /* margin-right: -3px; */
+    margin-left: -3px;
+    margin-top: -3px;
     z-index: -6;
 }
 .inficon {

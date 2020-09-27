@@ -342,10 +342,7 @@ function calcDistanceOld(myTileIndex,thatTileIndex) {
 function isInRange(myBat,thatTileId,myWeapon) {
     let myBatType = getBatType(myBat);
     let onWall = false;
-    if (myBatType.skills.includes('fly')) {
-        onWall = true;
-    }
-    if (myBatType.size <= 12) {
+    if (myBatType.size <= 12 && !myWeapon.isMelee && !myWeapon.noShield) {
         if (myBatType.cat === 'infantry') {
             onWall = true;
         }
@@ -464,6 +461,7 @@ function fireInfos(bat) {
                 isMelee = true;
                 if (checkFlyTarget(selectedWeap,alienType)) {
                     cursorSwitch('#',tile.id,'fire');
+                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
                 }
             }
         }
@@ -478,6 +476,7 @@ function fireInfos(bat) {
                     alienType = getBatType(alien);
                     if (checkFlyTarget(selectedWeap,alienType) && ((!alienType.skills.includes('invisible') && !alien.tags.includes('invisible')) || sideBySideTiles(selectedBat.tileId,tile.id,false))) {
                         cursorSwitch('#',tile.id,'fire');
+                        $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
                     }
                 }
             }
