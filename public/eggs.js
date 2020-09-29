@@ -14,6 +14,17 @@ function checkStartingAliens() {
             if (i > 20) {break;}
             i++
         }
+        dropEgg('Colonie',false);
+        let coloBat = getBatByName('Colonie');
+        alienSpawn(coloBat,'Vomissure');
+        if (playerInfos.mapDiff >= 9) {
+            alienSpawn(coloBat,'Vomissure');
+            alienSpawn(coloBat,'Ruche');
+        }
+        if (playerInfos.mapDiff >= 10) {
+            alienSpawn(coloBat,'Vomissure');
+            alienSpawn(coloBat,'Ruche');
+        }
     }
     let numVomi = Math.floor((playerInfos.mapDiff+2)*rand.rand(8,20)/14);
     let ii = 1;
@@ -427,6 +438,8 @@ function spawns() {
                 eggSpawn(bat,true);
             } else if (bat.type === 'Ruche' && aliens.length < maxAliens) {
                 eggSpawn(bat,false);
+            } else if (bat.type === 'Colonie' && rand.rand(1,3) === 1) {
+                alienSpawn(bat,'Vomissure');
             } else if (bat.type === 'Vermisseaux' && flyDice === 1 && aliens.length < maxAliens && aliensNums.lucioles < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Lucioles');
             } else if (bat.type === 'Vermisseaux' && flyDice >= 5 && aliens.length < maxAliens && aliensNums.moucherons < Math.round(maxPonte*1.5)) {

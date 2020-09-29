@@ -336,6 +336,9 @@ function attack(melee) {
     if (targetBatType.kind === 'bug' && bugSHIELD) {
         hasShield = true;
     }
+    if (targetBatType.kind === 'egg' && eggSHIELD) {
+        hasShield = true;
+    }
     if (activeTurn === 'player' && hasShield && selectedWeap.isMelee === false && selectedWeap.noShield === false) {
         if (rand.rand(1,3) >= 2 && !targetBat.tags.includes('shield')) {
             targetBat.tags.push('shield');
@@ -471,7 +474,7 @@ function attack(melee) {
         }
     }
     // résistance acide
-    if (selectedWeap.name.includes('acide')) {
+    if (selectedWeap.name.includes('acide') || selectedWeap.ammo.includes('ruche')) {
         if (targetBatType.skills.includes('resistacide') || targetBat.tags.includes('resistacide')) {
             totalDamage = Math.round(totalDamage/2);
             console.log('résistance acide!');
@@ -925,7 +928,7 @@ function defense(melee) {
         }
     }
     // résistance acide
-    if (targetWeap.name.includes('acide')) {
+    if (targetWeap.name.includes('acide') || targetWeap.ammo.includes('ruche')) {
         if (selectedBatType.skills.includes('resistacide') || selectedBat.tags.includes('resistacide')) {
             totalDamage = Math.round(totalDamage/2);
             console.log('résistance acide!');

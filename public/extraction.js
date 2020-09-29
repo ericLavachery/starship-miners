@@ -70,29 +70,29 @@ function getTerrainRes(terrain,tile) {
     let srs = {};
     // Bois
     if (terrain.name === 'F') {
-        srs.Bois = 200;
+        srs.Bois = 600;
     } else if (terrain.name === 'B' && tile.seed >= 4) {
-        srs.Bois = 50;
+        srs.Bois = 150;
     } else if (terrain.name === 'B') {
-        srs.Bois = 10;
+        srs.Bois = 30;
     }
     // Végétaux
     if (terrain.name === 'F') {
-        srs.Végétaux = 50;
+        srs.Végétaux = 100;
     } else if (terrain.name === 'B' && tile.seed >= 4) {
-        srs.Végétaux = 85;
+        srs.Végétaux = 250;
     } else if (terrain.veg >= 1) {
-        srs.Végétaux = Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*8;
+        srs.Végétaux = Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*25;
     }
     // Huile
     if (terrain.name === 'F' && tile.seed === 5) {
-        srs.Huile = 10;
-    } else if (terrain.name === 'B' && tile.seed === 6) {
-        srs.Huile = 5;
-    } else if (terrain.name === 'S' && tile.seed === 6) {
         srs.Huile = 30;
+    } else if (terrain.name === 'B' && tile.seed === 6) {
+        srs.Huile = 15;
+    } else if (terrain.name === 'S' && tile.seed === 6) {
+        srs.Huile = 100;
     } else if (terrain.name === 'S' && tile.seed >= 4) {
-        srs.Huile = 5;
+        srs.Huile = 15;
     }
     // Eau
     if (terrain.name === 'R') {
@@ -190,6 +190,12 @@ function getResById(resId) {
 
 function getBatById(batId) {
     let index = bataillons.findIndex((obj => obj.id == batId));
+    let bat = bataillons[index];
+    return bat;
+};
+
+function getBatByName(name) {
+    let index = bataillons.findIndex((obj => obj.type == name));
     let bat = bataillons[index];
     return bat;
 };

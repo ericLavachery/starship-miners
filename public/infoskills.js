@@ -42,7 +42,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // GUET
-    if (batUnitType.weapon.rof >= 1 && bat.ap >= 1) {
+    if (batUnitType.weapon.rof >= 1 && bat.ap >= 1 && !batUnitType.skills.includes('noguet')) {
         balise = 'h4';
         if (bat.tags.includes('guet') || batUnitType.skills.includes('sentinelle') || batUnitType.skills.includes('initiative') || batUnitType.skills.includes('after')) {
             balise = 'h3';

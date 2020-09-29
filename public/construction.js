@@ -1,6 +1,10 @@
 function bfconst(cat,triche) {
     conselCat = cat;
     conselTriche = triche;
+    let catz = [cat];
+    if (cat === 'buildings') {
+        catz.push('devices');
+    }
     selectMode();
     $("#conUnitList").css("display","block");
     $("#conAmmoList").css("display","block");
@@ -30,7 +34,7 @@ function bfconst(cat,triche) {
     }
     // LIST
     sortedUnitsList.forEach(function(unit) {
-        if (triche || (unit.cat === cat && unit.refabTime >= 1)) {
+        if (triche || (catz.includes(unit.cat) && unit.refabTime >= 1)) {
             if (lastKind != unit.kind) {
                 showkind = unit.kind.replace(/zero-/g,"");
                 $('#conUnitList').append('<br><a href="#gentils"><span class="constName or" id="kind-'+unit.kind+'">'+showkind+'</span></a><br>');

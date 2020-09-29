@@ -359,9 +359,6 @@ function showTileInfos(tileId) {
                 let value = entry[1];
                 resIndex = resTypes.findIndex((obj => obj.name == key));
                 res = resTypes[resIndex];
-                if (res.bld === 'Comptoir') {
-                    value = value*3;
-                }
                 bldReq = onlyFirstLetter(res.bld);
                 if (bldReq != '') {
                     bldReq = ' ('+bldReq+')'

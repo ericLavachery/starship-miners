@@ -132,6 +132,7 @@ let bugROF = 1;
 let spiderRG = false;
 let bugSHIELD = false;
 let larveHIDE = false;
+let eggSHIELD = false;
 let regenPower = 10; // 10%
 let slowregPower = 3; // 3%
 let shownEggs = [];

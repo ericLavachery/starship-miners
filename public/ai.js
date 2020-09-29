@@ -1152,6 +1152,7 @@ function alienBonus() {
     bugROF = 1;
     spiderRG = false;
     bugSHIELD = false;
+    eggSHIELD = false;
     larveHIDE = false;
     let batIndex;
     let batType;
@@ -1170,6 +1171,9 @@ function alienBonus() {
             }
             if (batType.skills.includes('bugshield')) {
                 bugSHIELD = true;
+            }
+            if (batType.skills.includes('eggshield')) {
+                eggSHIELD = true;
             }
         }
     });

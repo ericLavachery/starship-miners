@@ -1410,6 +1410,16 @@
         "aoe": ""
     },
     {
+        "name": "ruche",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
         "name": "venin",
         "range": 1,
         "rof": 1,
