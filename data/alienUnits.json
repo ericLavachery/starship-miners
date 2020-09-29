@@ -2175,7 +2175,7 @@
         "weapon2":{
             "name":"Boule de feu",
             "cost":7,
-            "range":4,
+            "range":12,
             "noFly":false,
             "isMelee":false,
             "rof":6,

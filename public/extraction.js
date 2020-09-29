@@ -200,6 +200,12 @@ function getBatByName(name) {
     return bat;
 };
 
+function getAlienByName(name) {
+    let index = aliens.findIndex((obj => obj.type == name));
+    let bat = aliens[index];
+    return bat;
+};
+
 function chooseRes(again) {
     selectMode();
     if (!again) {
