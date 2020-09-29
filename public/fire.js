@@ -665,6 +665,9 @@ function attack(melee) {
     if (selectedWeap.ammo.includes('poraz') || selectedWeap.ammo.includes('disco') || selectedWeap.ammo === 'gaz') {
         targetBat.tags.push('stun');
     }
+    if (targetBatType.skills.includes('noaploss')) {
+        apDamage = Math.round(apDamage/5);
+    }
     // ---------------------------------------------------------------------------------------------------------------------------
     if (apDamage >= 1) {
         $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
@@ -1047,6 +1050,9 @@ function defense(melee) {
     // Stun
     if (targetWeap.ammo.includes('poraz') || targetWeap.ammo.includes('disco') || targetWeap.ammo === 'gaz') {
         selectedBat.tags.push('stun');
+    }
+    if (selectedBatType.skills.includes('noaploss')) {
+        apDamage = Math.round(apDamage/5);
     }
     // ---------------------------------------------------------------------------------------------------------------------------
     if (apDamage >= 1) {
