@@ -102,6 +102,12 @@ function showBatInfos(bat) {
         }
         $('#unitInfos').append('<span class="paramName cy">Régénération</span><span class="paramIcon"></span><span class="paramValue cy">'+regenType+'</span><br>');
     }
+    if (bat.tags.includes('resistfeu') || batUnitType.skills.includes('resistfeu')) {
+        $('#unitInfos').append('<span class="paramName cy">Résistance feu</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    }
+    if (bat.tags.includes('resistacide') || batUnitType.skills.includes('resistacide')) {
+        $('#unitInfos').append('<span class="paramName cy">Résistance acide</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    }
     // BAD TAGS
     let hurt = isHurt(bat);
     if (hurt) {

@@ -379,7 +379,7 @@
         "squadSize":1,
         "crew":2,
         "hp":180,
-        "armor":8,
+        "armor":7,
         "size":60,
         "stealth":0,
         "speed":-5,
@@ -398,7 +398,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
-        "protection":["aucune"],
+        "protection":["acier","titane","dunium","bonibo","adamantite"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -440,7 +440,7 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
-        "protection":["aucune"],
+        "protection":["acier","titane","dunium","bonibo","adamantite"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -484,7 +484,7 @@
             "ammo":["boulet"]
         },
         "weapon2":{},
-        "protection":["aucune"],
+        "protection":["dunium","bonibo","adamantite"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -540,7 +540,7 @@
             "sound":"calibre_antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
-        "protection":["aucune"],
+        "protection":["acier","titane","dunium","bonibo","adamantite"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -594,7 +594,7 @@
             "sound":"laser_canon",
             "ammo":["laser","laser-g2"]
         },
-        "protection":["aucune"],
+        "protection":["dunium","bonibo","adamantite"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -651,7 +651,7 @@
             "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
-        "protection":["aucune"],
+        "protection":["dunium","bonibo","adamantite"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -707,7 +707,7 @@
             "sound":"calibre_antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
-        "protection":["aucune"],
+        "protection":["dunium","bonibo","adamantite"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -763,7 +763,7 @@
             "sound":"calibre_antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
-        "protection":["aucune"],
+        "protection":["dunium","bonibo","adamantite"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -979,7 +979,7 @@
             "ravitBld":"Atelier"
         },
         "weapon2":{},
-        "protection":["aucune"],
+        "protection":["acier","titane","dunium","bonibo","adamantite"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,

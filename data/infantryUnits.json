@@ -2721,7 +2721,7 @@
             "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "weapon2":{},
-        "protection":["aucune","scrap","bugium","kevlar","combo","kapton","mendium","titane","nano","adamantite","battlesuit"],
+        "protection":["aucune","scrap","bugium","kevlar","combo","titane","nano","adamantite","battlesuit"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,

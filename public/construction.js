@@ -287,6 +287,8 @@ function putBat(tileId,citoyens,xp,startTag) {
             newBat.ap = conselUnit.ap+batArmor.ap+batArmor.ap;
         } else if (conselUnit.skills.includes('strong') && batArmor.ap < -1) {
             newBat.ap = conselUnit.ap+batArmor.ap+1;
+        } else if (conselUnit.moveCost === 99) {
+            newBat.ap = conselUnit.ap;
         } else {
             newBat.ap = conselUnit.ap+batArmor.ap;
         }
