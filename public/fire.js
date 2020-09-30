@@ -341,23 +341,24 @@ function attack(melee) {
         }
     }
     // SHIELD
-    let hasShield = false;
+    let hasShield = 0;
     if (targetBatType.skills.includes('shield')) {
-        hasShield = true;
+        hasShield = 2;
+    } else {
+        if (targetBatType.kind === 'bug' && bugSHIELD) {
+            hasShield = 4;
+        }
+        if (targetBatType.kind === 'egg' && eggSHIELD) {
+            hasShield = 4;
+        }
     }
-    if (targetBatType.kind === 'bug' && bugSHIELD) {
-        hasShield = true;
-    }
-    if (targetBatType.kind === 'egg' && eggSHIELD) {
-        hasShield = true;
-    }
-    if (activeTurn === 'player' && hasShield && selectedWeap.isMelee === false && selectedWeap.noShield === false) {
+    if (activeTurn === 'player' && hasShield >= 1 && selectedWeap.isMelee === false && selectedWeap.noShield === false) {
         if (rand.rand(1,3) >= 2 && !targetBat.tags.includes('shield')) {
             targetBat.tags.push('shield');
         }
         if (targetBat.tags.includes('shield')) {
             let shieldValue = rand.rand(5,15);
-            shots = Math.ceil(shots/shieldValue);
+            shots = Math.ceil(shots/shieldValue*hasShield/2);
         }
     }
     // tir ciblé

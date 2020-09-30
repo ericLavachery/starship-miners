@@ -6,6 +6,12 @@
         "skills": []
     },
     {
+        "name": "aucun",
+        "armor": 0,
+        "ap": 0,
+        "skills": []
+    },
+    {
         "name": "scrap",
         "armor": 1,
         "ap": -1,

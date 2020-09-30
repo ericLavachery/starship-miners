@@ -2809,7 +2809,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
-        "protection":["aucune"],
+        "protection":["aucun"],
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,
@@ -2860,7 +2860,7 @@
             "sound":"axe_x2",
             "ammo":["lame","lame-taser","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
-        "protection":["aucune"],
+        "protection":["aucun"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -2916,7 +2916,7 @@
             "maxAmmo":4,
             "ravitBld":"Atelier"
         },
-        "protection":["aucune"],
+        "protection":["aucun"],
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,
@@ -2968,7 +2968,7 @@
             "sound":"belt",
             "ammo":["autodestruction"]
         },
-        "protection":["aucune"],
+        "protection":["aucun"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":3,
@@ -3021,7 +3021,7 @@
             "maxAmmo":20,
             "ravitBld":"Derrick"
         },
-        "protection":["aucune"],
+        "protection":["aucun"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -3227,7 +3227,7 @@
             "sound":"calibre_antichar",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-freeze"]
         },
-        "protection":["aucune"],
+        "protection":["aucun"],
         "moveCost":4,
         "maxFlood":3,
         "maxScarp":3,
@@ -3957,7 +3957,7 @@
             "sound":"mark",
             "ammo":["marquage"]
         },
-        "protection":["aucune"],
+        "protection":["aucun"],
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,
@@ -4012,7 +4012,7 @@
             "maxAmmo":12,
             "ravitBld":"Armurerie"
         },
-        "protection":["aucune"],
+        "protection":["aucun"],
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,

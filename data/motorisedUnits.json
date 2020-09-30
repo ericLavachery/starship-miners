@@ -44,7 +44,7 @@
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -98,7 +98,7 @@
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -152,7 +152,7 @@
             "maxAmmo":24,
             "ravitBld":"Derrick"
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -206,7 +206,7 @@
             "maxAmmo":32,
             "ravitBld":"Derrick"
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -261,7 +261,7 @@
             "sound":"harvest",
             "ammo":["lame","lame-tungsten"]
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -317,7 +317,7 @@
             "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -368,7 +368,7 @@
             "sound":"mit_light2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -420,7 +420,7 @@
             "sound":"mit_heavy3",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -479,7 +479,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":6,
         "maxFlood":0,
         "maxScarp":2,
@@ -537,7 +537,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":7,
         "maxFlood":0,
         "maxScarp":1,
@@ -590,7 +590,7 @@
             "maxAmmo":32,
             "ravitBld":"Armurerie"
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":6,
         "maxFlood":0,
         "maxScarp":2,
@@ -647,7 +647,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":1,
@@ -706,7 +706,7 @@
             "maxAmmo":12,
             "ravitBld":"Arsenal"
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -744,7 +744,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -803,7 +803,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":2,
@@ -859,7 +859,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -918,7 +918,7 @@
             "maxAmmo":6,
             "ravitBld":"Arsenal"
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -973,7 +973,7 @@
             "maxAmmo":9,
             "ravitBld":"Arsenal"
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":3,
         "maxFlood":1,
         "maxScarp":2,
@@ -1028,7 +1028,7 @@
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":2,
@@ -1070,7 +1070,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":2,
@@ -1125,7 +1125,7 @@
             "sound":"mark",
             "ammo":["marquage"]
         },
-        "protection":["aucune"],
+        "protection":["aucun"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -1178,7 +1178,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["acier","titane","kanchan","chobham","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","adamantite"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -1240,7 +1240,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -1296,7 +1296,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -1355,7 +1355,7 @@
             "sound":"harvest",
             "ammo":["lame","lame-tungsten"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":2,
@@ -1410,7 +1410,7 @@
             "sound":"harvest",
             "ammo":["lame","lame-tungsten"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":2,
@@ -1464,7 +1464,7 @@
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":4,
         "maxFlood":0,
         "maxScarp":2,
@@ -1517,7 +1517,7 @@
             "maxAmmo":9,
             "ravitBld":"Atelier"
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
@@ -1570,7 +1570,7 @@
             "maxAmmo":12,
             "ravitBld":"Atelier"
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
@@ -1623,7 +1623,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -1679,7 +1679,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -1733,7 +1733,7 @@
             "sound":"mit_heavy3",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
-        "protection":["acier","titane","kanchan","chobham","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","adamantite"],
         "moveCost":3,
         "maxFlood":1,
         "maxScarp":2,
@@ -1787,7 +1787,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -1843,7 +1843,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -1901,7 +1901,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -1966,7 +1966,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -2029,7 +2029,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":4,
         "maxFlood":3,
         "maxScarp":2,
@@ -2086,7 +2086,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -2140,7 +2140,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":4,
         "maxFlood":1,
         "maxScarp":2,
@@ -2184,7 +2184,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -2240,7 +2240,7 @@
             "sound":"laser_canon",
             "ammo":["laser","laser-g2"]
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
@@ -2298,7 +2298,7 @@
             "maxAmmo":40,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucune"],
+        "protection":["aucun"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
@@ -2358,7 +2358,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -2418,7 +2418,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -2475,7 +2475,7 @@
             "sound":"harvest",
             "ammo":["lame","lame-tungsten"]
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -2534,7 +2534,7 @@
             "sound":"calibre_multi",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":1,
@@ -2585,7 +2585,7 @@
             "maxAmmo":12,
             "ravitBld":"Derrick"
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -2636,7 +2636,7 @@
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":2,
@@ -2692,7 +2692,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":2,
@@ -2748,7 +2748,7 @@
             "maxAmmo":3,
             "ravitBld":"Poudrière"
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -2801,7 +2801,7 @@
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -2857,7 +2857,7 @@
             "maxAmmo":9,
             "ravitBld":"Poudrière"
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -2912,7 +2912,7 @@
             "maxAmmo":6,
             "ravitBld":"Poudrière"
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -2966,7 +2966,7 @@
             "maxAmmo":6,
             "ravitBld":"Poudrière"
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -3018,7 +3018,7 @@
             "maxAmmo":32,
             "ravitBld":"Armurerie"
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -3058,7 +3058,7 @@
             "ravitBld":"Poudrière"
         },
         "weapon2":{},
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -3116,7 +3116,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":4,
         "maxFlood":3,
         "maxScarp":3,
@@ -3179,7 +3179,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -3239,7 +3239,7 @@
             "maxAmmo":9,
             "ravitBld":"Armurerie"
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -3280,7 +3280,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","dunium","freeze"]
         },
         "weapon2":{},
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -3333,7 +3333,7 @@
             "sound":"mark",
             "ammo":["guidage"]
         },
-        "protection":["kanchan","chobham","adamantite"],
+        "protection":["aucun","kanchan","chobham","adamantite"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -3375,7 +3375,7 @@
             "ammo":["lame-tungsten"]
         },
         "weapon2":{},
-        "protection":["aucune"],
+        "protection":["aucun"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -3438,7 +3438,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -3493,7 +3493,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -3550,7 +3550,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -3606,7 +3606,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":2,
@@ -3665,7 +3665,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["kanchan","chobham","dunium","adamantite"],
+        "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,

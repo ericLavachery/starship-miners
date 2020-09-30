@@ -117,7 +117,11 @@ function conSelect(unitId,player,noRefresh) {
     if (conselUnit.protection != undefined) {
         if (conselUnit.protection.length >= 1) {
             console.log(conselUnit.protection);
-            $('#conAmmoList').append('<span class="constName or">Armure</span><br>');
+            if (conselUnit.cat === 'infantry') {
+                $('#conAmmoList').append('<span class="constName or">Armure</span><br>');
+            } else {
+                $('#conAmmoList').append('<span class="constName or">Blindage (renforcement)</span><br>');
+            }
             conselUnit.protection.forEach(function(armor) {
                 if (conselAmmos[2] == armor || (conselAmmos[2] === 'xxx' && listNum === 1)) {
                     $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
