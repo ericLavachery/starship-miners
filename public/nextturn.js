@@ -58,7 +58,14 @@ function nextTurn() {
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
             tagsEffect(bat,batType);
-            tagDelete(bat,'shield');
+            if (bat.tags.includes('guide') && batType.skills.includes('nolaser')) {
+                tagDelete(bat,'guide');
+            }
+            if (batType.skills.includes('regmode') && bat.squadsLeft <= Math.floor(batType.squads/2)) {
+                // shield stays
+            } else {
+                tagDelete(bat,'shield');
+            }
             tagDelete(bat,'nez');
             if (rand.rand(1,3) <= 2) {
                 tagDelete(bat,'stun');

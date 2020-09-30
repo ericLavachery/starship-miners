@@ -76,5 +76,29 @@
         "armor": 3,
         "ap": 2,
         "skills": ["slowreg"]
+    },
+    {
+        "name": "dunium",
+        "armor": 2,
+        "ap": -1,
+        "skills": ["resistacide"]
+    },
+    {
+        "name": "bonibo",
+        "armor": 1,
+        "ap": -2,
+        "skills": ["resistfeu"]
+    },
+    {
+        "name": "kanchan",
+        "armor": 2,
+        "ap": -1,
+        "skills": []
+    },
+    {
+        "name": "chobham",
+        "armor": 2,
+        "ap": 0,
+        "skills": []
     }
 ]

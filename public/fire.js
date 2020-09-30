@@ -328,6 +328,18 @@ function attack(melee) {
             console.log('bonus ROF embuscade');
         }
     }
+    // ESCAPE
+    escaped = false;
+    if (targetBatType.skills.includes('escape')) {
+        let escapeChance = Math.round((targetBatType.speed-2)*selectedWeap.cost*escapeValue);
+        console.log('escapeChance:'+escapeChance);
+        if (rand.rand(1,100) <= escapeChance) {
+            escaped = true;
+            let escapeVar = rand.rand(4,8);
+            console.log('escapeVar:'+escapeVar);
+            shots = Math.round(shots*escapeVar/(selectedWeap.cost+4)/2);
+        }
+    }
     // SHIELD
     let hasShield = false;
     if (targetBatType.skills.includes('shield')) {
@@ -408,7 +420,11 @@ function attack(melee) {
         let wapd = selectedWeap.apdamage;
         if (selectedWeap.ammo.includes('electric')) {
             if (targetBatType.cat == 'vehicles') {
-                wapd = wapd*2.25*20/targetBatType.size;
+                if (targetBatType.skills.includes('fly')) {
+                    wapd = wapd*4*20/targetBatType.size;
+                } else {
+                    wapd = wapd*2.25*20/targetBatType.size;
+                }
             } else if (targetBatType.cat == 'buildings' || targetBatType.cat == 'devices') {
                 wapd = wapd*20/targetBatType.size;
             } else if (targetBatType.skills.includes('cyber')) {
@@ -661,6 +677,10 @@ function attack(melee) {
             }
         }
     }
+    // escape notification
+    if (escaped) {
+        $('#report').append('<span class="report cy">Escape!<br></span>');
+    }
     // Stun
     if (selectedWeap.ammo.includes('poraz') || selectedWeap.ammo.includes('disco') || selectedWeap.ammo === 'gaz') {
         targetBat.tags.push('stun');
@@ -837,6 +857,18 @@ function defense(melee) {
     if (selectedWeap.noGrip && targetWeap.range === 0 && targetBatType.size*5 >= selectedBatType.size) {
         shots = Math.round(shots/1.5);
     }
+    // ESCAPE
+    escaped = false;
+    if (selectedBatType.skills.includes('escape')) {
+        let escapeChance = Math.round((selectedBatType.speed-2)*targetWeap.cost*escapeValue);
+        console.log('escapeChance:'+escapeChance);
+        if (rand.rand(1,100) <= escapeChance) {
+            escaped = true;
+            let escapeVar = rand.rand(4,8);
+            console.log('escapeVar:'+escapeVar);
+            shots = Math.round(shots*escapeVar/(targetWeap.cost+4)/2);
+        }
+    }
     // bugROF
     if (bugROF > 1 && targetBatType.kind === 'bug') {
         shots = Math.round(shots*bugROF);
@@ -942,6 +974,11 @@ function defense(melee) {
         let wapd = targetWeap.apdamage;
         if (targetWeap.ammo.includes('electric')) {
             if (selectedBatType.cat == 'vehicles') {
+                if (selectedBatType.skills.includes('fly')) {
+                    wapd = wapd*4*20/selectedBatType.size;
+                } else {
+                    wapd = wapd*2.25*20/selectedBatType.size;
+                }
                 wapd = wapd*2.25*20/selectedBatType.size;
             } else if (selectedBatType.cat == 'buildings' || selectedBatType.cat == 'devices') {
                 wapd = wapd*20/selectedBatType.size;
@@ -1046,6 +1083,10 @@ function defense(melee) {
                 $('#report').append('<span class="report cy">Maladie<br></span>');
             }
         }
+    }
+    // escape notification
+    if (escaped) {
+        $('#report').append('<span class="report cy">Escape!<br></span>');
     }
     // Stun
     if (targetWeap.ammo.includes('poraz') || targetWeap.ammo.includes('disco') || targetWeap.ammo === 'gaz') {

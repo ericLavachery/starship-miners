@@ -2027,6 +2027,7 @@
         "size":3,
         "volume":1.2,
         "stealth":15,
+        "speed":4,
         "ap":20,
         "maxSalvo":1,
         "weapon":{
@@ -2227,7 +2228,7 @@
         "size":3,
         "volume":1.2,
         "stealth":14,
-        "speed":0,
+        "speed":4,
         "ap":20,
         "maxSalvo":1,
         "weapon":{
@@ -2281,7 +2282,7 @@
         "size":3,
         "volume":1.2,
         "stealth":5,
-        "speed":3,
+        "speed":4,
         "ap":20,
         "maxSalvo":1,
         "weapon":{
@@ -2776,7 +2777,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","fly","longshot","mutant"],
+        "skills":["fouille","fortif","cible","fly","longshot","mutant","escape"],
         "fuzz":3,
         "deathFx":"137036__pyrocamancer__beast-death"
     },
@@ -3249,7 +3250,7 @@
         "size":4,
         "volume":1.2,
         "stealth":3,
-        "speed":5,
+        "speed":6,
         "ap":22,
         "maxSalvo":1,
         "weapon":{
@@ -3267,8 +3268,7 @@
         "weapon2":{
             "name":"Fusil mitrailleur",
             "cost":4,
-            "range":1,
-            "elevation":1,
+            "range":2,
             "rof":18,
             "accuracy":17,
             "power":7,
@@ -3282,7 +3282,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber","selfbadmedic"],
+        "skills":["fouille","fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber","selfbadmedic","escape"],
         "mediCost":8,
         "fuzz":3.5,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
@@ -3301,7 +3301,7 @@
         "size":4,
         "volume":1.2,
         "stealth":3,
-        "speed":5,
+        "speed":6,
         "ap":22,
         "maxSalvo":1,
         "weapon":{
@@ -3334,7 +3334,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber","selfbadmedic"],
+        "skills":["fouille","fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber","selfbadmedic","escape"],
         "mediCost":8,
         "fuzz":3,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
@@ -3719,7 +3719,7 @@
         "size":3,
         "volume":1.2,
         "stealth":8,
-        "speed":4,
+        "speed":5,
         "ap":20,
         "maxSalvo":1,
         "weapon":{
