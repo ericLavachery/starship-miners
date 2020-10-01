@@ -347,10 +347,10 @@ function attack(melee) {
         hasShield = 2;
     } else {
         if (targetBatType.kind === 'bug' && bugSHIELD) {
-            hasShield = 4;
+            hasShield = 6;
         }
         if (targetBatType.kind === 'egg' && eggSHIELD) {
-            hasShield = 4;
+            hasShield = 6;
         }
     }
     if (activeTurn === 'player' && hasShield >= 1 && selectedWeap.isMelee === false && selectedWeap.noShield === false) {
@@ -360,7 +360,7 @@ function attack(melee) {
         if (targetBat.tags.includes('shield')) {
             let shieldValue = rand.rand(5,15);
             if (selectedWeap.ammo.includes('gaz')) {
-                shieldValue = Math.floor(shieldValue/2.5);
+                shieldValue = Math.ceil(shieldValue/2);
             }
             shots = Math.ceil(shots/shieldValue*hasShield/2);
         }

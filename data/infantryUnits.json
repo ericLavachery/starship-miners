@@ -3179,7 +3179,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","fortif","cible","mecano","selfmedic","cyber"],
-        "mecanoCost":8,
+        "mecanoCost":6,
         "mediCost":8,
         "fuzz":1,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
