@@ -71,6 +71,7 @@ function combat(melee) {
     console.log('START COMBAT');
     tagDelete(selectedBat,'mining');
     tagDelete(targetBat,'mining');
+    escaped = false;
     minesExploded = 0;
     soundDuration = 2000;
     let soundWeap;
@@ -772,6 +773,7 @@ function attack(melee) {
         }
     }
     selectedBatArrayUpdate();
+    escaped = false;
 };
 
 function defense(melee) {
@@ -1159,6 +1161,7 @@ function defense(melee) {
         targetBat.xp = targetBat.xp+xpFactor;
     }
     targetBatArrayUpdate();
+    escaped = false;
 };
 
 function combatReport() {

@@ -750,7 +750,7 @@ function eggSpawn(bat,fromEgg) {
                 classes.push('B');
                 if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA && (playerInfos.mapDiff >= 6 || overSaturation)) {
                     classes.push('A');
-                    if ((saturation && playerInfos.mapDiff >= 6) || playerInfos.mapDiff >= 10) {
+                    if (saturation && playerInfos.mapDiff >= 6) {
                         classes.push('S');
                     }
                     if (eggModTurn >= 20 && playerInfos.mapTurn >= minTurnA && fromEgg) {

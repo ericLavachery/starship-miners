@@ -228,7 +228,7 @@
         "pic":"crusader",
         "cat":"vehicles",
         "kind":"zero-vaisseaux",
-        "sort":0,
+        "sort":50,
         "squads":6,
         "squadSize":1,
         "crew":10,
