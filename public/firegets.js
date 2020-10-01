@@ -382,6 +382,42 @@ function isInRange(myBat,thatTileId,myWeapon) {
     return inRange;
 };
 
+function anyAlienInRange(myBat,weapon) {
+    let tileId = myBat.tileId;
+    let distance;
+    let inRange = false;
+    let batIndex;
+    let batType;
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            if (isInRange(myBat,bat.tileId,weapon) || checkGuidage(weapon,bat)) {
+                batType = getBatType(bat);
+                if (weapon.noFly && batType.skills.includes('fly')) {
+                    // Fly hors portée
+                } else {
+                    if (weapon.noGround && !batType.skills.includes('fly') && !batType.skills.includes('sauteur')) {
+                        // Ground hors portée
+                    } else {
+                        if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
+                            // Alien invisible
+                            distance = calcDistance(myBat.tileId,bat.tileId)
+                            if (distance === 0) {
+                                inRange = true;
+                            }
+                        } else {
+                            inRange = true;
+                        }
+                    }
+                }
+                // if ((!weapon.noFly || !batType.skills.includes('fly')) && (!weapon.noGround || batType.skills.includes('fly') || batType.skills.includes('sauteur')) && ((!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) || distance === 0)) {
+                //     inRange = true;
+                // }
+            }
+        }
+    });
+    return inRange;
+};
+
 function calcDistance(myTileIndex,thatTileIndex) {
     let distance = 0;
     let batOff = calcOffsets(myTileIndex,thatTileIndex);
@@ -409,26 +445,6 @@ function calcOffsets(myTileId,tileId) {
     return [xOff,yOff];
 };
 
-function anyAlienInRange(myBat,weapon) {
-    let tileId = myBat.tileId;
-    let distance;
-    let inRange = false;
-    let batIndex;
-    let batType;
-    aliens.forEach(function(bat) {
-        if (bat.loc === "zone") {
-            if (isInRange(myBat,bat.tileId,weapon) || checkGuidage(weapon,bat)) {
-                batIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
-                batType = alienUnits[batIndex];
-                if ((!weapon.noFly || !batType.skills.includes('fly')) && (!weapon.noGround || batType.skills.includes('fly') || batType.skills.includes('sauteur')) && ((!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) || distance === 0)) {
-                    inRange = true;
-                }
-            }
-        }
-    });
-    return inRange;
-};
-
 function checkFlyTarget(weapon,batType) {
     if (weapon.noFly && batType.skills.includes('fly')) {
         return false;
@@ -442,6 +458,7 @@ function checkFlyTarget(weapon,batType) {
 };
 
 function fireInfos(bat) {
+    $(".targ").remove();
     isMelee = false;
     let batType = getBatType(bat);
     cursorSwitch('.','grid-item','pointer');
@@ -564,7 +581,7 @@ function ammoFired(batId) {
 };
 
 function weaponAdj(weapon,bat,wn) {
-    batType = getBatType(bat);
+    let batType = getBatType(bat);
     // bonus veterancy
     let thisWeapon = {};
     if (wn == 'w2') {
@@ -716,13 +733,17 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.power = thisWeapon.power+1;
     }
     // skills
-    let batUnitType = getBatType(bat);
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
+    // RANGE
+    if (batType.name === 'Ruche') {
+        if (colonyTiles.includes(bat.tileId)) {
+            thisWeapon.range = thisWeapon.range+5;
+            thisWeapon.power = thisWeapon.power+3;
+        }
+    }
+    // Elevation
     let vision = 1;
-    // ELEVATION
-    // console.log(thisWeapon.elevation);
-    // console.log(tile.terrain);
     if (tile.terrain == 'M') {
         vision = 3;
         if (thisWeapon.elevation === 1) {
@@ -736,9 +757,11 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.range = thisWeapon.range+1;
         }
     } else if (tile.talus) {
-        vision = 2;
-        if (thisWeapon.elevation >= 1 && (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber'))) {
-            thisWeapon.range = thisWeapon.range+1;
+        if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+            vision = 2;
+            if (thisWeapon.elevation >= 1) {
+                thisWeapon.range = thisWeapon.range+1;
+            }
         }
     }
     // Forêt (range)

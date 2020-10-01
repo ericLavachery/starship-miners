@@ -24,6 +24,7 @@ function nextTurn() {
     deadAliensList = [];
     alienTypesList = [];
     visibleAliens = [];
+    getColonyTiles();
     let unitIndex;
     let batType;
     let hasHide = false;

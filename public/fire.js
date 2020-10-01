@@ -359,6 +359,9 @@ function attack(melee) {
         }
         if (targetBat.tags.includes('shield')) {
             let shieldValue = rand.rand(5,15);
+            if (selectedWeap.ammo.includes('gaz')) {
+                shieldValue = Math.floor(shieldValue/2.5);
+            }
             shots = Math.ceil(shots/shieldValue*hasShield/2);
         }
     }

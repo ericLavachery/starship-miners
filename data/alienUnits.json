@@ -744,7 +744,7 @@
         "hp":3,
         "armor":0,
         "size":2,
-        "speed":8,
+        "speed":6,
         "stealth":0,
         "ap":12,
         "maxSalvo":1,
@@ -2186,7 +2186,7 @@
         "weapon":{
             "name":"Boule de feu",
             "cost":7,
-            "range":8,
+            "range":5,
             "noFly":false,
             "isMelee":false,
             "rof":6,
@@ -2201,7 +2201,7 @@
         "weapon2":{
             "name":"Boule de feu",
             "cost":9,
-            "range":12,
+            "range":7,
             "noFly":false,
             "isMelee":false,
             "rof":6,

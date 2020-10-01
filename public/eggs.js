@@ -42,6 +42,21 @@ function checkStartingAliens() {
     }
 };
 
+function getColonyTiles() {
+    colonyTiles = [];
+    let coloBat = getAlienByName('Colonie');
+    if (Object.keys(coloBat).length >= 1) {
+        colonyTiles.push(coloBat.tileId+1);
+        colonyTiles.push(coloBat.tileId-1);
+        colonyTiles.push(coloBat.tileId+1-mapSize);
+        colonyTiles.push(coloBat.tileId-1-mapSize);
+        colonyTiles.push(coloBat.tileId-mapSize);
+        colonyTiles.push(coloBat.tileId+1+mapSize);
+        colonyTiles.push(coloBat.tileId-1+mapSize);
+        colonyTiles.push(coloBat.tileId+mapSize);
+    }
+}
+
 function calcEggPause(noMax) {
     let eggPauseDice = eggPauseBase;
     eggPauseDice = eggPauseDice+Math.round(Math.sqrt(aliens.length)*2);

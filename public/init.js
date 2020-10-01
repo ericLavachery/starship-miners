@@ -79,6 +79,7 @@ socket.on('savedMap-Load', function(sm) {
     } else {
         generateNewMap();
     }
+    getColonyTiles();
     checkUndark();
     turnInfo();
     commandes();

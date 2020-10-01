@@ -142,6 +142,7 @@ let vomiChance = 5; // 5% par oeuf manquant
 let coqueChance = 20; // 20% pour une coque
 let stopForFight = false;
 let alienTypesList = [];
+let colonyTiles = [];
 let spawnType = {};
 let eggsNum = 0;
 let aliensNum = 0;
