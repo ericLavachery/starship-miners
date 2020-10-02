@@ -706,11 +706,11 @@ function newEggCat() {
 function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
     let saturation = false;
-    if (aliens.length >= 150) {
+    if (aliens.length >= 200) {
         saturation = true;
     }
     let overSaturation = false;
-    if (aliens.length >= 200) {
+    if (aliens.length >= 250) {
         overSaturation = true;
     }
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
@@ -765,7 +765,7 @@ function eggSpawn(bat,fromEgg) {
                 classes.push('B');
                 if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA && (playerInfos.mapDiff >= 6 || overSaturation)) {
                     classes.push('A');
-                    if (saturation && playerInfos.mapDiff >= 6) {
+                    if (saturation && playerInfos.mapDiff >= 6 && playerInfos.mapTurn >= 100) {
                         classes.push('S');
                     }
                     if (eggModTurn >= 20 && playerInfos.mapTurn >= minTurnA && fromEgg) {
