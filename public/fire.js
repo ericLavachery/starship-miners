@@ -353,7 +353,7 @@ function attack(melee) {
             hasShield = 6;
         }
     }
-    if (activeTurn === 'player' && hasShield >= 1 && selectedWeap.isMelee === false && selectedWeap.noShield === false) {
+    if (activeTurn === 'player' && hasShield >= 1 && selectedWeap.isMelee === false && selectedWeap.noShield === false && !selectedWeap.ammo.includes('adamantium') && !selectedWeap.ammo.includes('-fleche') && !selectedWeap.ammo.includes('-sunburst')) {
         if (rand.rand(1,3) >= 2 && !targetBat.tags.includes('shield')) {
             targetBat.tags.push('shield');
         }

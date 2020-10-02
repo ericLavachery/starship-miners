@@ -606,7 +606,7 @@ function cocoonSpawn(bat) {
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     let eggLife = 2;
     console.log('eggTurn='+eggTurn);
-    if (eggTurn > eggLife) {
+    if (eggTurn > eggLife && bat.squadsLeft === 6) {
         // TRANFORMATION EN VOLCAN !
         alienMorph(bat,'Volcan',false);
     } else {

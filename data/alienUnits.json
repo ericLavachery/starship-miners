@@ -288,7 +288,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["shield","minaccu","regeneration","reactpoison","noaploss"],
+        "skills":["shield","minaccu","slowreg","reactpoison","noaploss"],
         "deathFx":"185366__anwul__monster",
         "spawnFx":"195733__nornalbion__large-monster-mante",
         "fxPriority":7,
