@@ -1407,13 +1407,13 @@
             "range":0,
             "isShort":true,
             "noShield":true,
-            "rof":6,
+            "rof":12,
             "accuracy":10,
             "power":15,
             "armors":0.5,
             "aoe":"unit",
             "sound":"saw",
-            "ammo":["lame-tungsten","lame-plasma"]
+            "ammo":["lame","lame-tungsten","lame-plasma"]
         },
         "protection":["aucune"],
         "moveCost":3,
@@ -1475,7 +1475,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame"]
+            "ammo":["lame","lame-tungsten","lame-plasma"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "moveCost":3,

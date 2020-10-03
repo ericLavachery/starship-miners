@@ -3370,11 +3370,11 @@
             "noGrip":true,
             "rof":6,
             "accuracy":12,
-            "power":24,
+            "power":30,
             "armors":0.5,
             "aoe":"unit",
             "sound":"saw",
-            "ammo":["lame-tungsten","lame-plasma"]
+            "ammo":["lame","lame-tungsten","lame-plasma"]
         },
         "weapon2":{},
         "protection":["aucun"],

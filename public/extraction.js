@@ -145,10 +145,28 @@ function getTileById(tileId) {
 
 function getMiningRate(bat,fullRate) {
     let batType = getBatType(bat);
+    let miningAdj = 1;
+    if (batType.weapon2.name === 'Foreuse' || batType.weapon2.name === 'Pioche') {
+        if (bat.ammo2 === 'lame') {
+            miningAdj = 1;
+        } else if (bat.ammo2 === 'lame-tungsten') {
+            miningAdj = 1.2;
+        } else if (bat.ammo2 === 'lame-plasma') {
+            miningAdj = 1.6;
+        }
+    } else if (batType.weapon.name === 'Foreuse' || batType.weapon.name === 'Pioche') {
+        if (bat.ammo === 'lame') {
+            miningAdj = 1;
+        } else if (bat.ammo === 'lame-tungsten') {
+            miningAdj = 1.2;
+        } else if (bat.ammo === 'lame-plasma') {
+            miningAdj = 1.6;
+        }
+    }
     if (fullRate) {
-        return Math.ceil(batType.mining.rate*bat.squadsLeft/batType.squads);
+        return Math.ceil(batType.mining.rate*bat.squadsLeft/batType.squads*miningAdj);
     } else {
-        return Math.ceil(batType.mining.rate*bat.apLeft/bat.ap*bat.squadsLeft/batType.squads);
+        return Math.ceil(batType.mining.rate*bat.apLeft/bat.ap*bat.squadsLeft/batType.squads*miningAdj);
     }
 };
 
