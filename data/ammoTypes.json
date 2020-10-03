@@ -114,8 +114,8 @@
         "range": 1,
         "rof": 1,
         "power": 10,
-        "armors": 1.25,
-        "accuracy": 1,
+        "armors": 1.1,
+        "accuracy": 1.5,
         "apdamage": 0,
         "aoe": ""
     },
@@ -167,6 +167,16 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0.05,
+        "aoe": ""
+    },
+    {
+        "name": "flechette",
+        "range": 1,
+        "rof": 1,
+        "power": 4,
+        "armors": 0.25,
+        "accuracy": 1,
+        "apdamage": 0,
         "aoe": ""
     },
     {
@@ -334,8 +344,8 @@
         "range": 1,
         "rof": 1,
         "power": 8,
-        "armors": 1.25,
-        "accuracy": 1,
+        "armors": 1.2,
+        "accuracy": 1.5,
         "apdamage": 0,
         "aoe": ""
     },
@@ -894,7 +904,7 @@
         "range": 1.1,
         "rof": 1,
         "power": 6,
-        "armors": 0.25,
+        "armors": 0.2,
         "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "brochette"
@@ -964,7 +974,7 @@
         "range": 1,
         "rof": 1,
         "power": 0,
-        "armors": 0.25,
+        "armors": 0.15,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "brochette"
@@ -1024,7 +1034,7 @@
         "range": 1.1,
         "rof": 1,
         "power": 10,
-        "armors": 0.25,
+        "armors": 0.15,
         "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "brochette"

@@ -501,7 +501,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","longshot","bastion","recupcit","prefab","transport","repair","routes","vision","mur"],
+        "skills":["cible","longshot","bastion","recupcit","prefab","transport","repair","meleehelp","routes","vision","mur"],
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1200,

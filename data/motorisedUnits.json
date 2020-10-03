@@ -595,7 +595,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["selfmecano","cible","longshot","hscarpmove","defense","gooddef"],
+        "skills":["selfmecano","meleehelp","cible","longshot","hscarpmove","defense","gooddef"],
         "mecanoCost":15,
         "fuzz":5,
         "deathFx":"planeexploair3"
@@ -741,7 +741,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"calibre_x2",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "weapon2":{},
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
@@ -1883,7 +1883,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"calibre_pierce_x2",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -2304,7 +2304,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","fly","inflammable","transport","fret","longshot","dumper","realdumper","gooddef","selfmecano","resistacide"],
+        "skills":["cible","fly","inflammable","transport","fret","longshot","dumper","realdumper","gooddef","selfmecano","meleehelp","resistacide"],
         "mecanoCost":4,
         "transMaxSize":25,
         "transUnits":2000,
@@ -2533,7 +2533,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"calibre_multi",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
@@ -3363,17 +3363,18 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Foreuse",
-            "cost":5,
+            "cost":3,
             "range":0,
             "isShort":true,
             "noShield":true,
+            "noGrip":true,
             "rof":6,
             "accuracy":12,
             "power":24,
             "armors":0.5,
             "aoe":"unit",
             "sound":"saw",
-            "ammo":["lame-tungsten"]
+            "ammo":["lame-tungsten","lame-plasma"]
         },
         "weapon2":{},
         "protection":["aucun"],

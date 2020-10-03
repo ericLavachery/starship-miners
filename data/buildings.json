@@ -23,7 +23,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["mecano","selfrepair","recupcit","transport","routes"],
+        "skills":["mecano","selfrepair","meleehelp","recupcit","transport","routes"],
         "mecanoCost":3,
         "transMaxSize":9,
         "transUnits":1500,
