@@ -641,7 +641,7 @@ function attack(melee) {
         }
     }
     // freeze
-    if (totalDamage >= 50) {
+    if (totalDamage >= 50 || totalDamage >= Math.round(targetBatType.hp*targetBatType.squadSize/2)) {
         if (selectedWeap.ammo.includes('freeze')) {
             if (targetBatType.skills.includes('mutant') || targetBatType.cat == 'aliens') {
                 if (!targetBat.tags.includes('freeze')) {
@@ -1049,7 +1049,7 @@ function defense(melee) {
         }
     }
     // freeze
-    if (totalDamage >= 50) {
+    if (totalDamage >= 50 || totalDamage >= Math.round(selectedBatType.hp*selectedBatType.squadSize/2)) {
         if (targetWeap.ammo.includes('freeze')) {
             if (selectedBatType.skills.includes('mutant') || selectedBatType.cat == 'aliens') {
                 if (!selectedBat.tags.includes('freeze')) {

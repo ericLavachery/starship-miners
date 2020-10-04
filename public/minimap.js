@@ -69,13 +69,22 @@ function minimap() {
     }
 };
 
+function updateAliensNum() {
+    checkVisibleAliens();
+    commandes();
+}
+
 function checkVisibleAliens() {
     visibleAliens = [];
+    aliensNum = 0;
     let alienType;
     aliens.forEach(function(alien) {
-        alienType = getBatType(alien);
-        if (alien.loc === "zone" && !alien.tags.includes('invisible') && !alienType.skills.includes('invisible')) {
-            visibleAliens.push(alien.tileId);
+        if (alien.loc === "zone") {
+            alienType = getBatType(alien);
+            if ((!alien.tags.includes('invisible') && !alienType.skills.includes('invisible')) || playerInfos.skills.includes('det5')) {
+                visibleAliens.push(alien.tileId);
+                aliensNum++;
+            }
         }
     });
 };

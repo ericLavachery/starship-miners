@@ -735,7 +735,11 @@ function weaponAdj(weapon,bat,wn) {
     // skills
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
-    // RANGE
+    // BAT RANGE
+    if (bat.range < thisWeapon.range) {
+        bat.range = thisWeapon.range;
+    }
+    // RANGE ADJUSTMENTS
     if (batType.name === 'Ruche') {
         if (colonyTiles.includes(bat.tileId)) {
             thisWeapon.range = thisWeapon.range+5;

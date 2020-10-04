@@ -32,7 +32,7 @@ function nextTurn() {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
             deFog(bat,batType);
-            if (!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) {
+            if ((!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) || playerInfos.skills.includes('det5')) {
                 visibleAliens.push(bat.tileId);
             }
             if (!alienTypesList.includes(batType.name)) {
@@ -192,7 +192,7 @@ function nextTurnEnd() {
                 aliens.forEach(function(alien) {
                     distance = calcDistance(bat.tileId,alien.tileId);
                     alienType = getBatType(alien);
-                    if (distance <= 5 && !alienType.skills.includes('invisible') && !alien.tags.includes('invisible')) {
+                    if (distance <= bat.range && !alienType.skills.includes('invisible') && !alien.tags.includes('invisible')) {
                         tagDelete(bat,'nolist');
                     }
                 });
