@@ -67,7 +67,7 @@
             "armors":1.35,
             "aoe":"brochette",
             "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
         },
         "weapon2":{
             "name":"Revolver",
@@ -3232,12 +3232,12 @@
             "cost":3,
             "range":2,
             "elevation":1,
-            "rof":9,
+            "rof":12,
             "accuracy":22,
             "power":16,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"calibre_antichar",
+            "sound":"calibre_antichar_x3",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["aucun"],
@@ -3377,7 +3377,7 @@
             "armors":1.35,
             "aoe":"brochette",
             "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","tungsten","uranium","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
         },
         "weapon2":{
             "name":"Rainbow gun",

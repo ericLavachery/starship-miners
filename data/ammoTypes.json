@@ -263,9 +263,9 @@
         "name": "ac-salite",
         "range": 1.4,
         "rof": 1,
-        "power": 0,
-        "armors": 0.75,
-        "accuracy": 1.5,
+        "power": 3,
+        "armors": 0.6,
+        "accuracy": 1.6,
         "apdamage": 0,
         "aoe": ""
     },
@@ -276,6 +276,16 @@
         "power": 0,
         "armors": 0.25,
         "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "ac-dunium",
+        "range": 1,
+        "rof": 1,
+        "power": 13,
+        "armors": 1,
+        "accuracy": 1.5,
         "apdamage": 0,
         "aoe": ""
     },
