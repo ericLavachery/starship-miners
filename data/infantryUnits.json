@@ -804,11 +804,11 @@
             "elevation":1,
             "rof":10,
             "accuracy":19,
-            "power":9,
+            "power":10,
             "armors":0.75,
             "aoe":"unit",
             "sound":"calibre_heavy_x1",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","titanium","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
         },
         "moveCost":3,
         "maxFlood":3,
@@ -1517,11 +1517,11 @@
             "elevation":1,
             "rof":8,
             "accuracy":18,
-            "power":9,
+            "power":10,
             "armors":0.75,
             "aoe":"unit",
             "sound":"calibre_heavy_x1",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","titanium","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
         },
         "weapon2":{
             "name":"Lame",
@@ -3212,12 +3212,13 @@
         "volume":1,
         "stealth":0,
         "ap":20,
-        "maxSalvo":1,
+        "maxSalvo":2,
         "weapon":{
             "name":"Lance-flammes",
             "cost":4,
             "range":0,
             "elevation":1,
+            "noBis":true,
             "rof":9,
             "accuracy":18,
             "power":15,
@@ -3232,6 +3233,7 @@
             "cost":3,
             "range":2,
             "elevation":1,
+            "noBis":true,
             "rof":12,
             "accuracy":22,
             "power":16,
@@ -3840,16 +3842,17 @@
         "ap":19,
         "maxSalvo":1,
         "weapon":{
-            "name":"Fusil à pompe",
-            "cost":2,
+            "name":"Blaster",
+            "cost":3,
             "range":1,
-            "rof":12,
+            "elevation":1,
+            "rof":8,
             "accuracy":19,
-            "power":8,
-            "armors":0.85,
+            "power":10,
+            "armors":0.75,
             "aoe":"unit",
-            "sound":"calibre_pierce_x2",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "sound":"calibre_heavy_x1",
+            "ammo":["standard","scrap","hollow","perfo","titanium","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
         },
         "weapon2":{
             "name":"LG intégré",
