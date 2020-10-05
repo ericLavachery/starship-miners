@@ -15,6 +15,10 @@ function extraction(apCost) {
 };
 
 function mining(bat) {
+    if (!bat.tags.includes('mining') && bat.extracted.length >= 1 && bat.apLeft >= 7) {
+        bat.tags.push('mining');
+        bat.apLeft = bat.apLeft-5;
+    }
     if (bat.tags.includes('mining')) {
         if (bat.apLeft >= 1) {
             console.log('MINING');

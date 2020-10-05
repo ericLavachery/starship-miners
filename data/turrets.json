@@ -648,7 +648,7 @@
             "aoe":"squad",
             "sound":"canon_big_x2",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":40,
+            "maxAmmo":30,
             "ravitBld":"Poudrière"
         },
         "weapon2":{

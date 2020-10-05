@@ -151,7 +151,7 @@
     },
     {
         "name": "adamantium",
-        "range": 1.4,
+        "range": 1.1,
         "rof": 1,
         "power": 0,
         "armors": 0.35,
@@ -271,7 +271,7 @@
     },
     {
         "name": "ac-adamantium",
-        "range": 1.4,
+        "range": 1.1,
         "rof": 1,
         "power": 0,
         "armors": 0.25,
@@ -391,7 +391,7 @@
     },
     {
         "name": "sm-adamantium",
-        "range": 1.4,
+        "range": 1.1,
         "rof": 1,
         "power": 0,
         "armors": 0.5,
