@@ -453,6 +453,7 @@
             "range":6,
             "elevation":1,
             "noMelee":true,
+            "noFly":true,
             "rof":8,
             "accuracy":22,
             "dca":0.5,

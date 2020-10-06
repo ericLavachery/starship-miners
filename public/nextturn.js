@@ -441,7 +441,7 @@ function tagsUpdate(bat) {
     tagDelete(bat,'noBis1');
     tagDelete(bat,'noBis2');
     tagDelete(bat,'action');
-    if (bat.apLeft >= 1) {
+    if (bat.apLeft >= 0) {
         tagDelete(bat,'construction');
     }
     if (!bat.tags.includes('prayer') && rand.rand(1,4) === 1) {

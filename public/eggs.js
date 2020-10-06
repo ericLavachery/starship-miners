@@ -147,7 +147,7 @@ function checkEggsDrop() {
     if (eggDropCount >= 1) {
         eggSound();
         playMusic('newEgg',false);
-        if (Math.floor(playerInfos.mapTurn/50) > playerInfos.cocons) {
+        if (Math.floor(playerInfos.mapTurn/25) > playerInfos.cocons) {
             dropEgg('Cocon',false);
             playerInfos.cocons = playerInfos.cocons+1;
         }
@@ -613,23 +613,43 @@ function cocoonSpawn(bat) {
         if (eggTurn < 3) {
             let classes = [];
             let eggLevel = playerInfos.mapDiff+Math.floor(playerInfos.mapTurn/50)-1;
+            let saturation = false;
+            if (aliens.length >= 200 && playerInfos.mapTurn >= 100) {
+                saturation = true;
+            }
             let spawnNum = 4;
             if (eggTurn === 2) {
                 spawnNum = 6+Math.floor(playerInfos.mapTurn/25);
-                if (eggLevel >= 10) {
+                if (eggLevel >= 12) {
                     classes.push('A');
+                    classes.push('S');
+                } else if (eggLevel >= 10) {
+                    classes.push('A');
+                    if (saturation) {
+                        classes.push('S');
+                    }
                 } else if (eggLevel >= 8) {
                     classes.push('A');
-                    classes.push('B');
+                    if (!saturation) {
+                        classes.push('B');
+                    }
                 } else if (eggLevel >= 6) {
                     classes.push('A');
                     classes.push('B');
-                    classes.push('C');
+                    if (!saturation) {
+                        classes.push('C');
+                    }
                 } else if (eggLevel >= 4) {
                     classes.push('B');
                     classes.push('C');
+                    if (saturation) {
+                        classes.push('A');
+                    }
                 } else {
                     classes.push('C');
+                    if (saturation) {
+                        classes.push('B');
+                    }
                 }
             } else {
                 spawnNum = playerInfos.mapDiff+(rand.rand(1,4));
@@ -676,6 +696,12 @@ function cocoonSpawn(bat) {
                 if (Object.keys(conselUnit).length >= 1) {
                     dropTile = checkDrop(bat);
                     if (dropTile >= 0) {
+                        if (conselUnit.class === 'S') {
+                            const index = classes.indexOf('S');
+                            if (index > -1) {
+                                classes.splice(index,1);
+                            }
+                        }
                         checkSpawnType(conselUnit);
                         putEggCat(bat,conselUnit.kind);
                         putBat(dropTile,0,0);
@@ -765,9 +791,6 @@ function eggSpawn(bat,fromEgg) {
                 classes.push('B');
                 if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA && (playerInfos.mapDiff >= 6 || overSaturation)) {
                     classes.push('A');
-                    if (saturation && playerInfos.mapDiff >= 6 && playerInfos.mapTurn >= 100) {
-                        classes.push('S');
-                    }
                     if (eggModTurn >= 20 && playerInfos.mapTurn >= minTurnA && fromEgg) {
                         const index = classes.indexOf('C');
                         if (index > -1) {
