@@ -980,6 +980,7 @@
             "cost":4,
             "range":3,
             "noFly":true,
+            "noShield":true,
             "rof":6,
             "accuracy":14,
             "power":4,

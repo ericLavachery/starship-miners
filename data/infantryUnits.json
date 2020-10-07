@@ -2644,7 +2644,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","camo","regeneration","embuscade","mutant","ranger","survivor","sentinelle","guerrilla","baddef"],
+        "skills":["fouille","fortif","cible","camo","regeneration","embuscade","mutant","ranger","sentinelle","guerrilla","baddef"],
         "fuzz":-1,
         "deathFx":"137036__pyrocamancer__beast-death"
     },
@@ -3153,7 +3153,7 @@
         "size":3,
         "volume":1,
         "stealth":4,
-        "ap":13,
+        "ap":14,
         "maxSalvo":1,
         "weapon":{
             "name":"Nailgun",
@@ -3174,6 +3174,7 @@
             "range":2,
             "elevation":1,
             "noMelee":true,
+            "noShield":true,
             "noDef":true,
             "noBis":true,
             "noFly":true,
@@ -3192,7 +3193,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","fortif","cible","mecano","selfmedic","cyber"],
-        "mecanoCost":6,
+        "mecanoCost":4,
         "mediCost":8,
         "fuzz":1,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
@@ -3247,7 +3248,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","inflammable","cyber","hardmove"],
+        "skills":["fortif","cible","cyber","hardmove"],
         "fuzz":2.5,
         "deathFx":"144469__psychedelic-hands__robot-death"
     },
@@ -3387,6 +3388,7 @@
             "range":2,
             "elevation":1,
             "noMelee":true,
+            "noShield":true,
             "noDef":true,
             "noBis":true,
             "noFly":true,
