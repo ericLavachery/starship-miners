@@ -743,7 +743,6 @@ function weaponAdj(weapon,bat,wn) {
     if (batType.name === 'Ruche') {
         if (colonyTiles.includes(bat.tileId)) {
             thisWeapon.range = thisWeapon.range+5;
-            thisWeapon.power = thisWeapon.power+3;
         }
     }
     // Elevation
@@ -902,7 +901,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
             brideDef = 1;
         }
     }
-    // embuscade on bridage def
+    // baddef on bridage def
     if (batType.skills.includes('baddef')) {
         if (guet || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('after')) {
             brideDef = brideDef/1.17;

@@ -2134,7 +2134,7 @@
             "noFly":false,
             "isMelee":false,
             "rof":4,
-            "accuracy":17,
+            "accuracy":20,
             "dca":1.5,
             "power":22,
             "aoe":"brochette",
@@ -2149,7 +2149,7 @@
             "noFly":false,
             "isMelee":false,
             "rof":4,
-            "accuracy":14,
+            "accuracy":17,
             "dca":1.5,
             "power":22,
             "aoe":"brochette",
@@ -2161,7 +2161,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","inflammable","noaploss","nolaser"],
+        "skills":["ponte","inflammable","noaploss","nolaser","baddef","minaccu"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":5,"Creatite":9,"Slime":31}
     },
@@ -2218,7 +2218,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","minaccu","shield","regmode","eggshield","eggdefense","regeneration","noaploss","nolaser","survivor"],
+        "skills":["ponte","minaccu","shield","regmode","eggshield","eggdefense","regeneration","noaploss","nolaser","survivor","baddef"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":48,"Creatite":18,"Mendium":60,"Egidium":94,"Bossium":73,"Pyrus":108}
     },
@@ -2272,7 +2272,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["slowreg","resistfeu","reactpoison","nolaser"],
+        "skills":["slowreg","resistfeu","reactpoison","nolaser","baddef"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":12,"Mendium":15,"Pyrus":26}
     }

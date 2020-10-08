@@ -4,12 +4,14 @@ function checkStartingAliens() {
         dropEgg('Colonie',false);
         let coloBat = getAlienByName('Colonie');
         alienSpawn(coloBat,'Vomissure');
+        alienSpawn(coloBat,'Vomissure');
         if (playerInfos.mapDiff >= 9) {
+            alienSpawn(coloBat,'Vomissure');
             alienSpawn(coloBat,'Vomissure');
             alienSpawn(coloBat,'Ruche');
         }
         if (playerInfos.mapDiff >= 10) {
-            alienSpawn(coloBat,'Vomissure');
+            alienSpawn(coloBat,'Ruche');
             alienSpawn(coloBat,'Ruche');
         }
         numRuches = rand.rand(1,2);
@@ -322,13 +324,26 @@ function eggDropTile(eggName,edge) {
         let shufZone = _.shuffle(zone);
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
-                if (tile.x === 58 || tile.x === 3 || tile.y === 58 || tile.y === 3 || tile.x === 57 || tile.x === 4 || tile.y === 57 || tile.y === 4) {
+                if ((tile.x === 55 && tile.y >= 6 && tile.y <= 55) || (tile.x === 6 && tile.y >= 6 && tile.y <= 55) || (tile.y === 6 && tile.x >= 6 && tile.x <= 55) || (tile.y === 55 && tile.x >= 6 && tile.x <= 55)) {
                     if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
-                        theTile = tile.id;
+                        if (tile.terrain != 'F' && tile.terrain != 'W' && tile.terrain != 'R') {
+                            theTile = tile.id;
+                        }
                     }
                 }
             }
         });
+        if (theTile < 0) {
+            shufZone.forEach(function(tile) {
+                if (theTile < 0) {
+                    if ((tile.x === 55 && tile.y >= 6 && tile.y <= 55) || (tile.x === 6 && tile.y >= 6 && tile.y <= 55) || (tile.y === 6 && tile.x >= 6 && tile.x <= 55) || (tile.y === 55 && tile.x >= 6 && tile.x <= 55)) {
+                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                            theTile = tile.id;
+                        }
+                    }
+                }
+            });
+        }
     }
     // NOCENTER
     if (area === 'nocenter') {
