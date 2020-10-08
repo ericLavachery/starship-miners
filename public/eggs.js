@@ -499,7 +499,7 @@ function spawns() {
                 alienMorph(bat,'Fantômes',false);
             } else if (rand.rand(1,vomiToRuche) === 1 && playerInfos.mapTurn >= Math.ceil(vomiToRuche/1.5) && bat.type === 'Vomissure') {
                 alienMorph(bat,'Ruche',true);
-            } else if (bat.type === 'Bug Boss' && aliens.length < maxAliens && aliensNums.bugs < maxPonte*2) {
+            } else if (bat.type === 'Dragon' && aliens.length < maxAliens && aliensNums.bugs < maxPonte*2) {
                 alienSpawn(bat,'Bugs');
             } else if (bat.type === 'Androks' && aliens.length < maxAliens && aliensNums.scorpions < Math.round(maxPonte*1.5)) {
                 alienSpawn(bat,'Scorpions');
@@ -687,7 +687,7 @@ function cocoonSpawn(bat) {
             let raritySum = 0;
             let dropTile = -1;
             alienUnits.forEach(function(unit) {
-                if (classes.includes(unit.class) && unit.kind.includes(eggCat)) {
+                if (classes.includes(unit.class) && unit.kind.includes(eggCat) && unit.class != 'S') {
                     checkDiceMax = checkDiceMax+unit.rarity;
                 }
             });
@@ -695,17 +695,25 @@ function cocoonSpawn(bat) {
             while (i <= spawnNum) {
                 conselUnit = {};
                 conselAmmos = ['xxx','xxx','xxx'];
-                checkDice = rand.rand(1,checkDiceMax);
-                console.log('checkDice='+checkDice);
-                raritySum = 0;
-                alienUnits.forEach(function(unit) {
-                    if (classes.includes(unit.class) && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat)) {
-                        raritySum = raritySum+unit.rarity;
-                        if (checkDice <= raritySum) {
+                if (classes.includes('S')) {
+                    alienUnits.forEach(function(unit) {
+                        if (unit.class === 'S' && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat)) {
                             conselUnit = unit;
                         }
-                    }
-                });
+                    });
+                } else {
+                    checkDice = rand.rand(1,checkDiceMax);
+                    console.log('checkDice='+checkDice);
+                    raritySum = 0;
+                    alienUnits.forEach(function(unit) {
+                        if (classes.includes(unit.class) && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat) && unit.class != 'S') {
+                            raritySum = raritySum+unit.rarity;
+                            if (checkDice <= raritySum) {
+                                conselUnit = unit;
+                            }
+                        }
+                    });
+                }
                 console.log('spawned unit ->');
                 console.log(conselUnit);
                 if (Object.keys(conselUnit).length >= 1) {

@@ -81,7 +81,7 @@
             "aoe":"squad",
             "sound":"canon_big_multi",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":28,
+            "maxAmmo":27,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -2781,8 +2781,8 @@
             "cost":3,
             "range":3,
             "rof":6,
-            "accuracy":10,
-            "dca":4,
+            "accuracy":14,
+            "dca":3,
             "power":16,
             "aoe":"squad",
             "sound":"bomb_mini_x3",
@@ -2795,7 +2795,7 @@
             "cost":3,
             "range":2,
             "rof":12,
-            "accuracy":17,
+            "accuracy":20,
             "dca":1,
             "power":8,
             "armors":0.7,

@@ -284,7 +284,7 @@
         },
         "weapon2":{},
         "w2chance":0,
-        "moveCost":5,
+        "moveCost":4,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
@@ -1203,7 +1203,7 @@
     },
     {
         "id":25,
-        "name":"Bug Boss",
+        "name":"Dragons",
         "pic":"bugboss",
         "cat":"aliens",
         "kind":"bug",
