@@ -583,7 +583,7 @@ function tagsEffect(bat,batType) {
         bat.apLeft = bat.apLeft-2;
     }
     // REGENERATION & KIRIN DRUG
-    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('heal')) {
+    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal')) {
         squadHP = batType.squadSize*batType.hp;
         let batHP = squadHP*batType.squads;
         if (bat.citoyens >= 1) {
@@ -592,6 +592,8 @@ function tagsEffect(bat,batType) {
         let regen;
         if (batType.skills.includes('heal')) {
             regen = batHP;
+        } else if (batType.skills.includes('fastreg')) {
+            regen = Math.round(batHP/2);
         } else if (bat.tags.includes('kirin') || batType.skills.includes('regeneration') || bat.tags.includes('regeneration')) {
             regen = Math.round(batHP*regenPower/100);
         } else {
