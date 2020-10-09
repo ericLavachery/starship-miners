@@ -493,18 +493,18 @@ function spawns() {
                 alienMorph(bat,'Moucherons',false);
             } else if (transList.includes('Vers') && bat.squadsLeft >= 5 && bat.type === 'Vers') {
                 alienMorph(bat,'Lucioles',false);
-            } else if (transList.includes('Larves') && bat.squadsLeft >= 3 && bat.type === 'Larves') {
+            } else if (rand.rand(1,15) === 1 && bat.squadsLeft >= 3 && bat.type === 'Larves') {
                 alienMorph(bat,'Wurms',false);
             } else if (transList.includes('Ombres') && bat.type === 'Ombres') {
                 alienMorph(bat,'Fantômes',false);
             } else if (rand.rand(1,vomiToRuche) === 1 && playerInfos.mapTurn >= Math.ceil(vomiToRuche/1.5) && bat.type === 'Vomissure') {
                 alienMorph(bat,'Ruche',true);
-            } else if (bat.type === 'Dragon' && aliens.length < maxAliens && aliensNums.bugs < maxPonte*2) {
+            } else if (bat.type === 'Dragons' && aliens.length < maxAliens && aliensNums.bugs < maxPonte*2) {
                 alienSpawn(bat,'Bugs');
             } else if (bat.type === 'Androks' && aliens.length < maxAliens && aliensNums.scorpions < Math.round(maxPonte*1.5)) {
                 alienSpawn(bat,'Scorpions');
-            } else if (bat.type === 'Megagrubz' && rand.rand(1,2) === 1 && aliens.length < maxAliens && aliensNums.larves < maxPonte) {
-                alienSpawn(bat,'Scorpions');
+            } else if (bat.type === 'Megagrubz' && rand.rand(1,5) === 1 && aliens.length < maxAliens) {
+                alienSpawn(bat,'Vomissure');
             } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && rand.rand(1,3) === 1) {
                 if (aliensNums.homards >= 1) {
                     if (rand.rand(1,2) === 1) {
@@ -515,7 +515,7 @@ function spawns() {
                 } else if (aliens.length < maxAliens && aliensNums.cafards < maxPonte*3 && rand.rand(1,2) === 1) {
                     alienSpawn(bat,'Cafards');
                 }
-            } else if (bat.type === 'Glaireuse' && aliens.length < maxAliens && aliensNums.gluantes < maxPonte) {
+            } else if (bat.type === 'Glaireuses' && aliens.length < maxAliens && aliensNums.gluantes < maxPonte) {
                 alienSpawn(bat,'Gluantes');
             } else if (bat.type === 'Cocon') {
                 cocoonSpawn(bat);
