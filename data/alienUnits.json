@@ -2034,7 +2034,7 @@
         "squadSize":1,
         "crew":1,
         "hp":1000,
-        "armor":24,
+        "armor":30,
         "size":70,
         "speed":-8,
         "stealth":0,
@@ -2047,9 +2047,9 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","regeneration"],
+        "skills":["ponte","regeneration","shield","resistblast"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"Bugium":36,"Mendium":30,"Creatite":9}
+        "killRes":{"Bugium":45,"Mendium":30,"Creatite":12,"Egidium":53}
     },
     {
         "id":44,

@@ -1,7 +1,7 @@
 function checkStartingAliens() {
     let numRuches;
     if (playerInfos.mapDiff >= 8) {
-        dropEgg('Colonie',false);
+        dropEgg('Colonie','nedge');
         let coloBat = getAlienByName('Colonie');
         alienSpawn(coloBat,'Vomissure');
         alienSpawn(coloBat,'Vomissure');
@@ -23,7 +23,11 @@ function checkStartingAliens() {
         }
         let i = 1;
         while (i <= numRuches) {
-            dropEgg('Ruche',false);
+            if (rand.rand(1,4) === 1) {
+                dropEgg('Ruche','any');
+            } else {
+                dropEgg('Ruche','nocenter');
+            }
             if (i > 20) {break;}
             i++
         }
@@ -31,14 +35,18 @@ function checkStartingAliens() {
     let numVomi = Math.floor((playerInfos.mapDiff+2)*rand.rand(8,20)/14);
     let ii = 1;
     while (ii <= numVomi) {
-        dropEgg('Flaque',false);
+        if (rand.rand(1,4) === 1) {
+            dropEgg('Flaque','any');
+        } else {
+            dropEgg('Flaque','nocenter');
+        }
         if (ii > 50) {break;}
         ii++
     }
     let numSent = Math.ceil((playerInfos.mapDiff+2)*rand.rand(8,20)/8);
     ii = 1;
     while (ii <= numSent) {
-        dropEgg('Sentinelles',false);
+        dropEgg('Sentinelles','');
         if (ii > 50) {break;}
         ii++
     }
@@ -150,14 +158,17 @@ function checkEggsDrop() {
         eggSound();
         playMusic('newEgg',false);
         if (Math.floor(playerInfos.mapTurn/25) > playerInfos.cocons) {
-            dropEgg('Cocon',false);
+            dropEgg('Cocon','target');
+            if (playerInfos.mapTurn >= 100 && playerInfos.mapDiff >= 10) {
+                dropEgg('Cocon','nedge');
+            }
             playerInfos.cocons = playerInfos.cocons+1;
         }
     } else {
         playMusic('noEgg',false);
     }
     if (playerInfos.mapTurn % 25 === 0 && playerInfos.mapTurn > 1 && rand.rand(1,100) <= Math.round(playerInfos.fuzzTotal*playerInfos.fuzzTotal/1000)) {
-        dropEgg('Ruche',true);
+        dropEgg('Ruche','edge');
     }
 };
 
@@ -216,11 +227,11 @@ function eggsDrop() {
                 }
             }
             if (eggTypeDice <= coqueChance) {
-                dropEgg('Coque',false);
+                dropEgg('Coque','any');
             } else if (eggTypeDice <= coqueChance+invisibleChance) {
-                dropEgg('Oeuf voilé',false);
+                dropEgg('Oeuf voilé','any');
             } else {
-                dropEgg('Oeuf',false);
+                dropEgg('Oeuf','any');
             }
             if (i > 4) {break;}
             i++
@@ -228,14 +239,14 @@ function eggsDrop() {
     }
 };
 
-function dropEgg(alienUnit,edge) {
+function dropEgg(alienUnit,theArea) {
     console.log('dropping egg...');
     let unitIndex = alienUnits.findIndex((obj => obj.name === alienUnit));
     conselUnit = alienUnits[unitIndex];
     conselAmmos = ['xxx','xxx','xxx'];
     alienOccupiedTileList();
     playerOccupiedTileList();
-    let dropTile = eggDropTile(alienUnit,edge);
+    let dropTile = eggDropTile(alienUnit,theArea);
     if (dropTile >= 0) {
         if (alienUnit === 'Oeuf voilé') {
             putBat(dropTile,0,0,'invisible');
@@ -258,12 +269,12 @@ function dropEgg(alienUnit,edge) {
     }
 };
 
-function eggDropTile(eggName,edge) {
+function eggDropTile(eggName,theArea) {
     let theTile = -1;
     let area = 'any';
     let targetTile = -1;
-    if (edge) {
-        area = 'edge';
+    if (theArea != 'none') {
+        area = theArea;
     } else {
         if (eggName.includes('Ruche') || eggName.includes('Vomissure') || eggName.includes('Flaque')) {
             area = 'nocenter';
