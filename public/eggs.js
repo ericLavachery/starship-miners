@@ -671,11 +671,13 @@ function cocoonSpawn(bat) {
                 if (ana > 100) {
                     ana = 100;
                 }
-                let satMin = 24-Math.round(ana/4.1);
+                let satMin = 24-Math.floor(ana/4)+playerInfos.mapDiff;
+                console.log('satMin: '+satMin);
                 spawnNum = playerInfos.mapDiff+(rand.rand(1,4));
                 if (spawnNum < satMin) {
                     spawnNum = satMin;
                 }
+                console.log('spawnNum: '+spawnNum);
                 if (eggLevel >= 6) {
                     classes.push('B');
                     classes.push('C');
@@ -738,7 +740,7 @@ function cocoonSpawn(bat) {
                         putBat(dropTile,0,0);
                     }
                 }
-                if (i > 15) {break;}
+                if (i > 36) {break;}
                 i++
             }
         } else {
@@ -959,7 +961,7 @@ function checkDrop(layBat) {
         let distance;
         shufZone.forEach(function(tile) {
             distance = calcDistance(layBat.tileId,tile.id);
-            if (distance === 2) {
+            if (distance <= 3 && distance >=2) {
                 batHere = false;
                 bataillons.forEach(function(bat) {
                     if (bat.loc === "zone" && bat.tileId === tile.id) {

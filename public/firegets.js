@@ -319,7 +319,7 @@ function isInRangeOld(myTileIndex,thatTileIndex) {
     }
 };
 
-function calcDistanceOld(myTileIndex,thatTileIndex) {
+function calcDistanceSquare(myTileIndex,thatTileIndex) {
     let myTileX = zone[myTileIndex].x;
     let myTileY = zone[myTileIndex].y;
     let thatTileX = zone[thatTileIndex].x;
