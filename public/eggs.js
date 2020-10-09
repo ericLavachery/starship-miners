@@ -18,7 +18,7 @@ function checkStartingAliens() {
         if (playerInfos.mapDiff === 9) {
             numRuches = rand.rand(3,5);
         }
-        if (playerInfos.mapDiff === 10) {
+        if (playerInfos.mapDiff >= 10) {
             numRuches = rand.rand(6,12);
         }
         let i = 1;
@@ -628,6 +628,7 @@ function cocoonSpawn(bat) {
         if (eggTurn < 3) {
             let classes = [];
             let eggLevel = playerInfos.mapDiff+Math.floor(playerInfos.mapTurn/50)-1;
+            console.log('eggLevel='+eggLevel);
             let saturation = false;
             if (aliens.length >= 200 && playerInfos.mapTurn >= 100) {
                 saturation = true;
