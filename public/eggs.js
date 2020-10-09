@@ -634,7 +634,7 @@ function cocoonSpawn(bat) {
             }
             let spawnNum = 4;
             if (eggTurn === 2) {
-                spawnNum = 6+Math.floor(playerInfos.mapTurn/25);
+                spawnNum = 6+Math.floor(playerInfos.mapTurn/50);
                 if (eggLevel >= 12) {
                     classes.push('A');
                     classes.push('S');
@@ -667,8 +667,16 @@ function cocoonSpawn(bat) {
                     }
                 }
             } else {
+                let ana = aliens.length;
+                if (ana > 100) {
+                    ana = 100;
+                }
+                let satMin = 24-Math.round(ana/4.1);
                 spawnNum = playerInfos.mapDiff+(rand.rand(1,4));
-                if (playerInfos.mapDiff >= 7) {
+                if (spawnNum < satMin) {
+                    spawnNum = satMin;
+                }
+                if (eggLevel >= 6) {
                     classes.push('B');
                     classes.push('C');
                 } else {
