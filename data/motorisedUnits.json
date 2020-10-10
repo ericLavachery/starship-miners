@@ -1112,7 +1112,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["plasma","plastanium","nanite"]
+            "ammo":["plasma","plastanium","uridium","nanite"]
         },
         "weapon2":{
             "name":"Marquage",
@@ -2896,7 +2896,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"plasma_fusil",
-            "ammo":["cn-plasma","cn-plastanium","cn-nanite"]
+            "ammo":["cn-plasma","cn-plastanium","cn-uridium","cn-nanite"]
         },
         "weapon2":{
             "name":"Minibombes",

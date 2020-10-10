@@ -916,6 +916,7 @@ function getEggKind(bat) {
 };
 
 function checkputEggKind(bat) {
+    let dice = rand.rand(1,2);
     if (bat.tags.includes('bug')) {
         return 'bug';
     } else if (bat.tags.includes('larve')) {
@@ -932,12 +933,31 @@ function checkputEggKind(bat) {
         } else if (terName === 'F') {
             bat.tags.push('spider');
             return 'spider';
-        } else if (terName === 'S') {
+        } else if (terName === 'S' || terName === 'W') {
             bat.tags.push('larve');
             return 'larve';
         } else if (terName === 'B') {
             bat.tags.push('swarm');
             return 'swarm';
+        } else if (terName === 'P') {
+            dice = rand.rand(1,4);
+            if (dice === 1) {
+                return '';
+            } else if (dice === 2) {
+                bat.tags.push('swarm');
+                return 'swarm';
+            } else {
+                bat.tags.push('bug');
+                return 'bug';
+            }
+        } else if (terName === 'G') {
+            dice = rand.rand(1,2);
+            if (dice === 1) {
+                return '';
+            } else {
+                bat.tags.push('spider');
+                return 'spider';
+            }
         } else {
             return '';
         }

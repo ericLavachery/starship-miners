@@ -2053,7 +2053,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["plasma"]
+            "ammo":["plasma","plastanium","uridium"]
         },
         "weapon2":{
             "name":"Carabine laser",
@@ -2308,7 +2308,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["plasma"]
+            "ammo":["plasma","plastanium","uridium"]
         },
         "weapon2":{
             "name":"BFG",
@@ -2769,7 +2769,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["plasma"]
+            "ammo":["plasma","plastanium","uridium"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -3279,7 +3279,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["plasma"]
+            "ammo":["plasma","plastanium","uridium"]
         },
         "weapon2":{
             "name":"Fusil mitrailleur",
@@ -3330,7 +3330,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["plasma"]
+            "ammo":["plasma","plastanium","uridium","nanite"]
         },
         "weapon2":{
             "name":"Lance-flammes",

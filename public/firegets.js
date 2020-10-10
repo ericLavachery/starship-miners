@@ -704,6 +704,7 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     thisWeapon.rof = Math.round(thisWeapon.rof*ammo.rof);
+    thisWeapon.power = Math.round(thisWeapon.power*ammo.powermult);
     thisWeapon.power = thisWeapon.power+ammo.power;
     thisWeapon.apdamage = ammo.apdamage;
     thisWeapon.armors = thisWeapon.armors*ammo.armors;
