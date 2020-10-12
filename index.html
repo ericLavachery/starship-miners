@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="/static/style.css">
         <link rel="stylesheet" href="/static/terrains.css">
         <link rel="stylesheet" href="/static/stylebuttons.css">
+        <link rel="stylesheet" href="/static/stylemodals.css">
         <link rel="stylesheet" href="/static/css/rpg-awesome.min.css">
         <!-- <link rel="stylesheet" href="./node_modules/rpg-awesome/css/rpg-awesome.min.css">         -->
     </head>
@@ -85,6 +86,15 @@
                     </td>
                 </tr>
             </table>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header" id="pophead"></div>
+                    <div class="modal-body" id="popbody"></div>
+                    <div class="modal-footer" id="popfoot"><span class="close">&times;</span></div>
+                </div>
+            </div>
         </div>
 
         <script src="/static/libs/jquery.min.js"></script>
@@ -92,6 +102,7 @@
         <script src="/static/libs/howler.min.js"></script>
         <!-- <script src="./node_modules/howler/dist/howler.min.js"></script> -->
         <script src="/static/libs/underscore-min.js"></script>
+        <script src="/static/modal.js"></script>
         <script src="/static/share.js"></script>
         <script src="/static/stuff.js"></script>
         <script src="/static/settings.js"></script>

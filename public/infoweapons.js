@@ -1,4 +1,8 @@
-function weaponsInfos(bat,batUnitType) {
+function weaponsInfos(bat,batUnitType,pop) {
+    let bodyPlace = 'unitInfos';
+    if (pop) {
+        bodyPlace = 'popbody';
+    }
     let balise;
     let attaques;
     let thisWeapon = {};
@@ -46,8 +50,12 @@ function weaponsInfos(bat,batUnitType) {
                 if (cheapWeapCost > thisWeapon.cost) {
                     cheapWeapCost = thisWeapon.cost;
                 }
-                $('#unitInfos').append('<div class="shSpace"></div>');
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris skillButtons" onclick="fireMode(`w1`)"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
+                $('#'+bodyPlace).append('<div class="shSpace"></div>');
+                if (pop) {
+                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span><br>');
+                } else {
+                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris skillButtons" onclick="fireMode(`w1`)"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
+                }
             } else {
                 // tir impossible
                 if (noFireMelee) {
@@ -63,7 +71,12 @@ function weaponsInfos(bat,batUnitType) {
                         }
                     }
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGris skillButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
+                $('#'+bodyPlace).append('<div class="shSpace"></div>');
+                if (pop) {
+                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span><br>');
+                } else {
+                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGris skillButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
+                }
             }
             let maxSalves = batUnitType.maxSalvo;
             let resteSalves = bat.salvoLeft;
@@ -78,23 +91,27 @@ function weaponsInfos(bat,batUnitType) {
                 }
             }
             if (bat.salvoLeft >= 1) {
-                $('#unitInfos').append('<span class="paramName cy">Salves</span><span class="paramIcon"></span><span class="paramValue cy">'+resteSalves+'/'+maxSalves+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName cy">Salves</span><span class="paramIcon"></span><span class="paramValue cy">'+resteSalves+'/'+maxSalves+'</span><br>');
             } else {
-                $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+resteSalves+'/'+maxSalves+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+resteSalves+'/'+maxSalves+'</span><br>');
             }
-            // $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.cost+'</span><br>');
+            if (pop) {
+                $('#'+bodyPlace).append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.cost+'</span><br>');
+            }
             let riposte = 'Oui';
             if (thisWeapon.noDef) {
                 riposte = 'Non';
-                $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">'+riposte+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">'+riposte+'</span><br>');
             }
             let elev = '';
             if (thisWeapon.elevation >= 1) {
                 elev = ' (e'+thisWeapon.elevation+')';
             }
-            $('#unitInfos').append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
-            $('#unitInfos').append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
+            if (pop) {
+                $('#'+bodyPlace).append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
+            }
             // DEFENSE
             if (thisWeapon.noMelee || thisWeapon.noDef) {
                 defDef = 0;
@@ -105,7 +122,9 @@ function weaponsInfos(bat,batUnitType) {
                 guetDef = calcBrideDef(bat,batUnitType,thisWeapon,0,true);
                 guetDef = Math.round(guetDef*100);
             }
-            // $('#unitInfos').append('<span class="paramName">Défense en mêlée</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+            if (pop) {
+                $('#'+bodyPlace).append('<span class="paramName">Défense en mêlée</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+            }
             if (thisWeapon.noDef) {
                 defDef = 0;
                 guetDef = 0;
@@ -115,7 +134,9 @@ function weaponsInfos(bat,batUnitType) {
                 guetDef = calcBrideDef(bat,batUnitType,thisWeapon,1,true);
                 guetDef = Math.round(guetDef*100);
             }
-            // $('#unitInfos').append('<span class="paramName">Défense à distance</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+            if (pop) {
+                $('#'+bodyPlace).append('<span class="paramName">Défense à distance</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+            }
             // ACCURACY
             if (thisWeapon.noFly) {
                 accFly = 0;
@@ -127,21 +148,23 @@ function weaponsInfos(bat,batUnitType) {
             } else {
                 accGround = thisWeapon.accuracy;
             }
-            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+accGround+' &Map; '+accFly+'</span><br>');
-            $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+accGround+' &Map; '+accFly+'</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
             if (thisWeapon.armors != 1) {
-                $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
             }
-            $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
-            $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+showAmmo(bat.ammo)+'</span><br>');
+            if (pop) {
+                $('#'+bodyPlace).append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
+            }
+            $('#'+bodyPlace).append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+showAmmo(bat.ammo)+'</span><br>');
             if (baseAmmo < 99) {
                 if (ammoLeft <= batUnitType.maxSalvo) {
-                    $('#unitInfos').append('<span class="paramName or">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue or">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
+                    $('#'+bodyPlace).append('<span class="paramName or">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue or">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
                 } else {
-                    $('#unitInfos').append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
+                    $('#'+bodyPlace).append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
                 }
                 ravitVolume = calcRavitVolume(bat);
-                $('#unitInfos').append('<span class="paramName" title="Volume du ravitaillement">Volume</span><span class="paramIcon"></span><span class="paramValue">'+ravitVolume[1]+'/'+ravitVolume[0]+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName" title="Volume du ravitaillement">Volume</span><span class="paramIcon"></span><span class="paramValue">'+ravitVolume[1]+'/'+ravitVolume[0]+'</span><br>');
             }
         }
     }
@@ -169,8 +192,12 @@ function weaponsInfos(bat,batUnitType) {
                 if (cheapWeapCost > thisWeapon.cost) {
                     cheapWeapCost = thisWeapon.cost;
                 }
-                $('#unitInfos').append('<div class="shSpace"></div>');
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris skillButtons" onclick="fireMode(`w2`)"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
+                $('#'+bodyPlace).append('<div class="shSpace"></div>');
+                if (pop) {
+                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span><br>');
+                } else {
+                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonGris skillButtons" onclick="fireMode(`w2`)"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
+                }
             } else {
                 // tir impossible
                 if (noFireMelee) {
@@ -186,7 +213,12 @@ function weaponsInfos(bat,batUnitType) {
                         }
                     }
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGris skillButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span>');
+                $('#'+bodyPlace).append('<div class="shSpace"></div>');
+                if (pop) {
+                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span><br>');
+                } else {
+                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGris skillButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
+                }
             }
             let maxSalves = batUnitType.maxSalvo;
             let resteSalves = bat.salvoLeft;
@@ -201,23 +233,27 @@ function weaponsInfos(bat,batUnitType) {
                 }
             }
             if (bat.salvoLeft >= 1) {
-                $('#unitInfos').append('<span class="paramName cy">Salves</span><span class="paramIcon"></span><span class="paramValue cy">'+resteSalves+'/'+maxSalves+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName cy">Salves</span><span class="paramIcon"></span><span class="paramValue cy">'+resteSalves+'/'+maxSalves+'</span><br>');
             } else {
-                $('#unitInfos').append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+resteSalves+'/'+maxSalves+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+resteSalves+'/'+maxSalves+'</span><br>');
             }
-            // $('#unitInfos').append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.cost+'</span><br>');
+            if (pop) {
+                $('#'+bodyPlace).append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.cost+'</span><br>');
+            }
             riposte = 'Oui';
             if (thisWeapon.noDef) {
                 riposte = 'Non';
-                $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">'+riposte+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">'+riposte+'</span><br>');
             }
             let elev = '';
             if (thisWeapon.elevation >= 1) {
                 elev = ' (e'+thisWeapon.elevation+')';
             }
-            $('#unitInfos').append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
-            $('#unitInfos').append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
+            if (pop) {
+                $('#'+bodyPlace).append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
+            }
             // DEFENSE
             if (thisWeapon.noMelee || thisWeapon.noDef) {
                 defDef = 0;
@@ -228,7 +264,9 @@ function weaponsInfos(bat,batUnitType) {
                 guetDef = calcBrideDef(bat,batUnitType,thisWeapon,0,true);
                 guetDef = Math.round(guetDef*100);
             }
-            // $('#unitInfos').append('<span class="paramName">Défense en mêlée</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+            if (pop) {
+                $('#'+bodyPlace).append('<span class="paramName">Défense en mêlée</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+            }
             if (thisWeapon.noDef) {
                 defDef = 0;
                 guetDef = 0;
@@ -238,7 +276,9 @@ function weaponsInfos(bat,batUnitType) {
                 guetDef = calcBrideDef(bat,batUnitType,thisWeapon,1,true);
                 guetDef = Math.round(guetDef*100);
             }
-            // $('#unitInfos').append('<span class="paramName">Défense à distance</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+            if (pop) {
+                $('#'+bodyPlace).append('<span class="paramName">Défense à distance</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+            }
             // ACCURACY
             if (thisWeapon.noFly) {
                 accFly = 0;
@@ -250,21 +290,23 @@ function weaponsInfos(bat,batUnitType) {
             } else {
                 accGround = thisWeapon.accuracy;
             }
-            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+accGround+' &Map; '+accFly+'</span><br>');
-            $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+accGround+' &Map; '+accFly+'</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
             if (thisWeapon.armors != 1) {
-                $('#unitInfos').append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
             }
-            $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
-            $('#unitInfos').append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+showAmmo(bat.ammo2)+'</span><br>');
+            if (pop) {
+                $('#'+bodyPlace).append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
+            }
+            $('#'+bodyPlace).append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue">'+showAmmo(bat.ammo2)+'</span><br>');
             if (baseAmmo < 99) {
                 if (ammoLeft <= batUnitType.maxSalvo) {
-                    $('#unitInfos').append('<span class="paramName or">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue or">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
+                    $('#'+bodyPlace).append('<span class="paramName or">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue or">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
                 } else {
-                    $('#unitInfos').append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
+                    $('#'+bodyPlace).append('<span class="paramName">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
                 }
                 ravitVolume = calcRavitVolume(bat);
-                $('#unitInfos').append('<span class="paramName" title="Volume du ravitaillement">Volume</span><span class="paramIcon"></span><span class="paramValue">'+ravitVolume[1]+'/'+ravitVolume[0]+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName" title="Volume du ravitaillement">Volume</span><span class="paramIcon"></span><span class="paramValue">'+ravitVolume[1]+'/'+ravitVolume[0]+'</span><br>');
             }
         }
     }

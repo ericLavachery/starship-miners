@@ -1448,7 +1448,7 @@
             "aoe":"unit",
             "sound":"canon_big_x2",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":24,
+            "maxAmmo":30,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -2214,7 +2214,7 @@
         "volume":1.3,
         "stealth":0,
         "speed":5,
-        "ap":22,
+        "ap":24,
         "maxSalvo":2,
         "weapon":{
             "name":"Canon plasma",
@@ -2248,7 +2248,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","fly","transport","fret","longshot","medic","mecano","dumper","realdumper"],
-        "mediCost":10,
+        "mediCost":8,
         "mecanoCost":8,
         "transMaxSize":50,
         "transUnits":3000,
@@ -2266,12 +2266,12 @@
         "squadSize":2,
         "crew":10,
         "hp":440,
-        "armor":12,
+        "armor":14,
         "size":75,
         "volume":1.3,
         "stealth":0,
         "speed":5,
-        "ap":22,
+        "ap":20,
         "maxSalvo":2,
         "weapon":{
             "name":"Canon",
@@ -2308,11 +2308,11 @@
         "maxVeg":3,
         "skills":["cible","fly","transport","fret","longshot","medic","mecano","dumper","realdumper"],
         "mediCost":10,
-        "mecanoCost":8,
+        "mecanoCost":6,
         "transMaxSize":50,
         "transUnits":3000,
         "transRes":3000,
-        "fuzz":4,
+        "fuzz":6,
         "deathFx":"planeexploground2"
     },
     {
