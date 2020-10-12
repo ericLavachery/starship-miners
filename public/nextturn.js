@@ -630,6 +630,12 @@ function tagsEffect(bat,batType) {
             tagDelete(bat,'poison');
         }
     }
+    // RESISTACIDE & TROUS
+    if (bat.tags.includes('resistacide') || batType.skills.includes('resistacide')) {
+        if (bat.tags.includes('trou')) {
+            tagDelete(bat,'trou');
+        }
+    }
     // KIRIN & POISONS
     if (bat.tags.includes('kirin')) {
         if (bat.tags.includes('venin') && rand.rand(1,6) === 1) {

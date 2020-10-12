@@ -1,4 +1,4 @@
-function skillsInfos(bat,batUnitType) {
+function skillsInfos(bat,batType) {
     let skillMessage;
     let numTargets = 0;
     let apCost;
@@ -10,7 +10,7 @@ function skillsInfos(bat,batUnitType) {
     console.log('inMelee='+inMelee);
     // RAVITAILLEMENT DROGUES
     let anyRavit = checkRavitDrug(bat);
-    if (anyRavit && bat.tags.includes('skillUsed') && batUnitType.skills.includes('dealer')) {
+    if (anyRavit && bat.tags.includes('skillUsed') && batType.skills.includes('dealer')) {
         let apCost = Math.round(bat.ap/3);
         if (bat.apLeft >= 2) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de drogues" class="boutonGris skillButtons" onclick="goRavitDrug('+apCost+')"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp;  Approvisionnement</h4></span>');
@@ -32,7 +32,7 @@ function skillsInfos(bat,batUnitType) {
     }
     // STOCKS
     let anyStock = checkStock(bat);
-    if (anyStock && bat.tags.includes('skillUsed') && !batUnitType.skills.includes('dealer')) {
+    if (anyStock && bat.tags.includes('skillUsed') && !batType.skills.includes('dealer')) {
         let apCost = Math.round(bat.ap*1.5);
         if (bat.apLeft >= 4) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de ravitaillements" class="boutonGris skillButtons" onclick="goStock('+apCost+')"><i class="fas fa-cubes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réapprovisionnement</h4></span>');
@@ -42,18 +42,18 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // GUET
-    if (batUnitType.weapon.rof >= 1 && bat.ap >= 1 && !batUnitType.skills.includes('noguet')) {
+    if (batType.weapon.rof >= 1 && bat.ap >= 1 && !batType.skills.includes('noguet')) {
         balise = 'h4';
-        if (bat.tags.includes('guet') || batUnitType.skills.includes('sentinelle') || batUnitType.skills.includes('initiative') || batUnitType.skills.includes('after')) {
+        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('after')) {
             balise = 'h3';
         }
         apCost = 3;
         apReq = bat.ap-3;
-        if (bat.apLeft >= apReq && !bat.tags.includes('guet') && !batUnitType.skills.includes('sentinelle') && !batUnitType.skills.includes('initiative') && !batUnitType.skills.includes('after')) {
+        if (bat.apLeft >= apReq && !bat.tags.includes('guet') && !batType.skills.includes('sentinelle') && !batType.skills.includes('initiative') && !batType.skills.includes('after')) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Faire le guet (pas de malus à la riposte)" class="boutonGris skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</'+balise+'></span>');
         } else {
-            if (batUnitType.skills.includes('sentinelle') || batUnitType.skills.includes('initiative') || batUnitType.skills.includes('after')) {
+            if (batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('after')) {
                 skillMessage = "Sentinelle";
             } else {
                 skillMessage = "Pas assez de PA";
@@ -63,13 +63,13 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // FORTIFICATION
-    if (batUnitType.skills.includes('fortif')) {
+    if (batType.skills.includes('fortif')) {
         balise = 'h4';
         if (bat.tags.includes('fortif')) {
             balise = 'h3';
         }
         apCost = bat.ap;
-        if (bat.apLeft >= apCost-2 && !bat.tags.includes('fortif') && !inMelee && bat.salvoLeft >= batUnitType.maxSalvo) {
+        if (bat.apLeft >= apCost-2 && !bat.tags.includes('fortif') && !inMelee && bat.salvoLeft >= batType.maxSalvo) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Se fortifier (bonus couverture)" class="boutonGris skillButtons" onclick="fortification()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
         } else {
             if (inMelee) {
@@ -82,9 +82,9 @@ function skillsInfos(bat,batUnitType) {
     }
     // CAMOUFLAGE
     let camoufOK = true;
-    if (batUnitType.skills.includes('camo') || (tile.ruins && batUnitType.size < 20) || bat.fuzz <= -2) {
-        if (batUnitType.cat == 'buildings') {
-            if (batUnitType.skills.includes('maycamo') && !tile.ruins) {
+    if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || bat.fuzz <= -2) {
+        if (batType.cat == 'buildings') {
+            if (batType.skills.includes('maycamo') && !tile.ruins) {
                 apCost = Math.floor(bat.ap*3.5);
                 apReq = Math.floor(bat.ap/1.5);
                 if (inMelee) {
@@ -97,9 +97,9 @@ function skillsInfos(bat,batUnitType) {
                     camoufOK = false;
                 }
             }
-        } else if (batUnitType.cat == 'vehicles' || batUnitType.skills.includes('machine') || batUnitType.cat == 'devices') {
-            if (batUnitType.skills.includes('maycamo') && !tile.ruins) {
-                apCost = Math.floor(bat.ap*Math.sqrt(batUnitType.size)/1.8);
+        } else if (batType.cat == 'vehicles' || batType.skills.includes('machine') || batType.cat == 'devices') {
+            if (batType.skills.includes('maycamo') && !tile.ruins) {
+                apCost = Math.floor(bat.ap*Math.sqrt(batType.size)/1.8);
                 apReq = Math.floor(bat.ap/1.5);
                 if (inMelee) {
                     camoufOK = false;
@@ -112,8 +112,8 @@ function skillsInfos(bat,batUnitType) {
                 }
             }
         } else {
-            if (batUnitType.skills.includes('maycamo') && !tile.ruins) {
-                apCost = Math.floor(bat.ap*Math.sqrt(batUnitType.size)/1.15);
+            if (batType.skills.includes('maycamo') && !tile.ruins) {
+                apCost = Math.floor(bat.ap*Math.sqrt(batType.size)/1.15);
                 apReq = Math.floor(bat.ap/1.5);
                 if (inMelee) {
                     camoufOK = false;
@@ -139,17 +139,17 @@ function skillsInfos(bat,batUnitType) {
             }
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
         }
-        if (bat.tags.includes('camo') || (bat.fuzz <= -2 && (batUnitType.skills.includes('camo') || batUnitType.skills.includes('maycamo')))) {
+        if (bat.tags.includes('camo') || (bat.fuzz <= -2 && (batType.skills.includes('camo') || batType.skills.includes('maycamo')))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Sortir du mode furtif" class="boutonGris skillButtons" onclick="camoOut()"><i class="ra ra-footprint rpg"></i> <span class="small">0</span></button>&nbsp; Mode non furtif</h4></span>');
         }
     }
     // EMBUSCADE
-    if (batUnitType.skills.includes('embuscade')) {
+    if (batType.skills.includes('embuscade')) {
         apCost = 2;
-        if (batUnitType.weapon2.rof >= 1 && batUnitType.weapon.cost > batUnitType.weapon2.rof) {
-            apReq = 2+batUnitType.weapon2.cost;
+        if (batType.weapon2.rof >= 1 && batType.weapon.cost > batType.weapon2.rof) {
+            apReq = 2+batType.weapon2.cost;
         } else {
-            apReq = 2+batUnitType.weapon.cost;
+            apReq = 2+batType.weapon.cost;
         }
         balise = 'h4';
         if (bat.tags.includes('embuscade')) {
@@ -169,12 +169,12 @@ function skillsInfos(bat,batUnitType) {
     }
     // TIR CIBLE
     // intéressant si précision en dessous de 10
-    if (batUnitType.skills.includes('cible')) {
+    if (batType.skills.includes('cible')) {
         apCost = 3;
-        if (batUnitType.weapon2.rof >= 1 && batUnitType.weapon.cost > batUnitType.weapon2.rof) {
-            apReq = 3+batUnitType.weapon2.cost;
+        if (batType.weapon2.rof >= 1 && batType.weapon.cost > batType.weapon2.rof) {
+            apReq = 3+batType.weapon2.cost;
         } else {
-            apReq = 3+batUnitType.weapon.cost;
+            apReq = 3+batType.weapon.cost;
         }
         balise = 'h4';
         if (bat.tags.includes('vise')) {
@@ -187,11 +187,11 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // LUCKY SHOT
-    if (batUnitType.skills.includes('luckyshot')) {
-        if (batUnitType.weapon2.rof >= 1 && batUnitType.weapon.cost > batUnitType.weapon2.rof) {
-            apReq = batUnitType.weapon2.cost;
+    if (batType.skills.includes('luckyshot')) {
+        if (batType.weapon2.rof >= 1 && batType.weapon.cost > batType.weapon2.rof) {
+            apReq = batType.weapon2.cost;
         } else {
-            apReq = batUnitType.weapon.cost;
+            apReq = batType.weapon.cost;
         }
         balise = 'h4';
         if (bat.tags.includes('luckyshot')) {
@@ -204,7 +204,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // PRIERE
-    if (batUnitType.skills.includes('prayer')) {
+    if (batType.skills.includes('prayer')) {
         balise = 'h4';
         if (bat.tags.includes('prayer')) {
             balise = 'h3';
@@ -226,7 +226,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // FOG
-    if (batUnitType.skills.includes('fog')) {
+    if (batType.skills.includes('fog')) {
         balise = 'h4';
         if (bat.tags.includes('fog')) {
             balise = 'h1';
@@ -239,11 +239,11 @@ function skillsInfos(bat,batUnitType) {
     }
     // MEDIC
     let baseskillCost;
-    if (batUnitType.skills.includes('medic')) {
+    if (batType.skills.includes('medic')) {
         numTargets = numMedicTargets(bat,'infantry',true,true);
-        baseskillCost = batUnitType.mediCost;
-        apCost = numTargets*(baseskillCost+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batUnitType.skills.includes('meleehelp'))) {
+        baseskillCost = batType.mediCost;
+        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonGris skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,true)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
         } else {
             if (inMelee) {
@@ -259,11 +259,11 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // BAD MEDIC
-    if (batUnitType.skills.includes('badmedic')) {
+    if (batType.skills.includes('badmedic')) {
         numTargets = numMedicTargets(bat,'infantry',true,false);
-        baseskillCost = batUnitType.mediCost;
-        apCost = numTargets*(baseskillCost+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batUnitType.skills.includes('meleehelp'))) {
+        baseskillCost = batType.mediCost;
+        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonGris skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
         } else {
             if (inMelee) {
@@ -279,11 +279,11 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // SELF MEDIC
-    if (batUnitType.skills.includes('selfmedic')) {
+    if (batType.skills.includes('selfmedic')) {
         numTargets = numMedicTargets(bat,'infantry',false,true);
-        baseskillCost = batUnitType.mediCost;
-        apCost = numTargets*(baseskillCost+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batUnitType.skills.includes('meleehelp'))) {
+        baseskillCost = batType.mediCost;
+        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se soigner" class="boutonGris skillButtons" onclick="medic(`infantry`,'+baseskillCost+',false,true)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
         } else {
             if (inMelee) {
@@ -299,11 +299,11 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // FIRST AID (SELF BAD MEDIC)
-    if (batUnitType.skills.includes('selfbadmedic')) {
+    if (batType.skills.includes('selfbadmedic')) {
         numTargets = numMedicTargets(bat,'infantry',false,false);
-        baseskillCost = batUnitType.mediCost;
-        apCost = numTargets*(baseskillCost+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batUnitType.skills.includes('meleehelp'))) {
+        baseskillCost = batType.mediCost;
+        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins" class="boutonGris skillButtons" onclick="medic(`infantry`,'+baseskillCost+',false,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
         } else {
             if (inMelee) {
@@ -319,11 +319,11 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // MECANO
-    if (batUnitType.skills.includes('mecano')) {
+    if (batType.skills.includes('mecano')) {
         numTargets = numMedicTargets(bat,'vehicles',true,true);
-        baseskillCost = batUnitType.mecanoCost;
-        apCost = numTargets*(baseskillCost+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batUnitType.skills.includes('meleehelp'))) {
+        baseskillCost = batType.mecanoCost;
+        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents" class="boutonGris skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,true)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
         } else {
             if (inMelee) {
@@ -339,11 +339,11 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // BAD MECANO
-    if (batUnitType.skills.includes('badmecano')) {
+    if (batType.skills.includes('badmecano')) {
         numTargets = numMedicTargets(bat,'vehicles',true,false);
-        baseskillCost = batUnitType.mecanoCost;
-        apCost = numTargets*(baseskillCost+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batUnitType.skills.includes('meleehelp'))) {
+        baseskillCost = batType.mecanoCost;
+        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents" class="boutonGris skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
         } else {
             if (inMelee) {
@@ -359,11 +359,11 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // SELF BAD MECANO
-    if (batUnitType.skills.includes('selfbadmecano')) {
+    if (batType.skills.includes('selfbadmecano')) {
         numTargets = numMedicTargets(bat,'vehicles',false,false);
-        baseskillCost = batUnitType.mecanoCost;
-        apCost = numTargets*(baseskillCost+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batUnitType.skills.includes('meleehelp'))) {
+        baseskillCost = batType.mecanoCost;
+        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Retaper le véhicule" class="boutonGris skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',false,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
         } else {
             if (numTargets <= 0) {
@@ -377,11 +377,11 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // SELF MECANO
-    if (batUnitType.skills.includes('selfmecano')) {
+    if (batType.skills.includes('selfmecano')) {
         numTargets = numMedicTargets(bat,'vehicles',false,true);
-        baseskillCost = batUnitType.mecanoCost;
-        apCost = numTargets*(baseskillCost+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batUnitType.skills.includes('meleehelp'))) {
+        baseskillCost = batType.mecanoCost;
+        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Retaper le véhicule" class="boutonGris skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',false,true)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
         } else {
             if (numTargets <= 0) {
@@ -395,11 +395,11 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // REPAIR
-    if (batUnitType.skills.includes('repair')) {
+    if (batType.skills.includes('repair')) {
         numTargets = numMedicTargets(bat,'buildings',true,true);
-        baseskillCost = batUnitType.mecanoCost;
-        apCost = numTargets*(baseskillCost+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batUnitType.skills.includes('meleehelp'))) {
+        baseskillCost = batType.mecanoCost;
+        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les bâtiments adjacents" class="boutonGris skillButtons" onclick="medic(`buildings`,'+baseskillCost+',true,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
         } else {
             if (inMelee) {
@@ -415,11 +415,11 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // SELF BAD REPAIR
-    if (batUnitType.skills.includes('selfbadrepair')) {
+    if (batType.skills.includes('selfbadrepair')) {
         numTargets = numMedicTargets(bat,'buildings',false,false);
-        baseskillCost = batUnitType.mecanoCost;
-        apCost = numTargets*(baseskillCost+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batUnitType.skills.includes('meleehelp'))) {
+        baseskillCost = batType.mecanoCost;
+        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment" class="boutonGris skillButtons" onclick="medic(`all`,'+baseskillCost+',false,false)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
         } else {
             if (numTargets <= 0) {
@@ -433,11 +433,11 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // SELF REPAIR
-    if (batUnitType.skills.includes('selfrepair')) {
+    if (batType.skills.includes('selfrepair')) {
         numTargets = numMedicTargets(bat,'buildings',false,true);
-        baseskillCost = batUnitType.mecanoCost;
-        apCost = numTargets*(baseskillCost+batUnitType.squads-bat.squadsLeft);
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batUnitType.skills.includes('meleehelp'))) {
+        baseskillCost = batType.mecanoCost;
+        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment" class="boutonGris skillButtons" onclick="medic(`all`,'+baseskillCost+',false,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
         } else {
             if (numTargets <= 0) {
@@ -451,7 +451,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // REPAIR DIAG
-    if ((batUnitType.cat === 'buildings' || batUnitType.cat === 'devices') && !batUnitType.skills.includes('nobld') && !batUnitType.skills.includes('norepair') && (bat.damage >= 1 || bat.squadsLeft < batUnitType.squads)) {
+    if ((batType.cat === 'buildings' || batType.cat === 'devices') && !batType.skills.includes('nobld') && !batType.skills.includes('norepair') && (bat.damage >= 1 || bat.squadsLeft < batType.squads)) {
         let repairBat = checkRepairBat(bat.tileId);
         if (Object.keys(repairBat).length >= 1) {
             let repairBatType = getBatType(repairBat);
@@ -465,7 +465,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // DROGUES
-    if (batUnitType.cat === 'infantry') {
+    if (batType.cat === 'infantry') {
         let allDrugs = checkDrugs(bat);
         // KIRIN
         if (allDrugs.includes('kirin') || bat.tags.includes('kirin')) {
@@ -502,7 +502,7 @@ function skillsInfos(bat,batUnitType) {
             }
         }
         // BLISS
-        if ((allDrugs.includes('bliss') && !batUnitType.skills.includes('cyber')) || bat.tags.includes('bliss')) {
+        if ((allDrugs.includes('bliss') && !batType.skills.includes('cyber')) || bat.tags.includes('bliss')) {
             balise = 'h4';
             if (bat.tags.includes('bliss')) {
                 balise = 'h3';
@@ -519,7 +519,7 @@ function skillsInfos(bat,batUnitType) {
             }
         }
         // BLAZE
-        if ((allDrugs.includes('blaze') && !batUnitType.skills.includes('cyber')) || bat.tags.includes('blaze')) {
+        if ((allDrugs.includes('blaze') && !batType.skills.includes('cyber')) || bat.tags.includes('blaze')) {
             balise = 'h4';
             if (bat.tags.includes('blaze')) {
                 balise = 'h3';
@@ -536,7 +536,7 @@ function skillsInfos(bat,batUnitType) {
             }
         }
         // SKUPIAC
-        if ((allDrugs.includes('skupiac') && !batUnitType.skills.includes('cyber')) || bat.tags.includes('skupiac')) {
+        if ((allDrugs.includes('skupiac') && !batType.skills.includes('cyber')) || bat.tags.includes('skupiac')) {
             balise = 'h4';
             if (bat.tags.includes('skupiac')) {
                 balise = 'h3';
@@ -553,7 +553,7 @@ function skillsInfos(bat,batUnitType) {
             }
         }
         // SILA
-        if ((allDrugs.includes('sila') && !batUnitType.skills.includes('cyber')) || bat.tags.includes('sila')) {
+        if ((allDrugs.includes('sila') && !batType.skills.includes('cyber')) || bat.tags.includes('sila')) {
             balise = 'h4';
             if (bat.tags.includes('sila')) {
                 balise = 'h3';
@@ -589,7 +589,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // EXTRACTION
-    if (batUnitType.skills.includes('extraction')) {
+    if (batType.skills.includes('extraction')) {
         let extractOK = false;
         if (bat.extracted !== undefined) {
             if (bat.extracted.length >= 1) {
@@ -618,7 +618,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // CHARGER RESSOURCES
-    if (batUnitType.skills.includes('fret')) {
+    if (batType.skills.includes('fret')) {
         let resToLoad = isResToLoad(bat);
         if (resToLoad) {
             balise = 'h4';
@@ -636,7 +636,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // POSE PIEGES
-    if (batUnitType.skills.includes('pieges')) {
+    if (batType.skills.includes('pieges')) {
         freeConsTile = checkFreeConsTile(bat);
         if (freeConsTile) {
             let minesLeft = calcRavit(bat);
@@ -660,7 +660,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // POSE CHAMP DE MINES
-    if (batUnitType.skills.includes('landmine')) {
+    if (batType.skills.includes('landmine')) {
         freeConsTile = checkFreeConsTile(bat);
         if (freeConsTile) {
             let minesLeft = calcRavit(bat);
@@ -684,7 +684,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // POSE DYNAMITE
-    if (batUnitType.skills.includes('dynamite')) {
+    if (batType.skills.includes('dynamite')) {
         freeConsTile = checkFreeConsTile(bat);
         if (freeConsTile) {
             let minesLeft = calcRavit(bat);
@@ -708,7 +708,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // POSE BARBELES
-    if (batUnitType.skills.includes('constructeur')) {
+    if (batType.skills.includes('constructeur')) {
         freeConsTile = checkFreeConsTile(bat);
         if (freeConsTile) {
             let barbLeft = calcRavit(bat);
@@ -716,9 +716,9 @@ function skillsInfos(bat,batUnitType) {
             if (Object.keys(conselUnit).length >= 1) {
                 balise = 'h3';
             }
-            apCost = Math.ceil(batUnitType.mecanoCost/4);
-            let apCost2 = Math.ceil(batUnitType.mecanoCost/1.5);
-            apReq = Math.ceil(batUnitType.mecanoCost/4);
+            apCost = Math.ceil(batType.mecanoCost/4);
+            let apCost2 = Math.ceil(batType.mecanoCost/1.5);
+            apReq = Math.ceil(batType.mecanoCost/4);
             if (barbLeft >= 1 && bat.apLeft >= apReq && !inMelee) {
                 if (playerInfos.bldList.includes('Générateur')) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des barbelés (scrap)" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-scrap`)"><i class="ra ra-crown-of-thorns rpg"></i></button><button type="button" title="Déposer des barbelés (acier)" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-fer`)"><i class="ra ra-crown-of-thorns rpg"></i></button><button type="button" title="Déposer des barbelés (taser)" class="boutonGris skillButtons" onclick="dropStuff('+apCost2+',`barb-taser`)"><i class="ra ra-crown-of-thorns rpg"></i></button>&nbsp; Barbelés</'+balise+'></span>');
@@ -738,9 +738,9 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // ROUTES / PONTS
-    if (batUnitType.skills.includes('routes')) {
+    if (batType.skills.includes('routes')) {
         if (!tile.rd) {
-            apCost = Math.round(batUnitType.mecanoCost*terrain.roadBuild*roadAPCost/30);
+            apCost = Math.round(batType.mecanoCost*terrain.roadBuild*roadAPCost/30);
             apReq = Math.ceil(apCost/10);
             if (bat.apLeft >= apReq && !inMelee) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (routes et ponts)" class="boutonGris skillButtons" onclick="putRoad()"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; Route / Pont</h4></span>');
@@ -755,10 +755,10 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // TALUS
-    if (batUnitType.skills.includes('constructeur')) {
+    if (batType.skills.includes('constructeur')) {
         if (!tile.talus && !tile.ruins && (tile.terrain === 'P' || tile.terrain === 'G')) {
-            apCost = Math.round(Math.sqrt(batUnitType.mecanoCost)*10);
-            apReq = batUnitType.mecanoCost;
+            apCost = Math.round(Math.sqrt(batType.mecanoCost)*10);
+            apReq = batType.mecanoCost;
             if (bat.apLeft >= apReq && !inMelee) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (talus)" class="boutonGris skillButtons" onclick="putTalus()"><i class="fas fa-mountain"></i> <span class="small">'+apCost+'</span></button>&nbsp; Talus</h4></span>');
             } else {
@@ -772,7 +772,7 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // CONSTRUCTION
-    if (batUnitType.skills.includes('constructeur')) {
+    if (batType.skills.includes('constructeur')) {
         apReq = 5;
         if (bat.apLeft >= apReq && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (bâtiments)" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false)"><i class="fas fa-drafting-compass"></i> <span class="small">'+apReq+'</span></button>&nbsp; Construction</h4></span>');
@@ -786,13 +786,13 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // FOUILLE DE RUINES
-    if (batUnitType.skills.includes('fouille') && tile.ruins && tile.sh >= 1) {
+    if (batType.skills.includes('fouille') && tile.ruins && tile.sh >= 1) {
         apReq = 5;
-        apCost = Math.round(1250/bat.squadsLeft/batUnitType.squadSize/batUnitType.crew);
-        if (batUnitType.cat === 'infantry' && !batUnitType.skills.includes('moto') && !batUnitType.skills.includes('fly')) {
+        apCost = Math.round(1250/bat.squadsLeft/batType.squadSize/batType.crew);
+        if (batType.cat === 'infantry' && !batType.skills.includes('moto') && !batType.skills.includes('fly')) {
             apCost = Math.floor(apCost/bat.ap*11);
         }
-        if (apCost > bat.ap*1.5 || batUnitType.skills.includes('moto') || batUnitType.skills.includes('fly')) {
+        if (apCost > bat.ap*1.5 || batType.skills.includes('moto') || batType.skills.includes('fly')) {
             apCost = Math.round(bat.ap*1.5);
         }
         if (bat.apLeft >= apReq && !inMelee) {
@@ -807,11 +807,11 @@ function skillsInfos(bat,batUnitType) {
         }
     }
     // DEBARQUER
-    unloadInfos(bat,batUnitType);
+    unloadInfos(bat,batType);
     // RECONSTRUIRE
-    refabInfos(bat,batUnitType);
+    refabInfos(bat,batType);
     // CONSTRUCTION TRICHE
-    if (batUnitType.skills.includes('triche')) {
+    if (batType.skills.includes('triche')) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris skillButtons" onclick="bfconst(`all`,true)"><i class="fas fa-drafting-compass"></i></button>&nbsp; Construction</h4></span>');
     }
 };

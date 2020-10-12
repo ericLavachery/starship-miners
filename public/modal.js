@@ -10,12 +10,5 @@ closespan.onclick = function() {
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
-        $('#pophead').empty();
     }
 }
-
-function unitDetail(batId) {
-    modal.style.display = "block";
-    let bat = getBatById(batId);
-    batInfos(bat,true);
-};

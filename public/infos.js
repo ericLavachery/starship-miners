@@ -15,30 +15,29 @@ function batInfos(bat,pop) {
         conWindowOut();
     }
     let tagColor = 'cy';
-    let unitTypesIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-    let batUnitType = unitTypes[unitTypesIndex];
+    let batType = getBatType(bat);
     let tile = getTile(bat);
-    let unitsLeft = bat.squadsLeft*batUnitType.squadSize;
+    let unitsLeft = bat.squadsLeft*batType.squadSize;
     if (bat.citoyens >= 1) {
         unitsLeft = bat.citoyens;
     }
-    let resMax = batUnitType.transRes;
+    let resMax = batType.transRes;
     if (bat.citoyens >= 1) {
         resMax = bat.citoyens;
     }
     if (pop) {
-        $('#'+headPlace).append('<img src="/static/img/units/'+batUnitType.cat+'/'+batUnitType.pic+'.png">&nbsp;');
-        if (batUnitType.skills.includes('nonumname')) {
-            $('#'+headPlace).append('<span class="blockTitle"><h2>'+batUnitType.name+'</h2></span>');
+        $('#'+headPlace).append('<img src="/static/img/units/'+batType.cat+'/'+batType.pic+'.png">&nbsp;');
+        if (batType.skills.includes('nonumname')) {
+            $('#'+headPlace).append('<span class="blockTitle"><h2>'+batType.name+'</h2></span>');
         } else {
-            $('#'+headPlace).append('<span class="blockTitle"><h2>'+unitsLeft+' '+batUnitType.name+'</h2></span>');
+            $('#'+headPlace).append('<span class="blockTitle"><h2>'+unitsLeft+' '+batType.name+'</h2></span>');
         }
         $('#'+bodyPlace).append('<div class="shSpace"></div>');
     } else {
-        if (batUnitType.skills.includes('nonumname')) {
-            $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonBleu skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batUnitType.name+'</h3> &nbsp;(a<span class="cy">'+bat.army+'</span>)</span>');
+        if (batType.skills.includes('nonumname')) {
+            $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonBleu skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+'</h3> &nbsp;(a<span class="cy">'+bat.army+'</span>)</span>');
         } else {
-            $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonBleu skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+unitsLeft+' '+batUnitType.name+'</h3> &nbsp;(a<span class="cy">'+bat.army+'</span>)</span>');
+            $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonBleu skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+unitsLeft+' '+batType.name+'</h3> &nbsp;(a<span class="cy">'+bat.army+'</span>)</span>');
         }
         $('#'+bodyPlace).append('<div class="shSpace"></div>');
     }
@@ -54,23 +53,23 @@ function batInfos(bat,pop) {
     let roundApLeft = Math.floor(bat.apLeft);
     $('#'+bodyPlace).append('<span class="paramName">Points d\'action</span><span class="paramIcon"><i class="fas fa-hourglass-'+hourglass+'"></i></span><span class="paramValue">'+roundApLeft+'/'+ap+'</span><br>');
     // SQUADS
-    $('#'+bodyPlace).append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.squadsLeft+'/'+batUnitType.squads+'</span><br>');
-    let squadHP = batUnitType.squadSize*batUnitType.hp;
+    $('#'+bodyPlace).append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.squadsLeft+'/'+batType.squads+'</span><br>');
+    let squadHP = batType.squadSize*batType.hp;
     $('#'+bodyPlace).append('<span class="paramName">Dégâts</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.damage+'/'+squadHP+'</span><br>');
     if (pop) {
-        $('#'+bodyPlace).append('<span class="paramName">Unités/Escouade</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.squadSize+'</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName">Unités/Escouade</span><span class="paramIcon"></span><span class="paramValue">'+batType.squadSize+'</span><br>');
     }
-    let totalCrew = batUnitType.crew*batUnitType.squadSize*batUnitType.squads;
+    let totalCrew = batType.crew*batType.squadSize*batType.squads;
     if (pop) {
         $('#'+bodyPlace).append('<span class="paramName">Personnel</span><span class="paramIcon"><i class="fas fa-user-friends"></i></span><span class="paramValue">'+totalCrew+'</span><br>');
     }
     // PROTECTION
     if (pop) {
-        $('#'+bodyPlace).append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.hp+'</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span class="paramValue">'+batType.hp+'</span><br>');
     }
     let armure = bat.armor;
     if (bat.tags.includes('fortif')) {
-        if (batUnitType.skills.includes('bigfortif')) {
+        if (batType.skills.includes('bigfortif')) {
             armure = armure+2;
         } else if (armure < 2) {
             armure = armure+1;
@@ -87,7 +86,7 @@ function batInfos(bat,pop) {
     }
     let stealth = getStealth(bat);
     let camChance = calcCamo(bat);
-    if (batUnitType.skills.includes('camo') || batUnitType.skills.includes('maycamo') || tile.ruins) {
+    if (batType.skills.includes('camo') || batType.skills.includes('maycamo') || tile.ruins) {
         $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+' ('+camChance+'%)</span><br>');
     } else {
         $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
@@ -124,11 +123,11 @@ function batInfos(bat,pop) {
         if (bat.tags.includes('embuscade')) {
             $('#'+bodyPlace).append('<span class="paramName cy">Embuscade</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
         }
-        if (bat.tags.includes('guet') || batUnitType.skills.includes('sentinelle') || batUnitType.skills.includes('initiative')) {
+        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative')) {
             $('#'+bodyPlace).append('<span class="paramName cy">Guet</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
         }
     }
-    if (batUnitType.skills.includes('berserk') && bat.damage >= 1) {
+    if (batType.skills.includes('berserk') && bat.damage >= 1) {
         $('#'+bodyPlace).append('<span class="paramName cy">Berserk</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
     if (pop) {
@@ -137,17 +136,17 @@ function batInfos(bat,pop) {
             $('#'+bodyPlace).append('<span class="paramName cy">Drogue</span><span class="paramIcon"></span><span class="paramValue cy">'+myDrugs.toString()+'</span><br>');
         }
     }
-    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || batUnitType.skills.includes('regeneration') || batUnitType.skills.includes('slowreg')) {
+    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg')) {
         let regenType = 'lente';
-        if (bat.tags.includes('kirin') || batUnitType.skills.includes('regeneration')) {
+        if (bat.tags.includes('kirin') || batType.skills.includes('regeneration')) {
             regenType = 'rapide';
         }
         $('#'+bodyPlace).append('<span class="paramName cy">Régénération</span><span class="paramIcon"></span><span class="paramValue cy">'+regenType+'</span><br>');
     }
-    if (bat.tags.includes('resistfeu') || batUnitType.skills.includes('resistfeu')) {
+    if (bat.tags.includes('resistfeu') || batType.skills.includes('resistfeu')) {
         $('#'+bodyPlace).append('<span class="paramName cy">Résistance feu</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
-    if (bat.tags.includes('resistacide') || batUnitType.skills.includes('resistacide')) {
+    if (bat.tags.includes('resistacide') || batType.skills.includes('resistacide')) {
         $('#'+bodyPlace).append('<span class="paramName cy">Résistance acide</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
     // BAD TAGS
@@ -181,64 +180,64 @@ function batInfos(bat,pop) {
         $('#'+bodyPlace).append('<span class="paramName">Expérience</span><span class="paramIcon"></span><span class="paramValue">'+Math.floor(bat.xp)+' (niveau '+bat.vet+')</span><br>');
     }
     // Volume
-    let volume = calcVolume(bat,batUnitType);
+    let volume = calcVolume(bat,batType);
     $('#'+bodyPlace).append('<span class="paramName">Volume</span><span class="paramIcon"><i class="fas fa-weight-hanging"></i></span><span class="paramValue">'+volume+'</span><br>');
     if (pop) {
-        $('#'+bodyPlace).append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.size+'</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batType.size+'</span><br>');
     }
     // AUTOSKILLS
-    if (batUnitType.skills.includes('ravitaillement')) {
+    if (batType.skills.includes('ravitaillement')) {
         let ravitNum = calcRavit(bat);
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
-        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Ravitaillements</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Ravitaillements</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxSkill+'</span><br>');
     }
-    if (batUnitType.transUnits >= 1) {
-        let transLeft = calcTransUnitsLeft(bat,batUnitType);
-        let transBase = batUnitType.transUnits;
-        if (batUnitType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
+    if (batType.transUnits >= 1) {
+        let transLeft = calcTransUnitsLeft(bat,batType);
+        let transBase = batType.transUnits;
+        if (batType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
             transBase = Math.round(transBase*bonusTransRetour);
         }
         $('#'+bodyPlace).append('<span class="paramName cy">Transport</span><span class="paramIcon"></span><span class="paramValue cy">'+transLeft+'/'+transBase+'</span><br>');
     }
-    if (batUnitType.transRes >= 1) {
+    if (batType.transRes >= 1) {
         let restSpace = checkResSpace(bat);
         if (restSpace < 1) {tagColor = 'or';} else {tagColor = 'cy';}
         $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/'+resMax+'</span><br>');
     }
-    if (batUnitType.skills.includes('reserve') || batUnitType.skills.includes('transorbital')) {
-        if (bat.tags.includes('reserve') || batUnitType.skills.includes('transorbital')) {
+    if (batType.skills.includes('reserve') || batType.skills.includes('transorbital')) {
+        if (bat.tags.includes('reserve') || batType.skills.includes('transorbital')) {
             $('#'+bodyPlace).append('<span class="paramName cy">Réserve</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
         } else {
             $('#'+bodyPlace).append('<span class="paramName or">Réserve</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
         }
     }
-    if (batUnitType.skills.includes('dealer')) {
+    if (batType.skills.includes('dealer')) {
         let ravitNum = calcRavit(bat);
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
-        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Drogues</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Drogues</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxSkill+'</span><br>');
     }
-    if (batUnitType.skills.includes('landmine') || batUnitType.skills.includes('dynamite')) {
+    if (batType.skills.includes('landmine') || batType.skills.includes('dynamite')) {
         let ravitNum = calcRavit(bat);
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
-        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Mines</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Mines</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxSkill+'</span><br>');
     }
-    if (batUnitType.skills.includes('constructeur')) {
+    if (batType.skills.includes('constructeur')) {
         let ravitNum = calcRavit(bat);
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
-        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Barbelés</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batUnitType.maxSkill+'</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Barbelés</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxSkill+'</span><br>');
     }
     // WEAPONS & SKILLS
     if (!pop) {
         if (!isStacked()) {
-            weaponsInfos(bat,batUnitType,pop);
+            weaponsInfos(bat,batType,pop);
             $('#'+bodyPlace).append('<div class="shSpace"></div>');
-            skillsInfos(bat,batUnitType);
+            skillsInfos(bat,batType);
         } else {
-            transInfos(bat,batUnitType);
-            defabInfos(bat,batUnitType);
+            transInfos(bat,batType);
+            defabInfos(bat,batType);
         }
     } else {
-        weaponsInfos(bat,batUnitType,pop);
+        weaponsInfos(bat,batType,pop);
         $('#'+bodyPlace).append('<div class="shSpace"></div>');
     }
     // ARMIES
@@ -264,7 +263,7 @@ function batInfos(bat,pop) {
     }
     // RESSOURCES transportées
     console.log('HERE');
-    if (batUnitType.transRes >= 1) {
+    if (batType.transRes >= 1) {
         console.log('btres');
         if (Object.keys(bat.transRes).length >= 1) {
             console.log('bres');
@@ -294,22 +293,148 @@ function batInfos(bat,pop) {
     // "maxVeg": 3,
 };
 
+function unitDetail(batId) {
+    modal.style.display = "block";
+    let bat = getBatById(batId);
+    batInfos(bat,true);
+    batFullInfos(bat);
+};
+
+function batFullInfos(bat) {
+    let batType = getBatType(bat);
+    $('#popbody').append('<div class="shSpace"></div>');
+    $('#popbody').append('<span class="blockTitle"><h4>Habilités spéciales</h4></span><br>');
+    let allSkills = '';
+    let sepa = ' &nbsp;&middot;&nbsp; '
+    if (batType.skills.includes('fortif')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut se fortifier">Fortification</span>'+sepa;
+    }
+    if (batType.skills.includes('bigfortif')) {
+        allSkills = allSkills+'<span class="paramValue" title="Meilleur bonus de fortification">Fortification avancée</span>'+sepa;
+    }
+    if (!batType.skills.includes('noguet') && !batType.skills.includes('sentinelle')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut faire le guet: Cadence de tir 100% en défense">Guet</span>'+sepa;
+    }
+    if (batType.skills.includes('sentinelle')) {
+        allSkills = allSkills+'<span class="paramValue" title="Toujours en mode guet: Cadence de tir 100% en défense">Sentinelle</span>'+sepa;
+    }
+    if (batType.skills.includes('baddef')) {
+        allSkills = allSkills+'<span class="paramValue" title="Cadence de tir seulement 85% en mode guet">Seconde ligne</span>'+sepa;
+    }
+    if (batType.skills.includes('defense')) {
+        allSkills = allSkills+'<span class="paramValue" title="Cadence de tir 150% en défense">Défense</span>'+sepa;
+    }
+    if (batType.skills.includes('bastion')) {
+        allSkills = allSkills+'<span class="paramValue" title="Cadence de tir 200% en défense">Bastion</span>'+sepa;
+    }
+    if (batType.skills.includes('gooddef')) {
+        allSkills = allSkills+'<span class="paramValue" title="2 ripostes supplémentaires">Riposte</span>'+sepa;
+    }
+    if (batType.skills.includes('cible')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut faire un tir ciblé: Précision augmentée mais cadence de tir diminuée">Tir ciblé</span>'+sepa;
+    }
+    if (batType.skills.includes('longshot')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut attaquer n\'importe quelle unité à sa portée (pas de restriction due à la mêlée)">Tir choisi</span>'+sepa;
+    }
+    if (batType.skills.includes('berserk')) {
+        allSkills = allSkills+'<span class="paramValue" title="Si blessé: Cadence de tir 150% mais dégâts reçu 150%">Berserk</span>'+sepa;
+    }
+    if (batType.skills.includes('embuscade')) {
+        allSkills = allSkills+'<span class="paramValue" title="Cadence de tir doublée. Possible seulement en mode furtif. L\'unité doit bouger pour pouvoir en bénéficier à nouveau.">Embuscade</span>'+sepa;
+    }
+    if (batType.skills.includes('guerrilla')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut encore avancer à -4 PA. Peut encore riposter à -10 PA. Riposter ne coûte pas de PA. Ne riposte que 3 fois maximum.">Guerilla</span>'+sepa;
+    }
+    if (batType.skills.includes('camo')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut se mettre en mode furtif">Furtivité</span>'+sepa;
+    }
+    if (batType.skills.includes('maycamo')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut se mettre en mode furtif à condition d\'avoir un niveau suffisant dans la compétence de camouflage">Camouflage</span>'+sepa;
+    }
+    if (batType.skills.includes('emoteur')) {
+        allSkills = allSkills+'<span class="paramValue" title="Permet au véhicule de rester furtif même en mouvement">Moteur silencieux</span>'+sepa;
+    }
+    if (batType.skills.includes('strong')) {
+        allSkills = allSkills+'<span class="paramValue" title="Moins de perte de PA avec les armures lourdes">Strong</span>'+sepa;
+    }
+    if (batType.skills.includes('fly')) {
+        allSkills = allSkills+'<span class="paramValue">Volant</span>'+sepa;
+    }
+    if (batType.skills.includes('hover')) {
+        allSkills = allSkills+'<span class="paramValue">Amphibie</span>'+sepa;
+    }
+    if (batType.skills.includes('ranger')) {
+        allSkills = allSkills+'<span class="paramValue" title="Déplacement peu affecté par la difficulté du terrain">Ranger</span>'+sepa;
+    }
+    if (batType.skills.includes('hscarpmove')) {
+        allSkills = allSkills+'<span class="paramValue" title="Déplacement affecté d\'avantage par les terrains escarpés">Hard move</span>'+sepa;
+    }
+    if (batType.skills.includes('hardmove')) {
+        allSkills = allSkills+'<span class="paramValue" title="Déplacement affecté d\'avantage par la difficulté du terrain">Hard move</span>'+sepa;
+    }
+    if (batType.skills.includes('tracked')) {
+        allSkills = allSkills+'<span class="paramValue" title="Seulement 1 de ces bataillons peut être transporté dans un véhicule de transport de troupes">Tractable</span>'+sepa;
+    }
+    if (batType.skills.includes('constructeur')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut construire des bâtiments et dispositifs">Constructeur</span>'+sepa;
+    }
+    if (batType.skills.includes('routes')) {
+        if (batType.moveCost < 99) {
+            allSkills = allSkills+'<span class="paramValue" title="Peut construire des routes">Routes</span>'+sepa;
+        } else {
+            allSkills = allSkills+'<span class="paramValue" title="Peut construire une route là où il est installé">Route</span>'+sepa;
+        }
+    }
+    if (batType.skills.includes('fouille')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut fouiller les ruines">Fouille</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    $('#popbody').append('<span class="paramValue">'+allSkills+'</span>');
+    $('#popbody').append('<div class="shSpace"></div>');
+};
+
 function showEnemyBatInfos(bat) {
     $("#unitInfos").css("display","block");
     $('#unitInfos').empty();
     let alienUnitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
-    let batUnitType = alienUnits[alienUnitIndex];
-    let unitsLeft = bat.squadsLeft*batUnitType.squadSize;
-    $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batUnitType.name+'</h3></span>');
+    let batType = alienUnits[alienUnitIndex];
+    let unitsLeft = bat.squadsLeft*batType.squadSize;
+    $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batType.name+'</h3></span>');
     // SQUADS
-    $('#unitInfos').append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.squadsLeft+'/'+batUnitType.squads+'</span><br>');
-    let squadHP = batUnitType.squadSize*batUnitType.hp;
+    $('#unitInfos').append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.squadsLeft+'/'+batType.squads+'</span><br>');
+    let squadHP = batType.squadSize*batType.hp;
     $('#unitInfos').append('<span class="paramName">Dégâts</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.damage+'/'+squadHP+'</span><br>');
-    $('#unitInfos').append('<span class="paramName">Unités/Escouade</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.squadSize+'</span><br>');
+    $('#unitInfos').append('<span class="paramName">Unités/Escouade</span><span class="paramIcon"></span><span class="paramValue">'+batType.squadSize+'</span><br>');
     // PROTECTION
-    $('#unitInfos').append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.hp+'</span><br>');
+    $('#unitInfos').append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span class="paramValue">'+batType.hp+'</span><br>');
     $('#unitInfos').append('<span class="paramName">Armure</span><span class="paramIcon"></span><span class="paramValue">'+bat.armor+'</span><br>');
-    $('#unitInfos').append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batUnitType.size+'</span><br>');
+    $('#unitInfos').append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batType.size+'</span><br>');
     let stealth = getStealth(bat);
     $('#unitInfos').append('<span class="paramName">Discrétion</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
     if (bat.tags.includes('fluo')) {
@@ -321,8 +446,8 @@ function showEnemyBatInfos(bat) {
     // WEAPONS
     let balise;
     let thisWeapon = {};
-    if (batUnitType.weapon.rof >= 1) {
-        thisWeapon = weaponAdj(batUnitType.weapon,bat,'w1');
+    if (batType.weapon.rof >= 1) {
+        thisWeapon = weaponAdj(batType.weapon,bat,'w1');
         balise = 'h4';
         $('#unitInfos').append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span>');
         $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');

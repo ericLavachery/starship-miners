@@ -1,7 +1,7 @@
-function transInfos(bat,batUnitType) {
+function transInfos(bat,batType) {
     console.log('transInfos');
     let isCharged = checkCharged(bat,'trans');
-    let transId = checkTransportId(bat,batUnitType);
+    let transId = checkTransportId(bat,batType);
     if (transId >= 0 && !isCharged) {
         let transIndex = bataillons.findIndex((obj => obj.id == transId));
         let transBatName = bataillons[transIndex].type;
@@ -40,7 +40,7 @@ function unloadInfos(myBat,myBatUnitType) {
                             balise = 'h3';
                         }
                     }
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+bat.apLeft+' PA" class="boutonGris skillButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+bat.apLeft+' PA" class="boutonGris skillButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonBleu skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
                 }
             });
         }
