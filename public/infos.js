@@ -304,8 +304,8 @@ function batFullInfos(bat) {
     let batType = getBatType(bat);
     $('#popbody').append('<div class="shSpace"></div>');
     $('#popbody').append('<span class="blockTitle"><h4>Habilités spéciales</h4></span><br>');
-    let allSkills = '';
     let sepa = ' &nbsp;&middot;&nbsp; '
+    let allSkills = sepa;
     if (batType.skills.includes('fortif')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut se fortifier">Fortification</span>'+sepa;
     }
@@ -388,14 +388,14 @@ function batFullInfos(bat) {
     if (batType.skills.includes('fouille')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut fouiller les ruines">Fouille</span>'+sepa;
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('leader')) {
+        allSkills = allSkills+'<span class="paramValue" title="Donne +1 PA à toutes les unités du gang de manière permanente">Leadership</span>'+sepa;
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('prayer')) {
+        allSkills = allSkills+'<span class="paramValue" title="Donne +3 PA à toutes les unités du gang pendant 1 tour, et +1 PA jusqu\'à la fin de la prière">Prière</span>'+sepa;
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('undead')) {
+        allSkills = allSkills+'<span class="paramValue" title="Les escouades blessées peuvent continuer à attaquer (la cadence de tir ne diminue pas)">Undead</span>'+sepa;
     }
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
@@ -490,8 +490,8 @@ function showTileInfos(tileId) {
         if (tile.ruins) {
             $('#tileInfos').append('<span class="paramName cy">Ruines</span><span class="paramIcon"><i class="fas fa-city"></i></span><span class="paramValue cy">Oui</span><br>');
         }
-        if (tile.talus) {
-            $('#tileInfos').append('<span class="paramName cy">Talus</span><span class="paramIcon"><i class="fas fa-mountain"></i></span><span class="paramValue cy">Oui</span><br>');
+        if (tile.infra != undefined) {
+            $('#tileInfos').append('<span class="paramName cy">Infrastructure</span><span class="paramIcon"><i class="ra ra-tower rpg"></i></span><span class="paramValue cy">'+tile.infra+'</span><br>');
         }
         // Move Cost
         $('#tileInfos').append('<span class="paramName">Coûts de déplacement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">+'+terrain.mc+'</span><br>');

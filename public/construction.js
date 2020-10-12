@@ -509,11 +509,21 @@ function putRoad() {
     showBatInfos(selectedBat);
 };
 
-function putTalus() {
-    console.log('TALUS');
+function putInfra(infra) {
+    console.log('INFRASTRUCTURE');
     let tile = getTile(selectedBat);
     let terrain = getTileTerrain(selectedBat.tileId);
-    let apCost = Math.round(Math.sqrt(selectedBatType.mecanoCost)*10);
+    let infraCost;
+    if (infra === 'Miradors') {
+        infraCost = 18;
+    } else if (infra === 'Palissades') {
+        infraCost = 24;
+    } else if (infra === 'Remparts') {
+        infraCost = 30;
+    } else if (infra === 'Murailles') {
+        infraCost = 36;
+    }
+    let apCost = Math.round(Math.sqrt(selectedBatType.mecanoCost)*infraCost/1.7);
     console.log('apCost:'+apCost);
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     if (!selectedBat.tags.includes('construction')) {
@@ -522,7 +532,8 @@ function putTalus() {
     tagDelete(selectedBat,'guet');
     camoOut();
     selectedBatArrayUpdate();
-    tile.talus = true;
+    tile.infra = infra;
+    tile.ruins = false;
     saveMap();
     showMap(zone,false);
     showBatInfos(selectedBat);

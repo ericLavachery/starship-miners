@@ -272,10 +272,15 @@ h5 {
 }
 .ruins {
     position: absolute;
-    /* margin-right: -3px; */
+    margin-left: 0px;
+    margin-top: 0px;
+    z-index: -10;
+}
+.mark {
+    position: absolute;
     margin-left: -3px;
     margin-top: -3px;
-    z-index: -10;
+    z-index: -9;
 }
 .dark {
     position: absolute;
@@ -286,7 +291,6 @@ h5 {
 }
 .targ {
     position: absolute;
-    /* margin-right: -3px; */
     margin-left: -3px;
     margin-top: -3px;
     z-index: -6;

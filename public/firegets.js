@@ -110,9 +110,6 @@ function getCover(bat,withFortif,forAOE) {
         }
     } else {
         cover = terrain.cover;
-        if (tile.talus) {
-            cover = cover+2;
-        }
     }
     if (tile.ruins) {
         if (cover > 5) {
@@ -747,6 +744,12 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     // Elevation
+    let infra = '';
+    if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+        if (tile.infra != undefined) {
+            infra = tile.infra;
+        }
+    }
     let vision = 1;
     if (tile.terrain == 'M') {
         vision = 3;
@@ -760,13 +763,18 @@ function weaponAdj(weapon,bat,wn) {
         if (thisWeapon.elevation >= 1) {
             thisWeapon.range = thisWeapon.range+1;
         }
-    } else if (tile.talus) {
-        if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
-            vision = 2;
-            if (thisWeapon.elevation >= 1) {
-                thisWeapon.range = thisWeapon.range+1;
-            }
+        if (infra != '' && thisWeapon.elevation === 2) {
+            thisWeapon.range = thisWeapon.range+1;
         }
+    } else if (infra != '') {
+        vision = 2;
+        if (thisWeapon.elevation >= 1) {
+            thisWeapon.range = thisWeapon.range+1;
+        }
+    }
+    if (infra === 'Miradors') {
+        vision = 3;
+        thisWeapon.range = thisWeapon.range+1;
     }
     // Forêt (range)
     if (tile.terrain == 'F') {

@@ -754,20 +754,12 @@ function skillsInfos(bat,batType) {
             }
         }
     }
-    // TALUS
+    // INFRASTRUCTURE
     if (batType.skills.includes('constructeur')) {
-        if (!tile.talus && !tile.ruins && (tile.terrain === 'P' || tile.terrain === 'G')) {
-            apCost = Math.round(Math.sqrt(batType.mecanoCost)*10);
+        if (tile.terrain != 'W' && tile.terrain != 'R') {
             apReq = batType.mecanoCost;
             if (bat.apLeft >= apReq && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (talus)" class="boutonGris skillButtons" onclick="putTalus()"><i class="fas fa-mountain"></i> <span class="small">'+apCost+'</span></button>&nbsp; Talus</h4></span>');
-            } else {
-                if (inMelee) {
-                    skillMessage = "Ne peut pas se faire en mêlée";
-                } else {
-                    skillMessage = "Pas assez de PA";
-                }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-mountain"></i> <span class="small">'+apReq+'</span></button>&nbsp; Talus</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Miradors)" class="boutonGris skillButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button><button type="button" title="Construction (Palissades)" class="boutonGris skillButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button><button type="button" title="Construction (Remparts)" class="boutonGris skillButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button><button type="button" title="Construction (Murailles)" class="boutonGris skillButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>&nbsp; Enceinte</h4></span>');
             }
         }
     }
