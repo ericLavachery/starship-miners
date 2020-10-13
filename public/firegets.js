@@ -779,31 +779,46 @@ function weaponAdj(weapon,bat,wn) {
     let infra = '';
     if (batType.cat != 'aliens') {
         if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
-            if (tile.infra != undefined) {
+            if (tile.infra != undefined && tile.infra != 'Débris') {
                 infra = tile.infra;
             }
         }
     }
+    let highGround = 0;
     let vision = 1;
     if (tile.terrain == 'M') {
         vision = 3;
+        if (infra != '') {
+            highGround = 2;
+        } else {
+            highGround = 2;
+        }
+    } else if (tile.terrain == 'H') {
+        if (infra != '') {
+            highGround = 2;
+            vision = 3;
+        } else {
+            highGround = 1;
+            vision = 2;
+        }
+    } else {
+        if (infra != '') {
+            highGround = 1;
+            vision = 2;
+        } else {
+            highGround = 0;
+            vision = 1;
+        }
+    }
+    if (highGround === 1) {
+        if (thisWeapon.elevation >= 1) {
+            thisWeapon.range = thisWeapon.range+1;
+        }
+    } else if (highGround === 2) {
         if (thisWeapon.elevation === 1) {
             thisWeapon.range = thisWeapon.range+1;
         } else if (thisWeapon.elevation === 2) {
             thisWeapon.range = thisWeapon.range+2;
-        }
-    } else if (tile.terrain == 'H') {
-        vision = 2;
-        if (thisWeapon.elevation >= 1) {
-            thisWeapon.range = thisWeapon.range+1;
-        }
-        if (infra != '' && thisWeapon.elevation === 2) {
-            thisWeapon.range = thisWeapon.range+1;
-        }
-    } else if (infra != '') {
-        vision = 2;
-        if (thisWeapon.elevation >= 1) {
-            thisWeapon.range = thisWeapon.range+1;
         }
     }
     if (infra === 'Miradors') {

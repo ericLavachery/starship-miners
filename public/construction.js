@@ -211,9 +211,11 @@ function clickConstruct(tileId,free) {
             batHere = true;
         }
     });
-    let tile = getTileById(tileId);
-    if (tile.ruins || (tile.infra != undefined && tile.infra != 'Débris')) {
-        batHere = true;
+    if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices') {
+        let tile = getTileById(tileId);
+        if (tile.ruins || (tile.infra != undefined && tile.infra != 'Débris')) {
+            batHere = true;
+        }
     }
     if (!batHere) {
         if (!free) {
@@ -406,9 +408,11 @@ function putBat(tileId,citoyens,xp,startTag) {
             // console.log(aliens);
             showAlien(newBat);
         }
-        if (tile.infra != undefined) {
-            delete tile.infra;
-            saveMap();
+        if (tile.infra === 'Débris') {
+            if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices') {
+                delete tile.infra;
+                saveMap();
+            }
         }
     } else {
         console.log('no conselUnit !');
