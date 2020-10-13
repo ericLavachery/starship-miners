@@ -303,9 +303,30 @@ function attack(melee) {
     if (selectedWeap.ammo.includes('autodestruction') || selectedBatType.skills.includes('undead')) {
         shots = selectedWeap.rof*selectedBatType.squads;
     }
+    // INFRASTRUCTURES
+    console.log('shots='+shots);
+    if (activeTurn != 'player') {
+        if (!selectedBatType.skills.includes('fly')) {
+            if (tile.infra != undefined) {
+                if (targetBatType.cat != 'vehicles' || targetBatType.skills.includes('robot') || targetBatType.skills.includes('cyber')) {
+                    if (tile.infra === 'Miradors') {
+                        shots = Math.round(shots*75/100);
+                    } else if (tile.infra === 'Palissades') {
+                        shots = Math.round(shots*50/100);
+                    } else if (tile.infra === 'Remparts') {
+                        shots = Math.round(shots*35/100);
+                    } else if (tile.infra === 'Murailles') {
+                        shots = Math.round(shots*25/100);
+                    }
+                }
+            }
+        }
+    }
+    console.log(tile.infra+'+++++++++++++++++++++++');
+    console.log('shots='+shots);
     // SCIES (noGrip)
     if (targetWeap.noGrip && selectedWeap.range === 0 && selectedBatType.size*5 >= targetBatType.size) {
-        shots = Math.round(shots/1.5);
+        shots = Math.round(shots/1.25);
     }
     // bugROF
     if (bugROF > 1 && selectedBatType.kind === 'bug') {
@@ -859,9 +880,30 @@ function defense(melee) {
     if (targetBatType.skills.includes('undead')) {
         shots = Math.round(targetWeap.rof*targetBatType.squads*brideDef);
     }
+    // INFRASTRUCTURES
+    console.log('shots='+shots);
+    if (activeTurn === 'player') {
+        if (!targetBatType.skills.includes('fly')) {
+            if (tile.infra != undefined) {
+                if (selectedBatType.cat != 'vehicles' || selectedBatType.skills.includes('robot') || selectedBatType.skills.includes('cyber')) {
+                    if (tile.infra === 'Miradors') {
+                        shots = Math.round(shots*75/100);
+                    } else if (tile.infra === 'Palissades') {
+                        shots = Math.round(shots*50/100);
+                    } else if (tile.infra === 'Remparts') {
+                        shots = Math.round(shots*35/100);
+                    } else if (tile.infra === 'Murailles') {
+                        shots = Math.round(shots*25/100);
+                    }
+                }
+            }
+        }
+    }
+    console.log(tile.infra+'+++++++++++++++++++++++');
+    console.log('shots='+shots);
     // SCIES (noGrip)
     if (selectedWeap.noGrip && targetWeap.range === 0 && targetBatType.size*5 >= selectedBatType.size) {
-        shots = Math.round(shots/1.5);
+        shots = Math.round(shots/1.25);
     }
     // ESCAPE
     escaped = false;

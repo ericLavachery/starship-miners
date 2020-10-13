@@ -111,11 +111,39 @@ function getCover(bat,withFortif,forAOE) {
     } else {
         cover = terrain.cover;
     }
+    // Fortification
+    if (withFortif) {
+        if (bat.tags.includes('fortif')) {
+            cover = terrain.fortifcover;
+            if (batType.skills.includes('bigfortif')) {
+                cover = cover+2;
+            }
+        }
+    }
     if (tile.ruins) {
-        if (cover > 5) {
+        if (cover > 4) {
             cover = cover+2;
         } else {
-            cover = 5+Math.floor(cover/2);
+            cover = 4+Math.floor(cover/2);
+        }
+    }
+    if (tile.infra != undefined) {
+        let infraCover = 2;
+        if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+            if (tile.infra === 'Miradors') {
+                infraCover = 5;
+            } else if (tile.infra === 'Palissades') {
+                infraCover = 6;
+            } else if (tile.infra === 'Remparts') {
+                infraCover = 9;
+            } else if (tile.infra === 'Murailles') {
+                infraCover = 12;
+            }
+        }
+        if (cover > infraCover) {
+            cover = cover+Math.floor(infraCover/2);
+        } else {
+            cover = infraCover+Math.floor(cover/2);
         }
     }
     if (cover < 0) {
@@ -131,18 +159,6 @@ function getCover(bat,withFortif,forAOE) {
     }
     if (forAOE) {
         cover = cover+coverAOE;
-    }
-    // Fortification
-    if (withFortif) {
-        if (bat.tags.includes('fortif')) {
-            cover = terrain.fortifcover;
-            if (batType.skills.includes('bigfortif')) {
-                cover = cover+3;
-            }
-            if (tile.ruins) {
-                cover = cover+2;
-            }
-        }
     }
     return cover;
 };
@@ -338,41 +354,41 @@ function calcDistanceSquare(myTileIndex,thatTileIndex) {
 
 function isInRange(myBat,thatTileId,myWeapon) {
     let myBatType = getBatType(myBat);
-    let onWall = false;
-    if (myBatType.size <= 12 && !myWeapon.isMelee && !myWeapon.noShield) {
-        if (myBatType.cat === 'infantry') {
-            onWall = true;
-        }
-        if (myBatType.cat === 'vehicles') {
-            if (myBatType.skills.includes('robot') || myBatType.skills.includes('cyber')) {
-                onWall = true;
-            }
-        }
-    }
+    // let onWall = false;
+    // if (myBatType.size <= 12 && !myWeapon.isMelee && !myWeapon.noShield) {
+    //     if (myBatType.cat === 'infantry') {
+    //         onWall = true;
+    //     }
+    //     if (myBatType.cat === 'vehicles') {
+    //         if (myBatType.skills.includes('robot') || myBatType.skills.includes('cyber')) {
+    //             onWall = true;
+    //         }
+    //     }
+    // }
     let inRange = false;
     let range = myWeapon.range;
     let distance = calcDistance(myBat.tileId,thatTileId);
     if (distance > range) {
-        if (distance > range+2) {
-            inRange = false;
-        } else {
-            if (onWall) {
-                bataillons.forEach(function(bat) {
-                    if (bat.loc === "zone") {
-                        if (bat.type === 'Palissades' || bat.type === 'Remparts' || bat.type === 'Murailles') {
-                            if (bat.tileId === myBat.tileId+1 || bat.tileId === myBat.tileId-1 || bat.tileId === myBat.tileId+mapSize || bat.tileId === myBat.tileId-mapSize) {
-                                distance = calcDistance(bat.tileId,thatTileId);
-                                console.log('MUR:');
-                                console.log(bat);
-                                if (distance <= range) {
-                                    inRange = true;
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
+        // if (distance > range+2) {
+        //     inRange = false;
+        // } else {
+        //     if (onWall) {
+        //         bataillons.forEach(function(bat) {
+        //             if (bat.loc === "zone") {
+        //                 if (bat.type === 'Palissades' || bat.type === 'Remparts' || bat.type === 'Murailles') {
+        //                     if (bat.tileId === myBat.tileId+1 || bat.tileId === myBat.tileId-1 || bat.tileId === myBat.tileId+mapSize || bat.tileId === myBat.tileId-mapSize) {
+        //                         distance = calcDistance(bat.tileId,thatTileId);
+        //                         console.log('MUR:');
+        //                         console.log(bat);
+        //                         if (distance <= range) {
+        //                             inRange = true;
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         });
+        //     }
+        // }
     } else {
         inRange = true;
     }
@@ -454,6 +470,18 @@ function checkFlyTarget(weapon,batType) {
     }
 };
 
+function isOnInfra(bat) {
+    let onInfra = false;
+    let tile = getTile(bat);
+    let batType = getBatType(bat);
+    if (tile.infra != undefined) {
+        if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+            onInfra = true;
+        }
+    }
+    return onInfra;
+}
+
 function fireInfos(bat) {
     $(".targ").remove();
     isMelee = false;
@@ -464,6 +492,7 @@ function fireInfos(bat) {
     let alien = {};
     let alienIndex;
     let alienType;
+    let onInfra = false;
     let longMelee = false;
     let guideTarget = false;
     zone.forEach(function(tile) {
@@ -471,7 +500,8 @@ function fireInfos(bat) {
         alien = alienHere(tile.id);
         if (Object.keys(alien).length >= 1) {
             alienType = getBatType(alien);
-            if (sideBySideTiles(selectedBat.tileId,tile.id,true) && !batType.skills.includes('longshot')) {
+            onInfra = isOnInfra(bat);
+            if (sideBySideTiles(selectedBat.tileId,tile.id,true) && !batType.skills.includes('longshot') && !onInfra) {
                 isMelee = true;
                 if (checkFlyTarget(selectedWeap,alienType)) {
                     cursorSwitch('#',tile.id,'fire');
