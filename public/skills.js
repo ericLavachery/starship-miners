@@ -384,6 +384,10 @@ function clickMine(clicTileId,poseurTileId) {
                 batHere = true;
             }
         });
+        let tile = getTileById(clicTileId);
+        if (tile.ruins || (tile.infra != undefined && tile.infra != 'Débris')) {
+            batHere = true;
+        }
         if (!batHere) {
             putBat(clicTileId,0,0);
             showBatInfos(selectedBat);
@@ -408,11 +412,12 @@ function checkFreeConsTile(bat) {
     zone.forEach(function(tile) {
         distance = calcDistance(tile.id,bat.tileId);
         if (distance <= 1) {
-            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !tile.ruins && (tile.infra === undefined || tile.infra === 'Débris')) {
                 freeTile = true;
             }
         }
     });
+    // console.log('freeTile='+freeTile);
     return freeTile;
 };
 

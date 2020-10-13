@@ -1219,7 +1219,7 @@ function fearFactor(myBat,blob) {
 };
 
 function infraDestruction() {
-    if (selectedBat.apLeft >= 4) {
+    if ((selectedBat.apLeft >= 4 && rand.rand(1,2) === 1) || selectedBat.apLeft >= selectedBat.ap-2) {
         let tile = getTile(selectedBat);
         let destroySize = 999;
         let alienSize = selectedBatType.size;

@@ -211,6 +211,10 @@ function clickConstruct(tileId,free) {
             batHere = true;
         }
     });
+    let tile = getTileById(tileId);
+    if (tile.ruins || (tile.infra != undefined && tile.infra != 'Débris')) {
+        batHere = true;
+    }
     if (!batHere) {
         if (!free) {
             let distance = calcDistance(selectedBat.tileId,tileId);
@@ -242,6 +246,7 @@ function clickConstruct(tileId,free) {
 function putBat(tileId,citoyens,xp,startTag) {
     console.log('PUTBAT');
     if (Object.keys(conselUnit).length >= 1) {
+        let tile = getTileById(tileId);
         console.log(conselUnit);
         let nextId;
         let team;
@@ -400,6 +405,10 @@ function putBat(tileId,citoyens,xp,startTag) {
             aliens.push(newBat);
             // console.log(aliens);
             showAlien(newBat);
+        }
+        if (tile.infra != undefined) {
+            delete tile.infra;
+            saveMap();
         }
     } else {
         console.log('no conselUnit !');
