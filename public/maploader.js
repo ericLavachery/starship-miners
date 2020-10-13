@@ -118,6 +118,9 @@ function showRes(tileId) {
     if (tile.infra === 'Murailles' && view) {
         mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/muraille.png"></div>';
     }
+    if (tile.infra === 'Débris' && view) {
+        mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/debris.png"></div>';
+    }
     if (playerInfos.showedTiles.includes(tileId)) {
         if (tileId === 1830) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/showCenterTile.png"></div>';

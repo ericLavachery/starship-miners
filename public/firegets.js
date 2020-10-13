@@ -127,7 +127,7 @@ function getCover(bat,withFortif,forAOE) {
             cover = 4+Math.floor(cover/2);
         }
     }
-    if (tile.infra != undefined) {
+    if (tile.infra != undefined && bat.team != 'aliens') {
         let infraCover = 2;
         if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
             if (tile.infra === 'Miradors') {
@@ -475,8 +475,10 @@ function isOnInfra(bat) {
     let tile = getTile(bat);
     let batType = getBatType(bat);
     if (tile.infra != undefined) {
-        if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
-            onInfra = true;
+        if (tile.infra != 'Débris' && batType.cat != 'aliens') {
+            if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+                onInfra = true;
+            }
         }
     }
     return onInfra;
@@ -775,9 +777,11 @@ function weaponAdj(weapon,bat,wn) {
     }
     // Elevation
     let infra = '';
-    if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
-        if (tile.infra != undefined) {
-            infra = tile.infra;
+    if (batType.cat != 'aliens') {
+        if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+            if (tile.infra != undefined) {
+                infra = tile.infra;
+            }
         }
     }
     let vision = 1;

@@ -15,6 +15,7 @@ function alienMoveLoop() {
     targetBatType = {};
     targetWeap = {};
     fearFactor(selectedBat,false);
+    infraDestruction();
     checkPossibleMoves();
     // loop this until no ap or no salvo
     // console.log('!!! Start Loop !!!');
@@ -1214,6 +1215,39 @@ function fearFactor(myBat,blob) {
                 }
             }
         });
+    }
+};
+
+function infraDestruction() {
+    if (selectedBat.apLeft >= 4) {
+        let tile = getTile(selectedBat);
+        let destroySize = 999;
+        let alienSize = selectedBatType.size;
+        if (selectedBatType.skills.includes('destructeur')) {
+            alienSize = alienSize+10;
+        }
+        if (tile.infra != undefined) {
+            if (tile.infra != 'Débris') {
+                if (tile.infra === 'Miradors') {
+                    destroySize = 10;
+                } else if (tile.infra === 'Palissades') {
+                    destroySize = 15;
+                } else if (tile.infra === 'Remparts') {
+                    destroySize = 27;
+                } else if (tile.infra === 'Murailles') {
+                    destroySize = 38;
+                }
+            }
+        }
+        if (alienSize >= destroySize) {
+            let destroyCost = Math.ceil(selectedBat.ap*destroySize/alienSize*2);
+            selectedBat.apLeft = selectedBat.apLeft-destroyCost;
+            warning('Destruction',selectedBat.type+' a détruit '+tile.infra);
+            tile.infra = 'Débris';
+            saveMap();
+            showMap(zone,false);
+            selectedBatArrayUpdate();
+        }
     }
 };
 
