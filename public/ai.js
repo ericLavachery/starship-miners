@@ -833,7 +833,7 @@ function moveToPDM() {
     if (selectedBatType.moveCost < 99) {
         // console.log('move to PDM');
         let jump = false;
-        if ((selectedBatType.skills.includes('fouisseur') || selectedBatType.skills.includes('sauteur')) && rand.rand(1,3) === 1) {
+        if ((selectedBatType.skills.includes('fouisseur') || selectedBatType.skills.includes('sauteur')) && rand.rand(1,3) === 1 && (selectedBat.apLeft >= 4 || selectedBatType.skills.includes('invisible'))) {
             jump = true;
         }
         if (selectedBatType.skills.includes('fly')) {

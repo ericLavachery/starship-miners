@@ -2018,9 +2018,10 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","baddef","badmecano","badmedic","moto","dealer","octiron"],
+        "skills":["fouille","fortif","cible","baddef","badmecano","badmedic","moto","dealer","octiron","dealer","nitro"],
         "mediCost":7,
         "mecanoCost":7,
+        "maxSkill":12,
         "maxSkill":6,
         "fuzz":1.5,
         "deathFx":"human2"
@@ -3192,9 +3193,10 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","mecano","selfmedic","cyber"],
+        "skills":["fouille","fortif","cible","mecano","selfmedic","cyber","dealer","nitro","oknitro"],
         "mecanoCost":4,
         "mediCost":8,
+        "maxSkill":16,
         "fuzz":1,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
     },
@@ -3298,7 +3300,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber","selfbadmedic","escape"],
+        "skills":["fouille","fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber","selfbadmedic","escape","oknitro"],
         "mediCost":8,
         "fuzz":3.5,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
@@ -3350,7 +3352,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber","selfbadmedic","escape"],
+        "skills":["fouille","fortif","cible","fly","jetpack","guerrilla","longshot","inflammable","cyber","selfbadmedic","escape","oknitro"],
         "mediCost":8,
         "fuzz":3,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
@@ -3875,7 +3877,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","selfbadmedic","guerrilla","cyber","maycamo","berserk","ranger","nostun","resistacide","baddef"],
+        "skills":["fouille","fortif","cible","selfbadmedic","guerrilla","cyber","maycamo","berserk","ranger","nostun","resistacide","baddef","oknitro"],
         "mediCost":12,
         "fuzz":1.5,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
@@ -3926,7 +3928,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","selfmedic","meleehelp","guerrilla","cyber","maycamo","berserk","ranger","nostun","resistacide","baddef"],
+        "skills":["fouille","fortif","cible","selfmedic","meleehelp","guerrilla","cyber","maycamo","berserk","ranger","nostun","resistacide","baddef","oknitro"],
         "mediCost":12,
         "fuzz":0,
         "deathFx":"396806__scorpion67890__cyborg-death-1"

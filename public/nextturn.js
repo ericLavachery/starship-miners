@@ -512,7 +512,16 @@ function tagsUpdate(bat) {
         bat.tags.splice(tagIndex,1);
         tagIndex = bat.tags.indexOf('starka');
         bat.tags.splice(tagIndex,1);
-        if (!bat.tags.includes('skupiac')) {
+        if (!bat.tags.includes('starka')) {
+            drugDown(bat,false,false);
+        }
+    }
+    if (bat.tags.includes('nitro')) {
+        tagIndex = bat.tags.indexOf('nitro');
+        bat.tags.splice(tagIndex,1);
+        tagIndex = bat.tags.indexOf('nitro'); 
+        bat.tags.splice(tagIndex,1);
+        if (!bat.tags.includes('nitro')) {
             drugDown(bat,false,false);
         }
     }

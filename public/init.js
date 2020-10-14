@@ -52,7 +52,7 @@ socket.on('playerInfos-Load', function(pi) {
         playerInfos.bldList = [];
     }
     if (playerInfos.drugs === undefined) {
-        playerInfos.drugs = ["Starka","Kirin","Sila","Skupiac","Bliss"];
+        playerInfos.drugs = ["Starka","Kirin","Sila","Skupiac","Bliss","Nitro"];
     }
     playerSkills();
 });

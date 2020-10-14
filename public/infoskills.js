@@ -465,9 +465,9 @@ function skillsInfos(bat,batType) {
         }
     }
     // DROGUES
+    let allDrugs = checkDrugs(bat);
+    // KIRIN
     if (batType.cat === 'infantry') {
-        let allDrugs = checkDrugs(bat);
-        // KIRIN
         if (allDrugs.includes('kirin') || bat.tags.includes('kirin')) {
             balise = 'h4';
             if (bat.tags.includes('kirin')) {
@@ -585,6 +585,26 @@ function skillsInfos(bat,batType) {
                     skillMessage = "Déjà sous l'effet de cette drogue";
                 }
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
+            }
+        }
+    }
+    if ((batType.cat === 'vehicles' && !batType.skills.includes('emoteur')) || batType.skills.includes('oknitro')) {
+        // NITRO
+        if (allDrugs.includes('nitro') || bat.tags.includes('nitro')) {
+            balise = 'h4';
+            if (bat.tags.includes('nitro')) {
+                balise = 'h3';
+            }
+            apCost = 0;
+            let maxNitroPA = bat.ap+1;
+            if (bat.apLeft < maxNitroPA && !bat.tags.includes('nitro')) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+bat.ap+' PA, maximum '+maxNitroPA+' au total" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
+            } else {
+                skillMessage = "Conditions non requises";
+                if (bat.tags.includes('nitro')) {
+                    skillMessage = "Déjà sous l'effet de cette drogue";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
             }
         }
     }

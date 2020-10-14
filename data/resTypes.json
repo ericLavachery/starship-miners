@@ -130,7 +130,7 @@
         "name": "Titane",
         "bld": "Mine",
         "level": 1,
-        "rarity": 10,
+        "rarity": 12,
         "cat": "white",
         "batch": 2
     },
@@ -166,7 +166,7 @@
         "name": "Uranium",
         "bld": "Mine",
         "level": 1,
-        "rarity": 10,
+        "rarity": 12,
         "cat": "white",
         "batch": 3
     },
@@ -175,7 +175,7 @@
         "name": "Platine",
         "bld": "Mine",
         "level": 1,
-        "rarity": 10,
+        "rarity": 12,
         "cat": "white",
         "batch": 2
     },
@@ -199,7 +199,7 @@
     },
     {
         "id": 41,
-        "name": "Palladium",
+        "name": "Rhodium",
         "bld": "Mine",
         "level": 3,
         "rarity": 8,

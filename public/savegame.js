@@ -43,7 +43,7 @@ function mapReset() {
     playerInfos.myCenter = 1830;
     playerInfos.undarkOnce = [];
     playerInfos.bldList = [];
-    playerInfos.drugs = ["Starka","Kirin","Sila","Skupiac","Bliss"];
+    playerInfos.drugs = ["Starka","Kirin","Sila","Skupiac","Bliss","Nitro"];
     savePlayerInfos();
     commandes();
     $("#reset2").css("display","none");

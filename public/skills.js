@@ -273,6 +273,14 @@ function goDrug(apCost,drug) {
                 }
                 console.log('starka bonus');
             }
+            // nitro instant bonus
+            if (drug === 'nitro') {
+                selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap;
+                if (selectedBat.apLeft >= selectedBat.ap+1) {
+                    selectedBat.apLeft = selectedBat.ap+1;
+                }
+                console.log('nitro bonus');
+            }
         }
         tagAction();
         selectedBatArrayUpdate();
@@ -308,6 +316,9 @@ function checkDrugs(myBat) {
                     }
                     if (batType.skills.includes('starka') && playerInfos.drugs.includes('Starka')) {
                         allDrugs.push('starka');
+                    }
+                    if (batType.skills.includes('nitro') && playerInfos.drugs.includes('Nitro')) {
+                        allDrugs.push('nitro');
                     }
                 }
             }
