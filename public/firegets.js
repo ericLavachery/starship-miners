@@ -271,19 +271,31 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
 };
 
 function sideBySideTiles(myTileIndex,thatTileIndex,fuzzThing) {
+    let sbs = false;
     if (selectedBat.fuzz <= -2 && fuzzThing) {
-        return false;
+        sbs = false;
     } else {
         let myTileX = zone[myTileIndex].x;
         let myTileY = zone[myTileIndex].y;
         let thatTileX = zone[thatTileIndex].x;
         let thatTileY = zone[thatTileIndex].y;
-        if (myTileIndex == thatTileIndex || myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
-            return true;
-        } else {
-            return false;
+        if (myTileX === thatTileX) {
+            if (myTileY == thatTileY+1 || myTileY == thatTileY-1) {
+                sbs = true;
+            }
         }
+        if (myTileY === thatTileY) {
+            if (myTileX == thatTileX+1 || myTileX == thatTileX-1) {
+                sbs = true;
+            }
+        }
+        // if (myTileIndex == thatTileIndex || myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
     }
+    return sbs;
 };
 
 function batInMelee(bat) {
@@ -301,35 +313,6 @@ function batInMelee(bat) {
         }
     });
     return inMelee;
-};
-
-function isInRangeOld(myTileIndex,thatTileIndex) {
-    let myTileX = zone[myTileIndex].x;
-    let myTileY = zone[myTileIndex].y;
-    let thatTileX = zone[thatTileIndex].x;
-    let thatTileY = zone[thatTileIndex].y;
-    let distanceX = Math.abs(myTileX-thatTileX);
-    let distanceY = Math.abs(myTileY-thatTileY);
-    let distance;
-    if (distanceX > distanceY) {
-        distance = distanceX;
-    } else {
-        distance = distanceY;
-    }
-    let range = selectedWeap.range;
-    if (range === 0) {
-        if (myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
-            return true;
-        } else {
-            return false;
-        }
-    } else {
-        if (distance > range) {
-            return false;
-        } else {
-            return true;
-        }
-    }
 };
 
 function calcDistanceSquare(myTileIndex,thatTileIndex) {
