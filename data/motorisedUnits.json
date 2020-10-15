@@ -2940,7 +2940,7 @@
         "volume":1.3,
         "stealth":0,
         "speed":7,
-        "ap":15,
+        "ap":30,
         "maxSalvo":2,
         "weapon":{
             "name":"Canons laser",
@@ -2956,7 +2956,7 @@
         },
         "weapon2":{
             "name":"Bombes",
-            "cost":4,
+            "cost":5,
             "range":1,
             "noFly":true,
             "noBis":true,
@@ -2971,11 +2971,11 @@
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
-        "moveCost":1,
+        "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","fly","longshot","gooddef"],
+        "skills":["cible","fly","longshot","gooddef","strong"],
         "fuzz":7,
         "deathFx":"vehicleexplo3"
     },
@@ -3103,7 +3103,7 @@
         "volume":1.3,
         "stealth":0,
         "speed":7,
-        "ap":15,
+        "ap":28,
         "maxSalvo":2,
         "weapon":{
             "name":"Shriek",
@@ -3132,11 +3132,11 @@
             "ravitBld":"Armurerie"
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
-        "moveCost":1,
+        "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["cible","fly","longshot","gooddef"],
+        "skills":["cible","fly","longshot","gooddef","strong"],
         "fuzz":7,
         "deathFx":"vehicleexplo3"
     },

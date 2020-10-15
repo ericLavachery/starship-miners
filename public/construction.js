@@ -213,7 +213,7 @@ function clickConstruct(tileId,free) {
     });
     if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices') {
         let tile = getTileById(tileId);
-        if (tile.ruins || (tile.infra != undefined && tile.infra != 'Débris')) {
+        if (tile.infra != undefined && tile.infra != 'Débris') {
             batHere = true;
         }
     }
