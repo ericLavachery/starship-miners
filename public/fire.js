@@ -424,6 +424,7 @@ function attack(melee) {
         selectedWeap.accuracy = selectedWeap.accuracy+5;
     }
     toHit = 999;
+    console.log('shots='+shots);
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
@@ -433,7 +434,7 @@ function attack(melee) {
         }
         totalDamage = totalDamage+shotResult.damage;
         totalHits = totalHits+shotResult.hits;
-        if (i > 300) {break;}
+        if (i > 5000) {break;}
         i++
     }
     // lucky shot damage
@@ -970,7 +971,7 @@ function defense(melee) {
         }
         totalDamage = totalDamage+shotResult.damage;
         totalHits = totalHits+shotResult.hits;
-        if (i > 300) {break;}
+        if (i > 5000) {break;}
         i++
     }
     // berserk (bonus damage des opposants)
