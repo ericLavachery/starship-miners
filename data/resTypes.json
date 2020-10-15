@@ -538,14 +538,5 @@
         "rarity": 5,
         "cat": "alien",
         "batch": 1
-    },
-    {
-        "id": 60,
-        "name": "Graphite",
-        "bld": "Mine",
-        "level": 1,
-        "rarity": 0,
-        "cat": "none",
-        "batch": 0
     }
 ]

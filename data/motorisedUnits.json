@@ -3230,7 +3230,7 @@
         "pic":"stakhanov",
         "cat":"vehicles",
         "kind":"zero-extraction",
-        "squads":5,
+        "squads":3,
         "squadSize":1,
         "crew":12,
         "hp":230,
@@ -3280,7 +3280,7 @@
         "maxSkill":24,
         "mining":{
             "level":3,
-            "rate":28,
+            "rate":75,
             "multi":true,
             "types":["Mine","Derrick","Pompe","Comptoir","Scrap"]
         },
@@ -3294,7 +3294,7 @@
         "pic":"drilltruck",
         "cat":"vehicles",
         "kind":"zero-extraction",
-        "squads":4,
+        "squads":2,
         "squadSize":2,
         "crew":6,
         "hp":115,
@@ -3343,7 +3343,7 @@
         "mecanoCost":18,
         "mining":{
             "level":3,
-            "rate":17,
+            "rate":40,
             "multi":true,
             "types":["Mine","Derrick","Comptoir","Scrap"]
         },
