@@ -3279,8 +3279,8 @@
         "mecanoCost":16,
         "maxSkill":24,
         "mining":{
-            "level":3,
-            "rate":75,
+            "level":4,
+            "rate":40,
             "multi":true,
             "types":["Mine","Derrick","Pompe","Comptoir","Scrap"]
         },
@@ -3342,8 +3342,8 @@
         "skills":["noguet","fouille","selfbadmecano","extraction","hardmove","fret","dumper"],
         "mecanoCost":18,
         "mining":{
-            "level":3,
-            "rate":40,
+            "level":4,
+            "rate":28,
             "multi":true,
             "types":["Mine","Derrick","Comptoir","Scrap"]
         },
@@ -3540,7 +3540,7 @@
         "skills":["noguet","fly","extraction","selfbadmecano","fret","robot"],
         "mecanoCost":12,
         "mining":{
-            "level":2,
+            "level":3,
             "rate":15,
             "multi":true,
             "types":["Mine","Comptoir","Scrap"]

@@ -207,14 +207,14 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","transorbital","ravitaillement","stock","transport","longshot","extraction","survivor","mecano","medic","fret","recupcit","bastion","dumper","routes","vision"],
+        "skills":["fouille","cible","transorbital","ravitaillement","stock","transport","longshot","extraction","survivor","mecano","medic","fret","recupcit","bastion","dumper","routes","vision"],
         "mediCost":7,
         "mecanoCost":7,
         "mining":{
-            "level":3,
-            "rate":35,
+            "level":4,
+            "rate":50,
             "multi":true,
-            "types":["fouille","Mine","Derrick","Pompe","Comptoir","Scrap"]
+            "types":["Mine","Derrick","Pompe","Comptoir","Scrap"]
         },
         "transMaxSize":50,
         "transUnits":20000,

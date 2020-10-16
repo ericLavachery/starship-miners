@@ -186,11 +186,13 @@ function getResMiningRate(bat,ressource,value,fullRate) {
     }
     let batRate = getMiningRate(bat,fullRate);
     let multiExtractAdj = 1;
-    if (bat.extracted.length >= 2) {
-        multiExtractAdj = 1-((bat.extracted.length-1)/12);
-    }
-    if (multiExtractAdj < 0.4) {
-        multiExtractAdj = 0.4;
+    if (batType.mining.level < 4) {
+        if (bat.extracted.length >= 2) {
+            multiExtractAdj = 1-((bat.extracted.length-1)/12);
+        }
+        if (multiExtractAdj < 0.4) {
+            multiExtractAdj = 0.4;
+        }
     }
     let resRate = Math.ceil(resHere*batRate/mineRateDiv*multiExtractAdj);
     if (batType.mining.types.includes('Mine') && res.bld === 'Derrick') {

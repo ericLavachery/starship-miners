@@ -1435,7 +1435,7 @@
         "skills":["fouille","fortif","extraction","selfbadmedic","dynamite","fret"],
         "mediCost":9,
         "mining":{
-            "level":1,
+            "level":3,
             "rate":15,
             "multi":false,
             "types":["Mine","Comptoir","Scrap","Derrick"]
