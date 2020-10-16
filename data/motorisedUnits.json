@@ -3238,7 +3238,7 @@
         "size":50,
         "stealth":0,
         "speed":0,
-        "ap":18,
+        "ap":20,
         "maxSalvo":2,
         "weapon":{
             "name":"Fusil à verrou",
@@ -3275,8 +3275,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fouille","selfmecano","extraction","hardmove","fret","noblub","dumper","dealer","nitro"],
-        "mecanoCost":16,
+        "skills":["noguet","fouille","selfmecano","extraction","hardmove","fret","noblub","dumper","dealer","nitro","routes"],
+        "mecanoCost":6,
         "maxSkill":24,
         "mining":{
             "level":4,
@@ -3302,7 +3302,7 @@
         "size":32,
         "stealth":0,
         "speed":0,
-        "ap":13,
+        "ap":15,
         "maxSalvo":2,
         "weapon":{
             "name":"Fusil à verrou",
@@ -3339,8 +3339,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fouille","selfbadmecano","extraction","hardmove","fret","dumper"],
-        "mecanoCost":18,
+        "skills":["noguet","fouille","selfbadmecano","extraction","hardmove","fret","dumper","routes"],
+        "mecanoCost":6,
         "mining":{
             "level":4,
             "rate":28,

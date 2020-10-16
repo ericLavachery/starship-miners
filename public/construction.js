@@ -528,13 +528,13 @@ function putInfra(infra) {
     let terrain = getTileTerrain(selectedBat.tileId);
     let infraCost;
     if (infra === 'Miradors') {
-        infraCost = 12;
+        infraCost = 9;
     } else if (infra === 'Palissades') {
-        infraCost = 18;
+        infraCost = 12;
     } else if (infra === 'Remparts') {
-        infraCost = 27;
+        infraCost = 18;
     } else if (infra === 'Murailles') {
-        infraCost = 36;
+        infraCost = 26;
     }
     // infraCost = AP for Workships
     let apCost = Math.round(Math.sqrt(selectedBatType.mecanoCost)*infraCost/1.7);
