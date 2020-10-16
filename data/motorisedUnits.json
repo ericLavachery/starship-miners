@@ -1913,9 +1913,9 @@
         "mecanoCost":16,
         "mining":{
             "level":1,
-            "rate":25,
+            "rate":24,
             "multi":false,
-            "types":["Scrap","Comptoir"]
+            "types":["Scrap","Comptoir","Mine"]
         },
         "transMaxSize":9,
         "transUnits":200,
@@ -1978,9 +1978,9 @@
         "mecanoCost":16,
         "mining":{
             "level":1,
-            "rate":25,
+            "rate":24,
             "multi":false,
-            "types":["Scrap","Comptoir"]
+            "types":["Scrap","Comptoir","Mine"]
         },
         "transMaxSize":9,
         "transUnits":200,
@@ -2598,7 +2598,7 @@
             "level":1,
             "rate":30,
             "multi":false,
-            "types":["Scrap"]
+            "types":["Scrap","Comptoir","Mine"]
         },
         "transMaxSize":9,
         "transUnits":420,

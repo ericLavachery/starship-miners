@@ -186,10 +186,14 @@ function getResMiningRate(bat,ressource,value,fullRate) {
     }
     let batRate = getMiningRate(bat,fullRate);
     let multiExtractAdj = 1;
-    if (batType.mining.level < 4) {
-        if (bat.extracted.length >= 2) {
-            multiExtractAdj = 1-((bat.extracted.length-1)/12);
+    if (bat.extracted.length >= 2) {
+        multiExtractAdj = 1-((bat.extracted.length-1)/12);
+    }
+    if (batType.mining.level >= 4) {
+        if (multiExtractAdj < 0.75) {
+            multiExtractAdj = 0.75;
         }
+    } else {
         if (multiExtractAdj < 0.4) {
             multiExtractAdj = 0.4;
         }
@@ -197,6 +201,12 @@ function getResMiningRate(bat,ressource,value,fullRate) {
     let resRate = Math.ceil(resHere*batRate/mineRateDiv*multiExtractAdj);
     if (batType.mining.types.includes('Mine') && res.bld === 'Derrick') {
         resRate = Math.ceil(resRate/3);
+    }
+    if (batType.mining.level === 1 && (res.bld === 'Mine' || res.bld === 'Derrick')) {
+        resRate = Math.ceil(resRate/6);
+    }
+    if (ressource.level > batType.mining.level) {
+        resRate = 0;
     }
     if (value <= 0) {
         resRate = 0;
@@ -264,14 +274,16 @@ function chooseRes(again) {
         let value = entry[1];
         res = getResByName(key);
         if (selectedBatType.mining.types.includes(res.bld)) {
-            let resMiningRate = getResMiningRate(selectedBat,res,value,true);
-            if (selectedBat.extracted.includes(res.name)) {
-                $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                totalExRes = totalExRes+resMiningRate;
-            } else {
-                $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+            if (selectedBatType.mining.level >= res.level) {
+                let resMiningRate = getResMiningRate(selectedBat,res,value,true);
+                if (selectedBat.extracted.includes(res.name)) {
+                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                    totalExRes = totalExRes+resMiningRate;
+                } else {
+                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                }
+                $('#conUnitList').append('<span class="constName klik" onclick="resSelect('+res.id+')">'+res.name+' : '+resMiningRate+'</span><br>');
             }
-            $('#conUnitList').append('<span class="constName klik" onclick="resSelect('+res.id+')">'+res.name+' : '+resMiningRate+'</span><br>');
         }
     });
     $('#conUnitList').append('<span class="constName">Total de ressources : <span class="cy">'+totalExRes+'</span></span><br>');
