@@ -46,7 +46,7 @@ function checkStartingAliens() {
     let numSent = Math.ceil((playerInfos.mapDiff+2)*rand.rand(8,20)/8);
     ii = 1;
     while (ii <= numSent) {
-        dropEgg('Sentinelles','');
+        dropEgg('Sentinelles','none');
         if (ii > 50) {break;}
         ii++
     }
