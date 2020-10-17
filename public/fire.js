@@ -489,14 +489,14 @@ function attack(melee) {
     // inflammable
     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('pyratol') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov') || selectedWeap.ammo.includes('laser')) {
         if (targetBatType.skills.includes('inflammable')) {
-            totalDamage = totalDamage*2;
+            totalDamage = totalDamage*1.5;
             console.log('inflammable!');
         }
     }
     // résistance au feu
     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('pyratol') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov') || selectedWeap.ammo.includes('laser')) {
         if (targetBatType.skills.includes('resistfeu') || targetBat.tags.includes('resistfeu')) {
-            totalDamage = Math.round(totalDamage/2);
+            totalDamage = Math.round(totalDamage/1.5);
             console.log('résistance au feu!');
         }
     }
@@ -504,7 +504,7 @@ function attack(melee) {
     if (targetBatType.skills.includes('resistblast') || targetBat.tags.includes('resistblast')) {
         if (selectedWeap.ammo.includes('bfg') || selectedWeap.ammo.includes('nanite') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('dynamite') || selectedWeap.ammo.includes('bombe') || selectedWeap.ammo.includes('explosif') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('grenade') || selectedWeap.ammo.includes('disco')) {
             if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm')) {
-                totalDamage = Math.round(totalDamage/2);
+                totalDamage = Math.round(totalDamage/1.5);
                 console.log('résistance au blast!');
             }
         }
@@ -519,7 +519,7 @@ function attack(melee) {
     // résistance acide
     if (selectedWeap.name.includes('acide') || selectedWeap.ammo.includes('ruche')) {
         if (targetBatType.skills.includes('resistacide') || targetBat.tags.includes('resistacide')) {
-            totalDamage = Math.round(totalDamage/2);
+            totalDamage = Math.round(totalDamage/1.5);
             console.log('résistance acide!');
         }
     }
@@ -984,14 +984,14 @@ function defense(melee) {
     // inflammable
     if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('pyratol') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov') || targetWeap.ammo.includes('laser')) {
         if (selectedBatType.skills.includes('inflammable')) {
-            totalDamage = totalDamage*2;
+            totalDamage = totalDamage*1.5;
             console.log('inflammable!');
         }
     }
     // résistance au feu
     if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('pyratol') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov') || targetWeap.ammo.includes('laser')) {
         if (selectedBatType.skills.includes('resistfeu') || selectedBat.tags.includes('resistfeu')) {
-            totalDamage = Math.round(totalDamage/2);
+            totalDamage = Math.round(totalDamage/1.5);
             console.log('résistance au feu!');
         }
     }
@@ -999,7 +999,7 @@ function defense(melee) {
     if (selectedBatType.skills.includes('resistblast') || selectedBat.tags.includes('resistblast')) {
         if (targetWeap.ammo.includes('bfg') || targetWeap.ammo.includes('nanite') || targetWeap.ammo.includes('suicide') || targetWeap.ammo.includes('mine') || targetWeap.ammo.includes('autodestruction') || targetWeap.ammo.includes('dynamite') || targetWeap.ammo.includes('bombe') || targetWeap.ammo.includes('explosif') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('grenade') || targetWeap.ammo.includes('disco')) {
             if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm')) {
-                totalDamage = Math.round(totalDamage/2);
+                totalDamage = Math.round(totalDamage/1.5);
                 console.log('résistance au blast!');
             }
         }
@@ -1014,7 +1014,7 @@ function defense(melee) {
     // résistance acide
     if (targetWeap.name.includes('acide') || targetWeap.ammo.includes('ruche')) {
         if (selectedBatType.skills.includes('resistacide') || selectedBat.tags.includes('resistacide')) {
-            totalDamage = Math.round(totalDamage/2);
+            totalDamage = Math.round(totalDamage/1.5);
             console.log('résistance acide!');
         }
     }
