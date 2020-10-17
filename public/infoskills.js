@@ -597,8 +597,9 @@ function skillsInfos(bat,batType) {
             }
             apCost = 0;
             let maxNitroPA = bat.ap+1;
+            let nitroPA = Math.round(bat.ap/3*2);
             if (bat.apLeft < maxNitroPA && !bat.tags.includes('nitro')) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+bat.ap+' PA, maximum '+maxNitroPA+' au total" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+nitroPA+' PA, maximum '+maxNitroPA+' au total" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
             } else {
                 skillMessage = "Conditions non requises";
                 if (bat.tags.includes('nitro')) {

@@ -275,9 +275,12 @@ function goDrug(apCost,drug) {
             }
             // nitro instant bonus
             if (drug === 'nitro') {
-                selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap;
+                selectedBat.apLeft = selectedBat.apLeft+Math.round(selectedBat.ap/3*2);
                 if (selectedBat.apLeft >= selectedBat.ap+1) {
                     selectedBat.apLeft = selectedBat.ap+1;
+                }
+                if (selectedBat.apLeft < 1 && !selectedBat.tags.includes('construction')) {
+                    selectedBat.apLeft = 1;
                 }
                 console.log('nitro bonus');
             }

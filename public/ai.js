@@ -1219,10 +1219,10 @@ function fearFactor(myBat,blob) {
 };
 
 function infraDestruction() {
-    if ((selectedBat.apLeft >= 4 && rand.rand(1,2) === 1) || selectedBat.apLeft >= selectedBat.ap-2) {
+    if (selectedBat.apLeft >= 4 && rand.rand(1,2) === 1) {
         let tile = getTile(selectedBat);
         let destroySize = 999;
-        let alienSize = selectedBatType.size;
+        let alienSize = Math.round(selectedBatType.size*selectedBat.squadsLeft/selectedBatType.squads*(selectedBat.apLeft+4)/(selectedBat.ap+4));
         if (selectedBatType.skills.includes('destructeur')) {
             alienSize = alienSize+10;
         }
