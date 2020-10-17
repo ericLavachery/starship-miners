@@ -756,6 +756,7 @@ function weaponAdj(weapon,bat,wn) {
     if (batType.name === 'Ruche') {
         if (colonyTiles.includes(bat.tileId)) {
             thisWeapon.range = thisWeapon.range+5;
+            thisWeapon.power = thisWeapon.power+5;
         }
     }
     // Elevation

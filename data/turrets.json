@@ -216,7 +216,7 @@
             "multi":true,
             "types":["Mine","Derrick","Pompe","Comptoir","Scrap"]
         },
-        "transMaxSize":50,
+        "transMaxSize":65,
         "transUnits":20000,
         "transRes":60000,
         "fuzz":6,
@@ -225,7 +225,7 @@
     {
         "id":106,
         "name":"Crusader",
-        "pic":"crusader",
+        "pic":"croiseur",
         "cat":"vehicles",
         "kind":"zero-vaisseaux",
         "sort":50,
@@ -274,7 +274,7 @@
         "skills":["cible","transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","recupcit","bastion","dumper","routes","vision","gooddef"],
         "mediCost":6,
         "mecanoCost":6,
-        "transMaxSize":50,
+        "transMaxSize":55,
         "transUnits":15000,
         "transRes":15000,
         "fuzz":10,

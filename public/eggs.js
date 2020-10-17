@@ -9,10 +9,17 @@ function checkStartingAliens() {
             alienSpawn(coloBat,'Vomissure');
             alienSpawn(coloBat,'Vomissure');
             alienSpawn(coloBat,'Ruche');
+            dropEgg('Volcan','guard');
+            if (rand.rand(1,2) === 1) {
+                dropEgg('Volcan','guard');
+            }
         }
         if (playerInfos.mapDiff >= 10) {
             alienSpawn(coloBat,'Ruche');
             alienSpawn(coloBat,'Ruche');
+            alienSpawn(coloBat,'Ruche');
+            dropEgg('Volcan','guard');
+            dropEgg('Volcan','guard');
         }
         numRuches = rand.rand(1,2);
         if (playerInfos.mapDiff === 9) {
@@ -415,6 +422,29 @@ function eggDropTile(eggName,theArea) {
             if (theTile < 0) {
                 distance = calcDistance(tile.id,targetTile);
                 if (distance <= 3 || (tile.terrain === 'H' && distance <= 4) || (tile.terrain === 'M' && distance <= 5)) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        theTile = tile.id;
+                    }
+                }
+            }
+        });
+    }
+    // GUARD
+    if (area === 'guard') {
+        let shufAliens = _.shuffle(aliens);
+        shufAliens.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                if (bat.type === 'Colonie') {
+                    targetTile = bat.tileId;
+                }
+            }
+        });
+        let shufZone = _.shuffle(zone);
+        let distance;
+        shufZone.forEach(function(tile) {
+            if (theTile < 0) {
+                distance = calcDistance(tile.id,targetTile);
+                if (distance === 3 || distance === 4) {
                     if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
