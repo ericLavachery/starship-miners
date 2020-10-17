@@ -2233,7 +2233,7 @@
             "cost":1,
             "range":0,
             "noShield":true,
-            "rof":15,
+            "rof":21,
             "accuracy":20,
             "power":8,
             "aoe":"squad",
@@ -3241,7 +3241,7 @@
         "volume":1.2,
         "stealth":0,
         "speed":8,
-        "ap":14,
+        "ap":16,
         "maxSalvo":2,
         "weapon":{
             "name":"Canon laser",
@@ -3282,7 +3282,7 @@
         "volume":1.2,
         "stealth":0,
         "speed":8,
-        "ap":13,
+        "ap":15,
         "maxSalvo":1,
         "weapon":{
             "name":"Autocanon",

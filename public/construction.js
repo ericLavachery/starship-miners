@@ -508,6 +508,9 @@ function putRoad() {
     let tile = getTile(selectedBat);
     let terrain = getTileTerrain(selectedBat.tileId);
     let apCost = Math.round(selectedBatType.mecanoCost*terrain.roadBuild*roadAPCost/30);
+    if (tile.infra != undefined && tile.infra != 'Débris') {
+        apCost = Math.round(apCost/2);
+    }
     console.log('apCost:'+apCost);
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     if (!selectedBat.tags.includes('construction')) {
