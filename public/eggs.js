@@ -718,7 +718,7 @@ function cocoonSpawn(bat) {
                 if (ana > 100) {
                     ana = 100;
                 }
-                let satMin = 24-Math.floor(ana/4)+playerInfos.mapDiff;
+                let satMin = 5-Math.floor(ana/4)+playerInfos.mapDiff+Math.round(playerInfos.mapTurn/4);
                 console.log('satMin: '+satMin);
                 spawnNum = playerInfos.mapDiff+(rand.rand(1,4));
                 if (spawnNum < satMin) {
