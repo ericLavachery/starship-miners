@@ -421,7 +421,7 @@ function turnInfo() {
     centerMap();
     $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
     $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
-    $('#tour').append('Difficulté '+playerInfos.mapAdjDiff+' / '+playerInfos.mapDiff+'<br>');
+    $('#tour').append('Présence Alien <span class="or">'+playerInfos.mapDiff+'</span><br>');
     if (playerInfos.eggPause || playerInfos.bldList.includes('Champ de force')) {
         $('#tour').append('<span class="cy">Pause</span><br>');
     }
@@ -519,7 +519,7 @@ function tagsUpdate(bat) {
     if (bat.tags.includes('nitro')) {
         tagIndex = bat.tags.indexOf('nitro');
         bat.tags.splice(tagIndex,1);
-        tagIndex = bat.tags.indexOf('nitro'); 
+        tagIndex = bat.tags.indexOf('nitro');
         bat.tags.splice(tagIndex,1);
         if (!bat.tags.includes('nitro')) {
             drugDown(bat,false,false);

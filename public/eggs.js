@@ -219,8 +219,16 @@ function eggsDrop() {
     } else {
         numEggs = 1;
     }
-    let eggBonusChance = Math.round(playerInfos.mapTurn*1.5)-110;
+    let eggBonusChance = Math.round(playerInfos.mapTurn*1.5)-75+(playerInfos.mapAdjDiff*3);
     console.log('eggBonusChance='+eggBonusChance);
+    if (eggBonusChance >= 100) {
+        numEggs++;
+        eggBonusChance = eggBonusChance-100;
+    }
+    if (eggBonusChance >= 100) {
+        numEggs++;
+        eggBonusChance = eggBonusChance-100;
+    }
     if (rand.rand(1,100) <= eggBonusChance) {
         numEggs++;
     }
