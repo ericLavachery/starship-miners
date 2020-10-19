@@ -593,31 +593,42 @@ function tagsEffect(bat,batType) {
     }
     // REGENERATION & KIRIN DRUG
     if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal')) {
-        squadHP = batType.squadSize*batType.hp;
-        let batHP = squadHP*batType.squads;
-        if (bat.citoyens >= 1) {
-            batHP = bat.citoyens*batType.hp;
+        let regOK = true;
+        if (batType.cat === 'aliens') {
+            if (batType.skills.includes('reactpoison') && bat.tags.includes('poison')) {
+                regOK = false;
+            }
+            if (batType.skills.includes('reactpoison') && bat.tags.includes('shinda')) {
+                regOK = false;
+            }
         }
-        let regen;
-        if (batType.skills.includes('heal')) {
-            regen = batHP;
-        } else if (batType.skills.includes('fastreg')) {
-            regen = Math.round(batHP/2);
-        } else if (bat.tags.includes('kirin') || batType.skills.includes('regeneration') || bat.tags.includes('regeneration')) {
-            regen = Math.round(batHP*regenPower/100);
-        } else {
-            regen = Math.round(batHP*slowregPower/100);
-        }
-        // console.log('regeneration='+regen);
-        let batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
-        if (batHPLeft > batHP) {
-            batHPLeft = batHP;
-        }
-        bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
-        bat.damage = (bat.squadsLeft*squadHP)-batHPLeft;
-        if (bat.squadsLeft > batType.squads) {
-            bat.squadsLeft = batType.squads;
-            bat.damage = 0;
+        if (regOK) {
+            squadHP = batType.squadSize*batType.hp;
+            let batHP = squadHP*batType.squads;
+            if (bat.citoyens >= 1) {
+                batHP = bat.citoyens*batType.hp;
+            }
+            let regen;
+            if (batType.skills.includes('heal')) {
+                regen = batHP;
+            } else if (batType.skills.includes('fastreg')) {
+                regen = Math.round(batHP/2);
+            } else if (bat.tags.includes('kirin') || batType.skills.includes('regeneration') || bat.tags.includes('regeneration')) {
+                regen = Math.round(batHP*regenPower/100);
+            } else {
+                regen = Math.round(batHP*slowregPower/100);
+            }
+            // console.log('regeneration='+regen);
+            let batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
+            if (batHPLeft > batHP) {
+                batHPLeft = batHP;
+            }
+            bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
+            bat.damage = (bat.squadsLeft*squadHP)-batHPLeft;
+            if (bat.squadsLeft > batType.squads) {
+                bat.squadsLeft = batType.squads;
+                bat.damage = 0;
+            }
         }
     }
     // MALADIE

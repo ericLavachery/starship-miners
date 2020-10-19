@@ -166,7 +166,14 @@ function checkEggsDrop() {
         playMusic('newEgg',false);
         if (Math.floor(playerInfos.mapTurn/25) > playerInfos.cocons) {
             dropEgg('Cocon','target');
-            if (playerInfos.mapTurn >= 100 && playerInfos.mapDiff >= 10) {
+            let doubleCocon = playerInfos.mapTurn+((playerInfos.mapDiff-1)*7);
+            if (doubleCocon >= 50) {
+                dropEgg('Oeuf','any');
+            }
+            if (doubleCocon >= 100) {
+                dropEgg('Cocon','nedge');
+            }
+            if (doubleCocon >= 200) {
                 dropEgg('Cocon','nedge');
             }
             playerInfos.cocons = playerInfos.cocons+1;
@@ -174,8 +181,23 @@ function checkEggsDrop() {
     } else {
         playMusic('noEgg',false);
     }
-    if (playerInfos.mapTurn % 25 === 0 && playerInfos.mapTurn > 1 && rand.rand(1,100) <= Math.round(playerInfos.fuzzTotal*playerInfos.fuzzTotal/1000)) {
-        dropEgg('Ruche','edge');
+    if (playerInfos.mapTurn % 25 === 0 && playerInfos.mapTurn > 1) {
+        let rucheBord = Math.round(playerInfos.fuzzTotal*playerInfos.fuzzTotal/1000);
+        if (rucheBord >= 200) {
+            dropEgg('Ruche','edge');
+            rucheBord = rucheBord-200;
+        }
+        if (rucheBord >= 200 && playerInfos.mapTurn >= 50) {
+            dropEgg('Ruche','edge');
+            rucheBord = rucheBord-200;
+        }
+        if (rucheBord >= 200 && playerInfos.mapTurn >= 75) {
+            dropEgg('Ruche','edge');
+            rucheBord = rucheBord-200;
+        }
+        if (rand.rand(1,100) <= rucheBord) {
+            dropEgg('Ruche','edge');
+        }
     }
 };
 
