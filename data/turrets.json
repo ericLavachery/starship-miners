@@ -517,7 +517,7 @@
             "power":14,
             "armors":0.3,
             "aoe":"brochette",
-            "sound":"firemg_sa",
+            "sound":"firemg_heavy_sa",
             "ammo":["fireshells","fireshells-pyratol","fireshells-nanite"]
         },
         "protection":["aucun","dunium","bonibo","adamantite"],
