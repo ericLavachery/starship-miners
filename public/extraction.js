@@ -184,6 +184,9 @@ function getResMiningRate(bat,ressource,value,fullRate) {
     if (resHere < minResForRate) {
         resHere = minResForRate;
     }
+    if (resHere > maxResForRate) {
+        resHere = maxResForRate;
+    }
     let batRate = getMiningRate(bat,fullRate);
     let multiExtractAdj = 1;
     if (bat.extracted.length >= 2) {

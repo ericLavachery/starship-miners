@@ -43,6 +43,7 @@ let resFoundDiv = 9; // default 9
 let resBatchDiv = 12;
 let permaRes = false;
 let minResForRate = 100;
+let maxResForRate = 350;
 let ruinRarity = 8;
 let ruinsCitBase = 75; // def 50
 let ruinsBugBase = 50; // def 50
@@ -117,7 +118,6 @@ let foggersTiles = [];
 let foggedTiles = [];
 let startLander = 5;
 // ALIENS
-let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;
 let isFFW = false;
 let pointDeMire = 1830; // tileId
 let possibleMoves = []; // list of tile ids
@@ -153,8 +153,9 @@ let conselCat;
 let conselTriche;
 // INVASION
 let maxAliens = 250;
-let cumDrop = 12; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
-let dropMod = 2.5; //
+let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;
+let cumDrop = 7; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
+let dropMod = 3; //
 let eggLifeStart = 12; //
 let eggLifeFactor = 0.7; //
 let coqLifeStart = 6; //

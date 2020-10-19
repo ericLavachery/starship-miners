@@ -104,7 +104,6 @@ function calcEggPause(noMax) {
             eggPauseMax = 50;
         }
     }
-
     console.log('EGG PAUSE DICE = '+eggPauseDice);
     return eggPauseDice;
 };
@@ -120,8 +119,12 @@ function checkEggsDrop() {
         adjMapTurn = 0;
         adjMapDrop = 0;
     }
+    console.log('EGGS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+    console.log('mapDrop'+playerInfos.mapDrop);
+    console.log('adjMapDrop'+adjMapDrop);
     let dropTurn = Math.floor(((adjMapDrop*cumDrop)+adjMapTurn)/(cumDrop+1));
-    console.log(playerInfos.mapAdjDiff);
+    console.log('mapAdjDiff'+playerInfos.mapAdjDiff);
+    console.log('dropTurn'+dropTurn);
     let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapAdjDiff)*dropMod);
     if (dropChance < 0) {
         dropChance = 0;
@@ -241,18 +244,32 @@ function eggsDrop() {
     } else {
         numEggs = 1;
     }
-    let eggBonusChance = Math.round(playerInfos.mapTurn*1.5)-75+(playerInfos.mapAdjDiff*3);
-    console.log('eggBonusChance='+eggBonusChance);
-    if (eggBonusChance >= 100) {
-        numEggs++;
-        eggBonusChance = eggBonusChance-100;
-    }
-    if (eggBonusChance >= 100) {
-        numEggs++;
-        eggBonusChance = eggBonusChance-100;
-    }
-    if (rand.rand(1,100) <= eggBonusChance) {
-        numEggs++;
+    if (numEggs >= 1) {
+        let eggBonusChance = Math.round(playerInfos.mapTurn*2.5)-50+(playerInfos.mapAdjDiff*5);
+        console.log('eggBonusChance='+eggBonusChance);
+        if (eggBonusChance >= 100) {
+            numEggs++;
+            eggBonusChance = eggBonusChance-100;
+        }
+        if (eggBonusChance >= 100) {
+            numEggs++;
+            eggBonusChance = eggBonusChance-100;
+        }
+        if (eggBonusChance >= 100) {
+            numEggs++;
+            eggBonusChance = eggBonusChance-100;
+        }
+        if (eggBonusChance >= 100) {
+            numEggs++;
+            eggBonusChance = eggBonusChance-100;
+        }
+        if (eggBonusChance >= 100) {
+            numEggs++;
+            eggBonusChance = eggBonusChance-100;
+        }
+        if (rand.rand(1,100) <= eggBonusChance) {
+            numEggs++;
+        }
     }
     console.log('eggDice='+eggDice);
     if (numEggs >= 1) {
