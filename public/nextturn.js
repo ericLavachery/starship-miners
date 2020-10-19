@@ -890,6 +890,9 @@ function nextBat(removeActiveBat,removeForever) {
     if (rand.rand(1,musicChance) === 1) {
         playMusic('any',false);
     }
+    if (showMini) {
+        unitsView();
+    }
     selectMode();
     batUnstack();
     deleteMoveInfos();

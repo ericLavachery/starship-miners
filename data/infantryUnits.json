@@ -58,15 +58,14 @@
         "ap":14,
         "maxSalvo":1,
         "weapon":{
-            "name":"Pétoire",
-            "cost":4,
+            "name":"Calibre",
+            "cost":3,
             "range":1,
             "rof":4,
-            "accuracy":16,
-            "power":6,
-            "armors":1.2,
+            "accuracy":19,
+            "power":7,
             "aoe":"unit",
-            "sound":"calibre_bad_x2",
+            "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "weapon2":{
@@ -109,15 +108,14 @@
         "ap":14,
         "maxSalvo":1,
         "weapon":{
-            "name":"Pétoire",
-            "cost":4,
+            "name":"Calibre",
+            "cost":3,
             "range":1,
             "rof":4,
-            "accuracy":16,
-            "power":6,
-            "armors":1.2,
+            "accuracy":19,
+            "power":7,
             "aoe":"unit",
-            "sound":"calibre_bad_x2",
+            "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "weapon2":{
@@ -1545,15 +1543,14 @@
         "ap":12,
         "maxSalvo":1,
         "weapon":{
-            "name":"Pétoire",
-            "cost":4,
+            "name":"Calibre",
+            "cost":3,
             "range":1,
             "rof":6,
-            "accuracy":16,
-            "power":6,
-            "armors":1.2,
+            "accuracy":19,
+            "power":7,
             "aoe":"unit",
-            "sound":"calibre_bad_x2",
+            "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "weapon2":{
