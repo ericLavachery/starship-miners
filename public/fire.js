@@ -1028,7 +1028,7 @@ function defense(melee) {
     // resistance dégâts
     if (selectedBatType.skills.includes('resistall')) {
         if (!targetWeap.ammo.includes('gaz')) {
-            totalDamage = Math.round(totalDamage/2);
+            totalDamage = Math.round(totalDamage*10/(15+((playerInfos.mapDiff-1)*2.78)));
             console.log('résistance dégâts!');
         }
     }

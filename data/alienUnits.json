@@ -1888,7 +1888,7 @@
         "squads":6,
         "squadSize":1,
         "crew":1,
-        "hp":1500,
+        "hp":1000,
         "armor":0,
         "size":100,
         "speed":-8,
@@ -1975,7 +1975,7 @@
         "squads":6,
         "squadSize":1,
         "crew":1,
-        "hp":1500,
+        "hp":1000,
         "armor":0,
         "size":100,
         "speed":-8,
@@ -2161,7 +2161,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","inflammable","noaploss","nolaser","baddef","minaccu"],
+        "skills":["ponte","inflammable","noaploss","nolaser","baddef","minaccu","resistall"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":5,"Creatite":9,"Slime":31}
     },
@@ -2272,7 +2272,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["slowreg","resistfeu","reactpoison","nolaser","baddef"],
+        "skills":["slowreg","resistfeu","reactpoison","nolaser","baddef","resistall"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":12,"Mendium":15,"Pyrus":26}
     }
