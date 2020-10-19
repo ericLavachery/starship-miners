@@ -3262,7 +3262,7 @@
             "rof":48,
             "accuracy":14,
             "power":7,
-            "armors":0.35,
+            "armors":0.6,
             "aoe":"brochette",
             "sound":"firemg",
             "ammo":["fireshells","fireshells-pyratol","fireshells-nanite"],
@@ -3277,7 +3277,7 @@
             "rof":16,
             "accuracy":22,
             "power":7,
-            "armors":0.35,
+            "armors":0.6,
             "aoe":"brochette",
             "sound":"firemg_sa",
             "ammo":["fireshells","fireshells-pyratol","fireshells-nanite"]
