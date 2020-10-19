@@ -516,6 +516,13 @@ function attack(melee) {
             console.log('résistance au gaz!');
         }
     }
+    // sensibilité poison (gaz)
+    if (targetBatType.skills.includes('reactpoison') || targetBatType.tags.includes('reactpoison')) {
+        if (selectedWeap.ammo.includes('gaz')) {
+            totalDamage = Math.round(totalDamage*2);
+            console.log('sensibilité au gaz!');
+        }
+    }
     // résistance acide
     if (selectedWeap.name.includes('acide') || selectedWeap.ammo.includes('ruche')) {
         if (targetBatType.skills.includes('resistacide') || targetBat.tags.includes('resistacide')) {
@@ -525,10 +532,8 @@ function attack(melee) {
     }
     // resistance dégâts
     if (targetBatType.skills.includes('resistall')) {
-        if (!selectedWeap.ammo.includes('gaz')) {
-            totalDamage = Math.round(totalDamage*10/(15+((playerInfos.mapDiff-1)*2.78)));
-            console.log('résistance dégâts!');
-        }
+        totalDamage = Math.round(totalDamage*10/(15+((playerInfos.mapDiff-1)*2.78)));
+        console.log('résistance dégâts!');
     }
     // munitions limitées
     console.log('maxAmmo'+selectedWeap.maxAmmo);
@@ -1018,6 +1023,13 @@ function defense(melee) {
             console.log('résistance au gaz!');
         }
     }
+    // sensibilité poison (gaz)
+    if (selectedBatType.skills.includes('reactpoison') || selectedBat.tags.includes('reactpoison')) {
+        if (targetWeap.ammo.includes('gaz')) {
+            totalDamage = Math.round(totalDamage*2);
+            console.log('sensibilité au gaz!');
+        }
+    }
     // résistance acide
     if (targetWeap.name.includes('acide') || targetWeap.ammo.includes('ruche')) {
         if (selectedBatType.skills.includes('resistacide') || selectedBat.tags.includes('resistacide')) {
@@ -1027,10 +1039,8 @@ function defense(melee) {
     }
     // resistance dégâts
     if (selectedBatType.skills.includes('resistall')) {
-        if (!targetWeap.ammo.includes('gaz')) {
-            totalDamage = Math.round(totalDamage*10/(15+((playerInfos.mapDiff-1)*2.78)));
-            console.log('résistance dégâts!');
-        }
+        totalDamage = Math.round(totalDamage*10/(15+((playerInfos.mapDiff-1)*2.78)));
+        console.log('résistance dégâts!');
     }
     // AP DAMAGE!
     if (targetWeap.apdamage > 0) {
