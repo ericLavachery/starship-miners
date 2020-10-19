@@ -523,6 +523,13 @@ function attack(melee) {
             console.log('résistance acide!');
         }
     }
+    // resistance dégâts
+    if (targetBatType.skills.includes('resistall')) {
+        if (!selectedWeap.ammo.includes('gaz')) {
+            totalDamage = Math.round(totalDamage/2);
+            console.log('résistance dégâts!');
+        }
+    }
     // munitions limitées
     console.log('maxAmmo'+selectedWeap.maxAmmo);
     ammoFired(selectedBat.id);
@@ -1016,6 +1023,13 @@ function defense(melee) {
         if (selectedBatType.skills.includes('resistacide') || selectedBat.tags.includes('resistacide')) {
             totalDamage = Math.round(totalDamage/1.5);
             console.log('résistance acide!');
+        }
+    }
+    // resistance dégâts
+    if (selectedBatType.skills.includes('resistall')) {
+        if (!targetWeap.ammo.includes('gaz')) {
+            totalDamage = Math.round(totalDamage/2);
+            console.log('résistance dégâts!');
         }
     }
     // AP DAMAGE!
