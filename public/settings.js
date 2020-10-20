@@ -92,7 +92,7 @@ let stopMe = false;
 let nextTurnOK = false;
 let toHit = 999;
 let coverAOE = 3;
-let escapeValue = 1.75;
+let escapeValue = 1.45;
 let escaped = false;
 let activeTurn = 'player';
 let minPrec = 3 // minimum de précision (même après ajustements)
@@ -164,7 +164,7 @@ let noEggs = 15; // % pour un eggDrop sans oeufs
 let eggPause = false;
 let pauseCount = 15; // pause tous les 15 oeufs tués
 let eggPauseBase = -15;
-let eggPauseMin = 4; // 1 chance sur 12: fin de pause (+compte des oeufs)
+let eggPauseMin = 7; // 1 chance sur 12: fin de pause (+compte des oeufs)
 let eggPauseMax = 20;
 let eggDropCount = 0;
 // SOUNDS

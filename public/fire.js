@@ -517,7 +517,7 @@ function attack(melee) {
         }
     }
     // sensibilité poison (gaz)
-    if (targetBatType.skills.includes('reactpoison') || targetBatType.tags.includes('reactpoison')) {
+    if (targetBatType.skills.includes('reactpoison') || targetBat.tags.includes('reactpoison')) {
         if (selectedWeap.ammo.includes('gaz')) {
             totalDamage = Math.round(totalDamage*2);
             console.log('sensibilité au gaz!');

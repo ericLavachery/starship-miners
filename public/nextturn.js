@@ -383,11 +383,12 @@ function turnInfo() {
     });
     eggsNum = numberOfEggs;
     aliensNum = numberOfAliens;
-    if (realNumberOfEggs >= 10) {
+    let maxEggsForPause = 8+playerInfos.mapDiff;
+    if (realNumberOfEggs >= maxEggsForPause) {
         playerInfos.eggPause = true;
         console.log('PAUSE! 10+ eggs');
         if (playerInfos.pseudo === 'Bob') {
-            warning('Nouvelle pause','10 oeufs ou plus en jeu.');
+            warning('Nouvelle pause',maxEggsForPause+' oeufs ou plus en jeu.');
         }
     }
     let fuzzTotal = 0;

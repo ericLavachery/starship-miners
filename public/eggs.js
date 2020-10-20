@@ -76,6 +76,7 @@ function getColonyTiles() {
 
 function calcEggPause(noMax) {
     let eggPauseDice = eggPauseBase;
+    let eggPauseMinimum = eggPauseMin-Math.floor(playerInfos.mapDiff/2);
     eggPauseDice = eggPauseDice+Math.round(Math.sqrt(aliens.length)*2);
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -89,11 +90,11 @@ function calcEggPause(noMax) {
         }
     });
     eggPauseDice = Math.floor(eggPauseDice);
-    if (eggPauseDice < eggPauseMin) {
-        eggPauseDice = eggPauseMin;
+    if (eggPauseDice < eggPauseMinimum) {
+        eggPauseDice = eggPauseMinimum;
     }
     if (playerInfos.mapDiff >= 10) {
-        eggPauseDice = eggPauseMin;
+        eggPauseDice = eggPauseMinimum;
     }
     if (!noMax) {
         if (eggPauseDice > eggPauseMax) {
@@ -101,7 +102,7 @@ function calcEggPause(noMax) {
         }
     } else {
         if (eggPauseDice > 50) {
-            eggPauseMax = 50;
+            eggPauseDice = 50;
         }
     }
     console.log('EGG PAUSE DICE = '+eggPauseDice);
