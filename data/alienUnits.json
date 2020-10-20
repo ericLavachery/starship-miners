@@ -1902,7 +1902,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","inflammable","resistall"],
+        "skills":["ponte","inflammable","resistall","noaploss"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Creatite":18}
     },
@@ -1931,7 +1931,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["inflammable"],
+        "skills":["inflammable","noaploss"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Creatite":3}
     },
@@ -1960,7 +1960,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["inflammable"],
+        "skills":["inflammable","noaploss"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Bugium":2,"Creatite":2,"Bossium":2}
     },
@@ -1989,7 +1989,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","inflammable","resistall"],
+        "skills":["ponte","inflammable","resistall","noaploss"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Creatite":18,"Blendium":60}
     },
@@ -2018,7 +2018,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","regeneration","reactpoison","resistall"],
+        "skills":["ponte","regeneration","reactpoison","resistall","noaploss"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Bugium":36,"Mendium":30,"Creatite":12}
     },
@@ -2047,7 +2047,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","regeneration","shield","resistall"],
+        "skills":["ponte","regeneration","shield","resistall","noaploss"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Bugium":45,"Mendium":30,"Creatite":12,"Egidium":53}
     },
@@ -2104,7 +2104,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["hide","resistall"],
+        "skills":["hide","resistall","noaploss"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":2,"Blendium":9,"Slime":11}
     },
@@ -2272,7 +2272,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["slowreg","resistfeu","reactpoison","nolaser","baddef","resistall"],
+        "skills":["slowreg","resistfeu","reactpoison","nolaser","baddef","resistall","noaploss"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":12,"Mendium":15,"Pyrus":26}
     }
