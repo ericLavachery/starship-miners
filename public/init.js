@@ -82,6 +82,7 @@ socket.on('savedMap-Load', function(sm) {
     getColonyTiles();
     checkUndark();
     turnInfo();
+    getMapInfos();
     commandes();
     checkVisibleAliens();
     alienBonus();

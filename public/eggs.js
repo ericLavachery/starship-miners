@@ -1010,7 +1010,7 @@ function checkputEggKind(bat) {
         return 'swarm';
     } else {
         let terName = getTileTerrainName(bat.tileId);
-        if (terName === 'M' || terName === 'C') {
+        if (terName === 'M' || terName === 'H') {
             bat.tags.push('bug');
             return 'bug';
         } else if (terName === 'F') {
@@ -1023,24 +1023,9 @@ function checkputEggKind(bat) {
             bat.tags.push('swarm');
             return 'swarm';
         } else if (terName === 'P') {
-            dice = rand.rand(1,4);
-            if (dice === 1) {
-                return '';
-            } else if (dice === 2) {
-                bat.tags.push('swarm');
-                return 'swarm';
-            } else {
-                bat.tags.push('bug');
-                return 'bug';
-            }
+            return zoneInfos.pKind;
         } else if (terName === 'G') {
-            dice = rand.rand(1,2);
-            if (dice === 1) {
-                return '';
-            } else {
-                bat.tags.push('spider');
-                return 'spider';
-            }
+            return zoneInfos.gKind;
         } else {
             return '';
         }

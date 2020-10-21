@@ -2163,7 +2163,7 @@
             "aoe":"squad",
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":6,
+            "maxAmmo":8,
             "ravitBld":"Armurerie"
         },
         "moveCost":2,
@@ -2738,7 +2738,7 @@
             "aoe":"squad",
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":12,
+            "maxAmmo":16,
             "ravitBld":"Armurerie"
         },
         "moveCost":3,
@@ -3709,7 +3709,7 @@
             "aoe":"squad",
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyratol"],
-            "maxAmmo":12,
+            "maxAmmo":16,
             "ravitBld":"Atelier"
         },
         "moveCost":3,
@@ -4022,7 +4022,7 @@
             "aoe":"squad",
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":12,
+            "maxAmmo":24,
             "ravitBld":"Armurerie"
         },
         "protection":["aucune"],
@@ -4182,7 +4182,7 @@
             "aoe":"squad",
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium"],
-            "maxAmmo":12,
+            "maxAmmo":16,
             "ravitBld":"Armurerie"
         },
         "protection":["aucun"],

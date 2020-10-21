@@ -152,6 +152,7 @@ let conselAmmos = ['xxx','xxx','xxx'];
 let conselCat;
 let conselTriche;
 // INVASION
+let zoneInfos = {};
 let maxAliens = 250;
 let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;
 let cumDrop = 7; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)

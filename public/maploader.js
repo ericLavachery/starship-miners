@@ -1,3 +1,15 @@
+function getMapInfos() {
+    if (zone[0].pKind === undefined) {
+        zone[0].pKind = checkMapKind('P');
+    }
+    if (zone[0].gKind === undefined) {
+        zone[0].gKind = checkMapKind('G');
+    }
+    zoneInfos.pKind = zone[0].pKind;
+    zoneInfos.gKind = zone[0].gKind;
+    console.log('pKind='+zoneInfos.pKind+' gKind='+zoneInfos.gKind);
+};
+
 // Dessine la carte
 function showMap(wmap,justMoved) {
     // reset

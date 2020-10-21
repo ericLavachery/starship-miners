@@ -13,6 +13,29 @@ function generateNewMap() {
     // function saveMap();
 };
 
+function checkMapKind(terName) {
+    let dice = rand.rand(1,12);
+    if (terName === 'P') {
+        if (dice <= 7) {
+            return 'bug';
+        } else if (dice <= 8) {
+            return 'spider';
+        } else {
+            return 'swarm';
+        }
+    } else if (terName === 'G') {
+        if (dice <= 2) {
+            return 'bug';
+        } else if (dice <= 5) {
+            return 'larve';
+        } else if (dice <= 9) {
+            return 'spider';
+        } else {
+            return 'swarm';
+        }
+    }
+};
+
 function createMap(size) {
     let newTile = {};
     let i = 0;
@@ -25,6 +48,10 @@ function createMap(size) {
     while (i < size*size) {
         newTile = {};
         newTile.id = i;
+        if (newTile.id === 0) {
+            newTile.pKind = checkMapKind('P');
+            newTile.gKind = checkMapKind('G');
+        }
         newTile.x = x;
         newTile.y = y;
         newTile.terrain = nextTile(i,size);
