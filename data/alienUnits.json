@@ -1195,7 +1195,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["grip","venin","tail","ponte","minaccu","fear","resistpoison","resistblast","resistfeu","destructeur"],
+        "skills":["grip","venin","tail","ponte","minaccu","fear","resistpoison","resistblast","resistfeu","destructeur","ricochet"],
         "deathFx":"185366__anwul__monster",
         "spawnFx":"82082__rmw2861__1000000009_Androks",
         "fxPriority":4,
