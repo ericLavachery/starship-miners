@@ -25,7 +25,7 @@
         "maxVeg":-1,
         "skills":["mecano","selfrepair","meleehelp","recupcit","transport","routes","dealer","nitro"],
         "mecanoCost":3,
-        "maxSkill":24,
+        "maxDrug":24,
         "transMaxSize":9,
         "transUnits":1500,
         "refabTime":90,
@@ -421,7 +421,7 @@
         "mediCost":5,
         "transMaxSize":9,
         "transUnits":1500,
-        "maxSkill":60,
+        "maxDrug":60,
         "refabTime":18,
         "fuzz":2,
         "deathFx":"S_Explosion02"

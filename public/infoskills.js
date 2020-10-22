@@ -10,7 +10,7 @@ function skillsInfos(bat,batType) {
     console.log('inMelee='+inMelee);
     // RAVITAILLEMENT DROGUES
     let anyRavit = checkRavitDrug(bat);
-    if (anyRavit && bat.tags.includes('skillUsed') && batType.skills.includes('dealer')) {
+    if (anyRavit && bat.tags.includes('dU') && batType.skills.includes('dealer')) {
         let apCost = Math.round(bat.ap/3);
         if (bat.apLeft >= 2) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de drogues" class="boutonGris skillButtons" onclick="goRavitDrug('+apCost+')"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp;  Approvisionnement</h4></span>');
@@ -21,10 +21,11 @@ function skillsInfos(bat,batType) {
     }
     // RAVITAILLEMENT
     anyRavit = checkRavit(bat);
-    if (anyRavit && bat.tags.includes('ammoUsed')) {
-        let apCost = Math.round(bat.ap*1.5);
+    if (anyRavit && bat.tags.includes('aU')) {
+        let ravitVolume = calcRavitVolume(bat);
+        let apCost = Math.round(Math.sqrt(ravitVolume[1])*bat.ap/3);
         if (bat.apLeft >= 4) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de munitions" class="boutonGris skillButtons" onclick="goRavit('+apCost+')"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ravitaillement</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de munitions" class="boutonGris skillButtons" onclick="goRavit()"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ravitaillement</h4></span>');
         } else {
             skillMessage = "Pas assez de PA";
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ravitaillement</h4></span>');
@@ -32,7 +33,7 @@ function skillsInfos(bat,batType) {
     }
     // STOCKS
     let anyStock = checkStock(bat);
-    if (anyStock && bat.tags.includes('skillUsed') && !batType.skills.includes('dealer')) {
+    if (anyStock && bat.tags.includes('sU')) {
         let apCost = Math.round(bat.ap*1.5);
         if (bat.apLeft >= 4) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de ravitaillements" class="boutonGris skillButtons" onclick="goStock('+apCost+')"><i class="fas fa-cubes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réapprovisionnement</h4></span>');

@@ -332,7 +332,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","medic","dealer","starka","kirin","octiron","maycamo"],
         "mediCost":5,
-        "maxSkill":18,
+        "maxDrug":18,
         "fuzz":0,
         "deathFx":"human3"
     },
@@ -373,7 +373,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","medic","maycamo","dealer","starka","octiron"],
         "mediCost":8,
-        "maxSkill":12,
+        "maxDrug":12,
         "fuzz":0,
         "deathFx":"human3"
     },
@@ -427,7 +427,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","cible","medic","dealer","starka","octiron"],
         "mediCost":8,
-        "maxSkill":12,
+        "maxDrug":12,
         "fuzz":0,
         "deathFx":"human1"
     },
@@ -483,7 +483,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","cible","medic","dealer","starka","kirin","octiron","prayer","survivor","luckyshot"],
         "mediCost":7,
-        "maxSkill":18,
+        "maxDrug":18,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -587,7 +587,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","cible","ranger","maycamo","guerrilla","selfbadmedic","dealer","octiron"],
         "mediCost":6,
-        "maxSkill":6,
+        "maxDrug":6,
         "fuzz":0,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -641,7 +641,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","cible","ranger","camo","embuscade","baddef","selfbadmedic","dealer","octiron"],
         "mediCost":9,
-        "maxSkill":6,
+        "maxDrug":6,
         "fuzz":-1,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -1748,7 +1748,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","cible","undead","badmedic","dealer","bliss","sila","blaze","kirin","octiron","skupiac","starka","camo"],
         "mediCost":6,
-        "maxSkill":36,
+        "maxDrug":36,
         "fuzz":1,
         "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
@@ -1854,7 +1854,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","cible","medic","camo","dealer","kirin","octiron","sila","starka","ranger"],
         "mediCost":8,
-        "maxSkill":18,
+        "maxDrug":18,
         "fuzz":-1,
         "deathFx":"human1"
     },
@@ -2170,11 +2170,10 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","baddef","badmecano","badmedic","moto","dealer","octiron","dealer","nitro"],
+        "skills":["fouille","fortif","cible","baddef","badmecano","badmedic","moto","dealer","octiron","nitro"],
         "mediCost":7,
         "mecanoCost":7,
-        "maxSkill":12,
-        "maxSkill":6,
+        "maxDrug":12,
         "fuzz":1.5,
         "deathFx":"human2"
     },
@@ -2228,7 +2227,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","cible","camo","medic","fly","jetpack","longshot","inflammable","dealer","starka","kirin","octiron"],
         "mediCost":5,
-        "maxSkill":18,
+        "maxDrug":18,
         "fuzz":-1,
         "deathFx":"human2"
     },
@@ -3349,7 +3348,7 @@
         "skills":["fouille","fortif","cible","mecano","selfmedic","cyber","dealer","nitro","oknitro"],
         "mecanoCost":4,
         "mediCost":8,
-        "maxSkill":16,
+        "maxDrug":16,
         "fuzz":1,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
     },
@@ -3873,7 +3872,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","cible","camo","guerrilla","badmedic","embuscade","baddef","dealer","octiron"],
         "mediCost":8,
-        "maxSkill":6,
+        "maxDrug":6,
         "fuzz":-1,
         "deathFx":"human2"
     },

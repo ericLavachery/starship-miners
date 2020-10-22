@@ -561,7 +561,7 @@ function attack(melee) {
     console.log('maxAmmo'+selectedWeap.maxAmmo);
     ammoFired(selectedBat.id);
     if (selectedWeap.maxAmmo < 99) {
-        selectedBat.tags.push('ammoUsed');
+        selectedBat.tags.push('aU');
     }
     if (selectedWeap.noBis) {
         selectedBat.tags.push('noBis'+selectedWeap.num);
@@ -1131,7 +1131,7 @@ function defense(melee) {
     console.log('maxAmmo'+targetWeap.maxAmmo);
     ammoFired(targetBat.id);
     if (targetWeap.maxAmmo < 99) {
-        targetBat.tags.push('ammoUsed');
+        targetBat.tags.push('aU');
     }
     console.log('Damage : '+totalDamage);
     $('#report').append('<span class="report">('+totalDamage+')<br></span>');

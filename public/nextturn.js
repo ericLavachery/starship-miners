@@ -215,7 +215,7 @@ function nextTurnEnd() {
             levelUp(bat);
             // Motorised noStuck
             noStuck = false;
-            if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !bat.tags.includes('action') && bat.apLeft < 0 && !bat.tags.includes('construction') && bat.oldTileId === bat.tileId) {
+            if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !bat.tags.includes('action') && bat.apLeft < 0 && !bat.tags.includes('ravit') && !bat.tags.includes('construction') && bat.oldTileId === bat.tileId) {
                 if (batType.skills.includes('guerrilla')) {
                     if (bat.apLeft <= -12) {
                         noStuck = true;
@@ -444,6 +444,7 @@ function tagsUpdate(bat) {
     tagDelete(bat,'action');
     if (bat.apLeft >= 0) {
         tagDelete(bat,'construction');
+        tagDelete(bat,'ravit');
     }
     if (!bat.tags.includes('prayer') && rand.rand(1,4) === 1) {
         tagDelete(bat,'spirit');

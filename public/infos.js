@@ -212,9 +212,9 @@ function batInfos(bat,pop) {
         }
     }
     if (batType.skills.includes('dealer')) {
-        let ravitNum = calcRavit(bat);
+        let ravitNum = calcRavitDrug(bat);
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
-        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Drogues</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxSkill+'</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Drogues</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxDrug+'</span><br>');
     }
     if (batType.skills.includes('landmine') || batType.skills.includes('dynamite')) {
         let ravitNum = calcRavit(bat);

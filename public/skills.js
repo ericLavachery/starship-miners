@@ -226,7 +226,7 @@ function goDrug(apCost,drug) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             if (batType.skills.includes('dealer') && batType.skills.includes(drug)) {
-                ravitLeft = calcRavit(bat);
+                ravitLeft = calcRavitDrug(bat);
                 if (calcDistance(selectedBat.tileId,bat.tileId) <= 1 && ravitLeft >= 1) {
                     if (biggestRavit < ravitLeft) {
                         biggestRavit = ravitLeft;
@@ -240,10 +240,10 @@ function goDrug(apCost,drug) {
     if (Object.keys(ravitBat).length >= 1) {
         if (biggestRavit < 999) {
             if (ravitBat.id == selectedBat.id) {
-                selectedBat.tags.push('skillUsed');
+                selectedBat.tags.push('dU');
                 console.log('sel');
             } else {
-                ravitBat.tags.push('skillUsed');
+                ravitBat.tags.push('dU');
                 if (rand.rand(1,2) === 1) {
                     ravitBat.xp = ravitBat.xp+1;
                 }
@@ -298,7 +298,7 @@ function checkDrugs(myBat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             if (batType.skills.includes('dealer')) {
-                if (calcDistance(myBat.tileId,bat.tileId) <= 1 && calcRavit(bat) >= 1) {
+                if (calcDistance(myBat.tileId,bat.tileId) <= 1 && calcRavitDrug(bat) >= 1) {
                     if (batType.skills.includes('bliss') && playerInfos.drugs.includes('Bliss')) {
                         allDrugs.push('bliss');
                     }
@@ -375,7 +375,7 @@ function dropStuff(apCost,mineType) {
     }
     conselUnit = unitTypes[unitIndex];
     conselAmmos = ['xxx','xxx','xxx'];
-    selectedBat.tags.push('skillUsed');
+    selectedBat.tags.push('sU');
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     selectedBat.salvoLeft = 0;
     tagAction();

@@ -498,6 +498,7 @@
             "name":"Lance-flammes",
             "cost":6,
             "range":0,
+            "elevation":1,
             "rof":12,
             "accuracy":22,
             "power":12,

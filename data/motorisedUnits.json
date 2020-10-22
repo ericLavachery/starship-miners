@@ -314,7 +314,7 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":24,
+            "maxAmmo":28,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
@@ -428,6 +428,7 @@
         "skills":["fortif","cible","mecano","maycamo","longshot","ravitaillement","defense","dealer","nitro"],
         "mecanoCost":5,
         "maxSkill":32,
+        "maxDrug":6,
         "fuzz":3,
         "deathFx":"planeexploair1"
     },
@@ -655,7 +656,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","mecano","transport","fret","maycamo","defense","longshot","dumper","dealer","nitro"],
         "mecanoCost":7,
-        "maxSkill":12,
+        "maxDrug":12,
         "transMaxSize":9,
         "transUnits":350,
         "transRes":450,
@@ -810,7 +811,7 @@
         "skills":["cible","transport","fret","medic","selfbadmecano","dealer","kirin","octiron","starka"],
         "mediCost":3,
         "mecanoCost":20,
-        "maxSkill":36,
+        "maxDrug":36,
         "transMaxSize":4,
         "transUnits":220,
         "transRes":90,
@@ -1365,7 +1366,7 @@
         "mecanoCost":14,
         "transMaxSize":9,
         "transUnits":380,
-        "maxSkill":60,
+        "maxDrug":60,
         "fuzz":1,
         "deathFx":"planeexploair1"
     },
@@ -1421,7 +1422,7 @@
         "maxVeg":2,
         "skills":["cible","selfbadmecano","ranger","dealer","nitro"],
         "mecanoCost":15,
-        "maxSkill":12,
+        "maxDrug":12,
         "fuzz":2.5,
         "deathFx":"S_CarExplosion02"
     },
@@ -2249,7 +2250,7 @@
         "maxVeg":3,
         "skills":["noguet","cible","fly","transport","longshot","medic","dealer","starka","kirin","octiron","baddef","guerrilla"],
         "mediCost":6,
-        "maxSkill":16,
+        "maxDrug":16,
         "transMaxSize":9,
         "transUnits":600,
         "fuzz":2.5,
@@ -2281,7 +2282,7 @@
         "maxVeg":3,
         "skills":["noguet","cible","fly","transport","fret","longshot","medic","dumper","dealer","starka","kirin","octiron"],
         "mediCost":5,
-        "maxSkill":24,
+        "maxDrug":24,
         "transMaxSize":18,
         "transUnits":1200,
         "transRes":800,
@@ -2326,7 +2327,7 @@
         "maxVeg":3,
         "skills":["noguet","cible","fly","transport","fret","longshot","medic","dumper","dealer","starka","kirin","octiron"],
         "mediCost":6,
-        "maxSkill":24,
+        "maxDrug":24,
         "transMaxSize":18,
         "transUnits":1200,
         "transRes":900,
@@ -2444,7 +2445,7 @@
         "maxVeg":2,
         "skills":["cible","transport","fret","ravitaillement","stock","selfbadmecano","hardmove","dealer","nitro"],
         "mecanoCost":18,
-        "maxSkill":32,
+        "maxDrug":12,
         "transMaxSize":9,
         "transUnits":230,
         "transRes":400,
@@ -2562,7 +2563,7 @@
         "maxVeg":2,
         "skills":["fouille","fortif","cible","recycle","transport","fret","maycamo","mecano","defense","dumper","realdumper","extraction","hscarpmove","dealer","nitro"],
         "mecanoCost":10,
-        "maxSkill":12,
+        "maxDrug":12,
         "mining":{
             "level":1,
             "rate":30,
@@ -2672,7 +2673,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["cible","inflammable","hardmove","guerrilla","dealer","nitro"],
-        "maxSkill":12,
+        "maxDrug":12,
         "fuzz":2,
         "deathFx":"S_CarExplosion02"
     },
@@ -2725,7 +2726,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","selfbadmecano","guerrilla","maycamo","dealer","nitro"],
         "mecanoCost":24,
-        "maxSkill":12,
+        "maxDrug":12,
         "fuzz":2,
         "deathFx":"planeexploair1"
     },
@@ -2783,6 +2784,7 @@
         "skills":["fortif","cible","mecano","maycamo","ravitaillement","dealer","nitro"],
         "mecanoCost":6,
         "maxSkill":18,
+        "maxDrug":12,
         "fuzz":2,
         "deathFx":"planeexploair1"
     },
@@ -3147,6 +3149,7 @@
         "mecanoCost":6,
         "transRes":300,
         "maxSkill":60,
+        "maxDrug":12,
         "fuzz":3.5,
         "deathFx":"vehicleexplo3"
     },
@@ -3190,6 +3193,7 @@
         "mecanoCost":5,
         "transRes":300,
         "maxSkill":60,
+        "maxDrug":12,
         "fuzz":4.5,
         "deathFx":"vehicleexplo3"
     },
@@ -3245,9 +3249,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fouille","selfmecano","extraction","hardmove","fret","noblub","dumper","dealer","nitro","routes"],
+        "skills":["noguet","fouille","selfmecano","extraction","hardmove","fret","noblub","dumper","routes"],
         "mecanoCost":6,
-        "maxSkill":24,
         "mining":{
             "level":4,
             "rate":40,
@@ -3372,6 +3375,7 @@
         "maxVeg":3,
         "skills":["cible","ravitaillement","fastempty","dealer","nitro"],
         "maxSkill":24,
+        "maxDrug":6,
         "fuzz":2,
         "deathFx":"S_CarExplosion02"
     },
@@ -3526,7 +3530,7 @@
         "name":"Salamandres",
         "pic":"minitank",
         "cat":"vehicles",
-        "kind":"zero-tanks",
+        "kind":"tiradores",
         "squads":5,
         "squadSize":3,
         "crew":3,
@@ -3549,7 +3553,9 @@
             "armors":0.3,
             "aoe":"brochette",
             "sound":"firemg_heavy_sa",
-            "ammo":["fireshells","fireshells-pyratol","fireshells-nanite"]
+            "ammo":["fireshells","fireshells-pyratol","fireshells-nanite"],
+            "maxAmmo":36,
+            "ravitBld":"Armurerie"
         },
         "weapon2":{
             "name":"Mitrailleuse",

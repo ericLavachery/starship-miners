@@ -2,9 +2,9 @@ function calcAmmos(bat,startAmmo) {
     let ammoLeft = startAmmo;
     console.log('startAmmo='+startAmmo);
     if (startAmmo < 99) {
-        if (bat.tags.includes('ammoUsed')) {
+        if (bat.tags.includes('aU')) {
             let allTags = _.countBy(bat.tags);
-            ammoLeft = startAmmo-allTags.ammoUsed;
+            ammoLeft = startAmmo-allTags.aU;
         } else {
             ammoLeft = startAmmo;
         }
@@ -15,15 +15,15 @@ function calcAmmos(bat,startAmmo) {
 
 function calcAmmoNeed(bat) {
     let ammoNeed = 0;
-    if (bat.tags.includes('ammoUsed')) {
+    if (bat.tags.includes('aU')) {
         let allTags = _.countBy(bat.tags);
-        ammoNeed = allTags.ammoUsed;
+        ammoNeed = allTags.aU;
     }
     return ammoNeed;
 };
 
-function goRavit(apCost) {
-    if (selectedBat.tags.includes('ammoUsed')) {
+function goRavit() {
+    if (selectedBat.tags.includes('aU')) {
         // console.log('RAVIT');
         // console.log(selectedBat);
         let batType;
@@ -57,8 +57,6 @@ function goRavit(apCost) {
                     ravitBat.xp = ravitBat.xp+0.3;
                 }
             }
-            selectedBat.apLeft = selectedBat.apLeft-apCost;
-            selectedBat.salvoLeft = 0;
             let numAmmo = 0;
             let numberRavit = 0;
             let i = 1;
@@ -66,8 +64,8 @@ function goRavit(apCost) {
                 if (numberRavit+singleAmmoVolume > maxRavit) {
                     break;
                 } else {
-                    if (selectedBat.tags.includes('ammoUsed')) {
-                        tagIndex = selectedBat.tags.indexOf('ammoUsed');
+                    if (selectedBat.tags.includes('aU')) {
+                        tagIndex = selectedBat.tags.indexOf('aU');
                         selectedBat.tags.splice(tagIndex,1);
                         numAmmo++;
                         numberRavit = numberRavit+singleAmmoVolume;
@@ -79,13 +77,17 @@ function goRavit(apCost) {
                 i++;
             }
             let numRav = Math.round(numAmmo*singleAmmoVolume);
+            let apCost = Math.round(Math.sqrt(numRav)*selectedBat.ap/3);
+            selectedBat.apLeft = selectedBat.apLeft-apCost;
+            selectedBat.salvoLeft = 0;
+            selectedBat.tags.push('ravit');
             if (biggestRavit < 999) {
                 i = 1;
                 while (i <= numRav) {
                     if (ravitBat.id == selectedBat.id) {
-                        selectedBat.tags.push('skillUsed');
+                        selectedBat.tags.push('sU');
                     } else {
-                        ravitBat.tags.push('skillUsed');
+                        ravitBat.tags.push('sU');
                     }
                     if (i > 120) {break;}
                     i++;
@@ -107,7 +109,7 @@ function checkRavitDrug(myBat) {
             batType = getBatType(bat);
             if (batType.skills.includes('ravitaillement')) {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
-                    ravitLeft = calcRavit(bat);
+                    ravitLeft = calcRavitDrug(bat);
                     if (ravitLeft >= 1 || batType.skills.includes('stock')) {
                         anyRavit = true;
                     }
@@ -123,9 +125,23 @@ function calcRavit(bat) {
     let ravitLeft = batType.maxSkill;
     console.log('startRavit='+ravitLeft);
     if (ravitLeft < 999) {
-        if (bat.tags.includes('skillUsed')) {
+        if (bat.tags.includes('sU')) {
             let allTags = _.countBy(bat.tags);
-            ravitLeft = ravitLeft-allTags.skillUsed;
+            ravitLeft = ravitLeft-allTags.sU;
+        }
+    }
+    console.log('ravitLeft='+ravitLeft);
+    return ravitLeft;
+};
+
+function calcRavitDrug(bat) {
+    let batType = getBatType(bat);
+    let ravitLeft = batType.maxDrug;
+    console.log('startRavit='+ravitLeft);
+    if (ravitLeft < 999) {
+        if (bat.tags.includes('dU')) {
+            let allTags = _.countBy(bat.tags);
+            ravitLeft = ravitLeft-allTags.dU;
         }
     }
     console.log('ravitLeft='+ravitLeft);
@@ -170,7 +186,7 @@ function calcRavitVolume(bat) {
 };
 
 function goStock(apCost) {
-    if (selectedBat.tags.includes('skillUsed')) {
+    if (selectedBat.tags.includes('sU')) {
         let batType;
         let stocktBat = {};
         let stockOK = false;
@@ -190,8 +206,8 @@ function goStock(apCost) {
             selectedBat.salvoLeft = 0;
             let i = 1;
             while (i <= 50) {
-                if (selectedBat.tags.includes('skillUsed')) {
-                    tagIndex = selectedBat.tags.indexOf('skillUsed');
+                if (selectedBat.tags.includes('sU')) {
+                    tagIndex = selectedBat.tags.indexOf('sU');
                     selectedBat.tags.splice(tagIndex,1);
                 } else {
                     break;
@@ -254,7 +270,7 @@ function checkRavit(myBat) {
 };
 
 function goRavitDrug(apCost) {
-    if (selectedBat.tags.includes('skillUsed')) {
+    if (selectedBat.tags.includes('dU')) {
         let batType;
         let ravitBat = {};
         let ravitBatType;
@@ -279,8 +295,8 @@ function goRavitDrug(apCost) {
             selectedBat.salvoLeft = 0;
             let i = 1;
             while (i <= 120) {
-                if (selectedBat.tags.includes('skillUsed')) {
-                    tagIndex = selectedBat.tags.indexOf('skillUsed');
+                if (selectedBat.tags.includes('dU')) {
+                    tagIndex = selectedBat.tags.indexOf('dU');
                     selectedBat.tags.splice(tagIndex,1);
                 } else {
                     break;
@@ -292,8 +308,8 @@ function goRavitDrug(apCost) {
 
             }
             ravitBatType = getBatType(ravitBat);
-            if (ravitBatType.maxSkill < 999) {
-                ravitBat.tags.push('skillUsed');
+            if (ravitBatType.maxDrug < 999) {
+                ravitBat.tags.push('sU');
             }
             selectedBatArrayUpdate();
             showBatInfos(selectedBat);
