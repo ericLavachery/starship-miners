@@ -178,10 +178,10 @@ function getMiningRate(bat,fullRate) {
     }
 };
 
-function getResMiningRate(bat,ressource,value,fullRate) {
+function getResMiningRate(bat,res,value,fullRate) {
     let batType = getBatType(bat);
     let resHere = value;
-    if (resHere < minResForRate) {
+    if (resHere < minResForRate && res.cat != 'none') {
         resHere = minResForRate;
     }
     if (resHere > maxResForRate) {
@@ -208,7 +208,7 @@ function getResMiningRate(bat,ressource,value,fullRate) {
     if (batType.mining.level === 1 && (res.bld === 'Mine' || res.bld === 'Derrick')) {
         resRate = Math.ceil(resRate/6);
     }
-    if (ressource.level > batType.mining.level) {
+    if (res.level > batType.mining.level) {
         resRate = 0;
     }
     if (value <= 0) {
