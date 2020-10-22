@@ -201,14 +201,30 @@ function showAlien(bat) {
 };
 
 function showBataillon(bat) {
-    let unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-    let batPic = unitTypes[unitIndex].pic;
-    let batCat = unitTypes[unitIndex].cat;
-    let unitsLeft = bat.squadsLeft*unitTypes[unitIndex].squadSize;
+    let batType = getBatType(bat);
+    let batPic = batType.pic;
+    let batCat = batType.cat;
+    let unitsLeft = bat.squadsLeft*batType.squadSize;
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
     let degNum = getDamageBar(bat);
-    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
+    let activityBar = 'none';
+    if (bat.tags.includes('mining')) {
+        activityBar = 'mining';
+    } else {
+        if (bat.tags.includes('fortif')) {
+            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative')) {
+                activityBar = 'fortifguet';
+            } else {
+                activityBar = 'fortif';
+            }
+        } else {
+            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative')) {
+                activityBar = 'guet';
+            }
+        }
+    }
+    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div>'+resHere);
 };
 
 function getDamageBar(bat) {
