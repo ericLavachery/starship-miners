@@ -335,7 +335,7 @@
         "maxVeg":3,
         "skills":[],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":2,"Aranium":5,"Slime":7}
+        "killRes":{"Bugium":2,"Aranium":5,"Slime":4}
     },
     {
         "id":4,
@@ -379,7 +379,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"436570__magicthighs__corellas-screeching_glaireuse",
         "fxPriority":5,
-        "killRes":{"Bugium":13,"Aranium":34,"Bossium":20,"Creatite":6,"Slime":42,"Mendium":47}
+        "killRes":{"Bugium":13,"Aranium":34,"Bossium":20,"Creatite":6,"Slime":24,"Mendium":47}
     },
     {
         "id":5,
@@ -418,7 +418,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[],
+        "skills":["ricochet"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":3}
     },
@@ -685,7 +685,7 @@
         "deathFx":"76974__michel88__piggrunt2",
         "spawnFx":"125388__thegoose09__monster-screech_veuve",
         "fxPriority":6,
-        "killRes":{"Bugium":4,"Aranium":25,"Mephitis":40,"Bossium":16,"Slime":28,"Mendium":7}
+        "killRes":{"Bugium":4,"Aranium":25,"Mephitis":40,"Bossium":16,"Slime":16,"Mendium":7}
     },
     {
         "id":12,
@@ -728,7 +728,7 @@
         "maxVeg":3,
         "skills":["shield","inflammable","fastreg","resistpoison","destructeur"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"Bugium":13,"Bossium":9,"Slime":22,"Egidium":24,"Mendium":5}
+        "killRes":{"Bugium":13,"Bossium":9,"Slime":13,"Egidium":24,"Mendium":5}
     },
     {
         "id":13,
@@ -962,7 +962,7 @@
         "maxVeg":3,
         "skills":["furtif","chancre","capbld","ponte","minaccu","resistpoison","okwater"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Larvium":4,"Germium":7,"Bossium":15,"Creatite":6,"Slime":3}
+        "killRes":{"Larvium":4,"Germium":7,"Bossium":15,"Creatite":6,"Slime":2}
     },
     {
         "id":20,
@@ -1368,7 +1368,7 @@
         "maxVeg":3,
         "skills":["reactpoison"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":2,"Swarmine":4,"Slime":15}
+        "killRes":{"Bugium":2,"Swarmine":4,"Slime":9}
     },
     {
         "id":30,
@@ -1493,7 +1493,7 @@
         "maxVeg":3,
         "skills":["minaccu","resistfeu"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":3,"Slime":9}
+        "killRes":{"Bugium":3,"Slime":5}
     },
     {
         "id":33,
@@ -1548,7 +1548,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"142932__1pjladd2__burp-monster_megagrubz",
         "fxPriority":2,
-        "killRes":{"Bugium":11,"Larvium":23,"Mendium":68,"Bossium":19,"Creatite":6,"Slime":25}
+        "killRes":{"Bugium":11,"Larvium":23,"Mendium":68,"Bossium":19,"Creatite":6,"Slime":14}
     },
     {
         "id":34,
@@ -1687,7 +1687,7 @@
         "maxVeg":3,
         "skills":["fouisseur","anycap","maladie","hide","venin"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":3,"Aranium":8,"Mephitis":3,"Germium":10,"Slime":5,"Blendium":4}
+        "killRes":{"Bugium":3,"Aranium":8,"Mephitis":3,"Germium":10,"Slime":3,"Blendium":4}
     },
     {
         "id":48,
@@ -1875,7 +1875,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"347410__zerokingfull__monster-roar-02_bugboss",
         "fxPriority":11,
-        "killRes":{"Bugium":24,"Mendium":11,"Bossium":34,"Egidium":93,"Slime":36}
+        "killRes":{"Bugium":24,"Mendium":11,"Bossium":34,"Egidium":93,"Slime":20}
     },
     {
         "id":6,
@@ -2106,7 +2106,7 @@
         "maxVeg":-1,
         "skills":["hide","resistall","noaploss"],
         "deathFx":"zapsplat_explosion_fireball_43738",
-        "killRes":{"Bugium":2,"Blendium":9,"Slime":11}
+        "killRes":{"Bugium":2,"Blendium":9,"Slime":6}
     },
     {
         "id":17,
@@ -2163,7 +2163,7 @@
         "maxVeg":-1,
         "skills":["isegg","ponte","inflammable","noaploss","nolaser","baddef","minaccu","resistall"],
         "deathFx":"zapsplat_explosion_fireball_43738",
-        "killRes":{"Bugium":5,"Creatite":9,"Slime":31}
+        "killRes":{"Bugium":5,"Creatite":9,"Slime":18}
     },
     {
         "id":50,

@@ -3573,10 +3573,10 @@
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "moveCost":2,
-        "maxFlood":0,
+        "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selfbadmecano","longshot","defense"],
+        "skills":["fortif","cible","selfbadmecano","longshot","defense","noblub"],
         "mecanoCost":20,
         "fuzz":3,
         "deathFx":"planeexploair3"

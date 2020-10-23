@@ -374,7 +374,7 @@ function attack(melee) {
             hasShield = 6;
         }
     }
-    if (activeTurn === 'player' && hasShield >= 1 && selectedWeap.isMelee === false && selectedWeap.noShield === false && !selectedWeap.ammo.includes('adamantium') && !selectedWeap.ammo.includes('-fleche') && !selectedWeap.ammo.includes('-sunburst')) {
+    if (activeTurn === 'player' && hasShield >= 1 && selectedWeap.isMelee === false && selectedWeap.noShield === false && !selectedWeap.ammo.includes('adamantium') && !selectedWeap.ammo.includes('marquage') && !selectedWeap.ammo.includes('-fleche') && !selectedWeap.ammo.includes('-sunburst')) {
         if (rand.rand(1,3) >= 2 && !targetBat.tags.includes('shield')) {
             targetBat.tags.push('shield');
         }
@@ -542,6 +542,9 @@ function attack(melee) {
                 if (!selectedWeap.ammo.includes('mono')) {
                     if (!selectedWeap.isMelee && !selectedWeap.noShield) {
                         let minimumPower = targetBat.armor-6;
+                        if (minimumPower < 6) {
+                            minimumPower = 6;
+                        }
                         if (selectedWeap.armors >= 1) {
                             minimumPower = minimumPower*(selectedWeap.armors+0.5);
                         }
@@ -1114,6 +1117,9 @@ function defense(melee) {
                 if (!targetWeap.ammo.includes('mono')) {
                     if (!targetWeap.isMelee && !targetWeap.noShield) {
                         let minimumPower = selectedBat.armor-6;
+                        if (minimumPower < 6) {
+                            minimumPower = 6;
+                        }
                         if (targetWeap.armors >= 1) {
                             minimumPower = minimumPower*(targetWeap.armors+0.5);
                         }
