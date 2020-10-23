@@ -916,7 +916,7 @@ function eggSpawn(bat,fromEgg) {
             let minTurnB = 33-Math.round(playerInfos.mapDiff*3);
             let minTurnA = 66-Math.round(playerInfos.mapDiff*5);
             classes.push('C');
-            if (eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB && playerInfos.mapDiff >= 2) {
+            if (eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB && playerInfos.mapDiff >= 3) {
                 classes.push('B');
                 if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA && (playerInfos.mapDiff >= 6 || overSaturation)) {
                     classes.push('A');

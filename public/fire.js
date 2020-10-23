@@ -539,14 +539,16 @@ function attack(melee) {
     if (targetBatType.skills.includes('ricochet') || targetBat.tags.includes('ricochet')) {
         if (!selectedWeap.ammo.includes('feu') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm') && !selectedWeap.ammo.includes('fire') && !selectedWeap.ammo.includes('pyratol') && !selectedWeap.ammo.includes('lf-') && !selectedWeap.ammo.includes('lt-') && !selectedWeap.ammo.includes('molotov') && !selectedWeap.ammo.includes('laser')) {
             if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('disco')) {
-                if (!selectedWeap.isMelee && !selectedWeap.noShield) {
-                    let minimumPower = targetBat.armor-6;
-                    if (selectedWeap.armors >= 1) {
-                        minimumPower = minimumPower*(selectedWeap.armors+0.5);
-                    }
-                    if (selectedWeap.power < minimumPower) {
-                        totalDamage = 0;
-                        apDamage =0;
+                if (!selectedWeap.ammo.includes('mono')) {
+                    if (!selectedWeap.isMelee && !selectedWeap.noShield) {
+                        let minimumPower = targetBat.armor-6;
+                        if (selectedWeap.armors >= 1) {
+                            minimumPower = minimumPower*(selectedWeap.armors+0.5);
+                        }
+                        if (selectedWeap.power < minimumPower) {
+                            totalDamage = 0;
+                            apDamage =0;
+                        }
                     }
                 }
             }
@@ -1109,14 +1111,16 @@ function defense(melee) {
     if (selectedBatType.skills.includes('ricochet') || selectedBat.tags.includes('ricochet')) {
         if (!targetWeap.ammo.includes('feu') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm') && !targetWeap.ammo.includes('fire') && !targetWeap.ammo.includes('pyratol') && !targetWeap.ammo.includes('lf-') && !targetWeap.ammo.includes('lt-') && !targetWeap.ammo.includes('molotov') && !targetWeap.ammo.includes('laser')) {
             if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('disco')) {
-                if (!targetWeap.isMelee && !targetWeap.noShield) {
-                    let minimumPower = selectedBat.armor-6;
-                    if (targetWeap.armors >= 1) {
-                        minimumPower = minimumPower*(targetWeap.armors+0.5);
-                    }
-                    if (targetWeap.power < minimumPower) {
-                        totalDamage = 0;
-                        apDamage =0;
+                if (!targetWeap.ammo.includes('mono')) {
+                    if (!targetWeap.isMelee && !targetWeap.noShield) {
+                        let minimumPower = selectedBat.armor-6;
+                        if (targetWeap.armors >= 1) {
+                            minimumPower = minimumPower*(targetWeap.armors+0.5);
+                        }
+                        if (targetWeap.power < minimumPower) {
+                            totalDamage = 0;
+                            apDamage =0;
+                        }
                     }
                 }
             }
