@@ -895,15 +895,16 @@ function eggSpawn(bat,fromEgg) {
         }
         console.log('spawnChance='+spawnChance);
         if (rand.rand(1,100) <= spawnChance) {
-            let maxSpawn = eggTurn-11+bat.squadsLeft+Math.floor(Math.sqrt(playerInfos.mapAdjDiff));
+            let adjEggTurn = eggTurn;
+            if (adjEggTurn > 13) {
+                adjEggTurn = 13;
+            }
+            let maxSpawn = Math.round(((adjEggTurn*1.5)+(bat.squadsLeft*1.5)-9+(playerInfos.mapDiff*1.5))/5);
             if (maxSpawn < 1 || !fromEgg) {
                 maxSpawn = 1;
             }
             if (maxSpawn > Math.round((playerInfos.mapAdjDiff+8)/3)) {
                 maxSpawn = Math.round((playerInfos.mapAdjDiff+8)/3);
-            }
-            if (maxSpawn > 8) {
-                maxSpawn = 8;
             }
             console.log('maxSpawn='+maxSpawn);
             let spawnNum = 1;

@@ -1745,9 +1745,10 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","mecano","repair","constructeur","routes","noblub","resistacide"],
+        "skills":["noguet","mecano","repair","constructeur","routes","noblub","resistacide","dealer","nitro"],
         "mecanoCost":3,
         "maxSkill":24,
+        "maxDrug":24,
         "fuzz":2.5,
         "deathFx":"planeexploair3"
     },

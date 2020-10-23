@@ -1902,7 +1902,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","inflammable","resistall","noaploss"],
+        "skills":["isegg","ponte","inflammable","resistall","noaploss"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Creatite":18}
     },
@@ -1989,7 +1989,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","inflammable","resistall","noaploss"],
+        "skills":["isegg","ponte","inflammable","resistall","noaploss"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Creatite":18,"Blendium":60}
     },
@@ -2018,7 +2018,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","regeneration","reactpoison","resistall","noaploss"],
+        "skills":["isegg","ponte","regeneration","reactpoison","resistall","noaploss"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Bugium":36,"Mendium":30,"Creatite":12}
     },
@@ -2047,7 +2047,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","regeneration","shield","resistall","noaploss"],
+        "skills":["isegg","ponte","regeneration","shield","resistall","noaploss"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Bugium":45,"Mendium":30,"Creatite":12,"Egidium":53}
     },
@@ -2161,7 +2161,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","inflammable","noaploss","nolaser","baddef","minaccu","resistall"],
+        "skills":["isegg","ponte","inflammable","noaploss","nolaser","baddef","minaccu","resistall"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":5,"Creatite":9,"Slime":31}
     },
@@ -2218,7 +2218,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["ponte","minaccu","shield","regmode","eggshield","eggdefense","regeneration","noaploss","nolaser","survivor","baddef"],
+        "skills":["isegg","ponte","minaccu","shield","regmode","eggshield","eggdefense","regeneration","noaploss","nolaser","survivor","baddef"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":48,"Creatite":18,"Mendium":60,"Egidium":94,"Bossium":73,"Pyrus":108}
     },

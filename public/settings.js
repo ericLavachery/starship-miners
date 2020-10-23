@@ -66,6 +66,7 @@ let alienList = [];
 let alienOccupiedTiles = [];
 let playerOccupiedTiles = [];
 let visibleAliens = [];
+let visibleEggs = [];
 // let vetAccuracy = 4; // plus grand = moins de bonus (3 = x2.3) (2 = x3)
 // let vetInitiative = 10; // plus grand = mieux (retire max vetInitiative*vet)
 // let vetAP = 1; // 1 = +1 ap par niveau

@@ -16,7 +16,7 @@ function generateNewMap() {
 function checkMapKind(terName) {
     let dice = rand.rand(1,12);
     if (terName === 'P') {
-        if (dice <= 7) {
+        if (dice <= 6) {
             return 'bug';
         } else if (dice <= 8) {
             return 'spider';
@@ -51,6 +51,7 @@ function createMap(size) {
         if (newTile.id === 0) {
             newTile.pKind = checkMapKind('P');
             newTile.gKind = checkMapKind('G');
+            console.log('pKind='+newTile.pKind+' gKing='+newTile.gKind);
         }
         newTile.x = x;
         newTile.y = y;
