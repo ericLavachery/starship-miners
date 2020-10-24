@@ -313,5 +313,50 @@
         "transRes":3000,
         "fuzz":6,
         "deathFx":"planeexploground2"
+    },
+    {
+        "id"	 :"?",
+        "name"	 :"Nécrotruck",
+        "pic"	 :" ?",
+        "cat"	 :"vehicle",
+        "squads"	 :6,
+        "squadSize"	 :5,
+        "crew"	 :15,
+        "hp"	 :80,
+        "armor"	: 12,
+        "size"	: 24,
+        "stealth"	:1,
+        "ap"	 :12,
+        "maxSalvo"	 :2,
+        "weapon"	 :{
+            "name"	: "Nécroblast",
+            "cost"	 :6,
+            "range"	: 5,
+            "rof"	: 5,
+            "accuracy"	: 18,
+            "power"	: 18,
+            "aoe"	 :"unit",
+            "sound"	: " ?",			
+            "ammo"	: [ "plasma","explosive","feu" ]
+
+        },
+        "weapon2":{
+            "name"	: "Nécrowave",
+            "cost"	 :6,
+            "range"	: 1,
+            "rof"	: 5,
+            "accuracy"	: 20,
+            "power"	: 18,
+            "aoe"	 :"squad",
+            "sound"	:"Blastwave_FX_FlameThrowerBurst_BW.55025b",
+            "ammo"	: [ "feu" ]
+
+        },
+        "moveCost"	: 2,
+        "maxFlood"	: 2,
+        "maxScarp"	: 2,
+        "maxVeg"	:2,
+        "skills"	:[ "fortif","cible","Brochette"] ,
+        "fuzz"	 :0
     }
 ]

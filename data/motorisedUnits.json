@@ -630,7 +630,7 @@
             "power":23,
             "aoe":"brochette",
             "sound":"catapult",
-            "ammo":["boulet","boulet-explosif","boulet-incendiaire"],
+            "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
             "maxAmmo":24,
             "ravitBld":"Atelier"
         },
@@ -3418,7 +3418,7 @@
         "maxVeg":3,
         "skills":["cible","mecano","dealer","nitro"],
         "mecanoCost":8,
-        "maxSkill":24,
+        "maxDrug":24,
         "fuzz":2,
         "deathFx":"S_CarExplosion02"
     },

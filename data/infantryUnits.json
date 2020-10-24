@@ -4080,7 +4080,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","selfmedic","meleehelp","guerrilla","cyber","camo","berserk","ranger","nostun","resistacide","oknitro"],
+        "skills":["fouille","fortif","cible","selfmedic","meleehelp","guerrilla","cyber","camo","berserk","undead","ranger","nostun","resistacide","oknitro"],
         "mediCost":12,
         "fuzz":0,
         "deathFx":"396806__scorpion67890__cyborg-death-1"

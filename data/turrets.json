@@ -692,7 +692,7 @@
             "power":28,
             "aoe":"brochette",
             "sound":"catapult",
-            "ammo":["boulet","boulet-explosif","boulet-incendiaire"],
+            "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
             "maxAmmo":36,
             "ravitBld":"Atelier"
         },
