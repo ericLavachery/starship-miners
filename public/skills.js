@@ -275,7 +275,7 @@ function goDrug(apCost,drug) {
             }
             // nitro instant bonus
             if (drug === 'nitro') {
-                selectedBat.apLeft = selectedBat.apLeft+Math.round(selectedBat.ap/3*2);
+                selectedBat.apLeft = selectedBat.apLeft+Math.round(selectedBat.ap/2);
                 if (selectedBat.apLeft >= selectedBat.ap+1) {
                     selectedBat.apLeft = selectedBat.ap+1;
                 }

@@ -23,6 +23,10 @@ function skillsInfos(bat,batType) {
     anyRavit = checkRavit(bat);
     if (anyRavit && bat.tags.includes('aU')) {
         let ravitVolume = calcRavitVolume(bat);
+        let ravitFactor = 3;
+        if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
+            ravitFactor = 1;
+        }
         let apCost = Math.round(Math.sqrt(ravitVolume[1])*bat.ap/3);
         if (bat.apLeft >= 4) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de munitions" class="boutonGris skillButtons" onclick="goRavit()"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ravitaillement</h4></span>');
@@ -598,9 +602,9 @@ function skillsInfos(bat,batType) {
             }
             apCost = 0;
             let maxNitroPA = bat.ap+1;
-            let nitroPA = Math.round(bat.ap/3*2);
+            let nitroPA = Math.round(bat.ap/3);
             if (bat.apLeft < maxNitroPA && !bat.tags.includes('nitro')) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+nitroPA+' PA, maximum '+maxNitroPA+' au total" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+nitroPA+' PA, maximum '+maxNitroPA+' et minimum 1" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
             } else {
                 skillMessage = "Conditions non requises";
                 if (bat.tags.includes('nitro')) {

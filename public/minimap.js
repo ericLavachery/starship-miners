@@ -9,8 +9,12 @@ function minimap() {
     $('#themmap').empty();
     $('#thenavig').empty();
     $('#thenavig').append('<span class="constIcon"><i class="fas fa-times-circle klik" onclick="miniOut()"></i></span><br>');
-    $('#thenavig').append('<button type="button" title="Montrer les unités" class="boutonGris miniButtons" onclick="unitsView()"><i class="fas fa-bug"></i></button><br>');
-    $('#thenavig').append('<button type="button" title="Montrer les oeufs" class="boutonGris miniButtons" onclick="eggsView()"><i class="fas fa-meteor"></i></button><br>');
+    if (miniDots != 'units') {
+        $('#thenavig').append('<button type="button" title="Montrer les unités" class="boutonGris miniButtons" onclick="unitsView()"><i class="fas fa-bug"></i></button><br>');
+    }
+    if (miniDots != 'eggs') {
+        $('#thenavig').append('<button type="button" title="Montrer les oeufs" class="boutonGris miniButtons" onclick="eggsView()"><i class="fas fa-meteor"></i></button><br>');
+    }
     $('#thenavig').append('<button type="button" title="Montrer les repaires" class="boutonGris miniButtons" onclick="dotsView()"><i class="fas fa-map-pin"></i></button><br>');
     if (showOneRes != 'Toutes') {
         $('#thenavig').append('<button type="button" title="Montrer la ressource recherchée" class="boutonGris miniButtons" onclick="oneResView()"><i class="far fa-gem"></i></button><br>');

@@ -77,6 +77,10 @@ function goRavit() {
                 i++;
             }
             let numRav = Math.round(numAmmo*singleAmmoVolume);
+            let ravitFactor = 3;
+            if (selectedBatType.skills.includes('fly') && !selectedBatType.skills.includes('jetpack')) {
+                ravitFactor = 1;
+            }
             let apCost = Math.round(Math.sqrt(numRav)*selectedBat.ap/3);
             selectedBat.apLeft = selectedBat.apLeft-apCost;
             selectedBat.salvoLeft = 0;
