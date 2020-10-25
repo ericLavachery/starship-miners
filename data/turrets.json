@@ -262,7 +262,7 @@
             "power":45,
             "aoe":"squad",
             "sound":"obusier",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker","missile-uridium","missile-nanite","missile-plastanium"],
+            "ammo":["missile","missile-scrap","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker","missile-uridium","missile-nanite","missile-plastanium"],
             "maxAmmo":32,
             "ravitBld":"Arsenal"
         },
@@ -618,7 +618,7 @@
             "power":40,
             "aoe":"squad",
             "sound":"miss",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium"],
+            "ammo":["missile","missile-scrap","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium"],
             "maxAmmo":6,
             "ravitBld":"Arsenal"
         },

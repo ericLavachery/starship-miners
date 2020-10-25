@@ -93,7 +93,7 @@
         "rof": 1,
         "power": 0,
         "powermult": 1,
-        "armors": 0.75,
+        "armors": 0.67,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": ""
@@ -1153,6 +1153,17 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "squad"
+    },
+    {
+        "name": "missile-scrap",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 0.75,
+        "armors": 0.8,
+        "accuracy": 0.67,
+        "apdamage": 0,
+        "aoe": "brochette"
     },
     {
         "name": "missile-tungsten",

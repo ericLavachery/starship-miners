@@ -519,7 +519,7 @@
             "power":65,
             "aoe":"bat",
             "sound":"miss",
-            "ammo":["missile-vanguard"],
+            "ammo":["missile-vanguard","missile-scrap"],
             "maxAmmo":24,
             "ravitBld":"Arsenal"
         },
@@ -761,7 +761,7 @@
             "power":40,
             "aoe":"squad",
             "sound":"miss",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium"],
+            "ammo":["missile","missile-scrap","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium"],
             "maxAmmo":12,
             "ravitBld":"Arsenal"
         },
@@ -973,7 +973,7 @@
             "power":40,
             "aoe":"squad",
             "sound":"miss",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium"],
+            "ammo":["missile","missile-scrap","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium"],
             "maxAmmo":6,
             "ravitBld":"Arsenal"
         },
@@ -1028,7 +1028,7 @@
             "power":24,
             "aoe":"brochette",
             "sound":"miss",
-            "ammo":["missile-sunburst"],
+            "ammo":["missile-sunburst","missile-scrap"],
             "maxAmmo":9,
             "ravitBld":"Arsenal"
         },

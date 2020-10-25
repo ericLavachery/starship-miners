@@ -597,7 +597,7 @@ function attack(melee) {
                 totalDamage = totalDamage+(tailDamage*selectedBat.squadsLeft*selectedBatType.squads);
             }
             let gripDiv = 1.25;
-            if (!selectedBatType.name == 'Androks') {
+            if (selectedBatType.name != 'Androks') {
                 if (targetBatType.weapon.isShort || targetBatType.weapon2.isShort) {
                     gripDiv = gripDiv+0.5;
                 }
