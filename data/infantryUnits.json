@@ -30,7 +30,7 @@
             "sound":"lame",
             "ammo":["lame-scrap"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucune"],
         "moveCost":3,
         "maxFlood":3,
@@ -81,7 +81,7 @@
             "sound":"lame",
             "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucune"],
         "moveCost":3,
         "maxFlood":3,
@@ -324,7 +324,7 @@
             "sound":"pistol_x2",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "moveCost":3,
         "maxFlood":3,
@@ -365,7 +365,7 @@
             "sound":"pistol_x2",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "moveCost":3,
         "maxFlood":3,
@@ -1099,7 +1099,7 @@
             "sound":"revolver_multi",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "moveCost":3,
         "maxFlood":3,
@@ -2313,7 +2313,7 @@
             "sound":"axe_x2",
             "ammo":["none"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "moveCost":3,
         "maxFlood":3,
@@ -2885,7 +2885,7 @@
             "sound":"axe_x2",
             "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucune","scrap","bugium","kevlar","combo","titane","nano","adamantite","battlesuit"],
         "moveCost":3,
         "maxFlood":3,
@@ -2973,7 +2973,7 @@
             "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucun"],
         "moveCost":3,
         "maxFlood":2,
@@ -3225,7 +3225,7 @@
             "sound":"laser_fusil",
             "ammo":["laser","laser-g2"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucune"],
         "moveCost":3,
         "maxFlood":2,
@@ -4222,7 +4222,7 @@
             "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucune"],
         "moveCost":3,
         "maxFlood":3,

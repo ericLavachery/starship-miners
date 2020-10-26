@@ -28,7 +28,7 @@
             "sound":"calibre_hunt",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -71,7 +71,7 @@
             "sound":"calibre_sa",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -114,7 +114,7 @@
             "sound":"calibre_sa",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -157,7 +157,7 @@
             "sound":"calibre_sa",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -201,7 +201,7 @@
             "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -308,7 +308,7 @@
             "sound":"calibre_sa",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -352,7 +352,7 @@
             "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -793,7 +793,7 @@
             "maxAmmo":24,
             "ravitBld":"Atelier"
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
         "moveCost":99,
         "maxFlood":-1,
@@ -835,7 +835,7 @@
             "sound":"bite",
             "ammo":["lame-scrap"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -877,7 +877,7 @@
             "sound":"bite",
             "ammo":["lame"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -919,7 +919,7 @@
             "sound":"electricity",
             "ammo":["lame-taser"]
         },
-        "weapon2":{},
+        "weapon2":{"name":"Aucune"},
         "protection":["aucun"],
         "moveCost":99,
         "maxFlood":-1,

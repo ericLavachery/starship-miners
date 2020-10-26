@@ -212,14 +212,14 @@ function showBataillon(bat) {
     if (bat.tags.includes('mining')) {
         activityBar = 'mining';
     } else {
-        if (bat.tags.includes('fortif')) {
-            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative')) {
+        if (bat.tags.includes('fortif') || !batType.skills.includes('fortif')) {
+            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('noguet') || batType.weapon.name === 'Aucune') {
                 activityBar = 'fortifguet';
             } else {
                 activityBar = 'fortif';
             }
         } else {
-            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative')) {
+            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('noguet') || batType.weapon.name === 'Aucune') {
                 activityBar = 'guet';
             }
         }
