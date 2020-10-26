@@ -802,7 +802,7 @@
             "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
-        "weapon2":{"name":"Aucune"},
+        "weapon2":{},
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":0,
@@ -1128,7 +1128,7 @@
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
-        "weapon2":{"name":"Aucune"},
+        "weapon2":{},
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":3,
@@ -2243,7 +2243,7 @@
             "sound":"harvest",
             "ammo":["lame","lame-tungsten","lame-mono"]
         },
-        "weapon2":{"name":"Aucune"},
+        "weapon2":{},
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":1,
         "maxFlood":3,
@@ -2274,8 +2274,8 @@
         "speed":7,
         "ap":14,
         "maxSalvo":2,
-        "weapon":{"name":"Aucune"},
-        "weapon2":{"name":"Aucune"},
+        "weapon":{},
+        "weapon2":{},
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":1,
         "maxFlood":3,
@@ -2320,7 +2320,7 @@
             "sound":"mit_heavy2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
-        "weapon2":{"name":"Aucune"},
+        "weapon2":{},
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":1,
         "maxFlood":3,
@@ -3140,7 +3140,7 @@
             "sound":"laser_canon",
             "ammo":["laser","laser-g2"]
         },
-        "weapon2":{"name":"Aucune"},
+        "weapon2":{},
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":1,
         "maxFlood":3,
@@ -3184,7 +3184,7 @@
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
-        "weapon2":{"name":"Aucune"},
+        "weapon2":{},
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":1,
         "maxFlood":3,
@@ -3410,7 +3410,7 @@
             "sound":"revolver_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
-        "weapon2":{"name":"Aucune"},
+        "weapon2":{},
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "moveCost":2,
         "maxFlood":1,
@@ -3508,7 +3508,7 @@
             "sound":"saw",
             "ammo":["lame","lame-tungsten","lame-plasma"]
         },
-        "weapon2":{"name":"Aucune"},
+        "weapon2":{},
         "protection":["aucun"],
         "moveCost":1,
         "maxFlood":3,
