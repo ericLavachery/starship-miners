@@ -559,7 +559,7 @@ function attack(melee) {
     }
     // resistance oeufs
     if (targetBatType.skills.includes('resistall')) {
-        totalDamage = Math.round(totalDamage*10/(15+((playerInfos.mapDiff-1)*2.78)));
+        totalDamage = Math.round(totalDamage*10/(10+((playerInfos.mapDiff-1)*2.5)));
         console.log('résistance dégâts!');
     }
     // munitions limitées
@@ -1134,7 +1134,7 @@ function defense(melee) {
     }
     // resistance oeufs
     if (selectedBatType.skills.includes('resistall')) {
-        totalDamage = Math.round(totalDamage*10/(15+((playerInfos.mapDiff-1)*2.78)));
+        totalDamage = Math.round(totalDamage*10/(10+((playerInfos.mapDiff-1)*2.5)));
         console.log('résistance dégâts!');
     }
     // munitions limitées

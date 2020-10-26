@@ -54,6 +54,12 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.drugs === undefined) {
         playerInfos.drugs = ["Starka","Kirin","Sila","Skupiac","Bliss","Nitro"];
     }
+    if (playerInfos.gang === undefined) {
+        playerInfos.gang = 'rednecks';
+    }
+    if (playerInfos.gLevel === undefined) {
+        playerInfos.gLevel = 4;
+    }
     playerSkills();
 });
 // Terrains
