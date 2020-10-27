@@ -17,6 +17,9 @@ function batInfos(bat,pop) {
     let tagColor = 'cy';
     let batType = getBatType(bat);
     let tile = getTile(bat);
+    if (batType.skills.includes('transport')) {
+        moveInsideBats(bat);
+    }
     let unitsLeft = bat.squadsLeft*batType.squadSize;
     if (bat.citoyens >= 1) {
         unitsLeft = bat.citoyens;

@@ -1905,7 +1905,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","fly","jetpack","longshot","inflammable","baddef"],
+        "skills":["fouille","fortif","cible","fly","jetpack","longshot","inflammable","baddef","oknitro"],
         "fuzz":2.5,
         "deathFx":"human2"
     },
@@ -2225,7 +2225,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","camo","medic","fly","jetpack","longshot","inflammable","dealer","starka","kirin","octiron"],
+        "skills":["fouille","fortif","cible","camo","medic","fly","jetpack","longshot","inflammable","dealer","starka","kirin","octiron","oknitro"],
         "mediCost":5,
         "maxDrug":18,
         "fuzz":-1,
@@ -2428,7 +2428,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","camo","guerrilla","selfmedic","embuscade","berserk","fly","jetpack","longshot","inflammable","baddef"],
+        "skills":["fouille","fortif","cible","camo","guerrilla","selfmedic","embuscade","berserk","fly","jetpack","longshot","inflammable","baddef","oknitro"],
         "mediCost":9,
         "fuzz":-1,
         "deathFx":"162157__mediapaja2009__agony"
@@ -2480,7 +2480,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","selfmedic","leader","fly","jetpack","sentinelle","longshot","guerrilla","survivor","inflammable","maycamo","baddef"],
+        "skills":["fouille","fortif","cible","selfmedic","leader","fly","jetpack","sentinelle","longshot","guerrilla","survivor","inflammable","maycamo","baddef","oknitro"],
         "mediCost":9,
         "fuzz":3.5,
         "deathFx":"human1"
@@ -3924,7 +3924,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","selfmedic","leader","fly","jetpack","longshot","survivor","inflammable","guerrilla","maycamo"],
+        "skills":["fouille","fortif","cible","selfmedic","leader","fly","jetpack","longshot","survivor","inflammable","guerrilla","maycamo","oknitro"],
         "mediCost":8,
         "fuzz":2,
         "deathFx":"162157__mediapaja2009__agony"

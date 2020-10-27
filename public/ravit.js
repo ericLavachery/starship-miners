@@ -35,7 +35,7 @@ function goRavit() {
         let singleAmmoVolume = ravitVolume[1]/ammoNeed;
         console.log('singleAmmoVolume'+singleAmmoVolume);
         bataillons.forEach(function(bat) {
-            if (bat.loc === "zone") {
+            if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
                 if (batType.skills.includes('ravitaillement')) {
                     ravitLeft = calcRavit(bat);
@@ -109,7 +109,7 @@ function checkRavitDrug(myBat) {
     let anyRavit = false;
     let ravitLeft;
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone") {
+        if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             if (batType.skills.includes('ravitaillement')) {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
@@ -126,7 +126,8 @@ function checkRavitDrug(myBat) {
 
 function calcRavit(bat) {
     let batType = getBatType(bat);
-    let ravitLeft = batType.maxSkill;
+    let ravitLeft = 0;
+    ravitLeft = batType.maxSkill;
     console.log('startRavit='+ravitLeft);
     if (ravitLeft < 999) {
         if (bat.tags.includes('sU')) {
@@ -140,12 +141,15 @@ function calcRavit(bat) {
 
 function calcRavitDrug(bat) {
     let batType = getBatType(bat);
-    let ravitLeft = batType.maxDrug;
-    console.log('startRavit='+ravitLeft);
-    if (ravitLeft < 999) {
-        if (bat.tags.includes('dU')) {
-            let allTags = _.countBy(bat.tags);
-            ravitLeft = ravitLeft-allTags.dU;
+    let ravitLeft = 0;
+    if (batType.skills.includes('dealer')) {
+        ravitLeft = batType.maxDrug;
+        console.log('startRavit='+ravitLeft);
+        if (ravitLeft < 999) {
+            if (bat.tags.includes('dU')) {
+                let allTags = _.countBy(bat.tags);
+                ravitLeft = ravitLeft-allTags.dU;
+            }
         }
     }
     console.log('ravitLeft='+ravitLeft);
@@ -195,7 +199,7 @@ function goStock(apCost) {
         let stocktBat = {};
         let stockOK = false;
         bataillons.forEach(function(bat) {
-            if (bat.loc === "zone") {
+            if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
                 if (batType.skills.includes('stock')) {
                     if (calcDistance(selectedBat.tileId,bat.tileId) <= 1) {
@@ -229,7 +233,7 @@ function checkStock(myBat) {
     let batType;
     let anyStock = false;
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone") {
+        if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             if (batType.skills.includes('stock')) {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
@@ -257,7 +261,7 @@ function checkRavit(myBat) {
         let ravitLeft;
         let ravitVolume = calcRavitVolume(myBat);
         bataillons.forEach(function(bat) {
-            if (bat.loc === "zone") {
+            if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
                 if (batType.skills.includes('ravitaillement')) {
                     if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
@@ -281,7 +285,7 @@ function goRavitDrug(apCost) {
         let ravitLeft = 0;
         let biggestRavit = 0;
         bataillons.forEach(function(bat) {
-            if (bat.loc === "zone") {
+            if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
                 if (batType.skills.includes('ravitaillement')) {
                     ravitLeft = calcRavit(bat);

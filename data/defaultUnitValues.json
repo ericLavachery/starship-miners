@@ -52,7 +52,7 @@
     "mediCost":30,
     "mecanoCost":30,
     "maxSkill": 999,
-    "maxDrug": 0,
+    "maxDrug": 999,
     "refabTime":-1,
     "bldReq":[],
     "bldCost":"none",

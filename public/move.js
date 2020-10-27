@@ -401,3 +401,12 @@ function apLoss(batId,number,sloppy) {
     }
     return apLost;
 };
+
+function moveInsideBats(transBat) {
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "trans" && bat.locId === transBat.id) {
+            bat.tileId = transBat.tileId;
+            bat.oldTileId = transBat.tileId;
+        }
+    });
+};

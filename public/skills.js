@@ -322,6 +322,7 @@ function checkDrugs(myBat) {
                     }
                     if (batType.skills.includes('nitro') && playerInfos.drugs.includes('Nitro')) {
                         allDrugs.push('nitro');
+                        console.log(bat);
                     }
                 }
             }
