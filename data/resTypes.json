@@ -212,7 +212,7 @@
         "bld": "Pompe",
         "level": 1,
         "rarity": 100,
-        "cat": "none",
+        "cat": "zero",
         "batch": 6
     },
     {
@@ -230,7 +230,7 @@
         "bld": "Comptoir",
         "level": 1,
         "rarity": 30,
-        "cat": "none",
+        "cat": "zero",
         "batch": 6
     },
     {
@@ -239,7 +239,7 @@
         "bld": "Comptoir",
         "level": 1,
         "rarity": 100,
-        "cat": "none",
+        "cat": "zero",
         "batch": 6
     },
     {
@@ -248,7 +248,7 @@
         "bld": "Comptoir",
         "level": 1,
         "rarity": 100,
-        "cat": "none",
+        "cat": "zero",
         "batch": 6
     },
     {
@@ -257,7 +257,7 @@
         "bld": "Pompe",
         "level": 1,
         "rarity": 100,
-        "cat": "none",
+        "cat": "zero",
         "batch": 6
     },
     {
@@ -463,7 +463,7 @@
         "name": "Slime",
         "bld": "",
         "level": 4,
-        "rarity": 30,
+        "rarity": 25,
         "cat": "alien",
         "batch": 1
     },
@@ -472,7 +472,7 @@
         "name": "Noxis",
         "bld": "",
         "level": 4,
-        "rarity": 15,
+        "rarity": 25,
         "cat": "alien",
         "batch": 1
     },
@@ -481,7 +481,7 @@
         "name": "Germium",
         "bld": "",
         "level": 4,
-        "rarity": 15,
+        "rarity": 25,
         "cat": "alien",
         "batch": 1
     },
@@ -490,7 +490,7 @@
         "name": "Wingium",
         "bld": "",
         "level": 4,
-        "rarity": 10,
+        "rarity": 25,
         "cat": "alien",
         "batch": 1
     },
@@ -499,7 +499,7 @@
         "name": "Blendium",
         "bld": "",
         "level": 4,
-        "rarity": 10,
+        "rarity": 25,
         "cat": "alien",
         "batch": 1
     },
@@ -508,7 +508,7 @@
         "name": "Mephitis",
         "bld": "",
         "level": 4,
-        "rarity": 10,
+        "rarity": 25,
         "cat": "alien",
         "batch": 1
     },

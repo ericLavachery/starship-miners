@@ -38,6 +38,7 @@ let baseFilterChance = 4; // minimum 1 !!!
 let filterBase = {};
 let zone = [];
 let resources = [];
+let minedThisTurn = {};
 let mineRateDiv = 250; // divise le mining rate : def 100
 let resFoundDiv = 9; // default 9
 let resBatchDiv = 12;

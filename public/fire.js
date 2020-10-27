@@ -632,10 +632,10 @@ function attack(melee) {
         catOK = true;
     }
     let trouOK = false;
-    if (selectedWeap.ammo.includes('troueur') && totalDamage >= 3) {
+    if (selectedWeap.ammo.includes('troueur') && totalDamage >= targetBat.armor*1.5) {
         trouOK = true;
     }
-    if (selectedWeap.ammo.includes('acide') && totalDamage >= 75) {
+    if (selectedWeap.ammo.includes('acide') && totalDamage >= targetBat.armor*5) {
         trouOK = true;
     }
     if (trouOK && catOK) {

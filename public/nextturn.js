@@ -110,6 +110,7 @@ function nextTurnEnd() {
     let transBat = {};
     playerInfos.bldList = [];
     landers = [];
+    minedThisTurn = {};
     let thisAPBonus;
     let ravitNum;
     let emptyBonus;
@@ -340,6 +341,8 @@ function nextTurnEnd() {
         }
     });
     killBatList();
+    console.log('MINED THIS TURN');
+    console.log(minedThisTurn);
     playerInfos.mapTurn = playerInfos.mapTurn+1;
     if (playerInfos.mapTurn % 50 === 0 && playerInfos.mapTurn >= 1) {
         playerInfos.mapDiff++;

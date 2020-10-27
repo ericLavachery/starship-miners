@@ -46,8 +46,13 @@ function mining(bat) {
                             } else {
                                 bestDumper.transRes[res.name] = bestDumper.transRes[res.name]+resMiningRate;
                             }
+                            if (minedThisTurn[res.name] === undefined) {
+                                minedThisTurn[res.name] = resMiningRate;
+                            } else {
+                                minedThisTurn[res.name] = minedThisTurn[res.name]+resMiningRate;
+                            }
                             // diminution des gisements
-                            if (!permaRes && res.cat != 'none') {
+                            if (!permaRes && res.cat != 'zero') {
                                 tile.rs[res.name] = tile.rs[res.name]-Math.ceil(resMiningRate/10);
                             }
                         }
@@ -181,7 +186,7 @@ function getMiningRate(bat,fullRate) {
 function getResMiningRate(bat,res,value,fullRate) {
     let batType = getBatType(bat);
     let resHere = value;
-    if (resHere < minResForRate && res.cat != 'none') {
+    if (resHere < minResForRate && res.cat != 'zero') {
         resHere = minResForRate;
     }
     if (resHere > maxResForRate) {
@@ -592,20 +597,12 @@ function voirRessources() {
     // $('#resFind').append('<option value="">'+showOneRes+'</option>');
     $('#resFind').append('<option value="Toutes">Toutes</option>');
     let filteredResTypes = _.filter(resTypes,function(res) {
-        return (res.cat != 'alien' && res.cat != 'none');
+        return (res.cat != 'alien' && res.cat != 'zero');
     });
     let resIcon = '';
     let sortedResTypes = _.sortBy(filteredResTypes,'name');
     sortedResTypes.forEach(function(res) {
-        if (res.cat.includes('sky')) {
-            resIcon = '&starf;';
-        } else if (res.rarity <= 20 || res.cat === 'blue') {
-            resIcon = '&star;';
-        } else if (res.rarity <= 30) {
-            resIcon = '&dtri;';
-        } else {
-            resIcon = '';
-        }
+        resIcon = getResIcon(res);
         if (res.name === showOneRes) {
             if (allZoneRes.includes(res.name)) {
                 $('#resFind').append('<option value="'+res.name+'" selected>&check; '+res.name+' '+resIcon+'</option>');
@@ -655,6 +652,20 @@ function voirRessources() {
             }
         }
     });
+};
+
+function getResIcon(res) {
+    let resIcon;
+    if (res.cat.includes('sky')) {
+        resIcon = '&starf;';
+    } else if (res.rarity <= 20 || res.cat === 'blue') {
+        resIcon = '&star;';
+    } else if (res.rarity <= 30) {
+        resIcon = '&dtri;';
+    } else {
+        resIcon = '';
+    }
+    return resIcon;
 };
 
 function addZoneRes(tileRes) {

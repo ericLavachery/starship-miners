@@ -10,15 +10,23 @@ function voirReserve() {
     $('#conUnitList').append('<span class="constName or" id="gentils">RESERVE</span><br>');
     findLanders();
     let dispoCit = getDispoCit();
-    $('#conUnitList').append('<span class="paramName">Citoyens</span><span class="paramIcon"></span><span class="paramValue">'+dispoCit+'</span><br>');
+    $('#conUnitList').append('<span class="paramName">Citoyens</span><span class="paramIcon"></span><span class="paramValue cy">'+dispoCit+'</span><br>');
     let dispoRes;
-    let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'bld'),'cat'),'cat');
+    let minedRes;
+    let resIcon;
+    let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'rarity'),'cat'),'cat');
     sortedResTypes.reverse();
-    sortedResTypes = _.sortBy(sortedResTypes,'level')
+    // sortedResTypes = _.sortBy(sortedResTypes,'level')
     sortedResTypes.forEach(function(res) {
         dispoRes = getDispoRes(res.name);
+        minedRes = getMinedRes(res.name);
+        resIcon = getResIcon(res);
         if (dispoRes >= 1) {
-            $('#conUnitList').append('<span class="paramName">'+res.name+'</span><span class="paramIcon"></span><span class="paramValue">'+dispoRes+'</span><br>');
+            if (res.cat === 'alien' || minedRes <= 0) {
+                $('#conUnitList').append('<span class="paramName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="cy">'+dispoRes+'</span></span><br>');
+            } else {
+                $('#conUnitList').append('<span class="paramName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span><br>');
+            }
         }
     });
 };
@@ -47,6 +55,14 @@ function getDispoRes(res) {
         dispoRes = playerInfos.alienRes[res];
     }
     return dispoRes;
+};
+
+function getMinedRes(res) {
+    let minedRes = 0;
+    if (minedThisTurn[res] >= 1) {
+        minedRes = minedThisTurn[res];
+    }
+    return minedRes;
 };
 
 function getDispoCit() {
