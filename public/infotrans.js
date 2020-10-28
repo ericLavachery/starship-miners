@@ -111,7 +111,7 @@ function calcTransUnitsLeft(myBat,myBatType) {
 function checkTracking(myBat) {
     let tracking = false;
     let myBatType = getBatType(myBat);
-    if (myBatType.transMaxSize < 10) {
+    if (myBatType.transMaxSize < 25) {
         bataillons.forEach(function(bat) {
             if (bat.loc === "trans" && bat.locId == myBat.id) {
                 batType = getBatType(bat);
@@ -128,7 +128,7 @@ function embarquement(transId) {
     let transIndex = bataillons.findIndex((obj => obj.id == transId));
     let transBat = bataillons[transIndex];
     let transBatType = getBatType(transBat);
-    if (selectedBatType.skills.includes('tracked') && transBatType.transMaxSize < 10) {
+    if (selectedBatType.skills.includes('tracked') && transBatType.transMaxSize < 25) {
         transBat.apLeft = transBat.apLeft-4;
     }
     transBat.transIds.push(selectedBat.id);

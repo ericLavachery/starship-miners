@@ -68,7 +68,8 @@ function batInfos(bat,pop) {
     }
     // PROTECTION
     if (pop) {
-        $('#'+bodyPlace).append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span class="paramValue">'+batType.hp+'</span><br>');
+        let batHP = squadHP*batType.squads;
+        $('#'+bodyPlace).append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span class="paramValue">'+batType.hp+' / '+squadHP+' / '+batHP+'</span><br>');
     }
     let armure = bat.armor;
     if (bat.tags.includes('fortif')) {
