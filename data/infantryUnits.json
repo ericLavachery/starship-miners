@@ -2483,7 +2483,7 @@
             "sound":"bfg",
             "ammo":["bfg","bfg-g2"],
             "maxAmmo":8,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Générateur"
         },
         "protection":["kevlar","combo","kapton","mendium","titane","nano","adamantite"],
         "moveCost":2,

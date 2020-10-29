@@ -300,7 +300,7 @@ function attack(melee) {
     // rof*squadsLeft loop
     let shots = selectedWeap.rof*selectedBat.squadsLeft;
     // autodestruction or undead
-    if (selectedWeap.ammo.includes('autodestruction') || selectedBatType.skills.includes('undead')) {
+    if (selectedWeap.ammo.includes('autodestruction') || selectedBatType.skills.includes('undead') || selectedBat.tags.includes('zombie')) {
         shots = selectedWeap.rof*selectedBatType.squads;
     }
     // INFRASTRUCTURES
@@ -513,7 +513,7 @@ function attack(melee) {
     }
     // résistance blast
     if (targetBatType.skills.includes('resistblast') || targetBat.tags.includes('resistblast')) {
-        if (selectedWeap.ammo.includes('bfg') || selectedWeap.ammo.includes('nanite') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('dynamite') || selectedWeap.ammo.includes('bombe') || selectedWeap.ammo.includes('explosif') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('grenade') || selectedWeap.ammo.includes('disco')) {
+        if (selectedWeap.ammo.includes('nanite') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('dynamite') || selectedWeap.ammo.includes('bombe') || selectedWeap.ammo.includes('explosif') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('grenade') || selectedWeap.ammo.includes('disco')) {
             if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm')) {
                 totalDamage = Math.round(totalDamage/1.5);
                 apDamage = Math.round(apDamage/1.5);
@@ -663,7 +663,7 @@ function attack(melee) {
         $('#report').append('<span class="report rose">Blindage troué<br></span>');
     }
     // venin
-    if (selectedBatType.skills.includes('venin') && totalDamage >= 1 && targetBat.apLeft < -2 && targetBatType.cat == 'infantry' && !targetBatType.skills.includes('resistpoison')) {
+    if (selectedBatType.skills.includes('venin') && totalDamage >= 1 && targetBat.apLeft < -2 && targetBatType.cat == 'infantry' && !targetBatType.skills.includes('resistpoison') && !targetBat.tags.includes('zombie')) {
         if (!targetBat.tags.includes('venin')) {
             targetBat.tags.push('venin');
         }
@@ -673,7 +673,7 @@ function attack(melee) {
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium') || selectedWeap.ammo.includes('trap')) {
-            if (!targetBatType.skills.includes('resistpoison')) {
+            if (!targetBatType.skills.includes('resistpoison') && !targetBat.tags.includes('zombie')) {
                 if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.caLevel < 3)) || targetBatType.cat == 'aliens') {
                     targetBat.tags.push('poison');
                     if (selectedWeap.ammo.includes('atium')) {
@@ -698,7 +698,7 @@ function attack(melee) {
     // Toxine veuve
     let poisonVeuve = 0;
     if (totalDamage >= 1) {
-        if (selectedWeap.ammo.includes('toxine')) {
+        if (selectedWeap.ammo.includes('toxine') && !targetBat.tags.includes('zombie')) {
             if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
                 poisonVeuve = Math.ceil(totalDamage/(12+playerInfos.caLevel));
                 let i = 1;
@@ -757,7 +757,7 @@ function attack(melee) {
             infected = true;
         }
         if (infected) {
-            if ((targetBatType.cat == 'infantry' && !targetBatType.skills.includes('mutant')) || targetBatType.cat == 'aliens') {
+            if ((targetBatType.cat == 'infantry' && !targetBatType.skills.includes('mutant') && !targetBat.tags.includes('zombie')) || targetBatType.cat == 'aliens') {
                 targetBat.tags.push('maladie');
                 console.log('Maladie!');
                 $('#report').append('<span class="report rose">Maladie<br></span>');
@@ -794,10 +794,21 @@ function attack(melee) {
     let squadsOut = Math.floor(totalDamage/squadHP);
     targetBat.squadsLeft = targetBat.squadsLeft-squadsOut;
     // survivor
-    if (targetBat.squadsLeft <= 0 && !targetBat.tags.includes('lucky') && targetBatType.skills.includes('survivor')) {
-        targetBat.squadsLeft = 1;
-        targetBat.apLeft = targetBat.ap;
-        targetBat.tags.push('lucky');
+    if (targetBat.squadsLeft <= 0) {
+        if (targetBatType.skills.includes('survivor') && !targetBat.tags.includes('lucky')) {
+            targetBat.squadsLeft = 1;
+            targetBat.apLeft = targetBat.ap;
+            targetBat.tags.push('lucky');
+            $('#report').append('<span class="report rose">Survivant!<br></span>');
+        } else {
+            if (zombifiedTiles.includes(targetBat.tileId) && !targetBat.tags.includes('zombie') && targetBatType.cat === 'infantry' && !targetBatType.skills.includes('clone') && !targetBatType.skills.includes('cyber')) {
+                targetBat.squadsLeft = targetBatType.squads;
+                targetBat.damage = 0;
+                targetBat.xp = 150;
+                targetBat.tags.push('zombie');
+                $('#report').append('<span class="report rose">Zombifié!<br></span>');
+            }
+        }
     }
     console.log('Squads Out : '+squadsOut);
     if (squadsOut >= 1) {
@@ -939,7 +950,7 @@ function defense(melee) {
     }
     console.log('brideDef='+brideDef);
     let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);
-    if (targetBatType.skills.includes('undead')) {
+    if (targetBatType.skills.includes('undead') || targetBat.tags.includes('zombie')) {
         shots = Math.round(targetWeap.rof*targetBatType.squads*brideDef);
     }
     // INFRASTRUCTURES
@@ -1103,7 +1114,7 @@ function defense(melee) {
     }
     // résistance blast
     if (selectedBatType.skills.includes('resistblast') || selectedBat.tags.includes('resistblast')) {
-        if (targetWeap.ammo.includes('bfg') || targetWeap.ammo.includes('nanite') || targetWeap.ammo.includes('suicide') || targetWeap.ammo.includes('mine') || targetWeap.ammo.includes('autodestruction') || targetWeap.ammo.includes('dynamite') || targetWeap.ammo.includes('bombe') || targetWeap.ammo.includes('explosif') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('grenade') || targetWeap.ammo.includes('disco')) {
+        if (targetWeap.ammo.includes('nanite') || targetWeap.ammo.includes('suicide') || targetWeap.ammo.includes('mine') || targetWeap.ammo.includes('autodestruction') || targetWeap.ammo.includes('dynamite') || targetWeap.ammo.includes('bombe') || targetWeap.ammo.includes('explosif') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('grenade') || targetWeap.ammo.includes('disco')) {
             if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm')) {
                 totalDamage = Math.round(totalDamage/1.5);
                 apDamage = Math.round(apDamage/1.5);
@@ -1181,17 +1192,19 @@ function defense(melee) {
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium') || targetWeap.ammo.includes('trap')) {
-            if ((selectedBatType.cat == 'infantry' && (!selectedBatType.skills.includes('mutant') || playerInfos.caLevel < 3)) || selectedBatType.cat == 'aliens') {
-                selectedBat.tags.push('poison');
-                if (targetWeap.ammo.includes('atium')) {
+            if (!selectedBatType.skills.includes('resistpoison') && !selectedBat.tags.includes('zombie')) {
+                if ((selectedBatType.cat == 'infantry' && (!selectedBatType.skills.includes('mutant') || playerInfos.caLevel < 3)) || selectedBatType.cat == 'aliens') {
                     selectedBat.tags.push('poison');
-                    selectedBat.tags.push('poison');
+                    if (targetWeap.ammo.includes('atium')) {
+                        selectedBat.tags.push('poison');
+                        selectedBat.tags.push('poison');
+                    }
+                    if (targetWeap.ammo.includes('trap')) {
+                        selectedBat.tags.push('poison');
+                    }
+                    console.log('Poison!');
+                    $('#report').append('<span class="report rose">Poison<br></span>');
                 }
-                if (targetWeap.ammo.includes('trap')) {
-                    selectedBat.tags.push('poison');
-                }
-                console.log('Poison!');
-                $('#report').append('<span class="report rose">Poison<br></span>');
             }
         }
     }
@@ -1240,7 +1253,7 @@ function defense(melee) {
             infected = true;
         }
         if (infected) {
-            if ((selectedBatType.cat == 'infantry' && !selectedBatType.skills.includes('mutant')) || selectedBatType.cat == 'aliens') {
+            if ((selectedBatType.cat == 'infantry' && !selectedBatType.skills.includes('mutant') && !selectedBat.tags.includes('zombie')) || selectedBatType.cat == 'aliens') {
                 selectedBat.tags.push('maladie');
                 console.log('Maladie!');
                 $('#report').append('<span class="report rose">Maladie<br></span>');
@@ -1270,11 +1283,27 @@ function defense(melee) {
     console.log('Squad HP : '+squadHP);
     let squadsOut = Math.floor(totalDamage/squadHP);
     selectedBat.squadsLeft = selectedBat.squadsLeft-squadsOut;
+    selectedBat.damage = totalDamage-(squadsOut*squadHP);
     // survivor
-    if (selectedBat.squadsLeft <= 0 && !selectedBat.tags.includes('lucky') && selectedBatType.skills.includes('survivor')) {
-        selectedBat.squadsLeft = 1;
-        selectedBat.apLeft = selectedBat.ap;
-        selectedBat.tags.push('lucky');
+    console.log('ZOMBIFICATION');
+    console.log(selectedBat.squadsLeft);
+    if (selectedBat.squadsLeft <= 0) {
+        console.log('dead');
+        if (!selectedBat.tags.includes('lucky') && selectedBatType.skills.includes('survivor')) {
+            selectedBat.squadsLeft = 1;
+            selectedBat.apLeft = selectedBat.ap;
+            selectedBat.tags.push('lucky');
+            $('#report').append('<span class="report rose">Survivant!<br></span>');
+        } else {
+            if (zombifiedTiles.includes(selectedBat.tileId) && !selectedBat.tags.includes('zombie') && selectedBatType.cat === 'infantry' && !selectedBatType.skills.includes('clone') && !selectedBatType.skills.includes('cyber')) {
+                console.log('undead');
+                selectedBat.squadsLeft = selectedBatType.squads;
+                selectedBat.damage = 0;
+                selectedBat.xp = 150;
+                selectedBat.tags.push('zombie');
+                $('#report').append('<span class="report rose">Zombifié!<br></span>');
+            }
+        }
     }
     console.log('Squads Out : '+squadsOut);
     if (squadsOut >= 1) {
@@ -1285,7 +1314,6 @@ function defense(melee) {
             $('#report').append('<span class="report"> (reste '+unitsLeft+' '+selectedBat.type+')<br></span>');
         }
     }
-    selectedBat.damage = totalDamage-(squadsOut*squadHP);
     console.log('Damage Left : '+selectedBat.damage);
     selectedBatArrayUpdate();
     if (selectedBat.squadsLeft <= 0) {

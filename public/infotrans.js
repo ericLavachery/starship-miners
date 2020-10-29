@@ -15,6 +15,7 @@ function unloadInfos(myBat,myBatUnitType) {
     let balise = 'h4';
     let damageIcon = '';
     let tagsIcon = '';
+    let batAPLeft = 0;
     if (myBat.transIds != undefined) {
         if (myBat.transIds.length >= 1) {
             $('#unitInfos').append('<hr>');
@@ -40,7 +41,8 @@ function unloadInfos(myBat,myBatUnitType) {
                             balise = 'h3';
                         }
                     }
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+bat.apLeft+' PA" class="boutonGris skillButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonBleu skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
+                    batAPLeft = Math.floor(bat.apLeft);
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA" class="boutonGris skillButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonBleu skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
                 }
             });
         }

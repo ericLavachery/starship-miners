@@ -118,6 +118,9 @@ let landers = [];
 let fogRange = 5;
 let foggersTiles = [];
 let foggedTiles = [];
+let zombRange = 5;
+let zombifiersTiles = [];
+let zombifiedTiles = [];
 let startLander = 5;
 // ALIENS
 let isFFW = false;

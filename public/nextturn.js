@@ -317,6 +317,9 @@ function nextTurnEnd() {
                 blub(bat,batType);
             }
             bat.xp = bat.xp.toFixedNumber(2);
+            if (bat.tags.includes('zombie')) {
+                bat.xp = 150;
+            }
             bat.apLeft = bat.apLeft.toFixedNumber(1);
             // nolist
             if (batType.skills.includes('nolist') && !bat.tags.includes('nolist')) {
@@ -329,6 +332,14 @@ function nextTurnEnd() {
             // fin champ de force
             if (bat.type === 'Champ de force') {
                 if (playerInfos.mapTurn >= bat.creaTurn+25) {
+                    batDeathEffect(bat,true,'Bataillon détruit',bat.type+' expiré.');
+                    bat.squadsLeft = 0;
+                    checkDeath(bat,batType);
+                }
+            }
+            // fin clones
+            if (batType.skills.includes('clone')) {
+                if (bat.xp >= 50) {
                     batDeathEffect(bat,true,'Bataillon détruit',bat.type+' expiré.');
                     bat.squadsLeft = 0;
                     checkDeath(bat,batType);
@@ -396,12 +407,16 @@ function turnInfo() {
     }
     let fuzzTotal = 0;
     foggersTiles = [];
+    zombifiersTiles = [];
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
             batFuzz = calcBatFuzz(bat);
             fuzzTotal = fuzzTotal+batFuzz;
             if (bat.type === 'Fog' && bat.tags.includes('fog')) {
                 foggersTiles.push(bat.tileId);
+            }
+            if (bat.type === 'Necrotrucks') {
+                zombifiersTiles.push(bat.tileId);
             }
         }
     });
@@ -414,6 +429,7 @@ function turnInfo() {
     // foggedTiles
     let distance;
     foggedTiles = [];
+    zombifiedTiles = [];
     zone.forEach(function(tile) {
         foggersTiles.forEach(function(foggTile) {
             distance = calcDistance(tile.id,foggTile);
@@ -421,7 +437,14 @@ function turnInfo() {
                 foggedTiles.push(tile.id);
             }
         });
+        zombifiersTiles.forEach(function(zombTile) {
+            distance = calcDistance(tile.id,zombTile);
+            if (distance <= zombRange) {
+                zombifiedTiles.push(tile.id);
+            }
+        });
     });
+    console.log(zombifiedTiles);
     centerMap();
     $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
     $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
@@ -638,14 +661,14 @@ function tagsEffect(bat,batType) {
     }
     // MALADIE
     if (bat.tags.includes('maladie')) {
-        if (bat.tags.includes('skupiac') || bat.tags.includes('octiron')) {
+        if (bat.tags.includes('skupiac') || bat.tags.includes('octiron') || bat.tags.includes('zombie')) {
             tagDelete(bat,'maladie');
         } else {
             bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
         }
     }
     // OCTIRON & POISONS
-    if (bat.tags.includes('octiron') || batType.skills.includes('resistpoison')) {
+    if (bat.tags.includes('octiron') || batType.skills.includes('resistpoison') || bat.tags.includes('zombie')) {
         if (bat.tags.includes('venin')) {
             tagDelete(bat,'venin');
         }
@@ -714,7 +737,7 @@ function tagsEffect(bat,batType) {
             }
         }
         // VENIN
-        if (bat.tags.includes('venin') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron')) {
+        if (bat.tags.includes('venin') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron') && !bat.tags.includes('zombie')) {
             totalDamage = bat.damage+Math.round(rand.rand((Math.round(venumDamage/3)),venumDamage)*batType.squads*batType.squadSize/60);
             console.log('VenomDamage='+totalDamage);
             squadHP = batType.squadSize*batType.hp;
@@ -726,7 +749,7 @@ function tagsEffect(bat,batType) {
             }
         }
         // POISON
-        if (bat.tags.includes('poison') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron')) {
+        if (bat.tags.includes('poison') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron') && !bat.tags.includes('zombie')) {
             let allTags = _.countBy(bat.tags);
             let poisonPower = allTags.poison*poisonDamage;
             if (bat.team === 'player') {
