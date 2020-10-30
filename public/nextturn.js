@@ -468,7 +468,7 @@ function tagsUpdate(bat) {
     tagDelete(bat,'noBis1');
     tagDelete(bat,'noBis2');
     tagDelete(bat,'action');
-    if (bat.apLeft >= 0) {
+    if (bat.apLeft >= 0-bat.ap) {
         tagDelete(bat,'construction');
         tagDelete(bat,'ravit');
     }
