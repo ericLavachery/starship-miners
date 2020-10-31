@@ -367,19 +367,19 @@ function attack(melee) {
         }
     }
     // SHIELD
-    let hasShield = 0;
+    let shieldChance = 0;
     if (targetBatType.skills.includes('shield')) {
-        hasShield = 2;
+        shieldChance = 67;
     } else {
         if (targetBatType.kind === 'bug' && bugSHIELD) {
-            hasShield = 6;
+            shieldChance = 22;
         }
         if (targetBatType.kind === 'egg' && eggSHIELD) {
-            hasShield = 6;
+            shieldChance = 33;
         }
     }
-    if (activeTurn === 'player' && hasShield >= 1 && selectedWeap.isMelee === false && selectedWeap.noShield === false && !selectedWeap.ammo.includes('adamantium') && !selectedWeap.ammo.includes('marquage') && !selectedWeap.ammo.includes('-fleche') && !selectedWeap.ammo.includes('-sunburst')) {
-        if (rand.rand(1,3) >= 2 && !targetBat.tags.includes('shield')) {
+    if (activeTurn === 'player' && shieldChance >= 1 && selectedWeap.isMelee === false && selectedWeap.noShield === false && !selectedWeap.ammo.includes('adamantium') && !selectedWeap.ammo.includes('marquage') && !selectedWeap.ammo.includes('-fleche') && !selectedWeap.ammo.includes('-sunburst')) {
+        if (rand.rand(1,100) <= shieldChance && !targetBat.tags.includes('shield')) {
             targetBat.tags.push('shield');
         }
         if (targetBat.tags.includes('shield')) {
@@ -387,7 +387,7 @@ function attack(melee) {
             if (selectedWeap.ammo.includes('gaz')) {
                 shieldValue = Math.ceil(shieldValue/2);
             }
-            shots = Math.ceil(shots/shieldValue*hasShield/2);
+            shots = Math.ceil(shots/shieldValue);
             $('#report').append('<span class="report rose">Bouclier activé<br></span>');
         }
     }
@@ -549,6 +549,11 @@ function attack(melee) {
             console.log('résistance acide!');
         }
     }
+    // résistance all
+    if (targetBatType.skills.includes('resistall') || targetBat.tags.includes('resistall')) {
+        totalDamage = Math.round(totalDamage/1.5);
+        $('#report').append('<span class="report rose">Protection 33%<br></span>');
+    }
     // ricochet
     if (targetBatType.skills.includes('ricochet') || targetBat.tags.includes('ricochet')) {
         if (!selectedWeap.ammo.includes('feu') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm') && !selectedWeap.ammo.includes('fire') && !selectedWeap.ammo.includes('pyratol') && !selectedWeap.ammo.includes('lf-') && !selectedWeap.ammo.includes('lt-') && !selectedWeap.ammo.includes('molotov') && !selectedWeap.ammo.includes('laser')) {
@@ -573,7 +578,7 @@ function attack(melee) {
         }
     }
     // resistance oeufs
-    if (targetBatType.skills.includes('resistall')) {
+    if (targetBatType.skills.includes('eggprotect')) {
         let eggProt = 100-Math.round(1000/(10+((playerInfos.mapDiff-1)*2.5)));
         totalDamage = Math.round(totalDamage*10/(10+((playerInfos.mapDiff-1)*2.5)));
         $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
@@ -590,10 +595,10 @@ function attack(melee) {
     }
     console.log('Previous Damage : '+targetBat.damage);
     console.log('Damage : '+totalDamage);
-    $('#report').append('<span class="report cy">Dégâts: '+totalDamage+'<br></span>');
+    $('#report').append('<span class="report vert bd">Dégâts: '+totalDamage+'<br></span>');
     // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
     // agrippeur
-    if (selectedBatType.skills.includes('grip') && totalDamage >= 1 && (selectedBatType.size+3 >= targetBatType.size || selectedBatType.name == 'Androks')) {
+    if (selectedBatType.skills.includes('grip') && !targetBatType.skills.includes('zerogrip') && totalDamage >= 1 && (selectedBatType.size+3 >= targetBatType.size || selectedBatType.name == 'Androks')) {
         let gripbonus = 0;
         if (selectedBatType.name == 'Androks' || selectedBatType.name == 'Homards') {
             gripbonus = 40;
@@ -636,7 +641,21 @@ function attack(melee) {
             } else {
                 gripDiv = gripDiv-0.75;
             }
-            apDamage = apDamage+Math.round((selectedBat.squadsLeft+rand.rand(0,10)-5)*3/gripDiv);
+            let gripDamage = Math.round((selectedBat.squadsLeft+rand.rand(0,10)-5)*3/gripDiv);
+            if (tile.infra != undefined) {
+                if (targetBatType.cat != 'vehicles' || targetBatType.skills.includes('robot') || targetBatType.skills.includes('cyber')) {
+                    if (tile.infra === 'Miradors') {
+                        gripDamage = Math.round(gripDamage*50/100);
+                    } else if (tile.infra === 'Palissades') {
+                        gripDamage = Math.round(gripDamage*50/100);
+                    } else if (tile.infra === 'Remparts') {
+                        gripDamage = Math.round(gripDamage*35/100);
+                    } else if (tile.infra === 'Murailles') {
+                        gripDamage = Math.round(gripDamage*25/100);
+                    }
+                }
+            }
+            apDamage = apDamage+gripDamage;
             console.log('Grip OK');
             $('#report').append('<span class="report rose">Agrippé<br></span>');
         } else {
@@ -1150,6 +1169,11 @@ function defense(melee) {
             console.log('résistance acide!');
         }
     }
+    // résistance all
+    if (selectedBatType.skills.includes('resistall') || selectedBat.tags.includes('resistall')) {
+        totalDamage = Math.round(totalDamage/1.5);
+        $('#report').append('<span class="report rose">Protection 33%<br></span>');
+    }
     // ricochet
     if (selectedBatType.skills.includes('ricochet') || selectedBat.tags.includes('ricochet')) {
         if (!targetWeap.ammo.includes('feu') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm') && !targetWeap.ammo.includes('fire') && !targetWeap.ammo.includes('pyratol') && !targetWeap.ammo.includes('lf-') && !targetWeap.ammo.includes('lt-') && !targetWeap.ammo.includes('molotov') && !targetWeap.ammo.includes('laser')) {
@@ -1174,7 +1198,7 @@ function defense(melee) {
         }
     }
     // resistance oeufs
-    if (selectedBatType.skills.includes('resistall')) {
+    if (selectedBatType.skills.includes('eggprotect')) {
         let eggProt = 100-Math.round(1000/(10+((playerInfos.mapDiff-1)*2.5)));
         totalDamage = Math.round(totalDamage*10/(10+((playerInfos.mapDiff-1)*2.5)));
         $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
@@ -1187,7 +1211,7 @@ function defense(melee) {
         targetBat.tags.push('aU');
     }
     console.log('Damage : '+totalDamage);
-    $('#report').append('<span class="report cy">Dégâts: '+totalDamage+'<br></span>');
+    $('#report').append('<span class="report vert bd">Dégâts: '+totalDamage+'<br></span>');
     // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {

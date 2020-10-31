@@ -671,8 +671,8 @@
             "cost":3,
             "range":1,
             "rof":27,
-            "accuracy":20,
-            "power":7,
+            "accuracy":22,
+            "power":6,
             "aoe":"unit",
             "sound":"kalach",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
@@ -683,8 +683,8 @@
             "range":1,
             "elevation":1,
             "rof":18,
-            "accuracy":24,
-            "power":7,
+            "accuracy":26,
+            "power":6,
             "aoe":"unit",
             "sound":"calibre_sa",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
@@ -2542,7 +2542,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","bigfortif","cible","selfbadmedic","bastion","camo","longshot","recupcit"],
+        "skills":["fortif","bigfortif","cible","selfbadmedic","bastion","camo","longshot","recupcit","zerogrip"],
         "mediCost":9,
         "fuzz":1,
         "deathFx":"human3"
@@ -2991,7 +2991,7 @@
             "elevation":1,
             "rof":20,
             "accuracy":23,
-            "power":7,
+            "power":6,
             "aoe":"unit",
             "sound":"calibre_sa",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]

@@ -348,6 +348,9 @@ h5 {
     color: #d5cabd;
     /* font-weight: bold; */
 }
+.bd {
+    font-weight: bold;
+}
 .cy {
     color: #6be9b4;
     font-weight: bold;
