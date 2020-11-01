@@ -1092,6 +1092,55 @@ function checkDrop(layBat) {
 function unveilAliens(myBat) {
     let myKind = getEggKind(myBat);
     let thisKind;
+    let veiledKindsNear = [];
+    let veiledKinds = [];
+    let distance;
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            if (bat.id != myBat.id) {
+                if (bat.type == 'Oeuf voilé') {
+                    thisKind = getEggKind(bat);
+                    if (!veiledKinds.includes(thisKind)) {
+                        veiledKinds.push(thisKind);
+                    }
+                    distance = calcDistance(myBat.tileId,bat.tileId);
+                    if (distance <= 8) {
+                        if (!veiledKindsNear.includes(thisKind)) {
+                            veiledKindsNear.push(thisKind);
+                        }
+                    }
+                }
+            }
+        }
+    });
+    if (!veiledKinds.includes(myKind)) {
+        aliens.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                batType = getBatType(bat);
+                if (bat.tags.includes('invisible') && batType.kind == myKind && !batType.skills.includes('hide')) {
+                    tagDelete(bat,'invisible');
+                }
+            }
+        });
+    } else if (!veiledKindsNear.includes(myKind)) {
+        aliens.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                batType = getBatType(bat);
+                if (bat.tags.includes('invisible') && batType.kind == myKind && !batType.skills.includes('hide')) {
+                    distance = calcDistance(myBat.tileId,bat.tileId);
+                    if (distance <= 8) {
+                        tagDelete(bat,'invisible');
+                    }
+                }
+            }
+        });
+    }
+    centerMap();
+};
+
+function unveilAliensOld(myBat) {
+    let myKind = getEggKind(myBat);
+    let thisKind;
     let veiledKinds = [];
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {

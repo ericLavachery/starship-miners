@@ -431,6 +431,9 @@ function conOut() {
     showResOpen = false;
     $("#conUnitList").css("display","none");
     $("#conAmmoList").css("display","none");
+    if (Object.keys(selectedBat).length >= 1) {
+        showBatInfos(selectedBat);
+    }
 };
 
 $("#minimap").css("display","block");
