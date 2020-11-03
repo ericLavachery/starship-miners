@@ -49,9 +49,9 @@
         "name": "Cuivre",
         "bld": "Mine",
         "level": 2,
-        "rarity": 85,
+        "rarity": 40,
         "cat": "white",
-        "batch": 4
+        "batch": 3
     },
     {
         "id": 5,
