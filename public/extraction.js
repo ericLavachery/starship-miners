@@ -87,7 +87,7 @@ function getTerrainRes(terrain,tile) {
     } else if (terrain.name === 'B' && tile.seed >= 4) {
         srs.Bois = 150;
     } else if (terrain.name === 'B') {
-        srs.Bois = 30;
+        srs.Bois = 35;
     }
     // Végétaux
     if (terrain.name === 'F') {
@@ -99,11 +99,11 @@ function getTerrainRes(terrain,tile) {
     }
     // Huile
     if (terrain.name === 'F' && tile.seed === 5) {
-        srs.Huile = 100;
+        srs.Huile = 65;
     } else if (terrain.name === 'B' && tile.seed === 6) {
-        srs.Huile = 50;
+        srs.Huile = 35;
     } else if (terrain.name === 'S' && tile.seed === 6) {
-        srs.Huile = 250;
+        srs.Huile = 180;
     } else if (terrain.name === 'S' && tile.seed >= 4) {
         srs.Huile = 50;
     }
