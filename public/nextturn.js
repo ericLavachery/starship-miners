@@ -391,6 +391,9 @@ function turnInfo() {
             } else if (!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) {
                 numberOfAliens++;
             } else if (bat.type.includes('Oeuf')) {
+                if (playerInfos.skills.includes('det3')) {
+                    numberOfEggs++;
+                }
                 realNumberOfEggs++;
             }
         }
@@ -811,6 +814,9 @@ function checkDeath(bat,batType) {
                     eggsNum = eggsNum-1;
                 }
                 if (bat.type === 'Oeuf voilé') {
+                    if (playerInfos.skills.includes('det3')) {
+                        eggsNum = eggsNum-1;
+                    }
                     unveilAliens(bat);
                 }
             }

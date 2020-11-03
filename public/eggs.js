@@ -318,6 +318,9 @@ function dropEgg(alienUnit,theArea) {
             if (alienUnit === 'Oeuf' || alienUnit === 'Coque' || alienUnit === 'Cocon') {
                 eggsNum++;
             }
+            if (alienUnit === 'Oeuf voilé' && playerInfos.skills.includes('det3')) {
+                eggsNum++;
+            }
         }
         if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) >= 1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;

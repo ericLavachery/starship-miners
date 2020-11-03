@@ -20,9 +20,9 @@ function weaponsInfos(bat,batType,pop) {
     cheapWeapCost = 99;
     let accFly;
     let accGround;
-    if (batType.weapon.rof >= 1 && batType.weapon2.rof >= 1 && batType.weapon.name === batType.weapon2.name) {
-        showW1 = false;
-    }
+    // if (batType.weapon.rof >= 1 && batType.weapon2.rof >= 1 && batType.weapon.name === batType.weapon2.name) {
+    //     showW1 = false;
+    // }
     // console.log('rofs');
     // console.log(batType.weapon.rof);
     // console.log(batType.weapon2.rof);
@@ -38,7 +38,7 @@ function weaponsInfos(bat,batType,pop) {
             baseAmmo = thisWeapon.maxAmmo;
             ammoLeft = calcAmmos(bat,baseAmmo);
             balise = 'h4';
-            if (thisWeapon.name === selectedWeap.name) {
+            if (thisWeapon.num === selectedWeap.num) {
                 balise = 'h1';
             }
             noBisOK = true;
@@ -190,7 +190,7 @@ function weaponsInfos(bat,batType,pop) {
             baseAmmo = thisWeapon.maxAmmo;
             ammoLeft = calcAmmos(bat,baseAmmo);
             balise = 'h4';
-            if (thisWeapon.name === selectedWeap.name) {
+            if (thisWeapon.num === selectedWeap.num) {
                 balise = 'h1';
             }
             noBisOK = true;

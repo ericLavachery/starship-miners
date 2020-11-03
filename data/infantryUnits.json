@@ -508,18 +508,6 @@
         "ap":14,
         "maxSalvo":1,
         "weapon":{
-            "name":"Pistolet automatique",
-            "cost":2,
-            "range":1,
-            "isShort":true,
-            "rof":12,
-            "accuracy":16,
-            "power":4,
-            "aoe":"unit",
-            "sound":"pistol_x4",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
-        },
-        "weapon2":{
             "name":"Fusil de précision",
             "cost":6,
             "range":2,
@@ -533,11 +521,23 @@
             "sound":"calibre_sniper",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
+        "weapon2":{
+            "name":"Fusil de précision",
+            "cost":6,
+            "range":0,
+            "rof":3,
+            "accuracy":20,
+            "power":10,
+            "armors":0.75,
+            "aoe":"unit",
+            "sound":"calibre_sniper",
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+        },
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","camo","selfbadmedic"],
+        "skills":["fouille","fortif","cible","camo","selfbadmedic","unemun"],
         "mediCost":8,
         "fuzz":-1,
         "deathFx":"human1"
@@ -572,18 +572,17 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
-            "name":"Lame",
-            "cost":1,
-            "range":0,
-            "isMelee":true,
-            "isShort":true,
+            "name":"Carabine",
+            "cost":4,
+            "range":2,
+            "elevation":1,
             "rof":6,
-            "accuracy":19,
-            "power":4,
-            "armors":0.85,
+            "accuracy":27,
+            "dca":1.25,
+            "power":7,
             "aoe":"unit",
-            "sound":"lame",
-            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
+            "sound":"calibre_carabine",
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "moveCost":3,
@@ -1105,7 +1104,18 @@
             "sound":"revolver_multi",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
-        "weapon2":{},
+        "weapon2":{
+            "name":"Pistolets automatiques",
+            "cost":1,
+            "range":1,
+            "isShort":true,
+            "rof":27,
+            "accuracy":19,
+            "power":5,
+            "aoe":"unit",
+            "sound":"revolver_multi",
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+        },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "moveCost":3,
         "maxFlood":3,
@@ -1199,16 +1209,17 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
-            "name":"Pistolet",
-            "cost":2,
-            "range":1,
-            "isShort":true,
-            "rof":8,
-            "accuracy":16,
-            "power":4,
+            "name":"Mitrailleuse",
+            "cost":7,
+            "range":2,
+            "elevation":1,
+            "rof":28,
+            "accuracy":20,
+            "power":10,
+            "armors":0.7,
             "aoe":"unit",
-            "sound":"pistol_x2",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "sound":"mit_mid",
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "moveCost":4,
         "maxFlood":2,
@@ -1252,16 +1263,19 @@
             "ravitBld":"Armurerie"
         },
         "weapon2":{
-            "name":"Pistolet automatique",
-            "cost":2,
-            "range":1,
-            "isShort":true,
-            "rof":16,
-            "accuracy":17,
-            "power":4,
+            "name":"Minigun",
+            "cost":7,
+            "range":2,
+            "elevation":2,
+            "rof":64,
+            "accuracy":18,
+            "power":6,
+            "armors":0.8,
             "aoe":"unit",
-            "sound":"pistol_x4",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "sound":"mit_minigun",
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"],
+            "maxAmmo":32,
+            "ravitBld":"Armurerie"
         },
         "moveCost":5,
         "maxFlood":2,
@@ -2578,21 +2592,17 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
-            "name":"RPG",
-            "cost":6,
+            "name":"Fusil mitrailleur",
+            "cost":4,
             "range":1,
             "elevation":1,
-            "noBis":true,
-            "noDef":true,
-            "rof":4,
-            "accuracy":10,
-            "dca":0.5,
-            "power":22,
-            "aoe":"squad",
-            "sound":"rpg",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium"],
-            "maxAmmo":8,
-            "ravitBld":"Armurerie"
+            "rof":16,
+            "accuracy":17,
+            "power":8,
+            "armors":0.8,
+            "aoe":"unit",
+            "sound":"mit_light2",
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["kevlar","acier","combo","kapton","mendium","titane","nano","adamantite","aegis","battlesuit"],
         "moveCost":3,
@@ -2923,16 +2933,16 @@
         "ap":22,
         "maxSalvo":1,
         "weapon":{
-            "name":"Pistolet plasma",
-            "cost":2,
-            "range":1,
+            "name":"Pistolet laser",
+            "cost":1,
+            "range":2,
             "isShort":true,
-            "rof":12,
-            "accuracy":20,
-            "power":7,
+            "rof":16,
+            "accuracy":30,
+            "power":5,
             "aoe":"unit",
-            "sound":"plasma_pistol",
-            "ammo":["plasma","plastanium","uridium"]
+            "sound":"laser_fusil_x2",
+            "ammo":["laser","laser-g2"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -3297,7 +3307,7 @@
             "armors":0.6,
             "aoe":"brochette",
             "sound":"firemg_sa",
-            "ammo":["fireshells","fireshells-pyratol","fireshells-nanite"]
+            "ammo":["fireshells","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
         },
         "weapon2":{
             "name":"Blister gun (auto)",
@@ -3311,7 +3321,7 @@
             "armors":0.6,
             "aoe":"brochette",
             "sound":"firemg",
-            "ammo":["fireshells","fireshells-pyratol","fireshells-nanite"],
+            "ammo":["fireshells","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
             "maxAmmo":18,
             "ravitBld":"Armurerie"
         },
@@ -3320,7 +3330,7 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","selfbadmedic","meleehelp","cyber","maycamo","unemun"],
+        "skills":["fouille","fortif","cible","selfbadmedic","meleehelp","cyber","maycamo"],
         "mediCost":6,
         "fuzz":1,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
@@ -3508,16 +3518,16 @@
         "ap":22,
         "maxSalvo":1,
         "weapon":{
-            "name":"Pistolet plasma",
-            "cost":2,
-            "range":1,
+            "name":"Pistolet laser",
+            "cost":1,
+            "range":2,
             "isShort":true,
-            "rof":9,
-            "accuracy":23,
-            "power":7,
+            "rof":16,
+            "accuracy":12,
+            "power":5,
             "aoe":"unit",
-            "sound":"plasma_pistol",
-            "ammo":["plasma","plastanium","uridium","nanite"]
+            "sound":"laser_fusil_x2",
+            "ammo":["laser","laser-g2"]
         },
         "weapon2":{
             "name":"Lance-flammes",
@@ -4098,15 +4108,16 @@
         },
         "weapon2":{
             "name":"Pistolet laser",
-            "cost":2,
+            "cost":1,
             "range":1,
             "elevation":1,
-            "rof":12,
+            "isShort":true,
+            "rof":16,
             "accuracy":30,
             "power":5,
             "aoe":"unit",
-            "sound":"laser_fusil",
-            "ammo":["laser"]
+            "sound":"laser_fusil_x2",
+            "ammo":["laser","laser-g2"]
         },
         "protection":["aucune"],
         "moveCost":3,

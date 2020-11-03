@@ -512,7 +512,7 @@
         "weapon2":{
             "name":"Blister canon",
             "cost":4,
-            "range":2,
+            "range":3,
             "elevation":1,
             "rof":24,
             "accuracy":22,
@@ -520,7 +520,7 @@
             "armors":0.3,
             "aoe":"brochette",
             "sound":"firemg_heavy_sa",
-            "ammo":["fireshells","fireshells-pyratol","fireshells-nanite"]
+            "ammo":["fireshells","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
         },
         "protection":["aucun","dunium","bonibo","adamantite"],
         "moveCost":99,

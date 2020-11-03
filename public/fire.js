@@ -1518,6 +1518,9 @@ function batDeath(bat,count) {
                     eggsNum = eggsNum-1;
                 }
                 if (bat.type === 'Oeuf voilé') {
+                    if (playerInfos.skills.includes('det3')) {
+                        eggsNum = eggsNum-1;
+                    }
                     unveilAliens(bat);
                 }
                 playMusic('eggKill',false);
