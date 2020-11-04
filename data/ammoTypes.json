@@ -1760,6 +1760,17 @@
         "aoe": ""
     },
     {
+        "name": "fuel",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
         "name": "napalm",
         "range": 1,
         "rof": 1,

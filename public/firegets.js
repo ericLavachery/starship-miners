@@ -621,6 +621,16 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.elevation = weapon.elevation;
     }
+    if (weapon.spot === undefined) {
+        thisWeapon.spot = false;
+    } else {
+        thisWeapon.spot = weapon.spot;
+    }
+    if (weapon.kit === undefined) {
+        thisWeapon.kit = false;
+    } else {
+        thisWeapon.kit = weapon.kit;
+    }
     if (weapon.noAtt === undefined) {
         thisWeapon.noAtt = false;
     } else {

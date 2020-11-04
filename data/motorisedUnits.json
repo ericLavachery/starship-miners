@@ -1326,7 +1326,7 @@
         "stealth":0,
         "speed":2,
         "ap":21,
-        "maxSalvo":2,
+        "maxSalvo":1,
         "weapon":{
             "name":"Mitrailleuses",
             "cost":4,
@@ -3493,7 +3493,7 @@
         "maxScarp":2,
         "maxVeg":3,
         "skills":["cible","ravitaillement","fastempty","dealer","nitro"],
-        "maxSkill":24,
+        "maxSkill":32,
         "maxDrug":6,
         "fuzz":2,
         "deathFx":"S_CarExplosion02"
@@ -3535,7 +3535,7 @@
         "maxScarp":2,
         "maxVeg":3,
         "skills":["cible","mecano","dealer","nitro"],
-        "mecanoCost":8,
+        "mecanoCost":5,
         "maxDrug":24,
         "fuzz":2,
         "deathFx":"S_CarExplosion02"
