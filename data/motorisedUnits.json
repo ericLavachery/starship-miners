@@ -45,6 +45,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","lunette1","chargeur1"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -427,6 +428,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","chargeur"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -480,6 +482,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "equip":["aucun","lunette2","chargeur2"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -648,6 +651,7 @@
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "equip":["aucun","lunette","chargeur"],
         "moveCost":5,
         "maxFlood":0,
         "maxScarp":2,
@@ -863,6 +867,7 @@
         },
         "weapon2":{},
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","lunette1","chargeur1"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -922,6 +927,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "equip":["aucun","lunette1","chargeur1"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":2,
@@ -1189,6 +1195,7 @@
         },
         "weapon2":{},
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","lunette1","chargeur1"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":2,
@@ -1298,6 +1305,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","acier","titane","kanchan","chobham","adamantite"],
+        "equip":["aucun","lunette1","chargeur1"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -1359,6 +1367,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","lunette","chargeur"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -1475,6 +1484,7 @@
             "ammo":["lame","lame-tungsten"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","lunette1","chargeur1"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":2,
@@ -1640,6 +1650,7 @@
             "ravitBld":"Atelier"
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","gilet","chargeur1"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
@@ -1693,6 +1704,7 @@
             "ravitBld":"Atelier"
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","chargeur1"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
@@ -1911,6 +1923,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","chargeur1"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -2025,6 +2038,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","chargeur1"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -2264,6 +2278,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "equip":["aucun","lunette1","chargeur1"],
         "moveCost":4,
         "maxFlood":1,
         "maxScarp":2,
@@ -2442,6 +2457,7 @@
         },
         "weapon2":{},
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","chargeur1"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -2621,6 +2637,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "equip":["aucun","lunette1","chargeur1"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -2678,6 +2695,7 @@
             "ammo":["lame","lame-tungsten"]
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "equip":["aucun","lunette1","chargeur1"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -2738,6 +2756,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","lunette2","chargeur2"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":1,
@@ -2789,6 +2808,7 @@
             "ravitBld":"Derrick"
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","chargeur1"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -2841,6 +2861,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","lunette1","chargeur1"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":2,
@@ -2898,6 +2919,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","lunette1","chargeur1"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":2,
@@ -2955,6 +2977,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","chargeur1"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -3172,6 +3195,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "equip":["aucun","chargeur1"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
@@ -3490,6 +3514,7 @@
             "ravitBld":"Armurerie"
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","chargeur1"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -3532,6 +3557,7 @@
         },
         "weapon2":{},
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","chargeur1"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -3693,6 +3719,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "equip":["aucun","chargeur1"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":2,
@@ -3917,6 +3944,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","chargeur1"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":2,
@@ -3977,6 +4005,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","lunette1","chargeur1"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
