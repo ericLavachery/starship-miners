@@ -368,8 +368,10 @@ function calcMoveCost(targetTileId,diag) {
         if (moveCost == 1) {
             moveCost = 1.5;
         }
-    } else if (selectedBat.team == 'aliens' && !selectedBatType.skills.includes('hover')) {
+    } else if (selectedBat.team == 'aliens' && !selectedBatType.skills.includes('hover') && !selectedBatType.skills.includes('okwater')) {
         moveCost = selectedBatType.moveCost+terrainTypes[terIndex].alienmc;
+    } else if (selectedBatType.skills.includes('okwater')) {
+        moveCost = selectedBatType.moveCost+terrainTypes[terIndex].larvemc;
     } else if (selectedBatType.skills.includes('ranger')) {
         moveCost = selectedBatType.moveCost+terrainTypes[terIndex].rangermc;
     } else if (selectedBatType.skills.includes('hover')) {

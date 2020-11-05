@@ -43,7 +43,7 @@
         "maxAmmo": 99
     },
     "protection":["aucune","scrap","bugium","kevlar","acier","combo","kapton","mendium","titane","nano","adamantite","aegis","battlesuit"],
-    "equip":[],
+    "equip":["aucun"],
     "moveCost": 3,
     "maxFlood": 4,
     "maxScarp": 4,

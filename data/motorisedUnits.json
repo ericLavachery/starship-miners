@@ -765,6 +765,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
+        "equip":["aucun","arcpoulie"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":2,
@@ -2089,6 +2090,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
+        "equip":["aucun","arcpoulie"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
