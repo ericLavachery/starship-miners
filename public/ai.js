@@ -1222,10 +1222,6 @@ function infraDestruction() {
     if (selectedBat.apLeft >= 4 && rand.rand(1,2) === 1) {
         let tile = getTile(selectedBat);
         let destroySize = 999;
-        let alienSize = Math.round(selectedBatType.size*selectedBat.squadsLeft/selectedBatType.squads*(selectedBat.apLeft+4)/(selectedBat.ap+4));
-        if (selectedBatType.skills.includes('destructeur')) {
-            alienSize = alienSize+10;
-        }
         if (tile.infra != undefined) {
             if (tile.infra != 'Débris') {
                 if (tile.infra === 'Miradors') {
@@ -1239,14 +1235,28 @@ function infraDestruction() {
                 }
             }
         }
-        if (alienSize >= destroySize) {
-            let destroyCost = Math.ceil(selectedBat.ap*destroySize/alienSize*2);
-            selectedBat.apLeft = selectedBat.apLeft-destroyCost;
-            warning('Destruction',selectedBat.type+' a détruit '+tile.infra);
-            tile.infra = 'Débris';
-            saveMap();
-            showMap(zone,false);
-            selectedBatArrayUpdate();
+        if (tile.rd && (tile.terrain === 'W' || tile.terrain === 'R')) {
+            destroySize = 15;
+        }
+        if (destroySize < 999) {
+            let alienSize = Math.round(selectedBatType.size*selectedBat.squadsLeft/selectedBatType.squads*(selectedBat.apLeft+4)/(selectedBat.ap+4));
+            if (selectedBatType.skills.includes('destructeur')) {
+                alienSize = alienSize+10;
+            }
+            if (alienSize >= destroySize) {
+                let destroyCost = Math.ceil(selectedBat.ap*destroySize/alienSize*2);
+                selectedBat.apLeft = selectedBat.apLeft-destroyCost;
+                if (tile.rd && (tile.terrain === 'W' || tile.terrain === 'R')) {
+                    warning('Destruction',selectedBat.type+' a détruit le Pont');
+                    tile.rd = false;
+                } else {
+                    warning('Destruction',selectedBat.type+' a détruit '+tile.infra);
+                    tile.infra = 'Débris';
+                }
+                saveMap();
+                showMap(zone,false);
+                selectedBatArrayUpdate();
+            }
         }
     }
 };

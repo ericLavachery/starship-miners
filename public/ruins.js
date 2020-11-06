@@ -115,7 +115,7 @@ function putBatAround(tileId,alien,unitId,numCit) {
             unitIndex = alienUnits.findIndex((obj => obj.id == unitId));
             conselUnit = alienUnits[unitIndex];
         }
-        conselAmmos = ['xxx','xxx','xxx'];
+        conselAmmos = ['xxx','xxx','xxx','xxx'];
         putBat(dropTile,numCit,0);
     }
 };

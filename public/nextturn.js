@@ -85,7 +85,7 @@ function nextTurn() {
     spawnSound();
     killAlienList();
     conselUnit = {};
-    conselAmmos = ['xxx','xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
     spawnType = {};
     if (aliens.length >= 1) {
         alienTurn();

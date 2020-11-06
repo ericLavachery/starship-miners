@@ -375,7 +375,7 @@ function dropStuff(apCost,mineType) {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Pièges'));
     }
     conselUnit = unitTypes[unitIndex];
-    conselAmmos = ['xxx','xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
     selectedBat.tags.push('sU');
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     selectedBat.salvoLeft = 0;
@@ -408,7 +408,7 @@ function clickMine(clicTileId,poseurTileId) {
             showBatInfos(selectedBat);
         } else {
             conselUnit = {};
-            conselAmmos = ['xxx','xxx','xxx'];
+            conselAmmos = ['xxx','xxx','xxx','xxx'];
             $('#unitInfos').empty();
             selectMode();
             batUnstack();

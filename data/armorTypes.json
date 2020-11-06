@@ -106,5 +106,121 @@
         "armor": 2,
         "ap": 0,
         "skills": []
+    },
+    {
+        "name": "lunette",
+        "skills": ["précision +7, élévation +1"]
+    },
+    {
+        "name": "lunette1",
+        "skills": ["précision +7, élévation +1"]
+    },
+    {
+        "name": "lunette2",
+        "skills": ["précision +7, élévation +1"]
+    },
+    {
+        "name": "chargeur",
+        "skills": []
+    },
+    {
+        "name": "chargeur1",
+        "skills": []
+    },
+    {
+        "name": "chargeur2",
+        "skills": []
+    },
+    {
+        "name": "arcpoulie",
+        "skills": []
+    },
+    {
+        "name": "ranger",
+        "skills": []
+    },
+    {
+        "name": "mecano",
+        "skills": []
+    },
+    {
+        "name": "medic",
+        "skills": []
+    },
+    {
+        "name": "gilet",
+        "skills": []
+    },
+    {
+        "name": "camo",
+        "skills": []
+    },
+    {
+        "name": "jetpack",
+        "skills": []
+    },
+    {
+        "name": "flash",
+        "skills": []
+    },
+    {
+        "name": "kit-pompiste",
+        "skills": []
+    },
+    {
+        "name": "kit-garde",
+        "skills": []
+    },
+    {
+        "name": "kit-guetteur",
+        "skills": []
+    },
+    {
+        "name": "kit-sentinelle",
+        "skills": []
+    },
+    {
+        "name": "kit-artilleur",
+        "skills": []
+    },
+    {
+        "name": "carrousel",
+        "skills": []
+    },
+    {
+        "name": "carrousel1",
+        "skills": []
+    },
+    {
+        "name": "carrousel2",
+        "skills": []
+    },
+    {
+        "name": "longtom",
+        "skills": []
+    },
+    {
+        "name": "longtom1",
+        "skills": []
+    },
+    {
+        "name": "longtom2",
+        "skills": []
+    },
+    {
+        "name": "g2motor",
+        "skills": []
+    },
+    {
+        "name": "w2-comet",
+        "skills": []
+    },
+    {
+        "name": "w2-mit",
+        "skills": []
+    },
+    {
+        "name": "w2-cradle",
+        "skills": []
     }
 ]

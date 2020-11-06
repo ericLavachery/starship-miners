@@ -98,7 +98,7 @@ function catColor(cat,kind) {
 
 function conSelect(unitId,player,noRefresh) {
     if (!noRefresh) {
-        conselAmmos = ['xxx','xxx','xxx'];
+        conselAmmos = ['xxx','xxx','xxx','xxx'];
     }
     if (player === 'player') {
         let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
@@ -141,6 +141,26 @@ function conSelect(unitId,player,noRefresh) {
                     armorSkills = armorSkills+' resistfeu';
                 }
                 $('#conAmmoList').append('<span class="constName klik" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                listNum++;
+            });
+        }
+    }
+    let equipIndex;
+    let batEquip;
+    listNum = 1;
+    if (conselUnit.equip != undefined) {
+        if (conselUnit.equip.length >= 1) {
+            console.log(conselUnit.equip);
+            $('#conAmmoList').append('<span class="constName or">Equipement</span><br>');
+            conselUnit.equip.forEach(function(equip) {
+                if (conselAmmos[3] == equip || (conselAmmos[3] === 'xxx' && listNum === 1)) {
+                    $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                } else {
+                    $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                }
+                equipIndex = armorTypes.findIndex((obj => obj.name == equip));
+                batEquip = armorTypes[equipIndex];
+                $('#conAmmoList').append('<span class="constName klik" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+' <span class="gff">'+batEquip.skills+'</span></span><br>');
                 listNum++;
             });
         }
@@ -199,6 +219,12 @@ function selectArmor(armor,unitId) {
     conSelect(unitId,'player',true);
 };
 
+function selectEquip(equip,unitId) {
+    conselAmmos[3] = equip;
+    console.log(conselAmmos);
+    conSelect(unitId,'player',true);
+};
+
 function clickConstruct(tileId,free) {
     let batHere = false;
     bataillons.forEach(function(bat) {
@@ -237,7 +263,7 @@ function clickConstruct(tileId,free) {
         }
     } else {
         conselUnit = {};
-        conselAmmos = ['xxx','xxx','xxx'];
+        conselAmmos = ['xxx','xxx','xxx','xxx'];
         $('#unitInfos').empty();
         selectMode();
         batUnstack();
@@ -287,6 +313,15 @@ function putBat(tileId,citoyens,xp,startTag) {
         }
         newBat.damage = 0;
         newBat.camoAP = -1;
+        // Equip
+        let equipName = conselAmmos[3];
+        if (equipName === 'xxx') {
+            equipName = 'aucun';
+        }
+        let equipIndex = armorTypes.findIndex((obj => obj.name == equipName));
+        let batEquip = armorTypes[equipIndex];
+        newBat.eq = equipName;
+        // Armor
         let armorName = conselAmmos[2];
         if (armorName === 'xxx') {
             armorName = 'aucune';
@@ -334,6 +369,7 @@ function putBat(tileId,citoyens,xp,startTag) {
                 newBat.salvoLeft = conselUnit.maxSalvo;
             }
         }
+        // Munitions
         if (conselAmmos[0] != 'xxx') {
             newBat.ammo = conselAmmos[0];
         } else {
@@ -418,7 +454,7 @@ function putBat(tileId,citoyens,xp,startTag) {
         console.log('no conselUnit !');
     }
     conselUnit = {};
-    conselAmmos = ['xxx','xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
 };
 
 function conOut() {
@@ -426,7 +462,7 @@ function conOut() {
     $('#conAmmoList').empty();
     $('#conUnitList').css("height","300px");
     conselUnit = {};
-    conselAmmos = ['xxx','xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
     conselTriche = false;
     showResOpen = false;
     $("#conUnitList").css("display","none");
@@ -477,7 +513,7 @@ function dismantle(batId) {
 function recupCitoyens(unitId,tileId,citoyens,xp) {
     let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
     conselUnit = unitTypes[unitIndex];
-    conselAmmos = ['xxx','xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
     putBat(tileId,citoyens,xp);
 };
 

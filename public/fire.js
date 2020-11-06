@@ -306,23 +306,26 @@ function attack(melee) {
     // INFRASTRUCTURES
     console.log('shots='+shots);
     if (activeTurn != 'player') {
-        if (!selectedBatType.skills.includes('fly')) {
-            if (tile.infra != undefined) {
-                if (targetBatType.cat != 'vehicles' || targetBatType.skills.includes('robot') || targetBatType.skills.includes('cyber')) {
-                    if (tile.infra === 'Miradors') {
-                        shots = Math.round(shots*75/100);
-                        $('#report').append('<span class="report rose">Protection 25%<br></span>');
-                    } else if (tile.infra === 'Palissades') {
-                        shots = Math.round(shots*50/100);
-                        $('#report').append('<span class="report rose">Protection 50%<br></span>');
-                    } else if (tile.infra === 'Remparts') {
-                        shots = Math.round(shots*35/100);
-                        $('#report').append('<span class="report rose">Protection 65%<br></span>');
-                    } else if (tile.infra === 'Murailles') {
-                        shots = Math.round(shots*25/100);
-                        $('#report').append('<span class="report rose">Protection 75%<br></span>');
-                    }
+        if (tile.infra != undefined) {
+            if (targetBatType.cat != 'vehicles' || targetBatType.skills.includes('robot') || targetBatType.skills.includes('cyber')) {
+                let infraProtect = 0;
+                if (tile.infra === 'Miradors') {
+                    infraProtect = 25;
+                } else if (tile.infra === 'Palissades') {
+                    infraProtect = 40;
+                } else if (tile.infra === 'Remparts') {
+                    infraProtect = 55;
+                } else if (tile.infra === 'Murailles') {
+                    infraProtect = 70;
                 }
+                if (selectedBatType.skills.includes('sauteur') && !tile.infra === 'Miradors') {
+                    infraProtect = Math.round(infraProtect/2);
+                }
+                if (selectedBatType.skills.includes('fly')) {
+                    infraProtect = Math.round((infraProtect-15)/2.5);
+                }
+                shots = Math.round(shots*(100-infraProtect)/100);
+                $('#report').append('<span class="report rose">Protection '+infraProtect+'%<br></span>');
             }
         }
     }
@@ -644,14 +647,36 @@ function attack(melee) {
             let gripDamage = Math.round((selectedBat.squadsLeft+rand.rand(0,10)-5)*3/gripDiv);
             if (tile.infra != undefined) {
                 if (targetBatType.cat != 'vehicles' || targetBatType.skills.includes('robot') || targetBatType.skills.includes('cyber')) {
-                    if (tile.infra === 'Miradors') {
-                        gripDamage = Math.round(gripDamage*50/100);
-                    } else if (tile.infra === 'Palissades') {
-                        gripDamage = Math.round(gripDamage*50/100);
-                    } else if (tile.infra === 'Remparts') {
-                        gripDamage = Math.round(gripDamage*35/100);
-                    } else if (tile.infra === 'Murailles') {
-                        gripDamage = Math.round(gripDamage*25/100);
+                    if (selectedBatType.skills.includes('fly')) {
+                        if (tile.infra === 'Miradors') {
+                            gripDamage = Math.round(gripDamage*85/100);
+                        } else if (tile.infra === 'Palissades') {
+                            gripDamage = Math.round(gripDamage*85/100);
+                        } else if (tile.infra === 'Remparts') {
+                            gripDamage = Math.round(gripDamage*75/100);
+                        } else if (tile.infra === 'Murailles') {
+                            gripDamage = Math.round(gripDamage*65/100);
+                        }
+                    } else if (selectedBatType.skills.includes('sauteur')) {
+                        if (tile.infra === 'Miradors') {
+                            gripDamage = Math.round(gripDamage*40/100);
+                        } else if (tile.infra === 'Palissades') {
+                            gripDamage = Math.round(gripDamage*80/100);
+                        } else if (tile.infra === 'Remparts') {
+                            gripDamage = Math.round(gripDamage*65/100);
+                        } else if (tile.infra === 'Murailles') {
+                            gripDamage = Math.round(gripDamage*50/100);
+                        }
+                    } else {
+                        if (tile.infra === 'Miradors') {
+                            gripDamage = Math.round(gripDamage*30/100);
+                        } else if (tile.infra === 'Palissades') {
+                            gripDamage = Math.round(gripDamage*60/100);
+                        } else if (tile.infra === 'Remparts') {
+                            gripDamage = Math.round(gripDamage*45/100);
+                        } else if (tile.infra === 'Murailles') {
+                            gripDamage = Math.round(gripDamage*30/100);
+                        }
                     }
                 }
             }
@@ -975,23 +1000,26 @@ function defense(melee) {
     // INFRASTRUCTURES
     console.log('shots='+shots);
     if (activeTurn === 'player') {
-        if (!targetBatType.skills.includes('fly')) {
-            if (tile.infra != undefined) {
-                if (selectedBatType.cat != 'vehicles' || selectedBatType.skills.includes('robot') || selectedBatType.skills.includes('cyber')) {
-                    if (tile.infra === 'Miradors') {
-                        shots = Math.round(shots*75/100);
-                        $('#report').append('<span class="report rose">Protection 25%<br></span>');
-                    } else if (tile.infra === 'Palissades') {
-                        shots = Math.round(shots*50/100);
-                        $('#report').append('<span class="report rose">Protection 50%<br></span>');
-                    } else if (tile.infra === 'Remparts') {
-                        shots = Math.round(shots*35/100);
-                        $('#report').append('<span class="report rose">Protection 65%<br></span>');
-                    } else if (tile.infra === 'Murailles') {
-                        shots = Math.round(shots*25/100);
-                        $('#report').append('<span class="report rose">Protection 75%<br></span>');
-                    }
+        if (tile.infra != undefined) {
+            if (selectedBatType.cat != 'vehicles' || selectedBatType.skills.includes('robot') || selectedBatType.skills.includes('cyber')) {
+                let infraProtect = 0;
+                if (tile.infra === 'Miradors') {
+                    infraProtect = 25;
+                } else if (tile.infra === 'Palissades') {
+                    infraProtect = 40;
+                } else if (tile.infra === 'Remparts') {
+                    infraProtect = 55;
+                } else if (tile.infra === 'Murailles') {
+                    infraProtect = 70;
                 }
+                if (targetBatType.skills.includes('sauteur') && !tile.infra === 'Miradors') {
+                    infraProtect = Math.round(infraProtect/2);
+                }
+                if (targetBatType.skills.includes('fly')) {
+                    infraProtect = Math.round((infraProtect-15)/2.5);
+                }
+                shots = Math.round(shots*(100-infraProtect)/100);
+                $('#report').append('<span class="report rose">Protection '+infraProtect+'%<br></span>');
             }
         }
     }

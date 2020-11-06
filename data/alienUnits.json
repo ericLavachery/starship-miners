@@ -783,9 +783,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["shield","inflammable","fastreg","resistpoison","destructeur"],
+        "skills":["shield","inflammable","fastreg","resistpoison","destructeur","ponte"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"Bugium":13,"Bossium":9,"Slime":13,"Egidium":24,"Mendium":5}
+        "killRes":{"Bugium":13,"Bossium":9,"Slime":13,"Egidium":24,"Mendium":5,"Creatite":6}
     },
     {
         "id":13,

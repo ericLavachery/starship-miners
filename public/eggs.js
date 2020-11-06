@@ -303,7 +303,7 @@ function dropEgg(alienUnit,theArea) {
     console.log('dropping egg...');
     let unitIndex = alienUnits.findIndex((obj => obj.name === alienUnit));
     conselUnit = alienUnits[unitIndex];
-    conselAmmos = ['xxx','xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
     alienOccupiedTileList();
     playerOccupiedTileList();
     let dropTile = eggDropTile(alienUnit,theArea);
@@ -525,13 +525,15 @@ function morphList() {
 };
 
 function aliensCount() {
-    let aliensNums = {lucioles:0,moucherons:0,bugs:0,scorpions:0,fourmis:0,cafards:0,gluantes:0,larves:0,homards:0};
+    let aliensNums = {lucioles:0,moucherons:0,bugs:0,firebugs:0,scorpions:0,fourmis:0,cafards:0,gluantes:0,larves:0,homards:0};
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type === 'Lucioles') {
                 aliensNums.lucioles = aliensNums.lucioles+1;
             } else if (bat.type === 'Bugs') {
                 aliensNums.bugs = aliensNums.bugs+1;
+            } else if (bat.type === 'Firebugs') {
+                aliensNums.firebugs = aliensNums.firebugs+1;
             } else if (bat.type === 'Scorpions') {
                 aliensNums.scorpions = aliensNums.scorpions+1;
             } else if (bat.type === 'Larves') {
@@ -596,11 +598,13 @@ function spawns() {
                 alienMorph(bat,'Fantômes',false);
             } else if (rand.rand(1,vomiToRuche) === 1 && playerInfos.mapTurn >= Math.ceil(vomiToRuche/1.5) && bat.type === 'Vomissure') {
                 alienMorph(bat,'Ruche',true);
-            } else if (bat.type === 'Dragons' && aliens.length < maxAliens && aliensNums.bugs < maxPonte*2) {
+            } else if (bat.type === 'Dragons' && aliens.length < maxAliens && aliensNums.firebugs < Math.round(maxPonte/1.5)) {
+                alienSpawn(bat,'Firebugs');
+            } else if (bat.type === 'Scarabs' && aliens.length < maxAliens && aliensNums.bugs < maxPonte*2) {
                 alienSpawn(bat,'Bugs');
             } else if (bat.type === 'Androks' && aliens.length < maxAliens && aliensNums.scorpions < Math.round(maxPonte*1.5)) {
                 alienSpawn(bat,'Scorpions');
-            } else if (bat.type === 'Megagrubz' && rand.rand(1,5) === 1 && aliens.length < maxAliens) {
+            } else if (bat.type === 'Megagrubz' && rand.rand(1,4) === 1 && aliens.length < maxAliens) {
                 alienSpawn(bat,'Vomissure');
             } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && rand.rand(1,3) === 1) {
                 if (aliensNums.homards >= 1) {
@@ -628,7 +632,7 @@ function vomiSpawn(bat) {
     let dropTile = -1;
     let unitIndex = alienUnits.findIndex((obj => obj.name == 'Vomissure'));
     conselUnit = alienUnits[unitIndex];
-    conselAmmos = ['xxx','xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
     console.log(conselUnit);
     if (Object.keys(conselUnit).length >= 1) {
         dropTile = checkDropBlob(bat);
@@ -684,7 +688,7 @@ function alienSpawn(bat,crea) {
     let dropTile = -1;
     let unitIndex = alienUnits.findIndex((obj => obj.name == crea));
     conselUnit = alienUnits[unitIndex];
-    conselAmmos = ['xxx','xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
     console.log(conselUnit);
     if (Object.keys(conselUnit).length >= 1) {
         dropTile = checkDrop(bat);
@@ -706,7 +710,7 @@ function alienMorph(bat,newBatName,reset) {
     // put new
     let unitIndex = alienUnits.findIndex((obj => obj.name == newBatName));
     conselUnit = alienUnits[unitIndex];
-    conselAmmos = ['xxx','xxx','xxx'];
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
     putBat(putTile,0,0,kindTag);
     // Turn & Tags
     batIndex = aliens.findIndex((obj => obj.tileId == putTile));
@@ -802,7 +806,7 @@ function cocoonSpawn(bat) {
             let i = 1;
             while (i <= spawnNum) {
                 conselUnit = {};
-                conselAmmos = ['xxx','xxx','xxx'];
+                conselAmmos = ['xxx','xxx','xxx','xxx'];
                 if (classes.includes('S')) {
                     alienUnits.forEach(function(unit) {
                         if (unit.class === 'S' && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat)) {
@@ -947,7 +951,7 @@ function eggSpawn(bat,fromEgg) {
             let i = 1;
             while (i <= spawnNum) {
                 conselUnit = {};
-                conselAmmos = ['xxx','xxx','xxx'];
+                conselAmmos = ['xxx','xxx','xxx','xxx'];
                 checkDice = rand.rand(1,checkDiceMax);
                 console.log('checkDice='+checkDice);
                 raritySum = 0;
