@@ -109,15 +109,15 @@
     },
     {
         "name": "lunette",
-        "skills": ["précision +7, élévation +1"]
+        "skills": []
     },
     {
         "name": "lunette1",
-        "skills": ["précision +7, élévation +1"]
+        "skills": []
     },
     {
         "name": "lunette2",
-        "skills": ["précision +7, élévation +1"]
+        "skills": []
     },
     {
         "name": "chargeur",

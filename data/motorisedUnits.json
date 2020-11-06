@@ -3730,7 +3730,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
-        "equip":["aucun","chargeur1"],
+        "equip":["aucun","chargeur1","chargeur2"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":2,

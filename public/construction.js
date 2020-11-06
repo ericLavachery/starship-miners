@@ -147,6 +147,8 @@ function conSelect(unitId,player,noRefresh) {
     }
     let equipIndex;
     let batEquip;
+    let weapName;
+    let equipNotes;
     listNum = 1;
     if (conselUnit.equip != undefined) {
         if (conselUnit.equip.length >= 1) {
@@ -160,7 +162,17 @@ function conSelect(unitId,player,noRefresh) {
                 }
                 equipIndex = armorTypes.findIndex((obj => obj.name == equip));
                 batEquip = armorTypes[equipIndex];
-                $('#conAmmoList').append('<span class="constName klik" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+' <span class="gff">'+batEquip.skills+'</span></span><br>');
+                weapName = '';
+                equipNotes = '';
+                if (batEquip.skills != undefined) {
+                    equipNotes = batEquip.skills;
+                }
+                if (equip.endsWith('1')) {
+                    weapName = ' ('+conselUnit.weapon.name+')';
+                } else if (equip.endsWith('2')) {
+                    weapName = ' ('+conselUnit.weapon2.name+')';
+                }
+                $('#conAmmoList').append('<span class="constName klik" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                 listNum++;
             });
         }

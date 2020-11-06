@@ -1476,7 +1476,7 @@
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
-        "equip":["aucun","flash","ranger","gilet","camo"],
+        "equip":["aucun","flash","ranger","gilet","camo","longtom2"],
         "moveCost":4,
         "maxFlood":2,
         "maxScarp":3,
@@ -3186,7 +3186,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","flash","ranger","camo","lunette2","chargeur1"],
+        "equip":["aucun","flash","camo","lunette2","chargeur1"],
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,
@@ -3296,7 +3296,7 @@
             "ravitBld":"Atelier"
         },
         "protection":["aucun"],
-        "equip":["aucun","flash","gilet"],
+        "equip":["aucun","flash"],
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,
@@ -4376,7 +4376,7 @@
             "ammo":["marquage"]
         },
         "protection":["aucun"],
-        "equip":["aucun","flash","ranger","camo","lunette","chargeur"],
+        "equip":["aucun","flash","camo","lunette","chargeur"],
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,
