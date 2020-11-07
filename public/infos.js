@@ -2,6 +2,13 @@ function showBatInfos(bat) {
     batInfos(bat,false);
 };
 
+function unitDetail(batId) {
+    modal.style.display = "block";
+    let bat = getBatById(batId);
+    batInfos(bat,true);
+    batFullInfos(bat);
+};
+
 function batInfos(bat,pop) {
     let headPlace = 'unitInfos';
     let bodyPlace = 'unitInfos';
@@ -21,6 +28,9 @@ function batInfos(bat,pop) {
         moveInsideBats(bat);
     }
     let unitsLeft = bat.squadsLeft*batType.squadSize;
+    if (batType.squads === 6 && batType.squadSize === 1 && (batType.cat === 'buildings' || batType.cat === 'devices')) {
+        unitsLeft = '';
+    }
     if (bat.citoyens >= 1) {
         unitsLeft = bat.citoyens;
     }
@@ -38,9 +48,9 @@ function batInfos(bat,pop) {
         $('#'+bodyPlace).append('<div class="shSpace"></div>');
     } else {
         if (batType.skills.includes('nonumname')) {
-            $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonBleu skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+'</h3> &nbsp;(a<span class="cy">'+bat.army+'</span>)</span>');
+            $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonBleu skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+'</h3></span>');
         } else {
-            $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonBleu skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+unitsLeft+' '+batType.name+'</h3> &nbsp;(a<span class="cy">'+bat.army+'</span>)</span>');
+            $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batType.pic+'.png" width="48" class="tunit" onclick="unitDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3></span>');
         }
         $('#'+bodyPlace).append('<div class="shSpace"></div>');
     }
@@ -298,13 +308,6 @@ function batInfos(bat,pop) {
     // "maxFlood": 3,
     // "maxScarp": 3,
     // "maxVeg": 3,
-};
-
-function unitDetail(batId) {
-    modal.style.display = "block";
-    let bat = getBatById(batId);
-    batInfos(bat,true);
-    batFullInfos(bat);
 };
 
 function batFullInfos(bat) {

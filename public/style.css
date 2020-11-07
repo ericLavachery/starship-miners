@@ -11,7 +11,7 @@ body {
 .woodBlock {
     background-color: black;
     /* font-weight: 600; */
-    font-size: 14px;
+    font-size: 13px;
     /* color: #b6a7b5; */
     color: #d5cabd;
     padding: 8px 8px;
@@ -49,7 +49,7 @@ body {
     display: none;
 }
 h1,h2,h3,h4,h5 {
-    font-size: 19px;
+    font-size: 18px;
     /* font-weight: bold; */
     display: inline;
     font-weight: normal;
@@ -90,6 +90,10 @@ h5 {
   50%, 100% {
     color: #676056;
   }
+}
+.tunit {
+    vertical-align: -50%;
+    cursor: pointer;
 }
 .notsosmall {
     font-size: 14px;
@@ -158,7 +162,7 @@ h5 {
     width: 135px;
     text-align: right;
     margin-right: 3px;
-    min-height: 19px;
+    min-height: 17px;
     /* font-weight: bold; */
 }
 .paramIcon {

@@ -340,6 +340,7 @@ function putBat(tileId,citoyens,xp,startTag) {
         }
         let armorIndex = armorTypes.findIndex((obj => obj.name == armorName));
         let batArmor = armorTypes[armorIndex];
+        newBat.prt = armorName;
         newBat.armor = conselUnit.armor+batArmor.armor;
         if (conselUnit.skills.includes('fly') && batArmor.ap < 0) {
             newBat.ap = conselUnit.ap+batArmor.ap+batArmor.ap;

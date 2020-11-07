@@ -3155,7 +3155,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","cible","fly","longshot","guerrilla","sentinelle","escape"],
+        "skills":["cible","fly","longshot","guerrilla","sentinelle","escape"],
         "fuzz":5,
         "deathFx":"vehicleexplo3"
     },

@@ -53,7 +53,13 @@ function skillsInfos(bat,batType) {
             balise = 'h3';
         }
         apCost = 3;
-        apReq = bat.ap-3;
+        if (batType.skills.includes('fastguet')) {
+            apReq = 3;
+        } else if (batType.skills.includes('baddef')) {
+            apReq = bat.ap-5;
+        } else {
+            apReq = bat.ap-3;
+        }
         if (bat.apLeft >= apReq && !bat.tags.includes('guet') && !batType.skills.includes('sentinelle') && !batType.skills.includes('initiative') && !batType.skills.includes('after')) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Faire le guet (pas de malus à la riposte)" class="boutonGris skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</'+balise+'></span>');
