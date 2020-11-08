@@ -207,7 +207,21 @@ function getStealth(bat) {
 
 function getAP(bat) {
     let batType = getBatType(bat);
-    return bat.ap+Math.round(bat.vet*vetBonus.ap);
+    let newAP = bat.ap;
+    newAP = newAP+Math.round(bat.vet*vetBonus.ap);
+    if (bat.eq === 'g2motor') {
+        newAP = newAP+2;
+    }
+    if (bat.eq === 'ranger' || bat.eq === 'gilet' || bat.eq === 'camo' || bat.eq === 'snorkel' || (bat.eq === 'chenilles' && batType.maxFlood >= 1 && batType.maxScarp >= 2)) {
+        newAP = newAP-1;
+    }
+    if (bat.eq === 'kit-garde' || bat.eq === 'kit-artilleur') {
+        newAP = newAP-3;
+    }
+    if (bat.eq === 'kit-pompiste') {
+        newAP = newAP-2;
+    }
+    return newAP;
 };
 
 function calcSpeed(bat,weap,opweap,distance,attacking) {
@@ -337,41 +351,11 @@ function calcDistanceSquare(myTileIndex,thatTileIndex) {
 
 function isInRange(myBat,thatTileId,myWeapon) {
     let myBatType = getBatType(myBat);
-    // let onWall = false;
-    // if (myBatType.size <= 12 && !myWeapon.isMelee && !myWeapon.noShield) {
-    //     if (myBatType.cat === 'infantry') {
-    //         onWall = true;
-    //     }
-    //     if (myBatType.cat === 'vehicles') {
-    //         if (myBatType.skills.includes('robot') || myBatType.skills.includes('cyber')) {
-    //             onWall = true;
-    //         }
-    //     }
-    // }
     let inRange = false;
     let range = myWeapon.range;
     let distance = calcDistance(myBat.tileId,thatTileId);
     if (distance > range) {
-        // if (distance > range+2) {
-        //     inRange = false;
-        // } else {
-        //     if (onWall) {
-        //         bataillons.forEach(function(bat) {
-        //             if (bat.loc === "zone") {
-        //                 if (bat.type === 'Palissades' || bat.type === 'Remparts' || bat.type === 'Murailles') {
-        //                     if (bat.tileId === myBat.tileId+1 || bat.tileId === myBat.tileId-1 || bat.tileId === myBat.tileId+mapSize || bat.tileId === myBat.tileId-mapSize) {
-        //                         distance = calcDistance(bat.tileId,thatTileId);
-        //                         console.log('MUR:');
-        //                         console.log(bat);
-        //                         if (distance <= range) {
-        //                             inRange = true;
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //         });
-        //     }
-        // }
+        // nothing
     } else {
         inRange = true;
     }
@@ -405,9 +389,6 @@ function anyAlienInRange(myBat,weapon) {
                         }
                     }
                 }
-                // if ((!weapon.noFly || !batType.skills.includes('fly')) && (!weapon.noGround || batType.skills.includes('fly') || batType.skills.includes('sauteur')) && ((!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) || distance === 0)) {
-                //     inRange = true;
-                // }
             }
         }
     });
@@ -548,25 +529,27 @@ function weaponSelectRiposte(distance) {
     let ammoLeft = 99;
     targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
     targetWeap = weaponAdj(targetWeap,targetBat,'w1');
-    if (activeTurn == 'aliens') {
-        baseAmmo = targetWeap.maxAmmo;
-        ammoLeft = calcAmmos(targetBat,baseAmmo);
-        if (ammoLeft <= 0 || distance > targetWeap.range || targetWeap.noDef || (targetWeap.noMelee && distance === 0 && selectedBat.tileId === selectedBat.oldTileId) || (targetWeap.noFly && selectedBatType.skills.includes('fly')) || (targetWeap.noGround && !selectedBatType.skills.includes('sauteur') && !selectedBatType.skills.includes('fly'))) {
-            if (Object.keys(targetBatType.weapon2).length >= 1) {
-                targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon2));
-                targetWeap = weaponAdj(targetWeap,targetBat,'w2');
-                if (!targetWeap.noDef && distance <= targetWeap.range) {
-                    baseAmmo = targetWeap.maxAmmo;
-                    ammoLeft = calcAmmos(targetBat,baseAmmo);
+    if (!targetBatType.weapon2.kit || targetBat.eq.includes('kit-') || targetBat.eq.includes('w2-')) {
+        if (activeTurn == 'aliens') {
+            baseAmmo = targetWeap.maxAmmo;
+            ammoLeft = calcAmmos(targetBat,baseAmmo);
+            if (ammoLeft <= 0 || distance > targetWeap.range || targetWeap.noDef || (targetWeap.noMelee && distance === 0 && selectedBat.tileId === selectedBat.oldTileId) || (targetWeap.noFly && selectedBatType.skills.includes('fly')) || (targetWeap.noGround && !selectedBatType.skills.includes('sauteur') && !selectedBatType.skills.includes('fly'))) {
+                if (Object.keys(targetBatType.weapon2).length >= 1) {
+                    targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon2));
+                    targetWeap = weaponAdj(targetWeap,targetBat,'w2');
+                    if (!targetWeap.noDef && distance <= targetWeap.range) {
+                        baseAmmo = targetWeap.maxAmmo;
+                        ammoLeft = calcAmmos(targetBat,baseAmmo);
+                    } else {
+                        ammoLeft = 0;
+                    }
                 } else {
                     ammoLeft = 0;
                 }
-            } else {
-                ammoLeft = 0;
-            }
-            if (ammoLeft <= 0) {
-                targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
-                targetWeap = weaponAdj(targetWeap,targetBat,'w1');
+                if (ammoLeft <= 0) {
+                    targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
+                    targetWeap = weaponAdj(targetWeap,targetBat,'w1');
+                }
             }
         }
     }
@@ -714,6 +697,20 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.range = 1;
     } else {
         thisWeapon.range = Math.ceil(thisWeapon.range*ammo.range);
+    }
+    // Equip on range
+    if (thisWeapon.num === 1) {
+        if (bat.eq === 'longtom' || bat.eq === 'longtom1') {
+            thisWeapon.range = thisWeapon.range+1;
+        }
+    } else {
+        if (bat.eq === 'longtom' || bat.eq === 'longtom2') {
+            thisWeapon.range = thisWeapon.range+1;
+        }
+    }
+    if (thisWeapon.name === 'Arc' && bat.eq === 'arcpoulie') {
+        thisWeapon.range = thisWeapon.range+1;
+        thisWeapon.power = thisWeapon.power+3;
     }
     // spiderRG
     if (!thisWeapon.isMelee && spiderRG && batType.kind === 'spider') {
@@ -910,6 +907,41 @@ function calcShotDice(bat,luckyshot) {
             return 150;
         }
     }
+};
+
+function chargeurAdj(bat,shots,weap) {
+    let newShots = shots;
+    let mult = 1.5;
+    if (weap.name.includes('Revolver') || weap.name.includes('Blaster') || weap.name.includes('Calibre') || weap.name.includes('verrou') || weap.name.includes('pompe')) {
+        mult = 2;
+    }
+    if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || weap.name.includes('Blister')) {
+        mult = 1.33;
+    }
+    if (bat.eq.includes('chargeur')) {
+        if (weap.num === 1) {
+            if (bat.eq === 'chargeur1' || bat.eq === 'chargeur') {
+                newShots = Math.round(newShots*mult);
+            }
+        } else {
+            if (bat.eq === 'chargeur2' || bat.eq === 'chargeur') {
+                newShots = Math.round(newShots*mult);
+            }
+        }
+    }
+    mult = 1.25;
+    if (bat.eq.includes('carrousel')) {
+        if (weap.num === 1) {
+            if (bat.eq === 'carrousel1' || bat.eq === 'carrousel') {
+                newShots = Math.round(newShots*mult);
+            }
+        } else {
+            if (bat.eq === 'carrousel2' || bat.eq === 'carrousel') {
+                newShots = Math.round(newShots*mult);
+            }
+        }
+    }
+    return newShots;
 };
 
 function calcBrideDef(bat,batType,weap,attRange,guet) {

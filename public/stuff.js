@@ -1,7 +1,10 @@
 // STUFF
 function calcBatFuzz(bat) {
     let batFuzz = bat.fuzz+2;
-    if (bat.fuzz >= 2) {
+    if (bat.eq === 'jetpack') {
+        batFuzz = batFuzz+2.5;
+    }
+    if (batFuzz >= 4) {
         batFuzz = batFuzz+bat.fuzz-1;
     }
     return batFuzz;

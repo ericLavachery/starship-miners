@@ -167,6 +167,9 @@ function batInfos(bat,pop) {
         $('#'+bodyPlace).append('<span class="paramName cy">Résistance acide</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
     // BAD TAGS
+    if (bat.tags.includes('inflammable') || bat.eq === 'jetpack' || batType.skills.includes('inflammable')) {
+        $('#'+bodyPlace).append('<span class="paramName or">Inflammable</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    }
     let hurt = isHurt(bat);
     if (hurt) {
         $('#'+bodyPlace).append('<span class="paramName or">Blessé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');

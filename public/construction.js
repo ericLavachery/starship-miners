@@ -333,6 +333,10 @@ function putBat(tileId,citoyens,xp,startTag) {
         let equipIndex = armorTypes.findIndex((obj => obj.name == equipName));
         let batEquip = armorTypes[equipIndex];
         newBat.eq = equipName;
+        let baseAP = conselUnit.ap;
+        if (newBat.eq === 'jetpack') {
+            baseAP = 17;
+        }
         // Armor
         let armorName = conselAmmos[2];
         if (armorName === 'xxx') {
@@ -342,18 +346,18 @@ function putBat(tileId,citoyens,xp,startTag) {
         let batArmor = armorTypes[armorIndex];
         newBat.prt = armorName;
         newBat.armor = conselUnit.armor+batArmor.armor;
-        if (conselUnit.skills.includes('fly') && batArmor.ap < 0) {
-            newBat.ap = conselUnit.ap+batArmor.ap+batArmor.ap;
+        if ((conselUnit.skills.includes('fly') || newBat.eq === 'jetpack') && batArmor.ap < 0) {
+            newBat.ap = baseAP+batArmor.ap+batArmor.ap;
         } else if (conselUnit.skills.includes('strong') && batArmor.ap < -1) {
-            newBat.ap = conselUnit.ap+batArmor.ap+1;
+            newBat.ap = baseAP+batArmor.ap+1;
         } else if (conselUnit.moveCost === 99) {
-            newBat.ap = conselUnit.ap;
+            newBat.ap = baseAP;
         } else {
-            newBat.ap = conselUnit.ap+batArmor.ap;
+            newBat.ap = baseAP+batArmor.ap;
         }
         if (conselTriche) {
-            newBat.apLeft = conselUnit.ap;
-            newBat.oldapLeft = conselUnit.ap;
+            newBat.apLeft = baseAP;
+            newBat.oldapLeft = baseAP;
             newBat.salvoLeft = conselUnit.maxSalvo;
         } else {
             if (conselUnit.refabTime >= 1) {
@@ -377,8 +381,8 @@ function putBat(tileId,citoyens,xp,startTag) {
                     }
                 }
             } else {
-                newBat.apLeft = conselUnit.ap;
-                newBat.oldapLeft = conselUnit.ap;
+                newBat.apLeft = baseAP;
+                newBat.oldapLeft = baseAP;
                 newBat.salvoLeft = conselUnit.maxSalvo;
             }
         }
@@ -442,10 +446,13 @@ function putBat(tileId,citoyens,xp,startTag) {
         if (batArmor.skills.includes('slowreg')) {
             newBat.tags.push('slowreg');
         }
-        if (batArmor.skills.includes('resistfeu')) {
+        if (batArmor.skills.includes('resistfeu') && !newBat.tags.includes('resistfeu')) {
             newBat.tags.push('resistfeu');
         }
-        if (batArmor.skills.includes('resistacide')) {
+        if (newBat.eq === 'kit-pompiste' && !newBat.tags.includes('resistfeu')) {
+            newBat.tags.push('resistfeu');
+        }
+        if (batArmor.skills.includes('resistacide') && !newBat.tags.includes('resistacide')) {
             newBat.tags.push('resistacide');
         }
         if (newBat.team === 'player') {

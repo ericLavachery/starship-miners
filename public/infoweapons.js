@@ -110,6 +110,10 @@ function weaponsInfos(bat,batType,pop) {
             }
             $('#'+bodyPlace).append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
+            // chargeur
+            if (bat.eq.includes('chargeur') || bat.eq.includes('carrousel')) {
+                attaques = chargeurAdj(bat,attaques,thisWeapon);
+            }
             if (pop) {
                 $('#'+bodyPlace).append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
             }
@@ -179,7 +183,11 @@ function weaponsInfos(bat,batType,pop) {
             }
         }
     }
-    if (batType.weapon2.rof >= 1) {
+    let hasW2 = false;
+    if (!batType.weapon2.kit || bat.eq.includes('kit-') || bat.eq.includes('w2-')) {
+        hasW2 = true;
+    }
+    if (batType.weapon2.rof >= 1 && hasW2) {
         thisWeapon = weaponAdj(batType.weapon2,bat,'w2');
         if (!thisWeapon.noAtt) {
             noFireMelee = false;

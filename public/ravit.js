@@ -81,7 +81,10 @@ function goRavit() {
             if (selectedBatType.skills.includes('fly') && !selectedBatType.skills.includes('jetpack')) {
                 ravitFactor = 1;
             }
-            let apCost = Math.round(Math.sqrt(numRav)*selectedBat.ap/3);
+            if (selectedBat.eq.includes('carrousel')) {
+                ravitFactor = ravitFactor*1.5;
+            }
+            let apCost = Math.round(Math.sqrt(numRav)*selectedBat.ap/ravitFactor);
             selectedBat.apLeft = selectedBat.apLeft-apCost;
             selectedBat.salvoLeft = 0;
             selectedBat.tags.push('ravit');

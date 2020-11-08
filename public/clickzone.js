@@ -39,7 +39,7 @@ function clickSelect(tileId) {
             showBatInfos(bat);
             if (selectedBat.id == bat.id && selectedBatType.moveCost < 99) {
                 // let batType = getBatType(bat);
-                if (selectedBatType.skills.includes('fly')) {
+                if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'jetpack') {
                     jump = true;
                 }
                 moveMode();

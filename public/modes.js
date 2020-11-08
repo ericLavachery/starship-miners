@@ -44,7 +44,7 @@ function confirmMode() {
             } else if (mode === 'move') {
                 moveMode();
                 let jump = false;
-                if (selectedBatType.skills.includes('fly')) {
+                if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'jetpack') {
                     jump = true;
                 }
                 moveInfos(selectedBat,jump);

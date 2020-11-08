@@ -116,7 +116,7 @@ function combat(melee) {
         negSalvo = -6;
     }
     if (distance <= 3 && targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef && targetBat.salvoLeft > negSalvo) {
-        if ((!targetWeap.noFly || !selectedBatType.skills.includes('fly')) && (!targetWeap.noGround || selectedBatType.skills.includes('fly') || selectedBatType.skills.includes('sauteur'))) {
+        if ((!targetWeap.noFly || (!selectedBatType.skills.includes('fly') && selectedBat.eq != 'jetpack')) && (!targetWeap.noGround || selectedBatType.skills.includes('fly') || selectedBatType.skills.includes('sauteur'))) {
             riposte = true;
             let aspeed = calcSpeed(selectedBat,selectedWeap,targetWeap,distance,true);
             let dspeed = calcSpeed(targetBat,targetWeap,selectedWeap,distance,false);
@@ -357,6 +357,10 @@ function attack(melee) {
             console.log('bonus ROF embuscade');
         }
     }
+    // chargeur
+    if (selectedBat.eq.includes('chargeur') || selectedBat.eq.includes('carrousel')) {
+        shots = chargeurAdj(selectedBat,shots,selectedWeap);
+    }
     // ESCAPE
     escaped = false;
     if (targetBatType.skills.includes('escape')) {
@@ -499,7 +503,7 @@ function attack(melee) {
     }
     // inflammable
     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('pyratol') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov') || selectedWeap.ammo.includes('laser')) {
-        if (targetBatType.skills.includes('inflammable')) {
+        if (targetBatType.skills.includes('inflammable') || targetBat.tags.includes('inflammable') || targetBat.eq === 'jetpack') {
             totalDamage = totalDamage*1.5;
             $('#report').append('<span class="report rose">Inflammable<br></span>');
             console.log('inflammable!');
@@ -1049,6 +1053,10 @@ function defense(melee) {
     if (spiderRG && targetBatType.kind === 'spider') {
         shots = Math.round(shots*1.25);
     }
+    // chargeur
+    if (targetBat.eq.includes('chargeur') || targetBat.eq.includes('carrousel')) {
+        shots = chargeurAdj(targetBat,shots,targetWeap);
+    }
     // Champs de mines
     if (targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap') {
         shots = minesExploded;
@@ -1144,7 +1152,7 @@ function defense(melee) {
     }
     // inflammable
     if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('pyratol') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov') || targetWeap.ammo.includes('laser')) {
-        if (selectedBatType.skills.includes('inflammable')) {
+        if (selectedBatType.skills.includes('inflammable') || selectedBat.tags.includes('inflammable') || selectedBat.eq === 'jetpack') {
             totalDamage = totalDamage*1.5;
             $('#report').append('<span class="report rose">Inflammable<br></span>');
             console.log('inflammable!');

@@ -82,7 +82,7 @@
             "elevation":1,
             "spot":true,
             "kit":true,
-            "rof":14,
+            "rof":20,
             "accuracy":20,
             "power":10,
             "armors":0.7,
@@ -95,7 +95,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible"],
+        "skills":["fouille","fortif","cible","fastguet"],
         "fuzz":1.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -147,7 +147,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","maycamo"],
+        "skills":["fouille","fortif","cible","maycamo","fastguet"],
         "fuzz":1.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -204,7 +204,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible"],
+        "skills":["fouille","fortif","cible","fastguet"],
         "fuzz":1.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -223,7 +223,7 @@
         "size":3,
         "volume":0.9,
         "stealth":7,
-        "ap":10,
+        "ap":12,
         "maxSalvo":1,
         "weapon":{
             "name":"Marteau",
@@ -261,7 +261,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","ravitaillement","fastempty"],
+        "skills":["fouille","fortif","cible","ravitaillement","fastguet"],
         "maxSkill":3,
         "fuzz":1.5,
         "deathFx":"13797__sweetneo85__wilhelm"
@@ -317,7 +317,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","maycamo"],
+        "skills":["fouille","fortif","cible","maycamo","fastguet"],
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -1972,7 +1972,7 @@
             "sound":"axe_x2",
             "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-taser","lame-plasma","lame-adamantium"]
         },
-        "equip":["aucun","flash","ranger","chargeur1"],
+        "equip":["aucun","flash","ranger","chargeur1","snorkel"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -2353,7 +2353,7 @@
             "maxAmmo":8,
             "ravitBld":"Armurerie"
         },
-        "equip":["aucun","flash","ranger","gilet","chargeur1"],
+        "equip":["aucun","flash","ranger","gilet","chargeur1","snorkel"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -2560,7 +2560,7 @@
             "sound":"moto_impact",
             "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-plasma"]
         },
-        "equip":["aucun","flash","ranger","camo"],
+        "equip":["aucun","flash","ranger","camo","snorkel"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -3186,7 +3186,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","flash","camo","lunette2","chargeur1"],
+        "equip":["aucun","flash","camo","lunette2","chargeur1","g2motor"],
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,
@@ -3239,12 +3239,12 @@
             "ammo":["lame","lame-taser","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "protection":["aucun"],
-        "equip":["aucun","flash","ranger","lunette1","chargeur1"],
+        "equip":["aucun","flash","ranger","lunette1","chargeur1","g2motor"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","robot","sentinelle","badmecano","hscarpmove","undead","survivor","resistfeu"],
+        "skills":["fortif","cible","robot","sentinelle","badmecano","hscarpmove","undead","survivor","resistfeu","light"],
         "mecanoCost":8,
         "fuzz":2,
         "deathFx":"144469__psychedelic-hands__robot-death"
@@ -3296,7 +3296,7 @@
             "ravitBld":"Atelier"
         },
         "protection":["aucun"],
-        "equip":["aucun","flash"],
+        "equip":["aucun","flash","snorkel","g2motor"],
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,
@@ -4322,7 +4322,7 @@
         "protection":["aucune"],
         "equip":["aucun","flash","medic"],
         "moveCost":3,
-        "maxFlood":2,
+        "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","fortif","cible","selfmedic","meleehelp","guerrilla","cyber","camo","berserk","undead","ranger","nostun","resistacide","oknitro","sentinelle"],
@@ -4381,7 +4381,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","sentinelle","maycamo","robot","baddef"],
+        "skills":["fortif","cible","sentinelle","maycamo","robot","baddef","light"],
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
     },
@@ -4432,12 +4432,12 @@
             "ravitBld":"Armurerie"
         },
         "protection":["aucun"],
-        "equip":["aucun","flash","ranger","gilet","camo"],
+        "equip":["aucun","flash","ranger","gilet","camo","g2motor"],
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","sentinelle","maycamo","robot"],
+        "skills":["fortif","cible","sentinelle","maycamo","robot","light"],
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
     },
