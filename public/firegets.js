@@ -179,9 +179,17 @@ function getBatType(bat) {
 function getStealth(bat) {
     let cover = getCover(bat,false,false);
     let batType = getBatType(bat);
+    let batStealth = batType.stealth;
+    if (bat.eq === 'camo' || bat.eq === 'kit-sentinelle') {
+        if (batType.skills.includes('camo')) {
+            batStealth = batStealth+4;
+        } else {
+            batStealth = batStealth+3;
+        }
+    }
     let stealthBonus = 0;
     if (cover >= 4) {
-        stealthBonus = Math.round((Math.sqrt(cover)-1.7)*(batType.stealth-5)/2);
+        stealthBonus = Math.round((Math.sqrt(cover)-1.7)*(batStealth-5)/2);
         if (stealthBonus > 4) {
             stealthBonus = 4;
         }
@@ -190,12 +198,12 @@ function getStealth(bat) {
         }
     }
     let vetStealth = Math.round(bat.vet*vetBonus.stealth);
-    let maxStealth = batType.stealth;
+    let maxStealth = batStealth;
     let coverAdj = Math.round((cover+3)*1.8);
     if (coverAdj < 2) {
         coverAdj = 2;
     }
-    if (batType.stealth > coverAdj) {
+    if (batStealth > coverAdj) {
         maxStealth = coverAdj;
     }
     // Starka drug
@@ -208,11 +216,13 @@ function getStealth(bat) {
 function getAP(bat) {
     let batType = getBatType(bat);
     let newAP = bat.ap;
-    newAP = newAP+Math.round(bat.vet*vetBonus.ap);
+    if (bat.eq === 'belier' || bat.eq === 'snorkel' || (bat.eq === 'chenilles' && batType.maxFlood >= 1 && batType.maxScarp >= 2)) {
+        newAP = Math.round(newAP*0.9);
+    }
     if (bat.eq === 'g2motor') {
         newAP = newAP+2;
     }
-    if (bat.eq === 'ranger' || bat.eq === 'gilet' || bat.eq === 'camo' || bat.eq === 'snorkel' || (bat.eq === 'chenilles' && batType.maxFlood >= 1 && batType.maxScarp >= 2)) {
+    if (bat.eq === 'ranger' || bat.eq === 'gilet') {
         newAP = newAP-1;
     }
     if (bat.eq === 'kit-garde' || bat.eq === 'kit-artilleur') {
@@ -221,6 +231,7 @@ function getAP(bat) {
     if (bat.eq === 'kit-pompiste') {
         newAP = newAP-2;
     }
+    newAP = newAP+Math.round(bat.vet*vetBonus.ap);
     return newAP;
 };
 
@@ -698,20 +709,6 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.range = Math.ceil(thisWeapon.range*ammo.range);
     }
-    // Equip on range
-    if (thisWeapon.num === 1) {
-        if (bat.eq === 'longtom' || bat.eq === 'longtom1') {
-            thisWeapon.range = thisWeapon.range+1;
-        }
-    } else {
-        if (bat.eq === 'longtom' || bat.eq === 'longtom2') {
-            thisWeapon.range = thisWeapon.range+1;
-        }
-    }
-    if (thisWeapon.name === 'Arc' && bat.eq === 'arcpoulie') {
-        thisWeapon.range = thisWeapon.range+1;
-        thisWeapon.power = thisWeapon.power+3;
-    }
     // spiderRG
     if (!thisWeapon.isMelee && spiderRG && batType.kind === 'spider') {
         if (thisWeapon.range === 0) {
@@ -731,6 +728,46 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
     if (ammo.aoe != '' && thisWeapon.aoe != 'bat') {
         thisWeapon.aoe = ammo.aoe;
+    }
+    // Equip adj
+    if (thisWeapon.num === 1) {
+        if (bat.eq === 'longtom' || bat.eq === 'longtom1') {
+            thisWeapon.range = thisWeapon.range+1;
+        }
+        if (bat.eq === 'chargeur' || bat.eq === 'chargeur1' || bat.eq === 'lunette' || bat.eq === 'lunette1') {
+            thisWeapon.cost = thisWeapon.cost+1;
+        }
+        if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.eq.includes('kit-guetteur')) {
+            if (thisWeapon.elevation <= 1) {
+                thisWeapon.elevation = thisWeapon.elevation+1;
+            }
+            thisWeapon.accuracy = thisWeapon.accuracy+7;
+        }
+    } else {
+        if (bat.eq === 'longtom' || bat.eq === 'longtom2') {
+            thisWeapon.range = thisWeapon.range+1;
+        }
+        if (bat.eq === 'chargeur' || bat.eq === 'chargeur2' || bat.eq === 'lunette' || bat.eq === 'lunette2') {
+            thisWeapon.cost = thisWeapon.cost+1;
+        }
+        if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.eq.includes('kit-guetteur')) {
+            if (thisWeapon.elevation <= 1) {
+                thisWeapon.elevation = thisWeapon.elevation+1;
+            }
+            thisWeapon.accuracy = thisWeapon.accuracy+7;
+        }
+    }
+    if (bat.eq === 'gilet' && thisWeapon.maxAmmo < 99) {
+        thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
+    }
+    if (thisWeapon.name === 'Arc' && bat.eq === 'arcpoulie') {
+        thisWeapon.range = thisWeapon.range+1;
+        thisWeapon.power = thisWeapon.power+3;
+        thisWeapon.cost = thisWeapon.cost+1;
+    }
+    if (thisWeapon.name === 'Boutoir' && bat.eq === 'belier') {
+        thisWeapon.rof = Math.round(thisWeapon.rof*1.5);
+        thisWeapon.power = thisWeapon.power+3;
     }
     // sila drug
     if (bat.tags.includes('sila')) {
@@ -918,13 +955,13 @@ function chargeurAdj(bat,shots,weap) {
     if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || weap.name.includes('Blister')) {
         mult = 1.33;
     }
-    if (bat.eq.includes('chargeur')) {
+    if (bat.eq.includes('chargeur') || bat.eq.includes('kit-guetteur')) {
         if (weap.num === 1) {
-            if (bat.eq === 'chargeur1' || bat.eq === 'chargeur') {
+            if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.eq.includes('kit-guetteur')) {
                 newShots = Math.round(newShots*mult);
             }
         } else {
-            if (bat.eq === 'chargeur2' || bat.eq === 'chargeur') {
+            if (bat.eq === 'chargeur2' || bat.eq === 'chargeur' || bat.eq.includes('kit-guetteur')) {
                 newShots = Math.round(newShots*mult);
             }
         }

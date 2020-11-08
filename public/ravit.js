@@ -164,7 +164,12 @@ function calcRavitVolume(bat) {
     let ravitVolume = [0,0,'ammo'];
     let ammoVolume;
     let ammoLeft;
+    let w1maxAmmo = batType.weapon.maxAmmo;
+    let w2maxAmmo = batType.weapon2.maxAmmo;
     if (batType.weapon.maxAmmo < 99) {
+        if (bat.eq === 'gilet') {
+            w1maxAmmo = Math.floor(w1maxAmmo*1.5);
+        }
         if (bat.ammo.includes('obus') || bat.ammo.includes('boulet') || bat.ammo.includes('lf-')) {
             ammoVolume = 2*batType.weapon.power;
         } else if (bat.ammo.includes('missile')) {
@@ -175,10 +180,13 @@ function calcRavitVolume(bat) {
         } else {
             ammoVolume = 0.4*batType.weapon.power;
         }
-        ravitVolume[0] = Math.ceil(batType.squads*batType.weapon.rof*ammoVolume*batType.weapon.maxAmmo/2000);
-        ammoLeft = calcAmmos(bat,batType.weapon.maxAmmo);
-        ravitVolume[1] = ravitVolume[0]-Math.floor(ravitVolume[0]*ammoLeft/batType.weapon.maxAmmo);
+        ravitVolume[0] = Math.ceil(batType.squads*batType.weapon.rof*ammoVolume*w1maxAmmo/2000);
+        ammoLeft = calcAmmos(bat,w1maxAmmo);
+        ravitVolume[1] = ravitVolume[0]-Math.floor(ravitVolume[0]*ammoLeft/w1maxAmmo);
     } else if (batType.weapon2.maxAmmo < 99) {
+        if (bat.eq === 'gilet') {
+            w2maxAmmo = Math.floor(w2maxAmmo*1.5);
+        }
         if (bat.ammo2.includes('obus') || bat.ammo2.includes('boulet') || bat.ammo2.includes('lf-')) {
             ammoVolume = 2*batType.weapon2.power;
         } else if (bat.ammo2.includes('missile')) {
@@ -189,9 +197,9 @@ function calcRavitVolume(bat) {
         } else {
             ammoVolume = 0.4*batType.weapon2.power;
         }
-        ravitVolume[0] = Math.ceil(batType.squads*batType.weapon2.rof*ammoVolume*batType.weapon2.maxAmmo/2000);
-        ammoLeft = calcAmmos(bat,batType.weapon2.maxAmmo);
-        ravitVolume[1] = ravitVolume[0]-Math.floor(ravitVolume[0]*ammoLeft/batType.weapon2.maxAmmo);
+        ravitVolume[0] = Math.ceil(batType.squads*batType.weapon2.rof*ammoVolume*w2maxAmmo/2000);
+        ammoLeft = calcAmmos(bat,w2maxAmmo);
+        ravitVolume[1] = ravitVolume[0]-Math.floor(ravitVolume[0]*ammoLeft/w2maxAmmo);
     }
     return ravitVolume;
 };

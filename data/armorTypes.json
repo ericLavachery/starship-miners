@@ -220,6 +220,10 @@
         "skills": []
     },
     {
+        "name": "belier",
+        "skills": []
+    },
+    {
         "name": "w2-comet",
         "skills": []
     },
@@ -229,6 +233,10 @@
     },
     {
         "name": "w2-cradle",
+        "skills": []
+    },
+    {
+        "name": "w2-2ch",
         "skills": []
     }
 ]

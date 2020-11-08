@@ -111,7 +111,7 @@ function weaponsInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
             // chargeur
-            if (bat.eq.includes('chargeur') || bat.eq.includes('carrousel')) {
+            if (bat.eq.includes('chargeur') || bat.eq.includes('carrousel') || bat.eq.includes('kit-guetteur')) {
                 attaques = chargeurAdj(bat,attaques,thisWeapon);
             }
             if (pop) {

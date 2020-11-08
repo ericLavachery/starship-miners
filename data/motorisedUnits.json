@@ -659,7 +659,7 @@
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
-        "equip":["aucun","lunette","chargeur","g2motor"],
+        "equip":["aucun","lunette2","chargeur1","chargeur2","g2motor"],
         "moveCost":5,
         "maxFlood":0,
         "maxScarp":2,
@@ -994,7 +994,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","g2motor","chenilles","snorkel"],
+        "equip":["aucun","g2motor","chenilles","snorkel","belier"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -1320,7 +1320,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","acier","titane","kanchan","chobham","adamantite"],
-        "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel"],
+        "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","belier"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -1372,6 +1372,7 @@
             "range":2,
             "elevation":1,
             "noBis":true,
+            "kit":true,
             "rof":45,
             "accuracy":18,
             "dca":1,
@@ -1382,7 +1383,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","lunette","chargeur","g2motor","chenilles","snorkel"],
+        "equip":["aucun","lunette","chargeur","g2motor","chenilles","snorkel","w2-2ch"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -1439,7 +1440,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","g2motor","chenilles","snorkel"],
+        "equip":["aucun","g2motor","chenilles","snorkel","belier"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -1944,7 +1945,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","chargeur1","g2motor","chenilles","snorkel"],
+        "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","belier"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -2001,7 +2002,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","g2motor","chenilles","snorkel"],
+        "equip":["aucun","g2motor","chenilles","snorkel","belier"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -2060,7 +2061,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","chargeur1","g2motor","chenilles","snorkel"],
+        "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","belier"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -2110,7 +2111,7 @@
             "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
-            "name":"Boutoir",
+            "name":"Bélier",
             "cost":1,
             "range":0,
             "noFly":true,
@@ -2118,9 +2119,9 @@
             "noBis":true,
             "noShield":true,
             "noBig":true,
-            "rof":6,
+            "rof":9,
             "accuracy":20,
-            "power":16,
+            "power":20,
             "aoe":"brochette",
             "sound":"belier",
             "ammo":["standard"]
@@ -2190,7 +2191,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","g2motor","snorkel"],
+        "equip":["aucun","g2motor","snorkel","belier"],
         "moveCost":4,
         "maxFlood":1,
         "maxScarp":2,
@@ -2248,7 +2249,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","g2motor"],
+        "equip":["aucun","g2motor","belier"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -2604,7 +2605,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","g2motor","chenilles","snorkel"],
+        "equip":["aucun","g2motor","chenilles","snorkel","belier"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -2948,7 +2949,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel"],
+        "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","belier"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":2,
@@ -3425,7 +3426,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","g2motor"],
+        "equip":["aucun","g2motor","belier"],
         "moveCost":4,
         "maxFlood":3,
         "maxScarp":3,
@@ -3490,7 +3491,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","g2motor"],
+        "equip":["aucun","g2motor","belier"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -3871,7 +3872,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","g2motor","chenilles","snorkel","flash"],
+        "equip":["aucun","g2motor","chenilles","snorkel","flash","belier"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -3929,7 +3930,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","g2motor","chenilles","snorkel"],
+        "equip":["aucun","g2motor","chenilles","snorkel","belier"],
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
@@ -4047,7 +4048,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","lunette1","chargeur1","g2motor","snorkel"],
+        "equip":["aucun","lunette1","chargeur1","g2motor","snorkel","belier"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,

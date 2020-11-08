@@ -53,7 +53,7 @@ function checkStartingAliens() {
     let numSent = Math.ceil((playerInfos.mapDiff+2)*rand.rand(8,20)/8);
     ii = 1;
     while (ii <= numSent) {
-        dropEgg('Sentinelles','none');
+        dropEgg('Veilleurs','none');
         if (ii > 50) {break;}
         ii++
     }
@@ -345,7 +345,7 @@ function eggDropTile(eggName,theArea) {
             area = 'target';
         } else if (eggName.includes('Colonie')) {
             area = 'nedge';
-        } else if (eggName.includes('Sentinelles')) {
+        } else if (eggName.includes('Veilleurs')) {
             if (rand.rand(1,6) === 1) {
                 area = 'nocenter';
             } else {

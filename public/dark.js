@@ -44,6 +44,7 @@ function undarkAround(bat,center) {
         }
         if (batType.skills.includes('flash') || bat.eq === 'flash' || bat.eq.includes('kit-')) {
             if (!bat.tags.includes('camo')) {
+                hauteur = 2;
                 vue = 3;
             }
         }

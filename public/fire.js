@@ -358,7 +358,7 @@ function attack(melee) {
         }
     }
     // chargeur
-    if (selectedBat.eq.includes('chargeur') || selectedBat.eq.includes('carrousel')) {
+    if (selectedBat.eq.includes('chargeur') || selectedBat.eq.includes('carrousel') || selectedBat.eq.includes('kit-guetteur')) {
         shots = chargeurAdj(selectedBat,shots,selectedWeap);
     }
     // ESCAPE
@@ -495,6 +495,11 @@ function attack(melee) {
         targetBat.tags.push('guide');
         $('#report').append('<span class="report rose">Guidage laser<br></span>');
     }
+    // arrosoir
+    if (selectedWeap.ammo.includes('fuel') && totalHits >= 1 && !targetBat.tags.includes('inflammable')) {
+        targetBat.tags.push('inflammable');
+        $('#report').append('<span class="report rose">Arrosé<br></span>');
+    }
     // disco
     if (selectedWeap.ammo.includes('disco')) {
         let webDamage = totalHits;
@@ -504,8 +509,19 @@ function attack(melee) {
     // inflammable
     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('pyratol') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov') || selectedWeap.ammo.includes('laser')) {
         if (targetBatType.skills.includes('inflammable') || targetBat.tags.includes('inflammable') || targetBat.eq === 'jetpack') {
-            totalDamage = totalDamage*1.5;
-            $('#report').append('<span class="report rose">Inflammable<br></span>');
+            let infactor = 1.5;
+            let infbonus = 0;
+            if (targetBat.tags.includes('inflammable')) {
+                if (targetBatType.skills.includes('inflammable')) {
+                    infactor = 4;
+                    infbonus = rand.rand(100,200);
+                } else {
+                    infactor = 2;
+                    infbonus = rand.rand(75,150);
+                }
+            }
+            totalDamage = Math.round(totalDamage*infactor)+infbonus;
+            $('#report').append('<span class="report rose">Inflammable x'+infactor+'<br></span>');
             console.log('inflammable!');
         }
     }
@@ -1054,7 +1070,7 @@ function defense(melee) {
         shots = Math.round(shots*1.25);
     }
     // chargeur
-    if (targetBat.eq.includes('chargeur') || targetBat.eq.includes('carrousel')) {
+    if (targetBat.eq.includes('chargeur') || targetBat.eq.includes('carrousel') || targetBat.eq.includes('kit-guetteur')) {
         shots = chargeurAdj(targetBat,shots,targetWeap);
     }
     // Champs de mines
@@ -1137,6 +1153,11 @@ function defense(melee) {
         }
         apDamage = apDamage+webDamage;
     }
+    // arrosoir
+    if (targetWeap.ammo.includes('fuel') && totalHits >= 1 && !selectedBat.tags.includes('inflammable')) {
+        selectedBat.tags.push('inflammable');
+        $('#report').append('<span class="report rose">Arrosé<br></span>');
+    }
     // disco
     if (targetWeap.ammo.includes('disco')) {
         let webDamage = totalHits;
@@ -1153,8 +1174,19 @@ function defense(melee) {
     // inflammable
     if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('pyratol') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov') || targetWeap.ammo.includes('laser')) {
         if (selectedBatType.skills.includes('inflammable') || selectedBat.tags.includes('inflammable') || selectedBat.eq === 'jetpack') {
-            totalDamage = totalDamage*1.5;
-            $('#report').append('<span class="report rose">Inflammable<br></span>');
+            let infactor = 1.5;
+            let infbonus = 0;
+            if (selectedBat.tags.includes('inflammable')) {
+                if (selectedBatType.skills.includes('inflammable')) {
+                    infactor = 4;
+                    infbonus = rand.rand(100,200);
+                } else {
+                    infactor = 2;
+                    infbonus = rand.rand(75,150);
+                }
+            }
+            totalDamage = Math.round(totalDamage*infactor)+infbonus;
+            $('#report').append('<span class="report rose">Inflammable x'+infactor+'<br></span>');
             console.log('inflammable!');
         }
     }
