@@ -13,10 +13,20 @@ function checkTargetBatType() {
 };
 
 function isHit(accuracy,minAccu,aoe,size,stealth,cover,speed,shotDice) {
-    let prec = Math.round(accuracy-(cover*coverFactor));
-    if (aoe == 'unit' || aoe == 'brochette' || speed < 0) {
-        prec = Math.round(prec-(stealth/2)-speed);
+    let prec = accuracy;
+    let megaPrec = 0;
+    if (size <= 4 && prec > 35 && aoe == 'unit') {
+        megaPrec = Math.sqrt(prec-35);
     }
+    let overPrec = 0;
+    if (size <= 4 && prec > 30 && aoe == 'unit') {
+        overPrec = prec-30;
+        prec = prec+overPrec;
+    }
+    if (aoe == 'unit' || aoe == 'brochette' || speed < 0) {
+        prec = Math.round(prec-(stealth/(2+overPrec))-(speed/(1+overPrec)));
+    }
+    prec = Math.round(prec-(cover*coverFactor*2/(2+megaPrec)));
     if (prec < minPrec) {
         prec = minPrec;
     }
@@ -595,14 +605,13 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.num = 1;
     }
-    let accuracy = Math.round(weapon.accuracy*(bat.vet+vetBonus.accuracy)/vetBonus.accuracy);
-    thisWeapon.accuracy = accuracy;
-    // bonus ammo
+    // bonus vet
+    thisWeapon.rof = Math.floor(weapon.rof*(bat.vet+vetBonus.rof)/vetBonus.rof);
     thisWeapon.name = weapon.name;
     thisWeapon.cost = weapon.cost;
     thisWeapon.range = weapon.range;
-    thisWeapon.rof = weapon.rof;
     thisWeapon.power = weapon.power;
+    thisWeapon.accuracy = weapon.accuracy;
     if (weapon.armors === undefined) {
         thisWeapon.armors = 1;
     } else {
@@ -697,6 +706,60 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.dca = weapon.dca;
     }
+    // Equip adj
+    if (thisWeapon.num === 1) {
+        if (bat.eq === 'longtom' || bat.eq === 'longtom1') {
+            thisWeapon.range = thisWeapon.range+1;
+        }
+        if (bat.eq === 'chargeur' || bat.eq === 'chargeur1') {
+            if (thisWeapon.cost < 6) {
+                thisWeapon.accuracy = thisWeapon.accuracy-3;
+                thisWeapon.cost = thisWeapon.cost+1;
+            }
+        }
+        if (bat.eq === 'lunette' || bat.eq === 'lunette1') {
+            thisWeapon.cost = thisWeapon.cost+1;
+        }
+        if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.eq.includes('kit-guetteur')) {
+            if (thisWeapon.elevation <= 1) {
+                thisWeapon.elevation = thisWeapon.elevation+1;
+            }
+            thisWeapon.accuracy = thisWeapon.accuracy+8;
+        }
+    } else {
+        if (bat.eq === 'longtom' || bat.eq === 'longtom2') {
+            thisWeapon.range = thisWeapon.range+1;
+        }
+        if (bat.eq === 'chargeur' || bat.eq === 'chargeur2') {
+            if (thisWeapon.cost < 6) {
+                thisWeapon.accuracy = thisWeapon.accuracy-3;
+                thisWeapon.cost = thisWeapon.cost+1;
+            }
+        }
+        if (bat.eq === 'lunette' || bat.eq === 'lunette2') {
+            thisWeapon.cost = thisWeapon.cost+1;
+        }
+        if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.eq.includes('kit-guetteur')) {
+            if (thisWeapon.elevation <= 1) {
+                thisWeapon.elevation = thisWeapon.elevation+1;
+            }
+            thisWeapon.accuracy = thisWeapon.accuracy+8;
+        }
+    }
+    if (bat.eq === 'gilet' && thisWeapon.maxAmmo < 99) {
+        thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
+    }
+    if (thisWeapon.name === 'Arc' && bat.eq === 'arcpoulie') {
+        thisWeapon.range = thisWeapon.range+1;
+        thisWeapon.power = thisWeapon.power+3;
+        thisWeapon.cost = thisWeapon.cost+1;
+    }
+    if (thisWeapon.name === 'Boutoir' && bat.eq === 'belier') {
+        thisWeapon.rof = Math.round(thisWeapon.rof*1.5);
+        thisWeapon.power = thisWeapon.power+4;
+        thisWeapon.accuracy = thisWeapon.accuracy+2;
+    }
+    // bonus ammo
     let myAmmo = bat.ammo;
     if (wn == 'w2') {
         myAmmo = bat.ammo2;
@@ -725,49 +788,11 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.apdamage = ammo.apdamage;
     thisWeapon.armors = thisWeapon.armors*ammo.armors;
     thisWeapon.armors = thisWeapon.armors.toFixedNumber(2);
-    thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
     if (ammo.aoe != '' && thisWeapon.aoe != 'bat') {
         thisWeapon.aoe = ammo.aoe;
     }
-    // Equip adj
-    if (thisWeapon.num === 1) {
-        if (bat.eq === 'longtom' || bat.eq === 'longtom1') {
-            thisWeapon.range = thisWeapon.range+1;
-        }
-        if (bat.eq === 'chargeur' || bat.eq === 'chargeur1' || bat.eq === 'lunette' || bat.eq === 'lunette1') {
-            thisWeapon.cost = thisWeapon.cost+1;
-        }
-        if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.eq.includes('kit-guetteur')) {
-            if (thisWeapon.elevation <= 1) {
-                thisWeapon.elevation = thisWeapon.elevation+1;
-            }
-            thisWeapon.accuracy = thisWeapon.accuracy+7;
-        }
-    } else {
-        if (bat.eq === 'longtom' || bat.eq === 'longtom2') {
-            thisWeapon.range = thisWeapon.range+1;
-        }
-        if (bat.eq === 'chargeur' || bat.eq === 'chargeur2' || bat.eq === 'lunette' || bat.eq === 'lunette2') {
-            thisWeapon.cost = thisWeapon.cost+1;
-        }
-        if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.eq.includes('kit-guetteur')) {
-            if (thisWeapon.elevation <= 1) {
-                thisWeapon.elevation = thisWeapon.elevation+1;
-            }
-            thisWeapon.accuracy = thisWeapon.accuracy+7;
-        }
-    }
-    if (bat.eq === 'gilet' && thisWeapon.maxAmmo < 99) {
-        thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
-    }
-    if (thisWeapon.name === 'Arc' && bat.eq === 'arcpoulie') {
-        thisWeapon.range = thisWeapon.range+1;
-        thisWeapon.power = thisWeapon.power+3;
-        thisWeapon.cost = thisWeapon.cost+1;
-    }
-    if (thisWeapon.name === 'Boutoir' && bat.eq === 'belier') {
-        thisWeapon.rof = Math.round(thisWeapon.rof*1.5);
-        thisWeapon.power = thisWeapon.power+3;
+    if (thisWeapon.accuracy >= 30 || ammo.accuracy < 1 || thisWeapon.isMelee || thisWeapon.aoe != 'unit') {
+        thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
     }
     // sila drug
     if (bat.tags.includes('sila')) {
@@ -949,11 +974,17 @@ function calcShotDice(bat,luckyshot) {
 function chargeurAdj(bat,shots,weap) {
     let newShots = shots;
     let mult = 1.5;
-    if (weap.name.includes('Revolver') || weap.name.includes('Blaster') || weap.name.includes('Calibre') || weap.name.includes('verrou') || weap.name.includes('pompe')) {
+    if (weap.name.includes('Calibre') || weap.name.includes('verrou') || weap.name.includes('pompe')) {
         mult = 2;
+    }
+    if (weap.name.includes('Revolver') || weap.name.includes('Blaster')) {
+        mult = 1.7;
     }
     if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || weap.name.includes('Blister')) {
         mult = 1.33;
+    }
+    if (bat.eq.includes('kit-guetteur')) {
+        mult = 2;
     }
     if (bat.eq.includes('chargeur') || bat.eq.includes('kit-guetteur')) {
         if (weap.num === 1) {

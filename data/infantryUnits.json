@@ -452,7 +452,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"pistol_x2",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "weapon2":{},
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
@@ -494,7 +494,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"pistol_x2",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "weapon2":{},
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
@@ -717,7 +717,7 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
-        "equip":["aucun","flash","camo","lunette","jetpack","chargeur1","lunette1","w2-2ch"],
+        "equip":["aucun","flash","camo","jetpack","chargeur1","lunette1","w2-2ch"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -1244,7 +1244,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"revolver_multi",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Pistolets automatiques",
@@ -1257,7 +1257,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"revolver_multi",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "equip":["aucun","flash","camo","chargeur1","jetpack","w2-2ch"],
@@ -1405,7 +1405,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"mit_minigun",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"],
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"],
             "maxAmmo":32,
             "ravitBld":"Armurerie"
         },
@@ -1421,7 +1421,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"mit_minigun",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"],
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"],
             "maxAmmo":32,
             "ravitBld":"Armurerie"
         },
@@ -1462,7 +1462,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"pistol_x4",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Mortier léger",
@@ -1673,7 +1673,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"pistol_x2",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -2818,7 +2818,7 @@
             "armors":1.25,
             "aoe":"unit",
             "sound":"uzi",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Fusil de précision",
@@ -2835,7 +2835,7 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["kevlar","combo","kapton","mendium","titane","nano","adamantite","battlesuit"],
-        "equip":["aucun","flash","medic","camo","chargeur","jetpack"],
+        "equip":["aucun","flash","medic","camo","chargeur1","chargeur2","jetpack"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -4095,7 +4095,7 @@
             "armors":1.25,
             "aoe":"unit",
             "sound":"uzi",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Guidage laser",
@@ -4149,7 +4149,7 @@
             "armors":1.25,
             "aoe":"unit",
             "sound":"uzi",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-titanium","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Canon laser",
@@ -4218,7 +4218,7 @@
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["kevlar","acier","combo","kapton","mendium","titane","nano","adamantite","aegis","battlesuit"],
-        "equip":["aucun","flash","ranger","medic","chargeur","jetpack","camo"],
+        "equip":["aucun","flash","ranger","medic","chargeur1","chargeur2","lunette2","jetpack","camo"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -4381,7 +4381,7 @@
             "ammo":["marquage"]
         },
         "protection":["aucun"],
-        "equip":["aucun","flash","camo","lunette","chargeur"],
+        "equip":["aucun","flash","camo","lunette","chargeur1"],
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,

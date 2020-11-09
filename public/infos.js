@@ -246,6 +246,22 @@ function batInfos(bat,pop) {
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
         $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Barbelés</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxSkill+'</span><br>');
     }
+    // Armure, équipements, habiletés
+    let batprt = bat.prt;
+    let protection = 'Blindage';
+    if (batType.cat === 'infantry') {
+        protection = 'Armure';
+    }
+    if (!batprt.includes('aucun')) {
+        $('#'+bodyPlace).append('<span class="paramName">'+protection+'</span><span class="paramIcon"></span><span class="paramValue lcy">'+batprt+'</span><br>');
+    }
+    let bateq = bat.eq;
+    if (!bateq.includes('aucun')) {
+        $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">'+bateq+'</span><br>');
+    }
+    if (pop) {
+
+    }
     // WEAPONS & SKILLS
     if (!pop) {
         if (!isStacked()) {

@@ -73,7 +73,7 @@ let visibleEggs = [];
 // let vetAP = 1; // 1 = +1 ap par niveau
 // let vetStealth = 2; // 2 = +2 stealth par niveau (si 5+ de base)
 let vetBonus = {
-    accuracy: 4,
+    rof: 6,
     initiative: 10,
     ap: 1,
     stealth: 1.4

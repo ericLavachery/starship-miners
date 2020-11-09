@@ -178,6 +178,9 @@ function showAlien(bat) {
     if (bat.tags.includes('fluo')) {
         tagz = tagz+' (marqué)';
     }
+    if (bat.tags.includes('inflammable')) {
+        tagz = tagz+' (arrosé)';
+    }
     if (bat.tags.includes('poison')) {
         tagz = tagz+' (poison)';
     }
@@ -224,7 +227,7 @@ function showBataillon(bat) {
             }
         }
     }
-    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div>'+resHere);
+    $('#b'+bat.tileId).append('<div class="pUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
 };
 
 function getDamageBar(bat) {
