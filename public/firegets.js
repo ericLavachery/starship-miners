@@ -791,7 +791,7 @@ function weaponAdj(weapon,bat,wn) {
     if (ammo.aoe != '' && thisWeapon.aoe != 'bat') {
         thisWeapon.aoe = ammo.aoe;
     }
-    if (thisWeapon.accuracy >= 30 || ammo.accuracy < 1 || thisWeapon.isMelee || thisWeapon.aoe != 'unit') {
+    if (thisWeapon.accuracy >= 32 || ammo.accuracy < 1 || thisWeapon.isMelee || thisWeapon.aoe != 'unit') {
         thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
     }
     // sila drug

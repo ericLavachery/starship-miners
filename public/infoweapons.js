@@ -154,7 +154,11 @@ function weaponsInfos(bat,batType,pop) {
                 accGround = thisWeapon.accuracy;
             }
             $('#'+bodyPlace).append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+accGround+' &Map; '+accFly+'</span><br>');
-            $('#'+bodyPlace).append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
+            if (pop) {
+                $('#'+bodyPlace).append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
+            } else {
+                $('#'+bodyPlace).append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+attaques+' &times '+thisWeapon.power+'</span><br>');
+            }
             if (thisWeapon.armors != 1) {
                 $('#'+bodyPlace).append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
             }
@@ -314,7 +318,11 @@ function weaponsInfos(bat,batType,pop) {
                 accGround = thisWeapon.accuracy;
             }
             $('#'+bodyPlace).append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+accGround+' &Map; '+accFly+'</span><br>');
-            $('#'+bodyPlace).append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
+            if (pop) {
+                $('#'+bodyPlace).append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
+            } else {
+                $('#'+bodyPlace).append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+attaques+' &times '+thisWeapon.power+'</span><br>');
+            }
             if (thisWeapon.armors != 1) {
                 $('#'+bodyPlace).append('<span class="paramName">Armures</span><span class="paramIcon"></span><span class="paramValue">&times;'+thisWeapon.armors+'</span><br>');
             }

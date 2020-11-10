@@ -849,7 +849,7 @@
             "range":1,
             "noBis":true,
             "rof":36,
-            "accuracy":19,
+            "accuracy":18,
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
