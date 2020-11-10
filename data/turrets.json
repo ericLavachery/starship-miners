@@ -26,7 +26,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"calibre_hunt",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Mitrailleuse",
@@ -41,7 +41,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"mit_mid",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
         "equip":["aucun","lunette1","chargeur1","w2-mit"],
@@ -84,7 +84,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"calibre_sa",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Mitrailleuse",
@@ -99,7 +99,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"mit_mid",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
         "equip":["aucun","lunette1","chargeur1","w2-mit"],
@@ -142,7 +142,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"calibre_sa",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Mitrailleuse lourde",
@@ -157,7 +157,7 @@
             "armors":0.6,
             "aoe":"unit",
             "sound":"mit_heavy3",
-            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["aucun"],
         "equip":["aucun","lunette1","chargeur1","w2-mit"],
@@ -200,7 +200,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"calibre_sa",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Missiles Comet",
@@ -262,7 +262,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Cradle",
@@ -387,7 +387,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"calibre_sa",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{},
         "protection":["aucun"],
@@ -432,7 +432,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Missiles Comet",
@@ -563,7 +563,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun","dunium","bonibo","adamantite"],
         "equip":["aucun","chargeur2","carrousel1"],
@@ -664,7 +664,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"mit_mid",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Fusil antichar",
@@ -677,7 +677,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["aucun","dunium","bonibo","adamantite"],
         "equip":["aucun","lunette","chargeur"],
@@ -736,7 +736,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze","flash"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flash"]
         },
         "protection":["aucun"],
         "equip":["aucun","chargeur2"],
@@ -853,7 +853,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
         "equip":["aucun","chargeur2","carrousel1","longtom1"],

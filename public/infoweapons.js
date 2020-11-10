@@ -376,3 +376,83 @@ function showAmmo(ammo) {
     ammoView = ammoView.replace('monomolecular','mono');
     return ammoView;
 };
+
+function showAmmoInfo(ammoName) {
+    let ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoName));
+    let ammo = ammoTypes[ammoIndex];
+    let ammoInfo = '';
+    if (ammo.range > 1.2) {
+        ammoInfo = ammoInfo+'Portée++ ';
+    } else if (ammo.range > 1) {
+        ammoInfo = ammoInfo+'Portée+ ';
+    }
+    if (ammo.rof >= 1.3) {
+        ammoInfo = ammoInfo+'Cadence++ ';
+    } else if (ammo.rof > 1) {
+        ammoInfo = ammoInfo+'Cadence+ ';
+    }
+    if (ammo.rof < 1) {
+        ammoInfo = ammoInfo+'Cadence- ';
+    }
+    if (ammo.power >= 9) {
+        ammoInfo = ammoInfo+'Puissance+++ ';
+    } else if (ammo.power >= 3 || ammo.powermult >= 1.4) {
+        ammoInfo = ammoInfo+'Puissance++ ';
+    } else if (ammo.power > 0 || ammo.powermult > 1) {
+        ammoInfo = ammoInfo+'Puissance+ ';
+    }
+    if (ammo.power < 0 || ammo.powermult < 1) {
+        ammoInfo = ammoInfo+'Puissance- ';
+    }
+    if (ammo.armors < 0.2) {
+        ammoInfo = ammoInfo+'Pénétration+++ ';
+    } else if (ammo.armors < 0.5) {
+        ammoInfo = ammoInfo+'Pénétration++ ';
+    } else if (ammo.armors < 1) {
+        ammoInfo = ammoInfo+'Pénétration+ ';
+    }
+    if (ammo.armors >= 1.4) {
+        ammoInfo = ammoInfo+'Pénétration-- ';
+    } else if (ammo.armors > 1) {
+        ammoInfo = ammoInfo+'Pénétration- ';
+    }
+    if (ammo.accuracy > 1.3) {
+        ammoInfo = ammoInfo+'Précision++ ';
+    } else if (ammo.accuracy > 1) {
+        ammoInfo = ammoInfo+'Précision+ ';
+    }
+    if (ammo.accuracy < 1) {
+        ammoInfo = ammoInfo+'Précision- ';
+    }
+    if (ammo.apdamage > 0) {
+        ammoInfo = ammoInfo+'Entrave ';
+    }
+    if (ammo.aoe != '') {
+        if (ammo.aoe == 'unit') {
+            ammoInfo = ammoInfo+'Unité ';
+        }
+        if (ammo.aoe == 'brochette') {
+            ammoInfo = ammoInfo+'Unités ';
+        }
+        if (ammo.aoe == 'squad') {
+            ammoInfo = ammoInfo+'Escouade ';
+        }
+        if (ammo.aoe == 'bat') {
+            ammoInfo = ammoInfo+'Bataillon ';
+        }
+    }
+    if (ammo.info != undefined) {
+        ammoInfo = ammoInfo+ammo.info+' ';
+    }
+    return ammoInfo;
+};
+
+function showEquipInfo(equipName) {
+    let equipIndex = armorTypes.findIndex((obj => obj.name == equipName));
+    let equip = armorTypes[equipIndex];
+    let equipInfo = '';
+    if (equip.info != undefined) {
+        equipInfo = equipInfo+equip.info+' ';
+    }
+    return equipInfo;
+};

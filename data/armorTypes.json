@@ -109,134 +109,167 @@
     },
     {
         "name": "lunette",
-        "skills": []
+        "skills": [],
+        "info": "Précision++ Elévation+"
     },
     {
         "name": "lunette1",
-        "skills": []
+        "skills": [],
+        "info": "Précision++ Elévation+"
     },
     {
         "name": "lunette2",
-        "skills": []
+        "skills": [],
+        "info": "Précision++ Elévation+"
     },
     {
         "name": "chargeur",
-        "skills": []
+        "skills": [],
+        "info": "Cadence++"
     },
     {
         "name": "chargeur1",
-        "skills": []
+        "skills": [],
+        "info": "Cadence++"
     },
     {
         "name": "chargeur2",
-        "skills": []
+        "skills": [],
+        "info": "Cadence++"
     },
     {
         "name": "arcpoulie",
-        "skills": []
+        "skills": [],
+        "info": "Portée+ Puissance+"
     },
     {
         "name": "ranger",
-        "skills": []
+        "skills": [],
+        "info": "Déplacement+"
     },
     {
         "name": "mecano",
-        "skills": []
+        "skills": [],
+        "info": "Dépanage+"
     },
     {
         "name": "medic",
-        "skills": []
+        "skills": [],
+        "info": "Soins+"
     },
     {
         "name": "gilet",
-        "skills": []
+        "skills": [],
+        "info": "Munitions+"
     },
     {
         "name": "camo",
-        "skills": []
+        "skills": [],
+        "info": "Camouflage+"
     },
     {
         "name": "jetpack",
-        "skills": []
+        "skills": [],
+        "info": "Vol"
     },
     {
         "name": "flash",
-        "skills": []
+        "skills": [],
+        "info": "Vision+"
     },
     {
         "name": "kit-pompiste",
-        "skills": []
+        "skills": [],
+        "info": "Vision+ Canon à essence"
     },
     {
         "name": "kit-garde",
-        "skills": []
+        "skills": [],
+        "info": "Vision+ Mitrailleuse"
     },
     {
         "name": "kit-guetteur",
-        "skills": []
+        "skills": [],
+        "info": "Vision+ Cadence++ Précision++ Elévation+ Marqueur"
     },
     {
         "name": "kit-sentinelle",
-        "skills": []
+        "skills": [],
+        "info": "Vision+ Camouflage+ Déplacement+ Marqueur"
     },
     {
         "name": "kit-artilleur",
-        "skills": []
+        "skills": [],
+        "info": "Vision+ Minicanon"
     },
     {
         "name": "carrousel",
-        "skills": []
+        "skills": [],
+        "info": "Cadence+ Ravitaillement+"
     },
     {
         "name": "carrousel1",
-        "skills": []
+        "skills": [],
+        "info": "Cadence+ Ravitaillement+"
     },
     {
         "name": "carrousel2",
-        "skills": []
+        "skills": [],
+        "info": "Cadence+ Ravitaillement+"
     },
     {
         "name": "longtom",
-        "skills": []
+        "skills": [],
+        "info": "Portée+"
     },
     {
         "name": "longtom1",
-        "skills": []
+        "skills": [],
+        "info": "Portée+"
     },
     {
         "name": "longtom2",
-        "skills": []
+        "skills": [],
+        "info": "Portée+"
     },
     {
         "name": "g2motor",
-        "skills": []
+        "skills": [],
+        "info": "PA+"
     },
     {
         "name": "chenilles",
-        "skills": []
+        "skills": [],
+        "info": "Accès Collines et Marécages"
     },
     {
         "name": "snorkel",
-        "skills": []
+        "skills": [],
+        "info": "Accès Etangs et Rivières"
     },
     {
         "name": "belier",
-        "skills": []
+        "skills": [],
+        "info": "Puissance++"
     },
     {
         "name": "w2-comet",
-        "skills": []
+        "skills": [],
+        "info": "Lance Missile"
     },
     {
         "name": "w2-mit",
-        "skills": []
+        "skills": [],
+        "info": "Mitrailleuse"
     },
     {
         "name": "w2-cradle",
-        "skills": []
+        "skills": [],
+        "info": "Cradle"
     },
     {
         "name": "w2-2ch",
-        "skills": []
+        "skills": [],
+        "info": "Double chargeur"
     }
 ]

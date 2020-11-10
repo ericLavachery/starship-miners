@@ -8,7 +8,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Guidage"
     },
     {
         "name": "marquage",
@@ -19,7 +20,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Marquage"
     },
     {
         "name": "webtaser",
@@ -30,7 +32,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Penetration+++ Entrave"
     },
     {
         "name": "standard",
@@ -104,7 +107,7 @@
         "rof": 1,
         "power": -1,
         "powermult": 1,
-        "armors": 0.7,
+        "armors": 0.6,
         "accuracy": 1.2,
         "apdamage": 0,
         "aoe": ""
@@ -123,7 +126,7 @@
     {
         "name": "dunium",
         "range": 1,
-        "rof": 1.25,
+        "rof": 1.2,
         "power": 10,
         "powermult": 1,
         "armors": 1.1,
@@ -143,6 +146,18 @@
         "aoe": ""
     },
     {
+        "name": "incendiaire",
+        "range": 1,
+        "rof": 1,
+        "power": 3,
+        "powermult": 1,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "Incendiaire"
+    },
+    {
         "name": "timonium",
         "range": 1,
         "rof": 1,
@@ -156,7 +171,7 @@
     {
         "name": "salite",
         "range": 1.4,
-        "rof": 1.25,
+        "rof": 1.2,
         "power": 0,
         "powermult": 1,
         "armors": 0.7,
@@ -173,7 +188,8 @@
         "armors": 0.2,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "PasseBouclier"
     },
     {
         "name": "freeze",
@@ -184,7 +200,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0.05,
-        "aoe": ""
+        "aoe": "",
+        "info": "Paralysie"
     },
     {
         "name": "flechette",
@@ -206,7 +223,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "brochette"
+        "aoe": "brochette",
+        "info": "Incendiaire"
     },
     {
         "name": "fireshells-pyratol",
@@ -217,7 +235,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "brochette"
+        "aoe": "brochette",
+        "info": "Incendiaire"
     },
     {
         "name": "fireshells-nanite",
@@ -228,18 +247,20 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "fireshells-salite",
         "range": 1.7,
-        "rof": 1.25,
+        "rof": 1.2,
         "power": 0,
         "powermult": 1,
         "armors": 1.5,
         "accuracy": 1.25,
         "apdamage": 0,
-        "aoe": "brochette"
+        "aoe": "brochette",
+        "info": "Incendiaire"
     },
     {
         "name": "ac-tungsten",
@@ -275,6 +296,18 @@
         "aoe": ""
     },
     {
+        "name": "ac-incendiaire",
+        "range": 1,
+        "rof": 1,
+        "power": 5,
+        "powermult": 1,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "Incendiaire"
+    },
+    {
         "name": "ac-timonium",
         "range": 1,
         "rof": 1,
@@ -294,7 +327,8 @@
         "armors": 0.2,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "PasseBouclier"
     },
     {
         "name": "ac-freeze",
@@ -305,12 +339,13 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0.05,
-        "aoe": ""
+        "aoe": "",
+        "info": "Paralysie"
     },
     {
         "name": "ac-salite",
         "range": 1.4,
-        "rof": 1.25,
+        "rof": 1.2,
         "power": 0,
         "powermult": 1,
         "armors": 0.6,
@@ -327,12 +362,13 @@
         "armors": 0.15,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "PasseBouclier"
     },
     {
         "name": "ac-dunium",
         "range": 1,
-        "rof": 1.25,
+        "rof": 1.2,
         "power": 13,
         "powermult": 1,
         "armors": 1,
@@ -398,7 +434,7 @@
     {
         "name": "sm-dunium",
         "range": 1,
-        "rof": 1.25,
+        "rof": 1.2,
         "power": 8,
         "powermult": 1,
         "armors": 1.2,
@@ -418,6 +454,18 @@
         "aoe": ""
     },
     {
+        "name": "sm-incendiaire",
+        "range": 1,
+        "rof": 1,
+        "power": 2,
+        "powermult": 1,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "Incendiaire"
+    },
+    {
         "name": "sm-timonium",
         "range": 1,
         "rof": 1,
@@ -431,7 +479,7 @@
     {
         "name": "sm-salite",
         "range": 1.4,
-        "rof": 1.25,
+        "rof": 1.2,
         "power": 0,
         "powermult": 1,
         "armors": 0.7,
@@ -448,7 +496,8 @@
         "armors": 0.3,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "PasseBouclier"
     },
     {
         "name": "sm-freeze",
@@ -459,7 +508,8 @@
         "armors": 0.65,
         "accuracy": 1,
         "apdamage": 0.05,
-        "aoe": ""
+        "aoe": "",
+        "info": "Paralysie"
     },
     {
         "name": "laser",
@@ -470,7 +520,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Incendiaire"
     },
     {
         "name": "laser-g2",
@@ -481,7 +532,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Incendiaire"
     },
     {
         "name": "bfg",
@@ -519,7 +571,7 @@
     {
         "name": "plastanium",
         "range": 1.4,
-        "rof": 1.5,
+        "rof": 1.25,
         "power": 0,
         "powermult": 1,
         "armors": 0.67,
@@ -563,7 +615,7 @@
     {
         "name": "cn-plastanium",
         "range": 2,
-        "rof": 1.5,
+        "rof": 1.25,
         "power": 0,
         "powermult": 1,
         "armors": 0.33,
@@ -635,7 +687,8 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Incendiaire"
     },
     {
         "name": "fleche-mono",
@@ -657,7 +710,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Poison"
     },
     {
         "name": "fleche-atium",
@@ -668,7 +722,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Poison++"
     },
     {
         "name": "fleche-poraz",
@@ -690,7 +745,8 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Poison+++"
     },
     {
         "name": "fleche-freeze",
@@ -701,7 +757,8 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Paralysie"
     },
     {
         "name": "fleche-homing",
@@ -778,7 +835,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Poison"
     },
     {
         "name": "lame-atium",
@@ -789,7 +847,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Poison++"
     },
     {
         "name": "lame-poraz",
@@ -954,7 +1013,8 @@
         "armors": 1,
         "accuracy": 1.5,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "boulet-slime",
@@ -976,7 +1036,8 @@
         "armors": 1,
         "accuracy": 1.5,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "boulet-nanite",
@@ -1053,7 +1114,8 @@
         "armors": 0.2,
         "accuracy": 1.5,
         "apdamage": 0,
-        "aoe": "brochette"
+        "aoe": "brochette",
+        "info": "PasseBouclier"
     },
     {
         "name": "obus-incendiaire",
@@ -1064,7 +1126,8 @@
         "armors": 1,
         "accuracy": 1.3,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "obus-napalm",
@@ -1075,7 +1138,8 @@
         "armors": 1,
         "accuracy": 1.5,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "obus-nanite",
@@ -1130,7 +1194,8 @@
         "armors": 0.15,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "brochette"
+        "aoe": "brochette",
+        "info": "PasseBouclier"
     },
     {
         "name": "missile-vanguard",
@@ -1207,7 +1272,8 @@
         "armors": 0.15,
         "accuracy": 1.5,
         "apdamage": 0,
-        "aoe": "brochette"
+        "aoe": "brochette",
+        "info": "PasseBouclier"
     },
     {
         "name": "missile-incendiaire",
@@ -1218,7 +1284,8 @@
         "armors": 1,
         "accuracy": 1.35,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "missile-napalm",
@@ -1229,7 +1296,8 @@
         "armors": 1,
         "accuracy": 1.5,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "missile-nanite",
@@ -1317,7 +1385,8 @@
         "armors": 1.25,
         "accuracy": 1.35,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "grenade-nanite",
@@ -1405,7 +1474,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "molotov-slime",
@@ -1416,7 +1486,8 @@
         "armors": 0.75,
         "accuracy": 1.75,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "molotov-pyratol",
@@ -1427,7 +1498,8 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "lf-feu",
@@ -1438,7 +1510,8 @@
         "armors": 1.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "lf-napalm",
@@ -1449,7 +1522,8 @@
         "armors": 1.25,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "lf-slime",
@@ -1460,7 +1534,8 @@
         "armors": 1,
         "accuracy": 1.25,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "lf-pyratol",
@@ -1471,7 +1546,8 @@
         "armors": 0.85,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "lf-uridium",
@@ -1482,7 +1558,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0.08,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "lt-o2",
@@ -1493,7 +1570,8 @@
         "armors": 0,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "unit"
+        "aoe": "unit",
+        "info": "Incendiaire"
     },
     {
         "name": "lt-nanite",
@@ -1504,7 +1582,8 @@
         "armors": 0.25,
         "accuracy": 1.5,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "lt-plastanium",
@@ -1515,7 +1594,8 @@
         "armors": 0,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "unit"
+        "aoe": "unit",
+        "info": "Incendiaire"
     },
     {
         "name": "fireball",
@@ -1526,7 +1606,8 @@
         "armors": 1.25,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "fireglue",
@@ -1537,7 +1618,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "brochette"
+        "aoe": "brochette",
+        "info": "Incendiaire"
     },
     {
         "name": "fireslime",
@@ -1548,7 +1630,8 @@
         "armors": 1,
         "accuracy": 2,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "info": "Incendiaire"
     },
     {
         "name": "fireblast",
@@ -1559,7 +1642,8 @@
         "armors": 2,
         "accuracy": 2,
         "apdamage": 0,
-        "aoe": "bat"
+        "aoe": "bat",
+        "info": "Incendiaire"
     },
     {
         "name": "none",
@@ -1724,7 +1808,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Poison"
     },
     {
         "name": "atium",
@@ -1735,7 +1820,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Poison++"
     },
     {
         "name": "feu",
@@ -1746,7 +1832,8 @@
         "armors": 1.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Incendiaire"
     },
     {
         "name": "fuel",
@@ -1768,6 +1855,7 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "info": "Incendiaire"
     }
 ]

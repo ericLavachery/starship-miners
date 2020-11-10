@@ -172,7 +172,7 @@ function conSelect(unitId,player,noRefresh) {
                 } else if (equip.endsWith('2')) {
                     weapName = ' ('+conselUnit.weapon2.name+')';
                 }
-                $('#conAmmoList').append('<span class="constName klik" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip)+'" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                 listNum++;
             });
         }
@@ -187,24 +187,30 @@ function conSelect(unitId,player,noRefresh) {
                 } else {
                     $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                 }
-                $('#conAmmoList').append('<span class="constName klik" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
+                $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+'" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
                 listNum++;
             });
         }
     }
+    let hasW2 = false;
+    if (!conselUnit.weapon2.kit || conselAmmos[3].includes('kit-') || conselAmmos[3].includes('w2-')) {
+        hasW2 = true;
+    }
     listNum = 1;
-    if (Object.keys(conselUnit.weapon2).length >= 1 && !conselUnit.skills.includes('unemun')) {
-        if (conselUnit.weapon2.ammo.length >= 1) {
-            $('#conAmmoList').append('<span class="constName or">'+conselUnit.weapon2.name+'</span><br>');
-            conselUnit.weapon2.ammo.forEach(function(ammo) {
-                if (conselAmmos[1] == ammo || (conselAmmos[1] === 'xxx' && listNum === 1)) {
-                    $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                } else {
-                    $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-                }
-                $('#conAmmoList').append('<span class="constName klik" onclick="selectAmmo(`'+ammo+'`,`w2`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
-                listNum++;
-            });
+    if (hasW2) {
+        if (Object.keys(conselUnit.weapon2).length >= 1 && !conselUnit.skills.includes('unemun')) {
+            if (conselUnit.weapon2.ammo.length >= 1) {
+                $('#conAmmoList').append('<span class="constName or">'+conselUnit.weapon2.name+'</span><br>');
+                conselUnit.weapon2.ammo.forEach(function(ammo) {
+                    if (conselAmmos[1] == ammo || (conselAmmos[1] === 'xxx' && listNum === 1)) {
+                        $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                    } else {
+                        $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                    }
+                    $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+'" onclick="selectAmmo(`'+ammo+'`,`w2`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
+                    listNum++;
+                });
+            }
         }
     }
     bfconst(conselCat,conselTriche);

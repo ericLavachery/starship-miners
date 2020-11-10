@@ -782,7 +782,6 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.range = Math.ceil(thisWeapon.range*1.5);
         }
     }
-    thisWeapon.rof = Math.round(thisWeapon.rof*ammo.rof);
     thisWeapon.power = Math.round(thisWeapon.power*ammo.powermult);
     thisWeapon.power = thisWeapon.power+ammo.power;
     thisWeapon.apdamage = ammo.apdamage;
@@ -791,8 +790,15 @@ function weaponAdj(weapon,bat,wn) {
     if (ammo.aoe != '' && thisWeapon.aoe != 'bat') {
         thisWeapon.aoe = ammo.aoe;
     }
-    if (thisWeapon.accuracy >= 32 || ammo.accuracy < 1 || thisWeapon.isMelee || thisWeapon.aoe != 'unit') {
+    if (ammo.accuracy < 1 || thisWeapon.isMelee || thisWeapon.aoe != 'unit') {
         thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
+        thisWeapon.rof = Math.round(thisWeapon.rof*ammo.rof);
+    } else {
+        if (thisWeapon.accuracy >= 32) {
+            thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
+        } else {
+            thisWeapon.rof = Math.round(thisWeapon.rof*ammo.rof);
+        }
     }
     // sila drug
     if (bat.tags.includes('sila')) {
