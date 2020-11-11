@@ -53,4 +53,5 @@ function commandes() {
         $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les bataillons)" class="boutonRouge iconButtons" onclick="showMapReset()" id="reset1"><i class="fas fa-power-off"></i></button>');
         $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les bataillons)" class="boutonRouge iconButtons" onclick="mapReset()" id="reset2"><i class="fas fa-skull-crossbones"></i></button>');
     }
+    gangNavig();
 };

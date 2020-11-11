@@ -822,7 +822,7 @@ function skillsInfos(bat,batType) {
             }
         }
     }
-    // CONSTRUCTION
+    // CONSTRUCTION BATIMENTS
     if (batType.skills.includes('constructeur')) {
         apReq = 5;
         if (bat.apLeft >= apReq && !inMelee) {
@@ -834,6 +834,20 @@ function skillsInfos(bat,batType) {
                 skillMessage = "Pas assez de PA";
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-drafting-compass"></i> <span class="small">'+apReq+'</span></button>&nbsp; Construction</h4></span>');
+        }
+    }
+    // CONSTRUCTION UNITES
+    if (batType.skills.includes('producteur')) {
+        apReq = 5;
+        if (bat.apLeft >= apReq && !inMelee) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Production (unités)" class="boutonGris skillButtons" onclick="bfconst(`units`,false)"><i class="fas fa-id-card"></i> <span class="small">'+apReq+'</span></button>&nbsp; Production</h4></span>');
+        } else {
+            if (inMelee) {
+                skillMessage = "Ne peut pas se faire en mêlée";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-drafting-compass"></i> <span class="small">'+apReq+'</span></button>&nbsp; Production</h4></span>');
         }
     }
     // FOUILLE DE RUINES

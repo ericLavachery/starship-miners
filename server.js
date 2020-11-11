@@ -20,6 +20,7 @@ app.get('/', function (req, res) {
 });
 
 let unitTypes;
+let unitCosts;
 loadUnitTypes();
 
 function loadUnitTypes() {
@@ -30,6 +31,7 @@ function loadUnitTypes() {
             loadTurrets();
             loadInfantryUnits();
             loadMotorisedUnits();
+            loadCosts();
             // console.log(unitTypes);
         } catch (e) {
             console.error( e );
@@ -67,6 +69,17 @@ function loadMotorisedUnits() {
             let motorisedUnits = JSON.parse(data);
             unitTypes = unitTypes.concat(motorisedUnits);
             // console.log(unitTypes);
+        } catch (e) {
+            console.error( e );
+        }
+    });
+};
+function loadCosts() {
+    fs.readFile('./data/costs.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        try {
+            unitCosts = JSON.parse(data);
+            // console.log(unitCosts);
         } catch (e) {
             console.error( e );
         }
@@ -252,6 +265,8 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.emit('unitDV-Load', unitDV);
         console.log('loading unit types');
         socket.emit('unitTypes-Load', unitTypes);
+        console.log('loading unit costs');
+        socket.emit('unitCosts-Load', unitCosts);
         console.log('loading ammo');
         socket.emit('ammoTypes-Load', ammoTypes);
         console.log('loading armors');

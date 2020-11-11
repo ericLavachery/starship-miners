@@ -595,7 +595,7 @@ function voirRessources() {
     $('#conUnitList').append('<span class="butSpace"></span><span class="smSpace"></span>');
     $('#conUnitList').append('<select class="boutonGris" id="resFind" onchange="showFoundRes()"></select>');
     // $('#resFind').append('<option value="">'+showOneRes+'</option>');
-    $('#resFind').append('<option value="Toutes">Toutes</option>');
+    $('#resFind').empty().append('<option value="Toutes">Toutes</option>');
     let filteredResTypes = _.filter(resTypes,function(res) {
         return (res.cat != 'alien' && res.cat != 'zero');
     });

@@ -152,6 +152,23 @@ socket.on('unitTypes-Load', function(ut) {
     }
     freeIds('player',unitTypes);
 });
+// unitCosts
+socket.on('unitCosts-Load', function(unitCosts) {
+    let unitIndex;
+    let batType;
+    unitCosts.forEach(function(cost) {
+        unitIndex = unitTypes.findIndex((obj => obj.id == cost.id));
+        batType = unitTypes[unitIndex];
+        Object.entries(cost).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            if (key != 'id' && key != 'name') {
+                batType[key] = value;
+            }
+        });
+    });
+    console.log(unitTypes);
+});
 socket.on('alienUnits-Load', function(au) {
     alienUnits = au;
     // console.log(alienUnits);

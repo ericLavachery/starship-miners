@@ -5,6 +5,10 @@ function bfconst(cat,triche) {
     if (cat === 'buildings') {
         catz.push('devices');
     }
+    if (cat === 'units') {
+        catz.push('infantry');
+        catz.push('vehicles');
+    }
     selectMode();
     $("#conUnitList").css("display","block");
     $("#conAmmoList").css("display","block");
@@ -14,14 +18,14 @@ function bfconst(cat,triche) {
     $('#conUnitList').empty();
     let color = '';
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer Constriche</span><br><br>');
-    $('#conUnitList').append('<span class="constName or" id="gentils">LES GENTILS</span><br>');
+    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
     let lastKind = '';
     let showkind = '';
     let allUnitsList = unitTypes.slice();
     sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'cat'),'kind');
     // MENU
     if (triche) {
+        $('#conUnitList').append('<br><span class="constName or" id="gentils">LES GENTILS</span><br>');
         sortedUnitsList.forEach(function(unit) {
             if (lastKind != unit.kind) {
                 showkind = unit.kind.replace(/zero-/g,"");
@@ -33,8 +37,19 @@ function bfconst(cat,triche) {
         $('#conUnitList').append('<br>');
     }
     // LIST
+    let prodOK = false;
     sortedUnitsList.forEach(function(unit) {
-        if (triche || (catz.includes(unit.cat) && unit.refabTime >= 1)) {
+        prodOK = false;
+        if (catz.includes(unit.cat) && unit.refabTime >= 1) {
+            prodOK = true;
+        }
+        if (!unit.bldReq.includes(selectedBatType.name) && unit.cat != 'buildings' && unit.cat != 'devices') {
+            prodOK = false;
+        }
+        if (triche) {
+            prodOK = true;
+        }
+        if (prodOK) {
             if (lastKind != unit.kind) {
                 showkind = unit.kind.replace(/zero-/g,"");
                 $('#conUnitList').append('<br><a href="#gentils"><span class="constName or" id="kind-'+unit.kind+'">'+showkind+'</span></a><br>');
@@ -65,7 +80,7 @@ function bfconst(cat,triche) {
     }
     $('#conUnitList').append('<br>');
     commandes();
-}
+};
 
 function catColor(cat,kind) {
     if (cat === 'aliens') {
