@@ -10,6 +10,7 @@ function bfconst(cat,triche) {
         catz.push('vehicles');
     }
     selectMode();
+    updateBldList();
     $("#conUnitList").css("display","block");
     $("#conAmmoList").css("display","block");
     $('#conUnitList').css("height","300px");
@@ -38,12 +39,16 @@ function bfconst(cat,triche) {
     }
     // LIST
     let prodOK = false;
+    let bldOK = false;
     sortedUnitsList.forEach(function(unit) {
         prodOK = false;
         if (catz.includes(unit.cat) && unit.refabTime >= 1) {
             prodOK = true;
         }
         if (!unit.bldReq.includes(selectedBatType.name) && unit.cat != 'buildings' && unit.cat != 'devices') {
+            prodOK = false;
+        }
+        if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
             prodOK = false;
         }
         if (triche) {
@@ -59,8 +64,20 @@ function bfconst(cat,triche) {
             } else {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
             }
-            color = catColor(unit.cat,unit.kind);
-            $('#conUnitList').append('<span class="constName klik '+color+'" onclick="conSelect('+unit.id+',`player`)">'+unit.name+'</span><br>');
+            bldOK = false;
+            if ((playerInfos.bldList.includes(unit.bldReq[0]) || unit.bldReq[0] === undefined) && (playerInfos.bldList.includes(unit.bldReq[1]) || unit.bldReq[1] === undefined) && (playerInfos.bldList.includes(unit.bldReq[2]) || unit.bldReq[2] === undefined)) {
+                bldOK = true;
+            }
+            if (triche) {
+                bldOK = true;
+            }
+            if (bldOK) {
+                color = catColor(unit.cat,unit.kind);
+                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+'" onclick="conSelect('+unit.id+',`player`)">'+unit.name+'</span><br>');
+            } else {
+                color = 'gff';
+                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+'">'+unit.name+'</span><br>');
+            }
             lastKind = unit.kind;
         }
     });
@@ -634,4 +651,24 @@ function putInfra(infra) {
     saveMap();
     showMap(zone,false);
     showBatInfos(selectedBat);
+};
+
+function updateBldList() {
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" || bat.loc === "trans") {
+            batType = getBatType(bat);
+            if (batType.cat === 'buildings' && !batType.skills.includes('nolist') && !bat.tags.includes('construction')) {
+                if (!playerInfos.bldList.includes(batType.name)) {
+                    playerInfos.bldList.push(batType.name);
+                }
+                if (batType.bldEquiv.length >= 1) {
+                    batType.bldEquiv.forEach(function(bldName) {
+                        if (!playerInfos.bldList.includes(bldName)) {
+                            playerInfos.bldList.push(bldName);
+                        }
+                    });
+                }
+            }
+        }
+    });
 };

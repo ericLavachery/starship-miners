@@ -271,5 +271,10 @@
         "name": "w2-2ch",
         "skills": [],
         "info": "Double chargeur"
+    },
+    {
+        "name": "w2-canon",
+        "skills": [],
+        "info": "Minicanon"
     }
 ]

@@ -2704,11 +2704,12 @@
         "weapon2":{
             "name":"Minicanon",
             "cost":7,
-            "range":1,
+            "range":2,
             "elevation":1,
+            "kit":true,
             "noFly":true,
             "noBis":true,
-            "rof":5,
+            "rof":7,
             "accuracy":16,
             "power":15,
             "aoe":"squad",
@@ -2717,7 +2718,7 @@
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
-        "equip":["aucun","flash","ranger","gilet","chargeur1","carrousel2","longtom2","camo"],
+        "equip":["aucun","flash","ranger","chargeur1","w2-canon","camo"],
         "moveCost":7,
         "maxFlood":3,
         "maxScarp":3,

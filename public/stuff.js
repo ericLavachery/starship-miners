@@ -86,6 +86,12 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
+function toNiceString(myArray) {
+    let newString = myArray.toString();
+    newString = newString.replace(/,/g,', ');
+    return newString;
+};
+
 function onlyFirstLetter(string) {
     return string.charAt(0).toLowerCase();
 };

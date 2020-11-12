@@ -1054,7 +1054,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selfbadmecano","leader","sentinelle","defense","flash"],
+        "skills":["fortif","cible","selfbadmecano","sentinelle","defense","flash"],
         "mecanoCost":20,
         "fuzz":3,
         "deathFx":"planeexploair1"
