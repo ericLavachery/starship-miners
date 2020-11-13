@@ -88,7 +88,8 @@
         "armors": 0.35,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "teflon",
@@ -132,7 +133,8 @@
         "armors": 1.1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "explosive",
@@ -143,7 +145,8 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "incendiaire",
@@ -155,7 +158,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "timonium",
@@ -166,7 +170,8 @@
         "armors": 0.25,
         "accuracy": 1,
         "apdamage": 0.05,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "salite",
@@ -177,7 +182,8 @@
         "armors": 0.7,
         "accuracy": 1.33,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "adamantium",
@@ -189,7 +195,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "PasseBouclier"
+        "info": "PasseBouclier",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "freeze",
@@ -201,7 +208,8 @@
         "accuracy": 1,
         "apdamage": 0.05,
         "aoe": "",
-        "info": "Paralysie"
+        "info": "Paralysie",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "flechette",
@@ -212,7 +220,8 @@
         "armors": 0.25,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "fireshells",
@@ -236,7 +245,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "brochette",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "fireshells-nanite",
@@ -248,7 +258,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "fireshells-salite",
@@ -260,7 +271,8 @@
         "accuracy": 1.25,
         "apdamage": 0,
         "aoe": "brochette",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "ac-tungsten",
@@ -282,7 +294,8 @@
         "armors": 0.25,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "ac-explosive",
@@ -293,7 +306,8 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "ac-incendiaire",
@@ -305,7 +319,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "ac-timonium",
@@ -316,7 +331,8 @@
         "armors": 0.15,
         "accuracy": 1,
         "apdamage": 0.05,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "ac-flechette",
@@ -328,7 +344,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "PasseBouclier"
+        "info": "PasseBouclier",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "ac-freeze",
@@ -340,7 +357,8 @@
         "accuracy": 1,
         "apdamage": 0.05,
         "aoe": "",
-        "info": "Paralysie"
+        "info": "Paralysie",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "ac-salite",
@@ -351,7 +369,8 @@
         "armors": 0.6,
         "accuracy": 1.33,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "ac-adamantium",
@@ -363,7 +382,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "PasseBouclier"
+        "info": "PasseBouclier",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "ac-dunium",
@@ -374,7 +394,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "sm-perfo",
@@ -407,7 +428,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "sm-teflon",
@@ -440,7 +462,8 @@
         "armors": 1.2,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "sm-explosive",
@@ -451,7 +474,8 @@
         "armors": 0.8,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "sm-incendiaire",
@@ -463,7 +487,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "sm-timonium",
@@ -474,7 +499,8 @@
         "armors": 0.35,
         "accuracy": 1,
         "apdamage": 0.05,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "sm-salite",
@@ -485,7 +511,8 @@
         "armors": 0.7,
         "accuracy": 1.33,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "sm-adamantium",
@@ -497,7 +524,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "PasseBouclier"
+        "info": "PasseBouclier",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "sm-freeze",
@@ -509,7 +537,8 @@
         "accuracy": 1,
         "apdamage": 0.05,
         "aoe": "",
-        "info": "Paralysie"
+        "info": "Paralysie",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "laser",
@@ -533,7 +562,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Centre de recherches"]
     },
     {
         "name": "bfg",
@@ -555,7 +585,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0.02,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Centre de recherches"]
     },
     {
         "name": "plasma",
@@ -577,7 +608,8 @@
         "armors": 0.67,
         "accuracy": 1.33,
         "apdamage": 0.08,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "nanite",
@@ -588,7 +620,8 @@
         "armors": 0.67,
         "accuracy": 0.67,
         "apdamage": 0.06,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "uridium",
@@ -599,7 +632,8 @@
         "armors": 0.25,
         "accuracy": 0.8,
         "apdamage": 0.12,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Centre de recherches"]
     },
     {
         "name": "cn-plasma",
@@ -621,7 +655,8 @@
         "armors": 0.33,
         "accuracy": 1.33,
         "apdamage": 0.08,
-        "aoe": "brochette"
+        "aoe": "brochette",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "cn-nanite",
@@ -632,7 +667,8 @@
         "armors": 0.5,
         "accuracy": 0.67,
         "apdamage": 0.06,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "cn-uridium",
@@ -643,7 +679,8 @@
         "armors": 0.1,
         "accuracy": 0.8,
         "apdamage": 0.13,
-        "aoe": "brochette"
+        "aoe": "brochette",
+        "bldReq":["Centre de recherches"]
     },
     {
         "name": "fleche",
@@ -699,7 +736,8 @@
         "armors": 0,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Centre de recherches"]
     },
     {
         "name": "fleche-poison",
@@ -723,7 +761,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Poison++"
+        "info": "Poison++",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "fleche-poraz",
@@ -734,7 +773,8 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0.2,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "fleche-shinda",
@@ -746,7 +786,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Poison+++"
+        "info": "Poison+++",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "fleche-freeze",
@@ -758,7 +799,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Paralysie"
+        "info": "Paralysie",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "fleche-homing",
@@ -769,7 +811,8 @@
         "armors": 0.75,
         "accuracy": 2,
         "apdamage": 0.05,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "lame",
@@ -802,7 +845,8 @@
         "armors": 0,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Centre de recherches"]
     },
     {
         "name": "lame-plasma",
@@ -813,7 +857,8 @@
         "armors": 0.25,
         "accuracy": 0.67,
         "apdamage": 0.07,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Centre de recherches"]
     },
     {
         "name": "lame-adamantium",
@@ -824,7 +869,8 @@
         "armors": 0.2,
         "accuracy": 1.5,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "lame-poison",
@@ -848,7 +894,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Poison++"
+        "info": "Poison++",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "lame-poraz",
@@ -859,7 +906,8 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0.2,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "lame-taser",
@@ -870,7 +918,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0.03,
-        "aoe": ""
+        "aoe": "",
+        "bldReq":["Générateur"]
     },
     {
         "name": "lame-tungsten",
@@ -958,7 +1007,8 @@
         "armors": 0.4,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Atelier"]
     },
     {
         "name": "dynamite-nanite",
@@ -969,7 +1019,8 @@
         "armors": 0.4,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "bombe-thermos",
@@ -1002,7 +1053,8 @@
         "armors": 0.67,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Atelier"]
     },
     {
         "name": "boulet-incendiaire",
@@ -1014,7 +1066,8 @@
         "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Atelier"]
     },
     {
         "name": "boulet-slime",
@@ -1025,7 +1078,8 @@
         "armors": 0.85,
         "accuracy": 1.75,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Atelier"]
     },
     {
         "name": "boulet-pyratol",
@@ -1037,7 +1091,8 @@
         "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "boulet-nanite",
@@ -1048,7 +1103,8 @@
         "armors": 0.67,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "bat"
+        "aoe": "bat",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "obus",
@@ -1059,7 +1115,8 @@
         "armors": 0.66,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "obus-scrap",
@@ -1081,7 +1138,8 @@
         "armors": 0.35,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "brochette"
+        "aoe": "brochette",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "obus-heat",
@@ -1092,7 +1150,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "obus-uridium",
@@ -1103,7 +1162,8 @@
         "armors": 0.35,
         "accuracy": 1,
         "apdamage": 0.02,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Armurerie","Centre de recherches"]
     },
     {
         "name": "obus-fleche",
@@ -1115,7 +1175,8 @@
         "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "brochette",
-        "info": "PasseBouclier"
+        "info": "PasseBouclier",
+        "bldReq":["Usine d'armement"]
     },
     {
         "name": "obus-incendiaire",
@@ -1127,7 +1188,8 @@
         "accuracy": 1.3,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "obus-napalm",
@@ -1139,7 +1201,8 @@
         "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "obus-nanite",
@@ -1150,7 +1213,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "bat"
+        "aoe": "bat",
+        "bldReq":["Armurerie","Laboratoire"]
     },
     {
         "name": "obus-gaz",
@@ -1161,7 +1225,8 @@
         "armors": 0,
         "accuracy": 2,
         "apdamage": 0.03,
-        "aoe": "bat"
+        "aoe": "bat",
+        "bldReq":["Armurerie","Laboratoire"]
     },
     {
         "name": "obus-heatseeker",
@@ -1172,7 +1237,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Armurerie","Laboratoire"]
     },
     {
         "name": "obus-plastanium",
@@ -1183,7 +1249,8 @@
         "armors": 0.75,
         "accuracy": 1.5,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Armurerie","Centre de recherches"]
     },
     {
         "name": "missile-sunburst",
@@ -1195,7 +1262,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "brochette",
-        "info": "PasseBouclier"
+        "info": "PasseBouclier",
+        "bldReq":["Usine d'armement"]
     },
     {
         "name": "missile-vanguard",
@@ -1206,7 +1274,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "bat"
+        "aoe": "bat",
+        "bldReq":["Usine d'armement"]
     },
     {
         "name": "missile",
@@ -1217,7 +1286,8 @@
         "armors": 0.66,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "missile-scrap",
@@ -1239,7 +1309,8 @@
         "armors": 0.35,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "brochette"
+        "aoe": "brochette",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "missile-heat",
@@ -1250,7 +1321,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "missile-uridium",
@@ -1261,7 +1333,8 @@
         "armors": 0.35,
         "accuracy": 1,
         "apdamage": 0.02,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Arsenal","Centre de recherches"]
     },
     {
         "name": "missile-fleche",
@@ -1273,7 +1346,8 @@
         "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "brochette",
-        "info": "PasseBouclier"
+        "info": "PasseBouclier",
+        "bldReq":["Usine d'armement"]
     },
     {
         "name": "missile-incendiaire",
@@ -1285,7 +1359,8 @@
         "accuracy": 1.35,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "missile-napalm",
@@ -1297,7 +1372,8 @@
         "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Arsenal"]
     },
     {
         "name": "missile-nanite",
@@ -1308,7 +1384,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "bat"
+        "aoe": "bat",
+        "bldReq":["Arsenal","Laboratoire"]
     },
     {
         "name": "missile-gaz",
@@ -1319,7 +1396,8 @@
         "armors": 0,
         "accuracy": 2,
         "apdamage": 0.05,
-        "aoe": "bat"
+        "aoe": "bat",
+        "bldReq":["Arsenal","Laboratoire"]
     },
     {
         "name": "missile-heatseeker",
@@ -1330,7 +1408,8 @@
         "armors": 0.5,
         "accuracy": 1.25,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Arsenal","Laboratoire"]
     },
     {
         "name": "missile-plastanium",
@@ -1341,7 +1420,8 @@
         "armors": 0.75,
         "accuracy": 1.5,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Arsenal","Centre de recherches"]
     },
     {
         "name": "missile-homing",
@@ -1352,7 +1432,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Arsenal","Centre de recherches"]
     },
     {
         "name": "grenade",
@@ -1374,7 +1455,8 @@
         "armors": 0,
         "accuracy": 1,
         "apdamage": 0.12,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "grenade-incendiaire",
@@ -1386,7 +1468,8 @@
         "accuracy": 1.35,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "grenade-nanite",
@@ -1397,7 +1480,8 @@
         "armors": 0.8,
         "accuracy": 1.5,
         "apdamage": 0,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "grenade-gaz",
@@ -1408,7 +1492,8 @@
         "armors": 0,
         "accuracy": 1.5,
         "apdamage": 0.07,
-        "aoe": "squad"
+        "aoe": "squad",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "grenade-antichar",
@@ -1419,7 +1504,8 @@
         "armors": 0.25,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "brochette"
+        "aoe": "brochette",
+        "bldReq":["Armurerie"]
     },
     {
         "name": "disco",
@@ -1452,7 +1538,8 @@
         "armors": 0,
         "accuracy": 1.5,
         "apdamage": 0.09,
-        "aoe": "bat"
+        "aoe": "bat",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "gaz-uridium",
@@ -1463,7 +1550,8 @@
         "armors": 0,
         "accuracy": 1,
         "apdamage": 0.12,
-        "aoe": "bat"
+        "aoe": "bat",
+        "bldReq":["Centre de recherches"]
     },
     {
         "name": "molotov-feu",
@@ -1487,7 +1575,8 @@
         "accuracy": 1.75,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Atelier"]
     },
     {
         "name": "molotov-pyratol",
@@ -1499,7 +1588,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "lf-feu",
@@ -1523,7 +1613,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Atelier"]
     },
     {
         "name": "lf-slime",
@@ -1535,7 +1626,8 @@
         "accuracy": 1.25,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Atelier"]
     },
     {
         "name": "lf-pyratol",
@@ -1547,7 +1639,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "lf-uridium",
@@ -1559,7 +1652,8 @@
         "accuracy": 1,
         "apdamage": 0.08,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Centre de recherches"]
     },
     {
         "name": "lt-o2",
@@ -1583,7 +1677,8 @@
         "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "lt-plastanium",
@@ -1595,7 +1690,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "unit",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "fireball",
@@ -1619,7 +1715,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "brochette",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Atelier"]
     },
     {
         "name": "fireslime",
@@ -1631,7 +1728,8 @@
         "accuracy": 2,
         "apdamage": 0,
         "aoe": "squad",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Atelier"]
     },
     {
         "name": "fireblast",
@@ -1643,7 +1741,8 @@
         "accuracy": 2,
         "apdamage": 0,
         "aoe": "bat",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "bldReq":["Laboratoire"]
     },
     {
         "name": "none",

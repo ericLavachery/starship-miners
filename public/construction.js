@@ -42,17 +42,20 @@ function bfconst(cat,triche) {
     let bldOK = false;
     sortedUnitsList.forEach(function(unit) {
         prodOK = false;
-        if (catz.includes(unit.cat) && unit.refabTime >= 1) {
-            prodOK = true;
-        }
-        if (!unit.bldReq.includes(selectedBatType.name) && unit.cat != 'buildings' && unit.cat != 'devices') {
-            prodOK = false;
-        }
-        if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
-            prodOK = false;
-        }
         if (triche) {
             prodOK = true;
+        } else {
+            if (catz.includes(unit.cat) && unit.refabTime >= 1) {
+                prodOK = true;
+            }
+            if (!unit.bldReq.includes(selectedBatType.name) && unit.cat != 'buildings' && unit.cat != 'devices') {
+                if (!selectedBatType.skills.includes('transorbital') || unit.bldReq[0] != undefined) {
+                    prodOK = false;
+                }
+            }
+            if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
+                prodOK = false;
+            }
         }
         if (prodOK) {
             if (lastKind != unit.kind) {
@@ -146,6 +149,7 @@ function conSelect(unitId,player,noRefresh) {
     let batArmor;
     let armorSkills = '';
     let listNum = 1;
+    let equipOK = false;
     if (conselUnit.protection != undefined) {
         if (conselUnit.protection.length >= 1) {
             console.log(conselUnit.protection);
@@ -172,7 +176,15 @@ function conSelect(unitId,player,noRefresh) {
                 if (batArmor.skills.includes('resistfeu')) {
                     armorSkills = armorSkills+' resistfeu';
                 }
-                $('#conAmmoList').append('<span class="constName klik" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                equipOK = false;
+                if (playerInfos.bldList.includes(batArmor.bldReq[0]) || batArmor.bldReq[0] === undefined) {
+                    equipOK = true;
+                }
+                if (equipOK) {
+                    $('#conAmmoList').append('<span class="constName klik" title="'+toNiceString(batArmor.bldReq)+'" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                } else {
+                    $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batArmor.bldReq)+'">'+armor+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                }
                 listNum++;
             });
         }
@@ -204,11 +216,21 @@ function conSelect(unitId,player,noRefresh) {
                 } else if (equip.endsWith('2')) {
                     weapName = ' ('+conselUnit.weapon2.name+')';
                 }
-                $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip)+'" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                equipOK = false;
+                if ((playerInfos.bldList.includes(batEquip.bldReq[0]) || batEquip.bldReq[0] === undefined) && (playerInfos.bldList.includes(batEquip.bldReq[1]) || batEquip.bldReq[1] === undefined)) {
+                    equipOK = true;
+                }
+                if (equipOK) {
+                    $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip)+'" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                } else {
+                    $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batEquip.bldReq)+'">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                }
                 listNum++;
             });
         }
     }
+    let ammoIndex;
+    let batAmmo;
     listNum = 1;
     if (Object.keys(conselUnit.weapon).length >= 1) {
         if (conselUnit.weapon.ammo.length >= 1) {
@@ -219,7 +241,21 @@ function conSelect(unitId,player,noRefresh) {
                 } else {
                     $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                 }
-                $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+'" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
+                ammoIndex = ammoTypes.findIndex((obj => obj.name == ammo));
+                batAmmo = ammoTypes[ammoIndex];
+                equipOK = false;
+                if (batAmmo.bldReq instanceof Array) {
+                    if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined)) {
+                        equipOK = true;
+                    }
+                } else {
+                    equipOK = true;
+                }
+                if (equipOK) {
+                    $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+'" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
+                } else {
+                    $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+'">'+showAmmo(ammo)+'</span><br>');
+                }
                 listNum++;
             });
         }
@@ -239,7 +275,21 @@ function conSelect(unitId,player,noRefresh) {
                     } else {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                     }
-                    $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+'" onclick="selectAmmo(`'+ammo+'`,`w2`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
+                    ammoIndex = ammoTypes.findIndex((obj => obj.name == ammo));
+                    batAmmo = ammoTypes[ammoIndex];
+                    equipOK = false;
+                    if (batAmmo.bldReq instanceof Array) {
+                        if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined)) {
+                            equipOK = true;
+                        }
+                    } else {
+                        equipOK = true;
+                    }
+                    if (equipOK) {
+                        $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+'" onclick="selectAmmo(`'+ammo+'`,`w2`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
+                    } else {
+                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+'">'+showAmmo(ammo)+'</span><br>');
+                    }
                     listNum++;
                 });
             }
