@@ -27,7 +27,7 @@ button, select {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #4d3534;
     margin: 0 0 0 0;
-    min-width: 80px;
+    /* min-width: 80px; */
 }
 select {
     padding:3px 10px;

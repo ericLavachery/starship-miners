@@ -481,7 +481,7 @@ function attack(melee) {
         let webDamage = totalHits;
         webDamage = Math.ceil(webDamage*18/Math.sqrt(targetBatType.hp)/(targetBatType.size+7));
         if (targetBatType.cat != 'aliens') {
-            webDamage = Math.ceil(webDamage/(playerInfos.caLevel+4)*6);
+            webDamage = Math.ceil(webDamage/(playerInfos.comp.ca+4)*6);
         }
         apDamage = apDamage+webDamage;
     }
@@ -631,7 +631,7 @@ function attack(melee) {
         }
         let gripChance = (selectedBat.squadsLeft*5)+gripbonus-(targetBat.vet*3);
         if (targetBatType.cat != 'aliens') {
-            gripChance = Math.ceil(gripChance/(playerInfos.caLevel+5)*7);
+            gripChance = Math.ceil(gripChance/(playerInfos.comp.ca+5)*7);
         }
         if (rand.rand(1,100 <= gripChance)) {
             if (selectedBatType.skills.includes('tail')) {
@@ -738,7 +738,7 @@ function attack(melee) {
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium') || selectedWeap.ammo.includes('trap')) {
             if (!targetBatType.skills.includes('resistpoison') && !targetBat.tags.includes('zombie')) {
-                if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.caLevel < 3)) || targetBatType.cat == 'aliens') {
+                if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || targetBatType.cat == 'aliens') {
                     targetBat.tags.push('poison');
                     if (selectedWeap.ammo.includes('atium')) {
                         targetBat.tags.push('poison');
@@ -764,7 +764,7 @@ function attack(melee) {
     if (totalDamage >= 1) {
         if (selectedWeap.ammo.includes('toxine') && !targetBat.tags.includes('zombie')) {
             if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
-                poisonVeuve = Math.ceil(totalDamage/(12+playerInfos.caLevel));
+                poisonVeuve = Math.ceil(totalDamage/(12+playerInfos.comp.ca));
                 let i = 1;
                 while (i <= poisonVeuve) {
                     targetBat.tags.push('poison');
@@ -812,9 +812,9 @@ function attack(melee) {
         }
     }
     // maladie
-    if (((totalDamage >= 1 && playerInfos.caLevel < 3) || totalDamage >= 5) && !targetBat.tags.includes('maladie')) {
+    if (((totalDamage >= 1 && playerInfos.comp.ca < 3) || totalDamage >= 5) && !targetBat.tags.includes('maladie')) {
         let infected = false;
-        if (selectedBatType.skills.includes('maladie') && rand.rand(1,playerInfos.caLevel+1) === 1) {
+        if (selectedBatType.skills.includes('maladie') && rand.rand(1,playerInfos.comp.ca+1) === 1) {
             infected = true;
         }
         if (selectedBatType.skills.includes('chancre')) {
@@ -1149,7 +1149,7 @@ function defense(melee) {
         let webDamage = totalHits;
         webDamage = Math.ceil(webDamage*18/Math.sqrt(selectedBatType.hp)/(selectedBatType.size+7));
         if (selectedBatType.cat != 'aliens') {
-            webDamage = Math.ceil(webDamage/(playerInfos.caLevel+4)*6);
+            webDamage = Math.ceil(webDamage/(playerInfos.comp.ca+4)*6);
         }
         apDamage = apDamage+webDamage;
     }
@@ -1285,7 +1285,7 @@ function defense(melee) {
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium') || targetWeap.ammo.includes('trap')) {
             if (!selectedBatType.skills.includes('resistpoison') && !selectedBat.tags.includes('zombie')) {
-                if ((selectedBatType.cat == 'infantry' && (!selectedBatType.skills.includes('mutant') || playerInfos.caLevel < 3)) || selectedBatType.cat == 'aliens') {
+                if ((selectedBatType.cat == 'infantry' && (!selectedBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || selectedBatType.cat == 'aliens') {
                     selectedBat.tags.push('poison');
                     if (targetWeap.ammo.includes('atium')) {
                         selectedBat.tags.push('poison');
@@ -1336,9 +1336,9 @@ function defense(melee) {
         }
     }
     // maladie
-    if (((totalDamage >= 1 && playerInfos.caLevel < 3) || totalDamage >= 5) && !selectedBat.tags.includes('maladie')) {
+    if (((totalDamage >= 1 && playerInfos.comp.ca < 3) || totalDamage >= 5) && !selectedBat.tags.includes('maladie')) {
         let infected = false;
-        if (targetBatType.skills.includes('maladie') && rand.rand(1,playerInfos.caLevel+1) === 1) {
+        if (targetBatType.skills.includes('maladie') && rand.rand(1,playerInfos.comp.ca+1) === 1) {
             infected = true;
         }
         if (targetBatType.skills.includes('chancre')) {
@@ -1586,7 +1586,7 @@ function batDeath(bat,count) {
                     eggsNum = eggsNum-1;
                 }
                 if (bat.type === 'Oeuf voilé') {
-                    if (playerInfos.skills.includes('det3')) {
+                    if (playerInfos.comp.det >= 3) {
                         eggsNum = eggsNum-1;
                     }
                     unveilAliens(bat);

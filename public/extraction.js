@@ -548,15 +548,16 @@ function resSelectLoad(value,pickValue,resId,batId) {
 
 function addAlienRes(bat) {
     let batType = getBatType(bat);
+    let killRes = 0;
     if (Object.keys(batType.killRes).length >= 1) {
         for (var prop in batType.killRes) {
             if (Object.prototype.hasOwnProperty.call(batType.killRes,prop)) {
-                // console.log(prop);
-                // console.log(batType.killRes[prop]);
+                killRes = batType.killRes[prop];
+                killRes = Math.ceil(killRes*(playerInfos.comp.ca+8)/10);
                 if (playerInfos.alienRes[prop] >=1) {
-                    playerInfos.alienRes[prop] = playerInfos.alienRes[prop]+batType.killRes[prop];
+                    playerInfos.alienRes[prop] = playerInfos.alienRes[prop]+killRes;
                 } else {
-                    playerInfos.alienRes[prop] = batType.killRes[prop];
+                    playerInfos.alienRes[prop] = killRes;
                 }
             }
         }

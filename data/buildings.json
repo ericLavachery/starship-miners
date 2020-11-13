@@ -228,7 +228,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["extraction","fret","recupcit","dumper","transport","inflammable","routes"],
+        "skills":["extraction","fret","recupcit","dumper","transport","inflammable","routes","producteur"],
         "mecanoCost":12,
         "mining":{
             "level":3,

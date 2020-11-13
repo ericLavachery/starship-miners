@@ -91,7 +91,7 @@ function checkVisibleAliens() {
     aliens.forEach(function(alien) {
         if (alien.loc === "zone") {
             alienType = getBatType(alien);
-            if ((!alien.tags.includes('invisible') && !alienType.skills.includes('invisible')) || playerInfos.skills.includes('det5')) {
+            if ((!alien.tags.includes('invisible') && !alienType.skills.includes('invisible')) || playerInfos.comp.det >= 5) {
                 visibleAliens.push(alien.tileId);
                 aliensNum++;
                 if (alienType.skills.includes('isegg') && !alien.tags.includes('invisible') && !alienType.skills.includes('invisible')) {

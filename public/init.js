@@ -9,6 +9,9 @@ socket.on('playerInfos-Load', function(pi) {
         numHTiles = playerInfos.numHTiles;
         numVTiles = playerInfos.numVTiles;
     }
+    if (playerInfos.comp === undefined) {
+        playerInfos.comp = resetComp();
+    }
     if (playerInfos.cocons === undefined) {
         playerInfos.cocons = 0;
     }
@@ -60,7 +63,6 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.gLevel === undefined) {
         playerInfos.gLevel = 4;
     }
-    playerSkills();
 });
 // Terrains
 socket.on('mapFilters-Load', function(mf) {
@@ -147,9 +149,6 @@ socket.on('unitTypes-Load', function(ut) {
     });
     bareUnitTypes = [];
     // console.log(unitTypes);
-    if (playerInfos.skills.includes('cam1') || playerInfos.skills.includes('cam2') || playerInfos.skills.includes('cam3') || playerInfos.medLevel >= 3) {
-        playerSkillsUTChanges();
-    }
     freeIds('player',unitTypes);
 });
 // unitCosts
@@ -167,6 +166,7 @@ socket.on('unitCosts-Load', function(unitCosts) {
             }
         });
     });
+    playerSkillsUTChanges();
     console.log(unitTypes);
 });
 socket.on('alienUnits-Load', function(au) {

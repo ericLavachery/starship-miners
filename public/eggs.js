@@ -318,7 +318,7 @@ function dropEgg(alienUnit,theArea) {
             if (alienUnit === 'Oeuf' || alienUnit === 'Coque' || alienUnit === 'Cocon') {
                 eggsNum++;
             }
-            if (alienUnit === 'Oeuf voilé' && playerInfos.skills.includes('det3')) {
+            if (alienUnit === 'Oeuf voilé' && playerInfos.comp.det >= 3) {
                 eggsNum++;
             }
         }

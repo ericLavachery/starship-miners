@@ -8,13 +8,23 @@ function gangNavig() {
 function gangEdit() {
     selectMode();
     $("#conUnitList").css("display","block");
-    $('#conUnitList').css("height","300px");
+    $('#conUnitList').css("height","600px");
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="blockTitle"><h3>Player Infos</h3></span>');
+    $('#conUnitList').append('<br><span class="shSpace"></span><br>');
+    // mapDiff
+    $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`mapDiff`)"></select>');
+    $('#theZone').empty().append('<option value="">Présence Alien</option>');
+    let i = 0;
+    while (i <= 11) {
+        $('#theZone').append('<option value="'+i+'">'+i+'</option>');
+        if (i > 12) {break;}
+        i++
+    }
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     // GANG
     $('#conUnitList').append('<select class="boutonGris" id="theGangs" onchange="changePlayerInfo(`theGangs`,`gang`)"></select>');
@@ -30,22 +40,15 @@ function gangEdit() {
     // GANG LEVEL
     $('#conUnitList').append('<select class="boutonGris" id="theLevels" onchange="changePlayerInfo(`theLevels`,`gLevel`)"></select>');
     $('#theLevels').empty().append('<option value="">Niveau de Gang</option>');
-    let i = 1;
+    i = 1;
     while (i <= 22) {
         $('#theLevels').append('<option value="'+i+'">'+i+'</option>');
         if (i > 25) {break;}
         i++
     }
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
-    // mapDiff
-    $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`mapDiff`)"></select>');
-    $('#theZone').empty().append('<option value="">Présence Alien</option>');
-    i = 0;
-    while (i <= 11) {
-        $('#theZone').append('<option value="'+i+'">'+i+'</option>');
-        if (i > 12) {break;}
-        i++
-    }
+    // COMPETENCES
+    allCompSelect();
     // dark
     // $('#conUnitList').append('<select class="boutonGris" id="theDark" onchange="changePlayerInfo(`theDark`,`dark`)"></select>');
     // $('#theDark').empty().append('<option value="false">Type de Zone</option>');
@@ -66,4 +69,164 @@ function changePlayerInfo(dropMenuId,infoName) {
     }
     savePlayerInfos();
     gangNavig();
+};
+
+function changeComp(dropMenuId,compName) {
+    let value = document.getElementById(dropMenuId).value;
+    playerInfos.comp[compName] = +value;
+    savePlayerInfos();
+    gangNavig();
+};
+
+function allCompSelect() {
+    compSelect('Aéro','aero',1);
+    compSelect('Artillerie','arti',1);
+    compSelect('Blindés','tank',1);
+    compSelect('Cyber','cyber',1);
+    compSelect('Génétique','gen',1);
+    compSelect('Robots','robo',1);
+    compSelect('Défense','def',3);
+    compSelect('Energie','energ',4);
+    compSelect('Industrie','ind',3);
+    compSelect('Extraction','ext',3);
+    compSelect('Tri','tri',2);
+    compSelect('Transports','trans',3);
+    compSelect('Construction','const',3);
+    compSelect('Logistique','log',3);
+    compSelect('CA','ca',5);
+    compSelect('Médecine','med',3);
+    compSelect('Détection','det',6);
+    compSelect('Camouflage','cam',3);
+    compSelect('Entraînement','train',2);
+    compSelect('Téléportation','tele',2);
+    compSelect('Vols Spaciaux','vsp',6);
+    compSelect('Explosifs','explo',3);
+    compSelect('Pyrotechnie','pyro',3);
+    compSelect('Balistique','bal',3);
+    compSelect('Matériaux','mat',4);
+    compSelect('Exochimie','exo',3);
+    compSelect('Scaphandres','scaph',3);
+    compSelect('Gouvernance','ordre',3);
+};
+
+function compSelect(compName,compId,compMax) {
+    $('#conUnitList').append('<select title="'+compName+' '+playerInfos.comp[compId]+'" class="boutonGris" id="'+compId+'" onchange="changeComp(`'+compId+'`,`'+compId+'`)"></select>');
+    $('#'+compId).empty().append('<option value="">'+compName+'</option>');
+    let i = 0;
+    while (i <= compMax) {
+        $('#'+compId).append('<option value="'+i+'">'+i+'</option>');
+        if (i > 10) {break;}
+        i++
+    }
+};
+
+function resetComp() {
+    let comp = {};
+    comp.aero = 0;
+    comp.arti = 0;
+    comp.tank = 0;
+    comp.cyber = 0;
+    comp.gen = 0;
+    comp.robo = 0;
+    comp.cam = 0;
+    comp.ca = 0;
+    comp.const = 0;
+    comp.def = 0;
+    comp.det = 0;
+    comp.energ = 0;
+    comp.train = 0;
+    comp.ext = 0;
+    comp.ind = 0;
+    comp.med = 0;
+    comp.scaph = 0;
+    comp.tele = 0;
+    comp.trans = 0;
+    comp.tri = 0;
+    comp.vsp = 0;
+    comp.mat = 0;
+    comp.explo = 0;
+    comp.exo = 0;
+    comp.bal = 0;
+    comp.ordre = 0;
+    comp.pyro = 0;
+    comp.log = 0;
+    return comp;
+};
+
+function playerSkillsUTChanges() {
+    unitTypes.forEach(function(unit) {
+        // CONSTRUCTION
+        if (unit.mecanoCost < 90 && unit.skills.includes('constructeur')) {
+            if (playerInfos.comp.const === 2) {
+                if (unit.mecanoCost >= 3) {
+                    unit.mecanoCost = unit.mecanoCost-1;
+                } else {
+                    unit.ap = unit.ap+1;
+                }
+            }
+            if (playerInfos.comp.const === 3) {
+                if (unit.mecanoCost >= 4) {
+                    unit.mecanoCost = unit.mecanoCost-2;
+                } else if (unit.mecanoCost >= 3) {
+                    unit.mecanoCost = unit.mecanoCost-1;
+                    unit.ap = unit.ap+1;
+                } else {
+                    unit.ap = unit.ap+2;
+                }
+            }
+        }
+        if (playerInfos.comp.const >= 1 && unit.kind === 'zero-construction') {
+            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.const*2);
+            if (unit.levels[playerInfos.gang] < 1) {
+                unit.levels[playerInfos.gang] = 1;
+            }
+        }
+        // DEFENSE
+        if (playerInfos.comp.def >= 1 && unit.kind === 'zero-defense') {
+            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.def);
+            if (unit.levels[playerInfos.gang] < 1) {
+                unit.levels[playerInfos.gang] = 1;
+            }
+        }
+        if (playerInfos.comp.def >= 1 && unit.cat === 'buildings') {
+            unit.armor = unit.armor+playerInfos.comp.def;
+        }
+        // EXTRACTION
+        if (playerInfos.comp.ext >= 1 && unit.kind === 'zero-extraction') {
+            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.ext);
+            if (unit.levels[playerInfos.gang] < 1) {
+                unit.levels[playerInfos.gang] = 1;
+            }
+        }
+        // CAMOUFLAGE
+        if (playerInfos.comp.cam >= 1 && unit.skills.includes('maycamo') && unit.cat === 'infantry') {
+            unit.skills.push('camo');
+        }
+        if (playerInfos.comp.cam >= 2 && unit.skills.includes('maycamo') && (unit.cat === 'vehicles' || unit.cat === 'devices')) {
+            unit.skills.push('camo');
+        }
+        if (playerInfos.comp.cam >= 3 && unit.skills.includes('maycamo') && unit.cat === 'buildings') {
+            unit.skills.push('camo');
+        }
+        // MEDECINE
+        if (unit.mediCost < 90) {
+            if (playerInfos.comp.med === 2) {
+                if (unit.mediCost >= 3) {
+                    unit.mediCost = unit.mediCost-1;
+                } else {
+                    unit.ap = unit.ap+1;
+                }
+            }
+            if (playerInfos.comp.med === 3) {
+                if (unit.mediCost >= 4) {
+                    unit.mediCost = unit.mediCost-2;
+                } else if (unit.mediCost >= 3) {
+                    unit.mediCost = unit.mediCost-1;
+                    unit.ap = unit.ap+1;
+                } else {
+                    unit.ap = unit.ap+2;
+                }
+            }
+        }
+    });
 };

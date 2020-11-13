@@ -32,7 +32,7 @@ function nextTurn() {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
             deFog(bat,batType);
-            if ((!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) || playerInfos.skills.includes('det5')) {
+            if ((!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) || playerInfos.comp.det >= 5) {
                 visibleAliens.push(bat.tileId);
             }
             if (!alienTypesList.includes(batType.name)) {
@@ -244,14 +244,7 @@ function nextTurnEnd() {
                 ap = ap+1;
                 thisAPBonus = 1;
             }
-            if (playerInfos.medLevel >= 1 && batType.name === 'Toubibs') {
-                ap = ap+1;
-            }
-            if (playerInfos.medLevel >= 2 && batType.name === 'Hosto') {
-                ap = ap+2;
-                thisAPBonus = 2;
-            }
-            if (playerInfos.skills.includes('trans2') && batType.cat === 'vehicles' && !batType.skills.includes('robot') && thisAPBonus <= 1) {
+            if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && thisAPBonus <= 1) {
                 ap = ap+1;
             }
             // fastempty
@@ -391,7 +384,7 @@ function turnInfo() {
             } else if (!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) {
                 numberOfAliens++;
             } else if (bat.type.includes('Oeuf')) {
-                if (playerInfos.skills.includes('det3')) {
+                if (playerInfos.comp.det >= 3) {
                     numberOfEggs++;
                 }
                 realNumberOfEggs++;
@@ -779,7 +772,7 @@ function tagsEffect(bat,batType) {
             }
             let stopPoison = 10;
             if (batType.cat != 'aliens') {
-                stopPoison = 14-(playerInfos.caLevel*2);
+                stopPoison = 14-(playerInfos.comp.ca*2);
             }
             let i = 1;
             while (i <= allTags.poison) {
@@ -814,7 +807,7 @@ function checkDeath(bat,batType) {
                     eggsNum = eggsNum-1;
                 }
                 if (bat.type === 'Oeuf voilé') {
-                    if (playerInfos.skills.includes('det3')) {
+                    if (playerInfos.comp.det >= 3) {
                         eggsNum = eggsNum-1;
                     }
                     unveilAliens(bat);
