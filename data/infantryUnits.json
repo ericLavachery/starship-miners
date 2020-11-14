@@ -1742,7 +1742,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","fortif","extraction","selfbadmedic","dynamite","fret"],
-        "mediCost":9,
+        "mediCost":10,
         "mining":{
             "level":3,
             "rate":15,
@@ -1799,13 +1799,13 @@
             "ammo":["lame","lame-tungsten","lame-plasma"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
-        "equip":["aucun","flash","lunette1","chargeur1","jetpack","camo"],
+        "equip":["aucun","flash","lunette1","chargeur1","jetpack","camo","medic"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","cible","fortif","extraction","selfbadmedic","camo","ranger","fret"],
-        "mediCost":7,
+        "mediCost":9,
         "mining":{
             "level":2,
             "rate":10,
@@ -1913,7 +1913,7 @@
             "sound":"axe_x2",
             "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
-        "equip":["aucun","flash","ranger","chargeur1","jetpack","camo"],
+        "equip":["aucun","flash","ranger","chargeur1","jetpack","camo","medic"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -2184,7 +2184,7 @@
             "ravitBld":"Armurerie"
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
-        "equip":["aucun","flash","gilet","chargeur1","camo"],
+        "equip":["aucun","flash","gilet","chargeur1","camo","medic"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -2348,13 +2348,13 @@
             "maxAmmo":8,
             "ravitBld":"Armurerie"
         },
-        "equip":["aucun","flash","ranger","gilet","chargeur1","snorkel","mecano"],
+        "equip":["aucun","flash","ranger","gilet","chargeur1","snorkel","mecano","medic"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
         "skills":["fouille","fortif","cible","baddef","badmecano","badmedic","moto","dealer","octiron","nitro"],
-        "mediCost":7,
+        "mediCost":9,
         "mecanoCost":7,
         "maxDrug":12,
         "fuzz":1.5,
@@ -2555,7 +2555,7 @@
             "sound":"moto_impact",
             "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-plasma"]
         },
-        "equip":["aucun","flash","ranger","camo","snorkel"],
+        "equip":["aucun","flash","ranger","camo","snorkel","medic"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -2611,7 +2611,7 @@
             "ammo":["lame","lame-poison","lame-atium","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "protection":["aucune","scrap","bugium","kevlar","combo","kapton","mendium","titane","nano","adamantite"],
-        "equip":["aucun","flash","medic","lunette1","chargeur1","camo"],
+        "equip":["aucun","flash","lunette1","chargeur1","camo"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
@@ -2664,7 +2664,7 @@
             "ravitBld":"Générateur"
         },
         "protection":["kevlar","combo","kapton","mendium","titane","nano","adamantite"],
-        "equip":["aucun","flash","medic","gilet","camo"],
+        "equip":["aucun","flash","gilet","camo"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
@@ -2773,7 +2773,7 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["kevlar","acier","combo","kapton","mendium","titane","nano","adamantite","aegis","battlesuit"],
-        "equip":["aucun","flash","ranger","medic","lunette1","chargeur1","jetpack","w2-2ch"],
+        "equip":["aucun","flash","ranger","lunette1","chargeur1","jetpack","w2-2ch"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -2827,7 +2827,7 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["kevlar","combo","kapton","mendium","titane","nano","adamantite","battlesuit"],
-        "equip":["aucun","flash","medic","camo","chargeur1","chargeur2","jetpack"],
+        "equip":["aucun","flash","camo","chargeur1","chargeur2","jetpack"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -2880,7 +2880,7 @@
             "ammo":["webtaser"]
         },
         "protection":["kevlar","combo","kapton","mendium","titane","nano","adamantite","battlesuit"],
-        "equip":["aucun","flash","medic","lunette1","chargeur1","jetpack","camo"],
+        "equip":["aucun","flash","lunette1","chargeur1","jetpack","camo"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -3944,7 +3944,7 @@
             "maxAmmo":16,
             "ravitBld":"Atelier"
         },
-        "equip":["aucun","flash","ranger","gilet","camo","chargeur1"],
+        "equip":["aucun","flash","ranger","gilet","camo","chargeur1","medic"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -4050,7 +4050,7 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["bugium","kevlar","acier","combo","kapton","mendium","titane","nano","adamantite","aegis","battlesuit"],
-        "equip":["aucun","flash","ranger","medic","gilet","lunette2","chargeur2","camo"],
+        "equip":["aucun","flash","ranger","gilet","lunette2","chargeur2","camo"],
         "moveCost":4,
         "maxFlood":3,
         "maxScarp":3,
@@ -4102,7 +4102,7 @@
             "sound":"mark",
             "ammo":["guidage"]
         },
-        "equip":["aucun","flash","ranger","lunette1","chargeur1","camo"],
+        "equip":["aucun","flash","ranger","lunette1","chargeur1","camo","medic"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -4157,7 +4157,7 @@
             "ammo":["laser","laser-g2"]
         },
         "protection":["kevlar","combo","kapton","mendium","titane","nano","adamantite"],
-        "equip":["aucun","flash","medic","camo","chargeur1"],
+        "equip":["aucun","flash","camo","chargeur1"],
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
@@ -4210,7 +4210,7 @@
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["kevlar","acier","combo","kapton","mendium","titane","nano","adamantite","aegis","battlesuit"],
-        "equip":["aucun","flash","ranger","medic","chargeur1","chargeur2","lunette2","jetpack","camo"],
+        "equip":["aucun","flash","ranger","chargeur1","chargeur2","lunette2","jetpack","camo"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,

@@ -196,8 +196,18 @@ function showAlien(bat) {
     if (bat.tags.includes('fogged')) {
         tagz = tagz+' (fog)';
     }
-    if (batType.skills.includes('invisible') || bat.tags.includes('invisible') || (playerInfos.dark && !undarkNow.includes(bat.tileId))) {
+    if ((playerInfos.dark && !undarkNow.includes(bat.tileId)) || batType.skills.includes('invisible')) {
         $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
+    } else if (bat.tags.includes('invisible')) {
+        if (playerInfos.comp.det >= 6) {
+            if (degNum >= 7) {
+                $('#b'+bat.tileId).append('<div class="iUnits"><img src="/static/img/units/'+batCat+'/invisible.png"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
+            } else {
+                $('#b'+bat.tileId).append('<div class="iUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
+            }
+        } else {
+            $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
+        }
     } else {
         $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+tagz+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
     }
@@ -249,9 +259,6 @@ function getDamageBar(bat) {
         } else if (degPerc < 100 || (degPerc == 100 && bat.damage > 1)) {
             degNum = 6;
         }
-    }
-    if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
-        degNum = 0;
     }
     return degNum;
 };

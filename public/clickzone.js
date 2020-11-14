@@ -73,6 +73,45 @@ function clickSelect(tileId) {
     // console.log(mode);
 };
 
+function toggleShowedTile(tileId) {
+    if (selectedBat.tileId != tileId) {
+        if (playerInfos.showedTiles.includes(tileId)) {
+            let index = playerInfos.showedTiles.indexOf(tileId);
+            playerInfos.showedTiles.splice(index,1);
+        } else {
+            if (selectedTile === tileId) {
+                playerInfos.showedTiles.push(tileId);
+            }
+        }
+        let alienHere = isAlienHere(tileId);
+        if (!alienHere) {
+            redrawTile(tileId,true);
+        }
+        if (showResOpen) {
+            voirRessources();
+        }
+        selectedTile = tileId;
+        if (showMini) {
+            minimap();
+        }
+    }
+};
+
+function isAlienHere(tileId) {
+    let alienHere = false;
+    aliens.forEach(function(bat) {
+        if (bat.tileId === tileId && bat.loc === "zone") {
+            batType = getBatType(bat);
+            if (!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) {
+                alienHere = true;
+            } else if (bat.tags.includes('invisible') && playerInfos.comp.det >= 6) {
+                alienHere = true;
+            }
+        }
+    });
+    return alienHere;
+};
+
 function batSelect(bat) {
     // remove selection on old selected unit
     nextTurnOK = true;

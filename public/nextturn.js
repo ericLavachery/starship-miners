@@ -682,10 +682,10 @@ function tagsEffect(bat,batType) {
     }
     // KIRIN & POISONS
     if (bat.tags.includes('kirin')) {
-        if (bat.tags.includes('venin') && rand.rand(1,6) === 1) {
+        if (bat.tags.includes('venin') && rand.rand(1,6) === 1 && playerInfos.comp.med >= 3) {
             tagDelete(bat,'venin');
         }
-        if (bat.tags.includes('poison') && rand.rand(1,6) === 1) {
+        if (bat.tags.includes('poison') && (rand.rand(1,6) === 1 || playerInfos.comp.med >= 3)) {
             tagDelete(bat,'poison');
         }
     }

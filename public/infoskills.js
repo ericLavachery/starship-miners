@@ -253,11 +253,20 @@ function skillsInfos(bat,batType) {
     }
     // MEDIC
     let baseskillCost;
-    if (batType.skills.includes('medic')) {
+    if (batType.skills.includes('medic') || (bat.eq === 'medic' && playerInfos.comp.med >= 3)) {
         numTargets = numMedicTargets(bat,'infantry',true,true);
         baseskillCost = batType.mediCost;
-        if (bat.eq === 'medic' && baseskillCost >= 3) {
-            baseskillCost = baseskillCost-1;
+        if (batType.skills.includes('medic') && playerInfos.comp.med >= 3) {
+            if (bat.eq === 'medic') {
+                baseskillCost = baseskillCost-2;
+            }
+        } else {
+            if (bat.eq === 'medic') {
+                baseskillCost = baseskillCost-1;
+            }
+        }
+        if (baseskillCost < 2) {
+            baseskillCost = 2;
         }
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
         if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
@@ -276,7 +285,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // BAD MEDIC
-    if (batType.skills.includes('badmedic')) {
+    if (batType.skills.includes('badmedic') && (bat.eq != 'medic' || playerInfos.comp.med < 3)) {
         numTargets = numMedicTargets(bat,'infantry',true,false);
         baseskillCost = batType.mediCost;
         if (bat.eq === 'medic' && baseskillCost >= 3) {
@@ -299,7 +308,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // SELF MEDIC
-    if (batType.skills.includes('selfmedic')) {
+    if (batType.skills.includes('selfmedic') && (bat.eq != 'medic' || playerInfos.comp.med < 3)) {
         numTargets = numMedicTargets(bat,'infantry',false,true);
         baseskillCost = batType.mediCost;
         if (bat.eq === 'medic' && baseskillCost >= 3) {
@@ -322,7 +331,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // FIRST AID (SELF BAD MEDIC)
-    if (batType.skills.includes('selfbadmedic')) {
+    if (batType.skills.includes('selfbadmedic') && (bat.eq != 'medic' || playerInfos.comp.med < 3)) {
         numTargets = numMedicTargets(bat,'infantry',false,false);
         baseskillCost = batType.mediCost;
         if (bat.eq === 'medic' && baseskillCost >= 3) {
@@ -391,7 +400,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // SELF BAD MECANO
-    if (batType.skills.includes('selfbadmecano')) {
+    if (batType.skills.includes('selfbadmecano') && bat.eq != 'mecano') {
         numTargets = numMedicTargets(bat,'vehicles',false,false);
         baseskillCost = batType.mecanoCost;
         if (bat.eq === 'mecano' && baseskillCost >= 3) {
@@ -412,7 +421,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // SELF MECANO
-    if (batType.skills.includes('selfmecano')) {
+    if (batType.skills.includes('selfmecano') && bat.eq != 'mecano') {
         numTargets = numMedicTargets(bat,'vehicles',false,true);
         baseskillCost = batType.mecanoCost;
         if (bat.eq === 'mecano' && baseskillCost >= 3) {

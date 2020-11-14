@@ -273,6 +273,11 @@ function goDrug(apCost,drug) {
                 }
                 console.log('starka bonus');
             }
+            // kirin instant bonus
+            if (drug === 'kirin' && playerInfos.comp.med >= 3) {
+                selectedBat.damage = 0;
+                console.log('kirin bonus');
+            }
             // nitro instant bonus
             if (drug === 'nitro') {
                 selectedBat.apLeft = selectedBat.apLeft+Math.round(selectedBat.ap/2);

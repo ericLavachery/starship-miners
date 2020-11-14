@@ -156,23 +156,15 @@ function resetComp() {
 function playerSkillsUTChanges() {
     unitTypes.forEach(function(unit) {
         // CONSTRUCTION
-        if (unit.mecanoCost < 90 && unit.skills.includes('constructeur')) {
+        if (unit.mecanoCost < 90) {
             if (playerInfos.comp.const === 2) {
-                if (unit.mecanoCost >= 3) {
-                    unit.mecanoCost = unit.mecanoCost-1;
-                } else {
-                    unit.ap = unit.ap+1;
-                }
+                unit.mecanoCost = unit.mecanoCost-1;
             }
             if (playerInfos.comp.const === 3) {
-                if (unit.mecanoCost >= 4) {
-                    unit.mecanoCost = unit.mecanoCost-2;
-                } else if (unit.mecanoCost >= 3) {
-                    unit.mecanoCost = unit.mecanoCost-1;
-                    unit.ap = unit.ap+1;
-                } else {
-                    unit.ap = unit.ap+2;
-                }
+                unit.mecanoCost = unit.mecanoCost-2;
+            }
+            if (unit.mecanoCost < 2) {
+                unit.mecanoCost = 2;
             }
         }
         if (playerInfos.comp.const >= 1 && unit.kind === 'zero-construction') {
@@ -189,7 +181,28 @@ function playerSkillsUTChanges() {
             }
         }
         if (playerInfos.comp.def >= 1 && unit.cat === 'buildings') {
-            unit.armor = unit.armor+playerInfos.comp.def;
+            unit.armor = unit.armor+(playerInfos.comp.def*2);
+        }
+        if (playerInfos.comp.def >= 1 && (unit.cat === 'buildings' || unit.cat === 'devices')) {
+            if (Object.keys(unit.weapon).length >= 3) {
+                unit.weapon.rof = Math.ceil(unit.weapon.rof*(playerInfos.comp.def+8)/8);
+            }
+            if (Object.keys(unit.weapon2).length >= 3) {
+                unit.weapon2.rof = Math.ceil(unit.weapon2.rof*(playerInfos.comp.def+8)/8);
+            }
+        }
+        // ENERGIE
+        if (playerInfos.comp.energ >= 1) {
+            if (Object.keys(unit.weapon).length >= 3) {
+                if (unit.weapon.name.includes('plasma')) {
+                    unit.weapon.power = Math.ceil(unit.weapon.power*(playerInfos.comp.energ+15)/15);
+                }
+            }
+            if (Object.keys(unit.weapon2).length >= 3) {
+                if (unit.weapon2.name.includes('plasma')) {
+                    unit.weapon2.power = Math.ceil(unit.weapon2.power*(playerInfos.comp.energ+15)/15);
+                }
+            }
         }
         // EXTRACTION
         if (playerInfos.comp.ext >= 1 && unit.kind === 'zero-extraction') {
@@ -231,21 +244,13 @@ function playerSkillsUTChanges() {
         }
         if (unit.mediCost < 90) {
             if (playerInfos.comp.med === 2) {
-                if (unit.mediCost >= 3) {
-                    unit.mediCost = unit.mediCost-1;
-                } else {
-                    unit.ap = unit.ap+1;
-                }
+                unit.mediCost = unit.mediCost-1;
             }
             if (playerInfos.comp.med === 3) {
-                if (unit.mediCost >= 4) {
-                    unit.mediCost = unit.mediCost-2;
-                } else if (unit.mediCost >= 3) {
-                    unit.mediCost = unit.mediCost-1;
-                    unit.ap = unit.ap+1;
-                } else {
-                    unit.ap = unit.ap+2;
-                }
+                unit.mediCost = Math.ceil(unit.mediCost/2);
+            }
+            if (unit.mediCost < 2) {
+                unit.mediCost = 2;
             }
         }
     });

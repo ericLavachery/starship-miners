@@ -454,19 +454,24 @@ function putBat(tileId,citoyens,xp,startTag) {
                     newBat.oldapLeft = 0;
                     newBat.salvoLeft = 0;
                 } else {
-                    if (conselUnit.skills.includes('domeconst')) {
-                        newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/25)*10);
-                        newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/25)*10);
-                        newBat.salvoLeft = conselUnit.maxSalvo;
-                    } else if (conselUnit.skills.includes('longconst')) {
-                        newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/25)*3);
-                        newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/25)*3);
-                        newBat.salvoLeft = conselUnit.maxSalvo;
-                    } else {
-                        newBat.apLeft = conselUnit.ap-Math.round(conselUnit.refabTime*conselUnit.ap/25);
-                        newBat.oldapLeft = conselUnit.ap-Math.round(conselUnit.refabTime*conselUnit.ap/25);
-                        newBat.salvoLeft = conselUnit.maxSalvo;
+                    let constFactor = 25;
+                    if (playerInfos.comp.const >= 1 && (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices')) {
+                        constFactor = Math.round(constFactor*(playerInfos.comp.const+12)/12);
                     }
+                    if (playerInfos.comp.ind >= 1 && conselUnit.cat === 'vehicles') {
+                        constFactor = Math.round(constFactor*(playerInfos.comp.const+5)/5);
+                    }
+                    if (conselUnit.skills.includes('domeconst')) {
+                        newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/constFactor)*10);
+                        newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/constFactor)*10);
+                    } else if (conselUnit.skills.includes('longconst')) {
+                        newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/constFactor)*3);
+                        newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/constFactor)*3);
+                    } else {
+                        newBat.apLeft = conselUnit.ap-Math.round(conselUnit.refabTime*conselUnit.ap/constFactor);
+                        newBat.oldapLeft = conselUnit.ap-Math.round(conselUnit.refabTime*conselUnit.ap/constFactor);
+                    }
+                    newBat.salvoLeft = conselUnit.maxSalvo;
                 }
             } else {
                 newBat.apLeft = baseAP;
@@ -497,6 +502,9 @@ function putBat(tileId,citoyens,xp,startTag) {
         newBat.ammo2Left = conselUnit.weapon2.maxAmmo;
         newBat.vet = 0;
         newBat.xp = xp;
+        if (playerInfos.comp.train >= 1) {
+            newBat.xp = newBat.xp+Math.round(playerInfos.comp.train*levelXP[1]/2);
+        }
         if (Object.keys(conselUnit.weapon).length >= 1) {
             newBat.range = conselUnit.weapon.range;
             if (Object.keys(conselUnit.weapon2).length >= 1) {

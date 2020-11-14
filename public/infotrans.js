@@ -79,7 +79,7 @@ function checkCharged(myBat,where) {
 };
 
 function checkTransportId(myBat,myBatType) {
-    // vérifie si le transport (en dessous de l'unité) peut la prendre, et retourn son Id
+    // vérifie si le transport (en dessous de l'unité) peut la prendre, et retourne son Id
     let transId = -1;
     let batType;
     let batTransUnitsLeft;

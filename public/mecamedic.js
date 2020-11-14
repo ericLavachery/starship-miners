@@ -70,7 +70,7 @@ function medic(cat,cost,around,deep) {
                                         showBataillon(bat);
                                     }
                                     putTagAction(bat);
-                                } else if (bat.tags.includes('venin') && (deep || playerInfos.comp.ca >= 4)) {
+                                } else if (bat.tags.includes('venin') && (deep || playerInfos.comp.med >= 2)) {
                                     totalAPCost = totalAPCost+apCost;
                                     console.log('venin');
                                     console.log('totalAPCost '+totalAPCost);
@@ -236,7 +236,7 @@ function medic(cat,cost,around,deep) {
                 }
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">poison neutralisé<br></span>');
                 showBataillon(selectedBat);
-            } else if (selectedBat.tags.includes('venin') && (deep || playerInfos.comp.ca >= 4)) {
+            } else if (selectedBat.tags.includes('venin') && (deep || playerInfos.comp.med >= 2)) {
                 totalAPCost = totalAPCost+apCost;
                 tagDelete(bat,'venin');
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">venin neutralisé<br></span>');
@@ -333,7 +333,7 @@ function numMedicTargets(myBat,cat,around,deep) {
     let batHPLeft;
     let fullBat;
     if (!around) {
-        if ((deep || playerInfos.comp.ca >= 4) && myBat.tags.includes('venin')) {
+        if ((deep || playerInfos.comp.med >= 2) && myBat.tags.includes('venin')) {
             numTargets = numTargets+1;
         } else if (deep) {
             if (myBat.damage > 0 || myBat.squadsLeft < myBatType.squads || myBat.tags.includes('poison') || myBat.tags.includes('venin') || myBat.tags.includes('maladie') || myBat.tags.includes('parasite') || myBat.tags.includes('trou')) {
@@ -372,7 +372,7 @@ function numMedicTargets(myBat,cat,around,deep) {
                             if ((bat.damage > 0 && !fullBat) || (bat.squadsLeft < batType.squads && !fullBat) || bat.tags.includes('poison') || bat.tags.includes('venin') || bat.tags.includes('maladie') || bat.tags.includes('parasite') || bat.tags.includes('trou')) {
                                 numTargets = numTargets+1;
                             }
-                        } else if (playerInfos.comp.ca >= 4 && bat.tags.includes('venin')) {
+                        } else if (playerInfos.comp.med >= 2 && bat.tags.includes('venin')) {
                             numTargets = numTargets+1;
                         } else {
                             if ((bat.damage > 0 && !fullBat) || bat.tags.includes('poison')) {
