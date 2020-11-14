@@ -59,6 +59,12 @@ function calcVolume(bat,batType) {
     if (bat.eq === 'jetpack') {
         batVolume = Math.ceil(batVolume*1.2);
     }
+    if (playerInfos.comp.log >= 3) {
+        batVolume = Math.round(batVolume*0.85);
+    }
+    if (playerInfos.comp.trans >= 3) {
+        batVolume = Math.round(batVolume*0.915);
+    }
     return batVolume;
 };
 

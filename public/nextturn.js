@@ -245,7 +245,7 @@ function nextTurnEnd() {
                 thisAPBonus = 1;
             }
             if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && thisAPBonus <= 1) {
-                ap = ap+1;
+                ap = ap+playerInfos.comp.trans-1;
             }
             // fastempty
             if (batType.skills.includes('fastempty')) {

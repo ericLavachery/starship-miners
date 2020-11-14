@@ -40,16 +40,20 @@ function mining(bat) {
                     if (batType.mining.types.includes(res.bld)) {
                         if (bat.extracted.includes(res.name)) {
                             let resMiningRate = getResMiningRate(bat,res,value,false);
+                            let adjustedRMR = resMiningRate;
+                            if (playerInfos.comp.ext >= 1) {
+                                adjustedRMR = Math.round(resMiningRate/100*(101+(((playerInfos.comp.ext*playerInfos.comp.ext)+3)*2)));
+                            }
                             // console.log(res.name+' : '+resMiningRate);
                             if (bestDumper.transRes[res.name] === undefined) {
-                                bestDumper.transRes[res.name] = resMiningRate;
+                                bestDumper.transRes[res.name] = adjustedRMR;
                             } else {
-                                bestDumper.transRes[res.name] = bestDumper.transRes[res.name]+resMiningRate;
+                                bestDumper.transRes[res.name] = bestDumper.transRes[res.name]+adjustedRMR;
                             }
                             if (minedThisTurn[res.name] === undefined) {
-                                minedThisTurn[res.name] = resMiningRate;
+                                minedThisTurn[res.name] = adjustedRMR;
                             } else {
-                                minedThisTurn[res.name] = minedThisTurn[res.name]+resMiningRate;
+                                minedThisTurn[res.name] = minedThisTurn[res.name]+adjustedRMR;
                             }
                             // diminution des gisements
                             if (!permaRes && res.cat != 'zero') {
@@ -197,13 +201,14 @@ function getResMiningRate(bat,res,value,fullRate) {
     if (bat.extracted.length >= 2) {
         multiExtractAdj = 1-((bat.extracted.length-1)/12);
     }
+    let maxAdjBonus = playerInfos.comp.ext/20;
     if (batType.mining.level >= 4) {
-        if (multiExtractAdj < 0.75) {
-            multiExtractAdj = 0.75;
+        if (multiExtractAdj < 0.75+maxAdjBonus) {
+            multiExtractAdj = 0.75+maxAdjBonus;
         }
     } else {
-        if (multiExtractAdj < 0.4) {
-            multiExtractAdj = 0.4;
+        if (multiExtractAdj < 0.4+(maxAdjBonus*2)) {
+            multiExtractAdj = 0.4+(maxAdjBonus*2);
         }
     }
     let resRate = Math.ceil(resHere*batRate/mineRateDiv*multiExtractAdj);
@@ -284,13 +289,17 @@ function chooseRes(again) {
         if (selectedBatType.mining.types.includes(res.bld)) {
             if (selectedBatType.mining.level >= res.level) {
                 let resMiningRate = getResMiningRate(selectedBat,res,value,true);
+                let adjustedRMR = resMiningRate;
+                if (playerInfos.comp.ext >= 1) {
+                    adjustedRMR = Math.round(resMiningRate/100*(101+(((playerInfos.comp.ext*playerInfos.comp.ext)+3)*2)));
+                }
                 if (selectedBat.extracted.includes(res.name)) {
                     $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                    totalExRes = totalExRes+resMiningRate;
+                    totalExRes = totalExRes+adjustedRMR;
                 } else {
                     $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                 }
-                $('#conUnitList').append('<span class="constName klik" onclick="resSelect('+res.id+')">'+res.name+' : '+resMiningRate+'</span><br>');
+                $('#conUnitList').append('<span class="constName klik" onclick="resSelect('+res.id+')">'+res.name+' : '+adjustedRMR+'</span><br>');
             }
         }
     });

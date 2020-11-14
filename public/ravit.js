@@ -84,6 +84,9 @@ function goRavit() {
             if (selectedBat.eq.includes('carrousel')) {
                 ravitFactor = ravitFactor*1.5;
             }
+            if (playerInfos.comp.log >= 3) {
+                ravitFactor = ravitFactor*1.5;
+            }
             let apCost = Math.round(Math.sqrt(numRav)*selectedBat.ap/ravitFactor);
             selectedBat.apLeft = selectedBat.apLeft-apCost;
             selectedBat.salvoLeft = 0;

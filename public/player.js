@@ -99,7 +99,7 @@ function allCompSelect() {
     compSelect('Camouflage','cam',3);
     compSelect('Entraînement','train',2);
     compSelect('Téléportation','tele',2);
-    compSelect('Vols Spaciaux','vsp',6);
+    compSelect('Vols Spaciaux','vsp',4);
     compSelect('Explosifs','explo',3);
     compSelect('Pyrotechnie','pyro',3);
     compSelect('Balistique','bal',3);
@@ -198,6 +198,20 @@ function playerSkillsUTChanges() {
                 unit.levels[playerInfos.gang] = 1;
             }
         }
+        // TRANSPORTS
+        if (playerInfos.comp.trans >= 1 && unit.kind === 'zero-transports') {
+            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.trans);
+            if (unit.levels[playerInfos.gang] < 1) {
+                unit.levels[playerInfos.gang] = 1;
+            }
+        }
+        // VOLS SPACIAUX
+        if (playerInfos.comp.vsp >= 2 && unit.kind === 'zero-vaisseaux' && unit.name != 'Liberator' && unit.name != 'Crusader') {
+            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.vsp-1);
+            if (unit.levels[playerInfos.gang] < 1) {
+                unit.levels[playerInfos.gang] = 1;
+            }
+        }
         // CAMOUFLAGE
         if (playerInfos.comp.cam >= 1 && unit.skills.includes('maycamo') && unit.cat === 'infantry') {
             unit.skills.push('camo');
@@ -209,6 +223,12 @@ function playerSkillsUTChanges() {
             unit.skills.push('camo');
         }
         // MEDECINE
+        if (playerInfos.comp.med >= 1 && unit.kind === 'zero-medecine') {
+            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.med);
+            if (unit.levels[playerInfos.gang] < 1) {
+                unit.levels[playerInfos.gang] = 1;
+            }
+        }
         if (unit.mediCost < 90) {
             if (playerInfos.comp.med === 2) {
                 if (unit.mediCost >= 3) {
