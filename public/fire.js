@@ -318,6 +318,9 @@ function attack(melee) {
                 } else if (tile.infra === 'Murailles') {
                     infraProtect = 70;
                 }
+                if (playerInfos.comp.def >= 3 && targetBatType.skills.includes('garde')) {
+                    infraProtect = infraProtect+(((100-infraProtect)*1.5)-(100-infraProtect));
+                }
                 if (selectedBatType.skills.includes('sauteur') && !tile.infra === 'Miradors') {
                     infraProtect = Math.round(infraProtect/2);
                 }
@@ -1031,6 +1034,9 @@ function defense(melee) {
                     infraProtect = 55;
                 } else if (tile.infra === 'Murailles') {
                     infraProtect = 70;
+                }
+                if (playerInfos.comp.def >= 3 && selectedBatType.skills.includes('garde')) {
+                    infraProtect = infraProtect+(((100-infraProtect)*1.5)-(100-infraProtect));
                 }
                 if (targetBatType.skills.includes('sauteur') && !tile.infra === 'Miradors') {
                     infraProtect = Math.round(infraProtect/2);

@@ -692,11 +692,14 @@ function tagsEffect(bat,batType) {
     if (!medicalTransports.includes(bat.locId) || bat.loc != 'trans') {
         // PARASITE
         if (bat.tags.includes('parasite')) {
-            totalDamage = bat.damage+Math.round(rand.rand((Math.round(parasiteDamage/3)),parasiteDamage)*batType.squads*batType.squadSize/60);
+            let parasiteDamage = Math.round(rand.rand((Math.round(parasiteDamage/3)),parasiteDamage)*batType.squads*batType.squadSize/60);
             if (bat.tags.includes('octiron')) {
-                totalDamage = Math.round(totalDamage/10);
+                parasiteDamage = Math.round(parasiteDamage/10);
             }
-            console.log('parasiteDamage='+totalDamage);
+            if (playerInfos.comp.med >= 3) {
+                parasiteDamage = Math.round(parasiteDamage/2);
+            }
+            let totalDamage = bat.damage+parasiteDamage;
             squadHP = batType.squadSize*batType.hp;
             squadsOut = Math.floor(totalDamage/squadHP);
             bat.squadsLeft = bat.squadsLeft-squadsOut;
@@ -711,8 +714,7 @@ function tagsEffect(bat,batType) {
             if (batType.skills.includes('reactpoison') || bat.tags.includes('reactpoison')) {
                 shindaDamage = shindaDamage*3;
             }
-            totalDamage = bat.damage+rand.rand((Math.round(shindaDamage/2)),Math.round(shindaDamage*1.5));
-            console.log('VenomDamage='+totalDamage);
+            let totalDamage = bat.damage+rand.rand((Math.round(shindaDamage/2)),Math.round(shindaDamage*1.5));
             squadHP = batType.squadSize*batType.hp;
             squadsOut = Math.floor(totalDamage/squadHP);
             bat.squadsLeft = bat.squadsLeft-squadsOut;
@@ -723,7 +725,11 @@ function tagsEffect(bat,batType) {
         }
         // BLAZE
         if (bat.tags.includes('blaze')) {
-            totalDamage = bat.damage+Math.round(rand.rand((Math.round(poisonDamage/3)),poisonDamage)*batType.squads*batType.squadSize/60);
+            let blazeDamage = Math.round(rand.rand((Math.round(poisonDamage/3)),poisonDamage)*batType.squads*batType.squadSize/60);
+            if (playerInfos.comp.med >= 3) {
+                blazeDamage = Math.round(blazeDamage/2);
+            }
+            let totalDamage = bat.damage+blazeDamage;
             squadHP = batType.squadSize*batType.hp;
             squadsOut = Math.floor(totalDamage/squadHP);
             bat.squadsLeft = bat.squadsLeft-squadsOut;
@@ -734,8 +740,11 @@ function tagsEffect(bat,batType) {
         }
         // VENIN
         if (bat.tags.includes('venin') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron') && !bat.tags.includes('zombie')) {
-            totalDamage = bat.damage+Math.round(rand.rand((Math.round(venumDamage/3)),venumDamage)*batType.squads*batType.squadSize/60);
-            console.log('VenomDamage='+totalDamage);
+            let veninDeg = Math.round(rand.rand((Math.round(venumDamage/3)),venumDamage)*batType.squads*batType.squadSize/60);
+            if (playerInfos.comp.med >= 3) {
+                veninDeg = Math.round(veninDeg/2);
+            }
+            let totalDamage = bat.damage+veninDeg;
             squadHP = batType.squadSize*batType.hp;
             squadsOut = Math.floor(totalDamage/squadHP);
             bat.squadsLeft = bat.squadsLeft-squadsOut;
@@ -760,9 +769,11 @@ function tagsEffect(bat,batType) {
             if (bat.tags.includes('bliss')) {
                 poisonPower = Math.round(poisonPower/1.5);
             }
-            console.log('tags poison: '+allTags.poison);
-            totalDamage = bat.damage+rand.rand((Math.round(poisonPower/3)),poisonPower);
-            console.log('PoisonDamage='+totalDamage);
+            let poisonDeg = rand.rand((Math.round(poisonPower/3)),poisonPower);
+            if (playerInfos.comp.med >= 3) {
+                poisonDeg = Math.round(poisonDeg/2);
+            }
+            let totalDamage = bat.damage+poisonDeg;
             squadHP = batType.squadSize*batType.hp;
             squadsOut = Math.floor(totalDamage/squadHP);
             bat.squadsLeft = bat.squadsLeft-squadsOut;

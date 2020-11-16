@@ -25,14 +25,16 @@
         "armor": 2,
         "ap": -2,
         "skills": [],
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"ca":1}
     },
     {
         "name": "kevlar",
         "armor": 2,
         "ap": -1,
         "skills": [],
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "compReq":{"mat":1}
     },
     {
         "name": "acier",
@@ -46,287 +48,340 @@
         "armor": 3,
         "ap": -2,
         "skills": [],
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "compReq":{"mat":1}
     },
     {
         "name": "kapton",
         "armor": 3,
         "ap": -2,
         "skills": ["resistfeu"],
-        "bldReq":["Laboratoire"]
+        "bldReq":["Laboratoire"],
+        "compReq":{"mat":3,"pyro":1}
     },
     {
         "name": "mendium",
         "armor": 3,
         "ap": -1,
         "skills": ["resistacide"],
-        "bldReq":["Laboratoire"]
+        "bldReq":["Laboratoire"],
+        "compReq":{"mat":3,"ca":3}
     },
     {
         "name": "titane",
         "armor": 4,
         "ap": -2,
         "skills": [],
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "compReq":{"mat":1}
     },
     {
         "name": "nano",
         "armor": 4,
         "ap": -1,
         "skills": [],
-        "bldReq":["Centre de recherches"]
+        "bldReq":["Centre de recherches"],
+        "compReq":{"mat":4,"energ":2}
     },
     {
         "name": "adamantite",
         "armor": 5,
         "ap": -1,
         "skills": [],
-        "bldReq":["Arsenal"]
+        "bldReq":["Arsenal"],
+        "compReq":{"mat":3}
     },
     {
         "name": "aegis",
         "armor": 6,
         "ap": -3,
         "skills": ["resistacide"],
-        "bldReq":["Centre de recherches"]
+        "bldReq":["Centre de recherches"],
+        "compReq":{"mat":3,"ca":3}
     },
     {
         "name": "battlesuit",
         "armor": 3,
         "ap": 2,
         "skills": ["slowreg"],
-        "bldReq":["Centre de recherches"]
+        "bldReq":["Centre de recherches"],
+        "compReq":{"mat":2,"med":2,"cyber":1}
     },
     {
         "name": "dunium",
         "armor": 2,
         "ap": -1,
         "skills": ["resistacide"],
-        "bldReq":["Laboratoire"]
+        "bldReq":["Laboratoire"],
+        "compReq":{"mat":3,"ca":3}
     },
     {
         "name": "bonibo",
         "armor": 1,
         "ap": -2,
         "skills": ["resistfeu"],
-        "bldReq":["Laboratoire"]
+        "bldReq":["Laboratoire"],
+        "compReq":{"mat":3,"pyro":1,"ca":3}
     },
     {
         "name": "kanchan",
         "armor": 2,
         "ap": -1,
         "skills": [],
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "compReq":{"mat":1}
     },
     {
         "name": "chobham",
         "armor": 2,
         "ap": 0,
         "skills": [],
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "compReq":{"mat":2}
     },
     {
         "name": "lunette",
         "skills": [],
         "info": "Précision++ Elévation+",
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"log":1,"det":2}
     },
     {
         "name": "lunette1",
         "skills": [],
         "info": "Précision++ Elévation+",
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"log":1,"det":2}
     },
     {
         "name": "lunette2",
         "skills": [],
         "info": "Précision++ Elévation+",
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"log":1,"det":2}
     },
     {
         "name": "chargeur",
         "skills": [],
         "info": "Cadence++",
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "compReq":{"log":2}
     },
     {
         "name": "chargeur1",
         "skills": [],
         "info": "Cadence++",
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "compReq":{"log":2}
     },
     {
         "name": "chargeur2",
         "skills": [],
         "info": "Cadence++",
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "compReq":{"log":2}
     },
     {
         "name": "arcpoulie",
         "skills": [],
         "info": "Portée+ Puissance+",
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"log":1}
     },
     {
         "name": "ranger",
         "skills": [],
         "info": "Déplacement+",
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"log":1}
     },
     {
         "name": "mecano",
         "skills": [],
         "info": "Dépanage+",
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"log":2}
     },
     {
         "name": "medic",
         "skills": [],
         "info": "Soins+",
-        "bldReq":["Infirmerie"]
+        "bldReq":["Infirmerie"],
+        "compReq":{"log":1,"med":1}
     },
     {
         "name": "gilet",
         "skills": [],
         "info": "Munitions+",
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"log":1}
     },
     {
         "name": "camo",
         "skills": [],
         "info": "Camouflage+",
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"log":2}
     },
     {
         "name": "jetpack",
         "skills": [],
         "info": "Vol",
-        "bldReq":["Chaîne de montage"]
+        "bldReq":["Chaîne de montage"],
+        "compReq":{"log":2,"aero":1}
     },
     {
         "name": "flash",
         "skills": [],
         "info": "Vision+",
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"log":1}
     },
     {
         "name": "kit-pompiste",
         "skills": [],
         "info": "Vision+ Canon à essence",
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"log":2,"pyro":1}
     },
     {
         "name": "kit-garde",
         "skills": [],
         "info": "Vision+ Mitrailleuse",
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "compReq":{"log":2,"det":1,"bal":1}
     },
     {
         "name": "kit-guetteur",
         "skills": [],
         "info": "Vision+ Cadence++ Précision++ Elévation+ Marqueur",
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"log":1,"det":1}
     },
     {
         "name": "kit-sentinelle",
         "skills": [],
         "info": "Vision+ Camouflage+ Déplacement+ Marqueur",
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"log":1}
     },
     {
         "name": "kit-artilleur",
         "skills": [],
         "info": "Vision+ Minicanon",
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "compReq":{"log":2,"explo":1}
     },
     {
         "name": "carrousel",
         "skills": [],
         "info": "Cadence+ Ravitaillement+",
-        "bldReq":["Arsenal"]
+        "bldReq":["Arsenal"],
+        "compReq":{"log":2,"arti":1}
     },
     {
         "name": "carrousel1",
         "skills": [],
         "info": "Cadence+ Ravitaillement+",
-        "bldReq":["Arsenal"]
+        "bldReq":["Arsenal"],
+        "compReq":{"log":2,"arti":1}
     },
     {
         "name": "carrousel2",
         "skills": [],
         "info": "Cadence+ Ravitaillement+",
-        "bldReq":["Arsenal"]
+        "bldReq":["Arsenal"],
+        "compReq":{"log":2,"arti":1}
     },
     {
         "name": "longtom",
         "skills": [],
         "info": "Portée+",
-        "bldReq":["Arsenal"]
+        "bldReq":["Arsenal"],
+        "compReq":{"log":2,"arti":1}
     },
     {
         "name": "longtom1",
         "skills": [],
         "info": "Portée+",
-        "bldReq":["Arsenal"]
+        "bldReq":["Arsenal"],
+        "compReq":{"log":2,"arti":1}
     },
     {
         "name": "longtom2",
         "skills": [],
         "info": "Portée+",
-        "bldReq":["Arsenal"]
+        "bldReq":["Arsenal"],
+        "compReq":{"log":2,"arti":1}
     },
     {
         "name": "g2motor",
         "skills": [],
         "info": "PA+",
-        "bldReq":["Chaîne de montage"]
+        "bldReq":["Chaîne de montage"],
+        "compReq":{"log":2,"energ":1,"trans":1}
     },
     {
         "name": "chenilles",
         "skills": [],
         "info": "Accès Collines et Marécages",
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"log":1,"trans":1}
     },
     {
         "name": "snorkel",
         "skills": [],
         "info": "Accès Etangs et Rivières",
-        "bldReq":["Chaîne de montage"]
+        "bldReq":["Chaîne de montage"],
+        "compReq":{"log":2,"trans":1}
     },
     {
         "name": "belier",
         "skills": [],
         "info": "Puissance++",
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "compReq":{"log":2}
     },
     {
         "name": "w2-comet",
         "skills": [],
         "info": "Lance Missile",
-        "bldReq":["Usine d'armement"]
+        "bldReq":["Usine d'armement"],
+        "compReq":{"log":3,"arti":1,"bal":2,"explo":2,"vsp":2}
     },
     {
         "name": "w2-mit",
         "skills": [],
         "info": "Mitrailleuse",
-        "bldReq":["Arsenal"]
+        "bldReq":["Arsenal"],
+        "compReq":{"log":2,"bal":1,"vsp":1}
     },
     {
         "name": "w2-cradle",
         "skills": [],
         "info": "Cradle",
-        "bldReq":["Chaîne de montage"]
+        "bldReq":["Chaîne de montage"],
+        "compReq":{"log":2,"vsp":1}
     },
     {
         "name": "w2-2ch",
         "skills": [],
         "info": "Double chargeur",
-        "bldReq":["Arsenal"]
+        "bldReq":["Arsenal"],
+        "compReq":{"log":2,"bal":1}
     },
     {
         "name": "w2-canon",
         "skills": [],
         "info": "Minicanon",
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "compReq":{"log":2,"explo":1}
+    },
+    {
+        "name": "w2-bld",
+        "skills": [],
+        "info": "Seconde arme du bâtiment",
+        "bldReq":["Armurerie"],
+        "compReq":{"log":1,"def":3}
     }
 ]

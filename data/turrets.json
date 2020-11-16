@@ -347,7 +347,8 @@
             "maxAmmo":20,
             "ravitBld":"Arsenal"
         },
-        "protection":["aucun","w2-comet"],
+        "protection":["aucun"],
+        "equip": ["aucun","w2-comet"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,

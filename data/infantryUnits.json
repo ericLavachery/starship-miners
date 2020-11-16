@@ -93,7 +93,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","fastguet"],
+        "skills":["fouille","fortif","cible","fastguet","garde"],
         "fuzz":1.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -144,7 +144,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","maycamo","fastguet"],
+        "skills":["fouille","fortif","cible","maycamo","fastguet","garde"],
         "fuzz":1.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -200,7 +200,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","fastguet"],
+        "skills":["fouille","fortif","cible","fastguet","garde"],
         "fuzz":1.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -256,7 +256,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","ravitaillement","fastguet"],
+        "skills":["fouille","fortif","cible","ravitaillement","fastguet","garde"],
         "maxSkill":3,
         "fuzz":1.5,
         "deathFx":"13797__sweetneo85__wilhelm"
@@ -311,7 +311,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","maycamo","fastguet"],
+        "skills":["fouille","fortif","cible","maycamo","fastguet","garde"],
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
     },

@@ -196,7 +196,8 @@
         "apdamage": 0,
         "aoe": "",
         "info": "PasseBouclier",
-        "bldReq":["Arsenal"]
+        "bldReq":["Arsenal"],
+        "compReq":{"mat":3,"mat":2}
     },
     {
         "name": "freeze",
