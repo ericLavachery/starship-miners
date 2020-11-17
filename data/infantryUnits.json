@@ -54,7 +54,7 @@
         "hp":5,
         "armor":0,
         "size":3,
-        "volume":0.8,
+        "volume":1.1,
         "stealth":6,
         "ap":14,
         "maxSalvo":1,
@@ -160,7 +160,7 @@
         "hp":5,
         "armor":0,
         "size":3,
-        "volume":0.9,
+        "volume":1.1,
         "stealth":7,
         "ap":14,
         "maxSalvo":2,
@@ -216,7 +216,7 @@
         "hp":5,
         "armor":0,
         "size":3,
-        "volume":0.9,
+        "volume":1.1,
         "stealth":7,
         "ap":12,
         "maxSalvo":1,
@@ -273,7 +273,7 @@
         "hp":5,
         "armor":0,
         "size":3,
-        "volume":0.8,
+        "volume":0.9,
         "stealth":8,
         "ap":14,
         "maxSalvo":2,
@@ -441,7 +441,7 @@
             "range":1,
             "isShort":true,
             "rof":5,
-            "accuracy":15,
+            "accuracy":17,
             "power":4,
             "aoe":"unit",
             "sound":"pistol_x2",
@@ -483,7 +483,7 @@
             "range":1,
             "isShort":true,
             "rof":5,
-            "accuracy":15,
+            "accuracy":17,
             "power":4,
             "aoe":"unit",
             "sound":"pistol_x2",
@@ -634,7 +634,7 @@
             "name":"Fusil de précision",
             "cost":6,
             "range":2,
-            "elevation":2,
+            "elevation":3,
             "noMelee":true,
             "rof":6,
             "accuracy":40,
@@ -869,7 +869,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "equip":["aucun","flash","camo"],
@@ -911,7 +911,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
             "name":"Lame",
@@ -983,7 +983,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "equip":["aucun","flash","jetpack","camo"],
         "moveCost":3,
@@ -1661,7 +1661,7 @@
             "range":1,
             "isShort":true,
             "rof":8,
-            "accuracy":16,
+            "accuracy":17,
             "power":4,
             "aoe":"unit",
             "sound":"pistol_x2",
@@ -2005,7 +2005,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "weapon2":{
             "name":"Lame",
@@ -2126,7 +2126,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "equip":["aucun","flash","camo"],
@@ -2283,7 +2283,7 @@
             "name":"Canon magnétique",
             "cost":6,
             "range":3,
-            "elevation":2,
+            "elevation":3,
             "noMelee":true,
             "rof":6,
             "accuracy":45,
@@ -2815,7 +2815,7 @@
             "name":"Fusil de précision",
             "cost":6,
             "range":2,
-            "elevation":2,
+            "elevation":3,
             "noMelee":true,
             "rof":4,
             "accuracy":40,

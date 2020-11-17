@@ -607,7 +607,7 @@ function voirRessources() {
     // $('#resFind').append('<option value="">'+showOneRes+'</option>');
     $('#resFind').empty().append('<option value="Toutes">Toutes</option>');
     let filteredResTypes = _.filter(resTypes,function(res) {
-        return (res.cat != 'alien' && res.cat != 'zero');
+        return (res.cat != 'alien' && res.cat != 'zero' && res.cat != 'transfo');
     });
     let resIcon = '';
     let sortedResTypes = _.sortBy(filteredResTypes,'name');

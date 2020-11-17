@@ -26,7 +26,11 @@ function weaponsInfos(bat,batType,pop) {
     // console.log('rofs');
     // console.log(batType.weapon.rof);
     // console.log(batType.weapon2.rof);
-    if (batType.weapon.rof >= 1 && showW1) {
+    let hasW1 = false;
+    if (!batType.weapon.kit || bat.eq.includes('w2-') || bat.eq.includes('w1-')) {
+        hasW1 = true;
+    }
+    if (batType.weapon.rof >= 1 && showW1 && hasW1) {
         thisWeapon = weaponAdj(batType.weapon,bat,'w1');
         if (!thisWeapon.noAtt) {
             noFireMelee = false;

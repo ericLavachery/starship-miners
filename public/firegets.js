@@ -548,7 +548,11 @@ function weaponSelect(weapon) {
 function weaponSelectRiposte(distance) {
     let baseAmmo = 99;
     let ammoLeft = 99;
-    targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
+    let batWeap1 = {};
+    if (!targetBatType.weapon.kit || targetBat.eq.includes('w1-') || targetBat.eq.includes('w2-')) {
+        batWeap1 = targetBatType.weapon;
+    }
+    targetWeap = JSON.parse(JSON.stringify(batWeap1));
     targetWeap = weaponAdj(targetWeap,targetBat,'w1');
     if (!targetBatType.weapon2.kit || targetBat.eq.includes('kit-') || targetBat.eq.includes('w2-')) {
         if (activeTurn == 'aliens') {
@@ -568,7 +572,7 @@ function weaponSelectRiposte(distance) {
                     ammoLeft = 0;
                 }
                 if (ammoLeft <= 0) {
-                    targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
+                    targetWeap = JSON.parse(JSON.stringify(batWeap1));
                     targetWeap = weaponAdj(targetWeap,targetBat,'w1');
                 }
             }
@@ -873,11 +877,17 @@ function weaponAdj(weapon,bat,wn) {
         if (thisWeapon.elevation >= 1) {
             thisWeapon.range = thisWeapon.range+1;
         }
+        if (infra === 'Miradors' && ammo.range > 1 && thisWeapon.elevation === 3) {
+            thisWeapon.range = thisWeapon.range+1;
+        }
     } else if (highGround === 2) {
         if (thisWeapon.elevation === 1) {
             thisWeapon.range = thisWeapon.range+1;
-        } else if (thisWeapon.elevation === 2) {
+        } else if (thisWeapon.elevation >= 2) {
             thisWeapon.range = thisWeapon.range+2;
+            if (ammo.range > 1 && thisWeapon.elevation === 3) {
+                thisWeapon.range = thisWeapon.range+1;
+            }
         }
     }
     if (infra === 'Miradors') {

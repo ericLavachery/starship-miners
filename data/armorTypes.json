@@ -57,7 +57,7 @@
         "ap": -2,
         "skills": ["resistfeu"],
         "bldReq":["Laboratoire"],
-        "compReq":{"mat":3,"pyro":1}
+        "compReq":{"mat":2,"pyro":1}
     },
     {
         "name": "mendium",
@@ -65,7 +65,7 @@
         "ap": -1,
         "skills": ["resistacide"],
         "bldReq":["Laboratoire"],
-        "compReq":{"mat":3,"ca":3}
+        "compReq":{"mat":2,"ca":3}
     },
     {
         "name": "titane",
@@ -113,7 +113,7 @@
         "ap": -1,
         "skills": ["resistacide"],
         "bldReq":["Laboratoire"],
-        "compReq":{"mat":3,"ca":3}
+        "compReq":{"mat":2,"ca":3}
     },
     {
         "name": "bonibo",
@@ -121,7 +121,7 @@
         "ap": -2,
         "skills": ["resistfeu"],
         "bldReq":["Laboratoire"],
-        "compReq":{"mat":3,"pyro":1,"ca":3}
+        "compReq":{"mat":2,"pyro":1,"ca":3}
     },
     {
         "name": "kanchan",
@@ -378,10 +378,66 @@
         "compReq":{"log":2,"explo":1}
     },
     {
-        "name": "w2-bld",
+        "name": "w2-brol",
         "skills": [],
-        "info": "Seconde arme du bâtiment",
-        "bldReq":["Armurerie"],
+        "info": "Les deux armes du bâtiment",
+        "bldReq":[],
         "compReq":{"log":1,"def":3}
+    },
+    {
+        "name": "w2-fire",
+        "skills": [],
+        "info": "Les deux armes du bâtiment",
+        "bldReq":[],
+        "compReq":{"log":1,"def":3,"pyro":2}
+    },
+    {
+        "name": "w2-explo",
+        "skills": [],
+        "info": "Les deux armes du bâtiment",
+        "bldReq":[],
+        "compReq":{"log":1,"def":3,"explo":1}
+    },
+    {
+        "name": "w2-arti",
+        "skills": [],
+        "info": "Les deux armes du bâtiment",
+        "bldReq":[],
+        "compReq":{"log":1,"def":3,"explo":1,"arti":1}
+    },
+    {
+        "name": "w2-ggun",
+        "skills": [],
+        "info": "Les deux armes du bâtiment",
+        "bldReq":[],
+        "compReq":{"log":1,"def":3,"bal":2}
+    },
+    {
+        "name": "w2-laser",
+        "skills": [],
+        "info": "Les deux armes du bâtiment",
+        "bldReq":[],
+        "compReq":{"log":1,"def":3,"energ":1}
+    },
+    {
+        "name": "w1-gun",
+        "skills": [],
+        "info": "Première arme du bâtiment",
+        "bldReq":[],
+        "compReq":{"log":1,"def":2,"bal":1}
+    },
+    {
+        "name": "w1-ggun",
+        "skills": [],
+        "info": "Première arme du bâtiment",
+        "bldReq":[],
+        "compReq":{"log":1,"def":2,"bal":2}
+    },
+    {
+        "name": "w1-plasma",
+        "skills": [],
+        "info": "Première arme du bâtiment",
+        "bldReq":[],
+        "compReq":{"log":1,"def":2,"energ":1}
     }
 ]

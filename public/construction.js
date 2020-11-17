@@ -180,7 +180,7 @@ function conSelect(unitId,player,noRefresh) {
                         armorSkills = armorSkills+' resistfeu';
                     }
                     bldReqOK = false;
-                    if (playerInfos.bldList.includes(batArmor.bldReq[0]) || batArmor.bldReq[0] === undefined) {
+                    if (playerInfos.bldList.includes(batArmor.bldReq[0]) || batArmor.bldReq[0] === undefined || conselUnit.name === batArmor.bldReq[0]) {
                         bldReqOK = true;
                     }
                     if (bldReqOK) {
@@ -225,8 +225,11 @@ function conSelect(unitId,player,noRefresh) {
                     if (equip.startsWith('w2-') || equip.startsWith('kit-')) {
                         weapName = ' ('+conselUnit.weapon2.name+')';
                     }
+                    if (equip.startsWith('w1-')) {
+                        weapName = ' ('+conselUnit.weapon.name+')';
+                    }
                     bldReqOK = false;
-                    if ((playerInfos.bldList.includes(batEquip.bldReq[0]) || batEquip.bldReq[0] === undefined) && (playerInfos.bldList.includes(batEquip.bldReq[1]) || batEquip.bldReq[1] === undefined)) {
+                    if ((playerInfos.bldList.includes(batEquip.bldReq[0]) || batEquip.bldReq[0] === undefined || conselUnit.name === batEquip.bldReq[0]) && (playerInfos.bldList.includes(batEquip.bldReq[1]) || batEquip.bldReq[1] === undefined || conselUnit.name === batEquip.bldReq[1])) {
                         bldReqOK = true;
                     }
                     if (bldReqOK) {
@@ -241,36 +244,42 @@ function conSelect(unitId,player,noRefresh) {
     }
     let ammoIndex;
     let batAmmo;
+    let hasW1 = false;
+    if (!conselUnit.weapon.kit || conselAmmos[3].includes('w1-') || conselAmmos[3].includes('w2-')) {
+        hasW1 = true;
+    }
     listNum = 1;
-    if (Object.keys(conselUnit.weapon).length >= 1) {
-        if (conselUnit.weapon.ammo.length >= 1) {
-            $('#conAmmoList').append('<span class="constName or">'+conselUnit.weapon.name+'</span><br>');
-            conselUnit.weapon.ammo.forEach(function(ammo) {
-                ammoIndex = ammoTypes.findIndex((obj => obj.name == ammo));
-                batAmmo = ammoTypes[ammoIndex];
-                compReqOK = checkCompReq(batAmmo);
-                if (compReqOK) {
-                    if (conselAmmos[0] == ammo || (conselAmmos[0] === 'xxx' && listNum === 1)) {
-                        $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                    } else {
-                        $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-                    }
-                    bldReqOK = false;
-                    if (batAmmo.bldReq instanceof Array) {
-                        if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined)) {
+    if (hasW1) {
+        if (Object.keys(conselUnit.weapon).length >= 1) {
+            if (conselUnit.weapon.ammo.length >= 1) {
+                $('#conAmmoList').append('<span class="constName or">'+conselUnit.weapon.name+'</span><br>');
+                conselUnit.weapon.ammo.forEach(function(ammo) {
+                    ammoIndex = ammoTypes.findIndex((obj => obj.name == ammo));
+                    batAmmo = ammoTypes[ammoIndex];
+                    compReqOK = checkCompReq(batAmmo);
+                    if (compReqOK) {
+                        if (conselAmmos[0] == ammo || (conselAmmos[0] === 'xxx' && listNum === 1)) {
+                            $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                        } else {
+                            $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                        }
+                        bldReqOK = false;
+                        if (batAmmo.bldReq instanceof Array) {
+                            if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
+                                bldReqOK = true;
+                            }
+                        } else {
                             bldReqOK = true;
                         }
-                    } else {
-                        bldReqOK = true;
+                        if (bldReqOK) {
+                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+'" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
+                        } else {
+                            $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+'">'+showAmmo(ammo)+'</span><br>');
+                        }
                     }
-                    if (bldReqOK) {
-                        $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+'" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
-                    } else {
-                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+'">'+showAmmo(ammo)+'</span><br>');
-                    }
-                }
-                listNum++;
-            });
+                    listNum++;
+                });
+            }
         }
     }
     let hasW2 = false;
@@ -294,7 +303,7 @@ function conSelect(unitId,player,noRefresh) {
                         }
                         bldReqOK = false;
                         if (batAmmo.bldReq instanceof Array) {
-                            if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined)) {
+                            if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
                                 bldReqOK = true;
                             }
                         } else {

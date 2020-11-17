@@ -20,32 +20,71 @@ function gangEdit() {
     $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`mapDiff`)"></select>');
     $('#theZone').empty().append('<option value="">Présence Alien</option>');
     let i = 0;
-    while (i <= 11) {
-        $('#theZone').append('<option value="'+i+'">'+i+'</option>');
-        if (i > 12) {break;}
+    while (i <= 15) {
+        if (i === playerInfos.mapDiff) {
+            $('#theZone').append('<option value="'+i+'" selected>Présence '+i+'</option>');
+        } else {
+            $('#theZone').append('<option value="'+i+'">Présence '+i+'</option>');
+        }
+        if (i > 16) {break;}
         i++
     }
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     // GANG
     $('#conUnitList').append('<select class="boutonGris" id="theGangs" onchange="changePlayerInfo(`theGangs`,`gang`)"></select>');
     $('#theGangs').empty().append('<option value="">Gang</option>');
-    $('#theGangs').append('<option value="rednecks">Rednecks</option>');
-    $('#theGangs').append('<option value="blades">Blades</option>');
-    $('#theGangs').append('<option value="bulbos">Bulbos Kapos</option>');
-    $('#theGangs').append('<option value="drogmulojs">Drogmulojs</option>');
-    $('#theGangs').append('<option value="tiradores">Tiradores</option>');
-    $('#theGangs').append('<option value="detruas">Detruas</option>');
-    $('#theGangs').append('<option value="brasier">Le Brasier</option>');
+    if (playerInfos.gang === 'rednecks') {
+        $('#theGangs').append('<option value="rednecks" selected>Rednecks</option>');
+    } else {
+        $('#theGangs').append('<option value="rednecks">Rednecks</option>');
+    }
+    if (playerInfos.gang === 'blades') {
+        $('#theGangs').append('<option value="blades" selected>Blades</option>');
+    } else {
+        $('#theGangs').append('<option value="blades">Blades</option>');
+    }
+    if (playerInfos.gang === 'bulbos') {
+        $('#theGangs').append('<option value="bulbos" selected>Bulbos Kapos</option>');
+    } else {
+        $('#theGangs').append('<option value="bulbos">Bulbos Kapos</option>');
+    }
+    if (playerInfos.gang === 'drogmulojs') {
+        $('#theGangs').append('<option value="drogmulojs" selected>Drogmulojs</option>');
+    } else {
+        $('#theGangs').append('<option value="drogmulojs">Drogmulojs</option>');
+    }
+    if (playerInfos.gang === 'tiradores') {
+        $('#theGangs').append('<option value="tiradores" selected>Tiradores</option>');
+    } else {
+        $('#theGangs').append('<option value="tiradores">Tiradores</option>');
+    }
+    if (playerInfos.gang === 'detruas') {
+        $('#theGangs').append('<option value="detruas" selected>Detruas</option>');
+    } else {
+        $('#theGangs').append('<option value="detruas">Detruas</option>');
+    }
+    if (playerInfos.gang === 'brasier') {
+        $('#theGangs').append('<option value="brasier" selected>Le Brasier</option>');
+    } else {
+        $('#theGangs').append('<option value="brasier">Le Brasier</option>');
+    }
     $('#conUnitList').append('<span class="butSpace"></span>');
     // GANG LEVEL
     $('#conUnitList').append('<select class="boutonGris" id="theLevels" onchange="changePlayerInfo(`theLevels`,`gLevel`)"></select>');
     $('#theLevels').empty().append('<option value="">Niveau de Gang</option>');
     i = 1;
     while (i <= 22) {
-        $('#theLevels').append('<option value="'+i+'">'+i+'</option>');
+        if (playerInfos.gLevel === i) {
+            $('#theLevels').append('<option value="'+i+'" selected>Niveau '+i+'</option>');
+        } else {
+            $('#theLevels').append('<option value="'+i+'">Niveau '+i+'</option>');
+        }
         if (i > 25) {break;}
         i++
     }
+    $('#conUnitList').append('<br><span class="shSpace"></span><br>');
+    let gangComp = maxGangComp();
+    $('#conUnitList').append('<span class="constName">Max Compétences : '+toNiceString(gangComp)+'</span>');
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     // COMPETENCES
     allCompSelect();
@@ -67,6 +106,7 @@ function changePlayerInfo(dropMenuId,infoName) {
     } else {
         playerInfos[infoName] = +value;
     }
+    maxGangComp();
     savePlayerInfos();
     gangNavig();
 };
@@ -74,47 +114,52 @@ function changePlayerInfo(dropMenuId,infoName) {
 function changeComp(dropMenuId,compName) {
     let value = document.getElementById(dropMenuId).value;
     playerInfos.comp[compName] = +value;
+    maxGangComp();
     savePlayerInfos();
     gangNavig();
 };
 
 function allCompSelect() {
-    compSelect('Aéro','aero',1);
+    compSelect('Génétique','gen',1);
+    compSelect('Cybernétique','cyber',1);
+    compSelect('Robotique','robo',1);
+    compSelect('Aéronautique','aero',1);
     compSelect('Artillerie','arti',1);
     compSelect('Blindés','tank',1);
-    compSelect('Cyber','cyber',1);
-    compSelect('Génétique','gen',1);
-    compSelect('Robots','robo',1);
-    compSelect('Défense','def',3);
-    compSelect('Energie','energ',4);
-    compSelect('Industrie','ind',3);
-    compSelect('Extraction','ext',3);
-    compSelect('Tri','tri',2);
-    compSelect('Transports','trans',3);
     compSelect('Construction','const',3);
-    compSelect('Logistique','log',3);
-    compSelect('CA','ca',5);
+    compSelect('Industrie','ind',3);
+    compSelect('Energie','energ',4);
+    compSelect('Extraction','ext',3);
+    compSelect('Connaissance Alien','ca',5);
     compSelect('Médecine','med',3);
-    compSelect('Détection','det',6);
-    compSelect('Camouflage','cam',3);
+    compSelect('Défense','def',3);
     compSelect('Entraînement','train',2);
-    compSelect('Téléportation','tele',2);
+    compSelect('Camouflage','cam',3);
+    compSelect('Transports','trans',3);
+    compSelect('Logistique','log',3);
+    compSelect('Scaphandres','scaph',3);
+    compSelect('Détection','det',6);
     compSelect('Vols Spaciaux','vsp',4);
+    compSelect('Téléportation','tele',3);
+    compSelect('Balistique','bal',3);
     compSelect('Explosifs','explo',3);
     compSelect('Pyrotechnie','pyro',3);
-    compSelect('Balistique','bal',3);
-    compSelect('Matériaux','mat',4);
     compSelect('Exochimie','exo',3);
-    compSelect('Scaphandres','scaph',3);
-    compSelect('Gouvernance','ordre',3);
+    compSelect('Matériaux','mat',4);
+    compSelect('Tri','tri',2);
+    compSelect('Maintien de l\'ordre','ordre',3);
 };
 
 function compSelect(compName,compId,compMax) {
     $('#conUnitList').append('<select title="'+compName+' '+playerInfos.comp[compId]+'" class="boutonGris" id="'+compId+'" onchange="changeComp(`'+compId+'`,`'+compId+'`)"></select>');
-    $('#'+compId).empty().append('<option value="">'+compName+'</option>');
+    $('#'+compId).empty().append('<option value="">'+compId+'</option>');
     let i = 0;
     while (i <= compMax) {
-        $('#'+compId).append('<option value="'+i+'">'+i+'</option>');
+        if (playerInfos.comp[compId] === i) {
+            $('#'+compId).append('<option value="'+i+'" selected>'+compId+' '+i+'</option>');
+        } else {
+            $('#'+compId).append('<option value="'+i+'">'+compId+' '+i+'</option>');
+        }
         if (i > 10) {break;}
         i++
     }
@@ -263,4 +308,192 @@ function playerSkillsUTChanges() {
             }
         }
     });
+};
+
+function maxGangComp() {
+    let maxComp = [4,0];
+    maxComp[0] = maxComp[0]+playerInfos.gLevel;
+    if (playerInfos.gang === 'rednecks') {
+        if (playerInfos.gLevel >= 3) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 6) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 10) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 13) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 16) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+    }
+    if (playerInfos.gang === 'blades') {
+        if (playerInfos.gLevel >= 3) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 6) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 9) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 11) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 13) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 15) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+    }
+    if (playerInfos.gang === 'bulbos') {
+        if (playerInfos.gLevel >= 3) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 6) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 8) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 10) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 12) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 14) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 16) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+    }
+    if (playerInfos.gang === 'drogmulojs') {
+        if (playerInfos.gLevel >= 3) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 6) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 10) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 13) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 16) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+    }
+    if (playerInfos.gang === 'tiradores') {
+        if (playerInfos.gLevel >= 3) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 6) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 10) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 13) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 16) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+    }
+    if (playerInfos.gang === 'detruas') {
+        if (playerInfos.gLevel >= 3) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 6) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 9) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 12) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 15) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+    }
+    if (playerInfos.gang === 'brasier') {
+        if (playerInfos.gLevel >= 3) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 6) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 8) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 11) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 13) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 16) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+    }
+    if (playerInfos.gLevel >= 18) {
+        maxComp[0] = maxComp[0]+1;
+        maxComp[1] = maxComp[1]+1;
+    }
+    if (playerInfos.gLevel >= 20) {
+        maxComp[0] = maxComp[0]+1;
+        maxComp[1] = maxComp[1]+1;
+    }
+    if (playerInfos.gLevel >= 22) {
+        maxComp[0] = maxComp[0]+1;
+        maxComp[1] = maxComp[1]+1;
+    }
+    return maxComp;
 };

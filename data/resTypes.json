@@ -538,5 +538,86 @@
         "rarity": 5,
         "cat": "alien",
         "batch": 1
+    },
+    {
+        "id": 60,
+        "name": "Energie",
+        "bld": "",
+        "level": 4,
+        "rarity": 100,
+        "cat": "transfo",
+        "batch": 1
+    },
+    {
+        "id": 61,
+        "name": "Electros",
+        "bld": "",
+        "level": 4,
+        "rarity": 100,
+        "cat": "transfo",
+        "batch": 1
+    },
+    {
+        "id": 62,
+        "name": "Batteries",
+        "bld": "",
+        "level": 4,
+        "rarity": 100,
+        "cat": "transfo",
+        "batch": 1
+    },
+    {
+        "id": 63,
+        "name": "Fuel",
+        "bld": "",
+        "level": 4,
+        "rarity": 100,
+        "cat": "transfo",
+        "batch": 1
+    },
+    {
+        "id": 64,
+        "name": "Explosifs",
+        "bld": "",
+        "level": 4,
+        "rarity": 100,
+        "cat": "transfo",
+        "batch": 1
+    },
+    {
+        "id": 65,
+        "name": "Moteur Orbital",
+        "bld": "",
+        "level": 4,
+        "rarity": 100,
+        "cat": "transfo",
+        "batch": 1
+    },
+    {
+        "id": 66,
+        "name": "Compo1",
+        "bld": "",
+        "level": 4,
+        "rarity": 100,
+        "cat": "transfo",
+        "batch": 1
+    },
+    {
+        "id": 67,
+        "name": "Compo2",
+        "bld": "",
+        "level": 4,
+        "rarity": 100,
+        "cat": "transfo",
+        "batch": 1
+    },
+    {
+        "id": 68,
+        "name": "Compo3",
+        "bld": "",
+        "level": 4,
+        "rarity": 100,
+        "cat": "transfo",
+        "batch": 1
     }
 ]

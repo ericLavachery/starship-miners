@@ -1,26 +1,37 @@
-[
-    {
-        "require":{
-            "techreq":"plasma",
-            "gangreq":[
-                {"Detrua":4},
-                {"Brasier":6},
-                {"Rednecks":6}
-            ],
-            "bldlogic":"or";
-            "bldreq":["Atelier","Labo"],
-            "bldreplace":[
-                {"Detrua":7},
-                {"Rednecks":9}
-            ]
-        },
-        "rescost":[
-            {"cuivre":5,"plomb":2,"bois":3},
-            {"cuivre":8,"bois":3}
-        ]
-    },
-
-    {
-        "skills":["fortif","cible","regeneration","undead","selfbadmedic","badmedic","selfmedic","medic","survivor","luckyshot","camo","maycamo","embuscade","guerrilla","ranger","hover","berserk","longshot","defense","sentinelle","mutant","cyber","leader","fly","dealer","ravitaillement","stock","mine","landmine","dynamite","laser","selfmecano","badmecano","deepselfmecano","mecano","inflammable","extraction","transport","selfrepair","deepselfrepair","repair"],
-    }
-]
+Mine
+Pompe
+Derrick
+Comptoir
+Poudrière
+Silo
+Réserve
+Garage
+Atelier
+Chaîne de montage
+Usine
+Aérodocks
+Armurerie
+Arsenal
+Usine d'armement
+Infirmerie
+Hôpital
+Poste radio
+Centre de com
+QG
+Camp d'entraînement
+Décharge
+Centre de tri
+Recyclab
+Laboratoire
+Centre de recherches
+Générateur
+Centrale solaire
+Centrale géothermique
+Crameur
+Centrale nucléaire
+Centrale SMR
+Champ de force
+Dôme
+Pilône
+Bar
+Cantine
