@@ -1651,7 +1651,7 @@
             "range":1,
             "noFly":true,
             "rof":6,
-            "accuracy":14,
+            "accuracy":10,
             "power":12,
             "aoe":"brochette",
             "sound":"dynamite",

@@ -382,7 +382,7 @@
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"log":1,"def":3}
+        "compReq":{"log":1,"def":3,"bal":1}
     },
     {
         "name": "w2-fire",
@@ -396,14 +396,14 @@
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"log":1,"def":3,"explo":1}
+        "compReq":{"log":1,"def":3,"explo":1,"bal":1}
     },
     {
         "name": "w2-arti",
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"log":1,"def":3,"explo":1,"arti":1}
+        "compReq":{"log":1,"def":3,"explo":1,"arti":1,"bal":1}
     },
     {
         "name": "w2-ggun",
@@ -418,6 +418,13 @@
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
         "compReq":{"log":1,"def":3,"energ":1}
+    },
+    {
+        "name": "w2-rain",
+        "skills": [],
+        "info": "Les deux armes du bâtiment",
+        "bldReq":[],
+        "compReq":{"log":1,"def":3,"exo":1}
     },
     {
         "name": "w1-gun",
