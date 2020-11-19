@@ -118,6 +118,11 @@ socket.on('resTypes-Load', function(rt) {
     resTypes = rt;
     // console.log(resTypes);
 });
+// crafting
+socket.on('crafting-Load', function(crf) {
+    crafting = crf;
+    // console.log(crafting);
+});
 // Bataillons
 socket.on('bataillons-Load', function(bt) {
     bataillons = bt;

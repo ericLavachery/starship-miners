@@ -115,6 +115,16 @@ fs.readFile('./data/resTypes.json', 'utf8', function (err, data) {
         console.error( e );
     }
 });
+var crafting;
+fs.readFile('./data/crafting.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    try {
+        crafting = JSON.parse(data);
+        // console.log(unitDV);
+    } catch (e) {
+        console.error( e );
+    }
+});
 var mapFilters;
 fs.readFile('./data/mapFilters.json', 'utf8', function (err, data) {
     if (err) throw err;
@@ -277,6 +287,8 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.emit('terrainTypes-Load', terrainTypes);
         console.log('loading resources types');
         socket.emit('resTypes-Load', resTypes);
+        console.log('loading crafting');
+        socket.emit('crafting-Load', crafting);
         if (savedMap.length >= 3500) {
             console.log('loading saved map');
         } else {

@@ -1,0 +1,111 @@
+Scrap
+Plomb
+Fer
+Carbone
+Silicium
+Cuivre
+Calcium
+Zinc
+Phosphore
+Soufre
+Nickel
+Potassium
+Aluminium
+Bore
+Titane
+Cobalt
+Tungstène
+Plutonium
+Uranium
+Platine
+Or
+Mercure
+Rhodium
+Eau
+Hydrocarbure
+Huile
+Végétaux
+Bois
+Air
+Oxygène
+Hydrogène
+Azote
+Chlore
+Argon
+Hélium
+Dunium
+Timonium
+Salite
+Plastanium
+Uridium
+Nanite
+Adamantium
+Pyratol
+Octiron
+Atium
+Bugium
+Swarmine
+Larvium
+Aranium
+Mendium
+Creatite
+Slime
+Noxis
+Germium
+Wingium
+Blendium
+Mephitis
+Egidium
+Bossium
+Pyrus
+Energie
+Electros
+Batteries
+Fuel
+Explosifs
+Moteur Orbital
+Compo1
+Compo2
+Compo3
+
+
+
+Mine
+Pompe
+Derrick
+Comptoir
+Poudrière
+Silo
+Réserve
+Garage
+Atelier
+Chaîne de montage
+Usine
+Aérodocks
+Armurerie
+Arsenal
+Usine d'armement
+Infirmerie
+Hôpital
+Poste radio
+Centre de com
+QG
+Camp d'entraînement
+Décharge
+Centre de tri
+Recyclab
+Laboratoire
+Centre de recherches
+Générateur
+Centrale solaire
+Centrale géothermique
+Crameur
+Centrale nucléaire
+Centrale SMR
+Champ de force
+Dôme
+Pilône
+Bar
+Cantine
+
+=CONCATENATE("""","bldReq","""",":[","""",O2,"""",",","""",P2,"""",",","""",Q2,"""","]")

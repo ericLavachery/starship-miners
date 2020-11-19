@@ -1,6 +1,9 @@
 function gangNavig() {
     $('#gangInfos').empty();
-    $('#gangInfos').append('<button type="button" title="Editer" class="boutonGris iconButtons" onclick="gangEdit()"><i class="fas fa-users-cog"></i></button><br>');
+    $('#gangInfos').append('<button type="button" title="Constriche" class="boutonGris iconButtons" onclick="bfconst(`all`,true)"><i class="fa fa-hammer"></i></button>');
+    $('#gangInfos').append('<button type="button" title="Editer le Gang" class="boutonGris iconButtons" onclick="gangEdit()"><i class="fas fa-users-cog"></i></button><br>');
+    $('#gangInfos').append('<div class="shSpace"></div>');
+    $('#gangInfos').append('<span class="butSpace"></span>');
     $('#gangInfos').append(capitalizeFirstLetter(playerInfos.gang));
     $('#gangInfos').append(' '+playerInfos.gLevel+'<br>');
 };
@@ -146,7 +149,7 @@ function allCompSelect() {
     compSelect('Pyrotechnie','pyro',3);
     compSelect('Exochimie','exo',3);
     compSelect('Matériaux','mat',4);
-    compSelect('Tri','tri',2);
+    compSelect('Tri','tri',4);
     compSelect('Maintien de l\'ordre','ordre',3);
 };
 

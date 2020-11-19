@@ -44,15 +44,15 @@ function findLanders() {
     });
 };
 
-function getDispoRes(res) {
+function getDispoRes(resName) {
     let dispoRes = 0;
     landers.forEach(function(bat) {
-        if (bat.transRes[res] >= 1) {
-            dispoRes = dispoRes+bat.transRes[res];
+        if (bat.transRes[resName] >= 1) {
+            dispoRes = dispoRes+bat.transRes[resName];
         }
     });
-    if (playerInfos.alienRes[res] >= 1) {
-        dispoRes = playerInfos.alienRes[res];
+    if (playerInfos.alienRes[resName] >= 1) {
+        dispoRes = playerInfos.alienRes[resName];
     }
     return dispoRes;
 };

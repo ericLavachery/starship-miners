@@ -1,0 +1,450 @@
+[
+    {
+        "id": 11,
+        "result": "Compo1",
+        "cost":{"Bois":3},
+        "compReq":{},
+        "bldReq":[],
+        "batch": 1
+    },
+    {
+        "id": 12,
+        "result": "Compo1",
+        "cost":{"Scrap":3},
+        "compReq":{},
+        "bldReq":[],
+        "batch": 1
+    },
+    {
+        "id": 6,
+        "result": "Compo1",
+        "cost":{"Bois":2},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "batch": 1
+    },
+    {
+        "id": 9,
+        "result": "Compo1",
+        "cost":{"Scrap":2},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "batch": 1
+    },
+    {
+        "id": 10,
+        "result": "Compo1",
+        "cost":{"Bois":1,"Scrap":1},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "batch": 1
+    },
+    {
+        "id": 16,
+        "result": "Compo1",
+        "cost":{"Carbone":3},
+        "compReq":{"const":1},
+        "bldReq":["Chaîne de montage"],
+        "batch": 2
+    },
+    {
+        "id": 7,
+        "result": "Compo2",
+        "cost":{"Fer":3},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "batch": 1
+    },
+    {
+        "id": 12,
+        "result": "Compo2",
+        "cost":{"Fer":1,"Carbone":1},
+        "compReq":{"const":1},
+        "bldReq":["Atelier"],
+        "batch": 1
+    },
+    {
+        "id": 13,
+        "result": "Compo2",
+        "cost":{"Fer":1,"Carbone":2},
+        "compReq":{"const":2,"ind":1},
+        "bldReq":["Chaîne de montage"],
+        "batch": 2
+    },
+    {
+        "id": 17,
+        "result": "Compo2",
+        "cost":{"Fer":1,"Carbone":1,"Scrap":1},
+        "compReq":{"const":2,"tri":2,"ind":1},
+        "bldReq":["Chaîne de montage"],
+        "batch": 2
+    },
+    {
+        "id": 8,
+        "result": "Compo3",
+        "cost":{"Fer":1,"Silicium":2,"Titane":1},
+        "compReq":{},
+        "bldReq":["Chaîne de montage"],
+        "batch": 2
+    },
+    {
+        "id": 14,
+        "result": "Compo3",
+        "cost":{"Fer":1,"Carbone":2,"Titane":1},
+        "compReq":{"const":1},
+        "bldReq":["Chaîne de montage"],
+        "batch": 2
+    },
+    {
+        "id": 15,
+        "result": "Compo3",
+        "cost":{"Aluminium":1,"Carbone":1,"Titane":1},
+        "compReq":{"const":2,"ind":1},
+        "bldReq":["Chaîne de montage"],
+        "batch": 2
+    },
+    {
+        "id": 18,
+        "result": "Compo3",
+        "cost":{"Scrap":1,"Carbone":1,"Titane":1},
+        "compReq":{"const":2,"tri":3,"ind":1},
+        "bldReq":["Chaîne de montage"],
+        "batch": 2
+    },
+    {
+        "id":0,
+        "result":"Electros",
+        "cost":{"Cuivre":2,"Silicium":1,"Cobalt":1},
+        "compReq":{},
+        "bldReq":["Chaîne de montage"],
+        "batch":1
+    },
+    {
+        "id":1,
+        "result":"Electros",
+        "cost":{"Cuivre":2,"Carbone":1,"Aluminium":1},
+        "compReq":{"mat":2,"ind":3},
+        "bldReq":["Usine"],
+        "batch":1
+    },
+    {
+        "id": 2,
+        "result": "Batteries",
+        "cost":{"Phosphore":2,"Cobalt":2,"Titane":2},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "batch": 1
+    },
+    {
+        "id": 19,
+        "result": "Batteries",
+        "cost":{"Carbone":2,"Zinc":2,"Nickel":2},
+        "compReq":{"energ":2},
+        "bldReq":["Chaîne de montage"],
+        "batch": 1
+    },
+    {
+        "id": 20,
+        "result": "Batteries",
+        "cost":{"Carbone":2,"Azote":3,"Hydrogène":3},
+        "compReq":{"energ":4,"ind":2},
+        "bldReq":["Usine"],
+        "batch": 2
+    },
+    {
+        "id": 3,
+        "result": "Fuel",
+        "cost":{"Hydrocarbure":2},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "batch": 1
+    },
+    {
+        "id": 21,
+        "result": "Fuel",
+        "cost":{"Hydrocarbure":2,"Huile":1},
+        "compReq":{"pyro":1},
+        "bldReq":["Atelier"],
+        "batch": 2
+    },
+    {
+        "id": 22,
+        "result": "Fuel",
+        "cost":{"Carbone":2,"Hydrogène":1},
+        "compReq":{"energ":2,"ind":1},
+        "bldReq":["Chaîne de montage"],
+        "batch": 2
+    },
+    {
+        "id": 23,
+        "result": "Fuel",
+        "cost":{"Végétaux":5,"Hydrogène":1},
+        "compReq":{"energ":2,"exo":2,"ind":2},
+        "bldReq":["Usine"],
+        "batch": 1
+    },
+    {
+        "id": 4,
+        "result": "Explosifs",
+        "cost":{"Soufre":1,"Potassium":1,"Carbone":1},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "batch": 1
+    },
+    {
+        "id": 24,
+        "result": "Explosifs",
+        "cost":{"Phosphore":3,"Hydrogène":1},
+        "compReq":{"explo":1},
+        "bldReq":["Atelier"],
+        "batch": 2
+    },
+    {
+        "id": 25,
+        "result": "Explosifs",
+        "cost":{"Soufre":1,"Hydrocarbure":2},
+        "compReq":{"explo":2},
+        "bldReq":["Atelier"],
+        "batch": 1
+    },
+    {
+        "id": 27,
+        "result": "Explosifs",
+        "cost":{"Hydrogène":3,"Hydrocarbure":1},
+        "compReq":{"explo":3},
+        "bldReq":["Chaîne de montage"],
+        "batch": 2
+    },
+    {
+        "id": 26,
+        "result": "Explosifs",
+        "cost":{"Carbone":1,"Hydrogène":2,"Azote":2,"Oxygène":1},
+        "compReq":{"explo":3},
+        "bldReq":["Usine"],
+        "batch": 4
+    },
+    {
+        "id": 27,
+        "result": "Fer",
+        "cost":{"Scrap":8},
+        "compReq":{"tri":1},
+        "bldReq":["Centre de tri"],
+        "batch": 1
+    },
+    {
+        "id": 28,
+        "result": "Plomb",
+        "cost":{"Scrap":12},
+        "compReq":{"tri":2},
+        "bldReq":["Centre de tri"],
+        "batch": 1
+    },
+    {
+        "id": 29,
+        "result": "Aluminium",
+        "cost":{"Scrap":25},
+        "compReq":{"tri":2},
+        "bldReq":["Centre de tri"],
+        "batch": 1
+    },
+    {
+        "id": 30,
+        "result": "Zinc",
+        "cost":{"Scrap":25},
+        "compReq":{"tri":3},
+        "bldReq":["Centre de tri"],
+        "batch": 1
+    },
+    {
+        "id": 31,
+        "result": "Carbone",
+        "cost":{"Scrap":25},
+        "compReq":{"tri":3,"mat":1},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 32,
+        "result": "Tungstène",
+        "cost":{"Scrap":50},
+        "compReq":{"tri":4,"mat":1},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 33,
+        "result": "Titane",
+        "cost":{"Scrap":100},
+        "compReq":{"tri":4,"mat":2},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 34,
+        "result": "Aluminium",
+        "cost":{"Wingium":1,"Bugium":3},
+        "compReq":{"tri":2,"ca":2,"mat":1},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 35,
+        "result": "Calcium",
+        "cost":{"Mephitis":1,"Chlore":3},
+        "compReq":{"tri":2,"ca":1},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 36,
+        "result": "Carbone",
+        "cost":{"Mendium":2,"Oxygène":2},
+        "compReq":{"tri":2,"ca":2},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 37,
+        "result": "Cuivre",
+        "cost":{"Blendium":2,"Hélium":1,"Azote":1},
+        "compReq":{"tri":2,"ca":1,"mat":1},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 38,
+        "result": "Fer",
+        "cost":{"Bugium":3,"Azote":1},
+        "compReq":{"tri":1,"ca":1},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 39,
+        "result": "Mercure",
+        "cost":{"Octiron":1,"Creatite":3},
+        "compReq":{"tri":3,"ca":1},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 40,
+        "result": "Or",
+        "cost":{"Germium":3,"Creatite":2},
+        "compReq":{"tri":3,"ca":3,"mat":1},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 41,
+        "result": "Phosphore",
+        "cost":{"Aranium":3,"Chlore":1},
+        "compReq":{"tri":3,"ca":2},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 42,
+        "result": "Plomb",
+        "cost":{"Swarmine":3,"Azote":1},
+        "compReq":{"tri":1,"ca":1},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 43,
+        "result": "Plutonium",
+        "cost":{"Blendium":2,"Hydrogène":2},
+        "compReq":{"tri":3,"ca":3,"mat":1},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 44,
+        "result": "Potassium",
+        "cost":{"Slime":2,"Chlore":2},
+        "compReq":{"tri":1,"ca":2},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 45,
+        "result": "Pyratol",
+        "cost":{"Pyrus":2,"Bossium":1},
+        "compReq":{"tri":4,"ca":3},
+        "bldReq":["Recyclab"],
+        "batch": 2
+    },
+    {
+        "id": 46,
+        "result": "Rhodium",
+        "cost":{"Egidium":1,"Argon":1},
+        "compReq":{"tri":4,"ca":2,"mat":4},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 47,
+        "result": "Soufre",
+        "cost":{"Pyrus":1,"Oxygène":2},
+        "compReq":{"tri":1,"ca":1},
+        "bldReq":["Recyclab"],
+        "batch": 2
+    },
+    {
+        "id": 48,
+        "result": "Titane",
+        "cost":{"Wingium":2,"Bossium":1},
+        "compReq":{"tri":4,"ca":3,"mat":2},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 49,
+        "result": "Tungstène",
+        "cost":{"Swarmine":3,"Hélium":1},
+        "compReq":{"tri":3,"ca":2,"mat":1},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 50,
+        "result": "Uranium",
+        "cost":{"Blendium":3,"Argon":1},
+        "compReq":{"tri":4,"ca":3,"mat":1},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 51,
+        "result": "Zinc",
+        "cost":{"Mendium":2,"Chlore":2},
+        "compReq":{"tri":2,"ca":3},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 52,
+        "result": "Hydrocarbure",
+        "cost":{"Larvium":2,"Végétaux":3},
+        "compReq":{"tri":1,"ca":2},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 53,
+        "result": "Huile",
+        "cost":{"Slime":2,"Végétaux":5},
+        "compReq":{"tri":3,"ca":3},
+        "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id": 5,
+        "result": "Moteur Orbital",
+        "cost":{"Electro":100,"Bore":500,"Carbone":1000,"Nickel":500,"Titane":1000},
+        "compReq":{"energ":3,"mat":3,"ind":2},
+        "bldReq":["Laboratoire","Usine","Soute"],
+        "batch": 1
+    }
+]
