@@ -297,7 +297,7 @@
         "rarity": 35,
         "cat": "white",
         "batch": 5,
-        "energie": 10
+        "energie": 9
     },
     {
         "id": 28,
@@ -307,7 +307,7 @@
         "rarity": 75,
         "cat": "white",
         "batch": 4,
-        "energie": 10
+        "energie": 9
     },
     {
         "id": 29,
@@ -327,7 +327,7 @@
         "rarity": 30,
         "cat": "white",
         "batch": 4,
-        "energie": 10
+        "energie": 9
     },
     {
         "id": 31,
@@ -347,7 +347,7 @@
         "rarity": 10,
         "cat": "white",
         "batch": 2,
-        "energie": 10
+        "energie": 9
     },
     {
         "id": 33,

@@ -32,6 +32,21 @@ function gangEdit() {
         if (i > 16) {break;}
         i++
     }
+    $('#conUnitList').append('<span class="butSpace"></span>');
+    // mapTurn
+    $('#conUnitList').append('<select class="boutonGris" id="theTurn" onchange="changePlayerInfo(`theTurn`,`mapTurn`)"></select>');
+    $('#theTurn').empty().append('<option value="">Tour</option>');
+    i = 1;
+    while (i <= 300) {
+        $('#theTurn').append('<option value="'+i+'">Tour '+i+'</option>');
+        if (i > 300) {break;}
+        if (i === 1) {
+            i = i+23;
+        } else {
+            i = i+25;
+        }
+    }
+
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     // GANG
     $('#conUnitList').append('<select class="boutonGris" id="theGangs" onchange="changePlayerInfo(`theGangs`,`gang`)"></select>');

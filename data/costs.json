@@ -1121,7 +1121,7 @@
         "name":"Usine",
         "bldEquiv":["Atelier","Chaîne de montage"],
         "bldCost":"Chaîne de montage",
-        "bldReq":["Crameur"]
+        "bldReq":["Centrale SMR"]
     },
     {
         "id":193,
@@ -1144,7 +1144,7 @@
         "name":"Usine d'armement",
         "bldEquiv":["Armurerie","Arsenal"],
         "bldCost":"Arsenal",
-        "bldReq":["Crameur"]
+        "bldReq":["Centrale SMR"]
     },
     {
         "id":150,
@@ -1174,7 +1174,7 @@
         "name":"QG",
         "bldEquiv":["Poste radio","Centre de com"],
         "bldCost":"Centre de com",
-        "bldReq":["Crameur"]
+        "bldReq":["Centrale SMR"]
     },
     {
         "id":201,
@@ -1196,7 +1196,7 @@
         "name":"Recyclab",
         "bldEquiv":["Décharge","Centre de tri"],
         "bldCost":"Centre de tri",
-        "bldReq":["Crameur"]
+        "bldReq":["Centrale SMR"]
     },
     {
         "id":206,
@@ -1208,7 +1208,7 @@
         "name":"Centre de recherches",
         "bldEquiv":["Laboratoire"],
         "bldCost":"Laboratoire",
-        "bldReq":["Crameur"]
+        "bldReq":["Centrale SMR"]
     },
     {
         "id":172,
@@ -1217,35 +1217,33 @@
     {
         "id":208,
         "name":"Centrale solaire",
-        "bldEquiv":["Générateur","Crameur"]
+        "bldEquiv":["Générateur","Centrale SMR"]
     },
     {
         "id":209,
         "name":"Centrale géothermique",
-        "bldEquiv":["Générateur","Crameur"]
+        "bldEquiv":["Générateur","Centrale SMR"]
     },
     {
         "id":210,
-        "name":"Crameur",
-        "bldEquiv":["Générateur"]
+        "name":"Crameur"
     },
     {
         "id":211,
         "name":"Centrale nucléaire",
-        "bldEquiv":["Générateur","Crameur"],
-        "bldReq":["Crameur"]
+        "bldEquiv":["Générateur","Centrale SMR"]
     },
     {
         "id":212,
         "name":"Centrale SMR",
-        "bldEquiv":["Générateur","Crameur"],
+        "bldEquiv":["Générateur"],
         "bldReq":["Générateur"]
     },
     {
         "id":174,
         "name":"Champ de force",
         "bldEquiv":[],
-        "bldReq":["Crameur"]
+        "bldReq":["Centrale SMR"]
     },
     {
         "id":175,
@@ -1256,7 +1254,7 @@
     {
         "id":200,
         "name":"Pilône",
-        "bldReq":["Crameur","Dôme"]
+        "bldReq":["Centrale SMR","Dôme"]
     },
     {
         "id":215,

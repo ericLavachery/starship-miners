@@ -2,6 +2,7 @@ function voirReserve() {
     selectMode();
     $("#conUnitList").css("display","block");
     $('#conUnitList').css("height","800px");
+    $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();
@@ -37,7 +38,7 @@ function findLanders() {
     bataillons.forEach(function(bat) {
         if (bat.loc === 'zone') {
             batType = getBatType(bat);
-            if (batType.skills.includes('transorbital') || bat.tags.includes('reserve')) {
+            if (batType.skills.includes('transorbital') || batType.skills.includes('reserve')) {
                 landers.push(bat);
             }
         }

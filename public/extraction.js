@@ -387,6 +387,8 @@ function getDumperQuality(bat) {
     let dq = 0;
     let batType = getBatType(bat);
     if (batType.skills.includes('transorbital')) {
+        dq = 10;
+    } else if (batType.skills.includes('reserve')) {
         dq = 9;
     } else if (batType.skills.includes('realdumper')) {
         if (batType.moveCost < 90) {

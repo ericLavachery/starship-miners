@@ -225,11 +225,7 @@ function batInfos(bat,pop) {
         $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/'+resMax+'</span><br>');
     }
     if (batType.skills.includes('reserve') || batType.skills.includes('transorbital')) {
-        if (bat.tags.includes('reserve') || batType.skills.includes('transorbital')) {
-            $('#'+bodyPlace).append('<span class="paramName cy">Réserve</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
-        } else {
-            $('#'+bodyPlace).append('<span class="paramName or">Réserve</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
-        }
+        $('#'+bodyPlace).append('<span class="paramName cy">Réserve</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
     if (batType.skills.includes('dealer')) {
         let ravitNum = calcRavitDrug(bat);
