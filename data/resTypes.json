@@ -247,7 +247,7 @@
         "rarity": 75,
         "cat": "white",
         "batch": 10,
-        "energie": 5
+        "energie": 6
     },
     {
         "id": 23,
@@ -477,7 +477,7 @@
         "rarity": 40,
         "cat": "alien",
         "batch": 1,
-        "energie": 10
+        "energie": 7
     },
     {
         "id": 47,
@@ -637,7 +637,7 @@
         "rarity": 100,
         "cat": "transfo",
         "batch": 1,
-        "energie": 2
+        "energie": 3
     },
     {
         "id": 64,

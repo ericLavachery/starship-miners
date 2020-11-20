@@ -77,7 +77,7 @@ function craftWindow() {
                 neededRes = cramPower(res,neededRes);
                 if (dispoRes >= neededRes) {
                     $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                    $('#conUnitList').append('<span class="craftsList cy klik" onclick="doEnergyCraft('+res.id+','+energyFactor+')">'+energyFactor+' Energie</span><br>');
+                    $('#conUnitList').append('<span class="craftsList cy klik" onclick="doEnergyCraft(`'+res.name+'`,'+neededRes+','+energyFactor+')">'+energyFactor+' Energie</span><br>');
                     $('#conUnitList').append('<span class="craftsList gf">'+res.name+':<span class="bleu">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
                 } else {
                     $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
@@ -120,6 +120,12 @@ function doCraft(craftId,number) {
         resSub(key,value);
     });
     resAdd(craft.result,number);
+    craftWindow();
+};
+
+function doEnergyCraft(resName,neededRes,energyCreated) {
+    resSub(resName,neededRes);
+    resAdd('Energie',energyCreated);
     craftWindow();
 };
 
@@ -181,6 +187,7 @@ function resAdd(resName,number) {
 };
 
 function resSub(resName,number) {
+    console.log(resName);
     let res = getResByName(resName);
     if (res.cat === 'alien') {
         playerInfos.alienRes[resName] = playerInfos.alienRes[resName]-number;
@@ -232,22 +239,21 @@ function cramPower(res,neededRes) {
     if (energyComp === 4) {
         energyComp = 5;
     }
-    neededRes = Math.round(neededRes/(energyComp+5)*5);
-    if (res.name === 'Scrap') {
-        neededRes = Math.round(neededRes/(playerInfos.comp.tri+4)*4);
-    }
-    if (res.cat === 'transfo') {
-        neededRes = Math.round(neededRes/(playerInfos.comp.tri+8)*8);
-    }
-    if (res.cat === 'alien') {
-        neededRes = Math.round(neededRes/(playerInfos.comp.ca+10)*10);
-    }
-    if (res.name === 'Huile' || res.name === 'Fuel' || res.name === 'Pyrus' || res.name === 'Pyratol') {
+    neededRes = Math.round(neededRes/(energyComp+15)*15);
+    if (res.name === 'Huile' || res.name === 'Fuel' || res.name === 'Pyrus' || res.name === 'Pyratol' || res.name === 'Hydrocarbure') {
         neededRes = Math.round(neededRes/(playerInfos.comp.pyro+6)*6);
     } else if (res.bld === 'Derrick') {
         neededRes = Math.round(neededRes/(playerInfos.comp.explo+6)*6);
+    } else if (res.name === 'Scrap') {
+        neededRes = Math.round(neededRes/(playerInfos.comp.tri+4)*4);
     } else if (res.bld === 'Comptoir') {
         neededRes = Math.round(neededRes/(playerInfos.comp.tri+8)*8);
+    } else if (res.cat === 'alien') {
+        neededRes = Math.round(neededRes/(playerInfos.comp.ca+10)*10);
+    } else if (res.cat === 'transfo') {
+        neededRes = Math.round(neededRes/(playerInfos.comp.tri+8)*8);
+    } else {
+        neededRes = Math.round(neededRes/(energyComp+10)*10);
     }
     return neededRes;
 };
