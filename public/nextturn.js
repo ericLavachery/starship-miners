@@ -92,8 +92,6 @@ function nextTurn() {
     } else {
         nextTurnEnd();
     }
-    // constructions et production : système d'ap également
-    // nextTurnEnd(); est lancé à la fin des nextAlien() !!!!!!!!!!!!!!!!!!!!
 };
 
 function nextTurnEnd() {
@@ -123,6 +121,11 @@ function nextTurnEnd() {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
+            if (batType.skills.includes('upkeep') || batType.skills.includes('prodres')) {
+                if (!bat.tags.includes('construction')) {
+                    upkeepAndProd(bat,batType);
+                }
+            }
             deFog(bat,batType);
             if (batType.skills.includes('transorbital') || batType.skills.includes('reserve')) {
                 landers.push(bat);
@@ -185,6 +188,9 @@ function nextTurnEnd() {
             if (batType.skills.includes('unload')) {
                 autoUnload(bat);
             }
+            // if (bat.tags.includes('prodres')) {
+            //     upkeepAndProd(bat,batType);
+            // }
             levelUp(bat);
             // Motorised noStuck
             noStuck = false;

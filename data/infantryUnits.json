@@ -859,20 +859,19 @@
             "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-poraz","lame-taser","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
-            "name":"Arbalète",
-            "cost":5,
+            "name":"Arbalète légère",
+            "cost":4,
             "range":1,
-            "elevation":1,
             "isBow":true,
-            "rof":6,
+            "rof":8,
             "accuracy":18,
-            "power":7,
+            "power":5,
             "aoe":"unit",
             "sound":"bow",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
-        "equip":["aucun","flash","camo"],
+        "equip":["aucun","flash","camo","arbalourde"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -985,7 +984,7 @@
             "sound":"bow",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
-        "equip":["aucun","flash","jetpack","camo"],
+        "equip":["aucun","flash","jetpack","camo","arbalourde"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -2129,7 +2128,7 @@
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
-        "equip":["aucun","flash","camo"],
+        "equip":["aucun","flash","camo","arbalourde"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,

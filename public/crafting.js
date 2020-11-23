@@ -71,7 +71,7 @@ function craftWindow() {
         let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'rarity'),'cat'),'cat');
         sortedResTypes.reverse();
         sortedResTypes.forEach(function(res) {
-            if (res.energie >= 1) {
+            if (res.energie > 0) {
                 dispoRes = getDispoRes(res.name);
                 neededRes = res.energie*energyFactor/10;
                 neededRes = cramPower(res,neededRes);
@@ -231,6 +231,68 @@ function enoughPlaceLander(number) {
         return theLanderId;
     } else {
         return firstLanderId;
+    }
+};
+
+function upkeepAndProd(bat,batType) {
+    console.log('UPKEEP');
+    console.log(batType.name);
+    let upkeepPaid = true;
+    let upkeepCheck = false;
+    if (bat.tags.includes('prodres')) {
+        upkeepCheck = true;
+    }
+    if (batType.skills.includes('upkeep') && !batType.skills.includes('prodres')) {
+        upkeepCheck = true;
+    }
+    if (upkeepCheck) {
+        if (batType.upkeep != undefined) {
+            Object.entries(batType.upkeep).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                let dispoRes = getDispoRes(key);
+                if (dispoRes < value) {
+                    upkeepPaid = false;
+                }
+            });
+            if (upkeepPaid) {
+                Object.entries(batType.upkeep).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    resSub(key,value);
+                    console.log('upkeep = '+key+':'+value);
+                });
+            } else {
+                upkeepNotPaid(bat,batType);
+            }
+        }
+        if (batType.prod != undefined) {
+            if (upkeepPaid) {
+                Object.entries(batType.prod).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    resAdd(key,value);
+                    console.log('prod = '+key+':'+value);
+                });
+            }
+        }
+    } else if (batType.skills.includes('prodres')) {
+        upkeepNotPaid(bat,batType);
+    }
+};
+
+function upkeepNotPaid(bat,batType) {
+    console.log('upkeep = non payée');
+    if (!batType.skills.includes('nodisable')) {
+        if (bat.tags.includes('construction')) {
+            let allTags = _.countBy(bat.tags);
+            if (allTags.construction === 1) {
+                bat.tags.push('construction');
+            }
+        } else {
+            bat.tags.push('construction');
+            bat.tags.push('construction');
+        }
     }
 };
 

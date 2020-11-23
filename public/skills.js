@@ -24,6 +24,18 @@ function fortification() {
     showBatInfos(selectedBat);
 };
 
+function prodToggle() {
+    selectMode();
+    console.log('PROD TOGGLE');
+    if (selectedBat.tags.includes('prodres')) {
+        tagDelete(selectedBat,'prodres');
+    } else {
+        selectedBat.tags.push('prodres');
+    }
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
 function gloireASatan() {
     console.log('GLOIRE A SATAN');
     if (!selectedBat.tags.includes('prayer')) {

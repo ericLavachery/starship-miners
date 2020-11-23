@@ -189,6 +189,13 @@
         "compReq":{"log":1}
     },
     {
+        "name": "arbalourde",
+        "skills": [],
+        "info": "Pénétration+ Puissance+",
+        "bldReq":["Atelier"],
+        "compReq":{"log":1}
+    },
+    {
         "name": "ranger",
         "skills": [],
         "info": "Déplacement+",

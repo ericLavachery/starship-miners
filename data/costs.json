@@ -3,7 +3,8 @@
         "id":126,
         "name":"Citoyens",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":[]
+        "bldReq":[],
+        "costs":{}
     },
     {
         "id":189,
@@ -1083,7 +1084,9 @@
     },
     {
         "id":124,
-        "name":"Derrick"
+        "name":"Derrick",
+        "upkeep":{"Hydrocarbure":12},
+        "prod":{"Fuel":6}
     },
     {
         "id":157,
@@ -1212,7 +1215,9 @@
     },
     {
         "id":172,
-        "name":"Générateur"
+        "name":"Générateur",
+        "upkeep":{"Fuel":3},
+        "prod":{"Energie":20}
     },
     {
         "id":208,

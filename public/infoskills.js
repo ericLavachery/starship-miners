@@ -685,6 +685,19 @@ function skillsInfos(bat,batType) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apReq+'</span></button><button type="button" title="Choisir les ressources" class="boutonGris skillButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>&nbsp; Extraction</'+balise+'></span>');
         }
     }
+    // ACTIVATION
+    if (batType.skills.includes('prodres')) {
+        balise = 'h1';
+        if (bat.tags.includes('prodres')) {
+            balise = 'h3';
+        }
+        apCost = 0;
+        if (!bat.tags.includes('prodres')) {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lancer la production de ressources" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Désactivé</'+balise+'></span>');
+        } else {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter la production de ressources" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Activé</'+balise+'></span>');
+        }
+    }
     // CHARGER RESSOURCES
     if (batType.skills.includes('fret')) {
         let resToLoad = isResToLoad(bat);

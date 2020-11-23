@@ -367,7 +367,7 @@
         "rarity": 7,
         "cat": "sky",
         "batch": 5,
-        "energie": 1
+        "energie": 0.5
     },
     {
         "id": 35,
@@ -387,7 +387,7 @@
         "rarity": 6,
         "cat": "blue-sky",
         "batch": 6,
-        "energie": 3
+        "energie": 2
     },
     {
         "id": 37,
@@ -397,7 +397,7 @@
         "rarity": 6,
         "cat": "sky",
         "batch": 4,
-        "energie": 2
+        "energie": 1
     },
     {
         "id": 38,
@@ -407,7 +407,7 @@
         "rarity": 6,
         "cat": "blue-sky",
         "batch": 6,
-        "energie": 2
+        "energie": 1.5
     },
     {
         "id": 39,
@@ -427,7 +427,7 @@
         "rarity": 8,
         "cat": "blue-sky",
         "batch": 6,
-        "energie": 4
+        "energie": 3
     },
     {
         "id": 42,
@@ -597,7 +597,7 @@
         "rarity": 5,
         "cat": "alien",
         "batch": 1,
-        "energie": 3
+        "energie": 2
     },
     {
         "id": 60,

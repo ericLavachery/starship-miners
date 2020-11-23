@@ -753,15 +753,30 @@ function weaponAdj(weapon,bat,wn) {
     if (bat.eq === 'gilet' && thisWeapon.maxAmmo < 99) {
         thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
     }
-    if (thisWeapon.name === 'Arc' && bat.eq === 'arcpoulie') {
-        thisWeapon.range = thisWeapon.range+1;
-        thisWeapon.power = thisWeapon.power+3;
-        thisWeapon.cost = thisWeapon.cost+1;
+    if (bat.eq === 'arcpoulie') {
+        if (thisWeapon.name.includes('Arc')) {
+            thisWeapon.name = 'Arc à poulies';
+            thisWeapon.range = 2;
+            thisWeapon.elevation = 1;
+            thisWeapon.power = 8;
+            thisWeapon.cost = 4;
+        }
     }
-    if (thisWeapon.name === 'Boutoir' && bat.eq === 'belier') {
-        thisWeapon.rof = Math.round(thisWeapon.rof*1.5);
-        thisWeapon.power = thisWeapon.power+4;
-        thisWeapon.accuracy = thisWeapon.accuracy+2;
+    if (bat.eq === 'arbalourde') {
+        if (thisWeapon.name.includes('Arbalète')) {
+            thisWeapon.name = 'Arbalète lourde';
+            thisWeapon.elevation = 1;
+            thisWeapon.power = 9;
+            thisWeapon.armors = 0.8;
+            thisWeapon.cost = 5;
+        }
+    }
+    if (bat.eq === 'belier') {
+        if (thisWeapon.name === 'Boutoir') {
+            thisWeapon.rof = Math.round(thisWeapon.rof*1.5);
+            thisWeapon.power = thisWeapon.power+4;
+            thisWeapon.accuracy = thisWeapon.accuracy+2;
+        }
     }
     // bonus ammo
     let myAmmo = bat.ammo;

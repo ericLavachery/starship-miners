@@ -125,6 +125,9 @@ function batInfos(bat,pop) {
         $('#'+bodyPlace).append('<span class="paramName">Attraction</span><span class="paramIcon"></span><span class="paramValue">'+batFuzz+'</span><br>');
     }
     // TAGS
+    if (bat.tags.includes('construction')) {
+        $('#'+bodyPlace).append('<span class="paramName or">Opérationel</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
+    }
     if (playerInfos.bldList.includes('Champ de force')) {
         if (bat.type === 'Champ de force') {
             let endFF = bat.creaTurn+25;
