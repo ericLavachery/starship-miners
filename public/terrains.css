@@ -115,217 +115,278 @@
 }
 .terM1 {
     background-color: #291313;
-    background-image: url(/static/img/wtiles/montagnes.png);
+    background-image: url(/static/img/sntiles/M_001.png);
+    background-position: center;
 }
 .terM2 {
     background-color: #291313;
-    background-image: url(/static/img/wtiles/montagnes2.png);
+    background-image: url(/static/img/sntiles/M_002.png);
+    background-position: center;
 }
 .terM3 {
     background-color: #291313;
-    background-image: url(/static/img/wtiles/montagnes3.png);
+    background-image: url(/static/img/sntiles/M_003.png);
+    background-position: center;
 }
 .terM4 {
     background-color: #291313;
-    background-image: url(/static/img/wtiles/montbis.png);
+    background-image: url(/static/img/sntiles/M_004.png);
+    background-position: center;
 }
 .terM5 {
     background-color: #291313;
-    background-image: url(/static/img/wtiles/montbis2.png);
+    background-image: url(/static/img/sntiles/M_005.png);
+    background-position: center;
 }
 .terM6 {
     background-color: #291313;
-    background-image: url(/static/img/wtiles/montbis3.png);
+    background-image: url(/static/img/sntiles/M_006.png);
+    background-position: center;
 }
 .terH1 {
     background-color: #4d3b15;
-    background-image: url(/static/img/wtiles/collines.png);
+    background-image: url(/static/img/sntiles/H_001.png);
+    background-position: center;
 }
 .terH2 {
     background-color: #4d3b15;
-    background-image: url(/static/img/wtiles/collines2.png);
+    background-image: url(/static/img/sntiles/H_002.png);
+    background-position: center;
 }
 .terH3 {
     background-color: #4d3b15;
-    background-image: url(/static/img/wtiles/collines3.png);
+    background-image: url(/static/img/sntiles/H_003.png);
+    background-position: center;
 }
 .terH4 {
     background-color: #4d3b15;
-    background-image: url(/static/img/wtiles/collinesvertes.png);
+    background-image: url(/static/img/sntiles/H_004.png);
+    background-position: center;
 }
 .terH5 {
     background-color: #4d3b15;
-    background-image: url(/static/img/wtiles/collinesvertes2.png);
+    background-image: url(/static/img/sntiles/H_005.png);
+    background-position: center;
 }
 .terH6 {
     background-color: #4d3b15;
-    background-image: url(/static/img/wtiles/collinesvertes3.png);
+    background-image: url(/static/img/sntiles/H_006.png);
+    background-position: center;
 }
 .terP1 {
     background-color: #a7ac77;
-    background-image: url(/static/img/wtiles/plaine.png);
+    background-image: url(/static/img/sntiles/P_001.png);
+    background-position: center;
 }
 .terP2 {
     background-color: #a7ac77;
-    background-image: url(/static/img/wtiles/plaine2.png);
+    background-image: url(/static/img/sntiles/P_002.png);
+    background-position: center;
 }
 .terP3 {
     background-color: #a7ac77;
-    background-image: url(/static/img/wtiles/plaine3.png);
+    background-image: url(/static/img/sntiles/P_003.png);
+    background-position: center;
 }
 .terP4 {
     background-color: #a7ac77;
-    background-image: url(/static/img/wtiles/plainesable.png);
+    background-image: url(/static/img/sntiles/P_004.png);
+    background-position: center;
 }
 .terP5 {
     background-color: #a7ac77;
-    background-image: url(/static/img/wtiles/plainesable2.png);
+    background-image: url(/static/img/sntiles/P_005.png);
+    background-position: center;
 }
 .terP6 {
     background-color: #a7ac77;
-    background-image: url(/static/img/wtiles/plainearbre2.png);
+    background-image: url(/static/img/sntiles/P_006.png);
+    background-position: center;
 }
 .terG1 {
     background-color: #9bb989;
-    background-image: url(/static/img/wtiles/green.png);
+    background-image: url(/static/img/sntiles/G_001.png);
+    background-position: center;
 }
 .terG2 {
     background-color: #9bb989;
-    background-image: url(/static/img/wtiles/paquibis.png);
+    background-image: url(/static/img/sntiles/G_002.png);
+    background-position: center;
 }
 .terG3 {
     background-color: #9bb989;
-    background-image: url(/static/img/wtiles/green3.png);
+    background-image: url(/static/img/sntiles/G_003.png);
+    background-position: center;
 }
 .terG4 {
     background-color: #9bb989;
-    background-image: url(/static/img/wtiles/paquis.png);
+    background-image: url(/static/img/sntiles/G_004.png);
+    background-position: center;
 }
 .terG5 {
     background-color: #9bb989;
-    background-image: url(/static/img/wtiles/paquibis3.png);
+    background-image: url(/static/img/sntiles/G_005.png);
+    background-position: center;
 }
 .terG6 {
     background-color: #9bb989;
-    background-image: url(/static/img/wtiles/paquis3.png);
+    background-image: url(/static/img/sntiles/G_006.png);
+    background-position: center;
 }
 .terB1 {
     background-color: #597d43;
-    background-image: url(/static/img/wtiles/maquis.png);
+    background-image: url(/static/img/sntiles/B_001.png);
+    background-position: center;
 }
 .terB2 {
     background-color: #597d43;
-    background-image: url(/static/img/wtiles/maquis2.png);
+    background-image: url(/static/img/sntiles/B_002.png);
+    background-position: center;
 }
 .terB3 {
     background-color: #597d43;
-    background-image: url(/static/img/wtiles/maquis3.png);
+    background-image: url(/static/img/sntiles/B_003.png);
+    background-position: center;
 }
 .terB4 {
     background-color: #597d43;
-    background-image: url(/static/img/wtiles/mixvertclair.png);
+    background-image: url(/static/img/sntiles/B_004.png);
+    background-position: center;
 }
 .terB5 {
     background-color: #597d43;
-    background-image: url(/static/img/wtiles/mixvertclair2.png);
+    background-image: url(/static/img/sntiles/B_005.png);
+    background-position: center;
 }
 .terB6 {
     background-color: #597d43;
-    background-image: url(/static/img/wtiles/mixvertclair3.png);
+    background-image: url(/static/img/sntiles/B_006.png);
+    background-position: center;
 }
 .terF1 {
     background-color: #22460c;
-    background-image: url(/static/img/wtiles/foretdense.png);
+    background-image: url(/static/img/sntiles/F_001.png);
+    background-position: center;
 }
 .terF2 {
     background-color: #22460c;
-    background-image: url(/static/img/wtiles/foretdense2.png);
+    background-image: url(/static/img/sntiles/F_002.png);
+    background-position: center;
 }
 .terF3 {
     background-color: #22460c;
-    background-image: url(/static/img/wtiles/foretdense3.png);
+    background-image: url(/static/img/sntiles/F_003.png);
+    background-position: center;
 }
 .terF4 {
     background-color: #22460c;
-    background-image: url(/static/img/wtiles/mixvert.png);
+    background-image: url(/static/img/sntiles/F_004.png);
+    background-position: center;
 }
 .terF5 {
     background-color: #22460c;
-    background-image: url(/static/img/wtiles/mixvert2.png);
+    background-image: url(/static/img/sntiles/F_005.png);
+    background-position: center;
 }
 .terF6 {
     background-color: #22460c;
-    background-image: url(/static/img/wtiles/mixvert3.png);
+    background-image: url(/static/img/sntiles/F_006.png);
+    background-position: center;
 }
 .terS1 {
     background-color: #5b848c;
-    background-image: url(/static/img/wtiles/presale.png);
+    background-image: url(/static/img/sntiles/S_001.png);
+    background-position: center;
 }
 .terS2 {
     background-color: #5b848c;
-    background-image: url(/static/img/wtiles/presale2.png);
+    background-image: url(/static/img/sntiles/S_002.png);
+    background-position: center;
 }
 .terS3 {
     background-color: #5b848c;
-    background-image: url(/static/img/wtiles/presale3.png);
+    background-image: url(/static/img/sntiles/S_003.png);
+    background-position: center;
 }
 .terS4 {
     background-color: #5b848c;
-    background-image: url(/static/img/wtiles/fagnes.png);
+    background-image: url(/static/img/sntiles/S_004.png);
+    background-position: center;
 }
 .terS5 {
     background-color: #5b848c;
-    background-image: url(/static/img/wtiles/fagnes2.png);
+    background-image: url(/static/img/sntiles/S_005.png);
+    background-position: center;
 }
 .terS6 {
     background-color: #5b848c;
-    background-image: url(/static/img/wtiles/fagnes3.png);
+    background-image: url(/static/img/sntiles/S_006.png);
+    background-position: center;
 }
 .terW1 {
     background-color: #3697ac;
-    background-image: url(/static/img/wtiles/etang.png);
+    background-image: url(/static/img/sntiles/W_001.png);
+    background-position: center;
 }
 .terW2 {
     background-color: #3697ac;
-    background-image: url(/static/img/wtiles/etang2.png);
+    background-image: url(/static/img/sntiles/W_002.png);
+    background-position: center;
 }
 .terW3 {
     background-color: #3697ac;
-    background-image: url(/static/img/wtiles/etang3.png);
+    background-image: url(/static/img/sntiles/W_003.png);
+    background-position: center;
 }
 .terW4 {
     background-color: #3697ac;
-    background-image: url(/static/img/wtiles/etangveg.png);
+    background-image: url(/static/img/sntiles/W_004.png);
+    background-position: center;
 }
 .terW5 {
     background-color: #3697ac;
-    background-image: url(/static/img/wtiles/etangveg2.png);
+    background-image: url(/static/img/sntiles/W_005.png);
+    background-position: center;
 }
 .terW6 {
     background-color: #3697ac;
-    background-image: url(/static/img/wtiles/etangveg3.png);
+    background-image: url(/static/img/sntiles/W_006.png);
+    background-position: center;
 }
 .terR1 {
     background-color: #3697ac;
-    background-image: url(/static/img/wtiles/fleuve.png);
+    background-image: url(/static/img/sntiles/R_001.png);
+    background-position: center;
 }
 .terR2 {
     background-color: #3697ac;
-    background-image: url(/static/img/wtiles/fleuve2.png);
+    background-image: url(/static/img/sntiles/R_002.png);
+    background-position: center;
 }
 .terR3 {
     background-color: #3697ac;
-    background-image: url(/static/img/wtiles/fleuve3.png);
+    background-image: url(/static/img/sntiles/R_003.png);
+    background-position: center;
 }
 .terR4 {
     background-color: #3697ac;
-    background-image: url(/static/img/wtiles/fletocs.png);
+    background-image: url(/static/img/sntiles/R_004.png);
+    background-position: center;
 }
 .terR5 {
     background-color: #3697ac;
-    background-image: url(/static/img/wtiles/fletocs2.png);
+    background-image: url(/static/img/sntiles/R_005.png);
+    background-position: center;
 }
 .terR6 {
     background-color: #3697ac;
-    background-image: url(/static/img/wtiles/fletocs3.png);
+    background-image: url(/static/img/sntiles/R_006.png);
+    background-position: center;
+}
+.terPic {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    display: inline-block;
+    z-index: 1;
 }

@@ -45,6 +45,8 @@ function createMap(size) {
     let thisTerrain = "P";
     let lastSeed = 3;
     let aboveSeed = 0;
+    let diag1Seed = 0;
+    let diag2Seed = 0;
     while (i < size*size) {
         newTile = {};
         newTile.id = i;
@@ -62,7 +64,17 @@ function createMap(size) {
         } else {
             aboveSeed = 0;
         }
-        newTile.seed = nextSeed(thisTerrain,lastSeed,aboveSeed);
+        if (i > mapSize+1) {
+            diag1Seed = zone[i-mapSize-1].seed;
+        } else {
+            diag1Seed = 0;
+        }
+        if (i > mapSize-1) {
+            diag2Seed = zone[i-mapSize+1].seed;
+        } else {
+            diag2Seed = 0;
+        }
+        newTile.seed = nextSeed(thisTerrain,lastSeed,aboveSeed,diag1Seed,diag2Seed);
         zone.push(newTile);
         lastSeed = newTile.seed;
         i++;
@@ -75,57 +87,34 @@ function createMap(size) {
     // console.log(zone);
 };
 
-function nextSeed(ter,ls,as) {
+function nextSeed(ter,ls,as,d1s,d2s) {
     let newSeed = 1;
-    if (ter == "M") {
+    if (ter != "R") {
         newSeed = rand.rand(1,6);
-        return rotateSeed(newSeed,ls,as);
-    } else if (ter != "R") {
-        if (rand.rand(1,specialSeed) == 1) {
-            newSeed = rand.rand(4,6);
-            return rotateSeed(newSeed,ls,as);
-        } else {
-            newSeed = rand.rand(1,3);
-            return rotateSeed(newSeed,ls,as);
-        }
+        return rotateSeed(newSeed,ls,as,d1s,d2s);
     } else {
         if (rand.rand(1,specialSeed*2) == 1) {
             newSeed = rand.rand(4,6);
-            return rotateSeed(newSeed,ls,as);
+            return rotateSeed(newSeed,ls,as,d1s,d2s);
         } else {
             newSeed = rand.rand(1,3);
-            return rotateSeed(newSeed,ls,as);
+            return rotateSeed(newSeed,ls,as,d1s,d2s);
         }
     }
 };
 
-function rotateSeed(ns, ls, as) {
-    let goodSeed = 1;
-    if (ns == ls) {
-        if (ns == 1) {
-            goodSeed = 3;
-            if (goodSeed == as) {
-                goodSeed = 2;
-            }
-        } else {
-            goodSeed = ns-1;
-            if (goodSeed == as) {
-                if (goodSeed == 1) {
-                    goodSeed = 3;
-                } else {
-                    goodSeed = goodSeed-1;
-                }
+function rotateSeed(ns,ls,as,d1s,d2s) {
+    let goodSeed = ns;
+    let i = 0;
+    while (i <= 6) {
+        if (goodSeed === ls || goodSeed === as || goodSeed === d1s || goodSeed === d2s) {
+            goodSeed = goodSeed-1;
+            if (goodSeed === 0) {
+                goodSeed = 6;
             }
         }
-    } else {
-        goodSeed = ns;
-        if (goodSeed == as) {
-            if (goodSeed == 1) {
-                goodSeed = 3;
-            } else {
-                goodSeed = goodSeed-1;
-            }
-        }
+        if (i > 7) {break;}
+        i++
     }
     return goodSeed;
 };

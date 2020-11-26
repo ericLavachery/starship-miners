@@ -604,7 +604,7 @@
             "elevation":1,
             "rof":12,
             "accuracy":22,
-            "power":12,
+            "power":15,
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],

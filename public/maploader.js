@@ -22,6 +22,7 @@ function showMap(wmap,justMoved) {
     let terclass = '';
     let tertitle = '';
     let resHere = '';
+    let tPic = 'P_001';
     allZoneRes = [];
     let visMap = _.filter(wmap, function(tile) {
         return (tile.x >= minX && tile.x <= maxX && tile.y >= minY && tile.y <= maxY);
@@ -38,7 +39,8 @@ function showMap(wmap,justMoved) {
         } else {
             terclass = 'ter'+tile.terrain+tile.seed;
         }
-        $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')" title="#'+tile.id+'"><span class="bigIcon" id="b'+tile.id+'">'+resHere+'</span><br></div>');
+        tPic = tile.terrain+'_00'+tile.seed;
+        $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')" title="#'+tile.id+'"><span class="terPic"><img src="/static/img/sntiles/'+tPic+'.png"></span><span class="bigIcon" id="b'+tile.id+'">'+resHere+'</span><br></div>');
         bataillons.forEach(function(bat) {
             if (bat.tileId === tile.id && bat.loc === "zone") {
                 if (bat.tileId === selectedBat.tileId) {

@@ -130,7 +130,7 @@
     {
         "id":2,
         "result":"Batteries",
-        "cost":{"Phosphore":2,"Cobalt":2,"Titane":2},
+        "cost":{"Phosphore":1,"Cobalt":1,"Titane":1},
         "compReq":{},
         "bldReq":["Atelier"],
         "batch": 1
@@ -138,7 +138,7 @@
     {
         "id":19,
         "result":"Batteries",
-        "cost":{"Carbone":2,"Zinc":2,"Nickel":2},
+        "cost":{"Carbone":1,"Zinc":1,"Nickel":1},
         "compReq":{"energ":2},
         "bldReq":["Chaîne de montage"],
         "batch": 1
@@ -149,7 +149,7 @@
         "cost":{"Carbone":2,"Azote":3,"Hydrogène":3},
         "compReq":{"energ":4,"ind":2},
         "bldReq":["Usine"],
-        "batch": 2
+        "batch": 4
     },
     {
         "id":3,
@@ -437,6 +437,14 @@
         "cost":{"Slime":2,"Végétaux":5},
         "compReq":{"tri":3,"ca":3},
         "bldReq":["Recyclab"],
+        "batch": 1
+    },
+    {
+        "id":55,
+        "result":"Huile",
+        "cost":{"Hydrocarbure":3},
+        "compReq":{"tri":1},
+        "bldReq":["Atelier"],
         "batch": 1
     },
     {
