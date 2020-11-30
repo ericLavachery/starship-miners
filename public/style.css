@@ -306,6 +306,12 @@ h5 {
     margin-top: -3px;
     z-index: -6;
 }
+.selTile {
+    position: absolute;
+    margin-left: -36px;
+    margin-top: -1px;
+    z-index: 2;
+}
 .inficon {
     margin-left: 2px;
     color: #ffffff;

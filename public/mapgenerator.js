@@ -89,28 +89,40 @@ function createMap(size) {
 
 function nextSeed(ter,ls,as,d1s,d2s) {
     let newSeed = 1;
-    if (ter != "R") {
+    if (ter === 'M') {
+        newSeed = rand.rand(1,12);
+        return rotateSeed(newSeed,ls,as,d1s,d2s,ter);
+    } else if (ter === 'H') {
+        newSeed = rand.rand(1,12);
+        return rotateSeed(newSeed,ls,as,d1s,d2s,ter);
+    } else if (ter != 'R') {
         newSeed = rand.rand(1,6);
-        return rotateSeed(newSeed,ls,as,d1s,d2s);
+        return rotateSeed(newSeed,ls,as,d1s,d2s,ter);
     } else {
         if (rand.rand(1,specialSeed*2) == 1) {
             newSeed = rand.rand(4,6);
-            return rotateSeed(newSeed,ls,as,d1s,d2s);
+            return rotateSeed(newSeed,ls,as,d1s,d2s,ter);
         } else {
             newSeed = rand.rand(1,3);
-            return rotateSeed(newSeed,ls,as,d1s,d2s);
+            return rotateSeed(newSeed,ls,as,d1s,d2s,ter);
         }
     }
 };
 
-function rotateSeed(ns,ls,as,d1s,d2s) {
+function rotateSeed(ns,ls,as,d1s,d2s,ter) {
     let goodSeed = ns;
     let i = 0;
     while (i <= 6) {
         if (goodSeed === ls || goodSeed === as || goodSeed === d1s || goodSeed === d2s) {
             goodSeed = goodSeed-1;
             if (goodSeed === 0) {
-                goodSeed = 6;
+                if (ter === 'H') {
+                    goodSeed = 12;
+                } else if (ter === 'M') {
+                    goodSeed = 12;
+                } else {
+                    goodSeed = 6;
+                }
             }
         }
         if (i > 7) {break;}
@@ -122,10 +134,40 @@ function rotateSeed(ns,ls,as,d1s,d2s) {
 function filterMap(map) {
     // change map
     let mapIndex;
+    let newTerrain;
+    let swap = true;
     map.forEach(function(tile) {
-        if (tile.terrain != filterBase[tile.terrain] && rand.rand(1,filterEffect) > 1) {
-            mapIndex = zone.findIndex((obj => obj.id == tile.id));
-            zone[mapIndex].terrain = filterBase[tile.terrain];
+        newTerrain = filterBase[tile.terrain];
+        if (tile.terrain != newTerrain) {
+            if (newTerrain === 'H' || newTerrain === 'M') {
+                if (rand.rand(1,filterEffect) > 1) {
+                    if (tile.terrain === 'H' || tile.terrain === 'M') {
+                        tile.terrain = newTerrain;
+                    } else {
+                        tile.terrain = newTerrain;
+                        if (swap) {
+                            tile.seed = tile.seed+6;
+                        }
+                    }
+                }
+            } else {
+                if (tile.terrain === 'H' || tile.terrain === 'M') {
+                    if (tile.seed <= 6) {
+                        tile.terrain = newTerrain;
+                    }
+                } else {
+                    if (rand.rand(1,filterEffect) > 1) {
+                        tile.terrain = newTerrain;
+                    }
+                }
+            }
+            if (swap) {
+                swap = false;
+            } else {
+                swap = true;
+            }
+            // mapIndex = zone.findIndex((obj => obj.id == tile.id));
+            // zone[mapIndex].terrain = newTerrain;
         }
     });
 };

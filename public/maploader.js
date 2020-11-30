@@ -39,7 +39,11 @@ function showMap(wmap,justMoved) {
         } else {
             terclass = 'ter'+tile.terrain+tile.seed;
         }
-        tPic = tile.terrain+'_00'+tile.seed;
+        if (tile.seed >= 10) {
+            tPic = tile.terrain+'_0'+tile.seed;
+        } else {
+            tPic = tile.terrain+'_00'+tile.seed;
+        }
         $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')" title="#'+tile.id+'"><span class="terPic"><img src="/static/img/sntiles/'+tPic+'.png"></span><span class="bigIcon" id="b'+tile.id+'">'+resHere+'</span><br></div>');
         bataillons.forEach(function(bat) {
             if (bat.tileId === tile.id && bat.loc === "zone") {

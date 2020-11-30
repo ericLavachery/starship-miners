@@ -175,7 +175,8 @@ function tileUnselect() {
         if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
             terclass = 'terFog';
         }
-        $('#'+tile.id).removeClass('terUnderBldSel').removeClass('terUnderSel').addClass(terclass);
+        $('.selTile').remove();
+        // $('#'+tile.id).removeClass('terUnderBldSel').removeClass('terUnderSel').addClass(terclass);
     }
 };
 
@@ -186,20 +187,25 @@ function tileSelect(bat) {
     if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
         terclass = 'terFog';
     }
-    $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');
+    if (mode === 'move') {
+        $('#'+tile.id).append('<span class="selTile"><img src="/static/img/moving.png"></span>');
+    } else {
+        $('#'+tile.id).append('<span class="selTile"><img src="/static/img/selected.png"></span>');
+    }
+    // $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');
 };
 
 function tileUntarget() {
-    let terclass;
-    zone.forEach(function(tile) {
-        if ($('#'+tile.id).hasClass("terTarget")) {
-            terclass = 'ter'+tile.terrain+tile.seed;
-            if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
-                terclass = 'terFog';
-            }
-            $('#'+tile.id).removeClass('terTarget').addClass(terclass);
-        }
-    });
+    // let terclass;
+    // zone.forEach(function(tile) {
+    //     if ($('#'+tile.id).hasClass("terTarget")) {
+    //         terclass = 'ter'+tile.terrain+tile.seed;
+    //         if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
+    //             terclass = 'terFog';
+    //         }
+    //         $('#'+tile.id).removeClass('terTarget').addClass(terclass);
+    //     }
+    // });
 };
 
 function tileTarget(bat) {
@@ -209,5 +215,6 @@ function tileTarget(bat) {
     if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
         terclass = 'terFog';
     }
-    $('#'+tile.id).removeClass(terclass).addClass('terTarget');
+    $('#'+tile.id).append('<span class="selTile"><img src="/static/img/targeted.png"></span>');
+    // $('#'+tile.id).removeClass(terclass).addClass('terTarget');
 };

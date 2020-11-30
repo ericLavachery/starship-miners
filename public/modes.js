@@ -4,6 +4,9 @@ function selectMode() {
     $('#mode').removeClass('modeMove').removeClass('modeFire').addClass('modeSelect');
     $('#mode').empty().append('Mode Sélection');
     cursorSwitch('.','grid-item','insp');
+    if (selectedBat.id >= 0) {
+        tileSelect(selectedBat);
+    }
     selectedWeap = {};
 };
 
@@ -13,6 +16,10 @@ function moveMode() {
     $('#mode').removeClass('modeSelect').removeClass('modeFire').addClass('modeMove');
     $('#mode').empty().append('Mode Mouvement');
     cursorSwitch('.','grid-item','pointer');
+    if (selectedBat.id >= 0) {
+        $('.selTile').remove();
+        tileSelect(selectedBat);
+    }
     selectedWeap = {};
 };
 
