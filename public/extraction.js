@@ -101,16 +101,6 @@ function getTerrainRes(terrain,tile) {
     } else if (terrain.veg >= 1) {
         srs.Végétaux = Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*25;
     }
-    // Huile
-    if (terrain.name === 'F' && tile.seed === 5) {
-        srs.Huile = 65;
-    } else if (terrain.name === 'B' && tile.seed === 6) {
-        srs.Huile = 35;
-    } else if (terrain.name === 'S' && tile.seed === 6) {
-        srs.Huile = 180;
-    } else if (terrain.name === 'S' && tile.seed >= 4) {
-        srs.Huile = 50;
-    }
     // Eau
     if (terrain.name === 'R') {
         srs.Eau = 1000;
@@ -119,8 +109,6 @@ function getTerrainRes(terrain,tile) {
     } else if (terrain.name === 'S') {
         srs.Eau = 150;
     }
-    // Air
-    srs.Air = 500;
     return srs;
 };
 
@@ -466,6 +454,7 @@ function loadRes() {
     let batType;
     let distance;
     let resLoad;
+    let resOK;
     if (restSpace >= 1) {
         bataillons.forEach(function(bat) {
             if (bat.id != selectedBat.id) {
@@ -484,15 +473,23 @@ function loadRes() {
                                 let key = entry[0];
                                 let value = entry[1];
                                 res = getResByName(key);
-                                if (Math.round(restSpace*1.2) >= value) {
-                                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle"></i></span>');
-                                } else {
-                                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-times-circle or"></i></span>');
+                                resOK = true;
+                                if (key === 'Energie') {
+                                    if (!selectedBatType.skills.includes('accu')) {
+                                        resOK = false;
+                                    }
                                 }
-                                if (value > 50 && Math.round(restSpace*1.2) >= 50) {
-                                    $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span> | <span class="klik" onclick="resSelectLoad('+value+',50,'+res.id+','+bat.id+')" title="Charger 50 '+res.name+'">50</span></span><br>');
-                                } else {
-                                    $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span></span><br>');
+                                if (resOK) {
+                                    if (Math.round(restSpace*1.2) >= value) {
+                                        $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle"></i></span>');
+                                    } else {
+                                        $('#conUnitList').append('<span class="constIcon"><i class="far fa-times-circle or"></i></span>');
+                                    }
+                                    if (value > 50 && Math.round(restSpace*1.2) >= 50) {
+                                        $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span> | <span class="klik" onclick="resSelectLoad('+value+',50,'+res.id+','+bat.id+')" title="Charger 50 '+res.name+'">50</span></span><br>');
+                                    } else {
+                                        $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span></span><br>');
+                                    }
                                 }
                             });
                         }

@@ -10,505 +10,589 @@
         "id":189,
         "name":"Gardes",
         "levels":{"rednecks":1,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":1,"detruas":99,"brasier":99},
-        "bldReq":[]
+        "bldReq":[],
+        "costs":{"Fer":12}
     },
     {
         "id":190,
         "name":"Guetteurs",
         "levels":{"rednecks":99,"blades":99,"bulbos":1,"drogmulojs":1,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":[]
+        "bldReq":[],
+        "costs":{"Fer":12,"Scrap":12}
     },
     {
         "id":191,
         "name":"Sentinelles",
         "levels":{"rednecks":99,"blades":1,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":[]
+        "bldReq":[],
+        "costs":{"Fer":24}
     },
     {
         "id":213,
         "name":"Pompistes",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":1},
-        "bldReq":[]
+        "bldReq":[],
+        "costs":{"Fer":12,"Bois":12,"Huile":6}
     },
     {
         "id":214,
         "name":"Artilleurs",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":1,"brasier":99},
-        "bldReq":[]
+        "bldReq":[],
+        "costs":{"Fer":12,"Bois":12}
     },
     {
         "id":0,
         "name":"Rednecks",
         "levels":{"rednecks":2,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "costs":{"Fer":120,"Scrap":120,"Aluminium":60,"Végétaux":20,"Chlore":10}
     },
     {
         "id":4,
         "name":"Vapos",
         "levels":{"rednecks":99,"blades":99,"bulbos":9,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Arsenal","Centre de recherches"]
+        "bldReq":["Arsenal","Centre de recherches"],
+        "costs":{"Fer":60,"Scrap":60,"Bois":30,"Aluminium":90,"Plomb":60,"Titane":60,"Bore":60,"Batteries":60,"Electros":60,"Mercure":30,"Hydrogène":30,"Végétaux":20,"Chlore":10}
     },
     {
         "id":6,
         "name":"Toubibs",
         "levels":{"rednecks":99,"blades":99,"bulbos":1,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Infirmerie"]
+        "bldReq":["Infirmerie"],
+        "costs":{"Zinc":40,"Chlore":40,"Titane":10,"Fer":10,"Scrap":10,"Silicium":18,"Huile":58}
     },
     {
         "id":148,
         "name":"Infirmiers",
         "levels":{"rednecks":2,"blades":2,"bulbos":2,"drogmulojs":2,"tiradores":2,"detruas":2,"brasier":2},
-        "bldReq":[]
+        "bldReq":[],
+        "costs":{"Zinc":25,"Chlore":25,"Titane":6,"Fer":12,"Scrap":12,"Silicium":12,"Huile":37}
     },
     {
         "id":154,
         "name":"Adeptes",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":4},
-        "bldReq":["Derrick","Infirmerie"]
+        "bldReq":["Derrick","Infirmerie"],
+        "costs":{"Zinc":25,"Chlore":25,"Titane":6,"Fer":40,"Scrap":20,"Bois":20,"Silicium":12,"Huile":47}
     },
     {
         "id":155,
         "name":"Gurus",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":7},
-        "bldReq":["Derrick","Poste radio","Infirmerie"]
+        "bldReq":["Derrick","Poste radio","Infirmerie"],
+        "costs":{"Zinc":28,"Chlore":28,"Titane":7,"Fer":20,"Scrap":60,"Silicium":18,"Huile":75,"Or":20,"Batteries":3,"Electros":3,"Fuel":60}
     },
     {
         "id":21,
         "name":"Shooters",
         "levels":{"rednecks":99,"blades":99,"bulbos":2,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "costs":{"Fer":54,"Scrap":54,"Carbone":54,"Silicium":27,"Végétaux":128,"Chlore":10}
     },
     {
         "id":66,
         "name":"Cazadores",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":4,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Bar"]
+        "bldReq":["Armurerie","Bar"],
+        "costs":{"Fer":90,"Scrap":60,"Carbone":30,"Silicium":30,"Plomb":30,"Soufre":30,"Végétaux":80,"Chlore":10}
     },
     {
         "id":151,
         "name":"Stalkers",
         "levels":{"rednecks":6,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Bar"]
+        "bldReq":["Armurerie","Bar"],
+        "costs":{"Fer":150,"Scrap":60,"Carbone":30,"Silicium":30,"Plomb":30,"Soufre":30,"Végétaux":170,"Chlore":10}
     },
     {
         "id":144,
         "name":"Bandidos",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":6,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Prisons"]
+        "bldReq":["Armurerie","Prisons"],
+        "costs":{"Fer":81,"Soufre":27,"Plomb":27,"Aluminium":54,"Carbone":54,"Scrap":54,"Végétaux":135}
     },
     {
         "id":13,
         "name":"Warriors",
         "levels":{"rednecks":99,"blades":1,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":[]
+        "bldReq":[],
+        "costs":{"Fer":64,"Scrap":64,"Bois":128,"Végétaux":148,"Chlore":10}
     },
     {
         "id":14,
         "name":"Amazones",
         "levels":{"rednecks":99,"blades":2,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":[]
+        "bldReq":[],
+        "costs":{"Fer":98,"Scrap":56,"Bois":112,"Végétaux":160,"Chlore":10}
     },
     {
         "id":143,
         "name":"Piquiers",
         "levels":{"rednecks":99,"blades":3,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":[]
+        "bldReq":[],
+        "costs":{"Fer":90,"Carbone":60,"Bois":120,"Végétaux":140,"Chlore":10}
     },
     {
         "id":15,
         "name":"Toxs",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":1,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":[]
+        "bldReq":[],
+        "costs":{"Fer":120,"Scrap":60,"Bois":60,"Végétaux":60}
     },
     {
         "id":46,
-        "name":"Toxguns",
+        "name":"Blastoxs",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":4,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Bar"]
+        "bldReq":["Armurerie","Bar"],
+        "costs":{"Fer":150,"Scrap":120,"Plomb":60,"Bois":30,"Tungstène":15,"Aluminium":60,"Batteries":30}
     },
     {
         "id":16,
         "name":"Kamiclones",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":3,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Laboratoire","Atelier"]
+        "bldReq":["Laboratoire","Atelier"],
+        "costs":{"Fer":30,"Explosifs":180,"Creatite":150,"Huile":30,"Mercure":30,"Végétaux":30}
     },
     {
         "id":17,
         "name":"Gunners",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":1,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "costs":{"Fer":120,"Scrap":120,"Plomb":60,"Carbone":60,"Végétaux":20,"Chlore":10}
     },
     {
         "id":18,
         "name":"Pistoleros",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":2,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "costs":{"Fer":96,"Scrap":126,"Végétaux":83,"Soufre":32,"Plomb":32,"Chlore":10}
     },
     {
         "id":20,
         "name":"Barmans",
         "levels":{"rednecks":1,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Bar"]
+        "bldReq":["Bar"],
+        "costs":{"Fer":56,"Scrap":56,"Végétaux":20,"Chlore":10}
     },
     {
         "id":19,
         "name":"Douilles",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":3,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "costs":{"Fer":128,"Scrap":32,"Carbone":32,"Aluminium":64,"Tungstène":32,"Végétaux":20,"Chlore":10}
     },
     {
         "id":146,
         "name":"Miniguns",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":8,"detruas":99,"brasier":99},
-        "bldReq":["Arsenal"]
+        "bldReq":["Arsenal"],
+        "costs":{"Fer":128,"Scrap":32,"Carbone":32,"Aluminium":64,"Titane":64,"Végétaux":20,"Chlore":10}
     },
     {
         "id":25,
         "name":"Rainmans",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":4,"brasier":99},
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "costs":{"Fer":60,"Scrap":72,"Aluminium":96,"Tungstène":24}
     },
     {
         "id":24,
         "name":"Bombastiks",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":2,"brasier":99},
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "costs":{"Fer":96,"Scrap":96,"Plomb":48,"Aluminium":96,"Tungstène":48}
     },
     {
         "id":26,
         "name":"Hot girls",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":3},
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "costs":{"Fer":112,"Scrap":224,"Plomb":56,"Aluminium":112,"Tungstène":56,"Végétaux":20,"Chlore":10}
     },
     {
         "id":23,
         "name":"Lucky bastards",
         "levels":{"rednecks":9,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Centre d'entraînement","Armurerie","Cabines"]
+        "bldReq":["Centre d'entraînement","Armurerie","Cabines"],
+        "costs":{"Fer":180,"Scrap":60,"Carbone":60,"Aluminium":60,"Soufre":120,"Plomb":120,"Végétaux":80,"Huile":60,"Or":60,"Chlore":10}
     },
     {
         "id":27,
         "name":"Mulets",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
-        "bldReq":[]
+        "bldReq":[],
+        "costs":{"Fer":24,"Scrap":24}
     },
     {
         "id":28,
         "name":"Mineurs",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
-        "bldReq":[]
+        "bldReq":[],
+        "costs":{"Fer":90,"Scrap":36,"Carbone":18,"Bois":36,"Batteries":18,"Végétaux":20,"Chlore":10}
     },
     {
         "id":112,
         "name":"Sapeurs",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
-        "bldReq":[]
+        "bldReq":[],
+        "costs":{"Fer":90,"Scrap":60,"Bois":60,"Aluminium":60,"Végétaux":140,"Chlore":10}
     },
     {
         "id":153,
         "name":"Lovushkas",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":3,"brasier":99},
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "costs":{"Fer":180,"Scrap":72,"Bois":36,"Tungstène":18,"Végétaux":144}
     },
     {
         "id":35,
         "name":"Dealers",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":2,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Cabines"]
+        "bldReq":["Cabines"],
+        "costs":{"Fer":72,"Scrap":36,"Bois":36,"Carbone":36,"Végétaux":122,"Huile":36,"Silicium":36,"Chlore":25,"Zinc":25}
     },
     {
         "id":40,
         "name":"Riders",
         "levels":{"rednecks":3,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Garage","Armurerie"]
+        "bldReq":["Garage","Armurerie"],
+        "costs":{"Fer":270,"Scrap":240,"Bois":60,"Carbone":60,"Aluminium":60,"Soufre":30,"Plomb":30,"Végétaux":20,"Chlore":10}
     },
     {
         "id":41,
         "name":"Scalpels",
         "levels":{"rednecks":99,"blades":4,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Infirmerie"]
+        "bldReq":["Infirmerie"],
+        "costs":{"Fer":32,"Scrap":32,"Bois":32,"Végétaux":32,"Huile":43,"Silicium":18,"Végétaux":32,"Chlore":25,"Zinc":25,"Titane":6}
     },
     {
         "id":42,
         "name":"Jumpers",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":7,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Chaîne de montage"]
+        "bldReq":["Armurerie","Chaîne de montage"],
+        "costs":{"Fer":48,"Scrap":48,"Carbone":48,"Aluminium":96,"Nickel":48,"Fuel":48,"Electros":24}
     },
     {
         "id":47,
         "name":"Scyths",
         "levels":{"rednecks":99,"blades":13,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Centre d'entraînement","Atelier"]
+        "bldReq":["Centre d'entraînement","Atelier"],
+        "costs":{"Fer":196,"Carbone":56,"Bois":140,"Végétaux":216,"Blendium":28,"Huile":56,"Or":56,"Chlore":10}
     },
     {
         "id":48,
         "name":"Snowballs",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":1,"brasier":99},
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "costs":{"Fer":120,"Scrap":60,"Végétaux":60,"Soufre":60,"Plomb":60,"Végétaux":110,"Chlore":10}
     },
     {
         "id":49,
         "name":"Rambos",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":9,"detruas":99,"brasier":99},
-        "bldReq":["Centre d'entraînement","Arsenal"]
+        "bldReq":["Centre d'entraînement","Arsenal"],
+        "costs":{"Fer":180,"Scrap":120,"Carbone":60,"Aluminium":60,"Tungstène":60,"Végétaux":80,"Soufre":30,"Plomb":30,"Huile":60,"Or":60,"Chlore":10}
     },
     {
         "id":50,
         "name":"Groskals",
         "levels":{"rednecks":99,"blades":99,"bulbos":7,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Arsenal","Atelier"]
+        "bldReq":["Arsenal","Atelier"],
+        "costs":{"Fer":60,"Scrap":120,"Plomb":60,"Aluminium":60,"Titane":120,"Tungstène":60,"Silicium":30,"Electros":60,"Batteries":90,"Végétaux":110,"Blendium":30,"Chlore":10}
     },
     {
         "id":51,
         "name":"Kasseurs",
         "levels":{"rednecks":7,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Atelier","Armurerie"]
+        "bldReq":["Atelier","Armurerie"],
+        "costs":{"Fer":210,"Scrap":27,"Carbone":21,"Aluminium":166,"Tungstène":42,"Huile":12,"Silicium":12,"Végétaux":33,"Chlore":17,"Zinc":17}
     },
     {
         "id":52,
         "name":"Doc & Rolls",
         "levels":{"rednecks":99,"blades":99,"bulbos":10,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Arsenal","Laboratoire","Chaîne de montage"]
+        "bldReq":["Arsenal","Laboratoire","Chaîne de montage"],
+        "costs":{"Carbone":40,"Bois":20,"Titane":50,"Tungstène":80,"Bore":20,"Silicium":40,"Electros":80,"Batteries":60,"Végétaux":60,"Blendium":20,"Aluminium":40,"Nickel":40,"Fuel":40,"Huile":60,"Chlore":40,"Zinc":40}
     },
     {
         "id":53,
         "name":"Mutants",
         "levels":{"rednecks":99,"blades":15,"bulbos":99,"drogmulojs":6,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Arsenal","Laboratoire"]
+        "bldReq":["Arsenal","Laboratoire"],
+        "costs":{"Fer":56,"Scrap":112,"Carbone":56,"Aluminium":168,"Titane":28,"Tungstène":56,"Batteries":28,"Bugium":86,"Mendium":28,"Creatite":86,"Huile":40,"Calcium":40}
     },
     {
         "id":160,
         "name":"Wolverines",
         "levels":{"rednecks":99,"blades":12,"bulbos":99,"drogmulojs":7,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Centre de recherches"]
+        "bldReq":["Centre de recherches"],
+        "costs":{"Swarmine":134,"Mendium":48,"Blendium":24,"Huile":34,"Calcium":34,"Zinc":60}
     },
     {
         "id":55,
         "name":"Chevaliers",
         "levels":{"rednecks":99,"blades":6,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Garage"]
+        "bldReq":["Garage"],
+        "costs":{"Fer":196,"Scrap":224,"Bois":56,"Aluminium":56,"Végétaux":20,"Chlore":10}
     },
     {
         "id":56,
         "name":"Berserkers",
         "levels":{"rednecks":99,"blades":14,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Centre d'entraînement","Armurerie","Chaîne de montage"]
+        "bldReq":["Centre d'entraînement","Armurerie","Chaîne de montage"],
+        "costs":{"Fer":168,"Scrap":56,"Soufre":84,"Plomb":84,"Carbone":56,"Bois":56,"Titane":56,"Végétaux":112,"Blendium":28,"Aluminium":56,"Nickel":56,"Fuel":56,"Electros":28,"Huile":17,"Chlore":17,"Zinc":17}
     },
     {
         "id":60,
         "name":"Radios",
         "levels":{"rednecks":99,"blades":99,"bulbos":13,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["QG","Usine d'armement","Appartements"]
+        "bldReq":["QG","Usine d'armement","Appartements"],
+        "costs":{"Carbone":48,"Bois":24,"Titane":144,"Rhodium":48,"Bore":120,"Cuivre":48,"Electros":96,"Batteries":120,"Aluminium":48,"Nickel":48,"Fuel":48,"Mercure":48,"Hydrogène":48,"Huile":65,"Or":48,"Chlore":17,"Zinc":17}
     },
     {
         "id":63,
         "name":"Barricades",
         "levels":{"rednecks":5,"blades":99,"bulbos":99,"drogmulojs":5,"tiradores":99,"detruas":5,"brasier":99},
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "costs":{"Fer":300,"Scrap":60,"Carbone":60,"Végétaux":110,"Chlore":10}
     },
     {
         "id":68,
         "name":"Psys",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":14,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["QG","Arsenal","Centre d'entraînement"]
+        "bldReq":["QG","Arsenal","Centre d'entraînement"],
+        "costs":{"Fer":84,"Scrap":56,"Carbone":56,"Aluminium":56,"Tungstène":56,"Soufre":28,"Plomb":28,"Huile":77,"Or":56,"Chlore":21,"Zinc":21}
     },
     {
         "id":70,
         "name":"Marshalls",
         "levels":{"rednecks":11,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["QG","Cabines","Centre d'entraînement"]
+        "bldReq":["QG","Cabines","Centre d'entraînement"],
+        "costs":{"Fer":256,"Scrap":192,"Carbone":128,"Silicium":32,"Soufre":128,"Plomb":128,"Végétaux":64,"Huile":94,"Or":64,"Chlore":30,"Zinc":30}
     },
     {
         "id":71,
         "name":"Rétiaires",
         "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["QG","Cabines","Atelier"]
+        "bldReq":["QG","Cabines","Atelier"],
+        "costs":{"Scrap":128,"Carbone":64,"Aluminium":128,"Titane":64,"Cuivre":64,"Batteries":64,"Végétaux":192,"Blendium":32,"Fer":32,"Soufre":32,"Plomb":32,"Huile":85,"Or":64,"Chlore":21,"Zinc":21}
     },
     {
         "id":72,
         "name":"Dogs",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":5,"brasier":99},
-        "bldReq":["Armurerie"]
+        "bldReq":["Armurerie"],
+        "costs":{"Fer":135,"Scrap":54,"Carbone":54,"Aluminium":108,"Soufre":27,"Plomb":27,"Végétaux":20,"Chlore":10}
     },
     {
         "id":73,
         "name":"Exodarks",
         "levels":{"rednecks":99,"blades":17,"bulbos":99,"drogmulojs":15,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Centre d'entraînement","Centre de recherches","Prisons"]
+        "bldReq":["Centre d'entraînement","Centre de recherches","Prisons"],
+        "costs":{"Carbone":81,"Aluminium":162,"Slime":76,"Mendium":113,"Blendium":76,"Bossium":76,"Huile":57,"Calcium":57,"Fer":122,"Soufre":122,"Plomb":122}
     },
     {
         "id":77,
         "name":"Exobios",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":9,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Arsenal","Laboratoire","Prisons"]
+        "bldReq":["Arsenal","Laboratoire","Prisons"],
+        "costs":{"Fer":104,"Bois":32,"Aluminium":80,"Titane":40,"Tungstène":40,"Bugium":132,"Bossium":20,"Creatite":132,"Huile":57,"Calcium":57}
     },
     {
         "id":176,
         "name":"Exobrutes",
         "levels":{"rednecks":99,"blades":9,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Laboratoire"]
+        "bldReq":["Laboratoire"],
+        "costs":{"Fer":96,"Bois":96,"Aluminium":48,"Bugium":200,"Bossium":15,"Creatite":214,"Huile":86,"Calcium":86}
     },
     {
         "id":78,
         "name":"Mosquitos",
         "levels":{"rednecks":99,"blades":20,"bulbos":99,"drogmulojs":12,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Centre de recherches","Prisons"]
+        "bldReq":["Armurerie","Centre de recherches","Prisons"],
+        "costs":{"Carbone":48,"Tungstène":24,"Electros":24,"Batteries":24,"Aranium":67,"Larvium":86,"Wingium":134,"Huile":58,"Calcium":58}
     },
     {
         "id":82,
         "name":"Droïdes",
         "levels":{"rednecks":99,"blades":99,"bulbos":6,"drogmulojs":99,"tiradores":12,"detruas":99,"brasier":99},
-        "bldReq":["Chaîne de montage","Armurerie","Laboratoire"]
+        "bldReq":["Chaîne de montage","Armurerie","Laboratoire"],
+        "costs":{"Fer":60,"Scrap":30,"Carbone":90,"Aluminium":260,"Titane":180,"Electros":120,"Batteries":120,"Cuivre":72,"Silicium":60,"Cobalt":60}
     },
     {
         "id":83,
         "name":"T-Skeltons",
         "levels":{"rednecks":99,"blades":99,"bulbos":17,"drogmulojs":99,"tiradores":14,"detruas":99,"brasier":99},
-        "bldReq":["Usine","Arsenal","Centre de recherches"]
+        "bldReq":["Usine","Arsenal","Centre de recherches"],
+        "costs":{"Fer":166,"Scrap":42,"Carbone":72,"Aluminium":290,"Tungstène":61,"Titane":415,"Electros":210,"Batteries":210,"Cuivre":100,"Silicium":84,"Cobalt":42,"Nickel":42}
     },
     {
         "id":84,
         "name":"Screamers",
         "levels":{"rednecks":99,"blades":99,"bulbos":11,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Chaîne de montage","Centre de recherches"]
+        "bldReq":["Chaîne de montage","Centre de recherches"],
+        "costs":{"Fer":80,"Scrap":20,"Carbone":180,"Aluminium":160,"Tungstène":80,"Titane":160,"Electros":180,"Batteries":160,"Cuivre":48,"Silicium":80}
     },
     {
         "id":133,
         "name":"Rabbitz",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":99},
-        "bldReq":["Chaîne de montage"]
+        "bldReq":["Chaîne de montage"],
+        "costs":{"Scrap":130,"Carbone":24,"Aluminium":60,"Explosifs":150,"Electros":72,"Batteries":72,"Cuivre":30,"Silicium":48,"Végétaux":48}
     },
     {
         "id":85,
         "name":"Bigman",
         "levels":{"rednecks":99,"blades":11,"bulbos":5,"drogmulojs":15,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Chaîne de montage","Laboratoire"]
+        "bldReq":["Chaîne de montage","Laboratoire"],
+        "costs":{"Fer":290,"Scrap":400,"Carbone":72,"Tungstène":76,"Rhodium":18,"Aluminium":180,"Titane":36,"Electros":72,"Batteries":144,"Cuivre":72,"Silicium":36,"Nickel":36}
     },
     {
         "id":86,
         "name":"Cyborgs",
         "levels":{"rednecks":17,"blades":14,"bulbos":3,"drogmulojs":18,"tiradores":16,"detruas":99,"brasier":11},
-        "bldReq":["Atelier","Arsenal","Laboratoire"]
+        "bldReq":["Atelier","Arsenal","Laboratoire"],
+        "costs":{"Scrap":36,"Carbone":72,"Tungstène":73,"Aluminium":48,"Titane":24,"Electros":72,"Batteries":72,"Cuivre":36,"Silicium":48,"Chlore":37,"Zinc":37,"Fer":25}
     },
     {
         "id":159,
         "name":"Firestorms",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":18,"detruas":99,"brasier":99},
-        "bldReq":["Usine d'armement","Centre de recherches"]
+        "bldReq":["Usine d'armement","Centre de recherches"],
+        "costs":{"Carbone":72,"Aluminium":96,"Rhodium":48,"Titane":160,"Electros":72,"Batteries":72,"Cuivre":36,"Silicium":24,"Huile":48,"Or":48,"Chlore":10}
     },
     {
         "id":156,
         "name":"Riggers",
         "levels":{"rednecks":99,"blades":16,"bulbos":9,"drogmulojs":17,"tiradores":17,"detruas":99,"brasier":13},
-        "bldReq":["Atelier","Centre de recherches"]
+        "bldReq":["Atelier","Centre de recherches"],
+        "costs":{"Fer":86,"Scrap":36,"Carbone":72,"Aluminium":36,"Titane":108,"Electros":72,"Batteries":108,"Cuivre":24,"Silicium":18,"Huile":36,"Silicium":16,"Chlore":20,"Zinc":20,"Tungstène":50}
     },
     {
         "id":87,
         "name":"Mechas",
-        "levels":{"rednecks":20,"blades":99,"bulbos":18,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Chaîne de montage","Usine d'armement","Centre de recherches"]
+        "levels":{"rednecks":20,"blades":99,"bulbos":18,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":15},
+        "bldReq":["Chaîne de montage","Usine d'armement","Centre de recherches"],
+        "costs":{"Fer":300,"Scrap":180,"Carbone":90,"Tungstène":60,"Aluminium":180,"Titane":270,"Electros":180,"Batteries":180,"Cuivre":75,"Silicium":75}
     },
     {
         "id":88,
         "name":"Noise Angels",
         "levels":{"rednecks":18,"blades":99,"bulbos":14,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Chaîne de montage","Arsenal","Centre de recherches"]
+        "bldReq":["Chaîne de montage","Arsenal","Centre de recherches"],
+        "costs":{"Fer":96,"Scrap":72,"Carbone":72,"Bois":24,"Aluminium":168,"Titane":144,"Tungstène":48,"Bore":24,"Electros":80,"Batteries":32,"Cuivre":43,"Silicium":24,"Nickel":48,"Fuel":48,"Soufre":48,"Plomb":48,"Chlore":21,"Zinc":21}
     },
     {
         "id":179,
         "name":"Blaze Angels",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":16},
-        "bldReq":["Chaîne de montage","Arsenal","Centre de recherches"]
+        "bldReq":["Chaîne de montage","Arsenal","Centre de recherches"],
+        "costs":{"Scrap":120,"Carbone":72,"Aluminium":264,"Titane":96,"Tungstène":72,"Electros":80,"Batteries":32,"Cuivre":43,"Silicium":24,"Nickel":48,"Fuel":48,"Energie":96,"Chlore":10}
     },
     {
         "id":89,
         "name":"Spectres",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":8,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Laboratoire"]
+        "bldReq":["Armurerie","Laboratoire"],
+        "costs":{"Fer":36,"Scrap":72,"Carbone":18,"Aluminium":72,"Titane":18}
     },
     {
         "id":91,
         "name":"Pushkas",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":6,"brasier":99},
-        "bldReq":["Arsenal"]
+        "bldReq":["Arsenal"],
+        "costs":{"Fer":216,"Scrap":72,"Carbone":18,"Aluminium":144,"Tungstène":54}
     },
     {
         "id":152,
         "name":"Spritz",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":2,"brasier":99},
-        "bldReq":["Arsenal"]
+        "bldReq":["Arsenal"],
+        "costs":{"Fer":108,"Scrap":72,"Carbone":36,"Aluminium":180,"Tungstène":36,"Titane":36,"Silicium":18}
     },
     {
         "id":96,
         "name":"Blocks",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":1},
-        "bldReq":["Bar"]
+        "bldReq":["Bar"],
+        "costs":{"Fer":56,"Scrap":56,"Carbone":56,"Végétaux":20,"Chlore":10}
     },
     {
         "id":97,
         "name":"Slings",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":2},
-        "bldReq":["Atelier"]
+        "bldReq":["Atelier"],
+        "costs":{"Fer":60,"Scrap":180,"Aluminium":60,"Huile":30,"Végétaux":20,"Chlore":10}
     },
     {
         "id":98,
         "name":"Thermoguards",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":8},
-        "bldReq":["Centre d'entraînement","Armurerie","Atelier"]
+        "bldReq":["Centre d'entraînement","Armurerie","Atelier"],
+        "costs":{"Fer":128,"Scrap":128,"Carbone":64,"Plomb":64,"Aluminium":64,"Tungstène":64,"Rhodium":64,"Végétaux":96,"Blendium":32,"Oxygène":64,"Huile":17,"Chlore":17,"Zinc":17}
     },
     {
         "id":116,
         "name":"Cyclopes",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":14,"brasier":99},
-        "bldReq":["Centre d'entraînement","Armurerie"]
+        "bldReq":["Centre d'entraînement","Armurerie"],
+        "costs":{"Fer":128,"Scrap":64,"Carbone":128,"Silicium":32,"Electros":64,"Batteries":32,"Végétaux":136,"Blendium":32,"Soufre":64,"Plomb":64,"Chlore":20,"Zinc":20}
     },
     {
         "id":117,
         "name":"Light knights",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":13},
-        "bldReq":["Usine d'armement","QG","Cabines"]
+        "bldReq":["Usine d'armement","QG","Cabines"],
+        "costs":{"Fer":90,"Scrap":60,"Carbone":120,"Tungstène":120,"Rhodium":60,"Silicium":30,"Electros":90,"Batteries":120,"Aluminium":60,"Nickel":60,"Fuel":60,"Soufre":30,"Plomb":30,"Huile":80,"Or":60,"Chlore":20,"Zinc":20}
     },
     {
         "id":130,
         "name":"Luchandos",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":11,"detruas":99,"brasier":99},
-        "bldReq":["Arsenal","QG","Cabines"]
+        "bldReq":["Arsenal","QG","Cabines"],
+        "costs":{"Fer":280,"Scrap":168,"Aluminium":56,"Silicium":28,"Végétaux":84,"Blendium":28,"Soufre":56,"Plomb":56,"Huile":86,"Or":56,"Chlore":30,"Zinc":30}
     },
     {
         "id":135,
         "name":"Runners",
         "levels":{"rednecks":16,"blades":12,"bulbos":99,"drogmulojs":13,"tiradores":20,"detruas":99,"brasier":18},
-        "bldReq":["Armurerie","Centre de recherches"]
+        "bldReq":["Armurerie","Centre de recherches"],
+        "costs":{"Fer":192,"Scrap":160,"Bois":32,"Carbone":32,"Aluminium":128,"Tungstène":16,"Titane":113,"Electros":32,"Batteries":32,"Cuivre":51,"Silicium":32,"Végétaux":64,"Soufre":32,"Plomb":32,"Oxygène":64,"Chlore":10}
     },
     {
         "id":180,
         "name":"Legs",
         "levels":{"rednecks":99,"blades":12,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":18},
-        "bldReq":["Laboratoire","Atelier"]
+        "bldReq":["Laboratoire","Atelier"],
+        "costs":{"Fer":64,"Scrap":32,"Carbone":96,"Aluminium":64,"Tungstène":32,"Titane":113,"Electros":48,"Batteries":48,"Cuivre":51,"Silicium":32,"Végétaux":160,"Blendium":32,"Cobalt":64,"Oxygène":64,"Huile":15,"Chlore":15,"Zinc":15}
     },
     {
         "id":136,
         "name":"Gunbots",
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":99,"tiradores":13,"detruas":99,"brasier":99},
-        "bldReq":["Arsenal","Laboratoire","Chaîne de montage"]
+        "bldReq":["Arsenal","Laboratoire","Chaîne de montage"],
+        "costs":{"Scrap":90,"Carbone":90,"Aluminium":200,"Titane":240,"Electros":165,"Batteries":150,"Cuivre":72,"Silicium":90,"Cobalt":60}
     },
     {
         "id":183,
         "name":"Thunderbots",
         "levels":{"rednecks":99,"blades":99,"bulbos":15,"drogmulojs":99,"tiradores":99,"detruas":10,"brasier":99},
-        "bldReq":["Arsenal","Centre de recherches","Usine"]
+        "bldReq":["Arsenal","Centre de recherches","Usine"],
+        "costs":{"Fer":132,"Bois":48,"Carbone":24,"Aluminium":240,"Titane":270,"Tungstène":60,"Electros":96,"Batteries":96,"Cuivre":58,"Silicium":72,"Cobalt":48}
     },
     {
         "id":138,
         "name":"Clones",
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":5,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Laboratoire"]
+        "bldReq":["Laboratoire"],
+        "costs":{"Fer":60,"Scrap":60,"Creatite":216,"Huile":42,"Mercure":42}
     },
     {
         "id":163,
         "name":"Warclones",
         "levels":{"rednecks":99,"blades":99,"bulbos":12,"drogmulojs":11,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Laboratoire"]
+        "bldReq":["Armurerie","Laboratoire"],
+        "costs":{"Fer":120,"Scrap":120,"Carbone":60,"Plomb":60,"Bois":60,"Aluminium":60,"Tungstène":60,"Bugium":84,"Creatite":216,"Huile":60,"Mercure":60}
     },
     {
         "id":1,
@@ -1085,8 +1169,8 @@
     {
         "id":124,
         "name":"Derrick",
-        "upkeep":{"Hydrocarbure":12},
-        "prod":{"Fuel":6}
+        "upkeep":{"Hydrocarbure":8},
+        "prod":{"Fuel":4}
     },
     {
         "id":157,
@@ -1117,19 +1201,19 @@
         "name":"Chaîne de montage",
         "bldEquiv":["Atelier"],
         "bldCost":"Atelier",
-        "bldReq":["Générateur"]
+        "upkeep":{"Energie":12}
     },
     {
         "id":199,
         "name":"Usine",
         "bldEquiv":["Atelier","Chaîne de montage"],
         "bldCost":"Chaîne de montage",
-        "bldReq":["Centrale SMR"]
+        "upkeep":{"Energie":25}
     },
     {
         "id":193,
         "name":"Aérodocks",
-        "bldReq":["Générateur"]
+        "upkeep":{"Energie":25}
     },
     {
         "id":170,
@@ -1140,14 +1224,14 @@
         "name":"Arsenal",
         "bldEquiv":["Armurerie"],
         "bldCost":"Armurerie",
-        "bldReq":["Générateur"]
+        "upkeep":{"Energie":12}
     },
     {
         "id":192,
         "name":"Usine d'armement",
         "bldEquiv":["Armurerie","Arsenal"],
         "bldCost":"Arsenal",
-        "bldReq":["Centrale SMR"]
+        "upkeep":{"Energie":25}
     },
     {
         "id":150,
@@ -1158,30 +1242,31 @@
         "name":"Hôpital",
         "bldEquiv":["Infirmerie"],
         "bldCost":"Infirmerie",
-        "bldReq":["Générateur"]
+        "upkeep":{"Energie":5}
     },
     {
         "id":194,
         "name":"Poste radio",
-        "bldReq":["Générateur"]
+        "upkeep":{"Energie":2}
     },
     {
         "id":195,
         "name":"Centre de com",
         "bldEquiv":["Poste radio"],
         "bldCost":"Poste radio",
-        "bldReq":["Générateur"]
+        "upkeep":{"Energie":8}
     },
     {
         "id":196,
         "name":"QG",
         "bldEquiv":["Poste radio","Centre de com"],
         "bldCost":"Centre de com",
-        "bldReq":["Centrale SMR"]
+        "upkeep":{"Energie":25}
     },
     {
         "id":201,
-        "name":"Camp d'entraînement"
+        "name":"Camp d'entraînement",
+        "upkeep":{"Energie":6,"Soufre":20,"Plomb":20,"Fer":20}
     },
     {
         "id":203,
@@ -1192,42 +1277,44 @@
         "name":"Centre de tri",
         "bldEquiv":["Décharge"],
         "bldCost":"Décharge",
-        "bldReq":["Générateur"]
+        "upkeep":{"Energie":8,"Eau":12}
     },
     {
         "id":205,
         "name":"Recyclab",
         "bldEquiv":["Décharge","Centre de tri"],
         "bldCost":"Centre de tri",
-        "bldReq":["Centrale SMR"]
+        "upkeep":{"Energie":15,"Eau":25}
     },
     {
         "id":206,
         "name":"Laboratoire",
-        "bldReq":["Générateur"]
+        "upkeep":{"Energie":8,"Eau":6}
     },
     {
         "id":207,
         "name":"Centre de recherches",
         "bldEquiv":["Laboratoire"],
         "bldCost":"Laboratoire",
-        "bldReq":["Centrale SMR"]
+        "upkeep":{"Energie":25,"Eau":20}
     },
     {
         "id":172,
         "name":"Générateur",
-        "upkeep":{"Fuel":3},
-        "prod":{"Energie":20}
+        "upkeep":{"Fuel":1},
+        "prod":{"Energie":7}
     },
     {
         "id":208,
         "name":"Centrale solaire",
-        "bldEquiv":["Générateur","Centrale SMR"]
+        "bldEquiv":["Générateur","Centrale SMR"],
+        "upkeep":{"Eau":25}
     },
     {
         "id":209,
         "name":"Centrale géothermique",
-        "bldEquiv":["Générateur","Centrale SMR"]
+        "bldEquiv":["Générateur","Centrale SMR"],
+        "upkeep":{"Eau":25}
     },
     {
         "id":210,
@@ -1236,30 +1323,36 @@
     {
         "id":211,
         "name":"Centrale nucléaire",
-        "bldEquiv":["Générateur","Centrale SMR"]
+        "bldEquiv":["Générateur","Centrale SMR"],
+        "bldReq":["Générateur"],
+        "upkeep":{"Plutonium":10,"Eau":75},
+        "prod":{"Energie":150}
     },
     {
         "id":212,
         "name":"Centrale SMR",
         "bldEquiv":["Générateur"],
-        "bldReq":["Générateur"]
+        "bldReq":["Générateur"],
+        "upkeep":{"Uranium":4,"Eau":18},
+        "prod":{"Energie":50}
     },
     {
         "id":174,
         "name":"Champ de force",
         "bldEquiv":[],
-        "bldReq":["Centrale SMR"]
+        "upkeep":{"Energie":50}
     },
     {
         "id":175,
         "name":"Dôme",
         "bldEquiv":["Champ de force"],
-        "bldReq":["Centrale nucléaire"]
+        "upkeep":{"Energie":80}
     },
     {
         "id":200,
         "name":"Pilône",
-        "bldReq":["Centrale SMR","Dôme"]
+        "bldReq":["Dôme"],
+        "upkeep":{"Energie":20}
     },
     {
         "id":215,
@@ -1267,6 +1360,7 @@
     },
     {
         "id":216,
-        "name":"Cantine"
+        "name":"Cantine",
+        "upkeep":{"Energie":3,"Eau":12,"Végétaux":25}
     }
 ]

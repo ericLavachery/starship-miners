@@ -45,6 +45,7 @@ let resBatchDiv = 12;
 let permaRes = false;
 let minResForRate = 100;
 let maxResForRate = 350;
+let magmaZone = 3;
 let ruinRarity = 8;
 let ruinsCitBase = 75; // def 50
 let ruinsBugBase = 50; // def 50

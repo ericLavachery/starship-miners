@@ -686,7 +686,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // ACTIVATION
-    if (batType.skills.includes('prodres')) {
+    if (batType.skills.includes('prodres') || batType.skills.includes('geo') || batType.skills.includes('solar')) {
         balise = 'h1';
         if (bat.tags.includes('prodres')) {
             balise = 'h3';

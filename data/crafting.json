@@ -2,7 +2,7 @@
     {
         "id":11,
         "result":"Compo1",
-        "cost":{"Bois":3},
+        "cost":{"Bois":2,"Scrap":1},
         "compReq":{},
         "bldReq":[],
         "batch": 1
@@ -10,7 +10,7 @@
     {
         "id":12,
         "result":"Compo1",
-        "cost":{"Scrap":3},
+        "cost":{"Bois":1,"Scrap":2},
         "compReq":{},
         "bldReq":[],
         "batch": 1
@@ -224,6 +224,15 @@
         "batch": 4
     },
     {
+        "id":56,
+        "result":"Jetpacks",
+        "cost":{"Aluminium":2,"Nickel":1,"Electros":1,"Fuel":2},
+        "compReq":{"log":2,"aero":1},
+        "bldReq":["Chaîne de montage"],
+        "batch": 2,
+        "creaNum":12
+    },
+    {
         "id":54,
         "result":"Fer",
         "cost":{"Scrap":4},
@@ -269,7 +278,8 @@
         "cost":{"Scrap":20},
         "compReq":{"tri":4,"mat":1},
         "bldReq":["Recyclab"],
-        "batch": 1
+        "batch": 1,
+        "creaNum":25
     },
     {
         "id":33,
@@ -277,7 +287,8 @@
         "cost":{"Scrap":35},
         "compReq":{"tri":4,"mat":2},
         "bldReq":["Recyclab"],
-        "batch": 1
+        "batch": 1,
+        "creaNum":15
     },
     {
         "id":34,
@@ -453,6 +464,7 @@
         "cost":{"Electro":100,"Bore":500,"Carbone":1000,"Nickel":500,"Titane":1000},
         "compReq":{"energ":3,"mat":3,"ind":2},
         "bldReq":["Laboratoire","Usine","Soute"],
-        "batch": 1
+        "batch": 1,
+        "creaNum":1
     }
 ]

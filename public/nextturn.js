@@ -121,12 +121,6 @@ function nextTurnEnd() {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
-            if (batType.skills.includes('upkeep') || batType.skills.includes('prodres')) {
-                if (!bat.tags.includes('construction')) {
-                    upkeepAndProd(bat,batType);
-                }
-            }
-            deFog(bat,batType);
             if (batType.skills.includes('transorbital') || batType.skills.includes('reserve')) {
                 landers.push(bat);
             }
@@ -141,10 +135,6 @@ function nextTurnEnd() {
                         }
                     });
                 }
-            }
-            bat.apLeft = Math.ceil(bat.apLeft);
-            if (bat.apLeft < 0-(bat.ap*2) && batType.cat != 'buildings' && batType.cat != 'devices' && !bat.tags.includes('construction')) {
-                bat.apLeft = 0-(bat.ap*2);
             }
             if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {
                 boostedTeams.push(batType.kind);
@@ -162,6 +152,27 @@ function nextTurnEnd() {
                 transBat = getBatById(bat.locId);
                 bat.tileId = transBat.tileId;
                 bat.oldTileId = transBat.tileId;
+            }
+        }
+    });
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" || bat.loc === "trans") {
+            batType = getBatType(bat);
+            if (batType.skills.includes('upkeep') || batType.skills.includes('prodres')) {
+                if (!bat.tags.includes('construction')) {
+                    upkeepAndProd(bat,batType);
+                }
+            }
+            if (batType.skills.includes('geo') && bat.tags.includes('prodres')) {
+                geoProd(bat,batType);
+            }
+            if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
+                solarProd(bat,batType);
+            }
+            deFog(bat,batType);
+            bat.apLeft = Math.ceil(bat.apLeft);
+            if (bat.apLeft < 0-(bat.ap*2) && batType.cat != 'buildings' && batType.cat != 'devices' && !bat.tags.includes('construction')) {
+                bat.apLeft = 0-(bat.ap*2);
             }
             // nolist
             if (bat.loc === "zone" && bat.tags.includes('nolist')) {

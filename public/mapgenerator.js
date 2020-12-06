@@ -958,7 +958,53 @@ function addRes(zone) {
             }
         }
     });
-    console.log(zone);
+    // MAGMA
+    if (rand.rand(1,magmaZone) === 1) {
+        let magName = 'Magma';
+        let magChance = rand.rand(1,4)*100;
+        shufZone.forEach(function(tile) {
+            if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
+                terrain = getTileTerrain(tile.id);
+                if (terrain.name != 'M' && tile.rq === undefined) {
+                    if (rand.rand(1,magChance) === 1) {
+                        tile.rq = 1;
+                        tile.rs = {};
+                        tile.rs[magName] = rand.rand(250,450);
+                    }
+                }
+            }
+        });
+    }
+    // HUILE
+    let oilName = 'Huile';
+    let oilChance = (rand.rand(2,4)*100)-Math.round(numBadTer/36)-(playerInfos.mapDiff*8);
+    oilChance = Math.ceil(oilChance/2);
+    console.log('numBadTer: '+numBadTer);
+    shufZone.forEach(function(tile) {
+        if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
+            terrain = getTileTerrain(tile.id);
+            if (tile.rq === undefined) {
+                if (tile.terrain === 'S' || tile.terrain === 'B' || tile.terrain === 'F') {
+                    if (tile.terrain === 'S' && rand.rand(1,oilChance) === 1) {
+                        tile.rq = 1;
+                        tile.rs = {};
+                        tile.rs[oilName] = rand.rand(80,280)+Math.round(numBadTer/72);
+                    }
+                    if (tile.terrain === 'B' && rand.rand(1,Math.round(oilChance/2)) === 1) {
+                        tile.rq = 1;
+                        tile.rs = {};
+                        tile.rs[oilName] = rand.rand(20,70)+Math.round(numBadTer/36);
+                    }
+                    if (tile.terrain === 'F' && rand.rand(1,oilChance*2) === 1) {
+                        tile.rq = 1;
+                        tile.rs = {};
+                        tile.rs[oilName] = rand.rand(20,160)+Math.round(numBadTer/72);
+                    }
+                }
+            }
+        }
+    });
+    // console.log(zone);
 };
 
 function checkAdjRes(adjTile) {
@@ -1049,4 +1095,7 @@ function zoneReport(zone) {
     warning('Etangs',percW+'%',true);
     percR = Math.round(percR/36);
     warning('Rivières',percR+'%');
+    zone[0].ensol = (percP*3)+40;
+    console.log('ensol');
+    console.log(zone[0].ensol);
 };

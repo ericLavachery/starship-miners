@@ -144,7 +144,7 @@
         "name": "Titane",
         "bld": "Mine",
         "level": 3,
-        "rarity": 12,
+        "rarity": 16,
         "cat": "white",
         "batch": 2,
         "energie": 100
@@ -184,7 +184,7 @@
         "name": "Uranium",
         "bld": "Mine",
         "level": 3,
-        "rarity": 12,
+        "rarity": 16,
         "cat": "white",
         "batch": 3,
         "energie": 5
@@ -254,9 +254,9 @@
         "name": "Huile",
         "bld": "Comptoir",
         "level": 1,
-        "rarity": 30,
-        "cat": "zero",
-        "batch": 6,
+        "rarity": 4,
+        "cat": "white",
+        "batch": 2,
         "energie": 3
     },
     {
@@ -281,12 +281,12 @@
     },
     {
         "id": 26,
-        "name": "Air",
-        "bld": "Pompe",
-        "level": 1,
-        "rarity": 100,
-        "cat": "zero",
-        "batch": 6,
+        "name": "Magma",
+        "bld": "Geo",
+        "level": 4,
+        "rarity": 1,
+        "cat": "white",
+        "batch": 4,
         "energie": -1
     },
     {
@@ -294,7 +294,7 @@
         "name": "Oxygène",
         "bld": "Derrick",
         "level": 2,
-        "rarity": 35,
+        "rarity": 45,
         "cat": "white",
         "batch": 5,
         "energie": 9
@@ -314,7 +314,7 @@
         "name": "Azote",
         "bld": "Derrick",
         "level": 2,
-        "rarity": 30,
+        "rarity": 35,
         "cat": "white",
         "batch": 4,
         "energie": 50
@@ -334,9 +334,9 @@
         "name": "Argon",
         "bld": "Derrick",
         "level": 3,
-        "rarity": 15,
+        "rarity": 12,
         "cat": "white",
-        "batch": 3,
+        "batch": 2,
         "energie": 50
     },
     {
@@ -344,9 +344,9 @@
         "name": "Hélium",
         "bld": "Derrick",
         "level": 3,
-        "rarity": 10,
+        "rarity": 16,
         "cat": "white",
-        "batch": 2,
+        "batch": 3,
         "energie": 9
     },
     {
@@ -688,5 +688,15 @@
         "cat": "transfo",
         "batch": 1,
         "energie": 25
+    },
+    {
+        "id": 69,
+        "name": "Jetpacks",
+        "bld": "",
+        "level": 4,
+        "rarity": 100,
+        "cat": "transfo",
+        "batch": 1,
+        "energie": -1
     }
 ]

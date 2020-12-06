@@ -22,10 +22,10 @@ function craftWindow() {
     let bldOK = false;
     crafting.forEach(function(craft) {
         craftOK = false;
-        if (craft.result != 'Moteur Orbital') {
+        if (craft.creaNum === undefined) {
             craftFactor = 50;
         } else {
-            craftFactor = 1;
+            craftFactor = craft.creaNum;
         }
         compReqOK = checkCompReq(craft);
         costOK = checkCraftCost(craft.id,craftFactor)
@@ -234,6 +234,84 @@ function enoughPlaceLander(number) {
     }
 };
 
+function geoProd(bat,batType) {
+    console.log('UPKEEP');
+    console.log(batType.name);
+    let tile = getTileById(bat.tileId);
+    let upkeepPaid = true;
+    if (tile.rs != undefined) {
+        if (tile.rs.Magma >= 1) {
+            if (batType.upkeep != undefined) {
+                Object.entries(batType.upkeep).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    let dispoRes = getDispoRes(key);
+                    if (dispoRes < value) {
+                        upkeepPaid = false;
+                    }
+                });
+                if (upkeepPaid) {
+                    Object.entries(batType.upkeep).map(entry => {
+                        let key = entry[0];
+                        let value = entry[1];
+                        resSub(key,value);
+                        console.log('upkeep = '+key+':'+value);
+                    });
+                } else {
+                    upkeepNotPaid(bat,batType);
+                }
+            }
+            if (upkeepPaid) {
+                let energyProd = Math.ceil(tile.rs.Magma/7);
+                energyProd = energyCreation(energyProd);
+                resAdd('Energie',energyProd);
+                console.log('prod = Energie:'+energyProd);
+            }
+        }
+    }
+};
+
+function solarProd(bat,batType) {
+    console.log('UPKEEP');
+    console.log(batType.name);
+    let tile = getTileById(bat.tileId);
+    let upkeepPaid = true;
+    if (!playerInfos.dark) {
+        if (batType.upkeep != undefined) {
+            Object.entries(batType.upkeep).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                let dispoRes = getDispoRes(key);
+                if (dispoRes < value) {
+                    upkeepPaid = false;
+                }
+            });
+            if (upkeepPaid) {
+                Object.entries(batType.upkeep).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    resSub(key,value);
+                    console.log('upkeep = '+key+':'+value);
+                });
+            } else {
+                upkeepNotPaid(bat,batType);
+            }
+        }
+        if (upkeepPaid) {
+            let energyProd = rand.rand(15,65);
+            if (tile.terrain === 'P') {
+                energyProd = rand.rand(20,80);
+            } else if (tile.terrain === 'F') {
+                energyProd = rand.rand(10,40);
+            }
+            energyProd = Math.ceil(energyProd*zone[0].ensol/100);
+            energyProd = energyCreation(energyProd);
+            resAdd('Energie',energyProd);
+            console.log('prod = Energie:'+energyProd);
+        }
+    }
+};
+
 function upkeepAndProd(bat,batType) {
     console.log('UPKEEP');
     console.log(batType.name);
@@ -271,6 +349,9 @@ function upkeepAndProd(bat,batType) {
                 Object.entries(batType.prod).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
+                    if (key === 'Energie') {
+                        value = energyCreation(value);
+                    }
                     resAdd(key,value);
                     console.log('prod = '+key+':'+value);
                 });
@@ -294,6 +375,15 @@ function upkeepNotPaid(bat,batType) {
             bat.tags.push('construction');
         }
     }
+};
+
+function energyCreation(energyCreated) {
+    let energyComp = playerInfos.comp.energ;
+    if (energyComp === 4) {
+        energyComp = 5;
+    }
+    energyCreated = Math.round(energyCreated*(energyComp+8)/8);
+    return energyCreated;
 };
 
 function cramPower(res,neededRes) {
