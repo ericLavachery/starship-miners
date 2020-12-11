@@ -20,6 +20,7 @@ function craftWindow() {
     let compReqOK = false;
     let costOK = false;
     let bldOK = false;
+    let oldCraft = false;
     crafting.forEach(function(craft) {
         craftOK = false;
         if (craft.creaNum === undefined) {
@@ -28,7 +29,7 @@ function craftWindow() {
             craftFactor = craft.creaNum;
         }
         compReqOK = checkCompReq(craft);
-        costOK = checkCraftCost(craft.id,craftFactor)
+        costOK = checkCraftCost(craft.id,craftFactor);
         bldOK = false;
         if ((playerInfos.bldList.includes(craft.bldReq[0]) || craft.bldReq[0] === undefined) && (playerInfos.bldList.includes(craft.bldReq[1]) || craft.bldReq[1] === undefined) && (playerInfos.bldList.includes(craft.bldReq[2]) || craft.bldReq[2] === undefined)) {
             bldOK = true;
@@ -38,31 +39,34 @@ function craftWindow() {
                 }
             }
         }
-        if (craftOK) {
-            $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-            $('#conUnitList').append('<span class="craftsList cy klik" title="'+toNiceString(craft.bldReq)+'" onclick="doCraft('+craft.id+','+craftFactor+')">'+craftFactor+' '+craft.result+'</span><br>');
-        } else {
-            $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-            $('#conUnitList').append('<span class="craftsList gf" title="'+toNiceString(craft.bldReq)+'">'+craftFactor+' '+craft.result+'</span><br>');
-        }
-        craftCostsList = showCraftCost(craft,craftFactor);
-        $('#conUnitList').append('<span class="craftsList">'+craftCostsList+'</span><br>');
-        if (craft.bldReq.length >= 1) {
-            if (bldOK) {
-                $('#conUnitList').append('<span class="craftsList bleu">'+toNiceString(craft.bldReq)+'</span><br>');
+        oldCraft = checkOldCraft(craft);
+        if ((compReqOK || playerInfos.pseudo === 'Test') && !oldCraft) {
+            if (craftOK) {
+                $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                $('#conUnitList').append('<span class="craftsList cy klik" title="'+toNiceString(craft.bldReq)+'" onclick="doCraft('+craft.id+','+craftFactor+')">'+craftFactor+' '+craft.result+'</span><br>');
             } else {
-                $('#conUnitList').append('<span class="craftsList rouge">'+toNiceString(craft.bldReq)+'</span><br>');
+                $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                $('#conUnitList').append('<span class="craftsList gf" title="'+toNiceString(craft.bldReq)+'">'+craftFactor+' '+craft.result+'</span><br>');
             }
-        }
-        if (Object.keys(craft.compReq).length >= 1) {
-            craftCompReqs = showCraftCompReqs(craft);
-            if (compReqOK) {
-                $('#conUnitList').append('<span class="craftsList bleu">'+craftCompReqs+'</span><br>');
-            } else {
-                $('#conUnitList').append('<span class="craftsList rouge">'+craftCompReqs+'</span><br>');
+            craftCostsList = showCraftCost(craft,craftFactor);
+            $('#conUnitList').append('<span class="craftsList">'+craftCostsList+'</span><br>');
+            if (craft.bldReq.length >= 1) {
+                if (bldOK) {
+                    $('#conUnitList').append('<span class="craftsList bleu">'+toNiceString(craft.bldReq)+'</span><br>');
+                } else {
+                    $('#conUnitList').append('<span class="craftsList rouge">'+toNiceString(craft.bldReq)+'</span><br>');
+                }
             }
+            if (Object.keys(craft.compReq).length >= 1) {
+                craftCompReqs = showCraftCompReqs(craft);
+                if (compReqOK) {
+                    $('#conUnitList').append('<span class="craftsList bleu">'+craftCompReqs+'</span><br>');
+                } else {
+                    $('#conUnitList').append('<span class="craftsList rouge">'+craftCompReqs+'</span><br>');
+                }
+            }
+            $('#conUnitList').append('<hr>');
         }
-        $('#conUnitList').append('<hr>');
     });
     if (playerInfos.bldList.includes('Crameur')) {
         let energyFactor = 50;
@@ -91,12 +95,51 @@ function craftWindow() {
     }
 };
 
+function checkOldCraft(craft) {
+    let oldCraft = false;
+    let bldKO = false;
+    let allCompForKO = true;
+    // console.log('OLD CRAFT');
+    // console.log(craft.result);
+    // console.log(craft.bldOut);
+    // console.log(craft.compOut);
+    if (craft.bldOut != undefined) {
+        if (playerInfos.bldList.includes(craft.bldOut[0])) {
+            bldKO = true;
+        }
+    }
+    if (bldKO) {
+        if (craft.compOut != undefined) {
+            if (Object.keys(craft.compOut).length >= 1) {
+                Object.entries(craft.compOut).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    if (playerInfos.comp[key] < value) {
+                        allCompForKO = false;
+                    }
+                });
+            }
+        }
+    }
+    if (allCompForKO && bldKO) {
+        oldCraft = true;
+    }
+    return oldCraft;
+};
+
 function checkCraftCost(craftId,number) {
     let craftResOK = true;
     let dispoRes;
     let craftIndex = crafting.findIndex((obj => obj.id == craftId));
     let craft = crafting[craftIndex];
     let craftFactor = Math.round(number/craft.batch);
+    if (playerInfos.comp.ind >= 3) {
+        if (playerInfos.bldList.includes('Usine')) {
+            craftFactor = Math.round(craftFactor*0.8);
+        } else {
+            craftFactor = Math.round(craftFactor*0.9);
+        }
+    }
     Object.entries(craft.cost).map(entry => {
         let key = entry[0];
         let value = entry[1];
@@ -113,6 +156,13 @@ function doCraft(craftId,number) {
     let craftIndex = crafting.findIndex((obj => obj.id == craftId));
     let craft = crafting[craftIndex];
     let craftFactor = Math.round(number/craft.batch);
+    if (playerInfos.comp.ind >= 3) {
+        if (playerInfos.bldList.includes('Usine')) {
+            craftFactor = Math.round(craftFactor*0.8);
+        } else {
+            craftFactor = Math.round(craftFactor*0.9);
+        }
+    }
     Object.entries(craft.cost).map(entry => {
         let key = entry[0];
         let value = entry[1];
@@ -133,6 +183,13 @@ function showCraftCost(craft,number) {
     let craftCostsList = ' ';
     let dispoRes;
     let craftFactor = Math.round(number/craft.batch);
+    if (playerInfos.comp.ind >= 3) {
+        if (playerInfos.bldList.includes('Usine')) {
+            craftFactor = Math.round(craftFactor*0.8);
+        } else {
+            craftFactor = Math.round(craftFactor*0.9);
+        }
+    }
     Object.entries(craft.cost).map(entry => {
         let key = entry[0];
         let value = entry[1];
@@ -159,79 +216,6 @@ function showCraftCompReqs(craft) {
         }
     });
     return craftCompReqs;
-};
-
-function resAdd(resName,number) {
-    let res = getResByName(resName);
-    let theLanderId = -1;
-    let lander = {};
-    if (res.cat === 'alien') {
-        if (playerInfos.alienRes[resName] === undefined) {
-            playerInfos.alienRes[resName] = number;
-        } else {
-            playerInfos.alienRes[resName] = playerInfos.alienRes[resName]+number;
-        }
-    } else {
-        theLanderId = enoughPlaceLander(number);
-        if (theLanderId >= 0) {
-            lander = getBatById(theLanderId);
-            if (lander.transRes[resName] === undefined) {
-                lander.transRes[resName] = number;
-            } else {
-                lander.transRes[resName] = lander.transRes[resName]+number;
-            }
-        } else {
-            console.log('pas de réserve !!!');
-        }
-    }
-};
-
-function resSub(resName,number) {
-    console.log(resName);
-    let res = getResByName(resName);
-    if (res.cat === 'alien') {
-        playerInfos.alienRes[resName] = playerInfos.alienRes[resName]-number;
-    } else {
-        landers.forEach(function(lander) {
-            if (number >= 1) {
-                if (lander.loc === 'zone') {
-                    if (lander.transRes[resName] != undefined) {
-                        if (lander.transRes[resName] >= number) {
-                            lander.transRes[resName] = lander.transRes[resName]-number;
-                            number = 0;
-                        } else {
-                            number = number-lander.transRes[resName];
-                            delete lander.transRes[resName];
-                        }
-                    }
-                }
-            }
-        });
-    }
-};
-
-function enoughPlaceLander(number) {
-    let theLanderId = -1;
-    let firstLanderId = -1;
-    let resSpace = 0;
-    landers.forEach(function(lander) {
-        if (firstLanderId < 0) {
-            firstLanderId = lander.id;
-        }
-        if (theLanderId < 0) {
-            if (lander.loc === 'zone') {
-                resSpace = checkResSpace(lander);
-                if (resSpace >= number) {
-                    theLanderId = lander.id;
-                }
-            }
-        }
-    });
-    if (theLanderId >= 0) {
-        return theLanderId;
-    } else {
-        return firstLanderId;
-    }
 };
 
 function geoProd(bat,batType) {

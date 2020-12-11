@@ -172,6 +172,9 @@ function calcRavitVolume(bat) {
     if (batType.weapon.maxAmmo < 99) {
         if (bat.eq === 'gilet') {
             w1maxAmmo = Math.floor(w1maxAmmo*1.5);
+            if (w1maxAmmo < 16) {
+                w1maxAmmo = 16;
+            }
         }
         if (bat.ammo.includes('obus') || bat.ammo.includes('boulet') || bat.ammo.includes('lf-')) {
             ammoVolume = 2*batType.weapon.power;
@@ -189,6 +192,9 @@ function calcRavitVolume(bat) {
     } else if (batType.weapon2.maxAmmo < 99) {
         if (bat.eq === 'gilet') {
             w2maxAmmo = Math.floor(w2maxAmmo*1.5);
+            if (w2maxAmmo < 16) {
+                w2maxAmmo = 16;
+            }
         }
         if (bat.ammo2.includes('obus') || bat.ammo2.includes('boulet') || bat.ammo2.includes('lf-')) {
             ammoVolume = 2*batType.weapon2.power;

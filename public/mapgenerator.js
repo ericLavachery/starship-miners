@@ -768,8 +768,13 @@ function addRes(zone) {
             if (res.name === 'Scrap') {
                 minDice = 0;
             }
-            rarityDice = rand.rand(minDice,maxDice);
-            altDice = rand.rand(minDice,maxDice);
+            if (res.name === 'Scrap') {
+                rarityDice = rand.rand(minDice,maxDice+2);
+                altDice = rand.rand(minDice,maxDice+2);
+            } else {
+                rarityDice = rand.rand(minDice,maxDice);
+                altDice = rand.rand(minDice,maxDice);
+            }
             if (altDice < rarityDice) {
                 rarityDice = altDice;
             }
@@ -822,7 +827,7 @@ function addRes(zone) {
                     tile.ruins = true;
                     tile.rq = 0;
                     tile.rs = {};
-                    tile.rs[resName] = Math.round(77*rand.rand(25,90)/resBatchDiv)+rand.rand(0,9);
+                    tile.rs[resName] = Math.round(107*rand.rand(25,90)/resBatchDiv)+rand.rand(0,9);
                     numRuins++;
                 }
             }

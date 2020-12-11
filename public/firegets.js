@@ -752,6 +752,9 @@ function weaponAdj(weapon,bat,wn) {
     }
     if (bat.eq === 'gilet' && thisWeapon.maxAmmo < 99) {
         thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
+        if (thisWeapon.maxAmmo < 16) {
+            thisWeapon.maxAmmo = 16;
+        }
     }
     if (bat.eq === 'arcpoulie') {
         if (thisWeapon.name.includes('Arc')) {

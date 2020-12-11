@@ -5,6 +5,7 @@
         "cost":{"Bois":2,"Scrap":1},
         "compReq":{},
         "bldReq":[],
+        "bldOut":["Atelier"],
         "batch": 1
     },
     {
@@ -13,6 +14,7 @@
         "cost":{"Bois":1,"Scrap":2},
         "compReq":{},
         "bldReq":[],
+        "bldOut":["Atelier"],
         "batch": 1
     },
     {
@@ -48,6 +50,22 @@
         "batch": 2
     },
     {
+        "id":59,
+        "result":"Compo1",
+        "cost":{"Carbone":2,"Scrap":1},
+        "compReq":{"const":1,"tri":1,"ind":1},
+        "bldReq":["Chaîne de montage"],
+        "batch": 2
+    },
+    {
+        "id":60,
+        "result":"Compo1",
+        "cost":{"Carbone":3,"Azote":1},
+        "compReq":{"const":1,"ind":3},
+        "bldReq":["Usine"],
+        "batch": 4
+    },
+    {
         "id":7,
         "result":"Compo2",
         "cost":{"Fer":3},
@@ -61,6 +79,8 @@
         "cost":{"Fer":1,"Carbone":1},
         "compReq":{"const":1},
         "bldReq":["Atelier"],
+        "compOut":{"const":2,"ind":1},
+        "bldOut":["Chaîne de montage"],
         "batch": 1
     },
     {
@@ -80,6 +100,14 @@
         "batch": 2
     },
     {
+        "id":61,
+        "result":"Compo2",
+        "cost":{"Fer":2,"Carbone":2,"Azote":1,"Oxygène":1},
+        "compReq":{"const":1,"ind":3},
+        "bldReq":["Usine"],
+        "batch": 5
+    },
+    {
         "id":8,
         "result":"Compo3",
         "cost":{"Fer":1,"Silicium":2,"Titane":1},
@@ -96,20 +124,37 @@
         "batch": 2
     },
     {
-        "id":15,
+        "id":18,
         "result":"Compo3",
-        "cost":{"Aluminium":1,"Carbone":1,"Titane":1},
-        "compReq":{"const":2,"ind":1},
+        "cost":{"Scrap":2,"Carbone":1,"Titane":1},
+        "compReq":{"const":2,"tri":3,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch": 2
     },
     {
-        "id":18,
+        "id":15,
         "result":"Compo3",
-        "cost":{"Scrap":1,"Carbone":1,"Titane":1},
-        "compReq":{"const":2,"tri":3,"ind":1},
-        "bldReq":["Chaîne de montage"],
+        "cost":{"Aluminium":1,"Carbone":1,"Tungstène":1},
+        "compReq":{"const":2,"ind":2},
+        "bldReq":["Usine"],
         "batch": 2
+    },
+    {
+        "id":62,
+        "result":"Compo3",
+        "cost":{"Aluminium":1,"Carbone":2,"Tungstène":2,"Azote":1},
+        "compReq":{"const":2,"ind":3},
+        "bldReq":["Usine"],
+        "batch": 5
+    },
+    {
+        "id":57,
+        "result":"Electros",
+        "cost":{"Cuivre":3,"Silicium":1,"Cobalt":2},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "bldOut":["Chaîne de montage"],
+        "batch":1
     },
     {
         "id":0,
@@ -117,15 +162,26 @@
         "cost":{"Cuivre":2,"Silicium":1,"Cobalt":1},
         "compReq":{},
         "bldReq":["Chaîne de montage"],
+        "compOut":{"ind":2},
         "batch":1
+    },
+    {
+        "id":58,
+        "result":"Electros",
+        "cost":{"Cuivre":5,"Silicium":2,"Cobalt":2},
+        "compReq":{"ind":2},
+        "bldReq":["Chaîne de montage"],
+        "compOut":{"mat":2,"ind":3},
+        "bldOut":["Usine"],
+        "batch":3
     },
     {
         "id":1,
         "result":"Electros",
-        "cost":{"Cuivre":2,"Carbone":1,"Aluminium":1},
+        "cost":{"Cuivre":7,"Carbone":3,"Cobalt":3},
         "compReq":{"mat":2,"ind":3},
         "bldReq":["Usine"],
-        "batch":1
+        "batch":5
     },
     {
         "id":2,
@@ -139,7 +195,7 @@
         "id":19,
         "result":"Batteries",
         "cost":{"Carbone":1,"Zinc":1,"Nickel":1},
-        "compReq":{"energ":2},
+        "compReq":{"energ":2,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch": 1
     },
@@ -219,7 +275,7 @@
         "id":26,
         "result":"Explosifs",
         "cost":{"Carbone":1,"Hydrogène":2,"Azote":2,"Oxygène":1},
-        "compReq":{"explo":3},
+        "compReq":{"explo":3,"ind":1},
         "bldReq":["Usine"],
         "batch": 4
     },
@@ -289,6 +345,14 @@
         "bldReq":["Recyclab"],
         "batch": 1,
         "creaNum":15
+    },
+    {
+        "id":63,
+        "result":"Scrap",
+        "cost":{"Bugium":3,"Swarmine":2,"Larvium":1,"Aranium":1},
+        "compReq":{"ca":1,"ind":3},
+        "bldReq":["Recyclab"],
+        "batch": 7
     },
     {
         "id":34,
@@ -461,7 +525,7 @@
     {
         "id":5,
         "result":"Moteur Orbital",
-        "cost":{"Electro":100,"Bore":500,"Carbone":1000,"Nickel":500,"Titane":1000},
+        "cost":{"Electro":200,"Bore":500,"Carbone":1000,"Nickel":500,"Titane":500,"Compo3":500},
         "compReq":{"energ":3,"mat":3,"ind":2},
         "bldReq":["Laboratoire","Usine","Soute"],
         "batch": 1,

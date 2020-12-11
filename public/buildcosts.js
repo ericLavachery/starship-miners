@@ -45,6 +45,143 @@ function findLanders() {
     });
 };
 
+function checkUnitCost(batType) {
+    let enoughRes = true;
+    // console.log('CHECK COSTS');
+    // console.log(batType.name);
+    if (batType.costs != undefined) {
+        Object.entries(batType.costs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            let dispoRes = getDispoRes(key);
+            // console.log(key+' '+dispoRes+'/'+value);
+            if (dispoRes < value) {
+                enoughRes = false;
+            }
+        });
+    }
+    let reqCit = batType.squads*batType.squadSize*batType.crew;
+    if (reqCit >= 1) {
+        let dispoCit = getDispoCit();
+        if (reqCit > dispoCit) {
+            enoughRes = false;
+        }
+    }
+    return enoughRes;
+};
+
+function payUnitCost(batType) {
+    if (batType.costs != undefined) {
+        Object.entries(batType.costs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            resSub(key,value);
+        });
+    }
+    let reqCit = batType.squads*batType.squadSize*batType.crew;
+    if (reqCit >= 1) {
+        let landersIds = [];
+        let dispoCit = getDispoCit();
+        let restCit = dispoCit-reqCit;
+        bataillons.forEach(function(bat) {
+            if (bat.loc === 'zone') {
+                batType = getBatType(bat);
+                if (batType.skills.includes('transorbital')) {
+                    landersIds.push(bat.id);
+                }
+            }
+        });
+        deadBatsList = [];
+        bataillons.forEach(function(bat) {
+            if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Citoyens') {
+                if (restCit === 0) {
+                    bat.citoyens = 0;
+                    deadBatsList.push(bat.id);
+                } else {
+                    bat.citoyens = restCit;
+                }
+            }
+        });
+        if (restCit === 0) {
+            killBatList();
+        }
+    }
+};
+
+function resAdd(resName,number) {
+    let res = getResByName(resName);
+    let theLanderId = -1;
+    let lander = {};
+    if (res.cat === 'alien') {
+        if (playerInfos.alienRes[resName] === undefined) {
+            playerInfos.alienRes[resName] = number;
+        } else {
+            playerInfos.alienRes[resName] = playerInfos.alienRes[resName]+number;
+        }
+    } else {
+        theLanderId = enoughPlaceLander(number);
+        if (theLanderId >= 0) {
+            lander = getBatById(theLanderId);
+            if (lander.transRes[resName] === undefined) {
+                lander.transRes[resName] = number;
+            } else {
+                lander.transRes[resName] = lander.transRes[resName]+number;
+            }
+        } else {
+            console.log('pas de réserve !!!');
+        }
+    }
+};
+
+function resSub(resName,number) {
+    console.log(resName);
+    let res = getResByName(resName);
+    if (res.cat === 'alien') {
+        playerInfos.alienRes[resName] = playerInfos.alienRes[resName]-number;
+    } else {
+        let revLanders = landers.reverse();
+        revLanders.forEach(function(lander) {
+            if (number >= 1) {
+                if (lander.loc === 'zone') {
+                    if (lander.transRes[resName] != undefined) {
+                        if (lander.transRes[resName] >= number) {
+                            lander.transRes[resName] = lander.transRes[resName]-number;
+                            number = 0;
+                        } else {
+                            number = number-lander.transRes[resName];
+                            delete lander.transRes[resName];
+                        }
+                    }
+                }
+            }
+        });
+    }
+};
+
+function enoughPlaceLander(number) {
+    let theLanderId = -1;
+    let firstLanderId = -1;
+    let resSpace = 0;
+    landers.forEach(function(lander) {
+        if (firstLanderId < 0) {
+            firstLanderId = lander.id;
+        }
+        if (theLanderId < 0) {
+            if (lander.loc === 'zone') {
+                resSpace = checkResSpace(lander);
+                if (resSpace >= number) {
+                    theLanderId = lander.id;
+                }
+            }
+        }
+    });
+    if (theLanderId >= 0) {
+        return theLanderId;
+    } else {
+        return firstLanderId;
+    }
+};
+
 function getDispoRes(resName) {
     let dispoRes = 0;
     landers.forEach(function(bat) {
@@ -68,14 +205,37 @@ function getMinedRes(res) {
 
 function getDispoCit() {
     let landersIds = [];
-    landers.forEach(function(bat) {
-        landersIds.push(bat.id);
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'zone') {
+            batType = getBatType(bat);
+            if (batType.skills.includes('transorbital')) {
+                landersIds.push(bat.id);
+            }
+        }
     });
     let dispoCit = 0;
+    let numCitBat = 0;
     bataillons.forEach(function(bat) {
         if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Citoyens') {
             dispoCit = dispoCit+bat.citoyens;
+            numCitBat++;
         }
     });
+    if (numCitBat >= 2) {
+        let citNumber = 0;
+        deadBatsList = [];
+        bataillons.forEach(function(bat) {
+            if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Citoyens') {
+                citNumber++;
+                if (citNumber >= 2) {
+                    bat.citoyens = 0;
+                    deadBatsList.push(bat.id);
+                } else {
+                    bat.citoyens = dispoCit;
+                }
+            }
+        });
+        killBatList();
+    }
     return dispoCit;
 };

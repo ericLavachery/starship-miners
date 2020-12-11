@@ -10,6 +10,7 @@ function bfconst(cat,triche) {
         catz.push('vehicles');
     }
     selectMode();
+    findLanders();
     updateBldList();
     $("#conUnitList").css("display","block");
     $("#conAmmoList").css("display","block");
@@ -40,6 +41,8 @@ function bfconst(cat,triche) {
     // LIST
     let prodOK = false;
     let bldOK = false;
+    let costOK = false;
+    let costString = '';
     sortedUnitsList.forEach(function(unit) {
         prodOK = false;
         if (triche) {
@@ -74,12 +77,20 @@ function bfconst(cat,triche) {
             if (triche) {
                 bldOK = true;
             }
-            if (bldOK) {
+            costOK = checkUnitCost(unit);
+            costString = '';
+            if (unit.costs != undefined) {
+                costString = toCoolString(unit.costs);
+            }
+            if (triche) {
+                costOK = true;
+            }
+            if (bldOK && costOK) {
                 color = catColor(unit.cat,unit.kind);
-                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+'</span><br>');
+                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+'</span><br>');
             } else {
                 color = 'gff';
-                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+'">'+unit.name+'</span><br>');
+                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'">'+unit.name+'</span><br>');
             }
             lastKind = unit.kind;
         }
@@ -415,6 +426,10 @@ function clickConstruct(tileId,free) {
 function putBat(tileId,citoyens,xp,startTag) {
     console.log('PUTBAT');
     if (Object.keys(conselUnit).length >= 1) {
+        // PAY COSTS !!!
+        if (!conselTriche) {
+            payUnitCost(conselUnit);
+        }
         let tile = getTileById(tileId);
         console.log(conselUnit);
         let nextId;
@@ -753,6 +768,7 @@ function putInfra(infra) {
 };
 
 function updateBldList() {
+    playerInfos.bldList = [];
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);

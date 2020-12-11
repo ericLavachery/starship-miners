@@ -40,6 +40,13 @@ function toNiceString(myArray) {
     return newString;
 };
 
+function toCoolString(myObject) {
+    let newString = JSON.stringify(myObject);
+    newString = newString.replace(/"/g,'');
+    newString = newString.replace(/:/g,'=');
+    return newString;
+};
+
 function onlyFirstLetter(string) {
     return string.charAt(0).toLowerCase();
 };
