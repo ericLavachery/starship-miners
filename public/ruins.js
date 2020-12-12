@@ -32,6 +32,10 @@ function checkRuinsCit(tile) {
         numRuins = 50;
     }
     let citChance = Math.round(ruinsCitBase/Math.sqrt(numRuins+5));
+    let citId = 126;
+    if (rand.rand(1,ruinsCrimChance) === 1) {
+        citId = 225;
+    }
     console.log('citChance: '+citChance);
     if (rand.rand(1,100) <= citChance) {
         let ncFactor = Math.round((Math.sqrt(numRuins)+3)*3);
@@ -39,27 +43,27 @@ function checkRuinsCit(tile) {
         console.log('numCit: '+numCit);
         let restCit = numCit;
         if (restCit <= 72) {
-            putBatAround(tile.id,false,126,restCit);
+            putBatAround(tile.id,false,citId,restCit);
             restCit = 0;
         } else {
-            putBatAround(tile.id,false,126,72);
+            putBatAround(tile.id,false,citId,72);
             restCit = restCit-72;
         }
         if (restCit >= 1) {
             if (restCit <= 72) {
-                putBatAround(tile.id,false,126,restCit);
+                putBatAround(tile.id,false,citId,restCit);
                 restCit = 0;
             } else {
-                putBatAround(tile.id,false,126,72);
+                putBatAround(tile.id,false,citId,72);
                 restCit = restCit-72;
             }
         }
         if (restCit >= 1) {
             if (restCit <= 72) {
-                putBatAround(tile.id,false,126,restCit);
+                putBatAround(tile.id,false,citId,restCit);
                 restCit = 0;
             } else {
-                putBatAround(tile.id,false,126,72);
+                putBatAround(tile.id,false,citId,72);
                 restCit = restCit-72;
             }
         }
@@ -105,7 +109,7 @@ function checkRuinsAliens(tile) {
 
 function putBatAround(tileId,alien,unitId,numCit) {
     console.log(alien);
-    let dropTile = checkDrop(selectedBat);
+    let dropTile = checkDrop(tileId);
     if (dropTile >= 0) {
         let unitIndex;
         if (!alien) {

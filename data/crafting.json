@@ -44,7 +44,7 @@
     {
         "id":16,
         "result":"Compo1",
-        "cost":{"Carbone":3},
+        "cost":{"Carbone":3,"Energie":1},
         "compReq":{"const":1},
         "bldReq":["Chaîne de montage"],
         "batch": 2
@@ -52,7 +52,7 @@
     {
         "id":59,
         "result":"Compo1",
-        "cost":{"Carbone":2,"Scrap":1},
+        "cost":{"Carbone":2,"Scrap":1,"Energie":1},
         "compReq":{"const":1,"tri":1,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch": 2
@@ -60,7 +60,7 @@
     {
         "id":60,
         "result":"Compo1",
-        "cost":{"Carbone":3,"Azote":1},
+        "cost":{"Carbone":3,"Azote":1,"Energie":1},
         "compReq":{"const":1,"ind":3},
         "bldReq":["Usine"],
         "batch": 4

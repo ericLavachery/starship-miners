@@ -15,7 +15,7 @@
     },
     {
         "id":217,
-        "name":"Détenus",
+        "name":"Pendards",
         "levels":{"rednecks":99,"blades":99,"bulbos":1,"drogmulojs":99,"tiradores":99,"detruas":99,"brazier":99},
         "bldReq":["Prisons"],
         "costs":{"Fer":60,"Scrap":60}
@@ -50,7 +50,7 @@
     },
     {
         "id":221,
-        "name":"Criminales",
+        "name":"Desperados",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":1,"detruas":99,"brazier":99},
         "bldReq":["Prisons"],
         "costs":{"Fer":90,"Scrap":90}
@@ -1410,14 +1410,14 @@
         "name":"Centre de tri",
         "bldEquiv":["Décharge"],
         "bldCost":"Décharge",
-        "upkeep":{"Energie":8,"Eau":12}
+        "upkeep":{"Energie":8,"Eau":6}
     },
     {
         "id":205,
         "name":"Recyclab",
         "bldEquiv":["Décharge","Centre de tri"],
         "bldCost":"Centre de tri",
-        "upkeep":{"Energie":15,"Eau":25}
+        "upkeep":{"Energie":15,"Eau":12}
     },
     {
         "id":206,
@@ -1429,25 +1429,25 @@
         "name":"Centre de recherches",
         "bldEquiv":["Laboratoire"],
         "bldCost":"Laboratoire",
-        "upkeep":{"Energie":25,"Eau":20}
+        "upkeep":{"Energie":25,"Eau":10}
     },
     {
         "id":172,
         "name":"Générateur",
         "upkeep":{"Fuel":1},
-        "prod":{"Energie":7}
+        "prod":{"Energie":6}
     },
     {
         "id":208,
         "name":"Centrale solaire",
         "bldEquiv":["Générateur","Centrale SMR"],
-        "upkeep":{"Eau":25}
+        "upkeep":{"Eau":15}
     },
     {
         "id":209,
         "name":"Centrale géothermique",
         "bldEquiv":["Générateur","Centrale SMR"],
-        "upkeep":{"Eau":25}
+        "upkeep":{"Eau":15}
     },
     {
         "id":210,
@@ -1458,7 +1458,7 @@
         "name":"Centrale nucléaire",
         "bldEquiv":["Générateur","Centrale SMR"],
         "bldReq":["Générateur"],
-        "upkeep":{"Plutonium":10,"Eau":75},
+        "upkeep":{"Plutonium":8,"Eau":35},
         "prod":{"Energie":150}
     },
     {
@@ -1466,7 +1466,7 @@
         "name":"Centrale SMR",
         "bldEquiv":["Générateur"],
         "bldReq":["Générateur"],
-        "upkeep":{"Uranium":4,"Eau":18},
+        "upkeep":{"Uranium":3,"Eau":10},
         "prod":{"Energie":50}
     },
     {
@@ -1494,6 +1494,6 @@
     {
         "id":216,
         "name":"Cantine",
-        "upkeep":{"Energie":3,"Eau":12,"Végétaux":25}
+        "upkeep":{"Energie":3,"Eau":10,"Végétaux":25}
     }
 ]

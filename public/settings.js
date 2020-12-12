@@ -48,6 +48,7 @@ let maxResForRate = 350;
 let magmaZone = 3;
 let ruinRarity = 8;
 let ruinsCitBase = 75; // def 50
+let ruinsCrimChance = 15; // 1/15 criminels au lieu de citoyens
 let ruinsBugBase = 50; // def 50
 let selectedTile = -1;
 let showMini = false;

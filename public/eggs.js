@@ -691,7 +691,7 @@ function alienSpawn(bat,crea) {
     conselAmmos = ['xxx','xxx','xxx','xxx'];
     console.log(conselUnit);
     if (Object.keys(conselUnit).length >= 1) {
-        dropTile = checkDrop(bat);
+        dropTile = checkDrop(bat.tileId);
         if (dropTile >= 0) {
             putBat(dropTile,0,0);
         }
@@ -829,7 +829,7 @@ function cocoonSpawn(bat) {
                 console.log('spawned unit ->');
                 console.log(conselUnit);
                 if (Object.keys(conselUnit).length >= 1) {
-                    dropTile = checkDrop(bat);
+                    dropTile = checkDrop(bat.tileId);
                     if (dropTile >= 0) {
                         if (conselUnit.class === 'S') {
                             const index = classes.indexOf('S');
@@ -966,7 +966,7 @@ function eggSpawn(bat,fromEgg) {
                 console.log('spawned unit ->');
                 console.log(conselUnit);
                 if (Object.keys(conselUnit).length >= 1) {
-                    dropTile = checkDrop(bat);
+                    dropTile = checkDrop(bat.tileId);
                     if (dropTile >= 0) {
                         checkSpawnType(conselUnit);
                         putEggCat(bat,conselUnit.kind);
@@ -1040,13 +1040,13 @@ function checkputEggKind(bat) {
     }
 };
 
-function checkDrop(layBat) {
+function checkDrop(layBatTileId) {
     let possibleDrops = [];
     let batHere = false;
     let tileDrop = -1;
     let shufZone = _.shuffle(zone);
     shufZone.forEach(function(tile) {
-        if (isAdjacent(layBat.tileId,tile.id)) {
+        if (isAdjacent(layBatTileId,tile.id)) {
             batHere = false;
             bataillons.forEach(function(bat) {
                 if (bat.loc === "zone" && bat.tileId === tile.id) {
@@ -1068,7 +1068,7 @@ function checkDrop(layBat) {
     if (possibleDrops.length < 1) {
         let distance;
         shufZone.forEach(function(tile) {
-            distance = calcDistance(layBat.tileId,tile.id);
+            distance = calcDistance(layBatTileId,tile.id);
             if (distance <= 3 && distance >=2) {
                 batHere = false;
                 bataillons.forEach(function(bat) {

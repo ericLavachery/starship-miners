@@ -86,7 +86,7 @@
     },
     {
         "id":217,
-        "name":"Détenus",
+        "name":"Pendards",
         "pic":"detenu",
         "cat":"infantry",
         "kind":"bulbos",
@@ -352,7 +352,7 @@
     },
     {
         "id":221,
-        "name":"Criminales",
+        "name":"Desperados",
         "pic":"criminales",
         "cat":"infantry",
         "kind":"tiradores",

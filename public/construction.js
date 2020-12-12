@@ -174,7 +174,7 @@ function conSelect(unitId,player,noRefresh) {
                 armorIndex = armorTypes.findIndex((obj => obj.name == armor));
                 batArmor = armorTypes[armorIndex];
                 compReqOK = checkCompReq(batArmor);
-                if (compReqOK) {
+                if (compReqOK || conselTriche) {
                     if (conselAmmos[2] == armor || (conselAmmos[2] === 'xxx' && listNum === 1)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {
@@ -194,7 +194,7 @@ function conSelect(unitId,player,noRefresh) {
                     if (playerInfos.bldList.includes(batArmor.bldReq[0]) || batArmor.bldReq[0] === undefined || conselUnit.name === batArmor.bldReq[0]) {
                         bldReqOK = true;
                     }
-                    if (bldReqOK) {
+                    if (bldReqOK || conselTriche) {
                         $('#conAmmoList').append('<span class="constName klik" title="'+toNiceString(batArmor.bldReq)+'" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
                     } else {
                         $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batArmor.bldReq)+'">'+armor+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
@@ -217,7 +217,7 @@ function conSelect(unitId,player,noRefresh) {
                 equipIndex = armorTypes.findIndex((obj => obj.name == equip));
                 batEquip = armorTypes[equipIndex];
                 compReqOK = checkCompReq(batEquip);
-                if (compReqOK) {
+                if (compReqOK || conselTriche) {
                     if (conselAmmos[3] == equip || (conselAmmos[3] === 'xxx' && listNum === 1)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {
@@ -243,7 +243,7 @@ function conSelect(unitId,player,noRefresh) {
                     if ((playerInfos.bldList.includes(batEquip.bldReq[0]) || batEquip.bldReq[0] === undefined || conselUnit.name === batEquip.bldReq[0]) && (playerInfos.bldList.includes(batEquip.bldReq[1]) || batEquip.bldReq[1] === undefined || conselUnit.name === batEquip.bldReq[1])) {
                         bldReqOK = true;
                     }
-                    if (bldReqOK) {
+                    if (bldReqOK || conselTriche) {
                         $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip)+'" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else {
                         $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batEquip.bldReq)+'">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
@@ -268,7 +268,7 @@ function conSelect(unitId,player,noRefresh) {
                     ammoIndex = ammoTypes.findIndex((obj => obj.name == ammo));
                     batAmmo = ammoTypes[ammoIndex];
                     compReqOK = checkCompReq(batAmmo);
-                    if (compReqOK) {
+                    if (compReqOK || conselTriche) {
                         if (conselAmmos[0] == ammo || (conselAmmos[0] === 'xxx' && listNum === 1)) {
                             $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                         } else {
@@ -282,7 +282,7 @@ function conSelect(unitId,player,noRefresh) {
                         } else {
                             bldReqOK = true;
                         }
-                        if (bldReqOK) {
+                        if (bldReqOK || conselTriche) {
                             $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+'" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
                         } else {
                             $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+'">'+showAmmo(ammo)+'</span><br>');
@@ -306,7 +306,7 @@ function conSelect(unitId,player,noRefresh) {
                     ammoIndex = ammoTypes.findIndex((obj => obj.name == ammo));
                     batAmmo = ammoTypes[ammoIndex];
                     compReqOK = checkCompReq(batAmmo);
-                    if (compReqOK) {
+                    if (compReqOK || conselTriche) {
                         if (conselAmmos[1] == ammo || (conselAmmos[1] === 'xxx' && listNum === 1)) {
                             $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                         } else {
@@ -320,7 +320,7 @@ function conSelect(unitId,player,noRefresh) {
                         } else {
                             bldReqOK = true;
                         }
-                        if (bldReqOK) {
+                        if (bldReqOK || conselTriche) {
                             $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+'" onclick="selectAmmo(`'+ammo+'`,`w2`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
                         } else {
                             $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+'">'+showAmmo(ammo)+'</span><br>');
@@ -675,7 +675,11 @@ function dismantle(batId) {
         let resHere = showRes(bat.tileId);
         $('#b'+bat.tileId).append(resHere);
         if (batType.skills.includes('recupcit')) {
-            recupCitoyens(126,tileId,crew,xp);
+            if (batType.skills.includes('brigands')) {
+                recupCitoyens(225,tileId,crew,xp);
+            } else {
+                recupCitoyens(126,tileId,crew,xp);
+            }
         }
     } else {
         alert("Vous devez vider le bataillon avant de le démanteler.");

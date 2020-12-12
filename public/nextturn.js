@@ -793,6 +793,7 @@ function checkDeath(bat,batType) {
             if (!batType.skills.includes('nodeathcount')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
                 transDestroy(deadId,tileId);
+                saveCrew(batType,deadId,tileId);
                 playMusic('rip',false);
             }
             deadBatsList.push(bat.id);

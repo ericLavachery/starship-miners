@@ -12,6 +12,8 @@ function voirReserve() {
     findLanders();
     let dispoCit = getDispoCit();
     $('#conUnitList').append('<span class="paramName">Citoyens</span><span class="paramIcon"></span><span class="paramValue cy">'+dispoCit+'</span><br>');
+    let dispoCrim = getDispoCrim();
+    $('#conUnitList').append('<span class="paramName">Criminels</span><span class="paramIcon"></span><span class="paramValue cy">'+dispoCrim+'</span><br>');
     let dispoRes;
     let minedRes;
     let resIcon;
@@ -62,9 +64,16 @@ function checkUnitCost(batType) {
     }
     let reqCit = batType.squads*batType.squadSize*batType.crew;
     if (reqCit >= 1) {
-        let dispoCit = getDispoCit();
-        if (reqCit > dispoCit) {
-            enoughRes = false;
+        if (batType.skills.includes('brigands')) {
+            let dispoCrim = getDispoCrim();
+            if (reqCit > dispoCrim) {
+                enoughRes = false;
+            }
+        } else {
+            let dispoCit = getDispoCit();
+            if (reqCit > dispoCit) {
+                enoughRes = false;
+            }
         }
     }
     return enoughRes;
@@ -81,29 +90,56 @@ function payUnitCost(batType) {
     let reqCit = batType.squads*batType.squadSize*batType.crew;
     if (reqCit >= 1) {
         let landersIds = [];
-        let dispoCit = getDispoCit();
-        let restCit = dispoCit-reqCit;
-        bataillons.forEach(function(bat) {
-            if (bat.loc === 'zone') {
-                batType = getBatType(bat);
-                if (batType.skills.includes('transorbital')) {
-                    landersIds.push(bat.id);
+        if (batType.skills.includes('brigands')) {
+            let dispoCrim = getDispoCrim();
+            let restCit = dispoCrim-reqCit;
+            bataillons.forEach(function(bat) {
+                if (bat.loc === 'zone') {
+                    batType = getBatType(bat);
+                    if (batType.skills.includes('transorbital')) {
+                        landersIds.push(bat.id);
+                    }
                 }
-            }
-        });
-        deadBatsList = [];
-        bataillons.forEach(function(bat) {
-            if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Citoyens') {
-                if (restCit === 0) {
-                    bat.citoyens = 0;
-                    deadBatsList.push(bat.id);
-                } else {
-                    bat.citoyens = restCit;
+            });
+            deadBatsList = [];
+            bataillons.forEach(function(bat) {
+                if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Criminels') {
+                    if (restCit === 0) {
+                        bat.citoyens = 0;
+                        deadBatsList.push(bat.id);
+                    } else {
+                        bat.citoyens = restCit;
+                    }
                 }
+            });
+            if (restCit === 0) {
+                killBatList();
             }
-        });
-        if (restCit === 0) {
-            killBatList();
+        } else {
+            let dispoCit = getDispoCit();
+            let restCit = dispoCit-reqCit;
+            bataillons.forEach(function(bat) {
+                if (bat.loc === 'zone') {
+                    batType = getBatType(bat);
+                    if (batType.skills.includes('transorbital')) {
+                        landersIds.push(bat.id);
+                    }
+                }
+            });
+            deadBatsList = [];
+            bataillons.forEach(function(bat) {
+                if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Citoyens') {
+                    if (restCit === 0) {
+                        bat.citoyens = 0;
+                        deadBatsList.push(bat.id);
+                    } else {
+                        bat.citoyens = restCit;
+                    }
+                }
+            });
+            if (restCit === 0) {
+                killBatList();
+            }
         }
     }
 };
@@ -238,4 +274,41 @@ function getDispoCit() {
         killBatList();
     }
     return dispoCit;
+};
+
+function getDispoCrim() {
+    let landersIds = [];
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'zone') {
+            batType = getBatType(bat);
+            if (batType.skills.includes('transorbital')) {
+                landersIds.push(bat.id);
+            }
+        }
+    });
+    let dispoCrim = 0;
+    let numCitBat = 0;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Criminels') {
+            dispoCrim = dispoCrim+bat.citoyens;
+            numCitBat++;
+        }
+    });
+    if (numCitBat >= 2) {
+        let citNumber = 0;
+        deadBatsList = [];
+        bataillons.forEach(function(bat) {
+            if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Criminels') {
+                citNumber++;
+                if (citNumber >= 2) {
+                    bat.citoyens = 0;
+                    deadBatsList.push(bat.id);
+                } else {
+                    bat.citoyens = dispoCrim;
+                }
+            }
+        });
+        killBatList();
+    }
+    return dispoCrim;
 };

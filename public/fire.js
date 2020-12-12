@@ -1580,6 +1580,7 @@ function batDeath(bat,count) {
         if (count && !batType.skills.includes('nodeathcount')) {
             playerInfos.unitsLost = playerInfos.unitsLost+1;
             transDestroy(deadId,tileId);
+            saveCrew(batType,deadId,tileId);
             playMusic('rip',false);
         }
         batIndex = batList.findIndex((obj => obj.id == bat.id));
@@ -1638,6 +1639,36 @@ function batDeathEffect(bat,quiet,title,body) {
     }
 };
 
+function saveCrew(deadBatType,deadId,tileId) {
+    alienOccupiedTileList();
+    playerOccupiedTileList();
+    let savedCits = 0;
+    let salvableCits = 0;
+    let citId = 126;
+    if (deadBatType.skills.includes('brigands')) {
+        citId = 225;
+    }
+    if (deadBatType.skills.includes('crewsave')) {
+        salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/6*rand.rand(4,6));
+    } else if (deadBatType.skills.includes('badcrewsave') || deadBatType.cat === 'buildings') {
+        salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/6*rand.rand(0,4));
+    }
+    if (salvableCits >= 1) {
+        if (salvableCits > 72) {
+            putBatAround(tileId,false,citId,72);
+            salvableCits = salvableCits-72;
+        }
+        if (salvableCits > 72) {
+            putBatAround(tileId,false,citId,72);
+            salvableCits = salvableCits-72;
+        }
+        putBatAround(tileId,false,citId,salvableCits);
+        if (savedCits >= 1) {
+            centerMapTo(tileId);
+        }
+    }
+};
+
 function transDestroy(deadId,tileId) {
     alienOccupiedTileList();
     playerOccupiedTileList();
@@ -1652,7 +1683,7 @@ function transDestroy(deadId,tileId) {
     let crashEscapeTile = -1;
     crashBats.forEach(function(bat) {
         crashEscapeTile = -1;
-        if (rand.rand(1,2) === 1) {
+        if (rand.rand(1,3) != 1) {
             crashEscapeTile = getCrashEscapeTile(tileId);
         }
         if (crashEscapeTile >= 0) {
