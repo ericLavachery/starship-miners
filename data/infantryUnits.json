@@ -219,7 +219,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze"]
         },
         "weapon2":{
             "name":"Javelots (lancé)",
@@ -231,7 +231,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze"],
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze"],
             "maxAmmo":14
         },
         "protection":["aucune","scrap","kevlar","mendium","nano"],

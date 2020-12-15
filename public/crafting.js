@@ -99,10 +99,6 @@ function checkOldCraft(craft) {
     let oldCraft = false;
     let bldKO = false;
     let allCompForKO = true;
-    // console.log('OLD CRAFT');
-    // console.log(craft.result);
-    // console.log(craft.bldOut);
-    // console.log(craft.compOut);
     if (craft.bldOut != undefined) {
         if (playerInfos.bldList.includes(craft.bldOut[0])) {
             bldKO = true;
@@ -132,7 +128,7 @@ function checkCraftCost(craftId,number) {
     let dispoRes;
     let craftIndex = crafting.findIndex((obj => obj.id == craftId));
     let craft = crafting[craftIndex];
-    let craftFactor = Math.round(number/craft.batch);
+    let craftFactor = Math.ceil(number/craft.batch);
     if (playerInfos.comp.ind >= 3) {
         if (playerInfos.bldList.includes('Usine')) {
             craftFactor = Math.round(craftFactor*0.8);
@@ -155,7 +151,7 @@ function checkCraftCost(craftId,number) {
 function doCraft(craftId,number) {
     let craftIndex = crafting.findIndex((obj => obj.id == craftId));
     let craft = crafting[craftIndex];
-    let craftFactor = Math.round(number/craft.batch);
+    let craftFactor = Math.ceil(number/craft.batch);
     if (playerInfos.comp.ind >= 3) {
         if (playerInfos.bldList.includes('Usine')) {
             craftFactor = Math.round(craftFactor*0.8);
@@ -182,7 +178,7 @@ function doEnergyCraft(resName,neededRes,energyCreated) {
 function showCraftCost(craft,number) {
     let craftCostsList = ' ';
     let dispoRes;
-    let craftFactor = Math.round(number/craft.batch);
+    let craftFactor = Math.ceil(number/craft.batch);
     if (playerInfos.comp.ind >= 3) {
         if (playerInfos.bldList.includes('Usine')) {
             craftFactor = Math.round(craftFactor*0.8);
