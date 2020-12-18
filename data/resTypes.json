@@ -14,7 +14,7 @@
         "name": "Plomb",
         "bld": "Mine",
         "level": 1,
-        "rarity": 100,
+        "rarity": 85,
         "cat": "white",
         "batch": 6,
         "energie": 50
@@ -24,9 +24,9 @@
         "name": "Fer",
         "bld": "Mine",
         "level": 2,
-        "rarity": 120,
+        "rarity": 130,
         "cat": "white",
-        "batch": 6,
+        "batch": 8,
         "energie": 50
     },
     {
@@ -512,16 +512,6 @@
     {
         "id": 49,
         "name": "Slime",
-        "bld": "",
-        "level": 4,
-        "rarity": 25,
-        "cat": "alien",
-        "batch": 1,
-        "energie": 20
-    },
-    {
-        "id": 51,
-        "name": "Noxis",
         "bld": "",
         "level": 4,
         "rarity": 25,

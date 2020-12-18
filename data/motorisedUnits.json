@@ -205,7 +205,7 @@
             "power":14,
             "aoe":"squad",
             "sound":"flamme",
-            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
+            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":24,
             "ravitBld":"Derrick"
         },
@@ -261,7 +261,7 @@
             "power":17,
             "aoe":"squad",
             "sound":"flamme",
-            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
+            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":32,
             "ravitBld":"Derrick"
         },
@@ -2827,7 +2827,7 @@
             "power":12,
             "aoe":"squad",
             "sound":"flamme",
-            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
+            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":12,
             "ravitBld":"Derrick"
         },
@@ -3534,7 +3534,7 @@
             "cost":5,
             "range":0,
             "noFly":true,
-            "rof":12,
+            "rof":9,
             "accuracy":9,
             "power":13,
             "aoe":"squad",

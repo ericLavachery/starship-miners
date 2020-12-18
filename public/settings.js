@@ -95,7 +95,7 @@ let initiativeDice = 15 // ajoute 0-15
 let stopMe = false;
 let nextTurnOK = false;
 let toHit = 999;
-let coverAOE = 3;
+let coverAOE = 1;
 let escapeValue = 1.45;
 let escaped = false;
 let activeTurn = 'player';
@@ -124,6 +124,7 @@ let zombRange = 5;
 let zombifiersTiles = [];
 let zombifiedTiles = [];
 let startLander = 5;
+let deploySalvos = 7;
 // ALIENS
 let isFFW = false;
 let pointDeMire = 1830; // tileId

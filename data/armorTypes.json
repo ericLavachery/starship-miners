@@ -280,6 +280,20 @@
         "compReq":{"log":2,"explo":1}
     },
     {
+        "name": "w2-2ch",
+        "skills": [],
+        "info": "Double chargeur",
+        "bldReq":["Arsenal"],
+        "compReq":{"log":2,"bal":1}
+    },
+    {
+        "name": "w2-canon",
+        "skills": [],
+        "info": "Minicanon",
+        "bldReq":["Armurerie"],
+        "compReq":{"log":2,"explo":1}
+    },
+    {
         "name": "carrousel",
         "skills": [],
         "info": "Cadence+ Ravitaillement+",
@@ -369,20 +383,6 @@
         "info": "Cradle",
         "bldReq":["Chaîne de montage"],
         "compReq":{"log":2,"vsp":1}
-    },
-    {
-        "name": "w2-2ch",
-        "skills": [],
-        "info": "Double chargeur",
-        "bldReq":["Arsenal"],
-        "compReq":{"log":2,"bal":1}
-    },
-    {
-        "name": "w2-canon",
-        "skills": [],
-        "info": "Minicanon",
-        "bldReq":["Armurerie"],
-        "compReq":{"log":2,"explo":1}
     },
     {
         "name": "w2-brol",

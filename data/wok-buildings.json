@@ -477,7 +477,7 @@
         "cat":"buildings",
         "kind":"zero-defense",
         "sort":5,
-		"cost":{"Electro":500,"Tungstène":1000,"Mercure":150,"Azote":2000"Composite 2":25},
+		"cost":{"Electros":500,"Tungstène":1000,"Mercure":150,"Azote":2000"Composite 2":25},
         "squads":6,
         "squadSize":1,
         "crew":10,

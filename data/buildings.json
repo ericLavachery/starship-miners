@@ -146,7 +146,7 @@
             "power":12,
             "aoe":"squad",
             "sound":"flamme",
-            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
+            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":32,
             "ravitBld":"Derrick"
         },
@@ -1520,7 +1520,7 @@
             "power":12,
             "aoe":"squad",
             "sound":"flamme",
-            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol"],
+            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":32,
             "ravitBld":"Derrick"
         },
@@ -2109,7 +2109,7 @@
         "name":"Camp de rééducation",
         "pic":"reeduc",
         "cat":"buildings",
-        "kind":"zero-support",
+        "kind":"zero-vm",
         "sort":5,
         "squads":6,
         "squadSize":1,

@@ -1,6 +1,9 @@
 ,
 "costs":{"Fer":000,"Scrap":000,"Carbone":000,"Aluminium":000,"Titane":000,"Tungstène":000,"Rhodium":000,"Bore":000,"Huile":000,"Silicium":000,"Cuivre":000,"Electros":000,"Batteries":000,"Nickel":000,"Compo2":000,"Compo3":000}
 
+remove ,"Xxxx":000
+,"\w*":000
+
 Scrap
 Plomb
 Fer
