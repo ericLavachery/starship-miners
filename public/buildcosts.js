@@ -47,6 +47,122 @@ function findLanders() {
     });
 };
 
+function checkCost(costs) {
+    let enoughRes = true;
+    if (costs != undefined) {
+        Object.entries(costs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            let dispoRes = getDispoRes(key);
+            if (dispoRes < value) {
+                enoughRes = false;
+            }
+        });
+    }
+    return enoughRes;
+};
+
+function payCost(costs) {
+    if (costs != undefined) {
+        Object.entries(costs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            resSub(key,value);
+            console.log('pay '+value+' '+key);
+        });
+    }
+};
+
+function getDeployCosts(unit,ammo,weapNum) {
+    let deployCosts = {};
+    if (weapNum != 0) {
+        // AMMOs
+        let deployFactor = 0;
+        if (weapNum === 1) {
+            deployFactor = Math.ceil(unit.squads*unit.weapon.rof*unit.weapon.power/5*deploySalvos);
+            if (!unit.weapon.noBis) {
+                if (unit.maxSalvo >= 2) {
+                    if (unit.ap/unit.weapon.cost >= unit.maxSalvo) {
+                        deployFactor = deployFactor*unit.maxSalvo;
+                    } else {
+                        deployFactor = deployFactor*(unit.maxSalvo-1);
+                    }
+                }
+            }
+        } else {
+            deployFactor = Math.ceil(unit.squads*unit.weapon2.rof*unit.weapon2.power/5*deploySalvos);
+            if (!unit.weapon2.noBis) {
+                if (unit.maxSalvo >= 2) {
+                    if (unit.ap/unit.weapon2.cost >= unit.maxSalvo) {
+                        deployFactor = deployFactor*unit.maxSalvo;
+                    } else {
+                        deployFactor = deployFactor*(unit.maxSalvo-1);
+                    }
+                }
+            }
+        }
+        if (ammo.deploy != undefined) {
+            if (Object.keys(ammo.deploy).length >= 1) {
+                deployCosts = JSON.parse(JSON.stringify(ammo.deploy));
+                Object.entries(ammo.deploy).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    deployCosts[key] = Math.ceil(value*deployFactor/ammo.batch);
+                });
+            } else {
+                deployCosts = {};
+            }
+        } else {
+            deployCosts = {};
+        }
+    } else {
+        // UNIT
+        if (unit.deploy != undefined) {
+            if (Object.keys(unit.deploy).length >= 1) {
+                deployCosts = JSON.parse(JSON.stringify(unit.deploy));
+                Object.entries(unit.deploy).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    deployCosts[key] = Math.ceil(value*deploySalvos);
+                });
+            } else {
+                deployCosts = {};
+            }
+        } else {
+            deployCosts = {};
+        }
+    }
+    return deployCosts;
+}
+
+function payDeployCosts(unit,ammoName) {
+    let deployCosts;
+    let ammoIndex;
+    let batAmmo;
+    // Ammo W1
+    if (ammoName[0] != 'xxx') {
+        ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoName[0]));
+        batAmmo = ammoTypes[ammoIndex];
+        deployCosts = getDeployCosts(unit,batAmmo,1);
+        payCost(deployCosts);
+    }
+    // Ammo W2
+    if (ammoName[1] != 'xxx') {
+        ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoName[1]));
+        batAmmo = ammoTypes[ammoIndex];
+        deployCosts = getDeployCosts(unit,batAmmo,2);
+        payCost(deployCosts);
+    }
+    // Unit
+    deployCosts = getDeployCosts(unit,batAmmo,0);
+    payCost(deployCosts);
+};
+
+function payEquipCosts(unit,ammoName) {
+    // Payer le prix fixe des lames, des équipements et des armures
+    
+};
+
 function checkUnitCost(batType) {
     let enoughRes = true;
     // console.log('CHECK COSTS');

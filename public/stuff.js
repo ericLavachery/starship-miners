@@ -35,15 +35,21 @@ function capitalizeFirstLetter(string) {
 };
 
 function toNiceString(myArray) {
-    let newString = myArray.toString();
-    newString = newString.replace(/,/g,', ');
+    let newString = '';
+    if (myArray instanceof Array) {
+        newString = myArray.toString();
+        newString = newString.replace(/,/g,', ');
+    }
     return newString;
 };
 
 function toCoolString(myObject) {
-    let newString = JSON.stringify(myObject);
-    newString = newString.replace(/"/g,'');
-    newString = newString.replace(/:/g,'=');
+    let newString = '';
+    if (myObject != undefined) {
+        newString = JSON.stringify(myObject);
+        newString = newString.replace(/"/g,'');
+        newString = newString.replace(/:/g,'=');
+    }
     return newString;
 };
 

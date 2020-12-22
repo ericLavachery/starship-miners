@@ -162,6 +162,7 @@ function conSelect(unitId,player,noRefresh) {
     let listNum = 1;
     let bldReqOK = false;
     let compReqOK = false;
+    let dCostsOK = false;
     if (conselUnit.protection != undefined) {
         if (conselUnit.protection.length >= 1) {
             console.log(conselUnit.protection);
@@ -268,7 +269,6 @@ function conSelect(unitId,player,noRefresh) {
                 conselUnit.weapon.ammo.forEach(function(ammo) {
                     ammoIndex = ammoTypes.findIndex((obj => obj.name == ammo));
                     batAmmo = ammoTypes[ammoIndex];
-                    deployCosts = getDeployCosts(conselUnit,batAmmo.deploy,batAmmo.batch,1);
                     compReqOK = checkCompReq(batAmmo);
                     if (compReqOK || conselTriche) {
                         if (conselAmmos[0] == ammo || (conselAmmos[0] === 'xxx' && listNum === 1)) {
@@ -276,6 +276,8 @@ function conSelect(unitId,player,noRefresh) {
                         } else {
                             $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                         }
+                        deployCosts = getDeployCosts(conselUnit,batAmmo,1);
+                        dCostsOK = checkCost(deployCosts);
                         bldReqOK = false;
                         if (batAmmo.bldReq instanceof Array) {
                             if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
@@ -284,10 +286,10 @@ function conSelect(unitId,player,noRefresh) {
                         } else {
                             bldReqOK = true;
                         }
-                        if (bldReqOK || conselTriche) {
+                        if ((bldReqOK && dCostsOK) || conselTriche) {
                             $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+toCoolString(deployCosts)+'" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
                         } else {
-                            $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+'">'+showAmmo(ammo)+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+' '+toCoolString(deployCosts)+'">'+showAmmo(ammo)+'</span><br>');
                         }
                     }
                     listNum++;
@@ -307,7 +309,6 @@ function conSelect(unitId,player,noRefresh) {
                 conselUnit.weapon2.ammo.forEach(function(ammo) {
                     ammoIndex = ammoTypes.findIndex((obj => obj.name == ammo));
                     batAmmo = ammoTypes[ammoIndex];
-                    deployCosts = getDeployCosts(conselUnit,batAmmo.deploy,batAmmo.batch,2);
                     compReqOK = checkCompReq(batAmmo);
                     if (compReqOK || conselTriche) {
                         if (conselAmmos[1] == ammo || (conselAmmos[1] === 'xxx' && listNum === 1)) {
@@ -315,6 +316,8 @@ function conSelect(unitId,player,noRefresh) {
                         } else {
                             $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                         }
+                        deployCosts = getDeployCosts(conselUnit,batAmmo,2);
+                        dCostsOK = checkCost(deployCosts);
                         bldReqOK = false;
                         if (batAmmo.bldReq instanceof Array) {
                             if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
@@ -323,10 +326,10 @@ function conSelect(unitId,player,noRefresh) {
                         } else {
                             bldReqOK = true;
                         }
-                        if (bldReqOK || conselTriche) {
+                        if ((bldReqOK && dCostsOK) || conselTriche) {
                             $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+toCoolString(deployCosts)+'" onclick="selectAmmo(`'+ammo+'`,`w2`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
                         } else {
-                            $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+'">'+showAmmo(ammo)+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+' '+toCoolString(deployCosts)+'">'+showAmmo(ammo)+'</span><br>');
                         }
                     }
                     listNum++;
@@ -363,53 +366,6 @@ function selectEquip(equip,unitId) {
     console.log(conselAmmos);
     conSelect(unitId,'player',true);
 };
-
-function getDeployCosts(unit,ammoDeploy,ammoBatch,weapNum) {
-    let deployCosts = {};
-    let deployFactor = 0;
-    if (weapNum === 1) {
-        deployFactor = Math.ceil(unit.squads*unit.weapon.rof*unit.weapon.power/5*deploySalvos);
-        if (!unit.weapon.noBis) {
-            if (unit.maxSalvo >= 2) {
-                if (unit.ap/unit.weapon.cost >= unit.maxSalvo) {
-                    deployFactor = deployFactor*unit.maxSalvo;
-                } else {
-                    deployFactor = deployFactor*(unit.maxSalvo-1);
-                }
-            }
-        }
-    } else {
-        deployFactor = Math.ceil(unit.squads*unit.weapon2.rof*unit.weapon2.power/5*deploySalvos);
-        if (!unit.weapon2.noBis) {
-            if (unit.maxSalvo >= 2) {
-                if (unit.ap/unit.weapon2.cost >= unit.maxSalvo) {
-                    deployFactor = deployFactor*unit.maxSalvo;
-                } else {
-                    deployFactor = deployFactor*(unit.maxSalvo-1);
-                }
-            }
-        }
-    }
-    if (ammoDeploy != undefined) {
-        if (Object.keys(ammoDeploy).length >= 1) {
-            deployCosts = JSON.parse(JSON.stringify(ammoDeploy));
-            Object.entries(ammoDeploy).map(entry => {
-                let key = entry[0];
-                let value = entry[1];
-                deployCosts[key] = Math.ceil(value*deployFactor/ammoBatch);
-            });
-        } else {
-            deployCosts = {};
-        }
-    } else {
-        deployCosts = {};
-    }
-    // console.log(unit.name);
-    // console.log(ammoDeploy);
-    // console.log(deployFactor);
-    // console.log(deployCosts);
-    return deployCosts;
-}
 
 function checkCompReq(batEquip) {
     let compReqOK = true;
@@ -473,12 +429,38 @@ function clickConstruct(tileId,free) {
     }
 };
 
+function conselNeat() {
+    if (conselAmmos[0] == 'xxx') {
+        if (Object.keys(conselUnit.weapon).length >= 1) {
+            conselAmmos[0] = conselUnit.weapon.ammo[0];
+        } else {
+            conselAmmos[0] = 'none';
+        }
+    }
+    if (conselAmmos[1] == 'xxx') {
+        if (Object.keys(conselUnit.weapon2).length >= 1) {
+            conselAmmos[1] = conselUnit.weapon2.ammo[0];
+        } else {
+            conselAmmos[1] = 'none';
+        }
+    }
+    if (conselAmmos[2] == 'xxx') {
+        conselAmmos[2] = 'aucune';
+    }
+    if (conselAmmos[3] == 'xxx') {
+        conselAmmos[3] = 'aucun';
+    }
+};
+
 function putBat(tileId,citoyens,xp,startTag) {
     console.log('PUTBAT');
     if (Object.keys(conselUnit).length >= 1) {
+        conselNeat();
         // PAY COSTS !!!
         if (!conselTriche) {
             payUnitCost(conselUnit);
+            payEquipCosts(conselUnit,conselAmmos);
+            payDeployCosts(conselUnit,conselAmmos);
         }
         let tile = getTileById(tileId);
         console.log(conselUnit);

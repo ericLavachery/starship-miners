@@ -640,6 +640,16 @@
         "energie": -1
     },
     {
+        "id": 70,
+        "name": "Tissus",
+        "bld": "",
+        "level": 4,
+        "rarity": 100,
+        "cat": "transfo",
+        "batch": 1,
+        "energie": 15
+    },
+    {
         "id": 65,
         "name": "Moteur Orbital",
         "bld": "",
@@ -682,6 +692,16 @@
     {
         "id": 69,
         "name": "Jetpacks",
+        "bld": "",
+        "level": 4,
+        "rarity": 100,
+        "cat": "transfo",
+        "batch": 1,
+        "energie": -1
+    },
+    {
+        "id": 71,
+        "name": "Flash",
         "bld": "",
         "level": 4,
         "rarity": 100,

@@ -15,7 +15,7 @@
     },
     {
         "id":217,
-        "name":"Pendards",
+        "name":"Détenus",
         "levels":{"rednecks":99,"blades":99,"bulbos":1,"drogmulojs":99,"tiradores":99,"detruas":99,"brazier":99},
         "bldReq":["Prisons"],
         "costs":{"Fer":60,"Scrap":60}
@@ -1482,7 +1482,7 @@
         "name":"Centrale nucléaire",
         "bldEquiv":["Générateur","Centrale SMR"],
         "bldReq":["Générateur"],
-        "upkeep":{"Plutonium":9,"Eau":90},
+        "upkeep":{"Plutonium":9,"Eau":120},
         "prod":{"Energie":150},
         "costs":{"Energie":690,"Compo2":810,"Compo3":450,"Eau":2000,"Energie":500,"Carbone":500,"Titane":300,"Plomb":500,"Nickel":200,"Cuivre":400,"Bore":300,"Plutonium":300,"Electros":200,"Batteries":300}
     },

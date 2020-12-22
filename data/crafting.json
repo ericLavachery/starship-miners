@@ -309,20 +309,20 @@
     {
         "id":56,
         "result":"Jetpacks",
-        "cost":{"Aluminium":2,"Nickel":1,"Electros":1,"Fuel":2,"Energie":2},
+        "cost":{"Aluminium":18,"Nickel":6,"Electros":6},
         "compReq":{"log":2,"aero":1},
         "bldReq":["Chaîne de montage"],
-        "batch": 2,
-        "creaNum":12
+        "batch": 6,
+        "creaNum":6
     },
     {
         "id":64,
         "result":"Flash",
-        "cost":{"Batteries":1,"Cobalt":3,"Hélium":6,"Energie":2},
+        "cost":{"Batteries":3,"Cobalt":3,"Hélium":6},
         "compReq":{"log":1},
         "bldReq":["Atelier"],
-        "batch": 1,
-        "creaNum":10
+        "batch": 6,
+        "creaNum":6
     },
     {
         "id":54,
@@ -568,9 +568,17 @@
         "creaNum":1
     },
     {
+        "id":70,
+        "result":"Energie",
+        "cost":{"Eau":40,"Uranium":3},
+        "compReq":{},
+        "bldReq":["Centrale nucléaire","Soute"],
+        "batch": 50
+    },
+    {
         "id":68,
         "result":"Energie",
-        "cost":{"Eau":30,"Plutonium":3},
+        "cost":{"Eau":40,"Plutonium":3},
         "compReq":{},
         "bldReq":["Centrale nucléaire","Soute"],
         "batch": 50
@@ -581,6 +589,22 @@
         "cost":{"Eau":25,"Uranium":4},
         "compReq":{},
         "bldReq":["Centrale SMR","Soute"],
+        "batch": 50
+    },
+    {
+        "id":71,
+        "result":"Energie",
+        "cost":{"Eau":25,"Plutonium":5},
+        "compReq":{},
+        "bldReq":["Centrale SMR","Soute"],
+        "batch": 50
+    },
+    {
+        "id":72,
+        "result":"Energie",
+        "cost":{"Eau":25},
+        "compReq":{},
+        "bldReq":["Centrale solaire","Soute"],
         "batch": 50
     }
 ]
