@@ -4811,7 +4811,7 @@
         "size":3,
         "volume":1,
         "stealth":7,
-        "ap":12,
+        "ap":13,
         "maxSalvo":1,
         "weapon":{
             "name":"Marteau",

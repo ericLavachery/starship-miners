@@ -1382,7 +1382,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
-        "equip":["aucun","lunette","chargeur","g2motor","chenilles","snorkel","w2-2ch","flash"],
+        "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","w2-2ch","flash"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -2908,7 +2908,7 @@
         "size":21,
         "stealth":5,
         "speed":2,
-        "ap":13,
+        "ap":14,
         "maxSalvo":2,
         "weapon":{
             "name":"Mitrailleuse légère",
