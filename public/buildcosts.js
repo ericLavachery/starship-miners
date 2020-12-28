@@ -160,7 +160,7 @@ function payDeployCosts(unit,ammoName) {
 
 function payEquipCosts(unit,ammoName) {
     // Payer le prix fixe des lames, des équipements et des armures
-    
+
 };
 
 function checkUnitCost(batType) {
@@ -258,6 +258,31 @@ function payUnitCost(batType) {
             }
         }
     }
+};
+
+function allResAdd(number) {
+    findLanders();
+    let numRes = number;
+    resTypes.forEach(function(res) {
+        if (res.name != 'Magma') {
+            if (res.name === 'Huile') {
+                numRes = Math.ceil(50*number*res.batch/3);
+            } else if (res.name === 'Scrap') {
+                numRes = Math.ceil(200*number*res.batch/3);
+            } else {
+                numRes = Math.ceil(res.rarity*number*res.batch/3);
+            }
+            if (res.cat === 'blue') {
+                numRes = Math.ceil(numRes/3);
+            } else if (res.cat === 'blue-sky') {
+                numRes = Math.ceil(numRes/2);
+            } else if (res.cat === 'sky') {
+                numRes = Math.ceil(numRes/3);
+            }
+            resAdd(res.name,numRes);
+        }
+    });
+    voirReserve();
 };
 
 function resAdd(resName,number) {

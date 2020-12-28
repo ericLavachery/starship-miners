@@ -1,7 +1,8 @@
 function gangNavig() {
     $('#gangInfos').empty();
-    $('#gangInfos').append('<button type="button" title="Constriche" class="boutonGris iconButtons" onclick="bfconst(`all`,true)"><i class="fa fa-hammer"></i></button>');
-    $('#gangInfos').append('<button type="button" title="Editer le Gang" class="boutonGris iconButtons" onclick="gangEdit()"><i class="fas fa-users-cog"></i></button><br>');
+    $('#gangInfos').append('<button type="button" title="Constriche" class="boutonBleu iconButtons" onclick="bfconst(`all`,true)"><i class="fa fa-hammer"></i></button>');
+    $('#gangInfos').append('<button type="button" title="Ajouter un peu de chaque ressource" class="boutonBleu iconButtons" onclick="allResAdd(10)"><i class="fas fa-cart-plus"></i></button>');
+    $('#gangInfos').append('<button type="button" title="Editer le Gang" class="boutonBleu iconButtons" onclick="gangEdit()"><i class="fas fa-users-cog"></i></button><br>');
     $('#gangInfos').append('<div class="shSpace"></div>');
     $('#gangInfos').append('<span class="butSpace"></span>');
     $('#gangInfos').append(capitalizeFirstLetter(playerInfos.gang));

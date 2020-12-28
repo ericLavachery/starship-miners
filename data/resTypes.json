@@ -44,7 +44,7 @@
         "name": "Silicium",
         "bld": "Mine",
         "level": 2,
-        "rarity": 35,
+        "rarity": 25,
         "cat": "white",
         "batch": 4,
         "energie": 50
@@ -54,7 +54,7 @@
         "name": "Cuivre",
         "bld": "Mine",
         "level": 2,
-        "rarity": 40,
+        "rarity": 45,
         "cat": "white",
         "batch": 3,
         "energie": 50
@@ -74,9 +74,9 @@
         "name": "Zinc",
         "bld": "Mine",
         "level": 1,
-        "rarity": 45,
+        "rarity": 48,
         "cat": "white",
-        "batch": 4,
+        "batch": 3,
         "energie": 50
     },
     {
@@ -106,7 +106,7 @@
         "level": 3,
         "rarity": 30,
         "cat": "white",
-        "batch": 4,
+        "batch": 3,
         "energie": 100
     },
     {
@@ -146,7 +146,7 @@
         "level": 3,
         "rarity": 16,
         "cat": "white",
-        "batch": 2,
+        "batch": 3,
         "energie": 100
     },
     {
@@ -154,7 +154,7 @@
         "name": "Cobalt",
         "bld": "Mine",
         "level": 2,
-        "rarity": 20,
+        "rarity": 25,
         "cat": "white",
         "batch": 2,
         "energie": 50
@@ -196,7 +196,7 @@
         "level": 2,
         "rarity": 12,
         "cat": "white",
-        "batch": 2,
+        "batch": 3,
         "energie": 50
     },
     {
@@ -216,7 +216,7 @@
         "level": 2,
         "rarity": 30,
         "cat": "white",
-        "batch": 3,
+        "batch": 2,
         "energie": 50
     },
     {
@@ -224,9 +224,9 @@
         "name": "Rhodium",
         "bld": "Mine",
         "level": 3,
-        "rarity": 8,
+        "rarity": 9,
         "cat": "white",
-        "batch": 2,
+        "batch": 3,
         "energie": 100
     },
     {
@@ -234,7 +234,7 @@
         "name": "Eau",
         "bld": "Pompe",
         "level": 1,
-        "rarity": 100,
+        "rarity": 150,
         "cat": "zero",
         "batch": 6,
         "energie": -1
@@ -294,7 +294,7 @@
         "name": "Oxygène",
         "bld": "Derrick",
         "level": 2,
-        "rarity": 45,
+        "rarity": 28,
         "cat": "white",
         "batch": 5,
         "energie": 9
@@ -304,9 +304,9 @@
         "name": "Hydrogène",
         "bld": "Derrick",
         "level": 2,
-        "rarity": 75,
+        "rarity": 25,
         "cat": "white",
-        "batch": 4,
+        "batch": 6,
         "energie": 9
     },
     {
@@ -314,9 +314,9 @@
         "name": "Azote",
         "bld": "Derrick",
         "level": 2,
-        "rarity": 35,
+        "rarity": 45,
         "cat": "white",
-        "batch": 4,
+        "batch": 3,
         "energie": 50
     },
     {
@@ -326,7 +326,7 @@
         "level": 2,
         "rarity": 30,
         "cat": "white",
-        "batch": 4,
+        "batch": 3,
         "energie": 9
     },
     {
@@ -336,7 +336,7 @@
         "level": 3,
         "rarity": 12,
         "cat": "white",
-        "batch": 2,
+        "batch": 3,
         "energie": 50
     },
     {
@@ -426,7 +426,7 @@
         "level": 2,
         "rarity": 8,
         "cat": "blue-sky",
-        "batch": 6,
+        "batch": 5,
         "energie": 3
     },
     {
@@ -456,7 +456,7 @@
         "level": 4,
         "rarity": 100,
         "cat": "alien",
-        "batch": 1,
+        "batch": 5,
         "energie": 20
     },
     {
@@ -466,7 +466,7 @@
         "level": 4,
         "rarity": 60,
         "cat": "alien",
-        "batch": 1,
+        "batch": 5,
         "energie": 20
     },
     {
@@ -476,7 +476,7 @@
         "level": 4,
         "rarity": 40,
         "cat": "alien",
-        "batch": 1,
+        "batch": 5,
         "energie": 7
     },
     {
@@ -486,7 +486,7 @@
         "level": 4,
         "rarity": 60,
         "cat": "alien",
-        "batch": 1,
+        "batch": 5,
         "energie": 10
     },
     {
@@ -496,7 +496,7 @@
         "level": 4,
         "rarity": 50,
         "cat": "alien",
-        "batch": 1,
+        "batch": 5,
         "energie": 20
     },
     {
@@ -506,7 +506,7 @@
         "level": 4,
         "rarity": 50,
         "cat": "alien",
-        "batch": 1,
+        "batch": 5,
         "energie": 20
     },
     {
@@ -516,7 +516,7 @@
         "level": 4,
         "rarity": 25,
         "cat": "alien",
-        "batch": 1,
+        "batch": 5,
         "energie": 20
     },
     {
@@ -526,7 +526,7 @@
         "level": 4,
         "rarity": 25,
         "cat": "alien",
-        "batch": 1,
+        "batch": 5,
         "energie": 20
     },
     {
@@ -536,7 +536,7 @@
         "level": 4,
         "rarity": 25,
         "cat": "alien",
-        "batch": 1,
+        "batch": 5,
         "energie": 20
     },
     {
@@ -546,7 +546,7 @@
         "level": 4,
         "rarity": 25,
         "cat": "alien",
-        "batch": 1,
+        "batch": 5,
         "energie": 10
     },
     {
@@ -556,7 +556,7 @@
         "level": 4,
         "rarity": 25,
         "cat": "alien",
-        "batch": 1,
+        "batch": 5,
         "energie": 20
     },
     {
@@ -566,7 +566,7 @@
         "level": 4,
         "rarity": 10,
         "cat": "alien",
-        "batch": 1,
+        "batch": 5,
         "energie": 100
     },
     {
@@ -576,7 +576,7 @@
         "level": 4,
         "rarity": 5,
         "cat": "alien",
-        "batch": 1,
+        "batch": 5,
         "energie": 50
     },
     {
@@ -586,7 +586,7 @@
         "level": 4,
         "rarity": 5,
         "cat": "alien",
-        "batch": 1,
+        "batch": 5,
         "energie": 2
     },
     {
@@ -594,9 +594,9 @@
         "name": "Energie",
         "bld": "",
         "level": 4,
-        "rarity": 100,
+        "rarity": 300,
         "cat": "transfo",
-        "batch": 1,
+        "batch": 3,
         "energie": -1
     },
     {
@@ -604,9 +604,9 @@
         "name": "Electros",
         "bld": "",
         "level": 4,
-        "rarity": 100,
+        "rarity": 25,
         "cat": "transfo",
-        "batch": 1,
+        "batch": 3,
         "energie": -1
     },
     {
@@ -614,9 +614,9 @@
         "name": "Batteries",
         "bld": "",
         "level": 4,
-        "rarity": 100,
+        "rarity": 25,
         "cat": "transfo",
-        "batch": 1,
+        "batch": 3,
         "energie": -1
     },
     {
@@ -626,7 +626,7 @@
         "level": 4,
         "rarity": 100,
         "cat": "transfo",
-        "batch": 1,
+        "batch": 3,
         "energie": 3
     },
     {
@@ -634,9 +634,9 @@
         "name": "Explosifs",
         "bld": "",
         "level": 4,
-        "rarity": 100,
+        "rarity": 75,
         "cat": "transfo",
-        "batch": 1,
+        "batch": 3,
         "energie": -1
     },
     {
@@ -644,17 +644,17 @@
         "name": "Tissus",
         "bld": "",
         "level": 4,
-        "rarity": 100,
+        "rarity": 35,
         "cat": "transfo",
-        "batch": 1,
+        "batch": 3,
         "energie": 15
     },
     {
         "id": 65,
-        "name": "Moteur Orbital",
+        "name": "Moteur orbital",
         "bld": "",
         "level": 4,
-        "rarity": 100,
+        "rarity": 0,
         "cat": "transfo",
         "batch": 1,
         "energie": -1
@@ -664,9 +664,9 @@
         "name": "Compo1",
         "bld": "",
         "level": 4,
-        "rarity": 100,
+        "rarity": 150,
         "cat": "transfo",
-        "batch": 1,
+        "batch": 4,
         "energie": 25
     },
     {
@@ -674,9 +674,9 @@
         "name": "Compo2",
         "bld": "",
         "level": 4,
-        "rarity": 100,
+        "rarity": 140,
         "cat": "transfo",
-        "batch": 1,
+        "batch": 3,
         "energie": 25
     },
     {
@@ -684,29 +684,9 @@
         "name": "Compo3",
         "bld": "",
         "level": 4,
-        "rarity": 100,
+        "rarity": 130,
         "cat": "transfo",
-        "batch": 1,
+        "batch": 2,
         "energie": 25
-    },
-    {
-        "id": 69,
-        "name": "Jetpacks",
-        "bld": "",
-        "level": 4,
-        "rarity": 100,
-        "cat": "transfo",
-        "batch": 1,
-        "energie": -1
-    },
-    {
-        "id": 71,
-        "name": "Flash",
-        "bld": "",
-        "level": 4,
-        "rarity": 100,
-        "cat": "transfo",
-        "batch": 1,
-        "energie": -1
     }
 ]
