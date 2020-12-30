@@ -211,7 +211,7 @@
         "name":"Kamiclones",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":3,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire","Atelier"],
-        "costs":{"Fer":30,"Explosifs":180,"Creatite":150,"Huile":30,"Mercure":30,"Végétaux":30}
+        "costs":{"Fer":30,"Explosifs":30,"Creatite":150,"Huile":30,"Mercure":30,"Végétaux":30}
     },
     {
         "id":17,
@@ -512,7 +512,7 @@
         "name":"Rabbitz",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":99},
         "bldReq":["Chaîne de montage"],
-        "costs":{"Scrap":130,"Carbone":24,"Aluminium":60,"Explosifs":150,"Electros":72,"Batteries":72,"Cuivre":30,"Silicium":48,"Végétaux":48},
+        "costs":{"Scrap":130,"Carbone":24,"Aluminium":60,"Explosifs":24,"Electros":72,"Batteries":72,"Cuivre":30,"Silicium":48,"Végétaux":48},
         "deploy":{"Energie":55,"Huile":9}
     },
     {
@@ -1303,7 +1303,7 @@
     {
         "id":105,
         "name":"Minotaur",
-        "levels":{"rednecks":12,"blades":12,"bulbos":12,"drogmulojs":12,"tiradores":12,"detruas":12,"brasier":12},
+        "levels":{"rednecks":13,"blades":13,"bulbos":13,"drogmulojs":13,"tiradores":13,"detruas":13,"brasier":13},
         "bldReq":["Soute","Usine"],
         "costs":{"Eau":850,"Energie":6000,"Huile":375,"Scrap":650,"Tissus":200,"Carbone":575,"Titane":4700,"Aluminium":12700,"Calcium":30,"Rhodium":300,"Nickel":950,"Cuivre":5650,"Or":1450,"Silicium":850,"Bore":750,"Plutonium":1100,"Oxygène":1700,"Hydrogène":1700,"Azote":1150,"Chlore":100,"Electros":750,"Batteries":500,"Moteur orbital":1},
         "deploy":{"Eau":850,"Végétaux":1700,"Oxygène":1700,"Energie":600,"Huile":75,"Tissus":60,"Calcium":30,"Chlore":60,"Plutonium":550,"Hydrogène":275}
@@ -1392,32 +1392,50 @@
     {
         "id":37,
         "name":"Barbelés (scrap)",
-        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1}
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "costs":{"Scrap":72}
     },
     {
         "id":168,
         "name":"Barbelés",
-        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1}
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "costs":{"Fer":72}
     },
     {
         "id":169,
         "name":"Barbelés (taser)",
-        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1}
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "costs":{"Aluminium":48,"Cuivre":24,"Batteries":12}
     },
     {
         "id":185,
+        "name":"Fosses",
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "costs":{"Végétaux":36,"Fer":12,"Bois":36,"Tungstène":12}
+    },
+    {
+        "id":237,
         "name":"Pièges",
-        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1}
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "costs":{"Végétaux":36,"Fer":12,"Bois":36,"Scrap":12}
+    },
+    {
+        "id":238,
+        "name":"Dardières",
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "costs":{"Végétaux":36,"Fer":6,"Bois":36,"Titane":12,"Argon":18,"Mephitis":18,"Huile":18}
     },
     {
         "id":43,
         "name":"Champ de mines",
-        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1}
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "costs":{"Explosifs":18,"Fer":18,"Plomb":6,"Titane":6,"Azote":6,"Electros":6}
     },
     {
         "id":45,
         "name":"Explosifs",
-        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1}
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "costs":{"Explosifs":9,"Scrap":9,"Végétaux":18,"Plomb":3,"Titane":3,"Azote":3,"Electros":3}
     },
     {
         "id":9,

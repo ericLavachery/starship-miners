@@ -537,7 +537,7 @@ function putBat(tileId,citoyens,xp,startTag) {
             newBat.salvoLeft = conselUnit.maxSalvo;
         } else {
             if (conselUnit.refabTime >= 1) {
-                if (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs' || conselUnit.name == 'Pièges') {
+                if (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs' || conselUnit.name == 'Pièges' || conselUnit.name == 'Fosses' || conselUnit.name == 'Dardières') {
                     newBat.apLeft = 0;
                     newBat.oldapLeft = 0;
                     newBat.salvoLeft = 0;

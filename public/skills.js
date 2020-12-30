@@ -388,8 +388,12 @@ function dropStuff(apCost,mineType) {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Barbelés (scrap)'));
     } else if (mineType === 'barb-taser') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Barbelés (taser)'));
-    } else if (mineType === 'piege') {
+    } else if (mineType === 'trap-fosse') {
+        unitIndex = unitTypes.findIndex((obj => obj.name === 'Fosses'));
+    } else if (mineType === 'trap-ap') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Pièges'));
+    } else if (mineType === 'trap-dard') {
+        unitIndex = unitTypes.findIndex((obj => obj.name === 'Dardières'));
     }
     conselUnit = unitTypes[unitIndex];
     conselAmmos = ['xxx','xxx','xxx','xxx'];
