@@ -1383,8 +1383,7 @@ function defense(melee) {
     selectedBat.squadsLeft = selectedBat.squadsLeft-squadsOut;
     selectedBat.damage = totalDamage-(squadsOut*squadHP);
     // survivor
-    console.log('ZOMBIFICATION');
-    console.log(selectedBat.squadsLeft);
+    console.log('Squads left: '+selectedBat.squadsLeft);
     if (selectedBat.squadsLeft <= 0) {
         console.log('dead');
         if (!selectedBat.tags.includes('lucky') && selectedBatType.skills.includes('survivor')) {
@@ -1469,6 +1468,13 @@ function shot(weapon,attBatType,bat,batType,shotDice) {
     if (bat.tags.includes('skupiac')) {
         batSpeed = batSpeed+3;
     }
+    // Pièges
+    if (weapon.name.includes('Dart') || weapon.name.includes('Barbelés') || weapon.name === 'Explosifs' || weapon.name === 'Explosion') {
+        stealth = 0;
+        if (batType.skills.includes('invisible') || batType.skills.includes('hide')) {
+            batSpeed = 0;
+        }
+    }
     // fly
     let weapAccu = weapon.accuracy;
     if (batType.skills.includes('fly')) {
@@ -1521,6 +1527,13 @@ function blast(brochette,attBatType,aoeShots,weapon,bat,batType,shotDice) {
     let batSpeed = batType.speed;
     if (bat.tags.includes('skupiac')) {
         batSpeed = batSpeed+3;
+    }
+    // Pièges
+    if (weapon.name.includes('Dart') || weapon.name.includes('Barbelés') || weapon.name === 'Explosifs' || weapon.name === 'Explosion') {
+        stealth = 0;
+        if (batType.skills.includes('invisible') || batType.skills.includes('hide')) {
+            batSpeed = 0;
+        }
     }
     // fly
     let weapAccu = weapon.accuracy;

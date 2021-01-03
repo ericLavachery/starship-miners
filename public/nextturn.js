@@ -425,6 +425,7 @@ function turnInfo() {
             }
         });
     });
+    console.log('Zombified Tiles');
     console.log(zombifiedTiles);
     centerMap();
     $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');

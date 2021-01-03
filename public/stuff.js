@@ -10,6 +10,15 @@ function calcBatFuzz(bat) {
     return batFuzz;
 };
 
+const mergeObjects = (obj1,obj2) => {
+   for(key in obj1){
+      if(obj2[key]){
+         obj1[key] += obj2[key];
+      };
+   };
+   return;
+};
+
 function freeIds(side,db) {
     let idz = [];
     let i = 1;
@@ -49,6 +58,9 @@ function toCoolString(myObject) {
         newString = JSON.stringify(myObject);
         newString = newString.replace(/"/g,'');
         newString = newString.replace(/:/g,'=');
+    }
+    if (newString === '{}') {
+        newString = '{Rien}';
     }
     return newString;
 };

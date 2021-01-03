@@ -48,7 +48,7 @@ function bfconst(cat,triche) {
         if (triche) {
             prodOK = true;
         } else {
-            if (catz.includes(unit.cat) && unit.refabTime >= 1) {
+            if (catz.includes(unit.cat) && unit.fabTime >= 1) {
                 prodOK = true;
             }
             if (!unit.bldReq.includes(selectedBatType.name) && unit.cat != 'buildings' && unit.cat != 'devices') {
@@ -77,7 +77,7 @@ function bfconst(cat,triche) {
             if (triche) {
                 bldOK = true;
             }
-            costOK = checkUnitCost(unit);
+            costOK = checkUnitCost(unit,true,true);
             costString = '';
             if (unit.costs != undefined) {
                 costString = toCoolString(unit.costs);
@@ -162,7 +162,11 @@ function conSelect(unitId,player,noRefresh) {
     let listNum = 1;
     let bldReqOK = false;
     let compReqOK = false;
-    let dCostsOK = false;
+    let costsOK = false;
+    let flatCosts;
+    let deployCosts;
+    let fullCosts;
+    // ARMOR ---------------------------------------------
     if (conselUnit.protection != undefined) {
         if (conselUnit.protection.length >= 1) {
             console.log(conselUnit.protection);
@@ -191,14 +195,24 @@ function conSelect(unitId,player,noRefresh) {
                     if (batArmor.skills.includes('resistfeu')) {
                         armorSkills = armorSkills+' resistfeu';
                     }
+                    flatCosts = getCosts(conselUnit,batArmor,0,'equip');
+                    deployCosts = getDeployCosts(conselUnit,batArmor,0,'equip');
+                    console.log('ARMOR');
+                    console.log(flatCosts);
+                    console.log(deployCosts);
+                    mergeObjects(flatCosts,deployCosts);
+                    flatCosts = {...flatCosts, ...deployCosts};
+                    console.log('merge');
+                    console.log(flatCosts);
+                    costsOK = checkCost(flatCosts);
                     bldReqOK = false;
                     if (playerInfos.bldList.includes(batArmor.bldReq[0]) || batArmor.bldReq[0] === undefined || conselUnit.name === batArmor.bldReq[0]) {
                         bldReqOK = true;
                     }
-                    if (bldReqOK || conselTriche) {
-                        $('#conAmmoList').append('<span class="constName klik" title="'+toNiceString(batArmor.bldReq)+'" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                    if ((bldReqOK && costsOK) || conselTriche) {
+                        $('#conAmmoList').append('<span class="constName klik" title="'+toNiceString(batArmor.bldReq)+' '+toCoolString(flatCosts)+'" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
                     } else {
-                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batArmor.bldReq)+'">'+armor+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batArmor.bldReq)+' '+toCoolString(flatCosts)+'">'+armor+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
                     }
                 }
                 listNum++;
@@ -210,6 +224,7 @@ function conSelect(unitId,player,noRefresh) {
     let weapName;
     let equipNotes;
     listNum = 1;
+    // EQUIP ---------------------------------------------
     if (conselUnit.equip != undefined) {
         if (conselUnit.equip.length >= 1) {
             console.log(conselUnit.equip);
@@ -240,14 +255,24 @@ function conSelect(unitId,player,noRefresh) {
                     if (equip.startsWith('w1-')) {
                         weapName = ' ('+conselUnit.weapon.name+')';
                     }
+                    flatCosts = getCosts(conselUnit,batEquip,0,'equip');
+                    deployCosts = getDeployCosts(conselUnit,batEquip,0,'equip');
+                    console.log('EQUIP');
+                    console.log(flatCosts);
+                    console.log(deployCosts);
+                    mergeObjects(flatCosts,deployCosts);
+                    flatCosts = {...flatCosts, ...deployCosts};
+                    console.log('merge');
+                    console.log(flatCosts);
+                    costsOK = checkCost(flatCosts);
                     bldReqOK = false;
                     if ((playerInfos.bldList.includes(batEquip.bldReq[0]) || batEquip.bldReq[0] === undefined || conselUnit.name === batEquip.bldReq[0]) && (playerInfos.bldList.includes(batEquip.bldReq[1]) || batEquip.bldReq[1] === undefined || conselUnit.name === batEquip.bldReq[1])) {
                         bldReqOK = true;
                     }
-                    if (bldReqOK || conselTriche) {
-                        $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip)+'" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                    if ((bldReqOK && costsOK) || conselTriche) {
+                        $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip)+' '+toCoolString(flatCosts)+'" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else {
-                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batEquip.bldReq)+'">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batEquip.bldReq)+' '+toCoolString(flatCosts)+'">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     }
                 }
                 listNum++;
@@ -256,7 +281,7 @@ function conSelect(unitId,player,noRefresh) {
     }
     let ammoIndex;
     let batAmmo;
-    let deployCosts;
+    // AMMO WEAP 1 ---------------------------------------------
     let hasW1 = false;
     if (!conselUnit.weapon.kit || conselAmmos[3].includes('w1-') || conselAmmos[3].includes('w2-')) {
         hasW1 = true;
@@ -276,8 +301,10 @@ function conSelect(unitId,player,noRefresh) {
                         } else {
                             $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                         }
-                        deployCosts = getDeployCosts(conselUnit,batAmmo,1);
-                        dCostsOK = checkCost(deployCosts);
+                        deployCosts = getDeployCosts(conselUnit,batAmmo,1,'ammo');
+                        flatCosts = getCosts(conselUnit,batAmmo,1,'ammo');
+                        mergeObjects(deployCosts,flatCosts);
+                        costsOK = checkCost(deployCosts);
                         bldReqOK = false;
                         if (batAmmo.bldReq instanceof Array) {
                             if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
@@ -286,7 +313,7 @@ function conSelect(unitId,player,noRefresh) {
                         } else {
                             bldReqOK = true;
                         }
-                        if ((bldReqOK && dCostsOK) || conselTriche) {
+                        if ((bldReqOK && costsOK) || conselTriche) {
                             $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+toCoolString(deployCosts)+'" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
                         } else {
                             $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+' '+toCoolString(deployCosts)+'">'+showAmmo(ammo)+'</span><br>');
@@ -297,6 +324,7 @@ function conSelect(unitId,player,noRefresh) {
             }
         }
     }
+    // AMMO WEAP 2 ---------------------------------------------
     let hasW2 = false;
     if (!conselUnit.weapon2.kit || conselAmmos[3].includes('kit-') || conselAmmos[3].includes('w2-')) {
         hasW2 = true;
@@ -316,8 +344,10 @@ function conSelect(unitId,player,noRefresh) {
                         } else {
                             $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                         }
-                        deployCosts = getDeployCosts(conselUnit,batAmmo,2);
-                        dCostsOK = checkCost(deployCosts);
+                        deployCosts = getDeployCosts(conselUnit,batAmmo,2,'ammo');
+                        flatCosts = getCosts(conselUnit,batAmmo,2,'ammo');
+                        mergeObjects(deployCosts,flatCosts);
+                        costsOK = checkCost(deployCosts);
                         bldReqOK = false;
                         if (batAmmo.bldReq instanceof Array) {
                             if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
@@ -326,7 +356,7 @@ function conSelect(unitId,player,noRefresh) {
                         } else {
                             bldReqOK = true;
                         }
-                        if ((bldReqOK && dCostsOK) || conselTriche) {
+                        if ((bldReqOK && costsOK) || conselTriche) {
                             $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+toCoolString(deployCosts)+'" onclick="selectAmmo(`'+ammo+'`,`w2`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
                         } else {
                             $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+' '+toCoolString(deployCosts)+'">'+showAmmo(ammo)+'</span><br>');
@@ -404,7 +434,7 @@ function clickConstruct(tileId,free) {
     if (!batHere) {
         if (!free) {
             let distance = calcDistance(selectedBat.tileId,tileId);
-            selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*conselUnit.refabTime/10)-(distance*3);
+            selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*conselUnit.fabTime/10)-(distance*3);
             if (!selectedBat.tags.includes('construction')) {
                 selectedBat.tags.push('construction');
             }
@@ -536,7 +566,7 @@ function putBat(tileId,citoyens,xp,startTag) {
             newBat.oldapLeft = baseAP;
             newBat.salvoLeft = conselUnit.maxSalvo;
         } else {
-            if (conselUnit.refabTime >= 1) {
+            if (conselUnit.fabTime >= 1) {
                 if (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs' || conselUnit.name == 'Pièges' || conselUnit.name == 'Fosses' || conselUnit.name == 'Dardières') {
                     newBat.apLeft = 0;
                     newBat.oldapLeft = 0;
@@ -550,14 +580,14 @@ function putBat(tileId,citoyens,xp,startTag) {
                         constFactor = Math.round(constFactor*(playerInfos.comp.const+5)/5);
                     }
                     if (conselUnit.skills.includes('domeconst')) {
-                        newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/constFactor)*10);
-                        newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/constFactor)*10);
+                        newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*10);
+                        newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*10);
                     } else if (conselUnit.skills.includes('longconst')) {
-                        newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/constFactor)*3);
-                        newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.refabTime*conselUnit.ap/constFactor)*3);
+                        newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
+                        newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
                     } else {
-                        newBat.apLeft = conselUnit.ap-Math.round(conselUnit.refabTime*conselUnit.ap/constFactor);
-                        newBat.oldapLeft = conselUnit.ap-Math.round(conselUnit.refabTime*conselUnit.ap/constFactor);
+                        newBat.apLeft = conselUnit.ap-Math.round(conselUnit.fabTime*conselUnit.ap/constFactor);
+                        newBat.oldapLeft = conselUnit.ap-Math.round(conselUnit.fabTime*conselUnit.ap/constFactor);
                     }
                     newBat.salvoLeft = conselUnit.maxSalvo;
                 }
@@ -772,31 +802,23 @@ function putRoad() {
     showBatInfos(selectedBat);
 };
 
-function putInfra(infra) {
+function putInfra(infraName) {
     console.log('INFRASTRUCTURE');
     let tile = getTile(selectedBat);
     let terrain = getTileTerrain(selectedBat.tileId);
-    let infraCost;
-    if (infra === 'Miradors') {
-        infraCost = 9;
-    } else if (infra === 'Palissades') {
-        infraCost = 12;
-    } else if (infra === 'Remparts') {
-        infraCost = 18;
-    } else if (infra === 'Murailles') {
-        infraCost = 26;
-    }
-    // infraCost = AP for Workships
-    let apCost = Math.round(Math.sqrt(selectedBatType.mecanoCost)*infraCost/1.7);
+    let infra = getInfraByName(infraName);
+    // infra.fabTime = AP for Workships
+    let apCost = Math.round(Math.sqrt(selectedBatType.mecanoCost)*infra.fabTime/1.7);
     console.log('apCost:'+apCost);
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     if (!selectedBat.tags.includes('construction')) {
         selectedBat.tags.push('construction');
     }
+    payCost(infra.costs);
     tagDelete(selectedBat,'guet');
     camoOut();
     selectedBatArrayUpdate();
-    tile.infra = infra;
+    tile.infra = infraName;
     tile.ruins = false;
     saveMap();
     showMap(zone,false);

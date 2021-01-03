@@ -208,7 +208,7 @@ function clickDebarq(tileId) {
                 batDebarq.oldapLeft = 1;
             }
         } else {
-            batDebarq.apLeft = batDebarq.ap-Math.round(batDebarqType.refabTime*batDebarq.ap/25);
+            batDebarq.apLeft = batDebarq.ap-Math.round(batDebarqType.fabTime*batDebarq.ap/25);
         }
         showBataillon(batDebarq);
         batSelect(batDebarq);

@@ -73,11 +73,159 @@ function payCost(costs) {
     }
 };
 
-function getDeployCosts(unit,ammo,weapNum) {
-    let deployCosts = {};
-    if (weapNum != 0) {
+function getEquipDeployFactor(unit,equip) {
+    let deployFactor = 1;
+    let crew = unit.squads*unit.squadSize*unit.crew;
+    let thp = unit.squads*unit.squadSize*unit.hp;
+    let rofpow = unit.squads*unit.weapon2.rof*unit.weapon2.power;
+    if (equip.name === 'carrousel1' || equip.name === 'longtom1') {
+        rofpow = unit.squads*unit.weapon.rof*unit.weapon.power;
+    }
+    if (equip.factor === 'one') {
+        deployFactor = 1;
+    } else {
+        if (unit.cat === 'infantry') {
+            deployFactor = crew/12;
+        } else if (unit.cat === 'vehicles' && unit.skills.includes('robot')) {
+            crew = unit.squads*unit.squadSize;
+            deployFactor = crew/12;
+        } else if (unit.cat === 'vehicles' && unit.skills.includes('cyber')) {
+            deployFactor = crew/12;
+        } else {
+            if (equip.factor === 'crew') {
+                deployFactor = crew/12;
+            } else if (equip.factor === 'rofpow') {
+                deployFactor = rofpow/250;
+            } else if (equip.factor === 'thp') {
+                deployFactor = thp/120;
+            }
+        }
+    }
+    return deployFactor;
+};
+
+function payDeployCosts(unit,ammoNames) {
+    let deployCosts;
+    let ammoIndex;
+    let batAmmo;
+    // Ammo W1
+    if (ammoNames[0] != 'xxx') {
+        ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
+        batAmmo = ammoTypes[ammoIndex];
+        deployCosts = getDeployCosts(unit,batAmmo,1,'ammo');
+        payCost(deployCosts);
+    }
+    // Ammo W2
+    if (ammoNames[1] != 'xxx') {
+        ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoNames[1]));
+        batAmmo = ammoTypes[ammoIndex];
+        deployCosts = getDeployCosts(unit,batAmmo,2,'ammo');
+        payCost(deployCosts);
+    }
+    // Armor
+    if (ammoNames[2] != 'xxx') {
+        ammoIndex = armorTypes.findIndex((obj => obj.name == ammoNames[2]));
+        let batArmor = armorTypes[ammoIndex];
+        deployCosts = getDeployCosts(unit,batArmor,0,'equip');
+        payCost(deployCosts);
+    }
+    // Equip
+    if (ammoNames[3] != 'xxx') {
+        ammoIndex = armorTypes.findIndex((obj => obj.name == ammoNames[3]));
+        let batEquip = armorTypes[ammoIndex];
+        deployCosts = getDeployCosts(unit,batEquip,0,'equip');
+        payCost(deployCosts);
+    }
+    // Unit
+    deployCosts = getDeployCosts(unit,batAmmo,0,'unit');
+    payCost(deployCosts);
+};
+
+function payEquipCosts(unit,ammoNames) {
+    // Payer le prix fixe des lames, des équipements et des armures
+    let costs;
+    let index;
+    let batAmmo;
+    // Ammo W1
+    if (ammoNames[0] != 'xxx') {
+        index = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
+        batAmmo = ammoTypes[index];
+        costs = getCosts(unit,batAmmo,1,'ammo');
+        payCost(costs);
+    }
+    // Ammo W2
+    if (ammoNames[1] != 'xxx') {
+        index = ammoTypes.findIndex((obj => obj.name == ammoNames[1]));
+        batAmmo = ammoTypes[index];
+        costs = getCosts(unit,batAmmo,2,'ammo');
+        payCost(costs);
+    }
+    // Armor
+    if (ammoNames[2] != 'xxx') {
+        index = armorTypes.findIndex((obj => obj.name == ammoNames[2]));
+        let batArmor = armorTypes[index];
+        costs = getCosts(unit,batArmor,0,'equip');
+        payCost(costs);
+    }
+    // Equip
+    if (ammoNames[3] != 'xxx') {
+        index = armorTypes.findIndex((obj => obj.name == ammoNames[3]));
+        let batEquip = armorTypes[index];
+        costs = getCosts(unit,batEquip,0,'equip');
+        payCost(costs);
+    }
+};
+
+function getCosts(unit,ammo,weapNum,type) {
+    let costs = {};
+    let costFactor = 0;
+    if (type === 'ammo') {
         // AMMOs
-        let deployFactor = 0;
+        if (weapNum === 1) {
+            costFactor = Math.ceil(unit.squads*unit.squadSize*unit.weapon.power/2);
+        } else {
+            costFactor = Math.ceil(unit.squads*unit.squadSize*unit.weapon2.power/2);
+        }
+        if (ammo.costs != undefined) {
+            if (Object.keys(ammo.costs).length >= 1) {
+                costs = JSON.parse(JSON.stringify(ammo.costs));
+                Object.entries(ammo.costs).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    costs[key] = Math.ceil(value*costFactor/ammo.batch);
+                });
+            } else {
+                costs = {};
+            }
+        } else {
+            costs = {};
+        }
+    } else if (type === 'equip') {
+        let equip = ammo;
+        costFactor = getEquipDeployFactor(unit,equip);
+        if (equip.costs != undefined) {
+            if (Object.keys(equip.costs).length >= 1) {
+                costs = JSON.parse(JSON.stringify(equip.costs));
+                Object.entries(equip.costs).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    costs[key] = Math.ceil(value*costFactor);
+                });
+            } else {
+                costs = {};
+            }
+        } else {
+            costs = {};
+        }
+    }
+    return costs;
+}
+
+function getDeployCosts(unit,ammo,weapNum,type) {
+    let deployCosts = {};
+    let deployFactor = 0;
+    if (type === 'ammo') {
+        // AMMOs
         if (weapNum === 1) {
             deployFactor = Math.ceil(unit.squads*unit.weapon.rof*unit.weapon.power/5*deploySalvos);
             if (!unit.weapon.noBis) {
@@ -104,10 +252,14 @@ function getDeployCosts(unit,ammo,weapNum) {
         if (ammo.deploy != undefined) {
             if (Object.keys(ammo.deploy).length >= 1) {
                 deployCosts = JSON.parse(JSON.stringify(ammo.deploy));
+                let batch = ammo.batch;
+                if (ammo.name.includes('lame')) {
+                    batch = 100;
+                }
                 Object.entries(ammo.deploy).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
-                    deployCosts[key] = Math.ceil(value*deployFactor/ammo.batch);
+                    deployCosts[key] = Math.ceil(value*deployFactor/batch);
                 });
             } else {
                 deployCosts = {};
@@ -115,16 +267,30 @@ function getDeployCosts(unit,ammo,weapNum) {
         } else {
             deployCosts = {};
         }
-    } else {
+    } else if (type === 'unit') {
         // UNIT
         if (unit.deploy != undefined) {
             if (Object.keys(unit.deploy).length >= 1) {
                 deployCosts = JSON.parse(JSON.stringify(unit.deploy));
-                Object.entries(unit.deploy).map(entry => {
+            } else {
+                deployCosts = {};
+            }
+        } else {
+            deployCosts = {};
+        }
+    } else if (type === 'equip') {
+        let equip = ammo;
+        deployFactor = getEquipDeployFactor(unit,equip);
+        if (equip.deploy != undefined) {
+            if (Object.keys(equip.deploy).length >= 1) {
+                deployCosts = JSON.parse(JSON.stringify(equip.deploy));
+                Object.entries(equip.deploy).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
-                    deployCosts[key] = Math.ceil(value*deploySalvos);
+                    deployCosts[key] = Math.ceil(value*deployFactor);
                 });
+                // console.log(equip.name);
+                // console.log(deployCosts);
             } else {
                 deployCosts = {};
             }
@@ -135,38 +301,18 @@ function getDeployCosts(unit,ammo,weapNum) {
     return deployCosts;
 }
 
-function payDeployCosts(unit,ammoName) {
-    let deployCosts;
-    let ammoIndex;
-    let batAmmo;
-    // Ammo W1
-    if (ammoName[0] != 'xxx') {
-        ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoName[0]));
-        batAmmo = ammoTypes[ammoIndex];
-        deployCosts = getDeployCosts(unit,batAmmo,1);
-        payCost(deployCosts);
-    }
-    // Ammo W2
-    if (ammoName[1] != 'xxx') {
-        ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoName[1]));
-        batAmmo = ammoTypes[ammoIndex];
-        deployCosts = getDeployCosts(unit,batAmmo,2);
-        payCost(deployCosts);
-    }
-    // Unit
-    deployCosts = getDeployCosts(unit,batAmmo,0);
-    payCost(deployCosts);
-};
-
-function payEquipCosts(unit,ammoName) {
-    // Payer le prix fixe des lames, des équipements et des armures
-
-};
-
-function checkUnitCost(batType) {
+function checkUnitCost(batType,withDeploy) {
     let enoughRes = true;
     // console.log('CHECK COSTS');
     // console.log(batType.name);
+    // console.log(batType.costs);
+    if (withDeploy) {
+        if (batType.deploy != undefined) {
+            // console.log(batType.deploy);
+            mergeObjects(batType.costs,batType.deploy);
+        }
+    }
+    // console.log(batType.costs);
     if (batType.costs != undefined) {
         Object.entries(batType.costs).map(entry => {
             let key = entry[0];

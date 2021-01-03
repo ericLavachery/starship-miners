@@ -3,6 +3,8 @@ function skillsInfos(bat,batType) {
     let numTargets = 0;
     let apCost;
     let apReq;
+    let prodOK = true;
+    findLanders();
     let tile = getTile(bat);
     let terrain = getTerrain(bat);
     let inMelee = batInMelee(bat);
@@ -847,10 +849,22 @@ function skillsInfos(bat,batType) {
             let apCost2 = Math.ceil(batType.mecanoCost/1.5);
             apReq = Math.ceil(batType.mecanoCost/4);
             if (barbLeft >= 1 && bat.apLeft >= apReq && !inMelee) {
-                if (playerInfos.bldList.includes('Générateur')) {
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des barbelés (scrap)" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-scrap`)"><i class="ra ra-crown-of-thorns rpg"></i></button><button type="button" title="Déposer des barbelés (acier)" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-fer`)"><i class="ra ra-crown-of-thorns rpg"></i></button><button type="button" title="Déposer des barbelés (taser)" class="boutonGris skillButtons" onclick="dropStuff('+apCost2+',`barb-taser`)"><i class="ra ra-crown-of-thorns rpg"></i></button>&nbsp; Barbelés</'+balise+'></span>');
-                } else {
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des barbelés (scrap)" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-scrap`)"><i class="ra ra-crown-of-thorns rpg"></i></button><button type="button" title="Déposer des barbelés (acier)" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-fer`)"><i class="ra ra-crown-of-thorns rpg"></i></button>&nbsp; Barbelés</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><span id="barbButtons"></span>&nbsp; Barbelés</'+balise+'></span>');
+                $('#barbButtons').empty();
+                let barbType = getBatTypeByName('Barbelés (scrap)');
+                let barbCostOK = checkCost(barbType.costs);
+                if (barbCostOK) {
+                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (scrap)" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-scrap`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                }
+                barbType = getBatTypeByName('Barbelés');
+                barbCostOK = checkCost(barbType.costs);
+                if (barbCostOK) {
+                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (acier)" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-fer`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                }
+                barbType = getBatTypeByName('Barbelés (taser)');
+                barbCostOK = checkCost(barbType.costs);
+                if (barbCostOK && playerInfos.bldList.includes('Générateur')) {
+                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (taser)" class="boutonGris skillButtons" onclick="dropStuff('+apCost2+',`barb-taser`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                 }
             } else {
                 if (barbLeft <= 0) {
@@ -861,6 +875,38 @@ function skillsInfos(bat,batType) {
                     skillMessage = "Pas assez de PA";
                 }
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Barbelés</h4></span>');
+            }
+        }
+    }
+    // INFRASTRUCTURE
+    if (batType.skills.includes('constructeur')) {
+        if (tile.terrain != 'W' && tile.terrain != 'R') {
+            apReq = batType.mecanoCost;
+            let infra = getInfraByName('Miradors');
+            let infraCostOK = checkCost(infra.costs);
+            prodOK = true;
+            if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
+                prodOK = false;
+            }
+            if (bat.apLeft >= apReq && !inMelee && infraCostOK && prodOK) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><span id="infraButtons"></span>&nbsp; Enceinte</h4></span>');
+                $('#infraButtons').empty();
+                $('#infraButtons').append('<button type="button" title="Construction (Miradors)" class="boutonGris skillButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button>');
+                infra = getInfraByName('Palissades');
+                infraCostOK = checkCost(infra.costs);
+                if (infraCostOK) {
+                    $('#infraButtons').append('<button type="button" title="Construction (Palissades)" class="boutonGris skillButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button>');
+                }
+                infra = getInfraByName('Remparts');
+                infraCostOK = checkCost(infra.costs);
+                if (infraCostOK) {
+                    $('#infraButtons').append('<button type="button" title="Construction (Remparts)" class="boutonGris skillButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button>');
+                }
+                infra = getInfraByName('Murailles');
+                infraCostOK = checkCost(infra.costs);
+                if (infraCostOK) {
+                    $('#infraButtons').append('<button type="button" title="Construction (Murailles)" class="boutonGris skillButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>');
+                }
             }
         }
     }
@@ -878,15 +924,6 @@ function skillsInfos(bat,batType) {
                     skillMessage = "Pas assez de PA";
                 }
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-road"></i> <span class="small">'+apReq+'</span></button>&nbsp; Route / Pont</h4></span>');
-            }
-        }
-    }
-    // INFRASTRUCTURE
-    if (batType.skills.includes('constructeur')) {
-        if (tile.terrain != 'W' && tile.terrain != 'R') {
-            apReq = batType.mecanoCost;
-            if (bat.apLeft >= apReq && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Miradors)" class="boutonGris skillButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button><button type="button" title="Construction (Palissades)" class="boutonGris skillButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button><button type="button" title="Construction (Remparts)" class="boutonGris skillButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button><button type="button" title="Construction (Murailles)" class="boutonGris skillButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>&nbsp; Enceinte</h4></span>');
             }
         }
     }

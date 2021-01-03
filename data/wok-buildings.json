@@ -29,7 +29,7 @@
         "maxDrug":24,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":5,
         "deathFx":"S_Explosion02"
     },
@@ -62,7 +62,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":5,
         "deathFx":"S_Explosion02"
     },
@@ -96,7 +96,7 @@
         "mecanoCost":10,
         "transMaxSize":50,
         "transUnits":2500,
-        "refabTime":180,
+        "fabTime":180,
         "bldCost":"Armurerie",
         "fuzz":5,
         "deathFx":"S_Explosion02"
@@ -128,7 +128,7 @@
         "maxVeg":-1,
         "skills":["routes"],
         "mecanoCost":12,
-        "refabTime":50,
+        "fabTime":50,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -168,7 +168,7 @@
         "transMaxSize":9,
         "transUnits":1500,
         "transRes":2500,
-        "refabTime":60,
+        "fabTime":60,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -208,7 +208,7 @@
         "transMaxSize":9,
         "transUnits":500,
         "transRes":2500,
-        "refabTime":25,
+        "fabTime":25,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -248,7 +248,7 @@
         "transMaxSize":9,
         "transUnits":1000,
         "transRes":2500,
-        "refabTime":60,
+        "fabTime":60,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -288,7 +288,7 @@
         "transMaxSize":9,
         "transUnits":1500,
         "transRes":3500,
-        "refabTime":25,
+        "fabTime":25,
         "fuzz":4,
         "deathFx":"S_Explosion02"
     },
@@ -321,7 +321,7 @@
         "mecanoCost":12,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":35,
+        "fabTime":35,
         "fuzz":1,
         "deathFx":"S_Explosion02"
     },
@@ -355,7 +355,7 @@
         "transMaxSize":9,
         "transUnits":1500,
         "transRes":5000,
-        "refabTime":20,
+        "fabTime":20,
         "fuzz":1,
         "deathFx":"S_Explosion02"
     },
@@ -389,7 +389,7 @@
         "transMaxSize":9,
         "transUnits":1500,
         "transRes":15000,
-        "refabTime":35,
+        "fabTime":35,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -434,7 +434,7 @@
         "transMaxSize":9,
         "transUnits":1500,
         "maxDrug":60,
-        "refabTime":18,
+        "fabTime":18,
         "fuzz":2,
         "deathFx":"S_Explosion02"
     },
@@ -466,7 +466,7 @@
         "skills":["recupcit","routes"],
         "bldEquiv":[],
         "mecanoCost":10,
-        "refabTime":200,
+        "fabTime":200,
         "fuzz":50,
         "deathFx":"S_Explosion02"
     },
@@ -498,7 +498,7 @@
         "skills":["recupcit","routes","domeconst"],
         "bldEquiv":["Champ de force"],
         "mecanoCost":10,
-        "refabTime":200,
+        "fabTime":200,
         "fuzz":50,
         "deathFx":"S_Explosion02"
     },
@@ -529,7 +529,7 @@
         "maxVeg":-1,
         "skills":["recupcit","routes","domeconst"],
         "mecanoCost":10,
-        "refabTime":200,
+        "fabTime":200,
         "fuzz":50,
         "deathFx":"S_Explosion02"
     }

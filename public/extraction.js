@@ -215,6 +215,18 @@ function getResMiningRate(bat,res,value,fullRate) {
     return resRate;
 };
 
+function getInfraByName(infraName) {
+    let index = armorTypes.findIndex((obj => obj.name == infraName));
+    let infra = armorTypes[index];
+    return infra;
+};
+
+function getBatTypeByName(batName) {
+    let index = unitTypes.findIndex((obj => obj.name == batName));
+    let batType = unitTypes[index];
+    return batType;
+};
+
 function getResByName(resName) {
     let resIndex = resTypes.findIndex((obj => obj.name == resName));
     let res = resTypes[resIndex];

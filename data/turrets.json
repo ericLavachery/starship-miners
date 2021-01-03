@@ -519,7 +519,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":250,
-        "refabTime":50,
+        "fabTime":50,
         "fuzz":1.5,
         "deathFx":"explo1"
     },
@@ -576,7 +576,7 @@
         "mecanoCost":12,
         "transMaxSize":9,
         "transUnits":500,
-        "refabTime":85,
+        "fabTime":85,
         "fuzz":1.5,
         "deathFx":"explo1"
     },
@@ -633,7 +633,7 @@
         "mecanoCost":12,
         "transMaxSize":9,
         "transUnits":500,
-        "refabTime":85,
+        "fabTime":85,
         "fuzz":1,
         "deathFx":"explo1"
     },
@@ -690,7 +690,7 @@
         "mecanoCost":12,
         "transMaxSize":9,
         "transUnits":500,
-        "refabTime":85,
+        "fabTime":85,
         "fuzz":1.5,
         "deathFx":"explo1"
     },
@@ -747,7 +747,7 @@
         "maxVeg":-1,
         "skills":["recupcit","prefab","routes","badcrewsave"],
         "mecanoCost":12,
-        "refabTime":45,
+        "fabTime":45,
         "fuzz":6,
         "deathFx":"explo1"
     },
@@ -808,7 +808,7 @@
         "maxVeg":-1,
         "skills":["cible","maycamo","recupcit","selfbadrepair","prefab","routes","flash","badcrewsave"],
         "mecanoCost":10,
-        "refabTime":18,
+        "fabTime":18,
         "fuzz":2,
         "deathFx":"explo1"
     },
@@ -864,7 +864,7 @@
         "maxVeg":-1,
         "skills":["cible","recupcit","prefab","defense","routes","flash","badcrewsave"],
         "mecanoCost":10,
-        "refabTime":18,
+        "fabTime":18,
         "fuzz":3.5,
         "deathFx":"explo1"
     },
@@ -906,7 +906,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["prefab","notarget","fog","bastion","sentinelle","longshot","flash"],
-        "refabTime":25,
+        "fabTime":25,
         "fuzz":3,
         "deathFx":"explo1"
     },
@@ -948,7 +948,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["nodeathcount","notarget","prefab","noblub","nolist","norepair"],
-        "refabTime":1,
+        "fabTime":1,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -990,7 +990,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["nodeathcount","notarget","prefab","noblub","nolist","norepair"],
-        "refabTime":1,
+        "fabTime":1,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1032,7 +1032,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["nodeathcount","notarget","prefab","bigblub","nolist","norepair"],
-        "refabTime":1,
+        "fabTime":1,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1082,8 +1082,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nodeathcount","notarget","halfcover","prefab","nolist","norepair","nobld"],
-        "refabTime":35,
+        "skills":["after","nodeathcount","notarget","halfcover","nolist","norepair","nobld"],
+        "fabTime":35,
         "fuzz":-2,
         "deathFx":"none"
     },
@@ -1134,7 +1134,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["after","nodeathcount","notarget","halfcover","prefab","nolist","norepair","nobld"],
-        "refabTime":35,
+        "fabTime":35,
         "fuzz":-2,
         "deathFx":"none"
     },
@@ -1185,7 +1185,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["after","nodeathcount","notarget","halfcover","prefab","nolist","norepair","nobld"],
-        "refabTime":35,
+        "fabTime":35,
         "fuzz":-2,
         "deathFx":"none"
     },
@@ -1236,7 +1236,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["after","nonumname","nodeathcount","notarget","halfcover","prefab","noblub","nolist","norepair","nobld"],
-        "refabTime":25,
+        "fabTime":25,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1287,7 +1287,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["after","nonumname","nodeathcount","notarget","halfcover","prefab","bigblub","nolist","norepair","nobld"],
-        "refabTime":25,
+        "fabTime":25,
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     }

@@ -53,7 +53,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -113,7 +113,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -172,7 +172,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -232,7 +232,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -265,7 +265,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -298,7 +298,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -341,7 +341,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":600,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -397,7 +397,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":200,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -430,7 +430,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -463,7 +463,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -496,7 +496,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -529,7 +529,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -562,7 +562,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -595,7 +595,7 @@
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":1500,
-        "refabTime":90,
+        "fabTime":90,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     }
