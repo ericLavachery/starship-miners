@@ -229,7 +229,7 @@ function armyAssign(batId,army) {
 
 function goDrug(apCost,drug) {
     console.log('DRUG DEAL');
-    console.log(selectedBat);
+    // console.log(selectedBat);
     let batType;
     let ravitBat = {};
     let ravitLeft = 0;
@@ -253,13 +253,13 @@ function goDrug(apCost,drug) {
         if (biggestRavit < 999) {
             if (ravitBat.id == selectedBat.id) {
                 selectedBat.tags.push('dU');
-                console.log('sel');
+                // console.log('sel');
             } else {
                 ravitBat.tags.push('dU');
                 if (rand.rand(1,2) === 1) {
                     ravitBat.xp = ravitBat.xp+1;
                 }
-                console.log('nosel');
+                // console.log('nosel');
             }
         }
         selectedBat.apLeft = selectedBat.apLeft-apCost;
@@ -339,7 +339,7 @@ function checkDrugs(myBat) {
                     }
                     if (batType.skills.includes('nitro') && playerInfos.drugs.includes('Nitro')) {
                         allDrugs.push('nitro');
-                        console.log(bat);
+                        // console.log(bat);
                     }
                 }
             }
@@ -428,8 +428,7 @@ function clickMine(clicTileId,poseurTileId) {
             putBat(clicTileId,0,0);
             showBatInfos(selectedBat);
         } else {
-            conselUnit = {};
-            conselAmmos = ['xxx','xxx','xxx','xxx'];
+            conselReset();
             $('#unitInfos').empty();
             selectMode();
             batUnstack();

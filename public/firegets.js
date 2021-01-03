@@ -934,7 +934,7 @@ function weaponAdj(weapon,bat,wn) {
     if (bat.tags.includes('fogged') && thisWeapon.range > 1) {
         thisWeapon.range = 1;
     }
-    console.log(thisWeapon);
+    // console.log(thisWeapon);
     return thisWeapon;
 };
 

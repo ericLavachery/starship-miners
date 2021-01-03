@@ -1010,7 +1010,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "costs":{"Fer":6,"Bois":1},
+        "costs":{"Fer":6},
         "deploy":{},
         "batch":12
     },
@@ -1024,7 +1024,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "costs":{"Scrap":6,"Bois":1},
+        "costs":{"Scrap":6},
         "deploy":{},
         "batch":12
     },
@@ -1040,7 +1040,7 @@
         "aoe": "",
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":4},
-        "costs":{"Rhodium":6,"Carbone":1},
+        "costs":{"Rhodium":6},
         "deploy":{},
         "batch":12
     },
@@ -1072,7 +1072,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"mat":3},
-        "costs":{"Adamantium":6,"Bois":1},
+        "costs":{"Adamantium":6},
         "deploy":{},
         "batch":12
     },
@@ -1088,7 +1088,7 @@
         "aoe": "",
         "info": "Poison",
         "compReq":{"exo":1,"ca":1},
-        "costs":{"Fer":6,"Bois":1},
+        "costs":{"Fer":6},
         "deploy":{"Calcium":3,"Huile":2},
         "batch":12
     },
@@ -1105,7 +1105,7 @@
         "info": "Poison++",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":2},
-        "costs":{"Fer":6,"Bois":1},
+        "costs":{"Fer":6},
         "deploy":{"Atium":3,"Huile":2},
         "batch":12
     },
@@ -1121,7 +1121,7 @@
         "aoe": "",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":2,"ca":3},
-        "costs":{"Aluminium":3,"Tungstène":3,"Bois":1},
+        "costs":{"Aluminium":3,"Tungstène":3},
         "deploy":{"Germium":3,"Huile":2},
         "batch":12
     },
@@ -1151,7 +1151,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "costs":{"Fer":3,"Tungstène":3,"Bois":1},
+        "costs":{"Fer":3,"Tungstène":3},
         "deploy":{},
         "batch":12
     },

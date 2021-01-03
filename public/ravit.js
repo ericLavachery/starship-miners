@@ -1,6 +1,6 @@
 function calcAmmos(bat,startAmmo) {
     let ammoLeft = startAmmo;
-    console.log('startAmmo='+startAmmo);
+    // console.log('startAmmo='+startAmmo);
     if (startAmmo < 99) {
         if (bat.tags.includes('aU')) {
             let allTags = _.countBy(bat.tags);
@@ -9,7 +9,7 @@ function calcAmmos(bat,startAmmo) {
             ammoLeft = startAmmo;
         }
     }
-    console.log('ammoLeft='+ammoLeft);
+    // console.log('ammoLeft='+ammoLeft);
     return ammoLeft;
 };
 
@@ -33,7 +33,7 @@ function goRavit() {
         let ravitVolume = calcRavitVolume(selectedBat);
         let ammoNeed = calcAmmoNeed(selectedBat);
         let singleAmmoVolume = ravitVolume[1]/ammoNeed;
-        console.log('singleAmmoVolume'+singleAmmoVolume);
+        // console.log('singleAmmoVolume'+singleAmmoVolume);
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
@@ -134,14 +134,14 @@ function calcRavit(bat) {
     let batType = getBatType(bat);
     let ravitLeft = 0;
     ravitLeft = batType.maxSkill;
-    console.log('startRavit='+ravitLeft);
+    // console.log('startRavit='+ravitLeft);
     if (ravitLeft < 999) {
         if (bat.tags.includes('sU')) {
             let allTags = _.countBy(bat.tags);
             ravitLeft = ravitLeft-allTags.sU;
         }
     }
-    console.log('ravitLeft='+ravitLeft);
+    // console.log('ravitLeft='+ravitLeft);
     return ravitLeft;
 };
 
@@ -150,7 +150,7 @@ function calcRavitDrug(bat) {
     let ravitLeft = 0;
     if (batType.skills.includes('dealer')) {
         ravitLeft = batType.maxDrug;
-        console.log('startRavit='+ravitLeft);
+        // console.log('startRavit='+ravitLeft);
         if (ravitLeft < 999) {
             if (bat.tags.includes('dU')) {
                 let allTags = _.countBy(bat.tags);
@@ -158,7 +158,7 @@ function calcRavitDrug(bat) {
             }
         }
     }
-    console.log('ravitLeft='+ravitLeft);
+    // console.log('ravitLeft='+ravitLeft);
     return ravitLeft;
 };
 

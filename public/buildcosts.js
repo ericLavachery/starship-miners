@@ -68,7 +68,7 @@ function payCost(costs) {
             let key = entry[0];
             let value = entry[1];
             resSub(key,value);
-            console.log('pay '+value+' '+key);
+            // console.log('pay '+value+' '+key);
         });
     }
 };
@@ -141,7 +141,7 @@ function payDeployCosts(unit,ammoNames) {
     payCost(deployCosts);
 };
 
-function payEquipCosts(unit,ammoNames) {
+function payFlatCosts(unit,ammoNames) {
     // Payer le prix fixe des lames, des équipements et des armures
     let costs;
     let index;
@@ -457,7 +457,7 @@ function resAdd(resName,number) {
 };
 
 function resSub(resName,number) {
-    console.log(resName);
+    // console.log(resName);
     let res = getResByName(resName);
     if (res.cat === 'alien') {
         playerInfos.alienRes[resName] = playerInfos.alienRes[resName]-number;

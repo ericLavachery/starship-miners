@@ -172,7 +172,7 @@ socket.on('unitCosts-Load', function(unitCosts) {
         });
     });
     playerSkillsUTChanges();
-    console.log(unitTypes);
+    // console.log(unitTypes);
 });
 socket.on('alienUnits-Load', function(au) {
     alienUnits = au;

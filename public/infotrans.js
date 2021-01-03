@@ -1,5 +1,5 @@
 function transInfos(bat,batType) {
-    console.log('transInfos');
+    // console.log('transInfos');
     let isCharged = checkCharged(bat,'trans');
     let transId = checkTransportId(bat,batType);
     if (transId >= 0 && !isCharged) {
@@ -115,7 +115,7 @@ function calcTransUnitsLeft(myBat,myBatType) {
             myBatTransUnitsLeft = myBatTransUnitsLeft-batWeight;
         }
     });
-    console.log('myBatTransUnitsLeft'+myBatTransUnitsLeft);
+    // console.log('myBatTransUnitsLeft'+myBatTransUnitsLeft);
     return myBatTransUnitsLeft;
 };
 

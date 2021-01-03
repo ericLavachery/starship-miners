@@ -159,6 +159,7 @@ let conselUnit = {};
 let conselAmmos = ['xxx','xxx','xxx','xxx'];
 let conselCat;
 let conselTriche;
+let conselCosts = {};
 // INVASION
 let zoneInfos = {};
 let maxAliens = 250;
