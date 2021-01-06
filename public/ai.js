@@ -1129,10 +1129,10 @@ function isCamoBlock() {
             });
         }
     });
-    console.log('camoGroup: '+camoGroup);
-    console.log('camoBlocks: '+camoBlocks);
-    console.log('meleeBlocks: '+meleeBlocks);
-    console.log('allBlocks: '+allBlocks);
+    // console.log('camoGroup: '+camoGroup);
+    // console.log('camoBlocks: '+camoBlocks);
+    // console.log('meleeBlocks: '+meleeBlocks);
+    // console.log('allBlocks: '+allBlocks);
     let blocked = false;
     if (camoBlocks >= 2 && meleeBlocks >= 1 && allBlocks >= 3) {
         blocked = true;

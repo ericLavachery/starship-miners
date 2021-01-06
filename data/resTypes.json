@@ -650,6 +650,16 @@
         "energie": 15
     },
     {
+        "id": 71,
+        "name": "Nourriture",
+        "bld": "",
+        "level": 4,
+        "rarity": 100,
+        "cat": "transfo",
+        "batch": 6,
+        "energie": 50
+    },
+    {
         "id": 65,
         "name": "Moteur orbital",
         "bld": "",

@@ -478,6 +478,7 @@ function checkAllCosts(unit,ammoNames) {
     let costsOK = true;
     let allCosts = {};
     console.log('UNIT COSTS');
+    console.log(unit.name);
     console.log(unit.costs);
     if (unit.costs != undefined) {
         if (Object.keys(unit.costs).length >= 1) {
@@ -504,6 +505,7 @@ function checkAllCosts(unit,ammoNames) {
         flatCosts = getCosts(unit,batAmmo,1,'ammo');
     }
     console.log('AMMO 1 COSTS');
+    console.log(batAmmo.name);
     console.log(flatCosts);
     if (flatCosts != undefined) {
         if (Object.keys(flatCosts).length >= 1) {
@@ -517,6 +519,7 @@ function checkAllCosts(unit,ammoNames) {
         flatCosts = getCosts(unit,batAmmo,2,'ammo');
     }
     console.log('AMMO 2 COSTS');
+    console.log(batAmmo.name);
     console.log(flatCosts);
     if (flatCosts != undefined) {
         if (Object.keys(flatCosts).length >= 1) {
@@ -530,6 +533,7 @@ function checkAllCosts(unit,ammoNames) {
         flatCosts = getCosts(unit,batArmor,0,'equip');
     }
     console.log('ARMOR COSTS');
+    console.log(batArmor.name);
     console.log(flatCosts);
     if (flatCosts != undefined) {
         if (Object.keys(flatCosts).length >= 1) {
@@ -543,6 +547,7 @@ function checkAllCosts(unit,ammoNames) {
         flatCosts = getCosts(unit,batEquip,0,'equip');
     }
     console.log('EQUIP COSTS');
+    console.log(batEquip.name);
     console.log(flatCosts);
     if (flatCosts != undefined) {
         if (Object.keys(flatCosts).length >= 1) {
