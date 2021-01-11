@@ -6,6 +6,7 @@ function searchRuins(apCost) {
         checkRuinsCit(tile);
         checkRuinsAliens(tile);
         checkRuinsRes(tile);
+        checkRuinsComp(tile);
         if (selectedBat.tags.includes('mining')) {
             tagIndex = selectedBat.tags.indexOf('mining');
             selectedBat.tags.splice(tagIndex,1);
@@ -25,6 +26,46 @@ function searchRuins(apCost) {
         ruinsEmpty = true;
         coffreTileId = -1;
     }
+};
+
+function checkRuinsComp(tile) {
+    let foundComp = {};
+    let compOK = false;
+    let compChance = ruinsCompBase;
+    if (rand.rand(1,100) <= compChance) {
+        let i = 1;
+        while (i <= 10) {
+            foundComp = randomComp(7,28);
+            compOK = isFoundCompOK(foundComp);
+            if (compOK) {
+                break;
+            }
+            if (i > 12) {break;}
+            i++
+        }
+        if (compOK) {
+            playerInfos.comp[foundComp.name] = playerInfos.comp[foundComp.name]+1;
+            warning('Compétence trouvée',foundComp.fullName+' +1 (maintenant au niveau '+playerInfos.comp[foundComp.name]+')');
+            savePlayerInfos();
+        }
+    }
+}
+
+function isFoundCompOK(foundComp) {
+    let compOK = true;
+    let playerCompLvl = playerInfos.comp[foundComp];
+    if (playerCompLvl >= foundComp.maxLevel) {
+        compOK = false;
+    } else if (foundComp.lvlCosts[playerCompLvl+1] === 2) {
+        compOK = false;
+    }
+    return compOK;
+};
+
+function randomComp(first,last) {
+    let dice = rand.rand(first,last);
+    let theComp = getCompById(dice);
+    return theComp;
 };
 
 function checkRuinsCit(tile) {
@@ -246,13 +287,5 @@ function checkRuinsRes(tile) {
                 }
             });
         }
-    }
-};
-
-function randomComp() {
-    let theComp;
-    let dice = rand.rand(1,22);
-    if (true) {
-
     }
 };

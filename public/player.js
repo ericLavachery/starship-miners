@@ -149,14 +149,6 @@ function allCompSelect() {
     });
 };
 
-function getCompByName(name) {
-    // console.log('COMPS');
-    // console.log(gangComps);
-    let index = gangComps.findIndex((obj => obj.name == name));
-    let gComp = gangComps[index];
-    return gComp;
-};
-
 function compSelect(gc) {
     // console.log(gc);
     $('#conUnitList').append('<select title="'+gc.fullName+' '+playerInfos.comp[gc.name]+'" class="boutonGris" id="'+gc.name+'" onchange="changeComp(`'+gc.name+'`,`'+gc.name+'`)"></select>');

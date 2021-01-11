@@ -173,19 +173,6 @@ function getCover(bat,withFortif,forAOE) {
     return cover;
 };
 
-function getBatType(bat) {
-    let unitIndex;
-    let batType;
-    if (bat.team == 'player') {
-        unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-        batType = unitTypes[unitIndex];
-    } else if (bat.team == 'aliens') {
-        unitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
-        batType = alienUnits[unitIndex];
-    }
-    return batType;
-};
-
 function getStealth(bat) {
     let cover = getCover(bat,false,false);
     let batType = getBatType(bat);
@@ -946,18 +933,6 @@ function checkDeepForest(tile) {
         }
     }
     return deepForest;
-};
-
-function getTileTerrainName(tileId) {
-    let tername = 'P';
-    if (tileId < 3600 && tileId >= 0) {
-        let tileIndex = zone.findIndex((obj => obj.id == tileId));
-        let tile = zone[tileIndex];
-        let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
-        let terrain = terrainTypes[terrainIndex];
-        tername = terrain.name;
-    }
-    return tername;
 };
 
 function calcShotDice(bat,luckyshot) {

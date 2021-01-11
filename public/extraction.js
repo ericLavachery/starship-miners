@@ -112,42 +112,6 @@ function getTerrainRes(terrain,tile) {
     return srs;
 };
 
-function getTerrain(bat) {
-    let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
-    let tile = zone[tileIndex];
-    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
-    let terrain = terrainTypes[terrainIndex];
-    return terrain;
-};
-
-function getTerrainById(tileId) {
-    let tileIndex = zone.findIndex((obj => obj.id == tileId));
-    let tile = zone[tileIndex];
-    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
-    let terrain = terrainTypes[terrainIndex];
-    return terrain;
-};
-
-function getTileTerrain(tileId) {
-    let tileIndex = zone.findIndex((obj => obj.id == tileId));
-    let tile = zone[tileIndex];
-    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
-    let terrain = terrainTypes[terrainIndex];
-    return terrain;
-};
-
-function getTile(bat) {
-    let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
-    let tile = zone[tileIndex];
-    return tile;
-};
-
-function getTileById(tileId) {
-    let tileIndex = zone.findIndex((obj => obj.id == tileId));
-    let tile = zone[tileIndex];
-    return tile;
-};
-
 function getMiningRate(bat,fullRate) {
     let batType = getBatType(bat);
     let miningAdj = 1;
@@ -213,57 +177,6 @@ function getResMiningRate(bat,res,value,fullRate) {
         resRate = 0;
     }
     return resRate;
-};
-
-function getInfraByName(infraName) {
-    let index = armorTypes.findIndex((obj => obj.name == infraName));
-    let infra = armorTypes[index];
-    return infra;
-};
-
-function getBatTypeByName(batName) {
-    let index = unitTypes.findIndex((obj => obj.name == batName));
-    let batType = unitTypes[index];
-    return batType;
-};
-
-function getResByName(resName) {
-    let resIndex = resTypes.findIndex((obj => obj.name == resName));
-    let res = resTypes[resIndex];
-    return res;
-};
-
-function getResById(resId) {
-    let resIndex = resTypes.findIndex((obj => obj.id == resId));
-    let res = resTypes[resIndex];
-    return res;
-};
-
-function getBatById(batId) {
-    let index = bataillons.findIndex((obj => obj.id == batId));
-    let bat = bataillons[index];
-    return bat;
-};
-
-function getBatByTileId(tileId) {
-    let index = bataillons.findIndex((obj => obj.tileId == tileId));
-    let bat = bataillons[index];
-    return bat;
-};
-
-function getBatByName(name) {
-    let index = bataillons.findIndex((obj => obj.type == name));
-    let bat = bataillons[index];
-    return bat;
-};
-
-function getAlienByName(name) {
-    let bat = {};
-    let index = aliens.findIndex((obj => obj.type == name));
-    if (index >= 0) {
-        bat = aliens[index];
-    }
-    return bat;
 };
 
 function chooseRes(again) {

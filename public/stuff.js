@@ -154,3 +154,127 @@ function warning(title,body,noHand) {
         $('#warnings').append('<i class="far fa-hand-paper wash" onclick="washReports()" title="Cacher l\'alerte"></i>');
     }
 };
+
+function getBatType(bat) {
+    let unitIndex;
+    let batType;
+    if (bat.team == 'player') {
+        unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
+        batType = unitTypes[unitIndex];
+    } else if (bat.team == 'aliens') {
+        unitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
+        batType = alienUnits[unitIndex];
+    }
+    return batType;
+};
+
+function getInfraByName(infraName) {
+    let index = armorTypes.findIndex((obj => obj.name == infraName));
+    let infra = armorTypes[index];
+    return infra;
+};
+
+function getBatTypeByName(batName) {
+    let index = unitTypes.findIndex((obj => obj.name == batName));
+    let batType = unitTypes[index];
+    return batType;
+};
+
+function getResByName(resName) {
+    let resIndex = resTypes.findIndex((obj => obj.name == resName));
+    let res = resTypes[resIndex];
+    return res;
+};
+
+function getResById(resId) {
+    let resIndex = resTypes.findIndex((obj => obj.id == resId));
+    let res = resTypes[resIndex];
+    return res;
+};
+
+function getBatById(batId) {
+    let index = bataillons.findIndex((obj => obj.id == batId));
+    let bat = bataillons[index];
+    return bat;
+};
+
+function getBatByTileId(tileId) {
+    let index = bataillons.findIndex((obj => obj.tileId == tileId));
+    let bat = bataillons[index];
+    return bat;
+};
+
+function getBatByName(name) {
+    let index = bataillons.findIndex((obj => obj.type == name));
+    let bat = bataillons[index];
+    return bat;
+};
+
+function getAlienByName(name) {
+    let bat = {};
+    let index = aliens.findIndex((obj => obj.type == name));
+    if (index >= 0) {
+        bat = aliens[index];
+    }
+    return bat;
+};
+
+function getTerrain(bat) {
+    let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
+    let tile = zone[tileIndex];
+    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
+    let terrain = terrainTypes[terrainIndex];
+    return terrain;
+};
+
+function getTerrainById(tileId) {
+    let tileIndex = zone.findIndex((obj => obj.id == tileId));
+    let tile = zone[tileIndex];
+    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
+    let terrain = terrainTypes[terrainIndex];
+    return terrain;
+};
+
+function getTileTerrain(tileId) {
+    let tileIndex = zone.findIndex((obj => obj.id == tileId));
+    let tile = zone[tileIndex];
+    let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
+    let terrain = terrainTypes[terrainIndex];
+    return terrain;
+};
+
+function getTileTerrainName(tileId) {
+    let tername = 'P';
+    if (tileId < 3600 && tileId >= 0) {
+        let tileIndex = zone.findIndex((obj => obj.id == tileId));
+        let tile = zone[tileIndex];
+        let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
+        let terrain = terrainTypes[terrainIndex];
+        tername = terrain.name;
+    }
+    return tername;
+};
+
+function getTile(bat) {
+    let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
+    let tile = zone[tileIndex];
+    return tile;
+};
+
+function getTileById(tileId) {
+    let tileIndex = zone.findIndex((obj => obj.id == tileId));
+    let tile = zone[tileIndex];
+    return tile;
+};
+
+function getCompByName(name) {
+    let index = gangComps.findIndex((obj => obj.name == name));
+    let gComp = gangComps[index];
+    return gComp;
+};
+
+function getCompById(id) {
+    let index = gangComps.findIndex((obj => obj.id == id));
+    let gComp = gangComps[index];
+    return gComp;
+};

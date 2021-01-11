@@ -1,167 +1,195 @@
 [
     {
+        "id":1,
         "name":"arti",
         "fullName":"Artillerie",
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
     {
+        "id":2,
         "name":"tank",
         "fullName":"Blindés",
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
     {
+        "id":3,
         "name":"aero",
         "fullName":"Aéronautique",
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
     {
+        "id":4,
         "name":"gen",
         "fullName":"Génétique",
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
     {
+        "id":5,
         "name":"cyber",
         "fullName":"Cybernétique",
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
     {
+        "id":6,
         "name":"robo",
         "fullName":"Robotique",
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
     {
+        "id":7,
         "name":"tele",
         "fullName":"Téléportation",
         "maxLevel":3,
         "lvlCosts":[0,2,1,1]
     },
     {
+        "id":8,
         "name":"vsp",
         "fullName":"Vols spaciaux",
         "maxLevel":4,
         "lvlCosts":[0,1,1,1,1]
     },
     {
+        "id":9,
         "name":"scaph",
         "fullName":"Scaphandres",
         "maxLevel":3,
         "lvlCosts":[0,1,1,1]
     },
     {
+        "id":10,
         "name":"det",
         "fullName":"Détection",
         "maxLevel":6,
         "lvlCosts":[0,1,1,1,1,1,2]
     },
     {
+        "id":11,
         "name":"med",
         "fullName":"Médecine",
         "maxLevel":3,
         "lvlCosts":[0,1,1,2]
     },
     {
+        "id":12,
         "name":"ordre",
         "fullName":"Maintien de l'ordre",
         "maxLevel":3,
         "lvlCosts":[0,1,1,1]
     },
     {
+        "id":13,
         "name":"train",
         "fullName":"Entraînement",
         "maxLevel":2,
         "lvlCosts":[0,1,1]
     },
     {
+        "id":14,
         "name":"cam",
         "fullName":"Camouflage",
         "maxLevel":3,
         "lvlCosts":[0,2,1,1]
     },
     {
+        "id":15,
         "name":"tri",
         "fullName":"Tri",
         "maxLevel":4,
         "lvlCosts":[0,1,1,1,2]
     },
     {
+        "id":16,
         "name":"ind",
         "fullName":"Industrie",
         "maxLevel":3,
         "lvlCosts":[0,1,1,1]
     },
     {
+        "id":17,
         "name":"const",
         "fullName":"Construction",
         "maxLevel":3,
         "lvlCosts":[0,1,1,1]
     },
     {
+        "id":18,
         "name":"energ",
         "fullName":"Energie",
         "maxLevel":4,
         "lvlCosts":[0,1,1,1,2]
     },
     {
+        "id":19,
         "name":"ext",
         "fullName":"Extraction",
         "maxLevel":3,
         "lvlCosts":[0,1,1,2]
     },
     {
+        "id":20,
         "name":"trans",
         "fullName":"Transport",
         "maxLevel":3,
         "lvlCosts":[0,1,1,2]
     },
     {
+        "id":21,
         "name":"log",
         "fullName":"Logistique",
         "maxLevel":3,
         "lvlCosts":[0,1,1,2]
     },
     {
+        "id":22,
         "name":"bal",
         "fullName":"Balistique",
         "maxLevel":3,
         "lvlCosts":[0,1,1,2]
     },
     {
+        "id":23,
         "name":"explo",
         "fullName":"Explosifs",
         "maxLevel":3,
         "lvlCosts":[0,1,1,1]
     },
     {
+        "id":24,
         "name":"pyro",
         "fullName":"Pyrotechnie",
         "maxLevel":3,
         "lvlCosts":[0,1,1,1]
     },
     {
+        "id":25,
         "name":"ca",
         "fullName":"Connaissance Alien",
         "maxLevel":5,
         "lvlCosts":[0,1,1,1,1,1]
     },
     {
+        "id":26,
         "name":"exo",
         "fullName":"Exochimie",
         "maxLevel":3,
         "lvlCosts":[0,1,1,2]
     },
     {
+        "id":27,
         "name":"mat",
         "fullName":"Matériaux",
         "maxLevel":4,
         "lvlCosts":[0,1,1,1,2]
     },
     {
+        "id":28,
         "name":"def",
         "fullName":"Défenses",
         "maxLevel":3,
