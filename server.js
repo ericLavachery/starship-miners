@@ -165,6 +165,16 @@ fs.readFile('./data/armorTypes.json', 'utf8', function (err, data) {
         console.error( e );
     }
 });
+var gangComps;
+fs.readFile('./data/gangComps.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    try {
+        gangComps = JSON.parse(data);
+        // console.log(unitDV);
+    } catch (e) {
+        console.error( e );
+    }
+});
 var playerInfos = {};
 var bataillons = [];
 var savedMap = [];
@@ -289,6 +299,8 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.emit('resTypes-Load', resTypes);
         console.log('loading crafting');
         socket.emit('crafting-Load', crafting);
+        console.log('loading comps');
+        socket.emit('comps-Load', gangComps);
         if (savedMap.length >= 3500) {
             console.log('loading saved map');
         } else {

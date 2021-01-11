@@ -102,11 +102,14 @@ function gangEdit() {
         i++
     }
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
-    let gangComp = maxGangComp();
-    $('#conUnitList').append('<span class="constName">Max Compétences : '+toNiceString(gangComp)+'</span>');
+    let maxGangComp = maxGangCompCosts();
+    $('#conUnitList').append('<span class="constName">Max Compétences : '+toNiceString(maxGangComp)+'</span>');
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     // COMPETENCES
     allCompSelect();
+    $('#conUnitList').append('<br><span class="shSpace"></span><br>');
+    let totalGangComp = getTotalCompCosts();
+    $('#conUnitList').append('<span class="constName">Total Compétences : '+toNiceString(totalGangComp)+'</span>');
     // dark
     // $('#conUnitList').append('<select class="boutonGris" id="theDark" onchange="changePlayerInfo(`theDark`,`dark`)"></select>');
     // $('#theDark').empty().append('<option value="false">Type de Zone</option>');
@@ -125,59 +128,51 @@ function changePlayerInfo(dropMenuId,infoName) {
     } else {
         playerInfos[infoName] = +value;
     }
-    maxGangComp();
+    maxGangCompCosts();
     savePlayerInfos();
     gangNavig();
+    gangEdit();
 };
 
 function changeComp(dropMenuId,compName) {
     let value = document.getElementById(dropMenuId).value;
     playerInfos.comp[compName] = +value;
-    maxGangComp();
+    maxGangCompCosts();
     savePlayerInfos();
     gangNavig();
+    gangEdit();
 };
 
 function allCompSelect() {
-    compSelect('Génétique','gen',1);
-    compSelect('Cybernétique','cyber',1);
-    compSelect('Robotique','robo',1);
-    compSelect('Aéronautique','aero',1);
-    compSelect('Artillerie','arti',1);
-    compSelect('Blindés','tank',1);
-    compSelect('Construction','const',3);
-    compSelect('Industrie','ind',3);
-    compSelect('Energie','energ',4);
-    compSelect('Extraction','ext',3);
-    compSelect('Connaissance Alien','ca',5);
-    compSelect('Médecine','med',3);
-    compSelect('Défense','def',3);
-    compSelect('Entraînement','train',2);
-    compSelect('Camouflage','cam',3);
-    compSelect('Transports','trans',3);
-    compSelect('Logistique','log',3);
-    compSelect('Scaphandres','scaph',3);
-    compSelect('Détection','det',6);
-    compSelect('Vols Spaciaux','vsp',4);
-    compSelect('Téléportation','tele',3);
-    compSelect('Balistique','bal',3);
-    compSelect('Explosifs','explo',3);
-    compSelect('Pyrotechnie','pyro',3);
-    compSelect('Exochimie','exo',3);
-    compSelect('Matériaux','mat',4);
-    compSelect('Tri','tri',4);
-    compSelect('Maintien de l\'ordre','ordre',3);
+    gangComps.forEach(function(gc) {
+        compSelect(gc);
+    });
 };
 
-function compSelect(compName,compId,compMax) {
-    $('#conUnitList').append('<select title="'+compName+' '+playerInfos.comp[compId]+'" class="boutonGris" id="'+compId+'" onchange="changeComp(`'+compId+'`,`'+compId+'`)"></select>');
-    $('#'+compId).empty().append('<option value="">'+compId+'</option>');
+function getCompByName(name) {
+    // console.log('COMPS');
+    // console.log(gangComps);
+    let index = gangComps.findIndex((obj => obj.name == name));
+    let gComp = gangComps[index];
+    return gComp;
+};
+
+function compSelect(gc) {
+    // console.log(gc);
+    $('#conUnitList').append('<select title="'+gc.fullName+' '+playerInfos.comp[gc.name]+'" class="boutonGris" id="'+gc.name+'" onchange="changeComp(`'+gc.name+'`,`'+gc.name+'`)"></select>');
+    $('#'+gc.name).empty().append('<option value="">'+gc.name+'</option>');
+    let showCost = '';
     let i = 0;
-    while (i <= compMax) {
-        if (playerInfos.comp[compId] === i) {
-            $('#'+compId).append('<option value="'+i+'" selected>'+compId+' '+i+'</option>');
+    while (i <= gc.maxLevel) {
+        if (gc.lvlCosts[i] === 2) {
+            showCost = ' (2)';
         } else {
-            $('#'+compId).append('<option value="'+i+'">'+compId+' '+i+'</option>');
+            showCost = '';
+        }
+        if (playerInfos.comp[gc.name] === i) {
+            $('#'+gc.name).append('<option value="'+i+'" selected>'+gc.name+' '+i+' '+showCost+'</option>');
+        } else {
+            $('#'+gc.name).append('<option value="'+i+'">'+gc.name+' '+i+' '+showCost+'</option>');
         }
         if (i > 10) {break;}
         i++
@@ -329,7 +324,7 @@ function playerSkillsUTChanges() {
     });
 };
 
-function maxGangComp() {
+function maxGangCompCosts() {
     let maxComp = [4,0];
     maxComp[0] = maxComp[0]+playerInfos.gLevel;
     if (playerInfos.gang === 'rednecks') {
@@ -515,4 +510,47 @@ function maxGangComp() {
         maxComp[1] = maxComp[1]+1;
     }
     return maxComp;
+};
+
+function getTotalCompCosts() {
+    let totalComp = [0,0];
+    gangComps.forEach(function(gc) {
+        if (playerInfos.comp[gc.name] >= 1) {
+            totalComp[0] = totalComp[0]+gc.lvlCosts[1];
+            if (gc.lvlCosts[1] === 2) {
+                totalComp[1] = totalComp[1]+1;
+            }
+        }
+        if (playerInfos.comp[gc.name] >= 2) {
+            totalComp[0] = totalComp[0]+gc.lvlCosts[2];
+            if (gc.lvlCosts[2] === 2) {
+                totalComp[1] = totalComp[1]+1;
+            }
+        }
+        if (playerInfos.comp[gc.name] >= 3) {
+            totalComp[0] = totalComp[0]+gc.lvlCosts[3];
+            if (gc.lvlCosts[3] === 2) {
+                totalComp[1] = totalComp[1]+1;
+            }
+        }
+        if (playerInfos.comp[gc.name] >= 4) {
+            totalComp[0] = totalComp[0]+gc.lvlCosts[4];
+            if (gc.lvlCosts[4] === 2) {
+                totalComp[1] = totalComp[1]+1;
+            }
+        }
+        if (playerInfos.comp[gc.name] >= 5) {
+            totalComp[0] = totalComp[0]+gc.lvlCosts[5];
+            if (gc.lvlCosts[5] === 2) {
+                totalComp[1] = totalComp[1]+1;
+            }
+        }
+        if (playerInfos.comp[gc.name] >= 6) {
+            totalComp[0] = totalComp[0]+gc.lvlCosts[6];
+            if (gc.lvlCosts[6] === 2) {
+                totalComp[1] = totalComp[1]+1;
+            }
+        }
+    });
+    return totalComp;
 };

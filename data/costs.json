@@ -1390,6 +1390,11 @@
         "deploy":{"Energie":45,"Potassium":90,"Végétaux":90,"Titane":45}
     },
     {
+        "id":239,
+        "name":"Coffres",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99}
+    },
+    {
         "id":37,
         "name":"Barbelés (scrap)",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},

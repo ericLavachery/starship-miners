@@ -322,6 +322,16 @@ function nextTurnEnd() {
                     checkDeath(bat,batType);
                 }
             }
+            // fin coffres
+            if (batType.name === 'Coffres') {
+                let resSpace = checkResSpace(bat);
+                let resMax = batType.transRes;
+                if (resSpace >= resMax) {
+                    batDeathEffect(bat,true,'Bataillon détruit',bat.type+' expiré.');
+                    bat.squadsLeft = 0;
+                    checkDeath(bat,batType);
+                }
+            }
             // FOG
             if (bat.tags.includes('fog')) {
                 fogEffect(bat);

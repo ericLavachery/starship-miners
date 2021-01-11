@@ -993,17 +993,17 @@ function addRes(zone) {
                     if (tile.terrain === 'S' && rand.rand(1,oilChance) === 1) {
                         tile.rq = 1;
                         tile.rs = {};
-                        tile.rs[oilName] = rand.rand(80,280)+Math.round(numBadTer/72);
+                        tile.rs[oilName] = rand.rand(80,320)+Math.round(numBadTer/72);
                     }
                     if (tile.terrain === 'B' && rand.rand(1,Math.round(oilChance/2)) === 1) {
                         tile.rq = 1;
                         tile.rs = {};
-                        tile.rs[oilName] = rand.rand(20,70)+Math.round(numBadTer/36);
+                        tile.rs[oilName] = rand.rand(30,140)+Math.round(numBadTer/36);
                     }
                     if (tile.terrain === 'F' && rand.rand(1,oilChance*2) === 1) {
                         tile.rq = 1;
                         tile.rs = {};
-                        tile.rs[oilName] = rand.rand(20,160)+Math.round(numBadTer/72);
+                        tile.rs[oilName] = rand.rand(30,240)+Math.round(numBadTer/72);
                     }
                 }
             }

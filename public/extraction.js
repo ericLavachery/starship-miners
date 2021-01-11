@@ -245,6 +245,12 @@ function getBatById(batId) {
     return bat;
 };
 
+function getBatByTileId(tileId) {
+    let index = bataillons.findIndex((obj => obj.tileId == tileId));
+    let bat = bataillons[index];
+    return bat;
+};
+
 function getBatByName(name) {
     let index = bataillons.findIndex((obj => obj.type == name));
     let bat = bataillons[index];

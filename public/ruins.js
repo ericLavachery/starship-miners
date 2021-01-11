@@ -22,11 +22,14 @@ function searchRuins(apCost) {
         saveMap();
         selectedBatArrayUpdate();
         showBatInfos(selectedBat);
+        ruinsEmpty = true;
+        coffreTileId = -1;
     }
 };
 
 function checkRuinsCit(tile) {
     console.log('Check Citoyens');
+    ruinsEmpty = true;
     let numRuins = tile.sh;
     if (numRuins > 50) {
         numRuins = 50;
@@ -40,6 +43,7 @@ function checkRuinsCit(tile) {
     if (rand.rand(1,100) <= citChance) {
         let ncFactor = Math.round((Math.sqrt(numRuins)+3)*3);
         let numCit = rand.rand(1,ncFactor)*6;
+        ruinsEmpty = false;
         console.log('numCit: '+numCit);
         let restCit = numCit;
         if (restCit <= 72) {
@@ -120,10 +124,135 @@ function putBatAround(tileId,alien,unitId,numCit) {
             conselUnit = alienUnits[unitIndex];
         }
         conselAmmos = ['xxx','xxx','xxx','xxx'];
+        coffreTileId = dropTile;
         putBat(dropTile,numCit,0);
     }
 };
 
 function checkRuinsRes(tile) {
+    console.log('Check Ressources');
+    coffreTileId = -1;
+    let numRuins = tile.sh;
+    if (numRuins > 50) {
+        numRuins = 50;
+    }
+    let resChance = ruinsResBase;
+    console.log('resChance: '+resChance);
+    if (rand.rand(1,100) <= resChance) {
+        putBatAround(tile.id,false,239,0);
+        let coffre = getBatByTileId(coffreTileId);
+        let totalRes = 0;
+        let thatResChance = 0;
+        let thatResNum = 0;
+        let mapFactor = playerInfos.mapDiff+2;
+        let resFactor;
+        resTypes.forEach(function(res) {
+            if (res.name != 'Magma' && res.name != 'Scrap' && res.cat != 'alien') {
+                thatResChance = 0;
+                thatResNum = 0;
+                resFactor = res.rarity+playerInfos.mapDiff;
+                if (res.name == 'Nourriture') {
+                    if (ruinsEmpty) {
+                        thatResChance = Math.ceil(resFactor*res.batch/3);
+                    } else {
+                        thatResChance = Math.ceil(resFactor*5*res.batch/3);
+                    }
+                } else if (res.cat == 'transfo') {
+                    if (!res.name.includes('Compo') && res.name != 'Moteur orbital' && res.name != 'Energie') {
+                        thatResChance = Math.ceil(resFactor*2*res.batch/3);
+                    }
+                } else {
+                    if (res.name === 'Huile') {
+                        thatResChance = Math.ceil(75*res.batch/3);
+                    } else if (res.name === 'Eau') {
+                        if (ruinsEmpty) {
+                            thatResChance = Math.ceil(100*res.batch/3);
+                        } else {
+                            thatResChance = Math.ceil(300*res.batch/3);
+                        }
+                    } else {
+                        thatResChance = Math.ceil(resFactor/3*res.batch/3);
+                    }
+                    if (res.cat === 'blue') {
+                        thatResChance = Math.ceil(thatResChance/3*mapFactor/7);
+                    } else if (res.cat === 'blue-sky') {
+                        thatResChance = Math.ceil(thatResChance/2*mapFactor/7);
+                    } else if (res.cat === 'sky') {
+                        thatResChance = Math.ceil(thatResChance/3*mapFactor/7);
+                    }
+                }
+                console.log(res.name+' '+thatResChance);
+                if (rand.rand(1,1000) <= thatResChance) {
+                    thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor/2*rand.rand(4,16))+rand.rand(0,9);
+                    console.log('!GET : '+res.name+' '+thatResNum);
+                    if (coffre.transRes[res.name] === undefined) {
+                        coffre.transRes[res.name] = thatResNum;
+                    } else {
+                        coffre.transRes[res.name] = coffre.transRes[res.name]+thatResNum;
+                    }
+                    totalRes = totalRes+thatResNum;
+                }
+            }
+        });
+        if (totalRes <= 0) {
+            resTypes.forEach(function(res) {
+                if (totalRes <= 0) {
+                    if (res.name != 'Magma' && res.name != 'Scrap' && res.cat != 'alien') {
+                        thatResChance = 0;
+                        thatResNum = 0;
+                        resFactor = res.rarity+playerInfos.mapDiff;
+                        if (res.name == 'Nourriture') {
+                            if (ruinsEmpty) {
+                                thatResChance = Math.ceil(resFactor*res.batch/3);
+                            } else {
+                                thatResChance = Math.ceil(resFactor*5*res.batch/3);
+                            }
+                        } else if (res.cat == 'transfo') {
+                            if (!res.name.includes('Compo') && res.name != 'Moteur orbital' && res.name != 'Energie') {
+                                thatResChance = Math.ceil(resFactor*2*res.batch/3);
+                            }
+                        } else {
+                            if (res.name === 'Huile') {
+                                thatResChance = Math.ceil(75*res.batch/3);
+                            } else if (res.name === 'Eau') {
+                                if (ruinsEmpty) {
+                                    thatResChance = Math.ceil(100*res.batch/3);
+                                } else {
+                                    thatResChance = Math.ceil(300*res.batch/3);
+                                }
+                            } else {
+                                thatResChance = Math.ceil(resFactor/3*res.batch/3);
+                            }
+                            if (res.cat === 'blue') {
+                                thatResChance = Math.ceil(thatResChance/3*mapFactor/7);
+                            } else if (res.cat === 'blue-sky') {
+                                thatResChance = Math.ceil(thatResChance/2*mapFactor/7);
+                            } else if (res.cat === 'sky') {
+                                thatResChance = Math.ceil(thatResChance/3*mapFactor/7);
+                            }
+                        }
+                        console.log(res.name+' '+thatResChance);
+                        if (rand.rand(1,1000) <= thatResChance) {
+                            thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor/2*rand.rand(4,16))+rand.rand(0,9);
+                            console.log('!GET : '+res.name+' '+thatResNum);
+                            if (coffre.transRes[res.name] === undefined) {
+                                coffre.transRes[res.name] = thatResNum;
+                            } else {
+                                coffre.transRes[res.name] = coffre.transRes[res.name]+thatResNum;
+                            }
+                            totalRes = totalRes+thatResNum;
+                        }
+                    }
+                }
+            });
+        }
+    }
+};
 
+function randomComp() {
+    let theComp;
+    let dice = rand.rand(1,22);
+    if (true) {
+
+    }
 };

@@ -123,6 +123,11 @@ socket.on('crafting-Load', function(crf) {
     crafting = crf;
     // console.log(crafting);
 });
+// gangComps
+socket.on('comps-Load', function(cmp) {
+    gangComps = cmp;
+    // console.log(gangComps);
+});
 // Bataillons
 socket.on('bataillons-Load', function(bt) {
     bataillons = bt;
