@@ -177,7 +177,7 @@ function checkRuinsRes(tile) {
     if (numRuins > 50) {
         numRuins = 50;
     }
-    let resChance = ruinsResBase;
+    let resChance = ruinsResBase+(playerInfos.mapDiff*2)-10;
     console.log('resChance: '+resChance);
     if (rand.rand(1,100) <= resChance) {
         putBatAround(tile.id,false,239,0);
