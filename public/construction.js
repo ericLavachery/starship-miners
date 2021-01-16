@@ -1,6 +1,7 @@
-function bfconst(cat,triche) {
+function bfconst(cat,triche,upgrade) {
     conselCat = cat;
     conselTriche = triche;
+    conselUpgrade = upgrade;
     let catz = [cat];
     if (cat === 'buildings') {
         catz.push('devices');
@@ -57,6 +58,9 @@ function bfconst(cat,triche) {
                 }
             }
             if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
+                prodOK = false;
+            }
+            if (unit.bldCost != 'none' && unit.bldCost != selectedBatType.name) {
                 prodOK = false;
             }
         }
@@ -360,7 +364,7 @@ function conSelect(unitId,player,noRefresh) {
             }
         }
     }
-    bfconst(conselCat,conselTriche);
+    bfconst(conselCat,conselTriche,conselUpgrade);
 };
 
 function selectAmmo(ammo,weapon,unitId) {
@@ -437,7 +441,7 @@ function clickConstruct(tileId,free) {
         }
         putBat(tileId,0,0);
         if (conselTriche) {
-            bfconst(conselCat,conselTriche);
+            bfconst(conselCat,conselTriche,conselUpgrade);
             $('#conAmmoList').empty();
         } else {
             conOut();
@@ -857,6 +861,7 @@ function conselReset() {
     conselUnit = {};
     conselAmmos = ['xxx','xxx','xxx','xxx'];
     // conselCat = '';
+    conselUpgrade = false;
     conselTriche = false;
     conselCosts = {};
 }

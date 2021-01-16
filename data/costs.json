@@ -1488,12 +1488,14 @@
     {
         "id":3,
         "name":"Atelier",
+        "bldUp":"Chaîne de montage",
         "costs":{"Compo1":450,"Eau":36,"Hydrocarbure":100,"Huile":50,"Scrap":200,"Aluminium":50,"Fer":50,"Bois":100,"Végétaux":100,"Zinc":50}
     },
     {
         "id":198,
         "name":"Chaîne de montage",
         "bldEquiv":["Atelier"],
+        "bldUp":"Usine",
         "bldCost":"Atelier",
         "upkeep":{"Energie":12},
         "costs":{"Compo1":630,"Compo2":270,"Compo3":60,"Eau":60,"Energie":250,"Fuel":200,"Huile":100,"Scrap":200,"Titane":50,"Aluminium":100,"Fer":200,"Zinc":100,"Azote":100,"Electros":100,"Batteries":70}
@@ -1515,12 +1517,14 @@
     {
         "id":170,
         "name":"Armurerie",
+        "bldUp":"Arsenal",
         "costs":{"Compo1":390,"Compo2":60,"Eau":36,"Hydrocarbure":200,"Huile":25,"Scrap":150,"Fer":100,"Potassium":100,"Hydrogène":50}
     },
     {
         "id":171,
         "name":"Arsenal",
         "bldEquiv":["Armurerie"],
+        "bldUp":"Usine d'armement",
         "bldCost":"Armurerie",
         "upkeep":{"Energie":12},
         "costs":{"Compo1":570,"Compo2":330,"Compo3":110,"Eau":60,"Energie":250,"Fuel":200,"Huile":50,"Scrap":150,"Titane":50,"Tungstène":100,"Fer":200,"Potassium":200,"Hydrogène":100,"Azote":100,"Electros":60,"Batteries":70}
@@ -1536,6 +1540,7 @@
     {
         "id":150,
         "name":"Infirmerie",
+        "bldUp":"Hôpital",
         "costs":{"Compo1":230,"Eau":24,"Huile":25,"Tissus":25,"Aluminium":30,"Végétaux":100,"Calcium":25,"Or":15,"Silicium":25,"Oxygène":25,"Chlore":75}
     },
     {
@@ -1549,6 +1554,7 @@
     {
         "id":194,
         "name":"Poste radio",
+        "bldUp":"Centre de com",
         "upkeep":{"Energie":2},
         "costs":{"Compo1":260,"Compo2":40,"Eau":12,"Energie":25,"Cuivre":50,"Electros":15,"Batteries":10}
     },
@@ -1556,6 +1562,7 @@
         "id":195,
         "name":"Centre de com",
         "bldEquiv":["Poste radio"],
+        "bldUp":"QG",
         "bldCost":"Poste radio",
         "upkeep":{"Energie":8},
         "costs":{"Compo1":480,"Compo2":270,"Compo3":90,"Eau":36,"Energie":150,"Cobalt":250,"Cuivre":500,"Platine":75,"Silicium":150,"Oxygène":100,"Hélium":100,"Electros":300,"Batteries":50}
@@ -1571,12 +1578,14 @@
     {
         "id":203,
         "name":"Décharge",
+        "bldUp":"Centre de tri",
         "costs":{"Compo1":450,"Eau":18}
     },
     {
         "id":204,
         "name":"Centre de tri",
         "bldEquiv":["Décharge"],
+        "bldUp":"Recyclab",
         "bldCost":"Décharge",
         "upkeep":{"Energie":8,"Eau":6},
         "costs":{"Compo1":610,"Compo2":140,"Eau":200,"Energie":150,"Bore":50,"Chlore":50,"Electros":20,"Batteries":50}
@@ -1592,6 +1601,7 @@
     {
         "id":206,
         "name":"Laboratoire",
+        "bldUp":"Centre de recherches",
         "upkeep":{"Energie":8,"Eau":6},
         "costs":{"Compo1":450,"Compo2":150,"Eau":100,"Energie":150,"Huile":50,"Carbone":50,"Phosphore":50,"Calcium":100,"Or":50,"Silicium":150,"Zinc":150,"Bore":50,"Chlore":50,"Argon":100,"Electros":50,"Batteries":50}
     },
@@ -1726,6 +1736,7 @@
         "id":235,
         "name":"Poste de pilotage",
         "bldEquiv":["Centre de com"],
+        "bldUp":"Passerelle",
         "bldReq":["Soute"],
         "costs":{}
     },
@@ -1733,6 +1744,7 @@
         "id":236,
         "name":"Passerelle",
         "bldEquiv":["QG"],
+        "bldCost":"Poste de pilotage",
         "bldReq":["Soute"],
         "costs":{"Energie":500,"Cobalt":400,"Cuivre":1000,"Platine":150,"Silicium":300,"Oxygène":200,"Hélium":300,"Electros":400,"Batteries":150}
     },
@@ -1751,12 +1763,14 @@
     {
         "id":228,
         "name":"Serres hydroponiques",
+        "bldUp":"Jardin",
         "bldReq":["Soute"],
         "costs":{"Eau":250,"Scrap":150,"Phosphore":25,"Potassium":75,"Végétaux":250,"Azote":50,"Chlore":100,"Energie":50,"Batteries":15}
     },
     {
         "id":229,
         "name":"Jardin",
+        "bldCost":"Serres hydroponiques",
         "bldReq":["Soute"],
         "costs":{"Eau":1000,"Phosphore":150,"Potassium":300,"Végétaux":1000,"Azote":150,"Chlore":300,"Energie":150,"Batteries":50}
     }

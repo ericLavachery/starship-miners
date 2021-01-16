@@ -162,6 +162,7 @@ let aliensNum = 0;
 let conselUnit = {};
 let conselAmmos = ['xxx','xxx','xxx','xxx'];
 let conselCat;
+let conselUpgrade = false;
 let conselTriche;
 let conselCosts = {};
 // INVASION
