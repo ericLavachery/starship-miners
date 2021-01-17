@@ -63,6 +63,13 @@ function bfconst(cat,triche,upgrade) {
             if (unit.bldCost != 'none' && unit.bldCost != selectedBatType.name) {
                 prodOK = false;
             }
+            if (conselUpgrade) {
+                if (selectedBatType.bldUp === unit.name) {
+                    prodOK = true;
+                } else {
+                    prodOK = false;
+                }
+            }
         }
         if (prodOK) {
             if (lastKind != unit.kind) {
@@ -410,48 +417,68 @@ function checkCompReq(batEquip) {
     return compReqOK;
 };
 
-function clickConstruct(tileId,free) {
-    let batHere = false;
-    bataillons.forEach(function(bat) {
-        if (bat.tileId === tileId && bat.loc === "zone") {
-            batHere = true;
-        }
-    });
-    aliens.forEach(function(bat) {
-        if (bat.tileId === tileId && bat.loc === "zone") {
-            batHere = true;
-        }
-    });
-    if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices') {
-        let tile = getTileById(tileId);
-        if (tile.infra != undefined && tile.infra != 'Débris') {
-            batHere = true;
-        }
-    }
-    if (!batHere) {
-        if (!free) {
-            let distance = calcDistance(selectedBat.tileId,tileId);
-            selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*conselUnit.fabTime/10)-(distance*3);
-            if (!selectedBat.tags.includes('construction')) {
-                selectedBat.tags.push('construction');
-            }
-            tagDelete(selectedBat,'guet');
-            camoOut();
-            selectedBatArrayUpdate();
-        }
-        putBat(tileId,0,0);
-        if (conselTriche) {
-            bfconst(conselCat,conselTriche,conselUpgrade);
-            $('#conAmmoList').empty();
-        } else {
-            conOut();
-        }
+function clickUpgrade(tileId) {
+    if (tileId === selectedBat.tileId) {
+        let myBatXP = selectedBat.xp;
+        let myBatId = selectedBat.id;
+        removeBat(selectedBat.id);
+        putBat(tileId,0,myBatXP);
     } else {
         conselReset();
         $('#unitInfos').empty();
         selectMode();
         batUnstack();
         batUnselect();
+        conOut();
+    }
+};
+
+function clickConstruct(tileId,free) {
+    if (conselUpgrade) {
+        clickUpgrade(tileId);
+    } else {
+        let batHere = false;
+        bataillons.forEach(function(bat) {
+            if (bat.tileId === tileId && bat.loc === "zone") {
+                batHere = true;
+            }
+        });
+        aliens.forEach(function(bat) {
+            if (bat.tileId === tileId && bat.loc === "zone") {
+                batHere = true;
+            }
+        });
+        if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices') {
+            let tile = getTileById(tileId);
+            if (tile.infra != undefined && tile.infra != 'Débris') {
+                batHere = true;
+            }
+        }
+        if (!batHere) {
+            if (!free) {
+                let distance = calcDistance(selectedBat.tileId,tileId);
+                selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*conselUnit.fabTime/10)-(distance*3);
+                if (!selectedBat.tags.includes('construction')) {
+                    selectedBat.tags.push('construction');
+                }
+                tagDelete(selectedBat,'guet');
+                camoOut();
+                selectedBatArrayUpdate();
+            }
+            putBat(tileId,0,0);
+            if (conselTriche) {
+                bfconst(conselCat,conselTriche,conselUpgrade);
+                $('#conAmmoList').empty();
+            } else {
+                conOut();
+            }
+        } else {
+            conselReset();
+            $('#unitInfos').empty();
+            selectMode();
+            batUnstack();
+            batUnselect();
+        }
     }
 };
 
@@ -476,158 +503,6 @@ function conselNeat() {
     if (conselAmmos[3] == 'xxx') {
         conselAmmos[3] = 'aucun';
     }
-};
-
-function checkAllCosts(unit,ammoNames) {
-    let costsOK = true;
-    let allCosts = {};
-    console.log('UNIT COSTS');
-    console.log(unit.name);
-    console.log(unit.costs);
-    if (unit.costs != undefined) {
-        if (Object.keys(unit.costs).length >= 1) {
-            mergeObjects(allCosts,unit.costs);
-        }
-    }
-    console.log('UNIT DEPLOY');
-    console.log(unit.deploy);
-    if (unit.deploy != undefined) {
-        if (Object.keys(unit.deploy).length >= 1) {
-            mergeObjects(allCosts,unit.deploy);
-        }
-    }
-    let index;
-    let batAmmo;
-    let batArmor;
-    let batEquip;
-    // FLAT COSTS
-    let flatCosts;
-    // Ammo W1
-    if (ammoNames[0] != 'xxx') {
-        index = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
-        batAmmo = ammoTypes[index];
-        flatCosts = getCosts(unit,batAmmo,1,'ammo');
-    }
-    console.log('AMMO 1 COSTS');
-    console.log(batAmmo.name);
-    console.log(flatCosts);
-    if (flatCosts != undefined) {
-        if (Object.keys(flatCosts).length >= 1) {
-            mergeObjects(allCosts,flatCosts);
-        }
-    }
-    // Ammo W2
-    if (ammoNames[1] != 'xxx') {
-        index = ammoTypes.findIndex((obj => obj.name == ammoNames[1]));
-        batAmmo = ammoTypes[index];
-        flatCosts = getCosts(unit,batAmmo,2,'ammo');
-    }
-    console.log('AMMO 2 COSTS');
-    console.log(batAmmo.name);
-    console.log(flatCosts);
-    if (flatCosts != undefined) {
-        if (Object.keys(flatCosts).length >= 1) {
-            mergeObjects(allCosts,flatCosts);
-        }
-    }
-    // Armor
-    if (ammoNames[2] != 'xxx') {
-        index = armorTypes.findIndex((obj => obj.name == ammoNames[2]));
-        batArmor = armorTypes[index];
-        flatCosts = getCosts(unit,batArmor,0,'equip');
-    }
-    console.log('ARMOR COSTS');
-    console.log(batArmor.name);
-    console.log(flatCosts);
-    if (flatCosts != undefined) {
-        if (Object.keys(flatCosts).length >= 1) {
-            mergeObjects(allCosts,flatCosts);
-        }
-    }
-    // Equip
-    if (ammoNames[3] != 'xxx') {
-        index = armorTypes.findIndex((obj => obj.name == ammoNames[3]));
-        batEquip = armorTypes[index];
-        flatCosts = getCosts(unit,batEquip,0,'equip');
-    }
-    console.log('EQUIP COSTS');
-    console.log(batEquip.name);
-    console.log(flatCosts);
-    if (flatCosts != undefined) {
-        if (Object.keys(flatCosts).length >= 1) {
-            mergeObjects(allCosts,flatCosts);
-        }
-    }
-    // DEPLOY COSTS
-    let deployCosts;
-    // Ammo W1
-    if (ammoNames[0] != 'xxx') {
-        index = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
-        batAmmo = ammoTypes[index];
-        deployCosts = getDeployCosts(unit,batAmmo,1,'ammo');
-    }
-    console.log('AMMO 1 DEPLOY');
-    console.log(deployCosts);
-    if (deployCosts != undefined) {
-        if (Object.keys(deployCosts).length >= 1) {
-            mergeObjects(allCosts,deployCosts);
-        }
-    }
-    // Ammo W2
-    if (ammoNames[1] != 'xxx') {
-        index = ammoTypes.findIndex((obj => obj.name == ammoNames[1]));
-        batAmmo = ammoTypes[index];
-        deployCosts = getDeployCosts(unit,batAmmo,2,'ammo');
-    }
-    console.log('AMMO 2 DEPLOY');
-    console.log(deployCosts);
-    if (deployCosts != undefined) {
-        if (Object.keys(deployCosts).length >= 1) {
-            mergeObjects(allCosts,deployCosts);
-        }
-    }
-    // Armor
-    if (ammoNames[2] != 'xxx') {
-        index = armorTypes.findIndex((obj => obj.name == ammoNames[2]));
-        batArmor = armorTypes[index];
-        deployCosts = getDeployCosts(unit,batArmor,0,'equip');
-    }
-    console.log('ARMOR DEPLOY');
-    console.log(deployCosts);
-    if (deployCosts != undefined) {
-        if (Object.keys(deployCosts).length >= 1) {
-            mergeObjects(allCosts,deployCosts);
-        }
-    }
-    // Equip
-    if (ammoNames[3] != 'xxx') {
-        index = armorTypes.findIndex((obj => obj.name == ammoNames[3]));
-        batEquip = armorTypes[index];
-        deployCosts = getDeployCosts(unit,batEquip,0,'equip');
-    }
-    console.log('EQUIP DEPLOY');
-    console.log(deployCosts);
-    if (deployCosts != undefined) {
-        if (Object.keys(deployCosts).length >= 1) {
-            mergeObjects(allCosts,deployCosts);
-        }
-    }
-    console.log('ALL COSTS');
-    console.log(allCosts);
-    let dispoRes;
-    if (allCosts != undefined) {
-        if (Object.keys(allCosts).length >= 1) {
-            Object.entries(allCosts).map(entry => {
-                let key = entry[0];
-                let value = entry[1];
-                dispoRes = getDispoRes(key);
-                if (dispoRes < value) {
-                    costsOK = false;
-                }
-            });
-        }
-    }
-    return costsOK;
 };
 
 function putBat(tileId,citoyens,xp,startTag) {
@@ -875,12 +750,23 @@ function conWindowOut() {
     $("#conAmmoList").css("display","none");
 };
 
+function removeBat(batId) {
+    selectMode();
+    let bat = getBatById(batId);
+    let batType = getBatType(bat);
+    batUnselect();
+    batDeath(bat,false);
+    let batIndex = batList.findIndex((obj => obj.id == batId));
+    batList.splice(batIndex,1);
+    $('#b'+bat.tileId).empty();
+    let resHere = showRes(bat.tileId);
+    $('#b'+bat.tileId).append(resHere);
+};
+
 function dismantle(batId) {
     selectMode();
-    // récup de ressources
-    // création du bataillon de citoyens
-    let index = bataillons.findIndex((obj => obj.id == batId));
-    let bat = bataillons[index];
+    // récup de ressources !!!!!!
+    let bat = getBatById(batId);
     let isCharged = checkCharged(bat,'trans');
     let isLoaded = checkCharged(bat,'load');
     if (!isCharged && !isLoaded) {

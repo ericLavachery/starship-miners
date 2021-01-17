@@ -929,12 +929,15 @@ function skillsInfos(bat,batType) {
     }
     // UPGRADE
     if (batType.skills.includes('upgrade')) {
+        let isCharged = checkCharged(bat,'trans');
         apReq = 5;
-        if (bat.apLeft >= apReq && !inMelee) {
+        if (bat.apLeft >= apReq && !inMelee && !isCharged) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.bldUp+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,true)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Ne peut pas se faire en mêlée";
+            } else if (isCharged) {
+                skillMessage = "Vous devez vider votre bataillon avant de le transformer";
             } else {
                 skillMessage = "Pas assez de PA";
             }

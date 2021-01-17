@@ -58,6 +58,7 @@
     "fabTime":25,
     "bldReq":[],
     "bldCost":"none",
+    "bldUp":"none",
     "resCost":{},
     "transMaxSize":0,
     "transUnits":0,
