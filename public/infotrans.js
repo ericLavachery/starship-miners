@@ -187,7 +187,7 @@ function clickDebarq(tileId) {
     if (tileOK) {
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
             tagDelete(selectedBat,'loaded');
-            selectedBat.apLeft = selectedBat.apLeft-(selectedBatType.mecanoCost*4)-(distance*3);
+            selectedBat.apLeft = selectedBat.apLeft-(selectedBatType.mecanoCost*3)-(distance*3);
         } else {
             if (selectedBat.transIds.includes(batDebarq.id)) {
                 tagIndex = selectedBat.transIds.indexOf(batDebarq.id);
@@ -208,7 +208,7 @@ function clickDebarq(tileId) {
                 batDebarq.oldapLeft = 1;
             }
         } else {
-            batDebarq.apLeft = batDebarq.ap-Math.round(batDebarqType.fabTime*batDebarq.ap/25);
+            batDebarq.apLeft = batDebarq.ap-Math.round(batDebarqType.fabTime*batDebarq.ap/50);
         }
         showBataillon(batDebarq);
         batSelect(batDebarq);

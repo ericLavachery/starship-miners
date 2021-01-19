@@ -145,7 +145,7 @@
     },
     {
         "id":20,
-        "name":"Barmans",
+        "name":"Barmen",
         "levels":{"rednecks":1,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Bar"]
     },
@@ -163,7 +163,7 @@
     },
     {
         "id":25,
-        "name":"Rainmans",
+        "name":"Rainmen",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":4,"brasier":99},
         "bldReq":["Armurerie"]
     },

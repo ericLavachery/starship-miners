@@ -63,8 +63,18 @@ function bfconst(cat,triche,upgrade) {
             if (unit.bldCost != 'none' && unit.bldCost != selectedBatType.name) {
                 prodOK = false;
             }
-            if (conselUpgrade) {
+            if (unit.unitCost != 'none' && unit.unitCost != selectedBatType.name) {
+                prodOK = false;
+            }
+            if (conselUpgrade === 'bld') {
                 if (selectedBatType.bldUp === unit.name) {
+                    prodOK = true;
+                } else {
+                    prodOK = false;
+                }
+            }
+            if (conselUpgrade === 'inf') {
+                if (selectedBatType.unitUp === unit.name) {
                     prodOK = true;
                 } else {
                     prodOK = false;
@@ -417,12 +427,62 @@ function checkCompReq(batEquip) {
     return compReqOK;
 };
 
+function checkUprankPlace(myBat,myBatType) {
+    let isInPlace = false;
+    let upBatType = getBatTypeByName(myBatType.unitUp);
+    let uprankBld = upBatType.bldReq[0];
+    let distance;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            batType = getBatType(bat);
+            if (batType.name === uprankBld) {
+                distance = calcDistance(myBat.tileId,bat.tileId);
+                if (distance <= 1) {
+                    isInPlace = true;
+                }
+            }
+        }
+    });
+    return isInPlace;
+};
+
+function checkUprankXP(myBat,myBatType) {
+    let isXPok = false;
+    let levelNeeded = 2;
+    if (myBat.xp >= levelXP[4]) {
+        if (levelNeeded <= 4) {
+            isXPok = true;
+        }
+    } else if (myBat.xp >= levelXP[3]) {
+        if (levelNeeded <= 3) {
+            isXPok = true;
+        }
+    } else if (myBat.xp >= levelXP[2]) {
+        if (levelNeeded <= 2) {
+            isXPok = true;
+        }
+    } else if (myBat.xp >= levelXP[1]) {
+        if (levelNeeded <= 1) {
+            isXPok = true;
+        }
+    }
+    return isXPok;
+};
+
 function clickUpgrade(tileId) {
     if (tileId === selectedBat.tileId) {
-        let myBatXP = selectedBat.xp;
-        let myBatId = selectedBat.id;
-        removeBat(selectedBat.id);
-        putBat(tileId,0,myBatXP);
+        if (conselUpgrade === 'bld') {
+            let myBatXP = selectedBat.xp;
+            let myBatId = selectedBat.id;
+            removeBat(selectedBat.id);
+            putBat(tileId,0,myBatXP);
+        }
+        if (conselUpgrade === 'inf') {
+            let myBatXP = Math.ceil(selectedBat.xp/4);
+            let myBatId = selectedBat.id;
+            removeBat(selectedBat.id);
+            putBat(tileId,0,myBatXP);
+        }
     } else {
         conselReset();
         $('#unitInfos').empty();
@@ -434,7 +494,7 @@ function clickUpgrade(tileId) {
 };
 
 function clickConstruct(tileId,free) {
-    if (conselUpgrade) {
+    if (conselUpgrade === 'bld' || conselUpgrade === 'inf') {
         clickUpgrade(tileId);
     } else {
         let batHere = false;
@@ -736,7 +796,7 @@ function conselReset() {
     conselUnit = {};
     conselAmmos = ['xxx','xxx','xxx','xxx'];
     // conselCat = '';
-    conselUpgrade = false;
+    conselUpgrade = '';
     conselTriche = false;
     conselCosts = {};
 }

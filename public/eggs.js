@@ -50,7 +50,7 @@ function checkStartingAliens() {
         if (ii > 50) {break;}
         ii++
     }
-    let numSent = Math.ceil((playerInfos.mapDiff+2)*rand.rand(8,20)/8);
+    let numSent = Math.ceil((playerInfos.mapDiff+playerInfos.mapDiff)*rand.rand(8,20)/12);
     ii = 1;
     while (ii <= numSent) {
         dropEgg('Veilleurs','none');

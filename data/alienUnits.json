@@ -2120,7 +2120,7 @@
         "squadSize":3,
         "crew":1,
         "hp":155,
-        "armor":5,
+        "armor":2,
         "size":30,
         "speed":-5,
         "stealth":10,
@@ -2136,7 +2136,7 @@
             "rof":3,
             "accuracy":20,
             "dca":1.5,
-            "power":16,
+            "power":12,
             "aoe":"brochette",
             "sound":"ruche",
             "ammo":["ruche"]
@@ -2151,7 +2151,7 @@
             "rof":3,
             "accuracy":17,
             "dca":1.5,
-            "power":16,
+            "power":12,
             "aoe":"brochette",
             "sound":"ruche",
             "ammo":["ruche"]

@@ -351,12 +351,15 @@ function payUnitCost(batType) {
     }
     let reqCit = batType.squads*batType.squadSize*batType.crew;
     // console.log('reqCit='+reqCit);
-    if (conselUpgrade) {
+    if (conselUpgrade === 'bld') {
         let oldBatType = getBatTypeByName(conselUnit.bldCost);
         let oldCit = oldBatType.squads*oldBatType.squadSize*oldBatType.crew;
         // console.log('oldCit='+oldCit);
         reqCit = reqCit-oldCit;
         // console.log('reqCit='+reqCit);
+    }
+    if (conselUpgrade === 'inf') {
+        reqCit = 0;
     }
     if (reqCit >= 1) {
         let landersIds = [];

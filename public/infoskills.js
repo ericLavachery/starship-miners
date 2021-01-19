@@ -927,17 +927,38 @@ function skillsInfos(bat,batType) {
             }
         }
     }
-    // UPGRADE
+    // UPGRADE BUILDING
     if (batType.skills.includes('upgrade')) {
         let isCharged = checkCharged(bat,'trans');
         apReq = 5;
         if (bat.apLeft >= apReq && !inMelee && !isCharged) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.bldUp+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,true)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.bldUp+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`bld`)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Ne peut pas se faire en mêlée";
             } else if (isCharged) {
                 skillMessage = "Vous devez vider votre bataillon avant de le transformer";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
+        }
+    }
+    // UPGRADE INFANTRY
+    if (batType.skills.includes('uprank')) {
+        let isInPlace = checkUprankPlace(bat,batType);
+        let isXPok = checkUprankXP(bat,batType);
+        let upBatType = getBatTypeByName(batType.unitUp);
+        apReq = 5;
+        if (bat.apLeft >= apReq && !inMelee && isInPlace && isXPok) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.unitUp+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`inf`)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
+        } else {
+            if (inMelee) {
+                skillMessage = "Ne peut pas se faire en mêlée";
+            } else if (!isXPok) {
+                skillMessage = "Ce bataillon n'a pas assez d'expérience pour être monté en grade";
+            } else if (!isInPlace) {
+                skillMessage = 'Vous devez être à côté d\'un '+upBatType.bldReq[0]+' pour monter ce bataillon en grade';
             } else {
                 skillMessage = "Pas assez de PA";
             }

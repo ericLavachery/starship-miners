@@ -59,6 +59,8 @@
     "bldReq":[],
     "bldCost":"none",
     "bldUp":"none",
+    "unitCost":"none",
+    "unitUp":"none",
     "resCost":{},
     "transMaxSize":0,
     "transUnits":0,
