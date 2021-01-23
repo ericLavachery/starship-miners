@@ -884,9 +884,10 @@ function skillsInfos(bat,batType) {
             apReq = batType.mecanoCost;
             let infra = getInfraByName('Miradors');
             let infraCostOK = checkCost(infra.costs);
-            prodOK = true;
             if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
                 prodOK = false;
+            } else {
+                prodOK = true;
             }
             if (bat.apLeft >= apReq && !inMelee && infraCostOK && prodOK) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><span id="infraButtons"></span>&nbsp; Enceinte</h4></span>');
@@ -894,17 +895,32 @@ function skillsInfos(bat,batType) {
                 $('#infraButtons').append('<button type="button" title="Construction (Miradors) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button>');
                 infra = getInfraByName('Palissades');
                 infraCostOK = checkCost(infra.costs);
-                if (infraCostOK) {
+                if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
+                    prodOK = false;
+                } else {
+                    prodOK = true;
+                }
+                if (infraCostOK && prodOK) {
                     $('#infraButtons').append('<button type="button" title="Construction (Palissades) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button>');
                 }
                 infra = getInfraByName('Remparts');
                 infraCostOK = checkCost(infra.costs);
-                if (infraCostOK) {
+                if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
+                    prodOK = false;
+                } else {
+                    prodOK = true;
+                }
+                if (infraCostOK && prodOK) {
                     $('#infraButtons').append('<button type="button" title="Construction (Remparts) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button>');
                 }
                 infra = getInfraByName('Murailles');
                 infraCostOK = checkCost(infra.costs);
-                if (infraCostOK) {
+                if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
+                    prodOK = false;
+                } else {
+                    prodOK = true;
+                }
+                if (infraCostOK && prodOK) {
                     $('#infraButtons').append('<button type="button" title="Construction (Murailles) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>');
                 }
             }
