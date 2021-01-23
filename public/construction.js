@@ -886,6 +886,18 @@ function deleteAlien(batId) {
     $('#b'+bat.tileId).append(resHere);
 };
 
+function getRoadCosts(tile) {
+    let roadCosts = {};
+    if (tile.terrain === 'W' || tile.terrain === 'R') {
+        roadCosts['Scrap'] = 50;
+        roadCosts['Compo1'] = 300;
+        roadCosts['Compo2'] = 75;
+    } else {
+        roadCosts['Compo1'] = 25;
+    }
+    return roadCosts;
+};
+
 function putRoad() {
     console.log('PUTROAD');
     let tile = getTile(selectedBat);
@@ -899,6 +911,8 @@ function putRoad() {
     if (!selectedBat.tags.includes('construction')) {
         selectedBat.tags.push('construction');
     }
+    let roadCosts = getRoadCosts(tile);
+    payCost(roadCosts);
     tagDelete(selectedBat,'guet');
     camoOut();
     selectedBatArrayUpdate();

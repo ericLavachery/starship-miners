@@ -854,17 +854,17 @@ function skillsInfos(bat,batType) {
                 let barbType = getBatTypeByName('Barbelés (scrap)');
                 let barbCostOK = checkCost(barbType.costs);
                 if (barbCostOK) {
-                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (scrap)" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-scrap`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (scrap) '+toCoolString(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-scrap`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                 }
                 barbType = getBatTypeByName('Barbelés');
                 barbCostOK = checkCost(barbType.costs);
                 if (barbCostOK) {
-                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (acier)" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-fer`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (acier) '+toCoolString(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-fer`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                 }
                 barbType = getBatTypeByName('Barbelés (taser)');
                 barbCostOK = checkCost(barbType.costs);
                 if (barbCostOK && playerInfos.bldList.includes('Générateur')) {
-                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (taser)" class="boutonGris skillButtons" onclick="dropStuff('+apCost2+',`barb-taser`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (taser) '+toCoolString(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost2+',`barb-taser`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                 }
             } else {
                 if (barbLeft <= 0) {
@@ -891,21 +891,21 @@ function skillsInfos(bat,batType) {
             if (bat.apLeft >= apReq && !inMelee && infraCostOK && prodOK) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><span id="infraButtons"></span>&nbsp; Enceinte</h4></span>');
                 $('#infraButtons').empty();
-                $('#infraButtons').append('<button type="button" title="Construction (Miradors)" class="boutonGris skillButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button>');
+                $('#infraButtons').append('<button type="button" title="Construction (Miradors) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button>');
                 infra = getInfraByName('Palissades');
                 infraCostOK = checkCost(infra.costs);
                 if (infraCostOK) {
-                    $('#infraButtons').append('<button type="button" title="Construction (Palissades)" class="boutonGris skillButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button>');
+                    $('#infraButtons').append('<button type="button" title="Construction (Palissades) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button>');
                 }
                 infra = getInfraByName('Remparts');
                 infraCostOK = checkCost(infra.costs);
                 if (infraCostOK) {
-                    $('#infraButtons').append('<button type="button" title="Construction (Remparts)" class="boutonGris skillButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button>');
+                    $('#infraButtons').append('<button type="button" title="Construction (Remparts) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button>');
                 }
                 infra = getInfraByName('Murailles');
                 infraCostOK = checkCost(infra.costs);
                 if (infraCostOK) {
-                    $('#infraButtons').append('<button type="button" title="Construction (Murailles)" class="boutonGris skillButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>');
+                    $('#infraButtons').append('<button type="button" title="Construction (Murailles) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>');
                 }
             }
         }
@@ -915,15 +915,23 @@ function skillsInfos(bat,batType) {
         if (!tile.rd) {
             apCost = Math.round(batType.mecanoCost*terrain.roadBuild*roadAPCost/30);
             apReq = Math.ceil(apCost/10);
-            if (bat.apLeft >= apReq && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (routes et ponts)" class="boutonGris skillButtons" onclick="putRoad()"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; Route / Pont</h4></span>');
+            let roadCosts = getRoadCosts(tile);
+            let roadCostsOK = checkCost(roadCosts);
+            let roadName = 'Route';
+            if (tile.terrain === 'W' || tile.terrain === 'R') {
+                roadName = 'Pont';
+            }
+            if (bat.apLeft >= apReq && !inMelee && roadCostsOK) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction ('+roadName+') '+toCoolString(roadCosts)+'" class="boutonGris skillButtons" onclick="putRoad()"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+roadName+'</h4></span>');
             } else {
                 if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
+                } else if (!roadCostsOK) {
+                    skillMessage = "Pas assez de ressources ("+toCoolString(roadCosts)+")";
                 } else {
                     skillMessage = "Pas assez de PA";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-road"></i> <span class="small">'+apReq+'</span></button>&nbsp; Route / Pont</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-road"></i> <span class="small">'+apReq+'</span></button>&nbsp; '+roadName+'</h4></span>');
             }
         }
     }
