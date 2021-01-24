@@ -567,7 +567,7 @@ function landerFill() {
     let allUnitsList = unitTypes.slice();
     let sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'cat'),'kind');
     sortedUnitsList.forEach(function(unit) {
-        if (unit.moveCost === 99 && unit.kind != 'zero-vaisseaux' && unit.kind != 'zero-vm') {
+        if (unit.moveCost === 99 && unit.kind != 'zero-vaisseaux' && unit.kind != 'zero-vm' && unit.name != 'Coffres') {
             if (lastKind != unit.kind) {
                 showkind = unit.kind.replace(/zero-/g,"");
                 $('#conUnitList').append('<br><span class="constName vert" id="kind-'+unit.kind+'">'+showkind+'</span><br>');
@@ -577,13 +577,54 @@ function landerFill() {
             } else {
                 showPrep = '('+prepaBld[unit.name]+')';
             }
-            $('#conUnitList').append('<span class="constName klik" onclick="fillLanderWith('+unit.id+')">'+unit.name+' <span class="gff">'+showPrep+'</span></span><br>');
+            $('#conUnitList').append('<span class="constName klik" onclick="fillLanderWithUnit('+unit.id+')">'+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
             lastKind = unit.kind;
         }
     });
+    $('#conUnitList').append('<br><span class="constName vert">infrastructures</span><br>');
+    armorTypes.forEach(function(infra) {
+        if (infra.fabTime != undefined) {
+            if (prepaBld[infra.name] === undefined) {
+                showPrep = '';
+            } else {
+                showPrep = '('+prepaBld[infra.name]+')';
+            }
+            $('#conUnitList').append('<span class="constName klik" onclick="fillLanderWithInfra(`'+infra.name+'`,false)">'+infra.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+        }
+    });
+    $('#conUnitList').append('<span class="constName klik" onclick="fillLanderWithInfra(`Route`,true)">Route <span class="ciel">'+showPrep+'</span></span><br>');
+    $('#conUnitList').append('<span class="constName klik" onclick="fillLanderWithInfra(`Pont`,true)">Pont <span class="ciel">'+showPrep+'</span></span><br>');
+    $('#conUnitList').append('<br>');
 };
 
-function fillLanderWith(fillUnitId) {
+function fillLanderWithInfra(fillInfraName,road) {
+    let fillInfra = {};
+    if (road) {
+        fillInfra = {};
+        fillInfra.name = fillInfraName;
+        fillInfra.costs = {};
+        if (fillInfra.name === 'Pont') {
+            fillInfra.costs['Scrap'] = 50;
+            fillInfra.costs['Compo1'] = 300;
+            fillInfra.costs['Compo2'] = 75;
+        } else {
+            fillInfra.costs['Compo1'] = 20;
+        }
+    } else {
+        fillInfra = getInfraByName(fillInfraName);
+    }
+    console.log(fillInfra);
+    addCost(fillInfra.costs);
+    if (prepaBld[fillInfra.name] === undefined) {
+        prepaBld[fillInfra.name] = 1;
+    }  else {
+        prepaBld[fillInfra.name] = prepaBld[fillInfra.name]+1;
+    }
+    landerFill();
+    // console.log(prepaBld);
+};
+
+function fillLanderWithUnit(fillUnitId) {
     let fillUnit = getBatTypeById(fillUnitId);
     addCost(fillUnit.costs);
     addCost(fillUnit.deploy);
@@ -592,27 +633,29 @@ function fillLanderWith(fillUnitId) {
     if (fillUnit.skills.includes('brigands')) {
         citId = 225;
     }
-    let lander = landers[0];
-    let citBat = {};
-    let citBatId = -1;
-    bataillons.forEach(function(bat) {
-        if (bat.loc === 'trans' && bat.locId === lander.id && bat.typeId === citId) {
-            citBatId = bat.id;
-            citBat = bat;
+    if (reqCit >= 1) {
+        let lander = landers[0];
+        let citBat = {};
+        let citBatId = -1;
+        bataillons.forEach(function(bat) {
+            if (bat.loc === 'trans' && bat.locId === lander.id && bat.typeId === citId) {
+                citBatId = bat.id;
+                citBat = bat;
+            }
+        });
+        if (citBatId >= 0) {
+            citBat.citoyens = citBat.citoyens+reqCit;
+        } else {
+            let unitIndex = unitTypes.findIndex((obj => obj.id == citId));
+            conselUnit = unitTypes[unitIndex];
+            conselAmmos = ['xxx','xxx','xxx','xxx'];
+            conselTriche = true;
+            putBat(lander.tileId,reqCit,0,'',false);
+            let citBat = getBatByTypeIdAndTileId(citId,lander.tileId);
+            citBat.loc = 'trans';
+            citBat.locId = lander.id;
+            lander.transIds.push(citBat.id);
         }
-    });
-    if (citBatId >= 0) {
-        citBat.citoyens = citBat.citoyens+reqCit;
-    } else {
-        let unitIndex = unitTypes.findIndex((obj => obj.id == citId));
-        conselUnit = unitTypes[unitIndex];
-        conselAmmos = ['xxx','xxx','xxx','xxx'];
-        conselTriche = true;
-        putBat(lander.tileId,reqCit,0,'',false);
-        let citBat = getBatByTypeIdAndTileId(citId,lander.tileId);
-        citBat.loc = 'trans';
-        citBat.locId = lander.id;
-        lander.transIds.push(citBat.id);
     }
     if (prepaBld[fillUnit.name] === undefined) {
         prepaBld[fillUnit.name] = 1;

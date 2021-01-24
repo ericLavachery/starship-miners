@@ -3,25 +3,25 @@
         "name": "Miradors",
         "fabTime":9,
         "levels":{"rednecks":5,"blades":5,"bulbos":4,"drogmulojs":6,"tiradores":7,"detruas":7,"brasier":5},
-        "costs":{"Compo1":150}
+        "costs":{"Compo1":100}
     },
     {
         "name": "Palissades",
         "fabTime":12,
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
-        "costs":{"Compo1":250}
+        "costs":{"Compo1":150}
     },
     {
         "name": "Remparts",
         "fabTime":18,
         "levels":{"rednecks":6,"blades":6,"bulbos":6,"drogmulojs":8,"tiradores":6,"detruas":6,"brasier":6},
-        "costs":{"Compo1":200,"Compo2":200}
+        "costs":{"Compo1":125,"Compo2":125}
     },
     {
         "name": "Murailles",
         "fabTime":26,
         "levels":{"rednecks":11,"blades":11,"bulbos":11,"drogmulojs":11,"tiradores":11,"detruas":11,"brasier":11},
-        "costs":{"Compo1":200,"Compo2":200,"Compo3":200}
+        "costs":{"Compo1":125,"Compo2":125,"Compo3":125}
     },
     {
         "name": "aucune",

@@ -900,7 +900,7 @@ function getRoadCosts(tile) {
         roadCosts['Compo1'] = 300;
         roadCosts['Compo2'] = 75;
     } else {
-        roadCosts['Compo1'] = 25;
+        roadCosts['Compo1'] = 20;
     }
     return roadCosts;
 };
