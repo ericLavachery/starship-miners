@@ -168,6 +168,14 @@ function getBatType(bat) {
     return batType;
 };
 
+function getBatTypeById(id) {
+    let unitIndex;
+    let batType;
+    unitIndex = unitTypes.findIndex((obj => obj.id == id));
+    batType = unitTypes[unitIndex];
+    return batType;
+};
+
 function getInfraByName(infraName) {
     let index = armorTypes.findIndex((obj => obj.name == infraName));
     let infra = armorTypes[index];
@@ -206,6 +214,12 @@ function getBatByTileId(tileId) {
 
 function getBatByName(name) {
     let index = bataillons.findIndex((obj => obj.type == name));
+    let bat = bataillons[index];
+    return bat;
+};
+
+function getBatByTypeIdAndTileId(typeId,tileId) {
+    let index = bataillons.findIndex((obj => (obj.tileId == tileId && obj.typeId == typeId)));
     let bat = bataillons[index];
     return bat;
 };

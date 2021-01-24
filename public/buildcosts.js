@@ -73,6 +73,16 @@ function payCost(costs) {
     }
 };
 
+function addCost(costs) {
+    if (costs != undefined) {
+        Object.entries(costs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            resAdd(key,value)
+        });
+    }
+};
+
 function getEquipDeployFactor(unit,equip) {
     let deployFactor = 1;
     let crew = unit.squads*unit.squadSize*unit.crew;
@@ -514,6 +524,16 @@ function enoughPlaceLander(number) {
     } else {
         return firstLanderId;
     }
+};
+
+function findMainLanderId() {
+    let theLanderId = -1;
+    landers.forEach(function(lander) {
+        if (theLanderId < 0) {
+            theLanderId = lander.id;
+        }
+    });
+    return theLanderId;
 };
 
 function getDispoRes(resName) {

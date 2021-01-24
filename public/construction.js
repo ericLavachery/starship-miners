@@ -25,7 +25,7 @@ function bfconst(cat,triche,upgrade) {
     let lastKind = '';
     let showkind = '';
     let allUnitsList = unitTypes.slice();
-    sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'cat'),'kind');
+    let sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'cat'),'kind');
     // MENU
     if (triche) {
         $('#conUnitList').append('<br><span class="constName or" id="gentils">LES GENTILS</span><br>');
@@ -119,7 +119,7 @@ function bfconst(cat,triche,upgrade) {
     if (triche) {
         $('#conUnitList').append('<br><span class="constName or" id="mechants">LES MECHANTS</span><br><br>');
         let allALiensList = alienUnits.slice();
-        sortedAliensList = _.sortBy(_.sortBy(_.sortBy(allALiensList,'name'),'name'),'kind');
+        let sortedAliensList = _.sortBy(_.sortBy(_.sortBy(allALiensList,'name'),'name'),'kind');
         sortedAliensList.forEach(function(unit) {
             if (conselUnit.id === unit.id && conselUnit.cat === 'aliens') {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
@@ -565,8 +565,11 @@ function conselNeat() {
     }
 };
 
-function putBat(tileId,citoyens,xp,startTag) {
+function putBat(tileId,citoyens,xp,startTag,show) {
     console.log('PUTBAT');
+    if (show === undefined) {
+        show = true;
+    }
     if (Object.keys(conselUnit).length >= 1) {
         conselNeat();
         let costsOK = checkAllCosts(conselUnit,conselAmmos);
@@ -757,7 +760,9 @@ function putBat(tileId,citoyens,xp,startTag) {
             if (newBat.team === 'player') {
                 bataillons.push(newBat);
                 // console.log(bataillons);
-                showBataillon(newBat);
+                if (show) {
+                    showBataillon(newBat);
+                }
             } else {
                 aliens.push(newBat);
                 // console.log(aliens);
@@ -790,6 +795,7 @@ function conOut() {
     if (Object.keys(selectedBat).length >= 1) {
         showBatInfos(selectedBat);
     }
+    // prepaBld = {};
 };
 
 function conselReset() {
@@ -858,6 +864,7 @@ function recupCitoyens(unitId,tileId,citoyens,xp) {
     let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
     conselUnit = unitTypes[unitIndex];
     conselAmmos = ['xxx','xxx','xxx','xxx'];
+    conselTriche = true;
     putBat(tileId,citoyens,xp);
 };
 

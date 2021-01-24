@@ -1,8 +1,10 @@
 function gangNavig() {
     $('#gangInfos').empty();
-    $('#gangInfos').append('<button type="button" title="Constriche" class="boutonBleu iconButtons" onclick="bfconst(`all`,true,false)"><i class="fa fa-hammer"></i></button>');
+    $('#gangInfos').append('<button type="button" title="Construire gratuitement" class="boutonBleu iconButtons" onclick="bfconst(`all`,true,false)"><i class="fa fa-hammer"></i></button>');
     $('#gangInfos').append('<button type="button" title="Ajouter un peu de chaque ressource" class="boutonBleu iconButtons" onclick="allResAdd(10)"><i class="fas fa-cart-plus"></i></button>');
-    $('#gangInfos').append('<button type="button" title="Editer le Gang" class="boutonBleu iconButtons" onclick="gangEdit()"><i class="fas fa-users-cog"></i></button><br>');
+    $('#gangInfos').append('<button type="button" title="Editer le Gang" class="boutonBleu iconButtons" onclick="gangEdit()"><i class="fas fa-users-cog"></i></button>');
+    $('#gangInfos').append('<br>');
+    $('#gangInfos').append('<button type="button" title="Remplir le lander" class="boutonBleu iconButtons" onclick="landerFill()"><i class="fas fa-dolly"></i></button>');
     $('#gangInfos').append('<div class="shSpace"></div>');
     $('#gangInfos').append('<span class="butSpace"></span>');
     $('#gangInfos').append(capitalizeFirstLetter(playerInfos.gang));
@@ -545,4 +547,78 @@ function getTotalCompCosts() {
         }
     });
     return totalComp;
+};
+
+function landerFill() {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","800px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $('#tileInfos').empty();
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
+    $('#conUnitList').append('<span class="constName or">REMPLIR LE LANDER</span><br>');
+    findLanders();
+    let lastKind = '';
+    let showkind = '';
+    let showPrep = '';
+    let allUnitsList = unitTypes.slice();
+    let sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'cat'),'kind');
+    sortedUnitsList.forEach(function(unit) {
+        if (unit.moveCost === 99 && unit.kind != 'zero-vaisseaux' && unit.kind != 'zero-vm') {
+            if (lastKind != unit.kind) {
+                showkind = unit.kind.replace(/zero-/g,"");
+                $('#conUnitList').append('<br><span class="constName vert" id="kind-'+unit.kind+'">'+showkind+'</span><br>');
+            }
+            if (prepaBld[unit.name] === undefined) {
+                showPrep = '';
+            } else {
+                showPrep = '('+prepaBld[unit.name]+')';
+            }
+            $('#conUnitList').append('<span class="constName klik" onclick="fillLanderWith('+unit.id+')">'+unit.name+' <span class="gff">'+showPrep+'</span></span><br>');
+            lastKind = unit.kind;
+        }
+    });
+};
+
+function fillLanderWith(fillUnitId) {
+    let fillUnit = getBatTypeById(fillUnitId);
+    addCost(fillUnit.costs);
+    addCost(fillUnit.deploy);
+    let reqCit = fillUnit.squads*fillUnit.squadSize*fillUnit.crew;
+    let citId = 126;
+    if (fillUnit.skills.includes('brigands')) {
+        citId = 225;
+    }
+    let lander = landers[0];
+    let citBat = {};
+    let citBatId = -1;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'trans' && bat.locId === lander.id && bat.typeId === citId) {
+            citBatId = bat.id;
+            citBat = bat;
+        }
+    });
+    if (citBatId >= 0) {
+        citBat.citoyens = citBat.citoyens+reqCit;
+    } else {
+        let unitIndex = unitTypes.findIndex((obj => obj.id == citId));
+        conselUnit = unitTypes[unitIndex];
+        conselAmmos = ['xxx','xxx','xxx','xxx'];
+        conselTriche = true;
+        putBat(lander.tileId,reqCit,0,'',false);
+        let citBat = getBatByTypeIdAndTileId(citId,lander.tileId);
+        citBat.loc = 'trans';
+        citBat.locId = lander.id;
+        lander.transIds.push(citBat.id);
+    }
+    if (prepaBld[fillUnit.name] === undefined) {
+        prepaBld[fillUnit.name] = 1;
+    }  else {
+        prepaBld[fillUnit.name] = prepaBld[fillUnit.name]+1;
+    }
+    landerFill();
+    // console.log(prepaBld);
 };

@@ -907,7 +907,7 @@
         "name":"Coffres",
         "pic":"trap",
         "cat":"devices",
-        "kind":"zero-transport",
+        "kind":"zero-transports",
         "sort":0,
         "squads":6,
         "squadSize":1,
