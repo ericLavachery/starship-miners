@@ -319,7 +319,7 @@ function playerSkillsUTChanges() {
 };
 
 function maxGangCompCosts() {
-    let maxComp = [4,0];
+    let maxComp = [8,0];
     maxComp[0] = maxComp[0]+playerInfos.gLevel;
     if (playerInfos.gang === 'rednecks') {
         if (playerInfos.gLevel >= 3) {
@@ -565,38 +565,58 @@ function landerFill() {
     let showkind = '';
     let showPrep = '';
     let bldNeed = [];
+    let prodOK = true;
+    let colour = '';
     let allUnitsList = unitTypes.slice();
     let sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'cat'),'kind');
     sortedUnitsList.forEach(function(unit) {
         if (unit.moveCost === 99 && unit.kind != 'zero-vaisseaux' && unit.kind != 'zero-vm' && unit.name != 'Coffres') {
-            if (lastKind != unit.kind) {
-                showkind = unit.kind.replace(/zero-/g,"");
-                $('#conUnitList').append('<br><span class="constName vert" id="kind-'+unit.kind+'">'+showkind+'</span><br>');
+            prodOK = true;
+            if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
+                prodOK = false;
             }
-            if (prepaBld[unit.name] === undefined) {
-                showPrep = '';
-            } else {
-                showPrep = '('+prepaBld[unit.name]+')';
+            if (prodOK) {
+                if (lastKind != unit.kind) {
+                    showkind = unit.kind.replace(/zero-/g,"");
+                    $('#conUnitList').append('<br><span class="constName vert" id="kind-'+unit.kind+'">'+showkind+'</span><br>');
+                }
+                if (prepaBld[unit.name] === undefined) {
+                    showPrep = '';
+                } else {
+                    showPrep = '('+prepaBld[unit.name]+')';
+                }
+                bldNeed = [];
+                if (unit.bldCost != 'none') {
+                    bldNeed[0] = unit.bldCost;
+                    colour = 'jaune'
+                } else {
+                    bldNeed = unit.bldReq;
+                    if (unit.bldReq.length >= 1) {
+                        colour = 'jaune'
+                    } else {
+                        colour = 'gris';
+                    }
+                }
+                $('#conUnitList').append('<span class="constName klik '+colour+'" title="'+toNiceString(bldNeed)+'" onclick="fillLanderWithUnit('+unit.id+')">'+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+                lastKind = unit.kind;
             }
-            bldNeed = [];
-            if (unit.bldCost != 'none') {
-                bldNeed[0] = unit.bldCost;
-            } else {
-                bldNeed = unit.bldReq;
-            }
-            $('#conUnitList').append('<span class="constName klik" title="'+toNiceString(bldNeed)+'" onclick="fillLanderWithUnit('+unit.id+')">'+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
-            lastKind = unit.kind;
         }
     });
     $('#conUnitList').append('<br><span class="constName vert">infrastructures</span><br>');
     armorTypes.forEach(function(infra) {
         if (infra.fabTime != undefined) {
-            if (prepaBld[infra.name] === undefined) {
-                showPrep = '';
-            } else {
-                showPrep = '('+prepaBld[infra.name]+')';
+            prodOK = true;
+            if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
+                prodOK = false;
             }
-            $('#conUnitList').append('<span class="constName klik" onclick="fillLanderWithInfra(`'+infra.name+'`,false)">'+infra.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+            if (prodOK) {
+                if (prepaBld[infra.name] === undefined) {
+                    showPrep = '';
+                } else {
+                    showPrep = '('+prepaBld[infra.name]+')';
+                }
+                $('#conUnitList').append('<span class="constName klik gris" onclick="fillLanderWithInfra(`'+infra.name+'`,false)">'+infra.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+            }
         }
     });
     if (prepaBld['Route'] === undefined) {
@@ -604,13 +624,13 @@ function landerFill() {
     } else {
         showPrep = '('+prepaBld['Route']+')';
     }
-    $('#conUnitList').append('<span class="constName klik" onclick="fillLanderWithInfra(`Route`,true)">Route <span class="ciel">'+showPrep+'</span></span><br>');
+    $('#conUnitList').append('<span class="constName klik gris" onclick="fillLanderWithInfra(`Route`,true)">Route <span class="ciel">'+showPrep+'</span></span><br>');
     if (prepaBld['Pont'] === undefined) {
         showPrep = '';
     } else {
         showPrep = '('+prepaBld['Pont']+')';
     }
-    $('#conUnitList').append('<span class="constName klik" onclick="fillLanderWithInfra(`Pont`,true)">Pont <span class="ciel">'+showPrep+'</span></span><br>');
+    $('#conUnitList').append('<span class="constName klik gris" onclick="fillLanderWithInfra(`Pont`,true)">Pont <span class="ciel">'+showPrep+'</span></span><br>');
     $('#conUnitList').append('<br>');
 };
 

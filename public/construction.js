@@ -40,25 +40,27 @@ function bfconst(cat,triche,upgrade) {
         $('#conUnitList').append('<br>');
     }
     // LIST
+    let prodSign = ' <span class="ciel">&raquo;</span>';
     let prodOK = false;
     let bldOK = false;
     let costOK = false;
     let costString = '';
     sortedUnitsList.forEach(function(unit) {
-        prodOK = false;
-        if (triche) {
-            prodOK = true;
-        } else {
+        prodOK = true;
+        if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
+            prodOK = false;
+        }
+        if (!triche) {
             if (catz.includes(unit.cat) && unit.fabTime >= 1) {
                 prodOK = true;
+            }
+            if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
+                prodOK = false;
             }
             if (!unit.bldReq.includes(selectedBatType.name) && unit.cat != 'buildings' && unit.cat != 'devices') {
                 if (!selectedBatType.skills.includes('transorbital') || unit.bldReq[0] != undefined) {
                     prodOK = false;
                 }
-            }
-            if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
-                prodOK = false;
             }
             if (unit.bldCost != 'none' && unit.bldCost != selectedBatType.name) {
                 prodOK = false;
@@ -81,7 +83,7 @@ function bfconst(cat,triche,upgrade) {
                 }
             }
         }
-        if (prodOK) {
+        if (prodOK || triche) {
             if (lastKind != unit.kind) {
                 showkind = unit.kind.replace(/zero-/g,"");
                 $('#conUnitList').append('<br><a href="#gentils"><span class="constName or" id="kind-'+unit.kind+'">'+showkind+'</span></a><br>');
@@ -95,23 +97,21 @@ function bfconst(cat,triche,upgrade) {
             if ((playerInfos.bldList.includes(unit.bldReq[0]) || unit.bldReq[0] === undefined) && (playerInfos.bldList.includes(unit.bldReq[1]) || unit.bldReq[1] === undefined) && (playerInfos.bldList.includes(unit.bldReq[2]) || unit.bldReq[2] === undefined)) {
                 bldOK = true;
             }
-            if (triche) {
-                bldOK = true;
-            }
             costOK = checkUnitCost(unit,true,true);
             costString = '';
             if (unit.costs != undefined) {
                 costString = toCoolString(unit.costs);
             }
-            if (triche) {
-                costOK = true;
+            prodSign = ' <span class="ciel">&raquo;</span>';
+            if (!prodOK) {
+                prodSign = '';
             }
-            if (bldOK && costOK) {
+            if ((bldOK && costOK) || triche) {
                 color = catColor(unit.cat,unit.kind);
-                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+'</span><br>');
+                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+prodSign+'</span><br>');
             } else {
                 color = 'gff';
-                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'">'+unit.name+'</span><br>');
+                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'">'+unit.name+prodSign+'</span><br>');
             }
             lastKind = unit.kind;
         }
@@ -224,10 +224,14 @@ function conSelect(unitId,player,noRefresh) {
                     if (playerInfos.bldList.includes(batArmor.bldReq[0]) || batArmor.bldReq[0] === undefined || conselUnit.name === batArmor.bldReq[0]) {
                         bldReqOK = true;
                     }
+                    prodSign = ' <span class="ciel">&raquo;</span>';
+                    if (!compReqOK) {
+                        prodSign = '';
+                    }
                     if ((bldReqOK && costsOK) || conselTriche) {
-                        $('#conAmmoList').append('<span class="constName klik" title="'+toNiceString(batArmor.bldReq)+' '+toCoolString(flatCosts)+'" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik" title="'+toNiceString(batArmor.bldReq)+' '+toCoolString(flatCosts)+'" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+prodSign+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
                     } else {
-                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batArmor.bldReq)+' '+toCoolString(flatCosts)+'">'+armor+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batArmor.bldReq)+' '+toCoolString(flatCosts)+'">'+armor+prodSign+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
                     }
                 }
                 listNum++;
@@ -283,10 +287,14 @@ function conSelect(unitId,player,noRefresh) {
                     if ((playerInfos.bldList.includes(batEquip.bldReq[0]) || batEquip.bldReq[0] === undefined || conselUnit.name === batEquip.bldReq[0]) && (playerInfos.bldList.includes(batEquip.bldReq[1]) || batEquip.bldReq[1] === undefined || conselUnit.name === batEquip.bldReq[1])) {
                         bldReqOK = true;
                     }
+                    prodSign = ' <span class="ciel">&raquo;</span>';
+                    if (!compReqOK) {
+                        prodSign = '';
+                    }
                     if ((bldReqOK && costsOK) || conselTriche) {
-                        $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip)+' '+toCoolString(flatCosts)+'" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip)+' '+toCoolString(flatCosts)+'" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else {
-                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batEquip.bldReq)+' '+toCoolString(flatCosts)+'">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batEquip.bldReq)+' '+toCoolString(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     }
                 }
                 listNum++;
@@ -327,10 +335,14 @@ function conSelect(unitId,player,noRefresh) {
                         } else {
                             bldReqOK = true;
                         }
+                        prodSign = ' <span class="ciel">&raquo;</span>';
+                        if (!compReqOK) {
+                            prodSign = '';
+                        }
                         if ((bldReqOK && costsOK) || conselTriche) {
-                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+toCoolString(deployCosts)+'" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+toCoolString(deployCosts)+'" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
                         } else {
-                            $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+' '+toCoolString(deployCosts)+'">'+showAmmo(ammo)+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+' '+toCoolString(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
                         }
                     }
                     listNum++;
@@ -370,10 +382,14 @@ function conSelect(unitId,player,noRefresh) {
                         } else {
                             bldReqOK = true;
                         }
+                        prodSign = ' <span class="ciel">&raquo;</span>';
+                        if (!compReqOK) {
+                            prodSign = '';
+                        }
                         if ((bldReqOK && costsOK) || conselTriche) {
-                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+toCoolString(deployCosts)+'" onclick="selectAmmo(`'+ammo+'`,`w2`,`'+unitId+'`)">'+showAmmo(ammo)+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+toCoolString(deployCosts)+'" onclick="selectAmmo(`'+ammo+'`,`w2`,`'+unitId+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
                         } else {
-                            $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+' '+toCoolString(deployCosts)+'">'+showAmmo(ammo)+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+' '+toCoolString(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
                         }
                     }
                     listNum++;
