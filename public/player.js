@@ -564,6 +564,7 @@ function landerFill() {
     let lastKind = '';
     let showkind = '';
     let showPrep = '';
+    let bldNeed = [];
     let allUnitsList = unitTypes.slice();
     let sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'cat'),'kind');
     sortedUnitsList.forEach(function(unit) {
@@ -577,7 +578,13 @@ function landerFill() {
             } else {
                 showPrep = '('+prepaBld[unit.name]+')';
             }
-            $('#conUnitList').append('<span class="constName klik" onclick="fillLanderWithUnit('+unit.id+')">'+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+            bldNeed = [];
+            if (unit.bldCost != 'none') {
+                bldNeed[0] = unit.bldCost;
+            } else {
+                bldNeed = unit.bldReq;
+            }
+            $('#conUnitList').append('<span class="constName klik" title="'+toNiceString(bldNeed)+'" onclick="fillLanderWithUnit('+unit.id+')">'+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
             lastKind = unit.kind;
         }
     });
@@ -592,7 +599,17 @@ function landerFill() {
             $('#conUnitList').append('<span class="constName klik" onclick="fillLanderWithInfra(`'+infra.name+'`,false)">'+infra.name+' <span class="ciel">'+showPrep+'</span></span><br>');
         }
     });
+    if (prepaBld['Route'] === undefined) {
+        showPrep = '';
+    } else {
+        showPrep = '('+prepaBld['Route']+')';
+    }
     $('#conUnitList').append('<span class="constName klik" onclick="fillLanderWithInfra(`Route`,true)">Route <span class="ciel">'+showPrep+'</span></span><br>');
+    if (prepaBld['Pont'] === undefined) {
+        showPrep = '';
+    } else {
+        showPrep = '('+prepaBld['Pont']+')';
+    }
     $('#conUnitList').append('<span class="constName klik" onclick="fillLanderWithInfra(`Pont`,true)">Pont <span class="ciel">'+showPrep+'</span></span><br>');
     $('#conUnitList').append('<br>');
 };
@@ -621,7 +638,7 @@ function fillLanderWithInfra(fillInfraName,road) {
         prepaBld[fillInfra.name] = prepaBld[fillInfra.name]+1;
     }
     landerFill();
-    // console.log(prepaBld);
+    console.log(prepaBld);
 };
 
 function fillLanderWithUnit(fillUnitId) {
