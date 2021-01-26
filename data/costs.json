@@ -1586,6 +1586,7 @@
         "id":37,
         "name":"Barbelés (scrap)",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "bldReq":["Atelier"],
         "costs":{"Scrap":72},
         "fabTime":30
     },
@@ -1593,6 +1594,7 @@
         "id":168,
         "name":"Barbelés",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "bldReq":["Atelier"],
         "costs":{"Fer":72},
         "fabTime":30
     },
@@ -1600,6 +1602,7 @@
         "id":169,
         "name":"Barbelés (taser)",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "bldReq":["Atelier"],
         "bldReq":["Générateur"],
         "costs":{"Aluminium":48,"Cuivre":24,"Batteries":12},
         "fabTime":40
@@ -1607,28 +1610,32 @@
     {
         "id":185,
         "name":"Fosses",
-        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "levels":{"rednecks":9,"blades":1,"bulbos":16,"drogmulojs":9,"tiradores":13,"detruas":13,"brasier":13},
+        "bldReq":["Atelier"],
         "costs":{"Végétaux":36,"Fer":12,"Bois":36,"Tungstène":12},
         "fabTime":50
     },
     {
         "id":237,
         "name":"Pièges",
-        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "levels":{"rednecks":9,"blades":1,"bulbos":20,"drogmulojs":9,"tiradores":99,"detruas":20,"brasier":20},
+        "bldReq":["Atelier"],
         "costs":{"Végétaux":36,"Fer":12,"Bois":36,"Scrap":12},
         "fabTime":25
     },
     {
         "id":238,
         "name":"Dardières",
-        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Atelier"],
         "costs":{"Végétaux":36,"Fer":6,"Bois":36,"Titane":12,"Argon":18,"Mephitis":18,"Huile":18},
         "fabTime":35
     },
     {
         "id":43,
         "name":"Champ de mines",
-        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "levels":{"rednecks":12,"blades":13,"bulbos":10,"drogmulojs":13,"tiradores":18,"detruas":1,"brasier":10},
+        "bldReq":["Atelier"],
         "costs":{"Explosifs":18,"Fer":18,"Plomb":6,"Titane":6,"Azote":6,"Electros":6},
         "fabTime":50
     },
@@ -1636,6 +1643,7 @@
         "id":45,
         "name":"Explosifs",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "bldReq":["Atelier"],
         "costs":{"Explosifs":9,"Scrap":9,"Végétaux":18,"Plomb":3,"Titane":3,"Azote":3,"Electros":3},
         "fabTime":35
     },

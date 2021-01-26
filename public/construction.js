@@ -57,11 +57,27 @@ function bfconst(cat,triche,upgrade) {
             if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
                 prodOK = false;
             }
-            if (!unit.bldReq.includes(selectedBatType.name) && unit.cat != 'buildings' && unit.cat != 'devices') {
-                if (!selectedBatType.skills.includes('transorbital') || unit.bldReq[0] != undefined) {
-                    prodOK = false;
+            if (!selectedBatType.skills.includes('transorbital')) {
+                if (!unit.bldReq.includes(selectedBatType.name)) {
+                    if (selectedBatType.cat === 'buildings' || selectedBatType.cat === 'devices') {
+                        prodOK = false;
+                    } else {
+                        if (unit.cat === 'vehicles' || unit.cat === 'infantry') {
+                            prodOK = false;
+                        }
+                    }
+                    if (unit.cat === 'vehicles' || unit.cat === 'infantry') {
+                        if (unit.bldReq[0] != undefined) {
+                            prodOK = false;
+                        }
+                    }
                 }
             }
+            // if (!unit.bldReq.includes(selectedBatType.name) && unit.cat != 'buildings' && unit.cat != 'devices') {
+            //     if (!selectedBatType.skills.includes('transorbital') || unit.bldReq[0] != undefined) {
+            //         prodOK = false;
+            //     }
+            // }
             if (unit.bldCost != 'none' && unit.bldCost != selectedBatType.name) {
                 prodOK = false;
             }
