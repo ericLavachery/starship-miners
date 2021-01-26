@@ -73,11 +73,6 @@ function bfconst(cat,triche,upgrade) {
                     }
                 }
             }
-            // if (!unit.bldReq.includes(selectedBatType.name) && unit.cat != 'buildings' && unit.cat != 'devices') {
-            //     if (!selectedBatType.skills.includes('transorbital') || unit.bldReq[0] != undefined) {
-            //         prodOK = false;
-            //     }
-            // }
             if (unit.bldCost != 'none' && unit.bldCost != selectedBatType.name) {
                 prodOK = false;
             }
