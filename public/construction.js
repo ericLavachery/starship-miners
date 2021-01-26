@@ -590,10 +590,15 @@ function putBat(tileId,citoyens,xp,startTag,show) {
     }
     if (Object.keys(conselUnit).length >= 1) {
         conselNeat();
-        let costsOK = checkAllCosts(conselUnit,conselAmmos);
+        let costsOK = false;
+        if (conselUnit.cat != 'aliens') {
+            costsOK = checkAllCosts(conselUnit,conselAmmos);
+        } else {
+            costsOK = true;
+        }
         if (costsOK || conselTriche) {
             // PAY COSTS !!!
-            if (!conselTriche) {
+            if (!conselTriche && conselUnit.cat != 'aliens') {
                 payUnitCost(conselUnit);
                 payFlatCosts(conselUnit,conselAmmos);
                 payDeployCosts(conselUnit,conselAmmos);
