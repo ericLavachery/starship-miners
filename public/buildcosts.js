@@ -165,14 +165,22 @@ function payFlatCosts(unit,ammoNames) {
     let index;
     let batAmmo;
     // Ammo W1
-    if (ammoNames[0] != 'xxx') {
+    let hasW1 = false;
+    if (!conselUnit.weapon.kit || conselAmmos[3].includes('w1-') || conselAmmos[3].includes('w2-')) {
+        hasW1 = true;
+    }
+    if (ammoNames[0] != 'xxx' && hasW1) {
         index = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
         batAmmo = ammoTypes[index];
         costs = getCosts(unit,batAmmo,1,'ammo');
         payCost(costs);
     }
     // Ammo W2
-    if (ammoNames[1] != 'xxx') {
+    let hasW2 = false;
+    if (!conselUnit.weapon2.kit || conselAmmos[3].includes('kit-') || conselAmmos[3].includes('w2-')) {
+        hasW2 = true;
+    }
+    if (ammoNames[1] != 'xxx' && hasW2) {
         index = ammoTypes.findIndex((obj => obj.name == ammoNames[1]));
         batAmmo = ammoTypes[index];
         costs = getCosts(unit,batAmmo,2,'ammo');
