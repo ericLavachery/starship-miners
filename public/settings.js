@@ -46,6 +46,7 @@ let permaRes = false;
 let minResForRate = 100;
 let maxResForRate = 350;
 let magmaZone = 3;
+let hasScraptruck = false;
 let ruinRarity = 8;
 let ruinsCompBase = 2; // 2%
 let ruinsResBase = 50; // 33%

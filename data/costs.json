@@ -1129,7 +1129,7 @@
         "name":"Scroungers",
         "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Centre de tri","Garage"],
-        "costs":{"Fer":27,"Scrap":423,"Carbone":108,"Bois":72,"Aluminium":54,"Batteries":9,"Compo2":27,"Huile":10,"Eau":96,"Silicium":12},
+        "costs":{"Fer":27,"Scrap":441,"Carbone":126,"Bois":90,"Aluminium":54,"Batteries":9,"Compo2":27,"Huile":10,"Eau":96,"Silicium":12},
         "deploy":{"Fuel":55},
         "fabTime":45
     },
@@ -1444,7 +1444,7 @@
         "name":"Pickups",
         "levels":{"rednecks":5,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Décharge","Garage"],
-        "costs":{"Fer":80,"Scrap":384,"Carbone":80,"Aluminium":64,"Silicium":16,"Batteries":16,"Compo2":64,"Huile":16,"Eau":40},
+        "costs":{"Fer":64,"Scrap":368,"Carbone":64,"Aluminium":64,"Silicium":24,"Batteries":16,"Compo2":64,"Huile":16,"Eau":40},
         "deploy":{"Fuel":50,"Energie":65,"Huile":33},
         "fabTime":45
     },

@@ -741,7 +741,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["recupcit","prefab","routes","badcrewsave","flash"],
+        "skills":["prefab","routes","badcrewsave","flash","recupcit","recupres"],
         "mecanoCost":12,
         "fuzz":6,
         "deathFx":"explo1"
@@ -801,7 +801,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","maycamo","recupcit","selfbadrepair","prefab","routes","flash","badcrewsave"],
+        "skills":["cible","maycamo","selfbadrepair","prefab","routes","flash","badcrewsave","recupcit","recupres"],
         "mecanoCost":10,
         "fuzz":2,
         "deathFx":"explo1"
@@ -856,7 +856,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","recupcit","prefab","defense","routes","flash","badcrewsave"],
+        "skills":["cible","prefab","defense","routes","flash","badcrewsave","recupcit","recupres"],
         "mecanoCost":10,
         "fuzz":3.5,
         "deathFx":"explo1"
@@ -898,7 +898,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["prefab","notarget","fog","bastion","sentinelle","longshot","flash"],
+        "skills":["prefab","notarget","fog","bastion","sentinelle","longshot","flash","recupres"],
         "fuzz":3,
         "deathFx":"explo1"
     },

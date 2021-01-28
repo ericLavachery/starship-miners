@@ -117,9 +117,13 @@ function nextTurnEnd() {
     let distance;
     let alienType;
     let noStuck = false;
+    hasScraptruck = false;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
+            if (batType.name === 'Scraptrucks') {
+                hasScraptruck = true;
+            }
             if (batType.skills.includes('transorbital') || batType.skills.includes('reserve')) {
                 landers.push(bat);
             }
@@ -398,6 +402,7 @@ function turnInfo() {
     let fuzzTotal = 0;
     foggersTiles = [];
     zombifiersTiles = [];
+    hasScraptruck = false;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
             batFuzz = calcBatFuzz(bat);
@@ -407,6 +412,9 @@ function turnInfo() {
             }
             if (bat.type === 'Necrotrucks') {
                 zombifiersTiles.push(bat.tileId);
+            }
+            if (bat.type === 'Scraptrucks') {
+                hasScraptruck = true;
             }
         }
     });

@@ -550,7 +550,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["selfbadmecano","cible","defense","longshot","hscarpmove","flash"],
+        "skills":["selfbadmecano","cible","defense","longshot","hscarpmove","flash","recupcit","recupres"],
         "mecanoCost":22,
         "fuzz":6,
         "deathFx":"planeexploair3"
@@ -609,7 +609,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["noguet","selfbadmecano","cible","longshot","flash"],
+        "skills":["noguet","selfbadmecano","cible","longshot","flash","recupcit","recupres"],
         "mecanoCost":22,
         "fuzz":7,
         "deathFx":"planeexploair3"
@@ -660,7 +660,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["mecano","meleehelp","cible","longshot","hscarpmove","defense","gooddef","transport","vision","medic","recupcit","crewsave","flash"],
+        "skills":["mecano","meleehelp","cible","longshot","hscarpmove","defense","gooddef","transport","vision","medic","recupcit","recupres","crewsave","flash"],
         "mecanoCost":9,
         "mediCost":9,
         "transMaxSize":18,
@@ -2065,7 +2065,7 @@
         "mecanoCost":16,
         "mining":{
             "level":1,
-            "rate":24,
+            "rate":32,
             "multi":false,
             "types":["Scrap","Comptoir","Mine"]
         },
@@ -2083,7 +2083,7 @@
         "kind":"zero-extraction",
         "squads":3,
         "squadSize":3,
-        "crew":8,
+        "crew":10,
         "hp":60,
         "armor":8,
         "size":24,
@@ -2097,7 +2097,8 @@
             "range":1,
             "elevation":1,
             "isBow":true,
-            "rof":24,
+            "noBis":true,
+            "rof":30,
             "accuracy":20,
             "dca":1.25,
             "power":6,
@@ -2127,11 +2128,11 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fouille","cible","fortif","fret","transport","selfbadmecano","hscarpmove","dumper","realdumper","extraction","light","recupcit","crewsave"],
+        "skills":["fouille","cible","fortif","defense","fret","transport","selfbadmecano","hscarpmove","dumper","realdumper","extraction","light","recupcit","crewsave"],
         "mecanoCost":16,
         "mining":{
             "level":1,
-            "rate":24,
+            "rate":40,
             "multi":false,
             "types":["Scrap","Comptoir","Mine"]
         },
@@ -2676,7 +2677,7 @@
     },
     {
         "id":94,
-        "name":"Scraptruck",
+        "name":"Scraptrucks",
         "pic":"scraptruck",
         "cat":"vehicles",
         "kind":"drogmulojs",
@@ -2728,7 +2729,7 @@
         "mecanoCost":10,
         "mining":{
             "level":1,
-            "rate":30,
+            "rate":50,
             "multi":false,
             "types":["Scrap","Comptoir","Mine"]
         },
@@ -4000,7 +4001,7 @@
         "kind":"rednecks",
         "squads":4,
         "squadSize":4,
-        "crew":2,
+        "crew":3,
         "hp":50,
         "armor":5,
         "size":20,
@@ -4014,7 +4015,7 @@
             "range":2,
             "elevation":1,
             "noBis":true,
-            "rof":8,
+            "rof":12,
             "accuracy":25,
             "dca":1.25,
             "power":7,
@@ -4048,9 +4049,9 @@
         "mecanoCost":9,
         "mining":{
             "level":1,
-            "rate":10,
+            "rate":20,
             "multi":false,
-            "types":["Scrap"]
+            "types":["Scrap","Mine"]
         },
         "transMaxSize":9,
         "transUnits":615,

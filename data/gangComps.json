@@ -102,7 +102,7 @@
         "name":"tri",
         "fullName":"Tri",
         "maxLevel":4,
-        "lvlCosts":[0,1,1,1,2]
+        "lvlCosts":[0,1,1,1,1]
     },
     {
         "id":16,

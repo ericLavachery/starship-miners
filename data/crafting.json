@@ -380,6 +380,22 @@
         "batch":8
     },
     {
+        "id":80,
+        "result":"Scrap",
+        "cost":{"Fer":2,"Carbone":2,"Végétaux":4},
+        "compReq":{"mat":1,"const":1},
+        "bldReq":["Atelier"],
+        "batch":3
+    },
+    {
+        "id":81,
+        "result":"Scrap",
+        "cost":{"Fer":2,"Carbone":2,"Végétaux":2},
+        "compReq":{"mat":2,"const":2,"ind":1},
+        "bldReq":["Chaîne de montage"],
+        "batch":4
+    },
+    {
         "id":54,
         "result":"Fer",
         "cost":{"Scrap":20,"Energie":1},
