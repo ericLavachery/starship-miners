@@ -1073,7 +1073,7 @@
         "weapon":{
             "name":"Dart",
             "cost":15,
-            "range":1,
+            "range":0,
             "noAtt":true,
             "rof":1,
             "accuracy":25,
@@ -1085,7 +1085,7 @@
         "weapon2":{
             "name":"Darts",
             "cost":1,
-            "range":1,
+            "range":0,
             "noDef":true,
             "rof":12,
             "accuracy":15,

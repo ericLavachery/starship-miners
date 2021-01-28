@@ -718,6 +718,8 @@ function skillsInfos(bat,batType) {
             }
         }
     }
+    let trapType;
+    let trapCostOK;
     // POSE PIEGES
     if (batType.skills.includes('trapfosse')) {
         freeConsTile = checkFreeConsTile(bat);
@@ -727,12 +729,16 @@ function skillsInfos(bat,batType) {
             if (Object.keys(conselUnit).length >= 1) {
                 balise = 'h3';
             }
+            trapType = getBatTypeByName('Fosses');
+            trapCostOK = checkCost(trapType.costs);
             apCost = Math.round(bat.ap*1.5);
-            if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-fosse`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fosses</'+balise+'></span>');
+            if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee && trapCostOK) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+toCoolString(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-fosse`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fosses</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {
                     skillMessage = "Plus de pièges";
+                } else if (!trapCostOK) {
+                    skillMessage = 'Vous n\'avez pas les ressources '+toCoolString(trapType.costs);
                 } else if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else {
@@ -750,12 +756,16 @@ function skillsInfos(bat,batType) {
             if (Object.keys(conselUnit).length >= 1) {
                 balise = 'h3';
             }
+            trapType = getBatTypeByName('Pièges');
+            trapCostOK = checkCost(trapType.costs);
             apCost = Math.round(bat.ap*1.25);
-            if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-ap`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Pièges</'+balise+'></span>');
+            if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee && trapCostOK) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+toCoolString(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-ap`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Pièges</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {
                     skillMessage = "Plus de pièges";
+                } else if (!trapCostOK) {
+                    skillMessage = 'Vous n\'avez pas les ressources '+toCoolString(trapType.costs);
                 } else if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else {
@@ -773,12 +783,16 @@ function skillsInfos(bat,batType) {
             if (Object.keys(conselUnit).length >= 1) {
                 balise = 'h3';
             }
+            trapType = getBatTypeByName('Dardières');
+            trapCostOK = checkCost(trapType.costs);
             apCost = Math.round(bat.ap*1.25);
-            if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-dard`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dardières</'+balise+'></span>');
+            if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee && trapCostOK) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+toCoolString(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-dard`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dardières</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {
                     skillMessage = "Plus de pièges";
+                } else if (!trapCostOK) {
+                    skillMessage = 'Vous n\'avez pas les ressources '+toCoolString(trapType.costs);
                 } else if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else {
@@ -797,12 +811,16 @@ function skillsInfos(bat,batType) {
             if (Object.keys(conselUnit).length >= 1) {
                 balise = 'h3';
             }
+            trapType = getBatTypeByName('Champ de mines');
+            trapCostOK = checkCost(trapType.costs);
             apCost = Math.round(bat.ap*1.5);
-            if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');
+            if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee && trapCostOK) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines '+toCoolString(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {
                     skillMessage = "Plus de mines";
+                } else if (!trapCostOK) {
+                    skillMessage = 'Vous n\'avez pas les ressources '+toCoolString(trapType.costs);
                 } else if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else {
@@ -821,12 +839,16 @@ function skillsInfos(bat,batType) {
             if (Object.keys(conselUnit).length >= 1) {
                 balise = 'h3';
             }
+            trapType = getBatTypeByName('Explosifs');
+            trapCostOK = checkCost(trapType.costs);
             apCost = Math.round(bat.ap);
-            if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des explosifs" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`dynamite`)"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</'+balise+'></span>');
+            if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee && trapCostOK) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des explosifs '+toCoolString(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`dynamite`)"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {
                     skillMessage = "Plus de mines";
+                } else if (!trapCostOK) {
+                    skillMessage = 'Vous n\'avez pas les ressources '+toCoolString(trapType.costs);
                 } else if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else {
