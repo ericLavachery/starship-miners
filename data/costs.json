@@ -1613,14 +1613,14 @@
         "levels":{"rednecks":9,"blades":1,"bulbos":16,"drogmulojs":9,"tiradores":13,"detruas":13,"brasier":13},
         "bldReq":["Atelier"],
         "costs":{"Végétaux":36,"Fer":12,"Bois":36,"Tungstène":12,"Huile":6,"Calcium":12},
-        "fabTime":50
+        "fabTime":60
     },
     {
         "id":237,
         "name":"Pièges",
         "levels":{"rednecks":9,"blades":1,"bulbos":20,"drogmulojs":9,"tiradores":99,"detruas":20,"brasier":20},
         "bldReq":["Atelier"],
-        "costs":{"Végétaux":36,"Fer":12,"Bois":36,"Scrap":12,"Huile":6,"Calcium":12},
+        "costs":{"Végétaux":18,"Fer":9,"Bois":18,"Scrap":9,"Huile":6,"Calcium":12},
         "fabTime":25
     },
     {
@@ -1628,7 +1628,7 @@
         "name":"Dardières",
         "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Atelier"],
-        "costs":{"Végétaux":36,"Fer":6,"Bois":36,"Titane":12,"Argon":18,"Mephitis":18,"Huile":18},
+        "costs":{"Végétaux":36,"Fer":6,"Bois":18,"Scrap":9,"Titane":9,"Argon":6,"Mephitis":12,"Huile":12},
         "fabTime":35
     },
     {
