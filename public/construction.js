@@ -869,10 +869,11 @@ function dismantle(batId) {
     let bat = getBatById(batId);
     let isCharged = checkCharged(bat,'trans');
     let isLoaded = checkCharged(bat,'load');
+    let resFret = checkResLoad(bat);
     if (!isCharged && !isLoaded) {
         let batType = getBatType(bat);
         let tileId = bat.tileId;
-        if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
+        if (batType.cat === 'buildings' || batType.skills.includes('recupres') || resFret >= 1) {
             recupRes(bat,batType);
         }
         let crew = batType.squads*batType.squadSize*batType.crew;
@@ -900,49 +901,69 @@ function recupRes(bat,batType) {
     coffreTileId = -1;
     putBatAround(bat.tileId,false,239,0);
     let coffre = getBatByTileId(coffreTileId);
-    let recupFactor = 35;
-    recupFactor = Math.round(recupFactor*(playerInfos.comp.tri+4)/4);
-    if (hasScraptruck) {
-        recupFactor = Math.ceil(recupFactor*1.15);
+    if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
+        let recupFactor = 35;
+        recupFactor = Math.round(recupFactor*(playerInfos.comp.tri+4)/4);
+        if (hasScraptruck) {
+            recupFactor = Math.ceil(recupFactor*1.15);
+        }
+        console.log('hasScraptruck='+hasScraptruck);
+        let totalRes = 0;
+        if (batType.costs != undefined) {
+            Object.entries(batType.costs).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                value = Math.floor(value/100*recupFactor);
+                if (coffre.transRes[key] === undefined) {
+                    coffre.transRes[key] = value;
+                } else {
+                    coffre.transRes[key] = coffre.transRes[key]+value;
+                }
+                totalRes = totalRes+value;
+            });
+        }
+        if (batType.deploy != undefined) {
+            Object.entries(batType.deploy).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                value = Math.floor(value/100*recupFactor/2);
+                if (coffre.transRes[key] === undefined) {
+                    coffre.transRes[key] = value;
+                } else {
+                    coffre.transRes[key] = coffre.transRes[key]+value;
+                }
+                totalRes = totalRes+value;
+            });
+        }
+        let scrapBonus = Math.ceil(totalRes/10);
+        if (hasScraptruck) {
+            scrapBonus = Math.ceil(scrapBonus*2);
+        }
+        if (coffre.transRes['Scrap'] === undefined) {
+            coffre.transRes['Scrap'] = scrapBonus;
+        } else {
+            coffre.transRes['Scrap'] = coffre.transRes['Scrap']+scrapBonus;
+        }
     }
-    console.log('hasScraptruck='+hasScraptruck);
-    let totalRes = 0;
-    if (batType.costs != undefined) {
-        Object.entries(batType.costs).map(entry => {
-            let key = entry[0];
-            let value = entry[1];
-            value = Math.floor(value/100*recupFactor);
-            if (coffre.transRes[key] === undefined) {
-                coffre.transRes[key] = value;
-            } else {
-                coffre.transRes[key] = coffre.transRes[key]+value;
-            }
-            totalRes = totalRes+value;
-        });
-    }
-    if (batType.deploy != undefined) {
-        Object.entries(batType.deploy).map(entry => {
-            let key = entry[0];
-            let value = entry[1];
-            value = Math.floor(value/100*recupFactor/2);
-            if (coffre.transRes[key] === undefined) {
-                coffre.transRes[key] = value;
-            } else {
-                coffre.transRes[key] = coffre.transRes[key]+value;
-            }
-            totalRes = totalRes+value;
-        });
-    }
-    let scrapBonus = Math.ceil(totalRes/10);
-    if (hasScraptruck) {
-        scrapBonus = Math.ceil(scrapBonus*2);
-    }
-    if (coffre.transRes['Scrap'] === undefined) {
-        coffre.transRes['Scrap'] = scrapBonus;
-    } else {
-        coffre.transRes['Scrap'] = coffre.transRes['Scrap']+scrapBonus;
+    let resFret = checkResLoad(bat);
+    if (resFret >= 1) {
+        putFretInChest(bat,batType,coffre);
     }
     coffreTileId = -1;
+};
+
+function putFretInChest(bat,batType,coffre) {
+    if (bat.transRes != undefined) {
+        Object.entries(bat.transRes).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            if (coffre.transRes[key] === undefined) {
+                coffre.transRes[key] = value;
+            } else {
+                coffre.transRes[key] = coffre.transRes[key]+value;
+            }
+        });
+    }
 };
 
 function recupCitoyens(unitId,tileId,citoyens,xp) {

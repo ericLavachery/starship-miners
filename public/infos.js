@@ -319,7 +319,22 @@ function batInfos(bat,pop) {
     // DISMANTLE
     if (!pop) {
         $('#'+bodyPlace).append('<hr>');
-        $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler" class="boutonRouge skillButtons" onclick="dismantle('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Démanteler</h4></span>');
+        let demText;
+        if (batType.skills.includes('recupres') || batType.skills.includes('recupcit')) {
+            if (batType.skills.includes('recupcit')) {
+                if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
+                    demText = '(récupérer citoyens et ressources)';
+                } else {
+                    demText = '(récupérer les citoyens)';
+                }
+            } else {
+                if (batType.skills.includes('recupres')) {
+                    demText = '(récupérer des ressources)';
+                }
+            }
+            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+demText+'" class="boutonRouge skillButtons" onclick="dismantle('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Démanteler</h4></span>');
+        }
+        $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Supprimer le bataillon (triche!)" class="boutonBleu skillButtons" onclick="removeBat('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
     }
 
     // "moveCost": 3,
@@ -486,7 +501,7 @@ function showEnemyBatInfos(bat) {
         $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
     }
     // DISMANTLE
-    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Supprimer (Tu triches!)" class="boutonGris skillButtons" onclick="deleteAlien('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
+    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Supprimer (Tu triches!)" class="boutonBleu skillButtons" onclick="deleteAlien('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
 
     // "moveCost": 3,
     // "maxFlood": 3,

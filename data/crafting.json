@@ -390,10 +390,34 @@
     {
         "id":81,
         "result":"Scrap",
-        "cost":{"Fer":2,"Carbone":2,"Végétaux":2},
+        "cost":{"Fer":2,"Carbone":2,"Végétaux":2,"Energie":1},
         "compReq":{"mat":2,"const":2,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":4
+    },
+    {
+        "id":82,
+        "result":"Scrap",
+        "cost":{"Compo1":2},
+        "compReq":{"tri":1},
+        "bldReq":["Décharge","Atelier"],
+        "batch":1
+    },
+    {
+        "id":83,
+        "result":"Scrap",
+        "cost":{"Compo2":3,"Energie":1},
+        "compReq":{"tri":1,"const":1},
+        "bldReq":["Décharge","Atelier"],
+        "batch":2
+    },
+    {
+        "id":84,
+        "result":"Scrap",
+        "cost":{"Compo3":4,"Energie":2},
+        "compReq":{"tri":2,"const":1,"ind":1},
+        "bldReq":["Décharge","Chaîne de montage"],
+        "batch":3
     },
     {
         "id":54,

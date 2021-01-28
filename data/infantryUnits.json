@@ -1780,7 +1780,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","bigfortif","cible","selfbadmedic","maycamo"],
+        "skills":["fortif","bigfortif","cible","selfbadmedic","maycamo","recupcit"],
         "mediCost":9,
         "fuzz":2,
         "deathFx":"human1"
@@ -1838,7 +1838,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","bigfortif","cible","selfbadmedic","maycamo"],
+        "skills":["fortif","bigfortif","cible","selfbadmedic","maycamo","recupcit"],
         "mediCost":9,
         "fuzz":2,
         "deathFx":"human1"
@@ -2102,9 +2102,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","ravitaillement","maycamo","fastempty","fret"],
+        "skills":["fouille","fortif","ravitaillement","maycamo","fastempty","fret","recupcit"],
         "maxSkill":9,
-        "transRes":48,
+        "transRes":96,
         "fuzz":0,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -2156,7 +2156,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","extraction","selfbadmedic","dynamite","fret"],
+        "skills":["fouille","fortif","extraction","selfbadmedic","dynamite","fret","recupcit"],
         "mediCost":10,
         "mining":{
             "level":3,
@@ -4259,7 +4259,7 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","bigfortif","cible","defense","maycamo","hardmove","machine","tracked"],
+        "skills":["fortif","bigfortif","cible","defense","maycamo","hardmove","machine","tracked","recupcit"],
         "fuzz":3,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -4313,7 +4313,7 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","bigfortif","cible","maycamo","defense","hardmove","machine","tracked","unemun"],
+        "skills":["fortif","bigfortif","cible","maycamo","defense","hardmove","machine","tracked","unemun","recupcit"],
         "fuzz":3,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
