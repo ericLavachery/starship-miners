@@ -320,7 +320,7 @@ function batInfos(bat,pop) {
     if (!pop) {
         $('#'+bodyPlace).append('<hr>');
         let demText;
-        if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || batType.cat === 'buildings') {
+        if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || batType.cat === 'buildings' || batType.skills.includes('okdel')) {
             if (batType.skills.includes('recupcit')) {
                 if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
                     demText = '(récupérer citoyens et ressources)';
@@ -331,6 +331,9 @@ function batInfos(bat,pop) {
                 if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
                     demText = '(récupérer des ressources)';
                 }
+            }
+            if (batType.skills.includes('okdel')) {
+                demText = '(détruire)';
             }
             $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+demText+'" class="boutonRouge skillButtons" onclick="dismantle('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Démanteler</h4></span>');
         }

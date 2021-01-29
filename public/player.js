@@ -39,6 +39,7 @@ function gangEdit() {
     // mapTurn
     $('#conUnitList').append('<select class="boutonGris" id="theTurn" onchange="changePlayerInfo(`theTurn`,`mapTurn`)"></select>');
     $('#theTurn').empty().append('<option value="">Tour</option>');
+    $('#theTurn').append('<option value="0">Tour 0</option>');
     i = 1;
     while (i <= 300) {
         $('#theTurn').append('<option value="'+i+'">Tour '+i+'</option>');

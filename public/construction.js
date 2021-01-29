@@ -117,8 +117,8 @@ function bfconst(cat,triche,upgrade) {
             if (!prodOK) {
                 prodSign = '';
             }
-            console.log(unit.name);
-            console.log(costOK);
+            // console.log(unit.name);
+            // console.log(costOK);
             if ((bldOK && costOK) || triche) {
                 color = catColor(unit.cat,unit.kind);
                 $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+prodSign+'</span><br>');
@@ -769,7 +769,11 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 newBat.transRes = {};
             }
             if (startTag != undefined) {
-                newBat.tags = [startTag];
+                if (startTag === 'veil') {
+                    newBat.tags = ['invisible','veil'];
+                } else {
+                    newBat.tags = [startTag];
+                }
             } else {
                 newBat.tags = [];
             }

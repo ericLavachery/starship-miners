@@ -925,7 +925,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fret","underground","camo","unload","nodeathcount"],
+        "skills":["fret","underground","camo","unload","nodeathcount","okdel"],
         "transRes":5000,
         "fuzz":-1,
         "deathFx":"S_Explosion02"

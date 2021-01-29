@@ -1597,7 +1597,7 @@
             "ammo":["glair"]
         },
         "w2chance":4,
-        "moveCost":3,
+        "moveCost":5,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,

@@ -53,7 +53,7 @@ function chooseTarget() {
     if (selectedBatType.skills.includes('errant')) {
         sheep = 2;
     }
-    if (selectedBatType.skills.includes('anycap') || selectedBatType.skills.includes('capmen') || selectedBatType.skills.includes('capbld')) {
+    if (selectedBatType.skills.includes('anycap') || selectedBatType.skills.includes('capmen') || selectedBatType.skills.includes('capbld') || selectedBat.tags.includes('veil')) {
         sheep = 3;
     }
     if (selectedBat.apLeft < 4) {
@@ -196,7 +196,7 @@ function checkPDM() {
                 }
             });
         }
-    } else if (selectedBatType.skills.includes('anycap')) {
+    } else if (selectedBatType.skills.includes('anycap') || selectedBat.tags.includes('veil')) {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= 0) {
                 batType = getBatType(bat);
@@ -449,7 +449,7 @@ function checkPossibleJumps() {
     if (selectedBatType.skills.includes('fouisseur') || selectedBatType.skills.includes('sauteur')) {
         if (selectedBatType.skills.includes('errant')) {
             maxDistance = 8;
-        } else if (selectedBatType.skills.includes('anycap')) {
+        } else if (selectedBatType.skills.includes('anycap') || selectedBat.tags.includes('veil')) {
             maxDistance = 6;
         } else {
             if (selectedBatType.skills.includes('sauteur')) {

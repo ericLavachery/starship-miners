@@ -757,7 +757,8 @@ function attack(melee) {
                         targetBat.tags.push('poison');
                     }
                     console.log('Poison!');
-                    $('#report').append('<span class="report rose">Poison<br></span>');
+                    let allTags = _.countBy(targetBat.tags);
+                    $('#report').append('<span class="report rose">Poison ('+allTags.poison+')<br></span>');
                 }
             }
         }
@@ -1301,7 +1302,8 @@ function defense(melee) {
                         selectedBat.tags.push('poison');
                     }
                     console.log('Poison!');
-                    $('#report').append('<span class="report rose">Poison<br></span>');
+                    let allTags = _.countBy(selectedBat.tags);
+                    $('#report').append('<span class="report rose">Poison ('+allTags.poison+')<br></span>');
                 }
             }
         }

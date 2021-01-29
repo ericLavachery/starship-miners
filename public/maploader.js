@@ -188,7 +188,8 @@ function showAlien(bat) {
         tagz = tagz+' (arrosé)';
     }
     if (bat.tags.includes('poison')) {
-        tagz = tagz+' (poison)';
+        let allTags = _.countBy(bat.tags);
+        tagz = tagz+' (poison: '+allTags.poison+')';
     }
     if (bat.tags.includes('shinda')) {
         tagz = tagz+' (shinda)';

@@ -525,7 +525,7 @@ function morphList() {
 };
 
 function aliensCount() {
-    let aliensNums = {lucioles:0,moucherons:0,bugs:0,firebugs:0,scorpions:0,fourmis:0,cafards:0,gluantes:0,larves:0,homards:0};
+    let aliensNums = {lucioles:0,moucherons:0,bugs:0,firebugs:0,scorpions:0,fourmis:0,cafards:0,gluantes:0,larves:0,homards:0,veilleurs:0};
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type === 'Lucioles') {
@@ -548,6 +548,8 @@ function aliensCount() {
                 aliensNums.moucherons = aliensNums.moucherons+1;
             } else if (bat.type === 'Homards') {
                 aliensNums.homards = aliensNums.homards+1;
+            } else if (bat.type === 'Veilleurs') {
+                aliensNums.veilleurs = aliensNums.veilleurs+1;
             }
         }
     });
@@ -604,8 +606,24 @@ function spawns() {
                 alienSpawn(bat,'Bugs');
             } else if (bat.type === 'Androks' && aliens.length < maxAliens && aliensNums.scorpions < Math.round(maxPonte*1.5)) {
                 alienSpawn(bat,'Scorpions');
-            } else if (bat.type === 'Megagrubz' && rand.rand(1,4) === 1 && aliens.length < maxAliens) {
-                alienSpawn(bat,'Vomissure');
+            } else if (bat.type === 'Veilleurs' && aliens.length < maxAliens && bat.squadsLeft >= 3) {
+                let lifeTurn = playerInfos.mapTurn-bat.creaTurn;
+                if (lifeTurn === 1) {
+                    if (aliensNums.veilleurs >= 4) {
+                        if (rand.rand(1,4) > 1) {
+                            veilSpawn(bat);
+                        }
+                    } else {
+                        veilSpawn(bat);
+                    }
+                }
+                if (!bat.tags.includes('invisible')) {
+                    if (rand.rand(1,3) === 1) {
+                        veilSpawn(bat);
+                    }
+                }
+            } else if (bat.type === 'Megagrubz' && rand.rand(1,3) === 1 && aliens.length < maxAliens) {
+                alienSpawn(bat,'Vomissure','larve');
             } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && rand.rand(1,3) === 1) {
                 if (aliensNums.homards >= 1) {
                     if (rand.rand(1,2) === 1) {
@@ -623,6 +641,35 @@ function spawns() {
             }
         }
     });
+};
+
+function veilSpawn(bat) {
+    let terName = getTileTerrainName(bat.tileId);
+    let kind = 'bug';
+    if (terName === 'M' || terName === 'H') {
+        kind = 'bug';
+    } else if (terName === 'F') {
+        kind = 'spider';
+    } else if (terName === 'S' || terName === 'W' || terName === 'R') {
+        kind = 'larve';
+    } else if (terName === 'B') {
+        kind = 'swarm';
+    } else if (terName === 'P') {
+        kind = zoneInfos.pKind;
+    } else if (terName === 'G') {
+        kind = zoneInfos.gKind;
+    } else {
+        kind = 'bug';
+    }
+    if (kind === 'bug') {
+        alienSpawn(bat,'Bugs','veil');
+    } else if (kind === 'swarm') {
+        alienSpawn(bat,'Scorpions','veil');
+    } else if (kind === 'larve') {
+        alienSpawn(bat,'Asticots','veil');
+    } else if (kind === 'spider') {
+        alienSpawn(bat,'Gluantes','veil');
+    }
 };
 
 function vomiSpawn(bat) {
@@ -683,7 +730,7 @@ function checkDropBlob(layBat) {
     return tileDrop;
 };
 
-function alienSpawn(bat,crea) {
+function alienSpawn(bat,crea,tag) {
     console.log('SPAWN: '+crea);
     let dropTile = -1;
     let unitIndex = alienUnits.findIndex((obj => obj.name == crea));
@@ -693,7 +740,7 @@ function alienSpawn(bat,crea) {
     if (Object.keys(conselUnit).length >= 1) {
         dropTile = checkDrop(bat.tileId);
         if (dropTile >= 0) {
-            putBat(dropTile,0,0);
+            putBat(dropTile,0,0,tag);
         }
     }
 };

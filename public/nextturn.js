@@ -74,7 +74,10 @@ function nextTurn() {
             if (rand.rand(1,3) === 1) {
                 tagDelete(bat,'freeze');
             }
-            if (playerInfos.mapTurn > bat.creaTurn+10 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !larveHIDE) {
+            if (playerInfos.mapTurn > bat.creaTurn+9 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !larveHIDE) {
+                tagDelete(bat,'invisible');
+            }
+            if (playerInfos.mapTurn > bat.creaTurn+2 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !larveHIDE && bat.tags.includes('veil')) {
                 tagDelete(bat,'invisible');
             }
         }
