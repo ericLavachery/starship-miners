@@ -304,7 +304,7 @@ function upkeepAndProd(bat,batType) {
         upkeepCheck = true;
     }
     if (upkeepCheck) {
-        if (batType.upkeep != undefined) {
+        if (batType.upkeep != undefined && batType.skills.includes('upkeep')) {
             Object.entries(batType.upkeep).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
@@ -323,6 +323,8 @@ function upkeepAndProd(bat,batType) {
             } else {
                 upkeepNotPaid(bat,batType);
             }
+        } else {
+            upkeepPaid = true;
         }
         if (batType.prod != undefined) {
             if (upkeepPaid) {

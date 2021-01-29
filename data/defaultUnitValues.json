@@ -57,6 +57,7 @@
     "maxDrug": 999,
     "fabTime":25,
     "bldReq":[],
+    "bldVMReq":[],
     "bldCost":"none",
     "bldUp":"none",
     "unitCost":"none",

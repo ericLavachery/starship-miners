@@ -110,7 +110,7 @@
         "skills":["cible","transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","recupcit","bastion","dumper","routes","vision","producteur","accu"],
         "mediCost":8,
         "mecanoCost":8,
-        "transMaxSize":45,
+        "transMaxSize":50,
         "transUnits":9000,
         "transRes":25000,
         "fuzz":4,
@@ -1071,7 +1071,7 @@
         "ap":60,
         "maxSalvo":1,
         "weapon":{
-            "name":"Dart",
+            "name":"Pieu",
             "cost":15,
             "range":0,
             "noAtt":true,
@@ -1083,7 +1083,7 @@
             "ammo":["trap"]
         },
         "weapon2":{
-            "name":"Darts",
+            "name":"Pieux",
             "cost":1,
             "range":0,
             "noDef":true,
