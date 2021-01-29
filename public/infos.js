@@ -320,7 +320,7 @@ function batInfos(bat,pop) {
     if (!pop) {
         $('#'+bodyPlace).append('<hr>');
         let demText;
-        if (batType.skills.includes('recupres') || batType.skills.includes('recupcit')) {
+        if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || batType.cat === 'buildings') {
             if (batType.skills.includes('recupcit')) {
                 if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
                     demText = '(récupérer citoyens et ressources)';
@@ -328,7 +328,7 @@ function batInfos(bat,pop) {
                     demText = '(récupérer les citoyens)';
                 }
             } else {
-                if (batType.skills.includes('recupres')) {
+                if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
                     demText = '(récupérer des ressources)';
                 }
             }

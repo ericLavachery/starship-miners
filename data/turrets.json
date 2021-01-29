@@ -905,7 +905,7 @@
     {
         "id":239,
         "name":"Coffres",
-        "pic":"trap",
+        "pic":"chest",
         "cat":"devices",
         "kind":"zero-transports",
         "sort":0,
@@ -1056,7 +1056,7 @@
     {
         "id":185,
         "name":"Fosses",
-        "pic":"trap",
+        "pic":"trip",
         "cat":"devices",
         "kind":"zero-defense",
         "sort":0,
@@ -1106,7 +1106,7 @@
     {
         "id":237,
         "name":"Pièges",
-        "pic":"trap",
+        "pic":"trip",
         "cat":"devices",
         "kind":"zero-defense",
         "sort":0,
@@ -1156,7 +1156,7 @@
     {
         "id":238,
         "name":"Dardières",
-        "pic":"trap",
+        "pic":"trip",
         "cat":"devices",
         "kind":"zero-defense",
         "sort":0,
