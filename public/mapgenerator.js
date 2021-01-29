@@ -626,6 +626,7 @@ function addRes(zone) {
         redMin = redMin+5+playerInfos.mapDiff;
     }
     let terrain;
+    let minChance;
     let numBadTer = 0;
     let shufZone = _.shuffle(zone);
     console.log('baseMin:'+baseMin);
@@ -637,7 +638,11 @@ function addRes(zone) {
             if (terrain.name === 'S' || terrain.name === 'W' || terrain.name === 'F') {
                 numBadTer++;
             }
-            if (rand.rand(1,terrain.minChance) === 1) {
+            minChance = terrain.minChance;
+            if (tile.x >= 21 && tile.x <= 41 && tile.y >= 21 && tile.y <= 41) {
+                minChance = Math.ceil(((Math.sqrt(minChance+25)*1.5)+(minChance))/2);
+            }
+            if (rand.rand(1,minChance) === 1) {
                 baseNum++;
                 resLevelDice = checkResLevel(tile);
                 if (resLevelDice >= 4 && mythicNum >= mythicMax) {
@@ -1029,6 +1034,9 @@ function checkAdjRes(adjTile) {
 
 function checkResLevel(tile) {
     let resLevelDice = rand.rand(1,100);
+    if (tile.x >= 21 && tile.x <= 41 && tile.y >= 21 && tile.y <= 41) {
+        resLevelDice = rand.rand(1,110);
+    }
     let mythicChance = Math.round((playerInfos.mapDiff+2)*(playerInfos.mapDiff+2)/18);
     if (resLevelDice <= mythicChance) {
         return 5;
