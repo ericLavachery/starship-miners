@@ -403,6 +403,7 @@ function payUnitCost(batType) {
             deadBatsList = [];
             bataillons.forEach(function(bat) {
                 if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Criminels') {
+                    warning('Bug?','Perte de criminels: restCit='+restCit+' bat.citoyens='+bat.citoyens);
                     if (restCit === 0) {
                         bat.citoyens = 0;
                         deadBatsList.push(bat.id);
@@ -428,6 +429,7 @@ function payUnitCost(batType) {
             deadBatsList = [];
             bataillons.forEach(function(bat) {
                 if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Citoyens') {
+                    warning('Bug?','Perte de citoyens: restCit='+restCit+' bat.citoyens='+bat.citoyens);
                     if (restCit === 0) {
                         bat.citoyens = 0;
                         deadBatsList.push(bat.id);
@@ -591,13 +593,13 @@ function getDispoCit() {
             numCitBat++;
         }
     });
-    // warning('Bug Citoyens?','Nombre de bataillons = '+numCitBat+' / Nombre de citoyens = '+dispoCit);
     if (numCitBat >= 2) {
         let citNumber = 0;
         deadBatsList = [];
         bataillons.forEach(function(bat) {
             if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Citoyens') {
                 citNumber++;
+                warning('Bug?','Perte de citoyens: dispoCit='+dispoCit+' bat.citoyens='+bat.citoyens);
                 if (citNumber >= 2) {
                     bat.citoyens = 0;
                     deadBatsList.push(bat.id);
@@ -608,17 +610,6 @@ function getDispoCit() {
         });
         killBatList();
     }
-    // TEST !!!!!!
-    // let testDispoCit = 0;
-    // numCitBat = 0;
-    // bataillons.forEach(function(bat) {
-    //     if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Citoyens') {
-    //         testDispoCit = testDispoCit+bat.citoyens;
-    //         numCitBat++;
-    //     }
-    // });
-    // warning('Bug Citoyens?','Nombre de bataillons = '+numCitBat+' / Nombre de citoyens = '+testDispoCit);
-    // TEST !!!!!!
     return dispoCit;
 };
 

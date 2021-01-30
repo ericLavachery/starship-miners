@@ -596,6 +596,9 @@ function conselNeat() {
 
 function putBat(tileId,citoyens,xp,startTag,show) {
     console.log('PUTBAT');
+    if (conselUnit.cat === 'aliens') {
+        conselTriche = true;
+    }
     if (show === undefined) {
         show = true;
     }

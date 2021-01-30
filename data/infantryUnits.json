@@ -2087,7 +2087,7 @@
             "range":0,
             "noFly":true,
             "rof":6,
-            "accuracy":8,
+            "accuracy":9,
             "power":13,
             "aoe":"squad",
             "sound":"grenade",
