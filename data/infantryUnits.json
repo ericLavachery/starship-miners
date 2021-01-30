@@ -2071,16 +2071,15 @@
         "ap":10,
         "maxSalvo":1,
         "weapon":{
-            "name":"Pistolet",
-            "cost":2,
+            "name":"Calibre",
+            "cost":3,
             "range":1,
-            "isShort":true,
             "rof":8,
-            "accuracy":17,
-            "power":4,
+            "accuracy":19,
+            "power":7,
             "aoe":"unit",
-            "sound":"pistol_x2",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "sound":"calibre_x2",
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -2096,8 +2095,8 @@
             "maxAmmo":6,
             "ravitBld":"Armurerie"
         },
-        "protection":["aucune"],
-        "equip":["aucun","flash","ranger","gilet","camo","jetpack"],
+        "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
+        "equip":["aucun","flash","ranger","gilet","camo","jetpack","lunette1","chargeur1"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,

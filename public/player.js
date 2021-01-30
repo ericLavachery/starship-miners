@@ -281,6 +281,9 @@ function playerSkillsUTChanges() {
                 unit.levels[playerInfos.gang] = 1;
             }
         }
+        if (playerInfos.comp.trans >= 1 && unit.cat === 'vehicles' && unit.transRes >= 50) {
+            unit.transRes = Math.round(unit.transRes*(playerInfos.comp.trans+9)/9);
+        }
         // VOLS SPACIAUX
         if (playerInfos.comp.vsp >= 2 && unit.kind === 'zero-vaisseaux' && unit.name != 'Liberator' && unit.name != 'Crusader') {
             unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.vsp-1);

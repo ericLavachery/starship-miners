@@ -640,7 +640,7 @@ function addRes(zone) {
             }
             minChance = terrain.minChance;
             if (tile.x >= 21 && tile.x <= 41 && tile.y >= 21 && tile.y <= 41) {
-                minChance = Math.ceil(((Math.sqrt(minChance+25)*1.5)+(minChance))/2);
+                minChance = Math.ceil(((Math.sqrt(minChance+25)*1.5)+(minChance))/2.5);
             }
             if (rand.rand(1,minChance) === 1) {
                 baseNum++;
@@ -1035,7 +1035,7 @@ function checkAdjRes(adjTile) {
 function checkResLevel(tile) {
     let resLevelDice = rand.rand(1,100);
     if (tile.x >= 21 && tile.x <= 41 && tile.y >= 21 && tile.y <= 41) {
-        resLevelDice = rand.rand(1,110);
+        resLevelDice = rand.rand(1,115);
     }
     let mythicChance = Math.round((playerInfos.mapDiff+2)*(playerInfos.mapDiff+2)/18);
     if (resLevelDice <= mythicChance) {

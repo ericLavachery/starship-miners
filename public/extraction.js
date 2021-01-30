@@ -182,10 +182,6 @@ function getResMiningRate(bat,res,value,fullRate) {
 function chooseRes(again) {
     selectMode();
     if (!again) {
-        // console.log('CHOOSE RES');
-        // console.log(selectedBat);
-        // tagDelete(selectedBat,'mining');
-        // reset bat.extracted
         if (selectedBat.extracted === undefined) {
             selectedBat.extracted = [];
         }
@@ -665,13 +661,19 @@ function toggleMarkedView() {
 };
 
 function markMap(tileId) {
+    let index;
     if (showAllRes) {
         myTileX = zone[tileId].x;
         myTileY = zone[tileId].y;
         xOffset = myTileX-Math.round(numVTiles/2);
         yOffset = myTileY-Math.round(numHTiles/2);
         if (!playerInfos.showedTiles.includes(tileId)) {
-            playerInfos.showedTiles.push(tileId)
+            playerInfos.showedTiles.push(tileId);
+        } else {
+            index = playerInfos.showedTiles.indexOf(tileId);
+            if (index > -1) {
+                playerInfos.showedTiles.splice(index,1);
+            }
         }
         limitOffset();
         showMap(zone,true);
@@ -679,6 +681,11 @@ function markMap(tileId) {
     } else {
         if (!playerInfos.showedTiles.includes(tileId)) {
             playerInfos.showedTiles.push(tileId)
+        } else {
+            index = playerInfos.showedTiles.indexOf(tileId);
+            if (index > -1) {
+                playerInfos.showedTiles.splice(index,1);
+            }
         }
         showMap(zone,true);
     }

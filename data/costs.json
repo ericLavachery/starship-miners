@@ -326,7 +326,7 @@
         "name":"Mulets",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":[],
-        "costs":{"Fer":24,"Scrap":24},
+        "costs":{"Fer":48,"Scrap":96},
         "fabTime":15
     },
     {
