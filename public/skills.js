@@ -378,6 +378,7 @@ function dropStuff(apCost,mineType) {
     selectMode();
     conOut();
     let unitIndex;
+    let skillUsed = true;
     if (mineType === 'champ') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Champ de mines'));
     } else if (mineType === 'dynamite') {
@@ -394,10 +395,15 @@ function dropStuff(apCost,mineType) {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Pièges'));
     } else if (mineType === 'trap-dard') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Dardières'));
+    } else if (mineType === 'coffre') {
+        unitIndex = unitTypes.findIndex((obj => obj.name === 'Coffres'));
+        skillUsed = false;
     }
     conselUnit = unitTypes[unitIndex];
     conselAmmos = ['xxx','xxx','xxx','xxx'];
-    selectedBat.tags.push('sU');
+    if (skillUsed) {
+        selectedBat.tags.push('sU');
+    }
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     selectedBat.salvoLeft = 0;
     tagAction();

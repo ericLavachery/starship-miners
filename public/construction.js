@@ -692,7 +692,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 newBat.salvoLeft = conselUnit.maxSalvo;
             } else {
                 if (conselUnit.fabTime >= 1) {
-                    if (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs' || conselUnit.name == 'Pièges' || conselUnit.name == 'Fosses' || conselUnit.name == 'Dardières') {
+                    if (conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs' || conselUnit.name == 'Pièges' || conselUnit.name == 'Fosses' || conselUnit.name == 'Dardières' || conselUnit.name == 'Coffres') {
                         newBat.apLeft = 0;
                         newBat.oldapLeft = 0;
                         newBat.salvoLeft = 0;

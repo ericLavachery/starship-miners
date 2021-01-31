@@ -2101,7 +2101,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","ravitaillement","maycamo","fastempty","fret","recupcit"],
+        "skills":["fouille","fortif","ravitaillement","maycamo","fastempty","fret","recupcit","conscont"],
         "maxSkill":9,
         "transRes":96,
         "fuzz":0,
@@ -2155,7 +2155,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","extraction","selfbadmedic","dynamite","fret","recupcit"],
+        "skills":["fouille","fortif","extraction","selfbadmedic","dynamite","fret","recupcit","conscont"],
         "mediCost":10,
         "mining":{
             "level":3,
@@ -2163,7 +2163,7 @@
             "multi":false,
             "types":["Mine","Comptoir","Scrap","Derrick"]
         },
-        "transRes":36,
+        "transRes":54,
         "maxSkill":2,
         "fuzz":1.5,
         "deathFx":"516766__gentlemanwalrus__death-rattle"
@@ -2218,7 +2218,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","cible","fortif","extraction","selfbadmedic","camo","ranger","fret"],
+        "skills":["fouille","cible","fortif","extraction","selfbadmedic","camo","ranger","fret","conscont"],
         "mediCost":9,
         "mining":{
             "level":2,
