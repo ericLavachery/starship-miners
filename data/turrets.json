@@ -926,7 +926,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fret","unload","nodeathcount","okdel","noblub","notarget"],
+        "skills":["fret","dumper","unload","nodeathcount","okdel","noblub","notarget","clicput"],
         "transRes":500,
         "fuzz":-2,
         "deathFx":"S_Explosion02"
@@ -968,7 +968,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","prefab","noblub","nolist","norepair"],
+        "skills":["nodeathcount","notarget","prefab","noblub","nolist","norepair","clicput"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1009,7 +1009,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","prefab","noblub","nolist","norepair"],
+        "skills":["nodeathcount","notarget","prefab","noblub","nolist","norepair","clicput"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1050,7 +1050,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","prefab","bigblub","nolist","norepair"],
+        "skills":["nodeathcount","notarget","prefab","bigblub","nolist","norepair","clicput"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1100,7 +1100,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nodeathcount","notarget","halfcover","nolist","norepair","nobld"],
+        "skills":["after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput"],
         "fuzz":-2,
         "deathFx":"none"
     },
@@ -1150,7 +1150,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nodeathcount","notarget","halfcover","prefab","nolist","norepair","nobld"],
+        "skills":["after","nodeathcount","notarget","halfcover","prefab","nolist","norepair","nobld","clicput"],
         "fuzz":-2,
         "deathFx":"none"
     },
@@ -1200,7 +1200,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nodeathcount","notarget","halfcover","prefab","nolist","norepair","nobld"],
+        "skills":["after","nodeathcount","notarget","halfcover","prefab","nolist","norepair","nobld","clicput"],
         "fuzz":-2,
         "deathFx":"none"
     },
@@ -1250,7 +1250,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nonumname","nodeathcount","notarget","halfcover","prefab","noblub","nolist","norepair","nobld"],
+        "skills":["after","nonumname","nodeathcount","notarget","halfcover","prefab","noblub","nolist","norepair","nobld","clicput"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1300,7 +1300,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nonumname","nodeathcount","notarget","halfcover","prefab","bigblub","nolist","norepair","nobld"],
+        "skills":["after","nonumname","nodeathcount","notarget","halfcover","prefab","bigblub","nolist","norepair","nobld","clicput"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     }

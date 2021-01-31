@@ -152,7 +152,7 @@ function checkRuinsAliens(tile) {
     }
 };
 
-function putBatAround(tileId,alien,unitId,numCit) {
+function putBatAround(tileId,alien,unitId,numCit,tag) {
     console.log(alien);
     let dropTile = checkDrop(tileId);
     if (dropTile >= 0) {
@@ -166,7 +166,7 @@ function putBatAround(tileId,alien,unitId,numCit) {
         }
         conselAmmos = ['xxx','xxx','xxx','xxx'];
         coffreTileId = dropTile;
-        putBat(dropTile,numCit,0);
+        putBat(dropTile,numCit,0,tag);
     }
 };
 
@@ -180,7 +180,7 @@ function checkRuinsRes(tile) {
     let resChance = ruinsResBase+(playerInfos.mapDiff*2)-10;
     console.log('resChance: '+resChance);
     if (rand.rand(1,100) <= resChance) {
-        putBatAround(tile.id,false,239,0);
+        putBatAround(tile.id,false,239,0,'go');
         let coffre = getBatByTileId(coffreTileId);
         let totalRes = 0;
         let thatResChance = 0;

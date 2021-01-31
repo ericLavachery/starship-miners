@@ -4,6 +4,8 @@
 remove ,"Xxxx":000
 ,"\w*":000
 
+(conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs' || conselUnit.name.includes('Barbelés') || conselUnit.name == 'Pièges' || conselUnit.name == 'Dardières' || conselUnit.name == 'Fosses' || conselUnit.name == 'Coffres')
+conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs' || conselUnit.name == 'Pièges' || conselUnit.name == 'Fosses' || conselUnit.name == 'Dardières' || conselUnit.name == 'Coffres'
 Scrap
 Plomb
 Fer

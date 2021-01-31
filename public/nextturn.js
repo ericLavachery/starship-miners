@@ -330,7 +330,7 @@ function nextTurnEnd() {
                 }
             }
             // fin coffres
-            if (batType.name === 'Coffres') {
+            if (batType.name === 'Coffres' && bat.tags.includes('go')) {
                 let resSpace = checkResSpace(bat);
                 let resMax = batType.transRes;
                 if (resSpace >= resMax) {
