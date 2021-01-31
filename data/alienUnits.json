@@ -952,7 +952,7 @@
             "rof":10,
             "accuracy":10,
             "dca":1.5,
-            "power":1,
+            "power":2,
             "aoe":"unit",
             "sound":"squishshort",
             "ammo":["web"]

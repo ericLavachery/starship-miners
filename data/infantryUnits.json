@@ -2163,7 +2163,7 @@
             "multi":false,
             "types":["Mine","Comptoir","Scrap","Derrick"]
         },
-        "transRes":54,
+        "transRes":36,
         "maxSkill":2,
         "fuzz":1.5,
         "deathFx":"516766__gentlemanwalrus__death-rattle"

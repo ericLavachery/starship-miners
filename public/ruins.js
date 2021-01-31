@@ -180,6 +180,7 @@ function checkRuinsRes(tile) {
     let resChance = ruinsResBase+(playerInfos.mapDiff*2)-10;
     console.log('resChance: '+resChance);
     if (rand.rand(1,100) <= resChance) {
+        conselTriche = true;
         putBatAround(tile.id,false,239,0,'go');
         let coffre = getBatByTileId(coffreTileId);
         let totalRes = 0;

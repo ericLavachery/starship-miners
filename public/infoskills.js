@@ -921,74 +921,82 @@ function skillsInfos(bat,batType) {
             let infraCostOK;
             if (bat.apLeft >= apReq && !inMelee) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><span id="infraButtons"></span>&nbsp; Enceinte</h4></span>');
-                infra = getInfraByName('Miradors');
-                infraCostOK = checkCost(infra.costs);
-                if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
-                    prodOK = false;
-                } else {
-                    prodOK = true;
-                }
                 $('#infraButtons').empty();
-                if (infraCostOK && prodOK) {
-                    $('#infraButtons').append('<button type="button" title="Construction (Miradors) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button>');
-                } else {
-                    if (!prodOK) {
-                        skillMessage = "Niveau insuffisant";
+                if (tile.infra != 'Miradors') {
+                    infra = getInfraByName('Miradors');
+                    infraCostOK = checkCost(infra.costs);
+                    if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
+                        prodOK = false;
                     } else {
-                        skillMessage = "Pas assez de ressources "+toCoolString(infra.costs);
+                        prodOK = true;
                     }
-                    $('#infraButtons').append('<button type="button" title="Miradors: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Mi</span></button>');
-                }
-                infra = getInfraByName('Palissades');
-                infraCostOK = checkCost(infra.costs);
-                if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
-                    prodOK = false;
-                } else {
-                    prodOK = true;
-                }
-                if (infraCostOK && prodOK) {
-                    $('#infraButtons').append('<button type="button" title="Construction (Palissades) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button>');
-                } else {
-                    if (!prodOK) {
-                        skillMessage = "Niveau insuffisant";
+                    if (infraCostOK && prodOK) {
+                        $('#infraButtons').append('<button type="button" title="Construction (Miradors) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button>');
                     } else {
-                        skillMessage = "Pas assez de ressources "+toCoolString(infra.costs);
+                        if (!prodOK) {
+                            skillMessage = "Niveau insuffisant";
+                        } else {
+                            skillMessage = "Pas assez de ressources "+toCoolString(infra.costs);
+                        }
+                        $('#infraButtons').append('<button type="button" title="Miradors: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Mi</span></button>');
                     }
-                    $('#infraButtons').append('<button type="button" title="Palissades: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Pa</span></button>');
                 }
-                infra = getInfraByName('Remparts');
-                infraCostOK = checkCost(infra.costs);
-                if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
-                    prodOK = false;
-                } else {
-                    prodOK = true;
-                }
-                if (infraCostOK && prodOK) {
-                    $('#infraButtons').append('<button type="button" title="Construction (Remparts) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button>');
-                } else {
-                    if (!prodOK) {
-                        skillMessage = "Niveau insuffisant";
+                if (tile.infra != 'Palissades') {
+                    infra = getInfraByName('Palissades');
+                    infraCostOK = checkCost(infra.costs);
+                    if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
+                        prodOK = false;
                     } else {
-                        skillMessage = "Pas assez de ressources "+toCoolString(infra.costs);
+                        prodOK = true;
                     }
-                    $('#infraButtons').append('<button type="button" title="Remparts: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Re</span></button>');
-                }
-                infra = getInfraByName('Murailles');
-                infraCostOK = checkCost(infra.costs);
-                if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
-                    prodOK = false;
-                } else {
-                    prodOK = true;
-                }
-                if (infraCostOK && prodOK) {
-                    $('#infraButtons').append('<button type="button" title="Construction (Murailles) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>');
-                } else {
-                    if (!prodOK) {
-                        skillMessage = "Niveau insuffisant";
+                    if (infraCostOK && prodOK) {
+                        $('#infraButtons').append('<button type="button" title="Construction (Palissades) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button>');
                     } else {
-                        skillMessage = "Pas assez de ressources "+toCoolString(infra.costs);
+                        if (!prodOK) {
+                            skillMessage = "Niveau insuffisant";
+                        } else {
+                            skillMessage = "Pas assez de ressources "+toCoolString(infra.costs);
+                        }
+                        $('#infraButtons').append('<button type="button" title="Palissades: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Pa</span></button>');
                     }
-                    $('#infraButtons').append('<button type="button" title="Murailles: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Mu</span></button>');
+                }
+                if (tile.infra != 'Remparts') {
+                    infra = getInfraByName('Remparts');
+                    infraCostOK = checkCost(infra.costs);
+                    if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
+                        prodOK = false;
+                    } else {
+                        prodOK = true;
+                    }
+                    if (infraCostOK && prodOK) {
+                        $('#infraButtons').append('<button type="button" title="Construction (Remparts) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button>');
+                    } else {
+                        if (!prodOK) {
+                            skillMessage = "Niveau insuffisant";
+                        } else {
+                            skillMessage = "Pas assez de ressources "+toCoolString(infra.costs);
+                        }
+                        $('#infraButtons').append('<button type="button" title="Remparts: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Re</span></button>');
+                    }
+                }
+                if (tile.infra != 'Murailles') {
+                    infra = getInfraByName('Murailles');
+                    infraCostOK = checkCost(infra.costs);
+                    if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
+                        prodOK = false;
+                    } else {
+                        prodOK = true;
+                    }
+                    if (infraCostOK && prodOK) {
+                        $('#infraButtons').append('<button type="button" title="Construction (Murailles) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>');
+                    } else {
+                        if (!prodOK) {
+                            skillMessage = "Niveau insuffisant";
+                        } else {
+                            skillMessage = "Pas assez de ressources "+toCoolString(infra.costs);
+                        }
+                        $('#infraButtons').append('<button type="button" title="Murailles: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Mu</span></button>');
+                    }
                 }
             }
         }

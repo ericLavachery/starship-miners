@@ -838,11 +838,6 @@ function addRes(zone) {
             }
         }
     });
-    zone.forEach(function(tile) {
-        if (tile.ruins) {
-            tile.sh = numRuins;
-        }
-    });
     // check res
     let sortedRes = _.sortBy(_.sortBy(resTypes,'rarity'),'adjRarity').reverse();
     let resChance;
@@ -904,6 +899,9 @@ function addRes(zone) {
                     }
                     if (rand.rand(1,100) <= resChance) {
                         tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                        if (res.name === 'Scrap') {
+                            tile.ruins = true;
+                        }
                     }
                 }
             });
@@ -916,6 +914,9 @@ function addRes(zone) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,8) === 1) {
                                         tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                                        if (res.name === 'Scrap') {
+                                            tile.ruins = true;
+                                        }
                                     }
                                 }
                             }
@@ -929,6 +930,9 @@ function addRes(zone) {
                             if (Object.keys(tile.rs).length <= 1) {
                                 if (tile.rs[res.name] === undefined) {
                                     tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                                    if (res.name === 'Scrap') {
+                                        tile.ruins = true;
+                                    }
                                 }
                             }
                         }
@@ -943,6 +947,9 @@ function addRes(zone) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,8) === 1) {
                                         tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                                        if (res.name === 'Scrap') {
+                                            tile.ruins = true;
+                                        }
                                     }
                                 }
                             }
@@ -956,6 +963,9 @@ function addRes(zone) {
                             if (Object.keys(tile.rs).length <= 3) {
                                 if (tile.rs[res.name] === undefined) {
                                     tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                                    if (res.name === 'Scrap') {
+                                        tile.ruins = true;
+                                    }
                                 }
                             }
                         }
@@ -965,7 +975,16 @@ function addRes(zone) {
             // PASS 4
             if (Object.keys(tile.rs).length <= 0) {
                 tile.rs[resDefault.name] = Math.round(resDefault.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                if (resDefault.name === 'Scrap') {
+                    tile.ruins = true;
+                }
             }
+        }
+    });
+    // numRuins
+    zone.forEach(function(tile) {
+        if (tile.ruins) {
+            tile.sh = numRuins;
         }
     });
     // MAGMA
