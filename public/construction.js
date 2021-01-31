@@ -876,11 +876,11 @@ function dismantle(batId) {
     let bat = getBatById(batId);
     let isCharged = checkCharged(bat,'trans');
     let isLoaded = checkCharged(bat,'load');
-    let resFret = checkResLoad(bat);
+    // let resFret = checkResLoad(bat);
     if (!isCharged && !isLoaded) {
         let batType = getBatType(bat);
         let tileId = bat.tileId;
-        if (batType.cat === 'buildings' || batType.skills.includes('recupres') || resFret >= 1) {
+        if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
             recupRes(bat,batType);
         }
         let crew = batType.squads*batType.squadSize*batType.crew;
@@ -906,6 +906,7 @@ function dismantle(batId) {
 
 function recupRes(bat,batType) {
     coffreTileId = -1;
+    conselTriche = true;
     putBatAround(bat.tileId,false,239,0);
     let coffre = getBatByTileId(coffreTileId);
     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
