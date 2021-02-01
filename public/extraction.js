@@ -396,6 +396,10 @@ function loadRes() {
                             } else {
                                 $('#conUnitList').append('<span class="constName cy">'+bat.type+'</span><br>');
                             }
+                            if (restSpace >= Math.round(resLoad*1.2)) {
+                                $('#conUnitList').append('<span class="constIcon rose"><i class="fas fa-pallet"></i></span>');
+                                $('#conUnitList').append('<span class="constName rose"><span class="klik" onclick="resAllLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon">Charger tout</span></span><br>');
+                            }
                             Object.entries(bat.transRes).map(entry => {
                                 let key = entry[0];
                                 let value = entry[1];
@@ -427,6 +431,24 @@ function loadRes() {
     } else {
         $('#conUnitList').append('<span class="constName">Plus de place!</span><br>');
     }
+};
+
+function resAllLoad(batId) {
+    let bat = getBatById(batId);
+    Object.entries(bat.transRes).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        if (selectedBat.transRes[key] === undefined) {
+            selectedBat.transRes[key] = value;
+        } else {
+            selectedBat.transRes[key] = selectedBat.transRes[key]+value;
+        }
+        delete bat.transRes[key];
+    });
+    putTagAction(bat);
+    putTagAction(selectedBat);
+    selectedBatArrayUpdate();
+    loadRes();
 };
 
 function isResToLoad(myBat) {
