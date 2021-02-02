@@ -119,8 +119,8 @@ function checkRavitDrug(myBat) {
             batType = getBatType(bat);
             if (batType.skills.includes('ravitaillement')) {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
-                    ravitLeft = calcRavitDrug(bat);
-                    if (ravitLeft >= 1 || batType.skills.includes('stock')) {
+                    ravitLeft = calcRavit(bat);
+                    if (ravitLeft >= 2 || batType.skills.includes('stock')) {
                         anyRavit = true;
                     }
                 }
@@ -309,7 +309,7 @@ function goRavitDrug(apCost) {
                 batType = getBatType(bat);
                 if (batType.skills.includes('ravitaillement')) {
                     ravitLeft = calcRavit(bat);
-                    if (calcDistance(selectedBat.tileId,bat.tileId) <= 1 && ravitLeft >= 1) {
+                    if (calcDistance(selectedBat.tileId,bat.tileId) <= 1 && ravitLeft >= 2) {
                         if (biggestRavit < ravitLeft) {
                             biggestRavit = ravitLeft;
                             ravitBat = bat;
@@ -336,7 +336,8 @@ function goRavitDrug(apCost) {
 
             }
             ravitBatType = getBatType(ravitBat);
-            if (ravitBatType.maxDrug < 999) {
+            if (ravitBatType.maxSkill < 999) {
+                ravitBat.tags.push('sU');
                 ravitBat.tags.push('sU');
             }
             selectedBatArrayUpdate();
