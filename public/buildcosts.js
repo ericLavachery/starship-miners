@@ -676,7 +676,7 @@ function checkAllCosts(unit,ammoNames) {
     let flatCosts;
     // Ammo W1
     let hasW1 = false;
-    if (!conselUnit.weapon.kit || conselAmmos[3].includes('w1-') || conselAmmos[3].includes('w2-')) {
+    if (!unit.weapon.kit || ammoNames[3].includes('w1-') || ammoNames[3].includes('w2-')) {
         hasW1 = true;
     }
     if (hasW1) {
@@ -696,7 +696,7 @@ function checkAllCosts(unit,ammoNames) {
     }
     // Ammo W2
     let hasW2 = false;
-    if (!conselUnit.weapon2.kit || conselAmmos[3].includes('kit-') || conselAmmos[3].includes('w2-')) {
+    if (!unit.weapon2.kit || ammoNames[3].includes('kit-') || ammoNames[3].includes('w2-')) {
         hasW2 = true;
     }
     if (hasW2) {

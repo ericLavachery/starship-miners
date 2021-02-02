@@ -471,7 +471,14 @@ function showEnemyBatInfos(bat) {
     let alienUnitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
     let batType = alienUnits[alienUnitIndex];
     let unitsLeft = bat.squadsLeft*batType.squadSize;
-    $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batType.name+'</h3></span>');
+    let batShowedName = batType.name;
+    if (batShowedName === 'Vers' && playerInfos.comp.ca < 2) {
+        batShowedName = 'Asticots';
+    }
+    if (batShowedName === 'Blattes' && playerInfos.comp.ca < 2) {
+        batShowedName = 'Cafards';
+    }
+    $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batShowedName+'</h3></span>');
     // SQUADS
     $('#unitInfos').append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.squadsLeft+'/'+batType.squads+'</span><br>');
     let squadHP = batType.squadSize*batType.hp;

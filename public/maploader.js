@@ -162,6 +162,13 @@ function showRes(tileId) {
 
 function showAlien(bat) {
     let batType = getBatType(bat);
+    let batShowedName = batType.name;
+    if (batShowedName === 'Vers' && playerInfos.comp.ca < 2) {
+        batShowedName = 'Asticots';
+    }
+    if (batShowedName === 'Blattes' && playerInfos.comp.ca < 2) {
+        batShowedName = 'Cafards';
+    }
     let batPic = batType.pic;
     let batCat = batType.cat;
     let unitsLeft = bat.squadsLeft*batType.squadSize;
@@ -216,7 +223,7 @@ function showAlien(bat) {
             $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
         }
     } else {
-        $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+tagz+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
+        $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
     }
 };
 

@@ -960,7 +960,7 @@
             "armors":1,
             "aoe":"brochette",
             "sound":"bite",
-            "ammo":["lame-scrap"]
+            "ammo":["barb-scrap"]
         },
         "weapon2":{},
         "protection":["aucun"],
@@ -1001,7 +1001,7 @@
             "armors":1,
             "aoe":"brochette",
             "sound":"bite",
-            "ammo":["lame"]
+            "ammo":["barb"]
         },
         "weapon2":{},
         "protection":["aucun"],
@@ -1042,7 +1042,7 @@
             "armors":1,
             "aoe":"brochette",
             "sound":"electricity",
-            "ammo":["lame-taser"]
+            "ammo":["barb-taser"]
         },
         "weapon2":{},
         "protection":["aucun"],

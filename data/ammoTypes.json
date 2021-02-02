@@ -1001,6 +1001,45 @@
         "batch":100
     },
     {
+        "name": "barb",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "deploy":{},
+        "batch":12
+    },
+    {
+        "name": "barb-scrap",
+        "range": 1,
+        "rof": 1,
+        "power": -2,
+        "powermult": 1,
+        "armors": 1.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "deploy":{},
+        "batch":12
+    },
+    {
+        "name": "barb-taser",
+        "range": 1,
+        "rof": 1,
+        "power": 2,
+        "powermult": 1,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0.03,
+        "aoe": "",
+        "deploy":{},
+        "batch":12
+    },
+    {
         "name": "lame",
         "range": 1,
         "rof": 1,
