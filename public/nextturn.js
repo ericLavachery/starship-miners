@@ -352,6 +352,7 @@ function nextTurnEnd() {
     if (playerInfos.mapTurn % 50 === 0 && playerInfos.mapTurn >= 1) {
         playerInfos.mapDiff++;
     }
+    playerBldUTChanges();
     turnInfo();
     savePlayerInfos();
     saveBataillons();

@@ -282,7 +282,25 @@ function playerSkillsUTChanges() {
             }
         }
         if (playerInfos.comp.trans >= 1 && unit.cat === 'vehicles' && unit.transRes >= 50) {
-            unit.transRes = Math.round(unit.transRes*(playerInfos.comp.trans+9)/9);
+            unit.transRes = Math.round(unit.transRes*(playerInfos.comp.trans+12)/12);
+        }
+        if (playerInfos.comp.trans >= 1 && unit.cat === 'vehicles' && unit.transUnits >= 50) {
+            let transComp = playerInfos.comp.trans;
+            if (playerInfos.comp.trans === 3) {
+                transComp = transComp+1;
+            }
+            unit.transUnits = Math.round(unit.transUnits*(transComp+35)/35);
+        }
+        // LOGISTIQUE
+        if (playerInfos.comp.log >= 3 && unit.transUnits >= 50) {
+            unit.transUnits = Math.round(unit.transUnits*1.16);
+        }
+        if (playerInfos.comp.log >= 3 && unit.transRes >= 50) {
+            if (unit.cat === 'vehicles') {
+                unit.transRes = Math.round(unit.transRes*1.06);
+            } else {
+                unit.transRes = Math.round(unit.transRes*1.32);
+            }
         }
         // VOLS SPACIAUX
         if (playerInfos.comp.vsp >= 2 && unit.kind === 'zero-vaisseaux' && unit.name != 'Liberator' && unit.name != 'Crusader') {

@@ -911,7 +911,11 @@ function recupRes(bat,batType) {
     let coffre = getBatByTileId(coffreTileId);
     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
         let recupFactor = 35;
-        recupFactor = Math.round(recupFactor*(playerInfos.comp.tri+4)/4);
+        let bldFactor = 0;
+        if (playerInfos.bldList.includes('Décharge')) {
+            bldFactor = 2;
+        }
+        recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+4)/5);
         if (hasScraptruck) {
             recupFactor = Math.ceil(recupFactor*1.15);
         }
@@ -1088,5 +1092,108 @@ function updateBldList() {
                 }
             }
         }
+    });
+};
+
+function playerBldUTChanges() {
+    let hpBonus = 0;
+    let ammoBonus = 1;
+    if (playerInfos.bldList.includes('Usine d\'armement')) {
+        ammoBonus = 1.5;
+    } else if (playerInfos.bldList.includes('Arsenal')) {
+        ammoBonus = 1.25;
+    }
+    unitTypes.forEach(function(unit) {
+        hpBonus = 0;
+        // COMS
+        if (playerInfos.bldList.includes('QG')) {
+            unit.stealth = unit.stealth+4;
+            unit.ap = Math.floor(unit.ap*1.1);
+        } else if (playerInfos.bldList.includes('Centre de com')) {
+            unit.stealth = unit.stealth+4;
+        } else if (playerInfos.bldList.includes('Poste radio')) {
+            unit.stealth = unit.stealth+2;
+        }
+        // ARMURERIES
+        if (playerInfos.bldList.includes('Aérodocks')) {
+            if (unit.cat === 'vehicles' && !unit.skills.includes('robot') && !unit.skills.includes('cyber') && unit.skills.includes('fly')) {
+                unit.ap = Math.round(unit.ap*1.15);
+            }
+        }
+        if (unit.weapon.maxAmmo < 99) {
+            unit.weapon.maxAmmo = Math.round(unit.weapon.maxAmmo*ammoBonus);
+        }
+        if (unit.weapon2.maxAmmo < 99) {
+            unit.weapon2.maxAmmo = Math.round(unit.weapon2.maxAmmo*ammoBonus);
+        }
+        // INFIRMERIES
+        if (unit.mediCost < 90) {
+            if (playerInfos.bldList.includes('Hôpital') && unit.cat != 'buildings') {
+                if (unit.mediCost >= 5) {
+                    unit.mediCost = Math.ceil(unit.mediCost/2);
+                } else {
+                    unit.mediCost = unit.mediCost-1;
+                }
+            } else if (playerInfos.bldList.includes('Infirmerie') && unit.cat != 'buildings') {
+                unit.mediCost = Math.round(unit.mediCost*3/4);
+            }
+            if (unit.mediCost < 2) {
+                unit.mediCost = 2;
+                unit.ap = unit.ap+1;
+            }
+        }
+        // ATELIERS
+        if (unit.mecanoCost < 90) {
+            if (playerInfos.bldList.includes('Usine') && unit.cat != 'buildings') {
+                if (unit.mecanoCost >= 5) {
+                    unit.mecanoCost = Math.ceil(unit.mecanoCost/2);
+                } else {
+                    unit.mecanoCost = unit.mecanoCost-1;
+                }
+            } else if (playerInfos.bldList.includes('Chaîne de montage') && unit.cat != 'buildings') {
+                unit.mecanoCost = Math.round(unit.mecanoCost*3/4);
+            }
+            if (unit.mecanoCost < 2) {
+                unit.mecanoCost = 2;
+                unit.ap = unit.ap+1;
+            }
+        }
+        if (playerInfos.bldList.includes('Garage')) {
+            if (unit.cat === 'vehicles' && !unit.skills.includes('robot') && !unit.skills.includes('cyber') && !unit.skills.includes('fly') && unit.moveCost < 90) {
+                unit.ap = unit.ap+1;
+            }
+        }
+        // LABOS
+        if (unit.cat === 'infantry') {
+            if (playerInfos.bldList.includes('Centre de recherches')) {
+                hpBonus = hpBonus+1;
+            } else if (playerInfos.bldList.includes('Laboratoire')) {
+                hpBonus = hpBonus+0.3;
+            }
+        }
+        if (unit.maxDrug < 900) {
+            if (playerInfos.bldList.includes('Centre de recherches')) {
+                unit.maxDrug = Math.round(unit.maxDrug*2);
+            } else if (playerInfos.bldList.includes('Laboratoire')) {
+                unit.maxDrug = Math.round(unit.maxDrug*1.5);
+            }
+        }
+        // ENTRAINEMENT
+        if (unit.cat === 'infantry') {
+            if (playerInfos.bldList.includes('Salle de sport')) {
+                hpBonus = hpBonus+0.3;
+            }
+            if (playerInfos.bldList.includes('Camp d\'entraînement')) {
+                hpBonus = hpBonus+1;
+            }
+        }
+        // CANTINES
+        if (unit.cat === 'infantry') {
+            if (playerInfos.bldList.includes('Cantine')) {
+                hpBonus = hpBonus+0.3;
+            }
+        }
+        // HP
+        unit.hp = unit.hp+Math.ceil(hpBonus);
     });
 };
