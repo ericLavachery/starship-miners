@@ -1072,3 +1072,38 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
     }
     return brideDef;
 }
+
+function mirDestruction(weap,bat,batType,tile) {
+    let power = weap.power-5;
+    if (power < -1) {
+        power = 1;
+    } else if (power < 2) {
+        power = 1.5;
+    }
+    let damage = Math.round(weap.rof*power*bat.squadsLeft);
+    if (weap.ammo.includes('feu') || weap.ammo.includes('napalm') || weap.ammo.includes('fire') || weap.ammo.includes('pyratol') || weap.ammo.includes('lf-') || weap.ammo.includes('molotov') || weap.ammo.includes('nanite') || weap.ammo.includes('suicide') || weap.ammo.includes('mine') || weap.ammo.includes('autodestruction') || weap.ammo.includes('dynamite') || weap.ammo.includes('bombe') || weap.ammo.includes('explosif') || weap.ammo.includes('obus') || weap.ammo.includes('missile') || weap.ammo.includes('glair') || weap.ammo.includes('ruche') || weap.ammo.includes('bfg')) {
+        if (batType.cat === 'aliens') {
+            damage = damage*3;
+        } else {
+            damage = Math.round(damage/2);
+        }
+    } else if (weap.ammo.includes('troueur') || weap.ammo.includes('acide') || weap.ammo.includes('spit') || weap.ammo.includes('grenade') || weap.ammo.includes('lt-') || weap.ammo.includes('incendiaire')) {
+        if (batType.cat === 'aliens') {
+            damage = Math.round(damage*1.5);
+        } else {
+            damage = Math.round(damage/10);
+        }
+    } else if (batType.cat != 'aliens') {
+        damage = 0;
+    }
+    if (batType.size >= 25) {
+        damage = Math.round(damage*Math.sqrt(batType.size)/5);
+    }
+    console.log('MirDamage='+damage);
+    let breakChance = Math.floor(damage/20);
+    console.log('breakChance='+breakChance);
+    if (rand.rand(1,100) <= breakChance) {
+        warning('Destruction',bat.type+' a détruit les Miradors');
+        tile.infra = 'Débris';
+    }
+};

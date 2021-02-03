@@ -539,7 +539,7 @@ function attack(melee) {
     }
     // résistance blast
     if (targetBatType.skills.includes('resistblast') || targetBat.tags.includes('resistblast')) {
-        if (selectedWeap.ammo.includes('nanite') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('dynamite') || selectedWeap.ammo.includes('bombe') || selectedWeap.ammo.includes('explosif') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('grenade') || selectedWeap.ammo.includes('disco')) {
+        if (selectedWeap.ammo.includes('nanite') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('dynamite') || selectedWeap.ammo.includes('bombe') || selectedWeap.ammo.includes('explosif') || selectedWeap.ammo.includes('explosive') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('grenade') || selectedWeap.ammo.includes('disco')) {
             if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm')) {
                 totalDamage = Math.round(totalDamage/1.5);
                 apDamage = Math.round(apDamage/1.5);
@@ -623,6 +623,11 @@ function attack(melee) {
     console.log('Damage : '+totalDamage);
     $('#report').append('<span class="report vert bd">Dégâts: '+totalDamage+'<br></span>');
     // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
+    if (tile.infra != undefined) {
+        if (tile.infra === 'Miradors') {
+            mirDestruction(selectedWeap,selectedBat,selectedBatType,tile);
+        }
+    }
     // agrippeur
     if (selectedBatType.skills.includes('grip') && !targetBatType.skills.includes('zerogrip') && totalDamage >= 1 && (selectedBatType.size+3 >= targetBatType.size || selectedBatType.name == 'Androks')) {
         let gripbonus = 0;
@@ -1208,7 +1213,7 @@ function defense(melee) {
     }
     // résistance blast
     if (selectedBatType.skills.includes('resistblast') || selectedBat.tags.includes('resistblast')) {
-        if (targetWeap.ammo.includes('nanite') || targetWeap.ammo.includes('suicide') || targetWeap.ammo.includes('mine') || targetWeap.ammo.includes('autodestruction') || targetWeap.ammo.includes('dynamite') || targetWeap.ammo.includes('bombe') || targetWeap.ammo.includes('explosif') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('grenade') || targetWeap.ammo.includes('disco')) {
+        if (targetWeap.ammo.includes('nanite') || targetWeap.ammo.includes('suicide') || targetWeap.ammo.includes('mine') || targetWeap.ammo.includes('autodestruction') || targetWeap.ammo.includes('dynamite') || targetWeap.ammo.includes('bombe') || targetWeap.ammo.includes('explosif') || targetWeap.ammo.includes('explosive') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('grenade') || targetWeap.ammo.includes('disco')) {
             if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm')) {
                 totalDamage = Math.round(totalDamage/1.5);
                 apDamage = Math.round(apDamage/1.5);
@@ -1288,6 +1293,11 @@ function defense(melee) {
     console.log('Damage : '+totalDamage);
     $('#report').append('<span class="report vert bd">Dégâts: '+totalDamage+'<br></span>');
     // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
+    if (tile.infra != undefined) {
+        if (tile.infra === 'Miradors') {
+            mirDestruction(targetWeap,targetBat,targetBatType,tile);
+        }
+    }
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium') || targetWeap.ammo.includes('trap')) {
