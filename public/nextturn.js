@@ -188,7 +188,7 @@ function nextTurnEnd() {
                 bat.tags.push('drunk');
             }
             // CAMP ENTRAINEMENT
-            if (bldList.includes('Camp d\'entraînement')) {
+            if (playerInfos.bldList.includes('Camp d\'entraînement')) {
                 if (bat.loc === "trans" && campIds.includes(bat.locId)) {
                     bat.xp = bat.xp+1;
                 } else {
@@ -227,9 +227,6 @@ function nextTurnEnd() {
             if (batType.skills.includes('unload')) {
                 autoUnload(bat);
             }
-            // if (bat.tags.includes('prodres')) {
-            //     upkeepAndProd(bat,batType);
-            // }
             levelUp(bat);
             // Motorised noStuck
             noStuck = false;
