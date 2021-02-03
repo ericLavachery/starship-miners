@@ -56,7 +56,7 @@ function batInfos(bat,pop) {
     }
     let allTags = _.countBy(bat.tags);
     // AP
-    let ap = getAP(bat);
+    let ap = getAP(bat,batType);
     let hourglass = 'start';
     if (bat.apLeft <= 0) {
         hourglass = 'end';
@@ -169,9 +169,12 @@ function batInfos(bat,pop) {
     if (bat.tags.includes('resistacide') || batType.skills.includes('resistacide')) {
         $('#'+bodyPlace).append('<span class="paramName cy">Résistance acide</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
+    if (bat.tags.includes('drunk')) {
+        $('#'+bodyPlace).append('<span class="paramName jaune">Saoul</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+    }
     // BAD TAGS
     if (bat.tags.includes('inflammable') || bat.eq === 'jetpack' || batType.skills.includes('inflammable')) {
-        $('#'+bodyPlace).append('<span class="paramName or">Inflammable</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName jaune">Inflammable</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
     }
     let hurt = isHurt(bat);
     if (hurt) {
@@ -465,19 +468,24 @@ function batFullInfos(bat) {
     $('#popbody').append('<div class="shSpace"></div>');
 };
 
+function nomVisible(name) {
+    let nv = name;
+    if (nv === 'Vers' && playerInfos.comp.ca < 2) {
+        nv = 'Asticots';
+    }
+    if (nv === 'Blattes' && playerInfos.comp.ca < 2) {
+        nv = 'Cafards';
+    }
+    return nv
+};
+
 function showEnemyBatInfos(bat) {
     $("#unitInfos").css("display","block");
     $('#unitInfos').empty();
     let alienUnitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
     let batType = alienUnits[alienUnitIndex];
     let unitsLeft = bat.squadsLeft*batType.squadSize;
-    let batShowedName = batType.name;
-    if (batShowedName === 'Vers' && playerInfos.comp.ca < 2) {
-        batShowedName = 'Asticots';
-    }
-    if (batShowedName === 'Blattes' && playerInfos.comp.ca < 2) {
-        batShowedName = 'Cafards';
-    }
+    let batShowedName = nomVisible(batType.name);
     $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batShowedName+'</h3></span>');
     // SQUADS
     $('#unitInfos').append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.squadsLeft+'/'+batType.squads+'</span><br>');

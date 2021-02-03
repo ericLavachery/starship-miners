@@ -177,6 +177,9 @@ function getStealth(bat) {
     let cover = getCover(bat,false,false);
     let batType = getBatType(bat);
     let batStealth = batType.stealth;
+    if (bat.tags.includes('drunk')) {
+        batStealth = batStealth-4;
+    }
     if (bat.eq === 'camo' || bat.eq === 'kit-sentinelle') {
         if (batType.skills.includes('camo')) {
             batStealth = batStealth+4;
@@ -210,11 +213,23 @@ function getStealth(bat) {
     return maxStealth+stealthBonus+vetStealth;
 };
 
-function getAP(bat) {
-    let batType = getBatType(bat);
+function getAP(bat,batType) {
     let newAP = bat.ap;
     if (bat.eq === 'belier' || bat.eq === 'snorkel' || (bat.eq === 'chenilles' && batType.maxFlood >= 1 && batType.maxScarp >= 2)) {
         newAP = Math.round(newAP*0.9);
+    }
+    if (playerInfos.bldList.includes('QG')) {
+        newAP = Math.floor(newAP*1.1);
+    }
+    if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.skills.includes('fly')) {
+        if (playerInfos.bldList.includes('Aérodocks')) {
+            newAP = Math.round(newAP*1.15);
+        }
+    }
+    if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && !batType.skills.includes('fly') && batType.moveCost < 90) {
+        if (playerInfos.bldList.includes('Garage')) {
+            newAP = newAP+1;
+        }
     }
     if (bat.eq === 'g2motor') {
         newAP = newAP+2;
@@ -227,6 +242,9 @@ function getAP(bat) {
     }
     if (bat.eq === 'kit-pompiste') {
         newAP = newAP-2;
+    }
+    if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.moveCost < 90) {
+        newAP = newAP+playerInfos.comp.trans-1;
     }
     newAP = newAP+Math.round(bat.vet*vetBonus.ap);
     return newAP;

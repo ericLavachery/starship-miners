@@ -111,7 +111,6 @@ function nextTurnEnd() {
     playerInfos.bldList = [];
     landers = [];
     minedThisTurn = {};
-    let thisAPBonus;
     let ravitNum;
     let emptyBonus;
     let minAP;
@@ -121,6 +120,8 @@ function nextTurnEnd() {
     let alienType;
     let noStuck = false;
     hasScraptruck = false;
+    let barIds = [];
+    let campIds = [];
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
@@ -129,6 +130,12 @@ function nextTurnEnd() {
             }
             if (batType.skills.includes('transorbital') || batType.skills.includes('reserve')) {
                 landers.push(bat);
+            }
+            if (batType.name === 'Bar') {
+                barIds.push(bat.id);
+            }
+            if (batType.name === "Camp d'entraînement") {
+                campIds.push(bat.id);
             }
             if (batType.cat === 'buildings' && !batType.skills.includes('nolist') && !bat.tags.includes('construction')) {
                 if (!playerInfos.bldList.includes(batType.name)) {
@@ -174,6 +181,21 @@ function nextTurnEnd() {
             }
             if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
                 solarProd(bat,batType);
+            }
+            // BAR
+            if (batType.cat === 'infantry' && bat.loc === "trans" && barIds.includes(bat.locId) && !bat.tags.includes('drunk')) {
+                bat.tags.push('drunk');
+                bat.tags.push('drunk');
+            }
+            // CAMP ENTRAINEMENT
+            if (bldList.includes('Camp d\'entraînement')) {
+                if (bat.loc === "trans" && campIds.includes(bat.locId)) {
+                    bat.xp = bat.xp+1;
+                } else {
+                    if (rand.rand(1,100) <= 33) {
+                        bat.xp = bat.xp+1;
+                    }
+                }
             }
             deFog(bat,batType);
             bat.apLeft = Math.ceil(bat.apLeft);
@@ -229,20 +251,14 @@ function nextTurnEnd() {
                     bat.apLeft = 0-Math.round(bat.ap-4);
                 }
             }
-            ap = getAP(bat);
-            thisAPBonus = 0;
+            // AP
+            ap = getAP(bat,batType);
             if (boostedTeams.includes(batType.kind)) {
                 ap = ap+1;
-                thisAPBonus = 1;
             }
             if (prayedTeams.includes(batType.kind)) {
                 ap = ap+1;
-                thisAPBonus = 1;
             }
-            if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && thisAPBonus <= 1) {
-                ap = ap+playerInfos.comp.trans-1;
-            }
-            // fastempty
             if (batType.skills.includes('fastempty')) {
                 ravitNum = calcRavit(bat);
                 if (ravitNum < batType.maxSkill) {
@@ -250,12 +266,12 @@ function nextTurnEnd() {
                     ap = ap+emptyBonus;
                 }
             }
+            oldAP = ap;
             // camoAP
             camoEnCours = false;
             if (bat.camoAP >= 1) {
                 camoEnCours = true;
             }
-            oldAP = ap;
             if (camoEnCours) {
                 console.log('Camouflage en cours');
                 minAP = Math.ceil(bat.ap/2);
@@ -483,6 +499,9 @@ function tagsUpdate(bat) {
     }
     if (rand.rand(1,3) <= 2) {
         tagDelete(bat,'stun');
+    }
+    if (rand.rand(1,5) === 1) {
+        tagDelete(bat,'drunk');
     }
     if (rand.rand(1,5) === 1) {
         if (bat.tags.includes('octiron')) {

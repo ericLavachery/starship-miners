@@ -69,6 +69,8 @@ function clickFire(tileId) {
 
 function combat(melee) {
     console.log('START COMBAT');
+    let selectedBatName = nomVisible(selectedBat.type);
+    let targetBatName = nomVisible(targetBat.type);
     tagDelete(selectedBat,'mining');
     tagDelete(targetBat,'mining');
     escaped = false;
@@ -91,7 +93,7 @@ function combat(melee) {
     let selectedBatUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
     let targetBatUnits = targetBat.squadsLeft*targetBatType.squadSize;
     $('#report').empty('');
-    $('#report').append('<span class="report or">'+selectedBatUnits+' '+selectedBat.type+'</span> <span class="report">vs</span> <span class="report or">'+targetBatUnits+' '+targetBat.type+'</span><br>');
+    $('#report').append('<span class="report or">'+selectedBatUnits+' '+selectedBatName+'</span> <span class="report">vs</span> <span class="report or">'+targetBatUnits+' '+targetBatName+'</span><br>');
     let distance = calcDistance(selectedBat.tileId,targetBat.tileId);
     // console.log('distance '+distance);
     weaponSelectRiposte(distance);
@@ -234,13 +236,15 @@ function combat(melee) {
 function attack(melee) {
     console.log('Attaque ->');
     console.log(selectedWeap);
+    let selectedBatName = nomVisible(selectedBat.type);
+    let targetBatName = nomVisible(targetBat.type);
     minesExploded = 0;
     let xpFactor = Math.round(12/selectedBatType.maxSalvo/10);
     xpFactor = xpFactor.toFixedNumber(2);
     if (selectedBatType.maxSalvo >= 5) {
         xpFactor = 0.2;
     }
-    $('#report').append('<span class="report or">'+selectedBat.type+' ('+selectedWeap.name+')</span><br>');
+    $('#report').append('<span class="report or">'+selectedBatName+' ('+selectedWeap.name+')</span><br>');
     // Dans l'eau
     let terrain = getTerrain(targetBat);
     let tile = getTile(targetBat);
@@ -889,7 +893,7 @@ function attack(melee) {
         let unitsLeft = targetBatType.squadSize*targetBat.squadsLeft;
         $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span>');
         if (targetBat.squadsLeft >= 1) {
-            $('#report').append('<span class="report"> (reste '+unitsLeft+' '+targetBat.type+')<br></span>');
+            $('#report').append('<span class="report"> (reste '+unitsLeft+' '+targetBatName+')<br></span>');
         }
     }
     targetBat.damage = totalDamage-(squadsOut*squadHP);
@@ -901,7 +905,7 @@ function attack(melee) {
     if (targetBat.squadsLeft <= 0) {
         defAlive = false;
         batDeath(targetBat,true);
-        $('#report').append('<br><span class="report cy">Bataillon ('+targetBat.type+') détruit<br></span>');
+        $('#report').append('<br><span class="report cy">Bataillon ('+targetBatName+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
                 setTimeout(function (){
@@ -923,7 +927,7 @@ function attack(melee) {
     if (selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('autodestruction')) {
         attAlive = false;
         batDeath(selectedBat,true);
-        $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
+        $('#report').append('<br><span class="report cy">Bataillon ('+selectedBatName+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
                 setTimeout(function (){
@@ -949,12 +953,14 @@ function attack(melee) {
 function defense(melee) {
     console.log('Défense ->');
     console.log(targetWeap);
+    let selectedBatName = nomVisible(selectedBat.type);
+    let targetBatName = nomVisible(targetBat.type);
     let xpFactor = Math.round(12/selectedBatType.maxSalvo/10);
     xpFactor = xpFactor.toFixedNumber(2);
     if (selectedBatType.maxSalvo >= 5) {
         xpFactor = 0.2;
     }
-    $('#report').append('<span class="report or">'+targetBat.type+' ('+targetWeap.name+')</span><br>');
+    $('#report').append('<span class="report or">'+targetBatName+' ('+targetWeap.name+')</span><br>');
     // Dans l'eau
     let terrain = getTerrain(selectedBat);
     let tile = getTile(selectedBat);
@@ -1420,7 +1426,7 @@ function defense(melee) {
         let unitsLeft = selectedBatType.squadSize*selectedBat.squadsLeft;
         $('#report').append('<span class="report cy">Unités: -'+deadUnits+'</span>');
         if (selectedBat.squadsLeft >= 1) {
-            $('#report').append('<span class="report"> (reste '+unitsLeft+' '+selectedBat.type+')<br></span>');
+            $('#report').append('<span class="report"> (reste '+unitsLeft+' '+selectedBatName+')<br></span>');
         }
     }
     console.log('Damage Left : '+selectedBat.damage);
@@ -1428,7 +1434,7 @@ function defense(melee) {
     if (selectedBat.squadsLeft <= 0) {
         attAlive = false;
         batDeath(selectedBat,true);
-        $('#report').append('<br><span class="report cy">Bataillon ('+selectedBat.type+') détruit<br></span>');
+        $('#report').append('<br><span class="report cy">Bataillon ('+selectedBatName+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
                 setTimeout(function (){

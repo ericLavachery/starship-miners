@@ -162,13 +162,7 @@ function showRes(tileId) {
 
 function showAlien(bat) {
     let batType = getBatType(bat);
-    let batShowedName = batType.name;
-    if (batShowedName === 'Vers' && playerInfos.comp.ca < 2) {
-        batShowedName = 'Asticots';
-    }
-    if (batShowedName === 'Blattes' && playerInfos.comp.ca < 2) {
-        batShowedName = 'Cafards';
-    }
+    let batShowedName = nomVisible(batType.name);
     let batPic = batType.pic;
     let batCat = batType.cat;
     let unitsLeft = bat.squadsLeft*batType.squadSize;

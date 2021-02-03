@@ -1108,18 +1108,12 @@ function playerBldUTChanges() {
         // COMS
         if (playerInfos.bldList.includes('QG')) {
             unit.stealth = unit.stealth+4;
-            unit.ap = Math.floor(unit.ap*1.1);
         } else if (playerInfos.bldList.includes('Centre de com')) {
             unit.stealth = unit.stealth+4;
         } else if (playerInfos.bldList.includes('Poste radio')) {
             unit.stealth = unit.stealth+2;
         }
         // ARMURERIES
-        if (playerInfos.bldList.includes('Aérodocks')) {
-            if (unit.cat === 'vehicles' && !unit.skills.includes('robot') && !unit.skills.includes('cyber') && unit.skills.includes('fly')) {
-                unit.ap = Math.round(unit.ap*1.15);
-            }
-        }
         if (unit.weapon.maxAmmo < 99) {
             unit.weapon.maxAmmo = Math.round(unit.weapon.maxAmmo*ammoBonus);
         }
@@ -1155,11 +1149,6 @@ function playerBldUTChanges() {
             }
             if (unit.mecanoCost < 2) {
                 unit.mecanoCost = 2;
-                unit.ap = unit.ap+1;
-            }
-        }
-        if (playerInfos.bldList.includes('Garage')) {
-            if (unit.cat === 'vehicles' && !unit.skills.includes('robot') && !unit.skills.includes('cyber') && !unit.skills.includes('fly') && unit.moveCost < 90) {
                 unit.ap = unit.ap+1;
             }
         }
