@@ -225,6 +225,7 @@ function nextTurnEnd() {
                 mining(bat);
             }
             if (batType.skills.includes('unload')) {
+                console.log('AUTO-UNLOAD'+bat.type);
                 autoUnload(bat);
             }
             levelUp(bat);

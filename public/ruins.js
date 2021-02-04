@@ -88,26 +88,32 @@ function checkRuinsCit(tile) {
         console.log('numCit: '+numCit);
         let restCit = numCit;
         if (restCit <= 72) {
+            conselTriche = true;
             putBatAround(tile.id,false,citId,restCit);
             restCit = 0;
         } else {
+            conselTriche = true;
             putBatAround(tile.id,false,citId,72);
             restCit = restCit-72;
         }
         if (restCit >= 1) {
             if (restCit <= 72) {
+                conselTriche = true;
                 putBatAround(tile.id,false,citId,restCit);
                 restCit = 0;
             } else {
+                conselTriche = true;
                 putBatAround(tile.id,false,citId,72);
                 restCit = restCit-72;
             }
         }
         if (restCit >= 1) {
             if (restCit <= 72) {
+                conselTriche = true;
                 putBatAround(tile.id,false,citId,restCit);
                 restCit = 0;
             } else {
+                conselTriche = true;
                 putBatAround(tile.id,false,citId,72);
                 restCit = restCit-72;
             }

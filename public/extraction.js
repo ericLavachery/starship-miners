@@ -247,6 +247,8 @@ function resSelect(resId) {
 
 function autoUnload(bat) {
     let bestDumper = getBestDumper(bat);
+    console.log('best dumper');
+    console.log(bestDumper);
     if (bestDumper.id != bat.id) {
         let resSpace = checkResSpace(bestDumper);
         let resLoad = checkResLoad(bat);
@@ -352,7 +354,10 @@ function checkResSpace(bat) {
 };
 
 function checkResLoad(bat) {
+    console.log('THE-BAT');
+    console.log(bat);
     let batType = getBatType(bat);
+    console.log(batType);
     let resLoaded = 0;
     if (batType.transRes >= 1) {
         if (Object.keys(bat.transRes).length >= 1) {

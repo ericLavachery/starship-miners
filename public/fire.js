@@ -1686,13 +1686,16 @@ function saveCrew(deadBatType,deadId,tileId) {
     }
     if (salvableCits >= 1) {
         if (salvableCits > 72) {
+            conselTriche = true;
             putBatAround(tileId,false,citId,72);
             salvableCits = salvableCits-72;
         }
         if (salvableCits > 72) {
+            conselTriche = true;
             putBatAround(tileId,false,citId,72);
             salvableCits = salvableCits-72;
         }
+        conselTriche = true;
         putBatAround(tileId,false,citId,salvableCits);
         if (savedCits >= 1) {
             centerMapTo(tileId);
