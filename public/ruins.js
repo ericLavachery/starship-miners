@@ -231,7 +231,7 @@ function checkRuinsRes(tile) {
                 }
                 console.log(res.name+' '+thatResChance);
                 if (rand.rand(1,1000) <= thatResChance) {
-                    thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor*2.5*rand.rand(4,16))+rand.rand(0,9);
+                    thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor*1.5*rand.rand(4,16))+rand.rand(0,9);
                     console.log('!GET : '+res.name+' '+thatResNum);
                     if (coffre.transRes[res.name] === undefined) {
                         coffre.transRes[res.name] = thatResNum;

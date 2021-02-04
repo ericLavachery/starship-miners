@@ -926,7 +926,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fret","dumper","unload","nodeathcount","okdel","noblub","notarget","clicput"],
+        "skills":["fret","dumper","nodeathcount","okdel","noblub","notarget","clicput"],
         "transRes":500,
         "fuzz":-2,
         "deathFx":"S_Explosion02"
