@@ -45,6 +45,7 @@ function mapReset() {
     playerInfos.bldList = [];
     playerInfos.drugs = ["Starka","Kirin","Sila","Skupiac","Bliss","Nitro"];
     playerInfos.comp = resetComp();
+    resetReserve();
     savePlayerInfos();
     commandes();
     $("#reset2").css("display","none");

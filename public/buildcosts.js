@@ -30,7 +30,29 @@ function voirReserve() {
             } else {
                 $('#conUnitList').append('<span class="paramName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span><br>');
             }
+            playerInfos.reserve[res.name] = dispoRes;
+        } else {
+            playerInfos.reserve[res.name] = 0;
         }
+    });
+};
+
+function checkReserve() {
+    findLanders();
+    let dispoRes;
+    resTypes.forEach(function(res) {
+        dispoRes = getDispoRes(res.name);
+        if (dispoRes >= 1) {
+            playerInfos.reserve[res.name] = dispoRes;
+        } else {
+            playerInfos.reserve[res.name] = 0;
+        }
+    });
+};
+
+function resetReserve() {
+    resTypes.forEach(function(res) {
+        playerInfos.reserve[res.name] = 0;
     });
 };
 

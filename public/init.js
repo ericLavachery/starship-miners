@@ -12,6 +12,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.comp === undefined) {
         playerInfos.comp = resetComp();
     }
+    if (playerInfos.reserve === undefined) {
+        playerInfos.reserve = {};
+    }
     if (playerInfos.cocons === undefined) {
         playerInfos.cocons = 0;
     }
@@ -95,6 +98,7 @@ socket.on('savedMap-Load', function(sm) {
     checkVisibleAliens();
     alienBonus();
     minimap();
+    checkReserve();
     if (playerInfos.pseudo != 'Test') {
         playMusic('start',true);
     }

@@ -733,12 +733,12 @@ function skillsInfos(bat,batType) {
             trapCostOK = checkCost(trapType.costs);
             apCost = Math.round(bat.ap*1.5);
             if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee && trapCostOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+toCoolString(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-fosse`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fosses</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-fosse`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fosses</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {
                     skillMessage = "Plus de pièges";
                 } else if (!trapCostOK) {
-                    skillMessage = 'Vous n\'avez pas les ressources '+toCoolString(trapType.costs);
+                    skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
                 } else if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else {
@@ -760,12 +760,12 @@ function skillsInfos(bat,batType) {
             trapCostOK = checkCost(trapType.costs);
             apCost = Math.round(bat.ap*1.25);
             if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee && trapCostOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+toCoolString(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-ap`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Pièges</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-ap`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Pièges</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {
                     skillMessage = "Plus de pièges";
                 } else if (!trapCostOK) {
-                    skillMessage = 'Vous n\'avez pas les ressources '+toCoolString(trapType.costs);
+                    skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
                 } else if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else {
@@ -787,12 +787,12 @@ function skillsInfos(bat,batType) {
             trapCostOK = checkCost(trapType.costs);
             apCost = Math.round(bat.ap*1.25);
             if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee && trapCostOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+toCoolString(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-dard`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dardières</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-dard`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dardières</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {
                     skillMessage = "Plus de pièges";
                 } else if (!trapCostOK) {
-                    skillMessage = 'Vous n\'avez pas les ressources '+toCoolString(trapType.costs);
+                    skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
                 } else if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else {
@@ -815,12 +815,12 @@ function skillsInfos(bat,batType) {
             trapCostOK = checkCost(trapType.costs);
             apCost = Math.round(bat.ap*1.5);
             if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee && trapCostOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines '+toCoolString(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {
                     skillMessage = "Plus de mines";
                 } else if (!trapCostOK) {
-                    skillMessage = 'Vous n\'avez pas les ressources '+toCoolString(trapType.costs);
+                    skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
                 } else if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else {
@@ -843,12 +843,12 @@ function skillsInfos(bat,batType) {
             trapCostOK = checkCost(trapType.costs);
             apCost = Math.round(bat.ap);
             if (minesLeft >= 1 && bat.apLeft >= bat.ap-2 && !inMelee && trapCostOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des explosifs '+toCoolString(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`dynamite`)"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des explosifs '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`dynamite`)"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</'+balise+'></span>');
             } else {
                 if (minesLeft <= 0) {
                     skillMessage = "Plus de mines";
                 } else if (!trapCostOK) {
-                    skillMessage = 'Vous n\'avez pas les ressources '+toCoolString(trapType.costs);
+                    skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
                 } else if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else {
@@ -876,28 +876,28 @@ function skillsInfos(bat,batType) {
                 let barbType = getBatTypeByName('Barbelés (scrap)');
                 let barbCostOK = checkCost(barbType.costs);
                 if (barbCostOK) {
-                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (scrap) '+toCoolString(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-scrap`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (scrap) '+displayCosts(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-scrap`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                 } else {
-                    skillMessage = "Pas assez de ressources "+toCoolString(barbType.costs);
+                    skillMessage = "Pas assez de ressources "+displayCosts(barbType.costs);
                     $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                 }
                 barbType = getBatTypeByName('Barbelés');
                 barbCostOK = checkCost(barbType.costs);
                 if (barbCostOK) {
-                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (acier) '+toCoolString(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-fer`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (acier) '+displayCosts(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-fer`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                 } else {
-                    skillMessage = "Pas assez de ressources "+toCoolString(barbType.costs);
+                    skillMessage = "Pas assez de ressources "+displayCosts(barbType.costs);
                     $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                 }
                 barbType = getBatTypeByName('Barbelés (taser)');
                 barbCostOK = checkCost(barbType.costs);
                 if (barbCostOK && playerInfos.bldList.includes('Générateur')) {
-                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (taser) '+toCoolString(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost2+',`barb-taser`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (taser) '+displayCosts(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost2+',`barb-taser`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                 } else {
                     if (!playerInfos.bldList.includes('Générateur')) {
                         skillMessage = "Vous avez besoin de Générateurs";
                     } else {
-                        skillMessage = "Pas assez de ressources "+toCoolString(barbType.costs);
+                        skillMessage = "Pas assez de ressources "+displayCosts(barbType.costs);
                     }
                     $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                 }
@@ -925,18 +925,18 @@ function skillsInfos(bat,batType) {
                 if (tile.infra != 'Miradors') {
                     infra = getInfraByName('Miradors');
                     infraCostOK = checkCost(infra.costs);
-                    if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
+                    if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def) {
                         prodOK = false;
                     } else {
                         prodOK = true;
                     }
                     if (infraCostOK && prodOK) {
-                        $('#infraButtons').append('<button type="button" title="Construction (Miradors) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button>');
+                        $('#infraButtons').append('<button type="button" title="Construction (Miradors) '+displayCosts(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button>');
                     } else {
                         if (!prodOK) {
                             skillMessage = "Niveau insuffisant";
                         } else {
-                            skillMessage = "Pas assez de ressources "+toCoolString(infra.costs);
+                            skillMessage = "Pas assez de ressources "+displayCosts(infra.costs);
                         }
                         $('#infraButtons').append('<button type="button" title="Miradors: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Mi</span></button>');
                     }
@@ -944,18 +944,18 @@ function skillsInfos(bat,batType) {
                 if (tile.infra != 'Palissades') {
                     infra = getInfraByName('Palissades');
                     infraCostOK = checkCost(infra.costs);
-                    if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
+                    if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def) {
                         prodOK = false;
                     } else {
                         prodOK = true;
                     }
                     if (infraCostOK && prodOK) {
-                        $('#infraButtons').append('<button type="button" title="Construction (Palissades) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button>');
+                        $('#infraButtons').append('<button type="button" title="Construction (Palissades) '+displayCosts(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button>');
                     } else {
                         if (!prodOK) {
                             skillMessage = "Niveau insuffisant";
                         } else {
-                            skillMessage = "Pas assez de ressources "+toCoolString(infra.costs);
+                            skillMessage = "Pas assez de ressources "+displayCosts(infra.costs);
                         }
                         $('#infraButtons').append('<button type="button" title="Palissades: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Pa</span></button>');
                     }
@@ -963,18 +963,18 @@ function skillsInfos(bat,batType) {
                 if (tile.infra != 'Remparts') {
                     infra = getInfraByName('Remparts');
                     infraCostOK = checkCost(infra.costs);
-                    if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
+                    if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def) {
                         prodOK = false;
                     } else {
                         prodOK = true;
                     }
                     if (infraCostOK && prodOK) {
-                        $('#infraButtons').append('<button type="button" title="Construction (Remparts) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button>');
+                        $('#infraButtons').append('<button type="button" title="Construction (Remparts) '+displayCosts(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button>');
                     } else {
                         if (!prodOK) {
                             skillMessage = "Niveau insuffisant";
                         } else {
-                            skillMessage = "Pas assez de ressources "+toCoolString(infra.costs);
+                            skillMessage = "Pas assez de ressources "+displayCosts(infra.costs);
                         }
                         $('#infraButtons').append('<button type="button" title="Remparts: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Re</span></button>');
                     }
@@ -982,18 +982,18 @@ function skillsInfos(bat,batType) {
                 if (tile.infra != 'Murailles') {
                     infra = getInfraByName('Murailles');
                     infraCostOK = checkCost(infra.costs);
-                    if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
+                    if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.def) {
                         prodOK = false;
                     } else {
                         prodOK = true;
                     }
                     if (infraCostOK && prodOK) {
-                        $('#infraButtons').append('<button type="button" title="Construction (Murailles) '+toCoolString(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>');
+                        $('#infraButtons').append('<button type="button" title="Construction (Murailles) '+displayCosts(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>');
                     } else {
                         if (!prodOK) {
                             skillMessage = "Niveau insuffisant";
                         } else {
-                            skillMessage = "Pas assez de ressources "+toCoolString(infra.costs);
+                            skillMessage = "Pas assez de ressources "+displayCosts(infra.costs);
                         }
                         $('#infraButtons').append('<button type="button" title="Murailles: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Mu</span></button>');
                     }
@@ -1013,12 +1013,12 @@ function skillsInfos(bat,batType) {
                 roadName = 'Pont';
             }
             if (bat.apLeft >= apReq && !inMelee && roadCostsOK) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction ('+roadName+') '+toCoolString(roadCosts)+'" class="boutonGris skillButtons" onclick="putRoad()"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+roadName+'</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction ('+roadName+') '+displayCosts(roadCosts)+'" class="boutonGris skillButtons" onclick="putRoad()"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+roadName+'</h4></span>');
             } else {
                 if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else if (!roadCostsOK) {
-                    skillMessage = "Pas assez de ressources "+toCoolString(roadCosts);
+                    skillMessage = "Pas assez de ressources "+displayCosts(roadCosts);
                 } else {
                     skillMessage = "Pas assez de PA";
                 }
@@ -1038,10 +1038,10 @@ function skillsInfos(bat,batType) {
             trapCostOK = checkCost(trapType.costs);
             apCost = 8;
             if (bat.apLeft >= bat.ap-2 && !inMelee && trapCostOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Construire des coffres '+toCoolString(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`coffre`)"><i class="fas fa-box-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Coffres</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Construire des coffres '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`coffre`)"><i class="fas fa-box-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Coffres</'+balise+'></span>');
             } else {
                 if (!trapCostOK) {
-                    skillMessage = 'Vous n\'avez pas les ressources '+toCoolString(trapType.costs);
+                    skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
                 } else if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else {

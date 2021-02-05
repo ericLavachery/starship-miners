@@ -14,13 +14,13 @@
     {
         "name": "Remparts",
         "fabTime":18,
-        "levels":{"rednecks":6,"blades":6,"bulbos":6,"drogmulojs":8,"tiradores":6,"detruas":6,"brasier":6},
+        "levels":{"rednecks":7,"blades":7,"bulbos":6,"drogmulojs":8,"tiradores":6,"detruas":6,"brasier":7},
         "costs":{"Compo1":125,"Compo2":125}
     },
     {
         "name": "Murailles",
         "fabTime":26,
-        "levels":{"rednecks":11,"blades":11,"bulbos":11,"drogmulojs":11,"tiradores":11,"detruas":11,"brasier":11},
+        "levels":{"rednecks":11,"blades":11,"bulbos":10,"drogmulojs":13,"tiradores":13,"detruas":11,"brasier":11},
         "costs":{"Compo1":125,"Compo2":125,"Compo3":125}
     },
     {
