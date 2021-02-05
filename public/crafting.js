@@ -129,13 +129,7 @@ function checkCraftCost(craftId,number) {
     let craftIndex = crafting.findIndex((obj => obj.id == craftId));
     let craft = crafting[craftIndex];
     let craftFactor = Math.ceil(number/craft.batch);
-    if (playerInfos.comp.ind >= 3) {
-        if (playerInfos.bldList.includes('Usine')) {
-            craftFactor = Math.round(craftFactor*0.8);
-        } else {
-            craftFactor = Math.round(craftFactor*0.9);
-        }
-    }
+    craftFactor = getCraftFactor(craft,craftFactor);
     Object.entries(craft.cost).map(entry => {
         let key = entry[0];
         let value = entry[1];
@@ -152,13 +146,7 @@ function doCraft(craftId,number) {
     let craftIndex = crafting.findIndex((obj => obj.id == craftId));
     let craft = crafting[craftIndex];
     let craftFactor = Math.ceil(number/craft.batch);
-    if (playerInfos.comp.ind >= 3) {
-        if (playerInfos.bldList.includes('Usine')) {
-            craftFactor = Math.round(craftFactor*0.8);
-        } else {
-            craftFactor = Math.round(craftFactor*0.9);
-        }
-    }
+    craftFactor = getCraftFactor(craft,craftFactor);
     Object.entries(craft.cost).map(entry => {
         let key = entry[0];
         let value = entry[1];
@@ -167,6 +155,56 @@ function doCraft(craftId,number) {
     });
     resAdd(craft.result,number);
     craftWindow();
+};
+
+function getCraftFactor(craft,craftFactor) {
+    // INDUSTRIE
+    if (playerInfos.comp.ind >= 1 && playerInfos.bldList.includes('Atelier')) {
+        let indusLevel = playerInfos.comp.ind;
+        if (playerInfos.bldList.includes('Usine')) {
+            indusLevel = indusLevel+3;
+        } else if (playerInfos.bldList.includes('Chaîne de montage')) {
+            indusLevel = indusLevel+1;
+        }
+        craftFactor = Math.ceil(craftFactor*25/(25+indusLevel));
+    }
+    // RECYCLAGE
+    if (playerInfos.comp.tri >= 1 && playerInfos.bldList.includes('Décharge')) {
+        let scrapCrafting = false;
+        if (craft.result === 'Scrap') {
+            scrapCrafting = true;
+        }
+        if (craft.cost['Scrap'] != undefined) {
+            scrapCrafting = true;
+        }
+        if (scrapCrafting) {
+            let recupLevel = playerInfos.comp.tri;
+            if (playerInfos.bldList.includes('Recyclab') && !craft.bldReq.includes('Recyclab') && !playerInfos.bldList.includes('Soute')) {
+                recupLevel = recupLevel+1;
+            }
+            if (craft.compReq['tri'] != undefined) {
+                recupLevel = recupLevel-craft.compReq['tri'];
+            }
+            if (recupLevel >= 1) {
+                craftFactor = Math.ceil(craftFactor*20/(20+recupLevel));
+            }
+        }
+    }
+    // CONSTRUCTION
+    if (playerInfos.comp.const >= 1) {
+        if (craft.cost['Scrap'] === undefined) {
+            if (craft.result === 'Compo1' || craft.result === 'Compo2' || craft.result === 'Compo3') {
+                let compoLevel = playerInfos.comp.const;
+                if (craft.compReq['const'] != undefined) {
+                    compoLevel = compoLevel-craft.compReq['const'];
+                }
+                if (compoLevel >= 1) {
+                    craftFactor = Math.ceil(craftFactor*15/(15+compoLevel));
+                }
+            }
+        }
+    }
+    return craftFactor;
 };
 
 function doEnergyCraft(resName,neededRes,energyCreated) {
@@ -179,13 +217,7 @@ function showCraftCost(craft,number) {
     let craftCostsList = ' ';
     let dispoRes;
     let craftFactor = Math.ceil(number/craft.batch);
-    if (playerInfos.comp.ind >= 3) {
-        if (playerInfos.bldList.includes('Usine')) {
-            craftFactor = Math.round(craftFactor*0.8);
-        } else {
-            craftFactor = Math.round(craftFactor*0.9);
-        }
-    }
+    craftFactor = getCraftFactor(craft,craftFactor);
     Object.entries(craft.cost).map(entry => {
         let key = entry[0];
         let value = entry[1];

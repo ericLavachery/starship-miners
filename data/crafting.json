@@ -438,20 +438,12 @@
         "batch":3
     },
     {
-        "id":54,
-        "result":"Fer",
-        "cost":{"Scrap":20,"Energie":1},
-        "compReq":{"tri":1},
-        "bldReq":["Centre de tri"],
-        "batch":5
-    },
-    {
-        "id":28,
-        "result":"Plomb",
-        "cost":{"Scrap":30,"Energie":1},
-        "compReq":{"tri":2},
-        "bldReq":["Centre de tri"],
-        "batch":5
+        "id":63,
+        "result":"Scrap",
+        "cost":{"Bugium":3,"Swarmine":2,"Larvium":1,"Aranium":1,"Energie":2},
+        "compReq":{"ca":1,"ind":3,"tri":1},
+        "bldReq":["Recyclab"],
+        "batch":7
     },
     {
         "id":29,
@@ -462,52 +454,18 @@
         "batch":5
     },
     {
-        "id":30,
-        "result":"Zinc",
-        "cost":{"Scrap":50,"Energie":2},
-        "compReq":{"tri":3},
-        "bldReq":["Centre de tri"],
+        "id":34,
+        "result":"Aluminium",
+        "cost":{"Wingium":5,"Bugium":15,"Energie":2},
+        "compReq":{"tri":2,"ca":2,"mat":1},
+        "bldReq":["Recyclab"],
         "batch":5
     },
     {
         "id":31,
         "result":"Carbone",
-        "cost":{"Scrap":50,"Energie":1},
+        "cost":{"Scrap":65,"Energie":1},
         "compReq":{"tri":3,"mat":1},
-        "bldReq":["Recyclab"],
-        "batch":5
-    },
-    {
-        "id":32,
-        "result":"Tungstène",
-        "cost":{"Scrap":100,"Energie":4},
-        "compReq":{"tri":4,"mat":1},
-        "bldReq":["Recyclab"],
-        "batch":5,
-        "creaNum":25
-    },
-    {
-        "id":33,
-        "result":"Titane",
-        "cost":{"Scrap":175,"Energie":7},
-        "compReq":{"tri":4,"mat":2},
-        "bldReq":["Recyclab"],
-        "batch":5,
-        "creaNum":15
-    },
-    {
-        "id":63,
-        "result":"Scrap",
-        "cost":{"Bugium":3,"Swarmine":2,"Larvium":1,"Aranium":1,"Energie":2},
-        "compReq":{"ca":1,"ind":3},
-        "bldReq":["Recyclab"],
-        "batch":7
-    },
-    {
-        "id":34,
-        "result":"Aluminium",
-        "cost":{"Wingium":5,"Bugium":15,"Energie":2},
-        "compReq":{"tri":2,"ca":2,"mat":1},
         "bldReq":["Recyclab"],
         "batch":5
     },
@@ -536,10 +494,42 @@
         "batch":5
     },
     {
+        "id":54,
+        "result":"Fer",
+        "cost":{"Scrap":25,"Energie":1},
+        "compReq":{"tri":1},
+        "bldReq":["Centre de tri"],
+        "batch":5
+    },
+    {
         "id":38,
         "result":"Fer",
         "cost":{"Bugium":15,"Azote":5,"Energie":1},
         "compReq":{"tri":1,"ca":1},
+        "bldReq":["Recyclab"],
+        "batch":5
+    },
+    {
+        "id":53,
+        "result":"Huile",
+        "cost":{"Slime":10,"Végétaux":25,"Energie":2},
+        "compReq":{"tri":3,"ca":3},
+        "bldReq":["Recyclab"],
+        "batch":5
+    },
+    {
+        "id":55,
+        "result":"Huile",
+        "cost":{"Hydrocarbure":15,"Energie":3},
+        "compReq":{"tri":2},
+        "bldReq":["Atelier"],
+        "batch":5
+    },
+    {
+        "id":52,
+        "result":"Hydrocarbure",
+        "cost":{"Larvium":10,"Végétaux":15,"Energie":1},
+        "compReq":{"tri":1,"ca":2},
         "bldReq":["Recyclab"],
         "batch":5
     },
@@ -565,6 +555,14 @@
         "cost":{"Aranium":15,"Chlore":5,"Energie":2},
         "compReq":{"tri":3,"ca":2},
         "bldReq":["Recyclab"],
+        "batch":5
+    },
+    {
+        "id":28,
+        "result":"Plomb",
+        "cost":{"Scrap":35,"Energie":1},
+        "compReq":{"tri":2},
+        "bldReq":["Centre de tri"],
         "batch":5
     },
     {
@@ -624,12 +622,30 @@
         "batch":10
     },
     {
+        "id":33,
+        "result":"Titane",
+        "cost":{"Scrap":175,"Energie":7},
+        "compReq":{"tri":4,"mat":2},
+        "bldReq":["Recyclab"],
+        "batch":5,
+        "creaNum":15
+    },
+    {
         "id":48,
         "result":"Titane",
         "cost":{"Wingium":10,"Bossium":5,"Energie":5},
         "compReq":{"tri":4,"ca":3,"mat":2},
         "bldReq":["Recyclab"],
         "batch":5
+    },
+    {
+        "id":32,
+        "result":"Tungstène",
+        "cost":{"Scrap":100,"Energie":4},
+        "compReq":{"tri":4,"mat":1},
+        "bldReq":["Recyclab"],
+        "batch":5,
+        "creaNum":25
     },
     {
         "id":49,
@@ -648,35 +664,19 @@
         "batch":5
     },
     {
+        "id":30,
+        "result":"Zinc",
+        "cost":{"Scrap":50,"Energie":2},
+        "compReq":{"tri":3},
+        "bldReq":["Centre de tri"],
+        "batch":5
+    },
+    {
         "id":51,
         "result":"Zinc",
         "cost":{"Mendium":10,"Chlore":10,"Energie":3},
         "compReq":{"tri":2,"ca":3},
         "bldReq":["Recyclab"],
-        "batch":5
-    },
-    {
-        "id":52,
-        "result":"Hydrocarbure",
-        "cost":{"Larvium":10,"Végétaux":15,"Energie":1},
-        "compReq":{"tri":1,"ca":2},
-        "bldReq":["Recyclab"],
-        "batch":5
-    },
-    {
-        "id":53,
-        "result":"Huile",
-        "cost":{"Slime":10,"Végétaux":25,"Energie":2},
-        "compReq":{"tri":3,"ca":3},
-        "bldReq":["Recyclab"],
-        "batch":5
-    },
-    {
-        "id":55,
-        "result":"Huile",
-        "cost":{"Hydrocarbure":15,"Energie":3},
-        "compReq":{"tri":2},
-        "bldReq":["Atelier"],
         "batch":5
     },
     {
