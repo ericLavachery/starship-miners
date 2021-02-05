@@ -1777,8 +1777,15 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","mecano","repair","constructeur","routes","noblub","light","crewsave"],
+        "skills":["noguet","mecano","repair","constructeur","routes","noblub","light","crewsave","fret","extraction"],
         "mecanoCost":6,
+        "mining":{
+            "level":1,
+            "rate":20,
+            "multi":false,
+            "types":["Scrap","Comptoir","Mine"]
+        },
+        "transRes":150,
         "maxSkill":8,
         "fuzz":1.5,
         "deathFx":"planeexploair1"
@@ -1834,8 +1841,15 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","mecano","repair","constructeur","routes","noblub","resistacide","dealer","nitro","light","crewsave"],
+        "skills":["noguet","mecano","repair","constructeur","routes","noblub","resistacide","dealer","nitro","light","crewsave","fret","extraction"],
         "mecanoCost":4,
+        "mining":{
+            "level":1,
+            "rate":32,
+            "multi":false,
+            "types":["Scrap","Comptoir","Mine"]
+        },
+        "transRes":300,
         "maxSkill":24,
         "maxDrug":24,
         "fuzz":2.5,
