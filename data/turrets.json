@@ -44,7 +44,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","lunette1","chargeur1","w2-mit"],
+        "equip":["aucun","lunette1","chargeur1","w2-mit","remorque"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -54,7 +54,7 @@
         "mecanoCost":9,
         "transMaxSize":33,
         "transUnits":5000,
-        "transRes":12500,
+        "transRes":16000,
         "fuzz":4,
         "deathFx":"planeexploground2"
     },
@@ -102,7 +102,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","lunette1","chargeur1","w2-mit"],
+        "equip":["aucun","lunette1","chargeur1","w2-mit","remorque"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -160,7 +160,7 @@
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","lunette1","chargeur1","w2-mit"],
+        "equip":["aucun","lunette1","chargeur1","w2-mit","remorque"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -221,7 +221,7 @@
             "ravitBld":"Arsenal"
         },
         "protection":["aucun"],
-        "equip":["aucun","lunette1","chargeur1","w2-comet"],
+        "equip":["aucun","lunette1","chargeur1","w2-comet","remorque"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -280,7 +280,7 @@
             "ammo":["boulet"]
         },
         "protection":["aucun"],
-        "equip":["aucun","lunette1","chargeur1","w2-cradle"],
+        "equip":["aucun","lunette1","chargeur1","w2-cradle","remorque"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,

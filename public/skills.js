@@ -399,6 +399,7 @@ function dropStuff(apCost,mineType) {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Coffres'));
         skillUsed = false;
     }
+    conselPut = true;
     conselUnit = unitTypes[unitIndex];
     conselAmmos = ['xxx','xxx','xxx','xxx'];
     if (skillUsed) {

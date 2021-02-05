@@ -611,5 +611,14 @@
         "compReq":{"log":1,"def":3,"exo":1},
         "factor":"crew",
         "costs":{"Carbone":6,"Scrap":12,"Aluminium":12,"Titane":6}
+    },
+    {
+        "name": "remorque",
+        "skills": [],
+        "info": "Augmente le fret",
+        "bldReq":[],
+        "compReq":{"log":1,"trans":1},
+        "factor":"thp",
+        "costs":{"Scrap":12,"Aluminium":12,"Titane":8}
     }
 ]

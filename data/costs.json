@@ -1598,7 +1598,7 @@
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":[],
         "costs":{"Scrap":36},
-        "fabTime":30
+        "fabTime":10
     },
     {
         "id":168,
@@ -1606,7 +1606,7 @@
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":["Atelier"],
         "costs":{"Fer":36},
-        "fabTime":30
+        "fabTime":10
     },
     {
         "id":169,
@@ -1614,7 +1614,7 @@
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":["Atelier","Générateur"],
         "costs":{"Aluminium":24,"Cuivre":12,"Batteries":6,"Energie":12},
-        "fabTime":40
+        "fabTime":15
     },
     {
         "id":185,
@@ -1697,14 +1697,14 @@
     {
         "id":164,
         "name":"Réserve",
-        "costs":{"Compo1":910,"Compo2":290,"Eau":18,"Batteries":150},
+        "costs":{"Compo1":910,"Compo2":290,"Eau":18,"Batteries":50},
         "fabTime":70
     },
     {
         "id":197,
         "name":"Garage",
-        "costs":{"Compo1":450,"Eau":18,"Hydrocarbure":200,"Huile":100,"Scrap":200,"Aluminium":50,"Fer":50},
-        "fabTime":35
+        "costs":{"Compo1":300,"Eau":12,"Hydrocarbure":100,"Huile":50,"Scrap":150,"Aluminium":25,"Fer":25},
+        "fabTime":30
     },
     {
         "id":3,
@@ -1945,7 +1945,7 @@
         "id":216,
         "name":"Cantine",
         "upkeep":{"Energie":3,"Eau":10,"Végétaux":25},
-        "costs":{"Compo1":390,"Compo2":60,"Eau":300,"Carbone":100,"Végétaux":600,"Batteries":30},
+        "costs":{"Compo1":390,"Compo2":60,"Eau":300,"Carbone":100,"Nourriture":200,"Batteries":30},
         "fabTime":25
     },
     {

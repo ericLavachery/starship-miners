@@ -876,6 +876,7 @@ function conselReset() {
     // conselCat = '';
     conselUpgrade = '';
     conselTriche = false;
+    conselPut = false;
     conselCosts = {};
 }
 

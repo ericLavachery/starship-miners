@@ -38,6 +38,9 @@ function batInfos(bat,pop) {
     if (bat.citoyens >= 1) {
         resMax = bat.citoyens;
     }
+    if (bat.eq === 'remorque') {
+        resMax = Math.round(resMax*1.25);
+    }
     if (pop) {
         $('#'+headPlace).append('<img src="/static/img/units/'+batType.cat+'/'+batType.pic+'.png">&nbsp;');
         if (batType.skills.includes('nonumname')) {
@@ -215,10 +218,14 @@ function batInfos(bat,pop) {
         $('#'+bodyPlace).append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batType.size+'</span><br>');
     }
     // AUTOSKILLS
-    if (batType.skills.includes('ravitaillement')) {
+    if (batType.skills.includes('ravitaillement') && bat.eq != 'remorque') {
         let ravitNum = calcRavit(bat);
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
-        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Ravitaillements</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxSkill+'</span><br>');
+        if (batType.skills.includes('stockmed')) {
+            $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Officine</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">999/999</span><br>');
+        } else {
+            $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Ravitaillements</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxSkill+'</span><br>');
+        }
     }
     if (batType.transUnits >= 1) {
         let transLeft = calcTransUnitsLeft(bat,batType);
