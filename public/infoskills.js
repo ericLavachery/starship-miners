@@ -526,146 +526,162 @@ function skillsInfos(bat,batType) {
     }
     // DROGUES
     let allDrugs = checkDrugs(bat);
-    // KIRIN
     if (batType.cat === 'infantry') {
-        if (allDrugs.includes('kirin') || bat.tags.includes('kirin')) {
-            balise = 'h4';
-            if (bat.tags.includes('kirin')) {
-                balise = 'h3';
-            }
-            apCost = 3;
-            if (bat.apLeft >= apCost && !bat.tags.includes('kirin')) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Régénération rapide" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
-            } else {
-                skillMessage = "Pas assez de PA";
+        // KIRIN
+        if (playerInfos.comp.med >= 2 && playerInfos.comp.ca >= 2 && playerInfos.bldList.includes('Infirmerie')) {
+            if (allDrugs.includes('kirin') || bat.tags.includes('kirin')) {
+                balise = 'h4';
                 if (bat.tags.includes('kirin')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
+                apCost = 3;
+                if (bat.apLeft >= apCost && !bat.tags.includes('kirin')) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Régénération rapide" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
+                } else {
+                    skillMessage = "Pas assez de PA";
+                    if (bat.tags.includes('kirin')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
+                }
             }
         }
         // OCTIRON
-        if (allDrugs.includes('octiron') || bat.tags.includes('octiron')) {
-            balise = 'h4';
-            if (bat.tags.includes('octiron')) {
-                balise = 'h3';
-            }
-            apCost = 0;
-            if (!bat.tags.includes('octiron')) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+2 PA, protection poisons et maladies" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
-            } else {
-                skillMessage = "Pas assez de PA";
+        if (playerInfos.comp.med >= 1) {
+            if (allDrugs.includes('octiron') || bat.tags.includes('octiron')) {
+                balise = 'h4';
                 if (bat.tags.includes('octiron')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
+                apCost = 0;
+                if (!bat.tags.includes('octiron')) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+2 PA, protection poisons et maladies" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
+                } else {
+                    skillMessage = "Pas assez de PA";
+                    if (bat.tags.includes('octiron')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
+                }
             }
         }
         // BLISS
-        if ((allDrugs.includes('bliss') && !batType.skills.includes('cyber')) || bat.tags.includes('bliss')) {
-            balise = 'h4';
-            if (bat.tags.includes('bliss')) {
-                balise = 'h3';
-            }
-            apCost = 1;
-            if (bat.apLeft >= apCost && !bat.tags.includes('bliss')) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Dégâts reçus réduits / immunisé à la peur" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
-            } else {
-                skillMessage = "Pas assez de PA";
+        if (playerInfos.comp.exo >= 1 && playerInfos.comp.ca >= 2) {
+            if ((allDrugs.includes('bliss') && !batType.skills.includes('cyber')) || bat.tags.includes('bliss')) {
+                balise = 'h4';
                 if (bat.tags.includes('bliss')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
+                apCost = 1;
+                if (bat.apLeft >= apCost && !bat.tags.includes('bliss')) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Dégâts reçus réduits / immunisé à la peur" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
+                } else {
+                    skillMessage = "Pas assez de PA";
+                    if (bat.tags.includes('bliss')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
+                }
             }
         }
         // BLAZE
-        if ((allDrugs.includes('blaze') && !batType.skills.includes('cyber')) || bat.tags.includes('blaze')) {
-            balise = 'h4';
-            if (bat.tags.includes('blaze')) {
-                balise = 'h3';
-            }
-            apCost = 3;
-            if (bat.apLeft >= apCost && !bat.tags.includes('blaze')) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+6 PA & +1 salve" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</'+balise+'></span>');
-            } else {
-                skillMessage = "Pas assez de PA";
+        if (playerInfos.comp.exo >= 3 && playerInfos.comp.ca >= 3 && playerInfos.bldList.includes('Bar')) {
+            if ((allDrugs.includes('blaze') && !batType.skills.includes('cyber')) || bat.tags.includes('blaze')) {
+                balise = 'h4';
                 if (bat.tags.includes('blaze')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</'+balise+'></span>');
+                apCost = 3;
+                if (bat.apLeft >= apCost && !bat.tags.includes('blaze')) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+6 PA & +1 salve" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</'+balise+'></span>');
+                } else {
+                    skillMessage = "Pas assez de PA";
+                    if (bat.tags.includes('blaze')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</'+balise+'></span>');
+                }
             }
         }
         // SKUPIAC
-        if ((allDrugs.includes('skupiac') && !batType.skills.includes('cyber')) || bat.tags.includes('skupiac')) {
-            balise = 'h4';
-            if (bat.tags.includes('skupiac')) {
-                balise = 'h3';
-            }
-            apCost = 3;
-            if (bat.apLeft >= apCost && !bat.tags.includes('skupiac')) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Concentration: +6 précision / +3 défense / guérit les maladies" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</'+balise+'></span>');
-            } else {
-                skillMessage = "Pas assez de PA";
+        if (playerInfos.comp.exo >= 2 && playerInfos.comp.ca >= 2 && playerInfos.bldList.includes('Bar')) {
+            if ((allDrugs.includes('skupiac') && !batType.skills.includes('cyber')) || bat.tags.includes('skupiac')) {
+                balise = 'h4';
                 if (bat.tags.includes('skupiac')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</'+balise+'></span>');
+                apCost = 3;
+                if (bat.apLeft >= apCost && !bat.tags.includes('skupiac')) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Concentration: +6 précision / +3 défense / guérit les maladies" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</'+balise+'></span>');
+                } else {
+                    skillMessage = "Pas assez de PA";
+                    if (bat.tags.includes('skupiac')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</'+balise+'></span>');
+                }
             }
         }
         // SILA
-        if ((allDrugs.includes('sila') && !batType.skills.includes('cyber')) || bat.tags.includes('sila')) {
-            balise = 'h4';
-            if (bat.tags.includes('sila')) {
-                balise = 'h3';
-            }
-            apCost = 3;
-            if (bat.apLeft >= apCost && !bat.tags.includes('sila')) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+5 puissance aux armes de mêlée" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
-            } else {
-                skillMessage = "Pas assez de PA";
+        if (playerInfos.comp.exo >= 1 && playerInfos.comp.ca >= 1) {
+            if ((allDrugs.includes('sila') && !batType.skills.includes('cyber')) || bat.tags.includes('sila')) {
+                balise = 'h4';
                 if (bat.tags.includes('sila')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
+                apCost = 3;
+                if (bat.apLeft >= apCost && !bat.tags.includes('sila')) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+5 puissance aux armes de mêlée" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
+                } else {
+                    skillMessage = "Pas assez de PA";
+                    if (bat.tags.includes('sila')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
+                }
             }
         }
         // STARKA
-        if (allDrugs.includes('starka') || bat.tags.includes('starka')) {
-            balise = 'h4';
-            if (bat.tags.includes('starka')) {
-                balise = 'h3';
-            }
-            apCost = 0;
-            let maxStarkaPA = bat.ap+1;
-            if (bat.oldTileId === bat.tileId && bat.apLeft < maxStarkaPA && !bat.tags.includes('starka')) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+bat.ap+' PA, maximum '+maxStarkaPA+' au total" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
-            } else {
-                skillMessage = "Conditions non requises";
+        if (playerInfos.comp.med >= 1 && playerInfos.comp.ca >= 1) {
+            if (allDrugs.includes('starka') || bat.tags.includes('starka')) {
+                balise = 'h4';
                 if (bat.tags.includes('starka')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
+                apCost = 0;
+                let maxStarkaPA = bat.ap+1;
+                if (bat.oldTileId === bat.tileId && bat.apLeft < maxStarkaPA && !bat.tags.includes('starka')) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+bat.ap+' PA, maximum '+maxStarkaPA+' au total" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
+                } else {
+                    skillMessage = "Conditions non requises";
+                    if (bat.tags.includes('starka')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
+                }
             }
         }
     }
     if ((batType.cat === 'vehicles' && !batType.skills.includes('emoteur')) || batType.skills.includes('oknitro')) {
         // NITRO
-        if (allDrugs.includes('nitro') || bat.tags.includes('nitro')) {
-            balise = 'h4';
-            if (bat.tags.includes('nitro')) {
-                balise = 'h3';
-            }
-            apCost = 0;
-            let maxNitroPA = bat.ap+1;
-            let nitroPA = Math.round(bat.ap/3);
-            if (bat.apLeft < maxNitroPA && !bat.tags.includes('nitro')) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+nitroPA+' PA, maximum '+maxNitroPA+' et minimum 1" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
-            } else {
-                skillMessage = "Conditions non requises";
+        if (playerInfos.comp.energ >= 1 && playerInfos.bldList.includes('Garage')) {
+            if (allDrugs.includes('nitro') || bat.tags.includes('nitro')) {
+                balise = 'h4';
                 if (bat.tags.includes('nitro')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
+                apCost = 0;
+                let maxNitroPA = bat.ap+1;
+                let nitroPA = Math.round(bat.ap/3);
+                if (bat.apLeft < maxNitroPA && !bat.tags.includes('nitro')) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+nitroPA+' PA, maximum '+maxNitroPA+' et minimum 1" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
+                } else {
+                    skillMessage = "Conditions non requises";
+                    if (bat.tags.includes('nitro')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
+                }
             }
         }
     }
