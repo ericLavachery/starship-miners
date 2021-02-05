@@ -229,6 +229,9 @@ function conSelect(unitId,player,noRefresh) {
                     if (batArmor.skills.includes('resistfeu')) {
                         armorSkills = armorSkills+' resistfeu';
                     }
+                    if (batArmor.skills.includes('resistall')) {
+                        armorSkills = armorSkills+' resistall';
+                    }
                     flatCosts = getCosts(conselUnit,batArmor,0,'equip');
                     deployCosts = getDeployCosts(conselUnit,batArmor,0,'equip');
                     mergeObjects(flatCosts,deployCosts);
@@ -791,6 +794,9 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             }
             if (batArmor.skills.includes('resistfeu') && !newBat.tags.includes('resistfeu')) {
                 newBat.tags.push('resistfeu');
+            }
+            if (batArmor.skills.includes('resistfall') && !newBat.tags.includes('resistfall')) {
+                newBat.tags.push('resistfall');
             }
             if (newBat.eq === 'kit-pompiste' && !newBat.tags.includes('resistfeu')) {
                 newBat.tags.push('resistfeu');

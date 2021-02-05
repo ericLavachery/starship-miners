@@ -107,7 +107,7 @@ function getTerrainRes(terrain,tile) {
     } else if (terrain.name === 'W') {
         srs.Eau = 750;
     } else if (terrain.name === 'S') {
-        srs.Eau = 150;
+        srs.Eau = 225;
     }
     return srs;
 };

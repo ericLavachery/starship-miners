@@ -1,5 +1,23 @@
 [
     {
+        "id":86,
+        "result":"Compo1",
+        "cost":{"Bois":3},
+        "compReq":{},
+        "bldReq":[],
+        "bldOut":["Atelier"],
+        "batch":1
+    },
+    {
+        "id":87,
+        "result":"Compo1",
+        "cost":{"Scrap":3},
+        "compReq":{},
+        "bldReq":[],
+        "bldOut":["Atelier"],
+        "batch":1
+    },
+    {
         "id":11,
         "result":"Compo1",
         "cost":{"Bois":2,"Scrap":1},
@@ -564,6 +582,14 @@
         "compReq":{"tri":3,"ca":3,"mat":1},
         "bldReq":["Recyclab"],
         "batch":5
+    },
+    {
+        "id":85,
+        "result":"Plutonium",
+        "cost":{"Uranium":3},
+        "compReq":{"energ":1},
+        "bldReq":[],
+        "batch":2
     },
     {
         "id":44,

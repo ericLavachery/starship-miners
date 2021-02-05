@@ -169,6 +169,9 @@ function batInfos(bat,pop) {
     if (bat.tags.includes('resistacide') || batType.skills.includes('resistacide')) {
         $('#'+bodyPlace).append('<span class="paramName cy">Résistance acide</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
+    if (bat.tags.includes('resistall') || batType.skills.includes('resistall')) {
+        $('#'+bodyPlace).append('<span class="paramName cy">Résistance globale</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    }
     if (bat.tags.includes('drunk')) {
         $('#'+bodyPlace).append('<span class="paramName jaune">Saoul</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
     }

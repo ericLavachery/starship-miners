@@ -122,6 +122,9 @@ function nextTurnEnd() {
     hasScraptruck = false;
     let barIds = [];
     let campIds = [];
+    let resSpace;
+    let resMax;
+    let resLoaded;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
@@ -259,10 +262,15 @@ function nextTurnEnd() {
             }
             if (batType.skills.includes('fastempty')) {
                 ravitNum = calcRavit(bat);
+                resLoaded = checkResLoad(bat);
+                emptyBonus = 0;
                 if (ravitNum < batType.maxSkill) {
-                    emptyBonus = Math.round((batType.maxSkill-ravitNum)/batType.maxSkill*5);
-                    ap = ap+emptyBonus;
+                    emptyBonus = emptyBonus+Math.round((batType.maxSkill-ravitNum)/batType.maxSkill*3);
                 }
+                if (resLoaded < batType.transRes) {
+                    emptyBonus = emptyBonus+Math.round((batType.transRes-resLoaded)/batType.transRes*2);
+                }
+                ap = ap+emptyBonus;
             }
             oldAP = ap;
             // camoAP
@@ -345,8 +353,8 @@ function nextTurnEnd() {
             }
             // fin coffres
             if (batType.name === 'Coffres' && bat.tags.includes('go')) {
-                let resSpace = checkResSpace(bat);
-                let resMax = batType.transRes;
+                resSpace = checkResSpace(bat);
+                resMax = batType.transRes;
                 if (resSpace >= resMax) {
                     batDeathEffect(bat,true,'Bataillon détruit',bat.type+' expiré.');
                     bat.squadsLeft = 0;

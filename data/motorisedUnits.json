@@ -3549,8 +3549,9 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["cible","ravitaillement","fastempty","dealer","nitro","light","badcrewsave"],
+        "skills":["cible","ravitaillement","fastempty","fret","dealer","nitro","light","badcrewsave"],
         "maxSkill":32,
+        "transRes":270,
         "maxDrug":9,
         "fuzz":2,
         "deathFx":"S_CarExplosion02"
