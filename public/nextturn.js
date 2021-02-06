@@ -158,10 +158,10 @@ function nextTurnEnd() {
             if (bat.tags.includes('prayer') && !prayedTeams.includes(batType.kind)) {
                 prayedTeams.push(batType.kind);
             }
-            if (!medicalTransports.includes(bat.locId) && bat.loc === "trans" && batType.skills.includes('medic') && bat.eq != 'remorque') {
+            if (!medicalTransports.includes(bat.locId) && bat.loc === "trans" && batType.skills.includes('medic') && bat.eq != 'megafret') {
                 medicalTransports.push(bat.locId);
             }
-            if (!medicalTransports.includes(bat.id) && batType.transUnits >= 1 && batType.skills.includes('medic') && bat.eq != 'remorque') {
+            if (!medicalTransports.includes(bat.id) && batType.transUnits >= 1 && batType.skills.includes('medic') && bat.eq != 'megafret') {
                 medicalTransports.push(bat.id);
             }
             if (bat.loc === "trans") {
@@ -261,16 +261,20 @@ function nextTurnEnd() {
                 ap = ap+1;
             }
             if (batType.skills.includes('fastempty')) {
-                ravitNum = calcRavit(bat);
-                resLoaded = checkResLoad(bat);
                 emptyBonus = 0;
-                if (ravitNum < batType.maxSkill) {
-                    emptyBonus = emptyBonus+Math.round((batType.maxSkill-ravitNum)/batType.maxSkill*3);
+                if (batType.skills.includes('ravitaillement')) {
+                    ravitNum = calcRavit(bat);
+                    if (ravitNum < batType.maxSkill) {
+                        emptyBonus = emptyBonus+((batType.maxSkill-ravitNum)/batType.maxSkill*2.5);
+                    }
                 }
-                if (resLoaded < batType.transRes) {
-                    emptyBonus = emptyBonus+Math.round((batType.transRes-resLoaded)/batType.transRes*2);
+                if (batType.skills.includes('fret')) {
+                    resLoaded = checkResLoad(bat);
+                    if (resLoaded < batType.transRes) {
+                        emptyBonus = emptyBonus+((batType.transRes-resLoaded)/batType.transRes*2.5);
+                    }
                 }
-                ap = ap+emptyBonus;
+                ap = ap+Math.round(emptyBonus);
             }
             oldAP = ap;
             // camoAP

@@ -37,7 +37,7 @@ function goRavit() {
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
-                if (batType.skills.includes('ravitaillement') && bat.eq != 'remorque') {
+                if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret') {
                     ravitLeft = calcRavit(bat);
                     if (calcDistance(selectedBat.tileId,bat.tileId) <= 1 && ravitLeft >= 1) {
                         if (biggestRavit < ravitLeft) {
@@ -117,7 +117,7 @@ function checkRavitDrug(myBat) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
-            if (batType.skills.includes('ravitaillement') && bat.eq != 'remorque') {
+            if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret') {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
                     ravitLeft = calcRavit(bat);
                     if (ravitLeft >= 2 || batType.skills.includes('stock')) {
@@ -283,7 +283,7 @@ function checkRavit(myBat) {
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
-                if (batType.skills.includes('ravitaillement') && bat.eq != 'remorque' && !batType.skills.includes('stockmed')) {
+                if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret' && !batType.skills.includes('stockmed')) {
                     if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
                         ravitLeft = calcRavit(bat);
                         if (ravitLeft >= 1 && (ravitVolume[0] <= batType.maxSkill || ravitVolume[0] <= 12) && (ravitVolume[2] != 'missile' || batType.skills.includes('stock'))) {
@@ -307,7 +307,7 @@ function goRavitDrug(apCost) {
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
-                if (batType.skills.includes('ravitaillement') && bat.eq != 'remorque') {
+                if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret') {
                     ravitLeft = calcRavit(bat);
                     if (calcDistance(selectedBat.tileId,bat.tileId) <= 1 && ravitLeft >= 2) {
                         if (biggestRavit < ravitLeft) {

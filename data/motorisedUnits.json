@@ -217,7 +217,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","guerrilla","inflammable","selfbadmecano","fret","defense","light","crewsave"],
         "mecanoCost":20,
-        "transRes":90,
+        "transRes":120,
         "fuzz":2.5,
         "deathFx":"planeexploair1"
     },
@@ -1171,7 +1171,7 @@
         "maxVeg":2,
         "skills":["cible","hover","selfbadmecano","fret","light"],
         "mecanoCost":28,
-        "transRes":90,
+        "transRes":120,
         "fuzz":3,
         "deathFx":"planeexploair1"
     },
@@ -1389,7 +1389,7 @@
         "maxVeg":2,
         "skills":["fortif","cible","selfbadmecano","maycamo","fret","hscarpmove","light","crewsave"],
         "mecanoCost":20,
-        "transRes":90,
+        "transRes":120,
         "fuzz":3,
         "deathFx":"planeexploair1"
     },
@@ -1669,7 +1669,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","cible","fly","longshot","maycamo","guerrilla","light"],
+        "skills":["noguet","cible","fly","longshot","maycamo","guerrilla","light","fret"],
+        "transRes":36,
         "fuzz":2.5,
         "deathFx":"SmallExplosion_05"
     },
@@ -1723,7 +1724,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","cible","fly","longshot","inflammable","light"],
+        "skills":["noguet","cible","fly","longshot","inflammable","light","fret"],
+        "transRes":36,
         "fuzz":2.5,
         "deathFx":"SmallExplosion_05"
     },
@@ -3607,8 +3609,9 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["cible","mecano","dealer","nitro","light","badcrewsave"],
+        "skills":["cible","mecano","dealer","nitro","light","badcrewsave","fret"],
         "mecanoCost":5,
+        "transRes":64,
         "maxDrug":24,
         "fuzz":2,
         "deathFx":"S_CarExplosion02"

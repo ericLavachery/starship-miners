@@ -44,7 +44,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","lunette1","chargeur1","w2-mit","remorque"],
+        "equip":["aucun","lunette1","chargeur1","w2-mit","megafret"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -102,7 +102,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","lunette1","chargeur1","w2-mit","remorque"],
+        "equip":["aucun","lunette1","chargeur1","w2-mit","megafret"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -160,7 +160,7 @@
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","lunette1","chargeur1","w2-mit","remorque"],
+        "equip":["aucun","lunette1","chargeur1","w2-mit","megafret"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -221,7 +221,7 @@
             "ravitBld":"Arsenal"
         },
         "protection":["aucun"],
-        "equip":["aucun","lunette1","chargeur1","w2-comet","remorque"],
+        "equip":["aucun","lunette1","chargeur1","w2-comet","megafret"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -280,7 +280,7 @@
             "ammo":["boulet"]
         },
         "protection":["aucun"],
-        "equip":["aucun","lunette1","chargeur1","w2-cradle","remorque"],
+        "equip":["aucun","lunette1","chargeur1","w2-cradle","megafret"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,

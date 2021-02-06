@@ -2103,7 +2103,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","ravitaillement","maycamo","fastempty","fret","recupcit","conscont"],
         "maxSkill":9,
-        "transRes":96,
+        "transRes":72,
         "fuzz":0,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -2353,7 +2353,7 @@
         "volume":0.9,
         "stealth":0,
         "speed":4,
-        "ap":20,
+        "ap":17,
         "maxSalvo":1,
         "weapon":{
             "name":"Fusil d'assaut",
@@ -2386,8 +2386,9 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","guerrilla","selfbadmedic","moto","baddef","brigands"],
+        "skills":["fouille","fortif","cible","guerrilla","selfbadmedic","moto","baddef","brigands","fret","fastempty"],
         "mediCost":15,
+        "transRes":60,
         "fuzz":2,
         "deathFx":"human2"
     },
@@ -2733,7 +2734,7 @@
         "volume":0.95,
         "stealth":0,
         "speed":4,
-        "ap":19,
+        "ap":16,
         "maxSalvo":1,
         "weapon":{
             "name":"Mitrailleuse légère",
@@ -2767,9 +2768,10 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","baddef","badmecano","badmedic","moto","dealer","octiron","nitro"],
+        "skills":["fouille","fortif","cible","baddef","badmecano","badmedic","moto","dealer","octiron","nitro","fret","fastempty"],
         "mediCost":9,
         "mecanoCost":7,
+        "transRes":63,
         "maxDrug":12,
         "fuzz":1.5,
         "deathFx":"human2"
@@ -2938,7 +2940,7 @@
         "volume":0.9,
         "stealth":5,
         "speed":4,
-        "ap":20,
+        "ap":17,
         "maxSalvo":2,
         "weapon":{
             "name":"Bolas",
@@ -2974,8 +2976,9 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","guerrilla","selfbadmedic","maycamo","moto","defense","trapfosse"],
+        "skills":["fouille","fortif","cible","guerrilla","selfbadmedic","maycamo","moto","defense","trapfosse","fret","fastempty"],
         "mediCost":15,
+        "transRes":56,
         "maxSkill":8,
         "fuzz":1,
         "deathFx":"195954__minian89__death-blood-splatter"
@@ -3783,7 +3786,7 @@
         "size":14,
         "volume":0.9,
         "stealth":1,
-        "ap":18,
+        "ap":15,
         "maxSalvo":1,
         "weapon":{
             "name":"Poings",
@@ -3819,10 +3822,10 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","mecano","repair","constructeur","cyber","fret","noblub","resistfeu"],
+        "skills":["fortif","mecano","repair","constructeur","cyber","fret","noblub","resistfeu","fastempty"],
         "mecanoCost":5,
         "maxSkill":8,
-        "transRes":60,
+        "transRes":180,
         "fuzz":1.5,
         "deathFx":"144469__psychedelic-hands__robot-death"
     },
@@ -4703,7 +4706,7 @@
         "size":3,
         "stealth":14,
         "speed":5,
-        "ap":20,
+        "ap":18,
         "maxSalvo":1,
         "weapon":{
             "name":"Lame",
@@ -4737,8 +4740,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","selfmedic","meleehelp","guerrilla","cyber","camo","berserk","undead","ranger","nostun","resistacide","oknitro","sentinelle","escape"],
+        "skills":["fouille","fortif","cible","selfmedic","meleehelp","guerrilla","cyber","camo","berserk","undead","ranger","nostun","resistacide","oknitro","sentinelle","escape","fret","fastempty"],
         "mediCost":10,
+        "transRes":96,
         "fuzz":0,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
     },

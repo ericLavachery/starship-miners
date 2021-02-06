@@ -38,7 +38,7 @@ function batInfos(bat,pop) {
     if (bat.citoyens >= 1) {
         resMax = bat.citoyens;
     }
-    if (bat.eq === 'remorque') {
+    if (bat.eq === 'megafret') {
         resMax = Math.round(resMax*1.25);
     }
     if (pop) {
@@ -218,7 +218,7 @@ function batInfos(bat,pop) {
         $('#'+bodyPlace).append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batType.size+'</span><br>');
     }
     // AUTOSKILLS
-    if (batType.skills.includes('ravitaillement') && bat.eq != 'remorque') {
+    if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret') {
         let ravitNum = calcRavit(bat);
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
         if (batType.skills.includes('stockmed')) {

@@ -343,7 +343,7 @@ function checkResSpace(bat) {
     let batType = getBatType(bat);
     let resLoaded = checkResLoad(bat);
     let resMax = batType.transRes;
-    if (bat.eq === 'remorque') {
+    if (bat.eq === 'megafret') {
         resMax = Math.round(resMax*1.25);
     }
     if (bat.citoyens > 0) {

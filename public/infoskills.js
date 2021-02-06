@@ -255,7 +255,7 @@ function skillsInfos(bat,batType) {
     }
     // MEDIC
     let baseskillCost;
-    if ((batType.skills.includes('medic') && bat.eq != 'remorque') || (bat.eq === 'medic' && playerInfos.comp.med >= 3)) {
+    if ((batType.skills.includes('medic') && bat.eq != 'megafret') || (bat.eq === 'medic' && playerInfos.comp.med >= 3)) {
         numTargets = numMedicTargets(bat,'infantry',true,true);
         baseskillCost = batType.mediCost;
         if (batType.skills.includes('medic') && playerInfos.comp.med >= 3) {
