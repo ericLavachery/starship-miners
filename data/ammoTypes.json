@@ -160,7 +160,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"mat":2},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Dunium":2},
+        "deploy":{"Fer":1,"Soufre":2,"Aluminium":1,"Dunium":2},
         "batch":100
     },
     {
@@ -421,7 +421,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"mat":2},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Dunium":2},
+        "deploy":{"Fer":1,"Soufre":2,"Aluminium":1,"Dunium":2},
         "batch":100
     },
     {
@@ -507,7 +507,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"mat":2},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Dunium":2},
+        "deploy":{"Fer":1,"Soufre":2,"Aluminium":1,"Dunium":2},
         "batch":100
     },
     {
