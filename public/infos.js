@@ -636,7 +636,7 @@ function renameTile(tileId) {
         if (newName.length <= 24) {
             let tileIndex = zone.findIndex((obj => obj.id == tileId));
             zone[tileIndex].tileName = newName;
-            saveMap();
+            // saveMap();
             showMap(zone,false);
             showTileInfos(tileId);
         } else {

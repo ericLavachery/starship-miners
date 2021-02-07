@@ -20,6 +20,13 @@ function saveAllBats() {
     savePlayerInfos();
     commandes();
 };
+function saveGame() {
+    saveBataillons();
+    saveAliens();
+    savePlayerInfos();
+    saveMap();
+    commandes();
+};
 function mapReset() {
     bataillons = [];
     saveBataillons();

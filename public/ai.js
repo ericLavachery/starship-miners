@@ -1253,7 +1253,7 @@ function infraDestruction() {
                     warning('Destruction',selectedBat.type+' a détruit '+tile.infra);
                     tile.infra = 'Débris';
                 }
-                saveMap();
+                // saveMap();
                 showMap(zone,false);
                 selectedBatArrayUpdate();
             }

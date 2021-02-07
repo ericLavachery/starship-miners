@@ -843,7 +843,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             if (tile.infra === 'Débris') {
                 if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices') {
                     delete tile.infra;
-                    saveMap();
+                    // saveMap();
                 }
             }
         } else {
@@ -1074,7 +1074,7 @@ function putRoad() {
     camoOut();
     selectedBatArrayUpdate();
     tile.rd = true;
-    saveMap();
+    // saveMap();
     showMap(zone,false);
     showBatInfos(selectedBat);
 };
@@ -1097,7 +1097,7 @@ function putInfra(infraName) {
     selectedBatArrayUpdate();
     tile.infra = infraName;
     tile.ruins = false;
-    saveMap();
+    // saveMap();
     showMap(zone,false);
     showBatInfos(selectedBat);
 };

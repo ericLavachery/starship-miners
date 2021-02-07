@@ -20,7 +20,7 @@ function searchRuins(apCost) {
             selectedBat.tags.splice(tagIndex,1);
         }
         tile.sh = -1;
-        saveMap();
+        // saveMap();
         selectedBatArrayUpdate();
         showBatInfos(selectedBat);
         ruinsEmpty = true;

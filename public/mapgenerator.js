@@ -10,7 +10,6 @@ function generateNewMap() {
     writeMapStyles();
     showMap(zone,false);
     minimap();
-    // function saveMap();
 };
 
 function checkMapKind(terName) {

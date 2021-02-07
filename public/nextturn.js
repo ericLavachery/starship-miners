@@ -1,9 +1,6 @@
 function nextTurn() {
     testConnect(pseudo);
-    savePlayerInfos();
-    saveBataillons();
-    saveAliens();
-    saveMap();
+    saveGame();
     if (playerInfos.dark) {
         checkUndark();
     }
@@ -380,10 +377,7 @@ function nextTurnEnd() {
     }
     playerBldUTChanges();
     turnInfo();
-    savePlayerInfos();
-    saveBataillons();
-    saveAliens();
-    saveMap();
+    saveGame();
     createBatList();
     alienOccupiedTileList();
     if (showMini) {
@@ -987,7 +981,7 @@ function nextBat(removeActiveBat,removeForever) {
         showBatInfos(selectedBat);
         showTileInfos(selectedBat.tileId);
     } else {
-        saveAllBats();
+        saveGame();
         batUnselect();
     }
     // console.log(batList);
