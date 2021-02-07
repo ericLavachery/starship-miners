@@ -864,7 +864,7 @@ function addRes(zone) {
                     }
                 }
             });
-            tile.rs[mythicRes.name] = mythicRes.batch*(tile.rq-2)*(tile.rq-3)*rand.rand(3,9);
+            tile.rs[mythicRes.name] = mythicRes.batch*(tile.rq-2)*(tile.rq-3)*rand.rand(5,11);
             if (mythicRes.bld === 'Derrick' || mythicRes.bld === 'Mine') {
                 let bldFactor = 2;
                 if (mythicRes.bld === 'Derrick') {
@@ -872,7 +872,7 @@ function addRes(zone) {
                 }
                 resTypes.forEach(function(res) {
                     if (res.bld === mythicRes.bld) {
-                        if (rand.rand(1,100) <= Math.round((res.rarity+9)/12*bldFactor)) {
+                        if (rand.rand(1,100) <= Math.round((res.rarity+9)/10*bldFactor)) {
                             tile.rs[res.name] = res.batch*res.batch*rand.rand(6,12);
                         }
                     }
@@ -1028,13 +1028,13 @@ function addRes(zone) {
                         tile.rq = 2;
                     }
                 } else if (tileNumRes >= 2) {
-                    if (tileTotalRes >= 500 || rareRes >= 2 || (rareRes >= 1 && tileTotalRes >= 350)) {
+                    if (tileTotalRes >= 500 || (rareRes >= 1 && tileTotalRes >= 350) || (rareRes >= 2 && tileTotalRes >= 250)) {
                         tile.rq = 2;
                     } else {
                         tile.rq = 1;
                     }
                 } else {
-                    if (tileTotalRes >= 500 || rareRes >= 2) {
+                    if (tileTotalRes >= 500 || (rareRes >= 2 && tileTotalRes >= 100)) {
                         tile.rq = 2;
                     } else {
                         tile.rq = 1;

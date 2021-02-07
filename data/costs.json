@@ -485,7 +485,7 @@
     {
         "id":63,
         "name":"Barricades",
-        "levels":{"rednecks":5,"blades":99,"bulbos":99,"drogmulojs":5,"tiradores":99,"detruas":5,"brasier":99},
+        "levels":{"rednecks":6,"blades":99,"bulbos":99,"drogmulojs":7,"tiradores":1,"detruas":1,"brasier":99},
         "bldReq":["Armurerie"],
         "costs":{"Fer":300,"Scrap":60,"Carbone":60,"Végétaux":110,"Chlore":10,"Tissus":5},
         "fabTime":20
@@ -1136,7 +1136,7 @@
     {
         "id":122,
         "name":"Lowboys",
-        "levels":{"rednecks":11,"blades":11,"bulbos":11,"drogmulojs":10,"tiradores":9,"detruas":7,"brasier":10},
+        "levels":{"rednecks":11,"blades":11,"bulbos":12,"drogmulojs":10,"tiradores":9,"detruas":7,"brasier":10},
         "bldReq":["Armurerie","Chaîne de montage"],
         "costs":{"Fer":54,"Scrap":546,"Carbone":174,"Aluminium":174,"Electros":24,"Batteries":72,"Compo2":234,"Végétaux":96,"Huile":10,"Eau":192,"Zinc":24},
         "deploy":{"Fuel":115},
@@ -1145,7 +1145,7 @@
     {
         "id":128,
         "name":"Looters",
-        "levels":{"rednecks":8,"blades":4,"bulbos":8,"drogmulojs":6,"tiradores":11,"detruas":8,"brasier":8},
+        "levels":{"rednecks":8,"blades":4,"bulbos":6,"drogmulojs":6,"tiradores":11,"detruas":8,"brasier":8},
         "bldReq":["Atelier"],
         "costs":{"Fer":24,"Scrap":128,"Carbone":32,"Aluminium":32,"Cuivre":24,"Electros":32,"Batteries":36,"Compo2":32},
         "deploy":{"Energie":180},
@@ -1343,7 +1343,7 @@
     {
         "id":118,
         "name":"Stakhanov",
-        "levels":{"rednecks":15,"blades":17,"bulbos":17,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":17},
+        "levels":{"rednecks":15,"blades":17,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":17},
         "bldReq":["Centre de recherches","Usine"],
         "costs":{"Fer":129,"Scrap":111,"Carbone":159,"Aluminium":132,"Electros":156,"Batteries":88,"Compo2":285,"Huile":36,"Cobalt":30,"Hélium":60,"Eau":584,"Silicium":80,"Zinc":33},
         "deploy":{"Fuel":115,"Energie":60,"Huile":30,"Eau":320,"Silicium":40},
@@ -1619,7 +1619,7 @@
     {
         "id":185,
         "name":"Fosses",
-        "levels":{"rednecks":9,"blades":1,"bulbos":12,"drogmulojs":9,"tiradores":11,"detruas":11,"brasier":11},
+        "levels":{"rednecks":8,"blades":1,"bulbos":9,"drogmulojs":10,"tiradores":11,"detruas":9,"brasier":9},
         "bldReq":["Atelier"],
         "costs":{"Végétaux":36,"Fer":12,"Bois":36,"Tungstène":12,"Huile":6,"Calcium":12},
         "fabTime":60
@@ -1627,7 +1627,7 @@
     {
         "id":237,
         "name":"Pièges",
-        "levels":{"rednecks":9,"blades":1,"bulbos":14,"drogmulojs":9,"tiradores":99,"detruas":13,"brasier":13},
+        "levels":{"rednecks":9,"blades":1,"bulbos":11,"drogmulojs":9,"tiradores":99,"detruas":13,"brasier":13},
         "bldReq":["Atelier"],
         "costs":{"Végétaux":18,"Fer":9,"Bois":18,"Scrap":9,"Huile":6,"Calcium":12},
         "fabTime":25

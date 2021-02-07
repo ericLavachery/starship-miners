@@ -14,7 +14,7 @@
     {
         "name": "Remparts",
         "fabTime":18,
-        "levels":{"rednecks":7,"blades":7,"bulbos":6,"drogmulojs":8,"tiradores":6,"detruas":6,"brasier":7},
+        "levels":{"rednecks":7,"blades":7,"bulbos":6,"drogmulojs":8,"tiradores":6,"detruas":6,"brasier":6},
         "costs":{"Compo1":125,"Compo2":125}
     },
     {
