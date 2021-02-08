@@ -48,7 +48,7 @@
             "ravitBld":"Atelier"
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -98,7 +98,7 @@
         "weapon":{},
         "weapon2":{},
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -172,7 +172,7 @@
             "ravitBld":"Derrick"
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -248,7 +248,7 @@
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -326,7 +326,7 @@
             "ravitBld":"Armurerie"
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -369,7 +369,7 @@
         "weapon":{},
         "weapon2":{},
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -512,7 +512,7 @@
             "ravitBld":"Atelier"
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -583,7 +583,7 @@
             "ravitBld":"Atelier"
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -655,7 +655,7 @@
             "ammo":["boulet"]
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -799,7 +799,7 @@
             "ravitBld":"Poudrière"
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -870,7 +870,7 @@
             "ravitBld":"Armurerie"
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -1071,7 +1071,7 @@
         },
         "weapon2":{},
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -1130,7 +1130,7 @@
         },
         "weapon2":{},
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -1189,7 +1189,7 @@
         },
         "weapon2":{},
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -1405,7 +1405,7 @@
             "ravitBld":"Atelier"
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -1476,7 +1476,7 @@
             "ravitBld":"Armurerie"
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -1623,7 +1623,7 @@
             "ravitBld":"Atelier"
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -1735,7 +1735,7 @@
         "weapon":{},
         "weapon2":{},
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -1802,7 +1802,7 @@
             "ravitBld":"Derrick"
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -2077,7 +2077,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -2148,7 +2148,7 @@
             "ravitBld":"Poudrière"
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -2291,7 +2291,7 @@
             "ravitBld":"Poudrière"
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -2360,7 +2360,7 @@
             "ravitBld":"Atelier"
         },
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -2416,7 +2416,7 @@
         },
         "weapon2":{},
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -2472,7 +2472,7 @@
         },
         "weapon2":{},
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -2528,7 +2528,7 @@
         },
         "weapon2":{},
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
@@ -2582,7 +2582,7 @@
         },
         "weapon2":{},
         "weapon3":{
-            "name":"w1-autopistol",
+            "name":"Autopistol",
             "cost":1,
             "range":3,
             "rof":15,
