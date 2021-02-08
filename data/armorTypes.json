@@ -26,7 +26,7 @@
     {
         "name": "Terriers",
         "fabTime":18,
-        "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":99},
+        "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":10},
         "costs":{"Compo1":100,"Compo2":25,"Végétaux":100}
     },
     {
