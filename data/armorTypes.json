@@ -14,7 +14,7 @@
     {
         "name": "Remparts",
         "fabTime":18,
-        "levels":{"rednecks":7,"blades":7,"bulbos":6,"drogmulojs":8,"tiradores":6,"detruas":6,"brasier":6},
+        "levels":{"rednecks":7,"blades":7,"bulbos":6,"drogmulojs":8,"tiradores":6,"detruas":6,"brasier":7},
         "costs":{"Compo1":125,"Compo2":125}
     },
     {
@@ -22,6 +22,12 @@
         "fabTime":26,
         "levels":{"rednecks":11,"blades":11,"bulbos":10,"drogmulojs":13,"tiradores":13,"detruas":11,"brasier":11},
         "costs":{"Compo1":125,"Compo2":125,"Compo3":125}
+    },
+    {
+        "name": "Terriers",
+        "fabTime":18,
+        "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":99},
+        "costs":{"Compo1":100,"Compo2":25,"Végétaux":100}
     },
     {
         "name": "aucune",
@@ -153,7 +159,7 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":2,"med":2,"cyber":1},
         "factor":"thp",
-        "costs":{"Carbone":6,"Aluminium":6,"Titane":6,"Electros":12,"Batteries":6,"Or":3},
+        "costs":{"Carbone":6,"Aluminium":18,"Titane":18,"Electros":12,"Batteries":12,"Or":6},
         "deploy":{"Huile":3,"Energie":24,"Végétaux":3,"Mendium":6}
     },
     {
@@ -327,6 +333,34 @@
         "deploy":{"Fuel":12}
     },
     {
+        "name": "helper",
+        "skills": [],
+        "info": "+1 PA & +1 puissance mêlée",
+        "bldReq":["Laboratoire"],
+        "compReq":{"mat":2,"exo":1,"cyber":1},
+        "factor":"thp",
+        "costs":{"Adamantium":4,"Titane":12,"Electros":12,"Silicium":6}
+    },
+    {
+        "name": "theeye",
+        "skills": [],
+        "info": "Précision+ Initiative+",
+        "bldReq":["Laboratoire"],
+        "compReq":{"mat":1,"det":3,"cyber":1},
+        "factor":"crew",
+        "costs":{"Hélium":2,"Titane":2,"Electros":6,"Silicium":6,"Bossium":6}
+    },
+    {
+        "name": "permakirin",
+        "skills": [],
+        "info": "Régénération lente",
+        "bldReq":["Laboratoire"],
+        "compReq":{"med":2,"ca":4,"gen":1},
+        "factor":"thp",
+        "costs":{"Huile":12,"Octiron":12,"Mendium":12,"Creatite":12,"Or":6},
+        "deploy":{"Huile":4,"Mendium":4,"Creatite":4,"Or":2}
+    },
+    {
         "name": "flash",
         "skills": [],
         "info": "Vision+",
@@ -341,7 +375,7 @@
         "skills": [],
         "info": "Vision+ Canon à essence",
         "bldReq":["Atelier"],
-        "compReq":{"log":2,"pyro":1},
+        "compReq":{"log":1,"pyro":2},
         "factor":"crew",
         "costs":{"Carbone":6,"Scrap":24,"Aluminium":30,"Nickel":6,"Cobalt":6,"Hélium":12,"Batteries":6},
         "deploy":{"Energie":12,"Fuel":48}
@@ -351,7 +385,7 @@
         "skills": [],
         "info": "Vision+ Mitrailleuse",
         "bldReq":["Armurerie"],
-        "compReq":{"log":2,"det":1,"bal":1},
+        "compReq":{"log":1,"det":1,"bal":1},
         "factor":"crew",
         "costs":{"Carbone":12,"Scrap":12,"Fer":48,"Aluminium":24,"Tungstène":12,"Cobalt":6,"Hélium":12,"Batteries":6},
         "deploy":{"Energie":12}
@@ -371,7 +405,7 @@
         "skills": [],
         "info": "Vision+ Minicanon",
         "bldReq":["Armurerie"],
-        "compReq":{"log":2,"explo":1},
+        "compReq":{"log":1,"explo":2},
         "factor":"crew",
         "costs":{"Carbone":12,"Scrap":12,"Fer":36,"Tungstène":12,"Aluminium":24,"Cobalt":6,"Hélium":12,"Batteries":6},
         "deploy":{"Energie":12}
@@ -400,7 +434,7 @@
         "skills": [],
         "info": "Minicanon",
         "bldReq":["Armurerie"],
-        "compReq":{"log":2,"explo":1},
+        "compReq":{"log":1,"explo":2},
         "factor":"crew",
         "costs":{"Carbone":6,"Scrap":6,"Fer":18,"Aluminium":12,"Tungstène":6}
     },
@@ -409,7 +443,7 @@
         "skills": [],
         "info": "Cadence+ Ravitaillement+",
         "bldReq":["Arsenal"],
-        "compReq":{"log":2,"arti":1},
+        "compReq":{"log":1,"arti":1},
         "factor":"rofpow",
         "costs":{"Carbone":6,"Fer":12,"Aluminium":9}
     },
@@ -418,7 +452,7 @@
         "skills": [],
         "info": "Cadence+ Ravitaillement+",
         "bldReq":["Arsenal"],
-        "compReq":{"log":2,"arti":1},
+        "compReq":{"log":1,"arti":1},
         "factor":"rofpow",
         "costs":{"Carbone":6,"Fer":12,"Aluminium":9}
     },
@@ -427,7 +461,7 @@
         "skills": [],
         "info": "Cadence+ Ravitaillement+",
         "bldReq":["Arsenal"],
-        "compReq":{"log":2,"arti":1},
+        "compReq":{"log":1,"arti":1},
         "factor":"rofpow",
         "costs":{"Carbone":6,"Fer":12,"Aluminium":9}
     },
@@ -496,6 +530,33 @@
         "costs":{"Fer":25,"Tungstène":25}
     },
     {
+        "name": "w2-comet",
+        "skills": [],
+        "info": "Lance Missile",
+        "bldReq":["Usine d'armement"],
+        "compReq":{"log":3,"arti":1,"bal":2,"explo":2,"vsp":1},
+        "factor":"rofpow",
+        "costs":{"Fer":60,"Aluminium":60,"Titane":60,"Silicium":10,"Rhodium":30,"Electros":15}
+    },
+    {
+        "name": "w2-mit",
+        "skills": [],
+        "info": "Mitrailleuse",
+        "bldReq":["Arsenal"],
+        "compReq":{"log":2,"bal":1,"vsp":1},
+        "factor":"crew",
+        "costs":{"Carbone":9,"Scrap":9,"Fer":36,"Aluminium":18,"Tungstène":9}
+    },
+    {
+        "name": "w2-cradle",
+        "skills": [],
+        "info": "Cradle",
+        "bldReq":["Chaîne de montage"],
+        "compReq":{"log":2,"vsp":1},
+        "factor":"rofpow",
+        "costs":{"Fer":90,"Tungstène":60,"Huile":10}
+    },
+    {
         "name": "w1-gun",
         "skills": [],
         "info": "Première arme du bâtiment",
@@ -523,38 +584,11 @@
         "costs":{"Bois":3,"Aluminium":12,"Titane":9,"Electros":6,"Bore":6}
     },
     {
-        "name": "w2-comet",
-        "skills": [],
-        "info": "Lance Missile",
-        "bldReq":["Usine d'armement"],
-        "compReq":{"log":3,"arti":1,"bal":2,"explo":2,"vsp":2},
-        "factor":"rofpow",
-        "costs":{"Fer":60,"Aluminium":60,"Titane":60,"Silicium":10,"Rhodium":30,"Electros":15}
-    },
-    {
-        "name": "w2-mit",
-        "skills": [],
-        "info": "Mitrailleuse",
-        "bldReq":["Arsenal"],
-        "compReq":{"log":2,"bal":1,"vsp":1},
-        "factor":"crew",
-        "costs":{"Carbone":9,"Scrap":9,"Fer":36,"Aluminium":18,"Tungstène":9}
-    },
-    {
-        "name": "w2-cradle",
-        "skills": [],
-        "info": "Cradle",
-        "bldReq":["Chaîne de montage"],
-        "compReq":{"log":2,"vsp":1},
-        "factor":"rofpow",
-        "costs":{"Fer":90,"Tungstène":60,"Huile":10}
-    },
-    {
         "name": "w2-brol",
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"log":1,"def":3,"bal":1},
+        "compReq":{"log":2,"def":3},
         "factor":"rofpow",
         "costs":{"Fer":90,"Tungstène":60,"Huile":10}
     },
@@ -572,7 +606,7 @@
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"log":1,"def":3,"explo":1,"bal":1},
+        "compReq":{"log":1,"def":3,"explo":2},
         "factor":"rofpow",
         "costs":{"Scrap":18,"Fer":18,"Aluminium":36,"Tungstène":18}
     },
@@ -581,7 +615,7 @@
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"log":1,"def":3,"explo":1,"arti":1,"bal":1},
+        "compReq":{"log":1,"def":3,"explo":2,"arti":1,"bal":1},
         "factor":"rofpow",
         "costs":{"Carbone":30,"Fer":120,"Tungstène":90,"Titane":30,"Silicium":10,"Rhodium":15,"Electros":15}
     },

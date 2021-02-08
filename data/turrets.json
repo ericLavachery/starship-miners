@@ -797,6 +797,7 @@
             "ravitBld":"Atelier"
         },
         "protection":["aucun"],
+        "equip":["aucun","theeye"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -851,7 +852,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","chargeur2","carrousel1","longtom1"],
+        "equip":["aucun","chargeur2","carrousel1","longtom1","theeye"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,

@@ -58,6 +58,7 @@
     "fabTime":25,
     "bldReq":[],
     "bldVMReq":[],
+    "compPass":[],
     "bldCost":"none",
     "bldUp":"none",
     "unitCost":"none",

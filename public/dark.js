@@ -58,7 +58,7 @@ function undarkAround(bat,center) {
         }
         tile = getTile(bat);
         if (tile.infra != undefined) {
-            if (tile.infra != 'Débris') {
+            if (tile.infra != 'Débris' && tile.infra != 'Terriers') {
                 if (tile.infra === 'Miradors') {
                     hauteur = hauteur+2;
                 } else {

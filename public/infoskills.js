@@ -98,9 +98,9 @@ function skillsInfos(bat,batType) {
     }
     // CAMOUFLAGE
     let camoufOK = true;
-    if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || bat.fuzz <= -2 || bat.eq === 'camo' || bat.eq === 'kit-sentinelle') {
+    if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'camo' || bat.eq === 'kit-sentinelle') {
         if (batType.cat == 'buildings') {
-            if (batType.skills.includes('maycamo') && !tile.ruins) {
+            if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
                 apCost = Math.floor(bat.ap*3.5);
                 apReq = Math.floor(bat.ap/1.5);
                 if (inMelee) {
@@ -114,7 +114,7 @@ function skillsInfos(bat,batType) {
                 }
             }
         } else if (batType.cat == 'vehicles' || batType.skills.includes('machine') || batType.cat == 'devices') {
-            if (batType.skills.includes('maycamo') && !tile.ruins) {
+            if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
                 apCost = Math.floor(bat.ap*Math.sqrt(batType.size)/1.8);
                 apReq = Math.floor(bat.ap/1.5);
                 if (inMelee) {
@@ -128,7 +128,7 @@ function skillsInfos(bat,batType) {
                 }
             }
         } else {
-            if (batType.skills.includes('maycamo') && !tile.ruins) {
+            if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
                 apCost = Math.floor(bat.ap*Math.sqrt(batType.size)/1.8);
                 apReq = Math.floor(bat.ap/1.5);
                 if (inMelee) {
@@ -947,7 +947,7 @@ function skillsInfos(bat,batType) {
             let infra;
             let infraCostOK;
             if (bat.apLeft >= apReq && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><span id="infraButtons"></span>&nbsp; Enceinte</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><span id="infraButtons"></span>&nbsp; Infra</h4></span>');
                 $('#infraButtons').empty();
                 if (tile.infra != 'Miradors') {
                     infra = getInfraByName('Miradors');
@@ -1023,6 +1023,27 @@ function skillsInfos(bat,batType) {
                             skillMessage = "Pas assez de ressources "+displayCosts(infra.costs);
                         }
                         $('#infraButtons').append('<button type="button" title="Murailles: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Mu</span></button>');
+                    }
+                }
+                if (tile.infra != 'Terriers') {
+                    infra = getInfraByName('Terriers');
+                    if (infra.levels[playerInfos.gang] < 90) {
+                        infraCostOK = checkCost(infra.costs);
+                        if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def) {
+                            prodOK = false;
+                        } else {
+                            prodOK = true;
+                        }
+                        if (infraCostOK && prodOK) {
+                            $('#infraButtons').append('<button type="button" title="Construction (Terriers) '+displayCosts(infra.costs)+'" class="boutonGris skillButtons" onclick="putInfra(`Terriers`)"><span class="small">Te</span></button>');
+                        } else {
+                            if (!prodOK) {
+                                skillMessage = "Niveau insuffisant";
+                            } else {
+                                skillMessage = "Pas assez de ressources "+displayCosts(infra.costs);
+                            }
+                            $('#infraButtons').append('<button type="button" title="Terriers: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Te</span></button>');
+                        }
                     }
                 }
             }

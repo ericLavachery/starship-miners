@@ -3,6 +3,7 @@
         "id":1,
         "name":"arti",
         "fullName":"Artillerie",
+        "levels":{"rednecks":13,"blades":99,"bulbos":13,"drogmulojs":13,"tiradores":99,"detruas":6,"brasier":13},
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
@@ -10,6 +11,7 @@
         "id":2,
         "name":"tank",
         "fullName":"Blindés",
+        "levels":{"rednecks":10,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":9,"brasier":99},
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
@@ -17,6 +19,7 @@
         "id":3,
         "name":"aero",
         "fullName":"Aéronautique",
+        "levels":{"rednecks":13,"blades":13,"bulbos":12,"drogmulojs":13,"tiradores":10,"detruas":99,"brasier":13},
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
@@ -24,6 +27,7 @@
         "id":4,
         "name":"gen",
         "fullName":"Génétique",
+        "levels":{"rednecks":99,"blades":9,"bulbos":8,"drogmulojs":3,"tiradores":99,"detruas":99,"brasier":99},
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
@@ -31,6 +35,7 @@
         "id":5,
         "name":"cyber",
         "fullName":"Cybernétique",
+        "levels":{"rednecks":13,"blades":11,"bulbos":3,"drogmulojs":13,"tiradores":13,"detruas":12,"brasier":10},
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
@@ -38,6 +43,7 @@
         "id":6,
         "name":"robo",
         "fullName":"Robotique",
+        "levels":{"rednecks":99,"blades":99,"bulbos":9,"drogmulojs":99,"tiradores":13,"detruas":6,"brasier":99},
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
@@ -45,6 +51,7 @@
         "id":7,
         "name":"tele",
         "fullName":"Téléportation",
+        "levels":{"rednecks":18,"blades":15,"bulbos":14,"drogmulojs":16,"tiradores":16,"detruas":15,"brasier":16},
         "maxLevel":3,
         "lvlCosts":[0,2,1,1]
     },
@@ -52,6 +59,7 @@
         "id":8,
         "name":"vsp",
         "fullName":"Vols spaciaux",
+        "levels":{"rednecks":7,"blades":7,"bulbos":7,"drogmulojs":7,"tiradores":7,"detruas":7,"brasier":7},
         "maxLevel":4,
         "lvlCosts":[0,1,1,1,1]
     },
@@ -59,6 +67,7 @@
         "id":9,
         "name":"scaph",
         "fullName":"Scaphandres",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,1]
     },
@@ -66,6 +75,7 @@
         "id":10,
         "name":"det",
         "fullName":"Détection",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":6,
         "lvlCosts":[0,1,1,1,1,1,2]
     },
@@ -73,6 +83,7 @@
         "id":11,
         "name":"med",
         "fullName":"Médecine",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,2]
     },
@@ -80,6 +91,7 @@
         "id":12,
         "name":"ordre",
         "fullName":"Maintien de l'ordre",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,1]
     },
@@ -87,6 +99,7 @@
         "id":13,
         "name":"train",
         "fullName":"Entraînement",
+        "levels":{"rednecks":5,"blades":0,"bulbos":5,"drogmulojs":5,"tiradores":5,"detruas":5,"brasier":5},
         "maxLevel":2,
         "lvlCosts":[0,1,1]
     },
@@ -94,6 +107,7 @@
         "id":14,
         "name":"cam",
         "fullName":"Camouflage",
+        "levels":{"rednecks":6,"blades":0,"bulbos":6,"drogmulojs":6,"tiradores":6,"detruas":6,"brasier":6},
         "maxLevel":3,
         "lvlCosts":[0,2,1,1]
     },
@@ -101,6 +115,7 @@
         "id":15,
         "name":"tri",
         "fullName":"Tri",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":4,
         "lvlCosts":[0,1,1,1,1]
     },
@@ -108,6 +123,7 @@
         "id":16,
         "name":"ind",
         "fullName":"Industrie",
+        "levels":{"rednecks":5,"blades":5,"bulbos":0,"drogmulojs":5,"tiradores":5,"detruas":5,"brasier":5},
         "maxLevel":3,
         "lvlCosts":[0,1,1,1]
     },
@@ -115,6 +131,7 @@
         "id":17,
         "name":"const",
         "fullName":"Construction",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,1]
     },
@@ -122,6 +139,7 @@
         "id":18,
         "name":"energ",
         "fullName":"Energie",
+        "levels":{"rednecks":7,"blades":7,"bulbos":7,"drogmulojs":7,"tiradores":7,"detruas":7,"brasier":7},
         "maxLevel":4,
         "lvlCosts":[0,1,1,1,2]
     },
@@ -129,6 +147,7 @@
         "id":19,
         "name":"ext",
         "fullName":"Extraction",
+        "levels":{"rednecks":0,"blades":5,"bulbos":0,"drogmulojs":5,"tiradores":5,"detruas":0,"brasier":5},
         "maxLevel":3,
         "lvlCosts":[0,1,1,2]
     },
@@ -136,6 +155,7 @@
         "id":20,
         "name":"trans",
         "fullName":"Transport",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,2]
     },
@@ -143,6 +163,7 @@
         "id":21,
         "name":"log",
         "fullName":"Logistique",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,2]
     },
@@ -150,13 +171,15 @@
         "id":22,
         "name":"bal",
         "fullName":"Balistique",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,2]
+        "lvlCosts":[0,1,1,1]
     },
     {
         "id":23,
         "name":"explo",
         "fullName":"Explosifs",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,1]
     },
@@ -164,6 +187,7 @@
         "id":24,
         "name":"pyro",
         "fullName":"Pyrotechnie",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,1]
     },
@@ -171,6 +195,7 @@
         "id":25,
         "name":"ca",
         "fullName":"Connaissance Alien",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":5,
         "lvlCosts":[0,1,1,1,1,1]
     },
@@ -178,20 +203,23 @@
         "id":26,
         "name":"exo",
         "fullName":"Exochimie",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,2]
+        "lvlCosts":[0,1,1,1]
     },
     {
         "id":27,
         "name":"mat",
         "fullName":"Matériaux",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":4,
-        "lvlCosts":[0,1,1,1,2]
+        "lvlCosts":[0,1,1,1,1]
     },
     {
         "id":28,
         "name":"def",
         "fullName":"Défenses",
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,2]
     }

@@ -464,7 +464,11 @@ function getCover(bat,withFortif,forAOE) {
 function getStealth(bat) {
     let cover = getCover(bat,false,false);
     let batType = getBatType(bat);
+    let tile = getTile(bat);
     let batStealth = batType.stealth;
+    if (tile.infra === 'Terriers' && batType.size < 9) {
+        batStealth = batStealth+5;
+    }
     if (bat.tags.includes('drunk')) {
         batStealth = batStealth-4;
     }
@@ -522,6 +526,9 @@ function getAP(bat,batType) {
     if (bat.eq === 'g2motor') {
         newAP = newAP+2;
     }
+    if (bat.eq === 'helper') {
+        newAP = newAP+1;
+    }
     if (bat.eq === 'ranger' || bat.eq === 'gilet') {
         newAP = newAP-1;
     }
@@ -564,6 +571,9 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
     if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle')) && !attacking) {
         speed = speed-watchInitBonus-stealth;
         console.log('bonus guet');
+    }
+    if (bat.eq === 'theeye') {
+        speed = speed-25;
     }
     if (batType.skills.includes('initiative')) {
         speed = speed-200;
@@ -753,7 +763,7 @@ function isOnInfra(bat) {
     let tile = getTile(bat);
     let batType = getBatType(bat);
     if (tile.infra != undefined) {
-        if (tile.infra != 'Débris' && batType.cat != 'aliens') {
+        if (tile.infra != 'Débris' && tile.infra != 'Terriers' && batType.cat != 'aliens') {
             if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
                 onInfra = true;
             }
@@ -1043,6 +1053,12 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.accuracy = thisWeapon.accuracy+8;
         }
     }
+    if (bat.eq === 'theeye') {
+        thisWeapon.accuracy = thisWeapon.accuracy+3;
+        if (thisWeapon.cost >= 2) {
+            thisWeapon.cost = thisWeapon.cost-1;
+        }
+    }
     if (bat.eq === 'gilet' && thisWeapon.maxAmmo < 99) {
         thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
         if (thisWeapon.maxAmmo < 16) {
@@ -1115,6 +1131,10 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.rof = Math.round(thisWeapon.rof*ammo.rof);
         }
     }
+    // helper
+    if (bat.eq === 'helper' && thisWeapon.isMelee) {
+        thisWeapon.power = thisWeapon.power+2;
+    }
     // sila drug
     if (bat.tags.includes('sila')) {
         if (thisWeapon.isMelee) {
@@ -1153,7 +1173,7 @@ function weaponAdj(weapon,bat,wn) {
     let infra = '';
     if (batType.cat != 'aliens') {
         if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
-            if (tile.infra != undefined && tile.infra != 'Débris') {
+            if (tile.infra != undefined && tile.infra != 'Débris' && tile.infra != 'Terriers') {
                 infra = tile.infra;
             }
         }

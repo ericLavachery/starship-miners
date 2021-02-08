@@ -42,12 +42,17 @@ function bfconst(cat,triche,upgrade) {
     // LIST
     let prodSign = ' <span class="ciel">&raquo;</span>';
     let prodOK = false;
+    let compReqOK = false;
     let bldOK = false;
     let costOK = false;
     let costString = '';
     sortedUnitsList.forEach(function(unit) {
         prodOK = true;
         if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
+            prodOK = false;
+        }
+        compReqOK = checkUnitCompReq(unit);
+        if (!compReqOK) {
             prodOK = false;
         }
         if (!triche) {
@@ -465,6 +470,24 @@ function selectEquip(equip,unitId) {
     conSelect(unitId,'player',true);
 };
 
+function checkUnitCompReq(unit) {
+    let compReqOK = true;
+    if (!unit.compPass.includes(playerInfos.gang)) {
+        if (unit.compReq != undefined) {
+            if (Object.keys(unit.compReq).length >= 1) {
+                Object.entries(unit.compReq).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    if (playerInfos.comp[key] < value) {
+                        compReqOK = false;
+                    }
+                });
+            }
+        }
+    }
+    return compReqOK;
+};
+
 function checkCompReq(batEquip) {
     let compReqOK = true;
     if (batEquip.compReq != undefined) {
@@ -704,7 +727,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             newBat.armor = conselUnit.armor+batArmor.armor;
             if ((conselUnit.skills.includes('fly') || newBat.eq === 'jetpack') && batArmor.ap < 0) {
                 newBat.ap = baseAP+batArmor.ap+batArmor.ap;
-            } else if (conselUnit.skills.includes('strong') && batArmor.ap < -1) {
+            } else if ((conselUnit.skills.includes('strong') || newBat.eq === 'helper') && batArmor.ap < -1) {
                 newBat.ap = baseAP+batArmor.ap+1;
             } else if (conselUnit.moveCost === 99) {
                 newBat.ap = baseAP;

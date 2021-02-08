@@ -94,8 +94,8 @@ function gangEdit() {
     // GANG LEVEL
     $('#conUnitList').append('<select class="boutonGris" id="theLevels" onchange="changePlayerInfo(`theLevels`,`gLevel`)"></select>');
     $('#theLevels').empty().append('<option value="">Niveau de Gang</option>');
-    i = 1;
-    while (i <= 22) {
+    i = 0;
+    while (i <= 23) {
         if (playerInfos.gLevel === i) {
             $('#theLevels').append('<option value="'+i+'" selected>Niveau '+i+'</option>');
         } else {
@@ -154,23 +154,28 @@ function allCompSelect() {
 
 function compSelect(gc) {
     // console.log(gc);
-    $('#conUnitList').append('<select title="'+gc.fullName+' '+playerInfos.comp[gc.name]+'" class="boutonGris" id="'+gc.name+'" onchange="changeComp(`'+gc.name+'`,`'+gc.name+'`)"></select>');
-    $('#'+gc.name).empty().append('<option value="">'+gc.name+'</option>');
-    let showCost = '';
-    let i = 0;
-    while (i <= gc.maxLevel) {
-        if (gc.lvlCosts[i] === 2) {
-            showCost = ' (2)';
-        } else {
-            showCost = '';
+    if (gc.levels[playerInfos.gang] > playerInfos.gLevel) {
+        $('#conUnitList').append('<select title="'+gc.fullName+' '+playerInfos.comp[gc.name]+'" class="boutonGris" id="'+gc.name+'" onchange="changeComp(`'+gc.name+'`,`'+gc.name+'`)"></select>');
+        $('#'+gc.name).empty().append('<option value="" disabled>'+gc.name+'</option>');
+    } else {
+        $('#conUnitList').append('<select title="'+gc.fullName+' '+playerInfos.comp[gc.name]+'" class="boutonGris" id="'+gc.name+'" onchange="changeComp(`'+gc.name+'`,`'+gc.name+'`)"></select>');
+        $('#'+gc.name).empty().append('<option value="">'+gc.name+'</option>');
+        let showCost = '';
+        let i = 0;
+        while (i <= gc.maxLevel) {
+            if (gc.lvlCosts[i] === 2) {
+                showCost = ' (2)';
+            } else {
+                showCost = '';
+            }
+            if (playerInfos.comp[gc.name] === i) {
+                $('#'+gc.name).append('<option value="'+i+'" selected>'+gc.name+' '+i+' '+showCost+'</option>');
+            } else {
+                $('#'+gc.name).append('<option value="'+i+'">'+gc.name+' '+i+' '+showCost+'</option>');
+            }
+            if (i > 10) {break;}
+            i++
         }
-        if (playerInfos.comp[gc.name] === i) {
-            $('#'+gc.name).append('<option value="'+i+'" selected>'+gc.name+' '+i+' '+showCost+'</option>');
-        } else {
-            $('#'+gc.name).append('<option value="'+i+'">'+gc.name+' '+i+' '+showCost+'</option>');
-        }
-        if (i > 10) {break;}
-        i++
     }
 };
 
@@ -319,6 +324,9 @@ function playerSkillsUTChanges() {
         if (playerInfos.comp.cam >= 3 && unit.skills.includes('maycamo') && unit.cat === 'buildings') {
             unit.skills.push('camo');
         }
+        if (playerInfos.comp.cam >= 1) {
+            unit.stealth = unit.stealth+2+playerInfos.comp.cam;
+        }
         // MEDECINE
         if (playerInfos.comp.med >= 1 && unit.kind === 'zero-medecine') {
             unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-playerInfos.comp.med-2;
@@ -341,7 +349,7 @@ function playerSkillsUTChanges() {
 };
 
 function maxGangCompCosts() {
-    let maxComp = [8,0];
+    let maxComp = [8,1];
     maxComp[0] = maxComp[0]+playerInfos.gLevel;
     if (playerInfos.gang === 'rednecks') {
         if (playerInfos.gLevel >= 3) {
@@ -361,6 +369,18 @@ function maxGangCompCosts() {
             maxComp[1] = maxComp[1]+1;
         }
         if (playerInfos.gLevel >= 16) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 18) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 20) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 22) {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
@@ -387,6 +407,18 @@ function maxGangCompCosts() {
             maxComp[1] = maxComp[1]+1;
         }
         if (playerInfos.gLevel >= 15) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 18) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 20) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 22) {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
@@ -420,13 +452,29 @@ function maxGangCompCosts() {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
+        if (playerInfos.gLevel >= 18) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 20) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 22) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
     }
     if (playerInfos.gang === 'drogmulojs') {
         if (playerInfos.gLevel >= 3) {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
-        if (playerInfos.gLevel >= 6) {
+        if (playerInfos.gLevel >= 5) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 8) {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
@@ -439,6 +487,18 @@ function maxGangCompCosts() {
             maxComp[1] = maxComp[1]+1;
         }
         if (playerInfos.gLevel >= 16) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 18) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 20) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 22) {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
@@ -464,6 +524,18 @@ function maxGangCompCosts() {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
+        if (playerInfos.gLevel >= 18) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 20) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 22) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
     }
     if (playerInfos.gang === 'detruas') {
         if (playerInfos.gLevel >= 3) {
@@ -486,6 +558,18 @@ function maxGangCompCosts() {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
+        if (playerInfos.gLevel >= 17) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 19) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 21) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
     }
     if (playerInfos.gang === 'brasier') {
         if (playerInfos.gLevel >= 3) {
@@ -500,7 +584,7 @@ function maxGangCompCosts() {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
-        if (playerInfos.gLevel >= 11) {
+        if (playerInfos.gLevel >= 10) {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
@@ -512,18 +596,14 @@ function maxGangCompCosts() {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
-    }
-    if (playerInfos.gLevel >= 18) {
-        maxComp[0] = maxComp[0]+1;
-        maxComp[1] = maxComp[1]+1;
-    }
-    if (playerInfos.gLevel >= 20) {
-        maxComp[0] = maxComp[0]+1;
-        maxComp[1] = maxComp[1]+1;
-    }
-    if (playerInfos.gLevel >= 22) {
-        maxComp[0] = maxComp[0]+1;
-        maxComp[1] = maxComp[1]+1;
+        if (playerInfos.gLevel >= 18) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
+        if (playerInfos.gLevel >= 21) {
+            maxComp[0] = maxComp[0]+1;
+            maxComp[1] = maxComp[1]+1;
+        }
     }
     return maxComp;
 };
