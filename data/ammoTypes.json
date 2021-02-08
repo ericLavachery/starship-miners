@@ -220,7 +220,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2,"mat":1},
+        "compReq":{"bal":3,"mat":1},
         "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Salite":2},
         "batch":100
     },
@@ -389,7 +389,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2,"mat":1},
+        "compReq":{"bal":3,"mat":1},
         "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Salite":2},
         "batch":100
     },
@@ -567,7 +567,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2,"mat":1},
+        "compReq":{"bal":3,"mat":1},
         "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Salite":2},
         "batch":100
     },
@@ -661,7 +661,7 @@
         "aoe": "brochette",
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2,"mat":2},
+        "compReq":{"bal":3,"mat":2},
         "deploy":{"Fer":1,"Soufre":2,"Plutonium":2,"Aluminium":1,"Phosphore":3,"Salite":2},
         "batch":100
     },
@@ -1489,7 +1489,7 @@
         "aoe": "brochette",
         "info": "PasseBouclier",
         "bldReq":["Usine d'armement"],
-        "compReq":{"bal":3,"mat":3,"explo":1},
+        "compReq":{"bal":2,"mat":3,"explo":1},
         "deploy":{"Carbone":1,"Fer":3,"Plomb":1,"Uranium":2,"Explosifs":2},
         "batch":100
     },
@@ -1597,7 +1597,7 @@
         "aoe": "brochette",
         "info": "PasseBouclier",
         "bldReq":["Usine d'armement"],
-        "compReq":{"bal":3,"mat":3,"explo":1},
+        "compReq":{"bal":2,"mat":3,"explo":1},
         "deploy":{"Carbone":1,"Aluminium":2,"Tungstène":2,"Rhodium":1,"Uranium":3,"Explosifs":2,"Fuel":1,"Electros":1,"Batteries":1},
         "batch":100
     },
@@ -1701,7 +1701,7 @@
         "aoe": "brochette",
         "info": "PasseBouclier",
         "bldReq":["Usine d'armement"],
-        "compReq":{"bal":3,"mat":3,"explo":1},
+        "compReq":{"bal":2,"mat":3,"explo":1},
         "deploy":{"Carbone":1,"Fer":1,"Aluminium":2,"Rhodium":1,"Uranium":3,"Explosifs":2,"Fuel":1,"Electros":1,"Batteries":1},
         "batch":100
     },

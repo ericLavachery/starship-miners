@@ -314,7 +314,7 @@ function conSelect(unitId,player,noRefresh) {
                     if (equip.startsWith('w2-') || equip.startsWith('kit-')) {
                         weapName = ' ('+conselUnit.weapon2.name+')';
                     }
-                    if (equip.startsWith('w1-')) {
+                    if (equip.startsWith('w1-') && !equip.includes('auto')) {
                         weapName = ' ('+conselUnit.weapon.name+')';
                     }
                     flatCosts = getCosts(conselUnit,batEquip,0,'equip');

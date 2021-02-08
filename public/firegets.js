@@ -568,31 +568,35 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
             speed = speed-stealth;
         }
     }
-    if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle')) && !attacking) {
-        speed = speed-watchInitBonus-stealth;
-        console.log('bonus guet');
+    if (bat.eq === 'w1-autogun') {
+        speed = speed-50-stealth;
+    } else {
+        if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle')) && !attacking) {
+            speed = speed-watchInitBonus-stealth;
+            console.log('bonus guet');
+        }
+        if (batType.skills.includes('defense') && !attacking) {
+            speed = speed-10;
+        }
+        if (batType.skills.includes('bastion') && !attacking) {
+            speed = speed-20;
+        }
+        if (batType.skills.includes('initiative')) {
+            speed = speed-200;
+            console.log('bonus initiative');
+        }
+        if (batType.skills.includes('after')) {
+            if (attacking) {
+                speed = speed-999;
+                console.log('bonus initiative');
+            } else {
+                speed = speed+999;
+                console.log('malus initiative');
+            }
+        }
     }
     if (bat.eq === 'theeye') {
         speed = speed-25;
-    }
-    if (batType.skills.includes('initiative')) {
-        speed = speed-200;
-        console.log('bonus initiative');
-    }
-    if (batType.skills.includes('after')) {
-        if (attacking) {
-            speed = speed-999;
-            console.log('bonus initiative');
-        } else {
-            speed = speed+999;
-            console.log('malus initiative');
-        }
-    }
-    if (batType.skills.includes('defense') && !attacking) {
-        speed = speed-10;
-    }
-    if (batType.skills.includes('bastion') && !attacking) {
-        speed = speed-20;
     }
     // Skupiac drug
     if (bat.tags.includes('skupiac')) {
@@ -849,34 +853,39 @@ function weaponSelect(weapon) {
 };
 
 function weaponSelectRiposte(distance) {
-    let baseAmmo = 99;
-    let ammoLeft = 99;
-    let batWeap1 = {};
-    if (!targetBatType.weapon.kit || targetBat.eq.includes('w1-') || targetBat.eq.includes('w2-')) {
-        batWeap1 = targetBatType.weapon;
-    }
-    targetWeap = JSON.parse(JSON.stringify(batWeap1));
-    targetWeap = weaponAdj(targetWeap,targetBat,'w1');
-    if (!targetBatType.weapon2.kit || targetBat.eq.includes('kit-') || targetBat.eq.includes('w2-')) {
-        if (activeTurn == 'aliens') {
-            baseAmmo = targetWeap.maxAmmo;
-            ammoLeft = calcAmmos(targetBat,baseAmmo);
-            if (ammoLeft <= 0 || distance > targetWeap.range || targetWeap.noDef || (targetWeap.noMelee && distance === 0 && selectedBat.tileId === selectedBat.oldTileId) || (targetWeap.noFly && selectedBatType.skills.includes('fly')) || (targetWeap.noGround && !selectedBatType.skills.includes('sauteur') && !selectedBatType.skills.includes('fly'))) {
-                if (Object.keys(targetBatType.weapon2).length >= 1) {
-                    targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon2));
-                    targetWeap = weaponAdj(targetWeap,targetBat,'w2');
-                    if (!targetWeap.noDef && distance <= targetWeap.range) {
-                        baseAmmo = targetWeap.maxAmmo;
-                        ammoLeft = calcAmmos(targetBat,baseAmmo);
+    if (targetBat.eq === 'w1-autogun' || targetBat.eq === 'w1-autopistol') {
+        targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon3));
+        targetWeap = weaponAdj(targetWeap,targetBat,'w3');
+    } else {
+        let baseAmmo = 99;
+        let ammoLeft = 99;
+        let batWeap1 = {};
+        if (!targetBatType.weapon.kit || targetBat.eq.includes('w1-') || targetBat.eq.includes('w2-')) {
+            batWeap1 = targetBatType.weapon;
+        }
+        targetWeap = JSON.parse(JSON.stringify(batWeap1));
+        targetWeap = weaponAdj(targetWeap,targetBat,'w1');
+        if (!targetBatType.weapon2.kit || targetBat.eq.includes('kit-') || targetBat.eq.includes('w2-')) {
+            if (activeTurn == 'aliens') {
+                baseAmmo = targetWeap.maxAmmo;
+                ammoLeft = calcAmmos(targetBat,baseAmmo);
+                if (ammoLeft <= 0 || distance > targetWeap.range || targetWeap.noDef || (targetWeap.noMelee && distance === 0 && selectedBat.tileId === selectedBat.oldTileId) || (targetWeap.noFly && selectedBatType.skills.includes('fly')) || (targetWeap.noGround && !selectedBatType.skills.includes('sauteur') && !selectedBatType.skills.includes('fly'))) {
+                    if (Object.keys(targetBatType.weapon2).length >= 1) {
+                        targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon2));
+                        targetWeap = weaponAdj(targetWeap,targetBat,'w2');
+                        if (!targetWeap.noDef && distance <= targetWeap.range) {
+                            baseAmmo = targetWeap.maxAmmo;
+                            ammoLeft = calcAmmos(targetBat,baseAmmo);
+                        } else {
+                            ammoLeft = 0;
+                        }
                     } else {
                         ammoLeft = 0;
                     }
-                } else {
-                    ammoLeft = 0;
-                }
-                if (ammoLeft <= 0) {
-                    targetWeap = JSON.parse(JSON.stringify(batWeap1));
-                    targetWeap = weaponAdj(targetWeap,targetBat,'w1');
+                    if (ammoLeft <= 0) {
+                        targetWeap = JSON.parse(JSON.stringify(batWeap1));
+                        targetWeap = weaponAdj(targetWeap,targetBat,'w1');
+                    }
                 }
             }
         }
@@ -909,6 +918,8 @@ function weaponAdj(weapon,bat,wn) {
     let thisWeapon = {};
     if (wn == 'w2') {
         thisWeapon.num = 2;
+    } else if (wn == 'w3') {
+        thisWeapon.num = 3;
     } else {
         thisWeapon.num = 1;
     }
@@ -1033,7 +1044,7 @@ function weaponAdj(weapon,bat,wn) {
             }
             thisWeapon.accuracy = thisWeapon.accuracy+8;
         }
-    } else {
+    } else if (thisWeapon.num === 2) {
         if (bat.eq === 'longtom' || bat.eq === 'longtom2') {
             thisWeapon.range = thisWeapon.range+1;
         }

@@ -557,6 +557,15 @@
         "costs":{"Fer":90,"Tungstène":60,"Huile":10}
     },
     {
+        "name": "megafret",
+        "skills": [],
+        "info": "Augmente le fret au détriment du bloc médical et du comptoir de ravitaillement",
+        "bldReq":[],
+        "compReq":{"log":1,"trans":1},
+        "factor":"thp",
+        "costs":{"Carbone":6,"Scrap":6,"Aluminium":6}
+    },
+    {
         "name": "w1-gun",
         "skills": [],
         "info": "Première arme du bâtiment",
@@ -647,12 +656,21 @@
         "costs":{"Carbone":6,"Scrap":12,"Aluminium":12,"Titane":6}
     },
     {
-        "name": "megafret",
+        "name": "w1-autopistol",
         "skills": [],
-        "info": "Augmente le fret au détriment du bloc médical et du comptoir de ravitaillement",
+        "info": "Autopistol",
         "bldReq":[],
-        "compReq":{"log":1,"trans":1},
-        "factor":"thp",
-        "costs":{"Carbone":6,"Scrap":6,"Aluminium":6}
+        "compReq":{"log":2,"def":2,"det":2,"bal":2,"robo":1},
+        "factor":"one",
+        "costs":{"Carbone":30,"Scrap":30,"Soufre":25,"Tungstène":25,"Plomb":25,"Fer":150,"Cuivre":45,"Aluminium":60,"Silicium":45,"Electros":45,"Batteries":30}
+    },
+    {
+        "name": "w1-autogun",
+        "skills": [],
+        "info": "Tourelles automatiques",
+        "bldReq":[],
+        "compReq":{"log":2,"def":3,"det":3,"bal":3,"tank":1,"robo":1},
+        "factor":"one",
+        "costs":{"Carbone":60,"Scrap":30,"Soufre":90,"Uranium":90,"Fer":300,"Cuivre":90,"Aluminium":120,"Silicium":90,"Electros":120,"Batteries":90}
     }
 ]
