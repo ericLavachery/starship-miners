@@ -77,14 +77,22 @@ function shot(weapon,attBatType,bat,batType,shotDice) {
         batSpeed = batSpeed+3;
     }
     // Pièges
-    if (weapon.name.includes('Dart') || weapon.name.includes('Barbelés') || weapon.name === 'Explosifs' || weapon.name === 'Explosion') {
+    if (weapon.name.includes('Dart') || weapon.name.includes('Pieu') || weapon.name.includes('Barbelés') || weapon.name === 'Explosifs' || weapon.name === 'Explosion') {
         stealth = 0;
         if (batType.skills.includes('invisible') || batType.skills.includes('hide')) {
             batSpeed = 0;
         }
     }
-    // fly
     let weapAccu = weapon.accuracy;
+    // melee on melee
+    if ((weapon.isMelee || (weapon.noShield && weapon.range === 0)) && attBatType.cat != 'aliens') {
+        if (batType.weapon.isMelee) {
+            weapAccu = weapAccu+3;
+        } else {
+            weapAccu = weapAccu-3;
+        }
+    }
+    // fly
     if (batType.skills.includes('fly')) {
         weapAccu = Math.round(weapAccu*weapon.dca);
     }
@@ -140,14 +148,22 @@ function blast(brochette,attBatType,aoeShots,weapon,bat,batType,shotDice) {
         batSpeed = batSpeed+3;
     }
     // Pièges
-    if (weapon.name.includes('Dart') || weapon.name.includes('Barbelés') || weapon.name === 'Explosifs' || weapon.name === 'Explosion') {
+    if (weapon.name.includes('Dart') || weapon.name.includes('Pieu') || weapon.name.includes('Barbelés') || weapon.name === 'Explosifs' || weapon.name === 'Explosion') {
         stealth = 0;
         if (batType.skills.includes('invisible') || batType.skills.includes('hide')) {
             batSpeed = 0;
         }
     }
-    // fly
     let weapAccu = weapon.accuracy;
+    // melee on melee
+    if ((weapon.isMelee || (weapon.noShield && weapon.range === 0)) && attBatType.cat != 'aliens') {
+        if (batType.weapon.isMelee) {
+            weapAccu = weapAccu+3;
+        } else {
+            weapAccu = weapAccu-3;
+        }
+    }
+    // fly
     if (batType.skills.includes('fly')) {
         weapAccu = Math.round(weapAccu*weapon.dca);
     }
