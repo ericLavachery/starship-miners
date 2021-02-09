@@ -130,10 +130,7 @@ function checkEggsDrop() {
     if (dropChance < 0) {
         dropChance = 0;
     }
-    if (eggsNum >= 2 && playerInfos.mapDiff <= 1) {
-        dropChance = 0;
-    }
-    if (eggsNum >= 5 && playerInfos.mapDiff <= 2) {
+    if (eggsNum >= (playerInfos.mapDiff*3)-1) {
         dropChance = 0;
     }
     if (aliens.length >= maxAliens) {

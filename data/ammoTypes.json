@@ -889,6 +889,7 @@
         "apdamage": 0,
         "aoe": "",
         "info": "Incendiaire",
+        "compReq":{"pyro":1},
         "deploy":{"Bois":5,"Fer":3,"Phosphore":3,"Huile":2},
         "batch":100
     },

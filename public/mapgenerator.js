@@ -735,7 +735,7 @@ function addRes(zone) {
     // débordement rouge
     let adjTile;
     zone.forEach(function(tile) {
-        if (tile.rq === 3) {
+        if (tile.rq >= 3) {
             adjTile = tile.id-mapSize-1;
             checkAdjRes(adjTile);
             adjTile = tile.id-mapSize;
@@ -893,7 +893,7 @@ function addRes(zone) {
                         if (terrain.scarp >= 2) {
                             resChance = Math.round(resChance*1.1);
                         } else {
-                            resChance = Math.round(resChance*0.33);
+                            resChance = Math.round(resChance*0.45);
                         }
                     }
                     if (rand.rand(1,100) <= resChance) {
@@ -905,7 +905,7 @@ function addRes(zone) {
                 }
             });
             if (tile.rq === 2) {
-                if (Object.keys(tile.rs).length <= 1) {
+                if (Object.keys(tile.rs).length <= 2) {
                     // PASS 2
                     sortedRes.forEach(function(res) {
                         if (res.cat === 'white') {
@@ -922,8 +922,25 @@ function addRes(zone) {
                         }
                     });
                 }
-                if (Object.keys(tile.rs).length <= 1) {
+                if (Object.keys(tile.rs).length <= 2) {
                     // PASS 3
+                    sortedRes.forEach(function(res) {
+                        if (res.cat === 'white') {
+                            if (Object.keys(tile.rs).length <= 1) {
+                                if (tile.rs[res.name] === undefined) {
+                                    if (rand.rand(1,5) === 1) {
+                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                                        if (res.name === 'Scrap') {
+                                            tile.ruins = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+                if (Object.keys(tile.rs).length <= 2) {
+                    // PASS 4
                     sortedRes.forEach(function(res) {
                         if (res.cat === 'white') {
                             if (Object.keys(tile.rs).length <= 1) {
@@ -938,7 +955,7 @@ function addRes(zone) {
                     });
                 }
             } else if (tile.rq === 3) {
-                if (Object.keys(tile.rs).length <= 3) {
+                if (Object.keys(tile.rs).length <= 4) {
                     // PASS 2
                     sortedRes.forEach(function(res) {
                         if (res.cat === 'white') {
@@ -955,8 +972,25 @@ function addRes(zone) {
                         }
                     });
                 }
-                if (Object.keys(tile.rs).length <= 3) {
+                if (Object.keys(tile.rs).length <= 4) {
                     // PASS 3
+                    sortedRes.forEach(function(res) {
+                        if (res.cat === 'white') {
+                            if (Object.keys(tile.rs).length <= 3) {
+                                if (tile.rs[res.name] === undefined) {
+                                    if (rand.rand(1,5) === 1) {
+                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                                        if (res.name === 'Scrap') {
+                                            tile.ruins = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+                if (Object.keys(tile.rs).length <= 4) {
+                    // PASS 4
                     sortedRes.forEach(function(res) {
                         if (res.cat === 'white') {
                             if (Object.keys(tile.rs).length <= 3) {
@@ -971,7 +1005,7 @@ function addRes(zone) {
                     });
                 }
             }
-            // PASS 4
+            // PASS 5
             if (Object.keys(tile.rs).length <= 0) {
                 tile.rs[resDefault.name] = Math.round(resDefault.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
                 if (resDefault.name === 'Scrap') {
@@ -1095,8 +1129,8 @@ function checkAdjRes(adjTile) {
     if (adjTile >= 0 && adjTile <= 3599) {
         if (zone[adjTile].rq === undefined) {
             let terrain = getTileTerrain(adjTile);
-            if (rand.rand(1,Math.ceil((terrain.minChance+100)/50)) === 1) {
-                if (rand.rand(1,2) === 1) {
+            if (rand.rand(1,Math.ceil((terrain.minChance+200)/100)) === 1) {
+                if (rand.rand(1,3) === 1) {
                     zone[adjTile].rq = 1;
                 } else {
                     zone[adjTile].rq = 2;

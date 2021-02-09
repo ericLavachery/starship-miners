@@ -967,6 +967,9 @@ function recupRes(bat,batType) {
     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
         let recupFactor = 35;
         let bldFactor = 0;
+        let index;
+        let batArmor;
+        let batEquip;
         if (playerInfos.bldList.includes('Décharge')) {
             bldFactor = 2;
         }
@@ -981,12 +984,14 @@ function recupRes(bat,batType) {
                 let key = entry[0];
                 let value = entry[1];
                 value = Math.floor(value/100*recupFactor);
-                if (coffre.transRes[key] === undefined) {
-                    coffre.transRes[key] = value;
-                } else {
-                    coffre.transRes[key] = coffre.transRes[key]+value;
+                if (value >= 1) {
+                    if (coffre.transRes[key] === undefined) {
+                        coffre.transRes[key] = value;
+                    } else {
+                        coffre.transRes[key] = coffre.transRes[key]+value;
+                    }
+                    totalRes = totalRes+value;
                 }
-                totalRes = totalRes+value;
             });
         }
         if (batType.deploy != undefined) {
@@ -994,13 +999,51 @@ function recupRes(bat,batType) {
                 let key = entry[0];
                 let value = entry[1];
                 value = Math.floor(value/100*recupFactor/2);
-                if (coffre.transRes[key] === undefined) {
-                    coffre.transRes[key] = value;
-                } else {
-                    coffre.transRes[key] = coffre.transRes[key]+value;
+                if (value >= 1) {
+                    if (coffre.transRes[key] === undefined) {
+                        coffre.transRes[key] = value;
+                    } else {
+                        coffre.transRes[key] = coffre.transRes[key]+value;
+                    }
+                    totalRes = totalRes+value;
                 }
-                totalRes = totalRes+value;
             });
+        }
+        if (!bat.prt.includes('aucun') && bat.prt != undefined) {
+            batArmor = getBatArmor(bat);
+            if (batArmor.costs != undefined) {
+                Object.entries(batArmor.costs).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    value = Math.floor(value/100*recupFactor);
+                    if (value >= 1) {
+                        if (coffre.transRes[key] === undefined) {
+                            coffre.transRes[key] = value;
+                        } else {
+                            coffre.transRes[key] = coffre.transRes[key]+value;
+                        }
+                        totalRes = totalRes+value;
+                    }
+                });
+            }
+        }
+        if (!bat.eq.includes('aucun') && bat.prt != undefined) {
+            batEquip = getBatEquip(bat);
+            if (batEquip.costs != undefined) {
+                Object.entries(batEquip.costs).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    value = Math.floor(value/100*recupFactor);
+                    if (value >= 1) {
+                        if (coffre.transRes[key] === undefined) {
+                            coffre.transRes[key] = value;
+                        } else {
+                            coffre.transRes[key] = coffre.transRes[key]+value;
+                        }
+                        totalRes = totalRes+value;
+                    }
+                });
+            }
         }
         let scrapBonus = Math.ceil(totalRes/10);
         if (hasScraptruck) {

@@ -43,7 +43,7 @@
         "id":6,
         "name":"robo",
         "fullName":"Robotique",
-        "levels":{"rednecks":99,"blades":99,"bulbos":9,"drogmulojs":99,"tiradores":13,"detruas":6,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":6,"drogmulojs":99,"tiradores":6,"detruas":6,"brasier":99},
         "maxLevel":1,
         "lvlCosts":[0,2]
     },

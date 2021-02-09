@@ -292,3 +292,15 @@ function getCompById(id) {
     let gComp = gangComps[index];
     return gComp;
 };
+
+function getBatEquip(bat) {
+    let index = armorTypes.findIndex((obj => obj.name == bat.eq));
+    let batEquip = armorTypes[index];
+    return batEquip;
+}
+
+function getBatArmor(bat) {
+    let index = armorTypes.findIndex((obj => obj.name == bat.prt));
+    let batArmor = armorTypes[index];
+    return batArmor;
+}
