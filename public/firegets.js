@@ -43,6 +43,8 @@ function isHit(accuracy,minAccu,aoe,size,stealth,cover,speed,shotDice) {
     if (aoe != 'unit' && aoe != 'brochette' && size < 10) {
         hitChance = Math.round(Math.sqrt(10)*prec);
     }
+    // bonus général
+    hitChance = hitChance+hitBase;
     if (hitChance < size) {
         hitChance = size;
     }
@@ -1047,7 +1049,7 @@ function weaponAdj(weapon,bat,wn) {
         }
         if (bat.eq === 'chargeur' || bat.eq === 'chargeur1') {
             if (thisWeapon.cost < 6) {
-                thisWeapon.accuracy = thisWeapon.accuracy-3;
+                thisWeapon.accuracy = thisWeapon.accuracy-2;
                 thisWeapon.cost = thisWeapon.cost+1;
             }
         }
@@ -1066,7 +1068,7 @@ function weaponAdj(weapon,bat,wn) {
         }
         if (bat.eq === 'chargeur' || bat.eq === 'chargeur2') {
             if (thisWeapon.cost < 6) {
-                thisWeapon.accuracy = thisWeapon.accuracy-3;
+                thisWeapon.accuracy = thisWeapon.accuracy-2;
                 thisWeapon.cost = thisWeapon.cost+1;
             }
         }

@@ -98,6 +98,7 @@ let targetWeap = {};
 let nextExplosion = 1;
 let coverFactor = 0.8; // multiplie la cover du terrain (enlevé à accuracy)
 let coverAOE = 0;
+let hitBase = 10; // bonus to hit général
 let initiativeDice = 15 // ajoute 0-15
 let stopMe = false;
 let nextTurnOK = false;

@@ -20,6 +20,7 @@ function weaponsInfos(bat,batType,pop) {
     cheapWeapCost = 99;
     let accFly;
     let accGround;
+    let terrain = getTerrain(bat);
     // if (batType.weapon.rof >= 1 && batType.weapon2.rof >= 1 && batType.weapon.name === batType.weapon2.name) {
     //     showW1 = false;
     // }
@@ -29,6 +30,13 @@ function weaponsInfos(bat,batType,pop) {
     let hasW1 = false;
     if (!batType.weapon.kit || bat.eq.includes('w2-') || bat.eq.includes('w1-')) {
         hasW1 = true;
+    }
+    if (batType.weapon.rof >= 1) {
+        if (batType.weapon.name.includes('Bélier') || batType.weapon.name.includes('Boutoir') || batType.weapon.name.includes('Moissonneuse')) {
+            if (!batType.skills.includes('fly') && terrain.name === 'M') {
+                hasW1 = false;
+            }
+        }
     }
     if (batType.weapon.rof >= 1 && showW1 && hasW1) {
         thisWeapon = weaponAdj(batType.weapon,bat,'w1');
@@ -206,6 +214,13 @@ function weaponsInfos(bat,batType,pop) {
     let hasW2 = false;
     if (!batType.weapon2.kit || bat.eq.includes('kit-') || bat.eq.includes('w2-')) {
         hasW2 = true;
+    }
+    if (batType.weapon2.rof >= 1) {
+        if (batType.weapon2.name.includes('Bélier') || batType.weapon2.name.includes('Boutoir') || batType.weapon2.name.includes('Moissonneuse')) {
+            if (!batType.skills.includes('fly') && terrain.name === 'M') {
+                hasW2 = false;
+            }
+        }
     }
     if (batType.weapon2.rof >= 1 && hasW2) {
         thisWeapon = weaponAdj(batType.weapon2,bat,'w2');
