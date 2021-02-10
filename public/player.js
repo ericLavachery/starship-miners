@@ -329,7 +329,7 @@ function playerSkillsUTChanges() {
         }
         // MEDECINE
         if (playerInfos.comp.med >= 1 && unit.kind === 'zero-medecine') {
-            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-playerInfos.comp.med-2;
+            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-playerInfos.comp.med-1;
             if (unit.levels[playerInfos.gang] < 1) {
                 unit.levels[playerInfos.gang] = 1;
             }

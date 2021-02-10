@@ -316,11 +316,11 @@ function attack(melee) {
                 if (tile.infra === 'Miradors') {
                     infraProtect = 25;
                 } else if (tile.infra === 'Palissades') {
-                    infraProtect = 40;
+                    infraProtect = 33;
                 } else if (tile.infra === 'Remparts') {
-                    infraProtect = 55;
+                    infraProtect = 45;
                 } else if (tile.infra === 'Murailles') {
-                    infraProtect = 70;
+                    infraProtect = 60;
                 }
                 if (playerInfos.comp.def >= 3 && targetBatType.skills.includes('garde')) {
                     infraProtect = infraProtect+(((100-infraProtect)*1.5)-(100-infraProtect));
@@ -538,11 +538,12 @@ function attack(melee) {
             if (targetBatType.cat === 'aliens') {
                 totalDamage = Math.round(totalDamage/3);
                 apDamage = Math.round(apDamage/3);
+                $('#report').append('<span class="report rose">Résistance au feu 67%<br></span>');
             } else {
                 totalDamage = Math.round(totalDamage/1.5);
                 apDamage = Math.round(apDamage/1.5);
+                $('#report').append('<span class="report rose">Résistance au feu 33%<br></span>');
             }
-            $('#report').append('<span class="report rose">Résistance au feu<br></span>');
             console.log('résistance au feu!');
         }
     }
@@ -552,7 +553,7 @@ function attack(melee) {
             if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm')) {
                 totalDamage = Math.round(totalDamage/2);
                 apDamage = Math.round(apDamage/2);
-                $('#report').append('<span class="report rose">Résistance au secousses<br></span>');
+                $('#report').append('<span class="report rose">Résistance au secousses 50%<br></span>');
                 console.log('résistance au blast!');
             }
         }
@@ -564,11 +565,12 @@ function attack(melee) {
                 totalDamage = 0;
                 apDamage = 0;
                 targetBat.tags.push('regeneration');
+                $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
             } else {
                 totalDamage = Math.round(totalDamage/2);
                 apDamage = Math.round(apDamage/2);
+                $('#report').append('<span class="report rose">Résistance au poison 50%<br></span>');
             }
-            $('#report').append('<span class="report rose">Résistance au poison<br></span>');
             console.log('résistance au gaz!');
         }
     }
@@ -577,7 +579,7 @@ function attack(melee) {
         if (selectedWeap.ammo.includes('gaz')) {
             totalDamage = Math.round(totalDamage*2);
             apDamage = Math.round(apDamage*2);
-            $('#report').append('<span class="report rose">Sensibilité au poison<br></span>');
+            $('#report').append('<span class="report rose">Sensibilité au poison x2<br></span>');
             console.log('sensibilité au gaz!');
         }
     }
@@ -586,7 +588,7 @@ function attack(melee) {
         if (targetBatType.skills.includes('resistacide') || targetBat.tags.includes('resistacide')) {
             totalDamage = Math.round(totalDamage/1.5);
             apDamage = Math.round(apDamage/1.5);
-            $('#report').append('<span class="report rose">Résistance à l\'acide<br></span>');
+            $('#report').append('<span class="report rose">Résistance à l\'acide 33%<br></span>');
             console.log('résistance acide!');
         }
     }
@@ -594,10 +596,11 @@ function attack(melee) {
     if (targetBatType.skills.includes('resistall') || targetBat.tags.includes('resistall')) {
         if (targetBatType.cat === 'aliens') {
             totalDamage = Math.round(totalDamage/1.5);
+            $('#report').append('<span class="report rose">Protection 33%<br></span>');
         } else {
             totalDamage = Math.round(totalDamage/1.25);
+            $('#report').append('<span class="report rose">Protection 20%<br></span>');
         }
-        $('#report').append('<span class="report rose">Protection 33%<br></span>');
     }
     // ricochet
     if (targetBatType.skills.includes('ricochet') || targetBat.tags.includes('ricochet')) {
@@ -867,7 +870,7 @@ function attack(melee) {
     if (selectedWeap.ammo.includes('necro')) {
         if (!targetBat.tags.includes('necro')) {
             if (targetBatType.cat === 'infantry' && !targetBat.tags.includes('zombie')) {
-                if (totalDamage >= 15 && rand.rand(1,4) === 1) {
+                if (totalDamage >= 15) {
                     targetBat.tags.push('necro');
                     targetBat.tags.push('necro');
                     targetBat.tags.push('necro');
@@ -1077,11 +1080,11 @@ function defense(melee) {
                 if (tile.infra === 'Miradors') {
                     infraProtect = 25;
                 } else if (tile.infra === 'Palissades') {
-                    infraProtect = 40;
+                    infraProtect = 33;
                 } else if (tile.infra === 'Remparts') {
-                    infraProtect = 55;
+                    infraProtect = 45;
                 } else if (tile.infra === 'Murailles') {
-                    infraProtect = 70;
+                    infraProtect = 60;
                 }
                 if (playerInfos.comp.def >= 3 && selectedBatType.skills.includes('garde')) {
                     infraProtect = infraProtect+(((100-infraProtect)*1.5)-(100-infraProtect));
@@ -1250,11 +1253,12 @@ function defense(melee) {
             if (selectedBatType.cat === 'aliens') {
                 totalDamage = Math.round(totalDamage/3);
                 apDamage = Math.round(apDamage/3);
+                $('#report').append('<span class="report rose">Résistance au feu 67%<br></span>');
             } else {
                 totalDamage = Math.round(totalDamage/1.5);
                 apDamage = Math.round(apDamage/1.5);
+                $('#report').append('<span class="report rose">Résistance au feu 33%<br></span>');
             }
-            $('#report').append('<span class="report rose">Résistance au feu<br></span>');
             console.log('résistance au feu!');
         }
     }
@@ -1264,7 +1268,7 @@ function defense(melee) {
             if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm')) {
                 totalDamage = Math.round(totalDamage/2);
                 apDamage = Math.round(apDamage/2);
-                $('#report').append('<span class="report rose">Résistance aux secousses<br></span>');
+                $('#report').append('<span class="report rose">Résistance aux secousses 50%<br></span>');
                 console.log('résistance au blast!');
             }
         }
@@ -1273,14 +1277,15 @@ function defense(melee) {
     if (selectedBatType.skills.includes('resistpoison') || selectedBatType.skills.includes('eatpoison') || selectedBat.tags.includes('resistpoison')) {
         if (targetWeap.ammo.includes('gaz')) {
             if (selectedBatType.skills.includes('eatpoison') && !selectedBat.tags.includes('regeneration')) {
-                selectedBat.tags.push('regeneration');
                 totalDamage = 0;
                 apDamage = 0;
+                selectedBat.tags.push('regeneration');
+                $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
             } else {
                 totalDamage = Math.round(totalDamage/2);
                 apDamage = Math.round(apDamage/2);
+                $('#report').append('<span class="report rose">Résistance au poison 50%<br></span>');
             }
-            $('#report').append('<span class="report rose">Résistance au poison<br></span>');
             console.log('résistance au gaz!');
         }
     }
@@ -1289,7 +1294,7 @@ function defense(melee) {
         if (targetWeap.ammo.includes('gaz')) {
             totalDamage = Math.round(totalDamage*2);
             apDamage = Math.round(apDamage*2);
-            $('#report').append('<span class="report rose">Sensibilité au poison<br></span>');
+            $('#report').append('<span class="report rose">Sensibilité au poison x2<br></span>');
             console.log('sensibilité au gaz!');
         }
     }
@@ -1298,7 +1303,7 @@ function defense(melee) {
         if (selectedBatType.skills.includes('resistacide') || selectedBat.tags.includes('resistacide')) {
             totalDamage = Math.round(totalDamage/1.5);
             apDamage = Math.round(apDamage/1.5);
-            $('#report').append('<span class="report rose">Résistance à l\'acide<br></span>');
+            $('#report').append('<span class="report rose">Résistance à l\'acide 33%<br></span>');
             console.log('résistance acide!');
         }
     }
@@ -1306,10 +1311,11 @@ function defense(melee) {
     if (selectedBatType.skills.includes('resistall') || selectedBat.tags.includes('resistall')) {
         if (selectedBatType.cat === 'aliens') {
             totalDamage = Math.round(totalDamage/1.5);
+            $('#report').append('<span class="report rose">Protection 33%<br></span>');
         } else {
             totalDamage = Math.round(totalDamage/1.25);
+            $('#report').append('<span class="report rose">Protection 20%<br></span>');
         }
-        $('#report').append('<span class="report rose">Protection 33%<br></span>');
     }
     // ricochet
     if (selectedBatType.skills.includes('ricochet') || selectedBat.tags.includes('ricochet')) {
@@ -1434,7 +1440,7 @@ function defense(melee) {
     if (targetWeap.ammo.includes('necro')) {
         if (!selectedBat.tags.includes('necro')) {
             if (selectedBatType.cat == 'infantry' && !selectedBat.tags.includes('zombie')) {
-                if (totalDamage >= 15 && rand.rand(1,4) === 1) {
+                if (totalDamage >= 15) {
                     selectedBat.tags.push('necro');
                     selectedBat.tags.push('necro');
                     selectedBat.tags.push('necro');
