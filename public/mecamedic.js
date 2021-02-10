@@ -44,6 +44,9 @@ function medic(cat,cost,around,deep) {
                         if (bat.tags.includes('necro') && playerInfos.comp.med < 3 && !selectedBatType.skills.includes('necrocure')) {
                             catOK = false;
                         }
+                        if (rand.rand(1,100) <= bat.soins-10) {
+                            catOK = false;
+                        }
                         if (catOK && !batType.skills.includes('norepair')) {
                             console.log('catOK');
                             console.log(bat);
@@ -72,6 +75,7 @@ function medic(cat,cost,around,deep) {
                                     if (bat.loc === "zone") {
                                         showBataillon(bat);
                                     }
+                                    addHealFlag(bat);
                                     putTagAction(bat);
                                 } else if (bat.tags.includes('venin') && (deep || playerInfos.comp.med >= 2)) {
                                     totalAPCost = totalAPCost+apCost;
@@ -83,6 +87,7 @@ function medic(cat,cost,around,deep) {
                                     if (bat.loc === "zone") {
                                         showBataillon(bat);
                                     }
+                                    addHealFlag(bat);
                                     putTagAction(bat);
                                 } else if (bat.damage > 0 && !fullBat) {
                                     if (bat.id === selectedBat.id) {
@@ -98,6 +103,7 @@ function medic(cat,cost,around,deep) {
                                     if (bat.loc === "zone") {
                                         showBataillon(bat);
                                     }
+                                    addHealFlag(bat);
                                     putTagAction(bat);
                                 } else if (bat.squadsLeft < batType.squads-1 && deep && batType.squads >= 10 && !fullBat) {
                                     // double soin pour unités ayant bcp de squads
@@ -115,6 +121,7 @@ function medic(cat,cost,around,deep) {
                                     if (bat.loc === "zone") {
                                         showBataillon(bat);
                                     }
+                                    addHealFlag(bat);
                                     putTagAction(bat);
                                 } else if (bat.squadsLeft < batType.squads && deep && !fullBat) {
                                     if (bat.id === selectedBat.id) {
@@ -131,6 +138,7 @@ function medic(cat,cost,around,deep) {
                                     if (bat.loc === "zone") {
                                         showBataillon(bat);
                                     }
+                                    addHealFlag(bat);
                                     putTagAction(bat);
                                 } else if (((bat.squadsLeft === batType.squads && bat.damage === 0) || fullBat) && bat.tags.includes('parasite') && deep) {
                                     tagDelete(bat,'parasite');
@@ -139,6 +147,7 @@ function medic(cat,cost,around,deep) {
                                     console.log('totalAPCost '+totalAPCost);
                                     xpGain = xpGain+1;
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">parasite tué<br></span>');
+                                    addHealFlag(bat);
                                     putTagAction(bat);
                                 } else if (((bat.squadsLeft === batType.squads && bat.damage === 0) || fullBat) && bat.tags.includes('maladie') && deep) {
                                     tagDelete(bat,'maladie');
@@ -147,6 +156,7 @@ function medic(cat,cost,around,deep) {
                                     console.log('totalAPCost '+totalAPCost);
                                     xpGain = xpGain+0.35;
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">maladie guérie<br></span>');
+                                    addHealFlag(bat);
                                     putTagAction(bat);
                                 }
                             } else {
@@ -231,7 +241,14 @@ function medic(cat,cost,around,deep) {
     } else {
         batUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
         if (cat === 'infantry') {
-            if (!selectedBat.tags.includes('necro') || playerInfos.comp.med >= 3 || selectedBatType.skills.includes('necrocure')) {
+            catOK = true;
+            if (selectedBat.tags.includes('necro') && playerInfos.comp.med < 3 && !selectedBatType.skills.includes('necrocure')) {
+                catOK = false;
+            }
+            if (rand.rand(1,100) <= selectedBat.soins-10) {
+                catOK = false;
+            }
+            if (catOK) {
                 if (selectedBat.tags.includes('poison')) {
                     totalAPCost = totalAPCost+apCost;
                     tagDelete(selectedBat,'poison');
@@ -239,11 +256,13 @@ function medic(cat,cost,around,deep) {
                         tagDelete(selectedBat,'poison');
                     }
                     $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">poison neutralisé<br></span>');
+                    addHealFlag(selectedBat);
                     showBataillon(selectedBat);
                 } else if (selectedBat.tags.includes('venin') && (deep || playerInfos.comp.med >= 2)) {
                     totalAPCost = totalAPCost+apCost;
                     tagDelete(bat,'venin');
                     $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">venin neutralisé<br></span>');
+                    addHealFlag(selectedBat);
                     showBataillon(bat);
                 } else if (selectedBat.damage > 0) {
                     selectedBat.damage = 0
@@ -253,6 +272,7 @@ function medic(cat,cost,around,deep) {
                     } else {
                         $('#report').append('<span class="report cy">'+selectedBat.type+'<br></span><span class="report">dégâts réparés<br>');
                     }
+                    addHealFlag(selectedBat);
                     showBataillon(selectedBat);
                 } else if (selectedBat.squadsLeft < selectedBatType.squads && deep) {
                     batUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
@@ -264,14 +284,17 @@ function medic(cat,cost,around,deep) {
                     } else {
                         $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">escouade rétablie (<span class="cy">'+newBatUnits+'</span>)</span><br>');
                     }
+                    addHealFlag(selectedBat);
                     showBataillon(selectedBat);
                 } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('parasite') && deep) {
                     tagDelete(selectedBat,'parasite');
                     totalAPCost = totalAPCost+apCost;
+                    addHealFlag(selectedBat);
                     $('#report').append('<span class="report">parasite tué<br></span>');
                 } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('maladie') && deep) {
                     tagDelete(selectedBat,'maladie');
                     totalAPCost = totalAPCost+apCost;
+                    addHealFlag(selectedBat);
                     $('#report').append('<span class="report">maladie guérie<br></span>');
                 }
             }
@@ -395,6 +418,22 @@ function numMedicTargets(myBat,cat,around,deep) {
         });
     }
     return numTargets;
+};
+
+function addHealFlag(bat) {
+    if (bat.id === selectedBat.id) {
+        if (selectedBat.soins != undefined) {
+            selectedBat.soins = selectedBat.soins+1;
+        } else {
+            selectedBat.soins = 1;
+        }
+    } else {
+        if (bat.soins != undefined) {
+            bat.soins = bat.soins+1;
+        } else {
+            bat.soins = 1;
+        }
+    }
 };
 
 function isHurt(bat) {

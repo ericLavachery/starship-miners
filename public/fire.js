@@ -870,7 +870,7 @@ function attack(melee) {
     if (selectedWeap.ammo.includes('necro')) {
         if (!targetBat.tags.includes('necro')) {
             if (targetBatType.cat === 'infantry' && !targetBat.tags.includes('zombie')) {
-                if (totalDamage >= 15) {
+                if (totalDamage >= 10) {
                     targetBat.tags.push('necro');
                     targetBat.tags.push('necro');
                     targetBat.tags.push('necro');
@@ -1440,7 +1440,7 @@ function defense(melee) {
     if (targetWeap.ammo.includes('necro')) {
         if (!selectedBat.tags.includes('necro')) {
             if (selectedBatType.cat == 'infantry' && !selectedBat.tags.includes('zombie')) {
-                if (totalDamage >= 15) {
+                if (totalDamage >= 10) {
                     selectedBat.tags.push('necro');
                     selectedBat.tags.push('necro');
                     selectedBat.tags.push('necro');
