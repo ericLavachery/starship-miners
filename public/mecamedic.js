@@ -41,6 +41,9 @@ function medic(cat,cost,around,deep) {
                         } else {
                             catOK = false;
                         }
+                        if (bat.tags.includes('necro') && playerInfos.comp.med < 3 && !selectedBatType.skills.includes('necrocure')) {
+                            catOK = false;
+                        }
                         if (catOK && !batType.skills.includes('norepair')) {
                             console.log('catOK');
                             console.log(bat);
@@ -228,47 +231,49 @@ function medic(cat,cost,around,deep) {
     } else {
         batUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
         if (cat === 'infantry') {
-            if (selectedBat.tags.includes('poison')) {
-                totalAPCost = totalAPCost+apCost;
-                tagDelete(selectedBat,'poison');
-                if (deep) {
+            if (!selectedBat.tags.includes('necro') || playerInfos.comp.med >= 3 || selectedBatType.skills.includes('necrocure')) {
+                if (selectedBat.tags.includes('poison')) {
+                    totalAPCost = totalAPCost+apCost;
                     tagDelete(selectedBat,'poison');
+                    if (deep) {
+                        tagDelete(selectedBat,'poison');
+                    }
+                    $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">poison neutralisé<br></span>');
+                    showBataillon(selectedBat);
+                } else if (selectedBat.tags.includes('venin') && (deep || playerInfos.comp.med >= 2)) {
+                    totalAPCost = totalAPCost+apCost;
+                    tagDelete(bat,'venin');
+                    $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">venin neutralisé<br></span>');
+                    showBataillon(bat);
+                } else if (selectedBat.damage > 0) {
+                    selectedBat.damage = 0
+                    totalAPCost = totalAPCost+apCost;
+                    if (cat == 'infantry') {
+                        $('#report').append('<span class="report cy">'+selectedBat.type+'<br></span><span class="report">dégâts soignés<br>');
+                    } else {
+                        $('#report').append('<span class="report cy">'+selectedBat.type+'<br></span><span class="report">dégâts réparés<br>');
+                    }
+                    showBataillon(selectedBat);
+                } else if (selectedBat.squadsLeft < selectedBatType.squads && deep) {
+                    batUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
+                    selectedBat.squadsLeft = selectedBat.squadsLeft+1;
+                    totalAPCost = totalAPCost+apCost;
+                    newBatUnits = batUnits+selectedBatType.squadSize;
+                    if (cat == 'buildings') {
+                        $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">section reconstruite (<span class="cy">'+newBatUnits+'</span>)</span><br>');
+                    } else {
+                        $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">escouade rétablie (<span class="cy">'+newBatUnits+'</span>)</span><br>');
+                    }
+                    showBataillon(selectedBat);
+                } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('parasite') && deep) {
+                    tagDelete(selectedBat,'parasite');
+                    totalAPCost = totalAPCost+apCost;
+                    $('#report').append('<span class="report">parasite tué<br></span>');
+                } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('maladie') && deep) {
+                    tagDelete(selectedBat,'maladie');
+                    totalAPCost = totalAPCost+apCost;
+                    $('#report').append('<span class="report">maladie guérie<br></span>');
                 }
-                $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">poison neutralisé<br></span>');
-                showBataillon(selectedBat);
-            } else if (selectedBat.tags.includes('venin') && (deep || playerInfos.comp.med >= 2)) {
-                totalAPCost = totalAPCost+apCost;
-                tagDelete(bat,'venin');
-                $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">venin neutralisé<br></span>');
-                showBataillon(bat);
-            } else if (selectedBat.damage > 0) {
-                selectedBat.damage = 0
-                totalAPCost = totalAPCost+apCost;
-                if (cat == 'infantry') {
-                    $('#report').append('<span class="report cy">'+selectedBat.type+'<br></span><span class="report">dégâts soignés<br>');
-                } else {
-                    $('#report').append('<span class="report cy">'+selectedBat.type+'<br></span><span class="report">dégâts réparés<br>');
-                }
-                showBataillon(selectedBat);
-            } else if (selectedBat.squadsLeft < selectedBatType.squads && deep) {
-                batUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
-                selectedBat.squadsLeft = selectedBat.squadsLeft+1;
-                totalAPCost = totalAPCost+apCost;
-                newBatUnits = batUnits+selectedBatType.squadSize;
-                if (cat == 'buildings') {
-                    $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">section reconstruite (<span class="cy">'+newBatUnits+'</span>)</span><br>');
-                } else {
-                    $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">escouade rétablie (<span class="cy">'+newBatUnits+'</span>)</span><br>');
-                }
-                showBataillon(selectedBat);
-            } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('parasite') && deep) {
-                tagDelete(selectedBat,'parasite');
-                totalAPCost = totalAPCost+apCost;
-                $('#report').append('<span class="report">parasite tué<br></span>');
-            } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('maladie') && deep) {
-                tagDelete(selectedBat,'maladie');
-                totalAPCost = totalAPCost+apCost;
-                $('#report').append('<span class="report">maladie guérie<br></span>');
             }
         } else {
             if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage > 0) {
@@ -333,15 +338,17 @@ function numMedicTargets(myBat,cat,around,deep) {
     let batHPLeft;
     let fullBat;
     if (!around) {
-        if ((deep || playerInfos.comp.med >= 2) && myBat.tags.includes('venin')) {
-            numTargets = numTargets+1;
-        } else if (deep) {
-            if (myBat.damage > 0 || myBat.squadsLeft < myBatType.squads || myBat.tags.includes('poison') || myBat.tags.includes('venin') || myBat.tags.includes('maladie') || myBat.tags.includes('parasite') || myBat.tags.includes('trou')) {
+        if (!myBat.tags.includes('necro') || playerInfos.comp.med >= 3 || myBatType.skills.includes('necrocure')) {
+            if ((deep || playerInfos.comp.med >= 2) && myBat.tags.includes('venin')) {
                 numTargets = numTargets+1;
-            }
-        } else {
-            if (myBat.damage > 0 || myBat.tags.includes('poison')) {
-                numTargets = numTargets+1;
+            } else if (deep) {
+                if (myBat.damage > 0 || myBat.squadsLeft < myBatType.squads || myBat.tags.includes('poison') || myBat.tags.includes('venin') || myBat.tags.includes('maladie') || myBat.tags.includes('parasite') || myBat.tags.includes('trou')) {
+                    numTargets = numTargets+1;
+                }
+            } else {
+                if (myBat.damage > 0 || myBat.tags.includes('poison')) {
+                    numTargets = numTargets+1;
+                }
             }
         }
     } else {
@@ -365,6 +372,9 @@ function numMedicTargets(myBat,cat,around,deep) {
                     } else if (cat === 'any') {
                         catOK = true;
                     } else {
+                        catOK = false;
+                    }
+                    if (bat.tags.includes('necro') && playerInfos.comp.med < 3 && !myBatType.skills.includes('necrocure')) {
                         catOK = false;
                     }
                     if (catOK && !batType.skills.includes('norepair')) {

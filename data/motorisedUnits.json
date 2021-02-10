@@ -1444,7 +1444,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["noguet","medic","selfbadmecano","dealer","kirin","octiron","starka","transport","hscarpmove","light","badcrewsave"],
+        "skills":["noguet","medic","necrocure","selfbadmecano","dealer","kirin","octiron","starka","transport","hscarpmove","light","badcrewsave"],
         "mediCost":4,
         "mecanoCost":14,
         "transMaxSize":9,

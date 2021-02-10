@@ -474,10 +474,10 @@
         "class":"B",
         "rarity":5,
         "squads":6,
-        "squadSize":20,
+        "squadSize":25,
         "crew":0,
         "hp":2,
-        "armor":3,
+        "armor":5,
         "size":1,
         "speed":1,
         "stealth":7,
@@ -490,7 +490,7 @@
             "noFly":true,
             "isMelee":true,
             "rof":20,
-            "accuracy":18,
+            "accuracy":22,
             "power":3,
             "aoe":"unit",
             "sound":"bbbite",
@@ -543,7 +543,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["grip","venin","resistpoison","okwater"],
+        "skills":["grip","venin","eatpoison","okwater"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":2,"Swarmine":3,"Mephitis":3}
     },
@@ -614,7 +614,7 @@
             "noFly":true,
             "isMelee":true,
             "rof":15,
-            "accuracy":6,
+            "accuracy":8,
             "power":2,
             "armors":0.75,
             "aoe":"unit",
@@ -858,7 +858,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"apple",
-            "ammo":["none"]
+            "ammo":["creuseur"]
         },
         "weapon2":{
             "name":"Rostre",
@@ -872,7 +872,7 @@
             "armors":0.4,
             "aoe":"unit",
             "sound":"spear",
-            "ammo":["none"]
+            "ammo":["necro"]
         },
         "w2chance":3,
         "moveCost":3,
@@ -913,7 +913,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"apple",
-            "ammo":["none"]
+            "ammo":["creuseur"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -950,7 +950,7 @@
             "noFly":false,
             "isMelee":false,
             "rof":10,
-            "accuracy":13,
+            "accuracy":11,
             "dca":1.5,
             "power":2,
             "aoe":"unit",
@@ -964,7 +964,7 @@
             "noFly":false,
             "isMelee":false,
             "rof":10,
-            "accuracy":13,
+            "accuracy":14,
             "dca":1.5,
             "power":2,
             "aoe":"unit",
@@ -1160,7 +1160,7 @@
             "power":3,
             "aoe":"unit",
             "sound":"bite",
-            "ammo":["none"]
+            "ammo":["creuseur"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -1201,7 +1201,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"bite",
-            "ammo":["none"]
+            "ammo":["creuseur"]
         },
         "weapon2":{
             "name":"Mandibules",
@@ -1214,7 +1214,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"bite",
-            "ammo":["none"]
+            "ammo":["creuseur"]
         },
         "w2chance":3,
         "moveCost":4,
@@ -1425,7 +1425,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"bite",
-            "ammo":["creuseur"]
+            "ammo":["necro"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -1774,7 +1774,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"bite",
-            "ammo":["none"]
+            "ammo":["creuseur"]
         },
         "weapon2":{
             "name":"Toile",
@@ -1873,7 +1873,7 @@
             "armors":0.75,
             "aoe":"brochette",
             "sound":"ghost",
-            "ammo":["none"]
+            "ammo":["necro"]
         },
         "weapon2":{
             "name":"Rostre",
@@ -1887,7 +1887,7 @@
             "armors":0.3,
             "aoe":"brochette",
             "sound":"spear",
-            "ammo":["none"]
+            "ammo":["necro"]
         },
         "w2chance":4,
         "moveCost":8,

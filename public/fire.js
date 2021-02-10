@@ -535,8 +535,13 @@ function attack(melee) {
     // résistance au feu
     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('pyratol') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov') || selectedWeap.ammo.includes('laser')) {
         if (targetBatType.skills.includes('resistfeu') || targetBat.tags.includes('resistfeu')) {
-            totalDamage = Math.round(totalDamage/1.5);
-            apDamage = Math.round(apDamage/1.5);
+            if (targetBatType.cat === 'aliens') {
+                totalDamage = Math.round(totalDamage/3);
+                apDamage = Math.round(apDamage/3);
+            } else {
+                totalDamage = Math.round(totalDamage/1.5);
+                apDamage = Math.round(apDamage/1.5);
+            }
             $('#report').append('<span class="report rose">Résistance au feu<br></span>');
             console.log('résistance au feu!');
         }
@@ -545,18 +550,24 @@ function attack(melee) {
     if (targetBatType.skills.includes('resistblast') || targetBat.tags.includes('resistblast')) {
         if (selectedWeap.ammo.includes('nanite') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('dynamite') || selectedWeap.ammo.includes('bombe') || selectedWeap.ammo.includes('explosif') || selectedWeap.ammo.includes('explosive') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('grenade') || selectedWeap.ammo.includes('disco')) {
             if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm')) {
-                totalDamage = Math.round(totalDamage/1.5);
-                apDamage = Math.round(apDamage/1.5);
+                totalDamage = Math.round(totalDamage/2);
+                apDamage = Math.round(apDamage/2);
                 $('#report').append('<span class="report rose">Résistance au secousses<br></span>');
                 console.log('résistance au blast!');
             }
         }
     }
     // résistance poison (gaz)
-    if (targetBatType.skills.includes('resistpoison') || targetBat.tags.includes('resistpoison')) {
+    if (targetBatType.skills.includes('resistpoison') || targetBatType.skills.includes('eatpoison') || targetBat.tags.includes('resistpoison')) {
         if (selectedWeap.ammo.includes('gaz')) {
-            totalDamage = Math.round(totalDamage/2);
-            apDamage = Math.round(apDamage/2);
+            if (targetBatType.skills.includes('eatpoison') && !targetBat.tags.includes('regeneration')) {
+                totalDamage = 0;
+                apDamage = 0;
+                targetBat.tags.push('regeneration');
+            } else {
+                totalDamage = Math.round(totalDamage/2);
+                apDamage = Math.round(apDamage/2);
+            }
             $('#report').append('<span class="report rose">Résistance au poison<br></span>');
             console.log('résistance au gaz!');
         }
@@ -581,7 +592,11 @@ function attack(melee) {
     }
     // résistance all
     if (targetBatType.skills.includes('resistall') || targetBat.tags.includes('resistall')) {
-        totalDamage = Math.round(totalDamage/1.5);
+        if (targetBatType.cat === 'aliens') {
+            totalDamage = Math.round(totalDamage/1.5);
+        } else {
+            totalDamage = Math.round(totalDamage/1.25);
+        }
         $('#report').append('<span class="report rose">Protection 33%<br></span>');
     }
     // ricochet
@@ -641,7 +656,11 @@ function attack(melee) {
         if (selectedBatType.name == 'Bourdons') {
             gripbonus = -20;
         }
-        let gripChance = (selectedBat.squadsLeft*5)+gripbonus-(targetBat.vet*3);
+        let gripFactor = 1;
+        if (selectedBatType.skills.includes('eatpoison') && selectedBat.tags.includes('regeneration')) {
+            gripFactor = 2;
+        }
+        let gripChance = ((selectedBat.squadsLeft*5)+gripbonus-(targetBat.vet*3))*gripFactor;
         if (targetBatType.cat != 'aliens') {
             gripChance = Math.ceil(gripChance/(playerInfos.comp.ca+5)*7);
         }
@@ -712,7 +731,7 @@ function attack(melee) {
                     }
                 }
             }
-            apDamage = apDamage+gripDamage;
+            apDamage = apDamage+(gripDamage*gripFactor);
             console.log('Grip OK');
             $('#report').append('<span class="report rose">Agrippé<br></span>');
         } else {
@@ -749,7 +768,7 @@ function attack(melee) {
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium') || selectedWeap.ammo.includes('trap')) {
-            if (!targetBatType.skills.includes('resistpoison') && !targetBat.tags.includes('zombie')) {
+            if (!targetBatType.skills.includes('resistpoison') && !targetBatType.skills.includes('eatpoison') && !targetBat.tags.includes('zombie')) {
                 if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || targetBatType.cat == 'aliens') {
                     targetBat.tags.push('poison');
                     if (selectedWeap.ammo.includes('atium')) {
@@ -769,6 +788,9 @@ function attack(melee) {
                     let allTags = _.countBy(targetBat.tags);
                     $('#report').append('<span class="report rose">Poison ('+allTags.poison+')<br></span>');
                 }
+            }
+            if (targetBatType.skills.includes('eatpoison') && !targetBat.tags.includes('regeneration')) {
+                targetBat.tags.push('regeneration');
             }
         }
     }
@@ -838,6 +860,20 @@ function attack(melee) {
                 targetBat.tags.push('maladie');
                 console.log('Maladie!');
                 $('#report').append('<span class="report rose">Maladie<br></span>');
+            }
+        }
+    }
+    // necrotoxine
+    if (selectedWeap.ammo.includes('necro')) {
+        if (!targetBat.tags.includes('necro')) {
+            if (targetBatType.cat === 'infantry' && !targetBat.tags.includes('zombie')) {
+                if (totalDamage >= 15 && rand.rand(1,4) === 1) {
+                    targetBat.tags.push('necro');
+                    targetBat.tags.push('necro');
+                    targetBat.tags.push('necro');
+                    console.log('Nécrotoxine!');
+                    $('#report').append('<span class="report rose">Nécrotoxine<br></span>');
+                }
             }
         }
     }
@@ -1211,8 +1247,13 @@ function defense(melee) {
     // résistance au feu
     if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('pyratol') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov') || targetWeap.ammo.includes('laser')) {
         if (selectedBatType.skills.includes('resistfeu') || selectedBat.tags.includes('resistfeu')) {
-            totalDamage = Math.round(totalDamage/1.5);
-            apDamage = Math.round(apDamage/1.5);
+            if (selectedBatType.cat === 'aliens') {
+                totalDamage = Math.round(totalDamage/3);
+                apDamage = Math.round(apDamage/3);
+            } else {
+                totalDamage = Math.round(totalDamage/1.5);
+                apDamage = Math.round(apDamage/1.5);
+            }
             $('#report').append('<span class="report rose">Résistance au feu<br></span>');
             console.log('résistance au feu!');
         }
@@ -1221,18 +1262,24 @@ function defense(melee) {
     if (selectedBatType.skills.includes('resistblast') || selectedBat.tags.includes('resistblast')) {
         if (targetWeap.ammo.includes('nanite') || targetWeap.ammo.includes('suicide') || targetWeap.ammo.includes('mine') || targetWeap.ammo.includes('autodestruction') || targetWeap.ammo.includes('dynamite') || targetWeap.ammo.includes('bombe') || targetWeap.ammo.includes('explosif') || targetWeap.ammo.includes('explosive') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('grenade') || targetWeap.ammo.includes('disco')) {
             if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm')) {
-                totalDamage = Math.round(totalDamage/1.5);
-                apDamage = Math.round(apDamage/1.5);
+                totalDamage = Math.round(totalDamage/2);
+                apDamage = Math.round(apDamage/2);
                 $('#report').append('<span class="report rose">Résistance aux secousses<br></span>');
                 console.log('résistance au blast!');
             }
         }
     }
     // résistance poison (gaz)
-    if (selectedBatType.skills.includes('resistpoison') || selectedBat.tags.includes('resistpoison')) {
+    if (selectedBatType.skills.includes('resistpoison') || selectedBatType.skills.includes('eatpoison') || selectedBat.tags.includes('resistpoison')) {
         if (targetWeap.ammo.includes('gaz')) {
-            totalDamage = Math.round(totalDamage/2);
-            apDamage = Math.round(apDamage/2);
+            if (selectedBatType.skills.includes('eatpoison') && !selectedBat.tags.includes('regeneration')) {
+                selectedBat.tags.push('regeneration');
+                totalDamage = 0;
+                apDamage = 0;
+            } else {
+                totalDamage = Math.round(totalDamage/2);
+                apDamage = Math.round(apDamage/2);
+            }
             $('#report').append('<span class="report rose">Résistance au poison<br></span>');
             console.log('résistance au gaz!');
         }
@@ -1257,7 +1304,11 @@ function defense(melee) {
     }
     // résistance all
     if (selectedBatType.skills.includes('resistall') || selectedBat.tags.includes('resistall')) {
-        totalDamage = Math.round(totalDamage/1.5);
+        if (selectedBatType.cat === 'aliens') {
+            totalDamage = Math.round(totalDamage/1.5);
+        } else {
+            totalDamage = Math.round(totalDamage/1.25);
+        }
         $('#report').append('<span class="report rose">Protection 33%<br></span>');
     }
     // ricochet
@@ -1307,7 +1358,7 @@ function defense(melee) {
     // poison
     if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium') || targetWeap.ammo.includes('trap')) {
-            if (!selectedBatType.skills.includes('resistpoison') && !selectedBat.tags.includes('zombie')) {
+            if (!selectedBatType.skills.includes('resistpoison') && !selectedBatType.skills.includes('eatpoison') && !selectedBat.tags.includes('zombie')) {
                 if ((selectedBatType.cat == 'infantry' && (!selectedBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || selectedBatType.cat == 'aliens') {
                     selectedBat.tags.push('poison');
                     if (targetWeap.ammo.includes('atium')) {
@@ -1321,6 +1372,9 @@ function defense(melee) {
                     let allTags = _.countBy(selectedBat.tags);
                     $('#report').append('<span class="report rose">Poison ('+allTags.poison+')<br></span>');
                 }
+            }
+            if (selectedBatType.skills.includes('eatpoison') && !selectedBat.tags.includes('regeneration')) {
+                selectedBat.tags.push('regeneration');
             }
         }
     }
@@ -1373,6 +1427,20 @@ function defense(melee) {
                 selectedBat.tags.push('maladie');
                 console.log('Maladie!');
                 $('#report').append('<span class="report rose">Maladie<br></span>');
+            }
+        }
+    }
+    // necrotoxine
+    if (targetWeap.ammo.includes('necro')) {
+        if (!selectedBat.tags.includes('necro')) {
+            if (selectedBatType.cat == 'infantry' && !selectedBat.tags.includes('zombie')) {
+                if (totalDamage >= 15 && rand.rand(1,4) === 1) {
+                    selectedBat.tags.push('necro');
+                    selectedBat.tags.push('necro');
+                    selectedBat.tags.push('necro');
+                    console.log('Nécrotoxine!');
+                    $('#report').append('<span class="report rose">Nécrotoxine<br></span>');
+                }
             }
         }
     }

@@ -376,8 +376,10 @@ function calcDamage(weapon,power,armor,defBat) {
     }
     let armorModifier = weapon.armors;
     // creuseur
-    if (weapon.ammo.includes('troueur') || weapon.ammo.includes('creuseur')) {
-        if (defBat.tags.includes('trou')) {
+    if (defBat.tags.includes('trou')) {
+        if (weapon.ammo.includes('troueur')) {
+            armorModifier = 0;
+        } else if (weapon.ammo.includes('creuseur') || weapon.ammo.includes('acide')) {
             armorModifier = 0.15;
         }
     }
@@ -1183,6 +1185,10 @@ function weaponAdj(weapon,bat,wn) {
     if (bat.tags.includes('skupiac')) {
         thisWeapon.accuracy = thisWeapon.accuracy+6;
         thisWeapon.power = thisWeapon.power+1;
+    }
+    // eatpoison & frenzy
+    if (batType.skills.includes('eatpoison') && bat.tags.includes('regeneration')) {
+        thisWeapon.rof = Math.round(thisWeapon.rof*2);
     }
     // skills
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));

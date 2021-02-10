@@ -655,6 +655,8 @@ function tagsEffect(bat,batType) {
             if (batType.skills.includes('reactpoison') && bat.tags.includes('shinda')) {
                 regOK = false;
             }
+        } else if (bat.tags.includes('necro') || bat.tags.includes('venin')) {
+            regOK = false;
         }
         if (regOK) {
             squadHP = batType.squadSize*batType.hp;
@@ -702,6 +704,18 @@ function tagsEffect(bat,batType) {
             tagDelete(bat,'poison');
             tagDelete(bat,'poison');
             tagDelete(bat,'poison');
+        }
+    }
+    // NECRO
+    if (bat.tags.includes('necro')) {
+        if (bat.tags.includes('octiron')) {
+            if (rand.rand(1,2) === 1) {
+                tagDelete(bat,'necro');
+            }
+        } else {
+            if (rand.rand(1,6) === 1) {
+                tagDelete(bat,'necro');
+            }
         }
     }
     // RESISTACIDE & TROUS
@@ -770,6 +784,7 @@ function tagsEffect(bat,batType) {
         }
         // VENIN
         if (bat.tags.includes('venin') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron') && !bat.tags.includes('zombie')) {
+            bat.apLeft = bat.apLeft-Math.floor(bat.ap/3);
             let veninDeg = Math.round(rand.rand((Math.round(venumDamage/3)),venumDamage)*batType.squads*batType.squadSize/60);
             if (playerInfos.comp.med >= 3) {
                 veninDeg = Math.round(veninDeg/2);

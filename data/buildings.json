@@ -1146,7 +1146,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["medic","dealer","kirin","octiron","starka","maycamo","recupcit","prefab","transport","routes","producteur","ravitaillement","stockmed"],
+        "skills":["medic","necrocure","dealer","kirin","octiron","starka","maycamo","recupcit","prefab","transport","routes","producteur","ravitaillement","stockmed"],
         "mecanoCost":12,
         "mediCost":4,
         "maxSkill":999,
