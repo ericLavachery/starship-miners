@@ -3,6 +3,9 @@ function clickTile(tileId) {
         if (Object.keys(batDebarq).length >= 1) {
             clickDebarq(tileId);
         } else if (Object.keys(conselUnit).length >= 1) {
+            if (conselPut === undefined) {
+                conselPut = false;
+            }
             if (selectedBat.tileId >= 0 && conselUnit.skills.includes('clicput') && !conselTriche && conselPut) {
                 clickMine(tileId,selectedBat.tileId);
             } else {

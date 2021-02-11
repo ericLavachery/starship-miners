@@ -106,6 +106,8 @@ function calcTransUnitsLeft(myBat,myBatType) {
     let myBatTransUnitsLeft = myBatType.transUnits;
     if (myBatType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
         myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*bonusTransRetour);
+        let resSpace = checkResSpace(myBat);
+        myBatTransUnitsLeft = myBatTransUnitsLeft+Math.round(resSpace/2);
     }
     let batWeight;
     bataillons.forEach(function(bat) {

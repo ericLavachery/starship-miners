@@ -850,21 +850,11 @@ function attack(melee) {
         }
     }
     // maladie
-    if (((totalDamage >= 1 && playerInfos.comp.ca < 3) || totalDamage >= 5) && !targetBat.tags.includes('maladie')) {
-        let infected = false;
-        if (selectedBatType.skills.includes('maladie') && rand.rand(1,playerInfos.comp.ca+1) === 1) {
-            infected = true;
-        }
-        if (selectedBatType.skills.includes('chancre')) {
-            infected = true;
-        }
-        if (infected) {
-            if ((targetBatType.cat == 'infantry' && !targetBatType.skills.includes('mutant') && !targetBat.tags.includes('zombie')) || targetBatType.cat == 'aliens') {
-                targetBat.tags.push('maladie');
-                console.log('Maladie!');
-                $('#report').append('<span class="report rose">Maladie<br></span>');
-            }
-        }
+    let getDisease = checkDisease(selectedBatType,totalDamage,targetBat,targetBatType,terrain);
+    if (getDisease) {
+        targetBat.tags.push('maladie');
+        console.log('Maladie!');
+        $('#report').append('<span class="report rose">Maladie<br></span>');
     }
     // necrotoxine
     if (selectedWeap.ammo.includes('necro')) {
@@ -1420,21 +1410,11 @@ function defense(melee) {
         }
     }
     // maladie
-    if (((totalDamage >= 1 && playerInfos.comp.ca < 3) || totalDamage >= 5) && !selectedBat.tags.includes('maladie')) {
-        let infected = false;
-        if (targetBatType.skills.includes('maladie') && rand.rand(1,playerInfos.comp.ca+1) === 1) {
-            infected = true;
-        }
-        if (targetBatType.skills.includes('chancre')) {
-            infected = true;
-        }
-        if (infected) {
-            if ((selectedBatType.cat == 'infantry' && !selectedBatType.skills.includes('mutant') && !selectedBat.tags.includes('zombie')) || selectedBatType.cat == 'aliens') {
-                selectedBat.tags.push('maladie');
-                console.log('Maladie!');
-                $('#report').append('<span class="report rose">Maladie<br></span>');
-            }
-        }
+    let getDisease = checkDisease(targetBatType,totalDamage,selectedBat,selectedBatType,terrain);
+    if (getDisease) {
+        selectedBat.tags.push('maladie');
+        console.log('Maladie!');
+        $('#report').append('<span class="report rose">Maladie<br></span>');
     }
     // necrotoxine
     if (targetWeap.ammo.includes('necro')) {

@@ -41,11 +41,14 @@ function medic(cat,cost,around,deep) {
                         } else {
                             catOK = false;
                         }
-                        if (bat.tags.includes('necro') && playerInfos.comp.med < 3 && !selectedBatType.skills.includes('necrocure')) {
+                        if (bat.tags.includes('necro') && playerInfos.comp.med < 3 && !selectedBatType.skills.includes('necrocure') && catOK) {
                             catOK = false;
+                            $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">soins inefficaces<br></span>');
                         }
-                        if (rand.rand(1,100) <= bat.soins-10) {
+                        if (rand.rand(1,100) <= bat.soins-10 && catOK) {
                             catOK = false;
+                            totalAPCost = totalAPCost+apCost;
+                            $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">soins inefficaces<br></span>');
                         }
                         if (catOK && !batType.skills.includes('norepair')) {
                             console.log('catOK');
@@ -242,11 +245,14 @@ function medic(cat,cost,around,deep) {
         batUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
         if (cat === 'infantry') {
             catOK = true;
-            if (selectedBat.tags.includes('necro') && playerInfos.comp.med < 3 && !selectedBatType.skills.includes('necrocure')) {
+            if (selectedBat.tags.includes('necro') && playerInfos.comp.med < 3 && !selectedBatType.skills.includes('necrocure') && catOK) {
                 catOK = false;
+                $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">soins inefficaces<br></span>');
             }
-            if (rand.rand(1,100) <= selectedBat.soins-10) {
+            if (rand.rand(1,100) <= selectedBat.soins-10 && catOK) {
                 catOK = false;
+                totalAPCost = totalAPCost+apCost;
+                $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">soins inefficaces<br></span>');
             }
             if (catOK) {
                 if (selectedBat.tags.includes('poison')) {

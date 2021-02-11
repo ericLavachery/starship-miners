@@ -1666,7 +1666,7 @@
         "id":239,
         "name":"Coffres",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
-        "bldReq":["Atelier"],
+        "bldReq":[],
         "costs":{"Compo1":30,"Végétaux":15},
         "fabTime":10
     },

@@ -207,6 +207,7 @@ function conSelect(unitId,player,noRefresh) {
     if (!noRefresh) {
         conselAmmos = ['xxx','xxx','xxx','xxx'];
     }
+    conselPut = false;
     if (player === 'player') {
         let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
         conselUnit = unitTypes[unitIndex];
@@ -740,7 +741,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 newBat.salvoLeft = conselUnit.maxSalvo;
             } else {
                 if (conselUnit.fabTime >= 1) {
-                    if (conselUnit.skills.includes('clicput')) {
+                    if (conselUnit.skills.includes('clicput') && conselUnit.name != 'Coffres') {
                         newBat.apLeft = 0;
                         newBat.oldapLeft = 0;
                         newBat.salvoLeft = 0;
@@ -1079,6 +1080,7 @@ function putFretInChest(bat,batType,coffre) {
 function recupCitoyens(unitId,tileId,citoyens,xp) {
     let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
     conselUnit = unitTypes[unitIndex];
+    conselPut = false;
     conselAmmos = ['xxx','xxx','xxx','xxx'];
     conselTriche = true;
     putBat(tileId,citoyens,xp);

@@ -1468,3 +1468,29 @@ function mirDestruction(weap,bat,batType,tile) {
         tile.infra = 'Débris';
     }
 };
+
+function checkDisease(giveBatType,damage,haveBat,haveBatType,terrain) {
+    let getIt = false;
+    if (!haveBat.tags.includes('maladie')) {
+        if (giveBatType.skills.includes('maladie') || giveBatType.skills.includes('chancre')) {
+            if ((haveBatType.cat == 'infantry' && !haveBatType.skills.includes('mutant') && !haveBat.tags.includes('zombie')) || haveBatType.cat == 'aliens') {
+                let getChance = (damage*10)+5;
+                if (giveBatType.skills.includes('chancre')) {
+                    getChance = getChance*2;
+                } else {
+                    getChance = Math.ceil(getChance/(playerInfos.comp.ca+5)*5);
+                }
+                if (terrain.name === 'S') {
+                    getChance = getChance+25;
+                }
+                if (getChance < 15 && damage >= 1) {
+                    getChance = 15;
+                }
+                if (rand.rand(1,100) <= getChance) {
+                    getIt = true;
+                }
+            }
+        }
+    }
+    return getIt;
+};
