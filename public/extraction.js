@@ -350,10 +350,33 @@ function checkResSpace(bat) {
         resMax = bat.citoyens;
     }
     let resSpace = resMax-resLoaded;
+    if (batType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
+        let transUnitsLeft = calcLanderTransUnitsLeft(bat,batType);
+        if (transUnitsLeft < 0) {
+            resSpace = resSpace+(transUnitsLeft*2);
+        }
+    }
     if (resSpace < 0) {
         resSpace = 0;
     }
     return resSpace;
+};
+
+function calcLanderTransUnitsLeft(myBat,myBatType) {
+    let myBatTransUnitsLeft = myBatType.transUnits;
+    if (myBatType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
+        myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*bonusTransRetour);
+    }
+    let batWeight;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "trans" && bat.locId == myBat.id) {
+            batType = getBatType(bat);
+            batWeight = calcVolume(bat,batType);
+            myBatTransUnitsLeft = myBatTransUnitsLeft-batWeight;
+        }
+    });
+    // console.log('myBatTransUnitsLeft'+myBatTransUnitsLeft);
+    return myBatTransUnitsLeft;
 };
 
 function checkResLoad(bat) {

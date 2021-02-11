@@ -732,8 +732,8 @@ function skillsInfos(bat,batType) {
         let resToLoad = isResToLoad(bat);
         if (resToLoad) {
             balise = 'h4';
-            apReq = 1;
-            if (bat.apLeft >= apReq && !inMelee) {
+            apReq = 0;
+            if (!inMelee) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Charger des ressources" class="boutonGris skillButtons" onclick="loadRes()"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
             } else {
                 if (inMelee) {
