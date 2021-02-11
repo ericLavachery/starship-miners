@@ -29,6 +29,22 @@ function noEmbarq() {
     batUnselect();
 };
 
+function nearAnyLander(myBat) {
+    let nearLander = false;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            let batType = getBatType(bat);
+            if (batType.skills.includes('transorbital')) {
+                let distance = calcDistance(myBat.tileId,bat.tileId);
+                if (distance <= 1) {
+                    nearLander = true;
+                }
+            }
+        }
+    });
+    return nearLander;
+};
+
 function unloadInfos(myBat,myBatUnitType) {
     let balise = 'h4';
     let damageIcon = '';

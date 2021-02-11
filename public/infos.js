@@ -242,6 +242,10 @@ function batInfos(bat,pop) {
         let restSpace = checkResSpace(bat);
         if (restSpace < 1) {tagColor = 'or';} else {tagColor = 'cy';}
         $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/'+resMax+'</span><br>');
+        let nearLander = nearAnyLander(bat);
+        if (resMax > restSpace && nearLander) {
+            $('#'+bodyPlace).append('<span class="paramName or">Embarquement Lander</span><span class="paramIcon"></span><span class="paramValue or">Impossible</span><br>');
+        }
     }
     if (batType.skills.includes('reserve') || batType.skills.includes('transorbital')) {
         $('#'+bodyPlace).append('<span class="paramName cy">Réserve</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');

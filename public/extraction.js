@@ -380,10 +380,10 @@ function calcLanderTransUnitsLeft(myBat,myBatType) {
 };
 
 function checkResLoad(bat) {
-    console.log('THE-BAT');
-    console.log(bat);
+    // console.log('THE-BAT');
+    // console.log(bat);
     let batType = getBatType(bat);
-    console.log(batType);
+    // console.log(batType);
     let resLoaded = 0;
     if (batType.transRes >= 1) {
         if (Object.keys(bat.transRes).length >= 1) {
