@@ -528,7 +528,7 @@ function skillsInfos(bat,batType) {
     let allDrugs = checkDrugs(bat);
     if (batType.cat === 'infantry') {
         // KIRIN
-        if (playerInfos.comp.med >= 2 && playerInfos.comp.ca >= 2 && playerInfos.bldList.includes('Infirmerie')) {
+        if (playerInfos.comp.med >= 1 && playerInfos.comp.ca >= 2 && playerInfos.bldList.includes('Infirmerie')) {
             if (allDrugs.includes('kirin') || bat.tags.includes('kirin')) {
                 balise = 'h4';
                 if (bat.tags.includes('kirin')) {
@@ -642,7 +642,7 @@ function skillsInfos(bat,batType) {
             }
         }
         // STARKA
-        if (playerInfos.comp.med >= 1 && playerInfos.comp.ca >= 1) {
+        if (playerInfos.comp.ca >= 1) {
             if (allDrugs.includes('starka') || bat.tags.includes('starka')) {
                 balise = 'h4';
                 if (bat.tags.includes('starka')) {

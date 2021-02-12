@@ -1233,7 +1233,6 @@ function playerBldUTChanges() {
             }
             if (unit.mediCost < 2) {
                 unit.mediCost = 2;
-                unit.ap = unit.ap+1;
             }
         }
         // ATELIERS
@@ -1249,7 +1248,6 @@ function playerBldUTChanges() {
             }
             if (unit.mecanoCost < 2) {
                 unit.mecanoCost = 2;
-                unit.ap = unit.ap+1;
             }
         }
         // LABOS

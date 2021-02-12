@@ -143,9 +143,11 @@ function checkEggsDrop() {
     if (playerInfos.pseudo === 'Bob') {
         warning('Oeufs','Check '+dropChance+'%');
     }
-    if (rand.rand(1,100) <= dropChance && playerInfos.mapDiff >= 1) {
-        drop = true;
-        eggsDrop();
+    if (playerInfos.mapDiff >= 1 || playerInfos.mapTurn >= 25) {
+        if (rand.rand(1,100) <= dropChance) {
+            drop = true;
+            eggsDrop();
+        }
     }
     if (drop || playerInfos.eggPause) {
         playerInfos.mapDrop = 0;

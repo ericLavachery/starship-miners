@@ -788,21 +788,21 @@ function addRes(zone) {
                 if (res.name === 'Scrap') {
                     rarityDice = 0;
                 } else {
-                    rarityDice == 1;
+                    rarityDice = 1;
                 }
             }
             resRarity = res.rarity;
+            if (playerInfos.dark && resRarity < 25) {
+                resRarity = 25;
+            }
             if (playerInfos.mapDiff < 1) {
-                resRarity = resRarity-20;
+                resRarity = resRarity-rand.rand(15,20);
                 if (res.name === 'Scrap') {
                     resRarity = 0;
                 }
                 if (resRarity < 0) {
                     resRarity = 0;
                 }
-            }
-            if (playerInfos.dark && resRarity < 25) {
-                resRarity = 25;
             }
             res.adjRarity = Math.floor(resRarity*rarityDice/5*fewRedRarityAdj/100);
             res.adjBatch = Math.ceil(res.batch*Math.sqrt(rarityDice)/2*fewRedRarityAdj/100);

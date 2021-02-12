@@ -416,9 +416,9 @@
         "armor":0,
         "size":3,
         "volume":0.9,
-        "stealth":8,
+        "stealth":9,
         "speed":0,
-        "ap":16,
+        "ap":15,
         "maxSalvo":1,
         "weapon":{
             "name":"Lame",
