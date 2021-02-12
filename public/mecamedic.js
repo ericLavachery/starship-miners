@@ -45,7 +45,7 @@ function medic(cat,cost,around,deep) {
                             catOK = false;
                             $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">soins inefficaces<br></span>');
                         }
-                        if (rand.rand(1,100) <= bat.soins-10 && catOK) {
+                        if (rand.rand(1,75) <= bat.soins-10 && catOK) {
                             catOK = false;
                             totalAPCost = totalAPCost+apCost;
                             $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">soins inefficaces<br></span>');
@@ -249,7 +249,7 @@ function medic(cat,cost,around,deep) {
                 catOK = false;
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">soins inefficaces<br></span>');
             }
-            if (rand.rand(1,100) <= selectedBat.soins-10 && catOK) {
+            if (rand.rand(1,75) <= selectedBat.soins-10 && catOK) {
                 catOK = false;
                 totalAPCost = totalAPCost+apCost;
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">soins inefficaces<br></span>');

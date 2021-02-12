@@ -240,7 +240,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","fouille","camo","brigands","trapfosse","unemun"],
+        "skills":["fortif","cible","fouille","camo","brigands","trapfosse","unemun","noblub"],
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
     },

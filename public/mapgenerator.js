@@ -706,30 +706,32 @@ function addRes(zone) {
     }
     console.log('fewRedRarityAdj:'+fewRedRarityAdj);
     // blue mythics
-    let silverChance = Math.round(30000000/numBadTer/((playerInfos.mapDiff+3)*(playerInfos.mapDiff+3)));
-    shufZone.forEach(function(tile) {
-        if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
-            terrain = getTileTerrain(tile.id);
-            if (terrain.name === 'S' || terrain.name === 'F') {
-                if (rand.rand(1,silverChance) === 1) {
-                    tile.rq = 4;
-                    mythicNum = mythicNum+0.5;
-                }
-            }
-        }
-    });
-    // not enough mythics
-    if (mythicNum < mythicMin) {
+    if (playerInfos.mapDiff >= 1) {
+        let silverChance = Math.round(30000000/numBadTer/((playerInfos.mapDiff+3)*(playerInfos.mapDiff+3)));
         shufZone.forEach(function(tile) {
             if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
-                if (tile.rq === undefined) {
-                    if (mythicNum < mythicMin) {
-                        tile.rq = 5;
-                        mythicNum++;
+                terrain = getTileTerrain(tile.id);
+                if (terrain.name === 'S' || terrain.name === 'F') {
+                    if (rand.rand(1,silverChance) === 1) {
+                        tile.rq = 4;
+                        mythicNum = mythicNum+0.5;
                     }
                 }
             }
         });
+        // not enough mythics
+        if (mythicNum < mythicMin) {
+            shufZone.forEach(function(tile) {
+                if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
+                    if (tile.rq === undefined) {
+                        if (mythicNum < mythicMin) {
+                            tile.rq = 5;
+                            mythicNum++;
+                        }
+                    }
+                }
+            });
+        }
     }
     console.log('mythicNum:'+mythicNum);
     // débordement rouge
@@ -790,6 +792,15 @@ function addRes(zone) {
                 }
             }
             resRarity = res.rarity;
+            if (playerInfos.mapDiff < 1) {
+                resRarity = resRarity-20;
+                if (res.name === 'Scrap') {
+                    resRarity = 0;
+                }
+                if (resRarity < 0) {
+                    resRarity = 0;
+                }
+            }
             if (playerInfos.dark && resRarity < 25) {
                 resRarity = 25;
             }
@@ -824,25 +835,31 @@ function addRes(zone) {
     }
     let resName = 'Scrap';
     let numRuins = 0;
-    zone.forEach(function(tile) {
-        if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
-            if (tile.rq === undefined && tile.terrain != 'W' && tile.terrain != 'R') {
-                if (rand.rand(1,1500) <= ruinChance) {
-                    tile.ruins = true;
-                    tile.rq = 0;
-                    tile.rs = {};
-                    tile.rs[resName] = Math.round(107*rand.rand(25,90)/resBatchDiv)+rand.rand(0,9);
-                    numRuins++;
+    if (playerInfos.mapDiff >= 1) {
+        zone.forEach(function(tile) {
+            if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
+                if (tile.rq === undefined && tile.terrain != 'W' && tile.terrain != 'R') {
+                    if (rand.rand(1,1500) <= ruinChance) {
+                        tile.ruins = true;
+                        tile.rq = 0;
+                        tile.rs = {};
+                        tile.rs[resName] = Math.round(107*rand.rand(25,90)/resBatchDiv)+rand.rand(0,9);
+                        numRuins++;
+                    }
                 }
             }
-        }
-    });
+        });
+    }
     // check RES
     let sortedRes = _.sortBy(_.sortBy(resTypes,'rarity'),'adjRarity').reverse();
     let resChance;
     let mythicDice;
     let mythicSum = 0;
     let mythicRes = {};
+    let mapResBatchDiv = resBatchDiv;
+    if (playerInfos.mapDiff < 1) {
+        mapResBatchDiv = Math.round(mapResBatchDiv*1.75);
+    }
     zone.forEach(function(tile) {
         if (tile.rq >= 1) {
             tile.rs = {};
@@ -897,14 +914,14 @@ function addRes(zone) {
                         }
                     }
                     if (rand.rand(1,100) <= resChance) {
-                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                         if (res.name === 'Scrap') {
                             tile.ruins = true;
                         }
                     }
                 }
             });
-            if (tile.rq === 2) {
+            if (tile.rq === 2 && playerInfos.mapDiff >= 1) {
                 if (Object.keys(tile.rs).length <= 2) {
                     // PASS 2
                     sortedRes.forEach(function(res) {
@@ -912,7 +929,7 @@ function addRes(zone) {
                             if (Object.keys(tile.rs).length <= 1) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,8) === 1) {
-                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
                                         }
@@ -929,7 +946,7 @@ function addRes(zone) {
                             if (Object.keys(tile.rs).length <= 1) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,5) === 1) {
-                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
                                         }
@@ -945,7 +962,7 @@ function addRes(zone) {
                         if (res.cat === 'white') {
                             if (Object.keys(tile.rs).length <= 1) {
                                 if (tile.rs[res.name] === undefined) {
-                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                     if (res.name === 'Scrap') {
                                         tile.ruins = true;
                                     }
@@ -954,7 +971,7 @@ function addRes(zone) {
                         }
                     });
                 }
-            } else if (tile.rq === 3) {
+            } else if (tile.rq === 3 && playerInfos.mapDiff >= 1) {
                 if (Object.keys(tile.rs).length <= 4) {
                     // PASS 2
                     sortedRes.forEach(function(res) {
@@ -962,7 +979,7 @@ function addRes(zone) {
                             if (Object.keys(tile.rs).length <= 3) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,8) === 1) {
-                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
                                         }
@@ -979,7 +996,7 @@ function addRes(zone) {
                             if (Object.keys(tile.rs).length <= 3) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,5) === 1) {
-                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
                                         }
@@ -995,7 +1012,7 @@ function addRes(zone) {
                         if (res.cat === 'white') {
                             if (Object.keys(tile.rs).length <= 3) {
                                 if (tile.rs[res.name] === undefined) {
-                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
+                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                     if (res.name === 'Scrap') {
                                         tile.ruins = true;
                                     }
@@ -1007,10 +1024,7 @@ function addRes(zone) {
             }
             // PASS 5
             if (Object.keys(tile.rs).length <= 0) {
-                tile.rs[resDefault.name] = Math.round(resDefault.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv);
-                if (resDefault.name === 'Scrap') {
-                    tile.ruins = true;
-                }
+                tile.rs[resDefault.name] = Math.round(resDefault.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
             }
         }
     });
@@ -1098,30 +1112,32 @@ function addRes(zone) {
     let oilChance = (rand.rand(2,4)*100)-Math.round(numBadTer/36)-(playerInfos.mapDiff*8);
     oilChance = Math.ceil(oilChance/2);
     console.log('numBadTer: '+numBadTer);
-    shufZone.forEach(function(tile) {
-        if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
-            terrain = getTileTerrain(tile.id);
-            if (tile.rq === undefined) {
-                if (tile.terrain === 'S' || tile.terrain === 'B' || tile.terrain === 'F') {
-                    if (tile.terrain === 'S' && rand.rand(1,oilChance) === 1) {
-                        tile.rq = 1;
-                        tile.rs = {};
-                        tile.rs[oilName] = rand.rand(80,320)+Math.round(numBadTer/72);
-                    }
-                    if (tile.terrain === 'B' && rand.rand(1,Math.round(oilChance/2)) === 1) {
-                        tile.rq = 1;
-                        tile.rs = {};
-                        tile.rs[oilName] = rand.rand(30,140)+Math.round(numBadTer/36);
-                    }
-                    if (tile.terrain === 'F' && rand.rand(1,oilChance*2) === 1) {
-                        tile.rq = 1;
-                        tile.rs = {};
-                        tile.rs[oilName] = rand.rand(30,240)+Math.round(numBadTer/72);
+    if (playerInfos.mapDiff >= 1) {
+        shufZone.forEach(function(tile) {
+            if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
+                terrain = getTileTerrain(tile.id);
+                if (tile.rq === undefined) {
+                    if (tile.terrain === 'S' || tile.terrain === 'B' || tile.terrain === 'F') {
+                        if (tile.terrain === 'S' && rand.rand(1,oilChance) === 1) {
+                            tile.rq = 1;
+                            tile.rs = {};
+                            tile.rs[oilName] = rand.rand(80,320)+Math.round(numBadTer/72);
+                        }
+                        if (tile.terrain === 'B' && rand.rand(1,Math.round(oilChance/2)) === 1) {
+                            tile.rq = 1;
+                            tile.rs = {};
+                            tile.rs[oilName] = rand.rand(30,140)+Math.round(numBadTer/36);
+                        }
+                        if (tile.terrain === 'F' && rand.rand(1,oilChance*2) === 1) {
+                            tile.rq = 1;
+                            tile.rs = {};
+                            tile.rs[oilName] = rand.rand(30,240)+Math.round(numBadTer/72);
+                        }
                     }
                 }
             }
-        }
-    });
+        });
+    }
     // console.log(zone);
 };
 
@@ -1146,6 +1162,9 @@ function checkResLevel(tile) {
         resLevelDice = rand.rand(1,115);
     }
     let mythicChance = Math.round((playerInfos.mapDiff+2)*(playerInfos.mapDiff+2)/18);
+    if (playerInfos.mapDiff < 1) {
+        mythicChance = 0;
+    }
     if (resLevelDice <= mythicChance) {
         return 5;
     } else if (resLevelDice <= 52) {
