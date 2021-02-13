@@ -343,7 +343,7 @@
         "name":"Sapeurs",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":[],
-        "costs":{"Fer":60,"Scrap":60,"Bois":60,"Aluminium":30,"Végétaux":140,"Chlore":10,"Tissus":5},
+        "costs":{"Fer":60,"Scrap":60,"Carbone":60,"Bois":60,"Silicium":30,"Végétaux":116,"Chlore":10,"Tissus":5},
         "fabTime":15
     },
     {
@@ -1738,7 +1738,7 @@
         "id":9,
         "name":"Mine",
         "costs":{"Compo1":230,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25},
-        "fabTime":35
+        "fabTime":30
     },
     {
         "id":123,
@@ -1782,7 +1782,7 @@
         "id":197,
         "name":"Garage",
         "costs":{"Compo1":300,"Eau":12,"Hydrocarbure":100,"Huile":50,"Scrap":150,"Aluminium":25,"Fer":25},
-        "fabTime":30
+        "fabTime":35
     },
     {
         "id":3,

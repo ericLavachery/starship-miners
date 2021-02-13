@@ -509,3 +509,40 @@ function diagRepair(repairBatId) {
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 }
+
+function calcBaseSkillCost(bat,batType,medik) {
+    let baseskillCost;
+    if (medik) {
+        baseskillCost = batType.mediCost;
+        if (playerInfos.bldList.includes('Hôpital') && batType.cat != 'buildings') {
+            if (baseskillCost >= 5) {
+                baseskillCost = Math.ceil(baseskillCost/2);
+            } else {
+                baseskillCost = baseskillCost-1;
+            }
+        } else if (playerInfos.bldList.includes('Infirmerie') && batType.cat != 'buildings') {
+            baseskillCost = Math.round(baseskillCost*3/4);
+        }
+        if (bat.eq === 'medic') {
+            baseskillCost = baseskillCost-1;
+        }
+    } else {
+        baseskillCost = batType.mecanoCost;
+        if (playerInfos.bldList.includes('Usine') && batType.cat != 'buildings') {
+            if (baseskillCost >= 5) {
+                baseskillCost = Math.ceil(baseskillCost/2);
+            } else {
+                baseskillCost = baseskillCost-1;
+            }
+        } else if (playerInfos.bldList.includes('Chaîne de montage') && batType.cat != 'buildings') {
+            baseskillCost = Math.round(baseskillCost*3/4);
+        }
+        if (bat.eq === 'mecano') {
+            baseskillCost = baseskillCost-1;
+        }
+    }
+    if (baseskillCost < 2) {
+        baseskillCost = 2;
+    }
+    return baseskillCost;
+};

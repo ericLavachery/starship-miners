@@ -486,6 +486,13 @@ function getStealth(bat) {
     let batType = getBatType(bat);
     let tile = getTile(bat);
     let batStealth = batType.stealth;
+    if (playerInfos.bldList.includes('QG')) {
+        batStealth = batStealth+4;
+    } else if (playerInfos.bldList.includes('Centre de com')) {
+        batStealth = batStealth+4;
+    } else if (playerInfos.bldList.includes('Poste radio')) {
+        batStealth = batStealth+2;
+    }
     if (tile.infra === 'Terriers' && batType.size < 9) {
         batStealth = batStealth+5;
     }
@@ -1095,6 +1102,11 @@ function weaponAdj(weapon,bat,wn) {
         if (thisWeapon.maxAmmo < 16) {
             thisWeapon.maxAmmo = 16;
         }
+    }
+    if (playerInfos.bldList.includes('Usine d\'armement')) {
+        thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.5);
+    } else if (playerInfos.bldList.includes('Arsenal')) {
+        thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.25);
     }
     if (bat.eq === 'arcpoulie') {
         if (thisWeapon.name.includes('Arc')) {

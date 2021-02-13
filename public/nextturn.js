@@ -168,6 +168,7 @@ function nextTurnEnd() {
             }
         }
     });
+    unitResist = calcUnitResist();
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
@@ -375,7 +376,6 @@ function nextTurnEnd() {
     if (playerInfos.mapTurn % 50 === 0 && playerInfos.mapTurn >= 1) {
         playerInfos.mapDiff++;
     }
-    playerBldUTChanges();
     turnInfo();
     saveGame();
     createBatList();
@@ -476,6 +476,29 @@ function turnInfo() {
         $('#tour').append('<span class="cy">Pause</span><br>');
     }
     $('#tour').append('Morts <span class="or">'+playerInfos.unitsLost+'</span> / '+playerInfos.aliensKilled+' / <span class="cy">'+playerInfos.eggsKilled+'</span>');
+};
+
+function calcUnitResist() {
+    let resistance = 0;
+    // LABOS
+    if (playerInfos.bldList.includes('Centre de recherches')) {
+        resistance = resistance+1;
+    } else if (playerInfos.bldList.includes('Laboratoire')) {
+        resistance = resistance+0.3;
+    }
+    // ENTRAINEMENT
+    if (playerInfos.bldList.includes('Salle de sport')) {
+        resistance = resistance+0.3;
+    }
+    if (playerInfos.bldList.includes('Camp d\'entraînement')) {
+        resistance = resistance+1;
+    }
+    // CANTINES
+    if (playerInfos.bldList.includes('Cantine')) {
+        resistance = resistance+0.3;
+    }
+    resistance = Math.ceil(resistance);
+    return resistance;
 };
 
 function tagsUpdate(bat) {
@@ -645,8 +668,13 @@ function tagsEffect(bat,batType) {
     if (bat.tags.includes('bliss')) {
         bat.apLeft = bat.apLeft-2;
     }
+    // UNITRESIST
+    let resistance = false;
+    if (rand.rand(1,12) <= unitResist && bat.cat != 'aliens') {
+        resistance = true;
+    }
     // REGENERATION & KIRIN DRUG
-    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || bat.eq === 'permakirin' || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal')) {
+    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || bat.eq === 'permakirin' || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal') || resistance) {
         let regOK = true;
         if (batType.cat === 'aliens') {
             if (batType.skills.includes('reactpoison') && bat.tags.includes('poison')) {
@@ -692,7 +720,11 @@ function tagsEffect(bat,batType) {
         if (bat.tags.includes('skupiac') || bat.tags.includes('octiron') || bat.tags.includes('zombie')) {
             tagDelete(bat,'maladie');
         } else {
-            bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
+            if (rand.rand(1,18) <= unitResist && bat.cat != 'aliens') {
+                tagDelete(bat,'maladie');
+            } else {
+                bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
+            }
         }
     }
     // OCTIRON & POISONS
@@ -713,7 +745,7 @@ function tagsEffect(bat,batType) {
                 tagDelete(bat,'necro');
             }
         } else {
-            if (rand.rand(1,6) === 1) {
+            if (rand.rand(0,11) <= unitResist) {
                 tagDelete(bat,'necro');
             }
         }
@@ -828,7 +860,7 @@ function tagsEffect(bat,batType) {
             }
             let stopPoison = 10;
             if (batType.cat != 'aliens') {
-                stopPoison = 14-(playerInfos.comp.ca*2);
+                stopPoison = 16-Math.floor(playerInfos.comp.ca*1.5)-(unitResist*2);
             }
             let i = 1;
             while (i <= allTags.poison) {

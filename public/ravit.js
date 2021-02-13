@@ -134,14 +134,12 @@ function calcRavit(bat) {
     let batType = getBatType(bat);
     let ravitLeft = 0;
     ravitLeft = batType.maxSkill;
-    // console.log('startRavit='+ravitLeft);
     if (ravitLeft < 999) {
         if (bat.tags.includes('sU')) {
             let allTags = _.countBy(bat.tags);
             ravitLeft = ravitLeft-allTags.sU;
         }
     }
-    // console.log('ravitLeft='+ravitLeft);
     return ravitLeft;
 };
 
@@ -150,7 +148,11 @@ function calcRavitDrug(bat) {
     let ravitLeft = 0;
     if (batType.skills.includes('dealer')) {
         ravitLeft = batType.maxDrug;
-        // console.log('startRavit='+ravitLeft);
+        if (playerInfos.bldList.includes('Centre de recherches')) {
+            ravitLeft = Math.round(ravitLeft*2);
+        } else if (playerInfos.bldList.includes('Laboratoire')) {
+            ravitLeft = Math.round(ravitLeft*1.5);
+        }
         if (ravitLeft < 999) {
             if (bat.tags.includes('dU')) {
                 let allTags = _.countBy(bat.tags);
@@ -158,7 +160,6 @@ function calcRavitDrug(bat) {
             }
         }
     }
-    // console.log('ravitLeft='+ravitLeft);
     return ravitLeft;
 };
 
@@ -175,6 +176,11 @@ function calcRavitVolume(bat) {
             if (w1maxAmmo < 16) {
                 w1maxAmmo = 16;
             }
+        }
+        if (playerInfos.bldList.includes('Usine d\'armement')) {
+            w1maxAmmo = Math.round(w1maxAmmo*1.5);
+        } else if (playerInfos.bldList.includes('Arsenal')) {
+            w1maxAmmo = Math.round(w1maxAmmo*1.25);
         }
         if (bat.ammo.includes('obus') || bat.ammo.includes('boulet') || bat.ammo.includes('lf-')) {
             ammoVolume = 2*batType.weapon.power;
@@ -195,6 +201,11 @@ function calcRavitVolume(bat) {
             if (w2maxAmmo < 16) {
                 w2maxAmmo = 16;
             }
+        }
+        if (playerInfos.bldList.includes('Usine d\'armement')) {
+            w2maxAmmo = Math.round(w2maxAmmo*1.5);
+        } else if (playerInfos.bldList.includes('Arsenal')) {
+            w2maxAmmo = Math.round(w2maxAmmo*1.25);
         }
         if (bat.ammo2.includes('obus') || bat.ammo2.includes('boulet') || bat.ammo2.includes('lf-')) {
             ammoVolume = 2*batType.weapon2.power;

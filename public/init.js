@@ -114,8 +114,6 @@ socket.on('savedMap-Load', function(sm) {
             }
         }
     });
-    // $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
-    // $('#tour').append('Difficulté '+playerInfos.mapDiff);
 });
 // resources
 socket.on('resTypes-Load', function(rt) {
@@ -182,7 +180,6 @@ socket.on('unitCosts-Load', function(unitCosts) {
     });
     playerSkillsUTChanges();
     updateBldList();
-    playerBldUTChanges();
     // console.log(unitTypes);
 });
 socket.on('alienUnits-Load', function(au) {
