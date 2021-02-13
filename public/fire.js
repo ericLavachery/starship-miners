@@ -769,7 +769,7 @@ function attack(melee) {
         $('#report').append('<span class="report rose">Venin<br></span>');
     }
     // poison
-    if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
+    if (totalDamage >= 7+(playerInfos.comp.ca*2) || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium') || selectedWeap.ammo.includes('trap')) {
             if (!targetBatType.skills.includes('resistpoison') && !targetBatType.skills.includes('eatpoison') && !targetBat.tags.includes('zombie')) {
                 if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || targetBatType.cat == 'aliens') {
@@ -799,7 +799,7 @@ function attack(melee) {
     }
     // Toxine veuve
     let poisonVeuve = 0;
-    if (totalDamage >= 1) {
+    if (totalDamage >= 1+(playerInfos.comp.ca*2)) {
         if (selectedWeap.ammo.includes('toxine') && !targetBat.tags.includes('zombie')) {
             if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
                 poisonVeuve = Math.ceil(totalDamage/(12+playerInfos.comp.ca));
@@ -842,7 +842,7 @@ function attack(melee) {
         }
     }
     // parasite
-    if (totalDamage >= 1 && selectedWeap.ammo.includes('parasite') && rand.rand(1,selectedBatType.squads) >= selectedBat.squadsLeft) {
+    if (totalDamage >= 1+(playerInfos.comp.ca*2) && selectedWeap.ammo.includes('parasite') && rand.rand(1,selectedBatType.squads) >= selectedBat.squadsLeft) {
         if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
             targetBat.tags.push('parasite');
             console.log('Parasite!');
@@ -860,7 +860,7 @@ function attack(melee) {
     if (selectedWeap.ammo.includes('necro')) {
         if (!targetBat.tags.includes('necro')) {
             if (targetBatType.cat === 'infantry' && !targetBat.tags.includes('zombie')) {
-                if (totalDamage >= 10) {
+                if (totalDamage >= 10+(playerInfos.comp.ca*2)) {
                     targetBat.tags.push('necro');
                     targetBat.tags.push('necro');
                     targetBat.tags.push('necro');
@@ -1352,7 +1352,7 @@ function defense(melee) {
         }
     }
     // poison
-    if (totalDamage >= 7 || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
+    if (totalDamage >= 7+(playerInfos.comp.ca*2) || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium') || targetWeap.ammo.includes('trap')) {
             if (!selectedBatType.skills.includes('resistpoison') && !selectedBatType.skills.includes('eatpoison') && !selectedBat.tags.includes('zombie')) {
                 if ((selectedBatType.cat == 'infantry' && (!selectedBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || selectedBatType.cat == 'aliens') {
@@ -1402,7 +1402,7 @@ function defense(melee) {
         }
     }
     // parasite
-    if (totalDamage >= 20 && targetWeap.ammo.includes('parasite') && rand.rand(1,targetBatType.squads) >= targetBat.squadsLeft) {
+    if (totalDamage >= 20+(playerInfos.comp.ca*2) && targetWeap.ammo.includes('parasite') && rand.rand(1,targetBatType.squads) >= targetBat.squadsLeft) {
         if (selectedBatType.cat == 'infantry' || selectedBatType.cat == 'aliens') {
             selectedBat.tags.push('parasite');
             console.log('Parasite!');
@@ -1420,7 +1420,7 @@ function defense(melee) {
     if (targetWeap.ammo.includes('necro')) {
         if (!selectedBat.tags.includes('necro')) {
             if (selectedBatType.cat == 'infantry' && !selectedBat.tags.includes('zombie')) {
-                if (totalDamage >= 10) {
+                if (totalDamage >= 10+(playerInfos.comp.ca*2)) {
                     selectedBat.tags.push('necro');
                     selectedBat.tags.push('necro');
                     selectedBat.tags.push('necro');

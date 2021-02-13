@@ -1131,6 +1131,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.rof = Math.round(thisWeapon.rof*1.5);
             thisWeapon.power = thisWeapon.power+4;
             thisWeapon.accuracy = thisWeapon.accuracy+2;
+            thisWeapon.name = 'Bélier';
         }
     }
     // bonus ammo
