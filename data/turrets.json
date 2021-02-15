@@ -606,7 +606,7 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
-            "maxAmmo":32,
+            "maxAmmo":36,
             "ravitBld":"Derrick"
         },
         "weapon2":{

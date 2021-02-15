@@ -454,7 +454,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","fouille","brigands","camo","berserk"],
+        "skills":["fortif","cible","fouille","brigands","camo","berserk","inflammable"],
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -1976,7 +1976,7 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
-            "maxAmmo":12,
+            "maxAmmo":16,
             "ravitBld":"Derrick"
         },
         "weapon2":{
@@ -3173,7 +3173,7 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
-            "maxAmmo":16,
+            "maxAmmo":20,
             "ravitBld":"Derrick"
         },
         "weapon2":{
@@ -3899,7 +3899,7 @@
             "aoe":"unit",
             "sound":"flamme",
             "ammo":["lt-o2","lt-nanite","lt-plastanium"],
-            "maxAmmo":20,
+            "maxAmmo":24,
             "ravitBld":"Derrick"
         },
         "protection":["aucun"],
@@ -4110,7 +4110,7 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
-            "maxAmmo":18,
+            "maxAmmo":24,
             "ravitBld":"Derrick"
         },
         "weapon2":{
@@ -4538,7 +4538,7 @@
             "aoe":"unit",
             "sound":"flamme",
             "ammo":["lt-o2","lt-nanite","lt-plastanium"],
-            "maxAmmo":16,
+            "maxAmmo":18,
             "ravitBld":"Derrick"
         },
         "weapon2":{

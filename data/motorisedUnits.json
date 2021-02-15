@@ -206,7 +206,7 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
-            "maxAmmo":24,
+            "maxAmmo":26,
             "ravitBld":"Derrick"
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
@@ -262,7 +262,7 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
-            "maxAmmo":32,
+            "maxAmmo":36,
             "ravitBld":"Derrick"
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
@@ -2845,7 +2845,7 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
-            "maxAmmo":12,
+            "maxAmmo":16,
             "ravitBld":"Derrick"
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],

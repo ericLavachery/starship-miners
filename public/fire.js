@@ -517,6 +517,9 @@ function attack(melee) {
     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('pyratol') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov') || selectedWeap.ammo.includes('laser')) {
         if (targetBatType.skills.includes('inflammable') || targetBat.tags.includes('inflammable') || targetBat.eq === 'jetpack') {
             let infactor = 1.5;
+            if (targetBatType.skills.includes('resistfeu') || targetBat.tags.includes('resistfeu')) {
+                infactor = 1.25;
+            }
             let infbonus = 0;
             if (targetBat.tags.includes('inflammable')) {
                 if (targetBatType.skills.includes('inflammable')) {
@@ -1222,6 +1225,9 @@ function defense(melee) {
     if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('pyratol') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov') || targetWeap.ammo.includes('laser')) {
         if (selectedBatType.skills.includes('inflammable') || selectedBat.tags.includes('inflammable') || selectedBat.eq === 'jetpack') {
             let infactor = 1.5;
+            if (selectedBatType.skills.includes('resistfeu') || selectedBat.tags.includes('resistfeu')) {
+                infactor = 1.25;
+            }
             let infbonus = 0;
             if (selectedBat.tags.includes('inflammable')) {
                 if (selectedBatType.skills.includes('inflammable')) {

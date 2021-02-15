@@ -1403,7 +1403,7 @@
         "cat":"aliens",
         "kind":"swarm",
         "class":"C",
-        "rarity":4,
+        "rarity":3,
         "squads":10,
         "squadSize":9,
         "crew":0,
