@@ -1444,6 +1444,19 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
             brideDef = brideDef/1.5;
         }
     }
+    // guerrilla
+    if (batType.skills.includes('guerrilla') && bat.oldTileId != bat.tileId) {
+        let gmax = 1;
+        if (batType.skills.includes('baddef')) {
+            gmax = 0.85;
+        }
+        if (brideDef < gmax) {
+            brideDef = brideDef*1.25;
+            if (brideDef > gmax) {
+                brideDef = gmax;
+            }
+        }
+    }
     return brideDef;
 }
 
