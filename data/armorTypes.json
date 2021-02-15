@@ -361,6 +361,15 @@
         "deploy":{"Huile":4,"Mendium":4,"Creatite":4,"Or":2}
     },
     {
+        "name": "waterproof",
+        "skills": ["noblub"],
+        "info": "Pas de noyade",
+        "bldReq":["Atelier"],
+        "compReq":{"log":1,"scaph":1},
+        "factor":"thp",
+        "costs":{"Carbone":12,"Scrap":6,"Silicium":4}
+    },
+    {
         "name": "flash",
         "skills": [],
         "info": "Vision+",

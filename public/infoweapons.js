@@ -15,6 +15,15 @@ function weaponsInfos(bat,batType,pop) {
     let ammoLeft = 99;
     let defDef;
     let guetDef;
+    let defCol;
+    let guetCol;
+    if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative')) {
+        defCol = 'gff';
+        guetCol = 'neutre';
+    } else {
+        defCol = 'neutre';
+        guetCol = 'gff';
+    }
     let aoe;
     let ravitVolume = 0;
     cheapWeapCost = 99;
@@ -140,7 +149,7 @@ function weaponsInfos(bat,batType,pop) {
                 guetDef = Math.round(guetDef*100);
             }
             if (pop) {
-                $('#'+bodyPlace).append('<span class="paramName">Défense en mêlée</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName">Défense en mêlée</span><span class="paramIcon"></span><span class="paramValue"><span class="'+defCol+'">'+defDef+'%</span> <span class="gff">/</span> <span class="'+guetCol+'">'+guetDef+'%</span></span><br>');
             }
             if (thisWeapon.noDef) {
                 defDef = 0;
@@ -152,7 +161,7 @@ function weaponsInfos(bat,batType,pop) {
                 guetDef = Math.round(guetDef*100);
             }
             if (pop) {
-                $('#'+bodyPlace).append('<span class="paramName">Défense à distance</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName">Défense à distance</span><span class="paramIcon"></span><span class="paramValue"><span class="'+defCol+'">'+defDef+'%</span> <span class="gff">/</span> <span class="'+guetCol+'">'+guetDef+'%</span></span><br>');
             }
             // ACCURACY
             if (thisWeapon.noFly) {
@@ -323,7 +332,7 @@ function weaponsInfos(bat,batType,pop) {
                 guetDef = Math.round(guetDef*100);
             }
             if (pop) {
-                $('#'+bodyPlace).append('<span class="paramName">Défense en mêlée</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName">Défense en mêlée</span><span class="paramIcon"></span><span class="paramValue"><span class="'+defCol+'">'+defDef+'%</span> <span class="gff">/</span> <span class="'+guetCol+'">'+guetDef+'%</span></span><br>');
             }
             if (thisWeapon.noDef) {
                 defDef = 0;
@@ -335,7 +344,7 @@ function weaponsInfos(bat,batType,pop) {
                 guetDef = Math.round(guetDef*100);
             }
             if (pop) {
-                $('#'+bodyPlace).append('<span class="paramName">Défense à distance</span><span class="paramIcon"></span><span class="paramValue">'+defDef+' / '+guetDef+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName">Défense à distance</span><span class="paramIcon"></span><span class="paramValue"><span class="'+defCol+'">'+defDef+'%</span> <span class="gff">/</span> <span class="'+guetCol+'">'+guetDef+'%</span></span><br>');
             }
             // ACCURACY
             if (thisWeapon.noFly) {

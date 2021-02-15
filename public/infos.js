@@ -150,6 +150,13 @@ function batInfos(bat,pop) {
     if (batType.skills.includes('berserk') && bat.damage >= 1) {
         $('#'+bodyPlace).append('<span class="paramName cy">Berserk</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
+    if (batType.skills.includes('guerrilla')) {
+        if (bat.oldTileId === bat.tileId) {
+            $('#'+bodyPlace).append('<span class="paramName cy">Guérilla</span><span class="paramIcon"></span><span class="paramValue cy">Non</span><br>');
+        } else {
+            $('#'+bodyPlace).append('<span class="paramName cy">Guérilla</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+        }
+    }
     if (pop) {
         if (bat.tags.includes('kirin') || bat.tags.includes('sila') || bat.tags.includes('bliss') || bat.tags.includes('blaze') || bat.tags.includes('skupiac') || bat.tags.includes('starka') || bat.tags.includes('octiron')) {
             let myDrugs = checkBatDrugs(bat);
@@ -257,10 +264,11 @@ function batInfos(bat,pop) {
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
         $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Drogues</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxDrug+'</span><br>');
     }
-    if (batType.skills.includes('landmine') || batType.skills.includes('dynamite')) {
+    if (batType.skills.includes('landmine') || batType.skills.includes('dynamite') || batType.skills.includes('trapap') || batType.skills.includes('trapdard') || batType.skills.includes('trapfosse')) {
         let ravitNum = calcRavit(bat);
+        let trapName = getTrapName(batType);
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
-        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Mines</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxSkill+'</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">'+trapName+'</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxSkill+'</span><br>');
     }
     if (batType.skills.includes('constructeur')) {
         let ravitNum = calcRavit(bat);
@@ -380,11 +388,14 @@ function batFullInfos(bat) {
     if (batType.skills.includes('bigfortif')) {
         allSkills = allSkills+'<span class="paramValue" title="Meilleur bonus de fortification">Fortification avancée</span>'+sepa;
     }
-    if (!batType.skills.includes('noguet') && !batType.skills.includes('sentinelle')) {
-        allSkills = allSkills+'<span class="paramValue" title="Peut faire le guet: Cadence de tir 100% en défense">Guet</span>'+sepa;
+    if (!batType.skills.includes('noguet') && !batType.skills.includes('sentinelle') && !batType.skills.includes('fastguet')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut faire le guet. Cadence de tir 100% en défense">Guet</span>'+sepa;
+    }
+    if (batType.skills.includes('fastguet')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut faire le guet rapidement. Cadence de tir 100% en défense">Guet rapide</span>'+sepa;
     }
     if (batType.skills.includes('sentinelle')) {
-        allSkills = allSkills+'<span class="paramValue" title="Toujours en mode guet: Cadence de tir 100% en défense">Sentinelle</span>'+sepa;
+        allSkills = allSkills+'<span class="paramValue" title="Toujours en guet: Cadence de tir 100% en défense">Sentinelle</span>'+sepa;
     }
     if (batType.skills.includes('baddef')) {
         allSkills = allSkills+'<span class="paramValue" title="Cadence de tir seulement 85% en mode guet">Seconde ligne</span>'+sepa;
@@ -411,7 +422,7 @@ function batFullInfos(bat) {
         allSkills = allSkills+'<span class="paramValue" title="Cadence de tir doublée. Possible seulement en mode furtif. L\'unité doit bouger pour pouvoir en bénéficier à nouveau.">Embuscade</span>'+sepa;
     }
     if (batType.skills.includes('guerrilla')) {
-        allSkills = allSkills+'<span class="paramValue" title="Peut encore avancer à -4 PA. Peut encore riposter à -10 PA. Riposter ne coûte pas de PA. Ne riposte que 3 fois maximum.">Guerilla</span>'+sepa;
+        allSkills = allSkills+'<span class="paramValue" title="Bonus défensif et offensif lorsque le bataillon est en mouvement. Peut encore avancer à -4 PA. Peut encore riposter à -10 PA. Riposter ne coûte pas de PA. Ne riposte que 3 fois maximum.">Guerilla</span>'+sepa;
     }
     if (batType.skills.includes('camo')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut se mettre en mode furtif">Furtivité</span>'+sepa;

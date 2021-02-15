@@ -297,10 +297,27 @@ function getBatEquip(bat) {
     let index = armorTypes.findIndex((obj => obj.name == bat.eq));
     let batEquip = armorTypes[index];
     return batEquip;
-}
+};
 
 function getBatArmor(bat) {
     let index = armorTypes.findIndex((obj => obj.name == bat.prt));
     let batArmor = armorTypes[index];
     return batArmor;
-}
+};
+
+function getTrapName(batType) {
+    let trapName = 'Mines';
+    if (batType.skills.includes('dynamite')) {
+        trapName = 'Explosifs';
+    }
+    if (batType.skills.includes('trapap')) {
+        trapName = 'Pièges';
+    }
+    if (batType.skills.includes('trapdard')) {
+        trapName = 'Dardières';
+    }
+    if (batType.skills.includes('trapfosse')) {
+        trapName = 'Fosses';
+    }
+    return trapName;
+};
