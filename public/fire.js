@@ -364,6 +364,10 @@ function attack(melee) {
             console.log('bonus ROF embuscade');
         }
     }
+    // guerrilla
+    if (selectedBatType.skills.includes('guerrilla') && selectedBat.oldTileId != selectedBat.tileId) {
+        shots = Math.round(shots*1.5);
+    }
     // chargeur
     if (selectedBat.eq.includes('chargeur') || selectedBat.eq.includes('carrousel') || selectedBat.eq.includes('kit-guetteur')) {
         shots = chargeurAdj(selectedBat,shots,selectedWeap);
@@ -1118,6 +1122,11 @@ function defense(melee) {
     // spiderRG
     if (spiderRG && targetBatType.kind === 'spider') {
         shots = Math.round(shots*1.25);
+    }
+    // guerrilla
+    if (selectedBatType.skills.includes('guerrilla') && selectedBat.oldTileId != selectedBat.tileId) {
+        let guerrillaDef = 10+terrain.cover+(selectedBatType.stealth/5);
+        shots = Math.round(shots*9/guerrillaDef);
     }
     // chargeur
     if (targetBat.eq.includes('chargeur') || targetBat.eq.includes('carrousel') || targetBat.eq.includes('kit-guetteur')) {
