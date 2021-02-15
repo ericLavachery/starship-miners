@@ -362,7 +362,7 @@
     },
     {
         "name": "waterproof",
-        "skills": ["noblub"],
+        "skills": [],
         "info": "Pas de noyade",
         "bldReq":["Atelier"],
         "compReq":{"log":1,"scaph":1},

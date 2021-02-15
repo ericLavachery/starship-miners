@@ -616,6 +616,7 @@ function drugDown(bat,fatigue,addict) {
 };
 
 function blub(bat,batType) {
+    let isBlub = true;
     let terrain = getTerrain(bat);
     if (bat.tags.includes('blub')) {
         let tile = getTile(bat);
@@ -643,8 +644,10 @@ function blub(bat,batType) {
         if (terrain.name === 'W' || terrain.name === 'R') {
             let tile = getTile(bat);
             if ((tile.seed <= 3 || terrain.name === 'W') && !tile.rd) {
-                if ((!batType.skills.includes('fly') && !batType.skills.includes('hover') && !batType.skills.includes('noblub')) || batType.skills.includes('jetpack')) {
-                    bat.tags.push('blub');
+                if (bat.eq != 'waterproof') {
+                    if ((!batType.skills.includes('fly') && !batType.skills.includes('hover') && !batType.skills.includes('noblub')) || batType.skills.includes('jetpack')) {
+                        bat.tags.push('blub');
+                    }
                 }
             }
         }

@@ -427,11 +427,21 @@ function getCover(bat,withFortif,forAOE) {
         }
     } else {
         cover = terrain.cover;
+        if (bat.eq === 'waterproof' || batType.skills.includes('noblub')) {
+            if (terrain.name === 'W' || terrain.name === 'R') {
+                cover = 3;
+            }
+        }
     }
     // Fortification
     if (withFortif) {
         if (bat.tags.includes('fortif')) {
             cover = terrain.fortifcover;
+            if (bat.eq === 'waterproof' || batType.skills.includes('noblub')) {
+                if (terrain.name === 'W' || terrain.name === 'R') {
+                    cover = 3;
+                }
+            }
             if (batType.skills.includes('bigfortif')) {
                 cover = cover+2;
             }
