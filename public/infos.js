@@ -223,7 +223,9 @@ function batInfos(bat,pop) {
     }
     // Volume
     let volume = calcVolume(bat,batType);
-    $('#'+bodyPlace).append('<span class="paramName">Volume</span><span class="paramIcon"><i class="fas fa-weight-hanging"></i></span><span class="paramValue">'+volume+'</span><br>');
+    if (batType.cat != 'buildings' && batType.cat != 'devices' && !batType.skills.includes('transorbital')) {
+        $('#'+bodyPlace).append('<span class="paramName">Volume</span><span class="paramIcon"><i class="fas fa-weight-hanging"></i></span><span class="paramValue">'+volume+'</span><br>');
+    }
     if (pop) {
         $('#'+bodyPlace).append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batType.size+'</span><br>');
     }
@@ -249,7 +251,7 @@ function batInfos(bat,pop) {
         let restSpace = checkResSpace(bat);
         if (restSpace < 1) {tagColor = 'or';} else {tagColor = 'cy';}
         $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/'+resMax+'</span><br>');
-        if (!batType.skills.includes('transorbital')) {
+        if (batType.cat != 'buildings' && batType.cat != 'devices' && !batType.skills.includes('transorbital')) {
             let nearLander = nearAnyLander(bat);
             if (resMax > restSpace && nearLander) {
                 $('#'+bodyPlace).append('<span class="paramName or">Embarquement Lander</span><span class="paramIcon"></span><span class="paramValue or">Impossible</span><br>');

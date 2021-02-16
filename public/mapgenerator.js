@@ -640,6 +640,7 @@ function addRes(zone) {
             minChance = terrain.minChance;
             if (tile.x >= 21 && tile.x <= 41 && tile.y >= 21 && tile.y <= 41) {
                 minChance = Math.ceil(((Math.sqrt(minChance+25)*1.5)+(minChance))/2.5);
+                minChance = Math.round(minChance/(playerInfos.comp.det+6)*6);
             }
             if (rand.rand(1,minChance) === 1) {
                 baseNum++;
@@ -1090,6 +1091,18 @@ function addRes(zone) {
                     }
                 }
             }
+        }
+    });
+    // REAJUSTER NOMBRE DE RUINES (tile.sh)
+    let realNumberOfRuins = 0;
+    zone.forEach(function(tile) {
+        if (tile.sh != undefined) {
+            realNumberOfRuins++;
+        }
+    });
+    zone.forEach(function(tile) {
+        if (tile.sh != undefined) {
+            tile.sh = realNumberOfRuins;
         }
     });
     // MAGMA

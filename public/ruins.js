@@ -123,25 +123,62 @@ function checkRuinsCit(tile) {
 
 function checkRuinsAliens(tile) {
     console.log('Check Aliens');
-    let mapLevel = playerInfos.mapDiff+2;
-    let mapFactor = playerInfos.mapDiff;
-    if (mapFactor < 1) {
-        mapFactor = 1;
+    let numRuins = tile.sh;
+    if (numRuins > 50) {
+        numRuins = 50;
     }
-    let alienChance = Math.round(mapLevel*ruinsBugBase/25);
+    if (numRuins < 4) {
+        numRuins = 4;
+    }
+    let mapLevel = playerInfos.mapDiff+2;
+    let alienLevels = Math.round((playerInfos.mapDiff+(numRuins/5))/2);
+    if (alienLevels < 1) {
+        alienLevels = 1;
+    }
+    let alienChance = Math.round(mapLevel*Math.sqrt(numRuins)*ruinsBugBase/25);
     console.log('alienChance: '+alienChance);
     if (rand.rand(1,100) <= alienChance) {
-        let maxDice = Math.ceil(mapFactor/3);
+        let maxDice = Math.ceil(alienLevels/2);
+        if (maxDice < 1) {
+            maxDice = 1;
+        }
         let numAliens = rand.rand(1,maxDice);
         let numCheck = rand.rand(1,maxDice);
         if (numCheck < numAliens) {
             numAliens = numCheck;
         }
         let alienTypeId = -1;
+        let alienOK = false;
         let shufAliens = _.shuffle(alienUnits);
         shufAliens.forEach(function(unit) {
             if (alienTypeId < 0) {
-                if (unit.size <= 6 && unit.class != 'A' && unit.name != 'Asticots' && unit.name != 'Vers' && unit.name != 'Sangsues') {
+                alienOK = false;
+                if (unit.class != 'A' && unit.class != 'S' && unit.class != 'X') {
+                    if (unit.name != 'Asticots' && unit.name != 'Vers' && unit.name != 'Sangsues') {
+                        if (alienLevels >= 6) {
+                            if (unit.skills.includes('fouisseur')) {
+                                alienOK = true;
+                            }
+                        }
+                        if (alienLevels >= 4) {
+                            if (unit.size <= 15) {
+                                alienOK = true;
+                            }
+                        }
+                        if (alienLevels >= 2) {
+                            if (unit.size <= 9) {
+                                alienOK = true;
+                            }
+                        }
+                        if (unit.size <= 6) {
+                            alienOK = true;
+                        }
+                        if (alienLevels <= 2 && unit.class === 'B') {
+                            alienOK = false;
+                        }
+                    }
+                }
+                if (alienOK) {
                     alienTypeId = unit.id;
                 }
             }
