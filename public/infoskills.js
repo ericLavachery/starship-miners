@@ -85,7 +85,11 @@ function skillsInfos(bat,batType) {
             balise = 'h3';
         }
         apCost = bat.ap;
-        if (bat.apLeft >= apCost-2 && !bat.tags.includes('fortif') && !inMelee && bat.salvoLeft >= batType.maxSalvo) {
+        if (batType.skills.includes('baddef') || batType.skills.includes('guerrilla')) {
+            apCost = bat.ap+3;
+        }
+        apReq = bat.ap-2;
+        if (bat.apLeft >= apReq && !bat.tags.includes('fortif') && !inMelee && bat.salvoLeft >= batType.maxSalvo) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Se fortifier (bonus couverture)" class="boutonGris skillButtons" onclick="fortification()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
         } else {
             if (inMelee) {
@@ -687,11 +691,15 @@ function skillsInfos(bat,batType) {
         if (bat.tags.includes('prodres')) {
             balise = 'h3';
         }
+        let upkeepCosts = '{aucun}';
+        if (batType.upkeep != undefined) {
+            upkeepCosts = toCoolString(batType.upkeep);
+        }
         apCost = 0;
         if (!bat.tags.includes('prodres')) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lancer la production de ressources" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Désactivé</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lancer la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Désactivé</'+balise+'></span>');
         } else {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter la production de ressources" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Activé</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Activé</'+balise+'></span>');
         }
     }
     // CHARGER RESSOURCES
@@ -911,6 +919,9 @@ function skillsInfos(bat,batType) {
     if (batType.skills.includes('constructeur')) {
         if (tile.terrain != 'W' && tile.terrain != 'R') {
             apReq = batType.mecanoCost;
+            if (apReq > bat.ap-2) {
+                apReq = bat.ap-2;
+            }
             let infra;
             let infraCostOK;
             if (bat.apLeft >= apReq && !inMelee) {

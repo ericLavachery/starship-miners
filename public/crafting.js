@@ -370,6 +370,11 @@ function upkeepAndProd(bat,batType) {
                         value = scrapCreation(value);
                     }
                     resAdd(key,value);
+                    if (minedThisTurn[key] === undefined) {
+                        minedThisTurn[key] = value;
+                    } else {
+                        minedThisTurn[key] = minedThisTurn[key]+value;
+                    }
                     console.log('prod = '+key+':'+value);
                 });
             }
@@ -406,11 +411,14 @@ function energyCreation(energyCreated) {
 function scrapCreation(scrapCreated) {
     let triComp = playerInfos.comp.tri;
     if (playerInfos.bldList.includes('Recyclab')) {
-        triComp = triComp+5;
+        triComp = triComp+4;
     } else if (playerInfos.bldList.includes('Centre de tri')) {
-        triComp = triComp+3;
+        triComp = triComp+2;
     }
-    scrapCreated = Math.round(scrapCreated*(triComp+3)/3);
+    if (!playerInfos.bldList.includes('Décharge')) {
+        triComp = triComp-1.5;
+    }
+    scrapCreated = Math.ceil(scrapCreated*(triComp+3)/3);
     return scrapCreated;
 };
 

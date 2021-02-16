@@ -859,6 +859,8 @@ function addRes(zone) {
     let mapResBatchDiv = resBatchDiv;
     if (playerInfos.mapDiff < 1) {
         mapResBatchDiv = Math.round(mapResBatchDiv*1.75);
+    } else {
+        mapResBatchDiv = Math.round(mapResBatchDiv*(ruinChance+15)/24);
     }
     zone.forEach(function(tile) {
         if (tile.rq >= 1) {

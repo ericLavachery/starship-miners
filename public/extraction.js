@@ -142,11 +142,28 @@ function getMiningRate(bat,fullRate) {
 function getResMiningRate(bat,res,value,fullRate) {
     let batType = getBatType(bat);
     let resHere = value;
-    if (resHere < minResForRate && res.cat != 'zero') {
-        resHere = minResForRate;
+    if (playerInfos.comp.tri >= 1 && res.name === 'Scrap') {
+        resHere = Math.round(resHere*(playerInfos.comp.tri+9)/9);
     }
-    if (resHere > maxResForRate) {
-        resHere = maxResForRate;
+    let minRes = minResForRate;
+    if (res.name === 'Scrap') {
+        minRes = Math.round(minRes*1.5);
+    }
+    if (playerInfos.comp.ext >= 1) {
+        minRes = Math.round(minRes*(playerInfos.comp.ext+9)/9);
+    }
+    let maxRes = maxResForRate;
+    if (res.name === 'Scrap' || res.name === 'Végétaux' || res.name === 'Bois' || res.name === 'Eau') {
+        maxRes = Math.round(maxRes*1.25);
+    }
+    if (playerInfos.comp.ext >= 1) {
+        maxRes = Math.round(maxRes*(playerInfos.comp.ext+9)/9);
+    }
+    if (resHere < minRes && res.cat != 'zero') {
+        resHere = minRes;
+    }
+    if (resHere > maxRes) {
+        resHere = maxRes;
     }
     let batRate = getMiningRate(bat,fullRate);
     let multiExtractAdj = 1;

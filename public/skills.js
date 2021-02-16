@@ -19,6 +19,9 @@ function fortification() {
     }
     selectedBat.salvoLeft = 0;
     selectedBat.apLeft = selectedBat.apLeft-selectedBat.ap;
+    if (selectedBatType.skills.includes('baddef') || selectedBatType.skills.includes('guerrilla')) {
+        selectedBat.apLeft = selectedBat.apLeft-3;
+    }
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
