@@ -4453,7 +4453,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","maycamo","guerrilla","fastguet","selfbadmedic"],
+        "skills":["fouille","fortif","cible","maycamo","guerrilla","baddef","fastguet","selfbadmedic"],
         "mediCost":9,
         "fuzz":0,
         "deathFx":"195954__minian89__death-blood-splatter"

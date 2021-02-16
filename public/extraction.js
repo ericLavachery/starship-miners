@@ -431,7 +431,10 @@ function loadRes() {
     let resLoad;
     let resOK;
     if (restSpace >= 1) {
-        bataillons.forEach(function(bat) {
+        let sortedBats = bataillons.slice();
+        sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'type'),'creaTurn'),'id');
+        sortedBats.reverse();
+        sortedBats.forEach(function(bat) {
             if (bat.id != selectedBat.id) {
                 batType = getBatType(bat);
                 if (batType.skills.includes('fret')) {

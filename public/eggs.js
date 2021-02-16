@@ -357,30 +357,40 @@ function eggDropTile(eggName,theArea) {
     }
     // ANY
     if (area === 'any') {
-        let tileOK = false;
-        let maxTileId = (mapSize*mapSize)-1;
-        let dropTile = rand.rand(0,maxTileId);
-        console.log('dropTile='+dropTile);
-        if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
-            tileOK = true;
-        }
-        if (!tileOK) {
-            dropTile = rand.rand(0,maxTileId);
-            console.log('dropTile='+dropTile);
-            if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
-                tileOK = true;
+        let shufZone = _.shuffle(zone);
+        shufZone.forEach(function(tile) {
+            if (theTile < 0) {
+                if (tile.x >= 2 && tile.x <= 59 && tile.y >= 2 && tile.y <= 59) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        theTile = tile.id;
+                    }
+                }
             }
-        }
-        if (!tileOK) {
-            dropTile = rand.rand(0,maxTileId);
-            console.log('dropTile='+dropTile);
-            if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
-                tileOK = true;
-            }
-        }
-        if (tileOK) {
-            theTile = dropTile;
-        }
+        });
+        // let tileOK = false;
+        // let maxTileId = (mapSize*mapSize)-1;
+        // let dropTile = rand.rand(0,maxTileId);
+        // console.log('dropTile='+dropTile);
+        // if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
+        //     tileOK = true;
+        // }
+        // if (!tileOK) {
+        //     dropTile = rand.rand(0,maxTileId);
+        //     console.log('dropTile='+dropTile);
+        //     if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
+        //         tileOK = true;
+        //     }
+        // }
+        // if (!tileOK) {
+        //     dropTile = rand.rand(0,maxTileId);
+        //     console.log('dropTile='+dropTile);
+        //     if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
+        //         tileOK = true;
+        //     }
+        // }
+        // if (tileOK) {
+        //     theTile = dropTile;
+        // }
     }
     // EDGE
     if (area === 'edge') {
@@ -451,7 +461,7 @@ function eggDropTile(eggName,theArea) {
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
                 distance = calcDistance(tile.id,targetTile);
-                if (distance > 9 && distance < 13) {
+                if (distance > 11 && distance < 16) {
                     if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
