@@ -365,12 +365,12 @@ function getCrashEscapeTile(tileId) {
 
 function calcDamage(weapon,power,armor,defBat) {
     // powerDice is max 4x power
-    // bigfortif
+    // fortif armor
     let defBatType = getBatType(defBat);
     if (defBat.tags.includes('fortif')) {
         if (defBatType.skills.includes('bigfortif')) {
             armor = armor+2;
-        } else if (armor < 2) {
+        } else if (armor < 3 && !defBatType.skills.includes('baddef')) {
             armor = armor+1;
         }
     }
@@ -437,6 +437,9 @@ function getCover(bat,withFortif,forAOE) {
     if (withFortif) {
         if (bat.tags.includes('fortif')) {
             cover = terrain.fortifcover;
+            if (batType.skills.includes('baddef')) {
+                cover = Math.ceil((terrain.fortifcover+terrain.cover)/2);
+            }
             if (bat.eq === 'waterproof' || batType.skills.includes('noblub')) {
                 if (terrain.name === 'W' || terrain.name === 'R') {
                     cover = 3;

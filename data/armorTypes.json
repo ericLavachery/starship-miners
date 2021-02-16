@@ -3,31 +3,31 @@
         "name": "Miradors",
         "fabTime":9,
         "levels":{"rednecks":5,"blades":5,"bulbos":4,"drogmulojs":6,"tiradores":7,"detruas":7,"brasier":5},
-        "costs":{"Compo1":100}
+        "costs":{"Compo1":85}
     },
     {
         "name": "Palissades",
         "fabTime":12,
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
-        "costs":{"Compo1":150}
+        "costs":{"Compo1":125}
     },
     {
         "name": "Remparts",
         "fabTime":18,
         "levels":{"rednecks":7,"blades":7,"bulbos":6,"drogmulojs":8,"tiradores":6,"detruas":6,"brasier":7},
-        "costs":{"Compo1":125,"Compo2":125}
+        "costs":{"Compo1":50,"Compo2":150}
     },
     {
         "name": "Murailles",
         "fabTime":26,
         "levels":{"rednecks":11,"blades":11,"bulbos":10,"drogmulojs":13,"tiradores":13,"detruas":11,"brasier":11},
-        "costs":{"Compo1":125,"Compo2":125,"Compo3":125}
+        "costs":{"Compo2":150,"Compo3":150}
     },
     {
         "name": "Terriers",
         "fabTime":18,
         "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":10},
-        "costs":{"Compo1":100,"Compo2":25,"Végétaux":100}
+        "costs":{"Compo1":75,"Compo2":25,"Végétaux":75}
     },
     {
         "name": "aucune",
