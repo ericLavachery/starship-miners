@@ -182,8 +182,10 @@ function calcRavitVolume(bat) {
         } else if (playerInfos.bldList.includes('Arsenal')) {
             w1maxAmmo = Math.round(w1maxAmmo*1.25);
         }
-        if (bat.ammo.includes('obus') || bat.ammo.includes('boulet') || bat.ammo.includes('lf-')) {
+        if (bat.ammo.includes('obus') || bat.ammo.includes('boulet')) {
             ammoVolume = 2*batType.weapon.power;
+        } else if (bat.ammo.includes('lf-')) {
+            ammoVolume = 0.67*batType.weapon.power;
         } else if (bat.ammo.includes('missile')) {
             ammoVolume = 8*batType.weapon.power;
             ravitVolume[2] = 'missile';
@@ -207,8 +209,10 @@ function calcRavitVolume(bat) {
         } else if (playerInfos.bldList.includes('Arsenal')) {
             w2maxAmmo = Math.round(w2maxAmmo*1.25);
         }
-        if (bat.ammo2.includes('obus') || bat.ammo2.includes('boulet') || bat.ammo2.includes('lf-')) {
+        if (bat.ammo2.includes('obus') || bat.ammo2.includes('boulet')) {
             ammoVolume = 2*batType.weapon2.power;
+        } else if (bat.ammo2.includes('lf-')) {
+            ammoVolume = 0.67*batType.weapon2.power;
         } else if (bat.ammo2.includes('missile')) {
             ammoVolume = 8*batType.weapon2.power;
             ravitVolume[2] = 'missile';
@@ -297,7 +301,7 @@ function checkRavit(myBat) {
                 if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret' && !batType.skills.includes('stockmed')) {
                     if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
                         ravitLeft = calcRavit(bat);
-                        if (ravitLeft >= 1 && (ravitVolume[0] <= batType.maxSkill || ravitVolume[0] <= 12) && (ravitVolume[2] != 'missile' || batType.skills.includes('stock'))) {
+                        if (ravitLeft >= 1 && (ravitVolume[0] <= batType.maxSkill || ravitVolume[0] <= 12 || (ravitVolume[0] <= 18 && (myBat.eq === 'gilet' || myBat.eq === 'crimekitgi'))) && (ravitVolume[2] != 'missile' || batType.skills.includes('stock'))) {
                             anyRavit = true;
                         }
                     }
