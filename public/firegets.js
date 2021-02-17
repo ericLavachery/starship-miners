@@ -509,6 +509,9 @@ function getStealth(bat) {
     if (tile.infra === 'Terriers' && batType.size < 9) {
         batStealth = batStealth+5;
     }
+    if (tile.ruins) {
+        batStealth = batStealth+4;
+    }
     if (bat.tags.includes('drunk')) {
         batStealth = batStealth-4;
     }
@@ -532,6 +535,12 @@ function getStealth(bat) {
     let vetStealth = Math.round(bat.vet*vetBonus.stealth);
     let maxStealth = batStealth;
     let coverAdj = Math.round((cover+3)*1.8);
+    if (tile.ruins) {
+        coverAdj = coverAdj+4;
+    }
+    if (tile.infra === 'Terriers' && batType.size < 9) {
+        coverAdj = coverAdj+5;
+    }
     if (coverAdj < 2) {
         coverAdj = 2;
     }

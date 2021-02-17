@@ -1,19 +1,31 @@
-function medic(cat,cost,around,deep) {
+function medic(cat,cost,around,deep,inBld,medicBatId) {
     console.log('MEDIC SKILL');
     console.log(selectedBatType);
+    let medicBat = {};
+    let medicBatType = {};
     let denom = 'Soins';
     if (cat != 'infantry') {
         denom = 'Réparations';
     }
     washReports();
-    $('#report').append('<span class="report or">'+selectedBat.type+' ('+denom+')</span><br>');
+    if (!inBld) {
+        $('#report').append('<span class="report or">'+selectedBat.type+' ('+denom+')</span><br>');
+    } else {
+        medicBat = getBatById(medicBatId);
+        medicBatType = getBatType(medicBat);
+        $('#report').append('<span class="report or">'+medicBat.type+' ('+denom+')</span><br>');
+    }
     let unitIndex;
     let batType;
     let totalAPCost = 0;
     let xpGain = 0.1;
     let apCost = cost;
     if (around) {
-        apCost = cost+selectedBatType.squads-selectedBat.squadsLeft;
+        if (!inBld) {
+            apCost = cost+selectedBatType.squads-selectedBat.squadsLeft;
+        } else {
+            apCost = cost+medicBatType.squads-medicBat.squadsLeft;
+        }
     }
     let batUnits;
     let newBatUnits;
@@ -26,6 +38,9 @@ function medic(cat,cost,around,deep) {
     let fullBat;
     console.log('apCost: '+apCost);
     let maxAPCost = Math.round(selectedBat.ap*1.5);
+    if (inBld) {
+        maxAPCost = Math.round(medicBat.ap*1.5);
+    }
     if (around) {
         bataillons.forEach(function(bat) {
             if (totalAPCost < maxAPCost) {
@@ -348,13 +363,17 @@ function medic(cat,cost,around,deep) {
     console.log('totalAPCost: '+totalAPCost);
     // xpGain = Math.round(xpGain*100)/100;
     xpGain = xpGain.toFixedNumber(2);
-    selectedBat.xp = selectedBat.xp+xpGain;
-    selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
-    tagDelete(selectedBat,'mining');
-    tagDelete(selectedBat,'guet');
-    tagAction();
-    // selectedBat.salvoLeft = 0;
-    selectedBatArrayUpdate();
+    if (!inBld) {
+        selectedBat.xp = selectedBat.xp+xpGain;
+        selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
+        tagDelete(selectedBat,'mining');
+        tagDelete(selectedBat,'guet');
+        tagAction();
+        selectedBatArrayUpdate();
+    } else {
+        medicBat.xp = medicBat.xp+xpGain;
+        medicBat.apLeft = medicBat.apLeft-totalAPCost;
+    }
     showBatInfos(selectedBat);
 };
 
@@ -545,4 +564,25 @@ function calcBaseSkillCost(bat,batType,medik) {
         baseskillCost = 2;
     }
     return baseskillCost;
+};
+
+function bestMedicInBld(bldBat) {
+    let medicBat = {};
+    let maxMeds = 0;
+    let bestMaxMeds = 0;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "trans" && bat.locId === bldBat.id) {
+            let batType = getBatType(bat);
+            if (batType.skills.includes('medic')) {
+                maxMeds = 10*bat.apLeft/batType.mediCost;
+                if (maxMeds > bestMaxMeds) {
+                    bestMaxMeds = maxMeds;
+                    if (maxMeds >= 3) {
+                        medicBat = bat;
+                    }
+                }
+            }
+        }
+    });
+    return medicBat;
 };

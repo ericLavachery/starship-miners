@@ -257,8 +257,26 @@ function skillsInfos(bat,batType) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter le fog" class="boutonGris skillButtons" onclick="fogStop()"><i class="fas fa-cloud"></i> <span class="small">0</span></button>&nbsp; Fog</'+balise+'></span>');
         }
     }
-    // MEDIC
+    // MEDIC IN BLD
     let baseskillCost;
+    if (batType.cat === 'buildings' && !batType.skills.includes('medic')) {
+        let medicBat = bestMedicInBld(bat);
+        let medicBatType = getBatType(medicBat);
+        console.log(medicBat);
+        if (Object.keys(medicBat).length >= 1) {
+            numTargets = numMedicTargets(medicBat,'infantry',true,true);
+            baseskillCost = calcBaseSkillCost(medicBat,medicBatType,true);
+            apCost = numTargets*(baseskillCost+medicBatType.squads-medicBat.squadsLeft);
+            if (apCost === 0) {apCost = baseskillCost;}
+            if (numTargets >= 1) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonGris skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,true,true,'+medicBat.id+')"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+            } else {
+                skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+            }
+        }
+    }
+    // MEDIC
     if ((batType.skills.includes('medic') && bat.eq != 'megafret') || (bat.eq === 'medic' && playerInfos.comp.med >= 3)) {
         numTargets = numMedicTargets(bat,'infantry',true,true);
         baseskillCost = calcBaseSkillCost(bat,batType,true);
