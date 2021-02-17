@@ -257,7 +257,7 @@ function attack(melee) {
                 }
             }
         }
-        if (!targetBatType.skills.includes('fly') && (!targetBatType.skills.includes('hover') || targetBatType.cat === 'aliens')) {
+        if (!targetBatType.skills.includes('fly') && !targetBatType.skills.includes('resistelec') && !targetBat.tags.includes('resistelec') && (!targetBatType.skills.includes('hover') || targetBatType.cat === 'aliens')) {
             if (selectedWeap.ammo.includes('taser') || selectedWeap.ammo.includes('electric')) {
                 if ((terrain.name === 'W' || terrain.name === 'R') && !tile.rd) {
                     selectedWeap.power = Math.round(selectedWeap.power+7);
@@ -369,7 +369,7 @@ function attack(melee) {
         shots = Math.round(shots*1.5);
     }
     // chargeur
-    if (selectedBat.eq.includes('chargeur') || selectedBat.eq.includes('carrousel') || selectedBat.eq.includes('kit-guetteur')) {
+    if (selectedBat.eq.includes('chargeur') || selectedBat.eq.includes('carrousel') || selectedBat.eq.includes('kit-guetteur') || selectedBat.eq === 'crimekitch') {
         shots = chargeurAdj(selectedBat,shots,selectedWeap);
     }
     // ESCAPE
@@ -552,6 +552,15 @@ function attack(melee) {
                 $('#report').append('<span class="report rose">Résistance au feu 33%<br></span>');
             }
             console.log('résistance au feu!');
+        }
+    }
+    // résistance électricité
+    if (targetBatType.skills.includes('resistelec') || targetBat.tags.includes('resistelec')) {
+        if (selectedWeap.ammo.includes('electric') || selectedWeap.ammo.includes('taser')) {
+            totalDamage = Math.round(totalDamage/2);
+            apDamage = Math.round(apDamage/2);
+            $('#report').append('<span class="report rose">Résistance aux décharges 50%<br></span>');
+            console.log('résistance électricité!');
         }
     }
     // résistance blast
@@ -1009,7 +1018,7 @@ function defense(melee) {
                 }
             }
         }
-        if (!selectedBatType.skills.includes('fly') && (!selectedBatType.skills.includes('hover') || selectedBatType.cat === 'aliens')) {
+        if (!selectedBatType.skills.includes('fly') && !selectedBatType.skills.includes('resistelec') && !selectedBat.tags.includes('resistelec') && (!selectedBatType.skills.includes('hover') || selectedBatType.cat === 'aliens')) {
             if (targetWeap.ammo.includes('taser') || targetWeap.ammo.includes('electric')) {
                 if ((terrain.name === 'W' || terrain.name === 'R') && !tile.rd) {
                     targetWeap.power = Math.round(targetWeap.power+7);
@@ -1129,7 +1138,7 @@ function defense(melee) {
         shots = Math.round(shots*9/guerrillaDef);
     }
     // chargeur
-    if (targetBat.eq.includes('chargeur') || targetBat.eq.includes('carrousel') || targetBat.eq.includes('kit-guetteur')) {
+    if (targetBat.eq.includes('chargeur') || targetBat.eq.includes('carrousel') || targetBat.eq.includes('kit-guetteur') || targetBat.eq === 'crimekitch') {
         shots = chargeurAdj(targetBat,shots,targetWeap);
     }
     // Champs de mines
@@ -1265,6 +1274,15 @@ function defense(melee) {
                 $('#report').append('<span class="report rose">Résistance au feu 33%<br></span>');
             }
             console.log('résistance au feu!');
+        }
+    }
+    // résistance électricité
+    if (selectedBatType.skills.includes('resistelec') || selectedBat.tags.includes('resistelec')) {
+        if (targetWeap.ammo.includes('electric') || targetWeap.ammo.includes('taser')) {
+            totalDamage = Math.round(totalDamage/2);
+            apDamage = Math.round(apDamage/2);
+            $('#report').append('<span class="report rose">Résistance aux décharges 50%<br></span>');
+            console.log('résistance électricité!');
         }
     }
     // résistance blast

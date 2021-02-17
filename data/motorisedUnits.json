@@ -1843,7 +1843,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","mecano","repair","constructeur","routes","noblub","resistacide","dealer","nitro","light","crewsave","fret","extraction"],
+        "skills":["noguet","mecano","repair","constructeur","routes","noblub","resistacide","resistelec","dealer","nitro","light","crewsave","fret","extraction"],
         "mecanoCost":4,
         "mining":{
             "level":1,
@@ -3774,7 +3774,7 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","selfbadmecano","longshot","defense","noblub","flash"],
+        "skills":["fortif","cible","selfbadmecano","longshot","defense","noblub","flash","resistelec"],
         "mecanoCost":20,
         "fuzz":3,
         "deathFx":"planeexploair3"

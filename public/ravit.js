@@ -171,7 +171,7 @@ function calcRavitVolume(bat) {
     let w1maxAmmo = batType.weapon.maxAmmo;
     let w2maxAmmo = batType.weapon2.maxAmmo;
     if (batType.weapon.maxAmmo < 99) {
-        if (bat.eq === 'gilet') {
+        if (bat.eq === 'gilet' || bat.eq === 'crimekitgi') {
             w1maxAmmo = Math.floor(w1maxAmmo*1.5);
             if (w1maxAmmo < 16) {
                 w1maxAmmo = 16;
@@ -196,7 +196,7 @@ function calcRavitVolume(bat) {
         ammoLeft = calcAmmos(bat,w1maxAmmo);
         ravitVolume[1] = ravitVolume[0]-Math.floor(ravitVolume[0]*ammoLeft/w1maxAmmo);
     } else if (batType.weapon2.maxAmmo < 99) {
-        if (bat.eq === 'gilet') {
+        if (bat.eq === 'gilet' || bat.eq === 'crimekitgi') {
             w2maxAmmo = Math.floor(w2maxAmmo*1.5);
             if (w2maxAmmo < 16) {
                 w2maxAmmo = 16;

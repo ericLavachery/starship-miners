@@ -380,6 +380,24 @@
         "deploy":{"Energie":12}
     },
     {
+        "name": "crimekitch",
+        "skills": [],
+        "info": "Camouflage+ Déplacement+ Cadence++",
+        "bldReq":["Atelier"],
+        "compReq":{"log":1,"ordre":2},
+        "factor":"crew",
+        "costs":{"Blendium":6,"Tissus":12,"Scrap":6,"Carbone":6,"Fer":3}
+    },
+    {
+        "name": "crimekitgi",
+        "skills": [],
+        "info": "Camouflage+ Déplacement+ Munitions+ Puissance+",
+        "bldReq":["Atelier"],
+        "compReq":{"log":1,"ordre":2},
+        "factor":"crew",
+        "costs":{"Blendium":6,"Tissus":15,"Scrap":6,"Carbone":6,"Fer":3}
+    },
+    {
         "name": "kit-pompiste",
         "skills": [],
         "info": "Vision+ Canon à essence",

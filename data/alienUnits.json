@@ -91,7 +91,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","nez","fouisseur","capbld","reactpoison","okwater"],
+        "skills":["regeneration","nez","fouisseur","capbld","reactpoison","okwater","resistelec"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":1,"Larvium":10,"Mendium":9}
     },
@@ -146,7 +146,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","capbld","fouisseur","nez","reactpoison","okwater"],
+        "skills":["regeneration","capbld","fouisseur","nez","reactpoison","okwater","resistelec"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":5,"Mendium":30,"Larvium":30}
     },
@@ -543,7 +543,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["grip","venin","eatpoison","okwater"],
+        "skills":["grip","venin","eatpoison","okwater","resistelec"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":2,"Swarmine":3,"Mephitis":2}
     },
@@ -1392,7 +1392,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","capfar","inflammable"],
+        "skills":["fly","capfar","inflammable","resistelec"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":1,"Larvium":2,"Wingium":5}
     },
@@ -1529,7 +1529,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["chancre","hover","capmen"],
+        "skills":["chancre","hover","capmen","resistelec"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":5,"Germium":6,"Mephitis":2}
     },
@@ -1666,7 +1666,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["heal","capbld","fear","okwater","ponte","resistfeu","fouisseur","noaploss"],
+        "skills":["heal","capbld","fear","okwater","ponte","resistfeu","fouisseur","noaploss","resistelec"],
         "deathFx":"185366__anwul__monster",
         "spawnFx":"142932__1pjladd2__burp-monster_megagrubz",
         "fxPriority":2,
@@ -1752,7 +1752,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["hover"],
+        "skills":["hover","resistelec"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":1,"Aranium":3,"Mephitis":1}
     },

@@ -512,7 +512,7 @@ function getStealth(bat) {
     if (bat.tags.includes('drunk')) {
         batStealth = batStealth-4;
     }
-    if (bat.eq === 'camo' || bat.eq === 'kit-sentinelle') {
+    if (bat.eq === 'camo' || bat.eq === 'kit-sentinelle' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
         if (batType.skills.includes('camo')) {
             batStealth = batStealth+4;
         } else {
@@ -619,6 +619,9 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
             speed = speed-10;
         }
         if (batType.skills.includes('bastion') && !attacking) {
+            speed = speed-20;
+        }
+        if (batType.skills.includes('guerrilla') && bat.oldTileId != bat.tileId) {
             speed = speed-20;
         }
         if (batType.skills.includes('initiative')) {
@@ -1110,7 +1113,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.cost = thisWeapon.cost-1;
         }
     }
-    if (bat.eq === 'gilet' && thisWeapon.maxAmmo < 99) {
+    if ((bat.eq === 'gilet' || bat.eq === 'crimekitgi') && thisWeapon.maxAmmo < 99) {
         thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
         if (thisWeapon.maxAmmo < 16) {
             thisWeapon.maxAmmo = 16;
@@ -1145,6 +1148,12 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.power = thisWeapon.power+4;
             thisWeapon.accuracy = thisWeapon.accuracy+2;
             thisWeapon.name = 'Bélier';
+        }
+    }
+    if (bat.eq === 'crimekitgi') {
+        if (thisWeapon.num === 1) {
+            thisWeapon.power = thisWeapon.power+1;
+            thisWeapon.rof = Math.round(thisWeapon.rof*1.33);
         }
     }
     // bonus ammo
@@ -1370,10 +1379,10 @@ function calcShotDice(bat,luckyshot) {
 function chargeurAdj(bat,shots,weap) {
     let newShots = shots;
     let mult = 1.5;
-    if (weap.name.includes('Calibre') || weap.name.includes('verrou') || weap.name.includes('pompe')) {
+    if (weap.name.includes('Calibre') || weap.name.includes('verrou')) {
         mult = 2;
     }
-    if (weap.name.includes('Revolver') || weap.name.includes('Blaster')) {
+    if (weap.name.includes('Revolver') || weap.name.includes('Blaster') || weap.name.includes('pompe')) {
         mult = 1.7;
     }
     if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || weap.name.includes('Blister')) {
@@ -1382,9 +1391,9 @@ function chargeurAdj(bat,shots,weap) {
     if (bat.eq.includes('kit-guetteur')) {
         mult = 2;
     }
-    if (bat.eq.includes('chargeur') || bat.eq.includes('kit-guetteur')) {
+    if (bat.eq.includes('chargeur') || bat.eq.includes('kit-guetteur') || bat.eq === 'crimekitch') {
         if (weap.num === 1) {
-            if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.eq.includes('kit-guetteur')) {
+            if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.eq.includes('kit-guetteur') || bat.eq === 'crimekitch') {
                 newShots = Math.round(newShots*mult);
             }
         } else {

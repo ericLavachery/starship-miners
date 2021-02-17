@@ -87,27 +87,27 @@ function getTerrainRes(terrain,tile) {
     let srs = {};
     // Bois
     if (terrain.name === 'F') {
-        srs.Bois = 600;
-    } else if (terrain.name === 'B' && tile.seed >= 4) {
-        srs.Bois = 150;
+        srs.Bois = 250+(tile.seed*65);
     } else if (terrain.name === 'B') {
-        srs.Bois = 35;
+        srs.Bois = 25+(tile.seed*25);
     }
     // Végétaux
     if (terrain.name === 'F') {
-        srs.Végétaux = 100;
-    } else if (terrain.name === 'B' && tile.seed >= 4) {
-        srs.Végétaux = 250;
-    } else if (terrain.veg >= 1) {
-        srs.Végétaux = Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*25;
+        srs.Végétaux = 25+((7-tile.seed)*25);
+    } else if (terrain.name === 'B') {
+        srs.Végétaux = 250+((7-tile.seed)*65);
+    } else if (terrain.veg >= 0.5) {
+        srs.Végétaux = (Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*15)-15+(tile.seed*5);
     }
     // Eau
-    if (terrain.name === 'R') {
-        srs.Eau = 1000;
+    if (terrain.name === 'R' && tile.seed >= 4) {
+        srs.Eau = 290+((7-tile.seed)*45);
+    } else if (terrain.name === 'R') {
+        srs.Eau = 550+((7-tile.seed)*75);
     } else if (terrain.name === 'W') {
-        srs.Eau = 750;
+        srs.Eau = 400+(tile.seed*75);
     } else if (terrain.name === 'S') {
-        srs.Eau = 225;
+        srs.Eau = 100+(tile.seed*35);
     }
     return srs;
 };

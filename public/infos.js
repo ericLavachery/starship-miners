@@ -103,7 +103,7 @@ function batInfos(bat,pop) {
     }
     let stealth = getStealth(bat);
     let camChance = calcCamo(bat);
-    if (batType.skills.includes('camo') || batType.skills.includes('maycamo') || tile.ruins) {
+    if (batType.skills.includes('camo') || batType.skills.includes('maycamo') || tile.ruins || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'camo') {
         $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+' ('+camChance+'%)</span><br>');
     } else {
         $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');

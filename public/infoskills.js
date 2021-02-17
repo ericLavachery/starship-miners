@@ -102,7 +102,7 @@ function skillsInfos(bat,batType) {
     }
     // CAMOUFLAGE
     let camoufOK = true;
-    if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'camo' || bat.eq === 'kit-sentinelle') {
+    if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'camo' || bat.eq === 'kit-sentinelle' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
         if (batType.cat == 'buildings') {
             if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
                 apCost = Math.floor(bat.ap*3.5);

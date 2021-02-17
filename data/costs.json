@@ -18,6 +18,7 @@
         "name":"Détenus",
         "levels":{"rednecks":99,"blades":99,"bulbos":1,"drogmulojs":99,"tiradores":99,"detruas":99,"brazier":99},
         "bldReq":["Prisons"],
+        "compReq":{"ordre":1},
         "costs":{"Fer":60,"Scrap":60},
         "fabTime":15
     },
@@ -26,6 +27,7 @@
         "name":"Gangsters",
         "levels":{"rednecks":1,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brazier":99},
         "bldReq":["Prisons"],
+        "compReq":{"ordre":1},
         "costs":{"Fer":30,"Scrap":60},
         "fabTime":15
     },
@@ -34,6 +36,7 @@
         "name":"Raiders",
         "levels":{"rednecks":99,"blades":1,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brazier":99},
         "bldReq":["Prisons"],
+        "compReq":{"ordre":1},
         "costs":{"Fer":60,"Bois":60},
         "fabTime":15
     },
@@ -42,6 +45,7 @@
         "name":"Krimulos",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":1,"tiradores":99,"detruas":99,"brazier":99},
         "bldReq":["Prisons"],
+        "compReq":{"ordre":1},
         "costs":{"Fer":90,"Scrap":90},
         "fabTime":15
     },
@@ -50,6 +54,7 @@
         "name":"Sinyaki",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":1,"brazier":99},
         "bldReq":["Prisons"],
+        "compReq":{"ordre":1},
         "costs":{"Bois":60},
         "fabTime":15
     },
@@ -58,6 +63,7 @@
         "name":"Desperados",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":1,"detruas":99,"brazier":99},
         "bldReq":["Prisons"],
+        "compReq":{"ordre":1},
         "costs":{"Fer":90,"Scrap":90},
         "fabTime":15
     },
@@ -66,6 +72,7 @@
         "name":"Tôlards",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brazier":1},
         "bldReq":["Prisons"],
+        "compReq":{"ordre":1},
         "costs":{"Scrap":30},
         "fabTime":15
     },
