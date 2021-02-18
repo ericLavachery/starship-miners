@@ -1184,10 +1184,6 @@ function skillsInfos(bat,batType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-search"></i> <span class="small">'+apReq+'</span></button>&nbsp; Fouille</h4></span>');
         }
     }
-    // DEBARQUER
-    unloadInfos(bat,batType);
-    // RECONSTRUIRE
-    refabInfos(bat,batType);
     // CHARGER RESSOURCES
     if (batType.skills.includes('fret')) {
         let resToLoad = isResToLoad(bat);
@@ -1206,6 +1202,10 @@ function skillsInfos(bat,batType) {
             }
         }
     }
+    // DEBARQUER
+    unloadInfos(bat,batType);
+    // RECONSTRUIRE
+    refabInfos(bat,batType);
     // CONSTRUCTION TRICHE
     if (batType.skills.includes('triche')) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris skillButtons" onclick="bfconst(`all`,true,false)"><i class="fas fa-drafting-compass"></i></button>&nbsp; Construction</h4></span>');
