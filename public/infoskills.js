@@ -269,7 +269,7 @@ function skillsInfos(bat,batType) {
             apCost = numTargets*(baseskillCost+medicBatType.squads-medicBat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
             if (numTargets >= 1) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonGris skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,true,true,'+medicBat.id+')"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes avec '+medicBat.type+'" class="boutonGris skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,true,true,'+medicBat.id+')"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
             } else {
                 skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
@@ -687,8 +687,8 @@ function skillsInfos(bat,batType) {
             balise = 'h3';
         }
         apCost = 5;
-        apReq = 7;
-        if (bat.apLeft >= apReq && !bat.tags.includes('mining') && !inMelee && extractOK) {
+        apReq = 0;
+        if (!bat.tags.includes('mining') && !inMelee && extractOK) {
             $('#unitInfos').append('<span class="blockTitle"><h5><button type="button" title="Extraire les ressources" class="boutonGris skillButtons" onclick="extraction('+apCost+')"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apReq+'</span></button><button type="button" title="Choisir les ressources" class="boutonGris skillButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>&nbsp; Extraction</h5></span>');
         } else {
             if (inMelee) {

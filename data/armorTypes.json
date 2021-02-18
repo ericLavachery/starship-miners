@@ -234,7 +234,7 @@
         "skills": [],
         "info": "Cadence++",
         "bldReq":["Armurerie"],
-        "compReq":{"log":2},
+        "compReq":{"log":2,"bal":2},
         "factor":"crew",
         "costs":{"Scrap":6,"Carbone":6,"Fer":6}
     },
@@ -243,7 +243,7 @@
         "skills": [],
         "info": "Cadence++",
         "bldReq":["Armurerie"],
-        "compReq":{"log":2},
+        "compReq":{"log":2,"bal":2},
         "factor":"crew",
         "costs":{"Scrap":3,"Carbone":3,"Fer":3}
     },
@@ -252,7 +252,7 @@
         "skills": [],
         "info": "Cadence++",
         "bldReq":["Armurerie"],
-        "compReq":{"log":2},
+        "compReq":{"log":2,"bal":2},
         "factor":"crew",
         "costs":{"Scrap":3,"Carbone":3,"Fer":3}
     },
@@ -452,7 +452,7 @@
         "skills": [],
         "info": "Double chargeur",
         "bldReq":["Arsenal"],
-        "compReq":{"log":2,"bal":1},
+        "compReq":{"log":2,"bal":2},
         "factor":"crew",
         "costs":{"Carbone":6,"Scrap":3,"Fer":6}
     },

@@ -242,13 +242,16 @@ function playerSkillsUTChanges() {
         if (playerInfos.comp.def >= 1 && unit.cat === 'buildings') {
             unit.armor = unit.armor+Math.round(playerInfos.comp.def*1.2);
         }
-        if (playerInfos.comp.def >= 3 && unit.skills.includes('garde')) {
-            unit.armor = unit.armor+2;
-            if (Object.keys(unit.weapon).length >= 3) {
-                unit.weapon.rof = Math.ceil(unit.weapon.rof*1.5);
-            }
-            if (Object.keys(unit.weapon2).length >= 3) {
-                unit.weapon2.rof = Math.ceil(unit.weapon2.rof*1.5);
+        if (playerInfos.comp.def >= 1 && unit.skills.includes('garde')) {
+            unit.hp = unit.hp+playerInfos.comp.def;
+            if (playerInfos.comp.def >= 3) {
+                unit.armor = unit.armor+2;
+                if (Object.keys(unit.weapon).length >= 3) {
+                    unit.weapon.rof = Math.ceil(unit.weapon.rof*1.5);
+                }
+                if (Object.keys(unit.weapon2).length >= 3) {
+                    unit.weapon2.rof = Math.ceil(unit.weapon2.rof*1.5);
+                }
             }
         }
         if (playerInfos.comp.def >= 1 && (unit.cat === 'buildings' || unit.cat === 'devices')) {

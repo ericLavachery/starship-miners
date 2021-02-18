@@ -573,7 +573,7 @@ function getAP(bat,batType) {
         }
     }
     if (bat.eq === 'g2motor') {
-        newAP = newAP+2;
+        newAP = newAP+3;
     }
     if (bat.eq === 'helper') {
         newAP = newAP+1;
