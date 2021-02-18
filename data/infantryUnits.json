@@ -2230,6 +2230,7 @@
             "types":["Mine","Comptoir","Scrap","Derrick"]
         },
         "transRes":48,
+        "maxSkill":2,
         "fuzz":0,
         "deathFx":"human3"
     },

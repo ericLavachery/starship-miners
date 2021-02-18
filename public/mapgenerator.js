@@ -15,20 +15,20 @@ function generateNewMap() {
 function checkMapKind(terName) {
     let dice = rand.rand(1,12);
     if (terName === 'P') {
-        if (dice <= 6) {
+        if (dice <= 6 || playerInfos.mapDiff <= 1) {
             return 'bug';
-        } else if (dice <= 8) {
+        } else if (dice <= 8 || playerInfos.mapDiff <= 2) {
             return 'spider';
         } else {
             return 'swarm';
         }
     } else if (terName === 'G') {
-        if (dice <= 2) {
+        if (dice <= 2 || playerInfos.mapDiff <= 1) {
             return 'bug';
-        } else if (dice <= 5) {
-            return 'larve';
-        } else if (dice <= 9) {
+        } else if (dice <= 6 || playerInfos.mapDiff <= 2) {
             return 'spider';
+        } else if (dice <= 9) {
+            return 'larve';
         } else {
             return 'swarm';
         }

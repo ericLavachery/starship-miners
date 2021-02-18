@@ -529,7 +529,7 @@ function diagRepair(repairBatId) {
     showBatInfos(selectedBat);
 }
 
-function calcBaseSkillCost(bat,batType,medik) {
+function calcBaseSkillCost(bat,batType,medik,inBld) {
     let baseskillCost;
     if (medik) {
         baseskillCost = batType.mediCost;
@@ -560,6 +560,9 @@ function calcBaseSkillCost(bat,batType,medik) {
             baseskillCost = baseskillCost-1;
         }
     }
+    if (inBld) {
+        baseskillCost = baseskillCost-1;
+    }
     if (baseskillCost < 2) {
         baseskillCost = 2;
     }
@@ -577,7 +580,7 @@ function bestMedicInBld(bldBat) {
                 maxMeds = 10*bat.apLeft/batType.mediCost;
                 if (maxMeds > bestMaxMeds) {
                     bestMaxMeds = maxMeds;
-                    if (maxMeds >= 3) {
+                    if (maxMeds >= 1) {
                         medicBat = bat;
                     }
                 }

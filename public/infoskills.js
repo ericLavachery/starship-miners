@@ -259,13 +259,13 @@ function skillsInfos(bat,batType) {
     }
     // MEDIC IN BLD
     let baseskillCost;
-    if (batType.cat === 'buildings' && !batType.skills.includes('medic')) {
+    if (batType.cat === 'buildings' && (!batType.skills.includes('medic') || bat.apLeft < 4)) {
         let medicBat = bestMedicInBld(bat);
         let medicBatType = getBatType(medicBat);
         console.log(medicBat);
         if (Object.keys(medicBat).length >= 1) {
             numTargets = numMedicTargets(medicBat,'infantry',true,true);
-            baseskillCost = calcBaseSkillCost(medicBat,medicBatType,true);
+            baseskillCost = calcBaseSkillCost(medicBat,medicBatType,true,true);
             apCost = numTargets*(baseskillCost+medicBatType.squads-medicBat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
             if (numTargets >= 1) {
@@ -279,10 +279,10 @@ function skillsInfos(bat,batType) {
     // MEDIC
     if ((batType.skills.includes('medic') && bat.eq != 'megafret') || (bat.eq === 'medic' && playerInfos.comp.med >= 3)) {
         numTargets = numMedicTargets(bat,'infantry',true,true);
-        baseskillCost = calcBaseSkillCost(bat,batType,true);
+        baseskillCost = calcBaseSkillCost(bat,batType,true,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
         if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonGris skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,true)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
         } else {
             if (inMelee) {
@@ -290,6 +290,8 @@ function skillsInfos(bat,batType) {
             } else {
                 if (numTargets < 1) {
                     skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
+                } else if (bat.tags.includes('starka')) {
+                    skillMessage = "Pas de soins avec la drogue Starka";
                 } else {
                     skillMessage = "Pas assez de PA";
                 }
@@ -300,10 +302,10 @@ function skillsInfos(bat,batType) {
     // BAD MEDIC
     if (batType.skills.includes('badmedic') && (bat.eq != 'medic' || playerInfos.comp.med < 3)) {
         numTargets = numMedicTargets(bat,'infantry',true,false);
-        baseskillCost = calcBaseSkillCost(bat,batType,true);
+        baseskillCost = calcBaseSkillCost(bat,batType,true,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
         if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonGris skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
         } else {
             if (inMelee) {
@@ -311,6 +313,8 @@ function skillsInfos(bat,batType) {
             } else {
                 if (numTargets < 1) {
                     skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
+                } else if (bat.tags.includes('starka')) {
+                    skillMessage = "Pas de soins avec la drogue Starka";
                 } else {
                     skillMessage = "Pas assez de PA";
                 }
@@ -321,10 +325,10 @@ function skillsInfos(bat,batType) {
     // SELF MEDIC
     if (batType.skills.includes('selfmedic') && (bat.eq != 'medic' || playerInfos.comp.med < 3)) {
         numTargets = numMedicTargets(bat,'infantry',false,true);
-        baseskillCost = calcBaseSkillCost(bat,batType,true);
+        baseskillCost = calcBaseSkillCost(bat,batType,true,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
         if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se soigner" class="boutonGris skillButtons" onclick="medic(`infantry`,'+baseskillCost+',false,true)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
         } else {
             if (inMelee) {
@@ -332,6 +336,8 @@ function skillsInfos(bat,batType) {
             } else {
                 if (numTargets <= 0) {
                     skillMessage = "Aucun dégâts soignable";
+                } else if (bat.tags.includes('starka')) {
+                    skillMessage = "Pas de soins avec la drogue Starka";
                 } else {
                     skillMessage = "Pas assez de PA";
                 }
@@ -342,10 +348,10 @@ function skillsInfos(bat,batType) {
     // FIRST AID (SELF BAD MEDIC)
     if (batType.skills.includes('selfbadmedic') && (bat.eq != 'medic' || playerInfos.comp.med < 3)) {
         numTargets = numMedicTargets(bat,'infantry',false,false);
-        baseskillCost = calcBaseSkillCost(bat,batType,true);
+        baseskillCost = calcBaseSkillCost(bat,batType,true,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
         if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins" class="boutonGris skillButtons" onclick="medic(`infantry`,'+baseskillCost+',false,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
         } else {
             if (inMelee) {
@@ -353,6 +359,8 @@ function skillsInfos(bat,batType) {
             } else {
                 if (numTargets <= 0) {
                     skillMessage = "Aucun dégâts soignable";
+                } else if (bat.tags.includes('starka')) {
+                    skillMessage = "Pas de soins avec la drogue Starka";
                 } else {
                     skillMessage = "Pas assez de PA";
                 }
@@ -363,7 +371,7 @@ function skillsInfos(bat,batType) {
     // MECANO
     if (batType.skills.includes('mecano') || bat.eq === 'mecano') {
         numTargets = numMedicTargets(bat,'vehicles',true,true);
-        baseskillCost = calcBaseSkillCost(bat,batType,false);
+        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
         if (apCost === 0) {apCost = baseskillCost;}
         if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
@@ -384,7 +392,7 @@ function skillsInfos(bat,batType) {
     // BAD MECANO
     if (batType.skills.includes('badmecano') && bat.eq != 'mecano') {
         numTargets = numMedicTargets(bat,'vehicles',true,false);
-        baseskillCost = calcBaseSkillCost(bat,batType,false);
+        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
         if (apCost === 0) {apCost = baseskillCost;}
         if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
@@ -405,7 +413,7 @@ function skillsInfos(bat,batType) {
     // SELF BAD MECANO
     if (batType.skills.includes('selfbadmecano') && bat.eq != 'mecano') {
         numTargets = numMedicTargets(bat,'vehicles',false,false);
-        baseskillCost = calcBaseSkillCost(bat,batType,false);
+        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
         if (apCost === 0) {apCost = baseskillCost;}
         if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
@@ -424,7 +432,7 @@ function skillsInfos(bat,batType) {
     // SELF MECANO
     if (batType.skills.includes('selfmecano') && bat.eq != 'mecano') {
         numTargets = numMedicTargets(bat,'vehicles',false,true);
-        baseskillCost = calcBaseSkillCost(bat,batType,false);
+        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
         if (apCost === 0) {apCost = baseskillCost;}
         if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
@@ -443,7 +451,7 @@ function skillsInfos(bat,batType) {
     // REPAIR
     if (batType.skills.includes('repair')) {
         numTargets = numMedicTargets(bat,'buildings',true,true);
-        baseskillCost = calcBaseSkillCost(bat,batType,false);
+        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
         if (apCost === 0) {apCost = baseskillCost;}
         if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
@@ -464,7 +472,7 @@ function skillsInfos(bat,batType) {
     // SELF BAD REPAIR
     if (batType.skills.includes('selfbadrepair')) {
         numTargets = numMedicTargets(bat,'buildings',false,false);
-        baseskillCost = calcBaseSkillCost(bat,batType,false);
+        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
         if (apCost === 0) {apCost = baseskillCost;}
         if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
@@ -483,7 +491,7 @@ function skillsInfos(bat,batType) {
     // SELF REPAIR
     if (batType.skills.includes('selfrepair')) {
         numTargets = numMedicTargets(bat,'buildings',false,true);
-        baseskillCost = calcBaseSkillCost(bat,batType,false);
+        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
         if (apCost === 0) {apCost = baseskillCost;}
         if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
