@@ -201,7 +201,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["invisible","fouisseur","errant","chancre","okwater"],
+        "skills":["invisible","fouisseur","errant","chancre","okwater","guerrilla"],
         "deathFx":"76974__michel88__piggrunt2",
         "spawnFx":"71906__cmusounddesign__je-monster_ghost",
         "fxPriority":1,
@@ -245,7 +245,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["invisible","fouisseur","errant","okwater"],
+        "skills":["invisible","fouisseur","errant","okwater","guerrilla"],
         "deathFx":"76974__michel88__piggrunt2",
         "spawnFx":"71906__cmusounddesign__je-monster_ghost",
         "fxPriority":1,
@@ -418,7 +418,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["ricochet"],
+        "skills":["ricochet","guerrilla","baddef"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":3}
     },
@@ -824,7 +824,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","capfar","inflammable","escape"],
+        "skills":["fly","capfar","inflammable","escape","baddef"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":2,"Wingium":3,"Mephitis":1}
     },
@@ -1529,7 +1529,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["chancre","hover","capmen","resistelec"],
+        "skills":["chancre","hover","capmen","resistelec","baddef"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":5,"Germium":6,"Mephitis":2}
     },
@@ -1571,7 +1571,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["sauteur","grip","inflammable"],
+        "skills":["sauteur","grip","inflammable","guerrilla","baddef"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":2,"Wingium":2}
     },
@@ -1807,7 +1807,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouisseur","anycap","maladie","hide","venin"],
+        "skills":["fouisseur","anycap","maladie","hide","venin","guerrilla"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":3,"Aranium":8,"Mephitis":2,"Germium":5,"Slime":3,"Blendium":4}
     },

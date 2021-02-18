@@ -307,6 +307,46 @@ function attack(melee) {
     if (selectedWeap.ammo.includes('autodestruction') || selectedBatType.skills.includes('undead') || selectedBat.tags.includes('zombie')) {
         shots = selectedWeap.rof*selectedBatType.squads;
     }
+    // Attack %
+    let attFactor = 100;
+    // SCIES (noGrip)
+    if (targetWeap.noGrip && selectedWeap.range === 0 && selectedBatType.size*5 >= targetBatType.size) {
+        shots = Math.round(shots/1.25);
+        attFactor = Math.round(attFactor/1.25);
+    }
+    // bugROF
+    if (bugROF > 1 && selectedBatType.kind === 'bug') {
+        shots = Math.round(shots*bugROF);
+        attFactor = Math.round(attFactor*bugROF);
+    }
+    // spiderRG
+    if (spiderRG && selectedBatType.kind === 'spider') {
+        shots = Math.round(shots*1.25);
+        attFactor = Math.round(attFactor*1.25);
+    }
+    // berserk (bonus ROF)
+    if (activeTurn === 'player') {
+        if (selectedBatType.skills.includes('berserk') && selectedBat.damage >= 1) {
+            shots = Math.floor(shots*berserkROF);
+            attFactor = Math.round(attFactor*berserkROF);
+            console.log('bonus ROF berserk');
+        }
+    }
+    // embuscade (bonus ROF)
+    if (activeTurn === 'player') {
+        if (selectedBat.tags.includes('embuscade') && selectedBat.fuzz == -2) {
+            shots = Math.floor(shots*2);
+            attFactor = Math.round(attFactor*2);
+            console.log('bonus ROF embuscade');
+        }
+    }
+    // guerrilla
+    if (selectedBatType.skills.includes('guerrilla') && selectedBat.oldTileId != selectedBat.tileId) {
+        shots = Math.round(shots*1.5);
+        attFactor = Math.round(attFactor*1.5);
+    }
+    // Attack %
+    $('#report').append('<span class="report jaune">Attaque '+attFactor+'%<br></span>');
     // INFRASTRUCTURES
     console.log('shots='+shots);
     if (activeTurn != 'player') {
@@ -338,36 +378,6 @@ function attack(melee) {
     }
     console.log(tile.infra+'+++++++++++++++++++++++');
     console.log('shots='+shots);
-    // SCIES (noGrip)
-    if (targetWeap.noGrip && selectedWeap.range === 0 && selectedBatType.size*5 >= targetBatType.size) {
-        shots = Math.round(shots/1.25);
-    }
-    // bugROF
-    if (bugROF > 1 && selectedBatType.kind === 'bug') {
-        shots = Math.round(shots*bugROF);
-    }
-    // spiderRG
-    if (spiderRG && selectedBatType.kind === 'spider') {
-        shots = Math.round(shots*1.25);
-    }
-    // berserk (bonus ROF)
-    if (activeTurn === 'player') {
-        if (selectedBatType.skills.includes('berserk') && selectedBat.damage >= 1) {
-            shots = Math.floor(shots*berserkROF);
-            console.log('bonus ROF berserk');
-        }
-    }
-    // embuscade (bonus ROF)
-    if (activeTurn === 'player') {
-        if (selectedBat.tags.includes('embuscade') && selectedBat.fuzz == -2) {
-            shots = Math.floor(shots*2);
-            console.log('bonus ROF embuscade');
-        }
-    }
-    // guerrilla
-    if (selectedBatType.skills.includes('guerrilla') && selectedBat.oldTileId != selectedBat.tileId) {
-        shots = Math.round(shots*1.5);
-    }
     // chargeur
     if (selectedBat.eq.includes('chargeur') || selectedBat.eq.includes('carrousel') || selectedBat.eq.includes('kit-guetteur') || selectedBat.eq === 'crimekitch') {
         shots = chargeurAdj(selectedBat,shots,selectedWeap);
@@ -1068,6 +1078,8 @@ function defense(melee) {
         isGuet = true;
     }
     brideDef = calcBrideDef(targetBat,targetBatType,targetWeap,selectedWeap.range,isGuet);
+    // Defense %
+    let defFactor = Math.round(100*brideDef);
     // bigDef
     if (targetWeap.bigDef && selectedBatType.size >= 4) {
         targetWeap.power = Math.ceil(targetWeap.power+Math.sqrt(selectedBatType.size));
@@ -1077,6 +1089,42 @@ function defense(melee) {
     if (targetBatType.skills.includes('undead') || targetBat.tags.includes('zombie')) {
         shots = Math.round(targetWeap.rof*targetBatType.squads*brideDef);
     }
+    // SCIES (noGrip)
+    if (selectedWeap.noGrip && targetWeap.range === 0 && targetBatType.size*5 >= selectedBatType.size) {
+        shots = Math.round(shots/1.25);
+        defFactor = Math.round(defFactor/1.25);
+    }
+    // ESCAPE
+    escaped = false;
+    if (selectedBatType.skills.includes('escape')) {
+        let escapeChance = Math.round((selectedBatType.speed-2)*targetWeap.cost*escapeValue);
+        console.log('escapeChance:'+escapeChance);
+        if (rand.rand(1,100) <= escapeChance) {
+            escaped = true;
+            let escapeVar = rand.rand(4,8);
+            console.log('escapeVar:'+escapeVar);
+            shots = Math.round(shots*escapeVar/(targetWeap.cost+4)/2);
+            defFactor = Math.round(defFactor*escapeVar/(targetWeap.cost+4)/2);
+        }
+    }
+    // bugROF
+    if (bugROF > 1 && targetBatType.kind === 'bug') {
+        shots = Math.round(shots*bugROF);
+        defFactor = Math.round(defFactor*bugROF);
+    }
+    // spiderRG
+    if (spiderRG && targetBatType.kind === 'spider') {
+        shots = Math.round(shots*1.25);
+        defFactor = Math.round(defFactor*1.25);
+    }
+    // guerrilla
+    if (selectedBatType.skills.includes('guerrilla') && selectedBat.oldTileId != selectedBat.tileId) {
+        let guerrillaDef = 10+terrain.cover+(selectedBatType.stealth/5);
+        shots = Math.round(shots*9/guerrillaDef);
+        defFactor = Math.round(defFactor*9/guerrillaDef);
+    }
+    // Defense %
+    $('#report').append('<span class="report jaune">Défense '+defFactor+'%<br></span>');
     // INFRASTRUCTURES
     console.log('shots='+shots);
     if (activeTurn === 'player') {
@@ -1108,35 +1156,6 @@ function defense(melee) {
     }
     console.log(tile.infra+'+++++++++++++++++++++++');
     console.log('shots='+shots);
-    // SCIES (noGrip)
-    if (selectedWeap.noGrip && targetWeap.range === 0 && targetBatType.size*5 >= selectedBatType.size) {
-        shots = Math.round(shots/1.25);
-    }
-    // ESCAPE
-    escaped = false;
-    if (selectedBatType.skills.includes('escape')) {
-        let escapeChance = Math.round((selectedBatType.speed-2)*targetWeap.cost*escapeValue);
-        console.log('escapeChance:'+escapeChance);
-        if (rand.rand(1,100) <= escapeChance) {
-            escaped = true;
-            let escapeVar = rand.rand(4,8);
-            console.log('escapeVar:'+escapeVar);
-            shots = Math.round(shots*escapeVar/(targetWeap.cost+4)/2);
-        }
-    }
-    // bugROF
-    if (bugROF > 1 && targetBatType.kind === 'bug') {
-        shots = Math.round(shots*bugROF);
-    }
-    // spiderRG
-    if (spiderRG && targetBatType.kind === 'spider') {
-        shots = Math.round(shots*1.25);
-    }
-    // guerrilla
-    if (selectedBatType.skills.includes('guerrilla') && selectedBat.oldTileId != selectedBat.tileId) {
-        let guerrillaDef = 10+terrain.cover+(selectedBatType.stealth/5);
-        shots = Math.round(shots*9/guerrillaDef);
-    }
     // chargeur
     if (targetBat.eq.includes('chargeur') || targetBat.eq.includes('carrousel') || targetBat.eq.includes('kit-guetteur') || targetBat.eq === 'crimekitch') {
         shots = chargeurAdj(targetBat,shots,targetWeap);
