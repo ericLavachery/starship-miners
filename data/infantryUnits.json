@@ -2175,7 +2175,7 @@
         "name":"Sapeurs",
         "pic":"sapeur",
         "cat":"infantry",
-        "kind":"zero-extraction",
+        "kind":"zero-construction",
         "sort":2,
         "squads":6,
         "squadSize":8,

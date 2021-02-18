@@ -969,15 +969,18 @@ function recupRes(bat,batType) {
     putBatAround(bat.tileId,false,239,0);
     let coffre = getBatByTileId(coffreTileId);
     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
-        let recupFactor = 35;
+        let recupFactor = 38;
         let bldFactor = 0;
         let index;
         let batArmor;
         let batEquip;
         if (playerInfos.bldList.includes('Décharge')) {
-            bldFactor = 2;
+            bldFactor = bldFactor+2;
         }
-        recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+4)/5);
+        if (playerInfos.comp.tri >= 1) {
+            bldFactor = bldFactor+1;
+        }
+        recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+4)/6);
         if (hasScraptruck) {
             recupFactor = Math.ceil(recupFactor*1.15);
         }
@@ -1064,6 +1067,53 @@ function recupRes(bat,batType) {
         putFretInChest(bat,batType,coffre);
     }
     coffreTileId = -1;
+};
+
+function recupInfraRes(tile,infra) {
+    coffreTileId = -1;
+    conselTriche = true;
+    putBatAround(tile.id,false,239,0);
+    let coffre = getBatByTileId(coffreTileId);
+    let recupFactor = 47;
+    let bldFactor = 0;
+    let index;
+    if (playerInfos.bldList.includes('Décharge')) {
+        bldFactor = bldFactor+2;
+    }
+    if (playerInfos.comp.tri >= 1) {
+        bldFactor = bldFactor+1;
+    }
+    recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+4)/6);
+    if (hasScraptruck) {
+        recupFactor = Math.ceil(recupFactor*1.15);
+    }
+    let totalRes = 0;
+    if (infra.costs != undefined) {
+        Object.entries(infra.costs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            value = Math.floor(value/100*recupFactor);
+            if (value >= 1) {
+                if (coffre.transRes[key] === undefined) {
+                    coffre.transRes[key] = value;
+                } else {
+                    coffre.transRes[key] = coffre.transRes[key]+value;
+                }
+                totalRes = totalRes+value;
+            }
+        });
+    }
+    coffreTileId = -1;
+};
+
+function demolition(apCost) {
+    let tile = getTile(selectedBat);
+    let infra = getInfraByName(tile.infra);
+    recupInfraRes(tile,infra);
+    selectedBat.apLeft = selectedBat.apLeft-apCost;
+    selectedBatArrayUpdate();
+    tile.infra = 'Débris';
+    showMap(zone,false);
 };
 
 function putFretInChest(bat,batType,coffre) {

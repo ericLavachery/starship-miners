@@ -30,6 +30,12 @@
         "costs":{"Compo1":75,"Compo2":25,"Végétaux":75}
     },
     {
+        "name": "Débris",
+        "fabTime":6,
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "costs":{}
+    },
+    {
         "name": "aucune",
         "armor": 0,
         "ap": 0,

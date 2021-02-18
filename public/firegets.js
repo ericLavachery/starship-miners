@@ -1476,15 +1476,21 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
         }
     }
     // guerrilla
-    if (batType.skills.includes('guerrilla') && bat.oldTileId != bat.tileId) {
-        let gmax = 1;
-        if (batType.skills.includes('baddef')) {
-            gmax = 0.85;
-        }
-        if (brideDef < gmax) {
-            brideDef = brideDef*1.25;
-            if (brideDef > gmax) {
-                brideDef = gmax;
+    if (brideDef < 1) {
+        if (batType.skills.includes('guerrilla') && bat.oldTileId != bat.tileId) {
+            let gmin = 0.75;
+            let gmax = 1;
+            if (batType.skills.includes('baddef')) {
+                gmax = 0.85;
+            }
+            if (brideDef < gmax) {
+                brideDef = brideDef*1.25;
+                if (brideDef > gmax) {
+                    brideDef = gmax;
+                }
+            }
+            if (brideDef < gmin) {
+                brideDef = gmin;
             }
         }
     }

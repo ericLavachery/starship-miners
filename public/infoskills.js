@@ -720,24 +720,6 @@ function skillsInfos(bat,batType) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Activé</'+balise+'></span>');
         }
     }
-    // CHARGER RESSOURCES
-    if (batType.skills.includes('fret')) {
-        let resToLoad = isResToLoad(bat);
-        if (resToLoad) {
-            balise = 'h4';
-            apReq = 0;
-            if (!inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Charger des ressources" class="boutonGris skillButtons" onclick="loadRes()"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
-            } else {
-                if (inMelee) {
-                    skillMessage = "Impossible en mêlée";
-                } else {
-                    skillMessage = "Pas assez de PA";
-                }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
-            }
-        }
-    }
     let trapType;
     let trapCostOK;
     // POSE PIEGES
@@ -933,6 +915,56 @@ function skillsInfos(bat,batType) {
             }
         }
     }
+    // POSE COFFRES
+    if (batType.skills.includes('conscont')) {
+        freeConsTile = checkFreeConsTile(bat);
+        if (freeConsTile) {
+            balise = 'h4';
+            if (Object.keys(conselUnit).length >= 1) {
+                balise = 'h3';
+            }
+            trapType = getBatTypeByName('Coffres');
+            trapCostOK = checkCost(trapType.costs);
+            apCost = 8;
+            if (bat.apLeft >= bat.ap-2 && !inMelee && trapCostOK) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Construire des coffres '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`coffre`)"><i class="fas fa-box-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Coffres</'+balise+'></span>');
+            } else {
+                if (!trapCostOK) {
+                    skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
+                } else if (inMelee) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-box-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Coffres</h4></span>');
+            }
+        }
+    }
+    // ROUTES / PONTS
+    if (batType.skills.includes('routes')) {
+        if (!tile.rd) {
+            apCost = Math.round(batType.mecanoCost*terrain.roadBuild*roadAPCost/30);
+            apReq = Math.ceil(apCost/10);
+            let roadCosts = getRoadCosts(tile);
+            let roadCostsOK = checkCost(roadCosts);
+            let roadName = 'Route';
+            if (tile.terrain === 'W' || tile.terrain === 'R') {
+                roadName = 'Pont';
+            }
+            if (bat.apLeft >= apReq && !inMelee && roadCostsOK) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction ('+roadName+') '+displayCosts(roadCosts)+'" class="boutonGris skillButtons" onclick="putRoad()"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+roadName+'</h4></span>');
+            } else {
+                if (inMelee) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                } else if (!roadCostsOK) {
+                    skillMessage = "Pas assez de ressources "+displayCosts(roadCosts);
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-road"></i> <span class="small">'+apReq+'</span></button>&nbsp; '+roadName+'</h4></span>');
+            }
+        }
+    }
     // INFRASTRUCTURE
     if (batType.skills.includes('constructeur')) {
         if (tile.terrain != 'W' && tile.terrain != 'R') {
@@ -1045,53 +1077,23 @@ function skillsInfos(bat,batType) {
             }
         }
     }
-    // ROUTES / PONTS
-    if (batType.skills.includes('routes')) {
-        if (!tile.rd) {
-            apCost = Math.round(batType.mecanoCost*terrain.roadBuild*roadAPCost/30);
-            apReq = Math.ceil(apCost/10);
-            let roadCosts = getRoadCosts(tile);
-            let roadCostsOK = checkCost(roadCosts);
-            let roadName = 'Route';
-            if (tile.terrain === 'W' || tile.terrain === 'R') {
-                roadName = 'Pont';
-            }
-            if (bat.apLeft >= apReq && !inMelee && roadCostsOK) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction ('+roadName+') '+displayCosts(roadCosts)+'" class="boutonGris skillButtons" onclick="putRoad()"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+roadName+'</h4></span>');
-            } else {
-                if (inMelee) {
-                    skillMessage = "Ne peut pas se faire en mêlée";
-                } else if (!roadCostsOK) {
-                    skillMessage = "Pas assez de ressources "+displayCosts(roadCosts);
+    // DEMANTELEMENT INFRA
+    if (batType.skills.includes('constructeur')) {
+        if (tile.infra != undefined) {
+            if (tile.infra === 'Miradors' || tile.infra === 'Palissades' || tile.infra === 'Remparts' || tile.infra === 'Murailles') {
+                let infra = getInfraByName(tile.infra);
+                apCost = Math.round(Math.sqrt(batType.mecanoCost)*infra.fabTime/5.1);
+                apReq = 6;
+                if (bat.apLeft >= apReq && !inMelee) {
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+tile.infra+'" class="boutonGris skillButtons" onclick="demolition('+apCost+')"><i class="far fa-trash-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Démolition</h4></span>');
                 } else {
-                    skillMessage = "Pas assez de PA";
+                    if (inMelee) {
+                        skillMessage = "Ne peut pas se faire en mêlée";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-trash-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Démolition</h4></span>');
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-road"></i> <span class="small">'+apReq+'</span></button>&nbsp; '+roadName+'</h4></span>');
-            }
-        }
-    }
-    // POSE COFFRES
-    if (batType.skills.includes('conscont')) {
-        freeConsTile = checkFreeConsTile(bat);
-        if (freeConsTile) {
-            balise = 'h4';
-            if (Object.keys(conselUnit).length >= 1) {
-                balise = 'h3';
-            }
-            trapType = getBatTypeByName('Coffres');
-            trapCostOK = checkCost(trapType.costs);
-            apCost = 8;
-            if (bat.apLeft >= bat.ap-2 && !inMelee && trapCostOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Construire des coffres '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`coffre`)"><i class="fas fa-box-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Coffres</'+balise+'></span>');
-            } else {
-                if (!trapCostOK) {
-                    skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                } else if (inMelee) {
-                    skillMessage = "Ne peut pas se faire en mêlée";
-                } else {
-                    skillMessage = "Pas assez de PA";
-                }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-box-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Coffres</h4></span>');
             }
         }
     }
@@ -1186,6 +1188,24 @@ function skillsInfos(bat,batType) {
     unloadInfos(bat,batType);
     // RECONSTRUIRE
     refabInfos(bat,batType);
+    // CHARGER RESSOURCES
+    if (batType.skills.includes('fret')) {
+        let resToLoad = isResToLoad(bat);
+        if (resToLoad) {
+            balise = 'h4';
+            apReq = 0;
+            if (!inMelee) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Charger des ressources" class="boutonGris skillButtons" onclick="loadRes()"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
+            } else {
+                if (inMelee) {
+                    skillMessage = "Impossible en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
+            }
+        }
+    }
     // CONSTRUCTION TRICHE
     if (batType.skills.includes('triche')) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris skillButtons" onclick="bfconst(`all`,true,false)"><i class="fas fa-drafting-compass"></i></button>&nbsp; Construction</h4></span>');
