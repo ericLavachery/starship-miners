@@ -98,12 +98,12 @@ function showEnemyBatInfos(bat) {
     }
     if (playerInfos.comp.ca >= 2) {
         if (batType.skills.includes('baddef')) {
-            $('#unitInfos').append('<span class="paramName">Défense</span><span class="paramIcon"></span><span class="paramValue">Faible</span><br>');
+            $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">Faible</span><br>');
         }
     }
     if (playerInfos.comp.ca >= 2) {
         if (batType.skills.includes('sentinelle')) {
-            $('#unitInfos').append('<span class="paramName">Défense</span><span class="paramIcon"></span><span class="paramValue">Forte</span><br>');
+            $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">Forte</span><br>');
         }
     }
     if (playerInfos.comp.ca >= 3) {
@@ -111,7 +111,21 @@ function showEnemyBatInfos(bat) {
             $('#unitInfos').append('<span class="paramName">Esquive</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
         }
     }
-    if (playerInfos.comp.ca >= 1) {
+    if (playerInfos.comp.ca >= 3) {
+        if (batType.skills.includes('slowreg')) {
+            $('#unitInfos').append('<span class="paramName">Régénération</span><span class="paramIcon"></span><span class="paramValue">Lente</span><br>');
+        } else if (batType.skills.includes('regeneration')) {
+            $('#unitInfos').append('<span class="paramName">Régénération</span><span class="paramIcon"></span><span class="paramValue">Rapide</span><br>');
+        } else if (batType.skills.includes('fastreg') || batType.skills.includes('heal')) {
+            $('#unitInfos').append('<span class="paramName">Régénération</span><span class="paramIcon"></span><span class="paramValue">Très rapide</span><br>');
+        }
+    } else if (playerInfos.comp.ca >= 2) {
+        if (batType.skills.includes('slowreg')) {
+            $('#unitInfos').append('<span class="paramName">Régénération</span><span class="paramIcon"></span><span class="paramValue">Lente</span><br>');
+        } else if (batType.skills.includes('regeneration') || batType.skills.includes('fastreg') || batType.skills.includes('heal')) {
+            $('#unitInfos').append('<span class="paramName">Régénération</span><span class="paramIcon"></span><span class="paramValue">Rapide</span><br>');
+        }
+    } else if (playerInfos.comp.ca >= 1) {
         if (batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal')) {
             $('#unitInfos').append('<span class="paramName">Régénération</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
         }
@@ -240,68 +254,72 @@ function showEnemyBatInfos(bat) {
     // WEAPONS
     let balise;
     let thisWeapon = {};
-    if (batType.weapon.rof >= 1) {
-        $('#unitInfos').append('<div class="shSpace"></div>');
-        thisWeapon = weaponAdj(batType.weapon,bat,'w1');
-        $('#unitInfos').append('<span class="blockTitle"><h4>'+thisWeapon.name+'</h4></span>');
-        if (playerInfos.comp.ca >= 3) {
-            $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');
-        } else if (playerInfos.comp.ca >= 2) {
-            if (thisWeapon.range >= 3) {
-                $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Longue distance</span><br>');
-            } else if (thisWeapon.range >= 1) {
-                $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Distance</span><br>');
-            } else {
-                $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Mêlée</span><br>');
+    if (playerInfos.comp.ca >= 1) {
+        if (batType.weapon.rof >= 1) {
+            $('#unitInfos').append('<div class="shSpace"></div>');
+            thisWeapon = weaponAdj(batType.weapon,bat,'w1');
+            $('#unitInfos').append('<span class="blockTitle"><h4>'+thisWeapon.name+'</h4></span>');
+            if (playerInfos.comp.ca >= 3) {
+                $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');
+            } else if (playerInfos.comp.ca >= 2) {
+                if (thisWeapon.range >= 3) {
+                    $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Longue distance</span><br>');
+                } else if (thisWeapon.range >= 1) {
+                    $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Distance</span><br>');
+                } else {
+                    $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Mêlée</span><br>');
+                }
+            } else if (playerInfos.comp.ca >= 1) {
+                if (thisWeapon.range >= 1) {
+                    $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Distance</span><br>');
+                } else {
+                    $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Mêlée</span><br>');
+                }
             }
-        } else if (playerInfos.comp.ca >= 1) {
-            if (thisWeapon.range >= 1) {
-                $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Distance</span><br>');
-            } else {
-                $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Mêlée</span><br>');
+            let attaques = thisWeapon.rof*bat.squadsLeft;
+            if (playerInfos.comp.ca >= 3) {
+                $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
             }
-        }
-        let attaques = thisWeapon.rof*bat.squadsLeft;
-        if (playerInfos.comp.ca >= 3) {
-            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
-        }
-        if (playerInfos.comp.ca >= 1) {
-            $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+attaques+' &times '+thisWeapon.power+'</span><br>');
-        }
-        if (playerInfos.comp.ca >= 2) {
-            $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
+            if (playerInfos.comp.ca >= 1) {
+                $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+attaques+' &times '+thisWeapon.power+'</span><br>');
+            }
+            if (playerInfos.comp.ca >= 2) {
+                $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
+            }
         }
     }
-    if (batType.weapon2.rof >= 1) {
-        $('#unitInfos').append('<div class="shSpace"></div>');
-        thisWeapon = weaponAdj(batType.weapon2,bat,'w2');
-        $('#unitInfos').append('<span class="blockTitle"><h4>'+thisWeapon.name+'</h4></span>');
-        if (playerInfos.comp.ca >= 3) {
-            $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');
-        } else if (playerInfos.comp.ca >= 2) {
-            if (thisWeapon.range >= 3) {
-                $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Longue distance</span><br>');
-            } else if (thisWeapon.range >= 1) {
-                $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Distance</span><br>');
-            } else {
-                $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Mêlée</span><br>');
+    if (playerInfos.comp.ca >= 2) {
+        if (batType.weapon2.rof >= 1) {
+            $('#unitInfos').append('<div class="shSpace"></div>');
+            thisWeapon = weaponAdj(batType.weapon2,bat,'w2');
+            $('#unitInfos').append('<span class="blockTitle"><h4>'+thisWeapon.name+'</h4></span>');
+            if (playerInfos.comp.ca >= 3) {
+                $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');
+            } else if (playerInfos.comp.ca >= 2) {
+                if (thisWeapon.range >= 3) {
+                    $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Longue distance</span><br>');
+                } else if (thisWeapon.range >= 1) {
+                    $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Distance</span><br>');
+                } else {
+                    $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Mêlée</span><br>');
+                }
+            } else if (playerInfos.comp.ca >= 1) {
+                if (thisWeapon.range >= 1) {
+                    $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Distance</span><br>');
+                } else {
+                    $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Mêlée</span><br>');
+                }
             }
-        } else if (playerInfos.comp.ca >= 1) {
-            if (thisWeapon.range >= 1) {
-                $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Distance</span><br>');
-            } else {
-                $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Mêlée</span><br>');
+            let attaques = thisWeapon.rof*bat.squadsLeft;
+            if (playerInfos.comp.ca >= 3) {
+                $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
             }
-        }
-        let attaques = thisWeapon.rof*bat.squadsLeft;
-        if (playerInfos.comp.ca >= 3) {
-            $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
-        }
-        if (playerInfos.comp.ca >= 1) {
-            $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+attaques+' &times '+thisWeapon.power+'</span><br>');
-        }
-        if (playerInfos.comp.ca >= 2) {
-            $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
+            if (playerInfos.comp.ca >= 1) {
+                $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+attaques+' &times '+thisWeapon.power+'</span><br>');
+            }
+            if (playerInfos.comp.ca >= 2) {
+                $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
+            }
         }
     }
     // DISMANTLE
