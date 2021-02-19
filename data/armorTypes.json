@@ -563,31 +563,40 @@
         "costs":{"Fer":25,"Tungstène":25}
     },
     {
-        "name": "w2-comet",
+        "name": "landerwkit",
+        "skills": [],
+        "info": "Cadence++ Précision++ Elévation+",
+        "bldReq":["Armurerie"],
+        "compReq":{"log":1,"bal":1,"det":1},
+        "factor":"crew",
+        "costs":{"Scrap":3,"Carbone":9,"Fer":3,"Silicium":6}
+    },
+    {
+        "name": "w2-lcomet",
         "skills": [],
         "info": "Lance Missile",
         "bldReq":["Usine d'armement"],
         "compReq":{"log":3,"arti":1,"bal":2,"explo":2,"vsp":1},
         "factor":"rofpow",
-        "costs":{"Fer":60,"Aluminium":60,"Titane":60,"Silicium":10,"Rhodium":30,"Electros":15}
+        "costs":{"Fer":60,"Aluminium":60,"Titane":60,"Silicium":12,"Rhodium":30,"Electros":15}
     },
     {
-        "name": "w2-mit",
+        "name": "w2-lmit",
         "skills": [],
         "info": "Mitrailleuse",
         "bldReq":["Arsenal"],
         "compReq":{"log":2,"bal":1,"vsp":1},
         "factor":"crew",
-        "costs":{"Carbone":9,"Scrap":9,"Fer":36,"Aluminium":18,"Tungstène":9}
+        "costs":{"Carbone":18,"Scrap":12,"Fer":39,"Aluminium":18,"Tungstène":9,"Silicium":6}
     },
     {
-        "name": "w2-cradle",
+        "name": "w2-lcradle",
         "skills": [],
         "info": "Cradle",
         "bldReq":["Chaîne de montage"],
         "compReq":{"log":2,"vsp":1},
         "factor":"rofpow",
-        "costs":{"Fer":90,"Tungstène":60,"Huile":10}
+        "costs":{"Fer":90,"Tungstène":60,"Huile":10,"Scrap":3,"Carbone":6,"Silicium":3}
     },
     {
         "name": "megafret",

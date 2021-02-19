@@ -179,6 +179,9 @@ function batInfos(bat,pop) {
     if (bat.tags.includes('resistacide') || batType.skills.includes('resistacide')) {
         $('#'+bodyPlace).append('<span class="paramName cy">Résistance acide</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
+    if (bat.tags.includes('resistelec') || batType.skills.includes('resistelec')) {
+        $('#'+bodyPlace).append('<span class="paramName cy">Résistance électricité</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    }
     if (bat.tags.includes('resistall') || batType.skills.includes('resistall')) {
         $('#'+bodyPlace).append('<span class="paramName cy">Résistance globale</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
@@ -289,9 +292,6 @@ function batInfos(bat,pop) {
     let bateq = bat.eq;
     if (!bateq.includes('aucun')) {
         $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">'+bateq+'</span><br>');
-    }
-    if (pop) {
-
     }
     // WEAPONS & SKILLS
     if (!pop) {
@@ -509,55 +509,6 @@ function nomVisible(name) {
         nv = 'Cafards';
     }
     return nv
-};
-
-function showEnemyBatInfos(bat) {
-    $("#unitInfos").css("display","block");
-    $('#unitInfos').empty();
-    let alienUnitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
-    let batType = alienUnits[alienUnitIndex];
-    let unitsLeft = bat.squadsLeft*batType.squadSize;
-    let batShowedName = nomVisible(batType.name);
-    $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batShowedName+'</h3></span>');
-    // SQUADS
-    $('#unitInfos').append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.squadsLeft+'/'+batType.squads+'</span><br>');
-    let squadHP = batType.squadSize*batType.hp;
-    $('#unitInfos').append('<span class="paramName">Dégâts</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.damage+'/'+squadHP+'</span><br>');
-    $('#unitInfos').append('<span class="paramName">Unités/Escouade</span><span class="paramIcon"></span><span class="paramValue">'+batType.squadSize+'</span><br>');
-    // PROTECTION
-    $('#unitInfos').append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span class="paramValue">'+batType.hp+'</span><br>');
-    $('#unitInfos').append('<span class="paramName">Armure</span><span class="paramIcon"></span><span class="paramValue">'+bat.armor+'</span><br>');
-    $('#unitInfos').append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batType.size+'</span><br>');
-    let stealth = getStealth(bat);
-    $('#unitInfos').append('<span class="paramName">Discrétion</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
-    if (bat.tags.includes('fluo')) {
-        $('#unitInfos').append('<span class="paramName or">Marqué</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
-    }
-    if (bat.tags.includes('shield')) {
-        $('#unitInfos').append('<span class="paramName cy">Bouclier</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
-    }
-    // WEAPONS
-    let balise;
-    let thisWeapon = {};
-    if (batType.weapon.rof >= 1) {
-        thisWeapon = weaponAdj(batType.weapon,bat,'w1');
-        balise = 'h4';
-        $('#unitInfos').append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span>');
-        $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+'</span><br>');
-        let attaques = thisWeapon.rof*bat.squadsLeft;
-        $('#unitInfos').append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.power+'</span><br>');
-        $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
-    }
-    // DISMANTLE
-    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Supprimer (Tu triches!)" class="boutonBleu skillButtons" onclick="deleteAlien('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
-
-    // "moveCost": 3,
-    // "maxFlood": 3,
-    // "maxScarp": 3,
-    // "maxVeg": 3,
-    // "skills": []
 };
 
 function showTileInfos(tileId) {

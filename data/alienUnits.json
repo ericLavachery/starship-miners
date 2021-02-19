@@ -91,7 +91,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","nez","fouisseur","capbld","reactpoison","okwater","resistelec"],
+        "skills":["regeneration","nez","fouisseur","capbld","reactpoison","okwater","resistelec","morph"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":1,"Larvium":10,"Mendium":9}
     },
@@ -245,7 +245,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["invisible","fouisseur","errant","okwater","guerrilla"],
+        "skills":["invisible","fouisseur","errant","okwater","guerrilla","morph"],
         "deathFx":"76974__michel88__piggrunt2",
         "spawnFx":"71906__cmusounddesign__je-monster_ghost",
         "fxPriority":1,
@@ -585,7 +585,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["furtif","nez","maladie","okwater"],
+        "skills":["nez","maladie","okwater","morph"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":4,"Germium":2}
     },
@@ -627,7 +627,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["furtif","nez","maladie","okwater"],
+        "skills":["nez","maladie","okwater","morph"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":4,"Germium":2}
     },
@@ -1017,7 +1017,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["furtif","chancre","capbld","ponte","minaccu","resistpoison","okwater"],
+        "skills":["chancre","capbld","ponte","minaccu","resistpoison","okwater"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":4,"Germium":3,"Bossium":15,"Creatite":6,"Slime":2}
     },
@@ -1168,7 +1168,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","ponte","reactpoison"],
+        "skills":["regeneration","ponte","reactpoison","morph"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Swarmine":2,"Mendium":1,"Creatite":1}
     },
@@ -2024,7 +2024,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","inflammable","eggprotect","noaploss"],
+        "skills":["isegg","ponte","inflammable","eggprotect","noaploss","morph"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Creatite":18}
     },
@@ -2053,7 +2053,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["inflammable","noaploss"],
+        "skills":["inflammable","noaploss","morph"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Creatite":3}
     },
@@ -2082,7 +2082,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["inflammable","noaploss"],
+        "skills":["inflammable","noaploss","morph"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Bugium":2,"Creatite":2,"Bossium":2}
     },
@@ -2111,7 +2111,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","inflammable","eggprotect","noaploss"],
+        "skills":["isegg","ponte","inflammable","eggprotect","noaploss","morph"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Creatite":18,"Blendium":60}
     },
@@ -2140,7 +2140,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","regeneration","reactpoison","eggprotect","noaploss"],
+        "skills":["isegg","ponte","regeneration","reactpoison","eggprotect","noaploss","morph"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Bugium":36,"Mendium":30,"Creatite":12}
     },
@@ -2169,7 +2169,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","regeneration","shield","eggprotect","noaploss"],
+        "skills":["isegg","ponte","regeneration","shield","eggprotect","noaploss","morph"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Bugium":45,"Mendium":30,"Creatite":12,"Egidium":53}
     },
