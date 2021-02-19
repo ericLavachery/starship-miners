@@ -276,6 +276,11 @@ function showEnemyBatInfos(bat) {
                     $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Mêlée</span><br>');
                 }
             }
+            if (playerInfos.comp.ca >= 3) {
+                if (thisWeapon.elevation != undefined) {
+                    $('#unitInfos').append('<span class="paramName">Elévation</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.elevation+'</span><br>');
+                }
+            }
             let attaques = thisWeapon.rof*bat.squadsLeft;
             if (playerInfos.comp.ca >= 3) {
                 $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
@@ -308,6 +313,11 @@ function showEnemyBatInfos(bat) {
                     $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Distance</span><br>');
                 } else {
                     $('#unitInfos').append('<span class="paramName">Portée</span><span class="paramIcon"></span><span class="paramValue">Mêlée</span><br>');
+                }
+            }
+            if (playerInfos.comp.ca >= 3) {
+                if (thisWeapon.elevation != undefined) {
+                    $('#unitInfos').append('<span class="paramName">Elévation</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.elevation+'</span><br>');
                 }
             }
             let attaques = thisWeapon.rof*bat.squadsLeft;
