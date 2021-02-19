@@ -70,7 +70,7 @@
             "level":3,
             "rate":20,
             "multi":true,
-            "types":["Mine","Scrap","Derrick"]
+            "types":["Mine","Scrap","Derrick","Pompe"]
         },
         "transMaxSize":9,
         "transUnits":375,
@@ -118,7 +118,7 @@
         "mecanoCost":16,
         "mining":{
             "level":3,
-            "rate":20,
+            "rate":30,
             "multi":true,
             "types":["Pompe"]
         },
@@ -270,7 +270,7 @@
             "level":3,
             "rate":40,
             "multi":true,
-            "types":["Comptoir","Scrap"]
+            "types":["Comptoir","Scrap","Pompe"]
         },
         "transMaxSize":9,
         "transUnits":375,

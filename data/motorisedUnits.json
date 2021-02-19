@@ -1785,7 +1785,7 @@
             "level":1,
             "rate":20,
             "multi":false,
-            "types":["Scrap","Comptoir","Mine"]
+            "types":["Scrap","Comptoir","Mine","Pompe"]
         },
         "transRes":150,
         "maxSkill":8,
@@ -1849,7 +1849,7 @@
             "level":1,
             "rate":32,
             "multi":false,
-            "types":["Scrap","Comptoir","Mine"]
+            "types":["Scrap","Comptoir","Mine","Pompe"]
         },
         "transRes":300,
         "maxSkill":24,
@@ -2083,7 +2083,7 @@
             "level":1,
             "rate":32,
             "multi":false,
-            "types":["Scrap","Comptoir","Mine"]
+            "types":["Scrap","Comptoir","Mine","Pompe"]
         },
         "transMaxSize":9,
         "transUnits":200,
@@ -2150,7 +2150,7 @@
             "level":1,
             "rate":40,
             "multi":false,
-            "types":["Scrap","Comptoir","Mine"]
+            "types":["Scrap","Comptoir","Mine","Pompe"]
         },
         "transMaxSize":9,
         "transUnits":200,
@@ -2747,7 +2747,7 @@
             "level":1,
             "rate":50,
             "multi":false,
-            "types":["Scrap","Comptoir","Mine"]
+            "types":["Scrap","Comptoir","Mine","Pompe"]
         },
         "transMaxSize":9,
         "transUnits":420,
@@ -3510,7 +3510,7 @@
             "level":4,
             "rate":28,
             "multi":true,
-            "types":["Mine","Derrick","Comptoir","Scrap"]
+            "types":["Mine","Derrick","Comptoir","Scrap","Pompe"]
         },
         "transRes":1200,
         "fuzz":4,
@@ -3716,7 +3716,7 @@
             "level":3,
             "rate":15,
             "multi":true,
-            "types":["Mine","Comptoir","Scrap"]
+            "types":["Mine","Comptoir","Scrap","Pompe"]
         },
         "transRes":150,
         "fuzz":2,
@@ -4068,7 +4068,7 @@
             "level":1,
             "rate":20,
             "multi":false,
-            "types":["Scrap","Mine"]
+            "types":["Scrap","Mine","Pompe"]
         },
         "transMaxSize":9,
         "transUnits":615,

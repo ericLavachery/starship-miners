@@ -108,6 +108,8 @@ function getTerrainRes(terrain,tile) {
         srs.Eau = 400+(tile.seed*75);
     } else if (terrain.name === 'S') {
         srs.Eau = 100+(tile.seed*35);
+    } else if (playerInfos.comp.ext >= 1 && terrain.veg >= 1) {
+        srs.Eau = Math.round((playerInfos.comp.ext*10)+(tile.seed*5));
     }
     return srs;
 };
@@ -183,6 +185,9 @@ function getResMiningRate(bat,res,value,fullRate) {
     let resRate = Math.ceil(resHere*batRate/mineRateDiv*multiExtractAdj);
     if (batType.mining.types.includes('Mine') && res.bld === 'Derrick') {
         resRate = Math.ceil(resRate/3);
+    }
+    if ((batType.mining.types.includes('Mine') || batType.mining.types.includes('Derrick') || batType.mining.types.includes('Scrap') || batType.mining.types.includes('Comptoir')) && res.bld === 'Pompe') {
+        resRate = Math.ceil(resRate/4);
     }
     if (batType.mining.level === 1 && (res.bld === 'Mine' || res.bld === 'Derrick')) {
         resRate = Math.ceil(resRate/6);
