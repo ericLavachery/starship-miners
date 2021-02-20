@@ -607,7 +607,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":36,
-            "ravitBld":"Derrick"
+            "ravitBld":"Atelier"
         },
         "weapon2":{
             "name":"Blister canon",

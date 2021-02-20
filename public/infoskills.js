@@ -88,7 +88,7 @@ function skillsInfos(bat,batType) {
         if (batType.skills.includes('baddef') || batType.skills.includes('guerrilla')) {
             apCost = bat.ap+3;
         }
-        apReq = bat.ap-2;
+        apReq = bat.ap-5;
         if (bat.apLeft >= apReq && !bat.tags.includes('fortif') && !inMelee && bat.salvoLeft >= batType.maxSalvo) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Se fortifier (bonus couverture)" class="boutonGris skillButtons" onclick="fortification()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
         } else {

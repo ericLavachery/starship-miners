@@ -169,7 +169,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":36,
-            "ravitBld":"Derrick"
+            "ravitBld":"Atelier"
         },
         "weapon3":{
             "name":"Autopistol",
@@ -323,7 +323,7 @@
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":36,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Autopistol",
@@ -867,7 +867,7 @@
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium"],
             "maxAmmo":12,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Autopistol",
@@ -1258,7 +1258,7 @@
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium"],
             "maxAmmo":12,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Tourelles auto",
@@ -1473,7 +1473,7 @@
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":12,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Autopistol",
@@ -1545,7 +1545,7 @@
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium"],
             "maxAmmo":12,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Tourelles auto",
@@ -1799,7 +1799,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":36,
-            "ravitBld":"Derrick"
+            "ravitBld":"Atelier"
         },
         "weapon3":{
             "name":"Autopistol",

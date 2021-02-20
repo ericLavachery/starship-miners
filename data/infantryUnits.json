@@ -338,7 +338,7 @@
             "sound":"grenade",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":6,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune","scrap","bugium","kevlar","acier","combo","kapton","mendium","nano"],
         "equip":["aucun","flash","ranger","camo","gilet","crimekitgi"],
@@ -610,7 +610,7 @@
             "sound":"hose",
             "ammo":["fuel"],
             "maxAmmo":12,
-            "ravitBld":"Derrick"
+            "ravitBld":"Atelier"
         },
         "equip":["aucun","flash","kit-pompiste","ranger","jetpack"],
         "moveCost":3,
@@ -1817,7 +1817,7 @@
             "sound":"mit_minigun",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"],
             "maxAmmo":32,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Minigun",
@@ -1833,7 +1833,7 @@
             "sound":"mit_minigun",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"],
             "maxAmmo":32,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "equip":["aucun","flash","ranger","gilet","camo","lunette1","chargeur1","w2-2ch","theeye","helper","waterproof"],
         "moveCost":5,
@@ -1941,7 +1941,7 @@
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium"],
             "maxAmmo":12,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "equip":["aucun","flash","ranger","gilet","lunette1","chargeur1","theeye","waterproof"],
         "moveCost":3,
@@ -1980,7 +1980,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":16,
-            "ravitBld":"Derrick"
+            "ravitBld":"Atelier"
         },
         "weapon2":{
             "name":"Revolver",
@@ -2043,7 +2043,7 @@
             "sound":"grenade",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":6,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune","scrap","bugium","kevlar","kapton","mendium","combo","titane","nano","adamantite","battlesuit"],
         "equip":["aucun","flash","gilet","camo","chargeur1","jetpack","theeye","helper","waterproof"],
@@ -2095,7 +2095,7 @@
             "sound":"grenade",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":6,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "equip":["aucun","flash","ranger","camo","jetpack","lunette1","chargeur1","theeye","waterproof"],
@@ -2600,7 +2600,7 @@
             "sound":"grenade",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":16,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "equip":["aucun","flash","gilet","chargeur1","camo","medic","theeye","waterproof"],
@@ -2766,7 +2766,7 @@
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":8,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "equip":["aucun","flash","ranger","gilet","chargeur1","snorkel","mecano","medic","theeye"],
         "moveCost":2,
@@ -3178,7 +3178,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":20,
-            "ravitBld":"Derrick"
+            "ravitBld":"Atelier"
         },
         "weapon2":{
             "name":"Fusil semi-auto",
@@ -3404,7 +3404,7 @@
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":16,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "equip":["aucun","flash","ranger","gilet","camo","chargeur1","theeye","helper","waterproof"],
         "moveCost":3,
@@ -3512,7 +3512,7 @@
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium"],
             "maxAmmo":12,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune","scrap","bugium","kevlar","combo","kapton","mendium","titane","nano","adamantite","battlesuit"],
         "equip":["aucun","flash","gilet","ranger","waterproof"],
@@ -3605,7 +3605,7 @@
             "sound":"grenade",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":8,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune","scrap","kevlar","mendium","nano"],
         "equip":["aucun","flash","ranger","gilet"],
@@ -3904,7 +3904,7 @@
             "sound":"flamme",
             "ammo":["lt-o2","lt-nanite","lt-plastanium"],
             "maxAmmo":24,
-            "ravitBld":"Derrick"
+            "ravitBld":"Atelier"
         },
         "protection":["aucun"],
         "equip":["aucun","flash","ranger","gilet"],
@@ -4012,7 +4012,7 @@
             "sound":"firemg",
             "ammo":["fireshells","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
             "maxAmmo":18,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "protection":["kevlar","combo","kapton","mendium","titane","nano","adamantite","battlesuit"],
         "equip":["aucun","flash","ranger","gilet","camo","lunette1","theeye","helper","waterproof"],
@@ -4115,7 +4115,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":24,
-            "ravitBld":"Derrick"
+            "ravitBld":"Atelier"
         },
         "weapon2":{
             "name":"Fusil antichar",
@@ -4233,7 +4233,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":12,
-            "ravitBld":"Derrick"
+            "ravitBld":"Atelier"
         },
         "protection":["kevlar","combo","kapton","mendium","titane","nano","adamantite"],
         "equip":["aucun","flash","gilet","theeye","waterproof"],
@@ -4543,7 +4543,7 @@
             "sound":"flamme",
             "ammo":["lt-o2","lt-nanite","lt-plastanium"],
             "maxAmmo":18,
-            "ravitBld":"Derrick"
+            "ravitBld":"Atelier"
         },
         "weapon2":{
             "name":"Fusil semi-auto",
@@ -4769,7 +4769,7 @@
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":24,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune"],
         "equip":["aucun","flash","gilet","camo","lunette1","chargeur1","theeye","waterproof","crimekitch"],
@@ -4935,7 +4935,7 @@
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium"],
             "maxAmmo":16,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "protection":["aucun"],
         "equip":["aucun","flash","ranger","gilet","camo","g2motor","waterproof"],

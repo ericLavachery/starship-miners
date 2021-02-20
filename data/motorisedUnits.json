@@ -207,7 +207,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":26,
-            "ravitBld":"Derrick"
+            "ravitBld":"Atelier"
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "equip":["aucun","g2motor","chenilles","snorkel","flash","theeye"],
@@ -263,7 +263,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":36,
-            "ravitBld":"Derrick"
+            "ravitBld":"Atelier"
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "equip":["aucun","g2motor","chenilles","snorkel","flash"],
@@ -2598,7 +2598,7 @@
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":12,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Boutoir",
@@ -2846,7 +2846,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":16,
-            "ravitBld":"Derrick"
+            "ravitBld":"Atelier"
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","flash","theeye"],
@@ -3286,7 +3286,7 @@
             "sound":"mit_minigun",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"],
             "maxAmmo":32,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "protection":["aucun","acier","titane","kanchan","chobham","dunium","bonibo","adamantite"],
         "equip":["aucun","chargeur2","g2motor"],
@@ -3557,7 +3557,7 @@
             "sound":"grenade",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":9,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "protection":["aucun","kanchan","chobham","dunium","adamantite"],
         "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","flash"],
@@ -3752,7 +3752,7 @@
             "sound":"firemg_heavy_sa",
             "ammo":["fireshells","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
             "maxAmmo":36,
-            "ravitBld":"Armurerie"
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Mitrailleuse",

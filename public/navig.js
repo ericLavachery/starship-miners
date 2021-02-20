@@ -55,3 +55,16 @@ function commandes() {
     }
     gangNavig();
 };
+
+function gangNavig() {
+    $('#gangInfos').empty();
+    $('#gangInfos').append('<button type="button" title="Construire gratuitement" class="boutonBleu iconButtons" onclick="bfconst(`all`,true,false)"><i class="fa fa-hammer"></i></button>');
+    $('#gangInfos').append('<button type="button" title="Ajouter un peu de chaque ressource" class="boutonBleu iconButtons" onclick="allResAdd(10)"><i class="fas fa-cart-plus"></i></button>');
+    $('#gangInfos').append('<button type="button" title="Editer le Gang" class="boutonBleu iconButtons" onclick="gangEdit()"><i class="fas fa-users-cog"></i></button>');
+    $('#gangInfos').append('<br>');
+    $('#gangInfos').append('<button type="button" title="Remplir le lander" class="boutonBleu iconButtons" onclick="landerFill()"><i class="fas fa-dolly"></i></button>');
+    $('#gangInfos').append('<div class="shSpace"></div>');
+    $('#gangInfos').append('<span class="butSpace"></span>');
+    $('#gangInfos').append(capitalizeFirstLetter(playerInfos.gang));
+    $('#gangInfos').append(' '+playerInfos.gLevel+'<br>');
+};

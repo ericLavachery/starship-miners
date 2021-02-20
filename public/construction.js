@@ -579,20 +579,35 @@ function clickConstruct(tileId,free) {
         clickUpgrade(tileId);
     } else {
         let batHere = false;
+        let message = '';
+        let tile = getTileById(tileId);
+        let landerRange = baseLanderRange;
+        if (playerInfos.comp.vsp >= 1) {
+            landerRange = landerRange+1+(playerInfos.comp.vsp*2);
+        }
         bataillons.forEach(function(bat) {
             if (bat.tileId === tileId && bat.loc === "zone") {
                 batHere = true;
+                message = 'Pas de construction sur une case occupée par un de vos bataillons';
             }
         });
         aliens.forEach(function(bat) {
             if (bat.tileId === tileId && bat.loc === "zone") {
                 batHere = true;
+                message = 'Pas de construction sur une case occupée par un alien';
             }
         });
         if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices') {
             let tile = getTileById(tileId);
             if (tile.infra != undefined && tile.infra != 'Débris') {
                 batHere = true;
+                message = 'Pas de construction de bâtiment ou dispositif sur une case occupée par une infrastructure';
+            }
+        }
+        if (conselUnit.skills.includes('transorbital')) {
+            if (tile.x > 31+landerRange || tile.x < 31-landerRange || tile.y > 31+landerRange || tile.y < 31-landerRange) {
+                batHere = true;
+                message = 'Vous ne pouvez pas poser votre vaisseau à plus de '+landerRange+' cases du centre.';
             }
         }
         if (!batHere) {
@@ -614,11 +629,12 @@ function clickConstruct(tileId,free) {
                 conOut();
             }
         } else {
-            conselReset();
+            conOut();
             $('#unitInfos').empty();
             selectMode();
             batUnstack();
             batUnselect();
+            warning('Construction avortée',message);
         }
     }
 };

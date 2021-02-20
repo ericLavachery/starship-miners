@@ -1,16 +1,3 @@
-function gangNavig() {
-    $('#gangInfos').empty();
-    $('#gangInfos').append('<button type="button" title="Construire gratuitement" class="boutonBleu iconButtons" onclick="bfconst(`all`,true,false)"><i class="fa fa-hammer"></i></button>');
-    $('#gangInfos').append('<button type="button" title="Ajouter un peu de chaque ressource" class="boutonBleu iconButtons" onclick="allResAdd(10)"><i class="fas fa-cart-plus"></i></button>');
-    $('#gangInfos').append('<button type="button" title="Editer le Gang" class="boutonBleu iconButtons" onclick="gangEdit()"><i class="fas fa-users-cog"></i></button>');
-    $('#gangInfos').append('<br>');
-    $('#gangInfos').append('<button type="button" title="Remplir le lander" class="boutonBleu iconButtons" onclick="landerFill()"><i class="fas fa-dolly"></i></button>');
-    $('#gangInfos').append('<div class="shSpace"></div>');
-    $('#gangInfos').append('<span class="butSpace"></span>');
-    $('#gangInfos').append(capitalizeFirstLetter(playerInfos.gang));
-    $('#gangInfos').append(' '+playerInfos.gLevel+'<br>');
-};
-
 function gangEdit() {
     selectMode();
     $("#conUnitList").css("display","block");
@@ -672,6 +659,7 @@ function landerFill() {
     let bldNeed = [];
     let prodOK = true;
     let colour = '';
+    // BATIMENTS
     let allUnitsList = unitTypes.slice();
     let sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'cat'),'kind');
     sortedUnitsList.forEach(function(unit) {
@@ -707,6 +695,7 @@ function landerFill() {
             }
         }
     });
+    // INFRASTRUCTURES
     $('#conUnitList').append('<br><span class="constName vert">infrastructures</span><br>');
     armorTypes.forEach(function(infra) {
         if (infra.fabTime != undefined) {
@@ -736,6 +725,19 @@ function landerFill() {
         showPrep = '('+prepaBld['Pont']+')';
     }
     $('#conUnitList').append('<span class="constName klik gris" onclick="fillLanderWithInfra(`Pont`,true)">Pont <span class="ciel">'+showPrep+'</span></span><br>');
+    // PACKS DE RESSOURCES
+    $('#conUnitList').append('<br><span class="constName vert">packs de ressources</span><br>');
+    armorTypes.forEach(function(pack) {
+        if (pack.name.includes('respack-')) {
+            if (prepaBld[pack.name] === undefined) {
+                showPrep = '';
+            } else {
+                showPrep = '('+prepaBld[pack.name]+')';
+            }
+            $('#conUnitList').append('<span class="constName klik gris" onclick="fillLanderWithInfra(`'+pack.name+'`,false)">'+pack.info+' <span class="ciel">'+showPrep+'</span></span><br>');
+        }
+    });
+
     $('#conUnitList').append('<br>');
 };
 

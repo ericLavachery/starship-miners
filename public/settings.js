@@ -95,6 +95,7 @@ let selectedWeap = {};
 let targetBat = {};
 let targetBatType = {};
 let targetWeap = {};
+let baseLanderRange = 5;
 let nextExplosion = 1;
 let coverFactor = 0.8; // multiplie la cover du terrain (enlevé à accuracy)
 let coverAOE = 0;

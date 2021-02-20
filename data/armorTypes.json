@@ -714,5 +714,30 @@
         "compReq":{"log":2,"def":3,"det":3,"bal":3,"tank":1,"robo":1},
         "factor":"one",
         "costs":{"Carbone":60,"Scrap":30,"Soufre":90,"Uranium":90,"Fer":300,"Cuivre":90,"Aluminium":120,"Silicium":90,"Electros":120,"Batteries":90}
+    },
+    {
+        "name": "respack-weapons1",
+        "info": "Armes et minitions 1",
+        "costs":{"Fer":200,"Scrap":120,"Carbone":60,"Bois":30,"Aluminium":100,"Tungstène":70,"Huile":30,"Silicium":30,"Phosphore":30,"Hydrogène":30}
+    },
+    {
+        "name": "respack-weapons2",
+        "info": "Armes et minitions 2",
+        "costs":{"Fer":200,"Scrap":120,"Carbone":60,"Bois":30,"Aluminium":100,"Titane":80,"Tungstène":70,"Rhodium":30,"Bore":30,"Huile":30,"Silicium":30,"Cuivre":30,"Electros":30,"Batteries":30,"Phosphore":60,"Hydrogène":60,"Uranium":60,"Bossium":30}
+    },
+    {
+        "name": "respack-fleches1",
+        "info": "Flèches et poisons 1",
+        "costs":{"Bois":200,"Fer":120,"Carbone":90,"Tungstène":40,"Huile":100,"Calcium":90,"Phosphore":60}
+    },
+    {
+        "name": "respack-fleches2",
+        "info": "Flèches et poisons 2",
+        "costs":{"Bois":200,"Fer":120,"Carbone":90,"Tungstène":40,"Titane":40,"Huile":100,"Calcium":90,"Argon":40,"Mephitis":60,"Germium":60,"Or":40,"Phosphore":60,"Rhodium":30,"Bossium":30,"Cuivre":20,"Electros":20}
+    },
+    {
+        "name": "respack-bld1",
+        "info": "Bâtiments 1",
+        "costs":{"Compo1":450,"Compo2":110,"Eau":200,"Carbone":50,"Aluminium":100,"Fer":200,"Soufre":50,"Bois":100,"Potassium":50,"Scrap":200,"Phosphore":30,"Hydrogène":50,"Végétaux":150,"Hydrocarbure":200,"Zinc":50,"Huile":50,"Potassium":100,"Tissus":25,"Calcium":25,"Or":15,"Silicium":25,"Oxygène":25,"Chlore":75}
     }
 ]
