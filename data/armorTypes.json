@@ -576,7 +576,7 @@
         "skills": [],
         "info": "Lance Missile",
         "bldReq":["Usine d'armement"],
-        "compReq":{"log":3,"arti":1,"bal":2,"explo":2,"vsp":1},
+        "compReq":{"log":3,"arti":1,"bal":2,"explo":2,"def":2},
         "factor":"rofpow",
         "costs":{"Fer":60,"Aluminium":60,"Titane":60,"Silicium":12,"Rhodium":30,"Electros":15}
     },
@@ -585,7 +585,7 @@
         "skills": [],
         "info": "Mitrailleuse",
         "bldReq":["Arsenal"],
-        "compReq":{"log":2,"bal":1,"vsp":1},
+        "compReq":{"log":2,"bal":1,"def":2},
         "factor":"crew",
         "costs":{"Carbone":18,"Scrap":12,"Fer":39,"Aluminium":18,"Tungstène":9,"Silicium":6}
     },
@@ -594,7 +594,7 @@
         "skills": [],
         "info": "Cradle",
         "bldReq":["Chaîne de montage"],
-        "compReq":{"log":2,"vsp":1},
+        "compReq":{"log":2,"def":2},
         "factor":"rofpow",
         "costs":{"Fer":90,"Tungstène":60,"Huile":10,"Scrap":3,"Carbone":6,"Silicium":3}
     },
@@ -718,12 +718,22 @@
     {
         "name": "respack-weapons1",
         "info": "Armes et minitions 1",
-        "costs":{"Fer":200,"Scrap":120,"Carbone":60,"Bois":30,"Aluminium":100,"Tungstène":70,"Huile":30,"Silicium":30,"Phosphore":30,"Hydrogène":30}
+        "costs":{"Fer":200,"Scrap":120,"Carbone":60,"Bois":30,"Aluminium":100,"Tungstène":70,"Huile":30,"Silicium":30,"Phosphore":30,"Hydrogène":30,"Plomb":90,"Soufre":150}
     },
     {
         "name": "respack-weapons2",
         "info": "Armes et minitions 2",
-        "costs":{"Fer":200,"Scrap":120,"Carbone":60,"Bois":30,"Aluminium":100,"Titane":80,"Tungstène":70,"Rhodium":30,"Bore":30,"Huile":30,"Silicium":30,"Cuivre":30,"Electros":30,"Batteries":30,"Phosphore":60,"Hydrogène":60,"Uranium":60,"Bossium":30}
+        "costs":{"Fer":200,"Scrap":120,"Carbone":60,"Bois":30,"Aluminium":100,"Titane":80,"Tungstène":70,"Rhodium":30,"Bore":30,"Huile":30,"Silicium":30,"Cuivre":30,"Electros":30,"Batteries":30,"Phosphore":60,"Hydrogène":60,"Uranium":60,"Bossium":30,"Plomb":90,"Soufre":150}
+    },
+    {
+        "name": "respack-explo1",
+        "info": "Explosifs 1",
+        "costs":{"Fer":140,"Scrap":60,"Carbone":60,"Bois":30,"Aluminium":90,"Tungstène":70,"Huile":30,"Silicium":30,"Explosifs":90,"Phosphore":60,"Potassium":60,"Plomb":60,"Fuel":120}
+    },
+    {
+        "name": "respack-explo2",
+        "info": "Explosifs 2",
+        "costs":{"Fer":140,"Scrap":60,"Carbone":60,"Bois":30,"Aluminium":90,"Titane":50,"Tungstène":70,"Rhodium":30,"Huile":30,"Silicium":20,"Electros":20,"Batteries":20,"Explosifs":90,"Hélium":30,"Azote":30,"Cuivre":30,"Phosphore":60,"Potassium":60,"Plomb":60,"Fuel":120}
     },
     {
         "name": "respack-fleches1",

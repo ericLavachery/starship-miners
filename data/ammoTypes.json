@@ -529,7 +529,7 @@
         "name": "sm-incendiaire",
         "range": 1,
         "rof": 1,
-        "power": 2,
+        "power": 1,
         "powermult": 1,
         "armors": 1,
         "accuracy": 1,

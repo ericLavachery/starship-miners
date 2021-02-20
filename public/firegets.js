@@ -373,6 +373,9 @@ function calcDamage(weapon,power,armor,defBat) {
         } else if (armor < 3 && !defBatType.skills.includes('baddef')) {
             armor = armor+1;
         }
+        if (playerInfos.comp.def >= 2) {
+            armor = armor+1;
+        }
     }
     let armorModifier = weapon.armors;
     // creuseur

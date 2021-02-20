@@ -264,7 +264,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","extraction","fret","recupcit","dumper","transport","routes","prefab","prodres"],
+        "skills":["fouille","extraction","fret","recupcit","dumper","transport","routes","prefab","prodres","longshot"],
         "mecanoCost":8,
         "mining":{
             "level":3,

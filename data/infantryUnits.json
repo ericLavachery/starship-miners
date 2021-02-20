@@ -1570,7 +1570,7 @@
             "sound":"belt",
             "ammo":["autodestruction"]
         },
-        "protection":["aucune"],
+        "protection":["aucune","scrap","kevlar"],
         "equip":["aucun","flash","ranger","jetpack","camo"],
         "moveCost":3,
         "maxFlood":3,
@@ -2151,7 +2151,7 @@
             "sound":"saw",
             "ammo":["lame","lame-tungsten","lame-plasma"]
         },
-        "protection":["aucune"],
+        "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "equip":["aucun","flash","ranger","waterproof"],
         "moveCost":3,
         "maxFlood":3,
@@ -4976,7 +4976,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten"]
         },
         "weapon2":{},
-        "protection":["aucune"],
+        "protection":["aucune","scrap","bugium","kevlar","acier"],
         "equip":["aucun","flash"],
         "moveCost":3,
         "maxFlood":3,
