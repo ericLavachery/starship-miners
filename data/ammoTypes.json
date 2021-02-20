@@ -102,7 +102,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":1,"mat":1},
+        "compReq":{"bal":2,"mat":1},
         "deploy":{"Fer":2,"Soufre":2,"Uranium":2},
         "batch":100
     },
@@ -174,7 +174,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":1,"explo":1},
+        "compReq":{"bal":2,"explo":2},
         "deploy":{"Fer":2,"Soufre":2,"Plomb":1,"Tungstène":1,"Phosphore":1,"Hydrogène":1},
         "batch":100
     },
@@ -190,7 +190,7 @@
         "aoe": "",
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":1,"pyro":2},
+        "compReq":{"bal":2,"pyro":2},
         "deploy":{"Fer":2,"Soufre":2,"Plomb":1,"Aluminium":1,"Phosphore":2},
         "batch":100
     },
@@ -296,7 +296,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":1,"mat":1},
+        "compReq":{"bal":2,"mat":1},
         "deploy":{"Fer":2,"Soufre":2,"Uranium":2},
         "batch":100
     },
@@ -311,7 +311,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":1,"explo":1},
+        "compReq":{"bal":2,"explo":2},
         "deploy":{"Fer":2,"Soufre":2,"Plomb":1,"Tungstène":1,"Phosphore":1,"Hydrogène":1},
         "batch":100
     },
@@ -327,7 +327,7 @@
         "aoe": "",
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":1,"pyro":2},
+        "compReq":{"bal":2,"pyro":2},
         "deploy":{"Fer":2,"Soufre":2,"Plomb":1,"Aluminium":1,"Phosphore":2},
         "batch":100
     },
@@ -463,7 +463,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":1,"mat":1},
+        "compReq":{"bal":2,"mat":1},
         "deploy":{"Fer":2,"Soufre":2,"Uranium":2},
         "batch":100
     },
@@ -521,7 +521,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":1,"explo":1},
+        "compReq":{"bal":2,"explo":2},
         "deploy":{"Fer":2,"Soufre":2,"Plomb":1,"Tungstène":1,"Phosphore":1,"Hydrogène":1},
         "batch":100
     },
@@ -537,7 +537,7 @@
         "aoe": "",
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":1,"pyro":2},
+        "compReq":{"bal":2,"pyro":2},
         "deploy":{"Fer":2,"Soufre":2,"Plomb":1,"Aluminium":1,"Phosphore":2},
         "batch":100
     },
@@ -629,7 +629,7 @@
         "aoe": "brochette",
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
-        "compReq":{"bal":1,"pyro":3},
+        "compReq":{"bal":2,"pyro":3},
         "deploy":{"Fer":2,"Soufre":2,"Plutonium":2,"Aluminium":1,"Phosphore":2,"Pyratol":2},
         "batch":100
     },
@@ -645,7 +645,7 @@
         "aoe": "squad",
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
-        "compReq":{"bal":1,"explo":2},
+        "compReq":{"bal":2,"explo":2},
         "deploy":{"Fer":2,"Soufre":2,"Plutonium":2,"Aluminium":1,"Phosphore":2,"Nanite":2},
         "batch":100
     },

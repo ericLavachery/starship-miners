@@ -64,7 +64,7 @@
         "ap": -2,
         "skills": [],
         "bldReq":["Atelier"],
-        "compReq":{"ca":1},
+        "compReq":{"ca":2},
         "factor":"thp",
         "costs":{"Scrap":6,"Bugium":12}
     },

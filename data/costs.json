@@ -497,7 +497,7 @@
     {
         "id":63,
         "name":"Barricades",
-        "levels":{"rednecks":6,"blades":99,"bulbos":99,"drogmulojs":7,"tiradores":1,"detruas":1,"brasier":99},
+        "levels":{"rednecks":6,"blades":99,"bulbos":99,"drogmulojs":7,"tiradores":5,"detruas":5,"brasier":99},
         "bldReq":["Armurerie"],
         "costs":{"Fer":300,"Scrap":60,"Carbone":60,"Végétaux":110,"Chlore":10,"Tissus":5},
         "fabTime":20
