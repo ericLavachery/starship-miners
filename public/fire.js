@@ -334,16 +334,24 @@ function attack(melee) {
     }
     // embuscade (bonus ROF)
     if (activeTurn === 'player') {
-        if (selectedBat.tags.includes('embuscade') && selectedBat.fuzz == -2) {
-            shots = Math.floor(shots*2);
-            attFactor = Math.round(attFactor*2);
+        if (selectedBat.tags.includes('embuscade')) {
+            let embushBonus = 2;
+            if (selectedBatType.cat != 'aliens') {
+                embushBonus = embushBonus+(playerInfos.comp.train/2)+(playerInfos.comp.cam/5);
+            }
+            shots = Math.floor(shots*embushBonus);
+            attFactor = Math.round(attFactor*embushBonus);
             console.log('bonus ROF embuscade');
         }
     }
     // guerrilla
     if (selectedBatType.skills.includes('guerrilla') && selectedBat.oldTileId != selectedBat.tileId) {
-        shots = Math.round(shots*1.5);
-        attFactor = Math.round(attFactor*1.5);
+        let guerBonus = 1.5;
+        if (selectedBatType.cat != 'aliens') {
+            guerBonus = guerBonus+(playerInfos.comp.train/5)+(playerInfos.comp.cam/10);
+        }
+        shots = Math.round(shots*guerBonus);
+        attFactor = Math.round(attFactor*guerBonus);
     }
     // Attack %
     $('#report').append('<span class="report jaune">Attaque '+attFactor+'%<br></span>');
@@ -531,22 +539,26 @@ function attack(melee) {
     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('pyratol') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov') || selectedWeap.ammo.includes('laser')) {
         if (targetBatType.skills.includes('inflammable') || targetBat.tags.includes('inflammable') || targetBat.eq === 'jetpack') {
             let infactor = 1.5;
-            if (targetBatType.skills.includes('resistfeu') || targetBat.tags.includes('resistfeu')) {
+            if (targetBat.tags.includes('resistfeu') && targetBatType.cat != 'aliens') {
+                infactor = 1;
+            } else if (targetBatType.skills.includes('resistfeu') || targetBat.tags.includes('resistfeu')) {
                 infactor = 1.25;
             }
             let infbonus = 0;
             if (targetBat.tags.includes('inflammable')) {
                 if (targetBatType.skills.includes('inflammable')) {
                     infactor = 4;
-                    infbonus = rand.rand(100,200);
+                    infbonus = rand.rand(180,320);
                 } else {
                     infactor = 2;
-                    infbonus = rand.rand(75,150);
+                    infbonus = rand.rand(130,240);
                 }
             }
             totalDamage = Math.round(totalDamage*infactor)+infbonus;
-            $('#report').append('<span class="report rose">Inflammable x'+infactor+'<br></span>');
-            console.log('inflammable!');
+            if (infactor > 1 || infbonus > 0) {
+                $('#report').append('<span class="report rose">Inflammable x'+infactor+'<br></span>');
+                console.log('inflammable!');
+            }
         }
     }
     // résistance au feu
@@ -1120,6 +1132,9 @@ function defense(melee) {
     // guerrilla
     if (selectedBatType.skills.includes('guerrilla') && selectedBat.oldTileId != selectedBat.tileId) {
         let guerrillaDef = 10+terrain.cover+(selectedBatType.stealth/5);
+        if (selectedBatType.cat != 'aliens') {
+            guerrillaDef = guerrillaDef+(playerInfos.comp.train*2)+(playerInfos.comp.cam/2);
+        }
         shots = Math.round(shots*9/guerrillaDef);
         defFactor = Math.round(defFactor*9/guerrillaDef);
     }
@@ -1262,22 +1277,26 @@ function defense(melee) {
     if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('pyratol') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov') || targetWeap.ammo.includes('laser')) {
         if (selectedBatType.skills.includes('inflammable') || selectedBat.tags.includes('inflammable') || selectedBat.eq === 'jetpack') {
             let infactor = 1.5;
-            if (selectedBatType.skills.includes('resistfeu') || selectedBat.tags.includes('resistfeu')) {
+            if (selectedBat.tags.includes('resistfeu') && selectedBatType.cat != 'aliens') {
+                infactor = 1;
+            } else if (selectedBatType.skills.includes('resistfeu') || selectedBat.tags.includes('resistfeu')) {
                 infactor = 1.25;
             }
             let infbonus = 0;
             if (selectedBat.tags.includes('inflammable')) {
                 if (selectedBatType.skills.includes('inflammable')) {
                     infactor = 4;
-                    infbonus = rand.rand(100,200);
+                    infbonus = rand.rand(180,320);
                 } else {
                     infactor = 2;
-                    infbonus = rand.rand(75,150);
+                    infbonus = rand.rand(130,240);
                 }
             }
             totalDamage = Math.round(totalDamage*infactor)+infbonus;
-            $('#report').append('<span class="report rose">Inflammable x'+infactor+'<br></span>');
-            console.log('inflammable!');
+            if (infactor > 1 || infbonus > 0) {
+                $('#report').append('<span class="report rose">Inflammable x'+infactor+'<br></span>');
+                console.log('inflammable!');
+            }
         }
     }
     // résistance au feu

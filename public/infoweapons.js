@@ -29,6 +29,7 @@ function weaponsInfos(bat,batType,pop) {
     cheapWeapCost = 99;
     let accFly;
     let accGround;
+    let apOK = false;
     let terrain = getTerrain(bat);
     // if (batType.weapon.rof >= 1 && batType.weapon2.rof >= 1 && batType.weapon.name === batType.weapon2.name) {
     //     showW1 = false;
@@ -51,6 +52,7 @@ function weaponsInfos(bat,batType,pop) {
         thisWeapon = weaponAdj(batType.weapon,bat,'w1');
         if (!thisWeapon.noAtt) {
             noFireMelee = false;
+            apOK = false;
             if (inMelee && thisWeapon.noMelee) {
                 noFireMelee = true;
             }
@@ -67,7 +69,14 @@ function weaponsInfos(bat,batType,pop) {
                 noBisOK = false;
             }
             let w1message = 'Salves épuisées';
-            if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && ammoLeft >= 1 && anyTarget && noBisOK && !noFireMelee) {
+            if (bat.apLeft >= thisWeapon.cost) {
+                apOK = true;
+            } else {
+                if (batType.skills.includes('guerrilla') && bat.tileId != bat.oldTileId && bat.apLeft >= -4+thisWeapon.cost) {
+                    apOK = true;
+                }
+            }
+            if (bat.salvoLeft >= 1 && apOK && ammoLeft >= 1 && anyTarget && noBisOK && !noFireMelee) {
                 // assez d'ap et de salve
                 if (cheapWeapCost > thisWeapon.cost) {
                     cheapWeapCost = thisWeapon.cost;
@@ -88,7 +97,7 @@ function weaponsInfos(bat,batType,pop) {
                     } else {
                         if (!anyTarget) {
                             w1message = 'Pas de cible';
-                        } else if (bat.apLeft < thisWeapon.cost) {
+                        } else if (!apOK) {
                             w1message = 'PA épuisés';
                         }
                     }
@@ -235,6 +244,7 @@ function weaponsInfos(bat,batType,pop) {
         thisWeapon = weaponAdj(batType.weapon2,bat,'w2');
         if (!thisWeapon.noAtt) {
             noFireMelee = false;
+            apOK = false;
             if (inMelee && thisWeapon.noMelee) {
                 noFireMelee = true;
             }
@@ -250,7 +260,14 @@ function weaponsInfos(bat,batType,pop) {
                 noBisOK = false;
             }
             let w2message = 'Salves épuisées';
-            if (bat.salvoLeft >= 1 && bat.apLeft >= thisWeapon.cost && anyTarget && ammoLeft >= 1 && !noFireMelee && noBisOK) {
+            if (bat.apLeft >= thisWeapon.cost) {
+                apOK = true;
+            } else {
+                if (batType.skills.includes('guerrilla') && bat.tileId != bat.oldTileId && bat.apLeft >= -4+thisWeapon.cost) {
+                    apOK = true;
+                }
+            }
+            if (bat.salvoLeft >= 1 && apOK && anyTarget && ammoLeft >= 1 && !noFireMelee && noBisOK) {
                 // assez d'ap et de salve
                 if (cheapWeapCost > thisWeapon.cost) {
                     cheapWeapCost = thisWeapon.cost;
@@ -271,7 +288,7 @@ function weaponsInfos(bat,batType,pop) {
                     } else {
                         if (!anyTarget) {
                             w2message = 'Pas de cible';
-                        } else if (bat.apLeft < thisWeapon.cost) {
+                        } else if (!apOK) {
                             w2message = 'PA épuisés';
                         }
                     }

@@ -201,7 +201,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["invisible","fouisseur","errant","chancre","okwater","guerrilla"],
+        "skills":["invisible","fouisseur","errant","chancre","okwater"],
         "deathFx":"76974__michel88__piggrunt2",
         "spawnFx":"71906__cmusounddesign__je-monster_ghost",
         "fxPriority":1,
@@ -1626,7 +1626,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["sauteur","grip","inflammable","guerrilla","baddef"],
+        "skills":["sauteur","grip","inflammable","baddef"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":2,"Wingium":2}
     },

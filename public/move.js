@@ -386,29 +386,39 @@ function calcMoveCost(targetTileId,diag) {
     let tile = getTileById(targetTileId);
     let terIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
     let terrain = terrainTypes[terIndex];
+    let baseMoveCost = selectedBatType.moveCost;
+    if (selectedBat.eq === 'kit-garde') {
+        baseMoveCost = 4;
+    }
+    if (selectedBat.eq === 'kit-artilleur') {
+        baseMoveCost = 5;
+    }
+    if (selectedBat.eq === 'kit-pompiste') {
+        baseMoveCost = 4;
+    }
     let moveCost;
     if (tile.rd && !selectedBatType.skills.includes('hover')) {
-        moveCost = selectedBatType.moveCost+terrain.roadmc;
-        if (selectedBatType.moveCost >= 4 && selectedBat.team != 'aliens') {
-            moveCost = moveCost-((selectedBatType.moveCost-3)/2);
+        moveCost = baseMoveCost+terrain.roadmc;
+        if (baseMoveCost >= 4 && selectedBat.team != 'aliens') {
+            moveCost = moveCost-((baseMoveCost-3)/2);
         }
         if (moveCost == 1) {
             moveCost = 1.5;
         }
     } else if (selectedBat.team == 'aliens' && !selectedBatType.skills.includes('hover') && !selectedBatType.skills.includes('okwater')) {
-        moveCost = selectedBatType.moveCost+terrain.alienmc;
+        moveCost = baseMoveCost+terrain.alienmc;
     } else if (selectedBatType.skills.includes('okwater')) {
-        moveCost = selectedBatType.moveCost+terrain.larvemc;
+        moveCost = baseMoveCost+terrain.larvemc;
     } else if (selectedBatType.skills.includes('ranger') || selectedBat.eq === 'kit-sentinelle' || selectedBat.eq === 'ranger' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitgi' || (selectedBat.eq === 'chenilles' && selectedBatType.maxFlood >= 1 && selectedBatType.maxScarp >= 2) || (selectedBat.eq === 'chenilles' && selectedBatType.maxFlood >= 1 && terrain.name === 'S') || (selectedBat.eq === 'chenilles' && selectedBatType.maxScarp >= 2 && terrain.name === 'H')) {
-        moveCost = selectedBatType.moveCost+terrain.rangermc;
+        moveCost = baseMoveCost+terrain.rangermc;
     } else if (selectedBatType.skills.includes('hover')) {
-        moveCost = selectedBatType.moveCost+terrain.hovermc;
+        moveCost = baseMoveCost+terrain.hovermc;
     } else if (selectedBatType.skills.includes('hardmove')) {
-        moveCost = selectedBatType.moveCost+terrain.hardmc;
+        moveCost = baseMoveCost+terrain.hardmc;
     } else if (selectedBatType.skills.includes('hscarpmove')) {
-        moveCost = selectedBatType.moveCost+terrain.hscarpmc;
+        moveCost = baseMoveCost+terrain.hscarpmc;
     } else {
-        moveCost = selectedBatType.moveCost+terrain.mc;
+        moveCost = baseMoveCost+terrain.mc;
     }
     if (selectedBat.eq === 'snorkel') {
         if (terrain.flood > selectedBatType.maxFlood) {

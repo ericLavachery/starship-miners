@@ -163,6 +163,14 @@ function showRes(tileId) {
     return mapIndicators;
 };
 
+function getBatPic(bat,batType) {
+    let batPic = batType.pic;
+    if (batType.skills.includes('kitimage') && bat.eq.includes('kit-')) {
+        batPic = batPic+'2'
+    }
+    return batPic;
+};
+
 function showAlien(bat) {
     let batType = getBatType(bat);
     let batShowedName = nomVisible(batType.name);
@@ -226,7 +234,7 @@ function showAlien(bat) {
 
 function showBataillon(bat) {
     let batType = getBatType(bat);
-    let batPic = batType.pic;
+    let batPic = getBatPic(bat,batType);
     let batCat = batType.cat;
     let unitsLeft = bat.squadsLeft*batType.squadSize;
     $('#b'+bat.tileId).empty();

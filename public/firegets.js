@@ -374,7 +374,7 @@ function calcDamage(weapon,power,armor,defBat) {
             armor = armor+1;
         }
         if (playerInfos.comp.def >= 2) {
-            armor = armor+1;
+            armor = armor+playerInfos.comp.def-1;
         }
     }
     let armorModifier = weapon.armors;
@@ -583,12 +583,6 @@ function getAP(bat,batType) {
     }
     if (bat.eq === 'ranger' || bat.eq === 'gilet') {
         newAP = newAP-1;
-    }
-    if (bat.eq === 'kit-garde' || bat.eq === 'kit-artilleur') {
-        newAP = newAP-3;
-    }
-    if (bat.eq === 'kit-pompiste') {
-        newAP = newAP-2;
     }
     if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.moveCost < 90) {
         newAP = newAP+playerInfos.comp.trans-1;
@@ -1483,6 +1477,10 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
         if (batType.skills.includes('guerrilla') && bat.oldTileId != bat.tileId) {
             let gmin = 0.75;
             let gmax = 1;
+            if (batType.cat != 'aliens') {
+                gmin = gmin+(playerInfos.comp.train/4);
+                gmax = gmax+(playerInfos.comp.train/4);
+            }
             if (batType.skills.includes('baddef')) {
                 gmax = 0.85;
             }

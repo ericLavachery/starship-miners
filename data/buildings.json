@@ -58,7 +58,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier"],
+        "protection":["aucun","acier","dunium","bonibo","iso"],
         "equip":["aucun","w1-gun","w2-explo","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -108,7 +108,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier"],
+        "protection":["aucun","acier","dunium","bonibo","iso"],
         "equip":["aucun","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -182,7 +182,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier"],
+        "protection":["aucun","acier","dunium","bonibo","iso"],
         "equip":["aucun","w1-gun","w2-fire","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -258,7 +258,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier"],
+        "protection":["aucun","acier","dunium","bonibo","iso"],
         "equip":["aucun","w1-gun","w2-ggun","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -336,7 +336,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier"],
+        "protection":["aucun","acier","dunium","bonibo","iso"],
         "equip":["aucun","w1-gun","w2-explo","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -450,7 +450,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-ggun","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -522,7 +522,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-fire","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -593,7 +593,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-explo","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -665,7 +665,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-brol","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -737,7 +737,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-brol","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -809,7 +809,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-arti","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -880,7 +880,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-explo","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -952,7 +952,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w2-arti","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1025,7 +1025,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w2-arti","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1081,7 +1081,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1140,7 +1140,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1199,7 +1199,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier"],
+        "protection":["aucun","acier","dunium","bonibo","iso"],
         "equip":["aucun","w1-ggun","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1272,7 +1272,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-explo","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1344,7 +1344,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-arti","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1415,7 +1415,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier"],
+        "protection":["aucun","acier","dunium","bonibo","iso"],
         "equip":["aucun","w1-gun","w2-explo","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1486,7 +1486,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-explo","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1559,7 +1559,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-explo","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1633,7 +1633,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-rain","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1702,7 +1702,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-plasma","w2-laser","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1745,7 +1745,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier"],
+        "protection":["aucun","acier","dunium","bonibo","iso"],
         "equip":["aucun","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1812,7 +1812,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-fire","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1881,7 +1881,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-ggun","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1950,7 +1950,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-ggun","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2019,7 +2019,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-ggun","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2087,7 +2087,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-ggun","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2158,7 +2158,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-explo","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2230,7 +2230,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-explo","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2301,7 +2301,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-explo","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2370,7 +2370,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier"],
+        "protection":["aucun","acier","dunium","bonibo","iso"],
         "equip":["aucun","w1-gun","w2-fire","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2426,7 +2426,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2482,7 +2482,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier"],
+        "protection":["aucun","acier","dunium","bonibo","iso"],
         "equip":["aucun","w1-gun","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2538,7 +2538,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2592,7 +2592,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier"],
+        "protection":["aucun","acier","dunium","bonibo","iso"],
         "equip":["aucun","w1-gun","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2662,7 +2662,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","acier","titane","dunium","bonibo","adamantite"],
+        "protection":["aucun","acier","titane","dunium","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-ggun","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,

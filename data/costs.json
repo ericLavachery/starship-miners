@@ -732,7 +732,7 @@
     {
         "id":152,
         "name":"Spritz",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":2,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":7,"brasier":99},
         "bldReq":["Arsenal"],
         "costs":{"Fer":108,"Scrap":72,"Carbone":36,"Aluminium":180,"Tungstène":36,"Titane":36,"Silicium":18},
         "fabTime":35

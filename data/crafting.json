@@ -36,6 +36,14 @@
         "batch":1
     },
     {
+        "id":91,
+        "result":"Compo1",
+        "cost":{"Compo2":1},
+        "compReq":{},
+        "bldReq":[],
+        "batch":1
+    },
+    {
         "id":6,
         "result":"Compo1",
         "cost":{"Bois":2},
@@ -82,6 +90,14 @@
         "compReq":{"const":1,"ind":3},
         "bldReq":["Usine"],
         "batch":4
+    },
+    {
+        "id":92,
+        "result":"Compo2",
+        "cost":{"Compo3":1},
+        "compReq":{},
+        "bldReq":[],
+        "batch":1
     },
     {
         "id":7,

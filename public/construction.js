@@ -872,6 +872,9 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             if (batArmor.skills.includes('resistacide') && !newBat.tags.includes('resistacide')) {
                 newBat.tags.push('resistacide');
             }
+            if (batArmor.skills.includes('resistelec') && !newBat.tags.includes('resistelec')) {
+                newBat.tags.push('resistelec');
+            }
             if (newBat.team === 'player') {
                 bataillons.push(newBat);
                 // console.log(bataillons);

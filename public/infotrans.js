@@ -93,12 +93,15 @@ function calcVolume(bat,batType) {
     if (bat.eq === 'jetpack') {
         batVolume = Math.ceil(batVolume*1.2);
     }
-    // if (playerInfos.comp.log >= 3) {
-    //     batVolume = Math.round(batVolume*0.85);
-    // }
-    // if (playerInfos.comp.trans >= 3) {
-    //     batVolume = Math.round(batVolume*0.915);
-    // }
+    if (bat.eq === 'kit-garde') {
+        batVolume = Math.ceil(batVolume*1.33);
+    }
+    if (bat.eq === 'kit-artilleur') {
+        batVolume = Math.ceil(batVolume*1.33);
+    }
+    if (bat.eq === 'kit-pompiste') {
+        batVolume = Math.ceil(batVolume*1.22);
+    }
     return batVolume;
 };
 

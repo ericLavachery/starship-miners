@@ -23,6 +23,7 @@ function batInfos(bat,pop) {
     }
     let tagColor = 'cy';
     let batType = getBatType(bat);
+    let batPic = getBatPic(bat,batType);
     let tile = getTile(bat);
     if (batType.skills.includes('transport')) {
         moveInsideBats(bat);
@@ -42,7 +43,7 @@ function batInfos(bat,pop) {
         resMax = Math.round(resMax*1.25);
     }
     if (pop) {
-        $('#'+headPlace).append('<img src="/static/img/units/'+batType.cat+'/'+batType.pic+'.png">&nbsp;');
+        $('#'+headPlace).append('<img src="/static/img/units/'+batType.cat+'/'+batPic+'.png">&nbsp;');
         if (batType.skills.includes('nonumname')) {
             $('#'+headPlace).append('<span class="blockTitle"><h2>'+batType.name+'</h2></span>');
         } else {
@@ -53,7 +54,7 @@ function batInfos(bat,pop) {
         if (batType.skills.includes('nonumname')) {
             $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonBleu skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+'</h3></span>');
         } else {
-            $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batType.pic+'.png" width="48" class="tunit" onclick="unitDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3></span>');
+            $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="unitDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3></span>');
         }
         $('#'+bodyPlace).append('<div class="shSpace"></div>');
     }
@@ -139,10 +140,14 @@ function batInfos(bat,pop) {
             $('#'+bodyPlace).append('<span class="paramName cy">Dôme</span><span class="paramIcon"></span><span class="paramValue cy">Permanent</span><br>');
         }
     }
-    if (pop) {
-        if (bat.tags.includes('embuscade')) {
-            $('#'+bodyPlace).append('<span class="paramName cy">Embuscade</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    if (bat.tags.includes('embuscade')) {
+        let embushBonus = 200;
+        if (selectedBatType.cat != 'aliens') {
+            embushBonus = 200+(playerInfos.comp.train*50)+(playerInfos.comp.cam*20);
         }
+        $('#'+bodyPlace).append('<span class="paramName cy">Embuscade</span><span class="paramIcon"></span><span class="paramValue cy">'+embushBonus+'%</span><br>');
+    }
+    if (pop) {
         if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative')) {
             $('#'+bodyPlace).append('<span class="paramName cy">Guet</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
         }
@@ -151,10 +156,12 @@ function batInfos(bat,pop) {
         $('#'+bodyPlace).append('<span class="paramName cy">Berserk</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
     if (batType.skills.includes('guerrilla')) {
+        let guerBonus = 100;
         if (bat.oldTileId === bat.tileId) {
-            $('#'+bodyPlace).append('<span class="paramName cy">Guérilla</span><span class="paramIcon"></span><span class="paramValue cy">Non</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName cy">Guérilla</span><span class="paramIcon"></span><span class="paramValue cy">'+guerBonus+'%</span><br>');
         } else {
-            $('#'+bodyPlace).append('<span class="paramName cy">Guérilla</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+            guerBonus = Math.round(100*(1.5+(playerInfos.comp.train/5)+(playerInfos.comp.cam/10)));
+            $('#'+bodyPlace).append('<span class="paramName cy">Guérilla</span><span class="paramIcon"></span><span class="paramValue cy">'+guerBonus+'%</span><br>');
         }
     }
     if (pop) {
@@ -190,7 +197,9 @@ function batInfos(bat,pop) {
     }
     // BAD TAGS
     if (bat.tags.includes('inflammable') || bat.eq === 'jetpack' || batType.skills.includes('inflammable')) {
-        $('#'+bodyPlace).append('<span class="paramName jaune">Inflammable</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+        if (!bat.tags.includes('resistfeu')) {
+            $('#'+bodyPlace).append('<span class="paramName jaune">Inflammable</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+        }
     }
     let hurt = isHurt(bat);
     if (hurt) {
