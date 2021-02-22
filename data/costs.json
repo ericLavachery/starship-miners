@@ -77,6 +77,15 @@
         "fabTime":15
     },
     {
+        "id":242,
+        "name":"Electroguards",
+        "levels":{"rednecks":14,"blades":14,"bulbos":14,"drogmulojs":14,"tiradores":14,"detruas":14,"brazier":14},
+        "bldReq":["Laboratoire","Générateur"],
+        "compReq":{"ordre":3},
+        "costs":{},
+        "fabTime":40
+    },
+    {
         "id":189,
         "name":"Gardes",
         "levels":{"rednecks":1,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":1,"detruas":99,"brasier":99},
