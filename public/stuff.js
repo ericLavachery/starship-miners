@@ -155,79 +155,108 @@ function warning(title,body,noHand) {
     }
 };
 
+function getInfraByName(infraName) {
+    let infra = {};
+    let index = armorTypes.findIndex((obj => obj.name == infraName));
+    if (index > -1) {
+        infra = armorTypes[index];
+    }
+    return infra;
+};
+
 function getBatType(bat) {
-    let unitIndex;
-    let batType;
+    let batType = {};
+    let index;
     if (bat.team == 'player') {
-        unitIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-        batType = unitTypes[unitIndex];
+        index = unitTypes.findIndex((obj => obj.id == bat.typeId));
+        if (index > -1) {
+            batType = unitTypes[index];
+        }
     } else if (bat.team == 'aliens') {
-        unitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
-        batType = alienUnits[unitIndex];
+        index = alienUnits.findIndex((obj => obj.id == bat.typeId));
+        if (index > -1) {
+            batType = alienUnits[index];
+        }
     }
     return batType;
 };
 
 function getBatTypeById(id) {
-    let unitIndex;
-    let batType;
-    unitIndex = unitTypes.findIndex((obj => obj.id == id));
-    batType = unitTypes[unitIndex];
+    let batType = {};
+    let index = unitTypes.findIndex((obj => obj.id == id));
+    if (index > -1) {
+        batType = unitTypes[index];
+    }
     return batType;
 };
 
-function getInfraByName(infraName) {
-    let index = armorTypes.findIndex((obj => obj.name == infraName));
-    let infra = armorTypes[index];
-    return infra;
-};
-
 function getBatTypeByName(batName) {
+    let batType = {};
     let index = unitTypes.findIndex((obj => obj.name == batName));
-    let batType = unitTypes[index];
+    if (index > -1) {
+        batType = unitTypes[index];
+    }
     return batType;
 };
 
 function getResByName(resName) {
-    let resIndex = resTypes.findIndex((obj => obj.name == resName));
-    let res = resTypes[resIndex];
+    let res = {};
+    let index = resTypes.findIndex((obj => obj.name == resName));
+    if (index > -1) {
+        res = resTypes[index];
+    }
     return res;
 };
 
 function getResById(resId) {
-    let resIndex = resTypes.findIndex((obj => obj.id == resId));
-    let res = resTypes[resIndex];
+    let res = {};
+    let index = resTypes.findIndex((obj => obj.id == resId));
+    if (index > -1) {
+        res = resTypes[index];
+    }
     return res;
 };
 
 function getBatById(batId) {
+    let bat = {};
     let index = bataillons.findIndex((obj => obj.id == batId));
-    let bat = bataillons[index];
+    if (index > -1) {
+        bat = bataillons[index];
+    }
     return bat;
 };
 
 function getBatByTileId(tileId) {
+    let bat = {};
     let index = bataillons.findIndex((obj => obj.tileId == tileId));
-    let bat = bataillons[index];
+    if (index > -1) {
+        bat = bataillons[index];
+    }
     return bat;
 };
 
 function getBatByName(name) {
+    let bat = {};
     let index = bataillons.findIndex((obj => obj.type == name));
-    let bat = bataillons[index];
+    if (index > -1) {
+        bat = bataillons[index];
+    }
     return bat;
 };
 
 function getBatByTypeIdAndTileId(typeId,tileId) {
+    let bat = {};
     let index = bataillons.findIndex((obj => (obj.tileId == tileId && obj.typeId == typeId)));
-    let bat = bataillons[index];
+    if (index > -1) {
+        bat = bataillons[index];
+    }
     return bat;
 };
 
 function getAlienByName(name) {
     let bat = {};
     let index = aliens.findIndex((obj => obj.type == name));
-    if (index >= 0) {
+    if (index > -1) {
         bat = aliens[index];
     }
     return bat;
