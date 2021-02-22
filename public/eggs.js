@@ -289,7 +289,7 @@ function eggsDrop() {
                 }
             }
             if (eggTypeDice <= coqueChance) {
-                dropEgg('Coque','any');
+                dropEgg('Coque','nocenter');
             } else if (eggTypeDice <= coqueChance+invisibleChance) {
                 dropEgg('Oeuf voilé','any');
             } else {
@@ -367,30 +367,6 @@ function eggDropTile(eggName,theArea) {
                 }
             }
         });
-        // let tileOK = false;
-        // let maxTileId = (mapSize*mapSize)-1;
-        // let dropTile = rand.rand(0,maxTileId);
-        // console.log('dropTile='+dropTile);
-        // if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
-        //     tileOK = true;
-        // }
-        // if (!tileOK) {
-        //     dropTile = rand.rand(0,maxTileId);
-        //     console.log('dropTile='+dropTile);
-        //     if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
-        //         tileOK = true;
-        //     }
-        // }
-        // if (!tileOK) {
-        //     dropTile = rand.rand(0,maxTileId);
-        //     console.log('dropTile='+dropTile);
-        //     if (!alienOccupiedTiles.includes(dropTile) && !playerOccupiedTiles.includes(dropTile)) {
-        //         tileOK = true;
-        //     }
-        // }
-        // if (tileOK) {
-        //     theTile = dropTile;
-        // }
     }
     // EDGE
     if (area === 'edge') {

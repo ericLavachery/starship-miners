@@ -495,7 +495,7 @@
             "elevation":1,
             "spot":true,
             "kit":true,
-            "rof":16,
+            "rof":20,
             "accuracy":20,
             "dca":0.8,
             "power":9,
