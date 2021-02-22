@@ -302,7 +302,7 @@ function getBestDumper(myBat) {
     let dq;
     bataillons.forEach(function(bat) {
         batType = getBatType(bat);
-        if (batType.skills.includes('fret') && batType.skills.includes('dumper')) {
+        if (batType.skills.includes('fret') && batType.skills.includes('dumper') && !bat.noDump) {
             distance = calcDistance(bat.tileId,myBat.tileId);
             if (distance <= 1) {
                 resSpace = checkResSpace(bat);
@@ -431,6 +431,15 @@ function loadRes() {
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
     $('#conUnitList').append('<span class="constName or">RESSOURCES à charger</span> <span class="cy">(max '+restSpace+')</span><br>');
+    if (selectedBatType.skills.includes('dumper')) {
+        if (selectedBat.noDump) {
+            $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
+            $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="setDumper(true)" title="Activer les déchargements automatiques vers ce bataillon">Utiliser comme Dumper</span></span><br>');
+        } else {
+            $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
+            $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="setDumper(false)" title="Stopper les déchargements automatiques vers ce bataillon">Ne plus utiliser comme Dumper</span></span><br>');
+        }
+    }
     if (selectedBat.autoLoad != undefined) {
         if (selectedBat.autoLoad >= 0) {
             $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
@@ -577,6 +586,16 @@ function autoResLoad(toBat,fromBat) {
 
 function stopAutoLoad() {
     selectedBat.autoLoad = -1;
+    selectedBatArrayUpdate();
+    loadRes();
+};
+
+function setDumper(activation) {
+    if (activation) {
+        selectedBat.noDump = false;
+    } else {
+        selectedBat.noDump = true;
+    }
     selectedBatArrayUpdate();
     loadRes();
 };
