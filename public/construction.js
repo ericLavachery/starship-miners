@@ -724,6 +724,14 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             }
             newBat.damage = 0;
             newBat.camoAP = -1;
+            // dumpers
+            if (conselUnit.skills.includes('dumper')) {
+                if (conselUnit.skills.includes('realdumper') || conselUnit.skills.includes('transorbital')) {
+                    newBat.noDump = false;
+                } else {
+                    newBat.noDump = true;
+                }
+            }
             // Equip
             let equipName = conselAmmos[3];
             if (equipName === 'xxx') {
