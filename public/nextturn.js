@@ -229,6 +229,12 @@ function nextTurnEnd() {
                 console.log('AUTO-UNLOAD'+bat.type);
                 autoUnload(bat);
             }
+            if (bat.autoLoad != undefined) {
+                if (bat.autoLoad >= 0) {
+                    let fromBat = getBatById(bat.autoLoad);
+                    autoResLoad(bat,fromBat);
+                }
+            }
             levelUp(bat);
             // Motorised noStuck
             noStuck = false;

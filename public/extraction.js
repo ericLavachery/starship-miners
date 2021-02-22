@@ -431,6 +431,12 @@ function loadRes() {
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
     $('#conUnitList').append('<span class="constName or">RESSOURCES à charger</span> <span class="cy">(max '+restSpace+')</span><br>');
+    if (selectedBat.autoLoad != undefined) {
+        if (selectedBat.autoLoad >= 0) {
+            $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
+            $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="stopAutoLoad()" title="Stopper le chargement automatique">Stopper l\'automation</span></span><br>');
+        }
+    }
     let batType;
     let distance;
     let resLoad;
@@ -455,6 +461,12 @@ function loadRes() {
                             if (restSpace >= Math.round(resLoad*1.2)) {
                                 $('#conUnitList').append('<span class="constIcon rose"><i class="fas fa-pallet"></i></span>');
                                 $('#conUnitList').append('<span class="constName rose"><span class="klik" onclick="resAllLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon">Charger tout</span></span><br>');
+                            }
+                            if (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('transorbital')) {
+                                if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
+                                    $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
+                                    $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="resMaxLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon à chaque tour">Automatiser</span></span><br>');
+                                }
                             }
                             Object.entries(bat.transRes).map(entry => {
                                 let key = entry[0];
@@ -503,6 +515,68 @@ function resAllLoad(batId) {
     });
     putTagAction(bat);
     putTagAction(selectedBat);
+    selectedBatArrayUpdate();
+    loadRes();
+};
+
+function resMaxLoad(batId) {
+    let bat = getBatById(batId);
+    let resSpace = checkResSpace(selectedBat);
+    let resLoad = checkResLoad(bat);
+    Object.entries(bat.transRes).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        resSpace = checkResSpace(selectedBat);
+        if (resSpace >= value) {
+            if (selectedBat.transRes[key] === undefined) {
+                selectedBat.transRes[key] = value;
+            } else {
+                selectedBat.transRes[key] = selectedBat.transRes[key]+value;
+            }
+            delete bat.transRes[key];
+        } else {
+            if (selectedBat.transRes[key] === undefined) {
+                selectedBat.transRes[key] = resSpace;
+            } else {
+                selectedBat.transRes[key] = selectedBat.transRes[key]+resSpace;
+            }
+            bat.transRes[key] = bat.transRes[key]-resSpace;
+        }
+    });
+    selectedBat.autoLoad = batId;
+    putTagAction(bat);
+    putTagAction(selectedBat);
+    selectedBatArrayUpdate();
+    loadRes();
+};
+
+function autoResLoad(toBat,fromBat) {
+    let resSpace = checkResSpace(toBat);
+    let resLoad = checkResLoad(fromBat);
+    Object.entries(fromBat.transRes).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        resSpace = checkResSpace(toBat);
+        if (resSpace >= value) {
+            if (toBat.transRes[key] === undefined) {
+                toBat.transRes[key] = value;
+            } else {
+                toBat.transRes[key] = toBat.transRes[key]+value;
+            }
+            delete fromBat.transRes[key];
+        } else {
+            if (toBat.transRes[key] === undefined) {
+                toBat.transRes[key] = resSpace;
+            } else {
+                toBat.transRes[key] = toBat.transRes[key]+resSpace;
+            }
+            fromBat.transRes[key] = fromBat.transRes[key]-resSpace;
+        }
+    });
+};
+
+function stopAutoLoad() {
+    selectedBat.autoLoad = -1;
     selectedBatArrayUpdate();
     loadRes();
 };

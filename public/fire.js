@@ -1097,7 +1097,6 @@ function defense(melee) {
         targetWeap.power = Math.ceil(targetWeap.power+Math.sqrt(selectedBatType.size));
     }
     console.log('brideDef='+brideDef);
-    console.log(targetWeap.power);
     let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);
     if (targetBatType.skills.includes('undead') || targetBat.tags.includes('zombie')) {
         shots = Math.round(targetWeap.rof*targetBatType.squads*brideDef);

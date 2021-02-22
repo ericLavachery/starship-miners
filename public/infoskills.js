@@ -1195,19 +1195,20 @@ function skillsInfos(bat,batType) {
     // CHARGER RESSOURCES
     if (batType.skills.includes('fret')) {
         let resToLoad = isResToLoad(bat);
+        balise = 'h4';
         if (resToLoad) {
-            balise = 'h4';
-            apReq = 0;
-            if (!inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Charger des ressources" class="boutonGris skillButtons" onclick="loadRes()"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
+            balise = 'h2';
+        }
+        apReq = 0;
+        if (!inMelee) {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Charger des ressources" class="boutonGris skillButtons" onclick="loadRes()"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
+        } else {
+            if (inMelee) {
+                skillMessage = "Impossible en mêlée";
             } else {
-                if (inMelee) {
-                    skillMessage = "Impossible en mêlée";
-                } else {
-                    skillMessage = "Pas assez de PA";
-                }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
+                skillMessage = "Pas assez de PA";
             }
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
         }
     }
     // DEBARQUER
