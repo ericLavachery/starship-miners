@@ -166,6 +166,12 @@ function nextTurnEnd() {
                 bat.tileId = transBat.tileId;
                 bat.oldTileId = transBat.tileId;
             }
+            if (bat.autoLoad != undefined) {
+                if (bat.autoLoad >= 0) {
+                    let fromBat = getBatById(bat.autoLoad);
+                    autoResLoad(bat,fromBat);
+                }
+            }
         }
     });
     unitResist = calcUnitResist();
@@ -182,6 +188,12 @@ function nextTurnEnd() {
             }
             if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
                 solarProd(bat,batType);
+            }
+            if (bat.autoLoad != undefined) {
+                if (bat.autoLoad >= 0) {
+                    let fromBat = getBatById(bat.autoLoad);
+                    autoResLoad(bat,fromBat);
+                }
             }
             // BAR
             if (batType.cat === 'infantry' && bat.loc === "trans" && barIds.includes(bat.locId) && !bat.tags.includes('drunk')) {
@@ -215,10 +227,10 @@ function nextTurnEnd() {
             }
         }
     });
-    console.log('Medical Transports');
-    console.log(medicalTransports);
-    console.log('Boosted Teams');
-    console.log(boostedTeams);
+    // console.log('Medical Transports');
+    // console.log(medicalTransports);
+    // console.log('Boosted Teams');
+    // console.log(boostedTeams);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
@@ -372,6 +384,17 @@ function nextTurnEnd() {
             // FOG
             if (bat.tags.includes('fog')) {
                 fogEffect(bat);
+            }
+        }
+    });
+    // LOAD AUTOMATION
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" || bat.loc === "trans") {
+            if (bat.autoLoad != undefined) {
+                if (bat.autoLoad >= 0) {
+                    let fromBat = getBatById(bat.autoLoad);
+                    autoResLoad(bat,fromBat);
+                }
             }
         }
     });

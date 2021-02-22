@@ -650,10 +650,7 @@ function attack(melee) {
                         if (minimumPower < 6) {
                             minimumPower = 6;
                         }
-                        if (selectedWeap.armors >= 1) {
-                            minimumPower = minimumPower*(selectedWeap.armors+0.5);
-                        }
-                        if (selectedWeap.power < minimumPower) {
+                        if ((selectedWeap.power < minimumPower && selectedWeap.armors > 0.4) || (selectedWeap.armors > 1 && selectedWeap.power < minimumPower+5)) {
                             totalDamage = 0;
                             apDamage =0;
                             $('#report').append('<span class="report rose">Ricochet<br></span>');
@@ -1388,10 +1385,7 @@ function defense(melee) {
                         if (minimumPower < 6) {
                             minimumPower = 6;
                         }
-                        if (targetWeap.armors >= 1) {
-                            minimumPower = minimumPower*(targetWeap.armors+0.5);
-                        }
-                        if (targetWeap.power < minimumPower) {
+                        if ((targetWeap.power < minimumPower && targetWeap.armors > 0.4) || (targetWeap.armors > 1 && targetWeap.power < minimumPower+5)) {
                             totalDamage = 0;
                             apDamage =0;
                             $('#report').append('<span class="report rose">Ricochet<br></span>');

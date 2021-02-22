@@ -1168,6 +1168,11 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.accuracy = thisWeapon.accuracy+5;
         }
     }
+    if (bat.eq === 'kit-garde') {
+        if (thisWeapon.num === 1) {
+            thisWeapon.noDef = true;
+        }
+    }
     // bonus ammo
     let myAmmo = bat.ammo;
     if (wn == 'w2') {
