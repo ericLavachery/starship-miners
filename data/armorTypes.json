@@ -26,7 +26,7 @@
     {
         "name": "Terriers",
         "fabTime":18,
-        "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":10},
+        "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":9},
         "costs":{"Compo1":75,"Compo2":25,"Végétaux":75}
     },
     {
@@ -412,6 +412,16 @@
         "compReq":{"log":1,"ordre":2},
         "factor":"crew",
         "costs":{"Blendium":6,"Tissus":15,"Scrap":6,"Carbone":6,"Fer":3}
+    },
+    {
+        "name": "kit-lightning",
+        "skills": [],
+        "info": "Lightning",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"energ":3,"log":2},
+        "factor":"one",
+        "costs":{"Cuivre":60,"Rhodium":20,"Silicium":60,"Electros":60,"Batteries":60},
+        "deploy":{"Energie":180}
     },
     {
         "name": "kit-pompiste",

@@ -1162,6 +1162,12 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.rof = Math.round(thisWeapon.rof*1.33);
         }
     }
+    if (bat.eq === 'kit-lightning') {
+        if (thisWeapon.num === 1) {
+            thisWeapon.armors = 0.5;
+            thisWeapon.accuracy = thisWeapon.accuracy+5;
+        }
+    }
     // bonus ammo
     let myAmmo = bat.ammo;
     if (wn == 'w2') {
