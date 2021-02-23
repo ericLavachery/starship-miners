@@ -89,32 +89,32 @@ function checkRuinsCit(tile) {
         let restCit = numCit;
         if (restCit <= 72) {
             conselTriche = true;
-            putBatAround(tile.id,false,citId,restCit);
+            putBatAround(tile.id,false,false,citId,restCit);
             restCit = 0;
         } else {
             conselTriche = true;
-            putBatAround(tile.id,false,citId,72);
+            putBatAround(tile.id,false,false,citId,72);
             restCit = restCit-72;
         }
         if (restCit >= 1) {
             if (restCit <= 72) {
                 conselTriche = true;
-                putBatAround(tile.id,false,citId,restCit);
+                putBatAround(tile.id,false,false,citId,restCit);
                 restCit = 0;
             } else {
                 conselTriche = true;
-                putBatAround(tile.id,false,citId,72);
+                putBatAround(tile.id,false,false,citId,72);
                 restCit = restCit-72;
             }
         }
         if (restCit >= 1) {
             if (restCit <= 72) {
                 conselTriche = true;
-                putBatAround(tile.id,false,citId,restCit);
+                putBatAround(tile.id,false,false,citId,restCit);
                 restCit = 0;
             } else {
                 conselTriche = true;
-                putBatAround(tile.id,false,citId,72);
+                putBatAround(tile.id,false,false,citId,72);
                 restCit = restCit-72;
             }
         }
@@ -186,7 +186,7 @@ function checkRuinsAliens(tile) {
         if (alienTypeId >= 0) {
             let i = 1;
             while (i <= numAliens) {
-                putBatAround(tile.id,true,alienTypeId,0)
+                putBatAround(tile.id,true,false,alienTypeId,0)
                 if (i > 6) {break;}
                 i++
             }
@@ -195,9 +195,14 @@ function checkRuinsAliens(tile) {
     }
 };
 
-function putBatAround(tileId,alien,unitId,numCit,tag) {
+function putBatAround(tileId,alien,near,unitId,numCit,tag) {
     console.log(alien);
-    let dropTile = checkDrop(tileId);
+    let dropTile = -1;
+    if (near) {
+        dropTile = coffreDrop(tileId);
+    } else {
+        dropTile = checkDrop(tileId);
+    }
     if (dropTile >= 0) {
         let unitIndex;
         if (!alien) {
@@ -213,6 +218,67 @@ function putBatAround(tileId,alien,unitId,numCit,tag) {
     }
 };
 
+function coffreDrop(layBatTileId) {
+    let nearestDistance = 999;
+    let thisDistance = 999;
+    let batHere = false;
+    let tileDrop = -1;
+    let shufZone = _.shuffle(zone);
+    shufZone.forEach(function(tile) {
+        if (isAdjacent(layBatTileId,tile.id)) {
+            batHere = false;
+            bataillons.forEach(function(bat) {
+                if (bat.loc === "zone" && bat.tileId === tile.id) {
+                    batHere = true;
+                }
+            });
+            if (!batHere) {
+                aliens.forEach(function(bat) {
+                    if (bat.loc === "zone" && bat.tileId === tile.id) {
+                        batHere = true;
+                    }
+                });
+            }
+            if (!batHere) {
+                thisDistance = calcDistance(playerInfos.myCenter,tile.id);
+                if (thisDistance < nearestDistance) {
+                    nearestDistance = thisDistance;
+                    tileDrop = tile.id;
+                }
+            }
+        }
+    });
+    if (tileDrop < 0) {
+        let distance;
+        shufZone.forEach(function(tile) {
+            distance = calcDistance(layBatTileId,tile.id);
+            if (distance === 2) {
+                batHere = false;
+                bataillons.forEach(function(bat) {
+                    if (bat.loc === "zone" && bat.tileId === tile.id) {
+                        batHere = true;
+                    }
+                });
+                if (!batHere) {
+                    aliens.forEach(function(bat) {
+                        if (bat.loc === "zone" && bat.tileId === tile.id) {
+                            batHere = true;
+                        }
+                    });
+                }
+                if (!batHere) {
+                    thisDistance = calcDistance(playerInfos.myCenter,tile.id);
+                    if (thisDistance < nearestDistance) {
+                        nearestDistance = thisDistance;
+                        tileDrop = tile.id;
+                    }
+                }
+            }
+        });
+    }
+    return tileDrop;
+};
+
 function checkRuinsRes(tile) {
     console.log('Check Ressources');
     coffreTileId = -1;
@@ -224,7 +290,7 @@ function checkRuinsRes(tile) {
     console.log('resChance: '+resChance);
     if (rand.rand(1,100) <= resChance) {
         conselTriche = true;
-        putBatAround(tile.id,false,239,0,'go');
+        putBatAround(tile.id,false,true,239,0,'go');
         let coffre = getBatByTileId(coffreTileId);
         let totalRes = 0;
         let thatResChance = 0;

@@ -436,14 +436,15 @@ function loadRes() {
             $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
             $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="setDumper(true)" title="Activer les déchargements automatiques vers ce bataillon">Utiliser comme Dumper</span></span><br>');
         } else {
-            $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
+            $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-times"></i></span>');
             $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="setDumper(false)" title="Stopper les déchargements automatiques vers ce bataillon">Ne plus utiliser comme Dumper</span></span><br>');
         }
     }
     if (selectedBat.autoLoad != undefined) {
         if (selectedBat.autoLoad >= 0) {
-            $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
-            $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="stopAutoLoad()" title="Stopper le chargement automatique">Stopper l\'automation</span></span><br>');
+            let autoLoadBat = getBatById(selectedBat.autoLoad);
+            $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-times"></i></span>');
+            $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="stopAutoLoad()" title="Stopper le chargement automatique depuis: '+autoLoadBat.type+'">Stopper l\'automation</span></span><br>');
         }
     }
     let batType;
@@ -463,18 +464,18 @@ function loadRes() {
                         resLoad = checkResLoad(bat);
                         if (resLoad >= 1) {
                             if (batType.skills.includes('transorbital')) {
-                                $('#conUnitList').append('<span class="constName sky">'+bat.type+' ???</span><br>');
+                                $('#conUnitList').append('<br><span class="constName sky">'+bat.type+' ???</span><br>');
                             } else {
-                                $('#conUnitList').append('<span class="constName cy">'+bat.type+'</span><br>');
+                                $('#conUnitList').append('<br><span class="constName cy">'+bat.type+'</span><br>');
                             }
                             if (restSpace >= Math.round(resLoad*1.2)) {
                                 $('#conUnitList').append('<span class="constIcon rose"><i class="fas fa-pallet"></i></span>');
-                                $('#conUnitList').append('<span class="constName rose"><span class="klik" onclick="resAllLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon">Charger tout</span></span><br>');
+                                $('#conUnitList').append('<span class="constName rose"><span class="klik" onclick="resAllLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+')">Charger tout</span></span><br>');
                             }
                             if (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('transorbital')) {
                                 if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
                                     $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
-                                    $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="resMaxLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon à chaque tour">Automatiser</span></span><br>');
+                                    $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="resMaxLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+') à chaque tour">Automatiser</span></span><br>');
                                 }
                             }
                             Object.entries(bat.transRes).map(entry => {

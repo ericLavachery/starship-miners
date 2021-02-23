@@ -993,7 +993,7 @@ function dismantle(batId) {
 function recupRes(bat,batType) {
     coffreTileId = -1;
     conselTriche = true;
-    putBatAround(bat.tileId,false,239,0);
+    putBatAround(bat.tileId,false,true,239,0);
     let coffre = getBatByTileId(coffreTileId);
     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
         let recupFactor = 38;
@@ -1099,7 +1099,7 @@ function recupRes(bat,batType) {
 function recupInfraRes(tile,infra) {
     coffreTileId = -1;
     conselTriche = true;
-    putBatAround(tile.id,false,239,0);
+    putBatAround(tile.id,false,true,239,0);
     let coffre = getBatByTileId(coffreTileId);
     let recupFactor = 47;
     let bldFactor = 0;

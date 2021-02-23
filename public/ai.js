@@ -434,6 +434,12 @@ function checkPossibleMoves() {
                     batHere = true;
                 }
             }
+            if (!tile.rd && tile.terrain === 'R' && tile.seed < 4 && selectedBatType.maxFlood < 3) {
+                batHere = true;
+            }
+            if (!tile.rd && tile.terrain === 'W' && selectedBatType.maxFlood < 2) {
+                batHere = true;
+            }
             if (!batHere) {
                 possibleMoves.push(tile.id);
             }
@@ -453,11 +459,11 @@ function checkPossibleJumps() {
             maxDistance = 6;
         } else {
             if (selectedBatType.skills.includes('sauteur')) {
-                maxDistance = 5;
+                maxDistance = 4;
             } else if (larveHIDE) {
                 maxDistance = 7;
             } else {
-                maxDistance = 4;
+                maxDistance = 5;
             }
         }
     } else {
@@ -471,6 +477,11 @@ function checkPossibleJumps() {
             } else {
                 batHere = false;
                 if (alienOccupiedTiles.includes(tile.id)) {
+                    batHere = true;
+                }
+            }
+            if (tile.terrain === 'M' || tile.terrain === 'R' || tile.terrain === 'W') {
+                if (selectedBatType.skills.includes('fouisseur')) {
                     batHere = true;
                 }
             }
@@ -833,8 +844,14 @@ function moveToPDM() {
     if (selectedBatType.moveCost < 99) {
         // console.log('move to PDM');
         let jump = false;
-        if ((selectedBatType.skills.includes('fouisseur') || selectedBatType.skills.includes('sauteur')) && rand.rand(1,3) === 1 && (selectedBat.apLeft >= 4 || selectedBatType.skills.includes('invisible'))) {
+        if (selectedBatType.skills.includes('sauteur') && rand.rand(1,3) === 1 && (selectedBat.apLeft >= 4 || selectedBatType.skills.includes('invisible'))) {
             jump = true;
+        }
+        if (selectedBatType.skills.includes('fouisseur') && rand.rand(1,3) === 1 && (selectedBat.apLeft >= 4 || selectedBatType.skills.includes('invisible'))) {
+            let tile = getTile(selectedBat);
+            if (tile.terrain != 'M' && tile.terrain != 'R' && tile.terrain != 'W') {
+                jump = true;
+            }
         }
         if (selectedBatType.skills.includes('fly')) {
             jump = true;

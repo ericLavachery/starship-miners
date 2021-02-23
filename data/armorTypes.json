@@ -738,22 +738,22 @@
     {
         "name": "respack-weapons1",
         "info": "Armes et minitions 1",
-        "costs":{"Fer":200,"Scrap":120,"Carbone":60,"Bois":30,"Aluminium":100,"Tungstène":70,"Huile":30,"Silicium":30,"Phosphore":30,"Hydrogène":30,"Plomb":90,"Soufre":150}
+        "costs":{"Fer":450,"Scrap":300,"Carbone":100,"Bois":30,"Aluminium":100,"Tungstène":100,"Huile":30,"Silicium":30,"Phosphore":90,"Hydrogène":90,"Plomb":120,"Soufre":200}
     },
     {
         "name": "respack-weapons2",
         "info": "Armes et minitions 2",
-        "costs":{"Fer":200,"Scrap":120,"Carbone":60,"Bois":30,"Aluminium":100,"Titane":80,"Tungstène":70,"Rhodium":30,"Bore":30,"Huile":30,"Silicium":30,"Cuivre":30,"Electros":30,"Batteries":30,"Phosphore":60,"Hydrogène":60,"Uranium":60,"Bossium":30,"Plomb":90,"Soufre":150}
+        "costs":{"Fer":450,"Scrap":300,"Carbone":100,"Bois":30,"Aluminium":100,"Titane":80,"Tungstène":100,"Rhodium":30,"Bore":30,"Huile":30,"Silicium":30,"Cuivre":30,"Electros":30,"Batteries":30,"Phosphore":90,"Hydrogène":90,"Uranium":60,"Bossium":30,"Plomb":120,"Soufre":200}
     },
     {
         "name": "respack-explo1",
         "info": "Explosifs 1",
-        "costs":{"Fer":140,"Scrap":60,"Carbone":60,"Bois":30,"Aluminium":90,"Tungstène":70,"Huile":30,"Silicium":30,"Explosifs":90,"Phosphore":60,"Potassium":60,"Plomb":60,"Fuel":120}
+        "costs":{"Fer":140,"Scrap":120,"Carbone":100,"Bois":30,"Aluminium":90,"Tungstène":70,"Huile":30,"Silicium":30,"Explosifs":90,"Phosphore":60,"Potassium":60,"Plomb":60,"Fuel":120}
     },
     {
         "name": "respack-explo2",
         "info": "Explosifs 2",
-        "costs":{"Fer":140,"Scrap":60,"Carbone":60,"Bois":30,"Aluminium":90,"Titane":50,"Tungstène":70,"Rhodium":30,"Huile":30,"Silicium":20,"Electros":20,"Batteries":20,"Explosifs":90,"Hélium":30,"Azote":30,"Cuivre":30,"Phosphore":60,"Potassium":60,"Plomb":60,"Fuel":120}
+        "costs":{"Fer":140,"Scrap":120,"Carbone":100,"Bois":30,"Aluminium":90,"Titane":50,"Tungstène":70,"Rhodium":30,"Huile":30,"Silicium":20,"Electros":20,"Batteries":20,"Explosifs":90,"Hélium":30,"Azote":30,"Cuivre":30,"Phosphore":60,"Potassium":60,"Plomb":60,"Fuel":120}
     },
     {
         "name": "respack-fleches1",
