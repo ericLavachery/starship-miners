@@ -47,31 +47,31 @@ function nextTurn() {
                     bat.tags.push('invisible');
                 }
             }
-            if (batType.skills.includes('lurk') || batType.skills.includes('dive')) {
-                let tile = getTile(bat);
-                if (batType.skills.includes('lurk')) {
-                    if (tile.terrain === 'B' || tile.terrain === 'F') {
-                        if (!bat.tags.includes('invisible')) {
-                            bat.tags.push('invisible');
-                        }
-                    } else {
-                        if (bat.tags.includes('invisible')) {
-                            tagDelete(bat,'invisible');
-                        }
-                    }
-                }
-                if (batType.skills.includes('dive')) {
-                    if (tile.terrain === 'R' || tile.terrain === 'W') {
-                        if (!bat.tags.includes('invisible')) {
-                            bat.tags.push('invisible');
-                        }
-                    } else {
-                        if (bat.tags.includes('invisible')) {
-                            tagDelete(bat,'invisible');
-                        }
-                    }
-                }
-            }
+            // if (batType.skills.includes('lurk') || batType.skills.includes('dive')) {
+            //     let tile = getTile(bat);
+            //     if (batType.skills.includes('lurk')) {
+            //         if (tile.terrain === 'B' || tile.terrain === 'F') {
+            //             if (!bat.tags.includes('invisible')) {
+            //                 bat.tags.push('invisible');
+            //             }
+            //         } else {
+            //             if (bat.tags.includes('invisible')) {
+            //                 tagDelete(bat,'invisible');
+            //             }
+            //         }
+            //     }
+            //     if (batType.skills.includes('dive')) {
+            //         if (tile.terrain === 'R' || tile.terrain === 'W') {
+            //             if (!bat.tags.includes('invisible')) {
+            //                 bat.tags.push('invisible');
+            //             }
+            //         } else {
+            //             if (bat.tags.includes('invisible')) {
+            //                 tagDelete(bat,'invisible');
+            //             }
+            //         }
+            //     }
+            // }
             bat.salvoLeft = batType.maxSalvo;
             if (bat.apLeft < 0-bat.ap-bat.ap) {
                 bat.apLeft = 0-bat.ap-bat.ap;
@@ -154,6 +154,7 @@ function alienTurnEnd() {
 }
 
 function nextTurnEnd() {
+    alienTurnEnd();
     $('#report').empty('');
     // récup du player
     let batType;
