@@ -35,15 +35,42 @@ function nextTurn() {
             if (!alienTypesList.includes(batType.name)) {
                 alienTypesList.push(batType.name);
             }
-            hasHide = false;
-            if (batType.skills.includes('hide')) {
-                hasHide = true;
+            if (!bat.tags.includes('invisible')) {
+                hasHide = false;
+                if (batType.skills.includes('hide')) {
+                    hasHide = true;
+                }
+                if (batType.kind === 'larve' && larveHIDE) {
+                    hasHide = true;
+                }
+                if (hasHide && bat.salvoLeft >= 1) {
+                    bat.tags.push('invisible');
+                }
             }
-            if (batType.kind === 'larve' && larveHIDE) {
-                hasHide = true;
-            }
-            if (hasHide && !bat.tags.includes('invisible') && bat.salvoLeft >= 1) {
-                bat.tags.push('invisible');
+            if (batType.skills.includes('lurk') || batType.skills.includes('dive')) {
+                let tile = getTile(bat);
+                if (batType.skills.includes('lurk')) {
+                    if (tile.terrain === 'B' || tile.terrain === 'F') {
+                        if (!bat.tags.includes('invisible')) {
+                            bat.tags.push('invisible');
+                        }
+                    } else {
+                        if (bat.tags.includes('invisible')) {
+                            tagDelete(bat,'invisible');
+                        }
+                    }
+                }
+                if (batType.skills.includes('dive')) {
+                    if (tile.terrain === 'R' || tile.terrain === 'W') {
+                        if (!bat.tags.includes('invisible')) {
+                            bat.tags.push('invisible');
+                        }
+                    } else {
+                        if (bat.tags.includes('invisible')) {
+                            tagDelete(bat,'invisible');
+                        }
+                    }
+                }
             }
             bat.salvoLeft = batType.maxSalvo;
             if (bat.apLeft < 0-bat.ap-bat.ap) {
@@ -92,6 +119,39 @@ function nextTurn() {
         nextTurnEnd();
     }
 };
+
+function alienTurnEnd() {
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            batType = getBatType(bat);
+            if (batType.skills.includes('lurk') || batType.skills.includes('dive')) {
+                let tile = getTile(bat);
+                if (batType.skills.includes('lurk')) {
+                    if (tile.terrain === 'B' || tile.terrain === 'F') {
+                        if (!bat.tags.includes('invisible')) {
+                            bat.tags.push('invisible');
+                        }
+                    } else {
+                        if (bat.tags.includes('invisible')) {
+                            tagDelete(bat,'invisible');
+                        }
+                    }
+                }
+                if (batType.skills.includes('dive')) {
+                    if (tile.terrain === 'R' || tile.terrain === 'W') {
+                        if (!bat.tags.includes('invisible')) {
+                            bat.tags.push('invisible');
+                        }
+                    } else {
+                        if (bat.tags.includes('invisible')) {
+                            tagDelete(bat,'invisible');
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
 
 function nextTurnEnd() {
     $('#report').empty('');

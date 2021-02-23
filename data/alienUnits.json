@@ -976,7 +976,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["venin","inflammable","longshot"],
+        "skills":["venin","inflammable","longshot","capmen","lurk"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Aranium":3,"Slime":1}
     },
@@ -1584,7 +1584,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["chancre","hover","capmen","resistelec","baddef"],
+        "skills":["chancre","hover","capmen","resistelec","baddef","dive"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":5,"Germium":6,"Mephitis":2}
     },
