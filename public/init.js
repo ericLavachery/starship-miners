@@ -149,6 +149,7 @@ socket.on('ammoTypes-Load', function(at) {
 // armorTypes
 socket.on('armorTypes-Load', function(at) {
     armorTypes = at;
+    playerSkillsATChanges();
     // console.log(armorTypes);
 });
 // UnitTypes

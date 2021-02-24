@@ -1195,10 +1195,19 @@ function getRoadCosts(tile) {
     let roadCosts = {};
     if (tile.terrain === 'W' || tile.terrain === 'R') {
         roadCosts['Scrap'] = 50;
-        roadCosts['Compo1'] = 300;
+        roadCosts['Compo1'] = 200;
+        if (playerInfos.comp.const >= 1) {
+            roadCosts['Compo1'] = 140;
+        }
         roadCosts['Compo2'] = 75;
+        if (playerInfos.comp.const >= 2) {
+            roadCosts['Compo2'] = 50;
+        }
     } else {
         roadCosts['Compo1'] = 20;
+        if (playerInfos.comp.const >= 1) {
+            roadCosts['Compo1'] = 14;
+        }
     }
     return roadCosts;
 };

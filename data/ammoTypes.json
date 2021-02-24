@@ -102,7 +102,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2,"mat":1},
+        "compReq":{"bal":2,"mat":2},
         "deploy":{"Fer":2,"Soufre":2,"Uranium":2},
         "batch":100
     },
@@ -296,7 +296,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2,"mat":1},
+        "compReq":{"bal":2,"mat":2},
         "deploy":{"Fer":2,"Soufre":2,"Uranium":2},
         "batch":100
     },
@@ -463,7 +463,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2,"mat":1},
+        "compReq":{"bal":2,"mat":2},
         "deploy":{"Fer":2,"Soufre":2,"Uranium":2},
         "batch":100
     },

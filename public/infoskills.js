@@ -1042,7 +1042,7 @@ function skillsInfos(bat,batType) {
                         $('#infraButtons').append('<button type="button" title="Remparts: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Re</span></button>');
                     }
                 }
-                if (tile.infra != 'Murailles') {
+                if (tile.infra != 'Murailles' && playerInfos.comp.const >= 3) {
                     infra = getInfraByName('Murailles');
                     infraCostOK = checkCost(infra.costs);
                     if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.def) {

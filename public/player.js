@@ -219,6 +219,21 @@ function playerSkillsUTChanges() {
                 unit.levels[playerInfos.gang] = 1;
             }
         }
+        if (playerInfos.comp.const >= 1) {
+            if (unit.costs['Compo1'] != undefined) {
+                unit.costs['Compo1'] = Math.ceil(unit.costs['Compo1']/9*6);
+            }
+        }
+        if (playerInfos.comp.const >= 2) {
+            if (unit.costs['Compo2'] != undefined) {
+                unit.costs['Compo2'] = Math.ceil(unit.costs['Compo2']/9*6);
+            }
+        }
+        if (playerInfos.comp.const >= 3) {
+            if (unit.costs['Compo3'] != undefined) {
+                unit.costs['Compo3'] = Math.ceil(unit.costs['Compo3']/9*6);
+            }
+        }
         // DEFENSE
         if (playerInfos.comp.def >= 1 && unit.kind === 'zero-defense') {
             unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.def);
@@ -333,6 +348,29 @@ function playerSkillsUTChanges() {
             }
             if (unit.mediCost < 2) {
                 unit.mediCost = 2;
+            }
+        }
+    });
+};
+
+function playerSkillsATChanges() {
+    armorTypes.forEach(function(infra) {
+        // CONSTRUCTION
+        if (infra.cat === 'infra') {
+            if (playerInfos.comp.const >= 1) {
+                if (infra.costs['Compo1'] != undefined) {
+                    infra.costs['Compo1'] = Math.ceil(infra.costs['Compo1']/9*6);
+                }
+            }
+            if (playerInfos.comp.const >= 2) {
+                if (infra.costs['Compo2'] != undefined) {
+                    infra.costs['Compo2'] = Math.ceil(infra.costs['Compo2']/9*6);
+                }
+            }
+            if (playerInfos.comp.const >= 3) {
+                if (infra.costs['Compo3'] != undefined) {
+                    infra.costs['Compo3'] = Math.ceil(infra.costs['Compo3']/9*6);
+                }
             }
         }
     });
@@ -749,10 +787,19 @@ function fillLanderWithInfra(fillInfraName,road) {
         fillInfra.costs = {};
         if (fillInfra.name === 'Pont') {
             fillInfra.costs['Scrap'] = 50;
-            fillInfra.costs['Compo1'] = 300;
+            fillInfra.costs['Compo1'] = 200;
+            if (playerInfos.comp.const >= 1) {
+                fillInfra.costs['Compo1'] = 140;
+            }
             fillInfra.costs['Compo2'] = 75;
+            if (playerInfos.comp.const >= 2) {
+                fillInfra.costs['Compo2'] = 50;
+            }
         } else {
             fillInfra.costs['Compo1'] = 20;
+            if (playerInfos.comp.const >= 1) {
+                fillInfra.costs['Compo1'] = 14;
+            }
         }
     } else {
         fillInfra = getInfraByName(fillInfraName);
