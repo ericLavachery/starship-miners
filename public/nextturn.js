@@ -98,11 +98,11 @@ function nextTurn() {
 function alienTurnEnd() {
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
-            batType = getBatType(bat);
+            let batType = getBatType(bat);
             if (batType.skills.includes('lurk') || batType.skills.includes('dive')) {
                 let tile = getTile(bat);
                 if (batType.skills.includes('lurk')) {
-                    if (tile.terrain === 'B' || tile.terrain === 'F') {
+                    if (tile.terrain === 'F') {
                         if (!bat.tags.includes('invisible')) {
                             bat.tags.push('invisible');
                         }

@@ -102,6 +102,10 @@ function shot(weapon,attBatType,bat,batType,shotDice) {
     if (bat.tags.includes('fluo')) {
         weapAccu = weapAccu+15;
     }
+    // alien Hit Bonus
+    if (attBatType.cat === 'aliens') {
+        weapAccu = weapAccu+alienHitBase;
+    }
     // minaccu
     let minAccu = 0;
     if (attBatType.skills.includes('minaccu')) {
@@ -168,6 +172,10 @@ function blast(brochette,attBatType,aoeShots,weapon,bat,batType,shotDice) {
     // fly
     if (batType.skills.includes('fly')) {
         weapAccu = Math.round(weapAccu*weapon.dca);
+    }
+    // alien Hit Bonus
+    if (attBatType.cat === 'aliens') {
+        weapAccu = weapAccu+alienHitBase;
     }
     // minaccu
     let minAccu = 0;
