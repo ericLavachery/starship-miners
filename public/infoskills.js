@@ -9,6 +9,14 @@ function skillsInfos(bat,batType) {
     let terrain = getTerrain(bat);
     let inMelee = batInMelee(bat);
     let freeConsTile = false;
+    let hasW1 = false;
+    if (!batType.weapon.kit || bat.eq.includes('w2-') || bat.eq.includes('w1-')) {
+        hasW1 = true;
+    }
+    let hasW2 = false;
+    if (!batType.weapon2.kit || bat.eq.includes('kit-') || bat.eq.includes('w2-')) {
+        hasW2 = true;
+    }
     console.log('inMelee='+inMelee);
     // RAVITAILLEMENT DROGUES
     let anyRavit = checkRavitDrug(bat);
@@ -52,7 +60,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // GUET
-    if (batType.weapon.rof >= 1 && bat.ap >= 1 && !batType.skills.includes('noguet')) {
+    if (batType.weapon.rof >= 1 && bat.ap >= 1 && !batType.skills.includes('noguet') && (hasW1 || hasW2)) {
         balise = 'h4';
         if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('after')) {
             balise = 'h3';

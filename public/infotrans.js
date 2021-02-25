@@ -220,8 +220,7 @@ function embarquement(transId,discardRes) {
 };
 
 function debarquement(debId) {
-    let debIndex = bataillons.findIndex((obj => obj.id == debId));
-    let debBat = bataillons[debIndex];
+    let debBat = getBatById(debId);
     selectMode();
     batDebarq = debBat;
     showBatInfos(selectedBat);
@@ -230,18 +229,34 @@ function debarquement(debId) {
 function clickDebarq(tileId) {
     let tileOK = false;
     let ownBatHere = false;
+    let batDebarqType = getBatType(batDebarq);
+    let myBatWeight = calcVolume(selectedBat,selectedBatType);
     bataillons.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
-            ownBatHere = true;
+            let batType = getBatType(bat);
+            if (selectedBat.apLeft < 1 || batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
+                ownBatHere = true;
+            } else if (!batType.skills.includes('transport')) {
+                ownBatHere = true;
+            } else {
+                if (batType.transMaxSize < selectedBatType.size) {
+                    ownBatHere = true;
+                } else {
+                    let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
+                    if (myBatWeight > batTransUnitsLeft) {
+                        ownBatHere = true;
+                    }
+                }
+            }
         }
     });
-    let batDebarqType = getBatType(batDebarq);
     let distance = calcDistance(selectedBat.tileId,tileId);
     if (distance <= 1 && !ownBatHere && (terrainAccess(batDebarq.id,tileId) || batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') && !alienOccupiedTiles.includes(tileId)) {
         tileOK = true;
     } else {
         batDebarq = {};
         showBatInfos(selectedBat);
+        warning('Débarquement avorté','Vous ne pouvez pas débarquer ce bataillon à cet endroit.');
     }
     if (tileOK) {
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
@@ -259,14 +274,7 @@ function clickDebarq(tileId) {
         batDebarq.locId = 0;
         batDebarq.tileId = tileId;
         batDebarq.oldTileId = tileId;
-        if (batDebarqType.cat != 'buildings' && batDebarqType.cat != 'devices') {
-            batDebarq.apLeft = batDebarq.apLeft-1;
-            batDebarq.oldapLeft = batDebarq.apLeft-1;
-            if (batDebarq.apLeft < 1) {
-                batDebarq.apLeft = 1;
-                batDebarq.oldapLeft = 1;
-            }
-        } else {
+        if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
             batDebarq.apLeft = batDebarq.ap-Math.round(batDebarqType.fabTime*batDebarq.ap/50);
         }
         showBataillon(batDebarq);

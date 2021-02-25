@@ -4,7 +4,7 @@ function clickMove(tileId) {
     let ownBatHere = false;
     let ownTransHere = false;
     let batTransUnitsLeft;
-    let myBatWeight = selectedBatType.size*selectedBatType.squadSize*selectedBatType.squads;
+    let myBatWeight = calcVolume(selectedBat,selectedBatType);
     let batType;
     bataillons.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {

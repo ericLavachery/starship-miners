@@ -203,9 +203,11 @@ function nextTurnEnd() {
                 bat.oldTileId = transBat.tileId;
             }
             if (bat.autoLoad != undefined) {
-                if (bat.autoLoad >= 0) {
-                    let fromBat = getBatById(bat.autoLoad);
-                    autoResLoad(bat,fromBat);
+                if (Array.isArray(bat.autoLoad)) {
+                    bat.autoLoad.forEach(function(batId) {
+                        let fromBat = getBatById(batId);
+                        autoResLoad(bat,fromBat);
+                    });
                 }
             }
         }
@@ -226,9 +228,11 @@ function nextTurnEnd() {
                 solarProd(bat,batType);
             }
             if (bat.autoLoad != undefined) {
-                if (bat.autoLoad >= 0) {
-                    let fromBat = getBatById(bat.autoLoad);
-                    autoResLoad(bat,fromBat);
+                if (Array.isArray(bat.autoLoad)) {
+                    bat.autoLoad.forEach(function(batId) {
+                        let fromBat = getBatById(batId);
+                        autoResLoad(bat,fromBat);
+                    });
                 }
             }
             // BAR
@@ -278,9 +282,11 @@ function nextTurnEnd() {
                 autoUnload(bat);
             }
             if (bat.autoLoad != undefined) {
-                if (bat.autoLoad >= 0) {
-                    let fromBat = getBatById(bat.autoLoad);
-                    autoResLoad(bat,fromBat);
+                if (Array.isArray(bat.autoLoad)) {
+                    bat.autoLoad.forEach(function(batId) {
+                        let fromBat = getBatById(batId);
+                        autoResLoad(bat,fromBat);
+                    });
                 }
             }
             levelUp(bat);
@@ -427,9 +433,11 @@ function nextTurnEnd() {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             if (bat.autoLoad != undefined) {
-                if (bat.autoLoad >= 0) {
-                    let fromBat = getBatById(bat.autoLoad);
-                    autoResLoad(bat,fromBat);
+                if (Array.isArray(bat.autoLoad)) {
+                    bat.autoLoad.forEach(function(batId) {
+                        let fromBat = getBatById(batId);
+                        autoResLoad(bat,fromBat);
+                    });
                 }
             }
         }
