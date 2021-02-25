@@ -32,7 +32,7 @@ function checkRuinsComp(tile) {
     let foundComp = {};
     let compOK = false;
     let compChance = ruinsCompBase;
-    if (rand.rand(1,100) <= compChance) {
+    if (rand.rand(1,150) <= compChance) {
         let i = 1;
         while (i <= 10) {
             foundComp = randomComp(7,28);

@@ -567,7 +567,9 @@ function attack(melee) {
             if (targetBatType.cat === 'aliens') {
                 totalDamage = Math.round(totalDamage/3);
                 apDamage = Math.round(apDamage/3);
-                $('#report').append('<span class="report rose">Résistance au feu 67%<br></span>');
+                if (playerInfos.comp.ca >= 2) {
+                    $('#report').append('<span class="report rose">Résistance au feu 67%<br></span>');
+                }
             } else {
                 totalDamage = Math.round(totalDamage/1.5);
                 apDamage = Math.round(apDamage/1.5);
@@ -581,7 +583,9 @@ function attack(melee) {
         if (selectedWeap.ammo.includes('electric') || selectedWeap.ammo.includes('taser')) {
             totalDamage = Math.round(totalDamage/2);
             apDamage = Math.round(apDamage/2);
-            $('#report').append('<span class="report rose">Résistance aux décharges 50%<br></span>');
+            if (playerInfos.comp.ca >= 2) {
+                $('#report').append('<span class="report rose">Résistance aux décharges 50%<br></span>');
+            }
             console.log('résistance électricité!');
         }
     }
@@ -591,18 +595,22 @@ function attack(melee) {
             if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm')) {
                 totalDamage = Math.round(totalDamage/2);
                 apDamage = Math.round(apDamage/2);
-                $('#report').append('<span class="report rose">Résistance au secousses 50%<br></span>');
+                if (playerInfos.comp.ca >= 2) {
+                    $('#report').append('<span class="report rose">Résistance au secousses 50%<br></span>');
+                }
                 console.log('résistance au blast!');
             }
         }
     }
     // sensibilité blast
     if (targetBatType.skills.includes('reactblast') || targetBat.tags.includes('reactblast')) {
-        if (selectedWeap.ammo.includes('nanite') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('dynamite') || selectedWeap.ammo.includes('bombe') || selectedWeap.ammo.includes('explosif') || selectedWeap.ammo.includes('explosive') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('grenade') || selectedWeap.ammo.includes('disco')) {
+        if (selectedWeap.ammo.includes('nanite') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('dynamite') || selectedWeap.ammo.includes('bombe') || selectedWeap.ammo.includes('explosif') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('grenade') || selectedWeap.ammo.includes('disco')) {
             if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm')) {
                 totalDamage = Math.round(totalDamage*1.5);
                 apDamage = Math.round(apDamage*1.5);
-                // $('#report').append('<span class="report rose">Résistance au secousses 50%<br></span>');
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Sensibilité au secousses<br></span>');
+                }
                 console.log('sensibilité au blast!');
             }
         }
@@ -610,15 +618,21 @@ function attack(melee) {
     // résistance poison (gaz)
     if (targetBatType.skills.includes('resistpoison') || targetBatType.skills.includes('eatpoison') || targetBat.tags.includes('resistpoison')) {
         if (selectedWeap.ammo.includes('gaz')) {
-            if (targetBatType.skills.includes('eatpoison') && !targetBat.tags.includes('regeneration')) {
+            if (targetBatType.skills.includes('eatpoison')) {
                 totalDamage = 0;
                 apDamage = 0;
-                targetBat.tags.push('regeneration');
-                $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
+                if (!targetBat.tags.includes('regeneration')) {
+                    targetBat.tags.push('regeneration');
+                }
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
+                }
             } else {
                 totalDamage = Math.round(totalDamage/2);
                 apDamage = Math.round(apDamage/2);
-                $('#report').append('<span class="report rose">Résistance au poison 50%<br></span>');
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Résistance au poison 50%<br></span>');
+                }
             }
             console.log('résistance au gaz!');
         }
@@ -628,7 +642,9 @@ function attack(melee) {
         if (selectedWeap.ammo.includes('gaz')) {
             totalDamage = Math.round(totalDamage*2);
             apDamage = Math.round(apDamage*2);
-            $('#report').append('<span class="report rose">Sensibilité au poison x2<br></span>');
+            if (playerInfos.comp.ca >= 3) {
+                $('#report').append('<span class="report rose">Sensibilité au poison x2<br></span>');
+            }
             console.log('sensibilité au gaz!');
         }
     }
@@ -637,7 +653,9 @@ function attack(melee) {
         if (targetBatType.skills.includes('resistacide') || targetBat.tags.includes('resistacide')) {
             totalDamage = Math.round(totalDamage/1.5);
             apDamage = Math.round(apDamage/1.5);
-            $('#report').append('<span class="report rose">Résistance à l\'acide 33%<br></span>');
+            if (playerInfos.comp.ca >= 2) {
+                $('#report').append('<span class="report rose">Résistance à l\'acide 33%<br></span>');
+            }
             console.log('résistance acide!');
         }
     }
@@ -645,7 +663,9 @@ function attack(melee) {
     if (targetBatType.skills.includes('resistall') || targetBat.tags.includes('resistall')) {
         if (targetBatType.cat === 'aliens') {
             totalDamage = Math.round(totalDamage/1.5);
-            $('#report').append('<span class="report rose">Protection 33%<br></span>');
+            if (playerInfos.comp.ca >= 2) {
+                $('#report').append('<span class="report rose">Protection 33%<br></span>');
+            }
         } else {
             totalDamage = Math.round(totalDamage/1.25);
             $('#report').append('<span class="report rose">Protection 20%<br></span>');
@@ -675,7 +695,9 @@ function attack(melee) {
     if (targetBatType.skills.includes('eggprotect')) {
         let eggProt = 100-Math.round(1000/(10+((playerInfos.mapDiff-1)*2.5)));
         totalDamage = Math.round(totalDamage*10/(10+((playerInfos.mapDiff-1)*2.5)));
-        $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
+        if (playerInfos.comp.ca >= 2) {
+            $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
+        }
         console.log('résistance dégâts!');
     }
     // munitions limitées
@@ -1313,7 +1335,9 @@ function defense(melee) {
             if (selectedBatType.cat === 'aliens') {
                 totalDamage = Math.round(totalDamage/3);
                 apDamage = Math.round(apDamage/3);
-                $('#report').append('<span class="report rose">Résistance au feu 67%<br></span>');
+                if (playerInfos.comp.ca >= 2) {
+                    $('#report').append('<span class="report rose">Résistance au feu 67%<br></span>');
+                }
             } else {
                 totalDamage = Math.round(totalDamage/1.5);
                 apDamage = Math.round(apDamage/1.5);
@@ -1327,7 +1351,9 @@ function defense(melee) {
         if (targetWeap.ammo.includes('electric') || targetWeap.ammo.includes('taser')) {
             totalDamage = Math.round(totalDamage/2);
             apDamage = Math.round(apDamage/2);
-            $('#report').append('<span class="report rose">Résistance aux décharges 50%<br></span>');
+            if (playerInfos.comp.ca >= 2) {
+                $('#report').append('<span class="report rose">Résistance aux décharges 50%<br></span>');
+            }
             console.log('résistance électricité!');
         }
     }
@@ -1337,18 +1363,22 @@ function defense(melee) {
             if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm')) {
                 totalDamage = Math.round(totalDamage/2);
                 apDamage = Math.round(apDamage/2);
-                $('#report').append('<span class="report rose">Résistance aux secousses 50%<br></span>');
+                if (playerInfos.comp.ca >= 2) {
+                    $('#report').append('<span class="report rose">Résistance aux secousses 50%<br></span>');
+                }
                 console.log('résistance au blast!');
             }
         }
     }
     // sensibilité blast
     if (selectedBatType.skills.includes('reactblast') || selectedBat.tags.includes('reactblast')) {
-        if (targetWeap.ammo.includes('nanite') || targetWeap.ammo.includes('suicide') || targetWeap.ammo.includes('mine') || targetWeap.ammo.includes('autodestruction') || targetWeap.ammo.includes('dynamite') || targetWeap.ammo.includes('bombe') || targetWeap.ammo.includes('explosif') || targetWeap.ammo.includes('explosive') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('grenade') || targetWeap.ammo.includes('disco')) {
+        if (targetWeap.ammo.includes('nanite') || targetWeap.ammo.includes('suicide') || targetWeap.ammo.includes('mine') || targetWeap.ammo.includes('autodestruction') || targetWeap.ammo.includes('dynamite') || targetWeap.ammo.includes('bombe') || targetWeap.ammo.includes('explosif') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('grenade') || targetWeap.ammo.includes('disco')) {
             if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm')) {
                 totalDamage = Math.round(totalDamage*1.5);
                 apDamage = Math.round(apDamage*1.5);
-                // $('#report').append('<span class="report rose">Résistance aux secousses 50%<br></span>');
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Sensibilité aux secousses<br></span>');
+                }
                 console.log('sensibilité au blast!');
             }
         }
@@ -1356,15 +1386,21 @@ function defense(melee) {
     // résistance poison (gaz)
     if (selectedBatType.skills.includes('resistpoison') || selectedBatType.skills.includes('eatpoison') || selectedBat.tags.includes('resistpoison')) {
         if (targetWeap.ammo.includes('gaz')) {
-            if (selectedBatType.skills.includes('eatpoison') && !selectedBat.tags.includes('regeneration')) {
+            if (selectedBatType.skills.includes('eatpoison')) {
                 totalDamage = 0;
                 apDamage = 0;
-                selectedBat.tags.push('regeneration');
-                $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
+                if (!selectedBat.tags.includes('regeneration')) {
+                    selectedBat.tags.push('regeneration');
+                }
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
+                }
             } else {
                 totalDamage = Math.round(totalDamage/2);
                 apDamage = Math.round(apDamage/2);
-                $('#report').append('<span class="report rose">Résistance au poison 50%<br></span>');
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Résistance au poison 50%<br></span>');
+                }
             }
             console.log('résistance au gaz!');
         }
@@ -1374,7 +1410,9 @@ function defense(melee) {
         if (targetWeap.ammo.includes('gaz')) {
             totalDamage = Math.round(totalDamage*2);
             apDamage = Math.round(apDamage*2);
-            $('#report').append('<span class="report rose">Sensibilité au poison x2<br></span>');
+            if (playerInfos.comp.ca >= 3) {
+                $('#report').append('<span class="report rose">Sensibilité au poison x2<br></span>');
+            }
             console.log('sensibilité au gaz!');
         }
     }
@@ -1383,7 +1421,9 @@ function defense(melee) {
         if (selectedBatType.skills.includes('resistacide') || selectedBat.tags.includes('resistacide')) {
             totalDamage = Math.round(totalDamage/1.5);
             apDamage = Math.round(apDamage/1.5);
-            $('#report').append('<span class="report rose">Résistance à l\'acide 33%<br></span>');
+            if (playerInfos.comp.ca >= 2) {
+                $('#report').append('<span class="report rose">Résistance à l\'acide 33%<br></span>');
+            }
             console.log('résistance acide!');
         }
     }
@@ -1391,7 +1431,9 @@ function defense(melee) {
     if (selectedBatType.skills.includes('resistall') || selectedBat.tags.includes('resistall')) {
         if (selectedBatType.cat === 'aliens') {
             totalDamage = Math.round(totalDamage/1.5);
-            $('#report').append('<span class="report rose">Protection 33%<br></span>');
+            if (playerInfos.comp.ca >= 2) {
+                $('#report').append('<span class="report rose">Protection 33%<br></span>');
+            }
         } else {
             totalDamage = Math.round(totalDamage/1.25);
             $('#report').append('<span class="report rose">Protection 20%<br></span>');
@@ -1421,7 +1463,9 @@ function defense(melee) {
     if (selectedBatType.skills.includes('eggprotect')) {
         let eggProt = 100-Math.round(1000/(10+((playerInfos.mapDiff-1)*2.5)));
         totalDamage = Math.round(totalDamage*10/(10+((playerInfos.mapDiff-1)*2.5)));
-        $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
+        if (playerInfos.comp.ca >= 2) {
+            $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
+        }
         console.log('résistance dégâts!');
     }
     // munitions limitées

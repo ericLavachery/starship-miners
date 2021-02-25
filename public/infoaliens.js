@@ -246,6 +246,11 @@ function showEnemyBatInfos(bat) {
             $('#unitInfos').append('<span class="paramName">Inflammable</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
         }
     }
+    if (playerInfos.comp.ca >= 4) {
+        if (bat.tags.includes('reactblast') || batType.skills.includes('reactblast')) {
+            $('#unitInfos').append('<span class="paramName">Sensibilité secousses</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+        }
+    }
     if (playerInfos.comp.ca >= 3) {
         if (bat.tags.includes('reactpoison') || batType.skills.includes('reactpoison')) {
             $('#unitInfos').append('<span class="paramName">Sensibilité poison</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
