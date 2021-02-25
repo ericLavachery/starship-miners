@@ -1459,31 +1459,17 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
             brideDef = 0.75;
         }
     }
-    // Guet, Defense, Bastion
-    if (batType.skills.includes('bastion') && (weap.num === 1 || !weap.noBis)) {
-        if (guet || batType.skills.includes('sentinelle') || batType.skills.includes('initiative')) {
-            brideDef = 2;
-        } else {
-            brideDef = 1.5;
-        }
-        if (attRange >= 1 && weap.range === 0) {
-            brideDef = brideDef/2;
-        }
-    } else if (batType.skills.includes('defense') && (weap.num === 1 || !weap.noBis)) {
-        if (guet || batType.skills.includes('sentinelle') || batType.skills.includes('initiative')) {
-            brideDef = 1.65;
-        } else {
-            brideDef = 1.2;
-        }
-        if (attRange >= 1 && weap.range === 0) {
-            brideDef = brideDef/2;
-        }
-    } else {
-        if (guet || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('after')) {
-            brideDef = 1;
-        }
+    // GUET
+    if (guet || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+        brideDef = 1;
     }
-    // baddef on bridage def
+    // Defense, Bastion
+    if (batType.skills.includes('bastion') && (weap.num === 1 || !weap.noBis)) {
+        brideDef = brideDef*2;
+    } else if (batType.skills.includes('defense') && (weap.num === 1 || !weap.noBis)) {
+        brideDef = brideDef*1.5;
+    }
+    // baddef
     if (batType.skills.includes('baddef')) {
         if (guet || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('after')) {
             brideDef = brideDef/1.17;

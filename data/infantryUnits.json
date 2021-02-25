@@ -2007,7 +2007,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","strong"],
+        "skills":["fouille","fortif","cible","strong","defense"],
         "fuzz":1.5,
         "deathFx":"195954__minian89__death-blood-splatter"
     },

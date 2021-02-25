@@ -75,14 +75,14 @@ function checkRuinsCit(tile) {
     if (numRuins > 50) {
         numRuins = 50;
     }
-    let citChance = Math.round(ruinsCitBase/Math.sqrt(numRuins+5));
+    let citChance = Math.round(ruinsCitBase/Math.sqrt(numRuins+8));
     let citId = 126;
     if (rand.rand(1,ruinsCrimChance) === 1) {
         citId = 225;
     }
     console.log('citChance: '+citChance);
     if (rand.rand(1,100) <= citChance) {
-        let ncFactor = Math.round((Math.sqrt(numRuins)+3)*3);
+        let ncFactor = Math.round((Math.sqrt(numRuins)+0.75)*3);
         let numCit = rand.rand(1,ncFactor)*6;
         ruinsEmpty = false;
         console.log('numCit: '+numCit);

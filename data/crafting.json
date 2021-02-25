@@ -27,7 +27,7 @@
         "batch":1
     },
     {
-        "id":12,
+        "id":93,
         "result":"Compo1",
         "cost":{"Bois":1,"Scrap":2},
         "compReq":{},
@@ -113,8 +113,6 @@
         "cost":{"Fer":3,"Carbone":2},
         "compReq":{"const":1},
         "bldReq":["Atelier"],
-        "compOut":{"const":2,"ind":1},
-        "bldOut":["Chaîne de montage"],
         "batch":2
     },
     {
