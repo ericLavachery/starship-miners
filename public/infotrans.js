@@ -192,8 +192,7 @@ function checkTracking(myBat) {
 };
 
 function embarquement(transId,discardRes) {
-    let transIndex = bataillons.findIndex((obj => obj.id == transId));
-    let transBat = bataillons[transIndex];
+    let transBat = getBatById(transId);
     let transBatType = getBatType(transBat);
     if (selectedBatType.skills.includes('tracked') && transBatType.transMaxSize < 25) {
         transBat.apLeft = transBat.apLeft-4;
@@ -229,22 +228,30 @@ function debarquement(debId) {
 function clickDebarq(tileId) {
     let tileOK = false;
     let ownBatHere = false;
+    let message = '';
     let batDebarqType = getBatType(batDebarq);
-    let myBatWeight = calcVolume(selectedBat,selectedBatType);
+    let myBatWeight = calcVolume(batDebarq,batDebarqType);
     bataillons.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
             let batType = getBatType(bat);
-            if (selectedBat.apLeft < 1 || batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
+            if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
                 ownBatHere = true;
+                message = 'Vous ne pouvez pas mettre un bâtiment dans un autre bâtiment.';
+            } else if (batDebarq.apLeft < 1) {
+                ownBatHere = true;
+                message = 'Il ne vous reste pas assez de PA.';
             } else if (!batType.skills.includes('transport')) {
                 ownBatHere = true;
+                message = 'Le bataillon de destination ne peut pas acceuillir de troupes.';
             } else {
-                if (batType.transMaxSize < selectedBatType.size) {
+                if (batType.transMaxSize < batDebarqType.size) {
                     ownBatHere = true;
+                    message = 'Le taille de votre bataillon ('+batDebarqType.size+') est trop élevée pour le bataillon de destination ('+batType.transMaxSize+').';
                 } else {
                     let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
                     if (myBatWeight > batTransUnitsLeft) {
                         ownBatHere = true;
+                        message = 'Il n\'y a plus assez de place dans le bataillon de destination.';
                     }
                 }
             }
@@ -256,7 +263,7 @@ function clickDebarq(tileId) {
     } else {
         batDebarq = {};
         showBatInfos(selectedBat);
-        warning('Débarquement avorté','Vous ne pouvez pas débarquer ce bataillon à cet endroit.');
+        warning('Débarquement avorté','Vous ne pouvez pas débarquer ce bataillon à cet endroit. '+message);
     }
     if (tileOK) {
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {

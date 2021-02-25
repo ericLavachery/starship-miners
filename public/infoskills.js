@@ -270,7 +270,7 @@ function skillsInfos(bat,batType) {
     if (batType.cat === 'buildings' && (!batType.skills.includes('medic') || bat.apLeft < 4)) {
         let medicBat = bestMedicInBld(bat);
         let medicBatType = getBatType(medicBat);
-        console.log(medicBat);
+        // console.log(medicBat);
         if (Object.keys(medicBat).length >= 1) {
             numTargets = numMedicTargets(medicBat,'infantry',true,true);
             baseskillCost = calcBaseSkillCost(medicBat,medicBatType,true,true);

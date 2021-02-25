@@ -4,8 +4,8 @@ function clickMove(tileId) {
     let ownBatHere = false;
     let ownTransHere = false;
     let batTransUnitsLeft;
-    let myBatWeight = calcVolume(selectedBat,selectedBatType);
     let batType;
+    let myBatWeight = calcVolume(selectedBat,selectedBatType);
     bataillons.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
             ownBatHere = true;
@@ -268,24 +268,37 @@ function batOffsets(tileId) {
 function batUnstack() {
     // return selectedBat to start position if stacked on another unit
     let stack = false;
+    let ownTransHere = false;
+    let transId = -1;
+    let myBatWeight = calcVolume(selectedBat,selectedBatType);
     bataillons.forEach(function(bat) {
         if (bat.tileId === selectedBat.tileId && bat.loc === "zone" && bat.id != selectedBat.id) {
             stack = true;
+            let batType = getBatType(bat);
+            if (batType.transMaxSize >= selectedBatType.size) {
+                let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
+                if (myBatWeight <= batTransUnitsLeft) {
+                    ownTransHere = true;
+                    transId = bat.id;
+                }
+            }
         }
     });
     if (stack) {
-        let unitIndex = unitTypes.findIndex((obj => obj.id == selectedBat.typeId));
-        let selectedUnitType = unitTypes[unitIndex];
-        if (selectedBat.salvoLeft < selectedUnitType.maxSalvo) {
-            // le bataillon a tiré ce tour ci : pénalité
-            selectedBat.apLeft = 0-selectedUnit.ap;
+        if (ownTransHere) {
+            // embarquement(transId,false);
         } else {
-            // le bataillon n'a pas tiré ce tour ci : regagne ses AP
-            selectedBat.apLeft = selectedBat.oldapLeft;
+            if (selectedBat.salvoLeft < selectedBatType.maxSalvo) {
+                // le bataillon a tiré ce tour ci : pénalité
+                selectedBat.apLeft = 0-selectedUnit.ap;
+            } else {
+                // le bataillon n'a pas tiré ce tour ci : regagne ses AP
+                selectedBat.apLeft = selectedBat.oldapLeft;
+            }
+            moveSelectedBat(selectedBat.oldTileId,true,false);
+            console.log('unstack');
+            warning('Mouvement illégal:','Vous ne pouvez pas rester sur la même case qu\'une autre unité.<br>Les mouvements de ce bataillon ont été annulés.');
         }
-        moveSelectedBat(selectedBat.oldTileId,true,false);
-        console.log('unstack');
-        warning('Mouvement illégal:','Vous ne pouvez pas rester sur la même case qu\'une autre unité.<br>Les mouvements de ce bataillon ont été annulés.');
     }
 };
 
