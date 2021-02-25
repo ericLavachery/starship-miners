@@ -596,6 +596,17 @@ function attack(melee) {
             }
         }
     }
+    // sensibilité blast
+    if (targetBatType.skills.includes('reactblast') || targetBat.tags.includes('reactblast')) {
+        if (selectedWeap.ammo.includes('nanite') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('dynamite') || selectedWeap.ammo.includes('bombe') || selectedWeap.ammo.includes('explosif') || selectedWeap.ammo.includes('explosive') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('grenade') || selectedWeap.ammo.includes('disco')) {
+            if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm')) {
+                totalDamage = Math.round(totalDamage*1.5);
+                apDamage = Math.round(apDamage*1.5);
+                // $('#report').append('<span class="report rose">Résistance au secousses 50%<br></span>');
+                console.log('sensibilité au blast!');
+            }
+        }
+    }
     // résistance poison (gaz)
     if (targetBatType.skills.includes('resistpoison') || targetBatType.skills.includes('eatpoison') || targetBat.tags.includes('resistpoison')) {
         if (selectedWeap.ammo.includes('gaz')) {
@@ -1328,6 +1339,17 @@ function defense(melee) {
                 apDamage = Math.round(apDamage/2);
                 $('#report').append('<span class="report rose">Résistance aux secousses 50%<br></span>');
                 console.log('résistance au blast!');
+            }
+        }
+    }
+    // sensibilité blast
+    if (selectedBatType.skills.includes('reactblast') || selectedBat.tags.includes('reactblast')) {
+        if (targetWeap.ammo.includes('nanite') || targetWeap.ammo.includes('suicide') || targetWeap.ammo.includes('mine') || targetWeap.ammo.includes('autodestruction') || targetWeap.ammo.includes('dynamite') || targetWeap.ammo.includes('bombe') || targetWeap.ammo.includes('explosif') || targetWeap.ammo.includes('explosive') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('grenade') || targetWeap.ammo.includes('disco')) {
+            if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm')) {
+                totalDamage = Math.round(totalDamage*1.5);
+                apDamage = Math.round(apDamage*1.5);
+                // $('#report').append('<span class="report rose">Résistance aux secousses 50%<br></span>');
+                console.log('sensibilité au blast!');
             }
         }
     }

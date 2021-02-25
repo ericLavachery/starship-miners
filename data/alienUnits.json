@@ -91,7 +91,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","nez","fouisseur","capbld","reactpoison","okwater","resistelec","morph"],
+        "skills":["regeneration","nez","fouisseur","capbld","reactpoison","reactblast","okwater","resistelec","morph"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":1,"Larvium":10,"Mendium":9}
     },
@@ -146,7 +146,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","capbld","fouisseur","nez","reactpoison","okwater","resistelec"],
+        "skills":["regeneration","capbld","fouisseur","nez","reactpoison","reactblast","okwater","resistelec"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":5,"Mendium":30,"Larvium":30}
     },
@@ -921,7 +921,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["resistfeu","destructeur","sentinelle"],
+        "skills":["resistfeu","destructeur","sentinelle","reactblast"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":8}
     },
@@ -1584,7 +1584,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["chancre","hover","capmen","resistelec","baddef","dive"],
+        "skills":["chancre","hover","capmen","resistelec","baddef","dive","reactblast"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":5,"Germium":6,"Mephitis":2}
     },
@@ -1960,7 +1960,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["grip","fear","regeneration","destructeur","okwater"],
+        "skills":["grip","fear","regeneration","destructeur","okwater","reactblast"],
         "deathFx":"185366__anwul__monster",
         "spawnFx":"82082__rmw2861__1000000009_Androks",
         "fxPriority":10,
@@ -2337,7 +2337,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["hide","eggprotect","noaploss"],
+        "skills":["hide","eggprotect","noaploss","reactblast"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":2,"Blendium":9,"Slime":6}
     },
