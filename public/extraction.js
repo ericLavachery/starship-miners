@@ -473,7 +473,13 @@ function loadRes() {
                             }
                             if (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('transorbital')) {
                                 if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
-                                    if (selectedBat.autoLoad.includes(bat.id)) {
+                                    let isAuto = false;
+                                    if (selectedBat.autoLoad != undefined) {
+                                        if (selectedBat.autoLoad.includes(bat.id)) {
+                                            isAuto = true;
+                                        }
+                                    }
+                                    if (isAuto) {
                                         $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
                                         $('#conUnitList').append('<span class="constName vert"><span title="Tout ce qu\'il y a dans ce bataillon ('+bat.type+') est déjà chargé à chaque tour">Déjà automatisé</span></span><br>');
                                     } else {
