@@ -11,7 +11,8 @@ function bfconst(cat,triche,upgrade) {
         catz.push('vehicles');
     }
     selectMode();
-    findLanders();
+    // findLanders();
+    checkReserve();
     updateBldList();
     $("#conUnitList").css("display","block");
     $("#conAmmoList").css("display","block");
