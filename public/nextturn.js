@@ -1057,6 +1057,12 @@ function playerOccupiedTileList() {
     // console.log(playerOccupiedTiles);
 };
 
+function emptyBatList() {
+    batList = [];
+    commandes();
+    // console.log(batList);
+};
+
 function createBatList() {
     let allBatList = bataillons.slice();
     let zoneBatList = _.filter(allBatList, function(bat) {

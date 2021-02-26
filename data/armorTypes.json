@@ -432,51 +432,51 @@
     {
         "name": "kit-pompiste",
         "skills": [],
-        "info": "Vision+ Canon à essence",
+        "info": "Canon à essence",
         "bldReq":["Atelier"],
         "compReq":{"log":1,"pyro":2},
         "factor":"crew",
-        "costs":{"Carbone":6,"Scrap":24,"Aluminium":30,"Nickel":6,"Cobalt":6,"Hélium":12,"Batteries":6},
+        "costs":{"Carbone":6,"Scrap":24,"Aluminium":30,"Nickel":6},
         "deploy":{"Energie":12,"Fuel":48}
     },
     {
         "name": "kit-garde",
         "skills": [],
-        "info": "Vision+ Mitrailleuse",
+        "info": "Mitrailleuse",
         "bldReq":["Armurerie"],
         "compReq":{"log":1,"det":1,"bal":1},
         "factor":"crew",
-        "costs":{"Carbone":12,"Scrap":12,"Fer":48,"Aluminium":24,"Tungstène":12,"Cobalt":6,"Hélium":12,"Batteries":6},
+        "costs":{"Carbone":12,"Scrap":12,"Fer":48,"Aluminium":24,"Tungstène":12},
         "deploy":{"Energie":12}
     },
     {
         "name": "kit-sentinelle",
         "skills": [],
-        "info": "Vision+ Camouflage+ Déplacement+ Marqueur",
+        "info": "Camouflage+ Déplacement+ Marqueur",
         "bldReq":["Atelier"],
         "compReq":{"log":1},
         "factor":"crew",
-        "costs":{"Carbone":18,"Scrap":6,"Aluminium":6,"Cobalt":6,"Silicium":6,"Electros":6,"Tissus":12,"Blendium":6,"Hélium":12,"Batteries":12},
+        "costs":{"Carbone":18,"Scrap":6,"Aluminium":6,"Silicium":6,"Electros":6,"Tissus":12,"Blendium":6,"Batteries":1},
         "deploy":{"Energie":12,"Végétaux":12}
     },
     {
         "name": "kit-artilleur",
         "skills": [],
-        "info": "Vision+ Minicanon",
+        "info": "Minicanon",
         "bldReq":["Armurerie"],
         "compReq":{"log":1,"explo":2},
         "factor":"crew",
-        "costs":{"Carbone":12,"Scrap":12,"Fer":36,"Tungstène":12,"Aluminium":24,"Cobalt":6,"Hélium":12,"Batteries":6},
+        "costs":{"Carbone":12,"Scrap":12,"Fer":36,"Tungstène":12,"Aluminium":24},
         "deploy":{"Energie":12}
     },
     {
         "name": "kit-guetteur",
         "skills": [],
-        "info": "Vision+ Cadence++ Précision++ Elévation+ Marqueur",
+        "info": "Cadence++ Précision++ Elévation+ Marqueur",
         "bldReq":["Atelier"],
         "compReq":{"log":1,"det":1},
         "factor":"crew",
-        "costs":{"Carbone":24,"Scrap":6,"Fer":6,"Cobalt":6,"Silicium":6,"Electros":6,"Hélium":12,"Batteries":12},
+        "costs":{"Carbone":24,"Scrap":6,"Fer":6,"Silicium":6,"Electros":6,"Batteries":1},
         "deploy":{"Energie":12}
     },
     {
