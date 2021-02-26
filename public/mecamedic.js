@@ -60,7 +60,12 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                             catOK = false;
                             $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">soins inefficaces<br></span>');
                         }
-                        if (rand.rand(1,75) <= bat.soins-10 && catOK) {
+                        let medDice = rand.rand(1,75);
+                        let fail = bat.soins-10;
+                        if (fail > minFailSoins) {
+                            fail = minFailSoins;
+                        }
+                        if (medDice <= fail && catOK) {
                             catOK = false;
                             totalAPCost = totalAPCost+apCost;
                             $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">soins inefficaces<br></span>');
@@ -264,7 +269,12 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                 catOK = false;
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">soins inefficaces<br></span>');
             }
-            if (rand.rand(1,75) <= selectedBat.soins-10 && catOK) {
+            let medDice = rand.rand(1,75);
+            let fail = selectedBat.soins-10;
+            if (fail > minFailSoins) {
+                fail = minFailSoins;
+            }
+            if (medDice <= fail && catOK) {
                 catOK = false;
                 totalAPCost = totalAPCost+apCost;
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">soins inefficaces<br></span>');
@@ -588,4 +598,16 @@ function bestMedicInBld(bldBat) {
         }
     });
     return medicBat;
+};
+
+function checkEffSoins(bat) {
+    let failDice = bat.soins-10;
+    if (failDice > minFailSoins) {
+        failDice = minFailSoins;
+    }
+    if (failDice < 0) {
+        failDice = 0;
+    }
+    let effSoins = 100-Math.round(failDice*100/75);
+    return effSoins;
 };

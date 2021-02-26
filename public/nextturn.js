@@ -427,6 +427,21 @@ function nextTurnEnd() {
             if (bat.tags.includes('fog')) {
                 fogEffect(bat);
             }
+            // RAVITPROD
+            if (batType.skills.includes('ravitprod')) {
+                let maxRavitProd = Math.ceil(batType.maxSkill/3);
+                let i = 1;
+                while (i <= maxRavitProd) {
+                    if (bat.tags.includes('sU')) {
+                        tagIndex = bat.tags.indexOf('sU');
+                        bat.tags.splice(tagIndex,1);
+                    } else {
+                        break;
+                    }
+                    if (i > 16) {break;}
+                    i++
+                }
+            }
         }
     });
     // LOAD AUTOMATION

@@ -205,6 +205,10 @@ function batInfos(bat,pop) {
     if (hurt) {
         $('#'+bodyPlace).append('<span class="paramName or">Blessé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
+    if (bat.soins >= 11) {
+        let effSoins = checkEffSoins(bat);
+        $('#'+bodyPlace).append('<span class="paramName jaune">Efficacité soins</span><span class="paramIcon"></span><span class="paramValue jaune">'+effSoins+'%</span><br>');
+    }
     if (bat.tags.includes('blub')) {
         $('#'+bodyPlace).append('<span class="paramName or">Noyade</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }

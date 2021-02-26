@@ -103,6 +103,7 @@ let hitBase = 9; // bonus to hit général (aliens et humains)
 let alienHitBase = 2; // bonus to hit aliens
 let initiativeDice = 15 // ajoute 0-15
 let unitResist = 0;
+let minFailSoins = 60; // def 60 : minimum 15/75 soins réussis
 let stopMe = false;
 let nextTurnOK = false;
 let toHit = 999;
