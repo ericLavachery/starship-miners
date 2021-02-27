@@ -351,18 +351,15 @@ function getDeployCosts(unit,ammo,weapNum,type) {
 
 function checkUnitCost(batType,withDeploy) {
     let enoughRes = true;
-    // console.log('CHECK COSTS');
-    // console.log(batType.name);
-    // console.log(batType.costs);
+    let batMergedCosts = JSON.parse(JSON.stringify(batType.costs));;
     if (withDeploy) {
         if (batType.deploy != undefined) {
             // console.log(batType.deploy);
-            mergeObjects(batType.costs,batType.deploy);
+            mergeObjects(batMergedCosts,batType.deploy);
         }
     }
-    // console.log(batType.costs);
-    if (batType.costs != undefined) {
-        Object.entries(batType.costs).map(entry => {
+    if (batMergedCosts != undefined) {
+        Object.entries(batMergedCosts).map(entry => {
             let key = entry[0];
             let value = entry[1];
             let dispoRes = getDispoRes(key);
@@ -472,21 +469,25 @@ function allResAdd(number) {
     let numRes = number;
     resTypes.forEach(function(res) {
         if (res.name != 'Magma') {
-            if (res.name === 'Huile') {
-                numRes = Math.ceil(50*number*res.batch/3);
-            } else if (res.name === 'Scrap') {
-                numRes = Math.ceil(200*number*res.batch/3);
+            if (playerInfos.pseudo != 'Payall') {
+                if (res.name === 'Huile') {
+                    numRes = Math.ceil(50*number*res.batch/3);
+                } else if (res.name === 'Scrap') {
+                    numRes = Math.ceil(200*number*res.batch/3);
+                } else {
+                    numRes = Math.ceil(res.rarity*number*res.batch/3);
+                }
+                if (res.cat === 'blue') {
+                    numRes = Math.ceil(numRes/3);
+                } else if (res.cat === 'blue-sky') {
+                    numRes = Math.ceil(numRes/2);
+                } else if (res.cat === 'sky') {
+                    numRes = Math.ceil(numRes/3);
+                }
+                resAdd(res.name,numRes);
             } else {
-                numRes = Math.ceil(res.rarity*number*res.batch/3);
+                resAdd(res.name,5000);
             }
-            if (res.cat === 'blue') {
-                numRes = Math.ceil(numRes/3);
-            } else if (res.cat === 'blue-sky') {
-                numRes = Math.ceil(numRes/2);
-            } else if (res.cat === 'sky') {
-                numRes = Math.ceil(numRes/3);
-            }
-            resAdd(res.name,numRes);
         }
     });
     voirReserve();

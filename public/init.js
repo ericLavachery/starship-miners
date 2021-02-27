@@ -99,7 +99,7 @@ socket.on('savedMap-Load', function(sm) {
     alienBonus();
     minimap();
     checkReserve();
-    if (playerInfos.pseudo != 'Test') {
+    if (playerInfos.pseudo != 'Test' && playerInfos.pseudo != 'Payall') {
         playMusic('start',true);
     }
     let thisBatType;

@@ -681,10 +681,12 @@ function putBat(tileId,citoyens,xp,startTag,show) {
         }
         if (costsOK || conselTriche) {
             // PAY COSTS !!!
-            if (!conselTriche && conselUnit.cat != 'aliens') {
-                payUnitCost(conselUnit);
-                payFlatCosts(conselUnit,conselAmmos);
-                payDeployCosts(conselUnit,conselAmmos);
+            if (conselUnit.cat != 'aliens') {
+                if (!conselTriche || playerInfos.pseudo === 'Payall') {
+                    payUnitCost(conselUnit);
+                    payFlatCosts(conselUnit,conselAmmos);
+                    payDeployCosts(conselUnit,conselAmmos);
+                }
             }
             let tile = getTileById(tileId);
             console.log(conselUnit);
