@@ -104,7 +104,7 @@ function batInfos(bat,pop) {
     }
     let stealth = getStealth(bat);
     let camChance = calcCamo(bat);
-    if (batType.skills.includes('camo') || batType.skills.includes('maycamo') || tile.ruins || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'camo') {
+    if (batType.skills.includes('camo') || batType.skills.includes('maycamo') || tile.ruins || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'e-camo') {
         $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+' ('+camChance+'%)</span><br>');
     } else {
         $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
@@ -196,7 +196,7 @@ function batInfos(bat,pop) {
         $('#'+bodyPlace).append('<span class="paramName jaune">Saoul</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
     }
     // BAD TAGS
-    if (bat.tags.includes('inflammable') || bat.eq === 'jetpack' || batType.skills.includes('inflammable')) {
+    if (bat.tags.includes('inflammable') || bat.eq === 'e-jetpack' || batType.skills.includes('inflammable')) {
         if (!bat.tags.includes('resistfeu')) {
             $('#'+bodyPlace).append('<span class="paramName jaune">Inflammable</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
         }

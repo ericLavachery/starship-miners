@@ -552,7 +552,7 @@ function calcBaseSkillCost(bat,batType,medik,inBld) {
         } else if (playerInfos.bldList.includes('Infirmerie') && batType.cat != 'buildings') {
             baseskillCost = Math.round(baseskillCost*3/4);
         }
-        if (bat.eq === 'medic') {
+        if (bat.eq === 'e-medic') {
             baseskillCost = baseskillCost-1;
         }
     } else {
@@ -566,7 +566,7 @@ function calcBaseSkillCost(bat,batType,medik,inBld) {
         } else if (playerInfos.bldList.includes('Chaîne de montage') && batType.cat != 'buildings') {
             baseskillCost = Math.round(baseskillCost*3/4);
         }
-        if (bat.eq === 'mecano') {
+        if (bat.eq === 'e-mecano') {
             baseskillCost = baseskillCost-1;
         }
     }

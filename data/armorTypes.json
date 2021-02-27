@@ -297,7 +297,7 @@
         "costs":{"Aluminium":6,"Carbone":18,"Titane":6,"Silicium":6}
     },
     {
-        "name": "ranger",
+        "name": "e-ranger",
         "skills": [],
         "info": "Déplacement+",
         "bldReq":["Atelier"],
@@ -306,7 +306,7 @@
         "costs":{"Scrap":3,"Carbone":3}
     },
     {
-        "name": "mecano",
+        "name": "e-mecano",
         "skills": [],
         "info": "Dépanage+",
         "bldReq":["Atelier"],
@@ -316,7 +316,7 @@
         "deploy":{"Huile":6,"Energie":12}
     },
     {
-        "name": "medic",
+        "name": "e-medic",
         "skills": [],
         "info": "Soins+",
         "bldReq":["Infirmerie"],
@@ -335,7 +335,7 @@
         "costs":{"Scrap":3,"Carbone":3,"Tissus":3}
     },
     {
-        "name": "camo",
+        "name": "e-camo",
         "skills": [],
         "info": "Camouflage+",
         "bldReq":["Atelier"],
@@ -345,7 +345,7 @@
         "deploy":{"Végétaux":12}
     },
     {
-        "name": "jetpack",
+        "name": "e-jetpack",
         "skills": [],
         "info": "Vol",
         "bldReq":["Chaîne de montage"],
@@ -392,7 +392,7 @@
         "costs":{"Carbone":12,"Scrap":6,"Silicium":4}
     },
     {
-        "name": "flash",
+        "name": "e-flash",
         "skills": [],
         "info": "Vision+",
         "bldReq":["Atelier"],
@@ -774,6 +774,6 @@
     {
         "name": "respack-bld1",
         "info": "Bâtiments 1",
-        "costs":{"Compo1":450,"Compo2":110,"Eau":200,"Carbone":50,"Aluminium":100,"Fer":200,"Soufre":50,"Bois":100,"Potassium":50,"Scrap":200,"Phosphore":30,"Hydrogène":50,"Végétaux":150,"Hydrocarbure":200,"Zinc":50,"Huile":50,"Potassium":100,"Tissus":25,"Calcium":25,"Or":15,"Silicium":25,"Oxygène":25,"Chlore":75}
+        "costs":{"Compo1":450,"Compo2":110,"Eau":200,"Carbone":50,"Aluminium":100,"Fer":200,"Soufre":50,"Bois":100,"Potassium":50,"Scrap":200,"Phosphore":30,"Hydrogène":50,"Végétaux":150,"Fuel":100,"Zinc":50,"Huile":50,"Potassium":100,"Tissus":25,"Calcium":25,"Or":15,"Silicium":25,"Oxygène":25,"Chlore":75}
     }
 ]

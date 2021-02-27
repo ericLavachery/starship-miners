@@ -202,6 +202,7 @@ function nextTurnEnd() {
                 bat.tileId = transBat.tileId;
                 bat.oldTileId = transBat.tileId;
             }
+            updateBatProperties(bat,batType);
             if (bat.autoLoad != undefined) {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
@@ -1050,6 +1051,33 @@ function levelUp(bat) {
         bat.vet = 0;
     }
     bat.xp = bat.xp.toFixedNumber(2);
+};
+
+function updateBatProperties(bat,batType) {
+    if (bat.transRes === undefined && batType.transRes >= 1) {
+        bat.transRes = {};
+    }
+    if (bat.transIds === undefined && batType.transUnits >= 1) {
+        bat.transIds = [];
+    }
+    if (bat.eq === 'ranger') {
+        bat.eq = 'e-ranger';
+    }
+    if (bat.eq === 'mecano') {
+        bat.eq = 'e-mecano';
+    }
+    if (bat.eq === 'medic') {
+        bat.eq = 'e-medic';
+    }
+    if (bat.eq === 'camo') {
+        bat.eq = 'e-camo';
+    }
+    if (bat.eq === 'jetpack') {
+        bat.eq = 'e-jetpack';
+    }
+    if (bat.eq === 'flash') {
+        bat.eq = 'e-flash';
+    }
 };
 
 function alienOccupiedTileList() {

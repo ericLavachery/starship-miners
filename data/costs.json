@@ -970,7 +970,7 @@
         "bldReq":["Arsenal","Usine"],
         "compReq":{"tank":1},
         "costs":{"Fer":220,"Scrap":2712,"Carbone":852,"Aluminium":918,"Titane":72,"Tungstène":16,"Silicium":15,"Electros":68,"Batteries":78,"Compo2":540,"Compo3":270,"Huile":58,"Chlore":26,"Zinc":26,"Cobalt":30,"Hélium":60,"Tissus":13},
-        "deploy":{"Fuel":365,"Fuel":75,"Huile":54,"Chlore":18,"Zinc":18,"Tissus":18},
+        "deploy":{"Fuel":365,"Huile":54,"Chlore":18,"Zinc":18,"Tissus":18},
         "fabTime":215
     },
     {
@@ -1801,7 +1801,7 @@
         "id":197,
         "name":"Garage",
         "prod":{"Scrap":3},
-        "costs":{"Compo1":150,"Eau":12,"Hydrocarbure":100,"Huile":50,"Scrap":150,"Aluminium":25,"Fer":25},
+        "costs":{"Compo1":150,"Eau":12,"Fuel":100,"Huile":50,"Scrap":150,"Aluminium":25,"Fer":25},
         "fabTime":35
     },
     {
@@ -1809,7 +1809,7 @@
         "name":"Atelier",
         "prod":{"Scrap":4},
         "bldUp":"Chaîne de montage",
-        "costs":{"Compo1":225,"Eau":36,"Hydrocarbure":100,"Huile":50,"Scrap":200,"Aluminium":50,"Fer":50,"Bois":100,"Végétaux":100,"Zinc":50},
+        "costs":{"Compo1":225,"Eau":36,"Fuel":75,"Huile":50,"Scrap":200,"Aluminium":50,"Fer":50,"Bois":100,"Végétaux":100,"Zinc":50},
         "fabTime":50
     },
     {
@@ -1846,7 +1846,7 @@
         "name":"Armurerie",
         "bldUp":"Arsenal",
         "prod":{"Scrap":4},
-        "costs":{"Compo1":195,"Compo2":30,"Eau":36,"Hydrocarbure":200,"Huile":25,"Scrap":150,"Fer":100,"Potassium":100,"Hydrogène":50},
+        "costs":{"Compo1":195,"Compo2":30,"Eau":36,"Fuel":50,"Huile":25,"Scrap":150,"Fer":100,"Potassium":100,"Hydrogène":50},
         "fabTime":60
     },
     {
@@ -1857,7 +1857,7 @@
         "bldCost":"Armurerie",
         "upkeep":{"Energie":12},
         "prod":{"Scrap":8},
-        "costs":{"Compo1":285,"Compo2":165,"Compo3":55,"Eau":60,"Energie":250,"Fuel":200,"Huile":50,"Scrap":150,"Titane":50,"Tungstène":100,"Fer":200,"Potassium":200,"Hydrogène":100,"Azote":100,"Electros":60,"Batteries":70},
+        "costs":{"Compo1":285,"Compo2":165,"Compo3":55,"Eau":60,"Energie":250,"Fuel":150,"Huile":50,"Scrap":150,"Titane":50,"Tungstène":100,"Fer":200,"Potassium":200,"Hydrogène":100,"Azote":100,"Electros":60,"Batteries":70},
         "fabTime":120
     },
     {
@@ -1867,7 +1867,7 @@
         "bldCost":"Arsenal",
         "upkeep":{"Energie":25},
         "prod":{"Scrap":20},
-        "costs":{"Compo1":390,"Compo2":360,"Compo3":180,"Eau":90,"Energie":500,"Fuel":400,"Huile":50,"Scrap":150,"Titane":150,"Tungstène":200,"Fer":200,"Potassium":200,"Platine":50,"Plutonium":50,"Hydrogène":200,"Azote":300,"Electros":200,"Batteries":150},
+        "costs":{"Compo1":390,"Compo2":360,"Compo3":180,"Eau":90,"Energie":500,"Fuel":300,"Huile":50,"Scrap":150,"Titane":150,"Tungstène":200,"Fer":200,"Potassium":200,"Platine":50,"Plutonium":50,"Hydrogène":200,"Azote":300,"Electros":200,"Batteries":150},
         "fabTime":180
     },
     {

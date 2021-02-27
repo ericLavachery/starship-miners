@@ -1884,7 +1884,7 @@
         "aoe": "squad",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":1,"ca":3},
-        "deploy":{"Carbone":1,"Scrap":3,"Fer":1,"Aluminium":1,"Oxygène":1,"Chlore":4,"Végétaux":2,"Explosifs":1},
+        "deploy":{"Carbone":1,"Scrap":3,"Fer":1,"Aluminium":1,"Hydrocarbure":2,"Chlore":4,"Végétaux":2,"Explosifs":1},
         "batch":100
     },
     {
@@ -1925,7 +1925,7 @@
         "accuracy": 1,
         "apdamage": 0.09,
         "aoe": "bat",
-        "deploy":{"Carbone":5,"Scrap":5,"Phosphore":6,"Oxygène":4,"Chlore":12,"Végétaux":5},
+        "deploy":{"Carbone":5,"Scrap":5,"Phosphore":6,"Hydrocarbure":4,"Chlore":12,"Végétaux":5},
         "batch":100
     },
     {
@@ -1940,7 +1940,7 @@
         "aoe": "bat",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":1,"ca":3},
-        "deploy":{"Carbone":5,"Scrap":5,"Plutonium":3,"Huile":5,"Phosphore":6,"Oxygène":4,"Chlore":12},
+        "deploy":{"Carbone":5,"Scrap":5,"Plutonium":3,"Huile":5,"Phosphore":6,"Hydrocarbure":4,"Chlore":12},
         "batch":100
     },
     {

@@ -742,7 +742,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             let batEquip = armorTypes[equipIndex];
             newBat.eq = equipName;
             let baseAP = conselUnit.ap;
-            if (newBat.eq === 'jetpack') {
+            if (newBat.eq === 'e-jetpack') {
                 baseAP = 17;
             }
             // Armor
@@ -754,7 +754,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             let batArmor = armorTypes[armorIndex];
             newBat.prt = armorName;
             newBat.armor = conselUnit.armor+batArmor.armor;
-            if ((conselUnit.skills.includes('fly') || newBat.eq === 'jetpack') && batArmor.ap < 0) {
+            if ((conselUnit.skills.includes('fly') || newBat.eq === 'e-jetpack') && batArmor.ap < 0) {
                 newBat.ap = baseAP+batArmor.ap+batArmor.ap;
             } else if ((conselUnit.skills.includes('strong') || newBat.eq === 'helper') && batArmor.ap < -1) {
                 newBat.ap = baseAP+batArmor.ap+1;

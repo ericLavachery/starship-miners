@@ -42,7 +42,7 @@ function undarkAround(bat,center) {
                 vue = 2;
             }
         }
-        if (batType.skills.includes('flash') || bat.eq === 'flash' || bat.eq.includes('kit-')) {
+        if (batType.skills.includes('flash') || bat.eq === 'e-flash' || bat.eq.includes('kit-')) {
             if (!bat.tags.includes('camo')) {
                 hauteur = 2;
                 vue = 3;
@@ -66,7 +66,7 @@ function undarkAround(bat,center) {
                 }
             }
         }
-        if (batType.skills.includes('fly') || bat.eq === 'jetpack') {
+        if (batType.skills.includes('fly') || bat.eq === 'e-jetpack') {
             hauteur = 3;
         }
         if (vue < hauteur) {

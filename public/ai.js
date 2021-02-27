@@ -134,7 +134,7 @@ function checkAlienFlyTarget(weapon,bat) {
         } else if (batType.skills.includes('fly') && bat.apLeft > -5 && !batType.skills.includes('jetpack')) {
             return false;
         } else {
-            if ((batType.skills.includes('jetpack') || bat.eq === 'jetpack') && bat.apLeft > 0) {
+            if ((batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') && bat.apLeft > 0) {
                 return false;
             } else {
                 return true;
@@ -174,7 +174,7 @@ function checkPDM() {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= 0 && pointDeMire < 0) {
                 batType = getBatType(bat);
-                if ((!batType.skills.includes('fly') && bat.eq != 'jetpack') || !selectedWeap.noFly) {
+                if ((!batType.skills.includes('fly') && bat.eq != 'e-jetpack') || !selectedWeap.noFly) {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
                     if (distance < 6) {
                         pointDeMire = bat.tileId;
@@ -186,7 +186,7 @@ function checkPDM() {
             shufBats.forEach(function(bat) {
                 if (bat.loc === "zone" && bat.fuzz >= 0) {
                     batType = getBatType(bat);
-                    if ((!batType.skills.includes('fly') && bat.eq != 'jetpack') || !selectedWeap.noFly) {
+                    if ((!batType.skills.includes('fly') && bat.eq != 'e-jetpack') || !selectedWeap.noFly) {
                         distance = calcDistance(selectedBat.tileId,bat.tileId);
                         if (distance < lePlusProche) {
                             pointDeMire = bat.tileId;
@@ -200,7 +200,7 @@ function checkPDM() {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= 0) {
                 batType = getBatType(bat);
-                if ((!batType.skills.includes('fly') && bat.eq != 'jetpack') || !selectedWeap.noFly) {
+                if ((!batType.skills.includes('fly') && bat.eq != 'e-jetpack') || !selectedWeap.noFly) {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
                     if (distance < lePlusProche) {
                         pointDeMire = bat.tileId;
@@ -213,7 +213,7 @@ function checkPDM() {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= 0) {
                 batType = getBatType(bat);
-                if (batType.cat === 'infantry' && ((!batType.skills.includes('fly') && bat.eq != 'jetpack') || !selectedWeap.noFly)) {
+                if (batType.cat === 'infantry' && ((!batType.skills.includes('fly') && bat.eq != 'e-jetpack') || !selectedWeap.noFly)) {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
                     if (distance < lePlusProche) {
                         pointDeMire = bat.tileId;
@@ -361,7 +361,7 @@ function anyCloseTarget() {
                 if (!isSurrounded(bat)) {
                     batType = getBatType(bat);
                     if ((bat.fuzz >= minFuzz.unit && batType.cat != 'buildings') || (bat.fuzz >= minFuzz.bld && batType.cat === 'buildings')) {
-                        if ((!batType.skills.includes('fly') && bat.eq != 'jetpack') || !selectedWeap.noFly) {
+                        if ((!batType.skills.includes('fly') && bat.eq != 'e-jetpack') || !selectedWeap.noFly) {
                             distance = calcDistance(selectedBat.tileId,bat.tileId);
                             if (distance <= closeTargetRange) {
                                 tLogic = targetLogic(bat);

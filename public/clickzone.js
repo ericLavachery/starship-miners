@@ -43,7 +43,7 @@ function clickSelect(tileId) {
     //         showBatInfos(bat);
     //         if (selectedBat.id == bat.id && selectedBatType.moveCost < 99) {
     //             // let batType = getBatType(bat);
-    //             if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'jetpack') {
+    //             if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'e-jetpack') {
     //                 jump = true;
     //             }
     //             moveMode();
@@ -62,7 +62,7 @@ function clickSelect(tileId) {
         if (bat.tileId === tileId && bat.loc === "zone") {
             showBatInfos(bat);
             if (selectedBat.id == bat.id && selectedBatType.moveCost < 99) {
-                if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'jetpack') {
+                if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'e-jetpack') {
                     jump = true;
                 }
                 goMove = true;

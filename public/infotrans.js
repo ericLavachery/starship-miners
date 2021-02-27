@@ -90,7 +90,7 @@ function calcVolume(bat,batType) {
     } else {
         batVolume = Math.round(batType.size*batType.squadSize*batType.squads/4*Math.sqrt(batType.size+13)*batType.volume);
     }
-    if (bat.eq === 'jetpack') {
+    if (bat.eq === 'e-jetpack') {
         batVolume = Math.ceil(batVolume*1.2);
     }
     if (bat.eq === 'kit-garde') {

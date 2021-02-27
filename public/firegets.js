@@ -526,7 +526,7 @@ function getStealth(bat) {
     if (bat.tags.includes('drunk')) {
         batStealth = batStealth-4;
     }
-    if (bat.eq === 'camo' || bat.eq === 'kit-sentinelle' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
+    if (bat.eq === 'e-camo' || bat.eq === 'kit-sentinelle' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
         if (batType.skills.includes('camo')) {
             batStealth = batStealth+4;
         } else {
@@ -589,7 +589,7 @@ function getAP(bat,batType) {
     if (bat.eq === 'helper') {
         newAP = newAP+1;
     }
-    if (bat.eq === 'ranger' || bat.eq === 'gilet') {
+    if (bat.eq === 'e-ranger' || bat.eq === 'gilet') {
         newAP = newAP-1;
     }
     if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.moveCost < 90) {
