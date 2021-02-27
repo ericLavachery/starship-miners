@@ -349,9 +349,17 @@ function getDeployCosts(unit,ammo,weapNum,type) {
     return deployCosts;
 }
 
+function mergedUnitCosts(batType) {
+    let batMergedCosts = JSON.parse(JSON.stringify(batType.costs));
+    if (batType.deploy != undefined) {
+        mergeObjects(batMergedCosts,batType.deploy);
+    }
+    return batMergedCosts;
+}
+
 function checkUnitCost(batType,withDeploy) {
     let enoughRes = true;
-    let batMergedCosts = JSON.parse(JSON.stringify(batType.costs));;
+    let batMergedCosts = JSON.parse(JSON.stringify(batType.costs));
     if (withDeploy) {
         if (batType.deploy != undefined) {
             // console.log(batType.deploy);

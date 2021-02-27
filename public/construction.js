@@ -47,6 +47,7 @@ function bfconst(cat,triche,upgrade) {
     let bldOK = false;
     let costOK = false;
     let costString = '';
+    let batMergedCosts;
     sortedUnitsList.forEach(function(unit) {
         prodOK = true;
         if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
@@ -118,9 +119,10 @@ function bfconst(cat,triche,upgrade) {
                 bldOK = true;
             }
             costOK = checkUnitCost(unit,true,true);
+            batMergedCosts = mergedUnitCosts(unit);
             costString = '';
             if (unit.costs != undefined) {
-                costString = displayCosts(unit.costs);
+                costString = displayCosts(batMergedCosts);
             }
             prodSign = ' <span class="ciel">&raquo;</span>';
             if (!prodOK) {
