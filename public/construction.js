@@ -984,6 +984,8 @@ function dismantle(batId) {
                 recupKrimulos(220,tileId,crew,xp,bat.ammo2,bat.eq);
             } else if (batType.name === 'Juggernauts') {
                 recupRaiders(219,tileId,crew,xp,bat.ammo,bat.eq);
+            } else if (batType.name === 'Scroungers') {
+                recupAmazones(14,tileId,crew,xp,bat.ammo,bat.eq);
             } else {
                 if (batType.skills.includes('brigands')) {
                     recupCitoyens(225,tileId,crew,xp);
@@ -1019,6 +1021,24 @@ function recupKrimulos(unitId,tileId,citoyens,xp,ammo,equip) {
     conselAmmos = [ammo,'xxx','scrap',equip];
     conselTriche = true;
     putBat(dropTile,60,xp);
+};
+
+function recupAmazones(unitId,tileId,citoyens,xp,ammo,equip) {
+    if (equip != 'theeye' && equip != 'arcpoulie') {
+        equip = 'xxx';
+    }
+    let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
+    conselUnit = unitTypes[unitIndex];
+    conselPut = false;
+    conselAmmos = [ammo,'xxx','scrap',equip];
+    conselTriche = true;
+    putBat(tileId,56,xp);
+    let dropTile = checkDrop(tileId);
+    conselUnit = unitTypes[unitIndex];
+    conselPut = false;
+    conselAmmos = [ammo,'xxx','scrap',equip];
+    conselTriche = true;
+    putBat(dropTile,56,xp);
 };
 
 function recupRaiders(unitId,tileId,citoyens,xp,ammo,equip) {

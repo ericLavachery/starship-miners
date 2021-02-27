@@ -676,7 +676,25 @@
         "bldReq":[],
         "compReq":{"log":1,"def":2,"pyro":2},
         "factor":"crew",
-        "costs":{"Scrap":18,"Fer":9,"Aluminium":18,"Tungstène":9}
+        "costs":{"Scrap":6,"Fer":18,"Aluminium":18,"Tungstène":9,"Fuel":18}
+    },
+    {
+        "name": "w2-molo",
+        "skills": [],
+        "info": "Les deux armes du bâtiment",
+        "bldReq":[],
+        "compReq":{"log":1,"def":2,"pyro":1},
+        "factor":"crew",
+        "costs":{"Scrap":12,"Fer":12}
+    },
+    {
+        "name": "w2-dyna",
+        "skills": [],
+        "info": "Les deux armes du bâtiment",
+        "bldReq":[],
+        "compReq":{"log":1,"def":2,"explo":1},
+        "factor":"crew",
+        "costs":{"Scrap":12,"Fer":12}
     },
     {
         "name": "w2-explo",
@@ -730,7 +748,7 @@
         "bldReq":[],
         "compReq":{"log":2,"def":2,"det":2,"bal":2,"robo":1},
         "factor":"one",
-        "costs":{"Carbone":30,"Scrap":30,"Soufre":25,"Tungstène":25,"Plomb":25,"Fer":150,"Cuivre":45,"Aluminium":60,"Silicium":45,"Electros":45,"Batteries":30}
+        "costs":{"Carbone":15,"Scrap":15,"Soufre":10,"Tungstène":10,"Plomb":10,"Fer":75,"Cuivre":20,"Aluminium":30,"Silicium":15,"Electros":15,"Batteries":15}
     },
     {
         "name": "w1-autogun",
@@ -739,7 +757,7 @@
         "bldReq":[],
         "compReq":{"log":2,"def":3,"det":3,"bal":3,"tank":1,"robo":1},
         "factor":"one",
-        "costs":{"Carbone":60,"Scrap":30,"Soufre":90,"Uranium":90,"Fer":300,"Cuivre":90,"Aluminium":120,"Silicium":90,"Electros":120,"Batteries":90}
+        "costs":{"Carbone":45,"Scrap":20,"Soufre":45,"Uranium":45,"Fer":150,"Cuivre":60,"Aluminium":60,"Silicium":30,"Electros":45,"Batteries":45}
     },
     {
         "name": "respack-weapons1",
