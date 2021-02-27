@@ -242,6 +242,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","cible","fouille","camo","brigands","trapfosse","unemun","noblub","guerrilla","baddef"],
+        "maxSkill":2,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -3044,7 +3045,7 @@
         "skills":["fouille","fortif","cible","guerrilla","selfbadmedic","maycamo","moto","defense","trapfosse","fret","fastempty"],
         "mediCost":15,
         "transRes":56,
-        "maxSkill":8,
+        "maxSkill":4,
         "fuzz":1,
         "deathFx":"195954__minian89__death-blood-splatter"
     },

@@ -980,15 +980,72 @@ function dismantle(batId) {
         let resHere = showRes(bat.tileId);
         $('#b'+bat.tileId).append(resHere);
         if (batType.skills.includes('recupcit')) {
-            if (batType.skills.includes('brigands')) {
-                recupCitoyens(225,tileId,crew,xp);
+            if (batType.name === 'Technobass') {
+                recupKrimulos(220,tileId,crew,xp,bat.ammo2,bat.eq);
+            } else if (batType.name === 'Juggernauts') {
+                recupRaiders(219,tileId,crew,xp,bat.ammo,bat.eq);
             } else {
-                recupCitoyens(126,tileId,crew,xp);
+                if (batType.skills.includes('brigands')) {
+                    recupCitoyens(225,tileId,crew,xp);
+                } else {
+                    recupCitoyens(126,tileId,crew,xp);
+                }
             }
         }
     } else {
         alert("Vous devez vider le bataillon avant de le démanteler.");
     }
+};
+
+function recupKrimulos(unitId,tileId,citoyens,xp,ammo,equip) {
+    if (equip != 'lunette2' && equip != 'chargeur2' && equip != 'theeye') {
+        equip = 'xxx';
+    }
+    let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
+    conselUnit = unitTypes[unitIndex];
+    conselPut = false;
+    conselAmmos = [ammo,'xxx','scrap',equip];
+    conselTriche = true;
+    putBat(tileId,60,xp);
+    let dropTile = checkDrop(tileId);
+    conselUnit = unitTypes[unitIndex];
+    conselPut = false;
+    conselAmmos = [ammo,'xxx','scrap',equip];
+    conselTriche = true;
+    putBat(dropTile,60,xp);
+    dropTile = checkDrop(tileId);
+    conselUnit = unitTypes[unitIndex];
+    conselPut = false;
+    conselAmmos = [ammo,'xxx','scrap',equip];
+    conselTriche = true;
+    putBat(dropTile,60,xp);
+};
+
+function recupRaiders(unitId,tileId,citoyens,xp,ammo,equip) {
+    if (equip != 'theeye') {
+        equip = 'gilet';
+    }
+    let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
+    conselUnit = unitTypes[unitIndex];
+    conselPut = false;
+    conselAmmos = [ammo,ammo,'scrap',equip];
+    conselTriche = true;
+    putBat(tileId,60,xp);
+    let dropTile = checkDrop(tileId);
+    conselUnit = unitTypes[unitIndex];
+    conselPut = false;
+    conselAmmos = [ammo,ammo,'scrap',equip];
+    conselTriche = true;
+    putBat(dropTile,60,xp);
+};
+
+function recupCitoyens(unitId,tileId,citoyens,xp) {
+    let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
+    conselUnit = unitTypes[unitIndex];
+    conselPut = false;
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
+    conselTriche = true;
+    putBat(tileId,citoyens,xp);
 };
 
 function recupRes(bat,batType) {
@@ -1156,15 +1213,6 @@ function putFretInChest(bat,batType,coffre) {
             }
         });
     }
-};
-
-function recupCitoyens(unitId,tileId,citoyens,xp) {
-    let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
-    conselUnit = unitTypes[unitIndex];
-    conselPut = false;
-    conselAmmos = ['xxx','xxx','xxx','xxx'];
-    conselTriche = true;
-    putBat(tileId,citoyens,xp);
 };
 
 function getXp(bat) {
