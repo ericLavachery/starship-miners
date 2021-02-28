@@ -230,9 +230,10 @@ function armyAssign(batId,army) {
     showBatInfos(selectedBat);
 };
 
-function goDrug(apCost,drug) {
+function goDrug(apCost,drugName) {
     console.log('DRUG DEAL');
     // console.log(selectedBat);
+    let drug = getDrugByName(drugName);
     let batType;
     let ravitBat = {};
     let ravitLeft = 0;
@@ -240,7 +241,7 @@ function goDrug(apCost,drug) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
-            if (batType.skills.includes('dealer') && batType.skills.includes(drug)) {
+            if (batType.skills.includes('dealer') && batType.skills.includes(drug.name)) {
                 ravitLeft = calcRavitDrug(bat);
                 if (calcDistance(selectedBat.tileId,bat.tileId) <= 1 && ravitLeft >= 1) {
                     if (biggestRavit < ravitLeft) {
@@ -266,22 +267,22 @@ function goDrug(apCost,drug) {
             }
         }
         selectedBat.apLeft = selectedBat.apLeft-apCost;
-        if (!selectedBat.tags.includes(drug)) {
-            selectedBat.tags.push(drug);
-            selectedBat.tags.push(drug);
+        if (!selectedBat.tags.includes(drug.name)) {
+            selectedBat.tags.push(drug.name);
+            selectedBat.tags.push(drug.name);
             // blaze instant bonus
-            if (drug === 'blaze') {
+            if (drug.name === 'blaze') {
                 selectedBat.apLeft = selectedBat.apLeft+6;
                 selectedBat.salvoLeft = selectedBat.salvoLeft+1;
                 console.log('blaze bonus');
             }
             // octiron instant bonus
-            if (drug === 'octiron') {
+            if (drug.name === 'octiron') {
                 selectedBat.apLeft = selectedBat.apLeft+2;
                 console.log('octiron bonus');
             }
             // starka instant bonus
-            if (drug === 'starka') {
+            if (drug.name === 'starka') {
                 selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap;
                 if (selectedBat.apLeft >= selectedBat.ap+1) {
                     selectedBat.apLeft = selectedBat.ap+1;
@@ -289,12 +290,12 @@ function goDrug(apCost,drug) {
                 console.log('starka bonus');
             }
             // kirin instant bonus
-            if (drug === 'kirin' && playerInfos.comp.med >= 3) {
+            if (drug.name === 'kirin' && playerInfos.comp.med >= 3) {
                 selectedBat.damage = 0;
                 console.log('kirin bonus');
             }
             // nitro instant bonus
-            if (drug === 'nitro') {
+            if (drug.name === 'nitro') {
                 selectedBat.apLeft = selectedBat.apLeft+Math.round(selectedBat.ap/2);
                 if (selectedBat.apLeft >= selectedBat.ap+1) {
                     selectedBat.apLeft = selectedBat.ap+1;
@@ -305,6 +306,7 @@ function goDrug(apCost,drug) {
                 console.log('nitro bonus');
             }
         }
+        payCost(drug.costs);
         tagAction();
         selectedBatArrayUpdate();
         showBatInfos(selectedBat);
@@ -319,28 +321,28 @@ function checkDrugs(myBat) {
             batType = getBatType(bat);
             if (batType.skills.includes('dealer')) {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1 && calcRavitDrug(bat) >= 1) {
-                    if (batType.skills.includes('bliss') && playerInfos.drugs.includes('Bliss')) {
+                    if (batType.skills.includes('bliss')) {
                         allDrugs.push('bliss');
                     }
-                    if (batType.skills.includes('sila') && playerInfos.drugs.includes('Sila')) {
+                    if (batType.skills.includes('sila')) {
                         allDrugs.push('sila');
                     }
-                    if (batType.skills.includes('blaze') && playerInfos.drugs.includes('Blaze')) {
+                    if (batType.skills.includes('blaze')) {
                         allDrugs.push('blaze');
                     }
-                    if (batType.skills.includes('kirin') && playerInfos.drugs.includes('Kirin')) {
+                    if (batType.skills.includes('kirin')) {
                         allDrugs.push('kirin');
                     }
-                    if (batType.skills.includes('octiron') && playerInfos.drugs.includes('Octiron')) {
+                    if (batType.skills.includes('octiron')) {
                         allDrugs.push('octiron');
                     }
-                    if (batType.skills.includes('skupiac') && playerInfos.drugs.includes('Skupiac')) {
+                    if (batType.skills.includes('skupiac')) {
                         allDrugs.push('skupiac');
                     }
-                    if (batType.skills.includes('starka') && playerInfos.drugs.includes('Starka')) {
+                    if (batType.skills.includes('starka')) {
                         allDrugs.push('starka');
                     }
-                    if (batType.skills.includes('nitro') && playerInfos.drugs.includes('Nitro')) {
+                    if (batType.skills.includes('nitro')) {
                         allDrugs.push('nitro');
                         // console.log(bat);
                     }

@@ -95,12 +95,12 @@ function payCost(costs) {
     }
 };
 
-function addCost(costs) {
+function addCost(costs,number) {
     if (costs != undefined) {
         Object.entries(costs).map(entry => {
             let key = entry[0];
             let value = entry[1];
-            resAdd(key,value)
+            resAdd(key,value*number);
         });
     }
 };

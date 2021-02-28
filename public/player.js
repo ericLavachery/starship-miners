@@ -763,6 +763,23 @@ function landerFill() {
         showPrep = '('+prepaBld['Pont']+')';
     }
     $('#conUnitList').append('<span class="constName klik gris" onclick="fillLanderWithInfra(`Pont`,true)">Pont <span class="ciel">'+showPrep+'</span></span><br>');
+    // DROGUES
+    $('#conUnitList').append('<br><span class="constName vert">drogues</span><br>');
+    armorTypes.forEach(function(drug) {
+        if (drug.cat != undefined) {
+            if (drug.cat === 'drogue') {
+                let drugCompOK = checkCompReq(drug);
+                if (drugCompOK) {
+                    if (prepaBld[drug.name] === undefined) {
+                        showPrep = '';
+                    } else {
+                        showPrep = '('+prepaBld[drug.name]+')';
+                    }
+                    $('#conUnitList').append('<span class="constName klik gris" onclick="fillLanderWithInfra(`'+drug.name+'`,false)">10 '+drug.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+                }
+            }
+        }
+    });
     // PACKS DE RESSOURCES
     $('#conUnitList').append('<br><span class="constName vert">packs de ressources</span><br>');
     armorTypes.forEach(function(pack) {
@@ -805,11 +822,15 @@ function fillLanderWithInfra(fillInfraName,road) {
         fillInfra = getInfraByName(fillInfraName);
     }
     console.log(fillInfra);
-    addCost(fillInfra.costs);
+    let number = 1;
+    if (fillInfra.cat === 'drogue') {
+        number = 10;
+    }
+    addCost(fillInfra.costs,number);
     if (prepaBld[fillInfra.name] === undefined) {
-        prepaBld[fillInfra.name] = 1;
+        prepaBld[fillInfra.name] = number;
     }  else {
-        prepaBld[fillInfra.name] = prepaBld[fillInfra.name]+1;
+        prepaBld[fillInfra.name] = prepaBld[fillInfra.name]+number;
     }
     landerFill();
     console.log(prepaBld);
@@ -817,8 +838,8 @@ function fillLanderWithInfra(fillInfraName,road) {
 
 function fillLanderWithUnit(fillUnitId) {
     let fillUnit = getBatTypeById(fillUnitId);
-    addCost(fillUnit.costs);
-    addCost(fillUnit.deploy);
+    addCost(fillUnit.costs,1);
+    addCost(fillUnit.deploy,1);
     let reqCit = fillUnit.squads*fillUnit.squadSize*fillUnit.crew;
     let citId = 126;
     if (fillUnit.skills.includes('brigands')) {

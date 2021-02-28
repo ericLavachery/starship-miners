@@ -164,6 +164,15 @@ function getInfraByName(infraName) {
     return infra;
 };
 
+function getDrugByName(drugName) {
+    let drug = {};
+    let index = armorTypes.findIndex((obj => obj.name == drugName));
+    if (index > -1) {
+        drug = armorTypes[index];
+    }
+    return drug;
+};
+
 function getBatType(bat) {
     let batType = {};
     let index;

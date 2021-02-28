@@ -42,6 +42,70 @@
         "costs":{}
     },
     {
+        "name": "starka",
+        "cat":"drogue",
+        "apCost":0,
+        "bldReq":[],
+        "compReq":{"ca":1},
+        "costs":{"Huile":2,"Végétaux":3,"Zinc":2,"Swarmine":4}
+    },
+    {
+        "name": "kirin",
+        "cat":"drogue",
+        "apCost":3,
+        "bldReq":["Infirmerie"],
+        "compReq":{"ca":2,"exo":1},
+        "costs":{"Huile":4,"Végétaux":6,"Or":4,"Mendium":12}
+    },
+    {
+        "name": "octiron",
+        "cat":"drogue",
+        "apCost":0,
+        "bldReq":[],
+        "compReq":{"med":1},
+        "costs":{"Huile":2,"Hélium":2,"Bore":6,"Octiron":6}
+    },
+    {
+        "name": "bliss",
+        "cat":"drogue",
+        "apCost":1,
+        "bldReq":[],
+        "compReq":{"ca":1,"exo":2},
+        "costs":{"Huile":4,"Mercure":3,"Bore":4,"Larvium":12}
+    },
+    {
+        "name": "skupiac",
+        "cat":"drogue",
+        "apCost":3,
+        "bldReq":["Bar"],
+        "compReq":{"ca":2,"exo":2},
+        "costs":{"Huile":3,"Végétaux":4,"Mercure":3,"Or":3,"Aranium":12}
+    },
+    {
+        "name": "blaze",
+        "cat":"drogue",
+        "apCost":3,
+        "bldReq":["Bar"],
+        "compReq":{"ca":3,"exo":3},
+        "costs":{"Huile":3,"Mercure":3,"Hélium":2,"Bore":6,"Wingium":9}
+    },
+    {
+        "name": "sila",
+        "cat":"drogue",
+        "apCost":3,
+        "bldReq":[],
+        "compReq":{"ca":1,"exo":1},
+        "costs":{"Huile":3,"Végétaux":6,"Zinc":3,"Creatite":3,"Bugium":9}
+    },
+    {
+        "name": "nitro",
+        "cat":"drogue",
+        "apCost":0,
+        "bldReq":["Garage"],
+        "compReq":{"energ":1},
+        "costs":{"Huile":6,"Hydrogène":3,"Azote":3,"Slime":12}
+    },
+    {
         "name": "aucune",
         "armor": 0,
         "ap": 0,

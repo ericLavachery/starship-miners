@@ -9,6 +9,9 @@ socket.on('playerInfos-Load', function(pi) {
         numHTiles = playerInfos.numHTiles;
         numVTiles = playerInfos.numVTiles;
     }
+    if (playerInfos.onShip === undefined) {
+        playerInfos.onShip = false;
+    }
     if (playerInfos.comp === undefined) {
         playerInfos.comp = resetComp();
     }
@@ -56,9 +59,6 @@ socket.on('playerInfos-Load', function(pi) {
     }
     if (playerInfos.bldList === undefined) {
         playerInfos.bldList = [];
-    }
-    if (playerInfos.drugs === undefined) {
-        playerInfos.drugs = ["Starka","Kirin","Sila","Skupiac","Bliss","Nitro"];
     }
     if (playerInfos.gang === undefined) {
         playerInfos.gang = 'rednecks';
