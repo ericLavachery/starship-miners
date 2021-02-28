@@ -858,6 +858,7 @@
         "hp":50,
         "armor":8,
         "size":20,
+        "volume":0.95,
         "stealth":2,
         "speed":3,
         "ap":24,
@@ -885,7 +886,7 @@
         "mecanoCost":20,
         "maxDrug":36,
         "transMaxSize":4,
-        "transUnits":220,
+        "transUnits":340,
         "transRes":90,
         "fuzz":1,
         "deathFx":"S_CarExplosion02"
