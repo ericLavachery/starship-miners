@@ -917,6 +917,10 @@ function eggSpawn(bat,fromEgg) {
         eggModTurn = eggTurn+playerInfos.mapDiff-3;
         eggLife = coqLifeStart+Math.floor(playerInfos.mapDiff*coqLifeFactor);
     }
+    let presAlien = playerInfos.mapDiff;
+    if (presAlien < 1) {
+        presAlien = 1;
+    }
     console.log('eggTurn='+eggTurn);
     if (eggTurn > eggLife && fromEgg) {
         // TRANFORMATION EN RUCHE !
@@ -929,7 +933,7 @@ function eggSpawn(bat,fromEgg) {
             alienMorph(bat,'Volcan',false);
         }
     } else {
-        let spawnChance = Math.round(eggTurn*15*bat.squadsLeft/6*Math.sqrt(playerInfos.mapDiff)*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
+        let spawnChance = Math.round(eggTurn*15*bat.squadsLeft/6*Math.sqrt(presAlien)*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
         if (!fromEgg) {
             spawnChance = 100-(eggTurn*5);
             if (spawnChance < 25) {

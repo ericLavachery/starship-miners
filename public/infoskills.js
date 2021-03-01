@@ -551,7 +551,7 @@ function skillsInfos(bat,batType) {
             }
             apCost = drug.apCost;
             let maxStarkaPA = bat.ap+1;
-            if (bat.apLeft >= apCost && !bat.tags.includes('starka') && drugCompOK && drugBldOK && drugCostsOK) {
+            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('starka') && drugCompOK && drugBldOK && drugCostsOK && bat.tileId === bat.oldTileId) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+bat.ap+' PA, maximum '+maxStarkaPA+' au total" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
             } else {
                 if (bat.tags.includes('starka')) {
@@ -582,7 +582,7 @@ function skillsInfos(bat,batType) {
                 balise = 'h3';
             }
             apCost = drug.apCost;
-            if (bat.apLeft >= apCost && !bat.tags.includes('kirin') && drugCompOK && drugBldOK && drugCostsOK) {
+            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('kirin') && drugCompOK && drugBldOK && drugCostsOK) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Régénération rapide" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
             } else {
                 if (bat.tags.includes('kirin')) {
@@ -613,7 +613,7 @@ function skillsInfos(bat,batType) {
                 balise = 'h3';
             }
             apCost = drug.apCost;
-            if (bat.apLeft >= apCost && !bat.tags.includes('octiron') && drugCompOK && drugBldOK && drugCostsOK) {
+            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('octiron') && drugCompOK && drugBldOK && drugCostsOK) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+2 PA, protection poisons et maladies" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
             } else {
                 if (bat.tags.includes('octiron')) {
@@ -644,7 +644,7 @@ function skillsInfos(bat,batType) {
                 balise = 'h3';
             }
             apCost = drug.apCost;
-            if (bat.apLeft >= apCost && !bat.tags.includes('bliss') && drugCompOK && drugBldOK && drugCostsOK) {
+            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('bliss') && drugCompOK && drugBldOK && drugCostsOK) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Dégâts reçus réduits / immunisé à la peur" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
             } else {
                 if (bat.tags.includes('bliss')) {
@@ -675,7 +675,7 @@ function skillsInfos(bat,batType) {
                 balise = 'h3';
             }
             apCost = drug.apCost;
-            if (bat.apLeft >= apCost && !bat.tags.includes('sila') && drugCompOK && drugBldOK && drugCostsOK) {
+            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('sila') && drugCompOK && drugBldOK && drugCostsOK) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+5 puissance aux armes de mêlée" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
             } else {
                 if (bat.tags.includes('sila')) {
@@ -706,7 +706,7 @@ function skillsInfos(bat,batType) {
                 balise = 'h3';
             }
             apCost = drug.apCost;
-            if (bat.apLeft >= apCost && !bat.tags.includes('skupiac') && drugCompOK && drugBldOK && drugCostsOK) {
+            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('skupiac') && drugCompOK && drugBldOK && drugCostsOK) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Concentration: +6 précision / +3 défense / guérit les maladies" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</'+balise+'></span>');
             } else {
                 if (bat.tags.includes('skupiac')) {
@@ -737,7 +737,7 @@ function skillsInfos(bat,batType) {
                 balise = 'h3';
             }
             apCost = drug.apCost;
-            if (bat.apLeft >= apCost && !bat.tags.includes('blaze') && drugCompOK && drugBldOK && drugCostsOK) {
+            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('blaze') && drugCompOK && drugBldOK && drugCostsOK) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+6 PA & +1 salve" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</'+balise+'></span>');
             } else {
                 if (bat.tags.includes('blaze')) {
@@ -772,7 +772,7 @@ function skillsInfos(bat,batType) {
             apCost = drug.apCost;
             let maxNitroPA = bat.ap+1;
             let nitroPA = Math.round(bat.ap/3);
-            if (bat.apLeft >= apCost && !bat.tags.includes('nitro') && drugCompOK && drugBldOK && drugCostsOK) {
+            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('nitro') && drugCompOK && drugBldOK && drugCostsOK) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+nitroPA+' PA, maximum '+maxNitroPA+' et minimum 1" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
             } else {
                 if (bat.tags.includes('nitro')) {

@@ -490,7 +490,7 @@
             "cost":3,
             "range":2,
             "rof":12,
-            "accuracy":25,
+            "accuracy":30,
             "power":12,
             "aoe":"unit",
             "sound":"plasma_fusil",

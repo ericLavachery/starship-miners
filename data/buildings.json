@@ -1693,7 +1693,7 @@
             "kit":true,
             "noBis":false,
             "rof":15,
-            "accuracy":25,
+            "accuracy":30,
             "power":12,
             "aoe":"unit",
             "sound":"plasma_fusil",
