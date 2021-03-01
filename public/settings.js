@@ -45,6 +45,7 @@ let resBatchDiv = 16;
 let permaRes = false;
 let minResForRate = 50;
 let maxResForRate = 500;
+let alienResFactor = 7; // base: 10
 let magmaZone = 3;
 let hasScraptruck = false;
 let ruinRarity = 8;

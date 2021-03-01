@@ -638,7 +638,7 @@ function veilSpawn(bat) {
         kind = 'bug';
     } else if (terName === 'F') {
         kind = 'spider';
-    } else if (terName === 'S' || terName === 'W' || terName === 'R') {
+    } else if (terName === 'W' || terName === 'R') {
         kind = 'larve';
     } else if (terName === 'B') {
         kind = 'swarm';
@@ -646,6 +646,8 @@ function veilSpawn(bat) {
         kind = zoneInfos.pKind;
     } else if (terName === 'G') {
         kind = zoneInfos.gKind;
+    } else if (terName === 'S') {
+        kind = zoneInfos.sKind;
     } else {
         kind = 'bug';
     }
@@ -1057,7 +1059,7 @@ function checkputEggKind(bat) {
         } else if (terName === 'F') {
             bat.tags.push('spider');
             return 'spider';
-        } else if (terName === 'S' || terName === 'W') {
+        } else if (terName === 'R' || terName === 'W') {
             bat.tags.push('larve');
             return 'larve';
         } else if (terName === 'B') {
@@ -1067,6 +1069,8 @@ function checkputEggKind(bat) {
             return zoneInfos.pKind;
         } else if (terName === 'G') {
             return zoneInfos.gKind;
+        } else if (terName === 'S') {
+            return zoneInfos.sKind;
         } else {
             return '';
         }

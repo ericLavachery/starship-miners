@@ -32,6 +32,16 @@ function checkMapKind(terName) {
         } else {
             return 'swarm';
         }
+    } else if (terName === 'S') {
+        if (dice <= 2) {
+            return 'bug';
+        } else if (dice <= 4) {
+            return 'spider';
+        } else if (dice <= 10) {
+            return 'larve';
+        } else {
+            return 'swarm';
+        }
     }
 };
 
@@ -52,7 +62,8 @@ function createMap(size) {
         if (newTile.id === 0) {
             newTile.pKind = checkMapKind('P');
             newTile.gKind = checkMapKind('G');
-            console.log('pKind='+newTile.pKind+' gKing='+newTile.gKind);
+            newTile.sKind = checkMapKind('S');
+            console.log('pKind='+newTile.pKind+' gKind='+newTile.gKind+' sKind='+newTile.sKind);
         }
         newTile.x = x;
         newTile.y = y;
@@ -1233,23 +1244,26 @@ function zoneReport(zone) {
         }
     });
     percM = Math.round(percM/36);
-    warning('Montagnes',percM+'%',true);
+    warning('Montagnes',percM+'% (bug)',true);
     percH = Math.round(percH/36);
-    warning('Collines',percH+'%',true);
+    warning('Collines',percH+'% (bug)',true);
     percP = Math.round(percP/36);
-    warning('Plaines',percP+'%',true);
+    warning('Plaines',percP+'% ('+zone[0].pKind+')',true);
     percG = Math.round(percG/36);
-    warning('Prairies',percG+'%',true);
+    warning('Prairies',percG+'% ('+zone[0].gKind+')',true);
     percB = Math.round(percB/36);
-    warning('Maquis',percB+'%',true);
+    warning('Maquis',percB+'% (swarm)',true);
     percF = Math.round(percF/36);
-    warning('Forêts',percF+'%',true);
+    warning('Forêts',percF+'% (spider)',true);
     percS = Math.round(percS/36);
-    warning('Marécages',percS+'%',true);
+    if (percS < 30) {
+        zone[0].sKind = 'larve';
+    }
+    warning('Marécages',percS+'% ('+zone[0].sKind+')',true);
     percW = Math.round(percW/36);
-    warning('Etangs',percW+'%',true);
+    warning('Etangs',percW+'% (larve)',true);
     percR = Math.round(percR/36);
-    warning('Rivières',percR+'%');
+    warning('Rivières',percR+'% (larve)');
     zone[0].ensol = (percP*3)+40;
     console.log('ensol');
     console.log(zone[0].ensol);

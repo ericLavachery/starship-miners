@@ -3686,7 +3686,7 @@
         "armor":4,
         "size":16,
         "volume":1.3,
-        "stealth":1,
+        "stealth":10,
         "speed":4,
         "ap":10,
         "maxSalvo":1,
@@ -3712,7 +3712,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fly","extraction","selfbadmecano","fret","robot","light","conscont"],
+        "skills":["noguet","fly","extraction","selfbadmecano","fret","robot","light","conscont","camo"],
         "mecanoCost":12,
         "mining":{
             "level":3,

@@ -47,7 +47,7 @@
         "apCost":0,
         "bldReq":[],
         "compReq":{"ca":1},
-        "costs":{"Huile":1,"Végétaux":2,"Zinc":1,"Swarmine":3}
+        "costs":{"Huile":1,"Végétaux":2,"Zinc":1,"Swarmine":5}
     },
     {
         "name": "kirin",
@@ -55,7 +55,7 @@
         "apCost":3,
         "bldReq":["Infirmerie"],
         "compReq":{"ca":2,"exo":1},
-        "costs":{"Huile":2,"Végétaux":3,"Or":1,"Mendium":6}
+        "costs":{"Huile":2,"Végétaux":3,"Or":1,"Mendium":9}
     },
     {
         "name": "octiron",
@@ -71,7 +71,7 @@
         "apCost":1,
         "bldReq":[],
         "compReq":{"ca":1,"exo":2},
-        "costs":{"Huile":2,"Mercure":1,"Bore":2,"Larvium":6}
+        "costs":{"Huile":2,"Mercure":1,"Bore":2,"Larvium":9}
     },
     {
         "name": "skupiac",
@@ -79,7 +79,7 @@
         "apCost":3,
         "bldReq":["Bar"],
         "compReq":{"ca":2,"exo":2},
-        "costs":{"Huile":2,"Végétaux":2,"Mercure":1,"Or":1,"Aranium":6}
+        "costs":{"Huile":2,"Végétaux":2,"Mercure":1,"Or":1,"Aranium":9}
     },
     {
         "name": "blaze",
@@ -87,7 +87,7 @@
         "apCost":3,
         "bldReq":["Bar"],
         "compReq":{"ca":3,"exo":3},
-        "costs":{"Huile":2,"Mercure":1,"Hélium":1,"Bore":2,"Wingium":4}
+        "costs":{"Huile":2,"Mercure":1,"Hélium":1,"Bore":2,"Wingium":6}
     },
     {
         "name": "sila",
@@ -95,7 +95,7 @@
         "apCost":3,
         "bldReq":[],
         "compReq":{"ca":1,"exo":1},
-        "costs":{"Huile":1,"Végétaux":2,"Zinc":2,"Creatite":1,"Bugium":6}
+        "costs":{"Huile":1,"Végétaux":2,"Zinc":2,"Creatite":1,"Bugium":12}
     },
     {
         "name": "nitro",
@@ -136,7 +136,7 @@
         "bldReq":["Atelier"],
         "compReq":{"ca":2},
         "factor":"thp",
-        "costs":{"Scrap":6,"Bugium":12}
+        "costs":{"Scrap":6,"Bugium":24}
     },
     {
         "name": "kevlar",

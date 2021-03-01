@@ -5,9 +5,13 @@ function getMapInfos() {
     if (zone[0].gKind === undefined) {
         zone[0].gKind = checkMapKind('G');
     }
+    if (zone[0].sKind === undefined) {
+        zone[0].sKind = checkMapKind('S');
+    }
     zoneInfos.pKind = zone[0].pKind;
     zoneInfos.gKind = zone[0].gKind;
-    console.log('pKind='+zoneInfos.pKind+' gKind='+zoneInfos.gKind);
+    zoneInfos.sKind = zone[0].sKind;
+    console.log('pKind='+zoneInfos.pKind+' gKind='+zoneInfos.gKind+' sKind='+zoneInfos.sKind);
 };
 
 // Dessine la carte
