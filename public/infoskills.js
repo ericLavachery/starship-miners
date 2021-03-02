@@ -285,7 +285,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // MEDIC
-    if ((batType.skills.includes('medic') && bat.eq != 'megafret') || (bat.eq === 'e-medic' && playerInfos.comp.med >= 3)) {
+    if ((batType.skills.includes('medic') && bat.eq != 'megafret' && bat.eq != 'megatrans') || (bat.eq === 'e-medic' && playerInfos.comp.med >= 3)) {
         numTargets = numMedicTargets(bat,'infantry',true,true);
         baseskillCost = calcBaseSkillCost(bat,batType,true,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);

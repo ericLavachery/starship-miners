@@ -40,7 +40,7 @@ function batInfos(bat,pop) {
         resMax = bat.citoyens;
     }
     if (bat.eq === 'megafret') {
-        resMax = Math.round(resMax*1.25);
+        resMax = Math.round(resMax*1.2);
     }
     if (pop) {
         $('#'+headPlace).append('<img src="/static/img/units/'+batType.cat+'/'+batPic+'.png">&nbsp;');
@@ -258,6 +258,9 @@ function batInfos(bat,pop) {
     if (batType.transUnits >= 1) {
         let transLeft = calcTransUnitsLeft(bat,batType);
         let transBase = batType.transUnits;
+        if (bat.eq === 'megatrans') {
+            transBase = Math.round(transBase*1.25);
+        }
         if (batType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
             transBase = Math.round(transBase*bonusTransRetour);
         }

@@ -141,6 +141,9 @@ function checkTransportId(myBat,myBatType) {
 
 function calcTransUnitsLeft(myBat,myBatType) {
     let myBatTransUnitsLeft = myBatType.transUnits;
+    if (myBat.eq === 'megatrans') {
+        myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*1.25);
+    }
     if (myBatType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
         myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*bonusTransRetour);
         let resSpace = checkLanderResSpace(myBat);
@@ -163,7 +166,7 @@ function checkLanderResSpace(bat) {
     let resLoaded = checkResLoad(bat);
     let resMax = batType.transRes;
     if (bat.eq === 'megafret') {
-        resMax = Math.round(resMax*1.25);
+        resMax = Math.round(resMax*1.2);
     }
     if (bat.citoyens > 0) {
         resMax = bat.citoyens;

@@ -24,7 +24,6 @@ function commandes() {
         }
         $('#commandz').append('<button type="button" title="Nombres d\'aliens en vue" class="boutonGris iconButtons" onclick="updateAliensNum()">'+aliensNum+'</button>');
         $('#commandz').append('<button type="button" title="Nombres d\'oeufs en vue" class="boutonGris iconButtons" onclick="findEgg()">'+eggsNum+'</button>');
-
         $('#commandz').append('<br>');
         $('#commandz').append('<button type="button" title="Ressources présentes dans la zone" class="boutonGris iconButtons" onclick="voirRessources()"><i class="far fa-gem"></i></button>');
         $('#commandz').append('<button type="button" title="Crafting" class="boutonGris iconButtons" onclick="craftWindow()"><i class="fas fa-toolbox"></i></button>');
@@ -55,7 +54,9 @@ function commandes() {
         $('#commandz').append('<button type="button" title="Générer une nouvelle carte" class="boutonRouge iconButtons"><i class="fas fa-map" onclick="generateNewMap()"></i></button>');
         $('#commandz').append('<button type="button" title="Sauvegarder la carte" class="boutonRouge iconButtons" onclick="saveMap()"><i class="fas fa-save"></i></button>');
         $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les bataillons)" class="boutonRouge iconButtons" onclick="showMapReset()" id="reset1"><i class="fas fa-power-off"></i></button>');
-        $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les bataillons)" class="boutonRouge iconButtons" onclick="mapReset()" id="reset2"><i class="fas fa-skull-crossbones"></i></button>');
+        $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les bataillons)" class="boutonRouge iconButtons" onclick="mapReset()" id="reset2"><i class="fas fa-skull-crossbones"></i></button><br>');
+        $('#commandz').append('<button type="button" title="Remettre les compétences à zéro" class="boutonRouge iconButtons" onclick="compReset()"><i class="fas fa-award"></i></button>');
+        $('#commandz').append('<button type="button" title="Supprimer tous les aliens" class="boutonRouge iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
     }
     gangNavig();
 };

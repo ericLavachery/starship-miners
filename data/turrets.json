@@ -44,7 +44,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lmit","megafret"],
+        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -102,7 +102,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lmit","megafret"],
+        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -160,7 +160,7 @@
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lmit","megafret"],
+        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -221,7 +221,7 @@
             "ravitBld":"Arsenal"
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lcomet","megafret"],
+        "equip":["aucun","landerwkit","w2-lcomet","megafret","megatrans"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -280,7 +280,7 @@
             "ammo":["boulet"]
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lcradle","megafret"],
+        "equip":["aucun","landerwkit","w2-lcradle","megafret","megatrans"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -348,7 +348,7 @@
             "ravitBld":"Arsenal"
         },
         "protection":["aucun"],
-        "equip": ["aucun","w2-lcomet"],
+        "equip": ["aucun","w2-lcomet","megatrans"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -454,7 +454,7 @@
             "ravitBld":"Arsenal"
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lcomet"],
+        "equip":["aucun","landerwkit","w2-lcomet","megatrans"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,

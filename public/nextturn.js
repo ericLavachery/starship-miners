@@ -191,10 +191,10 @@ function nextTurnEnd() {
             if (bat.tags.includes('prayer') && !prayedTeams.includes(batType.kind)) {
                 prayedTeams.push(batType.kind);
             }
-            if (!medicalTransports.includes(bat.locId) && bat.loc === "trans" && batType.skills.includes('medic') && bat.eq != 'megafret') {
+            if (!medicalTransports.includes(bat.locId) && bat.loc === "trans" && batType.skills.includes('medic')) {
                 medicalTransports.push(bat.locId);
             }
-            if (!medicalTransports.includes(bat.id) && batType.transUnits >= 1 && batType.skills.includes('medic') && bat.eq != 'megafret') {
+            if (!medicalTransports.includes(bat.id) && batType.transUnits >= 1 && batType.skills.includes('medic') && bat.eq != 'megafret' && bat.eq != 'megatrans') {
                 medicalTransports.push(bat.id);
             }
             if (bat.loc === "trans") {

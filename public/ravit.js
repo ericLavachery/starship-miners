@@ -129,7 +129,7 @@ function checkRavit(myBat) {
                 if (bldRav === batType.name || batType.bldEquiv.includes(bldRav) || !batType.skills.includes('ravitprod')) {
                     ravitTypeOK = true;
                 }
-                if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret' && !batType.skills.includes('stockmed') && ravitTypeOK) {
+                if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret' && bat.eq != 'megatrans' && !batType.skills.includes('stockmed') && ravitTypeOK) {
                     if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
                         ravitLeft = calcRavit(bat);
                         if (ravitLeft >= 1 && (ravitVolume[0] <= batType.maxSkill || ravitVolume[0] <= 12 || batType.maxSkill >= 18 || (ravitVolume[0] <= 18 && (myBat.eq === 'gilet' || myBat.eq === 'crimekitgi'))) && (ravitVolume[2] != 'missile' || batType.skills.includes('stock'))) {
@@ -173,7 +173,7 @@ function goRavit() {
                 if (bldReq === batType.name || batType.bldEquiv.includes(bldReq) || !batType.skills.includes('ravitprod')) {
                     ravitTypeOK = true;
                 }
-                if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret' && ravitTypeOK) {
+                if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret' && bat.eq != 'megatrans' && ravitTypeOK) {
                     ravitLeft = calcRavit(bat);
                     if (calcDistance(selectedBat.tileId,bat.tileId) <= 1 && ravitLeft >= 1) {
                         if (biggestRavit < ravitLeft) {
@@ -275,7 +275,7 @@ function checkRavitDrug(myBat) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
-            if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret') {
+            if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret' && bat.eq != 'megatrans') {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
                     ravitLeft = calcRavit(bat);
                     if (ravitLeft >= 2 || batType.skills.includes('stock')) {
@@ -298,7 +298,7 @@ function goRavitDrug(apCost) {
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
-                if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret') {
+                if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret' && bat.eq != 'megatrans') {
                     ravitLeft = calcRavit(bat);
                     if (calcDistance(selectedBat.tileId,bat.tileId) <= 1 && ravitLeft >= 2) {
                         if (biggestRavit < ravitLeft) {

@@ -27,6 +27,17 @@ function saveGame() {
     saveMap();
     commandes();
 };
+function compReset() {
+    playerInfos.comp = resetComp();
+    // savePlayerInfos();
+    commandes();
+    gangEdit();
+};
+function alienReset() {
+    aliens = [];
+    // saveAliens();
+    showMap(zone,false);
+};
 function mapReset() {
     bataillons = [];
     saveBataillons();
@@ -53,6 +64,7 @@ function mapReset() {
     // playerInfos.comp = resetComp();
     resetReserve();
     savePlayerInfos();
+    showMap(zone,false);
     commandes();
     $("#reset2").css("display","none");
     $("#reset1").css("display","inline-block");

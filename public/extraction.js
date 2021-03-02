@@ -366,7 +366,7 @@ function checkResSpace(bat) {
     let resLoaded = checkResLoad(bat);
     let resMax = batType.transRes;
     if (bat.eq === 'megafret') {
-        resMax = Math.round(resMax*1.25);
+        resMax = Math.round(resMax*1.2);
     }
     if (bat.citoyens > 0) {
         resMax = bat.citoyens;
