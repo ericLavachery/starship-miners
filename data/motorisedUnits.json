@@ -880,7 +880,7 @@
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
-        "maxVeg":3,
+        "maxVeg":2,
         "skills":["cible","transport","fret","medic","selfbadmecano","dealer","kirin","octiron","starka","light","badcrewsave"],
         "mediCost":5,
         "mecanoCost":20,

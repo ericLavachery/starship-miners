@@ -1068,7 +1068,7 @@
         "id":59,
         "name":"Drones",
         "levels":{"rednecks":99,"blades":99,"bulbos":5,"drogmulojs":99,"tiradores":15,"detruas":99,"brasier":99},
-        "bldReq":["Laboratoire","Chaîne de montage"],
+        "bldReq":["Laboratoire","Atelier"],
         "compReq":{"robo":1},
         "compPass":["bulbos"],
         "costs":{"Scrap":24,"Carbone":60,"Aluminium":24,"Titane":24,"Bore":24,"Silicium":72,"Cuivre":24,"Electros":96,"Batteries":60,"Nickel":6,"Cobalt":24},
