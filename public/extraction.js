@@ -471,8 +471,8 @@ function loadRes() {
                                 $('#conUnitList').append('<span class="constIcon rose"><i class="fas fa-pallet"></i></span>');
                                 $('#conUnitList').append('<span class="constName rose"><span class="klik" onclick="resAllLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+')">Charger tout</span></span><br>');
                             }
-                            if (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('transorbital')) {
-                                if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
+                            if (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('transorbital') || (selectedBatType.skills.includes('fret') && selectedBatType.crew >= 1)) {
+                                if (batType.cat === 'buildings' || batType.skills.includes('transorbital') || (batType.skills.includes('fret') && batType.crew >= 1)) {
                                     let isAuto = false;
                                     if (selectedBat.autoLoad != undefined) {
                                         if (selectedBat.autoLoad.includes(bat.id)) {

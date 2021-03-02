@@ -2281,7 +2281,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","cible","fortif","extraction","selfbadmedic","camo","ranger","fret","conscont","constructeur","routes"],
+        "skills":["fouille","cible","fortif","extraction","selfbadmedic","camo","ranger","fret","conscont","constructeur","routes","repair"],
         "mediCost":9,
         "mecanoCost":14,
         "mining":{

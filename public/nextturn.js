@@ -207,7 +207,9 @@ function nextTurnEnd() {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
-                        autoResLoad(bat,fromBat);
+                        if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
+                            autoResLoad(bat,fromBat);
+                        }
                     });
                 }
             }
@@ -232,7 +234,9 @@ function nextTurnEnd() {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
-                        autoResLoad(bat,fromBat);
+                        if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
+                            autoResLoad(bat,fromBat);
+                        }
                     });
                 }
             }
@@ -286,7 +290,9 @@ function nextTurnEnd() {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
-                        autoResLoad(bat,fromBat);
+                        if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
+                            autoResLoad(bat,fromBat);
+                        }
                     });
                 }
             }
@@ -452,7 +458,9 @@ function nextTurnEnd() {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
-                        autoResLoad(bat,fromBat);
+                        if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
+                            autoResLoad(bat,fromBat);
+                        }
                     });
                 }
             }
