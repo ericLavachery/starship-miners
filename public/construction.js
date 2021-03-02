@@ -1268,13 +1268,13 @@ function getRoadCosts(tile) {
     let roadCosts = {};
     if (tile.terrain === 'W' || tile.terrain === 'R') {
         roadCosts['Scrap'] = 50;
-        roadCosts['Compo1'] = 200;
+        roadCosts['Compo1'] = 150;
         if (playerInfos.comp.const >= 1) {
-            roadCosts['Compo1'] = 140;
+            roadCosts['Compo1'] = 100;
         }
-        roadCosts['Compo2'] = 75;
+        roadCosts['Compo2'] = 50;
         if (playerInfos.comp.const >= 2) {
-            roadCosts['Compo2'] = 50;
+            roadCosts['Compo2'] = 33;
         }
     } else {
         roadCosts['Compo1'] = 20;

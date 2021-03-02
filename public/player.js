@@ -805,13 +805,13 @@ function fillLanderWithInfra(fillInfraName,road) {
         fillInfra.costs = {};
         if (fillInfra.name === 'Pont') {
             fillInfra.costs['Scrap'] = 50;
-            fillInfra.costs['Compo1'] = 200;
+            fillInfra.costs['Compo1'] = 150;
             if (playerInfos.comp.const >= 1) {
-                fillInfra.costs['Compo1'] = 140;
+                fillInfra.costs['Compo1'] = 100;
             }
-            fillInfra.costs['Compo2'] = 75;
+            fillInfra.costs['Compo2'] = 50;
             if (playerInfos.comp.const >= 2) {
-                fillInfra.costs['Compo2'] = 50;
+                fillInfra.costs['Compo2'] = 33;
             }
         } else {
             fillInfra.costs['Compo1'] = 20;

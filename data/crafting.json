@@ -6,7 +6,8 @@
         "compReq":{},
         "bldReq":[],
         "bldOut":["Atelier"],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":87,
@@ -15,7 +16,8 @@
         "compReq":{},
         "bldReq":[],
         "bldOut":["Atelier"],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":11,
@@ -24,7 +26,8 @@
         "compReq":{},
         "bldReq":[],
         "bldOut":["Atelier"],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":93,
@@ -33,7 +36,8 @@
         "compReq":{},
         "bldReq":[],
         "bldOut":["Atelier"],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":91,
@@ -41,7 +45,8 @@
         "cost":{"Compo2":1},
         "compReq":{},
         "bldReq":[],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":6,
@@ -49,7 +54,8 @@
         "cost":{"Bois":2},
         "compReq":{},
         "bldReq":["Atelier"],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":9,
@@ -57,7 +63,8 @@
         "cost":{"Scrap":2},
         "compReq":{},
         "bldReq":["Atelier"],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":10,
@@ -65,7 +72,8 @@
         "cost":{"Bois":1,"Scrap":1},
         "compReq":{},
         "bldReq":["Atelier"],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":16,
@@ -97,7 +105,8 @@
         "cost":{"Compo3":1},
         "compReq":{},
         "bldReq":[],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":7,
@@ -105,7 +114,8 @@
         "cost":{"Fer":3},
         "compReq":{},
         "bldReq":["Atelier"],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":12,
@@ -113,7 +123,8 @@
         "cost":{"Fer":3,"Carbone":2},
         "compReq":{"const":1},
         "bldReq":["Atelier"],
-        "batch":2
+        "batch":2,
+        "creaNum":20
     },
     {
         "id":13,
@@ -278,7 +289,8 @@
         "cost":{"Soufre":1,"Potassium":1,"Carbone":1},
         "compReq":{},
         "bldReq":["Atelier"],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":24,
@@ -286,7 +298,8 @@
         "cost":{"Phosphore":3,"Hydrogène":1},
         "compReq":{"explo":1},
         "bldReq":["Atelier"],
-        "batch":2
+        "batch":2,
+        "creaNum":20
     },
     {
         "id":25,
@@ -294,7 +307,8 @@
         "cost":{"Soufre":1,"Hydrocarbure":2},
         "compReq":{"explo":2},
         "bldReq":["Atelier"],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":27,
@@ -320,7 +334,8 @@
         "bldReq":["Atelier"],
         "compOut":{"ind":1},
         "bldOut":["Chaîne de montage"],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":66,
@@ -344,7 +359,8 @@
         "cost":{"Végétaux":4},
         "compReq":{},
         "bldReq":[],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":72,
@@ -417,7 +433,8 @@
         "cost":{"Fer":2,"Carbone":2,"Végétaux":4},
         "compReq":{"mat":1,"const":1},
         "bldReq":["Atelier"],
-        "batch":3
+        "batch":3,
+        "creaNum":20
     },
     {
         "id":81,
@@ -433,7 +450,8 @@
         "cost":{"Compo1":2},
         "compReq":{"tri":1},
         "bldReq":["Décharge","Atelier"],
-        "batch":1
+        "batch":1,
+        "creaNum":20
     },
     {
         "id":83,
@@ -441,7 +459,8 @@
         "cost":{"Compo2":3,"Energie":1},
         "compReq":{"tri":1,"const":1},
         "bldReq":["Décharge","Atelier"],
-        "batch":2
+        "batch":2,
+        "creaNum":20
     },
     {
         "id":84,
@@ -537,7 +556,8 @@
         "cost":{"Hydrocarbure":15,"Energie":3},
         "compReq":{"tri":2},
         "bldReq":["Atelier"],
-        "batch":5
+        "batch":5,
+        "creaNum":20
     },
     {
         "id":52,
@@ -683,7 +703,7 @@
         "compReq":{"tri":4,"mat":1},
         "bldReq":["Recyclab"],
         "batch":5,
-        "creaNum":25
+        "creaNum":20
     },
     {
         "id":49,
