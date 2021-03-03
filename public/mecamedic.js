@@ -405,7 +405,11 @@ function numMedicTargets(myBat,cat,around,deep) {
                 }
             } else {
                 if (myBat.damage > 0 || myBat.tags.includes('poison')) {
-                    numTargets = numTargets+1;
+                    if (cat === 'infantry') {
+                        numTargets = numTargets+1;
+                    } else if (myBat.squadsLeft === myBatType.squads) {
+                        numTargets = numTargets+1;
+                    }
                 }
             }
         }

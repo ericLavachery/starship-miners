@@ -448,7 +448,7 @@
             "noFly":false,
             "isMelee":false,
             "rof":15,
-            "accuracy":20,
+            "accuracy":17,
             "dca":1.5,
             "power":8,
             "aoe":"brochette",

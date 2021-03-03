@@ -393,13 +393,15 @@ function attack(melee) {
     // ESCAPE
     escaped = false;
     if (targetBatType.skills.includes('escape')) {
-        let escapeChance = Math.round((targetBatType.speed-2)*selectedWeap.cost*escapeValue);
-        console.log('escapeChance:'+escapeChance);
-        if (rand.rand(1,100) <= escapeChance) {
-            escaped = true;
-            let escapeVar = rand.rand(4,8);
-            console.log('escapeVar:'+escapeVar);
-            shots = Math.round(shots*escapeVar/(selectedWeap.cost+4)/2);
+        if ((tile.terrain != 'W' && tile.terrain != 'R') || targetBatType.skills.includes('fly')) {
+            let escapeChance = Math.round((targetBatType.speed-2)*selectedWeap.cost*escapeValue);
+            console.log('escapeChance:'+escapeChance);
+            if (rand.rand(1,100) <= escapeChance) {
+                escaped = true;
+                let escapeVar = rand.rand(4,8);
+                console.log('escapeVar:'+escapeVar);
+                shots = Math.round(shots*escapeVar/(selectedWeap.cost+4)/2);
+            }
         }
     }
     // SHIELD
@@ -1139,14 +1141,16 @@ function defense(melee) {
     // ESCAPE
     escaped = false;
     if (selectedBatType.skills.includes('escape')) {
-        let escapeChance = Math.round((selectedBatType.speed-2)*targetWeap.cost*escapeValue);
-        console.log('escapeChance:'+escapeChance);
-        if (rand.rand(1,100) <= escapeChance) {
-            escaped = true;
-            let escapeVar = rand.rand(4,8);
-            console.log('escapeVar:'+escapeVar);
-            shots = Math.round(shots*escapeVar/(targetWeap.cost+4)/2);
-            defFactor = Math.round(defFactor*escapeVar/(targetWeap.cost+4)/2);
+        if ((tile.terrain != 'W' && tile.terrain != 'R') || selectedBatType.skills.includes('fly')) {
+            let escapeChance = Math.round((selectedBatType.speed-2)*targetWeap.cost*escapeValue);
+            console.log('escapeChance:'+escapeChance);
+            if (rand.rand(1,100) <= escapeChance) {
+                escaped = true;
+                let escapeVar = rand.rand(4,8);
+                console.log('escapeVar:'+escapeVar);
+                shots = Math.round(shots*escapeVar/(targetWeap.cost+4)/2);
+                defFactor = Math.round(defFactor*escapeVar/(targetWeap.cost+4)/2);
+            }
         }
     }
     // bugROF
