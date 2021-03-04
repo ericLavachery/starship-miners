@@ -207,8 +207,10 @@ function nextTurnEnd() {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
-                        if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
-                            autoResLoad(bat,fromBat);
+                        if (Object.keys(fromBat).length >= 1) {
+                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
+                                autoResLoad(bat,fromBat);
+                            }
                         }
                     });
                 }
@@ -234,8 +236,10 @@ function nextTurnEnd() {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
-                        if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
-                            autoResLoad(bat,fromBat);
+                        if (Object.keys(fromBat).length >= 1) {
+                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
+                                autoResLoad(bat,fromBat);
+                            }
                         }
                     });
                 }
@@ -290,8 +294,10 @@ function nextTurnEnd() {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
-                        if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
-                            autoResLoad(bat,fromBat);
+                        if (Object.keys(fromBat).length >= 1) {
+                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
+                                autoResLoad(bat,fromBat);
+                            }
                         }
                     });
                 }
@@ -458,8 +464,10 @@ function nextTurnEnd() {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
-                        if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
-                            autoResLoad(bat,fromBat);
+                        if (Object.keys(fromBat).length >= 1) {
+                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
+                                autoResLoad(bat,fromBat);
+                            }
                         }
                     });
                 }

@@ -1060,7 +1060,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["chancre","capbld","ponte","minaccu","resistpoison","okwater"],
+        "skills":["chancre","capbld","ponte","minaccu","resistpoison","okwater","nez"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":4,"Germium":3,"Bossium":15,"Creatite":6,"Slime":2}
     },
@@ -1721,7 +1721,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["heal","capbld","fear","okwater","ponte","resistfeu","fouisseur","noaploss","resistelec"],
+        "skills":["heal","capbld","fear","okwater","ponte","resistfeu","fouisseur","noaploss","resistelec","nez"],
         "deathFx":"185366__anwul__monster",
         "spawnFx":"142932__1pjladd2__burp-monster_megagrubz",
         "fxPriority":2,

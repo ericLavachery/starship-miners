@@ -692,7 +692,7 @@ function sideBySideTiles(myTileIndex,thatTileIndex,fuzzThing) {
     return sbs;
 };
 
-function batInMelee(bat) {
+function batInMelee(bat,batType) {
     // Vérifie si le bataillon est VRAIMENT en mêlée : Range 0 ET alien range 0 en face
     let inMelee = false;
     let alienType;
@@ -700,7 +700,7 @@ function batInMelee(bat) {
         if (alien.loc === "zone") {
             if (bat.tileId == alien.tileId+1 || bat.tileId == alien.tileId-1 || bat.tileId == alien.tileId+mapSize || bat.tileId == alien.tileId-mapSize) {
                 alienType = getBatType(alien);
-                if (alien.range === 0 && !bat.tags.includes('camo') && alienType.maxSalvo >= 1) {
+                if (alien.range === 0 && !bat.tags.includes('camo') && alienType.maxSalvo >= 1 && !batType.skills.includes('transorbital')) {
                     inMelee = true;
                 }
             }

@@ -7,7 +7,7 @@ function skillsInfos(bat,batType) {
     findLanders();
     let tile = getTile(bat);
     let terrain = getTerrain(bat);
-    let inMelee = batInMelee(bat);
+    let inMelee = batInMelee(bat,batType);
     let freeConsTile = false;
     let hasW1 = false;
     if (!batType.weapon.kit || bat.eq.includes('w2-') || bat.eq.includes('w1-')) {

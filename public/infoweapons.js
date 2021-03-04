@@ -8,7 +8,7 @@ function weaponsInfos(bat,batType,pop) {
     let thisWeapon = {};
     let showW1 = true;
     let anyTarget = false;
-    let inMelee = batInMelee(bat);
+    let inMelee = batInMelee(bat,batType);
     let noFireMelee = false;
     let noBisOK = true;
     let baseAmmo = 99;

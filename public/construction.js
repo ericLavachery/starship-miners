@@ -1149,14 +1149,12 @@ function recupRes(bat,batType) {
                 Object.entries(batEquip.costs).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
-                    value = Math.floor(value/100*recupFactor);
                     if (value >= 1) {
                         if (coffre.transRes[key] === undefined) {
                             coffre.transRes[key] = value;
                         } else {
                             coffre.transRes[key] = coffre.transRes[key]+value;
                         }
-                        totalRes = totalRes+value;
                     }
                 });
             }
