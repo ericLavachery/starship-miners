@@ -84,7 +84,7 @@ function combat(melee) {
     }
     // sort du mode furtif
     if (activeTurn == 'player') {
-        camoOut();
+        // camoOut();
         tagAction();
         centerMapTarget();
     } else {
@@ -124,7 +124,7 @@ function combat(melee) {
             let dspeed = calcSpeed(targetBat,targetWeap,selectedWeap,distance,false);
             // embuscade (initiative)
             if (activeTurn === 'player') {
-                if (selectedBat.tags.includes('embuscade') && selectedBat.fuzz == -2) {
+                if (selectedBat.tags.includes('embuscade') && selectedBat.fuzz === -2) {
                     aspeed = -999;
                 }
             }
@@ -230,6 +230,9 @@ function combat(melee) {
                 if (activeTurn == 'player') {blockMe(false);}
             }, 2000); // How long do you want the delay to be (in milliseconds)?
         }
+    }
+    if (activeTurn == 'player') {
+        camoOut();
     }
 };
 
@@ -392,7 +395,7 @@ function attack(melee) {
     }
     // ESCAPE
     escaped = false;
-    if (targetBatType.skills.includes('escape')) {
+    if (targetBatType.skills.includes('escape') && selectedBat.fuzz >= -1 && !selectedBat.tags.includes('embuscade')) {
         if ((tile.terrain != 'W' && tile.terrain != 'R') || targetBatType.skills.includes('fly')) {
             let escapeChance = Math.round((targetBatType.speed-2)*selectedWeap.cost*escapeValue);
             console.log('escapeChance:'+escapeChance);
@@ -1140,7 +1143,7 @@ function defense(melee) {
     }
     // ESCAPE
     escaped = false;
-    if (selectedBatType.skills.includes('escape')) {
+    if (selectedBatType.skills.includes('escape') && targetBat.fuzz >= -1 && !targetBat.tags.includes('embuscade')) {
         if ((tile.terrain != 'W' && tile.terrain != 'R') || selectedBatType.skills.includes('fly')) {
             let escapeChance = Math.round((selectedBatType.speed-2)*targetWeap.cost*escapeValue);
             console.log('escapeChance:'+escapeChance);

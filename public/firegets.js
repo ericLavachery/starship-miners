@@ -688,11 +688,6 @@ function sideBySideTiles(myTileIndex,thatTileIndex,fuzzThing) {
                 sbs = true;
             }
         }
-        // if (myTileIndex == thatTileIndex || myTileIndex == thatTileIndex+1 || myTileIndex == thatTileIndex-1 || myTileIndex == thatTileIndex+mapSize || myTileIndex == thatTileIndex-mapSize) {
-        //     return true;
-        // } else {
-        //     return false;
-        // }
     }
     return sbs;
 };
