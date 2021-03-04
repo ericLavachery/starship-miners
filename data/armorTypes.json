@@ -47,7 +47,7 @@
         "apCost":0,
         "bldReq":[],
         "compReq":{"ca":1},
-        "costs":{"Huile":1,"Végétaux":2,"Zinc":1,"Swarmine":5}
+        "costs":{"Huile":1,"Végétaux":2,"Zinc":1,"Swarmine":3}
     },
     {
         "name": "kirin",
@@ -55,7 +55,7 @@
         "apCost":3,
         "bldReq":["Infirmerie"],
         "compReq":{"ca":2,"exo":1},
-        "costs":{"Huile":2,"Végétaux":3,"Or":1,"Mendium":9}
+        "costs":{"Huile":2,"Végétaux":3,"Or":1,"Mendium":5}
     },
     {
         "name": "octiron",
@@ -63,7 +63,7 @@
         "apCost":0,
         "bldReq":[],
         "compReq":{"med":1},
-        "costs":{"Huile":1,"Hélium":1,"Bore":2,"Octiron":4}
+        "costs":{"Huile":1,"Hélium":1,"Bore":2,"Octiron":5}
     },
     {
         "name": "bliss",
@@ -71,7 +71,7 @@
         "apCost":1,
         "bldReq":[],
         "compReq":{"ca":1,"exo":2},
-        "costs":{"Huile":2,"Mercure":1,"Bore":2,"Larvium":9}
+        "costs":{"Huile":2,"Mercure":1,"Bore":2,"Larvium":6}
     },
     {
         "name": "skupiac",
@@ -79,7 +79,7 @@
         "apCost":3,
         "bldReq":["Bar"],
         "compReq":{"ca":2,"exo":2},
-        "costs":{"Huile":2,"Végétaux":2,"Mercure":1,"Or":1,"Aranium":9}
+        "costs":{"Huile":2,"Végétaux":2,"Mercure":1,"Or":1,"Aranium":5}
     },
     {
         "name": "blaze",
@@ -87,7 +87,7 @@
         "apCost":3,
         "bldReq":["Bar"],
         "compReq":{"ca":3,"exo":3},
-        "costs":{"Huile":2,"Mercure":1,"Hélium":1,"Bore":2,"Wingium":6}
+        "costs":{"Huile":2,"Mercure":1,"Hélium":1,"Bore":2,"Wingium":4}
     },
     {
         "name": "sila",
@@ -95,7 +95,7 @@
         "apCost":3,
         "bldReq":[],
         "compReq":{"ca":1,"exo":1},
-        "costs":{"Huile":1,"Végétaux":2,"Zinc":2,"Creatite":1,"Bugium":12}
+        "costs":{"Huile":1,"Végétaux":2,"Zinc":1,"Creatite":2,"Bugium":9}
     },
     {
         "name": "nitro",
@@ -103,7 +103,7 @@
         "apCost":0,
         "bldReq":["Garage"],
         "compReq":{"energ":1},
-        "costs":{"Huile":2,"Hydrogène":2,"Azote":2,"Slime":6}
+        "costs":{"Huile":2,"Hydrogène":2,"Azote":2,"Slime":4}
     },
     {
         "name": "aucune",

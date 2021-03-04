@@ -1134,7 +1134,7 @@
             "power":10,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"calibre_sniper",
+            "sound":"calibre_sniper_def",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "equip":["aucun","e-flash","e-ranger","chargeur1","e-camo","permakirin","theeye","helper","waterproof"],
@@ -3938,7 +3938,7 @@
         "volume":0.9,
         "stealth":1,
         "ap":15,
-        "maxSalvo":1,
+        "maxSalvo":2,
         "weapon":{
             "name":"Poings",
             "cost":2,
