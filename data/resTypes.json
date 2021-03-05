@@ -634,7 +634,7 @@
         "name": "Explosifs",
         "bld": "",
         "level": 4,
-        "rarity": 75,
+        "rarity": 50,
         "cat": "transfo",
         "batch": 3,
         "energie": -1

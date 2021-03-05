@@ -49,6 +49,8 @@ function mapReset() {
     playerInfos.mapTurn = 0;
     playerInfos.mapDrop = 0;
     playerInfos.cocons = 0;
+    playerInfos.fndComps = 0;
+    playerInfos.fndUnits = 0;
     playerInfos.eggPause = false;
     playerInfos.aliensKilled = 0;
     playerInfos.eggsKilled = 0;

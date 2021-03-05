@@ -66,6 +66,12 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.gLevel === undefined) {
         playerInfos.gLevel = 4;
     }
+    if (playerInfos.fndComps === undefined) {
+        playerInfos.fndComps = 0;
+    }
+    if (playerInfos.fndUnits === undefined) {
+        playerInfos.fndUnits = 0;
+    }
 });
 // Terrains
 socket.on('mapFilters-Load', function(mf) {

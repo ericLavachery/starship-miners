@@ -32,24 +32,28 @@ function searchRuins(apCost) {
 };
 
 function checkRuinsComp(tile) {
-    let foundComp = {};
-    let compOK = false;
-    let compChance = ruinsCompBase;
-    if (rand.rand(1,150) <= compChance) {
-        let i = 1;
-        while (i <= 10) {
-            foundComp = randomComp(7,28);
-            compOK = isFoundCompOK(foundComp);
-            if (compOK) {
-                break;
+    let maxComps = Math.ceil(playerInfos.mapDiff/4.1);
+    if (playerInfos.fndComps < maxComps) {
+        let foundComp = {};
+        let compOK = false;
+        let compChance = ruinsCompBase;
+        if (rand.rand(1,150) <= compChance) {
+            let i = 1;
+            while (i <= 10) {
+                foundComp = randomComp(7,28);
+                compOK = isFoundCompOK(foundComp);
+                if (compOK) {
+                    break;
+                }
+                if (i > 12) {break;}
+                i++
             }
-            if (i > 12) {break;}
-            i++
-        }
-        if (compOK) {
-            playerInfos.comp[foundComp.name] = playerInfos.comp[foundComp.name]+1;
-            warning('Compétence trouvée',foundComp.fullName+' +1 (maintenant au niveau '+playerInfos.comp[foundComp.name]+')');
-            savePlayerInfos();
+            if (compOK) {
+                playerInfos.comp[foundComp.name] = playerInfos.comp[foundComp.name]+1;
+                playerInfos.fndComps = playerInfos.fndComps+1;
+                warning('Compétence trouvée',foundComp.fullName+' +1 (maintenant au niveau '+playerInfos.comp[foundComp.name]+')');
+                savePlayerInfos();
+            }
         }
     }
 }
@@ -435,7 +439,7 @@ function checkRuinsRes(tile) {
         let totalRes = 0;
         let thatResChance = 0;
         let thatResNum = 0;
-        let mapFactor = playerInfos.mapDiff+2;
+        let mapFactor = Math.round(((Math.sqrt(playerInfos.mapDiff+2)*10)+playerInfos.mapDiff)/8);
         let resFactor;
         resTypes.forEach(function(res) {
             if (res.name != 'Magma' && res.name != 'Scrap' && res.cat != 'alien') {
@@ -450,7 +454,7 @@ function checkRuinsRes(tile) {
                     }
                 } else if (res.cat == 'transfo') {
                     if (!res.name.includes('Compo') && res.name != 'Moteur orbital' && res.name != 'Energie') {
-                        thatResChance = Math.ceil(resFactor*2*res.batch/3);
+                        thatResChance = Math.ceil(resFactor*1.7*res.batch/3);
                     }
                 } else {
                     if (res.name === 'Huile') {
@@ -500,7 +504,7 @@ function checkRuinsRes(tile) {
                             }
                         } else if (res.cat == 'transfo') {
                             if (!res.name.includes('Compo') && res.name != 'Moteur orbital' && res.name != 'Energie') {
-                                thatResChance = Math.ceil(resFactor*2*res.batch/3);
+                                thatResChance = Math.ceil(resFactor*1.7*res.batch/3);
                             }
                         } else {
                             if (res.name === 'Huile') {
@@ -524,7 +528,7 @@ function checkRuinsRes(tile) {
                         }
                         console.log(res.name+' '+thatResChance);
                         if (rand.rand(1,1000) <= thatResChance) {
-                            thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor*2.5*rand.rand(4,16))+rand.rand(0,9);
+                            thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor*1.5*rand.rand(4,16))+rand.rand(0,9);
                             console.log('!GET : '+res.name+' '+thatResNum);
                             if (coffre.transRes[res.name] === undefined) {
                                 coffre.transRes[res.name] = thatResNum;
@@ -541,38 +545,42 @@ function checkRuinsRes(tile) {
 };
 
 function checkRuinsUnit(tile) {
-    let chance = 0;
-    let foundUnitId = -1;
-    let shufUnits = _.shuffle(unitTypes);
-    shufUnits.forEach(function(unit) {
-        if (foundUnitId < 0) {
-            if (unit.inRuin != undefined) {
-                if (unit.fabTime > 50) {
-                    chance = unit.inRuin-8+playerInfos.mapDiff;
-                } else {
-                    chance = unit.inRuin-3+Math.ceil(playerInfos.mapDiff/2);
-                    if (chance > unit.inRuin) {
-                        chance = unit.inRuin;
+    let maxUnits = Math.floor(playerInfos.mapDiff/3);
+    if (playerInfos.fndUnits < maxUnits) {
+        let chance = 0;
+        let foundUnitId = -1;
+        let shufUnits = _.shuffle(unitTypes);
+        shufUnits.forEach(function(unit) {
+            if (foundUnitId < 0) {
+                if (unit.inRuin != undefined) {
+                    if (unit.fabTime > 50) {
+                        chance = unit.inRuin-8+playerInfos.mapDiff;
+                    } else {
+                        chance = unit.inRuin-3+Math.ceil(playerInfos.mapDiff/2);
+                        if (chance > unit.inRuin) {
+                            chance = unit.inRuin;
+                        }
                     }
-                }
-                if (ruinsEmpty) {
-                    if (unit.skills.includes('robot')) {
-                        if (rand.rand(1,400) <= chance) {
+                    if (ruinsEmpty) {
+                        if (unit.skills.includes('robot')) {
+                            if (rand.rand(1,400) <= chance) {
+                                foundUnitId = unit.id;
+                            }
+                        }
+                    } else {
+                        if (rand.rand(1,130) <= chance) {
                             foundUnitId = unit.id;
                         }
                     }
-                } else {
-                    if (rand.rand(1,130) <= chance) {
-                        foundUnitId = unit.id;
-                    }
                 }
             }
+        });
+        if (foundUnitId >= 0) {
+            let batType = getBatTypeById(foundUnitId);
+            conselTriche = true;
+            putBatAround(tile.id,false,false,foundUnitId,0,true);
+            playerInfos.fndUnits = playerInfos.fndUnits+1;
+            console.log('FOUND! '+batType.name);
         }
-    });
-    if (foundUnitId >= 0) {
-        let batType = getBatTypeById(foundUnitId);
-        conselTriche = true;
-        putBatAround(tile.id,false,false,foundUnitId,0,true);
-        console.log('FOUND! '+batType.name);
     }
 }
