@@ -347,7 +347,7 @@ function checkRiverSeed() {
     }
     return newSeed;
 };
-function addEWRiver(map, direction) {
+function addEWRiver(map,direction) {
     // début de la rivière
     let startLine = rand.rand(15,45);
     let startTileIndex = map.findIndex(
@@ -397,7 +397,7 @@ function addEWRiver(map, direction) {
         i++;
     }
 };
-function addNSRiver(map, direction) {
+function addNSRiver(map,direction) {
     // début de la rivière
     let startLine = rand.rand(15,45);
     let startTileIndex = map.findIndex(
@@ -452,7 +452,7 @@ function addNSRiver(map, direction) {
         i++;
     }
 };
-function addSNRiver(map, direction) {
+function addSNRiver(map,direction) {
     // début de la rivière
     let startLine = rand.rand(15,45);
     let startTileIndex = map.findIndex(
@@ -853,6 +853,7 @@ function addRes(zone) {
                 if (tile.rq === undefined && tile.terrain != 'W' && tile.terrain != 'R') {
                     if (rand.rand(1,1500) <= ruinChance) {
                         tile.ruins = true;
+                        tile.rd = true;
                         tile.rq = 0;
                         tile.rs = {};
                         tile.rs[resName] = Math.round(107*rand.rand(25,90)/resBatchDiv)+rand.rand(0,9);
@@ -931,6 +932,7 @@ function addRes(zone) {
                         tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                         if (res.name === 'Scrap') {
                             tile.ruins = true;
+                            tile.rd = true;
                         }
                     }
                 }
@@ -946,6 +948,7 @@ function addRes(zone) {
                                         tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
+                                            tile.rd = true;
                                         }
                                     }
                                 }
@@ -963,6 +966,7 @@ function addRes(zone) {
                                         tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
+                                            tile.rd = true;
                                         }
                                     }
                                 }
@@ -979,6 +983,7 @@ function addRes(zone) {
                                     tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                     if (res.name === 'Scrap') {
                                         tile.ruins = true;
+                                        tile.rd = true;
                                     }
                                 }
                             }
@@ -996,6 +1001,7 @@ function addRes(zone) {
                                         tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
+                                            tile.rd = true;
                                         }
                                     }
                                 }
@@ -1013,6 +1019,7 @@ function addRes(zone) {
                                         tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
+                                            tile.rd = true;
                                         }
                                     }
                                 }
@@ -1029,6 +1036,7 @@ function addRes(zone) {
                                     tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                     if (res.name === 'Scrap') {
                                         tile.ruins = true;
+                                        tile.rd = true;
                                     }
                                 }
                             }

@@ -741,7 +741,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["prefab","routes","badcrewsave","flash","recupcit","recupres"],
+        "skills":["prefab","routes","badcrewsave","flash","recupcit","recupres","maycamo"],
         "mecanoCost":12,
         "fuzz":6,
         "deathFx":"explo1"
@@ -857,7 +857,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["cible","prefab","defense","routes","flash","badcrewsave","recupcit","recupres"],
+        "skills":["cible","prefab","defense","routes","flash","badcrewsave","recupcit","recupres","maycamo"],
         "mecanoCost":10,
         "fuzz":3.5,
         "deathFx":"explo1"

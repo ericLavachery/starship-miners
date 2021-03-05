@@ -606,7 +606,8 @@
         "compPass":["tiradores"],
         "costs":{"Fer":60,"Scrap":30,"Carbone":90,"Aluminium":260,"Titane":180,"Electros":120,"Batteries":120,"Cuivre":72,"Silicium":60,"Cobalt":60},
         "deploy":{"Energie":115},
-        "fabTime":55
+        "fabTime":55,
+        "inRuin":3
     },
     {
         "id":83,
@@ -616,7 +617,8 @@
         "compReq":{"robo":1},
         "costs":{"Fer":124,"Scrap":42,"Carbone":72,"Aluminium":290,"Tungstène":61,"Titane":415,"Electros":210,"Batteries":210,"Cuivre":100,"Silicium":84,"Cobalt":42,"Nickel":42},
         "deploy":{"Energie":345,"Huile":18},
-        "fabTime":115
+        "fabTime":115,
+        "inRuin":1
     },
     {
         "id":241,
@@ -626,7 +628,8 @@
         "compReq":{"robo":1},
         "costs":{"Scrap":128,"Carbone":128,"Aluminium":128,"Titane":96,"Electros":128,"Batteries":128,"Cuivre":80,"Silicium":64},
         "deploy":{"Energie":130},
-        "fabTime":40
+        "fabTime":40,
+        "inRuin":2
     },
     {
         "id":84,
@@ -636,7 +639,8 @@
         "compReq":{"robo":1},
         "costs":{"Fer":80,"Scrap":20,"Carbone":180,"Aluminium":160,"Tungstène":80,"Titane":160,"Electros":180,"Batteries":160,"Cuivre":48,"Silicium":80},
         "deploy":{"Energie":95},
-        "fabTime":60
+        "fabTime":60,
+        "inRuin":1
     },
     {
         "id":133,
@@ -831,7 +835,8 @@
         "compReq":{"robo":1},
         "costs":{"Scrap":90,"Carbone":90,"Aluminium":200,"Titane":240,"Electros":165,"Batteries":150,"Cuivre":72,"Silicium":90,"Cobalt":60},
         "deploy":{"Energie":115},
-        "fabTime":65
+        "fabTime":65,
+        "inRuin":2
     },
     {
         "id":183,
@@ -841,7 +846,8 @@
         "compReq":{"robo":1},
         "costs":{"Fer":84,"Bois":48,"Carbone":24,"Aluminium":240,"Titane":270,"Tungstène":60,"Electros":96,"Batteries":96,"Cuivre":58,"Silicium":72,"Cobalt":48},
         "deploy":{"Energie":120},
-        "fabTime":70
+        "fabTime":70,
+        "inRuin":1
     },
     {
         "id":138,
@@ -869,7 +875,8 @@
         "compReq":{"tank":1},
         "costs":{"Fer":220,"Scrap":215,"Carbone":75,"Aluminium":210,"Tungstène":90,"Electros":15,"Batteries":25,"Compo2":30,"Cobalt":30,"Hélium":60,"Explosifs":10,"Fuel":40},
         "deploy":{"Fuel":70},
-        "fabTime":60
+        "fabTime":60,
+        "inRuin":2
     },
     {
         "id":11,
@@ -951,7 +958,8 @@
         "compReq":{"arti":1},
         "costs":{"Fer":330,"Carbone":477,"Aluminium":318,"Titane":90,"Tungstène":114,"Silicium":30,"Electros":90,"Batteries":70,"Compo2":376,"Compo3":63,"Huile":10,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":160},
-        "fabTime":165
+        "fabTime":165,
+        "inRuin":1
     },
     {
         "id":5,
@@ -961,7 +969,8 @@
         "compReq":{"arti":1},
         "costs":{"Fer":216,"Carbone":356,"Aluminium":256,"Titane":144,"Tungstène":24,"Rhodium":144,"Silicium":18,"Nickel":120,"Electros":80,"Batteries":90,"Compo2":284,"Compo3":32,"Huile":10,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":155},
-        "fabTime":200
+        "fabTime":200,
+        "inRuin":1
     },
     {
         "id":34,
@@ -1062,7 +1071,8 @@
         "bldReq":["Armurerie","Atelier"],
         "costs":{"Fer":60,"Scrap":120,"Carbone":90,"Aluminium":90,"Tungstène":15,"Electros":15,"Batteries":30,"Compo2":60,"Hélium":75,"Chlore":75,"Huile":10},
         "deploy":{"Fuel":60},
-        "fabTime":45
+        "fabTime":45,
+        "inRuin":2
     },
     {
         "id":59,
@@ -1073,7 +1083,8 @@
         "compPass":["bulbos"],
         "costs":{"Scrap":24,"Carbone":60,"Aluminium":24,"Titane":24,"Bore":24,"Silicium":72,"Cuivre":24,"Electros":96,"Batteries":60,"Nickel":6,"Cobalt":24},
         "deploy":{"Energie":95},
-        "fabTime":35
+        "fabTime":30,
+        "inRuin":1
     },
     {
         "id":61,
@@ -1100,7 +1111,8 @@
         "bldReq":["Infirmerie","Garage"],
         "costs":{"Fer":60,"Scrap":432,"Carbone":60,"Aluminium":78,"Electros":12,"Batteries":24,"Compo2":36,"Silicium":60,"Huile":130,"Chlore":60,"Zinc":60,"Titane":15,"Tissus":30},
         "deploy":{"Fuel":40,"Huile":60,"Chlore":60,"Zinc":60,"Tissus":60},
-        "fabTime":80
+        "fabTime":80,
+        "inRuin":4
     },
     {
         "id":33,
@@ -1154,7 +1166,8 @@
         "bldReq":[],
         "costs":{"Fer":162,"Scrap":270,"Carbone":27,"Aluminium":45,"Nickel":18,"Phosphore":18,"Cobalt":18,"Eau":90,"Zinc":45,"Cuivre":45},
         "deploy":{"Fuel":20,"Energie":75,"Huile":25},
-        "fabTime":35
+        "fabTime":30,
+        "inRuin":2
     },
     {
         "id":76,
@@ -1163,7 +1176,8 @@
         "bldReq":["Centre de com","Chaîne de montage"],
         "costs":{"Fer":140,"Scrap":244,"Carbone":216,"Aluminium":188,"Tungstène":120,"Electros":70,"Batteries":70,"Compo2":146,"Silicium":24,"Huile":84,"Mendium":104,"Azote":88,"Eau":960,"Zinc":180,"Cuivre":120},
         "deploy":{"Fuel":130,"Energie":220,"Mendium":55,"Huile":110},
-        "fabTime":105
+        "fabTime":105,
+        "inRuin":3
     },
     {
         "id":79,
@@ -1181,7 +1195,8 @@
         "bldReq":["Garage"],
         "costs":{"Fer":60,"Scrap":624,"Carbone":120,"Aluminium":120,"Batteries":12,"Compo2":60},
         "deploy":{"Fuel":65},
-        "fabTime":65
+        "fabTime":50,
+        "inRuin":2
     },
     {
         "id":81,
@@ -1190,7 +1205,8 @@
         "bldReq":[],
         "costs":{"Fer":45,"Scrap":360,"Carbone":36,"Aluminium":54,"Batteries":9,"Compo2":9},
         "deploy":{"Fuel":30},
-        "fabTime":35
+        "fabTime":30,
+        "inRuin":2
     },
     {
         "id":173,
@@ -1199,7 +1215,8 @@
         "bldReq":["Armurerie","Centre de tri","Garage"],
         "costs":{"Fer":99,"Scrap":423,"Carbone":108,"Aluminium":54,"Batteries":9,"Compo2":14,"Huile":10,"Eau":96,"Silicium":12},
         "deploy":{"Fuel":55},
-        "fabTime":45
+        "fabTime":45,
+        "inRuin":2
     },
     {
         "id":177,
@@ -1217,7 +1234,8 @@
         "bldReq":["Armurerie","Chaîne de montage"],
         "costs":{"Fer":54,"Scrap":546,"Carbone":174,"Aluminium":174,"Electros":24,"Batteries":72,"Compo2":116,"Végétaux":96,"Huile":10,"Eau":192,"Zinc":24},
         "deploy":{"Fuel":115},
-        "fabTime":75
+        "fabTime":75,
+        "inRuin":1
     },
     {
         "id":128,
@@ -1226,7 +1244,8 @@
         "bldReq":["Atelier"],
         "costs":{"Fer":24,"Scrap":128,"Carbone":32,"Aluminium":32,"Cuivre":24,"Electros":32,"Batteries":36,"Compo2":16},
         "deploy":{"Energie":180},
-        "fabTime":25
+        "fabTime":25,
+        "inRuin":2
     },
     {
         "id":120,
@@ -1235,7 +1254,8 @@
         "bldReq":["Garage","Atelier"],
         "costs":{"Fer":96,"Scrap":378,"Carbone":288,"Aluminium":294,"Tungstène":96,"Electros":24,"Batteries":114,"Compo2":195,"Compo3":36,"Huile":10},
         "deploy":{"Fuel":120},
-        "fabTime":100
+        "fabTime":100,
+        "inRuin":1
     },
     {
         "id":161,
@@ -1244,7 +1264,8 @@
         "bldReq":["Arsenal","Usine"],
         "costs":{"Fer":256,"Scrap":520,"Carbone":368,"Aluminium":296,"Titane":16,"Tungstène":272,"Electros":32,"Batteries":24,"Compo2":252,"Compo3":144,"Huile":10,"Eau":192,"Zinc":24},
         "deploy":{"Fuel":255},
-        "fabTime":125
+        "fabTime":125,
+        "inRuin":1
     },
     {
         "id":8,
@@ -1292,7 +1313,8 @@
         "bldReq":["Armurerie","Garage"],
         "costs":{"Fer":60,"Scrap":444,"Carbone":120,"Aluminium":168,"Electros":24,"Batteries":12,"Compo2":84,"Huile":10},
         "deploy":{"Fuel":100},
-        "fabTime":70
+        "fabTime":70,
+        "inRuin":1
     },
     {
         "id":93,
@@ -1301,7 +1323,8 @@
         "bldReq":["Armurerie","Chaîne de montage"],
         "costs":{"Fer":140,"Scrap":225,"Carbone":165,"Aluminium":165,"Tungstène":200,"Electros":15,"Batteries":15,"Compo2":105,"Compo3":15,"Huile":10},
         "deploy":{"Fuel":135},
-        "fabTime":75
+        "fabTime":75,
+        "inRuin":2
     },
     {
         "id":94,
@@ -1347,7 +1370,8 @@
         "compReq":{"tank":1},
         "costs":{"Fer":110,"Scrap":330,"Carbone":105,"Aluminium":120,"Tungstène":65,"Electros":25,"Batteries":25,"Compo2":50,"Silicium":15,"Huile":35},
         "deploy":{"Fuel":75,"Energie":90,"Huile":45},
-        "fabTime":70
+        "fabTime":70,
+        "inRuin":3
     },
     {
         "id":102,
@@ -1366,7 +1390,8 @@
         "compReq":{"tank":1},
         "costs":{"Fer":189,"Scrap":349,"Carbone":270,"Aluminium":324,"Titane":54,"Tungstène":162,"Electros":36,"Batteries":37,"Compo2":108,"Compo3":27,"Huile":10,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":100},
-        "fabTime":90
+        "fabTime":90,
+        "inRuin":2
     },
     {
         "id":110,
@@ -1436,7 +1461,8 @@
         "bldReq":["Centre de recherches","Usine"],
         "costs":{"Fer":129,"Scrap":111,"Carbone":159,"Aluminium":132,"Electros":156,"Batteries":88,"Compo2":142,"Huile":36,"Cobalt":30,"Hélium":60,"Eau":584,"Silicium":80,"Zinc":33},
         "deploy":{"Fuel":115,"Energie":60,"Huile":30,"Eau":320,"Silicium":40},
-        "fabTime":130
+        "fabTime":130,
+        "inRuin":1
     },
     {
         "id":119,
@@ -1445,7 +1471,8 @@
         "bldReq":["Usine","Laboratoire"],
         "costs":{"Fer":96,"Scrap":176,"Carbone":68,"Aluminium":68,"Electros":96,"Batteries":32,"Compo2":54,"Huile":10,"Eau":416,"Silicium":56,"Zinc":24},
         "deploy":{"Fuel":65,"Eau":240,"Silicium":30},
-        "fabTime":90
+        "fabTime":90,
+        "inRuin":3
     },
     {
         "id":121,
@@ -1454,7 +1481,8 @@
         "bldReq":["Armurerie","Garage"],
         "costs":{"Fer":14,"Scrap":207,"Carbone":36,"Aluminium":36,"Batteries":9,"Compo2":14,"Silicium":9,"Huile":9},
         "deploy":{"Fuel":35},
-        "fabTime":25
+        "fabTime":25,
+        "inRuin":2
     },
     {
         "id":167,
@@ -1463,7 +1491,8 @@
         "bldReq":["Garage"],
         "costs":{"Fer":68,"Scrap":208,"Carbone":16,"Aluminium":32,"Batteries":24,"Huile":60},
         "deploy":{"Fuel":30,"Energie":75,"Huile":25},
-        "fabTime":30
+        "fabTime":30,
+        "inRuin":2
     },
     {
         "id":132,
@@ -1483,7 +1512,8 @@
         "compReq":{"robo":1},
         "costs":{"Fer":72,"Scrap":90,"Carbone":72,"Aluminium":96,"Titane":156,"Silicium":48,"Cuivre":96,"Electros":120,"Batteries":198,"Huile":10,"Eau":120,"Silicium":30,"Blendium":90},
         "deploy":{"Energie":560,"Eau":120,"Silicium":15},
-        "fabTime":90
+        "fabTime":90,
+        "inRuin":2
     },
     {
         "id":147,
@@ -1503,7 +1533,8 @@
         "compReq":{"tank":1},
         "costs":{"Fer":240,"Scrap":192,"Carbone":128,"Aluminium":96,"Titane":16,"Tungstène":224,"Electros":16,"Batteries":16,"Compo2":64,"Compo3":32,"Huile":10},
         "deploy":{"Fuel":85},
-        "fabTime":70
+        "fabTime":70,
+        "inRuin":3
     },
     {
         "id":140,
@@ -1512,7 +1543,8 @@
         "bldReq":[],
         "costs":{"Fer":16,"Scrap":224,"Carbone":32,"Aluminium":32,"Batteries":8},
         "deploy":{"Fuel":30},
-        "fabTime":20
+        "fabTime":20,
+        "inRuin":2
     },
     {
         "id":182,
@@ -1521,7 +1553,8 @@
         "bldReq":["Garage"],
         "costs":{"Fer":48,"Scrap":128,"Carbone":64,"Bois":32,"Aluminium":32,"Cuivre":24,"Electros":32,"Batteries":36,"Compo2":16,"Végétaux":144},
         "deploy":{"Energie":210},
-        "fabTime":35
+        "fabTime":30,
+        "inRuin":2
     },
     {
         "id":141,
@@ -1530,7 +1563,8 @@
         "bldReq":["Garage"],
         "costs":{"Fer":80,"Scrap":240,"Carbone":96,"Aluminium":64,"Tungstène":48,"Electros":8,"Batteries":16,"Compo2":40,"Huile":10},
         "deploy":{"Fuel":60},
-        "fabTime":45
+        "fabTime":45,
+        "inRuin":2
     },
     {
         "id":142,
@@ -1621,7 +1655,8 @@
         "bldVMReq":["Arsenal","Chaîne de montage"],
         "bldReq":["Atelier","Armurerie"],
         "costs":{"Compo1":40,"Compo2":200,"Compo3":145,"Eau":48,"Végétaux":150,"Scrap":60,"Carbone":42,"Titane":18,"Tungstène":36,"Fer":204},
-        "fabTime":70
+        "fabTime":70,
+        "inRuin":2
     },
     {
         "id":127,
@@ -1630,7 +1665,8 @@
         "bldVMReq":["Usine d'armement","Chaîne de montage"],
         "bldReq":["Atelier","Armurerie"],
         "costs":{"Compo1":35,"Compo2":190,"Compo3":135,"Eau":36,"Végétaux":150,"Scrap":72,"Carbone":24,"Titane":48,"Tungstène":72,"Aluminium":48,"Fer":216,"Rhodium":36},
-        "fabTime":70
+        "fabTime":70,
+        "inRuin":2
     },
     {
         "id":178,
@@ -1639,7 +1675,8 @@
         "bldVMReq":["Arsenal","Chaîne de montage"],
         "bldReq":["Atelier","Armurerie"],
         "costs":{"Compo1":35,"Compo2":185,"Compo3":135,"Eau":48,"Végétaux":150,"Scrap":84,"Carbone":36,"Tungstène":72,"Aluminium":120,"Fer":240},
-        "fabTime":70
+        "fabTime":70,
+        "inRuin":2
     },
     {
         "id":129,
@@ -1649,7 +1686,8 @@
         "bldReq":["Poste radio","Armurerie"],
         "compReq":{"arti":1},
         "costs":{"Fer":108,"Scrap":36,"Carbone":84,"Aluminium":108,"Titane":36,"Rhodium":36,"Silicium":18,"Electros":12,"Batteries":24,"Nickel":36,"Compo2":36},
-        "fabTime":70
+        "fabTime":70,
+        "inRuin":2
     },
     {
         "id":145,
@@ -1667,7 +1705,8 @@
         "bldReq":["Poste radio","Armurerie"],
         "compReq":{"arti":1},
         "costs":{"Fer":146,"Scrap":144,"Carbone":129,"Aluminium":72,"Titane":36,"Tungstène":36,"Silicium":12,"Electros":30,"Batteries":9,"Compo2":64},
-        "fabTime":45
+        "fabTime":45,
+        "inRuin":3
     },
     {
         "id":186,

@@ -7,6 +7,9 @@ function searchRuins(apCost) {
         checkRuinsAliens(tile);
         checkRuinsRes(tile);
         checkRuinsComp(tile);
+        if (playerInfos.mapDiff >= 3) {
+            checkRuinsUnit(tile);
+        }
         if (selectedBat.tags.includes('mining')) {
             tagIndex = selectedBat.tags.indexOf('mining');
             selectedBat.tags.splice(tagIndex,1);
@@ -89,32 +92,32 @@ function checkRuinsCit(tile) {
         let restCit = numCit;
         if (restCit <= 72) {
             conselTriche = true;
-            putBatAround(tile.id,false,false,citId,restCit);
+            putBatAround(tile.id,false,false,citId,restCit,true);
             restCit = 0;
         } else {
             conselTriche = true;
-            putBatAround(tile.id,false,false,citId,72);
+            putBatAround(tile.id,false,false,citId,72,true);
             restCit = restCit-72;
         }
         if (restCit >= 1) {
             if (restCit <= 72) {
                 conselTriche = true;
-                putBatAround(tile.id,false,false,citId,restCit);
+                putBatAround(tile.id,false,false,citId,restCit,true);
                 restCit = 0;
             } else {
                 conselTriche = true;
-                putBatAround(tile.id,false,false,citId,72);
+                putBatAround(tile.id,false,false,citId,72,true);
                 restCit = restCit-72;
             }
         }
         if (restCit >= 1) {
             if (restCit <= 72) {
                 conselTriche = true;
-                putBatAround(tile.id,false,false,citId,restCit);
+                putBatAround(tile.id,false,false,citId,restCit,true);
                 restCit = 0;
             } else {
                 conselTriche = true;
-                putBatAround(tile.id,false,false,citId,72);
+                putBatAround(tile.id,false,false,citId,72,true);
                 restCit = restCit-72;
             }
         }
@@ -136,6 +139,9 @@ function checkRuinsAliens(tile) {
         alienLevels = 1;
     }
     let alienChance = Math.round(mapLevel*Math.sqrt(numRuins)*ruinsBugBase/25);
+    if (alienChance > 35) {
+        alienChance = 35;
+    }
     console.log('alienChance: '+alienChance);
     if (rand.rand(1,100) <= alienChance) {
         let maxDice = Math.ceil(alienLevels/2);
@@ -186,7 +192,7 @@ function checkRuinsAliens(tile) {
         if (alienTypeId >= 0) {
             let i = 1;
             while (i <= numAliens) {
-                putBatAround(tile.id,true,false,alienTypeId,0)
+                putBatAround(tile.id,true,false,alienTypeId,0,false)
                 if (i > 6) {break;}
                 i++
             }
@@ -195,11 +201,13 @@ function checkRuinsAliens(tile) {
     }
 };
 
-function putBatAround(tileId,alien,near,unitId,numCit,tag) {
+function putBatAround(tileId,alien,near,unitId,numCit,noWater,tag) {
     console.log(alien);
     let dropTile = -1;
     if (near) {
         dropTile = coffreDrop(tileId);
+    } else if (noWater) {
+        dropTile = checkDropSafe(tileId);
     } else {
         dropTile = checkDrop(tileId);
     }
@@ -279,6 +287,90 @@ function coffreDrop(layBatTileId) {
     return tileDrop;
 };
 
+function checkDropSafe(layBatTileId) {
+    let possibleDrops = [];
+    let batHere = false;
+    let tileDrop = -1;
+    let shufZone = _.shuffle(zone);
+    shufZone.forEach(function(tile) {
+        if (isAdjacent(layBatTileId,tile.id)) {
+            if (tile.terrain != 'W' && tile.terrain != 'R') {
+                batHere = false;
+                bataillons.forEach(function(bat) {
+                    if (bat.loc === "zone" && bat.tileId === tile.id) {
+                        batHere = true;
+                    }
+                });
+                if (!batHere) {
+                    aliens.forEach(function(bat) {
+                        if (bat.loc === "zone" && bat.tileId === tile.id) {
+                            batHere = true;
+                        }
+                    });
+                }
+                if (!batHere) {
+                    possibleDrops.push(tile.id);
+                }
+            }
+        }
+    });
+    if (possibleDrops.length < 1) {
+        let distance;
+        shufZone.forEach(function(tile) {
+            if (tile.terrain != 'W' && tile.terrain != 'R') {
+                distance = calcDistance(layBatTileId,tile.id);
+                if (distance <= 3 && distance >=2) {
+                    batHere = false;
+                    bataillons.forEach(function(bat) {
+                        if (bat.loc === "zone" && bat.tileId === tile.id) {
+                            batHere = true;
+                        }
+                    });
+                    if (!batHere) {
+                        aliens.forEach(function(bat) {
+                            if (bat.loc === "zone" && bat.tileId === tile.id) {
+                                batHere = true;
+                            }
+                        });
+                    }
+                    if (!batHere) {
+                        possibleDrops.push(tile.id);
+                    }
+                }
+            }
+        });
+    }
+    if (possibleDrops.length < 1) {
+        let distance;
+        shufZone.forEach(function(tile) {
+            distance = calcDistance(layBatTileId,tile.id);
+            if (distance <= 3 && distance >=2) {
+                batHere = false;
+                bataillons.forEach(function(bat) {
+                    if (bat.loc === "zone" && bat.tileId === tile.id) {
+                        batHere = true;
+                    }
+                });
+                if (!batHere) {
+                    aliens.forEach(function(bat) {
+                        if (bat.loc === "zone" && bat.tileId === tile.id) {
+                            batHere = true;
+                        }
+                    });
+                }
+                if (!batHere) {
+                    possibleDrops.push(tile.id);
+                }
+            }
+        });
+    }
+    if (possibleDrops.length >= 1) {
+        possibleDrops = [_.sample(possibleDrops)];
+        tileDrop = possibleDrops[0];
+    }
+    return tileDrop;
+};
+
 function checkRuinsRes(tile) {
     console.log('Check Ressources');
     coffreTileId = -1;
@@ -290,7 +382,7 @@ function checkRuinsRes(tile) {
     console.log('resChance: '+resChance);
     if (rand.rand(1,100) <= resChance) {
         conselTriche = true;
-        putBatAround(tile.id,false,true,239,0,'go');
+        putBatAround(tile.id,false,true,239,0,true,'go');
         let coffre = getBatByTileId(coffreTileId);
         let totalRes = 0;
         let thatResChance = 0;
@@ -399,3 +491,40 @@ function checkRuinsRes(tile) {
         }
     }
 };
+
+function checkRuinsUnit(tile) {
+    let chance = 0;
+    let foundUnitId = -1;
+    let shufUnits = _.shuffle(unitTypes);
+    shufUnits.forEach(function(unit) {
+        if (foundUnitId < 0) {
+            if (unit.inRuin != undefined) {
+                if (unit.fabTime > 50) {
+                    chance = unit.inRuin-8+playerInfos.mapDiff;
+                } else {
+                    chance = unit.inRuin-3+Math.ceil(playerInfos.mapDiff/2);
+                    if (chance > unit.inRuin) {
+                        chance = unit.inRuin;
+                    }
+                }
+                if (ruinsEmpty) {
+                    if (unit.skills.includes('robot')) {
+                        if (rand.rand(1,400) <= chance) {
+                            foundUnitId = unit.id;
+                        }
+                    }
+                } else {
+                    if (rand.rand(1,130) <= chance) {
+                        foundUnitId = unit.id;
+                    }
+                }
+            }
+        }
+    });
+    if (foundUnitId >= 0) {
+        let batType = getBatTypeById(foundUnitId);
+        conselTriche = true;
+        putBatAround(tile.id,false,false,foundUnitId,0,true);
+        console.log('FOUND! '+batType.name);
+    }
+}
