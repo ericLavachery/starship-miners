@@ -1122,6 +1122,7 @@ function addRes(zone) {
     zone.forEach(function(tile) {
         if (tile.sh != undefined) {
             tile.sh = realNumberOfRuins;
+            addRoad(tile.id);
         }
     });
     // MAGMA
@@ -1173,6 +1174,75 @@ function addRes(zone) {
         });
     }
     // console.log(zone);
+};
+
+function addRoad(startTileId) {
+    let longueur = rand.rand(2,6);
+    let generalDir = rand.rand(1,4); // n,e,s,o
+    let secondaryDir = rand.rand(1,4); // 3 & 4 = droite
+    let dirDice;
+    let nextTileId = startTileId;
+    let oldTileId = startTileId;
+    let bridge = false;
+    if (zone[nextTileId].terrain === 'W' || zone[nextTileId].terrain === 'R') {
+        bridge = true;
+    }
+    let i = 1
+    while (i < longueur) {
+        oldTileId = nextTileId;
+        bridge = false;
+        if (zone[oldTileId].terrain === 'W' || zone[oldTileId].terrain === 'R') {
+            bridge = true;
+        }
+        dirDice = rand.rand(1,4);
+        if (generalDir === 1) {
+            if (dirDice === 1) {
+                nextTileId = nextTileId-mapSize-1;
+            } else if (dirDice === 2) {
+                nextTileId = nextTileId-mapSize+1;
+            } else {
+                nextTileId = nextTileId-mapSize;
+            }
+        } else if (generalDir === 2) {
+            if (dirDice === 1) {
+                nextTileId = nextTileId+1+mapSize;
+            } else if (dirDice === 2) {
+                nextTileId = nextTileId+1-mapSize;
+            } else {
+                nextTileId = nextTileId+1;
+            }
+        } else if (generalDir === 3) {
+            if (dirDice === 1) {
+                nextTileId = nextTileId+mapSize+1;
+            } else if (dirDice === 2) {
+                nextTileId = nextTileId+mapSize-1;
+            } else {
+                nextTileId = nextTileId+mapSize;
+            }
+        } else if (generalDir === 4) {
+            if (dirDice === 1) {
+                nextTileId = nextTileId-1+mapSize;
+            } else if (dirDice === 2) {
+                nextTileId = nextTileId-1-mapSize;
+            } else {
+                nextTileId = nextTileId-1;
+            }
+        }
+        if (zone[nextTileId].x >= 60 || zone[nextTileId].y >= 60 || zone[nextTileId].x <= 1 || zone[nextTileId].y <= 1) {
+            i = 500;
+        }
+        if (zone[nextTileId].terrain === 'W' || zone[nextTileId].terrain === 'R') {
+            if (bridge) {
+                i = 500;
+                zone[oldTileId].rd = false;
+            } else {
+                zone[nextTileId].rd = true;
+            }
+        } else {
+            zone[nextTileId].rd = true;
+        }
+        i++;
+    }
 };
 
 function checkAdjRes(adjTile) {

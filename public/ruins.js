@@ -294,7 +294,7 @@ function checkDropSafe(layBatTileId) {
     let shufZone = _.shuffle(zone);
     shufZone.forEach(function(tile) {
         if (isAdjacent(layBatTileId,tile.id)) {
-            if (tile.terrain != 'W' && tile.terrain != 'R') {
+            if (tile.rd && tile.terrain != 'W' && tile.terrain != 'R') {
                 batHere = false;
                 bataillons.forEach(function(bat) {
                     if (bat.loc === "zone" && bat.tileId === tile.id) {
@@ -314,6 +314,54 @@ function checkDropSafe(layBatTileId) {
             }
         }
     });
+    if (possibleDrops.length < 1) {
+        shufZone.forEach(function(tile) {
+            if (isAdjacent(layBatTileId,tile.id)) {
+                if (tile.rd) {
+                    batHere = false;
+                    bataillons.forEach(function(bat) {
+                        if (bat.loc === "zone" && bat.tileId === tile.id) {
+                            batHere = true;
+                        }
+                    });
+                    if (!batHere) {
+                        aliens.forEach(function(bat) {
+                            if (bat.loc === "zone" && bat.tileId === tile.id) {
+                                batHere = true;
+                            }
+                        });
+                    }
+                    if (!batHere) {
+                        possibleDrops.push(tile.id);
+                    }
+                }
+            }
+        });
+    }
+    if (possibleDrops.length < 1) {
+        shufZone.forEach(function(tile) {
+            if (isAdjacent(layBatTileId,tile.id)) {
+                if (tile.terrain != 'W' && tile.terrain != 'R') {
+                    batHere = false;
+                    bataillons.forEach(function(bat) {
+                        if (bat.loc === "zone" && bat.tileId === tile.id) {
+                            batHere = true;
+                        }
+                    });
+                    if (!batHere) {
+                        aliens.forEach(function(bat) {
+                            if (bat.loc === "zone" && bat.tileId === tile.id) {
+                                batHere = true;
+                            }
+                        });
+                    }
+                    if (!batHere) {
+                        possibleDrops.push(tile.id);
+                    }
+                }
+            }
+        });
+    }
     if (possibleDrops.length < 1) {
         let distance;
         shufZone.forEach(function(tile) {
