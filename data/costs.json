@@ -1507,9 +1507,10 @@
     {
         "id":134,
         "name":"Taupes",
-        "levels":{"rednecks":99,"blades":99,"bulbos":13,"drogmulojs":99,"tiradores":17,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":16,"bulbos":13,"drogmulojs":99,"tiradores":17,"detruas":99,"brasier":99},
         "bldReq":["Centre de recherches","Usine"],
         "compReq":{"robo":1},
+        "compPass":["blades"],
         "costs":{"Fer":72,"Scrap":90,"Carbone":72,"Aluminium":96,"Titane":156,"Silicium":48,"Cuivre":96,"Electros":120,"Batteries":198,"Huile":10,"Eau":120,"Silicium":30,"Blendium":90},
         "deploy":{"Energie":560,"Eau":120,"Silicium":15},
         "fabTime":90,

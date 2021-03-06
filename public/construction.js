@@ -492,6 +492,12 @@ function checkUnitCompReq(unit) {
             }
         }
     }
+    // Taupes/Blades
+    if (unit.name === 'Taupes' && playerInfos.gang === 'blades') {
+        if (playerInfos.comp.aero < 1 || playerInfos.comp.cyber < 1) {
+            compReqOK = false;
+        }
+    }
     return compReqOK;
 };
 
@@ -1274,10 +1280,15 @@ function getRoadCosts(tile) {
         if (playerInfos.comp.const >= 2) {
             roadCosts['Compo2'] = 33;
         }
-    } else {
+    } else if (tile.terrain === 'M' || tile.terrain === 'S' || tile.terrain === 'H') {
         roadCosts['Compo1'] = 20;
         if (playerInfos.comp.const >= 1) {
             roadCosts['Compo1'] = 14;
+        }
+    } else {
+        roadCosts['Compo1'] = 8;
+        if (playerInfos.comp.const >= 1) {
+            roadCosts['Compo1'] = 5;
         }
     }
     return roadCosts;
@@ -1315,7 +1326,7 @@ function putInfra(infraName) {
     // infra.fabTime = AP for Workships
     let apCost = Math.round(Math.sqrt(selectedBatType.mecanoCost)*infra.fabTime/1.7);
     if (selectedBatType.skills.includes('infraconst')) {
-        apCost = Math.ceil(apCost*2/3);
+        apCost = Math.ceil(apCost*3/4);
     }
     console.log('apCost:'+apCost);
     selectedBat.apLeft = selectedBat.apLeft-apCost;
