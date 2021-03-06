@@ -103,6 +103,9 @@ function showRes(tileId) {
         res = res.replace(/}/g,"");
         res = res.replace(/,/g," &nbsp;&horbar;&nbsp; ");
         res = res.replace(/:/g," ");
+        if (tile.tileName !== undefined && tile.tileName != '') {
+            res = res+' ('+tile.tileName+')'
+        }
     }
     if (view) {
         if (tile.rd || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {

@@ -470,7 +470,7 @@ function checkRuinsRes(tile) {
                     }
                 } else {
                     if (res.name === 'Huile') {
-                        thatResChance = Math.ceil(75*res.batch/3);
+                        thatResChance = Math.ceil(150*res.batch/3);
                     } else if (res.name === 'Eau') {
                         if (ruinsEmpty) {
                             thatResChance = Math.ceil(100*res.batch/3);

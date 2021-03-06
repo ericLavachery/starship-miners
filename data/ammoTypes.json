@@ -9,7 +9,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Guidage"
+        "info": "Guidage",
+        "noList": true
     },
     {
         "name": "marquage",
@@ -21,7 +22,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Marquage"
+        "info": "Marquage",
+        "noList": true
     },
     {
         "name": "webtaser",
@@ -35,7 +37,8 @@
         "aoe": "",
         "info": "Penetration+++ Entrave",
         "deploy":{"Energie":30},
-        "batch":100
+        "batch":100,
+        "noList": true
     },
     {
         "name": "standard",
@@ -95,7 +98,7 @@
         "name": "uranium",
         "range": 1,
         "rof": 1,
-        "power": 1,
+        "power": 2,
         "powermult": 1,
         "armors": 0.35,
         "accuracy": 1,
@@ -615,7 +618,8 @@
         "aoe": "brochette",
         "info": "Incendiaire",
         "deploy":{"Fer":2,"Soufre":2,"Plutonium":2,"Aluminium":1,"Phosphore":3},
-        "batch":100
+        "batch":100,
+        "noList": true
     },
     {
         "name": "fireshells-pyratol",
@@ -677,7 +681,8 @@
         "aoe": "",
         "info": "Incendiaire",
         "deploy":{"Energie":30},
-        "batch":100
+        "batch":100,
+        "noList": true
     },
     {
         "name": "laser-g2",
@@ -706,7 +711,8 @@
         "apdamage": 0.02,
         "aoe": "",
         "deploy":{"Energie":50,"Plutonium":2,"Platine":1},
-        "batch":100
+        "batch":100,
+        "noList": true
     },
     {
         "name": "bfg-g2",
@@ -734,7 +740,8 @@
         "apdamage": 0.1,
         "aoe": "",
         "deploy":{"Mercure":1,"Hydrogène":6},
-        "batch":100
+        "batch":100,
+        "noList": true
     },
     {
         "name": "plastanium",
@@ -792,7 +799,8 @@
         "apdamage": 0.1,
         "aoe": "brochette",
         "deploy":{"Mercure":1,"Hydrogène":6},
-        "batch":100
+        "batch":100,
+        "noList": true
     },
     {
         "name": "cn-plastanium",
@@ -1012,7 +1020,8 @@
         "apdamage": 0,
         "aoe": "",
         "deploy":{},
-        "batch":12
+        "batch":12,
+        "noList": true
     },
     {
         "name": "barb-scrap",
@@ -1025,7 +1034,8 @@
         "apdamage": 0,
         "aoe": "",
         "deploy":{},
-        "batch":12
+        "batch":12,
+        "noList": true
     },
     {
         "name": "barb-taser",
@@ -1038,7 +1048,8 @@
         "apdamage": 0.03,
         "aoe": "",
         "deploy":{},
-        "batch":12
+        "batch":12,
+        "noList": true
     },
     {
         "name": "lame",
@@ -1204,7 +1215,8 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "trap-suicide",
@@ -1215,7 +1227,8 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "shinda",
@@ -1226,7 +1239,8 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "shinda-suicide",
@@ -1237,7 +1251,8 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "suicide",
@@ -1248,7 +1263,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "mine",
@@ -1259,7 +1275,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "autodestruction",
@@ -1270,7 +1287,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "dynamite",
@@ -1283,7 +1301,8 @@
         "apdamage": 0,
         "aoe": "brochette",
         "deploy":{"Scrap":1,"Explosifs":2,"Végétaux":2},
-        "batch":100
+        "batch":100,
+        "noList": true
     },
     {
         "name": "dynamite-nitrate",
@@ -1326,7 +1345,8 @@
         "apdamage": 0,
         "aoe": "brochette",
         "deploy":{"Scrap":5,"Fer":5},
-        "batch":100
+        "batch":100,
+        "noList": true
     },
     {
         "name": "boulet-explosif",
@@ -1913,7 +1933,8 @@
         "apdamage": 0,
         "aoe": "",
         "deploy":{},
-        "batch":100
+        "batch":100,
+        "noList": true
     },
     {
         "name": "gaz",
@@ -1926,7 +1947,8 @@
         "apdamage": 0.09,
         "aoe": "bat",
         "deploy":{"Carbone":5,"Scrap":5,"Phosphore":6,"Hydrocarbure":4,"Chlore":12,"Végétaux":5},
-        "batch":100
+        "batch":100,
+        "noList": true
     },
     {
         "name": "gaz-pluto",
@@ -2094,7 +2116,8 @@
         "aoe": "unit",
         "info": "Incendiaire",
         "deploy":{"Hydrocarbure":3,"Oxygène":3},
-        "batch":100
+        "batch":100,
+        "noList": true
     },
     {
         "name": "lt-nanite",
@@ -2137,7 +2160,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0.015,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "fireball",
@@ -2151,7 +2175,8 @@
         "aoe": "squad",
         "info": "Incendiaire",
         "deploy":{"Soufre":2,"Potassium":2,"Fuel":2,"Huile":3,"Végétaux":2,"Tissus":1},
-        "batch":100
+        "batch":100,
+        "noList": true
     },
     {
         "name": "fireglue",
@@ -2210,7 +2235,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "creuseur",
@@ -2221,7 +2247,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "troueur",
@@ -2232,7 +2259,8 @@
         "armors": 0.3,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "web",
@@ -2243,7 +2271,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "electric",
@@ -2254,7 +2283,8 @@
         "armors": 0,
         "accuracy": 1,
         "apdamage": 0.04,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "spit",
@@ -2265,7 +2295,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0.15,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "spitbug",
@@ -2276,7 +2307,8 @@
         "armors": 0.67,
         "accuracy": 1,
         "apdamage": 0.1,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "glair",
@@ -2287,7 +2319,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0.1,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "acide",
@@ -2298,7 +2331,8 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "ruche",
@@ -2309,7 +2343,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "venin",
@@ -2320,7 +2355,8 @@
         "armors": 0,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "parasite",
@@ -2331,7 +2367,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "necro",
@@ -2342,7 +2379,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "glue",
@@ -2353,7 +2391,8 @@
         "armors": 0.25,
         "accuracy": 1,
         "apdamage": 0.1,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "toxine",
@@ -2364,7 +2403,8 @@
         "armors": 0.25,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "poison",
@@ -2376,7 +2416,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Poison"
+        "info": "Poison",
+        "noList": true
     },
     {
         "name": "atium",
@@ -2388,7 +2429,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Poison++"
+        "info": "Poison++",
+        "noList": true
     },
     {
         "name": "feu",
@@ -2400,7 +2442,8 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "noList": true
     },
     {
         "name": "fuel",
@@ -2411,7 +2454,8 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": ""
+        "aoe": "",
+        "noList": true
     },
     {
         "name": "napalm",
@@ -2423,6 +2467,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Incendiaire"
+        "info": "Incendiaire",
+        "noList": true
     }
 ]

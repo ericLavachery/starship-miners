@@ -279,9 +279,9 @@ function conSelect(unitId,player,noRefresh) {
                         prodSign = '';
                     }
                     if ((bldReqOK && costsOK) || conselTriche) {
-                        $('#conAmmoList').append('<span class="constName klik" title="'+toNiceString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+prodSign+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik" title="'+toNiceString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+prodSign+' <span class="gff">(+'+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
                     } else {
-                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'">'+armor+prodSign+' <span class="gff">('+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'">'+armor+prodSign+' <span class="gff">(+'+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
                     }
                 }
                 listNum++;
@@ -882,8 +882,8 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             if (batArmor.skills.includes('resistfeu') && !newBat.tags.includes('resistfeu')) {
                 newBat.tags.push('resistfeu');
             }
-            if (batArmor.skills.includes('resistfall') && !newBat.tags.includes('resistfall')) {
-                newBat.tags.push('resistfall');
+            if (batArmor.skills.includes('resistall') && !newBat.tags.includes('resistall')) {
+                newBat.tags.push('resistall');
             }
             if (newBat.eq === 'kit-pompiste' && !newBat.tags.includes('resistfeu')) {
                 newBat.tags.push('resistfeu');

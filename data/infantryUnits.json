@@ -1843,7 +1843,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","bigfortif","cible","selfbadmedic","maycamo","recupcit"],
+        "skills":["fortif","bigfortif","cible","selfbadmedic","maycamo","recupcit","bgun"],
         "mediCost":9,
         "fuzz":2,
         "deathFx":"human1"
@@ -1901,7 +1901,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","bigfortif","cible","selfbadmedic","maycamo","recupcit"],
+        "skills":["fortif","bigfortif","cible","selfbadmedic","maycamo","recupcit","bgun"],
         "mediCost":9,
         "fuzz":2,
         "deathFx":"human1"
@@ -1956,7 +1956,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","maycamo","uprank"],
+        "skills":["fortif","cible","maycamo","uprank","bgun"],
         "fuzz":2,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -2009,7 +2009,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","strong","defense"],
+        "skills":["fouille","fortif","cible","strong","defense","bgun"],
         "fuzz":1.5,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -3275,7 +3275,7 @@
         "hp":7,
         "armor":0,
         "size":3,
-        "volume":1.15,
+        "volume":1.1,
         "stealth":14,
         "speed":1,
         "ap":14,
@@ -4081,7 +4081,7 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","selfbadmedic","meleehelp","cyber","maycamo"],
+        "skills":["fouille","fortif","cible","selfbadmedic","meleehelp","cyber","maycamo","bgun"],
         "mediCost":6,
         "fuzz":1,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
@@ -5003,7 +5003,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","sentinelle","maycamo","robot","light"],
+        "skills":["fortif","cible","sentinelle","maycamo","robot","light","bgun"],
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
     },
