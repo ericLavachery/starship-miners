@@ -1177,9 +1177,17 @@ function addRes(zone) {
 };
 
 function addRoad(startTileId) {
-    let longueur = rand.rand(2,6);
     let generalDir = rand.rand(1,4); // n,e,s,o
-    let secondaryDir = rand.rand(1,4); // 3 & 4 = droite
+    makeRoad(startTileId,generalDir);
+    generalDir = generalDir+2;
+    if (generalDir > 4) {
+        generalDir = generalDir-4;
+    }
+    makeRoad(startTileId,generalDir);
+};
+
+function makeRoad(startTileId,generalDir) {
+    let longueur = rand.rand(3,5);
     let dirDice;
     let nextTileId = startTileId;
     let oldTileId = startTileId;
@@ -1188,7 +1196,7 @@ function addRoad(startTileId) {
         bridge = true;
     }
     let i = 1
-    while (i < longueur) {
+    while (i <= longueur) {
         oldTileId = nextTileId;
         bridge = false;
         if (zone[oldTileId].terrain === 'W' || zone[oldTileId].terrain === 'R') {
@@ -1228,7 +1236,7 @@ function addRoad(startTileId) {
                 nextTileId = nextTileId-1;
             }
         }
-        if (zone[nextTileId].x >= 60 || zone[nextTileId].y >= 60 || zone[nextTileId].x <= 1 || zone[nextTileId].y <= 1) {
+        if (zone[nextTileId].x >= 60 || zone[nextTileId].y >= 60 || zone[nextTileId].x <= 1 || zone[nextTileId].y <= 1 || zone[nextTileId].rd || anyRoadAround(nextTileId,oldTileId)) {
             i = 500;
         }
         if (zone[nextTileId].terrain === 'W' || zone[nextTileId].terrain === 'R') {
@@ -1238,12 +1246,52 @@ function addRoad(startTileId) {
             } else {
                 zone[nextTileId].rd = true;
             }
+        } else if (zone[nextTileId].terrain === 'M' || zone[nextTileId].terrain === 'S' || zone[nextTileId].terrain === 'F') {
+            i = i-1;
+            zone[nextTileId].rd = true;
         } else {
             zone[nextTileId].rd = true;
         }
         i++;
     }
 };
+
+function anyRoadAround(tileId,prevTileId) {
+    let anyRoad = false
+    let thisTileId = tileId+1;
+    if (zone[thisTileId].rd && thisTileId != prevTileId) {
+        anyRoad = true;
+    }
+    thisTileId = tileId+1+mapSize;
+    if (zone[thisTileId].rd && thisTileId != prevTileId) {
+        anyRoad = true;
+    }
+    thisTileId = tileId+1-mapSize;
+    if (zone[thisTileId].rd && thisTileId != prevTileId) {
+        anyRoad = true;
+    }
+    thisTileId = tileId-1;
+    if (zone[thisTileId].rd && thisTileId != prevTileId) {
+        anyRoad = true;
+    }
+    thisTileId = tileId-1+mapSize;
+    if (zone[thisTileId].rd && thisTileId != prevTileId) {
+        anyRoad = true;
+    }
+    thisTileId = tileId-1-mapSize;
+    if (zone[thisTileId].rd && thisTileId != prevTileId) {
+        anyRoad = true;
+    }
+    thisTileId = tileId+mapSize;
+    if (zone[thisTileId].rd && thisTileId != prevTileId) {
+        anyRoad = true;
+    }
+    thisTileId = tileId-mapSize;
+    if (zone[thisTileId].rd && thisTileId != prevTileId) {
+        anyRoad = true;
+    }
+    return anyRoad;
+}
 
 function checkAdjRes(adjTile) {
     if (adjTile >= 0 && adjTile <= 3599) {

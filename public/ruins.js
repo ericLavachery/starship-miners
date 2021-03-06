@@ -4,12 +4,15 @@ function searchRuins(apCost) {
         console.log('RUINS');
         selectedBat.apLeft = selectedBat.apLeft-apCost;
         checkRuinsCit(tile);
-        checkRuinsAliens(tile);
         checkRuinsRes(tile);
         checkRuinsComp(tile);
         if (playerInfos.mapDiff >= 3) {
             checkRuinsUnit(tile);
         }
+        if (!ruinsEmpty) {
+            putRuinsCit(tile);
+        }
+        checkRuinsAliens(tile);
         if (selectedBat.tags.includes('mining')) {
             tagIndex = selectedBat.tags.indexOf('mining');
             selectedBat.tags.splice(tagIndex,1);
@@ -37,7 +40,8 @@ function checkRuinsComp(tile) {
         let foundComp = {};
         let compOK = false;
         let compChance = ruinsCompBase;
-        if (rand.rand(1,150) <= compChance) {
+        let compDice = 150+(playerInfos.fndComps*50);
+        if (rand.rand(1,compDice) <= compChance) {
             let i = 1;
             while (i <= 10) {
                 foundComp = randomComp(7,28);
@@ -83,47 +87,53 @@ function checkRuinsCit(tile) {
         numRuins = 50;
     }
     let citChance = Math.round(ruinsCitBase/Math.sqrt(numRuins+8));
+    console.log('citChance: '+citChance);
+    if (rand.rand(1,100) <= citChance) {
+        ruinsEmpty = false;
+    }
+};
+
+function putRuinsCit(tile) {
+    let numRuins = tile.sh;
+    if (numRuins > 50) {
+        numRuins = 50;
+    }
     let citId = 126;
     if (rand.rand(1,ruinsCrimChance) === 1) {
         citId = 225;
     }
-    console.log('citChance: '+citChance);
-    if (rand.rand(1,100) <= citChance) {
-        let ncFactor = Math.round((Math.sqrt(numRuins)+0.75)*3);
-        let numCit = rand.rand(1,ncFactor)*6;
-        ruinsEmpty = false;
-        console.log('numCit: '+numCit);
-        let restCit = numCit;
+    let ncFactor = Math.round((Math.sqrt(numRuins)+0.75)*3);
+    let numCit = rand.rand(1,ncFactor)*6;
+    let restCit = numCit;
+    if (restCit <= 72) {
+        conselTriche = true;
+        putBatAround(tile.id,false,false,citId,restCit,true);
+        restCit = 0;
+    } else {
+        conselTriche = true;
+        putBatAround(tile.id,false,false,citId,72,true);
+        restCit = restCit-72;
+    }
+    if (restCit >= 1) {
         if (restCit <= 72) {
             conselTriche = true;
-            putBatAround(tile.id,false,false,citId,restCit,false);
+            putBatAround(tile.id,false,false,citId,restCit,true);
             restCit = 0;
         } else {
             conselTriche = true;
-            putBatAround(tile.id,false,false,citId,72,false);
+            putBatAround(tile.id,false,false,citId,72,true);
             restCit = restCit-72;
         }
-        if (restCit >= 1) {
-            if (restCit <= 72) {
-                conselTriche = true;
-                putBatAround(tile.id,false,false,citId,restCit,false);
-                restCit = 0;
-            } else {
-                conselTriche = true;
-                putBatAround(tile.id,false,false,citId,72,false);
-                restCit = restCit-72;
-            }
-        }
-        if (restCit >= 1) {
-            if (restCit <= 72) {
-                conselTriche = true;
-                putBatAround(tile.id,false,false,citId,restCit,false);
-                restCit = 0;
-            } else {
-                conselTriche = true;
-                putBatAround(tile.id,false,false,citId,72,false);
-                restCit = restCit-72;
-            }
+    }
+    if (restCit >= 1) {
+        if (restCit <= 72) {
+            conselTriche = true;
+            putBatAround(tile.id,false,false,citId,restCit,true);
+            restCit = 0;
+        } else {
+            conselTriche = true;
+            putBatAround(tile.id,false,false,citId,72,true);
+            restCit = restCit-72;
         }
     }
 };
@@ -549,6 +559,8 @@ function checkRuinsUnit(tile) {
     if (playerInfos.fndUnits < maxUnits) {
         let chance = 0;
         let foundUnitId = -1;
+        let robotDice = 400+(playerInfos.fndUnits*200);
+        let truckDice = 130+(playerInfos.fndUnits*65);
         let shufUnits = _.shuffle(unitTypes);
         shufUnits.forEach(function(unit) {
             if (foundUnitId < 0) {
@@ -563,12 +575,12 @@ function checkRuinsUnit(tile) {
                     }
                     if (ruinsEmpty) {
                         if (unit.skills.includes('robot')) {
-                            if (rand.rand(1,400) <= chance) {
+                            if (rand.rand(1,robotDice) <= chance) {
                                 foundUnitId = unit.id;
                             }
                         }
                     } else {
-                        if (rand.rand(1,130) <= chance) {
+                        if (rand.rand(1,truckDice) <= chance) {
                             foundUnitId = unit.id;
                         }
                     }
