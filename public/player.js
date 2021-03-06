@@ -452,7 +452,7 @@ function maxGangCompCosts() {
         }
     }
     if (playerInfos.gang === 'bulbos') {
-        maxComp[0] = maxComp[0]+1;
+        maxComp[0] = maxComp[0]+2;
         if (playerInfos.gLevel >= 3) {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;

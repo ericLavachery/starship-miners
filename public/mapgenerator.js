@@ -873,7 +873,7 @@ function addRes(zone) {
     if (playerInfos.mapDiff < 1) {
         mapResBatchDiv = Math.round(mapResBatchDiv*1.75);
     } else {
-        mapResBatchDiv = Math.round(mapResBatchDiv*(ruinChance+31)/40);
+        mapResBatchDiv = Math.round(mapResBatchDiv*(ruinChance+26)/35);
     }
     zone.forEach(function(tile) {
         if (tile.rq >= 1) {
