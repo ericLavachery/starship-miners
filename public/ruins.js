@@ -87,9 +87,11 @@ function checkRuinsCit(tile) {
         numRuins = 50;
     }
     let citChance = Math.round(ruinsCitBase/Math.sqrt(numRuins+8));
+    let citDice = 86+Math.ceil(playerInfos.fndCits*citChance/2);
     console.log('citChance: '+citChance);
-    if (rand.rand(1,100) <= citChance) {
+    if (rand.rand(1,citDice) <= citChance) {
         ruinsEmpty = false;
+        playerInfos.fndCits = playerInfos.fndCits+1;
     }
 };
 

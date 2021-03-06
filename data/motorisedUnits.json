@@ -1838,7 +1838,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
+        "protection":["aucun","scrap","kanchan","chobham","adamantite"],
         "equip":["aucun","g2motor","e-flash"],
         "moveCost":4,
         "maxFlood":3,

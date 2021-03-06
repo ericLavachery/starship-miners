@@ -51,6 +51,7 @@ function mapReset() {
     playerInfos.cocons = 0;
     playerInfos.fndComps = 0;
     playerInfos.fndUnits = 0;
+    playerInfos.fndCits = 0;
     playerInfos.eggPause = false;
     playerInfos.aliensKilled = 0;
     playerInfos.eggsKilled = 0;

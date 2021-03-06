@@ -72,6 +72,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.fndUnits === undefined) {
         playerInfos.fndUnits = 0;
     }
+    if (playerInfos.fndCits === undefined) {
+        playerInfos.fndCits = 0;
+    }
 });
 // Terrains
 socket.on('mapFilters-Load', function(mf) {

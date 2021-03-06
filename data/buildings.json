@@ -135,13 +135,13 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","acier","dunium","bonibo","iso"],
+        "protection":["aucun","acier","dunium","iso"],
         "equip":["aucun","w1-gun","w2-explo","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["extraction","fret","recupcit","noblub","dumper","resistfeu","routes","prefab"],
+        "skills":["extraction","fret","recupcit","noblub","dumper","resistfeu","routes","prefab","prodres","upkeep"],
         "mecanoCost":16,
         "mining":{
             "level":3,
