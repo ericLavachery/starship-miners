@@ -881,7 +881,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["cible","transport","fret","medic","selfbadmecano","dealer","kirin","octiron","starka","light","badcrewsave","recupcit","recupres"],
+        "skills":["cible","transport","fret","hardmove","medic","selfbadmecano","dealer","kirin","octiron","starka","light","badcrewsave","recupcit","recupres"],
         "mediCost":5,
         "mecanoCost":20,
         "maxDrug":36,
@@ -3891,7 +3891,7 @@
         "maxVeg":2,
         "skills":["cible","transport","fret","hardmove","dumper","badcrewsave","recupcit","recupres"],
         "transMaxSize":4,
-        "transUnits":450,
+        "transUnits":460,
         "transRes":200,
         "fuzz":1.5,
         "deathFx":"S_CarExplosion02"
