@@ -267,7 +267,7 @@ function skillsInfos(bat,batType) {
     }
     // MEDIC IN BLD
     let baseskillCost;
-    if (batType.cat === 'buildings' && (!batType.skills.includes('medic') || bat.apLeft < 4)) {
+    if ((batType.cat === 'buildings' || batType.skills.includes('transorbital')) && (!batType.skills.includes('medic') || bat.apLeft < 4 || bat.eq === 'megafret' || bat.eq === 'megatrans')) {
         let medicBat = bestMedicInBld(bat);
         let medicBatType = getBatType(medicBat);
         // console.log(medicBat);

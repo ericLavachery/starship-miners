@@ -597,13 +597,9 @@ function spawns() {
             } else if (bat.type === 'Veilleurs' && aliens.length < maxAliens && bat.squadsLeft >= 3) {
                 let lifeTurn = playerInfos.mapTurn-bat.creaTurn;
                 if (lifeTurn === 1) {
-                    if (aliensNums.veilleurs >= 4) {
-                        if (rand.rand(1,4) > 1) {
-                            veilSpawn(bat);
-                        }
-                    } else {
-                        veilSpawn(bat);
-                    }
+                    veilSpawn(bat);
+                    veilSpawn(bat);
+                    veilSpawn(bat);
                 }
                 if (!bat.tags.includes('invisible')) {
                     if (rand.rand(1,3) === 1) {
@@ -652,13 +648,29 @@ function veilSpawn(bat) {
         kind = 'bug';
     }
     if (kind === 'bug') {
-        alienSpawn(bat,'Bugs','veil');
+        if (rand.rand(1,15) < playerInfos.mapDiff) {
+            alienSpawn(bat,'Punaise','veil');
+        } else {
+            alienSpawn(bat,'Bugs','veil');
+        }
     } else if (kind === 'swarm') {
-        alienSpawn(bat,'Scorpions','veil');
+        if (rand.rand(1,15) < playerInfos.mapDiff) {
+            alienSpawn(bat,'Cafards','veil');
+        } else {
+            alienSpawn(bat,'Scorpions','veil');
+        }
     } else if (kind === 'larve') {
-        alienSpawn(bat,'Asticots','veil');
+        if (rand.rand(1,15) < playerInfos.mapDiff) {
+            alienSpawn(bat,'Vers','veil');
+        } else {
+            alienSpawn(bat,'Asticots','veil');
+        }
     } else if (kind === 'spider') {
-        alienSpawn(bat,'Gluantes','veil');
+        if (rand.rand(1,15) < playerInfos.mapDiff) {
+            alienSpawn(bat,'Nerveuses','veil');
+        } else {
+            alienSpawn(bat,'Gluantes','veil');
+        }
     }
 };
 

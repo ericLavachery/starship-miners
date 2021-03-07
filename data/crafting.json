@@ -747,6 +747,66 @@
         "creaNum":1
     },
     {
+        "id":94,
+        "result":"Energie",
+        "cost":{"Bois":100},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "bldOut":["Crameur"],
+        "batch":50,
+        "creaNum":15
+    },
+    {
+        "id":99,
+        "result":"Energie",
+        "cost":{"Tissus":100},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "bldOut":["Crameur"],
+        "batch":50,
+        "creaNum":15
+    },
+    {
+        "id":96,
+        "result":"Energie",
+        "cost":{"Hydrocarbure":40},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "bldOut":["Crameur"],
+        "batch":50,
+        "creaNum":15
+    },
+    {
+        "id":98,
+        "result":"Energie",
+        "cost":{"Fuel":20},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "bldOut":["Crameur"],
+        "batch":50,
+        "creaNum":15
+    },
+    {
+        "id":97,
+        "result":"Energie",
+        "cost":{"Huile":20},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "bldOut":["Crameur"],
+        "batch":50,
+        "creaNum":15
+    },
+    {
+        "id":95,
+        "result":"Energie",
+        "cost":{"Soufre":65},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "bldOut":["Crameur"],
+        "batch":50,
+        "creaNum":15
+    },
+    {
         "id":64,
         "result":"Energie",
         "cost":{"Eau":40,"Uranium":3},

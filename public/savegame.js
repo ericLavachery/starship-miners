@@ -21,6 +21,12 @@ function saveAllBats() {
     commandes();
 };
 function saveGame() {
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" || bat.loc === "trans") {
+            bat.xp = bat.xp.toFixedNumber(2);
+            bat.apLeft = bat.apLeft.toFixedNumber(1);
+        }
+    });
     saveBataillons();
     saveAliens();
     savePlayerInfos();
