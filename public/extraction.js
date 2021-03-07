@@ -271,20 +271,22 @@ function autoUnload(bat) {
     let bestDumper = getBestDumper(bat);
     console.log('best dumper');
     console.log(bestDumper);
-    if (bestDumper.id != bat.id) {
-        let resSpace = checkResSpace(bestDumper);
-        let resLoad = checkResLoad(bat);
-        if (Math.round(resSpace*1.2) >= resLoad) {
-            Object.entries(bat.transRes).map(entry => {
-                let key = entry[0];
-                let value = entry[1];
-                if (bestDumper.transRes[key] === undefined) {
-                    bestDumper.transRes[key] = value;
-                } else {
-                    bestDumper.transRes[key] = bestDumper.transRes[key]+value;
-                }
-            });
-            bat.transRes = {};
+    if (Object.keys(bestDumper).length >= 1) {
+        if (bestDumper.id != bat.id) {
+            let resSpace = checkResSpace(bestDumper);
+            let resLoad = checkResLoad(bat);
+            if (Math.round(resSpace*1.2) >= resLoad) {
+                Object.entries(bat.transRes).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    if (bestDumper.transRes[key] === undefined) {
+                        bestDumper.transRes[key] = value;
+                    } else {
+                        bestDumper.transRes[key] = bestDumper.transRes[key]+value;
+                    }
+                });
+                bat.transRes = {};
+            }
         }
     }
 };

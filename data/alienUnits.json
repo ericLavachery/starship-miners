@@ -995,7 +995,7 @@
         "armor":2,
         "size":2,
         "speed":10,
-        "stealth":10,
+        "stealth":0,
         "ap":15,
         "maxSalvo":1,
         "weapon":{
