@@ -561,7 +561,7 @@
             "power":9,
             "armors":0.8,
             "aoe":"unit",
-            "sound":"mit_light2",
+            "sound":"mit_light1",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "equip":["aucun","kit-garde","e-ranger","e-jetpack"],
@@ -2812,7 +2812,7 @@
             "power":9,
             "armors":0.8,
             "aoe":"unit",
-            "sound":"mit_light2",
+            "sound":"mit_light1",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
@@ -5121,7 +5121,7 @@
             "power":8,
             "armors":0.8,
             "aoe":"unit",
-            "sound":"mit_light2",
+            "sound":"mit_light1",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
