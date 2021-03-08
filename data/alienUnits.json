@@ -395,8 +395,8 @@
         "hp":4,
         "armor":3,
         "size":2,
-        "speed":1,
-        "stealth":4,
+        "speed":3,
+        "stealth":7,
         "ap":16,
         "maxSalvo":1,
         "weapon":{
@@ -406,7 +406,7 @@
             "noFly":true,
             "isMelee":true,
             "rof":15,
-            "accuracy":15,
+            "accuracy":14,
             "power":4,
             "aoe":"unit",
             "sound":"bite",
@@ -418,7 +418,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["ricochet","guerrilla","baddef"],
+        "skills":["ricochet","guerrilla","baddef","resistblast"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":3}
     },
@@ -543,7 +543,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["grip","venin","eatpoison","okwater","resistelec","sentinelle"],
+        "skills":["grip","venin","eatpoison","okwater","resistelec","resistblast","sentinelle"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":2,"Swarmine":3,"Mephitis":2}
     },
