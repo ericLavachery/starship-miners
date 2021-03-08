@@ -543,19 +543,22 @@ function attack(melee) {
     // inflammable
     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('pyratol') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov') || selectedWeap.ammo.includes('laser')) {
         if (targetBatType.skills.includes('inflammable') || targetBat.tags.includes('inflammable') || targetBat.eq === 'e-jetpack') {
-            let infactor = 1.5;
+            let infactor = 2;
+            if (selectedWeap.ammo.includes('laser') || selectedWeap.ammo === 'incendiaire' || selectedWeap.ammo === 'ac-incendiaire' || selectedWeap.ammo === 'sm-incendiaire' || selectedWeap.ammo === 'fleche-incendiaire') {
+                infactor = 1.5;
+            }
             if (targetBat.tags.includes('resistfeu') && targetBatType.cat != 'aliens') {
                 infactor = 1;
             } else if (targetBatType.skills.includes('resistfeu') || targetBat.tags.includes('resistfeu')) {
-                infactor = 1.25;
+                infactor = Math.round(infactor/1.25);
             }
             let infbonus = 0;
             if (targetBat.tags.includes('inflammable')) {
                 if (targetBatType.skills.includes('inflammable')) {
-                    infactor = 4;
+                    infactor = 5;
                     infbonus = rand.rand(180,320);
                 } else {
-                    infactor = 2;
+                    infactor = 3;
                     infbonus = rand.rand(130,240);
                 }
             }
@@ -1313,19 +1316,22 @@ function defense(melee) {
     // inflammable
     if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('pyratol') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov') || targetWeap.ammo.includes('laser')) {
         if (selectedBatType.skills.includes('inflammable') || selectedBat.tags.includes('inflammable') || selectedBat.eq === 'e-jetpack') {
-            let infactor = 1.5;
+            let infactor = 2;
+            if (targetWeap.ammo.includes('laser') || targetWeap.ammo === 'incendiaire' || targetWeap.ammo === 'ac-incendiaire' || targetWeap.ammo === 'sm-incendiaire' || targetWeap.ammo === 'fleche-incendiaire') {
+                infactor = 1.5;
+            }
             if (selectedBat.tags.includes('resistfeu') && selectedBatType.cat != 'aliens') {
                 infactor = 1;
             } else if (selectedBatType.skills.includes('resistfeu') || selectedBat.tags.includes('resistfeu')) {
-                infactor = 1.25;
+                infactor = Math.round(infactor/1.25);
             }
             let infbonus = 0;
             if (selectedBat.tags.includes('inflammable')) {
                 if (selectedBatType.skills.includes('inflammable')) {
-                    infactor = 4;
+                    infactor = 5;
                     infbonus = rand.rand(180,320);
                 } else {
-                    infactor = 2;
+                    infactor = 3;
                     infbonus = rand.rand(130,240);
                 }
             }
