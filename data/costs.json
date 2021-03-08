@@ -521,6 +521,14 @@
         "fabTime":20
     },
     {
+        "id":243,
+        "name":"Clapiers",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":5,"detruas":99,"brasier":99},
+        "bldReq":["Armurerie"],
+        "costs":{"Fer":300,"Scrap":60,"Carbone":60,"Aluminium":60,"Végétaux":110,"Chlore":10,"Tissus":5},
+        "fabTime":20
+    },
+    {
         "id":68,
         "name":"Psys",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":14,"tiradores":99,"detruas":99,"brasier":99},
