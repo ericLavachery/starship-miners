@@ -802,6 +802,9 @@ function skillsInfos(bat,batType) {
         if (bat.tags.includes('mining')) {
             balise = 'h3';
         }
+        if (batType.kind === 'zero-extraction' && !extractOK) {
+            balise = 'h5';
+        }
         apCost = 5;
         apReq = 0;
         if (!bat.tags.includes('mining') && !inMelee && extractOK) {

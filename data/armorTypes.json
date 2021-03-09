@@ -177,7 +177,7 @@
     {
         "name": "kapton",
         "cat":"armor",
-        "armor": 3,
+        "armor": 2,
         "ap": -1,
         "skills": ["resistfeu"],
         "bldReq":["Laboratoire"],

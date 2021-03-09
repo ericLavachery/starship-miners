@@ -3258,7 +3258,7 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","bigfortif","cible","selfbadmedic","bastion","camo","longshot","recupcit","zerogrip"],
+        "skills":["fortif","bigfortif","cible","selfbadmedic","bastion","camo","longshot","recupcit","zerogrip","inflammable"],
         "mediCost":8,
         "fuzz":1,
         "deathFx":"human3"
