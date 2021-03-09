@@ -173,6 +173,24 @@ function getDrugByName(drugName) {
     return drug;
 };
 
+function getEquipByName(equipName) {
+    let equip = {};
+    let index = armorTypes.findIndex((obj => obj.name == equipName));
+    if (index > -1) {
+        equip = armorTypes[index];
+    }
+    return equip;
+};
+
+function getAmmoByName(ammoName) {
+    let ammo = {};
+    let index = ammoTypes.findIndex((obj => obj.name == ammoName));
+    if (index > -1) {
+        ammo = ammoTypes[index];
+    }
+    return ammo;
+};
+
 function getBatType(bat) {
     let batType = {};
     let index;

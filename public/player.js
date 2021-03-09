@@ -37,7 +37,6 @@ function gangEdit() {
             i = i+25;
         }
     }
-
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     // GANG
     $('#conUnitList').append('<select class="boutonGris" id="theGangs" onchange="changePlayerInfo(`theGangs`,`gang`)"></select>');
@@ -782,7 +781,7 @@ function landerFill() {
             if (prodOK) {
                 if (lastKind != unit.kind) {
                     showkind = unit.kind.replace(/zero-/g,"");
-                    $('#conUnitList').append('<br><span class="constName vert" id="kind-'+unit.kind+'">'+showkind+'</span><br>');
+                    $('#conUnitList').append('<br><span class="constName vert" id="kind-'+unit.kind+'">'+showkind.toUpperCase()+'</span><br>');
                 }
                 if (prepaBld[unit.name] === undefined) {
                     showPrep = '';
@@ -802,12 +801,46 @@ function landerFill() {
                     }
                 }
                 $('#conUnitList').append('<span class="constName klik '+colour+'" title="'+toNiceString(bldNeed)+'" onclick="fillLanderWithUnit('+unit.id+')">'+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+                if (unit.equip.length >= 2) {
+                    unit.equip.forEach(function(equipName) {
+                        if (equipName.includes('w1-') || equipName.includes('w1-')) {
+                            let equip = getEquipByName(equipName);
+                            let compReqOK = checkCompReq(equip);
+                            if (compReqOK) {
+                                let equipCountName = unit.id+'-'+equipName;
+                                if (prepaBld[equipCountName] === undefined) {
+                                    showPrep = '';
+                                } else {
+                                    showPrep = '('+prepaBld[equipCountName]+')';
+                                }
+                                $('#conUnitList').append('<span class="constName klik gff" onclick="fillLanderWithEquip(`'+equipName+'`,'+unit.id+')">&nbsp;&nbsp;'+equipName+' <span class="ciel">'+showPrep+'</span></span><br>');
+                            }
+                        }
+                    });
+                }
+                if (unit.protection.length >= 2) {
+                    unit.protection.forEach(function(equipName) {
+                        if (!equipName.includes('aucun')) {
+                            let equip = getEquipByName(equipName);
+                            let compReqOK = checkCompReq(equip);
+                            if (compReqOK) {
+                                let equipCountName = unit.id+'-'+equipName;
+                                if (prepaBld[equipCountName] === undefined) {
+                                    showPrep = '';
+                                } else {
+                                    showPrep = '('+prepaBld[equipCountName]+')';
+                                }
+                                $('#conUnitList').append('<span class="constName klik gff" onclick="fillLanderWithEquip(`'+equipName+'`,'+unit.id+')">&nbsp;&nbsp;blindage '+equipName+' <span class="ciel">'+showPrep+'</span></span><br>');
+                            }
+                        }
+                    });
+                }
                 lastKind = unit.kind;
             }
         }
     });
     // INFRASTRUCTURES
-    $('#conUnitList').append('<br><span class="constName vert">infrastructures</span><br>');
+    $('#conUnitList').append('<br><span class="constName vert">INFRASTRUCTURES</span><br>');
     armorTypes.forEach(function(infra) {
         if (infra.fabTime != undefined) {
             prodOK = true;
@@ -837,7 +870,7 @@ function landerFill() {
     }
     $('#conUnitList').append('<span class="constName klik gris" onclick="fillLanderWithInfra(`Pont`,true)">Pont <span class="ciel">'+showPrep+'</span></span><br>');
     // DROGUES
-    $('#conUnitList').append('<br><span class="constName vert">drogues</span><br>');
+    $('#conUnitList').append('<br><span class="constName vert">DROGUES</span><br>');
     armorTypes.forEach(function(drug) {
         if (drug.cat != undefined) {
             if (drug.cat === 'drogue') {
@@ -854,7 +887,7 @@ function landerFill() {
         }
     });
     // PACKS DE RESSOURCES
-    $('#conUnitList').append('<br><span class="constName vert">packs de ressources</span><br>');
+    $('#conUnitList').append('<br><span class="constName vert">PACKS DE RESSOURCES</span><br>');
     armorTypes.forEach(function(pack) {
         if (pack.name.includes('respack-')) {
             if (prepaBld[pack.name] === undefined) {
@@ -907,6 +940,22 @@ function fillLanderWithInfra(fillInfraName,road) {
     }
     landerFill();
     console.log(prepaBld);
+};
+
+function fillLanderWithEquip(equipName,unitId) {
+    let equip = getEquipByName(equipName);
+    let unit = getBatTypeById(unitId);
+    let flatCosts = getCosts(unit,equip,0,'equip');
+    let deployCosts = getDeployCosts(unit,equip,0,'equip');
+    addCost(flatCosts,1);
+    addCost(deployCosts,1);
+    let equipCountName = unitId+'-'+equip.name;
+    if (prepaBld[equipCountName] === undefined) {
+        prepaBld[equipCountName] = 1;
+    }  else {
+        prepaBld[equipCountName] = prepaBld[equipCountName]+1;
+    }
+    landerFill();
 };
 
 function fillLanderWithUnit(fillUnitId) {

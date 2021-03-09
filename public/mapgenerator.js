@@ -1244,6 +1244,7 @@ function makeRoad(startTileId,generalDir) {
                 i = 500;
                 zone[oldTileId].rd = false;
             } else {
+                i = i-1;
                 zone[nextTileId].rd = true;
             }
         } else if (zone[nextTileId].terrain === 'M' || zone[nextTileId].terrain === 'S' || zone[nextTileId].terrain === 'F') {

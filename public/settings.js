@@ -65,6 +65,7 @@ let showMarkedOnly = false;
 let showOneRes = 'Toutes';
 let oneResTileIds = [];
 let allZoneRes = [];
+let allCheckedZoneRes = [];
 let undarkNow = [];
 // UNITS
 let unitTypes = [];

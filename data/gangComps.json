@@ -59,7 +59,7 @@
         "id":8,
         "name":"vsp",
         "fullName":"Vols spaciaux",
-        "levels":{"rednecks":7,"blades":7,"bulbos":7,"drogmulojs":7,"tiradores":7,"detruas":7,"brasier":7},
+        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":4,
         "lvlCosts":[0,1,1,1,1]
     },

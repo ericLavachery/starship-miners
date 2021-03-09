@@ -70,6 +70,9 @@ function minimap() {
         }
         if (tile.rq >= 0 && checkRes) {
             addZoneRes(tile.rs);
+            if (playerInfos.showedTiles.includes(tile.id)) {
+                addCheckedZoneRes(tile.rs);
+            }
         }
     });
     $('#themmap').append('<br>');

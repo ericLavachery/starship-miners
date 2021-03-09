@@ -738,16 +738,32 @@ function voirRessources() {
     sortedResTypes.forEach(function(res) {
         resIcon = getResIcon(res);
         if (res.name === showOneRes) {
-            if (allZoneRes.includes(res.name)) {
-                $('#resFind').append('<option value="'+res.name+'" selected>&check; '+res.name+' '+resIcon+'</option>');
+            if (allCheckedZoneRes.includes(res.name)) {
+                if (allZoneRes.includes(res.name)) {
+                    $('#resFind').append('<option value="'+res.name+'" selected>&cuvee; '+res.name+' '+resIcon+'</option>');
+                } else {
+                    $('#resFind').append('<option value="'+res.name+'" selected disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+'</option>');
+                }
             } else {
-                $('#resFind').append('<option value="'+res.name+'" selected disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+'</option>');
+                if (allZoneRes.includes(res.name)) {
+                    $('#resFind').append('<option value="'+res.name+'" selected>&check; '+res.name+' '+resIcon+'</option>');
+                } else {
+                    $('#resFind').append('<option value="'+res.name+'" selected disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+'</option>');
+                }
             }
         } else {
-            if (allZoneRes.includes(res.name)) {
-                $('#resFind').append('<option value="'+res.name+'">&check; '+res.name+' '+resIcon+'</option>');
+            if (allCheckedZoneRes.includes(res.name)) {
+                if (allZoneRes.includes(res.name)) {
+                    $('#resFind').append('<option value="'+res.name+'">&cuvee; '+res.name+' '+resIcon+'</option>');
+                } else {
+                    $('#resFind').append('<option value="'+res.name+'" disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+'</option>');
+                }
             } else {
-                $('#resFind').append('<option value="'+res.name+'" disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+'</option>');
+                if (allZoneRes.includes(res.name)) {
+                    $('#resFind').append('<option value="'+res.name+'">&check; '+res.name+' '+resIcon+'</option>');
+                } else {
+                    $('#resFind').append('<option value="'+res.name+'" disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+'</option>');
+                }
             }
         }
     });
@@ -813,6 +829,16 @@ function addZoneRes(tileRes) {
         let value = entry[1];
         if (!allZoneRes.includes(key)) {
             allZoneRes.push(key);
+        }
+    });
+};
+
+function addCheckedZoneRes(tileRes) {
+    Object.entries(tileRes).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        if (!allCheckedZoneRes.includes(key)) {
+            allCheckedZoneRes.push(key);
         }
     });
 };

@@ -47,14 +47,14 @@
         "apCost":0,
         "bldReq":[],
         "compReq":{"ca":1},
-        "costs":{"Huile":1,"Végétaux":2,"Zinc":1,"Swarmine":3}
+        "costs":{"Huile":1,"Végétaux":2,"Zinc":1,"Swarmine":4}
     },
     {
         "name": "kirin",
         "cat":"drogue",
         "apCost":3,
         "bldReq":["Infirmerie"],
-        "compReq":{"ca":2,"exo":1},
+        "compReq":{"ca":2,"med":1},
         "costs":{"Huile":2,"Végétaux":3,"Or":1,"Mendium":5}
     },
     {
@@ -688,7 +688,7 @@
         "bldReq":["Atelier"],
         "compReq":{"log":1,"trans":1},
         "factor":"thp",
-        "costs":{"Scrap":9,"Fer":30}
+        "costs":{"Scrap":4,"Carbone":4,"Fer":20}
     },
     {
         "name": "snorkel",
@@ -708,7 +708,7 @@
         "bldReq":["Atelier"],
         "compReq":{"log":2},
         "factor":"thp",
-        "costs":{"Fer":25,"Tungstène":25}
+        "costs":{"Fer":15,"Tungstène":15}
     },
     {
         "name": "landerwkit",
@@ -764,7 +764,7 @@
         "name": "megatrans",
         "cat":"equip",
         "skills": [],
-        "info": "Augmente les capacités des cabines au détriment du bloc médical et du comptoir de ravitaillement",
+        "info": "Augmente les capacités des cabines au détriment du bloc médical",
         "bldReq":[],
         "compReq":{"log":1,"trans":1},
         "factor":"thp",
@@ -778,7 +778,7 @@
         "bldReq":[],
         "compReq":{"log":1,"def":1,"bal":1},
         "factor":"crew",
-        "costs":{"Scrap":12,"Fer":12}
+        "costs":{"Scrap":8,"Fer":8}
     },
     {
         "name": "w1-ggun",
@@ -788,7 +788,7 @@
         "bldReq":[],
         "compReq":{"log":1,"def":1,"bal":2},
         "factor":"crew",
-        "costs":{"Carbone":6,"Scrap":9,"Fer":12,"Silicium":6}
+        "costs":{"Carbone":4,"Scrap":6,"Fer":8,"Silicium":4}
     },
     {
         "name": "w1-plasma",
@@ -798,7 +798,7 @@
         "bldReq":[],
         "compReq":{"log":1,"def":1,"energ":1},
         "factor":"crew",
-        "costs":{"Bois":3,"Aluminium":12,"Titane":9,"Electros":6,"Bore":6}
+        "costs":{"Bois":2,"Aluminium":8,"Titane":6,"Electros":4,"Bore":4}
     },
     {
         "name": "w2-brol",
@@ -808,7 +808,7 @@
         "bldReq":[],
         "compReq":{"log":2,"def":2},
         "factor":"rofpow",
-        "costs":{"Fer":90,"Tungstène":60,"Huile":10}
+        "costs":{"Fer":45,"Tungstène":30,"Huile":5}
     },
     {
         "name": "w2-fire",
@@ -818,7 +818,7 @@
         "bldReq":[],
         "compReq":{"log":1,"def":2,"pyro":2},
         "factor":"crew",
-        "costs":{"Scrap":6,"Fer":18,"Aluminium":18,"Tungstène":9,"Fuel":18}
+        "costs":{"Scrap":4,"Fer":12,"Aluminium":12,"Tungstène":6,"Fuel":12}
     },
     {
         "name": "w2-molo",
@@ -828,7 +828,7 @@
         "bldReq":[],
         "compReq":{"log":1,"def":2,"pyro":1},
         "factor":"crew",
-        "costs":{"Scrap":12,"Fer":12}
+        "costs":{"Scrap":8,"Fer":8}
     },
     {
         "name": "w2-dyna",
@@ -838,7 +838,7 @@
         "bldReq":[],
         "compReq":{"log":1,"def":2,"explo":1},
         "factor":"crew",
-        "costs":{"Scrap":12,"Fer":12}
+        "costs":{"Scrap":8,"Fer":8}
     },
     {
         "name": "w2-explo",
@@ -848,7 +848,7 @@
         "bldReq":[],
         "compReq":{"log":1,"def":2,"explo":2},
         "factor":"rofpow",
-        "costs":{"Scrap":18,"Fer":18,"Aluminium":36,"Tungstène":18}
+        "costs":{"Scrap":12,"Fer":12,"Aluminium":24,"Tungstène":12}
     },
     {
         "name": "w2-arti",
@@ -858,7 +858,7 @@
         "bldReq":[],
         "compReq":{"log":1,"def":3,"explo":2,"arti":1,"bal":1},
         "factor":"rofpow",
-        "costs":{"Carbone":30,"Fer":120,"Tungstène":90,"Titane":30,"Silicium":10,"Rhodium":15,"Electros":15}
+        "costs":{"Carbone":20,"Fer":80,"Tungstène":60,"Titane":20,"Silicium":6,"Rhodium":10,"Electros":10}
     },
     {
         "name": "w2-ggun",
@@ -868,7 +868,7 @@
         "bldReq":[],
         "compReq":{"log":1,"def":2,"bal":2},
         "factor":"crew",
-        "costs":{"Carbone":6,"Scrap":9,"Fer":12,"Silicium":6}
+        "costs":{"Carbone":4,"Scrap":6,"Fer":8,"Silicium":4}
     },
     {
         "name": "w2-laser",
@@ -878,7 +878,7 @@
         "bldReq":[],
         "compReq":{"log":1,"def":3,"energ":1},
         "factor":"rofpow",
-        "costs":{"Carbone":6,"Tungstène":12,"Silicium":3,"Rhodium":6,"Electros":6,"Batteries":12}
+        "costs":{"Carbone":4,"Tungstène":8,"Silicium":2,"Rhodium":4,"Electros":4,"Batteries":8}
     },
     {
         "name": "w2-rain",
@@ -888,7 +888,7 @@
         "bldReq":[],
         "compReq":{"log":1,"def":2,"exo":1},
         "factor":"crew",
-        "costs":{"Carbone":6,"Scrap":12,"Aluminium":12,"Titane":6}
+        "costs":{"Carbone":4,"Scrap":8,"Aluminium":8,"Titane":4}
     },
     {
         "name": "w1-autopistol",
@@ -911,13 +911,23 @@
         "costs":{"Carbone":45,"Scrap":20,"Soufre":45,"Uranium":45,"Fer":150,"Cuivre":60,"Aluminium":60,"Silicium":30,"Electros":45,"Batteries":45}
     },
     {
+        "name": "respack-ammo1",
+        "info": "Munitions 1",
+        "costs":{"Fer":380,"Soufre":380,"Plomb":270,"Tungstène":190,"Uranium":80,"Phosphore":190,"Hydrogène":80,"Aluminium":80}
+    },
+    {
+        "name": "respack-ammo2",
+        "info": "Munitions 2",
+        "costs":{"Fer":380,"Soufre":380,"Plomb":270,"Tungstène":270,"Uranium":120,"Phosphore":190,"Hydrogène":80,"Aluminium":120,"Or":80,"Bossium":80,"Adamantium":80,"Dunium":80,"Salite":80,"Timonium":80}
+    },
+    {
         "name": "respack-weapons1",
-        "info": "Armes et minitions 1",
+        "info": "Armes et munitions 1",
         "costs":{"Fer":450,"Scrap":300,"Carbone":100,"Bois":30,"Aluminium":100,"Tungstène":100,"Huile":30,"Silicium":30,"Phosphore":90,"Hydrogène":90,"Plomb":120,"Soufre":200}
     },
     {
         "name": "respack-weapons2",
-        "info": "Armes et minitions 2",
+        "info": "Armes et munitions 2",
         "costs":{"Fer":450,"Scrap":300,"Carbone":100,"Bois":30,"Aluminium":100,"Titane":80,"Tungstène":100,"Rhodium":30,"Bore":30,"Huile":30,"Silicium":30,"Cuivre":30,"Electros":30,"Batteries":30,"Phosphore":90,"Hydrogène":90,"Uranium":60,"Bossium":30,"Plomb":120,"Soufre":200}
     },
     {

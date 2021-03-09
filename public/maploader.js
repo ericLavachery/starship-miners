@@ -28,6 +28,7 @@ function showMap(wmap,justMoved) {
     let resHere = '';
     let tPic = 'P_001';
     allZoneRes = [];
+    allCheckedZoneRes = [];
     let visMap = _.filter(wmap, function(tile) {
         return (tile.x >= minX && tile.x <= maxX && tile.y >= minY && tile.y <= maxY);
     });
