@@ -412,7 +412,7 @@ function calcMoveCost(targetTileId,diag) {
     let moveCost;
     if (tile.rd && !selectedBatType.skills.includes('hover')) {
         moveCost = baseMoveCost+terrain.roadmc;
-        if (selectedBatType.skills.includes('ranger') || selectedBat.eq === 'kit-sentinelle' || selectedBat.eq === 'e-ranger' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitgi') {
+        if (selectedBatType.skills.includes('ranger') || selectedBat.eq === 'kit-sentinelle' || selectedBat.eq === 'e-ranger' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitto') {
             if (terrain.roadmc > terrain.rangermc) {
                 if (terrain.rangermc >= 2) {
                     moveCost = baseMoveCost+terrain.rangermc-0.5;
@@ -431,7 +431,7 @@ function calcMoveCost(targetTileId,diag) {
         moveCost = baseMoveCost+terrain.alienmc;
     } else if (selectedBatType.skills.includes('okwater')) {
         moveCost = baseMoveCost+terrain.larvemc;
-    } else if (selectedBatType.skills.includes('ranger') || selectedBat.eq === 'kit-sentinelle' || selectedBat.eq === 'e-ranger' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitgi' || (selectedBat.eq === 'chenilles' && selectedBatType.maxFlood >= 1 && selectedBatType.maxScarp >= 2) || (selectedBat.eq === 'chenilles' && selectedBatType.maxFlood >= 1 && terrain.name === 'S') || (selectedBat.eq === 'chenilles' && selectedBatType.maxScarp >= 2 && terrain.name === 'H')) {
+    } else if (selectedBatType.skills.includes('ranger') || selectedBat.eq === 'kit-sentinelle' || selectedBat.eq === 'e-ranger' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitto' || (selectedBat.eq === 'chenilles' && selectedBatType.maxFlood >= 1 && selectedBatType.maxScarp >= 2) || (selectedBat.eq === 'chenilles' && selectedBatType.maxFlood >= 1 && terrain.name === 'S') || (selectedBat.eq === 'chenilles' && selectedBatType.maxScarp >= 2 && terrain.name === 'H')) {
         moveCost = baseMoveCost+terrain.rangermc;
     } else if (selectedBatType.skills.includes('hover')) {
         moveCost = baseMoveCost+terrain.hovermc;

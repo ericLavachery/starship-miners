@@ -1411,13 +1411,13 @@ function chargeurAdj(bat,shots,weap) {
     if (bat.eq.includes('kit-guetteur')) {
         mult = 2;
     }
-    if (bat.eq.includes('chargeur') || bat.eq.includes('kit-guetteur') || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
+    if (bat.eq.includes('chargeur') || bat.eq.includes('kit-guetteur') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
         if (weap.num === 1) {
             if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.eq.includes('kit-guetteur') || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
                 newShots = Math.round(newShots*mult);
             }
         } else {
-            if (bat.eq === 'chargeur2' || bat.eq === 'chargeur' || bat.eq.includes('kit-guetteur')) {
+            if (bat.eq === 'chargeur2' || bat.eq === 'chargeur' || bat.eq.includes('kit-guetteur') || bat.eq === 'crimekitto') {
                 newShots = Math.round(newShots*mult);
             }
         }

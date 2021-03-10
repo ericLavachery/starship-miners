@@ -888,6 +888,12 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             if (newBat.eq === 'kit-pompiste' && !newBat.tags.includes('resistfeu')) {
                 newBat.tags.push('resistfeu');
             }
+            if (newBat.eq === 'crimekitto' && !newBat.tags.includes('resistfeu')) {
+                newBat.tags.push('resistfeu');
+            }
+            if (newBat.eq === 'kit-sentinelle' && !newBat.tags.includes('resistacide')) {
+                newBat.tags.push('resistacide');
+            }
             if (batArmor.skills.includes('resistacide') && !newBat.tags.includes('resistacide')) {
                 newBat.tags.push('resistacide');
             }

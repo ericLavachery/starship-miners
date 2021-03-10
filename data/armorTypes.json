@@ -524,6 +524,16 @@
         "costs":{"Blendium":6,"Tissus":15,"Scrap":6,"Carbone":6,"Fer":3}
     },
     {
+        "name": "crimekitto",
+        "cat":"equip",
+        "skills": [],
+        "info": "Déplacement+ Cadence++ / Résistance feu",
+        "bldReq":["Atelier"],
+        "compReq":{"log":1,"ordre":2},
+        "factor":"crew",
+        "costs":{"Scrap":6,"Carbone":6,"Fer":3}
+    },
+    {
         "name": "kit-lightning",
         "cat":"equip",
         "skills": [],
@@ -538,7 +548,7 @@
         "name": "kit-pompiste",
         "cat":"equip",
         "skills": [],
-        "info": "Canon à essence",
+        "info": "Canon à essence / Résistance feu",
         "bldReq":["Atelier"],
         "compReq":{"log":1,"pyro":2},
         "factor":"crew",
@@ -560,7 +570,7 @@
         "name": "kit-sentinelle",
         "cat":"equip",
         "skills": [],
-        "info": "Camouflage+ Déplacement+ Marqueur",
+        "info": "Camouflage+ Déplacement+ Marqueur / Résistance acide",
         "bldReq":["Atelier"],
         "compReq":{"log":1},
         "factor":"crew",

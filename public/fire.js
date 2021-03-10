@@ -390,7 +390,7 @@ function attack(melee) {
     console.log(tile.infra+'+++++++++++++++++++++++');
     console.log('shots='+shots);
     // chargeur
-    if (selectedBat.eq.includes('chargeur') || selectedBat.eq.includes('carrousel') || selectedBat.eq.includes('kit-guetteur') || selectedBat.eq === 'crimekitch' || selectedBat.eq.includes('landerwkit') || selectedBat.eq.includes('w2-l')) {
+    if (selectedBat.eq.includes('chargeur') || selectedBat.eq.includes('carrousel') || selectedBat.eq.includes('kit-guetteur') || selectedBat.eq === 'crimekitto' || selectedBat.eq === 'crimekitch' || selectedBat.eq.includes('landerwkit') || selectedBat.eq.includes('w2-l')) {
         shots = chargeurAdj(selectedBat,shots,selectedWeap);
     }
     // ESCAPE
@@ -1213,7 +1213,7 @@ function defense(melee) {
     console.log(tile.infra+'+++++++++++++++++++++++');
     console.log('shots='+shots);
     // chargeur
-    if (targetBat.eq.includes('chargeur') || targetBat.eq.includes('carrousel') || targetBat.eq.includes('kit-guetteur') || targetBat.eq === 'crimekitch' || targetBat.eq.includes('landerwkit') || targetBat.eq.includes('w2-l')) {
+    if (targetBat.eq.includes('chargeur') || targetBat.eq.includes('carrousel') || targetBat.eq.includes('kit-guetteur') || targetBat.eq === 'crimekitch' || targetBat.eq === 'crimekitto' || targetBat.eq.includes('landerwkit') || targetBat.eq.includes('w2-l')) {
         shots = chargeurAdj(targetBat,shots,targetWeap);
     }
     // Champs de mines

@@ -141,7 +141,7 @@ function weaponsInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
             // chargeur
-            if (bat.eq.includes('chargeur') || bat.eq.includes('carrousel') || bat.eq.includes('kit-guetteur') || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
+            if (bat.eq.includes('chargeur') || bat.eq.includes('carrousel') || bat.eq.includes('kit-guetteur') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
                 attaques = chargeurAdj(bat,attaques,thisWeapon);
             }
             if (pop) {
@@ -332,7 +332,7 @@ function weaponsInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
             // chargeur
-            if (bat.eq.includes('chargeur') || bat.eq.includes('carrousel') || bat.eq.includes('kit-guetteur') || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
+            if (bat.eq.includes('chargeur') || bat.eq.includes('carrousel') || bat.eq.includes('kit-guetteur') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
                 attaques = chargeurAdj(bat,attaques,thisWeapon);
             }
             if (pop) {
