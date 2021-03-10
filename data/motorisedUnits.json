@@ -215,7 +215,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","cible","guerrilla","inflammable","selfbadmecano","fret","defense","light","crewsave","recupcit","recupres"],
+        "skills":["fortif","cible","inflammable","selfbadmecano","fret","defense","light","crewsave","recupcit","recupres"],
         "mecanoCost":20,
         "transRes":120,
         "fuzz":2.5,

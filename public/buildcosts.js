@@ -384,6 +384,7 @@ function checkUnitCost(batType,withDeploy) {
         if (batType.skills.includes('brigands')) {
             if (reqCit > dispoCrim+dispoCit) {
                 enoughRes = false;
+                console.log('not enough crim');
             }
         } else {
             if (reqCit > dispoCit) {
