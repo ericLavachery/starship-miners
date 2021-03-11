@@ -38,25 +38,6 @@ function clickSelect(tileId) {
     let ownBatHere = false;
     let jump = false;
     let newSelectedBat = {};
-    // bataillons.forEach(function(bat) {
-    //     if (bat.tileId === tileId && bat.loc === "zone") {
-    //         showBatInfos(bat);
-    //         if (selectedBat.id == bat.id && selectedBatType.moveCost < 99) {
-    //             // let batType = getBatType(bat);
-    //             if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'e-jetpack') {
-    //                 jump = true;
-    //             }
-    //             moveMode();
-    //             moveInfos(selectedBat,jump);
-    //         } else {
-    //             // selectMode();
-    //             // batUnstack();
-    //             // batSelect(bat);
-    //             newSelectedBat = bat;
-    //         }
-    //         ownBatHere = true;
-    //     }
-    // });
     let goMove = false;
     bataillons.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
@@ -176,6 +157,7 @@ function isAlienHere(tileId) {
 
 function batSelect(bat) {
     // remove selection on old selected unit
+    batDebarq = {};
     nextTurnOK = true;
     $('html,body').scrollTop(0);
     washReports();

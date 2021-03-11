@@ -588,26 +588,32 @@ function turnInfo() {
 };
 
 function calcUnitResist() {
-    let resistance = 0;
+    let unitResist = 0;
     // LABOS
     if (playerInfos.bldList.includes('Centre de recherches')) {
-        resistance = resistance+1;
+        unitResist = unitResist+1;
     } else if (playerInfos.bldList.includes('Laboratoire')) {
-        resistance = resistance+0.3;
+        unitResist = unitResist+0.8;
+    }
+    // INFIRMERIES
+    if (playerInfos.bldList.includes('Hôpital')) {
+        unitResist = unitResist+1;
+    } else if (playerInfos.bldList.includes('Infirmerie')) {
+        unitResist = unitResist+0.3;
     }
     // ENTRAINEMENT
     if (playerInfos.bldList.includes('Salle de sport')) {
-        resistance = resistance+0.3;
+        unitResist = unitResist+0.6;
     }
     if (playerInfos.bldList.includes('Camp d\'entraînement')) {
-        resistance = resistance+1;
+        unitResist = unitResist+1;
     }
     // CANTINES
     if (playerInfos.bldList.includes('Cantine')) {
-        resistance = resistance+0.3;
+        unitResist = unitResist+0.6;
     }
-    resistance = Math.ceil(resistance);
-    return resistance;
+    unitResist = Math.ceil(unitResist);
+    return unitResist;
 };
 
 function tagsUpdate(bat) {
