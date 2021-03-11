@@ -127,23 +127,23 @@ function checkEggsDrop() {
     console.log('mapAdjDiff'+playerInfos.mapAdjDiff);
     console.log('dropTurn'+dropTurn);
     let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapAdjDiff)*dropMod);
-    let dropMessage = '';
     let maxEggsInPlay = (playerInfos.mapDiff*3)-1;
-    let overFifty = playerInfos.mapTurn-50;
-    if (overFifty < 0) {
-        overFifty = 0;
+    let overSixty = playerInfos.mapTurn-60;
+    if (overSixty < 0) {
+        overSixty = 0;
     }
     let maxEggDropTurn = playerInfos.mapTurn-10;
     if (maxEggDropTurn < Math.ceil(playerInfos.mapDiff/2)) {
         maxEggDropTurn = Math.ceil(playerInfos.mapDiff/2);
     }
-    let maxDroppedEggs = Math.ceil((maxEggDropTurn+overFifty)*(playerInfos.mapDiff+1)/6);
+    let maxDroppedEggs = Math.ceil((maxEggDropTurn+overSixty)*(playerInfos.mapDiff+1)/6);
+    let dropMessage = 'Nombre d\'oeufs tombés: '+playerInfos.droppedEggs+'/'+maxDroppedEggs;
     if (dropChance < 0) {
         dropChance = 0;
     }
     if (aliens.length >= maxAliens) {
         dropChance = 0;
-        dropMessage = 'Nombre max d\'aliens en jeu: '+maxAliens;
+        dropMessage = 'Nombre max d\'aliens en jeu atteint: '+maxAliens;
     }
     if (playerInfos.eggPause) {
         dropChance = 0;
@@ -151,11 +151,11 @@ function checkEggsDrop() {
     }
     if (eggsNum >= maxEggsInPlay) {
         dropChance = 0;
-        dropMessage = 'Nombre max d\'oeufs en jeu: '+maxEggsInPlay;
+        dropMessage = 'Nombre max d\'oeufs en jeu atteint: '+maxEggsInPlay;
     }
     if (playerInfos.droppedEggs >= maxDroppedEggs) {
         dropChance = 0;
-        dropMessage = 'Nombre d\'oeufs tombés: '+playerInfos.droppedEggs+'/'+maxDroppedEggs;
+        dropMessage = 'Nombre d\'oeufs tombés atteint: '+playerInfos.droppedEggs+'/'+maxDroppedEggs;
     }
     if (playerInfos.bldList.includes('Champ de force')) {
         dropChance = 0;

@@ -824,7 +824,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","capfar","inflammable","escape","baddef"],
+        "skills":["fly","capfar","inflammable","escape","baddef","infkill"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":2,"Wingium":2,"Mephitis":1}
     },
@@ -1019,7 +1019,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["guerrilla","tirailleur","escape","maladie","anycap"],
+        "skills":["guerrilla","tirailleur","escape","maladie","anycap","infkill"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Aranium":3,"Bugium":1,"Germium":2,"Wingium":1}
     },
@@ -1306,7 +1306,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["resistpoison","resistblast","resistfeu"],
+        "skills":["resistpoison","resistblast","resistfeu","infkill"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":1,"Swarmine":5,"Mephitis":1}
     },

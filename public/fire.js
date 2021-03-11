@@ -700,6 +700,10 @@ function attack(melee) {
             }
         }
     }
+    // infkill
+    if (selectedBatType.skills.includes('infkill') && targetBatType.cat != 'infantry') {
+        totalDamage = Math.round(totalDamage/2);
+    }
     // resistance oeufs
     if (targetBatType.skills.includes('eggprotect')) {
         let eggProt = 100-Math.round(1000/(10+((playerInfos.mapDiff-1)*2.5)));
@@ -1473,6 +1477,10 @@ function defense(melee) {
                 }
             }
         }
+    }
+    // infkill
+    if (targetBatType.skills.includes('infkill') && selectedBatType.cat != 'infantry') {
+        totalDamage = Math.round(totalDamage/2);
     }
     // resistance oeufs
     if (selectedBatType.skills.includes('eggprotect')) {
