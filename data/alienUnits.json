@@ -987,7 +987,7 @@
         "cat":"aliens",
         "kind":"spider",
         "class":"C",
-        "rarity":4,
+        "rarity":3,
         "squads":12,
         "squadSize":8,
         "crew":0,

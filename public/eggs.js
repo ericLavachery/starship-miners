@@ -129,7 +129,15 @@ function checkEggsDrop() {
     let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapAdjDiff)*dropMod);
     let dropMessage = '';
     let maxEggsInPlay = (playerInfos.mapDiff*3)-1;
-    let maxDroppedEggs = Math.ceil(playerInfos.mapTurn*(playerInfos.mapDiff+2)/10);
+    let overFifty = playerInfos.mapTurn-50;
+    if (overFifty < 0) {
+        overFifty = 0;
+    }
+    let maxEggDropTurn = playerInfos.mapTurn-10;
+    if (maxEggDropTurn < Math.ceil(playerInfos.mapDiff/2)) {
+        maxEggDropTurn = Math.ceil(playerInfos.mapDiff/2);
+    }
+    let maxDroppedEggs = Math.ceil((maxEggDropTurn+overFifty)*(playerInfos.mapDiff+1)/6);
     if (dropChance < 0) {
         dropChance = 0;
     }

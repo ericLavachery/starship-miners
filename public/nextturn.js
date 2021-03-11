@@ -642,8 +642,13 @@ function tagsUpdate(bat) {
     if (rand.rand(1,3) <= 2) {
         tagDelete(bat,'stun');
     }
-    if (rand.rand(1,5) === 1) {
-        tagDelete(bat,'drunk');
+    if (bat.tags.includes('drunk')) {
+        if (rand.rand(1,5) === 1) {
+            tagDelete(bat,'drunk');
+            if (!bat.tags.includes('drunk')) {
+                warning('Burp...',bat.type+' a la gueule de bois.');
+            }
+        }
     }
     if (rand.rand(1,5) === 1) {
         if (bat.tags.includes('octiron')) {
@@ -840,6 +845,7 @@ function tagsEffect(bat,batType) {
         } else {
             if (rand.rand(1,18) <= unitResist && bat.cat != 'aliens') {
                 tagDelete(bat,'maladie');
+                warning('',bat.type+' a vaincu la maladie.');
             } else {
                 bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
             }
@@ -865,6 +871,7 @@ function tagsEffect(bat,batType) {
         } else {
             if (rand.rand(0,11) <= unitResist) {
                 tagDelete(bat,'necro');
+                warning('',bat.type+' a éliminé la nécrotoxine.');
             }
         }
     }

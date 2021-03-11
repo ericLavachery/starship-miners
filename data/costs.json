@@ -675,7 +675,7 @@
         "id":86,
         "name":"Cyborgs",
         "levels":{"rednecks":17,"blades":14,"bulbos":3,"drogmulojs":18,"tiradores":16,"detruas":99,"brasier":11},
-        "bldReq":["Atelier","Armurerie","Laboratoire"],
+        "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"cyber":1},
         "costs":{"Scrap":36,"Carbone":72,"Tungstène":73,"Aluminium":48,"Titane":24,"Electros":72,"Batteries":72,"Cuivre":36,"Silicium":48,"Chlore":37,"Zinc":37,"Fer":25,"Tissus":18},
         "deploy":{"Energie":70,"Huile":45,"Chlore":20,"Zinc":20,"Tissus":20},
@@ -879,7 +879,7 @@
         "id":1,
         "name":"Scouts",
         "levels":{"rednecks":99,"blades":99,"bulbos":13,"drogmulojs":14,"tiradores":99,"detruas":9,"brasier":99},
-        "bldReq":["Armurie","Atelier"],
+        "bldReq":["Armurie","Garage"],
         "compReq":{"tank":1},
         "costs":{"Fer":220,"Scrap":215,"Carbone":75,"Aluminium":210,"Tungstène":90,"Electros":15,"Batteries":25,"Compo2":30,"Cobalt":30,"Hélium":60,"Explosifs":10,"Fuel":40},
         "deploy":{"Fuel":70},
@@ -1021,7 +1021,7 @@
         "id":64,
         "name":"The Box",
         "levels":{"rednecks":99,"blades":99,"bulbos":4,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Infirmerie","Atelier"],
+        "bldReq":["Infirmerie","Garage"],
         "costs":{"Fer":27,"Scrap":225,"Carbone":36,"Aluminium":45,"Electros":9,"Batteries":9,"Compo2":18,"Silicium":36,"Huile":94,"Chlore":48,"Zinc":48,"Titane":12,"Tissus":24},
         "deploy":{"Fuel":40,"Huile":48,"Chlore":48,"Zinc":48,"Tissus":48},
         "fabTime":40
@@ -1126,7 +1126,7 @@
         "id":33,
         "name":"Monster trucks",
         "levels":{"rednecks":8,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Atelier"],
+        "bldReq":["Armurerie","Garage"],
         "costs":{"Fer":120,"Scrap":390,"Carbone":75,"Aluminium":225,"Tungstène":30,"Batteries":15,"Compo2":36,"Huile":10},
         "deploy":{"Fuel":80},
         "fabTime":60
@@ -1135,7 +1135,7 @@
         "id":67,
         "name":"Reapers",
         "levels":{"rednecks":99,"blades":5,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Atelier"],
+        "bldReq":["Atelier","Garage"],
         "costs":{"Fer":90,"Scrap":405,"Carbone":60,"Bois":60,"Aluminium":195,"Batteries":15,"Compo2":36},
         "deploy":{"Fuel":80},
         "fabTime":60
@@ -1356,7 +1356,7 @@
         "id":99,
         "name":"Warcars",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":5},
-        "bldReq":["Armurerie","Atelier"],
+        "bldReq":["Garage","Atelier"],
         "costs":{"Fer":160,"Scrap":340,"Carbone":80,"Aluminium":100,"Tungstène":40,"Batteries":20,"Nickel":30,"Compo2":20,"Fuel":100},
         "deploy":{"Fuel":70},
         "fabTime":50
