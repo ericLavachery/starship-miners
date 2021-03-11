@@ -155,13 +155,13 @@ function batInfos(bat,pop) {
     if (batType.skills.includes('berserk') && bat.damage >= 1) {
         $('#'+bodyPlace).append('<span class="paramName cy">Berserk</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
-    if (batType.skills.includes('guerrilla')) {
+    if (batType.skills.includes('tirailleur')) {
         let guerBonus = 100;
         if (bat.oldTileId === bat.tileId) {
-            $('#'+bodyPlace).append('<span class="paramName cy">Guérilla</span><span class="paramIcon"></span><span class="paramValue cy">'+guerBonus+'%</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName cy">Tirailleur</span><span class="paramIcon"></span><span class="paramValue cy">'+guerBonus+'%</span><br>');
         } else {
             guerBonus = Math.round(100*(1.5+(playerInfos.comp.train/5)+(playerInfos.comp.cam/10)));
-            $('#'+bodyPlace).append('<span class="paramName cy">Guérilla</span><span class="paramIcon"></span><span class="paramValue cy">'+guerBonus+'%</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName cy">Tirailleur</span><span class="paramIcon"></span><span class="paramValue cy">'+guerBonus+'%</span><br>');
         }
     }
     if (pop) {
@@ -440,7 +440,10 @@ function batFullInfos(bat) {
         allSkills = allSkills+'<span class="paramValue" title="Cadence de tir doublée. Possible seulement en mode furtif. L\'unité doit bouger pour pouvoir en bénéficier à nouveau.">Embuscade</span>'+sepa;
     }
     if (batType.skills.includes('guerrilla')) {
-        allSkills = allSkills+'<span class="paramValue" title="Bonus défensif et offensif lorsque le bataillon est en mouvement. Peut encore avancer à -4 PA. Peut encore riposter à -10 PA. Riposter ne coûte pas de PA. Ne riposte que 3 fois maximum.">Guerilla</span>'+sepa;
+        allSkills = allSkills+'<span class="paramValue" title="Peut encore avancer à -4 PA. Peut encore riposter à -10 PA. Riposter ne coûte pas de PA. Ne riposte que 3 fois maximum.">Guerilla</span>'+sepa;
+    }
+    if (batType.skills.includes('tirailleur')) {
+        allSkills = allSkills+'<span class="paramValue" title="Bonus défensif et offensif lorsque le bataillon est en mouvement.">Tirailleur</span>'+sepa;
     }
     if (batType.skills.includes('camo')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut se mettre en mode furtif">Furtivité</span>'+sepa;

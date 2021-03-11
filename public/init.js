@@ -24,6 +24,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.eggPause === undefined) {
         playerInfos.eggPause = false;
     }
+    if (playerInfos.droppedEggs === undefined) {
+        playerInfos.droppedEggs = 0;
+    }
     if (playerInfos.mapAdjDiff === undefined) {
         playerInfos.mapAdjDiff = playerInfos.mapDiff;
     }

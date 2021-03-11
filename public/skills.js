@@ -17,9 +17,8 @@ function fortification() {
     if (!selectedBat.tags.includes('fortif')) {
         selectedBat.tags.push('fortif');
     }
-    selectedBat.salvoLeft = 0;
     selectedBat.apLeft = selectedBat.apLeft-selectedBat.ap;
-    if (selectedBatType.skills.includes('baddef') || selectedBatType.skills.includes('guerrilla')) {
+    if (selectedBatType.skills.includes('baddef') || selectedBatType.skills.includes('tirailleur')) {
         selectedBat.apLeft = selectedBat.apLeft-3;
     }
     tagDelete(selectedBat,'mining');

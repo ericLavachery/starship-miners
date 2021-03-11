@@ -127,21 +127,35 @@ function checkEggsDrop() {
     console.log('mapAdjDiff'+playerInfos.mapAdjDiff);
     console.log('dropTurn'+dropTurn);
     let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapAdjDiff)*dropMod);
+    let dropMessage = '';
+    let maxEggsInPlay = (playerInfos.mapDiff*3)-1;
+    let maxDroppedEggs = Math.ceil(playerInfos.mapTurn*(playerInfos.mapDiff+2)/10);
     if (dropChance < 0) {
-        dropChance = 0;
-    }
-    if (eggsNum >= (playerInfos.mapDiff*3)-1) {
         dropChance = 0;
     }
     if (aliens.length >= maxAliens) {
         dropChance = 0;
+        dropMessage = 'Nombre max d\'aliens en jeu: '+maxAliens;
     }
-    if (playerInfos.eggPause || playerInfos.bldList.includes('Champ de force')) {
+    if (playerInfos.eggPause) {
         dropChance = 0;
+        dropMessage = 'Pause';
+    }
+    if (eggsNum >= maxEggsInPlay) {
+        dropChance = 0;
+        dropMessage = 'Nombre max d\'oeufs en jeu: '+maxEggsInPlay;
+    }
+    if (playerInfos.droppedEggs >= maxDroppedEggs) {
+        dropChance = 0;
+        dropMessage = 'Nombre d\'oeufs tombés: '+playerInfos.droppedEggs+'/'+maxDroppedEggs;
+    }
+    if (playerInfos.bldList.includes('Champ de force')) {
+        dropChance = 0;
+        dropMessage = 'Champ de force';
     }
     console.log('dropChance='+dropChance);
     if (playerInfos.pseudo === 'Bob') {
-        warning('Oeufs','Check '+dropChance+'%');
+        warning('Oeufs','Check '+dropChance+'% '+dropMessage);
     }
     if (playerInfos.mapDiff >= 1 || playerInfos.mapTurn >= 25) {
         if (rand.rand(1,100) <= dropChance) {
@@ -172,15 +186,19 @@ function checkEggsDrop() {
         playMusic('newEgg',false);
         if (Math.floor(playerInfos.mapTurn/25) > playerInfos.cocons) {
             dropEgg('Cocon','target');
+            playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             let doubleCocon = playerInfos.mapTurn+((playerInfos.mapDiff-1)*7);
             if (doubleCocon >= 50) {
                 dropEgg('Oeuf','any');
+                playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             }
             if (doubleCocon >= 100) {
                 dropEgg('Cocon','nedge');
+                playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             }
             if (doubleCocon >= 200) {
                 dropEgg('Cocon','nedge');
+                playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             }
             playerInfos.cocons = playerInfos.cocons+1;
         }
@@ -290,10 +308,13 @@ function eggsDrop() {
             }
             if (eggTypeDice <= coqueChance) {
                 dropEgg('Coque','nocenter');
+                playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             } else if (eggTypeDice <= coqueChance+invisibleChance) {
                 dropEgg('Oeuf voilé','any');
+                playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             } else {
                 dropEgg('Oeuf','any');
+                playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             }
             if (i > 4) {break;}
             i++

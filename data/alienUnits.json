@@ -245,7 +245,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["invisible","fouisseur","errant","okwater","guerrilla","morph"],
+        "skills":["invisible","fouisseur","errant","okwater","guerrilla","tirailleur","morph"],
         "deathFx":"76974__michel88__piggrunt2",
         "spawnFx":"71906__cmusounddesign__je-monster_ghost",
         "fxPriority":1,
@@ -418,7 +418,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["ricochet","guerrilla","baddef"],
+        "skills":["ricochet","guerrilla","tirailleur","baddef"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":3}
     },
@@ -1019,7 +1019,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["guerrilla","escape","maladie","anycap"],
+        "skills":["guerrilla","tirailleur","escape","maladie","anycap"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Aranium":3,"Bugium":1,"Germium":2,"Wingium":1}
     },
@@ -1862,7 +1862,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouisseur","anycap","maladie","hide","venin","guerrilla"],
+        "skills":["fouisseur","anycap","maladie","hide","venin","guerrilla","tirailleur"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":2,"Aranium":8,"Mephitis":2,"Germium":5,"Slime":3,"Blendium":4}
     },

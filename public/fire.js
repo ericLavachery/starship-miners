@@ -348,7 +348,7 @@ function attack(melee) {
         }
     }
     // guerrilla
-    if (selectedBatType.skills.includes('guerrilla') && selectedBat.oldTileId != selectedBat.tileId) {
+    if (selectedBatType.skills.includes('tirailleur') && selectedBat.oldTileId != selectedBat.tileId) {
         let guerBonus = 1.5;
         if (selectedBatType.cat != 'aliens') {
             guerBonus = guerBonus+(playerInfos.comp.train/5)+(playerInfos.comp.cam/10);
@@ -1171,7 +1171,7 @@ function defense(melee) {
         defFactor = Math.round(defFactor*1.25);
     }
     // guerrilla
-    if (selectedBatType.skills.includes('guerrilla') && selectedBat.oldTileId != selectedBat.tileId) {
+    if (selectedBatType.skills.includes('tirailleur') && selectedBat.oldTileId != selectedBat.tileId) {
         let guerrillaDef = 10+terrain.cover+(selectedBatType.stealth/5);
         if (selectedBatType.cat != 'aliens') {
             guerrillaDef = guerrillaDef+(playerInfos.comp.train*2)+(playerInfos.comp.cam/2);

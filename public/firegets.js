@@ -635,7 +635,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
         if (batType.skills.includes('bastion') && !attacking) {
             speed = speed-20;
         }
-        if (batType.skills.includes('guerrilla') && bat.oldTileId != bat.tileId) {
+        if (batType.skills.includes('tirailleur') && bat.oldTileId != bat.tileId) {
             speed = speed-20;
         }
         if (batType.skills.includes('initiative')) {
@@ -1474,7 +1474,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
     }
     // guerrilla
     if (brideDef < 1) {
-        if (batType.skills.includes('guerrilla') && bat.oldTileId != bat.tileId) {
+        if (batType.skills.includes('tirailleur') && bat.oldTileId != bat.tileId) {
             let gmin = 0.75;
             let gmax = 1;
             if (batType.cat != 'aliens') {

@@ -93,17 +93,17 @@ function skillsInfos(bat,batType) {
             balise = 'h3';
         }
         apCost = bat.ap;
-        if (batType.skills.includes('baddef') || batType.skills.includes('guerrilla')) {
+        if (batType.skills.includes('baddef') || batType.skills.includes('tirailleur')) {
             apCost = bat.ap+3;
         }
         apReq = bat.ap-3;
-        if (bat.apLeft >= apReq && !bat.tags.includes('fortif') && !inMelee && bat.salvoLeft >= batType.maxSalvo) {
+        if (bat.apLeft >= apReq && !bat.tags.includes('fortif') && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Se fortifier (bonus couverture)" class="boutonGris skillButtons" onclick="fortification()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Vous ne pouvez pas vous fortifier en mêlée";
             } else {
-                skillMessage = "Pas assez de PA ou de salve";
+                skillMessage = "Pas assez de PA";
             }
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
         }

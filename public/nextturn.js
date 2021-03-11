@@ -374,6 +374,10 @@ function nextTurnEnd() {
             if (bat.apLeft > oldAP) {
                 bat.apLeft = oldAP;
             }
+            // production
+            if (bat.tags.includes('prodres') && !batType.skills.includes('upkeep')) {
+                bat.apLeft = bat.apLeft-2;
+            }
             // tracking
             if (checkTracking(bat)) {
                 bat.apLeft = bat.apLeft-4;

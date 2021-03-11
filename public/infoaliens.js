@@ -167,8 +167,8 @@ function showEnemyBatInfos(bat) {
         }
     }
     if (playerInfos.comp.ca >= 3) {
-        if (batType.skills.includes('guerrilla')) {
-            $('#unitInfos').append('<span class="paramName">Guérilla</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+        if (batType.skills.includes('tirailleur')) {
+            $('#unitInfos').append('<span class="paramName">Tirailleur</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
         }
     }
     if (playerInfos.comp.ca >= 3) {
