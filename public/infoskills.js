@@ -314,7 +314,7 @@ function skillsInfos(bat,batType) {
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
         if (apCost === 0) {apCost = baseskillCost;}
         if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonGris skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonGris skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Pas de soins en mêlée";
@@ -327,7 +327,7 @@ function skillsInfos(bat,batType) {
                     skillMessage = "Pas assez de PA";
                 }
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
         }
     }
     // SELF MEDIC

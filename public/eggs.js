@@ -128,6 +128,7 @@ function checkEggsDrop() {
     console.log('dropTurn'+dropTurn);
     let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapAdjDiff)*dropMod);
     let maxEggsInPlay = (playerInfos.mapDiff*3)-1;
+    console.log('maxEggsInPlay = '+maxEggsInPlay);
     let overSixty = playerInfos.mapTurn-60;
     if (overSixty < 0) {
         overSixty = 0;
@@ -137,6 +138,7 @@ function checkEggsDrop() {
         maxEggDropTurn = Math.ceil(playerInfos.mapDiff/2);
     }
     let maxDroppedEggs = Math.ceil((maxEggDropTurn+overSixty)*(playerInfos.mapDiff+1)/6);
+    console.log('maxDroppedEggs = '+maxDroppedEggs);
     let dropMessage = 'Nombre d\'oeufs tombés: '+playerInfos.droppedEggs+'/'+maxDroppedEggs;
     if (dropChance < 0) {
         dropChance = 0;

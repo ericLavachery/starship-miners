@@ -253,10 +253,12 @@ function attack(melee) {
     let tile = getTile(targetBat);
     if (terrain.name === 'W' || terrain.name === 'R' || terrain.name === 'S') {
         if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov') || selectedWeap.ammo.includes('laser') || selectedWeap.ammo.includes('gaz')) {
-            selectedWeap.power = Math.round(selectedWeap.power*0.75);
-            if (!targetBatType.skills.includes('fly') && !selectedWeap.ammo.includes('gaz')) {
-                if (terrain.name === 'W' || terrain.name === 'R') {
-                    selectedWeap.aoe = 'unit';
+            if (!selectedWeap.ammo.includes('pyratol')) {
+                selectedWeap.power = Math.round(selectedWeap.power*0.75);
+                if (!targetBatType.skills.includes('fly') && !selectedWeap.ammo.includes('gaz')) {
+                    if (terrain.name === 'W' || terrain.name === 'R') {
+                        selectedWeap.aoe = 'unit';
+                    }
                 }
             }
         }
@@ -1076,10 +1078,12 @@ function defense(melee) {
     let tile = getTile(selectedBat);
     if (terrain.name === 'W' || terrain.name === 'R' || terrain.name === 'S') {
         if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov') || targetWeap.ammo.includes('laser') || targetWeap.ammo.includes('gaz')) {
-            targetWeap.power = Math.round(targetWeap.power*0.75);
-            if (!selectedBatType.skills.includes('fly') && !targetWeap.ammo.includes('gaz')) {
-                if (terrain.name === 'W' || terrain.name === 'R') {
-                    targetWeap.aoe = 'unit';
+            if (!targetWeap.ammo.includes('pyratol')) {
+                targetWeap.power = Math.round(targetWeap.power*0.75);
+                if (!selectedBatType.skills.includes('fly') && !targetWeap.ammo.includes('gaz')) {
+                    if (terrain.name === 'W' || terrain.name === 'R') {
+                        targetWeap.aoe = 'unit';
+                    }
                 }
             }
         }

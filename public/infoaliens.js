@@ -42,8 +42,10 @@ function showEnemyBatInfos(bat) {
         btweap2ammo = batType.weapon2.ammo;
     }
     if (playerInfos.comp.ca >= 1) {
-        if (batType.skills.includes('venin') || batType.weapon.ammo.includes('poison') || btweap2ammo.includes('poison') || batType.weapon.ammo.includes('toxine') || btweap2ammo.includes('toxine')) {
-            $('#unitInfos').append('<span class="paramName">Venimeux</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+        if (Object.keys(batType.weapon).length >= 1) {
+            if (batType.skills.includes('venin') || batType.weapon.ammo.includes('poison') || btweap2ammo.includes('poison') || batType.weapon.ammo.includes('toxine') || btweap2ammo.includes('toxine')) {
+                $('#unitInfos').append('<span class="paramName">Venimeux</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+            }
         }
     }
     if (playerInfos.comp.ca >= 2) {
@@ -52,28 +54,38 @@ function showEnemyBatInfos(bat) {
         }
     }
     if (playerInfos.comp.ca >= 3) {
-        if (batType.weapon.ammo.includes('necro') || btweap2ammo.includes('necro')) {
-            $('#unitInfos').append('<span class="paramName">Nécrotoxine</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+        if (Object.keys(batType.weapon).length >= 1) {
+            if (batType.weapon.ammo.includes('necro') || btweap2ammo.includes('necro')) {
+                $('#unitInfos').append('<span class="paramName">Nécrotoxine</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+            }
         }
     }
     if (playerInfos.comp.ca >= 3) {
-        if (batType.weapon.ammo.includes('parasite') || btweap2ammo.includes('parasite')) {
-            $('#unitInfos').append('<span class="paramName">Parasite</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+        if (Object.keys(batType.weapon).length >= 1) {
+            if (batType.weapon.ammo.includes('parasite') || btweap2ammo.includes('parasite')) {
+                $('#unitInfos').append('<span class="paramName">Parasite</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+            }
         }
     }
     if (playerInfos.comp.ca >= 2) {
-        if (batType.skills.includes('grip') || batType.weapon.ammo.includes('web') || btweap2ammo.includes('web') || batType.weapon.ammo.includes('glue') || btweap2ammo.includes('glue') || batType.weapon.ammo.includes('glair') || btweap2ammo.includes('glair') || batType.weapon.ammo.includes('spit') || btweap2ammo.includes('spit') || batType.weapon.ammo.includes('electric') || btweap2ammo.includes('electric')) {
-            $('#unitInfos').append('<span class="paramName">Entrave</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+        if (Object.keys(batType.weapon).length >= 1) {
+            if (batType.skills.includes('grip') || batType.weapon.ammo.includes('web') || btweap2ammo.includes('web') || batType.weapon.ammo.includes('glue') || btweap2ammo.includes('glue') || batType.weapon.ammo.includes('glair') || btweap2ammo.includes('glair') || batType.weapon.ammo.includes('spit') || btweap2ammo.includes('spit') || batType.weapon.ammo.includes('electric') || btweap2ammo.includes('electric')) {
+                $('#unitInfos').append('<span class="paramName">Entrave</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+            }
         }
     }
     if (playerInfos.comp.ca >= 2) {
-        if (batType.weapon.ammo.includes('ruche') || btweap2ammo.includes('ruche') || batType.weapon.name.includes('acide')) {
-            $('#unitInfos').append('<span class="paramName">Type d\'attaque</span><span class="paramIcon"></span><span class="paramValue">Acide</span><br>');
+        if (Object.keys(batType.weapon).length >= 1) {
+            if (batType.weapon.ammo.includes('ruche') || btweap2ammo.includes('ruche') || batType.weapon.name.includes('acide')) {
+                $('#unitInfos').append('<span class="paramName">Type d\'attaque</span><span class="paramIcon"></span><span class="paramValue">Acide</span><br>');
+            }
         }
     }
     if (playerInfos.comp.ca >= 2) {
-        if (batType.weapon.ammo.includes('napalm') || btweap2ammo.includes('napalm') || batType.weapon.ammo.includes('feu') || btweap2ammo.includes('feu')) {
-            $('#unitInfos').append('<span class="paramName">Type d\'attaque</span><span class="paramIcon"></span><span class="paramValue">Feu</span><br>');
+        if (Object.keys(batType.weapon).length >= 1) {
+            if (batType.weapon.ammo.includes('napalm') || btweap2ammo.includes('napalm') || batType.weapon.ammo.includes('feu') || btweap2ammo.includes('feu')) {
+                $('#unitInfos').append('<span class="paramName">Type d\'attaque</span><span class="paramIcon"></span><span class="paramValue">Feu</span><br>');
+            }
         }
     }
     if (playerInfos.comp.ca >= 2) {
@@ -82,18 +94,24 @@ function showEnemyBatInfos(bat) {
         }
     }
     if (playerInfos.comp.ca >= 2) {
-        if (batType.weapon.ammo.includes('troueur') || btweap2ammo.includes('troueur')) {
-            $('#unitInfos').append('<span class="paramName">Troueur</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+        if (Object.keys(batType.weapon).length >= 1) {
+            if (batType.weapon.ammo.includes('troueur') || btweap2ammo.includes('troueur')) {
+                $('#unitInfos').append('<span class="paramName">Troueur</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+            }
         }
     }
     if (playerInfos.comp.ca >= 2) {
-        if (batType.weapon.ammo.includes('creuseur') || btweap2ammo.includes('creuseur')) {
-            $('#unitInfos').append('<span class="paramName">Creuseur</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+        if (Object.keys(batType.weapon).length >= 1) {
+            if (batType.weapon.ammo.includes('creuseur') || btweap2ammo.includes('creuseur')) {
+                $('#unitInfos').append('<span class="paramName">Creuseur</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+            }
         }
     }
     if (playerInfos.comp.ca >= 3) {
-        if (batType.weapon.ammo.includes('destructeur') || btweap2ammo.includes('creuseur')) {
-            $('#unitInfos').append('<span class="paramName">Destructeur</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+        if (Object.keys(batType.weapon).length >= 1) {
+            if (batType.weapon.ammo.includes('destructeur') || btweap2ammo.includes('creuseur')) {
+                $('#unitInfos').append('<span class="paramName">Destructeur</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+            }
         }
     }
     if (playerInfos.comp.ca >= 2) {
