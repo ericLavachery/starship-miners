@@ -909,7 +909,7 @@
         "name":"Trackers",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":6},
         "bldReq":["Armurerie","Atelier"],
-        "costs":{"Fer":192,"Scrap":492,"Carbone":168,"Aluminium":108,"Tungstène":144,"Electros":24,"Batteries":12,"Nickel":36,"Compo2":60,"Compo3":15,"Huile":10,"Fuel":120},
+        "costs":{"Fer":144,"Scrap":360,"Carbone":168,"Aluminium":204,"Tungstène":216,"Titane":48,"Electros":24,"Batteries":12,"Nickel":84,"Compo2":60,"Compo3":15,"Huile":10,"Fuel":120},
         "deploy":{"Fuel":120},
         "fabTime":75
     },

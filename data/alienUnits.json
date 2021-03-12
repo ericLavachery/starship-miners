@@ -433,7 +433,7 @@
         "squads":6,
         "squadSize":15,
         "crew":0,
-        "hp":5,
+        "hp":4,
         "armor":5,
         "size":2,
         "speed":2,
@@ -1668,7 +1668,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["minaccu","resistfeu"],
+        "skills":["minaccu","ricochet"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":3,"Slime":5}
     },
