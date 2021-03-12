@@ -946,7 +946,6 @@ function attack(melee) {
                 if (totalDamage >= 10+(playerInfos.comp.ca*2)) {
                     targetBat.tags.push('necro');
                     targetBat.tags.push('necro');
-                    targetBat.tags.push('necro');
                     console.log('Nécrotoxine!');
                     $('#report').append('<span class="report rose">Nécrotoxine<br></span>');
                 }
@@ -1579,7 +1578,6 @@ function defense(melee) {
         if (!selectedBat.tags.includes('necro')) {
             if (selectedBatType.cat == 'infantry' && !selectedBat.tags.includes('zombie')) {
                 if (totalDamage >= 10+(playerInfos.comp.ca*2)) {
-                    selectedBat.tags.push('necro');
                     selectedBat.tags.push('necro');
                     selectedBat.tags.push('necro');
                     console.log('Nécrotoxine!');
