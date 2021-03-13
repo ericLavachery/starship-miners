@@ -134,6 +134,17 @@ function getMiningRate(bat,fullRate) {
             miningAdj = 1.6;
         }
     }
+    if (bat.eq === 'tungextract') {
+        miningAdj = 1.15;
+    } else if (bat.eq === 'plasmaextract') {
+        miningAdj = 1.4;
+    } else if (bat.eq === 'monoextract') {
+        miningAdj = 1.7;
+    } else if (bat.eq === 'autoextract') {
+        miningAdj = 1.5;
+    } else if (bat.eq === 'hydroextract') {
+        miningAdj = 1.5;
+    }
     if (fullRate) {
         return Math.ceil(batType.mining.rate*bat.squadsLeft/batType.squads*miningAdj);
     } else {

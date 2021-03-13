@@ -781,6 +781,60 @@
         "costs":{"Scrap":6,"Tissus":6,"Fer":4,"Bois":2,"Batteries":1}
     },
     {
+        "name": "tungextract",
+        "cat":"equip",
+        "skills": [],
+        "info": "Extraction+",
+        "bldReq":[],
+        "compReq":{"log":1,"mat":1},
+        "factor":"one",
+        "costs":{"Tungstène":60,"Titane":20}
+    },
+    {
+        "name": "plasmaextract",
+        "cat":"equip",
+        "skills": [],
+        "info": "Extraction++",
+        "bldReq":[],
+        "compReq":{"log":1,"ind":1,"energ":2},
+        "factor":"one",
+        "costs":{"Carbone":15,"Titane":45,"Platine":45,"Cuivre":30,"Electros":30,"Batteries":60},
+        "deploy":{"Energie":240}
+    },
+    {
+        "name": "monoextract",
+        "cat":"equip",
+        "skills": [],
+        "info": "Extraction+++",
+        "bldReq":[],
+        "compReq":{"log":1,"ind":2,"mat":4},
+        "factor":"one",
+        "costs":{"Carbone":10,"Titane":40,"Rhodium":40,"Cuivre":40,"Electros":40,"Batteries":30},
+        "deploy":{"Energie":120}
+    },
+    {
+        "name": "autoextract",
+        "cat":"equip",
+        "skills": [],
+        "info": "Extraction++",
+        "bldReq":[],
+        "compReq":{"log":2,"ind":2},
+        "factor":"one",
+        "costs":{"Carbone":20,"Aluminium":30,"Titane":30,"Silicium":15,"Cuivre":60,"Electros":60,"Batteries":40},
+        "deploy":{"Energie":160}
+    },
+    {
+        "name": "hydroextract",
+        "cat":"equip",
+        "skills": [],
+        "info": "Extraction++",
+        "bldReq":[],
+        "compReq":{"log":1,"ind":2,"energ":1},
+        "factor":"one",
+        "costs":{"Carbone":45,"Titane":45,"Cuivre":30,"Electros":30,"Batteries":30},
+        "deploy":{"Energie":120,"Hydrogène":80,"Aluminium":20}
+    },
+    {
         "name": "w1-gun",
         "cat":"equip",
         "skills": [],

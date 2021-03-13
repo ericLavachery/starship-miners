@@ -59,7 +59,7 @@
             "ammo":["tungsten"]
         },
         "protection":["aucun","acier","dunium","bonibo","iso"],
-        "equip":["aucun","w1-gun","w2-dyna","w1-autopistol"],
+        "equip":["aucun","w1-gun","w2-dyna","w1-autopistol","tungextract","plasmaextract","monoextract"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -210,7 +210,7 @@
             "ammo":["tungsten"]
         },
         "protection":["aucun","acier","dunium","bonibo","iso"],
-        "equip":["aucun","w1-gun","w2-fire","w1-autopistol"],
+        "equip":["aucun","w1-gun","w2-fire","w1-autopistol","hydroextract"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -286,7 +286,7 @@
             "ammo":["tungsten"]
         },
         "protection":["aucun","acier","dunium","bonibo","iso"],
-        "equip":["aucun","w1-gun","w2-ggun","w1-autopistol"],
+        "equip":["aucun","w1-gun","w2-ggun","w1-autopistol","autoextract"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
