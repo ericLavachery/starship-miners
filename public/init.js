@@ -18,6 +18,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.reserve === undefined) {
         playerInfos.reserve = {};
     }
+    if (playerInfos.lastMapId === undefined) {
+        playerInfos.lastMapId = 0;
+    }
     if (playerInfos.cocons === undefined) {
         playerInfos.cocons = 0;
     }

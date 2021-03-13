@@ -123,7 +123,7 @@ function getMiningRate(bat,fullRate) {
         } else if (bat.ammo2 === 'lame-tungsten') {
             miningAdj = 1.2;
         } else if (bat.ammo2 === 'lame-plasma') {
-            miningAdj = 1.6;
+            miningAdj = 1.5;
         }
     } else if (batType.weapon.name === 'Foreuse' || batType.weapon.name === 'Pioche') {
         if (bat.ammo === 'lame') {
@@ -131,7 +131,7 @@ function getMiningRate(bat,fullRate) {
         } else if (bat.ammo === 'lame-tungsten') {
             miningAdj = 1.2;
         } else if (bat.ammo === 'lame-plasma') {
-            miningAdj = 1.6;
+            miningAdj = 1.5;
         }
     }
     if (bat.eq === 'tungextract') {

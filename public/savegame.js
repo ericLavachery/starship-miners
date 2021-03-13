@@ -1,19 +1,82 @@
-function saveBataillons() {
-    socket.emit('save-bataillons',bataillons);
-};
-function saveAliens() {
-    socket.emit('save-aliens',aliens);
-};
 function savePlayerInfos() {
     playerInfos.numHTiles = numHTiles;
     playerInfos.numVTiles = numVTiles;
     socket.emit('save-playerInfos', playerInfos);
 };
+
 function saveMap() {
     // showedTilesReset();
     socket.emit('save-map',zone);
     commandes();
 };
+function saveAliens() {
+    socket.emit('save-aliens',aliens);
+};
+function saveBataillons() {
+    socket.emit('save-bataillons',bataillons);
+};
+
+function saveMapAs() {
+    // showedTilesReset();
+    playerInfos.lastMapId = playerInfos.lastMapId+1;
+    savePlayerInfos();
+    socket.emit('save-map-as',[zone,playerInfos.lastMapId]);
+    saveAliensAs();
+    saveBataillonsAs();
+    commandes();
+};
+function saveAliensAs() {
+    deadAliensList = [];
+    aliens.forEach(function(bat) {
+        let batType = getBatType(bat);
+        bat.creaTurn = 0;
+        if (batType.moveCost >= 90) {
+            if (batType.name === 'Cocon' || batType.name === 'Coque') {
+                alienMorph(bat,'Volcan',false);
+            }
+            if (batType.name === 'Oeuf voilé' || batType.name === 'Oeuf' || batType.name === 'Vomissure') {
+                alienMorph(bat,'Ruche',false);
+            }
+            if (batType.name === 'Flaque') {
+                alienMorph(bat,'Oeuf',false);
+            }
+        } else {
+            deadAliensList.push(bat.id);
+        }
+    });
+    killAlienList();
+    socket.emit('save-aliens-as',[aliens,playerInfos.lastMapId]);
+};
+function saveBataillonsAs() {
+    bataillons.forEach(function(bat) {
+        bat.creaTurn = 0;
+        if (bat.loc === 'trans') {
+            let transBat = getBatById(bat.locId);
+            if (transBat.fuzz <= -2) {
+                bat.fuzz = -2;
+            } else {
+                bat.fuzz = batType.fuzz;
+            }
+        }
+    });
+    deadBatsList = [];
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        bat.creaTurn = 0;
+        if (bat.fuzz > -2) {
+            deadBatsList.push(bat.id);
+        } else {
+            if (batType.cat != 'buildings' && batType.cat != 'devices' && bat.loc === 'zone') {
+                if (rand.rand(1,100) <= 15) {
+                    deadBatsList.push(bat.id);
+                }
+            }
+        }
+    });
+    killBatList();
+    socket.emit('save-bataillons-as',[bataillons,playerInfos.lastMapId]);
+};
+
 function saveAllBats() {
     saveBataillons();
     saveAliens();
@@ -58,6 +121,7 @@ function mapReset() {
     playerInfos.fndComps = 0;
     playerInfos.fndUnits = 0;
     playerInfos.fndCits = 0;
+    playerInfos.lastMapId = 0;
     playerInfos.eggPause = false;
     playerInfos.droppedEggs = 0;
     playerInfos.aliensKilled = 0;

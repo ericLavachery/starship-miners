@@ -52,7 +52,7 @@ function commandes() {
     if (activeTurn == 'player') {
         $('#commandz').append('<hr>');
         $('#commandz').append('<button type="button" title="Générer une nouvelle carte" class="boutonRouge iconButtons"><i class="fas fa-map" onclick="generateNewMap()"></i></button>');
-        $('#commandz').append('<button type="button" title="Sauvegarder la carte" class="boutonRouge iconButtons" onclick="saveMap()"><i class="fas fa-save"></i></button>');
+        $('#commandz').append('<button type="button" title="Sauvegarder la carte pour un retour (supprime la plupart des aliens et bataillons!)" class="boutonRouge iconButtons" onclick="saveMapAs()"><i class="fas fa-save"></i></button>');
         $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les bataillons)" class="boutonRouge iconButtons" onclick="showMapReset()" id="reset1"><i class="fas fa-power-off"></i></button>');
         $('#commandz').append('<button type="button" title="Revenir au tour 0 (supprime tous les bataillons)" class="boutonRouge iconButtons" onclick="mapReset()" id="reset2"><i class="fas fa-skull-crossbones"></i></button><br>');
         $('#commandz').append('<button type="button" title="Remettre les compétences à zéro" class="boutonRouge iconButtons" onclick="compReset()"><i class="fas fa-award"></i></button>');

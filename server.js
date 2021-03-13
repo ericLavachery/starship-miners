@@ -309,10 +309,40 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.emit('savedMap-Load', savedMap);
     };
 
+    // Save zone as !!!
+    socket.on('save-map-as', function(zone) {
+        let jsonmap = JSON.stringify(zone[0]);
+        let mapname = socket.pseudo+'-map'+zone[1]+'.json';
+        fs.writeFile('./data/players/'+mapname, jsonmap, 'utf8', (err) => {
+            if (err) throw err;
+            console.log('Map saved to '+mapname);
+        });
+    });
+
+    // Save Aliens ass !!!
+    socket.on('save-aliens-as', function(aliens) {
+        let json = JSON.stringify(aliens[0]);
+        let filename = socket.pseudo+'-aliens'+aliens[1]+'.json'
+        fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
+            if (err) throw err;
+            console.log('Aliens saved to '+filename);
+        });
+    });
+
+    // Save Bataillons ass !!!
+    socket.on('save-bataillons-as', function(bataillons) {
+        let json = JSON.stringify(bataillons[0]);
+        let filename = socket.pseudo+'-bataillons'+bataillons[1]+'.json'
+        fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
+            if (err) throw err;
+            console.log('Bataillons saved to '+filename);
+        });
+    });
+
     // Save zone
     socket.on('save-map', function(zone) {
         let jsonmap = JSON.stringify(zone);
-        let mapname = socket.pseudo+'-currentMap.json'
+        let mapname = socket.pseudo+'-currentMap.json';
         fs.writeFile('./data/players/'+mapname, jsonmap, 'utf8', (err) => {
             if (err) throw err;
             console.log('Map saved to '+mapname);
