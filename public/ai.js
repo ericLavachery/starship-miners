@@ -157,6 +157,11 @@ function shootTarget(recul,melee) {
             stopForFight = true;
             isFFW = false;
         }
+        if (selectedBatType.name === 'Torches') {
+            if (selectedBat.tileId != selectedBat.oldTileId || selectedBat.squadsLeft >= 3) {
+                alienSelectBaseWeapon();
+            }
+        }
         combat(melee);
     } else {
         // console.log('Pas assez de PA pour tirer');

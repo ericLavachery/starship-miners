@@ -95,9 +95,12 @@ function alienWeaponSelect() {
     let weapUsed = 1;
     let lifeTurn = playerInfos.mapTurn-selectedBat.creaTurn;
     if (selectedBatType.w2chance >= 1) {
-        if (lifeTurn % selectedBatType.w2chance === 0 && lifeTurn > 1) {
+        if (lifeTurn % selectedBatType.w2chance === 0 && lifeTurn >= 1) {
             weapUsed = 2;
         }
+    }
+    if (selectedBatType.name === 'Torches' && selectedBat.tags.includes('invisible')) {
+        weapUsed = 1;
     }
     if (weapUsed === 2) {
         selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon2));
@@ -106,4 +109,9 @@ function alienWeaponSelect() {
         selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
         selectedWeap = weaponAdj(selectedWeap,selectedBat,'w1');
     }
+};
+
+function alienSelectBaseWeapon() {
+    selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
+    selectedWeap = weaponAdj(selectedWeap,selectedBat,'w1');
 };

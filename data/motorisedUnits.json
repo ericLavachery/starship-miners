@@ -2933,7 +2933,6 @@
             "name":"Mitrailleuse légère",
             "cost":3,
             "range":2,
-            "noBis":true,
             "rof":18,
             "accuracy":14,
             "dca":2,

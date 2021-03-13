@@ -424,15 +424,19 @@ function checkResLoad(bat) {
 function loadRes() {
     selectMode();
     let restSpace = checkResSpace(selectedBat);
+    let selectedBatPic = getBatPic(selectedBat,selectedBatType);
     // restSpace = Math.round(restSpace*1.2);
     if (restSpace < 0) {restSpace = 0;}
     $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","800px");
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
-    $('#conUnitList').append('<span class="constName or">RESSOURCES à charger</span> <span class="cy">(max '+restSpace+')</span><br>');
+    $('#conUnitList').append('<span class="constName cy"><img src="/static/img/units/'+selectedBatType.cat+'/'+selectedBatPic+'.png">&nbsp;');
+    $('#conUnitList').append('<h1>'+selectedBat.type.toUpperCase()+'</h1><br>');
+    $('#conUnitList').append('<span class="constName cy">Charger</span> <span class="cy">(max '+restSpace+')</span><br>');
     if (selectedBatType.skills.includes('dumper')) {
         if (selectedBat.noDump) {
             $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
@@ -448,6 +452,7 @@ function loadRes() {
             $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="stopAutoLoad()" title="Stopper les chargement automatiques">Stopper les automations</span></span><br>');
         }
     }
+    let selectedBatTile = getTile(selectedBat);
     let batType;
     let distance;
     let resLoad;
@@ -463,33 +468,37 @@ function loadRes() {
                     distance = calcDistance(bat.tileId,selectedBat.tileId);
                     if (distance <= 1) {
                         resLoad = checkResLoad(bat);
-                        if (resLoad >= 1) {
-                            if (batType.skills.includes('transorbital')) {
-                                $('#conUnitList').append('<br><span class="constName sky">'+bat.type+' ???</span><br>');
-                            } else {
-                                $('#conUnitList').append('<br><span class="constName cy">'+bat.type+'</span><br>');
-                            }
-                            if (restSpace >= Math.round(resLoad*1.2)) {
-                                $('#conUnitList').append('<span class="constIcon rose"><i class="fas fa-pallet"></i></span>');
-                                $('#conUnitList').append('<span class="constName rose"><span class="klik" onclick="resAllLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+')">Charger tout</span></span><br>');
-                            }
-                            if (selectedBatType.skills.includes('fret')) {
-                                if (batType.skills.includes('fret')) {
-                                    let isAuto = false;
-                                    if (selectedBat.autoLoad != undefined) {
-                                        if (selectedBat.autoLoad.includes(bat.id)) {
-                                            isAuto = true;
-                                        }
-                                    }
-                                    if (isAuto) {
-                                        $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
-                                        $('#conUnitList').append('<span class="constName vert"><span title="Tout ce qu\'il y a dans ce bataillon ('+bat.type+') est déjà chargé à chaque tour">Déjà automatisé</span></span><br>');
-                                    } else {
-                                        $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
-                                        $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="resMaxLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+') à chaque tour">Automatiser</span></span><br>');
+                        let batPic = getBatPic(bat,batType);
+                        $('#conUnitList').append('<br><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48"><br></span>');
+                        let tile = getTile(bat);
+                        let theTile = tileNaming(tile,false,selectedBatTile.id);
+                        if (batType.skills.includes('transorbital')) {
+                            $('#conUnitList').append('<span class="constName sky">'+bat.type+' ???<span class="gf"> &mdash; '+theTile+'</span></span><br>');
+                        } else {
+                            $('#conUnitList').append('<span class="constName cy">'+bat.type+' <span class="gf"> &mdash; '+theTile+'</span></span><br>');
+                        }
+                        if (restSpace >= Math.round(resLoad*1.2)) {
+                            $('#conUnitList').append('<span class="constIcon rose"><i class="fas fa-pallet"></i></span>');
+                            $('#conUnitList').append('<span class="constName rose"><span class="klik" onclick="resAllLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+')">Charger tout</span></span><br>');
+                        }
+                        if (selectedBatType.skills.includes('fret')) {
+                            if (batType.skills.includes('fret')) {
+                                let isAuto = false;
+                                if (selectedBat.autoLoad != undefined) {
+                                    if (selectedBat.autoLoad.includes(bat.id)) {
+                                        isAuto = true;
                                     }
                                 }
+                                if (isAuto) {
+                                    $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
+                                    $('#conUnitList').append('<span class="constName vert"><span title="Tout ce qu\'il y a dans ce bataillon ('+bat.type+') est déjà chargé à chaque tour">Déjà automatisé</span></span><br>');
+                                } else {
+                                    $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
+                                    $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="resMaxLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+') à chaque tour">Automatiser</span></span><br>');
+                                }
                             }
+                        }
+                        if (resLoad >= 1) {
                             Object.entries(bat.transRes).map(entry => {
                                 let key = entry[0];
                                 let value = entry[1];
@@ -521,6 +530,7 @@ function loadRes() {
     } else {
         $('#conUnitList').append('<span class="constName">Plus de place!</span><br>');
     }
+    $('#conUnitList').append('<br>');
 };
 
 function resAllLoad(batId) {

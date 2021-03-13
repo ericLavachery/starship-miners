@@ -325,6 +325,18 @@ function getTileTerrainName(tileId) {
     return tername;
 };
 
+function getTileTerrainFullName(tileId) {
+    let tername = 'Plaines';
+    if (tileId < 3600 && tileId >= 0) {
+        let tileIndex = zone.findIndex((obj => obj.id == tileId));
+        let tile = zone[tileIndex];
+        let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
+        let terrain = terrainTypes[terrainIndex];
+        tername = terrain.fullName;
+    }
+    return tername;
+};
+
 function getTile(bat) {
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
@@ -376,4 +388,52 @@ function getTrapName(batType) {
         trapName = 'Fosses';
     }
     return trapName;
+};
+
+function tileNaming(tile,withUnit,fromTileId) {
+    let tileName = '';
+    if (withUnit) {
+        let bat = getBatByTileId(tile.id);
+        tileName = bat.type+' &middot; ';
+    }
+    let terName = getTileTerrainFullName(tile.id);
+    tileName = tileName+'('+terName+')';
+    if (tile.tileName != undefined && tile.tileName != '') {
+        tileName = '<span class="blanc">'+tile.tileName+'</span> '+tileName;
+    }
+    if (tile.ruins) {
+        tileName = tileName+' <i class="fas fa-city inficon gf"></i>';
+    }
+    if (tile.rq != undefined) {
+        tileName = tileName+' <i class="fas fa-atom inficon rq'+tile.rq+'"></i>';
+    }
+    if (fromTileId > -1) {
+        tileName = tileName+'<span class="cy">';
+        if (tile.id === fromTileId+1) {
+            tileName = tileName+' &rarr;';
+        }
+        if (tile.id === fromTileId-1) {
+            tileName = tileName+' &larr;';
+        }
+        if (tile.id === fromTileId+1+mapSize) {
+            tileName = tileName+' &searr;';
+        }
+        if (tile.id === fromTileId-1+mapSize) {
+            tileName = tileName+' &swarr;';
+        }
+        if (tile.id === fromTileId+1-mapSize) {
+            tileName = tileName+' &nearr;';
+        }
+        if (tile.id === fromTileId-1-mapSize) {
+            tileName = tileName+' &nwarr;';
+        }
+        if (tile.id === fromTileId+mapSize) {
+            tileName = tileName+' &darr;';
+        }
+        if (tile.id === fromTileId-mapSize) {
+            tileName = tileName+' &uarr;';
+        }
+        tileName = tileName+'</span>';
+    }
+    return tileName;
 };

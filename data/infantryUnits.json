@@ -432,7 +432,7 @@
             "accuracy":18,
             "power":8,
             "aoe":"unit",
-            "sound":"axe_x2",
+            "sound":"torche",
             "ammo":["torche-feu","torche-feugre","torche-pyratol"]
         },
         "weapon2":{
@@ -651,7 +651,7 @@
             "accuracy":18,
             "power":8,
             "aoe":"unit",
-            "sound":"axe_x2",
+            "sound":"torche",
             "ammo":["torche-feu","torche-feugre","torche-pyratol"]
         },
         "weapon2":{
@@ -1005,7 +1005,7 @@
             "accuracy":18,
             "power":8,
             "aoe":"unit",
-            "sound":"axe_x2",
+            "sound":"torche",
             "ammo":["torche-feu","torche-feugre","torche-pyratol"]
         },
         "weapon2":{
