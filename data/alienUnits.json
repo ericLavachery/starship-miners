@@ -461,7 +461,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["minaccu","resistfeu","resistall","sentinelle","fastreg"],
+        "skills":["minaccu","resistfeu","sentinelle","fastreg"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":4,"Pyrus":4}
     },
