@@ -795,7 +795,7 @@ function voirRessources() {
     });
     oneResTileIds = [];
     filteredZone.forEach(function(tile) {
-        tileRes = JSON.stringify(tile.rs);
+        tileRes = showTileRes(tile.rs);
         if (((showOneRes === 'Toutes' || tileRes.includes(showOneRes)) && !showMarkedOnly) || ((showOneRes === 'Toutes' || tileRes.includes(showOneRes)) && playerInfos.showedTiles.includes(tile.id) && showMarkedOnly)) {
             if (playerInfos.showedTiles.includes(tile.id)) {
                 blockType = 'resBlockCheck';
@@ -817,17 +817,29 @@ function voirRessources() {
                     $('#rf'+tile.id).append('<i class="fas fa-city inficon cy"></i> &nbsp');
                 }
             }
-            tileRes = tileRes.replace(/"/g,"");
-            tileRes = tileRes.replace(/{/g,"");
-            tileRes = tileRes.replace(/}/g,"");
-            tileRes = tileRes.replace(/,/g," &nbsp;&middot;&nbsp; ");
-            tileRes = tileRes.replace(/:/g," ");
             $('#rf'+tile.id).append('<span class="listRes">'+tileRes+'</span><br>');
             if (tileRes.includes(showOneRes)) {
                 oneResTileIds.push(tile.id);
             }
         }
     });
+};
+
+function showTileRes(theTileRes) {
+    let tileRes = JSON.stringify(theTileRes);
+    if (playerInfos.comp.det < 1 && modeSonde) {
+        tileRes = '';
+    } else {
+        tileRes = tileRes.replace(/"/g,"");
+        tileRes = tileRes.replace(/{/g,"");
+        tileRes = tileRes.replace(/}/g,"");
+        tileRes = tileRes.replace(/,/g," &nbsp;&middot;&nbsp; ");
+        tileRes = tileRes.replace(/:/g," ");
+        if (playerInfos.comp.det < 3 && modeSonde) {
+            tileRes = tileRes.replace(/\d*/g,"");
+        }
+    }
+    return tileRes;
 };
 
 function getResIcon(res) {

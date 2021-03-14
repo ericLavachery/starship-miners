@@ -16,6 +16,8 @@ if (yOffset == null) {
     yOffsetForced = yOffset;
 }
 // MAP GENERATOR
+let modeSonde = false;
+let maxMapsParDet = 3;
 let terSeed = 12; // def 12 +grand = +grandes forêts etc...
 let specialSeed = 10; // def 10 +grand = moins de terrains spéciaux
 let riverSeed = 9;

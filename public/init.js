@@ -18,6 +18,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.reserve === undefined) {
         playerInfos.reserve = {};
     }
+    if (playerInfos.sondeMaps === undefined) {
+        playerInfos.sondeMaps = 0;
+    }
     if (playerInfos.lastMapId === undefined) {
         playerInfos.lastMapId = 0;
     }

@@ -1,5 +1,7 @@
 function generateNewMap() {
     zone = [];
+    playerInfos.sondeMaps = playerInfos.sondeMaps+1;
+    savePlayerInfos();
     filterParams();
     createMap(mapSize);
     filterMap(zone);
@@ -10,6 +12,7 @@ function generateNewMap() {
     writeMapStyles();
     showMap(zone,false);
     minimap();
+    commandes();
 };
 
 function checkMapKind(terName) {
@@ -1377,27 +1380,44 @@ function zoneReport(zone) {
         }
     });
     percM = Math.round(percM/36);
-    warning('Montagnes',percM+'% (bug)',true);
     percH = Math.round(percH/36);
-    warning('Collines',percH+'% (bug)',true);
     percP = Math.round(percP/36);
-    warning('Plaines',percP+'% ('+zone[0].pKind+')',true);
     percG = Math.round(percG/36);
-    warning('Prairies',percG+'% ('+zone[0].gKind+')',true);
     percB = Math.round(percB/36);
-    warning('Maquis',percB+'% (swarm)',true);
     percF = Math.round(percF/36);
-    warning('Forêts',percF+'% (spider)',true);
     percS = Math.round(percS/36);
     if (percS < 30) {
         zone[0].sKind = 'larve';
     }
-    warning('Marécages',percS+'% ('+zone[0].sKind+')',true);
     percW = Math.round(percW/36);
-    warning('Etangs',percW+'% (larve)',true);
     percR = Math.round(percR/36);
-    warning('Rivières',percR+'% (larve)');
-    zone[0].ensol = (percP*3)+40;
+    let ensolFactor = rand.rand(25,35);
+    let ensolBonus = rand.rand(0,80);
+    zone[0].ensol = Math.round(percP*ensolFactor/10)+ensolBonus;
+    if (playerInfos.comp.det >= 2) {
+        warning('Ensoleillement',zone[0].ensol+'<br>',true);
+    }
+    if (playerInfos.comp.ca < 3) {
+        warning('Montagnes',percM+'%',true);
+        warning('Collines',percH+'%',true);
+        warning('Plaines',percP+'%',true);
+        warning('Prairies',percG+'%',true);
+        warning('Maquis',percB+'%',true);
+        warning('Forêts',percF+'%',true);
+        warning('Marécages',percS+'%',true);
+        warning('Etangs',percW+'%',true);
+        warning('Rivières',percR+'%');
+    } else {
+        warning('Montagnes',percM+'% (bug)',true);
+        warning('Collines',percH+'% (bug)',true);
+        warning('Plaines',percP+'% ('+zone[0].pKind+')',true);
+        warning('Prairies',percG+'% ('+zone[0].gKind+')',true);
+        warning('Maquis',percB+'% (swarm)',true);
+        warning('Forêts',percF+'% (spider)',true);
+        warning('Marécages',percS+'% ('+zone[0].sKind+')',true);
+        warning('Etangs',percW+'% (larve)',true);
+        warning('Rivières',percR+'% (larve)');
+    }
     console.log('ensol');
     console.log(zone[0].ensol);
 };

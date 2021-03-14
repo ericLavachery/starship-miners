@@ -98,12 +98,14 @@ function showRes(tileId) {
         view = false;
     }
     if (tile.rq != undefined && view) {
-        res = JSON.stringify(tile.rs);
-        res = res.replace(/"/g,"");
-        res = res.replace(/{/g,"");
-        res = res.replace(/}/g,"");
-        res = res.replace(/,/g," &nbsp;&horbar;&nbsp; ");
-        res = res.replace(/:/g," ");
+        if (playerInfos.comp.det >= 3 || !modeSonde) {
+            res = JSON.stringify(tile.rs);
+            res = res.replace(/"/g,"");
+            res = res.replace(/{/g,"");
+            res = res.replace(/}/g,"");
+            res = res.replace(/,/g," &nbsp;&horbar;&nbsp; ");
+            res = res.replace(/:/g," ");
+        }
         if (tile.tileName !== undefined && tile.tileName != '') {
             res = res+' ('+tile.tileName+')'
         }

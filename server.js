@@ -309,6 +309,13 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.emit('savedMap-Load', savedMap);
     };
 
+    // Load Current Map
+    socket.on('load-current-map', function(mapInfos) {
+        loadMap();
+        console.log('loading saved map');
+        socket.emit('savedMap-Load', savedMap);
+    });
+
     // Save zone as !!!
     socket.on('save-map-as', function(zone) {
         let jsonmap = JSON.stringify(zone[0]);
