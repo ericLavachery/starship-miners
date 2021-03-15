@@ -21,6 +21,7 @@ app.get('/', function (req, res) {
 
 let unitTypes;
 let unitCosts;
+let zoneFiles = [];
 loadUnitTypes();
 
 function loadUnitTypes() {
@@ -274,47 +275,54 @@ io.sockets.on('connection', function (socket, pseudo) {
 
     function sendAll() {
         console.log('loading alien unit types');
-        socket.emit('alienUnits-Load', alienUnits);
+        socket.emit('alienUnits-Load',alienUnits);
         console.log('loading aliens');
-        socket.emit('aliens-Load', aliens);
+        socket.emit('aliens-Load',aliens);
         console.log('loading player infos');
-        socket.emit('playerInfos-Load', playerInfos);
+        socket.emit('playerInfos-Load',playerInfos);
         console.log('loading player battalions');
-        socket.emit('bataillons-Load', bataillons);
+        socket.emit('bataillons-Load',bataillons);
         console.log('loading units default values');
-        socket.emit('unitDV-Load', unitDV);
+        socket.emit('unitDV-Load',unitDV);
         console.log('loading unit types');
-        socket.emit('unitTypes-Load', unitTypes);
+        socket.emit('unitTypes-Load',unitTypes);
         console.log('loading unit costs');
-        socket.emit('unitCosts-Load', unitCosts);
+        socket.emit('unitCosts-Load',unitCosts);
         console.log('loading ammo');
-        socket.emit('ammoTypes-Load', ammoTypes);
+        socket.emit('ammoTypes-Load',ammoTypes);
         console.log('loading armors');
-        socket.emit('armorTypes-Load', armorTypes);
+        socket.emit('armorTypes-Load',armorTypes);
         console.log('loading map filters');
-        socket.emit('mapFilters-Load', mapFilters);
+        socket.emit('mapFilters-Load',mapFilters);
         console.log('loading terrain types');
-        socket.emit('terrainTypes-Load', terrainTypes);
+        socket.emit('terrainTypes-Load',terrainTypes);
         console.log('loading resources types');
-        socket.emit('resTypes-Load', resTypes);
+        socket.emit('resTypes-Load',resTypes);
         console.log('loading crafting');
-        socket.emit('crafting-Load', crafting);
+        socket.emit('crafting-Load',crafting);
         console.log('loading comps');
-        socket.emit('comps-Load', gangComps);
+        socket.emit('comps-Load',gangComps);
         if (savedMap.length >= 3500) {
             console.log('loading saved map');
         } else {
             console.log('no saved map, will generate a new one');
         }
-        socket.emit('savedMap-Load', savedMap);
+        socket.emit('savedMap-Load',savedMap);
+        listZoneFiles();
+        socket.emit('zoneFiles-Load',zoneFiles);
     };
 
-    // Load Current Map
-    socket.on('load-current-map', function(mapInfos) {
-        loadMap();
-        console.log('loading saved map');
-        socket.emit('savedMap-Load', savedMap);
-    });
+    function listZoneFiles() {
+        zoneFiles = [];
+        fs.readdirSync('./data/players/').forEach(file => {
+            if (file.includes(socket.pseudo+'-map')) {
+                let zoneNum = file.replace(socket.pseudo+'-map','');
+                zoneNum = zoneNum.replace('.json','');
+                zoneFiles.push(+zoneNum);
+            }
+        });
+        console.log(zoneFiles);
+    };
 
     // Save zone as !!!
     socket.on('save-map-as', function(zone) {

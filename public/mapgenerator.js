@@ -48,12 +48,8 @@ function checkMapKind(terName) {
     }
 };
 
-function newMapId() {
-    let mapId = playerInfos.lastMapId+1;
-    return mapId;
-};
-
 function createMap(size) {
+    let nextZoneNum = getNextZoneNumber();
     let newTile = {};
     let i = 0;
     let x = 1;
@@ -68,9 +64,9 @@ function createMap(size) {
         newTile = {};
         newTile.id = i;
         if (newTile.id === 0) {
+            newTile.number = nextZoneNum;
             newTile.dark = false;
             newTile.mapDiff = playerInfos.mapDiff;
-            newTile.mapId = newMapId();
             newTile.pKind = checkMapKind('P');
             newTile.gKind = checkMapKind('G');
             newTile.sKind = checkMapKind('S');

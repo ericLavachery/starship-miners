@@ -30,38 +30,50 @@ function goSonde() {
     commandes();
 };
 
-function loadCurrentMap() {
-    let mapInfo = '';
-    socket.emit('load-current-map',mapInfo);
+function getNextZoneNumber() {
+    let idz = [];
+    let i = 1;
+    while (i <= 250) {
+        idz.push(i);
+        if (i > 300) {break;}
+        i++
+    }
+    zoneFiles.forEach(function(zoneNumber) {
+        if (idz.includes(zoneNumber)) {
+            idzIndex = idz.indexOf(zoneNumber);
+            idz.splice(idzIndex,1);
+        }
+    });
+    return idz[0];
 };
 
 function saveMapAs() {
-    // showedTilesReset();
-    playerInfos.lastMapId = playerInfos.lastMapId+1;
+    let nextZoneNum = getNextZoneNumber();
+    zone[0].number = nextZoneNum;
+    zoneFiles.push(nextZoneNum);
     savePlayerInfos();
-    socket.emit('save-map-as',[zone,playerInfos.lastMapId]);
+    socket.emit('save-map-as',[zone,nextZoneNum]);
     aliens = [];
-    socket.emit('save-aliens-as',[aliens,playerInfos.lastMapId]);
+    socket.emit('save-aliens-as',[aliens,nextZoneNum]);
     bataillons = [];
-    socket.emit('save-bataillons-as',[bataillons,playerInfos.lastMapId]);
+    socket.emit('save-bataillons-as',[bataillons,nextZoneNum]);
     showMap(zone,true);
     commandes();
 };
 
 function saveMapForReturn() {
-    // showedTilesReset();
-    playerInfos.lastMapId = playerInfos.lastMapId+1;
+    let zoneNum = zone[0].number;
     savePlayerInfos();
     if (playerInfos.mapTurn < 50) {
         zone[0].mapDiff = zone[0].mapDiff+1;
     }
-    socket.emit('save-map-as',[zone,playerInfos.lastMapId]);
-    saveAliensForReturn();
-    saveBataillonsForReturn();
+    socket.emit('save-map-as',[zone,zoneNum]);
+    saveAliensForReturn(zoneNum);
+    saveBataillonsForReturn(zoneNum);
     showMap(zone,true);
     commandes();
 };
-function saveAliensForReturn() {
+function saveAliensForReturn(zoneNum) {
     deadAliensList = [];
     aliens.forEach(function(bat) {
         let batType = getBatType(bat);
@@ -81,9 +93,9 @@ function saveAliensForReturn() {
         }
     });
     killAlienList();
-    socket.emit('save-aliens-as',[aliens,playerInfos.lastMapId]);
+    socket.emit('save-aliens-as',[aliens,zoneNum]);
 };
-function saveBataillonsForReturn() {
+function saveBataillonsForReturn(zoneNum) {
     bataillons.forEach(function(bat) {
         bat.creaTurn = 0;
         if (bat.loc === 'trans') {
@@ -110,7 +122,7 @@ function saveBataillonsForReturn() {
         }
     });
     killBatList();
-    socket.emit('save-bataillons-as',[bataillons,playerInfos.lastMapId]);
+    socket.emit('save-bataillons-as',[bataillons,zoneNum]);
 };
 
 function saveAllBats() {
@@ -156,7 +168,6 @@ function mapReset() {
     playerInfos.fndUnits = 0;
     playerInfos.fndCits = 0;
     playerInfos.sondeMaps = 0;
-    playerInfos.lastMapId = 0;
     playerInfos.eggPause = false;
     playerInfos.droppedEggs = 0;
     playerInfos.aliensKilled = 0;
@@ -187,7 +198,6 @@ function mapSoftReset() {
     playerInfos.fndUnits = 0;
     playerInfos.fndCits = 0;
     playerInfos.sondeMaps = 0;
-    playerInfos.lastMapId = 0;
     playerInfos.eggPause = false;
     playerInfos.droppedEggs = 0;
     playerInfos.aliensKilled = 0;

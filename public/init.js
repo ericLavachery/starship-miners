@@ -21,9 +21,6 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.sondeMaps === undefined) {
         playerInfos.sondeMaps = 0;
     }
-    if (playerInfos.lastMapId === undefined) {
-        playerInfos.lastMapId = 0;
-    }
     if (playerInfos.cocons === undefined) {
         playerInfos.cocons = 0;
     }
@@ -110,6 +107,9 @@ socket.on('savedMap-Load', function(sm) {
     }
     if (zone[0].dark === undefined) {
         zone[0].dark = false;
+    }
+    if (zone[0].number === undefined) {
+        zone[0].number = 1;
     }
     getColonyTiles();
     checkUndark();
@@ -211,6 +211,10 @@ socket.on('alienUnits-Load', function(au) {
 });
 socket.on('aliens-Load', function(ab) {
     aliens = ab;
+    // console.log(aliens);
+});
+socket.on('zoneFiles-Load', function(zf) {
+    zoneFiles = zf;
     // console.log(aliens);
 });
 socket.on('testcon-failed', function(pseutest) {
