@@ -60,9 +60,6 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.stopBarbs === undefined) {
         playerInfos.stopBarbs = false;
     }
-    if (playerInfos.dark === undefined) {
-        playerInfos.dark = false;
-    }
     if (playerInfos.undarkOnce === undefined) {
         playerInfos.undarkOnce = [];
     }
@@ -107,6 +104,12 @@ socket.on('savedMap-Load', function(sm) {
         showMap(zone,false);
     } else {
         generateNewMap();
+    }
+    if (zone[0].mapDiff === undefined) {
+        zone[0].mapDiff = 2;
+    }
+    if (zone[0].dark === undefined) {
+        zone[0].dark = false;
     }
     getColonyTiles();
     checkUndark();

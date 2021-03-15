@@ -21,7 +21,7 @@ function minimap() {
     }
     let alienView;
     zone.forEach(function(tile) {
-        if (playerInfos.dark) {
+        if (zone[0].dark) {
             if (undarkNow.includes(tile.id)) {
                 alienView = true;
             } else {
@@ -51,7 +51,7 @@ function minimap() {
                             if (oneResTileIds.includes(tile.id) && miniDots === 'oneres') {
                                 $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
                             } else {
-                                if (playerInfos.dark) {
+                                if (zone[0].dark) {
                                     if (undarkNow.includes(tile.id)) {
                                         $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
                                     } else if (playerInfos.undarkOnce.includes(tile.id)) {

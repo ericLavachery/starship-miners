@@ -288,7 +288,7 @@ function solarProd(bat,batType) {
     console.log(batType.name);
     let tile = getTileById(bat.tileId);
     let upkeepPaid = true;
-    if (!playerInfos.dark) {
+    if (!zone[0].dark) {
         if (batType.upkeep != undefined) {
             Object.entries(batType.upkeep).map(entry => {
                 let key = entry[0];

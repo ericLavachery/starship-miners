@@ -1,7 +1,7 @@
 function nextTurn() {
     testConnect(pseudo);
     saveGame();
-    if (playerInfos.dark) {
+    if (zone[0].dark) {
         checkUndark();
     }
     console.log('NOUVEAU TOUR');
@@ -483,7 +483,7 @@ function nextTurnEnd() {
     console.log(minedThisTurn);
     playerInfos.mapTurn = playerInfos.mapTurn+1;
     if (playerInfos.mapTurn % 50 === 0 && playerInfos.mapTurn >= 1) {
-        playerInfos.mapDiff++;
+        zone[0].mapDiff = zone[0].mapDiff+1;
     }
     turnInfo();
     saveGame();
@@ -524,7 +524,7 @@ function turnInfo() {
     });
     eggsNum = numberOfEggs;
     aliensNum = numberOfAliens;
-    let maxEggsForPause = 8+playerInfos.mapDiff;
+    let maxEggsForPause = 8+zone[0].mapDiff;
     if (realNumberOfEggs >= maxEggsForPause) {
         playerInfos.eggPause = true;
         console.log('PAUSE! 10+ eggs');
@@ -553,7 +553,7 @@ function turnInfo() {
     });
     playerInfos.fuzzTotal = fuzzTotal;
     let bonusDiff = Math.floor((fuzzTotal+rand.rand(0,fuzzDiv)-(fuzzDiv/2))/fuzzDiv);
-    playerInfos.mapAdjDiff = playerInfos.mapDiff+bonusDiff;
+    playerInfos.mapAdjDiff = zone[0].mapDiff+bonusDiff;
     if (playerInfos.mapAdjDiff < 1) {
         playerInfos.mapAdjDiff = 1;
     }
@@ -580,7 +580,7 @@ function turnInfo() {
     centerMap();
     $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
     $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
-    $('#tour').append('Présence Alien <span class="or">'+playerInfos.mapDiff+'</span><br>');
+    $('#tour').append('Présence Alien <span class="or">'+zone[0].mapDiff+'</span><br>');
     if (playerInfos.eggPause || playerInfos.bldList.includes('Champ de force')) {
         $('#tour').append('<span class="cy">Pause</span><br>');
     }

@@ -1331,7 +1331,7 @@ function weaponAdj(weapon,bat,wn) {
     if (thisWeapon.range >= 2 && (tile.terrain == 'W' || tile.terrain == 'R') && !batType.skills.includes('fly') && !batType.skills.includes('hover')) {
         thisWeapon.range = thisWeapon.range-1;
     }
-    if (playerInfos.dark && thisWeapon.range > vision) {
+    if (zone[0].dark && thisWeapon.range > vision) {
         thisWeapon.range = vision;
     }
     if (bat.tags.includes('fogged') && thisWeapon.range > 1) {

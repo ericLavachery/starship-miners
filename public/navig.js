@@ -61,7 +61,7 @@ function commandes() {
         if (!modeSonde) {
             $('#commandz').append('<button type="button" title="Passer en mode sonde" class="boutonBrun iconButtons" onclick="goSonde()"><i class="fas fa-rocket"></i></button>');
         } else {
-            $('#commandz').append('<button type="button" title="Quitter le mode sonde" class="boutonBrun iconButtons" onclick="stopSonde()"><i class="fas fa-rocket"></i></button>');
+            $('#commandz').append('<button type="button" title="Quitter le mode sonde" class="boutonRouge iconButtons" onclick="stopSonde()"><i class="fas fa-rocket"></i></button>');
             let maxMaps = (playerInfos.comp.det+2)*maxMapsParDet;
             let nextMapNumber = playerInfos.sondeMaps+1;
             if (playerInfos.sondeMaps < maxMaps) {
@@ -72,8 +72,8 @@ function commandes() {
         $('#commandz').append('<br>');
         if (!modeSonde) {
             $('#commandz').append('<hr>');
-            $('#commandz').append('<button type="button" title="Supprime TOUT sauf la carte" class="boutonRouge iconButtons" onclick="showMapReset()" id="reset1"><i class="fas fa-power-off"></i></button>');
-            $('#commandz').append('<button type="button" title="Supprime TOUT sauf la carte" class="boutonRouge iconButtons" onclick="mapReset()" id="reset2"><i class="fas fa-skull-crossbones"></i></button>');
+            $('#commandz').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonRouge iconButtons" onclick="showMapReset()" id="reset1"><i class="fas fa-power-off"></i></button>');
+            $('#commandz').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonRouge iconButtons" onclick="mapReset()" id="reset2"><i class="fas fa-skull-crossbones"></i></button>');
             $('#commandz').append('<button type="button" title="Remettre les compétences à zéro" class="boutonRouge iconButtons" onclick="compReset()"><i class="fas fa-award"></i></button>');
             $('#commandz').append('<button type="button" title="Supprimer tous les aliens" class="boutonRouge iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
             $('#commandz').append('<br>');

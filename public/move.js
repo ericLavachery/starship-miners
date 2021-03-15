@@ -230,7 +230,7 @@ function moveSelectedBat(tileId,free,jump) {
             camouflage(0);
         }
     }
-    if (playerInfos.dark && activeTurn === 'player') {
+    if (zone[0].dark && activeTurn === 'player') {
         undarkAround(selectedBat,false);
     }
     tileSelect(selectedBat);
@@ -238,7 +238,7 @@ function moveSelectedBat(tileId,free,jump) {
     showBatInfos(selectedBat);
     // update arrays
     selectedBatArrayUpdate();
-    if (playerInfos.dark && activeTurn === 'player') {
+    if (zone[0].dark && activeTurn === 'player') {
         showMap(zone,true);
     }
 };

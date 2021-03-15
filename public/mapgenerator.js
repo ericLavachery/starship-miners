@@ -68,6 +68,8 @@ function createMap(size) {
         newTile = {};
         newTile.id = i;
         if (newTile.id === 0) {
+            newTile.dark = false;
+            newTile.mapDiff = playerInfos.mapDiff;
             newTile.mapId = newMapId();
             newTile.pKind = checkMapKind('P');
             newTile.gKind = checkMapKind('G');
@@ -638,7 +640,7 @@ function addRes(zone) {
     let baseNum = 0;
     let redMin = Math.floor(playerInfos.mapDiff/1.42)+5;
     let redNum = 0;
-    if (playerInfos.dark) {
+    if (zone[0].dark) {
         mythicMin = mythicMin+3+Math.floor(playerInfos.mapDiff/2);
         mythicMax = mythicMax+3+Math.floor(playerInfos.mapDiff/2);
         baseMin = baseMin+10+(playerInfos.mapDiff*2);
@@ -813,7 +815,7 @@ function addRes(zone) {
                 }
             }
             resRarity = res.rarity;
-            if (playerInfos.dark && resRarity < 25) {
+            if (zone[0].dark && resRarity < 25) {
                 resRarity = 25;
             }
             if (playerInfos.mapDiff < 1) {

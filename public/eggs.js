@@ -1,11 +1,11 @@
 function checkStartingAliens() {
     let numRuches;
-    if (playerInfos.mapDiff >= 8) {
+    if (zone[0].mapDiff >= 8) {
         dropEgg('Colonie','nedge');
         let coloBat = getAlienByName('Colonie');
         alienSpawn(coloBat,'Vomissure');
         alienSpawn(coloBat,'Vomissure');
-        if (playerInfos.mapDiff >= 9) {
+        if (zone[0].mapDiff >= 9) {
             alienSpawn(coloBat,'Vomissure');
             alienSpawn(coloBat,'Vomissure');
             alienSpawn(coloBat,'Ruche');
@@ -14,7 +14,7 @@ function checkStartingAliens() {
                 dropEgg('Volcan','guard');
             }
         }
-        if (playerInfos.mapDiff >= 10) {
+        if (zone[0].mapDiff >= 10) {
             alienSpawn(coloBat,'Ruche');
             alienSpawn(coloBat,'Ruche');
             alienSpawn(coloBat,'Ruche');
@@ -22,10 +22,10 @@ function checkStartingAliens() {
             dropEgg('Volcan','guard');
         }
         numRuches = rand.rand(1,2);
-        if (playerInfos.mapDiff === 9) {
+        if (zone[0].mapDiff === 9) {
             numRuches = rand.rand(3,5);
         }
-        if (playerInfos.mapDiff >= 10) {
+        if (zone[0].mapDiff >= 10) {
             numRuches = rand.rand(6,12);
         }
         let i = 1;
@@ -39,7 +39,7 @@ function checkStartingAliens() {
             i++
         }
     }
-    let numVomi = Math.floor((playerInfos.mapDiff+2)*rand.rand(8,20)/14);
+    let numVomi = Math.floor((zone[0].mapDiff+2)*rand.rand(8,20)/14);
     let ii = 1;
     while (ii <= numVomi) {
         if (rand.rand(1,4) === 1) {
@@ -50,7 +50,7 @@ function checkStartingAliens() {
         if (ii > 50) {break;}
         ii++
     }
-    let numSent = Math.ceil((playerInfos.mapDiff+playerInfos.mapDiff)*rand.rand(8,20)/12);
+    let numSent = Math.ceil((zone[0].mapDiff+zone[0].mapDiff)*rand.rand(8,20)/12);
     ii = 1;
     while (ii <= numSent) {
         dropEgg('Veilleurs','none');
@@ -76,7 +76,7 @@ function getColonyTiles() {
 
 function calcEggPause(noMax) {
     let eggPauseDice = eggPauseBase;
-    let eggPauseMinimum = eggPauseMin-Math.floor(playerInfos.mapDiff/2);
+    let eggPauseMinimum = eggPauseMin-Math.floor(zone[0].mapDiff/2);
     eggPauseDice = eggPauseDice+Math.round(Math.sqrt(aliens.length)*2);
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -93,7 +93,7 @@ function calcEggPause(noMax) {
     if (eggPauseDice < eggPauseMinimum) {
         eggPauseDice = eggPauseMinimum;
     }
-    if (playerInfos.mapDiff >= 10) {
+    if (zone[0].mapDiff >= 10) {
         eggPauseDice = eggPauseMinimum;
     }
     if (!noMax) {
@@ -115,7 +115,7 @@ function checkEggsDrop() {
     let drop = false;
     let eggPauseDice = calcEggPause(false);
     let adjMapDrop = playerInfos.mapDrop;
-    let adjMapTurn = playerInfos.mapTurn-10+playerInfos.mapDiff;
+    let adjMapTurn = playerInfos.mapTurn-10+zone[0].mapDiff;
     if (adjMapTurn <= 0) {
         adjMapTurn = 0;
         adjMapDrop = 0;
@@ -127,17 +127,17 @@ function checkEggsDrop() {
     console.log('mapAdjDiff'+playerInfos.mapAdjDiff);
     console.log('dropTurn'+dropTurn);
     let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapAdjDiff)*dropMod);
-    let maxEggsInPlay = (playerInfos.mapDiff*3)-1;
+    let maxEggsInPlay = (zone[0].mapDiff*3)-1;
     console.log('maxEggsInPlay = '+maxEggsInPlay);
     let overSixty = playerInfos.mapTurn-60;
     if (overSixty < 0) {
         overSixty = 0;
     }
     let maxEggDropTurn = playerInfos.mapTurn-10;
-    if (maxEggDropTurn < Math.ceil(playerInfos.mapDiff/2)) {
-        maxEggDropTurn = Math.ceil(playerInfos.mapDiff/2);
+    if (maxEggDropTurn < Math.ceil(zone[0].mapDiff/2)) {
+        maxEggDropTurn = Math.ceil(zone[0].mapDiff/2);
     }
-    let maxDroppedEggs = Math.ceil((maxEggDropTurn+overSixty)*(playerInfos.mapDiff+1)/7);
+    let maxDroppedEggs = Math.ceil((maxEggDropTurn+overSixty)*(zone[0].mapDiff+1)/7);
     console.log('maxDroppedEggs = '+maxDroppedEggs);
     let dropMessage = 'Nombre d\'oeufs tombés: '+playerInfos.droppedEggs+'/'+maxDroppedEggs;
     if (dropChance < 0) {
@@ -167,7 +167,7 @@ function checkEggsDrop() {
     if (playerInfos.pseudo === 'Bob') {
         warning('Oeufs','Check '+dropChance+'% '+dropMessage);
     }
-    if (playerInfos.mapDiff >= 1 || playerInfos.mapTurn >= 25) {
+    if (zone[0].mapDiff >= 1 || playerInfos.mapTurn >= 25) {
         if (rand.rand(1,100) <= dropChance) {
             drop = true;
             eggsDrop();
@@ -197,7 +197,7 @@ function checkEggsDrop() {
         if (Math.floor(playerInfos.mapTurn/25) > playerInfos.cocons) {
             dropEgg('Cocon','target');
             playerInfos.droppedEggs = playerInfos.droppedEggs+1;
-            let doubleCocon = playerInfos.mapTurn+((playerInfos.mapDiff-1)*7);
+            let doubleCocon = playerInfos.mapTurn+((zone[0].mapDiff-1)*7);
             if (doubleCocon >= 50) {
                 dropEgg('Oeuf','any');
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
@@ -251,11 +251,11 @@ function eggsDrop() {
         twoEggsChance = 0;
     }
     // minimum turn for multiple eggs
-    let twoEggsMinTurn = 43-(playerInfos.mapDiff*3);
+    let twoEggsMinTurn = 43-(zone[0].mapDiff*3);
     if (playerInfos.mapTurn < twoEggsMinTurn) {
         twoEggsChance = 0;
     }
-    let threeEggsMinTurn = 70-(playerInfos.mapDiff*5);
+    let threeEggsMinTurn = 70-(zone[0].mapDiff*5);
     if (playerInfos.mapTurn < threeEggsMinTurn) {
         threeEggsChance = 0;
     }
@@ -308,7 +308,7 @@ function eggsDrop() {
         let i = 1;
         while (i <= numEggs) {
             eggTypeDice = rand.rand(1,100);
-            invisibleChance = Math.floor(playerInfos.mapDiff*1.5)-8;
+            invisibleChance = Math.floor(zone[0].mapDiff*1.5)-8;
             if (invisibleChance < 0) {
                 invisibleChance = 0;
             } else {
@@ -533,7 +533,7 @@ function morphList() {
     if (rand.rand(1,15) === 1) {
         transList.push('Vers');
     }
-    if (rand.rand(1,15) === 1 && playerInfos.mapDiff >= 6) {
+    if (rand.rand(1,15) === 1 && zone[0].mapDiff >= 6) {
         transList.push('Ombres');
     }
     if (rand.rand(1,15) === 1) {
@@ -583,11 +583,11 @@ function spawns() {
     let eggModTurn;
     let transList = morphList();
     let aliensNums = aliensCount();
-    let vomiToRuche = 22-Math.round(playerInfos.mapDiff*1.5);
+    let vomiToRuche = 22-Math.round(zone[0].mapDiff*1.5);
     if (vomiToRuche < 5) {
         vomiToRuche = 5;
     }
-    let maxPonte = playerInfos.mapDiff+playerInfos.mapDiff+2;
+    let maxPonte = zone[0].mapDiff+zone[0].mapDiff+2;
     let flyDice;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -595,7 +595,7 @@ function spawns() {
             if ((bat.type.includes('Oeuf') || bat.type === 'Coque') && aliens.length < maxAliens) {
                 batType = getBatType(bat);
                 eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
-                eggModTurn = eggTurn+(playerInfos.mapDiff*2)-12;
+                eggModTurn = eggTurn+(zone[0].mapDiff*2)-12;
                 vomiCheck = ((batType.squads-bat.squadsLeft)*vomiChance)+(eggModTurn*1);
                 if (rand.rand(1,100) <= vomiCheck && bat.type === 'Oeuf') {
                     vomiSpawn(bat);
@@ -679,25 +679,25 @@ function veilSpawn(bat) {
         kind = 'bug';
     }
     if (kind === 'bug') {
-        if (rand.rand(1,15) < playerInfos.mapDiff) {
+        if (rand.rand(1,15) < zone[0].mapDiff) {
             alienSpawn(bat,'Punaise','veil');
         } else {
             alienSpawn(bat,'Bugs','veil');
         }
     } else if (kind === 'swarm') {
-        if (rand.rand(1,15) < playerInfos.mapDiff) {
+        if (rand.rand(1,15) < zone[0].mapDiff) {
             alienSpawn(bat,'Cafards','veil');
         } else {
             alienSpawn(bat,'Scorpions','veil');
         }
     } else if (kind === 'larve') {
-        if (rand.rand(1,15) < playerInfos.mapDiff) {
+        if (rand.rand(1,15) < zone[0].mapDiff) {
             alienSpawn(bat,'Vers','veil');
         } else {
             alienSpawn(bat,'Asticots','veil');
         }
     } else if (kind === 'spider') {
-        if (rand.rand(1,15) < playerInfos.mapDiff) {
+        if (rand.rand(1,15) < zone[0].mapDiff) {
             alienSpawn(bat,'Nerveuses','veil');
         } else {
             alienSpawn(bat,'Gluantes','veil');
@@ -808,7 +808,7 @@ function cocoonSpawn(bat) {
     } else {
         if (eggTurn < 3) {
             let classes = [];
-            let eggLevel = playerInfos.mapDiff+Math.floor(playerInfos.mapTurn/50)-1;
+            let eggLevel = zone[0].mapDiff+Math.floor(playerInfos.mapTurn/50)-1;
             console.log('eggLevel='+eggLevel);
             let saturation = false;
             if (aliens.length >= 200 && playerInfos.mapTurn >= 100) {
@@ -853,9 +853,9 @@ function cocoonSpawn(bat) {
                 if (ana > 100) {
                     ana = 100;
                 }
-                let satMin = 5-Math.floor(ana/4)+playerInfos.mapDiff+Math.round(playerInfos.mapTurn/4);
+                let satMin = 5-Math.floor(ana/4)+zone[0].mapDiff+Math.round(playerInfos.mapTurn/4);
                 console.log('satMin: '+satMin);
-                spawnNum = playerInfos.mapDiff+(rand.rand(1,4));
+                spawnNum = zone[0].mapDiff+(rand.rand(1,4));
                 if (spawnNum < satMin) {
                     spawnNum = satMin;
                 }
@@ -954,13 +954,13 @@ function eggSpawn(bat,fromEgg) {
         overSaturation = true;
     }
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
-    let eggModTurn = eggTurn+playerInfos.mapDiff-3;
-    let eggLife = eggLifeStart+Math.floor(playerInfos.mapDiff*eggLifeFactor);
+    let eggModTurn = eggTurn+zone[0].mapDiff-3;
+    let eggLife = eggLifeStart+Math.floor(zone[0].mapDiff*eggLifeFactor);
     if (bat.type === 'Coque') {
-        eggModTurn = eggTurn+playerInfos.mapDiff-3;
-        eggLife = coqLifeStart+Math.floor(playerInfos.mapDiff*coqLifeFactor);
+        eggModTurn = eggTurn+zone[0].mapDiff-3;
+        eggLife = coqLifeStart+Math.floor(zone[0].mapDiff*coqLifeFactor);
     }
-    let presAlien = playerInfos.mapDiff;
+    let presAlien = zone[0].mapDiff;
     if (presAlien < 1) {
         presAlien = 1;
     }
@@ -989,7 +989,7 @@ function eggSpawn(bat,fromEgg) {
             if (adjEggTurn > 13) {
                 adjEggTurn = 13;
             }
-            let maxSpawn = Math.round(((adjEggTurn*1.5)+(bat.squadsLeft*1.5)-9+(playerInfos.mapDiff*1.5))/5);
+            let maxSpawn = Math.round(((adjEggTurn*1.5)+(bat.squadsLeft*1.5)-9+(zone[0].mapDiff*1.5))/5);
             if (maxSpawn < 1 || !fromEgg) {
                 maxSpawn = 1;
             }
@@ -1003,12 +1003,12 @@ function eggSpawn(bat,fromEgg) {
             }
             console.log('spawnNum='+spawnNum);
             let classes = [];
-            let minTurnB = 33-Math.round(playerInfos.mapDiff*3);
-            let minTurnA = 66-Math.round(playerInfos.mapDiff*5);
+            let minTurnB = 33-Math.round(zone[0].mapDiff*3);
+            let minTurnA = 66-Math.round(zone[0].mapDiff*5);
             classes.push('C');
-            if (eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB && playerInfos.mapDiff >= 3) {
+            if (eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB && zone[0].mapDiff >= 3) {
                 classes.push('B');
-                if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA && (playerInfos.mapDiff >= 6 || overSaturation)) {
+                if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA && (zone[0].mapDiff >= 6 || overSaturation)) {
                     classes.push('A');
                     if (eggModTurn >= 20 && playerInfos.mapTurn >= minTurnA && fromEgg) {
                         const index = classes.indexOf('C');

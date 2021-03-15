@@ -6,7 +6,7 @@ function searchRuins(apCost) {
         checkRuinsCit(tile);
         checkRuinsRes(tile);
         checkRuinsComp(tile);
-        if (playerInfos.mapDiff >= 3) {
+        if (zone[0].mapDiff >= 3) {
             checkRuinsUnit(tile);
         }
         if (!ruinsEmpty) {
@@ -35,7 +35,7 @@ function searchRuins(apCost) {
 };
 
 function checkRuinsComp(tile) {
-    let maxComps = Math.ceil(playerInfos.mapDiff/4.1);
+    let maxComps = Math.ceil(zone[0].mapDiff/4.1);
     if (playerInfos.fndComps < maxComps) {
         let foundComp = {};
         let compOK = false;
@@ -149,8 +149,8 @@ function checkRuinsAliens(tile) {
     if (numRuins < 4) {
         numRuins = 4;
     }
-    let mapLevel = playerInfos.mapDiff+2;
-    let alienLevels = Math.round((playerInfos.mapDiff+(numRuins/5))/2);
+    let mapLevel = zone[0].mapDiff+2;
+    let alienLevels = Math.round((zone[0].mapDiff+(numRuins/5))/2);
     if (alienLevels < 1) {
         alienLevels = 1;
     }
@@ -442,7 +442,7 @@ function checkRuinsRes(tile) {
     if (numRuins > 50) {
         numRuins = 50;
     }
-    let resChance = ruinsResBase+(playerInfos.mapDiff*2)-10;
+    let resChance = ruinsResBase+(zone[0].mapDiff*2)-10;
     console.log('resChance: '+resChance);
     if (rand.rand(1,100) <= resChance) {
         conselTriche = true;
@@ -451,13 +451,13 @@ function checkRuinsRes(tile) {
         let totalRes = 0;
         let thatResChance = 0;
         let thatResNum = 0;
-        let mapFactor = Math.round(((Math.sqrt(playerInfos.mapDiff+2)*10)+playerInfos.mapDiff)/8);
+        let mapFactor = Math.round(((Math.sqrt(zone[0].mapDiff+2)*10)+zone[0].mapDiff)/8);
         let resFactor;
         resTypes.forEach(function(res) {
             if (res.name != 'Magma' && res.name != 'Scrap' && res.cat != 'alien') {
                 thatResChance = 0;
                 thatResNum = 0;
-                resFactor = res.rarity+playerInfos.mapDiff;
+                resFactor = res.rarity+zone[0].mapDiff;
                 if (res.name == 'Nourriture') {
                     if (ruinsEmpty) {
                         thatResChance = Math.ceil(resFactor*res.batch/3);
@@ -507,7 +507,7 @@ function checkRuinsRes(tile) {
                     if (res.name != 'Magma' && res.name != 'Scrap' && res.cat != 'alien') {
                         thatResChance = 0;
                         thatResNum = 0;
-                        resFactor = res.rarity+playerInfos.mapDiff;
+                        resFactor = res.rarity+zone[0].mapDiff;
                         if (res.name == 'Nourriture') {
                             if (ruinsEmpty) {
                                 thatResChance = Math.ceil(resFactor*res.batch/3);
@@ -557,7 +557,7 @@ function checkRuinsRes(tile) {
 };
 
 function checkRuinsUnit(tile) {
-    let maxUnits = Math.floor(playerInfos.mapDiff/3);
+    let maxUnits = Math.floor(zone[0].mapDiff/3);
     if (playerInfos.fndUnits < maxUnits) {
         let chance = 0;
         let foundUnitId = -1;
@@ -568,9 +568,9 @@ function checkRuinsUnit(tile) {
             if (foundUnitId < 0) {
                 if (unit.inRuin != undefined) {
                     if (unit.fabTime > 50) {
-                        chance = unit.inRuin-8+playerInfos.mapDiff;
+                        chance = unit.inRuin-8+zone[0].mapDiff;
                     } else {
-                        chance = unit.inRuin-3+Math.ceil(playerInfos.mapDiff/2);
+                        chance = unit.inRuin-3+Math.ceil(zone[0].mapDiff/2);
                         if (chance > unit.inRuin) {
                             chance = unit.inRuin;
                         }

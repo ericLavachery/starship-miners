@@ -35,7 +35,7 @@ function showMap(wmap,justMoved) {
     let sortedVisMap = _.sortBy(_.sortBy(visMap,'y'),'x');
     sortedVisMap.forEach(function(tile) {
         resHere = showRes(tile.id);
-        if (playerInfos.dark) {
+        if (zone[0].dark) {
             if (playerInfos.undarkOnce.includes(tile.id)) {
                 terclass = 'ter'+tile.terrain+tile.seed;
             } else {
@@ -94,7 +94,7 @@ function showRes(tileId) {
     let mapIndicators = '';
     let res = '';
     let view = true;
-    if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
+    if (zone[0].dark && !playerInfos.undarkOnce.includes(tile.id)) {
         view = false;
     }
     if (tile.rq != undefined && view) {
@@ -159,7 +159,7 @@ function showRes(tileId) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/showTile.png"></div>';
         }
     }
-    if (playerInfos.dark) {
+    if (zone[0].dark) {
         if (undarkNow.includes(tile.id)) {
             mapIndicators = mapIndicators+'<div class="dark"><img src="/static/img/dark.png"></div>';
         } else {
@@ -225,7 +225,7 @@ function showAlien(bat) {
     if (bat.tags.includes('fogged')) {
         tagz = tagz+' (fog)';
     }
-    if ((playerInfos.dark && !undarkNow.includes(bat.tileId)) || batType.skills.includes('invisible')) {
+    if ((zone[0].dark && !undarkNow.includes(bat.tileId)) || batType.skills.includes('invisible')) {
         $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
     } else if (bat.tags.includes('invisible')) {
         if (playerInfos.comp.det >= 6) {

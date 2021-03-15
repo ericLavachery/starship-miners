@@ -18,8 +18,8 @@ function saveBataillons() {
 
 function stopSonde() {
     modeSonde = false;
-    loadCurrentMap();
     mapSoftReset();
+    saveGame();
     commandes();
 };
 
@@ -52,6 +52,9 @@ function saveMapForReturn() {
     // showedTilesReset();
     playerInfos.lastMapId = playerInfos.lastMapId+1;
     savePlayerInfos();
+    if (playerInfos.mapTurn < 50) {
+        zone[0].mapDiff = zone[0].mapDiff+1;
+    }
     socket.emit('save-map-as',[zone,playerInfos.lastMapId]);
     saveAliensForReturn();
     saveBataillonsForReturn();
@@ -145,8 +148,6 @@ function mapReset() {
     saveBataillons();
     aliens = [];
     saveAliens();
-    let downDiff = Math.floor(playerInfos.mapTurn/50);
-    playerInfos.mapDiff = playerInfos.mapDiff-downDiff;
     playerInfos.mapAdjDiff = playerInfos.mapDiff;
     playerInfos.mapTurn = 0;
     playerInfos.mapDrop = 0;
@@ -171,15 +172,13 @@ function mapReset() {
     playerInfos.bldList = [];
     // playerInfos.comp = resetComp();
     resetReserve();
-    savePlayerInfos();
+    // savePlayerInfos();
     showMap(zone,false);
     commandes();
     $("#reset2").css("display","none");
     $("#reset1").css("display","inline-block");
 };
 function mapSoftReset() {
-    let downDiff = Math.floor(playerInfos.mapTurn/50);
-    playerInfos.mapDiff = playerInfos.mapDiff-downDiff;
     playerInfos.mapAdjDiff = playerInfos.mapDiff;
     playerInfos.mapTurn = 0;
     playerInfos.mapDrop = 0;
@@ -203,7 +202,8 @@ function mapSoftReset() {
     playerInfos.undarkOnce = [];
     playerInfos.bldList = [];
     resetReserve();
-    savePlayerInfos();
+    // savePlayerInfos();
+    showMap(zone,false);
     commandes();
     $("#reset2").css("display","none");
     $("#reset1").css("display","inline-block");

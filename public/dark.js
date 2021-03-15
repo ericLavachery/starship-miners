@@ -1,5 +1,5 @@
 function checkUndark() {
-    if (playerInfos.dark) {
+    if (zone[0].dark) {
         let noBat = {};
         undarkCenter();
         let terrain;

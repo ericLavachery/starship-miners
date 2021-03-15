@@ -216,7 +216,7 @@ function tileUnselect() {
         let tileIndex = zone.findIndex((obj => obj.id == selectedBat.tileId));
         let tile = zone[tileIndex];
         let terclass = 'ter'+tile.terrain+tile.seed;
-        if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
+        if (zone[0].dark && !playerInfos.undarkOnce.includes(tile.id)) {
             terclass = 'terFog';
         }
         $('.selTile').remove();
@@ -228,7 +228,7 @@ function tileSelect(bat) {
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
     terclass = 'ter'+tile.terrain+tile.seed;
-    if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
+    if (zone[0].dark && !playerInfos.undarkOnce.includes(tile.id)) {
         terclass = 'terFog';
     }
     if (mode === 'move') {
@@ -244,7 +244,7 @@ function tileUntarget() {
     // zone.forEach(function(tile) {
     //     if ($('#'+tile.id).hasClass("terTarget")) {
     //         terclass = 'ter'+tile.terrain+tile.seed;
-    //         if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
+    //         if (zone[0].dark && !playerInfos.undarkOnce.includes(tile.id)) {
     //             terclass = 'terFog';
     //         }
     //         $('#'+tile.id).removeClass('terTarget').addClass(terclass);
@@ -256,7 +256,7 @@ function tileTarget(bat) {
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
     terclass = 'ter'+tile.terrain+tile.seed;
-    if (playerInfos.dark && !playerInfos.undarkOnce.includes(tile.id)) {
+    if (zone[0].dark && !playerInfos.undarkOnce.includes(tile.id)) {
         terclass = 'terFog';
     }
     $('#'+tile.id).append('<span class="selTile"><img src="/static/img/targeted.png"></span>');

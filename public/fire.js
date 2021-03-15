@@ -708,8 +708,8 @@ function attack(melee) {
     }
     // resistance oeufs
     if (targetBatType.skills.includes('eggprotect')) {
-        let eggProt = 100-Math.round(1000/(10+((playerInfos.mapDiff-1)*2.5)));
-        totalDamage = Math.round(totalDamage*10/(10+((playerInfos.mapDiff-1)*2.5)));
+        let eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1)*2.5)));
+        totalDamage = Math.round(totalDamage*10/(10+((zone[0].mapDiff-1)*2.5)));
         if (playerInfos.comp.ca >= 2) {
             $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
         }
@@ -1488,8 +1488,8 @@ function defense(melee) {
     }
     // resistance oeufs
     if (selectedBatType.skills.includes('eggprotect')) {
-        let eggProt = 100-Math.round(1000/(10+((playerInfos.mapDiff-1)*2.5)));
-        totalDamage = Math.round(totalDamage*10/(10+((playerInfos.mapDiff-1)*2.5)));
+        let eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1)*2.5)));
+        totalDamage = Math.round(totalDamage*10/(10+((zone[0].mapDiff-1)*2.5)));
         if (playerInfos.comp.ca >= 2) {
             $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
         }
