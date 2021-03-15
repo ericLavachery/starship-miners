@@ -228,7 +228,7 @@ function showAlien(bat) {
     if ((zone[0].dark && !undarkNow.includes(bat.tileId)) || batType.skills.includes('invisible')) {
         $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
     } else if (bat.tags.includes('invisible')) {
-        if (playerInfos.comp.det >= 6) {
+        if (playerInfos.comp.det >= 5) {
             if (degNum >= 7) {
                 $('#b'+bat.tileId).append('<div class="iUnits"><img src="/static/img/units/'+batCat+'/invisible.png"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
             } else {

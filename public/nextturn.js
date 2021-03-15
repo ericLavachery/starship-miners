@@ -29,7 +29,7 @@ function nextTurn() {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
             deFog(bat,batType);
-            if ((!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) || playerInfos.comp.det >= 5) {
+            if ((!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) || playerInfos.comp.det >= 4) {
                 visibleAliens.push(bat.tileId);
             }
             if (!alienTypesList.includes(batType.name)) {

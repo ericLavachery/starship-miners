@@ -2269,7 +2269,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["cible","fret","camo","emoteur","dumper","realdumper","light","accu","recupcit","recupres"],
-        "transRes":300,
+        "transRes":350,
         "fuzz":0,
         "deathFx":"S_CarExplosion02"
     },

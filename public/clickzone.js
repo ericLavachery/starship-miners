@@ -147,7 +147,7 @@ function isAlienHere(tileId) {
             batType = getBatType(bat);
             if (!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) {
                 alienHere = true;
-            } else if (bat.tags.includes('invisible') && playerInfos.comp.det >= 6) {
+            } else if (bat.tags.includes('invisible') && playerInfos.comp.det >= 5) {
                 alienHere = true;
             }
         }
