@@ -869,7 +869,7 @@ function tagsEffect(bat,batType) {
                 tagDelete(bat,'necro');
             }
         } else {
-            if (rand.rand(0,11) <= unitResist) {
+            if (rand.rand(1,16) <= unitResist) {
                 tagDelete(bat,'necro');
                 if (!bat.tags.includes('necro')) {
                     warning('',bat.type+' a éliminé la nécrotoxine.');

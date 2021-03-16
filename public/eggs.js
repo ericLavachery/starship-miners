@@ -468,7 +468,7 @@ function eggDropTile(eggName,theArea) {
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
                 distance = calcDistance(tile.id,targetTile);
-                if (distance > 11 && distance < 16) {
+                if (distance > 8 && distance < 13) {
                     if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
@@ -591,7 +591,7 @@ function spawns() {
     let flyDice;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
-            flyDice = rand.rand(1,6);
+            flyDice = rand.rand(1,3);
             if ((bat.type.includes('Oeuf') || bat.type === 'Coque') && aliens.length < maxAliens) {
                 batType = getBatType(bat);
                 eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
@@ -607,7 +607,7 @@ function spawns() {
                 alienSpawn(bat,'Vomissure');
             } else if (bat.type === 'Vermisseaux' && flyDice === 1 && aliens.length < maxAliens && aliensNums.lucioles < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Lucioles');
-            } else if (bat.type === 'Vermisseaux' && flyDice >= 5 && aliens.length < maxAliens && aliensNums.moucherons < Math.round(maxPonte*1.5)) {
+            } else if (bat.type === 'Vermisseaux' && flyDice >= 2 && aliens.length < maxAliens && aliensNums.moucherons < Math.round(maxPonte*1.5)) {
                 alienSpawn(bat,'Moucherons');
             } else if (transList.includes('Asticots') && bat.squadsLeft >= 5 && bat.type === 'Asticots') {
                 alienMorph(bat,'Moucherons',false);
@@ -802,13 +802,52 @@ function cocoonSpawn(bat) {
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     let eggLife = 2;
     console.log('eggTurn='+eggTurn);
+    let eggLevel = zone[0].mapDiff+Math.floor((playerInfos.mapTurn+25)/50)-1;
+    let eggCat = checkputEggKind(bat);
+    if (eggCat === '') {
+        eggCat = newEggCat();
+    }
+    console.log('eggCat: '+eggCat);
     if (eggTurn > eggLife && bat.squadsLeft === 6) {
-        // TRANFORMATION EN VOLCAN !
-        alienMorph(bat,'Volcan',false);
+        // TRANFORMATION EN CLASSE A !
+        if (eggCat === 'bug') {
+            if (eggLevel >= 6 && playerInfos.mapTurn >= 50) {
+                alienMorph(bat,'Dragons',false);
+            } else if (eggLevel >= 3) {
+                alienMorph(bat,'Scarabs',false);
+            } else {
+                alienMorph(bat,'Broyeurs',false);
+            }
+        } else if (eggCat === 'swarm') {
+            if (eggLevel >= 6 && playerInfos.mapTurn >= 50) {
+                alienMorph(bat,'Mantes',false);
+            } else if (eggLevel >= 3) {
+                alienMorph(bat,'Galéodes',false);
+            } else {
+                alienMorph(bat,'Ojos',false);
+            }
+        } else if (eggCat === 'larve') {
+            if (eggLevel >= 6 && playerInfos.mapTurn >= 50) {
+                alienMorph(bat,'Megagrubz',false);
+            } else if (eggLevel >= 3) {
+                alienMorph(bat,'Vermisseaux',false);
+            } else {
+                alienMorph(bat,'Wurms',false);
+            }
+        } else if (eggCat === 'spider') {
+            if (eggLevel >= 6 && playerInfos.mapTurn >= 50) {
+                alienMorph(bat,'Glaireuses',false);
+            } else if (eggLevel >= 3) {
+                alienMorph(bat,'Mygales',false);
+            } else {
+                alienMorph(bat,'Faucheux',false);
+            }
+        } else {
+            alienMorph(bat,'Volcan',false);
+        }
     } else {
         if (eggTurn < 3) {
             let classes = [];
-            let eggLevel = zone[0].mapDiff+Math.floor(playerInfos.mapTurn/50)-1;
             console.log('eggLevel='+eggLevel);
             let saturation = false;
             if (aliens.length >= 200 && playerInfos.mapTurn >= 100) {
@@ -869,11 +908,6 @@ function cocoonSpawn(bat) {
             }
             console.log('spawnNum='+spawnNum);
             console.log(classes);
-            let eggCat = checkputEggKind(bat);
-            if (eggCat === '') {
-                eggCat = newEggCat();
-            }
-            console.log('eggCat: '+eggCat);
             let checkDiceMax = 0;
             let checkDice;
             let raritySum = 0;
