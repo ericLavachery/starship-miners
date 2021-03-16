@@ -337,6 +337,16 @@ h5 {
     position: absolute;
     /* margin: 1px 1px 1px 1px; */
 }
+.pUnitsCamo {
+    background-color: rgba(170, 242, 251, 0.4);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(170, 242, 251, 0.9);
+    border-radius: 8px;
+    position: absolute;
+    opacity: 0.7;
+    /* margin: 1px 1px 1px 1px; */
+}
 .aUnits {
     background-color: rgba(251, 250, 148, 0.3);
     border-style: solid;

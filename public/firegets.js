@@ -1316,7 +1316,7 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.range = thisWeapon.range+1;
     }
     // Forêt (range)
-    if (tile.terrain == 'F') {
+    if (tile.terrain == 'F' && infra != 'Miradors') {
         if (checkDeepForest(tile)) {
             if (thisWeapon.range >= 2) {
                 if (thisWeapon.range >= 3) {
