@@ -177,13 +177,13 @@ function nextTurnEnd() {
                 if (!playerInfos.bldList.includes(batType.name)) {
                     playerInfos.bldList.push(batType.name);
                 }
-                if (batType.bldEquiv.length >= 1) {
-                    batType.bldEquiv.forEach(function(bldName) {
-                        if (!playerInfos.bldList.includes(bldName)) {
-                            playerInfos.bldList.push(bldName);
-                        }
-                    });
-                }
+            }
+            if (batType.bldEquiv.length >= 1) {
+                batType.bldEquiv.forEach(function(bldName) {
+                    if (!playerInfos.bldList.includes(bldName)) {
+                        playerInfos.bldList.push(bldName);
+                    }
+                });
             }
             if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {
                 boostedTeams.push(batType.kind);

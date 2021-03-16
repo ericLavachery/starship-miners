@@ -1188,6 +1188,18 @@
         "inRuin":3
     },
     {
+        "id":244,
+        "name":"Factotruck",
+        "levels":{"rednecks":16,"blades":17,"bulbos":16,"drogmulojs":16,"tiradores":16,"detruas":16,"brasier":17},
+        "bldReq":["Soute","Usine"],
+        "bldEquiv":["Atelier","Chaîne de montage"],
+        "compReq":{"ind":3},
+        "upkeep":{"Energie":30},
+        "prod":{"Scrap":20},
+        "costs":{"Compo1":435,"Compo2":315,"Compo3":135,"Eau":90,"Energie":750,"Hydrocarbure":600,"Fuel":900,"Huile":250,"Carbone":400,"Scrap":600,"Titane":200,"Aluminium":400,"Fer":500,"Platine":75,"Zinc":300,"Azote":400,"Electros":350,"Batteries":250},
+        "fabTime":300
+    },
+    {
         "id":79,
         "name":"The Void",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":19,"brasier":99},
@@ -1260,6 +1272,7 @@
         "name":"Megadumps",
         "levels":{"rednecks":13,"blades":14,"bulbos":14,"drogmulojs":16,"tiradores":14,"detruas":16,"brasier":15},
         "bldReq":["Garage","Atelier"],
+        "compReq":{"trans":3},
         "costs":{"Fer":96,"Scrap":378,"Carbone":288,"Aluminium":294,"Tungstène":96,"Electros":24,"Batteries":114,"Compo2":195,"Compo3":36,"Huile":10},
         "deploy":{"Fuel":120},
         "fabTime":100,
@@ -1467,6 +1480,7 @@
         "name":"Stakhanov",
         "levels":{"rednecks":15,"blades":17,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":17},
         "bldReq":["Centre de recherches","Usine"],
+        "compReq":{"ext":3},
         "costs":{"Fer":129,"Scrap":111,"Carbone":159,"Aluminium":132,"Electros":156,"Batteries":88,"Compo2":142,"Huile":36,"Cobalt":30,"Hélium":60,"Eau":584,"Silicium":80,"Zinc":33},
         "deploy":{"Fuel":115,"Energie":60,"Huile":30,"Eau":320,"Silicium":40},
         "fabTime":130,
@@ -1637,6 +1651,7 @@
         "name":"Thundership",
         "levels":{"rednecks":14,"blades":14,"bulbos":14,"drogmulojs":14,"tiradores":14,"detruas":14,"brasier":14},
         "bldReq":["Soute","Laboratoire","Chaîne de montage"],
+        "compReq":{"vsp":1},
         "costs":{"Eau":50,"Energie":2000,"Huile":50,"Scrap":300,"Tissus":30,"Carbone":100,"Titane":1200,"Aluminium":1300,"Rhodium":200,"Nickel":1000,"Cuivre":1200,"Platine":600,"Silicium":200,"Bore":1300,"Uranium":600,"Oxygène":100,"Hydrogène":700,"Azote":200,"Chlore":25,"Electros":600,"Batteries":225,"Moteur orbital":1},
         "deploy":{"Eau":20,"Nourriture":10,"Oxygène":20,"Energie":200,"Huile":10,"Chlore":15,"Uranium":150,"Hydrogène":60}
     },
@@ -1651,9 +1666,11 @@
     {
         "id":137,
         "name":"Tour de garde",
-        "levels":{"rednecks":99,"blades":16,"bulbos":12,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":16},
+        "levels":{"rednecks":17,"blades":16,"bulbos":12,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":16},
         "bldVMReq":["Usine d'armement","Centre de recherches","Chaîne de montage"],
         "bldReq":["Atelier","Armurerie"],
+        "compReq":{"energ":4},
+        "compPass":["blades","bulbos","brasier"],
         "costs":{"Compo1":75,"Compo2":75,"Compo3":30,"Eau":18,"Carbone":72,"Titane":36,"Tungstène":108,"Aluminium":18,"Bois":18,"Rhodium":36,"Silicium":18,"Bore":36,"Electros":72,"Batteries":108},
         "fabTime":55
     },

@@ -1354,7 +1354,7 @@ function updateBldList() {
     playerInfos.bldList = [];
     hasScraptruck = false;
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone" || bat.loc === "trans") {
+        if (bat.loc === "zone") {
             batType = getBatType(bat);
             if (batType.name === 'Scraptrucks') {
                 hasScraptruck = true;
@@ -1363,13 +1363,13 @@ function updateBldList() {
                 if (!playerInfos.bldList.includes(batType.name)) {
                     playerInfos.bldList.push(batType.name);
                 }
-                if (batType.bldEquiv.length >= 1) {
-                    batType.bldEquiv.forEach(function(bldName) {
-                        if (!playerInfos.bldList.includes(bldName)) {
-                            playerInfos.bldList.push(bldName);
-                        }
-                    });
-                }
+            }
+            if (batType.bldEquiv.length >= 1) {
+                batType.bldEquiv.forEach(function(bldName) {
+                    if (!playerInfos.bldList.includes(bldName)) {
+                        playerInfos.bldList.push(bldName);
+                    }
+                });
             }
         }
     });
