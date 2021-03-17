@@ -376,7 +376,7 @@ function nextTurnEnd() {
             }
             // production
             if (bat.tags.includes('prodres') && !batType.skills.includes('upkeep')) {
-                bat.apLeft = bat.apLeft-2;
+                bat.apLeft = bat.apLeft-1;
             }
             // tracking
             if (checkTracking(bat)) {

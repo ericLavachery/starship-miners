@@ -856,7 +856,7 @@ function cocoonSpawn(bat) {
         if (eggCat === 'bug') {
             if (eggLevel >= 6 && playerInfos.mapTurn >= 50) {
                 alienMorph(bat,'Dragons',false);
-            } else if (eggLevel >= 3) {
+            } else if (eggLevel >= 4) {
                 alienMorph(bat,'Scarabs',false);
             } else {
                 alienMorph(bat,'Broyeurs',false);
@@ -864,7 +864,7 @@ function cocoonSpawn(bat) {
         } else if (eggCat === 'swarm') {
             if (eggLevel >= 6 && playerInfos.mapTurn >= 50) {
                 alienMorph(bat,'Mantes',false);
-            } else if (eggLevel >= 3) {
+            } else if (eggLevel >= 4) {
                 alienMorph(bat,'Galéodes',false);
             } else {
                 alienMorph(bat,'Ojos',false);
@@ -872,7 +872,7 @@ function cocoonSpawn(bat) {
         } else if (eggCat === 'larve') {
             if (eggLevel >= 6 && playerInfos.mapTurn >= 50) {
                 alienMorph(bat,'Megagrubz',false);
-            } else if (eggLevel >= 3) {
+            } else if (eggLevel >= 4) {
                 alienMorph(bat,'Vermisseaux',false);
             } else {
                 alienMorph(bat,'Wurms',false);
