@@ -201,14 +201,23 @@ function checkEggsDrop() {
             if (doubleCocon >= 50) {
                 dropEgg('Oeuf','any');
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
+                if (playerInfos.comp.det >= 1) {
+                    warning('Cocon','Un Cocon est tombé!');
+                }
             }
             if (doubleCocon >= 100) {
                 dropEgg('Cocon','nedge');
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
+                if (playerInfos.comp.det >= 1) {
+                    warning('Cocon','Un Cocon est tombé!');
+                }
             }
             if (doubleCocon >= 200) {
                 dropEgg('Cocon','nedge');
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
+                if (playerInfos.comp.det >= 1) {
+                    warning('Cocon','Un Cocon est tombé!');
+                }
             }
             playerInfos.cocons = playerInfos.cocons+1;
         }
@@ -220,17 +229,29 @@ function checkEggsDrop() {
         if (rucheBord >= 200) {
             dropEgg('Ruche','edge');
             rucheBord = rucheBord-200;
+            if (playerInfos.comp.det >= 1) {
+                warning('Ruche en vue','Une Ruche est aparue au loin!');
+            }
         }
         if (rucheBord >= 200 && playerInfos.mapTurn >= 50) {
             dropEgg('Ruche','edge');
             rucheBord = rucheBord-200;
+            if (playerInfos.comp.det >= 1) {
+                warning('Ruche en vue','Une Ruche est aparue au loin!');
+            }
         }
         if (rucheBord >= 200 && playerInfos.mapTurn >= 75) {
             dropEgg('Ruche','edge');
             rucheBord = rucheBord-200;
+            if (playerInfos.comp.det >= 1) {
+                warning('Ruche en vue','Une Ruche est aparue au loin!');
+            }
         }
         if (rand.rand(1,100) <= rucheBord) {
             dropEgg('Ruche','edge');
+            if (playerInfos.comp.det >= 1) {
+                warning('Ruche en vue','Une Ruche est aparue au loin!');
+            }
         }
     }
 };
@@ -322,6 +343,9 @@ function eggsDrop() {
             } else if (eggTypeDice <= coqueChance+invisibleChance) {
                 dropEgg('Oeuf voilé','any');
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
+                if (playerInfos.comp.det >= 3) {
+                    warning('Oeuf voilé','Un Oeuf voilé est tombé!');
+                }
             } else {
                 dropEgg('Oeuf','any');
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
@@ -589,6 +613,8 @@ function spawns() {
     }
     let maxPonte = zone[0].mapDiff+zone[0].mapDiff+2;
     let flyDice;
+    let warnAsticots = false;
+    let warnVers = false;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             flyDice = rand.rand(1,3);
@@ -609,9 +635,21 @@ function spawns() {
                 alienSpawn(bat,'Lucioles');
             } else if (bat.type === 'Vermisseaux' && flyDice >= 2 && aliens.length < maxAliens && aliensNums.moucherons < Math.round(maxPonte*1.5)) {
                 alienSpawn(bat,'Moucherons');
-            } else if (transList.includes('Asticots') && bat.squadsLeft >= 5 && bat.type === 'Asticots') {
+            } else if (transList.includes('Asticots') && bat.type === 'Asticots' && !bat.tags.includes('morph')) {
+                bat.tags.push('morph');
+                if (playerInfos.comp.det >= 2 && playerInfos.comp.ca >= 2 && !warnAsticots) {
+                    warnAsticots = true;
+                    warning('Tranformation imminante','Les Asticots vont devenir des Moucherons!');
+                }
+            } else if (bat.squadsLeft >= 5 && bat.type === 'Asticots' && bat.tags.includes('morph')) {
                 alienMorph(bat,'Moucherons',false);
-            } else if (transList.includes('Vers') && bat.squadsLeft >= 5 && bat.type === 'Vers') {
+            } else if (transList.includes('Vers') && bat.type === 'Vers' && !bat.tags.includes('morph')) {
+                bat.tags.push('morph');
+                if (playerInfos.comp.det >= 2 && playerInfos.comp.ca >= 2 && !warnVers) {
+                    warnVers = true;
+                    warning('Tranformation imminante','Les Vers vont devenir des Lucioles!');
+                }
+            } else if (bat.squadsLeft >= 5 && bat.type === 'Vers' && bat.tags.includes('morph')) {
                 alienMorph(bat,'Lucioles',false);
             } else if (rand.rand(1,15) === 1 && bat.squadsLeft >= 3 && bat.type === 'Larves') {
                 alienMorph(bat,'Wurms',false);
@@ -619,6 +657,9 @@ function spawns() {
                 alienMorph(bat,'Fantômes',false);
             } else if (rand.rand(1,vomiToRuche) === 1 && playerInfos.mapTurn >= Math.ceil(vomiToRuche/1.5) && bat.type === 'Vomissure' && !bat.tags.includes('morph')) {
                 bat.tags.push('morph');
+                if (playerInfos.comp.det >= 1 && playerInfos.comp.ca >= 1) {
+                    warning('Tranformation imminante','Une Vomissure va devenir une Ruche!');
+                }
             } else if (bat.type === 'Vomissure' && bat.tags.includes('morph')) {
                 alienMorph(bat,'Ruche',true);
             } else if (bat.type === 'Dragons' && aliens.length < maxAliens && aliensNums.firebugs < Math.round(maxPonte/1.5)) {
@@ -1014,6 +1055,25 @@ function eggSpawn(bat,fromEgg) {
             }
         } else {
             bat.tags.push('morph');
+            if (bat.type === 'Oeuf') {
+                if (playerInfos.comp.det >= 1 && playerInfos.comp.ca >= 1) {
+                    warning('Tranformation imminante','Un Oeuf va devenir une Ruche!');
+                }
+            } else if (bat.type === 'Oeuf voilé') {
+                if (bat.tags.includes('invisible')) {
+                    if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 1) {
+                        warning('Tranformation imminante','Un Oeuf voilé va devenir une Ruche!');
+                    }
+                } else {
+                    if (playerInfos.comp.det >= 1 && playerInfos.comp.ca >= 1) {
+                        warning('Tranformation imminante','Un Oeuf voilé va devenir une Ruche!');
+                    }
+                }
+            } else {
+                if (playerInfos.comp.det >= 1 && playerInfos.comp.ca >= 1) {
+                    warning('Tranformation imminante','Une Coque va devenir un Volcan!');
+                }
+            }
         }
     } else {
         let spawnChance = Math.round(eggTurn*15*bat.squadsLeft/6*Math.sqrt(presAlien)*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
