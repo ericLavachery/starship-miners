@@ -490,8 +490,9 @@ function loadRes() {
                                 $('#conUnitList').append('<span class="constName cy">'+bat.type+' <span class="gf"> &mdash; '+theTile+'</span></span><br>');
                             }
                             if (restSpace >= Math.round(resLoad*1.2)) {
-                                $('#conUnitList').append('<span class="constIcon rose"><i class="fas fa-pallet"></i></span>');
-                                $('#conUnitList').append('<span class="constName rose"><span class="klik" onclick="resAllLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+')">Charger tout</span></span><br>');
+                                $('#conUnitList').append('<span class="loadIcon rose klik" onclick="resAllLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+')"><i class="fas fa-pallet"></i></span>');
+                            } else {
+                                $('#conUnitList').append('<span class="loadIcon rose klik" onclick="resMaxLoad('+bat.id+',false)" title="Charger un maximum de ressources depuis ce bataillon ('+bat.type+')"><i class="fas fa-dolly"></i></span>');
                             }
                             if (selectedBatType.skills.includes('fret')) {
                                 if (batType.skills.includes('fret')) {
@@ -502,14 +503,13 @@ function loadRes() {
                                         }
                                     }
                                     if (isAuto) {
-                                        $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
-                                        $('#conUnitList').append('<span class="constName vert"><span title="Tout ce qu\'il y a dans ce bataillon ('+bat.type+') est déjà chargé à chaque tour">Déjà automatisé</span></span><br>');
+                                        $('#conUnitList').append('<span class="loadIcon bleu klik" onclick="stopThisAutoLoad('+bat.id+')" title="Stopper cette automation!"><i class="fas fa-robot"></i></span>');
                                     } else {
-                                        $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
-                                        $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="resMaxLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+') à chaque tour">Automatiser</span></span><br>');
+                                        $('#conUnitList').append('<span class="loadIcon vert klik" onclick="resMaxLoad('+bat.id+',true)" title="Automatiser : Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+') à chaque tour"><i class="fas fa-robot"></i></span>');
                                     }
                                 }
                             }
+                            $('#conUnitList').append('<br>');
                             if (resLoad >= 1) {
                                 Object.entries(bat.transRes).map(entry => {
                                     let key = entry[0];
@@ -527,8 +527,8 @@ function loadRes() {
                                         } else {
                                             $('#conUnitList').append('<span class="constIcon"><i class="far fa-times-circle or"></i></span>');
                                         }
-                                        if (value > 50 && Math.round(restSpace*1.2) >= 50) {
-                                            $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span> | <span class="klik" onclick="resSelectLoad('+value+',50,'+res.id+','+bat.id+')" title="Charger 50 '+res.name+'">50</span></span><br>');
+                                        if (value > 100 && Math.round(restSpace*1.2) >= 100) {
+                                            $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span> | <span class="klik" onclick="resSelectLoad('+value+',100,'+res.id+','+bat.id+')" title="Charger 100 '+res.name+'">100</span></span><br>');
                                         } else {
                                             $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span></span><br>');
                                         }
@@ -551,10 +551,12 @@ function resAllLoad(batId) {
     Object.entries(bat.transRes).map(entry => {
         let key = entry[0];
         let value = entry[1];
-        if (selectedBat.transRes[key] === undefined) {
-            selectedBat.transRes[key] = value;
-        } else {
-            selectedBat.transRes[key] = selectedBat.transRes[key]+value;
+        if (value >= 1) {
+            if (selectedBat.transRes[key] === undefined) {
+                selectedBat.transRes[key] = value;
+            } else {
+                selectedBat.transRes[key] = selectedBat.transRes[key]+value;
+            }
         }
         delete bat.transRes[key];
     });
@@ -564,7 +566,7 @@ function resAllLoad(batId) {
     loadRes();
 };
 
-function resMaxLoad(batId) {
+function resMaxLoad(batId,addAutoLoad) {
     let bat = getBatById(batId);
     let resSpace = checkResSpace(selectedBat);
     let resLoad = checkResLoad(bat);
@@ -572,33 +574,39 @@ function resMaxLoad(batId) {
         let key = entry[0];
         let value = entry[1];
         resSpace = checkResSpace(selectedBat);
-        if (resSpace >= value) {
-            if (selectedBat.transRes[key] === undefined) {
-                selectedBat.transRes[key] = value;
+        if (value >= 1) {
+            if (resSpace >= value) {
+                if (selectedBat.transRes[key] === undefined) {
+                    selectedBat.transRes[key] = value;
+                } else {
+                    selectedBat.transRes[key] = selectedBat.transRes[key]+value;
+                }
+                delete bat.transRes[key];
             } else {
-                selectedBat.transRes[key] = selectedBat.transRes[key]+value;
+                if (selectedBat.transRes[key] === undefined) {
+                    if (resSpace >= 1) {
+                        selectedBat.transRes[key] = resSpace;
+                    }
+                } else {
+                    selectedBat.transRes[key] = selectedBat.transRes[key]+resSpace;
+                }
+                bat.transRes[key] = bat.transRes[key]-resSpace;
             }
-            delete bat.transRes[key];
-        } else {
-            if (selectedBat.transRes[key] === undefined) {
-                selectedBat.transRes[key] = resSpace;
-            } else {
-                selectedBat.transRes[key] = selectedBat.transRes[key]+resSpace;
-            }
-            bat.transRes[key] = bat.transRes[key]-resSpace;
         }
     });
-    if (selectedBat.autoLoad != undefined) {
-        if (Array.isArray(selectedBat.autoLoad)) {
-            // OK
+    if (addAutoLoad) {
+        if (selectedBat.autoLoad != undefined) {
+            if (Array.isArray(selectedBat.autoLoad)) {
+                // OK
+            } else {
+                selectedBat.autoLoad = [];
+            }
         } else {
             selectedBat.autoLoad = [];
         }
-    } else {
-        selectedBat.autoLoad = [];
-    }
-    if (!selectedBat.autoLoad.includes(batId)) {
-        selectedBat.autoLoad.push(batId);
+        if (!selectedBat.autoLoad.includes(batId)) {
+            selectedBat.autoLoad.push(batId);
+        }
     }
     putTagAction(bat);
     putTagAction(selectedBat);
@@ -631,6 +639,16 @@ function autoResLoad(toBat,fromBat) {
             }
         });
     }
+};
+
+function stopThisAutoLoad(batId) {
+    selectedBat.autoLoad = [];
+    if (selectedBat.autoLoad.includes(batId)) {
+        let index = selectedBat.autoLoad.indexOf(batId);
+        selectedBat.autoLoad.splice(index,1);
+        selectedBatArrayUpdate();
+    }
+    loadRes();
 };
 
 function stopAutoLoad() {

@@ -185,6 +185,11 @@ function showAlien(bat) {
     let batType = getBatType(bat);
     let batShowedName = nomVisible(batType.name);
     let batPic = batType.pic;
+    if (batType.name === 'Coque' || batType.name === 'Oeuf voilé' || batType.name === 'Oeuf' || batType.name === 'Vomissure') {
+        if (bat.tags.includes('morph')) {
+            batPic = batPic+'trans';
+        }
+    }
     let batCat = batType.cat;
     let unitsLeft = bat.squadsLeft*batType.squadSize;
     $('#b'+bat.tileId).empty();

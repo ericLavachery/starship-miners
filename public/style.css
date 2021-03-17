@@ -187,6 +187,15 @@ h5 {
     margin-right: 8px;
     font-weight: bold;
 }
+.loadIcon {
+    display: inline-block;
+    font-size: 20px;
+    text-align: center;
+    width: 32px;
+    margin-right: 10px;
+    margin-bottom: 2px;
+    color: #d5cabd;
+}
 .constIcon {
     display: inline-block;
     font-size: 12px;

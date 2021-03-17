@@ -62,7 +62,7 @@ function commandes() {
             $('#commandz').append('<button type="button" title="Passer en mode sonde" class="boutonBrun iconButtons" onclick="goSonde()"><i class="fas fa-rocket"></i></button>');
         } else {
             $('#commandz').append('<button type="button" title="Quitter le mode sonde" class="boutonRouge iconButtons" onclick="stopSonde()"><i class="fas fa-rocket"></i></button>');
-            let maxMaps = (playerInfos.comp.det+2)*maxMapsParDet;
+            let maxMaps = (playerInfos.comp.vsp+2)*maxMapsParDet;
             let nextMapNumber = playerInfos.sondeMaps+1;
             if (playerInfos.sondeMaps < maxMaps) {
                 $('#commandz').append('<button type="button" title="Générer une nouvelle carte ('+nextMapNumber+'/'+maxMaps+')" class="boutonBrun iconButtons"><i class="fas fa-map" onclick="generateNewMap()"></i></button>');

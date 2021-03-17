@@ -549,7 +549,7 @@
         "weapon2":{
             "name":"Mitrailleuse légère",
             "cost":5,
-            "range":2,
+            "range":1,
             "elevation":1,
             "spot":true,
             "kit":true,
@@ -614,7 +614,7 @@
             "sound":"mark",
             "ammo":["marquage"]
         },
-        "equip":["aucun","e-flash","e-camo","kit-guetteur","e-ranger","e-jetpack"],
+        "equip":["aucun","e-flash","e-camo","kit-guetteur","e-ranger","e-jetpack","lunette1","chargeur1"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -2209,7 +2209,7 @@
             "ammo":["lame","lame-tungsten","lame-plasma"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
-        "equip":["aucun","e-flash","e-ranger","waterproof"],
+        "equip":["aucun","e-flash","e-ranger","waterproof","lunette1","chargeur1"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -5082,7 +5082,7 @@
         },
         "weapon2":{},
         "protection":["aucune","scrap","bugium","kevlar","acier"],
-        "equip":["aucun","e-flash"],
+        "equip":["aucun","e-flash","chargeur1","lunette1"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,

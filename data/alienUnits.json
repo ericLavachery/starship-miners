@@ -2178,7 +2178,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","inflammable","eggprotect","noaploss","morph"],
+        "skills":["isegg","ponte","inflammable","eggprotect","noaploss","morph","xpbonus"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Creatite":18}
     },
@@ -2207,7 +2207,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["inflammable","noaploss","morph"],
+        "skills":["inflammable","noaploss","morph","xpplus"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Creatite":3}
     },
@@ -2236,7 +2236,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["inflammable","noaploss","morph"],
+        "skills":["inflammable","noaploss","morph","xpplus"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Bugium":2,"Creatite":2,"Bossium":2}
     },
@@ -2265,7 +2265,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","inflammable","eggprotect","noaploss","morph"],
+        "skills":["isegg","ponte","inflammable","eggprotect","noaploss","morph","xpbonus"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Creatite":18,"Blendium":60}
     },
@@ -2294,7 +2294,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","regeneration","reactpoison","eggprotect","noaploss","morph"],
+        "skills":["isegg","ponte","regeneration","reactpoison","eggprotect","noaploss","morph","xpbonus"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Bugium":36,"Mendium":15,"Creatite":12}
     },
@@ -2323,7 +2323,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","regeneration","shield","eggprotect","noaploss","morph"],
+        "skills":["isegg","ponte","regeneration","shield","eggprotect","noaploss","morph","xpbonus"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Bugium":45,"Mendium":15,"Creatite":12,"Egidium":53}
     },
@@ -2380,7 +2380,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["hide","eggprotect","noaploss","reactblast"],
+        "skills":["hide","eggprotect","noaploss","reactblast","xpplus"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":2,"Blendium":9,"Slime":6}
     },
@@ -2437,7 +2437,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","inflammable","noaploss","nolaser","baddef","minaccu","eggprotect"],
+        "skills":["isegg","ponte","inflammable","noaploss","nolaser","baddef","minaccu","eggprotect","xpfeast"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":5,"Creatite":9,"Slime":18}
     },
@@ -2494,7 +2494,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","minaccu","shield","regmode","eggshield","eggdefense","regeneration","noaploss","nolaser","survivor","baddef"],
+        "skills":["isegg","ponte","minaccu","shield","regmode","eggshield","eggdefense","regeneration","noaploss","nolaser","survivor","baddef","xpfeast"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":48,"Creatite":18,"Mendium":30,"Egidium":94,"Bossium":73,"Pyrus":108}
     },
@@ -2548,7 +2548,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["slowreg","resistfeu","reactpoison","nolaser","baddef","eggprotect","noaploss","baddef"],
+        "skills":["slowreg","resistfeu","reactpoison","nolaser","baddef","eggprotect","noaploss","baddef","xpfeast"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":12,"Mendium":8,"Pyrus":26}
     }

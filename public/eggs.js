@@ -617,7 +617,9 @@ function spawns() {
                 alienMorph(bat,'Wurms',false);
             } else if (transList.includes('Ombres') && bat.type === 'Ombres') {
                 alienMorph(bat,'Fantômes',false);
-            } else if (rand.rand(1,vomiToRuche) === 1 && playerInfos.mapTurn >= Math.ceil(vomiToRuche/1.5) && bat.type === 'Vomissure') {
+            } else if (rand.rand(1,vomiToRuche) === 1 && playerInfos.mapTurn >= Math.ceil(vomiToRuche/1.5) && bat.type === 'Vomissure' && !bat.tags.includes('morph')) {
+                bat.tags.push('morph');
+            } else if (bat.type === 'Vomissure' && bat.tags.includes('morph')) {
                 alienMorph(bat,'Ruche',true);
             } else if (bat.type === 'Dragons' && aliens.length < maxAliens && aliensNums.firebugs < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Firebugs');
@@ -999,15 +1001,19 @@ function eggSpawn(bat,fromEgg) {
         presAlien = 1;
     }
     console.log('eggTurn='+eggTurn);
-    if (eggTurn > eggLife && fromEgg) {
-        // TRANFORMATION EN RUCHE !
-        if (bat.type.includes('Oeuf')) {
-            if (bat.type === 'Oeuf voilé') {
-                unveilAliens(bat);
+    if (eggTurn >= eggLife && fromEgg) {
+        // TRANFORMATION EN RUCHE OU VOLCAN !
+        if (bat.tags.includes('morph')) {
+            if (bat.type.includes('Oeuf')) {
+                if (bat.type === 'Oeuf voilé') {
+                    unveilAliens(bat);
+                }
+                alienMorph(bat,'Ruche',false);
+            } else {
+                alienMorph(bat,'Volcan',false);
             }
-            alienMorph(bat,'Ruche',false);
         } else {
-            alienMorph(bat,'Volcan',false);
+            bat.tags.push('morph');
         }
     } else {
         let spawnChance = Math.round(eggTurn*15*bat.squadsLeft/6*Math.sqrt(presAlien)*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
