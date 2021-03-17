@@ -2914,7 +2914,7 @@
             "cost":5,
             "range":1,
             "elevation":1,
-            "rof":24,
+            "rof":32,
             "accuracy":25,
             "power":7,
             "aoe":"unit",
