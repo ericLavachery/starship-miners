@@ -2943,7 +2943,7 @@
             "name":"Mitrailleuse pneu",
             "cost":2,
             "range":2,
-            "rof":12,
+            "rof":16,
             "accuracy":26,
             "dca":1,
             "power":9,

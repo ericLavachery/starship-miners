@@ -963,6 +963,9 @@ function fillLanderWithUnit(fillUnitId) {
     addCost(fillUnit.costs,1);
     addCost(fillUnit.deploy,1);
     let reqCit = fillUnit.squads*fillUnit.squadSize*fillUnit.crew;
+    if (fillUnit.skills.includes('clone')) {
+        reqCit = 0;
+    }
     let citId = 126;
     if (fillUnit.skills.includes('brigands')) {
         citId = 225;

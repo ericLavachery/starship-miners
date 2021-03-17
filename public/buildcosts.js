@@ -378,6 +378,9 @@ function checkUnitCost(batType,withDeploy) {
         });
     }
     let reqCit = batType.squads*batType.squadSize*batType.crew;
+    if (batType.skills.includes('clone')) {
+        reqCit = 0;
+    }
     if (reqCit >= 1) {
         let dispoCrim = getDispoCrim();
         let dispoCit = getDispoCit();
@@ -413,6 +416,9 @@ function payUnitCost(batType) {
         // console.log('reqCit='+reqCit);
     }
     if (conselUpgrade === 'inf') {
+        reqCit = 0;
+    }
+    if (batType.skills.includes('clone')) {
         reqCit = 0;
     }
     if (reqCit >= 1) {

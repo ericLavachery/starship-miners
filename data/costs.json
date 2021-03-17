@@ -261,7 +261,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":3,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire","Atelier"],
         "compReq":{"gen":1},
-        "costs":{"Explosifs":30,"Creatite":150,"Huile":30,"Mercure":30,"Végétaux":30},
+        "costs":{"Explosifs":30,"Creatite":100,"Huile":30,"Mercure":30,"Végétaux":30},
         "fabTime":30
     },
     {
@@ -863,7 +863,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":5,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire"],
         "compReq":{"gen":1},
-        "costs":{"Fer":60,"Scrap":60,"Creatite":216,"Huile":42,"Mercure":42},
+        "costs":{"Fer":60,"Scrap":60,"Creatite":144,"Huile":42,"Mercure":42},
         "fabTime":40
     },
     {
@@ -872,7 +872,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":12,"drogmulojs":11,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"gen":1},
-        "costs":{"Fer":60,"Scrap":120,"Carbone":60,"Plomb":60,"Bois":60,"Aluminium":60,"Tungstène":60,"Bugium":84,"Creatite":216,"Huile":60,"Mercure":60},
+        "costs":{"Fer":60,"Scrap":120,"Carbone":60,"Plomb":60,"Bois":60,"Aluminium":60,"Tungstène":60,"Bugium":84,"Creatite":144,"Huile":60,"Mercure":60},
         "fabTime":70
     },
     {
