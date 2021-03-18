@@ -1009,4 +1009,180 @@ function getLanderRange() {
         landerRange = landerRange+1+(playerInfos.comp.vsp*2);
     }
     return landerRange;
-}
+};
+
+function calcStartRes() {
+    // toutes les ressources dans le lander
+    checkReserve();
+    playerInfos.startRes = playerInfos.reserve;
+    // tous les citoyens + criminels dans le lander
+    // tous les citoyens + criminels des unités
+    // toutes les valeurs en ressources des unités (cost + deploy)
+    // toutes les valeurs en ressources des armures (cost + deploy)
+    // toutes les valeurs en ressources des équipements (cost + deploy)
+    // toutes les valeurs en ressources des munitions (cost + deploy)
+    playerInfos.startRes['Citoyens'] = 0;
+    let allCosts = {};
+    let unitCosts;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" || bat.loc === "trans") {
+            let batType = getBatType(bat);
+            if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
+                playerInfos.startRes['Citoyens'] = playerInfos.startRes['Citoyens']+bat.citoyens;
+            } else {
+                let unitCits = batType.squads*batType.crew*batType.squadSize;
+                if (batType.skills.includes('clone')) {
+                    unitCits = 0;
+                }
+                playerInfos.startRes['Citoyens'] = playerInfos.startRes['Citoyens']+unitCits;
+            }
+            if (batType.skills.includes('transorbital')) {
+                unitCosts = getAllCosts(bat,true,false);
+            } else {
+                unitCosts = getAllCosts(bat,true,true);
+            }
+            console.log(batType.name);
+            console.log(unitCosts);
+            if (unitCosts != undefined) {
+                if (Object.keys(unitCosts).length >= 1) {
+                    mergeObjects(allCosts,unitCosts);
+                }
+            }
+        }
+    });
+    console.log('TOTAL');
+    console.log(allCosts);
+    Object.entries(allCosts).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        if (playerInfos.startRes[key] != undefined) {
+            playerInfos.startRes[key] = playerInfos.startRes[key]+value;
+        } else {
+            playerInfos.startRes[key] = value;
+        }
+    });
+    savePlayerInfos();
+};
+
+function calcEndRes() {
+    resetEndRes();
+    // toutes les ressources dans le lander
+    landers = [];
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'zone') {
+            let batType = getBatType(bat);
+            if (batType.skills.includes('transorbital')) {
+                landers.push(bat);
+            }
+        }
+    });
+    resTypes.forEach(function(res) {
+        let dispoRes = getDispoRes(res.name);
+        if (dispoRes >= 1) {
+            playerInfos.endRes[res.name] = dispoRes;
+        } else {
+            playerInfos.endRes[res.name] = 0;
+        }
+    });
+    // tous les citoyens + criminels dans le lander
+    // tous les citoyens + criminels des unités
+    // toutes les valeurs en ressources des unités (cost + deploy)
+    // toutes les valeurs en ressources des armures (cost + deploy)
+    // toutes les valeurs en ressources des équipements (cost + deploy)
+    // toutes les valeurs en ressources des munitions (cost + deploy)
+    playerInfos.endRes['Citoyens'] = 0;
+    let allCosts = {};
+    let unitCosts;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" || bat.loc === "trans") {
+            let batType = getBatType(bat);
+            if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
+                playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+bat.citoyens;
+            } else {
+                let unitCits = batType.squads*batType.crew*batType.squadSize;
+                if (batType.skills.includes('clone')) {
+                    unitCits = 0;
+                }
+                playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+unitCits;
+            }
+            if (!batType.skills.includes('transorbital')) {
+                unitCosts = getAllCosts(bat,false,true);
+                console.log(batType.name);
+                console.log(unitCosts);
+                if (unitCosts != undefined) {
+                    if (Object.keys(unitCosts).length >= 1) {
+                        mergeObjects(allCosts,unitCosts);
+                    }
+                }
+            }
+        }
+    });
+    console.log('TOTAL');
+    console.log(allCosts);
+    Object.entries(allCosts).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        if (playerInfos.endRes[key] != undefined) {
+            playerInfos.endRes[key] = playerInfos.endRes[key]+value;
+        } else {
+            playerInfos.endRes[key] = value;
+        }
+    });
+    // console.log(playerInfos.endRes);
+    savePlayerInfos();
+};
+
+function missionResults() {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","800px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $('#tileInfos').empty();
+    $('#conUnitList').empty();
+    calcEndRes();
+    $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
+    $('#conUnitList').append('<span class="constName or" id="gentils">RAPPORT DE MISSION</span><br>');
+    $('#conUnitList').append('<br>');
+    let citDiff = playerInfos.endRes['Citoyens']-playerInfos.startRes['Citoyens'];
+    let resColour = 'gf';
+    if (citDiff < 0) {
+        resColour = 'or';
+    } else if (citDiff > 0) {
+        resColour = 'cy';
+    }
+    $('#conUnitList').append('<span class="paramName">Citoyens</span><span class="paramIcon"></span><span class="paramValue '+resColour+'">'+citDiff+'</span><br>');
+    Object.entries(playerInfos.endRes).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        if (key != 'Citoyens') {
+            let res = getResByName(key);
+            let resIcon = getResIcon(res);
+            let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
+            if (resResult != 0) {
+                resColour = 'gf';
+                if (resResult < 0) {
+                    resColour = 'or';
+                } else if (resResult > 0) {
+                    resColour = 'cy';
+                }
+                $('#conUnitList').append('<span class="paramName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');
+            }
+        }
+    });
+    Object.entries(playerInfos.endRes).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        if (key != 'Citoyens') {
+            let res = getResByName(key);
+            let resIcon = getResIcon(res);
+            let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
+            if (resResult === 0) {
+                let resColour = 'gf';
+                $('#conUnitList').append('<span class="paramName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');
+            }
+        }
+    });
+    commandes();
+};

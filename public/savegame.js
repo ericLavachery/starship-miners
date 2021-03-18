@@ -184,6 +184,8 @@ function mapReset() {
     playerInfos.bldList = [];
     // playerInfos.comp = resetComp();
     resetReserve();
+    resetStartRes();
+    resetEndRes();
     // savePlayerInfos();
     showMap(zone,false);
     commandes();
@@ -213,6 +215,8 @@ function mapSoftReset() {
     playerInfos.undarkOnce = [];
     playerInfos.bldList = [];
     resetReserve();
+    resetStartRes();
+    resetEndRes();
     // savePlayerInfos();
     showMap(zone,false);
     commandes();

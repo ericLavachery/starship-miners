@@ -47,7 +47,7 @@
         "apCost":0,
         "bldReq":[],
         "compReq":{"ca":1},
-        "costs":{"Huile":1,"Végétaux":2,"Zinc":1,"Swarmine":4}
+        "costs":{"Huile":1,"Végétaux":2,"Zinc":1,"Swarmine":2}
     },
     {
         "name": "kirin",

@@ -18,6 +18,12 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.reserve === undefined) {
         playerInfos.reserve = {};
     }
+    if (playerInfos.startRes === undefined) {
+        playerInfos.startRes = {};
+    }
+    if (playerInfos.endRes === undefined) {
+        playerInfos.endRes = {};
+    }
     if (playerInfos.sondeMaps === undefined) {
         playerInfos.sondeMaps = 0;
     }

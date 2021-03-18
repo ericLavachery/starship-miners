@@ -56,6 +56,20 @@ function resetReserve() {
     });
 };
 
+function resetEndRes() {
+    resTypes.forEach(function(res) {
+        playerInfos.endRes[res.name] = 0;
+    });
+    playerInfos.endRes['Citoyens'] = 0;
+};
+
+function resetStartRes() {
+    resTypes.forEach(function(res) {
+        playerInfos.startRes[res.name] = 0;
+    });
+    playerInfos.startRes['Citoyens'] = 0;
+};
+
 function findLanders() {
     let batType;
     landers = [];
@@ -706,158 +720,9 @@ function getDispoCrim() {
     return dispoCrim;
 };
 
-function checkAllCosts(unit,ammoNames) {
+function checkAllCosts(unit,ammoNames,withDeploy,withFlat) {
     let costsOK = true;
-    let allCosts = {};
-    console.log('UNIT COSTS');
-    console.log(unit.name);
-    console.log(unit.costs);
-    if (unit.costs != undefined) {
-        if (Object.keys(unit.costs).length >= 1) {
-            mergeObjects(allCosts,unit.costs);
-        }
-    }
-    console.log('UNIT DEPLOY');
-    console.log(unit.deploy);
-    if (unit.deploy != undefined) {
-        if (Object.keys(unit.deploy).length >= 1) {
-            mergeObjects(allCosts,unit.deploy);
-        }
-    }
-    let index;
-    let batAmmo;
-    let batArmor;
-    let batEquip;
-    // FLAT COSTS
-    let flatCosts;
-    // Ammo W1
-    let hasW1 = false;
-    if (!unit.weapon.kit || ammoNames[3].includes('w1-') || ammoNames[3].includes('w2-')) {
-        hasW1 = true;
-    }
-    if (hasW1) {
-        if (ammoNames[0] != 'xxx') {
-            index = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
-            batAmmo = ammoTypes[index];
-            flatCosts = getCosts(unit,batAmmo,1,'ammo');
-        }
-        console.log('AMMO 1 COSTS');
-        console.log(batAmmo.name);
-        console.log(flatCosts);
-        if (flatCosts != undefined) {
-            if (Object.keys(flatCosts).length >= 1) {
-                mergeObjects(allCosts,flatCosts);
-            }
-        }
-    }
-    // Ammo W2
-    let hasW2 = false;
-    if (!unit.weapon2.kit || ammoNames[3].includes('kit-') || ammoNames[3].includes('w2-')) {
-        hasW2 = true;
-    }
-    if (hasW2) {
-        if (ammoNames[1] != 'xxx') {
-            index = ammoTypes.findIndex((obj => obj.name == ammoNames[1]));
-            batAmmo = ammoTypes[index];
-            flatCosts = getCosts(unit,batAmmo,2,'ammo');
-        }
-        console.log('AMMO 2 COSTS');
-        console.log(batAmmo.name);
-        console.log(flatCosts);
-        if (flatCosts != undefined) {
-            if (Object.keys(flatCosts).length >= 1) {
-                mergeObjects(allCosts,flatCosts);
-            }
-        }
-    }
-    // Armor
-    if (ammoNames[2] != 'xxx') {
-        index = armorTypes.findIndex((obj => obj.name == ammoNames[2]));
-        batArmor = armorTypes[index];
-        flatCosts = getCosts(unit,batArmor,0,'equip');
-    }
-    console.log('ARMOR COSTS');
-    console.log(batArmor.name);
-    console.log(flatCosts);
-    if (flatCosts != undefined) {
-        if (Object.keys(flatCosts).length >= 1) {
-            mergeObjects(allCosts,flatCosts);
-        }
-    }
-    // Equip
-    if (ammoNames[3] != 'xxx') {
-        index = armorTypes.findIndex((obj => obj.name == ammoNames[3]));
-        batEquip = armorTypes[index];
-        flatCosts = getCosts(unit,batEquip,0,'equip');
-    }
-    console.log('EQUIP COSTS');
-    console.log(batEquip.name);
-    console.log(flatCosts);
-    if (flatCosts != undefined) {
-        if (Object.keys(flatCosts).length >= 1) {
-            mergeObjects(allCosts,flatCosts);
-        }
-    }
-    // DEPLOY COSTS
-    let deployCosts;
-    // Ammo W1
-    if (hasW1) {
-        if (ammoNames[0] != 'xxx') {
-            index = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
-            batAmmo = ammoTypes[index];
-            deployCosts = getDeployCosts(unit,batAmmo,1,'ammo');
-        }
-        console.log('AMMO 1 DEPLOY');
-        console.log(deployCosts);
-        if (deployCosts != undefined) {
-            if (Object.keys(deployCosts).length >= 1) {
-                mergeObjects(allCosts,deployCosts);
-            }
-        }
-    }
-    // Ammo W2
-    if (hasW2) {
-        if (ammoNames[1] != 'xxx') {
-            index = ammoTypes.findIndex((obj => obj.name == ammoNames[1]));
-            batAmmo = ammoTypes[index];
-            deployCosts = getDeployCosts(unit,batAmmo,2,'ammo');
-        }
-        console.log('AMMO 2 DEPLOY');
-        console.log(deployCosts);
-        if (deployCosts != undefined) {
-            if (Object.keys(deployCosts).length >= 1) {
-                mergeObjects(allCosts,deployCosts);
-            }
-        }
-    }
-    // Armor
-    if (ammoNames[2] != 'xxx') {
-        index = armorTypes.findIndex((obj => obj.name == ammoNames[2]));
-        batArmor = armorTypes[index];
-        deployCosts = getDeployCosts(unit,batArmor,0,'equip');
-    }
-    console.log('ARMOR DEPLOY');
-    console.log(deployCosts);
-    if (deployCosts != undefined) {
-        if (Object.keys(deployCosts).length >= 1) {
-            mergeObjects(allCosts,deployCosts);
-        }
-    }
-    // Equip
-    if (ammoNames[3] != 'xxx') {
-        index = armorTypes.findIndex((obj => obj.name == ammoNames[3]));
-        batEquip = armorTypes[index];
-        deployCosts = getDeployCosts(unit,batEquip,0,'equip');
-    }
-    console.log('EQUIP DEPLOY');
-    console.log(deployCosts);
-    if (deployCosts != undefined) {
-        if (Object.keys(deployCosts).length >= 1) {
-            mergeObjects(allCosts,deployCosts);
-        }
-    }
-    console.log('ALL COSTS');
-    console.log(allCosts);
+    let allCosts = calcAllCosts(unit,ammoNames,withDeploy,withFlat);
     let dispoRes;
     if (allCosts != undefined) {
         if (Object.keys(allCosts).length >= 1) {
@@ -872,4 +737,173 @@ function checkAllCosts(unit,ammoNames) {
         }
     }
     return costsOK;
+};
+
+function getAllCosts(bat,withDeploy,withFlat) {
+    let unit = getBatType(bat);
+    let ammoNames = [bat.ammo,bat.ammo2,bat.prt,bat.eq];
+    let allCosts = calcAllCosts(unit,ammoNames,withDeploy,withFlat);
+    return allCosts;
+};
+
+function calcAllCosts(unit,ammoNames,withDeploy,withFlat) {
+    let allCosts = {};
+    // console.log('UNIT COSTS');
+    // console.log(unit.name);
+    // console.log(unit.costs);
+    if (withFlat) {
+        if (unit.costs != undefined) {
+            if (Object.keys(unit.costs).length >= 1) {
+                mergeObjects(allCosts,unit.costs);
+            }
+        }
+    }
+    // console.log('UNIT DEPLOY');
+    // console.log(unit.deploy);
+    if (withDeploy) {
+        if (unit.deploy != undefined) {
+            if (Object.keys(unit.deploy).length >= 1) {
+                mergeObjects(allCosts,unit.deploy);
+            }
+        }
+    }
+    let index;
+    let batAmmo;
+    let batArmor;
+    let batEquip;
+    // FLAT COSTS
+    let flatCosts;
+    // Ammo W1
+    let hasW1 = false;
+    let hasW2 = false;
+    if (withFlat) {
+        if (!unit.weapon.kit || ammoNames[3].includes('w1-') || ammoNames[3].includes('w2-')) {
+            hasW1 = true;
+        }
+        if (hasW1) {
+            if (ammoNames[0] != 'xxx') {
+                index = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
+                batAmmo = ammoTypes[index];
+                flatCosts = getCosts(unit,batAmmo,1,'ammo');
+            }
+            // console.log('AMMO 1 COSTS');
+            // console.log(batAmmo.name);
+            // console.log(flatCosts);
+            if (flatCosts != undefined) {
+                if (Object.keys(flatCosts).length >= 1) {
+                    mergeObjects(allCosts,flatCosts);
+                }
+            }
+        }
+        // Ammo W2
+        if (!unit.weapon2.kit || ammoNames[3].includes('kit-') || ammoNames[3].includes('w2-')) {
+            hasW2 = true;
+        }
+        if (hasW2) {
+            if (ammoNames[1] != 'xxx') {
+                index = ammoTypes.findIndex((obj => obj.name == ammoNames[1]));
+                batAmmo = ammoTypes[index];
+                flatCosts = getCosts(unit,batAmmo,2,'ammo');
+            }
+            // console.log('AMMO 2 COSTS');
+            // console.log(batAmmo.name);
+            // console.log(flatCosts);
+            if (flatCosts != undefined) {
+                if (Object.keys(flatCosts).length >= 1) {
+                    mergeObjects(allCosts,flatCosts);
+                }
+            }
+        }
+        // Armor
+        if (ammoNames[2] != 'xxx') {
+            index = armorTypes.findIndex((obj => obj.name == ammoNames[2]));
+            batArmor = armorTypes[index];
+            flatCosts = getCosts(unit,batArmor,0,'equip');
+        }
+        // console.log('ARMOR COSTS');
+        // console.log(batArmor.name);
+        // console.log(flatCosts);
+        if (flatCosts != undefined) {
+            if (Object.keys(flatCosts).length >= 1) {
+                mergeObjects(allCosts,flatCosts);
+            }
+        }
+        // Equip
+        if (ammoNames[3] != 'xxx') {
+            index = armorTypes.findIndex((obj => obj.name == ammoNames[3]));
+            batEquip = armorTypes[index];
+            flatCosts = getCosts(unit,batEquip,0,'equip');
+        }
+        // console.log('EQUIP COSTS');
+        // console.log(batEquip.name);
+        // console.log(flatCosts);
+        if (flatCosts != undefined) {
+            if (Object.keys(flatCosts).length >= 1) {
+                mergeObjects(allCosts,flatCosts);
+            }
+        }
+    }
+    // DEPLOY COSTS
+    let deployCosts;
+    if (withDeploy) {
+        // Ammo W1
+        if (hasW1) {
+            if (ammoNames[0] != 'xxx') {
+                index = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
+                batAmmo = ammoTypes[index];
+                deployCosts = getDeployCosts(unit,batAmmo,1,'ammo');
+            }
+            // console.log('AMMO 1 DEPLOY');
+            // console.log(deployCosts);
+            if (deployCosts != undefined) {
+                if (Object.keys(deployCosts).length >= 1) {
+                    mergeObjects(allCosts,deployCosts);
+                }
+            }
+        }
+        // Ammo W2
+        if (hasW2) {
+            if (ammoNames[1] != 'xxx') {
+                index = ammoTypes.findIndex((obj => obj.name == ammoNames[1]));
+                batAmmo = ammoTypes[index];
+                deployCosts = getDeployCosts(unit,batAmmo,2,'ammo');
+            }
+            // console.log('AMMO 2 DEPLOY');
+            // console.log(deployCosts);
+            if (deployCosts != undefined) {
+                if (Object.keys(deployCosts).length >= 1) {
+                    mergeObjects(allCosts,deployCosts);
+                }
+            }
+        }
+        // Armor
+        if (ammoNames[2] != 'xxx') {
+            index = armorTypes.findIndex((obj => obj.name == ammoNames[2]));
+            batArmor = armorTypes[index];
+            deployCosts = getDeployCosts(unit,batArmor,0,'equip');
+        }
+        // console.log('ARMOR DEPLOY');
+        // console.log(deployCosts);
+        if (deployCosts != undefined) {
+            if (Object.keys(deployCosts).length >= 1) {
+                mergeObjects(allCosts,deployCosts);
+            }
+        }
+        // Equip
+        if (ammoNames[3] != 'xxx') {
+            index = armorTypes.findIndex((obj => obj.name == ammoNames[3]));
+            batEquip = armorTypes[index];
+            deployCosts = getDeployCosts(unit,batEquip,0,'equip');
+        }
+        // console.log('EQUIP DEPLOY');
+        // console.log(deployCosts);
+        if (deployCosts != undefined) {
+            if (Object.keys(deployCosts).length >= 1) {
+                mergeObjects(allCosts,deployCosts);
+            }
+        }
+    }
+    // console.log('ALL COSTS');
+    // console.log(allCosts);
+    return allCosts;
 };

@@ -686,7 +686,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
         conselNeat();
         let costsOK = false;
         if (conselUnit.cat != 'aliens') {
-            costsOK = checkAllCosts(conselUnit,conselAmmos);
+            costsOK = checkAllCosts(conselUnit,conselAmmos,true,true);
         } else {
             costsOK = true;
         }

@@ -66,6 +66,8 @@ function commandes() {
             let nextMapNumber = playerInfos.sondeMaps+1;
             if (playerInfos.sondeMaps < maxMaps) {
                 $('#commandz').append('<button type="button" title="Générer une nouvelle carte ('+nextMapNumber+'/'+maxMaps+')" class="boutonBrun iconButtons"><i class="fas fa-map" onclick="generateNewMap()"></i></button>');
+            } else {
+                $('#commandz').append('<button type="button" title="Maximum de cartes atteint" class="boutonGris iconButtons"><i class="fas fa-map"></i></button>');
             }
             $('#commandz').append('<button type="button" title="Sauvegarder la nouvelle carte" class="boutonBrun iconButtons" onclick="saveMapAs()"><i class="fas fa-save"></i></button>');
         }
@@ -78,6 +80,8 @@ function commandes() {
             $('#commandz').append('<button type="button" title="Supprimer tous les aliens" class="boutonRouge iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
             $('#commandz').append('<br>');
             $('#commandz').append('<button type="button" title="Sauvegarder la carte pour un retour (supprime la plupart des aliens et bataillons!)" class="boutonRouge iconButtons" onclick="saveMapForReturn()"><i class="fas fa-save"></i></button>');
+            $('#commandz').append('<button type="button" title="Rapport de mission" class="boutonRouge iconButtons" onclick="missionResults()"><i class="fas fa-balance-scale"></i></button>');
+            $('#commandz').append('<button type="button" title="Rentrer au vaisseau mère" class="boutonRouge iconButtons" onclick="missionResults()"><i class="fas fa-space-shuttle"></i></button>');
         }
     }
     gangNavig();
