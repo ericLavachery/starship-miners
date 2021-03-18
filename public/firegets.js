@@ -253,6 +253,9 @@ function batDeath(bat,count) {
             playerInfos.aliensKilled = playerInfos.aliensKilled+1;
             addAlienRes(bat);
         }
+        if (!playerInfos.knownAliens.includes(batType.name)) {
+            playerInfos.knownAliens.push(batType.name);
+        }
         let batIndex = aliens.findIndex((obj => obj.id == bat.id));
         aliens.splice(batIndex,1);
     } else if (bat.team == 'locals') {
@@ -286,6 +289,12 @@ function batDeathEffect(bat,quiet,title,body) {
         $('#b'+bat.tileId).empty();
         $('#b'+bat.tileId).append(resHere);
         warning(title,body);
+    }
+    if (bat.team === 'aliens' && !playerInfos.knownAliens.includes(bat.type)) {
+        playerInfos.knownAliens.push(bat.type);
+    }
+    if (bat.team != 'aliens') {
+        $('#unitInfos').empty();
     }
 };
 

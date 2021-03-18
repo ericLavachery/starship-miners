@@ -33,6 +33,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.mapAdjDiff === undefined) {
         playerInfos.mapAdjDiff = playerInfos.mapDiff;
     }
+    if (playerInfos.knownAliens === undefined) {
+        playerInfos.knownAliens = [];
+    }
     if (playerInfos.aliensKilled === undefined) {
         playerInfos.aliensKilled = 0;
     }

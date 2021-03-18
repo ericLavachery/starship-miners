@@ -1002,3 +1002,11 @@ function fillLanderWithUnit(fillUnitId) {
     landerFill();
     // console.log(prepaBld);
 };
+
+function getLanderRange() {
+    let landerRange = baseLanderRange;
+    if (playerInfos.comp.vsp >= 1) {
+        landerRange = landerRange+1+(playerInfos.comp.vsp*2);
+    }
+    return landerRange;
+}

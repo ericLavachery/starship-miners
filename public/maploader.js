@@ -29,11 +29,17 @@ function showMap(wmap,justMoved) {
     let tPic = 'P_001';
     allZoneRes = [];
     allCheckedZoneRes = [];
+    if (modeSonde) {
+        playerInfos.showedTiles = [1830];
+    }
     let visMap = _.filter(wmap, function(tile) {
         return (tile.x >= minX && tile.x <= maxX && tile.y >= minY && tile.y <= maxY);
     });
     let sortedVisMap = _.sortBy(_.sortBy(visMap,'y'),'x');
     sortedVisMap.forEach(function(tile) {
+        if (modeSonde && landerLandingOK(tile) && !playerInfos.showedTiles.includes(tile.id)) {
+            playerInfos.showedTiles.push(tile.id);
+        }
         resHere = showRes(tile.id);
         if (zone[0].dark) {
             if (playerInfos.undarkOnce.includes(tile.id)) {
@@ -70,6 +76,34 @@ function showMap(wmap,justMoved) {
         playerOccupiedTileList();
     }
     // console.log(zone);
+};
+
+function landerLandingOK(tile) {
+    let tileOK = false;
+    let landerRange = getLanderRange();
+    let distance = calcDistanceSquare(tile.id,1830);
+    if (distance <= landerRange) {
+        tileOK = true;
+        if (tile.terrain === 'R') {
+            tileOK = false;
+        }
+        if (playerInfos.comp.vsp < 3) {
+            if (tile.terrain === 'M' || tile.terrain === 'R') {
+                tileOK = false;
+            }
+        }
+        if (playerInfos.comp.vsp < 2) {
+            if (tile.terrain === 'W' || tile.terrain === 'F') {
+                tileOK = false;
+            }
+        }
+        if (playerInfos.comp.vsp < 1) {
+            if (tile.terrain === 'S' || tile.terrain === 'H') {
+                tileOK = false;
+            }
+        }
+    }
+    return tileOK;
 };
 
 function redrawTile(tileId,drawSelectedBat) {

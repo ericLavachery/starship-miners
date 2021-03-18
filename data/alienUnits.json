@@ -1686,7 +1686,7 @@
         "squadSize":5,
         "crew":0,
         "hp":6,
-        "armor":5,
+        "armor":7,
         "size":3,
         "speed":1,
         "stealth":3,
@@ -1712,7 +1712,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["minaccu","ricochet"],
+        "skills":["minaccu","ricochet","sentinelle"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":3,"Slime":5}
     },
@@ -2180,7 +2180,7 @@
         "maxVeg":-1,
         "skills":["isegg","ponte","inflammable","eggprotect","noaploss","morph","xpbonus"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"Creatite":18}
+        "killRes":{"Creatite":24}
     },
     {
         "id":27,
@@ -2209,7 +2209,7 @@
         "maxVeg":-1,
         "skills":["inflammable","noaploss","morph","xpplus"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"Creatite":3}
+        "killRes":{"Creatite":4}
     },
     {
         "id":45,
@@ -2238,7 +2238,7 @@
         "maxVeg":-1,
         "skills":["inflammable","noaploss","morph","xpplus"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"Bugium":2,"Creatite":2,"Bossium":2}
+        "killRes":{"Bugium":2,"Creatite":3,"Bossium":2}
     },
     {
         "id":39,
@@ -2267,7 +2267,7 @@
         "maxVeg":-1,
         "skills":["isegg","ponte","inflammable","eggprotect","noaploss","morph","xpbonus"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"Creatite":18,"Blendium":60}
+        "killRes":{"Creatite":24,"Blendium":60}
     },
     {
         "id":36,
@@ -2296,7 +2296,7 @@
         "maxVeg":-1,
         "skills":["isegg","ponte","regeneration","reactpoison","eggprotect","noaploss","morph","xpbonus"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"Bugium":36,"Mendium":15,"Creatite":12}
+        "killRes":{"Bugium":36,"Mendium":15,"Creatite":18}
     },
     {
         "id":42,
@@ -2325,7 +2325,7 @@
         "maxVeg":-1,
         "skills":["isegg","ponte","regeneration","shield","eggprotect","noaploss","morph","xpbonus"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"Bugium":45,"Mendium":15,"Creatite":12,"Egidium":53}
+        "killRes":{"Bugium":45,"Mendium":15,"Creatite":18,"Egidium":53}
     },
     {
         "id":44,
@@ -2439,7 +2439,7 @@
         "maxVeg":-1,
         "skills":["isegg","ponte","inflammable","noaploss","nolaser","baddef","minaccu","eggprotect","xpfeast"],
         "deathFx":"zapsplat_explosion_fireball_43738",
-        "killRes":{"Bugium":5,"Creatite":9,"Slime":18}
+        "killRes":{"Bugium":5,"Creatite":12,"Slime":18}
     },
     {
         "id":50,
@@ -2496,7 +2496,7 @@
         "maxVeg":-1,
         "skills":["isegg","ponte","minaccu","shield","regmode","eggshield","eggdefense","regeneration","noaploss","nolaser","survivor","baddef","xpfeast"],
         "deathFx":"zapsplat_explosion_fireball_43738",
-        "killRes":{"Bugium":48,"Creatite":18,"Mendium":30,"Egidium":94,"Bossium":73,"Pyrus":108}
+        "killRes":{"Bugium":48,"Creatite":24,"Mendium":30,"Egidium":94,"Bossium":73,"Pyrus":108}
     },
     {
         "id":37,

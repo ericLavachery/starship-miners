@@ -590,10 +590,7 @@ function clickConstruct(tileId,free) {
         let batHere = false;
         let message = '';
         let tile = getTileById(tileId);
-        let landerRange = baseLanderRange;
-        if (playerInfos.comp.vsp >= 1) {
-            landerRange = landerRange+1+(playerInfos.comp.vsp*2);
-        }
+        let landerRange = getLanderRange();
         bataillons.forEach(function(bat) {
             if (bat.tileId === tileId && bat.loc === "zone") {
                 batHere = true;
@@ -617,6 +614,12 @@ function clickConstruct(tileId,free) {
             if (tile.x > 31+landerRange || tile.x < 31-landerRange || tile.y > 31+landerRange || tile.y < 31-landerRange) {
                 batHere = true;
                 message = 'Vous ne pouvez pas poser votre vaisseau à plus de '+landerRange+' cases du centre.';
+            } else {
+                let tileLandingOK = landerLandingOK(tile);
+                if (!tileLandingOK) {
+                    batHere = true;
+                    message = 'Vous ne pouvez pas poser votre vaisseau sur ce type de terrain.';
+                }
             }
         }
         if (!batHere) {

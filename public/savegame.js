@@ -170,6 +170,7 @@ function mapReset() {
     playerInfos.sondeMaps = 0;
     playerInfos.eggPause = false;
     playerInfos.droppedEggs = 0;
+    playerInfos.knownAliens = [];
     playerInfos.aliensKilled = 0;
     playerInfos.eggsKilled = 0;
     playerInfos.unitsLost = 0;
@@ -200,6 +201,7 @@ function mapSoftReset() {
     playerInfos.sondeMaps = 0;
     playerInfos.eggPause = false;
     playerInfos.droppedEggs = 0;
+    playerInfos.knownAliens = [];
     playerInfos.aliensKilled = 0;
     playerInfos.eggsKilled = 0;
     playerInfos.unitsLost = 0;
@@ -207,7 +209,6 @@ function mapSoftReset() {
     playerInfos.pauseSeed = rand.rand(1,8);
     playerInfos.res = {};
     playerInfos.alienRes = {};
-    playerInfos.showedTiles = [1830];
     playerInfos.myCenter = 1830;
     playerInfos.undarkOnce = [];
     playerInfos.bldList = [];

@@ -8,6 +8,8 @@ function generateNewMap() {
     addRivers(zone);
     addRes(zone);
     washReports();
+    zone[1830].terrain = 'P';
+    zone[1830].seed = 1;
     zoneReport(zone);
     writeMapStyles();
     showMap(zone,false);

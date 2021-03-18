@@ -252,7 +252,7 @@
         "name":"Blastoxs",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":4,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Bar"],
-        "costs":{"Fer":90,"Scrap":120,"Plomb":60,"Bois":30,"Tungstène":15,"Aluminium":60,"Batteries":30},
+        "costs":{"Fer":90,"Scrap":120,"Plomb":60,"Bois":30,"Tungstène":15,"Aluminium":60,"Batteries":15},
         "fabTime":15
     },
     {
@@ -435,7 +435,7 @@
         "name":"Groskals",
         "levels":{"rednecks":99,"blades":99,"bulbos":7,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Atelier"],
-        "costs":{"Scrap":120,"Plomb":60,"Aluminium":60,"Titane":120,"Tungstène":60,"Silicium":30,"Electros":60,"Batteries":90,"Végétaux":110,"Blendium":30,"Chlore":10,"Tissus":5},
+        "costs":{"Scrap":120,"Plomb":60,"Aluminium":60,"Titane":120,"Tungstène":60,"Silicium":30,"Electros":60,"Batteries":60,"Végétaux":110,"Blendium":30,"Chlore":10,"Tissus":5},
         "fabTime":45
     },
     {
@@ -463,7 +463,7 @@
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"gen":1},
         "compPass":["drogmulojs"],
-        "costs":{"Scrap":112,"Carbone":56,"Aluminium":168,"Titane":28,"Tungstène":56,"Batteries":28,"Bugium":86,"Mendium":28,"Creatite":86,"Huile":40,"Calcium":40},
+        "costs":{"Scrap":112,"Carbone":56,"Aluminium":168,"Titane":28,"Tungstène":56,"Batteries":18,"Bugium":86,"Mendium":28,"Creatite":86,"Huile":40,"Calcium":40},
         "fabTime":70
     },
     {

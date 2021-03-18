@@ -519,6 +519,14 @@
         "batch":5
     },
     {
+        "id":100,
+        "result":"Chlore",
+        "cost":{"Larvium":10,"Creatite":5,"Energie":5},
+        "compReq":{"tri":2,"ca":1},
+        "bldReq":["Recyclab"],
+        "batch":5
+    },
+    {
         "id":37,
         "result":"Cuivre",
         "cost":{"Blendium":10,"Hélium":5,"Azote":5,"Energie":2},
