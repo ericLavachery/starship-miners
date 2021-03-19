@@ -612,6 +612,7 @@ function spawns() {
         vomiToRuche = 5;
     }
     let maxPonte = zone[0].mapDiff+zone[0].mapDiff+2;
+    let wurmMorph = 28-(zone[0].mapDiff*2);
     let flyDice;
     let warnAsticots = false;
     let warnVers = false;
@@ -651,7 +652,7 @@ function spawns() {
                 }
             } else if (bat.squadsLeft >= 5 && bat.type === 'Vers' && bat.tags.includes('morph')) {
                 alienMorph(bat,'Lucioles',false);
-            } else if (rand.rand(1,15) === 1 && bat.squadsLeft >= 3 && bat.type === 'Larves') {
+            } else if (rand.rand(1,wurmMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Larves') {
                 alienMorph(bat,'Wurms',false);
             } else if (transList.includes('Ombres') && bat.type === 'Ombres') {
                 alienMorph(bat,'Fantômes',false);
@@ -1127,7 +1128,9 @@ function eggSpawn(bat,fromEgg) {
             let dropTile = -1;
             alienUnits.forEach(function(unit) {
                 if (classes.includes(unit.class) && unit.kind.includes(eggCat)) {
-                    checkDiceMax = checkDiceMax+unit.rarity;
+                    if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4) {
+                        checkDiceMax = checkDiceMax+unit.rarity;
+                    }
                 }
             });
             console.log('checkDiceMax='+checkDiceMax);
@@ -1139,9 +1142,11 @@ function eggSpawn(bat,fromEgg) {
                 raritySum = 0;
                 alienUnits.forEach(function(unit) {
                     if (classes.includes(unit.class) && unit.kind.includes(eggCat) && Object.keys(conselUnit).length <= 0) {
-                        raritySum = raritySum+unit.rarity;
-                        if (checkDice <= raritySum) {
-                            conselUnit = unit;
+                        if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4) {
+                            raritySum = raritySum+unit.rarity;
+                            if (checkDice <= raritySum) {
+                                conselUnit = unit;
+                            }
                         }
                     }
                 });

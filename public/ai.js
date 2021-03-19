@@ -9,30 +9,37 @@ function alienMoveLoop() {
     if (selectedBatType.moveCost < 99 && !selectedBat.tags.includes('freeze')) {
         isCamoBlock();
     }
-    checkPDM();
-    tileUntarget();
-    targetBat = {};
-    targetBatType = {};
-    targetWeap = {};
-    fearFactor(selectedBat,false);
-    infraDestruction();
-    checkPossibleMoves();
-    // loop this until no ap or no salvo
-    // console.log('!!! Start Loop !!!');
-    let iter = 1;
-    while (iter <= 20) {
-        // console.log('loop '+iter+' || ap:'+selectedBat.apLeft+' salvo:'+selectedBat.salvoLeft);
-        if (selectedBat.apLeft >= 1 && selectedBat.salvoLeft >= 1) {
-            if (attAlive && defAlive) {
-                chooseTarget();
+    let alienActif = true;
+    if (selectedBatType.skills.includes('healhide') && selectedBat.squadsLeft <= 3 && selectedBat.tags.includes('invisible')) {
+        alienActif = false;
+        alienTeleport();
+    }
+    if (alienActif) {
+        checkPDM();
+        tileUntarget();
+        targetBat = {};
+        targetBatType = {};
+        targetWeap = {};
+        fearFactor(selectedBat,false);
+        infraDestruction();
+        checkPossibleMoves();
+        // loop this until no ap or no salvo
+        // console.log('!!! Start Loop !!!');
+        let iter = 1;
+        while (iter <= 20) {
+            // console.log('loop '+iter+' || ap:'+selectedBat.apLeft+' salvo:'+selectedBat.salvoLeft);
+            if (selectedBat.apLeft >= 1 && selectedBat.salvoLeft >= 1) {
+                if (attAlive && defAlive) {
+                    chooseTarget();
+                } else {
+                    break;
+                }
             } else {
                 break;
             }
-        } else {
-            break;
+            if (iter > 20) {break;}
+            iter++
         }
-        if (iter > 20) {break;}
-        iter++
     }
     // console.log('!!! End Loop !!!');
     // si no salvo et reste bcp d'ap : move vers PDM de base (attention: garder le rapport de combat!)
@@ -1349,4 +1356,22 @@ function getAway(bat,fromTileId,blob) {
         }
     }
     playerOccupiedTileList();
+};
+
+function alienTeleport() {
+    let teleTileId = -1;
+    let shufZone = _.shuffle(zone);
+    shufZone.forEach(function(tile) {
+        if (teleTileId < 0) {
+            let distance = calcDistance(tile.id,selectedBat.tileId);
+            if (distance <= 6 && distance >= 2) {
+                if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                    teleTileId = tile.id;
+                }
+            }
+        }
+    });
+    if (teleTileId >= 0) {
+        moveAlienBat(teleTileId,true);
+    }
 };

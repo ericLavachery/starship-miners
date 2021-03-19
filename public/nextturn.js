@@ -47,6 +47,15 @@ function nextTurn() {
                     bat.tags.push('invisible');
                 }
             }
+            if (batType.skills.includes('healhide')) {
+                if (bat.squadsLeft <= 3) {
+                    if (!bat.tags.includes('invisible')) {
+                        bat.tags.push('invisible');
+                    }
+                } else {
+                    tagDelete(bat,'invisible');
+                }
+            }
             bat.salvoLeft = batType.maxSalvo;
             if (bat.apLeft < 0-bat.ap-bat.ap) {
                 bat.apLeft = 0-bat.ap-bat.ap;
@@ -73,10 +82,10 @@ function nextTurn() {
             if (rand.rand(1,3) === 1) {
                 tagDelete(bat,'freeze');
             }
-            if (playerInfos.mapTurn > bat.creaTurn+9 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !larveHIDE) {
+            if (playerInfos.mapTurn > bat.creaTurn+9 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !batType.skills.includes('healhide') && !larveHIDE) {
                 tagDelete(bat,'invisible');
             }
-            if (playerInfos.mapTurn > bat.creaTurn+2 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !larveHIDE && bat.tags.includes('veil')) {
+            if (playerInfos.mapTurn > bat.creaTurn+2 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !batType.skills.includes('healhide') && !larveHIDE && bat.tags.includes('veil')) {
                 tagDelete(bat,'invisible');
             }
         }
