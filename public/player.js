@@ -1068,7 +1068,7 @@ function calcStartRes() {
     savePlayerInfos();
 };
 
-function calcEndRes() {
+function calcEndRes(onlyLanders) {
     resetEndRes();
     // toutes les ressources dans le lander
     landers = [];
@@ -1099,23 +1099,37 @@ function calcEndRes() {
     let unitCosts;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
-            let batType = getBatType(bat);
-            if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
-                playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+bat.citoyens;
-            } else {
-                let unitCits = batType.squads*batType.crew*batType.squadSize;
-                if (batType.skills.includes('clone')) {
-                    unitCits = 0;
+            let countThis = true;
+            if (onlyLanders) {
+                if (!batType.skills.includes('transorbital')) {
+                    if (bat.loc != "trans") {
+                        countThis = false;
+                    } else {
+                        if (!landers.includes(bat.locId)) {
+                            countThis = false;
+                        }
+                    }
                 }
-                playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+unitCits;
             }
-            if (!batType.skills.includes('transorbital')) {
-                unitCosts = getAllCosts(bat,false,true);
-                console.log(batType.name);
-                console.log(unitCosts);
-                if (unitCosts != undefined) {
-                    if (Object.keys(unitCosts).length >= 1) {
-                        mergeObjects(allCosts,unitCosts);
+            if (countThis) {
+                let batType = getBatType(bat);
+                if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
+                    playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+bat.citoyens;
+                } else {
+                    let unitCits = batType.squads*batType.crew*batType.squadSize;
+                    if (batType.skills.includes('clone')) {
+                        unitCits = 0;
+                    }
+                    playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+unitCits;
+                }
+                if (!batType.skills.includes('transorbital')) {
+                    unitCosts = getAllCosts(bat,false,true);
+                    console.log(batType.name);
+                    console.log(unitCosts);
+                    if (unitCosts != undefined) {
+                        if (Object.keys(unitCosts).length >= 1) {
+                            mergeObjects(allCosts,unitCosts);
+                        }
                     }
                 }
             }
@@ -1136,7 +1150,7 @@ function calcEndRes() {
     savePlayerInfos();
 };
 
-function missionResults() {
+function missionResults(onlyLanders) {
     selectMode();
     $("#conUnitList").css("display","block");
     $('#conUnitList').css("height","800px");
@@ -1144,7 +1158,7 @@ function missionResults() {
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();
-    calcEndRes();
+    calcEndRes(onlyLanders);
     $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="constName or" id="gentils">RAPPORT DE MISSION</span><br>');

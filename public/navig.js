@@ -80,8 +80,8 @@ function commandes() {
             $('#commandz').append('<button type="button" title="Supprimer tous les aliens" class="boutonRouge iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
             $('#commandz').append('<br>');
             $('#commandz').append('<button type="button" title="Sauvegarder la carte pour un retour (supprime la plupart des aliens et bataillons!)" class="boutonRouge iconButtons" onclick="saveMapForReturn()"><i class="fas fa-save"></i></button>');
-            $('#commandz').append('<button type="button" title="Rapport de mission" class="boutonRouge iconButtons" onclick="missionResults()"><i class="fas fa-balance-scale"></i></button>');
-            $('#commandz').append('<button type="button" title="Rentrer au vaisseau mère" class="boutonRouge iconButtons" onclick="missionResults()"><i class="fas fa-space-shuttle"></i></button>');
+            $('#commandz').append('<button type="button" title="Rapport de mission (extimation)" class="boutonRouge iconButtons" onclick="missionResults(false)"><i class="fas fa-balance-scale"></i></button>');
+            $('#commandz').append('<button type="button" title="Rentrer au vaisseau mère + Rapport de mission" class="boutonRouge iconButtons" onclick="missionResults(true)"><i class="fas fa-space-shuttle"></i></button>');
         }
     }
     gangNavig();
