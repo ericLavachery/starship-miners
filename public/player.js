@@ -260,6 +260,10 @@ function resetComp() {
 
 function playerSkillsUTChanges() {
     unitTypes.forEach(function(unit) {
+        // TUNING FRET
+        if (unit.skills.includes('fret')) {
+            unit.transRes = Math.round(unit.transRes*fretTuning);
+        }
         // CONSTRUCTION
         if (unit.mecanoCost < 90) {
             if (playerInfos.comp.const === 2) {
