@@ -78,7 +78,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["nez","fouisseur","capmen","okwater","grip","resistall","healhide","slowreg","noaploss"],
+        "skills":["nez","fouisseur","capmen","okwater","grip","resistall","healhide","slowreg","noaploss","reactpoison"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":1,"Larvium":8,"Mendium":2}
     },

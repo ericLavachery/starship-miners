@@ -226,6 +226,16 @@ socket.on('zoneFiles-Load', function(zf) {
     zoneFiles = zf;
     // console.log(aliens);
 });
+
+socket.on('savedZone-Load', function(newZone) {
+    zone = newZone[0];
+    bataillons = newZone[1];
+    createBatList();
+    aliens = newZone[2];
+    showMap(zone,false);
+    unitsView();
+});
+
 socket.on('testcon-failed', function(pseutest) {
     warning('Déconnexion:','Le serveur à été redémarré et vous n\'avez pas actualisé la page.<br>Vos dernières actions n\'ont peut-être pas été enregistrées.');
     alert("Le serveur à été redémarré et vous n'avez pas actualisé la page. Vos dernières actions n'ont peut-être pas été enregistrées.");

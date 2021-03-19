@@ -60,6 +60,8 @@ function commandes() {
         $('#commandz').append('<hr>');
         if (!modeSonde) {
             $('#commandz').append('<button type="button" title="Passer en mode sonde" class="boutonBrun iconButtons" onclick="goSonde()"><i class="fas fa-rocket"></i></button>');
+            $('#commandz').append('<button type="button" title="Charger une zone sauvegardée" class="boutonBrun iconButtons" onclick="voirZones()"><i class="fas fa-folder-open"></i></button>');
+            $('#commandz').append('<button type="button" title="Sauvegarder la carte pour un retour (supprime la plupart des aliens et bataillons!)" class="boutonBrun iconButtons" onclick="saveMapForReturn()"><i class="fas fa-archive"></i></button>');
         } else {
             $('#commandz').append('<button type="button" title="Quitter le mode sonde" class="boutonRouge iconButtons" onclick="stopSonde()"><i class="fas fa-rocket"></i></button>');
             let maxMaps = (playerInfos.comp.vsp+2)*maxMapsParDet;
@@ -79,7 +81,6 @@ function commandes() {
             $('#commandz').append('<button type="button" title="Remettre les compétences à zéro" class="boutonRouge iconButtons" onclick="compReset()"><i class="fas fa-award"></i></button>');
             $('#commandz').append('<button type="button" title="Supprimer tous les aliens" class="boutonRouge iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
             $('#commandz').append('<br>');
-            $('#commandz').append('<button type="button" title="Sauvegarder la carte pour un retour (supprime la plupart des aliens et bataillons!)" class="boutonRouge iconButtons" onclick="saveMapForReturn()"><i class="fas fa-save"></i></button>');
             $('#commandz').append('<button type="button" title="Rapport de mission (extimation)" class="boutonRouge iconButtons" onclick="missionResults(false)"><i class="fas fa-balance-scale"></i></button>');
             $('#commandz').append('<button type="button" title="Rentrer au vaisseau mère + Rapport de mission" class="boutonRouge iconButtons" onclick="missionResults(true)"><i class="fas fa-space-shuttle"></i></button>');
         }

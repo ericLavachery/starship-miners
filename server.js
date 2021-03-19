@@ -35,7 +35,7 @@ function loadUnitTypes() {
             loadCosts();
             // console.log(unitTypes);
         } catch (e) {
-            console.error( e );
+            console.error(e);
         }
     });
 };
@@ -47,7 +47,7 @@ function loadTurrets() {
             unitTypes = unitTypes.concat(turrets);
             // console.log(unitTypes);
         } catch (e) {
-            console.error( e );
+            console.error(e);
         }
     });
 };
@@ -59,7 +59,7 @@ function loadInfantryUnits() {
             unitTypes = unitTypes.concat(infantryUnits);
             // console.log(unitTypes);
         } catch (e) {
-            console.error( e );
+            console.error(e);
         }
     });
 };
@@ -71,7 +71,7 @@ function loadMotorisedUnits() {
             unitTypes = unitTypes.concat(motorisedUnits);
             // console.log(unitTypes);
         } catch (e) {
-            console.error( e );
+            console.error(e);
         }
     });
 };
@@ -82,7 +82,7 @@ function loadCosts() {
             unitCosts = JSON.parse(data);
             // console.log(unitCosts);
         } catch (e) {
-            console.error( e );
+            console.error(e);
         }
     });
 };
@@ -93,7 +93,7 @@ fs.readFile('./data/defaultUnitValues.json', 'utf8', function (err, data) {
         unitDV = JSON.parse(data);
         // console.log(unitDV);
     } catch (e) {
-        console.error( e );
+        console.error(e);
     }
 });
 var terrainTypes;
@@ -103,7 +103,7 @@ fs.readFile('./data/terrainTypes.json', 'utf8', function (err, data) {
         terrainTypes = JSON.parse(data);
         // console.log(unitDV);
     } catch (e) {
-        console.error( e );
+        console.error(e);
     }
 });
 var resTypes;
@@ -113,7 +113,7 @@ fs.readFile('./data/resTypes.json', 'utf8', function (err, data) {
         resTypes = JSON.parse(data);
         // console.log(unitDV);
     } catch (e) {
-        console.error( e );
+        console.error(e);
     }
 });
 var crafting;
@@ -123,7 +123,7 @@ fs.readFile('./data/crafting.json', 'utf8', function (err, data) {
         crafting = JSON.parse(data);
         // console.log(unitDV);
     } catch (e) {
-        console.error( e );
+        console.error(e);
     }
 });
 var mapFilters;
@@ -133,7 +133,7 @@ fs.readFile('./data/mapFilters.json', 'utf8', function (err, data) {
         mapFilters = JSON.parse(data);
         // console.log(unitDV);
     } catch (e) {
-        console.error( e );
+        console.error(e);
     }
 });
 var alienUnits;
@@ -143,7 +143,7 @@ fs.readFile('./data/alienUnits.json', 'utf8', function (err, data) {
         alienUnits = JSON.parse(data);
         // console.log(unitDV);
     } catch (e) {
-        console.error( e );
+        console.error(e);
     }
 });
 var ammoTypes;
@@ -153,7 +153,7 @@ fs.readFile('./data/ammoTypes.json', 'utf8', function (err, data) {
         ammoTypes = JSON.parse(data);
         // console.log(unitDV);
     } catch (e) {
-        console.error( e );
+        console.error(e);
     }
 });
 var armorTypes;
@@ -163,7 +163,7 @@ fs.readFile('./data/armorTypes.json', 'utf8', function (err, data) {
         armorTypes = JSON.parse(data);
         // console.log(unitDV);
     } catch (e) {
-        console.error( e );
+        console.error(e);
     }
 });
 var gangComps;
@@ -173,12 +173,13 @@ fs.readFile('./data/gangComps.json', 'utf8', function (err, data) {
         gangComps = JSON.parse(data);
         // console.log(unitDV);
     } catch (e) {
-        console.error( e );
+        console.error(e);
     }
 });
 var playerInfos = {};
 var bataillons = [];
 var savedMap = [];
+var savedZone = [];
 
 io.sockets.on('connection', function (socket, pseudo) {
     // On LOGIN send tables
@@ -196,7 +197,7 @@ io.sockets.on('connection', function (socket, pseudo) {
                         // console.log(playerInfos);
                         loadMap();
                     } catch (e) {
-                        console.error( e );
+                        console.error(e);
                     }
                 });
             } else {
@@ -218,7 +219,7 @@ io.sockets.on('connection', function (socket, pseudo) {
                         // console.log(savedMap);
                         loadBataillons();
                     } catch (e) {
-                        console.error( e );
+                        console.error(e);
                     }
                 });
             } else {
@@ -240,7 +241,7 @@ io.sockets.on('connection', function (socket, pseudo) {
                         // console.log(bataillons);
                         loadAliens();
                     } catch (e) {
-                        console.error( e );
+                        console.error(e);
                     }
                 });
             } else {
@@ -262,7 +263,7 @@ io.sockets.on('connection', function (socket, pseudo) {
                         // console.log(aliens);
                         sendAll();
                     } catch (e) {
-                        console.error( e );
+                        console.error(e);
                     }
                 });
             } else {
@@ -322,6 +323,82 @@ io.sockets.on('connection', function (socket, pseudo) {
             }
         });
         console.log(zoneFiles);
+    };
+
+    // Load zone
+    socket.on('load-saved-map', function(zoneId) {
+        const path = './data/players/'+socket.pseudo+'-map'+zoneId+'.json';
+        console.log(path);
+        try {
+            if (fs.existsSync(path)) {
+                fs.readFile(path, 'utf8', function (err, data) {
+                    if (err) throw err;
+                    try {
+                        savedMap = JSON.parse(data);
+                        loadZoneBataillons(zoneId);
+                    } catch (e) {
+                        console.error(e);
+                    }
+                });
+            } else {
+                savedMap = [];
+                console.log('path?');
+                loadZoneBataillons(zoneId);
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    });
+    function loadZoneBataillons(zoneId) {
+        const path = './data/players/'+socket.pseudo+'-bataillons'+zoneId+'.json';
+        try {
+            if (fs.existsSync(path)) {
+                fs.readFile(path, 'utf8', function (err, data) {
+                    if (err) throw err;
+                    try {
+                        bataillons = JSON.parse(data);
+                        loadZoneAliens(zoneId);
+                    } catch (e) {
+                        console.error(e);
+                    }
+                });
+            } else {
+                bataillons = [];
+                console.log('path?');
+                loadZoneAliens(zoneId);
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    };
+    function loadZoneAliens(zoneId) {
+        const path = './data/players/'+socket.pseudo+'-aliens'+zoneId+'.json';
+        try {
+            if (fs.existsSync(path)) {
+                fs.readFile(path, 'utf8', function (err, data) {
+                    if (err) throw err;
+                    try {
+                        aliens = JSON.parse(data);
+                        sendZone();
+                    } catch (e) {
+                        console.error(e);
+                    }
+                });
+            } else {
+                aliens = [];
+                console.log('path?');
+                sendZone();
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    };
+    function sendZone() {
+        console.log('loading saved map (with bats & aliens)');
+        // console.log(savedMap);
+        // console.log(bataillons);
+        // console.log(aliens);
+        socket.emit('savedZone-Load',[savedMap,bataillons,aliens]);
     };
 
     // Save zone as !!!

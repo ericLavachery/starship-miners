@@ -228,3 +228,24 @@ function showMapReset() {
     $("#reset1").css("display","none");
     $("#reset2").css("display","inline-block");
 };
+
+function voirZones() {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","800px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $('#tileInfos').empty();
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
+    $('#conUnitList').append('<span class="constName or" id="gentils">CHARGER UNE ZONE</span><br>');
+    $('#conUnitList').append('<br>');
+    zoneFiles.forEach(function(zoneId) {
+        $('#conUnitList').append('<span class="paramName cy klik" onclick="loadZone('+zoneId+')">Charger</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue">Zone '+zoneId+'</span><br>');
+    });
+};
+
+function loadZone(zoneId) {
+    socket.emit('load-saved-map',zoneId);
+};
