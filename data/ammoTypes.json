@@ -178,8 +178,8 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"explo":2},
-        "deploy":{"Fer":2,"Soufre":2,"Plomb":1,"Tungstène":1,"Phosphore":1,"Hydrogène":1},
-        "batch":100
+        "deploy":{"Fer":4,"Soufre":4,"Plomb":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
+        "batch":200
     },
     {
         "name": "incendiaire",
@@ -315,8 +315,8 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"explo":2},
-        "deploy":{"Fer":2,"Soufre":2,"Plomb":1,"Tungstène":1,"Phosphore":1,"Hydrogène":1},
-        "batch":100
+        "deploy":{"Fer":4,"Soufre":4,"Plomb":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
+        "batch":200
     },
     {
         "name": "ac-incendiaire",
@@ -525,8 +525,8 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"explo":2},
-        "deploy":{"Fer":2,"Soufre":2,"Plomb":1,"Tungstène":1,"Phosphore":1,"Hydrogène":1},
-        "batch":100
+        "deploy":{"Fer":4,"Soufre":4,"Plomb":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
+        "batch":200
     },
     {
         "name": "sm-incendiaire",

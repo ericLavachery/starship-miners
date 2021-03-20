@@ -1099,6 +1099,7 @@ function calcEndRes(onlyLanders) {
     let unitCosts;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
+            let batType = getBatType(bat);
             let countThis = true;
             if (onlyLanders) {
                 if (!batType.skills.includes('transorbital')) {
@@ -1112,7 +1113,6 @@ function calcEndRes(onlyLanders) {
                 }
             }
             if (countThis) {
-                let batType = getBatType(bat);
                 if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
                     playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+bat.citoyens;
                 } else {
@@ -1122,7 +1122,7 @@ function calcEndRes(onlyLanders) {
                     }
                     playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+unitCits;
                 }
-                if (!batType.skills.includes('transorbital')) {
+                if (!batType.skills.includes('transorbital') && batType.cat != 'buildings' && batType.cat != 'devices') {
                     unitCosts = getAllCosts(bat,false,true);
                     console.log(batType.name);
                     console.log(unitCosts);
@@ -1163,6 +1163,7 @@ function missionResults(onlyLanders) {
     $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="constName or" id="gentils">RAPPORT DE MISSION</span><br>');
     $('#conUnitList').append('<br>');
+    let balance = 0;
     let citDiff = playerInfos.endRes['Citoyens']-playerInfos.startRes['Citoyens'];
     let resColour = 'gf';
     if (citDiff < 0) {
@@ -1171,6 +1172,7 @@ function missionResults(onlyLanders) {
         resColour = 'cy';
     }
     $('#conUnitList').append('<span class="paramName">Citoyens</span><span class="paramIcon"></span><span class="paramValue '+resColour+'">'+citDiff+'</span><br>');
+    $('#conUnitList').append('<hr>');
     Object.entries(playerInfos.endRes).map(entry => {
         let key = entry[0];
         let value = entry[1];
@@ -1178,6 +1180,7 @@ function missionResults(onlyLanders) {
             let res = getResByName(key);
             let resIcon = getResIcon(res);
             let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
+            balance = balance+resResult;
             if (resResult != 0) {
                 resColour = 'gf';
                 if (resResult < 0) {
@@ -1202,5 +1205,13 @@ function missionResults(onlyLanders) {
             }
         }
     });
+    $('#conUnitList').append('<hr>');
+    resColour = 'gf';
+    if (balance < 0) {
+        resColour = 'or';
+    } else if (balance > 0) {
+        resColour = 'cy';
+    }
+    $('#conUnitList').append('<span class="paramName vert">Total</span><span class="paramIcon"></span><span class="paramValue '+resColour+'">'+balance+'</span><br>');
     commandes();
 };

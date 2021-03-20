@@ -620,11 +620,14 @@ function calcUnitResist() {
     if (playerInfos.bldList.includes('Camp d\'entraînement')) {
         unitResist = unitResist+1;
     }
-    // CANTINES
+    // CANTINE
     if (playerInfos.bldList.includes('Cantine')) {
         unitResist = unitResist+0.6;
     }
     unitResist = Math.ceil(unitResist);
+    if (unitResist >= 1) {
+        unitResist++;
+    }
     return unitResist;
 };
 
@@ -999,7 +1002,7 @@ function tagsEffect(bat,batType) {
             }
             let stopPoison = 10;
             if (batType.cat != 'aliens') {
-                stopPoison = 16-Math.floor(playerInfos.comp.ca*1.5)-(unitResist*2);
+                stopPoison = 18-Math.floor(playerInfos.comp.ca*1.5)-(unitResist*2);
             }
             let i = 1;
             while (i <= allTags.poison) {
