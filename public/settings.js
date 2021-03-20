@@ -142,6 +142,7 @@ let zombifiersTiles = [];
 let zombifiedTiles = [];
 let startLander = 5;
 let deploySalvos = 7;
+let seeAllFret = false;
 // ALIENS
 let isFFW = false;
 let pointDeMire = 1830; // tileId

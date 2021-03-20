@@ -1156,7 +1156,7 @@
         "armor":0,
         "size":3,
         "volume":0.95,
-        "stealth":10,
+        "stealth":12,
         "ap":15,
         "maxSalvo":1,
         "weapon":{
@@ -1192,7 +1192,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","ranger","maycamo","guerrilla","selfbadmedic","dealer","octiron"],
+        "skills":["fouille","fortif","cible","ranger","maycamo","guerrilla","selfbadmedic","dealer","octiron","kirin"],
         "mediCost":6,
         "maxDrug":6,
         "fuzz":0,
@@ -1297,7 +1297,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","camo","embuscade","baddef","unemun","ranger","brigands","guerrilla","tirailleur","fastguet"],
+        "skills":["fouille","fortif","cible","camo","embuscade","baddef","unemun","ranger","brigands","guerrilla","tirailleur","fastguet","selfbadmedic"],
+        "mediCost":9,
         "fuzz":1.5,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -1839,7 +1840,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","bigfortif","cible","selfbadmedic","maycamo","recupcit","bgun"],
+        "skills":["fouille","fortif","bigfortif","cible","selfbadmedic","maycamo","recupcit","bgun"],
         "mediCost":9,
         "fuzz":2,
         "deathFx":"human1"
@@ -1897,7 +1898,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","bigfortif","cible","selfbadmedic","maycamo","recupcit","bgun"],
+        "skills":["fouille","fortif","bigfortif","cible","selfbadmedic","maycamo","recupcit","bgun"],
         "mediCost":9,
         "fuzz":2,
         "deathFx":"human1"
@@ -1952,7 +1953,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","maycamo","uprank","bgun"],
+        "skills":["fouille","fortif","cible","maycamo","uprank","bgun"],
         "fuzz":2,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -3822,7 +3823,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","robot","sentinelle","badmecano","hscarpmove","undead","survivor","resistfeu","light"],
+        "skills":["fouille","fortif","cible","robot","sentinelle","badmecano","hscarpmove","undead","survivor","resistfeu","light"],
         "mecanoCost":8,
         "fuzz":2,
         "deathFx":"144469__psychedelic-hands__robot-death"
@@ -4019,7 +4020,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","mecano","repair","constructeur","infraconst","cyber","fret","noblub","resistfeu","fastempty","dumper"],
+        "skills":["fouille","fortif","mecano","repair","constructeur","infraconst","cyber","fret","noblub","resistfeu","fastempty","dumper"],
         "mecanoCost":5,
         "maxSkill":8,
         "transRes":180,
@@ -4244,7 +4245,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","cyber","hardmove"],
+        "skills":["fouille","fortif","cible","cyber","hardmove"],
         "fuzz":2.5,
         "deathFx":"144469__psychedelic-hands__robot-death"
     },
@@ -5049,7 +5050,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","sentinelle","maycamo","robot","light","bgun"],
+        "skills":["fouille","fortif","cible","sentinelle","maycamo","robot","light","bgun"],
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
     },
@@ -5088,7 +5089,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","clone","nodeathcount"],
+        "skills":["fouille","fortif","cible","clone","nodeathcount"],
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -5141,7 +5142,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","cible","clone","strong"],
+        "skills":["fouille","fortif","cible","clone","strong"],
         "fuzz":1.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     }

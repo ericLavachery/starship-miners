@@ -921,6 +921,8 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 }
             }
         } else {
+            selectedBat.apLeft = selectedBat.apLeft+Math.round(selectedBatType.mecanoCost*conselUnit.fabTime/10)+3;
+            selectedBatArrayUpdate();
             warning('Construction annulée:','Vous n\'avez pas les ressources nécessaires');
             console.log('not enough resources !');
         }

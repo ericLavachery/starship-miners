@@ -452,6 +452,13 @@ function loadRes() {
     $('#conUnitList').append('<span class="constName cy"><img src="/static/img/units/'+selectedBatType.cat+'/'+selectedBatPic+'.png">&nbsp;');
     $('#conUnitList').append('<h1>'+selectedBat.type.toUpperCase()+'</h1><br>');
     $('#conUnitList').append('<span class="constName cy">Charger</span> <span class="cy">(max '+restSpace+')</span><br>');
+    if (seeAllFret) {
+        $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-eye-slash"></i></span>');
+        $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="seeAllTrans(false)" title="Ne voir que les bataillons contenant des ressources">Ne voir que le fret</span></span><br>');
+    } else {
+        $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-eye"></i></span>');
+        $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="seeAllTrans(true)" title="Voir tous les bataillons">Voir tout</span></span><br>');
+    }
     if (selectedBatType.skills.includes('dumper')) {
         if (selectedBat.noDump) {
             $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
@@ -483,7 +490,7 @@ function loadRes() {
                     distance = calcDistance(bat.tileId,selectedBat.tileId);
                     if (distance <= 1) {
                         resLoad = checkResLoad(bat);
-                        if (resLoad >= 1) {
+                        if (resLoad >= 1 || seeAllFret) {
                             let batPic = getBatPic(bat,batType);
                             $('#conUnitList').append('<br><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48"><br></span>');
                             let tile = getTile(bat);
@@ -548,6 +555,11 @@ function loadRes() {
         $('#conUnitList').append('<span class="constName">Plus de place!</span><br>');
     }
     $('#conUnitList').append('<br>');
+};
+
+function seeAllTrans(seeAll) {
+    seeAllFret = seeAll;
+    loadRes();
 };
 
 function resAllLoad(batId) {
