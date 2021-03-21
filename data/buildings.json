@@ -2579,7 +2579,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["recupcit","transport","routes","producteur","prefab","fret","dumper","selfbadrepair","badmedic"],
+        "skills":["recupcit","transport","routes","producteur","prefab","fret","dumper","selfbadrepair","badmedic","cible"],
         "mecanoCost":10,
         "mediCost":12,
         "transMaxSize":9,

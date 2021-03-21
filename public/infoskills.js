@@ -197,7 +197,7 @@ function skillsInfos(bat,batType) {
     }
     // TIR CIBLE
     // intéressant si précision en dessous de 10
-    if (batType.skills.includes('cible')) {
+    if (batType.skills.includes('cible') && !inMelee) {
         apCost = 3;
         if (batType.weapon2.rof >= 1 && batType.weapon.cost > batType.weapon2.rof) {
             apReq = 3+batType.weapon2.cost;
@@ -211,7 +211,12 @@ function skillsInfos(bat,batType) {
         if (bat.apLeft >= apReq && !bat.tags.includes('vise') && bat.apLeft >= apCost+cheapWeapCost) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+5 précision, 2/3 cadence de tir (3 PA + coût de l\'arme)" class="boutonGris skillButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
         } else {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de PA" class="boutonGris skillButtons gf"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
+            if (inMelee) {
+                skillMessage = "Impossible en mêlée";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
         }
     }
     // LUCKY SHOT

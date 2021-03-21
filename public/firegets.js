@@ -35,7 +35,7 @@ function isHit(accuracy,minAccu,aoe,size,stealth,cover,speed,shotDice) {
     }
     // tir ciblé
     if (selectedBat.tags.includes('vise')) {
-        prec = prec+5;
+        prec = prec+7;
     }
     let dice = rand.rand(1,shotDice);
     let hitChance = Math.round(Math.sqrt(size)*prec);
