@@ -1782,11 +1782,11 @@
         "skills":["noguet","mecano","repair","constructeur","routes","noblub","light","crewsave","fret","extraction","dumper","recupcit","recupres"],
         "mecanoCost":6,
         "mining":{
-            "level":1,
+            "level":2,
             "rate":20,
             "multi":false,
             "types":["Scrap","Comptoir"],
-            "subTypes":["Mine","Pompe"]
+            "subTypes":["Pompe"]
         },
         "transRes":150,
         "maxSkill":8,
@@ -1847,11 +1847,11 @@
         "skills":["noguet","mecano","repair","constructeur","routes","noblub","resistacide","resistelec","dealer","nitro","light","crewsave","fret","extraction","dumper","recupcit","recupres"],
         "mecanoCost":4,
         "mining":{
-            "level":1,
+            "level":2,
             "rate":32,
             "multi":false,
             "types":["Scrap","Comptoir"],
-            "subTypes":["Mine","Pompe","Derrick"]
+            "subTypes":["Pompe"]
         },
         "transRes":300,
         "maxSkill":24,
@@ -2144,11 +2144,11 @@
         "skills":["fouille","fortif","guerrilla","fret","transport","selfbadmecano","hscarpmove","dumper","extraction","light","crewsave","recupcit","recupres"],
         "mecanoCost":16,
         "mining":{
-            "level":1,
+            "level":2,
             "rate":32,
             "multi":false,
             "types":["Scrap"],
-            "subTypes":["Mine","Pompe","Comptoir"]
+            "subTypes":["Pompe","Comptoir"]
         },
         "transMaxSize":9,
         "transUnits":200,
