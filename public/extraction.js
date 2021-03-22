@@ -37,9 +37,9 @@ function mining(bat) {
                     let key = entry[0];
                     let value = entry[1];
                     res = getResByName(key);
-                    if (batType.mining.types.includes(res.bld)) {
+                    if (batType.mining.types.includes(res.bld) || batType.mining.subTypes.includes(res.bld)) {
                         if (bat.extracted.includes(res.name)) {
-                            let resMiningRate = getResMiningRate(bat,res,value,false);
+                            let resMiningRate = getResMiningRate(bat,res,value,false,false);
                             let adjustedRMR = resMiningRate;
                             if (playerInfos.comp.tri >= 1 && res.name === 'Scrap') {
                                 adjustedRMR = Math.round(resMiningRate/100*(101+(((playerInfos.comp.tri*playerInfos.comp.tri)+3)*2)));
@@ -154,7 +154,7 @@ function getMiningRate(bat,fullRate) {
     }
 };
 
-function getResMiningRate(bat,res,value,fullRate) {
+function getResMiningRate(bat,res,value,fullRate,forInfos) {
     let batType = getBatType(bat);
     let resHere = value;
     if (playerInfos.comp.tri >= 1 && res.name === 'Scrap') {
@@ -182,36 +182,59 @@ function getResMiningRate(bat,res,value,fullRate) {
     }
     let batRate = getMiningRate(bat,fullRate);
     let multiExtractAdj = 1;
-    if (bat.extracted.length >= 2) {
-        multiExtractAdj = 1-((bat.extracted.length-1)/12);
-    }
-    let maxAdjBonus = playerInfos.comp.ext/20;
-    if (batType.mining.level >= 4) {
-        if (multiExtractAdj < 0.75+maxAdjBonus) {
-            multiExtractAdj = 0.75+maxAdjBonus;
+    if (!forInfos) {
+        if (bat.extracted.length >= 2) {
+            multiExtractAdj = 1-((bat.extracted.length-1)/12);
         }
-    } else {
-        if (multiExtractAdj < 0.4+(maxAdjBonus*2)) {
-            multiExtractAdj = 0.4+(maxAdjBonus*2);
+        let maxAdjBonus = playerInfos.comp.ext/20;
+        if (batType.mining.level >= 4) {
+            if (multiExtractAdj < 0.75+maxAdjBonus) {
+                multiExtractAdj = 0.75+maxAdjBonus;
+            }
+        } else {
+            if (multiExtractAdj < 0.4+(maxAdjBonus*2)) {
+                multiExtractAdj = 0.4+(maxAdjBonus*2);
+            }
         }
     }
     let resRate = Math.ceil(resHere*batRate/mineRateDiv*multiExtractAdj);
-    if (batType.mining.types.includes('Mine') && res.bld === 'Derrick') {
-        resRate = Math.ceil(resRate/3);
+    // ADJ SUBTYPE & LEVELS
+    if (!batType.mining.types.includes(res.bld)) {
+        if (batType.mining.subTypes.includes(res.bld)) {
+            resRate = Math.ceil(resRate/3);
+        } else {
+            resRate = 0;
+        }
+        if (batType.mining.level === 1 && (res.bld === 'Mine' || res.bld === 'Derrick')) {
+            resRate = Math.ceil(resRate/2);
+        }
     }
-    if ((batType.mining.types.includes('Mine') || batType.mining.types.includes('Derrick') || batType.mining.types.includes('Scrap') || batType.mining.types.includes('Comptoir')) && res.bld === 'Pompe') {
-        resRate = Math.ceil(resRate/4);
-    }
-    if (batType.mining.level === 1 && (res.bld === 'Mine' || res.bld === 'Derrick')) {
-        resRate = Math.ceil(resRate/6);
-    }
-    if (res.level > batType.mining.level) {
-        resRate = 0;
+    if (batType.mining.types[0] != res.bld) {
+        if (res.level > batType.mining.level) {
+            resRate = 0;
+        } else if (res.level >= 3) {
+            resRate = Math.ceil(resRate/2);
+        }
     }
     if (value <= 0) {
         resRate = 0;
     }
     return resRate;
+};
+
+function getAllMiningRates(bat,batType) {
+    let allMiningRates = {};
+    let sortedRes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'level'),'cat'),'bld');
+    sortedRes.reverse();
+    sortedRes.forEach(function(res) {
+        if (res.bld != '') {
+            let resRate = getResMiningRate(bat,res,250,true,true);
+            if (resRate >= 1) {
+                allMiningRates[res.name] = resRate;
+            }
+        }
+    });
+    return allMiningRates;
 };
 
 function chooseRes(again) {
@@ -236,9 +259,9 @@ function chooseRes(again) {
         let key = entry[0];
         let value = entry[1];
         res = getResByName(key);
-        if (selectedBatType.mining.types.includes(res.bld)) {
+        if (selectedBatType.mining.types.includes(res.bld) || selectedBatType.mining.subTypes.includes(res.bld)) {
             if (selectedBatType.mining.level >= res.level) {
-                let resMiningRate = getResMiningRate(selectedBat,res,value,true);
+                let resMiningRate = getResMiningRate(selectedBat,res,value,true,false);
                 let adjustedRMR = resMiningRate;
                 if (playerInfos.comp.tri >= 1 && res.name === 'Scrap') {
                     adjustedRMR = Math.round(resMiningRate/100*(101+(((playerInfos.comp.tri*playerInfos.comp.tri)+3)*2)));

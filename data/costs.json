@@ -210,7 +210,7 @@
         "name":"Bandidos",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":6,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Prisons"],
-        "costs":{"Fer":81,"Soufre":27,"Plomb":27,"Aluminium":54,"Carbone":54,"Scrap":54,"Végétaux":135},
+        "costs":{"Fer":81,"Soufre":27,"Plomb":27,"Aluminium":54,"Carbone":54,"Scrap":54,"Végétaux":135,"Chlore":10,"Tissus":5},
         "fabTime":15
     },
     {
@@ -1331,6 +1331,7 @@
         "id":92,
         "name":"Shelltrucks",
         "levels":{"rednecks":9,"blades":12,"bulbos":9,"drogmulojs":9,"tiradores":10,"detruas":99,"brasier":9},
+        "bldEquiv":["Poudrière"],
         "bldReq":["Armurerie","Garage"],
         "costs":{"Fer":60,"Scrap":444,"Carbone":120,"Aluminium":168,"Electros":24,"Batteries":12,"Compo2":84,"Huile":10},
         "deploy":{"Fuel":100},
@@ -1351,6 +1352,7 @@
         "id":94,
         "name":"Scraptruck",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":10,"tiradores":99,"detruas":99,"brasier":99},
+        "bldEquiv":["Décharge"],
         "bldReq":["Armurerie","Centre de tri","Garage"],
         "costs":{"Fer":99,"Scrap":414,"Carbone":135,"Aluminium":234,"Tungstène":81,"Electros":18,"Batteries":45,"Compo2":76,"Compo3":18,"Huile":18,"Eau":120,"Silicium":15,"Bore":36},
         "deploy":{"Fuel":70,"Energie":60,"Huile":30},

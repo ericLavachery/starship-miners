@@ -919,6 +919,8 @@ function addRes(zone) {
                 });
             }
         } else if (tile.rq >= 1) {
+            let isGas = 'maybe';
+            let firstRes = true;
             terrain = getTileTerrain(tile.id);
             // PASS 1
             sortedRes.forEach(function(res) {
@@ -927,14 +929,23 @@ function addRes(zone) {
                     if (res.bld === 'Derrick') {
                         if (terrain.scarp <= 1) {
                             resChance = Math.round(resChance*1.6);
+                            if (tile.rq >= 2 && terrain.veg <= 1 && isGas === 'maybe') {
+                                resChance = Math.round(resChance*3);
+                            }
                         } else {
                             resChance = Math.round(resChance*0.67);
+                        }
+                        if (isGas === 'yes') {
+                            resChance = Math.round(resChance*2);
                         }
                     } else if (res.bld === 'Mine') {
                         if (terrain.scarp >= 2) {
                             resChance = Math.round(resChance*1.1);
                         } else {
                             resChance = Math.round(resChance*0.45);
+                            if (tile.rq >= 2 && terrain.veg <= 1 && isGas === 'maybe') {
+                                resChance = Math.round(resChance/6);
+                            }
                         }
                     }
                     if (rand.rand(1,100) <= resChance) {
@@ -943,12 +954,20 @@ function addRes(zone) {
                             tile.ruins = true;
                             tile.rd = true;
                         }
+                        if (firstRes) {
+                            if (res.bld === 'Derrick') {
+                                isGas = 'yes';
+                            } else {
+                                isGas = 'no';
+                            }
+                        }
+                        firstRes = false;
                     }
                 }
             });
             if (tile.rq === 2 && playerInfos.mapDiff >= 1) {
                 if (Object.keys(tile.rs).length <= 2) {
-                    // PASS 2
+                    // JAUNE PASS 2
                     sortedRes.forEach(function(res) {
                         if (res.cat === 'white') {
                             if (Object.keys(tile.rs).length <= 1) {
@@ -966,7 +985,7 @@ function addRes(zone) {
                     });
                 }
                 if (Object.keys(tile.rs).length <= 2) {
-                    // PASS 3
+                    // JAUNE PASS 3
                     sortedRes.forEach(function(res) {
                         if (res.cat === 'white') {
                             if (Object.keys(tile.rs).length <= 1) {
@@ -984,16 +1003,12 @@ function addRes(zone) {
                     });
                 }
                 if (Object.keys(tile.rs).length <= 2) {
-                    // PASS 4
+                    // JAUNE PASS 4
                     sortedRes.forEach(function(res) {
-                        if (res.cat === 'white') {
+                        if (res.cat === 'white' && res.name != 'Scrap') {
                             if (Object.keys(tile.rs).length <= 1) {
                                 if (tile.rs[res.name] === undefined) {
                                     tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
-                                    if (res.name === 'Scrap') {
-                                        tile.ruins = true;
-                                        tile.rd = true;
-                                    }
                                 }
                             }
                         }
@@ -1001,7 +1016,7 @@ function addRes(zone) {
                 }
             } else if (tile.rq === 3 && playerInfos.mapDiff >= 1) {
                 if (Object.keys(tile.rs).length <= 4) {
-                    // PASS 2
+                    // ROUGE PASS 2
                     sortedRes.forEach(function(res) {
                         if (res.cat === 'white') {
                             if (Object.keys(tile.rs).length <= 3) {
@@ -1019,7 +1034,7 @@ function addRes(zone) {
                     });
                 }
                 if (Object.keys(tile.rs).length <= 4) {
-                    // PASS 3
+                    // ROUGE PASS 3
                     sortedRes.forEach(function(res) {
                         if (res.cat === 'white') {
                             if (Object.keys(tile.rs).length <= 3) {
@@ -1037,16 +1052,12 @@ function addRes(zone) {
                     });
                 }
                 if (Object.keys(tile.rs).length <= 4) {
-                    // PASS 4
+                    // ROUGE PASS 4
                     sortedRes.forEach(function(res) {
-                        if (res.cat === 'white') {
+                        if (res.cat === 'white' && res.name != 'Scrap') {
                             if (Object.keys(tile.rs).length <= 3) {
                                 if (tile.rs[res.name] === undefined) {
                                     tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
-                                    if (res.name === 'Scrap') {
-                                        tile.ruins = true;
-                                        tile.rd = true;
-                                    }
                                 }
                             }
                         }
@@ -1054,6 +1065,20 @@ function addRes(zone) {
                 }
             }
             // PASS 5
+            if (Object.keys(tile.rs).length <= 0) {
+                sortedRes.forEach(function(res) {
+                    if (res.cat === 'white' && res.name != 'Scrap') {
+                        if (Object.keys(tile.rs).length <= 0) {
+                            if (tile.rs[res.name] === undefined) {
+                                if (rand.rand(1,3) === 1) {
+                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            // PASS 6
             if (Object.keys(tile.rs).length <= 0) {
                 tile.rs[resDefault.name] = Math.round(resDefault.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
             }

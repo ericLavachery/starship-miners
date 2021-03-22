@@ -517,6 +517,17 @@ function batFullInfos(bat) {
     }
     $('#popbody').append('<span class="paramValue">'+allSkills+'</span>');
     $('#popbody').append('<div class="shSpace"></div>');
+
+    // MINING
+    if (batType.skills.includes('extraction')) {
+        let allMiningRates = getAllMiningRates(bat,batType);
+        $('#popbody').append('<div class="shSpace"></div>');
+        $('#popbody').append('<span class="blockTitle"><h4>Extraction de ressources</h4></span><br>');
+        $('#popbody').append('<span class="paramValue gf">'+toCoolString(allMiningRates)+'</span>');
+        $('#popbody').append('<div class="shSpace"></div>');
+        console.log('MINING RATES');
+        console.log(allMiningRates);
+    }
 };
 
 function nomVisible(name) {

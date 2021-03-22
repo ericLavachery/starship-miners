@@ -70,7 +70,8 @@
             "level":3,
             "rate":20,
             "multi":true,
-            "types":["Mine","Scrap","Derrick","Pompe"]
+            "types":["Mine","Scrap","Comptoir"],
+            "subTypes":["Derrick","Pompe"]
         },
         "transMaxSize":9,
         "transUnits":375,
@@ -144,10 +145,11 @@
         "skills":["extraction","fret","recupcit","noblub","dumper","resistfeu","routes","prefab","prodres","upkeep"],
         "mecanoCost":16,
         "mining":{
-            "level":3,
-            "rate":30,
+            "level":1,
+            "rate":50,
             "multi":true,
-            "types":["Pompe"]
+            "types":["Pompe"],
+            "subTypes":["Derrick"]
         },
         "transRes":2500,
         "fuzz":4,
@@ -215,13 +217,14 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["extraction","fret","recupcit","dumper","transport","inflammable","routes","producteur","prodres","upkeep","nodisable"],
+        "skills":["extraction","fret","recupcit","dumper","transport","inflammable","routes","producteur","prodres","upkeep","nodisable","noblub"],
         "mecanoCost":12,
         "mining":{
-            "level":3,
+            "level":2,
             "rate":20,
             "multi":true,
-            "types":["Derrick"]
+            "types":["Derrick","Pompe"],
+            "subTypes":["Scrap","Mine","Comptoir"]
         },
         "transMaxSize":9,
         "transUnits":200,
@@ -294,10 +297,11 @@
         "skills":["fouille","extraction","fret","recupcit","dumper","transport","routes","prefab","prodres","longshot"],
         "mecanoCost":8,
         "mining":{
-            "level":3,
+            "level":1,
             "rate":40,
             "multi":true,
-            "types":["Comptoir","Scrap","Pompe"]
+            "types":["Comptoir","Scrap"],
+            "subTypes":["Pompe","Mine"]
         },
         "transMaxSize":9,
         "transUnits":375,

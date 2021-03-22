@@ -1093,7 +1093,9 @@ function weaponAdj(weapon,bat,wn) {
         if (bat.eq === 'chargeur' || bat.eq === 'chargeur1') {
             if (thisWeapon.cost < 6) {
                 thisWeapon.accuracy = thisWeapon.accuracy-2;
-                thisWeapon.cost = thisWeapon.cost+1;
+                if (thisWeapon.cost >= 3) {
+                    thisWeapon.cost = thisWeapon.cost+1;
+                }
             }
         }
         if (bat.eq === 'lunette' || bat.eq === 'lunette1') {
@@ -1112,7 +1114,9 @@ function weaponAdj(weapon,bat,wn) {
         if (bat.eq === 'chargeur' || bat.eq === 'chargeur2') {
             if (thisWeapon.cost < 6) {
                 thisWeapon.accuracy = thisWeapon.accuracy-2;
-                thisWeapon.cost = thisWeapon.cost+1;
+                if (thisWeapon.cost >= 3) {
+                    thisWeapon.cost = thisWeapon.cost+1;
+                }
             }
         }
         if (bat.eq === 'lunette' || bat.eq === 'lunette2') {

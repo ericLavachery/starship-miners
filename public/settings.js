@@ -133,6 +133,7 @@ let roadAPCost = 8;
 let bonusTransRetour = 1.25;
 let batDebarq = {};
 let medicalTransports = [];
+let medicPatientAP = 3;
 let landers = [];
 let fogRange = 5;
 let foggersTiles = [];

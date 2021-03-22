@@ -63,6 +63,7 @@ function toCoolString(myObject) {
         newString = JSON.stringify(myObject);
         newString = newString.replace(/"/g,'');
         newString = newString.replace(/:/g,'=');
+        newString = newString.replace(/,/g,', ');
     }
     if (newString === '{}') {
         newString = '{Rien}';

@@ -1095,7 +1095,7 @@ function recupRes(bat,batType) {
     putBatAround(bat.tileId,false,true,239,0,false);
     let coffre = getBatByTileId(coffreTileId);
     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
-        let recupFactor = 38;
+        let recupFactor = 95;
         let bldFactor = 0;
         let index;
         let batArmor;
@@ -1106,12 +1106,13 @@ function recupRes(bat,batType) {
         if (playerInfos.comp.tri >= 1) {
             bldFactor = bldFactor+1;
         }
-        recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+4)/6);
         if (hasScraptruck) {
-            recupFactor = Math.ceil(recupFactor*1.15);
+            bldFactor = bldFactor+1;
         }
+        recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+4)/12);
         console.log('hasScraptruck='+hasScraptruck);
         let totalRes = 0;
+        // BAT FLATCOST x%
         if (batType.costs != undefined) {
             Object.entries(batType.costs).map(entry => {
                 let key = entry[0];
@@ -1127,6 +1128,7 @@ function recupRes(bat,batType) {
                 }
             });
         }
+        // BAT DEPLOY x/2%
         if (batType.deploy != undefined) {
             Object.entries(batType.deploy).map(entry => {
                 let key = entry[0];
@@ -1142,6 +1144,7 @@ function recupRes(bat,batType) {
                 }
             });
         }
+        // ARMOR x%
         if (!bat.prt.includes('aucun') && bat.prt != undefined) {
             batArmor = getBatArmor(bat);
             if (batArmor.costs != undefined) {
@@ -1160,7 +1163,8 @@ function recupRes(bat,batType) {
                 });
             }
         }
-        if (!bat.eq.includes('aucun') && bat.prt != undefined) {
+        // EQUIP 100%
+        if (!bat.eq.includes('aucun') && bat.eq != undefined) {
             batEquip = getBatEquip(bat);
             if (batEquip.costs != undefined) {
                 Object.entries(batEquip.costs).map(entry => {
@@ -1177,9 +1181,6 @@ function recupRes(bat,batType) {
             }
         }
         let scrapBonus = Math.ceil(totalRes/10);
-        if (hasScraptruck) {
-            scrapBonus = Math.ceil(scrapBonus*2);
-        }
         if (coffre.transRes['Scrap'] === undefined) {
             coffre.transRes['Scrap'] = scrapBonus;
         } else {

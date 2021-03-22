@@ -1522,7 +1522,8 @@
             "level":1,
             "rate":4,
             "multi":false,
-            "types":["Scrap","Pompe"]
+            "types":["Scrap"],
+            "subTypes":["Pompe","Comptoir"]
         },
         "transRes":30,
         "fuzz":0,
@@ -2217,7 +2218,8 @@
             "level":3,
             "rate":20,
             "multi":false,
-            "types":["Mine","Comptoir","Scrap","Derrick","Pompe"]
+            "types":["Mine","Comptoir","Scrap"],
+            "subTypes":["Derrick","Pompe"]
         },
         "transRes":36,
         "maxSkill":2,
@@ -2281,7 +2283,8 @@
             "level":2,
             "rate":12,
             "multi":false,
-            "types":["Mine","Comptoir","Scrap","Derrick","Pompe"]
+            "types":["Comptoir","Scrap","Mine"],
+            "subTypes":["Pompe"]
         },
         "transRes":48,
         "maxSkill":2,

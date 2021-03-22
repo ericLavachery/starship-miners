@@ -1785,7 +1785,8 @@
             "level":1,
             "rate":20,
             "multi":false,
-            "types":["Scrap","Comptoir","Mine","Pompe"]
+            "types":["Scrap","Comptoir"],
+            "subTypes":["Mine","Pompe"]
         },
         "transRes":150,
         "maxSkill":8,
@@ -1849,7 +1850,8 @@
             "level":1,
             "rate":32,
             "multi":false,
-            "types":["Scrap","Comptoir","Mine","Pompe"]
+            "types":["Scrap","Comptoir"],
+            "subTypes":["Mine","Pompe","Derrick"]
         },
         "transRes":300,
         "maxSkill":24,
@@ -2145,7 +2147,8 @@
             "level":1,
             "rate":32,
             "multi":false,
-            "types":["Scrap","Comptoir","Mine","Pompe"]
+            "types":["Scrap"],
+            "subTypes":["Mine","Pompe","Comptoir"]
         },
         "transMaxSize":9,
         "transUnits":200,
@@ -2210,9 +2213,10 @@
         "mecanoCost":16,
         "mining":{
             "level":1,
-            "rate":40,
+            "rate":25,
             "multi":false,
-            "types":["Scrap","Comptoir","Mine","Pompe"]
+            "types":["Comptoir","Scrap"],
+            "subTypes":["Mine","Pompe"]
         },
         "transMaxSize":9,
         "transUnits":200,
@@ -2811,7 +2815,8 @@
             "level":1,
             "rate":50,
             "multi":false,
-            "types":["Scrap","Comptoir","Mine","Pompe"]
+            "types":["Scrap"],
+            "subTypes":["Mine","Pompe","Comptoir"]
         },
         "transMaxSize":9,
         "transUnits":420,
@@ -3508,7 +3513,8 @@
             "level":4,
             "rate":40,
             "multi":true,
-            "types":["Mine","Derrick","Pompe","Comptoir","Scrap"]
+            "types":["Mine","Derrick","Pompe","Comptoir","Scrap"],
+            "subTypes":[]
         },
         "transRes":2000,
         "fuzz":4.5,
@@ -3573,7 +3579,8 @@
             "level":4,
             "rate":28,
             "multi":true,
-            "types":["Mine","Derrick","Comptoir","Scrap","Pompe"]
+            "types":["Mine","Derrick","Comptoir","Scrap","Pompe"],
+            "subTypes":[]
         },
         "transRes":1200,
         "fuzz":4,
@@ -3779,7 +3786,8 @@
             "level":3,
             "rate":15,
             "multi":true,
-            "types":["Mine","Comptoir","Scrap","Pompe"]
+            "types":["Mine"],
+            "subTypes":["Pompe","Comptoir","Scrap"]
         },
         "transRes":150,
         "fuzz":2,
@@ -4129,9 +4137,10 @@
         "mecanoCost":9,
         "mining":{
             "level":1,
-            "rate":20,
+            "rate":18,
             "multi":false,
-            "types":["Scrap","Mine","Pompe"]
+            "types":["Scrap"],
+            "subTypes":["Mine","Pompe","Comptoir"]
         },
         "transMaxSize":9,
         "transUnits":615,
