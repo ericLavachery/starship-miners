@@ -212,7 +212,7 @@ function nextTurnEnd() {
             if (bat.loc === "trans") {
                 transBat = getBatById(bat.locId);
                 bat.tileId = transBat.tileId;
-                bat.oldTileId = transBat.tileId;
+                bat.oldTileId = transBat.oldTileId;
             }
             updateBatProperties(bat,batType);
             if (bat.autoLoad != undefined) {

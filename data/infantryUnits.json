@@ -1519,7 +1519,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","ranger","berserk","undead","camo","extraction","fret","uprank","guerrilla","tirailleur"],
         "mining":{
-            "level":1,
+            "level":3,
             "rate":4,
             "multi":false,
             "types":["Scrap"],

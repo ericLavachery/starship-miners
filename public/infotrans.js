@@ -283,7 +283,7 @@ function clickDebarq(tileId) {
         batDebarq.loc = 'zone';
         batDebarq.locId = 0;
         batDebarq.tileId = tileId;
-        batDebarq.oldTileId = tileId;
+        batDebarq.oldTileId = selectedBat.tileId;
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
             batDebarq.apLeft = batDebarq.ap-Math.round(batDebarqType.fabTime*batDebarq.ap/50);
         }
