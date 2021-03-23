@@ -283,8 +283,8 @@ function goDrug(apCost,drugName) {
             // starka instant bonus
             if (drug.name === 'starka') {
                 selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap;
-                if (selectedBat.apLeft >= selectedBat.ap+1) {
-                    selectedBat.apLeft = selectedBat.ap+1;
+                if (selectedBat.apLeft >= selectedBat.ap+2) {
+                    selectedBat.apLeft = selectedBat.ap+2;
                 }
                 console.log('starka bonus');
             }

@@ -593,8 +593,8 @@ function turnInfo() {
     $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
     $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
     $('#tour').append('Présence Alien <span class="or">'+zone[0].mapDiff+'</span><br>');
-    if (playerInfos.eggPause || playerInfos.bldList.includes('Champ de force')) {
-        $('#tour').append('<span class="cy">Pause</span><br>');
+    if (playerInfos.bldList.includes('Champ de force')) {
+        $('#tour').append('<span class="cy">Champ de force</span><br>');
     }
     $('#tour').append('Morts <span class="or">'+playerInfos.unitsLost+'</span> / '+playerInfos.aliensKilled+' / <span class="cy">'+playerInfos.eggsKilled+'</span>');
 };

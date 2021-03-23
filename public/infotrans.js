@@ -278,12 +278,17 @@ function clickDebarq(tileId) {
                 selectedBat.transIds.splice(tagIndex,1);
             }
         }
-        selectedBatArrayUpdate();
-        batUnselect();
         batDebarq.loc = 'zone';
         batDebarq.locId = 0;
         batDebarq.tileId = tileId;
-        batDebarq.oldTileId = selectedBat.tileId;
+        if (selectedBat.tileId > -1) {
+            batDebarq.oldTileId = selectedBat.tileId;
+        } else {
+            batDebarq.oldTileId = tileId;
+        }
+        console.log('oldTileId='+selectedBat.tileId);
+        selectedBatArrayUpdate();
+        batUnselect();
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
             batDebarq.apLeft = batDebarq.ap-Math.round(batDebarqType.fabTime*batDebarq.ap/50);
         }

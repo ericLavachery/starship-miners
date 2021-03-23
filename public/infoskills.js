@@ -555,8 +555,10 @@ function skillsInfos(bat,batType) {
                 balise = 'h3';
             }
             apCost = drug.apCost;
-            let maxStarkaPA = bat.ap+1;
-            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('starka') && drugCompOK && drugBldOK && drugCostsOK && bat.tileId === bat.oldTileId) {
+            let maxStarkaPA = bat.ap+2;
+            let moveDistance = calcDistance(bat.tileId,bat.oldTileId);
+            console.log('moveDistance='+moveDistance);
+            if (!bat.tags.includes('starka') && drugCompOK && drugBldOK && drugCostsOK && moveDistance <= 2) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+bat.ap+' PA, maximum '+maxStarkaPA+' au total" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
             } else {
                 if (bat.tags.includes('starka')) {
@@ -568,7 +570,7 @@ function skillsInfos(bat,batType) {
                 } else if (!drugCostsOK) {
                     skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
                 } else {
-                    skillMessage = "Pas assez de PA";
+                    skillMessage = "Vous vous êtes déjà trop déplacé ce tour-ci";
                 }
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
             }
