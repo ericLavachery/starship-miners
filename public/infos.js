@@ -595,7 +595,7 @@ function showTileInfos(tileId) {
         $('#tileInfos').append('<span class="paramName">Coordonnées</span><span class="paramIcon"><i class="fas fa-map-marker-alt"></i></span><span class="paramValue">'+tile.y+'&lrhar;'+tile.x+'</span><br>');
         $('#tileInfos').append('<span class="paramName">Id</span><span class="paramIcon"></span><span class="paramValue">#'+tile.id+'</span><br>');
         // RESSOURCES
-        if (playerInfos.comp.det >= 1 || !modeSonde) {
+        if (playerInfos.comp.det >= 2 || !modeSonde) {
             if (tile.rs !== undefined) {
                 let tileIndex;
                 let res;

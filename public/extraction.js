@@ -888,7 +888,7 @@ function voirRessources() {
 
 function showTileRes(theTileRes) {
     let tileRes = JSON.stringify(theTileRes);
-    if (playerInfos.comp.det < 1 && modeSonde) {
+    if (playerInfos.comp.det < 2 && modeSonde) {
         tileRes = '';
     } else {
         tileRes = tileRes.replace(/"/g,"");
