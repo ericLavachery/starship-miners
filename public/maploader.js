@@ -87,13 +87,18 @@ function landerLandingOK(tile) {
         if (tile.terrain === 'R') {
             tileOK = false;
         }
+        if (playerInfos.comp.vsp < 4) {
+            if (tile.terrain === 'W') {
+                tileOK = false;
+            }
+        }
         if (playerInfos.comp.vsp < 3) {
-            if (tile.terrain === 'M' || tile.terrain === 'R') {
+            if (tile.terrain === 'M') {
                 tileOK = false;
             }
         }
         if (playerInfos.comp.vsp < 2) {
-            if (tile.terrain === 'W' || tile.terrain === 'F') {
+            if (tile.terrain === 'F') {
                 tileOK = false;
             }
         }
@@ -129,6 +134,9 @@ function showRes(tileId) {
     let res = '';
     let view = true;
     if (zone[0].dark && !playerInfos.undarkOnce.includes(tile.id)) {
+        view = false;
+    }
+    if (modeSonde && playerInfos.comp.det < 1) {
         view = false;
     }
     if (tile.rq != undefined && view) {

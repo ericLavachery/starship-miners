@@ -609,6 +609,12 @@ function clickConstruct(tileId,free) {
                 batHere = true;
                 message = 'Pas de construction de bâtiment ou dispositif sur une case occupée par une infrastructure';
             }
+            if (tile.terrain === 'W' || tile.terrain === 'R') {
+                if (!conselUnit.skills.includes('noblub')) {
+                    batHere = true;
+                    message = 'Cette unité ne peut pas être construite dans l\'eau';
+                }
+            }
         }
         if (conselUnit.skills.includes('transorbital')) {
             if (tile.x > 31+landerRange || tile.x < 31-landerRange || tile.y > 31+landerRange || tile.y < 31-landerRange) {

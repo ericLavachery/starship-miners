@@ -847,41 +847,43 @@ function voirRessources() {
             }
         }
     });
-    let tileRes;
-    let blockType;
-    let filteredZone = _.filter(visMap,function(tile) {
-        return (tile.rq != undefined);
-    });
-    oneResTileIds = [];
-    filteredZone.forEach(function(tile) {
-        tileRes = showTileRes(tile.rs);
-        if (((showOneRes === 'Toutes' || tileRes.includes(showOneRes)) && !showMarkedOnly) || ((showOneRes === 'Toutes' || tileRes.includes(showOneRes)) && playerInfos.showedTiles.includes(tile.id) && showMarkedOnly)) {
-            if (playerInfos.showedTiles.includes(tile.id)) {
-                blockType = 'resBlockCheck';
-            } else {
-                blockType = 'resBlock';
-            }
-            $('#conUnitList').append('<div class="'+blockType+'" id="rf'+tile.id+'"></div>');
-            if (tile.tileName != undefined) {
-                if (tile.tileName != '') {
-                    $('#rf'+tile.id).append('<span class="listRes jaune">'+tile.tileName+'</span><br>');
-                }
-            }
-            $('#rf'+tile.id).append('<i class="fas fa-atom inficon rq'+tile.rq+'"></i><span class="listRes gff klik" onclick="markMap('+tile.id+')">&nbsp;'+tile.y+'&lrhar;'+tile.x+'</span>');
-            if (tile.ruins) {
-                if (tile.sh <= -1) {
-                    $('#rf'+tile.id).append('<i class="fas fa-city inficon rq'+tile.rq+'"></i> &nbsp');
-                    $('#rf'+tile.id).append('<i class="fas fa-check-circle inficon rq'+tile.rq+'"></i> &nbsp');
+    if (!modeSonde || playerInfos.comp.det >= 1) {
+        let tileRes;
+        let blockType;
+        let filteredZone = _.filter(visMap,function(tile) {
+            return (tile.rq != undefined);
+        });
+        oneResTileIds = [];
+        filteredZone.forEach(function(tile) {
+            tileRes = showTileRes(tile.rs);
+            if (((showOneRes === 'Toutes' || tileRes.includes(showOneRes)) && !showMarkedOnly) || ((showOneRes === 'Toutes' || tileRes.includes(showOneRes)) && playerInfos.showedTiles.includes(tile.id) && showMarkedOnly)) {
+                if (playerInfos.showedTiles.includes(tile.id)) {
+                    blockType = 'resBlockCheck';
                 } else {
-                    $('#rf'+tile.id).append('<i class="fas fa-city inficon cy"></i> &nbsp');
+                    blockType = 'resBlock';
+                }
+                $('#conUnitList').append('<div class="'+blockType+'" id="rf'+tile.id+'"></div>');
+                if (tile.tileName != undefined) {
+                    if (tile.tileName != '') {
+                        $('#rf'+tile.id).append('<span class="listRes jaune">'+tile.tileName+'</span><br>');
+                    }
+                }
+                $('#rf'+tile.id).append('<i class="fas fa-atom inficon rq'+tile.rq+'"></i><span class="listRes gff klik" onclick="markMap('+tile.id+')">&nbsp;'+tile.y+'&lrhar;'+tile.x+'</span>');
+                if (tile.ruins) {
+                    if (tile.sh <= -1) {
+                        $('#rf'+tile.id).append('<i class="fas fa-city inficon rq'+tile.rq+'"></i> &nbsp');
+                        $('#rf'+tile.id).append('<i class="fas fa-check-circle inficon rq'+tile.rq+'"></i> &nbsp');
+                    } else {
+                        $('#rf'+tile.id).append('<i class="fas fa-city inficon cy"></i> &nbsp');
+                    }
+                }
+                $('#rf'+tile.id).append('<span class="listRes">'+tileRes+'</span><br>');
+                if (tileRes.includes(showOneRes)) {
+                    oneResTileIds.push(tile.id);
                 }
             }
-            $('#rf'+tile.id).append('<span class="listRes">'+tileRes+'</span><br>');
-            if (tileRes.includes(showOneRes)) {
-                oneResTileIds.push(tile.id);
-            }
-        }
-    });
+        });
+    }
 };
 
 function showTileRes(theTileRes) {
