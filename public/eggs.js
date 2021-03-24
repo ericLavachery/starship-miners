@@ -724,7 +724,7 @@ function veilSpawn(bat) {
     }
     if (kind === 'bug') {
         if (rand.rand(1,15) < zone[0].mapDiff) {
-            alienSpawn(bat,'Punaise','veil');
+            alienSpawn(bat,'Punaises','veil');
         } else {
             alienSpawn(bat,'Bugs','veil');
         }

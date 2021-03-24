@@ -35,7 +35,7 @@ function isHit(accuracy,minAccu,aoe,size,stealth,cover,speed,shotDice) {
     }
     // tir ciblé
     if (selectedBat.tags.includes('vise')) {
-        prec = prec+7;
+        prec = prec+8;
     }
     let dice = rand.rand(1,shotDice);
     let hitChance = Math.round(Math.sqrt(size)*prec);
@@ -254,7 +254,7 @@ function batDeath(bat,count) {
             addAlienRes(bat);
         }
         if (!playerInfos.knownAliens.includes(batType.name)) {
-            playerInfos.knownAliens.push(batType.name);
+            newAlienKilled(batType);
         }
         let batIndex = aliens.findIndex((obj => obj.id == bat.id));
         aliens.splice(batIndex,1);
@@ -291,10 +291,33 @@ function batDeathEffect(bat,quiet,title,body) {
         warning(title,body);
     }
     if (bat.team === 'aliens' && !playerInfos.knownAliens.includes(bat.type)) {
-        playerInfos.knownAliens.push(bat.type);
+        newAlienKilled(bat.type);
     }
     if (bat.team != 'aliens') {
         $('#unitInfos').empty();
+    }
+};
+
+function newAlienKilled(batType) {
+    if (batType.name != 'Vers' && batType.name != 'Blattes') {
+        playerInfos.knownAliens.push(batType.name);
+    }
+    let xpBonus = batType.killXP;
+    if (xpBonus >= 1) {
+        if (Object.keys(selectedBat).length >= 1) {
+            if (selectedBat.team === 'player') {
+                selectedBat.xp = selectedBat.xp+xpBonus;
+                selectedBatArrayUpdate();
+            }
+        }
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "zone" || bat.loc === "trans") {
+                bat.xp = bat.xp+xpBonus;
+            }
+        });
+        warning('Alien inconnu tué : '+batType.name,'Toutes vos unités dans la zone ont gagné '+xpBonus+' points d\'expérience');
+    } else {
+        warning('Alien inconnu tué : '+batType.name,'');
     }
 };
 
