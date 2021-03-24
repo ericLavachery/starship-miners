@@ -1129,12 +1129,12 @@
             "sound":"magnum_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
-        "equip":["aucun","e-flash","e-ranger","chargeur","e-camo","permakirin","theeye","helper","waterproof","cible"],
+        "equip":["aucun","e-flash","e-ranger","chargeur","e-camo","permakirin","theeye","helper","waterproof"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","camo","selfbadmedic","uprank"],
+        "skills":["fouille","fortif","camo","selfbadmedic","uprank","cible"],
         "mediCost":8,
         "fuzz":-1,
         "deathFx":"human1"
