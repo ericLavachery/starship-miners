@@ -403,10 +403,11 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     showBatInfos(selectedBat);
 };
 
-function numMedicTargets(myBat,cat,around,deep) {
+function numMedicTargets(myBat,cat,around,deep,inBat) {
     let numTargets = 0;
     let catOK;
     let myBatType = getBatType(myBat);
+    let inBatType = getBatType(inBat);
     let batType;
     let batHP;
     let batHPLeft;
@@ -433,7 +434,7 @@ function numMedicTargets(myBat,cat,around,deep) {
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 distance = calcDistance(myBat.tileId,bat.tileId);
-                if (distance === 0 || (distance === 1 && myBatType.cat === 'buildings')) {
+                if (distance === 0 || (distance === 1 && inBatType.cat === 'buildings')) {
                     fullBat = false;
                     batType = getBatType(bat);
                     batHPLeft = (bat.squadsLeft*batType.squadSize*batType.hp)-bat.damage;

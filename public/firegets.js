@@ -1352,7 +1352,7 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.range = thisWeapon.range+1;
     }
     // Forêt (range)
-    if (tile.terrain == 'F' && infra != 'Miradors') {
+    if (tile.terrain == 'F' && infra != 'Miradors' && batType.cat != 'buildings' && !batType.skills.includes('transorbital')) {
         if (checkDeepForest(tile)) {
             if (thisWeapon.range >= 2) {
                 if (thisWeapon.range >= 3) {
@@ -1364,7 +1364,7 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     // Water (range)
-    if (thisWeapon.range >= 2 && (tile.terrain == 'W' || tile.terrain == 'R') && !batType.skills.includes('fly') && !batType.skills.includes('hover')) {
+    if (thisWeapon.range >= 2 && (tile.terrain == 'W' || tile.terrain == 'R') && !batType.skills.includes('fly') && !batType.skills.includes('hover') && batType.cat != 'buildings' && !batType.skills.includes('transorbital')) {
         thisWeapon.range = thisWeapon.range-1;
     }
     if (zone[0].dark && thisWeapon.range > vision) {
