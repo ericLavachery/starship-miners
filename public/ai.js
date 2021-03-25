@@ -169,6 +169,11 @@ function shootTarget(recul,melee) {
                 alienSelectBaseWeapon();
             }
         }
+        if (selectedBatType.name === 'Wurms' || selectedBatType.name === 'Larves') {
+            if (selectedBat.tileId != selectedBat.oldTileId) {
+                alienSelectBaseWeapon();
+            }
+        }
         combat(melee);
     } else {
         // console.log('Pas assez de PA pour tirer');

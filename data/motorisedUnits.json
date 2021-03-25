@@ -3665,7 +3665,7 @@
             "range":1,
             "isShort":true,
             "rof":12,
-            "accuracy":17,
+            "accuracy":18,
             "power":7,
             "armors":0.85,
             "aoe":"unit",

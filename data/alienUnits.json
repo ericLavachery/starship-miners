@@ -82,7 +82,8 @@
         "skills":["nez","fouisseur","capmen","okwater","grip","resistall","healhide","slowreg","noaploss","reactpoison"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":1,"Larvium":8,"Mendium":2},
-        "killXP":0
+        "killXP":0,
+        "flavText":"Les lombrics chassent vos infanteries en priorité, même les furtives et celles qui sont très éloignées. Lorsqu'ils sont proche de la mort, ils se terrent et attendent d'avoir régénéré avant de revenir vous attaquer."
     },
     {
         "id":14,
@@ -138,7 +139,8 @@
         "skills":["regeneration","nez","fouisseur","capbld","reactpoison","reactblast","okwater","resistelec","morph"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":1,"Larvium":10,"Mendium":5},
-        "killXP":0
+        "killXP":0,
+        "flavText":"Les larves se dirrigent de préférence vers vos bâtiments et ignorent vos autres unités éloignées. Elles se transforment en wurms au bout d'un moment."
     },
     {
         "id":1,
@@ -194,7 +196,8 @@
         "skills":["regeneration","capbld","fouisseur","nez","reactpoison","reactblast","okwater","resistelec"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":5,"Mendium":15,"Larvium":30},
-        "killXP":10
+        "killXP":10,
+        "flavText":"Les wurms se dirrigent de préférence vers vos bâtiments et ignorent vos autres unités éloignées. Leur attaque de queue est dévastatrice mais n'est pas possible tant qu'elles se déplacent."
     },
     {
         "id":38,
@@ -252,7 +255,8 @@
         "spawnFx":"71906__cmusounddesign__je-monster_ghost",
         "fxPriority":1,
         "killRes":{"Bugium":6,"Blendium":21,"Larvium":11,"Germium":14,"Bossium":3},
-        "killXP":25
+        "killXP":25,
+        "flavText":"Les fantômes restent rarement longtemps au même endroit pour ne pas être repérés."
     },
     {
         "id":41,
@@ -297,7 +301,8 @@
         "spawnFx":"71906__cmusounddesign__je-monster_ghost",
         "fxPriority":1,
         "killRes":{"Bugium":2,"Blendium":9,"Larvium":5},
-        "killXP":5
+        "killXP":5,
+        "flavText":"Les ombres restent rarement longtemps au même endroit pour ne pas être repérés. Elles se tranforment en fantômes au bout d'un moment."
     },
     {
         "id":2,
@@ -430,7 +435,8 @@
         "spawnFx":"436570__magicthighs__corellas-screeching_glaireuse",
         "fxPriority":5,
         "killRes":{"Bugium":13,"Aranium":34,"Bossium":20,"Creatite":6,"Slime":24,"Mendium":24},
-        "killXP":30
+        "killXP":30,
+        "flavText":"Les glaireuses pondent de gluantes."
     },
     {
         "id":5,
@@ -472,7 +478,8 @@
         "skills":["ricochet","guerrilla","tirailleur","baddef"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":3},
-        "killXP":5
+        "killXP":5,
+        "flavText":"Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },
     {
         "id":51,
@@ -558,7 +565,8 @@
         "skills":["capbld","fouisseur","destructeur"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":2,"Swarmine":7},
-        "killXP":5
+        "killXP":5,
+        "flavText":"Les fourmis se dirrigent de préférence vers vos bâtiments et ignorent vos autres unités éloignées. Elles trouent les blindages de vos véhicules et bâtiments, permettant aux autres petits aliens de rentrer plus facilement."
     },
     {
         "id":8,
@@ -600,7 +608,8 @@
         "skills":["grip","venin","eatpoison","okwater","resistelec","resistblast","sentinelle"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":2,"Swarmine":3,"Mephitis":2},
-        "killXP":5
+        "killXP":5,
+        "flavText":"Les skolos injectent leur venin lorsque vous êtes immobilisé ou épuisé. Le poison de vos flêches et vos lames leur donnent de la vigueur."
     },
     {
         "id":9,
@@ -643,7 +652,8 @@
         "skills":["nez","maladie","okwater","morph"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":4,"Germium":2},
-        "killXP":0
+        "killXP":0,
+        "flavText":"Tous asticots peuvent se transformer en moucherons, et ils le font tous ensemble'."
     },
     {
         "id":40,
@@ -686,7 +696,8 @@
         "skills":["nez","maladie","okwater","morph"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":4,"Germium":2},
-        "killXP":0
+        "killXP":0,
+        "flavText":"Tous vers peuvent se transformer en lucioles, et ils le font tous ensemble'."
     },
     {
         "id":10,
@@ -728,7 +739,8 @@
         "skills":["capbld","fear","reactpoison","destructeur","ricochet"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":15},
-        "killXP":15
+        "killXP":15,
+        "flavText":"Les broyeurs se dirrigent de préférence vers vos bâtiments et ignorent vos autres unités éloignées. Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },
     {
         "id":11,
@@ -787,7 +799,8 @@
         "spawnFx":"125388__thegoose09__monster-screech_veuve",
         "fxPriority":6,
         "killRes":{"Bugium":4,"Aranium":25,"Mephitis":20,"Bossium":16,"Slime":16,"Mendium":4},
-        "killXP":30
+        "killXP":30,
+        "flavText":"Les veuves chassent vos infanteries en priorité, même celles qui sont très éloignées. Leur poison est six fois plus virulent que celui des autres aliens."
     },
     {
         "id":12,
@@ -845,7 +858,8 @@
         "skills":["shield","inflammable","regeneration","resistpoison","destructeur","ponte"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":13,"Bossium":9,"Slime":13,"Egidium":24,"Mendium":3,"Creatite":6},
-        "killXP":25
+        "killXP":25,
+        "flavText":"Les scarabs pondent de bugs."
     },
     {
         "id":13,
@@ -943,7 +957,8 @@
         "skills":["chancre","venin","regeneration","shield","minaccu","destructeur","sentinelle","noaploss"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":5,"Mendium":2,"Germium":8,"Egidium":3,"Mephitis":2},
-        "killXP":5
+        "killXP":5,
+        "flavText":"Les chancres injectent leur venin lorsque vous êtes immobilisé ou épuisé."
     },
     {
         "id":16,
@@ -1042,7 +1057,8 @@
         "skills":["venin","inflammable","longshot","capmen","lurk"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Aranium":3,"Slime":1},
-        "killXP":0
+        "killXP":0,
+        "flavText":"Les gluantes chassent vos infanteries en priorité, même celles qui sont très éloignées. Elles injectent leur venin lorsque vous êtes immobilisé ou épuisé. Elles sont futives en forêt."
     },
     {
         "id":53,
@@ -1086,7 +1102,8 @@
         "skills":["guerrilla","tirailleur","escape","maladie","anycap","infkill"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Aranium":3,"Bugium":1,"Germium":2,"Wingium":1},
-        "killXP":5
+        "killXP":5,
+        "flavText":"Les nerveuses chassent vos unités, même celles qui sont très éloignées."
     },
     {
         "id":19,
@@ -1128,7 +1145,8 @@
         "skills":["chancre","capbld","ponte","minaccu","resistpoison","okwater","nez"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":4,"Germium":3,"Bossium":15,"Creatite":6,"Slime":2},
-        "killXP":20
+        "killXP":20,
+        "flavText":"Les vermisseaux pondent de moucherons et des lucioles."
     },
     {
         "id":20,
@@ -1185,7 +1203,8 @@
         "spawnFx":"213842__sihil__lizardgargle_mygale",
         "fxPriority":3,
         "killRes":{"Bugium":4,"Aranium":24,"Mephitis":14,"Bossium":3},
-        "killXP":20
+        "killXP":20,
+        "flavText":"Les mygales chassent vos infanteries en priorité, même celles qui sont très éloignées."
     },
     {
         "id":21,
@@ -1282,7 +1301,8 @@
         "skills":["regeneration","ponte","reactpoison","morph"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Swarmine":2,"Mendium":1,"Creatite":1},
-        "killXP":0
+        "killXP":0,
+        "flavText":"Les cafards se reproduisent très vite."
     },
     {
         "id":52,
@@ -1424,7 +1444,8 @@
         "spawnFx":"82082__rmw2861__1000000009_Androks",
         "fxPriority":4,
         "killRes":{"Bugium":90,"Swarmine":90,"Mephitis":7,"Bossium":25,"Creatite":6},
-        "killXP":35
+        "killXP":35,
+        "flavText":"Les androks pondent des scorpions."
     },
     {
         "id":54,
@@ -1469,7 +1490,8 @@
         "spawnFx":"82082__rmw2861__1000000009_Androks",
         "fxPriority":3,
         "killRes":{"Bugium":56,"Swarmine":58,"Bossium":9,"Mendium":11},
-        "killXP":25
+        "killXP":25,
+        "flavText":"Le poison de vos flêches et vos lames ravigore galéodes."
     },
     {
         "id":25,
@@ -1514,7 +1536,8 @@
         "spawnFx":"347410__zerokingfull__monster-roar-02_bugboss",
         "fxPriority":8,
         "killRes":{"Bugium":23,"Bossium":28,"Creatite":6,"Pyrus":75},
-        "killXP":40
+        "killXP":40,
+        "flavText":"Les dragons augmentent la cadence de tir de tous les bugs. Ils pondent des firebugs. Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },
     {
         "id":26,
@@ -1610,7 +1633,8 @@
         "skills":["capmen","sentinelle"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":2,"Swarmine":5,"Germium":6},
-        "killXP":0
+        "killXP":0,
+        "flavText":"Les necros chassent vos infanteries en priorité, même celles qui sont très éloignées."
     },
     {
         "id":29,
@@ -1708,7 +1732,8 @@
         "skills":["chancre","hover","capmen","resistelec","baddef","dive","reactblast"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":5,"Germium":6,"Mephitis":2},
-        "killXP":5
+        "killXP":5,
+        "flavText":"Les sangsues chassent vos infanteries en priorité, même celles qui sont très éloignées."
     },
     {
         "id":31,
@@ -1794,7 +1819,8 @@
         "skills":["minaccu","ricochet","sentinelle"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":4,"Slime":5},
-        "killXP":10
+        "killXP":10,
+        "flavText":"Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },
     {
         "id":33,
@@ -1850,7 +1876,8 @@
         "spawnFx":"142932__1pjladd2__burp-monster_megagrubz",
         "fxPriority":2,
         "killRes":{"Bugium":31,"Larvium":48,"Mendium":72,"Bossium":29,"Creatite":6,"Slime":21},
-        "killXP":35
+        "killXP":35,
+        "flavText":"Les megagrubz pondent des larves."
     },
     {
         "id":34,
@@ -1992,7 +2019,8 @@
         "skills":["fouisseur","anycap","maladie","hide","venin","guerrilla","tirailleur"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":2,"Aranium":8,"Mephitis":2,"Germium":5,"Slime":3,"Blendium":4},
-        "killXP":5
+        "killXP":5,
+        "flavText":"Les sournoises injectent leur venin lorsque vous êtes immobilisé ou épuisé. Elles chassent vos unités, même celles qui sont très éloignées."
     },
     {
         "id":243,
@@ -2045,10 +2073,11 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capmen","hide","resistfeu","resistall","infkill"],
+        "skills":["capmen","hide","resistfeu","resistall","infkill","bomb"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":1,"Aranium":9,"Pyrus":1,"Blendium":5},
-        "killXP":5
+        "killXP":5,
+        "flavText":"Les torches chassent vos infanteries en priorité, même celles qui sont très éloignées. Elles peuvent se suicider en explosant si elles sont proches de la mort et ne sont pas en mouvement."
     },
     {
         "id":48,
@@ -2093,7 +2122,8 @@
         "spawnFx":"82082__rmw2861__1000000009_Androks",
         "fxPriority":10,
         "killRes":{"Bugium":45,"Swarmine":34,"Mendium":8,"Bossium":1},
-        "killXP":25
+        "killXP":25,
+        "flavText":"Les homards transforment les cafards en homards."
     },
     {
         "id":49,
@@ -2151,7 +2181,8 @@
         "spawnFx":"71906__cmusounddesign__je-monster_ghost",
         "fxPriority":9,
         "killRes":{"Bugium":14,"Blendium":63,"Larvium":16,"Germium":22,"Bossium":33},
-        "killXP":75
+        "killXP":75,
+        "flavText":"Les liches rendent toutes les larves invisible."
     },
     {
         "id":47,
@@ -2194,7 +2225,8 @@
         "skills":["fouisseur","errant","chancre","hide","venin","regeneration","fear","minaccu","spiderrange","resistall"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":60,"Aranium":65,"Mephitis":11,"Germium":12,"Mendium":15,"Blendium":23,"Bossium":31},
-        "killXP":50
+        "killXP":50,
+        "flavText":"Les uberspinne augmentent la portée des attaques de toutes les arignées."
     },
     {
         "id":46,
@@ -2240,7 +2272,8 @@
         "spawnFx":"347410__zerokingfull__monster-roar-02_bugboss",
         "fxPriority":11,
         "killRes":{"Bugium":24,"Mendium":6,"Bossium":34,"Egidium":93,"Slime":20},
-        "killXP":75
+        "killXP":75,
+        "flavText":"Les overbugs protègent tous les bugs avec leur bouclier. Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },
     {
         "id":6,
@@ -2270,7 +2303,8 @@
         "skills":["isegg","ponte","inflammable","eggprotect","noaploss","morph","xpbonus"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Creatite":24},
-        "killXP":10
+        "killXP":10,
+        "flavText":"Les oeufs pondent des aliens pendant longtemps, puis se transforment en ruches."
     },
     {
         "id":27,
@@ -2300,7 +2334,8 @@
         "skills":["inflammable","noaploss","morph","xpplus"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Creatite":4},
-        "killXP":5
+        "killXP":5,
+        "flavText":"Les vomissures se transforment en ruches au bout d'un moment."
     },
     {
         "id":45,
@@ -2360,7 +2395,8 @@
         "skills":["isegg","ponte","inflammable","eggprotect","noaploss","morph","xpbonus"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Creatite":24,"Blendium":60},
-        "killXP":20
+        "killXP":20,
+        "flavText":"Les oeufs voilés pondent des aliens pendant longtemps, puis se transforment en ruches. Les aliens pondus sont également invisibles."
     },
     {
         "id":36,
@@ -2390,7 +2426,8 @@
         "skills":["isegg","ponte","regeneration","reactpoison","eggprotect","noaploss","morph","xpbonus"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Bugium":36,"Mendium":15,"Creatite":18},
-        "killXP":10
+        "killXP":10,
+        "flavText":"Les coques pondent des aliens pendant un moment, puis se transforment en volcans."
     },
     {
         "id":42,
@@ -2420,7 +2457,8 @@
         "skills":["isegg","ponte","regeneration","shield","eggprotect","noaploss","morph","xpbonus"],
         "deathFx":"bombwaterexplo",
         "killRes":{"Bugium":45,"Mendium":15,"Creatite":18,"Egidium":53},
-        "killXP":10
+        "killXP":10,
+        "flavText":"Les cocons pondent des tas d'aliens pendant 2 tours seulement, ensuite ils sont détruits par le dernier alien qu'ils pondent."
     },
     {
         "id":44,
@@ -2478,7 +2516,8 @@
         "skills":["hide","eggprotect","noaploss","reactblast","xpplus"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":2,"Blendium":9,"Slime":6},
-        "killXP":10
+        "killXP":10,
+        "flavText":"Les veilleurs pondent des aliens lorsque vous les approchez. Ces aliens sont invisibles pendant quelques tours."
     },
     {
         "id":17,
@@ -2536,7 +2575,8 @@
         "skills":["isegg","ponte","inflammable","noaploss","nolaser","baddef","minaccu","eggprotect","xpfeast"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":5,"Creatite":12,"Slime":18},
-        "killXP":25
+        "killXP":25,
+        "flavText":"Les ruches pondent des aliens lentement, mais éternellement."
     },
     {
         "id":50,
@@ -2594,7 +2634,8 @@
         "skills":["isegg","ponte","minaccu","shield","regmode","eggshield","eggdefense","regeneration","noaploss","nolaser","survivor","baddef","xpfeast"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":48,"Creatite":24,"Mendium":30,"Egidium":94,"Bossium":73,"Pyrus":108},
-        "killXP":100
+        "killXP":100,
+        "flavText":"Les colonies protègent tous les oeufs avec leur bouclier, et augmente la portée de tir des ruches."
     },
     {
         "id":37,

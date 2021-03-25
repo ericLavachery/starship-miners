@@ -299,9 +299,7 @@ function batDeathEffect(bat,quiet,title,body) {
 };
 
 function newAlienKilled(batType) {
-    if (batType.name != 'Vers' && batType.name != 'Blattes') {
-        playerInfos.knownAliens.push(batType.name);
-    }
+    playerInfos.knownAliens.push(batType.name);
     let xpBonus = batType.killXP;
     if (xpBonus >= 1) {
         if (Object.keys(selectedBat).length >= 1) {

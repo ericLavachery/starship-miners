@@ -7,7 +7,9 @@ function showEnemyBatInfos(bat) {
     let batShowedName = nomVisible(batType.name);
     let compCA = playerInfos.comp.ca;
     if (playerInfos.knownAliens.includes(batType.name)) {
-        compCA = compCA+2;
+        if (batType.name != 'Vers' && batType.name != 'Blattes') {
+            compCA = compCA+2;
+        }
     }
     if (batType.class === 'X') {
         compCA = compCA-1;
@@ -369,6 +371,13 @@ function showEnemyBatInfos(bat) {
             if (compCA >= 2) {
                 $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
             }
+        }
+    }
+    $('#unitInfos').append('<div class="shSpace"></div>');
+    if (compCA >= 5) {
+        if (batType.flavText != undefined) {
+            $('#unitInfos').append('<span class="paramValue">'+batType.flavText+'</span><br>');
+            $('#unitInfos').append('<div class="shSpace"></div>');
         }
     }
     // DISMANTLE
