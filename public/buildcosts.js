@@ -332,8 +332,15 @@ function getDeployCosts(unit,ammo,weapNum,type) {
     } else if (type === 'unit') {
         // UNIT
         if (unit.deploy != undefined) {
+            deployFactor = 1;
+            // deployFactor = deployFactor*deployTuning/7;
             if (Object.keys(unit.deploy).length >= 1) {
                 deployCosts = JSON.parse(JSON.stringify(unit.deploy));
+                Object.entries(ammo.deploy).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    deployCosts[key] = Math.ceil(value*deployFactor);
+                });
             } else {
                 deployCosts = {};
             }
@@ -343,6 +350,7 @@ function getDeployCosts(unit,ammo,weapNum,type) {
     } else if (type === 'equip') {
         let equip = ammo;
         deployFactor = getEquipDeployFactor(unit,equip);
+        // deployFactor = deployFactor*deployTuning/7;
         if (equip.deploy != undefined) {
             if (Object.keys(equip.deploy).length >= 1) {
                 deployCosts = JSON.parse(JSON.stringify(equip.deploy));

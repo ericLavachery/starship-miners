@@ -142,7 +142,8 @@ let zombRange = 5;
 let zombifiersTiles = [];
 let zombifiedTiles = [];
 let startLander = 5;
-let deploySalvos = 7;
+let deploySalvos = 4; // on part de 7
+let deployTuning = 6; // on part de 7 - PAS employé !!!
 let seeAllFret = false;
 // ALIENS
 let isFFW = false;
