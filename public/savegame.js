@@ -155,6 +155,11 @@ function alienReset() {
     // saveAliens();
     showMap(zone,false);
 };
+function deleteZones() {
+    socket.emit('reset-zones','');
+    zoneFiles = [];
+    savePlayerInfos();
+};
 function mapReset() {
     bataillons = [];
     saveBataillons();
@@ -186,6 +191,7 @@ function mapReset() {
     resetReserve();
     resetStartRes();
     resetEndRes();
+    deleteZones();
     // savePlayerInfos();
     showMap(zone,false);
     commandes();

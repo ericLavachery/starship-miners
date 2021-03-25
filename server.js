@@ -325,6 +325,47 @@ io.sockets.on('connection', function (socket, pseudo) {
         console.log(zoneFiles);
     };
 
+    // Delete all saved Zones
+    socket.on('reset-zones', function(rien) {
+        listZoneFiles();
+        console.log(zoneFiles);
+        zoneFiles.forEach(function(zoneId) {
+            var fileToBeRemoved = './data/players/'+socket.pseudo+'-map'+zoneId+'.json';
+            console.log(fileToBeRemoved);
+            fs.unlink(fileToBeRemoved, function(err) {
+                if(err && err.code == 'ENOENT') {
+                    console.info("File doesn't exist, won't remove it.");
+                } else if (err) {
+                    console.error("Error occurred while trying to remove file");
+                } else {
+                    console.info("File removed");
+                }
+            });
+            fileToBeRemoved = './data/players/'+socket.pseudo+'-bataillons'+zoneId+'.json';
+            console.log(fileToBeRemoved);
+            fs.unlink(fileToBeRemoved, function(err) {
+                if(err && err.code == 'ENOENT') {
+                    console.info("File doesn't exist, won't remove it.");
+                } else if (err) {
+                    console.error("Error occurred while trying to remove file");
+                } else {
+                    console.info("File removed");
+                }
+            });
+            fileToBeRemoved = './data/players/'+socket.pseudo+'-aliens'+zoneId+'.json';
+            console.log(fileToBeRemoved);
+            fs.unlink(fileToBeRemoved, function(err) {
+                if(err && err.code == 'ENOENT') {
+                    console.info("File doesn't exist, won't remove it.");
+                } else if (err) {
+                    console.error("Error occurred while trying to remove file");
+                } else {
+                    console.info("File removed");
+                }
+            });
+        });
+    });
+
     // Load zone
     socket.on('load-saved-map', function(zoneId) {
         const path = './data/players/'+socket.pseudo+'-map'+zoneId+'.json';

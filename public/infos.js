@@ -21,6 +21,7 @@ function batInfos(bat,pop) {
     if (!pop) {
         conWindowOut();
     }
+    levelUp(bat);
     let tagColor = 'cy';
     let batType = getBatType(bat);
     let batPic = getBatPic(bat,batType);

@@ -655,7 +655,7 @@
         "skills": [],
         "info": "Portée+",
         "bldReq":["Arsenal"],
-        "compReq":{"log":2,"arti":1},
+        "compReq":{"log":2,"det":2,"arti":1},
         "factor":"rofpow",
         "costs":{"Fer":60,"Tungstène":12,"Titane":6}
     },
@@ -665,7 +665,7 @@
         "skills": [],
         "info": "Portée+",
         "bldReq":["Arsenal"],
-        "compReq":{"log":2,"arti":1},
+        "compReq":{"log":2,"det":2,"arti":1},
         "factor":"rofpow",
         "costs":{"Fer":60,"Tungstène":12,"Titane":6}
     },
@@ -675,7 +675,7 @@
         "skills": [],
         "info": "Portée+",
         "bldReq":["Arsenal"],
-        "compReq":{"log":2,"arti":1},
+        "compReq":{"log":2,"det":2,"arti":1},
         "factor":"rofpow",
         "costs":{"Fer":60,"Tungstène":12,"Titane":6}
     },
@@ -850,7 +850,7 @@
         "skills": [],
         "info": "Première arme du bâtiment",
         "bldReq":[],
-        "compReq":{"def":1,"bal":2},
+        "compReq":{"def":1,"bal":1},
         "factor":"crew",
         "costs":{"Carbone":4,"Scrap":6,"Fer":8,"Silicium":4}
     },
@@ -870,7 +870,7 @@
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"log":2,"def":2},
+        "compReq":{"log":2,"def":2,"bal":1},
         "factor":"rofpow",
         "costs":{"Fer":45,"Tungstène":30,"Huile":5}
     },
@@ -880,7 +880,7 @@
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"def":2,"pyro":2},
+        "compReq":{"def":2,"pyro":2,"bal":1},
         "factor":"crew",
         "costs":{"Scrap":4,"Fer":12,"Aluminium":12,"Tungstène":6,"Fuel":12}
     },
@@ -890,7 +890,7 @@
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"def":2,"pyro":1},
+        "compReq":{"def":2,"pyro":1,"bal":1},
         "factor":"crew",
         "costs":{"Scrap":8,"Fer":8}
     },
@@ -900,7 +900,7 @@
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"def":2,"explo":1},
+        "compReq":{"def":2,"explo":1,"bal":1},
         "factor":"crew",
         "costs":{"Scrap":8,"Fer":8}
     },
@@ -910,7 +910,7 @@
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"def":2,"explo":2},
+        "compReq":{"def":2,"explo":2,"bal":1},
         "factor":"rofpow",
         "costs":{"Scrap":12,"Fer":12,"Aluminium":24,"Tungstène":12}
     },
@@ -940,7 +940,7 @@
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"def":3,"energ":1},
+        "compReq":{"def":3,"energ":1,"bal":1},
         "factor":"rofpow",
         "costs":{"Carbone":4,"Tungstène":8,"Silicium":2,"Rhodium":4,"Electros":4,"Batteries":8}
     },
@@ -950,7 +950,7 @@
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"def":2,"exo":1},
+        "compReq":{"def":2,"exo":1,"bal":1},
         "factor":"crew",
         "costs":{"Carbone":4,"Scrap":8,"Aluminium":8,"Titane":4}
     },

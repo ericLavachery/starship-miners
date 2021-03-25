@@ -1089,6 +1089,7 @@ function putTagAction(bat) {
 };
 
 function levelUp(bat) {
+    bat.xp = bat.xp.toFixedNumber(2);
     if (bat.xp >= levelXP[4]) {
         bat.vet = 4;
     } else if (bat.xp >= levelXP[3]) {
@@ -1100,7 +1101,6 @@ function levelUp(bat) {
     } else {
         bat.vet = 0;
     }
-    bat.xp = bat.xp.toFixedNumber(2);
 };
 
 function updateBatProperties(bat,batType) {

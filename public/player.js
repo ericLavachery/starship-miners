@@ -807,7 +807,7 @@ function landerFill() {
                 $('#conUnitList').append('<span class="constName klik '+colour+'" title="'+toNiceString(bldNeed)+'" onclick="fillLanderWithUnit('+unit.id+')">'+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
                 if (unit.equip.length >= 2) {
                     unit.equip.forEach(function(equipName) {
-                        if (equipName.includes('w1-') || equipName.includes('w1-')) {
+                        if (equipName.includes('w1-') || equipName.includes('w2-')) {
                             let equip = getEquipByName(equipName);
                             let compReqOK = checkCompReq(equip);
                             if (compReqOK) {

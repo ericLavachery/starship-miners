@@ -247,6 +247,9 @@ function attack(melee) {
     if (selectedBatType.maxSalvo >= 5) {
         xpFactor = 0.2;
     }
+    if (targetBatType.cat != 'buildings' && targetBat.tags.includes('construction') && targetBat.apLeft <= 2-targetBat.ap) {
+        targetBat.apLeft = 3-targetBat.ap;
+    }
     $('#report').append('<span class="report or">'+selectedBatName+' ('+selectedWeap.name+')</span><br>');
     // Dans l'eau
     let terrain = getTerrain(targetBat);
