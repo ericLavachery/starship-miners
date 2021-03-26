@@ -812,7 +812,7 @@ function skillsInfos(bat,batType) {
         if (batType.kind === 'zero-extraction' && !extractOK) {
             balise = 'h5';
         }
-        apCost = 5;
+        apCost = 2;
         apReq = 0;
         if (!bat.tags.includes('mining') && !inMelee && extractOK) {
             $('#unitInfos').append('<span class="blockTitle"><h5><button type="button" title="Extraire les ressources" class="boutonGris skillButtons" onclick="extraction('+apCost+')"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apReq+'</span></button><button type="button" title="Choisir les ressources" class="boutonGris skillButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>&nbsp; Extraction</h5></span>');

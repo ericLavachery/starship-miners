@@ -301,6 +301,7 @@ function batDeathEffect(bat,quiet,title,body) {
 function newAlienKilled(batType) {
     playerInfos.knownAliens.push(batType.name);
     let xpBonus = batType.killXP;
+    xpBonus = Math.round(xpBonus*(playerInfos.comp.train+2)/3);
     if (xpBonus >= 1) {
         if (Object.keys(selectedBat).length >= 1) {
             if (selectedBat.team === 'player') {

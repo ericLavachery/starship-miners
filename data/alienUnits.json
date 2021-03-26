@@ -1733,7 +1733,7 @@
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":5,"Germium":6,"Mephitis":2},
         "killXP":5,
-        "flavText":"Les sangsues chassent vos infanteries en priorité, même celles qui sont très éloignées."
+        "flavText":"Les sangsues chassent vos infanteries en priorité, même celles qui sont très éloignées. Elles sont futives dans l'eau et les marécages."
     },
     {
         "id":31,

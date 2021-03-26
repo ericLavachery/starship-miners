@@ -92,7 +92,7 @@ let vetBonus = {
     ap: 1,
     stealth: 1.4
 }
-let levelXP = [0,40,120,270,600];
+let levelXP = [0,50,150,335,750];
 // ACTIONS
 let mode = "select";
 let selectedBat = {};

@@ -599,8 +599,8 @@ function resAllLoad(batId) {
         }
         delete bat.transRes[key];
     });
-    putTagAction(bat);
-    putTagAction(selectedBat);
+    // putTagAction(bat);
+    // putTagAction(selectedBat);
     selectedBatArrayUpdate();
     loadRes();
 };
@@ -647,8 +647,8 @@ function resMaxLoad(batId,addAutoLoad) {
             selectedBat.autoLoad.push(batId);
         }
     }
-    putTagAction(bat);
-    putTagAction(selectedBat);
+    // putTagAction(bat);
+    // putTagAction(selectedBat);
     selectedBatArrayUpdate();
     loadRes();
 };
@@ -752,8 +752,8 @@ function resSelectLoad(value,pickValue,resId,batId) {
         }
         bat.transRes[res.name] = bat.transRes[res.name]-maxTransfert;
     }
-    putTagAction(bat);
-    putTagAction(selectedBat);
+    // putTagAction(bat);
+    // putTagAction(selectedBat);
     selectedBatArrayUpdate();
     loadRes();
 };

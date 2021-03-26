@@ -122,7 +122,7 @@ function alienTurnEnd() {
                     }
                 }
                 if (batType.skills.includes('dive')) {
-                    if (tile.terrain === 'R' || tile.terrain === 'W') {
+                    if (tile.terrain === 'R' || tile.terrain === 'W' || tile.terrain === 'S') {
                         if (!bat.tags.includes('invisible')) {
                             bat.tags.push('invisible');
                         }

@@ -548,7 +548,7 @@
             "noFly":true,
             "rof":12,
             "accuracy":14,
-            "power":22,
+            "power":24,
             "aoe":"squad",
             "sound":"canon_big_x2",
             "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium"],
@@ -1282,7 +1282,7 @@
             "accuracy":17,
             "power":14,
             "aoe":"brochette",
-            "sound":"canon_big",
+            "sound":"canon_soft_x1",
             "ammo":["mine"]
         },
         "weapon2":{
@@ -1294,7 +1294,7 @@
             "accuracy":17,
             "power":14,
             "aoe":"squad",
-            "sound":"canon_big_multi",
+            "sound":"canon_soft_x3",
             "ammo":["suicide"]
         },
         "protection":["aucun"],
