@@ -9,13 +9,13 @@ function transInfos(bat,batType) {
             let transBatType = getBatType(transBat);
             let resLoad = checkResLoad(selectedBat);
             if (resLoad >= 1 && transBatType.skills.includes('transorbital')) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer et jeter les ressources (Pas d\'embarquement si votre bataillon a des ressources embarquées)" class="boutonGris skillButtons" onclick="embarquement('+transId+',true)"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer et jeter</h4></span>');
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ne pas embarquer (Pas d\'embarquement si votre bataillon a des ressources embarquées)" class="boutonGris skillButtons" onclick="noEmbarq()"><i class="fas fa-truck"></i> <span class="small">0</span></button>&nbsp; Ne pas embarquer</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer et jeter les ressources (Pas d\'embarquement si votre bataillon a des ressources embarquées)" class="boutonRouge skillButtons" onclick="embarquement('+transId+',true)"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer et jeter</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ne pas embarquer (Pas d\'embarquement si votre bataillon a des ressources embarquées)" class="boutonRouge skillButtons" onclick="noEmbarq()"><i class="fas fa-truck"></i> <span class="small">0</span></button>&nbsp; Ne pas embarquer</h4></span>');
             } else {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer dans '+transBat.type+'" class="boutonGris skillButtons" onclick="embarquement('+transId+',false)"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer dans '+transBat.type+'" class="boutonMarine skillButtons" onclick="embarquement('+transId+',false)"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
             }
         } else {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Pas d\'embarquement si votre bataillon a lui-même un bataillon embarqué" class="boutonGris skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Pas d\'embarquement si votre bataillon a lui-même un bataillon embarqué" class="boutonRouge skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
         }
     } else {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ce bataillon n\'a pas les moyens de vous embarquer" class="boutonGris skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
@@ -76,7 +76,7 @@ function unloadInfos(myBat,myBatUnitType) {
                         }
                     }
                     batAPLeft = Math.floor(bat.apLeft);
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA" class="boutonGris skillButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonBleu skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA" class="boutonMarine skillButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
                 }
             });
         }
