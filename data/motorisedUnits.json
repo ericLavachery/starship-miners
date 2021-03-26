@@ -1946,7 +1946,7 @@
             "accuracy":14,
             "power":38,
             "aoe":"squad",
-            "sound":"obusier",
+            "sound":"canon_void2_x2",
             "ammo":["obus","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":32,
             "ravitBld":"Poudrière"
