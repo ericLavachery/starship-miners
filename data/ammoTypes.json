@@ -50,7 +50,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "deploy":{"Fer":2,"Soufre":2,"Plomb":2},
+        "deploy":{"Fer":1,"Soufre":2,"Plomb":2},
         "batch":100
     },
     {
@@ -77,7 +77,7 @@
         "apdamage": 0,
         "aoe": "",
         "compReq":{"bal":1},
-        "deploy":{"Fer":3,"Soufre":2,"Plomb":1},
+        "deploy":{"Fer":2,"Soufre":2,"Plomb":1},
         "batch":100
     },
     {
@@ -194,7 +194,7 @@
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
-        "deploy":{"Fer":2,"Soufre":2,"Plomb":1,"Aluminium":1,"Phosphore":2},
+        "deploy":{"Fer":1,"Soufre":2,"Plomb":2,"Aluminium":1,"Phosphore":2},
         "batch":100
     },
     {
@@ -331,7 +331,7 @@
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
-        "deploy":{"Fer":2,"Soufre":2,"Plomb":1,"Aluminium":1,"Phosphore":2},
+        "deploy":{"Fer":1,"Soufre":2,"Plomb":2,"Aluminium":1,"Phosphore":2},
         "batch":100
     },
     {
@@ -438,7 +438,7 @@
         "apdamage": 0,
         "aoe": "",
         "compReq":{"bal":1},
-        "deploy":{"Fer":3,"Soufre":2,"Plomb":1},
+        "deploy":{"Fer":2,"Soufre":2,"Plomb":1},
         "batch":100
     },
     {
@@ -541,7 +541,7 @@
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
-        "deploy":{"Fer":2,"Soufre":2,"Plomb":1,"Aluminium":1,"Phosphore":2},
+        "deploy":{"Fer":1,"Soufre":2,"Plomb":2,"Aluminium":1,"Phosphore":2},
         "batch":100
     },
     {
@@ -617,7 +617,7 @@
         "apdamage": 0,
         "aoe": "brochette",
         "info": "Incendiaire",
-        "deploy":{"Fer":2,"Soufre":2,"Plutonium":2,"Aluminium":1,"Phosphore":3},
+        "deploy":{"Fer":2,"Soufre":2,"Plutonium":2,"Aluminium":1,"Phosphore":2},
         "batch":100,
         "noList": true
     },
@@ -634,7 +634,7 @@
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":2,"pyro":3},
-        "deploy":{"Fer":2,"Soufre":2,"Plutonium":2,"Aluminium":1,"Phosphore":2,"Pyratol":2},
+        "deploy":{"Fer":2,"Soufre":1,"Plutonium":2,"Aluminium":1,"Phosphore":1,"Pyratol":2},
         "batch":100
     },
     {
@@ -650,7 +650,7 @@
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":2,"explo":2},
-        "deploy":{"Fer":2,"Soufre":2,"Plutonium":2,"Aluminium":1,"Phosphore":2,"Nanite":2},
+        "deploy":{"Fer":2,"Plutonium":2,"Aluminium":1,"Phosphore":2,"Nanite":2},
         "batch":100
     },
     {
@@ -666,7 +666,7 @@
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
         "compReq":{"bal":3,"mat":2},
-        "deploy":{"Fer":1,"Soufre":2,"Plutonium":2,"Aluminium":1,"Phosphore":3,"Salite":2},
+        "deploy":{"Fer":1,"Soufre":2,"Plutonium":1,"Aluminium":1,"Phosphore":2,"Salite":2},
         "batch":100
     },
     {
@@ -739,7 +739,7 @@
         "accuracy": 1,
         "apdamage": 0.1,
         "aoe": "",
-        "deploy":{"Mercure":1,"Hydrogène":4,"Larvium":1},
+        "deploy":{"Mercure":1,"Hydrogène":3,"Larvium":1},
         "batch":100,
         "noList": true
     },
@@ -755,7 +755,7 @@
         "aoe": "",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":2,"energ":1},
-        "deploy":{"Mercure":1,"Hydrogène":3,"Plastanium":2,"Wingium":1},
+        "deploy":{"Mercure":1,"Hydrogène":2,"Plastanium":2,"Wingium":1},
         "batch":100
     },
     {
@@ -770,7 +770,7 @@
         "aoe": "squad",
         "bldReq":["Laboratoire"],
         "compReq":{"explo":2,"energ":1},
-        "deploy":{"Mercure":1,"Hydrogène":3,"Nanite":2,"Azote":1,"Aranium":1},
+        "deploy":{"Mercure":1,"Hydrogène":2,"Nanite":2,"Azote":1,"Aranium":1},
         "batch":100
     },
     {
@@ -785,7 +785,7 @@
         "aoe": "",
         "bldReq":["Centre de recherches"],
         "compReq":{"explo":1,"energ":2},
-        "deploy":{"Mercure":1,"Hydrogène":3,"Uridium":2,"Azote":1,"Germium":1},
+        "deploy":{"Mercure":1,"Hydrogène":2,"Uridium":2,"Azote":1,"Germium":1},
         "batch":100
     },
     {
@@ -798,7 +798,7 @@
         "accuracy": 1,
         "apdamage": 0.1,
         "aoe": "brochette",
-        "deploy":{"Mercure":1,"Hydrogène":4,"Larvium":1},
+        "deploy":{"Mercure":1,"Hydrogène":3,"Larvium":1},
         "batch":100,
         "noList": true
     },
@@ -814,7 +814,7 @@
         "aoe": "brochette",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":2,"energ":1},
-        "deploy":{"Mercure":1,"Hydrogène":3,"Plastanium":2,"Wingium":1},
+        "deploy":{"Mercure":1,"Hydrogène":2,"Plastanium":2,"Wingium":1},
         "batch":100
     },
     {
@@ -829,7 +829,7 @@
         "aoe": "squad",
         "bldReq":["Laboratoire"],
         "compReq":{"explo":2,"energ":1},
-        "deploy":{"Mercure":1,"Hydrogène":3,"Nanite":2,"Azote":1,"Aranium":1},
+        "deploy":{"Mercure":1,"Hydrogène":2,"Nanite":2,"Azote":1,"Aranium":1},
         "batch":100
     },
     {
@@ -844,7 +844,7 @@
         "aoe": "brochette",
         "bldReq":["Centre de recherches"],
         "compReq":{"explo":1,"energ":2},
-        "deploy":{"Mercure":1,"Hydrogène":3,"Uridium":2,"Azote":1,"Germium":1},
+        "deploy":{"Mercure":1,"Hydrogène":2,"Uridium":2,"Azote":1,"Germium":1},
         "batch":100
     },
     {

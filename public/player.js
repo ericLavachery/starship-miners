@@ -1072,11 +1072,13 @@ function calcEndRes(onlyLanders) {
     resetEndRes();
     // toutes les ressources dans le lander
     landers = [];
+    let landersIds = [];
     bataillons.forEach(function(bat) {
         if (bat.loc === 'zone') {
             let batType = getBatType(bat);
             if (batType.skills.includes('transorbital')) {
                 landers.push(bat);
+                landersIds.push(bat.id);
             }
         }
     });
@@ -1097,21 +1099,27 @@ function calcEndRes(onlyLanders) {
     playerInfos.endRes['Citoyens'] = 0;
     let allCosts = {};
     let unitCosts;
+    console.log('LANDERS');
+    console.log(landers);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             let batType = getBatType(bat);
+            console.log(batType.name);
             let countThis = true;
             if (onlyLanders) {
                 if (!batType.skills.includes('transorbital')) {
+                    console.log(bat.loc);
+                    console.log(bat.locId);
                     if (bat.loc != "trans") {
                         countThis = false;
                     } else {
-                        if (!landers.includes(bat.locId)) {
+                        if (!landersIds.includes(bat.locId)) {
                             countThis = false;
                         }
                     }
                 }
             }
+            console.log(countThis);
             if (countThis) {
                 if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
                     playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+bat.citoyens;
@@ -1147,7 +1155,7 @@ function calcEndRes(onlyLanders) {
         }
     });
     // console.log(playerInfos.endRes);
-    savePlayerInfos();
+    // savePlayerInfos();
 };
 
 function missionResults(onlyLanders) {

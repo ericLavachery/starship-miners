@@ -14,7 +14,7 @@
         "name": "Plomb",
         "bld": "Mine",
         "level": 1,
-        "rarity": 70,
+        "rarity": 85,
         "cat": "white",
         "batch": 6,
         "energie": 50
@@ -24,7 +24,7 @@
         "name": "Fer",
         "bld": "Mine",
         "level": 2,
-        "rarity": 130,
+        "rarity": 160,
         "cat": "white",
         "batch": 8,
         "energie": 50
