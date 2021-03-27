@@ -30,10 +30,9 @@ function soundVolume(vol,source) {
         console.log('fx');
         if (vol === 'mute') {
             console.log('mute');
-            if (musicVolume === 0) {
+            if (fxVolume === 0) {
                 fxVolume = 0.6;
             } else {
-                theMusic.mute(true);
                 fxVolume = 0;
             }
         } else {
@@ -53,6 +52,8 @@ function soundVolume(vol,source) {
         }
         console.log(fxVolume);
     }
+    fxVolume = fxVolume.toFixedNumber(1);
+    musicVolume = musicVolume.toFixedNumber(1);
     commandes();
 };
 

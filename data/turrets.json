@@ -52,7 +52,7 @@
         "skills":["transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","bastion","dumper","routes","vision","producteur","accu","recupcit","recupres","noblub"],
         "mediCost":9,
         "mecanoCost":9,
-        "transMaxSize":33,
+        "transMaxSize":44,
         "transUnits":7500,
         "transRes":18000,
         "fuzz":4,

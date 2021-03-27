@@ -47,7 +47,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
             if (totalAPCost < maxAPCost) {
                 if (bat.loc === "zone" || bat.loc === "trans") {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
-                    if (distance === 0 || (distance === 1 && selectedBatType.cat === 'buildings')) {
+                    if (distance === 0 || (distance === 1 && (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('transorbital')))) {
                         batType = getBatType(bat);
                         batUnits = bat.squadsLeft*batType.squadSize;
                         if (batType.cat === cat || (batType.cat === 'devices' && cat === 'buildings')) {
@@ -434,7 +434,7 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 distance = calcDistance(myBat.tileId,bat.tileId);
-                if (distance === 0 || (distance === 1 && inBatType.cat === 'buildings')) {
+                if (distance === 0 || (distance === 1 && (inBatType.cat === 'buildings' || inBatType.skills.includes('transorbital')))) {
                     fullBat = false;
                     batType = getBatType(bat);
                     batHPLeft = (bat.squadsLeft*batType.squadSize*batType.hp)-bat.damage;

@@ -59,7 +59,7 @@ function mining(bat) {
                             }
                             // diminution des gisements
                             if (!permaRes && res.cat != 'zero') {
-                                tile.rs[res.name] = tile.rs[res.name]-Math.ceil(resMiningRate/10);
+                                tile.rs[res.name] = tile.rs[res.name]-Math.ceil(resMiningRate/resPersistance);
                             }
                         }
                     }

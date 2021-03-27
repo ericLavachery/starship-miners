@@ -170,11 +170,25 @@ function nextTurnEnd() {
     let resSpace;
     let resMax;
     let resLoaded;
+    let landerTileId = -1;
+    let landerTileDist = 99;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             if (batType.name === 'Scraptrucks') {
                 hasScraptruck = true;
+            }
+            if (batType.skills.includes('transorbital')) {
+                let centerDistance = calcDistance(bat.tileId,1830);
+                if (landerTileId < 0) {
+                    landerTileId = bat.tileId;
+                    landerTileDist = centerDistance;
+                } else {
+                    if (centerDistance < landerTileDist) {
+                        landerTileId = bat.tileId;
+                        landerTileDist = centerDistance;
+                    }
+                }
             }
             if (batType.skills.includes('transorbital') || batType.skills.includes('reserve')) {
                 landers.push(bat);
@@ -406,6 +420,14 @@ function nextTurnEnd() {
             // priest praying
             if (bat.tags.includes('prayer')) {
                 bat.apLeft = bat.apLeft-3;
+            }
+            let distFromLander = calcDistance(bat.tileId,landerTileId);
+            if (distFromLander >= 17) {
+                bat.xp = bat.xp+0.3;
+                let parcours = calcDistance(bat.tileId,bat.oldTileId);
+                if (parcours > 2) {
+                    bat.xp = bat.xp+0.3;
+                }
             }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;

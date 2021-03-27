@@ -47,6 +47,7 @@ let mineRateDiv = 125; // divise le mining rate : def 200
 let resFoundDiv = 8; // default 9
 let resBatchDiv = 16;
 let permaRes = false;
+let resPersistance = 20; // default 10
 let minResForRate = 50;
 let maxResForRate = 500;
 let alienResFactor = 7; // base: 10
