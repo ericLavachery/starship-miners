@@ -1655,7 +1655,7 @@
             "cost":5,
             "range":1,
             "noFly":true,
-            "rof":6,
+            "rof":9,
             "accuracy":10,
             "power":12,
             "aoe":"brochette",

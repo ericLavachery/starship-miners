@@ -190,7 +190,7 @@ function goRavit() {
             // xp
             if (biggestRavit < 999) {
                 if (ravitBat.id != selectedBat.id) {
-                    ravitBat.xp = ravitBat.xp+0.3;
+                    ravitBat.xp = ravitBat.xp+1;
                 }
             }
             let numAmmo = 0;

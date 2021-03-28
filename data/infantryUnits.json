@@ -4451,7 +4451,7 @@
             "sound":"magnum_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
-        "equip":["aucun","e-flash","e-ranger","gilet","e-camo","carrousel1","theeye","helper"],
+        "equip":["aucun","e-flash","gilet","e-camo","carrousel1","theeye","helper"],
         "moveCost":10,
         "maxFlood":1,
         "maxScarp":3,
@@ -4505,7 +4505,7 @@
             "maxAmmo":36,
             "ravitBld":"Poudrière"
         },
-        "equip":["aucun","e-flash","e-ranger","gilet","e-camo","carrousel","longtom1","theeye","helper"],
+        "equip":["aucun","e-flash","gilet","e-camo","carrousel","longtom1","theeye","helper"],
         "moveCost":10,
         "maxFlood":1,
         "maxScarp":3,
