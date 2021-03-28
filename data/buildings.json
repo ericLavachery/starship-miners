@@ -111,7 +111,7 @@
         },
         "weapon2":{
             "name":"Lance grenade",
-            "cost":3,
+            "cost":4,
             "range":2,
             "noBis":true,
             "noFly":true,
@@ -342,7 +342,7 @@
         },
         "weapon2":{
             "name":"Lance grenade",
-            "cost":3,
+            "cost":4,
             "range":2,
             "noBis":true,
             "noFly":true,
@@ -457,7 +457,7 @@
         },
         "weapon2":{
             "name":"Mitrailleuses",
-            "cost":4,
+            "cost":5,
             "range":3,
             "noBis":true,
             "kit":true,
@@ -970,7 +970,7 @@
         },
         "weapon2":{
             "name":"Obusier",
-            "cost":5,
+            "cost":6,
             "range":4,
             "noFly":true,
             "noBis":true,
@@ -1390,7 +1390,7 @@
         },
         "weapon2":{
             "name":"Canon",
-            "cost":5,
+            "cost":6,
             "range":3,
             "noBis":true,
             "noFly":true,
@@ -1536,7 +1536,7 @@
         },
         "weapon2":{
             "name":"Lance grenade",
-            "cost":3,
+            "cost":4,
             "range":2,
             "noBis":true,
             "noFly":true,
@@ -1608,7 +1608,7 @@
         },
         "weapon2":{
             "name":"Canon laser",
-            "cost":5,
+            "cost":6,
             "range":5,
             "noBis":true,
             "noMelee":true,
@@ -1754,7 +1754,7 @@
         },
         "weapon2":{
             "name":"Canon laser",
-            "cost":5,
+            "cost":6,
             "range":5,
             "noBis":true,
             "noMelee":true,
@@ -2714,7 +2714,7 @@
         },
         "weapon2":{
             "name":"Fusil antichar",
-            "cost":5,
+            "cost":6,
             "range":4,
             "noBis":true,
             "kit":true,
