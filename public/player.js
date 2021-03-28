@@ -327,6 +327,24 @@ function playerSkillsUTChanges() {
                 unit.weapon2.rof = Math.ceil(unit.weapon2.rof*(playerInfos.comp.def+8)/8);
             }
         }
+        if (playerInfos.comp.def >= 1) {
+            if (unit.cat === 'buildings' || unit.cat === 'devices' || unit.kind === 'zero-defense') {
+                if (Object.keys(unit.weapon).length >= 3) {
+                    let w1CostBonus = playerInfos.comp.def-1;
+                    if (w1CostBonus > unit.weapon.cost-2) {
+                        w1CostBonus = unit.weapon.cost-2;
+                    }
+                    unit.weapon.cost = unit.weapon.cost-w1CostBonus;
+                }
+                if (Object.keys(unit.weapon2).length >= 3) {
+                    let w2CostBonus = playerInfos.comp.def-1;
+                    if (w2CostBonus > unit.weapon2.cost-2) {
+                        w2CostBonus = unit.weapon2.cost-2;
+                    }
+                    unit.weapon2.cost = unit.weapon2.cost-w2CostBonus;
+                }
+            }
+        }
         // ENERGIE
         if (playerInfos.comp.energ >= 1) {
             if (Object.keys(unit.weapon).length >= 3) {

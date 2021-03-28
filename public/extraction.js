@@ -148,7 +148,7 @@ function getMiningRate(bat,fullRate) {
         miningAdj = 1.5;
     }
     if (fullRate) {
-        let batAP = getAP(bat,batType);
+        let batAP = getBatAP(bat,batType);
         return Math.ceil(batType.mining.rate*batAP/batType.ap*bat.squadsLeft/batType.squads*miningAdj);
     } else {
         return Math.ceil(batType.mining.rate*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads*miningAdj);

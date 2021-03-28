@@ -655,7 +655,7 @@
         },
         "weapon2":{
             "name":"Arrosoir",
-            "cost":6,
+            "cost":5,
             "range":1,
             "elevation":1,
             "kit":true,

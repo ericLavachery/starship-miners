@@ -357,22 +357,6 @@ function nextTurnEnd() {
             if (prayedTeams.includes(batType.kind)) {
                 ap = ap+1;
             }
-            if (batType.skills.includes('fastempty')) {
-                emptyBonus = 0;
-                if (batType.skills.includes('ravitaillement')) {
-                    ravitNum = calcRavit(bat);
-                    if (ravitNum < batType.maxSkill) {
-                        emptyBonus = emptyBonus+((batType.maxSkill-ravitNum)/batType.maxSkill*2.5);
-                    }
-                }
-                if (batType.skills.includes('fret')) {
-                    resLoaded = checkResLoad(bat);
-                    if (resLoaded < batType.transRes) {
-                        emptyBonus = emptyBonus+((batType.transRes-resLoaded)/batType.transRes*2.5);
-                    }
-                }
-                ap = ap+Math.round(emptyBonus);
-            }
             oldAP = ap;
             // camoAP
             camoEnCours = false;
@@ -619,6 +603,81 @@ function turnInfo() {
         $('#tour').append('<span class="cy">Champ de force</span><br>');
     }
     $('#tour').append('Morts <span class="or">'+playerInfos.unitsLost+'</span> / '+playerInfos.aliensKilled+' / <span class="cy">'+playerInfos.eggsKilled+'</span>');
+};
+
+function getBatAP(bat,batType) {
+    let newAP = getAP(bat,batType);
+    let boostedTeams = [];
+    let prayedTeams = [];
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" || bat.loc === "trans") {
+            batType = getBatType(bat);
+            if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {
+                boostedTeams.push(batType.kind);
+            }
+            if (bat.tags.includes('prayer') && !prayedTeams.includes(batType.kind)) {
+                prayedTeams.push(batType.kind);
+            }
+
+        }
+    });
+    if (boostedTeams.includes(batType.kind)) {
+        newAP = newAP+1;
+    }
+    if (prayedTeams.includes(batType.kind)) {
+        newAP = newAP+1;
+    }
+    return newAP;
+};
+
+function getAP(bat,batType) {
+    let newAP = bat.ap;
+    if (bat.eq === 'belier' || bat.eq === 'snorkel' || (bat.eq === 'chenilles' && batType.maxFlood >= 1 && batType.maxScarp >= 2)) {
+        newAP = Math.round(newAP*0.9);
+    }
+    if (playerInfos.bldList.includes('QG')) {
+        newAP = Math.floor(newAP*1.1);
+    }
+    if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.skills.includes('fly')) {
+        if (playerInfos.bldList.includes('Aérodocks')) {
+            newAP = Math.round(newAP*1.15);
+        }
+    }
+    if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && !batType.skills.includes('fly') && batType.moveCost < 90) {
+        if (playerInfos.bldList.includes('Garage')) {
+            newAP = newAP+1;
+        }
+    }
+    if (bat.eq === 'g2motor') {
+        newAP = newAP+3;
+    }
+    if (bat.eq === 'helper') {
+        newAP = newAP+1;
+    }
+    if (bat.eq === 'e-ranger' || bat.eq === 'gilet') {
+        newAP = newAP-1;
+    }
+    if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.moveCost < 90) {
+        newAP = newAP+playerInfos.comp.trans-1;
+    }
+    if (batType.skills.includes('fastempty')) {
+        emptyBonus = 0;
+        if (batType.skills.includes('ravitaillement')) {
+            ravitNum = calcRavit(bat);
+            if (ravitNum < batType.maxSkill) {
+                emptyBonus = emptyBonus+((batType.maxSkill-ravitNum)/batType.maxSkill*2.5);
+            }
+        }
+        if (batType.skills.includes('fret')) {
+            resLoaded = checkResLoad(bat);
+            if (resLoaded < batType.transRes) {
+                emptyBonus = emptyBonus+((batType.transRes-resLoaded)/batType.transRes*2.5);
+            }
+        }
+        newAP = newAP+Math.round(emptyBonus);
+    }
+    newAP = newAP+Math.round(bat.vet*vetBonus.ap);
+    return newAP;
 };
 
 function calcUnitResist() {

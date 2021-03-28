@@ -596,40 +596,6 @@ function getStealth(bat) {
     return maxStealth+stealthBonus+vetStealth;
 };
 
-function getAP(bat,batType) {
-    let newAP = bat.ap;
-    if (bat.eq === 'belier' || bat.eq === 'snorkel' || (bat.eq === 'chenilles' && batType.maxFlood >= 1 && batType.maxScarp >= 2)) {
-        newAP = Math.round(newAP*0.9);
-    }
-    if (playerInfos.bldList.includes('QG')) {
-        newAP = Math.floor(newAP*1.1);
-    }
-    if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.skills.includes('fly')) {
-        if (playerInfos.bldList.includes('Aérodocks')) {
-            newAP = Math.round(newAP*1.15);
-        }
-    }
-    if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && !batType.skills.includes('fly') && batType.moveCost < 90) {
-        if (playerInfos.bldList.includes('Garage')) {
-            newAP = newAP+1;
-        }
-    }
-    if (bat.eq === 'g2motor') {
-        newAP = newAP+3;
-    }
-    if (bat.eq === 'helper') {
-        newAP = newAP+1;
-    }
-    if (bat.eq === 'e-ranger' || bat.eq === 'gilet') {
-        newAP = newAP-1;
-    }
-    if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.moveCost < 90) {
-        newAP = newAP+playerInfos.comp.trans-1;
-    }
-    newAP = newAP+Math.round(bat.vet*vetBonus.ap);
-    return newAP;
-};
-
 function calcSpeed(bat,weap,opweap,distance,attacking) {
     let batType = getBatType(bat);
     let crange = weap.range;

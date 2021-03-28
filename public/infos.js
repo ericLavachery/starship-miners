@@ -61,7 +61,7 @@ function batInfos(bat,pop) {
     }
     let allTags = _.countBy(bat.tags);
     // AP
-    let ap = getAP(bat,batType);
+    let ap = getBatAP(bat,batType);
     let hourglass = 'start';
     if (bat.apLeft <= 0) {
         hourglass = 'end';
