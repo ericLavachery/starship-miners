@@ -28,7 +28,7 @@
         "levels":{"rednecks":1,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brazier":99},
         "bldReq":["Prisons"],
         "compReq":{"ordre":1},
-        "costs":{"Fer":30,"Scrap":60},
+        "costs":{"Fer":30,"Carbone":15,"Tungstène":15,"Scrap":45},
         "fabTime":15
     },
     {
@@ -186,7 +186,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":2,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie"],
         "unitUp":"Radios",
-        "costs":{"Fer":54,"Scrap":54,"Carbone":54,"Silicium":27,"Végétaux":128,"Chlore":10,"Tissus":5},
+        "costs":{"Fer":81,"Scrap":68,"Carbone":68,"Silicium":27,"Tungstène":14,"Végétaux":128,"Chlore":10,"Tissus":5},
         "fabTime":15
     },
     {
@@ -328,7 +328,7 @@
         "name":"Hot girls",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":3},
         "bldReq":["Atelier"],
-        "costs":{"Fer":112,"Scrap":224,"Plomb":56,"Aluminium":112,"Tungstène":56,"Végétaux":20,"Chlore":10,"Tissus":5},
+        "costs":{"Fer":112,"Scrap":210,"Carbone":14,"Plomb":56,"Aluminium":112,"Tungstène":70,"Végétaux":20,"Chlore":10,"Tissus":5},
         "fabTime":20
     },
     {
@@ -748,7 +748,7 @@
         "name":"Pushkas",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":6,"brasier":99},
         "bldReq":["Arsenal"],
-        "costs":{"Fer":216,"Scrap":72,"Carbone":18,"Aluminium":144,"Tungstène":54},
+        "costs":{"Fer":216,"Scrap":72,"Carbone":27,"Aluminium":135,"Tungstène":63},
         "fabTime":35
     },
     {
@@ -1513,7 +1513,7 @@
         "name":"Mécanos",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":["Garage"],
-        "costs":{"Fer":68,"Scrap":208,"Carbone":16,"Aluminium":32,"Batteries":24,"Huile":60},
+        "costs":{"Fer":68,"Scrap":200,"Carbone":24,"Tungstène":8,"Aluminium":32,"Batteries":24,"Huile":60},
         "deploy":{"Fuel":30,"Energie":75,"Huile":25},
         "fabTime":30,
         "inRuin":2

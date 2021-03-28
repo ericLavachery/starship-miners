@@ -1297,9 +1297,11 @@ function weaponAdj(weapon,bat,wn) {
     // Elevation
     let infra = '';
     if (batType.cat != 'aliens') {
-        if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
-            if (tile.infra != undefined && tile.infra != 'Débris' && tile.infra != 'Terriers') {
-                infra = tile.infra;
+        if (!batType.skills.includes('machine')) {
+            if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+                if (tile.infra != undefined && tile.infra != 'Débris' && tile.infra != 'Terriers') {
+                    infra = tile.infra;
+                }
             }
         }
     }
