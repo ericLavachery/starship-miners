@@ -439,8 +439,8 @@ function attack(melee) {
     }
     // tir ciblé
     if (selectedBat.tags.includes('vise')) {
-        shots = Math.round(shots*2/3);
-        selectedWeap.power = Math.round(selectedWeap.power*5/3);
+        shots = Math.round(shots*(4+playerInfos.comp.train)/6);
+        selectedWeap.power = Math.round(selectedWeap.power*(5+playerInfos.comp.train)/3);
     }
     let totalDamage = 0;
     let apDamage = 0;

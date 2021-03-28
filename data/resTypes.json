@@ -244,9 +244,9 @@
         "name": "Hydrocarbure",
         "bld": "Derrick",
         "level": 1,
-        "rarity": 60,
+        "rarity": 85,
         "cat": "white",
-        "batch": 8,
+        "batch": 9,
         "energie": 6
     },
     {
