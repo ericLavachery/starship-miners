@@ -1084,12 +1084,36 @@ function addRes(zone) {
             }
         }
     });
-    // numRuins
+    // REAJUSTER NOMBRE DE RUINES (tile.sh)
+    let realNumberOfRuins = 0;
     zone.forEach(function(tile) {
         if (tile.ruins) {
-            tile.sh = numRuins;
+            realNumberOfRuins++;
         }
     });
+    let nothingUnder = 175-(realNumberOfRuins*4);
+    zone.forEach(function(tile) {
+        if (tile.ruins) {
+            tile.sh = realNumberOfRuins;
+            addRoad(tile.id);
+        }
+        if (tile.rq != undefined) {
+            if (tile.rq >= 1) {
+                Object.entries(tile.rs).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    if (value < nothingUnder) {
+                        // console.log(key+'='+value);
+                        value = rand.rand(nothingUnder,nothingUnder+value);
+                        tile.rs[key] = value;
+                        // console.log('new '+key+'='+value);
+                    }
+                });
+            }
+        }
+    });
+    console.log('realNumberOfRuins='+realNumberOfRuins);
+    console.log('nothing under '+nothingUnder);
     // Reajuster les couleurs de gisements
     let tileTotalRes = 0;
     let tileNumRes = 0;
@@ -1144,19 +1168,6 @@ function addRes(zone) {
                     }
                 }
             }
-        }
-    });
-    // REAJUSTER NOMBRE DE RUINES (tile.sh)
-    let realNumberOfRuins = 0;
-    zone.forEach(function(tile) {
-        if (tile.sh != undefined) {
-            realNumberOfRuins++;
-        }
-    });
-    zone.forEach(function(tile) {
-        if (tile.sh != undefined) {
-            tile.sh = realNumberOfRuins;
-            addRoad(tile.id);
         }
     });
     // MAGMA
