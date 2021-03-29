@@ -250,8 +250,9 @@ function chooseRes(again) {
     $("#conUnitList").css("display","block");
     $('#unitInfos').empty();
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
+    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="constName or">RESSOURCES à extraire</span><br>');
     let rate = getMiningRate(selectedBat,true);
     let allRes = getAllRes(selectedBat);
@@ -471,8 +472,9 @@ function loadRes() {
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
+    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
     $('#conUnitList').append('<span class="constName cy"><img src="/static/img/units/'+selectedBatType.cat+'/'+selectedBatPic+'.png">&nbsp;');
     $('#conUnitList').append('<h1>'+selectedBat.type.toUpperCase()+'</h1><br>');
     $('#conUnitList').append('<span class="constName cy">Charger</span> <span class="cy">(max '+restSpace+')</span><br>');
@@ -786,8 +788,9 @@ function voirRessources() {
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
+    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     // $('#conUnitList').append('<span class="constName or" id="gentils">RESSOURCES</span>');
     $('#conUnitList').append('<button type="button" title="Effacer tous les indicateurs" class="boutonGris miniButtons" onclick="showedTilesReset()"><i class="fas fa-eraser"></i></button><span class="butSpace"></span>');
     let visMap = [];

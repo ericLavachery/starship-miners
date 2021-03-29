@@ -198,18 +198,23 @@ function skillsInfos(bat,batType) {
     // TIR CIBLE
     // intéressant si précision en dessous de 10
     if (batType.skills.includes('cible') && !inMelee) {
-        apCost = 3;
+        apCost = 5;
         if (batType.weapon2.rof >= 1 && batType.weapon.cost > batType.weapon2.rof) {
-            apReq = 3+batType.weapon2.cost;
+            apReq = 5+batType.weapon2.cost;
         } else {
-            apReq = 3+batType.weapon.cost;
+            apReq = 5+batType.weapon.cost;
         }
         balise = 'h4';
         if (bat.tags.includes('vise')) {
             balise = 'h3';
         }
+        // let tcPrec = 10+(playerInfos.comp.train*4);
+        let tcPrec = Math.round(100*(6+(playerInfos.comp.train*2))/3);
+        let tcROF = Math.round(100*(5+playerInfos.comp.train)/7);
+        let tcPower = Math.round(100*(5+playerInfos.comp.train)/3);
+        let tcInfo = '+'+tcPrec+'% précision, '+tcROF+'% cadence, '+tcPower+'% puissance ('+apCost+' PA + coût de l\'arme)';
         if (bat.apLeft >= apReq && !bat.tags.includes('vise') && bat.apLeft >= apCost+cheapWeapCost) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+5 précision, 2/3 cadence de tir (3 PA + coût de l\'arme)" class="boutonJaune skillButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+tcInfo+'" class="boutonJaune skillButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Impossible en mêlée";

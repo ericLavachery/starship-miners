@@ -21,8 +21,9 @@ function bfconst(cat,triche,upgrade) {
     $('#tileInfos').empty();
     $('#conUnitList').empty();
     let color = '';
-    $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
+    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
     let lastKind = '';
     let showkind = '';
     let allUnitsList = unitTypes.slice();

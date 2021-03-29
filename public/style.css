@@ -196,6 +196,15 @@ h5 {
     margin-bottom: 2px;
     color: #d5cabd;
 }
+.closeIcon {
+    display: inline-block;
+    font-size: 16px;
+    text-align: right;
+    width: 22px;
+    margin-left: 256px;
+    color: #d5cabd;
+    position: fixed;
+}
 .constIcon {
     display: inline-block;
     font-size: 12px;

@@ -5,8 +5,9 @@ function gangEdit() {
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
+    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="blockTitle"><h3>Player Infos</h3></span>');
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     // mapDiff
@@ -781,8 +782,9 @@ function landerFill() {
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
+    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="constName or">REMPLIR LE LANDER</span><br>');
     findLanders();
     let lastKind = '';
@@ -1185,8 +1187,9 @@ function missionResults(onlyLanders) {
     $('#tileInfos').empty();
     $('#conUnitList').empty();
     calcEndRes(onlyLanders);
-    $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
+    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="constName or" id="gentils">RAPPORT DE MISSION</span><br>');
     $('#conUnitList').append('<br>');
     let balance = 0;

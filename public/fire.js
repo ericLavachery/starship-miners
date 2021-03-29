@@ -361,6 +361,12 @@ function attack(melee) {
         shots = Math.round(shots*guerBonus);
         attFactor = Math.round(attFactor*guerBonus);
     }
+    // tir ciblé
+    if (selectedBat.tags.includes('vise')) {
+        shots = Math.round(shots*(5+playerInfos.comp.train)/7);
+        selectedWeap.power = Math.round(selectedWeap.power*(5+playerInfos.comp.train)/3);
+        attFactor = Math.round(attFactor*(4+playerInfos.comp.train)/6);
+    }
     // Attack %
     $('#report').append('<span class="report jaune">Attaque '+attFactor+'%<br></span>');
     // INFRASTRUCTURES
@@ -436,11 +442,6 @@ function attack(melee) {
             shots = Math.ceil(shots/shieldValue);
             $('#report').append('<span class="report rose">Bouclier activé<br></span>');
         }
-    }
-    // tir ciblé
-    if (selectedBat.tags.includes('vise')) {
-        shots = Math.round(shots*(4+playerInfos.comp.train)/6);
-        selectedWeap.power = Math.round(selectedWeap.power*(5+playerInfos.comp.train)/3);
     }
     let totalDamage = 0;
     let apDamage = 0;
