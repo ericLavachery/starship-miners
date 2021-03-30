@@ -73,9 +73,13 @@ function skillsInfos(bat,batType) {
         } else {
             apReq = bat.ap-3;
         }
+        let bouton = 'boutonBrun';
+        if (bat.tags.includes('mining')) {
+            bouton = 'boutonGris';
+        }
         if (bat.apLeft >= apReq && !bat.tags.includes('guet') && !batType.skills.includes('sentinelle') && !batType.skills.includes('initiative') && !batType.skills.includes('after')) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Faire le guet (pas de malus à la riposte)" class="boutonBrun skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Faire le guet (pas de malus à la riposte)" class="'+bouton+' skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</'+balise+'></span>');
         } else {
             if (batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('after')) {
                 skillMessage = "Sentinelle";
@@ -97,8 +101,12 @@ function skillsInfos(bat,batType) {
             apCost = bat.ap+3;
         }
         apReq = bat.ap-3;
+        let bouton = 'boutonBrun';
+        if (bat.tags.includes('mining')) {
+            bouton = 'boutonGris';
+        }
         if (bat.apLeft >= apReq && !bat.tags.includes('fortif') && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Se fortifier (bonus couverture)" class="boutonBrun skillButtons" onclick="fortification()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Se fortifier (bonus couverture)" class="'+bouton+' skillButtons" onclick="fortification()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Vous ne pouvez pas vous fortifier en mêlée";
@@ -155,8 +163,12 @@ function skillsInfos(bat,batType) {
         if (bat.fuzz <= -2) {
             balise = 'h3';
         }
+        let bouton = 'boutonRose';
+        if (bat.tags.includes('mining')) {
+            bouton = 'boutonGris';
+        }
         if (bat.apLeft >= apReq && bat.fuzz >= -1 && camoufOK) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Mode furtif" class="boutonRose skillButtons" onclick="camouflage('+apCost+')"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Mode furtif" class="'+bouton+' skillButtons" onclick="camouflage('+apCost+')"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
         } else {
             if (bat.fuzz <= -2) {
                 skillMessage = "Déjà en mode furtif";

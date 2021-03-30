@@ -255,7 +255,7 @@ function batDeath(bat,count) {
             addAlienRes(bat);
         }
         if (!playerInfos.knownAliens.includes(batType.name)) {
-            newAlienKilled(batType);
+            newAlienKilled(batType,tileId);
         }
         let batIndex = aliens.findIndex((obj => obj.id == bat.id));
         aliens.splice(batIndex,1);
@@ -292,14 +292,14 @@ function batDeathEffect(bat,quiet,title,body) {
         warning(title,body);
     }
     if (bat.team === 'aliens' && !playerInfos.knownAliens.includes(bat.type)) {
-        newAlienKilled(bat.type);
+        newAlienKilled(bat.type,bat.tileId);
     }
     if (bat.team != 'aliens') {
         $('#unitInfos').empty();
     }
 };
 
-function newAlienKilled(batType) {
+function newAlienKilled(batType,tileId) {
     playerInfos.knownAliens.push(batType.name);
     let xpBonus = batType.killXP;
     xpBonus = Math.round(xpBonus*(playerInfos.comp.train+2)/3);
@@ -312,7 +312,10 @@ function newAlienKilled(batType) {
         }
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
-                bat.xp = bat.xp+xpBonus;
+                let distance = calcDistance(tileId,bat.tileId);
+                if (distance <= 7 || xpBonus >= 25) {
+                    bat.xp = bat.xp+xpBonus;
+                }
             }
         });
         warning('Alien inconnu tué : '+batType.name,'Toutes vos unités dans la zone ont gagné '+xpBonus+' points d\'expérience');
