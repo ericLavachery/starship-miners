@@ -194,7 +194,7 @@ function tirCible() {
     if (!selectedBat.tags.includes('vise')) {
         selectedBat.tags.push('vise');
     }
-    selectedBat.apLeft = selectedBat.apLeft-5;
+    selectedBat.apLeft = selectedBat.apLeft-4;
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };

@@ -558,7 +558,7 @@ function getStealth(bat) {
     if (bat.tags.includes('drunk')) {
         batStealth = batStealth-4;
     }
-    if (bat.eq === 'e-camo' || bat.eq === 'kit-sentinelle' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
+    if (bat.eq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
         if (batType.skills.includes('camo')) {
             batStealth = batStealth+4;
         } else {
