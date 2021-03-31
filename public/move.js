@@ -403,7 +403,7 @@ function calcMoveCost(targetTileId,diag) {
     if (selectedBat.eq === 'kit-garde') {
         baseMoveCost = 4;
     }
-    if (selectedBat.eq === 'kit-artilleur') {
+    if (selectedBat.eq === 'kit-artilleur' || selectedBat.eq === 'kit-guetteur') {
         baseMoveCost = 5;
     }
     if (selectedBat.eq === 'kit-pompiste') {

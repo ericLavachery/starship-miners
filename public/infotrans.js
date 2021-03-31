@@ -99,6 +99,9 @@ function calcVolume(bat,batType) {
     if (bat.eq === 'kit-artilleur') {
         batVolume = Math.ceil(batVolume*1.33);
     }
+    if (bat.eq === 'kit-guetteur') {
+        batVolume = Math.ceil(batVolume*1.33);
+    }
     if (bat.eq === 'kit-pompiste') {
         batVolume = Math.ceil(batVolume*1.22);
     }

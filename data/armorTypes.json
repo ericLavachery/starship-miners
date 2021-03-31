@@ -592,6 +592,17 @@
         "name": "kit-guetteur",
         "cat":"equip",
         "skills": [],
+        "info": "Minicanon plasma",
+        "bldReq":["Atelier"],
+        "compReq":{"def":1,"energ":1},
+        "factor":"crew",
+        "costs":{"Carbone":24,"Scrap":6,"Fer":6,"Silicium":6,"Electros":6,"Batteries":1},
+        "deploy":{"Energie":12}
+    },
+    {
+        "name": "kit-chouf",
+        "cat":"equip",
+        "skills": [],
         "info": "Cadence++ Précision++ Elévation+ Marqueur",
         "bldReq":["Atelier"],
         "compReq":{"def":1,"det":1},

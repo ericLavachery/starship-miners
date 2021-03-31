@@ -96,8 +96,16 @@
     },
     {
         "id":190,
+        "name":"Choufs",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":1,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":[],
+        "costs":{"Fer":12,"Scrap":12},
+        "fabTime":5
+    },
+    {
+        "id":245,
         "name":"Guetteurs",
-        "levels":{"rednecks":99,"blades":99,"bulbos":1,"drogmulojs":1,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":1,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
         "costs":{"Fer":12,"Scrap":12},
         "fabTime":5

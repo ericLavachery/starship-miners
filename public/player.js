@@ -329,7 +329,7 @@ function playerSkillsUTChanges() {
             }
         }
         if (playerInfos.comp.def >= 1) {
-            if (unit.cat === 'buildings' || unit.cat === 'devices' || unit.kind === 'zero-defense') {
+            if (unit.cat === 'buildings' || unit.cat === 'devices' || unit.kind === 'zero-defense' || unit.skills.includes('garde')) {
                 if (Object.keys(unit.weapon).length >= 3) {
                     let w1CostBonus = playerInfos.comp.def-1;
                     if (w1CostBonus > unit.weapon.cost-2) {

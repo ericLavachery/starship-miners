@@ -561,7 +561,7 @@ function getStealth(bat) {
     if (bat.tags.includes('drunk')) {
         batStealth = batStealth-4;
     }
-    if (bat.eq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
+    if (bat.eq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
         if (batType.skills.includes('camo')) {
             batStealth = batStealth+4;
         } else {
@@ -1093,7 +1093,7 @@ function weaponAdj(weapon,bat,wn) {
         if (bat.eq === 'lunette' || bat.eq === 'lunette1') {
             thisWeapon.cost = thisWeapon.cost+1;
         }
-        if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.eq.includes('kit-guetteur') || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
+        if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.eq.includes('kit-chouf') || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
             if (thisWeapon.elevation <= 1) {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
@@ -1114,7 +1114,7 @@ function weaponAdj(weapon,bat,wn) {
         if (bat.eq === 'lunette' || bat.eq === 'lunette2') {
             thisWeapon.cost = thisWeapon.cost+1;
         }
-        if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.eq.includes('kit-guetteur')) {
+        if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.eq.includes('kit-chouf')) {
             if (thisWeapon.elevation <= 1) {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
@@ -1415,16 +1415,16 @@ function chargeurAdj(bat,shots,weap) {
     if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || weap.name.includes('Blister')) {
         mult = 1.33;
     }
-    if (bat.eq.includes('kit-guetteur')) {
+    if (bat.eq.includes('kit-chouf')) {
         mult = 2;
     }
-    if (bat.eq.includes('chargeur') || bat.eq.includes('kit-guetteur') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
+    if (bat.eq.includes('chargeur') || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
         if (weap.num === 1) {
-            if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.eq.includes('kit-guetteur') || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
+            if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
                 newShots = Math.round(newShots*mult);
             }
         } else {
-            if (bat.eq === 'chargeur2' || bat.eq === 'chargeur' || bat.eq.includes('kit-guetteur') || bat.eq === 'crimekitto') {
+            if (bat.eq === 'chargeur2' || bat.eq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitto') {
                 newShots = Math.round(newShots*mult);
             }
         }

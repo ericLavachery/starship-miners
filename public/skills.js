@@ -142,6 +142,7 @@ function camouflage(apCost) {
     }
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
+    showBataillon(selectedBat);
     showBatInfos(selectedBat);
 };
 
@@ -174,6 +175,7 @@ function camoOut() {
     selectedBat.fuzz = selectedBatType.fuzz;
     selectedBat.camoAP = -1;
     selectedBatArrayUpdate();
+    showBataillon(selectedBat);
     showBatInfos(selectedBat);
 };
 

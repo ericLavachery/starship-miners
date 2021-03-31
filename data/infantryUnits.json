@@ -567,13 +567,13 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","fortif","fastguet","garde","kitimage"],
-        "fuzz":1.5,
+        "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
     {
         "id":190,
-        "name":"Guetteurs",
-        "pic":"guetteur",
+        "name":"Choufs",
+        "pic":"chouf",
         "cat":"infantry",
         "kind":"zero-defense",
         "sort":70,
@@ -613,13 +613,65 @@
             "sound":"mark",
             "ammo":["marquage"]
         },
-        "equip":["aucun","e-flash","e-camo","kit-guetteur","e-ranger","e-jetpack","lunette1","chargeur1"],
+        "equip":["aucun","e-flash","e-camo","kit-chouf","e-ranger","e-jetpack","lunette1","chargeur1"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","fortif","maycamo","fastguet","garde"],
-        "fuzz":1.5,
+        "fuzz":0.5,
+        "deathFx":"13797__sweetneo85__wilhelm"
+    },
+    {
+        "id":245,
+        "name":"Guetteurs",
+        "pic":"guetteur",
+        "cat":"infantry",
+        "kind":"zero-defense",
+        "sort":70,
+        "squads":3,
+        "squadSize":4,
+        "crew":1,
+        "hp":5,
+        "armor":0,
+        "size":3,
+        "volume":0.9,
+        "stealth":7,
+        "ap":14,
+        "maxSalvo":2,
+        "weapon":{
+            "name":"Revolver",
+            "cost":2,
+            "range":1,
+            "isShort":true,
+            "rof":4,
+            "accuracy":18,
+            "power":6,
+            "aoe":"unit",
+            "sound":"revolver_x2",
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+        },
+        "weapon2":{
+            "name":"Minicanon plasma",
+            "cost":5,
+            "range":1,
+            "elevation":1,
+            "kit":true,
+            "rof":4,
+            "accuracy":30,
+            "dca":1,
+            "power":16,
+            "aoe":"brochette",
+            "sound":"plasma_canon",
+            "ammo":["cn-plasma","cn-plastanium","cn-uridium","cn-nanite"]
+        },
+        "equip":["aucun","e-flash","e-camo","kit-guetteur","e-ranger","e-jetpack","chargeur1"],
+        "moveCost":3,
+        "maxFlood":3,
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["fouille","fortif","maycamo","fastguet","garde","kitimage"],
+        "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
     {
@@ -675,7 +727,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","fortif","fastguet","garde","kitimage"],
-        "fuzz":1.5,
+        "fuzz":0.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
     {
@@ -732,7 +784,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","ravitaillement","fastguet","garde","kitimage"],
         "maxSkill":3,
-        "fuzz":1.5,
+        "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
     {
@@ -765,7 +817,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-taser","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
+            "ammo":["lame","lame-poison","lame-atium","lame-poraz","lame-taser","lame-mono","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
             "name":"Marquage",
@@ -786,8 +838,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","maycamo","fastguet","garde"],
-        "fuzz":1,
+        "skills":["fouille","fortif","camo","fastguet","garde"],
+        "fuzz":0,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
     {
