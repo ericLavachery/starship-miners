@@ -304,13 +304,13 @@ function showBataillon(bat) {
         activityBar = 'mining';
     } else {
         if (bat.tags.includes('fortif') || !batType.skills.includes('fortif')) {
-            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
+            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
                 activityBar = 'fortifguet';
             } else {
                 activityBar = 'fortif';
             }
         } else {
-            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
+            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
                 activityBar = 'guet';
             }
         }

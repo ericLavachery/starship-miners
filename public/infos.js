@@ -149,7 +149,7 @@ function batInfos(bat,pop) {
         $('#'+bodyPlace).append('<span class="paramName cy">Embuscade</span><span class="paramIcon"></span><span class="paramValue cy">'+embushBonus+'%</span><br>');
     }
     if (pop) {
-        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative')) {
+        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || bat.eq === 'detector') {
             $('#'+bodyPlace).append('<span class="paramName cy">Guet</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
         }
     }

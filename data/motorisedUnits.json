@@ -1053,7 +1053,7 @@
             "ravitBld":"Arsenal"
         },
         "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","iso","dunium","bonibo","adamantite"],
-        "equip":["aucun","g2motor","chenilles","snorkel","lunette1"],
+        "equip":["aucun","g2motor","chenilles","snorkel","lunette1","detector"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -1265,12 +1265,12 @@
             "ammo":["marquage"]
         },
         "protection":["aucun"],
-        "equip":["aucun","g2motor","e-flash"],
+        "equip":["aucun","g2motor","e-flash","detector"],
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fly","sentinelle","robot","longshot","light","recupres"],
+        "skills":["noguet","fly","robot","longshot","light","recupres"],
         "fuzz":0,
         "deathFx":"505751__thehorriblejoke__computer-breaking-sound"
     },

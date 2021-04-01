@@ -852,7 +852,7 @@ function cocoonSpawn(bat) {
         eggCat = newEggCat();
     }
     console.log('eggCat: '+eggCat);
-    if (eggTurn > eggLife && bat.squadsLeft === 6) {
+    if (eggTurn > eggLife) {
         // TRANFORMATION EN CLASSE A !
         if (eggCat === 'bug') {
             if (eggLevel >= 6 && playerInfos.mapTurn >= 50) {

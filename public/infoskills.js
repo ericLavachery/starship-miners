@@ -62,7 +62,7 @@ function skillsInfos(bat,batType) {
     // GUET
     if (batType.weapon.rof >= 1 && bat.ap >= 1 && !batType.skills.includes('noguet') && (hasW1 || hasW2)) {
         balise = 'h4';
-        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
             balise = 'h3';
         }
         apCost = 3;
@@ -77,11 +77,11 @@ function skillsInfos(bat,batType) {
         if (bat.tags.includes('mining')) {
             bouton = 'boutonGris';
         }
-        if (bat.apLeft >= apReq && !bat.tags.includes('guet') && !batType.skills.includes('sentinelle') && !batType.skills.includes('initiative') && !batType.skills.includes('after')) {
+        if (bat.apLeft >= apReq && !bat.tags.includes('guet') && !batType.skills.includes('sentinelle') && bat.eq != 'detector' && !batType.skills.includes('initiative') && !batType.skills.includes('after')) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Faire le guet (pas de malus à la riposte)" class="'+bouton+' skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</'+balise+'></span>');
         } else {
-            if (batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+            if (batType.skills.includes('sentinelle') || bat.eq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
                 skillMessage = "Sentinelle";
             } else {
                 skillMessage = "Pas assez de PA";

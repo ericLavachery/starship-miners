@@ -623,10 +623,10 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
             speed = speed-stealth;
         }
     }
-    if (bat.eq === 'w1-autogun') {
+    if (bat.eq === 'w1-autogun' || bat.eq === 'w1-autopistol') {
         speed = speed-50-stealth;
     } else {
-        if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle')) && !attacking) {
+        if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector') && !attacking) {
             speed = speed-watchInitBonus-stealth;
             console.log('bonus guet');
         }
@@ -1122,7 +1122,7 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     if (bat.eq === 'theeye') {
-        thisWeapon.accuracy = thisWeapon.accuracy+3;
+        thisWeapon.accuracy = thisWeapon.accuracy+4;
         if (thisWeapon.cost >= 2) {
             thisWeapon.cost = thisWeapon.cost-1;
         }
@@ -1176,7 +1176,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.accuracy = thisWeapon.accuracy+5;
         }
     }
-    if (bat.eq === 'kit-garde') {
+    if (bat.eq === 'kit-garde' || bat.eq === 'kit-guetteur') {
         if (thisWeapon.num === 1) {
             thisWeapon.noDef = true;
         }
@@ -1462,7 +1462,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
         }
     }
     // GUET
-    if (guet || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+    if (guet || batType.skills.includes('sentinelle') || bat.eq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
         brideDef = 1;
     }
     // Defense, Bastion
@@ -1473,7 +1473,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
     }
     // baddef
     if (batType.skills.includes('baddef')) {
-        if (guet || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+        if (guet || batType.skills.includes('sentinelle') || bat.eq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
             brideDef = brideDef/1.17;
         } else {
             brideDef = brideDef/1.5;

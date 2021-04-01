@@ -194,7 +194,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":2,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie"],
         "unitUp":"Radios",
-        "costs":{"Fer":81,"Scrap":68,"Carbone":68,"Silicium":27,"Tungstène":14,"Végétaux":128,"Chlore":10,"Tissus":5},
+        "costs":{"Fer":81,"Scrap":68,"Carbone":68,"Silicium":27,"Végétaux":128,"Chlore":10,"Tissus":5},
         "fabTime":15
     },
     {

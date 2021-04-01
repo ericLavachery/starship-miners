@@ -452,6 +452,16 @@
         "deploy":{"Fuel":12}
     },
     {
+        "name": "detector",
+        "cat":"equip",
+        "skills": [],
+        "info": "Initiative++",
+        "bldReq":["Laboratoire"],
+        "compReq":{"det":3},
+        "factor":"crew",
+        "costs":{"Cuivre":3,"Electros":3,"Silicium":3}
+    },
+    {
         "name": "helper",
         "cat":"equip",
         "skills": [],
