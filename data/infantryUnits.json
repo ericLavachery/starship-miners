@@ -2809,7 +2809,7 @@
         },
         "weapon2":{
             "name":"Canon magnétique",
-            "cost":6,
+            "cost":7,
             "range":3,
             "elevation":3,
             "noMelee":true,
