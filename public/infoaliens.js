@@ -222,7 +222,7 @@ function showEnemyBatInfos(bat) {
             $('#unitInfos').append('<span class="paramName">Invisible</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
         }
     }
-    if (compCA >= 1) {
+    if (compCA >= 2) {
         if (batType.skills.includes('ponte')) {
             $('#unitInfos').append('<span class="paramName">Ponte</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
         }
@@ -326,7 +326,7 @@ function showEnemyBatInfos(bat) {
             if (compCA >= 3) {
                 $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
             }
-            if (compCA >= 1) {
+            if (compCA >= 2) {
                 $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+attaques+' &times '+thisWeapon.power+'</span><br>');
             }
             if (compCA >= 2) {
@@ -334,7 +334,7 @@ function showEnemyBatInfos(bat) {
             }
         }
     }
-    if (compCA >= 2) {
+    if (compCA >= 3) {
         if (batType.weapon2.rof >= 1) {
             $('#unitInfos').append('<div class="shSpace"></div>');
             thisWeapon = weaponAdj(batType.weapon2,bat,'w2');
@@ -365,7 +365,7 @@ function showEnemyBatInfos(bat) {
             if (compCA >= 3) {
                 $('#unitInfos').append('<span class="paramName">Précision</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.accuracy+'</span><br>');
             }
-            if (compCA >= 1) {
+            if (compCA >= 2) {
                 $('#unitInfos').append('<span class="paramName">Puisance</span><span class="paramIcon"></span><span class="paramValue">'+attaques+' &times '+thisWeapon.power+'</span><br>');
             }
             if (compCA >= 2) {

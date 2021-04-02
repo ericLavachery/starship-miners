@@ -436,7 +436,7 @@
         "fxPriority":5,
         "killRes":{"Bugium":13,"Aranium":34,"Bossium":20,"Creatite":6,"Slime":24,"Mendium":24},
         "killXP":30,
-        "flavText":"Les glaireuses pondent de gluantes."
+        "flavText":"Les glaireuses pondent des gluantes."
     },
     {
         "id":5,
@@ -827,10 +827,10 @@
             "elevation":2,
             "noFly":false,
             "isMelee":false,
-            "rof":6,
+            "rof":8,
             "accuracy":22,
             "dca":1.5,
-            "power":15,
+            "power":20,
             "aoe":"brochette",
             "sound":"squishX2",
             "ammo":["acide"]
@@ -842,10 +842,10 @@
             "elevation":2,
             "noFly":false,
             "isMelee":false,
-            "rof":6,
+            "rof":8,
             "accuracy":28,
             "dca":1.5,
-            "power":20,
+            "power":25,
             "aoe":"brochette",
             "sound":"squishbig",
             "ammo":["acide"]
@@ -859,7 +859,7 @@
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":13,"Bossium":9,"Slime":13,"Egidium":24,"Mendium":3,"Creatite":6},
         "killXP":25,
-        "flavText":"Les scarabs pondent de bugs."
+        "flavText":"Les scarabs pondent des bugs."
     },
     {
         "id":13,
@@ -1146,7 +1146,7 @@
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":4,"Germium":3,"Bossium":15,"Creatite":6,"Slime":2},
         "killXP":20,
-        "flavText":"Les vermisseaux pondent de moucherons et des lucioles."
+        "flavText":"Les vermisseaux pondent des moucherons et des lucioles."
     },
     {
         "id":20,

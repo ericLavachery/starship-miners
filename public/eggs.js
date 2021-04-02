@@ -115,7 +115,7 @@ function checkEggsDrop() {
     let drop = false;
     let eggPauseDice = calcEggPause(false);
     let adjMapDrop = playerInfos.mapDrop;
-    let adjMapTurn = playerInfos.mapTurn-10+zone[0].mapDiff;
+    let adjMapTurn = playerInfos.mapTurn+landingNoise-13+zone[0].mapDiff;
     if (adjMapTurn <= 0) {
         adjMapTurn = 0;
         adjMapDrop = 0;
@@ -671,7 +671,7 @@ function spawns() {
                 alienSpawn(bat,'Scorpions');
             } else if (bat.type === 'Veilleurs' && aliens.length < maxAliens && bat.squadsLeft >= 3) {
                 let lifeTurn = playerInfos.mapTurn-bat.creaTurn;
-                if (lifeTurn === 1) {
+                if (lifeTurn === 1 && landingNoise >= 2) {
                     veilSpawn(bat);
                     veilSpawn(bat);
                     veilSpawn(bat);

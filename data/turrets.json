@@ -44,7 +44,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans"],
+        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans","siland"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -102,7 +102,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans"],
+        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans","siland"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -160,7 +160,7 @@
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans"],
+        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans","siland"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -221,7 +221,7 @@
             "ravitBld":"Arsenal"
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lcomet","megafret","megatrans"],
+        "equip":["aucun","landerwkit","w2-lcomet","megafret","megatrans","siland"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -280,7 +280,7 @@
             "ammo":["boulet"]
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lcradle","megafret","megatrans"],
+        "equip":["aucun","landerwkit","w2-lcradle","megafret","megatrans","siland"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -349,7 +349,7 @@
             "ravitBld":"Arsenal"
         },
         "protection":["aucun"],
-        "equip": ["aucun","w2-lcomet","megatrans"],
+        "equip": ["aucun","w2-lcomet","megatrans","siland"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -393,7 +393,7 @@
         },
         "weapon2":{},
         "protection":["aucun"],
-        "equip":["aucun","landerwkit"],
+        "equip":["aucun","landerwkit","siland"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -455,7 +455,7 @@
             "ravitBld":"Arsenal"
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lcomet","megatrans"],
+        "equip":["aucun","landerwkit","w2-lcomet","megatrans","siland"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,

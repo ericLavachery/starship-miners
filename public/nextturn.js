@@ -554,8 +554,10 @@ function turnInfo() {
     foggersTiles = [];
     zombifiersTiles = [];
     hasScraptruck = false;
+    landingNoise = 0;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
+            let batType = getBatType(bat);
             batFuzz = calcBatFuzz(bat);
             fuzzTotal = fuzzTotal+batFuzz;
             if (bat.type === 'Fog' && bat.tags.includes('fog')) {
@@ -567,8 +569,16 @@ function turnInfo() {
             if (bat.type === 'Scraptrucks') {
                 hasScraptruck = true;
             }
+            if (batType.skills.includes('transorbital') && bat.eq != 'siland') {
+                if (landingNoise >= 2) {
+                    landingNoise = landingNoise+Math.floor(batType.hp/150);
+                } else {
+                    landingNoise = landingNoise+3+Math.floor(batType.hp/75);
+                }
+            }
         }
     });
+    console.log('landingNoise = '+landingNoise);
     playerInfos.fuzzTotal = fuzzTotal;
     let bonusDiff = Math.floor((fuzzTotal+rand.rand(0,fuzzDiv)-(fuzzDiv/2))/fuzzDiv);
     playerInfos.mapAdjDiff = zone[0].mapDiff+bonusDiff;
