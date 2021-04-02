@@ -1799,7 +1799,7 @@
         "weapon":{
             "name":"Jet d'acide",
             "cost":2,
-            "range":2,
+            "range":3,
             "noFly":false,
             "isMelee":false,
             "rof":10,

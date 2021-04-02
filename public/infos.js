@@ -7,6 +7,7 @@ function unitDetail(batId) {
     let bat = getBatById(batId);
     batInfos(bat,true);
     batFullInfos(bat);
+    batDebarq = {};
 };
 
 function batInfos(bat,pop) {

@@ -155,6 +155,9 @@ function doCraft(craftId,number) {
         resSub(key,value);
     });
     resAdd(craft.result,number);
+    if (playerInfos.mapTurn >= 3) {
+        calcEndRes(false);
+    }
     craftWindow();
 };
 
@@ -224,10 +227,18 @@ function showCraftCost(craft,number) {
         let value = entry[1];
         value = value*craftFactor;
         dispoRes = getDispoRes(key);
+        let resColor = 'vert';
+        if (playerInfos.mapTurn >= 3) {
+            if (playerInfos.endRes[key] != undefined) {
+                if (playerInfos.endRes[key]-playerInfos.startRes[key] < value) {
+                    resColor = 'or';
+                }
+            }
+        }
         if (dispoRes >= value) {
-            craftCostsList = craftCostsList+'<span class="gf">'+key+':</span><span class="bleu">'+value+'</span>/<span class="vert">'+dispoRes+'</span> ';
+            craftCostsList = craftCostsList+'<span class="gf">'+key+':</span><span class="bleu">'+value+'</span>/<span class="'+resColor+'">'+dispoRes+'</span> ';
         } else {
-            craftCostsList = craftCostsList+'<span class="gf">'+key+':</span><span class="rouge">'+value+'</span>/<span class="vert">'+dispoRes+'</span> ';
+            craftCostsList = craftCostsList+'<span class="gf">'+key+':</span><span class="rouge">'+value+'</span>/<span class="'+resColor+'">'+dispoRes+'</span> ';
         }
     });
     return craftCostsList;

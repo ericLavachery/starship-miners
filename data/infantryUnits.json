@@ -5011,7 +5011,7 @@
         "maxSalvo":2,
         "weapon":{
             "name":"Fusil magnétique",
-            "cost":4,
+            "cost":5,
             "range":2,
             "elevation":1,
             "noBis":true,
