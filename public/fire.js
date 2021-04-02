@@ -364,8 +364,8 @@ function attack(melee) {
     // tir ciblé
     if (selectedBat.tags.includes('vise')) {
         shots = Math.round(shots*(5+playerInfos.comp.train)/7);
-        selectedWeap.power = Math.round(selectedWeap.power*(5+playerInfos.comp.train)/3);
-        attFactor = Math.round(attFactor*(4+playerInfos.comp.train)/6);
+        selectedWeap.power = Math.round(selectedWeap.power*(8+playerInfos.comp.train)/5);
+        attFactor = Math.round(attFactor*(5+playerInfos.comp.train)/7);
     }
     // Attack %
     $('#report').append('<span class="report jaune">Attaque '+attFactor+'%<br></span>');

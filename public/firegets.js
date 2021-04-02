@@ -35,8 +35,7 @@ function isHit(accuracy,minAccu,aoe,size,stealth,cover,speed,shotDice) {
     }
     // tir ciblé
     if (selectedBat.tags.includes('vise')) {
-        // prec = prec+10+(playerInfos.comp.train*4);
-        prec = Math.round(prec*(6+(playerInfos.comp.train*2))/3);
+        prec = Math.round(prec*(5+playerInfos.comp.train)/3);
     }
     let dice = rand.rand(1,shotDice);
     let hitChance = Math.round(Math.sqrt(size)*prec);
@@ -302,7 +301,7 @@ function batDeathEffect(bat,quiet,title,body) {
 function newAlienKilled(batType,tileId) {
     playerInfos.knownAliens.push(batType.name);
     let xpBonus = batType.killXP;
-    xpBonus = Math.round(xpBonus*(playerInfos.comp.train+2)/3);
+    xpBonus = Math.floor(xpBonus*(playerInfos.comp.train+2)/4);
     if (xpBonus >= 1) {
         if (Object.keys(selectedBat).length >= 1) {
             if (selectedBat.team === 'player') {
