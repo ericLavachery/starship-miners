@@ -199,6 +199,8 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
         }
     }
     let resRate = Math.ceil(resHere*batRate/mineRateDiv*multiExtractAdj);
+    console.log(res.name);
+    console.log('resRate='+resRate);
     // ADJ SUBTYPE & LEVELS
     if (!batType.mining.types.includes(res.bld)) {
         if (batType.mining.subTypes.includes(res.bld)) {
@@ -220,6 +222,7 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     if (value <= 0) {
         resRate = 0;
     }
+    console.log('resRate='+resRate);
     return resRate;
 };
 
@@ -256,28 +259,28 @@ function chooseRes(again) {
     $('#conUnitList').append('<span class="constName or">RESSOURCES à extraire</span><br>');
     let rate = getMiningRate(selectedBat,true);
     let allRes = getAllRes(selectedBat);
+    console.log('allRes');
+    console.log(allRes);
     let totalExRes = 0;
     Object.entries(allRes).map(entry => {
         let key = entry[0];
         let value = entry[1];
         res = getResByName(key);
         if (selectedBatType.mining.types.includes(res.bld) || selectedBatType.mining.subTypes.includes(res.bld)) {
-            if (selectedBatType.mining.level >= res.level) {
-                let resMiningRate = getResMiningRate(selectedBat,res,value,true,false);
-                let adjustedRMR = resMiningRate;
-                if (playerInfos.comp.tri >= 1 && res.name === 'Scrap') {
-                    adjustedRMR = Math.round(resMiningRate/100*(101+(((playerInfos.comp.tri*playerInfos.comp.tri)+3)*2)));
-                } else if (playerInfos.comp.ext >= 1) {
-                    adjustedRMR = Math.round(resMiningRate/100*(101+(((playerInfos.comp.ext*playerInfos.comp.ext)+3)*2)));
-                }
-                if (selectedBat.extracted.includes(res.name)) {
-                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                    totalExRes = totalExRes+adjustedRMR;
-                } else {
-                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-                }
-                $('#conUnitList').append('<span class="constName klik" onclick="resSelect('+res.id+')">'+res.name+' : '+adjustedRMR+'</span><br>');
+            let resMiningRate = getResMiningRate(selectedBat,res,value,true,false);
+            let adjustedRMR = resMiningRate;
+            if (playerInfos.comp.tri >= 1 && res.name === 'Scrap') {
+                adjustedRMR = Math.round(resMiningRate/100*(101+(((playerInfos.comp.tri*playerInfos.comp.tri)+3)*2)));
+            } else if (playerInfos.comp.ext >= 1) {
+                adjustedRMR = Math.round(resMiningRate/100*(101+(((playerInfos.comp.ext*playerInfos.comp.ext)+3)*2)));
             }
+            if (selectedBat.extracted.includes(res.name)) {
+                $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                totalExRes = totalExRes+adjustedRMR;
+            } else {
+                $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+            }
+            $('#conUnitList').append('<span class="constName klik" onclick="resSelect('+res.id+')">'+res.name+' : '+adjustedRMR+'</span><br>');
         }
     });
     $('#conUnitList').append('<span class="constName">Total de ressources : <span class="cy">'+totalExRes+'</span></span><br>');

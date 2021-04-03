@@ -312,7 +312,7 @@ function newAlienKilled(batType,tileId) {
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 let distance = calcDistance(tileId,bat.tileId);
-                if (distance <= 7 || xpBonus >= 25) {
+                if (distance <= 4 || xpBonus >= 25) {
                     bat.xp = bat.xp+xpBonus;
                 }
             }
