@@ -50,7 +50,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                     if (distance === 0 || (distance === 1 && (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('transorbital')))) {
                         batType = getBatType(bat);
                         batUnits = bat.squadsLeft*batType.squadSize;
-                        if (batType.cat === cat || (batType.cat === 'devices' && cat === 'buildings')) {
+                        if (batType.cat === cat || (batType.cat === 'devices' && cat === 'buildings') || (batType.cat === 'devices' && cat === 'vehicles')) {
                             catOK = true;
                         } else if (cat === 'any') {
                             catOK = true;
@@ -446,7 +446,7 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
                     if (batHPLeft >= batHP) {
                         fullBat = true;
                     }
-                    if (batType.cat === cat || (batType.cat === 'devices' && cat === 'buildings')) {
+                    if (batType.cat === cat || (batType.cat === 'devices' && cat === 'buildings') || (batType.cat === 'devices' && cat === 'vehicles')) {
                         catOK = true;
                     } else if (cat === 'any') {
                         catOK = true;
