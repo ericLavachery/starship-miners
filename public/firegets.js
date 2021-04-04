@@ -503,22 +503,28 @@ function getCover(bat,withFortif,forAOE) {
         }
     }
     if (tile.infra != undefined && bat.team != 'aliens') {
-        let infraCover = 2;
-        if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
-            if (tile.infra === 'Miradors') {
-                infraCover = 5;
-            } else if (tile.infra === 'Palissades') {
-                infraCover = 6;
-            } else if (tile.infra === 'Remparts') {
-                infraCover = 9;
-            } else if (tile.infra === 'Murailles') {
-                infraCover = 12;
+        if (batType.cat != 'buildings') {
+            let okCover = bonusInfra(batType,tile.infra);
+            if (okCover) {
+                let infraCover = 2;
+                if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+                    if (tile.infra === 'Miradors') {
+                        infraCover = 5;
+                    } else if (tile.infra === 'Palissades') {
+                        infraCover = 6;
+                    } else if (tile.infra === 'Remparts') {
+                        infraCover = 9;
+                    } else if (tile.infra === 'Murailles') {
+                        infraCover = 12;
+                    }
+                }
+                if (cover > infraCover) {
+                    cover = cover+Math.floor(infraCover/2);
+                } else {
+                    cover = infraCover+Math.floor(cover/2);
+                }
             }
-        }
-        if (cover > infraCover) {
-            cover = cover+Math.floor(infraCover/2);
-        } else {
-            cover = infraCover+Math.floor(cover/2);
+
         }
     }
     if (forAOE) {
@@ -537,6 +543,26 @@ function getCover(bat,withFortif,forAOE) {
         }
     }
     return cover;
+};
+
+function bonusInfra(batType,infraName) {
+    let okCover = false;
+    if (batType.cat != 'buildings' && batType.cat != 'aliens') {
+        if (batType.cat === 'vehicles') {
+            if (batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+                okCover = true;
+            }
+        } else if (batType.cat === 'devices') {
+            if (!batType.skills.includes('infrako')) {
+                if (infraName === 'Remparts' || infraName === 'Murailles') {
+                    okCover = true;
+                }
+            }
+        } else {
+            okCover = true;
+        }
+    }
+    return okCover;
 };
 
 function getStealth(bat) {

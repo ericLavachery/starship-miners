@@ -140,8 +140,8 @@
         "name":"energ",
         "fullName":"Energie",
         "levels":{"rednecks":7,"blades":7,"bulbos":1,"drogmulojs":7,"tiradores":7,"detruas":7,"brasier":7},
-        "maxLevel":4,
-        "lvlCosts":[0,1,1,1,2]
+        "maxLevel":3,
+        "lvlCosts":[0,1,1,2]
     },
     {
         "id":19,

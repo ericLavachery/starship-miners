@@ -299,7 +299,7 @@ function playerSkillsUTChanges() {
             }
         }
         // DEFENSE
-        if (playerInfos.comp.def >= 1 && unit.kind === 'zero-defense') {
+        if (playerInfos.comp.def >= 1 && unit.kind === 'zero-defense' && !unit.skills.includes('dome')) {
             unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.def);
             if (unit.levels[playerInfos.gang] < 1) {
                 unit.levels[playerInfos.gang] = 1;
@@ -357,6 +357,16 @@ function playerSkillsUTChanges() {
                 if (unit.weapon2.name.includes('plasma')) {
                     unit.weapon2.power = Math.ceil(unit.weapon2.power*(playerInfos.comp.energ+15)/15);
                 }
+            }
+        }
+        if (playerInfos.comp.energ >= 1 && unit.skills.includes('dome')) {
+            let energComp = playerInfos.comp.energ;
+            if (energComp >= 3) {
+                energComp = 4;
+            }
+            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-energComp;
+            if (unit.levels[playerInfos.gang] < 1) {
+                unit.levels[playerInfos.gang] = 1;
             }
         }
         // EXTRACTION

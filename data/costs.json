@@ -1679,7 +1679,7 @@
         "levels":{"rednecks":17,"blades":16,"bulbos":12,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":16},
         "bldVMReq":["Usine d'armement","Centre de recherches","Chaîne de montage"],
         "bldReq":["Atelier","Armurerie"],
-        "compReq":{"energ":4},
+        "compReq":{"energ":3},
         "compPass":["blades","bulbos","brasier"],
         "costs":{"Compo1":75,"Compo2":75,"Compo3":30,"Eau":18,"Carbone":72,"Titane":36,"Tungstène":108,"Aluminium":18,"Bois":18,"Rhodium":36,"Silicium":18,"Bore":36,"Electros":72,"Batteries":108},
         "fabTime":55
@@ -2095,6 +2095,7 @@
     {
         "id":174,
         "name":"Champ de force",
+        "levels":{"rednecks":14,"blades":14,"bulbos":14,"drogmulojs":14,"tiradores":14,"detruas":14,"brazier":14},
         "bldEquiv":[],
         "bldReq":["Centrale SMR"],
         "upkeep":{"Energie":50},
@@ -2104,6 +2105,7 @@
     {
         "id":175,
         "name":"Dôme",
+        "levels":{"rednecks":20,"blades":20,"bulbos":20,"drogmulojs":20,"tiradores":20,"detruas":20,"brazier":20},
         "bldEquiv":["Champ de force"],
         "bldReq":["Centrale SMR"],
         "upkeep":{"Energie":80},
@@ -2113,6 +2115,7 @@
     {
         "id":200,
         "name":"Pilône",
+        "levels":{"rednecks":20,"blades":20,"bulbos":20,"drogmulojs":20,"tiradores":20,"detruas":20,"brazier":20},
         "bldReq":["Dôme"],
         "upkeep":{"Energie":20},
         "costs":{"Compo1":60,"Compo2":165,"Compo3":110,"Eau":12,"Energie":500,"Carbone":100,"Titane":50,"Rhodium":50,"Cuivre":150,"Platine":50,"Bore":100,"Plutonium":100,"Uranium":50,"Oxygène":250,"Azote":300,"Electros":100,"Batteries":100},
@@ -2142,6 +2145,7 @@
         "id":226,
         "name":"Camp de rééducation",
         "bldReq":["Soute","Salle de sport"],
+        "compReq":{"ordre":2},
         "prod":{"Scrap":4},
         "costs":{"Eau":100,"Huile":200,"Scrap":300,"Végétaux":300,"Calcium":50,"Or":200,"Zinc":200,"Bore":200,"Chlore":150},
         "fabTime":100

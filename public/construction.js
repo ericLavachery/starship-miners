@@ -604,11 +604,11 @@ function clickConstruct(tileId,free) {
                 message = 'Pas de construction sur une case occupée par un alien';
             }
         });
-        if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices') {
+        if (conselUnit.cat === 'buildings') {
             let tile = getTileById(tileId);
             if (tile.infra != undefined && tile.infra != 'Débris') {
                 batHere = true;
-                message = 'Pas de construction de bâtiment ou dispositif sur une case occupée par une infrastructure';
+                message = 'Pas de construction de bâtiment sur une case occupée par une infrastructure';
             }
             if (tile.terrain === 'W' || tile.terrain === 'R') {
                 if (!conselUnit.skills.includes('noblub')) {

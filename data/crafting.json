@@ -247,7 +247,7 @@
         "id":20,
         "result":"Batteries",
         "cost":{"Carbone":2,"Azote":3,"Hydrogène":3,"Energie":3},
-        "compReq":{"energ":4,"ind":2},
+        "compReq":{"energ":3,"ind":2},
         "bldReq":["Usine"],
         "batch":4
     },
@@ -749,7 +749,7 @@
         "id":5,
         "result":"Moteur orbital",
         "cost":{"Electros":200,"Bore":500,"Carbone":1000,"Nickel":500,"Titane":500,"Compo3":500,"Energie":200},
-        "compReq":{"energ":3,"mat":3,"ind":2},
+        "compReq":{"energ":2,"mat":3,"ind":2},
         "bldReq":["Laboratoire","Usine","Soute"],
         "batch":1,
         "creaNum":1

@@ -373,7 +373,8 @@ function attack(melee) {
     console.log('shots='+shots);
     if (activeTurn != 'player') {
         if (tile.infra != undefined) {
-            if (targetBatType.cat != 'vehicles' || targetBatType.skills.includes('robot') || targetBatType.skills.includes('cyber')) {
+            let okCover = bonusInfra(targetBatType,tile.infra);
+            if (okCover) {
                 let infraProtect = 0;
                 if (tile.infra === 'Miradors') {
                     infraProtect = 25;
@@ -788,7 +789,8 @@ function attack(melee) {
             }
             let gripDamage = Math.round((selectedBat.squadsLeft+rand.rand(0,10)-5)*3/gripDiv);
             if (tile.infra != undefined) {
-                if (targetBatType.cat != 'vehicles' || targetBatType.skills.includes('robot') || targetBatType.skills.includes('cyber')) {
+                let okCover = bonusInfra(targetBatType,tile.infra);
+                if (okCover) {
                     if (selectedBatType.skills.includes('fly')) {
                         if (tile.infra === 'Miradors') {
                             gripDamage = Math.round(gripDamage*85/100);
@@ -1207,7 +1209,8 @@ function defense(melee) {
     console.log('shots='+shots);
     if (activeTurn === 'player') {
         if (tile.infra != undefined) {
-            if (selectedBatType.cat != 'vehicles' || selectedBatType.skills.includes('robot') || selectedBatType.skills.includes('cyber')) {
+            let okCover = bonusInfra(selectedBatType,tile.infra);
+            if (okCover) {
                 let infraProtect = 0;
                 if (tile.infra === 'Miradors') {
                     infraProtect = 25;

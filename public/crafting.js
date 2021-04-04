@@ -398,7 +398,7 @@ function upkeepAndProd(bat,batType) {
 
 function upkeepNotPaid(bat,batType) {
     console.log('upkeep = non payée');
-    if (!batType.skills.includes('nodisable')) {
+    if (batType.skills.includes('updisable')) {
         if (bat.tags.includes('construction')) {
             let allTags = _.countBy(bat.tags);
             if (allTags.construction === 1) {
@@ -413,10 +413,10 @@ function upkeepNotPaid(bat,batType) {
 
 function energyCreation(energyCreated) {
     let energyComp = playerInfos.comp.energ;
-    if (energyComp === 4) {
-        energyComp = 5;
+    if (energyComp === 3) {
+        energyComp = 4;
     }
-    energyCreated = Math.round(energyCreated*(energyComp+8)/8);
+    energyCreated = Math.round(energyCreated*(energyComp+6)/6);
     return energyCreated;
 };
 
@@ -436,10 +436,10 @@ function scrapCreation(scrapCreated) {
 
 function cramPower(res,neededRes) {
     let energyComp = playerInfos.comp.energ;
-    if (energyComp === 4) {
-        energyComp = 5;
+    if (energyComp === 3) {
+        energyComp = 4;
     }
-    neededRes = Math.round(neededRes/(energyComp+15)*15);
+    neededRes = Math.round(neededRes/(energyComp+13)*13);
     if (res.name === 'Huile' || res.name === 'Fuel' || res.name === 'Pyrus' || res.name === 'Pyratol' || res.name === 'Hydrocarbure') {
         neededRes = Math.round(neededRes/(playerInfos.comp.pyro+6)*6);
     } else if (res.bld === 'Derrick') {
