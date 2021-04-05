@@ -136,7 +136,7 @@ function bfconst(cat,triche,upgrade) {
                 $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+prodSign+'</span><br>');
             } else {
                 color = 'gff';
-                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'">'+unit.name+prodSign+'</span><br>');
+                $('#conUnitList').append('<span class="constName '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'">'+unit.name+prodSign+'</span><br>');
             }
             lastKind = unit.kind;
         }
@@ -304,7 +304,7 @@ function conSelect(unitId,player,noRefresh) {
                 batEquip = armorTypes[equipIndex];
                 compReqOK = checkCompReq(batEquip);
                 if (compReqOK || conselTriche) {
-                    if (conselAmmos[3] == equip || (conselAmmos[3] === 'xxx' && listNum === 1)) {
+                    if (conselAmmos[3] == equip || (conselAmmos[3] === 'xxx' && listNum === 1) || (playerInfos.comp.log === 3 && conselUnit.log3eq === equip && compReqOK)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
@@ -342,10 +342,12 @@ function conSelect(unitId,player,noRefresh) {
                     if (!compReqOK) {
                         prodSign = '';
                     }
-                    if ((bldReqOK && costsOK) || conselTriche) {
+                    if (playerInfos.comp.log === 3 && conselUnit.log3eq === equip && compReqOK) {
+                        $('#conAmmoList').append('<span class="constName" title="'+showEquipInfo(equip)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                    } else if ((bldReqOK && costsOK) || conselTriche) {
                         $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip)+' '+displayCosts(flatCosts)+'" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else {
-                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batEquip.bldReq)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName gff" title="'+toNiceString(batEquip.bldReq)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     }
                 }
                 listNum++;
@@ -393,7 +395,7 @@ function conSelect(unitId,player,noRefresh) {
                         if ((bldReqOK && costsOK) || conselTriche) {
                             $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+displayCosts(deployCosts)+'" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
                         } else {
-                            $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+' '+displayCosts(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName gff" title="'+toNiceString(batAmmo.bldReq)+' '+displayCosts(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
                         }
                     }
                     listNum++;
@@ -440,7 +442,7 @@ function conSelect(unitId,player,noRefresh) {
                         if ((bldReqOK && costsOK) || conselTriche) {
                             $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+displayCosts(deployCosts)+'" onclick="selectAmmo(`'+ammo+'`,`w2`,`'+unitId+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
                         } else {
-                            $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batAmmo.bldReq)+' '+displayCosts(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName gff" title="'+toNiceString(batAmmo.bldReq)+' '+displayCosts(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
                         }
                     }
                     listNum++;
@@ -758,12 +760,24 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             if (equipName === 'xxx') {
                 equipName = 'aucun';
             }
-            let equipIndex = armorTypes.findIndex((obj => obj.name == equipName));
-            let batEquip = armorTypes[equipIndex];
+            let batEquip = getEquipByName(equipName);
             newBat.eq = equipName;
             let baseAP = conselUnit.ap;
             if (newBat.eq === 'e-jetpack') {
                 baseAP = 17;
+            }
+            // log3eq
+            newBat.logeq = '';
+            if (playerInfos.comp.log === 3) {
+                if (conselUnit.log3eq != undefined) {
+                    if (conselUnit.log3eq != '') {
+                        let logEquip = getEquipByName(conselUnit.log3eq);
+                        let compReqOK = checkCompReq(logEquip);
+                        if (compReqOK) {
+                            newBat.logeq = logEquip.name;
+                        }
+                    }
+                }
             }
             // Armor
             let armorName = conselAmmos[2];

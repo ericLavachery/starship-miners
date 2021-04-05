@@ -1201,6 +1201,9 @@ function updateBatProperties(bat,batType) {
     if (bat.transIds === undefined && batType.transUnits >= 1) {
         bat.transIds = [];
     }
+    if (bat.logeq === undefined) {
+        bat.logeq = '';
+    }
     if (bat.eq === 'ranger') {
         bat.eq = 'e-ranger';
     }

@@ -76,7 +76,7 @@
         "transMaxSize":9,
         "transUnits":375,
         "transRes":2500,
-        "fuzz":4,
+        "fuzz":3.5,
         "deathFx":"S_Explosion02"
     },
     {
@@ -152,7 +152,7 @@
             "subTypes":["Derrick"]
         },
         "transRes":2500,
-        "fuzz":4,
+        "fuzz":2.5,
         "deathFx":"S_Explosion02"
     },
     {
@@ -229,7 +229,7 @@
         "transMaxSize":9,
         "transUnits":200,
         "transRes":2500,
-        "fuzz":4,
+        "fuzz":3.5,
         "deathFx":"S_Explosion02"
     },
     {
@@ -303,10 +303,10 @@
             "types":["Comptoir","Scrap"],
             "subTypes":["Pompe","Mine"]
         },
-        "transMaxSize":9,
+        "transMaxSize":12,
         "transUnits":375,
         "transRes":3000,
-        "fuzz":4,
+        "fuzz":3.5,
         "deathFx":"S_Explosion02"
     },
     {
@@ -493,7 +493,7 @@
         "transMaxSize":100,
         "transUnits":5000,
         "transRes":50000,
-        "fuzz":3,
+        "fuzz":2,
         "deathFx":"S_Explosion02"
     },
     {
@@ -563,10 +563,10 @@
         "skills":["recupcit","transport","routes","producteur","prodres","fret","dumper","mecano","selfbadrepair","dealer","nitro"],
         "mecanoCost":6,
         "maxDrug":18,
-        "transMaxSize":50,
+        "transMaxSize":35,
         "transUnits":1000,
         "transRes":500,
-        "fuzz":5,
+        "fuzz":3.5,
         "deathFx":"S_Explosion02"
     },
     {
@@ -638,10 +638,10 @@
         "mecanoCost":5,
         "maxDrug":24,
         "maxSkill":18,
-        "transMaxSize":9,
+        "transMaxSize":16,
         "transUnits":750,
         "transRes":500,
-        "fuzz":5,
+        "fuzz":4,
         "deathFx":"S_Explosion02"
     },
     {
@@ -712,7 +712,7 @@
         "mecanoCost":4,
         "maxDrug":24,
         "maxSkill":24,
-        "transMaxSize":20,
+        "transMaxSize":21,
         "transUnits":1500,
         "transRes":1000,
         "fuzz":5,
@@ -934,7 +934,7 @@
         "transUnits":750,
         "transRes":500,
         "maxSkill":18,
-        "fuzz":5,
+        "fuzz":3.5,
         "deathFx":"S_Explosion02"
     },
     {
@@ -1145,7 +1145,7 @@
         "transUnits":750,
         "transRes":250,
         "maxDrug":60,
-        "fuzz":2,
+        "fuzz":1,
         "deathFx":"S_Explosion02"
     },
     {
@@ -1219,7 +1219,7 @@
         "mecanoCost":12,
         "mediCost":4,
         "maxSkill":999,
-        "transMaxSize":20,
+        "transMaxSize":21,
         "transUnits":2000,
         "transRes":1000,
         "maxDrug":60,
@@ -1280,7 +1280,7 @@
         "transMaxSize":9,
         "transUnits":250,
         "transRes":250,
-        "fuzz":5,
+        "fuzz":0,
         "deathFx":"S_Explosion02"
     },
     {
@@ -1351,10 +1351,10 @@
         "maxVeg":-1,
         "skills":["recupcit","transport","routes","producteur","upkeep","updisable","upgrade","prodres","longshot","fret","dumper"],
         "mecanoCost":10,
-        "transMaxSize":9,
+        "transMaxSize":16,
         "transUnits":1250,
         "transRes":500,
-        "fuzz":5,
+        "fuzz":4,
         "deathFx":"S_Explosion02"
     },
     {
@@ -1425,7 +1425,7 @@
         "skills":["recupcit","transport","routes","producteur","upkeep","updisable","prodres","longshot","fret","dumper","selfbadrepair","medic"],
         "mecanoCost":10,
         "mediCost":7,
-        "transMaxSize":20,
+        "transMaxSize":35,
         "transUnits":2000,
         "transRes":1500,
         "fuzz":5,
@@ -1497,10 +1497,10 @@
         "maxVeg":-1,
         "skills":["recupcit","transport","routes","prefab","upgrade","prodres","fret","dumper"],
         "mecanoCost":10,
-        "transMaxSize":9,
+        "transMaxSize":12,
         "transUnits":750,
         "transRes":1500,
-        "fuzz":5,
+        "fuzz":3,
         "deathFx":"S_Explosion02"
     },
     {
@@ -1569,10 +1569,10 @@
         "maxVeg":-1,
         "skills":["recupcit","transport","routes","upkeep","updisable","upgrade","prodres","longshot","fret","dumper"],
         "mecanoCost":10,
-        "transMaxSize":9,
+        "transMaxSize":16,
         "transUnits":1250,
         "transRes":3000,
-        "fuzz":5,
+        "fuzz":4,
         "deathFx":"S_Explosion02"
     },
     {
@@ -1640,7 +1640,7 @@
         "maxVeg":-1,
         "skills":["recupcit","transport","routes","upkeep","updisable","prodres","longshot","fret","dumper","selfbadrepair"],
         "mecanoCost":10,
-        "transMaxSize":9,
+        "transMaxSize":21,
         "transUnits":1500,
         "transRes":3000,
         "fuzz":5,
@@ -1719,7 +1719,7 @@
         "transMaxSize":9,
         "transUnits":500,
         "transRes":500,
-        "fuzz":5,
+        "fuzz":3,
         "deathFx":"S_Explosion02"
     },
     {
@@ -1787,10 +1787,10 @@
         "skills":["recupcit","transport","routes","producteur","upkeep","updisable","prodres","longshot","fret","dumper","selfbadrepair","medic"],
         "mecanoCost":10,
         "mediCost":6,
-        "transMaxSize":9,
+        "transMaxSize":21,
         "transUnits":1000,
         "transRes":1000,
-        "fuzz":5,
+        "fuzz":4,
         "deathFx":"S_Explosion02"
     },
     {
@@ -1832,7 +1832,7 @@
         "skills":["routes","prodres","upkeep","updisable","prefab","fret","dumper"],
         "mecanoCost":12,
         "transRes":250,
-        "fuzz":4,
+        "fuzz":1.5,
         "deathFx":"S_Explosion02"
     },
     {
@@ -1973,7 +1973,7 @@
         "transMaxSize":9,
         "transUnits":625,
         "transRes":1000,
-        "fuzz":5,
+        "fuzz":3,
         "deathFx":"S_Explosion02"
     },
     {
@@ -2044,7 +2044,7 @@
         "transMaxSize":9,
         "transUnits":750,
         "transRes":1000,
-        "fuzz":5,
+        "fuzz":4,
         "deathFx":"S_Explosion02"
     },
     {
@@ -2185,7 +2185,7 @@
         "transMaxSize":9,
         "transUnits":375,
         "transRes":500,
-        "fuzz":5,
+        "fuzz":4,
         "deathFx":"S_Explosion02"
     },
     {
@@ -2473,7 +2473,7 @@
         "transMaxSize":9,
         "transUnits":750,
         "transRes":500,
-        "fuzz":3,
+        "fuzz":2,
         "deathFx":"S_Explosion02"
     },
     {
@@ -2676,10 +2676,10 @@
         "mecanoCost":10,
         "mediCost":12,
         "mediCost":6,
-        "transMaxSize":9,
+        "transMaxSize":12,
         "transUnits":1500,
         "transRes":500,
-        "fuzz":3,
+        "fuzz":2,
         "deathFx":"S_Explosion02"
     },
     {

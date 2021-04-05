@@ -42,7 +42,7 @@ function undarkAround(bat,center) {
                 vue = 2;
             }
         }
-        if (batType.skills.includes('flash') || bat.eq === 'e-flash' || bat.eq.includes('kit-')) {
+        if (batType.skills.includes('flash') || bat.eq === 'e-flash' || bat.eq.includes('kit-') || playerInfos.comp.log === 3) {
             if (!bat.tags.includes('camo')) {
                 hauteur = 2;
                 vue = 3;

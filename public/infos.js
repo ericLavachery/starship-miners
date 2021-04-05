@@ -311,6 +311,9 @@ function batInfos(bat,pop) {
     if (!bateq.includes('aucun')) {
         $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">'+bateq+'</span><br>');
     }
+    if (bat.logeq != '') {
+        $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">'+bat.logeq+'</span><br>');
+    }
     // WEAPONS & SKILLS
     if (!pop) {
         if (!isStacked()) {

@@ -383,25 +383,26 @@ function playerSkillsUTChanges() {
                 unit.levels[playerInfos.gang] = 1;
             }
         }
-        if (playerInfos.comp.trans >= 1 && unit.cat === 'vehicles' && unit.transRes >= 50) {
-            unit.transRes = Math.round(unit.transRes*(playerInfos.comp.trans+12)/12);
-        }
-        if (playerInfos.comp.trans >= 1 && unit.cat === 'vehicles' && unit.transUnits >= 50) {
+        if (playerInfos.comp.trans >= 1 && unit.cat === 'vehicles') {
             let transComp = playerInfos.comp.trans;
             if (playerInfos.comp.trans === 3) {
                 transComp = transComp+1;
             }
-            unit.transUnits = Math.round(unit.transUnits*(transComp+35)/35);
+            if (unit.transRes >= 50) {
+                unit.transRes = Math.round(unit.transRes*(transComp+12)/12);
+            }
+            if (unit.transUnits >= 50) {
+                unit.transUnits = Math.round(unit.transUnits*(transComp+12)/12);
+            }
         }
         // LOGISTIQUE
-        if (playerInfos.comp.log >= 3 && unit.transUnits >= 50) {
-            unit.transUnits = Math.round(unit.transUnits*1.16);
-        }
-        if (playerInfos.comp.log >= 3 && unit.transRes >= 50) {
-            if (unit.cat === 'vehicles') {
-                unit.transRes = Math.round(unit.transRes*1.06);
-            } else {
-                unit.transRes = Math.round(unit.transRes*1.32);
+        if (playerInfos.comp.log >= 3 && unit.cat === 'buildings') {
+            if (unit.transRes >= 50) {
+                unit.transRes = Math.round(unit.transRes*2);
+            }
+            if (unit.transUnits >= 50) {
+                unit.transUnits = Math.round(unit.transUnits*2);
+                unit.transMaxSize = Math.round(unit.transMaxSize*3);
             }
         }
         if (playerInfos.comp.log >= 3 && unit.skills.includes('moto')) {

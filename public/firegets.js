@@ -1441,7 +1441,7 @@ function chargeurAdj(bat,shots,weap) {
     if (weap.name.includes('Revolver') || weap.name.includes('Blaster') || weap.name.includes('pompe')) {
         mult = 1.7;
     }
-    if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || weap.name.includes('Blister')) {
+    if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('ulfat') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || weap.name.includes('Blister')) {
         mult = 1.33;
     }
     if (bat.eq.includes('kit-chouf')) {
