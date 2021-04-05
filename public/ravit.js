@@ -30,7 +30,7 @@ function calcRavitVolume(bat) {
     let w1maxAmmo = batType.weapon.maxAmmo;
     let w2maxAmmo = batType.weapon2.maxAmmo;
     if (batType.weapon.maxAmmo < 99) {
-        if (bat.eq === 'gilet' || bat.eq === 'crimekitgi') {
+        if (bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq === 'crimekitgi') {
             w1maxAmmo = Math.floor(w1maxAmmo*1.5);
             if (w1maxAmmo < 16) {
                 w1maxAmmo = 16;
@@ -57,7 +57,7 @@ function calcRavitVolume(bat) {
         ammoLeft = calcAmmos(bat,w1maxAmmo);
         ravitVolume[1] = ravitVolume[0]-Math.floor(ravitVolume[0]*ammoLeft/w1maxAmmo);
     } else if (batType.weapon2.maxAmmo < 99) {
-        if (bat.eq === 'gilet' || bat.eq === 'crimekitgi') {
+        if (bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq === 'crimekitgi') {
             w2maxAmmo = Math.floor(w2maxAmmo*1.5);
             if (w2maxAmmo < 16) {
                 w2maxAmmo = 16;
@@ -132,7 +132,7 @@ function checkRavit(myBat) {
                 if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret' && bat.eq != 'megatrans' && !batType.skills.includes('stockmed') && ravitTypeOK) {
                     if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
                         ravitLeft = calcRavit(bat);
-                        if (ravitLeft >= 1 && (ravitVolume[0] <= batType.maxSkill || ravitVolume[0] <= 12 || batType.maxSkill >= 18 || (ravitVolume[0] <= 18 && (myBat.eq === 'gilet' || myBat.eq === 'crimekitgi'))) && (ravitVolume[2] != 'missile' || batType.skills.includes('stock'))) {
+                        if (ravitLeft >= 1 && (ravitVolume[0] <= batType.maxSkill || ravitVolume[0] <= 12 || batType.maxSkill >= 18 || (ravitVolume[0] <= 18 && (myBat.eq === 'gilet' || myBat.logeq === 'gilet' || myBat.eq === 'crimekitgi'))) && (ravitVolume[2] != 'missile' || batType.skills.includes('stock'))) {
                             anyRavit = true;
                         }
                     }
@@ -217,7 +217,7 @@ function goRavit() {
             if (selectedBatType.skills.includes('fly') && !selectedBatType.skills.includes('jetpack')) {
                 ravitFactor = 1;
             }
-            if (selectedBat.eq.includes('carrousel')) {
+            if (selectedBat.eq.includes('carrousel') || selectedBat.logeq.includes('carrousel')) {
                 ravitFactor = ravitFactor*1.5;
             }
             if (playerInfos.comp.log >= 3) {

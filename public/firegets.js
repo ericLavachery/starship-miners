@@ -472,7 +472,7 @@ function getCover(bat,withFortif,forAOE) {
         }
     } else {
         cover = terrain.cover;
-        if (bat.eq === 'waterproof' || batType.skills.includes('noblub')) {
+        if (bat.eq === 'waterproof' || bat.logeq === 'waterproof' || batType.skills.includes('noblub')) {
             if (terrain.name === 'W' || terrain.name === 'R') {
                 cover = 3;
             }
@@ -485,7 +485,7 @@ function getCover(bat,withFortif,forAOE) {
             if (batType.skills.includes('baddef')) {
                 cover = Math.ceil((terrain.fortifcover+terrain.cover)/2);
             }
-            if (bat.eq === 'waterproof' || batType.skills.includes('noblub')) {
+            if (bat.eq === 'waterproof' || bat.logeq === 'waterproof' || batType.skills.includes('noblub')) {
                 if (terrain.name === 'W' || terrain.name === 'R') {
                     cover = 3;
                 }
@@ -586,7 +586,7 @@ function getStealth(bat) {
     if (bat.tags.includes('drunk')) {
         batStealth = batStealth-4;
     }
-    if (bat.eq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
+    if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
         if (batType.skills.includes('camo')) {
             batStealth = batStealth+4;
         } else {
@@ -651,7 +651,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
     if (bat.eq === 'w1-autogun' || bat.eq === 'w1-autopistol') {
         speed = speed-50-stealth;
     } else {
-        if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector') && !attacking) {
+        if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector') && !attacking) {
             speed = speed-watchInitBonus-stealth;
             console.log('bonus guet');
         }
@@ -1108,10 +1108,10 @@ function weaponAdj(weapon,bat,wn) {
     }
     // Equip adj
     if (thisWeapon.num === 1) {
-        if (bat.eq === 'longtom' || bat.eq === 'longtom1') {
+        if (bat.eq === 'longtom' || bat.eq === 'longtom1' || bat.logeq === 'longtom' || bat.logeq === 'longtom1') {
             thisWeapon.range = thisWeapon.range+1;
         }
-        if (bat.eq === 'chargeur' || bat.eq === 'chargeur1') {
+        if (bat.eq === 'chargeur' || bat.eq === 'chargeur1' || bat.logeq === 'chargeur' || bat.logeq === 'chargeur1') {
             if (thisWeapon.cost < 6) {
                 thisWeapon.accuracy = thisWeapon.accuracy-2;
                 if (thisWeapon.cost >= 3) {
@@ -1119,20 +1119,20 @@ function weaponAdj(weapon,bat,wn) {
                 }
             }
         }
-        if (bat.eq === 'lunette' || bat.eq === 'lunette1') {
+        if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.logeq === 'lunette' || bat.logeq === 'lunette1') {
             thisWeapon.cost = thisWeapon.cost+1;
         }
-        if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.eq.includes('kit-chouf') || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
+        if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.logeq === 'lunette' || bat.logeq === 'lunette1' || bat.eq.includes('kit-chouf') || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
             if (thisWeapon.elevation <= 1) {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
             thisWeapon.accuracy = thisWeapon.accuracy+8;
         }
     } else if (thisWeapon.num === 2) {
-        if (bat.eq === 'longtom' || bat.eq === 'longtom2') {
+        if (bat.eq === 'longtom' || bat.eq === 'longtom2' || bat.logeq === 'longtom' || bat.logeq === 'longtom2') {
             thisWeapon.range = thisWeapon.range+1;
         }
-        if (bat.eq === 'chargeur' || bat.eq === 'chargeur2') {
+        if (bat.eq === 'chargeur' || bat.eq === 'chargeur2' || bat.logeq === 'chargeur' || bat.logeq === 'chargeur2') {
             if (thisWeapon.cost < 6) {
                 thisWeapon.accuracy = thisWeapon.accuracy-2;
                 if (thisWeapon.cost >= 3) {
@@ -1140,10 +1140,10 @@ function weaponAdj(weapon,bat,wn) {
                 }
             }
         }
-        if (bat.eq === 'lunette' || bat.eq === 'lunette2') {
+        if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.logeq === 'lunette' || bat.logeq === 'lunette2') {
             thisWeapon.cost = thisWeapon.cost+1;
         }
-        if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.eq.includes('kit-chouf')) {
+        if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.logeq === 'lunette' || bat.logeq === 'lunette2' || bat.eq.includes('kit-chouf')) {
             if (thisWeapon.elevation <= 1) {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
@@ -1156,7 +1156,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.cost = thisWeapon.cost-1;
         }
     }
-    if ((bat.eq === 'gilet' || bat.eq === 'crimekitgi') && thisWeapon.maxAmmo < 99) {
+    if ((bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq === 'crimekitgi') && thisWeapon.maxAmmo < 99) {
         thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
         if (thisWeapon.maxAmmo < 16) {
             thisWeapon.maxAmmo = 16;
@@ -1167,7 +1167,7 @@ function weaponAdj(weapon,bat,wn) {
     } else if (playerInfos.bldList.includes('Arsenal')) {
         thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.25);
     }
-    if (bat.eq === 'arcpoulie') {
+    if (bat.eq === 'arcpoulie' || bat.logeq === 'arcpoulie') {
         if (thisWeapon.name.includes('Arc')) {
             thisWeapon.name = 'Arc à poulies';
             thisWeapon.range = 2;
@@ -1176,7 +1176,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.cost = 4;
         }
     }
-    if (bat.eq === 'arbalourde') {
+    if (bat.eq === 'arbalourde' || bat.logeq === 'arbalourde') {
         if (thisWeapon.name.includes('Arbalète')) {
             thisWeapon.name = 'Arbalète lourde';
             thisWeapon.elevation = 1;
@@ -1185,7 +1185,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.cost = 5;
         }
     }
-    if (bat.eq === 'belier') {
+    if (bat.eq === 'belier' || bat.logeq === 'belier') {
         if (thisWeapon.name === 'Boutoir') {
             thisWeapon.rof = Math.round(thisWeapon.rof*1.5);
             thisWeapon.power = thisWeapon.power+4;
@@ -1447,25 +1447,25 @@ function chargeurAdj(bat,shots,weap) {
     if (bat.eq.includes('kit-chouf')) {
         mult = 2;
     }
-    if (bat.eq.includes('chargeur') || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
+    if (bat.eq.includes('chargeur') || bat.logeq.includes('chargeur') || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
         if (weap.num === 1) {
-            if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
+            if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.logeq === 'chargeur1' || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
                 newShots = Math.round(newShots*mult);
             }
         } else {
-            if (bat.eq === 'chargeur2' || bat.eq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitto') {
+            if (bat.eq === 'chargeur2' || bat.eq === 'chargeur' || bat.logeq === 'chargeur2' || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitto') {
                 newShots = Math.round(newShots*mult);
             }
         }
     }
     mult = 1.25;
-    if (bat.eq.includes('carrousel')) {
+    if (bat.eq.includes('carrousel') || bat.logeq.includes('carrousel')) {
         if (weap.num === 1) {
-            if (bat.eq === 'carrousel1' || bat.eq === 'carrousel') {
+            if (bat.eq === 'carrousel1' || bat.eq === 'carrousel' || bat.logeq === 'carrousel1' || bat.logeq === 'carrousel') {
                 newShots = Math.round(newShots*mult);
             }
         } else {
-            if (bat.eq === 'carrousel2' || bat.eq === 'carrousel') {
+            if (bat.eq === 'carrousel2' || bat.eq === 'carrousel' || bat.logeq === 'carrousel2' || bat.logeq === 'carrousel') {
                 newShots = Math.round(newShots*mult);
             }
         }
@@ -1491,7 +1491,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
         }
     }
     // GUET
-    if (guet || batType.skills.includes('sentinelle') || bat.eq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+    if (guet || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
         brideDef = 1;
     }
     // Defense, Bastion
@@ -1502,7 +1502,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
     }
     // baddef
     if (batType.skills.includes('baddef')) {
-        if (guet || batType.skills.includes('sentinelle') || bat.eq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+        if (guet || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
             brideDef = brideDef/1.17;
         } else {
             brideDef = brideDef/1.5;

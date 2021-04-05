@@ -642,7 +642,7 @@ function getBatAP(bat,batType) {
 
 function getAP(bat,batType) {
     let newAP = bat.ap;
-    if (bat.eq === 'belier' || bat.eq === 'snorkel' || (bat.eq === 'chenilles' && batType.maxFlood >= 1 && batType.maxScarp >= 2)) {
+    if (bat.eq === 'belier' || bat.eq === 'snorkel' || (bat.eq === 'chenilles' && batType.maxFlood >= 1 && batType.maxScarp >= 2) || bat.logeq === 'belier' || bat.logeq === 'snorkel' || (bat.logeq === 'chenilles' && batType.maxFlood >= 1 && batType.maxScarp >= 2)) {
         newAP = Math.round(newAP*0.9);
     }
     if (playerInfos.bldList.includes('QG')) {
@@ -658,13 +658,13 @@ function getAP(bat,batType) {
             newAP = newAP+1;
         }
     }
-    if (bat.eq === 'g2motor') {
+    if (bat.eq === 'g2motor' || bat.logeq === 'g2motor') {
         newAP = newAP+3;
     }
-    if (bat.eq === 'helper') {
+    if (bat.eq === 'helper' || bat.logeq === 'helper') {
         newAP = newAP+1;
     }
-    if (bat.eq === 'e-ranger' || bat.eq === 'gilet') {
+    if (bat.eq === 'e-ranger' || bat.eq === 'gilet' || bat.logeq === 'e-ranger' || bat.logeq === 'gilet') {
         newAP = newAP-1;
     }
     if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.moveCost < 90) {
@@ -870,7 +870,7 @@ function blub(bat,batType) {
         if (terrain.name === 'W' || terrain.name === 'R') {
             let tile = getTile(bat);
             if ((tile.seed <= 3 || terrain.name === 'W') && !tile.rd) {
-                if (bat.eq != 'waterproof') {
+                if (bat.eq != 'waterproof' && bat.logeq != 'waterproof') {
                     if ((!batType.skills.includes('fly') && !batType.skills.includes('hover') && !batType.skills.includes('noblub')) || batType.skills.includes('jetpack')) {
                         bat.tags.push('blub');
                     }

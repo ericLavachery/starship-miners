@@ -37,7 +37,7 @@ function skillsInfos(bat,batType) {
         if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
             ravitFactor = 1;
         }
-        if (bat.eq.includes('carrousel')) {
+        if (bat.eq.includes('carrousel') || bat.logeq.includes('carrousel')) {
             ravitFactor = ravitFactor*1.5;
         }
         let apCost = Math.round(Math.sqrt(ravitVolume[1])*bat.ap/ravitFactor);
@@ -62,7 +62,7 @@ function skillsInfos(bat,batType) {
     // GUET
     if (batType.weapon.rof >= 1 && bat.ap >= 1 && !batType.skills.includes('noguet') && (hasW1 || hasW2)) {
         balise = 'h4';
-        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
             balise = 'h3';
         }
         apCost = 3;
@@ -77,11 +77,11 @@ function skillsInfos(bat,batType) {
         if (bat.tags.includes('mining')) {
             bouton = 'boutonGris';
         }
-        if (bat.apLeft >= apReq && !bat.tags.includes('guet') && !batType.skills.includes('sentinelle') && bat.eq != 'detector' && !batType.skills.includes('initiative') && !batType.skills.includes('after')) {
+        if (bat.apLeft >= apReq && !bat.tags.includes('guet') && !batType.skills.includes('sentinelle') && bat.eq != 'detector' && bat.logeq != 'detector' && !batType.skills.includes('initiative') && !batType.skills.includes('after')) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Faire le guet (pas de malus à la riposte)" class="'+bouton+' skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</'+balise+'></span>');
         } else {
-            if (batType.skills.includes('sentinelle') || bat.eq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+            if (batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
                 skillMessage = "Sentinelle";
             } else {
                 skillMessage = "Pas assez de PA";
@@ -118,7 +118,7 @@ function skillsInfos(bat,batType) {
     }
     // CAMOUFLAGE
     let camoufOK = true;
-    if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
+    if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
         if (batType.cat == 'buildings') {
             if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
                 apCost = Math.floor(bat.ap*3.5);
@@ -306,7 +306,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // MEDIC
-    if ((batType.skills.includes('medic') && bat.eq != 'megafret' && bat.eq != 'megatrans') || (bat.eq === 'e-medic' && playerInfos.comp.med >= 3)) {
+    if ((batType.skills.includes('medic') && bat.eq != 'megafret' && bat.eq != 'megatrans') || (bat.eq === 'e-medic' && playerInfos.comp.med >= 3) || (bat.logeq === 'e-medic' && playerInfos.comp.med >= 3)) {
         numTargets = numMedicTargets(bat,'infantry',true,true,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,true,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
@@ -329,7 +329,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // BAD MEDIC
-    if (batType.skills.includes('badmedic') && (bat.eq != 'e-medic' || playerInfos.comp.med < 3)) {
+    if (batType.skills.includes('badmedic') && (bat.eq != 'e-medic' || playerInfos.comp.med < 3) && (bat.logeq != 'e-medic' || playerInfos.comp.med < 3)) {
         numTargets = numMedicTargets(bat,'infantry',true,false,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,true,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
@@ -352,7 +352,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // SELF MEDIC
-    if (batType.skills.includes('selfmedic') && (bat.eq != 'e-medic' || playerInfos.comp.med < 3)) {
+    if (batType.skills.includes('selfmedic') && (bat.eq != 'e-medic' || playerInfos.comp.med < 3) && (bat.logeq != 'e-medic' || playerInfos.comp.med < 3)) {
         numTargets = numMedicTargets(bat,'infantry',false,true,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,true,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
@@ -375,7 +375,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // FIRST AID (SELF BAD MEDIC)
-    if (batType.skills.includes('selfbadmedic') && (bat.eq != 'e-medic' || playerInfos.comp.med < 3)) {
+    if (batType.skills.includes('selfbadmedic') && (bat.eq != 'e-medic' || playerInfos.comp.med < 3) && (bat.logeq != 'e-medic' || playerInfos.comp.med < 3)) {
         numTargets = numMedicTargets(bat,'infantry',false,false,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,true,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
@@ -398,7 +398,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // MECANO
-    if (batType.skills.includes('mecano') || bat.eq === 'e-mecano') {
+    if (batType.skills.includes('mecano') || bat.eq === 'e-mecano' || bat.logeq === 'e-mecano') {
         numTargets = numMedicTargets(bat,'vehicles',true,true,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
@@ -419,7 +419,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // BAD MECANO
-    if (batType.skills.includes('badmecano') && bat.eq != 'e-mecano') {
+    if (batType.skills.includes('badmecano') && bat.eq != 'e-mecano' && bat.logeq != 'e-mecano') {
         numTargets = numMedicTargets(bat,'vehicles',true,false,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
@@ -440,7 +440,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // SELF BAD MECANO
-    if (batType.skills.includes('selfbadmecano') && bat.eq != 'e-mecano') {
+    if (batType.skills.includes('selfbadmecano') && bat.eq != 'e-mecano' && bat.logeq != 'e-mecano') {
         numTargets = numMedicTargets(bat,'vehicles',false,false,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
@@ -459,7 +459,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // SELF MECANO
-    if (batType.skills.includes('selfmecano') && bat.eq != 'e-mecano') {
+    if (batType.skills.includes('selfmecano') && bat.eq != 'e-mecano' && bat.logeq != 'e-mecano') {
         numTargets = numMedicTargets(bat,'vehicles',false,true,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);

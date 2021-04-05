@@ -106,7 +106,7 @@ function batInfos(bat,pop) {
     }
     let stealth = getStealth(bat);
     let camChance = calcCamo(bat);
-    if (batType.skills.includes('camo') || batType.skills.includes('maycamo') || tile.ruins || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'e-camo' || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1)) {
+    if (batType.skills.includes('camo') || batType.skills.includes('maycamo') || tile.ruins || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1)) {
         $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+' ('+camChance+'%)</span><br>');
     } else {
         $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
@@ -150,7 +150,7 @@ function batInfos(bat,pop) {
         $('#'+bodyPlace).append('<span class="paramName cy">Embuscade</span><span class="paramIcon"></span><span class="paramValue cy">'+embushBonus+'%</span><br>');
     }
     if (pop) {
-        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || bat.eq === 'detector') {
+        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || bat.eq === 'detector' || bat.logeq === 'detector') {
             $('#'+bodyPlace).append('<span class="paramName cy">Guet</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
         }
     }

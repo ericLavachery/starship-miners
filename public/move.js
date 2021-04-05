@@ -378,16 +378,16 @@ function terrainAccess(batId,targetTileId) {
     let batMaxFlood = batType.maxFlood;
     let batMaxScarp = batType.maxScarp;
     let batMaxVeg = batType.maxVeg;
-    if (batMaxFlood === 0 && bat.eq === 'chenilles') {
+    if (batMaxFlood === 0 && (bat.eq === 'chenilles' || bat.logeq === 'chenilles')) {
         batMaxFlood = 1;
     }
-    if (batMaxScarp < 2 && bat.eq === 'chenilles') {
+    if (batMaxScarp < 2 && (bat.eq === 'chenilles' || bat.logeq === 'chenilles')) {
         batMaxScarp = 2;
     }
     if (batMaxFlood >= terFlood && batMaxScarp >= terrain.scarp && batMaxVeg >= terrain.veg) {
         access = true;
     }
-    if (bat.eq === 'snorkel') {
+    if (bat.eq === 'snorkel' || bat.logeq === 'snorkel') {
         if (terFlood >= 2) {
             access = true;
         }
@@ -412,7 +412,7 @@ function calcMoveCost(targetTileId,diag) {
     let moveCost;
     if (tile.rd && !selectedBatType.skills.includes('hover')) {
         moveCost = baseMoveCost+terrain.roadmc;
-        if (selectedBatType.skills.includes('ranger') || selectedBat.eq === 'kit-sentinelle' || selectedBat.eq === 'e-ranger' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitto') {
+        if (selectedBatType.skills.includes('ranger') || selectedBat.eq === 'kit-sentinelle' || selectedBat.eq === 'e-ranger' || selectedBat.logeq === 'e-ranger' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitto') {
             if (terrain.roadmc > terrain.rangermc) {
                 if (terrain.rangermc >= 2) {
                     moveCost = baseMoveCost+terrain.rangermc-0.5;
@@ -431,7 +431,7 @@ function calcMoveCost(targetTileId,diag) {
         moveCost = baseMoveCost+terrain.alienmc;
     } else if (selectedBatType.skills.includes('okwater')) {
         moveCost = baseMoveCost+terrain.larvemc;
-    } else if (selectedBatType.skills.includes('ranger') || selectedBat.eq === 'kit-sentinelle' || selectedBat.eq === 'e-ranger' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitto' || (selectedBat.eq === 'chenilles' && selectedBatType.maxFlood >= 1 && selectedBatType.maxScarp >= 2) || (selectedBat.eq === 'chenilles' && selectedBatType.maxFlood >= 1 && terrain.name === 'S') || (selectedBat.eq === 'chenilles' && selectedBatType.maxScarp >= 2 && terrain.name === 'H') || (selectedBat.eq === 'chenilles' && terrain.name === 'B')) {
+    } else if (selectedBatType.skills.includes('ranger') || selectedBat.eq === 'kit-sentinelle' || selectedBat.eq === 'e-ranger' || selectedBat.logeq === 'e-ranger' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitto' || (selectedBat.eq === 'chenilles' && selectedBatType.maxFlood >= 1 && selectedBatType.maxScarp >= 2) || (selectedBat.eq === 'chenilles' && selectedBatType.maxFlood >= 1 && terrain.name === 'S') || (selectedBat.eq === 'chenilles' && selectedBatType.maxScarp >= 2 && terrain.name === 'H') || (selectedBat.eq === 'chenilles' && terrain.name === 'B') || (selectedBat.logeq === 'chenilles' && selectedBatType.maxFlood >= 1 && selectedBatType.maxScarp >= 2) || (selectedBat.logeq === 'chenilles' && selectedBatType.maxFlood >= 1 && terrain.name === 'S') || (selectedBat.logeq === 'chenilles' && selectedBatType.maxScarp >= 2 && terrain.name === 'H') || (selectedBat.logeq === 'chenilles' && terrain.name === 'B')) {
         moveCost = baseMoveCost+terrain.rangermc;
     } else if (selectedBatType.skills.includes('hover')) {
         moveCost = baseMoveCost+terrain.hovermc;
@@ -442,7 +442,7 @@ function calcMoveCost(targetTileId,diag) {
     } else {
         moveCost = baseMoveCost+terrain.mc;
     }
-    if (selectedBat.eq === 'snorkel') {
+    if (selectedBat.eq === 'snorkel' || selectedBat.logeq === 'snorkel') {
         if (terrain.flood > selectedBatType.maxFlood) {
             moveCost = moveCost+4;
         }
