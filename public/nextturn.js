@@ -28,6 +28,9 @@ function nextTurn() {
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
+            if (bat.logeq === undefined) {
+                bat.logeq = '';
+            }
             deFog(bat,batType);
             if ((!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) || playerInfos.comp.det >= 4) {
                 visibleAliens.push(bat.tileId);
