@@ -799,7 +799,6 @@
             "noFly":true,
             "isBow":true,
             "noMelee":true,
-            "noDef":true,
             "noBis":true,
             "rof":3,
             "accuracy":15,
@@ -817,7 +816,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["maycamo","selfbadrepair","prefab","routes","flash","badcrewsave","recupcit","recupres"],
+        "skills":["maycamo","selfbadrepair","prefab","routes","flash","badcrewsave","recupcit","recupres","onedef"],
         "mecanoCost":10,
         "fuzz":2,
         "deathFx":"explo1"

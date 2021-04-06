@@ -734,7 +734,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["fortif","mecano","transport","fret","maycamo","defense","longshot","dumper","dealer","nitro","light","badcrewsave","recupcit","recupres"],
+        "skills":["fortif","mecano","transport","fret","maycamo","defense","longshot","dumper","dealer","nitro","light","badcrewsave","recupcit","recupres","onedef"],
         "mecanoCost":7,
         "maxDrug":10,
         "transMaxSize":9,

@@ -109,6 +109,19 @@ function calcEggPause(noMax) {
     return eggPauseDice;
 };
 
+function checkMaxDroppedEggs() {
+    let overSixty = playerInfos.mapTurn-60;
+    if (overSixty < 0) {
+        overSixty = 0;
+    }
+    let maxEggDropTurn = playerInfos.mapTurn-10;
+    if (maxEggDropTurn < Math.ceil(zone[0].mapDiff/2)) {
+        maxEggDropTurn = Math.ceil(zone[0].mapDiff/2);
+    }
+    let maxDroppedEggs = Math.ceil((maxEggDropTurn+overSixty)*(zone[0].mapDiff+1.5)/7);
+    return maxDroppedEggs;
+};
+
 function checkEggsDrop() {
     console.log('check egg drop');
     eggDropCount = 0;
@@ -129,15 +142,7 @@ function checkEggsDrop() {
     let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapAdjDiff)*dropMod);
     let maxEggsInPlay = (zone[0].mapDiff*3)-1;
     console.log('maxEggsInPlay = '+maxEggsInPlay);
-    let overSixty = playerInfos.mapTurn-60;
-    if (overSixty < 0) {
-        overSixty = 0;
-    }
-    let maxEggDropTurn = playerInfos.mapTurn-10;
-    if (maxEggDropTurn < Math.ceil(zone[0].mapDiff/2)) {
-        maxEggDropTurn = Math.ceil(zone[0].mapDiff/2);
-    }
-    let maxDroppedEggs = Math.ceil((maxEggDropTurn+overSixty)*(zone[0].mapDiff+1.5)/7);
+    let maxDroppedEggs = checkMaxDroppedEggs();
     console.log('maxDroppedEggs = '+maxDroppedEggs);
     let dropMessage = 'Nombre d\'oeufs tombés: '+playerInfos.droppedEggs+'/'+maxDroppedEggs;
     if (dropChance < 0) {
@@ -258,10 +263,12 @@ function checkEggsDrop() {
 
 function eggsDrop() {
     console.log('EGGDROP');
+    let maxDroppedEggs = checkMaxDroppedEggs();
     let numEggs;
     let eggDice = rand.rand(1,100);
     let eggPausePerc = calcEggPause(true);
     eggPausePerc = Math.round(eggPausePerc*1.5);
+    let noEggDrop = Math.round(noEggs/playerInfos.fuzzTotal*300);
     // chance for multiple eggs
     let threeEggsChance = Math.floor(playerInfos.mapAdjDiff*1.25)-4;
     if (threeEggsChance < 0) {
@@ -280,24 +287,24 @@ function eggsDrop() {
     if (playerInfos.mapTurn < threeEggsMinTurn) {
         threeEggsChance = 0;
     }
-    if (eggDice <= noEggs) {
+    if (eggDice <= noEggDrop) {
         numEggs = 0;
         if (rand.rand(1,100) <= eggPausePerc) {
             playerInfos.eggPause = true;
             console.log('PAUSE! '+eggPausePerc+'%');
             if (playerInfos.pseudo === 'Bob') {
-                warning('Nouvelle pause','Check '+eggPausePerc+'% réussi après la chute de 0 oeuf ('+noEggs+'%)');
+                warning('Nouvelle pause','Check '+eggPausePerc+'% réussi après la chute de 0 oeuf ('+noEggDrop+'%)');
             }
         }
-    } else if (eggDice <= noEggs+twoEggsChance) {
+    } else if (eggDice <= noEggDrop+twoEggsChance) {
         numEggs = 2;
-    } else if (eggDice <= noEggs+twoEggsChance+threeEggsChance) {
+    } else if (eggDice <= noEggDrop+twoEggsChance+threeEggsChance) {
         numEggs = 3;
     } else {
         numEggs = 1;
     }
     if (numEggs >= 1) {
-        let eggBonusChance = Math.round(playerInfos.mapTurn*2.5)-50+(playerInfos.mapAdjDiff*5);
+        let eggBonusChance = Math.round(playerInfos.mapTurn*2.5)-50+(playerInfos.mapAdjDiff*5)+((maxDroppedEggs-playerInfos.droppedEggs)*10);
         console.log('eggBonusChance='+eggBonusChance);
         if (eggBonusChance >= 100) {
             numEggs++;
