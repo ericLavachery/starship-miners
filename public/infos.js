@@ -429,8 +429,11 @@ function batFullInfos(bat) {
     if (batType.skills.includes('bastion')) {
         allSkills = allSkills+'<span class="paramValue" title="Cadence de tir 200% en défense">Bastion</span>'+sepa;
     }
+    if (batType.skills.includes('onedef')) {
+        allSkills = allSkills+'<span class="paramValue" title="Un seul tir de riposte.">Riposte unique</span>'+sepa;
+    }
     if (batType.skills.includes('gooddef')) {
-        allSkills = allSkills+'<span class="paramValue" title="2 ripostes supplémentaires">Riposte</span>'+sepa;
+        allSkills = allSkills+'<span class="paramValue" title="2 ripostes supplémentaires">Ripostes multiples</span>'+sepa;
     }
     if (batType.skills.includes('cible')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut faire un tir ciblé: Précision augmentée mais cadence de tir diminuée">Tir ciblé</span>'+sepa;
