@@ -968,7 +968,7 @@
         "maxSalvo":0,
         "weapon":{
             "name":"Barbelés",
-            "cost":8,
+            "cost":2,
             "range":0,
             "noAtt":true,
             "noFly":true,
@@ -987,7 +987,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako"],
+        "skills":["nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako","sentinelle"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1010,7 +1010,7 @@
         "maxSalvo":0,
         "weapon":{
             "name":"Barbelés",
-            "cost":8,
+            "cost":2,
             "range":0,
             "noAtt":true,
             "noFly":true,
@@ -1029,7 +1029,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako"],
+        "skills":["nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako","sentinelle"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1052,14 +1052,14 @@
         "maxSalvo":0,
         "weapon":{
             "name":"Barbelés",
-            "cost":8,
+            "cost":1,
             "range":0,
             "noAtt":true,
             "noFly":true,
             "rof":6,
-            "accuracy":10,
-            "power":4,
-            "armors":1,
+            "accuracy":15,
+            "power":6,
+            "armors":0.5,
             "aoe":"brochette",
             "sound":"electricity",
             "ammo":["barb-taser"]
@@ -1071,7 +1071,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","bigblub","nolist","norepair","clicput","infrako"],
+        "skills":["nodeathcount","notarget","bigblub","nolist","norepair","clicput","infrako","sentinelle"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },

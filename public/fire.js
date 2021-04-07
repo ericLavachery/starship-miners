@@ -692,7 +692,7 @@ function attack(melee) {
     }
     // ricochet
     if (targetBatType.skills.includes('ricochet') || targetBat.tags.includes('ricochet')) {
-        if (!selectedWeap.ammo.includes('feu') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm') && !selectedWeap.ammo.includes('fire') && !selectedWeap.ammo.includes('pyratol') && !selectedWeap.ammo.includes('lf-') && !selectedWeap.ammo.includes('lt-') && !selectedWeap.ammo.includes('molotov') && !selectedWeap.ammo.includes('laser') && !selectedWeap.ammo.includes('electric')) {
+        if (!selectedWeap.ammo.includes('feu') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm') && !selectedWeap.ammo.includes('fire') && !selectedWeap.ammo.includes('pyratol') && !selectedWeap.ammo.includes('lf-') && !selectedWeap.ammo.includes('lt-') && !selectedWeap.ammo.includes('molotov') && !selectedWeap.ammo.includes('laser') && !selectedWeap.ammo.includes('electric') && !selectedWeap.ammo.includes('taser') && !selectedWeap.ammo.includes('web')) {
             if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('disco')) {
                 if (!selectedWeap.ammo.includes('mono')) {
                     if (!selectedWeap.isMelee && !selectedWeap.noShield && selectedWeap.armors > 0) {
@@ -1483,7 +1483,7 @@ function defense(melee) {
     }
     // ricochet
     if (selectedBatType.skills.includes('ricochet') || selectedBat.tags.includes('ricochet')) {
-        if (!targetWeap.ammo.includes('feu') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm') && !targetWeap.ammo.includes('fire') && !targetWeap.ammo.includes('pyratol') && !targetWeap.ammo.includes('lf-') && !targetWeap.ammo.includes('lt-') && !targetWeap.ammo.includes('molotov') && !targetWeap.ammo.includes('laser') && !targetWeap.ammo.includes('electric')) {
+        if (!targetWeap.ammo.includes('feu') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm') && !targetWeap.ammo.includes('fire') && !targetWeap.ammo.includes('pyratol') && !targetWeap.ammo.includes('lf-') && !targetWeap.ammo.includes('lt-') && !targetWeap.ammo.includes('molotov') && !targetWeap.ammo.includes('laser') && !targetWeap.ammo.includes('electric') && !targetWeap.ammo.includes('taser') && !targetWeap.ammo.includes('web')) {
             if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('disco')) {
                 if (!targetWeap.ammo.includes('mono')) {
                     if (!targetWeap.isMelee && !targetWeap.noShield && targetWeap.armors > 0) {
