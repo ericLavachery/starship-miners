@@ -71,16 +71,30 @@ function resetStartRes() {
 };
 
 function findLanders() {
-    let batType;
     landers = [];
     bataillons.forEach(function(bat) {
         if (bat.loc === 'zone') {
-            batType = getBatType(bat);
+            let batType = getBatType(bat);
             if (batType.skills.includes('transorbital') || batType.skills.includes('reserve')) {
                 landers.push(bat);
             }
         }
     });
+};
+
+function findTheLander() {
+    let theLander = {};
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'zone') {
+            if (Object.keys(theLander).length < 1) {
+                let batType = getBatType(bat);
+                if (batType.skills.includes('transorbital')) {
+                    theLander = bat;
+                }
+            }
+        }
+    });
+    return theLander;
 };
 
 function checkCost(costs) {

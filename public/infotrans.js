@@ -85,27 +85,31 @@ function unloadInfos(myBat,myBatUnitType) {
 
 function calcVolume(bat,batType) {
     let batVolume;
-    if (bat.citoyens >= 1) {
-        batVolume = Math.round(bat.citoyens*2.4);
-    } else {
-        batVolume = Math.round(batType.size*batType.squadSize*batType.squads/4*Math.sqrt(batType.size+13)*batType.volume);
+    if (Object.keys(batType).length >= 1) {
+        if (batType.skills.includes('prefab')) {
+            batVolume = Math.round(batType.squadSize*batType.squads*batType.crew*2.4);
+        } else if (bat.citoyens >= 1 && batType.skills.includes('varsquad')) {
+            batVolume = Math.round(bat.citoyens*2.4);
+        } else {
+            batVolume = Math.round(batType.size*batType.squadSize*batType.squads/4*Math.sqrt(batType.size+13)*batType.volume);
+        }
+        if (bat.eq === 'e-jetpack') {
+            batVolume = Math.ceil(batVolume*1.2);
+        }
+        if (bat.eq === 'kit-garde') {
+            batVolume = Math.ceil(batVolume*1.33);
+        }
+        if (bat.eq === 'kit-artilleur') {
+            batVolume = Math.ceil(batVolume*1.33);
+        }
+        if (bat.eq === 'kit-guetteur') {
+            batVolume = Math.ceil(batVolume*1.33);
+        }
+        if (bat.eq === 'kit-pompiste') {
+            batVolume = Math.ceil(batVolume*1.22);
+        }
+        return batVolume;
     }
-    if (bat.eq === 'e-jetpack') {
-        batVolume = Math.ceil(batVolume*1.2);
-    }
-    if (bat.eq === 'kit-garde') {
-        batVolume = Math.ceil(batVolume*1.33);
-    }
-    if (bat.eq === 'kit-artilleur') {
-        batVolume = Math.ceil(batVolume*1.33);
-    }
-    if (bat.eq === 'kit-guetteur') {
-        batVolume = Math.ceil(batVolume*1.33);
-    }
-    if (bat.eq === 'kit-pompiste') {
-        batVolume = Math.ceil(batVolume*1.22);
-    }
-    return batVolume;
 };
 
 function checkCharged(myBat,where) {

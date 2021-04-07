@@ -446,21 +446,28 @@ function calcLanderTransUnitsLeft(myBat,myBatType) {
     return myBatTransUnitsLeft;
 };
 
-function checkResLoad(bat) {
-    // console.log('THE-BAT');
-    // console.log(bat);
-    let batType = getBatType(bat);
-    // console.log(batType);
+function checkResLoad(myBat) {
+    let myBatType = getBatType(myBat);
     let resLoaded = 0;
-    if (batType.transRes >= 1) {
-        if (Object.keys(bat.transRes).length >= 1) {
-            Object.entries(bat.transRes).map(entry => {
+    if (myBatType.transRes >= 1) {
+        if (Object.keys(myBat.transRes).length >= 1) {
+            Object.entries(myBat.transRes).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
                 resLoaded = resLoaded+value;
             });
         }
     }
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "trans" && bat.locId == myBat.id) {
+            batType = getBatType(bat);
+            if (batType.skills.includes('prefab')) {
+                let prefabWeight = calcPrefabWeight(batType);
+                // console.log(batType.name+' : '+prefabWeight);
+                resLoaded = resLoaded+prefabWeight;
+            }
+        }
+    });
     return resLoaded;
 };
 

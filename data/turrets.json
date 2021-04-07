@@ -713,9 +713,9 @@
         "squads":4,
         "squadSize":3,
         "crew":3,
-        "hp":50,
+        "hp":75,
         "armor":6,
-        "size":25,
+        "size":30,
         "stealth":0,
         "ap":18,
         "maxSalvo":2,
@@ -770,7 +770,7 @@
         "squads":4,
         "squadSize":3,
         "crew":3,
-        "hp":60,
+        "hp":75,
         "armor":8,
         "size":25,
         "stealth":5,
@@ -1275,7 +1275,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nonumname","nodeathcount","notarget","halfcover","prefab","noblub","nolist","norepair","nobld","clicput","infrako"],
+        "skills":["after","nonumname","nodeathcount","notarget","halfcover","noblub","nolist","norepair","nobld","clicput","infrako"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1326,7 +1326,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nonumname","nodeathcount","notarget","halfcover","prefab","bigblub","nolist","norepair","nobld","clicput","infrako"],
+        "skills":["after","nonumname","nodeathcount","notarget","halfcover","bigblub","nolist","norepair","nobld","clicput","infrako"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     }

@@ -2,12 +2,14 @@ function defabInfos(bat,batType) {
     console.log('prefabInfos');
     let isLoaded = checkCharged(bat,'load');
     let prefabId = checkPrefabId(bat,batType);
-    if (prefabId >= 0 && !isLoaded && batType.skills.includes('constructeur')) {
+    let landerBat = findTheLander();
+    console.log(landerBat);
+    if (prefabId >= 0 && !isLoaded && batType.skills.includes('constructeur') && Object.keys(landerBat).length >= 1) {
         let prefabIndex = bataillons.findIndex((obj => obj.id == prefabId));
         let prefabBat = bataillons[prefabIndex];
         let prefabBatType = getBatType(prefabBat);
         let prefabBatName = bataillons[prefabIndex].type;
-        let apCost = Math.round(batType.mecanoCost*prefabBatType.fabTime/20);
+        let apCost = Math.round(batType.mecanoCost*prefabBatType.fabTime/30);
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire '+prefabBatName+'" class="boutonGris skillButtons" onclick="deconstruction('+prefabId+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
     }
 };
@@ -31,28 +33,56 @@ function deconstruction(prefabId) {
     let prefabIndex = bataillons.findIndex((obj => obj.id == prefabId));
     let prefabBat = bataillons[prefabIndex];
     let prefabBatType = getBatType(prefabBat);
-    selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*prefabBatType.fabTime/20);
-    selectedBat.tags.push('loaded');
-    prefabBat.loc = 'load';
-    prefabBat.locId = selectedBat.id;
-    let batListIndex = batList.findIndex((obj => obj.id == prefabBat.id));
-    if (batListIndex > -1) {
-        batList.splice(batListIndex,1);
+    let landerBat = findTheLander();
+    if (Object.keys(landerBat).length >= 1) {
+        selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*prefabBatType.fabTime/30);
+        prefabBat.loc = 'trans';
+        prefabBat.locId = landerBat.id;
+        prefabBat.tileId = landerBat.tileId;
+        prefabBat.oldTileId = landerBat.oldTileId;
+        landerBat.transIds.push(prefabBat.id);
+        let batListIndex = batList.findIndex((obj => obj.id == prefabBat.id));
+        if (batListIndex > -1) {
+            batList.splice(batListIndex,1);
+        }
+        tagDelete(selectedBat,'guet');
+        selectedBatArrayUpdate();
+        showBatInfos(selectedBat);
+        selectMode();
     }
-    tagDelete(selectedBat,'guet');
-    selectedBatArrayUpdate();
-    showBatInfos(selectedBat);
-    selectMode();
+};
+
+function autoDeconstruction(prefabId) {
+    let prefabIndex = bataillons.findIndex((obj => obj.id == prefabId));
+    let prefabBat = bataillons[prefabIndex];
+    let prefabBatType = getBatType(prefabBat);
+    let landerBat = findTheLander();
+    if (Object.keys(landerBat).length >= 1) {
+        prefabBat.loc = 'trans';
+        prefabBat.locId = landerBat.id;
+        prefabBat.tileId = landerBat.tileId;
+        prefabBat.oldTileId = landerBat.oldTileId;
+        landerBat.transIds.push(prefabBat.id);
+        let batListIndex = batList.findIndex((obj => obj.id == prefabBat.id));
+        if (batListIndex > -1) {
+            batList.splice(batListIndex,1);
+        }
+        showMap(zone,false);
+        batSelect(landerBat);
+        showBatInfos(landerBat);
+        selectMode();
+    }
 };
 
 function refabInfos(myBat,myBatUnitType) {
-    if (myBatUnitType.skills.includes('constructeur')) {
+    if (myBatUnitType.skills.includes('constructeur') && myBatUnitType.cat != 'infantry') {
         let balise = 'h4';
-        let apCost = myBatUnitType.mecanoCost*4;
-        if (myBat.tags.includes('loaded')) {
-            bataillons.forEach(function(bat) {
-                if (bat.loc === "load" && bat.locId == myBat.id) {
-                    batType = getBatType(bat);
+        let apCost = myBatUnitType.mecanoCost*3;
+        let landerBat = findTheLander();
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "trans" && bat.locId == landerBat.id) {
+                batType = getBatType(bat);
+                if (batType.skills.includes('prefab')) {
                     if (myBat.apLeft >= Math.round(myBat.ap/3)) {
                         balise = 'h4';
                         if (Object.keys(batDebarq).length >= 1) {
@@ -66,8 +96,8 @@ function refabInfos(myBat,myBatUnitType) {
                         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</h4></span>');
                     }
                 }
-            });
-        }
+            }
+        });
     }
 };
 
@@ -78,4 +108,12 @@ function reconstruction(debId) {
     batDebarq = debBat;
     tagDelete(selectedBat,'guet');
     showBatInfos(selectedBat);
+};
+
+function calcPrefabWeight(batType) {
+    let prefabWeight = 0;
+    if (batType.skills.includes('prefab')) {
+        prefabWeight = Math.round(batType.squads*batType.squadSize*batType.hp/4);
+    }
+    return prefabWeight;
 };

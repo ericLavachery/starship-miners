@@ -38,7 +38,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","fret","fastempty"],
+        "skills":["fouille","fortif","fret","fastempty","varsquad"],
         "transRes":72,
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
@@ -82,7 +82,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","fret","fastempty"],
+        "skills":["fouille","fortif","fret","fastempty","varsquad"],
         "transRes":72,
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
