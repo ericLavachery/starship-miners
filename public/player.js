@@ -366,23 +366,23 @@ function playerSkillsUTChanges() {
             }
         }
         // ENERGIE
+        let energComp = playerInfos.comp.energ;
+        if (energComp >= 3) {
+            energComp = 4;
+        }
         if (playerInfos.comp.energ >= 1) {
             if (Object.keys(unit.weapon).length >= 3) {
-                if (unit.weapon.name.includes('plasma')) {
-                    unit.weapon.power = Math.ceil(unit.weapon.power*(playerInfos.comp.energ+15)/15);
+                if (unit.weapon.name.includes('plasma') || unit.weapon.name.includes('laser') || unit.weapon.name.includes('Electro') || unit.weapon.name.includes('Lightning') || unit.weapon.name.includes('BFG') || unit.weapon.name.includes('électrique') || unit.weapon.name.includes('Taser')) {
+                    unit.weapon.power = Math.ceil(unit.weapon.power*(energComp+15)/15);
                 }
             }
             if (Object.keys(unit.weapon2).length >= 3) {
-                if (unit.weapon2.name.includes('plasma')) {
-                    unit.weapon2.power = Math.ceil(unit.weapon2.power*(playerInfos.comp.energ+15)/15);
+                if (unit.weapon2.name.includes('plasma') || unit.weapon2.name.includes('laser') || unit.weapon2.name.includes('Electro') || unit.weapon2.name.includes('Lightning') || unit.weapon2.name.includes('BFG') || unit.weapon2.name.includes('électrique')) {
+                    unit.weapon2.power = Math.ceil(unit.weapon2.power*(energComp+15)/15);
                 }
             }
         }
         if (playerInfos.comp.energ >= 1 && unit.skills.includes('dome')) {
-            let energComp = playerInfos.comp.energ;
-            if (energComp >= 3) {
-                energComp = 4;
-            }
             unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-energComp;
             if (unit.levels[playerInfos.gang] < 1) {
                 unit.levels[playerInfos.gang] = 1;

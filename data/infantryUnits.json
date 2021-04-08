@@ -509,7 +509,7 @@
             "power":8,
             "armors":0.5,
             "aoe":"brochette",
-            "sound":"electricity",
+            "sound":"lightning",
             "ammo":["electricity"],
             "maxAmmo":12,
             "ravitBld":"Générateur"
@@ -818,7 +818,7 @@
         "volume":0.9,
         "stealth":8,
         "ap":14,
-        "maxSalvo":2,
+        "maxSalvo":1,
         "weapon":{
             "name":"Espadon",
             "cost":3,
@@ -835,18 +835,21 @@
             "ammo":["lame","lame-poison","lame-atium","lame-poraz","lame-taser","lame-mono","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
-            "name":"Marquage",
-            "cost":1,
-            "range":2,
+            "name":"Arbalète lourde",
+            "cost":6,
+            "range":1,
             "elevation":1,
             "kit":true,
-            "noDef":true,
+            "isBow":true,
+            "noBis":true,
             "rof":4,
-            "accuracy":35,
-            "power":0,
+            "accuracy":18,
+            "dca":1.25,
+            "power":11,
+            "armors":0.8,
             "aoe":"unit",
-            "sound":"mark",
-            "ammo":["marquage"]
+            "sound":"bow",
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
         "equip":["aucun","kit-sentinelle","e-ranger","e-jetpack"],
         "log3eq":"",
@@ -855,6 +858,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","fortif","camo","fastguet","garde"],
+        "maxSkill":3,
         "fuzz":0,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -3259,7 +3263,8 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","selfmedic","leader","fly","jetpack","fastguet","longshot","survivor","inflammable","maycamo","baddef","oknitro"],
+        "skills":["fouille","fortif","selfmedic","dealer","starka","leader","fly","jetpack","fastguet","longshot","survivor","inflammable","maycamo","baddef","oknitro"],
+        "maxDrug":8,
         "mediCost":9,
         "fuzz":3.5,
         "deathFx":"human1"

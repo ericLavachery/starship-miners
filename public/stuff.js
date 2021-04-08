@@ -392,12 +392,12 @@ function getBatArmor(bat) {
     return batArmor;
 };
 
-function getTrapName(batType) {
+function getTrapName(bat,batType) {
     let trapName = 'Mines';
     if (batType.skills.includes('dynamite')) {
         trapName = 'Explosifs';
     }
-    if (batType.skills.includes('trapap')) {
+    if (batType.skills.includes('trapap') || bat.eq === 'kit-sentinelle') {
         trapName = 'Pièges';
     }
     if (batType.skills.includes('trapdard')) {

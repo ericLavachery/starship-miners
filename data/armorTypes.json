@@ -551,8 +551,8 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"energ":3,"log":2},
         "factor":"one",
-        "costs":{"Cuivre":60,"Rhodium":20,"Silicium":60,"Electros":60,"Batteries":60},
-        "deploy":{"Energie":180}
+        "costs":{"Cuivre":60,"Rhodium":20,"Silicium":30,"Electros":45,"Batteries":30},
+        "deploy":{"Energie":90}
     },
     {
         "name": "kit-pompiste",
@@ -580,12 +580,12 @@
         "name": "kit-sentinelle",
         "cat":"equip",
         "skills": [],
-        "info": "Camouflage+ Déplacement+ Marqueur / Résistance acide",
+        "info": "Camouflage+ Déplacement+ Scorpion / Résistance acide / Pièges",
         "bldReq":["Atelier"],
         "compReq":{"def":1},
         "factor":"crew",
-        "costs":{"Carbone":18,"Scrap":6,"Aluminium":6,"Silicium":6,"Electros":6,"Tissus":12,"Blendium":6,"Batteries":1},
-        "deploy":{"Energie":12,"Végétaux":12}
+        "costs":{"Carbone":36,"Scrap":6,"Aluminium":12,"Tissus":12,"Blendium":6,"Titane":6,"Silicium":6},
+        "deploy":{"Végétaux":12}
     },
     {
         "name": "kit-artilleur",
