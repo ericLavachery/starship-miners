@@ -11,14 +11,14 @@ function gangEdit() {
     $('#conUnitList').append('<span class="blockTitle"><h3>Player Infos</h3></span>');
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     // mapDiff
-    $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`mapDiff`)"></select>');
-    $('#theZone').empty().append('<option value="">Présence Alien</option>');
+    $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`mapDiff`)" title="Présence Alien sur la prochaine zone"></select>');
+    $('#theZone').empty().append('<option value="">Pr.Alien</option>');
     let i = 0;
     while (i <= 15) {
         if (i === playerInfos.mapDiff) {
-            $('#theZone').append('<option value="'+i+'" selected>Présence '+i+'</option>');
+            $('#theZone').append('<option value="'+i+'" selected>PrA '+i+'</option>');
         } else {
-            $('#theZone').append('<option value="'+i+'">Présence '+i+'</option>');
+            $('#theZone').append('<option value="'+i+'">PrA '+i+'</option>');
         }
         if (i > 16) {break;}
         i++
@@ -37,6 +37,11 @@ function gangEdit() {
         } else {
             i = i+25;
         }
+    }
+    if (playerInfos.stopBarbs) {
+        $('#conUnitList').append('<button type="button" title="Ne pas stopper pour les barbelés" class="boutonGris skillButtons" onclick="changeBarbs(false)"><i class="ra ra-crown-of-thorns rpg"></i> stop</button>');
+    } else {
+        $('#conUnitList').append('<button type="button" title="Stopper pour les barbelés" class="boutonGris skillButtons" onclick="changeBarbs(true)"><i class="ra ra-crown-of-thorns rpg"></i> no stop</button>');
     }
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     // GANG
@@ -91,6 +96,13 @@ function gangEdit() {
         if (i > 25) {break;}
         i++
     }
+    // BARBS
+    // $('#conUnitList').append('<br><span class="shSpace"></span><br>');
+    // if (playerInfos.stopBarbs) {
+    //     $('#conUnitList').append('<button type="button" title="Ne pas stopper pour les barbelés" class="boutonGris skillButtons" onclick="changeBarbs(false)"><i class="ra ra-crown-of-thorns rpg"></i> stop</button>');
+    // } else {
+    //     $('#conUnitList').append('<button type="button" title="Stopper pour les barbelés" class="boutonGris skillButtons" onclick="changeBarbs(true)"><i class="ra ra-crown-of-thorns rpg"></i> no stop</button>');
+    // }
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     let maxGangComp = maxGangCompCosts();
     $('#conUnitList').append('<span class="constName">Max Compétences : '+toNiceString(maxGangComp)+'</span>');
@@ -165,6 +177,13 @@ function showEquip() {
         }
     });
     $('#conUnitList').append('<br>');
+};
+
+function changeBarbs(stop) {
+    playerInfos.stopBarbs = stop;
+    savePlayerInfos();
+    gangNavig();
+    gangEdit();
 };
 
 function changePlayerInfo(dropMenuId,infoName) {

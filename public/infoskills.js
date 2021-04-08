@@ -40,6 +40,9 @@ function skillsInfos(bat,batType) {
         if (bat.eq.includes('carrousel') || bat.logeq.includes('carrousel')) {
             ravitFactor = ravitFactor*1.5;
         }
+        if (playerInfos.comp.log >= 3) {
+            ravitFactor = ravitFactor*2;
+        }
         let apCost = Math.round(Math.sqrt(ravitVolume[1])*bat.ap/ravitFactor);
         if (bat.apLeft >= 4) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de munitions" class="boutonCaca skillButtons" onclick="goRavit()"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ravitaillement</h4></span>');

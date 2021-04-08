@@ -1767,7 +1767,7 @@
         "name":"Barbelés (scrap)",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":[],
-        "costs":{"Scrap":36},
+        "costs":{"Scrap":18},
         "fabTime":10
     },
     {
@@ -1775,7 +1775,7 @@
         "name":"Barbelés",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":["Atelier"],
-        "costs":{"Fer":36},
+        "costs":{"Fer":18},
         "fabTime":10
     },
     {
@@ -1783,7 +1783,7 @@
         "name":"Barbelés (taser)",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":["Atelier","Générateur"],
-        "costs":{"Aluminium":24,"Cuivre":12,"Batteries":6,"Energie":18},
+        "costs":{"Aluminium":12,"Compo2":9,"Cuivre":6,"Batteries":3,"Energie":12},
         "fabTime":15
     },
     {

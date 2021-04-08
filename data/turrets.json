@@ -964,7 +964,7 @@
         "size":12,
         "stealth":0,
         "speed":-20,
-        "ap":0,
+        "ap":15,
         "maxSalvo":0,
         "weapon":{
             "name":"Barbelés",
@@ -987,7 +987,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako","sentinelle"],
+        "skills":["nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako","noaploss"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1006,7 +1006,7 @@
         "size":12,
         "stealth":0,
         "speed":-20,
-        "ap":0,
+        "ap":15,
         "maxSalvo":0,
         "weapon":{
             "name":"Barbelés",
@@ -1023,13 +1023,13 @@
             "ammo":["barb"]
         },
         "weapon2":{},
-        "protection":["aucun"],
+        "protection":["aucun","acier"],
         "log3eq":"",
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako","sentinelle"],
+        "skills":["nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako","noaploss"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1044,11 +1044,11 @@
         "squadSize":6,
         "crew":0,
         "hp":12,
-        "armor":4,
+        "armor":5,
         "size":12,
         "stealth":0,
         "speed":-20,
-        "ap":0,
+        "ap":15,
         "maxSalvo":0,
         "weapon":{
             "name":"Barbelés",
@@ -1065,13 +1065,13 @@
             "ammo":["barb-taser"]
         },
         "weapon2":{},
-        "protection":["aucun"],
+        "protection":["aucun","acier"],
         "log3eq":"",
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","bigblub","nolist","norepair","clicput","infrako","sentinelle"],
+        "skills":["nodeathcount","notarget","bigblub","nolist","norepair","clicput","infrako","noaploss"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1122,7 +1122,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput","infrako"],
+        "skills":["after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput","infrako","noaploss"],
         "fuzz":-2,
         "deathFx":"none"
     },
@@ -1173,7 +1173,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput","infrako"],
+        "skills":["after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput","infrako","noaploss"],
         "fuzz":-2,
         "deathFx":"none"
     },
@@ -1224,7 +1224,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput","infrako"],
+        "skills":["after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput","infrako","noaploss"],
         "fuzz":-2,
         "deathFx":"none"
     },
@@ -1275,7 +1275,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nonumname","nodeathcount","notarget","halfcover","noblub","nolist","norepair","nobld","clicput","infrako"],
+        "skills":["after","nonumname","nodeathcount","notarget","halfcover","noblub","nolist","norepair","nobld","clicput","infrako","noaploss"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1326,7 +1326,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nonumname","nodeathcount","notarget","halfcover","bigblub","nolist","norepair","nobld","clicput","infrako"],
+        "skills":["after","nonumname","nodeathcount","notarget","halfcover","bigblub","nolist","norepair","nobld","clicput","infrako","noaploss"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     }

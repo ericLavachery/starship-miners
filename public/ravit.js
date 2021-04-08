@@ -221,7 +221,7 @@ function goRavit() {
                 ravitFactor = ravitFactor*1.5;
             }
             if (playerInfos.comp.log >= 3) {
-                ravitFactor = ravitFactor*1.5;
+                ravitFactor = ravitFactor*2;
             }
             let apCost = Math.round(Math.sqrt(numRav)*selectedBat.ap/ravitFactor);
             selectedBat.apLeft = selectedBat.apLeft-apCost;
