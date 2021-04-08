@@ -1189,7 +1189,7 @@
         "bldReq":["Générateur"],
         "compReq":{"energ":1},
         "costs":{"Fer":3,"Cuivre":3,"Carbone":1,"Batteries":1},
-        "deploy":{"Energie":6},
+        "deploy":{"Energie":12},
         "batch":12
     },
     {

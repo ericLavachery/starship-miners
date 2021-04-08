@@ -82,7 +82,7 @@
         "levels":{"rednecks":10,"blades":9,"bulbos":8,"drogmulojs":11,"tiradores":10,"detruas":10,"brazier":10},
         "bldReq":["Laboratoire","Générateur"],
         "compReq":{"ordre":3},
-        "costs":{"Scrap":30,"Carbone":60,"Bois":60,"Aluminium":105,"Titane":45,"Cuivre":60,"Tissus":30,"Azote":30,"Mendium":30,"Silicium":30,"Electros":60,"Batteries":60},
+        "costs":{"Scrap":30,"Carbone":60,"Bois":60,"Aluminium":105,"Titane":45,"Cuivre":60,"Tissus":30,"Azote":30,"Mendium":30,"Silicium":30,"Electros":60,"Batteries":45},
         "deploy":{"Energie":120},
         "fabTime":40
     },
@@ -1783,7 +1783,7 @@
         "name":"Barbelés (taser)",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":["Atelier","Générateur"],
-        "costs":{"Aluminium":12,"Compo2":9,"Cuivre":6,"Batteries":3,"Energie":12},
+        "costs":{"Aluminium":12,"Compo2":9,"Cuivre":6,"Batteries":6,"Energie":36},
         "fabTime":15
     },
     {
