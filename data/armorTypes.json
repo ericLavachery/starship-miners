@@ -1054,5 +1054,10 @@
         "name": "respack-bld1",
         "info": "Bâtiments 1 (2230r)",
         "costs":{"Compo1":450,"Compo2":110,"Eau":200,"Carbone":50,"Aluminium":100,"Fer":200,"Soufre":50,"Bois":100,"Potassium":50,"Scrap":200,"Phosphore":30,"Hydrogène":50,"Végétaux":150,"Fuel":100,"Zinc":50,"Huile":50,"Potassium":100,"Tissus":25,"Calcium":25,"Or":15,"Silicium":25,"Oxygène":25,"Chlore":75}
+    },
+    {
+        "name": "startpack-rednecks",
+        "info": "Pack de départ - Rednecks",
+        "costs":{}
     }
 ]

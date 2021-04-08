@@ -50,26 +50,6 @@ function checkReserve() {
     });
 };
 
-function resetReserve() {
-    resTypes.forEach(function(res) {
-        playerInfos.reserve[res.name] = 0;
-    });
-};
-
-function resetEndRes() {
-    resTypes.forEach(function(res) {
-        playerInfos.endRes[res.name] = 0;
-    });
-    playerInfos.endRes['Citoyens'] = 0;
-};
-
-function resetStartRes() {
-    resTypes.forEach(function(res) {
-        playerInfos.startRes[res.name] = 0;
-    });
-    playerInfos.startRes['Citoyens'] = 0;
-};
-
 function findLanders() {
     landers = [];
     bataillons.forEach(function(bat) {

@@ -1274,3 +1274,7 @@ function missionResults(onlyLanders) {
     $('#conUnitList').append('<span class="paramName vert">Total</span><span class="paramIcon"></span><span class="paramValue '+resColour+'">'+balance+'</span><br>');
     commandes();
 };
+
+function addStartPack() {
+    
+};

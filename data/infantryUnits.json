@@ -501,7 +501,6 @@
             "cost":5,
             "range":2,
             "kit":true,
-            "noMelee":true,
             "noDef":true,
             "rof":20,
             "accuracy":20,

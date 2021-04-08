@@ -1,3 +1,48 @@
+function generateVM() {
+    zone = [];
+    savePlayerInfos();
+    filterParams();
+    createVM(mapSize);
+    washReports();
+    zoneReport(zone);
+    writeMapStyles();
+    showMap(zone,false);
+    minimap();
+    commandes();
+};
+
+function createVM(size) {
+    let nextZoneNum = 0;
+    let newTile = {};
+    let i = 0;
+    let x = 1;
+    let y = 1;
+    let thisTerrain = "P";
+    while (i < size*size) {
+        newTile = {};
+        newTile.id = i;
+        if (newTile.id === 0) {
+            newTile.number = nextZoneNum;
+            newTile.dark = false;
+            newTile.mapDiff = 0;
+            newTile.pKind = '';
+            newTile.gKind = '';
+            newTile.sKind = '';
+        }
+        newTile.x = x;
+        newTile.y = y;
+        newTile.terrain = 'P';
+        newTile.seed = rand.rand(1,6);
+        zone.push(newTile);
+        i++;
+        y++;
+        if (y > mapSize) {
+            y = 1;
+            x++;
+        }
+    }
+};
+
 function generateNewMap() {
     zone = [];
     playerInfos.sondeMaps = playerInfos.sondeMaps+1;
@@ -15,39 +60,6 @@ function generateNewMap() {
     showMap(zone,false);
     minimap();
     commandes();
-};
-
-function checkMapKind(terName) {
-    let dice = rand.rand(1,12);
-    if (terName === 'P') {
-        if (dice <= 6 || playerInfos.mapDiff <= 1) {
-            return 'bug';
-        } else if (dice <= 8 || playerInfos.mapDiff <= 2) {
-            return 'spider';
-        } else {
-            return 'swarm';
-        }
-    } else if (terName === 'G') {
-        if (dice <= 2 || playerInfos.mapDiff <= 1) {
-            return 'bug';
-        } else if (dice <= 6 || playerInfos.mapDiff <= 2) {
-            return 'spider';
-        } else if (dice <= 9) {
-            return 'larve';
-        } else {
-            return 'swarm';
-        }
-    } else if (terName === 'S') {
-        if (dice <= 2) {
-            return 'bug';
-        } else if (dice <= 4) {
-            return 'spider';
-        } else if (dice <= 10) {
-            return 'larve';
-        } else {
-            return 'swarm';
-        }
-    }
 };
 
 function createMap(size) {
@@ -104,6 +116,39 @@ function createMap(size) {
         }
     }
     // console.log(zone);
+};
+
+function checkMapKind(terName) {
+    let dice = rand.rand(1,12);
+    if (terName === 'P') {
+        if (dice <= 6 || playerInfos.mapDiff <= 1) {
+            return 'bug';
+        } else if (dice <= 8 || playerInfos.mapDiff <= 2) {
+            return 'spider';
+        } else {
+            return 'swarm';
+        }
+    } else if (terName === 'G') {
+        if (dice <= 2 || playerInfos.mapDiff <= 1) {
+            return 'bug';
+        } else if (dice <= 6 || playerInfos.mapDiff <= 2) {
+            return 'spider';
+        } else if (dice <= 9) {
+            return 'larve';
+        } else {
+            return 'swarm';
+        }
+    } else if (terName === 'S') {
+        if (dice <= 2) {
+            return 'bug';
+        } else if (dice <= 4) {
+            return 'spider';
+        } else if (dice <= 10) {
+            return 'larve';
+        } else {
+            return 'swarm';
+        }
+    }
 };
 
 function nextSeed(ter,ls,as,d1s,d2s) {

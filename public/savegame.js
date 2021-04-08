@@ -9,9 +9,11 @@ function saveMap() {
     socket.emit('save-map',zone);
     commandes();
 };
+
 function saveAliens() {
     socket.emit('save-aliens',aliens);
 };
+
 function saveBataillons() {
     socket.emit('save-bataillons',bataillons);
 };
@@ -73,6 +75,7 @@ function saveMapForReturn() {
     showMap(zone,true);
     commandes();
 };
+
 function saveAliensForReturn(zoneNum) {
     deadAliensList = [];
     aliens.forEach(function(bat) {
@@ -95,6 +98,7 @@ function saveAliensForReturn(zoneNum) {
     killAlienList();
     socket.emit('save-aliens-as',[aliens,zoneNum]);
 };
+
 function saveBataillonsForReturn(zoneNum) {
     bataillons.forEach(function(bat) {
         bat.creaTurn = 0;
@@ -131,6 +135,7 @@ function saveAllBats() {
     savePlayerInfos();
     commandes();
 };
+
 function saveGame() {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
@@ -144,61 +149,71 @@ function saveGame() {
     saveMap();
     commandes();
 };
+
 function compReset() {
     playerInfos.comp = resetComp();
-    // savePlayerInfos();
     commandes();
     gangEdit();
 };
+
 function alienReset() {
     aliens = [];
-    // saveAliens();
     showMap(zone,false);
 };
+
 function deleteZones() {
     socket.emit('reset-zones','');
     zoneFiles = [];
     savePlayerInfos();
 };
+
+function newGame() {
+    bataillons = [];
+    saveBataillons();
+    aliens = [];
+    saveAliens();
+    resetPlayerInfos();
+    playerInfos.showedTiles = [1830];
+    playerInfos.comp = resetComp();
+    playerInfos.onShip = true;
+    playerInfos.gang = 'rednecks';
+    playerInfos.gLevel = 4;
+    resetReserve();
+    resetStartRes();
+    resetEndRes();
+    resetVMRes();
+    deleteZones();
+    generateVM();
+    showMap(zone,false);
+    commandes();
+};
+
 function mapReset() {
     bataillons = [];
     saveBataillons();
     aliens = [];
     saveAliens();
-    playerInfos.mapAdjDiff = playerInfos.mapDiff;
-    playerInfos.mapTurn = 0;
-    playerInfos.mapDrop = 0;
-    playerInfos.cocons = 0;
-    playerInfos.fndComps = 0;
-    playerInfos.fndUnits = 0;
-    playerInfos.fndCits = 0;
-    playerInfos.sondeMaps = 0;
-    playerInfos.eggPause = false;
-    playerInfos.droppedEggs = 0;
-    playerInfos.knownAliens = [];
-    playerInfos.aliensKilled = 0;
-    playerInfos.eggsKilled = 0;
-    playerInfos.unitsLost = 0;
-    playerInfos.fuzzTotal = 0;
-    playerInfos.pauseSeed = rand.rand(1,8);
-    playerInfos.res = {};
-    playerInfos.alienRes = {};
+    resetPlayerInfos();
     playerInfos.showedTiles = [1830];
-    playerInfos.myCenter = 1830;
-    playerInfos.undarkOnce = [];
-    playerInfos.bldList = [];
-    // playerInfos.comp = resetComp();
     resetReserve();
     resetStartRes();
     resetEndRes();
-    deleteZones();
-    // savePlayerInfos();
     showMap(zone,false);
     commandes();
     $("#reset2").css("display","none");
     $("#reset1").css("display","inline-block");
 };
+
 function mapSoftReset() {
+    resetPlayerInfos();
+    resetReserve();
+    resetStartRes();
+    resetEndRes();
+    showMap(zone,false);
+    commandes();
+};
+
+function resetPlayerInfos() {
     playerInfos.mapAdjDiff = playerInfos.mapDiff;
     playerInfos.mapTurn = 0;
     playerInfos.mapDrop = 0;
@@ -220,19 +235,39 @@ function mapSoftReset() {
     playerInfos.myCenter = 1830;
     playerInfos.undarkOnce = [];
     playerInfos.bldList = [];
-    resetReserve();
-    resetStartRes();
-    resetEndRes();
-    // savePlayerInfos();
-    showMap(zone,false);
-    commandes();
-    $("#reset2").css("display","none");
-    $("#reset1").css("display","inline-block");
 };
+
 function showMapReset() {
     commandes();
     $("#reset1").css("display","none");
     $("#reset2").css("display","inline-block");
+};
+
+function resetReserve() {
+    resTypes.forEach(function(res) {
+        playerInfos.reserve[res.name] = 0;
+    });
+};
+
+function resetEndRes() {
+    resTypes.forEach(function(res) {
+        playerInfos.endRes[res.name] = 0;
+    });
+    playerInfos.endRes['Citoyens'] = 0;
+};
+
+function resetStartRes() {
+    resTypes.forEach(function(res) {
+        playerInfos.startRes[res.name] = 0;
+    });
+    playerInfos.startRes['Citoyens'] = 0;
+};
+
+function resetVMRes() {
+    resTypes.forEach(function(res) {
+        playerInfos.vmRes[res.name] = 0;
+    });
+    playerInfos.vmRes['Citoyens'] = 0;
 };
 
 function voirZones() {
