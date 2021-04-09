@@ -174,6 +174,34 @@ function warning(title,body,noHand) {
     }
 };
 
+function getStartPack(gang) {
+    let packName = 'startpack-'+gang;
+    let pack = {};
+    let index = armorTypes.findIndex((obj => obj.name == packName));
+    if (index > -1) {
+        pack = armorTypes[index];
+    }
+    return pack;
+};
+
+function getSoute() {
+    let soute = {};
+    let index = bataillons.findIndex((obj => obj.type == 'Soute'));
+    if (index > -1) {
+        soute = bataillons[index];
+    }
+    return soute;
+};
+
+function getCitBat(batName) {
+    let citBat = {};
+    let index = bataillons.findIndex((obj => obj.type == batName));
+    if (index > -1) {
+        citBat = bataillons[index];
+    }
+    return citBat;
+};
+
 function getInfraByName(infraName) {
     let infra = {};
     let index = armorTypes.findIndex((obj => obj.name == infraName));

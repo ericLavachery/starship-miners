@@ -31,8 +31,12 @@ function createVM(size) {
         }
         newTile.x = x;
         newTile.y = y;
-        newTile.terrain = 'P';
-        newTile.seed = rand.rand(1,6);
+        if (x > 25 && x < 37 && y > 23 && y < 39) {
+            newTile.terrain = 'X';
+        } else {
+            newTile.terrain = 'V';
+        }
+        newTile.seed = 1;
         zone.push(newTile);
         i++;
         y++;

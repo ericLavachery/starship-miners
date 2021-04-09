@@ -2209,7 +2209,7 @@
         "id":231,
         "name":"Sonde",
         "bldReq":["Soute"],
-        "costs":{},
+        "costs":{"Eau":25,"Scrap":200,"Carbone":40,"Titane":100,"Aluminium":200,"Nickel":40,"Cuivre":40,"Silicium":20,"Bore":15,"Hélium":15,"Electros":40,"Batteries":20,"Energie":60,"Plutonium":30,"Hydrogène":15},
         "fabTime":100
     },
     {

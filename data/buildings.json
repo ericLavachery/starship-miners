@@ -2765,7 +2765,7 @@
     {
         "id":232,
         "name":"Dortoirs",
-        "pic":"empty",
+        "pic":"dortoir",
         "cat":"buildings",
         "kind":"zero-vm",
         "sort":5,
@@ -2797,7 +2797,7 @@
     {
         "id":233,
         "name":"Cabines",
-        "pic":"empty",
+        "pic":"cabine",
         "cat":"buildings",
         "kind":"zero-vm",
         "sort":5,
@@ -2829,7 +2829,7 @@
     {
         "id":234,
         "name":"Appartements",
-        "pic":"empty",
+        "pic":"appart",
         "cat":"buildings",
         "kind":"zero-vm",
         "sort":5,
@@ -2861,7 +2861,7 @@
     {
         "id":235,
         "name":"Poste de pilotage",
-        "pic":"empty",
+        "pic":"pilotage",
         "cat":"buildings",
         "kind":"zero-vm",
         "sort":5,
@@ -2893,7 +2893,7 @@
     {
         "id":236,
         "name":"Passerelle",
-        "pic":"empty",
+        "pic":"passerelle",
         "cat":"buildings",
         "kind":"zero-vm",
         "sort":5,
@@ -2925,7 +2925,7 @@
     {
         "id":231,
         "name":"Sonde",
-        "pic":"empty",
+        "pic":"sonde",
         "cat":"buildings",
         "kind":"zero-vm",
         "sort":5,
@@ -2957,7 +2957,7 @@
     {
         "id":230,
         "name":"Soute",
-        "pic":"empty",
+        "pic":"soute",
         "cat":"buildings",
         "kind":"zero-vm",
         "sort":5,
@@ -2979,17 +2979,18 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["recupcit","transport","routes","producteur"],
+        "skills":["recupcit","transport","routes","producteur","fret","reserve","transorbital"],
         "mecanoCost":10,
-        "transMaxSize":9,
-        "transUnits":1500,
+        "transMaxSize":100,
+        "transUnits":1000000,
+        "transRes":10000000,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
     {
         "id":228,
         "name":"Serres hydroponiques",
-        "pic":"empty",
+        "pic":"jardin",
         "cat":"buildings",
         "kind":"zero-vm",
         "sort":5,
@@ -3021,7 +3022,7 @@
     {
         "id":229,
         "name":"Jardin",
-        "pic":"empty",
+        "pic":"jardin",
         "cat":"buildings",
         "kind":"zero-vm",
         "sort":5,

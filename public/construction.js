@@ -632,7 +632,7 @@ function clickConstruct(tileId,free) {
             }
         }
         if (!batHere) {
-            if (!free) {
+            if (!free && !playerInfos.onShip) {
                 let distance = calcDistance(selectedBat.tileId,tileId);
                 selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*conselUnit.fabTime/10)-(distance*3);
                 if (!selectedBat.tags.includes('construction')) {
@@ -894,7 +894,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             } else {
                 newBat.tags = [];
             }
-            if (!conselTriche && conselUnit.cat != 'aliens') {
+            if (!conselTriche && conselUnit.cat != 'aliens' && !playerInfos.onShip) {
                 newBat.tags.push('construction');
             }
             if (conselUnit.skills.includes('hide') || (conselUnit.kind === 'larve' && larveHIDE)) {

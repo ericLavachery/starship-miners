@@ -278,12 +278,20 @@ function batInfos(bat,pop) {
         if (batType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
             transBase = Math.round(transBase*bonusTransRetour);
         }
-        $('#'+bodyPlace).append('<span class="paramName cy">Transport</span><span class="paramIcon"></span><span class="paramValue cy">'+transLeft+'/'+transBase+'</span><br>');
+        if (transBase < 1000000) {
+            $('#'+bodyPlace).append('<span class="paramName cy">Transport</span><span class="paramIcon"></span><span class="paramValue cy">'+transLeft+'/'+transBase+'</span><br>');
+        } else {
+            $('#'+bodyPlace).append('<span class="paramName cy">Transport</span><span class="paramIcon"></span><span class="paramValue cy">'+transLeft+'/</span><br>');
+        }
     }
     if (batType.transRes >= 1) {
         let restSpace = checkResSpace(bat);
         if (restSpace < 1) {tagColor = 'or';} else {tagColor = 'cy';}
-        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/'+resMax+'</span><br>');
+        if (resMax < 1000000) {
+            $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/'+resMax+'</span><br>');
+        } else {
+            $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/</span><br>');
+        }
         if (batType.cat != 'buildings' && batType.cat != 'devices' && !batType.skills.includes('transorbital')) {
             let nearLander = nearAnyLander(bat);
             if (resMax > restSpace && nearLander) {

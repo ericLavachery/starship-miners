@@ -65,43 +65,40 @@
     background-color: #000000;
 }
 .mM {
-    /* background-color: #413421; */
     background-color: #39372E;
 }
 .mH {
-    /* background-color: #625432; */
     background-color: #5F5B3A;
 }
 .mE {
     background-color: #8b7d3f;
 }
 .mP {
-    /* background-color: #9c8d4b; */
     background-color: #91965f;
 }
 .mG {
-    /* background-color: #9bb854; */
     background-color: #B1BD57;
 }
 .mB {
-    /* background-color: #6f6e13; */
     background-color: #467D2D;
 }
 .mF {
-    /* background-color: #1b632f; */
     background-color: #26601F;
 }
 .mS {
-    /* background-color: #566878; */
     background-color: #516662;
 }
 .mW {
-    /* background-color: #437c9a; */
     background-color: #49796f;
 }
 .mR {
-    /* background-color: #1378c1; */
     background-color: #60a6ab;
+}
+.mV {
+    background-color: #000000;
+}
+.mX {
+    background-color: #4d4e48;
 }
 .terFog {
     background-color: #000000;
@@ -450,6 +447,16 @@
 .terR6 {
     background-color: #3697ac;
     background-image: url(/static/img/sntiles/R_006.png);
+    background-position: center;
+}
+.terX1 {
+    background-color: #4d4e48;
+    background-image: url(/static/img/sntiles/X_001.png);
+    background-position: center;
+}
+.terV1 {
+    background-color: #000000;
+    background-image: url(/static/img/sntiles/V_001.png);
     background-position: center;
 }
 .terPic {

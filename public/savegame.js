@@ -185,6 +185,7 @@ function newGame() {
     deleteZones();
     generateVM();
     showMap(zone,false);
+    miniOut();
     commandes();
 };
 

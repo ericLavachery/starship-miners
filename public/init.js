@@ -130,7 +130,9 @@ socket.on('savedMap-Load', function(sm) {
     commandes();
     checkVisibleAliens();
     alienBonus();
-    minimap();
+    if (!playerInfos.onShip) {
+        minimap();
+    }
     checkReserve();
     if (playerInfos.pseudo != 'Test' && playerInfos.pseudo != 'Payall') {
         playMusic('start',true);

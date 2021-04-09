@@ -1276,5 +1276,71 @@ function missionResults(onlyLanders) {
 };
 
 function addStartPack() {
-    
+    addFreeBat(1830,'Soute');
+    addFreeBat(1834,'Poste de pilotage');
+    addFreeBat(1949,'Serres hydroponiques');
+    addFreeBat(1948,'Cantine');
+    addFreeBat(1893,'Aérodocks');
+    addFreeBat(1831,'Lander');
+    addFreeBat(1709,'Générateur');
+    addFreeBat(1710,'Crameur');
+    addFreeBat(1707,'Dortoirs');
+    addFreeBat(1767,'Dortoirs');
+    addFreeBat(1827,'Dortoirs');
+    addFreeBat(1647,'Sonde');
+    addFreeBat(1648,'Sonde');
+    addFreeBat(1649,'Sonde');
+    addFreeBat(1650,'Sonde');
+    addFreeBat(1651,'Sonde');
+    addFreeBat(2007,'Sonde');
+    addFreeBat(2008,'Sonde');
+    addFreeBat(2009,'Sonde');
+    addFreeBat(2010,'Sonde');
+    addFreeBat(2011,'Sonde');
+    // Ajouter les Citoyens
+    let soute = getSoute();
+    let unitIndex = unitTypes.findIndex((obj => obj.name === 'Citoyens'));
+    conselUnit = unitTypes[unitIndex];
+    conselPut = false;
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
+    conselTriche = true;
+    putBat(1830,1900,0);
+    let citBat = getCitBat('Citoyens');
+    citBat.loc = 'trans';
+    citBat.locId = soute.id;
+    soute.transIds.push(citBat.id);
+    unitIndex = unitTypes.findIndex((obj => obj.name === 'Criminels'));
+    conselUnit = unitTypes[unitIndex];
+    conselPut = false;
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
+    conselTriche = true;
+    putBat(1830,100,0);
+    let crimBat = getCitBat('Criminels');
+    crimBat.loc = 'trans';
+    crimBat.locId = soute.id;
+    soute.transIds.push(crimBat.id);
+    // Ajouter Ressources
+    console.log(soute);
+    let pack = getStartPack(playerInfos.gang);
+    if (Object.keys(pack.res).length >= 1) {
+        Object.entries(pack.res).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            playerInfos.vmRes[key] = value;
+            if (value >= 1) {
+                soute.transRes[key] = value;
+            }
+        });
+    }
+    showMap(zone,true);
+    showBataillon(soute);
 };
+
+function addFreeBat(tileId,unitName) {
+    let unitIndex = unitTypes.findIndex((obj => obj.name === unitName));
+    conselUnit = unitTypes[unitIndex];
+    conselPut = false;
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
+    conselTriche = true;
+    putBat(tileId,0,0);
+}

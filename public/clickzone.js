@@ -11,6 +11,8 @@ function clickTile(tileId) {
             } else {
                 if (conselTriche) {
                     clickConstruct(tileId,true);
+                } else if (playerInfos.onShip) {
+                    clickConstruct(tileId,false);
                 } else {
                     if (selectedBat.tileId >= 0) {
                         let distance = calcDistance(selectedBat.tileId,tileId);
