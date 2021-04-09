@@ -3224,6 +3224,7 @@
             "name":"Canons laser",
             "cost":4,
             "range":5,
+            "isPrec":true,
             "rof":12,
             "accuracy":50,
             "power":17,
@@ -3254,7 +3255,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fly","longshot","gooddef","strong","baddef","flash","recupcit","recupres"],
+        "skills":["noguet","fly","longshot","gooddef","strong","baddef","flash","recupcit","recupres","cible"],
         "fuzz":7,
         "deathFx":"vehicleexplo3"
     },

@@ -34,7 +34,7 @@ function isHit(accuracy,minAccu,aoe,size,stealth,cover,speed,shotDice) {
         prec = minAccu;
     }
     // tir ciblé
-    if (selectedBat.tags.includes('vise')) {
+    if (selectedBat.tags.includes('vise') && selectedWeap.isPrec) {
         prec = Math.round(prec*(5+playerInfos.comp.train)/3);
     }
     let dice = rand.rand(1,shotDice);
@@ -1094,6 +1094,11 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.noShield = false;
     } else {
         thisWeapon.noShield = weapon.noShield;
+    }
+    if (weapon.isPrec === undefined) {
+        thisWeapon.isPrec = false;
+    } else {
+        thisWeapon.isPrec = weapon.isPrec;
     }
     if (weapon.isBow === undefined) {
         thisWeapon.isBow = false;

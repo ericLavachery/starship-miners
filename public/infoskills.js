@@ -214,10 +214,22 @@ function skillsInfos(bat,batType) {
     // intéressant si précision en dessous de 10
     if (batType.skills.includes('cible') && !inMelee) {
         apCost = 4;
-        if (batType.weapon2.rof >= 1 && batType.weapon.cost > batType.weapon2.rof) {
-            apReq = 4+batType.weapon2.cost;
+        if (batType.weapon.isPrec) {
+            if (batType.weapon2.rof >= 1) {
+                if (batType.weapon2.isPrec) {
+                    if (batType.weapon.cost > batType.weapon2.rof) {
+                        apReq = 4+batType.weapon2.cost;
+                    } else {
+                        apReq = 4+batType.weapon.cost;
+                    }
+                } else {
+                    apReq = 4+batType.weapon.cost;
+                }
+            } else {
+                apReq = 4+batType.weapon.cost;
+            }
         } else {
-            apReq = 4+batType.weapon.cost;
+            apReq = 4+batType.weapon2.cost;
         }
         balise = 'h4';
         if (bat.tags.includes('vise')) {
