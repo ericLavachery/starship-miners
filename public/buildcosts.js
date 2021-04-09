@@ -64,18 +64,31 @@ function findLanders() {
 
 function findTheLander() {
     let theLander = {};
+    let bestLander = 0;
     bataillons.forEach(function(bat) {
         if (bat.loc === 'zone') {
-            if (Object.keys(theLander).length < 1) {
-                let batType = getBatType(bat);
-                if (batType.skills.includes('transorbital')) {
-                    theLander = bat;
-                }
+            let batType = getBatType(bat);
+            let landerScore = getLanderScore(batType);
+            if (bestLander < landerScore) {
+                bestLander = landerScore;
+                theLander = bat;
             }
         }
     });
     return theLander;
 };
+
+function getLanderScore(batType) {
+    let landerScore = 0;
+    if (batType.skills.includes('transorbital')) {
+        if (batType.name === 'Soute') {
+            landerScore = 1;
+        } else {
+            landerScore = batType.transUnits;
+        }
+    }
+    return landerScore;
+}
 
 function checkCost(costs) {
     let enoughRes = true;
