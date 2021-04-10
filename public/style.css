@@ -203,7 +203,7 @@ h5 {
     width: 22px;
     margin-left: 256px;
     color: #d5cabd;
-    position: fixed;
+    position: absolute;
 }
 .constIcon {
     display: inline-block;

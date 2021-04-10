@@ -183,6 +183,7 @@ let conselCat;
 let conselUpgrade = '';
 let conselTriche;
 let conselCosts = {};
+let myNewGear = ['xxx','xxx','xxx','xxx'];
 // INVASION
 let zoneInfos = {};
 let maxAliens = 250;

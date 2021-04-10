@@ -1336,7 +1336,22 @@ function skillsInfos(bat,batType) {
             } else {
                 skillMessage = "Pas assez de PA";
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-drafting-compass"></i> <span class="small">'+apReq+'</span></button>&nbsp; Production</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-id-card"></i> <span class="small">'+apReq+'</span></button>&nbsp; Production</h4></span>');
+        }
+    }
+    // CHANGER AMMOS-ARMURE-EQUIPEMENT
+    if (anyStock || playerInfos.onShip) {
+        apCost = Math.round(bat.ap*1.5);
+        apReq = 5;
+        if (bat.apLeft >= apReq && !inMelee) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Changer de munitions, équipement ou armure" class="boutonCaca skillButtons" onclick="reEquip('+bat.id+',false)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apReq+'</span></button>&nbsp; Rééquiper</h4></span>');
+        } else {
+            if (inMelee) {
+                skillMessage = "Ne peut pas se faire en mêlée";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-user-shield"></i> <span class="small">'+apReq+'</span></button>&nbsp; Rééquiper</h4></span>');
         }
     }
     // FOUILLE DE RUINES
@@ -1386,7 +1401,7 @@ function skillsInfos(bat,batType) {
             let landerDistance = calcDistance(landerBat.tileId,bat.tileId);
             if (landerDistance <= 1 || playerInfos.onShip) {
                 let apCost = Math.round(6*batType.fabTime/30);
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire (mettre dans le lander)" class="boutonGris skillButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine skillButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
             }
         }
     }
