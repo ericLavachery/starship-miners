@@ -204,11 +204,15 @@ function checkTracking(myBat) {
 function embarquement(transId,discardRes) {
     let transBat = getBatById(transId);
     let transBatType = getBatType(transBat);
-    if (selectedBatType.skills.includes('tracked') && transBatType.transMaxSize < 25) {
-        transBat.apLeft = transBat.apLeft-4;
+    if (!playerInfos.onShip) {
+        if (selectedBatType.skills.includes('tracked') && transBatType.transMaxSize < 25) {
+            transBat.apLeft = transBat.apLeft-4;
+        }
     }
     transBat.transIds.push(selectedBat.id);
-    selectedBat.apLeft = selectedBat.apLeft-2;
+    if (!playerInfos.onShip) {
+        selectedBat.apLeft = selectedBat.apLeft-2;
+    }
     if (discardRes) {
         selectedBat.transRes = {};
     }
@@ -268,7 +272,7 @@ function clickDebarq(tileId) {
         }
     });
     let distance = calcDistance(selectedBat.tileId,tileId);
-    if (distance <= 1 && !ownBatHere && (terrainAccess(batDebarq.id,tileId) || batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') && !alienOccupiedTiles.includes(tileId)) {
+    if ((distance <= 1 || playerInfos.onShip) && !ownBatHere && (terrainAccess(batDebarq.id,tileId) || batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') && !alienOccupiedTiles.includes(tileId)) {
         tileOK = true;
     } else {
         batDebarq = {};
@@ -278,7 +282,9 @@ function clickDebarq(tileId) {
     if (tileOK) {
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
             tagDelete(selectedBat,'loaded');
-            selectedBat.apLeft = selectedBat.apLeft-(selectedBatType.mecanoCost*3)-(distance*3);
+            if (!playerInfos.onShip) {
+                selectedBat.apLeft = selectedBat.apLeft-(selectedBatType.mecanoCost*3)-(distance*3);
+            }
         } else {
             if (selectedBat.transIds.includes(batDebarq.id)) {
                 tagIndex = selectedBat.transIds.indexOf(batDebarq.id);
@@ -297,7 +303,9 @@ function clickDebarq(tileId) {
         selectedBatArrayUpdate();
         batUnselect();
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
-            batDebarq.apLeft = batDebarq.ap-Math.round(batDebarqType.fabTime*batDebarq.ap/50);
+            if (!playerInfos.onShip) {
+                batDebarq.apLeft = batDebarq.ap-Math.round(batDebarqType.fabTime*batDebarq.ap/50);
+            }
         }
         showBataillon(batDebarq);
         batSelect(batDebarq);

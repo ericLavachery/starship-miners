@@ -4,7 +4,10 @@ function generateVM() {
     filterParams();
     createVM(mapSize);
     washReports();
-    zoneReport(zone);
+    // zoneReport(zone);
+    let ensolFactor = rand.rand(25,35);
+    let ensolBonus = rand.rand(0,80);
+    zone[0].ensol = Math.round(100*ensolFactor/10)+ensolBonus;
     writeMapStyles();
     showMap(zone,false);
     minimap();

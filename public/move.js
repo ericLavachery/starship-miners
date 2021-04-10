@@ -168,7 +168,7 @@ function moveSelectedBat(tileId,free,jump) {
     // remove unit and redraw old tile
     tileUnselect();
     redrawTile(selectedBat.tileId,false);
-    if (!free) {
+    if (!free && !playerInfos.onShip) {
         // remove ap
         let apLost;
         if (!jump) {
@@ -290,7 +290,9 @@ function batUnstack() {
         } else {
             if (selectedBat.salvoLeft < selectedBatType.maxSalvo) {
                 // le bataillon a tiré ce tour ci : pénalité
-                selectedBat.apLeft = 0-selectedUnit.ap;
+                if (!playerInfos.onShip) {
+                    selectedBat.apLeft = 0-selectedUnit.ap;
+                }
             } else {
                 // le bataillon n'a pas tiré ce tour ci : regagne ses AP
                 selectedBat.apLeft = selectedBat.oldapLeft;

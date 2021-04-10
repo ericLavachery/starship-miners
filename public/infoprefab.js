@@ -35,7 +35,9 @@ function deconstruction(prefabId) {
     let prefabBatType = getBatType(prefabBat);
     let landerBat = findTheLander();
     if (Object.keys(landerBat).length >= 1) {
-        selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*prefabBatType.fabTime/30);
+        if (!playerInfos.onShip) {
+            selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*prefabBatType.fabTime/30);
+        }
         prefabBat.loc = 'trans';
         prefabBat.locId = landerBat.id;
         prefabBat.tileId = landerBat.tileId;
