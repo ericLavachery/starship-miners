@@ -762,10 +762,6 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             }
             let batEquip = getEquipByName(equipName);
             newBat.eq = equipName;
-            let baseAP = conselUnit.ap;
-            if (newBat.eq === 'e-jetpack') {
-                baseAP = 17;
-            }
             // log3eq
             newBat.logeq = '';
             if (playerInfos.comp.log === 3) {
@@ -784,22 +780,14 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             if (armorName === 'xxx') {
                 armorName = 'aucune';
             }
-            let armorIndex = armorTypes.findIndex((obj => obj.name == armorName));
-            let batArmor = armorTypes[armorIndex];
+            let batArmor = getEquipByName(armorName);
             newBat.prt = armorName;
-            newBat.armor = conselUnit.armor+batArmor.armor;
-            if ((conselUnit.skills.includes('fly') || newBat.eq === 'e-jetpack') && batArmor.ap < 0) {
-                newBat.ap = baseAP+batArmor.ap+batArmor.ap;
-            } else if ((conselUnit.skills.includes('strong') || newBat.eq === 'helper') && batArmor.ap < -1) {
-                newBat.ap = baseAP+batArmor.ap+1;
-            } else if (conselUnit.moveCost === 99) {
-                newBat.ap = baseAP;
-            } else {
-                newBat.ap = baseAP+batArmor.ap;
-            }
+            let gearStuff = getBatGearStuff(armorName,equipName,conselUnit);
+            newBat.armor = gearStuff[0];
+            newBat.ap = gearStuff[1];
             if (conselTriche) {
-                newBat.apLeft = baseAP;
-                newBat.oldapLeft = baseAP;
+                newBat.apLeft = newBat.ap;
+                newBat.oldapLeft = newBat.ap;
                 newBat.salvoLeft = conselUnit.maxSalvo;
             } else {
                 if (conselUnit.fabTime >= 1) {
@@ -828,8 +816,8 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                         newBat.salvoLeft = conselUnit.maxSalvo;
                     }
                 } else {
-                    newBat.apLeft = baseAP;
-                    newBat.oldapLeft = baseAP;
+                    newBat.apLeft = newBat.ap;
+                    newBat.oldapLeft = newBat.ap;
                     newBat.salvoLeft = conselUnit.maxSalvo;
                 }
             }

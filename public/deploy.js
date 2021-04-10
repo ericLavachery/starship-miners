@@ -241,6 +241,11 @@ function reEquip(batId,noRefresh) {
 
 function doReEquip(batId) {
     let myBat = getBatById(batId);
+    let myBatType = getBatType(myBat);
+    let myGear = [myBat.ammo,myBat.ammo2,myBat.prt,myBat.eq];
+    let gearStuff = getBatGearStuff(myNewGear[2],myNewGear[3],myBatType);
+    myBat.armor = gearStuff[0];
+    myBat.ap = gearStuff[1];
     myBat.ammo = myNewGear[0];
     myBat.ammo2 = myNewGear[1];
     myBat.prt = myNewGear[2];
@@ -249,6 +254,26 @@ function doReEquip(batId) {
     myNewGear = ['xxx','xxx','xxx','xxx'];
     showBatInfos(myBat);
 };
+
+function getBatGearStuff(armorName,equipName,batType) {
+    let gearStuff = [];
+    let batArmor = getEquipByName(armorName);
+    gearStuff[0] = batType.armor+batArmor.armor;
+    let baseAP = batType.ap;
+    if (equipName === 'e-jetpack') {
+        baseAP = 17;
+    }
+    if ((batType.skills.includes('fly') || equipName === 'e-jetpack') && batArmor.ap < 0) {
+        gearStuff[1] = baseAP+Math.ceil(batArmor.ap*1.5);
+    } else if ((batType.skills.includes('strong') || equipName === 'helper') && batArmor.ap < -1) {
+        gearStuff[1] = baseAP+batArmor.ap+1;
+    } else if (batType.moveCost === 99) {
+        gearStuff[1] = baseAP;
+    } else {
+        gearStuff[1] = baseAP+batArmor.ap;
+    }
+    return gearStuff;
+}
 
 function deployAmmo(ammo,weapon,batId) {
     let myBat = getBatById(batId);
