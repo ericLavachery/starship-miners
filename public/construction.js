@@ -1098,6 +1098,34 @@ function recupCitoyens(unitId,tileId,citoyens,xp) {
     putBat(tileId,citoyens,xp);
 };
 
+function getRecup(costs) {
+    // récup de n'importe quels coûts
+    let recup = {};
+    let recupFactor = 95;
+    let bldFactor = 0;
+    if (playerInfos.bldList.includes('Décharge')) {
+        bldFactor = bldFactor+2;
+    }
+    if (playerInfos.comp.tri >= 1) {
+        bldFactor = bldFactor+1;
+    }
+    if (hasScraptruck || playerInfos.onShip) {
+        bldFactor = bldFactor+1;
+    }
+    recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+4)/12);
+    if (costs != undefined) {
+        Object.entries(costs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            value = Math.floor(value/100*recupFactor);
+            if (value >= 1) {
+                recup[key] = value;
+            }
+        });
+    }
+    return recup;
+};
+
 function recupRes(bat,batType) {
     coffreTileId = -1;
     conselTriche = true;
@@ -1115,7 +1143,7 @@ function recupRes(bat,batType) {
         if (playerInfos.comp.tri >= 1) {
             bldFactor = bldFactor+1;
         }
-        if (hasScraptruck) {
+        if (hasScraptruck || playerInfos.onShip) {
             bldFactor = bldFactor+1;
         }
         recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+4)/12);

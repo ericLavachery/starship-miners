@@ -1326,10 +1326,15 @@ function addStartPack() {
         Object.entries(pack.res).map(entry => {
             let key = entry[0];
             let value = entry[1];
-            playerInfos.vmRes[key] = value;
-            if (value >= 1) {
-                soute.transRes[key] = value;
+            let res = getResByName(key);
+            if (res.cat === 'alien') {
+                playerInfos.alienRes[key] = value;
+            } else {
+                if (value >= 1) {
+                    soute.transRes[key] = value;
+                }
             }
+            playerInfos.vmRes[key] = value;
         });
     }
     showMap(zone,true);

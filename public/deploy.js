@@ -243,13 +243,85 @@ function doReEquip(batId) {
     let myBat = getBatById(batId);
     let myBatType = getBatType(myBat);
     let myGear = [myBat.ammo,myBat.ammo2,myBat.prt,myBat.eq];
-    let gearStuff = getBatGearStuff(myNewGear[2],myNewGear[3],myBatType);
-    myBat.armor = gearStuff[0];
-    myBat.ap = gearStuff[1];
-    myBat.ammo = myNewGear[0];
-    myBat.ammo2 = myNewGear[1];
-    myBat.prt = myNewGear[2];
-    myBat.eq = myNewGear[3];
+    let payOK = true;
+    let totalCosts = {};
+    let flatCosts = {};
+    let deployCosts = {};
+    let totalRecup = {};
+    let recup = {};
+    if (myNewGear[3] != myGear[3]) {
+        let batArmor = getEquipByName(myNewGear[3]);
+        flatCosts = getCosts(myBatType,batArmor,0,'equip');
+        mergeObjects(totalCosts,flatCosts);
+        if (!playerInfos.onShip) {
+            deployCosts = getDeployCosts(myBatType,batArmor,0,'equip');
+            mergeObjects(totalCosts,deployCosts);
+        }
+        if (!myGear[3].includes('aucun')) {
+            let oldBatArmor = getEquipByName(myGear[3]);
+            flatCosts = getCosts(myBatType,oldBatArmor,0,'equip');
+            recup = getRecup(flatCosts);
+            mergeObjects(totalRecup,recup);
+        }
+    }
+    if (myNewGear[2] != myGear[2]) {
+        let batEquip = getEquipByName(myNewGear[2]);
+        flatCosts = getCosts(myBatType,batEquip,0,'equip');
+        mergeObjects(totalCosts,flatCosts);
+        if (!playerInfos.onShip) {
+            deployCosts = getDeployCosts(myBatType,batEquip,0,'equip');
+            mergeObjects(totalCosts,deployCosts);
+        }
+        if (!myGear[2].includes('aucun')) {
+            let oldBatEquip = getEquipByName(myGear[2]);
+            flatCosts = getCosts(myBatType,oldBatEquip,0,'equip');
+            recup = getRecup(flatCosts);
+            mergeObjects(totalRecup,recup);
+        }
+    }
+    if (myNewGear[0] != myGear[0]) {
+        let batAmmo = getAmmoByName(myNewGear[0]);
+        flatCosts = getCosts(myBatType,batAmmo,1,'ammo');
+        mergeObjects(totalCosts,flatCosts);
+        if (!playerInfos.onShip) {
+            deployCosts = getDeployCosts(myBatType,batAmmo,1,'ammo');
+            mergeObjects(totalCosts,deployCosts);
+        }
+    }
+    if (myNewGear[1] != myGear[1]) {
+        let batAmmo2 = getAmmoByName(myNewGear[1]);
+        flatCosts = getCosts(myBatType,batAmmo2,2,'ammo');
+        mergeObjects(totalCosts,flatCosts);
+        if (!playerInfos.onShip) {
+            deployCosts = getDeployCosts(myBatType,batAmmo2,2,'ammo');
+            mergeObjects(totalCosts,deployCosts);
+        }
+    }
+    let costsOK = checkCost(totalCosts);
+    console.log(totalCosts);
+    if (costsOK) {
+        let gearStuff = getBatGearStuff(myNewGear[2],myNewGear[3],myBatType);
+        myBat.armor = gearStuff[0];
+        myBat.ap = gearStuff[1];
+        myBat.ammo = myNewGear[0];
+        myBat.ammo2 = myNewGear[1];
+        myBat.prt = myNewGear[2];
+        myBat.eq = myNewGear[3];
+        myBat.logeq = '';
+        if (playerInfos.comp.log === 3) {
+            if (myBatType.log3eq != undefined) {
+                if (myBatType.log3eq != '') {
+                    let logEquip = getEquipByName(myBatType.log3eq);
+                    let compReqOK = checkCompReq(logEquip);
+                    if (compReqOK) {
+                        myBat.logeq = logEquip.name;
+                    }
+                }
+            }
+        }
+        payCost(totalCosts);
+        addCost(totalRecup,1);
+    }
     conOut();
     myNewGear = ['xxx','xxx','xxx','xxx'];
     showBatInfos(myBat);
