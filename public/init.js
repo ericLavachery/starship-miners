@@ -123,6 +123,11 @@ socket.on('savedMap-Load', function(sm) {
     if (zone[0].number === undefined) {
         zone[0].number = 1;
     }
+    if (zone[0].terrain === 'V') {
+        playerInfos.onShip = true;
+    } else {
+        playerInfos.onShip = false;
+    }
     getColonyTiles();
     checkUndark();
     turnInfo();

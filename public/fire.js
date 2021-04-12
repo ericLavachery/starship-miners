@@ -601,7 +601,7 @@ function attack(melee) {
     if (targetBatType.skills.includes('resistelec') || targetBat.tags.includes('resistelec')) {
         if (selectedWeap.ammo.includes('electric') || selectedWeap.ammo.includes('taser')) {
             totalDamage = Math.round(totalDamage/2);
-            apDamage = Math.round(apDamage/2);
+            apDamage = Math.round(apDamage/4);
             if (playerInfos.comp.ca >= 2) {
                 $('#report').append('<span class="report rose">Résistance aux décharges 50%<br></span>');
             }
@@ -1392,7 +1392,7 @@ function defense(melee) {
     if (selectedBatType.skills.includes('resistelec') || selectedBat.tags.includes('resistelec')) {
         if (targetWeap.ammo.includes('electric') || targetWeap.ammo.includes('taser')) {
             totalDamage = Math.round(totalDamage/2);
-            apDamage = Math.round(apDamage/2);
+            apDamage = Math.round(apDamage/4);
             if (playerInfos.comp.ca >= 2) {
                 $('#report').append('<span class="report rose">Résistance aux décharges 50%<br></span>');
             }

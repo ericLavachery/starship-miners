@@ -1134,17 +1134,17 @@
         "name":"Monster trucks",
         "levels":{"rednecks":8,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Garage"],
-        "costs":{"Fer":120,"Scrap":390,"Carbone":75,"Aluminium":225,"Tungstène":30,"Batteries":15,"Compo2":36,"Huile":10},
-        "deploy":{"Fuel":80},
-        "fabTime":60
+        "costs":{"Fer":120,"Scrap":405,"Carbone":90,"Aluminium":250,"Tungstène":30,"Batteries":15,"Compo2":40,"Huile":10},
+        "deploy":{"Fuel":85},
+        "fabTime":65
     },
     {
         "id":67,
         "name":"Reapers",
         "levels":{"rednecks":99,"blades":5,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Atelier","Garage"],
-        "costs":{"Fer":90,"Scrap":405,"Carbone":60,"Bois":60,"Aluminium":195,"Batteries":15,"Compo2":36},
-        "deploy":{"Fuel":80},
+        "costs":{"Fer":90,"Scrap":360,"Carbone":60,"Bois":60,"Aluminium":195,"Batteries":15,"Compo2":30},
+        "deploy":{"Fuel":70},
         "fabTime":60
     },
     {
