@@ -3318,7 +3318,7 @@
             "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","chargeur1","w2-canon","e-camo","permakirin","theeye","helper","waterproof"],
-        "log3eq":"w2-canon",
+        "log3eq":"chargeur1",
         "moveCost":7,
         "maxFlood":1,
         "maxScarp":3,
@@ -3562,7 +3562,7 @@
             "name":"Mitraillette pneu",
             "cost":2,
             "range":1,
-            "rof":16,
+            "rof":24,
             "accuracy":25,
             "power":5,
             "aoe":"unit",

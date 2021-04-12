@@ -408,12 +408,14 @@ function nextTurnEnd() {
             if (bat.tags.includes('prayer')) {
                 bat.apLeft = bat.apLeft-3;
             }
-            let distFromLander = calcDistance(bat.tileId,landerTileId);
-            if (distFromLander >= 17) {
-                bat.xp = bat.xp+0.3;
-                let parcours = calcDistance(bat.tileId,bat.oldTileId);
-                if (parcours > 2) {
+            if (landerTileId >= 0) {
+                let distFromLander = calcDistance(bat.tileId,landerTileId);
+                if (distFromLander >= 17) {
                     bat.xp = bat.xp+0.3;
+                    let parcours = calcDistance(bat.tileId,bat.oldTileId);
+                    if (parcours > 2) {
+                        bat.xp = bat.xp+0.3;
+                    }
                 }
             }
             bat.oldTileId = bat.tileId;

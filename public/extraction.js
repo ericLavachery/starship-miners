@@ -5,7 +5,7 @@ function extraction(apCost) {
         selectedBat.tags.push('mining');
     }
     selectedBat.apLeft = selectedBat.apLeft-apCost;
-    camoOut();
+    // camoOut();
     tagDelete(selectedBat,'guet');
     tagDelete(selectedBat,'fortif');
     tagDelete(selectedBat,'vise');
@@ -146,6 +146,9 @@ function getMiningRate(bat,fullRate) {
         miningAdj = 1.5;
     } else if (bat.eq === 'hydroextract') {
         miningAdj = 1.5;
+    }
+    if (bat.tags.includes('camo')) {
+        miningAdj = miningAdj/2;
     }
     if (fullRate) {
         let batAP = getBatAP(bat,batType);

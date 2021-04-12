@@ -932,10 +932,12 @@ function weaponSelect(weapon) {
 
 function weaponSelectRiposte(distance) {
     if (targetBatType.skills.includes('fortifw2') && targetBat.tags.includes('fortif')) {
-        targetBatType.weapon.noDef = true;
-        targetBatType.weapon2.sound = 'axe_x2';
-    }
-    if (targetBat.eq === 'w1-autogun' || targetBat.eq === 'w1-autopistol') {
+        targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon2));
+        targetWeap = weaponAdj(targetWeap,targetBat,'w2');
+        if (targetBatType.name === 'Chevaliers') {
+            targetWeap.sound = 'axe_x2';
+        }
+    } else if (targetBat.eq === 'w1-autogun' || targetBat.eq === 'w1-autopistol') {
         targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon3));
         targetWeap = weaponAdj(targetWeap,targetBat,'w3');
     } else {

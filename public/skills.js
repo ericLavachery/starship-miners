@@ -140,7 +140,7 @@ function camouflage(apCost) {
     if (!selectedBat.tags.includes('camo')) {
         selectedBat.tags.push('camo');
     }
-    tagDelete(selectedBat,'mining');
+    // tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     showBataillon(selectedBat);
     showBatInfos(selectedBat);
