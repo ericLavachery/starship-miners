@@ -2373,7 +2373,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fret","camo","emoteur","dumper","realdumper","light","accu","recupcit","recupres"],
+        "skills":["fouille","fret","camo","emoteur","dumper","realdumper","light","accu","recupcit","recupres"],
         "transRes":350,
         "fuzz":0,
         "deathFx":"S_CarExplosion02"

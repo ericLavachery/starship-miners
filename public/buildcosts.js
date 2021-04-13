@@ -343,7 +343,7 @@ function getDeployCosts(unit,ammo,weapNum,type) {
             // deployFactor = deployFactor*deployTuning/7;
             if (Object.keys(unit.deploy).length >= 1) {
                 deployCosts = JSON.parse(JSON.stringify(unit.deploy));
-                Object.entries(ammo.deploy).map(entry => {
+                Object.entries(unit.deploy).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
                     deployCosts[key] = Math.ceil(value*deployFactor);
