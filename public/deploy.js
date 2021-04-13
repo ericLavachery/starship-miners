@@ -319,8 +319,15 @@ function doReEquip(batId) {
                 }
             }
         }
+        let oldGearTags = getBatGearTags(myGear[2],myGear[3],myBatType);
+        myBat.tags = myBat.tags.filter(function(el) {
+            return !oldGearTags.includes(el);
+        });
+        let gearTags = getBatGearTags(myNewGear[2],myNewGear[3],myBatType);
+        myBat.tags.push.apply(myBat.tags,gearTags);
         payCost(totalCosts);
         addCost(totalRecup,1);
+        myBat.ApLeft = myBat.ApLeft-myBat.ap;
     }
     conOut();
     myNewGear = ['xxx','xxx','xxx','xxx'];
@@ -346,6 +353,38 @@ function getBatGearStuff(armorName,equipName,batType) {
     }
     return gearStuff;
 }
+
+function getBatGearTags(armorName,equipName,batType) {
+    let gearTags = [];
+    let batArmor = getEquipByName(armorName);
+    let batEquip = getEquipByName(equipName);
+    if (batArmor.skills.includes('slowreg')) {
+        if (!batType.skills.includes('slowReg') && !batType.skills.includes('regeneration')) {
+            gearTags.push('slowreg');
+        }
+    }
+    if (batArmor.skills.includes('resistfeu') || batEquip.name === 'kit-pompiste' || batEquip.name === 'crimekitto') {
+        if (!batType.skills.includes('resistfeu')) {
+            gearTags.push('resistfeu');
+        }
+    }
+    if (batArmor.skills.includes('resistall')) {
+        if (!batType.skills.includes('resistall')) {
+            gearTags.push('resistall');
+        }
+    }
+    if (batArmor.skills.includes('resistacide') || batEquip.name === 'kit-sentinelle') {
+        if (!batType.skills.includes('resistacide')) {
+            gearTags.push('resistacide');
+        }
+    }
+    if (batArmor.skills.includes('resistelec')) {
+        if (!batType.skills.includes('resistelec')) {
+            gearTags.push('resistelec');
+        }
+    }
+    return gearTags;
+};
 
 function deployAmmo(ammo,weapon,batId) {
     let myBat = getBatById(batId);

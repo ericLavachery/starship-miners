@@ -791,17 +791,22 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 newBat.salvoLeft = conselUnit.maxSalvo;
             } else {
                 if (conselUnit.fabTime >= 1) {
-                    if (conselUnit.skills.includes('clicput') && conselUnit.name != 'Coffres') {
+                    if (conselUnit.skills.includes('clicput')) {
                         newBat.apLeft = 0;
                         newBat.oldapLeft = 0;
                         newBat.salvoLeft = 0;
                     } else {
-                        let constFactor = 25;
-                        if (playerInfos.comp.const >= 1 && (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices')) {
-                            constFactor = Math.round(constFactor*(playerInfos.comp.const+12)/12);
+                        let constFactor = 20;
+                        if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices') {
+                            if (!conselUnit.skills.includes('domeconst')) {
+                                constFactor = constFactor*(playerInfos.comp.const+3)/3;
+                            }
                         }
-                        if (playerInfos.comp.ind >= 1 && conselUnit.cat === 'vehicles') {
-                            constFactor = Math.round(constFactor*(playerInfos.comp.const+5)/5);
+                        if (conselUnit.cat === 'vehicles') {
+                            constFactor = constFactor*(playerInfos.comp.ind+2)/3;
+                        }
+                        if (conselUnit.cat === 'infantry') {
+                            constFactor = constFactor*(playerInfos.comp.train+2)/3;
                         }
                         if (conselUnit.skills.includes('domeconst')) {
                             newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*10);
@@ -882,35 +887,13 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             } else {
                 newBat.tags = [];
             }
+            let gearTags = getBatGearTags(armorName,equipName,conselUnit);
+            newBat.tags.push.apply(newBat.tags,gearTags);
             if (!conselTriche && conselUnit.cat != 'aliens' && !playerInfos.onShip) {
                 newBat.tags.push('construction');
             }
             if (conselUnit.skills.includes('hide') || (conselUnit.kind === 'larve' && larveHIDE)) {
                 newBat.tags.push('invisible');
-            }
-            if (batArmor.skills.includes('slowreg')) {
-                newBat.tags.push('slowreg');
-            }
-            if (batArmor.skills.includes('resistfeu') && !newBat.tags.includes('resistfeu')) {
-                newBat.tags.push('resistfeu');
-            }
-            if (batArmor.skills.includes('resistall') && !newBat.tags.includes('resistall')) {
-                newBat.tags.push('resistall');
-            }
-            if (newBat.eq === 'kit-pompiste' && !newBat.tags.includes('resistfeu')) {
-                newBat.tags.push('resistfeu');
-            }
-            if (newBat.eq === 'crimekitto' && !newBat.tags.includes('resistfeu')) {
-                newBat.tags.push('resistfeu');
-            }
-            if (newBat.eq === 'kit-sentinelle' && !newBat.tags.includes('resistacide')) {
-                newBat.tags.push('resistacide');
-            }
-            if (batArmor.skills.includes('resistacide') && !newBat.tags.includes('resistacide')) {
-                newBat.tags.push('resistacide');
-            }
-            if (batArmor.skills.includes('resistelec') && !newBat.tags.includes('resistelec')) {
-                newBat.tags.push('resistelec');
             }
             if (newBat.team === 'player') {
                 bataillons.push(newBat);

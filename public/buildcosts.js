@@ -19,7 +19,6 @@ function voirReserve() {
     let resIcon;
     let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'rarity'),'cat'),'cat');
     sortedResTypes.reverse();
-    // sortedResTypes = _.sortBy(sortedResTypes,'level')
     sortedResTypes.forEach(function(res) {
         dispoRes = getDispoRes(res.name);
         minedRes = getMinedRes(res.name);
