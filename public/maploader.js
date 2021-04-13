@@ -293,6 +293,13 @@ function showAlien(bat) {
 
 function showBataillon(bat) {
     let batType = getBatType(bat);
+    let nomComplet = bat.type;
+    if (bat.chief != undefined) {
+        if (bat.chief != '') {
+            let grade = getGrade(bat,batType);
+            nomComplet = nomComplet+' ('+grade+' '+bat.chief+')';
+        }
+    }
     let batPic = getBatPic(bat,batType);
     let batCat = batType.cat;
     let unitsLeft = bat.squadsLeft*batType.squadSize;
@@ -319,7 +326,7 @@ function showBataillon(bat) {
     if (bat.fuzz <= -2) {
         uClass = 'pUnitsCamo';
     }
-    $('#b'+bat.tileId).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+bat.type+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
+    $('#b'+bat.tileId).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
 };
 
 function getDamageBar(bat) {

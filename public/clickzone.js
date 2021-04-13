@@ -43,16 +43,18 @@ function clickSelect(tileId) {
     let goMove = false;
     bataillons.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
-            showBatInfos(bat);
-            if (selectedBat.id == bat.id && selectedBatType.moveCost < 99) {
-                if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'e-jetpack') {
-                    jump = true;
+            if (!goMove) {
+                showBatInfos(bat);
+                if (selectedBat.id == bat.id && selectedBatType.moveCost < 99) {
+                    if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'e-jetpack') {
+                        jump = true;
+                    }
+                    goMove = true;
+                    moveMode();
+                    moveInfos(selectedBat,jump);
                 }
-                goMove = true;
-                moveMode();
-                moveInfos(selectedBat,jump);
+                ownBatHere = true;
             }
-            ownBatHere = true;
         }
     });
     if (!goMove) {

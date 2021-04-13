@@ -51,14 +51,20 @@ function batInfos(bat,pop) {
         } else {
             $('#'+headPlace).append('<span class="blockTitle"><h2>'+unitsLeft+' '+batType.name+'</h2></span>');
         }
-        $('#'+bodyPlace).append('<div class="shSpace"></div>');
     } else {
         if (batType.skills.includes('nonumname')) {
             $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonCiel skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+'</h3></span>');
         } else {
             $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="unitDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3></span>');
         }
-        $('#'+bodyPlace).append('<div class="shSpace"></div>');
+    }
+    $('#'+bodyPlace).append('<div class="shSpace"></div>');
+    if (bat.chief != undefined) {
+        if (bat.chief != '') {
+            let grade = getGrade(bat,batType);
+            $('#'+bodyPlace).append('<span class="constName rose">'+grade+' '+bat.chief+'</span><br>');
+            $('#'+bodyPlace).append('<div class="shSpace"></div>');
+        }
     }
     let allTags = _.countBy(bat.tags);
     // AP
@@ -388,6 +394,7 @@ function batInfos(bat,pop) {
             $('#'+bodyPlace).append('<span class="paramValue">'+transportedRes+' &nbsp;('+showTotal+')</span><br>');
         }
     }
+    $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Nommer le commandant de ce bataillon" class="boutonGris skillButtons" onclick="renameChief('+bat.id+')"><i class="fas fa-user-alt"></i></button>&nbsp; Commandant</h4></span>');
 
     // DISMANTLE
     if (!pop) {
@@ -675,13 +682,56 @@ function renameTile(tileId) {
         if (newName.length <= 24) {
             let tileIndex = zone.findIndex((obj => obj.id == tileId));
             zone[tileIndex].tileName = newName;
-            // saveMap();
             showMap(zone,false);
             showTileInfos(tileId);
         } else {
             // message d'erreur
         }
     }
+};
+
+function renameChief(batId) {
+    let bat = getBatById(batId);
+    let newName = prompt('Donnez un nom au commandant de ce bataillon :');
+    if (newName != null) {
+        if (newName.length <= 24) {
+            bat.chief = newName;
+            showBataillon(bat);
+            showBatInfos(bat);
+        } else {
+            // message d'erreur
+        }
+    }
+};
+
+function getGrade(bat,batType) {
+    let grade = 'Caporal';
+    if (batType.skills.includes('leader')) {
+        if (bat.vet >= 4) {
+            grade = 'Général';
+        } else {
+            grade = 'Colonel';
+        }
+    } else {
+        if (batType.name === 'Adeptes') {
+            if (bat.vet >= 2) {
+                grade = 'Disciple';
+            } else {
+                grade = 'Adepte';
+            }
+        } else if (batType.name === 'Gurus') {
+            grade = 'Guide';
+        } else {
+            if (bat.vet >= 4) {
+                grade = 'Lieutenant';
+            } else if (bat.vet >= 2) {
+                grade = 'Sergent';
+            } else {
+                grade = 'Caporal';
+            }
+        }
+    }
+    return grade;
 };
 
 function defCenter(tileId) {

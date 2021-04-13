@@ -123,7 +123,7 @@
         "id":16,
         "name":"ind",
         "fullName":"Industrie",
-        "levels":{"rednecks":5,"blades":5,"bulbos":0,"drogmulojs":5,"tiradores":5,"detruas":5,"brasier":5},
+        "levels":{"rednecks":5,"blades":5,"bulbos":0,"drogmulojs":5,"tiradores":0,"detruas":5,"brasier":5},
         "maxLevel":3,
         "lvlCosts":[0,1,1,1]
     },
@@ -147,7 +147,7 @@
         "id":19,
         "name":"ext",
         "fullName":"Extraction",
-        "levels":{"rednecks":0,"blades":5,"bulbos":0,"drogmulojs":5,"tiradores":5,"detruas":0,"brasier":5},
+        "levels":{"rednecks":0,"blades":5,"bulbos":5,"drogmulojs":5,"tiradores":5,"detruas":0,"brasier":5},
         "maxLevel":3,
         "lvlCosts":[0,1,1,2]
     },
@@ -171,7 +171,7 @@
         "id":22,
         "name":"bal",
         "fullName":"Balistique",
-        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
+        "levels":{"rednecks":0,"blades":5,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,1]
     },
@@ -211,7 +211,7 @@
         "id":27,
         "name":"mat",
         "fullName":"Matériaux",
-        "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
+        "levels":{"rednecks":5,"blades":5,"bulbos":5,"drogmulojs":5,"tiradores":5,"detruas":5,"brasier":5},
         "maxLevel":4,
         "lvlCosts":[0,1,1,1,1]
     },
