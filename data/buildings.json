@@ -1499,7 +1499,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","transport","routes","upgrade","prodres","fret","dumper","longshot"],
+        "skills":["fouille","recupcit","transport","routes","upgrade","prodres","fret","dumper","longshot","recupfull"],
         "mecanoCost":10,
         "transMaxSize":12,
         "transUnits":750,

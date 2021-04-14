@@ -1130,6 +1130,9 @@ function recupRes(bat,batType) {
             bldFactor = bldFactor+1;
         }
         recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+4)/12);
+        if (batType.skills.includes('recupfull') && recupFactor < 70) {
+            recupFactor = 70;
+        }
         console.log('hasScraptruck='+hasScraptruck);
         let totalRes = 0;
         // BAT FLATCOST x%
@@ -1200,7 +1203,7 @@ function recupRes(bat,batType) {
                 });
             }
         }
-        let scrapBonus = Math.ceil(totalRes/10);
+        let scrapBonus = Math.floor(totalRes/10);
         if (coffre.transRes['Scrap'] === undefined) {
             coffre.transRes['Scrap'] = scrapBonus;
         } else {
