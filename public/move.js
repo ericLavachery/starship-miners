@@ -411,6 +411,9 @@ function calcMoveCost(targetTileId,diag) {
     if (selectedBat.eq === 'kit-pompiste') {
         baseMoveCost = 4;
     }
+    if (selectedBat.eq === 'w2-canon') {
+        baseMoveCost = 9;
+    }
     let moveCost;
     if (tile.rd && !selectedBatType.skills.includes('hover')) {
         moveCost = baseMoveCost+terrain.roadmc;

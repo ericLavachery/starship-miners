@@ -318,7 +318,7 @@ function playerSkillsUTChanges() {
             }
         }
         // DEFENSE
-        if (playerInfos.comp.def >= 1 && unit.kind === 'zero-defense' && !unit.skills.includes('dome')) {
+        if (playerInfos.comp.def >= 1 && (unit.kind === 'zero-defense' || unit.skills.includes('cage')) && !unit.skills.includes('dome')) {
             unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.def);
             if (unit.levels[playerInfos.gang] < 1) {
                 unit.levels[playerInfos.gang] = 1;
@@ -348,7 +348,7 @@ function playerSkillsUTChanges() {
             }
         }
         if (playerInfos.comp.def >= 1) {
-            if (unit.cat === 'buildings' || unit.cat === 'devices' || unit.kind === 'zero-defense' || unit.skills.includes('garde')) {
+            if (unit.cat === 'buildings' || unit.cat === 'devices' || unit.kind === 'zero-defense' || unit.skills.includes('garde') || unit.skills.includes('cage')) {
                 if (Object.keys(unit.weapon).length >= 3) {
                     let w1CostBonus = playerInfos.comp.def-1;
                     if (w1CostBonus > unit.weapon.cost-2) {

@@ -707,20 +707,20 @@ function calcUnitResist() {
     if (playerInfos.bldList.includes('Hôpital')) {
         unitResist = unitResist+1;
     } else if (playerInfos.bldList.includes('Infirmerie')) {
-        unitResist = unitResist+0.3;
+        unitResist = unitResist+0.8;
     }
     // ENTRAINEMENT
     if (playerInfos.bldList.includes('Salle de sport')) {
         unitResist = unitResist+0.6;
     }
     if (playerInfos.bldList.includes('Camp d\'entraînement')) {
-        unitResist = unitResist+1;
+        unitResist = unitResist+0.6;
     }
     // CANTINE
     if (playerInfos.bldList.includes('Cantine')) {
-        unitResist = unitResist+0.6;
+        unitResist = unitResist+0.8;
     }
-    unitResist = Math.ceil(unitResist);
+    unitResist = Math.round(unitResist);
     if (unitResist >= 1) {
         unitResist++;
     }
@@ -959,6 +959,14 @@ function tagsEffect(bat,batType) {
                 warning('',bat.type+' a vaincu la maladie.');
             } else {
                 bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
+                if (bat.squadsLeft < batType.squads || bat.damage >= 1) {
+                    if (rand.rand(1,36) <= (4-unitResist) && bat.cat != 'aliens') {
+                        bat.tags.push('poison');
+                        if (!batType.skills.includes('resistpoison')) {
+                            warning('',bat.type+' risque de succomber à la maladie.');
+                        }
+                    }
+                }
             }
         }
     }
