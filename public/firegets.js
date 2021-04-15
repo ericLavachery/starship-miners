@@ -681,6 +681,10 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
     if (bat.eq === 'theeye') {
         speed = speed-25;
     }
+    // camo
+    if ((bat.fuzz <= -2 || bat.tags.includes('invisible') || batType.skills.includes('invisible')) && attacking) {
+        speed = speed-50;
+    }
     // Skupiac drug
     if (bat.tags.includes('skupiac')) {
         speed = speed-15;

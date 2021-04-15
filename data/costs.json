@@ -541,8 +541,8 @@
         "name":"Clapiers",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":5,"detruas":99,"brasier":99},
         "bldReq":["Armurerie"],
-        "costs":{"Fer":300,"Scrap":60,"Carbone":60,"Aluminium":60,"Végétaux":110,"Huile":16,"Chlore":16,"Zinc":16,"Tissus":8},
-        "deploy":{"Chlore":8,"Zinc":8,"Tissus":8},
+        "costs":{"Fer":300,"Scrap":60,"Carbone":60,"Aluminium":60,"Végétaux":110,"Huile":16,"Chlore":12,"Zinc":12,"Tissus":6},
+        "deploy":{"Chlore":6,"Zinc":6,"Tissus":6},
         "fabTime":20
     },
     {

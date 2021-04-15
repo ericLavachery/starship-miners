@@ -3341,7 +3341,7 @@
         "armor":3,
         "size":3,
         "volume":1.1,
-        "stealth":8,
+        "stealth":7,
         "ap":16,
         "maxSalvo":2,
         "weapon":{
@@ -3398,7 +3398,7 @@
         "armor":3,
         "size":3,
         "volume":1.1,
-        "stealth":8,
+        "stealth":7,
         "ap":16,
         "maxSalvo":2,
         "weapon":{
@@ -3451,7 +3451,7 @@
         "armor":3,
         "size":3,
         "volume":1.1,
-        "stealth":8,
+        "stealth":9,
         "ap":16,
         "maxSalvo":2,
         "weapon":{

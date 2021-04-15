@@ -574,7 +574,11 @@ function calcBaseSkillCost(bat,batType,medik,inBld) {
             baseskillCost = Math.round(baseskillCost*3/4);
         }
         if (bat.eq === 'e-medic' || bat.logeq === 'e-medic') {
-            baseskillCost = baseskillCost-1;
+            if (baseskillCost >= 7) {
+                baseskillCost = baseskillCost-2;
+            } else {
+                baseskillCost = baseskillCost-1;
+            }
         }
     } else {
         baseskillCost = batType.mecanoCost;

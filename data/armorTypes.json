@@ -636,7 +636,7 @@
         "skills": [],
         "info": "Minicanon",
         "bldReq":["Armurerie"],
-        "compReq":{"log":1,"explo":2},
+        "compReq":{"log":1,"explo":2,"def":1},
         "factor":"crew",
         "costs":{"Carbone":6,"Scrap":6,"Fer":18,"Aluminium":12,"Tungstène":6}
     },
@@ -646,9 +646,9 @@
         "skills": [],
         "info": "Tir à distance pour le tromblon",
         "bldReq":["Armurerie"],
-        "compReq":{"log":1,"explo":2},
+        "compReq":{"log":1,"def":1},
         "factor":"crew",
-        "costs":{"Carbone":6,"Scrap":6,"Fer":18,"Aluminium":12,"Tungstène":6}
+        "costs":{"Carbone":3,"Scrap":3,"Aluminium":3}
     },
     {
         "name": "carrousel",
