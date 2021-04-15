@@ -1,11 +1,22 @@
-,
-"costs":{"Fer":000,"Scrap":000,"Carbone":000,"Aluminium":000,"Titane":000,"Tungstène":000,"Rhodium":000,"Bore":000,"Huile":000,"Silicium":000,"Cuivre":000,"Electros":000,"Batteries":000,"Nickel":000,"Compo2":000,"Compo3":000}
 
-remove ,"Xxxx":000
-,"\w*":000
+"weapon":{
+    "name":"Tromblon",
+    "cost":4,
+    "range":0,
+    "rof":5,
+    "accuracy":14,
+    "dca":0.5,
+    "power":10,
+    "aoe":"squad",
+    "sound":"mortier",
+    "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
+    "maxAmmo":24,
+    "ravitBld":"Poudrière"
+},
+autre son
+rof 1/2
+seconde arme tir à 1+1 (accuracy 10) noFly
 
-(conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs' || conselUnit.name.includes('Barbelés') || conselUnit.name == 'Pièges' || conselUnit.name == 'Dardières' || conselUnit.name == 'Fosses' || conselUnit.name == 'Coffres')
-conselUnit.name == 'Champ de mines' || conselUnit.name == 'Explosifs' || conselUnit.name == 'Pièges' || conselUnit.name == 'Fosses' || conselUnit.name == 'Dardières' || conselUnit.name == 'Coffres'
 Scrap
 Plomb
 Fer

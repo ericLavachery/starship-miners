@@ -641,6 +641,16 @@
         "costs":{"Carbone":6,"Scrap":6,"Fer":18,"Aluminium":12,"Tungstène":6}
     },
     {
+        "name": "w2-tromblon",
+        "cat":"equip",
+        "skills": [],
+        "info": "Tir à distance pour le tromblon",
+        "bldReq":["Armurerie"],
+        "compReq":{"log":1,"explo":2},
+        "factor":"crew",
+        "costs":{"Carbone":6,"Scrap":6,"Fer":18,"Aluminium":12,"Tungstène":6}
+    },
+    {
         "name": "carrousel",
         "cat":"equip",
         "skills": [],
