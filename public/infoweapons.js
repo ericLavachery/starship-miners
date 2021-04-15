@@ -41,6 +41,9 @@ function weaponsInfos(bat,batType,pop) {
     if (!batType.weapon.kit || bat.eq.includes('w2-') || bat.eq.includes('w1-')) {
         hasW1 = true;
     }
+    if (bat.eq === 'w2-magnum' || bat.eq === 'w2-pplasma') {
+        hasW1 = false;
+    }
     if (batType.weapon.rof >= 1) {
         if (batType.weapon.name.includes('Bélier') || batType.weapon.name.includes('Boutoir') || batType.weapon.name.includes('Moissonneuse')) {
             if (!batType.skills.includes('fly') && terrain.name === 'M') {

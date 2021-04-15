@@ -651,6 +651,36 @@
         "costs":{"Carbone":3,"Scrap":3,"Aluminium":3}
     },
     {
+        "name": "w2-grenade",
+        "cat":"equip",
+        "skills": [],
+        "info": "Grenades",
+        "bldReq":["Armurerie"],
+        "compReq":{"log":1,"explo":2},
+        "factor":"crew",
+        "costs":{"Scrap":2,"Tissus":2}
+    },
+    {
+        "name": "w2-magnum",
+        "cat":"equip",
+        "skills": [],
+        "info": "Magnum",
+        "bldReq":["Armurerie"],
+        "compReq":{"log":1,"bal":2},
+        "factor":"crew",
+        "costs":{"Scrap":2,"Fer":4,"Carbone":2}
+    },
+    {
+        "name": "w2-pplasma",
+        "cat":"equip",
+        "skills": [],
+        "info": "Pistolet plasma",
+        "bldReq":["Armurerie"],
+        "compReq":{"log":1,"energ":1},
+        "factor":"crew",
+        "costs":{"Titane":8,"Bois":4,"Bore":4,"Electros":4,"Batteries":4}
+    },
+    {
         "name": "carrousel",
         "cat":"equip",
         "skills": [],

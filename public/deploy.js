@@ -147,6 +147,9 @@ function reEquip(batId,noRefresh) {
     if (!myBatType.weapon.kit || myNewGear[3].includes('w1-') || myNewGear[3].includes('w2-')) {
         hasW1 = true;
     }
+    if (myNewGear[3] === 'w2-magnum' || myNewGear[3] === 'w2-pplasma') {
+        hasW1 = false;
+    }
     listNum = 1;
     if (hasW1) {
         if (Object.keys(myBatType.weapon).length >= 1) {

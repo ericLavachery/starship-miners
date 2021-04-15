@@ -361,6 +361,9 @@ function conSelect(unitId,player,noRefresh) {
     if (!conselUnit.weapon.kit || conselAmmos[3].includes('w1-') || conselAmmos[3].includes('w2-')) {
         hasW1 = true;
     }
+    if (conselAmmos[3] === 'w2-magnum' || conselAmmos[3] === 'w2-pplasma') {
+        hasW1 = false;
+    }
     listNum = 1;
     if (hasW1) {
         if (Object.keys(conselUnit.weapon).length >= 1) {

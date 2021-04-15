@@ -13,6 +13,9 @@ function skillsInfos(bat,batType) {
     if (!batType.weapon.kit || bat.eq.includes('w2-') || bat.eq.includes('w1-')) {
         hasW1 = true;
     }
+    if (bat.eq === 'w2-magnum' || bat.eq === 'w2-pplasma') {
+        hasW1 = false;
+    }
     let hasW2 = false;
     if (!batType.weapon2.kit || bat.eq.includes('kit-') || bat.eq.includes('w2-')) {
         hasW2 = true;

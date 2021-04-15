@@ -165,6 +165,9 @@ function payDeployCosts(unit,ammoNames) {
     if (!conselUnit.weapon.kit || conselAmmos[3].includes('w1-') || conselAmmos[3].includes('w2-')) {
         hasW1 = true;
     }
+    if (conselAmmos[3] === 'w2-magnum' || conselAmmos[3] === 'w2-pplasma') {
+        hasW1 = false;
+    }
     if (ammoNames[0] != 'xxx' && hasW1) {
         ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
         batAmmo = ammoTypes[ammoIndex];
@@ -210,6 +213,9 @@ function payFlatCosts(unit,ammoNames) {
     let hasW1 = false;
     if (!conselUnit.weapon.kit || conselAmmos[3].includes('w1-') || conselAmmos[3].includes('w2-')) {
         hasW1 = true;
+    }
+    if (conselAmmos[3] === 'w2-magnum' || conselAmmos[3] === 'w2-pplasma') {
+        hasW1 = false;
     }
     if (ammoNames[0] != 'xxx' && hasW1) {
         index = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
@@ -793,6 +799,9 @@ function calcAllCosts(unit,ammoNames,withDeploy,withFlat) {
     if (withFlat) {
         if (!unit.weapon.kit || ammoNames[3].includes('w1-') || ammoNames[3].includes('w2-')) {
             hasW1 = true;
+        }
+        if (ammoNames[3] === 'w2-magnum' || ammoNames[3] === 'w2-pplasma') {
+            hasW1 = false;
         }
         if (hasW1) {
             if (ammoNames[0] != 'xxx') {

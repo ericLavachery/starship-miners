@@ -1221,6 +1221,12 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.noDef = true;
         }
     }
+    if (bat.eq === 'w2-pplasma' || bat.eq === 'w2-magnum') {
+        if (thisWeapon.num === 1) {
+            thisWeapon.noDef = true;
+            thisWeapon.noAtt = true;
+        }
+    }
     // bonus ammo
     let myAmmo = bat.ammo;
     if (wn == 'w2') {
