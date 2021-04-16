@@ -2,6 +2,9 @@ function craftWindow() {
     selectMode();
     updateBldList();
     findLanders();
+    if (playerInfos.mapTurn >= 3) {
+        calcEndRes(false);
+    }
     $("#conUnitList").css("display","block");
     $('#conUnitList').css("height","600px");
     $("#conAmmoList").css("display","none");
@@ -156,7 +159,7 @@ function doCraft(craftId,number) {
     });
     resAdd(craft.result,number);
     if (playerInfos.mapTurn >= 3) {
-        calcEndRes(false);
+        // calcEndRes(false);
     }
     craftWindow();
 };

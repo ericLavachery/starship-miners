@@ -411,6 +411,9 @@ h5 {
     color: #cafbe5;
     font-weight: bold;
 }
+.ncy {
+    color: #77ffc2;
+}
 .sky {
     color: #80b6d1;
     font-weight: bold;
@@ -862,6 +865,9 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
 }
 .gff {
     color: #676056;
+}
+.gfff {
+    color: #4e4841;
 }
 .gfbleu {
     color: #abc8d9;

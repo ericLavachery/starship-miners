@@ -1070,6 +1070,11 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.noFly = weapon.noFly;
     }
+    if (weapon.noise === undefined) {
+        thisWeapon.noise = 3;
+    } else {
+        thisWeapon.noise = weapon.noise;
+    }
     if (weapon.noGround === undefined) {
         thisWeapon.noGround = false;
     } else {
@@ -1084,7 +1089,6 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.isMelee = false;
     } else {
         thisWeapon.isMelee = weapon.isMelee;
-        thisWeapon.accuracy = thisWeapon.accuracy+Math.round(bat.vet*1);
     }
     if (weapon.isShort === undefined) {
         thisWeapon.isShort = false;
@@ -1110,7 +1114,7 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.isBow = false;
     } else {
         thisWeapon.isBow = weapon.isBow;
-        thisWeapon.accuracy = thisWeapon.accuracy+Math.round(bat.vet*2);
+        thisWeapon.accuracy = thisWeapon.accuracy+Math.round(bat.vet*1);
     }
     if (weapon.dca === undefined) {
         thisWeapon.dca = 1;
@@ -1139,6 +1143,9 @@ function weaponAdj(weapon,bat,wn) {
             }
             thisWeapon.accuracy = thisWeapon.accuracy+8;
         }
+        if (bat.eq === 'silencieux1' || bat.logeq === 'silencieux1') {
+            thisWeapon.noise = thisWeapon.noise-1;
+        }
     } else if (thisWeapon.num === 2) {
         if (bat.eq === 'longtom' || bat.eq === 'longtom2' || bat.logeq === 'longtom' || bat.logeq === 'longtom2') {
             thisWeapon.range = thisWeapon.range+1;
@@ -1159,6 +1166,9 @@ function weaponAdj(weapon,bat,wn) {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
             thisWeapon.accuracy = thisWeapon.accuracy+8;
+        }
+        if (bat.eq === 'silencieux2' || bat.logeq === 'silencieux2') {
+            thisWeapon.noise = thisWeapon.noise-1;
         }
     }
     if (bat.eq === 'theeye') {

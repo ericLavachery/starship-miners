@@ -3,7 +3,7 @@
     "pic": "lee-enfield",
     "cat": "units",
     "kind":"none",
-    "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brazier":0},
+    "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
     "squads": 6,
     "squadSize": 10,
     "crew": 1,

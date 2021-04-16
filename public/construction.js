@@ -34,6 +34,7 @@ function bfconst(cat,triche,upgrade) {
         sortedUnitsList.forEach(function(unit) {
             if (lastKind != unit.kind) {
                 showkind = unit.kind.replace(/zero-/g,"");
+                showkind = showkind.replace(/trans-/g,"");
                 $('#conUnitList').append('<a href="#kind-'+unit.kind+'"><span class="constMenu mlow klik">'+showkind+'</span></a>&nbsp;&middot;&nbsp;');
             }
             lastKind = unit.kind;
@@ -108,12 +109,33 @@ function bfconst(cat,triche,upgrade) {
         if (prodOK || triche) {
             if (lastKind != unit.kind) {
                 showkind = unit.kind.replace(/zero-/g,"");
+                showkind = showkind.replace(/trans-/g,"");
                 $('#conUnitList').append('<br><a href="#gentils"><span class="constName or" id="kind-'+unit.kind+'">'+showkind+'</span></a><br>');
             }
             if (conselUnit.id === unit.id && conselUnit.cat != 'aliens') {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
             } else {
-                $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                if (unit.levels[playerInfos.gang] <= 90) {
+                    let native = true;
+                    if (Object.keys(unit.levels).length >= 1) {
+                        Object.entries(unit.levels).map(entry => {
+                            let key = entry[0];
+                            let value = entry[1];
+                            if (key != playerInfos.gang && value <= 90) {
+                                native = false;
+                            }
+                        });
+                    } else {
+                        native = false;
+                    }
+                    if (native) {
+                        $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle ncy"></i></span>');
+                    } else {
+                        $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle gf"></i></span>');
+                    }
+                } else {
+                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle gfff"></i></span>');
+                }
             }
             bldOK = false;
             if ((playerInfos.bldList.includes(unit.bldReq[0]) || unit.bldReq[0] === undefined) && (playerInfos.bldList.includes(unit.bldReq[1]) || unit.bldReq[1] === undefined) && (playerInfos.bldList.includes(unit.bldReq[2]) || unit.bldReq[2] === undefined)) {
@@ -149,7 +171,7 @@ function bfconst(cat,triche,upgrade) {
             if (conselUnit.id === unit.id && conselUnit.cat === 'aliens') {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
             } else {
-                $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle gfff"></i></span>');
             }
             color = catColor(unit.cat,unit.kind);
             $('#conUnitList').append('<span class="constName klik '+color+'" onclick="conSelect('+unit.id+',`aliens`,false)">'+unit.name+'</span><br>');

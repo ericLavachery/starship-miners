@@ -315,7 +315,7 @@
         "bldReq":["Atelier"],
         "compReq":{"log":1,"det":2},
         "factor":"crew",
-        "costs":{"Silicium":9,"Carbone":9}
+        "costs":{"Silicium":6,"Carbone":6}
     },
     {
         "name": "lunette1",
@@ -325,7 +325,7 @@
         "bldReq":["Atelier"],
         "compReq":{"log":1,"det":2},
         "factor":"crew",
-        "costs":{"Silicium":6,"Carbone":6}
+        "costs":{"Silicium":4,"Carbone":4}
     },
     {
         "name": "lunette2",
@@ -335,7 +335,7 @@
         "bldReq":["Atelier"],
         "compReq":{"log":1,"det":2},
         "factor":"crew",
-        "costs":{"Silicium":6,"Carbone":6}
+        "costs":{"Silicium":4,"Carbone":4}
     },
     {
         "name": "chargeur",
@@ -366,6 +366,26 @@
         "compReq":{"log":2,"bal":2},
         "factor":"crew",
         "costs":{"Scrap":3,"Carbone":3,"Fer":3}
+    },
+    {
+        "name": "silencieux1",
+        "cat":"equip",
+        "skills": [],
+        "info": "Silencieux",
+        "bldReq":["Atelier"],
+        "compReq":{"log":2,"bal":1},
+        "factor":"crew",
+        "costs":{"Aluminium":6,"Carbone":3}
+    },
+    {
+        "name": "silencieux2",
+        "cat":"equip",
+        "skills": [],
+        "info": "Silencieux",
+        "bldReq":["Atelier"],
+        "compReq":{"log":2,"bal":1},
+        "factor":"crew",
+        "costs":{"Aluminium":6,"Carbone":3}
     },
     {
         "name": "arcpoulie",

@@ -84,7 +84,7 @@ function combat(melee) {
     }
     // sort du mode furtif
     if (activeTurn == 'player') {
-        // camoOut();
+        // camoOut(); - se fait maintenant en fin de combat !!!
         tagAction();
         centerMapTarget();
     } else {
@@ -235,7 +235,19 @@ function combat(melee) {
         }
     }
     if (activeTurn == 'player') {
-        camoOut();
+        if (selectedWeap.noise < 2) {
+            let camChance = calcCamo(selectedBat);
+            if (selectedWeap.noise > 0) {
+                camChance = Math.round(camChance/2);
+            }
+            console.log('camChance='+camChance);
+            console.log(selectedWeap);
+            if (rand.rand(1,100) > camChance) {
+                camoOut();
+            }
+        } else {
+            camoOut();
+        }
     }
 };
 

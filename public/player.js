@@ -396,10 +396,12 @@ function playerSkillsUTChanges() {
             }
         }
         // TRANSPORTS
-        if (playerInfos.comp.trans >= 1 && unit.kind === 'zero-transports') {
-            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.trans);
-            if (unit.levels[playerInfos.gang] < 1) {
-                unit.levels[playerInfos.gang] = 1;
+        if (playerInfos.comp.trans >= 1) {
+            if (unit.kind === 'zero-transports' || unit.kind === 'zero-trans-fret') {
+                unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.trans);
+                if (unit.levels[playerInfos.gang] < 1) {
+                    unit.levels[playerInfos.gang] = 1;
+                }
             }
         }
         if (playerInfos.comp.trans >= 1 && unit.cat === 'vehicles') {
@@ -435,6 +437,14 @@ function playerSkillsUTChanges() {
         if (playerInfos.comp.log >= 3 && unit.skills.includes('bgun')) {
             unit.volume = unit.volume/1.2;
             unit.volume = unit.volume.toFixedNumber(2);
+        }
+        if (playerInfos.comp.log >= 1) {
+            if (unit.kind === 'zero-trans-ravit') {
+                unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.log);
+                if (unit.levels[playerInfos.gang] < 1) {
+                    unit.levels[playerInfos.gang] = 1;
+                }
+            }
         }
         // VOLS SPACIAUX
         if (playerInfos.comp.vsp >= 2 && unit.kind === 'zero-vaisseaux' && unit.name != 'Liberator' && unit.name != 'Crusader') {
