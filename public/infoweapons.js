@@ -17,7 +17,7 @@ function weaponsInfos(bat,batType,pop) {
     let guetDef;
     let defCol;
     let guetCol;
-    if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || batType.skills.includes('initiative')) {
+    if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative')) {
         defCol = 'gff';
         guetCol = 'neutre';
     } else {

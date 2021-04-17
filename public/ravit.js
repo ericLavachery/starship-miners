@@ -190,7 +190,9 @@ function goRavit() {
             // xp
             if (biggestRavit < 999) {
                 if (ravitBat.id != selectedBat.id) {
-                    ravitBat.xp = ravitBat.xp+1;
+                    if (!ravitBatType.skills.includes('robot') || ravitBat.eq === 'g2ai' || ravitBat.logeq === 'g2ai') {
+                        ravitBat.xp = ravitBat.xp+1;
+                    }
                 }
             }
             let numAmmo = 0;

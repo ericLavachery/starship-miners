@@ -305,15 +305,20 @@ function newAlienKilled(batType,tileId) {
     if (xpBonus >= 1) {
         if (Object.keys(selectedBat).length >= 1) {
             if (selectedBat.team === 'player') {
-                selectedBat.xp = selectedBat.xp+xpBonus;
-                selectedBatArrayUpdate();
+                if (!selectedBatType.skills.includes('robot') || selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
+                    selectedBat.xp = selectedBat.xp+xpBonus;
+                    selectedBatArrayUpdate();
+                }
             }
         }
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 let distance = calcDistance(tileId,bat.tileId);
+                let batType = getBatType(bat);
                 if (distance <= 4 || xpBonus >= 25) {
-                    bat.xp = bat.xp+xpBonus;
+                    if (!batType.skills.includes('robot') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                        bat.xp = bat.xp+xpBonus;
+                    }
                 }
             }
         });
@@ -651,7 +656,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
     if (bat.eq === 'w1-autogun' || bat.eq === 'w1-autopistol') {
         speed = speed-50-stealth;
     } else {
-        if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector') && !attacking) {
+        if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai') && !attacking) {
             speed = speed-watchInitBonus-stealth;
             console.log('bonus guet');
         }
@@ -1518,7 +1523,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
         }
     }
     // GUET
-    if (guet || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+    if (guet || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
         brideDef = 1;
     }
     // Defense, Bastion
@@ -1529,7 +1534,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
     }
     // baddef
     if (batType.skills.includes('baddef')) {
-        if (guet || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+        if (guet || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
             brideDef = brideDef/1.17;
         } else {
             brideDef = brideDef/1.5;

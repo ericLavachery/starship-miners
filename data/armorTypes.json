@@ -482,6 +482,16 @@
         "costs":{"Cuivre":3,"Electros":3,"Silicium":3}
     },
     {
+        "name": "g2ai",
+        "cat":"equip",
+        "skills": [],
+        "info": "IA seconde génération",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"det":4,"ind":1,"robo":1},
+        "factor":"crew",
+        "costs":{"Cuivre":6,"Electros":12,"Silicium":6}
+    },
+    {
         "name": "helper",
         "cat":"equip",
         "skills": [],

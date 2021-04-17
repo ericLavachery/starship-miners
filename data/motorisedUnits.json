@@ -3878,7 +3878,7 @@
         },
         "weapon2":{},
         "protection":["aucun"],
-        "equip":["aucun","g2motor","e-flash"],
+        "equip":["aucun","g2motor","e-flash","g2ai"],
         "log3eq":"",
         "moveCost":1,
         "maxFlood":3,

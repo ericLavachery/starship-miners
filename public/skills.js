@@ -262,7 +262,9 @@ function goDrug(apCost,drugName) {
             } else {
                 ravitBat.tags.push('dU');
                 if (rand.rand(1,2) === 1) {
-                    ravitBat.xp = ravitBat.xp+1;
+                    if (!ravitBatType.skills.includes('robot') || ravitBat.eq === 'g2ai' || ravitBat.logeq === 'g2ai') {
+                        ravitBat.xp = ravitBat.xp+1;
+                    }
                 }
                 // console.log('nosel');
             }

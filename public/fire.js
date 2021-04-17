@@ -1077,15 +1077,17 @@ function attack(melee) {
         selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
         selectedBat.salvoLeft = selectedBat.salvoLeft-1;
         if (squadsOut >= 1 && activeTurn == 'player') {
-            selectedBat.xp = selectedBat.xp+xpFactor;
-            if (targetBatType.skills.includes('xpplus')) {
-                selectedBat.xp = selectedBat.xp+(xpFactor*1);
-            }
-            if (targetBatType.skills.includes('xpbonus')) {
-                selectedBat.xp = selectedBat.xp+(xpFactor*2);
-            }
-            if (targetBatType.skills.includes('xpfeast')) {
-                selectedBat.xp = selectedBat.xp+(xpFactor*5);
+            if (!selectedBatType.skills.includes('robot') || selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
+                selectedBat.xp = selectedBat.xp+xpFactor;
+                if (targetBatType.skills.includes('xpplus')) {
+                    selectedBat.xp = selectedBat.xp+(xpFactor*1);
+                }
+                if (targetBatType.skills.includes('xpbonus')) {
+                    selectedBat.xp = selectedBat.xp+(xpFactor*2);
+                }
+                if (targetBatType.skills.includes('xpfeast')) {
+                    selectedBat.xp = selectedBat.xp+(xpFactor*5);
+                }
             }
         }
     }
@@ -1705,16 +1707,18 @@ function defense(melee) {
     } else {
         targetBat.salvoLeft = targetBat.salvoLeft-1;
     }
-    if (squadsOut >= 1 && activeTurn == 'aliens') {
-        targetBat.xp = targetBat.xp+xpFactor;
-        if (selectedBatType.skills.includes('xpplus')) {
-            targetBat.xp = targetBat.xp+(xpFactor*1);
-        }
-        if (selectedBatType.skills.includes('xpbonus')) {
-            targetBat.xp = targetBat.xp+(xpFactor*2);
-        }
-        if (selectedBatType.skills.includes('xpfeast')) {
-            targetBat.xp = targetBat.xp+(xpFactor*5);
+    if (squadsOut >= 1 && activeTurn === 'aliens') {
+        if (!targetBatType.skills.includes('robot') || targetBat.eq === 'g2ai' || targetBat.logeq === 'g2ai') {
+            targetBat.xp = targetBat.xp+xpFactor;
+            if (selectedBatType.skills.includes('xpplus')) {
+                targetBat.xp = targetBat.xp+(xpFactor*1);
+            }
+            if (selectedBatType.skills.includes('xpbonus')) {
+                targetBat.xp = targetBat.xp+(xpFactor*2);
+            }
+            if (selectedBatType.skills.includes('xpfeast')) {
+                targetBat.xp = targetBat.xp+(xpFactor*5);
+            }
         }
     }
     targetBatArrayUpdate();

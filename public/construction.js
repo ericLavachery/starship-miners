@@ -874,11 +874,23 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             newBat.ammo2Left = conselUnit.weapon2.maxAmmo;
             newBat.vet = 0;
             newBat.xp = xp;
-            if (playerInfos.comp.train === 1) {
-                newBat.xp = newBat.xp+levelXP[1];
-            }
-            if (playerInfos.comp.train === 2) {
-                newBat.xp = newBat.xp+Math.ceil(levelXP[2]*3/4);
+            if (conselUnit.skills.includes('robot')) {
+                if (playerInfos.comp.ind === 1) {
+                    newBat.xp = newBat.xp+levelXP[1];
+                }
+                if (playerInfos.comp.ind === 2) {
+                    newBat.xp = newBat.xp+levelXP[2];
+                }
+                if (playerInfos.comp.ind === 3) {
+                    newBat.xp = newBat.xp+levelXP[3];
+                }
+            } else {
+                if (playerInfos.comp.train === 1) {
+                    newBat.xp = newBat.xp+levelXP[1];
+                }
+                if (playerInfos.comp.train === 2) {
+                    newBat.xp = newBat.xp+Math.ceil(levelXP[2]*3/4);
+                }
             }
             if (Object.keys(conselUnit.weapon).length >= 1) {
                 newBat.range = conselUnit.weapon.range;

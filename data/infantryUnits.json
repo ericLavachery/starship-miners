@@ -4051,7 +4051,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","e-flash","e-camo","lunette2","silencieux2","chargeur1","g2motor","waterproof"],
+        "equip":["aucun","e-flash","e-camo","lunette2","silencieux2","chargeur1","g2motor","waterproof","g2ai"],
         "log3eq":"g2motor",
         "moveCost":3,
         "maxFlood":2,
@@ -4105,13 +4105,13 @@
             "ammo":["lame","lame-taser","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
         "protection":["aucun"],
-        "equip":["aucun","e-flash","e-ranger","lunette1","chargeur1","g2motor","waterproof"],
-        "log3eq":"g2motor",
+        "equip":["aucun","e-flash","e-ranger","lunette1","chargeur1","g2motor","waterproof","g2ai"],
+        "log3eq":"g2ai",
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","robot","sentinelle","badmecano","hscarpmove","undead","survivor","resistfeu","light"],
+        "skills":["fortif","robot","sentinelle","badmecano","hscarpmove","undead","survivor","resistfeu","light"],
         "mecanoCost":8,
         "fuzz":2,
         "deathFx":"144469__psychedelic-hands__robot-death"
@@ -4209,7 +4209,7 @@
             "ravitBld":"Atelier"
         },
         "protection":["aucun"],
-        "equip":["aucun","e-flash","snorkel","g2motor","waterproof","detector"],
+        "equip":["aucun","e-flash","snorkel","g2motor","waterproof","detector","g2ai"],
         "log3eq":"snorkel",
         "moveCost":3,
         "maxFlood":2,
@@ -5321,7 +5321,7 @@
             "ammo":["marquage"]
         },
         "protection":["aucun"],
-        "equip":["aucun","e-flash","e-camo","lunette","chargeur1","silencieux1","waterproof"],
+        "equip":["aucun","e-flash","e-camo","lunette","chargeur1","silencieux1","waterproof","g2ai"],
         "log3eq":"waterproof",
         "moveCost":3,
         "maxFlood":2,
@@ -5377,13 +5377,13 @@
             "ravitBld":"Poudrière"
         },
         "protection":["aucun"],
-        "equip":["aucun","e-flash","e-ranger","gilet","e-camo","g2motor","waterproof"],
+        "equip":["aucun","e-flash","e-ranger","gilet","e-camo","g2motor","waterproof","g2ai"],
         "log3eq":"gilet",
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","sentinelle","maycamo","robot","light","bgun"],
+        "skills":["fortif","sentinelle","maycamo","robot","light","bgun"],
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
     },

@@ -390,15 +390,19 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     // xpGain = Math.round(xpGain*100)/100;
     xpGain = xpGain.toFixedNumber(2);
     if (!inBld) {
-        selectedBat.xp = selectedBat.xp+xpGain;
-        selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
+        if (!selectedBatType.skills.includes('robot') || selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
+            selectedBat.xp = selectedBat.xp+xpGain;
+            selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
+        }
         tagDelete(selectedBat,'mining');
         tagDelete(selectedBat,'guet');
         tagAction();
         selectedBatArrayUpdate();
     } else {
-        medicBat.xp = medicBat.xp+xpGain;
-        medicBat.apLeft = medicBat.apLeft-totalAPCost;
+        if (!medicBatType.skills.includes('robot') || medicBat.eq === 'g2ai' || medicBat.logeq === 'g2ai') {
+            medicBat.xp = medicBat.xp+xpGain;
+            medicBat.apLeft = medicBat.apLeft-totalAPCost;
+        }
     }
     showBatInfos(selectedBat);
 };
