@@ -575,7 +575,7 @@ function calcBaseSkillCost(bat,batType,medik,inBld) {
         }
         if (bat.eq === 'e-medic' || bat.logeq === 'e-medic') {
             if (baseskillCost >= 7) {
-                baseskillCost = baseskillCost-2;
+                baseskillCost = Math.round(baseskillCost*3/4);
             } else {
                 baseskillCost = baseskillCost-1;
             }
@@ -592,7 +592,13 @@ function calcBaseSkillCost(bat,batType,medik,inBld) {
             baseskillCost = Math.round(baseskillCost*3/4);
         }
         if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano') {
-            baseskillCost = baseskillCost-1;
+            if (batType.skills.includes('mecano') || batType.skills.includes('selfmecano')) {
+                if (baseskillCost >= 6) {
+                    baseskillCost = Math.floor(baseskillCost*3/4);
+                } else {
+                    baseskillCost = baseskillCost-1;
+                }
+            }
         }
     }
     if (inBld) {
@@ -635,4 +641,60 @@ function checkEffSoins(bat) {
     }
     let effSoins = 100-Math.round(failDice*100/75);
     return effSoins;
+};
+
+function checkMecanoSkill(bat,batType) {
+    let myMecanoSkill = 'none';
+    if (batType.skills.includes('mecano')) {
+        myMecanoSkill = 'mecano';
+    } else if (batType.skills.includes('selfmecano')) {
+        myMecanoSkill = 'selfmecano';
+    } else if (batType.skills.includes('badmecano')) {
+        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano') {
+            myMecanoSkill = 'mecano';
+        } else {
+            myMecanoSkill = 'badmecano';
+        }
+    } else if (batType.skills.includes('selfbadmecano')) {
+        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano') {
+            myMecanoSkill = 'selfmecano';
+        } else {
+            myMecanoSkill = 'selfbadmecano';
+        }
+    } else {
+        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano') {
+            myMecanoSkill = 'selfbadmecano';
+        }
+    }
+    return myMecanoSkill;
+};
+
+function checkMedicSkill(bat,batType) {
+    let myMedicSkill = 'none';
+    if (batType.skills.includes('medic')) {
+        if (bat.eq === 'megafret' && bat.eq === 'megatrans') {
+            myMedicSkill = 'badmedic';
+        } else {
+            myMedicSkill = 'medic';
+        }
+    } else if (batType.skills.includes('selfmedic')) {
+        myMedicSkill = 'selfmedic';
+    } else if (batType.skills.includes('badmedic')) {
+        if ((bat.eq === 'e-medic' || bat.logeq === 'e-medic') && playerInfos.comp.med >= 3) {
+            myMedicSkill = 'medic';
+        } else {
+            myMedicSkill = 'badmedic';
+        }
+    } else if (batType.skills.includes('selfbadmedic')) {
+        if ((bat.eq === 'e-medic' || bat.logeq === 'e-medic') && playerInfos.comp.med >= 3) {
+            myMedicSkill = 'selfmedic';
+        } else {
+            myMedicSkill = 'selfbadmedic';
+        }
+    } else {
+        if (bat.eq === 'e-medic' || bat.logeq === 'e-medic') {
+            myMedicSkill = 'selfbadmedic';
+        }
+    }
+    return myMedicSkill;
 };

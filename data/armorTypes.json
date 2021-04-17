@@ -423,7 +423,7 @@
         "skills": [],
         "info": "Dépanage+",
         "bldReq":["Atelier"],
-        "compReq":{"log":2},
+        "compReq":{"log":1,"const":2},
         "factor":"crew",
         "costs":{"Fer":6,"Carbone":3,"Tungstène":3,"Electros":3,"Batteries":3},
         "deploy":{"Huile":6,"Energie":12}

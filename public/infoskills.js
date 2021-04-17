@@ -324,7 +324,8 @@ function skillsInfos(bat,batType) {
         }
     }
     // MEDIC
-    if ((batType.skills.includes('medic') && bat.eq != 'megafret' && bat.eq != 'megatrans') || (bat.eq === 'e-medic' && playerInfos.comp.med >= 3) || (bat.logeq === 'e-medic' && playerInfos.comp.med >= 3)) {
+    let myMedicSkill = checkMedicSkill(bat,batType);
+    if (myMedicSkill === 'medic') {
         numTargets = numMedicTargets(bat,'infantry',true,true,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,true,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
@@ -347,7 +348,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // BAD MEDIC
-    if (batType.skills.includes('badmedic') && (bat.eq != 'e-medic' || playerInfos.comp.med < 3) && (bat.logeq != 'e-medic' || playerInfos.comp.med < 3)) {
+    if (myMedicSkill === 'badmedic') {
         numTargets = numMedicTargets(bat,'infantry',true,false,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,true,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
@@ -370,7 +371,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // SELF MEDIC
-    if (batType.skills.includes('selfmedic') && (bat.eq != 'e-medic' || playerInfos.comp.med < 3) && (bat.logeq != 'e-medic' || playerInfos.comp.med < 3)) {
+    if (myMedicSkill === 'selfmedic') {
         numTargets = numMedicTargets(bat,'infantry',false,true,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,true,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
@@ -393,7 +394,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // FIRST AID (SELF BAD MEDIC)
-    if (batType.skills.includes('selfbadmedic') && (bat.eq != 'e-medic' || playerInfos.comp.med < 3) && (bat.logeq != 'e-medic' || playerInfos.comp.med < 3)) {
+    if (myMedicSkill === 'selfbadmedic') {
         numTargets = numMedicTargets(bat,'infantry',false,false,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,true,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
@@ -416,7 +417,8 @@ function skillsInfos(bat,batType) {
         }
     }
     // MECANO
-    if (batType.skills.includes('mecano') || bat.eq === 'e-mecano' || bat.logeq === 'e-mecano') {
+    let myMecanoSkill = checkMecanoSkill(bat,batType);
+    if (myMecanoSkill === 'mecano') {
         numTargets = numMedicTargets(bat,'vehicles',true,true,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
@@ -437,7 +439,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // BAD MECANO
-    if (batType.skills.includes('badmecano') && bat.eq != 'e-mecano' && bat.logeq != 'e-mecano') {
+    if (myMecanoSkill === 'badmecano') {
         numTargets = numMedicTargets(bat,'vehicles',true,false,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
@@ -458,7 +460,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // SELF BAD MECANO
-    if (batType.skills.includes('selfbadmecano') && bat.eq != 'e-mecano' && bat.logeq != 'e-mecano') {
+    if (myMecanoSkill === 'selfbadmecano') {
         numTargets = numMedicTargets(bat,'vehicles',false,false,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
@@ -477,7 +479,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // SELF MECANO
-    if (batType.skills.includes('selfmecano') && bat.eq != 'e-mecano' && bat.logeq != 'e-mecano') {
+    if (myMecanoSkill === 'selfmecano') {
         numTargets = numMedicTargets(bat,'vehicles',false,true,bat);
         baseskillCost = calcBaseSkillCost(bat,batType,false,false);
         apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
