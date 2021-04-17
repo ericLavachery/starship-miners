@@ -254,6 +254,7 @@ function goDrug(apCost,drugName) {
             }
         }
     });
+    let ravitBatType = getBatType(ravitBat);
     if (Object.keys(ravitBat).length >= 1) {
         if (biggestRavit < 999) {
             if (ravitBat.id == selectedBat.id) {

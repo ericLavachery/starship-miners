@@ -879,10 +879,10 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                     newBat.xp = newBat.xp+levelXP[1];
                 }
                 if (playerInfos.comp.ind === 2) {
-                    newBat.xp = newBat.xp+levelXP[2];
+                    newBat.xp = newBat.xp+Math.ceil(levelXP[2]*3/4);
                 }
                 if (playerInfos.comp.ind === 3) {
-                    newBat.xp = newBat.xp+levelXP[3];
+                    newBat.xp = newBat.xp+levelXP[2];
                 }
             } else {
                 if (playerInfos.comp.train === 1) {

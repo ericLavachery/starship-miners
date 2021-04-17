@@ -185,6 +185,7 @@ function goRavit() {
                 }
             }
         });
+        let ravitBatType = getBatType(ravitBat);
         if (Object.keys(ravitBat).length >= 1) {
             let maxRavit = calcRavit(ravitBat);
             // xp
