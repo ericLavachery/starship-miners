@@ -90,6 +90,12 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.fndCits === undefined) {
         playerInfos.fndCits = 0;
     }
+    if (playerInfos.volFx === undefined) {
+        playerInfos.volFx = 0.6;
+    }
+    if (playerInfos.volMu === undefined) {
+        playerInfos.volMu = 0.4;
+    }
 });
 // Terrains
 socket.on('mapFilters-Load', function(mf) {

@@ -479,7 +479,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"det":3},
         "factor":"crew",
-        "costs":{"Cuivre":3,"Electros":3,"Silicium":3}
+        "costs":{"Cuivre":3,"Electros":3,"Cobalt":12}
     },
     {
         "name": "g2ai",
@@ -489,7 +489,7 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"det":4,"ind":1,"robo":1},
         "factor":"crew",
-        "costs":{"Cuivre":6,"Electros":12,"Silicium":6}
+        "costs":{"Cuivre":6,"Electros":18,"Silicium":6,"Cobalt":12}
     },
     {
         "name": "helper",

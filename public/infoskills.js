@@ -124,7 +124,7 @@ function skillsInfos(bat,batType) {
     }
     // CAMOUFLAGE
     let camoufOK = true;
-    if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
+    if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || (batType.skills.includes('aicamo') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) {
         if (batType.cat == 'buildings') {
             if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
                 apCost = Math.floor(bat.ap*3.5);
@@ -215,7 +215,7 @@ function skillsInfos(bat,batType) {
     }
     // TIR CIBLE
     // intéressant si précision en dessous de 10
-    if (batType.skills.includes('cible') && !inMelee) {
+    if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) {
         apCost = 4;
         if (batType.weapon.isPrec) {
             if (batType.weapon2.rof >= 1) {
@@ -242,10 +242,12 @@ function skillsInfos(bat,batType) {
         let tcROF = Math.round(100*(5+playerInfos.comp.train)/7);
         let tcPower = Math.round(100*(8+playerInfos.comp.train)/5);
         let tcInfo = '+'+tcPrec+'% précision, '+tcROF+'% cadence, '+tcPower+'% puissance ('+apCost+' PA + coût de l\'arme)';
-        if (bat.apLeft >= apReq && !bat.tags.includes('vise') && bat.apLeft >= apCost+cheapWeapCost) {
+        if (bat.apLeft >= apReq && !bat.tags.includes('vise') && bat.apLeft >= apCost+cheapWeapCost && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+tcInfo+'" class="boutonJaune skillButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
         } else {
-            if (inMelee) {
+            if (bat.tags.includes('vise')) {
+                skillMessage = "Déjà activé";
+            } else if (inMelee) {
                 skillMessage = "Impossible en mêlée";
             } else {
                 skillMessage = "Pas assez de PA";
@@ -1360,7 +1362,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // FOUILLE DE RUINES
-    if ((batType.skills.includes('fouille') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') && tile.ruins && tile.sh >= 1) {
+    if ((batType.skills.includes('fouille') || (batType.skills.includes('aifouille') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) && tile.ruins && tile.sh >= 1) {
         apReq = 5;
         apCost = Math.round(1250/bat.squadsLeft/batType.squadSize/batType.crew);
         if (batType.cat === 'infantry' && !batType.skills.includes('moto') && !batType.skills.includes('fly')) {

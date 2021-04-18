@@ -1414,8 +1414,8 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
-        "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","w2-2ch","e-flash","theeye","e-mecano"],
-        "log3eq":"w2-2ch",
+        "equip":["aucun","lunette","chargeur","g2motor","chenilles","snorkel","w2-2ch","e-flash","theeye","e-mecano"],
+        "log3eq":"chargeur",
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -3884,7 +3884,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fly","extraction","selfbadmecano","fret","robot","light","conscont","camo","recupcit","recupres"],
+        "skills":["noguet","fly","extraction","selfbadmecano","fret","robot","light","conscont","aicamo","recupres","aifouille"],
         "mecanoCost":12,
         "mining":{
             "level":3,

@@ -202,8 +202,6 @@ let eggPauseMin = 7; // 1 chance sur 12: fin de pause (+compte des oeufs)
 let eggPauseMax = 20;
 let eggDropCount = 0;
 // SOUNDS
-let musicVolume = 0.4;
-let fxVolume = 0.6;
 let musicTracks = ['nero1','nero2','nero3','nero4','nero5','nero6','nero7','nero8'];
 let theMusic = new Howl({
     src: ['/static/sounds/music/nero1.mp3']

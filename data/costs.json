@@ -857,7 +857,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":99,"tiradores":13,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Laboratoire","Chaîne de montage"],
         "compReq":{"robo":1},
-        "costs":{"Scrap":90,"Carbone":90,"Aluminium":200,"Titane":240,"Electros":165,"Batteries":150,"Cuivre":72,"Silicium":90,"Cobalt":60},
+        "costs":{"Scrap":90,"Carbone":90,"Aluminium":200,"Titane":240,"Electros":165,"Batteries":150,"Cuivre":72,"Silicium":90},
         "deploy":{"Energie":115},
         "fabTime":65,
         "inRuin":2
@@ -868,7 +868,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":15,"drogmulojs":99,"tiradores":99,"detruas":11,"brasier":99},
         "bldReq":["Arsenal","Centre de recherches","Usine"],
         "compReq":{"robo":1},
-        "costs":{"Fer":84,"Bois":48,"Carbone":24,"Aluminium":240,"Titane":270,"Tungstène":60,"Electros":96,"Batteries":96,"Cuivre":58,"Silicium":72,"Cobalt":48},
+        "costs":{"Fer":84,"Bois":48,"Carbone":24,"Aluminium":240,"Titane":270,"Tungstène":60,"Electros":96,"Batteries":96,"Cuivre":58,"Silicium":72},
         "deploy":{"Energie":120},
         "fabTime":70,
         "inRuin":1

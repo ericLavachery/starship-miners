@@ -50,22 +50,22 @@ function commandes() {
         $('#commandz').append('<br>');
     }
     $('#commandz').append('<hr>');
-    if (musicVolume > 0) {
+    if (playerInfos.volMu > 0) {
         $('#commandz').append('<button type="button" title="Stopper la musique" class="boutonGris iconButtons" onclick="soundVolume(`mute`,`music`)"><i class="fas fa-volume-mute"></i></button>');
     } else {
         $('#commandz').append('<button type="button" title="Redémarrer la musique" class="boutonGris iconButtons" onclick="soundVolume(`mute`,`music`)"><i class="fas fa-volume-off"></i></button>');
     }
     $('#commandz').append('<button type="button" title="Diminuer le volume de la musique" class="boutonGris iconButtons" onclick="soundVolume(`down`,`music`)"><i class="fas fa-volume-down"></i></button>');
     $('#commandz').append('<button type="button" title="Augmenter le volume de la musique" class="boutonGris iconButtons" onclick="soundVolume(`up`,`music`)"><i class="fas fa-volume-up"></i></button><br>');
-    if (fxVolume > 0) {
+    if (playerInfos.volFx > 0) {
         $('#commandz').append('<button type="button" title="Stopper les effets" class="boutonGris iconButtons" onclick="soundVolume(`mute`,`fx`)"><i class="fas fa-volume-mute"></i></button>');
     } else {
         $('#commandz').append('<button type="button" title="Redémarrer les effets" class="boutonGris iconButtons" onclick="soundVolume(`mute`,`fx`)"><i class="fas fa-volume-off"></i></button>');
     }
     $('#commandz').append('<button type="button" title="Diminuer le volume des effets" class="boutonGris iconButtons" onclick="soundVolume(`down`,`fx`)"><i class="fas fa-volume-down"></i></button>');
     $('#commandz').append('<button type="button" title="Augmenter le volume des effets" class="boutonGris iconButtons" onclick="soundVolume(`up`,`fx`)"><i class="fas fa-volume-up"></i></button><br>');
-    $('#commandz').append('&nbsp;&nbsp;Musique '+musicVolume);
-    $('#commandz').append('&nbsp;&nbsp;Fx '+fxVolume);
+    $('#commandz').append('&nbsp;&nbsp;Musique '+playerInfos.volMu);
+    $('#commandz').append('&nbsp;&nbsp;Fx '+playerInfos.volFx);
     $('#commandz').append('<br>');
     if (activeTurn == 'player') {
         $('#commandz').append('<hr>');

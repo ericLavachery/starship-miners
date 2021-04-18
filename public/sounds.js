@@ -3,64 +3,64 @@ function soundVolume(vol,source) {
         console.log('music');
         if (vol === 'mute') {
             console.log('mute');
-            if (musicVolume === 0) {
+            if (playerInfos.volMu === 0) {
                 theMusic.mute(false);
-                musicVolume = 0.4;
+                playerInfos.volMu = 0.4;
             } else {
                 theMusic.mute(true);
-                musicVolume = 0;
+                playerInfos.volMu = 0;
             }
         } else {
             if (vol === 'down') {
                 console.log('down');
-                musicVolume = musicVolume-0.1;
-                if (musicVolume < 0) {
-                    musicVolume = 0;
+                playerInfos.volMu = playerInfos.volMu-0.1;
+                if (playerInfos.volMu < 0) {
+                    playerInfos.volMu = 0;
                 }
             } else if (vol === 'up') {
                 console.log('up');
-                musicVolume = musicVolume+0.1;
-                if (musicVolume > 1) {
-                    musicVolume = 1;
+                playerInfos.volMu = playerInfos.volMu+0.1;
+                if (playerInfos.volMu > 1) {
+                    playerInfos.volMu = 1;
                 }
             }
         }
-        console.log(musicVolume);
+        console.log(playerInfos.volMu);
     } else if (source === 'fx') {
         console.log('fx');
         if (vol === 'mute') {
             console.log('mute');
-            if (fxVolume === 0) {
-                fxVolume = 0.6;
+            if (playerInfos.volFx === 0) {
+                playerInfos.volFx = 0.6;
             } else {
-                fxVolume = 0;
+                playerInfos.volFx = 0;
             }
         } else {
             if (vol === 'down') {
                 console.log('down');
-                fxVolume = fxVolume-0.1;
-                if (fxVolume < 0) {
-                    fxVolume = 0;
+                playerInfos.volFx = playerInfos.volFx-0.1;
+                if (playerInfos.volFx < 0) {
+                    playerInfos.volFx = 0;
                 }
             } else if (vol === 'up') {
                 console.log('up');
-                fxVolume = fxVolume+0.1;
-                if (fxVolume > 1) {
-                    fxVolume = 1;
+                playerInfos.volFx = playerInfos.volFx+0.1;
+                if (playerInfos.volFx > 1) {
+                    playerInfos.volFx = 1;
                 }
             }
         }
-        console.log(fxVolume);
+        console.log(playerInfos.volFx);
     }
-    fxVolume = fxVolume.toFixedNumber(1);
-    musicVolume = musicVolume.toFixedNumber(1);
+    playerInfos.volFx = playerInfos.volFx.toFixedNumber(1);
+    playerInfos.volMu = playerInfos.volMu.toFixedNumber(1);
     commandes();
 };
 
 function eggSound() {
     var sound = new Howl({
         src: ['/static/sounds/fx/smartsound_CINEMATIC_IMPACT_Eruption_01b.mp3'],
-        volume: fxVolume
+        volume: playerInfos.volFx
     });
     sound.play();
 };
@@ -76,7 +76,7 @@ function shotSound(weapon,bat) {
         console.log(weapon);
         var sound = new Howl({
             src: ['/static/sounds/'+soundDir+'/'+weapon.sound+'.mp3'],
-            volume: fxVolume,
+            volume: playerInfos.volFx,
             onload: function() {
                 soundDuration = sound.duration();
                 soundDuration = Math.round(800*soundDuration)-500;
@@ -102,7 +102,7 @@ function deathSound(bat) {
     if (!isFFW) {
         var sound = new Howl({
             src: ['/static/sounds/'+soundDir+'/death/'+batType.deathFx+'.mp3'],
-            volume: fxVolume
+            volume: playerInfos.volFx
         });
         sound.play();
     }
@@ -111,7 +111,7 @@ function deathSound(bat) {
 function alienSounds() {
     var sound = new Howl({
         src: ['/static/sounds/fx/little_robot_sound_factory_Ambience_AlienHive_00.mp3'],
-        volume: fxVolume
+        volume: playerInfos.volFx
     });
     sound.play();
 };
@@ -151,7 +151,7 @@ function spawnSound() {
         let spawnSound = spawnType.spawnFx;
         var sound = new Howl({
             src: ['/static/sounds/fx/'+spawnSound+'_x.mp3'],
-            volume: fxVolume
+            volume: playerInfos.volFx
         });
         setTimeout(function (){
             sound.play();
@@ -167,7 +167,7 @@ function playMusic(piste,interrupt) {
     if (!theMusic.playing() || interrupt) {
         theMusic = new Howl({
             src: ['/static/sounds/music/'+track+'.mp3'],
-            volume: musicVolume
+            volume: playerInfos.volMu
         });
         theMusic.play();
         console.log('PLAYING: '+track);

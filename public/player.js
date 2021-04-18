@@ -317,6 +317,14 @@ function playerSkillsUTChanges() {
                 unit.costs['Compo3'] = Math.ceil(unit.costs['Compo3']/9*6);
             }
         }
+        // INDUSTRIE
+        if (playerInfos.comp.ind >= 1 && unit.cat === 'vehicles') {
+            if (unit.skills.includes('robot')) {
+                unit.hp = unit.hp+Math.round(unit.hp/5*playerInfos.comp.ind);
+            } else {
+                unit.hp = unit.hp+Math.round(unit.hp/15*playerInfos.comp.ind);
+            }
+        }
         // DEFENSE
         if (playerInfos.comp.def >= 1 && (unit.kind === 'zero-defense' || unit.skills.includes('cage')) && !unit.skills.includes('dome')) {
             unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.def);
