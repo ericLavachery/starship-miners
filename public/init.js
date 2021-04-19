@@ -51,6 +51,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.eggsKilled === undefined) {
         playerInfos.eggsKilled = 0;
     }
+    if (playerInfos.alienSat === undefined) {
+        playerInfos.alienSat = 0;
+    }
     if (playerInfos.unitsLost === undefined) {
         playerInfos.unitsLost = 0;
     }

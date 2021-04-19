@@ -208,7 +208,7 @@ function showEnemyBatInfos(bat) {
         }
     }
     if (compCA >= 3) {
-        if (batType.skills.includes('bugboost') || batType.skills.includes('larvehide') || batType.skills.includes('spiderrange') || batType.skills.includes('bugshield') || batType.skills.includes('eggshield')) {
+        if (batType.skills.includes('bugboost') || batType.skills.includes('larvehide') || batType.skills.includes('spiderboost') || batType.skills.includes('spiderrange') || batType.skills.includes('bugshield') || batType.skills.includes('eggshield')) {
             $('#unitInfos').append('<span class="paramName">Leadership</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
         }
     }

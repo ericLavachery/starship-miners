@@ -162,6 +162,7 @@ let parasiteDamage = 120;
 let blubDamage = 6;
 let bugROF = 1;
 let spiderRG = false;
+let spiderROF = false;
 let bugSHIELD = false;
 let larveHIDE = false;
 let eggSHIELD = false;

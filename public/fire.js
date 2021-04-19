@@ -343,9 +343,14 @@ function attack(melee) {
         attFactor = Math.round(attFactor*bugROF);
     }
     // spiderRG
-    if (spiderRG && selectedBatType.kind === 'spider') {
-        shots = Math.round(shots*1.25);
-        attFactor = Math.round(attFactor*1.25);
+    if (selectedBatType.kind === 'spider') {
+        if (spiderROF) {
+            shots = Math.round(shots*1.5);
+            attFactor = Math.round(attFactor*1.5);
+        } else if (spiderRG) {
+            shots = Math.round(shots*1.25);
+            attFactor = Math.round(attFactor*1.25);
+        }
     }
     // berserk (bonus ROF)
     if (activeTurn === 'player') {
@@ -1207,9 +1212,14 @@ function defense(melee) {
         defFactor = Math.round(defFactor*bugROF);
     }
     // spiderRG
-    if (spiderRG && targetBatType.kind === 'spider') {
-        shots = Math.round(shots*1.25);
-        defFactor = Math.round(defFactor*1.25);
+    if (targetBatType.kind === 'spider') {
+        if (spiderROF) {
+            shots = Math.round(shots*1.5);
+            defFactor = Math.round(attFactor*1.5);
+        } else if (spiderRG) {
+            shots = Math.round(shots*1.25);
+            defFactor = Math.round(attFactor*1.25);
+        }
     }
     // guerrilla
     if (selectedBatType.skills.includes('tirailleur') && selectedBat.oldTileId != selectedBat.tileId) {

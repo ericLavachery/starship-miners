@@ -126,6 +126,7 @@ function checkEggsDrop() {
     console.log('check egg drop');
     eggDropCount = 0;
     let drop = false;
+    let satDrop = false;
     let eggPauseDice = calcEggPause(false);
     let adjMapDrop = playerInfos.mapDrop;
     let adjMapTurn = playerInfos.mapTurn+landingNoise-13+zone[0].mapDiff;
@@ -176,6 +177,13 @@ function checkEggsDrop() {
         if (rand.rand(1,100) <= dropChance) {
             drop = true;
             eggsDrop();
+        } else if (playerInfos.alienSat >= 5) {
+            dropEgg('Cocon','nedge');
+            satDrop = true;
+            playerInfos.alienSat = 0;
+            if (playerInfos.pseudo === 'Bob') {
+                warning('Cocon de saturation','200+ aliens.');
+            }
         }
     }
     if (drop || playerInfos.eggPause) {
@@ -196,10 +204,10 @@ function checkEggsDrop() {
     } else {
         playerInfos.mapDrop = playerInfos.mapDrop+1;
     }
-    if (eggDropCount >= 1) {
+    if (eggDropCount >= 1 || satDrop) {
         eggSound();
         playMusic('newEgg',false);
-        if (Math.floor(playerInfos.mapTurn/25) > playerInfos.cocons) {
+        if (Math.floor(playerInfos.mapTurn/25) > playerInfos.cocons && !satDrop) {
             dropEgg('Cocon','target');
             playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             let doubleCocon = playerInfos.mapTurn+((zone[0].mapDiff-1)*7);

@@ -1186,6 +1186,7 @@ function isCamoBlock() {
 function alienBonus() {
     bugROF = 1;
     spiderRG = false;
+    spiderROF = false;
     bugSHIELD = false;
     eggSHIELD = false;
     larveHIDE = false;
@@ -1200,6 +1201,9 @@ function alienBonus() {
             }
             if (batType.skills.includes('spiderrange')) {
                 spiderRG = true;
+            }
+            if (batType.skills.includes('spiderboost')) {
+                spiderROF = true;
             }
             if (batType.skills.includes('larvehide')) {
                 larveHIDE = true;

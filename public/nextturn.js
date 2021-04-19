@@ -1,5 +1,8 @@
 function nextTurn() {
     testConnect(pseudo);
+    if (aliens.length >= 200) {
+        playerInfos.alienSat = playerInfos.alienSat+1;
+    }
     saveGame();
     if (zone[0].dark) {
         checkUndark();
