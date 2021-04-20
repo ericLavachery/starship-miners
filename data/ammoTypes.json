@@ -177,7 +177,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2,"explo":2},
+        "compReq":{"bal":1,"explo":2},
         "deploy":{"Fer":4,"Soufre":4,"Plomb":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
         "batch":200
     },
@@ -314,7 +314,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2,"explo":2},
+        "compReq":{"bal":1,"explo":2},
         "deploy":{"Fer":4,"Soufre":4,"Plomb":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
         "batch":200
     },
@@ -524,7 +524,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2,"explo":2},
+        "compReq":{"bal":1,"explo":2},
         "deploy":{"Fer":4,"Soufre":4,"Plomb":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
         "batch":200
     },
@@ -626,7 +626,7 @@
         "range": 1.1,
         "rof": 1,
         "power": 0,
-        "powermult": 1.2,
+        "powermult": 1,
         "armors": 0.2,
         "accuracy": 1,
         "apdamage": 0,
