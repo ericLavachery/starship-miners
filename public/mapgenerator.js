@@ -960,14 +960,14 @@ function addRes(zone) {
             });
             tile.rs[mythicRes.name] = mythicRes.batch*(tile.rq-2)*(tile.rq-3)*rand.rand(5,11);
             if (mythicRes.bld === 'Derrick' || mythicRes.bld === 'Mine') {
-                let bldFactor = 2;
+                let bldFactor = 4;
                 if (mythicRes.bld === 'Derrick') {
-                    bldFactor = 6;
+                    bldFactor = 8;
                 }
                 resTypes.forEach(function(res) {
                     if (res.bld === mythicRes.bld) {
                         if (rand.rand(1,100) <= Math.round((res.rarity+9)/10*bldFactor)) {
-                            tile.rs[res.name] = res.batch*res.batch*rand.rand(6,12);
+                            tile.rs[res.name] = (res.batch*res.batch*rand.rand(8,18))+rand.rand(0,9);
                         }
                     }
                 });

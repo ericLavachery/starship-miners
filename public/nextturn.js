@@ -1,8 +1,5 @@
 function nextTurn() {
     testConnect(pseudo);
-    if (aliens.length >= 200) {
-        playerInfos.alienSat = playerInfos.alienSat+1;
-    }
     saveGame();
     if (zone[0].dark) {
         checkUndark();
@@ -12,6 +9,19 @@ function nextTurn() {
     // stopMe = true;
     blockMe(true);
     $('#warnings').empty();
+    if (aliens.length >= 200) {
+        playerInfos.alienSat = playerInfos.alienSat+1;
+    }
+    if (playerInfos.alienSat === coconSatLimit-1) {
+        if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) {
+            warning('Cocon en approche','Le nombre d\'aliens en jeu est trop élevé.');
+        }
+    }
+    if (Math.floor(playerInfos.mapTurn/25) >= playerInfos.cocons) {
+        if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 1) {
+            warning('Cocon en approche','La prochaine chutte d\'oeufs sera accompagnée d\'un cocon.');
+        }
+    }
     activeTurn = 'aliens';
     $('#unitInfos').empty();
     selectMode();

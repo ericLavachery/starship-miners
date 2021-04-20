@@ -135,6 +135,7 @@ function checkEggsDrop() {
         adjMapDrop = 0;
     }
     console.log('EGGS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+    console.log('mapTurn='+playerInfos.mapTurn);
     console.log('mapDrop'+playerInfos.mapDrop);
     console.log('adjMapDrop'+adjMapDrop);
     let dropTurn = Math.floor(((adjMapDrop*cumDrop)+adjMapTurn)/(cumDrop+1));
@@ -174,10 +175,12 @@ function checkEggsDrop() {
         warning('Oeufs','Check '+dropChance+'% '+dropMessage);
     }
     if (zone[0].mapDiff >= 1 || playerInfos.mapTurn >= 25) {
-        if (rand.rand(1,100) <= dropChance) {
+        let dropCheckDice = rand.rand(1,100);
+        console.log('dropCheckDice='+dropCheckDice);
+        if (dropCheckDice <= dropChance) {
             drop = true;
             eggsDrop();
-        } else if (playerInfos.alienSat >= 5) {
+        } else if (playerInfos.alienSat >= coconSatLimit) {
             dropEgg('Cocon','nedge');
             satDrop = true;
             playerInfos.alienSat = 0;
@@ -615,7 +618,7 @@ function aliensCount() {
 };
 
 function spawns() {
-    console.log('check eggs');
+    console.log('check pontes');
     let batType;
     let vomiCheck;
     let eggTurn;
