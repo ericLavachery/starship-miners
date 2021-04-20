@@ -193,10 +193,9 @@
             "rof":24,
             "accuracy":22,
             "power":8,
-            "armors":0.6,
             "aoe":"brochette",
             "sound":"firemg_sa",
-            "ammo":["fireshells","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "ammo":["fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -2673,10 +2672,10 @@
             "rof":40,
             "accuracy":15,
             "power":14,
-            "armors":0.3,
+            "armors":0.7,
             "aoe":"brochette",
             "sound":"firemg_heavy",
-            "ammo":["fireshells","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "ammo":["fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
         },
         "weapon2":{
             "name":"Bombes",
@@ -3941,10 +3940,10 @@
             "rof":24,
             "accuracy":24,
             "power":14,
-            "armors":0.3,
+            "armors":0.7,
             "aoe":"brochette",
             "sound":"firemg_heavy_sa",
-            "ammo":["fireshells","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
+            "ammo":["fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
             "maxAmmo":36,
             "ravitBld":"Poudrière"
         },

@@ -368,6 +368,16 @@
         "costs":{"Scrap":3,"Carbone":3,"Fer":3}
     },
     {
+        "name": "silencieux",
+        "cat":"equip",
+        "skills": [],
+        "info": "Silencieux",
+        "bldReq":["Atelier"],
+        "compReq":{"log":2,"bal":1},
+        "factor":"crew",
+        "costs":{"Aluminium":6,"Carbone":3}
+    },
+    {
         "name": "silencieux1",
         "cat":"equip",
         "skills": [],
