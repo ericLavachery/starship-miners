@@ -25,6 +25,7 @@
             "accuracy":24,
             "dca":1.25,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_hunt",
             "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -270,6 +271,7 @@
             "accuracy":27,
             "dca":1.25,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -449,6 +451,7 @@
             "accuracy":27,
             "dca":1.25,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]

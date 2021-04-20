@@ -27,6 +27,7 @@
             "accuracy":24,
             "dca":1.25,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_hunt",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -108,7 +109,8 @@
             "noise":2,
             "rof":4,
             "accuracy":17,
-            "power":8,
+            "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
@@ -187,6 +189,7 @@
             "rof":6,
             "accuracy":19,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
@@ -346,6 +349,7 @@
             "accuracy":22,
             "dca":1.25,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_hunt",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -535,7 +539,8 @@
             "noise":2,
             "rof":4,
             "accuracy":17,
-            "power":8,
+            "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
@@ -612,6 +617,7 @@
             "accuracy":27,
             "dca":1.25,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -691,6 +697,7 @@
             "accuracy":27,
             "dca":1.25,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -842,6 +849,7 @@
             "accuracy":27,
             "dca":1.25,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -1202,6 +1210,7 @@
             "accuracy":27,
             "dca":1.25,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -1281,6 +1290,7 @@
             "accuracy":27,
             "dca":1.25,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -1341,6 +1351,7 @@
             "accuracy":27,
             "dca":1.25,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -1490,6 +1501,7 @@
             "rof":6,
             "accuracy":17,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
@@ -1565,6 +1577,7 @@
             "accuracy":22,
             "dca":1.25,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_hunt",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -1640,6 +1653,7 @@
             "accuracy":27,
             "dca":1.25,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -2478,6 +2492,7 @@
             "rof":2,
             "accuracy":19,
             "power":7,
+            "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]

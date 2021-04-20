@@ -1215,10 +1215,10 @@ function defense(melee) {
     if (targetBatType.kind === 'spider') {
         if (spiderROF) {
             shots = Math.round(shots*1.5);
-            defFactor = Math.round(attFactor*1.5);
+            defFactor = Math.round(defFactor*1.5);
         } else if (spiderRG) {
             shots = Math.round(shots*1.25);
-            defFactor = Math.round(attFactor*1.25);
+            defFactor = Math.round(defFactor*1.25);
         }
     }
     // guerrilla
