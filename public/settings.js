@@ -73,6 +73,8 @@ let allZoneRes = [];
 let allCheckedZoneRes = [];
 let undarkNow = [];
 // UNITS
+let souteId = 1;
+let inSOute = false;
 let unitTypes = [];
 let unitDV = {}
 let bataillons = [];

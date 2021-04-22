@@ -379,13 +379,7 @@ function conSelect(unitId,player,noRefresh) {
     let ammoIndex;
     let batAmmo;
     // AMMO WEAP 1 ---------------------------------------------
-    let hasW1 = false;
-    if (!conselUnit.weapon.kit || conselAmmos[3].includes('w1-') || conselAmmos[3].includes('w2-')) {
-        hasW1 = true;
-    }
-    if (conselAmmos[3] === 'w2-magnum' || conselAmmos[3] === 'w2-pplasma') {
-        hasW1 = false;
-    }
+    let hasW1 = checkHasWeapon(1,conselUnit,conselAmmos[3]);
     listNum = 1;
     if (hasW1) {
         if (Object.keys(conselUnit.weapon).length >= 1) {
@@ -429,10 +423,7 @@ function conSelect(unitId,player,noRefresh) {
         }
     }
     // AMMO WEAP 2 ---------------------------------------------
-    let hasW2 = false;
-    if (!conselUnit.weapon2.kit || conselAmmos[3].includes('kit-') || conselAmmos[3].includes('w2-')) {
-        hasW2 = true;
-    }
+    let hasW2 = checkHasWeapon(2,conselUnit,conselAmmos[3]);
     listNum = 1;
     if (hasW2) {
         if (Object.keys(conselUnit.weapon2).length >= 1 && !conselUnit.skills.includes('unemun')) {

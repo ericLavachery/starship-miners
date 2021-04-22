@@ -306,11 +306,13 @@ function batUnstack() {
 
 function isStacked() {
     let stack = false;
-    bataillons.forEach(function(bat) {
-        if (bat.tileId === selectedBat.tileId && bat.loc === "zone" && bat.id != selectedBat.id) {
-            stack = true;
-        }
-    });
+    if (!playerInfos.inSoute) {
+        bataillons.forEach(function(bat) {
+            if (bat.tileId === selectedBat.tileId && bat.loc === "zone" && bat.id != selectedBat.id) {
+                stack = true;
+            }
+        });
+    }
     return stack;
 };
 

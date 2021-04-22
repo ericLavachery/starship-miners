@@ -37,13 +37,7 @@ function weaponsInfos(bat,batType,pop) {
     // console.log('rofs');
     // console.log(batType.weapon.rof);
     // console.log(batType.weapon2.rof);
-    let hasW1 = false;
-    if (!batType.weapon.kit || bat.eq.includes('w2-') || bat.eq.includes('w1-')) {
-        hasW1 = true;
-    }
-    if (bat.eq === 'w2-magnum' || bat.eq === 'w2-pplasma') {
-        hasW1 = false;
-    }
+    let hasW1 = checkHasWeapon(1,batType,bat.eq);
     if (batType.weapon.rof >= 1) {
         if (batType.weapon.name.includes('Bélier') || batType.weapon.name.includes('Boutoir') || batType.weapon.name.includes('Moissonneuse')) {
             if (!batType.skills.includes('fly') && terrain.name === 'M') {
@@ -232,10 +226,7 @@ function weaponsInfos(bat,batType,pop) {
             }
         }
     }
-    let hasW2 = false;
-    if (!batType.weapon2.kit || bat.eq.includes('kit-') || bat.eq.includes('w2-')) {
-        hasW2 = true;
-    }
+    let hasW2 = checkHasWeapon(2,batType,bat.eq);
     if (batType.weapon2.rof >= 1) {
         if (batType.weapon2.name.includes('Bélier') || batType.weapon2.name.includes('Boutoir') || batType.weapon2.name.includes('Moissonneuse')) {
             if (!batType.skills.includes('fly') && terrain.name === 'M') {

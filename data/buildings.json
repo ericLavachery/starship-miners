@@ -3039,7 +3039,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["recupcit","transport","routes","producteur","fret","reserve","transorbital"],
+        "skills":["recupcit","transport","routes","producteur","fret","reserve","transorbital","soute"],
         "mecanoCost":10,
         "transMaxSize":100,
         "transUnits":1000000,

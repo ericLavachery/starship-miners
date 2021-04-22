@@ -143,13 +143,7 @@ function reEquip(batId,noRefresh) {
     }
     let batAmmo;
     // AMMO WEAP 1 ---------------------------------------------
-    let hasW1 = false;
-    if (!myBatType.weapon.kit || myNewGear[3].includes('w1-') || myNewGear[3].includes('w2-')) {
-        hasW1 = true;
-    }
-    if (myNewGear[3] === 'w2-magnum' || myNewGear[3] === 'w2-pplasma') {
-        hasW1 = false;
-    }
+    let hasW1 = checkHasWeapon(1,myBatType,myNewGear[3]);
     listNum = 1;
     if (hasW1) {
         if (Object.keys(myBatType.weapon).length >= 1) {
@@ -192,10 +186,7 @@ function reEquip(batId,noRefresh) {
         }
     }
     // AMMO WEAP 2 ---------------------------------------------
-    let hasW2 = false;
-    if (!myBatType.weapon2.kit || myNewGear[3].includes('kit-') || myNewGear[3].includes('w2-')) {
-        hasW2 = true;
-    }
+    let hasW2 = checkHasWeapon(2,myBatType,myNewGear[3]);
     listNum = 1;
     if (hasW2) {
         if (Object.keys(myBatType.weapon2).length >= 1 && !myBatType.skills.includes('unemun')) {
@@ -241,6 +232,27 @@ function reEquip(batId,noRefresh) {
     $('#conAmmoList').append('<span class="blockTitle"><h4><button type="button" title="Faire les changements dans les munitions, armures et équipements" class="boutonCaca iconButtons" onclick="doReEquip(`'+myBat.id+'`)"><i class="ra ra-rifle rpg"></i> &nbsp;<span class="notsosmall">Rééquiper</span></button></h4></span><br>');
     $('#conAmmoList').append('<br>');
 };
+
+function checkHasWeapon(num,batType,eq) {
+    let hasWeapon = false;
+    if (num === 1) {
+        if (batType.weapon.rof >= 1) {
+            if (!batType.weapon.kit || eq.includes('w1-') || eq.includes('w2-')) {
+                hasWeapon = true;
+            }
+            if (eq === 'w2-magnum' || eq === 'w2-pplasma') {
+                hasWeapon = false;
+            }
+        }
+    } else if (num === 2) {
+        if (batType.weapon2.rof >= 1) {
+            if (!batType.weapon2.kit || eq.includes('kit-') || eq.includes('w2-')) {
+                hasWeapon = true;
+            }
+        }
+    }
+    return hasWeapon;
+}
 
 function doReEquip(batId) {
     let myBat = getBatById(batId);

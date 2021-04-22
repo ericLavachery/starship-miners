@@ -181,7 +181,7 @@ function checkEggsDrop() {
             drop = true;
             eggsDrop();
         } else if (playerInfos.alienSat >= coconSatLimit) {
-            dropEgg('Cocon','nedge');
+            dropEgg('Cocon','any');
             satDrop = true;
             playerInfos.alienSat = 0;
             if (playerInfos.pseudo === 'Bob') {

@@ -9,21 +9,15 @@ function skillsInfos(bat,batType) {
     let terrain = getTerrain(bat);
     let inMelee = batInMelee(bat,batType);
     let freeConsTile = false;
-    let hasW1 = false;
-    if (!batType.weapon.kit || bat.eq.includes('w2-') || bat.eq.includes('w1-')) {
-        hasW1 = true;
-    }
-    if (bat.eq === 'w2-magnum' || bat.eq === 'w2-pplasma') {
-        hasW1 = false;
-    }
-    let hasW2 = false;
-    if (!batType.weapon2.kit || bat.eq.includes('kit-') || bat.eq.includes('w2-')) {
-        hasW2 = true;
-    }
+    let hasW1 = checkHasWeapon(1,batType,bat.eq);
+    let hasW2 = checkHasWeapon(2,batType,bat.eq);
     console.log('inMelee='+inMelee);
+    if (batType.skills.includes('soute') && playerInfos.onShip) {
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déployer vos bataillons pour une nouvelle mission" class="boutonMarine bigButtons" onclick="goSoute()"><i class="fas fa-warehouse"></i></button>&nbsp;  Déployer</h4></span>');
+    }
     // RAVITAILLEMENT DROGUES
     let anyRavit = checkRavitDrug(bat);
-    if (anyRavit && bat.tags.includes('dU') && batType.skills.includes('dealer')) {
+    if (anyRavit && bat.tags.includes('dU') && batType.skills.includes('dealer') && !playerInfos.onShip) {
         let apCost = Math.round(bat.ap/3);
         if (bat.apLeft >= 2) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de drogues" class="boutonVert skillButtons" onclick="goRavitDrug('+apCost+')"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp;  Approvisionnement</h4></span>');
@@ -34,7 +28,7 @@ function skillsInfos(bat,batType) {
     }
     // RAVITAILLEMENT
     anyRavit = checkRavit(bat);
-    if (anyRavit && bat.tags.includes('aU')) {
+    if (anyRavit && bat.tags.includes('aU') && !playerInfos.onShip) {
         let ravitVolume = calcRavitVolume(bat);
         let ravitFactor = 3;
         if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
@@ -56,7 +50,7 @@ function skillsInfos(bat,batType) {
     }
     // STOCKS
     let anyStock = checkStock(bat);
-    if (anyStock && bat.tags.includes('sU')) {
+    if (anyStock && bat.tags.includes('sU') && !playerInfos.onShip) {
         let apCost = Math.round(bat.ap*1.5);
         if (bat.apLeft >= 4) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de ravitaillements" class="boutonCaca skillButtons" onclick="goStock('+apCost+')"><i class="fas fa-cubes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réapprovisionnement</h4></span>');
@@ -66,7 +60,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // GUET
-    if (batType.weapon.rof >= 1 && bat.ap >= 1 && !batType.skills.includes('noguet') && (hasW1 || hasW2)) {
+    if (batType.weapon.rof >= 1 && bat.ap >= 1 && !batType.skills.includes('noguet') && (hasW1 || hasW2) && !playerInfos.onShip) {
         balise = 'h4';
         if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
             balise = 'h3';
@@ -97,7 +91,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // FORTIFICATION
-    if (batType.skills.includes('fortif')) {
+    if (batType.skills.includes('fortif') && !playerInfos.onShip) {
         balise = 'h4';
         if (bat.tags.includes('fortif')) {
             balise = 'h3';
@@ -124,73 +118,75 @@ function skillsInfos(bat,batType) {
     }
     // CAMOUFLAGE
     let camoufOK = true;
-    if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || (batType.skills.includes('aicamo') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) {
-        if (batType.cat == 'buildings') {
-            if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
-                apCost = Math.floor(bat.ap*3.5);
-                apReq = Math.floor(bat.ap/1.5);
-                if (inMelee) {
-                    camoufOK = false;
+    if (!playerInfos.onShip) {
+        if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || (batType.skills.includes('aicamo') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) {
+            if (batType.cat == 'buildings') {
+                if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
+                    apCost = Math.floor(bat.ap*3.5);
+                    apReq = Math.floor(bat.ap/1.5);
+                    if (inMelee) {
+                        camoufOK = false;
+                    }
+                } else {
+                    apCost = Math.floor(bat.ap*2);
+                    apReq = Math.floor(bat.ap/1.5);
+                    if (inMelee) {
+                        camoufOK = false;
+                    }
+                }
+            } else if (batType.cat == 'vehicles' || batType.skills.includes('machine') || batType.cat == 'devices') {
+                if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
+                    apCost = Math.floor(bat.ap*Math.sqrt(batType.size)/1.8);
+                    apReq = Math.floor(bat.ap/1.5);
+                    if (inMelee) {
+                        camoufOK = false;
+                    }
+                } else {
+                    apCost = Math.floor(bat.ap/2);
+                    apReq = 3;
+                    if (inMelee) {
+                        camoufOK = false;
+                    }
                 }
             } else {
-                apCost = Math.floor(bat.ap*2);
-                apReq = Math.floor(bat.ap/1.5);
-                if (inMelee) {
-                    camoufOK = false;
+                if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
+                    apCost = Math.floor(bat.ap*Math.sqrt(batType.size)/1.8);
+                    apReq = Math.floor(bat.ap/1.5);
+                    if (inMelee) {
+                        camoufOK = false;
+                    }
+                } else {
+                    apCost = Math.floor(bat.ap/3);
+                    apReq = 1;
                 }
             }
-        } else if (batType.cat == 'vehicles' || batType.skills.includes('machine') || batType.cat == 'devices') {
-            if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
-                apCost = Math.floor(bat.ap*Math.sqrt(batType.size)/1.8);
-                apReq = Math.floor(bat.ap/1.5);
-                if (inMelee) {
-                    camoufOK = false;
-                }
-            } else {
-                apCost = Math.floor(bat.ap/2);
-                apReq = 3;
-                if (inMelee) {
-                    camoufOK = false;
-                }
-            }
-        } else {
-            if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
-                apCost = Math.floor(bat.ap*Math.sqrt(batType.size)/1.8);
-                apReq = Math.floor(bat.ap/1.5);
-                if (inMelee) {
-                    camoufOK = false;
-                }
-            } else {
-                apCost = Math.floor(bat.ap/3);
-                apReq = 1;
-            }
-        }
-        balise = 'h4';
-        if (bat.fuzz <= -2) {
-            balise = 'h3';
-        }
-        let bouton = 'boutonRose';
-        if (bat.tags.includes('mining')) {
-            bouton = 'boutonGris';
-        }
-        if (bat.apLeft >= apReq && bat.fuzz >= -1 && camoufOK) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Mode furtif" class="'+bouton+' skillButtons" onclick="camouflage('+apCost+')"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
-        } else {
+            balise = 'h4';
             if (bat.fuzz <= -2) {
-                skillMessage = "Déjà en mode furtif";
-            } else if (!camoufOK) {
-                skillMessage = "Impossible en mêlée";
-            } else {
-                skillMessage = "Pas assez de PA";
+                balise = 'h3';
             }
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
-        }
-        if (bat.tags.includes('camo') || (bat.fuzz <= -2 && (batType.skills.includes('camo') || batType.skills.includes('maycamo')))) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Sortir du mode furtif" class="boutonRose skillButtons" onclick="camoOut()"><i class="ra ra-footprint rpg"></i> <span class="small">0</span></button>&nbsp; Mode non furtif</h4></span>');
+            let bouton = 'boutonRose';
+            if (bat.tags.includes('mining')) {
+                bouton = 'boutonGris';
+            }
+            if (bat.apLeft >= apReq && bat.fuzz >= -1 && camoufOK) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Mode furtif" class="'+bouton+' skillButtons" onclick="camouflage('+apCost+')"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
+            } else {
+                if (bat.fuzz <= -2) {
+                    skillMessage = "Déjà en mode furtif";
+                } else if (!camoufOK) {
+                    skillMessage = "Impossible en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
+            }
+            if (bat.tags.includes('camo') || (bat.fuzz <= -2 && (batType.skills.includes('camo') || batType.skills.includes('maycamo')))) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Sortir du mode furtif" class="boutonRose skillButtons" onclick="camoOut()"><i class="ra ra-footprint rpg"></i> <span class="small">0</span></button>&nbsp; Mode non furtif</h4></span>');
+            }
         }
     }
     // EMBUSCADE
-    if (batType.skills.includes('embuscade')) {
+    if (batType.skills.includes('embuscade') && !playerInfos.onShip) {
         apCost = 2;
         if (batType.weapon2.rof >= 1 && batType.weapon.cost > batType.weapon2.rof) {
             apReq = 2+batType.weapon2.cost;
@@ -214,14 +210,17 @@ function skillsInfos(bat,batType) {
         }
     }
     // TIR CIBLE
-    // intéressant si précision en dessous de 10
-    if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) {
-        apCost = 4;
-        if (batType.weapon.isPrec) {
-            if (batType.weapon2.rof >= 1) {
-                if (batType.weapon2.isPrec) {
-                    if (batType.weapon.cost > batType.weapon2.rof) {
-                        apReq = 4+batType.weapon2.cost;
+    if (!playerInfos.onShip) {
+        if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) {
+            apCost = 4;
+            if (batType.weapon.isPrec) {
+                if (batType.weapon2.rof >= 1) {
+                    if (batType.weapon2.isPrec) {
+                        if (batType.weapon.cost > batType.weapon2.rof) {
+                            apReq = 4+batType.weapon2.cost;
+                        } else {
+                            apReq = 4+batType.weapon.cost;
+                        }
                     } else {
                         apReq = 4+batType.weapon.cost;
                     }
@@ -229,34 +228,32 @@ function skillsInfos(bat,batType) {
                     apReq = 4+batType.weapon.cost;
                 }
             } else {
-                apReq = 4+batType.weapon.cost;
+                apReq = 4+batType.weapon2.cost;
             }
-        } else {
-            apReq = 4+batType.weapon2.cost;
-        }
-        balise = 'h4';
-        if (bat.tags.includes('vise')) {
-            balise = 'h3';
-        }
-        let tcPrec = Math.round(100*(5+playerInfos.comp.train)/3);
-        let tcROF = Math.round(100*(5+playerInfos.comp.train)/7);
-        let tcPower = Math.round(100*(8+playerInfos.comp.train)/5);
-        let tcInfo = '+'+tcPrec+'% précision, '+tcROF+'% cadence, '+tcPower+'% puissance ('+apCost+' PA + coût de l\'arme)';
-        if (bat.apLeft >= apReq && !bat.tags.includes('vise') && bat.apLeft >= apCost+cheapWeapCost && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+tcInfo+'" class="boutonJaune skillButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
-        } else {
+            balise = 'h4';
             if (bat.tags.includes('vise')) {
-                skillMessage = "Déjà activé";
-            } else if (inMelee) {
-                skillMessage = "Impossible en mêlée";
-            } else {
-                skillMessage = "Pas assez de PA";
+                balise = 'h3';
             }
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
+            let tcPrec = Math.round(100*(5+playerInfos.comp.train)/3);
+            let tcROF = Math.round(100*(5+playerInfos.comp.train)/7);
+            let tcPower = Math.round(100*(8+playerInfos.comp.train)/5);
+            let tcInfo = '+'+tcPrec+'% précision, '+tcROF+'% cadence, '+tcPower+'% puissance ('+apCost+' PA + coût de l\'arme)';
+            if (bat.apLeft >= apReq && !bat.tags.includes('vise') && bat.apLeft >= apCost+cheapWeapCost && !inMelee) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+tcInfo+'" class="boutonJaune skillButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
+            } else {
+                if (bat.tags.includes('vise')) {
+                    skillMessage = "Déjà activé";
+                } else if (inMelee) {
+                    skillMessage = "Impossible en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
+            }
         }
     }
     // LUCKY SHOT
-    if (batType.skills.includes('luckyshot')) {
+    if (batType.skills.includes('luckyshot') && !playerInfos.onShip) {
         if (batType.weapon2.rof >= 1 && batType.weapon.cost > batType.weapon2.rof) {
             apReq = batType.weapon2.cost;
         } else {
@@ -273,7 +270,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // PRIERE
-    if (batType.skills.includes('prayer')) {
+    if (batType.skills.includes('prayer') && !playerInfos.onShip) {
         balise = 'h4';
         if (bat.tags.includes('prayer')) {
             balise = 'h3';
@@ -295,7 +292,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // FOG
-    if (batType.skills.includes('fog')) {
+    if (batType.skills.includes('fog') && !playerInfos.onShip) {
         balise = 'h4';
         if (bat.tags.includes('fog')) {
             balise = 'h1';
@@ -306,537 +303,541 @@ function skillsInfos(bat,batType) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter le fog" class="boutonRose skillButtons" onclick="fogStop()"><i class="fas fa-cloud"></i> <span class="small">0</span></button>&nbsp; Fog</'+balise+'></span>');
         }
     }
-    // MEDIC IN BLD
-    let baseskillCost;
-    if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
-        let medicBat = bestMedicInBld(bat);
-        let medicBatType = getBatType(medicBat);
-        // console.log(medicBat);
-        if (Object.keys(medicBat).length >= 1) {
-            numTargets = numMedicTargets(medicBat,'infantry',true,true,bat);
-            baseskillCost = calcBaseSkillCost(medicBat,medicBatType,true,true);
-            apCost = numTargets*(baseskillCost+medicBatType.squads-medicBat.squadsLeft);
+    if (!playerInfos.onShip) {
+        // MEDIC IN BLD
+        let baseskillCost;
+        if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
+            let medicBat = bestMedicInBld(bat);
+            let medicBatType = getBatType(medicBat);
+            // console.log(medicBat);
+            if (Object.keys(medicBat).length >= 1) {
+                numTargets = numMedicTargets(medicBat,'infantry',true,true,bat);
+                baseskillCost = calcBaseSkillCost(medicBat,medicBatType,true,true);
+                apCost = numTargets*(baseskillCost+medicBatType.squads-medicBat.squadsLeft);
+                if (apCost === 0) {apCost = baseskillCost;}
+                if (numTargets >= 1) {
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes avec '+medicBat.type+'" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,true,true,'+medicBat.id+')"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+                } else {
+                    skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+                }
+            }
+        }
+        // MEDIC
+        let myMedicSkill = checkMedicSkill(bat,batType);
+        if (myMedicSkill === 'medic') {
+            numTargets = numMedicTargets(bat,'infantry',true,true,bat);
+            baseskillCost = calcBaseSkillCost(bat,batType,true,false);
+            apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (numTargets >= 1) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes avec '+medicBat.type+'" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,true,true,'+medicBat.id+')"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,true)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
             } else {
-                skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
+                if (inMelee) {
+                    skillMessage = "Pas de soins en mêlée";
+                } else {
+                    if (numTargets < 1) {
+                        skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
+                    } else if (bat.tags.includes('starka')) {
+                        skillMessage = "Pas de soins avec la drogue Starka";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                }
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
             }
         }
-    }
-    // MEDIC
-    let myMedicSkill = checkMedicSkill(bat,batType);
-    if (myMedicSkill === 'medic') {
-        numTargets = numMedicTargets(bat,'infantry',true,true,bat);
-        baseskillCost = calcBaseSkillCost(bat,batType,true,false);
-        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
-        if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,true)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
-        } else {
-            if (inMelee) {
-                skillMessage = "Pas de soins en mêlée";
+        // BAD MEDIC
+        if (myMedicSkill === 'badmedic') {
+            numTargets = numMedicTargets(bat,'infantry',true,false,bat);
+            baseskillCost = calcBaseSkillCost(bat,batType,true,false);
+            apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+            if (apCost === 0) {apCost = baseskillCost;}
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
             } else {
-                if (numTargets < 1) {
-                    skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
-                } else if (bat.tags.includes('starka')) {
-                    skillMessage = "Pas de soins avec la drogue Starka";
+                if (inMelee) {
+                    skillMessage = "Pas de soins en mêlée";
                 } else {
-                    skillMessage = "Pas assez de PA";
+                    if (numTargets < 1) {
+                        skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
+                    } else if (bat.tags.includes('starka')) {
+                        skillMessage = "Pas de soins avec la drogue Starka";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
                 }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
         }
-    }
-    // BAD MEDIC
-    if (myMedicSkill === 'badmedic') {
-        numTargets = numMedicTargets(bat,'infantry',true,false,bat);
-        baseskillCost = calcBaseSkillCost(bat,batType,true,false);
-        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
-        if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
-        } else {
-            if (inMelee) {
-                skillMessage = "Pas de soins en mêlée";
+        // SELF MEDIC
+        if (myMedicSkill === 'selfmedic') {
+            numTargets = numMedicTargets(bat,'infantry',false,true,bat);
+            baseskillCost = calcBaseSkillCost(bat,batType,true,false);
+            apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+            if (apCost === 0) {apCost = baseskillCost;}
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se soigner" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',false,true)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
             } else {
-                if (numTargets < 1) {
-                    skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
-                } else if (bat.tags.includes('starka')) {
-                    skillMessage = "Pas de soins avec la drogue Starka";
+                if (inMelee) {
+                    skillMessage = "Pas de soins en mêlée";
                 } else {
-                    skillMessage = "Pas assez de PA";
+                    if (numTargets <= 0) {
+                        skillMessage = "Aucun dégâts soignable";
+                    } else if (bat.tags.includes('starka')) {
+                        skillMessage = "Pas de soins avec la drogue Starka";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
                 }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
         }
-    }
-    // SELF MEDIC
-    if (myMedicSkill === 'selfmedic') {
-        numTargets = numMedicTargets(bat,'infantry',false,true,bat);
-        baseskillCost = calcBaseSkillCost(bat,batType,true,false);
-        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
-        if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se soigner" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',false,true)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
-        } else {
-            if (inMelee) {
-                skillMessage = "Pas de soins en mêlée";
+        // FIRST AID (SELF BAD MEDIC)
+        if (myMedicSkill === 'selfbadmedic') {
+            numTargets = numMedicTargets(bat,'infantry',false,false,bat);
+            baseskillCost = calcBaseSkillCost(bat,batType,true,false);
+            apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+            if (apCost === 0) {apCost = baseskillCost;}
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',false,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
+            } else {
+                if (inMelee) {
+                    skillMessage = "Pas de soins en mêlée";
+                } else {
+                    if (numTargets <= 0) {
+                        skillMessage = "Aucun dégâts soignable";
+                    } else if (bat.tags.includes('starka')) {
+                        skillMessage = "Pas de soins avec la drogue Starka";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
+            }
+        }
+        // MECANO
+        let myMecanoSkill = checkMecanoSkill(bat,batType);
+        if (myMecanoSkill === 'mecano') {
+            numTargets = numMedicTargets(bat,'vehicles',true,true,bat);
+            baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+            apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+            if (apCost === 0) {apCost = baseskillCost;}
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,true)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+            } else {
+                if (inMelee) {
+                    skillMessage = "Pas de réparations en mêlée";
+                } else {
+                    if (numTargets < 1) {
+                        skillMessage = "Aucun véhicule adjacent n'a pas subit de dégâts";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+            }
+        }
+        // BAD MECANO
+        if (myMecanoSkill === 'badmecano') {
+            numTargets = numMedicTargets(bat,'vehicles',true,false,bat);
+            baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+            apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+            if (apCost === 0) {apCost = baseskillCost;}
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+            } else {
+                if (inMelee) {
+                    skillMessage = "Pas de réparations en mêlée";
+                } else {
+                    if (numTargets < 1) {
+                        skillMessage = "Aucun véhicule adjacent n'a pas subit de dégâts";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+            }
+        }
+        // SELF BAD MECANO
+        if (myMecanoSkill === 'selfbadmecano') {
+            numTargets = numMedicTargets(bat,'vehicles',false,false,bat);
+            baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+            apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+            if (apCost === 0) {apCost = baseskillCost;}
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Retaper le véhicule" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',false,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
             } else {
                 if (numTargets <= 0) {
-                    skillMessage = "Aucun dégâts soignable";
-                } else if (bat.tags.includes('starka')) {
-                    skillMessage = "Pas de soins avec la drogue Starka";
+                    skillMessage = "Ce véhicule n'a pas subit de dégâts";
+                } else if (inMelee) {
+                    skillMessage = "Pas de réparations en mêlée";
                 } else {
                     skillMessage = "Pas assez de PA";
                 }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
         }
-    }
-    // FIRST AID (SELF BAD MEDIC)
-    if (myMedicSkill === 'selfbadmedic') {
-        numTargets = numMedicTargets(bat,'infantry',false,false,bat);
-        baseskillCost = calcBaseSkillCost(bat,batType,true,false);
-        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
-        if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',false,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
-        } else {
-            if (inMelee) {
-                skillMessage = "Pas de soins en mêlée";
+        // SELF MECANO
+        if (myMecanoSkill === 'selfmecano') {
+            numTargets = numMedicTargets(bat,'vehicles',false,true,bat);
+            baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+            apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+            if (apCost === 0) {apCost = baseskillCost;}
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Retaper le véhicule" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',false,true)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
             } else {
                 if (numTargets <= 0) {
-                    skillMessage = "Aucun dégâts soignable";
-                } else if (bat.tags.includes('starka')) {
-                    skillMessage = "Pas de soins avec la drogue Starka";
+                    skillMessage = "Ce véhicule n'a pas subit de dégâts";
+                } else if (inMelee) {
+                    skillMessage = "Pas de réparations en mêlée";
                 } else {
                     skillMessage = "Pas assez de PA";
                 }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
         }
-    }
-    // MECANO
-    let myMecanoSkill = checkMecanoSkill(bat,batType);
-    if (myMecanoSkill === 'mecano') {
-        numTargets = numMedicTargets(bat,'vehicles',true,true,bat);
-        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
-        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
-        if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,true)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
-        } else {
-            if (inMelee) {
-                skillMessage = "Pas de réparations en mêlée";
+        // REPAIR
+        if (batType.skills.includes('repair')) {
+            numTargets = numMedicTargets(bat,'buildings',true,true,bat);
+            baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+            apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+            if (apCost === 0) {apCost = baseskillCost;}
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les bâtiments adjacents" class="boutonBleu skillButtons" onclick="medic(`buildings`,'+baseskillCost+',true,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
             } else {
-                if (numTargets < 1) {
-                    skillMessage = "Aucun véhicule adjacent n'a pas subit de dégâts";
+                if (inMelee) {
+                    skillMessage = "Pas de réparations en mêlée";
                 } else {
-                    skillMessage = "Pas assez de PA";
+                    if (numTargets < 1) {
+                        skillMessage = "Aucun bâtiment adjacent n'a pas subit de dégâts";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
                 }
-            }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
-        }
-    }
-    // BAD MECANO
-    if (myMecanoSkill === 'badmecano') {
-        numTargets = numMedicTargets(bat,'vehicles',true,false,bat);
-        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
-        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
-        if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
-        } else {
-            if (inMelee) {
-                skillMessage = "Pas de réparations en mêlée";
-            } else {
-                if (numTargets < 1) {
-                    skillMessage = "Aucun véhicule adjacent n'a pas subit de dégâts";
-                } else {
-                    skillMessage = "Pas assez de PA";
-                }
-            }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
-        }
-    }
-    // SELF BAD MECANO
-    if (myMecanoSkill === 'selfbadmecano') {
-        numTargets = numMedicTargets(bat,'vehicles',false,false,bat);
-        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
-        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
-        if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Retaper le véhicule" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',false,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
-        } else {
-            if (numTargets <= 0) {
-                skillMessage = "Ce véhicule n'a pas subit de dégâts";
-            } else if (inMelee) {
-                skillMessage = "Pas de réparations en mêlée";
-            } else {
-                skillMessage = "Pas assez de PA";
-            }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
-        }
-    }
-    // SELF MECANO
-    if (myMecanoSkill === 'selfmecano') {
-        numTargets = numMedicTargets(bat,'vehicles',false,true,bat);
-        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
-        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
-        if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Retaper le véhicule" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',false,true)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
-        } else {
-            if (numTargets <= 0) {
-                skillMessage = "Ce véhicule n'a pas subit de dégâts";
-            } else if (inMelee) {
-                skillMessage = "Pas de réparations en mêlée";
-            } else {
-                skillMessage = "Pas assez de PA";
-            }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
-        }
-    }
-    // REPAIR
-    if (batType.skills.includes('repair')) {
-        numTargets = numMedicTargets(bat,'buildings',true,true,bat);
-        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
-        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
-        if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les bâtiments adjacents" class="boutonBleu skillButtons" onclick="medic(`buildings`,'+baseskillCost+',true,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
-        } else {
-            if (inMelee) {
-                skillMessage = "Pas de réparations en mêlée";
-            } else {
-                if (numTargets < 1) {
-                    skillMessage = "Aucun bâtiment adjacent n'a pas subit de dégâts";
-                } else {
-                    skillMessage = "Pas assez de PA";
-                }
-            }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
-        }
-    }
-    // SELF BAD REPAIR
-    if (batType.skills.includes('selfbadrepair')) {
-        numTargets = numMedicTargets(bat,'buildings',false,false,bat);
-        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
-        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
-        if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment" class="boutonBleu skillButtons" onclick="medic(`all`,'+baseskillCost+',false,false)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
-        } else {
-            if (numTargets <= 0) {
-                skillMessage = "Ce bâtiment n'a pas subit de dégâts";
-            } else if (inMelee) {
-                skillMessage = "Pas de réparations en mêlée";
-            } else {
-                skillMessage = "Pas assez de PA";
-            }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
-        }
-    }
-    // SELF REPAIR
-    if (batType.skills.includes('selfrepair')) {
-        numTargets = numMedicTargets(bat,'buildings',false,true,bat);
-        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
-        apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
-        if (apCost === 0) {apCost = baseskillCost;}
-        if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment" class="boutonBleu skillButtons" onclick="medic(`all`,'+baseskillCost+',false,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
-        } else {
-            if (numTargets <= 0) {
-                skillMessage = "Ce bâtiment n'a pas subit de dégâts";
-            } else if (inMelee) {
-                skillMessage = "Pas de réparations en mêlée";
-            } else {
-                skillMessage = "Pas assez de PA";
-            }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
-        }
-    }
-    // REPAIR DIAG
-    if ((batType.cat === 'buildings' || batType.cat === 'devices') && !batType.skills.includes('nobld') && !batType.skills.includes('norepair') && (bat.damage >= 1 || bat.squadsLeft < batType.squads)) {
-        let repairBat = checkRepairBat(bat.tileId);
-        if (Object.keys(repairBat).length >= 1) {
-            let repairBatType = getBatType(repairBat);
-            apCost = 3;
-            if (repairBat.apLeft >= 1) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment avec '+repairBat.type+' ('+repairBatType.mecanoCost+' AP)" class="boutonBleu skillButtons" onclick="diagRepair('+repairBat.id+')"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
-            } else {
-                skillMessage = "Pas assez de PA";
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+            }
+        }
+        // SELF BAD REPAIR
+        if (batType.skills.includes('selfbadrepair')) {
+            numTargets = numMedicTargets(bat,'buildings',false,false,bat);
+            baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+            apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+            if (apCost === 0) {apCost = baseskillCost;}
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment" class="boutonBleu skillButtons" onclick="medic(`all`,'+baseskillCost+',false,false)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+            } else {
+                if (numTargets <= 0) {
+                    skillMessage = "Ce bâtiment n'a pas subit de dégâts";
+                } else if (inMelee) {
+                    skillMessage = "Pas de réparations en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+            }
+        }
+        // SELF REPAIR
+        if (batType.skills.includes('selfrepair')) {
+            numTargets = numMedicTargets(bat,'buildings',false,true,bat);
+            baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+            apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+            if (apCost === 0) {apCost = baseskillCost;}
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment" class="boutonBleu skillButtons" onclick="medic(`all`,'+baseskillCost+',false,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+            } else {
+                if (numTargets <= 0) {
+                    skillMessage = "Ce bâtiment n'a pas subit de dégâts";
+                } else if (inMelee) {
+                    skillMessage = "Pas de réparations en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+            }
+        }
+        // REPAIR DIAG
+        if ((batType.cat === 'buildings' || batType.cat === 'devices') && !batType.skills.includes('nobld') && !batType.skills.includes('norepair') && (bat.damage >= 1 || bat.squadsLeft < batType.squads)) {
+            let repairBat = checkRepairBat(bat.tileId);
+            if (Object.keys(repairBat).length >= 1) {
+                let repairBatType = getBatType(repairBat);
+                apCost = 3;
+                if (repairBat.apLeft >= 1) {
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment avec '+repairBat.type+' ('+repairBatType.mecanoCost+' AP)" class="boutonBleu skillButtons" onclick="diagRepair('+repairBat.id+')"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+                } else {
+                    skillMessage = "Pas assez de PA";
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+                }
             }
         }
     }
     // DROGUES
-    let allDrugs = checkDrugs(bat);
-    let drug = {};
-    let drugCompOK = false;
-    let drugBldOK = false;
-    let drugCostsOK = false;
-    if (batType.cat === 'infantry') {
-        // STARKA
-        if (allDrugs.includes('starka') || bat.tags.includes('starka')) {
-            drug = getDrugByName('starka');
-            drugCompOK = checkCompReq(drug);
-            drugBldOK = true;
-            if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
-                drugBldOK = false;
-            }
-            drugCostsOK = checkCost(drug.costs);
-            balise = 'h4';
-            if (bat.tags.includes('starka')) {
-                balise = 'h3';
-            }
-            apCost = drug.apCost;
-            let maxStarkaPA = bat.ap+2;
-            let moveDistance = calcDistance(bat.tileId,bat.oldTileId);
-            console.log('moveDistance='+moveDistance);
-            if (!bat.tags.includes('starka') && drugCompOK && drugBldOK && drugCostsOK && moveDistance <= 2) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+bat.ap+' PA, maximum '+maxStarkaPA+' au total" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
-            } else {
+    if (!playerInfos.onShip) {
+        let allDrugs = checkDrugs(bat);
+        let drug = {};
+        let drugCompOK = false;
+        let drugBldOK = false;
+        let drugCostsOK = false;
+        if (batType.cat === 'infantry') {
+            // STARKA
+            if (allDrugs.includes('starka') || bat.tags.includes('starka')) {
+                drug = getDrugByName('starka');
+                drugCompOK = checkCompReq(drug);
+                drugBldOK = true;
+                if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                    drugBldOK = false;
+                }
+                drugCostsOK = checkCost(drug.costs);
+                balise = 'h4';
                 if (bat.tags.includes('starka')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
-                } else if (!drugCompOK) {
-                    skillMessage = "Vous n'avez pas les compétences requises";
-                } else if (!drugBldOK) {
-                    skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
-                } else if (!drugCostsOK) {
-                    skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
-                } else {
-                    skillMessage = "Vous vous êtes déjà trop déplacé ce tour-ci";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
+                apCost = drug.apCost;
+                let maxStarkaPA = bat.ap+2;
+                let moveDistance = calcDistance(bat.tileId,bat.oldTileId);
+                console.log('moveDistance='+moveDistance);
+                if (!bat.tags.includes('starka') && drugCompOK && drugBldOK && drugCostsOK && moveDistance <= 2) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+bat.ap+' PA, maximum '+maxStarkaPA+' au total" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
+                } else {
+                    if (bat.tags.includes('starka')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    } else if (!drugCompOK) {
+                        skillMessage = "Vous n'avez pas les compétences requises";
+                    } else if (!drugBldOK) {
+                        skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
+                    } else if (!drugCostsOK) {
+                        skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                    } else {
+                        skillMessage = "Vous vous êtes déjà trop déplacé ce tour-ci";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
+                }
             }
-        }
-        // KIRIN
-        if (allDrugs.includes('kirin') || bat.tags.includes('kirin')) {
-            drug = getDrugByName('kirin');
-            drugCompOK = checkCompReq(drug);
-            drugBldOK = true;
-            if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
-                drugBldOK = false;
-            }
-            drugCostsOK = checkCost(drug.costs);
-            balise = 'h4';
-            if (bat.tags.includes('kirin')) {
-                balise = 'h3';
-            }
-            apCost = drug.apCost;
-            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('kirin') && drugCompOK && drugBldOK && drugCostsOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Régénération rapide" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
-            } else {
+            // KIRIN
+            if (allDrugs.includes('kirin') || bat.tags.includes('kirin')) {
+                drug = getDrugByName('kirin');
+                drugCompOK = checkCompReq(drug);
+                drugBldOK = true;
+                if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                    drugBldOK = false;
+                }
+                drugCostsOK = checkCost(drug.costs);
+                balise = 'h4';
                 if (bat.tags.includes('kirin')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
-                } else if (!drugCompOK) {
-                    skillMessage = "Vous n'avez pas les compétences requises";
-                } else if (!drugBldOK) {
-                    skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
-                } else if (!drugCostsOK) {
-                    skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
-                } else {
-                    skillMessage = "Pas assez de PA";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
+                apCost = drug.apCost;
+                if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('kirin') && drugCompOK && drugBldOK && drugCostsOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Régénération rapide" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
+                } else {
+                    if (bat.tags.includes('kirin')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    } else if (!drugCompOK) {
+                        skillMessage = "Vous n'avez pas les compétences requises";
+                    } else if (!drugBldOK) {
+                        skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
+                    } else if (!drugCostsOK) {
+                        skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
+                }
             }
-        }
-        // OCTIRON
-        if (allDrugs.includes('octiron') || bat.tags.includes('octiron')) {
-            drug = getDrugByName('octiron');
-            drugCompOK = checkCompReq(drug);
-            drugBldOK = true;
-            if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
-                drugBldOK = false;
-            }
-            drugCostsOK = checkCost(drug.costs);
-            balise = 'h4';
-            if (bat.tags.includes('octiron')) {
-                balise = 'h3';
-            }
-            apCost = drug.apCost;
-            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('octiron') && drugCompOK && drugBldOK && drugCostsOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+2 PA, protection poisons et maladies" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
-            } else {
+            // OCTIRON
+            if (allDrugs.includes('octiron') || bat.tags.includes('octiron')) {
+                drug = getDrugByName('octiron');
+                drugCompOK = checkCompReq(drug);
+                drugBldOK = true;
+                if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                    drugBldOK = false;
+                }
+                drugCostsOK = checkCost(drug.costs);
+                balise = 'h4';
                 if (bat.tags.includes('octiron')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
-                } else if (!drugCompOK) {
-                    skillMessage = "Vous n'avez pas les compétences requises";
-                } else if (!drugBldOK) {
-                    skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
-                } else if (!drugCostsOK) {
-                    skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
-                } else {
-                    skillMessage = "Pas assez de PA";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
+                apCost = drug.apCost;
+                if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('octiron') && drugCompOK && drugBldOK && drugCostsOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+2 PA, protection poisons et maladies" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
+                } else {
+                    if (bat.tags.includes('octiron')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    } else if (!drugCompOK) {
+                        skillMessage = "Vous n'avez pas les compétences requises";
+                    } else if (!drugBldOK) {
+                        skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
+                    } else if (!drugCostsOK) {
+                        skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
+                }
             }
-        }
-        // BLISS
-        if (allDrugs.includes('bliss') || bat.tags.includes('bliss')) {
-            drug = getDrugByName('bliss');
-            drugCompOK = checkCompReq(drug);
-            drugBldOK = true;
-            if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
-                drugBldOK = false;
-            }
-            drugCostsOK = checkCost(drug.costs);
-            balise = 'h4';
-            if (bat.tags.includes('bliss')) {
-                balise = 'h3';
-            }
-            apCost = drug.apCost;
-            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('bliss') && drugCompOK && drugBldOK && drugCostsOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Dégâts reçus réduits / immunisé à la peur" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
-            } else {
+            // BLISS
+            if (allDrugs.includes('bliss') || bat.tags.includes('bliss')) {
+                drug = getDrugByName('bliss');
+                drugCompOK = checkCompReq(drug);
+                drugBldOK = true;
+                if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                    drugBldOK = false;
+                }
+                drugCostsOK = checkCost(drug.costs);
+                balise = 'h4';
                 if (bat.tags.includes('bliss')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
-                } else if (!drugCompOK) {
-                    skillMessage = "Vous n'avez pas les compétences requises";
-                } else if (!drugBldOK) {
-                    skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
-                } else if (!drugCostsOK) {
-                    skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
-                } else {
-                    skillMessage = "Pas assez de PA";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
+                apCost = drug.apCost;
+                if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('bliss') && drugCompOK && drugBldOK && drugCostsOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Dégâts reçus réduits / immunisé à la peur" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
+                } else {
+                    if (bat.tags.includes('bliss')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    } else if (!drugCompOK) {
+                        skillMessage = "Vous n'avez pas les compétences requises";
+                    } else if (!drugBldOK) {
+                        skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
+                    } else if (!drugCostsOK) {
+                        skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
+                }
             }
-        }
-        // SILA
-        if (allDrugs.includes('sila') || bat.tags.includes('sila')) {
-            drug = getDrugByName('sila');
-            drugCompOK = checkCompReq(drug);
-            drugBldOK = true;
-            if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
-                drugBldOK = false;
-            }
-            drugCostsOK = checkCost(drug.costs);
-            balise = 'h4';
-            if (bat.tags.includes('sila')) {
-                balise = 'h3';
-            }
-            apCost = drug.apCost;
-            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('sila') && drugCompOK && drugBldOK && drugCostsOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+5 puissance aux armes de mêlée" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
-            } else {
+            // SILA
+            if (allDrugs.includes('sila') || bat.tags.includes('sila')) {
+                drug = getDrugByName('sila');
+                drugCompOK = checkCompReq(drug);
+                drugBldOK = true;
+                if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                    drugBldOK = false;
+                }
+                drugCostsOK = checkCost(drug.costs);
+                balise = 'h4';
                 if (bat.tags.includes('sila')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
-                } else if (!drugCompOK) {
-                    skillMessage = "Vous n'avez pas les compétences requises";
-                } else if (!drugBldOK) {
-                    skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
-                } else if (!drugCostsOK) {
-                    skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
-                } else {
-                    skillMessage = "Pas assez de PA";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
+                apCost = drug.apCost;
+                if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('sila') && drugCompOK && drugBldOK && drugCostsOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+5 puissance aux armes de mêlée" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
+                } else {
+                    if (bat.tags.includes('sila')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    } else if (!drugCompOK) {
+                        skillMessage = "Vous n'avez pas les compétences requises";
+                    } else if (!drugBldOK) {
+                        skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
+                    } else if (!drugCostsOK) {
+                        skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
+                }
             }
-        }
-        // SKUPIAC
-        if (allDrugs.includes('skupiac') || bat.tags.includes('skupiac')) {
-            drug = getDrugByName('skupiac');
-            drugCompOK = checkCompReq(drug);
-            drugBldOK = true;
-            if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
-                drugBldOK = false;
-            }
-            drugCostsOK = checkCost(drug.costs);
-            balise = 'h4';
-            if (bat.tags.includes('skupiac')) {
-                balise = 'h3';
-            }
-            apCost = drug.apCost;
-            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('skupiac') && drugCompOK && drugBldOK && drugCostsOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Concentration: +6 précision / +3 défense / guérit les maladies" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</'+balise+'></span>');
-            } else {
+            // SKUPIAC
+            if (allDrugs.includes('skupiac') || bat.tags.includes('skupiac')) {
+                drug = getDrugByName('skupiac');
+                drugCompOK = checkCompReq(drug);
+                drugBldOK = true;
+                if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                    drugBldOK = false;
+                }
+                drugCostsOK = checkCost(drug.costs);
+                balise = 'h4';
                 if (bat.tags.includes('skupiac')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
-                } else if (!drugCompOK) {
-                    skillMessage = "Vous n'avez pas les compétences requises";
-                } else if (!drugBldOK) {
-                    skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
-                } else if (!drugCostsOK) {
-                    skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
-                } else {
-                    skillMessage = "Pas assez de PA";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</'+balise+'></span>');
+                apCost = drug.apCost;
+                if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('skupiac') && drugCompOK && drugBldOK && drugCostsOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Concentration: +6 précision / +3 défense / guérit les maladies" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</'+balise+'></span>');
+                } else {
+                    if (bat.tags.includes('skupiac')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    } else if (!drugCompOK) {
+                        skillMessage = "Vous n'avez pas les compétences requises";
+                    } else if (!drugBldOK) {
+                        skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
+                    } else if (!drugCostsOK) {
+                        skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</'+balise+'></span>');
+                }
             }
-        }
-        // BLAZE
-        if (allDrugs.includes('blaze') || bat.tags.includes('blaze')) {
-            drug = getDrugByName('blaze');
-            drugCompOK = checkCompReq(drug);
-            drugBldOK = true;
-            if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
-                drugBldOK = false;
-            }
-            drugCostsOK = checkCost(drug.costs);
-            balise = 'h4';
-            if (bat.tags.includes('blaze')) {
-                balise = 'h3';
-            }
-            apCost = drug.apCost;
-            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('blaze') && drugCompOK && drugBldOK && drugCostsOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+6 PA & +1 salve" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</'+balise+'></span>');
-            } else {
+            // BLAZE
+            if (allDrugs.includes('blaze') || bat.tags.includes('blaze')) {
+                drug = getDrugByName('blaze');
+                drugCompOK = checkCompReq(drug);
+                drugBldOK = true;
+                if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                    drugBldOK = false;
+                }
+                drugCostsOK = checkCost(drug.costs);
+                balise = 'h4';
                 if (bat.tags.includes('blaze')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
-                } else if (!drugCompOK) {
-                    skillMessage = "Vous n'avez pas les compétences requises";
-                } else if (!drugBldOK) {
-                    skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
-                } else if (!drugCostsOK) {
-                    skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
-                } else {
-                    skillMessage = "Pas assez de PA";
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</'+balise+'></span>');
+                apCost = drug.apCost;
+                if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('blaze') && drugCompOK && drugBldOK && drugCostsOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+6 PA & +1 salve" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</'+balise+'></span>');
+                } else {
+                    if (bat.tags.includes('blaze')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    } else if (!drugCompOK) {
+                        skillMessage = "Vous n'avez pas les compétences requises";
+                    } else if (!drugBldOK) {
+                        skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
+                    } else if (!drugCostsOK) {
+                        skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</'+balise+'></span>');
+                }
             }
         }
-    }
-    if ((batType.cat === 'vehicles' && !batType.skills.includes('emoteur')) || batType.skills.includes('oknitro')) {
-        // NITRO
-        if (allDrugs.includes('nitro') || bat.tags.includes('nitro')) {
-            drug = getDrugByName('nitro');
-            drugCompOK = checkCompReq(drug);
-            drugBldOK = true;
-            if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
-                drugBldOK = false;
-            }
-            drugCostsOK = checkCost(drug.costs);
-            balise = 'h4';
-            if (bat.tags.includes('nitro')) {
-                balise = 'h3';
-            }
-            apCost = drug.apCost;
-            let maxNitroPA = bat.ap+1;
-            let nitroPA = Math.round(bat.ap/3);
-            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('nitro') && drugCompOK && drugBldOK && drugCostsOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+nitroPA+' PA, maximum '+maxNitroPA+' et minimum 1" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
-            } else {
-                if (bat.tags.includes('nitro')) {
-                    skillMessage = "Déjà sous l'effet de cette drogue";
-                } else if (!drugCompOK) {
-                    skillMessage = "Vous n'avez pas les compétences requises";
-                } else if (!drugBldOK) {
-                    skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
-                } else if (!drugCostsOK) {
-                    skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
-                } else {
-                    skillMessage = "Pas assez de PA";
+        if ((batType.cat === 'vehicles' && !batType.skills.includes('emoteur')) || batType.skills.includes('oknitro')) {
+            // NITRO
+            if (allDrugs.includes('nitro') || bat.tags.includes('nitro')) {
+                drug = getDrugByName('nitro');
+                drugCompOK = checkCompReq(drug);
+                drugBldOK = true;
+                if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                    drugBldOK = false;
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
+                drugCostsOK = checkCost(drug.costs);
+                balise = 'h4';
+                if (bat.tags.includes('nitro')) {
+                    balise = 'h3';
+                }
+                apCost = drug.apCost;
+                let maxNitroPA = bat.ap+1;
+                let nitroPA = Math.round(bat.ap/3);
+                if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('nitro') && drugCompOK && drugBldOK && drugCostsOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+nitroPA+' PA, maximum '+maxNitroPA+' et minimum 1" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
+                } else {
+                    if (bat.tags.includes('nitro')) {
+                        skillMessage = "Déjà sous l'effet de cette drogue";
+                    } else if (!drugCompOK) {
+                        skillMessage = "Vous n'avez pas les compétences requises";
+                    } else if (!drugBldOK) {
+                        skillMessage = "Vous n'avez pas le bâtiment requis: "+drug.bldReq[0];
+                    } else if (!drugCostsOK) {
+                        skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
+                }
             }
         }
     }
     // EXTRACTION
-    if (batType.skills.includes('extraction')) {
+    if (batType.skills.includes('extraction') && !playerInfos.onShip) {
         let extractOK = false;
         if (bat.extracted !== undefined) {
             if (bat.extracted.length >= 1) {
@@ -868,248 +869,252 @@ function skillsInfos(bat,batType) {
         }
     }
     // ACTIVATION
-    if (batType.skills.includes('prodres') || batType.skills.includes('geo') || batType.skills.includes('solar')) {
-        balise = 'h1';
-        if (bat.tags.includes('prodres')) {
-            balise = 'h3';
-        }
-        let upkeepCosts = '{aucun}';
-        if (batType.upkeep != undefined) {
-            upkeepCosts = toCoolString(batType.upkeep);
-        }
-        apCost = 0;
-        if (!bat.tags.includes('prodres')) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lancer la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Désactivé</'+balise+'></span>');
-        } else {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Activé</'+balise+'></span>');
+    if (!playerInfos.onShip) {
+        if (batType.skills.includes('prodres') || batType.skills.includes('geo') || batType.skills.includes('solar')) {
+            balise = 'h1';
+            if (bat.tags.includes('prodres')) {
+                balise = 'h3';
+            }
+            let upkeepCosts = '{aucun}';
+            if (batType.upkeep != undefined) {
+                upkeepCosts = toCoolString(batType.upkeep);
+            }
+            apCost = 0;
+            if (!bat.tags.includes('prodres')) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lancer la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Désactivé</'+balise+'></span>');
+            } else {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Activé</'+balise+'></span>');
+            }
         }
     }
     let trapType;
     let trapCostOK;
-    // POSE PIEGES
-    if (batType.skills.includes('trapfosse')) {
-        freeConsTile = checkFreeConsTile(bat);
-        if (freeConsTile) {
-            let minesLeft = calcRavit(bat);
-            balise = 'h4';
-            if (Object.keys(conselUnit).length >= 1) {
-                balise = 'h3';
-            }
-            trapType = getBatTypeByName('Fosses');
-            trapCostOK = checkCost(trapType.costs);
-            apCost = Math.round(bat.ap*1.5);
-            if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-fosse`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fosses</'+balise+'></span>');
-            } else {
-                if (minesLeft <= 0) {
-                    skillMessage = "Plus de pièges";
-                } else if (!trapCostOK) {
-                    skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                } else if (inMelee) {
-                    skillMessage = "Ne peut pas se faire en mêlée";
-                } else {
-                    skillMessage = "Pas assez de PA";
+    if (!playerInfos.onShip) {
+        // POSE PIEGES
+        if (batType.skills.includes('trapfosse')) {
+            freeConsTile = checkFreeConsTile(bat);
+            if (freeConsTile) {
+                let minesLeft = calcRavit(bat);
+                balise = 'h4';
+                if (Object.keys(conselUnit).length >= 1) {
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fosses</h4></span>');
+                trapType = getBatTypeByName('Fosses');
+                trapCostOK = checkCost(trapType.costs);
+                apCost = Math.round(bat.ap*1.5);
+                if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-fosse`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fosses</'+balise+'></span>');
+                } else {
+                    if (minesLeft <= 0) {
+                        skillMessage = "Plus de pièges";
+                    } else if (!trapCostOK) {
+                        skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
+                    } else if (inMelee) {
+                        skillMessage = "Ne peut pas se faire en mêlée";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fosses</h4></span>');
+                }
             }
         }
-    }
-    if (batType.skills.includes('trapap') || bat.eq === 'kit-sentinelle') {
-        freeConsTile = checkFreeConsTile(bat);
-        if (freeConsTile) {
-            let minesLeft = calcRavit(bat);
-            balise = 'h4';
-            if (Object.keys(conselUnit).length >= 1) {
-                balise = 'h3';
-            }
-            trapType = getBatTypeByName('Pièges');
-            trapCostOK = checkCost(trapType.costs);
-            apCost = Math.round(bat.ap*1.25);
-            apReq = Math.round(bat.ap/1.5);
-            if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-ap`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Pièges</'+balise+'></span>');
-            } else {
-                if (minesLeft <= 0) {
-                    skillMessage = "Plus de pièges";
-                } else if (!trapCostOK) {
-                    skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                } else if (inMelee) {
-                    skillMessage = "Ne peut pas se faire en mêlée";
-                } else {
-                    skillMessage = "Pas assez de PA";
+        if (batType.skills.includes('trapap') || bat.eq === 'kit-sentinelle') {
+            freeConsTile = checkFreeConsTile(bat);
+            if (freeConsTile) {
+                let minesLeft = calcRavit(bat);
+                balise = 'h4';
+                if (Object.keys(conselUnit).length >= 1) {
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Pièges</h4></span>');
+                trapType = getBatTypeByName('Pièges');
+                trapCostOK = checkCost(trapType.costs);
+                apCost = Math.round(bat.ap*1.25);
+                apReq = Math.round(bat.ap/1.5);
+                if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-ap`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Pièges</'+balise+'></span>');
+                } else {
+                    if (minesLeft <= 0) {
+                        skillMessage = "Plus de pièges";
+                    } else if (!trapCostOK) {
+                        skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
+                    } else if (inMelee) {
+                        skillMessage = "Ne peut pas se faire en mêlée";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Pièges</h4></span>');
+                }
             }
         }
-    }
-    if (batType.skills.includes('trapdard')) {
-        freeConsTile = checkFreeConsTile(bat);
-        if (freeConsTile) {
-            let minesLeft = calcRavit(bat);
-            balise = 'h4';
-            if (Object.keys(conselUnit).length >= 1) {
-                balise = 'h3';
-            }
-            trapType = getBatTypeByName('Dardières');
-            trapCostOK = checkCost(trapType.costs);
-            apCost = Math.round(bat.ap*1.25);
-            apReq = Math.round(bat.ap/1.5);
-            if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-dard`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dardières</'+balise+'></span>');
-            } else {
-                if (minesLeft <= 0) {
-                    skillMessage = "Plus de pièges";
-                } else if (!trapCostOK) {
-                    skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                } else if (inMelee) {
-                    skillMessage = "Ne peut pas se faire en mêlée";
-                } else {
-                    skillMessage = "Pas assez de PA";
+        if (batType.skills.includes('trapdard')) {
+            freeConsTile = checkFreeConsTile(bat);
+            if (freeConsTile) {
+                let minesLeft = calcRavit(bat);
+                balise = 'h4';
+                if (Object.keys(conselUnit).length >= 1) {
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dardières</h4></span>');
+                trapType = getBatTypeByName('Dardières');
+                trapCostOK = checkCost(trapType.costs);
+                apCost = Math.round(bat.ap*1.25);
+                apReq = Math.round(bat.ap/1.5);
+                if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-dard`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dardières</'+balise+'></span>');
+                } else {
+                    if (minesLeft <= 0) {
+                        skillMessage = "Plus de pièges";
+                    } else if (!trapCostOK) {
+                        skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
+                    } else if (inMelee) {
+                        skillMessage = "Ne peut pas se faire en mêlée";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dardières</h4></span>');
+                }
             }
         }
-    }
-    // POSE CHAMP DE MINES
-    if (batType.skills.includes('landmine')) {
-        freeConsTile = checkFreeConsTile(bat);
-        if (freeConsTile) {
-            let minesLeft = calcRavit(bat);
-            balise = 'h4';
-            if (Object.keys(conselUnit).length >= 1) {
-                balise = 'h3';
-            }
-            trapType = getBatTypeByName('Champ de mines');
-            trapCostOK = checkCost(trapType.costs);
-            apCost = Math.round(bat.ap*1.5);
-            apReq = Math.round(bat.ap/1.5);
-            if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');
-            } else {
-                if (minesLeft <= 0) {
-                    skillMessage = "Plus de mines";
-                } else if (!trapCostOK) {
-                    skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                } else if (inMelee) {
-                    skillMessage = "Ne peut pas se faire en mêlée";
-                } else {
-                    skillMessage = "Pas assez de PA";
+        // POSE CHAMP DE MINES
+        if (batType.skills.includes('landmine')) {
+            freeConsTile = checkFreeConsTile(bat);
+            if (freeConsTile) {
+                let minesLeft = calcRavit(bat);
+                balise = 'h4';
+                if (Object.keys(conselUnit).length >= 1) {
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</h4></span>');
+                trapType = getBatTypeByName('Champ de mines');
+                trapCostOK = checkCost(trapType.costs);
+                apCost = Math.round(bat.ap*1.5);
+                apReq = Math.round(bat.ap/1.5);
+                if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');
+                } else {
+                    if (minesLeft <= 0) {
+                        skillMessage = "Plus de mines";
+                    } else if (!trapCostOK) {
+                        skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
+                    } else if (inMelee) {
+                        skillMessage = "Ne peut pas se faire en mêlée";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</h4></span>');
+                }
             }
         }
-    }
-    // POSE DYNAMITE
-    if (batType.skills.includes('dynamite')) {
-        freeConsTile = checkFreeConsTile(bat);
-        if (freeConsTile) {
-            let minesLeft = calcRavit(bat);
-            balise = 'h4';
-            if (Object.keys(conselUnit).length >= 1) {
-                balise = 'h3';
-            }
-            trapType = getBatTypeByName('Explosifs');
-            trapCostOK = checkCost(trapType.costs);
-            apCost = Math.round(bat.ap);
-            apReq = Math.round(bat.ap/1.5);
-            if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des explosifs '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`dynamite`)"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</'+balise+'></span>');
-            } else {
-                if (minesLeft <= 0) {
-                    skillMessage = "Plus de mines";
-                } else if (!trapCostOK) {
-                    skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                } else if (inMelee) {
-                    skillMessage = "Ne peut pas se faire en mêlée";
-                } else {
-                    skillMessage = "Pas assez de PA";
+        // POSE DYNAMITE
+        if (batType.skills.includes('dynamite')) {
+            freeConsTile = checkFreeConsTile(bat);
+            if (freeConsTile) {
+                let minesLeft = calcRavit(bat);
+                balise = 'h4';
+                if (Object.keys(conselUnit).length >= 1) {
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</h4></span>');
+                trapType = getBatTypeByName('Explosifs');
+                trapCostOK = checkCost(trapType.costs);
+                apCost = Math.round(bat.ap);
+                apReq = Math.round(bat.ap/1.5);
+                if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des explosifs '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`dynamite`)"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</'+balise+'></span>');
+                } else {
+                    if (minesLeft <= 0) {
+                        skillMessage = "Plus de mines";
+                    } else if (!trapCostOK) {
+                        skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
+                    } else if (inMelee) {
+                        skillMessage = "Ne peut pas se faire en mêlée";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</h4></span>');
+                }
             }
         }
-    }
-    // POSE BARBELES
-    if (batType.skills.includes('constructeur')) {
-        freeConsTile = checkFreeConsTile(bat);
-        if (freeConsTile) {
-            let barbLeft = calcRavit(bat);
-            balise = 'h4';
-            if (Object.keys(conselUnit).length >= 1) {
-                balise = 'h3';
-            }
-            apCost = Math.ceil(batType.mecanoCost/4);
-            let apCost2 = Math.ceil(batType.mecanoCost/1.5);
-            apReq = Math.ceil(batType.mecanoCost/4);
-            if (barbLeft >= 1 && bat.apLeft >= apReq && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><span id="barbButtons"></span>&nbsp; Barbelés</'+balise+'></span>');
-                $('#barbButtons').empty();
-                let barbType = getBatTypeByName('Barbelés (scrap)');
-                let barbCostOK = checkCost(barbType.costs);
-                if (barbCostOK) {
-                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (scrap) '+displayCosts(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-scrap`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
-                } else {
-                    skillMessage = "Pas assez de ressources "+displayCosts(barbType.costs);
-                    $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+        // POSE BARBELES
+        if (batType.skills.includes('constructeur')) {
+            freeConsTile = checkFreeConsTile(bat);
+            if (freeConsTile) {
+                let barbLeft = calcRavit(bat);
+                balise = 'h4';
+                if (Object.keys(conselUnit).length >= 1) {
+                    balise = 'h3';
                 }
-                barbType = getBatTypeByName('Barbelés');
-                barbCostOK = checkCost(barbType.costs);
-                if (barbCostOK) {
-                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (acier) '+displayCosts(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-fer`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
-                } else {
-                    skillMessage = "Pas assez de ressources "+displayCosts(barbType.costs);
-                    $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
-                }
-                barbType = getBatTypeByName('Barbelés (taser)');
-                barbCostOK = checkCost(barbType.costs);
-                if (barbCostOK && playerInfos.bldList.includes('Générateur')) {
-                    $('#barbButtons').append('<button type="button" title="Déposer des barbelés (taser) '+displayCosts(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost2+',`barb-taser`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
-                } else {
-                    if (!playerInfos.bldList.includes('Générateur')) {
-                        skillMessage = "Vous avez besoin de Générateurs";
+                apCost = Math.ceil(batType.mecanoCost/4);
+                let apCost2 = Math.ceil(batType.mecanoCost/1.5);
+                apReq = Math.ceil(batType.mecanoCost/4);
+                if (barbLeft >= 1 && bat.apLeft >= apReq && !inMelee) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><span id="barbButtons"></span>&nbsp; Barbelés</'+balise+'></span>');
+                    $('#barbButtons').empty();
+                    let barbType = getBatTypeByName('Barbelés (scrap)');
+                    let barbCostOK = checkCost(barbType.costs);
+                    if (barbCostOK) {
+                        $('#barbButtons').append('<button type="button" title="Déposer des barbelés (scrap) '+displayCosts(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-scrap`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                     } else {
                         skillMessage = "Pas assez de ressources "+displayCosts(barbType.costs);
+                        $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                     }
-                    $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
-                }
-            } else {
-                if (barbLeft <= 0) {
-                    skillMessage = "Plus de barbelés";
-                } else if (inMelee) {
-                    skillMessage = "Ne peut pas se faire en mêlée";
+                    barbType = getBatTypeByName('Barbelés');
+                    barbCostOK = checkCost(barbType.costs);
+                    if (barbCostOK) {
+                        $('#barbButtons').append('<button type="button" title="Déposer des barbelés (acier) '+displayCosts(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-fer`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                    } else {
+                        skillMessage = "Pas assez de ressources "+displayCosts(barbType.costs);
+                        $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                    }
+                    barbType = getBatTypeByName('Barbelés (taser)');
+                    barbCostOK = checkCost(barbType.costs);
+                    if (barbCostOK && playerInfos.bldList.includes('Générateur')) {
+                        $('#barbButtons').append('<button type="button" title="Déposer des barbelés (taser) '+displayCosts(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost2+',`barb-taser`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                    } else {
+                        if (!playerInfos.bldList.includes('Générateur')) {
+                            skillMessage = "Vous avez besoin de Générateurs";
+                        } else {
+                            skillMessage = "Pas assez de ressources "+displayCosts(barbType.costs);
+                        }
+                        $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                    }
                 } else {
-                    skillMessage = "Pas assez de PA";
+                    if (barbLeft <= 0) {
+                        skillMessage = "Plus de barbelés";
+                    } else if (inMelee) {
+                        skillMessage = "Ne peut pas se faire en mêlée";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Barbelés</h4></span>');
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Barbelés</h4></span>');
             }
         }
-    }
-    // POSE COFFRES
-    if (batType.skills.includes('conscont')) {
-        freeConsTile = checkFreeConsTile(bat);
-        if (freeConsTile) {
-            balise = 'h4';
-            if (Object.keys(conselUnit).length >= 1) {
-                balise = 'h3';
-            }
-            trapType = getBatTypeByName('Coffres');
-            trapCostOK = checkCost(trapType.costs);
-            apCost = 8;
-            if (bat.apLeft >= bat.ap-3 && !inMelee && trapCostOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Construire des coffres '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`coffre`)"><i class="fas fa-box-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Coffres</'+balise+'></span>');
-            } else {
-                if (!trapCostOK) {
-                    skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                } else if (inMelee) {
-                    skillMessage = "Ne peut pas se faire en mêlée";
-                } else {
-                    skillMessage = "Pas assez de PA";
+        // POSE COFFRES
+        if (batType.skills.includes('conscont')) {
+            freeConsTile = checkFreeConsTile(bat);
+            if (freeConsTile) {
+                balise = 'h4';
+                if (Object.keys(conselUnit).length >= 1) {
+                    balise = 'h3';
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-box-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Coffres</h4></span>');
+                trapType = getBatTypeByName('Coffres');
+                trapCostOK = checkCost(trapType.costs);
+                apCost = 8;
+                if (bat.apLeft >= bat.ap-3 && !inMelee && trapCostOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Construire des coffres '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`coffre`)"><i class="fas fa-box-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Coffres</'+balise+'></span>');
+                } else {
+                    if (!trapCostOK) {
+                        skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
+                    } else if (inMelee) {
+                        skillMessage = "Ne peut pas se faire en mêlée";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-box-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Coffres</h4></span>');
+                }
             }
         }
     }
     // ROUTES / PONTS
-    if (batType.skills.includes('routes')) {
+    if (batType.skills.includes('routes') && !playerInfos.onShip) {
         if (!tile.rd) {
             apCost = Math.round(batType.mecanoCost*terrain.roadBuild*roadAPCost/30);
             apReq = Math.ceil(apCost/10);
@@ -1134,7 +1139,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // INFRASTRUCTURE
-    if (batType.skills.includes('constructeur')) {
+    if (batType.skills.includes('constructeur') && !playerInfos.onShip) {
         if (tile.terrain != 'W' && tile.terrain != 'R') {
             apReq = batType.mecanoCost;
             if (apReq > bat.ap-3) {
@@ -1261,7 +1266,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // DEMANTELEMENT INFRA
-    if (batType.skills.includes('constructeur')) {
+    if (batType.skills.includes('constructeur') && !playerInfos.onShip) {
         if (tile.infra != undefined) {
             if (tile.infra === 'Miradors' || tile.infra === 'Palissades' || tile.infra === 'Remparts' || tile.infra === 'Murailles') {
                 let infra = getInfraByName(tile.infra);
@@ -1361,25 +1366,34 @@ function skillsInfos(bat,batType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-user-shield"></i> <span class="small">'+apReq+'</span></button>&nbsp; Rééquiper</h4></span>');
         }
     }
-    // FOUILLE DE RUINES
-    if ((batType.skills.includes('fouille') || (batType.skills.includes('aifouille') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) && tile.ruins && tile.sh >= 1) {
-        apReq = 5;
-        apCost = Math.round(1250/bat.squadsLeft/batType.squadSize/batType.crew);
-        if (batType.cat === 'infantry' && !batType.skills.includes('moto') && !batType.skills.includes('fly')) {
-            apCost = Math.floor(apCost/bat.ap*11);
-        }
-        if (apCost > bat.ap*1.5 || batType.skills.includes('moto') || batType.skills.includes('fly')) {
-            apCost = Math.round(bat.ap*1.5);
-        }
-        if (bat.apLeft >= apReq && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Fouiller les ruines" class="boutonCaca skillButtons" onclick="searchRuins('+apCost+')"><i class="fas fa-search"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fouille</h4></span>');
+    if (playerInfos.onShip) {
+        if (bat.locId === souteId) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Charger le bataillon dans le lander" class="boutonMarine bigButtons" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
         } else {
-            if (inMelee) {
-                skillMessage = "Ne peut pas se faire en mêlée";
-            } else {
-                skillMessage = "Pas assez de PA";
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Renvoyer le bataillon dans la soute" class="boutonMarine bigButtons" onclick="batUndeploy('+bat.id+')"><i class="fas fa-sign-out-alt fa-flip-horizontal"></i></button>&nbsp; Renvoyer</h4></span>');
+        }
+    }
+    // FOUILLE DE RUINES
+    if (!playerInfos.onShip) {
+        if ((batType.skills.includes('fouille') || (batType.skills.includes('aifouille') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) && tile.ruins && tile.sh >= 1) {
+            apReq = 5;
+            apCost = Math.round(1250/bat.squadsLeft/batType.squadSize/batType.crew);
+            if (batType.cat === 'infantry' && !batType.skills.includes('moto') && !batType.skills.includes('fly')) {
+                apCost = Math.floor(apCost/bat.ap*11);
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-search"></i> <span class="small">'+apReq+'</span></button>&nbsp; Fouille</h4></span>');
+            if (apCost > bat.ap*1.5 || batType.skills.includes('moto') || batType.skills.includes('fly')) {
+                apCost = Math.round(bat.ap*1.5);
+            }
+            if (bat.apLeft >= apReq && !inMelee) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Fouiller les ruines" class="boutonCaca skillButtons" onclick="searchRuins('+apCost+')"><i class="fas fa-search"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fouille</h4></span>');
+            } else {
+                if (inMelee) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-search"></i> <span class="small">'+apReq+'</span></button>&nbsp; Fouille</h4></span>');
+            }
         }
     }
     // CHARGER RESSOURCES

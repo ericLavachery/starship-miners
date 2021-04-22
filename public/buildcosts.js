@@ -161,13 +161,7 @@ function payDeployCosts(unit,ammoNames) {
     let ammoIndex;
     let batAmmo;
     // Ammo W1
-    let hasW1 = false;
-    if (!conselUnit.weapon.kit || conselAmmos[3].includes('w1-') || conselAmmos[3].includes('w2-')) {
-        hasW1 = true;
-    }
-    if (conselAmmos[3] === 'w2-magnum' || conselAmmos[3] === 'w2-pplasma') {
-        hasW1 = false;
-    }
+    let hasW1 = checkHasWeapon(1,unit,ammoNames[3]);
     if (ammoNames[0] != 'xxx' && hasW1) {
         ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
         batAmmo = ammoTypes[ammoIndex];
@@ -175,10 +169,7 @@ function payDeployCosts(unit,ammoNames) {
         payCost(deployCosts);
     }
     // Ammo W2
-    let hasW2 = false;
-    if (!conselUnit.weapon2.kit || conselAmmos[3].includes('kit-') || conselAmmos[3].includes('w2-')) {
-        hasW2 = true;
-    }
+    let hasW2 = checkHasWeapon(2,unit,ammoNames[3]);
     if (ammoNames[1] != 'xxx' && hasW2) {
         ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoNames[1]));
         batAmmo = ammoTypes[ammoIndex];
@@ -210,13 +201,7 @@ function payFlatCosts(unit,ammoNames) {
     let index;
     let batAmmo;
     // Ammo W1
-    let hasW1 = false;
-    if (!conselUnit.weapon.kit || conselAmmos[3].includes('w1-') || conselAmmos[3].includes('w2-')) {
-        hasW1 = true;
-    }
-    if (conselAmmos[3] === 'w2-magnum' || conselAmmos[3] === 'w2-pplasma') {
-        hasW1 = false;
-    }
+    let hasW1 = checkHasWeapon(1,conselUnit,conselAmmos[3]);
     if (ammoNames[0] != 'xxx' && hasW1) {
         index = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
         batAmmo = ammoTypes[index];
@@ -224,10 +209,7 @@ function payFlatCosts(unit,ammoNames) {
         payCost(costs);
     }
     // Ammo W2
-    let hasW2 = false;
-    if (!conselUnit.weapon2.kit || conselAmmos[3].includes('kit-') || conselAmmos[3].includes('w2-')) {
-        hasW2 = true;
-    }
+    let hasW2 = checkHasWeapon(2,conselUnit,conselAmmos[3]);
     if (ammoNames[1] != 'xxx' && hasW2) {
         index = ammoTypes.findIndex((obj => obj.name == ammoNames[1]));
         batAmmo = ammoTypes[index];
@@ -797,12 +779,7 @@ function calcAllCosts(unit,ammoNames,withDeploy,withFlat) {
     let hasW1 = false;
     let hasW2 = false;
     if (withFlat) {
-        if (!unit.weapon.kit || ammoNames[3].includes('w1-') || ammoNames[3].includes('w2-')) {
-            hasW1 = true;
-        }
-        if (ammoNames[3] === 'w2-magnum' || ammoNames[3] === 'w2-pplasma') {
-            hasW1 = false;
-        }
+        hasW1 = checkHasWeapon(1,unit,ammoNames[3]);
         if (hasW1) {
             if (ammoNames[0] != 'xxx') {
                 index = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
@@ -819,9 +796,7 @@ function calcAllCosts(unit,ammoNames,withDeploy,withFlat) {
             }
         }
         // Ammo W2
-        if (!unit.weapon2.kit || ammoNames[3].includes('kit-') || ammoNames[3].includes('w2-')) {
-            hasW2 = true;
-        }
+        hasW2 = checkHasWeapon(2,unit,ammoNames[3]);
         if (hasW2) {
             if (ammoNames[1] != 'xxx') {
                 index = ammoTypes.findIndex((obj => obj.name == ammoNames[1]));
@@ -870,6 +845,7 @@ function calcAllCosts(unit,ammoNames,withDeploy,withFlat) {
     let deployCosts;
     if (withDeploy) {
         // Ammo W1
+        hasW1 = checkHasWeapon(1,unit,ammoNames[3]);
         if (hasW1) {
             if (ammoNames[0] != 'xxx') {
                 index = ammoTypes.findIndex((obj => obj.name == ammoNames[0]));
@@ -885,6 +861,7 @@ function calcAllCosts(unit,ammoNames,withDeploy,withFlat) {
             }
         }
         // Ammo W2
+        hasW2 = checkHasWeapon(2,unit,ammoNames[3]);
         if (hasW2) {
             if (ammoNames[1] != 'xxx') {
                 index = ammoTypes.findIndex((obj => obj.name == ammoNames[1]));
