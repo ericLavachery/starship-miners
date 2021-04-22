@@ -12,8 +12,8 @@ function skillsInfos(bat,batType) {
     let hasW1 = checkHasWeapon(1,batType,bat.eq);
     let hasW2 = checkHasWeapon(2,batType,bat.eq);
     console.log('inMelee='+inMelee);
-    if (batType.skills.includes('soute') && playerInfos.onShip) {
-        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déployer vos bataillons pour une nouvelle mission" class="boutonMarine bigButtons" onclick="goSoute()"><i class="fas fa-warehouse"></i></button>&nbsp;  Déployer</h4></span>');
+    if (batType.skills.includes('soute') && playerInfos.onShip && !inSoute) {
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déployer vos bataillons pour une nouvelle mission" class="boutonMarine bigButtons" onclick="goSoute()"><i class="fas fa-warehouse"></i></button>&nbsp;  Soute</h4></span>');
     }
     // RAVITAILLEMENT DROGUES
     let anyRavit = checkRavitDrug(bat);
@@ -1366,7 +1366,8 @@ function skillsInfos(bat,batType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-user-shield"></i> <span class="small">'+apReq+'</span></button>&nbsp; Rééquiper</h4></span>');
         }
     }
-    if (playerInfos.onShip) {
+    // DEPLOIEMENT
+    if (playerInfos.onShip && inSoute && batType.name != 'Soute') {
         if (bat.locId === souteId) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Charger le bataillon dans le lander" class="boutonMarine bigButtons" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
         } else {
@@ -1426,10 +1427,12 @@ function skillsInfos(bat,batType) {
             }
         }
     }
-    // DEBARQUER
-    unloadInfos(bat,batType);
-    // RECONSTRUIRE
-    refabInfos(bat,batType);
+    if (!inSoute) {
+        // DEBARQUER
+        unloadInfos(bat,batType);
+        // RECONSTRUIRE
+        refabInfos(bat,batType);
+    }
     // CONSTRUCTION TRICHE
     if (batType.skills.includes('triche')) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris skillButtons" onclick="bfconst(`all`,true,false)"><i class="fas fa-drafting-compass"></i></button>&nbsp; Construction</h4></span>');

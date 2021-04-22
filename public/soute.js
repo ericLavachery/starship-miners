@@ -4,6 +4,7 @@ function goSoute() {
     $("#zone_soute").css("display","block");
     souteList();
     landerList(2);
+    showBatInfos(selectedBat);
 };
 
 function souteList() {
@@ -86,10 +87,20 @@ function batListElement(bat,batType,idOfLander) {
     if (idOfLander >= 0) {
         colId = 'units_lander';
     }
-    if (bat.id === selectedBat.id) {
-        blockType = 'souteBlockCheck';
+    let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
+    let enoughRes = checkCost(deployCosts);
+    if (!enoughRes) {
+        if (bat.id === selectedBat.id) {
+            blockType = 'souteBlockCheck';
+        } else {
+            blockType = 'souteBlockNope';
+        }
     } else {
-        blockType = 'souteBlock';
+        if (bat.id === selectedBat.id) {
+            blockType = 'souteBlockCheck';
+        } else {
+            blockType = 'souteBlock';
+        }
     }
     $('#'+colId).append('<div class="'+blockType+' klik" onclick="batSouteSelect('+bat.id+')"><table><tr><td><img src="/static/img/units/'+batType.cat+'/'+batType.pic+'.png" width="48"></td><td id="be'+bat.id+'"></td></tr></table></div>');
     $('#be'+bat.id).append('<span class="listRes klik">'+batType.name+'</span>');
@@ -119,6 +130,10 @@ function batListElement(bat,batType,idOfLander) {
     if (checkHasWeapon(2,batType,bat.eq)) {
         $('#be'+bat.id).append('<span class="listRes gff">'+batType.weapon2.name+': <span class="brunf">'+bat.ammo2+'</span></span>&nbsp;');
     }
+    if (bat.id === selectedBat.id) {
+        $('#be'+bat.id).append('<hr class="cyff">');
+        showCostsDetail(deployCosts,bat);
+    }
 };
 
 function batSouteSelect(batId) {
@@ -126,7 +141,7 @@ function batSouteSelect(batId) {
     selectedBat = JSON.parse(JSON.stringify(bat));
     // console.log(selectedBat);
     checkSelectedBatType();
-    showBatInfos(selectedBat);
+    // showBatInfos(selectedBat);
     goSoute();
 };
 
@@ -141,7 +156,7 @@ function batDeploy(batId) {
     } else {
         console.log('not enough res');
     }
-    showBatInfos(bat);
+    // showBatInfos(bat);
     goSoute();
 };
 
@@ -151,7 +166,7 @@ function batUndeploy(batId) {
     let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
     addCost(deployCosts,1);
     bat.locId = souteId;
-    showBatInfos(bat);
+    // showBatInfos(bat);
     goSoute();
 };
 
@@ -189,4 +204,19 @@ function getAllDeployCosts(unit,ammoNames) {
     deployCosts = getDeployCosts(unit,batAmmo,0,'unit');
     mergeObjects(totalCosts,deployCosts);
     return totalCosts;
+};
+
+function showCostsDetail(deployCosts,bat) {
+    if (deployCosts != undefined) {
+        Object.entries(deployCosts).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            let dispoRes = getDispoRes(key);
+            if (dispoRes >= value) {
+                $('#be'+bat.id).append('<span class="listRes gff">'+key+': <span class="brunf">'+value+'</span>/'+dispoRes+'</span>');
+            } else {
+                $('#be'+bat.id).append('<span class="listRes gff">'+key+': <span class="brunf">'+value+'</span>/<span class="rouge">'+dispoRes+'</span></span>');
+            }
+        });
+    }
 };

@@ -377,7 +377,7 @@ function batInfos(bat,pop) {
     }
     // RESSOURCES transportées
     // console.log('HERE');
-    if (batType.transRes >= 1) {
+    if (batType.transRes >= 1 && !inSoute) {
         // console.log('btres');
         if (Object.keys(bat.transRes).length >= 1) {
             // console.log('bres');

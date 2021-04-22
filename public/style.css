@@ -269,8 +269,19 @@ h5 {
     margin: 3px 0 5px 0;
     border-radius: 6px;
 }
-.souteBlockCheck {
+.souteBlockNope {
     background-color: #1f1f1f;
+    font-size: 14px;
+    color: #a39d95;
+    padding: 3px 5px 3px 9px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #464a4a;
+    margin: 3px 0 5px 0;
+    border-radius: 6px;
+}
+.souteBlockCheck {
+    background-color: #11241b;
     font-size: 14px;
     color: #6be9b4;
     padding: 3px 5px 3px 9px;
@@ -842,6 +853,9 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
 }
 .vert {
     color: #6db979;
+}
+.cyff {
+    color: #2a3831;
 }
 .mauve {
     color: #c395cb;

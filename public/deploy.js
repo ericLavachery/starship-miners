@@ -347,6 +347,9 @@ function doReEquip(batId) {
     conOut();
     myNewGear = ['xxx','xxx','xxx','xxx'];
     showBatInfos(myBat);
+    if (inSoute) {
+        goSoute();
+    }
 };
 
 function getBatGearStuff(armorName,equipName,batType) {

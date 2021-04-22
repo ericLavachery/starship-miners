@@ -306,7 +306,7 @@ function batUnstack() {
 
 function isStacked() {
     let stack = false;
-    if (!playerInfos.inSoute) {
+    if (!inSoute) {
         bataillons.forEach(function(bat) {
             if (bat.tileId === selectedBat.tileId && bat.loc === "zone" && bat.id != selectedBat.id) {
                 stack = true;
