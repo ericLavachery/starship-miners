@@ -38,15 +38,16 @@ function deconstruction(prefabId) {
         if (!playerInfos.onShip) {
             selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*prefabBatType.fabTime/30);
         }
-        prefabBat.loc = 'trans';
-        prefabBat.locId = landerBat.id;
-        prefabBat.tileId = landerBat.tileId;
-        prefabBat.oldTileId = landerBat.oldTileId;
-        landerBat.transIds.push(prefabBat.id);
-        let batListIndex = batList.findIndex((obj => obj.id == prefabBat.id));
-        if (batListIndex > -1) {
-            batList.splice(batListIndex,1);
-        }
+        loadBat(prefabBat.id,landerBat.id);
+        // prefabBat.loc = 'trans';
+        // prefabBat.locId = landerBat.id;
+        // prefabBat.tileId = landerBat.tileId;
+        // prefabBat.oldTileId = landerBat.oldTileId;
+        // landerBat.transIds.push(prefabBat.id);
+        // let batListIndex = batList.findIndex((obj => obj.id == prefabBat.id));
+        // if (batListIndex > -1) {
+        //     batList.splice(batListIndex,1);
+        // }
         tagDelete(selectedBat,'guet');
         selectedBatArrayUpdate();
         showBatInfos(selectedBat);
@@ -60,15 +61,16 @@ function autoDeconstruction(prefabId) {
     let prefabBatType = getBatType(prefabBat);
     let landerBat = findTheLander();
     if (Object.keys(landerBat).length >= 1) {
-        prefabBat.loc = 'trans';
-        prefabBat.locId = landerBat.id;
-        prefabBat.tileId = landerBat.tileId;
-        prefabBat.oldTileId = landerBat.oldTileId;
-        landerBat.transIds.push(prefabBat.id);
-        let batListIndex = batList.findIndex((obj => obj.id == prefabBat.id));
-        if (batListIndex > -1) {
-            batList.splice(batListIndex,1);
-        }
+        loadBat(prefabBat.id,landerBat.id);
+        // prefabBat.loc = 'trans';
+        // prefabBat.locId = landerBat.id;
+        // prefabBat.tileId = landerBat.tileId;
+        // prefabBat.oldTileId = landerBat.oldTileId;
+        // landerBat.transIds.push(prefabBat.id);
+        // let batListIndex = batList.findIndex((obj => obj.id == prefabBat.id));
+        // if (batListIndex > -1) {
+        //     batList.splice(batListIndex,1);
+        // }
         showMap(zone,false);
         batSelect(landerBat);
         showBatInfos(landerBat);

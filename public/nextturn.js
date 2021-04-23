@@ -628,13 +628,15 @@ function turnInfo() {
     console.log('Zombified Tiles');
     console.log(zombifiedTiles);
     centerMap();
-    $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
-    $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
-    $('#tour').append('Présence Alien <span class="or">'+zone[0].mapDiff+'</span><br>');
-    if (playerInfos.bldList.includes('Champ de force')) {
-        $('#tour').append('<span class="cy">Champ de force</span><br>');
+    if (!playerInfos.onShip) {
+        $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
+        $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
+        $('#tour').append('Présence Alien <span class="or">'+zone[0].mapDiff+'</span><br>');
+        if (playerInfos.bldList.includes('Champ de force')) {
+            $('#tour').append('<span class="cy">Champ de force</span><br>');
+        }
+        $('#tour').append('Morts <span class="or">'+playerInfos.unitsLost+'</span> / '+playerInfos.aliensKilled+' / <span class="cy">'+playerInfos.eggsKilled+'</span>');
     }
-    $('#tour').append('Morts <span class="or">'+playerInfos.unitsLost+'</span> / '+playerInfos.aliensKilled+' / <span class="cy">'+playerInfos.eggsKilled+'</span>');
 };
 
 function getBatAP(bat,batType) {

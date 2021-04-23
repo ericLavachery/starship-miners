@@ -7,6 +7,14 @@ function goSoute() {
     showBatInfos(selectedBat);
 };
 
+function goStation() {
+    inSoute = false;
+    $("#zone_map").css("display","grid");
+    $("#zone_soute").css("display","none");
+    showMap(zone,true);
+    showBatInfos(selectedBat);
+};
+
 function souteList() {
     $('#units_soute').empty();
     let landersIds = [];
@@ -18,12 +26,15 @@ function souteList() {
             }
         }
     });
-    batCatList('infantry',playerInfos.gang,'',landersIds,-1);
-    batCatList('infantry','zero-','',landersIds,-1);
-    batCatList('vehicles',playerInfos.gang,'',landersIds,-1);
-    batCatList('vehicles','zero-','',landersIds,-1);
-    batCatList('devices','','prefab',landersIds,-1);
-    batCatList('buildings','','prefab',landersIds,-1);
+    souteBatList('infantry',playerInfos.gang,'','robot',landersIds,-1);
+    souteBatList('infantry','zero-','','robot',landersIds,-1);
+    souteBatList('infantry','','cyber','',landersIds,-1);
+    souteBatList('vehicles','','cyber','',landersIds,-1);
+    souteBatList('vehicles','','robot','',landersIds,-1);
+    souteBatList('vehicles',playerInfos.gang,'','robot',landersIds,-1);
+    souteBatList('vehicles','zero-','','robot',landersIds,-1);
+    souteBatList('devices','','prefab','robot',landersIds,-1);
+    souteBatList('buildings','','prefab','robot',landersIds,-1);
 };
 
 function landerList(idOfLander) {
@@ -37,15 +48,18 @@ function landerList(idOfLander) {
             }
         }
     });
-    batCatList('infantry',playerInfos.gang,'',landersIds,idOfLander);
-    batCatList('infantry','zero-','',landersIds,idOfLander);
-    batCatList('vehicles',playerInfos.gang,'',landersIds,idOfLander);
-    batCatList('vehicles','zero-','',landersIds,idOfLander);
-    batCatList('devices','','prefab',landersIds,idOfLander);
-    batCatList('buildings','','prefab',landersIds,idOfLander);
+    souteBatList('infantry',playerInfos.gang,'','robot',landersIds,idOfLander);
+    souteBatList('infantry','zero-','','robot',landersIds,idOfLander);
+    souteBatList('infantry','','cyber','',landersIds,idOfLander);
+    souteBatList('vehicles','','cyber','',landersIds,idOfLander);
+    souteBatList('vehicles','','robot','',landersIds,idOfLander);
+    souteBatList('vehicles',playerInfos.gang,'','robot',landersIds,idOfLander);
+    souteBatList('vehicles','zero-','','robot',landersIds,idOfLander);
+    souteBatList('devices','','prefab','robot',landersIds,idOfLander);
+    souteBatList('buildings','','prefab','robot',landersIds,idOfLander);
 };
 
-function batCatList(cat,partKind,skill,landersIds,idOfLander) {
+function souteBatList(cat,partKind,skill,noSkill,landersIds,idOfLander) {
     let showMe = true;
     let colId = 'units_soute';
     if (idOfLander >= 0) {
@@ -65,15 +79,22 @@ function batCatList(cat,partKind,skill,landersIds,idOfLander) {
                 showMe = true;
             }
         }
+        if (batType.skills.includes(noSkill) || (noSkill === 'robot' && batType.skills.includes('cyber'))) {
+            showMe = false;
+        }
         if (batType.skills.includes('transorbital')) {
+            showMe = false;
+        }
+        if (batType.id === 126 || batType.id === 225) {
             showMe = false;
         }
         if (showMe) {
             if (batType.cat.includes(cat) && batType.kind.includes(partKind)) {
                 if (skill === '' || batType.skills.includes(skill)) {
                     if (bat.loc === 'zone' && idOfLander < 0) {
-                        bat.loc = 'trans';
-                        bat.locId = souteId;
+                        loadBat(bat.id,souteId);
+                        // bat.loc = 'trans';
+                        // bat.locId = souteId;
                     }
                     batListElement(bat,batType,idOfLander);
                 }
@@ -93,16 +114,20 @@ function batListElement(bat,batType,idOfLander) {
         if (bat.id === selectedBat.id) {
             blockType = 'souteBlockCheck';
         } else {
-            blockType = 'souteBlockNope';
+            blockType = 'souteBlockNope klik';
         }
     } else {
         if (bat.id === selectedBat.id) {
             blockType = 'souteBlockCheck';
         } else {
-            blockType = 'souteBlock';
+            blockType = 'souteBlock klik';
         }
     }
-    $('#'+colId).append('<div class="'+blockType+' klik" onclick="batSouteSelect('+bat.id+')"><table><tr><td><img src="/static/img/units/'+batType.cat+'/'+batType.pic+'.png" width="48"></td><td id="be'+bat.id+'"></td></tr></table></div>');
+    let selId = bat.id;
+    if (bat.id === selectedBat.id) {
+        selId = souteId;
+    }
+    $('#'+colId).append('<div class="'+blockType+'" onclick="batSouteSelect('+selId+')"><table><tr><td><img src="/static/img/units/'+batType.cat+'/'+batType.pic+'.png" width="48"></td><td id="be'+bat.id+'"></td></tr></table></div>');
     $('#be'+bat.id).append('<span class="listRes klik">'+batType.name+'</span>');
     if (bat.chief != undefined) {
         if (bat.chief != '') {
@@ -152,7 +177,17 @@ function batDeploy(batId) {
     let enoughRes = checkCost(deployCosts);
     if (enoughRes) {
         payCost(deployCosts);
-        bat.locId = 2;
+        loadBat(bat.id,2,souteId);
+        // bat.locId = 2;
+        // let transBat = getBatById(2);
+        // if (!transBat.transIds.includes(bat.id)) {
+        //     transBat.transIds.push(bat.id);
+        // }
+        // let souteBat = getBatById(souteId);
+        // if (souteBat.transIds.includes(bat.id)) {
+        //     let tagIndex = souteBat.transIds.indexOf(bat.id);
+        //     souteBat.transIds.splice(tagIndex,1);
+        // }
     } else {
         console.log('not enough res');
     }
@@ -165,9 +200,43 @@ function batUndeploy(batId) {
     let batType = getBatType(bat);
     let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
     addCost(deployCosts,1);
-    bat.locId = souteId;
+    loadBat(bat.id,souteId,2);
+    // bat.locId = souteId;
+    // let souteBat = getBatById(souteId);
+    // if (!souteBat.transIds.includes(bat.id)) {
+    //     souteBat.transIds.push(bat.id);
+    // }
+    // let transBat = getBatById(2);
+    // if (transBat.transIds.includes(bat.id)) {
+    //     let tagIndex = transBat.transIds.indexOf(bat.id);
+    //     transBat.transIds.splice(tagIndex,1);
+    // }
     // showBatInfos(bat);
     goSoute();
+};
+
+function loadBat(batId,transBatId,oldTransBatId) {
+    let bat = getBatById(batId);
+    let transBat = getBatById(transBatId);
+    bat.loc = 'trans';
+    bat.locId = transBat.id;
+    bat.tileId = transBat.tileId;
+    if (!transBat.transIds.includes(bat.id)) {
+        transBat.transIds.push(bat.id);
+    }
+    if (oldTransBatId != undefined) {
+        if (oldTransBatId >= 0) {
+            let oldTransBat = getBatById(oldTransBatId);
+            if (oldTransBat.transIds.includes(bat.id)) {
+                let tagIndex = oldTransBat.transIds.indexOf(bat.id);
+                oldTransBat.transIds.splice(tagIndex,1);
+            }
+        }
+    }
+    let batListIndex = batList.findIndex((obj => obj.id === bat.id));
+    if (batListIndex > -1) {
+        batList.splice(batListIndex,1);
+    }
 };
 
 function getAllDeployCosts(unit,ammoNames) {

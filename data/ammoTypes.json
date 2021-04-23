@@ -36,7 +36,7 @@
         "apdamage": 0,
         "aoe": "",
         "info": "Penetration+++ Entrave",
-        "deploy":{"Energie":30},
+        "deploy":{"Energie":15},
         "batch":100,
         "noList": true
     },
@@ -696,7 +696,7 @@
         "apdamage": 0,
         "aoe": "",
         "info": "Incendiaire",
-        "deploy":{"Energie":30},
+        "deploy":{"Energie":15},
         "batch":100,
         "noList": true
     },
@@ -713,7 +713,7 @@
         "info": "Incendiaire",
         "bldReq":["Centre de recherches"],
         "compReq":{"energ":3},
-        "deploy":{"Energie":30,"Plutonium":2},
+        "deploy":{"Energie":25,"Plutonium":2},
         "batch":100
     },
     {
@@ -726,7 +726,7 @@
         "accuracy": 1,
         "apdamage": 0.02,
         "aoe": "",
-        "deploy":{"Energie":50,"Plutonium":2,"Platine":1},
+        "deploy":{"Energie":30,"Plutonium":2,"Platine":1},
         "batch":100,
         "noList": true
     },
@@ -990,7 +990,7 @@
         "aoe": "",
         "info": "Poison+++",
         "bldReq":["Laboratoire"],
-        "compReq":{"exo":2,"gen":1,"ca":4},
+        "compReq":{"exo":2,"ca":4},
         "deploy":{"Carbone":4,"Fer":1,"Titane":2,"Mephitis":3,"Huile":2,"Argon":3},
         "batch":100
     },

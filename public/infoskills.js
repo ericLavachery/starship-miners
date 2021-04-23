@@ -12,8 +12,27 @@ function skillsInfos(bat,batType) {
     let hasW1 = checkHasWeapon(1,batType,bat.eq);
     let hasW2 = checkHasWeapon(2,batType,bat.eq);
     console.log('inMelee='+inMelee);
-    if (batType.skills.includes('soute') && playerInfos.onShip && !inSoute) {
-        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déployer vos bataillons pour une nouvelle mission" class="boutonMarine bigButtons" onclick="goSoute()"><i class="fas fa-warehouse"></i></button>&nbsp;  Soute</h4></span>');
+    // SOUTE
+    if (batType.skills.includes('soute') && playerInfos.onShip) {
+        if (!inSoute) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déployer vos bataillons pour une nouvelle mission" class="boutonMarine bigButtons" onclick="goSoute()"><i class="fas fa-warehouse"></i></button>&nbsp;  Soute</h4></span>');
+        } else {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déployer vos bataillons pour une nouvelle mission" class="boutonMarine bigButtons" onclick="goStation()"><i class="fas fa-chess-board"></i></button>&nbsp;  Station</h4></span>');
+        }
+    }
+    // DEPLOIEMENT
+    if (playerInfos.onShip && inSoute && batType.name != 'Soute') {
+        if (bat.locId === souteId) {
+            let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
+            let enoughRes = checkCost(deployCosts);
+            if (enoughRes) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Charger le bataillon dans le lander" class="boutonMarine bigButtons" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
+            } else {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ressources insuffisantes" class="boutonGris bigButtons gf"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
+            }
+        } else {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Renvoyer le bataillon dans la soute" class="boutonMarine bigButtons" onclick="batUndeploy('+bat.id+')"><i class="fas fa-sign-out-alt fa-flip-horizontal"></i></button>&nbsp; Renvoyer</h4></span>');
+        }
     }
     // RAVITAILLEMENT DROGUES
     let anyRavit = checkRavitDrug(bat);
@@ -1355,7 +1374,7 @@ function skillsInfos(bat,batType) {
     if (anyStock || playerInfos.onShip) {
         apCost = Math.round(bat.ap*1.5);
         apReq = 5;
-        if (bat.apLeft >= apReq && !inMelee) {
+        if ((bat.apLeft >= apReq || inSoute) && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Changer de munitions, équipement ou armure" class="boutonCaca skillButtons" onclick="reEquip('+bat.id+',false)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apReq+'</span></button>&nbsp; Rééquiper</h4></span>');
         } else {
             if (inMelee) {
@@ -1364,14 +1383,6 @@ function skillsInfos(bat,batType) {
                 skillMessage = "Pas assez de PA";
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-user-shield"></i> <span class="small">'+apReq+'</span></button>&nbsp; Rééquiper</h4></span>');
-        }
-    }
-    // DEPLOIEMENT
-    if (playerInfos.onShip && inSoute && batType.name != 'Soute') {
-        if (bat.locId === souteId) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Charger le bataillon dans le lander" class="boutonMarine bigButtons" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
-        } else {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Renvoyer le bataillon dans la soute" class="boutonMarine bigButtons" onclick="batUndeploy('+bat.id+')"><i class="fas fa-sign-out-alt fa-flip-horizontal"></i></button>&nbsp; Renvoyer</h4></span>');
         }
     }
     // FOUILLE DE RUINES
@@ -1405,7 +1416,7 @@ function skillsInfos(bat,batType) {
             balise = 'h2';
         }
         apReq = 0;
-        if (!inMelee) {
+        if (!inMelee && !inSoute) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Charger des ressources" class="boutonCaca skillButtons" onclick="loadRes()"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
         } else {
             if (inMelee) {

@@ -2,7 +2,7 @@ function commandes() {
     $('#commandz').empty();
     $('#batloop').empty();
     if (activeTurn == 'player') {
-        if (!modeSonde) {
+        if (!modeSonde && !playerInfos.onShip) {
             if (batList.length >= 1) {
                 if (Object.keys(selectedBat).length >= 1) {
                     $('#batloop').append('<button type="button" title="Passer au bataillon suivant (et ne plus s\'occuper de celui-ci ce tour-ci)" class="boutonGris iconButtons" onclick="nextBat(true,false)"><i class="fas fa-thumbs-up"></i></button>');
@@ -27,7 +27,9 @@ function commandes() {
             $('#commandz').append('<button type="button" title="Nombres d\'oeufs en vue" class="boutonGris iconButtons" onclick="findEgg()">'+eggsNum+'</button>');
             $('#commandz').append('<br>');
         }
-        $('#commandz').append('<button type="button" title="Ressources présentes dans la zone" class="boutonGris iconButtons" onclick="voirRessources()"><i class="far fa-gem"></i></button>');
+        if (!playerInfos.onShip) {
+            $('#commandz').append('<button type="button" title="Ressources présentes dans la zone" class="boutonGris iconButtons" onclick="voirRessources()"><i class="far fa-gem"></i></button>');
+        }
         if (!modeSonde) {
             $('#commandz').append('<button type="button" title="Crafting" class="boutonGris iconButtons" onclick="craftWindow()"><i class="fas fa-toolbox"></i></button>');
             $('#commandz').append('<button type="button" title="Réserve" class="boutonGris iconButtons" onclick="voirReserve()"><i class="fas fa-piggy-bank"></i></button>');
@@ -85,7 +87,7 @@ function commandes() {
             $('#commandz').append('<button type="button" title="Sauvegarder la nouvelle carte" class="boutonBrun iconButtons" onclick="saveMapAs()"><i class="fas fa-save"></i></button>');
         }
         $('#commandz').append('<br>');
-        if (!modeSonde) {
+        if (!modeSonde && !playerInfos.onShip) {
             $('#commandz').append('<hr>');
             $('#commandz').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonRouge iconButtons" onclick="showMapReset()" id="reset1"><i class="fas fa-power-off"></i></button>');
             $('#commandz').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonRouge iconButtons" onclick="mapReset()" id="reset2"><i class="fas fa-skull-crossbones"></i></button>');
