@@ -31,7 +31,42 @@ function getLandersIds() {
 };
 
 function souteMenu() {
+    $('#menu_soute').empty();
+    if (souteFilter === 'all') {
+        $('#menu_soute').append('<span class="listRes cy">Tous</span>');
+    } else {
+        $('#menu_soute').append('<span class="listRes klik" onclick="setSouteFilter(`all`)">Tous</span>');
+    }
+    if (souteFilter === 'infantry') {
+        $('#menu_soute').append('<span class="listRes cy">Infanteries</span>');
+    } else {
+        $('#menu_soute').append('<span class="listRes klik" onclick="setSouteFilter(`infantry`)">Infanteries</span>');
+    }
+    if (souteFilter === 'support') {
+        $('#menu_soute').append('<span class="listRes cy">Support</span>');
+    } else {
+        $('#menu_soute').append('<span class="listRes klik" onclick="setSouteFilter(`support`)">Support</span>');
+    }
+    if (souteFilter === 'cyberobots') {
+        $('#menu_soute').append('<span class="listRes cy">Cyber & Robots</span>');
+    } else {
+        $('#menu_soute').append('<span class="listRes klik" onclick="setSouteFilter(`cyberobots`)">Cyber & Robots</span>');
+    }
+    if (souteFilter === 'vehicles') {
+        $('#menu_soute').append('<span class="listRes cy">Véhicules</span>');
+    } else {
+        $('#menu_soute').append('<span class="listRes klik" onclick="setSouteFilter(`vehicles`)">Véhicules</span>');
+    }
+    if (souteFilter === 'prefabs') {
+        $('#menu_soute').append('<span class="listRes cy">Préfabriqués</span>');
+    } else {
+        $('#menu_soute').append('<span class="listRes klik" onclick="setSouteFilter(`prefabs`)">Préfabriqués</span>');
+    }
+};
 
+function setSouteFilter(filter) {
+    souteFilter = filter;
+    goSoute();
 };
 
 function landerMenu() {
@@ -40,7 +75,11 @@ function landerMenu() {
     landersIds.forEach(function(landerId) {
         let landerBat = getBatById(landerId);
         let landerBatType = getBatType(landerBat);
-        $('#menu_lander').append('<span class="listRes klik" onclick="landerSelection('+landerId+')">'+landerBatType.name+'</span>');
+        if (landerId === slId) {
+            $('#menu_lander').append('<span class="listRes cy">'+landerBatType.name+'</span>');
+        } else {
+            $('#menu_lander').append('<span class="listRes klik" onclick="landerSelection('+landerId+')">'+landerBatType.name+'</span>');
+        }
         if (landerBat.chief != undefined) {
             if (landerBat.chief != '') {
                 $('#menu_lander').append('<span class="listRes gf">('+landerBat.chief+')</span>&nbsp;');
@@ -57,21 +96,35 @@ function landerSelection(landerId) {
 function souteList() {
     $('#list_soute').empty();
     let landersIds = getLandersIds();
-    souteBatList('infantry',playerInfos.gang,'','robot',landersIds,-1);
-    souteBatList('infantry','zero-','','robot',landersIds,-1);
-    souteBatList('infantry','','cyber','',landersIds,-1);
-    souteBatList('vehicles','','cyber','',landersIds,-1);
-    souteBatList('vehicles','','robot','',landersIds,-1);
-    souteBatList('vehicles',playerInfos.gang,'','robot',landersIds,-1);
-    souteBatList('vehicles','zero-','','robot',landersIds,-1);
-    souteBatList('devices','','prefab','robot',landersIds,-1);
-    souteBatList('buildings','','prefab','robot',landersIds,-1);
+    if (souteFilter === 'all' || souteFilter === 'infantry') {
+        souteBatList('infantry',playerInfos.gang,'','robot',landersIds,-1);
+        souteBatList('infantry','','clone','',landersIds,-1);
+        souteBatList('infantry','','mutant','',landersIds,-1);
+    }
+    if (souteFilter === 'all' || souteFilter === 'support') {
+        souteBatList('infantry','zero-','','robot',landersIds,-1);
+    }
+    if (souteFilter === 'all' || souteFilter === 'cyberobots') {
+        souteBatList('infantry','','cyber','',landersIds,-1);
+        souteBatList('vehicles','','cyber','',landersIds,-1);
+        souteBatList('vehicles','','robot','',landersIds,-1);
+    }
+    if (souteFilter === 'all' || souteFilter === 'vehicles') {
+        souteBatList('vehicles',playerInfos.gang,'','robot',landersIds,-1);
+        souteBatList('vehicles','zero-','','robot',landersIds,-1);
+    }
+    if (souteFilter === 'all' || souteFilter === 'prefabs') {
+        souteBatList('devices','','prefab','robot',landersIds,-1);
+        souteBatList('buildings','','prefab','robot',landersIds,-1);
+    }
 };
 
 function landerList() {
     $('#list_lander').empty();
     let landersIds = getLandersIds();
     souteBatList('infantry',playerInfos.gang,'','robot',landersIds,slId);
+    souteBatList('infantry','','clone','',landersIds,slId);
+    souteBatList('infantry','','mutant','',landersIds,slId);
     souteBatList('infantry','zero-','','robot',landersIds,slId);
     souteBatList('infantry','','cyber','',landersIds,slId);
     souteBatList('vehicles','','cyber','',landersIds,slId);
@@ -102,7 +155,7 @@ function souteBatList(cat,partKind,skill,noSkill,landersIds,idOfLander) {
                 showMe = true;
             }
         }
-        if (batType.skills.includes(noSkill) || (noSkill === 'robot' && batType.skills.includes('cyber'))) {
+        if (batType.skills.includes(noSkill) || (noSkill === 'robot' && (batType.skills.includes('cyber') || batType.skills.includes('mutant') || batType.skills.includes('clone')))) {
             showMe = false;
         }
         if (batType.skills.includes('transorbital')) {

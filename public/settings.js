@@ -76,6 +76,7 @@ let undarkNow = [];
 let souteId = 1;
 let inSoute = false;
 let slId = 2; // selected lander id (en soute)
+let souteFilter = 'infantry';
 let unitTypes = [];
 let unitDV = {}
 let bataillons = [];
