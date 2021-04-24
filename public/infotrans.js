@@ -216,13 +216,6 @@ function embarquement(transId,discardRes) {
         selectedBat.transRes = {};
     }
     loadBat(selectedBat.id,transBat.id);
-    // transBat.transIds.push(selectedBat.id);
-    // selectedBat.loc = 'trans';
-    // selectedBat.locId = transId;
-    // let batListIndex = batList.findIndex((obj => obj.id == selectedBat.id));
-    // if (batListIndex > -1) {
-    //     batList.splice(batListIndex,1);
-    // }
     tagDelete(selectedBat,'guet');
     camoOut();
     selectedBatArrayUpdate();

@@ -715,22 +715,22 @@ td {
 #zone_soute {
     display: none;
 }
-#filtres_soute {
+#menu_soute {
     background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: right 35%;
     width: 500px;
 }
-#units_soute {
+#list_soute {
     background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: right 35%;
     width: 500px;
 }
-#choix_lander {
+#menu_lander {
     background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: right 35%;
     width: 500px;
 }
-#units_lander {
+#list_lander {
     background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: right 35%;
     width: 500px;
