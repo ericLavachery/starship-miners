@@ -72,11 +72,11 @@ function commandes() {
     if (activeTurn == 'player') {
         $('#commandz').append('<hr>');
         if (!modeSonde) {
-            $('#commandz').append('<button type="button" title="Passer en mode sonde" class="boutonBrun iconButtons" onclick="goSonde()"><i class="fas fa-rocket"></i></button>');
+            $('#commandz').append('<button type="button" title="Envoyer une sonde" class="boutonBrun iconButtons" onclick="goSonde()"><i class="fas fa-rocket"></i></button>');
             $('#commandz').append('<button type="button" title="Charger une zone sauvegardée" class="boutonBrun iconButtons" onclick="voirZones()"><i class="fas fa-folder-open"></i></button>');
             $('#commandz').append('<button type="button" title="Sauvegarder la carte pour un retour (supprime la plupart des aliens et bataillons!)" class="boutonBrun iconButtons" onclick="saveMapForReturn()"><i class="fas fa-file-archive"></i></button>');
         } else {
-            $('#commandz').append('<button type="button" title="Quitter le mode sonde" class="boutonRouge iconButtons" onclick="stopSonde()"><i class="fas fa-rocket"></i></button>');
+            $('#commandz').append('<button type="button" title="Poser la sonde" class="boutonRouge iconButtons" onclick="stopSonde()"><i class="fas fa-rocket"></i></button>');
             let maxMaps = (playerInfos.comp.vsp+2)*maxMapsParDet;
             let nextMapNumber = playerInfos.sondeMaps+1;
             if (playerInfos.sondeMaps < maxMaps) {

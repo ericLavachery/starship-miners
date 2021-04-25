@@ -106,20 +106,27 @@ h5 {
     font-size: 12px;
 }
 .rosevents {
-    padding: 0 0 0 8px;
+    padding: 0 0 0 5px;
     font-size: 24px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }
 .mapSize {
-    margin: 12px 0 0 13px;
+    margin: 10px 0 0 13px;
     color: #d5cabd;
     font-size: 24px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }
+.markErase {
+    margin: 10px 0 0 15px;
+    color: #d5cabd;
+    font-size: 17px;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
+}
 .mapCenter {
-    margin: 17px 0 0 10px;
+    margin: 5px 0 0 10px;
     color: #d5cabd;
     font-size: 24px;
     -webkit-text-stroke: 1px;

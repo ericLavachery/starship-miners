@@ -29,6 +29,7 @@ function goSonde() {
     modeSonde = true;
     playerInfos.sondeMaps = 0;
     savePlayerInfos();
+    showMap(zone,true);
     commandes();
 };
 

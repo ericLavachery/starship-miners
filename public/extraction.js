@@ -805,7 +805,7 @@ function voirRessources() {
     // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     // $('#conUnitList').append('<span class="constName or" id="gentils">RESSOURCES</span>');
-    $('#conUnitList').append('<button type="button" title="Effacer tous les indicateurs" class="boutonGris miniButtons" onclick="showedTilesReset()"><i class="fas fa-eraser"></i></button><span class="butSpace"></span>');
+    $('#conUnitList').append('<button type="button" title="Effacer tous les marqueurs" class="boutonGris miniButtons" onclick="showedTilesReset(true)"><i class="fas fa-eraser"></i></button><span class="butSpace"></span>');
     let visMap = [];
     if (showAllRes) {
         $('#conUnitList').append('<button type="button" title="Tous les points de la carte sont listés" class="boutonVert miniButtons"><i class="fas fa-map"></i></button><span class="butSpace"></span>');
@@ -964,8 +964,12 @@ function showFoundRes() {
     console.log(showOneRes);
 };
 
-function showedTilesReset() {
-    playerInfos.showedTiles = [1830];
+function showedTilesReset(keepCenter) {
+    if (keepCenter) {
+        playerInfos.showedTiles = [1830];
+    } else {
+        playerInfos.showedTiles = [];
+    }
     if (showResOpen) {
         voirRessources();
     }
