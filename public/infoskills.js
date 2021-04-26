@@ -25,10 +25,16 @@ function skillsInfos(bat,batType) {
         if (bat.locId === souteId) {
             let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
             let enoughRes = checkCost(deployCosts);
-            if (enoughRes) {
+            let enoughPlace = checkPlaceLander(bat,batType,slId);
+            if (enoughRes && enoughPlace) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Charger le bataillon dans le lander" class="boutonMarine bigButtons" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
             } else {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ressources insuffisantes" class="boutonGris bigButtons gf"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
+                if (!enoughRes) {
+                    skillMessage = "Ressources insuffisantes";
+                } else if (!enoughPlace) {
+                    skillMessage = "Plus assez de place dans ce lander";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
             }
         } else {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Renvoyer le bataillon dans la soute" class="boutonMarine bigButtons" onclick="batUndeploy('+bat.id+')"><i class="fas fa-sign-out-alt fa-flip-horizontal"></i></button>&nbsp; Renvoyer</h4></span>');

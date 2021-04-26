@@ -156,11 +156,10 @@ function calcTransUnitsLeft(myBat,myBatType) {
         let resSpace = checkLanderResSpace(myBat);
         myBatTransUnitsLeft = myBatTransUnitsLeft+Math.round(resSpace/2);
     }
-    let batWeight;
     bataillons.forEach(function(bat) {
         if (bat.loc === "trans" && bat.locId == myBat.id) {
-            batType = getBatType(bat);
-            batWeight = calcVolume(bat,batType);
+            let batType = getBatType(bat);
+            let batWeight = calcVolume(bat,batType);
             myBatTransUnitsLeft = myBatTransUnitsLeft-batWeight;
         }
     });

@@ -54,11 +54,36 @@ function findLanders() {
     bataillons.forEach(function(bat) {
         if (bat.loc === 'zone') {
             let batType = getBatType(bat);
-            if (batType.skills.includes('transorbital') || batType.skills.includes('reserve')) {
-                landers.push(bat);
+            if (playerInfos.onShip) {
+                if (batType.name === 'Soute') {
+                    landers.push(bat);
+                }
+            } else {
+                if (batType.skills.includes('transorbital') || batType.skills.includes('reserve')) {
+                    landers.push(bat);
+                }
             }
         }
     });
+};
+
+function findLandersIds() {
+    let landersIds = [];
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'zone') {
+            batType = getBatType(bat);
+            if (playerInfos.onShip) {
+                if (batType.name === 'Soute') {
+                    landersIds.push(bat.id);
+                }
+            } else {
+                if (batType.skills.includes('transorbital')) {
+                    landersIds.push(bat.id);
+                }
+            }
+        }
+    });
+    return landersIds;
 };
 
 function findTheLander() {
@@ -97,6 +122,21 @@ function checkCost(costs) {
             let value = entry[1];
             let dispoRes = getDispoRes(key);
             if (dispoRes < value) {
+                enoughRes = false;
+            }
+        });
+    }
+    return enoughRes;
+};
+
+function checkMultiCost(costs,number) {
+    let enoughRes = true;
+    if (costs != undefined) {
+        Object.entries(costs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            let dispoRes = getDispoRes(key);
+            if (dispoRes < value*number) {
                 enoughRes = false;
             }
         });
@@ -438,7 +478,7 @@ function payUnitCost(batType) {
         reqCit = 0;
     }
     if (reqCit >= 1) {
-        let landersIds = [];
+        let landersIds = findLandersIds();
         if (batType.skills.includes('brigands')) {
             let dispoCrim = getDispoCrim();
             let restCrim;
@@ -451,14 +491,6 @@ function payUnitCost(batType) {
                 restCrim = restCrim-reqCit;
                 restCit = dispoCit;
             }
-            bataillons.forEach(function(bat) {
-                if (bat.loc === 'zone') {
-                    batType = getBatType(bat);
-                    if (batType.skills.includes('transorbital')) {
-                        landersIds.push(bat.id);
-                    }
-                }
-            });
             deadBatsList = [];
             bataillons.forEach(function(bat) {
                 if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Criminels') {
@@ -648,15 +680,7 @@ function getMinedRes(res) {
 };
 
 function getDispoCit() {
-    let landersIds = [];
-    bataillons.forEach(function(bat) {
-        if (bat.loc === 'zone') {
-            batType = getBatType(bat);
-            if (batType.skills.includes('transorbital')) {
-                landersIds.push(bat.id);
-            }
-        }
-    });
+    let landersIds = findLandersIds();
     let dispoCit = 0;
     let numCitBat = 0;
     bataillons.forEach(function(bat) {
@@ -686,15 +710,7 @@ function getDispoCit() {
 };
 
 function getDispoCrim() {
-    let landersIds = [];
-    bataillons.forEach(function(bat) {
-        if (bat.loc === 'zone') {
-            batType = getBatType(bat);
-            if (batType.skills.includes('transorbital')) {
-                landersIds.push(bat.id);
-            }
-        }
-    });
+    let landersIds = findLandersIds();
     let dispoCrim = 0;
     let numCitBat = 0;
     bataillons.forEach(function(bat) {

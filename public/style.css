@@ -724,22 +724,22 @@ td {
 }
 #menu_soute {
     background-image: url(/static/img/plate-vdork-small.jpg);
-    background-position: right 35%;
+    background-position: right 0% 0%;
     width: 500px;
 }
 #list_soute {
     background-image: url(/static/img/plate-vdork-small.jpg);
-    background-position: right 35%;
+    background-position: right 0% 0%;
     width: 500px;
 }
 #menu_lander {
     background-image: url(/static/img/plate-vdork-small.jpg);
-    background-position: right 35%;
+    background-position: right 0% 0%;
     width: 500px;
 }
 #list_lander {
     background-image: url(/static/img/plate-vdork-small.jpg);
-    background-position: right 35%;
+    background-position: right 0% 0%;
     width: 500px;
 }
 .terTypeButton {
@@ -863,6 +863,9 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
 }
 .cyff {
     color: #2a3831;
+}
+.cyf {
+    color: #4ba680;
 }
 .mauve {
     color: #c395cb;

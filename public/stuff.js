@@ -320,7 +320,7 @@ function getBatByName(name) {
 
 function getBatByTypeIdAndTileId(typeId,tileId) {
     let bat = {};
-    let index = bataillons.findIndex((obj => (obj.tileId == tileId && obj.typeId == typeId)));
+    let index = bataillons.findIndex((obj => (obj.tileId === tileId && obj.typeId === typeId && obj.loc === 'zone')));
     if (index > -1) {
         bat = bataillons[index];
     }
