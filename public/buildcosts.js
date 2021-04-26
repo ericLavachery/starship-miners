@@ -83,6 +83,8 @@ function findLandersIds() {
             }
         }
     });
+    console.log('landersIds');
+    console.log(landersIds);
     return landersIds;
 };
 
@@ -478,6 +480,7 @@ function payUnitCost(batType) {
         reqCit = 0;
     }
     if (reqCit >= 1) {
+        console.log('ici?');
         let landersIds = findLandersIds();
         if (batType.skills.includes('brigands')) {
             let dispoCrim = getDispoCrim();
@@ -494,7 +497,6 @@ function payUnitCost(batType) {
             deadBatsList = [];
             bataillons.forEach(function(bat) {
                 if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Criminels') {
-                    // warning('Bug?','Perte de criminels: restCrim='+restCrim+' bat.citoyens='+bat.citoyens);
                     if (restCrim === 0) {
                         bat.citoyens = 0;
                         deadBatsList.push(bat.id);
@@ -503,7 +505,6 @@ function payUnitCost(batType) {
                     }
                 }
                 if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Citoyens') {
-                    // warning('Bug?','Perte de citoyens: restCit='+restCit+' bat.citoyens='+bat.citoyens);
                     if (restCit === 0) {
                         bat.citoyens = 0;
                         deadBatsList.push(bat.id);
@@ -518,18 +519,9 @@ function payUnitCost(batType) {
         } else {
             let dispoCit = getDispoCit();
             let restCit = dispoCit-reqCit;
-            bataillons.forEach(function(bat) {
-                if (bat.loc === 'zone') {
-                    batType = getBatType(bat);
-                    if (batType.skills.includes('transorbital')) {
-                        landersIds.push(bat.id);
-                    }
-                }
-            });
             deadBatsList = [];
             bataillons.forEach(function(bat) {
                 if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Citoyens') {
-                    // warning('Bug?','Perte de citoyens: restCit='+restCit+' bat.citoyens='+bat.citoyens);
                     if (restCit === 0) {
                         bat.citoyens = 0;
                         deadBatsList.push(bat.id);
@@ -695,7 +687,6 @@ function getDispoCit() {
         bataillons.forEach(function(bat) {
             if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Citoyens') {
                 citNumber++;
-                // warning('Bug?','Perte de citoyens: dispoCit='+dispoCit+' bat.citoyens='+bat.citoyens);
                 if (citNumber >= 2) {
                     bat.citoyens = 0;
                     deadBatsList.push(bat.id);

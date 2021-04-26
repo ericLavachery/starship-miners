@@ -99,10 +99,11 @@ function landerMenu() {
     landersIds.forEach(function(landerId) {
         let landerBat = getBatById(landerId);
         let landerBatType = getBatType(landerBat);
+        let placeLeft = calcTransUnitsLeft(landerBat,landerBatType);
         if (landerId === slId) {
-            $('#menu_lander').append('<span class="listRes cy">'+landerBatType.name+'</span>');
+            $('#menu_lander').append('<span class="listRes cy">'+landerBatType.name+' ('+placeLeft+')</span>');
         } else {
-            $('#menu_lander').append('<span class="listRes klik" onclick="landerSelection('+landerId+')">'+landerBatType.name+'</span>');
+            $('#menu_lander').append('<span class="listRes klik" onclick="landerSelection('+landerId+')">'+landerBatType.name+' ('+placeLeft+')</span>');
         }
         if (landerBat.chief != undefined) {
             if (landerBat.chief != '') {
@@ -228,6 +229,8 @@ function batListElement(bat,batType,idOfLander) {
     }
     $('#'+colId).append('<div class="'+blockType+'" onclick="batSouteSelect('+selId+')"><table><tr><td><img src="/static/img/units/'+batType.cat+'/'+batType.pic+'.png" width="48"></td><td id="be'+bat.id+'"></td></tr></table></div>');
     $('#be'+bat.id).append('<span class="listRes klik">'+batType.name+'</span>');
+    let batVolume = calcVolume(bat,batType);
+    $('#be'+bat.id).append('<span class="listRes gf">('+batVolume+')</span>');
     if (bat.chief != undefined) {
         if (bat.chief != '') {
             $('#be'+bat.id).append('<span class="listRes gf">('+bat.chief+')</span>');
@@ -374,7 +377,7 @@ function checkPlaceLander(myBat,myBatType,landerId) {
     if (myLanderType.transMaxSize >= myBatType.size) {
         let batVolume = calcVolume(myBat,myBatType);
         let placeLeft = calcTransUnitsLeft(myLander,myLanderType);
-        if (placeLeft >= batVolume) {
+        if (placeLeft+25 >= batVolume) {
             enoughPlace = true;
         }
     }

@@ -15,11 +15,15 @@ function bfconst(cat,triche,upgrade) {
     checkReserve();
     updateBldList();
     $("#conUnitList").css("display","block");
-    $("#conAmmoList").css("display","block");
-    $('#conUnitList').css("height","300px");
+    if (!playerInfos.onShip) {
+        $("#conAmmoList").css("display","block");
+        $('#conUnitList').css("height","300px");
+    } else {
+        $('#conUnitList').css("height","700px");
+    }
+    $('#conUnitList').empty();
     $('#unitInfos').empty();
     $('#tileInfos').empty();
-    $('#conUnitList').empty();
     let color = '';
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
@@ -152,6 +156,7 @@ function bfconst(cat,triche,upgrade) {
                 prodSign = '';
             }
             // console.log(unit.name);
+            // console.log(unitMergedCosts);
             // console.log(costOK);
             if ((bldOK && costOK) || triche) {
                 color = catColor(unit.cat,unit.kind);
@@ -240,6 +245,9 @@ function conSelect(unitId,player,noRefresh) {
     if (player === 'player') {
         let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
         conselUnit = unitTypes[unitIndex];
+        conselCosts = mergedUnitCosts(conselUnit);
+        console.log(conselUnit.name);
+        console.log(conselCosts);
     } else {
         let unitIndex = alienUnits.findIndex((obj => obj.id == unitId));
         conselUnit = alienUnits[unitIndex];
@@ -721,7 +729,9 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 if (!conselTriche || playerInfos.pseudo === 'Payall') {
                     payUnitCost(conselUnit);
                     payFlatCosts(conselUnit,conselAmmos);
-                    payDeployCosts(conselUnit,conselAmmos);
+                    if (!playerInfos.onShip) {
+                        payDeployCosts(conselUnit,conselAmmos);
+                    }
                 }
             }
             let tile = getTileById(tileId);
@@ -801,7 +811,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             let gearStuff = getBatGearStuff(armorName,equipName,conselUnit);
             newBat.armor = gearStuff[0];
             newBat.ap = gearStuff[1];
-            if (conselTriche) {
+            if (conselTriche || playerInfos.onShip) {
                 newBat.apLeft = newBat.ap;
                 newBat.oldapLeft = newBat.ap;
                 newBat.salvoLeft = conselUnit.maxSalvo;

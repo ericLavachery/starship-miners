@@ -1444,7 +1444,7 @@ function skillsInfos(bat,batType) {
             }
         }
     }
-    if (!inSoute) {
+    if (!inSoute && batType.name != 'Soute') {
         // DEBARQUER
         unloadInfos(bat,batType);
         // RECONSTRUIRE
