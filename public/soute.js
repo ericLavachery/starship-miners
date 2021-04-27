@@ -9,8 +9,10 @@ function goSoute() {
         landerList();
     } else if (souteTab === 'rez') {
         missionRes();
+        viewLanderRes();
     }
     showBatInfos(selectedBat);
+    commandes();
 };
 
 function goStation() {
@@ -18,7 +20,10 @@ function goStation() {
     $("#zone_map").css("display","grid");
     $("#zone_soute").css("display","none");
     showMap(zone,true);
+    let souteBat = getBatById(souteId);
+    batSelect(souteBat);
     showBatInfos(selectedBat);
+    commandes();
 };
 
 function getStationLandersIds() {
@@ -99,11 +104,22 @@ function landerMenu() {
     landersIds.forEach(function(landerId) {
         let landerBat = getBatById(landerId);
         let landerBatType = getBatType(landerBat);
-        let placeLeft = calcTransUnitsLeft(landerBat,landerBatType);
+        let transUnitLeft = calcTransUnitsLeft(landerBat,landerBatType);
+        let transResLeft = checkResSpace(landerBat);
+        let transResMax = landerBatType.transRes;
+        if (landerBat.eq === 'megafret') {
+            transResMax = Math.round(resMax*1.2);
+        }
+        let ucol = 'cy';
+        let rcol = 'brunf';
+        if (souteTab === 'rez') {
+            ucol = 'brunf';
+            rcol = 'cy';
+        }
         if (landerId === slId) {
-            $('#menu_lander').append('<span class="listRes cy">'+landerBatType.name+' ('+placeLeft+')</span>');
+            $('#menu_lander').append('<span class="listRes cy">'+landerBatType.name+' <span class="brunf">(<span class="'+ucol+'">'+transUnitLeft+'</span>&ndash;<span class="'+rcol+'">'+transResLeft+'</span>)</span></span>');
         } else {
-            $('#menu_lander').append('<span class="listRes klik" onclick="landerSelection('+landerId+')">'+landerBatType.name+' ('+placeLeft+')</span>');
+            $('#menu_lander').append('<span class="listRes klik" onclick="landerSelection('+landerId+')">'+landerBatType.name+' <span class="brunf">('+transUnitLeft+'&ndash;'+transResLeft+')</span></span>');
         }
         if (landerBat.chief != undefined) {
             if (landerBat.chief != '') {
@@ -384,9 +400,26 @@ function checkPlaceLander(myBat,myBatType,landerId) {
     return enoughPlace;
 };
 
+function viewLanderRes() {
+    $('#list_lander').empty();
+    $('#list_lander').append('<div class="souteBlock" id="lresList"></div>');
+    let landerBat = getBatById(slId);
+    let landerBatType = getBatType(landerBat);
+    let transResLeft = checkResSpace(landerBat);
+    let transResIn = checkResLoad(landerBat);
+    let transResMax = landerBatType.transRes;
+    if (landerBat.eq === 'megafret') {
+        transResMax = Math.round(resMax*1.2);
+    }
+    $('#lresList').append('<br>');
+    $('#lresList').append('<span class="paramName">Maximum Fret</span><span class="paramIcon"></span><span class="paramValue">'+transResMax+'</span><br>');
+    $('#lresList').append('<span class="paramName">Charge</span><span class="paramIcon"></span><span class="paramValue">'+transResIn+'</span><br>');
+    $('#lresList').append('<span class="paramName">Reste</span><span class="paramIcon"></span><span class="paramValue">'+transResLeft+'</span><br>');
+    $('#lresList').append('<br>');
+};
+
 function missionRes() {
     $('#list_soute').empty();
-    $('#list_lander').empty();
     $('#list_soute').append('<div class="souteBlock" id="fillList"></div>');
     findLanders();
     let lastKind = '';
@@ -618,7 +651,7 @@ function missionResInfra(infraName,road) {
     }  else {
         prepaBld[infra.name] = prepaBld[infra.name]+number;
     }
-    missionRes();
+    goSoute();
     console.log(prepaBld);
 };
 
@@ -635,7 +668,7 @@ function missionResEquip(equipName,unitId) {
     }  else {
         prepaBld[equipCountName] = prepaBld[equipCountName]+1;
     }
-    missionRes();
+    goSoute();
 };
 
 function missionResUnit(unitId) {
@@ -658,7 +691,7 @@ function missionResUnit(unitId) {
     }  else {
         prepaBld[unit.name] = prepaBld[unit.name]+1;
     }
-    missionRes();
+    goSoute();
     // console.log(prepaBld);
 };
 

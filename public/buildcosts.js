@@ -83,8 +83,6 @@ function findLandersIds() {
             }
         }
     });
-    console.log('landersIds');
-    console.log(landersIds);
     return landersIds;
 };
 
@@ -445,7 +443,6 @@ function checkUnitCost(batType,withDeploy) {
         if (batType.skills.includes('brigands')) {
             if (reqCit > dispoCrim+dispoCit) {
                 enoughRes = false;
-                console.log('not enough crim');
             }
         } else {
             if (reqCit > dispoCit) {
@@ -480,7 +477,6 @@ function payUnitCost(batType) {
         reqCit = 0;
     }
     if (reqCit >= 1) {
-        console.log('ici?');
         let landersIds = findLandersIds();
         if (batType.skills.includes('brigands')) {
             let dispoCrim = getDispoCrim();
