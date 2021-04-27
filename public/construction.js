@@ -110,6 +110,9 @@ function bfconst(cat,triche,upgrade) {
                 }
             }
         }
+        if (playerInfos.onShip && unit.skills.includes('nostation')) {
+            prodOK = false;
+        }
         if (prodOK || triche) {
             if (lastKind != unit.kind) {
                 showkind = unit.kind.replace(/zero-/g,"");

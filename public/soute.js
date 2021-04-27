@@ -41,11 +41,11 @@ function getStationLandersIds() {
 
 function souteTabsMenu(here) {
     if (souteTab === 'unitz') {
-        $('#'+here).append('<span class="listRes cy">Bataillons</span>');
-        $('#'+here).append('<span class="listRes klik" onclick="setSouteTab(`rez`)">Ressources</span>');
+        $('#'+here).append('<h2 class="bcy">Bataillons &nbsp</h2>');
+        $('#'+here).append('<h2 class="neutre klik" onclick="setSouteTab(`rez`)">Ressources</h2>');
     } else if (souteTab === 'rez') {
-        $('#'+here).append('<span class="listRes klik" onclick="setSouteTab(`unitz`)">Bataillons</span>');
-        $('#'+here).append('<span class="listRes cy">Ressources</span>');
+        $('#'+here).append('<h2 class="neutre klik" onclick="setSouteTab(`unitz`)">Bataillons &nbsp</h2>');
+        $('#'+here).append('<h2 class="bcy">Ressources</h2>');
     }
     $('#'+here).append('<br>');
 };
@@ -55,34 +55,34 @@ function souteMenu() {
     souteTabsMenu('menu_soute');
     if (souteTab === 'unitz') {
         if (souteFilter === 'all') {
-            $('#menu_soute').append('<span class="listRes cy">Tous</span>');
+            $('#menu_soute').append('<span class="menuTab cy">Tous &nbsp;&nbsp;</span>');
         } else {
-            $('#menu_soute').append('<span class="listRes klik" onclick="setSouteFilter(`all`)">Tous</span>');
+            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`all`)">Tous &nbsp;&nbsp;</span>');
         }
         if (souteFilter === 'infantry') {
-            $('#menu_soute').append('<span class="listRes cy">Infanteries</span>');
+            $('#menu_soute').append('<span class="menuTab cy">Infanteries &nbsp;&nbsp;</span>');
         } else {
-            $('#menu_soute').append('<span class="listRes klik" onclick="setSouteFilter(`infantry`)">Infanteries</span>');
+            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`infantry`)">Infanteries &nbsp;&nbsp;</span>');
         }
         if (souteFilter === 'support') {
-            $('#menu_soute').append('<span class="listRes cy">Support</span>');
+            $('#menu_soute').append('<span class="menuTab cy">Support &nbsp;&nbsp;</span>');
         } else {
-            $('#menu_soute').append('<span class="listRes klik" onclick="setSouteFilter(`support`)">Support</span>');
+            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`support`)">Support &nbsp;&nbsp;</span>');
         }
         if (souteFilter === 'cyberobots') {
-            $('#menu_soute').append('<span class="listRes cy">Cyber & Robots</span>');
+            $('#menu_soute').append('<span class="menuTab cy">Cyber & Robots &nbsp;&nbsp;</span>');
         } else {
-            $('#menu_soute').append('<span class="listRes klik" onclick="setSouteFilter(`cyberobots`)">Cyber & Robots</span>');
+            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`cyberobots`)">Cyber & Robots &nbsp;&nbsp;</span>');
         }
         if (souteFilter === 'vehicles') {
-            $('#menu_soute').append('<span class="listRes cy">Véhicules</span>');
+            $('#menu_soute').append('<span class="menuTab cy">Véhicules &nbsp;&nbsp;</span>');
         } else {
-            $('#menu_soute').append('<span class="listRes klik" onclick="setSouteFilter(`vehicles`)">Véhicules</span>');
+            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`vehicles`)">Véhicules &nbsp;&nbsp;</span>');
         }
         if (souteFilter === 'prefabs') {
-            $('#menu_soute').append('<span class="listRes cy">Préfabriqués</span>');
+            $('#menu_soute').append('<span class="menuTab cy">Préfabriqués</span>');
         } else {
-            $('#menu_soute').append('<span class="listRes klik" onclick="setSouteFilter(`prefabs`)">Préfabriqués</span>');
+            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`prefabs`)">Préfabriqués</span>');
         }
     }
 };
@@ -117,13 +117,17 @@ function landerMenu() {
             rcol = 'cy';
         }
         if (landerId === slId) {
-            $('#menu_lander').append('<span class="listRes cy">'+landerBatType.name+' <span class="brunf">(<span class="'+ucol+'">'+transUnitLeft+'</span>&ndash;<span class="'+rcol+'">'+transResLeft+'</span>)</span></span>');
+            $('#menu_lander').append('<span class="menuTab cy">'+landerBatType.name+' <span class="brunf">(<span class="'+ucol+'">'+transUnitLeft+'</span>&ndash;<span class="'+rcol+'">'+transResLeft+'</span>)</span></span>');
         } else {
-            $('#menu_lander').append('<span class="listRes klik" onclick="landerSelection('+landerId+')">'+landerBatType.name+' <span class="brunf">('+transUnitLeft+'&ndash;'+transResLeft+')</span></span>');
+            $('#menu_lander').append('<span class="menuTab klik" onclick="landerSelection('+landerId+')">'+landerBatType.name+' <span class="brunf">('+transUnitLeft+'&ndash;'+transResLeft+')</span></span>');
         }
         if (landerBat.chief != undefined) {
             if (landerBat.chief != '') {
-                $('#menu_lander').append('<span class="listRes gf">('+landerBat.chief+')</span>&nbsp;');
+                if (landerId === slId) {
+                    $('#menu_lander').append('<span class="menuTab cyf">('+landerBat.chief+') &nbsp;&nbsp;</span>');
+                } else {
+                    $('#menu_lander').append('<span class="menuTab gf">('+landerBat.chief+') &nbsp;&nbsp;</span>');
+                }
             }
         }
     });
@@ -411,11 +415,45 @@ function viewLanderRes() {
     if (landerBat.eq === 'megafret') {
         transResMax = Math.round(resMax*1.2);
     }
+    let numCit = getLanderNumCit(slId,126);
+    let numCrim = getLanderNumCit(slId,225);
     $('#lresList').append('<br>');
     $('#lresList').append('<span class="paramName">Maximum Fret</span><span class="paramIcon"></span><span class="paramValue">'+transResMax+'</span><br>');
     $('#lresList').append('<span class="paramName">Charge</span><span class="paramIcon"></span><span class="paramValue">'+transResIn+'</span><br>');
     $('#lresList').append('<span class="paramName">Reste</span><span class="paramIcon"></span><span class="paramValue">'+transResLeft+'</span><br>');
+    $('#lresList').append('<span class="paramName">Ressources</span><span class="paramIcon cy"><i class="far fa-gem"></i></span><span class="paramValue cy klik" title="Remettre toutes les ressources dans la soute" onclick="emptyLanderRes()">Vider</span><br>');
     $('#lresList').append('<br>');
+    $('#lresList').append('<span class="paramName">Citoyens</span><span class="paramIcon"></span><span class="paramValue">'+numCit+'</span><br>');
+    $('#lresList').append('<span class="paramName">Criminels</span><span class="paramIcon"></span><span class="paramValue">'+numCrim+'</span><br>');
+    $('#lresList').append('<span class="paramName">Citoyens & Criminels</span><span class="paramIcon cy"><i class="far fa-user"></i></span><span class="paramValue cy klik" title="Remettre tous les citoyens dans la soute" onclick="emptyLanderCit()">Vider</span><br>');
+    $('#lresList').append('<br>');
+};
+
+function getLanderNumCit(landerId,citId) {
+    let numCit = 0;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'trans' && bat.locId === landerId && bat.typeId === citId) {
+            numCit = numCit+bat.citoyens;
+        }
+    });
+    return numCit;
+};
+
+function emptyLanderCit() {
+    bataillons.forEach(function(bat) {
+        if (bat.typeId === 126 || bat.typeId === 225) {
+            if (bat.loc === 'trans' && bat.locId === slId) {
+                loadBat(bat.id,souteId,slId);
+            }
+        }
+    });
+    goSoute();
+};
+
+function emptyLanderRes() {
+    let landerBat = getBatById(slId);
+    moveResCost(landerBat.transRes,slId,souteId,1);
+    goSoute();
 };
 
 function missionRes() {
@@ -430,6 +468,20 @@ function missionRes() {
     let colour = '';
     let costsOK = false;
     let combinedCosts = {};
+    // CITOYENS
+    $('#fillList').append('<br><span class="constName or">CITOYENS</span><br>');
+    let numCit = getLanderNumCit(souteId,126);
+    if (numCit < 6) {
+        $('#fillList').append('<span class="constName gff">&cross; 6 Citoyens</span><br>');
+    } else {
+        $('#fillList').append('<span class="constName klik cyf" onclick="missionCit(126)">&check; 6 Citoyens</span><br>');
+    }
+    let numCrim = getLanderNumCit(souteId,225);
+    if (numCrim < 6) {
+        $('#fillList').append('<span class="constName gff">&cross; 6 Criminels</span><br>');
+    } else {
+        $('#fillList').append('<span class="constName klik cyf" onclick="missionCit(225)">&check; 6 Criminels</span><br>');
+    }
     // BATIMENTS
     let allUnitsList = unitTypes.slice();
     let sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'cat'),'kind');
@@ -695,6 +747,11 @@ function missionResUnit(unitId) {
     // console.log(prepaBld);
 };
 
+function missionCit(citId) {
+    moveCit(citId,souteId,slId,6);
+    goSoute();
+};
+
 function moveCit(citId,fromId,toId,number) {
     let fromBat = getBatById(fromId);
     let toBat = getBatById(toId);
@@ -737,6 +794,9 @@ function moveResCost(costs,fromId,toId,number) {
                     console.log('tranfert de ressource inexistante !!!!');
                 } else {
                     fromBat.transRes[res.name] = fromBat.transRes[res.name]-(value*number);
+                }
+                if (fromBat.transRes[res.name] <= 0) {
+                    delete fromBat.transRes[res.name];
                 }
                 if (toBat.transRes[res.name] === undefined) {
                     toBat.transRes[res.name] = (value*number);

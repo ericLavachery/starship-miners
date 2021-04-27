@@ -21,7 +21,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // DEPLOIEMENT
-    if (playerInfos.onShip && inSoute && batType.name != 'Soute') {
+    if (playerInfos.onShip && inSoute && batType.name != 'Soute' && !batType.skills.includes('transorbital')) {
         if (bat.locId === souteId) {
             let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
             let enoughRes = checkCost(deployCosts);

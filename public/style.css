@@ -1,18 +1,13 @@
 body {
     margin: 6px 4px 0 4px;
-    /* font-family: 'Roboto Condensed', sans-serif; */
     font-family: 'Oxanium', cursive;
-    /* font-family: 'Bungee Inline', cursive; */
-    /* font-family: 'Rock Salt', cursive; */
     background-color: black;
     background-image: url(/static/img/rayures.jpg);
     background-repeat: no-repeat;
 }
 .woodBlock {
     background-color: black;
-    /* font-weight: 600; */
     font-size: 13px;
-    /* color: #b6a7b5; */
     color: #d5cabd;
     padding: 8px 8px;
     border-style: solid;
@@ -243,6 +238,12 @@ h5 {
     margin-right: 8px;
     font-weight: bold;
 }
+.menuTab {
+    display: inline-block;
+    font-size: 14px;
+    text-align: left;
+    font-weight: bold;
+}
 .resBlock {
     background-color: black;
     font-size: 14px;
@@ -428,14 +429,10 @@ h5 {
     text-align: right;
     font-size: 12px;
     color: #d5cabd;
-    /* font-weight: bold; */
 }
 .warnings {
-    /* font-family: 'Roboto Condensed', sans-serif; */
     text-align: right;
-    /* font-size: 14px; */
     color: #d5cabd;
-    /* font-weight: bold; */
 }
 .bd {
     font-weight: bold;
@@ -443,6 +440,9 @@ h5 {
 .cy {
     color: #6be9b4;
     font-weight: bold;
+}
+.bcy {
+    color: #6be9b4;
 }
 .neutre {
     color: #d5cabd;
@@ -723,32 +723,34 @@ td {
     display: none;
 }
 #menu_soute {
-    background-image: url(/static/img/plate-vdork-small.jpg);
+    background-image: url(/static/img/plate-dork-mid.jpg);
     background-position: right 0% 0%;
-    width: 500px;
+    height: 50px;
+    width: 495px;
 }
 #list_soute {
-    background-image: url(/static/img/plate-vdork-small.jpg);
+    background-image: url(/static/img/plate-dork-mid.jpg);
     background-position: right 0% 0%;
     scroll-behavior: auto;
     scrollbar-color: #4C4845 #17161A;
     overflow-y: scroll;
     height: 1000px;
-    width: 500px;
+    width: 495px;
 }
 #menu_lander {
-    background-image: url(/static/img/plate-vdork-small.jpg);
+    background-image: url(/static/img/plate-dork-mid.jpg);
     background-position: right 0% 0%;
-    width: 500px;
+    height: 50px;
+    width: 495px;
 }
 #list_lander {
-    background-image: url(/static/img/plate-vdork-small.jpg);
+    background-image: url(/static/img/plate-dork-mid.jpg);
     background-position: right 0% 0%;
     scroll-behavior: auto;
     scrollbar-color: #4C4845 #17161A;
     overflow-y: scroll;
     height: 1000px;
-    width: 500px;
+    width: 495px;
 }
 .terTypeButton {
     margin: 0 0 0 0;
