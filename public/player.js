@@ -1292,8 +1292,8 @@ function missionResults(onlyLanders) {
 
 function addStartPack() {
     addFreeBat(1830,'Soute');
-    addFreeBat(1890,'Trolley');
     addFreeBat(1831,'Lander');
+    addFreeBat(1890,'Trolley');
     addFreeBat(1834,'Poste de pilotage');
     addFreeBat(1949,'Serres hydroponiques');
     addFreeBat(1948,'Cantine');

@@ -7,11 +7,12 @@ function goSoute() {
     if (souteTab === 'unitz') {
         souteList();
         landerList();
+        showBatInfos(selectedBat);
     } else if (souteTab === 'rez') {
         missionRes();
         viewLanderRes();
+        voirReserve();
     }
-    showBatInfos(selectedBat);
     commandes();
 };
 
@@ -128,7 +129,11 @@ function landerMenu() {
                 } else {
                     $('#menu_lander').append('<span class="menuTab gf">('+landerBat.chief+') &nbsp;&nbsp;</span>');
                 }
+            } else {
+                $('#menu_lander').append('<span class="menuTab gf"> &nbsp;&nbsp;</span>');
             }
+        } else {
+            $('#menu_lander').append('<span class="menuTab gf"> &nbsp;&nbsp;</span>');
         }
     });
 };
@@ -696,7 +701,6 @@ function missionResInfra(infraName,road) {
     if (infra.cat === 'drogue') {
         number = 10;
     }
-    // addCost(infra.costs,number);
     moveResCost(infra.costs,souteId,slId,number);
     if (prepaBld[infra.name] === undefined) {
         prepaBld[infra.name] = number;
@@ -727,8 +731,6 @@ function missionResUnit(unitId) {
     let unit = getBatTypeById(unitId);
     moveResCost(unit.costs,souteId,slId,1);
     moveResCost(unit.deploy,souteId,slId,1);
-    // addCost(unit.costs,1);
-    // addCost(unit.deploy,1);
     let reqCit = unit.squads*unit.squadSize*unit.crew;
     if (unit.skills.includes('clone')) {
         reqCit = 0;
@@ -744,7 +746,6 @@ function missionResUnit(unitId) {
         prepaBld[unit.name] = prepaBld[unit.name]+1;
     }
     goSoute();
-    // console.log(prepaBld);
 };
 
 function missionCit(citId) {

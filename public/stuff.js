@@ -175,7 +175,7 @@ function warning(title,body,noHand) {
 };
 
 function getStartPack(gang) {
-    let packName = 'startpack-'+gang;
+    let packName = 'startpack';
     let pack = {};
     let index = armorTypes.findIndex((obj => obj.name == packName));
     if (index > -1) {

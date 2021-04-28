@@ -12,7 +12,6 @@ const _ = require('underscore');
 // pages statiques dossier public/
 app.use('/static', express.static(__dirname + '/public'));
 app.use('/static', express.static(__dirname + '/node_modules/rpg-awesome'));
-// app.use('/static', express.static(__dirname + '/node_modules/rpg-awesome/fonts'));
 
 // router - ouais, on disait...
 app.get('/', function (req, res) {
