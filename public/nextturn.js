@@ -1174,23 +1174,6 @@ function checkDeath(bat,batType) {
     }
 };
 
-function killBatList() {
-    bataillons.slice().reverse().forEach(function(bat,index,object) {
-      if (deadBatsList.includes(bat.id)) {
-        bataillons.splice(object.length-1-index,1);
-      }
-    });
-};
-
-function killAlienList() {
-    aliens.slice().reverse().forEach(function(bat,index,object) {
-      if (deadAliensList.includes(bat.id)) {
-        aliens.splice(object.length-1-index,1);
-      }
-    });
-    deadAliensList = [];
-};
-
 function tagDelete(bat,tag) {
     if (bat.tags.includes(tag)) {
         tagIndex = bat.tags.indexOf(tag);

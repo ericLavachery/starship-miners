@@ -1,6 +1,8 @@
 function clickTile(tileId) {
     if (stopMe === false) {
-        if (Object.keys(batDebarq).length >= 1) {
+        if (modeLanding) {
+            clickLanding(tileId);
+        } else if (Object.keys(batDebarq).length >= 1) {
             clickDebarq(tileId);
         } else if (Object.keys(conselUnit).length >= 1) {
             if (conselPut === undefined) {
