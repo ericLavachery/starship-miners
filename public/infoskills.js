@@ -40,6 +40,15 @@ function skillsInfos(bat,batType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Renvoyer le bataillon dans la soute" class="boutonMarine bigButtons" onclick="batUndeploy('+bat.id+')"><i class="fas fa-sign-out-alt fa-flip-horizontal"></i></button>&nbsp; Renvoyer</h4></span>');
         }
     }
+    if (playerInfos.onShip && batType.skills.includes('transorbital') && batType.name != 'Soute') {
+        if (!bat.tags.includes('deploy')) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Inclure ce lander dans la prochaine mission" class="boutonRouge bigButtons" onclick="landerDeploy('+bat.id+')"><i class="fas fa-plane-departure"></i></button>&nbsp; Inclure</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h3><button type="button" title="Ne pas inclure ce lander dans la prochaine mission" class="boutonGris bigButtons gf"><i class="fas fa-bed"></i></button>&nbsp; Rester</h3></span>');
+        } else {
+            $('#unitInfos').append('<span class="blockTitle"><h3><button type="button" title="Inclure ce lander dans la prochaine mission" class="boutonGris bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Inclure</h3></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ne pas inclure ce lander dans la prochaine mission" class="boutonRouge bigButtons" onclick="landerDeploy('+bat.id+')"><i class="fas fa-bed"></i></button>&nbsp; Rester</h4></span>');
+        }
+    }
     // RAVITAILLEMENT DROGUES
     let anyRavit = checkRavitDrug(bat);
     if (anyRavit && bat.tags.includes('dU') && batType.skills.includes('dealer') && !playerInfos.onShip) {

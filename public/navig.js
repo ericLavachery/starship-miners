@@ -31,10 +31,12 @@ function commandes() {
             $('#commandz').append('<button type="button" title="Ressources présentes dans la zone" class="boutonGris iconButtons" onclick="voirRessources()"><i class="far fa-gem"></i></button>');
         }
         if (!modeSonde) {
-            if (!inSoute) {
-                $('#commandz').append('<button type="button" title="Aller dans la soute" class="boutonGris iconButtons" onclick="goSoute()"><i class="fas fa-warehouse"></i></button>');
-            } else {
-                $('#commandz').append('<button type="button" title="Revenir sur la carte de la station" class="boutonGris iconButtons" onclick="goStation()"><i class="fas fa-chess-board"></i></button>');
+            if (playerInfos.onShip) {
+                if (!inSoute) {
+                    $('#commandz').append('<button type="button" title="Aller dans la soute" class="boutonGris iconButtons" onclick="goSoute()"><i class="fas fa-warehouse"></i></button>');
+                } else {
+                    $('#commandz').append('<button type="button" title="Revenir sur la carte de la station" class="boutonGris iconButtons" onclick="goStation()"><i class="fas fa-chess-board"></i></button>');
+                }
             }
             $('#commandz').append('<button type="button" title="Crafting" class="boutonGris iconButtons" onclick="craftWindow()"><i class="fas fa-toolbox"></i></button>');
             $('#commandz').append('<button type="button" title="Réserve" class="boutonGris iconButtons" onclick="voirReserve()"><i class="fas fa-piggy-bank"></i></button>');
@@ -89,7 +91,7 @@ function commandes() {
             } else {
                 $('#commandz').append('<button type="button" title="Maximum de cartes atteint" class="boutonGris iconButtons"><i class="fas fa-map"></i></button>');
             }
-            $('#commandz').append('<button type="button" title="Sauvegarder la nouvelle carte" class="boutonBrun iconButtons" onclick="saveMapAs()"><i class="fas fa-save"></i></button>');
+            $('#commandz').append('<button type="button" title="Sauvegarder la nouvelle carte" class="boutonBrun iconButtons" onclick="saveMapAs(999)"><i class="fas fa-save"></i></button>');
         }
         $('#commandz').append('<br>');
         if (!modeSonde && !playerInfos.onShip) {
@@ -100,9 +102,17 @@ function commandes() {
             $('#commandz').append('<button type="button" title="Supprimer tous les aliens" class="boutonRouge iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
             $('#commandz').append('<br>');
             $('#commandz').append('<button type="button" title="Rapport de mission (estimation)" class="boutonRouge iconButtons" onclick="missionResults(false)"><i class="fas fa-balance-scale"></i></button>');
-            $('#commandz').append('<button type="button" title="Rentrer au vaisseau mère + Rapport de mission" class="boutonRouge iconButtons" onclick="missionResults(true)"><i class="fas fa-space-shuttle"></i></button>');
-            $('#commandz').append('<hr>');
+            // $('#commandz').append('<button type="button" title="Rentrer au vaisseau mère + Rapport de mission" class="boutonRouge iconButtons" onclick="missionResults(true)"><i class="fas fa-space-shuttle"></i></button>');
         }
+        if (!modeSonde && !inSoute) {
+            $('#commandz').append('<hr>');
+            if (playerInfos.onShip) {
+                $('#commandz').append('<button type="button" title="Partir en mission" class="boutonRouge iconButtons" onclick="startMission()"><i class="fas fa-space-shuttle"></i></button>');
+            } else {
+                $('#commandz').append('<button type="button" title="Rentrer à la station" class="boutonRouge iconButtons" onclick="stopMission()"><i class="fas fa-space-shuttle"></i></button>');
+            }
+        }
+        $('#commandz').append('<hr>');
         $('#commandz').append('<button type="button" title="Nouvelle campagne" class="boutonRose iconButtons" onclick="newGame()"><i class="fas fa-chess-queen"></i></button>');
         $('#commandz').append('<button type="button" title="Ajouter le pack de ressources" class="boutonRose iconButtons" onclick="addStartPack()"><i class="fas fa-coins"></i></button>');
     }

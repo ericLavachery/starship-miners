@@ -84,6 +84,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.gLevel === undefined) {
         playerInfos.gLevel = 4;
     }
+    if (playerInfos.missionZone === undefined) {
+        playerInfos.missionZone = 1;
+    }
     if (playerInfos.fndComps === undefined) {
         playerInfos.fndComps = 0;
     }

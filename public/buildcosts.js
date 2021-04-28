@@ -11,9 +11,9 @@ function voirReserve() {
     $('#conUnitList').append('<span class="constName or" id="gentils">RESERVE</span><br>');
     findLanders();
     let dispoCit = getDispoCit();
-    $('#conUnitList').append('<span class="paramName">Citoyens</span><span class="paramIcon"></span><span class="paramValue cy">'+dispoCit+'</span><br>');
+    $('#conUnitList').append('<span class="paramResName">Citoyens</span><span class="paramIcon"></span><span class="paramResValue cy">'+dispoCit+'</span><br>');
     let dispoCrim = getDispoCrim();
-    $('#conUnitList').append('<span class="paramName">Criminels</span><span class="paramIcon"></span><span class="paramValue cy">'+dispoCrim+'</span><br>');
+    $('#conUnitList').append('<span class="paramResName">Criminels</span><span class="paramIcon"></span><span class="paramResValue cy">'+dispoCrim+'</span><br>');
     let dispoRes;
     let minedRes;
     let resIcon;
@@ -24,16 +24,19 @@ function voirReserve() {
         minedRes = getMinedRes(res.name);
         resIcon = getResIcon(res);
         if (dispoRes >= 1) {
-            if (res.cat === 'alien' || minedRes <= 0) {
-                $('#conUnitList').append('<span class="paramName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="cy">'+dispoRes+'</span></span><br>');
+            if (playerInfos.onShip && inSoute && souteTab === 'rez' && res.cat != 'alien' && dispoRes >= 50) {
+                $('#conUnitList').append('<span class="paramResName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander">&nbsp;50 >>></span>');
+            } else if (res.cat === 'alien' || minedRes <= 0) {
+                $('#conUnitList').append('<span class="paramResName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span>');
             } else {
-                $('#conUnitList').append('<span class="paramName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span><br>');
+                $('#conUnitList').append('<span class="paramResName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span>');
             }
             playerInfos.reserve[res.name] = dispoRes;
         } else {
             playerInfos.reserve[res.name] = 0;
         }
     });
+    $('#conUnitList').append('<br><br>');
 };
 
 function checkReserve() {

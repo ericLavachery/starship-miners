@@ -347,8 +347,10 @@ function batInfos(bat,pop) {
             $('#'+bodyPlace).append('<div class="shSpace"></div>');
             skillsInfos(bat,batType);
         } else {
-            transInfos(bat,batType);
-            defabInfos(bat,batType);
+            if (!playerInfos.onShip) {
+                transInfos(bat,batType);
+                defabInfos(bat,batType);
+            }
         }
     } else {
         weaponsInfos(bat,batType,pop);

@@ -169,7 +169,6 @@ h5 {
     text-align: right;
     margin-right: 3px;
     min-height: 17px;
-    /* font-weight: bold; */
 }
 .paramIcon {
     text-align: center;
@@ -180,6 +179,18 @@ h5 {
 }
 .paramValue {
     display: inline-block;
+    font-weight: bold;
+}
+.paramResName {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 3px;
+    min-height: 17px;
+}
+.paramResValue {
+    display: inline-block;
+    width: 70px;
     font-weight: bold;
 }
 .craftsList {

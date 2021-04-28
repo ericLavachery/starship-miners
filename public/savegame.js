@@ -50,8 +50,11 @@ function getNextZoneNumber() {
     return idz[0];
 };
 
-function saveMapAs() {
-    let nextZoneNum = getNextZoneNumber();
+function saveMapAs(zoneNumber) {
+    let nextZoneNum = 0;
+    if (zoneNumber >= 900) {
+        nextZoneNum = getNextZoneNumber();
+    }
     zone[0].number = nextZoneNum;
     zoneFiles.push(nextZoneNum);
     savePlayerInfos();
@@ -61,6 +64,21 @@ function saveMapAs() {
     bataillons = [];
     socket.emit('save-bataillons-as',[bataillons,nextZoneNum]);
     showMap(zone,true);
+    commandes();
+};
+
+function saveCurrentZoneAs(zoneNumber) {
+    let nextZoneNum = 0;
+    if (zoneNumber >= 900) {
+        nextZoneNum = getNextZoneNumber();
+    }
+    zone[0].number = nextZoneNum;
+    zoneFiles.push(nextZoneNum);
+    // savePlayerInfos();
+    socket.emit('save-map-as',[zone,nextZoneNum]);
+    socket.emit('save-aliens-as',[aliens,nextZoneNum]);
+    socket.emit('save-bataillons-as',[bataillons,nextZoneNum]);
+    // showMap(zone,true);
     commandes();
 };
 
