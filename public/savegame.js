@@ -84,14 +84,14 @@ function saveCurrentZoneAs(zoneNumber) {
 
 function saveMapForReturn() {
     let zoneNum = zone[0].number;
-    savePlayerInfos();
+    // savePlayerInfos();
     if (playerInfos.mapTurn < 50) {
         zone[0].mapDiff = zone[0].mapDiff+1;
     }
     socket.emit('save-map-as',[zone,zoneNum]);
     saveAliensForReturn(zoneNum);
     saveBataillonsForReturn(zoneNum);
-    showMap(zone,true);
+    // showMap(zone,true);
     commandes();
 };
 
@@ -101,11 +101,31 @@ function saveAliensForReturn(zoneNum) {
         let batType = getBatType(bat);
         bat.creaTurn = 0;
         if (batType.moveCost >= 90) {
-            if (batType.name === 'Cocon' || batType.name === 'Coque') {
-                alienMorph(bat,'Volcan',false);
+            if (batType.name === 'Coque') {
+                if (rand.rand(1,100) <= 20) {
+                    alienMorph(bat,'Volcan',false);
+                } else {
+                    deadAliensList.push(bat.id);
+                }
             }
-            if (batType.name === 'Oeuf voilé' || batType.name === 'Oeuf' || batType.name === 'Vomissure') {
-                alienMorph(bat,'Ruche',false);
+            if (batType.name === 'Cocon') {
+                deadAliensList.push(bat.id);
+            }
+            if (batType.name === 'Oeuf voilé' || batType.name === 'Oeuf') {
+                if (rand.rand(1,100) <= 20) {
+                    alienMorph(bat,'Flaque',false);
+                } else {
+                    deadAliensList.push(bat.id);
+                }
+            }
+            if (batType.name === 'Vomissure') {
+                deadAliensList.push(bat.id);
+            }
+            if (batType.name === 'Ruche' && rand.rand(1,100) <= 75) {
+                deadAliensList.push(bat.id);
+            }
+            if (batType.name === 'Volcan' && rand.rand(1,100) <= 75) {
+                deadAliensList.push(bat.id);
             }
             if (batType.name === 'Flaque' && rand.rand(1,100) <= 10) {
                 alienMorph(bat,'Oeuf',false);

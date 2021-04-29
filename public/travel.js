@@ -1,6 +1,7 @@
 function startMission() {
     $('#unitInfos').empty();
     $('#tileInfos').empty();
+    batUnselect();
     // créer db batsInSpace, avec les landers marqués deploy=true et toutes les unités qui sont dedans
     createBatsInSpace();
     // virer ces landers et ces unités de la bd bataillons
@@ -23,15 +24,21 @@ function startMission() {
 };
 
 function stopMission() {
+    $('#unitInfos').empty();
+    $('#tileInfos').empty();
+    batUnselect();
     // créer db batsInSpace, avec les landers et toutes les unités qui sont dedans
+    createBatsInSpace();
     // virer ces landers et ces unités de la bd bataillons
+    removeDeployedBats();
     // sauvegarder la zone pour un retour
+    saveMapForReturn();
     // charger la zone STATION
-    // rajouter toutes les unités de la db batsInSpace dans la db bataillons
-    // les landers vont à leur place dans la station
-    // toutes les unités vont dans la soute
-    // toutes les unités sont soignées et perdent leurs tags temporaires
-    // virer la db batsInSpace
+    loadZone(0);
+    playerInfos.onShip = true;
+    inSoute = false;
+    modeLanding = true;
+    landingList();
 };
 
 function landingList() {
@@ -69,6 +76,10 @@ function landingList() {
     } else {
         modeLanding = false;
         conWindowOut();
+        if (playerInfos.onShip) {
+            checkSelectedLanderId();
+            healEverything();
+        }
     }
 };
 
@@ -112,7 +123,6 @@ function clickLanding(tileId) {
 function atterrissageSurZone(landerBat,landerBatType,tileId) {
     deadBatsList = [];
     landerBat.tileId = tileId;
-    landerBat.oldTileId = tileId;
     bataillons.push(landerBat);
     deadBatsList.push(landerBat.id);
     batsInSpace.forEach(function(bat) {
@@ -126,7 +136,29 @@ function atterrissageSurZone(landerBat,landerBatType,tileId) {
     killSpaceBatList();
     showMap(zone,true);
     warning('Atterrissage réussi','');
-    console.log(batsInSpace);
+    // console.log(batsInSpace);
+};
+
+function healEverything() {
+    // toutes les unités vont dans la soute
+    // toutes les unités sont soignées et perdent leurs tags temporaires
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (bat.loc === 'trans' && bat.locId != souteId) {
+            loadBat(bat.id,souteId,bat.locId);
+            bat.squadsLeft = batType.squads;
+            bat.damage = 0;
+            bat.apLeft = bat.ap;
+            bat.oldapLeft = bat.ap;
+            bat.salvoLeft = batType.maxSalvo;
+            let gearTags = getBatGearTags(bat.prt,bat.eq,batType);
+            if (bat.tags.includes('zombie')) {
+                gearTags.push('zombie');
+            }
+            bat.tags = gearTags;
+            // bat.tags.push.apply(myBat.tags,gearTags);
+        }
+    });
 };
 
 function createBatsInSpace() {
@@ -148,6 +180,9 @@ function createBatsInSpace() {
             batsInSpace.push(bat);
         }
     });
+    // console.log('bataillons');
+    // console.log(bataillons);
+    // console.log('batsInSpace creation');
     // console.log(batsInSpace);
 };
 
@@ -171,6 +206,7 @@ function removeDeployedBats() {
         }
     });
     killBatList();
+    // console.log('bataillons after remove');
     // console.log(bataillons);
 };
 

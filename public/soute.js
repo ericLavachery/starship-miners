@@ -2,18 +2,23 @@ function goSoute() {
     inSoute = true;
     $("#zone_map").css("display","none");
     $("#zone_soute").css("display","block");
+    checkSelectedLanderId();
+    checkReserve();
     souteMenu();
     landerMenu();
     if (souteTab === 'unitz') {
         souteList();
         landerList();
-        showBatInfos(selectedBat);
+        if (Object.keys(selectedBat).length >= 1) {
+            showBatInfos(selectedBat);
+        }
     } else if (souteTab === 'rez') {
         missionRes();
         viewLanderRes();
         voirReserve();
     }
     commandes();
+    console.log('slId='+slId);
 };
 
 function goStation() {
@@ -141,6 +146,24 @@ function landerMenu() {
 function landerSelection(landerId) {
     slId = landerId;
     goSoute();
+};
+
+function checkSelectedLanderId() {
+    let altId = -1;
+    let idOK = false;
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (batType.skills.includes('transorbital') && batType.name != 'Soute') {
+            if (slId === bat.id) {
+                idOK = true;
+            } else {
+                altId = bat.id;
+            }
+        }
+    });
+    if (!idOK) {
+        slId = altId;
+    }
 };
 
 function souteList() {
