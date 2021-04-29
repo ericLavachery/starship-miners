@@ -27,7 +27,7 @@ function commandes() {
             $('#commandz').append('<button type="button" title="Nombres d\'oeufs en vue" class="boutonGris iconButtons" onclick="findEgg()">'+eggsNum+'</button>');
             $('#commandz').append('<br>');
         }
-        if (!playerInfos.onShip) {
+        if (!playerInfos.onShip || modeSonde) {
             $('#commandz').append('<button type="button" title="Ressources présentes dans la zone" class="boutonGris iconButtons" onclick="voirRessources()"><i class="far fa-gem"></i></button>');
         }
         if (!modeSonde) {
@@ -46,7 +46,9 @@ function commandes() {
         if (modeSonde) {
             $('#commandz').append('<br>');
         }
-        $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveGame()"><i class="far fa-save"></i> &nbsp;<span class="notsosmall">Save</span></button>');
+        if (!modeSonde) {
+            $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveGame()"><i class="far fa-save"></i> &nbsp;<span class="notsosmall">Save</span></button>');
+        }
         $('#commandz').append('<br>');
     } else if (activeTurn == 'aliens') {
         if (alienList.length >= 2) {
@@ -77,12 +79,13 @@ function commandes() {
     $('#commandz').append('&nbsp;&nbsp;Fx '+playerInfos.volFx);
     $('#commandz').append('<br>');
     if (activeTurn == 'player') {
-        $('#commandz').append('<hr>');
         if (!modeSonde) {
-            $('#commandz').append('<button type="button" title="Envoyer une sonde" class="boutonBrun iconButtons" onclick="goSonde()"><i class="fas fa-rocket"></i></button>');
-            $('#commandz').append('<button type="button" title="Charger une zone sauvegardée" class="boutonBrun iconButtons" onclick="voirZones()"><i class="fas fa-folder-open"></i></button>');
-            $('#commandz').append('<button type="button" title="Sauvegarder la carte pour un retour (supprime la plupart des aliens et bataillons!)" class="boutonBrun iconButtons" onclick="saveMapForReturn()"><i class="fas fa-file-archive"></i></button>');
+            if (hasUnit('Sonde')) {
+                $('#commandz').append('<hr>');
+                $('#commandz').append('<button type="button" title="Envoyer une sonde" class="boutonBrun iconButtons" onclick="goSonde()"><i class="fas fa-rocket"></i></button>');
+            }
         } else {
+            $('#commandz').append('<hr>');
             $('#commandz').append('<button type="button" title="Poser la sonde" class="boutonRouge iconButtons" onclick="stopSonde()"><i class="fas fa-rocket"></i></button>');
             let maxMaps = (playerInfos.comp.vsp+2)*maxMapsParDet;
             let nextMapNumber = playerInfos.sondeMaps+1;
@@ -91,7 +94,6 @@ function commandes() {
             } else {
                 $('#commandz').append('<button type="button" title="Maximum de cartes atteint" class="boutonGris iconButtons"><i class="fas fa-map"></i></button>');
             }
-            $('#commandz').append('<button type="button" title="Sauvegarder la nouvelle carte" class="boutonBrun iconButtons" onclick="saveMapAs(999)"><i class="fas fa-save"></i></button>');
         }
         $('#commandz').append('<br>');
         if (!modeSonde && !playerInfos.onShip) {
@@ -102,19 +104,28 @@ function commandes() {
             $('#commandz').append('<button type="button" title="Supprimer tous les aliens" class="boutonRouge iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
             $('#commandz').append('<br>');
             $('#commandz').append('<button type="button" title="Rapport de mission (estimation)" class="boutonRouge iconButtons" onclick="missionResults(false)"><i class="fas fa-balance-scale"></i></button>');
-            // $('#commandz').append('<button type="button" title="Rentrer au vaisseau mère + Rapport de mission" class="boutonRouge iconButtons" onclick="missionResults(true)"><i class="fas fa-space-shuttle"></i></button>');
         }
         if (!modeSonde && !inSoute) {
-            $('#commandz').append('<hr>');
             if (playerInfos.onShip) {
-                $('#commandz').append('<button type="button" title="Partir en mission" class="boutonRouge iconButtons" onclick="startMission()"><i class="fas fa-space-shuttle"></i></button>');
+                if (zoneFiles.length >= 2) {
+                    $('#commandz').append('<hr>');
+                    $('#commandz').append('<button type="button" title="Choisir une zone pour la prochaine mission" class="boutonRouge iconButtons" onclick="pickZone()"><i class="fas fa-map"></i></button>');
+                    if (playerInfos.missionZone >= 1 && isLanderDeployed()) {
+                        $('#commandz').append('<button type="button" title="Partir en mission sur la zone '+playerInfos.missionZone+'" class="boutonRouge iconButtons" onclick="startMission()"><i class="fas fa-space-shuttle"></i></button>');
+                    }
+                }
             } else {
+                $('#commandz').append('<hr>');
                 $('#commandz').append('<button type="button" title="Rentrer à la station" class="boutonRouge iconButtons" onclick="stopMission()"><i class="fas fa-space-shuttle"></i></button>');
             }
         }
-        $('#commandz').append('<hr>');
-        $('#commandz').append('<button type="button" title="Nouvelle campagne" class="boutonRose iconButtons" onclick="newGame()"><i class="fas fa-chess-queen"></i></button>');
-        $('#commandz').append('<button type="button" title="Ajouter le pack de ressources" class="boutonRose iconButtons" onclick="addStartPack()"><i class="fas fa-coins"></i></button>');
+        if (!modeSonde) {
+            $('#commandz').append('<hr>');
+            $('#commandz').append('<button type="button" title="Nouvelle campagne" class="boutonRose iconButtons" onclick="newGame()"><i class="fas fa-chess-queen"></i></button>');
+            if (bataillons.length === 0) {
+                $('#commandz').append('<button type="button" title="Ajouter le pack de ressources" class="boutonRose iconButtons" onclick="addStartPack()"><i class="fas fa-coins"></i></button>');
+            }
+        }
     }
     gangNavig();
 };
@@ -124,10 +135,11 @@ function gangNavig() {
     $('#gangInfos').append('<button type="button" title="Construire gratuitement" class="boutonCiel iconButtons" onclick="bfconst(`all`,true,false)"><i class="fa fa-hammer"></i></button>');
     $('#gangInfos').append('<button type="button" title="Remplir le lander" class="boutonCiel iconButtons" onclick="landerFill()"><i class="fas fa-dolly"></i></button>');
     $('#gangInfos').append('<button type="button" title="Editer le Gang" class="boutonCiel iconButtons" onclick="gangEdit()"><i class="fas fa-users-cog"></i></button>');
+    $('#gangInfos').append('<br>');
     if (playerInfos.pseudo === 'Test') {
-        $('#gangInfos').append('<br>');
         $('#gangInfos').append('<button type="button" title="Ajouter un peu de chaque ressource" class="boutonCiel iconButtons" onclick="allResAdd(10)"><i class="fas fa-cart-plus"></i></button>');
     }
+    $('#gangInfos').append('<button type="button" title="Charger une zone sauvegardée" class="boutonCiel iconButtons" onclick="voirZones()"><i class="fas fa-folder-open"></i></button>');
     $('#gangInfos').append('<div class="shSpace"></div>');
     $('#gangInfos').append('<span class="butSpace"></span>');
     $('#gangInfos').append(capitalizeFirstLetter(playerInfos.gang));

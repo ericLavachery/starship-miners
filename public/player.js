@@ -1353,6 +1353,7 @@ function addStartPack() {
             playerInfos.vmRes[key] = value;
         });
     }
+    commandes();
     showMap(zone,true);
     showBataillon(soute);
 };

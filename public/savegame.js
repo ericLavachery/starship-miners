@@ -18,21 +18,6 @@ function saveBataillons() {
     socket.emit('save-bataillons',bataillons);
 };
 
-function stopSonde() {
-    modeSonde = false;
-    mapSoftReset();
-    saveGame();
-    commandes();
-};
-
-function goSonde() {
-    modeSonde = true;
-    playerInfos.sondeMaps = 0;
-    savePlayerInfos();
-    showMap(zone,true);
-    commandes();
-};
-
 function getNextZoneNumber() {
     let idz = [];
     let i = 1;
@@ -51,12 +36,14 @@ function getNextZoneNumber() {
 };
 
 function saveMapAs(zoneNumber) {
-    let nextZoneNum = 0;
+    let nextZoneNum = zoneNumber;
     if (zoneNumber >= 900) {
         nextZoneNum = getNextZoneNumber();
     }
     zone[0].number = nextZoneNum;
-    zoneFiles.push(nextZoneNum);
+    if (!zoneFiles.includes(nextZoneNum)) {
+        zoneFiles.push(nextZoneNum);
+    }
     savePlayerInfos();
     socket.emit('save-map-as',[zone,nextZoneNum]);
     aliens = [];
@@ -67,13 +54,31 @@ function saveMapAs(zoneNumber) {
     commandes();
 };
 
+function saveNewMap() {
+    let nextZoneNum = getNextZoneNumber();
+    zone[0].number = nextZoneNum;
+    if (!zoneFiles.includes(nextZoneNum)) {
+        zoneFiles.push(nextZoneNum);
+    }
+    // savePlayerInfos();
+    socket.emit('save-map-as',[zone,nextZoneNum]);
+    let newMapAliens = [];
+    socket.emit('save-aliens-as',[newMapAliens,nextZoneNum]);
+    let newMapBataillons = [];
+    socket.emit('save-bataillons-as',[newMapBataillons,nextZoneNum]);
+    // showMap(zone,true);
+    commandes();
+};
+
 function saveCurrentZoneAs(zoneNumber) {
-    let nextZoneNum = 0;
+    let nextZoneNum = zoneNumber;
     if (zoneNumber >= 900) {
         nextZoneNum = getNextZoneNumber();
     }
     zone[0].number = nextZoneNum;
-    zoneFiles.push(nextZoneNum);
+    if (!zoneFiles.includes(nextZoneNum)) {
+        zoneFiles.push(nextZoneNum);
+    }
     // savePlayerInfos();
     socket.emit('save-map-as',[zone,nextZoneNum]);
     socket.emit('save-aliens-as',[aliens,nextZoneNum]);
@@ -217,6 +222,7 @@ function newGame() {
     playerInfos.onShip = true;
     playerInfos.gang = 'rednecks';
     playerInfos.gLevel = 4;
+    playerInfos.missionZone = -1;
     resetReserve();
     resetStartRes();
     resetEndRes();

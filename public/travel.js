@@ -76,9 +76,11 @@ function landingList() {
     } else {
         modeLanding = false;
         conWindowOut();
+        showedTilesReset(false);
         if (playerInfos.onShip) {
             checkSelectedLanderId();
             healEverything();
+            miniOut();
         }
     }
 };
@@ -218,7 +220,23 @@ function landerDeploy(landerId) {
         lander.tags.push('deploy');
     }
     showBatInfos(lander);
+    commandes();
 };
+
+function isLanderDeployed() {
+    let landerDeployed = false;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'zone') {
+            let batType = getBatType(bat);
+            if (batType.skills.includes('transorbital') && bat.type != 'Soute') {
+                if (bat.tags.includes('deploy')) {
+                    landerDeployed = true;
+                }
+            }
+        }
+    });
+    return landerDeployed;
+}
 
 function choisirZone() {
     // sauvegarder la zone STATION
@@ -226,4 +244,71 @@ function choisirZone() {
     // cliquer pour voir une zone (charger la zone)
     // faire son choix (changer playerInfos.missionZone)
     // charger la zone STATION
+};
+
+function stopSonde() {
+    modeSonde = false;
+    saveNewMap();
+    loadZone(0);
+    showedTilesReset(false);
+    commandes();
+};
+
+function goSonde() {
+    removeSonde();
+    saveCurrentZoneAs(0);
+    modeSonde = true;
+    playerInfos.sondeMaps = 0;
+    generateNewMap();
+    showMap(zone,true);
+    commandes();
+};
+
+function hasUnit(unitName) {
+    let youHaveIt = false;
+    bataillons.forEach(function(bat) {
+        if (bat.type === unitName) {
+            youHaveIt = true;
+        }
+    });
+    return youHaveIt;
+}
+
+function removeSonde() {
+    let sondeOut = false;
+    deadBatsList = [];
+    bataillons.forEach(function(bat) {
+        if (bat.type === 'Sonde' && !sondeOut) {
+            sondeOut = true;
+            deadBatsList.push(bat.id);
+        }
+    });
+    killBatList();
+};
+
+function pickZone() {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","800px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $('#tileInfos').empty();
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE ZONE POUR VOTRE PROCHAINE MISSION</span><br>');
+    $('#conUnitList').append('<br>');
+    zoneFiles.forEach(function(zoneId) {
+        if (zoneId != 0) {
+            $('#conUnitList').append('<span class="paramName cy klik" onclick="putMissionZone('+zoneId+')">Choisir zone '+zoneId+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik">Voir</span><br>');
+        }
+    });
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="ListRes">Pour avoir plus de zones, lancez une sonde!</span><br>');
+    $('#conUnitList').append('<br>');
+};
+
+function putMissionZone(zoneId) {
+    playerInfos.missionZone = zoneId;
+    conWindowOut();
+    commandes();
 };

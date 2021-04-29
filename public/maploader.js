@@ -37,7 +37,7 @@ function showMap(wmap,justMoved) {
     });
     let sortedVisMap = _.sortBy(_.sortBy(visMap,'y'),'x');
     sortedVisMap.forEach(function(tile) {
-        if (modeSonde && landerLandingOK(tile) && !playerInfos.showedTiles.includes(tile.id)) {
+        if ((modeSonde || modeLanding) && landerLandingOK(tile) && !playerInfos.showedTiles.includes(tile.id)) {
             playerInfos.showedTiles.push(tile.id);
         }
         resHere = showRes(tile.id);
@@ -79,6 +79,14 @@ function showMap(wmap,justMoved) {
     }
     // console.log(zone);
 };
+
+function showLanderLandingTiles() {
+    zone.forEach(function(tile) {
+        if (landerLandingOK(tile) && !playerInfos.showedTiles.includes(tile.id)) {
+            playerInfos.showedTiles.push(tile.id);
+        }
+    });
+}
 
 function landerLandingOK(tile) {
     let tileOK = false;

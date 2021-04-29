@@ -771,6 +771,14 @@ function missionResUnit(unitId) {
     goSoute();
 };
 
+function missionResSingle(resId,number) {
+    let res = getResById(resId);
+    let costs = {};
+    costs[res.name] = number;
+    moveResCost(costs,souteId,slId,1);
+    goSoute();
+};
+
 function missionCit(citId) {
     moveCit(citId,souteId,slId,6);
     goSoute();
