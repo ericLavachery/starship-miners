@@ -223,6 +223,8 @@ function newGame() {
     playerInfos.gang = 'rednecks';
     playerInfos.gLevel = 4;
     playerInfos.missionZone = -1;
+    playerInfos.sondeDanger = 1;
+    playerInfos.sondePlanet = 1;
     resetReserve();
     resetStartRes();
     resetEndRes();
@@ -260,7 +262,7 @@ function mapSoftReset() {
 };
 
 function resetPlayerInfos() {
-    playerInfos.mapAdjDiff = playerInfos.mapDiff;
+    playerInfos.mapAdjDiff = playerInfos.sondeDanger;
     playerInfos.mapTurn = 0;
     playerInfos.mapDrop = 0;
     playerInfos.cocons = 0;

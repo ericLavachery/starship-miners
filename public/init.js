@@ -30,6 +30,12 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.sondeMaps === undefined) {
         playerInfos.sondeMaps = 0;
     }
+    if (playerInfos.sondePlanet === undefined) {
+        playerInfos.sondePlanet = -1;
+    }
+    if (playerInfos.sondeDanger === undefined) {
+        playerInfos.sondeDanger = -1;
+    }
     if (playerInfos.cocons === undefined) {
         playerInfos.cocons = 0;
     }
@@ -40,7 +46,7 @@ socket.on('playerInfos-Load', function(pi) {
         playerInfos.droppedEggs = 0;
     }
     if (playerInfos.mapAdjDiff === undefined) {
-        playerInfos.mapAdjDiff = playerInfos.mapDiff;
+        playerInfos.mapAdjDiff = playerInfos.sondeDanger;
     }
     if (playerInfos.knownAliens === undefined) {
         playerInfos.knownAliens = [];
@@ -254,6 +260,9 @@ socket.on('savedZone-Load', function(newZone) {
     bataillons = newZone[1];
     createBatList();
     aliens = newZone[2];
+    if (zone[0].number === 0) {
+        showedTilesReset(false);
+    }
     showMap(zone,false);
     unitsView();
 });

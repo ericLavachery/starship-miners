@@ -10,12 +10,12 @@ function gangEdit() {
     // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="blockTitle"><h3>Player Infos</h3></span>');
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
-    // mapDiff
-    $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`mapDiff`)" title="Présence Alien sur la prochaine zone"></select>');
+    // sondeDanger (mapDiff)
+    $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`sondeDanger`)" title="Présence Alien sur la prochaine zone"></select>');
     $('#theZone').empty().append('<option value="">Pr.Alien</option>');
     let i = 0;
     while (i <= 15) {
-        if (i === playerInfos.mapDiff) {
+        if (i === playerInfos.sondeDanger) {
             $('#theZone').append('<option value="'+i+'" selected>PrA '+i+'</option>');
         } else {
             $('#theZone').append('<option value="'+i+'">PrA '+i+'</option>');
@@ -186,7 +186,7 @@ function changeBarbs(stop) {
     gangEdit();
 };
 
-function changePlayerInfo(dropMenuId,infoName) {
+function changePlayerInfo(dropMenuId,infoName,from) {
     let value = document.getElementById(dropMenuId).value;
     if (value === 'true') {
         playerInfos[infoName] = true;
@@ -197,10 +197,15 @@ function changePlayerInfo(dropMenuId,infoName) {
     } else {
         playerInfos[infoName] = +value;
     }
-    maxGangCompCosts();
-    savePlayerInfos();
-    gangNavig();
-    gangEdit();
+    if (from === 'sonde') {
+        editSonde();
+        commandes();
+    } else {
+        maxGangCompCosts();
+        savePlayerInfos();
+        gangNavig();
+        gangEdit();
+    }
 };
 
 function changeComp(dropMenuId,compName) {

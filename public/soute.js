@@ -123,7 +123,7 @@ function landerMenu() {
             rcol = 'cy';
         }
         if (landerId === slId) {
-            $('#menu_lander').append('<span class="menuTab cy">'+landerBatType.name+' <span class="brunf">(<span class="'+ucol+'">'+transUnitLeft+'</span>&ndash;<span class="'+rcol+'">'+transResLeft+'</span>)</span></span>');
+            $('#menu_lander').append('<span class="menuTab cy klik" onclick="landerSelection('+landerId+')">'+landerBatType.name+' <span class="brunf">(<span class="'+ucol+'">'+transUnitLeft+'</span>&ndash;<span class="'+rcol+'">'+transResLeft+'</span>)</span></span>');
         } else {
             $('#menu_lander').append('<span class="menuTab klik" onclick="landerSelection('+landerId+')">'+landerBatType.name+' <span class="brunf">('+transUnitLeft+'&ndash;'+transResLeft+')</span></span>');
         }
@@ -145,6 +145,9 @@ function landerMenu() {
 
 function landerSelection(landerId) {
     slId = landerId;
+    let landerBat = getBatById(slId);
+    batSelect(landerBat);
+    showBatInfos(selectedBat);
     goSoute();
 };
 
@@ -194,6 +197,10 @@ function souteList() {
 
 function landerList() {
     $('#list_lander').empty();
+    let landerBat = getBatById(slId);
+    if (!landerBat.tags.includes('deploy')) {
+        $('#list_lander').append('<br><span class="listRes or">&nbsp Ce vaisseau n\'est pas déployé</span>');
+    }
     let landersIds = getStationLandersIds();
     souteBatList('infantry',playerInfos.gang,'','robot',landersIds,slId);
     souteBatList('infantry','','clone','',landersIds,slId);
@@ -257,8 +264,8 @@ function batListElement(bat,batType,idOfLander) {
     }
     let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
     let enoughRes = checkCost(deployCosts);
-    let enoughPlace = checkPlaceLander(bat,batType,slId);
-    if (!enoughRes || !enoughPlace) {
+    let deployInfo = checkPlaceLander(bat,batType,slId);
+    if (!enoughRes || !deployInfo[0] || !deployInfo[1] || !deployInfo[2]) {
         if (bat.id === selectedBat.id) {
             blockType = 'souteBlockCheck';
         } else {
@@ -343,6 +350,37 @@ function batUndeploy(batId) {
     goSoute();
 };
 
+function landerDeploy(landerId) {
+    let landerBat = getBatById(landerId);
+    let landerBatType = getBatType(landerBat);
+    let deployCosts = landerBatType.deploy;
+    let enoughRes = checkCost(deployCosts);
+    if (enoughRes) {
+        payCost(deployCosts);
+    } else {
+        console.log('not enough res');
+    }
+    landerBat.tags.push('deploy');
+    showBatInfos(landerBat);
+    commandes();
+    if (inSoute) {
+        goSoute();
+    }
+};
+
+function landerUnDeploy(landerId) {
+    let landerBat = getBatById(landerId);
+    let landerBatType = getBatType(landerBat);
+    let deployCosts = landerBatType.deploy;
+    addCost(deployCosts,1);
+    tagDelete(landerBat,'deploy');
+    showBatInfos(landerBat);
+    commandes();
+    if (inSoute) {
+        goSoute();
+    }
+};
+
 function loadBat(batId,transBatId,oldTransBatId) {
     let bat = getBatById(batId);
     let transBat = getBatById(transBatId);
@@ -419,17 +457,21 @@ function showCostsDetail(deployCosts,bat) {
 };
 
 function checkPlaceLander(myBat,myBatType,landerId) {
-    let enoughPlace = false;
+    let deployInfo = [false,false,false];
     let myLander = getBatById(landerId);
     let myLanderType = getBatType(myLander);
-    if (myLanderType.transMaxSize >= myBatType.size) {
-        let batVolume = calcVolume(myBat,myBatType);
-        let placeLeft = calcTransUnitsLeft(myLander,myLanderType);
-        if (placeLeft+25 >= batVolume) {
-            enoughPlace = true;
-        }
+    if (myLander.tags.includes('deploy')) {
+        deployInfo[0] = true;
     }
-    return enoughPlace;
+    if (myLanderType.transMaxSize >= myBatType.size) {
+        deployInfo[1] = true;
+    }
+    let batVolume = calcVolume(myBat,myBatType);
+    let placeLeft = calcTransUnitsLeft(myLander,myLanderType);
+    if (placeLeft+25 >= batVolume) {
+        deployInfo[2] = true;
+    }
+    return deployInfo;
 };
 
 function viewLanderRes() {

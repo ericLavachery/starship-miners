@@ -89,7 +89,7 @@ function createMap(size) {
         if (newTile.id === 0) {
             newTile.number = nextZoneNum;
             newTile.dark = false;
-            newTile.mapDiff = playerInfos.mapDiff;
+            newTile.mapDiff = playerInfos.sondeDanger;
             newTile.pKind = checkMapKind('P');
             newTile.gKind = checkMapKind('G');
             newTile.sKind = checkMapKind('S');
@@ -130,17 +130,17 @@ function createMap(size) {
 function checkMapKind(terName) {
     let dice = rand.rand(1,12);
     if (terName === 'P') {
-        if (dice <= 6 || playerInfos.mapDiff <= 1) {
+        if (dice <= 6 || playerInfos.sondeDanger <= 1) {
             return 'bug';
-        } else if (dice <= 8 || playerInfos.mapDiff <= 2) {
+        } else if (dice <= 8 || playerInfos.sondeDanger <= 2) {
             return 'spider';
         } else {
             return 'swarm';
         }
     } else if (terName === 'G') {
-        if (dice <= 2 || playerInfos.mapDiff <= 1) {
+        if (dice <= 2 || playerInfos.sondeDanger <= 1) {
             return 'bug';
-        } else if (dice <= 6 || playerInfos.mapDiff <= 2) {
+        } else if (dice <= 6 || playerInfos.sondeDanger <= 2) {
             return 'spider';
         } else if (dice <= 9) {
             return 'larve';
@@ -685,18 +685,18 @@ function nextTile(myTileIndex,size) {
 
 function addRes(zone) {
     let resLevelDice;
-    let mythicMin = Math.floor(playerInfos.mapDiff/1.42)-2;
-    let mythicMax = playerInfos.mapDiff+1;
+    let mythicMin = Math.floor(playerInfos.sondeDanger/1.42)-2;
+    let mythicMax = playerInfos.sondeDanger+1;
     let mythicNum = 0;
-    let baseMin = 17+(playerInfos.mapDiff*3);
+    let baseMin = 17+(playerInfos.sondeDanger*3);
     let baseNum = 0;
-    let redMin = Math.floor(playerInfos.mapDiff/1.42)+5;
+    let redMin = Math.floor(playerInfos.sondeDanger/1.42)+5;
     let redNum = 0;
     if (zone[0].dark) {
-        mythicMin = mythicMin+3+Math.floor(playerInfos.mapDiff/2);
-        mythicMax = mythicMax+3+Math.floor(playerInfos.mapDiff/2);
-        baseMin = baseMin+10+(playerInfos.mapDiff*2);
-        redMin = redMin+5+playerInfos.mapDiff;
+        mythicMin = mythicMin+3+Math.floor(playerInfos.sondeDanger/2);
+        mythicMax = mythicMax+3+Math.floor(playerInfos.sondeDanger/2);
+        baseMin = baseMin+10+(playerInfos.sondeDanger*2);
+        redMin = redMin+5+playerInfos.sondeDanger;
     }
     let terrain;
     let minChance;
@@ -781,8 +781,8 @@ function addRes(zone) {
     }
     console.log('fewRedRarityAdj:'+fewRedRarityAdj);
     // blue mythics
-    if (playerInfos.mapDiff >= 1) {
-        let silverChance = Math.round(30000000/numBadTer/((playerInfos.mapDiff+3)*(playerInfos.mapDiff+3)));
+    if (playerInfos.sondeDanger >= 1) {
+        let silverChance = Math.round(30000000/numBadTer/((playerInfos.sondeDanger+3)*(playerInfos.sondeDanger+3)));
         shufZone.forEach(function(tile) {
             if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
                 terrain = getTileTerrain(tile.id);
@@ -835,7 +835,7 @@ function addRes(zone) {
     // adjust res rarity
     let bestRarity = 0;
     let resDefault;
-    let maxDice = Math.floor(playerInfos.mapDiff/2)+5;
+    let maxDice = Math.floor(playerInfos.sondeDanger/2)+5;
     let rarityDice;
     let altDice;
     let minDice = 1;
@@ -870,7 +870,7 @@ function addRes(zone) {
             if (zone[0].dark && resRarity < 25) {
                 resRarity = 25;
             }
-            if (playerInfos.mapDiff < 1) {
+            if (playerInfos.sondeDanger < 1) {
                 resRarity = resRarity-rand.rand(15,20);
                 if (res.name === 'Scrap') {
                     resRarity = 0;
@@ -910,7 +910,7 @@ function addRes(zone) {
     }
     let resName = 'Scrap';
     let numRuins = 0;
-    if (playerInfos.mapDiff >= 1) {
+    if (playerInfos.sondeDanger >= 1) {
         zone.forEach(function(tile) {
             if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
                 if (tile.rq === undefined && tile.terrain != 'W' && tile.terrain != 'R') {
@@ -933,7 +933,7 @@ function addRes(zone) {
     let mythicSum = 0;
     let mythicRes = {};
     let mapResBatchDiv = resBatchDiv;
-    if (playerInfos.mapDiff < 1) {
+    if (playerInfos.sondeDanger < 1) {
         mapResBatchDiv = Math.round(mapResBatchDiv*1.75);
     } else {
         mapResBatchDiv = Math.round(mapResBatchDiv*(ruinChance+26)/35);
@@ -1019,7 +1019,7 @@ function addRes(zone) {
                     }
                 }
             });
-            if (tile.rq === 2 && playerInfos.mapDiff >= 1) {
+            if (tile.rq === 2 && playerInfos.sondeDanger >= 1) {
                 if (Object.keys(tile.rs).length <= 2) {
                     // JAUNE PASS 2
                     sortedRes.forEach(function(res) {
@@ -1068,7 +1068,7 @@ function addRes(zone) {
                         }
                     });
                 }
-            } else if (tile.rq === 3 && playerInfos.mapDiff >= 1) {
+            } else if (tile.rq === 3 && playerInfos.sondeDanger >= 1) {
                 if (Object.keys(tile.rs).length <= 4) {
                     // ROUGE PASS 2
                     sortedRes.forEach(function(res) {
@@ -1243,10 +1243,10 @@ function addRes(zone) {
     }
     // HUILE
     let oilName = 'Huile';
-    let oilChance = (rand.rand(2,4)*100)-Math.round(numBadTer/36)-(playerInfos.mapDiff*8);
+    let oilChance = (rand.rand(2,4)*100)-Math.round(numBadTer/36)-(playerInfos.sondeDanger*8);
     oilChance = Math.ceil(oilChance/2);
     console.log('numBadTer: '+numBadTer);
-    if (playerInfos.mapDiff >= 1) {
+    if (playerInfos.sondeDanger >= 1) {
         shufZone.forEach(function(tile) {
             if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
                 terrain = getTileTerrain(tile.id);
@@ -1413,8 +1413,8 @@ function checkResLevel(tile) {
     if (tile.x >= 21 && tile.x <= 41 && tile.y >= 21 && tile.y <= 41) {
         resLevelDice = rand.rand(1,115);
     }
-    let mythicChance = Math.round((playerInfos.mapDiff+2)*(playerInfos.mapDiff+2)/18);
-    if (playerInfos.mapDiff < 1) {
+    let mythicChance = Math.round((playerInfos.sondeDanger+2)*(playerInfos.sondeDanger+2)/18);
+    if (playerInfos.sondeDanger < 1) {
         mythicChance = 0;
     }
     if (resLevelDice <= mythicChance) {

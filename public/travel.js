@@ -212,17 +212,6 @@ function removeDeployedBats() {
     // console.log(bataillons);
 };
 
-function landerDeploy(landerId) {
-    let lander = getBatById(landerId);
-    if (lander.tags.includes('deploy')) {
-        tagDelete(lander,'deploy');
-    } else {
-        lander.tags.push('deploy');
-    }
-    showBatInfos(lander);
-    commandes();
-};
-
 function isLanderDeployed() {
     let landerDeployed = false;
     bataillons.forEach(function(bat) {
@@ -238,12 +227,40 @@ function isLanderDeployed() {
     return landerDeployed;
 }
 
-function choisirZone() {
-    // sauvegarder la zone STATION
-    // voir une liste les zones sauvegardées
-    // cliquer pour voir une zone (charger la zone)
-    // faire son choix (changer playerInfos.missionZone)
-    // charger la zone STATION
+function editSonde() {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","100px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $('#tileInfos').empty();
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE DESTINATION POUR PROCHAINE LA SONDE</span><br>');
+    $('#conUnitList').append('<br>');
+    // PLANET
+    $('#conUnitList').append('<select class="boutonGris" id="thePlanet" onchange="changePlayerInfo(`thePlanet`,`sondePlanet`,`sonde`)" title="Planète"></select>');
+    $('#thePlanet').empty().append('<option value="">Planète</option>');
+    if (1 === playerInfos.sondePlanet) {
+        $('#thePlanet').append('<option value="1" selected>Planète 1</option>');
+    } else {
+        $('#thePlanet').append('<option value="1">Planète 1</option>');
+    }
+    $('#conUnitList').append('<span class="butSpace"></span>');
+    // PRESENCE ALIEN
+    $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`sondeDanger`,`sonde`)" title="Présence Alienne"></select>');
+    $('#theZone').empty().append('<option value="">Pr.Alien</option>');
+    let i = 0;
+    while (i <= 15) {
+        if (i === playerInfos.sondeDanger) {
+            $('#theZone').append('<option value="'+i+'" selected>PrA '+i+'</option>');
+        } else {
+            $('#theZone').append('<option value="'+i+'">PrA '+i+'</option>');
+        }
+        if (i > 16) {break;}
+        i++
+    }
+    $('#conUnitList').append('<br>');
 };
 
 function stopSonde() {
