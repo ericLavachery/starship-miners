@@ -262,6 +262,7 @@ socket.on('savedZone-Load', function(newZone) {
     aliens = newZone[2];
     if (zone[0].number === 0) {
         showedTilesReset(false);
+        miniOut();
     }
     showMap(zone,false);
     unitsView();
