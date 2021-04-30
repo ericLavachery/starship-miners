@@ -347,8 +347,10 @@ function batInfos(bat,pop) {
             $('#'+bodyPlace).append('<div class="shSpace"></div>');
             skillsInfos(bat,batType);
         } else {
-            if (!playerInfos.onShip) {
+            if (!playerInfos.onShip || batType.id === 126 || batType.id === 225) {
                 transInfos(bat,batType);
+            }
+            if (!playerInfos.onShip) {
                 defabInfos(bat,batType);
             }
         }

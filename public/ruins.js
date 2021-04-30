@@ -107,6 +107,7 @@ function putRuinsCit(tile) {
     }
     let ncFactor = Math.round((Math.sqrt(numRuins)+0.75)*3);
     let numCit = rand.rand(1,ncFactor)*6;
+    playerInfos.allCits = playerInfos.allCits+numCit;
     let restCit = numCit;
     if (restCit <= 72) {
         conselTriche = true;
@@ -593,6 +594,10 @@ function checkRuinsUnit(tile) {
         });
         if (foundUnitId >= 0) {
             let batType = getBatTypeById(foundUnitId);
+            let unitCits = batType.squads*batType.crew*batType.squadSize;
+            if (!batType.skills.includes('clone')) {
+                playerInfos.allCits = playerInfos.allCits+unitCits;
+            }
             conselTriche = true;
             putBatAround(tile.id,false,false,foundUnitId,0,true);
             playerInfos.fndUnits = playerInfos.fndUnits+1;

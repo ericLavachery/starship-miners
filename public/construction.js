@@ -1013,43 +1013,47 @@ function removeBat(batId) {
 
 function dismantle(batId) {
     selectMode();
-    // récup de ressources !!!!!!
     let bat = getBatById(batId);
-    let isCharged = checkCharged(bat,'trans');
-    let isLoaded = checkCharged(bat,'load');
-    // let resFret = checkResLoad(bat);
-    if (!isCharged && !isLoaded) {
-        let batType = getBatType(bat);
-        let tileId = bat.tileId;
-        if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
-            recupRes(bat,batType);
-        }
-        let crew = batType.squads*batType.squadSize*batType.crew;
-        let xp = getXp(bat);
-        batUnselect();
-        batDeath(bat,false);
-        let batIndex = batList.findIndex((obj => obj.id == batId));
-        batList.splice(batIndex,1);
-        $('#b'+bat.tileId).empty();
-        let resHere = showRes(bat.tileId);
-        $('#b'+bat.tileId).append(resHere);
-        if (batType.skills.includes('recupcit')) {
-            if (batType.name === 'Technobass') {
-                recupKrimulos(220,tileId,crew,xp,bat.ammo2,bat.eq);
-            } else if (batType.name === 'Juggernauts') {
-                recupRaiders(219,tileId,crew,xp,bat.ammo,bat.eq);
-            } else if (batType.name === 'Scroungers') {
-                recupAmazones(14,tileId,crew,xp,bat.ammo,bat.eq);
-            } else {
-                if (batType.skills.includes('brigands')) {
-                    recupCitoyens(225,tileId,crew,xp);
+    let batType = getBatType(bat);
+    if (!batType.skills.includes('nodelete')) {
+        // récup de ressources !!!!!!
+        let isCharged = checkCharged(bat,'trans');
+        let isLoaded = checkCharged(bat,'load');
+        // let resFret = checkResLoad(bat);
+        if (!isCharged && !isLoaded) {
+            let tileId = bat.tileId;
+            if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
+                recupRes(bat,batType);
+            }
+            let crew = batType.squads*batType.squadSize*batType.crew;
+            let xp = getXp(bat);
+            batUnselect();
+            batDeath(bat,false);
+            let batIndex = batList.findIndex((obj => obj.id == batId));
+            batList.splice(batIndex,1);
+            $('#b'+bat.tileId).empty();
+            let resHere = showRes(bat.tileId);
+            $('#b'+bat.tileId).append(resHere);
+            if (batType.skills.includes('recupcit')) {
+                if (batType.name === 'Technobass') {
+                    recupKrimulos(220,tileId,crew,xp,bat.ammo2,bat.eq);
+                } else if (batType.name === 'Juggernauts') {
+                    recupRaiders(219,tileId,crew,xp,bat.ammo,bat.eq);
+                } else if (batType.name === 'Scroungers') {
+                    recupAmazones(14,tileId,crew,xp,bat.ammo,bat.eq);
                 } else {
-                    recupCitoyens(126,tileId,crew,xp);
+                    if (batType.skills.includes('brigands')) {
+                        recupCitoyens(225,tileId,crew,xp);
+                    } else {
+                        recupCitoyens(126,tileId,crew,xp);
+                    }
                 }
             }
+        } else {
+            alert("Vous devez vider le bataillon avant de le démanteler.");
         }
     } else {
-        alert("Vous devez vider le bataillon avant de le démanteler.");
+        alert("Vous ne pouvez pas démanteler ce bâtiment.");
     }
 };
 
@@ -1120,6 +1124,10 @@ function recupCitoyens(unitId,tileId,citoyens,xp) {
     conselAmmos = ['xxx','xxx','xxx','xxx'];
     conselTriche = true;
     putBat(tileId,citoyens,xp);
+    if (playerInfos.onShip) {
+        let citBat = getBatByTileId(tileId);
+        loadBat(citBat.id,souteId);
+    }
 };
 
 function getRecup(costs) {

@@ -491,107 +491,109 @@ function loadRes() {
     $('#conUnitList').append('<span class="constName cy"><img src="/static/img/units/'+selectedBatType.cat+'/'+selectedBatPic+'.png">&nbsp;');
     $('#conUnitList').append('<h1>'+selectedBat.type.toUpperCase()+'</h1><br>');
     $('#conUnitList').append('<span class="constName cy">Charger</span> <span class="cy">(max '+restSpace+')</span><br>');
-    if (seeAllFret) {
-        $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-eye-slash"></i></span>');
-        $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="seeAllTrans(false)" title="Ne voir que les bataillons contenant des ressources">Ne voir que le fret</span></span><br>');
-    } else {
-        $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-eye"></i></span>');
-        $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="seeAllTrans(true)" title="Voir tous les bataillons">Voir tout</span></span><br>');
-    }
-    if (selectedBatType.skills.includes('dumper')) {
-        if (selectedBat.noDump) {
-            $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
-            $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="setDumper(true)" title="Activer les déchargements automatiques vers ce bataillon">Utiliser comme Dumper</span></span><br>');
+    if (!playerInfos.onShip || selectedBatType.name === 'Soute') {
+        if (seeAllFret) {
+            $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-eye-slash"></i></span>');
+            $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="seeAllTrans(false)" title="Ne voir que les bataillons contenant des ressources">Ne voir que le fret</span></span><br>');
         } else {
-            $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-times"></i></span>');
-            $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="setDumper(false)" title="Stopper les déchargements automatiques vers ce bataillon">Ne plus utiliser comme Dumper</span></span><br>');
+            $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-eye"></i></span>');
+            $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="seeAllTrans(true)" title="Voir tous les bataillons">Voir tout</span></span><br>');
         }
-    }
-    if (selectedBat.autoLoad != undefined) {
-        if (selectedBat.autoLoad.length >= 1) {
-            $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-times"></i></span>');
-            $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="stopAutoLoad()" title="Stopper les chargement automatiques">Stopper les automations</span></span><br>');
+        if (selectedBatType.skills.includes('dumper')) {
+            if (selectedBat.noDump) {
+                $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
+                $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="setDumper(true)" title="Activer les déchargements automatiques vers ce bataillon">Utiliser comme Dumper</span></span><br>');
+            } else {
+                $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-times"></i></span>');
+                $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="setDumper(false)" title="Stopper les déchargements automatiques vers ce bataillon">Ne plus utiliser comme Dumper</span></span><br>');
+            }
         }
-    }
-    let selectedBatTile = getTile(selectedBat);
-    let batType;
-    let distance;
-    let resLoad;
-    let resOK;
-    if (restSpace >= 1) {
-        let sortedBats = bataillons.slice();
-        sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'type'),'creaTurn'),'id');
-        sortedBats.reverse();
-        sortedBats.forEach(function(bat) {
-            if (bat.id != selectedBat.id) {
-                batType = getBatType(bat);
-                if (batType.skills.includes('fret')) {
-                    distance = calcDistance(bat.tileId,selectedBat.tileId);
-                    if (distance <= 1) {
-                        resLoad = checkResLoad(bat);
-                        if (resLoad >= 1 || seeAllFret) {
-                            let batPic = getBatPic(bat,batType);
-                            $('#conUnitList').append('<br><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48"><br></span>');
-                            let tile = getTile(bat);
-                            let theTile = tileNaming(tile,false,selectedBatTile.id);
-                            if (batType.skills.includes('transorbital')) {
-                                $('#conUnitList').append('<span class="constName sky">'+bat.type+' ???<span class="gf"> &mdash; '+theTile+'</span></span><br>');
-                            } else {
-                                $('#conUnitList').append('<span class="constName cy">'+bat.type+' <span class="gf"> &mdash; '+theTile+'</span></span><br>');
-                            }
-                            if (restSpace >= Math.round(resLoad*1.2)) {
-                                $('#conUnitList').append('<span class="loadIcon rose klik" onclick="resAllLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+')"><i class="fas fa-pallet"></i></span>');
-                            } else {
-                                $('#conUnitList').append('<span class="loadIcon rose klik" onclick="resMaxLoad('+bat.id+',false)" title="Charger un maximum de ressources depuis ce bataillon ('+bat.type+')"><i class="fas fa-dolly"></i></span>');
-                            }
-                            if (selectedBatType.skills.includes('fret')) {
-                                if (batType.skills.includes('fret')) {
-                                    let isAuto = false;
-                                    if (selectedBat.autoLoad != undefined) {
-                                        if (selectedBat.autoLoad.includes(bat.id)) {
-                                            isAuto = true;
+        if (selectedBat.autoLoad != undefined) {
+            if (selectedBat.autoLoad.length >= 1) {
+                $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-times"></i></span>');
+                $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="stopAutoLoad()" title="Stopper les chargement automatiques">Stopper les automations</span></span><br>');
+            }
+        }
+        let selectedBatTile = getTile(selectedBat);
+        let batType;
+        let distance;
+        let resLoad;
+        let resOK;
+        if (restSpace >= 1) {
+            let sortedBats = bataillons.slice();
+            sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'type'),'creaTurn'),'id');
+            sortedBats.reverse();
+            sortedBats.forEach(function(bat) {
+                if (bat.id != selectedBat.id) {
+                    batType = getBatType(bat);
+                    if (batType.skills.includes('fret')) {
+                        distance = calcDistance(bat.tileId,selectedBat.tileId);
+                        if (distance <= 1 || selectedBatType.name === 'Soute') {
+                            resLoad = checkResLoad(bat);
+                            if (resLoad >= 1 || seeAllFret) {
+                                let batPic = getBatPic(bat,batType);
+                                $('#conUnitList').append('<br><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48"><br></span>');
+                                let tile = getTile(bat);
+                                let theTile = tileNaming(tile,false,selectedBatTile.id);
+                                if (batType.skills.includes('transorbital')) {
+                                    $('#conUnitList').append('<span class="constName sky">'+bat.type+' ???<span class="gf"> &mdash; '+theTile+'</span></span><br>');
+                                } else {
+                                    $('#conUnitList').append('<span class="constName cy">'+bat.type+' <span class="gf"> &mdash; '+theTile+'</span></span><br>');
+                                }
+                                if (restSpace >= Math.round(resLoad*1.2)) {
+                                    $('#conUnitList').append('<span class="loadIcon rose klik" onclick="resAllLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+')"><i class="fas fa-pallet"></i></span>');
+                                } else {
+                                    $('#conUnitList').append('<span class="loadIcon rose klik" onclick="resMaxLoad('+bat.id+',false)" title="Charger un maximum de ressources depuis ce bataillon ('+bat.type+')"><i class="fas fa-dolly"></i></span>');
+                                }
+                                if (selectedBatType.skills.includes('fret')) {
+                                    if (batType.skills.includes('fret')) {
+                                        let isAuto = false;
+                                        if (selectedBat.autoLoad != undefined) {
+                                            if (selectedBat.autoLoad.includes(bat.id)) {
+                                                isAuto = true;
+                                            }
                                         }
-                                    }
-                                    if (isAuto) {
-                                        $('#conUnitList').append('<span class="loadIcon bleu klik" onclick="stopThisAutoLoad('+bat.id+')" title="Stopper cette automation!"><i class="fas fa-robot"></i></span>');
-                                    } else {
-                                        $('#conUnitList').append('<span class="loadIcon vert klik" onclick="resMaxLoad('+bat.id+',true)" title="Automatiser : Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+') à chaque tour"><i class="fas fa-robot"></i></span>');
+                                        if (isAuto) {
+                                            $('#conUnitList').append('<span class="loadIcon bleu klik" onclick="stopThisAutoLoad('+bat.id+')" title="Stopper cette automation!"><i class="fas fa-robot"></i></span>');
+                                        } else {
+                                            $('#conUnitList').append('<span class="loadIcon vert klik" onclick="resMaxLoad('+bat.id+',true)" title="Automatiser : Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+') à chaque tour"><i class="fas fa-robot"></i></span>');
+                                        }
                                     }
                                 }
-                            }
-                            $('#conUnitList').append('<br>');
-                            if (resLoad >= 1) {
-                                Object.entries(bat.transRes).map(entry => {
-                                    let key = entry[0];
-                                    let value = entry[1];
-                                    res = getResByName(key);
-                                    resOK = true;
-                                    if (key === 'Energie') {
-                                        if (!selectedBatType.skills.includes('accu')) {
-                                            resOK = false;
+                                $('#conUnitList').append('<br>');
+                                if (resLoad >= 1) {
+                                    Object.entries(bat.transRes).map(entry => {
+                                        let key = entry[0];
+                                        let value = entry[1];
+                                        res = getResByName(key);
+                                        resOK = true;
+                                        if (key === 'Energie') {
+                                            if (!selectedBatType.skills.includes('accu')) {
+                                                resOK = false;
+                                            }
                                         }
-                                    }
-                                    if (resOK) {
-                                        if (Math.round(restSpace*1.2) >= value) {
-                                            $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle"></i></span>');
-                                        } else {
-                                            $('#conUnitList').append('<span class="constIcon"><i class="far fa-times-circle or"></i></span>');
+                                        if (resOK) {
+                                            if (Math.round(restSpace*1.2) >= value) {
+                                                $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle"></i></span>');
+                                            } else {
+                                                $('#conUnitList').append('<span class="constIcon"><i class="far fa-times-circle or"></i></span>');
+                                            }
+                                            if (value > 100 && Math.round(restSpace*1.2) >= 100) {
+                                                $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span> | <span class="klik" onclick="resSelectLoad('+value+',100,'+res.id+','+bat.id+')" title="Charger 100 '+res.name+'">100</span></span><br>');
+                                            } else {
+                                                $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span></span><br>');
+                                            }
                                         }
-                                        if (value > 100 && Math.round(restSpace*1.2) >= 100) {
-                                            $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span> | <span class="klik" onclick="resSelectLoad('+value+',100,'+res.id+','+bat.id+')" title="Charger 100 '+res.name+'">100</span></span><br>');
-                                        } else {
-                                            $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span></span><br>');
-                                        }
-                                    }
-                                });
+                                    });
+                                }
                             }
                         }
                     }
                 }
-            }
-        });
-    } else {
-        $('#conUnitList').append('<span class="constName">Plus de place!</span><br>');
+            });
+        } else {
+            $('#conUnitList').append('<span class="constName">Plus de place!</span><br>');
+        }
     }
     $('#conUnitList').append('<br>');
 };

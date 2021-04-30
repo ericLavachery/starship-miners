@@ -90,6 +90,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.gLevel === undefined) {
         playerInfos.gLevel = 4;
     }
+    if (playerInfos.allCits === undefined) {
+        playerInfos.allCits = 2000;
+    }
     if (playerInfos.missionZone === undefined) {
         playerInfos.missionZone = -1;
     }

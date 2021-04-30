@@ -1371,3 +1371,36 @@ function addFreeBat(tileId,unitName) {
     conselTriche = true;
     putBat(tileId,0,0);
 }
+
+function checkGangLevel() {
+    let nextGangLevel = -1;
+    let level = 0;
+    gangLevelCit.forEach(function(levelCit) {
+        if (nextGangLevel < 0) {
+            if (levelCit <= playerInfos.allCits) {
+                if (level > playerInfos.gLevel) {
+                    nextGangLevel = level;
+                }
+            }
+            level++;
+        }
+    });
+    return nextGangLevel;
+};
+
+function gangLevelUp() {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","800px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $('#tileInfos').empty();
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE COMPETENCE</span><br>');
+    $('#conUnitList').append('<br>');
+
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="ListRes"></span><br>');
+    $('#conUnitList').append('<br>');
+};

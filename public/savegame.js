@@ -222,6 +222,7 @@ function newGame() {
     playerInfos.onShip = true;
     playerInfos.gang = 'rednecks';
     playerInfos.gLevel = 4;
+    playerInfos.allCits = 2000;
     playerInfos.missionZone = -1;
     playerInfos.sondeDanger = -1;
     playerInfos.sondePlanet = -1;
