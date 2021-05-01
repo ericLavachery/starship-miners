@@ -102,6 +102,7 @@ let vetBonus = {
 }
 let levelXP = [0,50,150,335,750];
 let gangLevelCit = [0,500,1000,1500,2000,2300,2600,2900,3200,3500,3800,4100,4400,4700,5000,5300,5600,5900,6200,6500,6800,7100,7400];
+let myCompPoints = 0;
 // ACTIONS
 let mode = "select";
 let selectedBat = {};

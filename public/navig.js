@@ -129,7 +129,7 @@ function commandes() {
             }
             let nextGangLevel = checkGangLevel();
             if (nextGangLevel > -1) {
-                $('#commandz').append('<button type="button" title="Monter de niveau de gang" class="boutonRose iconButtons" onclick="gangLevelUp()"><i class="fas fa-graduation-cap"></i></button>');
+                $('#commandz').append('<button type="button" title="Monter au niveau de gang '+nextGangLevel+'" class="boutonRose iconButtons" onclick="gangLevelUp()"><i class="fas fa-graduation-cap"></i></button>');
             }
         }
     }

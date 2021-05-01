@@ -25,7 +25,7 @@ function voirReserve() {
         resIcon = getResIcon(res);
         if (dispoRes >= 1) {
             if (playerInfos.onShip && inSoute && souteTab === 'rez' && res.cat != 'alien' && dispoRes >= 50) {
-                $('#conUnitList').append('<span class="paramResName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',50)">&nbsp;50 >>></span>');
+                $('#conUnitList').append('<span class="paramResName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',50)">50 >>></span>');
             } else if (res.cat === 'alien' || minedRes <= 0) {
                 $('#conUnitList').append('<span class="paramResName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span>');
             } else {

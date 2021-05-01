@@ -1388,7 +1388,7 @@ function checkGangLevel() {
     return nextGangLevel;
 };
 
-function gangLevelUp() {
+function gangLevelUp(retour) {
     selectMode();
     $("#conUnitList").css("display","block");
     $('#conUnitList').css("height","800px");
@@ -1398,8 +1398,34 @@ function gangLevelUp() {
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE COMPETENCE</span><br>');
+    let nextGangLevel = playerInfos.gLevel+1;
+    $('#conUnitList').append('<span class="ListRes">Niveau de gang: '+nextGangLevel+'</span><br>');
+    if (!retour) {
+        // combien de points?
+        myCompPoints = 8;
+    }
+    $('#conUnitList').append('<span class="ListRes">Points à dépenser: '+myCompPoints+'</span><br>');
     $('#conUnitList').append('<br>');
-
+    gangComps.forEach(function(comp) {
+        let nowComp = playerInfos.comp[comp.name];
+        let nextComp = playerInfos.comp[comp.name]+1;
+        let compCost = comp.lvlCosts[nextComp];
+        let colour = 'neutre';
+        let costColour = 'rose';
+        if (comp.maxLevel < nextComp) {
+            compCost = 0;
+            colour = 'cy';
+            costColour = 'noir';
+        }
+        $('#conUnitList').append('<span class="paramName '+colour+'">'+comp.fullName+'</span><span class="paramIcon '+costColour+'" title="Coût">('+compCost+')</span><span class="paramCompValue cy" title="Niveau actuel">'+nowComp+'<span class="gff">/'+comp.maxLevel+'</span></span>');
+        if (comp.levels[playerInfos.gang] <= nextGangLevel && comp.maxLevel >= nextComp) {
+            if (compCost === 1 || (myCompPoints >= 2 && nextGangLevel >= 1)) {
+                if (myCompPoints >= compCost) {
+                    $('#conUnitList').append('<span class="paramValue klik" title="Augmenter '+comp.fullName+' au niveau '+nextComp+' (coût: '+compCost+')" onclick="something()">'+nextComp+' >>></span>');
+                }
+            }
+        }
+    });
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="ListRes"></span><br>');
     $('#conUnitList').append('<br>');

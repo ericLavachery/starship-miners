@@ -221,7 +221,7 @@ function newGame() {
     playerInfos.comp = resetComp();
     playerInfos.onShip = true;
     playerInfos.gang = 'rednecks';
-    playerInfos.gLevel = 4;
+    playerInfos.gLevel = -1;
     playerInfos.allCits = 2000;
     playerInfos.missionZone = -1;
     playerInfos.sondeDanger = -1;

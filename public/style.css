@@ -193,6 +193,11 @@ h5 {
     width: 70px;
     font-weight: bold;
 }
+.paramCompValue {
+    display: inline-block;
+    width: 40px;
+    font-weight: bold;
+}
 .craftsList {
     display: inline-block;
     font-size: 14px;
