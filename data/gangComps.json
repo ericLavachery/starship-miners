@@ -154,7 +154,7 @@
     {
         "id":20,
         "name":"trans",
-        "fullName":"Transport",
+        "fullName":"Transports",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,2]

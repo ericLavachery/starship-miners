@@ -1238,8 +1238,6 @@ function missionResults(onlyLanders) {
     $('#conUnitList').empty();
     calcEndRes(onlyLanders);
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
-    // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="constName or" id="gentils">RAPPORT DE MISSION</span><br>');
     $('#conUnitList').append('<br>');
     let balance = 0;
@@ -1390,20 +1388,25 @@ function checkGangLevel() {
 
 function gangLevelUp(retour) {
     selectMode();
+    let nextGangLevel = playerInfos.gLevel+1;
+    if (!retour) {
+        myCompPoints = calcCompPoints(nextGangLevel);
+    }
     $("#conUnitList").css("display","block");
-    $('#conUnitList').css("height","800px");
+    $('#conUnitList').css("height","700px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE COMPETENCE</span><br>');
-    let nextGangLevel = playerInfos.gLevel+1;
-    $('#conUnitList').append('<span class="ListRes">Niveau de gang: '+nextGangLevel+'</span><br>');
-    if (!retour) {
-        // combien de points?
-        myCompPoints = 8;
+    if (myCompPoints <= 0 && retour) {
+        $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+        $('#conUnitList').append('<span class="ListRes cy">VOUS AVEZ DEPENSE TOUS VOS POINTS</span><br>');
+        playerInfos.gLevel++;
+        commandes();
+    } else {
+        $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE COMPETENCE</span><br>');
     }
+    $('#conUnitList').append('<span class="ListRes">Niveau de gang: '+nextGangLevel+'</span><br>');
     $('#conUnitList').append('<span class="ListRes">Points à dépenser: '+myCompPoints+'</span><br>');
     $('#conUnitList').append('<br>');
     gangComps.forEach(function(comp) {
@@ -1421,7 +1424,7 @@ function gangLevelUp(retour) {
         if (comp.levels[playerInfos.gang] <= nextGangLevel && comp.maxLevel >= nextComp) {
             if (compCost === 1 || (myCompPoints >= 2 && nextGangLevel >= 1)) {
                 if (myCompPoints >= compCost) {
-                    $('#conUnitList').append('<span class="paramValue klik" title="Augmenter '+comp.fullName+' au niveau '+nextComp+' (coût: '+compCost+')" onclick="something()">'+nextComp+' >>></span>');
+                    $('#conUnitList').append('<span class="paramValue klik" title="Augmenter '+comp.fullName+' au niveau '+nextComp+' (coût: '+compCost+')" onclick="addComp('+comp.id+','+nextComp+')">'+nextComp+' >>></span>');
                 }
             }
         }
@@ -1429,4 +1432,181 @@ function gangLevelUp(retour) {
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="ListRes"></span><br>');
     $('#conUnitList').append('<br>');
+};
+
+function addComp(compId,nextComp) {
+    let comp = getCompById(compId);
+    let cost = comp.lvlCosts[nextComp];
+    myCompPoints = myCompPoints-cost;
+    playerInfos.comp[comp.name] = nextComp;
+    commandes();
+    gangLevelUp(true);
+};
+
+function calcCompPoints(nextGangLevel) {
+    let theCompPoints = 0;
+    if (nextGangLevel === 0) {
+        if (playerInfos.gang === 'bulbos') {
+            theCompPoints = 10;
+        } else {
+            theCompPoints = 8;
+        }
+    } else {
+        if (playerInfos.gang === 'rednecks') {
+            if (nextGangLevel === 3) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 6) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 10) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 13) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 16) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 18) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 20) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 22) {
+                theCompPoints = 2;
+            } else {
+                theCompPoints = 1;
+            }
+        }
+        if (playerInfos.gang === 'blades') {
+            if (nextGangLevel === 3) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 6) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 9) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 11) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 13) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 15) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 18) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 20) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 22) {
+                theCompPoints = 2;
+            } else {
+                theCompPoints = 1;
+            }
+        }
+        if (playerInfos.gang === 'bulbos') {
+            if (nextGangLevel === 3) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 6) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 8) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 10) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 12) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 14) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 16) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 18) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 20) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 22) {
+                theCompPoints = 2;
+            } else {
+                theCompPoints = 1;
+            }
+        }
+        if (playerInfos.gang === 'drogmulojs') {
+            if (nextGangLevel === 3) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 5) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 8) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 10) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 13) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 16) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 18) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 20) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 22) {
+                theCompPoints = 2;
+            } else {
+                theCompPoints = 1;
+            }
+        }
+        if (playerInfos.gang === 'tiradores') {
+            if (nextGangLevel === 3) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 6) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 10) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 13) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 16) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 18) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 20) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 22) {
+                theCompPoints = 2;
+            } else {
+                theCompPoints = 1;
+            }
+        }
+        if (playerInfos.gang === 'detruas') {
+            if (nextGangLevel === 3) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 6) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 9) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 12) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 15) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 17) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 19) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 21) {
+                theCompPoints = 2;
+            } else {
+                theCompPoints = 1;
+            }
+        }
+        if (playerInfos.gang === 'brasier') {
+            if (nextGangLevel === 3) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 6) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 8) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 10) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 13) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 16) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 18) {
+                theCompPoints = 2;
+            } else if (nextGangLevel === 21) {
+                theCompPoints = 2;
+            } else {
+                theCompPoints = 1;
+            }
+        }
+    }
+    return theCompPoints;
 };

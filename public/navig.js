@@ -126,10 +126,11 @@ function commandes() {
             $('#commandz').append('<button type="button" title="Nouvelle campagne" class="boutonRose iconButtons" onclick="newGame()"><i class="fas fa-chess-queen"></i></button>');
             if (bataillons.length === 0) {
                 $('#commandz').append('<button type="button" title="Ajouter le pack de ressources" class="boutonRose iconButtons" onclick="addStartPack()"><i class="fas fa-coins"></i></button>');
-            }
-            let nextGangLevel = checkGangLevel();
-            if (nextGangLevel > -1) {
-                $('#commandz').append('<button type="button" title="Monter au niveau de gang '+nextGangLevel+'" class="boutonRose iconButtons" onclick="gangLevelUp()"><i class="fas fa-graduation-cap"></i></button>');
+            } else {
+                let nextGangLevel = checkGangLevel();
+                if (nextGangLevel > -1) {
+                    $('#commandz').append('<button type="button" title="Monter au niveau de gang '+nextGangLevel+'" class="boutonRose iconButtons" onclick="gangLevelUp()"><i class="fas fa-graduation-cap"></i></button>');
+                }
             }
         }
     }

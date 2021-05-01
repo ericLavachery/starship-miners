@@ -966,17 +966,18 @@ function putBat(tileId,citoyens,xp,startTag,show) {
 };
 
 function conOut() {
-    $('#conUnitList').empty();
-    $('#conAmmoList').empty();
-    $('#conUnitList').css("height","300px");
-    conselReset();
-    showResOpen = false;
-    $("#conUnitList").css("display","none");
-    $("#conAmmoList").css("display","none");
-    if (Object.keys(selectedBat).length >= 1) {
-        showBatInfos(selectedBat);
+    if (myCompPoints <= 0) {
+        $('#conUnitList').empty();
+        $('#conAmmoList').empty();
+        $('#conUnitList').css("height","300px");
+        conselReset();
+        showResOpen = false;
+        $("#conUnitList").css("display","none");
+        $("#conAmmoList").css("display","none");
+        if (Object.keys(selectedBat).length >= 1) {
+            showBatInfos(selectedBat);
+        }
     }
-    // prepaBld = {};
 };
 
 function conselReset() {
@@ -989,13 +990,15 @@ function conselReset() {
     conselCosts = {};
 }
 
-$("#minimap").css("display","block");
+// $("#minimap").css("display","block");
 
 function conWindowOut() {
-    $('#conUnitList').empty();
-    $('#conAmmoList').empty();
-    $("#conUnitList").css("display","none");
-    $("#conAmmoList").css("display","none");
+    if (myCompPoints <= 0) {
+        $('#conUnitList').empty();
+        $('#conAmmoList').empty();
+        $("#conUnitList").css("display","none");
+        $("#conAmmoList").css("display","none");
+    }
 };
 
 function removeBat(batId) {
