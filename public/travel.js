@@ -80,6 +80,7 @@ function landingList() {
         if (playerInfos.onShip) {
             checkSelectedLanderId();
             healEverything();
+            events(true);
             miniOut();
         }
     }
@@ -148,18 +149,17 @@ function healEverything() {
         let batType = getBatType(bat);
         if (bat.loc === 'trans' && bat.locId != souteId) {
             loadBat(bat.id,souteId,bat.locId);
-            bat.squadsLeft = batType.squads;
-            bat.damage = 0;
-            bat.apLeft = bat.ap;
-            bat.oldapLeft = bat.ap;
-            bat.salvoLeft = batType.maxSalvo;
-            let gearTags = getBatGearTags(bat.prt,bat.eq,batType);
-            if (bat.tags.includes('zombie')) {
-                gearTags.push('zombie');
-            }
-            bat.tags = gearTags;
-            // bat.tags.push.apply(myBat.tags,gearTags);
         }
+        bat.squadsLeft = batType.squads;
+        bat.damage = 0;
+        bat.apLeft = bat.ap;
+        bat.oldapLeft = bat.ap;
+        bat.salvoLeft = batType.maxSalvo;
+        let gearTags = getBatGearTags(bat.prt,bat.eq,batType);
+        if (bat.tags.includes('zombie')) {
+            gearTags.push('zombie');
+        }
+        bat.tags = gearTags;
     });
 };
 

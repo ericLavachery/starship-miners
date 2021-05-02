@@ -342,7 +342,7 @@ function doReEquip(batId) {
         myBat.tags.push.apply(myBat.tags,gearTags);
         payCost(totalCosts);
         addCost(totalRecup,1);
-        myBat.ApLeft = myBat.ApLeft-myBat.ap;
+        myBat.apLeft = myBat.apLeft-myBat.ap;
     }
     conOut();
     myNewGear = ['xxx','xxx','xxx','xxx'];

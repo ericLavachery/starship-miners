@@ -13,6 +13,8 @@ function bfconst(cat,triche,upgrade) {
     selectMode();
     // findLanders();
     checkReserve();
+    let dispoCrim = getDispoCrim();
+    let dispoCit = getDispoCit();
     updateBldList();
     $("#conUnitList").css("display","block");
     if (!playerInfos.onShip) {
@@ -26,8 +28,7 @@ function bfconst(cat,triche,upgrade) {
     $('#tileInfos').empty();
     let color = '';
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
-    // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br>');
+    $('#conUnitList').append('<br><span class="constName neutre" id="gentils">Citoyens disponibles: '+dispoCit+' &ndash; '+dispoCrim+'</span><br>');
     let lastKind = '';
     let showkind = '';
     let allUnitsList = unitTypes.slice();
@@ -161,12 +162,16 @@ function bfconst(cat,triche,upgrade) {
             // console.log(unit.name);
             // console.log(unitMergedCosts);
             // console.log(costOK);
+            let unitCits = unit.squads*unit.crew*unit.squadSize;
+            if (unit.skills.includes('clone')) {
+                unitCits = 0;
+            }
             if ((bldOK && costOK) || triche) {
                 color = catColor(unit.cat,unit.kind);
-                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+prodSign+'</span><br>');
+                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+' <span class="gf">('+unitCits+')</span>'+prodSign+'</span><br>');
             } else {
                 color = 'gff';
-                $('#conUnitList').append('<span class="constName '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'">'+unit.name+prodSign+'</span><br>');
+                $('#conUnitList').append('<span class="constName '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'">'+unit.name+' <span class="gf">('+unitCits+')</span>'+prodSign+'</span><br>');
             }
             lastKind = unit.kind;
         }

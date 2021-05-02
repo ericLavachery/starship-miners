@@ -44,6 +44,10 @@ function batInfos(bat,pop) {
     if (bat.eq === 'megafret') {
         resMax = Math.round(resMax*1.2);
     }
+    let vetIcon = '';
+    if (bat.vet >= 1) {
+        vetIcon = '<img src="/static/img/vet'+bat.vet+'.png" width="15">';
+    }
     if (pop) {
         $('#'+headPlace).append('<img src="/static/img/units/'+batType.cat+'/'+batPic+'.png">&nbsp;');
         if (batType.skills.includes('nonumname')) {
@@ -53,9 +57,9 @@ function batInfos(bat,pop) {
         }
     } else {
         if (batType.skills.includes('nonumname')) {
-            $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonCiel skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+'</h3></span>');
+            $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonCiel skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+'</h3> '+vetIcon+'</span>');
         } else {
-            $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="unitDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3></span>');
+            $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="unitDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3> '+vetIcon+'</span>');
         }
     }
     $('#'+bodyPlace).append('<div class="shSpace"></div>');

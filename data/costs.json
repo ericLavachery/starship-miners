@@ -2209,7 +2209,7 @@
         "name":"Poste de pilotage",
         "bldEquiv":["Centre de com"],
         "bldUp":"Passerelle",
-        "bldReq":["Soute"],
+        "bldReq":["Station"],
         "costs":{},
         "fabTime":25
     },
@@ -2232,7 +2232,7 @@
     {
         "id":230,
         "name":"Soute",
-        "bldReq":["Soute"],
+        "bldReq":["Station"],
         "costs":{},
         "fabTime":25
     },

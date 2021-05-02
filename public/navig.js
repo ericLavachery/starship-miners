@@ -100,12 +100,11 @@ function commandes() {
         }
         $('#commandz').append('<br>');
         if (!modeSonde && !playerInfos.onShip) {
-            $('#commandz').append('<hr>');
-            $('#commandz').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonRouge iconButtons" onclick="showMapReset()" id="reset1"><i class="fas fa-power-off"></i></button>');
-            $('#commandz').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonRouge iconButtons" onclick="mapReset()" id="reset2"><i class="fas fa-skull-crossbones"></i></button>');
-            $('#commandz').append('<button type="button" title="Supprimer tous les aliens" class="boutonRouge iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
-            $('#commandz').append('<br>');
-            $('#commandz').append('<button type="button" title="Rapport de mission (estimation)" class="boutonRouge iconButtons" onclick="missionResults(false)"><i class="fas fa-balance-scale"></i></button>');
+            // $('#commandz').append('<hr>');
+            // $('#commandz').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonRouge iconButtons" onclick="showMapReset()" id="reset1"><i class="fas fa-power-off"></i></button>');
+            // $('#commandz').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonRouge iconButtons" onclick="mapReset()" id="reset2"><i class="fas fa-skull-crossbones"></i></button>');
+            // $('#commandz').append('<button type="button" title="Supprimer tous les aliens" class="boutonRouge iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
+            // $('#commandz').append('<br>');
         }
         if (!modeSonde && !inSoute) {
             if (playerInfos.onShip) {
@@ -118,6 +117,7 @@ function commandes() {
                 }
             } else {
                 $('#commandz').append('<hr>');
+                $('#commandz').append('<button type="button" title="Rapport de mission (estimation)" class="boutonRouge iconButtons" onclick="missionResults(false)"><i class="fas fa-balance-scale"></i></button>');
                 $('#commandz').append('<button type="button" title="Rentrer à la station" class="boutonRouge iconButtons" onclick="stopMission()"><i class="fas fa-space-shuttle"></i></button>');
             }
         }

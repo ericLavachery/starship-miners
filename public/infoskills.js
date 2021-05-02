@@ -1396,10 +1396,20 @@ function skillsInfos(bat,batType) {
         }
     }
     // CHANGER AMMOS-ARMURE-EQUIPEMENT
-    if (anyStock || playerInfos.onShip) {
+    let equipOK = false;
+    if (playerInfos.onShip) {
+        if (bat.loc === 'zone' || bat.locId === souteId) {
+            equipOK = true;
+        }
+    } else {
+        if (anyStock) {
+            equipOK = true;
+        }
+    }
+    if (equipOK) {
         apCost = Math.round(bat.ap*1.5);
         apReq = 5;
-        if ((bat.apLeft >= apReq || inSoute) && !inMelee) {
+        if ((bat.apLeft >= apReq || playerInfos.onShip) && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Changer de munitions, équipement ou armure" class="boutonCaca skillButtons" onclick="reEquip('+bat.id+',false)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apReq+'</span></button>&nbsp; Rééquiper</h4></span>');
         } else {
             if (inMelee) {

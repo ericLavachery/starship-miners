@@ -114,7 +114,7 @@ function landerMenu() {
         let transResLeft = checkResSpace(landerBat);
         let transResMax = landerBatType.transRes;
         if (landerBat.eq === 'megafret') {
-            transResMax = Math.round(resMax*1.2);
+            transResMax = Math.round(transResMax*1.2);
         }
         let ucol = 'cy';
         let rcol = 'brunf';
@@ -282,15 +282,21 @@ function batListElement(bat,batType,idOfLander) {
     if (bat.id === selectedBat.id) {
         selId = souteId;
     }
-    $('#'+colId).append('<div class="'+blockType+'" onclick="batSouteSelect('+selId+')"><table><tr><td><img src="/static/img/units/'+batType.cat+'/'+batType.pic+'.png" width="48"></td><td id="be'+bat.id+'"></td></tr></table></div>');
+    let batPic = getBatPic(bat,batType);
+    $('#'+colId).append('<div class="'+blockType+'" onclick="batSouteSelect('+selId+')"><table><tr><td><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48"></td><td id="be'+bat.id+'"></td></tr></table></div>');
     $('#be'+bat.id).append('<span class="listRes klik">'+batType.name+'</span>');
     let batVolume = calcVolume(bat,batType);
-    $('#be'+bat.id).append('<span class="listRes gf">('+batVolume+')</span>');
     if (bat.chief != undefined) {
         if (bat.chief != '') {
-            $('#be'+bat.id).append('<span class="listRes gf">('+bat.chief+')</span>');
+            $('#be'+bat.id).append('<span class="listRes vert">('+bat.chief+')</span>');
         }
     }
+    $('#be'+bat.id).append('<span class="listRes gff" title="Volume">('+batVolume+')</span>');
+    let vetIcon = '';
+    if (bat.vet >= 1) {
+        vetIcon = '<img src="/static/img/vet'+bat.vet+'.png" width="15">';
+    }
+    $('#be'+bat.id).append('<span class="listRes gff" title="XP">('+bat.xp+vetIcon+')</span>');
     $('#be'+bat.id).append('<br>');
     let prt = bat.prt;
     if (prt.includes('aucun')) {
@@ -483,7 +489,7 @@ function viewLanderRes() {
     let transResIn = checkResLoad(landerBat);
     let transResMax = landerBatType.transRes;
     if (landerBat.eq === 'megafret') {
-        transResMax = Math.round(resMax*1.2);
+        transResMax = Math.round(transResMax*1.2);
     }
     let numCit = getLanderNumCit(slId,126);
     let numCrim = getLanderNumCit(slId,225);
@@ -880,4 +886,90 @@ function moveResCost(costs,fromId,toId,number) {
             }
         });
     }
+};
+
+function events(afterMission) {
+    let time = rand.rand(6,9)*6;
+    if (afterMission) {
+        time = Math.ceil(playerInfos.mapTurn*2/6)*6;
+    }
+    eventCitoyens(afterMission,time);
+    eventBouffe(afterMission,time);
+    playerInfos.mapTurn = 0;
+    playerInfos.mapDrop = 0;
+    playerInfos.cocons = 0;
+    playerInfos.fndComps = 0;
+    playerInfos.fndUnits = 0;
+    playerInfos.fndCits = 0;
+    playerInfos.sondeMaps = 0;
+    playerInfos.eggPause = false;
+    playerInfos.droppedEggs = 0;
+    playerInfos.aliensKilled = 0;
+    playerInfos.eggsKilled = 0;
+    playerInfos.alienSat = 0;
+    playerInfos.unitsLost = 0;
+    playerInfos.fuzzTotal = 0;
+    playerInfos.pauseSeed = rand.rand(1,8);
+    playerInfos.myCenter = 1830;
+    playerInfos.undarkOnce = [];
+    playerInfos.showedTiles = [];
+};
+
+function eventBouffe(afterMission,time) {
+    let mesCitoyens = calcTotalCitoyens();
+    let toutMesCitoyens = mesCitoyens.cit+mesCitoyens.crim;
+    let bouffeCost = {};
+    bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time/323);
+    bouffeCost['Eau'] = Math.round(toutMesCitoyens*time/323);
+    bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time/1979);
+    console.log(mesCitoyens);
+    console.log(bouffeCost);
+};
+
+function eventCitoyens(afterMission,time) {
+    let newCitsNumber = time;
+    let citId = 126;
+    let citName = 'Citoyens';
+    if (rand.rand(1,100) <= ruinsCrimChance) {
+        citId = 225;
+        citName = 'Criminels';
+    }
+    bonusCit(citId,souteId,newCitsNumber);
+    playerInfos.allCits = playerInfos.allCits+newCitsNumber;
+    warning('Nouveaux citoyens',newCitsNumber+' '+citName+' ont débarqué dans la station.');
+};
+
+function bonusCit(citId,toId,number) {
+    let toBat = getBatById(toId);
+    let unitIndex = unitTypes.findIndex((obj => obj.id == citId));
+    conselUnit = unitTypes[unitIndex];
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
+    conselTriche = true;
+    putBat(toBat.tileId,number,0,'',false);
+    let newCitBat = getBatByTypeIdAndTileId(citId,toBat.tileId);
+    newCitBat.loc = 'trans';
+    newCitBat.locId = toBat.id;
+    toBat.transIds.push(newCitBat.id);
+};
+
+function calcTotalCitoyens() {
+    let mesCitoyens = {};
+    mesCitoyens.cit = 0;
+    mesCitoyens.crim = 0;
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (batType.name === 'Citoyens') {
+            mesCitoyens.cit = mesCitoyens.cit+bat.citoyens;
+        } else if (batType.name === 'Criminels') {
+            mesCitoyens.crim = mesCitoyens.crim+bat.citoyens;
+        } else {
+            let unitCits = batType.squads*batType.crew*batType.squadSize;
+            if (batType.skills.includes('brigands')) {
+                mesCitoyens.crim = mesCitoyens.crim+unitCits;
+            } else {
+                mesCitoyens.cit = mesCitoyens.cit+unitCits;
+            }
+        }
+    });
+    return mesCitoyens;
 };

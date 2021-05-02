@@ -26,6 +26,8 @@ function mining(bat) {
     if (bat.tags.includes('mining')) {
         if (bat.apLeft >= 1) {
             console.log('MINING');
+            // xp
+            bat.xp = bat.xp+0.2;
             let tile = getTile(bat);
             let batType = getBatType(bat);
             let rate = getMiningRate(bat,false);
