@@ -210,7 +210,7 @@ function checkEggsDrop() {
     if (eggDropCount >= 1 || satDrop) {
         eggSound();
         playMusic('newEgg',false);
-        if (Math.floor(playerInfos.mapTurn/25) > playerInfos.cocons && !satDrop) {
+        if (Math.floor(playerInfos.mapTurn/25) > playerInfos.cocons && !satDrop && rand.rand(1,100) <= playerInfos.mapTurn) {
             dropEgg('Cocon','target');
             playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             let doubleCocon = playerInfos.mapTurn+((zone[0].mapDiff-1)*7);

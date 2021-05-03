@@ -422,7 +422,7 @@
             "armors":1.35,
             "aoe":"brochette",
             "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
+            "ammo":["standard","scrap","snake","incendiaire","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
         },
         "weapon2":{
             "name":"Mitrailleuse légère",
@@ -1685,7 +1685,7 @@
             "armors":1.35,
             "aoe":"brochette",
             "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
+            "ammo":["standard","scrap","snake","incendiaire","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
         },
         "weapon2":{
             "name":"Dynamite",

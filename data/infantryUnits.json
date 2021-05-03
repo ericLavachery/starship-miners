@@ -894,22 +894,22 @@
             "rof":10,
             "accuracy":21,
             "power":8,
-            "armors":1.35,
+            "armors":1.2,
             "aoe":"brochette",
             "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
+            "ammo":["standard","scrap","snake","incendiaire","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
         },
         "weapon2":{
             "name":"Shotgun (distance)",
             "cost":3,
             "range":1,
             "rof":10,
-            "accuracy":15,
-            "power":8,
+            "accuracy":18,
+            "power":5,
             "armors":1.6,
             "aoe":"unit",
             "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
+            "ammo":["standard","scrap","snake","incendiaire","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
         },
         "equip":["aucun","e-flash","e-camo","chargeur","e-jetpack","theeye","helper","waterproof"],
         "log3eq":"chargeur",
@@ -4698,7 +4698,7 @@
             "armors":1.35,
             "aoe":"brochette",
             "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
+            "ammo":["standard","scrap","snake","incendiaire","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
         },
         "weapon2":{
             "name":"Rainbow gun",

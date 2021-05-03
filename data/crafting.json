@@ -511,6 +511,15 @@
         "batch":5
     },
     {
+        "id":108,
+        "result":"Bois",
+        "cost":{"Compo1":5},
+        "compReq":{},
+        "bldReq":[],
+        "batch":5,
+        "creaNum":20
+    },
+    {
         "id":31,
         "result":"Carbone",
         "cost":{"Scrap":65,"Energie":1},

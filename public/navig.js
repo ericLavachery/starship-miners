@@ -123,13 +123,16 @@ function commandes() {
         }
         if (!modeSonde) {
             $('#commandz').append('<hr>');
-            $('#commandz').append('<button type="button" title="Nouvelle campagne" class="boutonRose iconButtons" onclick="newGame()"><i class="fas fa-chess-queen"></i></button>');
-            if (bataillons.length === 0) {
-                $('#commandz').append('<button type="button" title="Ajouter le pack de ressources" class="boutonRose iconButtons" onclick="addStartPack()"><i class="fas fa-coins"></i></button>');
-            } else {
-                let nextGangLevel = checkGangLevel();
-                if (nextGangLevel > -1) {
-                    $('#commandz').append('<button type="button" title="Monter au niveau de gang '+nextGangLevel+'" class="boutonRose iconButtons" onclick="gangLevelUp()"><i class="fas fa-graduation-cap"></i></button>');
+            $('#commandz').append('<button type="button" title="Nouvelle campagne?" class="boutonRose iconButtons" onclick="showMapReset()" id="reset1"><i class="fas fa-power-off"></i></button>');
+            $('#commandz').append('<button type="button" title="Nouvelle campagne!" class="boutonRose iconButtons" onclick="newGame()" id="reset2"><i class="fas fa-recycle"></i></button>');
+            if (playerInfos.onShip) {
+                if (bataillons.length === 0) {
+                    $('#commandz').append('<button type="button" title="Ajouter le pack de ressources" class="boutonRose iconButtons" onclick="addStartPack()"><i class="fas fa-coins"></i></button>');
+                } else {
+                    let nextGangLevel = checkGangLevel();
+                    if (nextGangLevel > -1) {
+                        $('#commandz').append('<button type="button" title="Monter au niveau de gang '+nextGangLevel+'" class="boutonRose iconButtons" onclick="gangLevelUp()"><i class="fas fa-graduation-cap"></i></button>');
+                    }
                 }
             }
         }

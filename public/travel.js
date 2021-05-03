@@ -152,6 +152,11 @@ function healEverything() {
         }
         bat.squadsLeft = batType.squads;
         bat.damage = 0;
+        if (bat.autoLoad != undefined) {
+            if (bat.autoLoad.length >= 1) {
+                bat.autoLoad = [];
+            }
+        }
         bat.apLeft = bat.ap;
         bat.oldapLeft = bat.ap;
         bat.salvoLeft = batType.maxSalvo;

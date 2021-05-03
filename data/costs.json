@@ -1623,7 +1623,7 @@
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":["Soute"],
         "costs":{"Eau":250,"Energie":3000,"Huile":75,"Scrap":750,"Tissus":25,"Carbone":75,"Titane":350,"Aluminium":2500,"Calcium":30,"Nickel":150,"Cuivre":300,"Or":50,"Silicium":50,"Bore":50,"Plutonium":100,"Oxygène":500,"Hydrogène":700,"Azote":150,"Chlore":50,"Electros":250,"Batteries":200,"Moteur orbital":1},
-        "deploy":{"Eau":100,"Nourriture":50,"Oxygène":100,"Energie":300,"Huile":20,"Tissus":15,"Chlore":15,"Plutonium":50,"Hydrogène":15}
+        "deploy":{"Eau":100,"Nourriture":50,"Oxygène":100,"Energie":500,"Huile":35,"Tissus":15,"Chlore":15,"Plutonium":75,"Hydrogène":25}
     },
     {
         "id":7,

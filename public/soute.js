@@ -919,9 +919,13 @@ function eventBouffe(afterMission,time) {
     let mesCitoyens = calcTotalCitoyens();
     let toutMesCitoyens = mesCitoyens.cit+mesCitoyens.crim;
     let bouffeCost = {};
+    let recycleFactor = playerInfos.comp.tri+8;
+    if (bldList.includes('Recyclab')) {
+        recycleFactor = recycleFactor+4;
+    }
     bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time/323);
-    bouffeCost['Eau'] = Math.round(toutMesCitoyens*time/323);
-    bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time/1979);
+    bouffeCost['Eau'] = Math.round(toutMesCitoyens*time/168/recycleFactor*8);
+    bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time/1979/recycleFactor*8);
     console.log(mesCitoyens);
     console.log(bouffeCost);
 };
