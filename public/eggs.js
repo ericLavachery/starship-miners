@@ -1146,7 +1146,7 @@ function eggSpawn(bat,fromEgg) {
             let dropTile = -1;
             alienUnits.forEach(function(unit) {
                 if (classes.includes(unit.class) && unit.kind.includes(eggCat)) {
-                    if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4) {
+                    if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4 || unit.name === 'Punaises') {
                         checkDiceMax = checkDiceMax+unit.rarity;
                     }
                 }
@@ -1160,7 +1160,7 @@ function eggSpawn(bat,fromEgg) {
                 raritySum = 0;
                 alienUnits.forEach(function(unit) {
                     if (classes.includes(unit.class) && unit.kind.includes(eggCat) && Object.keys(conselUnit).length <= 0) {
-                        if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4) {
+                        if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4 || unit.name === 'Punaises') {
                             raritySum = raritySum+unit.rarity;
                             if (checkDice <= raritySum) {
                                 conselUnit = unit;

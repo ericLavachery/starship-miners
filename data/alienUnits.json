@@ -445,7 +445,7 @@
         "cat":"aliens",
         "kind":"bug",
         "class":"C",
-        "rarity":4,
+        "rarity":3,
         "squads":6,
         "squadSize":15,
         "crew":0,

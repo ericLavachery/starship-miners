@@ -154,7 +154,7 @@
     {
         "name": "snake",
         "range": 1,
-        "rof": 2,
+        "rof": 3,
         "power": -3,
         "powermult": 1,
         "armors": 1,

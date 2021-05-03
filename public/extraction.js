@@ -27,7 +27,11 @@ function mining(bat) {
         if (bat.apLeft >= 1) {
             console.log('MINING');
             // xp
-            bat.xp = bat.xp+0.2;
+            if (playerInfos.comp.ext >= 3) {
+                bat.xp = bat.xp+0.4;
+            } else {
+                bat.xp = bat.xp+0.2;
+            }
             let tile = getTile(bat);
             let batType = getBatType(bat);
             let rate = getMiningRate(bat,false);
@@ -163,6 +167,13 @@ function getMiningRate(bat,fullRate) {
 function getResMiningRate(bat,res,value,fullRate,forInfos) {
     let batType = getBatType(bat);
     let resHere = value;
+    let extComp = 0;
+    if (playerInfos.comp.ext >= 1) {
+        extComp = playerInfos.comp.ext+1;
+    }
+    if (playerInfos.comp.ext === 3) {
+        extComp = extComp+1;
+    }
     if (playerInfos.comp.tri >= 1 && res.name === 'Scrap') {
         resHere = Math.round(resHere*(playerInfos.comp.tri+8)/8);
     }
@@ -171,14 +182,14 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
         minRes = Math.round(minRes*1.5);
     }
     if (playerInfos.comp.ext >= 1) {
-        minRes = Math.round(minRes*(playerInfos.comp.ext+9)/9);
+        minRes = Math.round(minRes*(extComp+5)/5);
     }
     let maxRes = maxResForRate;
     if (res.name === 'Scrap' || res.name === 'Végétaux' || res.name === 'Bois' || res.name === 'Eau') {
         maxRes = Math.round(maxRes*1.25);
     }
     if (playerInfos.comp.ext >= 1) {
-        maxRes = Math.round(maxRes*(playerInfos.comp.ext+9)/9);
+        maxRes = Math.round(maxRes*(extComp+15)/15);
     }
     if (resHere < minRes && res.cat != 'zero') {
         resHere = minRes;
@@ -192,7 +203,7 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
         if (bat.extracted.length >= 2) {
             multiExtractAdj = 1-((bat.extracted.length-1)/12);
         }
-        let maxAdjBonus = playerInfos.comp.ext/20;
+        let maxAdjBonus = extComp/33;
         if (batType.mining.level >= 4) {
             if (multiExtractAdj < 0.75+maxAdjBonus) {
                 multiExtractAdj = 0.75+maxAdjBonus;
