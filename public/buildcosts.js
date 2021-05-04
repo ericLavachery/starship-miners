@@ -147,6 +147,21 @@ function checkMultiCost(costs,number) {
     return enoughRes;
 };
 
+function payMaxCost(costs) {
+    if (costs != undefined) {
+        Object.entries(costs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            let dispoRes = getDispoRes(key);
+            if (dispoRes <= value) {
+                resSub(key,dispoRes);
+            } else {
+                resSub(key,value);
+            }
+        });
+    }
+};
+
 function payCost(costs) {
     if (costs != undefined) {
         Object.entries(costs).map(entry => {

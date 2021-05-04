@@ -226,6 +226,8 @@ function newGame() {
     playerInfos.missionZone = -1;
     playerInfos.sondeDanger = -1;
     playerInfos.sondePlanet = -1;
+    playerInfos.crime = 0;
+    playerInfos.vitals = 0;
     resetReserve();
     resetStartRes();
     resetEndRes();

@@ -93,6 +93,12 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.allCits === undefined) {
         playerInfos.allCits = 2000;
     }
+    if (playerInfos.vitals === undefined) {
+        playerInfos.vitals = 0;
+    }
+    if (playerInfos.crime === undefined) {
+        playerInfos.crime = 0;
+    }
     if (playerInfos.missionZone === undefined) {
         playerInfos.missionZone = -1;
     }

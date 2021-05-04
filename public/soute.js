@@ -889,12 +889,13 @@ function moveResCost(costs,fromId,toId,number) {
 };
 
 function events(afterMission) {
-    let time = rand.rand(6,9)*6;
+    let time = 21;
     if (afterMission) {
-        time = Math.ceil(playerInfos.mapTurn*2/6)*6;
+        time = Math.ceil(playerInfos.mapTurn/3)*3;
     }
-    eventCitoyens(afterMission,time);
-    eventBouffe(afterMission,time);
+    eventCitoyens(time);
+    eventProduction(time);
+    eventBouffe(time);
     playerInfos.mapTurn = 0;
     playerInfos.mapDrop = 0;
     playerInfos.cocons = 0;
@@ -915,7 +916,12 @@ function events(afterMission) {
     playerInfos.showedTiles = [];
 };
 
-function eventBouffe(afterMission,time) {
+function eventProduction(time) {
+    let resNumber = time*5;
+    resAdd('Scrap',resNumber);
+};
+
+function eventBouffe(time) {
     let mesCitoyens = calcTotalCitoyens();
     let toutMesCitoyens = mesCitoyens.cit+mesCitoyens.crim;
     let bouffeCost = {};
@@ -923,15 +929,50 @@ function eventBouffe(afterMission,time) {
     if (bldList.includes('Recyclab')) {
         recycleFactor = recycleFactor+4;
     }
-    bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time/323);
-    bouffeCost['Eau'] = Math.round(toutMesCitoyens*time/168/recycleFactor*8);
-    bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time/1979/recycleFactor*8);
+    bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/323);
+    bouffeCost['Eau'] = Math.round(toutMesCitoyens*time*2/168/recycleFactor*8);
+    bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time*2/1979/recycleFactor*8);
     console.log(mesCitoyens);
     console.log(bouffeCost);
+    playerInfos.vitals = Math.floor(playerInfos.vitals/3);
+    let dispoFood = getDispoRes('Nourriture');
+    let costFood = bouffeCost['Nourriture'];
+    let messageFood = 'OK';
+    if (dispoFood < costFood/2) {
+        playerInfos.vitals = playerInfos.vitals+2;
+        messageFood = 'Carence grave';
+    } else if (dispoFood < costFood) {
+        playerInfos.vitals = playerInfos.vitals+1;
+        messageFood = 'Carence';
+    }
+    let dispoWater = getDispoRes('Eau');
+    let costWater = bouffeCost['Eau'];
+    let messageWater = 'OK';
+    if (dispoWater < costWater/2) {
+        playerInfos.vitals = playerInfos.vitals+4;
+        messageWater = 'Carence grave';
+    } else if (dispoWater < costWater) {
+        playerInfos.vitals = playerInfos.vitals+1;
+        messageWater = 'Carence';
+    }
+    let dispoAir = getDispoRes('Oxygène');
+    let costAir = bouffeCost['Oxygène'];
+    let messageAir = 'OK';
+    if (dispoAir < costAir/2) {
+        playerInfos.vitals = playerInfos.vitals+6;
+        messageAir = 'Carence grave';
+    } else if (dispoAir < costAir) {
+        playerInfos.vitals = playerInfos.vitals+2;
+        messageAir = 'Carence';
+    }
+    warning('Coût en nourriture ('+costFood+')',messageFood);
+    warning('Coût en eau ('+costWater+')',messageWater);
+    warning('Coût en oxygène ('+costAir+')',messageAir);
+    payMaxCost(bouffeCost);
 };
 
-function eventCitoyens(afterMission,time) {
-    let newCitsNumber = time;
+function eventCitoyens(time) {
+    let newCitsNumber = time*2;
     let citId = 126;
     let citName = 'Citoyens';
     if (rand.rand(1,100) <= ruinsCrimChance) {
