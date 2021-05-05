@@ -4045,7 +4045,7 @@
         "size":14,
         "volume":1,
         "stealth":3,
-        "ap":16,
+        "ap":14,
         "maxSalvo":2,
         "weapon":{
             "name":"Pistolet automatique",
@@ -4222,7 +4222,7 @@
         "squadSize":4,
         "crew":3,
         "hp":50,
-        "armor":5,
+        "armor":6,
         "size":20,
         "volume":0.85,
         "stealth":3,

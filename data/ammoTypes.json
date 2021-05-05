@@ -90,6 +90,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
+        "bldReq":["Atelier"],
         "compReq":{"bal":2,"mat":1,"ca":3},
         "deploy":{"Fer":1,"Soufre":2,"Tungstène":2,"Bugium":1},
         "batch":100
@@ -104,6 +105,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
+        "bldReq":["Armurerie"],
         "compReq":{"bal":1},
         "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Tungstène":2},
         "batch":100
@@ -118,7 +120,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "bldReq":["Armurerie"],
+        "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Fer":2,"Soufre":2,"Uranium":2},
         "batch":100
@@ -133,6 +135,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
+        "bldReq":["Atelier"],
         "compReq":{"ca":1},
         "deploy":{"Fer":1,"Soufre":1,"Scrap":1,"Cuivre":1,"Larvium":1,"Potassium":1},
         "batch":100
@@ -147,6 +150,7 @@
         "accuracy": 1.4,
         "apdamage": 0,
         "aoe": "",
+        "bldReq":["Armurerie"],
         "compReq":{"bal":1},
         "deploy":{"Fer":1,"Soufre":1,"Plomb":1,"Titane":2,"Potassium":1},
         "batch":100
@@ -175,6 +179,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
+        "bldReq":["Armurerie"],
         "compReq":{"bal":2},
         "deploy":{"Fer":1,"Soufre":2,"Plomb":3},
         "batch":100
@@ -250,7 +255,7 @@
         "accuracy": 1.6,
         "apdamage": 0,
         "aoe": "",
-        "bldReq":["Armurerie"],
+        "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
         "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Salite":2},
         "batch":100
@@ -297,7 +302,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "bldReq":["Arsenal"],
+        "bldReq":["Armurerie"],
         "compReq":{"bal":3},
         "deploy":{"Fer":2,"Soufre":3,"Plomb":1,"Tungstène":3},
         "batch":100
@@ -312,6 +317,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
+        "bldReq":["Armurerie"],
         "compReq":{"bal":1},
         "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Tungstène":2},
         "batch":100
@@ -326,7 +332,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "bldReq":["Armurerie"],
+        "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Fer":2,"Soufre":2,"Uranium":2},
         "batch":100
@@ -388,7 +394,7 @@
         "apdamage": 0,
         "aoe": "",
         "info": "PasseBouclier",
-        "bldReq":["Arsenal"],
+        "bldReq":["Armurerie"],
         "compReq":{"bal":3},
         "deploy":{"Fer":2,"Soufre":3,"Plomb":1,"Tungstène":3},
         "batch":100
@@ -419,7 +425,7 @@
         "accuracy": 1.6,
         "apdamage": 0,
         "aoe": "",
-        "bldReq":["Armurerie"],
+        "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
         "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Salite":2},
         "batch":100
@@ -479,6 +485,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
+        "bldReq":["Atelier"],
         "compReq":{"bal":2,"mat":1,"ca":3},
         "deploy":{"Fer":1,"Soufre":2,"Tungstène":2,"Bugium":1},
         "batch":100
@@ -493,6 +500,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
+        "bldReq":["Armurerie"],
         "compReq":{"bal":1},
         "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Tungstène":2},
         "batch":100
@@ -507,7 +515,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "bldReq":["Armurerie"],
+        "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Fer":2,"Soufre":2,"Uranium":2},
         "batch":100
@@ -522,6 +530,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
+        "bldReq":["Atelier"],
         "compReq":{"ca":1},
         "deploy":{"Fer":1,"Soufre":1,"Scrap":1,"Cuivre":1,"Larvium":1,"Potassium":1},
         "batch":100
@@ -611,7 +620,7 @@
         "accuracy": 1.4,
         "apdamage": 0,
         "aoe": "",
-        "bldReq":["Armurerie"],
+        "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
         "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Salite":2},
         "batch":100
@@ -722,7 +731,7 @@
         "apdamage": 0,
         "aoe": "brochette",
         "info": "Incendiaire",
-        "bldReq":["Armurerie"],
+        "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":2},
         "deploy":{"Fer":1,"Soufre":2,"Plutonium":1,"Aluminium":1,"Phosphore":2,"Salite":2},
         "batch":100
@@ -941,6 +950,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
+        "bldReq":["Atelier"],
         "deploy":{"Carbone":4,"Fer":1,"Tungstène":2},
         "batch":100
     },
@@ -955,6 +965,7 @@
         "apdamage": 0,
         "aoe": "",
         "info": "Incendiaire",
+        "bldReq":["Atelier"],
         "compReq":{"pyro":1},
         "deploy":{"Bois":5,"Fer":3,"Phosphore":3,"Huile":2},
         "batch":100
@@ -1212,6 +1223,7 @@
         "apdamage": 0,
         "aoe": "",
         "info": "Poison",
+        "bldReq":["Atelier"],
         "compReq":{"exo":1,"ca":1,"mat":1},
         "costs":{"Fer":2,"Tungstène":2,"Cobalt":1,"Silicium":1},
         "deploy":{"Calcium":3,"Huile":2},
@@ -1276,6 +1288,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
+        "bldReq":["Atelier"],
         "compReq":{},
         "costs":{"Fer":3,"Tungstène":2,"Cobalt":1},
         "deploy":{},
@@ -1291,6 +1304,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
+        "bldReq":["Atelier"],
         "compReq":{"mat":1},
         "costs":{"Fer":3,"Carbone":1,"Cobalt":1,"Silicium":1},
         "deploy":{},
@@ -1319,6 +1333,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
+        "bldReq":["Atelier"],
         "compReq":{"pyro":3},
         "costs":{"Tungstène":15,"Carbone":15},
         "deploy":{"Calcium":1,"Potassium":1,"Larvium":1},
@@ -1335,6 +1350,7 @@
         "accuracy": 2,
         "apdamage": 0,
         "aoe": "brochette",
+        "bldReq":["Laboratoire"],
         "compReq":{"pyro":3},
         "costs":{"Rhodium":15,"Carbone":15},
         "deploy":{"Hydrocarbure":1,"Pyratol":1},

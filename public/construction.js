@@ -1074,19 +1074,32 @@ function recupKrimulos(unitId,tileId,citoyens,xp,ammo,equip) {
     conselPut = false;
     conselAmmos = [ammo,'xxx','scrap',equip];
     conselTriche = true;
+    let typeId = conselUnit.id;
     putBat(tileId,60,xp);
+    if (playerInfos.onShip) {
+        let citBat = getBatByTypeIdAndTileId(typeId,tileId);
+        loadBat(citBat.id,souteId);
+    }
     let dropTile = checkDrop(tileId);
     conselUnit = unitTypes[unitIndex];
     conselPut = false;
     conselAmmos = [ammo,'xxx','scrap',equip];
     conselTriche = true;
     putBat(dropTile,60,xp);
+    if (playerInfos.onShip) {
+        let citBat = getBatByTypeIdAndTileId(typeId,dropTile);
+        loadBat(citBat.id,souteId);
+    }
     dropTile = checkDrop(tileId);
     conselUnit = unitTypes[unitIndex];
     conselPut = false;
     conselAmmos = [ammo,'xxx','scrap',equip];
     conselTriche = true;
     putBat(dropTile,60,xp);
+    if (playerInfos.onShip) {
+        let citBat = getBatByTypeIdAndTileId(typeId,dropTile);
+        loadBat(citBat.id,souteId);
+    }
 };
 
 function recupAmazones(unitId,tileId,citoyens,xp,ammo,equip) {
@@ -1098,13 +1111,22 @@ function recupAmazones(unitId,tileId,citoyens,xp,ammo,equip) {
     conselPut = false;
     conselAmmos = [ammo,'xxx','scrap',equip];
     conselTriche = true;
+    let typeId = conselUnit.id;
     putBat(tileId,56,xp);
+    if (playerInfos.onShip) {
+        let citBat = getBatByTypeIdAndTileId(typeId,tileId);
+        loadBat(citBat.id,souteId);
+    }
     let dropTile = checkDrop(tileId);
     conselUnit = unitTypes[unitIndex];
     conselPut = false;
     conselAmmos = [ammo,'xxx','scrap',equip];
     conselTriche = true;
     putBat(dropTile,56,xp);
+    if (playerInfos.onShip) {
+        let citBat = getBatByTypeIdAndTileId(typeId,dropTile);
+        loadBat(citBat.id,souteId);
+    }
 };
 
 function recupRaiders(unitId,tileId,citoyens,xp,ammo,equip) {
@@ -1116,13 +1138,22 @@ function recupRaiders(unitId,tileId,citoyens,xp,ammo,equip) {
     conselPut = false;
     conselAmmos = [ammo,ammo,'scrap',equip];
     conselTriche = true;
+    let typeId = conselUnit.id;
     putBat(tileId,60,xp);
+    if (playerInfos.onShip) {
+        let citBat = getBatByTypeIdAndTileId(typeId,tileId);
+        loadBat(citBat.id,souteId);
+    }
     let dropTile = checkDrop(tileId);
     conselUnit = unitTypes[unitIndex];
     conselPut = false;
     conselAmmos = [ammo,ammo,'scrap',equip];
     conselTriche = true;
     putBat(dropTile,60,xp);
+    if (playerInfos.onShip) {
+        let citBat = getBatByTypeIdAndTileId(typeId,dropTile);
+        loadBat(citBat.id,souteId);
+    }
 };
 
 function recupCitoyens(unitId,tileId,citoyens,xp) {
@@ -1131,9 +1162,10 @@ function recupCitoyens(unitId,tileId,citoyens,xp) {
     conselPut = false;
     conselAmmos = ['xxx','xxx','xxx','xxx'];
     conselTriche = true;
+    let typeId = conselUnit.id;
     putBat(tileId,citoyens,xp);
     if (playerInfos.onShip) {
-        let citBat = getBatByTileId(tileId);
+        let citBat = getBatByTypeIdAndTileId(typeId,tileId);
         loadBat(citBat.id,souteId);
     }
 };
@@ -1167,10 +1199,15 @@ function getRecup(costs) {
 };
 
 function recupRes(bat,batType) {
-    coffreTileId = -1;
-    conselTriche = true;
-    putBatAround(bat.tileId,false,true,239,0,false);
-    let coffre = getBatByTileId(coffreTileId);
+    let coffre = {};
+    if (playerInfos.onShip) {
+        coffre = getBatById(souteId);
+    } else {
+        coffreTileId = -1;
+        conselTriche = true;
+        putBatAround(bat.tileId,false,true,239,0,false);
+        coffre = getBatByTileId(coffreTileId);
+    }
     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
         let recupFactor = 95;
         let bldFactor = 0;

@@ -340,6 +340,7 @@ function batDeploy(batId) {
     let enoughRes = checkCost(deployCosts);
     if (enoughRes) {
         payCost(deployCosts);
+        bat.apLeft = bat.ap;
         loadBat(bat.id,slId,souteId);
     } else {
         console.log('not enough res');
@@ -363,6 +364,7 @@ function landerDeploy(landerId) {
     let enoughRes = checkCost(deployCosts);
     if (enoughRes) {
         payCost(deployCosts);
+        landerBat.apLeft = landerBat.ap;
     } else {
         console.log('not enough res');
     }
