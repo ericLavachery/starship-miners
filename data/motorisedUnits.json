@@ -324,7 +324,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"harvest",
-            "ammo":["lame","lame-tungsten"]
+            "ammo":["lame","lame-tungsten","lame-carbone"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","iso","dunium","bonibo","adamantite"],
         "equip":["aucun","carrousel1","g2motor","chenilles","snorkel","e-flash"],
@@ -1531,7 +1531,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"harvest",
-            "ammo":["lame","lame-tungsten"]
+            "ammo":["lame","lame-tungsten","lame-carbone"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","lunette1","chargeur1","g2motor","e-flash","theeye","waterproof","e-mecano"],
@@ -1587,7 +1587,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"harvest",
-            "ammo":["lame","lame-tungsten"]
+            "ammo":["lame","lame-tungsten","lame-carbone"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","g2motor","e-flash","theeye","waterproof","e-mecano"],
@@ -2428,7 +2428,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"harvest",
-            "ammo":["lame","lame-tungsten","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -2547,7 +2547,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"harvest",
-            "ammo":["lame","lame-tungsten","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
         },
         "weapon2":{},
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
@@ -2874,7 +2874,7 @@
             "power":12,
             "aoe":"squad",
             "sound":"harvest",
-            "ammo":["lame","lame-tungsten"]
+            "ammo":["lame","lame-tungsten","lame-carbone"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","iso","dunium","bonibo","adamantite"],
         "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","e-flash","e-mecano"],
@@ -3892,7 +3892,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"saw",
-            "ammo":["lame","lame-tungsten","lame-plasma"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-plasma"]
         },
         "weapon2":{},
         "protection":["aucun"],

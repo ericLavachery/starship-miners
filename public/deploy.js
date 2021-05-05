@@ -9,7 +9,7 @@ function reEquip(batId,noRefresh) {
     checkReserve();
     updateBldList();
     $("#conAmmoList").css("display","block");
-    $('#conAmmoList').css("height","450px");
+    $('#conAmmoList').css("height","700px");
     $('#unitInfos').empty();
     $('#tileInfos').empty();
     $('#conAmmoList').empty();

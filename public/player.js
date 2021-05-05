@@ -1370,6 +1370,37 @@ function addFreeBat(tileId,unitName) {
     putBat(tileId,0,0);
 }
 
+function gangLevelView() {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","700px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $('#tileInfos').empty();
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="ListRes or">COMPETENCES</span><br>');
+    $('#conUnitList').append('<span class="ListRes">Gang: '+playerInfos.gang+'</span><br>');
+    $('#conUnitList').append('<span class="ListRes">Niveau de gang: '+playerInfos.gLevel+'</span><br>');
+    $('#conUnitList').append('<br>');
+    gangComps.forEach(function(comp) {
+        let nowComp = playerInfos.comp[comp.name];
+        let nextComp = playerInfos.comp[comp.name]+1;
+        let compCost = comp.lvlCosts[nextComp];
+        let colour = 'neutre';
+        let costColour = 'gff';
+        if (comp.maxLevel < nextComp) {
+            compCost = 0;
+            colour = 'cy';
+            costColour = 'noir';
+        }
+        $('#conUnitList').append('<span class="paramName '+colour+'">'+comp.fullName+'</span><span class="paramIcon '+costColour+'" title="Coût">('+compCost+')</span><span class="paramCompValue cy" title="Niveau actuel">'+nowComp+'<span class="gff">/'+comp.maxLevel+'</span></span>');
+    });
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="ListRes"></span><br>');
+    $('#conUnitList').append('<br>');
+};
+
 function checkGangLevel() {
     let nextGangLevel = -1;
     let level = 0;

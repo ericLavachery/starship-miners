@@ -77,6 +77,7 @@ function landingList() {
         modeLanding = false;
         conWindowOut();
         showedTilesReset(false);
+        updateBldList();
         if (playerInfos.onShip) {
             checkSelectedLanderId();
             healEverything();

@@ -926,7 +926,7 @@ function eventBouffe(time) {
     let toutMesCitoyens = mesCitoyens.cit+mesCitoyens.crim;
     let bouffeCost = {};
     let recycleFactor = playerInfos.comp.tri+8;
-    if (bldList.includes('Recyclab')) {
+    if (playerInfos.bldList.includes('Recyclab')) {
         recycleFactor = recycleFactor+4;
     }
     bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/323);

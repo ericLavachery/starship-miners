@@ -865,7 +865,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-scrap","lame-poison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-plasma"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-plasma"]
         },
         "weapon2":{
             "name":"Catapulte",

@@ -130,6 +130,8 @@ function getMiningRate(bat,fullRate) {
             miningAdj = 1;
         } else if (bat.ammo2 === 'lame-tungsten') {
             miningAdj = 1.2;
+        } else if (bat.ammo2 === 'lame-carbone') {
+            miningAdj = 1.3;
         } else if (bat.ammo2 === 'lame-plasma') {
             miningAdj = 1.5;
         }
@@ -138,6 +140,8 @@ function getMiningRate(bat,fullRate) {
             miningAdj = 1;
         } else if (bat.ammo === 'lame-tungsten') {
             miningAdj = 1.2;
+        } else if (bat.ammo === 'lame-carbone') {
+            miningAdj = 1.3;
         } else if (bat.ammo === 'lame-plasma') {
             miningAdj = 1.5;
         }
