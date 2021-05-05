@@ -1497,3 +1497,18 @@ function updateBldList() {
         }
     });
 };
+
+function checkNearConstructor(myBat) {
+    let anyConst = false;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" || bat.loc === "trans") {
+            batType = getBatType(bat);
+            if (batType.skills.includes('constructeur') || batType.skills.includes('producteur')) {
+                if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
+                    anyConst = true;
+                }
+            }
+        }
+    });
+    return anyConst;
+};

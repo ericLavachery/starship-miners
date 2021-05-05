@@ -1402,7 +1402,7 @@ function skillsInfos(bat,batType) {
             equipOK = true;
         }
     } else {
-        if (anyStock) {
+        if (checkNearConstructor(bat)) {
             equipOK = true;
         }
     }

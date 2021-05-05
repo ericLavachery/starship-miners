@@ -416,7 +416,7 @@ function weaponsInfos(bat,batType,pop) {
     }
 };
 
-function showAmmo(ammo) {
+function showAmmo(ammo,redux) {
     let ammoView = ammo;
     ammoView = ammoView.replace('dynamite-','');
     ammoView = ammoView.replace('bombe-','');
@@ -437,6 +437,10 @@ function showAmmo(ammo) {
     ammoView = ammoView.replace('gaz--','');
     ammoView = ammoView.replace('autodestruction','bombe');
     ammoView = ammoView.replace('monomolecular','mono');
+    if (redux) {
+        ammoView = ammoView.replace('standard','stnd');
+        ammoView = ammoView.replace('none','stnd');
+    }
     return ammoView;
 };
 

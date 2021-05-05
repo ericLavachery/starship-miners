@@ -343,11 +343,10 @@ function goRavitDrug(apCost) {
 // STOCK
 
 function checkStock(myBat) {
-    let batType;
     let anyStock = false;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
-            batType = getBatType(bat);
+            let batType = getBatType(bat);
             if (batType.skills.includes('stock')) {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
                     anyStock = true;

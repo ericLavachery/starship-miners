@@ -49,6 +49,7 @@ function unloadInfos(myBat,myBatUnitType) {
     let balise = 'h4';
     let damageIcon = '';
     let tagsIcon = '';
+    let moreInfos = '';
     let batAPLeft = 0;
     if (myBat.transIds != undefined) {
         if (myBat.transIds.length >= 1) {
@@ -69,6 +70,16 @@ function unloadInfos(myBat,myBatUnitType) {
                     if (bat.tags.includes('maladie')) {
                         maladieIcon = ' <i class="fas fa-thermometer"></i>'
                     }
+                    moreInfos = '';
+                    if (bat.chief != undefined) {
+                        if (bat.chief != '') {
+                            moreInfos = moreInfos+bat.chief+' ';
+                        }
+                    }
+                    let myAmmo1 = showAmmo(bat.ammo,true);
+                    moreInfos = moreInfos+'('+myAmmo1+'&middot;';
+                    let myAmmo2 = showAmmo(bat.ammo2,true);
+                    moreInfos = moreInfos+myAmmo2+')';
                     balise = 'h4';
                     if (Object.keys(batDebarq).length >= 1) {
                         if (batDebarq.id === bat.id) {
@@ -76,7 +87,7 @@ function unloadInfos(myBat,myBatUnitType) {
                         }
                     }
                     batAPLeft = Math.floor(bat.apLeft);
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA" class="boutonMarine skillButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA '+moreInfos+'" class="boutonMarine skillButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
                 }
             });
         }
