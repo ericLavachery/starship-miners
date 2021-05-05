@@ -891,7 +891,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_x2",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "weapon2":{},
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
@@ -1454,7 +1454,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"pistol_x2",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -1743,7 +1743,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"revolver_x2",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Sling grenade",
@@ -1800,7 +1800,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"pistol_x2",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -2052,7 +2052,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -2112,7 +2112,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"pistol_x2",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -2370,7 +2370,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"pistol_x4",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -3712,7 +3712,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"pistol_x4",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -4059,7 +4059,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"pistol_x4",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -4179,7 +4179,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Bélier",

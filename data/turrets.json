@@ -649,7 +649,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun","dunium","bonibo","iso"],
         "equip":["aucun","chargeur2","carrousel1"],
@@ -822,7 +822,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
         "equip":["aucun","chargeur2"],
@@ -939,7 +939,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
         "equip":["aucun","chargeur2","carrousel1","longtom1","theeye"],
