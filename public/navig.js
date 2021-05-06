@@ -136,6 +136,9 @@ function commandes() {
                         $('#commandz').append('<button type="button" title="Voir vos compétences" class="boutonRose iconButtons" onclick="gangLevelView()"><i class="fas fa-award"></i></button>');
                     }
                 }
+                if (!playerInfos.adjok) {
+                    $('#commandz').append('<button type="button" title="Ajuster le pack de ressources" class="boutonRouge iconButtons" onclick="adjStartPack()"><i class="fas fa-coins"></i></button>');
+                }
             }
         }
     }

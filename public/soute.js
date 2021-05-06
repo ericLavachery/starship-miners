@@ -974,7 +974,7 @@ function eventBouffe(time) {
 };
 
 function eventCitoyens(time) {
-    let newCitsNumber = time*2;
+    let newCitsNumber = Math.floor(time*1.5/6)*6;
     let citId = 126;
     let citName = 'Citoyens';
     if (rand.rand(1,100) <= ruinsCrimChance) {

@@ -477,7 +477,7 @@
         "maxVeg":3,
         "skills":["ricochet","guerrilla","tirailleur","baddef"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":3},
+        "killRes":{"Bugium":6},
         "killXP":5,
         "flavText":"Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },
@@ -738,7 +738,7 @@
         "maxVeg":3,
         "skills":["capbld","fear","reactpoison","destructeur","ricochet"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"Bugium":15},
+        "killRes":{"Bugium":46},
         "killXP":15,
         "flavText":"Les broyeurs se dirrigent de préférence vers vos bâtiments et ignorent vos autres unités éloignées. Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },
@@ -1535,7 +1535,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"347410__zerokingfull__monster-roar-02_bugboss",
         "fxPriority":8,
-        "killRes":{"Bugium":23,"Bossium":28,"Creatite":6,"Pyrus":75},
+        "killRes":{"Bugium":91,"Bossium":28,"Creatite":6,"Pyrus":75},
         "killXP":40,
         "flavText":"Les dragons augmentent la cadence de tir de tous les bugs. Ils pondent des firebugs. Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },
@@ -1818,7 +1818,7 @@
         "maxVeg":3,
         "skills":["minaccu","ricochet","sentinelle"],
         "deathFx":"76973__michel88__piggrunt1",
-        "killRes":{"Bugium":4,"Slime":5},
+        "killRes":{"Bugium":8,"Slime":5},
         "killXP":10,
         "flavText":"Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },
@@ -2271,7 +2271,7 @@
         "deathFx":"185366__anwul__monster",
         "spawnFx":"347410__zerokingfull__monster-roar-02_bugboss",
         "fxPriority":11,
-        "killRes":{"Bugium":24,"Mendium":6,"Bossium":34,"Egidium":93,"Slime":20},
+        "killRes":{"Bugium":97,"Mendium":6,"Bossium":34,"Egidium":93,"Slime":20},
         "killXP":75,
         "flavText":"Les overbugs protègent tous les bugs avec leur bouclier. Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },

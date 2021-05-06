@@ -90,6 +90,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.gLevel === undefined) {
         playerInfos.gLevel = 4;
     }
+    if (playerInfos.adjok === undefined) {
+        playerInfos.adjok = false;
+    }
     if (playerInfos.allCits === undefined) {
         playerInfos.allCits = 2000;
     }

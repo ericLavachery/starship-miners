@@ -276,6 +276,11 @@ function batDeathEffect(bat,quiet,title,body) {
             if (nextExplosion > 3) {
                 nextExplosion = 1;
             }
+            if (bat.chief != undefined) {
+                if (bat.chief != '') {
+                    warning(bat.chief+' est mort','RIP');
+                }
+            }
             setTimeout(function (){
                 $('#b'+bat.tileId).empty();
                 $('#b'+bat.tileId).append(resHere);
@@ -283,6 +288,11 @@ function batDeathEffect(bat,quiet,title,body) {
         } else {
             $('#b'+bat.tileId).empty();
             $('#b'+bat.tileId).append(resHere);
+            if (bat.chief != undefined) {
+                if (bat.chief != '') {
+                    warning(bat.chief+' est mort','RIP');
+                }
+            }
             warning(title,body);
         }
     } else {

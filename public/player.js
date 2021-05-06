@@ -1293,6 +1293,22 @@ function missionResults(onlyLanders) {
     commandes();
 };
 
+function adjStartPack() {
+    // Pour ajuster le start pack !!!
+    let packName = 'adjpack';
+    let pack = {};
+    let index = armorTypes.findIndex((obj => obj.name == packName));
+    if (index > -1) {
+        pack = armorTypes[index];
+    }
+    if (Object.keys(pack.res).length >= 1) {
+        payMaxCost(pack.res);
+    }
+    playerInfos.adjok = true;
+    voirReserve();
+    commandes();
+};
+
 function addStartPack() {
     addFreeBat(1830,'Soute');
     addFreeBat(1831,'Lander');
