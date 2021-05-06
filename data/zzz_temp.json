@@ -17,6 +17,49 @@ autre son
 rof 1/2
 seconde arme tir à 1+1 (accuracy 10) noFly
 
+{
+    "id":64,
+    "result":"Energie",
+    "cost":{"Eau":40,"Uranium":3},
+    "compReq":{"energ":2},
+    "bldReq":["Centrale nucléaire","Soute"],
+    "batch":50
+},
+{
+    "id":68,
+    "result":"Energie",
+    "cost":{"Eau":40,"Plutonium":3},
+    "compReq":{},
+    "bldReq":["Centrale nucléaire","Soute"],
+    "batch":50
+},
+{
+    "id":56,
+    "result":"Energie",
+    "cost":{"Eau":25,"Uranium":4},
+    "compReq":{},
+    "bldReq":["Centrale SMR","Soute"],
+    "batch":50
+},
+{
+    "id":69,
+    "result":"Energie",
+    "cost":{"Eau":25,"Plutonium":5},
+    "compReq":{"energ":1},
+    "bldReq":["Centrale SMR","Soute"],
+    "batch":50
+},
+{
+    "id":70,
+    "result":"Energie",
+    "cost":{"Eau":25},
+    "unique":true,
+    "compReq":{},
+    "bldReq":["Centrale solaire","Soute"],
+    "batch":50,
+    "creaNum":500
+}
+
 Scrap
 Plomb
 Fer

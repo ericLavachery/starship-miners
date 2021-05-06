@@ -84,7 +84,8 @@
         "compReq":{"ordre":3},
         "costs":{"Scrap":30,"Carbone":60,"Bois":60,"Aluminium":105,"Titane":45,"Cuivre":60,"Tissus":30,"Azote":30,"Mendium":30,"Silicium":30,"Electros":60,"Batteries":30},
         "deploy":{"Energie":60},
-        "fabTime":40
+        "fabTime":40,
+        "crime":-2
     },
     {
         "id":189,
@@ -182,11 +183,12 @@
         "id":155,
         "name":"Gurus",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":7},
-        "bldReq":["Derrick","Poste radio","Infirmerie"],
+        "bldReq":["Poste radio","Infirmerie","Appartements"],
         "unitCost":"Adeptes",
         "costs":{"Zinc":28,"Chlore":28,"Titane":7,"Fer":20,"Scrap":60,"Silicium":18,"Huile":75,"Or":20,"Batteries":3,"Electros":3,"Fuel":60,"Tissus":60},
         "deploy":{"Energie":10,"Huile":20,"Chlore":20,"Zinc":20,"Tissus":20},
-        "fabTime":45
+        "fabTime":45,
+        "crime":-2
     },
     {
         "id":21,
@@ -386,7 +388,8 @@
         "bldReq":["Bar"],
         "costs":{"Fer":36,"Scrap":36,"Bois":36,"Carbone":36,"Végétaux":122,"Huile":36,"Silicium":36,"Chlore":25,"Zinc":25,"Tissus":12},
         "deploy":{"Huile":12,"Chlore":12,"Zinc":12,"Tissus":12},
-        "fabTime":25
+        "fabTime":25,
+        "crime":-1
     },
     {
         "id":40,
@@ -559,11 +562,12 @@
         "id":70,
         "name":"Marshalls",
         "levels":{"rednecks":12,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["QG","Cabines","Centre d'entraînement"],
+        "bldReq":["QG","Appartements","Centre d'entraînement"],
         "unitCost":"Barmen",
         "costs":{"Fer":256,"Scrap":192,"Carbone":128,"Silicium":32,"Soufre":128,"Plomb":128,"Végétaux":64,"Huile":94,"Or":64,"Chlore":30,"Zinc":30,"Tissus":30},
         "deploy":{"Energie":10,"Huile":14,"Chlore":14,"Zinc":14,"Tissus":14},
-        "fabTime":40
+        "fabTime":40,
+        "crime":-1
     },
     {
         "id":71,
@@ -824,7 +828,7 @@
         "id":130,
         "name":"Luchandos",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":12,"detruas":99,"brasier":99},
-        "bldReq":["QG","Arsenal","Cabines"],
+        "bldReq":["QG","Arsenal","Appartements"],
         "unitCost":"Pistoleros",
         "costs":{"Fer":315,"Scrap":189,"Aluminium":63,"Silicium":32,"Végétaux":94,"Blendium":32,"Soufre":63,"Plomb":63,"Huile":86,"Or":63,"Chlore":30,"Zinc":30,"Tissus":43},
         "deploy":{"Energie":10,"Huile":14,"Chlore":14,"Zinc":14,"Tissus":14},
@@ -1073,7 +1077,7 @@
         "id":115,
         "name":"Alphas",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":13,"brasier":99},
-        "bldReq":["QG","Usine d'armement","Chaîne de montage"],
+        "bldReq":["QG","Usine d'armement","Appartements"],
         "unitCost":"Rainmen",
         "costs":{"Fer":96,"Scrap":12,"Carbone":108,"Aluminium":192,"Titane":48,"Tungstène":72,"Rhodium":48,"Silicium":12,"Electros":42,"Batteries":52,"Nickel":36,"Compo2":60,"Compo3":12,"Huile":10,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":70},
@@ -2142,7 +2146,8 @@
         "id":215,
         "name":"Bar",
         "costs":{"Compo1":115,"Eau":50,"Huile":15,"Carbone":25,"Végétaux":100},
-        "fabTime":15
+        "fabTime":15,
+        "crime":-1
     },
     {
         "id":216,
@@ -2156,7 +2161,8 @@
         "id":224,
         "name":"Prisons",
         "costs":{"Compo1":120,"Compo2":30,"Eau":50,"Fer":150},
-        "fabTime":35
+        "fabTime":35,
+        "crime":-5
     },
     {
         "id":226,
@@ -2173,7 +2179,8 @@
         "upkeep":{"Energie":1,"Eau":10},
         "prod":{"Scrap":2},
         "costs":{"Compo1":210,"Compo2":15,"Eau":150,"Energie":50,"Aluminium":15,"Fer":100,"Plomb":25,"Végétaux":100,"Calcium":25,"Chlore":25},
-        "fabTime":50
+        "fabTime":50,
+        "crime":-2
     },
     {
         "id":201,
@@ -2188,7 +2195,8 @@
         "name":"Dortoirs",
         "bldReq":["Soute"],
         "costs":{"Eau":300,"Scrap":300,"Tissus":300,"Fer":200,"Bois":100,"Batteries":10},
-        "fabTime":25
+        "fabTime":25,
+        "crime":2
     },
     {
         "id":233,
@@ -2202,7 +2210,8 @@
         "name":"Appartements",
         "bldReq":["Soute"],
         "costs":{"Eau":300,"Huile":100,"Tissus":1000,"Carbone":300,"Bois":300,"Cuivre":200,"Electros":25,"Batteries":50},
-        "fabTime":75
+        "fabTime":75,
+        "crime":3
     },
     {
         "id":235,
@@ -2241,15 +2250,21 @@
         "name":"Serres hydroponiques",
         "bldUp":"Jardin",
         "bldReq":["Soute"],
-        "costs":{"Eau":250,"Scrap":150,"Phosphore":25,"Potassium":75,"Végétaux":250,"Azote":50,"Chlore":100,"Energie":50,"Batteries":15},
+        "upkeep":{"Azote":2,"Potassium":2},
+        "prod":{"Végétaux":6},
+        "costs":{"Compo1":200,"Scrap":150,"Silicium":150,"Eau":750,"Azote":100,"Phosphore":75,"Potassium":150,"Chlore":50,"Végétaux":750,"Energie":100,"Batteries":25},
         "fabTime":50
     },
     {
         "id":229,
         "name":"Jardin",
+        "bldEquiv":["Serres hydroponiques"],
         "bldCost":"Serres hydroponiques",
         "bldReq":["Soute"],
-        "costs":{"Eau":1000,"Phosphore":150,"Potassium":300,"Végétaux":1000,"Azote":150,"Chlore":300,"Energie":150,"Batteries":50},
-        "fabTime":100
+        "upkeep":{"Azote":3,"Phosphore":2,"Potassium":4},
+        "prod":{"Nourriture":5,"Végétaux":8},
+        "costs":{"Compo1":300,"Scrap":200,"Silicium":200,"Eau":2500,"Azote":300,"Phosphore":250,"Potassium":450,"Chlore":150,"Végétaux":2500,"Energie":200,"Batteries":50},
+        "fabTime":100,
+        "crime":-3
     }
 ]

@@ -345,7 +345,7 @@
     {
         "id":65,
         "result":"Tissus",
-        "cost":{"Végétaux":5},
+        "cost":{"Végétaux":8},
         "compReq":{},
         "bldReq":["Atelier"],
         "compOut":{"ind":1},
@@ -356,7 +356,7 @@
     {
         "id":66,
         "result":"Tissus",
-        "cost":{"Végétaux":3},
+        "cost":{"Végétaux":5},
         "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":1
@@ -372,7 +372,7 @@
     {
         "id":71,
         "result":"Nourriture",
-        "cost":{"Végétaux":4},
+        "cost":{"Végétaux":7},
         "compReq":{},
         "bldReq":[],
         "batch":1,
@@ -381,7 +381,7 @@
     {
         "id":72,
         "result":"Nourriture",
-        "cost":{"Végétaux":4,"Energie":4},
+        "cost":{"Végétaux":7,"Energie":4},
         "compReq":{},
         "bldReq":["Cantine"],
         "compOut":{"tri":1},
@@ -390,7 +390,7 @@
     {
         "id":73,
         "result":"Nourriture",
-        "cost":{"Végétaux":5,"Energie":3},
+        "cost":{"Végétaux":8,"Energie":3},
         "compReq":{"tri":1},
         "bldReq":["Cantine"],
         "batch":3
@@ -406,10 +406,10 @@
     {
         "id":75,
         "result":"Nourriture",
-        "cost":{"Végétaux":2,"Scrap":1,"Energie":6},
+        "cost":{"Végétaux":3,"Scrap":1,"Energie":6},
         "compReq":{"tri":2},
-        "bldReq":["Laboratoire"],
-        "batch":2
+        "bldReq":["Recyclab"],
+        "batch":1
     },
     {
         "id":76,
@@ -878,47 +878,5 @@
         "bldOut":["Crameur"],
         "batch":50,
         "creaNum":15
-    },
-    {
-        "id":64,
-        "result":"Energie",
-        "cost":{"Eau":40,"Uranium":3},
-        "compReq":{"energ":2},
-        "bldReq":["Centrale nucléaire","Soute"],
-        "batch":50
-    },
-    {
-        "id":68,
-        "result":"Energie",
-        "cost":{"Eau":40,"Plutonium":3},
-        "compReq":{},
-        "bldReq":["Centrale nucléaire","Soute"],
-        "batch":50
-    },
-    {
-        "id":56,
-        "result":"Energie",
-        "cost":{"Eau":25,"Uranium":4},
-        "compReq":{},
-        "bldReq":["Centrale SMR","Soute"],
-        "batch":50
-    },
-    {
-        "id":69,
-        "result":"Energie",
-        "cost":{"Eau":25,"Plutonium":5},
-        "compReq":{"energ":1},
-        "bldReq":["Centrale SMR","Soute"],
-        "batch":50
-    },
-    {
-        "id":70,
-        "result":"Energie",
-        "cost":{"Eau":25},
-        "unique":true,
-        "compReq":{},
-        "bldReq":["Centrale solaire","Soute"],
-        "batch":50,
-        "creaNum":500
     }
 ]

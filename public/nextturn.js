@@ -265,14 +265,14 @@ function nextTurnEnd() {
             batType = getBatType(bat);
             if (batType.skills.includes('upkeep') || batType.skills.includes('prodres')) {
                 if (!bat.tags.includes('construction')) {
-                    upkeepAndProd(bat,batType);
+                    upkeepAndProd(bat,batType,1);
                 }
             }
             if (batType.skills.includes('geo') && bat.tags.includes('prodres')) {
                 geoProd(bat,batType);
             }
             if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
-                solarProd(bat,batType);
+                solarProd(bat,batType,1);
             }
             if (bat.autoLoad != undefined) {
                 if (Array.isArray(bat.autoLoad)) {

@@ -83,7 +83,6 @@ function landingList() {
             healEverything();
             // Arrive trop tôt et ne compte que le lander?!
             // findLanders suffirait??
-            checkReserve();
             events(true);
             miniOut();
         }
@@ -170,6 +169,9 @@ function healEverything() {
         let gearTags = getBatGearTags(bat.prt,bat.eq,batType);
         if (bat.tags.includes('zombie')) {
             gearTags.push('zombie');
+        }
+        if (bat.tags.includes('prodres')) {
+            gearTags.push('prodres');
         }
         bat.tags = gearTags;
     });

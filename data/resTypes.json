@@ -4,7 +4,7 @@
         "name": "Scrap",
         "bld": "Scrap",
         "level": 1,
-        "rarity": 40,
+        "rarity": 35,
         "cat": "white",
         "batch": 8,
         "energie": 50
@@ -34,7 +34,7 @@
         "name": "Carbone",
         "bld": "Mine",
         "level": 2,
-        "rarity": 50,
+        "rarity": 40,
         "cat": "white",
         "batch": 10,
         "energie": 5
@@ -44,7 +44,7 @@
         "name": "Silicium",
         "bld": "Mine",
         "level": 1,
-        "rarity": 25,
+        "rarity": 22,
         "cat": "white",
         "batch": 4,
         "energie": 50
@@ -54,7 +54,7 @@
         "name": "Cuivre",
         "bld": "Mine",
         "level": 2,
-        "rarity": 45,
+        "rarity": 35,
         "cat": "white",
         "batch": 3,
         "energie": 50
@@ -74,7 +74,7 @@
         "name": "Zinc",
         "bld": "Mine",
         "level": 1,
-        "rarity": 48,
+        "rarity": 40,
         "cat": "white",
         "batch": 3,
         "energie": 50
@@ -84,7 +84,7 @@
         "name": "Phosphore",
         "bld": "Mine",
         "level": 2,
-        "rarity": 30,
+        "rarity": 25,
         "cat": "white",
         "batch": 4,
         "energie": 10
@@ -104,7 +104,7 @@
         "name": "Nickel",
         "bld": "Mine",
         "level": 2,
-        "rarity": 30,
+        "rarity": 22,
         "cat": "white",
         "batch": 3,
         "energie": 100
@@ -114,7 +114,7 @@
         "name": "Potassium",
         "bld": "Mine",
         "level": 2,
-        "rarity": 55,
+        "rarity": 45,
         "cat": "white",
         "batch": 4,
         "energie": 10
@@ -124,7 +124,7 @@
         "name": "Aluminium",
         "bld": "Mine",
         "level": 2,
-        "rarity": 45,
+        "rarity": 37,
         "cat": "white",
         "batch": 5,
         "energie": 20
@@ -134,7 +134,7 @@
         "name": "Bore",
         "bld": "Mine",
         "level": 2,
-        "rarity": 35,
+        "rarity": 30,
         "cat": "white",
         "batch": 3,
         "energie": 100
@@ -154,7 +154,7 @@
         "name": "Cobalt",
         "bld": "Mine",
         "level": 2,
-        "rarity": 25,
+        "rarity": 20,
         "cat": "white",
         "batch": 2,
         "energie": 50
@@ -164,7 +164,7 @@
         "name": "Tungstène",
         "bld": "Mine",
         "level": 2,
-        "rarity": 25,
+        "rarity": 22,
         "cat": "white",
         "batch": 5,
         "energie": 100
@@ -204,7 +204,7 @@
         "name": "Or",
         "bld": "Mine",
         "level": 1,
-        "rarity": 20,
+        "rarity": 18,
         "cat": "white",
         "batch": 2,
         "energie": 50
@@ -214,7 +214,7 @@
         "name": "Mercure",
         "bld": "Mine",
         "level": 2,
-        "rarity": 30,
+        "rarity": 25,
         "cat": "white",
         "batch": 2,
         "energie": 50
@@ -314,7 +314,7 @@
         "name": "Azote",
         "bld": "Derrick",
         "level": 2,
-        "rarity": 45,
+        "rarity": 40,
         "cat": "white",
         "batch": 3,
         "energie": 50

@@ -123,15 +123,15 @@ function skillsInfos(bat,batType) {
         }
         if (bat.apLeft >= apReq && !bat.tags.includes('guet') && !batType.skills.includes('sentinelle') && bat.eq != 'detector' && bat.logeq != 'detector' && bat.eq != 'g2ai' && bat.logeq != 'g2ai' && !batType.skills.includes('initiative') && !batType.skills.includes('after')) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Faire le guet (pas de malus à la riposte)" class="'+bouton+' skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Faire le guet (pas de malus à la riposte)" class="'+bouton+' skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apCost+'</span></button>&nbsp; Guet</'+balise+'></span>');
         } else {
             if (batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
                 skillMessage = "Sentinelle";
             } else {
-                skillMessage = "Pas assez de PA";
+                skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
             }
             // pas assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-binoculars"></i> <span class="small">'+apReq+'</span></button>&nbsp; Guet</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-binoculars"></i> <span class="small">'+apCost+'</span></button>&nbsp; Guet</'+balise+'></span>');
         }
     }
     // FORTIFICATION
@@ -155,7 +155,7 @@ function skillsInfos(bat,batType) {
             if (inMelee) {
                 skillMessage = "Vous ne pouvez pas vous fortifier en mêlée";
             } else {
-                skillMessage = "Pas assez de PA";
+                skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
             }
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
         }
@@ -220,7 +220,7 @@ function skillsInfos(bat,batType) {
                 } else if (!camoufOK) {
                     skillMessage = "Impossible en mêlée";
                 } else {
-                    skillMessage = "Pas assez de PA";
+                    skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                 }
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
             }
@@ -898,7 +898,7 @@ function skillsInfos(bat,batType) {
         apCost = 2;
         apReq = 0;
         if (!bat.tags.includes('mining') && !inMelee && extractOK) {
-            $('#unitInfos').append('<span class="blockTitle"><h5><button type="button" title="Extraire les ressources" class="boutonGris skillButtons" onclick="extraction('+apCost+')"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apReq+'</span></button><button type="button" title="Choisir les ressources" class="boutonGris skillButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>&nbsp; Extraction</h5></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h5><button type="button" title="Extraire les ressources" class="boutonGris skillButtons" onclick="extraction('+apCost+')"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Choisir les ressources" class="boutonGris skillButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>&nbsp; Extraction</h5></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Impossible en mêlée";
@@ -909,7 +909,7 @@ function skillsInfos(bat,batType) {
             } else {
                 skillMessage = "Pas assez de PA";
             }
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apReq+'</span></button><button type="button" title="Choisir les ressources" class="boutonGris skillButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>&nbsp; Extraction</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Choisir les ressources" class="boutonGris skillButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>&nbsp; Extraction</'+balise+'></span>');
         }
     }
     // ACTIVATION
@@ -946,6 +946,7 @@ function skillsInfos(bat,batType) {
                 trapType = getBatTypeByName('Fosses');
                 trapCostOK = checkCost(trapType.costs);
                 apCost = Math.round(bat.ap*1.5);
+                apReq = Math.round(bat.ap/1.5);
                 if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-fosse`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fosses</'+balise+'></span>');
                 } else {
@@ -956,7 +957,7 @@ function skillsInfos(bat,batType) {
                     } else if (inMelee) {
                         skillMessage = "Ne peut pas se faire en mêlée";
                     } else {
-                        skillMessage = "Pas assez de PA";
+                        skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                     }
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fosses</h4></span>');
                 }
@@ -984,7 +985,7 @@ function skillsInfos(bat,batType) {
                     } else if (inMelee) {
                         skillMessage = "Ne peut pas se faire en mêlée";
                     } else {
-                        skillMessage = "Pas assez de PA";
+                        skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                     }
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Pièges</h4></span>');
                 }
@@ -1012,7 +1013,7 @@ function skillsInfos(bat,batType) {
                     } else if (inMelee) {
                         skillMessage = "Ne peut pas se faire en mêlée";
                     } else {
-                        skillMessage = "Pas assez de PA";
+                        skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                     }
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dardières</h4></span>');
                 }
@@ -1041,7 +1042,7 @@ function skillsInfos(bat,batType) {
                     } else if (inMelee) {
                         skillMessage = "Ne peut pas se faire en mêlée";
                     } else {
-                        skillMessage = "Pas assez de PA";
+                        skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                     }
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</h4></span>');
                 }
@@ -1070,7 +1071,7 @@ function skillsInfos(bat,batType) {
                     } else if (inMelee) {
                         skillMessage = "Ne peut pas se faire en mêlée";
                     } else {
-                        skillMessage = "Pas assez de PA";
+                        skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                     }
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</h4></span>');
                 }
@@ -1125,7 +1126,7 @@ function skillsInfos(bat,batType) {
                     } else if (inMelee) {
                         skillMessage = "Ne peut pas se faire en mêlée";
                     } else {
-                        skillMessage = "Pas assez de PA";
+                        skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                     }
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Barbelés</h4></span>');
                 }
@@ -1142,7 +1143,8 @@ function skillsInfos(bat,batType) {
                 trapType = getBatTypeByName('Coffres');
                 trapCostOK = checkCost(trapType.costs);
                 apCost = 8;
-                if (bat.apLeft >= bat.ap-3 && !inMelee && trapCostOK) {
+                apReq = Math.ceil(bat.ap/2);
+                if (bat.apLeft >= apReq && !inMelee && trapCostOK) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Construire des coffres '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`coffre`)"><i class="fas fa-box-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Coffres</'+balise+'></span>');
                 } else {
                     if (!trapCostOK) {
@@ -1150,7 +1152,7 @@ function skillsInfos(bat,batType) {
                     } else if (inMelee) {
                         skillMessage = "Ne peut pas se faire en mêlée";
                     } else {
-                        skillMessage = "Pas assez de PA";
+                        skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                     }
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-box-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Coffres</h4></span>');
                 }
@@ -1176,9 +1178,9 @@ function skillsInfos(bat,batType) {
                 } else if (!roadCostsOK) {
                     skillMessage = "Pas assez de ressources "+displayCosts(roadCosts);
                 } else {
-                    skillMessage = "Pas assez de PA";
+                    skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-road"></i> <span class="small">'+apReq+'</span></button>&nbsp; '+roadName+'</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+roadName+'</h4></span>');
             }
         }
     }
@@ -1193,7 +1195,7 @@ function skillsInfos(bat,batType) {
             let infraCostOK;
             let defaultMessage;
             if (bat.apLeft < apReq) {
-                defaultMessage = 'Pas assez de PA';
+                defaultMessage = 'Pas assez de PA (réserve de '+apReq+' requise)';
             }
             if (inMelee) {
                 defaultMessage = 'Impossible en mêlée';
@@ -1322,7 +1324,7 @@ function skillsInfos(bat,batType) {
                     if (inMelee) {
                         skillMessage = "Ne peut pas se faire en mêlée";
                     } else {
-                        skillMessage = "Pas assez de PA";
+                        skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                     }
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-trash-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Démolition</h4></span>');
                 }
@@ -1341,7 +1343,7 @@ function skillsInfos(bat,batType) {
             } else if (isCharged) {
                 skillMessage = "Vous devez vider votre bataillon avant de le transformer";
             } else {
-                skillMessage = "Pas assez de PA";
+                skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
         }
@@ -1362,7 +1364,7 @@ function skillsInfos(bat,batType) {
             } else if (!isInPlace) {
                 skillMessage = 'Vous devez être à côté d\'un '+upBatType.bldReq[0]+' pour monter ce bataillon en grade';
             } else {
-                skillMessage = "Pas assez de PA";
+                skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
             }
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
         }
@@ -1371,28 +1373,28 @@ function skillsInfos(bat,batType) {
     if (batType.skills.includes('constructeur')) {
         apReq = 5;
         if (bat.apLeft >= apReq && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (bâtiments)" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,false)"><i class="fas fa-drafting-compass"></i> <span class="small">'+apReq+'</span></button>&nbsp; Construction</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (bâtiments)" class="boutonNoir bigButtons" onclick="bfconst(`buildings`,false,false)"><i class="fas fa-puzzle-piece"></i></button>&nbsp; Construction</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Ne peut pas se faire en mêlée";
             } else {
-                skillMessage = "Pas assez de PA";
+                skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-drafting-compass"></i> <span class="small">'+apReq+'</span></button>&nbsp; Construction</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-puzzle-piece"></i></button>&nbsp; Construction</h4></span>');
         }
     }
     // CONSTRUCTION UNITES
     if (batType.skills.includes('producteur')) {
         apReq = 5;
         if (bat.apLeft >= apReq && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Production (unités)" class="boutonGris skillButtons" onclick="bfconst(`units`,false,false)"><i class="fas fa-id-card"></i> <span class="small">'+apReq+'</span></button>&nbsp; Production</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Production (unités)" class="boutonNoir bigButtons" onclick="bfconst(`units`,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Ne peut pas se faire en mêlée";
             } else {
-                skillMessage = "Pas assez de PA";
+                skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-id-card"></i> <span class="small">'+apReq+'</span></button>&nbsp; Production</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
         }
     }
     // CHANGER AMMOS-ARMURE-EQUIPEMENT
@@ -1410,14 +1412,14 @@ function skillsInfos(bat,batType) {
         apCost = Math.round(bat.ap*1.5);
         apReq = 5;
         if ((bat.apLeft >= apReq || playerInfos.onShip) && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Changer de munitions, équipement ou armure" class="boutonCaca skillButtons" onclick="reEquip('+bat.id+',false)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apReq+'</span></button>&nbsp; Rééquiper</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Changer de munitions, équipement ou armure" class="boutonNoir skillButtons" onclick="reEquip('+bat.id+',false)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Rééquiper</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Ne peut pas se faire en mêlée";
             } else {
-                skillMessage = "Pas assez de PA";
+                skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-user-shield"></i> <span class="small">'+apReq+'</span></button>&nbsp; Rééquiper</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-user-shield"></i> <span class="small">'+apCost+'</span></button>&nbsp; Rééquiper</h4></span>');
         }
     }
     // FOUILLE DE RUINES
@@ -1437,9 +1439,9 @@ function skillsInfos(bat,batType) {
                 if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else {
-                    skillMessage = "Pas assez de PA";
+                    skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-search"></i> <span class="small">'+apReq+'</span></button>&nbsp; Fouille</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-search"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fouille</h4></span>');
             }
         }
     }
