@@ -1,5 +1,6 @@
 function craftWindow() {
     selectMode();
+    batUnselect();
     updateBldList();
     findLanders();
     if (playerInfos.mapTurn >= 3) {
