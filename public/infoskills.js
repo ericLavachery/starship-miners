@@ -1331,70 +1331,72 @@ function skillsInfos(bat,batType) {
             }
         }
     }
-    // UPGRADE BUILDING
-    if (batType.skills.includes('upgrade')) {
-        let isCharged = checkCharged(bat,'trans');
-        apReq = 5;
-        if (bat.apLeft >= apReq && !inMelee && !isCharged) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.bldUp+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`bld`)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
-        } else {
-            if (inMelee) {
-                skillMessage = "Ne peut pas se faire en mêlée";
-            } else if (isCharged) {
-                skillMessage = "Vous devez vider votre bataillon avant de le transformer";
+    if (!inSoute) {
+        // UPGRADE BUILDING
+        if (batType.skills.includes('upgrade')) {
+            let isCharged = checkCharged(bat,'trans');
+            apReq = 5;
+            if (bat.apLeft >= apReq && !inMelee && !isCharged) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.bldUp+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`bld`)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
             } else {
-                skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                if (inMelee) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                } else if (isCharged) {
+                    skillMessage = "Vous devez vider votre bataillon avant de le transformer";
+                } else {
+                    skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
         }
-    }
-    // UPGRADE INFANTRY
-    if (batType.skills.includes('uprank')) {
-        let isInPlace = checkUprankPlace(bat,batType);
-        let isXPok = checkUprankXP(bat,batType);
-        let upBatType = getBatTypeByName(batType.unitUp);
-        apReq = 5;
-        if (bat.apLeft >= apReq && !inMelee && isInPlace && isXPok) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.unitUp+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`inf`)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
-        } else {
-            if (inMelee) {
-                skillMessage = "Ne peut pas se faire en mêlée";
-            } else if (!isXPok) {
-                skillMessage = "Ce bataillon n'a pas assez d'expérience pour être monté en grade";
-            } else if (!isInPlace) {
-                skillMessage = 'Vous devez être à côté d\'un '+upBatType.bldReq[0]+' pour monter ce bataillon en grade';
+        // UPGRADE INFANTRY
+        if (batType.skills.includes('uprank')) {
+            let isInPlace = checkUprankPlace(bat,batType);
+            let isXPok = checkUprankXP(bat,batType);
+            let upBatType = getBatTypeByName(batType.unitUp);
+            apReq = 5;
+            if (bat.apLeft >= apReq && !inMelee && isInPlace && isXPok) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.unitUp+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`inf`)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
             } else {
-                skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                if (inMelee) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                } else if (!isXPok) {
+                    skillMessage = "Ce bataillon n'a pas assez d'expérience pour être monté en grade";
+                } else if (!isInPlace) {
+                    skillMessage = 'Vous devez être à côté d\'un '+upBatType.bldReq[0]+' pour monter ce bataillon en grade';
+                } else {
+                    skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
         }
-    }
-    // CONSTRUCTION BATIMENTS
-    if (batType.skills.includes('constructeur')) {
-        apReq = 5;
-        if (bat.apLeft >= apReq && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (bâtiments)" class="boutonNoir bigButtons" onclick="bfconst(`buildings`,false,false)"><i class="fas fa-puzzle-piece"></i></button>&nbsp; Construction</h4></span>');
-        } else {
-            if (inMelee) {
-                skillMessage = "Ne peut pas se faire en mêlée";
+        // CONSTRUCTION BATIMENTS
+        if (batType.skills.includes('constructeur')) {
+            apReq = 5;
+            if (bat.apLeft >= apReq && !inMelee) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (bâtiments)" class="boutonNoir bigButtons" onclick="bfconst(`buildings`,false,false)"><i class="fas fa-puzzle-piece"></i></button>&nbsp; Construction</h4></span>');
             } else {
-                skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                if (inMelee) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-puzzle-piece"></i></button>&nbsp; Construction</h4></span>');
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-puzzle-piece"></i></button>&nbsp; Construction</h4></span>');
         }
-    }
-    // CONSTRUCTION UNITES
-    if (batType.skills.includes('producteur')) {
-        apReq = 5;
-        if (bat.apLeft >= apReq && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Production (unités)" class="boutonNoir bigButtons" onclick="bfconst(`units`,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
-        } else {
-            if (inMelee) {
-                skillMessage = "Ne peut pas se faire en mêlée";
+        // CONSTRUCTION UNITES
+        if (batType.skills.includes('producteur')) {
+            apReq = 5;
+            if (bat.apLeft >= apReq && !inMelee) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Production (unités)" class="boutonNoir bigButtons" onclick="bfconst(`units`,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
             } else {
-                skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                if (inMelee) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
         }
     }
     // CHANGER AMMOS-ARMURE-EQUIPEMENT

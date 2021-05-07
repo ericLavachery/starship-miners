@@ -156,9 +156,9 @@ function alienTurnEnd() {
 function nextTurnEnd() {
     alienTurnEnd();
     $('#report').empty('');
-    if (playerInfos.mapTurn === 0) {
-        calcStartRes();
-    }
+    // if (playerInfos.mapTurn === 0) {
+    //     calcStartRes();
+    // }
     // récup du player
     let batType;
     let ap;
