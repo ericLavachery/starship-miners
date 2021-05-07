@@ -53,7 +53,8 @@ function loadRes() {
                             resLoad = checkResLoad(bat);
                             if (resLoad >= 1 || seeAllFret) {
                                 let batPic = getBatPic(bat,batType);
-                                $('#conUnitList').append('<br><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48"><br></span>');
+                                $('#conUnitList').append('<hr>');
+                                $('#conUnitList').append('<span class="unitPic"><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48"></span><br>');
                                 let tile = getTile(bat);
                                 let theTile = tileNaming(tile,false,selectedBatTile.id);
                                 if (batType.skills.includes('transorbital')) {
@@ -116,6 +117,7 @@ function loadRes() {
             $('#conUnitList').append('<span class="constName">Plus de place!</span><br>');
         }
     }
+    $('#conUnitList').append('<hr>');
     $('#conUnitList').append('<br>');
 };
 

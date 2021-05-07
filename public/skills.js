@@ -4,7 +4,6 @@ function guet() {
     if (!selectedBat.tags.includes('guet')) {
         selectedBat.tags.push('guet');
     }
-    selectedBat.salvoLeft = 0;
     selectedBat.apLeft = selectedBat.apLeft-3;
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();

@@ -247,6 +247,11 @@ h5 {
     /* margin-right: 8px; */
     font-weight: bold;
 }
+.unitPic {
+    display: inline-block;
+    margin-top: -8px;
+    margin-bottom: -6px;
+}
 .listRes {
     display: inline-block;
     font-size: 14px;
