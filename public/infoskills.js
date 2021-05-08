@@ -379,7 +379,7 @@ function skillsInfos(bat,batType) {
         if (!bat.tags.includes('fog')) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Envoyer le fog" class="boutonRose skillButtons" onclick="fogStart()"><i class="fas fa-cloud"></i> <span class="small">0</span></button>&nbsp; Fog</'+balise+'></span>');
         } else {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter le fog" class="'+boutonNope+' skillButtons" onclick="fogStop()"><i class="fas fa-cloud"></i> <span class="small">0</span></button>&nbsp; Fog</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter le fog" class="'+boutonNope+' skillButtons '+colorNope+'" onclick="fogStop()"><i class="fas fa-cloud"></i> <span class="small">0</span></button>&nbsp; Fog</'+balise+'></span>');
         }
     }
     if (!playerInfos.onShip) {
@@ -1002,7 +1002,7 @@ function skillsInfos(bat,batType) {
             if (!bat.tags.includes('prodres')) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lancer la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Désactivé</'+balise+'></span>');
             } else {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="'+boutonNope+' skillButtons" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Activé</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="'+boutonNope+' skillButtons '+colorNope+'" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Activé</'+balise+'></span>');
             }
         }
     }

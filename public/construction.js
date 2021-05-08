@@ -748,7 +748,9 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             let team;
             if (conselUnit.cat != 'aliens') {
                 if (bataillons.length >= 1) {
-                    nextId = bataillons[bataillons.length-1].id+1;
+                    nextId = playerInfos.nextId;
+                    playerInfos.nextId++;
+                    // nextId = bataillons[bataillons.length-1].id+1;
                 } else {
                     nextId = 1;
                 }

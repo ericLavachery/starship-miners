@@ -228,6 +228,7 @@ function newGame() {
     playerInfos.sondePlanet = -1;
     playerInfos.crime = 0;
     playerInfos.vitals = 0;
+    playerInfos.nextId = 1;
     resetReserve();
     resetStartRes();
     resetEndRes();

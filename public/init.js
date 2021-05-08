@@ -10,7 +10,7 @@ socket.on('playerInfos-Load', function(pi) {
         numVTiles = playerInfos.numVTiles;
     }
     if (playerInfos.onShip === undefined) {
-        playerInfos.onShip = false;
+        playerInfos.onShip = true;
     }
     if (playerInfos.comp === undefined) {
         playerInfos.comp = resetComp();
@@ -93,6 +93,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.adjok === undefined) {
         playerInfos.adjok = false;
     }
+    if (playerInfos.nextId === undefined) {
+        playerInfos.nextId = 1001;
+    }
     if (playerInfos.allCits === undefined) {
         playerInfos.allCits = 2000;
     }
@@ -173,8 +176,20 @@ socket.on('savedMap-Load', function(sm) {
         playMusic('start',true);
     }
     let thisBatType;
-    // !!!!!!!!!!!!!!!!!!!!!!!! A ENLEVER une fois que les "sort" sont tous OK
+    // Verif bat id's + sorting
     bataillons.forEach(function(bat) {
+        if (bat.id >= playerInfos.nextId) {
+            playerInfos.nextId = bat.id+1;
+        }
+    });
+    let allMyIds = [];
+    bataillons.forEach(function(bat) {
+        if (!allMyIds.includes(bat.id)) {
+            allMyIds.push(bat.id);
+        } else {
+            bat.id = playerInfos.nextId;
+            playerInfos.nextId++;
+        }
         if (bat.loc === "zone" || bat.loc === "trans") {
             thisBatType = getBatType(bat);
             if (thisBatType.sort === undefined) {
