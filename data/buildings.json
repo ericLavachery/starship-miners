@@ -2590,7 +2590,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","transport","routes","upkeep","updisable","prodres","fret","dumper","medic","longshot"],
+        "skills":["fouille","recupcit","transport","routes","fret","dumper","medic","longshot"],
         "mecanoCost":10,
         "mediCost":12,
         "transMaxSize":9,

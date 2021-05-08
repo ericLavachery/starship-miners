@@ -246,7 +246,7 @@
         "level": 1,
         "rarity": 85,
         "cat": "white",
-        "batch": 9,
+        "batch": 12,
         "energie": 6
     },
     {
@@ -387,7 +387,7 @@
         "rarity": 6,
         "cat": "blue-sky",
         "batch": 6,
-        "energie": 2
+        "energie": 1
     },
     {
         "id": 37,
@@ -397,7 +397,7 @@
         "rarity": 6,
         "cat": "sky",
         "batch": 4,
-        "energie": 1
+        "energie": 0.75
     },
     {
         "id": 38,
@@ -427,7 +427,7 @@
         "rarity": 8,
         "cat": "blue-sky",
         "batch": 5,
-        "energie": 3
+        "energie": 2
     },
     {
         "id": 42,
@@ -517,7 +517,7 @@
         "rarity": 25,
         "cat": "alien",
         "batch": 5,
-        "energie": 20
+        "energie": 4
     },
     {
         "id": 52,
@@ -587,7 +587,7 @@
         "rarity": 5,
         "cat": "alien",
         "batch": 5,
-        "energie": 2
+        "energie": 1.5
     },
     {
         "id": 60,

@@ -31,8 +31,15 @@ function events(afterMission) {
 };
 
 function eventProduction(afterMission,time) {
-    let resNumber = time*5;
+    let mesCitoyens = calcTotalCitoyens();
+    let population = mesCitoyens.crim+mesCitoyens.cit;
+    let triFactor = playerInfos.comp.tri;
+    if (playerInfos.bldList.includes('Décharge')) {
+        triFactor = triFactor+1;
+    }
+    let resNumber = Math.round(time*population/2000*5*(triFactor+5)/5);
     resAdd('Scrap',resNumber);
+    warning('Recyclage','Scrap:<span class="vert">+'+resNumber+'</span>');
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
@@ -63,7 +70,8 @@ function eventProduction(afterMission,time) {
                         }
                     }
                     if (trained) {
-                        bat.xp = bat.xp+Math.round(time/4);
+                        bat.xp = bat.xp+(time/4);
+                        bat.xp = bat.xp.toFixedNumber(2);
                     }
                 }
                 if (playerInfos.bldList.includes('Salle de sport')) {
@@ -78,7 +86,8 @@ function eventProduction(afterMission,time) {
                         }
                     }
                     if (trained) {
-                        bat.xp = bat.xp+Math.round(time/10);
+                        bat.xp = bat.xp+(time/14);
+                        bat.xp = bat.xp.toFixedNumber(2);
                     }
                 }
             }
@@ -101,7 +110,7 @@ function eventBouffe(time) {
         let plantesProd = 0;
         bataillons.forEach(function(bat) {
             // Serres 1 emplacement
-            if (bat.type === 'Serres hydroponiques' && !bat.tags.includes('construction')) {
+            if (bat.type === 'Serres hydroponiques') {
                 if (!bat.tags.includes('construction')) {
                     plantesProd = plantesProd+Math.round(25*time/21);
                 } else {
@@ -109,7 +118,7 @@ function eventBouffe(time) {
                 }
             }
             // Jardin 2 emplacements mais 3x prod
-            if (bat.type === 'Jardin' && ) {
+            if (bat.type === 'Jardin') {
                 if (!bat.tags.includes('construction')) {
                     plantesProd = plantesProd+Math.round(70*time/21);
                 } else {
@@ -117,10 +126,13 @@ function eventBouffe(time) {
                 }
             }
         });
-        if (bouffeCost['Oxygène'] > plantesProd) {
-            bouffeCost['Oxygène'] = bouffeCost['Oxygène']-plantesProd;
-        } else {
-            bouffeCost['Oxygène'] = 0;
+        if (plantesProd >= 1) {
+            warning('Serres et Jardins','Oxygène:<span class="vert">+'+plantesProd+'</span><br>(Déduit de la consommation)');
+            if (bouffeCost['Oxygène'] > plantesProd) {
+                bouffeCost['Oxygène'] = bouffeCost['Oxygène']-plantesProd;
+            } else {
+                bouffeCost['Oxygène'] = 0;
+            }
         }
     }
     console.log(mesCitoyens);
@@ -156,9 +168,9 @@ function eventBouffe(time) {
         playerInfos.vitals = playerInfos.vitals+3;
         messageAir = 'Carence';
     }
-    warning('Coût en nourriture ('+costFood+')',messageFood);
-    warning('Coût en eau ('+costWater+')',messageWater);
-    warning('Coût en oxygène ('+costAir+')',messageAir);
+    warning('Consommation','Nourriture: <span class="rose">-'+costFood+'</span><br>'+messageFood);
+    warning('Consommation','Eau: <span class="rose">-'+costWater+'</span><br>'+messageWater);
+    warning('Consommation','Oxygène: <span class="rose">-'+costAir+'</span><br>'+messageAir);
     payMaxCost(bouffeCost);
 };
 
@@ -172,7 +184,7 @@ function eventCitoyens(time) {
     }
     bonusCit(citId,souteId,newCitsNumber);
     playerInfos.allCits = playerInfos.allCits+newCitsNumber;
-    warning('Nouveaux citoyens',newCitsNumber+' '+citName+' ont débarqué dans la station.');
+    warning('Nouveaux citoyens','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont débarqué dans la station.');
 };
 
 function bonusCit(citId,toId,number) {
@@ -215,22 +227,25 @@ function eventCrime(time) {
     let mesCitoyens = calcTotalCitoyens();
     let population = mesCitoyens.crim+mesCitoyens.cit;
     let crimeRate = calcCrimeRate(mesCitoyens);
-
+    warning('Population','Criminalité: '+crimeRate[0]+'% <br> Pénibilité: '+crimeRate[1]+'%')
 };
 
 function calcCrimeRate(mesCitoyens) {
+    let crimeRate = [0,0];
     // facteur: +criminels%
     let population = mesCitoyens.crim+mesCitoyens.cit;
-    let crimeRate = Math.round(mesCitoyens.crim*100/population);
-    let crimeFactors = 0;
+    crimeRate[0] = Math.round(mesCitoyens.crim*100/population);
+    crimeRate[1] = 0;
     // facteur: +population
     let overPop = population-2400;
-    crimeFactors = crimeFactors+Math.round(overPop/200);
+    crimeRate[1] = crimeRate[1]+Math.round(overPop/200);
     // +1 par point playerInfos.vitals (25 pts)
-    crimeFactors = crimeFactors+playerInfos.vitals;
+    crimeRate[1] = crimeRate[1]+playerInfos.vitals;
     let lits = 0;
     let bldIds = [];
     // Unités: (electroguards-2 gurus-2 dealers-1 marshalls-1)
+    let maxAntiCrimeUnits = Math.round(Math.sqrt(population)/7.5);
+    let antiCrimeUnits = 0;
     // Bâtiments: (prisons-5 salleSport-2 jardin-4 bar-1 dortoirs+2 appartements+3)
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
@@ -254,26 +269,31 @@ function calcCrimeRate(mesCitoyens) {
                         bldIds.push(batType.id);
                     }
                 }
-            } else {
+            } else if (batType.name === 'Electroguards') {
                 countMe = true;
+            } else {
+                antiCrimeUnits++;
+                if (antiCrimeUnits <= maxAntiCrimeUnits) {
+                    countMe = true;
+                }
             }
-            crimeFactors = crimeFactors+batType.crime;
+            crimeRate[1] = crimeRate[1]+batType.crime;
         }
     });
     // +5 par dortoir manquant
     if (population > lits) {
-        crimeFactors = crimeFactors+Math.round((population-lits)/100);
+        crimeRate[1] = crimeRate[1]+Math.round((population-lits)/100);
     }
     // Treshold
-    if (crimeFactors > crimeRate && crimeFactors < 10) {
-        crimeRate = crimeRate*2;
+    if (crimeRate[1] > crimeRate[0] && crimeRate[1] < 10) {
+        crimeRate[0] = crimeRate[0]*2;
     } else {
-        crimeRate = crimeRate+crimeFactors;
+        crimeRate[0] = crimeRate[0]+crimeRate[1];
     }
     // compétence maintien de l'ordre
-    crimeRate = crimeRate-(playerInfos.comp.ordre*3);
-    crimeRate = Math.round(crimeRate/(playerInfos.comp.ordre+6)*6);
-    console.log('crimeRate='+crimeRate);
+    crimeRate[0] = crimeRate[0]-(playerInfos.comp.ordre*3);
+    crimeRate[0] = Math.round(crimeRate[0]/(playerInfos.comp.ordre+6)*6);
+    console.log('crimeRate[0]='+crimeRate[0]);
     return crimeRate;
 };
 

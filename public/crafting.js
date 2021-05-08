@@ -290,7 +290,7 @@ function geoProd(bat,batType) {
                 }
             }
             if (upkeepPaid) {
-                let energyProd = Math.ceil(tile.rs.Magma/7);
+                let energyProd = Math.ceil(tile.rs.Magma/3);
                 energyProd = energyCreation(energyProd);
                 resAdd('Energie',energyProd);
                 console.log('prod = Energie:'+energyProd);
@@ -328,13 +328,13 @@ function solarProd(bat,batType,time) {
             }
         }
         if (upkeepPaid) {
-            let energyProd = 40*time;
+            let energyProd = 60*time;
             if (!playerInfos.onShip) {
-                energyProd = rand.rand(15,65);
+                energyProd = rand.rand(35,85);
                 if (tile.terrain === 'P') {
-                    energyProd = rand.rand(20,80);
+                    energyProd = rand.rand(45,105);
                 } else if (tile.terrain === 'F') {
-                    energyProd = rand.rand(10,40);
+                    energyProd = rand.rand(22,53);
                 }
                 energyProd = Math.ceil(energyProd*zone[0].ensol/100);
             }
@@ -350,6 +350,7 @@ function upkeepAndProd(bat,batType,time) {
     console.log(batType.name);
     let upkeepPaid = true;
     let upkeepCheck = false;
+    let message = '';
     if (bat.tags.includes('prodres')) {
         upkeepCheck = true;
     }
@@ -365,6 +366,7 @@ function upkeepAndProd(bat,batType,time) {
                 let dispoRes = getDispoRes(key);
                 if (dispoRes < conso) {
                     upkeepPaid = false;
+                    message = message+key+':<span class="rose">pénurie!</span><br>';
                 }
             });
             if (upkeepPaid) {
@@ -373,7 +375,10 @@ function upkeepAndProd(bat,batType,time) {
                     let value = entry[1];
                     let conso = value*time;
                     resSub(key,conso);
-                    console.log('upkeep = '+key+':'+value);
+                    if (playerInfos.onShip) {
+                        message = message+key+':<span class="rose">-'+conso+'</span><br>';
+                    }
+                    console.log('upkeep = '+key+':'+conso);
                 });
             } else {
                 upkeepNotPaid(bat,batType);
@@ -394,6 +399,9 @@ function upkeepAndProd(bat,batType,time) {
                         fullProd = scrapCreation(fullProd);
                     }
                     resAdd(key,fullProd);
+                    if (playerInfos.onShip) {
+                        message = message+key+':<span class="vert">+'+fullProd+'</span><br>';
+                    }
                     if (!playerInfos.onShip) {
                         if (minedThisTurn[key] === undefined) {
                             minedThisTurn[key] = value;
@@ -407,6 +415,9 @@ function upkeepAndProd(bat,batType,time) {
         }
     } else if (batType.skills.includes('prodres')) {
         upkeepNotPaid(bat,batType);
+    }
+    if (playerInfos.onShip) {
+        warning(batType.name,message);
     }
 };
 

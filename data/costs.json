@@ -2067,7 +2067,7 @@
         "id":172,
         "name":"Générateur",
         "upkeep":{"Fuel":1},
-        "prod":{"Energie":6},
+        "prod":{"Energie":9},
         "costs":{"Compo1":125,"Eau":6,"Scrap":100,"Carbone":50,"Tungstène":35,"Aluminium":150,"Nickel":20,"Silicium":50,"Batteries":20},
         "fabTime":25
     },
@@ -2099,7 +2099,7 @@
         "bldEquiv":["Générateur","Centrale SMR"],
         "bldReq":["Générateur"],
         "upkeep":{"Plutonium":9,"Eau":120},
-        "prod":{"Energie":150},
+        "prod":{"Energie":225},
         "costs":{"Compo1":345,"Compo2":405,"Compo3":225,"Eau":2000,"Energie":500,"Carbone":500,"Titane":300,"Plomb":500,"Nickel":200,"Cuivre":400,"Bore":300,"Plutonium":300,"Electros":200,"Batteries":300},
         "fabTime":150
     },
@@ -2109,7 +2109,7 @@
         "bldEquiv":["Générateur"],
         "bldReq":["Générateur"],
         "upkeep":{"Uranium":4,"Eau":25},
-        "prod":{"Energie":50},
+        "prod":{"Energie":75},
         "costs":{"Compo1":205,"Compo2":245,"Compo3":135,"Eau":1000,"Energie":100,"Carbone":200,"Titane":100,"Plomb":100,"Nickel":50,"Cuivre":200,"Platine":100,"Bore":150,"Uranium":100,"Hydrogène":200,"Electros":100,"Batteries":150},
         "fabTime":100
     },
@@ -2152,8 +2152,6 @@
     {
         "id":216,
         "name":"Cantine",
-        "upkeep":{"Energie":2,"Eau":5,"Nourriture":5},
-        "prod":{"Scrap":3},
         "costs":{"Compo1":195,"Compo2":30,"Eau":300,"Carbone":100,"Nourriture":200,"Batteries":30},
         "fabTime":25
     },
@@ -2262,7 +2260,7 @@
         "bldCost":"Serres hydroponiques",
         "bldReq":["Soute"],
         "upkeep":{"Azote":3,"Phosphore":2,"Potassium":4},
-        "prod":{"Nourriture":5,"Végétaux":8},
+        "prod":{"Nourriture":4,"Végétaux":15},
         "costs":{"Compo1":300,"Scrap":200,"Silicium":200,"Eau":2500,"Azote":300,"Phosphore":250,"Potassium":450,"Chlore":150,"Végétaux":2500,"Energie":200,"Batteries":50},
         "fabTime":100,
         "crime":-3

@@ -77,7 +77,7 @@ function commandes() {
     $('#commandz').append('<button type="button" title="Augmenter le volume des effets" class="boutonGris iconButtons" onclick="soundVolume(`up`,`fx`)"><i class="fas fa-volume-up"></i></button><br>');
     $('#commandz').append('&nbsp;&nbsp;Musique '+playerInfos.volMu);
     $('#commandz').append('&nbsp;&nbsp;Fx '+playerInfos.volFx);
-    $('#commandz').append('<br>');
+    // $('#commandz').append('<br>');
     if (activeTurn == 'player') {
         if (!modeSonde) {
             if (hasUnit('Sonde')) {
@@ -114,6 +114,7 @@ function commandes() {
                     if (playerInfos.missionZone >= 1 && isLanderDeployed()) {
                         $('#commandz').append('<button type="button" title="Partir en mission sur la zone '+playerInfos.missionZone+'" class="boutonRouge iconButtons" onclick="startMission()"><i class="fas fa-space-shuttle"></i></button>');
                     }
+                    $('#commandz').append('<button type="button" title="Attendre 1 semaine" class="boutonRouge iconButtons" onclick="events(false)"><i class="far fa-clock"></i></button>');
                 }
             } else {
                 $('#commandz').append('<hr>');
@@ -136,9 +137,9 @@ function commandes() {
                         $('#commandz').append('<button type="button" title="Voir vos compétences" class="boutonRose iconButtons" onclick="gangLevelView()"><i class="fas fa-award"></i></button>');
                     }
                 }
-                if (!playerInfos.adjok) {
-                    $('#commandz').append('<button type="button" title="Ajuster le pack de ressources" class="boutonRouge iconButtons" onclick="adjStartPack()"><i class="fas fa-coins"></i></button>');
-                }
+                // if (!playerInfos.adjok) {
+                //     $('#commandz').append('<button type="button" title="Ajuster le pack de ressources" class="boutonRouge iconButtons" onclick="adjStartPack()"><i class="fas fa-coins"></i></button>');
+                // }
             }
         }
     }

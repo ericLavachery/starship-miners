@@ -984,26 +984,24 @@ function skillsInfos(bat,batType) {
         }
     }
     // ACTIVATION
-    if (!playerInfos.onShip) {
-        if (batType.skills.includes('prodres') || batType.skills.includes('geo') || batType.skills.includes('solar')) {
-            balise = 'h1';
-            boutonNope = 'boutonGris';
-            colorNope = 'gf';
-            if (bat.tags.includes('prodres')) {
-                balise = 'h3';
-                boutonNope = 'boutonOK';
-                colorNope = 'cy';
-            }
-            let upkeepCosts = '{aucun}';
-            if (batType.upkeep != undefined) {
-                upkeepCosts = toCoolString(batType.upkeep);
-            }
-            apCost = 0;
-            if (!bat.tags.includes('prodres')) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lancer la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Désactivé</'+balise+'></span>');
-            } else {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="'+boutonNope+' skillButtons '+colorNope+'" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Activé</'+balise+'></span>');
-            }
+    if (batType.skills.includes('prodres') || batType.skills.includes('geo') || batType.skills.includes('solar')) {
+        balise = 'h1';
+        boutonNope = 'boutonGris';
+        colorNope = 'gf';
+        if (bat.tags.includes('prodres')) {
+            balise = 'h3';
+            boutonNope = 'boutonOK';
+            colorNope = 'cy';
+        }
+        let upkeepCosts = '{aucun}';
+        if (batType.upkeep != undefined) {
+            upkeepCosts = toCoolString(batType.upkeep);
+        }
+        apCost = 0;
+        if (!bat.tags.includes('prodres')) {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lancer la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Désactivé</'+balise+'></span>');
+        } else {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="'+boutonNope+' skillButtons '+colorNope+'" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Activé</'+balise+'></span>');
         }
     }
     let trapType;
