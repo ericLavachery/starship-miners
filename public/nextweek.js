@@ -93,6 +93,44 @@ function eventProduction(afterMission,time) {
             }
         }
     });
+    // REEDUCATION
+    if (playerInfos.bldList.includes('Camp de rééducation')) {
+        let dispoCit = getDispoCit();
+        let dispoCrim = getDispoCrim();
+        let crimBatId = -1;
+        let crimBat = {};
+        let citBatId = -1;
+        let citBat = {};
+        let educChance = Math.ceil((playerInfos.comp.ordre+1)*(playerInfos.comp.ordre+1)*5.6)+9;
+        if (rand.rand(1,100) <= educChance) {
+            let educMax = Math.round(time*rand.rand(17,25)/21*15/21/6)*6;
+            if (educMax >= mesCitoyens.crim-12) {
+                educMax = mesCitoyens.crim-12;
+            }
+            bataillons.forEach(function(bat) {
+                if (bat.loc === 'trans' && bat.locId === souteId) {
+                    if (bat.typeId === 225) {
+                        crimBatId = bat.id;
+                        crimBat = bat;
+                    }
+                    if (bat.typeId === 126) {
+                        citBatId = bat.id;
+                        citBat = bat;
+                    }
+                }
+            });
+            if (crimBatId >= 0 && citBatId >= 0) {
+                if (educMax >= crimBat.citoyens-12) {
+                    educMax = crimBat.citoyens-12;
+                }
+                if (educMax >= 1) {
+                    crimBat.citoyens = crimBat.citoyens-educMax;
+                    citBat.citoyens = citBat.citoyens+educMax;
+                    warning('Camp de rééducation',educMax+' criminels réhabilités.',true);
+                }
+            }
+        }
+    }
 };
 
 function eventBouffe(time) {
