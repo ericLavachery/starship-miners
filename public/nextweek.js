@@ -141,8 +141,8 @@ function eventBouffe(time) {
     if (playerInfos.bldList.includes('Recyclab')) {
         recycleFactor = recycleFactor+4;
     }
-    bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/197);
-    bouffeCost['Eau'] = Math.round(toutMesCitoyens*time*2/138/recycleFactor*8);
+    bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/687);
+    bouffeCost['Eau'] = Math.round(toutMesCitoyens*time*2/274/recycleFactor*8);
     bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time*2/1679/recycleFactor*8);
     if (playerInfos.bldList.includes('Serres hydroponiques')) {
         let plantesProd = 0;

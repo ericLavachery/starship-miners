@@ -28,7 +28,7 @@ function bfconst(cat,triche,upgrade) {
     $('#tileInfos').empty();
     let color = '';
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<br><span class="constName neutre" id="gentils">Citoyens disponibles: '+dispoCit+' &ndash; '+dispoCrim+'</span><br>');
+    $('#conUnitList').append('<br><span class="constName neutre" id="gentils">Citoyens disponibles: <span class="gff">'+dispoCit+'</span> &ndash; <span class="brunf">'+dispoCrim+'</span></span><br>');
     let lastKind = '';
     let showkind = '';
     let allUnitsList = unitTypes.slice();
@@ -166,12 +166,16 @@ function bfconst(cat,triche,upgrade) {
             if (unit.skills.includes('clone')) {
                 unitCits = 0;
             }
+            let citColour = 'gff';
+            if (unit.skills.includes('brigands')) {
+                citColour = 'brunf';
+            }
             if ((bldOK && costOK) || triche) {
                 color = catColor(unit.cat,unit.kind);
-                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+' <span class="gf">('+unitCits+')</span>'+prodSign+'</span><br>');
+                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
             } else {
                 color = 'gff';
-                $('#conUnitList').append('<span class="constName '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'">'+unit.name+' <span class="gf">('+unitCits+')</span>'+prodSign+'</span><br>');
+                $('#conUnitList').append('<span class="constName '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
             }
             lastKind = unit.kind;
         }

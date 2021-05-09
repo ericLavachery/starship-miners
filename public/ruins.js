@@ -459,15 +459,17 @@ function checkRuinsRes(tile) {
             if (res.name != 'Magma' && res.name != 'Scrap' && res.cat != 'alien') {
                 thatResChance = 0;
                 thatResNum = 0;
-                resFactor = res.rarity+zone[0].mapDiff;
+                resFactor = res.rarity+Math.round(zone[0].mapDiff*1.5);
                 if (res.name == 'Nourriture') {
                     if (ruinsEmpty) {
                         thatResChance = Math.ceil(resFactor*res.batch/3);
                     } else {
                         thatResChance = Math.ceil(resFactor*5*res.batch/3);
                     }
+                } else if (res.name.includes('Compo')) {
+                    thatResChance = Math.ceil((resFactor-100)*1.7*res.batch/3);
                 } else if (res.cat == 'transfo') {
-                    if (!res.name.includes('Compo') && res.name != 'Moteur orbital' && res.name != 'Energie') {
+                    if (res.name != 'Moteur orbital' && res.name != 'Energie') {
                         thatResChance = Math.ceil(resFactor*1.7*res.batch/3);
                     }
                 } else {

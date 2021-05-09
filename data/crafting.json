@@ -151,6 +151,15 @@
         "batch":5
     },
     {
+        "id":109,
+        "result":"Compo3",
+        "cost":{"Fer":3,"Silicium":4,"Titane":3,"Energie":2},
+        "compReq":{"const":1},
+        "bldReq":["Atelier"],
+        "bldOut":["Chaîne de montage"],
+        "batch":4
+    },
+    {
         "id":8,
         "result":"Compo3",
         "cost":{"Fer":1,"Silicium":2,"Titane":1,"Energie":1},
