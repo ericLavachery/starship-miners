@@ -14,6 +14,10 @@ function skillsInfos(bat,batType) {
     let freeConsTile = false;
     let hasW1 = checkHasWeapon(1,batType,bat.eq);
     let hasW2 = checkHasWeapon(2,batType,bat.eq);
+    if (playerInfos.onShip) {
+        tagDelete(bat,'construction');
+        tagDelete(bat,'construction');
+    }
     console.log('inMelee='+inMelee);
     // SOUTE
     if (batType.skills.includes('soute') && playerInfos.onShip) {

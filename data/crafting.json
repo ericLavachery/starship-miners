@@ -390,7 +390,7 @@
     {
         "id":73,
         "result":"Nourriture",
-        "cost":{"Végétaux":8,"Energie":3},
+        "cost":{"Végétaux":9,"Energie":3},
         "compReq":{"tri":1},
         "bldReq":["Cantine"],
         "batch":3
@@ -398,7 +398,7 @@
     {
         "id":74,
         "result":"Nourriture",
-        "cost":{"Végétaux":3,"Larvium":6,"Energie":6},
+        "cost":{"Végétaux":3,"Larvium":3,"Energie":6},
         "compReq":{"ca":1},
         "bldReq":["Cantine"],
         "batch":6
@@ -406,42 +406,42 @@
     {
         "id":75,
         "result":"Nourriture",
-        "cost":{"Végétaux":3,"Scrap":1,"Energie":6},
-        "compReq":{"tri":2},
-        "bldReq":["Recyclab"],
-        "batch":1
+        "cost":{"Végétaux":5,"Larvium":3,"Zinc":1,"Energie":4},
+        "compReq":{"ca":2},
+        "bldReq":["Laboratoire"],
+        "batch":12
     },
     {
         "id":76,
         "result":"Nourriture",
-        "cost":{"Végétaux":3,"Swarmine":6,"Potassium":1,"Eau":3,"Energie":8},
+        "cost":{"Végétaux":6,"Swarmine":2,"Potassium":1,"Eau":3,"Energie":6},
         "compReq":{"ca":2},
         "bldReq":["Laboratoire"],
-        "batch":8
+        "batch":12
     },
     {
         "id":77,
         "result":"Nourriture",
-        "cost":{"Huile":2,"Bugium":6,"Potassium":1,"Phosphore":1,"Energie":12},
+        "cost":{"Huile":2,"Bugium":4,"Potassium":1,"Phosphore":1,"Energie":9},
         "compReq":{"ca":3},
         "bldReq":["Laboratoire"],
-        "batch":8
+        "batch":12
     },
     {
         "id":78,
         "result":"Nourriture",
-        "cost":{"Végétaux":3,"Creatite":6,"Chlore":1,"Eau":3,"Energie":5},
+        "cost":{"Végétaux":6,"Creatite":2,"Chlore":1,"Eau":3},
         "compReq":{"ca":4},
         "bldReq":["Centre de recherches"],
-        "batch":8
+        "batch":12
     },
     {
         "id":79,
         "result":"Nourriture",
-        "cost":{"Huile":1,"Aranium":6,"Chlore":1,"Zinc":1,"Energie":8},
+        "cost":{"Huile":1,"Aranium":2,"Chlore":1,"Zinc":1,"Energie":6},
         "compReq":{"ca":5},
         "bldReq":["Centre de recherches"],
-        "batch":8
+        "batch":12
     },
     {
         "id":80,

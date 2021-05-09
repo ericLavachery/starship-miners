@@ -2147,13 +2147,14 @@
         "name":"Bar",
         "costs":{"Compo1":115,"Eau":50,"Huile":15,"Carbone":25,"Végétaux":100},
         "fabTime":15,
-        "crime":-1
+        "crime":-2
     },
     {
         "id":216,
         "name":"Cantine",
         "costs":{"Compo1":195,"Compo2":30,"Eau":300,"Carbone":100,"Nourriture":200,"Batteries":30},
-        "fabTime":25
+        "fabTime":25,
+        "crime":-3
     },
     {
         "id":224,
@@ -2194,14 +2195,15 @@
         "bldReq":["Soute"],
         "costs":{"Eau":300,"Scrap":300,"Tissus":300,"Fer":200,"Bois":100,"Batteries":10},
         "fabTime":25,
-        "crime":2
+        "crime":1
     },
     {
         "id":233,
         "name":"Cabines",
         "bldReq":["Soute"],
         "costs":{"Eau":300,"Huile":25,"Scrap":150,"Tissus":600,"Carbone":150,"Fer":200,"Bois":200,"Batteries":20},
-        "fabTime":50
+        "fabTime":50,
+        "crime":-1
     },
     {
         "id":234,

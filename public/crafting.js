@@ -417,7 +417,7 @@ function upkeepAndProd(bat,batType,time) {
         upkeepNotPaid(bat,batType);
     }
     if (playerInfos.onShip) {
-        warning(batType.name,message);
+        warning(batType.name,message,true);
     }
 };
 

@@ -32,6 +32,10 @@ function prodToggle() {
         tagDelete(selectedBat,'prodres');
     } else {
         selectedBat.tags.push('prodres');
+        if (playerInfos.onShip) {
+            tagDelete(selectedBat,'construction');
+            tagDelete(selectedBat,'construction');
+        }
     }
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);

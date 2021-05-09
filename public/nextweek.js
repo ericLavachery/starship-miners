@@ -37,9 +37,9 @@ function eventProduction(afterMission,time) {
     if (playerInfos.bldList.includes('Décharge')) {
         triFactor = triFactor+1;
     }
-    let resNumber = Math.round(time*population/2000*5*(triFactor+5)/5);
-    resAdd('Scrap',resNumber);
-    warning('Recyclage','Scrap:<span class="vert">+'+resNumber+'</span>');
+    let scrapNum = Math.round(time*population/2000*3*(triFactor+5)/5);
+    resAdd('Scrap',scrapNum);
+    warning('Poubelles','Scrap:<span class="vert">+'+scrapNum+'</span><br>',true);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
@@ -127,7 +127,7 @@ function eventBouffe(time) {
             }
         });
         if (plantesProd >= 1) {
-            warning('Serres et Jardins','Oxygène:<span class="vert">+'+plantesProd+'</span><br>(Déduit de la consommation)');
+            warning('Serres et Jardins','Oxygène:<span class="vert">+'+plantesProd+'</span><br>(Déduit de la consommation)<br>',true);
             if (bouffeCost['Oxygène'] > plantesProd) {
                 bouffeCost['Oxygène'] = bouffeCost['Oxygène']-plantesProd;
             } else {
@@ -168,9 +168,9 @@ function eventBouffe(time) {
         playerInfos.vitals = playerInfos.vitals+3;
         messageAir = 'Carence';
     }
-    warning('Consommation','Nourriture: <span class="rose">-'+costFood+'</span><br>'+messageFood);
-    warning('Consommation','Eau: <span class="rose">-'+costWater+'</span><br>'+messageWater);
-    warning('Consommation','Oxygène: <span class="rose">-'+costAir+'</span><br>'+messageAir);
+    warning('Consommation','Nourriture: <span class="rose">-'+costFood+'</span><br>'+messageFood,true);
+    warning('Consommation','Eau: <span class="rose">-'+costWater+'</span><br>'+messageWater,true);
+    warning('Consommation','Oxygène: <span class="rose">-'+costAir+'</span><br>'+messageAir+'<br>',true);
     payMaxCost(bouffeCost);
 };
 
@@ -184,7 +184,7 @@ function eventCitoyens(time) {
     }
     bonusCit(citId,souteId,newCitsNumber);
     playerInfos.allCits = playerInfos.allCits+newCitsNumber;
-    warning('Nouveaux citoyens','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont débarqué dans la station.');
+    warning('Nouveaux citoyens','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont débarqué dans la station.<br>',true);
 };
 
 function bonusCit(citId,toId,number) {
@@ -227,7 +227,7 @@ function eventCrime(time) {
     let mesCitoyens = calcTotalCitoyens();
     let population = mesCitoyens.crim+mesCitoyens.cit;
     let crimeRate = calcCrimeRate(mesCitoyens);
-    warning('Population','Criminalité: '+crimeRate[0]+'% <br> Pénibilité: '+crimeRate[1]+'%')
+    warning('Population','Criminalité: '+crimeRate[0]+'% <br> Pénibilité: '+crimeRate[1]+'%',false)
 };
 
 function calcCrimeRate(mesCitoyens) {
@@ -246,7 +246,7 @@ function calcCrimeRate(mesCitoyens) {
     // Unités: (electroguards-2 gurus-2 dealers-1 marshalls-1)
     let maxAntiCrimeUnits = Math.round(Math.sqrt(population)/7.5);
     let antiCrimeUnits = 0;
-    // Bâtiments: (prisons-5 salleSport-2 jardin-4 bar-1 dortoirs+2 appartements+3)
+    // Bâtiments: (prisons-5 salleSport-2 jardin-4 bar-2 cantine-3 dortoirs+2 appartements+3)
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         if (batType.name === 'Dortoirs') {
@@ -261,7 +261,7 @@ function calcCrimeRate(mesCitoyens) {
         if (batType.crime != undefined) {
             let countMe = false;
             if (batType.cat === 'buildings') {
-                if (batType.name === 'Prisons' || batType.crime >= 1) {
+                if (batType.name === 'Prisons' || batType.name === 'Cabines' || batType.crime >= 1) {
                     countMe = true;
                 } else {
                     if (!bldIds.includes(batType.id)) {

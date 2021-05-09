@@ -1,5 +1,8 @@
 function showBatInfos(bat) {
     batInfos(bat,false);
+    if (bat.type === 'Soute') {
+        viewPop();
+    }
 };
 
 function unitDetail(batId) {

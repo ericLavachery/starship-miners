@@ -1,8 +1,15 @@
 function commandes() {
     $('#commandz').empty();
-    $('#batloop').empty();
+    if (playerInfos.onShip) {
+        $("#tour").css("display","none");
+        $("#mode").css("display","none");
+    } else {
+        $("#tour").css("display","block");
+        $("#mode").css("display","block");
+    }
     if (activeTurn == 'player') {
         if (!modeSonde && !playerInfos.onShip) {
+            $('#batloop').empty();
             if (batList.length >= 1) {
                 if (Object.keys(selectedBat).length >= 1) {
                     $('#batloop').append('<button type="button" title="Passer au bataillon suivant (et ne plus s\'occuper de celui-ci ce tour-ci)" class="boutonGris iconButtons" onclick="nextBat(true,false)"><i class="fas fa-thumbs-up"></i></button>');
@@ -114,7 +121,6 @@ function commandes() {
                     if (playerInfos.missionZone >= 1 && isLanderDeployed()) {
                         $('#commandz').append('<button type="button" title="Partir en mission sur la zone '+playerInfos.missionZone+'" class="boutonRouge iconButtons" onclick="startMission()"><i class="fas fa-space-shuttle"></i></button>');
                     }
-                    $('#commandz').append('<button type="button" title="Attendre 1 semaine" class="boutonRouge iconButtons" onclick="events(false)"><i class="far fa-clock"></i></button>');
                 }
             } else {
                 $('#commandz').append('<hr>');
@@ -144,6 +150,32 @@ function commandes() {
         }
     }
     gangNavig();
+};
+
+function viewPop() {
+    if (playerInfos.onShip && !modeSonde && !inSoute) {
+        if (bataillons.length >= 1) {
+            let mesCitoyens = calcTotalCitoyens();
+            let population = mesCitoyens.crim+mesCitoyens.cit;
+            let crimeRate = calcCrimeRate(mesCitoyens);
+            let popColour = 'cy';
+            let crimColour = 'neutre';
+            if (crimeRate[0] >= 15) {
+                crimColour = 'or';
+            }
+            let penibColour = 'neutre';
+            if (crimeRate[1] >= 10) {
+                penibColour = 'or';
+            }
+            $("#batloop").css("display","block");
+            $('#batloop').empty();
+            $('#batloop').append('Population: <span class="'+popColour+'">'+population+'</span><br>');
+            $('#batloop').append('(<span class="" title="Citoyens">'+mesCitoyens.cit+'</span> &middot; <span class="" title="Criminels">'+mesCitoyens.crim+'</span>)<br>');
+            $('#batloop').append('Criminalité: <span class="'+crimColour+'">'+crimeRate[0]+'</span>%<br>');
+            $('#batloop').append('Pénibilité: <span class="'+penibColour+'">'+crimeRate[1]+'</span>%<br>');
+            $('#batloop').append('<button type="button" title="Attendre 1 semaine" class="boutonRouge iconButtons" onclick="events(false)"><i class="far fa-clock"></i></button>');
+        }
+    }
 };
 
 function gangNavig() {
