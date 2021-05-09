@@ -494,9 +494,11 @@ function payUnitCost(batType) {
     if (batType.skills.includes('clone')) {
         reqCit = 0;
     }
+    console.log('reqCit='+reqCit);
     if (reqCit >= 1) {
         let landersIds = findLandersIds();
         if (batType.skills.includes('brigands')) {
+            console.log('brigands');
             let dispoCrim = getDispoCrim();
             let restCrim;
             let dispoCit = getDispoCit();
@@ -505,9 +507,11 @@ function payUnitCost(batType) {
                 restCrim = 0;
                 restCit = dispoCit-reqCit+dispoCrim;
             } else {
-                restCrim = restCrim-reqCit;
+                restCrim = dispoCrim-reqCit;
                 restCit = dispoCit;
             }
+            console.log('restCit='+restCit);
+            console.log('restCrim='+restCrim);
             deadBatsList = [];
             bataillons.forEach(function(bat) {
                 if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Criminels') {
@@ -527,7 +531,7 @@ function payUnitCost(batType) {
                     }
                 }
             });
-            if (restCit === 0) {
+            if (restCit === 0 || restCrim === 0) {
                 killBatList();
             }
         } else {
