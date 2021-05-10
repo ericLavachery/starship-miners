@@ -257,12 +257,14 @@ function conSelect(unitId,player,noRefresh) {
     if (player === 'player') {
         let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
         conselUnit = unitTypes[unitIndex];
+        cursorSwitch('.','grid-item','thor');
         conselCosts = mergedUnitCosts(conselUnit);
         console.log(conselUnit.name);
         console.log(conselCosts);
     } else {
         let unitIndex = alienUnits.findIndex((obj => obj.id == unitId));
         conselUnit = alienUnits[unitIndex];
+        cursorSwitch('.','grid-item','thor');
     }
     // console.log(conselUnit);
     $('#conAmmoList').empty();
@@ -985,6 +987,7 @@ function conOut() {
         showResOpen = false;
         $("#conUnitList").css("display","none");
         $("#conAmmoList").css("display","none");
+        selectMode();
         if (Object.keys(selectedBat).length >= 1) {
             showBatInfos(selectedBat);
         }
@@ -999,6 +1002,7 @@ function conselReset() {
     conselTriche = false;
     conselPut = false;
     conselCosts = {};
+    selectMode();
 }
 
 // $("#minimap").css("display","block");

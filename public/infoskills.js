@@ -1475,14 +1475,14 @@ function skillsInfos(bat,batType) {
         if (batType.skills.includes('constructeur')) {
             apReq = 5;
             if (bat.apLeft >= apReq && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (bâtiments)" class="boutonNoir bigButtons" onclick="bfconst(`buildings`,false,false)"><i class="fas fa-puzzle-piece"></i></button>&nbsp; Construction</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (bâtiments)" class="boutonNoir bigButtons" onclick="bfconst(`buildings`,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Construction</h4></span>');
             } else {
                 if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else {
                     skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-puzzle-piece"></i></button>&nbsp; Construction</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-cogs"></i></button>&nbsp; Construction</h4></span>');
             }
         }
         // CONSTRUCTION UNITES

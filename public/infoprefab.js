@@ -92,6 +92,7 @@ function reconstruction(debId) {
     let debBat = bataillons[debIndex];
     selectMode();
     batDebarq = debBat;
+    cursorSwitch('.','grid-item','thor');
     tagDelete(selectedBat,'guet');
     showBatInfos(selectedBat);
 };

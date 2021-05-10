@@ -85,6 +85,9 @@ function cursorSwitch(seltype,selvalue,kur) {
         } else if (kur == 'fire') {
             defkur = 'crosshair';
             kur = 'attack';
+        } else if (kur == 'thor') {
+            defkur = 'copy';
+            kur = 'thor';
         }
         $(seltype+selvalue).css('cursor','url(/static/img/'+kur+'.cur),'+defkur);
     }

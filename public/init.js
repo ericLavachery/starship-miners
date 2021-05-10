@@ -99,6 +99,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.allCits === undefined) {
         playerInfos.allCits = 2000;
     }
+    if (playerInfos.allTurns === undefined) {
+        playerInfos.allTurns = (playerInfos.gLevel-4)*80;
+    }
     if (playerInfos.vitals === undefined) {
         playerInfos.vitals = 0;
     }

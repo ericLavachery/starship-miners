@@ -414,6 +414,7 @@ function dropStuff(apCost,mineType) {
     conselPut = true;
     conselUnit = unitTypes[unitIndex];
     conselAmmos = ['xxx','xxx','xxx','xxx'];
+    cursorSwitch('.','grid-item','thor');
     if (skillUsed) {
         selectedBat.tags.push('sU');
     }

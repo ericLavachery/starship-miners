@@ -229,6 +229,7 @@ function newGame() {
     playerInfos.crime = 0;
     playerInfos.vitals = 0;
     playerInfos.nextId = 1;
+    playerInfos.allTurns = 0;
     resetReserve();
     resetStartRes();
     resetEndRes();

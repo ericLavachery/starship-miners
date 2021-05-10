@@ -10,6 +10,7 @@ function events(afterMission) {
     eventBouffe(time);
     eventCrime(time);
     eventAliens(time);
+    playerInfos.allTurns = playerInfos.allTurns+time;
     playerInfos.mapTurn = 0;
     playerInfos.mapDrop = 0;
     playerInfos.cocons = 0;
