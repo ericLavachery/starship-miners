@@ -920,7 +920,11 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 newBat.range = 0;
             }
             if (conselUnit.sort != undefined) {
-                newBat.sort = conselUnit.sort;
+                if (startTag.includes('go')) {
+                    newBat.sort = 0;
+                } else {
+                    newBat.sort = conselUnit.sort;
+                }
             } else {
                 newBat.sort = newBat.range*10;
             }

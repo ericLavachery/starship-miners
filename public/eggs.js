@@ -280,6 +280,9 @@ function eggsDrop() {
     let eggPausePerc = calcEggPause(true);
     eggPausePerc = Math.round(eggPausePerc*1.5);
     let noEggDrop = Math.round(noEggs/playerInfos.fuzzTotal*300);
+    if (playerInfos.mapTurn < 25) {
+        noEggDrop = 0;
+    }
     // chance for multiple eggs
     let threeEggsChance = Math.floor(playerInfos.mapAdjDiff*1.25)-4;
     if (threeEggsChance < 0) {

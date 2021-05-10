@@ -1001,7 +1001,7 @@
         "pic":"chest",
         "cat":"devices",
         "kind":"zero-trans-fret",
-        "sort":0,
+        "sort":1,
         "squads":6,
         "squadSize":1,
         "crew":0,
