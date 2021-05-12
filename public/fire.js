@@ -430,6 +430,9 @@ function attack(melee) {
     if (targetBatType.skills.includes('escape') && selectedBat.fuzz >= -1 && !selectedBat.tags.includes('embuscade')) {
         if ((tile.terrain != 'W' && tile.terrain != 'R') || targetBatType.skills.includes('fly')) {
             let escapeChance = Math.round((targetBatType.speed-2)*selectedWeap.cost*escapeValue);
+            if (selectedWeap.aoe != 'unit' && !targetBatType.skills.includes('fly')) {
+                escapeChance = Math.round(escapeChance/3);
+            }
             console.log('escapeChance:'+escapeChance);
             if (rand.rand(1,100) <= escapeChance) {
                 escaped = true;
@@ -1196,6 +1199,9 @@ function defense(melee) {
     if (selectedBatType.skills.includes('escape') && targetBat.fuzz >= -1 && !targetBat.tags.includes('embuscade')) {
         if ((tile.terrain != 'W' && tile.terrain != 'R') || selectedBatType.skills.includes('fly')) {
             let escapeChance = Math.round((selectedBatType.speed-2)*targetWeap.cost*escapeValue);
+            if (targetWeap.aoe != 'unit' && !selectedBatType.skills.includes('fly')) {
+                escapeChance = Math.round(escapeChance/3);
+            }
             console.log('escapeChance:'+escapeChance);
             if (rand.rand(1,100) <= escapeChance) {
                 escaped = true;

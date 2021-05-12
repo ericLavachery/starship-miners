@@ -1397,6 +1397,7 @@ function gangLevelView() {
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="ListRes or">COMPETENCES</span><br>');
     $('#conUnitList').append('<span class="ListRes">Gang: '+playerInfos.gang+'</span><br>');
+    $('#conUnitList').append('<span class="ListRes">Expérience: '+playerInfos.allCits+'</span><br>');
     $('#conUnitList').append('<span class="ListRes">Niveau de gang: '+playerInfos.gLevel+'</span><br>');
     $('#conUnitList').append('<br>');
     gangComps.forEach(function(comp) {

@@ -110,11 +110,11 @@ function calcEggPause(noMax) {
 };
 
 function checkMaxDroppedEggs() {
-    let overSixty = playerInfos.mapTurn-60;
+    let overSixty = playerInfos.mapTurn-40;
     if (overSixty < 0) {
         overSixty = 0;
     }
-    let maxEggDropTurn = playerInfos.mapTurn-10;
+    let maxEggDropTurn = playerInfos.mapTurn-5;
     if (maxEggDropTurn < Math.ceil(zone[0].mapDiff/2)) {
         maxEggDropTurn = Math.ceil(zone[0].mapDiff/2);
     }
@@ -280,7 +280,7 @@ function eggsDrop() {
     let eggPausePerc = calcEggPause(true);
     eggPausePerc = Math.round(eggPausePerc*1.5);
     let noEggDrop = Math.round(noEggs/playerInfos.fuzzTotal*300);
-    if (playerInfos.mapTurn < 25) {
+    if (playerInfos.mapTurn < 30) {
         noEggDrop = 0;
     }
     // chance for multiple eggs
