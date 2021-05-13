@@ -266,26 +266,28 @@ function eventCrime(time) {
     let mesCitoyens = calcTotalCitoyens();
     let population = mesCitoyens.crim+mesCitoyens.cit;
     let crimeRate = calcCrimeRate(mesCitoyens);
-    warning('Population','Criminalité: '+crimeRate[0]+'% <br> Pénibilité: '+crimeRate[1]+'%',false)
+    warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total,false)
 };
 
 function calcCrimeRate(mesCitoyens) {
-    let crimeRate = [0,0];
+    let crimeRate = {};
     // facteur: +criminels%
     let population = mesCitoyens.crim+mesCitoyens.cit;
-    crimeRate[0] = Math.round(mesCitoyens.crim*100/population);
-    crimeRate[1] = 0;
+    crimeRate.crim = Math.ceil(mesCitoyens.crim*100/population);
+    crimeRate.penib = 0;
+    crimeRate.fo = 0;
+    crimeRate.total = 0;
     // facteur: +population
-    let overPop = population-2400;
-    crimeRate[1] = crimeRate[1]+Math.round(overPop/200);
+    let overPop = population-3000;
+    crimeRate.penib = crimeRate.penib+Math.round(overPop/250);
     // +1 par point playerInfos.vitals (25 pts)
-    crimeRate[1] = crimeRate[1]+playerInfos.vitals;
+    crimeRate.penib = crimeRate.penib+playerInfos.vitals;
     let lits = 0;
     let bldIds = [];
     // Unités: (electroguards-2 gurus-2 dealers-1 marshalls-1)
     let maxAntiCrimeUnits = Math.round(Math.sqrt(population)/7.5);
     let antiCrimeUnits = 0;
-    // Bâtiments: (prisons-5 salleSport-2 jardin-4 bar-2 cantine-3 dortoirs+2 appartements+3)
+    // Bâtiments: (prisons-5 salleSport-2 jardin-4 bar-2 cantine-3 dortoirs+1 cabines-1 appartements+3)
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         if (batType.name === 'Dortoirs') {
@@ -316,23 +318,32 @@ function calcCrimeRate(mesCitoyens) {
                     countMe = true;
                 }
             }
-            crimeRate[1] = crimeRate[1]+batType.crime;
+            if (countMe) {
+                if (batType.skills.includes('fo')) {
+                    crimeRate.fo = crimeRate.fo+batType.crime;
+                } else {
+                    crimeRate.penib = crimeRate.penib+batType.crime;
+                }
+            }
         }
     });
     // +5 par dortoir manquant
     if (population > lits) {
-        crimeRate[1] = crimeRate[1]+Math.round((population-lits)/100);
+        crimeRate.penib = crimeRate.penib+Math.round((population-lits)/100);
+    }
+    if (crimeRate.penib < 0) {
+        crimeRate.penib = 0;
     }
     // Treshold
-    if (crimeRate[1] > crimeRate[0] && crimeRate[1] < 10) {
-        crimeRate[0] = crimeRate[0]*2;
+    if (crimeRate.penib > crimeRate.crim && crimeRate.penib < 10) {
+        crimeRate.total = crimeRate.crim*2;
     } else {
-        crimeRate[0] = crimeRate[0]+crimeRate[1];
+        crimeRate.total = crimeRate.crim+crimeRate.penib;
     }
     // compétence maintien de l'ordre
-    crimeRate[0] = crimeRate[0]-(playerInfos.comp.ordre*3);
-    crimeRate[0] = Math.round(crimeRate[0]/(playerInfos.comp.ordre+6)*6);
-    console.log('crimeRate[0]='+crimeRate[0]);
+    crimeRate.total = crimeRate.total+crimeRate.fo;
+    crimeRate.total = Math.round(crimeRate.total/(playerInfos.comp.ordre+6)*6);
+    console.log('crimeRate.total='+crimeRate.total);
     return crimeRate;
 };
 

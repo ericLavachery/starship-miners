@@ -524,7 +524,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","fastguet","resistelec","resistacide","bigblub","gooddef"],
+        "skills":["fouille","fortif","fastguet","resistelec","resistacide","bigblub","gooddef","fo"],
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -3683,7 +3683,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","selfmedic","leader","survivor","luckyshot","defense","fastguet","ranger","guerrilla","maycamo","cible"],
+        "skills":["fouille","fortif","selfmedic","leader","survivor","luckyshot","defense","fastguet","ranger","guerrilla","maycamo","cible","fo"],
         "mediCost":5,
         "fuzz":1.5,
         "deathFx":"162157__mediapaja2009__agony"

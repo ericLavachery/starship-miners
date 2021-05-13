@@ -82,8 +82,6 @@ function landingList() {
         if (playerInfos.onShip) {
             checkSelectedLanderId();
             healEverything();
-            // Arrive trop tôt et ne compte que le lander?!
-            // findLanders suffirait??
             events(true);
             miniOut();
         }

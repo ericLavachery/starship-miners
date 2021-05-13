@@ -160,19 +160,21 @@ function viewPop() {
             let crimeRate = calcCrimeRate(mesCitoyens);
             let popColour = 'cy';
             let crimColour = 'neutre';
-            if (crimeRate[0] >= 15) {
+            if (crimeRate.total >= 15) {
                 crimColour = 'or';
             }
             let penibColour = 'neutre';
-            if (crimeRate[1] >= 10) {
+            if (crimeRate.penib >= 10) {
                 penibColour = 'or';
             }
             $("#batloop").css("display","block");
             $('#batloop').empty();
             $('#batloop').append('Population: <span class="'+popColour+'">'+population+'</span><br>');
             $('#batloop').append('(<span class="" title="Citoyens">'+mesCitoyens.cit+'</span> &middot; <span class="" title="Criminels">'+mesCitoyens.crim+'</span>)<br>');
-            $('#batloop').append('Criminalité: <span class="'+crimColour+'">'+crimeRate[0]+'</span>%<br>');
-            $('#batloop').append('Pénibilité: <span class="'+penibColour+'">'+crimeRate[1]+'</span>%<br>');
+            $('#batloop').append('Criminels: <span class="neutre">'+crimeRate.crim+'</span>%<br>');
+            $('#batloop').append('Pénibilité: <span class="'+penibColour+'">'+crimeRate.penib+'</span>%<br>');
+            $('#batloop').append('Forces de l\'ordre: <span class="neutre">'+crimeRate.fo+'</span><br>');
+            $('#batloop').append('Criminalité: <span class="'+crimColour+'">'+crimeRate.total+'</span>%<br>');
             $('#batloop').append('<button type="button" title="Attendre 1 semaine" class="boutonRouge iconButtons" onclick="events(false)"><i class="far fa-clock"></i></button>');
         }
     }
