@@ -266,7 +266,7 @@ function eventCrime(time) {
     let mesCitoyens = calcTotalCitoyens();
     let population = mesCitoyens.crim+mesCitoyens.cit;
     let crimeRate = calcCrimeRate(mesCitoyens);
-    warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total,false)
+    warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total+'%',false)
 };
 
 function calcCrimeRate(mesCitoyens) {
@@ -335,14 +335,22 @@ function calcCrimeRate(mesCitoyens) {
         crimeRate.penib = 0;
     }
     // Treshold
-    if (crimeRate.penib > crimeRate.crim && crimeRate.penib < 10) {
-        crimeRate.total = crimeRate.crim*2;
+    if (crimeRate.penib < 10) {
+        crimeRate.total = crimeRate.crim+Math.round(crimeRate.penib/1.9);
+    } else if (crimeRate.crim >= 15) {
+        crimeRate.total = crimeRate.crim+Math.round(crimeRate.penib*1.2);
     } else {
         crimeRate.total = crimeRate.crim+crimeRate.penib;
     }
-    // compétence maintien de l'ordre
     crimeRate.total = crimeRate.total+crimeRate.fo;
-    crimeRate.total = Math.round(crimeRate.total/(playerInfos.comp.ordre+6)*6);
+    // compétence maintien de l'ordre
+    let mOrdre = 6;
+    if (playerInfos.comp.ordre === 1) {
+        mOrdre = 8;
+    } else if (playerInfos.comp.ordre >= 2) {
+        mOrdre = 10;
+    }
+    crimeRate.total = Math.round(crimeRate.total/mOrdre*6);
     console.log('crimeRate.total='+crimeRate.total);
     return crimeRate;
 };

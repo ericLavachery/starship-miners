@@ -1252,7 +1252,7 @@ function recupRes(bat,batType) {
             Object.entries(batType.costs).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
-                value = Math.floor(value/100*recupFactor);
+                value = Math.ceil(value/100*recupFactor);
                 if (value >= 1) {
                     if (coffre.transRes[key] === undefined) {
                         coffre.transRes[key] = value;

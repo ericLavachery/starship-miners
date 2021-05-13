@@ -3022,7 +3022,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fouille","fortif","maycamo","guerrilla","baddef","badmecano","badmedic","moto","oknitro","dealer","octiron","nitro","fret","fastempty"],
+        "skills":["fouille","fortif","maycamo","guerrilla","baddef","badmecano","badmedic","moto","oknitro","dealer","octiron","nitro","starka","fret","fastempty"],
         "mediCost":10,
         "mecanoCost":7,
         "transRes":63,

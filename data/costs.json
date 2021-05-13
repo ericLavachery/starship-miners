@@ -2235,7 +2235,7 @@
         "id":231,
         "name":"Sonde",
         "bldReq":["Soute"],
-        "costs":{"Eau":25,"Scrap":200,"Carbone":40,"Titane":100,"Aluminium":200,"Nickel":40,"Cuivre":40,"Silicium":20,"Bore":15,"Hélium":15,"Electros":40,"Batteries":20,"Energie":60,"Plutonium":30,"Hydrogène":15},
+        "costs":{"Scrap":250,"Carbone":50,"Titane":100,"Aluminium":250,"Cobalt":100,"Platine":40,"Nickel":40,"Cuivre":75,"Silicium":75,"Hélium":75,"Bore":15,"Electros":75,"Batteries":40,"Energie":200,"Plutonium":30,"Hydrogène":15},
         "fabTime":100
     },
     {
