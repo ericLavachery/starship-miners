@@ -11,6 +11,9 @@ function bfconst(cat,triche,upgrade) {
         catz.push('vehicles');
     }
     selectMode();
+    if (Object.keys(conselUnit).length >= 1) {
+        cursorSwitch('.','grid-item','thor');
+    }
     // findLanders();
     checkReserve();
     let dispoCrim = getDispoCrim();
@@ -257,14 +260,12 @@ function conSelect(unitId,player,noRefresh) {
     if (player === 'player') {
         let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
         conselUnit = unitTypes[unitIndex];
-        cursorSwitch('.','grid-item','thor');
         conselCosts = mergedUnitCosts(conselUnit);
         console.log(conselUnit.name);
         console.log(conselCosts);
     } else {
         let unitIndex = alienUnits.findIndex((obj => obj.id == unitId));
         conselUnit = alienUnits[unitIndex];
-        cursorSwitch('.','grid-item','thor');
     }
     // console.log(conselUnit);
     $('#conAmmoList').empty();

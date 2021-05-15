@@ -981,32 +981,35 @@ function addRes(zone) {
                 if (res.cat === 'white') {
                     resChance = Math.round(res.adjRarity*tile.rq*tile.rq/resFoundDiv);
                     if (res.bld === 'Derrick') {
-                        if (terrain.scarp <= 1) {
-                            resChance = Math.round(resChance*1.6);
-                            if (tile.rq >= 2 && terrain.veg <= 1 && isGas === 'maybe') {
-                                resChance = Math.round(resChance*3);
-                            }
-                        } else {
-                            resChance = Math.round(resChance*0.67);
-                        }
                         if (isGas === 'yes') {
-                            resChance = Math.round(resChance*2);
+                            resChance = Math.round(resChance*3);
+                        } else {
+                            if (terrain.scarp <= 1) {
+                                resChance = Math.round(resChance*1.4);
+                                if (tile.rq >= 2 && terrain.veg <= 1 && isGas === 'maybe') {
+                                    resChance = Math.round(resChance*1.4);
+                                }
+                            } else {
+                                resChance = Math.round(resChance*0.7);
+                            }
                         }
                     } else if (res.bld === 'Mine') {
                         if (terrain.scarp >= 2) {
                             resChance = Math.round(resChance*1.1);
                         } else {
-                            resChance = Math.round(resChance*0.45);
+                            resChance = Math.round(resChance*0.7);
                             if (tile.rq >= 2 && terrain.veg <= 1 && isGas === 'maybe') {
-                                resChance = Math.round(resChance/6);
+                                resChance = Math.round(resChance*0.7);
                             }
                         }
                     }
                     if (rand.rand(1,100) <= resChance) {
-                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                         if (res.name === 'Scrap') {
                             tile.ruins = true;
                             tile.rd = true;
+                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8);
+                        } else {
+                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                         }
                         if (firstRes) {
                             if (res.bld === 'Derrick') {
@@ -1027,10 +1030,12 @@ function addRes(zone) {
                             if (Object.keys(tile.rs).length <= 1) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,8) === 1) {
-                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
                                             tile.rd = true;
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8);
+                                        } else {
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         }
                                     }
                                 }
@@ -1045,10 +1050,12 @@ function addRes(zone) {
                             if (Object.keys(tile.rs).length <= 1) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,5) === 1) {
-                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
                                             tile.rd = true;
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8);
+                                        } else {
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         }
                                     }
                                 }
@@ -1076,10 +1083,12 @@ function addRes(zone) {
                             if (Object.keys(tile.rs).length <= 3) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,8) === 1) {
-                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
                                             tile.rd = true;
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8);
+                                        } else {
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         }
                                     }
                                 }
@@ -1094,10 +1103,12 @@ function addRes(zone) {
                             if (Object.keys(tile.rs).length <= 3) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,5) === 1) {
-                                        tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
                                             tile.rd = true;
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8);
+                                        } else {
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
                                         }
                                     }
                                 }
