@@ -184,7 +184,7 @@ function bfconst(cat,triche,upgrade) {
         }
     });
     if (triche) {
-        $('#conUnitList').append('<br><span class="constName or" id="mechants">LES MECHANTS</span><br><br>');
+        $('#conUnitList').append('<br><a href="#gentils"><span class="constName or" id="mechants">LES MECHANTS</span></a><br><br>');
         let allALiensList = alienUnits.slice();
         let sortedAliensList = _.sortBy(_.sortBy(_.sortBy(allALiensList,'name'),'name'),'kind');
         sortedAliensList.forEach(function(unit) {

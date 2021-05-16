@@ -345,6 +345,28 @@ function solarProd(bat,batType,time) {
     }
 };
 
+function solarPanel(bat,batType) {
+    console.log('psol prod');
+    console.log(batType.name);
+    let tile = getTileById(bat.tileId);
+    let upkeepPaid = true;
+    if (!zone[0].dark) {
+        let energyProd = rand.rand(6,8);
+        if (tile.terrain === 'P') {
+            energyProd = rand.rand(9,12);
+        } else if (tile.terrain === 'F') {
+            energyProd = rand.rand(4,5);
+        }
+        energyProd = Math.floor(energyProd*zone[0].ensol/160);
+        if (bat.eq === 'psol' || bat.logeq === 'psol') {
+            energyProd = Math.round(energyProd/2);
+        }
+        energyProd = energyCreation(energyProd);
+        resAdd('Energie',energyProd);
+        console.log('prod = Energie:'+energyProd);
+    }
+};
+
 function upkeepAndProd(bat,batType,time) {
     console.log('UPKEEP');
     console.log(batType.name);

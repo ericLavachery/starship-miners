@@ -946,6 +946,28 @@
         "deploy":{"Energie":120,"Hydrogène":80,"Aluminium":20}
     },
     {
+        "name": "psol",
+        "cat":"equip",
+        "skills": [],
+        "info": "Panneaux solaires",
+        "bldReq":[],
+        "compReq":{"energ":1,"const":1},
+        "factor":"one",
+        "costs":{"Silicium":50,"Carbone":25,"Hydrogène":25,"Oxygène":12,"Batteries":8},
+        "deploy":{}
+    },
+    {
+        "name": "psol2",
+        "cat":"equip",
+        "skills": [],
+        "info": "Panneaux solaires",
+        "bldReq":[],
+        "compReq":{"energ":1,"const":1},
+        "factor":"one",
+        "costs":{"Silicium":100,"Carbone":50,"Hydrogène":50,"Oxygène":25,"Batteries":15},
+        "deploy":{}
+    },
+    {
         "name": "w1-gun",
         "cat":"equip",
         "skills": [],

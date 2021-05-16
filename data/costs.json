@@ -1857,8 +1857,8 @@
     {
         "id":123,
         "name":"Pompe",
-        "upkeep":{"Energie":6},
-        "prod":{"Oxygène":6},
+        "upkeep":{"Eau":9,"Energie":9},
+        "prod":{"Oxygène":9},
         "costs":{"Compo1":75,"Fer":50,"Aluminium":40,"Scrap":100},
         "fabTime":20
     },
