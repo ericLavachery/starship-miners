@@ -387,7 +387,7 @@
             "ammo":["tungsten"]
         },
         "protection":["aucun","bugium","acier","dunium","bonibo","iso"],
-        "equip":["aucun","w1-gun","w2-explo","w1-autopistol"],
+        "equip":["aucun","w1-gun","w2-explo","w1-autopistol","psol"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -431,7 +431,7 @@
             "ammo":["tungsten"]
         },
         "protection":["aucun"],
-        "equip":["aucun","w1-autopistol"],
+        "equip":["aucun","w1-autopistol","psol"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,

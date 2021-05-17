@@ -350,7 +350,7 @@ function solarPanel(bat,batType) {
     console.log(batType.name);
     let tile = getTileById(bat.tileId);
     let upkeepPaid = true;
-    if (!zone[0].dark) {
+    if (!zone[0].dark && bat.fuzz > -2) {
         let energyProd = rand.rand(6,8);
         if (tile.terrain === 'P') {
             energyProd = rand.rand(9,12);
