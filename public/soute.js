@@ -292,11 +292,18 @@ function batListElement(bat,batType,idOfLander) {
         }
     }
     $('#be'+bat.id).append('<span class="listRes gff" title="Volume">('+batVolume+')</span>');
+    let bxp = Math.round(bat.xp);
     let vetIcon = '';
+    let army = '';
     if (bat.vet >= 1) {
         vetIcon = '<img src="/static/img/vet'+bat.vet+'.png" width="15">';
+    } else if (bat.army >= 1) {
+        army = ' ';
     }
-    $('#be'+bat.id).append('<span class="listRes gff" title="XP">('+bat.xp+vetIcon+')</span>');
+    if (bat.army >= 1) {
+        army = army+'a<span class="rose" title="Armée">'+bat.army+'</span>';
+    }
+    $('#be'+bat.id).append('<span class="listRes gff" title="XP">('+bxp+vetIcon+army+')</span>');
     $('#be'+bat.id).append('<br>');
     let prt = bat.prt;
     if (prt.includes('aucun')) {

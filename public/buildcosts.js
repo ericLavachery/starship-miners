@@ -297,8 +297,14 @@ function getCosts(unit,ammo,weapNum,type) {
         // AMMOs
         if (weapNum === 1) {
             costFactor = Math.ceil(unit.squads*unit.squadSize*unit.weapon.power/2);
+            if (unit.weapon.name.includes('Moissonneuse')) {
+                costFactor = costFactor*15;
+            }
         } else {
             costFactor = Math.ceil(unit.squads*unit.squadSize*unit.weapon2.power/2);
+            if (unit.weapon2.name.includes('Moissonneuse')) {
+                costFactor = costFactor*15;
+            }
         }
         if (ammo.costs != undefined) {
             if (Object.keys(ammo.costs).length >= 1) {

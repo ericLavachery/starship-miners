@@ -94,6 +94,15 @@ h5 {
     vertical-align: -50%;
     cursor: pointer;
 }
+.dunit {
+    vertical-align: -70%;
+    cursor: pointer;
+    background-color: #565988;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #8486ac;
+    border-radius: 4px;
+}
 .notsosmall {
     font-size: 14px;
 }

@@ -86,11 +86,12 @@ function unloadInfos(myBat,myBatUnitType) {
                             balise = 'h3';
                         }
                     }
+                    let batPic = getBatPic(bat,batType);
                     batAPLeft = Math.floor(bat.apLeft);
                     if (myBatUnitType.skills.includes('transorbital') && (batType.id === 126 || batType.id === 225)) {
                         $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer des citoyens d\'un vaisseau" class="boutonGris skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
                     } else {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA '+moreInfos+'" class="boutonMarine skillButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
+                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA '+moreInfos+'" class="boutonMarine skillButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="32" class="dunit" onclick="unitDetail('+bat.id+')" title="Détail du bataillon">&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
                     }
                 }
             });

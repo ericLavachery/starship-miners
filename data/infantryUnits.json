@@ -574,7 +574,7 @@
             "sound":"mit_light1",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
-        "equip":["aucun","kit-garde","e-ranger","e-jetpack"],
+        "equip":["aucun","kit-garde","e-ranger","e-jetpack","camkit"],
         "log3eq":"",
         "moveCost":3,
         "maxFlood":3,
@@ -630,7 +630,7 @@
             "sound":"mark",
             "ammo":["marquage"]
         },
-        "equip":["aucun","e-flash","e-camo","kit-chouf","e-ranger","e-jetpack","lunette1","chargeur1","silencieux1"],
+        "equip":["aucun","e-flash","e-camo","kit-chouf","e-ranger","e-jetpack","lunette1","chargeur1","silencieux1","camkit"],
         "log3eq":"silencieux1",
         "moveCost":3,
         "maxFlood":3,
@@ -684,7 +684,7 @@
             "sound":"plasma_canon",
             "ammo":["cn-plasma","cn-plastanium","cn-uridium","cn-nanite"]
         },
-        "equip":["aucun","e-flash","e-camo","kit-guetteur","e-ranger","e-jetpack","chargeur1","silencieux1"],
+        "equip":["aucun","e-flash","e-camo","kit-guetteur","e-ranger","e-jetpack","chargeur1","silencieux1","camkit"],
         "log3eq":"silencieux1",
         "moveCost":3,
         "maxFlood":3,
@@ -741,7 +741,7 @@
             "maxAmmo":12,
             "ravitBld":"Atelier"
         },
-        "equip":["aucun","e-flash","kit-pompiste","e-ranger","e-jetpack"],
+        "equip":["aucun","e-flash","kit-pompiste","e-ranger","e-jetpack","camkit"],
         "log3eq":"",
         "moveCost":3,
         "maxFlood":3,
@@ -798,7 +798,7 @@
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
-        "equip":["aucun","kit-artilleur","e-ranger","e-jetpack"],
+        "equip":["aucun","kit-artilleur","e-ranger","e-jetpack","camkit"],
         "log3eq":"",
         "moveCost":3,
         "maxFlood":3,
@@ -859,7 +859,7 @@
             "sound":"bow",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
         },
-        "equip":["aucun","kit-sentinelle","e-ranger","e-jetpack","e-medic"],
+        "equip":["aucun","kit-sentinelle","e-ranger","e-jetpack","e-medic","camkit"],
         "log3eq":"e-medic",
         "moveCost":3,
         "maxFlood":3,
@@ -2958,7 +2958,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"fmag",
-            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
         },
         "equip":["aucun","e-flash","e-ranger","chargeur2","silencieux2","e-camo","permakirin","theeye","waterproof"],
         "log3eq":"chargeur2",

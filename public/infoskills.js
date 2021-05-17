@@ -33,10 +33,12 @@ function skillsInfos(bat,batType) {
             let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
             let enoughRes = checkCost(deployCosts);
             let deployInfo = checkPlaceLander(bat,batType,slId);
-            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2]) {
+            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit') {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Charger le bataillon dans le lander" class="boutonMarine bigButtons" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
             } else {
-                if (!enoughRes) {
+                if (bat.eq === 'camkit') {
+                    skillMessage = "Les unités ayant le CamKit deviennent des policiers et restent donc dans la station";
+                } else if (!enoughRes) {
                     skillMessage = "Ressources insuffisantes";
                 } else if (!deployInfo[0]) {
                     skillMessage = "Lander non déployé";
@@ -1310,7 +1312,7 @@ function skillsInfos(bat,batType) {
             if (tile.infra != 'Miradors') {
                 infra = getInfraByName('Miradors');
                 infraCostOK = checkCost(infra.costs);
-                if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def) {
+                if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
                     prodOK = false;
                 } else {
                     prodOK = true;
@@ -1331,7 +1333,7 @@ function skillsInfos(bat,batType) {
             if (tile.infra != 'Palissades') {
                 infra = getInfraByName('Palissades');
                 infraCostOK = checkCost(infra.costs);
-                if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def) {
+                if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
                     prodOK = false;
                 } else {
                     prodOK = true;
@@ -1352,7 +1354,7 @@ function skillsInfos(bat,batType) {
             if (tile.infra != 'Remparts') {
                 infra = getInfraByName('Remparts');
                 infraCostOK = checkCost(infra.costs);
-                if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def) {
+                if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
                     prodOK = false;
                 } else {
                     prodOK = true;
@@ -1373,7 +1375,7 @@ function skillsInfos(bat,batType) {
             if (tile.infra != 'Murailles' && playerInfos.comp.const >= 3) {
                 infra = getInfraByName('Murailles');
                 infraCostOK = checkCost(infra.costs);
-                if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.def) {
+                if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def) {
                     prodOK = false;
                 } else {
                     prodOK = true;
@@ -1395,7 +1397,7 @@ function skillsInfos(bat,batType) {
                 infra = getInfraByName('Terriers');
                 if (infra.levels[playerInfos.gang] < 90) {
                     infraCostOK = checkCost(infra.costs);
-                    if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def) {
+                    if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
                         prodOK = false;
                     } else {
                         prodOK = true;

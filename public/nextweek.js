@@ -288,7 +288,10 @@ function calcCrimeRate(mesCitoyens) {
     let maxAntiCrimeUnits = Math.round(Math.sqrt(population)/7.5);
     let antiCrimeUnits = 0;
     // Bâtiments: (prisons-5 salleSport-2 jardin-4 bar-2 cantine-3 dortoirs+1 cabines-1 appartements+3)
-    bataillons.forEach(function(bat) {
+    let sortedBatList = bataillons.slice();
+    sortedBatList = _.sortBy(sortedBatList,'sort');
+    sortedBatList.reverse();
+    sortedBatList.forEach(function(bat) {
         let batType = getBatType(bat);
         if (batType.name === 'Dortoirs') {
             lits = lits+500;
@@ -299,7 +302,7 @@ function calcCrimeRate(mesCitoyens) {
         if (batType.name === 'Appartements') {
             lits = lits+50;
         }
-        if (batType.crime != undefined) {
+        if (batType.crime != undefined || bat.eq === 'camkit') {
             let countMe = false;
             if (batType.cat === 'buildings') {
                 if (batType.name === 'Prisons' || batType.name === 'Cabines' || batType.crime >= 1) {
@@ -319,7 +322,9 @@ function calcCrimeRate(mesCitoyens) {
                 }
             }
             if (countMe) {
-                if (batType.skills.includes('fo')) {
+                if (bat.eq === 'camkit') {
+                    crimeRate.fo = crimeRate.fo-1;
+                } else if (batType.skills.includes('fo')) {
                     crimeRate.fo = crimeRate.fo+batType.crime;
                 } else {
                     crimeRate.penib = crimeRate.penib+batType.crime;
@@ -327,6 +332,10 @@ function calcCrimeRate(mesCitoyens) {
             }
         }
     });
+    // centre de com
+    if (playerInfos.bldList.includes('Centre de com')) {
+        crimeRate.fo = crimeRate.fo-3;
+    }
     // +5 par dortoir manquant
     if (population > lits) {
         crimeRate.penib = crimeRate.penib+Math.round((population-lits)/100);

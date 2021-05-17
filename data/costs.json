@@ -2216,7 +2216,7 @@
     {
         "id":235,
         "name":"Poste de pilotage",
-        "bldEquiv":["Centre de com"],
+        "bldEquiv":["Poste radio"],
         "bldUp":"Passerelle",
         "bldReq":["Station"],
         "costs":{},
@@ -2225,7 +2225,7 @@
     {
         "id":236,
         "name":"Passerelle",
-        "bldEquiv":["QG"],
+        "bldEquiv":["Poste radio","Centre de com","QG"],
         "bldCost":"Poste de pilotage",
         "bldReq":["Soute"],
         "costs":{"Energie":500,"Cobalt":400,"Cuivre":1000,"Platine":150,"Silicium":300,"Oxygène":200,"Hélium":300,"Electros":400,"Batteries":150},

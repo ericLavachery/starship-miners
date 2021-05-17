@@ -595,6 +595,16 @@
         "deploy":{"Energie":90}
     },
     {
+        "name": "camkit",
+        "cat":"equip",
+        "skills": [],
+        "info": "Criminalité- (ne peut plus être déployé)",
+        "bldReq":["Centre de com"],
+        "compReq":{"det":3,"ordre":2},
+        "factor":"one",
+        "costs":{"Silicium":15,"Carbone":15,"Cuivre":10,"Electros":10}
+    },
+    {
         "name": "kit-pompiste",
         "cat":"equip",
         "skills": [],

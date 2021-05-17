@@ -366,7 +366,7 @@
             "armors":0.6,
             "aoe":"unit",
             "sound":"mit_heavy3",
-            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
         },
         "weapon2":{
             "name":"Obusier",
@@ -1516,7 +1516,7 @@
             "armors":0.6,
             "aoe":"unit",
             "sound":"mit_heavy3",
-            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
         },
         "weapon2":{
             "name":"Moissonneuse",
@@ -2012,7 +2012,7 @@
             "armors":0.6,
             "aoe":"unit",
             "sound":"mit_heavy3",
-            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","iso","adamantite"],
         "equip":["aucun","carrousel1","longtom1","g2motor","snorkel"],
