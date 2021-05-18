@@ -358,6 +358,9 @@ function getBatGearStuff(armorName,equipName,batType) {
     let gearStuff = [];
     let batArmor = getEquipByName(armorName);
     gearStuff[0] = batType.armor+batArmor.armor;
+    if (batType.skills.includes('bigprot')) {
+        gearStuff[0] = batType.armor+(batArmor.armor*2);
+    }
     let baseAP = batType.ap;
     if (equipName === 'e-jetpack') {
         baseAP = 17;

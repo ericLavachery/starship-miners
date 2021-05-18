@@ -1036,7 +1036,7 @@
         "squadSize":12,
         "crew":0,
         "hp":15,
-        "armor":4,
+        "armor":3,
         "size":20,
         "stealth":0,
         "speed":-5,
@@ -1050,7 +1050,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fret","dumper","nodeathcount","okdel","nostation","autotrans"],
+        "skills":["fret","dumper","nodeathcount","okdel","nostation","autotrans","bigprot"],
         "transRes":1000,
         "fuzz":-1,
         "deathFx":"S_Explosion02"
