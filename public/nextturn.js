@@ -503,7 +503,23 @@ function nextTurnEnd() {
             }
         }
     });
-    // LOAD AUTOMATION
+    // LOAD AUTOMATION X2
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" || bat.loc === "trans") {
+            if (bat.autoLoad != undefined) {
+                if (Array.isArray(bat.autoLoad)) {
+                    bat.autoLoad.forEach(function(batId) {
+                        let fromBat = getBatById(batId);
+                        if (Object.keys(fromBat).length >= 1) {
+                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
+                                autoResLoad(bat,fromBat);
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    });
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             if (bat.autoLoad != undefined) {

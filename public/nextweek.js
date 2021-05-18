@@ -39,6 +39,9 @@ function eventProduction(afterMission,time) {
         triFactor = triFactor+1;
     }
     let scrapNum = Math.round(time*population/2000*3*(triFactor+5)/5);
+    if (afterMission) {
+        scrapNum = Math.round(scrapNum/5);
+    }
     resAdd('Scrap',scrapNum);
     warning('Poubelles','Scrap:<span class="vert">+'+scrapNum+'</span><br>',true);
     bataillons.forEach(function(bat) {

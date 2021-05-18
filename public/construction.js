@@ -792,7 +792,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             newBat.camoAP = -1;
             // dumpers
             if (conselUnit.skills.includes('dumper')) {
-                if (conselUnit.skills.includes('realdumper') || conselUnit.skills.includes('transorbital')) {
+                if (conselUnit.skills.includes('transorbital')) {
                     newBat.noDump = false;
                 } else {
                     newBat.noDump = true;

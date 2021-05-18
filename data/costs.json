@@ -1781,6 +1781,15 @@
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":[],
         "costs":{"Compo1":20,"Végétaux":15},
+        "fabTime":5
+    },
+    {
+        "id":248,
+        "name":"Convoyeur",
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "bldReq":[],
+        "costs":{"Compo1":100,"Scrap":50,"Carbone":50,"Aluminium":20,"Cuivre":15,"Electros":5,"Batteries":10},
+        "deploy":{"Energie":30},
         "fabTime":10
     },
     {

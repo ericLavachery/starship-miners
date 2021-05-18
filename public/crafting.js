@@ -419,6 +419,9 @@ function upkeepAndProd(bat,batType,time) {
                     }
                     if (key === 'Scrap') {
                         fullProd = scrapCreation(fullProd);
+                        if (playerInfos.onShip) {
+                            fullProd = Math.ceil(fullProd/5);
+                        }
                     }
                     resAdd(key,fullProd);
                     if (playerInfos.onShip) {
