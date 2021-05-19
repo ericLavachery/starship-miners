@@ -978,7 +978,7 @@
         "name":"Buggies",
         "levels":{"rednecks":4,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Garage"],
-        "costs":{"Fer":180,"Scrap":350,"Carbone":90,"Aluminium":180,"Tungstène":30,"Batteries":15,"Compo2":15,"Plomb":30,"Soufre":30,"Fuel":30},
+        "costs":{"Fer":90,"Scrap":360,"Carbone":225,"Aluminium":180,"Tungstène":30,"Batteries":15,"Compo2":15,"Plomb":30,"Soufre":30,"Fuel":30},
         "deploy":{"Fuel":60},
         "fabTime":50
     },

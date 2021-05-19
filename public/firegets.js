@@ -419,7 +419,6 @@ function getCrashEscapeTile(tileId) {
     return escTile;
 };
 
-
 function calcDamage(weapon,power,armor,defBat) {
     // powerDice is max 4x power
     // fortif armor
@@ -470,6 +469,29 @@ function calcDamage(weapon,power,armor,defBat) {
         calculatedDmg = 0;
     }
     return calculatedDmg;
+};
+
+function checkRicochet(defBat,defBatType,attWeap) {
+    let rico = false;
+    if (defBatType.skills.includes('ricochet') || defBat.tags.includes('ricochet')) {
+        if (!attWeap.ammo.includes('feu') && !attWeap.ammo.includes('napalm') && !attWeap.ammo.includes('fire') && !attWeap.ammo.includes('pyratol') && !attWeap.ammo.includes('lf-') && !attWeap.ammo.includes('lt-') && !attWeap.ammo.includes('molotov') && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web')) {
+            if (!attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco')) {
+                if (!attWeap.ammo.includes('mono')) {
+                    if (!attWeap.isMelee && !attWeap.noShield && attWeap.armors > 0) {
+                        let minimumPower = defBat.armor*2;
+                        if (minimumPower < 18) {
+                            minimumPower = 18;
+                        }
+                        let calcPower = Math.round((attWeap.power+3)/attWeap.armors);
+                        if (calcPower < minimumPower) {
+                            rico = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return rico;
 };
 
 function getCover(bat,withFortif,forAOE) {
@@ -969,14 +991,16 @@ function weaponSelectRiposte(distance) {
         targetWeap = JSON.parse(JSON.stringify(batWeap1));
         targetWeap = weaponAdj(targetWeap,targetBat,'w1');
         if (!targetBatType.weapon2.kit || targetBat.eq.includes('kit-') || targetBat.eq.includes('w2-')) {
-            if (activeTurn == 'aliens') {
+            if (activeTurn === 'aliens') {
                 baseAmmo = targetWeap.maxAmmo;
                 ammoLeft = calcAmmos(targetBat,baseAmmo);
-                if (ammoLeft <= 0 || distance > targetWeap.range || targetWeap.noDef || (targetWeap.noMelee && distance === 0 && selectedBat.tileId === selectedBat.oldTileId) || (targetWeap.noFly && selectedBatType.skills.includes('fly')) || (targetWeap.noGround && !selectedBatType.skills.includes('sauteur') && !selectedBatType.skills.includes('fly'))) {
+                let rico = checkRicochet(selectedBat,selectedBatType,targetWeap);
+                if (rico || ammoLeft <= 0 || distance > targetWeap.range || targetWeap.noDef || (targetWeap.noMelee && distance === 0 && selectedBat.tileId === selectedBat.oldTileId) || (targetWeap.noFly && selectedBatType.skills.includes('fly')) || (targetWeap.noGround && !selectedBatType.skills.includes('sauteur') && !selectedBatType.skills.includes('fly'))) {
                     if (Object.keys(targetBatType.weapon2).length >= 1) {
                         targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon2));
                         targetWeap = weaponAdj(targetWeap,targetBat,'w2');
-                        if (!targetWeap.noDef && distance <= targetWeap.range) {
+                        rico = checkRicochet(selectedBat,selectedBatType,targetWeap);
+                        if (!targetWeap.noDef && distance <= targetWeap.range && !rico) {
                             baseAmmo = targetWeap.maxAmmo;
                             ammoLeft = calcAmmos(targetBat,baseAmmo);
                         } else {

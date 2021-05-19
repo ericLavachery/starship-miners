@@ -34,9 +34,9 @@
         "name": "Carbone",
         "bld": "Mine",
         "level": 2,
-        "rarity": 40,
+        "rarity": 35,
         "cat": "white",
-        "batch": 10,
+        "batch": 8,
         "energie": 5
     },
     {
