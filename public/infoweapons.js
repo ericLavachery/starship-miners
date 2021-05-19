@@ -423,6 +423,7 @@ function showAmmo(ammo,redux) {
     ammoView = ammoView.replace('obus-','');
     ammoView = ammoView.replace('boulet-','');
     ammoView = ammoView.replace('ac-','');
+    ammoView = ammoView.replace('pn-','');
     ammoView = ammoView.replace('sm-','');
     ammoView = ammoView.replace('cn-','');
     ammoView = ammoView.replace('fleche-','');
