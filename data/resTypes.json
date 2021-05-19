@@ -224,9 +224,9 @@
         "name": "Rhodium",
         "bld": "Mine",
         "level": 2,
-        "rarity": 6,
+        "rarity": 5,
         "cat": "white",
-        "batch": 3,
+        "batch": 2,
         "energie": 100
     },
     {

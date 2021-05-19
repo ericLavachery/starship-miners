@@ -794,7 +794,7 @@
             "power":14,
             "aoe":"squad",
             "sound":"canon_small",
-            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-plastanium"],
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
@@ -2096,7 +2096,7 @@
             "power":14,
             "aoe":"squad",
             "sound":"mortier",
-            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
@@ -3398,7 +3398,7 @@
             "power":14,
             "aoe":"squad",
             "sound":"canon_small_x2",
-            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-plastanium"],
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
@@ -4757,7 +4757,7 @@
             "power":24,
             "aoe":"squad",
             "sound":"canon_big_x2",
-            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":20,
             "ravitBld":"Poudrière"
         },

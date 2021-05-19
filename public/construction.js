@@ -534,6 +534,17 @@ function checkUnitCompReq(unit) {
             }
         }
     }
+    if (unit.compHardReq != undefined) {
+        if (Object.keys(unit.compHardReq).length >= 1) {
+            Object.entries(unit.compHardReq).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                if (playerInfos.comp[key] < value) {
+                    compReqOK = false;
+                }
+            });
+        }
+    }    
     // Taupes/Blades
     if (unit.name === 'Taupes' && playerInfos.gang === 'blades') {
         if (playerInfos.comp.aero < 1 || playerInfos.comp.cyber < 1) {

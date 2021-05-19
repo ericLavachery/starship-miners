@@ -875,7 +875,7 @@
             "power":16,
             "aoe":"squad",
             "sound":"bomb_mini_x3",
-            "ammo":["obus","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":32,
             "ravitBld":"Poudrière"
         },
@@ -1102,7 +1102,7 @@
             "power":40,
             "aoe":"squad",
             "sound":"miss",
-            "ammo":["missile","missile-scrap","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium"],
             "maxAmmo":6,
             "ravitBld":"Arsenal"
         },
