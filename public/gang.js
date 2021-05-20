@@ -32,6 +32,8 @@ function gangUnitsList(gangName) {
                     newUnit.sort = 5;
                 }
                 newUnit.bldReq = unit.bldReq;
+                newUnit.cat = unit.cat;
+                newUnit.kind = unit.kind;
                 let newCompReq = {};
                 if (unit.compHardReq != undefined) {
                     if (Object.keys(unit.compHardReq).length >= 1) {
@@ -64,6 +66,7 @@ function gangUnitsList(gangName) {
     sortedGangUnits = _.sortBy(sortedGangUnits,'sort');
     sortedGangUnits = _.sortBy(sortedGangUnits,'level');
     sortedGangUnits.forEach(function(unit) {
+        let color = catColor(unit.cat,unit.kind);
         let compNeed = '';
         if (Object.keys(unit.compReq).length >= 1) {
             compNeed = toCoolString(unit.compReq);
@@ -72,7 +75,7 @@ function gangUnitsList(gangName) {
         if (Object.keys(unit.bldReq).length >= 1) {
             bldNeed = toNiceString(unit.bldReq);
         }
-        $('#conUnitList').append('<span class="paramName" title="'+bldNeed+'">'+unit.name+'</span><span class="paramLevelValue cy">'+unit.level+'</span><span class="paramValue gff">'+compNeed+'</span>');
+        $('#conUnitList').append('<span class="paramUnitName '+color+'" title="'+bldNeed+'">'+unit.name+'</span><span class="paramLevelValue cy">'+unit.level+'</span><span class="paramValue gf">'+compNeed+'</span><br>');
     });
 
     $('#conUnitList').append('<br><br>');

@@ -179,6 +179,13 @@ h5 {
     margin-right: 3px;
     min-height: 17px;
 }
+.paramUnitName {
+    display: inline-block;
+    width: 105px;
+    text-align: right;
+    margin-right: 3px;
+    min-height: 17px;
+}
 .paramIcon {
     text-align: center;
     margin-right: 3px;
@@ -209,7 +216,7 @@ h5 {
 }
 .paramLevelValue {
     display: inline-block;
-    width: 25px;
+    width: 20px;
     font-weight: bold;
 }
 .craftsList {

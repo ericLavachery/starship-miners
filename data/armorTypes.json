@@ -211,10 +211,10 @@
         "name": "nano",
         "cat":"armor",
         "armor": 4,
-        "ap": -1,
+        "ap": 0,
         "skills": [],
         "bldReq":["Centre de recherches"],
-        "compReq":{"mat":4,"energ":2},
+        "compReq":{"mat":4,"energ":1},
         "factor":"thp",
         "costs":{"Carbone":12,"Hélium":6,"Energie":72}
     },
