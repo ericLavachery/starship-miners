@@ -437,6 +437,23 @@ function getTrapName(bat,batType) {
     return trapName;
 };
 
+function getUnitTrapName(batType) {
+    let trapName = 'Mines';
+    if (batType.skills.includes('dynamite')) {
+        trapName = 'Explosifs';
+    }
+    if (batType.skills.includes('trapap')) {
+        trapName = 'Pièges';
+    }
+    if (batType.skills.includes('trapdard')) {
+        trapName = 'Dardières';
+    }
+    if (batType.skills.includes('trapfosse')) {
+        trapName = 'Fosses';
+    }
+    return trapName;
+};
+
 function tileNaming(tile,withUnit,fromTileId) {
     let tileName = '';
     if (withUnit) {

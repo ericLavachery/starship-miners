@@ -18,6 +18,7 @@ function gangUnitsList(gangName) {
             if ((unit.cat != 'buildings' && unit.cat != 'devices') || unit.levels[gangName] > 2) {
                 let newUnit = {};
                 newUnit.name = unit.name;
+                newUnit.id = unit.id;
                 newUnit.level = unit.levels[gangName];
                 newUnit.hp = unit.hp;
                 if (unit.kind === gangName) {
@@ -75,7 +76,7 @@ function gangUnitsList(gangName) {
         if (Object.keys(unit.bldReq).length >= 1) {
             bldNeed = toNiceString(unit.bldReq);
         }
-        $('#conUnitList').append('<span class="paramUnitName '+color+'" title="'+bldNeed+'">'+unit.name+'</span><span class="paramLevelValue cy">'+unit.level+'</span><span class="paramValue gf">'+compNeed+'</span><br>');
+        $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+bldNeed+'" onclick="unitDetail('+unit.id+')">'+unit.name+'</span><span class="paramLevelValue cy">'+unit.level+'</span><span class="paramValue gf">'+compNeed+'</span><br>');
     });
 
     $('#conUnitList').append('<br><br>');

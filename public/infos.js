@@ -1,19 +1,21 @@
 function showBatInfos(bat) {
-    batInfos(bat,false);
+    let batType = getBatType(bat);
+    batInfos(bat,batType,false);
     if (bat.type === 'Soute') {
         viewPop();
     }
 };
 
-function unitDetail(batId) {
+function batDetail(batId) {
     modal.style.display = "block";
     let bat = getBatById(batId);
-    batInfos(bat,true);
-    batFullInfos(bat);
+    let batType = getBatType(bat);
+    batInfos(bat,batType,true);
+    batFullInfos(bat,batType);
     batDebarq = {};
 };
 
-function batInfos(bat,pop) {
+function batInfos(bat,batType,pop) {
     let headPlace = 'unitInfos';
     let bodyPlace = 'unitInfos';
     if (pop) {
@@ -27,7 +29,6 @@ function batInfos(bat,pop) {
     }
     levelUp(bat);
     let tagColor = 'cy';
-    let batType = getBatType(bat);
     let batPic = getBatPic(bat,batType);
     let tile = getTile(bat);
     if (batType.skills.includes('transport')) {
@@ -60,9 +61,9 @@ function batInfos(bat,pop) {
         }
     } else {
         if (batType.skills.includes('nonumname')) {
-            $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonCiel skillButtons" onclick="unitDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+'</h3> '+vetIcon+'</span>');
+            $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonCiel skillButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+'</h3> '+vetIcon+'</span>');
         } else {
-            $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="unitDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3> '+vetIcon+'</span>');
+            $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3> '+vetIcon+'</span>');
         }
     }
     $('#'+bodyPlace).append('<div class="shSpace"></div>');
@@ -439,10 +440,13 @@ function batInfos(bat,pop) {
     // "maxVeg": 3,
 };
 
-function batFullInfos(bat) {
-    let batType = getBatType(bat);
+function batFullInfos(bat,batType) {
     $('#popbody').append('<div class="shSpace"></div>');
     $('#popbody').append('<span class="blockTitle"><h4>Habilités spéciales</h4></span><br>');
+    let isBat = false;
+    if (Object.keys(bat).length >= 1) {
+        isBat = true;
+    }
     let sepa = ' &nbsp;&middot;&nbsp; '
     let allSkills = sepa;
     if (batType.skills.includes('fortif')) {
@@ -568,13 +572,15 @@ function batFullInfos(bat) {
 
     // MINING
     if (batType.skills.includes('extraction')) {
-        let allMiningRates = getAllMiningRates(bat,batType);
         $('#popbody').append('<div class="shSpace"></div>');
         $('#popbody').append('<span class="blockTitle"><h4>Extraction de ressources</h4></span><br>');
-        $('#popbody').append('<span class="paramValue gf">'+toCoolString(allMiningRates)+'</span>');
+        if (isBat) {
+            let allMiningRates = getAllMiningRates(bat,batType);
+            $('#popbody').append('<span class="paramValue gf">'+toCoolString(allMiningRates)+'</span>');
+            console.log('MINING RATES');
+            console.log(allMiningRates);
+        }
         $('#popbody').append('<div class="shSpace"></div>');
-        console.log('MINING RATES');
-        console.log(allMiningRates);
     }
 };
 
