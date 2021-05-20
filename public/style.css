@@ -207,6 +207,11 @@ h5 {
     width: 40px;
     font-weight: bold;
 }
+.paramLevelValue {
+    display: inline-block;
+    width: 25px;
+    font-weight: bold;
+}
 .craftsList {
     display: inline-block;
     font-size: 14px;

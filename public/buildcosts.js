@@ -7,7 +7,6 @@ function voirReserve() {
     $('#tileInfos').empty();
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
-    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="constName or" id="gentils">RESERVE</span><br>');
     findLanders();
     let dispoCit = getDispoCit();

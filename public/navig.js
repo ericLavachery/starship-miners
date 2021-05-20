@@ -142,6 +142,7 @@ function commandes() {
                     } else {
                         $('#commandz').append('<button type="button" title="Voir vos compétences" class="boutonRose iconButtons" onclick="gangLevelView()"><i class="fas fa-award"></i></button>');
                     }
+                    $('#commandz').append('<button type="button" title="Voir toutes les unités du gang" class="boutonRose iconButtons" onclick="gangUnitsList()"><i class="fas fa-user-astronaut"></i></button>');
                 }
                 // if (!playerInfos.adjok) {
                 //     $('#commandz').append('<button type="button" title="Ajuster le pack de ressources" class="boutonRouge iconButtons" onclick="adjStartPack()"><i class="fas fa-coins"></i></button>');
