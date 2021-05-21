@@ -383,7 +383,7 @@ function playerSkillsUTChanges() {
         if (energComp >= 3) {
             energComp = 4;
         }
-        if (playerInfos.comp.energ >= 1) {
+        if (playerInfos.comp.energ >= 2) {
             if (Object.keys(unit.weapon).length >= 3) {
                 if (unit.weapon.name.includes('plasma') || unit.weapon.name.includes('laser') || unit.weapon.name.includes('Electro') || unit.weapon.name.includes('Lightning') || unit.weapon.name.includes('BFG') || unit.weapon.name.includes('électrique') || unit.weapon.name.includes('Taser')) {
                     unit.weapon.power = Math.ceil(unit.weapon.power*(energComp+15)/15);
