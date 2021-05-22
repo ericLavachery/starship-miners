@@ -4,7 +4,7 @@ function gangUnitsList(gangName) {
     }
     selectMode();
     $("#conUnitList").css("display","block");
-    $('#conUnitList').css("height","800px");
+    $('#conUnitList').css("height","1000px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
     $('#tileInfos').empty();

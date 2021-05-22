@@ -691,6 +691,16 @@
         "costs":{"Carbone":6,"Scrap":6,"Fer":18,"Aluminium":12,"Tungstène":6}
     },
     {
+        "name": "w2-gaz",
+        "cat":"equip",
+        "skills": [],
+        "info": "Rainbow gun",
+        "bldReq":["Laboratoire"],
+        "compReq":{"exo":1,"ca":1},
+        "factor":"crew",
+        "costs":{"Carbone":4,"Scrap":8,"Aluminium":8,"Titane":4}
+    },
+    {
         "name": "w2-tromblon",
         "cat":"equip",
         "skills": [],
@@ -1093,7 +1103,7 @@
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"def":2,"exo":1},
+        "compReq":{"def":2,"exo":1,"ca":1},
         "factor":"crew",
         "costs":{"Carbone":4,"Scrap":8,"Aluminium":8,"Titane":4}
     },

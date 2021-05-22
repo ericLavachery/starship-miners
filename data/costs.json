@@ -740,7 +740,6 @@
         "bldReq":["Atelier","Centre de recherches"],
         "compReq":{"cyber":1},
         "compPass":["rednecks"],
-        "compHardReq":{"exo":1,"ca":1},
         "costs":{"Fer":86,"Scrap":36,"Carbone":72,"Aluminium":36,"Titane":108,"Electros":72,"Batteries":108,"Cuivre":24,"Silicium":18,"Huile":36,"Silicium":16,"Chlore":20,"Zinc":20,"Tungstène":50,"Tissus":10},
         "deploy":{"Energie":70,"Huile":75,"Mendium":25},
         "fabTime":80

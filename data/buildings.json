@@ -151,7 +151,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","extraction","fret","recupcit","noblub","dumper","resistfeu","routes","prodres","upkeep","longshot","nostation"],
+        "skills":["fouille","extraction","fret","recupcit","noblub","dumper","resistfeu","routes","prodres","upkeep","longshot"],
         "mecanoCost":16,
         "mining":{
             "level":1,

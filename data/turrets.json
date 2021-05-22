@@ -1051,7 +1051,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["fret","dumper","nodeathcount","okdel","nostation","autotrans","bigprot","recupres"],
-        "transRes":1000,
+        "transRes":2000,
         "fuzz":-1,
         "deathFx":"S_Explosion02"
     },

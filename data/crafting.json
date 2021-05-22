@@ -529,18 +529,18 @@
         "creaNum":20
     },
     {
-        "id":31,
-        "result":"Carbone",
-        "cost":{"Scrap":65,"Energie":1},
-        "compReq":{"tri":3,"mat":1},
-        "bldReq":["Recyclab"],
-        "batch":5
-    },
-    {
         "id":35,
         "result":"Calcium",
         "cost":{"Mephitis":5,"Chlore":15,"Energie":2},
         "compReq":{"tri":2,"ca":1},
+        "bldReq":["Recyclab"],
+        "batch":5
+    },
+    {
+        "id":31,
+        "result":"Carbone",
+        "cost":{"Scrap":65,"Energie":1},
+        "compReq":{"tri":3,"mat":1},
         "bldReq":["Recyclab"],
         "batch":5
     },
@@ -654,6 +654,14 @@
         "result":"Or",
         "cost":{"Germium":15,"Creatite":10,"Energie":5},
         "compReq":{"tri":3,"ca":3,"mat":1},
+        "bldReq":["Recyclab"],
+        "batch":5
+    },
+    {
+        "id":110,
+        "result":"Oxygène",
+        "cost":{"Eau":5,"Energie":15},
+        "compReq":{"tri":2},
         "bldReq":["Recyclab"],
         "batch":5
     },
