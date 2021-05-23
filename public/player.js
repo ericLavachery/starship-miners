@@ -460,12 +460,12 @@ function playerSkillsUTChanges() {
             }
         }
         // VOLS SPACIAUX
-        if (playerInfos.comp.vsp >= 2 && unit.kind === 'zero-vaisseaux' && unit.name != 'Liberator' && unit.name != 'Crusader') {
-            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.vsp-1);
-            if (unit.levels[playerInfos.gang] < 1) {
-                unit.levels[playerInfos.gang] = 1;
-            }
-        }
+        // if (playerInfos.comp.vsp >= 2 && unit.kind === 'zero-vaisseaux' && unit.name != 'Liberator' && unit.name != 'Crusader') {
+        //     unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.vsp-1);
+        //     if (unit.levels[playerInfos.gang] < 1) {
+        //         unit.levels[playerInfos.gang] = 1;
+        //     }
+        // }
         // CAMOUFLAGE
         if (playerInfos.comp.cam >= 1 && unit.skills.includes('maycamo') && unit.cat === 'infantry') {
             unit.skills.push('camo');
@@ -1082,10 +1082,12 @@ function getLanderRange(landerBatType) {
     if (playerInfos.comp.vsp >= 1) {
         landerRange = landerRange+1+(playerInfos.comp.vsp*2);
     }
-    if (landerBatType != undefined) {
-        if (Object.keys(landerBatType).length >= 1) {
-            if (landerBatType.name === 'Trolley') {
-                landerRange = 0;
+    if (!playerInfos.onShip) {
+        if (landerBatType != undefined) {
+            if (Object.keys(landerBatType).length >= 1) {
+                if (landerBatType.name === 'Trolley') {
+                    landerRange = 0;
+                }
             }
         }
     }

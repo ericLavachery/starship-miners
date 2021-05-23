@@ -35,6 +35,7 @@ function gangUnitsList(gangName) {
                 newUnit.bldReq = unit.bldReq;
                 newUnit.cat = unit.cat;
                 newUnit.kind = unit.kind;
+                newUnit.skills = unit.skills;
                 let newCompReq = {};
                 if (unit.compHardReq != undefined) {
                     if (Object.keys(unit.compHardReq).length >= 1) {
@@ -67,7 +68,7 @@ function gangUnitsList(gangName) {
     sortedGangUnits = _.sortBy(sortedGangUnits,'sort');
     sortedGangUnits = _.sortBy(sortedGangUnits,'level');
     sortedGangUnits.forEach(function(unit) {
-        let color = catColor(unit.cat,unit.kind);
+        let color = catColor(unit);
         let compNeed = '';
         if (Object.keys(unit.compReq).length >= 1) {
             compNeed = toCoolString(unit.compReq);

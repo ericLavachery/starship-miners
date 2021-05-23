@@ -174,7 +174,7 @@ function bfconst(cat,triche,upgrade) {
                 citColour = 'brunf';
             }
             if ((bldOK && costOK) || triche) {
-                color = catColor(unit.cat,unit.kind);
+                color = catColor(unit);
                 $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
             } else {
                 color = 'gff';
@@ -193,7 +193,7 @@ function bfconst(cat,triche,upgrade) {
             } else {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle gfff"></i></span>');
             }
-            color = catColor(unit.cat,unit.kind);
+            color = catColor(unit);
             $('#conUnitList').append('<span class="constName klik '+color+'" onclick="conSelect('+unit.id+',`aliens`,false)">'+unit.name+'</span><br>');
         });
     }
@@ -223,31 +223,34 @@ function displayCosts(costs) {
     return costString;
 };
 
-function catColor(cat,kind) {
-    if (cat === 'aliens') {
-        if (kind === 'bug') {
+function catColor(unit) {
+    if (unit.cat === 'aliens') {
+        if (unit.kind === 'bug') {
             return 'rose';
         }
-        if (kind === 'spider') {
+        if (unit.kind === 'spider') {
             return 'vert';
         }
-        if (kind === 'larve') {
+        if (unit.kind === 'larve') {
             return 'brun';
         }
-        if (kind === 'swarm') {
+        if (unit.kind === 'swarm') {
             return 'jaune';
         }
     }
-    if (cat === 'infantry') {
+    if (unit.skills.includes('transorbital') && unit.name != 'Soute') {
+        return 'bleu';
+    }
+    if (unit.cat === 'infantry') {
         return 'jaune';
     }
-    if (cat === 'vehicles') {
+    if (unit.cat === 'vehicles') {
         return 'vert';
     }
-    if (cat === 'buildings') {
+    if (unit.cat === 'buildings') {
         return 'rose';
     }
-    if (cat === 'devices') {
+    if (unit.cat === 'devices') {
         return 'vio';
     }
 };
@@ -544,7 +547,7 @@ function checkUnitCompReq(unit) {
                 }
             });
         }
-    }    
+    }
     // Taupes/Blades
     if (unit.name === 'Taupes' && playerInfos.gang === 'blades') {
         if (playerInfos.comp.aero < 1 || playerInfos.comp.cyber < 1) {
