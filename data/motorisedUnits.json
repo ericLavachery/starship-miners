@@ -2730,7 +2730,7 @@
             "noBis":true,
             "noFly":true,
             "noise":2,
-            "rof":6,
+            "rof":9,
             "accuracy":12,
             "power":13,
             "aoe":"squad",

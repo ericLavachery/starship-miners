@@ -94,7 +94,7 @@ function clickLanding(tileId) {
     let batHere = false;
     let message = '';
     let tile = getTileById(tileId);
-    let landerRange = getLanderRange();
+    let landerRange = getLanderRange(landerBatType);
     bataillons.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
             batHere = true;

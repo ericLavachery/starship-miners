@@ -873,8 +873,121 @@ function cocoonSpawn(bat) {
         eggCat = newEggCat();
     }
     console.log('eggCat: '+eggCat);
-    if (eggTurn > eggLife) {
-        // TRANFORMATION EN CLASSE A !
+    if (eggTurn < 3) {
+        let classes = [];
+        console.log('eggLevel='+eggLevel);
+        let saturation = false;
+        if (aliens.length >= 200 && playerInfos.mapTurn >= 100) {
+            saturation = true;
+        }
+        let spawnNum = 4;
+        if (eggTurn === 2) {
+            spawnNum = 6+Math.floor(playerInfos.mapTurn/50);
+            if (eggLevel >= 12) {
+                classes.push('A');
+                classes.push('S');
+            } else if (eggLevel >= 10) {
+                classes.push('A');
+                if (saturation) {
+                    classes.push('S');
+                }
+            } else if (eggLevel >= 8) {
+                classes.push('A');
+                if (!saturation) {
+                    classes.push('B');
+                }
+            } else if (eggLevel >= 6) {
+                classes.push('A');
+                classes.push('B');
+                if (!saturation) {
+                    classes.push('C');
+                }
+            } else if (eggLevel >= 4) {
+                classes.push('B');
+                classes.push('C');
+                if (saturation) {
+                    classes.push('A');
+                }
+            } else {
+                classes.push('C');
+                if (saturation) {
+                    classes.push('B');
+                }
+            }
+        } else {
+            let ana = aliens.length;
+            if (ana > 100) {
+                ana = 100;
+            }
+            let satMin = 5-Math.floor(ana/4)+zone[0].mapDiff+Math.round(playerInfos.mapTurn/4);
+            console.log('satMin: '+satMin);
+            spawnNum = zone[0].mapDiff+(rand.rand(1,4));
+            if (spawnNum < satMin) {
+                spawnNum = satMin;
+            }
+            console.log('spawnNum: '+spawnNum);
+            if (eggLevel >= 6) {
+                classes.push('B');
+                classes.push('C');
+            } else {
+                classes.push('C');
+            }
+        }
+        console.log('spawnNum='+spawnNum);
+        console.log(classes);
+        let checkDiceMax = 0;
+        let checkDice;
+        let raritySum = 0;
+        let dropTile = -1;
+        alienUnits.forEach(function(unit) {
+            if (classes.includes(unit.class) && unit.kind.includes(eggCat) && unit.class != 'S') {
+                checkDiceMax = checkDiceMax+unit.rarity;
+            }
+        });
+        let i = 1;
+        while (i <= spawnNum) {
+            conselReset();
+            if (classes.includes('S')) {
+                alienUnits.forEach(function(unit) {
+                    if (unit.class === 'S' && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat)) {
+                        conselUnit = unit;
+                    }
+                });
+            } else {
+                checkDice = rand.rand(1,checkDiceMax);
+                console.log('checkDice='+checkDice);
+                raritySum = 0;
+                alienUnits.forEach(function(unit) {
+                    if (classes.includes(unit.class) && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat) && unit.class != 'S') {
+                        raritySum = raritySum+unit.rarity;
+                        if (checkDice <= raritySum) {
+                            conselUnit = unit;
+                        }
+                    }
+                });
+            }
+            console.log('spawned unit ->');
+            console.log(conselUnit);
+            if (Object.keys(conselUnit).length >= 1) {
+                dropTile = checkDrop(bat.tileId);
+                if (dropTile >= 0) {
+                    if (conselUnit.class === 'S') {
+                        const index = classes.indexOf('S');
+                        if (index > -1) {
+                            classes.splice(index,1);
+                        }
+                    }
+                    checkSpawnType(conselUnit);
+                    putEggCat(bat,conselUnit.kind);
+                    putBat(dropTile,0,0);
+                }
+            }
+            if (i > 36) {break;}
+            i++
+        }
+    }
+    // TRANFORMATION EN CLASSE A !
+    if (eggTurn >= eggLife) {
         if (eggCat === 'bug') {
             if (eggLevel >= 6 && playerInfos.mapTurn >= 50) {
                 alienMorph(bat,'Dragons',false);
@@ -909,122 +1022,6 @@ function cocoonSpawn(bat) {
             }
         } else {
             alienMorph(bat,'Volcan',false);
-        }
-    } else {
-        if (eggTurn < 3) {
-            let classes = [];
-            console.log('eggLevel='+eggLevel);
-            let saturation = false;
-            if (aliens.length >= 200 && playerInfos.mapTurn >= 100) {
-                saturation = true;
-            }
-            let spawnNum = 4;
-            if (eggTurn === 2) {
-                spawnNum = 6+Math.floor(playerInfos.mapTurn/50);
-                if (eggLevel >= 12) {
-                    classes.push('A');
-                    classes.push('S');
-                } else if (eggLevel >= 10) {
-                    classes.push('A');
-                    if (saturation) {
-                        classes.push('S');
-                    }
-                } else if (eggLevel >= 8) {
-                    classes.push('A');
-                    if (!saturation) {
-                        classes.push('B');
-                    }
-                } else if (eggLevel >= 6) {
-                    classes.push('A');
-                    classes.push('B');
-                    if (!saturation) {
-                        classes.push('C');
-                    }
-                } else if (eggLevel >= 4) {
-                    classes.push('B');
-                    classes.push('C');
-                    if (saturation) {
-                        classes.push('A');
-                    }
-                } else {
-                    classes.push('C');
-                    if (saturation) {
-                        classes.push('B');
-                    }
-                }
-            } else {
-                let ana = aliens.length;
-                if (ana > 100) {
-                    ana = 100;
-                }
-                let satMin = 5-Math.floor(ana/4)+zone[0].mapDiff+Math.round(playerInfos.mapTurn/4);
-                console.log('satMin: '+satMin);
-                spawnNum = zone[0].mapDiff+(rand.rand(1,4));
-                if (spawnNum < satMin) {
-                    spawnNum = satMin;
-                }
-                console.log('spawnNum: '+spawnNum);
-                if (eggLevel >= 6) {
-                    classes.push('B');
-                    classes.push('C');
-                } else {
-                    classes.push('C');
-                }
-            }
-            console.log('spawnNum='+spawnNum);
-            console.log(classes);
-            let checkDiceMax = 0;
-            let checkDice;
-            let raritySum = 0;
-            let dropTile = -1;
-            alienUnits.forEach(function(unit) {
-                if (classes.includes(unit.class) && unit.kind.includes(eggCat) && unit.class != 'S') {
-                    checkDiceMax = checkDiceMax+unit.rarity;
-                }
-            });
-            let i = 1;
-            while (i <= spawnNum) {
-                conselReset();
-                if (classes.includes('S')) {
-                    alienUnits.forEach(function(unit) {
-                        if (unit.class === 'S' && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat)) {
-                            conselUnit = unit;
-                        }
-                    });
-                } else {
-                    checkDice = rand.rand(1,checkDiceMax);
-                    console.log('checkDice='+checkDice);
-                    raritySum = 0;
-                    alienUnits.forEach(function(unit) {
-                        if (classes.includes(unit.class) && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat) && unit.class != 'S') {
-                            raritySum = raritySum+unit.rarity;
-                            if (checkDice <= raritySum) {
-                                conselUnit = unit;
-                            }
-                        }
-                    });
-                }
-                console.log('spawned unit ->');
-                console.log(conselUnit);
-                if (Object.keys(conselUnit).length >= 1) {
-                    dropTile = checkDrop(bat.tileId);
-                    if (dropTile >= 0) {
-                        if (conselUnit.class === 'S') {
-                            const index = classes.indexOf('S');
-                            if (index > -1) {
-                                classes.splice(index,1);
-                            }
-                        }
-                        checkSpawnType(conselUnit);
-                        putEggCat(bat,conselUnit.kind);
-                        putBat(dropTile,0,0);
-                    }
-                }
-                if (i > 36) {break;}
-                i++
-            }
-        } else {
-            console.log('no spawn');
         }
     }
 };

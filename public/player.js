@@ -1077,10 +1077,17 @@ function fillLanderWithUnit(fillUnitId) {
     // console.log(prepaBld);
 };
 
-function getLanderRange() {
+function getLanderRange(landerBatType) {
     let landerRange = baseLanderRange;
     if (playerInfos.comp.vsp >= 1) {
         landerRange = landerRange+1+(playerInfos.comp.vsp*2);
+    }
+    if (landerBatType != undefined) {
+        if (Object.keys(landerBatType).length >= 1) {
+            if (landerBatType.name === 'Trolley') {
+                landerRange = 0;
+            }
+        }
     }
     return landerRange;
 };
