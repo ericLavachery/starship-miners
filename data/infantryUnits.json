@@ -825,7 +825,7 @@
         "size":3,
         "volume":0.9,
         "stealth":8,
-        "ap":14,
+        "ap":15,
         "maxSalvo":1,
         "weapon":{
             "name":"Espadon",
@@ -843,7 +843,7 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-taser","lame-mono","lame-plasma","lame-adamantium"]
         },
         "weapon2":{
-            "name":"Arbalète lourde",
+            "name":"Scorpion",
             "cost":6,
             "range":1,
             "elevation":1,
@@ -852,9 +852,9 @@
             "noBis":true,
             "noise":0,
             "rof":4,
-            "accuracy":18,
+            "accuracy":16,
             "dca":1.25,
-            "power":11,
+            "power":14,
             "armors":0.8,
             "aoe":"unit",
             "sound":"bow",
@@ -866,7 +866,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","camo","fastguet","garde"],
+        "skills":["fouille","fortif","camo","fastguet","garde","kitimage"],
         "maxSkill":3,
         "mediCost":9,
         "fuzz":0,

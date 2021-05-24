@@ -121,7 +121,7 @@ function calcVolume(bat,batType) {
         if (bat.eq === 'e-jetpack') {
             batVolume = Math.ceil(batVolume*1.2);
         }
-        if (bat.eq === 'kit-garde') {
+        if (bat.eq === 'kit-garde' || bat.eq === 'kit-sentinelle') {
             batVolume = Math.ceil(batVolume*1.33);
         }
         if (bat.eq === 'kit-artilleur') {

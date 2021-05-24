@@ -404,7 +404,7 @@ function calcMoveCost(targetTileId,diag) {
     let terIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
     let terrain = terrainTypes[terIndex];
     let baseMoveCost = selectedBatType.moveCost;
-    if (selectedBat.eq === 'kit-garde') {
+    if (selectedBat.eq === 'kit-garde' || selectedBat.eq === 'kit-sentinelle') {
         baseMoveCost = 4;
     }
     if (selectedBat.eq === 'kit-artilleur' || selectedBat.eq === 'kit-guetteur') {
