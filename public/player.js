@@ -197,14 +197,20 @@ function changePlayerInfo(dropMenuId,infoName,from) {
     } else {
         playerInfos[infoName] = +value;
     }
-    if (from === 'sonde') {
-        editSonde();
+    if (infoName === 'gang' && from === 'gangChoice') {
+        playerInfos.gangDef = true;
+        savePlayerInfos();
+        conOut();
         commandes();
     } else {
-        maxGangCompCosts();
-        savePlayerInfos();
-        gangNavig();
-        gangEdit();
+        if (from === 'sonde') {
+            editSonde();
+            commandes();
+        } else {
+            maxGangCompCosts();
+            gangNavig();
+            gangEdit();
+        }
     }
 };
 
@@ -1448,6 +1454,28 @@ function checkGangLevel() {
         }
     });
     return nextGangLevel;
+};
+
+function gangChoice() {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","200px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $('#tileInfos').empty();
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="ListRes or">CHOISIR UN GANG</span><br>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<select class="boutonGris" id="theGangs" onchange="changePlayerInfo(`theGangs`,`gang`,`gangChoice`)"></select>');
+    $('#theGangs').empty().append('<option value="">Gang</option>');
+    $('#theGangs').append('<option value="rednecks">Rednecks</option>');
+    $('#theGangs').append('<option value="blades">Blades</option>');
+    $('#theGangs').append('<option value="bulbos">Bulbos Kapos</option>');
+    $('#theGangs').append('<option value="drogmulojs">Drogmulojs</option>');
+    $('#theGangs').append('<option value="tiradores">Tiradores</option>');
+    $('#theGangs').append('<option value="detruas">Detruas</option>');
+    $('#theGangs').append('<option value="brasier">Le Brasier</option>');
+    $('#conUnitList').append('<span class="butSpace"></span>');
 };
 
 function gangLevelUp(retour) {

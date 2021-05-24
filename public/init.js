@@ -92,8 +92,11 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.gang === undefined) {
         playerInfos.gang = 'rednecks';
     }
+    if (playerInfos.gangDef === undefined) {
+        playerInfos.gangDef = true;
+    }
     if (playerInfos.gLevel === undefined) {
-        playerInfos.gLevel = 4;
+        playerInfos.gLevel = 0;
     }
     if (playerInfos.adjok === undefined) {
         playerInfos.adjok = false;

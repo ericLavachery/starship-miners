@@ -774,6 +774,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                     // nextId = bataillons[bataillons.length-1].id+1;
                 } else {
                     nextId = 1;
+                    playerInfos.nextId = 2;
                 }
                 team = 'player';
             } else {
