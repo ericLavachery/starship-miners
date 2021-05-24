@@ -2081,7 +2081,7 @@
         "mecanoCost":13,
         "transMaxSize":9,
         "transUnits":1000,
-        "transRes":600,
+        "transRes":750,
         "fuzz":2,
         "deathFx":"planeexploair1"
     },
@@ -2516,7 +2516,7 @@
         "mecanoCost":9,
         "transMaxSize":18,
         "transUnits":1400,
-        "transRes":500,
+        "transRes":675,
         "fuzz":3.75,
         "deathFx":"planeexploair3"
     },
