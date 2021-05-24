@@ -2104,7 +2104,7 @@
         "bldUp":"Centre de recherches",
         "upkeep":{"Energie":8,"Eau":6},
         "prod":{"Scrap":6},
-        "costs":{"Compo1":225,"Compo2":75,"Eau":100,"Energie":150,"Huile":50,"Carbone":50,"Phosphore":50,"Calcium":100,"Or":50,"Silicium":150,"Zinc":150,"Bore":50,"Chlore":50,"Argon":100,"Electros":50,"Batteries":50},
+        "costs":{"Compo1":225,"Compo2":75,"Eau":100,"Energie":150,"Huile":50,"Carbone":50,"Phosphore":50,"Calcium":100,"Or":50,"Silicium":150,"Zinc":150,"Bore":25,"Chlore":50,"Electros":50,"Batteries":50},
         "fabTime":75
     },
     {
