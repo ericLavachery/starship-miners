@@ -199,7 +199,7 @@ function changePlayerInfo(dropMenuId,infoName,from) {
     }
     if (infoName === 'gang' && from === 'gangChoice') {
         playerInfos.gangDef = true;
-        savePlayerInfos();
+        // savePlayerInfos();
         conOut();
         commandes();
     } else {
@@ -1467,7 +1467,7 @@ function gangChoice() {
     $('#conUnitList').append('<span class="ListRes or">CHOISIR UN GANG</span><br>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<select class="boutonGris" id="theGangs" onchange="changePlayerInfo(`theGangs`,`gang`,`gangChoice`)"></select>');
-    $('#theGangs').empty().append('<option value="">Gang</option>');
+    $('#theGangs').empty().append('<option value="rednecks">Gang</option>');
     $('#theGangs').append('<option value="rednecks">Rednecks</option>');
     $('#theGangs').append('<option value="blades">Blades</option>');
     $('#theGangs').append('<option value="bulbos">Bulbos Kapos</option>');

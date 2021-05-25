@@ -186,6 +186,11 @@ function getEquipDeployFactor(unit,equip) {
     let deployFactor = 1;
     let crew = unit.squads*unit.squadSize*unit.crew;
     let thp = unit.squads*unit.squadSize*unit.hp;
+    if (equip.cat === 'armor') {
+        if (unit.cat != 'infantry' && !unit.skills.includes('robot') && !unit.skills.includes('cyber')) {
+            thp = Math.round(thp*2.5);
+        }
+    }
     let rofpow = unit.squads*unit.weapon2.rof*unit.weapon2.power;
     if (equip.name === 'carrousel1' || equip.name === 'longtom1') {
         rofpow = unit.squads*unit.weapon.rof*unit.weapon.power;

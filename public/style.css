@@ -479,6 +479,20 @@ h5 {
 .bd {
     font-weight: bold;
 }
+.blynk {
+    -webkit-animation: bBlink .5s infinite;  /* Safari 4+ */
+    -moz-animation: bBlink .5s infinite;  /* Fx 5+ */
+    -o-animation: bBlink .5s infinite;  /* Opera 12+ */
+    animation: bBlink .5s infinite;  /* IE 10+, Fx 29+ */
+}
+@-webkit-keyframes bBlink {
+  0%, 49% {
+    color: #552a42;
+  }
+  50%, 100% {
+    color: #FFFFFF;
+  }
+}
 .cy {
     color: #6be9b4;
     font-weight: bold;
