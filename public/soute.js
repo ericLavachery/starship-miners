@@ -364,18 +364,31 @@ function batUndeploy(batId) {
     goSoute();
 };
 
+function calcLanderDeploy(landerBatType) {
+    let deployCosts = landerBatType.deploy;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'zone') {
+            let batType = getBatType(bat);
+            if (batType.skills.includes('transorbital') && batType.name != 'Soute' && bat.tags.includes('deploy')) {
+                
+            }
+        }
+    });
+    return deployCosts;
+}
+
 function landerDeploy(landerId) {
     let landerBat = getBatById(landerId);
     let landerBatType = getBatType(landerBat);
-    let deployCosts = landerBatType.deploy;
+    let deployCosts = calcLanderDeploy(landerBatType);
     let enoughRes = checkCost(deployCosts);
     if (enoughRes) {
         payCost(deployCosts);
         landerBat.apLeft = landerBat.ap;
+        landerBat.tags.push('deploy');
     } else {
         console.log('not enough res');
     }
-    landerBat.tags.push('deploy');
     showBatInfos(landerBat);
     commandes();
     if (inSoute) {
@@ -386,7 +399,7 @@ function landerDeploy(landerId) {
 function landerUnDeploy(landerId) {
     let landerBat = getBatById(landerId);
     let landerBatType = getBatType(landerBat);
-    let deployCosts = landerBatType.deploy;
+    let deployCosts = calcLanderDeploy(landerBatType);
     addCost(deployCosts,1);
     tagDelete(landerBat,'deploy');
     showBatInfos(landerBat);

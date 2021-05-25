@@ -1664,7 +1664,7 @@
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":["Soute"],
         "costs":{"Eau":250,"Energie":3000,"Huile":75,"Scrap":750,"Tissus":25,"Carbone":75,"Titane":350,"Aluminium":2500,"Calcium":30,"Nickel":150,"Cuivre":300,"Or":50,"Silicium":50,"Bore":50,"Plutonium":100,"Oxygène":500,"Hydrogène":700,"Azote":150,"Chlore":50,"Electros":250,"Batteries":200,"Moteur orbital":1},
-        "deploy":{"Eau":100,"Nourriture":50,"Oxygène":100,"Energie":500,"Huile":35,"Tissus":15,"Chlore":15,"Plutonium":75,"Hydrogène":25}
+        "deploy":{"Eau":100,"Nourriture":50,"Oxygène":100,"Energie":500,"Huile":35,"Tissus":15,"Chlore":15,"Plutonium":125,"Hydrogène":35}
     },
     {
         "id":7,
@@ -1672,7 +1672,7 @@
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":["Soute"],
         "costs":{"Eau":250,"Energie":3000,"Huile":100,"Scrap":550,"Tissus":50,"Carbone":100,"Titane":1500,"Aluminium":3100,"Calcium":30,"Nickel":400,"Cuivre":600,"Or":150,"Silicium":100,"Bore":150,"Plutonium":200,"Oxygène":500,"Hydrogène":800,"Azote":200,"Chlore":100,"Electros":350,"Batteries":200,"Moteur orbital":1},
-        "deploy":{"Eau":100,"Nourriture":50,"Oxygène":100,"Energie":300,"Huile":20,"Tissus":60,"Chlore":30,"Plutonium":50,"Hydrogène":15}
+        "deploy":{"Eau":100,"Nourriture":50,"Oxygène":100,"Energie":300,"Huile":20,"Tissus":60,"Chlore":30,"Plutonium":75,"Hydrogène":20}
     },
     {
         "id":165,
