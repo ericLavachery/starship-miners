@@ -3272,6 +3272,7 @@
             "rof":16,
             "accuracy":32,
             "power":9,
+            "armors":1.2,
             "aoe":"unit",
             "sound":"fpneu_x3",
             "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze","pn-flechette"]
@@ -3712,6 +3713,7 @@
             "rof":24,
             "accuracy":25,
             "power":5,
+            "armors":1.2,
             "aoe":"unit",
             "sound":"mit_pneu",
             "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
@@ -3838,6 +3840,7 @@
             "rof":18,
             "accuracy":36,
             "power":6,
+            "armors":1.2,
             "aoe":"unit",
             "sound":"fpneu_x3",
             "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze","pn-flechette"]

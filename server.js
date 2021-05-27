@@ -321,6 +321,7 @@ io.sockets.on('connection', function (socket, pseudo) {
                 zoneFiles.push(+zoneNum);
             }
         });
+        console.log('Zones:');
         console.log(zoneFiles);
     };
 

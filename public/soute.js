@@ -366,14 +366,14 @@ function batUndeploy(batId) {
 
 function calcLanderDeploy(landerBatType) {
     let deployCosts = landerBatType.deploy;
-    bataillons.forEach(function(bat) {
-        if (bat.loc === 'zone') {
-            let batType = getBatType(bat);
-            if (batType.skills.includes('transorbital') && batType.name != 'Soute' && bat.tags.includes('deploy')) {
-                
-            }
-        }
-    });
+    // bataillons.forEach(function(bat) {
+    //     if (bat.loc === 'zone') {
+    //         let batType = getBatType(bat);
+    //         if (batType.skills.includes('transorbital') && batType.name != 'Soute' && bat.tags.includes('deploy')) {
+    //
+    //         }
+    //     }
+    // });
     return deployCosts;
 }
 

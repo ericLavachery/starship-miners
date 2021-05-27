@@ -2670,7 +2670,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Eruption",
-            "cost":6,
+            "cost":4,
             "range":3,
             "noFly":false,
             "isMelee":false,
@@ -2683,7 +2683,7 @@
         },
         "weapon2":{
             "name":"Eruption",
-            "cost":8,
+            "cost":6,
             "range":4,
             "elevation":1,
             "noFly":false,
@@ -2700,7 +2700,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["slowreg","resistfeu","reactpoison","nolaser","baddef","eggprotect","noaploss","baddef","xpfeast"],
+        "skills":["slowreg","resistfeu","reactpoison","nolaser","baddef","eggprotect","noaploss","xpfeast"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":12,"Mendium":8,"Pyrus":26},
         "killXP":35

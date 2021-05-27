@@ -83,6 +83,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.stopBarbs === undefined) {
         playerInfos.stopBarbs = false;
     }
+    if (playerInfos.follow === undefined) {
+        playerInfos.follow = false;
+    }
     if (playerInfos.undarkOnce === undefined) {
         playerInfos.undarkOnce = [];
     }

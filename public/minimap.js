@@ -19,6 +19,16 @@ function minimap() {
     if (showOneRes != 'Toutes') {
         $('#thenavig').append('<button type="button" title="Montrer la ressource recherchée" class="boutonGris miniButtons" onclick="oneResView()"><i class="far fa-gem"></i></button><br>');
     }
+    $('#thenavig').append('<button type="button" title="Montrer les ruines non fouillées" class="boutonGris miniButtons" onclick="ruinsView()"><i class="fas fa-city"></i></button><br>');
+    $('#thenavig').append('<button type="button" title="Montrer les coffres" class="boutonGris miniButtons" onclick="coffresView()"><i class="fas fa-box-open"></i></button><br>');
+    let tousLesCoffres = [];
+    if (miniDots === 'coffres') {
+        bataillons.forEach(function(bat) {
+            if (bat.type === 'Coffres') {
+                tousLesCoffres.push(bat.tileId);
+            }
+        });
+    }
     let alienView;
     zone.forEach(function(tile) {
         if (zone[0].dark) {
@@ -33,34 +43,40 @@ function minimap() {
         if (tile.y === 1) {
             $('#themmap').append('<br>');
         }
-        if ((tile.id === selectedTile || tile.id === selectedBat.tileId) && (miniDots === 'units' || miniDots === 'eggs')) {
-            $('#themmap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
+        if (miniDots === 'ruins' && tile.ruins && tile.sh >= 0) {
+            $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
+        } else if (miniDots === 'coffres' && tousLesCoffres.includes(tile.id)) {
+            $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
         } else {
-            if (visibleEggs.includes(tile.id) && miniDots === 'eggs' && alienView) {
-                $('#themmap').append('<span class="mini mAlien" onclick="centerFromMinimap('+tile.id+')"></span>');
+            if ((tile.id === selectedTile || tile.id === selectedBat.tileId) && (miniDots === 'units' || miniDots === 'eggs')) {
+                $('#themmap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
             } else {
-                if (visibleAliens.includes(tile.id) && miniDots === 'units' && alienView) {
+                if (visibleEggs.includes(tile.id) && miniDots === 'eggs' && alienView) {
                     $('#themmap').append('<span class="mini mAlien" onclick="centerFromMinimap('+tile.id+')"></span>');
                 } else {
-                    if (playerOccupiedTiles.includes(tile.id) && (miniDots === 'units' || miniDots === 'eggs')) {
-                        $('#themmap').append('<span class="mini mBoys" onclick="centerFromMinimap('+tile.id+')"></span>');
+                    if (visibleAliens.includes(tile.id) && miniDots === 'units' && alienView) {
+                        $('#themmap').append('<span class="mini mAlien" onclick="centerFromMinimap('+tile.id+')"></span>');
                     } else {
-                        if (playerInfos.showedTiles.includes(tile.id) && miniDots === 'points') {
-                            $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
+                        if (playerOccupiedTiles.includes(tile.id) && (miniDots === 'units' || miniDots === 'eggs')) {
+                            $('#themmap').append('<span class="mini mBoys" onclick="centerFromMinimap('+tile.id+')"></span>');
                         } else {
-                            if (oneResTileIds.includes(tile.id) && miniDots === 'oneres') {
+                            if (playerInfos.showedTiles.includes(tile.id) && miniDots === 'points') {
                                 $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
                             } else {
-                                if (zone[0].dark) {
-                                    if (undarkNow.includes(tile.id)) {
-                                        $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
-                                    } else if (playerInfos.undarkOnce.includes(tile.id)) {
-                                        $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
-                                    } else {
-                                        $('#themmap').append('<span class="mini mDark" onclick="centerFromMinimap('+tile.id+')"></span>');
-                                    }
+                                if (oneResTileIds.includes(tile.id) && miniDots === 'oneres') {
+                                    $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
                                 } else {
-                                    $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                    if (zone[0].dark) {
+                                        if (undarkNow.includes(tile.id)) {
+                                            $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                        } else if (playerInfos.undarkOnce.includes(tile.id)) {
+                                            $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                        } else {
+                                            $('#themmap').append('<span class="mini mDark" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                        }
+                                    } else {
+                                        $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                    }
                                 }
                             }
                         }
@@ -108,6 +124,16 @@ function checkVisibleAliens() {
 
 function dotsView() {
     miniDots = 'points';
+    minimap();
+};
+
+function coffresView() {
+    miniDots = 'coffres';
+    minimap();
+};
+
+function ruinsView() {
+    miniDots = 'ruins';
     minimap();
 };
 

@@ -219,7 +219,11 @@ function batInfos(bat,batType,pop) {
     }
     let hurt = isHurt(bat);
     if (hurt) {
-        $('#'+bodyPlace).append('<span class="paramName or">Blessé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+        if (batType.cat === 'infantry' || batType.skills.includes('cyber')) {
+            $('#'+bodyPlace).append('<span class="paramName or">Blessé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+        } else {
+            $('#'+bodyPlace).append('<span class="paramName or">Endommagé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+        }
     }
     if (bat.soins >= 11) {
         let effSoins = checkEffSoins(bat);
