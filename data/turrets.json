@@ -1412,8 +1412,8 @@
             "range":0,
             "noAtt":true,
             "rof":1,
-            "accuracy":17,
-            "power":14,
+            "accuracy":13,
+            "power":18,
             "aoe":"brochette",
             "sound":"canon_soft_x1",
             "ammo":["mine"]
@@ -1423,9 +1423,9 @@
             "cost":1,
             "range":0,
             "noDef":true,
-            "rof":12,
-            "accuracy":17,
-            "power":14,
+            "rof":8,
+            "accuracy":13,
+            "power":18,
             "aoe":"squad",
             "sound":"canon_soft_x3",
             "ammo":["suicide"]
