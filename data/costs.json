@@ -55,7 +55,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":1,"brasier":99},
         "bldReq":["Prisons"],
         "compReq":{"ordre":1},
-        "costs":{"Bois":60},
+        "costs":{"Bois":48},
         "fabTime":15
     },
     {
@@ -1206,8 +1206,8 @@
         "name":"Autogires chicken",
         "levels":{"rednecks":9,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Atelier"],
-        "costs":{"Scrap":108,"Carbone":36,"Aluminium":72,"Electros":6,"Batteries":18,"Explosifs":6,"Fuel":32},
-        "deploy":{"Fuel":35},
+        "costs":{"Scrap":144,"Carbone":48,"Aluminium":96,"Electros":8,"Batteries":24,"Explosifs":8,"Fuel":48},
+        "deploy":{"Fuel":45},
         "fabTime":30
     },
     {
@@ -1215,8 +1215,8 @@
         "name":"ULM Shakers",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":9},
         "bldReq":["Atelier"],
-        "costs":{"Scrap":126,"Carbone":36,"Aluminium":54,"Huile":18,"Electros":6,"Batteries":18},
-        "deploy":{"Fuel":35},
+        "costs":{"Scrap":168,"Carbone":48,"Aluminium":72,"Huile":24,"Electros":8,"Batteries":24},
+        "deploy":{"Fuel":45},
         "fabTime":30
     },
     {
