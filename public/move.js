@@ -238,12 +238,29 @@ function moveSelectedBat(tileId,free,jump) {
     showBatInfos(selectedBat);
     // update arrays
     selectedBatArrayUpdate();
-    if (playerInfos.follow) {
-        centerMap();
-    } else if (zone[0].dark && activeTurn === 'player') {
-        showMap(zone,true);
+    if (activeTurn === 'player') {
+        if (playerInfos.follow) {
+            centerMap();
+        } else if (isMapViewBorder(tileId)) {
+            centerMap();
+        } else if (zone[0].dark) {
+            showMap(zone,true);
+        }
     }
 };
+
+function isMapViewBorder(tileId) {
+    let border = false
+    let minX = xOffset+1;
+    let maxX = xOffset+numVTiles;
+    let minY = yOffset+1;
+    let maxY = yOffset+numHTiles;
+    let tile = getTileById(tileId);
+    if (tile.x <= minX || tile.x >= maxX || tile.y <= minY || tile.y >= maxY) {
+        border = true;
+    }
+    return border;
+}
 
 function calcJumpDistance(myTileIndex,thatTileIndex) {
     let jumpDistance = 0;
