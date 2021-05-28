@@ -152,58 +152,38 @@ function checkRuinsAliens(tile) {
         numRuins = 4;
     }
     let mapLevel = zone[0].mapDiff+2;
-    let alienLevels = Math.round((zone[0].mapDiff+(numRuins/5))/2);
-    if (alienLevels < 1) {
-        alienLevels = 1;
-    }
+    let alienLevels = zone[0].mapDiff+Math.round(numRuins/7);
+    let alienNumbers = zone[0].mapDiff+Math.round(numRuins/5);
     let alienChance = Math.round(mapLevel*Math.sqrt(numRuins)*ruinsBugBase/25);
     if (alienChance > 35) {
         alienChance = 35;
     }
     console.log('alienChance: '+alienChance);
+    console.log('alienLevels: '+alienLevels);
+    console.log('alienNumbers: '+alienNumbers);
     if (rand.rand(1,100) <= alienChance) {
-        let maxDice = Math.ceil(alienLevels/2);
-        if (maxDice < 1) {
-            maxDice = 1;
-        }
-        let numAliens = rand.rand(1,maxDice);
-        let numCheck = rand.rand(1,maxDice);
-        if (numCheck < numAliens) {
-            numAliens = numCheck;
-        }
+        let maxDice = 3;
+        let numAliens = 1;
         let alienTypeId = -1;
-        let alienOK = false;
         let shufAliens = _.shuffle(alienUnits);
         shufAliens.forEach(function(unit) {
             if (alienTypeId < 0) {
-                alienOK = false;
-                if (unit.class != 'A' && unit.class != 'S' && unit.class != 'X') {
-                    if (unit.name != 'Asticots' && unit.name != 'Vers' && unit.name != 'Sangsues') {
-                        if (alienLevels >= 6) {
-                            if (unit.skills.includes('fouisseur')) {
-                                alienOK = true;
-                            }
-                        }
-                        if (alienLevels >= 4) {
-                            if (unit.size <= 15) {
-                                alienOK = true;
-                            }
-                        }
-                        if (alienLevels >= 2) {
-                            if (unit.size <= 9) {
-                                alienOK = true;
-                            }
-                        }
-                        if (unit.size <= 6) {
-                            alienOK = true;
-                        }
-                        if (alienLevels <= 2 && unit.class === 'B') {
-                            alienOK = false;
-                        }
-                    }
-                }
-                if (alienOK) {
+                let alienInfo = ruinsAliensInfo(unit,tile);
+                if (alienInfo.ok && alienLevels >= alienInfo.kxp) {
                     alienTypeId = unit.id;
+                    console.log(unit.name);
+                    console.log(alienInfo);
+                    maxDice = Math.round((alienNumbers-alienInfo.kxp)/1.5);
+                    console.log('maxDice: '+maxDice);
+                    if (maxDice < 1) {
+                        maxDice = 1;
+                    }
+                    numAliens = rand.rand(1,maxDice);
+                    let numCheck = rand.rand(1,maxDice);
+                    if (numCheck < numAliens) {
+                        numAliens = numCheck;
+                    }
+                    console.log('numAliens: '+numAliens);
                 }
             }
         });
@@ -217,6 +197,29 @@ function checkRuinsAliens(tile) {
         }
         selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap;
     }
+};
+
+function ruinsAliensInfo(unit,tile) {
+    let alienInfo = {};
+    if (unit.class != 'A' && unit.class != 'S' && unit.class != 'X') {
+        if (unit.name != 'Asticots' && unit.name != 'Vers' && unit.name != 'Sangsues') {
+            if (unit.skills.includes('fouisseur') || unit.size <= 15) {
+                alienInfo.ok = true;
+            }
+        } else {
+            if (tile.terrain === 'S' || tile.terrain === 'W') {
+                alienInfo.ok = true;
+            } else {
+                alienInfo.ok = false;
+            }
+        }
+    } else {
+        alienInfo.ok = false;
+    }
+    if (alienInfo.ok) {
+        alienInfo.kxp = unit.killXP;
+    }
+    return alienInfo;
 };
 
 function putBatAround(tileId,alien,near,unitId,numCit,noWater,tag) {
