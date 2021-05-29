@@ -286,6 +286,10 @@ function chooseRes(again) {
         let key = entry[0];
         let value = entry[1];
         res = getResByName(key);
+        let resCol = '';
+        if (playerInfos.resFlags.includes(res.name)) {
+            resCol = ' bcy';
+        }
         if (selectedBatType.mining.types.includes(res.bld) || selectedBatType.mining.subTypes.includes(res.bld)) {
             let resMiningRate = getResMiningRate(selectedBat,res,value,true,false);
             let adjustedRMR = resMiningRate;
@@ -300,7 +304,7 @@ function chooseRes(again) {
             } else {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
             }
-            $('#conUnitList').append('<span class="constName klik" onclick="resSelect('+res.id+')">'+res.name+' : '+adjustedRMR+'</span><br>');
+            $('#conUnitList').append('<span class="constName'+resCol+' klik" onclick="resSelect('+res.id+')">'+res.name+' : '+adjustedRMR+'</span><br>');
         }
     });
     $('#conUnitList').append('<span class="constName">Total de ressources : <span class="cy">'+totalExRes+'</span></span><br>');

@@ -156,6 +156,7 @@ let startLander = 5;
 let deploySalvos = 4; // on part de 7
 let deployTuning = 6; // on part de 7 - PAS utilisé !!!
 let seeAllFret = false;
+let seeLandersFret = false;
 let landingNoise = 6;
 // ALIENS
 let isFFW = false;

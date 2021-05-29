@@ -1272,6 +1272,10 @@ function missionResults(onlyLanders) {
         if (key != 'Citoyens') {
             let res = getResByName(key);
             let resIcon = getResIcon(res);
+            let resCol = '';
+            if (playerInfos.resFlags.includes(res.name)) {
+                resCol = ' bor';
+            }
             let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
             if (sonde.costs[key] != undefined) {
                 resResult = resResult-sonde.costs[key];
@@ -1284,7 +1288,7 @@ function missionResults(onlyLanders) {
                 } else if (resResult > 0) {
                     resColour = 'cy';
                 }
-                $('#conUnitList').append('<span class="paramName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');
+                $('#conUnitList').append('<span class="paramName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');
             }
         }
     });
@@ -1294,13 +1298,17 @@ function missionResults(onlyLanders) {
         if (key != 'Citoyens') {
             let res = getResByName(key);
             let resIcon = getResIcon(res);
+            let resCol = '';
+            if (playerInfos.resFlags.includes(res.name)) {
+                resCol = ' bor';
+            }
             let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
             if (sonde.costs[key] != undefined) {
                 resResult = resResult-sonde.costs[key];
             }
             if (resResult === 0) {
                 let resColour = 'gf';
-                $('#conUnitList').append('<span class="paramName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');
+                $('#conUnitList').append('<span class="paramName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');
             }
         }
     });

@@ -24,6 +24,15 @@ function loadRes() {
             $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-eye"></i></span>');
             $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="seeAllTrans(true)" title="Voir tous les bataillons">Voir tout</span></span><br>');
         }
+        if (!playerInfos.onShip) {
+            if (seeLandersFret) {
+                $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-space-shuttle"></i></span>');
+                $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="seeLandersTrans(false)" title="Cacher les vaisseaux">Cacher les vaisseaux</span></span><br>');
+            } else {
+                $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-space-shuttle"></i></span>');
+                $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="seeLandersTrans(true)" title="Voir les vaisseaux">Voir les vaisseaux</span></span><br>');
+            }
+        }
         if (selectedBatType.skills.includes('dumper')) {
             if (selectedBat.noDump) {
                 $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-pallet"></i></span>');
@@ -54,12 +63,16 @@ function loadRes() {
                     if (batType.skills.includes('fret')) {
                         distance = calcDistance(bat.tileId,selectedBat.tileId);
                         if (distance <= 1 || selectedBatType.name === 'Soute') {
+                            let seeMe = true;
+                            if (batType.skills.includes('transorbital') && !seeLandersFret && !playerInfos.onShip) {
+                                seeMe = false;
+                            }
                             resLoad = checkResLoad(bat);
                             let targetConvey = true;
                             if (batType.crew === 0 && !batType.skills.includes('autotrans')) {
                                 targetConvey = false;
                             }
-                            if (resLoad >= 1 || seeAllFret) {
+                            if ((resLoad >= 1 || seeAllFret) && seeMe) {
                                 let batPic = getBatPic(bat,batType);
                                 $('#conUnitList').append('<hr>');
                                 $('#conUnitList').append('<span class="unitPic"><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48"></span><br>');
@@ -133,6 +146,11 @@ function loadRes() {
 
 function seeAllTrans(seeAll) {
     seeAllFret = seeAll;
+    loadRes();
+};
+
+function seeLandersTrans(see) {
+    seeLandersFret = see;
     loadRes();
 };
 

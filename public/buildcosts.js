@@ -22,13 +22,19 @@ function voirReserve() {
         dispoRes = getDispoRes(res.name);
         minedRes = getMinedRes(res.name);
         resIcon = getResIcon(res);
+        let resCol = '';
+        if (playerInfos.resFlags.includes(res.name)) {
+            resCol = ' bor';
+        }
         if (dispoRes >= 1) {
-            if (playerInfos.onShip && inSoute && souteTab === 'rez' && res.cat != 'alien' && dispoRes >= 50) {
-                $('#conUnitList').append('<span class="paramResName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',50)">50 >>></span>');
+            if (playerInfos.onShip && (!inSoute || souteTab != 'rez')) {
+                $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Taguer cette ressource ('+res.name+')" onclick="tagRes('+res.id+')">&uHar;&dHar;</span>');
+            } else if (playerInfos.onShip && inSoute && souteTab === 'rez' && res.cat != 'alien' && dispoRes >= 50) {
+                $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',50)">50 >>></span>');
             } else if (res.cat === 'alien' || minedRes <= 0) {
-                $('#conUnitList').append('<span class="paramResName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span>');
+                $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span>');
             } else {
-                $('#conUnitList').append('<span class="paramResName">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span>');
+                $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span>');
             }
             playerInfos.reserve[res.name] = dispoRes;
         } else {
@@ -36,6 +42,17 @@ function voirReserve() {
         }
     });
     $('#conUnitList').append('<br><br>');
+};
+
+function tagRes(resId) {
+    let res = getResById(resId);
+    if (playerInfos.resFlags.includes(res.name)) {
+        let tagIndex = playerInfos.resFlags.indexOf(res.name);
+        playerInfos.resFlags.splice(tagIndex,1);
+    } else {
+        playerInfos.resFlags.push(res.name);
+    }
+    voirReserve();
 };
 
 function checkReserve() {
