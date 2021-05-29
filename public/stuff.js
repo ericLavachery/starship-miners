@@ -420,6 +420,12 @@ function getBatArmor(bat) {
     return batArmor;
 };
 
+function getZoneInfoById(zoneNumber) {
+    let index = playerInfos.zoneDB.findIndex((obj => obj.id === zoneNumber));
+    let zoneInfo = playerInfos.zoneDB[index];
+    return zoneInfo;
+};
+
 function getTrapName(bat,batType) {
     let trapName = 'Mines';
     if (batType.skills.includes('dynamite')) {

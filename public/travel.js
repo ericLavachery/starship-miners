@@ -278,6 +278,7 @@ function editSonde() {
 
 function stopSonde() {
     modeSonde = false;
+    feedZoneDB();
     saveNewMap();
     loadZone(0);
     showedTilesReset(false);
@@ -329,7 +330,12 @@ function pickZone() {
     $('#conUnitList').append('<br>');
     zoneFiles.forEach(function(zoneId) {
         if (zoneId != 0) {
-            $('#conUnitList').append('<span class="paramName cy klik" onclick="putMissionZone('+zoneId+')">Choisir zone '+zoneId+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik">Voir</span><br>');
+            let showInfo = '{Rien}';
+            let zoneInfo = getZoneInfo(zoneId);
+            if (zoneInfo.mapDiff != undefined) {
+                showInfo = toZoneString(zoneInfo);
+            }
+            $('#conUnitList').append('<span class="paramName cy klik" onclick="putMissionZone('+zoneId+')">Choisir zone '+zoneId+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span><br>');
         }
     });
     $('#conUnitList').append('<br>');
@@ -341,4 +347,143 @@ function putMissionZone(zoneId) {
     playerInfos.missionZone = zoneId;
     conWindowOut();
     commandes();
+};
+
+function feedZoneDB() {
+    let zoneIds = [];
+    playerInfos.zoneDB.forEach(function(thisZone) {
+        if (!zoneIds.includes(thisZone.id)) {
+            zoneIds.push(thisZone.id);
+        }
+    });
+    let newZone = {};
+    if (!zoneIds.includes(zone[0].number)) {
+        newZone.id = zone[0].number;
+        newZone.dark = zone[0].dark;
+        newZone.mapDiff = zone[0].mapDiff;
+        newZone.ensol = zone[0].ensol;
+        newZone.pKind = zone[0].pKind;
+        newZone.gKind = zone[0].gKind;
+        newZone.sKind = zone[0].sKind;
+        if (zone[0].pp === undefined) {
+            zoneReport(zone,true);
+        }
+        newZone.pm = zone[0].pm;
+        newZone.ph = zone[0].ph;
+        newZone.pp = zone[0].pp;
+        newZone.pg = zone[0].pg;
+        newZone.pb = zone[0].pb;
+        newZone.pf = zone[0].pf;
+        newZone.ps = zone[0].ps;
+        newZone.pw = zone[0].pw;
+        newZone.pr = zone[0].pr;
+        playerInfos.zoneDB.push(newZone);
+    }
+};
+
+function feedZoneDBwith(myZone) {
+    let zoneIds = [];
+    playerInfos.zoneDB.forEach(function(thisZone) {
+        if (!zoneIds.includes(thisZone.id)) {
+            zoneIds.push(thisZone.id);
+        }
+    });
+    let newZone = {};
+    if (!zoneIds.includes(myZone[0].number)) {
+        newZone.id = myZone[0].number;
+        newZone.dark = myZone[0].dark;
+        newZone.mapDiff = myZone[0].mapDiff;
+        newZone.ensol = myZone[0].ensol;
+        newZone.pKind = myZone[0].pKind;
+        newZone.gKind = myZone[0].gKind;
+        newZone.sKind = myZone[0].sKind;
+        if (myZone[0].pp === undefined) {
+            zoneReport(myZone,true);
+        }
+        newZone.pm = myZone[0].pm;
+        newZone.ph = myZone[0].ph;
+        newZone.pp = myZone[0].pp;
+        newZone.pg = myZone[0].pg;
+        newZone.pb = myZone[0].pb;
+        newZone.pf = myZone[0].pf;
+        newZone.ps = myZone[0].ps;
+        newZone.pw = myZone[0].pw;
+        newZone.pr = myZone[0].pr;
+        playerInfos.zoneDB.push(newZone);
+    }
+};
+
+function getZoneInfo(zoneNumber) {
+    let zoneInfo = {};
+    let zoneIds = [];
+    playerInfos.zoneDB.forEach(function(thisZone) {
+        if (!zoneIds.includes(thisZone.id)) {
+            zoneIds.push(thisZone.id);
+        }
+    });
+    if (zoneIds.includes(zoneNumber)) {
+        zoneInfo = getZoneInfoById(zoneNumber);
+    } else {
+        zoneInfo.id = zoneNumber;
+    }
+    return zoneInfo;
+};
+
+function toZoneString(zoneInfo) {
+    let newString = toCoolString(zoneInfo);
+    console.log(newString);
+    newString = newString.replace("true","Oui");
+    newString = newString.replace("false","Non");
+    newString = newString.replace("mapDiff","Présence Alienne");
+    newString = newString.replace("ensol","Ensoleillement");
+    newString = newString.replace(", pKind=","");
+    newString = newString.replace(", gKind=","");
+    newString = newString.replace(", sKind=","");
+    newString = newString.replace(/bug/g,"");
+    newString = newString.replace(/larve/g,"");
+    newString = newString.replace(/swarm/g,"");
+    newString = newString.replace(/spider/g,"");
+    if (playerInfos.comp.ca >= 3) {
+        newString = newString.replace("pm","Montagnes (bugs)");
+        newString = newString.replace("ph","Collines (bugs)");
+        newString = newString.replace("pp","Plaines ("+zoneInfo.pKind+"s)");
+        newString = newString.replace("pg","Prairies ("+zoneInfo.gKind+"s)");
+        newString = newString.replace("pb","Maquis (swarms)");
+        newString = newString.replace("pf","Forêts (spiders)");
+        newString = newString.replace("ps","Marécages ("+zoneInfo.sKind+"s)");
+        newString = newString.replace("pw","Etangs (larves)");
+        newString = newString.replace("pr","Rivières (larves)");
+    } else {
+        newString = newString.replace("pm","Montagnes");
+        newString = newString.replace("ph","Collines");
+        newString = newString.replace("pp","Plaines");
+        newString = newString.replace("pg","Prairies");
+        newString = newString.replace("pb","Maquis");
+        newString = newString.replace("pf","Forêts");
+        newString = newString.replace("ps","Marécages");
+        newString = newString.replace("pw","Etangs");
+        newString = newString.replace("pr","Rivières");
+    }
+    return newString;
+};
+
+function showZonePreview() {
+    showMini = true;
+    if (allZoneRes.length === 0) {
+        checkRes = true;
+    } else {
+        checkRes = false;
+    }
+    $("#minimap").css("display","block");
+    $('#themmap').empty();
+    $('#thenavig').empty();
+    $('#thenavig').append('<span class="constIcon"><i class="fas fa-times-circle klik" onclick="miniOut()"></i></span><br>');
+    zonePrev.forEach(function(tile) {
+        if (tile.y === 1) {
+            $('#themmap').append('<br>');
+        }
+        $('#themmap').append('<span class="mini m'+tile.terrain+'"></span>');
+    });
+    $('#themmap').append('<br>');
+    feedZoneDBwith(zonePrev);
 };

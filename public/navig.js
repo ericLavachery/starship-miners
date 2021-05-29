@@ -154,8 +154,8 @@ function commandes() {
             }
         }
     }
+    gangNavig();
     if (playerInfos.pseudo === 'Test') {
-        gangNavig();
     }
 };
 

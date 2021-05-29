@@ -655,6 +655,7 @@ function turnInfo() {
         }
         $('#tour').append('Morts <span class="or">'+playerInfos.unitsLost+'</span> / '+playerInfos.aliensKilled+' / <span class="cy">'+playerInfos.eggsKilled+'</span>');
     }
+    feedZoneDB();
 };
 
 function getBatAP(bat,batType) {

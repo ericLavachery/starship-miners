@@ -4,7 +4,7 @@ function generateVM() {
     filterParams();
     createVM(mapSize);
     washReports();
-    // zoneReport(zone);
+    // zoneReport(zone,false);
     let ensolFactor = rand.rand(25,35);
     let ensolBonus = rand.rand(0,80);
     zone[0].ensol = Math.round(100*ensolFactor/10)+ensolBonus;
@@ -64,7 +64,7 @@ function generateNewMap() {
     washReports();
     zone[1830].terrain = 'P';
     zone[1830].seed = 1;
-    zoneReport(zone);
+    zoneReport(zone,false);
     writeMapStyles();
     showMap(zone,false);
     minimap();
@@ -1439,7 +1439,7 @@ function checkResLevel(tile) {
     }
 };
 
-function zoneReport(zone) {
+function zoneReport(zone,quiet) {
     let percM = 0;
     let percH = 0;
     let percP = 0;
@@ -1481,43 +1481,56 @@ function zoneReport(zone) {
         }
     });
     percM = Math.round(percM/36);
+    zone[0].pm = percM;
     percH = Math.round(percH/36);
+    zone[0].ph = percH;
     percP = Math.round(percP/36);
+    zone[0].pp = percP;
     percG = Math.round(percG/36);
+    zone[0].pg = percG;
     percB = Math.round(percB/36);
+    zone[0].pb = percB;
     percF = Math.round(percF/36);
+    zone[0].pf = percF;
     percS = Math.round(percS/36);
+    zone[0].ps = percS;
+    percW = Math.round(percW/36);
+    zone[0].pw = percW;
+    percR = Math.round(percR/36);
+    zone[0].pr = percR;
     if (percS < 30) {
         zone[0].sKind = 'larve';
     }
-    percW = Math.round(percW/36);
-    percR = Math.round(percR/36);
-    let ensolFactor = rand.rand(25,35);
-    let ensolBonus = rand.rand(0,80);
-    zone[0].ensol = Math.round(percP*ensolFactor/10)+ensolBonus;
-    if (playerInfos.comp.det >= 2) {
-        warning('Ensoleillement',zone[0].ensol+'<br>',true);
+    if (zone[0].ensol === undefined) {
+        let ensolFactor = rand.rand(25,35);
+        let ensolBonus = rand.rand(0,80);
+        zone[0].ensol = Math.round(percP*ensolFactor/10)+ensolBonus;
+        if (playerInfos.comp.det >= 2 && !quiet) {
+            warning('Ensoleillement',zone[0].ensol+'<br>',true);
+        }
     }
-    if (playerInfos.comp.ca < 3) {
-        warning('Montagnes',percM+'%',true);
-        warning('Collines',percH+'%',true);
-        warning('Plaines',percP+'%',true);
-        warning('Prairies',percG+'%',true);
-        warning('Maquis',percB+'%',true);
-        warning('Forêts',percF+'%',true);
-        warning('Marécages',percS+'%',true);
-        warning('Etangs',percW+'%',true);
-        warning('Rivières',percR+'%');
-    } else {
-        warning('Montagnes',percM+'% (bug)',true);
-        warning('Collines',percH+'% (bug)',true);
-        warning('Plaines',percP+'% ('+zone[0].pKind+')',true);
-        warning('Prairies',percG+'% ('+zone[0].gKind+')',true);
-        warning('Maquis',percB+'% (swarm)',true);
-        warning('Forêts',percF+'% (spider)',true);
-        warning('Marécages',percS+'% ('+zone[0].sKind+')',true);
-        warning('Etangs',percW+'% (larve)',true);
-        warning('Rivières',percR+'% (larve)');
+    if (!quiet) {
+        if (playerInfos.comp.ca < 3) {
+            warning('Montagnes',percM+'%',true);
+            warning('Collines',percH+'%',true);
+            warning('Plaines',percP+'%',true);
+            warning('Prairies',percG+'%',true);
+            warning('Maquis',percB+'%',true);
+            warning('Forêts',percF+'%',true);
+            warning('Marécages',percS+'%',true);
+            warning('Etangs',percW+'%',true);
+            warning('Rivières',percR+'%');
+        } else {
+            warning('Montagnes',percM+'% (bug)',true);
+            warning('Collines',percH+'% (bug)',true);
+            warning('Plaines',percP+'% ('+zone[0].pKind+')',true);
+            warning('Prairies',percG+'% ('+zone[0].gKind+')',true);
+            warning('Maquis',percB+'% (swarm)',true);
+            warning('Forêts',percF+'% (spider)',true);
+            warning('Marécages',percS+'% ('+zone[0].sKind+')',true);
+            warning('Etangs',percW+'% (larve)',true);
+            warning('Rivières',percR+'% (larve)');
+        }
     }
     console.log('ensol');
     console.log(zone[0].ensol);

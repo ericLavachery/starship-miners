@@ -40,6 +40,7 @@ let filterVariance = true;
 let baseFilterChance = 4; // minimum 1 !!!
 let filterBase = {};
 let zone = [];
+let zonePrev = [];
 let resources = [];
 let minedThisTurn = {};
 let fretTuning = 2; // multiplie tous les Frets des unités : def 1

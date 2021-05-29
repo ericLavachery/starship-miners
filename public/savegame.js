@@ -231,6 +231,9 @@ function newGame() {
     playerInfos.vitals = 0;
     playerInfos.nextId = 1;
     playerInfos.allTurns = 0;
+    playerInfos.zoneDB = [];
+    playerInfos.resFlags = [];
+    playerInfos.notes = [];
     resetReserve();
     resetStartRes();
     resetEndRes();
@@ -345,4 +348,8 @@ function voirZones() {
 
 function loadZone(zoneId) {
     socket.emit('load-saved-map',zoneId);
+};
+
+function loadZonePreview(zoneId) {
+    socket.emit('load-zone-preview',zoneId);
 };

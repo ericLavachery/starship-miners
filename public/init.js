@@ -122,6 +122,15 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.missionZone === undefined) {
         playerInfos.missionZone = -1;
     }
+    if (playerInfos.zoneDB === undefined) {
+        playerInfos.zoneDB = [];
+    }
+    if (playerInfos.resFlags === undefined) {
+        playerInfos.resFlags = [];
+    }
+    if (playerInfos.notes === undefined) {
+        playerInfos.notes = [];
+    }
     if (playerInfos.fndComps === undefined) {
         playerInfos.fndComps = 0;
     }
@@ -307,6 +316,11 @@ socket.on('savedZone-Load', function(newZone) {
     }
     showMap(zone,false);
     unitsView();
+});
+
+socket.on('zonePreview-Load', function(newZone) {
+    zonePrev = newZone;
+    showZonePreview();
 });
 
 socket.on('testcon-failed', function(pseutest) {

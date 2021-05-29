@@ -1240,7 +1240,7 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["guerrilla","tirailleur","hover","selfbadmecano","transport","fret","dumper","light","badcrewsave","recupcit","recupres"],
+        "skills":["guerrilla","hover","selfbadmecano","transport","fret","dumper","light","badcrewsave","recupcit","recupres"],
         "mecanoCost":20,
         "transMaxSize":7,
         "transUnits":800,

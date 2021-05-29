@@ -178,6 +178,7 @@ fs.readFile('./data/gangComps.json', 'utf8', function (err, data) {
 var playerInfos = {};
 var bataillons = [];
 var savedMap = [];
+var zonePreview = [];
 var savedZone = [];
 
 io.sockets.on('connection', function (socket, pseudo) {
@@ -365,6 +366,35 @@ io.sockets.on('connection', function (socket, pseudo) {
             });
         });
     });
+
+    // Load zone PREVIEW
+    socket.on('load-zone-preview', function(zoneId) {
+        const path = './data/players/'+socket.pseudo+'-map'+zoneId+'.json';
+        console.log('load zone preview');
+        console.log(path);
+        try {
+            if (fs.existsSync(path)) {
+                fs.readFile(path, 'utf8', function (err, data) {
+                    if (err) throw err;
+                    try {
+                        zonePreview = JSON.parse(data);
+                        sendPreview();
+                    } catch (e) {
+                        console.error(e);
+                    }
+                });
+            } else {
+                console.log('path?');
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    });
+    function sendPreview() {
+        console.log('loading zone preview');
+        // console.log(zonePreview);
+        socket.emit('zonePreview-Load',zonePreview);
+    };
 
     // Load zone
     socket.on('load-saved-map', function(zoneId) {
