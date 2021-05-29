@@ -39,87 +39,89 @@ function clickTile(tileId) {
 
 function clickSelect(tileId) {
     showTileInfos(tileId);
-    let ownBatHere = false;
-    let jump = false;
-    let newSelectedBat = {};
-    let goMove = false;
-    bataillons.forEach(function(bat) {
-        if (bat.tileId === tileId && bat.loc === "zone") {
-            if (!goMove) {
-                showBatInfos(bat);
-                if (selectedBat.id == bat.id && selectedBatType.moveCost < 99) {
-                    if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'e-jetpack') {
-                        jump = true;
-                    }
-                    goMove = true;
-                    moveMode();
-                    moveInfos(selectedBat,jump);
-                }
-                ownBatHere = true;
-            }
-        }
-    });
-    if (!goMove) {
-        let batStack = 0;
+    if (!modeSonde) {
+        let ownBatHere = false;
+        let jump = false;
+        let newSelectedBat = {};
+        let goMove = false;
         bataillons.forEach(function(bat) {
             if (bat.tileId === tileId && bat.loc === "zone") {
-                batStack++;
-            }
-        });
-        if (batStack >= 2) {
-            bataillons.forEach(function(bat) {
-                let batType = getBatType(bat);
-                if (bat.tileId === tileId && bat.loc === "zone" && batType.moveCost < 99 && bat.apLeft >= 1) {
+                if (!goMove) {
                     showBatInfos(bat);
-                    newSelectedBat = bat;
+                    if (selectedBat.id == bat.id && selectedBatType.moveCost < 99) {
+                        if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'e-jetpack') {
+                            jump = true;
+                        }
+                        goMove = true;
+                        moveMode();
+                        moveInfos(selectedBat,jump);
+                    }
                     ownBatHere = true;
                 }
+            }
+        });
+        if (!goMove) {
+            let batStack = 0;
+            bataillons.forEach(function(bat) {
+                if (bat.tileId === tileId && bat.loc === "zone") {
+                    batStack++;
+                }
             });
-            if (Object.keys(newSelectedBat).length < 1) {
+            if (batStack >= 2) {
                 bataillons.forEach(function(bat) {
-                    if (bat.tileId === tileId && bat.loc === "zone" && bat.apLeft >= 1) {
+                    let batType = getBatType(bat);
+                    if (bat.tileId === tileId && bat.loc === "zone" && batType.moveCost < 99 && bat.apLeft >= 1) {
+                        showBatInfos(bat);
+                        newSelectedBat = bat;
+                        ownBatHere = true;
+                    }
+                });
+                if (Object.keys(newSelectedBat).length < 1) {
+                    bataillons.forEach(function(bat) {
+                        if (bat.tileId === tileId && bat.loc === "zone" && bat.apLeft >= 1) {
+                            showBatInfos(bat);
+                            newSelectedBat = bat;
+                            ownBatHere = true;
+                        }
+                    });
+                }
+            } else {
+                bataillons.forEach(function(bat) {
+                    if (bat.tileId === tileId && bat.loc === "zone") {
                         showBatInfos(bat);
                         newSelectedBat = bat;
                         ownBatHere = true;
                     }
                 });
             }
-        } else {
-            bataillons.forEach(function(bat) {
-                if (bat.tileId === tileId && bat.loc === "zone") {
-                    showBatInfos(bat);
-                    newSelectedBat = bat;
-                    ownBatHere = true;
+        }
+        if (Object.keys(newSelectedBat).length >= 1) {
+            selectMode();
+            batUnstack();
+            batSelect(newSelectedBat);
+            // console.log('NEW BAT SELECTED');
+            // console.log(selectedBat);
+            // console.log(selectedBatType);
+        }
+        let enemyBatHere = false;
+        aliens.forEach(function(bat) {
+            if (bat.tileId === tileId && bat.loc === "zone") {
+                let batType = getBatType(bat);
+                if (!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) {
+                    showEnemyBatInfos(bat);
                 }
-            });
-        }
-    }
-    if (Object.keys(newSelectedBat).length >= 1) {
-        selectMode();
-        batUnstack();
-        batSelect(newSelectedBat);
-        // console.log('NEW BAT SELECTED');
-        // console.log(selectedBat);
-        // console.log(selectedBatType);
-    }
-    let enemyBatHere = false;
-    aliens.forEach(function(bat) {
-        if (bat.tileId === tileId && bat.loc === "zone") {
-            let batType = getBatType(bat);
-            if (!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) {
-                showEnemyBatInfos(bat);
+                enemyBatHere = true;
             }
-            enemyBatHere = true;
+        });
+        // console.log(enemyBatHere);
+        if (!ownBatHere && !enemyBatHere) {
+            $('#unitInfos').empty();
+            selectMode();
+            batUnstack();
+            batUnselect();
         }
-    });
-    // console.log(enemyBatHere);
-    if (!ownBatHere && !enemyBatHere) {
-        $('#unitInfos').empty();
-        selectMode();
-        batUnstack();
-        batUnselect();
+        // console.log(mode);
     }
-    // console.log(mode);
 };
 
 function toggleShowedTile(tileId) {

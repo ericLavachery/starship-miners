@@ -293,6 +293,7 @@ function goSonde() {
     generateNewMap();
     showMap(zone,true);
     commandes();
+    ruinsView();
 };
 
 function hasUnit(unitName) {
