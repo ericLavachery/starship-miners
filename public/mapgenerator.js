@@ -685,8 +685,8 @@ function nextTile(myTileIndex,size) {
 
 function addRes(zone) {
     let resLevelDice;
-    let mythicMin = Math.floor(playerInfos.sondeDanger/1.42)-2;
-    let mythicMax = playerInfos.sondeDanger+1;
+    let mythicMin = Math.floor(playerInfos.sondeDanger/2)-2;
+    let mythicMax = playerInfos.sondeDanger-2;
     let mythicNum = 0;
     let baseMin = 17+(playerInfos.sondeDanger*3);
     let baseNum = 0;
@@ -1425,7 +1425,7 @@ function checkResLevel(tile) {
         resLevelDice = rand.rand(1,115);
     }
     let mythicChance = Math.round((playerInfos.sondeDanger+2)*(playerInfos.sondeDanger+2)/18);
-    if (playerInfos.sondeDanger < 1) {
+    if (playerInfos.sondeDanger < 3) {
         mythicChance = 0;
     }
     if (resLevelDice <= mythicChance) {
