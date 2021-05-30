@@ -28,7 +28,9 @@ function bfconst(cat,triche,upgrade) {
     }
     $('#conUnitList').empty();
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     let color = '';
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<br><span class="constName neutre" id="gentils">Citoyens disponibles: <span class="gff">'+dispoCit+'</span> &ndash; <span class="brunf">'+dispoCrim+'</span></span><br>');
@@ -632,6 +634,7 @@ function clickUpgrade(tileId) {
     } else {
         conselReset();
         $('#unitInfos').empty();
+        $("#unitInfos").css("display","none");
         selectMode();
         batUnstack();
         batUnselect();
@@ -705,6 +708,7 @@ function clickConstruct(tileId,free) {
         } else {
             conOut();
             $('#unitInfos').empty();
+            $("#unitInfos").css("display","none");
             selectMode();
             batUnstack();
             batUnselect();

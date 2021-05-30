@@ -24,6 +24,7 @@ function nextTurn() {
     }
     activeTurn = 'aliens';
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     selectMode();
     batUnstack();
     batUnselect();

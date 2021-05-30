@@ -10,7 +10,9 @@ function craftWindow() {
     $('#conUnitList').css("height","600px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
     // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');

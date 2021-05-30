@@ -3,7 +3,9 @@ function gangEdit() {
     $("#conUnitList").css("display","block");
     $('#conUnitList').css("height","600px");
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
@@ -839,7 +841,9 @@ function landerFill() {
     $('#conUnitList').css("height","800px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName or">REMPLIR LE LANDER</span><br>');
@@ -1249,7 +1253,9 @@ function missionResults(onlyLanders) {
     $('#conUnitList').css("height","800px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     calcEndRes(onlyLanders);
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
@@ -1422,7 +1428,9 @@ function gangLevelView() {
     $('#conUnitList').css("height","700px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="ListRes or">COMPETENCES</span><br>');
@@ -1470,7 +1478,9 @@ function gangChoice() {
     $('#conUnitList').css("height","200px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="ListRes or">CHOISIR UN GANG</span><br>');
     $('#conUnitList').append('<br>');
@@ -1496,7 +1506,9 @@ function gangLevelUp(retour) {
     $('#conUnitList').css("height","700px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     if (myCompPoints <= 0 && retour) {
         $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');

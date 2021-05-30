@@ -7,7 +7,9 @@ function gangUnitsList(gangName) {
     $('#conUnitList').css("height","1000px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName or">'+gangName.toUpperCase()+'</span><br>');

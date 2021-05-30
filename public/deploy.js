@@ -11,7 +11,9 @@ function reEquip(batId,noRefresh) {
     $("#conAmmoList").css("display","block");
     $('#conAmmoList').css("height","700px");
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     $('#conAmmoList').empty();
     $('#conAmmoList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     $('#conAmmoList').append('<br><h3>'+myBatType.name+'</h3><br>');

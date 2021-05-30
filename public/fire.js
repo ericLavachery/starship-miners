@@ -1081,12 +1081,14 @@ function attack(melee) {
                 setTimeout(function (){
                     batDeathEffect(selectedBat,false,'Bataillon détruit','Suicide');
                     $('#unitInfos').empty();
+                    $("#unitInfos").css("display","none");
                 }, soundDuration);
             }, 500);
         } else {
             batDeathEffect(selectedBat,false,'Bataillon détruit','Suicide');
         }
         $('#unitInfos').empty();
+        $("#unitInfos").css("display","none");
     } else {
         selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
         selectedBat.salvoLeft = selectedBat.salvoLeft-1;

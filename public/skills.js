@@ -450,6 +450,7 @@ function clickMine(clicTileId,poseurTileId) {
         } else {
             conselReset();
             $('#unitInfos').empty();
+            $("#unitInfos").css("display","none");
             selectMode();
             batUnstack();
             batUnselect();

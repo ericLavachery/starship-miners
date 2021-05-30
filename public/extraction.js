@@ -272,6 +272,7 @@ function chooseRes(again) {
     // show res list
     $("#conUnitList").css("display","block");
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
@@ -340,7 +341,9 @@ function voirRessources() {
     $("#conUnitList").css("display","block");
     $('#conUnitList').css("height","800px");
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');

@@ -305,6 +305,7 @@ function batDeathEffect(bat,quiet,title,body) {
     }
     if (bat.team != 'aliens') {
         $('#unitInfos').empty();
+        $("#unitInfos").css("display","none");
     }
 };
 

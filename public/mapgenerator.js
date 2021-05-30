@@ -880,7 +880,7 @@ function addRes(zone) {
                 }
             }
             res.adjRarity = Math.floor(resRarity*rarityDice/5*fewRedRarityAdj/100);
-            res.adjBatch = Math.ceil(res.batch*Math.sqrt(rarityDice)/2*fewRedRarityAdj/100);
+            res.adjBatch = Math.ceil(res.batch*fewRedRarityAdj/100);
             if (res.adjBatch < 1) {
                 res.adjBatch = 1;
             }
@@ -1007,9 +1007,9 @@ function addRes(zone) {
                         if (res.name === 'Scrap') {
                             tile.ruins = true;
                             tile.rd = true;
-                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8);
+                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8)+rand.rand(0,9);
                         } else {
-                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
+                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv)+rand.rand(0,9);
                         }
                         if (firstRes) {
                             if (res.bld === 'Derrick') {
@@ -1033,9 +1033,9 @@ function addRes(zone) {
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
                                             tile.rd = true;
-                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8);
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8)+rand.rand(0,9);
                                         } else {
-                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv)+rand.rand(0,9);
                                         }
                                     }
                                 }
@@ -1053,9 +1053,9 @@ function addRes(zone) {
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
                                             tile.rd = true;
-                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8);
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8)+rand.rand(0,9);
                                         } else {
-                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv)+rand.rand(0,9);
                                         }
                                     }
                                 }
@@ -1069,7 +1069,7 @@ function addRes(zone) {
                         if (res.cat === 'white' && res.name != 'Scrap') {
                             if (Object.keys(tile.rs).length <= 1) {
                                 if (tile.rs[res.name] === undefined) {
-                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
+                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv)+rand.rand(0,9);
                                 }
                             }
                         }
@@ -1086,9 +1086,9 @@ function addRes(zone) {
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
                                             tile.rd = true;
-                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8);
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8)+rand.rand(0,9);
                                         } else {
-                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv)+rand.rand(0,9);
                                         }
                                     }
                                 }
@@ -1106,9 +1106,9 @@ function addRes(zone) {
                                         if (res.name === 'Scrap') {
                                             tile.ruins = true;
                                             tile.rd = true;
-                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8);
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/resBatchDiv/0.8)+rand.rand(0,9);
                                         } else {
-                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
+                                            tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv)+rand.rand(0,9);
                                         }
                                     }
                                 }
@@ -1122,7 +1122,7 @@ function addRes(zone) {
                         if (res.cat === 'white' && res.name != 'Scrap') {
                             if (Object.keys(tile.rs).length <= 3) {
                                 if (tile.rs[res.name] === undefined) {
-                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
+                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv)+rand.rand(0,9);
                                 }
                             }
                         }
@@ -1136,7 +1136,7 @@ function addRes(zone) {
                         if (Object.keys(tile.rs).length <= 0) {
                             if (tile.rs[res.name] === undefined) {
                                 if (rand.rand(1,3) === 1) {
-                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
+                                    tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv)+rand.rand(0,9);
                                 }
                             }
                         }
@@ -1145,7 +1145,7 @@ function addRes(zone) {
             }
             // PASS 6
             if (Object.keys(tile.rs).length <= 0) {
-                tile.rs[resDefault.name] = Math.round(resDefault.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv);
+                tile.rs[resDefault.name] = Math.round(resDefault.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv)+rand.rand(0,9);
             }
         }
     });

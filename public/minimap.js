@@ -190,6 +190,7 @@ function miniOut() {
 
 function centerFromMinimap(tileId) {
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     myTileX = zone[tileId].x;

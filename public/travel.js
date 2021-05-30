@@ -1,6 +1,8 @@
 function startMission() {
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     batUnselect();
     // créer db batsInSpace, avec les landers marqués deploy=true et toutes les unités qui sont dedans
     createBatsInSpace();
@@ -25,7 +27,9 @@ function startMission() {
 
 function stopMission() {
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     batUnselect();
     // créer db batsInSpace, avec les landers et toutes les unités qui sont dedans
     createBatsInSpace();
@@ -47,7 +51,9 @@ function landingList() {
     $('#conUnitList').css("height","110px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<h1 class="or" id="gentils">Atterrissage</h1><br><br>');
     slId = -1;
@@ -246,7 +252,9 @@ function editSonde() {
     $('#conUnitList').css("height","100px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE DESTINATION POUR PROCHAINE LA SONDE</span><br>');
@@ -324,7 +332,9 @@ function pickZone() {
     $('#conUnitList').css("height","800px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE ZONE POUR VOTRE PROCHAINE MISSION</span><br>');
@@ -351,6 +361,7 @@ function putMissionZone(zoneId) {
 };
 
 function feedZoneDB() {
+    // écrire autrement pour qu'il y ait mise à jour
     let zoneIds = [];
     playerInfos.zoneDB.forEach(function(thisZone) {
         if (!zoneIds.includes(thisZone.id)) {
@@ -383,6 +394,7 @@ function feedZoneDB() {
 };
 
 function feedZoneDBwith(myZone) {
+    // écrire autrement pour qu'il y ait mise à jour
     let zoneIds = [];
     playerInfos.zoneDB.forEach(function(thisZone) {
         if (!zoneIds.includes(thisZone.id)) {

@@ -1,4 +1,5 @@
 function showBatInfos(bat) {
+    $("#unitInfos").css("display","block");
     let batType = getBatType(bat);
     batInfos(bat,batType,false);
     if (bat.type === 'Soute') {
@@ -387,7 +388,7 @@ function batInfos(bat,batType,pop) {
             } else {
                 armycol = "";
             }
-            $('#'+bodyPlace).append('<span class="army"> &Star; <span class="klik'+armycol+'" onclick="armyAssign('+bat.id+','+army+')">'+army+'</span></span>');
+            $('#'+bodyPlace).append('<span class="army">&Star;<span class="klik'+armycol+'" onclick="armyAssign('+bat.id+','+army+')">'+army+'</span></span>');
             if (army > 9) {break;}
         }
     }

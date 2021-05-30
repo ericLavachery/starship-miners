@@ -161,7 +161,7 @@ h5 {
 }
 .army {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 18px;
     color: #b3a391;
 }
 .fullLine {
@@ -689,6 +689,11 @@ td {
 #unitInfos {
     background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 0%;
+    scroll-behavior: auto;
+    scrollbar-color: #4C4845 #17161A;
+    overflow-y: scroll;
+    display: none;
+    height: 800px;
     /* min-height: 81px; */
 }
 #conUnitList,#conAmmoList {

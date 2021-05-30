@@ -116,6 +116,7 @@ function clickSelect(tileId) {
         // console.log(enemyBatHere);
         if (!ownBatHere && !enemyBatHere) {
             $('#unitInfos').empty();
+            $("#unitInfos").css("display","none");
             selectMode();
             batUnstack();
             batUnselect();
@@ -215,6 +216,7 @@ function batUnselect() {
     targetBatType = {};
     targetWeap = {};
     $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
     commandes();
 };
 
