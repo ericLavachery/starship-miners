@@ -178,7 +178,7 @@
         "mediCost":8,
         "mecanoCost":8,
         "transMaxSize":50,
-        "transUnits":10000,
+        "transUnits":12000,
         "transRes":25000,
         "fuzz":4,
         "deathFx":"planeexploground2"
@@ -238,7 +238,7 @@
         "mediCost":7,
         "mecanoCost":7,
         "transMaxSize":55,
-        "transUnits":15000,
+        "transUnits":18000,
         "transRes":40000,
         "fuzz":4,
         "deathFx":"planeexploground2"
@@ -371,7 +371,7 @@
             "subTypes":[]
         },
         "transMaxSize":65,
-        "transUnits":20000,
+        "transUnits":22000,
         "transRes":70000,
         "fuzz":6,
         "deathFx":"planeexploground2"
@@ -435,7 +435,7 @@
         "mediCost":6,
         "mecanoCost":6,
         "transMaxSize":55,
-        "transUnits":15000,
+        "transUnits":20000,
         "transRes":40000,
         "fuzz":10,
         "deathFx":"planeexploground2"
@@ -547,7 +547,7 @@
         "mediCost":7,
         "mecanoCost":7,
         "transMaxSize":33,
-        "transUnits":7500,
+        "transUnits":10000,
         "transRes":20000,
         "fuzz":4,
         "deathFx":"planeexploground2"

@@ -219,5 +219,8 @@ let musicTracks = ['nero1','nero2','nero3','nero4','nero5','nero6','nero7','nero
 let theMusic = new Howl({
     src: ['/static/sounds/music/nero1.mp3']
 });
+let theRoom = new Howl({
+    src: ['/static/sounds/rooms/nero1.mp3']
+});
 let soundDuration = 2000;
 let musicChance = 8;

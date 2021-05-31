@@ -269,7 +269,7 @@ function editSonde() {
     }
     $('#conUnitList').append('<span class="butSpace"></span>');
     // PRESENCE ALIEN
-    $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`sondeDanger`,`sonde`)" title="Présence Alienne"></select>');
+    $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`sondeDanger`,`sonde`)" title="Présence Alien"></select>');
     $('#theZone').empty().append('<option value="">Pr.Alien</option>');
     let i = 0;
     while (i <= 15) {
@@ -447,7 +447,7 @@ function toZoneString(zoneInfo) {
     console.log(newString);
     newString = newString.replace("true","Oui");
     newString = newString.replace("false","Non");
-    newString = newString.replace("mapDiff","Présence Alienne");
+    newString = newString.replace("mapDiff","Présence Alien");
     newString = newString.replace("ensol","Ensoleillement");
     newString = newString.replace(", pKind=","");
     newString = newString.replace(", gKind=","");

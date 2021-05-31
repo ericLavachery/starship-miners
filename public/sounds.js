@@ -175,3 +175,21 @@ function playMusic(piste,interrupt) {
         console.log('ALREADY PLAYING');
     }
 };
+
+function playRoom(piste,interrupt) {
+    let track = 'rain';
+    if (piste != 'any') {
+        track = piste;
+    }
+    if (!theRoom.playing() || interrupt) {
+        theRoom = new Howl({
+            src: ['/static/sounds/rooms/'+track+'.mp3'],
+            volume: 0.4,
+            loop: true
+        });
+        theRoom.play();
+        console.log('ROOM: '+track);
+    } else {
+        console.log('ALREADY A ROOM');
+    }
+};

@@ -467,13 +467,6 @@ function playerSkillsUTChanges() {
                 }
             }
         }
-        // VOLS SPACIAUX
-        // if (playerInfos.comp.vsp >= 2 && unit.kind === 'zero-vaisseaux' && unit.name != 'Liberator' && unit.name != 'Crusader') {
-        //     unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.vsp-1);
-        //     if (unit.levels[playerInfos.gang] < 1) {
-        //         unit.levels[playerInfos.gang] = 1;
-        //     }
-        // }
         // CAMOUFLAGE
         if (playerInfos.comp.cam >= 1 && unit.skills.includes('maycamo') && unit.cat === 'infantry') {
             unit.skills.push('camo');
@@ -1269,7 +1262,7 @@ function missionResults(onlyLanders) {
     } else if (citDiff > 0) {
         resColour = 'cy';
     }
-    $('#conUnitList').append('<span class="paramName">Citoyens</span><span class="paramIcon"></span><span class="paramValue '+resColour+'">'+citDiff+'</span><br>');
+    $('#conUnitList').append('<span class="paramResName">Citoyens</span><span class="paramIcon"></span><span class="paramResValue '+resColour+'">'+citDiff+'</span><br>');
     $('#conUnitList').append('<hr>');
     let sonde = getBatTypeByName('Sonde');
     Object.entries(playerInfos.endRes).map(entry => {
@@ -1278,6 +1271,7 @@ function missionResults(onlyLanders) {
         if (key != 'Citoyens') {
             let res = getResByName(key);
             let resIcon = getResIcon(res);
+            let minedRes = getMinedRes(res.name);
             let resCol = '';
             if (playerInfos.resFlags.includes(res.name)) {
                 resCol = ' bor';
@@ -1294,7 +1288,11 @@ function missionResults(onlyLanders) {
                 } else if (resResult > 0) {
                     resColour = 'cy';
                 }
-                $('#conUnitList').append('<span class="paramName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');
+                if (minedRes <= 0) {
+                    $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');
+                } else {
+                    $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="'+resColour+'">'+resResult+'</span> +('+minedRes+')</span><br>');
+                }
             }
         }
     });
@@ -1314,7 +1312,7 @@ function missionResults(onlyLanders) {
             }
             if (resResult === 0) {
                 let resColour = 'gf';
-                $('#conUnitList').append('<span class="paramName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');
+                $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="'+resColour+'">'+resResult+'</span> +('+minedRes+')</span><br>');
             }
         }
     });

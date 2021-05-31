@@ -194,7 +194,7 @@
     {
         "id":25,
         "name":"ca",
-        "fullName":"Connaissance alienne",
+        "fullName":"Connaissance alien",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":5,
         "lvlCosts":[0,1,1,1,1,1]

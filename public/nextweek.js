@@ -371,5 +371,5 @@ function calcCrimeRate(mesCitoyens) {
 };
 
 function eventAliens(afterMission,time) {
-    // Montée de la présence alienne
+    // Montée de la présence alien
 };

@@ -494,7 +494,7 @@ function upkeepAndProd(bat,batType,time) {
             Object.entries(batType.upkeep).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
-                let conso = value*time;
+                let conso = Math.ceil(value*time);
                 let dispoRes = getDispoRes(key);
                 if (dispoRes < conso) {
                     upkeepPaid = false;
@@ -505,7 +505,7 @@ function upkeepAndProd(bat,batType,time) {
                 Object.entries(batType.upkeep).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
-                    let conso = value*time;
+                    let conso = Math.ceil(value*time);
                     resSub(key,conso);
                     message = message+key+':<span class="rose">-'+conso+'</span><br>';
                     console.log('upkeep = '+key+':'+conso);
@@ -522,25 +522,37 @@ function upkeepAndProd(bat,batType,time) {
                     let key = entry[0];
                     let value = entry[1];
                     let fullProd = value*time;
-                    if (key === 'Energie') {
-                        fullProd = energyCreation(fullProd);
-                    }
-                    if (key === 'Scrap') {
-                        fullProd = scrapCreation(fullProd);
-                        if (playerInfos.onShip) {
-                            fullProd = Math.ceil(fullProd/5);
-                        }
-                    }
-                    resAdd(key,fullProd);
-                    message = message+key+':<span class="vert">+'+fullProd+'</span><br>';
-                    if (!playerInfos.onShip) {
-                        if (minedThisTurn[key] === undefined) {
-                            minedThisTurn[key] = value;
+                    if (fullProd < 1) {
+                        let prodChance = Math.floor(100*fullProd);
+                        if (rand.rand(1,100) <= prodChance) {
+                            fullProd = 1;
                         } else {
-                            minedThisTurn[key] = minedThisTurn[key]+value;
+                            fullProd = 0;
                         }
+                    } else {
+                        fullProd = Math.round(fullProd);
                     }
-                    console.log('prod = '+key+':'+value);
+                    if (fullProd >= 1) {
+                        if (key === 'Energie') {
+                            fullProd = energyCreation(fullProd);
+                        }
+                        if (key === 'Scrap') {
+                            fullProd = scrapCreation(fullProd);
+                            if (playerInfos.onShip) {
+                                fullProd = Math.ceil(fullProd/5);
+                            }
+                        }
+                        resAdd(key,fullProd);
+                        message = message+key+':<span class="vert">+'+fullProd+'</span><br>';
+                        if (!playerInfos.onShip) {
+                            if (minedThisTurn[key] === undefined) {
+                                minedThisTurn[key] = value;
+                            } else {
+                                minedThisTurn[key] = minedThisTurn[key]+value;
+                            }
+                        }
+                        console.log('prod = '+key+':'+value);
+                    }
                 });
             }
         }
