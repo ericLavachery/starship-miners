@@ -56,6 +56,9 @@ function eventProduction(afterMission,time) {
             if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
                 solarProd(bat,batType,time);
             }
+            if (batType.skills.includes('transcrap') && bat.tags.includes('prodres')) {
+                triProd(bat,batType,time);
+            }
             // ENTRAINEMENT
             if (!afterMission) {
                 if (playerInfos.bldList.includes('Camp d\'entraînement')) {

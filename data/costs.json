@@ -2083,8 +2083,7 @@
         "bldEquiv":["Décharge"],
         "bldUp":"Recyclab",
         "bldCost":"Décharge",
-        "upkeep":{"Energie":8,"Eau":6},
-        "prod":{"Scrap":8},
+        "upkeep":{"Energie":3,"Eau":2,"Scrap":25},
         "costs":{"Compo1":305,"Compo2":70,"Eau":200,"Fer":100,"Energie":150,"Bore":50,"Chlore":50,"Electros":20,"Batteries":50},
         "fabTime":75
     },
@@ -2093,8 +2092,7 @@
         "name":"Recyclab",
         "bldEquiv":["Décharge","Centre de tri"],
         "bldCost":"Centre de tri",
-        "upkeep":{"Energie":15,"Eau":12},
-        "prod":{"Scrap":20},
+        "upkeep":{"Energie":8,"Eau":4,"Scrap":50},
         "costs":{"Compo1":380,"Compo2":220,"Compo3":75,"Eau":500,"Fer":150,"Energie":300,"Platine":150,"Bore":200,"Chlore":200,"Argon":100,"Electros":100,"Batteries":90},
         "fabTime":125
     },
@@ -2135,7 +2133,7 @@
         "id":208,
         "name":"Centrale solaire",
         "bldEquiv":["Générateur","Centrale SMR"],
-        "upkeep":{"Eau":30},
+        "upkeep":{"Eau":5},
         "costs":{"Compo1":435,"Compo2":315,"Compo3":135,"Eau":1000,"Aluminium":500,"Rhodium":100,"Cobalt":250,"Cuivre":200,"Platine":100,"Mercure":250,"Silicium":500,"Argon":300,"Electros":100,"Batteries":150},
         "fabTime":125
     },
@@ -2143,7 +2141,7 @@
         "id":209,
         "name":"Centrale géothermique",
         "bldEquiv":["Générateur","Centrale SMR"],
-        "upkeep":{"Eau":30},
+        "upkeep":{"Eau":5},
         "costs":{"Compo1":260,"Compo2":190,"Compo3":85,"Eau":1000,"Huile":300,"Nickel":150,"Cobalt":250,"Cuivre":200,"Argon":200,"Electros":100,"Batteries":150},
         "fabTime":100
     },
@@ -2152,7 +2150,7 @@
         "name":"Centrale nucléaire",
         "bldEquiv":["Générateur","Centrale SMR"],
         "bldReq":["Générateur"],
-        "upkeep":{"Plutonium":9,"Eau":120},
+        "upkeep":{"Plutonium":9,"Eau":18},
         "prod":{"Energie":225},
         "costs":{"Compo1":345,"Compo2":405,"Compo3":225,"Eau":2000,"Energie":500,"Carbone":500,"Titane":300,"Plomb":500,"Nickel":200,"Cuivre":400,"Bore":300,"Plutonium":300,"Electros":200,"Batteries":300},
         "fabTime":150
@@ -2162,7 +2160,7 @@
         "name":"Centrale SMR",
         "bldEquiv":["Générateur"],
         "bldReq":["Générateur"],
-        "upkeep":{"Uranium":4,"Eau":25},
+        "upkeep":{"Uranium":4,"Eau":5},
         "prod":{"Energie":75},
         "costs":{"Compo1":205,"Compo2":245,"Compo3":135,"Eau":1000,"Energie":100,"Carbone":200,"Titane":100,"Plomb":100,"Nickel":50,"Cuivre":200,"Platine":100,"Bore":150,"Uranium":100,"Hydrogène":200,"Electros":100,"Batteries":150},
         "fabTime":100

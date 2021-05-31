@@ -1676,16 +1676,18 @@
         "ap":21,
         "maxSalvo":1,
         "weapon":{
-            "name":"Shotgun",
-            "cost":3,
+            "name":"Magnum",
+            "cost":2,
             "range":1,
+            "isShort":true,
+            "noBis":true,
             "rof":6,
             "accuracy":18,
-            "power":8,
-            "armors":1.35,
-            "aoe":"brochette",
-            "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","snake","incendiaire","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
+            "power":7,
+            "armors":0.85,
+            "aoe":"unit",
+            "sound":"magnum_x2",
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Dynamite",

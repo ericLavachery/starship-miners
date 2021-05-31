@@ -17,7 +17,8 @@
         "rarity": 85,
         "cat": "white",
         "batch": 6,
-        "energie": 50
+        "energie": 50,
+        "ctri": 15
     },
     {
         "id": 2,
@@ -27,7 +28,8 @@
         "rarity": 160,
         "cat": "white",
         "batch": 8,
-        "energie": 50
+        "energie": 50,
+        "ctri": 40
     },
     {
         "id": 59,
@@ -37,7 +39,8 @@
         "rarity": 35,
         "cat": "white",
         "batch": 8,
-        "energie": 5
+        "energie": 5,
+        "rlab": 30
     },
     {
         "id": 3,
@@ -47,7 +50,8 @@
         "rarity": 22,
         "cat": "white",
         "batch": 4,
-        "energie": 50
+        "energie": 50,
+        "rlab": 10
     },
     {
         "id": 4,
@@ -57,7 +61,8 @@
         "rarity": 35,
         "cat": "white",
         "batch": 3,
-        "energie": 50
+        "energie": 50,
+        "ctri": 10
     },
     {
         "id": 5,
@@ -67,7 +72,8 @@
         "rarity": 35,
         "cat": "white",
         "batch": 4,
-        "energie": 50
+        "energie": 50,
+        "rlab": 5
     },
     {
         "id": 6,
@@ -77,7 +83,8 @@
         "rarity": 40,
         "cat": "white",
         "batch": 3,
-        "energie": 50
+        "energie": 50,
+        "ctri": 15
     },
     {
         "id": 7,
@@ -107,7 +114,8 @@
         "rarity": 22,
         "cat": "white",
         "batch": 3,
-        "energie": 100
+        "energie": 100,
+        "rlab": 5
     },
     {
         "id": 10,
@@ -127,7 +135,8 @@
         "rarity": 37,
         "cat": "white",
         "batch": 5,
-        "energie": 20
+        "energie": 20,
+        "ctri": 20
     },
     {
         "id": 12,
@@ -147,7 +156,8 @@
         "rarity": 16,
         "cat": "white",
         "batch": 3,
-        "energie": 100
+        "energie": 100,
+        "rlab": 5
     },
     {
         "id": 14,
@@ -157,7 +167,8 @@
         "rarity": 20,
         "cat": "white",
         "batch": 2,
-        "energie": 50
+        "energie": 50,
+        "rlab": 5
     },
     {
         "id": 15,
@@ -167,7 +178,8 @@
         "rarity": 22,
         "cat": "white",
         "batch": 5,
-        "energie": 100
+        "energie": 100,
+        "ctri": 10
     },
     {
         "id": 16,
@@ -197,7 +209,8 @@
         "rarity": 12,
         "cat": "white",
         "batch": 3,
-        "energie": 50
+        "energie": 50,
+        "ctri": 3
     },
     {
         "id": 19,
@@ -207,7 +220,8 @@
         "rarity": 18,
         "cat": "white",
         "batch": 2,
-        "energie": 50
+        "energie": 50,
+        "ctri": 3
     },
     {
         "id": 20,
@@ -227,7 +241,8 @@
         "rarity": 5,
         "cat": "white",
         "batch": 2,
-        "energie": 100
+        "energie": 100,
+        "rlab": 1
     },
     {
         "id": 21,
@@ -277,7 +292,8 @@
         "rarity": 100,
         "cat": "zero",
         "batch": 6,
-        "energie": 15
+        "energie": 15,
+        "ctri": 20
     },
     {
         "id": 26,
@@ -327,7 +343,8 @@
         "rarity": 30,
         "cat": "white",
         "batch": 3,
-        "energie": 9
+        "energie": 9,
+        "rlab": 5
     },
     {
         "id": 31,
@@ -337,7 +354,8 @@
         "rarity": 12,
         "cat": "white",
         "batch": 3,
-        "energie": 50
+        "energie": 50,
+        "rlab": 1
     },
     {
         "id": 32,
@@ -347,7 +365,8 @@
         "rarity": 16,
         "cat": "white",
         "batch": 3,
-        "energie": 9
+        "energie": 9,
+        "rlab": 1
     },
     {
         "id": 33,
@@ -607,7 +626,8 @@
         "rarity": 25,
         "cat": "transfo",
         "batch": 3,
-        "energie": -1
+        "energie": -1,
+        "ctri": 1
     },
     {
         "id": 62,
@@ -617,7 +637,8 @@
         "rarity": 25,
         "cat": "transfo",
         "batch": 3,
-        "energie": -1
+        "energie": -1,
+        "ctri": 1.5
     },
     {
         "id": 63,
@@ -647,7 +668,8 @@
         "rarity": 35,
         "cat": "transfo",
         "batch": 3,
-        "energie": 15
+        "energie": 15,
+        "ctri": 5
     },
     {
         "id": 71,
@@ -657,7 +679,8 @@
         "rarity": 100,
         "cat": "transfo",
         "batch": 6,
-        "energie": 50
+        "energie": 50,
+        "ctri": 5
     },
     {
         "id": 65,

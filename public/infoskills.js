@@ -994,7 +994,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // ACTIVATION
-    if (batType.skills.includes('prodres') || batType.skills.includes('geo') || batType.skills.includes('solar')) {
+    if (batType.skills.includes('prodres') || batType.skills.includes('geo') || batType.skills.includes('solar') || batType.skills.includes('transcrap')) {
         balise = 'h1';
         boutonNope = 'boutonGris';
         colorNope = 'gf';

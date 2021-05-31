@@ -272,6 +272,9 @@ function nextTurnEnd() {
             if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
                 solarProd(bat,batType,1);
             }
+            if (batType.skills.includes('transcrap') && bat.tags.includes('prodres')) {
+                triProd(bat,batType,1);
+            }
             if (!playerInfos.onShip) {
                 if (bat.eq.includes('psol') || bat.eq.includes('psol')) {
                     solarPanel(bat,batType);

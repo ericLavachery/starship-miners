@@ -504,14 +504,6 @@
         "batch":7
     },
     {
-        "id":29,
-        "result":"Aluminium",
-        "cost":{"Scrap":50,"Energie":2},
-        "compReq":{"tri":2},
-        "bldReq":["Centre de tri"],
-        "batch":5
-    },
-    {
         "id":34,
         "result":"Aluminium",
         "cost":{"Wingium":5,"Bugium":15,"Energie":2},
@@ -537,14 +529,6 @@
         "batch":5
     },
     {
-        "id":31,
-        "result":"Carbone",
-        "cost":{"Scrap":65,"Energie":1},
-        "compReq":{"tri":3,"mat":1},
-        "bldReq":["Recyclab"],
-        "batch":5
-    },
-    {
         "id":36,
         "result":"Carbone",
         "cost":{"Mendium":10,"Oxygène":10},
@@ -566,14 +550,6 @@
         "cost":{"Blendium":10,"Hélium":5,"Azote":5,"Energie":2},
         "compReq":{"tri":2,"ca":1,"mat":1},
         "bldReq":["Recyclab"],
-        "batch":5
-    },
-    {
-        "id":54,
-        "result":"Fer",
-        "cost":{"Scrap":25,"Energie":1},
-        "compReq":{"tri":1},
-        "bldReq":["Centre de tri"],
         "batch":5
     },
     {
@@ -674,14 +650,6 @@
         "batch":5
     },
     {
-        "id":28,
-        "result":"Plomb",
-        "cost":{"Scrap":35,"Energie":1},
-        "compReq":{"tri":2},
-        "bldReq":["Centre de tri"],
-        "batch":5
-    },
-    {
         "id":42,
         "result":"Plomb",
         "cost":{"Swarmine":15,"Azote":5,"Energie":1},
@@ -762,30 +730,12 @@
         "batch":10
     },
     {
-        "id":33,
-        "result":"Titane",
-        "cost":{"Scrap":175,"Energie":7},
-        "compReq":{"tri":4,"mat":2},
-        "bldReq":["Recyclab"],
-        "batch":5,
-        "creaNum":15
-    },
-    {
         "id":48,
         "result":"Titane",
         "cost":{"Wingium":10,"Bossium":5,"Energie":5},
         "compReq":{"tri":4,"ca":3,"mat":2},
         "bldReq":["Recyclab"],
         "batch":5
-    },
-    {
-        "id":32,
-        "result":"Tungstène",
-        "cost":{"Scrap":100,"Energie":4},
-        "compReq":{"tri":4,"mat":1},
-        "bldReq":["Recyclab"],
-        "batch":5,
-        "creaNum":20
     },
     {
         "id":49,
@@ -810,14 +760,6 @@
         "compReq":{"energ":2},
         "bldReq":["Centre de recherches"],
         "batch":2
-    },
-    {
-        "id":30,
-        "result":"Zinc",
-        "cost":{"Scrap":50,"Energie":2},
-        "compReq":{"tri":3},
-        "bldReq":["Centre de tri"],
-        "batch":5
     },
     {
         "id":51,
