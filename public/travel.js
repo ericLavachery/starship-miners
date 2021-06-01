@@ -86,10 +86,17 @@ function landingList() {
         updateBldList();
         calcStartRes();
         if (playerInfos.onShip) {
+            if (playerInfos.volMu > 0) {
+                playRoom('station',true);
+            }
             checkSelectedLanderId();
             healEverything();
             events(true);
             miniOut();
+        } else {
+            if (playerInfos.volMu > 0) {
+                playRoom('thunder2',true);
+            }
         }
     }
 };
