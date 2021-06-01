@@ -185,7 +185,7 @@ function playRoom(piste,interrupt) {
         theRoom.stop();
         theRoom = new Howl({
             src: ['/static/sounds/rooms/'+track+'.mp3'],
-            volume: 0.4,
+            volume: playerInfos.volFx,
             loop: true
         });
         theRoom.play();

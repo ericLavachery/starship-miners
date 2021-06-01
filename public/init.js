@@ -198,12 +198,10 @@ socket.on('savedMap-Load', function(sm) {
     if (playerInfos.pseudo != 'Test' && playerInfos.pseudo != 'Payall') {
         // playMusic('start',true);
     }
-    if (playerInfos.volMu > 0) {
-        if (playerInfos.onShip) {
-            playRoom('station',true);
-        } else {
-            playRoom('thunder2',true);
-        }
+    if (playerInfos.onShip) {
+        playRoom('station',true);
+    } else {
+        playRoom('thunder2',true);
     }
     let thisBatType;
     // Verif bat id's + sorting

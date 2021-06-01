@@ -198,7 +198,7 @@
     background-color: #4d3b15;
     background-image: url(/static/img/sntiles/H_004.png);
     background-position: center;
-}
+  }
 .terH5 {
     background-color: #4d3b15;
     background-image: url(/static/img/sntiles/H_005.png);
@@ -358,6 +358,7 @@
     background-color: #22460c;
     background-image: url(/static/img/sntiles/F_006.png);
     background-position: center;
+
 }
 .terS1 {
     background-color: #5b848c;
@@ -408,6 +409,7 @@
     background-color: #3697ac;
     background-image: url(/static/img/sntiles/W_004.png);
     background-position: center;
+
 }
 .terW5 {
     background-color: #3697ac;
@@ -466,3 +468,6 @@
     display: inline-block;
     z-index: 1;
 }
+/* .terPic img {
+    filter: grayscale(35%) brightness(80%) contrast(120%);
+} */

@@ -220,7 +220,7 @@ let theMusic = new Howl({
     src: ['/static/sounds/music/nero1.mp3']
 });
 let theRoom = new Howl({
-    src: ['/static/sounds/rooms/nero1.mp3']
+    src: ['/static/sounds/rooms/thunder2.mp3']
 });
 let soundDuration = 2000;
 let musicChance = 8;

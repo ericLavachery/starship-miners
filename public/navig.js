@@ -152,6 +152,10 @@ function commandes() {
                 //     $('#commandz').append('<button type="button" title="Ajuster le pack de ressources" class="boutonRouge iconButtons" onclick="adjStartPack()"><i class="fas fa-coins"></i></button>');
                 // }
             }
+            $('#commandz').append('<hr>');
+            $('#commandz').append('<button type="button" title="Filtre" class="boutonRouge iconButtons" onclick="mapTilesFiltering(false,`grayscale`,35,`brightness`,80,`contrast`,120)"><i class="far fa-image"></i></button>');
+            $('#commandz').append('<button type="button" title="Filtre" class="boutonRouge iconButtons" onclick="mapTilesFiltering(false,`hue-rotate`,240,`saturate`,70,`contrast`,130,`brightness`,90)"><i class="far fa-image"></i></button>');
+            $('#commandz').append('<button type="button" title="Filtre" class="boutonVert iconButtons" onclick="mapTilesFiltering(true)"><i class="far fa-image"></i></button>');
         }
     }
     gangNavig();

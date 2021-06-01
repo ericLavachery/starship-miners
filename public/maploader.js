@@ -386,3 +386,23 @@ function writeMapStyles() {
     }
     $('#mapStyles').append(';}');
 };
+
+function mapTilesFiltering(reset,f1,f1p,f2,f2p,f3,f3p,f4,f4p) {
+    let filters = '';
+    if (f3 === undefined) {
+        f3 = 'opacity';
+        f3p = 100;
+    }
+    if (f4 === undefined) {
+        f4 = 'opacity';
+        f4p = 100;
+    }
+    if (!reset) {
+        if (f1 === 'hue-rotate') {
+            filters = f1+'('+f1p+'deg)'+' '+f2+'('+f2p+'%)'+' '+f3+'('+f3p+'%)'+' '+f4+'('+f4p+'%)';
+        } else {
+            filters = f1+'('+f1p+'%)'+' '+f2+'('+f2p+'%)'+' '+f3+'('+f3p+'%)'+' '+f4+'('+f4p+'%)';
+        }
+    }
+    $(".terPic").css("filter",filters);
+};
