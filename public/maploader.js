@@ -81,12 +81,6 @@ function showMap(wmap,justMoved) {
     // console.log(zone);
 };
 
-function getTerrainFilter(mapInf) {
-    let terClass = 'terPic';
-    
-    return terClass;
-}
-
 function showLanderLandingTiles() {
     zone.forEach(function(tile) {
         if (landerLandingOK(tile) && !playerInfos.showedTiles.includes(tile.id)) {
@@ -394,8 +388,20 @@ function writeMapStyles() {
     $('#mapStyles').append(';}');
 };
 
+function getTerrainFilter(mapInf) {
+    let terClass = 'terPic';
+    if (mapInf.snd === 'thunderfull' || mapInf.snd === 'thunderstart' || mapInf.snd === 'rain') {
+        terClass = 'terPicRain';
+    }
+    if (mapInf.snd === 'birdscalm' || mapInf.snd === 'jungle') {
+        terClass = 'terPicSun';
+    }
+    return terClass;
+}
+
 function mapTilesFiltering(reset,f1,f1p,f2,f2p,f3,f3p,f4,f4p) {
     let filters = '';
+    let terClass = 'terPic';
     if (f3 === undefined) {
         f3 = 'opacity';
         f3p = 100;
@@ -410,6 +416,9 @@ function mapTilesFiltering(reset,f1,f1p,f2,f2p,f3,f3p,f4,f4p) {
         } else {
             filters = f1+'('+f1p+'%)'+' '+f2+'('+f2p+'%)'+' '+f3+'('+f3p+'%)'+' '+f4+'('+f4p+'%)';
         }
+    } else {
+        filters = 'grayscale(0%) brightness(100%) contrast(100%)';
     }
-    $(".terPic").css("filter",filters);
+    terClass = getTerrainFilter(zone[0]);
+    $("."+terClass).css("filter",filters);
 };

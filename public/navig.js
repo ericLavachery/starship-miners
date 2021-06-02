@@ -153,13 +153,13 @@ function commandes() {
                 // }
             }
             $('#commandz').append('<hr>');
-            $('#commandz').append('<button type="button" title="Filtre" class="boutonRouge iconButtons" onclick="mapTilesFiltering(false,`grayscale`,35,`brightness`,80,`contrast`,120)"><i class="far fa-image"></i></button>');
+            $('#commandz').append('<button type="button" title="Filtre" class="boutonRouge iconButtons" onclick="mapTilesFiltering(false,`hue-rotate`,5,`saturate`,80,`contrast`,115,`brightness`,115)"><i class="far fa-image"></i></button>');
             $('#commandz').append('<button type="button" title="Filtre" class="boutonRouge iconButtons" onclick="mapTilesFiltering(false,`hue-rotate`,240,`saturate`,70,`contrast`,130,`brightness`,90)"><i class="far fa-image"></i></button>');
             $('#commandz').append('<button type="button" title="Filtre" class="boutonVert iconButtons" onclick="mapTilesFiltering(true)"><i class="far fa-image"></i></button>');
         }
     }
-    gangNavig();
     if (playerInfos.pseudo === 'Test') {
+        gangNavig();
     }
 };
 

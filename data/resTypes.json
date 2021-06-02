@@ -375,7 +375,7 @@
         "level": 2,
         "rarity": 8,
         "cat": "blue-sky",
-        "batch": 5,
+        "batch": 3,
         "energie": 10
     },
     {
@@ -385,7 +385,7 @@
         "level": 3,
         "rarity": 7,
         "cat": "sky",
-        "batch": 5,
+        "batch": 3,
         "energie": 0.5
     },
     {
@@ -395,7 +395,7 @@
         "level": 2,
         "rarity": 9,
         "cat": "sky",
-        "batch": 5,
+        "batch": 3,
         "energie": 15
     },
     {
@@ -405,7 +405,7 @@
         "level": 2,
         "rarity": 6,
         "cat": "blue-sky",
-        "batch": 6,
+        "batch": 4,
         "energie": 1
     },
     {
@@ -415,7 +415,7 @@
         "level": 3,
         "rarity": 6,
         "cat": "sky",
-        "batch": 4,
+        "batch": 2,
         "energie": 0.75
     },
     {
@@ -425,7 +425,7 @@
         "level": 2,
         "rarity": 6,
         "cat": "blue-sky",
-        "batch": 6,
+        "batch": 4,
         "energie": 1.5
     },
     {
@@ -435,7 +435,7 @@
         "level": 2,
         "rarity": 4,
         "cat": "sky",
-        "batch": 4,
+        "batch": 3,
         "energie": 50
     },
     {
@@ -445,7 +445,7 @@
         "level": 2,
         "rarity": 8,
         "cat": "blue-sky",
-        "batch": 5,
+        "batch": 3,
         "energie": 2
     },
     {
@@ -455,7 +455,7 @@
         "level": 3,
         "rarity": 10,
         "cat": "blue",
-        "batch": 11,
+        "batch": 8,
         "energie": 100
     },
     {
@@ -465,7 +465,7 @@
         "level": 3,
         "rarity": 8,
         "cat": "blue",
-        "batch": 10,
+        "batch": 7,
         "energie": 100
     },
     {

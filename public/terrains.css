@@ -468,6 +468,22 @@
     display: inline-block;
     z-index: 1;
 }
+.terPicRain {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    display: inline-block;
+    z-index: 1;
+    filter: grayscale(35%) brightness(80%) contrast(120%);
+}
+.terPicSun {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    display: inline-block;
+    z-index: 1;
+    filter: hue-rotate(5deg) saturate(80%) brightness(115%) contrast(120%);
+}
 /* .terPic img {
     filter: grayscale(35%) brightness(80%) contrast(120%);
 } */

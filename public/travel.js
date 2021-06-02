@@ -92,7 +92,7 @@ function landingList() {
             events(true);
             miniOut();
         } else {
-            playRoom('thunder2',true);
+            playRoom('thunderfull',true);
         }
     }
 };

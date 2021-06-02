@@ -201,7 +201,7 @@ socket.on('savedMap-Load', function(sm) {
     if (playerInfos.onShip) {
         playRoom('station',true);
     } else {
-        playRoom('thunder2',true);
+        playRoom('thunderfull',true);
     }
     let thisBatType;
     // Verif bat id's + sorting
