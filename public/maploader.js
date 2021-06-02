@@ -19,6 +19,7 @@ function showMap(wmap,justMoved) {
     // reset
     $('#zone_map').empty();
     // fill
+    let terClass = getTerrainFilter(wmap[0]);
     let minX = xOffset+1;
     let maxX = xOffset+numVTiles;
     let minY = yOffset+1;
@@ -55,7 +56,7 @@ function showMap(wmap,justMoved) {
         } else {
             tPic = tile.terrain+'_00'+tile.seed;
         }
-        $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')" title="#'+tile.id+'"><span class="terPic"><img src="/static/img/sntiles/'+tPic+'.png"></span><span class="bigIcon" id="b'+tile.id+'">'+resHere+'</span><br></div>');
+        $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')" title="#'+tile.id+'"><span class="'+terClass+'"><img src="/static/img/sntiles/'+tPic+'.png"></span><span class="bigIcon" id="b'+tile.id+'">'+resHere+'</span><br></div>');
         if (!modeSonde) {
             bataillons.forEach(function(bat) {
                 if (bat.tileId === tile.id && bat.loc === "zone") {
@@ -79,6 +80,12 @@ function showMap(wmap,justMoved) {
     }
     // console.log(zone);
 };
+
+function getTerrainFilter(mapInf) {
+    let terClass = 'terPic';
+    
+    return terClass;
+}
 
 function showLanderLandingTiles() {
     zone.forEach(function(tile) {
