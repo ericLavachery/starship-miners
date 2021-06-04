@@ -1,6 +1,7 @@
 function goSoute() {
     inSoute = true;
     playRoom('soute',true);
+    playFx('work',false);
     $("#zone_map").css("display","none");
     $("#zone_soute").css("display","block");
     checkSelectedLanderId();
@@ -25,6 +26,7 @@ function goSoute() {
 function goStation() {
     inSoute = false;
     playRoom('station',true);
+    playFx('work',true);
     $("#zone_map").css("display","grid");
     $("#zone_soute").css("display","none");
     showMap(zone,true);

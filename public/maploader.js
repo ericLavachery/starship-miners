@@ -393,7 +393,7 @@ function getTerrainFilter(mapInf) {
     if (mapInf.snd === 'thunderfull' || mapInf.snd === 'thunderstart' || mapInf.snd === 'rain') {
         terClass = 'terPicRain';
     }
-    if (mapInf.snd === 'birdscalm' || mapInf.snd === 'jungle') {
+    if (mapInf.snd === 'birds' || mapInf.snd === 'jungle') {
         terClass = 'terPicSun';
     }
     return terClass;

@@ -167,6 +167,7 @@ function playMusic(piste,interrupt) {
     if (!theMusic.playing() || interrupt) {
         theMusic = new Howl({
             src: ['/static/sounds/music/'+track+'.mp3'],
+            preload: true,
             volume: playerInfos.volMu
         });
         theMusic.play();
@@ -181,16 +182,59 @@ function playRoom(piste,interrupt) {
     if (piste != 'any') {
         track = piste;
     }
+    let roomVol = playerInfos.volFx+0.4;
+    if (roomVol > 1) {
+        roomVol = 1;
+    }
+    if (roomVol < 0.1) {
+        roomVol = 0.1;
+    }
+    roomVol = roomVol.toFixedNumber(1);
+    console.log('roomVol='+roomVol);
     if (!theRoom.playing() || interrupt) {
         theRoom.stop();
         theRoom = new Howl({
             src: ['/static/sounds/rooms/'+track+'.mp3'],
-            volume: playerInfos.volFx,
+            preload: true,
+            volume: roomVol,
             loop: true
         });
         theRoom.play();
         console.log('ROOM: '+track);
     } else {
         console.log('ALREADY A ROOM');
+    }
+};
+
+function playFx(piste,stop) {
+    let track = 'work';
+    if (piste != 'any') {
+        track = piste;
+    }
+    let roomVol = playerInfos.volFx-0.4;
+    if (roomVol > 1) {
+        roomVol = 1;
+    }
+    if (roomVol < 0.1) {
+        roomVol = 0.1;
+    }
+    roomVol = roomVol.toFixedNumber(1);
+    console.log('roomVol='+roomVol);
+    if (stop) {
+        theWork.stop();
+    } else {
+        if (!theWork.playing()) {
+            theWork.stop();
+            theWork = new Howl({
+                src: ['/static/sounds/rooms/'+track+'.mp3'],
+                preload: true,
+                volume: roomVol,
+                loop: true
+            });
+            theWork.play();
+            console.log('ROOM: '+track);
+        } else {
+            console.log('ALREADY A ROOM');
+        }
     }
 };

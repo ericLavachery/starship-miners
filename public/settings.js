@@ -222,5 +222,8 @@ let theMusic = new Howl({
 let theRoom = new Howl({
     src: ['/static/sounds/rooms/thunderfull.mp3']
 });
+let theWork = new Howl({
+    src: ['/static/sounds/rooms/work.mp3']
+});
 let soundDuration = 2000;
 let musicChance = 8;
