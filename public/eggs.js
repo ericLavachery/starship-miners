@@ -209,7 +209,7 @@ function checkEggsDrop() {
     }
     if (eggDropCount >= 1 || satDrop) {
         eggSound();
-        playMusic('newEgg',false);
+        playMusic('horns',false);
         if (Math.floor(playerInfos.mapTurn/25) > playerInfos.cocons && !satDrop && rand.rand(1,100) <= playerInfos.mapTurn*2) {
             dropEgg('Cocon','target');
             playerInfos.droppedEggs = playerInfos.droppedEggs+1;

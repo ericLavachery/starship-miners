@@ -1304,7 +1304,7 @@ function createBatList() {
 function nextBat(removeActiveBat,removeForever) {
     testConnect(pseudo);
     if (rand.rand(1,musicChance) === 1) {
-        playMusic('any',false);
+        // playMusic('any',false);
     }
     if (showMini) {
         unitsView();
