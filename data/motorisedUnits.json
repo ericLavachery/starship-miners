@@ -1701,7 +1701,7 @@
             "aoe":"brochette",
             "sound":"dynamite",
             "ammo":["dynamite","dynamite-nitrate","dynamite-nanite"],
-            "maxAmmo":14,
+            "maxAmmo":12,
             "ravitBld":"Atelier"
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],

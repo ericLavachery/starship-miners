@@ -239,18 +239,15 @@ function skillsInfos(bat,batType) {
             }
             if (bat.apLeft >= apReq && bat.fuzz >= -1 && camoufOK) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Mode furtif" class="'+bouton+' skillButtons" onclick="camouflage('+apCost+')"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
+            } else if (bat.fuzz <= -2) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Sortir du mode furtif" class="'+boutonNope+' skillButtons '+colorNope+'" onclick="camoOut()"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
             } else {
-                if (bat.fuzz <= -2) {
-                    skillMessage = "Déjà en mode furtif";
-                } else if (!camoufOK) {
+                if (!camoufOK) {
                     skillMessage = "Impossible en mêlée";
                 } else {
                     skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
-            }
-            if (bat.tags.includes('camo') || (bat.fuzz <= -2 && (batType.skills.includes('camo') || batType.skills.includes('maycamo')))) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Sortir du mode furtif" class="boutonRose skillButtons" onclick="camoOut()"><i class="ra ra-footprint rpg"></i> <span class="small">0</span></button>&nbsp; Mode non furtif</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons '+colorNope+'"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
             }
         }
     }

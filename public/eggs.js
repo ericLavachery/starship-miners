@@ -238,35 +238,56 @@ function checkEggsDrop() {
             playerInfos.cocons = playerInfos.cocons+1;
         }
     } else {
-        playMusic('noEgg',false);
+        // playMusic('noEgg',false);
     }
     if (playerInfos.mapTurn % 25 === 0 && playerInfos.mapTurn > 1) {
-        let rucheBord = Math.round(playerInfos.fuzzTotal*playerInfos.fuzzTotal/1000);
-        if (rucheBord >= 200) {
-            dropEgg('Ruche','edge');
-            rucheBord = rucheBord-200;
+        let rucheBord = Math.round((playerInfos.fuzzTotal-150)*(playerInfos.fuzzTotal-150)/300);
+        if (rucheBord >= 100) {
+            dropEgg('Vomissure','edge');
+            rucheBord = rucheBord-100;
             if (playerInfos.comp.det >= 1) {
-                warning('Ruche en vue','Une Ruche est aparue au loin!');
+                warning('Ruche en vue','Une Ruche se constitue au loin!');
             }
         }
-        if (rucheBord >= 200 && playerInfos.mapTurn >= 50) {
-            dropEgg('Ruche','edge');
-            rucheBord = rucheBord-200;
+        if (rucheBord >= 100) {
+            dropEgg('Vomissure','edge');
+            rucheBord = rucheBord-100;
             if (playerInfos.comp.det >= 1) {
-                warning('Ruche en vue','Une Ruche est aparue au loin!');
+                warning('Ruche en vue','Une Ruche se constitue au loin!');
             }
         }
-        if (rucheBord >= 200 && playerInfos.mapTurn >= 75) {
-            dropEgg('Ruche','edge');
-            rucheBord = rucheBord-200;
+        if (rucheBord >= 100 && playerInfos.mapTurn >= 50) {
+            dropEgg('Vomissure','edge');
+            rucheBord = rucheBord-100;
             if (playerInfos.comp.det >= 1) {
-                warning('Ruche en vue','Une Ruche est aparue au loin!');
+                warning('Ruche en vue','Une Ruche se constitue au loin!');
+            }
+        }
+        if (rucheBord >= 100 && playerInfos.mapTurn >= 50) {
+            dropEgg('Vomissure','edge');
+            rucheBord = rucheBord-100;
+            if (playerInfos.comp.det >= 1) {
+                warning('Ruche en vue','Une Ruche se constitue au loin!');
+            }
+        }
+        if (rucheBord >= 100 && playerInfos.mapTurn >= 75) {
+            dropEgg('Vomissure','edge');
+            rucheBord = rucheBord-100;
+            if (playerInfos.comp.det >= 1) {
+                warning('Ruche en vue','Une Ruche se constitue au loin!');
+            }
+        }
+        if (rucheBord >= 100 && playerInfos.mapTurn >= 75) {
+            dropEgg('Vomissure','edge');
+            rucheBord = rucheBord-100;
+            if (playerInfos.comp.det >= 1) {
+                warning('Ruche en vue','Une Ruche se constitue au loin!');
             }
         }
         if (rand.rand(1,100) <= rucheBord) {
-            dropEgg('Ruche','edge');
+            dropEgg('Vomissure','edge');
             if (playerInfos.comp.det >= 1) {
-                warning('Ruche en vue','Une Ruche est aparue au loin!');
+                warning('Ruche en vue','Une Ruche se constitue au loin!');
             }
         }
     }
@@ -388,6 +409,8 @@ function dropEgg(alienUnit,theArea) {
     if (dropTile >= 0) {
         if (alienUnit === 'Oeuf voilé') {
             putBat(dropTile,0,0,'invisible');
+        } else if (alienUnit === 'Vomissure') {
+            putBat(dropTile,0,0,'morph');
         } else {
             putBat(dropTile,0,0);
         }
