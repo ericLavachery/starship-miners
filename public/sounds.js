@@ -65,6 +65,14 @@ function eggSound() {
     sound.play();
 };
 
+function clicSound() {
+    clicSnd = new Howl({
+        src: ['/static/sounds/fx/clic.mp3'],
+        volume: 0.3
+    });
+    clicSnd.play();
+};
+
 function shotSound(weapon,bat) {
     let soundDir;
     if (bat.team === 'aliens') {
