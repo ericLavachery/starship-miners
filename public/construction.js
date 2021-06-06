@@ -175,12 +175,16 @@ function bfconst(cat,triche,upgrade) {
             if (unit.skills.includes('brigands')) {
                 citColour = 'brunf';
             }
+            let deco = '';
+            if (playerInfos.bldList.includes(unit.name)) {
+                deco = ' udl';
+            }
             if ((bldOK && costOK) || triche) {
                 color = catColor(unit);
-                $('#conUnitList').append('<span class="constName klik '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
+                $('#conUnitList').append('<span class="constName klik '+color+deco+'" title="'+toNiceString(unit.bldReq)+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
             } else {
                 color = 'gff';
-                $('#conUnitList').append('<span class="constName '+color+'" title="'+toNiceString(unit.bldReq)+' '+costString+'">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
+                $('#conUnitList').append('<span class="constName '+color+deco+'" title="'+toNiceString(unit.bldReq)+' '+costString+'">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
             }
             lastKind = unit.kind;
         }
@@ -1247,6 +1251,31 @@ function recupRes(bat,batType) {
         coffre = getBatByTileId(coffreTileId);
     }
     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
+        let resRecup = getResRecup(bat,batType);
+        if (resRecup != undefined) {
+            Object.entries(resRecup).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                if (value >= 1) {
+                    if (coffre.transRes[key] === undefined) {
+                        coffre.transRes[key] = value;
+                    } else {
+                        coffre.transRes[key] = coffre.transRes[key]+value;
+                    }
+                }
+            });
+        }
+    }
+    let resFret = checkResLoad(bat);
+    if (resFret >= 1) {
+        putFretInChest(bat,batType,coffre);
+    }
+    coffreTileId = -1;
+};
+
+function getResRecup(bat,batType) {
+    let resRecup = {};
+    if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
         let recupFactor = 95;
         let bldFactor = 0;
         let index;
@@ -1272,12 +1301,14 @@ function recupRes(bat,batType) {
             Object.entries(batType.costs).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
-                value = Math.ceil(value/100*recupFactor);
+                if (key != 'Moteur orbital') {
+                    value = Math.ceil(value/100*recupFactor);
+                }
                 if (value >= 1) {
-                    if (coffre.transRes[key] === undefined) {
-                        coffre.transRes[key] = value;
+                    if (resRecup[key] === undefined) {
+                        resRecup[key] = value;
                     } else {
-                        coffre.transRes[key] = coffre.transRes[key]+value;
+                        resRecup[key] = resRecup[key]+value;
                     }
                     totalRes = totalRes+value;
                 }
@@ -1290,10 +1321,10 @@ function recupRes(bat,batType) {
                 let value = entry[1];
                 value = Math.floor(value/100*recupFactor/2);
                 if (value >= 1) {
-                    if (coffre.transRes[key] === undefined) {
-                        coffre.transRes[key] = value;
+                    if (resRecup[key] === undefined) {
+                        resRecup[key] = value;
                     } else {
-                        coffre.transRes[key] = coffre.transRes[key]+value;
+                        resRecup[key] = resRecup[key]+value;
                     }
                     totalRes = totalRes+value;
                 }
@@ -1308,10 +1339,10 @@ function recupRes(bat,batType) {
                     let value = entry[1];
                     value = Math.floor(value/100*recupFactor);
                     if (value >= 1) {
-                        if (coffre.transRes[key] === undefined) {
-                            coffre.transRes[key] = value;
+                        if (resRecup[key] === undefined) {
+                            resRecup[key] = value;
                         } else {
-                            coffre.transRes[key] = coffre.transRes[key]+value;
+                            resRecup[key] = resRecup[key]+value;
                         }
                         totalRes = totalRes+value;
                     }
@@ -1326,28 +1357,24 @@ function recupRes(bat,batType) {
                     let key = entry[0];
                     let value = entry[1];
                     if (value >= 1) {
-                        if (coffre.transRes[key] === undefined) {
-                            coffre.transRes[key] = value;
+                        if (resRecup[key] === undefined) {
+                            resRecup[key] = value;
                         } else {
-                            coffre.transRes[key] = coffre.transRes[key]+value;
+                            resRecup[key] = resRecup[key]+value;
                         }
                     }
                 });
             }
         }
         let scrapBonus = Math.floor(totalRes/10);
-        if (coffre.transRes['Scrap'] === undefined) {
-            coffre.transRes['Scrap'] = scrapBonus;
+        if (resRecup['Scrap'] === undefined) {
+            resRecup['Scrap'] = scrapBonus;
         } else {
-            coffre.transRes['Scrap'] = coffre.transRes['Scrap']+scrapBonus;
+            resRecup['Scrap'] = resRecup['Scrap']+scrapBonus;
         }
     }
-    let resFret = checkResLoad(bat);
-    if (resFret >= 1) {
-        putFretInChest(bat,batType,coffre);
-    }
-    coffreTileId = -1;
-};
+    return resRecup;
+}
 
 function recupInfraRes(tile,infra) {
     coffreTileId = -1;

@@ -948,3 +948,6 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
     color: #758569;
     font-weight: lighter;
 }
+.udl {
+    text-decoration: underline;
+}

@@ -152,14 +152,16 @@ function commandes() {
                 //     $('#commandz').append('<button type="button" title="Ajuster le pack de ressources" class="boutonRouge iconButtons" onclick="adjStartPack()"><i class="fas fa-coins"></i></button>');
                 // }
             }
-            $('#commandz').append('<hr>');
-            $('#commandz').append('<button type="button" title="Normal" class="boutonCaca iconButtons" onclick="mapTilesFiltering(true)"><i class="far fa-image"></i></button>');
-            $('#commandz').append('<button type="button" title="Sun" class="boutonJaune iconButtons" onclick="mapTilesFiltering(false,`hue-rotate`,5,`saturate`,100,`brightness`,108,`contrast`,125)"><i class="far fa-image"></i></button>');
-            $('#commandz').append('<button type="button" title="Rain" class="boutonGris iconButtons" onclick="mapTilesFiltering(false,`grayscale`,35,`brightness`,80,`contrast`,120)"><i class="far fa-image"></i></button>');
-            $('#commandz').append('<br>');
-            $('#commandz').append('<button type="button" title="Gravity" class="boutonMauve iconButtons" onclick="mapTilesFiltering(false,`hue-rotate`,205,`saturate`,70,`brightness`,85,`contrast`,135)"><i class="far fa-image"></i></button>');
-            $('#commandz').append('<button type="button" title="Burning" class="boutonRouge iconButtons" onclick="mapTilesFiltering(false,`hue-rotate`,325,`brightness`,75,`contrast`,125,`saturate`,130)"><i class="far fa-image"></i></button>');
-            $('#commandz').append('<button type="button" title="Toxic" class="boutonVert iconButtons" onclick="mapTilesFiltering(false,`hue-rotate`,45,`brightness`,90,`contrast`,130,`saturate`,90)"><i class="far fa-image"></i></button>');
+            if (!playerInfos.onShip) {
+                $('#commandz').append('<hr>');
+                $('#commandz').append('<button type="button" title="Normal" class="boutonCaca iconButtons" onclick="mapTilesFiltering(true)"><i class="far fa-image"></i></button>');
+                $('#commandz').append('<button type="button" title="Sun" class="boutonJaune iconButtons" onclick="mapTilesFiltering(false,`hue-rotate`,5,`saturate`,100,`brightness`,108,`contrast`,125)"><i class="far fa-image"></i></button>');
+                $('#commandz').append('<button type="button" title="Rain" class="boutonGris iconButtons" onclick="mapTilesFiltering(false,`grayscale`,35,`brightness`,80,`contrast`,120)"><i class="far fa-image"></i></button>');
+                $('#commandz').append('<br>');
+                $('#commandz').append('<button type="button" title="Gravity" class="boutonMauve iconButtons" onclick="mapTilesFiltering(false,`hue-rotate`,205,`saturate`,70,`brightness`,85,`contrast`,135)"><i class="far fa-image"></i></button>');
+                $('#commandz').append('<button type="button" title="Burning" class="boutonRouge iconButtons" onclick="mapTilesFiltering(false,`hue-rotate`,325,`brightness`,75,`contrast`,125,`saturate`,130)"><i class="far fa-image"></i></button>');
+                $('#commandz').append('<button type="button" title="Toxic" class="boutonVert iconButtons" onclick="mapTilesFiltering(false,`hue-rotate`,45,`brightness`,90,`contrast`,130,`saturate`,90)"><i class="far fa-image"></i></button>');
+            }
         }
     }
     if (playerInfos.pseudo === 'Test') {
