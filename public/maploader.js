@@ -390,16 +390,36 @@ function writeMapStyles() {
 
 function getTerrainFilter(mapInf) {
     let terClass = 'terPic';
-    if (mapInf.snd === 'thunderfull' || mapInf.snd === 'thunderstart' || mapInf.snd === 'rain') {
-        terClass = 'terPicRain';
-    }
-    if (mapInf.snd === 'birds' || mapInf.snd === 'jungle') {
-        terClass = 'terPicSun';
+    if (!playerInfos.onShip) {
+        if (mapInf.snd === undefined) {
+            zoneReport(zone,true);
+        }
+        if (mapInf.snd === 'thunderfull' || mapInf.snd === 'thunderstart') {
+            terClass = 'terPicRain';
+        }
+        if (mapInf.snd === 'cricketsloop' || mapInf.snd === 'jungle') {
+            terClass = 'terPicSun';
+        }
+        if (mapInf.snd === 'rainforest' || mapInf.snd === 'birds' || mapInf.snd === 'crickets' || mapInf.snd === 'howlwind' || mapInf.snd === 'bogs') {
+            terClass = 'terPic';
+        }
+        if (mapInf.snd === 'fogfrogs' || mapInf.snd === 'strange') {
+            terClass = 'terPicFog';
+        }
+        if (mapInf.snd === 'sywind' || mapInf.snd === 'bwind') {
+            terClass = 'terPicGrav';
+        }
+        if (mapInf.snd === 'bwindred' || mapInf.snd === 'thunderred' || mapInf.snd === 'redwind') {
+            terClass = 'terPicHot';
+        }
+        if (mapInf.snd === 'uhuwind' || mapInf.snd === 'swamp' || mapInf.snd === 'monsoon') {
+            terClass = 'terPicTox';
+        }
     }
     return terClass;
 }
 
-function mapTilesFiltering(reset,f1,f1p,f2,f2p,f3,f3p,f4,f4p) {
+function mapTilesFiltering(reset,f1,f1p,f2,f2p,f3,f3p,f4,f4p,f5,f5p) {
     let filters = '';
     let terClass = 'terPic';
     if (f3 === undefined) {
@@ -410,11 +430,17 @@ function mapTilesFiltering(reset,f1,f1p,f2,f2p,f3,f3p,f4,f4p) {
         f4 = 'opacity';
         f4p = 100;
     }
+    if (f5 === undefined) {
+        f5 = 'opacity';
+        f5p = 100;
+    }
     if (!reset) {
         if (f1 === 'hue-rotate') {
-            filters = f1+'('+f1p+'deg)'+' '+f2+'('+f2p+'%)'+' '+f3+'('+f3p+'%)'+' '+f4+'('+f4p+'%)';
+            filters = f1+'('+f1p+'deg)'+' '+f2+'('+f2p+'%)'+' '+f3+'('+f3p+'%)'+' '+f4+'('+f4p+'%)'+' '+f5+'('+f5p+'%)';
+        } else if (f2 === 'hue-rotate') {
+            filters = f1+'('+f1p+'%)'+' '+f2+'('+f2p+'deg)'+' '+f3+'('+f3p+'%)'+' '+f4+'('+f4p+'%)'+' '+f5+'('+f5p+'%)';
         } else {
-            filters = f1+'('+f1p+'%)'+' '+f2+'('+f2p+'%)'+' '+f3+'('+f3p+'%)'+' '+f4+'('+f4p+'%)';
+            filters = f1+'('+f1p+'%)'+' '+f2+'('+f2p+'%)'+' '+f3+'('+f3p+'%)'+' '+f4+'('+f4p+'%)'+' '+f5+'('+f5p+'%)';
         }
     } else {
         filters = 'grayscale(0%) brightness(100%) contrast(100%)';

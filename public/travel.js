@@ -92,7 +92,11 @@ function landingList() {
             events(true);
             miniOut();
         } else {
-            playRoom('thunderfull',true);
+            if (zone[0].snd === undefined) {
+                playRoom('crickets',true);
+            } else {
+                playRoom(zone[0].snd,true);
+            }
         }
     }
 };

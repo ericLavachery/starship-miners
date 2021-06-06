@@ -1509,6 +1509,46 @@ function zoneReport(zone,quiet) {
             warning('Ensoleillement',zone[0].ensol+'<br>',true);
         }
     }
+    if (zone[0].snd === undefined) {
+        if (percF >= 40) {
+            if (rand.rand(1,2) === 1) {
+                zone[0].snd = 'jungle';
+            } else {
+                zone[0].snd = 'rainforest';
+            }
+        } else if (percW+percS >= 50) {
+            zone[0].snd = 'bogs';
+        } else if (percB >= 35) {
+            if (rand.rand(1,2) === 1) {
+                zone[0].snd = 'crickets';
+            } else {
+                zone[0].snd = 'birds';
+            }
+        } else if (percG+percB >= 75) {
+            if (rand.rand(1,2) === 1) {
+                zone[0].snd = 'crickets';
+            } else {
+                zone[0].snd = 'cricketsloop';
+            }
+        } else if (percP >= 50 || percP+percG >= 70) {
+            zone[0].snd = 'howlwind';
+        } else {
+            if (rand.rand(1,3) === 1) {
+                if (rand.rand(1,2) === 1) {
+                    zone[0].snd = 'birds';
+                } else {
+                    zone[0].snd = 'howlwind';
+                }
+            } else {
+                if (rand.rand(1,2) === 1) {
+                    zone[0].snd = 'thunderstart';
+                } else {
+                    zone[0].snd = 'thunderfull';
+                }
+            }
+        }
+        console.log(zone[0].snd);
+    }
     if (!quiet) {
         if (playerInfos.comp.ca < 3) {
             warning('Montagnes',percM+'%',true);

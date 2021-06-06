@@ -220,7 +220,7 @@ let theMusic = new Howl({
     src: ['/static/sounds/music/nero1.mp3']
 });
 let theRoom = new Howl({
-    src: ['/static/sounds/rooms/thunderfull.mp3']
+    src: ['/static/sounds/rooms/station.mp3']
 });
 let theWork = new Howl({
     src: ['/static/sounds/rooms/work.mp3']

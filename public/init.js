@@ -201,7 +201,11 @@ socket.on('savedMap-Load', function(sm) {
     if (playerInfos.onShip) {
         playRoom('station',true);
     } else {
-        playRoom('thunderfull',true);
+        if (zone[0].snd === undefined) {
+            playRoom('crickets',true);
+        } else {
+            playRoom(zone[0].snd,true);
+        }
     }
     let thisBatType;
     // Verif bat id's + sorting

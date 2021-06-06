@@ -482,7 +482,39 @@
     left: -4px;
     display: inline-block;
     z-index: 1;
-    filter: hue-rotate(5deg) saturate(80%) brightness(115%) contrast(120%);
+    filter: hue-rotate(5deg) saturate(100%) brightness(108%) contrast(125%);
+}
+.terPicFog {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    display: inline-block;
+    z-index: 1;
+    filter: sepia(35%) grayscale(35%) brightness(85%) contrast(140%);
+}
+.terPicGrav {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    display: inline-block;
+    z-index: 1;
+    filter: hue-rotate(205deg) saturate(70%) brightness(85%) contrast(135%);
+}
+.terPicHot {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    display: inline-block;
+    z-index: 1;
+    filter: hue-rotate(325deg) brightness(75%) contrast(125%) saturate(130%);
+}
+.terPicTox {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    display: inline-block;
+    z-index: 1;
+    filter: hue-rotate(45deg) brightness(90%) contrast(130%) saturate(90%);
 }
 /* .terPic img {
     filter: grayscale(35%) brightness(80%) contrast(120%);
