@@ -346,6 +346,7 @@ function pickZone() {
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE ZONE POUR VOTRE PROCHAINE MISSION</span><br>');
     $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<div id="zoneDetail"></div>');
     zoneFiles.forEach(function(zoneId) {
         if (zoneId != 0) {
             let showInfo = '{Rien}';
@@ -498,12 +499,67 @@ function showZonePreview() {
     $('#themmap').empty();
     $('#thenavig').empty();
     $('#thenavig').append('<span class="constIcon"><i class="fas fa-times-circle klik" onclick="miniOut()"></i></span><br>');
+    atomsColors(zonePrev);
+    let allResQHere = {};
+    let allResHere = [];
     zonePrev.forEach(function(tile) {
         if (tile.y === 1) {
             $('#themmap').append('<br>');
         }
-        $('#themmap').append('<span class="mini m'+tile.terrain+'"></span>');
+        if (tile.rq != undefined) {
+            Object.entries(tile.rs).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                if (playerInfos.comp.det < 3) {
+                    if (!allResHere.includes(key)) {
+                        allResHere.push(key);
+                    }
+                } else {
+                    if (allResQHere[key] === undefined) {
+                        allResQHere[key] = value;
+                    } else {
+                        allResQHere[key] = allResQHere[key]+value;
+                    }
+                }
+            });
+        }
+        let infraHere = false;
+        if (tile.infra != undefined) {
+            if (tile.infra != 'Débris') {
+                infraHere = true;
+            }
+        }
+        if (tile.ruins && tile.sh >= 0) {
+            $('#themmap').append('<span class="mini mPoints" title="Ruine (non fouillée)"></span>');
+        } else if (tile.rq === 3) {
+            $('#themmap').append('<span class="mini mRed" title="Gisement important"></span>');
+        } else if (tile.rq === 2) {
+            $('#themmap').append('<span class="mini mYel" title="Gisement"></span>');
+        } else if (tile.rq >= 4) {
+            $('#themmap').append('<span class="mini mBlu" title="Ressource rare"></span>');
+        } else if (infraHere) {
+            $('#themmap').append('<span class="mini mInfra" title="Infrastructure"></span>');
+        } else {
+            $('#themmap').append('<span class="mini m'+tile.terrain+'"></span>');
+        }
     });
     $('#themmap').append('<br>');
     feedZoneDBwith(zonePrev);
+    $('#zoneDetail').empty();
+    let showInfo = '';
+    let zoneInfo = getZoneInfo(zonePrev[0].number);
+    if (zoneInfo.mapDiff != undefined) {
+        showInfo = toZoneString(zoneInfo);
+        showInfo = showInfo.replace(/{/g,'');
+        showInfo = showInfo.replace(/}/g,'');
+    }
+    $('#zoneDetail').append('<span class="ListRes">'+showInfo+'<br></span><br>');
+    $('#zoneDetail').append('<span class="ListRes vert">Ressources présentes<br></span><br>');
+    if (playerInfos.comp.det >= 3) {
+        $('#zoneDetail').append('<span class="ListRes">'+toCoolString(allResQHere,true)+'<br></span><br>');
+    } else if (playerInfos.comp.det >= 2) {
+        $('#zoneDetail').append('<span class="ListRes">'+toNiceString(allResHere)+'<br></span><br>');
+    } else {
+        $('#zoneDetail').append('<span class="ListRes">Compétence de détection insuffisante...<br></span><br>');
+    }
 };

@@ -615,9 +615,9 @@ function turnInfo() {
             }
             if (batType.skills.includes('transorbital') && bat.eq != 'siland') {
                 if (landingNoise >= 2) {
-                    landingNoise = landingNoise+Math.floor(batType.hp/150);
+                    landingNoise = landingNoise+Math.floor(batType.hp/150*batType.fuzz/5);
                 } else {
-                    landingNoise = landingNoise+3+Math.floor(batType.hp/75);
+                    landingNoise = landingNoise+3+Math.floor(batType.hp/75*batType.fuzz/5);
                 }
             }
         }

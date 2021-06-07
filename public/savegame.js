@@ -93,6 +93,7 @@ function saveMapForReturn() {
     if (playerInfos.mapTurn < 50) {
         zone[0].mapDiff = zone[0].mapDiff+1;
     }
+    atomsColors(zone);
     socket.emit('save-map-as',[zone,zoneNum]);
     saveAliensForReturn(zoneNum);
     saveBataillonsForReturn(zoneNum);

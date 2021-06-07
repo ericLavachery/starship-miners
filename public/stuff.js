@@ -75,7 +75,7 @@ function toNiceString(myArray) {
     return newString;
 };
 
-function toCoolString(myObject) {
+function toCoolString(myObject,nocro) {
     let newString = '';
     if (myObject != undefined) {
         newString = JSON.stringify(myObject);
@@ -85,6 +85,10 @@ function toCoolString(myObject) {
     }
     if (newString === '{}') {
         newString = '{Rien}';
+    }
+    if (nocro) {
+        newString = newString.replace(/{/g,'');
+        newString = newString.replace(/}/g,'');
     }
     return newString;
 };

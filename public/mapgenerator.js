@@ -1180,61 +1180,7 @@ function addRes(zone) {
     console.log('realNumberOfRuins='+realNumberOfRuins);
     console.log('nothing under '+nothingUnder);
     // Reajuster les couleurs de gisements
-    let tileTotalRes = 0;
-    let tileNumRes = 0;
-    let res;
-    let rarityFactor;
-    let rareRes;
-    zone.forEach(function(tile) {
-        if (tile.rq != undefined) {
-            if (tile.rq >= 1 && tile.rq <= 3) {
-                tileTotalRes = 0;
-                tileNumRes = 0;
-                rareRes = 0;
-                Object.entries(tile.rs).map(entry => {
-                    let key = entry[0];
-                    let value = entry[1];
-                    res = getResByName(key);
-                    rarityFactor = 45-res.rarity;
-                    if (rarityFactor <= 10) {
-                        rarityFactor = 15;
-                    }
-                    tileTotalRes = tileTotalRes+Math.round(value*rarityFactor/18);
-                    if (res.rarity <= 16) {
-                        rareRes = rareRes+2;
-                    } else if (res.rarity <= 25) {
-                        rareRes++;
-                    }
-                    tileNumRes++;
-                });
-                if (tileNumRes >= 5) {
-                    if (tileTotalRes >= 1000 || rareRes >= 2) {
-                        tile.rq = 3;
-                    } else {
-                        tile.rq = 2;
-                    }
-                } else if (tileNumRes >= 4) {
-                    if (tileTotalRes >= 1350 || (rareRes >= 2 && tileTotalRes >= 1000)) {
-                        tile.rq = 3;
-                    } else {
-                        tile.rq = 2;
-                    }
-                } else if (tileNumRes >= 2) {
-                    if (tileTotalRes >= 500 || (rareRes >= 1 && tileTotalRes >= 350) || (rareRes >= 2 && tileTotalRes >= 250)) {
-                        tile.rq = 2;
-                    } else {
-                        tile.rq = 1;
-                    }
-                } else {
-                    if (tileTotalRes >= 500 || (rareRes >= 2 && tileTotalRes >= 100)) {
-                        tile.rq = 2;
-                    } else {
-                        tile.rq = 1;
-                    }
-                }
-            }
-        }
-    });
+    atomsColors(zone);
     // MAGMA
     if (rand.rand(1,magmaZone) === 1) {
         let magName = 'Magma';
@@ -1574,4 +1520,62 @@ function zoneReport(zone,quiet) {
     }
     console.log('ensol');
     console.log(zone[0].ensol);
+};
+
+function atomsColors(myZone) {
+    let tileTotalRes = 0;
+    let tileNumRes = 0;
+    let res;
+    let rarityFactor;
+    let rareRes;
+    myZone.forEach(function(tile) {
+        if (tile.rq != undefined) {
+            if (tile.rq >= 1 && tile.rq <= 3) {
+                tileTotalRes = 0;
+                tileNumRes = 0;
+                rareRes = 0;
+                Object.entries(tile.rs).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    res = getResByName(key);
+                    rarityFactor = 45-res.rarity;
+                    if (rarityFactor <= 10) {
+                        rarityFactor = 15;
+                    }
+                    tileTotalRes = tileTotalRes+Math.round(value*rarityFactor/18);
+                    if (res.rarity <= 16) {
+                        rareRes = rareRes+2;
+                    } else if (res.rarity <= 25) {
+                        rareRes++;
+                    }
+                    tileNumRes++;
+                });
+                if (tileNumRes >= 5) {
+                    if (tileTotalRes >= 1000 || rareRes >= 2) {
+                        tile.rq = 3;
+                    } else {
+                        tile.rq = 2;
+                    }
+                } else if (tileNumRes >= 4) {
+                    if (tileTotalRes >= 1350 || (rareRes >= 2 && tileTotalRes >= 1000)) {
+                        tile.rq = 3;
+                    } else {
+                        tile.rq = 2;
+                    }
+                } else if (tileNumRes >= 2) {
+                    if (tileTotalRes >= 500 || (rareRes >= 1 && tileTotalRes >= 350) || (rareRes >= 2 && tileTotalRes >= 250)) {
+                        tile.rq = 2;
+                    } else {
+                        tile.rq = 1;
+                    }
+                } else {
+                    if (tileTotalRes >= 500 || (rareRes >= 2 && tileTotalRes >= 100)) {
+                        tile.rq = 2;
+                    } else {
+                        tile.rq = 1;
+                    }
+                }
+            }
+        }
+    });
 };
