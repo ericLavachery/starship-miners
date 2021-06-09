@@ -221,30 +221,47 @@ function playRoom(piste,interrupt) {
 };
 
 function playMove(play) {
+    let isLoop = true;
     let track = 'none';
-    if (selectedBatType.mvSnd != undefined) {
-        track = selectedBatType.mvSnd;
-    }
-    let moveVol = playerInfos.volFx;
-    if (moveVol > 1) {moveVol = 1;}
-    if (moveVol < 0.1) {moveVol = 0.1;}
-    moveVol = moveVol.toFixedNumber(1);
-    // console.log('moveVol='+moveVol);
     if (!play) {
         theMove.stop();
-    } else if (track != 'none') {
-        if (!theMove.playing()) {
-            theMove.stop();
-            theMove = new Howl({
-                src: ['/static/sounds/moves/'+track+'.mp3'],
-                preload: true,
-                volume: moveVol,
-                loop: true
-            });
-            theMove.play();
-            console.log('MOVE: '+track);
+    } else {
+        if (selectedBatType.mvSnd != undefined) {
+            track = selectedBatType.mvSnd;
+            if (track.includes('steps-')) {
+                isLoop = false;
+            }
         } else {
-            console.log('ALREADY MOVING');
+            if (selectedBatType.skills.includes('jetpack') || selectedBat.eq === 'e-jetpack') {
+                track = 'jetpack';
+                isLoop = false;
+            } else if (selectedBatType.skills.includes('moto')) {
+                track = 'moto';
+                isLoop = false;
+            } else if (selectedBatType.cat === 'infantry' && !selectedBatType.skills.includes('robot') && !selectedBatType.skills.includes('fly')) {
+                // en fonction du terrain?
+                track = 'steps-gravel';
+                isLoop = false;
+            }
+        }
+        let moveVol = playerInfos.volFx+0.1;
+        if (moveVol > 1) {moveVol = 1;}
+        if (moveVol < 0.1) {moveVol = 0.1;}
+        moveVol = moveVol.toFixedNumber(1);
+        if (track != 'none') {
+            if (!theMove.playing()) {
+                theMove.stop();
+                theMove = new Howl({
+                    src: ['/static/sounds/moves/'+track+'.mp3'],
+                    preload: true,
+                    volume: moveVol,
+                    loop: isLoop
+                });
+                theMove.play();
+                console.log('MOVE: '+track);
+            } else {
+                console.log('ALREADY MOVING');
+            }
         }
     }
 };
