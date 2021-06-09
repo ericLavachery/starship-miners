@@ -160,8 +160,10 @@ h5 {
     display: none;
 }
 .army {
+    font-family: 'Roboto Condensed', sans-serif;
     font-weight: bold;
-    font-size: 18px;
+    letter-spacing: -1px;
+    font-size: 17px;
     color: #b3a391;
 }
 .fullLine {

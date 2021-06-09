@@ -381,7 +381,7 @@ function batInfos(bat,batType,pop) {
             armycol = " cy";
         }
         $('#'+bodyPlace).append('<span class="army klik'+armycol+'" onclick="armyAssign('+bat.id+','+army+')">'+army+'</span>');
-        while (army <= 9) {
+        while (army <= 12) {
             army++
             if (army === bat.army) {
                 armycol = " cy";
@@ -389,7 +389,7 @@ function batInfos(bat,batType,pop) {
                 armycol = "";
             }
             $('#'+bodyPlace).append('<span class="army">&Star;<span class="klik'+armycol+'" onclick="armyAssign('+bat.id+','+army+')">'+army+'</span></span>');
-            if (army > 9) {break;}
+            if (army > 12) {break;}
         }
     }
     // RESSOURCES transportées

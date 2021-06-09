@@ -66,6 +66,7 @@ function eggSound() {
 };
 
 function clicSound() {
+    playMove(false);
     clicSnd = new Howl({
         src: ['/static/sounds/fx/clic.mp3'],
         volume: 0.3
@@ -74,6 +75,7 @@ function clicSound() {
 };
 
 function shotSound(weapon,bat) {
+    playMove(false);
     let soundDir;
     if (bat.team === 'aliens') {
         soundDir = 'aliens';
@@ -117,9 +119,13 @@ function deathSound(bat) {
 };
 
 function alienSounds() {
+    let alienVol = playerInfos.volFx;
+    if (alienVol > 1) {alienVol = 1;}
+    if (alienVol < 0.1) {alienVol = 0.1;}
+    alienVol = alienVol.toFixedNumber(1);
     var sound = new Howl({
-        src: ['/static/sounds/fx/little_robot_sound_factory_Ambience_AlienHive_00.mp3'],
-        volume: playerInfos.volFx
+        src: ['/static/sounds/fx/alien-hive.mp3'],
+        volume: alienVol
     });
     sound.play();
 };
@@ -211,6 +217,35 @@ function playRoom(piste,interrupt) {
         console.log('ROOM: '+track);
     } else {
         console.log('ALREADY A ROOM');
+    }
+};
+
+function playMove(play) {
+    let track = 'none';
+    if (selectedBatType.mvSnd != undefined) {
+        track = selectedBatType.mvSnd;
+    }
+    let moveVol = playerInfos.volFx;
+    if (moveVol > 1) {moveVol = 1;}
+    if (moveVol < 0.1) {moveVol = 0.1;}
+    moveVol = moveVol.toFixedNumber(1);
+    // console.log('moveVol='+moveVol);
+    if (!play) {
+        theMove.stop();
+    } else if (track != 'none') {
+        if (!theMove.playing()) {
+            theMove.stop();
+            theMove = new Howl({
+                src: ['/static/sounds/moves/'+track+'.mp3'],
+                preload: true,
+                volume: moveVol,
+                loop: true
+            });
+            theMove.play();
+            console.log('MOVE: '+track);
+        } else {
+            console.log('ALREADY MOVING');
+        }
     }
 };
 

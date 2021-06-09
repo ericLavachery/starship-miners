@@ -111,6 +111,9 @@ function nextTurn() {
     checkEggsDrop();
     spawns();
     spawnSound();
+    if (aliens.length >= 10) {
+        alienSounds();
+    }
     killAlienList();
     conselReset();
     spawnType = {};
