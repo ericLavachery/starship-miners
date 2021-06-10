@@ -66,7 +66,7 @@ function eggSound() {
 };
 
 function clicSound() {
-    playMove(false);
+    // playMove(false);
     clicSnd = new Howl({
         src: ['/static/sounds/fx/clic.mp3'],
         volume: 0.3
@@ -75,7 +75,7 @@ function clicSound() {
 };
 
 function shotSound(weapon,bat) {
-    playMove(false);
+    // playMove(false);
     let soundDir;
     if (bat.team === 'aliens') {
         soundDir = 'aliens';
@@ -223,8 +223,13 @@ function playRoom(piste,interrupt) {
 function playMove(play) {
     let isLoop = true;
     let track = 'none';
+    let moveVol = playerInfos.volFx+0.1;
+    if (moveVol > 1) {moveVol = 1;}
+    if (moveVol < 0.1) {moveVol = 0.1;}
+    moveVol = moveVol.toFixedNumber(1);
     if (!play) {
         theMove.stop();
+        // theMove.fade(moveVol,0,2000);
     } else {
         if (selectedBatType.mvSnd != undefined) {
             track = selectedBatType.mvSnd;
@@ -244,10 +249,6 @@ function playMove(play) {
                 isLoop = false;
             }
         }
-        let moveVol = playerInfos.volFx+0.1;
-        if (moveVol > 1) {moveVol = 1;}
-        if (moveVol < 0.1) {moveVol = 0.1;}
-        moveVol = moveVol.toFixedNumber(1);
         if (track != 'none') {
             if (!theMove.playing()) {
                 theMove.stop();

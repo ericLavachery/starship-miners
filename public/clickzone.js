@@ -166,7 +166,7 @@ function isAlienHere(tileId) {
 
 function batSelect(bat) {
     // stop move sound
-    playMove(false);
+    // playMove(false);
     // remove selection on old selected unit
     batDebarq = {};
     nextTurnOK = true;
@@ -208,7 +208,7 @@ function checkSelectedBatType() {
 
 function batUnselect() {
     // stop move sound
-    playMove(false);
+    // playMove(false);
     deleteMoveInfos();
     // remove selection on old selected unit
     tileUnselect();

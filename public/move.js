@@ -166,7 +166,7 @@ function deleteMoveInfos() {
 function moveSelectedBat(tileId,free,jump) {
     // play sound
     if (selectedBatType.cat != 'alien') {
-        playMove(true);
+        // playMove(true);
     }
     let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
     // remove unit and redraw old tile
