@@ -57,7 +57,7 @@ function checkRuinsComp(tile) {
                 playerInfos.comp[foundComp.name] = playerInfos.comp[foundComp.name]+1;
                 playerInfos.fndComps = playerInfos.fndComps+1;
                 warning('Compétence trouvée',foundComp.fullName+' +1 (maintenant au niveau '+playerInfos.comp[foundComp.name]+')');
-                savePlayerInfos();
+                // savePlayerInfos();
             }
         }
     }

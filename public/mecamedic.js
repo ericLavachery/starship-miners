@@ -208,6 +208,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         showBataillon(bat);
                                     }
                                     bat.apLeft = bat.apLeft-medicPatientAP;
+                                    if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
+                                        bat.apLeft = bat.apLeft-medicPatientAP;
+                                    }
                                     putTagAction(bat);
                                 } else if (bat.squadsLeft < batType.squads && deep) {
                                     if (bat.id === selectedBat.id) {
@@ -257,6 +260,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         showBataillon(bat);
                                     }
                                     bat.apLeft = bat.apLeft-medicPatientAP;
+                                    if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
+                                        bat.apLeft = bat.apLeft-medicPatientAP;
+                                    }
                                     putTagAction(bat);
                                 } else if (bat.squadsLeft === batType.squads && bat.damage === 0 && bat.tags.includes('trou') && deep) {
                                     tagDelete(bat,'trou');
@@ -266,6 +272,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     xpGain = xpGain+0.35;
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">trous bouchés<br></span>');
                                     bat.apLeft = bat.apLeft-medicPatientAP;
+                                    if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
+                                        bat.apLeft = bat.apLeft-medicPatientAP;
+                                    }
                                     putTagAction(bat);
                                 }
                             }

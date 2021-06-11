@@ -1294,7 +1294,7 @@ function emptyBatList() {
 function createBatList() {
     let allBatList = bataillons.slice();
     let zoneBatList = _.filter(allBatList, function(bat) {
-        return (bat.loc == 'zone' && bat.apLeft >= 1 && !bat.tags.includes('nolist'));
+        return (bat.loc == 'zone' && !bat.tags.includes('nolist'));
     });
     batList = _.sortBy(zoneBatList,'fuzz');
     batList.reverse();
