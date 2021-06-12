@@ -137,7 +137,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","fouille","camo","brigands"],
+        "skills":["fortif","fouille","camo","brigands","penitbat"],
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -192,7 +192,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","fouille","camo","brigands","guerrilla","tirailleur","fastguet"],
+        "skills":["fortif","fouille","camo","brigands","guerrilla","tirailleur","fastguet","penitbat"],
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -249,7 +249,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","fouille","camo","brigands","trapfosse","unemun","noblub","guerrilla","tirailleur","baddef"],
+        "skills":["fortif","fouille","camo","brigands","trapfosse","unemun","noblub","guerrilla","tirailleur","baddef","penitbat"],
         "maxSkill":2,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
@@ -303,7 +303,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","fouille","berserk","undead","nofear","brigands","maycamo"],
+        "skills":["fortif","fouille","berserk","undead","nofear","brigands","maycamo","penitbat"],
         "fuzz":1.5,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -313,7 +313,7 @@
         "pic":"sinyaki",
         "cat":"infantry",
         "kind":"detruas",
-        "squads":8,
+        "squads":10,
         "squadSize":6,
         "crew":1,
         "hp":6,
@@ -340,7 +340,7 @@
         "weapon2":{
             "name":"Dynamite",
             "cost":5,
-            "range":1,
+            "range":0,
             "noFly":true,
             "noise":1,
             "rof":6,
@@ -359,7 +359,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","fouille","berserk","brigands","maycamo","guerrilla","tirailleur"],
+        "skills":["fortif","fouille","berserk","brigands","maycamo","guerrilla","tirailleur","penitbat"],
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -413,7 +413,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","fouille","brigands","maycamo","guerrilla","tirailleur"],
+        "skills":["fortif","fouille","brigands","maycamo","guerrilla","tirailleur","penitbat"],
         "fuzz":1.5,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -467,7 +467,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","fouille","brigands","berserk","guerrilla","tirailleur"],
+        "skills":["fortif","fouille","brigands","berserk","guerrilla","tirailleur","penitbat"],
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },

@@ -55,7 +55,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":1,"brasier":99},
         "bldReq":["Prisons"],
         "compReq":{"ordre":1},
-        "costs":{"Bois":48},
+        "costs":{"Bois":60},
         "fabTime":15
     },
     {
