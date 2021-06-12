@@ -148,36 +148,40 @@ function eventBouffe(time) {
     if (playerInfos.bldList.includes('Recyclab')) {
         recycleFactor = recycleFactor+4;
     }
+    let energyFactor = playerInfos.comp.tri+8;
     bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/687);
     bouffeCost['Eau'] = Math.round(toutMesCitoyens*time*2/274/recycleFactor*8);
-    bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time*2/1679/recycleFactor*8);
-    if (playerInfos.bldList.includes('Serres hydroponiques')) {
-        let plantesProd = 0;
-        bataillons.forEach(function(bat) {
-            // Serres 1 emplacement
-            if (bat.type === 'Serres hydroponiques') {
-                if (!bat.tags.includes('construction')) {
-                    plantesProd = plantesProd+Math.round(25*time/21);
-                } else {
-                    tagDelete(bat,'construction');
-                }
-            }
-            // Jardin 2 emplacements mais 3x prod
-            if (bat.type === 'Jardin') {
-                if (!bat.tags.includes('construction')) {
-                    plantesProd = plantesProd+Math.round(70*time/21);
-                } else {
-                    tagDelete(bat,'construction');
-                }
-            }
-        });
-        if (plantesProd >= 1) {
-            warning('Serres et Jardins','Oxygène:<span class="vert">+'+plantesProd+'</span><br>(Déduit de la consommation)<br>',true);
-            if (bouffeCost['Oxygène'] > plantesProd) {
-                bouffeCost['Oxygène'] = bouffeCost['Oxygène']-plantesProd;
+    bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time*2/936/recycleFactor*8);
+    bouffeCost['Energie'] = Math.round(toutMesCitoyens*time*2/521/energyFactor*8);
+    let plantesProd = 0;
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        // Serres 1 emplacement
+        if (bat.type === 'Serres hydroponiques') {
+            if (!bat.tags.includes('construction')) {
+                plantesProd = plantesProd+Math.round(25*time/21);
             } else {
-                bouffeCost['Oxygène'] = 0;
+                tagDelete(bat,'construction');
             }
+        }
+        // Jardin 2 emplacements mais 3x prod
+        if (bat.type === 'Jardin') {
+            if (!bat.tags.includes('construction')) {
+                plantesProd = plantesProd+Math.round(70*time/21);
+            } else {
+                tagDelete(bat,'construction');
+            }
+        }
+        if (batType.cat === 'buildings') {
+            bouffeCost['Energie'] = bouffeCost['Energie']+Math.round(batType.hp/30);
+        }
+    });
+    if (plantesProd >= 1) {
+        warning('Serres et Jardins','Oxygène:<span class="vert">+'+plantesProd+'</span><br>(Déduit de la consommation)<br>',true);
+        if (bouffeCost['Oxygène'] > plantesProd) {
+            bouffeCost['Oxygène'] = bouffeCost['Oxygène']-plantesProd;
+        } else {
+            bouffeCost['Oxygène'] = 0;
         }
     }
     console.log(mesCitoyens);
@@ -213,9 +217,20 @@ function eventBouffe(time) {
         playerInfos.vitals = playerInfos.vitals+3;
         messageAir = 'Carence';
     }
+    let dispoHeat = getDispoRes('Energie');
+    let costHeat = bouffeCost['Energie'];
+    let messageHeat = 'OK';
+    if (dispoHeat < costHeat/2) {
+        playerInfos.vitals = playerInfos.vitals+3;
+        messageHeat = 'Carence grave';
+    } else if (dispoHeat < costHeat) {
+        playerInfos.vitals = playerInfos.vitals+1;
+        messageHeat = 'Carence';
+    }
     warning('Consommation','Nourriture: <span class="rose">-'+costFood+'</span><br>'+messageFood,true);
     warning('Consommation','Eau: <span class="rose">-'+costWater+'</span><br>'+messageWater,true);
-    warning('Consommation','Oxygène: <span class="rose">-'+costAir+'</span><br>'+messageAir+'<br>',true);
+    warning('Consommation','Oxygène: <span class="rose">-'+costAir+'</span><br>'+messageAir,true);
+    warning('Consommation','Energie: <span class="rose">-'+costHeat+'</span><br>'+messageHeat+'<br>',true);
     payMaxCost(bouffeCost);
 };
 

@@ -549,12 +549,14 @@ function emptyLanderCit() {
             }
         }
     });
+    prepaBld = {};
     goSoute();
 };
 
 function emptyLanderRes() {
     let landerBat = getBatById(slId);
     moveResCost(landerBat.transRes,slId,souteId,1);
+    prepaBld = {};
     goSoute();
 };
 

@@ -1198,7 +1198,7 @@
         "levels":{"rednecks":11,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Chaîne de montage"],
         "costs":{"Fer":168,"Scrap":684,"Carbone":228,"Aluminium":228,"Titane":12,"Tungstène":156,"Electros":30,"Batteries":18,"Compo2":228,"Compo3":144,"Huile":12},
-        "deploy":{"Fuel":125,"Energie":20,"Huile":10},
+        "deploy":{"Fuel":155,"Energie":20,"Huile":10},
         "fabTime":95
     },
     {
@@ -2236,9 +2236,9 @@
     {
         "id":201,
         "name":"Camp d'entraînement",
-        "upkeep":{"Energie":6,"Soufre":20,"Plomb":20,"Fer":20},
+        "upkeep":{"Energie":6,"Soufre":10,"Plomb":10,"Fer":15,"Bois":10},
         "prod":{"Scrap":20},
-        "costs":{"Compo1":285,"Compo2":165,"Compo3":55,"Eau":300,"Energie":200,"Aluminium":120,"Fer":1200,"Soufre":600,"Plomb":600,"Bois":600,"Explosifs":150,"Végétaux":600,"Calcium":150,"Or":30,"Chlore":150,"Batteries":80},
+        "costs":{"Compo1":285,"Compo2":165,"Compo3":55,"Eau":300,"Energie":200,"Aluminium":120,"Fer":2400,"Soufre":1200,"Plomb":1200,"Bois":1200,"Explosifs":300,"Végétaux":1200,"Calcium":150,"Or":30,"Chlore":150,"Batteries":80},
         "fabTime":125
     },
     {

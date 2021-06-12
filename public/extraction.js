@@ -461,6 +461,10 @@ function showTileRes(theTileRes) {
             tileRes = tileRes.replace(/\d*/g,"");
         }
     }
+    // RES FLAGS
+    playerInfos.resFlags.forEach(function(flag) {
+        tileRes = tileRes.replace(flag,'<span class="bor">'+flag+'</span>');
+    });
     return tileRes;
 };
 

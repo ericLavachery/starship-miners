@@ -1700,7 +1700,7 @@
         "size":7,
         "volume":1,
         "stealth":4,
-        "speed":5,
+        "speed":3,
         "ap":21,
         "maxSalvo":1,
         "weapon":{
@@ -1715,7 +1715,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"magnum_x2",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "weapon2":{
             "name":"Dynamite",
@@ -1760,7 +1760,7 @@
         "size":7,
         "volume":1,
         "stealth":4,
-        "speed":5,
+        "speed":3,
         "ap":22,
         "maxSalvo":1,
         "weapon":{
@@ -1774,7 +1774,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"revolver_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "weapon2":{
             "name":"Sling grenade",
@@ -3135,7 +3135,7 @@
             "cost":3,
             "range":2,
             "rof":18,
-            "accuracy":14,
+            "accuracy":16,
             "dca":2,
             "power":9,
             "armors":0.8,
@@ -3839,7 +3839,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"magnum_x2",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "weapon2":{
             "name":"Boutoir",

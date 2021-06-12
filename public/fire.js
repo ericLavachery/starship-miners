@@ -352,6 +352,15 @@ function attack(melee) {
             attFactor = Math.round(attFactor*1.25);
         }
     }
+    // Flying Aliens vs Small Aircrafts
+    if (targetBatType.skills.includes('fly') && targetBatType.cat === 'vehicles') {
+        if (selectedBatType.cat === 'aliens' && (selectedBatType.skills.includes('fly') || selectedBatType.skills.includes('sauteur'))) {
+            if (selectedBatType.size*4 >= targetBatType.size) {
+                shots = Math.round(shots*selectedBatType.size*8/targetBatType.size);
+                attFactor = Math.round(attFactor*selectedBatType.size*8/targetBatType.size);
+            }
+        }
+    }
     // berserk (bonus ROF)
     if (activeTurn === 'player') {
         if (selectedBatType.skills.includes('berserk') && selectedBat.damage >= 1) {

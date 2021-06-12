@@ -666,10 +666,14 @@ function showTileInfos(tileId) {
                     resIndex = resTypes.findIndex((obj => obj.name == key));
                     res = resTypes[resIndex];
                     bldReq = onlyFirstLetter(res.bld);
+                    let resKol = 'cy';
+                    if (playerInfos.resFlags.includes(res.name)) {
+                        resKol = 'or';
+                    }
                     if (playerInfos.comp.det < 3 && modeSonde) {
-                        $('#tileInfos').append('<span class="paramName cy">'+key+'</span><span class="paramIcon"></span><span class="paramValue cy"><span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
+                        $('#tileInfos').append('<span class="paramName '+resKol+'">'+key+'</span><span class="paramIcon"></span><span class="paramValue '+resKol+'"><span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
                     } else {
-                        $('#tileInfos').append('<span class="paramName cy">'+key+'</span><span class="paramIcon"></span><span class="paramValue cy">'+value+' <span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
+                        $('#tileInfos').append('<span class="paramName '+resKol+'">'+key+'</span><span class="paramIcon"></span><span class="paramValue '+resKol+'">'+value+' <span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
                     }
                     // console.log(key,value);
                 });
