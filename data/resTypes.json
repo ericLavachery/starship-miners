@@ -7,7 +7,8 @@
         "rarity": 35,
         "cat": "white",
         "batch": 8,
-        "energie": 50
+        "energie": 50,
+        "planets":{"E":1,"F":0.5,"T":0.3,"G":0.2,"H":0.1}
     },
     {
         "id": 1,
@@ -94,7 +95,8 @@
         "rarity": 25,
         "cat": "white",
         "batch": 4,
-        "energie": 10
+        "energie": 10,
+        "planets":{"E":1,"F":1,"T":1,"G":1,"H":3}
     },
     {
         "id": 8,
@@ -104,7 +106,8 @@
         "rarity": 100,
         "cat": "white",
         "batch": 6,
-        "energie": 10
+        "energie": 10,
+        "planets":{"E":1,"F":1,"T":1,"G":1,"H":3}
     },
     {
         "id": 9,
@@ -146,7 +149,8 @@
         "rarity": 30,
         "cat": "white",
         "batch": 3,
-        "energie": 100
+        "energie": 100,
+        "planets":{"E":1,"F":1,"T":1,"G":2,"H":1}
     },
     {
         "id": 13,
@@ -189,7 +193,8 @@
         "rarity": 20,
         "cat": "white",
         "batch": 3,
-        "energie": 5
+        "energie": 5,
+        "planets":{"E":1,"F":1,"T":1,"G":2,"H":1}
     },
     {
         "id": 17,
@@ -199,7 +204,8 @@
         "rarity": 16,
         "cat": "white",
         "batch": 3,
-        "energie": 5
+        "energie": 5,
+        "planets":{"E":1,"F":1,"T":1,"G":2,"H":1}
     },
     {
         "id": 18,
@@ -242,7 +248,8 @@
         "cat": "white",
         "batch": 2,
         "energie": 100,
-        "rlab": 1
+        "rlab": 1,
+        "planets":{"E":1,"F":1,"T":1,"G":1,"H":3}
     },
     {
         "id": 21,
@@ -252,7 +259,8 @@
         "rarity": 150,
         "cat": "zero",
         "batch": 6,
-        "energie": -1
+        "energie": -1,
+        "planets":{"E":1,"F":1,"T":0,"G":1,"H":1}
     },
     {
         "id": 22,
@@ -272,7 +280,8 @@
         "rarity": 4,
         "cat": "white",
         "batch": 2,
-        "energie": 3
+        "energie": 3,
+        "planets":{"E":1,"F":2,"T":0,"G":1,"H":1}
     },
     {
         "id": 24,
@@ -282,7 +291,8 @@
         "rarity": 100,
         "cat": "zero",
         "batch": 6,
-        "energie": 100
+        "energie": 100,
+        "planets":{"E":1,"F":1,"T":0,"G":1,"H":1}
     },
     {
         "id": 25,
@@ -293,7 +303,8 @@
         "cat": "zero",
         "batch": 6,
         "energie": 15,
-        "ctri": 20
+        "ctri": 20,
+        "planets":{"E":1,"F":1,"T":0,"G":1,"H":1}
     },
     {
         "id": 26,
@@ -376,7 +387,8 @@
         "rarity": 8,
         "cat": "sky",
         "batch": 3,
-        "energie": 10
+        "energie": 10,
+        "planets":{"E":0,"F":1,"T":1,"G":0,"H":1}
     },
     {
         "id": 34,
@@ -386,7 +398,8 @@
         "rarity": 7,
         "cat": "sky",
         "batch": 3,
-        "energie": 0.5
+        "energie": 0.5,
+        "planets":{"E":0,"F":0,"T":0,"G":1,"H":1}
     },
     {
         "id": 35,
@@ -396,7 +409,8 @@
         "rarity": 9,
         "cat": "sky",
         "batch": 3,
-        "energie": 15
+        "energie": 15,
+        "planets":{"E":0,"F":1,"T":0,"G":1,"H":0}
     },
     {
         "id": 36,
@@ -406,7 +420,8 @@
         "rarity": 6,
         "cat": "blue-sky",
         "batch": 4,
-        "energie": 1
+        "energie": 1,
+        "planets":{"E":1,"F":1,"T":1,"G":2,"H":1}
     },
     {
         "id": 37,
@@ -416,7 +431,8 @@
         "rarity": 6,
         "cat": "sky",
         "batch": 2,
-        "energie": 0.75
+        "energie": 0.75,
+        "planets":{"E":0,"F":0,"T":1,"G":0,"H":1}
     },
     {
         "id": 38,
@@ -426,7 +442,8 @@
         "rarity": 6,
         "cat": "blue-sky",
         "batch": 4,
-        "energie": 1.5
+        "energie": 1.5,
+        "planets":{"E":1,"F":1,"T":0,"G":1,"H":1}
     },
     {
         "id": 39,
@@ -436,7 +453,8 @@
         "rarity": 4,
         "cat": "sky",
         "batch": 3,
-        "energie": 50
+        "energie": 50,
+        "planets":{"E":0,"F":0,"T":0,"G":1,"H":1}
     },
     {
         "id": 40,
@@ -446,7 +464,8 @@
         "rarity": 8,
         "cat": "blue-sky",
         "batch": 3,
-        "energie": 2
+        "energie": 2,
+        "planets":{"E":0.5,"F":1,"T":0,"G":0,"H":2}
     },
     {
         "id": 42,
@@ -456,7 +475,8 @@
         "rarity": 10,
         "cat": "blue",
         "batch": 8,
-        "energie": 100
+        "energie": 100,
+        "planets":{"E":1,"F":2,"T":0,"G":0,"H":0}
     },
     {
         "id": 43,
@@ -466,7 +486,8 @@
         "rarity": 8,
         "cat": "blue",
         "batch": 7,
-        "energie": 100
+        "energie": 100,
+        "planets":{"E":1,"F":1,"T":0,"G":2,"H":0}
     },
     {
         "id": 44,

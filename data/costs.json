@@ -399,7 +399,7 @@
         "name":"Riders",
         "levels":{"rednecks":3,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Garage","Armurerie"],
-        "costs":{"Fer":210,"Scrap":240,"Bois":60,"Carbone":60,"Aluminium":60,"Soufre":30,"Plomb":30,"Végétaux":20,"Chlore":10,"Tissus":5},
+        "costs":{"Fer":210,"Scrap":240,"Bois":60,"Carbone":60,"Aluminium":60,"Soufre":30,"Plomb":30},
         "deploy":{"Fuel":20},
         "fabTime":20
     },
