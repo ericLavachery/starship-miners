@@ -657,6 +657,13 @@ function spawns() {
     }
     let maxPonte = zone[0].mapDiff+zone[0].mapDiff+2;
     let wurmMorph = 28-(zone[0].mapDiff*2);
+    if (wurmMorph < 4) {
+        wurmMorph = 4;
+    }
+    let libMorph = 78-(zone[0].mapDiff*7);
+    if (libMorph < 4) {
+        libMorph = 4;
+    }
     let flyDice;
     let warnAsticots = false;
     let warnVers = false;
@@ -676,10 +683,6 @@ function spawns() {
                 eggSpawn(bat,false);
             } else if (bat.type === 'Colonie' && rand.rand(1,3) === 1) {
                 alienSpawn(bat,'Vomissure');
-            } else if (bat.type === 'Vermisseaux' && flyDice === 1 && aliens.length < maxAliens && aliensNums.lucioles < Math.round(maxPonte/1.5)) {
-                alienSpawn(bat,'Lucioles');
-            } else if (bat.type === 'Vermisseaux' && flyDice >= 2 && aliens.length < maxAliens && aliensNums.moucherons < Math.round(maxPonte*1.5)) {
-                alienSpawn(bat,'Moucherons');
             } else if (transList.includes('Asticots') && bat.type === 'Asticots' && !bat.tags.includes('morph')) {
                 bat.tags.push('morph');
                 if (playerInfos.comp.det >= 2 && playerInfos.comp.ca >= 2 && !warnAsticots) {
@@ -698,6 +701,8 @@ function spawns() {
                 alienMorph(bat,'Lucioles',false);
             } else if (rand.rand(1,wurmMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Larves') {
                 alienMorph(bat,'Wurms',false);
+            } else if (libMorph <= 40 && rand.rand(1,libMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Lombrics') {
+                alienMorph(bat,'Libellules',false);
             } else if (transList.includes('Ombres') && bat.type === 'Ombres') {
                 alienMorph(bat,'Fantômes',false);
             } else if (rand.rand(1,vomiToRuche) === 1 && playerInfos.mapTurn >= Math.ceil(vomiToRuche/1.5) && bat.type === 'Vomissure' && !bat.tags.includes('morph')) {
@@ -1031,7 +1036,7 @@ function cocoonSpawn(bat) {
             if (eggLevel >= 6 && playerInfos.mapTurn >= 50) {
                 alienMorph(bat,'Megagrubz',false);
             } else if (eggLevel >= 4) {
-                alienMorph(bat,'Vermisseaux',false);
+                alienMorph(bat,'Libellules',false);
             } else {
                 alienMorph(bat,'Wurms',false);
             }
