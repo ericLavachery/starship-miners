@@ -2956,7 +2956,7 @@
             "noise":2,
             "rof":8,
             "accuracy":30,
-            "dca":0.8,
+            "dca":0.7,
             "power":16,
             "armors":0.5,
             "aoe":"unit",

@@ -58,7 +58,11 @@ function chooseTarget() {
     }
     let sheep = 4;
     if (selectedBatType.skills.includes('errant')) {
-        sheep = 2;
+        if (selectedBat.squadsLeft <= 2) {
+            sheep = 1;
+        } else {
+            sheep = 2;
+        }
     }
     if (selectedBatType.skills.includes('anycap') || selectedBatType.skills.includes('capmen') || selectedBatType.skills.includes('capbld') || selectedBat.tags.includes('veil')) {
         sheep = 3;

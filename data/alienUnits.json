@@ -138,7 +138,7 @@
         "maxVeg":3,
         "skills":["fly","errant","escape","fear","minaccu","noaploss","fastreg"],
         "deathFx":"76974__michel88__piggrunt2",
-        "killRes":{"Larvium":4,"Germium":3,"Bossium":15,"Creatite":6,"Slime":2},
+        "killRes":{"Larvium":16,"Bugium":13,"Bossium":15,"Mendium":12,"Wingium":31},
         "killXP":25
     },
     {
@@ -1903,10 +1903,10 @@
         "squads":9,
         "squadSize":9,
         "crew":0,
-        "hp":7,
+        "hp":11,
         "armor":5,
-        "size":3,
-        "speed":4,
+        "size":4,
+        "speed":5,
         "stealth":0,
         "ap":12,
         "maxSalvo":1,
