@@ -410,7 +410,7 @@ function dropEgg(alienUnit,theArea) {
         if (alienUnit === 'Oeuf voilé') {
             putBat(dropTile,0,0,'invisible');
         } else if (alienUnit === 'Vomissure') {
-            putBat(dropTile,0,0,'morph');
+            putBat(dropTile,0,0,'bmorph');
         } else {
             putBat(dropTile,0,0);
         }
@@ -712,6 +712,8 @@ function spawns() {
                 }
             } else if (bat.type === 'Vomissure' && bat.tags.includes('morph')) {
                 alienMorph(bat,'Ruche',true);
+            } else if (bat.type === 'Vomissure' && bat.tags.includes('bmorph')) {
+                bat.tags.push('morph');
             } else if (bat.type === 'Dragons' && aliens.length < maxAliens && aliensNums.firebugs < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Firebugs');
             } else if (bat.type === 'Scarabs' && aliens.length < maxAliens && aliensNums.bugs < maxPonte*2) {
@@ -1123,7 +1125,7 @@ function eggSpawn(bat,fromEgg) {
             }
         }
     } else {
-        let spawnChance = Math.round(eggTurn*15*bat.squadsLeft/6*Math.sqrt(presAlien)*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
+        let spawnChance = Math.round(eggTurn*15/bat.squadsLeft*6*Math.sqrt(presAlien)*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
         if (!fromEgg) {
             spawnChance = 100-(eggTurn*5);
             if (spawnChance < 25) {
@@ -1136,7 +1138,7 @@ function eggSpawn(bat,fromEgg) {
             if (adjEggTurn > 13) {
                 adjEggTurn = 13;
             }
-            let maxSpawn = Math.round(((adjEggTurn*1.5)+(bat.squadsLeft*1.5)-9+(zone[0].mapDiff*1.5))/5);
+            let maxSpawn = Math.round(((adjEggTurn*1.5)+(3-(bat.squadsLeft/2))+(zone[0].mapDiff*1.5))/5);
             if (maxSpawn < 1 || !fromEgg) {
                 maxSpawn = 1;
             }

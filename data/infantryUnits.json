@@ -192,7 +192,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","fouille","camo","brigands","guerrilla","tirailleur","fastguet","penitbat"],
+        "skills":["fortif","fouille","camo","brigands","guerrilla","tirailleur","embuscade","fastguet","penitbat"],
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },

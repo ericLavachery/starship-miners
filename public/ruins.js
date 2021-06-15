@@ -90,6 +90,7 @@ function checkRuinsCit(tile) {
     let citChance = Math.round(ruinsCitBase/Math.sqrt(numRuins+8));
     let citDice = 86+Math.ceil(playerInfos.fndCits*citChance/2);
     console.log('citChance: '+citChance);
+    console.log('citDice: '+citDice);
     if (rand.rand(1,citDice) <= citChance) {
         ruinsEmpty = false;
         playerInfos.fndCits = playerInfos.fndCits+1;
