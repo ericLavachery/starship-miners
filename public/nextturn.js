@@ -111,8 +111,17 @@ function nextTurn() {
     checkEggsDrop();
     spawns();
     spawnSound();
-    if (aliens.length >= 10) {
-        alienSounds();
+    if (showMini) {
+        unitsView(); // minimap radar
+    }
+    if (aliens.length >= 60) {
+        alienSounds(4);
+    } else if (aliens.length >= 30) {
+        alienSounds(3);
+    } else if (aliens.length >= 12) {
+        alienSounds(2);
+    } else if (aliens.length >= 6) {
+        alienSounds(1);
     }
     killAlienList();
     conselReset();

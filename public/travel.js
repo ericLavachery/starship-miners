@@ -3,6 +3,7 @@ function startMission() {
     $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
+    saveGame();
     batUnselect();
     // créer db batsInSpace, avec les landers marqués deploy=true et toutes les unités qui sont dedans
     createBatsInSpace();
@@ -30,6 +31,7 @@ function stopMission() {
     $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
+    saveGame();
     batUnselect();
     // créer db batsInSpace, avec les landers et toutes les unités qui sont dedans
     createBatsInSpace();

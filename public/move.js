@@ -309,7 +309,7 @@ function batUnstack() {
     });
     if (stack) {
         if (ownTransHere) {
-            // embarquement(transId,false);
+            embarquement(transId,false);
         } else {
             if (selectedBat.salvoLeft < selectedBatType.maxSalvo) {
                 // le bataillon a tiré ce tour ci : pénalité

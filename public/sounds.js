@@ -59,7 +59,7 @@ function soundVolume(vol,source) {
 
 function eggSound() {
     var sound = new Howl({
-        src: ['/static/sounds/fx/smartsound_CINEMATIC_IMPACT_Eruption_01b.mp3'],
+        src: ['/static/sounds/fx/egg-fall.mp3'],
         volume: playerInfos.volFx
     });
     sound.play();
@@ -118,13 +118,13 @@ function deathSound(bat) {
     }
 };
 
-function alienSounds() {
+function alienSounds(num) {
     let alienVol = playerInfos.volFx;
     if (alienVol > 1) {alienVol = 1;}
     if (alienVol < 0.1) {alienVol = 0.1;}
     alienVol = alienVol.toFixedNumber(1);
     var sound = new Howl({
-        src: ['/static/sounds/fx/alien-hive.mp3'],
+        src: ['/static/sounds/fx/alien-hive'+num+'.mp3'],
         volume: alienVol
     });
     sound.play();
@@ -164,7 +164,7 @@ function spawnSound() {
     if (Object.keys(spawnType).length >= 1) {
         let spawnSound = spawnType.spawnFx;
         var sound = new Howl({
-            src: ['/static/sounds/fx/'+spawnSound+'_x.mp3'],
+            src: ['/static/sounds/fx/'+spawnSound+'.mp3'],
             volume: playerInfos.volFx
         });
         setTimeout(function (){

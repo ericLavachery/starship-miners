@@ -1147,7 +1147,7 @@ function calcStartRes() {
             playerInfos.startRes[key] = value;
         }
     });
-    savePlayerInfos();
+    saveGame();
 };
 
 function calcEndRes(onlyLanders) {

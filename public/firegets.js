@@ -1416,7 +1416,9 @@ function weaponAdj(weapon,bat,wn) {
     }
     if (infra === 'Miradors' || infra === 'Murailles') {
         vision = 3;
-        thisWeapon.range = thisWeapon.range+1;
+        if (!thisWeapon.isMelee) {
+            thisWeapon.range = thisWeapon.range+1;
+        }
     }
     // Forêt (range)
     if (tile.terrain == 'F' && infra != 'Miradors' && batType.cat != 'buildings' && !batType.skills.includes('transorbital')) {
