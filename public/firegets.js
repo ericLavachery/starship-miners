@@ -1217,7 +1217,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.cost = thisWeapon.cost-1;
         }
     }
-    if ((bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq === 'crimekitgi') && thisWeapon.maxAmmo < 99) {
+    if ((bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq.includes('carrousel') || bat.logeq.includes('carrousel') || bat.eq === 'crimekitgi') && thisWeapon.maxAmmo < 99) {
         thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
         if (thisWeapon.maxAmmo < 16) {
             thisWeapon.maxAmmo = 16;

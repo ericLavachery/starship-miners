@@ -521,7 +521,7 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('hover')) {
         allSkills = allSkills+'<span class="paramValue">Amphibie</span>'+sepa;
     }
-    if (batType.skills.includes('ranger')) {
+    if (batType.skills.includes('ranger') || batType.skills.includes('caterp')) {
         allSkills = allSkills+'<span class="paramValue" title="Déplacement peu affecté par la difficulté du terrain">Ranger</span>'+sepa;
     }
     if (batType.skills.includes('hscarpmove')) {
