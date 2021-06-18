@@ -920,7 +920,7 @@
             "elevation":1,
             "noFly":true,
             "noMelee":true,
-            "rof":6,
+            "rof":9,
             "accuracy":12,
             "power":33,
             "aoe":"squad",

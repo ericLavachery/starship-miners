@@ -354,7 +354,7 @@
     {
         "id":65,
         "result":"Tissus",
-        "cost":{"Végétaux":8},
+        "cost":{"Végétaux":12,"Energie":2},
         "compReq":{},
         "bldReq":["Atelier"],
         "compOut":{"ind":1},
@@ -365,7 +365,7 @@
     {
         "id":66,
         "result":"Tissus",
-        "cost":{"Végétaux":5},
+        "cost":{"Végétaux":8,"Energie":1},
         "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":1
@@ -381,25 +381,25 @@
     {
         "id":71,
         "result":"Nourriture",
-        "cost":{"Végétaux":7},
+        "cost":{"Végétaux":10,"Energie":1},
         "compReq":{},
-        "bldReq":[],
+        "bldReq":["Cantine"],
         "batch":1,
         "creaNum":20
     },
     {
         "id":72,
         "result":"Nourriture",
-        "cost":{"Végétaux":7,"Energie":2},
+        "cost":{"Végétaux":7,"Energie":1},
         "compReq":{},
         "bldReq":["Cantine"],
         "compOut":{"tri":1},
-        "batch":2
+        "batch":1
     },
     {
         "id":73,
         "result":"Nourriture",
-        "cost":{"Végétaux":9,"Energie":2},
+        "cost":{"Végétaux":12,"Energie":2},
         "compReq":{"tri":1},
         "bldReq":["Cantine"],
         "batch":3

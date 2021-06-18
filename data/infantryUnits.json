@@ -632,7 +632,7 @@
             "ammo":["marquage"]
         },
         "equip":["aucun","e-flash","e-camo","kit-chouf","e-ranger","e-jetpack","lunette1","chargeur1","silencieux1","camkit"],
-        "log3eq":"silencieux1",
+        "log3eq":"lunette1",
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -686,7 +686,7 @@
             "ammo":["cn-plasma","cn-plastanium","cn-uridium","cn-nanite"]
         },
         "equip":["aucun","e-flash","e-camo","kit-guetteur","e-ranger","e-jetpack","chargeur1","silencieux1","camkit"],
-        "log3eq":"silencieux1",
+        "log3eq":"e-flash",
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -3019,7 +3019,7 @@
             "maxAmmo":8,
             "ravitBld":"Poudrière"
         },
-        "equip":["aucun","e-flash","e-ranger","gilet","chargeur1","silencieux2","snorkel","e-mecano","e-medic","theeye"],
+        "equip":["aucun","e-flash","e-ranger","gilet","chargeur1","snorkel","e-mecano","e-medic","theeye"],
         "log3eq":"snorkel",
         "moveCost":2,
         "maxFlood":1,
@@ -3104,7 +3104,7 @@
         "armor":1,
         "size":4,
         "volume":1,
-        "stealth":1,
+        "stealth":3,
         "ap":16,
         "maxSalvo":1,
         "weapon":{
@@ -3791,7 +3791,7 @@
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
-        "equip":["aucun","e-flash","e-ranger","gilet","e-camo","chargeur1","silencieux2","theeye","helper","waterproof"],
+        "equip":["aucun","e-flash","e-ranger","gilet","e-camo","chargeur1","theeye","helper","waterproof"],
         "log3eq":"chargeur1",
         "moveCost":3,
         "maxFlood":3,

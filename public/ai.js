@@ -177,6 +177,7 @@ function shootTarget(recul,melee) {
                 alienSelectBaseWeapon();
             }
         }
+        showAlien(selectedBat);
         combat(melee);
         tagDelete(selectedBat,'invisible');
     } else {
