@@ -1233,7 +1233,7 @@
         "id":76,
         "name":"Workships",
         "levels":{"rednecks":14,"blades":15,"bulbos":15,"drogmulojs":14,"tiradores":15,"detruas":15,"brasier":13},
-        "bldReq":["Centre de com","Chaîne de montage"],
+        "bldReq":["Chaîne de montage"],
         "costs":{"Fer":140,"Scrap":244,"Carbone":216,"Aluminium":188,"Tungstène":120,"Electros":70,"Batteries":70,"Compo2":292,"Silicium":24,"Huile":84,"Mendium":104,"Azote":88,"Eau":960,"Zinc":180,"Cuivre":120},
         "deploy":{"Fuel":130,"Energie":220,"Mendium":55,"Huile":110},
         "fabTime":105,

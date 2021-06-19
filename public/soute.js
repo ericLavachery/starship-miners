@@ -495,7 +495,7 @@ function checkPlaceLander(myBat,myBatType,landerId) {
     if (myLander.tags.includes('deploy')) {
         deployInfo[0] = true;
     }
-    if (myLanderType.transMaxSize >= myBatType.size) {
+    if (myLanderType.transMaxSize >= myBatType.size || myBatType.skills.includes('prefab')) {
         deployInfo[1] = true;
     }
     let batVolume = calcVolume(myBat,myBatType);
