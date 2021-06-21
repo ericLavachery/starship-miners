@@ -1367,21 +1367,23 @@ function checkAdjRes(adjTile) {
 
 function checkResLevel(tile) {
     let resLevelDice = rand.rand(1,1000);
+    let detekt = 950-(playerInfos.comp.det*25);
     if (tile.x >= 21 && tile.x <= 41 && tile.y >= 21 && tile.y <= 41) {
-        resLevelDice = rand.rand(1,1150);
+        resLevelDice = rand.rand(20,detekt);
     }
     let mythicChance = Math.round((playerInfos.sondeDanger+2)*(playerInfos.sondeDanger+2)/3);
     if (playerInfos.sondeDanger < 3) {
         mythicChance = 0;
     }
+    let redChance = Math.round((playerInfos.sondeDanger+2)*(playerInfos.sondeDanger+2)/2)+110;
     if (resLevelDice <= mythicChance) {
         return 5;
-    } else if (resLevelDice <= 52) {
-        return 1;
-    } else if (resLevelDice <= 84) {
+    } else if (resLevelDice <= mythicChance+redChance) {
+        return 3;
+    } else if (resLevelDice <= mythicChance+redChance+320) {
         return 2;
     } else {
-        return 3;
+        return 1;
     }
 };
 
