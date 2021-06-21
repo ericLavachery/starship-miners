@@ -465,6 +465,9 @@ function showTileRes(theTileRes) {
     playerInfos.resFlags.forEach(function(flag) {
         tileRes = tileRes.replace(flag,'<span class="bor">'+flag+'</span>');
     });
+    if (showOneRes != 'Toutes') {
+        tileRes = tileRes.replace(showOneRes,'<span class="bcy">'+showOneRes+'</span>');
+    }
     return tileRes;
 };
 

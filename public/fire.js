@@ -283,7 +283,7 @@ function attack(melee) {
         if (!targetBatType.skills.includes('fly') && !targetBatType.skills.includes('resistelec') && !targetBat.tags.includes('resistelec') && (!targetBatType.skills.includes('hover') || targetBatType.cat === 'aliens')) {
             if (selectedWeap.ammo.includes('taser') || selectedWeap.ammo.includes('electric')) {
                 if ((terrain.name === 'W' || terrain.name === 'R') && !tile.rd) {
-                    selectedWeap.power = Math.round(selectedWeap.power+7);
+                    selectedWeap.power = Math.round(selectedWeap.power*1.5);
                     if (selectedWeap.aoe == 'unit') {
                         selectedWeap.aoe = 'brochette';
                     } else if (selectedWeap.aoe == 'brochette') {
@@ -292,7 +292,7 @@ function attack(melee) {
                         selectedWeap.aoe = 'bat';
                     }
                 } else if (terrain.name === 'S' && !tile.rd && targetBatType.cat === 'aliens') {
-                    targetWeap.power = Math.round(selectedWeap.power+4);
+                    targetWeap.power = Math.round(selectedWeap.power*1.3);
                 }
             }
         }
@@ -1148,7 +1148,7 @@ function defense(melee) {
         if (!selectedBatType.skills.includes('fly') && !selectedBatType.skills.includes('resistelec') && !selectedBat.tags.includes('resistelec') && (!selectedBatType.skills.includes('hover') || selectedBatType.cat === 'aliens')) {
             if (targetWeap.ammo.includes('taser') || targetWeap.ammo.includes('electric')) {
                 if ((terrain.name === 'W' || terrain.name === 'R') && !tile.rd) {
-                    targetWeap.power = Math.round(targetWeap.power+7);
+                    targetWeap.power = Math.round(targetWeap.power*1.5);
                     if (targetWeap.aoe == 'unit') {
                         targetWeap.aoe = 'brochette';
                     } else if (targetWeap.aoe == 'brochette') {
@@ -1157,7 +1157,7 @@ function defense(melee) {
                         targetWeap.aoe = 'bat';
                     }
                 } else if (terrain.name === 'S' && !tile.rd && selectedBatType.cat === 'aliens') {
-                    targetWeap.power = Math.round(targetWeap.power+4);
+                    targetWeap.power = Math.round(targetWeap.power*1.3);
                 }
             }
         }
