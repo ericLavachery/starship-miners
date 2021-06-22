@@ -106,7 +106,12 @@ function putRuinsCit(tile) {
     if (rand.rand(1,ruinsCrimChance) === 1) {
         citId = 225;
     }
-    let ncFactor = Math.round((Math.sqrt(numRuins)+0.75)*2);
+    let badTer = zone[0].pf+zone[0].pw+zone[0].pr+zone[0].ps;
+    let terFactor = 1.75;
+    if (badTer >= 25) {
+        terFactor = terFactor+((badTer-25)/25*0.5);
+    }
+    let ncFactor = Math.round((Math.sqrt(numRuins)+0.75)*terFactor);
     let numCit = rand.rand(1,ncFactor)*6;
     playerInfos.allCits = playerInfos.allCits+numCit;
     let restCit = numCit;
@@ -463,7 +468,7 @@ function checkRuinsRes(tile) {
             if (res.name != 'Magma' && res.name != 'Scrap' && res.cat != 'alien') {
                 thatResChance = 0;
                 thatResNum = 0;
-                resFactor = res.rarity+Math.round(zone[0].mapDiff*1.5);
+                resFactor = res.rarity+Math.round(zone[0].mapDiff*3);
                 if (res.name == 'Nourriture') {
                     if (ruinsEmpty) {
                         thatResChance = Math.ceil(resFactor*res.batch/3);
@@ -489,11 +494,11 @@ function checkRuinsRes(tile) {
                         thatResChance = Math.ceil(resFactor/3*res.batch/3);
                     }
                     if (res.cat === 'blue') {
-                        thatResChance = Math.ceil(thatResChance/3*mapFactor/7);
+                        thatResChance = Math.ceil(thatResChance/2*mapFactor/4);
                     } else if (res.cat === 'blue-sky') {
-                        thatResChance = Math.ceil(thatResChance/2*mapFactor/7);
+                        thatResChance = Math.ceil(thatResChance/1.5*mapFactor/4);
                     } else if (res.cat === 'sky') {
-                        thatResChance = Math.ceil(thatResChance/3*mapFactor/7);
+                        thatResChance = Math.ceil(thatResChance/2*mapFactor/4);
                     }
                 }
                 thatResChance = Math.ceil(thatResChance*(playerInfos.comp.tri+4)/4);
@@ -516,7 +521,7 @@ function checkRuinsRes(tile) {
                     if (res.name != 'Magma' && res.name != 'Scrap' && res.cat != 'alien') {
                         thatResChance = 0;
                         thatResNum = 0;
-                        resFactor = res.rarity+zone[0].mapDiff;
+                        resFactor = res.rarity+Math.round(zone[0].mapDiff*3);
                         if (res.name == 'Nourriture') {
                             if (ruinsEmpty) {
                                 thatResChance = Math.ceil(resFactor*res.batch/3);
@@ -540,11 +545,11 @@ function checkRuinsRes(tile) {
                                 thatResChance = Math.ceil(resFactor/3*res.batch/3);
                             }
                             if (res.cat === 'blue') {
-                                thatResChance = Math.ceil(thatResChance/3*mapFactor/7);
+                                thatResChance = Math.ceil(thatResChance/2*mapFactor/4);
                             } else if (res.cat === 'blue-sky') {
-                                thatResChance = Math.ceil(thatResChance/2*mapFactor/7);
+                                thatResChance = Math.ceil(thatResChance/1.5*mapFactor/4);
                             } else if (res.cat === 'sky') {
-                                thatResChance = Math.ceil(thatResChance/3*mapFactor/7);
+                                thatResChance = Math.ceil(thatResChance/2*mapFactor/4);
                             }
                         }
                         console.log(res.name+' '+thatResChance);
