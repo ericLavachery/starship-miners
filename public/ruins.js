@@ -106,7 +106,7 @@ function putRuinsCit(tile) {
     if (rand.rand(1,ruinsCrimChance) === 1) {
         citId = 225;
     }
-    let ncFactor = Math.round((Math.sqrt(numRuins)+0.75)*3);
+    let ncFactor = Math.round((Math.sqrt(numRuins)+0.75)*2);
     let numCit = rand.rand(1,ncFactor)*6;
     playerInfos.allCits = playerInfos.allCits+numCit;
     let restCit = numCit;

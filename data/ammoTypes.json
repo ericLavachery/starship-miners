@@ -194,7 +194,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "bldReq":["Armurerie"],
+        "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Fer":1,"Soufre":2,"Aluminium":1,"Dunium":2},
         "batch":100
@@ -240,7 +240,7 @@
         "accuracy": 1,
         "apdamage": 0.05,
         "aoe": "",
-        "bldReq":["Arsenal"],
+        "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Timonium":2,"Uranium":1},
         "batch":100
@@ -271,7 +271,7 @@
         "apdamage": 0,
         "aoe": "",
         "info": "PasseBouclier",
-        "bldReq":["Arsenal"],
+        "bldReq":["Usine d'armement"],
         "compReq":{"mat":3,"bal":2},
         "deploy":{"Fer":2,"Soufre":2,"Adamantium":2},
         "batch":100
@@ -378,7 +378,7 @@
         "accuracy": 1,
         "apdamage": 0.05,
         "aoe": "",
-        "bldReq":["Arsenal"],
+        "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Timonium":2,"Uranium":1},
         "batch":100
@@ -441,7 +441,7 @@
         "apdamage": 0,
         "aoe": "",
         "info": "PasseBouclier",
-        "bldReq":["Arsenal"],
+        "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":3},
         "deploy":{"Fer":2,"Soufre":2,"Adamantium":2},
         "batch":100
@@ -456,7 +456,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "bldReq":["Armurerie"],
+        "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Fer":1,"Soufre":2,"Aluminium":1,"Dunium":2},
         "batch":100
@@ -559,7 +559,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "bldReq":["Armurerie"],
+        "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Fer":1,"Soufre":2,"Aluminium":1,"Dunium":2},
         "batch":100
@@ -605,7 +605,7 @@
         "accuracy": 1,
         "apdamage": 0.05,
         "aoe": "",
-        "bldReq":["Arsenal"],
+        "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Timonium":2,"Uranium":1},
         "batch":100
@@ -636,7 +636,7 @@
         "apdamage": 0,
         "aoe": "",
         "info": "PasseBouclier",
-        "bldReq":["Arsenal"],
+        "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":3},
         "deploy":{"Fer":2,"Soufre":2,"Adamantium":2},
         "batch":100
@@ -766,7 +766,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "bldReq":["Armurerie"],
+        "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Aluminium":4,"Dunium":4,"Oxygène":1},
         "batch":200
@@ -812,7 +812,7 @@
         "accuracy": 1,
         "apdamage": 0.05,
         "aoe": "",
-        "bldReq":["Arsenal"],
+        "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Aluminium":2,"Plomb":2,"Timonium":4,"Uranium":2,"Oxygène":1},
         "batch":200
@@ -874,6 +874,7 @@
         "apdamage": 0,
         "aoe": "brochette",
         "info": "Incendiaire",
+        "bldReq":["Arsenal"],
         "compReq":{"bal":2,"pyro":2},
         "deploy":{"Fer":2,"Soufre":2,"Plutonium":2,"Aluminium":1,"Phosphore":2},
         "batch":100,
@@ -884,13 +885,13 @@
         "range": 1.1,
         "rof": 1,
         "power": 0,
-        "powermult": 1,
+        "powermult": 0.8,
         "armors": 0.2,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "unit",
         "info": "Incendiaire",
-        "bldReq":["Armurerie"],
+        "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"pyro":2},
         "deploy":{"Tungsten":2,"Titane":1,"Soufre":2,"Plutonium":2,"Aluminium":1,"Phosphore":1},
         "batch":100
@@ -906,7 +907,7 @@
         "apdamage": 0,
         "aoe": "brochette",
         "info": "Incendiaire",
-        "bldReq":["Laboratoire"],
+        "bldReq":["Usine d'armement","Laboratoire"],
         "compReq":{"bal":2,"pyro":3},
         "deploy":{"Fer":2,"Soufre":1,"Plutonium":2,"Aluminium":1,"Phosphore":1,"Pyratol":2},
         "batch":100
@@ -922,7 +923,7 @@
         "apdamage": 0,
         "aoe": "squad",
         "info": "Incendiaire",
-        "bldReq":["Laboratoire"],
+        "bldReq":["Usine d'armement","Laboratoire"],
         "compReq":{"bal":2,"explo":2,"pyro":2},
         "deploy":{"Fer":2,"Plutonium":2,"Aluminium":1,"Phosphore":2,"Nanite":2},
         "batch":100
@@ -938,7 +939,7 @@
         "apdamage": 0,
         "aoe": "brochette",
         "info": "Incendiaire",
-        "bldReq":["Arsenal"],
+        "bldReq":["Usine d'armement"],
         "compReq":{"bal":3,"mat":2,"pyro":2},
         "deploy":{"Fer":1,"Soufre":2,"Plutonium":1,"Aluminium":1,"Phosphore":2,"Salite":2},
         "batch":100
@@ -1043,7 +1044,7 @@
         "accuracy": 0.67,
         "apdamage": 0.06,
         "aoe": "squad",
-        "bldReq":["Laboratoire"],
+        "bldReq":["Centre de recherches"],
         "compReq":{"explo":2,"energ":1},
         "deploy":{"Mercure":1,"Hydrogène":2,"Nanite":2,"Azote":1,"Aranium":1},
         "batch":100
@@ -1102,7 +1103,7 @@
         "accuracy": 0.67,
         "apdamage": 0.06,
         "aoe": "squad",
-        "bldReq":["Laboratoire"],
+        "bldReq":["Centre de recherches"],
         "compReq":{"explo":2,"energ":1},
         "deploy":{"Mercure":1,"Hydrogène":2,"Nanite":2,"Azote":1,"Aranium":1},
         "batch":100
@@ -1250,7 +1251,7 @@
         "apdamage": 0,
         "aoe": "",
         "info": "Poison+++",
-        "bldReq":["Laboratoire"],
+        "bldReq":["Centre de recherches"],
         "compReq":{"exo":2,"ca":4},
         "deploy":{"Carbone":4,"Fer":1,"Titane":2,"Mephitis":3,"Huile":2,"Argon":3},
         "batch":100
@@ -1281,7 +1282,7 @@
         "accuracy": 2,
         "apdamage": 0.05,
         "aoe": "",
-        "bldReq":["Laboratoire"],
+        "bldReq":["Centre de recherches"],
         "compReq":{"det":3,"ca":3},
         "deploy":{"Carbone":4,"Cuivre":1,"Tungstène":2,"Electros":1},
         "batch":100
@@ -1512,7 +1513,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "bldReq":["Atelier"],
+        "bldReq":["Arsenal"],
         "compReq":{"mat":1},
         "costs":{"Fer":3,"Carbone":1,"Cobalt":1,"Silicium":1},
         "deploy":{},
@@ -1748,7 +1749,7 @@
         "accuracy": 1.75,
         "apdamage": 0,
         "aoe": "squad",
-        "bldReq":["Atelier"],
+        "bldReq":["Laboratoire"],
         "compReq":{"pyro":2,"ca":2},
         "deploy":{"Scrap":2,"Fer":2,"Explosifs":3,"Phosphore":4,"Aluminium":1,"Huile":1,"Slime":2},
         "batch":100
@@ -1822,7 +1823,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "brochette",
-        "bldReq":["Arsenal"],
+        "bldReq":["Armurerie"],
         "compReq":{"bal":1,"explo":1},
         "deploy":{"Fer":3,"Plomb":1,"Tungstène":2,"Explosifs":1},
         "batch":100
@@ -1852,7 +1853,7 @@
         "accuracy": 1,
         "apdamage": 0.02,
         "aoe": "squad",
-        "bldReq":["Armurerie","Centre de recherches"],
+        "bldReq":["Arsenal","Centre de recherches"],
         "compReq":{"explo":2,"energ":2},
         "deploy":{"Carbone":1,"Fer":1,"Cuivre":2,"Aluminium":1,"Titane":1,"Uridium":1,"Azote":1,"Explosifs":4,"Germium":1},
         "batch":100
@@ -1900,7 +1901,7 @@
         "apdamage": 0,
         "aoe": "squad",
         "info": "Incendiaire",
-        "bldReq":["Armurerie"],
+        "bldReq":["Arsenal"],
         "compReq":{"pyro":2},
         "deploy":{"Scrap":2,"Fer":2,"Potassium":1,"Phosphore":2,"Fuel":2,"Huile":1,"Explosifs":2,"Larvium":1},
         "batch":100
@@ -1915,7 +1916,7 @@
         "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "bat",
-        "bldReq":["Armurerie","Laboratoire"],
+        "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"explo":3},
         "deploy":{"Carbone":1,"Fer":2,"Cuivre":2,"Aluminium":1,"Titane":1,"Azote":1,"Potassium":1,"Explosifs":2,"Nanite":2},
         "batch":100
@@ -1930,7 +1931,7 @@
         "accuracy": 2,
         "apdamage": 0.03,
         "aoe": "bat",
-        "bldReq":["Armurerie","Laboratoire"],
+        "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"explo":1,"exo":1,"ca":3},
         "deploy":{"Carbone":2,"Scrap":2,"Fer":1,"Oxygène":2,"Chlore":6,"Végétaux":3,"Explosifs":1},
         "batch":100
@@ -1945,7 +1946,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "squad",
-        "bldReq":["Armurerie","Laboratoire"],
+        "bldReq":["Usine d'armement","Laboratoire"],
         "compReq":{"bal":2,"explo":1,"det":3},
         "deploy":{"Fer":2,"Aluminium":2,"Titane":1,"Hélium":1,"Electros":1,"Batteries":1,"Explosifs":3},
         "batch":100
@@ -1960,7 +1961,7 @@
         "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "squad",
-        "bldReq":["Armurerie","Centre de recherches"],
+        "bldReq":["Usine d'armement","Centre de recherches"],
         "compReq":{"bal":2,"explo":2,"energ":1},
         "deploy":{"Carbone":1,"Fer":2,"Plastanium":2,"Titane":1,"Tungstène":1,"Electros":1,"Batteries":1,"Explosifs":3,"Wingium":1},
         "batch":100
@@ -2144,7 +2145,7 @@
         "accuracy": 1.25,
         "apdamage": 0,
         "aoe": "squad",
-        "bldReq":["Arsenal","Laboratoire"],
+        "bldReq":["Usine d'armement","Laboratoire"],
         "compReq":{"bal":2,"explo":1,"det":3,"arti":1},
         "deploy":{"Fer":2,"Aluminium":2,"Titane":1,"Nickel":1,"Hélium":1,"Explosifs":3,"Fuel":1,"Electros":2,"Batteries":1},
         "batch":100
@@ -2159,7 +2160,7 @@
         "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "squad",
-        "bldReq":["Arsenal","Centre de recherches"],
+        "bldReq":["Usine d'armement","Centre de recherches"],
         "compReq":{"bal":2,"explo":2,"energ":1,"arti":1},
         "deploy":{"Carbone":1,"Plastanium":2,"Aluminium":2,"Tungstène":1,"Titane":1,"Nickel":1,"Explosifs":3,"Fuel":1,"Electros":2,"Batteries":1,"Wingium":1},
         "batch":100
@@ -2174,7 +2175,7 @@
         "accuracy": 1.25,
         "apdamage": 0,
         "aoe": "squad",
-        "bldReq":["Arsenal","Centre de recherches"],
+        "bldReq":["Usine d'armement","Centre de recherches"],
         "compReq":{"bal":2,"explo":2,"det":4,"arti":1},
         "deploy":{"Fer":1,"Aluminium":3,"Titane":1,"Nickel":1,"Hélium":1,"Explosifs":3,"Fuel":1,"Electros":3,"Batteries":1},
         "batch":100
@@ -2233,7 +2234,7 @@
         "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "squad",
-        "bldReq":["Laboratoire"],
+        "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"explo":3},
         "deploy":{"Scrap":4,"Fer":2,"Aluminium":2,"Potassium":1,"Nanite":2,"Explosifs":2},
         "batch":100
@@ -2352,7 +2353,7 @@
         "apdamage": 0,
         "aoe": "squad",
         "info": "Incendiaire",
-        "bldReq":["Atelier"],
+        "bldReq":["Laboratoire"],
         "compReq":{"pyro":2,"ca":2},
         "deploy":{"Scrap":3,"Fuel":5,"Slime":3,"Phosphore":2,"Huile":2},
         "batch":100
@@ -2415,7 +2416,7 @@
         "apdamage": 0,
         "aoe": "squad",
         "info": "Incendiaire",
-        "bldReq":["Atelier"],
+        "bldReq":["Laboratoire"],
         "compReq":{"pyro":2,"ca":2},
         "deploy":{"Fuel":6,"Huile":3,"Slime":3},
         "batch":100
@@ -2553,7 +2554,7 @@
         "apdamage": 0,
         "aoe": "squad",
         "info": "Incendiaire",
-        "bldReq":["Atelier"],
+        "bldReq":["Laboratoire"],
         "compReq":{"pyro":2,"ca":2},
         "deploy":{"Soufre":2,"Slime":3,"Phosphore":2,"Fuel":2,"Huile":3,"Végétaux":2,"Tissus":1},
         "batch":100
