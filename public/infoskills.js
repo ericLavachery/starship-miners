@@ -1274,13 +1274,22 @@ function skillsInfos(bat,batType) {
             if (tile.terrain === 'W' || tile.terrain === 'R') {
                 roadName = 'Pont';
             }
-            if (bat.apLeft >= apReq && !inMelee && roadCostsOK) {
+            let workForceOK = true;
+            if (batType.crew === 0) {
+                let workForceId = checkNearWorkforce(bat);
+                if (workForceId < 0) {
+                    workForceOK = false;
+                }
+            }
+            if (bat.apLeft >= apReq && !inMelee && roadCostsOK && workForceOK) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction ('+roadName+') '+displayCosts(roadCosts)+'" class="boutonGris skillButtons" onclick="putRoad()"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+roadName+'</h4></span>');
             } else {
                 if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else if (!roadCostsOK) {
                     skillMessage = "Pas assez de ressources "+displayCosts(roadCosts);
+                } else if (!workForceOK) {
+                    skillMessage = "Pas de citoyens pour faire la route (vous devez amener un bataillon à côté)";
                 } else {
                     skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                 }

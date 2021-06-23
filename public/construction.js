@@ -1497,7 +1497,15 @@ function putRoad() {
         apCost = Math.round(apCost/2);
     }
     console.log('apCost:'+apCost);
-    selectedBat.apLeft = selectedBat.apLeft-apCost;
+    if (selectedBatType.crew === 0) {
+        let workForceId = checkNearWorkforce(selectedBat);
+        if (workForceId >= 0) {
+            let workForceBat = getBatById(workForceId);
+            workForceBat.apLeft = workForceBat.apLeft-apCost;
+        }
+    } else {
+        selectedBat.apLeft = selectedBat.apLeft-apCost;
+    }
     if (!selectedBat.tags.includes('construction')) {
         selectedBat.tags.push('construction');
     }
@@ -1568,7 +1576,7 @@ function checkNearConstructor(myBat) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
-            if (batType.skills.includes('constructeur') || batType.skills.includes('producteur')) {
+            if (batType.skills.includes('reeq')) {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
                     anyConst = true;
                 }
@@ -1576,4 +1584,19 @@ function checkNearConstructor(myBat) {
         }
     });
     return anyConst;
+};
+
+function checkNearWorkforce(myBat) {
+    let workForceId = -1;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" || bat.loc === "trans") {
+            batType = getBatType(bat);
+            if (batType.crew >= 1 && bat.apLeft >= 9) {
+                if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
+                    workForceId = bat.id;
+                }
+            }
+        }
+    });
+    return workForceId;
 };
