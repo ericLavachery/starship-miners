@@ -5,6 +5,9 @@ function guet() {
         selectedBat.tags.push('guet');
     }
     selectedBat.apLeft = selectedBat.apLeft-3;
+    if (selectedBatType.skills.includes('baddef') && !selectedBatType.skills.includes('fastguet')) {
+        selectedBat.apLeft = selectedBat.apLeft-2;
+    }
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);

@@ -87,6 +87,9 @@ function createMap(size) {
         newTile = {};
         newTile.id = i;
         if (newTile.id === 0) {
+            let planetName = getPlanetNameById(playerInfos.sondePlanet);
+            newTile.planet = planetName;
+            newTile.pid = playerInfos.sondePlanet;
             newTile.number = nextZoneNum;
             newTile.dark = false;
             newTile.mapDiff = playerInfos.sondeDanger;

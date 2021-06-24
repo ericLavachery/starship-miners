@@ -721,6 +721,16 @@
         "costs":{"Scrap":2,"Tissus":2}
     },
     {
+        "name": "w2-belier",
+        "cat":"equip",
+        "skills": [],
+        "info": "Bélier",
+        "bldReq":["Atelier"],
+        "compReq":{"log":2},
+        "factor":"thp",
+        "costs":{"Fer":30,"Tungstène":15}
+    },
+    {
         "name": "w2-magnum",
         "cat":"equip",
         "skills": [],

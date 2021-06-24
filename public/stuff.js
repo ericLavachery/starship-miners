@@ -464,6 +464,22 @@ function getUnitTrapName(batType) {
     return trapName;
 };
 
+function getPlanetNameById(pid) {
+    if (pid === 1) {
+        return 'Dom';
+    } else if (pid === 2) {
+        return 'Sarak';
+    } else if (pid === 3) {
+        return 'Gehenna';
+    } else if (pid === 4) {
+        return 'Kzin';
+    } else if (pid === 5) {
+        return 'Horst';
+    } else {
+        return 'Dom';
+    }
+};
+
 function tileNaming(tile,withUnit,fromTileId) {
     let tileName = '';
     if (withUnit) {

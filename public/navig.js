@@ -90,8 +90,9 @@ function commandes() {
             if (hasUnit('Sonde')) {
                 $('#commandz').append('<hr>');
                 $('#commandz').append('<button type="button" title="Régler une sonde (destination)" class="boutonBrun iconButtons" onclick="editSonde()" onmousedown="clicSound()"><i class="fas fa-keyboard"></i></button>');
-                if (playerInfos.sondePlanet >= 0 && playerInfos.sondeDanger >= 0) {
-                    $('#commandz').append('<button type="button" title="Envoyer une sonde (Planète '+playerInfos.sondePlanet+' / présence alien '+playerInfos.sondeDanger+')" class="boutonBrun iconButtons" onclick="goSonde()" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
+                if (playerInfos.sondePlanet > 0 && playerInfos.sondeDanger > 0) {
+                    let planetName = getPlanetNameById(playerInfos.sondePlanet);
+                    $('#commandz').append('<button type="button" title="Envoyer une sonde (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+')" class="boutonBrun iconButtons" onclick="goSonde()" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
                 }
             }
         } else {

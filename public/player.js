@@ -1212,7 +1212,7 @@ function calcEndRes(onlyLanders) {
                     }
                     playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+unitCits;
                 }
-                if (!batType.skills.includes('transorbital') && batType.cat != 'buildings' && batType.cat != 'devices') {
+                if ((!batType.skills.includes('transorbital') && batType.cat != 'buildings' && batType.cat != 'devices') || batType.skills.includes('prefab')) {
                     unitCosts = getAllCosts(bat,false,true);
                     console.log(batType.name);
                     console.log(unitCosts);

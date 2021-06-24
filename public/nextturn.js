@@ -1315,6 +1315,7 @@ function createBatList() {
 
 function nextBat(removeActiveBat,removeForever) {
     testConnect(pseudo);
+    shownEggs = [];
     if (rand.rand(1,musicChance) === 1) {
         playMusic('any',false);
     }

@@ -13,6 +13,18 @@
     "maxAmmo":24,
     "ravitBld":"Poudrière"
 },
+"weapon":{
+    "name":"Shotgun",
+    "cost":3,
+    "range":0,
+    "rof":8,
+    "accuracy":17,
+    "power":8,
+    "armors":1.35,
+    "aoe":"brochette",
+    "sound":"calibre_shotgun",
+    "ammo":["standard","scrap","snake","incendiaire","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
+},
 autre son
 rof 1/2
 seconde arme tir à 1+1 (accuracy 10) noFly

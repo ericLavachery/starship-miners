@@ -131,6 +131,7 @@ function skillsInfos(bat,batType) {
             apReq = 3;
         } else if (batType.skills.includes('baddef')) {
             apReq = bat.ap-5;
+            apCost = 5;
         } else {
             apReq = bat.ap-3;
         }

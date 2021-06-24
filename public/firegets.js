@@ -1249,7 +1249,7 @@ function weaponAdj(weapon,bat,wn) {
     if (bat.eq === 'belier' || bat.logeq === 'belier') {
         if (thisWeapon.name === 'Boutoir') {
             thisWeapon.rof = Math.round(thisWeapon.rof*1.5);
-            thisWeapon.power = thisWeapon.power+4;
+            thisWeapon.power = Math.round(thisWeapon.power*1.26);
             thisWeapon.accuracy = thisWeapon.accuracy+2;
             thisWeapon.name = 'Bélier';
         }
@@ -1582,12 +1582,13 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
         if (batType.skills.includes('tirailleur') && bat.oldTileId != bat.tileId) {
             let gmin = 0.75;
             let gmax = 1;
+            if (batType.skills.includes('baddef')) {
+                gmin = 0.5;
+                gmax = 0.85;
+            }
             if (batType.cat != 'aliens') {
                 gmin = gmin+(playerInfos.comp.train/4);
                 gmax = gmax+(playerInfos.comp.train/4);
-            }
-            if (batType.skills.includes('baddef')) {
-                gmax = 0.85;
             }
             if (brideDef < gmax) {
                 brideDef = brideDef*1.25;

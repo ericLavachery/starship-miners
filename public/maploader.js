@@ -38,6 +38,15 @@ function showMap(wmap,justMoved) {
     });
     let sortedVisMap = _.sortBy(_.sortBy(visMap,'y'),'x');
     sortedVisMap.forEach(function(tile) {
+        if (tile.id === 0) {
+            if (tile.pid === undefined) {
+                tile.pid = 1;
+            }
+            if (tile.planet === undefined) {
+                let planetName = getPlanetNameById(tile.pid);
+                tile.planet = planetName;
+            }
+        }
         if ((modeSonde || modeLanding) && landerLandingOK(tile) && !playerInfos.showedTiles.includes(tile.id)) {
             playerInfos.showedTiles.push(tile.id);
         }

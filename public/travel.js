@@ -272,9 +272,29 @@ function editSonde() {
     $('#conUnitList').append('<select class="boutonGris" id="thePlanet" onchange="changePlayerInfo(`thePlanet`,`sondePlanet`,`sonde`)" title="Planète"></select>');
     $('#thePlanet').empty().append('<option value="">Planète</option>');
     if (1 === playerInfos.sondePlanet) {
-        $('#thePlanet').append('<option value="1" selected>Planète 1</option>');
+        $('#thePlanet').append('<option value="1" selected>Dom</option>');
     } else {
-        $('#thePlanet').append('<option value="1">Planète 1</option>');
+        $('#thePlanet').append('<option value="1">Dom</option>');
+    }
+    if (2 === playerInfos.sondePlanet) {
+        $('#thePlanet').append('<option value="2" selected>Sarak</option>');
+    } else {
+        $('#thePlanet').append('<option value="2">Sarak</option>');
+    }
+    if (3 === playerInfos.sondePlanet) {
+        $('#thePlanet').append('<option value="3" selected>Gehenna</option>');
+    } else {
+        $('#thePlanet').append('<option value="3">Gehenna</option>');
+    }
+    if (4 === playerInfos.sondePlanet) {
+        $('#thePlanet').append('<option value="4" selected>Kzin</option>');
+    } else {
+        $('#thePlanet').append('<option value="4">Kzin</option>');
+    }
+    if (5 === playerInfos.sondePlanet) {
+        $('#thePlanet').append('<option value="5" selected>Horst</option>');
+    } else {
+        $('#thePlanet').append('<option value="5">Horst</option>');
     }
     $('#conUnitList').append('<span class="butSpace"></span>');
     // PRESENCE ALIEN
