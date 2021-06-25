@@ -726,26 +726,6 @@ function attack(melee) {
         apDamage =0;
         $('#report').append('<span class="report rose">Ricochet<br></span>');
     }
-    // if (targetBatType.skills.includes('ricochet') || targetBat.tags.includes('ricochet')) {
-    //     if (!selectedWeap.ammo.includes('feu') && !selectedWeap.ammo.includes('napalm') && !selectedWeap.ammo.includes('fire') && !selectedWeap.ammo.includes('pyratol') && !selectedWeap.ammo.includes('lf-') && !selectedWeap.ammo.includes('lt-') && !selectedWeap.ammo.includes('molotov') && !selectedWeap.ammo.includes('laser') && !selectedWeap.ammo.includes('electric') && !selectedWeap.ammo.includes('taser') && !selectedWeap.ammo.includes('web')) {
-    //         if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('disco')) {
-    //             if (!selectedWeap.ammo.includes('mono')) {
-    //                 if (!selectedWeap.isMelee && !selectedWeap.noShield && selectedWeap.armors > 0) {
-    //                     let minimumPower = targetBat.armor*2;
-    //                     if (minimumPower < 18) {
-    //                         minimumPower = 18;
-    //                     }
-    //                     let calcPower = Math.round((selectedWeap.power+3)/selectedWeap.armors);
-    //                     if (calcPower < minimumPower) {
-    //                         totalDamage = 0;
-    //                         apDamage =0;
-    //                         $('#report').append('<span class="report rose">Ricochet<br></span>');
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
     // infkill
     if (selectedBatType.skills.includes('infkill') && targetBatType.cat != 'infantry') {
         totalDamage = Math.round(totalDamage/2);
@@ -753,7 +733,12 @@ function attack(melee) {
     // resistance oeufs
     if (targetBatType.skills.includes('eggprotect')) {
         let eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1)*2.5)));
-        totalDamage = Math.round(totalDamage*10/(10+((zone[0].mapDiff-1)*2.5)));
+        if (targetBatType.skills.includes('turnprotect')) {
+            eggProt = eggProt+playerInfos.mapTurn-15;
+            if (eggProt > 100) {eggProt = 100;}
+            if (eggProt < 0) {eggProt = 0;}
+        }
+        totalDamage = Math.round(totalDamage*(100-eggProt)/100);
         if (playerInfos.comp.ca >= 2) {
             $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
         }
@@ -1535,26 +1520,6 @@ function defense(melee) {
         apDamage =0;
         $('#report').append('<span class="report rose">Ricochet<br></span>');
     }
-    // if (selectedBatType.skills.includes('ricochet') || selectedBat.tags.includes('ricochet')) {
-    //     if (!targetWeap.ammo.includes('feu') && !targetWeap.ammo.includes('napalm') && !targetWeap.ammo.includes('fire') && !targetWeap.ammo.includes('pyratol') && !targetWeap.ammo.includes('lf-') && !targetWeap.ammo.includes('lt-') && !targetWeap.ammo.includes('molotov') && !targetWeap.ammo.includes('laser') && !targetWeap.ammo.includes('electric') && !targetWeap.ammo.includes('taser') && !targetWeap.ammo.includes('web')) {
-    //         if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('disco')) {
-    //             if (!targetWeap.ammo.includes('mono')) {
-    //                 if (!targetWeap.isMelee && !targetWeap.noShield && targetWeap.armors > 0) {
-    //                     let minimumPower = selectedBat.armor*2;
-    //                     if (minimumPower < 18) {
-    //                         minimumPower = 18;
-    //                     }
-    //                     let calcPower = Math.round((targetWeap.power+3)/targetWeap.armors);
-    //                     if (calcPower < minimumPower) {
-    //                         totalDamage = 0;
-    //                         apDamage =0;
-    //                         $('#report').append('<span class="report rose">Ricochet<br></span>');
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
     // infkill
     if (targetBatType.skills.includes('infkill') && selectedBatType.cat != 'infantry') {
         totalDamage = Math.round(totalDamage/2);
@@ -1562,7 +1527,12 @@ function defense(melee) {
     // resistance oeufs
     if (selectedBatType.skills.includes('eggprotect')) {
         let eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1)*2.5)));
-        totalDamage = Math.round(totalDamage*10/(10+((zone[0].mapDiff-1)*2.5)));
+        if (selectedBatType.skills.includes('turnprotect')) {
+            eggProt = eggProt+playerInfos.mapTurn-15;
+            if (eggProt > 100) {eggProt = 100;}
+            if (eggProt < 0) {eggProt = 0;}
+        }
+        totalDamage = Math.round(totalDamage*(100-eggProt)/100);
         if (playerInfos.comp.ca >= 2) {
             $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
         }

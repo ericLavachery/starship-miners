@@ -77,11 +77,12 @@ function getColonyTiles() {
 function calcEggPause(noMax) {
     let eggPauseDice = eggPauseBase;
     let eggPauseMinimum = eggPauseMin-Math.floor(zone[0].mapDiff/2);
-    eggPauseDice = eggPauseDice+Math.round(Math.sqrt(aliens.length)*2);
+    let eggPauseMaximum = eggPauseMax-Math.floor(zone[0].mapDiff);
+    eggPauseDice = eggPauseDice+Math.round(Math.sqrt(aliens.length));
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type.includes('Oeuf')) {
-                eggPauseDice = eggPauseDice+3;
+                eggPauseDice = eggPauseDice+2;
             } else if (bat.type == 'Ruche') {
                 eggPauseDice = eggPauseDice+0.5;
             } else if (bat.type == 'Coque') {
@@ -97,8 +98,8 @@ function calcEggPause(noMax) {
         eggPauseDice = eggPauseMinimum;
     }
     if (!noMax) {
-        if (eggPauseDice > eggPauseMax) {
-            eggPauseDice = eggPauseMax;
+        if (eggPauseDice > eggPauseMaximum) {
+            eggPauseDice = eggPauseMaximum;
         }
     } else {
         if (eggPauseDice > 50) {
@@ -366,6 +367,7 @@ function eggsDrop() {
         }
     }
     console.log('eggDice='+eggDice);
+    let coqPerc = getCoqueChance();
     if (numEggs >= 1) {
         let eggTypeDice;
         let i = 1;
@@ -379,10 +381,10 @@ function eggsDrop() {
                     invisibleChance = invisibleChance*2;
                 }
             }
-            if (eggTypeDice <= coqueChance) {
+            if (eggTypeDice <= coqPerc) {
                 dropEgg('Coque','nocenter');
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
-            } else if (eggTypeDice <= coqueChance+invisibleChance) {
+            } else if (eggTypeDice <= coqPerc+invisibleChance) {
                 dropEgg('Oeuf voilé','any');
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
                 if (playerInfos.comp.det >= 3) {
@@ -397,6 +399,14 @@ function eggsDrop() {
         }
     }
 };
+
+function getCoqueChance() {
+    let coqPerc = coqueChance;
+    if (playerInfos.mapTurn > aliens.length) {
+        coqPerc = coqPerc+13;
+    }
+    return coqPerc;
+}
 
 function dropEgg(alienUnit,theArea) {
     console.log('dropping egg...');

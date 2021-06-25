@@ -44,13 +44,13 @@ function checkRuinsComp(tile) {
         let compDice = 150+(playerInfos.fndComps*50);
         if (rand.rand(1,compDice) <= compChance) {
             let i = 1;
-            while (i <= 10) {
+            while (i <= 5) {
                 foundComp = randomComp(7,28);
                 compOK = isFoundCompOK(foundComp);
                 if (compOK) {
                     break;
                 }
-                if (i > 12) {break;}
+                if (i > 6) {break;}
                 i++
             }
             if (compOK) {
@@ -63,9 +63,33 @@ function checkRuinsComp(tile) {
     }
 }
 
+function testRuinsComp() {
+    let foundComp = {};
+    let compOK = false;
+    let i = 1;
+    while (i <= 10) {
+        foundComp = randomComp(7,28);
+        compOK = isFoundCompOK(foundComp);
+        if (compOK) {
+            break;
+        }
+        if (i > 12) {break;}
+        i++
+    }
+    if (compOK) {
+        playerInfos.comp[foundComp.name] = playerInfos.comp[foundComp.name]+1;
+        warning('Compétence trouvée',foundComp.fullName+' +1 (maintenant au niveau '+playerInfos.comp[foundComp.name]+')');
+        // savePlayerInfos();
+    }
+}
+
 function isFoundCompOK(foundComp) {
     let compOK = true;
-    let playerCompLvl = playerInfos.comp[foundComp];
+    let playerCompLvl = playerInfos.comp[foundComp.name];
+    console.log('comp='+foundComp.name);
+    console.log('playerCompLvl='+playerCompLvl);
+    console.log('maxLevel='+foundComp.maxLevel);
+    console.log('lvlCosts='+foundComp.lvlCosts[playerCompLvl+1]);
     if (playerCompLvl >= foundComp.maxLevel) {
         compOK = false;
     } else if (foundComp.lvlCosts[playerCompLvl+1] === 2) {

@@ -88,8 +88,7 @@ function refabInfos(myBat,myBatUnitType) {
 };
 
 function reconstruction(debId) {
-    let debIndex = bataillons.findIndex((obj => obj.id == debId));
-    let debBat = bataillons[debIndex];
+    let debBat = getBatById(debId);
     selectMode();
     batDebarq = debBat;
     cursorSwitch('.','grid-item','thor');

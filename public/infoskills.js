@@ -250,6 +250,9 @@ function skillsInfos(bat,batType) {
                 }
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons '+colorNope+'"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
             }
+            if (bat.tags.includes('camo') && bat.fuzz >= -1) {
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Sortir du mode furtif" class="boutonGris skillButtons" onclick="camoOut()"><i class="fas fa-shoe-prints"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode non furtif</'+balise+'></span>');
+            }
         }
     }
     // EMBUSCADE

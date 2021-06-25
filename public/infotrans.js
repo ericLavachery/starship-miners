@@ -337,7 +337,7 @@ function clickDebarq(tileId) {
         batUnselect();
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
             if (!playerInfos.onShip) {
-                batDebarq.apLeft = batDebarq.ap-Math.round(batDebarqType.fabTime*batDebarq.ap/50);
+                batDebarq.apLeft = batDebarq.ap-Math.round(batDebarqType.fabTime*batDebarq.ap/20);
             }
         }
         showBataillon(batDebarq);
