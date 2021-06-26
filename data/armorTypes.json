@@ -505,7 +505,7 @@
         "name": "helper",
         "cat":"equip",
         "skills": [],
-        "info": "+1 PA & +1 puissance mêlée",
+        "info": "+1 PA & +2 puissance mêlée",
         "bldReq":["Laboratoire"],
         "compReq":{"mat":2,"exo":1,"cyber":1},
         "factor":"thp",

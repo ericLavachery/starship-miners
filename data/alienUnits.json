@@ -402,7 +402,8 @@
         "spawnFx":"spawn-mante",
         "fxPriority":7,
         "killRes":{"Bugium":50,"Swarmine":90,"Bossium":30,"Egidium":100,"Mendium":15},
-        "killXP":35
+        "killXP":35,
+        "flavText":"Les mantes pondent des fourmis."
     },
     {
         "id":3,

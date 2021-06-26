@@ -518,7 +518,7 @@
             "maxAmmo":12,
             "ravitBld":"Générateur"
         },
-        "protection":["aucune"],
+        "protection":["aucune","battlesuit"],
         "equip":["aucun","e-flash","e-ranger","e-camo","e-jetpack","permakirin","theeye","helper","kit-lightning","detector"],
         "log3eq":"detector",
         "moveCost":3,

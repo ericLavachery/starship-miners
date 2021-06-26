@@ -369,7 +369,11 @@ function getBatGearStuff(armorName,equipName,batType) {
     }
     if ((batType.skills.includes('fly') || equipName === 'e-jetpack') && batArmor.ap < 0) {
         gearStuff[1] = baseAP+Math.ceil(batArmor.ap*1.5);
-    } else if ((batType.skills.includes('strong') || equipName === 'helper') && batArmor.ap < -1) {
+    } else if (equipName === 'helper' && batType.moveCost > 3) {
+        gearStuff[1] = baseAP+batArmor.ap+2;
+    } else if (equipName === 'helper' && (batArmor.ap < -1 || batType.ap < 13)) {
+        gearStuff[1] = baseAP+batArmor.ap+1;
+    } else if (batType.skills.includes('strong') && batArmor.ap < -1) {
         gearStuff[1] = baseAP+batArmor.ap+1;
     } else if (batType.moveCost === 99) {
         gearStuff[1] = baseAP;

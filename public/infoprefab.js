@@ -9,7 +9,7 @@ function defabInfos(bat,batType) {
         let prefabBat = bataillons[prefabIndex];
         let prefabBatType = getBatType(prefabBat);
         let prefabBatName = bataillons[prefabIndex].type;
-        let apCost = Math.round(batType.mecanoCost*prefabBatType.fabTime/30);
+        let apCost = Math.round(batType.mecanoCost*prefabBatType.fabTime/15);
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire '+prefabBatName+'" class="boutonGris skillButtons" onclick="deconstruction('+prefabId+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
     }
 };
@@ -36,7 +36,7 @@ function deconstruction(prefabId) {
     let landerBat = findTheLander();
     if (Object.keys(landerBat).length >= 1) {
         if (!playerInfos.onShip) {
-            selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*prefabBatType.fabTime/30);
+            selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*prefabBatType.fabTime/15);
         }
         loadBat(prefabBat.id,landerBat.id);
         tagDelete(selectedBat,'guet');

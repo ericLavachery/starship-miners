@@ -521,7 +521,7 @@ function eggDropTile(eggName,theArea) {
         let shufZone = _.shuffle(zone);
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
-                if (tile.x < 17 || tile.x > 43 || tile.y < 17 || tile.y > 43) {
+                if (tile.x < 15 || tile.x > 45 || tile.y < 15 || tile.y > 45) {
                     if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
@@ -726,6 +726,8 @@ function spawns() {
                 bat.tags.push('morph');
             } else if (bat.type === 'Dragons' && aliens.length < maxAliens && aliensNums.firebugs < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Firebugs');
+            } else if (bat.type === 'Mantes' && aliens.length < maxAliens && aliensNums.fourmis < Math.round(maxPonte/1.5)) {
+                alienSpawn(bat,'Fourmis');
             } else if (bat.type === 'Scarabs' && aliens.length < maxAliens && aliensNums.bugs < maxPonte*2) {
                 alienSpawn(bat,'Bugs');
             } else if (bat.type === 'Androks' && aliens.length < maxAliens && aliensNums.scorpions < Math.round(maxPonte*1.5)) {
