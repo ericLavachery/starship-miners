@@ -277,11 +277,22 @@
         "name": "Huile",
         "bld": "Comptoir",
         "level": 2,
-        "rarity": 4,
+        "rarity": 8,
         "cat": "white",
         "batch": 2,
         "energie": 3,
         "planets":{"E":1,"F":2,"T":0,"G":1,"H":1}
+    },
+    {
+        "id": 72,
+        "name": "Fruits",
+        "bld": "Comptoir",
+        "level": 1,
+        "rarity": 35,
+        "cat": "white",
+        "batch": 5,
+        "energie": 100,
+        "planets":{"E":1,"F":0.2,"T":0,"G":0,"H":0}
     },
     {
         "id": 24,

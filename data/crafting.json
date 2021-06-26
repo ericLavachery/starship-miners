@@ -379,27 +379,26 @@
         "batch":3
     },
     {
-        "id":71,
+        "id":72,
         "result":"Nourriture",
-        "cost":{"Végétaux":10,"Energie":1},
+        "cost":{"Fruits":8},
         "compReq":{},
-        "bldReq":["Cantine"],
+        "bldReq":[],
         "batch":1,
         "creaNum":20
     },
     {
-        "id":72,
+        "id":71,
         "result":"Nourriture",
-        "cost":{"Végétaux":7,"Energie":1},
+        "cost":{"Fruits":5,"Végétaux":10,"Energie":1},
         "compReq":{},
         "bldReq":["Cantine"],
-        "compOut":{"tri":1},
         "batch":1
     },
     {
         "id":73,
         "result":"Nourriture",
-        "cost":{"Végétaux":12,"Energie":2},
+        "cost":{"Fruits":10,"Végétaux":18,"Energie":2},
         "compReq":{"tri":1},
         "bldReq":["Cantine"],
         "batch":3
@@ -407,7 +406,7 @@
     {
         "id":74,
         "result":"Nourriture",
-        "cost":{"Végétaux":3,"Larvium":3,"Energie":2},
+        "cost":{"Végétaux":12,"Larvium":3,"Energie":2},
         "compReq":{"ca":1},
         "bldReq":["Cantine"],
         "batch":6
@@ -415,7 +414,7 @@
     {
         "id":75,
         "result":"Nourriture",
-        "cost":{"Végétaux":5,"Larvium":3,"Zinc":1,"Energie":2},
+        "cost":{"Fruits":6,"Larvium":3,"Zinc":1,"Energie":2},
         "compReq":{"ca":2},
         "bldReq":["Laboratoire"],
         "batch":12
@@ -423,7 +422,7 @@
     {
         "id":76,
         "result":"Nourriture",
-        "cost":{"Végétaux":6,"Swarmine":2,"Potassium":1,"Eau":3,"Energie":3},
+        "cost":{"Végétaux":12,"Swarmine":2,"Potassium":1,"Eau":3,"Energie":3},
         "compReq":{"ca":2},
         "bldReq":["Laboratoire"],
         "batch":12
@@ -431,7 +430,7 @@
     {
         "id":77,
         "result":"Nourriture",
-        "cost":{"Huile":2,"Bugium":4,"Potassium":1,"Phosphore":1,"Energie":4},
+        "cost":{"Fruits":6,"Huile":2,"Bugium":6,"Potassium":1,"Phosphore":1,"Energie":4},
         "compReq":{"ca":3},
         "bldReq":["Laboratoire"],
         "batch":12
@@ -439,7 +438,7 @@
     {
         "id":78,
         "result":"Nourriture",
-        "cost":{"Végétaux":6,"Creatite":2,"Chlore":1,"Eau":3},
+        "cost":{"Fruits":6,"Creatite":2,"Chlore":1,"Eau":3},
         "compReq":{"ca":4},
         "bldReq":["Centre de recherches"],
         "batch":12
@@ -447,7 +446,7 @@
     {
         "id":79,
         "result":"Nourriture",
-        "cost":{"Huile":1,"Aranium":2,"Chlore":1,"Zinc":1,"Energie":2},
+        "cost":{"Végétaux":6,"Huile":1,"Aranium":2,"Chlore":1,"Zinc":1,"Energie":2},
         "compReq":{"ca":5},
         "bldReq":["Centre de recherches"],
         "batch":12

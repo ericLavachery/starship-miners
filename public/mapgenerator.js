@@ -890,7 +890,7 @@ function addRes(zone) {
             if (res.name === 'Scrap') {
                 scrapRarity = res.adjRarity;
             }
-            if (res.adjRarity > bestRarity && res.name != 'Scrap') {
+            if (res.adjRarity > bestRarity && res.name != 'Scrap' && res.name != 'Huile' && res.name != 'Fruits') {
                 bestRarity = res.adjRarity;
                 resDefault = res;
             }
@@ -982,7 +982,11 @@ function addRes(zone) {
             // PASS 1
             sortedRes.forEach(function(res) {
                 if (res.cat === 'white') {
-                    resChance = Math.round(res.adjRarity*tile.rq*tile.rq/resFoundDiv);
+                    if ((res.name === 'Huile' || res.name === 'Fruits') && tile.terrain != 'F' && tile.terrain != 'B' && tile.terrain != 'S') {
+                        resChance = 0;
+                    } else {
+                        resChance = Math.round(res.adjRarity*tile.rq*tile.rq/resFoundDiv);
+                    }
                     if (res.bld === 'Derrick') {
                         if (isGas === 'yes') {
                             resChance = Math.round(resChance*3);
@@ -1029,7 +1033,7 @@ function addRes(zone) {
                 if (Object.keys(tile.rs).length <= 2) {
                     // JAUNE PASS 2
                     sortedRes.forEach(function(res) {
-                        if (res.cat === 'white') {
+                        if (res.cat === 'white' && res.name != 'Huile' && res.name != 'Fruits') {
                             if (Object.keys(tile.rs).length <= 1) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,8) === 1) {
@@ -1049,7 +1053,7 @@ function addRes(zone) {
                 if (Object.keys(tile.rs).length <= 2) {
                     // JAUNE PASS 3
                     sortedRes.forEach(function(res) {
-                        if (res.cat === 'white') {
+                        if (res.cat === 'white' && res.name != 'Huile' && res.name != 'Fruits') {
                             if (Object.keys(tile.rs).length <= 1) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,5) === 1) {
@@ -1069,7 +1073,7 @@ function addRes(zone) {
                 if (Object.keys(tile.rs).length <= 2) {
                     // JAUNE PASS 4
                     sortedRes.forEach(function(res) {
-                        if (res.cat === 'white' && res.name != 'Scrap') {
+                        if (res.cat === 'white' && res.name != 'Scrap' && res.name != 'Huile' && res.name != 'Fruits') {
                             if (Object.keys(tile.rs).length <= 1) {
                                 if (tile.rs[res.name] === undefined) {
                                     tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv)+rand.rand(0,9);
@@ -1082,7 +1086,7 @@ function addRes(zone) {
                 if (Object.keys(tile.rs).length <= 4) {
                     // ROUGE PASS 2
                     sortedRes.forEach(function(res) {
-                        if (res.cat === 'white') {
+                        if (res.cat === 'white' && res.name != 'Huile' && res.name != 'Fruits') {
                             if (Object.keys(tile.rs).length <= 3) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,8) === 1) {
@@ -1102,7 +1106,7 @@ function addRes(zone) {
                 if (Object.keys(tile.rs).length <= 4) {
                     // ROUGE PASS 3
                     sortedRes.forEach(function(res) {
-                        if (res.cat === 'white') {
+                        if (res.cat === 'white' && res.name != 'Huile' && res.name != 'Fruits') {
                             if (Object.keys(tile.rs).length <= 3) {
                                 if (tile.rs[res.name] === undefined) {
                                     if (rand.rand(1,5) === 1) {
@@ -1122,7 +1126,7 @@ function addRes(zone) {
                 if (Object.keys(tile.rs).length <= 4) {
                     // ROUGE PASS 4
                     sortedRes.forEach(function(res) {
-                        if (res.cat === 'white' && res.name != 'Scrap') {
+                        if (res.cat === 'white' && res.name != 'Scrap' && res.name != 'Huile' && res.name != 'Fruits') {
                             if (Object.keys(tile.rs).length <= 3) {
                                 if (tile.rs[res.name] === undefined) {
                                     tile.rs[res.name] = Math.round(res.adjBatch*(tile.rq+2)*(tile.rq+2)*rand.rand(3,9)*5/mapResBatchDiv)+rand.rand(0,9);
@@ -1135,7 +1139,7 @@ function addRes(zone) {
             // PASS 5
             if (Object.keys(tile.rs).length <= 0) {
                 sortedRes.forEach(function(res) {
-                    if (res.cat === 'white' && res.name != 'Scrap') {
+                    if (res.cat === 'white' && res.name != 'Scrap' && res.name != 'Huile' && res.name != 'Fruits') {
                         if (Object.keys(tile.rs).length <= 0) {
                             if (tile.rs[res.name] === undefined) {
                                 if (rand.rand(1,3) === 1) {
@@ -1205,27 +1209,73 @@ function addRes(zone) {
     let oilName = 'Huile';
     let oilChance = (rand.rand(2,4)*100)-Math.round(numBadTer/36)-(playerInfos.sondeDanger*8);
     oilChance = Math.ceil(oilChance/2);
+    let oilHere = false;
+    let fruName = 'Fruits';
+    let fruChance = (rand.rand(2,6)*25);
+    let fruHere = false;
     console.log('numBadTer: '+numBadTer);
     if (playerInfos.sondeDanger >= 1) {
         shufZone.forEach(function(tile) {
             if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
                 terrain = getTileTerrain(tile.id);
+                resHere = false;
                 if (tile.rq === undefined) {
                     if (tile.terrain === 'S' || tile.terrain === 'B' || tile.terrain === 'F') {
-                        if (tile.terrain === 'S' && rand.rand(1,oilChance) === 1) {
-                            tile.rq = 1;
-                            tile.rs = {};
-                            tile.rs[oilName] = rand.rand(80,320)+Math.round(numBadTer/72);
+                        oilHere = false;
+                        fruHere = false;
+                        if (tile.terrain === 'S') {
+                            if (rand.rand(1,oilChance) === 1) {
+                                oilHere = true;
+                            }
+                            if (rand.rand(1,fruChance*3) === 1) {
+                                fruHere = true;
+                            }
+                            if (oilHere || fruHere) {
+                                tile.rq = 1;
+                                tile.rs = {};
+                            }
+                            if (oilHere) {
+                                tile.rs[oilName] = rand.rand(80,320)+Math.round(numBadTer/72);
+                            }
+                            if (fruHere) {
+                                tile.rs[fruName] = rand.rand(80,240);
+                            }
                         }
-                        if (tile.terrain === 'B' && rand.rand(1,Math.round(oilChance/2)) === 1) {
-                            tile.rq = 1;
-                            tile.rs = {};
-                            tile.rs[oilName] = rand.rand(30,140)+Math.round(numBadTer/36);
+                        if (tile.terrain === 'B') {
+                            if (rand.rand(1,Math.round(oilChance/2)) === 1) {
+                                oilHere = true;
+                            }
+                            if (rand.rand(1,fruChance) === 1) {
+                                fruHere = true;
+                            }
+                            if (oilHere || fruHere) {
+                                tile.rq = 1;
+                                tile.rs = {};
+                            }
+                            if (oilHere) {
+                                tile.rs[oilName] = rand.rand(30,140)+Math.round(numBadTer/36);
+                            }
+                            if (fruHere) {
+                                tile.rs[fruName] = rand.rand(80,320);
+                            }
                         }
-                        if (tile.terrain === 'F' && rand.rand(1,oilChance*2) === 1) {
-                            tile.rq = 1;
-                            tile.rs = {};
-                            tile.rs[oilName] = rand.rand(30,240)+Math.round(numBadTer/72);
+                        if (tile.terrain === 'F') {
+                            if (rand.rand(1,oilChance*2) === 1) {
+                                oilHere = true;
+                            }
+                            if (rand.rand(1,Math.round(fruChance/2)) === 1) {
+                                fruHere = true;
+                            }
+                            if (oilHere || fruHere) {
+                                tile.rq = 1;
+                                tile.rs = {};
+                            }
+                            if (oilHere) {
+                                tile.rs[oilName] = rand.rand(30,240)+Math.round(numBadTer/72);
+                            }
+                            if (fruHere) {
+                                tile.rs[fruName] = rand.rand(80,640);
+                            }
                         }
                     }
                 }
