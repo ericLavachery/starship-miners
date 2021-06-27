@@ -1207,8 +1207,7 @@ function addRes(zone) {
     }
     // HUILE
     let oilName = 'Huile';
-    let oilChance = (rand.rand(2,4)*100)-Math.round(numBadTer/36)-(playerInfos.sondeDanger*8);
-    oilChance = Math.ceil(oilChance/2);
+    let oilChance = (rand.rand(2,6)*60)-Math.round(numBadTer/50)-(playerInfos.sondeDanger*5);
     let oilHere = false;
     let fruName = 'Fruits';
     let fruChance = (rand.rand(2,6)*25);

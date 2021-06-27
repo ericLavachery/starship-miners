@@ -398,7 +398,7 @@
     {
         "id":73,
         "result":"Nourriture",
-        "cost":{"Fruits":10,"Végétaux":18,"Energie":2},
+        "cost":{"Fruits":9,"Végétaux":18,"Energie":2},
         "compReq":{"tri":1},
         "bldReq":["Cantine"],
         "batch":3
