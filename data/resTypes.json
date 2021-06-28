@@ -8,7 +8,7 @@
         "cat": "white",
         "batch": 8,
         "energie": 50,
-        "planets":{"E":1,"F":0.5,"T":0.3,"G":0.2,"H":0.1}
+        "planets":{"Dom":1,"Sarak":0.5,"Gehenna":0.3,"Kzin":0.2,"Horst":0.1}
     },
     {
         "id": 1,
@@ -96,7 +96,7 @@
         "cat": "white",
         "batch": 4,
         "energie": 10,
-        "planets":{"E":1,"F":1,"T":1,"G":1,"H":3}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":3}
     },
     {
         "id": 8,
@@ -107,7 +107,7 @@
         "cat": "white",
         "batch": 6,
         "energie": 10,
-        "planets":{"E":1,"F":1,"T":1,"G":1,"H":3}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":3}
     },
     {
         "id": 9,
@@ -150,7 +150,7 @@
         "cat": "white",
         "batch": 3,
         "energie": 100,
-        "planets":{"E":1,"F":1,"T":1,"G":2,"H":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":2,"Horst":1}
     },
     {
         "id": 13,
@@ -194,7 +194,7 @@
         "cat": "white",
         "batch": 3,
         "energie": 5,
-        "planets":{"E":1,"F":1,"T":1,"G":2,"H":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":2,"Horst":1}
     },
     {
         "id": 17,
@@ -205,7 +205,7 @@
         "cat": "white",
         "batch": 3,
         "energie": 5,
-        "planets":{"E":1,"F":1,"T":1,"G":2,"H":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":2,"Horst":1}
     },
     {
         "id": 18,
@@ -249,7 +249,7 @@
         "batch": 2,
         "energie": 100,
         "rlab": 1,
-        "planets":{"E":1,"F":1,"T":1,"G":1,"H":3}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":3}
     },
     {
         "id": 21,
@@ -260,7 +260,7 @@
         "cat": "zero",
         "batch": 6,
         "energie": -1,
-        "planets":{"E":1,"F":1,"T":0,"G":1,"H":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":1}
     },
     {
         "id": 22,
@@ -281,7 +281,7 @@
         "cat": "white",
         "batch": 2,
         "energie": 3,
-        "planets":{"E":1,"F":2,"T":0,"G":1,"H":1}
+        "planets":{"Dom":1,"Sarak":2,"Gehenna":0,"Kzin":1,"Horst":1}
     },
     {
         "id": 72,
@@ -292,7 +292,7 @@
         "cat": "white",
         "batch": 5,
         "energie": 100,
-        "planets":{"E":1,"F":0.2,"T":0,"G":0,"H":0}
+        "planets":{"Dom":1,"Sarak":0.2,"Gehenna":0,"Kzin":0,"Horst":0}
     },
     {
         "id": 24,
@@ -303,7 +303,7 @@
         "cat": "zero",
         "batch": 6,
         "energie": 100,
-        "planets":{"E":1,"F":1,"T":0,"G":1,"H":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":1}
     },
     {
         "id": 25,
@@ -315,7 +315,7 @@
         "batch": 6,
         "energie": 15,
         "ctri": 20,
-        "planets":{"E":1,"F":1,"T":0,"G":1,"H":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":1}
     },
     {
         "id": 26,
@@ -399,7 +399,7 @@
         "cat": "sky",
         "batch": 3,
         "energie": 10,
-        "planets":{"E":0,"F":1,"T":1,"G":0,"H":1}
+        "planets":{"Dom":0,"Sarak":1,"Gehenna":1,"Kzin":0,"Horst":1}
     },
     {
         "id": 34,
@@ -410,7 +410,7 @@
         "cat": "sky",
         "batch": 3,
         "energie": 0.5,
-        "planets":{"E":0,"F":0,"T":0,"G":1,"H":1}
+        "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":1,"Horst":1}
     },
     {
         "id": 35,
@@ -421,7 +421,7 @@
         "cat": "sky",
         "batch": 3,
         "energie": 15,
-        "planets":{"E":0,"F":1,"T":0,"G":1,"H":0}
+        "planets":{"Dom":0,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0}
     },
     {
         "id": 36,
@@ -432,7 +432,7 @@
         "cat": "blue-sky",
         "batch": 4,
         "energie": 1,
-        "planets":{"E":1,"F":1,"T":1,"G":2,"H":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":2,"Horst":1}
     },
     {
         "id": 37,
@@ -443,7 +443,7 @@
         "cat": "sky",
         "batch": 2,
         "energie": 0.75,
-        "planets":{"E":0,"F":0,"T":1,"G":0,"H":1}
+        "planets":{"Dom":0,"Sarak":0,"Gehenna":1,"Kzin":0,"Horst":1}
     },
     {
         "id": 38,
@@ -454,7 +454,7 @@
         "cat": "blue-sky",
         "batch": 4,
         "energie": 1.5,
-        "planets":{"E":1,"F":1,"T":0,"G":1,"H":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":1}
     },
     {
         "id": 39,
@@ -465,7 +465,7 @@
         "cat": "sky",
         "batch": 3,
         "energie": 50,
-        "planets":{"E":0,"F":0,"T":0,"G":1,"H":1}
+        "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":1,"Horst":1}
     },
     {
         "id": 40,
@@ -476,7 +476,7 @@
         "cat": "blue-sky",
         "batch": 3,
         "energie": 2,
-        "planets":{"E":0.5,"F":1,"T":0,"G":0,"H":2}
+        "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":0,"Horst":2}
     },
     {
         "id": 42,
@@ -487,7 +487,7 @@
         "cat": "blue",
         "batch": 8,
         "energie": 100,
-        "planets":{"E":1,"F":2,"T":0,"G":0,"H":0}
+        "planets":{"Dom":1,"Sarak":2,"Gehenna":0,"Kzin":0,"Horst":0}
     },
     {
         "id": 43,
@@ -498,7 +498,7 @@
         "cat": "blue",
         "batch": 7,
         "energie": 100,
-        "planets":{"E":1,"F":1,"T":0,"G":2,"H":0}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":2,"Horst":0}
     },
     {
         "id": 44,

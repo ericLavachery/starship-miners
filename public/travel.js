@@ -401,6 +401,8 @@ function feedZoneDB() {
     let newZone = {};
     if (!zoneIds.includes(zone[0].number)) {
         newZone.id = zone[0].number;
+        newZone.planet = zone[0].planet;
+        newZone.pid = zone[0].pid;
         newZone.dark = zone[0].dark;
         newZone.mapDiff = zone[0].mapDiff;
         newZone.ensol = zone[0].ensol;
@@ -434,6 +436,8 @@ function feedZoneDBwith(myZone) {
     let newZone = {};
     if (!zoneIds.includes(myZone[0].number)) {
         newZone.id = myZone[0].number;
+        newZone.planet = zone[0].planet;
+        newZone.pid = zone[0].pid;
         newZone.dark = myZone[0].dark;
         newZone.mapDiff = myZone[0].mapDiff;
         newZone.ensol = myZone[0].ensol;
@@ -479,6 +483,7 @@ function toZoneString(zoneInfo) {
     newString = newString.replace("false","Non");
     newString = newString.replace("mapDiff","Présence Alien");
     newString = newString.replace("ensol","Ensoleillement");
+    newString = newString.replace("dark","Fog");
     newString = newString.replace(", pKind=","");
     newString = newString.replace(", gKind=","");
     newString = newString.replace(", sKind=","");

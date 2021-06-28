@@ -59,6 +59,11 @@ function gangUnitsList(gangName) {
                         }
                     }
                 }
+                // Taupes/Blades
+                if (unit.name === 'Taupes' && playerInfos.gang === 'blades') {
+                    newCompReq['aero'] = 1;
+                    newCompReq['cyber'] = 1;
+                }
                 newUnit.compReq = newCompReq;
                 gangUnits.push(newUnit);
             }
@@ -71,15 +76,30 @@ function gangUnitsList(gangName) {
     sortedGangUnits = _.sortBy(sortedGangUnits,'level');
     sortedGangUnits.forEach(function(unit) {
         let color = catColor(unit);
+        let lvlcol = 'cy';
+        if (playerInfos.gLevel < unit.level) {
+            lvlcol = 'gf';
+        }
         let compNeed = '';
         if (Object.keys(unit.compReq).length >= 1) {
             compNeed = toCoolString(unit.compReq);
+            let compReqOK = checkUnitCompReq(unit,true);
+            if (!compReqOK) {
+                lvlcol = 'gf';
+            }
         }
         let bldNeed = '';
         if (Object.keys(unit.bldReq).length >= 1) {
             bldNeed = toNiceString(unit.bldReq);
+            let bldOK = false;
+            if ((playerInfos.bldList.includes(unit.bldReq[0]) || unit.bldReq[0] === undefined) && (playerInfos.bldList.includes(unit.bldReq[1]) || unit.bldReq[1] === undefined) && (playerInfos.bldList.includes(unit.bldReq[2]) || unit.bldReq[2] === undefined)) {
+                bldOK = true;
+            }
+            if (!bldOK) {
+                lvlcol = 'gf';
+            }
         }
-        $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+bldNeed+'" onclick="unitDetail('+unit.id+')">'+unit.name+'</span><span class="paramLevelValue cy">'+unit.level+'</span><span class="paramValue gf">'+compNeed+'</span><br>');
+        $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+bldNeed+'" onclick="unitDetail('+unit.id+')">'+unit.name+'</span><span class="paramLevelValue '+lvlcol+'">'+unit.level+'</span><span class="paramValue gf">'+compNeed+'</span><br>');
     });
 
     $('#conUnitList').append('<br><br>');

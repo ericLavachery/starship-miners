@@ -406,7 +406,7 @@
     {
         "id":74,
         "result":"Nourriture",
-        "cost":{"Végétaux":12,"Larvium":3,"Energie":2},
+        "cost":{"Fruits":6,"Larvium":3,"Energie":2},
         "compReq":{"ca":1},
         "bldReq":["Cantine"],
         "batch":6
@@ -414,40 +414,40 @@
     {
         "id":75,
         "result":"Nourriture",
-        "cost":{"Fruits":6,"Larvium":3,"Zinc":1,"Energie":2},
-        "compReq":{"ca":2},
+        "cost":{"Végétaux":18,"Larvium":3,"Eau":3,"Energie":2},
+        "compReq":{"ca":2,"tri":1},
         "bldReq":["Laboratoire"],
-        "batch":12
+        "batch":9
     },
     {
         "id":76,
         "result":"Nourriture",
-        "cost":{"Végétaux":12,"Swarmine":2,"Potassium":1,"Eau":3,"Energie":3},
-        "compReq":{"ca":2},
+        "cost":{"Végétaux":36,"Swarmine":2,"Zinc":1,"Eau":3,"Energie":3},
+        "compReq":{"ca":2,"exo":1},
         "bldReq":["Laboratoire"],
-        "batch":12
+        "batch":9
     },
     {
         "id":77,
         "result":"Nourriture",
         "cost":{"Fruits":6,"Huile":2,"Bugium":6,"Potassium":1,"Phosphore":1,"Energie":4},
-        "compReq":{"ca":3},
+        "compReq":{"ca":3,"exo":2},
         "bldReq":["Laboratoire"],
         "batch":12
     },
     {
         "id":78,
         "result":"Nourriture",
-        "cost":{"Fruits":6,"Creatite":2,"Chlore":1,"Eau":3},
-        "compReq":{"ca":4},
+        "cost":{"Fruits":3,"Creatite":2,"Chlore":1},
+        "compReq":{"ca":4,"gen":1},
         "bldReq":["Centre de recherches"],
         "batch":12
     },
     {
         "id":79,
         "result":"Nourriture",
-        "cost":{"Végétaux":6,"Huile":1,"Aranium":2,"Chlore":1,"Zinc":1,"Energie":2},
-        "compReq":{"ca":5},
+        "cost":{"Végétaux":12,"Huile":1,"Aranium":4,"Chlore":1,"Zinc":1,"Energie":2},
+        "compReq":{"ca":5,"exo":2},
         "bldReq":["Centre de recherches"],
         "batch":12
     },
@@ -670,6 +670,7 @@
         "cost":{"Uranium":3},
         "compReq":{},
         "bldReq":[],
+        "compOut":{"energ":1},
         "batch":2
     },
     {

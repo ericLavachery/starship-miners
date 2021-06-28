@@ -91,7 +91,11 @@ function createMap(size) {
             newTile.planet = planetName;
             newTile.pid = playerInfos.sondePlanet;
             newTile.number = nextZoneNum;
-            newTile.dark = false;
+            if (planetName === 'Sarak') {
+                newTile.dark = true;
+            } else {
+                newTile.dark = false;
+            }
             newTile.mapDiff = playerInfos.sondeDanger;
             newTile.pKind = checkMapKind('P');
             newTile.gKind = checkMapKind('G');
@@ -882,6 +886,10 @@ function addRes(zone) {
                     resRarity = 0;
                 }
             }
+            if (res.planets != undefined) {
+                let planetName = zone[0].planet;
+                resRarity = resRarity*res.planets[planetName];
+            }
             res.adjRarity = Math.floor(resRarity*rarityDice/5*fewRedRarityAdj/100);
             res.adjBatch = Math.ceil(res.batch*fewRedRarityAdj/100);
             if (res.adjBatch < 1) {
@@ -905,15 +913,24 @@ function addRes(zone) {
     console.log('scrapRarity: '+scrapRarity);
     // check RUINS
     let ruinChance = Math.floor(((scrapRarity*ruinRarity/10)+ruinRarity)/3);
+    let resScrap = getResByName('Scrap');
+    ruinChance = Math.round(ruinChance*resScrap.planets[zone[0].planet]);
     if (ruinChance > 15) {
         ruinChance = 15;
     }
-    if (ruinChance < 3) {
-        ruinChance = 3;
+    if (zone[0].planet === 'Dom') {
+        if (ruinChance < 3) {
+            ruinChance = 3;
+        }
+    } else {
+        if (ruinChance < 0) {
+            ruinChance = 0;
+        }
     }
+    console.log('ruinChance='+ruinChance);
     let resName = 'Scrap';
     let numRuins = 0;
-    if (playerInfos.sondeDanger >= 1) {
+    if (playerInfos.sondeDanger >= 1 && ruinChance >= 1) {
         zone.forEach(function(tile) {
             if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
                 if (tile.rq === undefined && tile.terrain != 'W' && tile.terrain != 'R') {
@@ -1205,12 +1222,16 @@ function addRes(zone) {
             }
         });
     }
-    // HUILE
+    // HUILE & FRUITS
     let oilName = 'Huile';
     let oilChance = (rand.rand(2,6)*60)-Math.round(numBadTer/50)-(playerInfos.sondeDanger*5);
+    let oilRes = getResByName('Huile');
+    oilChance = Math.round(oilChance/oilRes.planets[zone[0].planet]);
     let oilHere = false;
     let fruName = 'Fruits';
     let fruChance = (rand.rand(2,6)*25);
+    let fruRes = getResByName('Fruits');
+    fruChance = Math.round(fruChance/fruRes.planets[zone[0].planet]);
     let fruHere = false;
     console.log('numBadTer: '+numBadTer);
     if (playerInfos.sondeDanger >= 1) {
@@ -1510,40 +1531,72 @@ function zoneReport(zone,quiet) {
         }
     }
     if (zone[0].snd === undefined) {
-        if (percF >= 40) {
+        if (zone[0].planet === 'Sarak') {
             if (rand.rand(1,2) === 1) {
-                zone[0].snd = 'jungle';
+                zone[0].snd = 'fogfrogs';
             } else {
-                zone[0].snd = 'rainforest';
+                zone[0].snd = 'strange';
             }
-        } else if (percW+percS >= 50) {
-            zone[0].snd = 'bogs';
-        } else if (percB >= 35) {
+        } else if (zone[0].planet === 'Gehenna') {
+            if (percW+percS >= 40) {
+                zone[0].snd = 'swamp';
+            } else if (percF >= 40) {
+                zone[0].snd = 'uhuwind';
+            } else {
+                zone[0].snd = 'monsoon';
+            }
+        } else if (zone[0].planet === 'Kzin') {
             if (rand.rand(1,2) === 1) {
-                zone[0].snd = 'crickets';
+                zone[0].snd = 'sywind';
             } else {
-                zone[0].snd = 'birds';
+                zone[0].snd = 'bwind';
             }
-        } else if (percG+percB >= 75) {
-            if (rand.rand(1,2) === 1) {
-                zone[0].snd = 'crickets';
+        } else if (zone[0].planet === 'Horst') {
+            if (percF >= 40) {
+                zone[0].snd = 'bwindred';
             } else {
-                zone[0].snd = 'cricketsloop';
-            }
-        } else if (percP >= 50 || percP+percG >= 70) {
-            zone[0].snd = 'howlwind';
-        } else {
-            if (rand.rand(1,3) === 1) {
-                if (rand.rand(1,2) === 1) {
-                    zone[0].snd = 'birds';
+                if (rand.rand(1,5) >= 4) {
+                    zone[0].snd = 'redwind';
                 } else {
-                    zone[0].snd = 'howlwind';
+                    zone[0].snd = 'thunderred';
                 }
-            } else {
+            }
+        } else {
+            if (percF >= 40) {
                 if (rand.rand(1,2) === 1) {
-                    zone[0].snd = 'thunderstart';
+                    zone[0].snd = 'jungle';
                 } else {
-                    zone[0].snd = 'thunderfull';
+                    zone[0].snd = 'rainforest';
+                }
+            } else if (percW+percS >= 50) {
+                zone[0].snd = 'bogs';
+            } else if (percB >= 35) {
+                if (rand.rand(1,2) === 1) {
+                    zone[0].snd = 'crickets';
+                } else {
+                    zone[0].snd = 'birds';
+                }
+            } else if (percG+percB >= 75) {
+                if (rand.rand(1,2) === 1) {
+                    zone[0].snd = 'crickets';
+                } else {
+                    zone[0].snd = 'cricketsloop';
+                }
+            } else if (percP >= 50 || percP+percG >= 70) {
+                zone[0].snd = 'howlwind';
+            } else {
+                if (rand.rand(1,3) === 1) {
+                    if (rand.rand(1,2) === 1) {
+                        zone[0].snd = 'birds';
+                    } else {
+                        zone[0].snd = 'howlwind';
+                    }
+                } else {
+                    if (rand.rand(1,2) === 1) {
+                        zone[0].snd = 'thunderstart';
+                    } else {
+                        zone[0].snd = 'thunderfull';
+                    }
                 }
             }
         }

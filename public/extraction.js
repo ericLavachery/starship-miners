@@ -94,12 +94,20 @@ function getAllRes(bat) {
 function getTerrainRes(terrain,tile) {
     let srs = {};
     // Bois
+    let res = getResByName('Bois');
     if (terrain.name === 'F') {
         srs.Bois = 250+(tile.seed*65);
     } else if (terrain.name === 'B') {
         srs.Bois = 25+(tile.seed*25);
     }
+    if (srs.Bois != undefined) {
+        srs.Bois = Math.round(srs.Bois*res.planets[zone[0].planet]);
+        if (srs.Bois <= 0) {
+            delete srs.Bois;
+        }
+    }
     // Végétaux
+    res = getResByName('Végétaux');
     if (terrain.name === 'F') {
         srs.Végétaux = 25+((7-tile.seed)*25);
     } else if (terrain.name === 'B') {
@@ -107,7 +115,14 @@ function getTerrainRes(terrain,tile) {
     } else if (terrain.veg >= 0.5) {
         srs.Végétaux = (Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*15)-15+(tile.seed*5);
     }
+    if (srs.Végétaux != undefined) {
+        srs.Végétaux = Math.round(srs.Végétaux*res.planets[zone[0].planet]);
+        if (srs.Végétaux <= 0) {
+            delete srs.Végétaux;
+        }
+    }
     // Eau
+    res = getResByName('Eau');
     if (terrain.name === 'R' && tile.seed >= 4) {
         srs.Eau = 290+((7-tile.seed)*45);
     } else if (terrain.name === 'R') {
@@ -118,6 +133,12 @@ function getTerrainRes(terrain,tile) {
         srs.Eau = 100+(tile.seed*35);
     } else if (playerInfos.comp.ext >= 1 && terrain.veg >= 1) {
         srs.Eau = Math.round((playerInfos.comp.ext*10)+(tile.seed*5));
+    }
+    if (srs.Eau != undefined) {
+        srs.Eau = Math.round(srs.Eau*res.planets[zone[0].planet]);
+        if (srs.Eau <= 0) {
+            delete srs.Eau;
+        }
     }
     return srs;
 };

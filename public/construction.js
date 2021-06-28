@@ -55,6 +55,7 @@ function bfconst(cat,triche,upgrade) {
     // LIST
     let prodSign = ' <span class="ciel">&raquo;</span>';
     let prodOK = false;
+    let prodHere = false;
     let compReqOK = false;
     let bldOK = false;
     let costOK = false;
@@ -69,57 +70,54 @@ function bfconst(cat,triche,upgrade) {
         if (!compReqOK) {
             prodOK = false;
         }
+        if (playerInfos.onShip && unit.skills.includes('nostation')) {
+            prodOK = false;
+        }
         if (!triche) {
             if (catz.includes(unit.cat) && unit.fabTime >= 1) {
-                prodOK = true;
-            }
-            if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
-                prodOK = false;
+                prodHere = true;
             }
             if (!selectedBatType.skills.includes('transorbital')) {
                 if (!unit.bldReq.includes(selectedBatType.name)) {
                     if (selectedBatType.cat === 'buildings' || selectedBatType.cat === 'devices') {
-                        prodOK = false;
+                        prodHere = false;
                     } else {
                         if (unit.cat === 'vehicles' || unit.cat === 'infantry') {
-                            prodOK = false;
+                            prodHere = false;
                         }
                     }
                     if (unit.cat === 'vehicles' || unit.cat === 'infantry') {
                         if (unit.bldReq[0] != undefined) {
-                            prodOK = false;
+                            prodHere = false;
                         }
                     }
                     if (selectedBatType.cat === 'infantry' && unit.fabTime >= 35 && !unit.skills.includes('clicput')) {
-                        prodOK = false;
+                        prodHere = false;
                     }
                 }
             }
             if (unit.bldCost != 'none' && unit.bldCost != selectedBatType.name) {
-                prodOK = false;
+                prodHere = false;
             }
             if (unit.unitCost != 'none' && unit.unitCost != selectedBatType.name) {
-                prodOK = false;
+                prodHere = false;
             }
             if (conselUpgrade === 'bld') {
                 if (selectedBatType.bldUp === unit.name) {
-                    prodOK = true;
+                    prodHere = true;
                 } else {
-                    prodOK = false;
+                    prodHere = false;
                 }
             }
             if (conselUpgrade === 'inf') {
                 if (selectedBatType.unitUp === unit.name) {
-                    prodOK = true;
+                    prodHere = true;
                 } else {
-                    prodOK = false;
+                    prodHere = false;
                 }
             }
         }
-        if (playerInfos.onShip && unit.skills.includes('nostation')) {
-            prodOK = false;
-        }
-        if (prodOK || triche) {
+        if ((prodOK && prodHere) || triche) {
             if (lastKind != unit.kind) {
                 showkind = unit.kind.replace(/zero-/g,"");
                 showkind = showkind.replace(/trans-/g,"");
@@ -528,9 +526,9 @@ function selectEquip(equip,unitId) {
     conSelect(unitId,'player',true);
 };
 
-function checkUnitCompReq(unit) {
+function checkUnitCompReq(unit,forGangList) {
     let compReqOK = true;
-    if (!unit.compPass.includes(playerInfos.gang)) {
+    if (forGangList) {
         if (unit.compReq != undefined) {
             if (Object.keys(unit.compReq).length >= 1) {
                 Object.entries(unit.compReq).map(entry => {
@@ -542,16 +540,30 @@ function checkUnitCompReq(unit) {
                 });
             }
         }
-    }
-    if (unit.compHardReq != undefined) {
-        if (Object.keys(unit.compHardReq).length >= 1) {
-            Object.entries(unit.compHardReq).map(entry => {
-                let key = entry[0];
-                let value = entry[1];
-                if (playerInfos.comp[key] < value) {
-                    compReqOK = false;
+    } else {
+        if (!unit.compPass.includes(playerInfos.gang)) {
+            if (unit.compReq != undefined) {
+                if (Object.keys(unit.compReq).length >= 1) {
+                    Object.entries(unit.compReq).map(entry => {
+                        let key = entry[0];
+                        let value = entry[1];
+                        if (playerInfos.comp[key] < value) {
+                            compReqOK = false;
+                        }
+                    });
                 }
-            });
+            }
+        }
+        if (unit.compHardReq != undefined) {
+            if (Object.keys(unit.compHardReq).length >= 1) {
+                Object.entries(unit.compHardReq).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    if (playerInfos.comp[key] < value) {
+                        compReqOK = false;
+                    }
+                });
+            }
         }
     }
     // Taupes/Blades
