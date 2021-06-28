@@ -991,7 +991,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["prefab","notarget","fog","bastion","sentinelle","longshot","flash","recupres","routes"],
+        "skills":["prefab","notarget","fog","bastion","sentinelle","longshot","flash","recupres","routes","kzin"],
         "mecanoCost":12,
         "fuzz":3,
         "deathFx":"explo1"

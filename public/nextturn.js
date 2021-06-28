@@ -458,6 +458,7 @@ function nextTurnEnd() {
             if (batType.skills.includes('notarget') && bat.fuzz > -2) {
                 bat.fuzz = -2;
             }
+            planetEffects(bat,batType);
             tagsEffect(bat,batType);
             tagsUpdate(bat);
             if (bat.loc === "zone") {
@@ -779,6 +780,40 @@ function calcUnitResist() {
         unitResist++;
     }
     return unitResist;
+};
+
+function planetEffects(bat,batType) {
+    // Gehenna
+    if (zone[0].planet === 'Gehenna') {
+        if (batType.cat === 'infantry') {
+            if (playerInfos.comp.scaph < 1) {
+                let medDice = (playerInfos.comp.med*2)+6;
+                let terrain = getTerrain(bat);
+                if (bat.loc === "zone") {
+                    medDice = medDice-(terrain.veg*2);
+                } else if (bat.loc === "trans") {
+                    let transBat = getBatById(bat.locId);
+                    let transBatType = getBatType(transBat);
+                    if (transBatType.cat === 'buildings' || transBatType.skills.includes('transorbital')) {
+                        medDice = medDice-terrain.veg+12;
+                    } else {
+                        medDice = medDice-terrain.veg+4;
+                    }
+                }
+                medDice = Math.round(medDice);
+                if (medDice < 1) {
+                    medDice = 1;
+                }
+                if (rand.rand(1,medDice) === 1) {
+                    bat.tags.push('poison');
+                }
+            }
+        }
+    }
+    // Horst
+    if (zone[0].planet === 'Horst') {
+        
+    }
 };
 
 function tagsUpdate(bat) {

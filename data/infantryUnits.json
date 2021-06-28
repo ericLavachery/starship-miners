@@ -525,7 +525,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","fastguet","resistelec","resistacide","bigblub","gooddef","fo"],
+        "skills":["fouille","fortif","fastguet","resistelec","resistacide","bigblub","gooddef","fo","kzin"],
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -4396,7 +4396,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","mecano","repair","constructeur","routes","infraconst","cyber","fret","noblub","resistfeu","fastempty","dumper"],
+        "skills":["fouille","fortif","mecano","repair","constructeur","routes","infraconst","cyber","fret","noblub","resistfeu","fastempty","dumper","kzin"],
         "mecanoCost":5,
         "maxSkill":8,
         "transRes":180,
@@ -4624,7 +4624,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cyber","hardmove"],
+        "skills":["fouille","fortif","cyber","hardmove","kzin"],
         "fuzz":2.5,
         "deathFx":"144469__psychedelic-hands__robot-death"
     },

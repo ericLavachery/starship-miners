@@ -93,7 +93,7 @@ function calcCamo(bat) {
         camChance = Math.ceil(camChance/Math.sqrt(Math.sqrt(batType.size))*1.31);
     }
     // max
-    if (batType.skills.includes('underground')) {
+    if (batType.skills.includes('underground') || batType.cat === 'buildings') {
         camChance = camChance+65;
         if (camChance > 100) {
             camChance = 100;

@@ -56,12 +56,14 @@ function bfconst(cat,triche,upgrade) {
     let prodSign = ' <span class="ciel">&raquo;</span>';
     let prodOK = false;
     let prodHere = false;
+    let mayOut = false;
     let compReqOK = false;
     let bldOK = false;
     let costOK = false;
     let costString = '';
     let unitMergedCosts;
     sortedUnitsList.forEach(function(unit) {
+        mayOut = checkMayOut(unit);
         prodOK = true;
         if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
             prodOK = false;
@@ -117,7 +119,7 @@ function bfconst(cat,triche,upgrade) {
                 }
             }
         }
-        if ((prodOK && prodHere) || triche) {
+        if ((prodOK && prodHere && mayOut) || triche) {
             if (lastKind != unit.kind) {
                 showkind = unit.kind.replace(/zero-/g,"");
                 showkind = showkind.replace(/trans-/g,"");

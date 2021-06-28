@@ -131,6 +131,12 @@ function moveInfos(bat,jump) {
             if (selectedBat.eq === 'e-jetpack') {
                 jmc = 2;
             }
+            if (selectedBat.team != 'aliens' && zone[0].planet === 'Kzin') {
+                jmc = jmc*2;
+            }
+            if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry') {
+                jmc = jmc*2;
+            }
             if (Math.floor(distance) <= Math.ceil(selectedBat.apLeft/jmc)) {
                 if (tile.y == myTileY && tile.x == myTileX) {
                     cursorSwitch('#',tile.id,'pointer');
@@ -487,6 +493,12 @@ function calcMoveCost(targetTileId,diag) {
     }
     if (diag) {
         moveCost = moveCost*1.42;
+    }
+    if (selectedBat.team != 'aliens' && zone[0].planet === 'Kzin') {
+        moveCost = moveCost*2;
+    }
+    if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry') {
+        moveCost = moveCost*2;
     }
     moveCost = moveCost.toFixedNumber(1);
     return moveCost;

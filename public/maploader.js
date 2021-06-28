@@ -399,7 +399,7 @@ function writeMapStyles() {
 
 function getTerrainFilter(mapInf) {
     let terClass = 'terPic';
-    if (!playerInfos.onShip) {
+    if (!playerInfos.onShip || modeSonde) {
         if (mapInf.snd === undefined) {
             zoneReport(zone,true);
         }

@@ -432,7 +432,7 @@
         "cat": "blue-sky",
         "batch": 4,
         "energie": 1,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":2,"Horst":1}
+        "planets":{"Dom":0,"Sarak":1,"Gehenna":1,"Kzin":2,"Horst":0}
     },
     {
         "id": 37,
@@ -454,7 +454,7 @@
         "cat": "blue-sky",
         "batch": 4,
         "energie": 1.5,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":1}
+        "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0}
     },
     {
         "id": 39,
