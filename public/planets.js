@@ -1,4 +1,117 @@
-function createStormsLists(rebuild) {
+function planetEffects(bat,batType) {
+    // Gehenna
+    if (zone[0].planet === 'Gehenna') {
+        if (batType.cat === 'infantry') {
+            if (playerInfos.comp.scaph < 1) {
+                let medDice = (playerInfos.comp.med*2)+6;
+                let terrain = getTerrain(bat);
+                if (bat.loc === "zone") {
+                    medDice = medDice-(terrain.veg*2);
+                } else if (bat.loc === "trans") {
+                    let transBat = getBatById(bat.locId);
+                    let transBatType = getBatType(transBat);
+                    if (transBatType.cat === 'buildings' || transBatType.skills.includes('transorbital')) {
+                        medDice = medDice-terrain.veg+12;
+                    } else {
+                        medDice = medDice-terrain.veg+4;
+                    }
+                }
+                medDice = Math.round(medDice);
+                if (medDice < 1) {
+                    medDice = 1;
+                }
+                if (rand.rand(1,medDice) === 1) {
+                    bat.tags.push('poison');
+                }
+            }
+        }
+    }
+    // Horst
+    if (zone[0].planet === 'Horst') {
+        if (playerInfos.stList.includes(bat.tileId)) {
+            stormDamage(bat,batType,true,false);
+        } else if (playerInfos.sqList.includes(bat.tileId)) {
+            stormDamage(bat,batType,false,false);
+        }
+    }
+};
+
+function stormDamage(bat,batType,storm,inMov) {
+    if (!storm) {
+        if (playerInfos.comp.scaph < 3) {
+            if (batType.cat === 'infantry') {
+                let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
+                let stormDmg = rand.rand(2*numUnits,4*numUnits);
+                stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor));
+                if (batType.skills.includes('resistfeu') || bat.tags.includes('resistfeu')) {
+                    if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
+                        stormDmg = Math.ceil(stormDmg/1.25);
+                    } else {
+                        stormDmg = Math.ceil(stormDmg/1.5);
+                    }
+                } else {
+                    if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
+                        stormDmg = Math.ceil(stormDmg*1.85);
+                    }
+                }
+                console.log('stormDmg='+stormDmg);
+                let totalDamage = bat.damage+stormDmg;
+                let squadHP = batType.squadSize*batType.hp;
+                let squadsOut = Math.floor(totalDamage/squadHP);
+                bat.squadsLeft = bat.squadsLeft-squadsOut;
+                bat.damage = totalDamage-(squadsOut*squadHP);
+                if (bat.apLeft > Math.round(bat.ap/2)) {
+                    bat.apLeft = Math.round(bat.ap/2);
+                }
+                if (bat.squadsLeft <= 0) {
+                    batDeathEffect(bat,true,'Bataillon détruit',bat.type+' brûlé.');
+                }
+                checkDeath(bat,batType);
+            }
+        }
+    } else {
+        let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
+        console.log('numUnits='+numUnits);
+        let stormDmg = rand.rand(4*numUnits,9*numUnits);
+        console.log('stormDmg='+stormDmg);
+        stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor+1));
+        console.log('stormDmg(a)='+stormDmg);
+        if (batType.skills.includes('resistfeu') || bat.tags.includes('resistfeu')) {
+            if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
+                stormDmg = Math.ceil(stormDmg/1.25);
+            } else {
+                stormDmg = Math.ceil(stormDmg/1.5);
+            }
+        } else {
+            if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
+                stormDmg = Math.ceil(stormDmg*1.85);
+            }
+        }
+        if (playerInfos.comp.scaph >= 3 && batType.cat === 'infantry') {
+            stormDmg = Math.ceil(stormDmg/1.5);
+        }
+        console.log('stormDmg(T)='+stormDmg);
+        let totalDamage = bat.damage+stormDmg;
+        let squadHP = batType.squadSize*batType.hp;
+        let squadsOut = Math.floor(totalDamage/squadHP);
+        bat.squadsLeft = bat.squadsLeft-squadsOut;
+        bat.damage = totalDamage-(squadsOut*squadHP);
+        if (bat.apLeft > Math.round(bat.ap/2)) {
+            bat.apLeft = Math.round(bat.ap/2);
+        }
+        if (bat.squadsLeft <= 0) {
+            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' brûlé.');
+        }
+        checkDeath(bat,batType);
+    }
+    if (inMov) {
+        selectedBatArrayUpdate();
+        showBatInfos(selectedBat);
+        showBataillon(selectedBat);
+    }
+};
+
+function createStormsLists(rebuild,init) {
     if (rebuild || (playerInfos.stList.length === 0 && playerInfos.sqList.length === 0)) {
         playerInfos.stList = [];
         playerInfos.sqList = [];
@@ -13,7 +126,7 @@ function createStormsLists(rebuild) {
                 playerInfos.sqList.push(tile.id);
             }
         });
-    } else {
+    } else if (!init) {
         for (var i = 0; i < playerInfos.stList.length; i++){
             let dice = rand.rand(1,4);
             if (dice === 1) {

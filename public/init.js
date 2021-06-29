@@ -195,7 +195,7 @@ socket.on('savedMap-Load', function(sm) {
     turnInfo();
     getMapInfos();
     if (zone[0].planet === 'Horst') {
-        createStormsLists(false);
+        createStormsLists(false,true);
     }
     commandes();
     checkVisibleAliens();

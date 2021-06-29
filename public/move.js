@@ -246,6 +246,13 @@ function moveSelectedBat(tileId,free,jump) {
     tileSelect(selectedBat);
     showBataillon(selectedBat);
     showBatInfos(selectedBat);
+    if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst') {
+        if (playerInfos.stList.includes(tileId)) {
+            stormDamage(selectedBat,selectedBatType,true,true);
+        } else if (playerInfos.sqList.includes(tileId)) {
+            stormDamage(selectedBat,selectedBatType,false,true);
+        }
+    }
     // update arrays
     selectedBatArrayUpdate();
     if (activeTurn === 'player') {
@@ -503,8 +510,7 @@ function calcMoveCost(targetTileId,diag) {
     if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst') {
         if (playerInfos.stList.includes(targetTileId) || playerInfos.stList.includes(selectedBat.tileId)) {
             moveCost = moveCost*2;
-        }
-        if (playerInfos.sqList.includes(targetTileId) || playerInfos.sqList.includes(selectedBat.tileId)) {
+        } else if (playerInfos.sqList.includes(targetTileId) || playerInfos.sqList.includes(selectedBat.tileId)) {
             moveCost = moveCost*1.5;
         }
     }

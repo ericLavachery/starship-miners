@@ -235,8 +235,7 @@ function showRes(tileId) {
     if (zone[0].planet === 'Horst') {
         if (playerInfos.stList.includes(tileId)) {
             mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/storm75.png"></div>';
-        }
-        if (playerInfos.sqList.includes(tileId)) {
+        } else if (playerInfos.sqList.includes(tileId)) {
             mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/squall50.png"></div>';
         }
     }
