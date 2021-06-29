@@ -699,11 +699,11 @@ function addRes(zone) {
     let baseNum = 0;
     let redMin = Math.floor(playerInfos.sondeDanger/1.42)+5;
     let redNum = 0;
-    if (zone[0].dark) {
-        mythicMin = mythicMin+3+Math.floor(playerInfos.sondeDanger/2);
-        mythicMax = mythicMax+3+Math.floor(playerInfos.sondeDanger/2);
-        baseMin = baseMin+10+(playerInfos.sondeDanger*2);
-        redMin = redMin+5+playerInfos.sondeDanger;
+    if (zone[0].planet != 'Dom') {
+        mythicMin = mythicMin+Math.floor(playerInfos.sondeDanger/3);
+        mythicMax = mythicMax+Math.floor(playerInfos.sondeDanger/2);
+        baseMin = baseMin+Math.floor(playerInfos.sondeDanger*2.5);
+        redMin = redMin+Math.floor(playerInfos.sondeDanger*1.5);
     }
     let terrain;
     let minChance;

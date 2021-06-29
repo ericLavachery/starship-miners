@@ -27,7 +27,7 @@ function planetEffects(bat,batType) {
         }
     }
     // Horst
-    if (zone[0].planet === 'Horst') {
+    if (zone[0].planet === 'Horst' && bat.loc === "zone") {
         if (playerInfos.stList.includes(bat.tileId)) {
             stormDamage(bat,batType,true,false);
         } else if (playerInfos.sqList.includes(bat.tileId)) {
@@ -37,12 +37,13 @@ function planetEffects(bat,batType) {
 };
 
 function stormDamage(bat,batType,storm,inMov) {
+    let isDead = false;
     if (!storm) {
         if (playerInfos.comp.scaph < 3) {
             if (batType.cat === 'infantry') {
                 let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
                 let stormDmg = rand.rand(2*numUnits,4*numUnits);
-                stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor));
+                stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor+1));
                 if (batType.skills.includes('resistfeu') || bat.tags.includes('resistfeu')) {
                     if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
                         stormDmg = Math.ceil(stormDmg/1.25);
@@ -65,14 +66,19 @@ function stormDamage(bat,batType,storm,inMov) {
                 }
                 if (bat.squadsLeft <= 0) {
                     batDeathEffect(bat,true,'Bataillon détruit',bat.type+' brûlé.');
+                    isDead = true;
+                    if (inMov) {
+                        batDeath(bat,true);
+                    } else {
+                        checkDeath(bat,batType);
+                    }
                 }
-                checkDeath(bat,batType);
             }
         }
     } else {
         let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
         console.log('numUnits='+numUnits);
-        let stormDmg = rand.rand(4*numUnits,9*numUnits);
+        let stormDmg = rand.rand(7*numUnits,20*numUnits);
         console.log('stormDmg='+stormDmg);
         stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor+1));
         console.log('stormDmg(a)='+stormDmg);
@@ -101,13 +107,20 @@ function stormDamage(bat,batType,storm,inMov) {
         }
         if (bat.squadsLeft <= 0) {
             batDeathEffect(bat,true,'Bataillon détruit',bat.type+' brûlé.');
+            isDead = true;
+            if (inMov) {
+                batDeath(bat,true);
+            } else {
+                checkDeath(bat,batType);
+            }
         }
-        checkDeath(bat,batType);
     }
     if (inMov) {
         selectedBatArrayUpdate();
-        showBatInfos(selectedBat);
-        showBataillon(selectedBat);
+        if (!isDead) {
+            showBatInfos(selectedBat);
+            showBataillon(selectedBat);
+        }
     }
 };
 
@@ -122,7 +135,7 @@ function createStormsLists(rebuild,init) {
         zone.forEach(function(tile) {
             if (rand.rand(1,1000) <= stormChance) {
                 playerInfos.stList.push(tile.id);
-            } else if (rand.rand(1,200) <= stormChance) {
+            } else if (rand.rand(1,167) <= stormChance) {
                 playerInfos.sqList.push(tile.id);
             }
         });
