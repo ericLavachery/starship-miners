@@ -99,6 +99,9 @@ function landingList() {
             } else {
                 playRoom(zone[0].snd,true);
             }
+            if (zone[0].planet === 'Horst') {
+                createStormsLists(true);
+            }
         }
     }
 };

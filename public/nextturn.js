@@ -812,7 +812,7 @@ function planetEffects(bat,batType) {
     }
     // Horst
     if (zone[0].planet === 'Horst') {
-        
+        createStormsLists(false);
     }
 };
 

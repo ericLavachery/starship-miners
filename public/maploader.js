@@ -232,6 +232,14 @@ function showRes(tileId) {
             mapIndicators = mapIndicators+'<div class="dark"><img src="/static/img/fdark.png"></div>';
         }
     }
+    if (zone[0].planet === 'Horst') {
+        if (playerInfos.stList.includes(tileId)) {
+            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/storm75.png"></div>';
+        }
+        if (playerInfos.sqList.includes(tileId)) {
+            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/squall50.png"></div>';
+        }
+    }
     return mapIndicators;
 };
 

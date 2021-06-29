@@ -125,6 +125,12 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.zoneDB === undefined) {
         playerInfos.zoneDB = [];
     }
+    if (playerInfos.stList === undefined) {
+        playerInfos.stList = [];
+    }
+    if (playerInfos.sqList === undefined) {
+        playerInfos.sqList = [];
+    }
     if (playerInfos.resFlags === undefined) {
         playerInfos.resFlags = [];
     }
@@ -188,6 +194,9 @@ socket.on('savedMap-Load', function(sm) {
     checkUndark();
     turnInfo();
     getMapInfos();
+    if (zone[0].planet === 'Horst') {
+        createStormsLists(false);
+    }
     commandes();
     checkVisibleAliens();
     alienBonus();

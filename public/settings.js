@@ -73,6 +73,7 @@ let oneResTileIds = [];
 let allZoneRes = [];
 let allCheckedZoneRes = [];
 let undarkNow = [];
+let stormChance = 10 // def 25/1000
 // UNITS
 let souteId = 1;
 let inSoute = false;

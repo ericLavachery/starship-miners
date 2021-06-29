@@ -500,6 +500,14 @@ function calcMoveCost(targetTileId,diag) {
     if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry') {
         moveCost = moveCost*2;
     }
+    if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst') {
+        if (playerInfos.stList.includes(targetTileId) || playerInfos.stList.includes(selectedBat.tileId)) {
+            moveCost = moveCost*2;
+        }
+        if (playerInfos.sqList.includes(targetTileId) || playerInfos.sqList.includes(selectedBat.tileId)) {
+            moveCost = moveCost*1.5;
+        }
+    }
     moveCost = moveCost.toFixedNumber(1);
     return moveCost;
 };
