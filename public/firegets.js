@@ -1437,7 +1437,15 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.range = thisWeapon.range-1;
     }
     if (zone[0].dark && thisWeapon.range > vision) {
-        thisWeapon.range = vision;
+        let vue = vision;
+        if (batType.skills.includes('flash') || bat.eq === 'e-flash' || bat.logeq === 'e-flash' || bat.eq.includes('kit-') || playerInfos.comp.log === 3) {
+            if (!bat.tags.includes('camo')) {
+                vue = 3;
+            }
+        }
+        if (thisWeapon.range > vue) {
+            thisWeapon.range = vue;
+        }
     }
     if (bat.tags.includes('fogged') && thisWeapon.range > 1) {
         thisWeapon.range = 1;

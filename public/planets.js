@@ -206,7 +206,7 @@ function undarkCenter() {
 
 function undarkAround(bat,center) {
     let batTileId = bat.tileId;
-    let batType = {};
+    let batType = getBatType(bat);
     let terrain = {};
     let tile = {};
     let vue = 0;
@@ -218,7 +218,6 @@ function undarkAround(bat,center) {
         batTileId = 1830;
         terrain = getTerrainById(1830);
     } else {
-        batType = getBatType(bat);
         if (batType.skills.includes('light')) {
             if (!bat.tags.includes('camo')) {
                 vue = 2;

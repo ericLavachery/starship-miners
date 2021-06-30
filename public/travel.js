@@ -4,6 +4,7 @@ function startMission() {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     saveGame();
+    playerInfos.undarkOnce = [];
     batUnselect();
     // créer db batsInSpace, avec les landers marqués deploy=true et toutes les unités qui sont dedans
     createBatsInSpace();
@@ -102,6 +103,8 @@ function landingList() {
             if (zone[0].planet === 'Horst') {
                 createStormsLists(true);
             }
+            checkUndark();
+            showMap(zone,true);
         }
     }
 };
@@ -326,6 +329,8 @@ function stopSonde() {
 };
 
 function goSonde() {
+    conOut();
+    playerInfos.undarkOnce = [];
     removeSonde();
     saveCurrentZoneAs(0);
     modeSonde = true;

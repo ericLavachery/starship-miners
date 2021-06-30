@@ -126,6 +126,8 @@
 }
 .terFog {
     background-color: #000000;
+    background-image: url(/static/img/sntiles/D_001.png);
+    background-position: center;
 }
 .terTarget {
     background-color: #FFFFFF;

@@ -51,19 +51,20 @@ function showMap(wmap,justMoved) {
             playerInfos.showedTiles.push(tile.id);
         }
         resHere = showRes(tile.id);
+        if (tile.seed >= 10) {
+            tPic = tile.terrain+'_0'+tile.seed;
+        } else {
+            tPic = tile.terrain+'_00'+tile.seed;
+        }
         if (zone[0].dark) {
             if (playerInfos.undarkOnce.includes(tile.id)) {
                 terclass = 'ter'+tile.terrain+tile.seed;
             } else {
                 terclass = 'terFog';
+                tPic = 'D_001';
             }
         } else {
             terclass = 'ter'+tile.terrain+tile.seed;
-        }
-        if (tile.seed >= 10) {
-            tPic = tile.terrain+'_0'+tile.seed;
-        } else {
-            tPic = tile.terrain+'_00'+tile.seed;
         }
         $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')" title="#'+tile.id+'"><span class="'+terClass+'"><img src="/static/img/sntiles/'+tPic+'.png"></span><span class="bigIcon" id="b'+tile.id+'">'+resHere+'</span><br></div>');
         if (!modeSonde) {

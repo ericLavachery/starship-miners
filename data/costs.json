@@ -2303,7 +2303,7 @@
         "bldUp":"Jardin",
         "bldReq":["Soute"],
         "upkeep":{"Azote":1,"Potassium":1},
-        "prod":{"Végétaux":6},
+        "prod":{"Fruits":6,"Végétaux":6},
         "costs":{"Compo1":200,"Scrap":150,"Silicium":150,"Eau":750,"Azote":100,"Phosphore":75,"Potassium":150,"Chlore":50,"Végétaux":750,"Energie":100,"Batteries":25},
         "fabTime":50
     },
@@ -2314,7 +2314,7 @@
         "bldCost":"Serres hydroponiques",
         "bldReq":["Soute"],
         "upkeep":{"Azote":2,"Phosphore":2,"Potassium":3},
-        "prod":{"Nourriture":4,"Végétaux":15},
+        "prod":{"Fruits":20,"Végétaux":20},
         "costs":{"Compo1":300,"Scrap":200,"Silicium":200,"Eau":2500,"Azote":300,"Phosphore":250,"Potassium":450,"Chlore":150,"Végétaux":2500,"Energie":200,"Batteries":50},
         "fabTime":100,
         "crime":-3

@@ -63,6 +63,7 @@ function bfconst(cat,triche,upgrade) {
     let costString = '';
     let unitMergedCosts;
     sortedUnitsList.forEach(function(unit) {
+        console.log(unit.name);
         mayOut = checkMayOut(unit);
         prodOK = true;
         if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
@@ -77,6 +78,9 @@ function bfconst(cat,triche,upgrade) {
         }
         if (!triche) {
             if (catz.includes(unit.cat) && unit.fabTime >= 1) {
+                prodHere = true;
+            }
+            if (selectedBatType.skills.includes('transorbital')) {
                 prodHere = true;
             }
             if (!selectedBatType.skills.includes('transorbital')) {
@@ -119,6 +123,9 @@ function bfconst(cat,triche,upgrade) {
                 }
             }
         }
+        console.log('prodOK='+prodOK);
+        console.log('prodHere='+prodHere);
+        console.log('mayOut='+mayOut);
         if ((prodOK && prodHere && mayOut) || triche) {
             if (lastKind != unit.kind) {
                 showkind = unit.kind.replace(/zero-/g,"");
