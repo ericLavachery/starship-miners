@@ -43,6 +43,7 @@ function stopMission() {
     // charger la zone STATION
     loadZone(0);
     playerInfos.onShip = true;
+    playerInfos.missionZone = -1;
     inSoute = false;
     modeLanding = true;
     landingList();

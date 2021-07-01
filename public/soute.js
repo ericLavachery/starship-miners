@@ -612,11 +612,19 @@ function missionRes() {
                 } else {
                     bldNeed = unit.bldReq;
                 }
+
+
+                let costString = '';
+                if (unit.costs != undefined) {
+                    costString = displayCosts(unit.costs);
+                }
+
+
                 costsOK = checkUnitCost(unit,true);
                 if (!costsOK) {
-                    $('#fillList').append('<span class="constName gris" title="'+toNiceString(bldNeed)+'">&cross; '+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+                    $('#fillList').append('<span class="constName gris" title="'+toNiceString(bldNeed)+' '+costString+'">&cross; '+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
                 } else {
-                    $('#fillList').append('<span class="constName klik cy" title="'+toNiceString(bldNeed)+'" onclick="missionResUnit('+unit.id+')">&check; '+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+                    $('#fillList').append('<span class="constName klik cy" title="'+toNiceString(bldNeed)+' '+costString+'" onclick="missionResUnit('+unit.id+')">&check; '+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
                     if (unit.equip.length >= 2) {
                         unit.equip.forEach(function(equipName) {
                             if (!equipName.includes('aucun')) {

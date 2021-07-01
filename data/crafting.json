@@ -354,7 +354,7 @@
     {
         "id":65,
         "result":"Tissus",
-        "cost":{"Végétaux":12,"Energie":2},
+        "cost":{"Végétaux":8,"Energie":2},
         "compReq":{},
         "bldReq":["Atelier"],
         "compOut":{"ind":1},
@@ -365,7 +365,7 @@
     {
         "id":66,
         "result":"Tissus",
-        "cost":{"Végétaux":8,"Energie":1},
+        "cost":{"Végétaux":5,"Energie":1},
         "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":1

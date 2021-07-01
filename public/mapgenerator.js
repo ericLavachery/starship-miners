@@ -851,6 +851,20 @@ function addRes(zone) {
     let scrapRarity;
     let resRarity;
     resTypes.forEach(function(res) {
+        resRarity = res.rarity;
+        if (res.planets != undefined) {
+            let planetName = zone[0].planet;
+            resRarity = Math.ceil(resRarity*res.planets[planetName]);
+        }
+        if (playerInfos.sondeDanger < 1) {
+            resRarity = resRarity-rand.rand(15,20);
+            if (res.name === 'Scrap') {
+                resRarity = 0;
+            }
+            if (resRarity < 0) {
+                resRarity = 0;
+            }
+        }
         if (res.cat === 'white') {
             minDice = 1;
             if (res.name === 'Scrap') {
@@ -873,23 +887,6 @@ function addRes(zone) {
                     rarityDice = 1;
                 }
             }
-            resRarity = res.rarity;
-            if (zone[0].dark && resRarity < 25) {
-                resRarity = 25;
-            }
-            if (playerInfos.sondeDanger < 1) {
-                resRarity = resRarity-rand.rand(15,20);
-                if (res.name === 'Scrap') {
-                    resRarity = 0;
-                }
-                if (resRarity < 0) {
-                    resRarity = 0;
-                }
-            }
-            if (res.planets != undefined) {
-                let planetName = zone[0].planet;
-                resRarity = resRarity*res.planets[planetName];
-            }
             res.adjRarity = Math.floor(resRarity*rarityDice/5*fewRedRarityAdj/100);
             res.adjBatch = Math.ceil(res.batch*fewRedRarityAdj/100);
             if (res.adjBatch < 1) {
@@ -904,10 +901,10 @@ function addRes(zone) {
             }
         }
         if (res.cat.includes('blue')) {
-            blueSum = blueSum+res.rarity;
+            blueSum = blueSum+resRarity;
         }
         if (res.cat.includes('sky')) {
-            skySum = skySum+res.rarity;
+            skySum = skySum+resRarity;
         }
     });
     console.log('scrapRarity: '+scrapRarity);
@@ -972,26 +969,52 @@ function addRes(zone) {
             mythicRes = {};
             resTypes.forEach(function(res) {
                 if ((res.cat.includes('blue') && tile.rq === 4) || (res.cat.includes('sky') && tile.rq === 5)) {
-                    mythicSum = mythicSum+res.rarity;
+                    resRarity = res.rarity;
+                    if (res.planets != undefined) {
+                        let planetName = zone[0].planet;
+                        resRarity = Math.ceil(resRarity*res.planets[planetName]);
+                    }
+                    mythicSum = mythicSum+resRarity;
                     if (mythicSum >= mythicDice && Object.keys(mythicRes).length <= 0) {
                         mythicRes = res;
                     }
                 }
             });
             tile.rs[mythicRes.name] = mythicRes.batch*(tile.rq-2)*(tile.rq-3)*rand.rand(5,11);
-            if (mythicRes.bld === 'Derrick' || mythicRes.bld === 'Mine') {
-                let bldFactor = 4;
-                if (mythicRes.bld === 'Derrick') {
-                    bldFactor = 8;
-                }
-                resTypes.forEach(function(res) {
-                    if (res.bld === mythicRes.bld) {
-                        if (rand.rand(1,100) <= Math.round((res.rarity+9)/10*bldFactor)) {
-                            tile.rs[res.name] = (res.batch*res.batch*rand.rand(8,18))+rand.rand(0,9);
+            // RAJOUT DE RESSOURCES AUX POINTS BLEUS
+            let mythicResBld = mythicRes.bld;
+            if (mythicResBld === 'Comptoir') {
+                mythicResBld = 'Mine';
+            }
+            let bldFactor = 4;
+            if (mythicResBld === 'Derrick') {
+                bldFactor = 9;
+            }
+            resTypes.forEach(function(res) {
+                if (res.bld === mythicResBld || (mythicRes.bld === 'Comptoir' && res.bld === 'Comptoir' && res.cat != 'zero')) {
+                    resRarity = res.rarity;
+                    if (res.planets != undefined) {
+                        let planetName = zone[0].planet;
+                        resRarity = Math.ceil(resRarity*res.planets[planetName]);
+                    }
+                    if (resRarity >= 1) {
+                        resRarity = resRarity+9;
+                        if (mythicRes.bld === 'Comptoir' && res.bld === 'Comptoir') {
+                            resRarity = resRarity+20;
+                        }
+                        if (mythicRes.bld === 'Comptoir' && res.name === 'Huile') {
+                            resRarity = resRarity+23;
+                        }
+                        if (rand.rand(1,100) <= Math.round((resRarity)/10*bldFactor)) {
+                            let rajResBatch = res.batch;
+                            if (mythicRes.bld === 'Comptoir' && res.name === 'Huile') {
+                                rajResBatch = rajResBatch+3;
+                            }
+                            tile.rs[res.name] = (rajResBatch*rajResBatch*rand.rand(8,18))+rand.rand(0,9);
                         }
                     }
-                });
-            }
+                }
+            });
         } else if (tile.rq >= 1) {
             let isGas = 'maybe';
             let firstRes = true;
@@ -1229,7 +1252,7 @@ function addRes(zone) {
     oilChance = Math.round(oilChance/oilRes.planets[zone[0].planet]);
     let oilHere = false;
     let fruName = 'Fruits';
-    let fruChance = (rand.rand(2,6)*25);
+    let fruChance = (rand.rand(2,6)*20);
     let fruRes = getResByName('Fruits');
     fruChance = Math.round(fruChance/fruRes.planets[zone[0].planet]);
     let fruHere = false;
