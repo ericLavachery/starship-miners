@@ -55,7 +55,7 @@
         "apCost":3,
         "bldReq":["Infirmerie"],
         "compReq":{"ca":2,"med":1},
-        "costs":{"Huile":2,"Végétaux":3,"Or":1,"Mendium":3}
+        "costs":{"Huile":1,"Végétaux":3,"Or":1,"Mendium":3}
     },
     {
         "name": "octiron",
@@ -71,7 +71,7 @@
         "apCost":1,
         "bldReq":[],
         "compReq":{"ca":1,"exo":2},
-        "costs":{"Huile":2,"Mercure":1,"Bore":2,"Larvium":5}
+        "costs":{"Huile":1,"Mercure":1,"Bore":2,"Larvium":5}
     },
     {
         "name": "skupiac",
@@ -79,7 +79,7 @@
         "apCost":3,
         "bldReq":["Bar"],
         "compReq":{"ca":2,"exo":2},
-        "costs":{"Huile":2,"Végétaux":2,"Mercure":1,"Or":1,"Aranium":5}
+        "costs":{"Huile":1,"Végétaux":2,"Mercure":1,"Or":1,"Aranium":5}
     },
     {
         "name": "blaze",
@@ -87,7 +87,7 @@
         "apCost":3,
         "bldReq":["Bar"],
         "compReq":{"ca":3,"exo":3},
-        "costs":{"Huile":2,"Mercure":1,"Hélium":1,"Bore":2,"Wingium":4}
+        "costs":{"Huile":1,"Mercure":1,"Hélium":1,"Bore":2,"Wingium":4}
     },
     {
         "name": "sila",
@@ -103,7 +103,7 @@
         "apCost":0,
         "bldReq":["Garage"],
         "compReq":{"energ":1},
-        "costs":{"Huile":2,"Hydrogène":2,"Azote":2,"Slime":4}
+        "costs":{"Huile":1,"Hydrogène":2,"Azote":2,"Slime":4}
     },
     {
         "name": "aucune",
@@ -250,7 +250,7 @@
         "compReq":{"mat":2,"med":2,"cyber":1},
         "factor":"thp",
         "costs":{"Carbone":6,"Aluminium":18,"Titane":18,"Electros":12,"Batteries":12,"Or":6},
-        "deploy":{"Huile":3,"Energie":24,"Végétaux":3,"Mendium":6}
+        "deploy":{"Huile":2,"Energie":24,"Végétaux":3,"Mendium":6}
     },
     {
         "name": "kanchan",
@@ -436,7 +436,7 @@
         "compReq":{"log":1,"const":2},
         "factor":"crew",
         "costs":{"Fer":6,"Carbone":3,"Tungstène":3,"Electros":3,"Batteries":3},
-        "deploy":{"Huile":6,"Energie":12}
+        "deploy":{"Huile":3,"Energie":12}
     },
     {
         "name": "e-medic",
@@ -447,7 +447,7 @@
         "compReq":{"log":1,"med":1},
         "factor":"crew",
         "costs":{"Titane":2,"Or":2},
-        "deploy":{"Huile":3,"Chlore":3,"Tissus":3,"Zinc":3}
+        "deploy":{"Huile":2,"Chlore":3,"Tissus":3,"Zinc":3}
     },
     {
         "name": "gilet",
@@ -530,7 +530,7 @@
         "compReq":{"med":2,"ca":4,"gen":1},
         "factor":"thp",
         "costs":{"Huile":12,"Octiron":12,"Mendium":12,"Creatite":12,"Or":6},
-        "deploy":{"Huile":4,"Mendium":4,"Creatite":4,"Or":2}
+        "deploy":{"Huile":2,"Mendium":4,"Creatite":4,"Or":2}
     },
     {
         "name": "waterproof",

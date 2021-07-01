@@ -1206,7 +1206,7 @@
         "aoe": "",
         "info": "Poison",
         "compReq":{"exo":1,"ca":1},
-        "deploy":{"Bois":5,"Fer":3,"Calcium":3,"Huile":2},
+        "deploy":{"Bois":5,"Fer":3,"Calcium":3,"Huile":1},
         "batch":100
     },
     {
@@ -1222,7 +1222,7 @@
         "info": "Poison++",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":2},
-        "deploy":{"Bois":5,"Fer":3,"Atium":3,"Huile":2},
+        "deploy":{"Bois":5,"Fer":3,"Atium":3,"Huile":1},
         "batch":100
     },
     {
@@ -1418,7 +1418,7 @@
         "info": "Poison",
         "compReq":{"exo":1,"ca":1},
         "costs":{"Fer":6},
-        "deploy":{"Calcium":3,"Huile":2},
+        "deploy":{"Calcium":3,"Huile":1},
         "batch":12
     },
     {
@@ -1435,7 +1435,7 @@
         "bldReq":["Atelier"],
         "compReq":{"exo":1,"ca":1,"mat":1},
         "costs":{"Fer":2,"Tungstène":2,"Cobalt":1,"Silicium":1},
-        "deploy":{"Calcium":3,"Huile":2},
+        "deploy":{"Calcium":3,"Huile":1},
         "batch":12
     },
     {
@@ -1452,7 +1452,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"exo":2},
         "costs":{"Fer":4,"Cobalt":1,"Silicium":1},
-        "deploy":{"Atium":3,"Huile":2},
+        "deploy":{"Atium":3,"Huile":1},
         "batch":12
     },
     {
@@ -1767,7 +1767,7 @@
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
         "compReq":{"pyro":3},
-        "deploy":{"Scrap":2,"Fer":2,"Explosifs":3,"Oxygène":1,"Fuel":2,"Huile":2,"Pyratol":3},
+        "deploy":{"Scrap":2,"Fer":2,"Explosifs":3,"Oxygène":1,"Fuel":2,"Huile":1,"Pyratol":3},
         "batch":100
     },
     {
@@ -2310,7 +2310,7 @@
         "aoe": "bat",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":1,"ca":3},
-        "deploy":{"Carbone":5,"Scrap":5,"Plutonium":3,"Huile":5,"Phosphore":6,"Hydrocarbure":4,"Chlore":12},
+        "deploy":{"Carbone":5,"Scrap":5,"Plutonium":3,"Huile":3,"Phosphore":6,"Hydrocarbure":4,"Chlore":12},
         "batch":100
     },
     {
@@ -2325,7 +2325,7 @@
         "aoe": "bat",
         "bldReq":["Centre de recherches"],
         "compReq":{"exo":2,"ca":4},
-        "deploy":{"Carbone":5,"Scrap":5,"Phosphore":6,"Oxygène":4,"Chlore":12,"Huile":5,"Uridium":5,"Germium":1},
+        "deploy":{"Carbone":5,"Scrap":5,"Phosphore":6,"Oxygène":4,"Chlore":12,"Huile":3,"Uridium":5,"Germium":1},
         "batch":100
     },
     {
