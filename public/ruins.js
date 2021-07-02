@@ -502,7 +502,7 @@ function checkRuinsRes(tile) {
                 } else if (res.name.includes('Compo')) {
                     thatResChance = Math.ceil((resFactor-100)*1.7*res.batch/3);
                 } else if (res.cat == 'transfo') {
-                    if (res.name != 'Moteur orbital' && res.name != 'Energie') {
+                    if (res.name != 'Transorb' && res.name != 'Energie') {
                         thatResChance = Math.ceil(resFactor*1.7*res.batch/3);
                     }
                 } else {
@@ -553,7 +553,7 @@ function checkRuinsRes(tile) {
                                 thatResChance = Math.ceil(resFactor*5*res.batch/3);
                             }
                         } else if (res.cat == 'transfo') {
-                            if (!res.name.includes('Compo') && res.name != 'Moteur orbital' && res.name != 'Energie') {
+                            if (!res.name.includes('Compo') && res.name != 'Transorb' && res.name != 'Energie') {
                                 thatResChance = Math.ceil(resFactor*1.7*res.batch/3);
                             }
                         } else {

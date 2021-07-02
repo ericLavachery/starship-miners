@@ -651,17 +651,6 @@
         "energie": -1
     },
     {
-        "id": 61,
-        "name": "Electros",
-        "bld": "",
-        "level": 4,
-        "rarity": 25,
-        "cat": "transfo",
-        "batch": 3,
-        "energie": -1,
-        "ctri": 1
-    },
-    {
         "id": 62,
         "name": "Batteries",
         "bld": "",
@@ -671,6 +660,17 @@
         "batch": 3,
         "energie": -1,
         "ctri": 1.5
+    },
+    {
+        "id": 61,
+        "name": "Electros",
+        "bld": "",
+        "level": 4,
+        "rarity": 25,
+        "cat": "transfo",
+        "batch": 3,
+        "energie": -1,
+        "ctri": 1
     },
     {
         "id": 63,
@@ -683,13 +683,53 @@
         "energie": 3
     },
     {
-        "id": 64,
-        "name": "Explosifs",
+        "id": 74,
+        "name": "Moteurs",
         "bld": "",
         "level": 4,
         "rarity": 40,
         "cat": "transfo",
         "batch": 3,
+        "energie": -1
+    },
+    {
+        "id": 64,
+        "name": "Explosifs",
+        "bld": "",
+        "level": 4,
+        "rarity": 35,
+        "cat": "transfo",
+        "batch": 3,
+        "energie": -1
+    },
+    {
+        "id": 73,
+        "name": "Munitions",
+        "bld": "",
+        "level": 4,
+        "rarity": 50,
+        "cat": "transfo",
+        "batch": 3,
+        "energie": -1
+    },
+    {
+        "id": 75,
+        "name": "Drogues",
+        "bld": "",
+        "level": 4,
+        "rarity": 40,
+        "cat": "transfo",
+        "batch": 3,
+        "energie": -1
+    },
+    {
+        "id": 76,
+        "name": "Génomes",
+        "bld": "",
+        "level": 4,
+        "rarity": 15,
+        "cat": "transfo",
+        "batch": 2,
         "energie": -1
     },
     {
@@ -716,7 +756,7 @@
     },
     {
         "id": 65,
-        "name": "Moteur orbital",
+        "name": "Transorb",
         "bld": "",
         "level": 4,
         "rarity": 0,

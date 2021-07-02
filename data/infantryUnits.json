@@ -1258,7 +1258,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","camo","selfbadmedic","uprank","cible"],
+        "skills":["fouille","fortif","camo","uprank","cible"],
         "mediCost":10,
         "fuzz":-1,
         "deathFx":"human1"

@@ -1322,7 +1322,7 @@ function getResRecup(bat,batType) {
             Object.entries(batType.costs).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
-                if (key != 'Moteur orbital') {
+                if (key != 'Transorb') {
                     value = Math.ceil(value/100*recupFactor);
                 }
                 if (value >= 1) {

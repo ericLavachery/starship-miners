@@ -50,7 +50,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":2},
+        "deploy":{"Munitions":1},
         "batch":100
     },
     {
@@ -77,7 +77,7 @@
         "apdamage": 0,
         "aoe": "",
         "compReq":{"bal":1},
-        "deploy":{"Fer":2,"Soufre":2,"Plomb":1},
+        "deploy":{"Munitions":1,"Fer":1},
         "batch":100
     },
     {
@@ -107,7 +107,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":1},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Tungstène":2},
+        "deploy":{"Munitions":1,"Tungstène":2},
         "batch":100
     },
     {
@@ -122,7 +122,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
-        "deploy":{"Fer":2,"Soufre":2,"Uranium":2},
+        "deploy":{"Munitions":1,"Uranium":2},
         "batch":100
     },
     {
@@ -152,7 +152,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":1},
-        "deploy":{"Fer":1,"Soufre":1,"Plomb":1,"Titane":2,"Potassium":1},
+        "deploy":{"Munitions":1,"Titane":2},
         "batch":100
     },
     {
@@ -166,7 +166,7 @@
         "apdamage": 0,
         "aoe": "",
         "compReq":{"bal":1},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":3},
+        "deploy":{"Munitions":1,"Plomb":1},
         "batch":100
     },
     {
@@ -181,7 +181,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":3},
+        "deploy":{"Aluminium":1,"Soufre":2,"Plomb":3},
         "batch":100
     },
     {
@@ -196,7 +196,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
-        "deploy":{"Fer":1,"Soufre":2,"Aluminium":1,"Dunium":2},
+        "deploy":{"Munitions":1,"Aluminium":1,"Dunium":2},
         "batch":100
     },
     {
@@ -211,7 +211,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":1,"explo":2},
-        "deploy":{"Fer":4,"Soufre":4,"Plomb":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
+        "deploy":{"Munitions":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
         "batch":200
     },
     {
@@ -227,7 +227,7 @@
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":2,"Aluminium":1,"Phosphore":2},
+        "deploy":{"Munitions":1,"Aluminium":1,"Phosphore":2},
         "batch":100
     },
     {
@@ -242,7 +242,7 @@
         "aoe": "",
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Timonium":2,"Uranium":1},
+        "deploy":{"Munitions":1,"Timonium":2,"Uranium":1},
         "batch":100
     },
     {
@@ -257,7 +257,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Salite":2},
+        "deploy":{"Munitions":1,"Salite":2},
         "batch":100
     },
     {
@@ -273,7 +273,7 @@
         "info": "PasseBouclier",
         "bldReq":["Usine d'armement"],
         "compReq":{"mat":3,"bal":2},
-        "deploy":{"Fer":2,"Soufre":2,"Adamantium":2},
+        "deploy":{"Munitions":1,"Adamantium":2},
         "batch":100
     },
     {
@@ -304,7 +304,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":3},
-        "deploy":{"Fer":2,"Soufre":3,"Plomb":1,"Tungstène":3},
+        "deploy":{"Munitions":1,"Fer":1,"Soufre":1,"Tungstène":3},
         "batch":100
     },
     {
@@ -319,7 +319,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":1},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Tungstène":2},
+        "deploy":{"Munitions":1,"Tungstène":2},
         "batch":100
     },
     {
@@ -334,7 +334,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
-        "deploy":{"Fer":2,"Soufre":2,"Uranium":2},
+        "deploy":{"Munitions":1,"Uranium":2},
         "batch":100
     },
     {
@@ -349,7 +349,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":1,"explo":2},
-        "deploy":{"Fer":4,"Soufre":4,"Plomb":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
+        "deploy":{"Munitions":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
         "batch":200
     },
     {
@@ -365,7 +365,7 @@
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":2,"Aluminium":1,"Phosphore":2},
+        "deploy":{"Munitions":1,"Aluminium":1,"Phosphore":2},
         "batch":100
     },
     {
@@ -380,7 +380,7 @@
         "aoe": "",
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Timonium":2,"Uranium":1},
+        "deploy":{"Munitions":1,"Timonium":2,"Uranium":1},
         "batch":100
     },
     {
@@ -396,7 +396,7 @@
         "info": "PasseBouclier",
         "bldReq":["Armurerie"],
         "compReq":{"bal":3},
-        "deploy":{"Fer":2,"Soufre":3,"Plomb":1,"Tungstène":3},
+        "deploy":{"Munitions":1,"Fer":1,"Soufre":1,"Tungstène":3},
         "batch":100
     },
     {
@@ -427,7 +427,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Salite":2},
+        "deploy":{"Munitions":1,"Salite":2},
         "batch":100
     },
     {
@@ -443,7 +443,7 @@
         "info": "PasseBouclier",
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":3},
-        "deploy":{"Fer":2,"Soufre":2,"Adamantium":2},
+        "deploy":{"Munitions":1,"Adamantium":2},
         "batch":100
     },
     {
@@ -458,7 +458,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
-        "deploy":{"Fer":1,"Soufre":2,"Aluminium":1,"Dunium":2},
+        "deploy":{"Munitions":1,"Aluminium":1,"Dunium":2},
         "batch":100
     },
     {
@@ -472,7 +472,7 @@
         "apdamage": 0,
         "aoe": "",
         "compReq":{"bal":1},
-        "deploy":{"Fer":2,"Soufre":2,"Plomb":1},
+        "deploy":{"Munitions":1,"Fer":1},
         "batch":100
     },
     {
@@ -502,7 +502,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":1},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Tungstène":2},
+        "deploy":{"Munitions":1,"Tungstène":2},
         "batch":100
     },
     {
@@ -517,7 +517,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
-        "deploy":{"Fer":2,"Soufre":2,"Uranium":2},
+        "deploy":{"Munitions":1,"Uranium":2},
         "batch":100
     },
     {
@@ -546,7 +546,7 @@
         "apdamage": 0,
         "aoe": "",
         "compReq":{"bal":1},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":3},
+        "deploy":{"Munitions":1,"Plomb":1},
         "batch":100
     },
     {
@@ -561,7 +561,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
-        "deploy":{"Fer":1,"Soufre":2,"Aluminium":1,"Dunium":2},
+        "deploy":{"Munitions":1,"Aluminium":1,"Dunium":2},
         "batch":100
     },
     {
@@ -576,7 +576,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":1,"explo":2},
-        "deploy":{"Fer":4,"Soufre":4,"Plomb":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
+        "deploy":{"Munitions":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
         "batch":200
     },
     {
@@ -592,7 +592,7 @@
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":2,"Aluminium":1,"Phosphore":2},
+        "deploy":{"Munitions":1,"Aluminium":1,"Phosphore":2},
         "batch":100
     },
     {
@@ -607,7 +607,7 @@
         "aoe": "",
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Timonium":2,"Uranium":1},
+        "deploy":{"Munitions":1,"Timonium":2,"Uranium":1},
         "batch":100
     },
     {
@@ -622,7 +622,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
-        "deploy":{"Fer":1,"Soufre":2,"Plomb":1,"Salite":2},
+        "deploy":{"Munitions":1,"Salite":2},
         "batch":100
     },
     {
@@ -638,7 +638,7 @@
         "info": "PasseBouclier",
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":3},
-        "deploy":{"Fer":2,"Soufre":2,"Adamantium":2},
+        "deploy":{"Munitions":1,"Adamantium":2},
         "batch":100
     },
     {

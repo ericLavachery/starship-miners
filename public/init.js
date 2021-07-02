@@ -245,11 +245,13 @@ socket.on('savedMap-Load', function(sm) {
 socket.on('resTypes-Load', function(rt) {
     resTypes = rt;
     // console.log(resTypes);
+    freeIds('ressources',resTypes);
 });
 // crafting
 socket.on('crafting-Load', function(crf) {
     crafting = crf;
     // console.log(crafting);
+    freeIds('crafting',crafting);
 });
 // gangComps
 socket.on('comps-Load', function(cmp) {

@@ -326,6 +326,7 @@ function stopSonde() {
     saveNewMap();
     loadZone(0);
     showedTilesReset(false);
+    miniOut();
     commandes();
 };
 

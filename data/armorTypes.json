@@ -47,7 +47,7 @@
         "apCost":0,
         "bldReq":[],
         "compReq":{"ca":1},
-        "costs":{"Huile":1,"Végétaux":2,"Zinc":1,"Swarmine":1}
+        "costs":{"Drogues":1,"Zinc":1,"Swarmine":1}
     },
     {
         "name": "kirin",
@@ -55,7 +55,7 @@
         "apCost":3,
         "bldReq":["Infirmerie"],
         "compReq":{"ca":2,"med":1},
-        "costs":{"Huile":1,"Végétaux":3,"Or":1,"Mendium":3}
+        "costs":{"Drogues":1,"Végétaux":1,"Or":1,"Mendium":2}
     },
     {
         "name": "octiron",
@@ -63,7 +63,7 @@
         "apCost":0,
         "bldReq":[],
         "compReq":{"med":1},
-        "costs":{"Huile":1,"Hélium":1,"Bore":2,"Octiron":4}
+        "costs":{"Drogues":1,"Hélium":1,"Bore":2,"Octiron":4}
     },
     {
         "name": "bliss",
@@ -71,7 +71,7 @@
         "apCost":1,
         "bldReq":[],
         "compReq":{"ca":1,"exo":2},
-        "costs":{"Huile":1,"Mercure":1,"Bore":2,"Larvium":5}
+        "costs":{"Drogues":1,"Mercure":1,"Bore":2,"Larvium":3}
     },
     {
         "name": "skupiac",
@@ -79,7 +79,7 @@
         "apCost":3,
         "bldReq":["Bar"],
         "compReq":{"ca":2,"exo":2},
-        "costs":{"Huile":1,"Végétaux":2,"Mercure":1,"Or":1,"Aranium":5}
+        "costs":{"Drogues":1,"Mercure":1,"Or":1,"Aranium":4}
     },
     {
         "name": "blaze",
@@ -87,7 +87,7 @@
         "apCost":3,
         "bldReq":["Bar"],
         "compReq":{"ca":3,"exo":3},
-        "costs":{"Huile":1,"Mercure":1,"Hélium":1,"Bore":2,"Wingium":4}
+        "costs":{"Drogues":1,"Mercure":1,"Hélium":1,"Bore":2,"Wingium":2}
     },
     {
         "name": "sila",
@@ -95,7 +95,7 @@
         "apCost":3,
         "bldReq":[],
         "compReq":{"ca":1,"exo":1},
-        "costs":{"Huile":1,"Végétaux":2,"Zinc":1,"Creatite":2,"Bugium":5}
+        "costs":{"Drogues":1,"Zinc":1,"Creatite":1,"Bugium":3}
     },
     {
         "name": "nitro",
@@ -103,7 +103,7 @@
         "apCost":0,
         "bldReq":["Garage"],
         "compReq":{"energ":1},
-        "costs":{"Huile":1,"Hydrogène":2,"Azote":2,"Slime":4}
+        "costs":{"Huile":1,"Hydrogène":2,"Azote":2,"Slime":2}
     },
     {
         "name": "aucune",
@@ -234,7 +234,7 @@
         "cat":"armor",
         "armor": 7,
         "ap": -3,
-        "skills": ["resistacide"],
+        "skills": ["resistall"],
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":3,"ca":3},
         "factor":"thp",
@@ -249,8 +249,8 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":2,"med":2,"cyber":1},
         "factor":"thp",
-        "costs":{"Carbone":6,"Aluminium":18,"Titane":18,"Electros":12,"Batteries":12,"Or":6},
-        "deploy":{"Huile":2,"Energie":24,"Végétaux":3,"Mendium":6}
+        "costs":{"Carbone":6,"Moteurs":9,"Titane":18,"Electros":12,"Batteries":12,"Or":6},
+        "deploy":{"Drogues":3,"Energie":24,"Végétaux":3,"Mendium":6}
     },
     {
         "name": "kanchan",
@@ -447,7 +447,7 @@
         "compReq":{"log":1,"med":1},
         "factor":"crew",
         "costs":{"Titane":2,"Or":2},
-        "deploy":{"Huile":2,"Chlore":3,"Tissus":3,"Zinc":3}
+        "deploy":{"Drogues":2,"Chlore":3,"Tissus":3,"Zinc":3}
     },
     {
         "name": "gilet",
@@ -478,7 +478,7 @@
         "bldReq":["Chaîne de montage"],
         "compReq":{"log":2,"train":1,"aero":1},
         "factor":"crew",
-        "costs":{"Nickel":12,"Aluminium":36,"Electros":12},
+        "costs":{"Nickel":12,"Aluminium":18,"Moteurs":12,"Electros":12},
         "deploy":{"Fuel":12}
     },
     {
@@ -529,8 +529,8 @@
         "bldReq":["Laboratoire"],
         "compReq":{"med":2,"ca":4,"gen":1},
         "factor":"thp",
-        "costs":{"Huile":12,"Octiron":12,"Mendium":12,"Creatite":12,"Or":6},
-        "deploy":{"Huile":2,"Mendium":4,"Creatite":4,"Or":2}
+        "costs":{"Drogues":12,"Octiron":12,"Mendium":9,"Creatite":12,"Or":6},
+        "deploy":{"Drogues":2,"Mendium":3,"Creatite":2,"Or":2}
     },
     {
         "name": "waterproof",
@@ -612,7 +612,7 @@
         "bldReq":["Atelier"],
         "compReq":{"def":1,"pyro":2},
         "factor":"crew",
-        "costs":{"Carbone":6,"Scrap":24,"Aluminium":30,"Nickel":6},
+        "costs":{"Carbone":6,"Scrap":24,"Aluminium":24,"Moteurs":2,"Nickel":6},
         "deploy":{"Energie":12,"Fuel":48}
     },
     {
@@ -818,7 +818,7 @@
         "bldReq":["Chaîne de montage"],
         "compReq":{"log":2,"energ":1,"trans":1},
         "factor":"thp",
-        "costs":{"Cuivre":3,"Aluminium":9,"Nickel":3,"Electros":6,"Batteries":3},
+        "costs":{"Cuivre":3,"Moteurs":6,"Nickel":3,"Electros":6,"Batteries":3},
         "deploy":{"Hydrogène":6,"Huile":1}
     },
     {
@@ -839,7 +839,7 @@
         "bldReq":["Chaîne de montage"],
         "compReq":{"log":2,"trans":2},
         "factor":"thp",
-        "costs":{"Carbone":3,"Aluminium":4,"Electros":2}
+        "costs":{"Carbone":3,"Moteurs":2,"Electros":2}
     },
     {
         "name": "belier",
@@ -939,7 +939,7 @@
         "bldReq":[],
         "compReq":{"ind":1,"energ":2},
         "factor":"one",
-        "costs":{"Carbone":15,"Titane":45,"Platine":45,"Cuivre":30,"Electros":30,"Batteries":60},
+        "costs":{"Carbone":15,"Titane":45,"Platine":45,"Cuivre":30,"Moteurs":15,"Electros":30,"Batteries":60},
         "deploy":{"Energie":240}
     },
     {
@@ -950,7 +950,7 @@
         "bldReq":[],
         "compReq":{"ind":2,"mat":4},
         "factor":"one",
-        "costs":{"Carbone":10,"Titane":40,"Rhodium":40,"Cuivre":40,"Electros":40,"Batteries":30},
+        "costs":{"Carbone":10,"Titane":40,"Rhodium":40,"Cuivre":40,"Moteurs":15,"Electros":40,"Batteries":30},
         "deploy":{"Energie":120}
     },
     {
@@ -961,7 +961,7 @@
         "bldReq":[],
         "compReq":{"log":2,"ind":2},
         "factor":"one",
-        "costs":{"Carbone":20,"Aluminium":30,"Titane":30,"Silicium":15,"Cuivre":60,"Electros":60,"Batteries":40},
+        "costs":{"Carbone":20,"Titane":30,"Silicium":15,"Cuivre":60,"Moteurs":30,"Electros":60,"Batteries":40},
         "deploy":{"Energie":160}
     },
     {
@@ -972,7 +972,7 @@
         "bldReq":[],
         "compReq":{"ind":2,"energ":1},
         "factor":"one",
-        "costs":{"Carbone":45,"Titane":45,"Cuivre":30,"Electros":30,"Batteries":30},
+        "costs":{"Carbone":45,"Titane":45,"Cuivre":30,"Moteurs":5,"Electros":30,"Batteries":30},
         "deploy":{"Energie":120,"Hydrogène":80,"Aluminium":20}
     },
     {
@@ -1125,7 +1125,7 @@
         "bldReq":[],
         "compReq":{"log":2,"def":2,"det":2,"bal":2,"robo":1},
         "factor":"one",
-        "costs":{"Carbone":15,"Scrap":15,"Soufre":10,"Tungstène":10,"Plomb":10,"Fer":75,"Cuivre":20,"Aluminium":30,"Silicium":15,"Electros":15,"Batteries":15}
+        "costs":{"Carbone":15,"Scrap":15,"Soufre":10,"Tungstène":10,"Plomb":10,"Fer":75,"Cuivre":20,"Aluminium":30,"Moteurs":5,"Silicium":15,"Electros":15,"Batteries":15}
     },
     {
         "name": "w1-autogun",
@@ -1135,7 +1135,7 @@
         "bldReq":[],
         "compReq":{"log":2,"def":3,"det":3,"bal":3,"tank":1,"robo":1},
         "factor":"one",
-        "costs":{"Carbone":45,"Scrap":20,"Soufre":45,"Uranium":45,"Fer":150,"Cuivre":60,"Aluminium":60,"Silicium":30,"Electros":45,"Batteries":45}
+        "costs":{"Carbone":45,"Scrap":20,"Soufre":45,"Uranium":45,"Fer":150,"Cuivre":60,"Aluminium":60,"Moteurs":15,"Silicium":30,"Electros":45,"Batteries":45}
     },
     {
         "name": "respack-soins1",
@@ -1145,12 +1145,12 @@
     {
         "name": "respack-ammo1",
         "info": "Munitions 1 (1650r)",
-        "costs":{"Fer":380,"Soufre":380,"Plomb":270,"Tungstène":190,"Uranium":80,"Phosphore":190,"Hydrogène":80,"Aluminium":80}
+        "costs":{"Munitions":360,"Fer":80,"Plomb":80,"Tungstène":190,"Uranium":80,"Phosphore":190,"Hydrogène":80,"Aluminium":80}
     },
     {
         "name": "respack-ammo2",
         "info": "Munitions 2 (2290r)",
-        "costs":{"Fer":380,"Soufre":380,"Plomb":270,"Tungstène":270,"Uranium":120,"Phosphore":190,"Hydrogène":80,"Aluminium":120,"Or":80,"Bossium":80,"Adamantium":80,"Dunium":80,"Salite":80,"Timonium":80}
+        "costs":{"Munitions":360,"Fer":80,"Plomb":80,"Tungstène":270,"Uranium":120,"Phosphore":190,"Hydrogène":80,"Aluminium":120,"Or":80,"Bossium":80,"Adamantium":80,"Dunium":80,"Salite":80,"Timonium":80}
     },
     {
         "name": "respack-weapons1",
@@ -1225,6 +1225,7 @@
             "Platine":0,
             "Rhodium":0,
             "Huile":2000,
+            "Fruits":3000,
             "Energie":7500,
             "Compo1":4000,
             "Compo2":400,
