@@ -666,9 +666,9 @@
         "name": "Electros",
         "bld": "",
         "level": 4,
-        "rarity": 25,
+        "rarity": 15,
         "cat": "transfo",
-        "batch": 3,
+        "batch": 2,
         "energie": -1,
         "ctri": 1
     },
@@ -697,9 +697,9 @@
         "name": "Explosifs",
         "bld": "",
         "level": 4,
-        "rarity": 35,
+        "rarity": 30,
         "cat": "transfo",
-        "batch": 3,
+        "batch": 2,
         "energie": -1
     },
     {
@@ -720,16 +720,6 @@
         "rarity": 40,
         "cat": "transfo",
         "batch": 3,
-        "energie": -1
-    },
-    {
-        "id": 76,
-        "name": "Génomes",
-        "bld": "",
-        "level": 4,
-        "rarity": 15,
-        "cat": "transfo",
-        "batch": 2,
         "energie": -1
     },
     {
