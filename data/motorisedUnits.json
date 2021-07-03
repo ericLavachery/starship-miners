@@ -1880,7 +1880,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","mecano","repair","constructeur","routes","noblub","light","crewsave","fret","extraction","dumper","recupcit","recupres","caterp"],
+        "skills":["noguet","mecano","repair","constructeur","routes","noblub","light","crewsave","fret","extraction","dumper","recupcit","recupres","caterp","reeq"],
         "mecanoCost":6,
         "mining":{
             "level":2,
@@ -1948,7 +1948,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","mecano","repair","constructeur","routes","noblub","resistacide","resistelec","dealer","nitro","light","crewsave","fret","extraction","dumper","recupcit","recupres","caterp","kzin"],
+        "skills":["noguet","mecano","repair","constructeur","routes","noblub","resistacide","resistelec","dealer","nitro","light","crewsave","fret","extraction","dumper","recupcit","recupres","caterp","kzin","reeq"],
         "mecanoCost":4,
         "mining":{
             "level":2,
@@ -2832,7 +2832,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["transport","fret","ravitaillement","stock","selfbadmecano","hardmove","light","badcrewsave","dumper","recupcit","recupres"],
+        "skills":["transport","fret","ravitaillement","stock","selfbadmecano","hardmove","light","badcrewsave","dumper","recupcit","recupres","reeq"],
         "mecanoCost":18,
         "transMaxSize":9,
         "transUnits":230,
