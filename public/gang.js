@@ -60,7 +60,7 @@ function gangUnitsList(gangName) {
                     }
                 }
                 // Taupes/Blades
-                if (unit.name === 'Taupes' && playerInfos.gang === 'blades') {
+                if (unit.name === 'Taupes' && (playerInfos.gang === 'blades' || playerInfos.gang === 'brasier')) {
                     newCompReq['aero'] = 1;
                     newCompReq['cyber'] = 1;
                 }

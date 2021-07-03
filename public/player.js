@@ -1269,7 +1269,9 @@ function missionResults(onlyLanders) {
         let key = entry[0];
         let value = entry[1];
         if (key != 'Citoyens') {
+            console.log(key);
             let res = getResByName(key);
+            console.log(res.name);
             let resIcon = getResIcon(res);
             let minedRes = getMinedRes(res.name);
             let resCol = '';
