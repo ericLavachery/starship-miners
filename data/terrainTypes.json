@@ -65,7 +65,7 @@
         "aliencover":8,
         "fishcover":4,
         "minChance":12,
-        "roadBuild":8,
+        "roadBuild":7,
         "color":"#382d1d"
     },
     {
@@ -226,7 +226,7 @@
         "aliencover":-6,
         "fishcover":8,
         "minChance":500,
-        "roadBuild":16,
+        "roadBuild":13,
         "color":"#437c9a"
     },
     {
@@ -249,7 +249,7 @@
         "aliencover":-8,
         "fishcover":9,
         "minChance":500,
-        "roadBuild":16,
+        "roadBuild":13,
         "color":"#1378c1"
     }
 ]

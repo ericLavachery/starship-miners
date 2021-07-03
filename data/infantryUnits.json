@@ -2455,7 +2455,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","extraction","selfbadmedic","camo","ranger","fret","conscont","constructeur","routes","repair"],
         "mediCost":9,
-        "mecanoCost":14,
+        "mecanoCost":11,
         "mining":{
             "level":2,
             "rate":12,

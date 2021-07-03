@@ -1270,7 +1270,7 @@ function skillsInfos(bat,batType) {
     // ROUTES / PONTS
     if (batType.skills.includes('routes') && !playerInfos.onShip) {
         if (!tile.rd) {
-            apCost = Math.round(batType.mecanoCost*terrain.roadBuild*roadAPCost/30);
+            apCost = Math.round(batType.mecanoCost*terrain.roadBuild*roadAPCost/40);
             apReq = Math.ceil(apCost/10);
             let roadCosts = getRoadCosts(tile);
             let roadCostsOK = checkCost(roadCosts);

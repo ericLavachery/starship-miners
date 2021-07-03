@@ -241,24 +241,35 @@
         "cost":{"Phosphore":2,"Cobalt":1,"Titane":1},
         "compReq":{},
         "bldReq":["Atelier"],
+        "compOut":{"energ":1},
+        "bldOut":["Atelier"],
+        "batch":1,
+        "creaNum":15
+    },
+    {
+        "id":115,
+        "result":"Batteries",
+        "cost":{"Carbone":1,"Zinc":1,"Nickel":1},
+        "compReq":{"energ":1},
+        "bldReq":["Atelier"],
         "batch":1,
         "creaNum":15
     },
     {
         "id":19,
         "result":"Batteries",
-        "cost":{"Carbone":1,"Zinc":1,"Nickel":1,"Energie":1},
+        "cost":{"Carbone":4,"Zinc":4,"Nickel":3,"Energie":4},
         "compReq":{"energ":2,"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":1
+        "batch":5
     },
     {
         "id":20,
         "result":"Batteries",
-        "cost":{"Carbone":2,"Azote":3,"Hydrogène":3,"Energie":3},
+        "cost":{"Carbone":3,"Azote":3,"Hydrogène":3,"Energie":4},
         "compReq":{"energ":3,"ind":1},
         "bldReq":["Usine"],
-        "batch":4
+        "batch":5
     },
     {
         "id":70,
@@ -308,42 +319,42 @@
     {
         "id":3,
         "result":"Fuel",
-        "cost":{"Hydrocarbure":2},
+        "cost":{"Hydrocarbure":20},
         "compReq":{},
         "bldReq":["Atelier"],
-        "batch":1
+        "batch":10
     },
     {
         "id":21,
         "result":"Fuel",
-        "cost":{"Hydrocarbure":2,"Huile":1},
+        "cost":{"Hydrocarbure":10,"Huile":5},
         "compReq":{"pyro":1},
         "bldReq":["Atelier"],
-        "batch":2
+        "batch":10
     },
     {
         "id":22,
         "result":"Fuel",
-        "cost":{"Carbone":2,"Hydrogène":1},
+        "cost":{"Carbone":10,"Hydrogène":5},
         "compReq":{"energ":2,"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":2
+        "batch":10
     },
     {
         "id":23,
         "result":"Fuel",
-        "cost":{"Végétaux":5,"Hydrogène":1},
+        "cost":{"Végétaux":50,"Hydrogène":10},
         "compReq":{"energ":2,"exo":2,"ind":2},
         "bldReq":["Usine"],
-        "batch":1
+        "batch":10
     },
     {
         "id":107,
         "result":"Fuel",
-        "cost":{"Pyratol":1,"Eau":4},
+        "cost":{"Pyratol":2,"Eau":8},
         "compReq":{"pyro":3},
         "bldReq":["Atelier"],
-        "batch":5
+        "batch":10
     },
     {
         "id":28,

@@ -899,11 +899,12 @@
         "stealth":2,
         "speed":3,
         "ap":24,
-        "maxSalvo":1,
+        "maxSalvo":2,
         "weapon":{
             "name":"Calibre",
             "cost":4,
             "range":1,
+            "noBis":true,
             "noise":2,
             "rof":12,
             "accuracy":17,

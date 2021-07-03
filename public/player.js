@@ -1264,7 +1264,7 @@ function missionResults(onlyLanders) {
     }
     $('#conUnitList').append('<span class="paramResName">Citoyens</span><span class="paramIcon"></span><span class="paramResValue '+resColour+'">'+citDiff+'</span><br>');
     $('#conUnitList').append('<hr>');
-    let sonde = getBatTypeByName('Sonde');
+    // let sonde = getBatTypeByName('Sonde');
     Object.entries(playerInfos.endRes).map(entry => {
         let key = entry[0];
         let value = entry[1];
@@ -1277,9 +1277,9 @@ function missionResults(onlyLanders) {
                 resCol = ' bor';
             }
             let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
-            if (sonde.costs[key] != undefined) {
-                resResult = resResult-sonde.costs[key];
-            }
+            // if (sonde.costs[key] != undefined) {
+            //     resResult = resResult-sonde.costs[key];
+            // }
             balance = balance+resResult;
             if (resResult != 0) {
                 resColour = 'gf';
@@ -1307,9 +1307,9 @@ function missionResults(onlyLanders) {
                 resCol = ' bor';
             }
             let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
-            if (sonde.costs[key] != undefined) {
-                resResult = resResult-sonde.costs[key];
-            }
+            // if (sonde.costs[key] != undefined) {
+            //     resResult = resResult-sonde.costs[key];
+            // }
             if (resResult === 0) {
                 let resColour = 'gf';
                 $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');

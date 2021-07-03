@@ -242,6 +242,7 @@ function goRavit() {
                     i++;
                 }
             }
+            tagDelete(selectedBat,'guet');
             selectedBatArrayUpdate();
             showBatInfos(selectedBat);
         }
@@ -334,6 +335,7 @@ function goRavitDrug(apCost) {
                 ravitBat.tags.push('sU');
                 ravitBat.tags.push('sU');
             }
+            tagDelete(selectedBat,'guet');
             selectedBatArrayUpdate();
             showBatInfos(selectedBat);
         }
