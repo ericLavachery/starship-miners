@@ -67,6 +67,15 @@
         "creaNum":20
     },
     {
+        "id":117,
+        "result":"Compo1",
+        "cost":{"Bugium":3,"Carbone":3,"Eau":1},
+        "compReq":{"ca":2},
+        "bldReq":["Atelier"],
+        "batch":5,
+        "creaNum":20
+    },
+    {
         "id":16,
         "result":"Compo1",
         "cost":{"Carbone":5,"Energie":1},
@@ -333,6 +342,14 @@
         "batch":10
     },
     {
+        "id":118,
+        "result":"Fuel",
+        "cost":{"Hydrocarbure":8,"Slime":4,"Phosphore":1},
+        "compReq":{"ca":3},
+        "bldReq":["Atelier"],
+        "batch":10
+    },
+    {
         "id":22,
         "result":"Fuel",
         "cost":{"Carbone":10,"Hydrogène":5},
@@ -378,6 +395,14 @@
         "result":"Munitions",
         "cost":{"Fer":7,"Soufre":20,"Plomb":14,"Scrap":9},
         "compReq":{"tri":1},
+        "bldReq":["Armurerie"],
+        "batch":10
+    },
+    {
+        "id":119,
+        "result":"Munitions",
+        "cost":{"Bugium":10,"Soufre":20,"Plomb":15},
+        "compReq":{"ca":2},
         "bldReq":["Armurerie"],
         "batch":10
     },
@@ -460,6 +485,15 @@
         "creaNum":20
     },
     {
+        "id":116,
+        "result":"Tissus",
+        "cost":{"Végétaux":6,"Aranium":2,"Azote":1,"Energie":2},
+        "compReq":{"ca":3},
+        "bldReq":["Atelier"],
+        "batch":2,
+        "creaNum":20
+    },
+    {
         "id":66,
         "result":"Tissus",
         "cost":{"Végétaux":5,"Energie":1},
@@ -470,7 +504,7 @@
     {
         "id":67,
         "result":"Tissus",
-        "cost":{"Carbone":2,"Azote":1,"Hydrogène":1},
+        "cost":{"Carbone":2,"Azote":1,"Hydrogène":1,"Energie":2},
         "compReq":{"ind":2},
         "bldReq":["Usine"],
         "batch":4

@@ -898,7 +898,7 @@
         "volume":0.95,
         "stealth":2,
         "speed":3,
-        "ap":24,
+        "ap":23,
         "maxSalvo":2,
         "weapon":{
             "name":"Calibre",

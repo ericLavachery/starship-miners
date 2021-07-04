@@ -1499,9 +1499,9 @@
         "aoe": "",
         "bldReq":["Atelier"],
         "compReq":{},
-        "costs":{"Fer":3,"Tungstène":2,"Cobalt":1},
+        "costs":{"Fer":6,"Tungstène":4,"Cobalt":1},
         "deploy":{},
-        "batch":12
+        "batch":24
     },
     {
         "name": "lame-carbone",

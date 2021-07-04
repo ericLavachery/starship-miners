@@ -367,10 +367,7 @@ function voirRessources() {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
-    // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
-    // $('#conUnitList').append('<span class="constName or" id="gentils">RESSOURCES</span>');
-    $('#conUnitList').append('<button type="button" title="Effacer tous les marqueurs" class="boutonGris miniButtons" onclick="showedTilesReset(true)"><i class="fas fa-eraser"></i></button><span class="butSpace"></span>');
+    // $('#conUnitList').append('<button type="button" title="Effacer tous les marqueurs" class="boutonGris miniButtons" onclick="showedTilesReset(true)"><i class="fas fa-eraser"></i></button><span class="butSpace"></span>');
     let visMap = [];
     if (showAllRes) {
         $('#conUnitList').append('<button type="button" title="Tous les points de la carte sont listés" class="boutonVert miniButtons"><i class="fas fa-map"></i></button><span class="butSpace"></span>');
@@ -396,35 +393,40 @@ function voirRessources() {
         return (res.cat != 'alien' && res.cat != 'zero' && res.cat != 'transfo');
     });
     let resIcon = '';
+    let isflagged = '';
     let sortedResTypes = _.sortBy(filteredResTypes,'name');
     sortedResTypes.forEach(function(res) {
         resIcon = getResIcon(res);
+        isflagged = '';
+        if (playerInfos.resFlags.includes(res.name)) {
+            isflagged = ' !!';
+        }
         if (res.name === showOneRes) {
             if (allCheckedZoneRes.includes(res.name)) {
                 if (allZoneRes.includes(res.name)) {
-                    $('#resFind').append('<option value="'+res.name+'" selected>&cuvee; '+res.name+' '+resIcon+'</option>');
+                    $('#resFind').append('<option value="'+res.name+'" selected>&cuvee; '+res.name+' '+resIcon+isflagged+'</option>');
                 } else {
-                    $('#resFind').append('<option value="'+res.name+'" selected disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+'</option>');
+                    $('#resFind').append('<option value="'+res.name+'" selected disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+isflagged+'</option>');
                 }
             } else {
                 if (allZoneRes.includes(res.name)) {
-                    $('#resFind').append('<option value="'+res.name+'" selected>&check; '+res.name+' '+resIcon+'</option>');
+                    $('#resFind').append('<option value="'+res.name+'" selected>&check; '+res.name+' '+resIcon+isflagged+'</option>');
                 } else {
-                    $('#resFind').append('<option value="'+res.name+'" selected disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+'</option>');
+                    $('#resFind').append('<option value="'+res.name+'" selected disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+isflagged+'</option>');
                 }
             }
         } else {
             if (allCheckedZoneRes.includes(res.name)) {
                 if (allZoneRes.includes(res.name)) {
-                    $('#resFind').append('<option value="'+res.name+'">&cuvee; '+res.name+' '+resIcon+'</option>');
+                    $('#resFind').append('<option value="'+res.name+'">&cuvee; '+res.name+' '+resIcon+isflagged+'</option>');
                 } else {
-                    $('#resFind').append('<option value="'+res.name+'" disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+'</option>');
+                    $('#resFind').append('<option value="'+res.name+'" disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+isflagged+'</option>');
                 }
             } else {
                 if (allZoneRes.includes(res.name)) {
-                    $('#resFind').append('<option value="'+res.name+'">&check; '+res.name+' '+resIcon+'</option>');
+                    $('#resFind').append('<option value="'+res.name+'">&check; '+res.name+' '+resIcon+isflagged+'</option>');
                 } else {
-                    $('#resFind').append('<option value="'+res.name+'" disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+'</option>');
+                    $('#resFind').append('<option value="'+res.name+'" disabled="disabled">&nbsp;&nbsp;&nbsp; '+res.name+isflagged+'</option>');
                 }
             }
         }

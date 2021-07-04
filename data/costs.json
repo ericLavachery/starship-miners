@@ -2027,7 +2027,7 @@
         "name":"Infirmerie",
         "bldUp":"Hôpital",
         "prod":{"Scrap":2},
-        "costs":{"Compo1":115,"Eau":24,"Drogues":25,"Tissus":25,"Aluminium":30,"Calcium":25,"Or":15,"Silicium":25,"Oxygène":25,"Chlore":75},
+        "costs":{"Compo1":115,"Eau":24,"Drogues":50,"Tissus":50,"Aluminium":30,"Calcium":25,"Or":10,"Silicium":25,"Oxygène":25,"Chlore":75},
         "fabTime":20,
         "crime":-3
     },

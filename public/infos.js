@@ -678,6 +678,8 @@ function showTileInfos(tileId) {
                     // console.log(key,value);
                 });
             }
+            console.log(terrain);
+            console.log(tile);
             let srs = getTerrainRes(terrain,tile);
             if (Object.keys(srs).length >= 1) {
                 let tileIndex;
