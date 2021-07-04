@@ -47,10 +47,11 @@ function craftWindow() {
             }
         }
         oldCraft = checkOldCraft(craft);
+        let iHave = getDispoRes(craft.result);
         if ((compReqOK || playerInfos.pseudo === 'Test') && !oldCraft) {
             if (craftOK) {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                $('#conUnitList').append('<span class="craftsList cy klik" title="'+toNiceString(craft.bldReq)+'" onclick="doCraft('+craft.id+','+craftFactor+')">'+craftFactor+' '+craft.result+'</span><br>');
+                $('#conUnitList').append('<span class="craftsList cy klik" title="'+toNiceString(craft.bldReq)+'" onclick="doCraft('+craft.id+','+craftFactor+')">'+craftFactor+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
             } else {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                 $('#conUnitList').append('<span class="craftsList gf" title="'+toNiceString(craft.bldReq)+'">'+craftFactor+' '+craft.result+'</span><br>');
@@ -79,6 +80,7 @@ function craftWindow() {
         let energyFactor = 50;
         let dispoRes = 0;
         let neededRes = 0;
+        let iHave = getDispoRes('Energie');
         let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'rarity'),'cat'),'cat');
         sortedResTypes.reverse();
         sortedResTypes.forEach(function(res) {
@@ -88,7 +90,7 @@ function craftWindow() {
                 neededRes = cramPower(res,neededRes);
                 if (dispoRes >= neededRes) {
                     $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                    $('#conUnitList').append('<span class="craftsList cy klik" onclick="doEnergyCraft(`'+res.name+'`,'+neededRes+','+energyFactor+')">'+energyFactor+' Energie</span><br>');
+                    $('#conUnitList').append('<span class="craftsList cy klik" onclick="doEnergyCraft(`'+res.name+'`,'+neededRes+','+energyFactor+')">'+energyFactor+' Energie <span class="brunf">('+iHave+')</span></span><br>');
                     $('#conUnitList').append('<span class="craftsList gf">'+res.name+':<span class="bleu">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
                 } else {
                     $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');

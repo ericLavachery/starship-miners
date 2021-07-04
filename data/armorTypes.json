@@ -447,7 +447,7 @@
         "compReq":{"log":1,"med":1},
         "factor":"crew",
         "costs":{"Titane":2,"Or":2},
-        "deploy":{"Drogues":2,"Chlore":3,"Tissus":3,"Zinc":3}
+        "deploy":{"Drogues":2,"Chlore":2,"Tissus":3,"Zinc":3}
     },
     {
         "name": "gilet",
@@ -1140,7 +1140,7 @@
     {
         "name": "respack-soins1",
         "info": "Soins 1 (535r)",
-        "costs":{"Chlore":150,"Zinc":150,"Huile":170,"Titane":25,"Silicium":40}
+        "costs":{"Chlore":100,"Zinc":150,"Huile":170,"Titane":25,"Silicium":40}
     },
     {
         "name": "respack-ammo1",
@@ -1207,7 +1207,7 @@
             "Scrap":10000,
             "Bore":25,
             "Calcium":300,
-            "Chlore":1500,
+            "Chlore":1250,
             "Mercure":25,
             "Nickel":50,
             "Phosphore":250,

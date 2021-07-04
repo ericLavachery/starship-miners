@@ -748,19 +748,27 @@
     {
         "id":53,
         "result":"Huile",
-        "cost":{"Slime":10,"Végétaux":25,"Energie":2},
-        "compReq":{"tri":3,"ca":3},
+        "cost":{"Slime":5,"Végétaux":25,"Energie":2},
+        "compReq":{"ca":3},
         "bldReq":["Recyclab"],
         "batch":5
     },
     {
         "id":55,
         "result":"Huile",
-        "cost":{"Hydrocarbure":15,"Energie":3},
-        "compReq":{"tri":2},
+        "cost":{"Hydrocarbure":16,"Energie":4},
+        "compReq":{"tri":1},
         "bldReq":["Atelier"],
-        "batch":5,
+        "batch":4,
         "creaNum":20
+    },
+    {
+        "id":120,
+        "result":"Huile",
+        "cost":{"Hydrocarbure":12,"Energie":2},
+        "compReq":{"ind":1},
+        "bldReq":["Usine"],
+        "batch":4
     },
     {
         "id":52,

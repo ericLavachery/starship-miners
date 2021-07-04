@@ -332,6 +332,7 @@ function stopSonde() {
 
 function goSonde() {
     conOut();
+    batUnselect();
     playerInfos.undarkOnce = [];
     removeSonde();
     saveCurrentZoneAs(0);
