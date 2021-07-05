@@ -81,8 +81,8 @@ function craftWindow() {
         let dispoRes = 0;
         let neededRes = 0;
         let iHave = getDispoRes('Energie');
-        let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'rarity'),'cat'),'cat');
-        sortedResTypes.reverse();
+        let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'rarity'),'cat'),'energie');
+        // sortedResTypes.reverse();
         sortedResTypes.forEach(function(res) {
             if (res.energie > 0) {
                 dispoRes = getDispoRes(res.name);

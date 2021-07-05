@@ -668,7 +668,7 @@ function showTileInfos(tileId) {
                     bldReq = onlyFirstLetter(res.bld);
                     let resKol = 'cy';
                     if (playerInfos.resFlags.includes(res.name)) {
-                        resKol = 'or';
+                        resKol = 'jaune';
                     }
                     if (playerInfos.comp.det < 3 && modeSonde) {
                         $('#tileInfos').append('<span class="paramName '+resKol+'">'+key+'</span><span class="paramIcon"></span><span class="paramValue '+resKol+'"><span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');

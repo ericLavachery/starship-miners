@@ -1276,7 +1276,7 @@ function missionResults(onlyLanders) {
             let minedRes = getMinedRes(res.name);
             let resCol = '';
             if (playerInfos.resFlags.includes(res.name)) {
-                resCol = ' bor';
+                resCol = ' jaune';
             }
             let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
             // if (sonde.costs[key] != undefined) {
@@ -1306,7 +1306,7 @@ function missionResults(onlyLanders) {
             let resIcon = getResIcon(res);
             let resCol = '';
             if (playerInfos.resFlags.includes(res.name)) {
-                resCol = ' bor';
+                resCol = ' vert';
             }
             let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
             // if (sonde.costs[key] != undefined) {

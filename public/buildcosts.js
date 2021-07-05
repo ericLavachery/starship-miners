@@ -26,7 +26,7 @@ function voirReserve() {
         resIcon = getResIcon(res);
         let resCol = '';
         if (playerInfos.resFlags.includes(res.name)) {
-            resCol = ' bor';
+            resCol = ' jaune';
         }
         if (dispoRes >= 1) {
             if (playerInfos.onShip && (!inSoute || souteTab != 'rez')) {

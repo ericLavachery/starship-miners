@@ -312,7 +312,7 @@ function chooseRes(again) {
         res = getResByName(key);
         let resCol = '';
         if (playerInfos.resFlags.includes(res.name)) {
-            resCol = ' bcy';
+            resCol = ' jaune';
         }
         if (selectedBatType.mining.types.includes(res.bld) || selectedBatType.mining.subTypes.includes(res.bld)) {
             let resMiningRate = getResMiningRate(selectedBat,res,value,true,false);
@@ -488,7 +488,7 @@ function showTileRes(theTileRes) {
     }
     // RES FLAGS
     playerInfos.resFlags.forEach(function(flag) {
-        tileRes = tileRes.replace(flag,'<span class="bor">'+flag+'</span>');
+        tileRes = tileRes.replace(flag,'<span class="jaune">'+flag+'</span>');
     });
     if (showOneRes != 'Toutes') {
         tileRes = tileRes.replace(showOneRes,'<span class="bcy">'+showOneRes+'</span>');

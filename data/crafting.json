@@ -468,18 +468,18 @@
     {
         "id":65,
         "result":"Tissus",
-        "cost":{"Végétaux":8,"Energie":2},
+        "cost":{"Végétaux":16,"Energie":1},
         "compReq":{},
         "bldReq":["Atelier"],
         "compOut":{"ind":1},
         "bldOut":["Chaîne de montage"],
-        "batch":1,
+        "batch":2,
         "creaNum":20
     },
     {
         "id":116,
         "result":"Tissus",
-        "cost":{"Végétaux":6,"Aranium":2,"Azote":1,"Energie":2},
+        "cost":{"Végétaux":6,"Aranium":2,"Azote":1,"Energie":1},
         "compReq":{"ca":3},
         "bldReq":["Atelier"],
         "batch":2,
@@ -488,10 +488,10 @@
     {
         "id":66,
         "result":"Tissus",
-        "cost":{"Végétaux":5,"Energie":1},
+        "cost":{"Végétaux":15,"Energie":2},
         "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":1
+        "batch":3
     },
     {
         "id":67,
