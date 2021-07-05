@@ -6,8 +6,7 @@
         "compReq":{},
         "bldReq":[],
         "bldOut":["Atelier"],
-        "batch":1,
-        "creaNum":20
+        "batch":1
     },
     {
         "id":87,
@@ -16,8 +15,7 @@
         "compReq":{},
         "bldReq":[],
         "bldOut":["Atelier"],
-        "batch":1,
-        "creaNum":20
+        "batch":1
     },
     {
         "id":11,
@@ -26,8 +24,7 @@
         "compReq":{},
         "bldReq":[],
         "bldOut":["Atelier"],
-        "batch":1,
-        "creaNum":20
+        "batch":1
     },
     {
         "id":93,
@@ -36,8 +33,7 @@
         "compReq":{},
         "bldReq":[],
         "bldOut":["Atelier"],
-        "batch":1,
-        "creaNum":20
+        "batch":1
     },
     {
         "id":6,
@@ -45,8 +41,7 @@
         "cost":{"Bois":2},
         "compReq":{},
         "bldReq":["Atelier"],
-        "batch":1,
-        "creaNum":20
+        "batch":1
     },
     {
         "id":9,
@@ -54,8 +49,7 @@
         "cost":{"Scrap":2},
         "compReq":{},
         "bldReq":["Atelier"],
-        "batch":1,
-        "creaNum":20
+        "batch":1
     },
     {
         "id":10,
@@ -63,8 +57,7 @@
         "cost":{"Bois":1,"Scrap":1},
         "compReq":{},
         "bldReq":["Atelier"],
-        "batch":1,
-        "creaNum":20
+        "batch":1
     },
     {
         "id":117,
@@ -72,8 +65,7 @@
         "cost":{"Bugium":3,"Carbone":3,"Eau":1},
         "compReq":{"ca":2},
         "bldReq":["Atelier"],
-        "batch":5,
-        "creaNum":20
+        "batch":5
     },
     {
         "id":16,

@@ -1051,7 +1051,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fret","dumper","nodeathcount","okdel","nostation","autotrans","bigprot","recupres","noblub","routes"],
+        "skills":["fret","dumper","nodeathcount","okdel","nostation","autotrans","bigprot","recupres","noblub","routes","accu"],
         "mecanoCost":12,
         "transRes":2000,
         "fuzz":-1,
