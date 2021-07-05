@@ -1305,8 +1305,8 @@ function skillsInfos(bat,batType) {
     if (batType.skills.includes('constructeur') && !playerInfos.onShip) {
         if (tile.terrain != 'W' && tile.terrain != 'R') {
             apReq = batType.mecanoCost;
-            if (apReq > bat.ap-3) {
-                apReq = bat.ap-3;
+            if (apReq > 5) {
+                apReq = 5;
             }
             let infra;
             let infraCostOK;

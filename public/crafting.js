@@ -296,7 +296,12 @@ function geoProd(bat,batType) {
             if (upkeepPaid) {
                 let energyProd = Math.ceil(tile.rs.Magma/3);
                 energyProd = energyCreation(energyProd);
-                resAdd('Energie',energyProd);
+                // resAdd('Energie',energyProd);
+                if (playerInfos.onShip) {
+                    resAdd('Energie',energyProd);
+                } else {
+                    resAddToBld('Energie',energyProd,bat,batType);
+                }
                 if (!playerInfos.onShip) {
                     if (minedThisTurn['Energie'] === undefined) {
                         minedThisTurn['Energie'] = energyProd;
@@ -353,7 +358,12 @@ function solarProd(bat,batType,time) {
                 energyProd = Math.ceil(energyProd*zone[0].ensol/100);
             }
             energyProd = energyCreation(energyProd);
-            resAdd('Energie',energyProd);
+            // resAdd('Energie',energyProd);
+            if (playerInfos.onShip) {
+                resAdd('Energie',energyProd);
+            } else {
+                resAddToBld('Energie',energyProd,bat,batType);
+            }
             message = message+'Energie:<span class="vert">+'+energyProd+'</span><br>';
             if (!playerInfos.onShip) {
                 if (minedThisTurn['Energie'] === undefined) {
@@ -387,7 +397,12 @@ function solarPanel(bat,batType) {
             energyProd = Math.round(energyProd/2);
         }
         energyProd = energyCreation(energyProd);
-        resAdd('Energie',energyProd);
+        // resAdd('Energie',energyProd);
+        if (playerInfos.onShip) {
+            resAdd('Energie',energyProd);
+        } else {
+            resAddToBld('Energie',energyProd,bat,batType);
+        }
         if (!playerInfos.onShip) {
             if (minedThisTurn['Energie'] === undefined) {
                 minedThisTurn['Energie'] = energyProd;
@@ -461,7 +476,12 @@ function triProd(bat,batType,time) {
             }
             if (resProd >= 1) {
                 resProd = scrapRecup(resProd);
-                resAdd(res.name,resProd);
+                // resAdd(res.name,resProd);
+                if (playerInfos.onShip) {
+                    resAdd(res.name,resProd);
+                } else {
+                    resAddToBld(res.name,resProd,bat,batType);
+                }
                 message = message+res.name+':<span class="vert">+'+resProd+'</span><br>';
                 if (!playerInfos.onShip) {
                     if (minedThisTurn[res.name] === undefined) {
@@ -544,7 +564,12 @@ function upkeepAndProd(bat,batType,time) {
                                 fullProd = Math.ceil(fullProd/5);
                             }
                         }
-                        resAdd(key,fullProd);
+                        // resAdd(key,fullProd);
+                        if (playerInfos.onShip) {
+                            resAdd(key,fullProd);
+                        } else {
+                            resAddToBld(key,fullProd,bat,batType);
+                        }
                         message = message+key+':<span class="vert">+'+fullProd+'</span><br>';
                         if (!playerInfos.onShip) {
                             if (minedThisTurn[key] === undefined) {

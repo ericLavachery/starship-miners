@@ -71,6 +71,8 @@ function mining(bat) {
                     }
                 });
                 autoUnload(bat);
+            } else {
+                warning('Extraction stoppée',bat.type+': Plus de place pour stocker');
             }
         }
     }

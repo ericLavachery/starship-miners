@@ -638,6 +638,20 @@ function resAdd(resName,number) {
     }
 };
 
+function resAddToBld(resName,number,bat,batType) {
+    let res = getResByName(resName);
+    let resSpace = checkResSpace(bat);
+    if (resSpace >= 1) {
+        if (bat.transRes[resName] === undefined) {
+            bat.transRes[resName] = number;
+        } else {
+            bat.transRes[resName] = bat.transRes[resName]+number;
+        }
+    } else {
+        warning('Production stoppée',batType.name+': Plus de place pour stocker');
+    }
+};
+
 function resSub(resName,number) {
     // console.log(resName);
     let res = getResByName(resName);

@@ -211,7 +211,7 @@
     {
         "id":151,
         "name":"Stalkers",
-        "levels":{"rednecks":6,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":5,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Bar"],
         "costs":{"Fer":90,"Scrap":60,"Carbone":30,"Silicium":30,"Plomb":30,"Soufre":30,"Végétaux":170,"Chlore":10,"Tissus":5},
         "fabTime":15
@@ -992,7 +992,7 @@
     {
         "id":10,
         "name":"Buggies",
-        "levels":{"rednecks":4,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":6,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Garage"],
         "costs":{"Fer":72,"Scrap":288,"Carbone":180,"Aluminium":72,"Moteurs":45,"Tungstène":24,"Batteries":12,"Compo2":24,"Plomb":24,"Soufre":24,"Fuel":24},
         "deploy":{"Fuel":72},
@@ -1652,7 +1652,7 @@
     {
         "id":142,
         "name":"Pickups",
-        "levels":{"rednecks":5,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":4,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Décharge","Garage"],
         "costs":{"Fer":64,"Scrap":368,"Carbone":64,"Moteurs":32,"Silicium":24,"Batteries":16,"Compo2":64,"Huile":16,"Eau":40},
         "deploy":{"Fuel":50,"Energie":65,"Huile":16},
