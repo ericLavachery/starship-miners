@@ -973,7 +973,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","transport","routes","producteur","upgrade","prodres","longshot","ravitaillement","ravitprod","fret","dumper","selfbadrepair","reeq"],
+        "skills":["fouille","recupcit","transport","routes","producteur","upgrade","prodres","upkeep","longshot","ravitaillement","ravitprod","fret","dumper","selfbadrepair","reeq"],
         "mecanoCost":10,
         "mediCost":10,
         "transMaxSize":9,

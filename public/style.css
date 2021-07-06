@@ -889,10 +889,13 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
     color: #f77a28;
     text-decoration: none;
 }
-.rouge {
+.hrouge {
     color: #ff0000;
     font-weight: bold;
     background-color: #ffff00;
+}
+.rouge {
+    color: #b41947;
 }
 .rose {
     color: #c67da3;

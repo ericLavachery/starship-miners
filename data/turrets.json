@@ -58,7 +58,7 @@
         "transMaxSize":30,
         "transUnits":3500,
         "transRes":7000,
-        "fuzz":6,
+        "fuzz":7,
         "deathFx":"planeexploground2"
     },
     {

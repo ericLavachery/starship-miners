@@ -161,7 +161,7 @@ function eventBouffe(time,sim) {
     bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/687);
     bouffeCost['Eau'] = Math.round(toutMesCitoyens*time*2/274/recycleFactor*8);
     bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time*2/936/recycleFactor*8);
-    bouffeCost['Energie'] = Math.round(toutMesCitoyens*time*2/672/energyFactor*8);
+    bouffeCost['Energie'] = Math.round(toutMesCitoyens*time*2/1408/energyFactor*8);
     let plantesProd = 0;
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
@@ -182,7 +182,7 @@ function eventBouffe(time,sim) {
             }
         }
         if (batType.cat === 'buildings') {
-            bouffeCost['Energie'] = bouffeCost['Energie']+Math.round(batType.hp/30);
+            bouffeCost['Energie'] = bouffeCost['Energie']+Math.round(batType.hp/28);
         }
     });
     if (plantesProd >= 1) {
@@ -203,12 +203,12 @@ function eventBouffe(time,sim) {
         if (!sim) {
             playerInfos.vitals = playerInfos.vitals+5;
         }
-        messageFood = '<span class="rouge">Carence grave</span>';
+        messageFood = '<span class="hrouge">Carence grave</span>';
     } else if (dispoFood < costFood) {
         if (!sim) {
             playerInfos.vitals = playerInfos.vitals+2;
         }
-        messageFood = '<span class="rouge">Carence</span>';
+        messageFood = '<span class="hrouge">Carence</span>';
     }
     let dispoWater = getDispoRes('Eau');
     let costWater = bouffeCost['Eau'];
@@ -217,12 +217,12 @@ function eventBouffe(time,sim) {
         if (!sim) {
             playerInfos.vitals = playerInfos.vitals+8;
         }
-        messageWater = '<span class="rouge">Carence grave</span>';
+        messageWater = '<span class="hrouge">Carence grave</span>';
     } else if (dispoWater < costWater) {
         if (!sim) {
             playerInfos.vitals = playerInfos.vitals+2;
         }
-        messageWater = '<span class="rouge">Carence</span>';
+        messageWater = '<span class="hrouge">Carence</span>';
     }
     let dispoAir = getDispoRes('Oxygène');
     let costAir = bouffeCost['Oxygène'];
@@ -231,12 +231,12 @@ function eventBouffe(time,sim) {
         if (!sim) {
             playerInfos.vitals = playerInfos.vitals+12;
         }
-        messageAir = '<span class="rouge">Carence grave</span>';
+        messageAir = '<span class="hrouge">Carence grave</span>';
     } else if (dispoAir < costAir) {
         if (!sim) {
             playerInfos.vitals = playerInfos.vitals+3;
         }
-        messageAir = '<span class="rouge">Carence</span>';
+        messageAir = '<span class="hrouge">Carence</span>';
     }
     let dispoHeat = getDispoRes('Energie');
     let costHeat = bouffeCost['Energie'];
@@ -245,12 +245,12 @@ function eventBouffe(time,sim) {
         if (!sim) {
             playerInfos.vitals = playerInfos.vitals+3;
         }
-        messageHeat = '<span class="rouge">Carence grave</span>';
+        messageHeat = '<span class="hrouge">Carence grave</span>';
     } else if (dispoHeat < costHeat) {
         if (!sim) {
             playerInfos.vitals = playerInfos.vitals+1;
         }
-        messageHeat = '<span class="rouge">Carence</span>';
+        messageHeat = '<span class="hrouge">Carence</span>';
     }
     warning('Consommation','Nourriture: <span class="rose">-'+costFood+'</span><br>'+messageFood,true);
     warning('Consommation','Eau: <span class="rose">-'+costWater+'</span><br>'+messageWater,true);
