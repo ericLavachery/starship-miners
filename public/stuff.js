@@ -45,7 +45,7 @@ const mergeObjects = (obj1,obj2) => {
 function freeIds(side,db) {
     let idz = [];
     let i = 1;
-    while (i <= 250) {
+    while (i <= 300) {
         idz.push(i);
         if (i > 300) {break;}
         i++

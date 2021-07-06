@@ -159,6 +159,8 @@ let deployTuning = 6; // on part de 7 - PAS utilisé !!!
 let seeAllFret = false;
 let seeLandersFret = false;
 let landingNoise = 6;
+let upkeepVM = 1.33 // upkeep/1.33
+let prodVM = 1.33 // prod/1.33
 // ALIENS
 let isFFW = false;
 let pointDeMire = 1830; // tileId

@@ -315,7 +315,7 @@ function geoProd(bat,batType) {
     }
 };
 
-function solarProd(bat,batType,time) {
+function solarProd(bat,batType,time,sim) {
     console.log('UPKEEP');
     console.log(batType.name);
     let tile = getTileById(bat.tileId);
@@ -338,12 +338,16 @@ function solarProd(bat,batType,time) {
                     let key = entry[0];
                     let value = entry[1];
                     let conso = value*time;
-                    resSub(key,conso);
+                    if (!sim) {
+                        resSub(key,conso);
+                    }
                     message = message+key+':<span class="rose">-'+conso+'</span><br>';
                     console.log('upkeep = '+key+':'+conso);
                 });
             } else {
-                upkeepNotPaid(bat,batType);
+                if (!sim) {
+                    upkeepNotPaid(bat,batType);
+                }
             }
         }
         if (upkeepPaid) {
@@ -359,10 +363,12 @@ function solarProd(bat,batType,time) {
             }
             energyProd = energyCreation(energyProd);
             // resAdd('Energie',energyProd);
-            if (playerInfos.onShip) {
-                resAdd('Energie',energyProd);
-            } else {
-                resAddToBld('Energie',energyProd,bat,batType);
+            if (!sim) {
+                if (playerInfos.onShip) {
+                    resAdd('Energie',energyProd);
+                } else {
+                    resAddToBld('Energie',energyProd,bat,batType);
+                }
             }
             message = message+'Energie:<span class="vert">+'+energyProd+'</span><br>';
             if (!playerInfos.onShip) {
@@ -380,7 +386,7 @@ function solarProd(bat,batType,time) {
     }
 };
 
-function solarPanel(bat,batType) {
+function solarPanel(bat,batType,sim) {
     console.log('psol prod');
     console.log(batType.name);
     let tile = getTileById(bat.tileId);
@@ -414,7 +420,7 @@ function solarPanel(bat,batType) {
     }
 };
 
-function triProd(bat,batType,time) {
+function triProd(bat,batType,time,sim) {
     console.log('UPKEEP');
     console.log(batType.name);
     let upkeepPaid = true;
@@ -435,12 +441,16 @@ function triProd(bat,batType,time) {
                 let key = entry[0];
                 let value = entry[1];
                 let conso = value*time;
-                resSub(key,conso);
+                if (!sim) {
+                    resSub(key,conso);
+                }
                 message = message+key+':<span class="rose">-'+conso+'</span><br>';
                 console.log('upkeep = '+key+':'+conso);
             });
         } else {
-            upkeepNotPaid(bat,batType);
+            if (!sim) {
+                upkeepNotPaid(bat,batType);
+            }
         }
     }
     if (upkeepPaid) {
@@ -477,10 +487,12 @@ function triProd(bat,batType,time) {
             if (resProd >= 1) {
                 resProd = scrapRecup(resProd);
                 // resAdd(res.name,resProd);
-                if (playerInfos.onShip) {
-                    resAdd(res.name,resProd);
-                } else {
-                    resAddToBld(res.name,resProd,bat,batType);
+                if (!sim) {
+                    if (playerInfos.onShip) {
+                        resAdd(res.name,resProd);
+                    } else {
+                        resAddToBld(res.name,resProd,bat,batType);
+                    }
                 }
                 message = message+res.name+':<span class="vert">+'+resProd+'</span><br>';
                 if (!playerInfos.onShip) {
@@ -499,13 +511,13 @@ function triProd(bat,batType,time) {
     }
 };
 
-function upkeepAndProd(bat,batType,time) {
+function upkeepAndProd(bat,batType,time,sim) {
     console.log('UPKEEP');
     console.log(batType.name);
     let upkeepPaid = true;
     let upkeepCheck = false;
     let message = '';
-    if (bat.tags.includes('prodres')) {
+    if (bat.tags.includes('prodres') || batType.skills.includes('upnodis')) {
         upkeepCheck = true;
     }
     if (batType.skills.includes('upkeep') && !batType.skills.includes('prodres')) {
@@ -516,7 +528,12 @@ function upkeepAndProd(bat,batType,time) {
             Object.entries(batType.upkeep).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
-                let conso = Math.ceil(value*time);
+                let conso = value*time;
+                if (playerInfos.onShip) {
+                    conso = Math.ceil(conso/upkeepVM);
+                } else {
+                    conso = Math.ceil(conso);
+                }
                 let dispoRes = getDispoRes(key);
                 if (dispoRes < conso) {
                     upkeepPaid = false;
@@ -527,13 +544,22 @@ function upkeepAndProd(bat,batType,time) {
                 Object.entries(batType.upkeep).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
-                    let conso = Math.ceil(value*time);
-                    resSub(key,conso);
+                    let conso = value*time;
+                    if (playerInfos.onShip) {
+                        conso = Math.ceil(conso/upkeepVM);
+                    } else {
+                        conso = Math.ceil(conso);
+                    }
+                    if (!sim) {
+                        resSub(key,conso);
+                    }
                     message = message+key+':<span class="rose">-'+conso+'</span><br>';
                     console.log('upkeep = '+key+':'+conso);
                 });
             } else {
-                upkeepNotPaid(bat,batType);
+                if (!sim) {
+                    upkeepNotPaid(bat,batType);
+                }
             }
         } else {
             upkeepPaid = true;
@@ -544,6 +570,11 @@ function upkeepAndProd(bat,batType,time) {
                     let key = entry[0];
                     let value = entry[1];
                     let fullProd = value*time;
+                    if (playerInfos.onShip) {
+                        fullProd = Math.ceil(fullProd/prodVM);
+                    } else {
+                        fullProd = Math.ceil(fullProd);
+                    }
                     if (fullProd < 1) {
                         let prodChance = Math.floor(100*fullProd);
                         if (rand.rand(1,100) <= prodChance) {
@@ -565,10 +596,12 @@ function upkeepAndProd(bat,batType,time) {
                             }
                         }
                         // resAdd(key,fullProd);
-                        if (playerInfos.onShip) {
-                            resAdd(key,fullProd);
-                        } else {
-                            resAddToBld(key,fullProd,bat,batType);
+                        if (!sim) {
+                            if (playerInfos.onShip) {
+                                resAdd(key,fullProd);
+                            } else {
+                                resAddToBld(key,fullProd,bat,batType);
+                            }
                         }
                         message = message+key+':<span class="vert">+'+fullProd+'</span><br>';
                         if (!playerInfos.onShip) {
@@ -584,7 +617,9 @@ function upkeepAndProd(bat,batType,time) {
             }
         }
     } else if (batType.skills.includes('prodres')) {
-        upkeepNotPaid(bat,batType);
+        if (!sim) {
+            upkeepNotPaid(bat,batType);
+        }
     }
     if (playerInfos.onShip) {
         warning(batType.name,message,true);

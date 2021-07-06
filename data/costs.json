@@ -1246,7 +1246,7 @@
         "bldReq":["Soute","Usine"],
         "bldEquiv":["Atelier","Chaîne de montage"],
         "compReq":{"ind":3},
-        "upkeep":{"Energie":30},
+        "upkeep":{"Energie":25},
         "prod":{"Scrap":20},
         "costs":{"Compo1":435,"Compo2":630,"Compo3":270,"Eau":90,"Energie":750,"Hydrocarbure":600,"Fuel":900,"Huile":250,"Carbone":400,"Scrap":600,"Titane":200,"Aluminium":200,"Moteurs":150,"Fer":500,"Platine":75,"Zinc":300,"Azote":400,"Electros":350,"Batteries":250},
         "fabTime":300
@@ -1911,16 +1911,16 @@
     {
         "id":123,
         "name":"Pompe",
-        "upkeep":{"Eau":9,"Energie":9},
-        "prod":{"Oxygène":9},
+        "upkeep":{"Eau":3,"Energie":9},
+        "prod":{"Oxygène":3},
         "costs":{"Compo1":75,"Fer":50,"Aluminium":40,"Scrap":100},
         "fabTime":20
     },
     {
         "id":124,
         "name":"Derrick",
-        "upkeep":{"Hydrocarbure":8},
-        "prod":{"Fuel":4,"Scrap":2},
+        "upkeep":{"Hydrocarbure":5.3},
+        "prod":{"Fuel":3,"Scrap":2},
         "costs":{"Compo1":115,"Eau":200,"Carbone":15,"Aluminium":40,"Fer":50,"Phosphore":15,"Hydrogène":15},
         "fabTime":45
     },
@@ -1934,6 +1934,8 @@
     {
         "id":29,
         "name":"Poudrière",
+        "upkeep":{"Soufre":2,"Potassium":1,"Carbone":1},
+        "prod":{"Explosifs":1},
         "costs":{"Compo1":170,"Compo2":55,"Eau":12,"Végétaux":150},
         "fabTime":25
     },
@@ -1952,14 +1954,16 @@
     {
         "id":197,
         "name":"Garage",
-        "prod":{"Scrap":3},
+        "upkeep":{"Hydrocarbure":3.5},
+        "prod":{"Fuel":2,"Scrap":3},
         "costs":{"Compo1":115,"Eau":12,"Hydrocarbure":50,"Fuel":50,"Huile":25,"Scrap":100,"Aluminium":25,"Fer":25},
         "fabTime":35
     },
     {
         "id":3,
         "name":"Atelier",
-        "prod":{"Scrap":4},
+        "upkeep":{"Végétaux":4,"Energie":0.5},
+        "prod":{"Tissus":1,"Scrap":4},
         "bldUp":"Chaîne de montage",
         "costs":{"Compo1":225,"Eau":36,"Hydrocarbure":75,"Fuel":25,"Huile":50,"Scrap":200,"Aluminium":50,"Fer":50,"Bois":100,"Végétaux":100,"Zinc":50},
         "fabTime":50
@@ -1988,7 +1992,7 @@
     {
         "id":193,
         "name":"Aérodocks",
-        "upkeep":{"Energie":25},
+        "upkeep":{"Energie":4,"Aluminium":1},
         "prod":{"Scrap":2},
         "costs":{"Compo1":285,"Compo2":165,"Compo3":110,"Eau":180,"Energie":2500,"Hydrocarbure":600,"Fuel":800,"Huile":500,"Titane":600,"Aluminium":600,"Cobalt":300,"Cuivre":600,"Platine":300,"Plutonium":150,"Hélium":300,"Electros":450,"Batteries":300},
         "fabTime":120
@@ -2135,7 +2139,7 @@
         "id":208,
         "name":"Centrale solaire",
         "bldEquiv":["Générateur","Centrale SMR"],
-        "upkeep":{"Eau":5},
+        "upkeep":{"Eau":4},
         "costs":{"Compo1":435,"Compo2":315,"Compo3":270,"Eau":3000,"Aluminium":1500,"Rhodium":1000,"Cobalt":1500,"Cuivre":600,"Platine":300,"Mercure":750,"Silicium":1000,"Argon":600,"Electros":200,"Batteries":450},
         "fabTime":125
     },
@@ -2152,8 +2156,8 @@
         "name":"Centrale nucléaire",
         "bldEquiv":["Générateur","Centrale SMR"],
         "bldReq":["Générateur"],
-        "upkeep":{"Plutonium":9,"Eau":18},
-        "prod":{"Energie":225},
+        "upkeep":{"Plutonium":7,"Eau":20},
+        "prod":{"Energie":230},
         "costs":{"Compo1":345,"Compo2":405,"Compo3":450,"Eau":6000,"Energie":5000,"Carbone":5000,"Titane":1500,"Plomb":2000,"Nickel":1000,"Cuivre":800,"Bore":1500,"Plutonium":1500,"Electros":400,"Batteries":900},
         "fabTime":150
     },
@@ -2162,8 +2166,8 @@
         "name":"Centrale SMR",
         "bldEquiv":["Générateur"],
         "bldReq":["Générateur"],
-        "upkeep":{"Uranium":4,"Eau":5},
-        "prod":{"Energie":75},
+        "upkeep":{"Uranium":4,"Eau":6},
+        "prod":{"Energie":105},
         "costs":{"Compo1":205,"Compo2":245,"Compo3":270,"Eau":3000,"Energie":3000,"Carbone":2000,"Titane":500,"Plomb":500,"Nickel":500,"Cuivre":400,"Platine":750,"Bore":750,"Uranium":500,"Hydrogène":1000,"Electros":200,"Batteries":450},
         "fabTime":100
     },
@@ -2206,6 +2210,8 @@
     {
         "id":216,
         "name":"Cantine",
+        "upkeep":{"Fruits":3,"Végétaux":6,"Energie":1},
+        "prod":{"Nourriture":1},
         "costs":{"Compo1":195,"Compo2":30,"Eau":300,"Carbone":100,"Nourriture":200,"Fruits":50,"Batteries":30},
         "fabTime":25,
         "crime":-3
@@ -2290,6 +2296,13 @@
         "name":"Sonde",
         "bldReq":["Soute"],
         "costs":{"Scrap":250,"Carbone":50,"Titane":100,"Aluminium":250,"Cobalt":100,"Platine":40,"Nickel":40,"Cuivre":75,"Silicium":75,"Hélium":75,"Bore":15,"Electros":75,"Batteries":40,"Energie":200,"Plutonium":30,"Hydrogène":15},
+        "fabTime":100
+    },
+    {
+        "id":250,
+        "name":"Impacteur",
+        "bldReq":["Soute","Aérodocks"],
+        "costs":{"Scrap":300,"Carbone":100,"Titane":65,"Aluminium":100,"Cobalt":50,"Platine":25,"Nickel":25,"Cuivre":50,"Silicium":50,"Hélium":40,"Bore":15,"Electros":40,"Batteries":30,"Plutonium":30,"Hydrogène":15},
         "fabTime":100
     },
     {

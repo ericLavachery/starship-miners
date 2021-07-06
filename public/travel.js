@@ -93,7 +93,7 @@ function landingList() {
             playRoom('station',true);
             checkSelectedLanderId();
             healEverything();
-            events(true);
+            events(true,false);
             miniOut();
         } else {
             if (zone[0].snd === undefined) {
@@ -358,11 +358,19 @@ function removeSonde() {
     let sondeOut = false;
     deadBatsList = [];
     bataillons.forEach(function(bat) {
-        if (bat.type === 'Sonde' && !sondeOut) {
+        if (bat.type === 'Impacteur' && !sondeOut) {
             sondeOut = true;
             deadBatsList.push(bat.id);
         }
     });
+    if (!sondeOut) {
+        bataillons.forEach(function(bat) {
+            if (bat.type === 'Sonde' && !sondeOut) {
+                sondeOut = true;
+                deadBatsList.push(bat.id);
+            }
+        });
+    }
     killBatList();
 };
 

@@ -690,7 +690,8 @@
         "rarity": 40,
         "cat": "transfo",
         "batch": 3,
-        "energie": -1
+        "energie": -1,
+        "ctri": 2
     },
     {
         "id": 64,
@@ -707,7 +708,7 @@
         "name": "Munitions",
         "bld": "",
         "level": 4,
-        "rarity": 50,
+        "rarity": 70,
         "cat": "transfo",
         "batch": 3,
         "energie": -1

@@ -274,19 +274,19 @@ function nextTurnEnd() {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
-            if (batType.skills.includes('upkeep') || batType.skills.includes('prodres')) {
+            if (batType.skills.includes('upkeep') || batType.skills.includes('prodres') || batType.skills.includes('upnodis')) {
                 if (!bat.tags.includes('construction')) {
-                    upkeepAndProd(bat,batType,1);
+                    upkeepAndProd(bat,batType,1,false);
                 }
             }
             if (batType.skills.includes('geo') && bat.tags.includes('prodres')) {
                 geoProd(bat,batType);
             }
             if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
-                solarProd(bat,batType,1);
+                solarProd(bat,batType,1,false);
             }
             if (batType.skills.includes('transcrap') && bat.tags.includes('prodres')) {
-                triProd(bat,batType,1);
+                triProd(bat,batType,1,false);
             }
             if (!playerInfos.onShip) {
                 if (bat.eq.includes('psol') || bat.eq.includes('psol')) {

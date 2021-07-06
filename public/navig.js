@@ -87,7 +87,7 @@ function commandes() {
     // $('#commandz').append('<br>');
     if (activeTurn == 'player') {
         if (!modeSonde) {
-            if (hasUnit('Sonde')) {
+            if (hasUnit('Sonde') || hasUnit('Impacteur')) {
                 $('#commandz').append('<hr>');
                 $('#commandz').append('<button type="button" title="Régler une sonde (destination)" class="boutonBrun iconButtons" onclick="editSonde()" onmousedown="clicSound()"><i class="fas fa-keyboard"></i></button>');
                 if (playerInfos.sondePlanet > 0 && playerInfos.sondeDanger > 0) {
@@ -195,7 +195,8 @@ function viewPop() {
             $('#batloop').append('Pénibilité: <span class="'+penibColour+'">'+crimeRate.penib+'</span>%<br>');
             $('#batloop').append('Forces de l\'ordre: <span class="neutre">'+crimeRate.fo+'</span><br>');
             $('#batloop').append('Criminalité: <span class="'+crimColour+'">'+crimeRate.total+'</span>%<br>');
-            $('#batloop').append('<button type="button" title="Attendre 1 semaine" class="boutonRouge iconButtons" onclick="events(false)"><i class="far fa-clock"></i></button>');
+            $('#batloop').append('<button type="button" title="Simuler 15 jours (1 mission)" class="boutonVert iconButtons" onclick="events(false,true)"><i class="far fa-clock"></i></button>');
+            $('#batloop').append('<button type="button" title="Attendre 1 semaine" class="boutonRouge iconButtons" onclick="events(false,false)"><i class="far fa-clock"></i></button>');
         }
     }
 };

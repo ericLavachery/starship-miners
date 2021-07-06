@@ -1,37 +1,42 @@
-function events(afterMission) {
+function events(afterMission,sim) {
     checkReserve();
     updateBldList();
     let time = 21;
     if (afterMission) {
         time = Math.ceil(playerInfos.mapTurn/3)*3;
     }
-    eventCitoyens(time);
-    eventProduction(afterMission,time);
-    eventBouffe(time);
-    eventCrime(time);
-    eventAliens(time);
-    playerInfos.allTurns = playerInfos.allTurns+time;
-    playerInfos.mapTurn = 0;
-    playerInfos.mapDrop = 0;
-    playerInfos.cocons = 0;
-    playerInfos.fndComps = 0;
-    playerInfos.fndUnits = 0;
-    playerInfos.fndCits = 0;
-    playerInfos.sondeMaps = 0;
-    playerInfos.eggPause = false;
-    playerInfos.droppedEggs = 0;
-    playerInfos.aliensKilled = 0;
-    playerInfos.eggsKilled = 0;
-    playerInfos.alienSat = 0;
-    playerInfos.unitsLost = 0;
-    playerInfos.fuzzTotal = 0;
-    playerInfos.pauseSeed = rand.rand(1,8);
-    playerInfos.myCenter = 1830;
-    playerInfos.undarkOnce = [];
-    playerInfos.showedTiles = [];
+    if (sim) {
+        time = 50;
+    }
+    eventCitoyens(time,sim);
+    eventProduction(afterMission,time,sim);
+    eventBouffe(time,sim);
+    eventCrime(time,sim);
+    eventAliens(time,sim);
+    if (!sim) {
+        playerInfos.allTurns = playerInfos.allTurns+time;
+        playerInfos.mapTurn = 0;
+        playerInfos.mapDrop = 0;
+        playerInfos.cocons = 0;
+        playerInfos.fndComps = 0;
+        playerInfos.fndUnits = 0;
+        playerInfos.fndCits = 0;
+        playerInfos.sondeMaps = 0;
+        playerInfos.eggPause = false;
+        playerInfos.droppedEggs = 0;
+        playerInfos.aliensKilled = 0;
+        playerInfos.eggsKilled = 0;
+        playerInfos.alienSat = 0;
+        playerInfos.unitsLost = 0;
+        playerInfos.fuzzTotal = 0;
+        playerInfos.pauseSeed = rand.rand(1,8);
+        playerInfos.myCenter = 1830;
+        playerInfos.undarkOnce = [];
+        playerInfos.showedTiles = [];
+    }
 };
 
-function eventProduction(afterMission,time) {
+function eventProduction(afterMission,time,sim) {
     let mesCitoyens = calcTotalCitoyens();
     let population = mesCitoyens.crim+mesCitoyens.cit;
     let triFactor = playerInfos.comp.tri;
@@ -42,25 +47,27 @@ function eventProduction(afterMission,time) {
     if (afterMission) {
         scrapNum = Math.round(scrapNum/5);
     }
-    resAdd('Scrap',scrapNum);
+    if (!sim) {
+        resAdd('Scrap',scrapNum);
+    }
     warning('Poubelles','Scrap:<span class="vert">+'+scrapNum+'</span><br>',true);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             // PRODUCTION
-            if (batType.skills.includes('upkeep') || batType.skills.includes('prodres')) {
+            if (batType.skills.includes('upkeep') || batType.skills.includes('prodres') || batType.skills.includes('upnodis')) {
                 if (!bat.tags.includes('construction') || playerInfos.onShip) {
-                    upkeepAndProd(bat,batType,time);
+                    upkeepAndProd(bat,batType,time,sim);
                 }
             }
             if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
-                solarProd(bat,batType,time);
+                solarProd(bat,batType,time,sim);
             }
             if (batType.skills.includes('transcrap') && bat.tags.includes('prodres')) {
-                triProd(bat,batType,time);
+                triProd(bat,batType,time,sim);
             }
             // ENTRAINEMENT
-            if (!afterMission) {
+            if (!afterMission && !sim) {
                 if (playerInfos.bldList.includes('Camp d\'entraînement')) {
                     let trained = false;
                     if (batType.cat === 'infantry') {
@@ -131,8 +138,10 @@ function eventProduction(afterMission,time) {
                     educMax = crimBat.citoyens-12;
                 }
                 if (educMax >= 1) {
-                    crimBat.citoyens = crimBat.citoyens-educMax;
-                    citBat.citoyens = citBat.citoyens+educMax;
+                    if (!sim) {
+                        crimBat.citoyens = crimBat.citoyens-educMax;
+                        citBat.citoyens = citBat.citoyens+educMax;
+                    }
                     warning('Camp de rééducation',educMax+' criminels réhabilités.',true);
                 }
             }
@@ -140,7 +149,7 @@ function eventProduction(afterMission,time) {
     }
 };
 
-function eventBouffe(time) {
+function eventBouffe(time,sim) {
     let mesCitoyens = calcTotalCitoyens();
     let toutMesCitoyens = mesCitoyens.cit+mesCitoyens.crim;
     let bouffeCost = {};
@@ -152,7 +161,7 @@ function eventBouffe(time) {
     bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/687);
     bouffeCost['Eau'] = Math.round(toutMesCitoyens*time*2/274/recycleFactor*8);
     bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time*2/936/recycleFactor*8);
-    bouffeCost['Energie'] = Math.round(toutMesCitoyens*time*2/521/energyFactor*8);
+    bouffeCost['Energie'] = Math.round(toutMesCitoyens*time*2/672/energyFactor*8);
     let plantesProd = 0;
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
@@ -191,50 +200,68 @@ function eventBouffe(time) {
     let costFood = bouffeCost['Nourriture'];
     let messageFood = 'OK';
     if (dispoFood < costFood/2) {
-        playerInfos.vitals = playerInfos.vitals+5;
-        messageFood = 'Carence grave';
+        if (!sim) {
+            playerInfos.vitals = playerInfos.vitals+5;
+        }
+        messageFood = '<span class="rouge">Carence grave</span>';
     } else if (dispoFood < costFood) {
-        playerInfos.vitals = playerInfos.vitals+2;
-        messageFood = 'Carence';
+        if (!sim) {
+            playerInfos.vitals = playerInfos.vitals+2;
+        }
+        messageFood = '<span class="rouge">Carence</span>';
     }
     let dispoWater = getDispoRes('Eau');
     let costWater = bouffeCost['Eau'];
     let messageWater = 'OK';
     if (dispoWater < costWater/2) {
-        playerInfos.vitals = playerInfos.vitals+8;
-        messageWater = 'Carence grave';
+        if (!sim) {
+            playerInfos.vitals = playerInfos.vitals+8;
+        }
+        messageWater = '<span class="rouge">Carence grave</span>';
     } else if (dispoWater < costWater) {
-        playerInfos.vitals = playerInfos.vitals+2;
-        messageWater = 'Carence';
+        if (!sim) {
+            playerInfos.vitals = playerInfos.vitals+2;
+        }
+        messageWater = '<span class="rouge">Carence</span>';
     }
     let dispoAir = getDispoRes('Oxygène');
     let costAir = bouffeCost['Oxygène'];
     let messageAir = 'OK';
     if (dispoAir < costAir/2) {
-        playerInfos.vitals = playerInfos.vitals+12;
-        messageAir = 'Carence grave';
+        if (!sim) {
+            playerInfos.vitals = playerInfos.vitals+12;
+        }
+        messageAir = '<span class="rouge">Carence grave</span>';
     } else if (dispoAir < costAir) {
-        playerInfos.vitals = playerInfos.vitals+3;
-        messageAir = 'Carence';
+        if (!sim) {
+            playerInfos.vitals = playerInfos.vitals+3;
+        }
+        messageAir = '<span class="rouge">Carence</span>';
     }
     let dispoHeat = getDispoRes('Energie');
     let costHeat = bouffeCost['Energie'];
     let messageHeat = 'OK';
     if (dispoHeat < costHeat/2) {
-        playerInfos.vitals = playerInfos.vitals+3;
-        messageHeat = 'Carence grave';
+        if (!sim) {
+            playerInfos.vitals = playerInfos.vitals+3;
+        }
+        messageHeat = '<span class="rouge">Carence grave</span>';
     } else if (dispoHeat < costHeat) {
-        playerInfos.vitals = playerInfos.vitals+1;
-        messageHeat = 'Carence';
+        if (!sim) {
+            playerInfos.vitals = playerInfos.vitals+1;
+        }
+        messageHeat = '<span class="rouge">Carence</span>';
     }
     warning('Consommation','Nourriture: <span class="rose">-'+costFood+'</span><br>'+messageFood,true);
     warning('Consommation','Eau: <span class="rose">-'+costWater+'</span><br>'+messageWater,true);
     warning('Consommation','Oxygène: <span class="rose">-'+costAir+'</span><br>'+messageAir,true);
     warning('Consommation','Energie: <span class="rose">-'+costHeat+'</span><br>'+messageHeat+'<br>',true);
-    payMaxCost(bouffeCost);
+    if (!sim) {
+        payMaxCost(bouffeCost);
+    }
 };
 
-function eventCitoyens(time) {
+function eventCitoyens(time,sim) {
     let newCitsNumber = Math.floor(time*1.5/6)*6;
     let citId = 126;
     let citName = 'Citoyens';
@@ -242,8 +269,10 @@ function eventCitoyens(time) {
         citId = 225;
         citName = 'Criminels';
     }
-    bonusCit(citId,souteId,newCitsNumber);
-    playerInfos.allCits = playerInfos.allCits+newCitsNumber;
+    if (!sim) {
+        bonusCit(citId,souteId,newCitsNumber);
+        playerInfos.allCits = playerInfos.allCits+newCitsNumber;
+    }
     warning('Nouveaux citoyens','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont débarqué dans la station.<br>',true);
 };
 
@@ -282,12 +311,15 @@ function calcTotalCitoyens() {
     return mesCitoyens;
 };
 
-function eventCrime(time) {
+function eventCrime(time,sim) {
     // Crimes et vols en fonction du taux de criminalité
     let mesCitoyens = calcTotalCitoyens();
     let population = mesCitoyens.crim+mesCitoyens.cit;
     let crimeRate = calcCrimeRate(mesCitoyens);
-    warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total+'%',false)
+    if (!sim) {
+        // EFFETS !!! CRIMES !!!
+        warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total+'%',false)
+    }
 };
 
 function calcCrimeRate(mesCitoyens) {
@@ -402,6 +434,6 @@ function calcCrimeRate(mesCitoyens) {
     return crimeRate;
 };
 
-function eventAliens(afterMission,time) {
+function eventAliens(afterMission,time,sim) {
     // Montée de la présence alien
 };
