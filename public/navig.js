@@ -167,7 +167,7 @@ function commandes() {
             }
         }
     }
-    if (playerInfos.pseudo === 'Test') {
+    if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall') {
         gangNavig();
     }
 };

@@ -718,7 +718,7 @@ function spawns() {
             } else if (rand.rand(1,vomiToRuche) === 1 && playerInfos.mapTurn >= Math.ceil(vomiToRuche/1.5) && bat.type === 'Vomissure' && !bat.tags.includes('morph')) {
                 bat.tags.push('morph');
                 if (playerInfos.comp.det >= 1 && playerInfos.comp.ca >= 1) {
-                    warning('Tranformation imminante','Une Vomissure va devenir une Ruche!');
+                    warning('Tranformation imminante','Une Vomissure va devenir une Ruche!',false,bat.tileId);
                 }
             } else if (bat.type === 'Vomissure' && bat.tags.includes('morph')) {
                 alienMorph(bat,'Ruche',true);
@@ -832,15 +832,17 @@ function vomiSpawn(bat) {
 
 function blobEat(layBlob) {
     let batId = -1;
+    let batTileId = -1;
     bataillons.forEach(function(bat) {
         if (bat.loc === 'zone' && bat.tileId === layBlob) {
             batId = bat.id;
+            batTileId = bat.tileId;
         }
     });
     let unitIndex = bataillons.findIndex((obj => obj.id == batId));
     if (unitIndex > -1) {
         bataillons.splice(unitIndex,1);
-        warning('Bataillon englouti',bat.type+' a été détruit par la vomissure.');
+        warning('Bataillon englouti',bat.type+' a été détruit par la vomissure.',false,batTileId);
     }
 };
 
@@ -1118,7 +1120,7 @@ function eggSpawn(bat,fromEgg) {
             bat.tags.push('morph');
             if (bat.type === 'Oeuf') {
                 if (playerInfos.comp.det >= 1 && playerInfos.comp.ca >= 1) {
-                    warning('Tranformation imminante','Un Oeuf va devenir une Ruche!');
+                    warning('Tranformation imminante','Un Oeuf va devenir une Ruche!',false,bat.tileId);
                 }
             } else if (bat.type === 'Oeuf voilé') {
                 if (bat.tags.includes('invisible')) {
@@ -1132,7 +1134,7 @@ function eggSpawn(bat,fromEgg) {
                 }
             } else {
                 if (playerInfos.comp.det >= 1 && playerInfos.comp.ca >= 1) {
-                    warning('Tranformation imminante','Une Coque va devenir un Volcan!');
+                    warning('Tranformation imminante','Une Coque va devenir un Volcan!',false,bat.tileId);
                 }
             }
         }

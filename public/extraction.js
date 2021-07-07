@@ -72,7 +72,7 @@ function mining(bat) {
                 });
                 autoUnload(bat);
             } else {
-                warning('Extraction stoppée',bat.type+': Plus de place pour stocker');
+                warning('Extraction stoppée',bat.type+': Plus de place pour stocker',false,bat.tileId);
             }
         }
     }

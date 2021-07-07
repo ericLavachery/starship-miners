@@ -1934,8 +1934,8 @@
     {
         "id":29,
         "name":"Poudrière",
-        "upkeep":{"Soufre":2,"Potassium":1,"Carbone":1},
-        "prod":{"Explosifs":1},
+        "upkeep":{"Soufre":1.1,"Potassium":0.8,"Carbone":0.8},
+        "prod":{"Explosifs":0.5},
         "costs":{"Compo1":170,"Compo2":55,"Eau":12,"Végétaux":150},
         "fabTime":25
     },

@@ -648,7 +648,7 @@ function resAddToBld(resName,number,bat,batType) {
             bat.transRes[resName] = bat.transRes[resName]+number;
         }
     } else {
-        warning('Production stoppée',batType.name+': Plus de place pour stocker');
+        warning('Production stoppée',batType.name+': Plus de place pour stocker',false,bat.tileId);
     }
 };
 

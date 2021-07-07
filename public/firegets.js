@@ -278,7 +278,7 @@ function batDeathEffect(bat,quiet,title,body) {
             }
             if (bat.chief != undefined) {
                 if (bat.chief != '') {
-                    warning(bat.chief+' est mort','RIP');
+                    warning(bat.chief+' est mort','RIP',false,bat.tileId);
                 }
             }
             setTimeout(function (){
@@ -290,7 +290,7 @@ function batDeathEffect(bat,quiet,title,body) {
             $('#b'+bat.tileId).append(resHere);
             if (bat.chief != undefined) {
                 if (bat.chief != '') {
-                    warning(bat.chief+' est mort','RIP');
+                    warning(bat.chief+' est mort','RIP',false,bat.tileId);
                 }
             }
             warning(title,body);

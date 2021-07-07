@@ -813,7 +813,7 @@ function tagsUpdate(bat) {
         if (rand.rand(1,5) === 1) {
             tagDelete(bat,'drunk');
             if (!bat.tags.includes('drunk')) {
-                warning('Burp...',bat.type+' a la gueule de bois.');
+                warning('Burp...',bat.type+' a la gueule de bois.',false,bat.tileId);
             }
         }
     }
@@ -1012,14 +1012,14 @@ function tagsEffect(bat,batType) {
         } else {
             if (rand.rand(1,18) <= unitResist && bat.cat != 'aliens') {
                 tagDelete(bat,'maladie');
-                warning('',bat.type+' a vaincu la maladie.');
+                warning('',bat.type+' a vaincu la maladie.',false,bat.tileId);
             } else {
                 bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
                 if (bat.squadsLeft < batType.squads || bat.damage >= 1) {
                     if (rand.rand(1,36) <= (4-unitResist) && bat.cat != 'aliens') {
                         bat.tags.push('poison');
                         if (!batType.skills.includes('resistpoison')) {
-                            warning('',bat.type+' risque de succomber à la maladie.');
+                            warning('',bat.type+' risque de succomber à la maladie.',false,bat.tileId);
                         }
                     }
                 }
@@ -1047,7 +1047,7 @@ function tagsEffect(bat,batType) {
             if (rand.rand(1,16) <= unitResist) {
                 tagDelete(bat,'necro');
                 if (!bat.tags.includes('necro')) {
-                    warning('',bat.type+' a éliminé la nécrotoxine.');
+                    warning('',bat.type+' a éliminé la nécrotoxine.',false,bat.tileId);
                 }
             }
         }

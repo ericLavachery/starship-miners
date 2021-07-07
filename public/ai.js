@@ -1290,10 +1290,10 @@ function infraDestruction() {
                 let destroyCost = Math.ceil(selectedBat.ap*destroySize/alienSize*2);
                 selectedBat.apLeft = selectedBat.apLeft-destroyCost;
                 if (tile.rd && (tile.terrain === 'W' || tile.terrain === 'R')) {
-                    warning('Destruction',selectedBat.type+' a détruit le Pont');
+                    warning('Destruction',selectedBat.type+' a détruit le Pont',false,tile.id);
                     tile.rd = false;
                 } else {
-                    warning('Destruction',selectedBat.type+' a détruit '+tile.infra);
+                    warning('Destruction',selectedBat.type+' a détruit '+tile.infra,false,tile.id);
                     tile.infra = 'Débris';
                 }
                 // saveMap();
@@ -1345,9 +1345,9 @@ function getAway(bat,fromTileId,blob) {
         }
         showBataillon(bat);
         if (!blob) {
-            warning('Répulsion',bat.type+' a pris la fuite...');
+            warning('Répulsion',bat.type+' a pris la fuite...',false,getAwayTile);
         } else {
-            warning('Vomissure',bat.type+' a dû fuir pour ne pas être digéré par la vomissure de l\'oeuf.');
+            warning('Vomissure',bat.type+' a dû fuir pour ne pas être digéré par la vomissure de l\'oeuf.',false,getAwayTile);
         }
     } else {
         if (!blob) {
@@ -1362,11 +1362,11 @@ function getAway(bat,fromTileId,blob) {
             if (!bat.tags.includes('stun')) {
                 bat.tags.push('stun');
             }
-            warning('Répulsion',bat.type+' paralysé de peur...');
+            warning('Répulsion',bat.type+' paralysé de peur...',false,bat.tileId);
         } else {
             let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
             bataillons.splice(batIndex,1);
-            batDeathEffect(bat,true,'Bataillon digéré',bat.type+' englouti par la vomissure...');
+            batDeathEffect(bat,true,'Bataillon digéré',bat.type+' englouti par la vomissure...',false,bat.tileId);
         }
     }
     playerOccupiedTileList();

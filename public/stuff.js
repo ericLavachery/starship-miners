@@ -171,10 +171,38 @@ function washReports() {
     $('#report').empty();
 };
 
-function warning(title,body,noHand) {
+function warning(title,body,noHand,tileId) {
     $('#warnings').append('<span class="warnings"><span class="or">'+title+'<br></span> '+body+'<br></span>');
+    if (tileId != undefined) {
+        if (tileId >= -1) {
+            $('#warnings').append('<span class="warnings"><i class="fas fa-eye cy klik" onclick="warnLink('+tileId+')"></i></span>');
+        }
+    }
     if (!noHand) {
         $('#warnings').append('<i class="far fa-hand-paper wash" onclick="washReports()" title="Cacher l\'alerte"></i>');
+    }
+};
+
+function warnLink(tileId) {
+    let linkBatId = -1;
+    let linkBat = {};
+    if (activeTurn === 'player') {
+        bataillons.forEach(function(bat) {
+            if (linkBatId < 0) {
+                if (bat.loc === 'zone') {
+                    if (bat.tileId === tileId) {
+                        linkBatId = bat.id;
+                        linkBat = bat;
+                    }
+                }
+            }
+        });
+    }
+    if (linkBatId >= 0) {
+        batSelect(linkBat);
+        showBatInfos(linkBat);
+    } else {
+        centerMapTo(tileId);
     }
 };
 
