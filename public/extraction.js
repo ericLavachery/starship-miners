@@ -99,10 +99,14 @@ function getTerrainRes(terrain,tile) {
     let res = getResByName('Bois');
     if (terrain.name === 'F') {
         srs.Bois = 250+(tile.seed*65);
+        if (zone[0].pf >= 35) {
+            srs.Bois = Math.round(srs.Bois*zone[0].pf/35);
+        }
     } else if (terrain.name === 'B') {
         srs.Bois = 25+(tile.seed*25);
     }
     if (srs.Bois != undefined) {
+        srs.Bois = Math.round(srs.Bois*(zone[0].ensol+150)/290);
         srs.Bois = Math.round(srs.Bois*res.planets[zone[0].planet]);
         if (srs.Bois <= 0) {
             delete srs.Bois;
@@ -112,10 +116,13 @@ function getTerrainRes(terrain,tile) {
     res = getResByName('Végétaux');
     if (terrain.name === 'F') {
         srs.Végétaux = 25+((7-tile.seed)*25);
+        srs.Végétaux = Math.round(srs.Végétaux*zone[0].ensol/140);
     } else if (terrain.name === 'B') {
         srs.Végétaux = 250+((7-tile.seed)*65);
+        srs.Végétaux = Math.round(srs.Végétaux*(zone[0].ensol+100)/240);
     } else if (terrain.veg >= 0.5) {
         srs.Végétaux = (Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*15)-15+(tile.seed*5);
+        srs.Végétaux = Math.round(srs.Végétaux*zone[0].ensol/140);
     }
     if (srs.Végétaux != undefined) {
         srs.Végétaux = Math.round(srs.Végétaux*res.planets[zone[0].planet]);
@@ -247,7 +254,11 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     // ADJ SUBTYPE & LEVELS
     if (!batType.mining.types.includes(res.bld)) {
         if (batType.mining.subTypes.includes(res.bld)) {
-            resRate = Math.ceil(resRate/3);
+            if (batType.skills.includes('extgear')) {
+                resRate = Math.ceil(resRate/1.75);
+            } else {
+                resRate = Math.ceil(resRate/3);
+            }
         } else {
             resRate = 0;
         }

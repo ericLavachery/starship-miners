@@ -1545,85 +1545,111 @@ function zoneReport(zone,quiet) {
     if (percS < 30) {
         zone[0].sKind = 'larve';
     }
-    if (zone[0].ensol === undefined) {
-        let ensolFactor = rand.rand(25,35);
-        let ensolBonus = rand.rand(0,80);
-        zone[0].ensol = Math.round(percP*ensolFactor/10)+ensolBonus;
-        if (playerInfos.comp.det >= 2 && !quiet) {
-            warning('Ensoleillement',zone[0].ensol+'<br>',true);
-        }
-    }
+    let sndEnsolBonus = 100;
     if (zone[0].snd === undefined) {
         if (zone[0].planet === 'Sarak') {
             if (rand.rand(1,2) === 1) {
                 zone[0].snd = 'fogfrogs';
+                sndEnsolBonus = 0;
             } else {
                 zone[0].snd = 'strange';
+                sndEnsolBonus = 0;
             }
         } else if (zone[0].planet === 'Gehenna') {
             if (percW+percS >= 40) {
                 zone[0].snd = 'swamp';
+                sndEnsolBonus = 50;
             } else if (percF >= 40) {
                 zone[0].snd = 'uhuwind';
+                sndEnsolBonus = 100;
             } else {
                 zone[0].snd = 'monsoon';
+                sndEnsolBonus = 25;
             }
         } else if (zone[0].planet === 'Kzin') {
             if (rand.rand(1,2) === 1) {
                 zone[0].snd = 'sywind';
+                sndEnsolBonus = 50;
             } else {
                 zone[0].snd = 'bwind';
+                sndEnsolBonus = 100;
             }
         } else if (zone[0].planet === 'Horst') {
             if (percF >= 40) {
                 zone[0].snd = 'bwindred';
+                sndEnsolBonus = 75;
             } else {
                 if (rand.rand(1,5) >= 4) {
                     zone[0].snd = 'redwind';
+                    sndEnsolBonus = 125;
                 } else {
                     zone[0].snd = 'thunderred';
+                    sndEnsolBonus = 25;
                 }
             }
         } else {
             if (percF >= 40) {
                 if (rand.rand(1,2) === 1) {
                     zone[0].snd = 'jungle';
+                    sndEnsolBonus = 200;
                 } else {
                     zone[0].snd = 'rainforest';
+                    sndEnsolBonus = 100;
                 }
             } else if (percW+percS >= 50) {
                 zone[0].snd = 'bogs';
+                sndEnsolBonus = 100;
             } else if (percB >= 35) {
                 if (rand.rand(1,2) === 1) {
                     zone[0].snd = 'crickets';
+                    sndEnsolBonus = 150;
                 } else {
                     zone[0].snd = 'birds';
+                    sndEnsolBonus = 115;
                 }
             } else if (percG+percB >= 75) {
                 if (rand.rand(1,2) === 1) {
                     zone[0].snd = 'crickets';
+                    sndEnsolBonus = 150;
                 } else {
                     zone[0].snd = 'cricketsloop';
+                    sndEnsolBonus = 250;
                 }
             } else if (percP >= 50 || percP+percG >= 70) {
                 zone[0].snd = 'howlwind';
+                sndEnsolBonus = 75;
             } else {
                 if (rand.rand(1,3) === 1) {
                     if (rand.rand(1,2) === 1) {
                         zone[0].snd = 'birds';
+                        sndEnsolBonus = 100;
                     } else {
                         zone[0].snd = 'howlwind';
+                        sndEnsolBonus = 75;
                     }
                 } else {
                     if (rand.rand(1,2) === 1) {
                         zone[0].snd = 'thunderstart';
+                        sndEnsolBonus = 35;
                     } else {
                         zone[0].snd = 'thunderfull';
+                        sndEnsolBonus = 20;
                     }
                 }
             }
         }
         console.log(zone[0].snd);
+    }
+    if (zone[0].ensol === undefined) {
+        let ensolFactor = rand.rand(25,35);
+        let ensolBonus = rand.rand(0,80);
+        zone[0].ensol = Math.round(percP*ensolFactor/10)+ensolBonus+sndEnsolBonus-100;
+        if (zone[0].ensol < 50) {
+            zone[0].ensol = 40+rand.rand(0,10);
+        }
+        if (playerInfos.comp.det >= 2 && !quiet) {
+            warning('Ensoleillement',zone[0].ensol+'<br>',true);
+        }
     }
     if (!quiet) {
         if (playerInfos.comp.ca < 3) {

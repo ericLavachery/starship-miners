@@ -762,7 +762,7 @@
         "level": 4,
         "rarity": 150,
         "cat": "transfo",
-        "batch": 4,
+        "batch": 5,
         "energie": 25
     },
     {
@@ -772,7 +772,7 @@
         "level": 4,
         "rarity": 140,
         "cat": "transfo",
-        "batch": 3,
+        "batch": 4,
         "energie": 25
     },
     {
@@ -782,7 +782,7 @@
         "level": 4,
         "rarity": 130,
         "cat": "transfo",
-        "batch": 2,
+        "batch": 3,
         "energie": 25
     }
 ]

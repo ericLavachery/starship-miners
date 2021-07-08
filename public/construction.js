@@ -220,10 +220,10 @@ function displayCosts(costs) {
         Object.entries(costs).map(entry => {
             let key = entry[0];
             let value = entry[1];
-            costString = costString+key;
             if (value > playerInfos.reserve[key]) {
-                costString = costString+'?';
+                costString = costString+' &block;';
             }
+            costString = costString+key;
             costString = costString+':'+value+'/'+playerInfos.reserve[key];
             if (value > playerInfos.reserve[key]) {
                 costString = costString+'!';

@@ -3993,7 +3993,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fly","extraction","selfbadmecano","fret","robot","light","conscont","aicamo","recupres","aifouille"],
+        "skills":["noguet","fly","extraction","selfbadmecano","fret","robot","light","conscont","aicamo","recupres","aifouille","extgear"],
         "mecanoCost":12,
         "mining":{
             "level":3,

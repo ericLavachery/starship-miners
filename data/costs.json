@@ -2127,7 +2127,7 @@
         "name":"Générateur",
         "upkeep":{"Fuel":1},
         "prod":{"Energie":9},
-        "costs":{"Compo1":125,"Eau":6,"Scrap":100,"Carbone":50,"Tungstène":35,"Aluminium":150,"Nickel":20,"Silicium":50,"Batteries":20},
+        "costs":{"Compo1":125,"Eau":6,"Scrap":100,"Carbone":50,"Tungstène":35,"Moteurs":75,"Nickel":20,"Silicium":50,"Batteries":20},
         "fabTime":25
     },
     {

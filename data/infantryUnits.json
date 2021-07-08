@@ -2386,7 +2386,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","extraction","selfbadmedic","dynamite","fret","recupcit","conscont"],
+        "skills":["fouille","fortif","extraction","selfbadmedic","dynamite","fret","recupcit","conscont","extgear"],
         "mediCost":10,
         "mining":{
             "level":3,
