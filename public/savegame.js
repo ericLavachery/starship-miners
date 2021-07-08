@@ -309,7 +309,9 @@ function resetReserve() {
 };
 
 function resetEndRes() {
-    resTypes.forEach(function(res) {
+    playerInfos.endRes = {};
+    let sortedResTypes = _.sortBy(resTypes,'name');
+    sortedResTypes.forEach(function(res) {
         playerInfos.endRes[res.name] = 0;
     });
     playerInfos.endRes['Citoyens'] = 0;

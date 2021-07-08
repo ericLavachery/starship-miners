@@ -354,10 +354,14 @@ function attack(melee) {
     }
     // Flying Aliens vs Small Aircrafts
     if (targetBatType.skills.includes('fly') && targetBatType.cat === 'vehicles') {
-        if (selectedBatType.cat === 'aliens' && (selectedBatType.skills.includes('fly') || selectedBatType.skills.includes('sauteur'))) {
+        if (selectedBatType.cat === 'aliens' && selectedBatType.skills.includes('fly')) {
             if (selectedBatType.size*4 >= targetBatType.size) {
-                shots = Math.round(shots*selectedBatType.size*8/targetBatType.size);
-                attFactor = Math.round(attFactor*selectedBatType.size*8/targetBatType.size);
+                let sizeFactor = selectedBatType.size*2/targetBatType.size;
+                if (sizeFactor < 1.5) {
+                    sizeFactor = 1.5;
+                }
+                shots = Math.round(shots*sizeFactor);
+                attFactor = Math.round(attFactor*sizeFactor);
             }
         }
     }

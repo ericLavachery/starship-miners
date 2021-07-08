@@ -334,25 +334,25 @@ function showBataillon(bat) {
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
     let degNum = getDamageBar(bat);
-    let activityBar = 'none';
+    let activityBar = 'nope';
     if (bat.tags.includes('mining')) {
         activityBar = 'mining';
     } else {
-        if (bat.tags.includes('fortif') || !batType.skills.includes('fortif')) {
-            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
-                activityBar = 'fortifguet';
-            } else {
-                activityBar = 'fortif';
-            }
-        } else {
-            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
-                activityBar = 'guet';
-            }
+        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
+            activityBar = 'guet';
         }
     }
     let uClass = 'pUnits';
     if (bat.fuzz <= -2) {
-        uClass = 'pUnitsCamo';
+        if (bat.tags.includes('fortif')) {
+            uClass = 'pUnitsCamoFortif';
+        } else {
+            uClass = 'pUnitsCamo';
+        }
+    } else {
+        if (bat.tags.includes('fortif')) {
+            uClass = 'pUnitsFortif';
+        }
     }
     if (!modeSonde) {
         $('#b'+bat.tileId).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);

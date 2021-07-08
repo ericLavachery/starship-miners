@@ -123,6 +123,14 @@ function checkMaxDroppedEggs() {
     return maxDroppedEggs;
 };
 
+function checkMaxEggsInPlay() {
+    let maxEggsInPlay = Math.floor(zone[0].mapDiff*1.5)+1;
+    if (playerInfos.mapTurn >= 35) {
+        maxEggsInPlay++;
+    }
+    return maxEggsInPlay;
+};
+
 function checkEggsDrop() {
     console.log('check egg drop');
     eggDropCount = 0;
@@ -143,7 +151,7 @@ function checkEggsDrop() {
     console.log('mapAdjDiff'+playerInfos.mapAdjDiff);
     console.log('dropTurn'+dropTurn);
     let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapAdjDiff)*dropMod);
-    let maxEggsInPlay = (zone[0].mapDiff*3)-1;
+    let maxEggsInPlay = checkMaxEggsInPlay();
     console.log('maxEggsInPlay = '+maxEggsInPlay);
     let maxDroppedEggs = checkMaxDroppedEggs();
     console.log('maxDroppedEggs = '+maxDroppedEggs);

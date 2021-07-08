@@ -820,20 +820,24 @@ function anyAlienInRange(myBat,weapon) {
         if (bat.loc === "zone") {
             if (isInRange(myBat,bat.tileId,weapon) || checkGuidage(weapon,bat)) {
                 batType = getBatType(bat);
-                if (weapon.noFly && batType.skills.includes('fly')) {
-                    // Fly hors portée
+                if (weapon.ammo.includes('marquage') && bat.tags.includes('fluo')) {
+                    // Déjà marqué
                 } else {
-                    if (weapon.noGround && !batType.skills.includes('fly') && !batType.skills.includes('sauteur')) {
-                        // Ground hors portée
+                    if (weapon.noFly && batType.skills.includes('fly')) {
+                        // Fly hors portée
                     } else {
-                        if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
-                            // Alien invisible
-                            distance = calcDistance(myBat.tileId,bat.tileId)
-                            if (distance === 0) {
+                        if (weapon.noGround && !batType.skills.includes('fly') && !batType.skills.includes('sauteur')) {
+                            // Ground hors portée
+                        } else {
+                            if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
+                                // Alien invisible
+                                distance = calcDistance(myBat.tileId,bat.tileId)
+                                if (distance === 0) {
+                                    inRange = true;
+                                }
+                            } else {
                                 inRange = true;
                             }
-                        } else {
-                            inRange = true;
                         }
                     }
                 }
@@ -918,8 +922,10 @@ function fireInfos(bat) {
             if (sideBySideTiles(selectedBat.tileId,tile.id,true) && !batType.skills.includes('longshot') && !onInfra) {
                 isMelee = true;
                 if (checkFlyTarget(selectedWeap,alienType)) {
-                    cursorSwitch('#',tile.id,'fire');
-                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                    if (!alien.tags.includes('fluo') || !selectedWeap.ammo.includes('marquage')) {
+                        cursorSwitch('#',tile.id,'fire');
+                        $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                    }
                 }
             }
         }
@@ -933,8 +939,10 @@ function fireInfos(bat) {
                 if (isInRange(selectedBat,tile.id,selectedWeap) || guideTarget) {
                     alienType = getBatType(alien);
                     if (checkFlyTarget(selectedWeap,alienType) && ((!alienType.skills.includes('invisible') && !alien.tags.includes('invisible')) || sideBySideTiles(selectedBat.tileId,tile.id,false))) {
-                        cursorSwitch('#',tile.id,'fire');
-                        $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                        if (!alien.tags.includes('fluo') || !selectedWeap.ammo.includes('marquage')) {
+                            cursorSwitch('#',tile.id,'fire');
+                            $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                        }
                     }
                 }
             }

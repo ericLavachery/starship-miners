@@ -62,7 +62,7 @@
     {
         "id":117,
         "result":"Compo1",
-        "cost":{"Bugium":3,"Carbone":3,"Eau":1},
+        "cost":{"Bugium":2,"Carbone":4,"Eau":1},
         "compReq":{"ca":2},
         "bldReq":["Atelier"],
         "batch":5
@@ -110,6 +110,15 @@
         "creaNum":20
     },
     {
+        "id":123,
+        "result":"Compo2",
+        "cost":{"Bugium":10,"Mendium":1,"Carbone":20,"Eau":5},
+        "compReq":{"ca":3},
+        "bldReq":["Atelier"],
+        "batch":20,
+        "creaNum":20
+    },
+    {
         "id":13,
         "result":"Compo2",
         "cost":{"Fer":2,"Carbone":4,"Energie":1},
@@ -141,6 +150,25 @@
         "bldReq":["Atelier"],
         "bldOut":["Chaîne de montage"],
         "batch":4
+    },
+    {
+        "id":121,
+        "result":"Compo3",
+        "cost":{"Fer":3,"Carbone":4,"Titane":3,"Energie":4},
+        "compReq":{"mat":1},
+        "bldReq":["Atelier"],
+        "compOut":{"const":1},
+        "bldOut":["Chaîne de montage"],
+        "batch":4
+    },
+    {
+        "id":122,
+        "result":"Compo3",
+        "cost":{"Bugium":15,"Egidium":1,"Silicium":25,"Energie":10},
+        "compReq":{"ca":3},
+        "bldReq":["Atelier"],
+        "batch":25,
+        "creaNum":25
     },
     {
         "id":8,
@@ -506,7 +534,7 @@
         "result":"Drogues",
         "cost":{"Végétaux":60,"Huile":24,"Zinc":10},
         "compReq":{},
-        "bldReq":["Atelier"],
+        "bldReq":["Infirmerie"],
         "batch":20,
         "creaNum":20
     },
