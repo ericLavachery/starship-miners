@@ -651,6 +651,16 @@
         "energie": -1
     },
     {
+        "id": 51,
+        "name": "Energons",
+        "bld": "",
+        "level": 4,
+        "rarity": 15,
+        "cat": "transfo",
+        "batch": 2,
+        "energie": -1
+    },
+    {
         "id": 62,
         "name": "Batteries",
         "bld": "",

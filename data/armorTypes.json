@@ -505,11 +505,12 @@
         "name": "helper",
         "cat":"equip",
         "skills": [],
-        "info": "+1 PA & +2 puissance mêlée",
+        "info": "Bonus PA & +3 puissance mêlée",
         "bldReq":["Laboratoire"],
-        "compReq":{"mat":2,"exo":1,"cyber":1},
+        "compReq":{"exo":1,"cyber":1},
         "factor":"thp",
-        "costs":{"Adamantium":4,"Titane":12,"Electros":12,"Silicium":6}
+        "costs":{"Adamantium":4,"Titane":12,"Electros":12,"Silicium":6,"Batteries":4},
+        "deploy":{"Energie":12}
     },
     {
         "name": "theeye",
@@ -525,7 +526,7 @@
         "name": "permakirin",
         "cat":"equip",
         "skills": [],
-        "info": "Régénération lente",
+        "info": "Régénération lente & Survivant",
         "bldReq":["Laboratoire"],
         "compReq":{"med":2,"ca":4,"gen":1},
         "factor":"thp",

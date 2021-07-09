@@ -469,13 +469,16 @@ function calcDamage(weapon,power,armor,defBat) {
     if (calculatedDmg < 0) {
         calculatedDmg = 0;
     }
+    if (calculatedDmg < 1 && weapon.name.includes('plasma')) {
+        calculatedDmg = 1;
+    }
     return calculatedDmg;
 };
 
 function checkRicochet(defBat,defBatType,attWeap) {
     let rico = false;
     if (defBatType.skills.includes('ricochet') || defBat.tags.includes('ricochet')) {
-        if (!attWeap.ammo.includes('feu') && !attWeap.ammo.includes('napalm') && !attWeap.ammo.includes('fire') && !attWeap.ammo.includes('pyratol') && !attWeap.ammo.includes('lf-') && !attWeap.ammo.includes('lt-') && !attWeap.ammo.includes('molotov') && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web')) {
+        if (!attWeap.ammo.includes('feu') && !attWeap.ammo.includes('napalm') && !attWeap.ammo.includes('fire') && !attWeap.ammo.includes('pyratol') && !attWeap.ammo.includes('lf-') && !attWeap.ammo.includes('lt-') && !attWeap.ammo.includes('molotov') && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.name.includes('plasma')) {
             if (!attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco')) {
                 if (!attWeap.ammo.includes('mono')) {
                     if (!attWeap.isMelee && !attWeap.noShield && attWeap.armors > 0) {
@@ -619,6 +622,9 @@ function getStealth(bat) {
         batStealth = batStealth+5;
     }
     if (tile.ruins) {
+        batStealth = batStealth+4;
+    }
+    if (tile.infra === 'Miradors' && playerInfos.comp.cam >= 1) {
         batStealth = batStealth+4;
     }
     if (bat.tags.includes('drunk')) {
@@ -1328,7 +1334,7 @@ function weaponAdj(weapon,bat,wn) {
     }
     // helper
     if (bat.eq === 'helper' && thisWeapon.isMelee) {
-        thisWeapon.power = thisWeapon.power+2;
+        thisWeapon.power = thisWeapon.power+3;
     }
     // sila drug
     if (bat.tags.includes('sila')) {

@@ -1018,7 +1018,7 @@ function attack(melee) {
     targetBat.squadsLeft = targetBat.squadsLeft-squadsOut;
     // survivor
     if (targetBat.squadsLeft <= 0) {
-        if (targetBatType.skills.includes('survivor') && !targetBat.tags.includes('lucky')) {
+        if ((targetBatType.skills.includes('survivor') || targetBat.eq === 'permakirin' || targetBat.logeq === 'permakirin') && !targetBat.tags.includes('lucky')) {
             targetBat.squadsLeft = 1;
             targetBat.apLeft = targetBat.ap;
             targetBat.tags.push('lucky');
@@ -1663,7 +1663,7 @@ function defense(melee) {
     console.log('Squads left: '+selectedBat.squadsLeft);
     if (selectedBat.squadsLeft <= 0) {
         console.log('dead');
-        if (!selectedBat.tags.includes('lucky') && selectedBatType.skills.includes('survivor')) {
+        if (!selectedBat.tags.includes('lucky') && (selectedBatType.skills.includes('survivor') || selectedBat.eq === 'permakirin' || selectedBat.logeq === 'permakirin')) {
             selectedBat.squadsLeft = 1;
             selectedBat.apLeft = selectedBat.ap;
             selectedBat.tags.push('lucky');

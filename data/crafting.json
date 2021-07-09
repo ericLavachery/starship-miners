@@ -993,6 +993,23 @@
         "creaNum":1
     },
     {
+        "id":124,
+        "result":"Energons",
+        "cost":{"Energie":11},
+        "compReq":{},
+        "bldReq":["Centrale SMR"],
+        "batch":1
+    },
+    {
+        "id":125,
+        "result":"Energie",
+        "cost":{"Energons":1},
+        "compReq":{},
+        "bldReq":["Générateur"],
+        "batch":10,
+        "creaNum":100
+    },
+    {
         "id":94,
         "result":"Energie",
         "cost":{"Bois":100},
