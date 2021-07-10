@@ -2018,7 +2018,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["mecano","repair","selfrepair","meleehelp","recupcit","transport","routes","dealer","nitro","producteur","craft","upkeep","updisable","prodres","longshot","ravitaillement","ravitprod","fret","dumper","badcrewsave","flash","reeq"],
+        "skills":["mecano","roborepair","repair","selfrepair","meleehelp","recupcit","transport","routes","dealer","nitro","producteur","craft","upkeep","updisable","prodres","longshot","ravitaillement","ravitprod","fret","dumper","badcrewsave","flash","reeq"],
         "mecanoCost":4,
         "maxDrug":24,
         "maxSkill":36,

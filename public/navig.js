@@ -107,13 +107,6 @@ function commandes() {
             }
         }
         $('#commandz').append('<br>');
-        if (!modeSonde && !playerInfos.onShip) {
-            // $('#commandz').append('<hr>');
-            // $('#commandz').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonRouge iconButtons" onclick="showMapReset()" id="reset1"><i class="fas fa-power-off"></i></button>');
-            // $('#commandz').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonRouge iconButtons" onclick="mapReset()" id="reset2"><i class="fas fa-skull-crossbones"></i></button>');
-            // $('#commandz').append('<button type="button" title="Supprimer tous les aliens" class="boutonRouge iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
-            // $('#commandz').append('<br>');
-        }
         if (!modeSonde && !inSoute) {
             if (playerInfos.onShip) {
                 if (zoneFiles.length >= 2) {
@@ -212,6 +205,12 @@ function gangNavig() {
     }
     $('#gangInfos').append('<button type="button" title="Charger une zone sauvegardée" class="boutonCiel iconButtons" onclick="voirZones()"><i class="fas fa-folder-open"></i></button>');
     $('#gangInfos').append('<button type="button" title="Remettre les compétences à zéro" class="boutonCiel iconButtons" onclick="compReset()"><i class="fas fa-award"></i></button>');
+    if (!modeSonde && !playerInfos.onShip) {
+        $('#gangInfos').append('<hr>');
+        $('#gangInfos').append('<button type="button" title="Nouvelle zone" class="boutonCiel iconButtons" onclick="generateNewMap()"><i class="far fa-map"></i></button>');
+        $('#gangInfos').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonCiel iconButtons" onclick="mapReset()"><i class="fas fa-skull-crossbones"></i></button>');
+        $('#gangInfos').append('<button type="button" title="Supprimer tous les aliens" class="boutonCiel iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
+    }
     $('#gangInfos').append('<div class="shSpace"></div>');
     $('#gangInfos').append('<span class="butSpace"></span>');
     $('#gangInfos').append(capitalizeFirstLetter(playerInfos.gang));

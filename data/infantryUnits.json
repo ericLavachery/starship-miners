@@ -4565,7 +4565,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","mecano","selfmedic","cyber","dealer","nitro","oknitro","noblub"],
+        "skills":["fouille","fortif","mecano","selfmedic","cyber","dealer","nitro","oknitro","noblub","roborepair"],
         "mecanoCost":4,
         "mediCost":8,
         "maxDrug":16,
