@@ -324,10 +324,16 @@ function getCosts(unit,ammo,weapNum,type) {
             if (unit.weapon.name.includes('Moissonneuse')) {
                 costFactor = costFactor*15;
             }
+            if (unit.weapon.name.includes('Boutoir') || unit.weapon.name.includes('Bélier')) {
+                costFactor = Math.round(costFactor*unit.size/8);
+            }
         } else {
             costFactor = Math.ceil(unit.squads*unit.squadSize*unit.weapon2.power/2);
             if (unit.weapon2.name.includes('Moissonneuse')) {
                 costFactor = costFactor*15;
+            }
+            if (unit.weapon2.name.includes('Boutoir') || unit.weapon2.name.includes('Bélier')) {
+                costFactor = Math.round(costFactor*unit.size/8);
             }
         }
         if (ammo.costs != undefined) {

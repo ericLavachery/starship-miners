@@ -1142,7 +1142,7 @@
         "compReq":{"robo":1},
         "compPass":["bulbos"],
         "costs":{"Scrap":24,"Carbone":60,"Moteurs":18,"Titane":24,"Bore":24,"Silicium":72,"Cuivre":24,"Electros":96,"Batteries":60,"Nickel":6,"Cobalt":24},
-        "deploy":{"Energie":95},
+        "deploy":{"Energie":60},
         "fabTime":30,
         "inRuin":1
     },

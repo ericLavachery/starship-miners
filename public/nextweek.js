@@ -43,7 +43,7 @@ function eventProduction(afterMission,time,sim) {
     if (playerInfos.bldList.includes('Décharge')) {
         triFactor = triFactor+1;
     }
-    let scrapNum = Math.round(time*population/2000*3*(triFactor+5)/5);
+    let scrapNum = Math.round(time*population/5000*3*(triFactor+5)/5);
     if (afterMission) {
         scrapNum = Math.round(scrapNum/5);
     }

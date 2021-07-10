@@ -213,7 +213,7 @@
             "power":28,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","g2motor","lunette1","snorkel","e-flash","theeye","e-mecano"],
@@ -448,7 +448,7 @@
             "power":14,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","chargeur1","g2motor","snorkel","e-flash","theeye","e-mecano","w2-belier"],
@@ -744,7 +744,7 @@
             "power":30,
             "aoe":"squad",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","iso","dunium","bonibo","adamantite"],
         "equip":["aucun","g2motor","chenilles","snorkel","e-flash","e-mecano"],
@@ -806,7 +806,7 @@
             "power":40,
             "aoe":"squad",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","iso","dunium","bonibo","adamantite"],
         "equip":["aucun","g2motor","e-flash","theeye","waterproof","e-mecano"],
@@ -929,7 +929,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","e-flash","w2-belier"],
@@ -992,7 +992,7 @@
             "power":17,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","iso","dunium","bonibo","adamantite"],
         "equip":["aucun","lunette1","chargeur1","silencieux1","g2motor","snorkel","e-flash","waterproof"],
@@ -1051,7 +1051,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","g2motor","chenilles","snorkel","belier","e-flash","e-mecano"],
@@ -1391,7 +1391,7 @@
             "power":14,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","iso","adamantite"],
         "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","belier","e-flash"],
@@ -1517,7 +1517,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","g2motor","chenilles","snorkel","belier","e-flash"],
@@ -2127,7 +2127,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","belier","e-flash","e-mecano"],
@@ -2188,7 +2188,7 @@
             "power":15,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","g2motor","chenilles","snorkel","belier","e-flash"],
@@ -2249,7 +2249,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","belier","e-flash","theeye","e-mecano"],
@@ -2320,7 +2320,7 @@
             "power":20,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","arcpoulie","g2motor","snorkel","e-flash","theeye","e-mecano","chenilles"],
@@ -2389,7 +2389,7 @@
             "power":20,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","g2motor","snorkel","belier","e-flash","e-mecano"],
@@ -2450,7 +2450,7 @@
             "power":10,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","g2motor","belier","silencieux1","e-flash","waterproof","e-mecano"],
@@ -2508,7 +2508,7 @@
             "power":30,
             "aoe":"squad",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","iso","dunium","bonibo","adamantite"],
         "equip":["aucun","g2motor","snorkel","e-flash","e-mecano"],
@@ -2569,7 +2569,7 @@
             "power":30,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","iso","dunium","bonibo","adamantite"],
         "equip":["aucun","carrousel1","g2motor","e-flash","waterproof"],
@@ -2823,7 +2823,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","g2motor","chenilles","snorkel","belier","e-flash","e-mecano"],
@@ -2886,7 +2886,7 @@
             "power":18,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","iso","dunium","bonibo","adamantite"],
         "equip":["aucun","lunette1","chargeur1","g2motor","snorkel","e-flash","chenilles"],
@@ -3180,7 +3180,7 @@
             "power":14,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","lunette1","chargeur1","g2motor","snorkel","belier","e-flash","waterproof"],
@@ -3879,7 +3879,7 @@
             "power":14,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","e-flash","w2-belier"],
@@ -4110,7 +4110,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","iso","dunium","bonibo","adamantite"],
         "equip":["aucun","carrousel1","g2motor","snorkel","e-flash"],
@@ -4169,7 +4169,7 @@
             "power":10,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","g2motor","chenilles","snorkel","e-flash","belier","e-mecano"],
@@ -4231,7 +4231,7 @@
             "power":10,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","g2motor","chenilles","snorkel","belier","arbalourde","e-mecano"],
@@ -4291,7 +4291,7 @@
             "power":14,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","chargeur1","g2motor","chenilles","e-flash","waterproof","e-mecano"],
@@ -4355,7 +4355,7 @@
             "power":11,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
         "equip":["aucun","lunette1","chargeur1","g2motor","snorkel","belier","e-flash","e-mecano","chenilles"],
