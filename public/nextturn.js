@@ -422,9 +422,9 @@ function nextTurnEnd() {
                 bat.apLeft = oldAP;
             }
             // production
-            if (bat.tags.includes('prodres') && !batType.skills.includes('upkeep')) {
-                bat.apLeft = bat.apLeft-1;
-            }
+            // if (bat.tags.includes('prodres') && !batType.skills.includes('upkeep')) {
+            //     bat.apLeft = bat.apLeft-1;
+            // }
             // tracking
             if (checkTracking(bat)) {
                 bat.apLeft = bat.apLeft-4;

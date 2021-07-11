@@ -1340,6 +1340,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
+        "compReq":{"log":1,"trans":1},
         "costs":{"Fer":6,"Carbone":1,"Cobalt":1,"Silicium":1},
         "deploy":{},
         "batch":12
