@@ -105,6 +105,9 @@ function landingList() {
                 createStormsLists(true);
             }
             checkUndark();
+            if (zone[0].mapDiff < Math.floor(playerInfos.allTurns/350)+1) {
+                zone[0].mapDiff = Math.floor(playerInfos.allTurns/350)+1;
+            }
             showMap(zone,true);
         }
     }
@@ -307,14 +310,17 @@ function editSonde() {
     // PRESENCE ALIEN
     $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`sondeDanger`,`sonde`)" title="Présence Alien"></select>');
     $('#theZone').empty().append('<option value="">Pr.Alien</option>');
+    let prAMin = Math.floor(playerInfos.allTurns/350)+1;
     let i = 0;
     while (i <= 15) {
-        if (i === playerInfos.sondeDanger) {
-            $('#theZone').append('<option value="'+i+'" selected>PrA '+i+'</option>');
-        } else {
-            $('#theZone').append('<option value="'+i+'">PrA '+i+'</option>');
+        if (i >= prAMin || i === 0 || i === 10) {
+            if (i === playerInfos.sondeDanger) {
+                $('#theZone').append('<option value="'+i+'" selected>PrA '+i+'</option>');
+            } else {
+                $('#theZone').append('<option value="'+i+'">PrA '+i+'</option>');
+            }
         }
-        if (i > 16) {break;}
+        if (i >= 10) {break;}
         i++
     }
     $('#conUnitList').append('<br>');

@@ -1046,7 +1046,7 @@
             "power":15,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"croc",
+            "sound":"bigbite",
             "ammo":["creuseur"]
         },
         "weapon2":{},
