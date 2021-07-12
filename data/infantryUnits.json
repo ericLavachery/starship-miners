@@ -4396,7 +4396,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","mecano","repair","constructeur","routes","infraconst","cyber","fret","noblub","resistfeu","fastempty","dumper","kzin"],
+        "skills":["fouille","fortif","mecano","repair","constructeur","routes","infraconst","cyber","fret","noblub","resistfeu","fastempty","dumper","kzin","reeq"],
         "mecanoCost":5,
         "maxSkill":8,
         "transRes":180,

@@ -1103,10 +1103,10 @@ function eggSpawn(bat,fromEgg) {
     }
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     let eggModTurn = eggTurn+zone[0].mapDiff-3;
-    let eggLife = eggLifeStart+Math.floor(zone[0].mapDiff*eggLifeFactor);
+    let eggLife = eggLifeStart+Math.floor(zone[0].mapDiff*eggLifeFactor)+bat.squadsLeft-6;
     if (bat.type === 'Coque') {
         eggModTurn = eggTurn+zone[0].mapDiff-3;
-        eggLife = coqLifeStart+Math.floor(zone[0].mapDiff*coqLifeFactor);
+        eggLife = coqLifeStart+Math.floor(zone[0].mapDiff*coqLifeFactor)+bat.squadsLeft-6;
     }
     let presAlien = zone[0].mapDiff;
     if (presAlien < 1) {

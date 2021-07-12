@@ -710,7 +710,7 @@
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":4,"Germium":2},
         "killXP":2,
-        "flavText":"Tous asticots peuvent se transformer en moucherons, et ils le font tous ensemble'."
+        "flavText":"Les asticots peuvent se transformer en moucherons, et ils le font tous ensemble."
     },
     {
         "id":40,
@@ -754,7 +754,7 @@
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Larvium":4,"Germium":2},
         "killXP":2,
-        "flavText":"Tous vers peuvent se transformer en lucioles, et ils le font tous ensemble'."
+        "flavText":"Les vers peuvent se transformer en lucioles, et ils le font tous ensemble."
     },
     {
         "id":10,
@@ -765,7 +765,7 @@
         "class":"B",
         "rarity":4,
         "squads":3,
-        "squadSize":3,
+        "squadSize":4,
         "crew":0,
         "hp":220,
         "armor":15,
@@ -780,7 +780,7 @@
             "range":0,
             "noFly":true,
             "isMelee":true,
-            "rof":6,
+            "rof":8,
             "accuracy":14,
             "power":33,
             "aoe":"brochette",

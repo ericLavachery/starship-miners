@@ -538,19 +538,18 @@
         "ap":25,
         "maxSalvo":2,
         "weapon":{
-            "name":"Calibre",
+            "name":"Shotgun",
             "cost":3,
             "range":1,
-            "noBis":false,
+            "noBis":true,
             "kit":true,
-            "noise":2,
-            "rof":4,
-            "accuracy":17,
-            "power":7,
-            "armors":1.1,
+            "rof":6,
+            "accuracy":18,
+            "power":8,
+            "armors":1.2,
             "aoe":"unit",
-            "sound":"calibre_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "sound":"calibre_shotgun",
+            "ammo":["standard","scrap","snake","incendiaire","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
         },
         "weapon2":{
             "name":"Molotov",
