@@ -219,7 +219,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         batHP = squadHP*selectedBatType.squads;
                                         if (selectedBatType.cat === 'buildings' || selectedBatType.cat === 'devices') {
                                             regen = mecanoHP*2;
-                                        } else if (selectedBatType.skills.includes('robot') && !medicBatType.skills.includes('roborepair')) {
+                                        } else if (selectedBatType.skills.includes('robot') && !selectedBatType.skills.includes('roborepair')) {
                                             regen = Math.round(mecanoHP/2.5);
                                         } else {
                                             regen = mecanoHP;
@@ -237,7 +237,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         batHP = squadHP*batType.squads;
                                         if (batType.cat === 'buildings' || batType.cat === 'devices') {
                                             regen = mecanoHP*2;
-                                        } else if (batType.skills.includes('robot') && !medicBatType.skills.includes('roborepair')) {
+                                        } else if (batType.skills.includes('robot') && !selectedBatType.skills.includes('roborepair')) {
                                             regen = Math.round(mecanoHP/2.5);
                                         } else {
                                             regen = mecanoHP;
