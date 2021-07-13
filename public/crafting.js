@@ -20,7 +20,7 @@ function craftWindow() {
     $('#conUnitList').append('<span class="blockTitle"><h1>Crafting</h1></span>');
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
 
-    let craftFactor;
+    let creationNum;
     let craftCostsList;
     let craftCompReqs;
     let craftOK = false;
@@ -31,12 +31,12 @@ function craftWindow() {
     crafting.forEach(function(craft) {
         craftOK = false;
         if (craft.creaNum === undefined) {
-            craftFactor = 50;
+            creationNum = 50;
         } else {
-            craftFactor = craft.creaNum;
+            creationNum = craft.creaNum;
         }
         compReqOK = checkCompReq(craft);
-        costOK = checkCraftCost(craft.id,craftFactor);
+        costOK = checkCraftCost(craft.id,creationNum);
         bldOK = false;
         if ((playerInfos.bldList.includes(craft.bldReq[0]) || craft.bldReq[0] === undefined) && (playerInfos.bldList.includes(craft.bldReq[1]) || craft.bldReq[1] === undefined) && (playerInfos.bldList.includes(craft.bldReq[2]) || craft.bldReq[2] === undefined)) {
             bldOK = true;
@@ -51,12 +51,12 @@ function craftWindow() {
         if ((compReqOK || playerInfos.pseudo === 'Test') && !oldCraft) {
             if (craftOK) {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                $('#conUnitList').append('<span class="craftsList cy klik" title="'+toNiceString(craft.bldReq)+'" onclick="doCraft('+craft.id+','+craftFactor+')">'+craftFactor+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
+                $('#conUnitList').append('<span class="craftsList cy klik" title="'+toNiceString(craft.bldReq)+'" onclick="doCraft('+craft.id+','+creationNum+')">'+creationNum+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
             } else {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-                $('#conUnitList').append('<span class="craftsList gf" title="'+toNiceString(craft.bldReq)+'">'+craftFactor+' '+craft.result+'</span><br>');
+                $('#conUnitList').append('<span class="craftsList gf" title="'+toNiceString(craft.bldReq)+'">'+creationNum+' '+craft.result+'</span><br>');
             }
-            craftCostsList = showCraftCost(craft,craftFactor);
+            craftCostsList = showCraftCost(craft,creationNum);
             $('#conUnitList').append('<span class="craftsList">'+craftCostsList+'</span><br>');
             if (craft.bldReq.length >= 1) {
                 if (bldOK) {
@@ -137,12 +137,12 @@ function checkCraftCost(craftId,number) {
     let dispoRes;
     let craftIndex = crafting.findIndex((obj => obj.id == craftId));
     let craft = crafting[craftIndex];
-    let craftFactor = Math.ceil(number/craft.batch);
-    craftFactor = getCraftFactor(craft,craftFactor);
+    let craftFactor = number/craft.batch;
+    craftFactor = adjCraftFactor(craft,craftFactor);
     Object.entries(craft.cost).map(entry => {
         let key = entry[0];
         let value = entry[1];
-        value = value*craftFactor;
+        Math.ceil(value*craftFactor);
         dispoRes = getDispoRes(key);
         if (dispoRes < value) {
             craftResOK = false;
@@ -154,12 +154,12 @@ function checkCraftCost(craftId,number) {
 function doCraft(craftId,number) {
     let craftIndex = crafting.findIndex((obj => obj.id == craftId));
     let craft = crafting[craftIndex];
-    let craftFactor = Math.ceil(number/craft.batch);
-    craftFactor = getCraftFactor(craft,craftFactor);
+    let craftFactor = number/craft.batch;
+    craftFactor = adjCraftFactor(craft,craftFactor);
     Object.entries(craft.cost).map(entry => {
         let key = entry[0];
         let value = entry[1];
-        value = value*craftFactor;
+        Math.ceil(value*craftFactor);
         resSub(key,value);
     });
     resAdd(craft.result,number);
@@ -169,7 +169,7 @@ function doCraft(craftId,number) {
     craftWindow();
 };
 
-function getCraftFactor(craft,craftFactor) {
+function adjCraftFactor(craft,craftFactor) {
     // INDUSTRIE
     if (playerInfos.comp.ind >= 1 && playerInfos.bldList.includes('Atelier')) {
         let indusLevel = playerInfos.comp.ind;
@@ -178,7 +178,7 @@ function getCraftFactor(craft,craftFactor) {
         } else if (playerInfos.bldList.includes('Chaîne de montage')) {
             indusLevel = indusLevel+1;
         }
-        craftFactor = Math.ceil(craftFactor*25/(25+indusLevel));
+        craftFactor = craftFactor*25/(25+indusLevel);
     }
     // RECYCLAGE
     if (playerInfos.comp.tri >= 1 && playerInfos.bldList.includes('Décharge')) {
@@ -198,7 +198,7 @@ function getCraftFactor(craft,craftFactor) {
                 recupLevel = recupLevel-craft.compReq['tri'];
             }
             if (recupLevel >= 1) {
-                craftFactor = Math.ceil(craftFactor*20/(20+recupLevel));
+                craftFactor = craftFactor*20/(20+recupLevel);
             }
         }
     }
@@ -211,7 +211,7 @@ function getCraftFactor(craft,craftFactor) {
                     compoLevel = compoLevel-craft.compReq['const'];
                 }
                 if (compoLevel >= 1) {
-                    craftFactor = Math.ceil(craftFactor*15/(15+compoLevel));
+                    craftFactor = craftFactor*15/(15+compoLevel);
                 }
             }
         }
@@ -228,12 +228,16 @@ function doEnergyCraft(resName,neededRes,energyCreated) {
 function showCraftCost(craft,number) {
     let craftCostsList = ' ';
     let dispoRes;
-    let craftFactor = Math.ceil(number/craft.batch);
-    craftFactor = getCraftFactor(craft,craftFactor);
+    let craftFactor = number/craft.batch;
+    console.log(craft.result);
+    console.log(craft.cost);
+    console.log(craftFactor);
+    craftFactor = adjCraftFactor(craft,craftFactor);
+    console.log(craftFactor);
     Object.entries(craft.cost).map(entry => {
         let key = entry[0];
         let value = entry[1];
-        value = value*craftFactor;
+        value = Math.ceil(value*craftFactor);
         dispoRes = getDispoRes(key);
         let resColor = 'vert';
         if (playerInfos.mapTurn >= 3) {

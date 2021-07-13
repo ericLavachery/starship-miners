@@ -4182,7 +4182,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","robot","sentinelle","badmecano","hscarpmove","undead","survivor","resistfeu","light","aifouille"],
+        "skills":["fortif","robot","sentinelle","badmecano","hscarpmove","undead","survivor","resistfeu","light","aifouille","roborepair"],
         "mecanoCost":8,
         "fuzz":2,
         "deathFx":"144469__psychedelic-hands__robot-death"

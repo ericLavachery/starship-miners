@@ -1020,9 +1020,19 @@
         "creaNum":15
     },
     {
+        "id":126,
+        "result":"Energie",
+        "cost":{"Végétaux":300},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "bldOut":["Crameur"],
+        "batch":50,
+        "creaNum":15
+    },
+    {
         "id":99,
         "result":"Energie",
-        "cost":{"Tissus":100},
+        "cost":{"Tissus":150},
         "compReq":{},
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
@@ -1062,7 +1072,7 @@
     {
         "id":95,
         "result":"Energie",
-        "cost":{"Soufre":65},
+        "cost":{"Soufre":150},
         "compReq":{},
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
