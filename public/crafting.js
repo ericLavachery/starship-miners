@@ -142,7 +142,7 @@ function checkCraftCost(craftId,number) {
     Object.entries(craft.cost).map(entry => {
         let key = entry[0];
         let value = entry[1];
-        Math.ceil(value*craftFactor);
+        value = Math.ceil(value*craftFactor);
         dispoRes = getDispoRes(key);
         if (dispoRes < value) {
             craftResOK = false;
@@ -159,7 +159,7 @@ function doCraft(craftId,number) {
     Object.entries(craft.cost).map(entry => {
         let key = entry[0];
         let value = entry[1];
-        Math.ceil(value*craftFactor);
+        value = Math.ceil(value*craftFactor);
         resSub(key,value);
     });
     resAdd(craft.result,number);
