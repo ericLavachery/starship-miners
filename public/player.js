@@ -1277,6 +1277,8 @@ function missionResults(onlyLanders) {
             let resCol = '';
             if (playerInfos.resFlags.includes(res.name)) {
                 resCol = ' jaune';
+            } else if (res.cat === 'alien') {
+                resCol = ' gff';
             }
             let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
             // if (sonde.costs[key] != undefined) {

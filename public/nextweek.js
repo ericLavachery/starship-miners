@@ -158,7 +158,7 @@ function eventBouffe(time,sim) {
         recycleFactor = recycleFactor+4;
     }
     let energyFactor = playerInfos.comp.tri+8;
-    bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/687);
+    bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/291);
     bouffeCost['Eau'] = Math.round(toutMesCitoyens*time*2/274/recycleFactor*8);
     bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time*2/936/recycleFactor*8);
     bouffeCost['Energie'] = Math.round(toutMesCitoyens*time*2/1408/energyFactor*8);

@@ -336,11 +336,16 @@ function stopSonde() {
     commandes();
 };
 
-function goSonde() {
+function goSonde(impacteur) {
+    if (impacteur) {
+        impact = true;
+    } else {
+        impact = false;
+    }
     conOut();
     batUnselect();
     playerInfos.undarkOnce = [];
-    removeSonde();
+    removeSonde(impacteur);
     saveCurrentZoneAs(0);
     modeSonde = true;
     playerInfos.sondeMaps = 0;
@@ -360,16 +365,17 @@ function hasUnit(unitName) {
     return youHaveIt;
 }
 
-function removeSonde() {
+function removeSonde(impacteur) {
     let sondeOut = false;
     deadBatsList = [];
-    bataillons.forEach(function(bat) {
-        if (bat.type === 'Impacteur' && !sondeOut) {
-            sondeOut = true;
-            deadBatsList.push(bat.id);
-        }
-    });
-    if (!sondeOut) {
+    if (impacteur) {
+        bataillons.forEach(function(bat) {
+            if (bat.type === 'Impacteur' && !sondeOut) {
+                sondeOut = true;
+                deadBatsList.push(bat.id);
+            }
+        });
+    } else {
         bataillons.forEach(function(bat) {
             if (bat.type === 'Sonde' && !sondeOut) {
                 sondeOut = true;

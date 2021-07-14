@@ -28,6 +28,8 @@ function voirReserve() {
         let resCol = '';
         if (playerInfos.resFlags.includes(res.name)) {
             resCol = ' jaune';
+        } else if (res.cat === 'alien') {
+            resCol = ' gff';
         }
         if (dispoRes >= 1) {
             if (playerInfos.onShip && (!inSoute || souteTab != 'rez')) {

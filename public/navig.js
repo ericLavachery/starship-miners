@@ -87,18 +87,28 @@ function commandes() {
     // $('#commandz').append('<br>');
     if (activeTurn == 'player') {
         if (!modeSonde) {
-            if (hasUnit('Sonde') || hasUnit('Impacteur')) {
+            let hasSonde = hasUnit('Sonde');
+            let hasImpacteur = hasUnit('Impacteur');
+            if (hasSonde || hasImpacteur) {
                 $('#commandz').append('<hr>');
                 $('#commandz').append('<button type="button" title="Régler une sonde (destination)" class="boutonBrun iconButtons" onclick="editSonde()" onmousedown="clicSound()"><i class="fas fa-keyboard"></i></button>');
                 if (playerInfos.sondePlanet > 0 && playerInfos.sondeDanger > 0) {
                     let planetName = getPlanetNameById(playerInfos.sondePlanet);
-                    $('#commandz').append('<button type="button" title="Envoyer une sonde (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+')" class="boutonBrun iconButtons" onclick="goSonde()" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
+                    if (hasSonde) {
+                        $('#commandz').append('<button type="button" title="Envoyer une sonde (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+')" class="boutonBrun iconButtons" onclick="goSonde(false)" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
+                    }
+                    if (hasImpacteur) {
+                        $('#commandz').append('<button type="button" title="Envoyer un impacteur (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+')" class="boutonNoir iconButtons" onclick="goSonde(true)" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
+                    }
                 }
             }
         } else {
             $('#commandz').append('<hr>');
             $('#commandz').append('<button type="button" title="Poser la sonde" class="boutonRouge iconButtons" onclick="stopSonde()" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
             let maxMaps = (playerInfos.comp.vsp+2)*maxMapsParDet;
+            if (impact) {
+                maxMaps = Math.ceil((playerInfos.comp.vsp+0.35)*maxMapsParDet/1.2);
+            }
             let nextMapNumber = playerInfos.sondeMaps+1;
             if (playerInfos.sondeMaps < maxMaps) {
                 $('#commandz').append('<button type="button" title="Voir une autre zone ('+nextMapNumber+'/'+maxMaps+')" class="boutonBrun iconButtons"><i class="fas fa-map" onclick="generateNewMap()" onmousedown="clicSound()"></i></button>');
