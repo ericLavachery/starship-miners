@@ -526,6 +526,10 @@ function checkRuinsRes(tile) {
                     }
                 }
                 thatResChance = Math.ceil(thatResChance*(playerInfos.comp.tri+4)/4);
+                if (res.planets != undefined) {
+                    let planetName = zone[0].planet;
+                    thatResChance = Math.ceil(thatResChance*res.planets[planetName]);
+                }
                 console.log(res.name+' '+thatResChance);
                 if (rand.rand(1,1000) <= thatResChance) {
                     thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor*1.5*rand.rand(4,16))+rand.rand(0,9);

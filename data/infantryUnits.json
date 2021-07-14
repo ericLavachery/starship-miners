@@ -682,8 +682,10 @@
             "dca":1,
             "power":16,
             "aoe":"brochette",
-            "sound":"plasma_canon",
-            "ammo":["cn-plasma","cn-plastanium","cn-uridium","cn-nanite"]
+            "sound":"plasma_mcanon",
+            "ammo":["cn-plasma","cn-plastanium","cn-uridium","cn-nanite"],
+            "maxAmmo":14,
+            "ravitBld":"Atelier"
         },
         "equip":["aucun","e-flash","e-camo","kit-guetteur","e-ranger","e-jetpack","chargeur1","silencieux1","camkit"],
         "log3eq":"e-flash",
