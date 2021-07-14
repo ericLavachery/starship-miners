@@ -611,6 +611,12 @@ function showZonePreview() {
         showInfo = showInfo.replace(/{/g,'');
         showInfo = showInfo.replace(/}/g,'');
     }
+    let rain = isRaining(zonePrev);
+    if (rain) {
+        showInfo = showInfo+', Pluie=Oui';
+    }  else {
+        showInfo = showInfo+', Pluie=Non';
+    }
     $('#zoneDetail').append('<span class="ListRes">'+showInfo+'<br></span><br>');
     $('#zoneDetail').append('<span class="ListRes vert">Ressources présentes<br></span><br>');
     if (playerInfos.comp.det >= 3) {
@@ -621,3 +627,13 @@ function showZonePreview() {
         $('#zoneDetail').append('<span class="ListRes">Compétence de détection insuffisante...<br></span><br>');
     }
 };
+
+function isRaining(myZone) {
+    let rain = false;
+    if (myZone[0].snd === 'rainforest' || myZone[0].snd === 'thunderstart' || myZone[0].snd === 'swamp' || myZone[0].snd === 'uhuwind') {
+        rain = true;
+    } else if (myZone[0].snd === 'monsoon' || myZone[0].snd === 'thunderfull') {
+        rain = true;
+    }
+    return rain;
+}

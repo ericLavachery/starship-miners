@@ -1545,6 +1545,7 @@ function zoneReport(zone,quiet) {
     if (percS < 30) {
         zone[0].sKind = 'larve';
     }
+    let rain = false;
     let sndEnsolBonus = 100;
     if (zone[0].snd === undefined) {
         if (zone[0].planet === 'Sarak') {
@@ -1559,12 +1560,15 @@ function zoneReport(zone,quiet) {
             if (percW+percS >= 40) {
                 zone[0].snd = 'swamp';
                 sndEnsolBonus = 50;
+                rain = true;
             } else if (percF >= 40) {
                 zone[0].snd = 'uhuwind';
                 sndEnsolBonus = 100;
+                rain = true;
             } else {
                 zone[0].snd = 'monsoon';
                 sndEnsolBonus = 25;
+                rain = true;
             }
         } else if (zone[0].planet === 'Kzin') {
             if (rand.rand(1,2) === 1) {
@@ -1595,6 +1599,7 @@ function zoneReport(zone,quiet) {
                 } else {
                     zone[0].snd = 'rainforest';
                     sndEnsolBonus = 100;
+                    rain = true;
                 }
             } else if (percW+percS >= 50) {
                 zone[0].snd = 'bogs';
@@ -1631,9 +1636,11 @@ function zoneReport(zone,quiet) {
                     if (rand.rand(1,2) === 1) {
                         zone[0].snd = 'thunderstart';
                         sndEnsolBonus = 35;
+                        rain = true;
                     } else {
                         zone[0].snd = 'thunderfull';
                         sndEnsolBonus = 20;
+                        rain = true;
                     }
                 }
             }
@@ -1648,10 +1655,15 @@ function zoneReport(zone,quiet) {
             zone[0].ensol = 40+rand.rand(0,10);
         }
         if (playerInfos.comp.det >= 2 && !quiet) {
-            warning('Ensoleillement',zone[0].ensol+'<br>',true);
+            warning('Ensoleillement',zone[0].ensol,true);
         }
     }
     if (!quiet) {
+        if (rain) {
+            warning('Pluie','Oui<br>',true);
+        } else {
+            warning('Pluie','Non<br>',true);
+        }
         if (playerInfos.comp.ca < 3) {
             warning('Montagnes',percM+'%',true);
             warning('Collines',percH+'%',true);

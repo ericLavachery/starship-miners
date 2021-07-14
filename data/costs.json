@@ -2300,7 +2300,7 @@
         "id":250,
         "name":"Impacteur",
         "bldReq":["Soute","Aérodocks"],
-        "costs":{"Scrap":300,"Carbone":100,"Titane":65,"Aluminium":150,"Cobalt":50,"Platine":25,"Nickel":25,"Cuivre":50,"Silicium":50,"Hélium":40,"Bore":15,"Electros":40,"Batteries":30,"Plutonium":30,"Hydrogène":15},
+        "costs":{"Scrap":250,"Carbone":75,"Titane":50,"Aluminium":125,"Cobalt":50,"Platine":25,"Nickel":25,"Cuivre":50,"Silicium":35,"Hélium":35,"Bore":15,"Electros":40,"Batteries":20,"Plutonium":30,"Hydrogène":15},
         "fabTime":100
     },
     {

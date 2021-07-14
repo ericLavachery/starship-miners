@@ -3047,7 +3047,7 @@
     {
         "id":250,
         "name":"Impacteur",
-        "pic":"sonde",
+        "pic":"impacteur",
         "cat":"buildings",
         "kind":"zero-vm",
         "sort":5,

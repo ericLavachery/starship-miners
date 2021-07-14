@@ -269,20 +269,28 @@ function attack(melee) {
     // Dans l'eau
     let terrain = getTerrain(targetBat);
     let tile = getTile(targetBat);
-    if (terrain.name === 'W' || terrain.name === 'R' || terrain.name === 'S') {
-        if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov') || selectedWeap.ammo.includes('laser') || selectedWeap.ammo.includes('gaz')) {
+    let onGround = true;
+    if (targetBatType.skills.includes('fly') || tile.rd) {
+        onGround = false;
+    }
+    let wetness = getWetness(terrain,onGround);
+    if (wetness >= 1) {
+        if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov')) {
             if (!selectedWeap.ammo.includes('pyratol')) {
                 selectedWeap.power = Math.round(selectedWeap.power*0.75);
-                if (!targetBatType.skills.includes('fly') && !selectedWeap.ammo.includes('gaz')) {
-                    if (terrain.name === 'W' || terrain.name === 'R') {
-                        selectedWeap.aoe = 'unit';
-                    }
+                if (wetness >= 2) {
+                    selectedWeap.aoe = 'unit';
                 }
             }
         }
-        if (!targetBatType.skills.includes('fly') && !targetBatType.skills.includes('resistelec') && !targetBat.tags.includes('resistelec') && (!targetBatType.skills.includes('hover') || targetBatType.cat === 'aliens')) {
+        if (selectedWeap.ammo.includes('laser') || selectedWeap.ammo.includes('gaz')) {
+            if (wetness >= 3) {
+                selectedWeap.power = Math.round(selectedWeap.power*0.75);
+            }
+        }
+        if (!targetBatType.skills.includes('resistelec') && !targetBat.tags.includes('resistelec') && (!targetBatType.skills.includes('hover') || targetBatType.cat === 'aliens')) {
             if (selectedWeap.ammo.includes('taser') || selectedWeap.ammo.includes('electric')) {
-                if ((terrain.name === 'W' || terrain.name === 'R') && !tile.rd) {
+                if (wetness >= 2) {
                     selectedWeap.power = Math.round(selectedWeap.power*1.5);
                     if (selectedWeap.aoe == 'unit') {
                         selectedWeap.aoe = 'brochette';
@@ -291,8 +299,8 @@ function attack(melee) {
                     } else {
                         selectedWeap.aoe = 'bat';
                     }
-                } else if (terrain.name === 'S' && !tile.rd && targetBatType.cat === 'aliens') {
-                    targetWeap.power = Math.round(selectedWeap.power*1.3);
+                } else if (wetness === 1 && targetBatType.cat === 'aliens') {
+                    selectedWeap.power = Math.round(selectedWeap.power*1.3);
                 }
             }
         }
@@ -1129,20 +1137,28 @@ function defense(melee) {
     // Dans l'eau
     let terrain = getTerrain(selectedBat);
     let tile = getTile(selectedBat);
-    if (terrain.name === 'W' || terrain.name === 'R' || terrain.name === 'S') {
-        if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov') || targetWeap.ammo.includes('laser') || targetWeap.ammo.includes('gaz')) {
+    let onGround = true;
+    if (selectedBatType.skills.includes('fly') || tile.rd) {
+        onGround = false;
+    }
+    let wetness = getWetness(terrain,onGround);
+    if (wetness >= 1) {
+        if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov')) {
             if (!targetWeap.ammo.includes('pyratol')) {
                 targetWeap.power = Math.round(targetWeap.power*0.75);
-                if (!selectedBatType.skills.includes('fly') && !targetWeap.ammo.includes('gaz')) {
-                    if (terrain.name === 'W' || terrain.name === 'R') {
-                        targetWeap.aoe = 'unit';
-                    }
+                if (wetness >= 2) {
+                    targetWeap.aoe = 'unit';
                 }
             }
         }
-        if (!selectedBatType.skills.includes('fly') && !selectedBatType.skills.includes('resistelec') && !selectedBat.tags.includes('resistelec') && (!selectedBatType.skills.includes('hover') || selectedBatType.cat === 'aliens')) {
+        if (targetWeap.ammo.includes('laser') || targetWeap.ammo.includes('gaz')) {
+            if (wetness >= 3) {
+                targetWeap.power = Math.round(targetWeap.power*0.75);
+            }
+        }
+        if (!selectedBatType.skills.includes('resistelec') && !selectedBat.tags.includes('resistelec') && (!selectedBatType.skills.includes('hover') || selectedBatType.cat === 'aliens')) {
             if (targetWeap.ammo.includes('taser') || targetWeap.ammo.includes('electric')) {
-                if ((terrain.name === 'W' || terrain.name === 'R') && !tile.rd) {
+                if (wetness >= 2) {
                     targetWeap.power = Math.round(targetWeap.power*1.5);
                     if (targetWeap.aoe == 'unit') {
                         targetWeap.aoe = 'brochette';
@@ -1151,7 +1167,7 @@ function defense(melee) {
                     } else {
                         targetWeap.aoe = 'bat';
                     }
-                } else if (terrain.name === 'S' && !tile.rd && selectedBatType.cat === 'aliens') {
+                } else if (wetness === 1 && selectedBatType.cat === 'aliens') {
                     targetWeap.power = Math.round(targetWeap.power*1.3);
                 }
             }

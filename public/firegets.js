@@ -1689,3 +1689,30 @@ function checkDisease(giveBatType,damage,haveBat,haveBatType,terrain) {
     }
     return getIt;
 };
+
+function getWetness(terrain,onGround) {
+    let wetness = 0;
+    if (onGround) {
+        if (terrain.name === 'W' || terrain.name === 'R') {
+            wetness = wetness+3;
+        } else {
+            if (zone[0].snd === 'rainforest' || zone[0].snd === 'thunderstart' || zone[0].snd === 'swamp' || zone[0].snd === 'uhuwind') {
+                wetness = wetness+1;
+                if (terrain.name === 'S') {
+                    wetness = wetness+1;
+                }
+            } else if (zone[0].snd === 'monsoon' || zone[0].snd === 'thunderfull') {
+                wetness = wetness+2;
+            } else if (terrain.name === 'S') {
+                wetness = wetness+1;
+            }
+        }
+    } else {
+        if (zone[0].snd === 'rainforest' || zone[0].snd === 'thunderstart' || zone[0].snd === 'swamp' || zone[0].snd === 'uhuwind') {
+            wetness = wetness+1;
+        } else if (zone[0].snd === 'monsoon' || zone[0].snd === 'thunderfull') {
+            wetness = wetness+2;
+        }
+    }
+    return wetness;
+}
