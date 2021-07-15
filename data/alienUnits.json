@@ -944,7 +944,8 @@
             "isMelee":true,
             "rof":10,
             "accuracy":12,
-            "power":3,
+            "power":4,
+            "armors":1.5,
             "aoe":"unit",
             "sound":"mouche",
             "ammo":["poison"]
@@ -1301,7 +1302,8 @@
             "isMelee":true,
             "rof":15,
             "accuracy":10,
-            "power":3,
+            "power":4,
+            "armors":1.5,
             "aoe":"unit",
             "sound":"suck1",
             "ammo":["creuseur"]

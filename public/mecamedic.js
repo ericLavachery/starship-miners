@@ -205,7 +205,11 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     xpGain = xpGain+0.15;
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">dégâts réparés<br></span>');
                                     if (bat.loc === "zone") {
-                                        showBataillon(bat);
+                                        if (bat.id === selectedBat.id) {
+                                            showBataillon(selectedBat);
+                                        } else {
+                                            showBataillon(bat);
+                                        }
                                     }
                                     bat.apLeft = bat.apLeft-medicPatientAP;
                                     if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
@@ -261,7 +265,11 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">dégâts réparés<br></span>');
                                     }
                                     if (bat.loc === "zone") {
-                                        showBataillon(bat);
+                                        if (bat.id === selectedBat.id) {
+                                            showBataillon(selectedBat);
+                                        } else {
+                                            showBataillon(bat);
+                                        }
                                     }
                                     bat.apLeft = bat.apLeft-medicPatientAP;
                                     if (batType.skills.includes('fly') && batType.cat === 'vehicles') {

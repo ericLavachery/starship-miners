@@ -523,7 +523,7 @@
     {
         "id":197,
         "name":"Garage",
-        "pic":"hangar",
+        "pic":"garage",
         "cat":"buildings",
         "kind":"zero-production",
         "sort":5,
@@ -1496,7 +1496,7 @@
     {
         "id":203,
         "name":"Décharge",
-        "pic":"hangar3",
+        "pic":"decharge",
         "cat":"buildings",
         "kind":"zero-recyclage",
         "sort":5,

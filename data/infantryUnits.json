@@ -4421,6 +4421,17 @@
         "ap":15,
         "maxSalvo":1,
         "weapon":{
+            "name":"Fusil laser (sa)",
+            "cost":3,
+            "range":2,
+            "rof":16,
+            "accuracy":30,
+            "power":7,
+            "aoe":"unit",
+            "sound":"laser_fusil_x2",
+            "ammo":["laser","laser-g2"]
+        },
+        "weapon2":{
             "name":"Fusil laser",
             "cost":3,
             "range":2,
@@ -4430,17 +4441,6 @@
             "power":7,
             "aoe":"unit",
             "sound":"laser_fusil",
-            "ammo":["laser","laser-g2"]
-        },
-        "weapon2":{
-            "name":"Fusil laser (sa)",
-            "cost":3,
-            "range":2,
-            "rof":16,
-            "accuracy":30,
-            "power":7,
-            "aoe":"unit",
-            "sound":"laser_fusil_x2",
             "ammo":["laser","laser-g2"]
         },
         "protection":["aucune"],
