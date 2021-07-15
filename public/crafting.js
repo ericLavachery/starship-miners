@@ -48,10 +48,14 @@ function craftWindow() {
         }
         oldCraft = checkOldCraft(craft);
         let iHave = getDispoRes(craft.result);
+        let craftCol = 'cy';
+        if (craft.deg) {
+            craftCol = 'sky';
+        }
         if ((compReqOK || playerInfos.pseudo === 'Test') && !oldCraft) {
             if (craftOK) {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                $('#conUnitList').append('<span class="craftsList cy klik" title="'+toNiceString(craft.bldReq)+'" onclick="doCraft('+craft.id+','+creationNum+')">'+creationNum+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
+                $('#conUnitList').append('<span class="craftsList '+craftCol+' klik" title="'+toNiceString(craft.bldReq)+'" onclick="doCraft('+craft.id+','+creationNum+')">'+creationNum+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
             } else {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                 $('#conUnitList').append('<span class="craftsList gf" title="'+toNiceString(craft.bldReq)+'">'+creationNum+' '+craft.result+'</span><br>');
@@ -275,47 +279,45 @@ function geoProd(bat,batType) {
     console.log(batType.name);
     let tile = getTileById(bat.tileId);
     let upkeepPaid = true;
-    if (tile.rs != undefined) {
-        if (tile.rs.Magma >= 1) {
-            if (batType.upkeep != undefined) {
-                Object.entries(batType.upkeep).map(entry => {
-                    let key = entry[0];
-                    let value = entry[1];
-                    let dispoRes = getDispoRes(key);
-                    if (dispoRes < value) {
-                        upkeepPaid = false;
-                    }
-                });
-                if (upkeepPaid) {
-                    Object.entries(batType.upkeep).map(entry => {
-                        let key = entry[0];
-                        let value = entry[1];
-                        resSub(key,value);
-                        console.log('upkeep = '+key+':'+value);
-                    });
-                } else {
-                    upkeepNotPaid(bat,batType);
-                }
+    if (batType.upkeep != undefined) {
+        Object.entries(batType.upkeep).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            let dispoRes = getDispoRes(key);
+            if (dispoRes < value) {
+                upkeepPaid = false;
             }
-            if (upkeepPaid) {
-                let energyProd = Math.ceil(tile.rs.Magma/3);
-                energyProd = energyCreation(energyProd);
-                // resAdd('Energie',energyProd);
-                if (playerInfos.onShip) {
-                    resAdd('Energie',energyProd);
-                } else {
-                    resAddToBld('Energie',energyProd,bat,batType);
-                }
-                if (!playerInfos.onShip) {
-                    if (minedThisTurn['Energie'] === undefined) {
-                        minedThisTurn['Energie'] = energyProd;
-                    } else {
-                        minedThisTurn['Energie'] = minedThisTurn['Energie']+energyProd;
-                    }
-                }
-                console.log('prod = Energie:'+energyProd);
+        });
+        if (upkeepPaid) {
+            Object.entries(batType.upkeep).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                resSub(key,value);
+                console.log('upkeep = '+key+':'+value);
+            });
+        } else {
+            upkeepNotPaid(bat,batType);
+        }
+    }
+    if (upkeepPaid) {
+        let magmaHere = 0;
+        if (tile.rs != undefined) {
+            if (tile.rs.Magma >= 1) {
+                magmaHere = tile.rs.Magma;
             }
         }
+        let energyProd = magmaHere+40;
+        energyProd = energyCreation(energyProd);
+        energyProd = Math.ceil(energyProd/100);
+        resAddToBld('Energons',energyProd,bat,batType);
+        if (!playerInfos.onShip) {
+            if (minedThisTurn['Energons'] === undefined) {
+                minedThisTurn['Energons'] = energyProd;
+            } else {
+                minedThisTurn['Energons'] = minedThisTurn['Energons']+energyProd;
+            }
+        }
+        console.log('prod = Energons:'+energyProd);
     }
 };
 

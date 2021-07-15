@@ -2145,11 +2145,11 @@
     },
     {
         "id":209,
-        "name":"Centrale géothermique",
+        "name":"Sonde géothermique",
         "bldEquiv":["Générateur","Centrale SMR"],
         "upkeep":{"Eau":5},
-        "costs":{"Compo1":260,"Compo2":190,"Compo3":190,"Eau":3000,"Huile":500,"Nickel":500,"Cobalt":750,"Cuivre":600,"Argon":600,"Electros":200,"Batteries":450},
-        "fabTime":100
+        "costs":{"Compo1":260,"Compo2":40,"Eau":75,"Hydrogène":15,"Oxygène":15,"Fer":35,"Tungstène":35,"Nickel":20,"Cuivre":100,"Azote":50,"Electros":25,"Batteries":150},
+        "fabTime":65
     },
     {
         "id":211,

@@ -217,7 +217,8 @@
         "compReq":{},
         "bldReq":[],
         "batch":1,
-        "creaNum":20
+        "creaNum":20,
+        "deg":true
     },
     {
         "id":92,
@@ -226,7 +227,8 @@
         "compReq":{},
         "bldReq":[],
         "batch":1,
-        "creaNum":20
+        "creaNum":20,
+        "deg":true
     },
     {
         "id":57,
@@ -664,7 +666,8 @@
         "compReq":{"mat":1,"const":1},
         "bldReq":["Atelier"],
         "batch":3,
-        "creaNum":20
+        "creaNum":20,
+        "deg":true
     },
     {
         "id":81,
@@ -672,7 +675,8 @@
         "cost":{"Fer":2,"Carbone":2,"Végétaux":2,"Energie":1},
         "compReq":{"mat":2,"const":2,"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":4
+        "batch":4,
+        "deg":true
     },
     {
         "id":82,
@@ -681,7 +685,8 @@
         "compReq":{"tri":1},
         "bldReq":["Décharge","Atelier"],
         "batch":1,
-        "creaNum":20
+        "creaNum":20,
+        "deg":true
     },
     {
         "id":83,
@@ -690,7 +695,8 @@
         "compReq":{"tri":1,"const":1},
         "bldReq":["Décharge","Atelier"],
         "batch":2,
-        "creaNum":20
+        "creaNum":20,
+        "deg":true
     },
     {
         "id":84,
@@ -698,7 +704,8 @@
         "cost":{"Compo3":4,"Energie":2},
         "compReq":{"tri":2,"const":1,"ind":1},
         "bldReq":["Décharge","Chaîne de montage"],
-        "batch":3
+        "batch":3,
+        "deg":true
     },
     {
         "id":63,
@@ -706,7 +713,8 @@
         "cost":{"Bugium":3,"Swarmine":2,"Larvium":1,"Aranium":1,"Energie":2},
         "compReq":{"ca":1,"ind":3,"tri":1},
         "bldReq":["Recyclab"],
-        "batch":7
+        "batch":7,
+        "deg":true
     },
     {
         "id":34,
@@ -714,7 +722,7 @@
         "cost":{"Wingium":5,"Bugium":15,"Energie":2},
         "compReq":{"tri":2,"ca":2,"mat":1},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":108,
@@ -723,7 +731,8 @@
         "compReq":{},
         "bldReq":[],
         "batch":5,
-        "creaNum":20
+        "creaNum":20,
+        "deg":true
     },
     {
         "id":35,
@@ -731,7 +740,7 @@
         "cost":{"Mephitis":5,"Chlore":15,"Energie":2},
         "compReq":{"tri":2,"ca":1},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":36,
@@ -739,7 +748,7 @@
         "cost":{"Mendium":10,"Oxygène":10},
         "compReq":{"tri":2,"ca":2},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":100,
@@ -747,7 +756,7 @@
         "cost":{"Larvium":10,"Creatite":5,"Energie":5},
         "compReq":{"tri":2,"ca":1},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":37,
@@ -755,7 +764,7 @@
         "cost":{"Blendium":10,"Hélium":5,"Azote":5,"Energie":2},
         "compReq":{"tri":2,"ca":1,"mat":1},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":38,
@@ -763,7 +772,7 @@
         "cost":{"Bugium":15,"Azote":5,"Energie":1},
         "compReq":{"tri":1,"ca":1},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":53,
@@ -771,7 +780,7 @@
         "cost":{"Slime":5,"Végétaux":25,"Energie":2},
         "compReq":{"ca":3},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":10
     },
     {
         "id":55,
@@ -796,7 +805,7 @@
         "cost":{"Larvium":10,"Végétaux":15,"Energie":1},
         "compReq":{"tri":1,"ca":2},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":88,
@@ -828,7 +837,8 @@
         "cost":{"Plastanium":1},
         "compReq":{"energ":1},
         "bldReq":["Laboratoire"],
-        "batch":3
+        "batch":3,
+        "deg":true
     },
     {
         "id":39,
@@ -836,7 +846,7 @@
         "cost":{"Octiron":5,"Creatite":15,"Energie":5},
         "compReq":{"tri":3,"ca":1},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":40,
@@ -844,7 +854,7 @@
         "cost":{"Germium":15,"Creatite":10,"Energie":5},
         "compReq":{"tri":3,"ca":3,"mat":1},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":110,
@@ -860,7 +870,7 @@
         "cost":{"Aranium":15,"Chlore":5,"Energie":2},
         "compReq":{"tri":3,"ca":2},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":42,
@@ -868,7 +878,7 @@
         "cost":{"Swarmine":15,"Azote":5,"Energie":1},
         "compReq":{"tri":1,"ca":1},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":43,
@@ -885,15 +895,18 @@
         "compReq":{},
         "bldReq":[],
         "compOut":{"energ":1},
-        "batch":2
+        "bldOut":["Laboratoire"],
+        "batch":2,
+        "deg":true
     },
     {
         "id":101,
         "result":"Plutonium",
         "cost":{"Uranium":2},
         "compReq":{"energ":1},
-        "bldReq":[],
-        "batch":2
+        "bldReq":["Laboratoire"],
+        "batch":2,
+        "deg":true
     },
     {
         "id":102,
@@ -901,7 +914,8 @@
         "cost":{"Timonium":1},
         "compReq":{"energ":2},
         "bldReq":["Laboratoire"],
-        "batch":2
+        "batch":2,
+        "deg":true
     },
     {
         "id":103,
@@ -909,7 +923,8 @@
         "cost":{"Uridium":1},
         "compReq":{"energ":2},
         "bldReq":["Centre de recherches"],
-        "batch":3
+        "batch":3,
+        "deg":true
     },
     {
         "id":44,
@@ -917,12 +932,12 @@
         "cost":{"Slime":10,"Chlore":10,"Energie":3},
         "compReq":{"tri":1,"ca":2},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":45,
         "result":"Pyratol",
-        "cost":{"Pyrus":10,"Bossium":5,"Energie":2},
+        "cost":{"Pyrus":10,"Bossium":1,"Energie":2},
         "compReq":{"tri":4,"ca":3},
         "bldReq":["Recyclab"],
         "batch":10
@@ -941,7 +956,8 @@
         "cost":{"Pyrus":5,"Oxygène":10},
         "compReq":{"tri":1,"ca":1},
         "bldReq":["Recyclab"],
-        "batch":10
+        "batch":15,
+        "deg":true
     },
     {
         "id":48,
@@ -949,7 +965,7 @@
         "cost":{"Wingium":10,"Bossium":5,"Energie":5},
         "compReq":{"tri":4,"ca":3,"mat":2},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":49,
@@ -957,7 +973,7 @@
         "cost":{"Swarmine":15,"Hélium":5,"Energie":10},
         "compReq":{"tri":3,"ca":2,"mat":1},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":50,
@@ -973,7 +989,8 @@
         "cost":{"Uridium":1},
         "compReq":{"energ":2},
         "bldReq":["Centre de recherches"],
-        "batch":2
+        "batch":2,
+        "deg":true
     },
     {
         "id":51,
@@ -981,7 +998,7 @@
         "cost":{"Mendium":10,"Chlore":10,"Energie":3},
         "compReq":{"tri":2,"ca":3},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":15
     },
     {
         "id":5,
