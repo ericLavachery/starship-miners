@@ -1299,6 +1299,12 @@ function weaponAdj(weapon,bat,wn) {
     let ammoIndex = ammoTypes.findIndex((obj => obj.name == myAmmo));
     let ammo = ammoTypes[ammoIndex];
     thisWeapon.ammo = myAmmo;
+    if (thisWeapon.ammo === 'lame-taser') {
+        thisWeapon.sound = 'electricity';
+    }
+    if (thisWeapon.ammo === 'lame-plasma') {
+        thisWeapon.sound = 'plasblade';
+    }
     if (thisWeapon.range === 0 && ammo.range > 1) {
         thisWeapon.range = 1;
     } else {

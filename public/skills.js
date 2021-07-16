@@ -300,9 +300,17 @@ function goDrug(apCost,drugName) {
                 console.log('starka bonus');
             }
             // kirin instant bonus
-            if (drug.name === 'kirin' && playerInfos.comp.med >= 3) {
+            if (drug.name === 'kirin' && playerInfos.comp.med >= 2) {
                 selectedBat.damage = 0;
-                console.log('kirin bonus');
+                if (playerInfos.comp.med >= 3) {
+                    let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;
+                    if (lostSquads >= 2) {
+                        selectedBat.squadsLeft = selectedBat.squadsLeft+2;
+                    } else if (lostSquads === 1) {
+                        selectedBat.squadsLeft = selectedBat.squadsLeft+1;
+                    }
+                }
+                console.log('kirin bonus med');
             }
             // nitro instant bonus
             if (drug.name === 'nitro') {

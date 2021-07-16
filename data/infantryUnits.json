@@ -3346,7 +3346,7 @@
             "accuracy":30,
             "power":20,
             "aoe":"bat",
-            "sound":"bfg",
+            "sound":"bfg2",
             "ammo":["bfg","bfg-g2"],
             "maxAmmo":8,
             "ravitBld":"Générateur"
