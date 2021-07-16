@@ -618,7 +618,9 @@ function showZonePreview() {
         showInfo = showInfo+', Pluie=Non';
     }
     if (playerInfos.comp.ca >= 2) {
-        if (zonePrev[0].seed === 2) {
+        if (zonePrev[0].planet === 'Gehenna') {
+            showInfo = showInfo+', Eau=Poison';
+        } else if (zonePrev[0].seed === 2) {
             if (zonePrev[0].gKind === 'spider' || zonePrev[0].pKind === 'spider' || zonePrev[0].sKind === 'spider') {
                 showInfo = showInfo+', Eau=Poison';
             } else {

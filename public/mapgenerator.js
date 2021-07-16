@@ -1695,7 +1695,9 @@ function zoneReport(zone,quiet) {
             warning('Pluie','Non',true);
         }
         if (playerInfos.comp.ca >= 2) {
-            if (zone[0].seed === 2) {
+            if (zone[0].planet === 'Gehenna') {
+                warning('Eau','Empoisonnée<br>',true);
+            } else if (zone[0].seed === 2) {
                 if (zone[0].gKind === 'spider' || zone[0].pKind === 'spider' || zone[0].sKind === 'spider') {
                     warning('Eau','Empoisonnée<br>',true);
                 } else {
