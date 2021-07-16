@@ -617,6 +617,17 @@ function showZonePreview() {
     }  else {
         showInfo = showInfo+', Pluie=Non';
     }
+    if (playerInfos.comp.ca >= 2) {
+        if (zonePrev[0].seed === 2) {
+            if (zonePrev[0].gKind === 'spider' || zonePrev[0].pKind === 'spider' || zonePrev[0].sKind === 'spider') {
+                showInfo = showInfo+', Eau=Poison';
+            } else {
+                showInfo = showInfo+', Eau=OK';
+            }
+        } else {
+            showInfo = showInfo+', Eau=OK';
+        }
+    }
     $('#zoneDetail').append('<span class="ListRes">'+showInfo+'<br></span><br>');
     $('#zoneDetail').append('<span class="ListRes vert">Ressources présentes<br></span><br>');
     if (playerInfos.comp.det >= 3) {

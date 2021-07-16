@@ -698,6 +698,15 @@ function showTileInfos(tileId) {
                     // console.log(key,value);
                 });
             }
+            if (zone[0].seed === 2) {
+                if (zone[0].gKind === 'spider' || zone[0].pKind === 'spider' || zone[0].sKind === 'spider') {
+                    if (terrain.name === 'W' || terrain.name === 'S') {
+                        if (playerInfos.comp.ca >= 2 || !modeSonde) {
+                            $('#tileInfos').append('<span class="paramName sky">Eau</span><span class="paramIcon"></span><span class="paramValue sky">0<span class="gf"> (poison)</span></span><br>');
+                        }
+                    }
+                }
+            }
         }
         // RENOMMER
         $('#tileInfos').append('<span class="blockTitle"><h4><button type="button" title="Nommer cet emplacement" class="boutonGris skillButtons" onclick="renameTile('+tileId+')"><i class="fas fa-map-signs"></i></button>&nbsp; Pancarte</h4></span>');

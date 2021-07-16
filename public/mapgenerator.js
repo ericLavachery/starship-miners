@@ -262,6 +262,35 @@ function filterParams() {
         } else {
             filterBase = mapFilters[fdice];
         }
+        if (playerInfos.sondePlanet === 5) {
+            // HORST: pas d'innondations
+            if (filterBase.name === 'FloodP2') {
+                filterBase = mapFilters[5];
+            }
+            if (filterBase.name === 'FloodP1') {
+                filterBase = mapFilters[6];
+            }
+            // HORST: moins de végétaux
+            if (filterBase.name === 'VegP2') {
+                filterBase = mapFilters[1];
+            }
+            if (filterBase.name === 'VegP1') {
+                filterBase = mapFilters[2];
+            }
+        }
+        if (playerInfos.sondePlanet === 4) {
+            // KZIN: tjrs montagnes
+            if (filterBase.name === 'ScarpM2') {
+                filterBase = mapFilters[0];
+            }
+            if (filterBase.name === 'ScarpM1') {
+                filterBase = mapFilters[2];
+            }
+            // KZIN: moins d'innondations
+            if (filterBase.name === 'FloodP2') {
+                filterBase = mapFilters[11];
+            }
+        }
         maxTileCheck = rand.rand(4,5);
     } else {
         mapFilters.forEach(function(filter) {
@@ -1661,9 +1690,20 @@ function zoneReport(zone,quiet) {
     }
     if (!quiet) {
         if (rain) {
-            warning('Pluie','Oui<br>',true);
+            warning('Pluie','Oui',true);
         } else {
-            warning('Pluie','Non<br>',true);
+            warning('Pluie','Non',true);
+        }
+        if (playerInfos.comp.ca >= 2) {
+            if (zone[0].seed === 2) {
+                if (zone[0].gKind === 'spider' || zone[0].pKind === 'spider' || zone[0].sKind === 'spider') {
+                    warning('Eau','Empoisonnée<br>',true);
+                } else {
+                    warning('Eau','OK<br>',true);
+                }
+            } else {
+                warning('Eau','OK<br>',true);
+            }
         }
         if (playerInfos.comp.ca < 3) {
             warning('Montagnes',percM+'%',true);

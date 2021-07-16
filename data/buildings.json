@@ -179,7 +179,7 @@
         "size":100,
         "stealth":0,
         "speed":-5,
-        "ap":12,
+        "ap":13,
         "maxSalvo":2,
         "weapon":{
             "name":"Carabine",

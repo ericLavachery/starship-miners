@@ -144,11 +144,41 @@ function getTerrainRes(terrain,tile) {
     } else if (terrain.name === 'R') {
         srs.Eau = 550+((7-tile.seed)*75);
     } else if (terrain.name === 'W') {
-        srs.Eau = 400+(tile.seed*75);
+        if (playerInfos.comp.ca >= 2 || !modeSonde) {
+            if (zone[0].seed != 2) {
+                srs.Eau = 400+(tile.seed*75);
+            } else {
+                if (zone[0].gKind != 'spider' && zone[0].pKind != 'spider' && zone[0].sKind != 'spider') {
+                    srs.Eau = 400+(tile.seed*75);
+                }
+            }
+        }  else {
+            srs.Eau = 400+(tile.seed*75);
+        }
     } else if (terrain.name === 'S') {
-        srs.Eau = 100+(tile.seed*35);
+        if (playerInfos.comp.ca >= 2 || !modeSonde) {
+            if (zone[0].seed != 2) {
+                srs.Eau = 100+(tile.seed*35);
+            } else {
+                if (zone[0].gKind != 'spider' && zone[0].pKind != 'spider' && zone[0].sKind != 'spider') {
+                    srs.Eau = 100+(tile.seed*35);
+                }
+            }
+        }  else {
+            srs.Eau = 100+(tile.seed*35);
+        }
     } else if (playerInfos.comp.ext >= 1 && terrain.veg >= 1) {
-        srs.Eau = Math.round((playerInfos.comp.ext*10)+(tile.seed*5));
+        if (playerInfos.comp.ca >= 2 || !modeSonde) {
+            if (zone[0].seed != 2) {
+                srs.Eau = Math.round((playerInfos.comp.ext*10)+(tile.seed*5));
+            } else {
+                if (zone[0].gKind != 'spider' && zone[0].pKind != 'spider' && zone[0].sKind != 'spider') {
+                    srs.Eau = Math.round((playerInfos.comp.ext*10)+(tile.seed*5));
+                }
+            }
+        }  else {
+            srs.Eau = Math.round((playerInfos.comp.ext*10)+(tile.seed*5));
+        }
     }
     if (srs.Eau != undefined) {
         srs.Eau = Math.round(srs.Eau*res.planets[zone[0].planet]);

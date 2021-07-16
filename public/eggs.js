@@ -674,14 +674,11 @@ function spawns() {
         vomiToRuche = 5;
     }
     let maxPonte = zone[0].mapDiff+zone[0].mapDiff+2;
-    let wurmMorph = 28-(zone[0].mapDiff*2);
-    if (wurmMorph < 4) {
-        wurmMorph = 4;
+    let wurmMorph = Math.round((13-zone[0].mapDiff)/Math.sqrt(zone[0].mapDiff)*5);
+    if (wurmMorph < 7) {
+        wurmMorph = 7;
     }
-    let libMorph = 78-(zone[0].mapDiff*7);
-    if (libMorph < 4) {
-        libMorph = 4;
-    }
+    let libMorph = wurmMorph;
     let flyDice;
     let warnAsticots = false;
     let warnVers = false;
@@ -719,7 +716,7 @@ function spawns() {
                 alienMorph(bat,'Lucioles',false);
             } else if (rand.rand(1,wurmMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Larves') {
                 alienMorph(bat,'Wurms',false);
-            } else if (libMorph <= 40 && rand.rand(1,libMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Lombrics') {
+            } else if (libMorph <= 25 && rand.rand(1,libMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Lombrics') {
                 alienMorph(bat,'Libellules',false);
             } else if (transList.includes('Ombres') && bat.type === 'Ombres') {
                 alienMorph(bat,'Fantômes',false);
