@@ -287,9 +287,17 @@
         "creaNum":15
     },
     {
+        "id":127,
+        "result":"Batteries",
+        "cost":{"Carbone":4,"Zinc":4,"Nickel":4,"Energie":4},
+        "compReq":{"energ":1},
+        "bldReq":["Chaîne de montage"],
+        "batch":5
+    },
+    {
         "id":19,
         "result":"Batteries",
-        "cost":{"Carbone":4,"Zinc":4,"Nickel":3,"Energie":4},
+        "cost":{"Carbone":4,"Zinc":3,"Nickel":3,"Energie":4},
         "compReq":{"energ":2,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":5

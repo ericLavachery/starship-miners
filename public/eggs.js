@@ -622,9 +622,6 @@ function morphList() {
     if (rand.rand(1,15) === 1 && zone[0].mapDiff >= 6) {
         transList.push('Ombres');
     }
-    if (rand.rand(1,15) === 1) {
-        transList.push('Larves');
-    }
     console.log(transList);
     return transList;
 };
@@ -674,11 +671,14 @@ function spawns() {
         vomiToRuche = 5;
     }
     let maxPonte = zone[0].mapDiff+zone[0].mapDiff+2;
+    let fantMorph = Math.round((11.5-zone[0].mapDiff)/Math.sqrt(zone[0].mapDiff)*10);
+    if (fantMorph < 7) {fantMorph = 7;}
     let wurmMorph = Math.round((13-zone[0].mapDiff)/Math.sqrt(zone[0].mapDiff)*5);
-    if (wurmMorph < 7) {
-        wurmMorph = 7;
-    }
+    if (wurmMorph < 7) {wurmMorph = 7;}
     let libMorph = wurmMorph;
+    let libGenMorph = 0;
+    let libGenMax = 14-zone[0].mapDiff;
+    if (libGenMax < 4) {libGenMax = 4;}
     let flyDice;
     let warnAsticots = false;
     let warnVers = false;
@@ -706,6 +706,7 @@ function spawns() {
                 }
             } else if (bat.squadsLeft >= 5 && bat.type === 'Asticots' && bat.tags.includes('morph')) {
                 alienMorph(bat,'Moucherons',false);
+                libGenMorph++;
             } else if (transList.includes('Vers') && bat.type === 'Vers' && !bat.tags.includes('morph')) {
                 bat.tags.push('morph');
                 if (playerInfos.comp.det >= 2 && playerInfos.comp.ca >= 2 && !warnVers) {
@@ -714,11 +715,12 @@ function spawns() {
                 }
             } else if (bat.squadsLeft >= 5 && bat.type === 'Vers' && bat.tags.includes('morph')) {
                 alienMorph(bat,'Lucioles',false);
+                libGenMorph++;
             } else if (rand.rand(1,wurmMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Larves') {
                 alienMorph(bat,'Wurms',false);
-            } else if (libMorph <= 25 && rand.rand(1,libMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Lombrics') {
+            } else if (libMorph <= 25 && (rand.rand(1,libMorph) === 1 || libGenMorph >= libGenMax) && bat.squadsLeft >= 3 && bat.type === 'Lombrics') {
                 alienMorph(bat,'Libellules',false);
-            } else if (transList.includes('Ombres') && bat.type === 'Ombres') {
+            } else if (fantMorph <= 25 && rand.rand(1,fantMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Ombres') {
                 alienMorph(bat,'Fantômes',false);
             } else if (rand.rand(1,vomiToRuche) === 1 && playerInfos.mapTurn >= Math.ceil(vomiToRuche/1.5) && bat.type === 'Vomissure' && !bat.tags.includes('morph')) {
                 bat.tags.push('morph');

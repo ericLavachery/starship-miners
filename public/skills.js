@@ -235,6 +235,9 @@ function armyAssign(batId,army) {
     selectedBat.army = army;
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
+    if (inSoute) {
+        goSoute();
+    }
 };
 
 function goDrug(apCost,drugName) {

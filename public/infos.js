@@ -740,6 +740,9 @@ function renameChief(batId) {
             bat.chief = newName;
             showBataillon(bat);
             showBatInfos(bat);
+            if (inSoute) {
+                goSoute();
+            }
         } else {
             // message d'erreur
         }
