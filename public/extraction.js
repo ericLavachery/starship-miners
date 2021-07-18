@@ -486,11 +486,15 @@ function voirRessources() {
         let tileRes;
         let blockType;
         let filteredZone = _.filter(visMap,function(tile) {
-            return (tile.rq != undefined);
+            return (tile.rq != undefined || playerInfos.showedTiles.includes(tile.id));
         });
         oneResTileIds = [];
         filteredZone.forEach(function(tile) {
-            tileRes = showTileRes(tile.rs);
+            if (tile.rq != undefined) {
+                tileRes = showTileRes(tile.rs);
+            } else {
+                tileRes = '';
+            }
             if (((showOneRes === 'Toutes' || tileRes.includes(showOneRes)) && !showMarkedOnly) || ((showOneRes === 'Toutes' || tileRes.includes(showOneRes)) && playerInfos.showedTiles.includes(tile.id) && showMarkedOnly)) {
                 if (playerInfos.showedTiles.includes(tile.id)) {
                     blockType = 'resBlockCheck';
@@ -500,7 +504,7 @@ function voirRessources() {
                 $('#conUnitList').append('<div class="'+blockType+'" id="rf'+tile.id+'"></div>');
                 if (tile.tileName != undefined) {
                     if (tile.tileName != '') {
-                        $('#rf'+tile.id).append('<span class="listRes jaune">'+tile.tileName+'</span><br>');
+                        $('#rf'+tile.id).append('<span class="listRes vert bd">'+tile.tileName+'</span><br>');
                     }
                 }
                 $('#rf'+tile.id).append('<i class="fas fa-atom inficon rq'+tile.rq+'"></i><span class="listRes gff klik" onclick="markMap('+tile.id+')">&nbsp;'+tile.y+'&lrhar;'+tile.x+'</span>');
