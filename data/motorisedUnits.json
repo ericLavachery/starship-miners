@@ -1344,7 +1344,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fly","robot","longshot","light","recupres"],
+        "skills":["noguet","fly","robot","longshot","light","recupres","aifouille"],
         "fuzz":0,
         "deathFx":"505751__thehorriblejoke__computer-breaking-sound",
         "mvSnd":"emotor"

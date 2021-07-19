@@ -1555,7 +1555,7 @@ function skillsInfos(bat,batType) {
     }
     // FOUILLE DE RUINES
     if (!playerInfos.onShip) {
-        if ((batType.skills.includes('fouille') || (batType.skills.includes('aifouille') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) && tile.ruins && tile.sh >= 1) {
+        if ((batType.skills.includes('fouille') || (batType.skills.includes('aifouille') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai' || playerInfos.bldList.includes('Centre de com')))) && tile.ruins && tile.sh >= 1) {
             apReq = 5;
             apCost = Math.round(1250/bat.squadsLeft/batType.squadSize/batType.crew);
             if (batType.cat === 'infantry' && !batType.skills.includes('moto') && !batType.skills.includes('fly')) {
