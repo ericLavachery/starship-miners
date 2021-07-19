@@ -1057,6 +1057,13 @@ function addRes(zone) {
                     } else {
                         resChance = Math.round(res.adjRarity*tile.rq*tile.rq/resFoundDiv);
                     }
+                    if (res.pter != undefined) {
+                        if (res.pter.includes(terrain.name)) {
+                            resChance = Math.ceil(resChance*res.pter[0]);
+                        } else {
+                            resChance = Math.ceil(resChance/2);
+                        }
+                    }
                     if (res.bld === 'Derrick') {
                         if (isGas === 'yes') {
                             resChance = Math.round(resChance*3);

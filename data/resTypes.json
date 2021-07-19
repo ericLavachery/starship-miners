@@ -19,7 +19,8 @@
         "cat": "white",
         "batch": 6,
         "energie": 50,
-        "ctri": 15
+        "ctri": 15,
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":0.5,"Horst":0.5}
     },
     {
         "id": 2,
@@ -30,7 +31,8 @@
         "cat": "white",
         "batch": 8,
         "energie": 50,
-        "ctri": 40
+        "ctri": 40,
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":0.5,"Horst":0.5}
     },
     {
         "id": 59,
@@ -41,6 +43,7 @@
         "cat": "white",
         "batch": 8,
         "energie": 5,
+        "pter": [2,"F","H"],
         "rlab": 30
     },
     {
@@ -74,6 +77,7 @@
         "cat": "white",
         "batch": 4,
         "energie": 50,
+        "pter": [2,"H","P","B"],
         "rlab": 5
     },
     {
@@ -96,6 +100,7 @@
         "cat": "white",
         "batch": 4,
         "energie": 10,
+        "pter": [3,"F","B","G"],
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":3}
     },
     {
@@ -107,7 +112,7 @@
         "cat": "white",
         "batch": 6,
         "energie": 10,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":3}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":0.5,"Kzin":1,"Horst":3}
     },
     {
         "id": 9,
@@ -118,6 +123,7 @@
         "cat": "white",
         "batch": 3,
         "energie": 100,
+        "pter": [2,"M"],
         "rlab": 5
     },
     {
@@ -128,7 +134,8 @@
         "rarity": 45,
         "cat": "white",
         "batch": 4,
-        "energie": 10
+        "energie": 10,
+        "pter": [3,"P","H"]
     },
     {
         "id": 11,
@@ -150,6 +157,7 @@
         "cat": "white",
         "batch": 3,
         "energie": 100,
+        "pter": [2,"M"],
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":2,"Horst":1}
     },
     {
@@ -237,7 +245,8 @@
         "rarity": 25,
         "cat": "white",
         "batch": 2,
-        "energie": 50
+        "energie": 50,
+        "pter": [2,"P","G","B"]
     },
     {
         "id": 41,
@@ -248,6 +257,7 @@
         "cat": "white",
         "batch": 2,
         "energie": 100,
+        "pter": [2,"M"],
         "rlab": 1,
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":3}
     },
@@ -260,7 +270,7 @@
         "cat": "zero",
         "batch": 6,
         "energie": -1,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.5}
     },
     {
         "id": 22,
@@ -270,7 +280,9 @@
         "rarity": 85,
         "cat": "white",
         "batch": 12,
-        "energie": 6
+        "energie": 6,
+        "pter": [1.5,"P"],
+        "planets":{"Dom":1,"Sarak":0.7,"Gehenna":1,"Kzin":1,"Horst":0.5}
     },
     {
         "id": 23,
@@ -303,7 +315,7 @@
         "cat": "zero",
         "batch": 6,
         "energie": 45,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":1}
+        "planets":{"Dom":1,"Sarak":0.7,"Gehenna":0,"Kzin":1,"Horst":0.5}
     },
     {
         "id": 25,
@@ -315,7 +327,7 @@
         "batch": 6,
         "energie": 15,
         "ctri": 20,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":1}
+        "planets":{"Dom":1,"Sarak":0.8,"Gehenna":0,"Kzin":1,"Horst":0.7}
     },
     {
         "id": 26,
@@ -325,7 +337,8 @@
         "rarity": 1,
         "cat": "white",
         "batch": 4,
-        "energie": -1
+        "energie": -1,
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":4}
     },
     {
         "id": 27,
@@ -345,7 +358,8 @@
         "rarity": 25,
         "cat": "white",
         "batch": 6,
-        "energie": 9
+        "energie": 9,
+        "pter": [2,"P","G","B"]
     },
     {
         "id": 29,
@@ -355,7 +369,8 @@
         "rarity": 40,
         "cat": "white",
         "batch": 3,
-        "energie": 50
+        "energie": 50,
+        "pter": [2,"P","G","B"]
     },
     {
         "id": 30,

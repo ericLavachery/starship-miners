@@ -518,7 +518,7 @@
             "maxAmmo":12,
             "ravitBld":"Générateur"
         },
-        "protection":["aucune","battlesuit"],
+        "protection":["aucune","chobham","battlesuit"],
         "equip":["aucun","e-flash","e-ranger","e-camo","e-jetpack","permakirin","theeye","helper","kit-lightning","detector"],
         "log3eq":"detector",
         "moveCost":3,
@@ -4123,7 +4123,7 @@
             "sound":"calibre_sa",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
-        "protection":["aucun"],
+        "protection":["aucun","chobham","iso"],
         "equip":["aucun","e-flash","e-camo","lunette2","chargeur1","g2motor","waterproof","g2ai"],
         "log3eq":"g2ai",
         "moveCost":3,
@@ -4177,7 +4177,7 @@
             "sound":"axe_x2",
             "ammo":["lame","lame-tungsten","lame-carbone","lame-taser","lame-mono","lame-taser","lame-plasma","lame-adamantium"]
         },
-        "protection":["aucun"],
+        "protection":["aucun","chobham","iso"],
         "equip":["aucun","e-flash","e-ranger","lunette1","chargeur1","g2motor","waterproof","g2ai"],
         "log3eq":"g2ai",
         "moveCost":3,
@@ -4220,7 +4220,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun"],
+        "protection":["aucun","chobham","iso"],
         "equip":["aucun","e-flash","g2motor","waterproof","w1-autopistol","e-mecano"],
         "log3eq":"g2motor",
         "moveCost":3,
@@ -4391,7 +4391,7 @@
             "maxAmmo":24,
             "ravitBld":"Atelier"
         },
-        "protection":["aucun"],
+        "protection":["aucun","chobham","iso"],
         "equip":["aucun","e-flash","e-ranger","gilet","detector"],
         "log3eq":"e-ranger",
         "moveCost":3,
@@ -4425,7 +4425,7 @@
             "cost":3,
             "range":2,
             "rof":16,
-            "accuracy":30,
+            "accuracy":25,
             "power":7,
             "aoe":"unit",
             "sound":"laser_fusil_x2",
@@ -4443,7 +4443,7 @@
             "sound":"laser_fusil",
             "ammo":["laser","laser-g2"]
         },
-        "protection":["aucune"],
+        "protection":["aucune","chobham","iso"],
         "equip":["aucun","e-flash","e-ranger","e-camo","e-jetpack","theeye","waterproof","detector"],
         "log3eq":"waterproof",
         "moveCost":3,
@@ -4619,7 +4619,7 @@
             "sound":"calibre_antichar_x3",
             "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
-        "protection":["aucun"],
+        "protection":["aucun","chobham","iso"],
         "equip":["aucun","e-flash","e-ranger","gilet","lunette2","chargeur2","waterproof","detector"],
         "log3eq":"detector",
         "moveCost":4,
@@ -4707,7 +4707,7 @@
             "range":2,
             "isShort":true,
             "rof":16,
-            "accuracy":12,
+            "accuracy":30,
             "power":5,
             "aoe":"unit",
             "sound":"laser_fusil_x2",
@@ -5278,7 +5278,7 @@
             "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucune"],
+        "protection":["aucune","chobham","iso"],
         "equip":["aucun","e-flash","gilet","e-camo","lunette1","chargeur1","silencieux2","theeye","waterproof","crimekitch","detector","e-medic"],
         "log3eq":"detector",
         "moveCost":3,
@@ -5332,7 +5332,7 @@
             "sound":"laser_fusil_x2",
             "ammo":["laser","laser-g2"]
         },
-        "protection":["aucune"],
+        "protection":["aucune","chobham","iso"],
         "equip":["aucun","e-flash","e-medic","e-camo","theeye","helper"],
         "log3eq":"e-camo",
         "moveCost":3,
@@ -5393,7 +5393,7 @@
             "sound":"mark",
             "ammo":["marquage"]
         },
-        "protection":["aucun"],
+        "protection":["aucun","chobham","iso"],
         "equip":["aucun","e-flash","e-camo","lunette","chargeur1","silencieux1","waterproof","detector","g2ai"],
         "log3eq":"g2ai",
         "moveCost":3,
@@ -5449,7 +5449,7 @@
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucun"],
+        "protection":["aucun","chobham","iso"],
         "equip":["aucun","e-flash","e-ranger","gilet","e-camo","g2motor","waterproof","detector","g2ai"],
         "log3eq":"g2ai",
         "moveCost":3,

@@ -161,7 +161,13 @@ function resAllLoad(batId) {
     Object.entries(bat.transRes).map(entry => {
         let key = entry[0];
         let value = entry[1];
-        if (value >= 1) {
+        let resOK = true;
+        if (key === 'Energie') {
+            if (!selectedBatType.skills.includes('accu')) {
+                resOK = false;
+            }
+        }
+        if (value >= 1 && resOK) {
             if (selectedBat.transRes[key] === undefined) {
                 selectedBat.transRes[key] = value;
             } else {
@@ -183,8 +189,14 @@ function resMaxLoad(batId,addAutoLoad) {
     Object.entries(bat.transRes).map(entry => {
         let key = entry[0];
         let value = entry[1];
+        let resOK = true;
+        if (key === 'Energie') {
+            if (!selectedBatType.skills.includes('accu')) {
+                resOK = false;
+            }
+        }
         resSpace = checkResSpace(selectedBat);
-        if (value >= 1) {
+        if (value >= 1 && resOK) {
             if (resSpace >= value) {
                 if (selectedBat.transRes[key] === undefined) {
                     selectedBat.transRes[key] = value;
@@ -225,34 +237,42 @@ function resMaxLoad(batId,addAutoLoad) {
 };
 
 function autoResLoad(toBat,fromBat) {
+    let toBatType = getBatType(toBat);
     if (Object.keys(fromBat).length >= 1) {
         let resSpace = checkResSpace(toBat);
         let resLoad = checkResLoad(fromBat);
         Object.entries(fromBat.transRes).map(entry => {
             let key = entry[0];
             let value = entry[1];
-            resSpace = checkResSpace(toBat);
-            if (resSpace >= value) {
-                if (toBat.transRes[key] === undefined) {
-                    toBat.transRes[key] = value;
-                } else {
-                    toBat.transRes[key] = toBat.transRes[key]+value;
+            let resOK = true;
+            if (key === 'Energie') {
+                if (!toBatType.skills.includes('accu')) {
+                    resOK = false;
                 }
-                delete fromBat.transRes[key];
-            } else {
-                if (toBat.transRes[key] === undefined) {
-                    toBat.transRes[key] = resSpace;
+            }
+            if (resOK) {
+                resSpace = checkResSpace(toBat);
+                if (resSpace >= value) {
+                    if (toBat.transRes[key] === undefined) {
+                        toBat.transRes[key] = value;
+                    } else {
+                        toBat.transRes[key] = toBat.transRes[key]+value;
+                    }
+                    delete fromBat.transRes[key];
                 } else {
-                    toBat.transRes[key] = toBat.transRes[key]+resSpace;
+                    if (toBat.transRes[key] === undefined) {
+                        toBat.transRes[key] = resSpace;
+                    } else {
+                        toBat.transRes[key] = toBat.transRes[key]+resSpace;
+                    }
+                    fromBat.transRes[key] = fromBat.transRes[key]-resSpace;
                 }
-                fromBat.transRes[key] = fromBat.transRes[key]-resSpace;
             }
         });
     }
 };
 
 function stopThisAutoLoad(batId) {
-    selectedBat.autoLoad = [];
     if (selectedBat.autoLoad.includes(batId)) {
         let index = selectedBat.autoLoad.indexOf(batId);
         selectedBat.autoLoad.splice(index,1);

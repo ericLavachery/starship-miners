@@ -1337,7 +1337,7 @@
             "sound":"mark",
             "ammo":["marquage"]
         },
-        "protection":["aucun"],
+        "protection":["aucun","chobham","iso"],
         "equip":["aucun","g2motor","e-flash","detector"],
         "log3eq":"detector",
         "moveCost":1,
@@ -3986,7 +3986,7 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-plasma"]
         },
         "weapon2":{},
-        "protection":["aucun"],
+        "protection":["aucun","chobham","iso"],
         "equip":["aucun","g2motor","e-flash","g2ai"],
         "log3eq":"",
         "moveCost":1,

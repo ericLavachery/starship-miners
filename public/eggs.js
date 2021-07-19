@@ -1162,6 +1162,11 @@ function eggSpawn(bat,fromEgg) {
             let maxSpawn = Math.round(((adjEggTurn*1.5)+(3-(bat.squadsLeft/2))+(zone[0].mapDiff*1.5))/5);
             if (maxSpawn < 1 || !fromEgg) {
                 maxSpawn = 1;
+                if (fromEgg) {
+                    if (getCoqueChance() > coqueChance) {
+                        maxSpawn = 2;
+                    }
+                }
             }
             if (maxSpawn > Math.round((playerInfos.mapAdjDiff+8)/3)) {
                 maxSpawn = Math.round((playerInfos.mapAdjDiff+8)/3);
