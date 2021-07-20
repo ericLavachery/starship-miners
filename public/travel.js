@@ -109,6 +109,7 @@ function landingList() {
                 zone[0].mapDiff = Math.floor(playerInfos.allTurns/350)+1;
             }
             showMap(zone,true);
+            isReloaded = false;
         }
     }
 };
@@ -313,14 +314,14 @@ function editSonde() {
     let prAMin = Math.floor(playerInfos.allTurns/350)+1;
     let i = 0;
     while (i <= 15) {
-        if (i >= prAMin || i === 0 || i === 10) {
+        if (i >= prAMin || i === 10) {
             if (i === playerInfos.sondeDanger) {
                 $('#theZone').append('<option value="'+i+'" selected>PrA '+i+'</option>');
             } else {
                 $('#theZone').append('<option value="'+i+'">PrA '+i+'</option>');
             }
         }
-        if (i >= 10) {break;}
+        if (i >= prAMin+3) {break;}
         i++
     }
     $('#conUnitList').append('<br>');

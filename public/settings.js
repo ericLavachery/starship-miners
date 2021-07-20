@@ -107,6 +107,7 @@ let levelXP = [0,50,150,335,750];
 let gangLevelCit = [0,500,1000,1500,2000,2400,2800,3200,3600,4000,4400,4800,5200,5600,6000,6400,6800,7200,7600,8000,8400,8800,9200];
 let myCompPoints = 0;
 // ACTIONS
+let isReloaded = true;
 let mode = "select";
 let selectedBat = {};
 let selectedBatType = {};

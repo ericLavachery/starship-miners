@@ -133,10 +133,10 @@ function commandes() {
             }
         }
         if (!modeSonde) {
-            $('#commandz').append('<hr>');
-            $('#commandz').append('<button type="button" title="Nouvelle campagne?" class="boutonRose iconButtons" onclick="showMapReset()" onmousedown="clicSound()" id="reset1"><i class="fas fa-power-off"></i></button>');
-            $('#commandz').append('<button type="button" title="Nouvelle campagne!" class="boutonRouge iconButtons" onclick="newGame()" onmousedown="clicSound()" id="reset2"><i class="fas fa-recycle"></i></button>');
             if (playerInfos.onShip) {
+                $('#commandz').append('<hr>');
+                $('#commandz').append('<button type="button" title="Nouvelle campagne?" class="boutonRose iconButtons" onclick="showMapReset()" onmousedown="clicSound()" id="reset1"><i class="fas fa-power-off"></i></button>');
+                $('#commandz').append('<button type="button" title="Nouvelle campagne!" class="boutonRouge iconButtons" onclick="newGame()" onmousedown="clicSound()" id="reset2"><i class="fas fa-recycle"></i></button>');
                 if (bataillons.length === 0) {
                     $('#commandz').append('<button type="button" title="Ajouter le pack de ressources" class="boutonRose iconButtons blynk" onclick="addStartPack()" onmousedown="clicSound()"><i class="fas fa-coins"></i></button>');
                 } else {
@@ -155,6 +155,11 @@ function commandes() {
                 // if (!playerInfos.adjok) {
                 //     $('#commandz').append('<button type="button" title="Ajuster le pack de ressources" class="boutonRouge iconButtons" onclick="adjStartPack()"><i class="fas fa-coins"></i></button>');
                 // }
+            } else {
+                if (!isReloaded && playerInfos.mapTurn === 0) {
+                    $('#commandz').append('<hr>');
+                    $('#commandz').append('<button type="button" title="Sauvegarder et actualiser (pour le bug du rapport de mission)" class="boutonRose iconButtons blynk" onclick="saveAndReload()" onmousedown="clicSound()"><i class="fas fa-balance-scale"></i></button>');
+                }
             }
             if (!playerInfos.onShip) {
                 // $('#commandz').append('<hr>');

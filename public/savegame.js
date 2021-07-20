@@ -195,6 +195,11 @@ function saveGame() {
     commandes();
 };
 
+function saveAndReload() {
+    saveGame();
+    location.reload();
+};
+
 function compReset() {
     playerInfos.comp = resetComp();
     commandes();

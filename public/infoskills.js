@@ -1499,32 +1499,34 @@ function skillsInfos(bat,batType) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
             }
         }
-        // CONSTRUCTION BATIMENTS
-        if (batType.skills.includes('constructeur')) {
-            apReq = 5;
-            if (bat.apLeft >= apReq && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (bâtiments)" class="boutonNoir bigButtons" onclick="bfconst(`buildings`,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Construction</h4></span>');
-            } else {
-                if (inMelee) {
-                    skillMessage = "Ne peut pas se faire en mêlée";
+        if (isReloaded || playerInfos.mapTurn != 0 || playerInfos.onShip) {
+            // CONSTRUCTION BATIMENTS
+            if (batType.skills.includes('constructeur')) {
+                apReq = 5;
+                if (bat.apLeft >= apReq && !inMelee) {
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (bâtiments)" class="boutonNoir bigButtons" onclick="bfconst(`buildings`,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Construction</h4></span>');
                 } else {
-                    skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                    if (inMelee) {
+                        skillMessage = "Ne peut pas se faire en mêlée";
+                    } else {
+                        skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-cogs"></i></button>&nbsp; Construction</h4></span>');
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-cogs"></i></button>&nbsp; Construction</h4></span>');
             }
-        }
-        // CONSTRUCTION UNITES
-        if (batType.skills.includes('producteur')) {
-            apReq = 5;
-            if (bat.apLeft >= apReq && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Production (unités)" class="boutonNoir bigButtons" onclick="bfconst(`units`,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
-            } else {
-                if (inMelee) {
-                    skillMessage = "Ne peut pas se faire en mêlée";
+            // CONSTRUCTION UNITES
+            if (batType.skills.includes('producteur')) {
+                apReq = 5;
+                if (bat.apLeft >= apReq && !inMelee) {
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Production (unités)" class="boutonNoir bigButtons" onclick="bfconst(`units`,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
                 } else {
-                    skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                    if (inMelee) {
+                        skillMessage = "Ne peut pas se faire en mêlée";
+                    } else {
+                        skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
             }
         }
     }
