@@ -226,7 +226,7 @@ function souteBatList(cat,partKind,skill,noSkill,landersIds,idOfLander) {
         colId = 'list_lander';
     }
     let sortedBats = bataillons.slice();
-    sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'id'),'type'),'type');
+    sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'id'),'army'),'type');
     sortedBats.forEach(function(bat) {
         let batType = getBatType(bat);
         showMe = false;

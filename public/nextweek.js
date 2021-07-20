@@ -1,6 +1,7 @@
 function events(afterMission,sim) {
     checkReserve();
     updateBldList();
+    resetWeekRes();
     let time = 21;
     if (afterMission) {
         time = Math.ceil(playerInfos.mapTurn/3)*3;
@@ -13,6 +14,9 @@ function events(afterMission,sim) {
     eventBouffe(time,sim);
     eventCrime(time,sim);
     eventAliens(time,sim);
+    console.log('RES BALANCE');
+    console.log(playerInfos.weekRes);
+    showResBallance();
     if (!sim) {
         playerInfos.allTurns = playerInfos.allTurns+time;
         playerInfos.mapTurn = 0;
@@ -47,6 +51,7 @@ function eventProduction(afterMission,time,sim) {
     if (afterMission) {
         scrapNum = Math.round(scrapNum/5);
     }
+    modWeekRes('Scrap',scrapNum);
     if (!sim) {
         resAdd('Scrap',scrapNum);
     }
@@ -256,8 +261,36 @@ function eventBouffe(time,sim) {
     warning('Consommation','Eau: <span class="rose">-'+costWater+'</span><br>'+messageWater,true);
     warning('Consommation','Oxygène: <span class="rose">-'+costAir+'</span><br>'+messageAir,true);
     warning('Consommation','Energie: <span class="rose">-'+costHeat+'</span><br>'+messageHeat+'<br>',true);
+    modWeekMulti(bouffeCost);
     if (!sim) {
         payMaxCost(bouffeCost);
+    }
+};
+
+function showResBallance() {
+    if (playerInfos.weekRes != undefined) {
+        let sortedWeekRes = [];
+        for (var resName in playerInfos.weekRes) {
+            sortedWeekRes.push([resName,playerInfos.weekRes[resName]]);
+        }
+        sortedWeekRes.sort(function(a,b) {
+            return a[1] - b[1];
+        });
+        let sortedWRObject = {}
+        sortedWeekRes.forEach(function(item){
+            sortedWRObject[item[0]]=item[1]
+        })
+        let balMessage = '';
+        Object.entries(sortedWRObject).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            if (value > 0) {
+                balMessage = balMessage+key+':<span class="vert">+'+value+'</span><br>';
+            } else if (value < 0) {
+                balMessage = balMessage+key+':<span class="rose">'+value+'</span><br>';
+            }
+        });
+        warning('Ballance',balMessage+'<br>',true);
     }
 };
 

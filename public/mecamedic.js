@@ -66,6 +66,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                         if (fail > minFailSoins) {
                             fail = minFailSoins;
                         }
+                        if (batType.skills.includes('cyber')) {
+                            fail = 0;
+                        }
                         if (medDice <= fail && catOK) {
                             catOK = false;
                             totalAPCost = totalAPCost+apCost;
@@ -309,6 +312,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
             let fail = selectedBat.soins-10;
             if (fail > minFailSoins) {
                 fail = minFailSoins;
+            }
+            if (selectedBatType.skills.includes('cyber')) {
+                fail = 0;
             }
             if (medDice <= fail && catOK) {
                 catOK = false;
@@ -657,12 +663,16 @@ function bestMedicInBld(bldBat) {
 };
 
 function checkEffSoins(bat) {
+    let batType = getBatType(bat);
     let failDice = bat.soins-10;
     if (failDice > minFailSoins) {
         failDice = minFailSoins;
     }
     if (failDice < 0) {
         failDice = 0;
+    }
+    if (batType.skills.includes('cyber')) {
+        fail = 0;
     }
     let effSoins = 100-Math.round(failDice*100/75);
     return effSoins;

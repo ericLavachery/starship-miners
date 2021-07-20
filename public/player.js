@@ -1351,6 +1351,7 @@ function addStartPack() {
     addFreeBat(1830,'Soute');
     addFreeBat(1831,'Lander');
     addFreeBat(1890,'Trolley');
+    addFreeBat(1829,'Navette de secours');
     addFreeBat(1834,'Poste de pilotage');
     addFreeBat(1949,'Serres hydroponiques');
     addFreeBat(1948,'Cantine');
@@ -1372,12 +1373,15 @@ function addStartPack() {
     addFreeBat(2011,'Sonde');
     // Ajouter les Citoyens
     let soute = getSoute();
+    let thePeople = 1950+(rand.rand(6,10)*6);
+    let theMafia = rand.rand(12,20)*6;
+    thePeople = thePeople-theMafia;
     let unitIndex = unitTypes.findIndex((obj => obj.name === 'Citoyens'));
     conselUnit = unitTypes[unitIndex];
     conselPut = false;
     conselAmmos = ['xxx','xxx','xxx','xxx'];
     conselTriche = true;
-    putBat(1830,1900,0);
+    putBat(1830,thePeople,0);
     let citBat = getCitBat('Citoyens');
     citBat.loc = 'trans';
     citBat.locId = soute.id;
@@ -1387,7 +1391,7 @@ function addStartPack() {
     conselPut = false;
     conselAmmos = ['xxx','xxx','xxx','xxx'];
     conselTriche = true;
-    putBat(1830,100,0);
+    putBat(1830,theMafia,0);
     let crimBat = getCitBat('Criminels');
     crimBat.loc = 'trans';
     crimBat.locId = soute.id;

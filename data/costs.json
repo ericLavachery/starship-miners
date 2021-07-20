@@ -1736,6 +1736,14 @@
         "deploy":{"Eau":80,"Nourriture":40,"Oxygène":80,"Energie":400,"Huile":12,"Tissus":60,"Chlore":30,"Uranium":250,"Hydrogène":90}
     },
     {
+        "id":251,
+        "name":"Navette de secours",
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "bldReq":["Soute"],
+        "costs":{"Eau":100,"Energie":2000,"Huile":50,"Scrap":550,"Carbone":50,"Titane":600,"Aluminium":900,"Rhodium":75,"Nickel":300,"Cuivre":600,"Silicium":100,"Bore":150,"Uranium":400,"Oxygène":100,"Hydrogène":350,"Azote":150,"Chlore":50,"Tissus":50,"Drogues":50,"Zinc":50,"Electros":300,"Batteries":200,"Transorb":1},
+        "deploy":{"Eau":50,"Nourriture":50,"Oxygène":50,"Energie":200,"Huile":5,"Chlore":15,"Drogues":15,"Tissus":15,"Zinc":15,"Uranium":100,"Hydrogène":35}
+    },
+    {
         "id":137,
         "name":"Tour de garde",
         "levels":{"rednecks":17,"blades":16,"bulbos":12,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":16},

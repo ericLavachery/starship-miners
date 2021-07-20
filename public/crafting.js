@@ -344,6 +344,7 @@ function solarProd(bat,batType,time,sim) {
                     let key = entry[0];
                     let value = entry[1];
                     let conso = value*time;
+                    modWeekRes(key,0-conso);
                     if (!sim) {
                         resSub(key,conso);
                     }
@@ -369,6 +370,7 @@ function solarProd(bat,batType,time,sim) {
             }
             energyProd = energyCreation(energyProd);
             // resAdd('Energie',energyProd);
+            modWeekRes('Energie',energyProd);
             if (!sim) {
                 if (playerInfos.onShip) {
                     resAdd('Energie',energyProd);
@@ -447,6 +449,7 @@ function triProd(bat,batType,time,sim) {
                 let key = entry[0];
                 let value = entry[1];
                 let conso = value*time;
+                modWeekRes(key,0-conso);
                 if (!sim) {
                     resSub(key,conso);
                 }
@@ -493,6 +496,7 @@ function triProd(bat,batType,time,sim) {
             if (resProd >= 1) {
                 resProd = scrapRecup(resProd);
                 // resAdd(res.name,resProd);
+                modWeekRes(res.name,resProd);
                 if (!sim) {
                     if (playerInfos.onShip) {
                         resAdd(res.name,resProd);
@@ -556,6 +560,7 @@ function upkeepAndProd(bat,batType,time,sim) {
                     } else {
                         conso = Math.ceil(conso);
                     }
+                    modWeekRes(key,0-conso);
                     if (!sim) {
                         resSub(key,conso);
                     }
@@ -602,6 +607,7 @@ function upkeepAndProd(bat,batType,time,sim) {
                             }
                         }
                         // resAdd(key,fullProd);
+                        modWeekRes(key,fullProd);
                         if (!sim) {
                             if (playerInfos.onShip) {
                                 resAdd(key,fullProd);

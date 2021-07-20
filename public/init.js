@@ -20,6 +20,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.comp === undefined) {
         playerInfos.comp = resetComp();
     }
+    if (playerInfos.weekRes === undefined) {
+        playerInfos.weekRes = {};
+    }
     if (playerInfos.vmRes === undefined) {
         playerInfos.vmRes = {};
     }

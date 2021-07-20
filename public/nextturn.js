@@ -721,6 +721,9 @@ function getAP(bat,batType) {
     }
     if (bat.eq === 'g2motor' || bat.logeq === 'g2motor') {
         newAP = newAP+3;
+        if (batType.moveCost >= 3) {
+            newAP++;
+        }
     }
     if (bat.eq === 'helper' || bat.logeq === 'helper') {
         newAP = newAP+1;

@@ -331,6 +331,26 @@ function resetVMRes() {
     playerInfos.vmRes['Citoyens'] = 0;
 };
 
+function resetWeekRes() {
+    resTypes.forEach(function(res) {
+        playerInfos.weekRes[res.name] = 0;
+    });
+};
+
+function modWeekRes(resName,number) {
+    playerInfos.weekRes[resName] = playerInfos.weekRes[resName]+number;
+};
+
+function modWeekMulti(costs) {
+    if (costs != undefined) {
+        Object.entries(costs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            modWeekRes(key,0-value);
+        });
+    }
+};
+
 function voirZones() {
     selectMode();
     $("#conUnitList").css("display","block");
