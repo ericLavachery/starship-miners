@@ -341,7 +341,7 @@ function attack(melee) {
     // Attack %
     let attFactor = 100;
     // SCIES (noGrip)
-    if (targetWeap.noGrip && selectedWeap.range === 0 && selectedBatType.size*5 >= targetBatType.size) {
+    if (targetWeap.noGrip && selectedWeap.range === 0 && selectedBatType.size >= 3) {
         shots = Math.round(shots/1.25);
         attFactor = Math.round(attFactor/1.25);
     }
@@ -1218,7 +1218,7 @@ function defense(melee) {
         shots = Math.round(targetWeap.rof*targetBatType.squads*brideDef);
     }
     // SCIES (noGrip)
-    if (selectedWeap.noGrip && targetWeap.range === 0 && targetBatType.size*5 >= selectedBatType.size) {
+    if (selectedWeap.noGrip && targetWeap.range === 0 && targetBatType.size >= 3) {
         shots = Math.round(shots/1.25);
         defFactor = Math.round(defFactor/1.25);
     }

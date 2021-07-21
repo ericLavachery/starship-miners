@@ -1556,7 +1556,7 @@ function putInfra(infraName) {
     // infra.fabTime = AP for Workships
     let apCost = Math.round(Math.sqrt(selectedBatType.mecanoCost)*infra.fabTime/1.7);
     if (selectedBatType.skills.includes('infraconst')) {
-        apCost = Math.ceil(apCost*3/4);
+        apCost = Math.ceil(apCost*2/3);
     }
     console.log('apCost:'+apCost);
     selectedBat.apLeft = selectedBat.apLeft-apCost;
