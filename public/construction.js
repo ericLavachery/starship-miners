@@ -443,6 +443,11 @@ function conSelect(unitId,player,noRefresh) {
                             if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
                                 bldReqOK = true;
                             }
+                            if (playerInfos.bldList.includes('Poudrière') && playerInfos.bldList.includes('Armurerie')) {
+                                if ((playerInfos.bldVM.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldVM.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
+                                    bldReqOK = true;
+                                }
+                            }
                         } else {
                             bldReqOK = true;
                         }
@@ -486,6 +491,11 @@ function conSelect(unitId,player,noRefresh) {
                         if (batAmmo.bldReq instanceof Array) {
                             if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
                                 bldReqOK = true;
+                            }
+                            if (playerInfos.bldList.includes('Poudrière') && playerInfos.bldList.includes('Armurerie')) {
+                                if ((playerInfos.bldVM.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldVM.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
+                                    bldReqOK = true;
+                                }
                             }
                         } else {
                             bldReqOK = true;
@@ -1566,6 +1576,9 @@ function putInfra(infraName) {
 
 function updateBldList() {
     playerInfos.bldList = [];
+    if (playerInfos.onShip) {
+        playerInfos.bldVM = [];
+    }
     hasScraptruck = false;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -1577,11 +1590,21 @@ function updateBldList() {
                 if (!playerInfos.bldList.includes(batType.name)) {
                     playerInfos.bldList.push(batType.name);
                 }
+                if (playerInfos.onShip) {
+                    if (!playerInfos.bldVM.includes(batType.name)) {
+                        playerInfos.bldVM.push(batType.name);
+                    }
+                }
             }
             if (batType.bldEquiv.length >= 1) {
                 batType.bldEquiv.forEach(function(bldName) {
                     if (!playerInfos.bldList.includes(bldName)) {
                         playerInfos.bldList.push(bldName);
+                    }
+                    if (playerInfos.onShip) {
+                        if (!playerInfos.bldVM.includes(bldName)) {
+                            playerInfos.bldVM.push(bldName);
+                        }
                     }
                 });
             }

@@ -1585,8 +1585,6 @@ function calcCompPoints(nextGangLevel) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 20) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 22) {
-                theCompPoints = 2;
             } else {
                 theCompPoints = 1;
             }
@@ -1607,8 +1605,6 @@ function calcCompPoints(nextGangLevel) {
             } else if (nextGangLevel === 18) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 20) {
-                theCompPoints = 2;
-            } else if (nextGangLevel === 22) {
                 theCompPoints = 2;
             } else {
                 theCompPoints = 1;
@@ -1633,8 +1629,6 @@ function calcCompPoints(nextGangLevel) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 20) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 22) {
-                theCompPoints = 2;
             } else {
                 theCompPoints = 1;
             }
@@ -1656,8 +1650,6 @@ function calcCompPoints(nextGangLevel) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 20) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 22) {
-                theCompPoints = 2;
             } else {
                 theCompPoints = 1;
             }
@@ -1676,8 +1668,6 @@ function calcCompPoints(nextGangLevel) {
             } else if (nextGangLevel === 18) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 20) {
-                theCompPoints = 2;
-            } else if (nextGangLevel === 22) {
                 theCompPoints = 2;
             } else {
                 theCompPoints = 1;
@@ -1698,8 +1688,6 @@ function calcCompPoints(nextGangLevel) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 19) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 21) {
-                theCompPoints = 2;
             } else {
                 theCompPoints = 1;
             }
@@ -1719,7 +1707,7 @@ function calcCompPoints(nextGangLevel) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 18) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 21) {
+            } else if (nextGangLevel === 20) {
                 theCompPoints = 2;
             } else {
                 theCompPoints = 1;

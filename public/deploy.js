@@ -169,6 +169,11 @@ function reEquip(batId,noRefresh) {
                             if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || myBatType.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || myBatType.name === batAmmo.bldReq[1])) {
                                 bldReqOK = true;
                             }
+                            if (playerInfos.bldList.includes('Poudrière') && playerInfos.bldList.includes('Armurerie')) {
+                                if ((playerInfos.bldVM.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldVM.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
+                                    bldReqOK = true;
+                                }
+                            }
                         } else {
                             bldReqOK = true;
                         }
@@ -211,6 +216,11 @@ function reEquip(batId,noRefresh) {
                         if (batAmmo.bldReq instanceof Array) {
                             if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || myBatType.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || myBatType.name === batAmmo.bldReq[1])) {
                                 bldReqOK = true;
+                            }
+                            if (playerInfos.bldList.includes('Poudrière') && playerInfos.bldList.includes('Armurerie')) {
+                                if ((playerInfos.bldVM.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldVM.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
+                                    bldReqOK = true;
+                                }
                             }
                         } else {
                             bldReqOK = true;

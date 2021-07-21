@@ -95,6 +95,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.bldList === undefined) {
         playerInfos.bldList = [];
     }
+    if (playerInfos.bldVM === undefined) {
+        playerInfos.bldVM = [];
+    }
     if (playerInfos.gang === undefined) {
         playerInfos.gang = 'rednecks';
     }

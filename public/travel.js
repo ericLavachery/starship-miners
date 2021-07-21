@@ -312,6 +312,7 @@ function editSonde() {
     $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`sondeDanger`,`sonde`)" title="Présence Alien"></select>');
     $('#theZone').empty().append('<option value="">Pr.Alien</option>');
     let prAMin = Math.floor(playerInfos.allTurns/350)+1;
+    let prAMax = Math.floor(playerInfos.allTurns/250)+3;
     let i = 0;
     while (i <= 15) {
         if (i >= prAMin || i === 10) {
@@ -321,7 +322,7 @@ function editSonde() {
                 $('#theZone').append('<option value="'+i+'">PrA '+i+'</option>');
             }
         }
-        if (i >= prAMin+3) {break;}
+        if (i >= prAMax) {break;}
         i++
     }
     $('#conUnitList').append('<br>');
