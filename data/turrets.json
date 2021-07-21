@@ -46,7 +46,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans","siland"],
+        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans"],
         "log3eq":"",
         "moveCost":99,
         "maxFlood":-1,
@@ -133,7 +133,7 @@
         "squads":6,
         "squadSize":1,
         "crew":8,
-        "hp":500,
+        "hp":400,
         "armor":8,
         "size":100,
         "stealth":0,
@@ -180,7 +180,7 @@
         "transMaxSize":50,
         "transUnits":12000,
         "transRes":25000,
-        "fuzz":4,
+        "fuzz":4.5,
         "deathFx":"planeexploground2"
     },
     {
@@ -303,7 +303,7 @@
         "transMaxSize":100,
         "transUnits":30000,
         "transRes":100000,
-        "fuzz":8,
+        "fuzz":5,
         "deathFx":"planeexploground2"
     },
     {
@@ -373,7 +373,7 @@
         "transMaxSize":65,
         "transUnits":22000,
         "transRes":70000,
-        "fuzz":6,
+        "fuzz":5,
         "deathFx":"planeexploground2"
     },
     {
@@ -437,7 +437,7 @@
         "transMaxSize":55,
         "transUnits":20000,
         "transRes":40000,
-        "fuzz":10,
+        "fuzz":7,
         "deathFx":"planeexploground2"
     },
     {

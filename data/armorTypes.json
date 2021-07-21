@@ -918,7 +918,7 @@
         "skills": [],
         "info": "Attérissage silencieux",
         "bldReq":["Soute"],
-        "compReq":{"vsp":1},
+        "compReq":{"vsp":3},
         "factor":"thp",
         "costs":{"Scrap":4,"Carbone":8,"Zinc":4,"Nickel":4}
     },
