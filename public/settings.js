@@ -210,7 +210,7 @@ let cumDrop = 5; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)
 let dropMod = 4; //
 let eggLifeStart = 12; //
 let eggLifeFactor = 0.7; //
-let coqLifeStart = 6; //
+let coqLifeStart = 7; //
 let coqLifeFactor = 0.5; //
 let noEggs = 15; // % pour un eggDrop sans oeufs
 let eggPause = false;

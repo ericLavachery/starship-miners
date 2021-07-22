@@ -214,7 +214,11 @@ function weaponsInfos(bat,batType,pop) {
                 }
                 $('#'+bodyPlace).append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+aoe+'</span><br>');
             }
-            $('#'+bodyPlace).append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue lcy">'+showAmmo(bat.ammo)+'</span><br>');
+            let noman = 'Type de munitions';
+            if (bat.ammo.includes('lame')) {
+                noman = 'Type de lame';
+            }
+            $('#'+bodyPlace).append('<span class="paramName">'+noman+'</span><span class="paramIcon"></span><span class="paramValue lcy">'+showAmmo(bat.ammo)+'</span><br>');
             if (baseAmmo < 99) {
                 if (ammoLeft <= batType.maxSalvo) {
                     $('#'+bodyPlace).append('<span class="paramName or">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue or">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
@@ -402,7 +406,11 @@ function weaponsInfos(bat,batType,pop) {
                 }
                 $('#'+bodyPlace).append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+aoe+'</span><br>');
             }
-            $('#'+bodyPlace).append('<span class="paramName">Type de munitions</span><span class="paramIcon"></span><span class="paramValue lcy">'+showAmmo(bat.ammo2)+'</span><br>');
+            let noman = 'Type de munitions';
+            if (bat.ammo2.includes('lame')) {
+                noman = 'Type de lame';
+            }
+            $('#'+bodyPlace).append('<span class="paramName">'+noman+'</span><span class="paramIcon"></span><span class="paramValue lcy">'+showAmmo(bat.ammo2)+'</span><br>');
             if (baseAmmo < 99) {
                 if (ammoLeft <= batType.maxSalvo) {
                     $('#'+bodyPlace).append('<span class="paramName or">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue or">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');

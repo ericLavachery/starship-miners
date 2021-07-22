@@ -221,14 +221,14 @@ function checkEggsDrop() {
         playMusic('horns',true);
         if (Math.floor(playerInfos.mapTurn/25) > playerInfos.cocons && !satDrop && rand.rand(1,100) <= playerInfos.mapTurn*2) {
             dropEgg('Cocon','target');
+            if (playerInfos.comp.det >= 1) {
+                warning('Cocon','Un Cocon est tombé!');
+            }
             playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             let doubleCocon = playerInfos.mapTurn+((zone[0].mapDiff-1)*7);
             if (doubleCocon >= 50) {
                 dropEgg('Oeuf','any');
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
-                if (playerInfos.comp.det >= 1) {
-                    warning('Cocon','Un Cocon est tombé!');
-                }
             }
             if (doubleCocon >= 100) {
                 dropEgg('Cocon','nedge');
@@ -376,6 +376,7 @@ function eggsDrop() {
     }
     console.log('eggDice='+eggDice);
     let coqPerc = getCoqueChance();
+    let coveredEggs = 0;
     if (numEggs >= 1) {
         let eggTypeDice;
         let i = 1;
@@ -399,7 +400,16 @@ function eggsDrop() {
                     warning('Oeuf voilé','Un Oeuf voilé est tombé!');
                 }
             } else {
-                dropEgg('Oeuf','any');
+                if (rand.rand(1,zone[0].mapDiff+1) != 1 && corqPerc >= 30 && playerInfos.mapTurn >= 30 && coveredEggs <= Math.ceil(zone[0].mapDiff/3)) {
+                    if (hasAlien('Ruche') || hasAlien('Volcan')) {
+                        dropEgg('Oeuf','acouvert');
+                        coveredEggs++;
+                    } else {
+                        dropEgg('Oeuf','nedge');
+                    }
+                } else {
+                    dropEgg('Oeuf','any');
+                }
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             }
             if (i > 4) {break;}
@@ -450,6 +460,16 @@ function dropEgg(alienUnit,theArea) {
         }
     }
 };
+
+function hasAlien(unitName) {
+    let youHaveIt = false;
+    aliens.forEach(function(bat) {
+        if (bat.type === unitName) {
+            youHaveIt = true;
+        }
+    });
+    return youHaveIt;
+}
 
 function eggDropTile(eggName,theArea) {
     let theTile = -1;
@@ -608,6 +628,41 @@ function eggDropTile(eggName,theArea) {
             }
         });
     }
+    // A COUVERT
+    if (area === 'acouvert') {
+        let shufAliens = _.shuffle(aliens);
+        shufAliens.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                if (bat.type === 'Volcan' || bat.type === 'Ruche') {
+                    targetTile = bat.tileId;
+                }
+            }
+        });
+        let shufZone = _.shuffle(zone);
+        let distance;
+        shufZone.forEach(function(tile) {
+            if (theTile < 0) {
+                distance = calcDistance(tile.id,targetTile);
+                if (distance === 2 || distance === 3) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        theTile = tile.id;
+                    }
+                }
+            }
+        });
+        if (theTile < 0) {
+            shufZone.forEach(function(tile) {
+                if (theTile < 0) {
+                    distance = calcDistance(tile.id,targetTile);
+                    if (distance === 4 || distance === 5) {
+                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                            theTile = tile.id;
+                        }
+                    }
+                }
+            });
+        }
+    }
     return theTile;
 }
 
@@ -760,7 +815,7 @@ function spawns() {
                     } else {
                         alienSpawn(bat,'Cafards');
                     }
-                } else if (aliens.length < maxAliens && aliensNums.cafards < maxPonte*3 && rand.rand(1,2) === 1) {
+                } else if (aliens.length < maxAliens && aliensNums.cafards < maxPonte*3) {
                     alienSpawn(bat,'Cafards');
                 }
             } else if (bat.type === 'Glaireuses' && aliens.length < maxAliens && aliensNums.gluantes < maxPonte) {
