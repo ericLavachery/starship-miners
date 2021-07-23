@@ -1834,8 +1834,7 @@
         "name":"Convoyeur",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":[],
-        "costs":{"Compo1":100,"Scrap":50,"Carbone":50,"Moteurs":10,"Cuivre":15,"Electros":5,"Batteries":10},
-        "deploy":{"Energie":30},
+        "costs":{"Compo1":150,"Scrap":75,"Carbone":75,"Moteurs":20,"Cuivre":30,"Electros":10,"Batteries":20,"Energie":150},
         "fabTime":10
     },
     {
@@ -1914,7 +1913,7 @@
         "name":"Pompe",
         "upkeep":{"Eau":3,"Energie":6},
         "prod":{"Oxygène":3},
-        "costs":{"Compo1":75,"Fer":50,"Aluminium":40,"Scrap":100},
+        "costs":{"Compo1":75,"Scrap":100,"Fer":50,"Moteurs":10},
         "fabTime":20
     },
     {

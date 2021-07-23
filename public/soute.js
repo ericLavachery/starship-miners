@@ -357,6 +357,7 @@ function batDeploy(batId) {
         console.log('not enough res');
     }
     goSoute();
+    showBatInfos(bat);
 };
 
 function batUndeploy(batId) {
@@ -366,6 +367,7 @@ function batUndeploy(batId) {
     addCost(deployCosts,1);
     loadBat(bat.id,souteId,slId);
     goSoute();
+    showBatInfos(bat);
 };
 
 function calcLanderDeploy(landerBatType) {

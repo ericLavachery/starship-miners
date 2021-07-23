@@ -435,7 +435,20 @@ function getDeployCosts(unit,ammo,weapNum,type) {
                 deployCosts = {};
             }
         } else {
-            deployCosts = {};
+            if (unit.skills.includes('prefab')) {
+                deployFactor = getBldDeployFactor();
+                // deployCosts = JSON.parse(JSON.stringify(unit.costs));
+                Object.entries(unit.costs).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    let adjValue = Math.floor(value*deployFactor);
+                    if (adjValue >= (playerInfos.comp.tri*5)+5) {
+                        deployCosts[key] = adjValue;
+                    }
+                });
+            } else {
+                deployCosts = {};
+            }
         }
     } else if (type === 'equip') {
         let equip = ammo;
@@ -460,6 +473,11 @@ function getDeployCosts(unit,ammo,weapNum,type) {
     }
     return deployCosts;
 }
+
+function getBldDeployFactor() {
+    let dfac = 1/(((playerInfos.comp.tri+3)*(playerInfos.comp.const+1)*1.34)+1);
+    return dfac;
+};
 
 function mergedUnitCosts(batType) {
     let batMergedCosts = JSON.parse(JSON.stringify(batType.costs));
