@@ -479,6 +479,22 @@ function getBldDeployFactor() {
     return dfac;
 };
 
+function calcBldDeploy(unit) {
+    let deployCosts = {};
+    let deployFactor = getBldDeployFactor();
+    if (unit.skills.includes('prefab')) {
+        Object.entries(unit.costs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            let adjValue = Math.floor(value*deployFactor);
+            if (adjValue >= (playerInfos.comp.tri*5)+5) {
+                deployCosts[key] = adjValue;
+            }
+        });
+    }
+    return deployCosts;
+};
+
 function mergedUnitCosts(batType) {
     let batMergedCosts = JSON.parse(JSON.stringify(batType.costs));
     if (batType.deploy != undefined) {
@@ -862,6 +878,9 @@ function calcAllCosts(unit,ammoNames,withDeploy,withFlat) {
             if (Object.keys(unit.deploy).length >= 1) {
                 mergeObjects(allCosts,unit.deploy);
             }
+        } else if (unit.skills.includes('prefab')) {
+            let bldDeploy = calcBldDeploy(unit);
+            mergeObjects(allCosts,bldDeploy);
         }
     }
     let index;
