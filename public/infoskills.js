@@ -1598,13 +1598,15 @@ function skillsInfos(bat,batType) {
         }
     }
     // DECONSTRUIRE VERS LANDER (si à côté)
-    if (batType.skills.includes('prefab')) {
-        let landerBat = findTheLander();
-        if (Object.keys(landerBat).length >= 1) {
-            let landerDistance = calcDistance(landerBat.tileId,bat.tileId);
-            if (landerDistance <= 1 || playerInfos.onShip) {
-                let apCost = Math.round(6*batType.fabTime/30);
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine skillButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
+    if (!playerInfos.onShip) {
+        if (batType.skills.includes('prefab')) {
+            let landerBat = findTheLander();
+            if (Object.keys(landerBat).length >= 1) {
+                let landerDistance = calcDistance(landerBat.tileId,bat.tileId);
+                if (landerDistance <= 1 || playerInfos.onShip) {
+                    let apCost = Math.round(6*batType.fabTime/30);
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine skillButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
+                }
             }
         }
     }

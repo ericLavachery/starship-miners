@@ -60,9 +60,11 @@ function eventProduction(afterMission,time,sim) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             // PRODUCTION
-            if (batType.skills.includes('upkeep') || batType.skills.includes('prodres') || batType.skills.includes('upnodis')) {
-                if (!bat.tags.includes('construction') || playerInfos.onShip) {
-                    upkeepAndProd(bat,batType,time,sim);
+            if (!playerInfos.onShip || !batType.skills.includes('nostatprod')) {
+                if (batType.skills.includes('upkeep') || batType.skills.includes('prodres') || batType.skills.includes('upnodis')) {
+                    if (!bat.tags.includes('construction') || playerInfos.onShip) {
+                        upkeepAndProd(bat,batType,time,sim);
+                    }
                 }
             }
             if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {

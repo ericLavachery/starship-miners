@@ -612,14 +612,10 @@ function missionRes() {
                 } else {
                     bldNeed = unit.bldReq;
                 }
-
-
                 let costString = '';
                 if (unit.costs != undefined) {
                     costString = displayCosts(unit.costs);
                 }
-
-
                 costsOK = checkUnitCost(unit,true);
                 if (!costsOK) {
                     $('#fillList').append('<span class="constName gris" title="'+toNiceString(bldNeed)+' '+costString+'">&cross; '+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
