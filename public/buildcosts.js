@@ -475,7 +475,7 @@ function getDeployCosts(unit,ammo,weapNum,type) {
 }
 
 function getBldDeployFactor() {
-    let dfac = 1/(((playerInfos.comp.tri+3)*(playerInfos.comp.const+1)*1.34)+1);
+    let dfac = 1/(((playerInfos.comp.tri+3)*(playerInfos.comp.const+1)*1.333)+1);
     return dfac;
 };
 

@@ -1581,7 +1581,7 @@ function updateBldList() {
     }
     hasScraptruck = false;
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone") {
+        if (bat.loc === "zone" || playerInfos.onShip) {
             batType = getBatType(bat);
             if (batType.name === 'Scraptrucks') {
                 hasScraptruck = true;

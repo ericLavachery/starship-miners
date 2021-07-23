@@ -400,7 +400,7 @@ function eggsDrop() {
                     warning('Oeuf voilé','Un Oeuf voilé est tombé!');
                 }
             } else {
-                if (rand.rand(1,zone[0].mapDiff+1) != 1 && corqPerc >= 30 && playerInfos.mapTurn >= 30 && coveredEggs <= Math.ceil(zone[0].mapDiff/3)) {
+                if (rand.rand(1,zone[0].mapDiff+1) != 1 && coqPerc >= 30 && playerInfos.mapTurn >= 30 && coveredEggs <= Math.ceil(zone[0].mapDiff/3)) {
                     if (hasAlien('Ruche') || hasAlien('Volcan')) {
                         dropEgg('Oeuf','acouvert');
                         coveredEggs++;
