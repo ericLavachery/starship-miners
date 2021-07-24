@@ -141,32 +141,32 @@ function putRuinsCit(tile) {
     let restCit = numCit;
     if (restCit <= 72) {
         conselTriche = true;
-        putBatAround(tile.id,false,false,citId,restCit,true);
+        putBatAround(tile.id,false,'noWater',citId,restCit);
         restCit = 0;
     } else {
         conselTriche = true;
-        putBatAround(tile.id,false,false,citId,72,true);
+        putBatAround(tile.id,false,'noWater',citId,72);
         restCit = restCit-72;
     }
     if (restCit >= 1) {
         if (restCit <= 72) {
             conselTriche = true;
-            putBatAround(tile.id,false,false,citId,restCit,true);
+            putBatAround(tile.id,false,'noWater',citId,restCit);
             restCit = 0;
         } else {
             conselTriche = true;
-            putBatAround(tile.id,false,false,citId,72,true);
+            putBatAround(tile.id,false,'noWater',citId,72);
             restCit = restCit-72;
         }
     }
     if (restCit >= 1) {
         if (restCit <= 72) {
             conselTriche = true;
-            putBatAround(tile.id,false,false,citId,restCit,true);
+            putBatAround(tile.id,false,'noWater',citId,restCit);
             restCit = 0;
         } else {
             conselTriche = true;
-            putBatAround(tile.id,false,false,citId,72,true);
+            putBatAround(tile.id,false,'noWater',citId,72);
             restCit = restCit-72;
         }
     }
@@ -220,7 +220,7 @@ function checkRuinsAliens(tile) {
         if (alienTypeId >= 0) {
             let i = 1;
             while (i <= numAliens) {
-                putBatAround(tile.id,true,false,alienTypeId,0,false)
+                putBatAround(tile.id,true,'any',alienTypeId,0)
                 if (i > 6) {break;}
                 i++
             }
@@ -252,13 +252,15 @@ function ruinsAliensInfo(unit,tile) {
     return alienInfo;
 };
 
-function putBatAround(tileId,alien,near,unitId,numCit,noWater,tag) {
+function putBatAround(tileId,alien,dropWhere,unitId,numCit,tag) {
     console.log(alien);
     let dropTile = -1;
-    if (near) {
+    if (dropWhere === 'near') {
         dropTile = coffreDrop(tileId);
-    } else if (noWater) {
+    } else if (dropWhere === 'noWater') {
         dropTile = checkDropSafe(tileId);
+    } else if (dropWhere === 'inPlace') {
+        dropTile = tileId;
     } else {
         dropTile = checkDrop(tileId);
     }
@@ -481,7 +483,7 @@ function checkRuinsRes(tile) {
     console.log('resChance: '+resChance);
     if (rand.rand(1,100) <= resChance) {
         conselTriche = true;
-        putBatAround(tile.id,false,true,239,0,true,'go');
+        putBatAround(tile.id,false,'noWater',239,0,'go');
         let coffre = getBatByTileId(coffreTileId);
         let totalRes = 0;
         let thatResChance = 0;
@@ -638,7 +640,7 @@ function checkRuinsUnit(tile) {
                 playerInfos.allCits = playerInfos.allCits+unitCits;
             }
             conselTriche = true;
-            putBatAround(tile.id,false,false,foundUnitId,0,true);
+            putBatAround(tile.id,false,'noWater',foundUnitId,0);
             playerInfos.fndUnits = playerInfos.fndUnits+1;
             console.log('FOUND! '+batType.name);
         }

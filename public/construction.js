@@ -1278,7 +1278,7 @@ function recupRes(bat,batType) {
     } else {
         coffreTileId = -1;
         conselTriche = true;
-        putBatAround(bat.tileId,false,true,239,0,false);
+        putBatAround(bat.tileId,false,'near',239,0);
         coffre = getBatByTileId(coffreTileId);
     }
     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
@@ -1410,7 +1410,7 @@ function getResRecup(bat,batType) {
 function recupInfraRes(tile,infra) {
     coffreTileId = -1;
     conselTriche = true;
-    putBatAround(tile.id,false,true,239,0,false);
+    putBatAround(tile.id,false,'near',239,0);
     let coffre = getBatByTileId(coffreTileId);
     let recupFactor = 47;
     let bldFactor = 0;

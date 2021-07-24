@@ -42,12 +42,14 @@ function deconstruction(prefabId) {
     let prefabIndex = bataillons.findIndex((obj => obj.id == prefabId));
     let prefabBat = bataillons[prefabIndex];
     let prefabBatType = getBatType(prefabBat);
+    let tileId = prefabBat.tileId;
     let landerBat = findTheLander();
     if (Object.keys(landerBat).length >= 1) {
         if (!playerInfos.onShip) {
             selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*prefabBatType.fabTime/15);
         }
         loadBat(prefabBat.id,landerBat.id);
+        recupPrefabFret(prefabBat,prefabBatType,tileId,false,-1);
         tagDelete(selectedBat,'guet');
         selectedBatArrayUpdate();
         showBatInfos(selectedBat);
@@ -59,13 +61,41 @@ function autoDeconstruction(prefabId) {
     let prefabIndex = bataillons.findIndex((obj => obj.id == prefabId));
     let prefabBat = bataillons[prefabIndex];
     let prefabBatType = getBatType(prefabBat);
+    let tileId = prefabBat.tileId;
     let landerBat = findTheLander();
     if (Object.keys(landerBat).length >= 1) {
         loadBat(prefabBat.id,landerBat.id);
+        recupPrefabFret(prefabBat,prefabBatType,tileId,true,landerBat);
         showMap(zone,false);
         batSelect(landerBat);
         showBatInfos(landerBat);
         selectMode();
+    }
+};
+
+function recupPrefabFret(bat,batType,tileId,autoDec,landerBat) {
+    let resFret = checkResLoad(bat);
+    if (resFret >= 1) {
+        let coffre = {};
+        if (autoDec) {
+            let resSpace = checkResSpace(landerBat);
+            if (resSpace >= resFret) {
+                coffre = getBatById(landerBat.id);
+            } else {
+                coffreTileId = -1;
+                conselTriche = true;
+                putBatAround(tileId,false,'inPlace',239,0);
+                coffre = getBatByTileId(coffreTileId);
+            }
+        } else {
+            coffreTileId = -1;
+            conselTriche = true;
+            putBatAround(tileId,false,'near',239,0);
+            coffre = getBatByTileId(coffreTileId);
+        }
+        putFretInChest(bat,batType,coffre);
+        bat.transRes = {};
+        coffreTileId = -1;
     }
 };
 

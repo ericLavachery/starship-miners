@@ -343,7 +343,7 @@ function clickDebarq(tileId) {
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
             tagDelete(selectedBat,'loaded');
             if (!playerInfos.onShip) {
-                selectedBat.apLeft = selectedBat.apLeft-(selectedBatType.mecanoCost*3)-(distance*3);
+                selectedBat.apLeft = selectedBat.apLeft-(selectedBatType.mecanoCost*2.5);
             }
         } else {
             if (selectedBat.transIds.includes(batDebarq.id)) {
