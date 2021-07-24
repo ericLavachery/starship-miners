@@ -661,6 +661,15 @@ function skillsInfos(bat,batType) {
             }
         }
     }
+    // TREUIL
+    if (!playerInfos.onShip && bat.apLeft <= 0 && !bat.tags.includes('construction')) {
+        if (batType.cat === 'vehicles' && batType.moveCost < 90 && !batType.skills.includes('cyber') && !batType.skills.includes('robot')) {
+            let leTreuil = checkTreuil(bat);
+            if (leTreuil.ok) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+'+leTreuil.pa+' PA (-4 PA pour le bataillon de '+leTreuil.bat.type+')" class="boutonVert skillButtons" onclick="goTreuil('+leTreuil.bat.id+','+leTreuil.pa+')"><i class="fas fa-anchor"></i> <span class="small">0</span></button>&nbsp; Treuil</h4></span>');
+            }
+        }
+    }
     // DROGUES
     if (!playerInfos.onShip) {
         let allDrugs = checkDrugs(bat);

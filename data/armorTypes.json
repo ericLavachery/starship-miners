@@ -823,6 +823,16 @@
         "deploy":{"Hydrogène":6,"Huile":1}
     },
     {
+        "name": "e-treuil",
+        "cat":"equip",
+        "skills": [],
+        "info": "Treuil",
+        "bldReq":["Atelier"],
+        "compReq":{"log":1},
+        "factor":"one",
+        "costs":{"Carbone":10,"Fer":50,"Moteurs":10}
+    },
+    {
         "name": "chenilles",
         "cat":"equip",
         "skills": [],

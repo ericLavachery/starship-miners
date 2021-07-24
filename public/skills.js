@@ -28,6 +28,48 @@ function fortification() {
     showBatInfos(selectedBat);
 };
 
+function checkTreuil(myBat) {
+    // array 0=ok? 1=treuilBat 2=PA
+    let leTreuil = {};
+    leTreuil.ok = false;
+    leTreuil.bat = {};
+    leTreuil.pa = 0;
+    let myBatType = getBatType(myBat);
+    let bestEffect = 0;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" && bat.tileId != myBat.tileId && bat.apLeft >= 1) {
+            let distance = calcDistance(bat.tileId,myBat.tileId);
+            if (distance <= 1) {
+                let batType = getBatType(bat);
+                if (batType.skills.includes('treuil') || bat.eq === 'e-treuil' || bat.logeq === 'e-treuil') {
+                    let thisEffect = 200+bat.apLeft;
+                    let gainPA = 2;
+                    if (Math.ceil(batType.size*1.5) >= myBatType.size) {
+                        gainPA = 4;
+                        thisEffect = thisEffect+200;
+                    }
+                    if (thisEffect > bestEffect) {
+                        bestEffect = thisEffect;
+                        leTreuil.ok = true;
+                        leTreuil.bat = bat;
+                        leTreuil.pa = gainPA;
+                    }
+                }
+            }
+        }
+    });
+    return leTreuil;
+};
+
+function goTreuil(treuilBatId,gainPA) {
+    selectedBat.apLeft = selectedBat.apLeft+gainPA;
+    selectedBat.salvoLeft = 0;
+    let treuilBat = getBatById(treuilBatId);
+    treuilBat.apLeft = treuilBat.apLeft-4;
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
 function prodToggle() {
     selectMode();
     console.log('PROD TOGGLE');
