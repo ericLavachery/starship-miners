@@ -32,7 +32,7 @@ function commandes() {
             }
             $('#commandz').append('<button type="button" title="Nombres d\'aliens en vue" class="boutonGris iconButtons" onclick="updateAliensNum()">'+aliensNum+'</button>');
             $('#commandz').append('<button type="button" title="Nombres d\'oeufs en vue" class="boutonGris iconButtons" onclick="findEgg()">'+eggsNum+'</button>');
-            $('#commandz').append('<br>');
+            $('#commandz').append('<hr>');
         }
         if (!playerInfos.onShip || modeSonde) {
             $('#commandz').append('<button type="button" title="Ressources présentes dans la zone" class="boutonGris iconButtons" onclick="voirRessources()" onmousedown="clicSound()"><i class="far fa-gem"></i></button>');

@@ -220,23 +220,25 @@ function nextTurnEnd() {
             if (batType.skills.includes('transorbital') || batType.skills.includes('reserve')) {
                 landers.push(bat);
             }
-            if (batType.name === 'Bar') {
-                barIds.push(bat.id);
-            }
-            if (batType.name === "Camp d'entraînement") {
-                campIds.push(bat.id);
-            }
-            if (batType.cat === 'buildings' && !batType.skills.includes('nolist') && !bat.tags.includes('construction')) {
-                if (!playerInfos.bldList.includes(batType.name)) {
-                    playerInfos.bldList.push(batType.name);
+            if (bat.loc === "zone") {
+                if (batType.name === 'Bar') {
+                    barIds.push(bat.id);
                 }
-            }
-            if (batType.bldEquiv.length >= 1) {
-                batType.bldEquiv.forEach(function(bldName) {
-                    if (!playerInfos.bldList.includes(bldName)) {
-                        playerInfos.bldList.push(bldName);
+                if (batType.name === "Camp d'entraînement") {
+                    campIds.push(bat.id);
+                }
+                if (batType.cat === 'buildings' && !batType.skills.includes('nolist') && !bat.tags.includes('construction')) {
+                    if (!playerInfos.bldList.includes(batType.name)) {
+                        playerInfos.bldList.push(batType.name);
                     }
-                });
+                }
+                if (batType.bldEquiv.length >= 1) {
+                    batType.bldEquiv.forEach(function(bldName) {
+                        if (!playerInfos.bldList.includes(bldName)) {
+                            playerInfos.bldList.push(bldName);
+                        }
+                    });
+                }
             }
             if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {
                 boostedTeams.push(batType.kind);
