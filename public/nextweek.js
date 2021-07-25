@@ -57,7 +57,7 @@ function eventProduction(afterMission,time,sim) {
     }
     warning('Poubelles','Scrap:<span class="vert">+'+scrapNum+'</span><br>',true);
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone" || bat.loc === "trans") {
+        if (bat.loc === "zone" || (bat.loc === "trans" && bat.locId === souteId)) {
             batType = getBatType(bat);
             // PRODUCTION
             if (!playerInfos.onShip || !batType.skills.includes('nostatprod')) {

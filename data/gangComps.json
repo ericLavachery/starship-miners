@@ -11,7 +11,7 @@
         "id":2,
         "name":"tank",
         "fullName":"Blindés",
-        "levels":{"rednecks":10,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":9,"brasier":99},
+        "levels":{"rednecks":10,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":9,"brasier":10},
         "maxLevel":1,
         "lvlCosts":[0,2]
     },

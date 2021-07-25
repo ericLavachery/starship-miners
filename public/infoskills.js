@@ -1382,7 +1382,7 @@ function skillsInfos(bat,batType) {
                     $('#infraButtons').append('<button type="button" title="Palissades: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Pa</span></button>');
                 }
             }
-            if (tile.infra != 'Remparts') {
+            if (tile.infra != 'Remparts' && playerInfos.comp.const >= 1 && playerInfos.comp.def >= 1) {
                 infra = getInfraByName('Remparts');
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
@@ -1403,7 +1403,7 @@ function skillsInfos(bat,batType) {
                     $('#infraButtons').append('<button type="button" title="Remparts: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Re</span></button>');
                 }
             }
-            if (tile.infra != 'Murailles' && playerInfos.comp.const >= 3) {
+            if (tile.infra != 'Murailles' && playerInfos.comp.const >= 3 && playerInfos.comp.def >= 2) {
                 infra = getInfraByName('Murailles');
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def) {
