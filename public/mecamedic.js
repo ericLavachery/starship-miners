@@ -423,7 +423,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
         }
         tagDelete(selectedBat,'mining');
         tagDelete(selectedBat,'guet');
-        tagAction();
+        doneAction(selectedBat);
         selectedBatArrayUpdate();
     } else {
         if (!medicBatType.skills.includes('robot') || medicBat.eq === 'g2ai' || medicBat.logeq === 'g2ai') {

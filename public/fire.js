@@ -85,7 +85,8 @@ function combat(melee) {
     // sort du mode furtif
     if (activeTurn == 'player') {
         // camoOut(); - se fait maintenant en fin de combat !!!
-        tagAction();
+        // tagAction();
+        doneAction(selectedBat);
         centerMapTarget();
     } else {
         centerMap();

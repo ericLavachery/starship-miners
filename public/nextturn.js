@@ -1224,8 +1224,10 @@ function tagDelete(bat,tag) {
 function tagAction() {
     if (!selectedBat.tags.includes('action')) {
         selectedBat.tags.push('action');
-        selectedBatArrayUpdate();
     }
+    selectedBat.oldTileId = selectedBat.tileId;
+    selectedBat.oldapLeft = selectedBat.apLeft;
+    selectedBatArrayUpdate();
 };
 
 function putTagAction(bat) {
@@ -1237,8 +1239,14 @@ function putTagAction(bat) {
 };
 
 function doneAction(bat) {
-    bat.oldTileId = bat.tileId;
-    bat.oldapLeft = bat.apLeft;
+    if (bat.id === selectedBat.id) {
+        selectedBat.oldTileId = selectedBat.tileId;
+        selectedBat.oldapLeft = selectedBat.apLeft;
+        selectedBatArrayUpdate();
+    } else {
+        bat.oldTileId = bat.tileId;
+        bat.oldapLeft = bat.apLeft;
+    }
 };
 
 function levelUp(bat) {
