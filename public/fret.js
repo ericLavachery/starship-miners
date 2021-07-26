@@ -176,6 +176,8 @@ function resAllLoad(batId) {
         }
         delete bat.transRes[key];
     });
+    doneAction(bat);
+    doneAction(selectedBat);
     // putTagAction(bat);
     // putTagAction(selectedBat);
     selectedBatArrayUpdate();
@@ -230,6 +232,8 @@ function resMaxLoad(batId,addAutoLoad) {
             selectedBat.autoLoad.push(batId);
         }
     }
+    doneAction(bat);
+    doneAction(selectedBat);
     // putTagAction(bat);
     // putTagAction(selectedBat);
     selectedBatArrayUpdate();
@@ -343,6 +347,8 @@ function resSelectLoad(value,pickValue,resId,batId) {
         }
         bat.transRes[res.name] = bat.transRes[res.name]-maxTransfert;
     }
+    doneAction(bat);
+    doneAction(selectedBat);
     // putTagAction(bat);
     // putTagAction(selectedBat);
     selectedBatArrayUpdate();

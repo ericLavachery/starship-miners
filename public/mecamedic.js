@@ -105,7 +105,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     }
                                     bat.apLeft = bat.apLeft-medicPatientAP;
                                     addHealFlag(bat);
-                                    putTagAction(bat);
+                                    doneAction(bat);
                                 } else if (bat.tags.includes('venin') && (deep || playerInfos.comp.med >= 2)) {
                                     totalAPCost = totalAPCost+apCost;
                                     console.log('venin');
@@ -118,7 +118,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     }
                                     bat.apLeft = bat.apLeft-medicPatientAP;
                                     addHealFlag(bat);
-                                    putTagAction(bat);
+                                    doneAction(bat);
                                 } else if (bat.damage > 0 && !fullBat) {
                                     if (bat.id === selectedBat.id) {
                                         selectedBat.damage = 0
@@ -135,7 +135,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     }
                                     bat.apLeft = bat.apLeft-medicPatientAP;
                                     addHealFlag(bat);
-                                    putTagAction(bat);
+                                    doneAction(bat);
                                 } else if (bat.squadsLeft < batType.squads-1 && deep && batType.squads >= 10 && !fullBat) {
                                     // double soin pour unités ayant bcp de squads
                                     if (bat.id === selectedBat.id) {
@@ -154,7 +154,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     }
                                     bat.apLeft = bat.apLeft-medicPatientAP;
                                     addHealFlag(bat);
-                                    putTagAction(bat);
+                                    doneAction(bat);
                                 } else if (bat.squadsLeft < batType.squads && deep && !fullBat) {
                                     if (bat.id === selectedBat.id) {
                                         selectedBat.squadsLeft = selectedBat.squadsLeft+1;
@@ -172,7 +172,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     }
                                     bat.apLeft = bat.apLeft-medicPatientAP;
                                     addHealFlag(bat);
-                                    putTagAction(bat);
+                                    doneAction(bat);
                                 } else if (((bat.squadsLeft === batType.squads && bat.damage === 0) || fullBat) && bat.tags.includes('parasite') && deep) {
                                     tagDelete(bat,'parasite');
                                     totalAPCost = totalAPCost+apCost;
@@ -182,7 +182,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">parasite tué<br></span>');
                                     bat.apLeft = bat.apLeft-medicPatientAP;
                                     addHealFlag(bat);
-                                    putTagAction(bat);
+                                    doneAction(bat);
                                 } else if (((bat.squadsLeft === batType.squads && bat.damage === 0) || fullBat) && bat.tags.includes('maladie') && deep) {
                                     tagDelete(bat,'maladie');
                                     totalAPCost = totalAPCost+apCost;
@@ -192,7 +192,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">maladie guérie<br></span>');
                                     bat.apLeft = bat.apLeft-medicPatientAP;
                                     addHealFlag(bat);
-                                    putTagAction(bat);
+                                    doneAction(bat);
                                 }
                             } else {
                                 // MECANO (AROUND)
@@ -218,7 +218,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
                                         bat.apLeft = bat.apLeft-medicPatientAP;
                                     }
-                                    putTagAction(bat);
+                                    doneAction(bat);
                                 } else if (bat.squadsLeft < batType.squads && deep) {
                                     if (bat.id === selectedBat.id) {
                                         oldSquadsLeft = selectedBat.squadsLeft;
@@ -278,7 +278,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
                                         bat.apLeft = bat.apLeft-medicPatientAP;
                                     }
-                                    putTagAction(bat);
+                                    doneAction(bat);
                                 } else if (bat.squadsLeft === batType.squads && bat.damage === 0 && bat.tags.includes('trou') && deep) {
                                     tagDelete(bat,'trou');
                                     totalAPCost = totalAPCost+apCost;
@@ -290,7 +290,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
                                         bat.apLeft = bat.apLeft-medicPatientAP;
                                     }
-                                    putTagAction(bat);
+                                    doneAction(bat);
                                 }
                             }
                         }

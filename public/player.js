@@ -309,6 +309,14 @@ function playerSkillsUTChanges() {
                 unit.mecanoCost = 2;
             }
         }
+        if (playerInfos.comp.const >= 1) {
+            if (unit.cat === 'buildings' || unit.cat === 'devices') {
+                unit.fabTime = unit.fabTime*(playerInfos.comp.const+3)/3;
+            }
+        }
+        if (playerInfos.comp.const >= 1 && unit.cat === 'buildings') {
+            unit.hp = unit.hp+Math.round(unit.hp/15*playerInfos.comp.const);
+        }
         if (playerInfos.comp.const >= 1 && unit.kind === 'zero-construction') {
             unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.const*2);
             if (unit.levels[playerInfos.gang] < 1) {
@@ -337,12 +345,15 @@ function playerSkillsUTChanges() {
             } else {
                 unit.hp = unit.hp+Math.round(unit.hp/15*playerInfos.comp.ind);
             }
+            unit.fabTime = unit.fabTime*(playerInfos.comp.ind+3)/3;
         }
         // DEFENSE
         if (playerInfos.comp.def >= 1 && (unit.kind === 'zero-defense' || unit.skills.includes('cage')) && !unit.skills.includes('dome')) {
-            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.def);
-            if (unit.levels[playerInfos.gang] < 1) {
-                unit.levels[playerInfos.gang] = 1;
+            if (unit.compReq === undefined && unit.compHardReq === undefined) {
+                unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.def);
+                if (unit.levels[playerInfos.gang] < 1) {
+                    unit.levels[playerInfos.gang] = 1;
+                }
             }
         }
         if (playerInfos.comp.def >= 1 && unit.cat === 'buildings') {
@@ -403,25 +414,23 @@ function playerSkillsUTChanges() {
                 }
             }
         }
-        if (playerInfos.comp.energ >= 1 && unit.skills.includes('dome')) {
-            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-energComp;
-            if (unit.levels[playerInfos.gang] < 1) {
-                unit.levels[playerInfos.gang] = 1;
-            }
-        }
         // EXTRACTION
         if (playerInfos.comp.ext >= 1 && unit.kind === 'zero-extraction') {
-            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.ext);
-            if (unit.levels[playerInfos.gang] < 1) {
-                unit.levels[playerInfos.gang] = 1;
+            if (unit.compReq === undefined) {
+                unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.ext);
+                if (unit.levels[playerInfos.gang] < 1) {
+                    unit.levels[playerInfos.gang] = 1;
+                }
             }
         }
         // TRANSPORTS
         if (playerInfos.comp.trans >= 1) {
             if (unit.kind === 'zero-transports' || unit.kind === 'zero-trans-fret') {
-                unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.trans);
-                if (unit.levels[playerInfos.gang] < 1) {
-                    unit.levels[playerInfos.gang] = 1;
+                if (unit.compReq === undefined && unit.compHardReq === undefined) {
+                    unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.trans);
+                    if (unit.levels[playerInfos.gang] < 1) {
+                        unit.levels[playerInfos.gang] = 1;
+                    }
                 }
             }
         }
@@ -465,6 +474,12 @@ function playerSkillsUTChanges() {
                 if (unit.levels[playerInfos.gang] < 1) {
                     unit.levels[playerInfos.gang] = 1;
                 }
+            }
+        }
+        // ENTRAINEMENT
+        if (playerInfos.comp.train >= 1) {
+            if (unit.cat === 'infantry') {
+                unit.fabTime = unit.fabTime*(playerInfos.comp.train+3)/3;
             }
         }
         // CAMOUFLAGE

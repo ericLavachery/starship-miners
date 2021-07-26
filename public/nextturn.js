@@ -1232,6 +1232,13 @@ function putTagAction(bat) {
     if (!bat.tags.includes('action')) {
         bat.tags.push('action');
     }
+    bat.oldTileId = bat.tileId;
+    bat.oldapLeft = bat.apLeft;
+};
+
+function doneAction(bat) {
+    bat.oldTileId = bat.tileId;
+    bat.oldapLeft = bat.apLeft;
 };
 
 function levelUp(bat) {

@@ -802,6 +802,10 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                     }
                 }
             }
+            // TURNS on STATION
+            if (playerInfos.onShip) {
+                playerInfos.allTurns = playerInfos.allTurns+Math.ceil(conselUnit.fabTime/20);
+            }
             let tile = getTileById(tileId);
             console.log(conselUnit);
             let nextId;
@@ -894,17 +898,6 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                         newBat.salvoLeft = 0;
                     } else {
                         let constFactor = 20;
-                        if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices') {
-                            if (!conselUnit.skills.includes('domeconst')) {
-                                constFactor = constFactor*(playerInfos.comp.const+3)/3;
-                            }
-                        }
-                        if (conselUnit.cat === 'vehicles') {
-                            constFactor = constFactor*(playerInfos.comp.ind+2)/3;
-                        }
-                        if (conselUnit.cat === 'infantry') {
-                            constFactor = constFactor*(playerInfos.comp.train+2)/3;
-                        }
                         if (conselUnit.skills.includes('domeconst')) {
                             newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*10);
                             newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*10);
