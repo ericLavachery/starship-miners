@@ -367,13 +367,12 @@ function voirZones() {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
-    // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="constName or" id="gentils">CHARGER UNE ZONE</span><br>');
     $('#conUnitList').append('<br>');
     zoneFiles.forEach(function(zoneId) {
         $('#conUnitList').append('<span class="paramName cy klik" onclick="loadZone('+zoneId+')">Charger</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue">Zone '+zoneId+'</span><br>');
     });
+    $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
 function loadZone(zoneId) {

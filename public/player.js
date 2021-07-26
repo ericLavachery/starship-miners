@@ -8,8 +8,6 @@ function gangEdit() {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
-    // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="blockTitle"><h3>Player Infos</h3></span>');
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     // sondeDanger (mapDiff)
@@ -119,6 +117,7 @@ function gangEdit() {
     // $('#theDark').empty().append('<option value="false">Type de Zone</option>');
     // $('#theDark').append('<option value="false">Normale</option>');
     // $('#theDark').append('<option value="true">Sombre</option>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
     showEquip();
 };
 
@@ -992,6 +991,7 @@ function landerFill() {
         }
     });
     $('#conUnitList').append('<br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
 function fillLanderWithInfra(fillInfraName,road) {
@@ -1343,6 +1343,7 @@ function missionResults(onlyLanders) {
         resColour = 'cy';
     }
     $('#conUnitList').append('<span class="paramName vert">Total</span><span class="paramIcon"></span><span class="paramValue '+resColour+'">'+balance+'</span><br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
     commandes();
 };
 
@@ -1475,6 +1476,7 @@ function gangLevelView() {
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="ListRes"></span><br>');
     $('#conUnitList').append('<br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
 function checkGangLevel() {
@@ -1565,6 +1567,7 @@ function gangLevelUp(retour) {
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="ListRes"></span><br>');
     $('#conUnitList').append('<br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
 function addComp(compId,nextComp) {

@@ -47,6 +47,7 @@ function voirReserve() {
         }
     });
     $('#conUnitList').append('<br><br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
 function tagRes(resId) {

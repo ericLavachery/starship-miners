@@ -326,6 +326,7 @@ function editSonde() {
         i++
     }
     $('#conUnitList').append('<br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
 function stopSonde() {
@@ -415,6 +416,7 @@ function pickZone() {
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="ListRes">Pour avoir plus de zones, lancez une sonde!</span><br>');
     $('#conUnitList').append('<br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
 function putMissionZone(zoneId) {

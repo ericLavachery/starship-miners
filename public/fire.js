@@ -508,7 +508,7 @@ function attack(melee) {
     } else {
         shotDice = calcShotDice(selectedBat,false);
     }
-    if (playerInfos.pseudo === 'Test') {
+    if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall') {
         shotDice = 100;
     }
     console.log('shotDice='+shotDice);
@@ -1325,7 +1325,7 @@ function defense(melee) {
     } else {
         shotDice = calcShotDice(targetBat,false);
     }
-    if (playerInfos.pseudo === 'Test') {
+    if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall') {
         shotDice = 100;
     }
     // noBig

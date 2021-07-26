@@ -14,8 +14,6 @@ function craftWindow() {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
-    // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="blockTitle"><h1>Crafting</h1></span>');
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
@@ -105,7 +103,8 @@ function craftWindow() {
                 $('#conUnitList').append('<hr>');
             }
         });
-    }
+    }    
+    $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
 function checkOldCraft(craft) {

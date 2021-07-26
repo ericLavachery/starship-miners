@@ -144,6 +144,7 @@ function loadRes() {
     }
     $('#conUnitList').append('<hr>');
     $('#conUnitList').append('<br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
 function seeAllTrans(seeAll) {

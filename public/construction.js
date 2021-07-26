@@ -211,6 +211,7 @@ function bfconst(cat,triche,upgrade) {
         });
     }
     $('#conUnitList').append('<br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
     commandes();
 };
 

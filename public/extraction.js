@@ -346,8 +346,6 @@ function chooseRes(again) {
     $("#unitInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
-    // $('#conUnitList').append('<span class="constIcon"><i class="fas fa-times-circle"></i></span>');
-    // $('#conUnitList').append('<span class="constName klik cy" onclick="conOut()">Fermer</span><br><br>');
     $('#conUnitList').append('<span class="constName or">RESSOURCES à extraire</span><br>');
     let rate = getMiningRate(selectedBat,true);
     let allRes = getAllRes(selectedBat);
@@ -381,6 +379,7 @@ function chooseRes(again) {
         }
     });
     $('#conUnitList').append('<span class="constName">Total de ressources : <span class="cy">'+totalExRes+'</span></span><br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
 function resSelect(resId) {
@@ -523,6 +522,7 @@ function voirRessources() {
             }
         });
     }
+    $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
 function showTileRes(theTileRes) {

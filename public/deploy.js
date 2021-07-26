@@ -243,6 +243,7 @@ function reEquip(batId,noRefresh) {
     $('#conAmmoList').append('<br>');
     $('#conAmmoList').append('<span class="blockTitle"><h4><button type="button" title="Faire les changements dans les munitions, armures et équipements" class="boutonCaca iconButtons" onclick="doReEquip(`'+myBat.id+'`)"><i class="ra ra-rifle rpg"></i> &nbsp;<span class="notsosmall">Rééquiper</span></button></h4></span><br>');
     $('#conAmmoList').append('<br>');
+    $("#conAmmoList").animate({scrollTop:0},"fast");
 };
 
 function checkHasWeapon(num,batType,eq) {

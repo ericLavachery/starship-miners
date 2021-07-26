@@ -808,7 +808,7 @@ function spawns() {
                 }
             } else if (bat.type === 'Megagrubz' && rand.rand(1,3) === 1 && aliens.length < maxAliens) {
                 alienSpawn(bat,'Vomissure','larve');
-            } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && rand.rand(1,3) === 1) {
+            } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && rand.rand(1,4) === 1) {
                 if (aliensNums.homards >= 1) {
                     if (rand.rand(1,2) === 1) {
                         alienMorph(bat,'Homards',false);
