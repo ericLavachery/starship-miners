@@ -86,7 +86,6 @@ function combat(melee) {
     if (activeTurn == 'player') {
         // camoOut(); - se fait maintenant en fin de combat !!!
         // tagAction();
-        doneAction(selectedBat);
         centerMapTarget();
     } else {
         centerMap();
