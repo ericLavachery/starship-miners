@@ -731,6 +731,7 @@ function clickConstruct(tileId,free) {
                     selectedBat.tags.push('construction');
                 }
                 tagDelete(selectedBat,'guet');
+                doneAction(selectedBat);
                 camoOut();
                 selectedBatArrayUpdate();
             }
@@ -1443,6 +1444,8 @@ function demolition(apCost) {
     let infra = getInfraByName(tile.infra);
     recupInfraRes(tile,infra);
     selectedBat.apLeft = selectedBat.apLeft-apCost;
+    tagDelete(selectedBat,'guet');
+    doneAction(selectedBat);
     selectedBatArrayUpdate();
     tile.infra = 'Débris';
     showMap(zone,false);
@@ -1534,6 +1537,7 @@ function putRoad() {
     let roadCosts = getRoadCosts(tile);
     payCost(roadCosts);
     tagDelete(selectedBat,'guet');
+    doneAction(selectedBat);
     camoOut();
     selectedBatArrayUpdate();
     tile.rd = true;
@@ -1559,6 +1563,7 @@ function putInfra(infraName) {
     }
     payCost(infra.costs);
     tagDelete(selectedBat,'guet');
+    doneAction(selectedBat);
     camoOut();
     selectedBatArrayUpdate();
     tile.infra = infraName;

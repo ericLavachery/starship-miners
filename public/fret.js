@@ -179,8 +179,6 @@ function resAllLoad(batId) {
     });
     doneAction(bat);
     doneAction(selectedBat);
-    // putTagAction(bat);
-    // putTagAction(selectedBat);
     selectedBatArrayUpdate();
     loadRes();
 };
@@ -235,8 +233,6 @@ function resMaxLoad(batId,addAutoLoad) {
     }
     doneAction(bat);
     doneAction(selectedBat);
-    // putTagAction(bat);
-    // putTagAction(selectedBat);
     selectedBatArrayUpdate();
     loadRes();
 };

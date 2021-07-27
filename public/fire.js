@@ -1120,6 +1120,7 @@ function attack(melee) {
             }
         }
     }
+    doneAction(selectedBat);
     selectedBatArrayUpdate();
     escaped = false;
 };
@@ -1763,6 +1764,7 @@ function defense(melee) {
             }
         }
     }
+    // doneAction(targetBat);
     targetBatArrayUpdate();
     escaped = false;
 };

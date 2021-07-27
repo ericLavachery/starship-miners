@@ -28,6 +28,8 @@ function searchRuins(apCost) {
         tile.sh = -1;
         // saveMap();
         selectedBat.xp = selectedBat.xp+1;
+        tagDelete(selectedBat,'guet');
+        doneAction(selectedBat);
         selectedBatArrayUpdate();
         showBatInfos(selectedBat);
         ruinsEmpty = true;

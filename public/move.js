@@ -27,9 +27,9 @@ function clickMove(tileId) {
     }
     if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'e-jetpack') {
         jump = true;
-        if (!ownTransHere) {
-            stackOK = false;
-        }
+        // if (!ownTransHere) {
+        //     stackOK = false;
+        // }
         distance = calcJumpDistance(selectedBat.tileId,tileId);
         let jmc = selectedBatType.moveCost;
         if (selectedBat.eq === 'e-jetpack') {
@@ -39,11 +39,11 @@ function clickMove(tileId) {
             moveOK = true;
         }
     }
-    if (hasShot()) {
-        if (!ownTransHere) {
-            stackOK = false;
-        }
-    }
+    // if (hasShot()) {
+    //     if (!ownTransHere) {
+    //         stackOK = false;
+    //     }
+    // }
     if (moveOK) {
         if (!stackOK && ownBatHere) {
             warning('Mouvement illégal:','Pas de mouvement par dessus une unité si vous avez déjà attaqué (ou utilisé une habileté).<br>Le dernier mouvement n\'a pas été éxécuté.');
@@ -82,6 +82,36 @@ function clickMove(tileId) {
         } else {
             // terrain non adjacent : unselect
             clickSelect(tileId);
+        }
+    }
+};
+
+function tagAction() {
+    if (!selectedBat.tags.includes('action')) {
+        selectedBat.tags.push('action');
+    }
+    selectedBat.oldTileId = selectedBat.tileId;
+    selectedBat.oldapLeft = selectedBat.apLeft;
+    selectedBatArrayUpdate();
+};
+
+function putTagAction(bat) {
+    if (!bat.tags.includes('action')) {
+        bat.tags.push('action');
+    }
+    bat.oldTileId = bat.tileId;
+    bat.oldapLeft = bat.apLeft;
+};
+
+function doneAction(bat) {
+    if (bat.cat != 'aliens') {
+        if (bat.id === selectedBat.id) {
+            selectedBat.oldTileId = selectedBat.tileId;
+            selectedBat.oldapLeft = selectedBat.apLeft;
+            selectedBatArrayUpdate();
+        } else {
+            bat.oldTileId = bat.tileId;
+            bat.oldapLeft = bat.apLeft;
         }
     }
 };

@@ -242,7 +242,9 @@ function goRavit() {
                     i++;
                 }
             }
+            doneAction(ravitBat);
             tagDelete(selectedBat,'guet');
+            doneAction(selectedBat);
             selectedBatArrayUpdate();
             showBatInfos(selectedBat);
         }
@@ -327,15 +329,14 @@ function goRavitDrug(apCost) {
                 if (i > 120) {break;}
                 i++;
             }
-            if (true) {
-
-            }
             ravitBatType = getBatType(ravitBat);
             if (ravitBatType.maxSkill < 999 && !ravitBatType.skills.includes('stockmed')) {
                 ravitBat.tags.push('sU');
                 ravitBat.tags.push('sU');
             }
+            doneAction(ravitBat);
             tagDelete(selectedBat,'guet');
+            doneAction(selectedBat);
             selectedBatArrayUpdate();
             showBatInfos(selectedBat);
         }
@@ -389,6 +390,9 @@ function goStock(apCost) {
                 if (i > 50) {break;}
                 i++
             }
+            doneAction(stockBat);
+            tagDelete(selectedBat,'guet');
+            doneAction(selectedBat);
             selectedBatArrayUpdate();
             showBatInfos(selectedBat);
         }

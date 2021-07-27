@@ -66,7 +66,9 @@ function goTreuil(treuilBatId,gainPA) {
     selectedBat.salvoLeft = 0;
     let treuilBat = getBatById(treuilBatId);
     treuilBat.apLeft = treuilBat.apLeft-4;
+    doneAction(treuilBat);
     tagDelete(selectedBat,'guet');
+    doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
@@ -105,6 +107,7 @@ function gloireASatan() {
         }
     });
     tagDelete(selectedBat,'guet');
+    doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
@@ -371,7 +374,7 @@ function goDrug(apCost,drugName) {
             }
         }
         payCost(drug.costs);
-        // tagAction();
+        doneAction(ravitBat);
         tagDelete(selectedBat,'guet');
         doneAction(selectedBat);
         selectedBatArrayUpdate();

@@ -1221,34 +1221,6 @@ function tagDelete(bat,tag) {
     }
 };
 
-function tagAction() {
-    if (!selectedBat.tags.includes('action')) {
-        selectedBat.tags.push('action');
-    }
-    selectedBat.oldTileId = selectedBat.tileId;
-    selectedBat.oldapLeft = selectedBat.apLeft;
-    selectedBatArrayUpdate();
-};
-
-function putTagAction(bat) {
-    if (!bat.tags.includes('action')) {
-        bat.tags.push('action');
-    }
-    bat.oldTileId = bat.tileId;
-    bat.oldapLeft = bat.apLeft;
-};
-
-function doneAction(bat) {
-    if (bat.id === selectedBat.id) {
-        selectedBat.oldTileId = selectedBat.tileId;
-        selectedBat.oldapLeft = selectedBat.apLeft;
-        selectedBatArrayUpdate();
-    } else {
-        bat.oldTileId = bat.tileId;
-        bat.oldapLeft = bat.apLeft;
-    }
-};
-
 function levelUp(bat) {
     bat.xp = bat.xp.toFixedNumber(2);
     if (bat.xp >= levelXP[4]) {
