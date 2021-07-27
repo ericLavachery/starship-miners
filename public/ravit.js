@@ -363,7 +363,7 @@ function checkStock(myBat) {
 function goStock(apCost) {
     if (selectedBat.tags.includes('sU')) {
         let batType;
-        let stocktBat = {};
+        let stockBat = {};
         let stockOK = false;
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
@@ -371,7 +371,7 @@ function goStock(apCost) {
                 if (batType.skills.includes('stock')) {
                     if (calcDistance(selectedBat.tileId,bat.tileId) <= 1) {
                         stockOK = true;
-                        stocktBat = bat;
+                        stockBat = bat;
                     }
                 }
             }
