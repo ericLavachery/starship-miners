@@ -177,8 +177,8 @@ function unitWeaponDisplay(thisWeapon,batType) {
     let noise = 3;
     if (thisWeapon.noise != undefined) {
         noise = thisWeapon.noise;
-        $('#'+bodyPlace).append('<span class="paramName">Bruit</span><span class="paramIcon"></span><span class="paramValue">'+noise+'</span><br>');
     }
+    $('#'+bodyPlace).append('<span class="paramName">Bruit</span><span class="paramIcon"></span><span class="paramValue">'+noise+'</span><br>');
 
     // thisWeapon.kit = weapon.kit;
 

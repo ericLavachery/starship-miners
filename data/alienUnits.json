@@ -2089,11 +2089,11 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capmen","hide","resistfeu","resistall","infkill","bomb"],
+        "skills":["capmen","hide","resistfeu","resistall","infkill","bomb","nez"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":1,"Aranium":9,"Pyrus":1,"Blendium":5},
         "killXP":6,
-        "flavText":"Les torches chassent vos infanteries en priorité, même celles qui sont très éloignées. Elles peuvent se suicider en explosant si elles sont proches de la mort et ne sont pas en mouvement."
+        "flavText":"Les torches chassent vos infanteries en priorité, même celles qui sont très éloignées ou furtives. Elles peuvent se suicider en explosant si elles sont proches de la mort et ne sont pas en mouvement."
     },
     {
         "id":48,
@@ -2706,6 +2706,7 @@
         "skills":["slowreg","resistfeu","reactpoison","nolaser","baddef","eggprotect","noaploss","xpfeast"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":12,"Mendium":8,"Pyrus":26},
-        "killXP":35
+        "killXP":35,
+        "flavText":"Les volcans pondent des torches de temps en temps."
     }
 ]

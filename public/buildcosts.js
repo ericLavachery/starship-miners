@@ -437,14 +437,32 @@ function getDeployCosts(unit,ammo,weapNum,type) {
             }
         } else {
             if (unit.skills.includes('prefab')) {
-                deployFactor = getBldDeployFactor();
+                deployFactor = getBldDeployFactor(unit);
                 // deployCosts = JSON.parse(JSON.stringify(unit.costs));
                 Object.entries(unit.costs).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
                     let adjValue = Math.floor(value*deployFactor);
-                    if (adjValue >= (playerInfos.comp.tri*5)+5) {
-                        deployCosts[key] = adjValue;
+                    let minValue = (playerInfos.comp.tri+1)*(playerInfos.comp.tri+1);
+                    if (key === 'Electros' || key === 'Batteries') {
+                        adjValue = Math.floor(adjValue/3)-3;
+                    }
+                    if (key === 'Energie') {
+                        deployCosts[key] = Math.ceil(value/4);
+                    } else if (key === 'Electros' || key === 'Batteries') {
+                        if (adjValue >= 1) {
+                            deployCosts[key] = adjValue;
+                        }
+                    } else {
+                        if (unit.skills.includes('ground')) {
+                            if (adjValue >= 1) {
+                                deployCosts[key] = adjValue;
+                            }
+                        } else {
+                            if (adjValue >= minValue) {
+                                deployCosts[key] = adjValue;
+                            }
+                        }
                     }
                 });
             } else {
@@ -475,21 +493,42 @@ function getDeployCosts(unit,ammo,weapNum,type) {
     return deployCosts;
 }
 
-function getBldDeployFactor() {
-    let dfac = 1/(((playerInfos.comp.tri+3)*(playerInfos.comp.const+1)*1.333)+1);
+function getBldDeployFactor(unit) {
+    let dfac = 1/(((playerInfos.comp.tri+4)*(playerInfos.comp.const+1)*1)+1);
+    if (unit.skills.includes('ground')) {
+        dfac = 1/(((playerInfos.comp.tri+6)*(playerInfos.comp.const+3)*0.056)+1);
+    }
     return dfac;
 };
 
 function calcBldDeploy(unit) {
     let deployCosts = {};
-    let deployFactor = getBldDeployFactor();
+    let deployFactor = getBldDeployFactor(unit);
     if (unit.skills.includes('prefab')) {
         Object.entries(unit.costs).map(entry => {
             let key = entry[0];
             let value = entry[1];
             let adjValue = Math.floor(value*deployFactor);
-            if (adjValue >= (playerInfos.comp.tri*5)+5) {
-                deployCosts[key] = adjValue;
+            let minValue = (playerInfos.comp.tri+1)*(playerInfos.comp.tri+1);
+            if (key === 'Electros' || key === 'Batteries') {
+                adjValue = Math.floor(adjValue/3)-3;
+            }
+            if (key === 'Energie') {
+                deployCosts[key] = Math.ceil(value/4);
+            } else if (key === 'Electros' || key === 'Batteries') {
+                if (adjValue >= 1) {
+                    deployCosts[key] = adjValue;
+                }
+            } else {
+                if (unit.skills.includes('ground')) {
+                    if (adjValue >= 1) {
+                        deployCosts[key] = adjValue;
+                    }
+                } else {
+                    if (adjValue >= minValue) {
+                        deployCosts[key] = adjValue;
+                    }
+                }
             }
         });
     }

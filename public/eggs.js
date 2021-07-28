@@ -734,6 +734,7 @@ function spawns() {
     let libGenMorph = 0;
     let libGenMax = 14-zone[0].mapDiff;
     if (libGenMax < 4) {libGenMax = 4;}
+    let minVolcDiff = (zone[0].mapDiff*20)+zone[0].mapTurn;
     let flyDice;
     let warnAsticots = false;
     let warnVers = false;
@@ -751,6 +752,13 @@ function spawns() {
                 eggSpawn(bat,true);
             } else if (bat.type === 'Ruche' && aliens.length < maxAliens) {
                 eggSpawn(bat,false);
+            } else if (bat.type === 'Volcan' && aliens.length < maxAliens && minVolcDiff >= 100) {
+                let volcSpawn = (bat.squadsLeft*3)-zone[0].mapDiff;
+                if (volcSpawn < 1) {volcSpawn = 1;}
+                if (rand.rand(1,volcSpawn) === 1) {
+                    alienSpawn(bat,'Torches');
+                    alienSpawn(bat,'Torches');
+                }
             } else if (bat.type === 'Colonie' && rand.rand(1,3) === 1) {
                 alienSpawn(bat,'Vomissure');
             } else if (transList.includes('Asticots') && bat.type === 'Asticots' && !bat.tags.includes('morph')) {
