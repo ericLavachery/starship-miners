@@ -1606,26 +1606,27 @@ function skillsInfos(bat,batType) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
         }
     }
-    // DECONSTRUIRE VERS LANDER (si à côté)
-    if (!playerInfos.onShip) {
-        if (batType.skills.includes('prefab') && bat.apLeft >= 5) {
-            let isLoaded = checkCharged(bat,'load');
-            let isCharged = checkCharged(bat,'trans');
-            if (!isLoaded && !isCharged) {
-                let landerBat = findTheLander();
-                if (Object.keys(landerBat).length >= 1) {
-                    let landerDistance = calcDistance(landerBat.tileId,bat.tileId);
-                    if (landerDistance <= 1 || playerInfos.onShip) {
-                        let apCost = Math.round(6*batType.fabTime/30);
-                        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine skillButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
+    if (!inSoute && batType.name != 'Soute') {
+        // DEBARQUER
+        unloadInfos(bat,batType);
+        // DECONSTRUIRE VERS LANDER (si à côté)
+        if (!playerInfos.onShip) {
+            if (batType.skills.includes('prefab') && bat.apLeft >= 5) {
+                let isLoaded = checkCharged(bat,'load');
+                let isCharged = checkCharged(bat,'trans');
+                if (!isLoaded && !isCharged) {
+                    let landerBat = findTheLander();
+                    if (Object.keys(landerBat).length >= 1) {
+                        let landerDistance = calcDistance(landerBat.tileId,bat.tileId);
+                        if (landerDistance <= 1 || playerInfos.onShip) {
+                            let apCost = Math.round(6*batType.fabTime/30);
+                            $('#unitInfos').append('<hr>');
+                            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine skillButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
+                        }
                     }
                 }
             }
         }
-    }
-    if (!inSoute && batType.name != 'Soute') {
-        // DEBARQUER
-        unloadInfos(bat,batType);
         // RECONSTRUIRE
         refabInfos(bat,batType);
     }

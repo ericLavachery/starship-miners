@@ -90,9 +90,9 @@ function souteMenu() {
             $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`vehicles`)">Véhicules &nbsp;&nbsp;</span>');
         }
         if (souteFilter === 'prefabs') {
-            $('#menu_soute').append('<span class="menuTab cy">Préfabriqués</span>');
+            $('#menu_soute').append('<span class="menuTab cy">Bâtiments</span>');
         } else {
-            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`prefabs`)">Préfabriqués</span>');
+            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`prefabs`)">Bâtiments</span>');
         }
     }
 };

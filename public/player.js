@@ -1389,7 +1389,7 @@ function addStartPack() {
     addFreeBat(2011,'Sonde');
     // Ajouter les Citoyens
     let soute = getSoute();
-    let thePeople = 1950+(rand.rand(6,10)*6);
+    let thePeople = 2160+(rand.rand(6,10)*6);
     let theMafia = rand.rand(12,20)*6;
     thePeople = thePeople-theMafia;
     let unitIndex = unitTypes.findIndex((obj => obj.name === 'Citoyens'));

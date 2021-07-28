@@ -103,8 +103,8 @@ function craftWindow() {
                 $('#conUnitList').append('<hr>');
             }
         });
-    }    
-    $("#conUnitList").animate({scrollTop:0},"fast");
+    }
+    // $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
 function checkOldCraft(craft) {

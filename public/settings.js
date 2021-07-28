@@ -45,7 +45,7 @@ let zonePrev = [];
 let resources = [];
 let minedThisTurn = {};
 let fretTuning = 2; // multiplie tous les Frets des unités : def 1
-let mineRateDiv = 175; // divise le mining rate : def 200 (before: 125)
+let mineRateDiv = 200; // divise le mining rate : def 200 (before: 125)
 let resFoundDiv = 8; // default 9
 let resBatchDiv = 16;
 let permaRes = false;
@@ -104,7 +104,7 @@ let vetBonus = {
     stealth: 1.4
 }
 let levelXP = [0,50,150,335,750];
-let gangLevelCit = [0,500,1000,1500,2000,2400,2800,3200,3600,4000,4400,4800,5200,5600,6000,6400,6800,7200,7600,8000,8400,8800,9200];
+let gangLevelCit = [0,1000,1400,1800,2200,2600,3000,3400,3800,4200,4600,5000,5400,5800,6200,6600,7000,7400,7800,8200,8600,9000,9400];
 let myCompPoints = 0;
 // ACTIONS
 let isReloaded = true;
