@@ -35,7 +35,7 @@ function clickMove(tileId) {
         if (selectedBat.eq === 'e-jetpack') {
             jmc = 2;
         }
-        if (Math.floor(distance) <= Math.ceil(selectedBat.apLeft/jmc)) {
+        if (Math.floor(distance) <= Math.ceil(selectedBat.apLeft/jmc) && selectedBat.tileId != tileId) {
             moveOK = true;
         }
     }

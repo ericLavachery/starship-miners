@@ -114,7 +114,7 @@ socket.on('playerInfos-Load', function(pi) {
         playerInfos.nextId = 1001;
     }
     if (playerInfos.allCits === undefined) {
-        playerInfos.allCits = 2000;
+        playerInfos.allCits = 2200;
     }
     if (playerInfos.allTurns === undefined) {
         playerInfos.allTurns = (playerInfos.gLevel-4)*80;
