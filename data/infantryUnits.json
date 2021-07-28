@@ -952,7 +952,7 @@
             "power":12,
             "aoe":"unit",
             "sound":"plasma_fusil",
-            "ammo":["plasma","plastanium","uridium","nanite"]
+            "ammo":["proto-plasma","plasma","plastanium","uridium","nanite"]
         },
         "weapon2":{
             "name":"Lame",
@@ -1021,7 +1021,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["plasma","plastanium","uridium"]
+            "ammo":["proto-plasma","plasma","plastanium","uridium"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "equip":["aucun","e-flash","e-ranger","e-medic","w2-pplasma","e-camo","waterproof"],
@@ -3064,7 +3064,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["plasma","plastanium","uridium"]
+            "ammo":["proto-plasma","plasma","plastanium","uridium"]
         },
         "weapon2":{
             "name":"Carabine laser",
@@ -3336,7 +3336,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["plasma","plastanium","uridium"]
+            "ammo":["proto-plasma","plasma","plastanium","uridium"]
         },
         "weapon2":{
             "name":"BFG",
@@ -4660,7 +4660,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["plasma","plastanium","uridium"]
+            "ammo":["proto-plasma","plasma","plastanium","uridium"]
         },
         "weapon2":{
             "name":"Fusil mitrailleur",

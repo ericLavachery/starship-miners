@@ -1322,7 +1322,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["plasma","plastanium","uridium","nanite"]
+            "ammo":["proto-plasma","plasma","plastanium","uridium","nanite"]
         },
         "weapon2":{
             "name":"Marquage",
