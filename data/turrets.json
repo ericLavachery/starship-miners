@@ -57,7 +57,7 @@
         "mecanoCost":9,
         "transMaxSize":30,
         "transUnits":3500,
-        "transRes":7000,
+        "transRes":12000,
         "fuzz":7,
         "deathFx":"planeexploground2"
     },
@@ -118,8 +118,8 @@
         "mediCost":9,
         "mecanoCost":9,
         "transMaxSize":44,
-        "transUnits":7500,
-        "transRes":18000,
+        "transUnits":8000,
+        "transRes":27000,
         "fuzz":4,
         "deathFx":"planeexploground2"
     },
@@ -178,8 +178,8 @@
         "mediCost":8,
         "mecanoCost":8,
         "transMaxSize":50,
-        "transUnits":12000,
-        "transRes":25000,
+        "transUnits":14000,
+        "transRes":35000,
         "fuzz":4.5,
         "deathFx":"planeexploground2"
     },
@@ -238,8 +238,8 @@
         "mediCost":7,
         "mecanoCost":7,
         "transMaxSize":55,
-        "transUnits":18000,
-        "transRes":40000,
+        "transUnits":20000,
+        "transRes":55000,
         "fuzz":5,
         "deathFx":"planeexploground2"
     },
@@ -301,7 +301,7 @@
         "mediCost":5,
         "mecanoCost":5,
         "transMaxSize":100,
-        "transUnits":30000,
+        "transUnits":40000,
         "transRes":100000,
         "fuzz":5,
         "deathFx":"planeexploground2"
@@ -371,8 +371,8 @@
             "subTypes":[]
         },
         "transMaxSize":65,
-        "transUnits":22000,
-        "transRes":70000,
+        "transUnits":25000,
+        "transRes":80000,
         "fuzz":5,
         "deathFx":"planeexploground2"
     },
@@ -435,8 +435,8 @@
         "mediCost":6,
         "mecanoCost":6,
         "transMaxSize":55,
-        "transUnits":20000,
-        "transRes":40000,
+        "transUnits":24000,
+        "transRes":60000,
         "fuzz":7,
         "deathFx":"planeexploground2"
     },
@@ -547,8 +547,8 @@
         "mediCost":7,
         "mecanoCost":7,
         "transMaxSize":33,
-        "transUnits":10000,
-        "transRes":20000,
+        "transUnits":12000,
+        "transRes":25000,
         "fuzz":4,
         "deathFx":"planeexploground2"
     },

@@ -257,6 +257,18 @@ function nextTurnEnd() {
                 bat.tileId = transBat.tileId;
                 bat.oldTileId = transBat.oldTileId;
             }
+            // TRANS DANS TRANS
+            if (bat.loc === 'trans') {
+                let motherBat = getBatById(bat.locId);
+                if (motherBat.loc === 'trans') {
+                    let grandMotherBat = getBatById(motherBat.locId);
+                    console.log('MATRIOCHKA!');
+                    console.log(bat);
+                    console.log(motherBat);
+                    console.log(grandMotherBat);
+                    // loadBat(bat.Id,grandMotherBat.id,motherBat.id);
+                }
+            }
             updateBatProperties(bat,batType);
             if (bat.autoLoad != undefined) {
                 if (Array.isArray(bat.autoLoad)) {
@@ -297,6 +309,7 @@ function nextTurnEnd() {
                     }
                 }
             }
+            // AUTOLOAD
             if (bat.autoLoad != undefined) {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {

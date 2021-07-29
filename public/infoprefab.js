@@ -1,24 +1,26 @@
 function defabInfos(bat,batType) {
     console.log('prefabInfos');
-    let isLoaded = checkCharged(bat,'load');
-    let isCharged = checkCharged(bat,'trans');
     let prefabId = checkPrefabId(bat,batType);
-    let landerBat = findTheLander();
-    console.log(landerBat);
-    if (prefabId >= 0 && !isLoaded && !isCharged && batType.skills.includes('constructeur') && Object.keys(landerBat).length >= 1) {
-        let prefabIndex = bataillons.findIndex((obj => obj.id == prefabId));
-        let prefabBat = bataillons[prefabIndex];
+    if (prefabId >= 0) {
+        let landerBat = findTheLander();
+        let prefabBat = getBatById(prefabId);
         let prefabBatType = getBatType(prefabBat);
-        let prefabBatName = bataillons[prefabIndex].type;
-        let apCost = Math.round(batType.mecanoCost*prefabBatType.fabTime/15);
-        let depliOK = true;
-        if (selectedBatType.cat === 'infantry') {
-            if (prefabBatType.fabTime >= 35 && !prefabBatType.skills.includes('clicput')) {
-                depliOK = false;
+        let prefabBatName = prefabBat.type;
+        let isLoaded = checkCharged(prefabBat,'load');
+        let isCharged = checkCharged(prefabBat,'trans');
+        if (!isLoaded && !isCharged) {
+            if (batType.skills.includes('constructeur') && Object.keys(landerBat).length >= 1) {
+                let apCost = Math.round(batType.mecanoCost*prefabBatType.fabTime/15);
+                let depliOK = true;
+                if (selectedBatType.cat === 'infantry') {
+                    if (prefabBatType.fabTime >= 35 && !prefabBatType.skills.includes('clicput')) {
+                        depliOK = false;
+                    }
+                }
+                if (depliOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire '+prefabBatName+'" class="boutonGris skillButtons" onclick="deconstruction('+prefabId+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
+                }
             }
-        }
-        if (depliOK) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire '+prefabBatName+'" class="boutonGris skillButtons" onclick="deconstruction('+prefabId+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
         }
     }
 };
