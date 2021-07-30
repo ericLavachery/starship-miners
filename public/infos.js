@@ -2,7 +2,6 @@ function showBatInfos(bat) {
     $("#unitInfos").css("display","block");
     let batType = getBatType(bat);
     batInfos(bat,batType,false);
-    // $('#unitinfos').scrollTop = 0;
     $("#unitInfos").animate({scrollTop:0},"fast");
     if (bat.type === 'Soute') {
         viewPop();

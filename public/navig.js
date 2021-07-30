@@ -45,7 +45,7 @@ function commandes() {
                     $('#commandz').append('<button type="button" title="Revenir sur la carte de la station" class="boutonGris iconButtons" onclick="goStation()" onmousedown="clicSound()"><i class="fas fa-chess-board"></i></button>');
                 }
             }
-            $('#commandz').append('<button type="button" title="Crafting" class="boutonGris iconButtons" onclick="craftWindow()" onmousedown="clicSound()"><i class="fas fa-toolbox"></i></button>');
+            $('#commandz').append('<button type="button" title="Crafting" class="boutonGris iconButtons" onclick="craftWindow(false)" onmousedown="clicSound()"><i class="fas fa-toolbox"></i></button>');
             $('#commandz').append('<button type="button" title="Réserve" class="boutonGris iconButtons" onclick="voirReserve()" onmousedown="clicSound()"><i class="fas fa-piggy-bank"></i></button>');
             $('#commandz').append('<br>');
         }
@@ -211,7 +211,7 @@ function viewPop() {
 
 function gangNavig() {
     $('#gangInfos').empty();
-    $('#gangInfos').append('<button type="button" title="Construire gratuitement" class="boutonCiel iconButtons" onclick="bfconst(`all`,true,false)"><i class="fa fa-hammer"></i></button>');
+    $('#gangInfos').append('<button type="button" title="Construire gratuitement" class="boutonCiel iconButtons" onclick="bfconst(`all`,true,false,false)"><i class="fa fa-hammer"></i></button>');
     $('#gangInfos').append('<button type="button" title="Remplir le lander" class="boutonCiel iconButtons" onclick="landerFill()"><i class="fas fa-dolly"></i></button>');
     $('#gangInfos').append('<button type="button" title="Editer le Gang" class="boutonCiel iconButtons" onclick="gangEdit()"><i class="fas fa-users-cog"></i></button>');
     $('#gangInfos').append('<br>');

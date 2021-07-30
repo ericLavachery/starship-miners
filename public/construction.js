@@ -1,4 +1,4 @@
-function bfconst(cat,triche,upgrade) {
+function bfconst(cat,triche,upgrade,retour) {
     conselCat = cat;
     conselTriche = triche;
     conselUpgrade = upgrade;
@@ -211,7 +211,15 @@ function bfconst(cat,triche,upgrade) {
         });
     }
     $('#conUnitList').append('<br>');
-    // $("#conUnitList").animate({scrollTop:0},"fast");
+    if (conselUpgrade) {
+        if (Object.keys(conselUnit).length >= 1) {
+            $('#conUnitList').append('<span class="blockTitle"><h4><button type="button" title="Transformer '+selectedBatType.name+' en '+conselUnit.name+'" class="boutonCaca iconButtons" onclick="doUpgrade()"><i class="ra ra-rifle rpg"></i> &nbsp;<span class="notsosmall">Transformer</span></button></h4></span><br>');
+            $('#conUnitList').append('<br>');
+        }
+    }
+    if (!retour) {
+        $("#conUnitList").animate({scrollTop:0},"fast");
+    }
     commandes();
 };
 
@@ -516,7 +524,7 @@ function conSelect(unitId,player,noRefresh) {
             }
         }
     }
-    bfconst(conselCat,conselTriche,conselUpgrade);
+    bfconst(conselCat,conselTriche,conselUpgrade,true);
 };
 
 function selectAmmo(ammo,weapon,unitId) {
@@ -653,6 +661,26 @@ function checkUprankXP(myBat,myBatType) {
     return isXPok;
 };
 
+function doUpgrade() {
+    if (conselUpgrade === 'bld') {
+        let myBatXP = selectedBat.xp;
+        let myBatId = selectedBat.id;
+        let myBatTileId = selectedBat.tileId;
+        removeBat(selectedBat.id);
+        putBat(myBatTileId,0,myBatXP);
+    }
+    if (conselUpgrade === 'inf') {
+        let myBatXP = Math.ceil(selectedBat.xp/4);
+        let myBatId = selectedBat.id;
+        let myBatTileId = selectedBat.tileId;
+        removeBat(selectedBat.id);
+        putBat(myBatTileId,0,myBatXP);
+    }
+    if (inSoute) {
+        goSoute();
+    }
+};
+
 function clickUpgrade(tileId) {
     if (tileId === selectedBat.tileId) {
         if (conselUpgrade === 'bld') {
@@ -737,7 +765,7 @@ function clickConstruct(tileId,free) {
             }
             putBat(tileId,0,0);
             if (conselTriche) {
-                bfconst(conselCat,conselTriche,conselUpgrade);
+                bfconst(conselCat,conselTriche,conselUpgrade,true);
                 $('#conAmmoList').empty();
             } else {
                 conOut();

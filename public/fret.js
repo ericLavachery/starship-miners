@@ -1,4 +1,4 @@
-function loadRes() {
+function loadRes(retour) {
     selectMode();
     let restSpace = checkResSpace(selectedBat);
     let selectedBatPic = getBatPic(selectedBat,selectedBatType);
@@ -144,17 +144,19 @@ function loadRes() {
     }
     $('#conUnitList').append('<hr>');
     $('#conUnitList').append('<br>');
-    $("#conUnitList").animate({scrollTop:0},"fast");
+    if (!retour) {
+        $("#conUnitList").animate({scrollTop:0},"fast");
+    }
 };
 
 function seeAllTrans(seeAll) {
     seeAllFret = seeAll;
-    loadRes();
+    loadRes(false);
 };
 
 function seeLandersTrans(see) {
     seeLandersFret = see;
-    loadRes();
+    loadRes(false);
 };
 
 function resAllLoad(batId) {
@@ -180,7 +182,7 @@ function resAllLoad(batId) {
     doneAction(bat);
     doneAction(selectedBat);
     selectedBatArrayUpdate();
-    loadRes();
+    loadRes(false);
 };
 
 function resMaxLoad(batId,addAutoLoad) {
@@ -234,7 +236,7 @@ function resMaxLoad(batId,addAutoLoad) {
     doneAction(bat);
     doneAction(selectedBat);
     selectedBatArrayUpdate();
-    loadRes();
+    loadRes(false);
 };
 
 function autoResLoad(toBat,fromBat) {
@@ -279,13 +281,13 @@ function stopThisAutoLoad(batId) {
         selectedBat.autoLoad.splice(index,1);
         selectedBatArrayUpdate();
     }
-    loadRes();
+    loadRes(false);
 };
 
 function stopAutoLoad() {
     selectedBat.autoLoad = [];
     selectedBatArrayUpdate();
-    loadRes();
+    loadRes(false);
 };
 
 function setDumper(activation) {
@@ -295,7 +297,7 @@ function setDumper(activation) {
         selectedBat.noDump = true;
     }
     selectedBatArrayUpdate();
-    loadRes();
+    loadRes(false);
 };
 
 function isResToLoad(myBat) {
@@ -349,7 +351,7 @@ function resSelectLoad(value,pickValue,resId,batId) {
     // putTagAction(bat);
     // putTagAction(selectedBat);
     selectedBatArrayUpdate();
-    loadRes();
+    loadRes(false);
 };
 
 function autoUnload(bat) {

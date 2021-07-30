@@ -243,7 +243,9 @@ function reEquip(batId,noRefresh) {
     $('#conAmmoList').append('<br>');
     $('#conAmmoList').append('<span class="blockTitle"><h4><button type="button" title="Faire les changements dans les munitions, armures et équipements" class="boutonCaca iconButtons" onclick="doReEquip(`'+myBat.id+'`)"><i class="ra ra-rifle rpg"></i> &nbsp;<span class="notsosmall">Rééquiper</span></button></h4></span><br>');
     $('#conAmmoList').append('<br>');
-    $("#conAmmoList").animate({scrollTop:0},"fast");
+    if (!retour) {
+        $("#conAmmoList").animate({scrollTop:0},"fast");
+    }
 };
 
 function checkHasWeapon(num,batType,eq) {
@@ -439,15 +441,15 @@ function deployAmmo(ammo,weapon,batId) {
             myNewGear[1] = ammo;
         }
     }
-    reEquip(batId,true);
+    reEquip(batId,true,true);
 };
 
 function deployArmor(armor,batId) {
     myNewGear[2] = armor;
-    reEquip(batId,true);
+    reEquip(batId,true,true);
 };
 
 function deployEquip(equip,batId) {
     myNewGear[3] = equip;
-    reEquip(batId,true);
+    reEquip(batId,true,true);
 };

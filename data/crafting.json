@@ -71,7 +71,7 @@
         "id":16,
         "result":"Compo1",
         "cost":{"Carbone":5,"Energie":1},
-        "compReq":{"const":1},
+        "compReq":{"const":1,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":4
     },
@@ -148,6 +148,7 @@
         "cost":{"Fer":3,"Silicium":4,"Titane":3,"Energie":2},
         "compReq":{"const":1},
         "bldReq":["Atelier"],
+        "compOut":{"ind":1},
         "bldOut":["Chaîne de montage"],
         "batch":4
     },
@@ -157,7 +158,7 @@
         "cost":{"Fer":3,"Carbone":4,"Titane":3,"Energie":4},
         "compReq":{"mat":1},
         "bldReq":["Atelier"],
-        "compOut":{"const":1},
+        "compOut":{"const":1,"ind":1},
         "bldOut":["Chaîne de montage"],
         "batch":4
     },
@@ -173,34 +174,34 @@
     {
         "id":8,
         "result":"Compo3",
-        "cost":{"Fer":1,"Silicium":2,"Titane":1,"Energie":1},
-        "compReq":{},
+        "cost":{"Fer":2,"Silicium":4,"Titane":2,"Energie":2},
+        "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":2
+        "batch":4
     },
     {
         "id":14,
         "result":"Compo3",
-        "cost":{"Fer":1,"Carbone":2,"Titane":1,"Energie":1},
-        "compReq":{"const":1},
+        "cost":{"Fer":2,"Carbone":4,"Titane":2,"Energie":2},
+        "compReq":{"const":1,"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":2
+        "batch":4
     },
     {
         "id":18,
         "result":"Compo3",
-        "cost":{"Scrap":2,"Carbone":1,"Titane":1,"Energie":1},
+        "cost":{"Scrap":4,"Carbone":2,"Titane":2,"Energie":2},
         "compReq":{"const":2,"tri":3,"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":2
+        "batch":4
     },
     {
         "id":15,
         "result":"Compo3",
-        "cost":{"Aluminium":1,"Carbone":1,"Tungstène":1,"Energie":1},
+        "cost":{"Aluminium":2,"Carbone":2,"Tungstène":2,"Energie":2},
         "compReq":{"const":2,"ind":2},
         "bldReq":["Usine"],
-        "batch":2
+        "batch":4
     },
     {
         "id":62,
@@ -243,7 +244,7 @@
         "id":0,
         "result":"Electros",
         "cost":{"Cuivre":2,"Silicium":1,"Cobalt":1,"Energie":1},
-        "compReq":{},
+        "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
         "compOut":{"ind":2},
         "batch":1
@@ -254,7 +255,7 @@
         "cost":{"Cuivre":5,"Silicium":2,"Cobalt":2,"Energie":1},
         "compReq":{"ind":2},
         "bldReq":["Chaîne de montage"],
-        "compOut":{"mat":2,"ind":3},
+        "compOut":{"ind":3},
         "bldOut":["Usine"],
         "batch":3
     },
@@ -290,23 +291,27 @@
         "id":127,
         "result":"Batteries",
         "cost":{"Carbone":4,"Zinc":4,"Nickel":4,"Energie":4},
-        "compReq":{"energ":1},
+        "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
+        "compOut":{"ind":2},
+        "bldOut":["Chaîne de montage"],
         "batch":5
     },
     {
         "id":19,
         "result":"Batteries",
         "cost":{"Carbone":4,"Zinc":3,"Nickel":3,"Energie":4},
-        "compReq":{"energ":2,"ind":1},
+        "compReq":{"ind":2},
         "bldReq":["Chaîne de montage"],
+        "compOut":{"ind":3},
+        "bldOut":["Usine"],
         "batch":5
     },
     {
         "id":20,
         "result":"Batteries",
         "cost":{"Carbone":3,"Azote":3,"Hydrogène":3,"Energie":4},
-        "compReq":{"energ":3,"ind":1},
+        "compReq":{"ind":3},
         "bldReq":["Usine"],
         "batch":5
     },
@@ -334,6 +339,8 @@
         "cost":{"Aluminium":17,"Silicium":2,"Cuivre":1},
         "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
+        "compOut":{"ind":2},
+        "bldOut":["Usine"],
         "batch":12,
         "creaNum":60
     },
@@ -366,8 +373,8 @@
     {
         "id":21,
         "result":"Fuel",
-        "cost":{"Hydrocarbure":10,"Huile":5},
-        "compReq":{"pyro":1},
+        "cost":{"Hydrocarbure":10,"Huile":4},
+        "compReq":{"pyro":3},
         "bldReq":["Atelier"],
         "batch":10
     },
@@ -383,7 +390,7 @@
         "id":22,
         "result":"Fuel",
         "cost":{"Carbone":10,"Hydrogène":5},
-        "compReq":{"energ":2,"ind":1},
+        "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":10
     },
@@ -391,7 +398,7 @@
         "id":23,
         "result":"Fuel",
         "cost":{"Végétaux":50,"Hydrogène":10},
-        "compReq":{"energ":2,"exo":2,"ind":2},
+        "compReq":{"exo":1,"ind":2},
         "bldReq":["Usine"],
         "batch":10
     },

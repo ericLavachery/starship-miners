@@ -1476,7 +1476,7 @@ function skillsInfos(bat,batType) {
         let upBatType = getBatTypeByName(batType.unitUp);
         apReq = 5;
         if (bat.apLeft >= apReq && !inMelee && (isInPlace || inSoute) && isXPok) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.unitUp+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`inf`)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.unitUp+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`inf`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Ne peut pas se faire en mêlée";
@@ -1490,30 +1490,30 @@ function skillsInfos(bat,batType) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
         }
     }
-    if (!inSoute) {
-        // UPGRADE BUILDING
-        if (batType.skills.includes('upgrade')) {
-            let isCharged = checkCharged(bat,'trans');
-            apReq = 5;
-            if (bat.apLeft >= apReq && !inMelee && !isCharged) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.bldUp+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`bld`)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
+    // UPGRADE BUILDING
+    if (batType.skills.includes('upgrade')) {
+        let isCharged = checkCharged(bat,'trans');
+        apReq = 5;
+        if (bat.apLeft >= apReq && !inMelee && !isCharged) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.bldUp+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`bld`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
+        } else {
+            if (inMelee) {
+                skillMessage = "Ne peut pas se faire en mêlée";
+            } else if (isCharged) {
+                skillMessage = "Vous devez vider votre bataillon avant de le transformer";
             } else {
-                if (inMelee) {
-                    skillMessage = "Ne peut pas se faire en mêlée";
-                } else if (isCharged) {
-                    skillMessage = "Vous devez vider votre bataillon avant de le transformer";
-                } else {
-                    skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
-                }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
+                skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
             }
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
         }
+    }
+    if (!inSoute) {
         if (isReloaded || playerInfos.mapTurn != 0 || playerInfos.onShip) {
             // CONSTRUCTION BATIMENTS
             if (batType.skills.includes('constructeur')) {
                 apReq = 5;
                 if (bat.apLeft >= apReq && !inMelee) {
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (bâtiments)" class="boutonNoir bigButtons" onclick="bfconst(`buildings`,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Construction</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (bâtiments)" class="boutonNoir bigButtons" onclick="bfconst(`buildings`,false,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Construction</h4></span>');
                 } else {
                     if (inMelee) {
                         skillMessage = "Ne peut pas se faire en mêlée";
@@ -1527,7 +1527,7 @@ function skillsInfos(bat,batType) {
             if (batType.skills.includes('producteur')) {
                 apReq = 5;
                 if (bat.apLeft >= apReq && !inMelee) {
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Production (unités)" class="boutonNoir bigButtons" onclick="bfconst(`units`,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Production (unités)" class="boutonNoir bigButtons" onclick="bfconst(`units`,false,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
                 } else {
                     if (inMelee) {
                         skillMessage = "Ne peut pas se faire en mêlée";
@@ -1554,7 +1554,7 @@ function skillsInfos(bat,batType) {
         apCost = Math.round(bat.ap*1.5);
         apReq = 5;
         if ((bat.apLeft >= apReq || playerInfos.onShip) && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Changer de munitions, équipement ou armure" class="boutonNoir skillButtons" onclick="reEquip('+bat.id+',false)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Rééquiper</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Changer de munitions, équipement ou armure" class="boutonNoir skillButtons" onclick="reEquip('+bat.id+',false,false)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Rééquiper</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Ne peut pas se faire en mêlée";
@@ -1596,7 +1596,7 @@ function skillsInfos(bat,batType) {
         }
         apReq = 0;
         if (!inMelee && !inSoute) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Charger des ressources" class="boutonCaca skillButtons" onclick="loadRes()"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Charger des ressources" class="boutonCaca skillButtons" onclick="loadRes(false)"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Impossible en mêlée";
@@ -1632,6 +1632,6 @@ function skillsInfos(bat,batType) {
     }
     // CONSTRUCTION TRICHE
     if (batType.skills.includes('triche')) {
-        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris skillButtons" onclick="bfconst(`all`,true,false)"><i class="fas fa-drafting-compass"></i></button>&nbsp; Construction</h4></span>');
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (Triche)" class="boutonGris skillButtons" onclick="bfconst(`all`,true,false,false)"><i class="fas fa-drafting-compass"></i></button>&nbsp; Construction</h4></span>');
     }
 };

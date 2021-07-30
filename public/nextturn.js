@@ -266,7 +266,7 @@ function nextTurnEnd() {
                     console.log(bat);
                     console.log(motherBat);
                     console.log(grandMotherBat);
-                    // loadBat(bat.Id,grandMotherBat.id,motherBat.id);
+                    loadBat(bat.id,grandMotherBat.id,motherBat.id);
                 }
             }
             updateBatProperties(bat,batType);

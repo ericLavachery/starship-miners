@@ -1,4 +1,4 @@
-function craftWindow() {
+function craftWindow(retour) {
     selectMode();
     batUnselect();
     updateBldList();
@@ -104,7 +104,9 @@ function craftWindow() {
             }
         });
     }
-    // $("#conUnitList").animate({scrollTop:0},"fast");
+    if (!retour) {
+        $("#conUnitList").animate({scrollTop:0},"fast");
+    }
 };
 
 function checkOldCraft(craft) {
@@ -169,7 +171,7 @@ function doCraft(craftId,number) {
     if (playerInfos.mapTurn >= 3) {
         // calcEndRes(false);
     }
-    craftWindow();
+    craftWindow(true);
 };
 
 function adjCraftFactor(craft,craftFactor) {
@@ -225,7 +227,7 @@ function adjCraftFactor(craft,craftFactor) {
 function doEnergyCraft(resName,neededRes,energyCreated) {
     resSub(resName,neededRes);
     resAdd('Energie',energyCreated);
-    craftWindow();
+    craftWindow(true);
 };
 
 function showCraftCost(craft,number) {
