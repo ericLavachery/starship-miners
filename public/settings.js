@@ -121,6 +121,7 @@ let coverFactor = 0.8; // multiplie la cover du terrain (enlevé à accuracy)
 let coverAOE = 0;
 let hitBase = 9; // bonus to hit général (aliens et humains)
 let alienHitBase = 2; // bonus to hit aliens
+let alienMeleeROF = 1.25;  // bonus rof aliens en mêlée
 let initiativeDice = 15 // ajoute 0-15
 let unitResist = 0;
 let minFailSoins = 60; // def 60 : minimum 15/75 soins réussis
@@ -163,6 +164,7 @@ let seeLandersFret = false;
 let landingNoise = 6;
 let upkeepVM = 1.33 // upkeep/1.33
 let prodVM = 1.33 // prod/1.33
+let gangsBonus = false;
 // ALIENS
 let isFFW = false;
 let pointDeMire = 1830; // tileId

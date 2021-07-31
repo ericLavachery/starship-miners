@@ -124,9 +124,9 @@ function getTerrainRes(terrain,tile) {
         srs.Végétaux = (Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*15)-15+(tile.seed*5);
         srs.Végétaux = Math.round(srs.Végétaux*zone[0].ensol/120);
         if (terrain.name === 'S') {
-            if (tile.seed === 6) {
+            if (tile.seed === 1) {
                 srs.Végétaux = srs.Végétaux+77;
-            } else if (tile.seed === 5) {
+            } else if (tile.seed === 4) {
                 srs.Végétaux = srs.Végétaux+45;
             }
         }
@@ -299,6 +299,9 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
             } else {
                 resRate = Math.ceil(resRate/3);
             }
+            if (gangsBonus && playerInfos.gang === 'brasier' && res.name === 'Hydrocarbure') {
+                resRate = Math.ceil(resRate*1.5);
+            }
         } else {
             resRate = 0;
         }
@@ -312,6 +315,12 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
         } else if (res.level >= 3) {
             resRate = Math.ceil(resRate/2);
         }
+    }
+    if (gangsBonus && playerInfos.gang === 'rednecks' && res.bld != 'Comptoir') {
+        resRate = Math.ceil(resRate*1.05);
+    }
+    if (gangsBonus && playerInfos.gang === 'blades' && res.bld === 'Comptoir') {
+        resRate = Math.ceil(resRate*1.1);
     }
     if (value <= 0) {
         resRate = 0;
