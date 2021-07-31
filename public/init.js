@@ -323,6 +323,7 @@ socket.on('unitCosts-Load', function(unitCosts) {
 socket.on('alienUnits-Load', function(au) {
     alienUnits = au;
     // console.log(alienUnits);
+    alienUnitsChanges();
     freeIds('aliens',alienUnits);
 });
 socket.on('aliens-Load', function(ab) {
