@@ -46,6 +46,7 @@
         "cat":"drogue",
         "apCost":0,
         "bldReq":[],
+        "bldVMReq":["Infirmerie"],
         "compReq":{"ca":1},
         "costs":{"Drogues":1,"Zinc":1,"Swarmine":1}
     },
@@ -54,6 +55,7 @@
         "cat":"drogue",
         "apCost":3,
         "bldReq":["Infirmerie"],
+        "bldVMReq":["Laboratoire"],
         "compReq":{"ca":2,"med":1},
         "costs":{"Drogues":1,"Végétaux":1,"Or":1,"Mendium":2}
     },
@@ -62,6 +64,7 @@
         "cat":"drogue",
         "apCost":0,
         "bldReq":[],
+        "bldVMReq":["Infirmerie"],
         "compReq":{"med":1},
         "costs":{"Drogues":1,"Hélium":1,"Bore":2,"Octiron":4}
     },
@@ -70,6 +73,7 @@
         "cat":"drogue",
         "apCost":1,
         "bldReq":[],
+        "bldVMReq":["Bar"],
         "compReq":{"ca":1,"exo":2},
         "costs":{"Drogues":1,"Mercure":1,"Bore":2,"Larvium":3}
     },
@@ -78,6 +82,7 @@
         "cat":"drogue",
         "apCost":3,
         "bldReq":["Bar"],
+        "bldVMReq":["Laboratoire"],
         "compReq":{"ca":2,"exo":2},
         "costs":{"Drogues":1,"Mercure":1,"Or":1,"Aranium":4}
     },
@@ -86,6 +91,7 @@
         "cat":"drogue",
         "apCost":3,
         "bldReq":["Bar"],
+        "bldVMReq":["Centre de recherches"],
         "compReq":{"ca":3,"exo":3},
         "costs":{"Drogues":1,"Mercure":1,"Hélium":1,"Bore":2,"Wingium":2}
     },
@@ -94,6 +100,7 @@
         "cat":"drogue",
         "apCost":3,
         "bldReq":[],
+        "bldVMReq":["Laboratoire"],
         "compReq":{"ca":1,"exo":1},
         "costs":{"Drogues":1,"Zinc":1,"Creatite":1,"Bugium":3}
     },
@@ -101,7 +108,8 @@
         "name": "nitro",
         "cat":"drogue",
         "apCost":0,
-        "bldReq":["Garage"],
+        "bldReq":[],
+        "bldVMReq":["Garage"],
         "compReq":{"energ":1},
         "costs":{"Huile":1,"Hydrogène":2,"Azote":2,"Slime":2}
     },
@@ -542,6 +550,17 @@
         "compReq":{"log":1,"scaph":1},
         "factor":"thp",
         "costs":{"Carbone":9,"Scrap":6,"Silicium":4,"Larvium":3}
+    },
+    {
+        "name": "g2tools",
+        "cat":"equip",
+        "skills": [],
+        "info": "Extraction+",
+        "bldReq":["Chaîne de montage"],
+        "compReq":{"log":1},
+        "factor":"one",
+        "costs":{"Carbone":30,"Fer":40,"Tungstène":20,"Moteurs":10,"Batteries":10},
+        "deploy":{"Huile":5,"Energie":35}
     },
     {
         "name": "e-flash",

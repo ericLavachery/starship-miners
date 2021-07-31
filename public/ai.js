@@ -355,6 +355,9 @@ function targetLogic(bat) {
     } else {
         tFuzz = averageDamage;
     }
+    if (bat.fuzz <= -2) {
+        tFuzz = tFuzz-2;
+    }
     return Math.round(tFuzz);
 };
 
@@ -416,7 +419,8 @@ function anyFarTarget() {
         if (bat.loc === "zone" && bat.fuzz >= minFuzz) {
             if (checkAlienFlyTarget(selectedWeap,bat)) {
                 distance = calcDistance(selectedBat.tileId,bat.tileId);
-                if (distance <= 10) {
+                distance = distance-(bat.fuzz*2);
+                if (distance <= 11) {
                     tLogic = targetLogic(bat);
                     if (tLogic > bestLogic) {
                         bestLogic = tLogic;
@@ -1069,7 +1073,7 @@ function targetClosest() {
                 batType = getBatType(bat);
                 if ((bat.fuzz >= minFuzz.unit && batType.cat != 'buildings') || (bat.fuzz >= minFuzz.bld && batType.cat === 'buildings')) {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
-                    if (distance == selectedWeap.range) {
+                    if (distance === selectedWeap.range) {
                         tLogic = targetLogic(bat);
                         if (tLogic > bestLogic) {
                             bestLogic = tLogic;

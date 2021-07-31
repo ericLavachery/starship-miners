@@ -898,7 +898,7 @@
         "volume":0.95,
         "stealth":2,
         "speed":3,
-        "ap":23,
+        "ap":22,
         "maxSalvo":2,
         "weapon":{
             "name":"Calibre",
@@ -2259,7 +2259,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
-        "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","belier","e-flash","theeye","e-mecano"],
+        "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","belier","e-flash","theeye","e-mecano","g2tools"],
         "log3eq":"chenilles",
         "moveCost":3,
         "maxFlood":0,
@@ -2330,7 +2330,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
-        "equip":["aucun","arcpoulie","g2motor","snorkel","e-flash","theeye","e-mecano","chenilles"],
+        "equip":["aucun","arcpoulie","g2motor","snorkel","e-flash","theeye","e-mecano","chenilles","g2tools"],
         "log3eq":"snorkel",
         "moveCost":3,
         "maxFlood":1,
@@ -2955,7 +2955,7 @@
             "ammo":["lame","lame-tungsten","lame-carbone"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","iso","dunium","bonibo","adamantite"],
-        "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","e-flash","e-mecano"],
+        "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","e-flash","e-mecano","g2tools"],
         "log3eq":"chenilles",
         "moveCost":3,
         "maxFlood":0,
@@ -3993,13 +3993,13 @@
         },
         "weapon2":{},
         "protection":["aucun","chobham","iso"],
-        "equip":["aucun","g2motor","e-flash","g2ai"],
+        "equip":["aucun","g2motor","e-flash","g2ai","g2tools"],
         "log3eq":"",
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fly","extraction","selfbadmecano","fret","robot","light","conscont","aicamo","recupres","aifouille","extgear"],
+        "skills":["noguet","fly","extraction","selfbadmecano","fret","robot","light","conscont","aicamo","recupres","aifouille"],
         "mecanoCost":12,
         "mining":{
             "level":3,
@@ -4364,7 +4364,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","iso","dunium","adamantite"],
-        "equip":["aucun","lunette1","chargeur1","g2motor","snorkel","belier","e-flash","e-mecano","chenilles","e-treuil"],
+        "equip":["aucun","lunette1","chargeur1","g2motor","snorkel","belier","e-flash","e-mecano","chenilles","e-treuil","g2tools"],
         "log3eq":"snorkel",
         "moveCost":2,
         "maxFlood":1,

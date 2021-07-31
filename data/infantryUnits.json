@@ -1657,7 +1657,7 @@
             "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
-        "equip":["aucun","e-flash","chargeur2","silencieux2","e-jetpack","e-camo","permakirin","theeye","helper","waterproof","e-medic"],
+        "equip":["aucun","e-flash","chargeur2","silencieux2","e-jetpack","e-camo","permakirin","theeye","helper","waterproof","e-medic","g2tools"],
         "log3eq":"waterproof",
         "moveCost":3,
         "maxFlood":3,
@@ -2382,17 +2382,17 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-plasma"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
-        "equip":["aucun","e-flash","e-ranger","waterproof","lunette1","chargeur1"],
+        "equip":["aucun","e-flash","e-ranger","waterproof","lunette1","chargeur1","g2tools"],
         "log3eq":"waterproof",
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","extraction","selfbadmedic","dynamite","fret","recupcit","conscont","extgear"],
+        "skills":["fouille","fortif","extraction","selfbadmedic","dynamite","fret","recupcit","conscont"],
         "mediCost":10,
         "mining":{
             "level":3,
-            "rate":20,
+            "rate":17,
             "multi":false,
             "types":["Mine","Comptoir","Scrap"],
             "subTypes":["Derrick","Pompe"]
@@ -2449,7 +2449,7 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-plasma"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
-        "equip":["aucun","e-flash","lunette1","chargeur1","silencieux1","e-jetpack","e-camo","e-medic","permakirin","theeye","waterproof"],
+        "equip":["aucun","e-flash","lunette1","chargeur1","silencieux1","e-jetpack","e-camo","e-medic","permakirin","theeye","waterproof","g2tools"],
         "log3eq":"waterproof",
         "moveCost":3,
         "maxFlood":3,

@@ -227,6 +227,9 @@ function getMiningRate(bat,fullRate) {
     if (bat.tags.includes('camo')) {
         miningAdj = miningAdj/2;
     }
+    if (bat.eq === 'g2tools' || bat.logeq === 'g2tools') {
+        miningAdj = miningAdj*1.2;
+    }
     if (fullRate) {
         let batAP = getBatAP(bat,batType);
         return Math.ceil(batType.mining.rate*batAP/batType.ap*bat.squadsLeft/batType.squads*miningAdj);
@@ -291,8 +294,8 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     // ADJ SUBTYPE & LEVELS
     if (!batType.mining.types.includes(res.bld)) {
         if (batType.mining.subTypes.includes(res.bld)) {
-            if (batType.skills.includes('extgear')) {
-                resRate = Math.ceil(resRate/1.75);
+            if (bat.eq === 'g2tools' || bat.logeq === 'g2tools') {
+                resRate = Math.ceil(resRate/1.5);
             } else {
                 resRate = Math.ceil(resRate/3);
             }
