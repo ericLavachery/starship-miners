@@ -365,7 +365,8 @@
         "name":"Mineurs",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":[],
-        "costs":{"Fer":90,"Scrap":36,"Carbone":18,"Bois":36,"Végétaux":20,"Chlore":10,"Tissus":5},
+        "costs":{"Fer":90,"Scrap":36,"Carbone":18,"Bois":36,"Moteurs":5,"Batteries":5,"Végétaux":20,"Chlore":10,"Tissus":5},
+        "deploy":{"Energie":15},
         "fabTime":15
     },
     {
@@ -1927,7 +1928,7 @@
         "id":9,
         "name":"Mine",
         "prod":{"Scrap":1},
-        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Energie":160},
+        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
         "fabTime":30
     },
     {
@@ -1935,7 +1936,7 @@
         "name":"Pompe",
         "upkeep":{"Eau":3,"Energie":6},
         "prod":{"Oxygène":3},
-        "costs":{"Compo1":75,"Scrap":100,"Fer":50,"Moteurs":10,"Energie":120},
+        "costs":{"Compo1":75,"Scrap":100,"Fer":50,"Moteurs":12,"Batteries":6,"Energie":120},
         "fabTime":20
     },
     {
@@ -1943,7 +1944,7 @@
         "name":"Derrick",
         "upkeep":{"Hydrocarbure":5.3},
         "prod":{"Fuel":3,"Scrap":1},
-        "costs":{"Compo1":115,"Eau":200,"Carbone":15,"Aluminium":40,"Fer":50,"Phosphore":15,"Hydrogène":15,"Energie":200},
+        "costs":{"Compo1":115,"Eau":200,"Carbone":15,"Aluminium":40,"Fer":50,"Phosphore":15,"Hydrogène":15,"Moteurs":20,"Batteries":10,"Energie":200},
         "fabTime":45
     },
     {
