@@ -212,6 +212,8 @@ function combat(melee) {
                             }, soundDuration);
                         }, 500);
                     }
+                } else {
+                    if (activeTurn == 'player') {blockMe(false);}
                 }
             } else {
                 if (!isFFW) {
@@ -379,6 +381,12 @@ function attack(melee) {
             shots = Math.floor(shots*berserkROF);
             attFactor = Math.round(attFactor*berserkROF);
             console.log('bonus ROF berserk');
+        }
+    }
+    // morph bonus
+    if (activeTurn === 'player') {
+        if (targetBat.tags.includes('morph')) {
+            selectedWeap.power = Math.round(selectedWeap.power*2);
         }
     }
     // embuscade (bonus ROF)

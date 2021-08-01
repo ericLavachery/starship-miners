@@ -292,6 +292,7 @@ function resetComp() {
 
 function alienUnitsChanges() {
     alienUnits.forEach(function(unit) {
+        unit.hp = unit.hp+alienHPBase;
         if (Object.keys(unit.weapon).length >= 3) {
             if (unit.weapon.isMelee) {
                 unit.weapon.rof = Math.ceil(unit.weapon.rof*alienMeleeROF);
@@ -1340,7 +1341,7 @@ function missionResults(onlyLanders) {
             let resIcon = getResIcon(res);
             let resCol = '';
             if (playerInfos.resFlags.includes(res.name)) {
-                resCol = ' vert';
+                resCol = ' jaune';
             }
             let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
             // if (sonde.costs[key] != undefined) {

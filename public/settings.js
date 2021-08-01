@@ -121,6 +121,7 @@ let coverFactor = 0.8; // multiplie la cover du terrain (enlevé à accuracy)
 let coverAOE = 0;
 let hitBase = 9; // bonus to hit général (aliens et humains)
 let alienHitBase = 2; // bonus to hit aliens
+let alienHPBase = 1; // hp x1
 let alienMeleeROF = 1.25;  // bonus rof aliens en mêlée
 let initiativeDice = 15 // ajoute 0-15
 let unitResist = 0;

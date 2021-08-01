@@ -1951,7 +1951,7 @@
         "id":157,
         "name":"Comptoir",
         "prod":{"Scrap":2},
-        "costs":{"Compo1":115,"Eau":36,"Fer":50,"Energie":80},
+        "costs":{"Compo1":115,"Eau":36,"Fer":50,"Moteurs":10,"Batteries":5,"Energie":100},
         "fabTime":20
     },
     {
