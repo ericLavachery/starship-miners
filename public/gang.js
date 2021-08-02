@@ -13,7 +13,8 @@ function gangUnitsList(gangName) {
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName or">'+gangName.toUpperCase()+'</span><br>');
-
+    $('#conUnitList').append('<span class="constName">'+playerInfos.allCits+' / '+getNextLevelPop()+'</span><br>');
+    $('#conUnitList').append('<br>');
     let gangUnits = [];
     unitTypes.forEach(function(unit) {
         if (unit.levels[gangName] > 0 && unit.levels[gangName] < 50) {
@@ -69,7 +70,6 @@ function gangUnitsList(gangName) {
             }
         }
     });
-
     let sortedGangUnits = _.sortBy(gangUnits,'name');
     sortedGangUnits = _.sortBy(sortedGangUnits,'hp');
     sortedGangUnits = _.sortBy(sortedGangUnits,'sort');

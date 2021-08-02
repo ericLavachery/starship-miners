@@ -1513,6 +1513,18 @@ function checkGangLevel() {
     return nextGangLevel;
 };
 
+function getNextLevelPop() {
+    let nextLevelPop = -1;
+    gangLevelCit.forEach(function(levelCit) {
+        if (nextLevelPop < 0) {
+            if (levelCit > playerInfos.allCits) {
+                nextLevelPop = levelCit;
+            }
+        }
+    });
+    return nextLevelPop;
+};
+
 function gangChoice() {
     selectMode();
     $("#conUnitList").css("display","block");

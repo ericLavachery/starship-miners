@@ -1116,6 +1116,7 @@ function removeBat(batId) {
 };
 
 function dismantle(batId) {
+    saveGame();
     selectMode();
     let bat = getBatById(batId);
     let batType = getBatType(bat);
