@@ -198,6 +198,9 @@ function healEverything() {
         if (bat.tags.includes('prodres')) {
             gearTags.push('prodres');
         }
+        if (!bat.tags.includes('return')) {
+            gearTags.push('return');
+        }
         bat.tags = gearTags;
     });
 };

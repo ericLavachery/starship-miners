@@ -3195,7 +3195,7 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","mecano","maycamo","ravitaillement","dealer","nitro","light","badcrewsave","recupcit","recupres","caterp","kzin","treuil"],
+        "skills":["fortif","mecano","maycamo","ravitaillement","dealer","nitro","light","badcrewsave","recupcit","recupres","caterp","kzin","treuil","routes"],
         "mecanoCost":6,
         "maxSkill":18,
         "maxDrug":15,

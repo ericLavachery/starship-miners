@@ -741,7 +741,7 @@
     {
         "id":156,
         "name":"Riggers",
-        "levels":{"rednecks":15,"blades":16,"bulbos":9,"drogmulojs":17,"tiradores":17,"detruas":99,"brasier":13},
+        "levels":{"rednecks":15,"blades":16,"bulbos":9,"drogmulojs":17,"tiradores":17,"detruas":99,"brasier":12},
         "bldReq":["Atelier","Centre de recherches"],
         "compReq":{"cyber":1},
         "compPass":["rednecks"],
@@ -775,7 +775,7 @@
     {
         "id":179,
         "name":"Blaze Angels",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":15},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":14},
         "bldReq":["Chaîne de montage","Arsenal","Centre de recherches"],
         "compReq":{"cyber":1},
         "compHardReq":{"pyro":1,"energ":1},
@@ -858,7 +858,7 @@
     {
         "id":130,
         "name":"Luchandos",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":12,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":13,"detruas":99,"brasier":99},
         "bldReq":["QG","Arsenal","Appartements"],
         "unitCost":"Pistoleros",
         "costs":{"Fer":315,"Scrap":189,"Aluminium":63,"Silicium":32,"Végétaux":94,"Blendium":32,"Soufre":63,"Plomb":63,"Drogues":86,"Or":63,"Chlore":30,"Zinc":30,"Tissus":43},
@@ -868,7 +868,7 @@
     {
         "id":135,
         "name":"Runners",
-        "levels":{"rednecks":16,"blades":12,"bulbos":99,"drogmulojs":13,"tiradores":20,"detruas":99,"brasier":18},
+        "levels":{"rednecks":16,"blades":12,"bulbos":99,"drogmulojs":14,"tiradores":20,"detruas":99,"brasier":18},
         "bldReq":["Armurerie","Centre de recherches"],
         "compReq":{"cyber":1},
         "compPass":["detruas"],
@@ -890,7 +890,7 @@
     {
         "id":136,
         "name":"Gunbots",
-        "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":99,"tiradores":13,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":99,"tiradores":12,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Laboratoire","Chaîne de montage"],
         "compReq":{"robo":1},
         "costs":{"Scrap":90,"Carbone":90,"Moteurs":100,"Titane":240,"Electros":165,"Batteries":150,"Cuivre":72,"Silicium":90},
@@ -931,7 +931,7 @@
     {
         "id":1,
         "name":"Scouts",
-        "levels":{"rednecks":99,"blades":99,"bulbos":13,"drogmulojs":14,"tiradores":99,"detruas":9,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":13,"drogmulojs":13,"tiradores":99,"detruas":9,"brasier":99},
         "bldReq":["Armurie","Garage"],
         "compReq":{"tank":1},
         "costs":{"Fer":220,"Scrap":215,"Carbone":75,"Aluminium":150,"Moteurs":45,"Tungstène":90,"Cuivre":15,"Batteries":25,"Compo2":60,"Cobalt":30,"Hélium":60,"Explosifs":10,"Fuel":40},
@@ -1411,7 +1411,7 @@
     {
         "id":93,
         "name":"Taxis",
-        "levels":{"rednecks":12,"blades":99,"bulbos":12,"drogmulojs":12,"tiradores":12,"detruas":13,"brasier":12},
+        "levels":{"rednecks":12,"blades":99,"bulbos":12,"drogmulojs":12,"tiradores":12,"detruas":12,"brasier":13},
         "bldReq":["Armurerie","Chaîne de montage"],
         "compReq":{"tank":1,"trans":1},
         "costs":{"Fer":140,"Scrap":225,"Carbone":165,"Aluminium":30,"Moteurs":65,"Tungstène":200,"Cuivre":15,"Batteries":15,"Compo2":210,"Compo3":45,"Huile":10},
@@ -1566,7 +1566,7 @@
     {
         "id":119,
         "name":"Drilltrucks",
-        "levels":{"rednecks":10,"blades":11,"bulbos":11,"drogmulojs":11,"tiradores":11,"detruas":11,"brasier":11},
+        "levels":{"rednecks":10,"blades":11,"bulbos":11,"drogmulojs":11,"tiradores":11,"detruas":13,"brasier":11},
         "bldReq":["Usine","Laboratoire"],
         "compReq":{"ext":1},
         "costs":{"Fer":96,"Scrap":176,"Carbone":68,"Aluminium":12,"Moteurs":60,"Cuivre":48,"Electros":48,"Batteries":32,"Compo2":108,"Huile":10,"Eau":416,"Silicium":56,"Zinc":24},
@@ -1827,7 +1827,7 @@
     {
         "id":149,
         "name":"Obusiers",
-        "levels":{"rednecks":16,"blades":99,"bulbos":99,"drogmulojs":16,"tiradores":99,"detruas":12,"brasier":99},
+        "levels":{"rednecks":16,"blades":99,"bulbos":99,"drogmulojs":16,"tiradores":99,"detruas":11,"brasier":99},
         "bldReq":["Arsenal","Poste radio"],
         "compReq":{"arti":1},
         "costs":{"Fer":146,"Scrap":144,"Carbone":129,"Aluminium":72,"Titane":36,"Tungstène":36,"Silicium":12,"Cuivre":30,"Electros":15,"Batteries":9,"Compo2":128},

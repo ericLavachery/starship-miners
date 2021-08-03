@@ -104,7 +104,7 @@ function recupPrefabFret(bat,batType,tileId,autoDec,landerBat) {
 function refabInfos(myBat,myBatUnitType) {
     if (myBatUnitType.skills.includes('constructeur')) {
         let balise = 'h4';
-        let apCost = Math.ceil(myBatUnitType.mecanoCost*2.5);
+        let apCost;
         let landerBat = findTheLander();
         bataillons.forEach(function(bat) {
             if (bat.loc === "trans" && bat.locId == landerBat.id) {
@@ -116,7 +116,8 @@ function refabInfos(myBat,myBatUnitType) {
                     }
                 }
                 if (batType.skills.includes('prefab') && depliOK) {
-                    if (myBat.apLeft >= 4) {
+                    apCost = Math.round(myBatUnitType.mecanoCost*batType.fabTime/15);
+                    if (myBat.apLeft >= 4 || myBat.apLeft >= apCost) {
                         balise = 'h4';
                         if (Object.keys(batDebarq).length >= 1) {
                             if (batDebarq.id === bat.id) {
@@ -125,7 +126,7 @@ function refabInfos(myBat,myBatUnitType) {
                         }
                         let mayOut = checkMayOut(batType);
                         if (mayOut) {
-                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Reconstruire '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+')" class="boutonGris skillButtons" onclick="reconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</'+balise+'></span>');
+                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Reconstruire '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+')" class="boutonGris skillButtons" onclick="reconstruction('+bat.id+','+apCost+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</'+balise+'></span>');
                         } else {
                             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Vous ne pouvez pas débarquer ce bataillon sur cette planète" class="boutonGris skillButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</h4></span>');
                         }
@@ -139,7 +140,7 @@ function refabInfos(myBat,myBatUnitType) {
     }
 };
 
-function reconstruction(debId) {
+function reconstruction(debId,apCost) {
     let debBat = getBatById(debId);
     selectMode();
     batDebarq = debBat;
