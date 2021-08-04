@@ -1504,7 +1504,7 @@ function skillsInfos(bat,batType) {
             if (tile.infra === 'Miradors' || tile.infra === 'Palissades' || tile.infra === 'Remparts' || tile.infra === 'Murailles') {
                 let infra = getInfraByName(tile.infra);
                 apCost = Math.round(Math.sqrt(batType.mecanoCost)*infra.fabTime/5.1);
-                apReq = 6;
+                apReq = 5;
                 if (bat.apLeft >= apReq && !inMelee) {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+tile.infra+'" class="boutonGris skillButtons" onclick="demolition('+apCost+')"><i class="far fa-trash-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Démolition</h4></span>');
                 } else {

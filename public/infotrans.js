@@ -343,7 +343,8 @@ function clickDebarq(tileId) {
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
             tagDelete(selectedBat,'loaded');
             if (!playerInfos.onShip) {
-                selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*batDebarqType.fabTime/15);
+                let apCost = prefabCost(selectedBatType,batDebarqType,false);
+                selectedBat.apLeft = selectedBat.apLeft-apCost;
             }
         } else {
             if (selectedBat.transIds.includes(batDebarq.id)) {
@@ -365,8 +366,8 @@ function clickDebarq(tileId) {
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
             if (!playerInfos.onShip) {
                 batDebarq.apLeft = batDebarq.ap-Math.round(batDebarqType.fabTime*batDebarq.ap/20);
-                if (batDebarq.apLeft < 0-batDebarqType.ap) {
-                    batDebarq.apLeft = 0-batDebarqType.ap;
+                if (batDebarq.apLeft < 0-Math.round(batDebarqType.ap*1.5)) {
+                    batDebarq.apLeft = 0-Math.round(batDebarqType.ap*1.5);
                 }
             }
         }

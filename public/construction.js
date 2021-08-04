@@ -753,8 +753,8 @@ function clickConstruct(tileId,free) {
         }
         if (!batHere) {
             if (!free && !playerInfos.onShip) {
-                let distance = calcDistance(selectedBat.tileId,tileId);
-                selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*conselUnit.fabTime/10)-(distance*3);
+                let apCost = prefabCost(selectedBatType,conselUnit,true);
+                selectedBat.apLeft = selectedBat.apLeft-apCost;
                 if (!selectedBat.tags.includes('construction')) {
                     selectedBat.tags.push('construction');
                 }
@@ -927,7 +927,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                         newBat.oldapLeft = 0;
                         newBat.salvoLeft = 0;
                     } else {
-                        let constFactor = 20;
+                        let constFactor = 15;
                         if (conselUnit.skills.includes('domeconst')) {
                             newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*10);
                             newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*10);
@@ -1053,7 +1053,8 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 }
             }
         } else {
-            selectedBat.apLeft = selectedBat.apLeft+Math.round(selectedBatType.mecanoCost*conselUnit.fabTime/10)+8;
+            let apCost = prefabCost(selectedBatType,conselUnit,true);
+            selectedBat.apLeft = selectedBat.apLeft+apCost;
             selectedBatArrayUpdate();
             warning('Construction annulée:','Vous n\'avez pas les ressources nécessaires');
             console.log('not enough resources !');

@@ -10,7 +10,7 @@ function defabInfos(bat,batType) {
         let isCharged = checkCharged(prefabBat,'trans');
         if (!isLoaded && !isCharged) {
             if (batType.skills.includes('constructeur') && Object.keys(landerBat).length >= 1) {
-                let apCost = Math.round(batType.mecanoCost*prefabBatType.fabTime/15);
+                let apCost = prefabCost(batType,prefabBatType,false);
                 let depliOK = true;
                 if (selectedBatType.cat === 'infantry') {
                     if (prefabBatType.fabTime >= 35 && !prefabBatType.skills.includes('clicput')) {
@@ -48,7 +48,8 @@ function deconstruction(prefabId) {
     let landerBat = findTheLander();
     if (Object.keys(landerBat).length >= 1) {
         if (!playerInfos.onShip) {
-            selectedBat.apLeft = selectedBat.apLeft-Math.round(selectedBatType.mecanoCost*prefabBatType.fabTime/15);
+            let apCost = prefabCost(selectedBatType,prefabBatType,false);
+            selectedBat.apLeft = selectedBat.apLeft-apCost;
         }
         loadBat(prefabBat.id,landerBat.id);
         recupPrefabFret(prefabBat,prefabBatType,tileId,false,-1);
@@ -116,7 +117,7 @@ function refabInfos(myBat,myBatUnitType) {
                     }
                 }
                 if (batType.skills.includes('prefab') && depliOK) {
-                    apCost = Math.round(myBatUnitType.mecanoCost*batType.fabTime/15);
+                    apCost = prefabCost(myBatUnitType,batType,false);
                     if (myBat.apLeft >= 4 || myBat.apLeft >= apCost) {
                         balise = 'h4';
                         if (Object.keys(batDebarq).length >= 1) {
@@ -147,6 +148,17 @@ function reconstruction(debId,apCost) {
     cursorSwitch('.','grid-item','thor');
     tagDelete(selectedBat,'guet');
     showBatInfos(selectedBat);
+};
+
+function prefabCost(pusherType,prefabType,construct) {
+    let apCost = Math.round(pusherType.mecanoCost*prefabType.fabTime/15);
+    if (apCost >= 60) {
+        apCost = 60;
+    }
+    if (construct) {
+        apCost = Math.round(apCost*1.5);
+    }
+    return apCost;
 };
 
 function calcPrefabWeight(batType) {
