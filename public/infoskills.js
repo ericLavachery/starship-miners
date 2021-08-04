@@ -701,11 +701,11 @@ function skillsInfos(bat,batType) {
                     colorNope = 'cy';
                 }
                 apCost = drug.apCost;
-                let maxStarkaPA = bat.ap+2;
+                let starkaPA = getStarkaBonus(bat);
                 let moveDistance = calcDistance(bat.tileId,bat.oldTileId);
                 console.log('moveDistance='+moveDistance);
                 if (!bat.tags.includes('starka') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK && moveDistance <= 2) {
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+bat.ap+' PA, maximum '+maxStarkaPA+' au total" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+starkaPA+' PA" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
                 } else {
                     if (bat.tags.includes('starka')) {
                         skillMessage = "Déjà sous l'effet de cette drogue";
@@ -993,10 +993,9 @@ function skillsInfos(bat,batType) {
                     colorNope = 'cy';
                 }
                 apCost = drug.apCost;
-                let maxNitroPA = bat.ap+1;
-                let nitroPA = Math.round(bat.ap/3);
+                let nitroPA = getNitroBonus(bat);
                 if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('nitro') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+nitroPA+' PA, maximum '+maxNitroPA+' et minimum 1" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+nitroPA+' PA" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
                 } else {
                     if (bat.tags.includes('nitro')) {
                         skillMessage = "Déjà sous l'effet de cette drogue";

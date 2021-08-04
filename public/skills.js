@@ -338,14 +338,18 @@ function goDrug(apCost,drugName) {
             // octiron instant bonus
             if (drug.name === 'octiron') {
                 selectedBat.apLeft = selectedBat.apLeft+2;
+                if (playerInfos.comp.med >= 3) {
+                    selectedBat.damage = 0;
+                    let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;
+                    if (lostSquads >= 2) {
+                        selectedBat.squadsLeft = selectedBat.squadsLeft+1;
+                    }
+                }
                 console.log('octiron bonus');
             }
             // starka instant bonus
             if (drug.name === 'starka') {
-                selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap;
-                if (selectedBat.apLeft >= selectedBat.ap+2) {
-                    selectedBat.apLeft = selectedBat.ap+2;
-                }
+                selectedBat.apLeft = selectedBat.apLeft+getStarkaBonus(selectedBat);
                 console.log('starka bonus');
             }
             // kirin instant bonus
@@ -363,13 +367,7 @@ function goDrug(apCost,drugName) {
             }
             // nitro instant bonus
             if (drug.name === 'nitro') {
-                selectedBat.apLeft = selectedBat.apLeft+Math.round(selectedBat.ap/2);
-                if (selectedBat.apLeft >= selectedBat.ap+1) {
-                    selectedBat.apLeft = selectedBat.ap+1;
-                }
-                if (selectedBat.apLeft < 1 && !selectedBat.tags.includes('construction')) {
-                    selectedBat.apLeft = 1;
-                }
+                selectedBat.apLeft = selectedBat.apLeft+getNitroBonus(selectedBat);
                 console.log('nitro bonus');
             }
         }
@@ -380,6 +378,36 @@ function goDrug(apCost,drugName) {
         selectedBatArrayUpdate();
         showBatInfos(selectedBat);
     }
+};
+
+function getNitroBonus(bat) {
+    let batType = getBatType(bat);
+    let batAPLeft = bat.apLeft;
+    let batAP = getAP(bat,batType);
+    let transBonus = Math.floor(playerInfos.comp.trans*playerInfos.comp.trans/3)*2;
+    let baseBonus = Math.round(batAP/2)+transBonus;
+    batAPLeft = batAPLeft+baseBonus;
+    if (batAPLeft >= batAP+3+transBonus) {
+        batAPLeft = batAP+3+transBonus;
+    }
+    if (batAPLeft < 1+transBonus && !bat.tags.includes('construction')) {
+        batAPLeft = 1+transBonus;
+    }
+    let nitroBonus = batAPLeft-bat.apLeft;
+    return nitroBonus;
+};
+
+function getStarkaBonus(bat) {
+    let batType = getBatType(bat);
+    let batAPLeft = bat.apLeft;
+    let batAP = getAP(bat,batType);
+    let medBonus = Math.floor(playerInfos.comp.med*playerInfos.comp.med/2);
+    batAPLeft = batAPLeft+batAP+medBonus;
+    if (batAPLeft >= batAP+2+medBonus) {
+        batAPLeft = batAP+2+medBonus;
+    }
+    let starkaBonus = batAPLeft-bat.apLeft;
+    return starkaBonus;
 };
 
 function checkDrugs(myBat) {
