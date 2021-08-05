@@ -175,48 +175,57 @@ function doCraft(craftId,number) {
 };
 
 function adjCraftFactor(craft,craftFactor) {
-    // INDUSTRIE
-    if (playerInfos.comp.ind >= 1 && playerInfos.bldList.includes('Atelier')) {
-        let indusLevel = playerInfos.comp.ind;
-        if (playerInfos.bldList.includes('Usine')) {
-            indusLevel = indusLevel+3;
-        } else if (playerInfos.bldList.includes('Chaîne de montage')) {
-            indusLevel = indusLevel+1;
-        }
-        craftFactor = craftFactor*25/(25+indusLevel);
+    let noFactor = false;
+    if (craft.result === 'Energons') {
+        noFactor = true;
     }
-    // RECYCLAGE
-    if (playerInfos.comp.tri >= 1 && playerInfos.bldList.includes('Décharge')) {
-        let scrapCrafting = false;
-        if (craft.result === 'Scrap') {
-            scrapCrafting = true;
-        }
-        if (craft.cost['Scrap'] != undefined) {
-            scrapCrafting = true;
-        }
-        if (scrapCrafting) {
-            let recupLevel = playerInfos.comp.tri;
-            if (playerInfos.bldList.includes('Recyclab') && !craft.bldReq.includes('Recyclab') && !playerInfos.bldList.includes('Soute')) {
-                recupLevel = recupLevel+1;
-            }
-            if (craft.compReq['tri'] != undefined) {
-                recupLevel = recupLevel-craft.compReq['tri'];
-            }
-            if (recupLevel >= 1) {
-                craftFactor = craftFactor*20/(20+recupLevel);
-            }
-        }
+    if (craft.cost['Energons'] != undefined) {
+        noFactor = true;
     }
-    // CONSTRUCTION
-    if (playerInfos.comp.const >= 1) {
-        if (craft.cost['Scrap'] === undefined) {
-            if (craft.result === 'Compo1' || craft.result === 'Compo2' || craft.result === 'Compo3') {
-                let compoLevel = playerInfos.comp.const;
-                if (craft.compReq['const'] != undefined) {
-                    compoLevel = compoLevel-craft.compReq['const'];
+    if (!noFactor) {
+        // INDUSTRIE
+        if (playerInfos.comp.ind >= 1 && playerInfos.bldList.includes('Atelier')) {
+            let indusLevel = playerInfos.comp.ind;
+            if (playerInfos.bldList.includes('Usine')) {
+                indusLevel = indusLevel+3;
+            } else if (playerInfos.bldList.includes('Chaîne de montage')) {
+                indusLevel = indusLevel+1;
+            }
+            craftFactor = craftFactor*20/(20+indusLevel);
+        }
+        // RECYCLAGE
+        if (playerInfos.comp.tri >= 1 && playerInfos.bldList.includes('Décharge')) {
+            let scrapCrafting = false;
+            if (craft.result === 'Scrap') {
+                scrapCrafting = true;
+            }
+            if (craft.cost['Scrap'] != undefined) {
+                scrapCrafting = true;
+            }
+            if (scrapCrafting) {
+                let recupLevel = playerInfos.comp.tri;
+                if (playerInfos.bldList.includes('Recyclab') && !craft.bldReq.includes('Recyclab')) {
+                    recupLevel = recupLevel+1;
                 }
-                if (compoLevel >= 1) {
-                    craftFactor = craftFactor*15/(15+compoLevel);
+                if (craft.compReq['tri'] != undefined) {
+                    recupLevel = recupLevel-craft.compReq['tri'];
+                }
+                if (recupLevel >= 1) {
+                    craftFactor = craftFactor*18/(18+recupLevel);
+                }
+            }
+        }
+        // CONSTRUCTION
+        if (playerInfos.comp.const >= 1) {
+            if (craft.cost['Scrap'] === undefined) {
+                if (craft.result === 'Compo1' || craft.result === 'Compo2' || craft.result === 'Compo3') {
+                    let compoLevel = playerInfos.comp.const;
+                    if (craft.compReq['const'] != undefined) {
+                        compoLevel = compoLevel-craft.compReq['const'];
+                    }
+                    if (compoLevel >= 1) {
+                        craftFactor = craftFactor*15/(15+compoLevel);
+                    }
                 }
             }
         }

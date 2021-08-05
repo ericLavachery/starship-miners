@@ -177,6 +177,7 @@ function batSelect(bat) {
     if (bat.tags.includes('nolist')) {
         tagDelete(bat,'nolist');
     }
+    tagDelete(bat,'chrg');
     selectedBat = JSON.parse(JSON.stringify(bat));
     targetBat = {};
     // console.log(selectedBat);

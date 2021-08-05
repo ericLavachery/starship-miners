@@ -745,7 +745,7 @@ function getAP(bat,batType) {
         newAP = newAP-1;
     }
     if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.moveCost < 90) {
-        newAP = newAP+playerInfos.comp.trans-1;
+        newAP = newAP+Math.floor((batType.moveCost+1.5)*(playerInfos.comp.trans-1.25)/2.6);
     }
     if (batType.skills.includes('fastempty')) {
         emptyBonus = 0;
@@ -800,6 +800,7 @@ function calcUnitResist() {
 };
 
 function tagsUpdate(bat) {
+    tagDelete(bat,'chrg');
     tagDelete(bat,'vise');
     if (rand.rand(1,3) > 1) {
         tagDelete(bat,'noemb');

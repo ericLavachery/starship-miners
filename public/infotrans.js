@@ -2,7 +2,7 @@ function transInfos(bat,batType) {
     // console.log('transInfos');
     let isCharged = checkCharged(bat,'trans');
     let transId = checkTransportId(bat,batType);
-    let apCost = 2;
+    let apCost = 3-playerInfos.comp.trans;
     if (transId >= 0) {
         if (!isCharged) {
             let transBat = getBatById(transId);
@@ -271,11 +271,9 @@ function embarquement(transId,discardRes) {
     let transBatType = getBatType(transBat);
     if (!playerInfos.onShip) {
         if (selectedBatType.skills.includes('tracked') && transBatType.transMaxSize < 25) {
-            transBat.apLeft = transBat.apLeft-4;
+            transBat.apLeft = transBat.apLeft-4+playerInfos.comp.log;
         }
-    }
-    if (!playerInfos.onShip) {
-        selectedBat.apLeft = selectedBat.apLeft-2;
+        selectedBat.apLeft = selectedBat.apLeft-3+playerInfos.comp.trans;
     }
     if (discardRes) {
         selectedBat.transRes = {};

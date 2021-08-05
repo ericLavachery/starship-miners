@@ -457,33 +457,40 @@ function playerSkillsUTChanges() {
                 transComp = transComp+1;
             }
             if (unit.transRes >= 50) {
-                unit.transRes = Math.round(unit.transRes*(transComp+12)/12);
+                unit.transRes = Math.round(unit.transRes*(transComp+10)/10);
             }
             if (unit.transUnits >= 50) {
-                unit.transUnits = Math.round(unit.transUnits*(transComp+12)/12);
+                unit.transUnits = Math.round(unit.transUnits*(transComp+10)/10);
             }
         }
         // LOGISTIQUE
-        if (playerInfos.comp.log >= 3 && unit.cat === 'buildings') {
+        if (playerInfos.comp.log >= 2 && unit.cat === 'buildings') {
+            let logTransBonus = Math.round((playerInfos.comp.log-0.5)/1.25);
             if (unit.transRes >= 50) {
-                unit.transRes = Math.round(unit.transRes*2);
+                unit.transRes = Math.round(unit.transRes*logTransBonus);
             }
             if (unit.transUnits >= 50) {
-                unit.transUnits = Math.round(unit.transUnits*2);
-                unit.transMaxSize = Math.round(unit.transMaxSize*3);
+                unit.transUnits = Math.round(unit.transUnits*logTransBonus);
+                unit.transMaxSize = Math.round(unit.transMaxSize*playerInfos.comp.log);
             }
         }
-        if (playerInfos.comp.log >= 3 && unit.skills.includes('moto')) {
-            unit.volume = unit.volume/1.5;
-            unit.volume = unit.volume.toFixedNumber(2);
-        }
-        if (playerInfos.comp.log >= 3 && unit.skills.includes('machine')) {
-            unit.volume = unit.volume/1.5;
-            unit.volume = unit.volume.toFixedNumber(2);
-        }
-        if (playerInfos.comp.log >= 3 && unit.skills.includes('bgun')) {
-            unit.volume = unit.volume/1.2;
-            unit.volume = unit.volume.toFixedNumber(2);
+        if (playerInfos.comp.log >= 2) {
+            if (unit.skills.includes('moto') || unit.skills.includes('machine')) {
+                if (playerInfos.comp.log >= 3) {
+                    unit.volume = unit.volume/1.5;
+                } else {
+                    unit.volume = unit.volume/1.12;
+                }
+                unit.volume = unit.volume.toFixedNumber(2);
+            }
+            if (unit.skills.includes('bgun')) {
+                if (playerInfos.comp.log >= 3) {
+                    unit.volume = unit.volume/1.2;
+                } else {
+                    unit.volume = unit.volume/1.05;
+                }
+                unit.volume = unit.volume.toFixedNumber(2);
+            }
         }
         if (playerInfos.comp.log >= 1) {
             if (unit.kind === 'zero-trans-ravit') {

@@ -1643,15 +1643,16 @@ function skillsInfos(bat,batType) {
             balise = 'h2';
         }
         apReq = 0;
+        apCost = 3-playerInfos.comp.trans;
         if (!inMelee && !inSoute) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Charger des ressources" class="boutonCaca skillButtons" onclick="loadRes(false)"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Charger des ressources" class="boutonCaca skillButtons" onclick="loadRes(false)"><i class="fas fa-truck-loading"></i> <span class="small">'+apCost+'</span></button>&nbsp; Chargement</'+balise+'></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Impossible en mêlée";
             } else {
                 skillMessage = "Pas assez de PA";
             }
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-truck-loading"></i> <span class="small">'+apReq+'</span></button>&nbsp; Chargement</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-truck-loading"></i> <span class="small">'+apCost+'</span></button>&nbsp; Chargement</'+balise+'></span>');
         }
     }
     if (!inSoute && batType.name != 'Soute') {

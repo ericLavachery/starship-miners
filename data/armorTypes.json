@@ -937,7 +937,7 @@
         "skills": [],
         "info": "Augmente les capacités des cabines au détriment du bloc médical",
         "bldReq":["Soute"],
-        "compReq":{"log":1,"trans":1},
+        "compReq":{"log":1,"trans":2},
         "factor":"thp",
         "costs":{"Scrap":6,"Tissus":6,"Fer":4,"Bois":2,"Batteries":1}
     },

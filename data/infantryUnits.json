@@ -2971,7 +2971,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","camo","selfmedic","baddef","strong","cible"],
+        "skills":["fouille","fortif","camo","selfmedic","baddef","strong","cible","bgun"],
         "mediCost":7,
         "fuzz":-1,
         "deathFx":"162157__mediapaja2009__agony"

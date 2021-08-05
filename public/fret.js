@@ -86,7 +86,7 @@ function loadRes(retour) {
                                     $('#conUnitList').append('<span class="constName cy">'+bat.type+' <span class="gf"> &mdash; '+theTile+'</span></span><br>');
                                 }
                                 if (myConvey || targetConvey) {
-                                    if (restSpace >= Math.round(resLoad*1.2)) {
+                                    if (restSpace >= resLoad) {
                                         $('#conUnitList').append('<span class="loadIcon rose klik" onclick="resAllLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+')"><i class="fas fa-pallet"></i></span>');
                                     } else {
                                         $('#conUnitList').append('<span class="loadIcon rose klik" onclick="resMaxLoad('+bat.id+',false)" title="Charger un maximum de ressources depuis ce bataillon ('+bat.type+')"><i class="fas fa-dolly"></i></span>');
@@ -113,18 +113,18 @@ function loadRes(retour) {
                                             let value = entry[1];
                                             res = getResByName(key);
                                             resOK = true;
-                                            if (key === 'Energie') {
-                                                if (!selectedBatType.skills.includes('accu')) {
-                                                    resOK = false;
-                                                }
-                                            }
+                                            // if (key === 'Energie') {
+                                            //     if (!selectedBatType.skills.includes('accu')) {
+                                            //         resOK = false;
+                                            //     }
+                                            // }
                                             if (resOK) {
-                                                if (Math.round(restSpace*1.2) >= value) {
+                                                if (restSpace >= value) {
                                                     $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle"></i></span>');
                                                 } else {
                                                     $('#conUnitList').append('<span class="constIcon"><i class="far fa-times-circle or"></i></span>');
                                                 }
-                                                if (value > 100 && Math.round(restSpace*1.2) >= 100) {
+                                                if (value > 100 && restSpace >= 100) {
                                                     $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span> | <span class="klik" onclick="resSelectLoad('+value+',100,'+res.id+','+bat.id+')" title="Charger 100 '+res.name+'">100</span></span><br>');
                                                 } else {
                                                     $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="resSelectLoad('+value+','+value+','+res.id+','+bat.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span></span><br>');
@@ -159,17 +159,26 @@ function seeLandersTrans(see) {
     loadRes(false);
 };
 
+function payFretAP() {
+    if (playerInfos.comp.trans < 3) {
+        if (!selectedBat.tags.includes('chrg')) {
+            selectedBat.tags.push('chrg');
+            selectedBat.apLeft = selectedBat.apLeft-3+playerInfos.comp.trans;
+        }
+    }
+};
+
 function resAllLoad(batId) {
     let bat = getBatById(batId);
     Object.entries(bat.transRes).map(entry => {
         let key = entry[0];
         let value = entry[1];
         let resOK = true;
-        if (key === 'Energie') {
-            if (!selectedBatType.skills.includes('accu')) {
-                resOK = false;
-            }
-        }
+        // if (key === 'Energie') {
+        //     if (!selectedBatType.skills.includes('accu')) {
+        //         resOK = false;
+        //     }
+        // }
         if (value >= 1 && resOK) {
             if (selectedBat.transRes[key] === undefined) {
                 selectedBat.transRes[key] = value;
@@ -181,6 +190,7 @@ function resAllLoad(batId) {
     });
     doneAction(bat);
     doneAction(selectedBat);
+    payFretAP();
     selectedBatArrayUpdate();
     loadRes(false);
 };
@@ -193,11 +203,11 @@ function resMaxLoad(batId,addAutoLoad) {
         let key = entry[0];
         let value = entry[1];
         let resOK = true;
-        if (key === 'Energie') {
-            if (!selectedBatType.skills.includes('accu')) {
-                resOK = false;
-            }
-        }
+        // if (key === 'Energie') {
+        //     if (!selectedBatType.skills.includes('accu')) {
+        //         resOK = false;
+        //     }
+        // }
         resSpace = checkResSpace(selectedBat);
         if (value >= 1 && resOK) {
             if (resSpace >= value) {
@@ -235,6 +245,7 @@ function resMaxLoad(batId,addAutoLoad) {
     }
     doneAction(bat);
     doneAction(selectedBat);
+    payFretAP();
     selectedBatArrayUpdate();
     loadRes(false);
 };
@@ -248,11 +259,11 @@ function autoResLoad(toBat,fromBat) {
             let key = entry[0];
             let value = entry[1];
             let resOK = true;
-            if (key === 'Energie') {
-                if (!toBatType.skills.includes('accu')) {
-                    resOK = false;
-                }
-            }
+            // if (key === 'Energie') {
+            //     if (!toBatType.skills.includes('accu')) {
+            //         resOK = false;
+            //     }
+            // }
             if (resOK) {
                 resSpace = checkResSpace(toBat);
                 if (resSpace >= value) {
@@ -327,7 +338,7 @@ function resSelectLoad(value,pickValue,resId,batId) {
     let bat = getBatById(batId);
     let restSpace = checkResSpace(selectedBat);
     if (restSpace < 0) {restSpace = 0;}
-    if (Math.round(restSpace*1.2) >= value && pickValue === value) {
+    if (restSpace >= value && pickValue === value) {
         if (selectedBat.transRes[res.name] === undefined) {
             selectedBat.transRes[res.name] = value;
         } else {
@@ -335,7 +346,7 @@ function resSelectLoad(value,pickValue,resId,batId) {
         }
         delete bat.transRes[res.name];
     } else {
-        let maxTransfert = Math.round(restSpace*1.2);
+        let maxTransfert = restSpace;
         if (pickValue < maxTransfert) {
             maxTransfert = pickValue;
         }
@@ -348,8 +359,7 @@ function resSelectLoad(value,pickValue,resId,batId) {
     }
     doneAction(bat);
     doneAction(selectedBat);
-    // putTagAction(bat);
-    // putTagAction(selectedBat);
+    payFretAP();
     selectedBatArrayUpdate();
     loadRes(false);
 };
@@ -362,7 +372,7 @@ function autoUnload(bat) {
         if (bestDumper.id != bat.id) {
             let resSpace = checkResSpace(bestDumper);
             let resLoad = checkResLoad(bat);
-            if (Math.round(resSpace*1.2) >= resLoad) {
+            if (resSpace >= resLoad) {
                 Object.entries(bat.transRes).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
