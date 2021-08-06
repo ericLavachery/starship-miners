@@ -349,9 +349,9 @@ function saveCrew(deadBatType,deadId,tileId) {
         citId = 225;
     }
     if (deadBatType.skills.includes('crewsave')) {
-        salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/6*rand.rand(4,6));
+        salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/6*rand.rand(4+Math.floor(playerInfos.comp.train/2),6));
     } else if (deadBatType.skills.includes('badcrewsave') || deadBatType.cat === 'buildings') {
-        salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/6*rand.rand(0,4));
+        salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/6*rand.rand(0+playerInfos.comp.train,4));
     }
     if (salvableCits >= 1) {
         if (salvableCits > 72) {
@@ -374,7 +374,6 @@ function saveCrew(deadBatType,deadId,tileId) {
 
 function transDestroy(deadId,tileId) {
     alienOccupiedTileList();
-    playerOccupiedTileList();
     let savedBats = 0;
     let crashBats = [];
     let batIndex;
@@ -386,7 +385,7 @@ function transDestroy(deadId,tileId) {
     let crashEscapeTile = -1;
     crashBats.forEach(function(bat) {
         crashEscapeTile = -1;
-        if (rand.rand(1,3) != 1) {
+        if (rand.rand(1,3+playerInfos.comp.train) != 1) {
             crashEscapeTile = getCrashEscapeTile(tileId);
         }
         if (crashEscapeTile >= 0) {
@@ -406,6 +405,7 @@ function transDestroy(deadId,tileId) {
 };
 
 function getCrashEscapeTile(tileId) {
+    playerOccupiedTileList();
     let escTile = -1;
     let shufZone = _.shuffle(zone);
     let distance;
@@ -439,7 +439,7 @@ function calcDamage(weapon,power,armor,defBat) {
     if (defBat.tags.includes('trou')) {
         if (weapon.ammo.includes('troueur')) {
             armorModifier = 0;
-        } else if (weapon.ammo.includes('creuseur') || weapon.ammo.includes('acide')) {
+        } else if (weapon.ammo.includes('creuseur')) {
             armorModifier = 0.15;
         }
     }
@@ -447,6 +447,9 @@ function calcDamage(weapon,power,armor,defBat) {
     let powerDice;
     if (power >= 3) {
         let powerDiceMin = Math.round(power/2.5);
+        if (playerInfos.comp.ca >= 5 && defBatType.cat === 'aliens') {
+            powerDiceMin = Math.round(power/1.6);
+        }
         let powerDiceMax = Math.round(power*1.6);
         powerDice = rand.rand(powerDiceMin,powerDiceMax);
         if (powerDice == powerDiceMax) {
@@ -455,8 +458,14 @@ function calcDamage(weapon,power,armor,defBat) {
         }
     } else if (power === 2) {
         powerDice = rand.rand(0,4);
+        if (playerInfos.comp.ca >= 5 && defBatType.cat === 'aliens') {
+            powerDice = rand.rand(1,4);
+        }
     } else if (power === 1) {
         powerDice = Math.floor(rand.rand(0,4)/4);
+        if (playerInfos.comp.ca >= 5 && defBatType.cat === 'aliens') {
+            powerDice = Math.floor(rand.rand(0,3)/3);
+        }
     } else {
         powerDice = 0;
     }
@@ -484,9 +493,14 @@ function checkRicochet(defBat,defBatType,attWeap) {
                     if (!attWeap.isMelee && !attWeap.noShield && attWeap.armors > 0) {
                         let minimumPower = defBat.armor*2;
                         if (minimumPower < 18) {
-                            minimumPower = 18;
+                            if (defBat.armor >= 8) {
+                                minimumPower = 20;
+                            } else {
+                                minimumPower = 18;
+                            }
                         }
-                        let calcPower = Math.round((attWeap.power+3)/attWeap.armors);
+                        let powerBonus = Math.ceil((playerInfos.comp.train+(playerInfos.comp.ca/2))/1.75)+2;
+                        let calcPower = Math.round((attWeap.power+powerBonus)/attWeap.armors);
                         if (calcPower < minimumPower) {
                             rico = true;
                         }
@@ -739,6 +753,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
     if ((bat.apLeft < 0 && !batType.skills.includes('guerrilla')) || bat.apLeft > 0) {
         speed = speed-(bat.apLeft*5);
     }
+    speed = speed-(playerInfos.comp.train*5);
     let vetDice = vetBonus.initiative*bat.vet;
     return Math.round(speed+rand.rand(0,initiativeDice)-rand.rand(0,vetDice));
 };
@@ -1181,7 +1196,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.range = thisWeapon.range+1;
         }
         if (bat.eq === 'chargeur' || bat.eq === 'chargeur1' || bat.logeq === 'chargeur' || bat.logeq === 'chargeur1') {
-            if (thisWeapon.cost < 6) {
+            if (thisWeapon.cost < 6 && playerInfos.comp.train < 1) {
                 thisWeapon.accuracy = thisWeapon.accuracy-2;
                 if (thisWeapon.cost >= 3) {
                     thisWeapon.cost = thisWeapon.cost+1;
@@ -1189,7 +1204,9 @@ function weaponAdj(weapon,bat,wn) {
             }
         }
         if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.logeq === 'lunette' || bat.logeq === 'lunette1') {
-            thisWeapon.cost = thisWeapon.cost+1;
+            if (playerInfos.comp.train < 1) {
+                thisWeapon.cost = thisWeapon.cost+1;
+            }
         }
         if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.logeq === 'lunette' || bat.logeq === 'lunette1' || bat.eq.includes('kit-chouf') || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
             if (thisWeapon.elevation <= 1) {
@@ -1205,7 +1222,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.range = thisWeapon.range+1;
         }
         if (bat.eq === 'chargeur' || bat.eq === 'chargeur2' || bat.logeq === 'chargeur' || bat.logeq === 'chargeur2') {
-            if (thisWeapon.cost < 6) {
+            if (thisWeapon.cost < 6 && playerInfos.comp.train < 1) {
                 thisWeapon.accuracy = thisWeapon.accuracy-2;
                 if (thisWeapon.cost >= 3) {
                     thisWeapon.cost = thisWeapon.cost+1;
@@ -1213,7 +1230,9 @@ function weaponAdj(weapon,bat,wn) {
             }
         }
         if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.logeq === 'lunette' || bat.logeq === 'lunette2') {
-            thisWeapon.cost = thisWeapon.cost+1;
+            if (playerInfos.comp.train < 1) {
+                thisWeapon.cost = thisWeapon.cost+1;
+            }
         }
         if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.logeq === 'lunette' || bat.logeq === 'lunette2' || bat.eq.includes('kit-chouf')) {
             if (thisWeapon.elevation <= 1) {
@@ -1248,7 +1267,11 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.range = 2;
             thisWeapon.elevation = 1;
             thisWeapon.power = 8;
-            thisWeapon.cost = 4;
+            if (playerInfos.comp.train < 1) {
+                thisWeapon.cost = 4;
+            } else {
+                thisWeapon.cost = 3;
+            }
         }
     }
     if (bat.eq === 'arbalourde' || bat.logeq === 'arbalourde') {
@@ -1257,7 +1280,11 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.elevation = 1;
             thisWeapon.power = 9;
             thisWeapon.armors = 0.8;
-            thisWeapon.cost = 5;
+            if (playerInfos.comp.train < 1) {
+                thisWeapon.cost = 5;
+            } else {
+                thisWeapon.cost = 4;
+            }
         }
     }
     if (bat.eq === 'belier' || bat.logeq === 'belier') {
@@ -1485,10 +1512,19 @@ function checkDeepForest(tile) {
 };
 
 function calcShotDice(bat,luckyshot) {
-    let luckDice = rand.rand(1,100);
+    let badLuck = 100;
+    let goodLuck = 1;
+    let luckDice = rand.rand(goodLuck,badLuck);
+    if (bat.team == 'player') {
+        if (playerInfos.comp.train === 1) {
+            luckDice = luckDice-2;
+        } else if (playerInfos.comp.train === 2) {
+            luckDice = luckDice-5;
+        }
+    }
     if (bat.team == 'player') {
         if (bat.tags.includes('lucky')) {
-            luckDice = rand.rand(1,115);
+            luckDice = rand.rand(0,115);
         }
         if (luckyshot) {
             $('#report').append('<span class="report cy">Lucky shot!</span><br>');

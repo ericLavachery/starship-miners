@@ -376,6 +376,13 @@ function playerSkillsUTChanges() {
         if (playerInfos.comp.def >= 1 && unit.cat === 'buildings') {
             unit.armor = unit.armor+Math.round(playerInfos.comp.def*1.2);
         }
+        if (unit.cat === 'buildings') {
+            if (playerInfos.comp.def === 3) {
+                unit.hp = Math.round(unit.hp*1.5);
+            } else if (playerInfos.comp.def === 2) {
+                unit.hp = Math.round(unit.hp*1.15);
+            }
+        }
         if (playerInfos.comp.def >= 1 && unit.skills.includes('garde')) {
             unit.hp = unit.hp+playerInfos.comp.def;
             if (playerInfos.comp.def >= 3) {
@@ -504,6 +511,36 @@ function playerSkillsUTChanges() {
         if (playerInfos.comp.train >= 1) {
             if (unit.cat === 'infantry') {
                 unit.fabTime = unit.fabTime*(playerInfos.comp.train+3)/3;
+            }
+        }
+        if (playerInfos.comp.train >= 1) {
+            if (unit.cat != 'buildings' && unit.cat != 'devices' && unit.kind != 'zero-defense' && !unit.skills.includes('garde') && !unit.skills.includes('cage')) {
+                if (Object.keys(unit.weapon).length >= 3) {
+                    if (playerInfos.comp.train >= 2) {
+                        if (unit.weapon.cost >= 6) {
+                            unit.weapon.cost = unit.weapon.cost-2;
+                        } else {
+                            unit.weapon.cost = unit.weapon.cost-1;
+                        }
+                    } else {
+                        if (unit.weapon.cost >= 4) {
+                            unit.weapon.cost = unit.weapon.cost-1;
+                        }
+                    }
+                }
+                if (Object.keys(unit.weapon2).length >= 3) {
+                    if (playerInfos.comp.train >= 2) {
+                        if (unit.weapon2.cost >= 6) {
+                            unit.weapon2.cost = unit.weapon2.cost-2;
+                        } else {
+                            unit.weapon2.cost = unit.weapon2.cost-1;
+                        }
+                    } else {
+                        if (unit.weapon2.cost >= 4) {
+                            unit.weapon2.cost = unit.weapon2.cost-1;
+                        }
+                    }
+                }
             }
         }
         // CAMOUFLAGE
