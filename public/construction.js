@@ -373,6 +373,9 @@ function conSelect(unitId,player,noRefresh) {
                 equipIndex = armorTypes.findIndex((obj => obj.name == equip));
                 batEquip = armorTypes[equipIndex];
                 compReqOK = checkCompReq(batEquip);
+                if (checkChargeurPlasma(batEquip,conselUnit)) {
+                    compReqOK = false;
+                }
                 if (compReqOK || conselTriche) {
                     if (conselAmmos[3] == equip || (conselAmmos[3] === 'xxx' && listNum === 1) || (playerInfos.comp.log === 3 && conselUnit.log3eq === equip && compReqOK)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
@@ -526,6 +529,33 @@ function conSelect(unitId,player,noRefresh) {
     }
     bfconst(conselCat,conselTriche,conselUpgrade,true);
 };
+
+function checkChargeurPlasma(equip,batType) {
+    let isPlasma = false;
+    if (equip.name.includes('chargeur')) {
+        if (Object.keys(batType.weapon).length >= 3) {
+            if (batType.weapon.name.includes('plasma') || batType.weapon.name.includes('laser')) {
+                if (equip.name === 'chargeur' || equip.name === 'chargeur1') {
+                    if (!playerInfos.bldList.includes('Centre de recherches')) {
+                        isPlasma = true;
+                    }
+                }
+            }
+        }
+        if (!isPlasma) {
+            if (Object.keys(batType.weapon2).length >= 3) {
+                if (batType.weapon2.name.includes('plasma') || batType.weapon2.name.includes('laser')) {
+                    if (equip.name === 'chargeur' || equip.name === 'chargeur1') {
+                        if (!playerInfos.bldList.includes('Centre de recherches')) {
+                            isPlasma = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return isPlasma;
+}
 
 function selectAmmo(ammo,weapon,unitId) {
     if (conselUnit.skills.includes('unemun')) {
@@ -900,6 +930,9 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                     if (conselUnit.log3eq != '') {
                         let logEquip = getEquipByName(conselUnit.log3eq);
                         let compReqOK = checkCompReq(logEquip);
+                        if (checkChargeurPlasma(logEquip,conselUnit)) {
+                            compReqOK = false;
+                        }
                         if (compReqOK) {
                             newBat.logeq = logEquip.name;
                         }

@@ -92,6 +92,9 @@ function reEquip(batId,noRefresh) {
             myBatType.equip.forEach(function(equip) {
                 batEquip = getEquipByName(equip);
                 compReqOK = checkCompReq(batEquip);
+                if (checkChargeurPlasma(batEquip,myBatType)) {
+                    compReqOK = false;
+                }
                 if (compReqOK || conselTriche) {
                     if (myNewGear[3] == equip || (myNewGear[3] === 'xxx' && listNum === 1) || (playerInfos.comp.log === 3 && myBatType.log3eq === equip && compReqOK)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
@@ -243,9 +246,6 @@ function reEquip(batId,noRefresh) {
     $('#conAmmoList').append('<br>');
     $('#conAmmoList').append('<span class="blockTitle"><h4><button type="button" title="Faire les changements dans les munitions, armures et équipements" class="boutonCaca iconButtons" onclick="doReEquip(`'+myBat.id+'`)"><i class="ra ra-rifle rpg"></i> &nbsp;<span class="notsosmall">Rééquiper</span></button></h4></span><br>');
     $('#conAmmoList').append('<br>');
-    if (!retour) {
-        $("#conAmmoList").animate({scrollTop:0},"fast");
-    }
 };
 
 function checkHasWeapon(num,batType,eq) {

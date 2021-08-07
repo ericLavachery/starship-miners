@@ -1036,6 +1036,22 @@
         "noList": true
     },
     {
+        "name": "gold",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 2,
+        "armors": 0.8,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"bal":2,"energ":1},
+        "deploy":{"Or":1,"Hydrogène":3,"Larvium":2},
+        "batch":100,
+        "noList": true
+    },
+    {
         "name": "plastanium",
         "range": 1.4,
         "rof": 1.25,
@@ -1081,6 +1097,20 @@
         "batch":100
     },
     {
+        "name": "cn-proto-plasma",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1.2,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0.06,
+        "aoe": "brochette",
+        "deploy":{"Mercure":1,"Hydrogène":3,"Larvium":2},
+        "batch":100,
+        "noList": true
+    },
+    {
         "name": "cn-plasma",
         "range": 1,
         "rof": 1,
@@ -1090,7 +1120,25 @@
         "accuracy": 1,
         "apdamage": 0.1,
         "aoe": "brochette",
+        "bldReq":["Laboratoire"],
+        "compReq":{"bal":2,"energ":1},
         "deploy":{"Mercure":1,"Hydrogène":3,"Larvium":1},
+        "batch":100,
+        "noList": true
+    },
+    {
+        "name": "cn-gold",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 2,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "brochette",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"bal":2,"energ":1},
+        "deploy":{"Or":1,"Hydrogène":3,"Larvium":2},
         "batch":100,
         "noList": true
     },

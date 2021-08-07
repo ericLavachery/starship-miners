@@ -683,7 +683,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"plasma_mcanon",
-            "ammo":["cn-plasma","cn-plastanium","cn-uridium","cn-nanite"],
+            "ammo":["cn-proto-plasma","cn-plasma","cn-gold","cn-plastanium","cn-uridium","cn-nanite"],
             "maxAmmo":14,
             "ravitBld":"Atelier"
         },
@@ -952,7 +952,7 @@
             "power":12,
             "aoe":"unit",
             "sound":"plasma_fusil",
-            "ammo":["proto-plasma","plasma","plastanium","uridium","nanite"]
+            "ammo":["proto-plasma","plasma","gold","plastanium","uridium","nanite"]
         },
         "weapon2":{
             "name":"Lame",
@@ -1021,7 +1021,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["proto-plasma","plasma","plastanium","uridium"]
+            "ammo":["proto-plasma","plasma","gold","plastanium","uridium"]
         },
         "protection":["aucune","scrap","kevlar","mendium","nano","adamantite","battlesuit"],
         "equip":["aucun","e-flash","e-ranger","e-medic","w2-pplasma","e-camo","waterproof"],
@@ -3064,7 +3064,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["proto-plasma","plasma","plastanium","uridium"]
+            "ammo":["proto-plasma","plasma","gold","plastanium","uridium"]
         },
         "weapon2":{
             "name":"Carabine laser",
@@ -3081,7 +3081,7 @@
             "ammo":["laser","laser-g2"]
         },
         "protection":["aucune","scrap","bugium","kevlar","combo","kapton","mendium","titane","nano","adamantite"],
-        "equip":["aucun","e-flash","e-medic","e-camo","theeye","waterproof","silencieux1"],
+        "equip":["aucun","e-flash","e-medic","e-camo","theeye","waterproof","silencieux1","chargeur1","chargeur2"],
         "log3eq":"e-medic",
         "moveCost":2,
         "maxFlood":3,
@@ -3336,7 +3336,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["proto-plasma","plasma","plastanium","uridium"]
+            "ammo":["proto-plasma","plasma","gold","plastanium","uridium"]
         },
         "weapon2":{
             "name":"BFG",
@@ -3352,7 +3352,7 @@
             "ravitBld":"Générateur"
         },
         "protection":["kevlar","combo","kapton","mendium","titane","nano","adamantite"],
-        "equip":["aucun","e-flash","gilet","e-camo","silencieux1","permakirin","theeye","waterproof","e-medic"],
+        "equip":["aucun","e-flash","gilet","e-camo","silencieux1","chargeur1","permakirin","theeye","waterproof","e-medic"],
         "log3eq":"gilet",
         "moveCost":2,
         "maxFlood":3,
@@ -4016,7 +4016,7 @@
             "ravitBld":"Atelier"
         },
         "protection":["aucune","scrap","kevlar","mendium","nano"],
-        "equip":["aucun","e-flash","gilet","e-medic","e-camo"],
+        "equip":["aucun","e-flash","gilet","e-medic","e-camo","chargeur1"],
         "log3eq":"gilet",
         "moveCost":2,
         "maxFlood":3,
@@ -4446,7 +4446,7 @@
             "ammo":["laser","laser-g2"]
         },
         "protection":["aucune","chobham","iso"],
-        "equip":["aucun","e-flash","e-ranger","e-camo","e-jetpack","theeye","waterproof","detector"],
+        "equip":["aucun","e-flash","e-ranger","e-camo","e-jetpack","theeye","waterproof","detector","chargeur"],
         "log3eq":"waterproof",
         "moveCost":3,
         "maxFlood":2,
@@ -4660,7 +4660,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["proto-plasma","plasma","plastanium","uridium"]
+            "ammo":["proto-plasma","plasma","gold","plastanium","uridium"]
         },
         "weapon2":{
             "name":"Fusil mitrailleur",
@@ -4729,7 +4729,7 @@
             "ravitBld":"Atelier"
         },
         "protection":["kevlar","combo","kapton","mendium","titane","nano","adamantite"],
-        "equip":["aucun","e-flash","gilet","theeye","waterproof","detector","e-medic"],
+        "equip":["aucun","e-flash","gilet","theeye","waterproof","detector","e-medic","chargeur1"],
         "log3eq":"gilet",
         "moveCost":2,
         "maxFlood":3,
@@ -5335,8 +5335,8 @@
             "ammo":["laser","laser-g2"]
         },
         "protection":["aucune","chobham","iso"],
-        "equip":["aucun","e-flash","e-medic","e-camo","theeye","helper"],
-        "log3eq":"e-camo",
+        "equip":["aucun","e-flash","e-medic","e-camo","theeye","helper","chargeur2"],
+        "log3eq":"chargeur2",
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,

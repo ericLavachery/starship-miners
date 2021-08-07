@@ -613,7 +613,7 @@
             "power":12,
             "aoe":"unit",
             "sound":"plasma_fusil",
-            "ammo":["proto-plasma","plasma","plastanium","uridium","nanite"]
+            "ammo":["proto-plasma","plasma","gold","plastanium","uridium","nanite"]
         },
         "weapon2":{
             "name":"Canon laser",
