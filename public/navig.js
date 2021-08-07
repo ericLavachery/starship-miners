@@ -175,6 +175,7 @@ function commandes() {
             }
         }
     }
+    // $('#commandz').append('<button type="button" title="Tout soigner (comme au retour de mission)" class="boutonCiel iconButtons" onclick="healEverything()"><i class="fas fa-briefcase-medical"></i></button>');
     if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall') {
         gangNavig();
     }

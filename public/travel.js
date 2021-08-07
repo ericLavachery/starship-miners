@@ -175,9 +175,20 @@ function healEverything() {
     // toutes les unités sont soignées et perdent leurs tags temporaires
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
+        let gearTags = getBatGearTags(bat.prt,bat.eq,batType);
         if (bat.loc === 'trans' && bat.locId != souteId) {
+            if (!bat.tags.includes('return')) {
+                gearTags.push('return');
+            }
             loadBat(bat.id,souteId,bat.locId);
         }
+        if (bat.tags.includes('zombie')) {
+            gearTags.push('zombie');
+        }
+        if (bat.tags.includes('prodres')) {
+            gearTags.push('prodres');
+        }
+        bat.tags = gearTags;
         bat.squadsLeft = batType.squads;
         bat.damage = 0;
         if (bat.soins != undefined) {
@@ -191,17 +202,6 @@ function healEverything() {
         bat.apLeft = bat.ap;
         bat.oldapLeft = bat.ap;
         bat.salvoLeft = batType.maxSalvo;
-        let gearTags = getBatGearTags(bat.prt,bat.eq,batType);
-        if (bat.tags.includes('zombie')) {
-            gearTags.push('zombie');
-        }
-        if (bat.tags.includes('prodres')) {
-            gearTags.push('prodres');
-        }
-        if (!bat.tags.includes('return')) {
-            gearTags.push('return');
-        }
-        bat.tags = gearTags;
     });
 };
 
