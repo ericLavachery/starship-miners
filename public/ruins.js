@@ -175,6 +175,7 @@ function putRuinsCit(tile) {
             restCit = restCit-72;
         }
     }
+    playerOccupiedTileList();
 };
 
 function checkRuinsAliens(tile) {
@@ -231,6 +232,7 @@ function checkRuinsAliens(tile) {
             }
         }
         selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap;
+        alienOccupiedTileList();
     }
 };
 
@@ -490,6 +492,7 @@ function checkRuinsRes(tile) {
         conselTriche = true;
         putBatAround(tile.id,false,'noWater',239,0,'go');
         let coffre = getBatByTileId(coffreTileId);
+        playerOccupiedTileList();
         let totalRes = 0;
         let thatResChance = 0;
         let thatResNum = 0;
@@ -648,6 +651,7 @@ function checkRuinsUnit(tile) {
             putBatAround(tile.id,false,'noWater',foundUnitId,0);
             playerInfos.fndUnits = playerInfos.fndUnits+1;
             console.log('FOUND! '+batType.name);
+            playerOccupiedTileList();
         }
     }
 }

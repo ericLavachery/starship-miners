@@ -394,8 +394,8 @@ function skillsInfos(bat,batType) {
         }
     }
     if (!playerInfos.onShip) {
-        // MEDIC IN BLD
         let baseskillCost;
+        // MEDIC IN BLD
         if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
             let medicBat = bestMedicInBld(bat);
             let medicBatType = getBatType(medicBat);
@@ -504,6 +504,24 @@ function skillsInfos(bat,batType) {
                     }
                 }
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
+            }
+        }
+        // MECANO IN BLD
+        if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
+            let medicBat = bestMecanoInBld(bat);
+            let medicBatType = getBatType(medicBat);
+            // console.log(medicBat);
+            if (Object.keys(medicBat).length >= 1) {
+                numTargets = numMedicTargets(medicBat,'vehicles',true,true,bat);
+                baseskillCost = calcBaseSkillCost(medicBat,medicBatType,false,true);
+                apCost = numTargets*(baseskillCost+medicBatType.squads-medicBat.squadsLeft);
+                if (apCost === 0) {apCost = baseskillCost;}
+                if (numTargets >= 1) {
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les véhicules adjacents avec '+medicBat.type+'" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,true,true,'+medicBat.id+')"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+                } else {
+                    skillMessage = "Aucun véhicule adjacent n'a pas subit de dégâts";
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+                }
             }
         }
         // MECANO

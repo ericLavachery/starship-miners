@@ -621,6 +621,8 @@ function calcBaseSkillCost(bat,batType,medik,inBld) {
             }
         } else if (playerInfos.bldList.includes('Chaîne de montage') && batType.cat != 'buildings') {
             baseskillCost = Math.round(baseskillCost*3/4);
+        } else if (playerInfos.bldList.includes('Garage') && batType.cat != 'buildings' && baseskillCost >= 3) {
+            baseskillCost = baseskillCost-1;
         }
         if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano') {
             if (batType.skills.includes('mecano') || batType.skills.includes('selfmecano')) {
@@ -650,6 +652,27 @@ function bestMedicInBld(bldBat) {
             let batType = getBatType(bat);
             if (batType.skills.includes('medic')) {
                 maxMeds = 10*bat.apLeft/batType.mediCost;
+                if (maxMeds > bestMaxMeds) {
+                    bestMaxMeds = maxMeds;
+                    if (maxMeds >= 1) {
+                        medicBat = bat;
+                    }
+                }
+            }
+        }
+    });
+    return medicBat;
+};
+
+function bestMecanoInBld(bldBat) {
+    let medicBat = {};
+    let maxMeds = 0;
+    let bestMaxMeds = 0;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "trans" && bat.locId === bldBat.id) {
+            let batType = getBatType(bat);
+            if (batType.skills.includes('mecano')) {
+                maxMeds = 10*bat.apLeft/batType.mecanoCost;
                 if (maxMeds > bestMaxMeds) {
                     bestMaxMeds = maxMeds;
                     if (maxMeds >= 1) {

@@ -451,6 +451,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":7,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Atelier"],
         "costs":{"Scrap":120,"Plomb":60,"Aluminium":60,"Titane":120,"Tungstène":60,"Silicium":30,"Electros":60,"Batteries":60,"Végétaux":110,"Blendium":30,"Chlore":10,"Tissus":5},
+        "deploy":{"Energie":30},
         "fabTime":45
     },
     {
@@ -655,8 +656,8 @@
         "bldReq":["Chaîne de montage","Armurerie","Laboratoire"],
         "compReq":{"robo":1},
         "compPass":["tiradores"],
-        "costs":{"Fer":60,"Scrap":30,"Carbone":90,"Moteurs":130,"Titane":180,"Electros":120,"Batteries":120,"Cuivre":72,"Silicium":60,"Cobalt":60},
-        "deploy":{"Energie":115},
+        "costs":{"Fer":60,"Scrap":30,"Carbone":90,"Moteurs":130,"Titane":180,"Electros":120,"Batteries":90,"Cuivre":72,"Silicium":60,"Cobalt":60},
+        "deploy":{"Energie":90},
         "fabTime":55,
         "inRuin":3
     },
@@ -893,8 +894,8 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":99,"tiradores":12,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Laboratoire","Chaîne de montage"],
         "compReq":{"robo":1},
-        "costs":{"Scrap":90,"Carbone":90,"Moteurs":100,"Titane":240,"Electros":165,"Batteries":150,"Cuivre":72,"Silicium":90},
-        "deploy":{"Energie":115},
+        "costs":{"Scrap":90,"Carbone":90,"Moteurs":100,"Titane":240,"Electros":165,"Batteries":125,"Cuivre":72,"Silicium":90},
+        "deploy":{"Energie":125},
         "fabTime":65,
         "inRuin":2
     },
