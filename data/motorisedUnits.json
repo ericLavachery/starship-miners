@@ -1096,7 +1096,7 @@
             "power":25,
             "aoe":"brochette",
             "sound":"plasma_canon",
-            "ammo":["cn-proto-plasma","cn-plasma","cn-gold","cn-plastanium","cn-uridium","cn-nanite"]
+            "ammo":["cn-proto-plasma","cn-plasma","cn-impact","cn-grapeshot","cn-plastanium","cn-uridium","cn-nanite"]
         },
         "weapon2":{
             "name":"Missiles squash",
@@ -1322,7 +1322,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"plasma_pistol",
-            "ammo":["proto-plasma","plasma","gold","plastanium","uridium","nanite"]
+            "ammo":["proto-plasma","plasma","impact","grapeshot","plastanium","uridium","nanite"]
         },
         "weapon2":{
             "name":"Marquage",
@@ -3403,7 +3403,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"plasma_fusil",
-            "ammo":["cn-proto-plasma","cn-plasma","cn-gold","cn-plastanium","cn-uridium","cn-nanite"]
+            "ammo":["cn-proto-plasma","cn-plasma","cn-impact","cn-grapeshot","cn-plastanium","cn-uridium","cn-nanite"]
         },
         "weapon2":{
             "name":"Minibombes",

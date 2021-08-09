@@ -1036,11 +1036,11 @@
         "noList": true
     },
     {
-        "name": "gold",
+        "name": "impact",
         "range": 1,
         "rof": 1,
-        "power": 0,
-        "powermult": 2,
+        "power": 6,
+        "powermult": 1,
         "armors": 0.8,
         "accuracy": 1,
         "apdamage": 0,
@@ -1048,6 +1048,22 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"bal":2,"energ":1},
         "deploy":{"Or":1,"Hydrogène":3,"Larvium":2},
+        "batch":100,
+        "noList": true
+    },
+    {
+        "name": "grapeshot",
+        "range": 1,
+        "rof": 3,
+        "power": 0,
+        "powermult": 0.6,
+        "armors": 0.8,
+        "accuracy": 1,
+        "apdamage": 0.07,
+        "aoe": "",
+        "bldReq":["Laboratoire"],
+        "compReq":{"bal":3,"energ":1},
+        "deploy":{"Platine":2,"Hydrogène":2,"Larvium":1,"Aranium":1},
         "batch":100,
         "noList": true
     },
@@ -1078,7 +1094,7 @@
         "aoe": "squad",
         "bldReq":["Centre de recherches"],
         "compReq":{"explo":2,"energ":1},
-        "deploy":{"Mercure":1,"Hydrogène":2,"Nanite":2,"Azote":1,"Aranium":1},
+        "deploy":{"Platine":1,"Hydrogène":2,"Nanite":2,"Azote":1,"Aranium":1},
         "batch":100
     },
     {
@@ -1127,11 +1143,11 @@
         "noList": true
     },
     {
-        "name": "cn-gold",
+        "name": "cn-impact",
         "range": 1,
         "rof": 1,
-        "power": 0,
-        "powermult": 2,
+        "power": 3,
+        "powermult": 1.2,
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
@@ -1139,6 +1155,22 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"bal":2,"energ":1},
         "deploy":{"Or":1,"Hydrogène":3,"Larvium":2},
+        "batch":100,
+        "noList": true
+    },
+    {
+        "name": "cn-grapeshot",
+        "range": 1,
+        "rof": 3,
+        "power": 0,
+        "powermult": 0.6,
+        "armors": 0.6,
+        "accuracy": 1,
+        "apdamage": 0.08,
+        "aoe": "",
+        "bldReq":["Laboratoire"],
+        "compReq":{"bal":3,"energ":1},
+        "deploy":{"Platine":2,"Hydrogène":2,"Larvium":1,"Aranium":1},
         "batch":100,
         "noList": true
     },
@@ -1169,7 +1201,7 @@
         "aoe": "squad",
         "bldReq":["Centre de recherches"],
         "compReq":{"explo":2,"energ":1},
-        "deploy":{"Mercure":1,"Hydrogène":2,"Nanite":2,"Azote":1,"Aranium":1},
+        "deploy":{"Platine":1,"Hydrogène":2,"Nanite":2,"Azote":1,"Aranium":1},
         "batch":100
     },
     {
