@@ -730,7 +730,7 @@ function spawns() {
     if (fantMorph < 7) {fantMorph = 7;}
     let wurmMorph = Math.round((13-zone[0].mapDiff)/Math.sqrt(zone[0].mapDiff)*5);
     if (wurmMorph < 7) {wurmMorph = 7;}
-    let libMorph = wurmMorph;
+    let libMorph = fantMorph;
     let libGenMorph = 0;
     let libGenMax = 14-zone[0].mapDiff;
     if (libGenMax < 4) {libGenMax = 4;}
@@ -769,7 +769,9 @@ function spawns() {
                 }
             } else if (bat.squadsLeft >= 5 && bat.type === 'Asticots' && bat.tags.includes('morph')) {
                 alienMorph(bat,'Moucherons',false);
-                libGenMorph++;
+                if (libMorph <= 20) {
+                    libGenMorph++;
+                }
             } else if (transList.includes('Vers') && bat.type === 'Vers' && !bat.tags.includes('morph')) {
                 bat.tags.push('morph');
                 if (playerInfos.comp.det >= 2 && playerInfos.comp.ca >= 2 && !warnVers) {
@@ -778,10 +780,12 @@ function spawns() {
                 }
             } else if (bat.squadsLeft >= 5 && bat.type === 'Vers' && bat.tags.includes('morph')) {
                 alienMorph(bat,'Lucioles',false);
-                libGenMorph++;
+                if (libMorph <= 20) {
+                    libGenMorph++;
+                }
             } else if (rand.rand(1,wurmMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Larves') {
                 alienMorph(bat,'Wurms',false);
-            } else if (libMorph <= 25 && (rand.rand(1,libMorph) === 1 || libGenMorph >= libGenMax) && bat.squadsLeft >= 3 && bat.type === 'Lombrics') {
+            } else if (libMorph <= 30 && (rand.rand(1,libMorph) === 1 || libGenMorph >= libGenMax) && bat.squadsLeft >= 3 && bat.type === 'Lombrics') {
                 alienMorph(bat,'Libellules',false);
             } else if (fantMorph <= 25 && rand.rand(1,fantMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Ombres') {
                 alienMorph(bat,'Fantômes',false);

@@ -374,7 +374,8 @@
         "name":"Sapeurs",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":[],
-        "costs":{"Fer":60,"Scrap":60,"Carbone":60,"Bois":60,"Silicium":30,"Végétaux":116,"Chlore":10,"Tissus":5},
+        "costs":{"Fer":60,"Scrap":60,"Carbone":60,"Bois":60,"Silicium":15,"Moteurs":3,"Batteries":3,"Phosphore":6,"Eau":30,"Végétaux":90,"Chlore":10,"Tissus":5},
+        "deploy":{"Energie":15,"Huile":6},
         "fabTime":15
     },
     {

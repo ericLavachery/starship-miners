@@ -514,7 +514,7 @@ function playerSkillsUTChanges() {
             }
         }
         if (playerInfos.comp.train >= 1) {
-            if (unit.cat != 'buildings' && unit.cat != 'devices' && unit.kind != 'zero-defense' && !unit.skills.includes('garde') && !unit.skills.includes('cage')) {
+            if (unit.cat != 'buildings' && unit.cat != 'devices' && unit.kind != 'zero-defense' && !unit.skills.includes('garde') && !unit.skills.includes('cage') && !unit.skills.includes('robot')) {
                 if (Object.keys(unit.weapon).length >= 3) {
                     if (playerInfos.comp.train >= 2) {
                         if (unit.weapon.cost >= 6) {
