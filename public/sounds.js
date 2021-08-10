@@ -74,6 +74,20 @@ function clicSound() {
     clicSnd.play();
 };
 
+function okSound() {
+    let okFile = 'ok';
+    if (selectedBatType.skills.includes('robot') || selectedBatType.crew === 0) {
+        okFile = 'beep';
+    }
+    let randNum = rand.rand(1,2);
+    okFile = okFile+randNum;
+    clicSnd = new Howl({
+        src: ['/static/sounds/moves/'+okFile+'.mp3'],
+        volume: 0.3
+    });
+    clicSnd.play();
+};
+
 function shotSound(weapon,bat) {
     // playMove(false);
     let soundDir;

@@ -187,6 +187,9 @@ function batSelect(bat) {
     // draw new selected unit
     tileSelect(bat);
     checkSelectedBatType();
+    if (selectedBatType.cat != 'aliens') {
+        okSound();
+    }
     commandes();
     if (showMini && activeTurn == 'player') {
         minimap();

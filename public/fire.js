@@ -1070,6 +1070,10 @@ function attack(melee) {
     }
     console.log('Damage Left : '+targetBat.damage);
     targetBatArrayUpdate();
+    // remove ap & salvo
+    selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
+    selectedBat.salvoLeft = selectedBat.salvoLeft-1;
+    // add xp & remove life :)
     if (targetBat.squadsLeft <= 0) {
         defAlive = false;
         batDeath(targetBat,true);
@@ -1091,7 +1095,6 @@ function attack(melee) {
             showAlien(targetBat);
         }
     }
-    // remove ap & salvo & life :)
     if (selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('autodestruction')) {
         attAlive = false;
         batDeath(selectedBat,true);
@@ -1110,8 +1113,6 @@ function attack(melee) {
         $('#unitInfos').empty();
         $("#unitInfos").css("display","none");
     } else {
-        selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
-        selectedBat.salvoLeft = selectedBat.salvoLeft-1;
         if (squadsOut >= 1 && activeTurn == 'player') {
             if (!selectedBatType.skills.includes('robot') || selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
                 selectedBat.xp = selectedBat.xp+xpFactor;
