@@ -76,10 +76,19 @@ function clicSound() {
 
 function okSound() {
     let okFile = 'ok';
-    if (selectedBatType.skills.includes('robot') || selectedBatType.crew === 0) {
-        okFile = 'beep';
+    let randNum = rand.rand(1,18);
+    if (selectedBatType.skills.includes('robot')) {
+        if (selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
+            okFile = 'rok';
+            randNum = rand.rand(1,2);
+        } else {
+            okFile = 'beep';
+            randNum = rand.rand(1,3);
+        }
+    } else if (selectedBatType.crew === 0) {
+        okFile = 'bip';
+        randNum = '';
     }
-    let randNum = rand.rand(1,2);
     okFile = okFile+randNum;
     clicSnd = new Howl({
         src: ['/static/sounds/moves/'+okFile+'.mp3'],
