@@ -69,14 +69,14 @@ function clicSound() {
     // playMove(false);
     clicSnd = new Howl({
         src: ['/static/sounds/fx/clic.mp3'],
-        volume: 0.3
+        volume: 0.4
     });
     clicSnd.play();
 };
 
 function okSound() {
     let okFile = 'ok';
-    let randNum = rand.rand(1,18);
+    let randNum = rand.rand(1,19);
     if (selectedBatType.skills.includes('robot')) {
         if (selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
             okFile = 'rok';
