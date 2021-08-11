@@ -735,19 +735,22 @@ function renameTile(tileId) {
 
 function renameChief(batId) {
     let bat = getBatById(batId);
-    let newName = prompt('Donnez un nom au commandant de ce bataillon :');
-    if (newName != null) {
-        if (newName.length <= 24) {
-            bat.chief = newName;
-            showBataillon(bat);
-            showBatInfos(bat);
-            if (inSoute) {
-                goSoute();
+    playOK(bat);
+    setTimeout(function (){
+        let newName = prompt('Donnez un nom au commandant de ce bataillon :');
+        if (newName != null) {
+            if (newName.length <= 24) {
+                bat.chief = newName;
+                showBataillon(bat);
+                showBatInfos(bat);
+                if (inSoute) {
+                    goSoute();
+                }
+            } else {
+                // message d'erreur
             }
-        } else {
-            // message d'erreur
         }
-    }
+    }, 1000); // How long do you want the delay to be (in milliseconds)?
 };
 
 function getGrade(bat,batType) {

@@ -75,23 +75,39 @@ function clicSound() {
 };
 
 function okSound() {
-    let okFile = 'ok';
-    let randNum = rand.rand(1,19);
-    if (selectedBatType.skills.includes('robot')) {
-        if (selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
-            okFile = 'rok';
-            randNum = rand.rand(1,2);
-        } else {
-            okFile = 'beep';
-            randNum = rand.rand(1,3);
+    let okFile;
+    let randNum;
+    if (selectedBat.ok != undefined) {
+        okFile = selectedBat.ok;
+    } else {
+        okFile = 'ok';
+        randNum = rand.rand(1,27);
+        if (selectedBatType.skills.includes('robot')) {
+            if (selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
+                okFile = 'rok';
+                randNum = rand.rand(1,2);
+            } else {
+                okFile = 'beep';
+                randNum = rand.rand(1,3);
+            }
+        } else if (selectedBatType.crew === 0) {
+            okFile = 'bip';
+            randNum = '';
         }
-    } else if (selectedBatType.crew === 0) {
-        okFile = 'bip';
-        randNum = '';
+        okFile = okFile+randNum;
+        selectedBat.ok = okFile;
+        selectedBatArrayUpdate();
     }
-    okFile = okFile+randNum;
     clicSnd = new Howl({
         src: ['/static/sounds/moves/'+okFile+'.mp3'],
+        volume: 0.3
+    });
+    clicSnd.play();
+};
+
+function playOK(bat) {
+    clicSnd = new Howl({
+        src: ['/static/sounds/moves/'+bat.ok+'.mp3'],
         volume: 0.3
     });
     clicSnd.play();
