@@ -81,7 +81,7 @@ function okSound() {
         okFile = selectedBat.ok;
     } else {
         okFile = 'ok';
-        randNum = rand.rand(1,27);
+        randNum = rand.rand(1,28);
         if (selectedBatType.skills.includes('robot')) {
             if (selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
                 okFile = 'rok';
@@ -98,19 +98,19 @@ function okSound() {
         selectedBat.ok = okFile;
         selectedBatArrayUpdate();
     }
-    clicSnd = new Howl({
+    okSnd = new Howl({
         src: ['/static/sounds/moves/'+okFile+'.mp3'],
         volume: 0.3
     });
-    clicSnd.play();
+    okSnd.play();
 };
 
 function playOK(bat) {
-    clicSnd = new Howl({
+    okSnd = new Howl({
         src: ['/static/sounds/moves/'+bat.ok+'.mp3'],
         volume: 0.3
     });
-    clicSnd.play();
+    okSnd.play();
 };
 
 function shotSound(weapon,bat) {

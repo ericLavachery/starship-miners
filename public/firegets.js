@@ -1444,6 +1444,12 @@ function weaponAdj(weapon,bat,wn) {
             vision = 1;
         }
     }
+    if (infra === 'Miradors' || infra === 'Murailles') {
+        vision = 3;
+        if (!thisWeapon.isMelee && ((!thisWeapon.isShort && thisWeapon.range >= 1) || thisWeapon.range >= 2 || (thisWeapon.elevation >= 1 && thisWeapon.range >= 1))) {
+            thisWeapon.range = thisWeapon.range+1;
+        }
+    }
     if (highGround === 1) {
         if (thisWeapon.elevation >= 1) {
             thisWeapon.range = thisWeapon.range+1;
@@ -1461,14 +1467,12 @@ function weaponAdj(weapon,bat,wn) {
             }
         }
     }
-    if (infra === 'Miradors' || infra === 'Murailles') {
-        vision = 3;
-        if (!thisWeapon.isMelee) {
-            thisWeapon.range = thisWeapon.range+1;
-        }
-    }
     // Forêt (range)
-    if (tile.terrain == 'F' && infra != 'Miradors' && batType.cat != 'buildings' && !batType.skills.includes('transorbital')) {
+    let overInfra = false;
+    if (infra === 'Miradors' || infra === 'Murailles' || infra === 'Remparts') {
+        overInfra = true;
+    }
+    if (tile.terrain == 'F' && !overInfra && batType.cat != 'buildings' && !batType.skills.includes('transorbital')) {
         if (checkDeepForest(tile)) {
             if (thisWeapon.range >= 2) {
                 if (thisWeapon.range >= 3) {

@@ -239,5 +239,8 @@ let theWork = new Howl({
 let clicSnd = new Howl({
     src: ['/static/sounds/fx/clic.mp3']
 });
+let okSnd = new Howl({
+    src: ['/static/sounds/moves/bip.mp3']
+});
 let soundDuration = 2000;
 let musicChance = 8;
