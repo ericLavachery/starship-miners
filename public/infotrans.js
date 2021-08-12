@@ -343,6 +343,7 @@ function clickDebarq(tileId) {
             if (!playerInfos.onShip) {
                 let apCost = prefabCost(selectedBatType,batDebarqType,false);
                 selectedBat.apLeft = selectedBat.apLeft-apCost;
+                selectedBat.xp = selectedBat.xp+(Mth.sqrt(batDebarqType.fabTime)/20);
             }
         } else {
             if (selectedBat.transIds.includes(batDebarq.id)) {

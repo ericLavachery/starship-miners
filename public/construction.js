@@ -785,6 +785,7 @@ function clickConstruct(tileId,free) {
             if (!free && !playerInfos.onShip) {
                 let apCost = prefabCost(selectedBatType,conselUnit,true);
                 selectedBat.apLeft = selectedBat.apLeft-apCost;
+                selectedBat.xp = selectedBat.xp+(Mth.sqrt(conselUnit.fabTime)/20);
                 if (!selectedBat.tags.includes('construction')) {
                     selectedBat.tags.push('construction');
                 }
@@ -1082,7 +1083,6 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             if (tile.infra === 'Débris') {
                 if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices') {
                     delete tile.infra;
-                    // saveMap();
                 }
             }
         } else {
@@ -1596,6 +1596,7 @@ function putRoad() {
         }
     } else {
         selectedBat.apLeft = selectedBat.apLeft-apCost;
+        selectedBat.xp = selectedBat.xp+(terrain.roadBuild/30);
     }
     let roadCosts = getRoadCosts(tile);
     payCost(roadCosts);
@@ -1621,6 +1622,7 @@ function putInfra(infraName) {
     }
     console.log('apCost:'+apCost);
     selectedBat.apLeft = selectedBat.apLeft-apCost;
+    selectedBat.xp = selectedBat.xp+0.4;
     if (!selectedBat.tags.includes('construction')) {
         selectedBat.tags.push('construction');
     }

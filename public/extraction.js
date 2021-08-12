@@ -15,14 +15,6 @@ function extraction(apCost) {
 };
 
 function mining(bat) {
-    // if (!bat.tags.includes('mining') && bat.apLeft >= 7) {
-    //     if (typeof bat.extracted != 'undefined') {
-    //         if (bat.extracted.length >= 1) {
-    //             bat.tags.push('mining');
-    //             bat.apLeft = bat.apLeft-5;
-    //         }
-    //     }
-    // }
     if (bat.tags.includes('mining')) {
         if (bat.apLeft >= 1) {
             console.log('MINING');
@@ -229,6 +221,23 @@ function getMiningRate(bat,fullRate) {
     }
     if (bat.eq === 'g2tools' || bat.logeq === 'g2tools') {
         miningAdj = miningAdj*1.2;
+    }
+    let helpInside = false;
+    if (batType.name === 'Comptoir' || batType.name === 'Mine') {
+        if (bat.transIds.length >= 1) {
+            bataillons.forEach(function(inBat) {
+                if (inBat.loc === "trans" && inBat.locId === bat.id) {
+                    if (inBat.type === 'Mineurs') {
+                        if (inBat.apLeft >= 10 && inBat.squadsLeft >= 6) {
+                            helpInside = true;
+                        }
+                    }
+                }
+            });
+        }
+    }
+    if (helpInside) {
+        miningAdj = miningAdj*1.34;
     }
     if (fullRate) {
         let batAP = getBatAP(bat,batType);

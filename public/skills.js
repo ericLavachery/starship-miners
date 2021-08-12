@@ -512,6 +512,7 @@ function dropStuff(apCost,mineType) {
         selectedBat.tags.push('sU');
     }
     selectedBat.apLeft = selectedBat.apLeft-apCost;
+    selectedBat.xp = selectedBat.xp+0.1;
     selectedBat.salvoLeft = 0;
     // tagAction();
     tagDelete(selectedBat,'guet');
