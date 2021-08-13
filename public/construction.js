@@ -63,7 +63,7 @@ function bfconst(cat,triche,upgrade,retour) {
     let costString = '';
     let unitMergedCosts;
     sortedUnitsList.forEach(function(unit) {
-        console.log(unit.name);
+        // console.log(unit.name);
         mayOut = checkMayOut(unit);
         prodOK = true;
         if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
@@ -123,9 +123,9 @@ function bfconst(cat,triche,upgrade,retour) {
                 }
             }
         }
-        console.log('prodOK='+prodOK);
-        console.log('prodHere='+prodHere);
-        console.log('mayOut='+mayOut);
+        // console.log('prodOK='+prodOK);
+        // console.log('prodHere='+prodHere);
+        // console.log('mayOut='+mayOut);
         if ((prodOK && prodHere && mayOut) || triche) {
             if (lastKind != unit.kind) {
                 showkind = unit.kind.replace(/zero-/g,"");
@@ -178,6 +178,26 @@ function bfconst(cat,triche,upgrade,retour) {
             if (unit.skills.includes('clone')) {
                 unitCits = 0;
             }
+            let citAlert = '';
+            if (unitCits >= 1) {
+                let enoughCit = checkCitCost(unit);
+                if (!enoughCit) {
+                    if (!unit.skills.includes('brigands')) {
+                        citAlert = ' {&block;Citoyens:'+unitCits+'!}';
+                    } else {
+                        citAlert = ' {&block;Criminels:'+unitCits+'!}';
+                    }
+                } else {
+                    if (!unit.skills.includes('brigands')) {
+                        citAlert = ' {Citoyens:'+unitCits+'}';
+                    } else {
+                        citAlert = ' {Criminels:'+unitCits+'}';
+                    }
+                }
+                // console.log('Citoyens');
+                // console.log(enoughCit);
+                // console.log('citAlert='+citAlert);
+            }
             let citColour = 'gff';
             if (unit.skills.includes('brigands')) {
                 citColour = 'brunf';
@@ -188,10 +208,10 @@ function bfconst(cat,triche,upgrade,retour) {
             }
             if ((bldOK && costOK) || triche) {
                 color = catColor(unit);
-                $('#conUnitList').append('<span class="constName klik '+color+deco+'" title="'+toNiceString(unit.bldReq)+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
+                $('#conUnitList').append('<span class="constName klik '+color+deco+'" title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
             } else {
                 color = 'gff';
-                $('#conUnitList').append('<span class="constName '+color+deco+'" title="'+toNiceString(unit.bldReq)+' '+costString+'">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
+                $('#conUnitList').append('<span class="constName '+color+deco+'" title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
             }
             lastKind = unit.kind;
         }
@@ -785,7 +805,7 @@ function clickConstruct(tileId,free) {
             if (!free && !playerInfos.onShip) {
                 let apCost = prefabCost(selectedBatType,conselUnit,true);
                 selectedBat.apLeft = selectedBat.apLeft-apCost;
-                selectedBat.xp = selectedBat.xp+(Mth.sqrt(conselUnit.fabTime)/20);
+                selectedBat.xp = selectedBat.xp+(Math.sqrt(conselUnit.fabTime)/20);
                 if (!selectedBat.tags.includes('construction')) {
                     selectedBat.tags.push('construction');
                 }

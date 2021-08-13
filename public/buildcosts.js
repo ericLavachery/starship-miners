@@ -563,6 +563,32 @@ function checkUnitCost(batType,withDeploy) {
             }
         });
     }
+    let enoughCit = checkCitCost(batType);
+    if (!enoughCit) {
+        enoughRes = false;
+    }
+    // let reqCit = batType.squads*batType.squadSize*batType.crew;
+    // if (batType.skills.includes('clone')) {
+    //     reqCit = 0;
+    // }
+    // if (reqCit >= 1) {
+    //     let dispoCrim = getDispoCrim();
+    //     let dispoCit = getDispoCit();
+    //     if (batType.skills.includes('brigands')) {
+    //         if (reqCit > dispoCrim+dispoCit) {
+    //             enoughRes = false;
+    //         }
+    //     } else {
+    //         if (reqCit > dispoCit) {
+    //             enoughRes = false;
+    //         }
+    //     }
+    // }
+    return enoughRes;
+};
+
+function checkCitCost(batType) {
+    let enoughCit = true;
     let reqCit = batType.squads*batType.squadSize*batType.crew;
     if (batType.skills.includes('clone')) {
         reqCit = 0;
@@ -572,15 +598,15 @@ function checkUnitCost(batType,withDeploy) {
         let dispoCit = getDispoCit();
         if (batType.skills.includes('brigands')) {
             if (reqCit > dispoCrim+dispoCit) {
-                enoughRes = false;
+                enoughCit = false;
             }
         } else {
             if (reqCit > dispoCit) {
-                enoughRes = false;
+                enoughCit = false;
             }
         }
     }
-    return enoughRes;
+    return enoughCit;
 };
 
 function payUnitCost(batType) {

@@ -632,7 +632,7 @@
             "ammo":["marquage"]
         },
         "equip":["aucun","e-flash","e-camo","kit-chouf","e-ranger","e-jetpack","lunette1","chargeur1","silencieux1","camkit"],
-        "log3eq":"lunette1",
+        "log3eq":"silencieux1",
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
