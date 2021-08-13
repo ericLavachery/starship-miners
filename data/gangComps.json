@@ -3,7 +3,7 @@
         "id":1,
         "name":"arti",
         "fullName":"Artillerie",
-        "levels":{"rednecks":13,"blades":99,"bulbos":13,"drogmulojs":13,"tiradores":99,"detruas":6,"brasier":13},
+        "levels":{"rednecks":12,"blades":99,"bulbos":12,"drogmulojs":12,"tiradores":99,"detruas":6,"brasier":12},
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
@@ -35,7 +35,7 @@
         "id":5,
         "name":"cyber",
         "fullName":"Cybernétique",
-        "levels":{"rednecks":13,"blades":11,"bulbos":3,"drogmulojs":13,"tiradores":13,"detruas":12,"brasier":10},
+        "levels":{"rednecks":13,"blades":11,"bulbos":3,"drogmulojs":12,"tiradores":13,"detruas":12,"brasier":10},
         "maxLevel":1,
         "lvlCosts":[0,2]
     },

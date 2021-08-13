@@ -24,7 +24,7 @@
         "name":"Murailles",
         "cat":"infra",
         "fabTime":26,
-        "levels":{"rednecks":11,"blades":11,"bulbos":10,"drogmulojs":13,"tiradores":12,"detruas":11,"brasier":11},
+        "levels":{"rednecks":11,"blades":12,"bulbos":10,"drogmulojs":13,"tiradores":12,"detruas":11,"brasier":11},
         "costs":{"Compo2":150,"Compo3":150}
     },
     {

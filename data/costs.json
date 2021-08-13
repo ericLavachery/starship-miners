@@ -487,7 +487,7 @@
     {
         "id":160,
         "name":"Wolverines",
-        "levels":{"rednecks":99,"blades":12,"bulbos":99,"drogmulojs":7,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":7,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Centre de recherches"],
         "compReq":{"gen":1},
         "compPass":["drogmulojs","blades"],
@@ -585,7 +585,7 @@
     {
         "id":71,
         "name":"Rétiaires",
-        "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":12,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["QG","Cabines","Atelier"],
         "unitCost":"Warriors",
         "costs":{"Scrap":128,"Carbone":64,"Aluminium":128,"Titane":64,"Cuivre":64,"Batteries":64,"Végétaux":192,"Blendium":32,"Fer":32,"Soufre":32,"Plomb":32,"Drogues":85,"Or":64,"Chlore":21,"Zinc":21,"Tissus":42},
@@ -708,7 +708,7 @@
     {
         "id":85,
         "name":"Bigman",
-        "levels":{"rednecks":99,"blades":11,"bulbos":5,"drogmulojs":15,"tiradores":99,"detruas":99,"brasier":11},
+        "levels":{"rednecks":99,"blades":11,"bulbos":5,"drogmulojs":14,"tiradores":99,"detruas":99,"brasier":11},
         "bldReq":["Chaîne de montage","Laboratoire"],
         "compReq":{"cyber":1},
         "compPass":["brasier"],
@@ -719,7 +719,7 @@
     {
         "id":86,
         "name":"Cyborgs",
-        "levels":{"rednecks":17,"blades":14,"bulbos":3,"drogmulojs":18,"tiradores":16,"detruas":99,"brasier":10},
+        "levels":{"rednecks":17,"blades":14,"bulbos":3,"drogmulojs":15,"tiradores":16,"detruas":99,"brasier":10},
         "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"energ":1},
         "compPass":["bulbos"],
@@ -765,7 +765,7 @@
     {
         "id":88,
         "name":"Noise Angels",
-        "levels":{"rednecks":18,"blades":99,"bulbos":14,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":18,"blades":99,"bulbos":14,"drogmulojs":99,"tiradores":14,"detruas":99,"brasier":99},
         "bldReq":["Chaîne de montage","Arsenal","Centre de recherches"],
         "compReq":{"cyber":1},
         "compPass":["tiradores"],
@@ -870,7 +870,7 @@
     {
         "id":135,
         "name":"Runners",
-        "levels":{"rednecks":16,"blades":12,"bulbos":99,"drogmulojs":14,"tiradores":20,"detruas":99,"brasier":18},
+        "levels":{"rednecks":16,"blades":99,"bulbos":99,"drogmulojs":12,"tiradores":20,"detruas":9,"brasier":99},
         "bldReq":["Armurerie","Centre de recherches"],
         "compReq":{"cyber":1},
         "compPass":["detruas"],
@@ -1004,6 +1004,16 @@
         "costs":{"Fer":72,"Scrap":288,"Carbone":180,"Aluminium":72,"Moteurs":45,"Tungstène":24,"Batteries":12,"Compo2":24,"Plomb":24,"Soufre":24,"Fuel":24},
         "deploy":{"Fuel":72},
         "fabTime":50
+    },
+    {
+        "id":252,
+        "name":"Bolts",
+        "levels":{"rednecks":99,"blades":11,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Centre de recherches","Garage"],
+        "compReq":{"energ":1,"mat":1},
+        "costs":{"Fer":48,"Scrap":120,"Carbone":216,"Compo2":72,"Titane":48,"Azote":48,"Mendium":60,"Tungstène":144,"Rhodium":48,"Silicium":24,"Electros":96,"Batteries":144,"Moteurs":45,"Cuivre":48,"Huile":12,"Energie":350},
+        "deploy":{"Energie":350},
+        "fabTime":100
     },
     {
         "id":36,
@@ -1482,7 +1492,7 @@
     {
         "id":107,
         "name":"Flaktanks",
-        "levels":{"rednecks":17,"blades":99,"bulbos":17,"drogmulojs":17,"tiradores":18,"detruas":15,"brasier":16},
+        "levels":{"rednecks":17,"blades":99,"bulbos":16,"drogmulojs":17,"tiradores":18,"detruas":15,"brasier":16},
         "bldReq":["Arsenal","Chaîne de montage","Poste radio"],
         "compReq":{"tank":1},
         "compHardReq":{"explo":1},
@@ -1599,7 +1609,7 @@
     {
         "id":132,
         "name":"Raves",
-        "levels":{"rednecks":99,"blades":99,"bulbos":18,"drogmulojs":20,"tiradores":99,"detruas":16,"brasier":19},
+        "levels":{"rednecks":99,"blades":99,"bulbos":18,"drogmulojs":20,"tiradores":99,"detruas":16,"brasier":18},
         "bldReq":["Arsenal","QG","Chaîne de montage"],
         "compReq":{"arti":1},
         "costs":{"Fer":288,"Scrap":120,"Carbone":120,"Aluminium":216,"Moteurs":45,"Tungstène":228,"Silicium":18,"Cuivre":33,"Electros":80,"Batteries":139,"Compo2":96,"Compo3":72,"Végétaux":180,"Blendium":60,"Huile":10,"Mendium":36,"Azote":72,"Cobalt":30,"Hélium":60},
@@ -1811,7 +1821,7 @@
     {
         "id":129,
         "name":"Squash",
-        "levels":{"rednecks":99,"blades":99,"bulbos":16,"drogmulojs":18,"tiradores":99,"detruas":14,"brasier":18},
+        "levels":{"rednecks":99,"blades":99,"bulbos":14,"drogmulojs":18,"tiradores":99,"detruas":14,"brasier":16},
         "bldReq":["Usine d'armement","Centre de com"],
         "compHardReq":{"arti":1,"explo":1,"bal":1},
         "costs":{"Fer":108,"Scrap":36,"Carbone":84,"Aluminium":108,"Titane":36,"Rhodium":36,"Silicium":18,"Electros":18,"Batteries":24,"Nickel":36,"Compo2":72},
@@ -1829,7 +1839,7 @@
     {
         "id":149,
         "name":"Obusiers",
-        "levels":{"rednecks":16,"blades":99,"bulbos":99,"drogmulojs":16,"tiradores":99,"detruas":11,"brasier":99},
+        "levels":{"rednecks":14,"blades":99,"bulbos":99,"drogmulojs":14,"tiradores":99,"detruas":11,"brasier":99},
         "bldReq":["Arsenal","Poste radio"],
         "compReq":{"arti":1},
         "costs":{"Fer":146,"Scrap":144,"Carbone":129,"Aluminium":72,"Titane":36,"Tungstène":36,"Silicium":12,"Cuivre":30,"Electros":15,"Batteries":9,"Compo2":128},
