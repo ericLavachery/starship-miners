@@ -379,31 +379,34 @@
         "name": "silencieux",
         "cat":"equip",
         "skills": [],
-        "info": "Silencieux",
+        "info": "Silencieux Camouflage+",
         "bldReq":["Atelier"],
         "compReq":{"log":1,"bal":1},
         "factor":"crew",
-        "costs":{"Aluminium":6,"Carbone":3}
+        "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":3},
+        "deploy":{"Végétaux":9}
     },
     {
         "name": "silencieux1",
         "cat":"equip",
         "skills": [],
-        "info": "Silencieux",
+        "info": "Silencieux Camouflage+",
         "bldReq":["Atelier"],
         "compReq":{"log":1,"bal":1},
         "factor":"crew",
-        "costs":{"Aluminium":6,"Carbone":3}
+        "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":3},
+        "deploy":{"Végétaux":9}
     },
     {
         "name": "silencieux2",
         "cat":"equip",
         "skills": [],
-        "info": "Silencieux",
+        "info": "Silencieux Camouflage+",
         "bldReq":["Atelier"],
         "compReq":{"log":1,"bal":1},
         "factor":"crew",
-        "costs":{"Aluminium":6,"Carbone":3}
+        "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":3},
+        "deploy":{"Végétaux":9}
     },
     {
         "name": "arcpoulie",
@@ -471,7 +474,7 @@
         "name": "e-camo",
         "cat":"equip",
         "skills": [],
-        "info": "Camouflage+",
+        "info": "Camouflage++",
         "bldReq":["Atelier"],
         "compReq":{"log":2,"train":1},
         "factor":"crew",

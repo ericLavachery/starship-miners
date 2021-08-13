@@ -646,7 +646,7 @@ function getStealth(bat) {
     }
     if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
         if (batType.skills.includes('camo')) {
-            batStealth = batStealth+4;
+            batStealth = batStealth+5;
         } else {
             batStealth = batStealth+3;
         }
