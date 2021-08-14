@@ -842,7 +842,7 @@
         "compReq":{"energ":1,"trans":1},
         "factor":"thp",
         "costs":{"Cuivre":3,"Moteurs":6,"Nickel":3,"Electros":6,"Batteries":3},
-        "deploy":{"Hydrogène":6,"Huile":1}
+        "deploy":{"Hydrogène":3,"Huile":1}
     },
     {
         "name": "e-treuil",

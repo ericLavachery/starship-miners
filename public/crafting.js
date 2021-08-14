@@ -416,7 +416,7 @@ function solarPanel(bat,batType,sim) {
         } else if (tile.terrain === 'F') {
             energyProd = rand.rand(4,5);
         }
-        energyProd = Math.floor(energyProd*zone[0].ensol/160);
+        energyProd = Math.floor(energyProd*zone[0].ensol/pansolFactor);
         if (bat.eq === 'psol' || bat.logeq === 'psol') {
             energyProd = Math.round(energyProd/2);
         }

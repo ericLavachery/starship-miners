@@ -522,10 +522,10 @@ function skillsInfos(bat,batType) {
                 apCost = numTargets*(baseskillCost+medicBatType.squads-medicBat.squadsLeft);
                 if (apCost === 0) {apCost = baseskillCost;}
                 if (numTargets >= 1) {
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les véhicules adjacents avec '+medicBat.type+'" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,true,true,'+medicBat.id+')"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les véhicules adjacents avec '+medicBat.type+'" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,true,true,'+medicBat.id+')"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
                 } else {
                     skillMessage = "Aucun véhicule adjacent n'a pas subit de dégâts";
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
                 }
             }
         }

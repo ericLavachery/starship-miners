@@ -1497,8 +1497,8 @@
         "aoe": "",
         "bldReq":["Centre de recherches"],
         "compReq":{"energ":2},
-        "costs":{"Fer":3,"Carbone":1,"Titane":3,"Platine":3,"Batteries":2,"Larvium":1},
-        "deploy":{"Energie":10},
+        "costs":{"Fer":3,"Carbone":1,"Titane":3,"Platine":3,"Batteries":1,"Larvium":1},
+        "deploy":{"Energie":5},
         "batch":12
     },
     {

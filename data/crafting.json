@@ -389,7 +389,7 @@
     {
         "id":22,
         "result":"Fuel",
-        "cost":{"Carbone":10,"Hydrogène":5},
+        "cost":{"Carbone":12,"Hydrogène":4},
         "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":10
@@ -397,7 +397,7 @@
     {
         "id":23,
         "result":"Fuel",
-        "cost":{"Végétaux":50,"Hydrogène":10},
+        "cost":{"Végétaux":30,"Hydrogène":3},
         "compReq":{"exo":1,"ind":2},
         "bldReq":["Usine"],
         "batch":10
