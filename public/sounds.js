@@ -100,7 +100,7 @@ function okSound() {
     }
     okSnd = new Howl({
         src: ['/static/sounds/moves/'+okFile+'.mp3'],
-        volume: 0.3
+        volume: 0.2
     });
     okSnd.play();
 };

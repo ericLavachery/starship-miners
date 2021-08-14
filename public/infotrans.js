@@ -279,6 +279,7 @@ function embarquement(transId,discardRes) {
         selectedBat.transRes = {};
     }
     loadBat(selectedBat.id,transBat.id);
+    doneAction(transBat);
     tagDelete(selectedBat,'guet');
     camoOut();
     selectedBatArrayUpdate();
@@ -360,6 +361,7 @@ function clickDebarq(tileId) {
             batDebarq.oldTileId = tileId;
         }
         console.log('oldTileId='+selectedBat.tileId);
+        doneAction(selectedBat);
         selectedBatArrayUpdate();
         batUnselect();
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
