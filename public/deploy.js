@@ -380,18 +380,25 @@ function getBatGearStuff(armorName,equipName,batType) {
     if (equipName === 'e-jetpack') {
         baseAP = 17;
     }
-    if ((batType.skills.includes('fly') || equipName === 'e-jetpack') && batArmor.ap < 0) {
-        gearStuff[1] = baseAP+Math.ceil(batArmor.ap*1.5);
-    } else if (equipName === 'helper' && batType.moveCost > 3) {
-        gearStuff[1] = baseAP+batArmor.ap+2;
-    } else if (equipName === 'helper' && (batArmor.ap < -1 || batType.ap < 13)) {
-        gearStuff[1] = baseAP+batArmor.ap+1;
-    } else if (batType.skills.includes('strong') && batArmor.ap < -1) {
-        gearStuff[1] = baseAP+batArmor.ap+1;
-    } else if (batType.moveCost === 99) {
+    if (batType.skills.includes('robot')) {
         gearStuff[1] = baseAP;
+        if (batArmor.armor >= 1) {
+            gearStuff[0] = batType.armor+batArmor.armor+1;
+        }
     } else {
-        gearStuff[1] = baseAP+batArmor.ap;
+        if ((batType.skills.includes('fly') || equipName === 'e-jetpack') && batArmor.ap < 0) {
+            gearStuff[1] = baseAP+Math.ceil(batArmor.ap*1.5);
+        } else if (equipName === 'helper' && batType.moveCost > 3) {
+            gearStuff[1] = baseAP+batArmor.ap+2;
+        } else if (equipName === 'helper' && (batArmor.ap < -1 || batType.ap < 13)) {
+            gearStuff[1] = baseAP+batArmor.ap+1;
+        } else if (batType.skills.includes('strong') && batArmor.ap < -1) {
+            gearStuff[1] = baseAP+batArmor.ap+1;
+        } else if (batType.moveCost === 99) {
+            gearStuff[1] = baseAP;
+        } else {
+            gearStuff[1] = baseAP+batArmor.ap;
+        }
     }
     return gearStuff;
 }

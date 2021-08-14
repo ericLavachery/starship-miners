@@ -61,7 +61,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","dunium","bonibo","iso"],
+        "protection":["aucun","bugium","acier","swag","bonibo","iso"],
         "equip":["aucun","w1-gun","w2-dyna","w1-autopistol","tungextract","plasmaextract","monoextract","e-medic","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -144,7 +144,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","dunium","iso"],
+        "protection":["aucun","bugium","acier","swag","iso"],
         "equip":["aucun","w1-gun","w2-explo","w1-autopistol","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -226,7 +226,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","dunium","bonibo","iso"],
+        "protection":["aucun","bugium","acier","swag","bonibo","iso"],
         "equip":["aucun","w1-gun","w2-fire","w1-autopistol","hydroextract","e-medic","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -306,7 +306,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","dunium","bonibo","iso"],
+        "protection":["aucun","bugium","acier","swag","bonibo","iso"],
         "equip":["aucun","w1-gun","w2-ggun","w1-autopistol","autoextract","e-medic","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -390,7 +390,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","dunium","bonibo","iso"],
+        "protection":["aucun","bugium","acier","swag","bonibo","iso"],
         "equip":["aucun","w1-gun","w2-explo","w1-autopistol","psol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -506,7 +506,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-ggun","w1-autogun","e-medic","psol2"],
         "log3eq":"psol2",
         "moveCost":99,
@@ -581,7 +581,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-molo","w1-autopistol","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -660,7 +660,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-dyna","w1-autopistol","e-medic","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -739,7 +739,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-brol","w1-autopistol","psol2"],
         "log3eq":"psol2",
         "moveCost":99,
@@ -815,7 +815,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-brol","w1-autogun","psol2"],
         "log3eq":"psol2",
         "moveCost":99,
@@ -893,7 +893,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-arti","w1-autopistol","psol2"],
         "log3eq":"psol2",
         "moveCost":99,
@@ -967,7 +967,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-explo","w1-autopistol","e-medic","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -1044,7 +1044,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w2-arti","w1-autogun","psol2"],
         "log3eq":"psol2",
         "moveCost":99,
@@ -1121,7 +1121,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w2-arti","w1-autogun","psol2"],
         "log3eq":"psol2",
         "moveCost":99,
@@ -1181,7 +1181,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w1-autopistol","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -1262,7 +1262,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-rain","w1-autopistol","psol2"],
         "log3eq":"psol2",
         "moveCost":99,
@@ -1325,7 +1325,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","dunium","bonibo","iso"],
+        "protection":["aucun","bugium","acier","swag","bonibo","iso"],
         "equip":["aucun","w1-gun","w1-autopistol","e-medic","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -1404,7 +1404,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-explo","w1-autogun","e-medic","psol2"],
         "log3eq":"psol2",
         "moveCost":99,
@@ -1479,7 +1479,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-arti","w1-autogun","psol2"],
         "log3eq":"psol2",
         "moveCost":99,
@@ -1556,7 +1556,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","dunium","bonibo","iso"],
+        "protection":["aucun","bugium","acier","swag","bonibo","iso"],
         "equip":["aucun","w1-gun","w2-dyna","w1-autopistol","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -1632,7 +1632,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-explo","w1-autopistol","psol2"],
         "log3eq":"psol2",
         "moveCost":99,
@@ -1709,7 +1709,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-laser","w1-autogun","psol2"],
         "log3eq":"psol2",
         "moveCost":99,
@@ -1786,7 +1786,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-rain","w1-autopistol","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -1860,7 +1860,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-plasma","w2-laser","w1-autogun","psol2"],
         "log3eq":"psol2",
         "moveCost":99,
@@ -1906,7 +1906,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","dunium","bonibo","iso"],
+        "protection":["aucun","bugium","acier","swag","bonibo","iso"],
         "equip":["aucun","w1-autopistol","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -1976,7 +1976,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-fire","w1-autopistol","psol2"],
         "log3eq":"psol2",
         "moveCost":99,
@@ -2049,7 +2049,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-ggun","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2123,7 +2123,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-ggun","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2195,7 +2195,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-ggun","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2266,7 +2266,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-ggun","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2339,7 +2339,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-explo","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2413,7 +2413,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-explo","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2485,7 +2485,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-explo","w1-autopistol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2557,7 +2557,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","dunium","bonibo","iso"],
+        "protection":["aucun","bugium","acier","swag","bonibo","iso"],
         "equip":["aucun","w1-gun","w2-molo","w1-autopistol","e-medic","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -2617,7 +2617,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-gun","w1-autopistol","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -2677,7 +2677,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","dunium","bonibo","iso"],
+        "protection":["aucun","bugium","acier","swag","bonibo","iso"],
         "equip":["aucun","w1-ggun","w1-autopistol","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -2712,7 +2712,7 @@
         "maxSalvo":1,
         "weapon":{},
         "weapon2":{},
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2768,7 +2768,7 @@
             "sound":"calibre_sa",
             "ammo":["tungsten"]
         },
-        "protection":["aucun","bugium","acier","dunium","bonibo","iso"],
+        "protection":["aucun","bugium","acier","swag","bonibo","iso"],
         "equip":["aucun","w1-gun","w1-autopistol","e-medic","psol"],
         "log3eq":"psol",
         "moveCost":99,
@@ -2842,7 +2842,7 @@
             "sound":"mit_minigun",
             "ammo":["uranium"]
         },
-        "protection":["aucun","bugium","acier","titane","dunium","bonibo","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-ggun","w1-autogun"],
         "moveCost":99,
         "maxFlood":-1,
