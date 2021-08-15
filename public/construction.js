@@ -1060,11 +1060,8 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                     newBat.xp = newBat.xp+levelXP[2];
                 }
             } else if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices' || conselUnit.kind === 'zero-defense' || conselUnit.skills.includes('garde') || conselUnit.skills.includes('cage')) {
-                if (playerInfos.comp.def === 1) {
-                    newBat.xp = newBat.xp+levelXP[1];
-                }
                 if (playerInfos.comp.def === 2) {
-                    newBat.xp = newBat.xp+Math.ceil(levelXP[2]*3/4);
+                    newBat.xp = newBat.xp+levelXP[1];
                 }
                 if (playerInfos.comp.def === 3) {
                     newBat.xp = newBat.xp+levelXP[2];
