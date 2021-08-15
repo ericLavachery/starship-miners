@@ -98,7 +98,7 @@ function clickSelect(tileId) {
         if (Object.keys(newSelectedBat).length >= 1) {
             selectMode();
             batUnstack();
-            batSelect(newSelectedBat);
+            batSelect(newSelectedBat,true);
             // console.log('NEW BAT SELECTED');
             // console.log(selectedBat);
             // console.log(selectedBatType);
@@ -164,7 +164,7 @@ function isAlienHere(tileId) {
     return alienHere;
 };
 
-function batSelect(bat) {
+function batSelect(bat,roger) {
     // stop move sound
     // playMove(false);
     // remove selection on old selected unit
@@ -187,7 +187,7 @@ function batSelect(bat) {
     // draw new selected unit
     tileSelect(bat);
     checkSelectedBatType();
-    if (selectedBatType.cat != 'aliens') {
+    if (roger && selectedBatType.cat != 'aliens') {
         okSound();
     }
     commandes();

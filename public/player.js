@@ -365,6 +365,10 @@ function playerSkillsUTChanges() {
             unit.fabTime = unit.fabTime*(playerInfos.comp.ind+3)/3;
         }
         // DEFENSE
+        let defComp = playerInfos.comp.def-1;
+        if (playerInfos.comp.def === 3) {
+            defComp++;
+        }
         if (playerInfos.comp.def >= 1 && (unit.kind === 'zero-defense' || unit.skills.includes('cage')) && !unit.skills.includes('dome')) {
             if (unit.compReq === undefined && unit.compHardReq === undefined) {
                 unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.def);
@@ -383,8 +387,8 @@ function playerSkillsUTChanges() {
                 unit.hp = Math.round(unit.hp*1.15);
             }
         }
-        if (playerInfos.comp.def >= 1 && unit.skills.includes('garde')) {
-            unit.hp = unit.hp+playerInfos.comp.def;
+        if (playerInfos.comp.def >= 2 && unit.skills.includes('garde')) {
+            unit.hp = unit.hp+defComp;
             if (playerInfos.comp.def >= 3) {
                 unit.armor = unit.armor+2;
                 if (Object.keys(unit.weapon).length >= 3) {
@@ -395,12 +399,12 @@ function playerSkillsUTChanges() {
                 }
             }
         }
-        if (playerInfos.comp.def >= 1 && (unit.cat === 'buildings' || unit.cat === 'devices')) {
+        if (playerInfos.comp.def >= 2 && (unit.cat === 'buildings' || unit.cat === 'devices')) {
             if (Object.keys(unit.weapon).length >= 3) {
-                unit.weapon.rof = Math.ceil(unit.weapon.rof*(playerInfos.comp.def+8)/8);
+                unit.weapon.rof = Math.ceil(unit.weapon.rof*(defComp+7)/7);
             }
             if (Object.keys(unit.weapon2).length >= 3) {
-                unit.weapon2.rof = Math.ceil(unit.weapon2.rof*(playerInfos.comp.def+8)/8);
+                unit.weapon2.rof = Math.ceil(unit.weapon2.rof*(defComp+7)/7);
             }
         }
         if (playerInfos.comp.def >= 1) {

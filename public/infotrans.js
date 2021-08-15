@@ -373,7 +373,7 @@ function clickDebarq(tileId) {
             }
         }
         showBataillon(batDebarq);
-        batSelect(batDebarq);
+        batSelect(batDebarq,true);
         moveMode();
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
             moveSelectedBat(tileId,true,false);
