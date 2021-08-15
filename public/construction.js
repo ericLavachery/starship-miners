@@ -574,6 +574,32 @@ function checkChargeurPlasma(equip,batType) {
             }
         }
     }
+    if (equip.name === 'lanceur1') {
+        if (Object.keys(batType.weapon).length >= 3) {
+            if (batType.weapon.name.includes('olotov')) {
+                if (playerInfos.comp.pyro < 2) {
+                    isPlasma = true;
+                }
+            } else {
+                if (playerInfos.comp.explo < 2) {
+                    isPlasma = true;
+                }
+            }
+        }
+    }
+    if (equip.name === 'lanceur2') {
+        if (Object.keys(batType.weapon2).length >= 3) {
+            if (batType.weapon2.name.includes('olotov')) {
+                if (playerInfos.comp.pyro < 2) {
+                    isPlasma = true;
+                }
+            } else {
+                if (playerInfos.comp.explo < 2) {
+                    isPlasma = true;
+                }
+            }
+        }
+    }
     return isPlasma;
 }
 

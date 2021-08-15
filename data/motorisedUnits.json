@@ -1815,7 +1815,7 @@
             "ravitBld":"Atelier"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","iso","swag","adamantite"],
-        "equip":["aucun","gilet","chargeur1","g2motor","e-flash","theeye","e-mecano"],
+        "equip":["aucun","gilet","chargeur1","g2motor","e-flash","theeye","e-mecano","lanceur2"],
         "log3eq":"gilet",
         "moveCost":2,
         "maxFlood":3,

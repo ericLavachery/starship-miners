@@ -431,6 +431,26 @@
         "deploy":{"Végétaux":9}
     },
     {
+        "name": "lanceur1",
+        "cat":"equip",
+        "skills": [],
+        "info": "Portée+ Elévation+",
+        "bldReq":["Arsenal"],
+        "compReq":{"log":2,"bal":2},
+        "factor":"crew",
+        "costs":{"Scrap":12,"Fer":12,"Aluminium":24}
+    },
+    {
+        "name": "lanceur2",
+        "cat":"equip",
+        "skills": [],
+        "info": "Portée+ Elévation+",
+        "bldReq":["Arsenal"],
+        "compReq":{"log":2,"bal":2},
+        "factor":"crew",
+        "costs":{"Scrap":12,"Fer":12,"Aluminium":24}
+    },
+    {
         "name": "arcpoulie",
         "cat":"equip",
         "skills": [],
@@ -1138,7 +1158,7 @@
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"def":3,"explo":2,"arti":1},
+        "compReq":{"def":2,"explo":2,"arti":1},
         "factor":"rofpow",
         "costs":{"Carbone":20,"Fer":80,"Tungstène":60,"Titane":20,"Silicium":6,"Rhodium":10,"Electros":10}
     },
@@ -1158,7 +1178,7 @@
         "skills": [],
         "info": "Les deux armes du bâtiment",
         "bldReq":[],
-        "compReq":{"def":3,"energ":1},
+        "compReq":{"def":2,"energ":1},
         "factor":"rofpow",
         "costs":{"Carbone":4,"Tungstène":8,"Silicium":2,"Rhodium":4,"Electros":4,"Batteries":8}
     },
@@ -1188,7 +1208,7 @@
         "skills": [],
         "info": "Tourelles automatiques",
         "bldReq":[],
-        "compReq":{"log":2,"def":3,"det":3,"bal":3,"tank":1,"robo":1},
+        "compReq":{"log":2,"def":2,"det":3,"bal":3,"tank":1,"robo":1},
         "factor":"one",
         "costs":{"Carbone":45,"Scrap":20,"Soufre":45,"Uranium":45,"Fer":150,"Cuivre":60,"Aluminium":60,"Moteurs":15,"Silicium":30,"Electros":45,"Batteries":45}
     },

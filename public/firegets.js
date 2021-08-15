@@ -1203,6 +1203,19 @@ function weaponAdj(weapon,bat,wn) {
                 }
             }
         }
+        if (bat.eq === 'lanceur1' || bat.logeq === 'lanceur1') {
+            if (!batType.skills.includes('camo')) {
+                thisWeapon.noise = thisWeapon.noise+1;
+            }
+            if (!batType.skills.includes('fly') && bat.eq != 'e-jetpack' && bat.logeq != 'e-jetpack') {
+                if (thisWeapon.range === 0) {
+                    thisWeapon.range = 1;
+                }
+                thisWeapon.elevation = thisWeapon.elevation+1;
+            } else {
+                thisWeapon.range = 2;
+            }
+        }
         if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.logeq === 'lunette' || bat.logeq === 'lunette1') {
             if (playerInfos.comp.train < 1) {
                 thisWeapon.cost = thisWeapon.cost+1;
@@ -1227,6 +1240,19 @@ function weaponAdj(weapon,bat,wn) {
                 if (thisWeapon.cost >= 3) {
                     thisWeapon.cost = thisWeapon.cost+1;
                 }
+            }
+        }
+        if (bat.eq === 'lanceur2' || bat.logeq === 'lanceur2' || bat.eq === 'crimekitgi') {
+            if (!batType.skills.includes('camo')) {
+                thisWeapon.noise = thisWeapon.noise+1;
+            }
+            if (!batType.skills.includes('fly') && bat.eq != 'e-jetpack' && bat.logeq != 'e-jetpack') {
+                if (thisWeapon.range === 0) {
+                    thisWeapon.range = 1;
+                }
+                thisWeapon.elevation = thisWeapon.elevation+1;
+            } else {
+                thisWeapon.range = 2;
             }
         }
         if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.logeq === 'lunette' || bat.logeq === 'lunette2') {

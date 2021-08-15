@@ -35,7 +35,7 @@
         "weapon2":{
             "name":"Dynamite",
             "cost":5,
-            "range":1,
+            "range":2,
             "noBis":true,
             "noFly":true,
             "noDef":true,
@@ -203,10 +203,10 @@
         "weapon2":{
             "name":"Lance-flammes",
             "cost":6,
-            "range":1,
+            "range":2,
             "noBis":true,
             "kit":true,
-            "rof":5,
+            "rof":4,
             "accuracy":22,
             "power":12,
             "aoe":"squad",
@@ -556,7 +556,7 @@
         "weapon2":{
             "name":"Molotov",
             "cost":6,
-            "range":0,
+            "range":2,
             "noBis":true,
             "noFly":true,
             "noDef":true,
@@ -634,7 +634,7 @@
         "weapon2":{
             "name":"Dynamite",
             "cost":5,
-            "range":0,
+            "range":2,
             "noBis":true,
             "noFly":true,
             "noDef":true,
@@ -1530,7 +1530,7 @@
         "weapon2":{
             "name":"Dynamite",
             "cost":5,
-            "range":0,
+            "range":2,
             "noBis":true,
             "noFly":true,
             "noDef":true,
@@ -1951,19 +1951,18 @@
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
-            "name":"Lance-flammes",
+            "name":"Fusil antichar",
             "cost":6,
-            "range":1,
+            "range":4,
             "noBis":true,
             "kit":true,
             "rof":6,
-            "accuracy":22,
-            "power":12,
-            "aoe":"squad",
-            "sound":"flamme",
-            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
-            "maxAmmo":36,
-            "ravitBld":"Atelier"
+            "accuracy":25,
+            "power":15,
+            "armors":0.5,
+            "aoe":"unit",
+            "sound":"calibre_antichar",
+            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "weapon3":{
             "name":"Autopistol",
@@ -1977,7 +1976,7 @@
             "ammo":["tungsten"]
         },
         "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
-        "equip":["aucun","w1-ggun","w2-fire","w1-autopistol","psol2"],
+        "equip":["aucun","w1-ggun","w2-ggun","w1-autopistol","psol2"],
         "log3eq":"psol2",
         "moveCost":99,
         "maxFlood":-1,
@@ -2532,7 +2531,7 @@
         "weapon2":{
             "name":"Molotov",
             "cost":6,
-            "range":0,
+            "range":2,
             "noBis":true,
             "noFly":true,
             "noDef":true,
