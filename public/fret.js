@@ -47,7 +47,7 @@ function loadRes(retour) {
         if (selectedBat.autoLoad != undefined) {
             if (selectedBat.autoLoad.length >= 1) {
                 $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-times"></i></span>');
-                $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="stopAutoLoad()" title="Stopper les chargement automatiques">Stopper les automations</span></span><br>');
+                $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="stopAutoLoad()" title="Stopper tous les chargement automatiques">Stopper les automations</span></span><br>');
             }
         }
         let selectedBatTile = getTile(selectedBat);
@@ -99,10 +99,24 @@ function loadRes(retour) {
                                                     isAuto = true;
                                                 }
                                             }
-                                            if (isAuto) {
-                                                $('#conUnitList').append('<span class="loadIcon bleu klik" onclick="stopThisAutoLoad('+bat.id+')" title="Stopper cette automation!"><i class="fas fa-robot"></i></span>');
+                                            let isRetro = false;
+                                            if (bat.autoLoad != undefined) {
+                                                if (bat.autoLoad.includes(selectedBat.id)) {
+                                                    isRetro = true;
+                                                }
+                                            }
+                                            if (isRetro) {
+                                                if (isAuto) {
+                                                    $('#conUnitList').append('<span class="loadIcon jaune klik" onclick="stopThisAutoLoad('+bat.id+')" title="Stopper cette automation! (Supprime une boucle!)"><i class="fas fa-robot"></i></span>');
+                                                } else {
+                                                    $('#conUnitList').append('<span class="loadIcon rouge klik" onclick="resMaxLoad('+bat.id+',true)" title="Automatiser: Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+') à chaque tour (ATTENTION: Boucle!!!)"><i class="fas fa-robot"></i></span>');
+                                                }
                                             } else {
-                                                $('#conUnitList').append('<span class="loadIcon vert klik" onclick="resMaxLoad('+bat.id+',true)" title="Automatiser : Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+') à chaque tour"><i class="fas fa-robot"></i></span>');
+                                                if (isAuto) {
+                                                    $('#conUnitList').append('<span class="loadIcon bleu klik" onclick="stopThisAutoLoad('+bat.id+')" title="Stopper cette automation!"><i class="fas fa-robot"></i></span>');
+                                                } else {
+                                                    $('#conUnitList').append('<span class="loadIcon vert klik" onclick="resMaxLoad('+bat.id+',true)" title="Automatiser: Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+') à chaque tour"><i class="fas fa-robot"></i></span>');
+                                                }
                                             }
                                         }
                                     }

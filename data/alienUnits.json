@@ -469,7 +469,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Glair acide",
-            "cost":5,
+            "cost":2,
             "range":5,
             "elevation":1,
             "noFly":false,
@@ -558,7 +558,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Boule de feu",
-            "cost":3,
+            "cost":4,
             "range":2,
             "elevation":1,
             "noFly":false,
@@ -645,7 +645,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Mandibules",
-            "cost":3,
+            "cost":1,
             "range":0,
             "noFly":true,
             "isMelee":true,
@@ -819,7 +819,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Dard",
-            "cost":4,
+            "cost":1,
             "range":0,
             "noFly":true,
             "isMelee":true,
@@ -879,7 +879,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Jet d'acide",
-            "cost":3,
+            "cost":5,
             "range":3,
             "elevation":2,
             "noFly":false,
@@ -894,7 +894,7 @@
         },
         "weapon2":{
             "name":"Jet d'acide",
-            "cost":3,
+            "cost":5,
             "range":2,
             "elevation":2,
             "noFly":false,
@@ -1081,7 +1081,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Toile",
-            "cost":2,
+            "cost":3,
             "range":0,
             "noFly":false,
             "isMelee":false,
@@ -1138,7 +1138,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Dard",
-            "cost":2,
+            "cost":3,
             "range":1,
             "noFly":false,
             "isMelee":false,
@@ -1183,7 +1183,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Mandibules",
-            "cost":3,
+            "cost":2,
             "range":0,
             "noFly":true,
             "isMelee":true,
@@ -1241,7 +1241,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Mandibules",
-            "cost":3,
+            "cost":2,
             "range":0,
             "noFly":true,
             "isMelee":true,
@@ -1437,7 +1437,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Pinces",
-            "cost":4,
+            "cost":3,
             "range":0,
             "noFly":true,
             "isMelee":true,
@@ -1575,7 +1575,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Décharge électrique",
-            "cost":2,
+            "cost":3,
             "range":1,
             "noFly":false,
             "isMelee":true,
@@ -1617,7 +1617,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Mandibules",
-            "cost":2,
+            "cost":1,
             "range":0,
             "noFly":true,
             "isMelee":true,
@@ -1630,7 +1630,7 @@
         },
         "weapon2":{
             "name":"Mandibules",
-            "cost":2,
+            "cost":3,
             "range":0,
             "noFly":true,
             "isMelee":true,
@@ -1672,7 +1672,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Langue",
-            "cost":2,
+            "cost":1,
             "range":1,
             "noFly":false,
             "isMelee":true,
@@ -1785,7 +1785,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Mandibules",
-            "cost":2,
+            "cost":3,
             "range":0,
             "noFly":false,
             "isMelee":true,
@@ -2086,7 +2086,7 @@
         },
         "weapon2":{
             "name":"Explosion",
-            "cost":2,
+            "cost":4,
             "range":0,
             "noFly":true,
             "isMelee":true,
@@ -2175,7 +2175,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Mandibules",
-            "cost":3,
+            "cost":2,
             "range":0,
             "noFly":true,
             "isMelee":true,
@@ -2189,7 +2189,7 @@
         },
         "weapon2":{
             "name":"Rostre",
-            "cost":3,
+            "cost":4,
             "range":0,
             "noFly":false,
             "isMelee":true,
@@ -2234,7 +2234,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Mandibules",
-            "cost":3,
+            "cost":1,
             "range":0,
             "noFly":true,
             "isMelee":true,
@@ -2506,11 +2506,11 @@
         "size":30,
         "speed":-5,
         "stealth":10,
-        "ap":30,
+        "ap":25,
         "maxSalvo":1,
         "weapon":{
             "name":"Eruption",
-            "cost":2,
+            "cost":3,
             "range":4,
             "elevation":2,
             "noFly":false,
@@ -2543,7 +2543,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["hide","eggprotect","noaploss","reactblast","xpplus"],
+        "skills":["hide","eggprotect","reactblast","xpplus"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":2,"Blendium":9,"Slime":6},
         "killXP":10,
@@ -2569,7 +2569,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Eruption",
-            "cost":5,
+            "cost":3,
             "range":3,
             "elevation":2,
             "noFly":false,
@@ -2584,7 +2584,7 @@
         },
         "weapon2":{
             "name":"Eruption",
-            "cost":6,
+            "cost":4,
             "range":4,
             "elevation":2,
             "noFly":false,

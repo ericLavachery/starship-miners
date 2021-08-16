@@ -763,10 +763,20 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
     if (weap.ammo.includes('disco')) {
         speed = speed-20;
     }
-    if ((bat.apLeft < 0 && !batType.skills.includes('guerrilla')) || bat.apLeft > 0) {
-        speed = speed-(bat.apLeft*5);
+    if (bat.team === 'player') {
+        if ((bat.apLeft < 0 && !batType.skills.includes('guerrilla')) || bat.apLeft > 0) {
+            speed = speed-(bat.apLeft*3);
+        }
+    } else {
+        if (bat.apLeft > 0) {
+            speed = speed-(bat.apLeft*2)-15;
+        }
     }
-    speed = speed-(playerInfos.comp.train*5);
+    if (bat.team === 'player') {
+        speed = speed-(playerInfos.comp.train*5);
+    } else {
+        speed = speed-alienInitiative;
+    }
     let vetDice = vetBonus.initiative*bat.vet;
     return Math.round(speed+rand.rand(0,initiativeDice)-rand.rand(0,vetDice));
 };

@@ -199,7 +199,7 @@ function warnLink(tileId) {
         });
     }
     if (linkBatId >= 0) {
-        batSelect(linkBat,true);
+        batSelect(linkBat);
         showBatInfos(linkBat);
     } else {
         centerMapTo(tileId);

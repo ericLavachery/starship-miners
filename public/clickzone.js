@@ -187,8 +187,8 @@ function batSelect(bat,roger) {
     // draw new selected unit
     tileSelect(bat);
     checkSelectedBatType();
-    if (roger && selectedBatType.cat != 'aliens') {
-        okSound();
+    if (selectedBatType.cat != 'aliens' && !playerInfos.onShip) {
+        okSound(roger);
     }
     commandes();
     if (showMini && activeTurn == 'player') {

@@ -74,7 +74,7 @@ function clicSound() {
     clicSnd.play();
 };
 
-function okSound() {
+function okSound(roger) {
     let okFile;
     let randNum;
     if (selectedBat.ok != undefined) {
@@ -107,7 +107,7 @@ function okSound() {
         }
     }
     selectedBatArrayUpdate();
-    if (selectedBat.an || !okFile.includes('ok')) {
+    if (selectedBat.an || !okFile.includes('ok') || roger) {
         okSnd = new Howl({
             src: ['/static/sounds/moves/'+okFile+'.mp3'],
             volume: 0.2

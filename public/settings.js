@@ -125,6 +125,7 @@ let hitBase = 9; // bonus to hit général (aliens et humains)
 let alienHitBase = 2; // bonus précision aliens
 let alienHPBase = 1; // hp x1
 let alienMeleeROF = 1.25;  // bonus rof aliens en mêlée
+let alienInitiative = -15;
 let initiativeDice = 15 // ajoute 0-15
 let unitResist = 0;
 let minFailSoins = 60; // def 60 : minimum 15/75 soins réussis

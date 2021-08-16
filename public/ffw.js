@@ -50,7 +50,6 @@ function ffw() {
     isFFW = true;
     for(let bat of alienList){
         stopForFight = false;
-        // batSelect()
         $('#report').empty('');
         tileUnselect();
         tileUntarget();

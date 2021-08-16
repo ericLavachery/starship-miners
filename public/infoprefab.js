@@ -70,7 +70,7 @@ function autoDeconstruction(prefabId) {
         loadBat(prefabBat.id,landerBat.id);
         recupPrefabFret(prefabBat,prefabBatType,tileId,true,landerBat);
         showMap(zone,false);
-        batSelect(landerBat,true);
+        batSelect(landerBat);
         showBatInfos(landerBat);
         selectMode();
     }

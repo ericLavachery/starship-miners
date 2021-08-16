@@ -1350,7 +1350,7 @@ function nextBat(removeActiveBat,removeForever) {
         }
     }
     if (batList.length >= 1) {
-        batSelect(batList[0],true);
+        batSelect(batList[0]);
         showBatInfos(selectedBat);
         showTileInfos(selectedBat.tileId);
     } else {

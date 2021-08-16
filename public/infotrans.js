@@ -284,7 +284,7 @@ function embarquement(transId,discardRes) {
     camoOut();
     selectedBatArrayUpdate();
     showBataillon(transBat);
-    batSelect(transBat,true);
+    batSelect(transBat);
     showBatInfos(selectedBat);
     showTileInfos(selectedBat.tileId);
     selectMode();
