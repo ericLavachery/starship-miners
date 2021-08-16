@@ -317,8 +317,8 @@ function skillsInfos(bat,batType) {
                 boutonNope = 'boutonOK';
                 colorNope = 'cy';
             }
-            let tcPrec = Math.round(100*(5+playerInfos.comp.train)/3);
-            let tcROF = Math.round(100*(5+playerInfos.comp.train)/7);
+            let tcPrec = Math.round(100*(5+playerInfos.comp.train)/2.5);
+            let tcROF = Math.round(100*(8+playerInfos.comp.train)/10);
             let tcPower = Math.round(100*(8+playerInfos.comp.train)/5);
             let tcInfo = '+'+tcPrec+'% précision, '+tcROF+'% cadence, '+tcPower+'% puissance ('+apCost+' PA + coût de l\'arme)';
             if (bat.apLeft >= apReq && !bat.tags.includes('vise') && bat.apLeft >= apCost+cheapWeapCost && !inMelee) {

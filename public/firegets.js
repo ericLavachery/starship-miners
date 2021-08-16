@@ -35,7 +35,7 @@ function isHit(accuracy,minAccu,aoe,size,stealth,cover,speed,shotDice) {
     }
     // tir ciblé
     if (selectedBat.tags.includes('vise') && selectedWeap.isPrec) {
-        prec = Math.round(prec*(5+playerInfos.comp.train)/3);
+        prec = Math.round(prec*(playerInfos.comp.train+5)/2.5);
     }
     let dice = rand.rand(1,shotDice);
     let hitChance = Math.round(Math.sqrt(size)*prec);
@@ -47,6 +47,9 @@ function isHit(accuracy,minAccu,aoe,size,stealth,cover,speed,shotDice) {
     hitChance = hitChance+hitBase;
     if (hitChance < size) {
         hitChance = size;
+    }
+    if (hitChance > 89) {
+        hitChance = Math.floor(Math.sqrt(hitChance-89)+89);
     }
     if (toHit === 999) {
         toHit = hitChance;
@@ -532,6 +535,16 @@ function getCover(bat,withFortif,forAOE) {
                 cover = 3;
             }
         }
+    }
+    // Small Size
+    let invSize = 3-batType.size;
+    if (invSize <= 0) {
+        invSize = 0;
+    } else {
+        invSize = invSize*4;
+    }
+    if (cover >= batType.size) {
+        cover = cover+invSize;
     }
     // Fortification
     if (withFortif) {
@@ -1197,7 +1210,7 @@ function weaponAdj(weapon,bat,wn) {
         }
         if (bat.eq === 'chargeur' || bat.eq === 'chargeur1' || bat.logeq === 'chargeur' || bat.logeq === 'chargeur1') {
             if (thisWeapon.cost < 6 && playerInfos.comp.train < 1) {
-                thisWeapon.accuracy = thisWeapon.accuracy-2;
+                thisWeapon.accuracy = thisWeapon.accuracy-1;
                 if (thisWeapon.cost >= 3) {
                     thisWeapon.cost = thisWeapon.cost+1;
                 }
@@ -1236,7 +1249,7 @@ function weaponAdj(weapon,bat,wn) {
         }
         if (bat.eq === 'chargeur' || bat.eq === 'chargeur2' || bat.logeq === 'chargeur' || bat.logeq === 'chargeur2') {
             if (thisWeapon.cost < 6 && playerInfos.comp.train < 1) {
-                thisWeapon.accuracy = thisWeapon.accuracy-2;
+                thisWeapon.accuracy = thisWeapon.accuracy-1;
                 if (thisWeapon.cost >= 3) {
                     thisWeapon.cost = thisWeapon.cost+1;
                 }

@@ -361,6 +361,10 @@ function doReEquip(batId) {
             myBat.apLeft = myBat.apLeft-myBat.ap;
         }
     }
+    let batNewXP = checkXPBonus(myBatType);
+    if (batNewXP > myBat.xp) {
+        myBat.xp = batNewXP;
+    }
     conOut();
     myNewGear = ['xxx','xxx','xxx','xxx'];
     showBatInfos(myBat);

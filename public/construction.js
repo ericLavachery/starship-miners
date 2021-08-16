@@ -1049,31 +1049,35 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             newBat.ammo2Left = conselUnit.weapon2.maxAmmo;
             newBat.vet = 0;
             newBat.xp = xp;
-            if (conselUnit.skills.includes('robot')) {
-                if (playerInfos.comp.ind === 1) {
-                    newBat.xp = newBat.xp+levelXP[1];
-                }
-                if (playerInfos.comp.ind === 2) {
-                    newBat.xp = newBat.xp+Math.ceil(levelXP[2]*3/4);
-                }
-                if (playerInfos.comp.ind === 3) {
-                    newBat.xp = newBat.xp+levelXP[2];
-                }
-            } else if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices' || conselUnit.kind === 'zero-defense' || conselUnit.skills.includes('garde') || conselUnit.skills.includes('cage')) {
-                if (playerInfos.comp.def === 2) {
-                    newBat.xp = newBat.xp+levelXP[1];
-                }
-                if (playerInfos.comp.def === 3) {
-                    newBat.xp = newBat.xp+levelXP[2];
-                }
-            } else {
-                if (playerInfos.comp.train === 1) {
-                    newBat.xp = newBat.xp+levelXP[1];
-                }
-                if (playerInfos.comp.train === 2) {
-                    newBat.xp = newBat.xp+Math.ceil(levelXP[2]*3/4);
-                }
+            let batNewXP = checkXPBonus(conselUnit);
+            if (batNewXP > newBat.xp) {
+                newBat.xp = batNewXP;
             }
+            // if (conselUnit.skills.includes('robot')) {
+            //     if (playerInfos.comp.ind === 1) {
+            //         newBat.xp = newBat.xp+levelXP[1];
+            //     }
+            //     if (playerInfos.comp.ind === 2) {
+            //         newBat.xp = newBat.xp+Math.ceil(levelXP[2]*3/4);
+            //     }
+            //     if (playerInfos.comp.ind === 3) {
+            //         newBat.xp = newBat.xp+levelXP[2];
+            //     }
+            // } else if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices' || conselUnit.kind === 'zero-defense' || conselUnit.skills.includes('garde') || conselUnit.skills.includes('cage')) {
+            //     if (playerInfos.comp.def === 2) {
+            //         newBat.xp = newBat.xp+levelXP[1];
+            //     }
+            //     if (playerInfos.comp.def === 3) {
+            //         newBat.xp = newBat.xp+levelXP[2];
+            //     }
+            // } else {
+            //     if (playerInfos.comp.train === 1) {
+            //         newBat.xp = newBat.xp+levelXP[1];
+            //     }
+            //     if (playerInfos.comp.train === 2) {
+            //         newBat.xp = newBat.xp+Math.ceil(levelXP[2]*3/4);
+            //     }
+            // }
             if (Object.keys(conselUnit.weapon).length >= 1) {
                 newBat.range = conselUnit.weapon.range;
                 if (Object.keys(conselUnit.weapon2).length >= 1) {
@@ -1149,6 +1153,36 @@ function putBat(tileId,citoyens,xp,startTag,show) {
         console.log('no conselUnit !');
     }
     conselReset();
+};
+
+function checkXPBonus(myBatType) {
+    let batNewXP = 0;
+    if (myBatType.skills.includes('robot')) {
+        if (playerInfos.comp.ind === 1) {
+            batNewXP = batNewXP+levelXP[1];
+        }
+        if (playerInfos.comp.ind === 2) {
+            batNewXP = batNewXP+Math.ceil(levelXP[2]*3/4);
+        }
+        if (playerInfos.comp.ind === 3) {
+            batNewXP = batNewXP+levelXP[2];
+        }
+    } else if (myBatType.cat === 'buildings' || myBatType.cat === 'devices' || myBatType.kind === 'zero-defense' || myBatType.skills.includes('garde') || myBatType.skills.includes('cage')) {
+        if (playerInfos.comp.def === 2) {
+            batNewXP = batNewXP+levelXP[1];
+        }
+        if (playerInfos.comp.def === 3) {
+            batNewXP = batNewXP+levelXP[2];
+        }
+    } else {
+        if (playerInfos.comp.train === 1) {
+            batNewXP = batNewXP+levelXP[1];
+        }
+        if (playerInfos.comp.train === 2) {
+            batNewXP = batNewXP+Math.ceil(levelXP[2]*3/4);
+        }
+    }
+    return batNewXP;
 };
 
 function conOut() {

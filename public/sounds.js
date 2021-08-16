@@ -96,12 +96,29 @@ function okSound() {
         }
         okFile = okFile+randNum;
         selectedBat.ok = okFile;
-        selectedBatArrayUpdate();
     }
-    okSnd = new Howl({
-        src: ['/static/sounds/moves/'+okFile+'.mp3'],
-        volume: 0.2
-    });
+    if (selectedBat.an === undefined) {
+        selectedBat.an = true;
+    } else {
+        if (selectedBat.an) {
+            selectedBat.an = false;
+        } else {
+            selectedBat.an = true;
+        }
+    }
+    selectedBatArrayUpdate();
+    if (selectedBat.an || !okFile.includes('ok')) {
+        okSnd = new Howl({
+            src: ['/static/sounds/moves/'+okFile+'.mp3'],
+            volume: 0.2
+        });
+    } else {
+        let nbr = rand.rand(1,4);
+        okSnd = new Howl({
+            src: ['/static/sounds/moves/radio'+nbr+'.mp3'],
+            volume: 0.2
+        });
+    }
     okSnd.play();
 };
 

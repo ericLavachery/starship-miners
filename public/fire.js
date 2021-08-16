@@ -412,9 +412,9 @@ function attack(melee) {
     }
     // tir ciblé
     if (selectedBat.tags.includes('vise') && selectedWeap.isPrec) {
-        shots = Math.round(shots*(5+playerInfos.comp.train)/7);
+        shots = Math.round(shots*(8+playerInfos.comp.train)/10);
         selectedWeap.power = Math.round(selectedWeap.power*(8+playerInfos.comp.train)/5);
-        attFactor = Math.round(attFactor*(5+playerInfos.comp.train)/7);
+        attFactor = Math.round(attFactor*(8+playerInfos.comp.train)/10);
     }
     // Attack %
     $('#report').append('<span class="report jaune">Attaque '+attFactor+'%<br></span>');
