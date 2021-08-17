@@ -237,20 +237,25 @@ function combat(melee) {
         }
     }
     if (activeTurn == 'player') {
-        if (selectedWeap.noise < 2) {
-            let camChance = calcCamo(selectedBat);
-            if (selectedWeap.noise > 0) {
-                camChance = Math.round(camChance/2);
-            }
-            console.log('camChance='+camChance);
-            console.log(selectedWeap);
-            if (rand.rand(1,100) > camChance) {
-                camoOut();
-            }
-        } else {
+        if (rand.rand(1,100) > calcTirFurtif(selectedWeap,selectedBat)) {
             camoOut();
         }
     }
+};
+
+function calcTirFurtif(weap,bat) {
+    let tirFurtif = 0;
+    if (bat.fuzz <= -2) {
+        if (weap.noise < 2) {
+            tirFurtif = calcCamo(bat);
+            if (weap.noise > 0) {
+                tirFurtif = Math.round(tirFurtif/1.65);
+            } else {
+                tirFurtif = Math.round(tirFurtif/1.15);
+            }
+        }
+    }
+    return tirFurtif;
 };
 
 function attack(melee) {
@@ -667,10 +672,18 @@ function attack(melee) {
     if (targetBatType.skills.includes('resistblast') || targetBat.tags.includes('resistblast')) {
         if (selectedWeap.ammo.includes('nanite') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('dynamite') || selectedWeap.ammo.includes('bombe') || selectedWeap.ammo.includes('explosif') || selectedWeap.ammo.includes('explosive') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('grenade') || selectedWeap.ammo.includes('disco')) {
             if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm')) {
-                totalDamage = Math.round(totalDamage/2);
-                apDamage = Math.round(apDamage/2);
-                if (playerInfos.comp.ca >= 2) {
-                    $('#report').append('<span class="report rose">Résistance au secousses 50%<br></span>');
+                if (selectedWeap.ammo.includes('explosive')) {
+                    totalDamage = Math.round(totalDamage/1.34);
+                    apDamage = Math.round(apDamage/1.34);
+                    if (playerInfos.comp.ca >= 2) {
+                        $('#report').append('<span class="report rose">Résistance au secousses 25%<br></span>');
+                    }
+                } else {
+                    totalDamage = Math.round(totalDamage/2);
+                    apDamage = Math.round(apDamage/2);
+                    if (playerInfos.comp.ca >= 2) {
+                        $('#report').append('<span class="report rose">Résistance au secousses 50%<br></span>');
+                    }
                 }
                 console.log('résistance au blast!');
             }
@@ -1477,10 +1490,18 @@ function defense(melee) {
     if (selectedBatType.skills.includes('resistblast') || selectedBat.tags.includes('resistblast')) {
         if (targetWeap.ammo.includes('nanite') || targetWeap.ammo.includes('suicide') || targetWeap.ammo.includes('mine') || targetWeap.ammo.includes('autodestruction') || targetWeap.ammo.includes('dynamite') || targetWeap.ammo.includes('bombe') || targetWeap.ammo.includes('explosif') || targetWeap.ammo.includes('explosive') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('grenade') || targetWeap.ammo.includes('disco')) {
             if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm')) {
-                totalDamage = Math.round(totalDamage/2);
-                apDamage = Math.round(apDamage/2);
-                if (playerInfos.comp.ca >= 2) {
-                    $('#report').append('<span class="report rose">Résistance aux secousses 50%<br></span>');
+                if (targetWeap.ammo.includes('explosive')) {
+                    totalDamage = Math.round(totalDamage/1.34);
+                    apDamage = Math.round(apDamage/1.34);
+                    if (playerInfos.comp.ca >= 2) {
+                        $('#report').append('<span class="report rose">Résistance aux secousses 25%<br></span>');
+                    }
+                } else {
+                    totalDamage = Math.round(totalDamage/2);
+                    apDamage = Math.round(apDamage/2);
+                    if (playerInfos.comp.ca >= 2) {
+                        $('#report').append('<span class="report rose">Résistance aux secousses 50%<br></span>');
+                    }
                 }
                 console.log('résistance au blast!');
             }

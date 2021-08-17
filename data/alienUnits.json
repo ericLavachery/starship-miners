@@ -610,7 +610,7 @@
             "accuracy":20,
             "power":3,
             "aoe":"unit",
-            "sound":"bbbite",
+            "sound":"bbbbbite",
             "ammo":["troueur"]
         },
         "weapon2":{},
@@ -843,7 +843,7 @@
             "accuracy":24,
             "power":5,
             "aoe":"unit",
-            "sound":"squishbig",
+            "sound":"squish8",
             "ammo":["toxine"]
         },
         "w2chance":1,
@@ -990,7 +990,7 @@
             "power":6,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"cric1",
+            "sound":"bite9",
             "ammo":["creuseur"]
         },
         "weapon2":{
@@ -1205,7 +1205,7 @@
             "dca":1.5,
             "power":3,
             "aoe":"brochette",
-            "sound":"squishshort",
+            "sound":"squish9",
             "ammo":["web"]
         },
         "w2chance":3,
@@ -1263,7 +1263,7 @@
             "dca":1.5,
             "power":4,
             "aoe":"brochette",
-            "sound":"squishshort",
+            "sound":"squish9",
             "ammo":["web"]
         },
         "w2chance":4,

@@ -237,7 +237,7 @@ function getMiningRate(bat,fullRate) {
         }
     }
     if (helpInside) {
-        miningAdj = miningAdj*1.25;
+        miningAdj = miningAdj*1.34;
     }
     if (fullRate) {
         let batAP = getBatAP(bat,batType);

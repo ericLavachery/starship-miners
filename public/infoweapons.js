@@ -228,6 +228,10 @@ function weaponsInfos(bat,batType,pop) {
                 ravitVolume = calcRavitVolume(bat);
                 $('#'+bodyPlace).append('<span class="paramName" title="Volume du ravitaillement">Volume</span><span class="paramIcon"></span><span class="paramValue">'+ravitVolume[1]+'/'+ravitVolume[0]+'</span><br>');
             }
+            if (thisWeapon.noise < 2) {
+                let tirFurtif = calcTirFurtif(thisWeapon,bat);
+                $('#'+bodyPlace).append('<span class="paramName" title="Chance de rester furtif après avoir attaqué">Tir furtif</span><span class="paramIcon"></span><span class="paramValue">'+tirFurtif+'%</span><br>');
+            }
         }
     }
     let hasW2 = checkHasWeapon(2,batType,bat.eq);
@@ -419,6 +423,10 @@ function weaponsInfos(bat,batType,pop) {
                 }
                 ravitVolume = calcRavitVolume(bat);
                 $('#'+bodyPlace).append('<span class="paramName" title="Volume du ravitaillement">Volume</span><span class="paramIcon"></span><span class="paramValue">'+ravitVolume[1]+'/'+ravitVolume[0]+'</span><br>');
+            }
+            if (thisWeapon.noise < 2) {
+                let tirFurtif = calcTirFurtif(thisWeapon,bat);
+                $('#'+bodyPlace).append('<span class="paramName" title="Chance de rester furtif après avoir attaqué">Tir furtif</span><span class="paramIcon"></span><span class="paramValue">'+tirFurtif+'%</span><br>');
             }
         }
     }
