@@ -113,7 +113,8 @@ function okSound(roger) {
             volume: 0.2
         });
     } else {
-        let nbr = rand.rand(1,4);
+        // let nbr = rand.rand(1,5);
+        let nbr = 4;
         okSnd = new Howl({
             src: ['/static/sounds/moves/radio'+nbr+'.mp3'],
             volume: 0.2

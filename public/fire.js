@@ -423,6 +423,11 @@ function attack(melee) {
     }
     // Attack %
     $('#report').append('<span class="report jaune">Attaque '+attFactor+'%<br></span>');
+    // chargeur
+    if (selectedBat.eq.includes('chargeur') || selectedBat.eq.includes('carrousel') || selectedBat.logeq.includes('chargeur') || selectedBat.logeq.includes('carrousel') || selectedBat.eq.includes('kit-chouf') || selectedBat.eq === 'crimekitto' || selectedBat.eq === 'crimekitch' || selectedBat.eq.includes('landerwkit') || selectedBat.eq.includes('w2-l')) {
+        shots = chargeurAdj(selectedBat,shots,selectedWeap);
+    }
+    $('#report').append('<span class="report">Puissance '+shots+' &times; '+selectedWeap.power+'<br></span>');
     // INFRASTRUCTURES
     console.log('shots='+shots);
     if (activeTurn != 'player') {
@@ -455,10 +460,6 @@ function attack(melee) {
     }
     console.log(tile.infra+'+++++++++++++++++++++++');
     console.log('shots='+shots);
-    // chargeur
-    if (selectedBat.eq.includes('chargeur') || selectedBat.eq.includes('carrousel') || selectedBat.logeq.includes('chargeur') || selectedBat.logeq.includes('carrousel') || selectedBat.eq.includes('kit-chouf') || selectedBat.eq === 'crimekitto' || selectedBat.eq === 'crimekitch' || selectedBat.eq.includes('landerwkit') || selectedBat.eq.includes('w2-l')) {
-        shots = chargeurAdj(selectedBat,shots,selectedWeap);
-    }
     // ESCAPE
     escaped = false;
     if (targetBatType.skills.includes('escape') && selectedBat.fuzz >= -1 && !selectedBat.tags.includes('embuscade') && !selectedWeap.ammo.includes('laser')) {
@@ -798,7 +799,7 @@ function attack(melee) {
     // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
     if (tile.infra != undefined) {
         if (tile.infra === 'Miradors') {
-            mirDestruction(selectedWeap,selectedBat,selectedBatType,tile);
+            mirDestruction(selectedWeap,selectedBat,selectedBatType,tile,targetBat.team);
         }
     }
     // agrippeur
@@ -1289,6 +1290,11 @@ function defense(melee) {
     }
     // Defense %
     $('#report').append('<span class="report jaune">Défense '+defFactor+'%<br></span>');
+    // chargeur
+    if (targetBat.eq.includes('chargeur') || targetBat.eq.includes('carrousel') || targetBat.logeq.includes('chargeur') || targetBat.logeq.includes('carrousel') || targetBat.eq.includes('kit-chouf') || targetBat.eq === 'crimekitch' || targetBat.eq === 'crimekitto' || targetBat.eq.includes('landerwkit') || targetBat.eq.includes('w2-l')) {
+        shots = chargeurAdj(targetBat,shots,targetWeap);
+    }
+    $('#report').append('<span class="report">Puissance '+shots+' &times; '+targetWeap.power+'<br></span>');
     // INFRASTRUCTURES
     console.log('shots='+shots);
     if (activeTurn === 'player') {
@@ -1321,10 +1327,6 @@ function defense(melee) {
     }
     console.log(tile.infra+'+++++++++++++++++++++++');
     console.log('shots='+shots);
-    // chargeur
-    if (targetBat.eq.includes('chargeur') || targetBat.eq.includes('carrousel') || targetBat.logeq.includes('chargeur') || targetBat.logeq.includes('carrousel') || targetBat.eq.includes('kit-chouf') || targetBat.eq === 'crimekitch' || targetBat.eq === 'crimekitto' || targetBat.eq.includes('landerwkit') || targetBat.eq.includes('w2-l')) {
-        shots = chargeurAdj(targetBat,shots,targetWeap);
-    }
     // Champs de mines
     if (targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap') {
         shots = minesExploded;
@@ -1612,7 +1614,7 @@ function defense(melee) {
     // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
     if (tile.infra != undefined) {
         if (tile.infra === 'Miradors') {
-            mirDestruction(targetWeap,targetBat,targetBatType,tile);
+            mirDestruction(targetWeap,targetBat,targetBatType,tile,selectedBat.team);
         }
     }
     // poison

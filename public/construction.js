@@ -397,7 +397,7 @@ function conSelect(unitId,player,noRefresh) {
                     compReqOK = false;
                 }
                 if (compReqOK || conselTriche) {
-                    if (conselAmmos[3] == equip || (conselAmmos[3] === 'xxx' && listNum === 1) || (playerInfos.comp.log === 3 && conselUnit.log3eq === equip && compReqOK)) {
+                    if (conselAmmos[3] == equip || (conselAmmos[3] === 'xxx' && listNum === 1) || (playerInfos.comp.log === 3 && conselUnit.log3eq === equip && compReqOK) || (playerInfos.comp.energ >= 2 && conselUnit.log3eq === equip && equip.includes('psol') && compReqOK)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
@@ -435,7 +435,7 @@ function conSelect(unitId,player,noRefresh) {
                     if (!compReqOK) {
                         prodSign = '';
                     }
-                    if (playerInfos.comp.log === 3 && conselUnit.log3eq === equip && compReqOK) {
+                    if ((playerInfos.comp.log === 3 && conselUnit.log3eq === equip && compReqOK) || (playerInfos.comp.energ >= 2 && conselUnit.log3eq === equip && equip.includes('psol') && compReqOK)) {
                         $('#conAmmoList').append('<span class="constName" title="'+showEquipInfo(equip)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else if ((bldReqOK && costsOK) || conselTriche) {
                         $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip)+' '+displayCosts(flatCosts)+'" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
@@ -980,6 +980,16 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                         if (checkChargeurPlasma(logEquip,conselUnit)) {
                             compReqOK = false;
                         }
+                        if (compReqOK) {
+                            newBat.logeq = logEquip.name;
+                        }
+                    }
+                }
+            } else if (playerInfos.comp.energ >= 2) {
+                if (conselUnit.log3eq != undefined) {
+                    if (conselUnit.log3eq.includes('psol')) {
+                        let logEquip = getEquipByName(conselUnit.log3eq);
+                        let compReqOK = checkCompReq(logEquip);
                         if (compReqOK) {
                             newBat.logeq = logEquip.name;
                         }

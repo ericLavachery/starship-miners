@@ -96,7 +96,7 @@ function reEquip(batId,noRefresh) {
                     compReqOK = false;
                 }
                 if (compReqOK || conselTriche) {
-                    if (myNewGear[3] == equip || (myNewGear[3] === 'xxx' && listNum === 1) || (playerInfos.comp.log === 3 && myBatType.log3eq === equip && compReqOK)) {
+                    if (myNewGear[3] == equip || (myNewGear[3] === 'xxx' && listNum === 1) || (playerInfos.comp.log === 3 && myBatType.log3eq === equip && compReqOK) || (playerInfos.comp.energ >= 2 && myBatType.log3eq === equip && equip.includes('psol') && compReqOK)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
@@ -134,7 +134,7 @@ function reEquip(batId,noRefresh) {
                     if (!compReqOK) {
                         prodSign = '';
                     }
-                    if (playerInfos.comp.log === 3 && myBatType.log3eq === equip && compReqOK) {
+                    if ((playerInfos.comp.log === 3 && myBatType.log3eq === equip && compReqOK) || (playerInfos.comp.energ >= 2 && myBatType.log3eq === equip && equip.includes('psol') && compReqOK)) {
                         $('#conAmmoList').append('<span class="constName" title="'+showEquipInfo(equip)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else if ((bldReqOK && costsOK) || conselTriche) {
                         $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip)+' '+displayCosts(flatCosts)+'" onclick="deployEquip(`'+equip+'`,`'+myBat.id+'`)">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
@@ -341,6 +341,19 @@ function doReEquip(batId) {
         if (playerInfos.comp.log === 3) {
             if (myBatType.log3eq != undefined) {
                 if (myBatType.log3eq != '') {
+                    let logEquip = getEquipByName(myBatType.log3eq);
+                    let compReqOK = checkCompReq(logEquip);
+                    if (checkChargeurPlasma(logEquip,myBatType)) {
+                        compReqOK = false;
+                    }
+                    if (compReqOK) {
+                        myBat.logeq = logEquip.name;
+                    }
+                }
+            }
+        } else if (playerInfos.comp.energ >= 2) {
+            if (myBatType.log3eq != undefined) {
+                if (myBatType.log3eq.includes('psol')) {
                     let logEquip = getEquipByName(myBatType.log3eq);
                     let compReqOK = checkCompReq(logEquip);
                     if (compReqOK) {

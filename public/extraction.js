@@ -202,19 +202,19 @@ function getMiningRate(bat,fullRate) {
         } else if (bat.ammo === 'lame-carbone') {
             miningAdj = 1.3;
         } else if (bat.ammo === 'lame-plasma') {
-            miningAdj = 1.5;
+            miningAdj = 1.6;
         }
     }
     if (bat.eq === 'tungextract') {
-        miningAdj = 1.15;
+        miningAdj = 1.35;
     } else if (bat.eq === 'plasmaextract') {
-        miningAdj = 1.4;
-    } else if (bat.eq === 'monoextract') {
         miningAdj = 1.7;
+    } else if (bat.eq === 'monoextract') {
+        miningAdj = 2.2;
     } else if (bat.eq === 'autoextract') {
-        miningAdj = 1.5;
+        miningAdj = 1.7;
     } else if (bat.eq === 'hydroextract') {
-        miningAdj = 1.5;
+        miningAdj = 1.6;
     }
     if (bat.tags.includes('camo')) {
         miningAdj = miningAdj/2;

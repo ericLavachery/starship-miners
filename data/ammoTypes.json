@@ -1491,7 +1491,7 @@
         "rof": 0.67,
         "power": 9,
         "powermult": 1.25,
-        "armors": 0.25,
+        "armors": 0.15,
         "accuracy": 0.67,
         "apdamage": 0.07,
         "aoe": "",
