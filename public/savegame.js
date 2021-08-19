@@ -307,6 +307,12 @@ function showMapReset() {
     $("#reset2").css("display","inline-block");
 };
 
+function showStartLander() {
+    commandes();
+    $("#takeof1").css("display","none");
+    $("#takeof2").css("display","inline-block");
+};
+
 function resetReserve() {
     resTypes.forEach(function(res) {
         playerInfos.reserve[res.name] = 0;

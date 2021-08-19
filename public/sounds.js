@@ -74,6 +74,15 @@ function clicSound() {
     clicSnd.play();
 };
 
+function warnSound(theSound) {
+    // playMove(false);
+    clicSnd = new Howl({
+        src: ['/static/sounds/fx/'+theSound+'.mp3'],
+        volume: 0.8
+    });
+    clicSnd.play();
+};
+
 function okSound(roger) {
     let okFile;
     let randNum;

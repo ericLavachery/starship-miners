@@ -5380,7 +5380,7 @@
             "isPrec":true,
             "noise":2,
             "rof":10,
-            "accuracy":24,
+            "accuracy":25,
             "power":10,
             "armors":0.5,
             "aoe":"unit",

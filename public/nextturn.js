@@ -1302,7 +1302,8 @@ function playerOccupiedTileList() {
 
 function emptyBatList() {
     batList = [];
-    commandes();
+    batUnselect();
+    // commandes();
     // console.log(batList);
 };
 
