@@ -180,7 +180,7 @@ function checkEggsDrop() {
         dropMessage = 'Champ de force';
     }
     console.log('dropChance='+dropChance);
-    if (playerInfos.pseudo === 'Bob') {
+    if (playerInfos.pseudo === 'Xxxxx') {
         warning('Oeufs','Check '+dropChance+'% '+dropMessage);
     }
     if (zone[0].mapDiff >= 1 || playerInfos.mapTurn >= 25) {
@@ -193,7 +193,7 @@ function checkEggsDrop() {
             dropEgg('Cocon','any');
             satDrop = true;
             playerInfos.alienSat = 0;
-            if (playerInfos.pseudo === 'Bob') {
+            if (playerInfos.pseudo === 'Xxxxx') {
                 warning('Cocon de saturation','200+ aliens.');
             }
         }
@@ -204,11 +204,11 @@ function checkEggsDrop() {
             if (rand.rand(1,eggPauseDice) === 1) {
                 playerInfos.eggPause = false;
                 console.log('END PAUSE! 1/'+eggPauseDice);
-                if (playerInfos.pseudo === 'Bob') {
+                if (playerInfos.pseudo === 'Xxxxx') {
                     warning('Fin de la pause','Check 1/'+eggPauseDice+' réussi.');
                 }
             } else {
-                if (playerInfos.pseudo === 'Bob') {
+                if (playerInfos.pseudo === 'Xxxxx') {
                     warning('La pause continue','Check 1/'+eggPauseDice+' raté.');
                 }
             }
@@ -336,7 +336,7 @@ function eggsDrop() {
         if (rand.rand(1,100) <= eggPausePerc) {
             playerInfos.eggPause = true;
             console.log('PAUSE! '+eggPausePerc+'%');
-            if (playerInfos.pseudo === 'Bob') {
+            if (playerInfos.pseudo === 'Xxxxx') {
                 warning('Nouvelle pause','Check '+eggPausePerc+'% réussi après la chute de 0 oeuf ('+noEggDrop+'%)');
             }
         }
@@ -454,7 +454,7 @@ function dropEgg(alienUnit,theArea) {
         if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) >= 1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;
             console.log('PAUSE! '+playerInfos.eggsKilled+' eggs killed');
-            if (playerInfos.pseudo === 'Bob') {
+            if (playerInfos.pseudo === 'Xxxxx') {
                 warning('Nouvelle pause',playerInfos.eggsKilled+' oeufs tués.');
             }
         }

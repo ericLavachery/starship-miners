@@ -621,7 +621,7 @@ function turnInfo() {
     if (realNumberOfEggs >= maxEggsForPause) {
         playerInfos.eggPause = true;
         console.log('PAUSE! 10+ eggs');
-        if (playerInfos.pseudo === 'Bob') {
+        if (playerInfos.pseudo === 'Xxxxx') {
             warning('Nouvelle pause',maxEggsForPause+' oeufs ou plus en jeu.');
         }
     }

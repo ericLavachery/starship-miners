@@ -4536,7 +4536,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Nailgun",
-            "cost":4,
+            "cost":3,
             "range":0,
             "noShield":true,
             "rof":18,

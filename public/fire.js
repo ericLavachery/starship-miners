@@ -165,7 +165,7 @@ function combat(melee) {
                             shotSound(soundWeap,soundBat);
                             if (activeTurn == 'player') {blockMe(false);}
                         }, soundDuration);
-                    }, 500);
+                    }, 200);
                 }
             } else {
                 if (!isFFW) {
@@ -210,7 +210,7 @@ function combat(melee) {
                                 shotSound(soundWeap,soundBat);
                                 if (activeTurn == 'player') {blockMe(false);}
                             }, soundDuration);
-                        }, 500);
+                        }, 200);
                     }
                 } else {
                     if (activeTurn == 'player') {blockMe(false);}
@@ -1098,7 +1098,7 @@ function attack(melee) {
                 setTimeout(function (){
                     batDeathEffect(targetBat,false,'','');
                 }, soundDuration);
-            }, 500);
+            }, 200);
         } else {
             batDeathEffect(targetBat,false,'','');
         }
@@ -1121,7 +1121,7 @@ function attack(melee) {
                     $('#unitInfos').empty();
                     $("#unitInfos").css("display","none");
                 }, soundDuration);
-            }, 500);
+            }, 200);
         } else {
             batDeathEffect(selectedBat,false,'Bataillon détruit','Suicide');
         }
@@ -1764,7 +1764,7 @@ function defense(melee) {
                 setTimeout(function (){
                     batDeathEffect(selectedBat,false,'','');
                 }, soundDuration);
-            }, 500);
+            }, 200);
         } else {
             batDeathEffect(selectedBat,false,'','');
         }

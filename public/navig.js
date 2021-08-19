@@ -23,7 +23,7 @@ function commandes() {
             }
             if (nextTurnOK) {
                 if (batList.length >= 1) {
-                    $('#commandz').append('<button type="button" title="Passer au tour suivant (attention: vous ne vous êtes pas occupé de tout vos bataillons!)" class="boutonRouge iconButtons" onclick="emptyBatList()" onmousedown="warnSound(`error`)"><i class="fas fa-exclamation-triangle"></i></button>');
+                    $('#commandz').append('<button type="button" title="Passer au tour suivant (attention: vous ne vous êtes pas occupé de tout vos bataillons!)" class="boutonNoir iconButtons" onclick="emptyBatList()" onmousedown="warnSound(`error`)"><i class="fas fa-exclamation-triangle"></i></button>');
                 } else {
                     $('#commandz').append('<button type="button" title="Passer au tour suivant" class="boutonMauve iconButtons" onclick="nextTurn()" onmousedown="clicSound()"><i class="fas fa-spider"></i></button>');
                 }
