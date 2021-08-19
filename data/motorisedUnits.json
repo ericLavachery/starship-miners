@@ -377,8 +377,7 @@
         "weapon2":{
             "name":"Obusier",
             "cost":5,
-            "range":3,
-            "elevation":1,
+            "range":4,
             "noFly":true,
             "noMelee":true,
             "rof":6,
@@ -669,7 +668,7 @@
             "power":65,
             "aoe":"bat",
             "sound":"miss",
-            "ammo":["missile-vanguard"],
+            "ammo":["missile-vanguard","missile-deluge"],
             "maxAmmo":24,
             "ravitBld":"Arsenal"
         },
@@ -916,7 +915,7 @@
         "weapon2":{
             "name":"Missiles squash",
             "cost":5,
-            "range":6,
+            "range":7,
             "noMelee":true,
             "noFly":true,
             "noDef":true,
@@ -1160,7 +1159,7 @@
         "weapon2":{
             "name":"Missiles squash",
             "cost":7,
-            "range":6,
+            "range":7,
             "noMelee":true,
             "noFly":true,
             "noDef":true,
@@ -1220,7 +1219,7 @@
         "weapon2":{
             "name":"Missiles sunburst",
             "cost":5,
-            "range":8,
+            "range":9,
             "noMelee":true,
             "noDef":true,
             "rof":9,

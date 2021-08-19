@@ -111,15 +111,15 @@ function calcEggPause(noMax) {
 };
 
 function checkMaxDroppedEggs() {
-    let overSixty = playerInfos.mapTurn-40;
-    if (overSixty < 0) {
-        overSixty = 0;
+    let overLimit = playerInfos.mapTurn-45;
+    if (overLimit < 0) {
+        overLimit = 0;
     }
     let maxEggDropTurn = playerInfos.mapTurn-5;
     if (maxEggDropTurn < Math.ceil(zone[0].mapDiff/2)) {
         maxEggDropTurn = Math.ceil(zone[0].mapDiff/2);
     }
-    let maxDroppedEggs = Math.ceil((maxEggDropTurn+overSixty)*(zone[0].mapDiff+1.5)/7);
+    let maxDroppedEggs = Math.ceil((maxEggDropTurn+overLimit)*(zone[0].mapDiff+1.5)/7);
     return maxDroppedEggs;
 };
 

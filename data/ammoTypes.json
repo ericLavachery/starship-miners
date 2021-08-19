@@ -2110,6 +2110,21 @@
         "batch":100
     },
     {
+        "name": "missile-deluge",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "bat",
+        "bldReq":["Usine d'armement"],
+        "compReq":{"bal":2,"explo":3,"pyro":3,"arti":1},
+        "deploy":{"Fer":3,"Aluminium":3,"Titane":1,"Nickel":1,"Plutonium":1,"Explosifs":9,"Phosphore":9,"Electros":2,"Batteries":1},
+        "batch":100
+    },
+    {
         "name": "missile",
         "range": 1,
         "rof": 1,

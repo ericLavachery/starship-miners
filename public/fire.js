@@ -273,6 +273,7 @@ function attack(melee) {
         targetBat.apLeft = 3-targetBat.ap;
     }
     $('#report').append('<span class="report or">'+selectedBatName+' ('+selectedWeap.name+')</span><br>');
+    let delugeTileId = targetBat.tileId;
     // Dans l'eau
     let terrain = getTerrain(targetBat);
     let tile = getTile(targetBat);
@@ -1145,6 +1146,9 @@ function attack(melee) {
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     escaped = false;
+    if (selectedWeap.ammo === 'missile-deluge') {
+        deluge(delugeTileId,false);
+    }
 };
 
 function defense(melee) {

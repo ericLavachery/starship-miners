@@ -756,6 +756,16 @@
         "costs":{"Carbone":6,"Scrap":6,"Fer":18,"Aluminium":12,"Tungstène":6}
     },
     {
+        "name": "w2-vanguard",
+        "cat":"equip",
+        "skills": [],
+        "info": "Missiles Vanguard",
+        "bldReq":["Usine d'armement"],
+        "compReq":{"bal":2,"explo":3,"arti":1,"def":3},
+        "factor":"rofpow",
+        "costs":{"Fer":60,"Aluminium":60,"Titane":60,"Silicium":12,"Rhodium":30,"Electros":15}
+    },
+    {
         "name": "w2-gaz",
         "cat":"equip",
         "skills": [],

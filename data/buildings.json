@@ -1018,7 +1018,7 @@
         "weapon2":{
             "name":"Obusier",
             "cost":6,
-            "range":4,
+            "range":5,
             "noFly":true,
             "noBis":true,
             "noMelee":true,
@@ -1094,7 +1094,7 @@
         "weapon2":{
             "name":"Missiles squash",
             "cost":7,
-            "range":7,
+            "range":8,
             "noBis":true,
             "noMelee":true,
             "noFly":true,

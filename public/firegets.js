@@ -1,3 +1,87 @@
+function deluge(tileId,onlyAround) {
+    console.log('DELUGE tile '+tileId);
+    deadBatsList = [];
+    deadAliensList = [];
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            let inDeluge = false;
+            if (bat.tileId === tileId) {
+                if (!onlyAround) {
+                    inDeluge = true;
+                }
+            } else {
+                let distance = calcDistance(bat.tileId,tileId);
+                if (distance <= 1) {
+                    inDeluge = true;
+                }
+            }
+            if (inDeluge) {
+                let batType = getBatType(bat);
+                delugeDamage(bat,batType);
+            }
+        }
+    });
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            let inDeluge = false;
+            if (bat.tileId === tileId) {
+                if (!onlyAround) {
+                    inDeluge = true;
+                }
+            } else {
+                let distance = calcDistance(bat.tileId,tileId);
+                if (distance <= 1) {
+                    inDeluge = true;
+                }
+            }
+            if (inDeluge) {
+                let batType = getBatType(bat);
+                delugeDamage(bat,batType);
+            }
+        }
+    });
+    killBatList();
+    killAlienList();
+    showMap(zone,false);
+};
+
+function delugeDamage(bat,batType) {
+    console.log(batType.name);
+    let numUnits = 60;
+    if (bat.team === 'aliens') {
+        numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.hp)/2.23);
+    } else {
+        numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
+    }
+    console.log('numUnits='+numUnits);
+    let stormDmg = rand.rand(10*numUnits,14*numUnits);
+    // let stormDmg = 12*numUnits;
+    console.log('stormDmg='+stormDmg);
+    stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor+1));
+    console.log('stormDmg(a)='+stormDmg);
+    if (batType.skills.includes('resistfeu') || bat.tags.includes('resistfeu')) {
+        if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
+            stormDmg = Math.ceil(stormDmg/1.25);
+        } else {
+            stormDmg = Math.ceil(stormDmg/1.67);
+        }
+    } else {
+        if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
+            stormDmg = Math.ceil(stormDmg*2);
+        }
+    }
+    console.log('stormDmg(T)='+stormDmg);
+    let totalDamage = bat.damage+stormDmg;
+    let squadHP = batType.squadSize*batType.hp;
+    let squadsOut = Math.floor(totalDamage/squadHP);
+    bat.squadsLeft = bat.squadsLeft-squadsOut;
+    bat.damage = totalDamage-(squadsOut*squadHP);
+    if (bat.squadsLeft <= 0) {
+        batDeathEffect(bat,true,'Bataillon détruit',bat.type+' brûlé.');
+        checkDeath(bat,batType);
+    }
+}
+
 function checkTargetBatType() {
     let targetBatUnitIndex;
     if (targetBat.team == 'player') {
@@ -1549,6 +1633,10 @@ function weaponAdj(weapon,bat,wn) {
     }
     if (bat.tags.includes('fogged') && thisWeapon.range > 1) {
         thisWeapon.range = 1;
+    }
+    // Deluge Cost
+    if (thisWeapon.ammo === 'missile-deluge') {
+        thisWeapon.cost = weapon.cost+1;
     }
     // console.log(thisWeapon);
     return thisWeapon;
