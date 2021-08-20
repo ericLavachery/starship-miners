@@ -306,7 +306,7 @@ function showMapReset() {
         commandes();
         $("#reset1").css("display","none");
         $("#reset2").css("display","inline-block");
-    }, 500);
+    }, 1500);
 };
 
 function showStartLander() {
@@ -314,7 +314,7 @@ function showStartLander() {
         commandes();
         $("#takeof1").css("display","none");
         $("#takeof2").css("display","inline-block");
-    }, 500);
+    }, 1500);
 };
 
 function resetReserve() {

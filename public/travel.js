@@ -334,7 +334,8 @@ function editSonde() {
 
 function stopSonde() {
     modeSonde = false;
-    feedZoneDB();
+    // feedZoneDB();
+    feedZoneDBwith(zone);
     saveNewMap();
     loadZone(0);
     showedTilesReset(false);
@@ -360,16 +361,6 @@ function goSonde(impacteur) {
     commandes();
     ruinsView();
 };
-
-function hasUnit(unitName) {
-    let youHaveIt = false;
-    bataillons.forEach(function(bat) {
-        if (bat.type === unitName) {
-            youHaveIt = true;
-        }
-    });
-    return youHaveIt;
-}
 
 function removeSonde(impacteur) {
     let sondeOut = false;
@@ -464,18 +455,24 @@ function feedZoneDB() {
 };
 
 function feedZoneDBwith(myZone) {
-    // écrire autrement pour qu'il y ait mise à jour
+    // console.log('feedZoneDBwith');
     let zoneIds = [];
+    let dbZone = {};
     playerInfos.zoneDB.forEach(function(thisZone) {
         if (!zoneIds.includes(thisZone.id)) {
             zoneIds.push(thisZone.id);
         }
+        if (thisZone.id === myZone[0].number) {
+            dbZone = thisZone;
+        }
     });
+    // console.log(zoneIds);
+    // console.log(dbZone);
     let newZone = {};
     if (!zoneIds.includes(myZone[0].number)) {
         newZone.id = myZone[0].number;
-        newZone.planet = zone[0].planet;
-        newZone.pid = zone[0].pid;
+        newZone.planet = myZone[0].planet;
+        newZone.pid = myZone[0].pid;
         newZone.dark = myZone[0].dark;
         newZone.mapDiff = myZone[0].mapDiff;
         newZone.ensol = myZone[0].ensol;
@@ -495,6 +492,28 @@ function feedZoneDBwith(myZone) {
         newZone.pw = myZone[0].pw;
         newZone.pr = myZone[0].pr;
         playerInfos.zoneDB.push(newZone);
+    } else if (Object.keys(dbZone).length >= 1) {
+        dbZone.id = myZone[0].number;
+        dbZone.planet = myZone[0].planet;
+        dbZone.pid = myZone[0].pid;
+        dbZone.dark = myZone[0].dark;
+        dbZone.mapDiff = myZone[0].mapDiff;
+        dbZone.ensol = myZone[0].ensol;
+        dbZone.pKind = myZone[0].pKind;
+        dbZone.gKind = myZone[0].gKind;
+        dbZone.sKind = myZone[0].sKind;
+        if (myZone[0].pp === undefined) {
+            zoneReport(myZone,true);
+        }
+        dbZone.pm = myZone[0].pm;
+        dbZone.ph = myZone[0].ph;
+        dbZone.pp = myZone[0].pp;
+        dbZone.pg = myZone[0].pg;
+        dbZone.pb = myZone[0].pb;
+        dbZone.pf = myZone[0].pf;
+        dbZone.ps = myZone[0].ps;
+        dbZone.pw = myZone[0].pw;
+        dbZone.pr = myZone[0].pr;
     }
 };
 
@@ -564,7 +583,6 @@ function showZonePreview() {
     $('#themmap').empty();
     $('#thenavig').empty();
     $('#thenavig').append('<span class="constIcon"><i class="fas fa-times-circle klik" onclick="miniOut()"></i></span><br>');
-    atomsColors(zonePrev);
     let allResQHere = {};
     let allResHere = [];
     zonePrev.forEach(function(tile) {

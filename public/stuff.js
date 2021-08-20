@@ -216,6 +216,16 @@ function getStartPack(gang) {
     return pack;
 };
 
+function hasUnit(unitName) {
+    let youHaveIt = false;
+    bataillons.forEach(function(bat) {
+        if (bat.type === unitName) {
+            youHaveIt = true;
+        }
+    });
+    return youHaveIt;
+}
+
 function getSoute() {
     let soute = {};
     let index = bataillons.findIndex((obj => obj.type == 'Soute'));

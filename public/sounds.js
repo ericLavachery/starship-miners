@@ -76,9 +76,13 @@ function clicSound() {
 
 function warnSound(theSound) {
     // playMove(false);
+    let myVol = 0.8;
+    if (theSound === 'takeoff') {
+        myVol = 1;
+    }
     clicSnd = new Howl({
         src: ['/static/sounds/fx/'+theSound+'.mp3'],
-        volume: 0.8
+        volume: myVol
     });
     clicSnd.play();
 };

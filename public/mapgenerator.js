@@ -1263,8 +1263,6 @@ function addRes(zone) {
     });
     console.log('realNumberOfRuins='+realNumberOfRuins);
     console.log('nothing under '+nothingUnder);
-    // Reajuster les couleurs de gisements
-    atomsColors(zone);
     // MAGMA
     if (rand.rand(1,magmaZone) === 1) {
         let magName = 'Magma';
@@ -1362,6 +1360,8 @@ function addRes(zone) {
             }
         });
     }
+    // Reajuster les couleurs de gisements
+    atomsColors(zone);
     // console.log(zone);
 };
 
@@ -1520,7 +1520,7 @@ function checkResLevel(tile) {
     }
 };
 
-function zoneReport(zone,quiet) {
+function zoneReport(myZone,quiet) {
     let percM = 0;
     let percH = 0;
     let percP = 0;
@@ -1531,7 +1531,7 @@ function zoneReport(zone,quiet) {
     let percW = 0;
     let percR = 0;
     let terName;
-    zone.forEach(function(tile) {
+    myZone.forEach(function(tile) {
         terName = getTileTerrainName(tile.id);
         if (terName === 'M') {
             percM++;
@@ -1562,137 +1562,137 @@ function zoneReport(zone,quiet) {
         }
     });
     percM = Math.round(percM/36);
-    zone[0].pm = percM;
+    myZone[0].pm = percM;
     percH = Math.round(percH/36);
-    zone[0].ph = percH;
+    myZone[0].ph = percH;
     percP = Math.round(percP/36);
-    zone[0].pp = percP;
+    myZone[0].pp = percP;
     percG = Math.round(percG/36);
-    zone[0].pg = percG;
+    myZone[0].pg = percG;
     percB = Math.round(percB/36);
-    zone[0].pb = percB;
+    myZone[0].pb = percB;
     percF = Math.round(percF/36);
-    zone[0].pf = percF;
+    myZone[0].pf = percF;
     percS = Math.round(percS/36);
-    zone[0].ps = percS;
+    myZone[0].ps = percS;
     percW = Math.round(percW/36);
-    zone[0].pw = percW;
+    myZone[0].pw = percW;
     percR = Math.round(percR/36);
-    zone[0].pr = percR;
+    myZone[0].pr = percR;
     if (percS < 30) {
-        zone[0].sKind = 'larve';
+        myZone[0].sKind = 'larve';
     }
     let rain = false;
     let sndEnsolBonus = 100;
-    if (zone[0].snd === undefined) {
-        if (zone[0].planet === 'Sarak') {
+    if (myZone[0].snd === undefined) {
+        if (myZone[0].planet === 'Sarak') {
             if (rand.rand(1,2) === 1) {
-                zone[0].snd = 'fogfrogs';
+                myZone[0].snd = 'fogfrogs';
                 sndEnsolBonus = 0;
             } else {
-                zone[0].snd = 'strange';
+                myZone[0].snd = 'strange';
                 sndEnsolBonus = 0;
             }
-        } else if (zone[0].planet === 'Gehenna') {
+        } else if (myZone[0].planet === 'Gehenna') {
             if (percW+percS >= 40) {
-                zone[0].snd = 'swamp';
+                myZone[0].snd = 'swamp';
                 sndEnsolBonus = 50;
                 rain = true;
             } else if (percF >= 40) {
-                zone[0].snd = 'uhuwind';
+                myZone[0].snd = 'uhuwind';
                 sndEnsolBonus = 100;
                 rain = true;
             } else {
-                zone[0].snd = 'monsoon';
+                myZone[0].snd = 'monsoon';
                 sndEnsolBonus = 25;
                 rain = true;
             }
-        } else if (zone[0].planet === 'Kzin') {
+        } else if (myZone[0].planet === 'Kzin') {
             if (rand.rand(1,2) === 1) {
-                zone[0].snd = 'sywind';
+                myZone[0].snd = 'sywind';
                 sndEnsolBonus = 50;
             } else {
-                zone[0].snd = 'bwind';
+                myZone[0].snd = 'bwind';
                 sndEnsolBonus = 100;
             }
-        } else if (zone[0].planet === 'Horst') {
+        } else if (myZone[0].planet === 'Horst') {
             if (percF >= 40) {
-                zone[0].snd = 'bwindred';
+                myZone[0].snd = 'bwindred';
                 sndEnsolBonus = 75;
             } else {
                 if (rand.rand(1,5) >= 4) {
-                    zone[0].snd = 'redwind';
+                    myZone[0].snd = 'redwind';
                     sndEnsolBonus = 125;
                 } else {
-                    zone[0].snd = 'thunderred';
+                    myZone[0].snd = 'thunderred';
                     sndEnsolBonus = 25;
                 }
             }
         } else {
             if (percF >= 40) {
                 if (rand.rand(1,2) === 1) {
-                    zone[0].snd = 'jungle';
+                    myZone[0].snd = 'jungle';
                     sndEnsolBonus = 200;
                 } else {
-                    zone[0].snd = 'rainforest';
+                    myZone[0].snd = 'rainforest';
                     sndEnsolBonus = 100;
                     rain = true;
                 }
             } else if (percW+percS >= 50) {
-                zone[0].snd = 'bogs';
+                myZone[0].snd = 'bogs';
                 sndEnsolBonus = 100;
             } else if (percB >= 35) {
                 if (rand.rand(1,2) === 1) {
-                    zone[0].snd = 'crickets';
+                    myZone[0].snd = 'crickets';
                     sndEnsolBonus = 150;
                 } else {
-                    zone[0].snd = 'birds';
+                    myZone[0].snd = 'birds';
                     sndEnsolBonus = 115;
                 }
             } else if (percG+percB >= 75) {
                 if (rand.rand(1,2) === 1) {
-                    zone[0].snd = 'crickets';
+                    myZone[0].snd = 'crickets';
                     sndEnsolBonus = 150;
                 } else {
-                    zone[0].snd = 'cricketsloop';
+                    myZone[0].snd = 'cricketsloop';
                     sndEnsolBonus = 250;
                 }
             } else if (percP >= 50 || percP+percG >= 70) {
-                zone[0].snd = 'howlwind';
+                myZone[0].snd = 'howlwind';
                 sndEnsolBonus = 75;
             } else {
                 if (rand.rand(1,3) === 1) {
                     if (rand.rand(1,2) === 1) {
-                        zone[0].snd = 'birds';
+                        myZone[0].snd = 'birds';
                         sndEnsolBonus = 100;
                     } else {
-                        zone[0].snd = 'howlwind';
+                        myZone[0].snd = 'howlwind';
                         sndEnsolBonus = 75;
                     }
                 } else {
                     if (rand.rand(1,2) === 1) {
-                        zone[0].snd = 'thunderstart';
+                        myZone[0].snd = 'thunderstart';
                         sndEnsolBonus = 35;
                         rain = true;
                     } else {
-                        zone[0].snd = 'thunderfull';
+                        myZone[0].snd = 'thunderfull';
                         sndEnsolBonus = 20;
                         rain = true;
                     }
                 }
             }
         }
-        console.log(zone[0].snd);
+        console.log(myZone[0].snd);
     }
-    if (zone[0].ensol === undefined) {
+    if (myZone[0].ensol === undefined) {
         let ensolFactor = rand.rand(25,35);
         let ensolBonus = rand.rand(0,80);
-        zone[0].ensol = Math.round(percP*ensolFactor/10)+ensolBonus+sndEnsolBonus-100;
-        if (zone[0].ensol < 50) {
-            zone[0].ensol = 40+rand.rand(0,10);
+        myZone[0].ensol = Math.round(percP*ensolFactor/10)+ensolBonus+sndEnsolBonus-100;
+        if (myZone[0].ensol < 50) {
+            myZone[0].ensol = 40+rand.rand(0,10);
         }
         if (playerInfos.comp.det >= 2 && !quiet) {
-            warning('Ensoleillement',zone[0].ensol,true);
+            warning('Ensoleillement',myZone[0].ensol,true);
         }
     }
     if (!quiet) {
@@ -1702,10 +1702,10 @@ function zoneReport(zone,quiet) {
             warning('Pluie','Non',true);
         }
         if (playerInfos.comp.ca >= 2) {
-            if (zone[0].planet === 'Gehenna') {
+            if (myZone[0].planet === 'Gehenna') {
                 warning('Eau','Empoisonnée<br>',true);
-            } else if (zone[0].seed === 2) {
-                if (zone[0].gKind === 'spider' || zone[0].pKind === 'spider' || zone[0].sKind === 'spider') {
+            } else if (myZone[0].seed === 2) {
+                if (myZone[0].gKind === 'spider' || myZone[0].pKind === 'spider' || myZone[0].sKind === 'spider') {
                     warning('Eau','Empoisonnée<br>',true);
                 } else {
                     warning('Eau','OK<br>',true);
@@ -1727,17 +1727,17 @@ function zoneReport(zone,quiet) {
         } else {
             warning('Montagnes',percM+'% (bug)',true);
             warning('Collines',percH+'% (bug)',true);
-            warning('Plaines',percP+'% ('+zone[0].pKind+')',true);
-            warning('Prairies',percG+'% ('+zone[0].gKind+')',true);
+            warning('Plaines',percP+'% ('+myZone[0].pKind+')',true);
+            warning('Prairies',percG+'% ('+myZone[0].gKind+')',true);
             warning('Maquis',percB+'% (swarm)',true);
             warning('Forêts',percF+'% (spider)',true);
-            warning('Marécages',percS+'% ('+zone[0].sKind+')',true);
+            warning('Marécages',percS+'% ('+myZone[0].sKind+')',true);
             warning('Etangs',percW+'% (larve)',true);
             warning('Rivières',percR+'% (larve)');
         }
     }
     console.log('ensol');
-    console.log(zone[0].ensol);
+    console.log(myZone[0].ensol);
 };
 
 function atomsColors(myZone) {
