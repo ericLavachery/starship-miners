@@ -740,8 +740,8 @@
             "power":14,
             "armors":0.7,
             "aoe":"brochette",
-            "sound":"firemg_heavy_sa",
-            "ammo":["fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "sound":"blister_canon_x4",
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
         },
         "protection":["aucun","swag","bonibo","iso"],
         "log3eq":"",

@@ -194,11 +194,11 @@
             "range":2,
             "elevation":1,
             "rof":24,
-            "accuracy":22,
+            "accuracy":24,
             "power":8,
             "aoe":"brochette",
-            "sound":"firemg_sa",
-            "ammo":["fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "sound":"blister_x4",
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -1845,17 +1845,19 @@
         "ap":22,
         "maxSalvo":1,
         "weapon":{
-            "name":"Revolver",
+            "name":"Blister pistol",
             "cost":2,
-            "range":1,
+            "range":2,
+            "isShort":true,
             "noise":2,
             "rof":6,
-            "accuracy":17,
+            "accuracy":22,
             "dca":1.3,
-            "power":6,
-            "aoe":"unit",
-            "sound":"revolver_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "power":7,
+            "armors":1.2,
+            "aoe":"brochette",
+            "sound":"blister_pistol",
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
         },
         "weapon2":{
             "name":"Sling grenade",
@@ -2810,8 +2812,8 @@
             "power":14,
             "armors":0.7,
             "aoe":"brochette",
-            "sound":"firemg_heavy",
-            "ammo":["fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "sound":"blister_canon_auto",
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
         },
         "weapon2":{
             "name":"Bombes",
@@ -4102,8 +4104,8 @@
             "power":14,
             "armors":0.7,
             "aoe":"brochette",
-            "sound":"firemg_heavy_sa",
-            "ammo":["fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
+            "sound":"blister_canon_x4",
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
             "maxAmmo":36,
             "ravitBld":"Poudrière"
         },

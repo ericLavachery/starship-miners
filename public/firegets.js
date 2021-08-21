@@ -1719,10 +1719,10 @@ function chargeurAdj(bat,shots,weap) {
     if (weap.name.includes('Calibre') || weap.name.includes('verrou')) {
         mult = 2;
     }
-    if (weap.name.includes('Revolver') || weap.name.includes('Blaster') || weap.name.includes('pompe')) {
+    if (weap.name.includes('Revolver') || weap.name.includes('Blaster') || weap.name.includes('pompe') || weap.name.includes('Blister pistol')) {
         mult = 1.7;
     }
-    if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('ulfat') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || weap.name.includes('Blister')) {
+    if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('ulfat') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || (weap.name.includes('Blister') && !weap.name.includes('pistol'))) {
         mult = 1.33;
     }
     if (bat.eq.includes('kit-chouf')) {

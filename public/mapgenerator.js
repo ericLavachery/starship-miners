@@ -1630,7 +1630,7 @@ function zoneReport(myZone,quiet) {
             }
         } else {
             if (percF >= 40) {
-                if (rand.rand(1,2) === 1) {
+                if (rand.rand(1,5) >= 3) {
                     myZone[0].snd = 'jungle';
                     sndEnsolBonus = 200;
                 } else {
@@ -1661,7 +1661,7 @@ function zoneReport(myZone,quiet) {
                 myZone[0].snd = 'howlwind';
                 sndEnsolBonus = 75;
             } else {
-                if (rand.rand(1,3) === 1) {
+                if (rand.rand(1,2) === 1) {
                     if (rand.rand(1,2) === 1) {
                         myZone[0].snd = 'birds';
                         sndEnsolBonus = 100;

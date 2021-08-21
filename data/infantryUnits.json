@@ -1124,17 +1124,20 @@
             "ammo":["torche-feu","torche-feugre","torche-pyratol"]
         },
         "weapon2":{
-            "name":"Revolver",
+            "name":"Blister pistol",
             "cost":2,
             "range":1,
+            "elevation":1,
             "isShort":true,
             "noise":2,
             "rof":5,
-            "accuracy":18,
-            "power":6,
-            "aoe":"unit",
-            "sound":"revolver_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "accuracy":22,
+            "dca":1.2,
+            "power":7,
+            "armors":1.2,
+            "aoe":"brochette",
+            "sound":"blister_pistol",
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
         },
         "protection":["aucune","scrap","kevlar","wendium","nano","swing","adamantite","battlesuit"],
         "equip":["aucun","e-flash","e-ranger","e-medic","chargeur2","waterproof"],
@@ -1167,18 +1170,20 @@
         "ap":14,
         "maxSalvo":1,
         "weapon":{
-            "name":"Revolver",
+            "name":"Blister pistol",
             "cost":2,
             "range":1,
+            "elevation":1,
             "isShort":true,
             "noise":2,
             "rof":5,
-            "accuracy":17,
-            "power":6,
-            "armors":0.85,
-            "aoe":"unit",
-            "sound":"revolver_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "accuracy":22,
+            "dca":1.2,
+            "power":7,
+            "armors":1.2,
+            "aoe":"brochette",
+            "sound":"blister_pistol",
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
         },
         "weapon2":{
             "name":"Sling grenade",
@@ -4484,11 +4489,11 @@
             "range":2,
             "elevation":1,
             "rof":16,
-            "accuracy":22,
+            "accuracy":24,
             "power":7,
             "aoe":"brochette",
-            "sound":"firemg_sa",
-            "ammo":["fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "sound":"blister_x4",
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
         },
         "weapon2":{
             "name":"Blister gun (auto)",
@@ -4500,8 +4505,8 @@
             "accuracy":14,
             "power":7,
             "aoe":"brochette",
-            "sound":"firemg",
-            "ammo":["fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
+            "sound":"blister_auto",
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
             "maxAmmo":18,
             "ravitBld":"Poudrière"
         },
