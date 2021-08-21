@@ -1118,6 +1118,9 @@ function weaponSelectRiposte(distance) {
     } else if (targetBat.eq === 'w1-autogun' || targetBat.eq === 'w1-autopistol') {
         targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon3));
         targetWeap = weaponAdj(targetWeap,targetBat,'w3');
+    } else if (targetBatType.skills.includes('w3melee') && distance === 0) {
+        targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon3));
+        targetWeap = weaponAdj(targetWeap,targetBat,'w3');
     } else {
         let baseAmmo = 99;
         let ammoLeft = 99;
@@ -1377,6 +1380,13 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.noise = thisWeapon.noise-1;
         }
     }
+    if (bat.eq === 'g2siege' || bat.logeq === 'g2siege') {
+        if (thisWeapon.name.includes('Baliste') || thisWeapon.name.includes('Catapulte')) {
+            thisWeapon.range = thisWeapon.range+1;
+            thisWeapon.rof = Math.round(thisWeapon.rof*1.4);
+            thisWeapon.noBis = false;
+        }
+    }
     if (bat.eq === 'theeye') {
         thisWeapon.accuracy = thisWeapon.accuracy+4;
         if (thisWeapon.cost >= 2) {
@@ -1582,12 +1592,12 @@ function weaponAdj(weapon,bat,wn) {
         if (!thisWeapon.isMelee && ((!thisWeapon.isShort && thisWeapon.range >= 1) || thisWeapon.range >= 2 || (thisWeapon.elevation >= 1 && thisWeapon.range >= 1))) {
             thisWeapon.range = thisWeapon.range+1;
         }
+        if (infra === 'Miradors' && thisWeapon.elevation === 3) {
+            thisWeapon.range = thisWeapon.range+1;
+        }
     }
     if (highGround === 1) {
         if (thisWeapon.elevation >= 1) {
-            thisWeapon.range = thisWeapon.range+1;
-        }
-        if (infra === 'Miradors' && ammo.range > 1 && thisWeapon.elevation === 3) {
             thisWeapon.range = thisWeapon.range+1;
         }
     } else if (highGround === 2) {
@@ -1595,9 +1605,6 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.range = thisWeapon.range+1;
         } else if (thisWeapon.elevation >= 2) {
             thisWeapon.range = thisWeapon.range+2;
-            if (ammo.range > 1 && thisWeapon.elevation === 3) {
-                thisWeapon.range = thisWeapon.range+1;
-            }
         }
     }
     // Forêt (range)

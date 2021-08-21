@@ -409,7 +409,7 @@ function conSelect(unitId,player,noRefresh) {
                     }
                     if (equip.endsWith('1')) {
                         weapName = ' ('+conselUnit.weapon.name+')';
-                    } else if (equip.endsWith('2')) {
+                    } else if (equip.endsWith('2') && equip != 'psol2') {
                         weapName = ' ('+conselUnit.weapon2.name+')';
                     }
                     if (equip.startsWith('w2-') || equip.startsWith('kit-')) {
@@ -436,9 +436,9 @@ function conSelect(unitId,player,noRefresh) {
                         prodSign = '';
                     }
                     if ((playerInfos.comp.log === 3 && conselUnit.log3eq === equip && compReqOK) || (playerInfos.comp.energ >= 2 && conselUnit.log3eq === equip && equip.includes('psol') && compReqOK)) {
-                        $('#conAmmoList').append('<span class="constName" title="'+showEquipInfo(equip)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName" title="'+showEquipInfo(equip,conselUnit,true)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else if ((bldReqOK && costsOK) || conselTriche) {
-                        $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip)+' '+displayCosts(flatCosts)+'" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip,conselUnit,true)+' '+displayCosts(flatCosts)+'" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else {
                         $('#conAmmoList').append('<span class="constName gff" title="'+toNiceString(batEquip.bldReq)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     }
@@ -1063,31 +1063,6 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             if (batNewXP > newBat.xp) {
                 newBat.xp = batNewXP;
             }
-            // if (conselUnit.skills.includes('robot')) {
-            //     if (playerInfos.comp.ind === 1) {
-            //         newBat.xp = newBat.xp+levelXP[1];
-            //     }
-            //     if (playerInfos.comp.ind === 2) {
-            //         newBat.xp = newBat.xp+Math.ceil(levelXP[2]*3/4);
-            //     }
-            //     if (playerInfos.comp.ind === 3) {
-            //         newBat.xp = newBat.xp+levelXP[2];
-            //     }
-            // } else if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices' || conselUnit.kind === 'zero-defense' || conselUnit.skills.includes('garde') || conselUnit.skills.includes('cage')) {
-            //     if (playerInfos.comp.def === 2) {
-            //         newBat.xp = newBat.xp+levelXP[1];
-            //     }
-            //     if (playerInfos.comp.def === 3) {
-            //         newBat.xp = newBat.xp+levelXP[2];
-            //     }
-            // } else {
-            //     if (playerInfos.comp.train === 1) {
-            //         newBat.xp = newBat.xp+levelXP[1];
-            //     }
-            //     if (playerInfos.comp.train === 2) {
-            //         newBat.xp = newBat.xp+Math.ceil(levelXP[2]*3/4);
-            //     }
-            // }
             if (Object.keys(conselUnit.weapon).length >= 1) {
                 newBat.range = conselUnit.weapon.range;
                 if (Object.keys(conselUnit.weapon2).length >= 1) {

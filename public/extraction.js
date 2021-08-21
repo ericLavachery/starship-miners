@@ -67,6 +67,13 @@ function mining(bat) {
                 warning('Extraction stoppée',bat.type+': Plus de place pour stocker',false,bat.tileId);
             }
         }
+    } else {
+        if (bat.extracted.length >= 1 && !bat.tags.includes('guet') && !bat.tags.includes('fortif') && bat.apLeft >= 2) {
+            let batType = getBatType(bat);
+            if (batType.kind === 'zero-extraction') {
+                warning('Extraction stoppée',bat.type+': Se tourne les pouces',false,bat.tileId);
+            }
+        }
     }
 };
 

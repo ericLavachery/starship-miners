@@ -120,6 +120,10 @@ function checkMaxDroppedEggs() {
         maxEggDropTurn = Math.ceil(zone[0].mapDiff/2);
     }
     let maxDroppedEggs = Math.ceil((maxEggDropTurn+overLimit)*(zone[0].mapDiff+1.5)/7);
+    maxDroppedEggs = maxDroppedEggs+Math.round(playerInfos.fuzzTotal/60)-6;
+    if (maxDroppedEggs < 0) {
+        maxDroppedEggs = 0;
+    }
     return maxDroppedEggs;
 };
 
@@ -128,6 +132,7 @@ function checkMaxEggsInPlay() {
     if (playerInfos.mapTurn >= 35) {
         maxEggsInPlay++;
     }
+    maxEggsInPlay = maxEggsInPlay+Math.floor(playerInfos.fuzzTotal/200)-1;
     return maxEggsInPlay;
 };
 

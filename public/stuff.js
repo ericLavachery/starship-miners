@@ -2,25 +2,25 @@
 function calcBatFuzz(bat) {
     let batFuzz = bat.fuzz+2;
     if (bat.eq === 'w2-lcomet') {
-        batFuzz = batFuzz+2.5;
+        batFuzz = batFuzz+3.5;
     }
     if (bat.eq === 'e-jetpack' || bat.eq === 'w2-arti') {
-        batFuzz = batFuzz+2;
+        batFuzz = batFuzz+2.5;
     }
     if (bat.eq === 'w2-dyna' || bat.eq === 'w2-explo' || bat.eq === 'w1-autogun' || bat.eq === 'w2-canon' || bat.eq === 'kit-artilleur') {
+        batFuzz = batFuzz+2;
+    }
+    if (bat.eq === 'w2-lmit' || bat.eq === 'w1-ggun' || bat.eq === 'w2-ggun' || bat.eq === 'w2-rain' || bat.eq === 'w1-autopistol' || bat.eq === 'kit-garde' || bat.eq === 'kit-lightning' || bat.eq === 'w2-acanon' || bat.eq === 'w2-mortier') {
         batFuzz = batFuzz+1.5;
     }
-    if (bat.eq === 'w2-lmit' || bat.eq === 'w1-ggun' || bat.eq === 'w2-ggun' || bat.eq === 'w2-rain' || bat.eq === 'w1-autopistol' || bat.eq === 'kit-garde' || bat.eq === 'kit-lightning') {
-        batFuzz = batFuzz+1;
-    }
     if (bat.eq === 'autoextract' || bat.eq === 'w1-gun' || bat.eq === 'w1-plasma' || bat.eq === 'w2-brol' || bat.eq === 'w2-fire' || bat.eq === 'w2-molo' || bat.eq === 'w2-laser' || bat.eq === 'kit-guetteur') {
-        batFuzz = batFuzz+0.5;
+        batFuzz = batFuzz+1;
     }
     if (playerInfos.comp.cam >= 1) {
         batFuzz = batFuzz-0.5-(playerInfos.comp.cam*0.5);
     }
     if (batFuzz >= 6) {
-        batFuzz = batFuzz+bat.fuzz-1;
+        batFuzz = batFuzz+batFuzz-3;
     }
     if (batFuzz < 0) {
         batFuzz = 0;

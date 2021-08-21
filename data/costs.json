@@ -1801,7 +1801,7 @@
     {
         "id":127,
         "name":"Blockhaus",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":12,"tiradores":99,"detruas":99,"brasier":11},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":12,"tiradores":99,"detruas":99,"brasier":12},
         "bldReq":["Usine d'armement","Chaîne de montage"],
         "compHardReq":{"pyro":1},
         "costs":{"Compo1":70,"Compo2":390,"Compo3":405,"Eau":36,"Végétaux":150,"Scrap":72,"Carbone":24,"Titane":48,"Tungstène":72,"Aluminium":48,"Fer":216,"Rhodium":36},
@@ -1811,7 +1811,7 @@
     {
         "id":178,
         "name":"Bunkers",
-        "levels":{"rednecks":12,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":9,"detruas":99,"brasier":99},
+        "levels":{"rednecks":12,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":12,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Chaîne de montage"],
         "compHardReq":{"bal":1},
         "costs":{"Compo1":70,"Compo2":390,"Compo3":405,"Eau":48,"Végétaux":150,"Scrap":84,"Carbone":36,"Tungstène":72,"Aluminium":120,"Fer":240},
@@ -1935,6 +1935,48 @@
         "bldReq":["Atelier"],
         "costs":{"Explosifs":9,"Scrap":9,"Végétaux":18,"Plomb":3,"Titane":3,"Azote":3,"Cuivre":6},
         "fabTime":35
+    },
+    {
+        "id":253,
+        "name":"Caserne Rednecks",
+        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
+        "fabTime":30
+    },
+    {
+        "id":254,
+        "name":"Caserne Blades",
+        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
+        "fabTime":30
+    },
+    {
+        "id":255,
+        "name":"Caserne Bulbos",
+        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
+        "fabTime":30
+    },
+    {
+        "id":256,
+        "name":"Caserne Drogmulojs",
+        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
+        "fabTime":30
+    },
+    {
+        "id":257,
+        "name":"Caserne Tiradores",
+        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
+        "fabTime":30
+    },
+    {
+        "id":258,
+        "name":"Caserne Detruas",
+        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
+        "fabTime":30
+    },
+    {
+        "id":259,
+        "name":"Caserne Brasier",
+        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
+        "fabTime":30
     },
     {
         "id":9,

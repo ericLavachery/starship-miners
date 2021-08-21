@@ -685,7 +685,7 @@
             "sound":"plasma_mcanon",
             "ammo":["cn-proto-plasma","cn-plasma","cn-impact","cn-grapeshot","cn-plastanium","cn-uridium","cn-nanite"],
             "maxAmmo":14,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","e-camo","kit-guetteur","e-ranger","e-jetpack","chargeur1","silencieux1","camkit"],
         "log3eq":"e-flash",

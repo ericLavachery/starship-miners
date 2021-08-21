@@ -369,7 +369,7 @@ function playerSkillsUTChanges() {
         if (playerInfos.comp.def === 3) {
             defComp++;
         }
-        if (playerInfos.comp.def >= 1 && (unit.kind === 'zero-defense' || unit.skills.includes('cage')) && !unit.skills.includes('dome')) {
+        if (playerInfos.comp.def >= 1 && (unit.kind === 'zero-defense' || unit.name.includes('Caserne') || unit.skills.includes('cage')) && !unit.skills.includes('dome')) {
             if (unit.compReq === undefined && unit.compHardReq === undefined) {
                 unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.def);
                 if (unit.levels[playerInfos.gang] < 1) {
@@ -408,7 +408,7 @@ function playerSkillsUTChanges() {
             }
         }
         if (playerInfos.comp.def >= 1) {
-            if (unit.cat === 'buildings' || unit.cat === 'devices' || unit.kind === 'zero-defense' || unit.skills.includes('garde') || unit.skills.includes('cage')) {
+            if (unit.cat === 'buildings' || unit.cat === 'devices' || unit.kind === 'zero-defense' || unit.name.includes('Caserne') || unit.skills.includes('garde') || unit.skills.includes('cage')) {
                 if (unit.kind != 'zero-artillerie') {
                     if (Object.keys(unit.weapon).length >= 3) {
                         let w1CostBonus = playerInfos.comp.def-1;
@@ -520,7 +520,7 @@ function playerSkillsUTChanges() {
             }
         }
         if (playerInfos.comp.train >= 1) {
-            if (unit.cat != 'buildings' && unit.cat != 'devices' && (unit.kind != 'zero-artillerie' || unit.name === 'Raves') && unit.kind != 'zero-defense' && !unit.skills.includes('garde') && !unit.skills.includes('cage') && !unit.skills.includes('robot')) {
+            if (unit.cat != 'buildings' && unit.cat != 'devices' && (unit.kind != 'zero-artillerie' || unit.name === 'Raves') && unit.kind != 'zero-defense' && !unit.name.includes('Caserne') && !unit.skills.includes('garde') && !unit.skills.includes('cage') && !unit.skills.includes('robot')) {
                 if (Object.keys(unit.weapon).length >= 3) {
                     if (playerInfos.comp.train >= 2) {
                         if (unit.weapon.cost >= 6) {

@@ -532,12 +532,22 @@ function showAmmoInfo(ammoName) {
     return ammoInfo;
 };
 
-function showEquipInfo(equipName) {
+function showEquipInfo(equipName,unit,long) {
     let equipIndex = armorTypes.findIndex((obj => obj.name == equipName));
     let equip = armorTypes[equipIndex];
     let equipInfo = '';
     if (equip.info != undefined) {
-        equipInfo = equipInfo+equip.info+' ';
+        if (equip.info === 'Arme 1') {
+            equipInfo = equipInfo+unit.weapon.name+' ';
+        } else if (equip.info === 'Arme 2') {
+            if (long) {
+                equipInfo = equipInfo+unit.weapon.name+' + '+unit.weapon2.name+' ';
+            } else {
+                equipInfo = equipInfo+unit.weapon2.name+' ';
+            }
+        } else {
+            equipInfo = equipInfo+equip.info+' ';
+        }
     }
     return equipInfo;
 };

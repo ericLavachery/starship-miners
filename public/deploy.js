@@ -108,7 +108,7 @@ function reEquip(batId,noRefresh) {
                     }
                     if (equip.endsWith('1')) {
                         weapName = ' ('+myBatType.weapon.name+')';
-                    } else if (equip.endsWith('2')) {
+                    } else if (equip.endsWith('2') && equip != 'psol2') {
                         weapName = ' ('+myBatType.weapon2.name+')';
                     }
                     if (equip.startsWith('w2-') || equip.startsWith('kit-')) {
@@ -135,9 +135,9 @@ function reEquip(batId,noRefresh) {
                         prodSign = '';
                     }
                     if ((playerInfos.comp.log === 3 && myBatType.log3eq === equip && compReqOK) || (playerInfos.comp.energ >= 2 && myBatType.log3eq === equip && equip.includes('psol') && compReqOK)) {
-                        $('#conAmmoList').append('<span class="constName" title="'+showEquipInfo(equip)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName" title="'+showEquipInfo(equip,myBatType,true)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else if ((bldReqOK && costsOK) || conselTriche) {
-                        $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip)+' '+displayCosts(flatCosts)+'" onclick="deployEquip(`'+equip+'`,`'+myBat.id+'`)">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip,myBatType,true)+' '+displayCosts(flatCosts)+'" onclick="deployEquip(`'+equip+'`,`'+myBat.id+'`)">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else {
                         $('#conAmmoList').append('<span class="constName gff" title="'+toNiceString(batEquip.bldReq)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     }
