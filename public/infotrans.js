@@ -1,24 +1,44 @@
 function transInfos(bat,batType) {
     // console.log('transInfos');
     let isCharged = checkCharged(bat,'trans');
+    let underId = checkUnderId(bat,batType);
     let transId = checkTransportId(bat,batType);
-    let apCost = 3-playerInfos.comp.trans;
+    let apCost = 3;
     if (transId >= 0) {
+        // Le bataillon en dessous peut embarquer le bataillon actif
+        let transBat = getBatById(transId);
+        let transBatType = getBatType(transBat);
+        let embarqCost = calcEmbarqCost(batType,transBatType);
+        apCost = embarqCost[0];
         if (!isCharged) {
-            let transBat = getBatById(transId);
-            let transBatType = getBatType(transBat);
+            // Le bataillon actif n'a pas de bataillon embarqué
             let resLoad = checkResLoad(selectedBat);
             if (resLoad >= 1 && transBatType.skills.includes('transorbital')) {
+                // Le bataillon actif transporte des ressources
+                // Embarquement dans un Lander (Jeter les ressources ou ne pas embarquer)
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer et jeter les ressources (Pas d\'embarquement si votre bataillon a des ressources embarquées)" class="boutonRouge skillButtons" onclick="embarquement('+transId+',true)"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer et jeter</h4></span>');
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ne pas embarquer (Pas d\'embarquement si votre bataillon a des ressources embarquées)" class="boutonRouge skillButtons" onclick="noEmbarq()"><i class="fas fa-truck"></i> <span class="small">0</span></button>&nbsp; Ne pas embarquer</h4></span>');
             } else {
+                // Embarquement OK (Soit pas de ressources, soit pas dans un Lander)
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer dans '+transBat.type+'" class="boutonMarine skillButtons" onclick="embarquement('+transId+',false)"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
             }
         } else {
+            // Le bataillon actif a un bataillon embarqué
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Pas d\'embarquement si votre bataillon a lui-même un bataillon embarqué" class="boutonRouge skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
         }
     } else {
+        // Le bataillon en dessous ne peut pas embarquer le  bataillon actif
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ce bataillon n\'a pas les moyens de vous embarquer" class="boutonGris skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
+    }
+    if (underId >= 0) {
+        // Le bataillon actif peut embarquer le bataillon en dessous
+        let underBat = getBatById(underId);
+        let underBatType = getBatType(underBat);
+        apCost = calcRamasseCost(underBat,underBatType,batType);
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer '+underBat.type+'" class="boutonVert skillButtons" onclick="ramassage('+underId+')"><i class="fas fa-wheelchair"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ramasser</h4></span>');
+    } else {
+        // Le bataillon actif ne peut pas embarquer le bataillon en dessous
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ce bataillon n\'a pas les moyens de vous embarquer" class="boutonGris skillButtons gf"><i class="fas fa-wheelchair"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ramasser</h4></span>');
     }
 };
 
@@ -188,6 +208,32 @@ function checkCharged(myBat,where) {
     return isCharged;
 };
 
+function checkUnderId(myBat,myBatType) {
+    // vérifie si l'unité en dessous peut être ramassée par l'unité active, et retourne son Id
+    let underId = -1;
+    let myBatTransUnitsLeft = calcTransUnitsLeft(myBat,myBatType);
+    let tracking = checkTracking(myBat);
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone" && bat.tileId == myBat.tileId) {
+            let batType = getBatType(bat);
+            if (batType.cat != 'buildings' && batType.cat != 'devices') {
+                if (myBatType.transMaxSize >= batType.size) {
+                    if (!batType.skills.includes('tracked') || !tracking) {
+                        let batWeight = calcVolume(bat,batType);
+                        if (batWeight <= myBatTransUnitsLeft) {
+                            let isCharged = checkCharged(bat,'trans');
+                            if (!isCharged) {
+                                underId = bat.id;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
+    return underId;
+}
+
 function checkTransportId(myBat,myBatType) {
     // vérifie si le transport (en dessous de l'unité) peut la prendre, et retourne son Id
     let transId = -1;
@@ -266,14 +312,67 @@ function checkTracking(myBat) {
     return tracking;
 };
 
+function calcRamasseCost(bat,batType,transBatType) {
+    let ramasseCost = 0;
+    ramasseCost = ramasseCost+3-playerInfos.comp.trans;
+    let batWeight = calcVolume(bat,batType);
+    let transBatCrew = transBatType.squads*transBatType.squadSize*transBatType.crew;
+    if (transBatCrew === 0) {
+        transBatCrew = transBatType.squads*transBatType.squadSize;
+    }
+    let crewCost = Math.round(batWeight/transBatCrew/2.5);
+    if (crewCost < 1) {
+        crewCost = 1;
+    }
+    if (crewCost > 6) {
+        crewCost = 6;
+    }
+    ramasseCost = ramasseCost+crewCost;
+    if (batType.skills.includes('tracked') && transBatType.transMaxSize < 25) {
+        ramasseCost = ramasseCost+4-playerInfos.comp.log;
+    }
+    if (transBatType.skills.includes('hardembark')) {
+        ramasseCost = ramasseCost+4;
+    }
+    return ramasseCost;
+}
+
+function calcEmbarqCost(batType,transBatType) {
+    let embarqCost = [0,0];
+    embarqCost[0] = embarqCost[0]+3-playerInfos.comp.trans;
+    if (batType.skills.includes('tracked') && transBatType.transMaxSize < 25) {
+        embarqCost[1] = embarqCost[1]+4-playerInfos.comp.log;
+    }
+    if (transBatType.skills.includes('hardembark')) {
+        embarqCost[0] = embarqCost[0]+3;
+        embarqCost[1] = embarqCost[1]+3;
+    }
+    return embarqCost;
+}
+
+function ramassage(underId) {
+    let underBat = getBatById(underId);
+    let underBatType = getBatType(underBat);
+    if (!playerInfos.onShip) {
+        let ramasseCost = calcRamasseCost(underBat,underBatType,selectedBatType);
+        selectedBat.apLeft = selectedBat.apLeft-ramasseCost;
+    }
+    loadBat(underBat.id,selectedBat.id);
+    doneAction(selectedBat);
+    tagDelete(underBat,'guet');
+    camoOut();
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+    showTileInfos(selectedBat.tileId);
+};
+
 function embarquement(transId,discardRes) {
     let transBat = getBatById(transId);
     let transBatType = getBatType(transBat);
     if (!playerInfos.onShip) {
-        if (selectedBatType.skills.includes('tracked') && transBatType.transMaxSize < 25) {
-            transBat.apLeft = transBat.apLeft-4+playerInfos.comp.log;
-        }
-        selectedBat.apLeft = selectedBat.apLeft-3+playerInfos.comp.trans;
+        let embarqCost = calcEmbarqCost(selectedBatType,transBatType);
+        transBat.apLeft = transBat.apLeft-embarqCost[1];
+        selectedBat.apLeft = selectedBat.apLeft-embarqCost[0];
     }
     if (discardRes) {
         selectedBat.transRes = {};

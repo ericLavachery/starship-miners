@@ -68,7 +68,7 @@ function mining(bat) {
             }
         }
     } else {
-        if (bat.extracted.length >= 1 && !bat.tags.includes('guet') && !bat.tags.includes('fortif') && bat.apLeft >= 2) {
+        if (bat.extracted.length >= 1 && !bat.tags.includes('guet') && !bat.tags.includes('fortif') && bat.apLeft >= 2 && bat.loc === 'zone') {
             let batType = getBatType(bat);
             if (batType.kind === 'zero-extraction') {
                 warning('Extraction stoppée',bat.type+': Se tourne les pouces',false,bat.tileId);
