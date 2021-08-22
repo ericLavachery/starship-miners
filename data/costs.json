@@ -1942,49 +1942,49 @@
         "id":253,
         "name":"Caserne Rednecks",
         "levels":{"rednecks":8,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
+        "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Fer":84,"Carbone":126,"Aluminium":84,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
         "fabTime":30
     },
     {
         "id":254,
         "name":"Caserne Blades",
         "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
+        "costs":{"Compo1":190,"Compo2":60,"Eau":96,"Scrap":192,"Fer":192,"Bois":192,"Aluminium":96,"Carbone":96,"Titane":48,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":200,"Zinc":16,"Silicium":64},
         "fabTime":30
     },
     {
         "id":255,
         "name":"Caserne Bulbos",
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
+        "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Fer":84,"Carbone":126,"Aluminium":84,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
         "fabTime":30
     },
     {
         "id":256,
         "name":"Caserne Drogmulojs",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":8,"tiradores":99,"detruas":99,"brasier":99},
-        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
+        "costs":{"Compo1":190,"Compo2":60,"Eau":96,"Scrap":192,"Fer":144,"Bois":48,"Tungstène":24,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":100,"Zinc":30,"Silicium":30},
         "fabTime":30
     },
     {
         "id":257,
         "name":"Caserne Tiradores",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":8,"detruas":99,"brasier":99},
-        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
+        "costs":{"Compo1":190,"Compo2":60,"Eau":90,"Scrap":180,"Fer":90,"Carbone":135,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
         "fabTime":30
     },
     {
         "id":258,
         "name":"Caserne Detruas",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":99},
-        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
+        "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":168,"Fer":126,"Bois":42,"Tungstène":21,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
         "fabTime":30
     },
     {
         "id":259,
         "name":"Caserne Brasier",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":8},
-        "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
+        "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Aluminium":42,"Carbone":42,"Titane":42,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
         "fabTime":30
     },
     {
