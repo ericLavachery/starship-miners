@@ -621,12 +621,53 @@ function showTileInfos(tileId) {
         if (tile.tileName !== undefined && tile.tileName !== null && tile.tileName != '') {
             $('#tileInfos').append('<span class="paramIcon"><i class="fas fa-map-signs"></i></span><span class="fullLine or"><b>'+tile.tileName+'</b></span><br>');
         }
+        // Type d'oeufs
+        if (playerInfos.comp.ca >= 3) {
+            let eggType = 'Bug';
+            if (tile.terrain === 'M') {
+                eggType = 'Bug';
+            }
+            if (tile.terrain === 'H') {
+                eggType = 'Bug';
+            }
+            if (tile.terrain === 'P') {
+                eggType = capitalizeFirstLetter(zone[0].pKind);
+            }
+            if (tile.terrain === 'G') {
+                eggType = capitalizeFirstLetter(zone[0].gKind);
+            }
+            if (tile.terrain === 'B') {
+                eggType = 'Swarm';
+            }
+            if (tile.terrain === 'F') {
+                eggType = 'Spider';
+            }
+            if (tile.terrain === 'S') {
+                eggType = capitalizeFirstLetter(zone[0].sKind);
+            }
+            if (tile.terrain === 'W') {
+                eggType = 'Larve';
+            }
+            if (tile.terrain === 'R') {
+                eggType = 'Larve';
+            }
+            $('#tileInfos').append('<span class="paramName mauve">Type d\'oeuf</span><span class="paramIcon"><i class="fas fa-bug"></i></span><span class="paramValue mauve">'+eggType+'</span><br>');
+        }
         // Aménagements
         if (tile.ruins) {
             $('#tileInfos').append('<span class="paramName cy">Ruines</span><span class="paramIcon"><i class="fas fa-city"></i></span><span class="paramValue cy">Oui</span><br>');
         }
         if (tile.infra != undefined) {
             $('#tileInfos').append('<span class="paramName cy">Infrastructure</span><span class="paramIcon"><i class="ra ra-tower rpg"></i></span><span class="paramValue cy">'+tile.infra+'</span><br>');
+        }
+        if (tile.rd != undefined) {
+            if (tile.rd) {
+                if (tile.terrain === 'W' || tile.terrain === 'W') {
+                    $('#tileInfos').append('<span class="paramName cy">Pont</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue cy">Oui</span><br>');
+                } else {
+                    $('#tileInfos').append('<span class="paramName cy">Route</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue cy">Oui</span><br>');
+                }
+            }
         }
         // Move Cost
         $('#tileInfos').append('<span class="paramName">Coûts de déplacement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">+'+terrain.mc+'</span><br>');

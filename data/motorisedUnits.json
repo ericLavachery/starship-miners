@@ -4316,6 +4316,7 @@
         "transMaxSize":4,
         "transUnits":420,
         "transRes":200,
+        "maxDrug":12,
         "fuzz":0,
         "deathFx":"S_CarExplosion02",
         "mvSnd":"emotor"

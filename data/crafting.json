@@ -975,6 +975,14 @@
         "deg":true
     },
     {
+        "id":128,
+        "result":"Silicium",
+        "cost":{"Wingium":10,"Creatite":5,"Carbone":10},
+        "compReq":{"tri":2,"ca":2},
+        "bldReq":["Recyclab"],
+        "batch":15
+    },
+    {
         "id":48,
         "result":"Titane",
         "cost":{"Wingium":10,"Bossium":5,"Energie":5},

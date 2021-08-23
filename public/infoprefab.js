@@ -52,6 +52,8 @@ function deconstruction(prefabId) {
             selectedBat.apLeft = selectedBat.apLeft-apCost;
         }
         loadBat(prefabBat.id,landerBat.id);
+        // tagDelete(prefabBat,'mining');
+        // prefabBat.extracted = [];
         recupPrefabFret(prefabBat,prefabBatType,tileId,false,-1);
         tagDelete(selectedBat,'guet');
         selectedBatArrayUpdate();
@@ -68,6 +70,8 @@ function autoDeconstruction(prefabId) {
     let landerBat = findTheLander();
     if (Object.keys(landerBat).length >= 1) {
         loadBat(prefabBat.id,landerBat.id);
+        // tagDelete(prefabBat,'mining');
+        // prefabBat.extracted = [];
         recupPrefabFret(prefabBat,prefabBatType,tileId,true,landerBat);
         showMap(zone,false);
         batSelect(landerBat);

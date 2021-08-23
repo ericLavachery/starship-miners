@@ -149,6 +149,8 @@ function getTerrainRes(terrain,tile) {
             } else {
                 if (zone[0].gKind != 'spider' && zone[0].pKind != 'spider' && zone[0].sKind != 'spider') {
                     srs.Eau = 400+(tile.seed*75);
+                } else if (playerInfos.bldVM.includes('Recyclab') || playerInfos.bldList.includes('Recyclab')) {
+                    srs.Eau = 400+(tile.seed*75);
                 }
             }
         }  else {
@@ -161,6 +163,8 @@ function getTerrainRes(terrain,tile) {
             } else {
                 if (zone[0].gKind != 'spider' && zone[0].pKind != 'spider' && zone[0].sKind != 'spider') {
                     srs.Eau = 100+(tile.seed*35);
+                } else if (playerInfos.bldVM.includes('Recyclab') || playerInfos.bldList.includes('Recyclab')) {
+                    srs.Eau = 100+(tile.seed*35);
                 }
             }
         }  else {
@@ -172,6 +176,8 @@ function getTerrainRes(terrain,tile) {
                 srs.Eau = Math.round((playerInfos.comp.ext*10)+(tile.seed*5));
             } else {
                 if (zone[0].gKind != 'spider' && zone[0].pKind != 'spider' && zone[0].sKind != 'spider') {
+                    srs.Eau = Math.round((playerInfos.comp.ext*10)+(tile.seed*5));
+                } else if (playerInfos.bldVM.includes('Recyclab') || playerInfos.bldList.includes('Recyclab')) {
                     srs.Eau = Math.round((playerInfos.comp.ext*10)+(tile.seed*5));
                 }
             }

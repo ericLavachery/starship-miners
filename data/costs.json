@@ -1670,8 +1670,8 @@
         "bldReq":["Garage"],
         "compReq":{"cam":1},
         "compPass":["blades"],
-        "costs":{"Fer":48,"Scrap":128,"Carbone":64,"Bois":32,"Moteurs":16,"Cuivre":24,"Electros":32,"Batteries":36,"Compo2":32,"Huile":10,"Végétaux":144},
-        "deploy":{"Energie":105},
+        "costs":{"Fer":48,"Scrap":128,"Carbone":64,"Bois":32,"Moteurs":16,"Cuivre":24,"Electros":32,"Batteries":36,"Compo2":32,"Huile":10,"Végétaux":144,"Drogues":5,"Tissus":5,"Chlore":5,"Végétaux":25,"Zinc":5,"Silicium":5},
+        "deploy":{"Energie":105,"Chlore":5,"Zinc":10,"Tissus":5},
         "fabTime":30,
         "inRuin":2
     },

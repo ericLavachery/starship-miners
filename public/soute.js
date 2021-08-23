@@ -421,6 +421,8 @@ function loadBat(batId,transBatId,oldTransBatId) {
     bat.loc = 'trans';
     bat.locId = transBat.id;
     bat.tileId = transBat.tileId;
+    bat.extracted = [];
+    tagDelete(bat,'mining');
     if (!transBat.transIds.includes(bat.id)) {
         transBat.transIds.push(bat.id);
     }
