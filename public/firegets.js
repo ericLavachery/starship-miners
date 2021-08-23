@@ -1204,6 +1204,11 @@ function weaponAdj(weapon,bat,wn) {
     }
     thisWeapon.aoe = weapon.aoe;
     thisWeapon.sound = weapon.sound;
+    if (weapon.type === undefined) {
+        thisWeapon.type = 'none';
+    } else {
+        thisWeapon.type = weapon.type;
+    }
     if (weapon.elevation === undefined) {
         thisWeapon.elevation = 0;
     } else {

@@ -1258,7 +1258,7 @@
         "skills": [],
         "info": "Arme 2",
         "bldReq":[],
-        "compReq":{"def":2,"exo":2,"ca":2},
+        "compReq":{"def":2,"exo":2,"ca":3},
         "factor":"crew",
         "costs":{"Carbone":4,"Scrap":8,"Aluminium":8,"Titane":4}
     },

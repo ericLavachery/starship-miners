@@ -1666,7 +1666,7 @@
     {
         "id":182,
         "name":"Spycars",
-        "levels":{"rednecks":99,"blades":5,"bulbos":6,"drogmulojs":9,"tiradores":99,"detruas":14,"brasier":12},
+        "levels":{"rednecks":13,"blades":5,"bulbos":6,"drogmulojs":9,"tiradores":99,"detruas":14,"brasier":12},
         "bldReq":["Garage"],
         "compReq":{"cam":1},
         "compPass":["blades"],
@@ -1963,7 +1963,7 @@
         "id":256,
         "name":"Caserne Drogmulojs",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":8,"tiradores":99,"detruas":99,"brasier":99},
-        "costs":{"Compo1":190,"Compo2":60,"Eau":96,"Scrap":192,"Fer":144,"Bois":48,"Tungstène":24,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":100,"Zinc":30,"Silicium":30},
+        "costs":{"Compo1":190,"Compo2":60,"Eau":96,"Scrap":192,"Fer":144,"Carbone":48,"Bois":48,"Tungstène":24,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":100,"Zinc":30,"Silicium":30},
         "fabTime":30
     },
     {
@@ -1977,14 +1977,14 @@
         "id":258,
         "name":"Caserne Detruas",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":99},
-        "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":168,"Fer":126,"Bois":42,"Tungstène":21,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
+        "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":168,"Fer":126,"Carbone":42,"Bois":42,"Tungstène":21,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
         "fabTime":30
     },
     {
         "id":259,
         "name":"Caserne Brasier",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":8},
-        "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Aluminium":42,"Carbone":42,"Titane":42,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
+        "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Aluminium":42,"Carbone":84,"Titane":42,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
         "fabTime":30
     },
     {

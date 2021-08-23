@@ -1087,7 +1087,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","medic","maycamo","dealer","starka","octiron"],
+        "skills":["fouille","fortif","medic","maycamo","dealer","starka","kirin","octiron"],
         "mediCost":8,
         "maxDrug":12,
         "fuzz":0,

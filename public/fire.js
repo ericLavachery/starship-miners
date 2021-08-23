@@ -286,33 +286,39 @@ function attack(melee) {
         if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov')) {
             if (!selectedWeap.ammo.includes('pyratol')) {
                 if (selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('fireshells')) {
-                    selectedWeap.power = Math.round(selectedWeap.power*0.85);
+                    selectedWeap.power = Math.round(selectedWeap.power*0.9);
                 } else {
-                    selectedWeap.power = Math.round(selectedWeap.power*0.75);
+                    selectedWeap.power = Math.round(selectedWeap.power*0.8);
                 }
                 if (wetness >= 2) {
-                    selectedWeap.aoe = 'unit';
+                    if (selectedWeap.aoe === 'brochette') {
+                        selectedWeap.aoe = 'unit';
+                    } else if (selectedWeap.aoe === 'squad') {
+                        selectedWeap.aoe = 'brochette';
+                    } else if (selectedWeap.aoe === 'bat') {
+                        selectedWeap.aoe = 'squad';
+                    }
                 }
             }
         }
         if (selectedWeap.ammo.includes('laser') || selectedWeap.ammo.includes('gaz')) {
             if (wetness >= 3) {
-                selectedWeap.power = Math.round(selectedWeap.power*0.75);
+                selectedWeap.power = Math.round(selectedWeap.power*0.8);
             }
         }
         if (!targetBatType.skills.includes('resistelec') && !targetBat.tags.includes('resistelec') && (!targetBatType.skills.includes('hover') || targetBatType.cat === 'aliens')) {
             if (selectedWeap.ammo.includes('taser') || selectedWeap.ammo.includes('electric')) {
                 if (wetness >= 2) {
-                    selectedWeap.power = Math.round(selectedWeap.power*1.5);
-                    if (selectedWeap.aoe == 'unit') {
+                    selectedWeap.power = Math.round(selectedWeap.power*1.35);
+                    if (selectedWeap.aoe === 'unit') {
                         selectedWeap.aoe = 'brochette';
-                    } else if (selectedWeap.aoe == 'brochette') {
+                    } else if (selectedWeap.aoe === 'brochette') {
                         selectedWeap.aoe = 'squad';
                     } else {
                         selectedWeap.aoe = 'bat';
                     }
                 } else if (wetness === 1 && targetBatType.cat === 'aliens') {
-                    selectedWeap.power = Math.round(selectedWeap.power*1.3);
+                    selectedWeap.power = Math.round(selectedWeap.power*1.2);
                 }
             }
         }
@@ -1178,33 +1184,39 @@ function defense(melee) {
         if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov')) {
             if (!targetWeap.ammo.includes('pyratol')) {
                 if (targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('fireshells')) {
-                    targetWeap.power = Math.round(targetWeap.power*0.85);
+                    targetWeap.power = Math.round(targetWeap.power*0.9);
                 } else {
-                    targetWeap.power = Math.round(targetWeap.power*0.75);
+                    targetWeap.power = Math.round(targetWeap.power*0.8);
                 }
                 if (wetness >= 2) {
-                    targetWeap.aoe = 'unit';
+                    if (targetWeap.aoe === 'brochette') {
+                        targetWeap.aoe = 'unit';
+                    } else if (targetWeap.aoe === 'squad') {
+                        targetWeap.aoe = 'brochette';
+                    } else if (targetWeap.aoe === 'bat') {
+                        targetWeap.aoe = 'squad';
+                    }
                 }
             }
         }
         if (targetWeap.ammo.includes('laser') || targetWeap.ammo.includes('gaz')) {
             if (wetness >= 3) {
-                targetWeap.power = Math.round(targetWeap.power*0.75);
+                targetWeap.power = Math.round(targetWeap.power*0.8);
             }
         }
         if (!selectedBatType.skills.includes('resistelec') && !selectedBat.tags.includes('resistelec') && (!selectedBatType.skills.includes('hover') || selectedBatType.cat === 'aliens')) {
             if (targetWeap.ammo.includes('taser') || targetWeap.ammo.includes('electric')) {
                 if (wetness >= 2) {
-                    targetWeap.power = Math.round(targetWeap.power*1.5);
-                    if (targetWeap.aoe == 'unit') {
+                    targetWeap.power = Math.round(targetWeap.power*1.35);
+                    if (targetWeap.aoe === 'unit') {
                         targetWeap.aoe = 'brochette';
-                    } else if (targetWeap.aoe == 'brochette') {
+                    } else if (targetWeap.aoe === 'brochette') {
                         targetWeap.aoe = 'squad';
                     } else {
                         targetWeap.aoe = 'bat';
                     }
                 } else if (wetness === 1 && selectedBatType.cat === 'aliens') {
-                    targetWeap.power = Math.round(targetWeap.power*1.3);
+                    targetWeap.power = Math.round(targetWeap.power*1.2);
                 }
             }
         }
