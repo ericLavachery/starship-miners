@@ -43,6 +43,7 @@ function events(afterMission,sim) {
 function eventProduction(afterMission,time,sim) {
     let mesCitoyens = calcTotalCitoyens();
     let population = mesCitoyens.crim+mesCitoyens.cit;
+    let science = 0;
     let triFactor = playerInfos.comp.tri;
     if (playerInfos.bldList.includes('Décharge')) {
         triFactor = triFactor+1;
@@ -72,6 +73,13 @@ function eventProduction(afterMission,time,sim) {
             }
             if (batType.skills.includes('transcrap') && bat.tags.includes('prodres')) {
                 triProd(bat,batType,time,sim);
+            }
+            // RECHERCHE
+            if (bat.type === 'Scientifiques') {
+                if (bat.eq.includes('sci-')) {
+                    let findChance = Math.round(time);
+                    // playerInfos.sci = playerInfos.sci+time;
+                }
             }
             // ENTRAINEMENT
             if (!afterMission && !sim) {

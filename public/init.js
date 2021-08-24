@@ -143,6 +143,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.notes === undefined) {
         playerInfos.notes = [];
     }
+    if (playerInfos.sci === undefined) {
+        playerInfos.sci = 0;
+    }
     if (playerInfos.fndComps === undefined) {
         playerInfos.fndComps = 0;
     }

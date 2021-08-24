@@ -7,6 +7,13 @@
         "costs":{}
     },
     {
+        "id":260,
+        "name":"Scientifiques",
+        "levels":{"rednecks":5,"blades":5,"bulbos":5,"drogmulojs":5,"tiradores":5,"detruas":5,"brasier":5},
+        "bldReq":["Atelier"],
+        "costs":{"Huile":10,"Fer":10,"Tungstène":5,"Titane":5,"Silicium":15,"Carbone":15,"Phosphore":5,"Calcium":5,"Or":5,"Zinc":5,"Bore":5,"Chlore":5,"Electros":5,"Batteries":10,"Energie":60}
+    },
+    {
         "id":225,
         "name":"Criminels",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
@@ -1941,6 +1948,7 @@
     {
         "id":253,
         "name":"Caserne Rednecks",
+        "bldEquiv":["Caserne"],
         "levels":{"rednecks":8,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Fer":84,"Carbone":126,"Aluminium":84,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
         "fabTime":30
@@ -1948,6 +1956,7 @@
     {
         "id":254,
         "name":"Caserne Blades",
+        "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":96,"Scrap":192,"Fer":192,"Bois":192,"Aluminium":96,"Carbone":96,"Titane":48,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":200,"Zinc":16,"Silicium":64},
         "fabTime":30
@@ -1955,6 +1964,7 @@
     {
         "id":255,
         "name":"Caserne Bulbos",
+        "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Fer":84,"Carbone":126,"Aluminium":84,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
         "fabTime":30
@@ -1962,6 +1972,7 @@
     {
         "id":256,
         "name":"Caserne Drogmulojs",
+        "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":8,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":96,"Scrap":192,"Fer":144,"Carbone":48,"Bois":48,"Tungstène":24,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":100,"Zinc":30,"Silicium":30},
         "fabTime":30
@@ -1969,6 +1980,7 @@
     {
         "id":257,
         "name":"Caserne Tiradores",
+        "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":8,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":90,"Scrap":180,"Fer":90,"Carbone":135,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
         "fabTime":30
@@ -1976,6 +1988,7 @@
     {
         "id":258,
         "name":"Caserne Detruas",
+        "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":168,"Fer":126,"Carbone":42,"Bois":42,"Tungstène":21,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
         "fabTime":30
@@ -1983,6 +1996,7 @@
     {
         "id":259,
         "name":"Caserne Brasier",
+        "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":8},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Aluminium":42,"Carbone":84,"Titane":42,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
         "fabTime":30
@@ -2128,7 +2142,7 @@
         "bldCost":"Infirmerie",
         "upkeep":{"Energie":5,"Végétaux":5,"Huile":2},
         "prod":{"Drogues":3,"Scrap":2},
-        "costs":{"Compo1":225,"Compo2":150,"Eau":48,"Energie":400,"Drogues":200,"Tissus":500,"Titane":150,"Aluminium":120,"Calcium":500,"Or":150,"Silicium":200,"Oxygène":1000,"Chlore":500,"Electros":500,"Batteries":100},
+        "costs":{"Compo1":225,"Compo2":150,"Eau":48,"Energie":400,"Drogues":200,"Mendium":200,"Tissus":500,"Titane":150,"Aluminium":120,"Calcium":500,"Or":150,"Silicium":200,"Oxygène":1000,"Chlore":500,"Electros":500,"Batteries":100},
         "fabTime":150,
         "crime":-6
     },

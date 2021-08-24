@@ -571,8 +571,8 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('recherche')) {
+        allSkills = allSkills+'<span class="paramValue" title="Recherche de compétences">Recherche</span>'+sepa;
     }
     $('#popbody').append('<span class="paramValue">'+allSkills+'</span>');
     $('#popbody').append('<div class="shSpace"></div>');

@@ -1285,6 +1285,216 @@
         "deploy":{"Munitions":16,"Uranium":32}
     },
     {
+        "name": "sci-train",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Entraînement",
+        "bldReq":["Caserne"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Aluminium":20,"Fer":120,"Bois":120,"Munitions":120,"Explosifs":60,"Végétaux":120,"Calcium":15,"Drogues":15,"Chlore":15,"Tissus":15}
+    },
+    {
+        "name": "sci-def",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Défenses",
+        "bldReq":["Caserne"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Fer":150,"Bois":300,"Scrap":300,"Bugium":100,"Carbone":150,"Azote":50,"Silicium":50,"Titane":75,"Energie":200}
+    },
+    {
+        "name": "sci-log",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Logistique",
+        "bldReq":["Centre de com"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Fer":50,"Scrap":200,"Carbone":200,"Aluminium":30,"Moteurs":30,"Cuivre":15,"Electros":15,"Batteries":25,"Silicium":15,"Huile":15}
+    },
+    {
+        "name": "sci-cam",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Camouflage",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"cam":1},
+        "factor":"one",
+        "costs":{"Blendium":200,"Tissus":200,"Végétaux":200}
+    },
+    {
+        "name": "sci-tele",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Téléportation",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"tele":1},
+        "factor":"one",
+        "costs":{"Silicium":100,"Cuivre":100,"Cobalt":100,"Bore":200,"Electros":100,"Batteries":200,"Energie":2000}
+    },
+    {
+        "name": "sci-vsp",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Vols spaciaux",
+        "bldReq":["Aérodocks"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Energie":300,"Huile":10,"Scrap":200,"Carbone":20,"Titane":150,"Aluminium":150,"Nickel":50,"Cuivre":50,"Or":15,"Silicium":15,"Bore":15,"Plutonium":20,"Hydrogène":100,"Azote":20,"Electros":35,"Batteries":35}
+    },
+    {
+        "name": "sci-scaph",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Scaphandres",
+        "bldReq":["Laboratoire"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Carbone":100,"Scrap":100,"Silicium":50,"Larvium":50,"Mendium":100,"Pyrus":50,"Bossium":25}
+    },
+    {
+        "name": "sci-det",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Détection",
+        "bldReq":["Centre de com"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Energie":100,"Cobalt":75,"Cuivre":300,"Platine":50,"Silicium":75,"Oxygène":30,"Hélium":75,"Electros":60,"Batteries":10}
+    },
+    {
+        "name": "sci-med",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Médecine",
+        "bldReq":["Hôpital"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Energie":50,"Drogues":200,"Mendium":100,"Tissus":100,"Titane":30,"Calcium":100,"Or":30,"Silicium":50,"Oxygène":100,"Chlore":100,"Electros":50,"Batteries":20}
+    },
+    {
+        "name": "sci-tri",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Recyclage",
+        "bldReq":["Centre de tri"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Eau":500,"Fer":75,"Energie":120,"Platine":50,"Bore":200,"Chlore":100,"Argon":75,"Electros":50,"Batteries":20}
+    },
+    {
+        "name": "sci-ind",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Industrie",
+        "bldReq":["Usine"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Eau":100,"Energie":200,"Hydrocarbure":100,"Fuel":100,"Huile":100,"Scrap":200,"Titane":20,"Aluminium":30,"Fer":60,"Platine":30,"Zinc":30,"Azote":150,"Moteurs":50,"Electros":50,"Batteries":50}
+    },
+    {
+        "name": "sci-const",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Construction",
+        "bldReq":["Chaîne de montage"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Compo1":200,"Compo2":100,"Compo3":50,"Fer":50,"Scrap":250,"Carbone":50,"Moteurs":20,"Electros":10,"Batteries":30,"Mendium":25,"Azote":20,"Eau":150,"Zinc":20,"Cuivre":20}
+    },
+    {
+        "name": "sci-energ",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Energie",
+        "bldReq":["Centre de recherches"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Compo3":50,"Eau":300,"Energie":200,"Carbone":250,"Titane":75,"Plomb":100,"Nickel":100,"Cuivre":80,"Bore":150,"Plutonium":75,"Moteurs":20,"Electros":20,"Batteries":50}
+    },
+    {
+        "name": "sci-ext",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Extraction",
+        "bldReq":["Laboratoire"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Fer":50,"Scrap":50,"Carbone":50,"Aluminium":20,"Moteurs":20,"Electros":30,"Batteries":20,"Huile":15,"Cobalt":30,"Hélium":30,"Eau":200,"Silicium":40,"Zinc":15}
+    },
+    {
+        "name": "sci-trans",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Transports",
+        "bldReq":["Chaîne de montage"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Fer":50,"Scrap":200,"Carbone":50,"Aluminium":100,"Moteurs":75,"Cuivre":10,"Electros":10,"Batteries":30,"Huile":15}
+    },
+    {
+        "name": "sci-bal",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Balistique",
+        "bldReq":["Arsenal"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Munitions":300,"Scrap":100,"Soufre":75,"Carbone":50,"Aluminium":50,"Fer":100,"Bois":100,"Titane":50,"Tungstène":50,"Silicium":50,"Uranium":25}
+    },
+    {
+        "name": "sci-explo",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Explosifs",
+        "bldReq":["Arsenal"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Explosifs":200,"Soufre":100,"Potassium":100,"Carbone":100,"Phosphore":100,"Hydrogène":100,"Hydrocarbure":100,"Azote":100,"Oxygène":100}
+    },
+    {
+        "name": "sci-pyro",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Pyrotechnie",
+        "bldReq":["Arsenal"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Fuel":200,"Huile":100,"Soufre":100,"Aluminium":50,"Phosphore":200,"Oxygène":100,"Slime":75,"Larvium":25,"Végétaux":100}
+    },
+    {
+        "name": "sci-mat",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Matériaux",
+        "bldReq":["Centre de recherches"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Carbone":300,"Azote":150,"Rhodium":25,"Nickel":25,"Titane":50,"Silicium":25,"Bore":25,"Mendium":50,"Bossium":10,"Wingium":50,"Bois":50,"Tissus":25,"Energie":150}
+    },
+    {
+        "name": "sci-exo",
+        "cat":"exo",
+        "skills": [],
+        "info": "Recherche: Exochimie",
+        "bldReq":["Laboratoire"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Drogues":150,"Calcium":150,"Zinc":150,"Bore":100,"Or":15,"Mercure":15,"Végétaux":500,"Huile":100,"Hélium":25,"Argon":25,"Swarmine":50,"Germium":75,"Mephitis":75}
+    },
+    {
+        "name": "sci-ca",
+        "cat":"equip",
+        "skills": [],
+        "info": "Recherche: Connaissance alien",
+        "bldReq":["Laboratoire"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{"Bugium":200,"Swarmine":100,"Larvium":100,"Aranium":100,"Mendium":50,"Creatite":100,"Slime":50,"Germium":25,"Wingium":25,"Blendium":25,"Mephitis":25,"Pyrus":15,"Egidium":15,"Bossium":15}
+    },
+    {
         "name": "respack-soins1",
         "info": "Soins 1 (535r)",
         "costs":{"Chlore":100,"Zinc":150,"Huile":170,"Titane":25,"Silicium":40}

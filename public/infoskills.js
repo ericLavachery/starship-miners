@@ -33,11 +33,13 @@ function skillsInfos(bat,batType) {
             let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
             let enoughRes = checkCost(deployCosts);
             let deployInfo = checkPlaceLander(bat,batType,slId);
-            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit') {
+            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit' && bat.type != 'Scientifiques') {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Charger le bataillon dans le lander" class="boutonMarine bigButtons" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
             } else {
                 if (bat.eq === 'camkit') {
                     skillMessage = "Les unités ayant le CamKit deviennent des policiers et restent donc dans la station";
+                } else if (bat.type === 'Scientifiques') {
+                    skillMessage = "Les scientifiques ne peuvent pas être déployés";
                 } else if (!enoughRes) {
                     skillMessage = "Ressources insuffisantes";
                 } else if (!deployInfo[0]) {
