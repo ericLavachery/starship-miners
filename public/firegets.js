@@ -1597,7 +1597,7 @@ function weaponAdj(weapon,bat,wn) {
         if (!thisWeapon.isMelee && ((!thisWeapon.isShort && thisWeapon.range >= 1) || thisWeapon.range >= 2 || (thisWeapon.elevation >= 1 && thisWeapon.range >= 1))) {
             thisWeapon.range = thisWeapon.range+1;
         }
-        if (infra === 'Miradors' && thisWeapon.elevation === 3) {
+        if (infra === 'Miradors' && thisWeapon.elevation === 3 && tile.terrain == 'M') {
             thisWeapon.range = thisWeapon.range+1;
         }
     }

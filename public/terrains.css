@@ -50,10 +50,10 @@
 }
 
 .mSelect {
-    -webkit-animation: selectBlink .5s infinite;  /* Safari 4+ */
-    -moz-animation: selectBlink .5s infinite;  /* Fx 5+ */
-    -o-animation: selectBlink .5s infinite;  /* Opera 12+ */
-    animation: selectBlink .5s infinite;  /* IE 10+, Fx 29+ */
+    -webkit-animation: selectBlink .2s infinite;  /* Safari 4+ */
+    -moz-animation: selectBlink .2s infinite;  /* Fx 5+ */
+    -o-animation: selectBlink .2s infinite;  /* Opera 12+ */
+    animation: selectBlink .2s infinite;  /* IE 10+, Fx 29+ */
 }
 .mBoys {
     background-color: #ffffff;
@@ -63,6 +63,12 @@
     -moz-animation: alienBlink 1s infinite;  /* Fx 5+ */
     -o-animation: alienBlink 1s infinite;  /* Opera 12+ */
     animation: alienBlink 1s infinite;  /* IE 10+, Fx 29+ */
+}
+.mEgg {
+    -webkit-animation: alienBlink .3s infinite;  /* Safari 4+ */
+    -moz-animation: alienBlink .3s infinite;  /* Fx 5+ */
+    -o-animation: alienBlink .3s infinite;  /* Opera 12+ */
+    animation: alienBlink .3s infinite;  /* IE 10+, Fx 29+ */
 }
 .mPoints {
     -webkit-animation: pointsBlink .5s infinite;  /* Safari 4+ */

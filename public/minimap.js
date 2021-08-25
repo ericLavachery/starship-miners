@@ -73,13 +73,21 @@ function minimap() {
             $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
         } else {
             if ((tile.id === selectedTile || tile.id === selectedBat.tileId) && (miniDots === 'units' || miniDots === 'eggs')) {
-                $('#themmap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
+                if (tile.id === selectedBat.tileId) {
+                    $('#themmap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
+                } else {
+                    $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
+                }
             } else {
                 if (visibleEggs.includes(tile.id) && miniDots === 'eggs' && alienView) {
-                    $('#themmap').append('<span class="mini mAlien" onclick="centerFromMinimap('+tile.id+')"></span>');
+                    $('#themmap').append('<span class="mini mEgg" onclick="centerFromMinimap('+tile.id+')"></span>');
                 } else {
                     if (visibleAliens.includes(tile.id) && miniDots === 'units' && alienView) {
-                        $('#themmap').append('<span class="mini mAlien" onclick="centerFromMinimap('+tile.id+')"></span>');
+                        if (visibleEggs.includes(tile.id) && alienView) {
+                            $('#themmap').append('<span class="mini mEgg" onclick="centerFromMinimap('+tile.id+')"></span>');
+                        } else {
+                            $('#themmap').append('<span class="mini mAlien" onclick="centerFromMinimap('+tile.id+')"></span>');
+                        }
                     } else {
                         if (playerOccupiedTiles.includes(tile.id) && (miniDots === 'units' || miniDots === 'eggs')) {
                             $('#themmap').append('<span class="mini mBoys" onclick="centerFromMinimap('+tile.id+')"></span>');

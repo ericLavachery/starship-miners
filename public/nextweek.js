@@ -167,7 +167,7 @@ function eventProduction(afterMission,time,sim) {
 };
 
 function rechercheSci(bat,time) {
-    warning('<span class="cy">RECHERCHE:</span>','Points de recherche: '+playerInfos.sciRech+'.<br>',true);
+    warning('<span class="cy">RECHERCHE:</span>','<span class="gfbleu">Points de recherche: '+playerInfos.sciRech+'.</span><br>',true);
     if (bat.eq.includes('sci-')) {
         console.log('RECHERCHE');
         let rechCompName = bat.eq.replace('sci-','');
@@ -182,16 +182,16 @@ function rechercheSci(bat,time) {
                 playerInfos.comp[rechCompName] = playerInfos.comp[rechCompName]+1;
                 playerInfos.sciRech = 0;
                 bat.eq = 'aucun';
-                warning('<span class="cy">RECHERCHE: Eureka!</span>','Vos chercheurs ont mis au point une compétence.<br>'+rechComp.fullName+' +1 (maintenant au niveau '+playerInfos.comp[rechComp.name]+')<br>Vous devez leur acheter du nouveau matériel (équipement) pour qu\'ils puissent continuer à travailler.<br>',true);
+                warning('<span class="cy">RECHERCHE: Eureka!</span>','<span class="gfbleu">Vos chercheurs ont mis au point une compétence.<br>'+rechComp.fullName+' +1 (maintenant au niveau '+playerInfos.comp[rechComp.name]+')<br>Vous devez leur acheter du nouveau matériel (équipement) pour qu\'ils puissent continuer à travailler.</span><br>',true);
             } else {
                 playerInfos.sciRech = playerInfos.sciRech+findChance;
             }
         } else {
             bat.eq = 'aucun';
-            warning('<span class="cy">RECHERCHE: Matériel obsolète!</span>','Vous devez acheter du nouveau matériel (équipement) pour que vos chercheurs puissent travailler.<br>',true);
+            warning('<span class="cy">RECHERCHE: Matériel obsolète!</span>','<span class="gfbleu">Vous devez acheter du nouveau matériel (équipement) pour que vos chercheurs puissent travailler.</span><br>',true);
         }
     } else {
-        warning('<span class="cy">RECHERCHE: Chercheurs sans matériel!</span>','Vous devez leur acheter du matériel (équipement) pour qu\'ils puissent travailler.<br>',true);
+        warning('<span class="cy">RECHERCHE: Chercheurs sans matériel!</span>','<span class="gfbleu">Vous devez leur acheter du matériel (équipement) pour qu\'ils puissent travailler.</span><br>',true);
     }
 };
 

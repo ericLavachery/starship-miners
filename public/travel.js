@@ -98,8 +98,10 @@ function landingList() {
         } else {
             if (zone[0].snd === undefined) {
                 playRoom('crickets',true);
+                // playBackMusic();
             } else {
                 playRoom(zone[0].snd,true);
+                // playBackMusic();
             }
             if (zone[0].planet === 'Horst') {
                 createStormsLists(true);

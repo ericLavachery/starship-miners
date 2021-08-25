@@ -103,7 +103,7 @@ let vetBonus = {
     ap: 1,
     stealth: 1.4
 }
-let levelXP = [0,50,150,335,750];
+let levelXP = [0,50,150,450,1350];
 let gangLevelCit = [0,1000,1400,1800,2200,2600,3000,3400,3800,4200,4600,5000,5400,5800,6200,6600,7000,7400,7800,8200,8600,9000,9400];
 let myCompPoints = 0;
 // ACTIONS
@@ -229,6 +229,9 @@ let musicTracks = ['nero1','nero2','nero3','nero4','nero5','nero6','nero7','nero
 let theMusic = new Howl({
     src: ['/static/sounds/music/nero1.mp3']
 });
+// let theBack = new Howl({
+//     src: ['/static/sounds/music/joao-janz_sha04.mp3']
+// });
 let theRoom = new Howl({
     src: ['/static/sounds/rooms/station.mp3']
 });

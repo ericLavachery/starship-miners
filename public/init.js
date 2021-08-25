@@ -227,8 +227,10 @@ socket.on('savedMap-Load', function(sm) {
     } else {
         if (zone[0].snd === undefined) {
             playRoom('crickets',true);
+            // playBackMusic();
         } else {
             playRoom(zone[0].snd,true);
+            // playBackMusic();
         }
     }
     let thisBatType;

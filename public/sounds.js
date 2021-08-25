@@ -115,7 +115,7 @@ function okSound(roger) {
     } else {
         if (selectedBat.an) {
             selectedBat.an = false;
-        } else {
+        } else if (rand.rand(1,5) === 1) {
             selectedBat.an = true;
         }
     }
@@ -259,6 +259,16 @@ function playMusic(piste,interrupt) {
     } else {
         console.log('ALREADY PLAYING');
     }
+};
+
+function playBackMusic() {
+    theBack = new Howl({
+        src: ['/static/sounds/music/joao-janz_sha04.mp3'],
+        preload: true,
+        volume: playerInfos.volMu
+    });
+    theBack.play();
+    console.log('PLAYING: '+track);
 };
 
 function playRoom(piste,interrupt) {
