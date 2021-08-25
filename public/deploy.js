@@ -92,7 +92,7 @@ function reEquip(batId,noRefresh) {
             myBatType.equip.forEach(function(equip) {
                 batEquip = getEquipByName(equip);
                 compReqOK = checkCompReq(batEquip);
-                if (checkChargeurPlasma(batEquip,myBatType)) {
+                if (checkSpecialEquip(batEquip,myBatType)) {
                     compReqOK = false;
                 }
                 if (compReqOK || conselTriche) {
@@ -343,7 +343,7 @@ function doReEquip(batId) {
                 if (myBatType.log3eq != '') {
                     let logEquip = getEquipByName(myBatType.log3eq);
                     let compReqOK = checkCompReq(logEquip);
-                    if (checkChargeurPlasma(logEquip,myBatType)) {
+                    if (checkSpecialEquip(logEquip,myBatType)) {
                         compReqOK = false;
                     }
                     if (compReqOK) {

@@ -45,7 +45,7 @@
     },
     {
         "id":260,
-        "name":"Scientifiques",
+        "name":"Chercheurs",
         "pic":"scientist",
         "cat":"infantry",
         "kind":"zero-science",

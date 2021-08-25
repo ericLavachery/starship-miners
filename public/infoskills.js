@@ -33,13 +33,13 @@ function skillsInfos(bat,batType) {
             let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
             let enoughRes = checkCost(deployCosts);
             let deployInfo = checkPlaceLander(bat,batType,slId);
-            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit' && bat.type != 'Scientifiques') {
+            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit' && bat.type != 'Chercheurs') {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Charger le bataillon dans le lander" class="boutonMarine bigButtons" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
             } else {
                 if (bat.eq === 'camkit') {
                     skillMessage = "Les unités ayant le CamKit deviennent des policiers et restent donc dans la station";
-                } else if (bat.type === 'Scientifiques') {
-                    skillMessage = "Les scientifiques ne peuvent pas être déployés";
+                } else if (bat.type === 'Chercheurs') {
+                    skillMessage = "Les Chercheurs ne peuvent pas être déployés";
                 } else if (!enoughRes) {
                     skillMessage = "Ressources insuffisantes";
                 } else if (!deployInfo[0]) {
@@ -292,7 +292,7 @@ function skillsInfos(bat,batType) {
     }
     // TIR CIBLE
     if (!playerInfos.onShip) {
-        if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai')) || (batType.skills.includes('w2cible') && bat.eq === 'w2-pgun')) {
+        if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai')) || (batType.skills.includes('w2cible') && (bat.eq === 'w2-pgun' || bat.eq === 'w2-flaser' || bat.eq === 'w2-laser'))) {
             apCost = 4;
             if (batType.weapon.isPrec) {
                 if (batType.weapon2.rof >= 1) {

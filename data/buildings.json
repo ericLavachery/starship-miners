@@ -2324,7 +2324,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","transport","routes","producteur","upkeep","updisable","prodres","longshot","fret","dumper","selfbadrepair","medic","cible","prefab"],
+        "skills":["fouille","recupcit","transport","routes","producteur","upkeep","updisable","prodres","longshot","fret","dumper","selfbadrepair","medic","w2cible","prefab"],
         "mecanoCost":10,
         "mediCost":6,
         "transMaxSize":21,

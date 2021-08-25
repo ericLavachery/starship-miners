@@ -818,6 +818,22 @@
         "batch":200
     },
     {
+        "name": "pn-adamantium",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1,
+        "armors": 0.2,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "PasseBouclier",
+        "bldReq":["Usine d'armement"],
+        "compReq":{"mat":3,"bal":2},
+        "deploy":{"Aluminium":2,"Plomb":2,"Adamantium":4,"Oxygène":1},
+        "batch":200
+    },
+    {
         "name": "pn-salite",
         "range": 1.4,
         "rof": 1.2,
@@ -1059,7 +1075,7 @@
         "power": 6,
         "powermult": 1,
         "armors": 0.8,
-        "accuracy": 1,
+        "accuracy": 0.8,
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Centre de recherches"],

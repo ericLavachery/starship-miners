@@ -8,7 +8,7 @@
     },
     {
         "id":260,
-        "name":"Scientifiques",
+        "name":"Chercheurs",
         "levels":{"rednecks":5,"blades":5,"bulbos":5,"drogmulojs":5,"tiradores":5,"detruas":5,"brasier":5},
         "bldReq":["Atelier"],
         "costs":{"Huile":10,"Fer":10,"Tungstène":5,"Titane":5,"Silicium":15,"Carbone":15,"Phosphore":5,"Calcium":5,"Or":5,"Zinc":5,"Bore":5,"Chlore":5,"Electros":5,"Batteries":10,"Energie":60}

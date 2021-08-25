@@ -160,6 +160,21 @@ function bfconst(cat,triche,upgrade,retour) {
             bldOK = false;
             if ((playerInfos.bldList.includes(unit.bldReq[0]) || unit.bldReq[0] === undefined) && (playerInfos.bldList.includes(unit.bldReq[1]) || unit.bldReq[1] === undefined) && (playerInfos.bldList.includes(unit.bldReq[2]) || unit.bldReq[2] === undefined)) {
                 bldOK = true;
+                if (unit.name === 'Chercheurs') {
+                    if (playerInfos.onShip) {
+                        let maxSci = 1;
+                        if (playerInfos.bldVM.includes('Centre de recherches')) {
+                            maxSci = 3;
+                        } else if (playerInfos.bldVM.includes('Laboratoire')) {
+                            maxSci = 2;
+                        }
+                        if (playerInfos.sci >= maxSci) {
+                            bldOK = false;
+                        }
+                    } else {
+                        bldOK = false;
+                    }
+                }
             }
             costOK = checkUnitCost(unit,true,true);
             unitMergedCosts = mergedUnitCosts(unit);
@@ -393,7 +408,7 @@ function conSelect(unitId,player,noRefresh) {
                 equipIndex = armorTypes.findIndex((obj => obj.name == equip));
                 batEquip = armorTypes[equipIndex];
                 compReqOK = checkCompReq(batEquip);
-                if (checkChargeurPlasma(batEquip,conselUnit)) {
+                if (checkSpecialEquip(batEquip,conselUnit)) {
                     compReqOK = false;
                 }
                 if (compReqOK || conselTriche) {
@@ -550,24 +565,24 @@ function conSelect(unitId,player,noRefresh) {
     bfconst(conselCat,conselTriche,conselUpgrade,true);
 };
 
-function checkChargeurPlasma(equip,batType) {
-    let isPlasma = false;
+function checkSpecialEquip(equip,batType) {
+    let nope = false;
     if (equip.name.includes('chargeur')) {
         if (Object.keys(batType.weapon).length >= 3) {
             if (batType.weapon.name.includes('plasma') || batType.weapon.name.includes('laser')) {
                 if (equip.name === 'chargeur' || equip.name === 'chargeur1') {
                     if (!playerInfos.bldList.includes('Centre de recherches')) {
-                        isPlasma = true;
+                        nope = true;
                     }
                 }
             }
         }
-        if (!isPlasma) {
+        if (!nope) {
             if (Object.keys(batType.weapon2).length >= 3) {
                 if (batType.weapon2.name.includes('plasma') || batType.weapon2.name.includes('laser')) {
                     if (equip.name === 'chargeur' || equip.name === 'chargeur1') {
                         if (!playerInfos.bldList.includes('Centre de recherches')) {
-                            isPlasma = true;
+                            nope = true;
                         }
                     }
                 }
@@ -578,11 +593,11 @@ function checkChargeurPlasma(equip,batType) {
         if (Object.keys(batType.weapon).length >= 3) {
             if (batType.weapon.name.includes('olotov')) {
                 if (playerInfos.comp.pyro < 2) {
-                    isPlasma = true;
+                    nope = true;
                 }
             } else {
                 if (playerInfos.comp.explo < 2) {
-                    isPlasma = true;
+                    nope = true;
                 }
             }
         }
@@ -591,16 +606,24 @@ function checkChargeurPlasma(equip,batType) {
         if (Object.keys(batType.weapon2).length >= 3) {
             if (batType.weapon2.name.includes('olotov')) {
                 if (playerInfos.comp.pyro < 2) {
-                    isPlasma = true;
+                    nope = true;
                 }
             } else {
                 if (playerInfos.comp.explo < 2) {
-                    isPlasma = true;
+                    nope = true;
                 }
             }
         }
     }
-    return isPlasma;
+    if (equip.name.includes('sci-')) {
+        let rechCompName = equip.name.replace('sci-','');
+        let rechComp = getCompByName(rechCompName);
+        let rechCompOK = isFoundCompOK(rechComp);
+        if (!rechCompOK) {
+            nope = true;
+        }
+    }
+    return nope;
 }
 
 function selectAmmo(ammo,weapon,unitId) {
@@ -977,7 +1000,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                     if (conselUnit.log3eq != '') {
                         let logEquip = getEquipByName(conselUnit.log3eq);
                         let compReqOK = checkCompReq(logEquip);
-                        if (checkChargeurPlasma(logEquip,conselUnit)) {
+                        if (checkSpecialEquip(logEquip,conselUnit)) {
                             compReqOK = false;
                         }
                         if (compReqOK) {
@@ -1113,6 +1136,9 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             }
             if (newBat.team === 'player') {
                 bataillons.push(newBat);
+                if (newBat.type === 'Chercheurs') {
+                    playerInfos.sci++;
+                }
                 // console.log(bataillons);
                 if (show) {
                     showBataillon(newBat);

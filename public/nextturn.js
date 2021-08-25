@@ -630,7 +630,11 @@ function turnInfo() {
     zombifiersTiles = [];
     hasScraptruck = false;
     landingNoise = 0;
+    playerInfos.sci = 0;
     bataillons.forEach(function(bat) {
+        if (bat.type === 'Chercheurs') {
+            playerInfos.sci++;
+        }
         if (bat.loc === "zone") {
             let batType = getBatType(bat);
             batFuzz = calcBatFuzz(bat);

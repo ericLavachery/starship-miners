@@ -232,6 +232,11 @@ function weaponsInfos(bat,batType,pop) {
                 let tirFurtif = calcTirFurtif(thisWeapon,bat);
                 $('#'+bodyPlace).append('<span class="paramName" title="Chance de rester furtif après avoir attaqué">Tir furtif</span><span class="paramIcon"></span><span class="paramValue">'+tirFurtif+'%</span><br>');
             }
+            if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai')) || (batType.skills.includes('w2cible') && (bat.eq === 'w2-pgun' || bat.eq === 'w2-flaser' || bat.eq === 'w2-laser'))) {
+                if (thisWeapon.isPrec) {
+                    $('#'+bodyPlace).append('<span class="paramName">Tir ciblé</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+                }
+            }
         }
     }
     let hasW2 = checkHasWeapon(2,batType,bat.eq);
@@ -427,6 +432,11 @@ function weaponsInfos(bat,batType,pop) {
             if (thisWeapon.noise < 2) {
                 let tirFurtif = calcTirFurtif(thisWeapon,bat);
                 $('#'+bodyPlace).append('<span class="paramName" title="Chance de rester furtif après avoir attaqué">Tir furtif</span><span class="paramIcon"></span><span class="paramValue">'+tirFurtif+'%</span><br>');
+            }
+            if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai')) || (batType.skills.includes('w2cible') && (bat.eq === 'w2-pgun' || bat.eq === 'w2-flaser' || bat.eq === 'w2-laser'))) {
+                if (thisWeapon.isPrec) {
+                    $('#'+bodyPlace).append('<span class="paramName">Tir ciblé</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+                }
             }
         }
     }
