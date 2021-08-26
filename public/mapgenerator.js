@@ -1282,12 +1282,12 @@ function addRes(zone) {
     }
     // HUILE & FRUITS
     let oilName = 'Huile';
-    let oilChance = (rand.rand(2,6)*60)-Math.round(numBadTer/50)-(playerInfos.sondeDanger*5);
+    let oilChance = (rand.rand(2,6)*60)-Math.round(numBadTer/50)-(playerInfos.sondeDanger*5); // plus bas = plus de chances
     let oilRes = getResByName('Huile');
     oilChance = Math.round(oilChance/oilRes.planets[zone[0].planet]);
     let oilHere = false;
     let fruName = 'Fruits';
-    let fruChance = (rand.rand(2,6)*20);
+    let fruChance = (rand.rand(2,6)*15); // plus bas = plus de chances
     let fruRes = getResByName('Fruits');
     fruChance = Math.round(fruChance/fruRes.planets[zone[0].planet]);
     let fruHere = false;

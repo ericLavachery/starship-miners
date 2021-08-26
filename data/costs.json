@@ -676,7 +676,7 @@
         "bldReq":["Usine","Arsenal","Centre de recherches"],
         "compReq":{"robo":1,"ind":1},
         "costs":{"Fer":124,"Scrap":42,"Carbone":72,"Moteurs":145,"Tungstène":61,"Titane":415,"Electros":210,"Batteries":210,"Cuivre":100,"Silicium":84,"Cobalt":42,"Nickel":42},
-        "deploy":{"Energie":345,"Huile":9},
+        "deploy":{"Plutonium":14,"Huile":9},
         "fabTime":115,
         "inRuin":1
     },
@@ -1384,7 +1384,7 @@
         "bldReq":["Aérodocks","QG"],
         "compReq":{"aero":1},
         "costs":{"Carbone":144,"Aluminium":500,"Moteurs":96,"Titane":342,"Cuivre":72,"Electros":135,"Batteries":45,"Silicium":18,"Drogues":46,"Chlore":28,"Zinc":28,"Fuel":90,"Tissus":14},
-        "deploy":{"Fuel":220,"Drogues":14,"Chlore":14,"Zinc":28,"Tissus":14},
+        "deploy":{"Plutonium":10,"Drogues":14,"Chlore":14,"Zinc":28,"Tissus":14},
         "fabTime":120
     },
     {
@@ -1517,7 +1517,7 @@
         "compReq":{"aero":1},
         "compHardReq":{"explo":1,"energ":1},
         "costs":{"Carbone":480,"Aluminium":1040,"Moteurs":144,"Titane":1200,"Tungstène":160,"Silicium":40,"Cuivre":112,"Electros":336,"Batteries":210,"Nickel":40,"Cobalt":30,"Hélium":60},
-        "deploy":{"Fuel":570},
+        "deploy":{"Plutonium":30},
         "fabTime":240
     },
     {
@@ -1549,7 +1549,7 @@
         "bldReq":["Arsenal","Aérodocks","QG"],
         "compReq":{"aero":1},
         "costs":{"Fer":32,"Scrap":32,"Carbone":624,"Aluminium":1168,"Moteurs":144,"Titane":1296,"Cuivre":144,"Electros":352,"Batteries":178,"Cobalt":30,"Hélium":60},
-        "deploy":{"Fuel":530},
+        "deploy":{"Plutonium":27},
         "fabTime":240
     },
     {

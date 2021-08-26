@@ -1327,8 +1327,14 @@ function calcEndRes(onlyLanders) {
     // savePlayerInfos();
 };
 
-function missionResults(onlyLanders,sondeCount,homeCount) {
+function missionResults(onlyLanders,sCount,hCount) {
     selectMode();
+    if (sCount != undefined) {
+        sondeCount = sCount;
+    }
+    if (hCount != undefined) {
+        homeCount = hCount;
+    }
     $("#conUnitList").css("display","block");
     $('#conUnitList').css("height","800px");
     $("#conAmmoList").css("display","none");
@@ -1344,14 +1350,14 @@ function missionResults(onlyLanders,sondeCount,homeCount) {
     if (sondeCount === 'cy') {
         $('#conUnitList').append('<span class="loadIcon cy klik" title="Tient compte du prix de la sonde (Cliquer pour inverser)"><i class="fas fa-rocket" onclick="missionResults('+onlyLanders+',`gff`,`'+homeCount+'`)"></i></span>');
     } else {
-        sondeCount = 'gff';
+        // sondeCount = 'gff';
         $('#conUnitList').append('<span class="loadIcon gff klik" title="Ne tient pas compte du prix de la sonde (Cliquer pour inverser)"><i class="fas fa-rocket" onclick="missionResults('+onlyLanders+',`cy`,`'+homeCount+'`)"></i></span>');
     }
     if (homeCount === 'cy') {
         $('#conUnitList').append('<span class="loadIcon cy klik" title="Tient compte du dernier rapport sur la station (Cliquer pour inverser)"><i class="fas fa-home" onclick="missionResults('+onlyLanders+',`'+sondeCount+'`,`gff`)"></i></span>');
     } else {
         $('#conUnitList').append('<span class="loadIcon gff klik" title="Ne tient pas compte du dernier rapport sur la station (Cliquer pour inverser)"><i class="fas fa-home" onclick="missionResults('+onlyLanders+',`'+sondeCount+'`,`cy`)"></i></span>');
-        homeCount = 'gff';
+        // homeCount = 'gff';
     }
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<br>');

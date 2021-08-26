@@ -1396,13 +1396,14 @@
             "ammo":["marquage"]
         },
         "protection":["aucun","chobham","iso","nano","swing"],
-        "equip":["aucun","g2motor","chargeur1","e-flash","detector"],
+        "equip":["aucun","g2motor","chargeur1","e-flash","detector","e-mecano"],
         "log3eq":"detector",
         "moveCost":1,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fly","robot","longshot","light","recupres","aifouille"],
+        "skills":["noguet","fly","robot","longshot","light","recupres","aifouille","w2mecano"],
+        "mecanoCost":12,
         "fuzz":0,
         "deathFx":"505751__thehorriblejoke__computer-breaking-sound",
         "mvSnd":"emotor"

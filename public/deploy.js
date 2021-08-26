@@ -264,6 +264,9 @@ function checkHasWeapon(num,batType,eq) {
             if (!batType.weapon2.kit || eq.includes('kit-') || eq.includes('w2-')) {
                 hasWeapon = true;
             }
+            if (batType.skills.includes('w2mecano') && eq === 'e-mecano') {
+                hasWeapon = false;
+            }
         }
     }
     return hasWeapon;

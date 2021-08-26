@@ -169,6 +169,8 @@ let landingNoise = 6;
 let upkeepVM = 1.33 // upkeep/1.33
 let prodVM = 1.33 // prod/1.33
 let gangsBonus = false;
+let sondeCount = 'cy';
+let homeCount = 'cy';
 // ALIENS
 let isFFW = false;
 let pointDeMire = 1830; // tileId
