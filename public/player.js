@@ -314,6 +314,10 @@ function playerSkillsUTChanges() {
         if (unit.skills.includes('fret')) {
             unit.transRes = Math.round(unit.transRes*fretTuning);
         }
+        // TUNING LANDER FRET
+        if (unit.skills.includes('transorbital')) {
+            unit.transRes = Math.round(unit.transRes*landerFretTuning);
+        }
         // CONSTRUCTION
         if (unit.mecanoCost < 90) {
             if (playerInfos.comp.const === 2) {
@@ -1323,7 +1327,7 @@ function calcEndRes(onlyLanders) {
     // savePlayerInfos();
 };
 
-function missionResults(onlyLanders) {
+function missionResults(onlyLanders,sondeCount,homeCount) {
     selectMode();
     $("#conUnitList").css("display","block");
     $('#conUnitList').css("height","800px");
@@ -1335,7 +1339,21 @@ function missionResults(onlyLanders) {
     $('#conUnitList').empty();
     calcEndRes(onlyLanders);
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName or" id="gentils">RAPPORT DE MISSION</span><br>');
+    $('#conUnitList').append('<span class="constName or">RAPPORT DE MISSION</span><br>');
+    $('#conUnitList').append('<br>');
+    if (sondeCount === 'cy') {
+        $('#conUnitList').append('<span class="loadIcon cy klik" title="Tient compte du prix de la sonde (Cliquer pour inverser)"><i class="fas fa-rocket" onclick="missionResults('+onlyLanders+',`gff`,`'+homeCount+'`)"></i></span>');
+    } else {
+        sondeCount = 'gff';
+        $('#conUnitList').append('<span class="loadIcon gff klik" title="Ne tient pas compte du prix de la sonde (Cliquer pour inverser)"><i class="fas fa-rocket" onclick="missionResults('+onlyLanders+',`cy`,`'+homeCount+'`)"></i></span>');
+    }
+    if (homeCount === 'cy') {
+        $('#conUnitList').append('<span class="loadIcon cy klik" title="Tient compte du dernier rapport sur la station (Cliquer pour inverser)"><i class="fas fa-home" onclick="missionResults('+onlyLanders+',`'+sondeCount+'`,`gff`)"></i></span>');
+    } else {
+        $('#conUnitList').append('<span class="loadIcon gff klik" title="Ne tient pas compte du dernier rapport sur la station (Cliquer pour inverser)"><i class="fas fa-home" onclick="missionResults('+onlyLanders+',`'+sondeCount+'`,`cy`)"></i></span>');
+        homeCount = 'gff';
+    }
+    $('#conUnitList').append('<br>');
     $('#conUnitList').append('<br>');
     let balance = 0;
     let citDiff = playerInfos.endRes['Citoyens']-playerInfos.startRes['Citoyens'];
@@ -1347,14 +1365,17 @@ function missionResults(onlyLanders) {
     }
     $('#conUnitList').append('<span class="paramResName">Citoyens</span><span class="paramIcon"></span><span class="paramResValue '+resColour+'">'+citDiff+'</span><br>');
     $('#conUnitList').append('<hr>');
-    // let sonde = getBatTypeByName('Sonde');
+    let sonde = getBatTypeByName('Impacteur');
+    if (!playerInfos.bldVM.includes('Aérodocks')) {
+        sonde = getBatTypeByName('Sonde');
+    }
     Object.entries(playerInfos.endRes).map(entry => {
         let key = entry[0];
         let value = entry[1];
         if (key != 'Citoyens') {
-            console.log(key);
+            // console.log(key);
             let res = getResByName(key);
-            console.log(res.name);
+            // console.log(res.name);
             let resIcon = getResIcon(res);
             let minedRes = getMinedRes(res.name);
             let resCol = '';
@@ -1364,9 +1385,18 @@ function missionResults(onlyLanders) {
                 resCol = ' gff';
             }
             let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
-            // if (sonde.costs[key] != undefined) {
-            //     resResult = resResult-sonde.costs[key];
-            // }
+            if (sondeCount === 'cy') {
+                if (sonde.costs[key] != undefined) {
+                    resResult = resResult-sonde.costs[key];
+                }
+            }
+            if (homeCount === 'cy') {
+                if (Object.keys(playerInfos.weekRes).length >= 1) {
+                    if (playerInfos.weekRes[key] != undefined) {
+                        resResult = resResult+playerInfos.weekRes[key];
+                    }
+                }
+            }
             balance = balance+resResult;
             if (resResult != 0) {
                 resColour = 'gf';
@@ -1394,9 +1424,18 @@ function missionResults(onlyLanders) {
                 resCol = ' jaune';
             }
             let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
-            // if (sonde.costs[key] != undefined) {
-            //     resResult = resResult-sonde.costs[key];
-            // }
+            if (sondeCount === 'cy') {
+                if (sonde.costs[key] != undefined) {
+                    resResult = resResult-sonde.costs[key];
+                }
+            }
+            if (homeCount === 'cy') {
+                if (Object.keys(playerInfos.weekRes).length >= 1) {
+                    if (playerInfos.weekRes[key] != undefined) {
+                        resResult = resResult+playerInfos.weekRes[key];
+                    }
+                }
+            }
             if (resResult === 0) {
                 let resColour = 'gf';
                 $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');
