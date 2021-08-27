@@ -1156,8 +1156,8 @@ function attack(melee) {
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     escaped = false;
-    if (selectedWeap.ammo === 'missile-deluge') {
-        deluge(delugeTileId,false);
+    if (selectedWeap.ammo.includes('-deluge')) {
+        deluge(selectedWeap,delugeTileId,false);
     }
 };
 

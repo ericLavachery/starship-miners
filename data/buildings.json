@@ -1016,7 +1016,6 @@
             "range":2,
             "noBis":true,
             "noFly":true,
-            "noDef":true,
             "kit":true,
             "rof":8,
             "accuracy":11,
@@ -1485,7 +1484,7 @@
             "power":33,
             "aoe":"squad",
             "sound":"obusier",
-            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
             "maxAmmo":30,
             "ravitBld":"Poudrière"
         },
@@ -1562,7 +1561,7 @@
             "power":40,
             "aoe":"squad",
             "sound":"miss",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium","missile-deluge"],
             "maxAmmo":6,
             "ravitBld":"Arsenal"
         },
@@ -1837,7 +1836,6 @@
             "cost":6,
             "range":2,
             "noBis":true,
-            "noDef":true,
             "kit":true,
             "rof":6,
             "accuracy":12,
@@ -1920,7 +1918,7 @@
             "power":22,
             "aoe":"squad",
             "sound":"canon_mid_x2",
-            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
             "maxAmmo":36,
             "ravitBld":"Poudrière"
         },

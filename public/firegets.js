@@ -1,23 +1,26 @@
-function deluge(tileId,onlyAround) {
+function deluge(weap,tileId,onlyAround) {
     console.log('DELUGE tile '+tileId);
     deadBatsList = [];
     deadAliensList = [];
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             let inDeluge = false;
-            if (bat.tileId === tileId) {
-                if (!onlyAround) {
-                    inDeluge = true;
-                }
-            } else {
-                let distance = calcDistance(bat.tileId,tileId);
-                if (distance <= 1) {
-                    inDeluge = true;
+            let batType = getBatType(bat);
+            if (!batType.skills.includes('fly') || bat.apLeft < 5) {
+                if (bat.tileId === tileId) {
+                    if (!onlyAround) {
+                        inDeluge = true;
+                    }
+                } else {
+                    let distance = calcDistance(bat.tileId,tileId);
+                    if (distance <= 1) {
+                        inDeluge = true;
+                    }
                 }
             }
             if (inDeluge) {
                 let batType = getBatType(bat);
-                delugeDamage(bat,batType);
+                delugeDamage(weap,bat,batType);
             }
         }
     });
@@ -34,9 +37,20 @@ function deluge(tileId,onlyAround) {
                     inDeluge = true;
                 }
             }
+            let batType = getBatType(bat);
+            if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
+                if (bat.apLeft > -5) {
+                    inDeluge = false;
+                }
+            }
+            if (batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') {
+                if (bat.apLeft > 0) {
+                    inDeluge = false;
+                }
+            }
             if (inDeluge) {
                 let batType = getBatType(bat);
-                delugeDamage(bat,batType);
+                delugeDamage(weap,bat,batType);
             }
         }
     });
@@ -45,17 +59,22 @@ function deluge(tileId,onlyAround) {
     showMap(zone,false);
 };
 
-function delugeDamage(bat,batType) {
+function delugeDamage(weap,bat,batType) {
     console.log(batType.name);
     let numUnits = 60;
     if (bat.team === 'aliens') {
-        numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.hp)/2.23);
+        let batHP = batType.hp-3.5;
+        if (batHP < 1.5) {
+            batHP = 1.5;
+        }
+        numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batHP)/1.22);
     } else {
         numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
     }
     console.log('numUnits='+numUnits);
-    let stormDmg = rand.rand(10*numUnits,14*numUnits);
-    // let stormDmg = 12*numUnits;
+    let baseDmg = Math.ceil((weap.power+15)*numUnits/75);
+    // let stormDmg = rand.rand(10*baseDmg,14*baseDmg);
+    let stormDmg = 12*baseDmg;
     console.log('stormDmg='+stormDmg);
     stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor+1));
     console.log('stormDmg(a)='+stormDmg);
@@ -69,6 +88,14 @@ function delugeDamage(bat,batType) {
         if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
             stormDmg = Math.ceil(stormDmg*2);
         }
+    }
+    if (batType.skills.includes('resistall') || bat.tags.includes('resistall')) {
+        stormDmg = Math.ceil(stormDmg/1.5);
+    }
+    if (batType.skills.includes('resistblast') || bat.tags.includes('resistblast')) {
+        stormDmg = Math.ceil(stormDmg/1.25);
+    } else if (batType.skills.includes('reactblast') || bat.tags.includes('reactblast')) {
+        stormDmg = Math.ceil(stormDmg*2);
     }
     console.log('stormDmg(T)='+stormDmg);
     let totalDamage = bat.damage+stormDmg;
@@ -387,7 +414,7 @@ function batDeathEffect(bat,quiet,title,body) {
         $('#b'+bat.tileId).append(resHere);
         warning(title,body);
     }
-    if (bat.team === 'aliens' && !playerInfos.knownAliens.includes(bat.type)) {
+    if (!quiet && bat.team === 'aliens' && !playerInfos.knownAliens.includes(bat.type)) {
         newAlienKilled(bat.type,bat.tileId);
     }
     if (bat.team != 'aliens') {
@@ -1648,7 +1675,12 @@ function weaponAdj(weapon,bat,wn) {
     }
     // Deluge Cost
     if (thisWeapon.ammo === 'missile-deluge') {
-        thisWeapon.cost = weapon.cost+1;
+        thisWeapon.cost = weapon.cost+2;
+        thisWeapon.noDef = true;
+    }
+    if (thisWeapon.ammo === 'obus-deluge') {
+        thisWeapon.cost = weapon.cost+2;
+        thisWeapon.noDef = true;
     }
     // console.log(thisWeapon);
     return thisWeapon;

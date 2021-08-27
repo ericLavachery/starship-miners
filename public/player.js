@@ -1350,14 +1350,12 @@ function missionResults(onlyLanders,sCount,hCount) {
     if (sondeCount === 'cy') {
         $('#conUnitList').append('<span class="loadIcon cy klik" title="Tient compte du prix de la sonde (Cliquer pour inverser)"><i class="fas fa-rocket" onclick="missionResults('+onlyLanders+',`gff`,`'+homeCount+'`)"></i></span>');
     } else {
-        // sondeCount = 'gff';
         $('#conUnitList').append('<span class="loadIcon gff klik" title="Ne tient pas compte du prix de la sonde (Cliquer pour inverser)"><i class="fas fa-rocket" onclick="missionResults('+onlyLanders+',`cy`,`'+homeCount+'`)"></i></span>');
     }
     if (homeCount === 'cy') {
         $('#conUnitList').append('<span class="loadIcon cy klik" title="Tient compte du dernier rapport sur la station (Cliquer pour inverser)"><i class="fas fa-home" onclick="missionResults('+onlyLanders+',`'+sondeCount+'`,`gff`)"></i></span>');
     } else {
         $('#conUnitList').append('<span class="loadIcon gff klik" title="Ne tient pas compte du dernier rapport sur la station (Cliquer pour inverser)"><i class="fas fa-home" onclick="missionResults('+onlyLanders+',`'+sondeCount+'`,`cy`)"></i></span>');
-        // homeCount = 'gff';
     }
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<br>');

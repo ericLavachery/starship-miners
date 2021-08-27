@@ -75,7 +75,7 @@
         "maxSalvo":2,
         "weapon":{
             "name":"Canon",
-            "cost":5,
+            "cost":4,
             "range":1,
             "elevation":1,
             "noFly":true,
@@ -84,7 +84,7 @@
             "power":18,
             "aoe":"squad",
             "sound":"canon_mid_multi",
-            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
             "maxAmmo":27,
             "ravitBld":"Poudrière"
         },
@@ -385,7 +385,7 @@
             "power":33,
             "aoe":"squad",
             "sound":"obusier",
-            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
             "maxAmmo":28,
             "ravitBld":"Poudrière"
         },
@@ -608,7 +608,7 @@
             "power":30,
             "aoe":"squad",
             "sound":"obusier",
-            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
             "maxAmmo":44,
             "ravitBld":"Poudrière"
         },
@@ -654,7 +654,7 @@
         "size":67,
         "volume":1.8,
         "stealth":0,
-        "ap":16,
+        "ap":18,
         "maxSalvo":4,
         "weapon":{
             "name":"Missiles Vanguard",
@@ -914,7 +914,7 @@
         },
         "weapon2":{
             "name":"Missiles squash",
-            "cost":5,
+            "cost":6,
             "range":7,
             "noMelee":true,
             "noFly":true,
@@ -924,7 +924,7 @@
             "power":40,
             "aoe":"squad",
             "sound":"miss",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium","missile-deluge"],
             "maxAmmo":12,
             "ravitBld":"Arsenal"
         },
@@ -1145,7 +1145,7 @@
         "maxSalvo":2,
         "weapon":{
             "name":"Canon plasma",
-            "cost":6,
+            "cost":5,
             "range":2,
             "elevation":1,
             "rof":6,
@@ -1158,7 +1158,7 @@
         },
         "weapon2":{
             "name":"Missiles squash",
-            "cost":7,
+            "cost":8,
             "range":7,
             "noMelee":true,
             "noFly":true,
@@ -1169,7 +1169,7 @@
             "power":40,
             "aoe":"squad",
             "sound":"miss",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium","missile-deluge"],
             "maxAmmo":6,
             "ravitBld":"Arsenal"
         },
@@ -1285,7 +1285,7 @@
             "power":27,
             "aoe":"squad",
             "sound":"obusier",
-            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
@@ -1804,6 +1804,7 @@
             "cost":5,
             "range":1,
             "noFly":true,
+            "noDef":true,
             "noise":1,
             "rof":6,
             "accuracy":12,
@@ -1865,6 +1866,7 @@
             "cost":4,
             "range":1,
             "noFly":true,
+            "noDef":true,
             "noise":1,
             "rof":12,
             "accuracy":12,
@@ -2123,7 +2125,7 @@
             "power":38,
             "aoe":"squad",
             "sound":"canon_void2_x2",
-            "ammo":["obus-scrap","obus","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
             "maxAmmo":32,
             "ravitBld":"Poudrière"
         },
@@ -2827,7 +2829,7 @@
             "power":32,
             "aoe":"bat",
             "sound":"bombing",
-            "ammo":["obus","obus-heat","obus-incendiaire","obus-napalm","obus-uridium"],
+            "ammo":["obus","obus-heat","obus-incendiaire","obus-napalm","obus-uridium","obus-deluge"],
             "maxAmmo":40,
             "ravitBld":"Poudrière"
         },
@@ -3422,7 +3424,7 @@
             "power":32,
             "aoe":"bat",
             "sound":"bombing",
-            "ammo":["obus","obus-heat","obus-incendiaire","obus-napalm","obus-uridium"],
+            "ammo":["obus","obus-heat","obus-incendiaire","obus-napalm","obus-uridium","obus-deluge"],
             "maxAmmo":18,
             "ravitBld":"Poudrière"
         },
@@ -3877,6 +3879,7 @@
             "cost":5,
             "range":0,
             "noFly":true,
+            "noDef":true,
             "kit":true,
             "noise":1,
             "rof":12,

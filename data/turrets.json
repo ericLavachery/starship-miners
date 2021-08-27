@@ -285,7 +285,7 @@
             "power":45,
             "aoe":"squad",
             "sound":"obusier",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker","missile-uridium","missile-nanite","missile-plastanium"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker","missile-uridium","missile-nanite","missile-plastanium","missile-deluge"],
             "maxAmmo":20,
             "ravitBld":"Arsenal"
         },
@@ -419,7 +419,7 @@
             "power":45,
             "aoe":"squad",
             "sound":"obusier",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker","missile-uridium","missile-nanite","missile-plastanium"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker","missile-uridium","missile-nanite","missile-plastanium","missile-deluge"],
             "maxAmmo":20,
             "ravitBld":"Arsenal"
         },
@@ -530,7 +530,7 @@
             "power":40,
             "aoe":"squad",
             "sound":"obusier",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker","missile-uridium","missile-nanite","missile-plastanium"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-incendiaire","missile-napalm","missile-fleche","missile-heatseeker","missile-uridium","missile-nanite","missile-plastanium","missile-deluge"],
             "maxAmmo":10,
             "ravitBld":"Arsenal"
         },
@@ -657,7 +657,7 @@
         "size":100,
         "stealth":15,
         "speed":-5,
-        "ap":15,
+        "ap":14,
         "maxSalvo":2,
         "weapon":{
             "name":"Canon",
@@ -670,7 +670,7 @@
             "power":24,
             "aoe":"squad",
             "sound":"canon_big_x2",
-            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus","obus-scrap","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
             "maxAmmo":30,
             "ravitBld":"Poudrière"
         },
@@ -847,7 +847,7 @@
         },
         "weapon2":{
             "name":"Missiles Vanguard",
-            "cost":10,
+            "cost":9,
             "range":12,
             "noMelee":true,
             "noFly":true,
@@ -963,7 +963,7 @@
             "power":33,
             "aoe":"squad",
             "sound":"obusier",
-            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
             "maxAmmo":30,
             "ravitBld":"Poudrière"
         },
