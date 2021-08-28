@@ -1316,7 +1316,7 @@ function addRes(zone) {
                                 tile.rs[oilName] = rand.rand(80,320)+Math.round(numBadTer/72);
                             }
                             if (fruHere) {
-                                tile.rs[fruName] = rand.rand(80,240);
+                                tile.rs[fruName] = rand.rand(80,320);
                             }
                         }
                         if (tile.terrain === 'B') {
@@ -1334,7 +1334,7 @@ function addRes(zone) {
                                 tile.rs[oilName] = rand.rand(30,140)+Math.round(numBadTer/36);
                             }
                             if (fruHere) {
-                                tile.rs[fruName] = rand.rand(80,320);
+                                tile.rs[fruName] = rand.rand(80,480);
                             }
                         }
                         if (tile.terrain === 'F') {

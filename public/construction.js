@@ -1708,15 +1708,42 @@ function putRoad() {
     showBatInfos(selectedBat);
 };
 
+function nearWhat(myBat,myBatType) {
+    let myCrew = myBatType.squads*myBatType.squadSize*myBatType.crew;
+    let near = {};
+    near.caserne = false;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            if (bat.type.includes('Caserne')) {
+                if (myCrew >= 12 && myBatType.cat === 'infantry') {
+                    if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
+                        near.caserne = true;
+                    }
+                }
+            }
+        }
+    });
+    return near;
+};
+
 function putInfra(infraName) {
     console.log('INFRASTRUCTURE');
     let tile = getTile(selectedBat);
     let terrain = getTileTerrain(selectedBat.tileId);
     let infra = getInfraByName(infraName);
     // infra.fabTime = AP for Workships
-    let apCost = Math.round(Math.sqrt(selectedBatType.mecanoCost)*infra.fabTime/1.7);
+    let mecanoSkill = 30;
+    if (selectedBatType.skills.includes('constructeur')) {
+        mecanoSkill = selectedBatType.mecanoCost;
+    } else {
+        mecanoSkill = 30-Math.round(((selectedBatType.squads*selectedBatType.squadSize*selectedBatType.crew)+40)/5);
+        if (mecanoSkill < 11) {
+            mecanoSkill = 11;
+        }
+    }
+    let apCost = Math.round(Math.sqrt(mecanoSkill)*infra.fabTime/1.7);
     if (selectedBatType.skills.includes('infraconst')) {
-        apCost = Math.ceil(apCost*2/3);
+        apCost = Math.ceil(apCost/2);
     }
     console.log('apCost:'+apCost);
     selectedBat.apLeft = selectedBat.apLeft-apCost;

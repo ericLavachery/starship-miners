@@ -11,6 +11,7 @@ function skillsInfos(bat,batType) {
     let tile = getTile(bat);
     let terrain = getTerrain(bat);
     let inMelee = batInMelee(bat,batType);
+    let near = nearWhat(bat,batType);
     let freeConsTile = false;
     let hasW1 = checkHasWeapon(1,batType,bat.eq);
     let hasW2 = checkHasWeapon(2,batType,bat.eq);
@@ -676,7 +677,7 @@ function skillsInfos(bat,batType) {
             let repairBat = checkRepairBat(bat.tileId);
             if (Object.keys(repairBat).length >= 1) {
                 let repairBatType = getBatType(repairBat);
-                apCost = 3;
+                apCost = 0;
                 if (repairBat.apLeft >= 1) {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment avec '+repairBat.type+' ('+repairBatType.mecanoCost+' AP)" class="boutonBleu skillButtons" onclick="diagRepair('+repairBat.id+')"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
                 } else {
@@ -1396,9 +1397,13 @@ function skillsInfos(bat,batType) {
         }
     }
     // INFRASTRUCTURE
-    if (batType.skills.includes('constructeur') && !playerInfos.onShip) {
+    if ((batType.skills.includes('constructeur') || near.caserne) && !playerInfos.onShip) {
         if (tile.terrain != 'W' && tile.terrain != 'R') {
-            apReq = batType.mecanoCost;
+            if (batType.mecanoCost != undefined) {
+                apReq = batType.mecanoCost;
+            } else {
+                apReq = 5;
+            }
             if (apReq > 5) {
                 apReq = 5;
             }

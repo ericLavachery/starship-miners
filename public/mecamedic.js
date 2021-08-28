@@ -546,7 +546,7 @@ function checkRepairBat(tileId) {
     let bestRepairCost = 99;
     bataillons.forEach(function(bat) {
         if (bat.loc === 'zone' || bat.loc === 'trans') {
-            if (bat.tileId === tileId+1 || bat.tileId === tileId-1 || bat.tileId === tileId+mapSize || bat.tileId === tileId-mapSize || bat.tileId === tileId+mapSize+1 || bat.tileId === tileId-mapSize+1 || bat.tileId === tileId+mapSize-1 || bat.tileId === tileId-mapSize-1) {
+            if (bat.tileId === tileId || bat.tileId === tileId+1 || bat.tileId === tileId-1 || bat.tileId === tileId+mapSize || bat.tileId === tileId-mapSize || bat.tileId === tileId+mapSize+1 || bat.tileId === tileId-mapSize+1 || bat.tileId === tileId+mapSize-1 || bat.tileId === tileId-mapSize-1) {
                 console.log(bat);
                 batType = getBatType(bat);
                 if (batType.skills.includes('repair') && bat.apLeft >= Math.round(batType.mecanoCost/2) && batType.mecanoCost < bestRepairCost) {
@@ -577,7 +577,7 @@ function diagRepair(repairBatId) {
         selectedBat.squadsLeft = selectedBatType.squads;
         selectedBat.damage = 0;
     }
-    selectedBat.apLeft = selectedBat.apLeft-3;
+    // selectedBat.apLeft = selectedBat.apLeft-3;
     let newBatUnits = batUnits+selectedBatType.squadSize;
     washReports();
     $('#report').append('<span class="report or">'+selectedBat.type+' (Réparations)</span><br>');
