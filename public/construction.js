@@ -921,7 +921,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
         } else {
             costsOK = true;
         }
-        if (costsOK || conselTriche) {
+        if (costsOK || conselTriche || conselUpgrade != '') {
             // PAY COSTS !!!
             if (conselUnit.cat != 'aliens') {
                 if (!conselTriche || playerInfos.pseudo === 'Payall') {

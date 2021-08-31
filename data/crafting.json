@@ -646,7 +646,7 @@
         "id":76,
         "result":"Nourriture",
         "cost":{"Végétaux":36,"Swarmine":2,"Zinc":1,"Eau":3,"Energie":3},
-        "compReq":{"ca":2,"exo":1},
+        "compReq":{"ca":2},
         "bldReq":["Laboratoire"],
         "batch":9
     },
@@ -654,7 +654,7 @@
         "id":77,
         "result":"Nourriture",
         "cost":{"Fruits":6,"Huile":2,"Bugium":6,"Potassium":1,"Phosphore":1,"Energie":4},
-        "compReq":{"ca":3,"exo":2},
+        "compReq":{"ca":3},
         "bldReq":["Laboratoire"],
         "batch":12
     },
@@ -670,7 +670,7 @@
         "id":79,
         "result":"Nourriture",
         "cost":{"Végétaux":12,"Huile":1,"Aranium":4,"Chlore":1,"Zinc":1,"Energie":2},
-        "compReq":{"ca":5,"exo":2},
+        "compReq":{"ca":5,"exo":1},
         "bldReq":["Centre de recherches"],
         "batch":12
     },

@@ -830,7 +830,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
             speed = speed-stealth;
         }
     }
-    if (bat.eq === 'w1-autogun' || bat.eq === 'w1-autopistol') {
+    if (bat.eq === 'w2-autogun' || bat.eq === 'w2-autopistol') {
         speed = speed-50-stealth;
     } else {
         if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai') && !attacking) {
@@ -1142,7 +1142,7 @@ function weaponSelectRiposte(distance) {
         if (targetBatType.name === 'Chevaliers') {
             targetWeap.sound = 'axe_x2';
         }
-    } else if (targetBat.eq === 'w1-autogun' || targetBat.eq === 'w1-autopistol') {
+    } else if (targetBat.eq === 'w2-autogun' || targetBat.eq === 'w2-autopistol') {
         targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon3));
         targetWeap = weaponAdj(targetWeap,targetBat,'w3');
     } else if (targetBatType.skills.includes('w3melee') && distance === 0) {

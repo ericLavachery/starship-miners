@@ -178,7 +178,7 @@ function commandes() {
         }
     }
     // $('#commandz').append('<button type="button" title="Tout soigner (comme au retour de mission)" class="boutonCiel iconButtons" onclick="healEverything()"><i class="fas fa-briefcase-medical"></i></button>');
-    if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Woklup') {
+    if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall') {
         gangNavig();
     }
 };
@@ -206,7 +206,7 @@ function viewPop() {
             $('#batloop').append('Pénibilité: <span class="'+penibColour+'">'+crimeRate.penib+'</span>%<br>');
             $('#batloop').append('Forces de l\'ordre: <span class="neutre">'+crimeRate.fo+'</span><br>');
             $('#batloop').append('Criminalité: <span class="'+crimColour+'">'+crimeRate.total+'</span>%<br>');
-            $('#batloop').append('<button type="button" title="Simuler 15 jours (1 mission)" class="boutonVert iconButtons" onclick="events(false,true)"><i class="far fa-clock"></i></button>');
+            $('#batloop').append('<button type="button" title="Simuler 3 semaines (1 mission)" class="boutonVert iconButtons" onclick="events(false,true)"><i class="far fa-clock"></i></button>');
             $('#batloop').append('<button type="button" title="Attendre 1 semaine" class="boutonRouge iconButtons" onclick="events(false,false)"><i class="far fa-clock"></i></button>');
         }
     }

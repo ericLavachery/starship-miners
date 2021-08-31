@@ -72,7 +72,9 @@ function combat(melee) {
     let selectedBatName = nomVisible(selectedBat.type);
     let targetBatName = nomVisible(targetBat.type);
     tagDelete(selectedBat,'mining');
-    tagDelete(targetBat,'mining');
+    if (!targetBat.eq.includes('w2-auto')) {
+        tagDelete(targetBat,'mining');
+    }
     escaped = false;
     minesExploded = 0;
     soundDuration = 2000;
@@ -117,7 +119,7 @@ function combat(melee) {
     if (targetBatType.skills.includes('onedef')) {
         negSalvo = -1;
     }
-    if (targetBatType.skills.includes('gooddef')) {
+    if (targetBatType.skills.includes('gooddef') || targetBat.eq.includes('w2-auto')) {
         negSalvo = -6;
     }
     if (distance <= 3 && targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef && targetBat.salvoLeft > negSalvo) {

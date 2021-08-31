@@ -7,7 +7,7 @@ function events(afterMission,sim) {
         time = Math.ceil(playerInfos.mapTurn/3)*3;
     }
     if (sim) {
-        time = 50;
+        time = 65;
     }
     eventCitoyens(time,sim);
     eventProduction(afterMission,time,sim);
