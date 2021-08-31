@@ -1268,10 +1268,10 @@
         "skills": [],
         "info": "Autopistol",
         "bldReq":[],
-        "compReq":{"log":2,"def":2,"det":2,"bal":1,"robo":1},
+        "compReq":{"log":2,"def":2,"det":2,"bal":2,"robo":1},
         "factor":"one",
         "costs":{"Carbone":15,"Scrap":15,"Munitions":10,"Tungstène":20,"Fer":75,"Cuivre":20,"Aluminium":30,"Moteurs":5,"Silicium":15,"Electros":15,"Batteries":15},
-        "deploy":{"Munitions":4,"Tungstène":8,"Energie":16}
+        "deploy":{"Munitions":15,"Tungstène":25,"Energie":20}
     },
     {
         "name": "w2-autogun",
@@ -1282,7 +1282,7 @@
         "compReq":{"log":2,"def":2,"det":3,"bal":3,"mat":2,"tank":1,"robo":1},
         "factor":"one",
         "costs":{"Carbone":45,"Scrap":20,"Munitions":40,"Uranium":40,"Fer":150,"Cuivre":60,"Aluminium":60,"Moteurs":15,"Silicium":30,"Electros":45,"Batteries":45},
-        "deploy":{"Munitions":16,"Uranium":32,"Energie":32}
+        "deploy":{"Munitions":60,"Uranium":120,"Energie":40}
     },
     {
         "name": "sci-train",

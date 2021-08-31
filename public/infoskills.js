@@ -232,6 +232,10 @@ function skillsInfos(bat,batType) {
                 } else {
                     apCost = Math.floor(bat.ap/3);
                     apReq = 1;
+                    if (playerInfos.comp.cam >= 1) {
+                        apCost = Math.floor(bat.ap/(playerInfos.comp.cam+3));
+                        apReq = 0;
+                    }
                 }
             }
             balise = 'h4';

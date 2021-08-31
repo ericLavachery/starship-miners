@@ -1275,7 +1275,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput","infrako","noaploss","nostation"],
+        "skills":["after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput","infrako","noaploss","nostation","bigblub"],
         "fuzz":-2,
         "deathFx":"none"
     },
