@@ -4268,7 +4268,7 @@
         "weapon3":{
             "name":"Autopistol",
             "cost":1,
-            "range":1,
+            "range":2,
             "elevation":1,
             "rof":12,
             "accuracy":25,
@@ -4453,8 +4453,21 @@
             "maxAmmo":24,
             "ravitBld":"Atelier"
         },
+        "weapon3":{
+            "name":"Autopistol",
+            "cost":1,
+            "range":2,
+            "elevation":1,
+            "rof":12,
+            "accuracy":25,
+            "power":8,
+            "armors":0.5,
+            "aoe":"unit",
+            "sound":"autopistol",
+            "ammo":["standard"]
+        },
         "protection":["aucun","chobham","iso"],
-        "equip":["aucun","e-flash","e-ranger","gilet","detector"],
+        "equip":["aucun","e-flash","e-ranger","gilet","detector","w2-autopistol"],
         "log3eq":"e-ranger",
         "moveCost":3,
         "maxFlood":3,
