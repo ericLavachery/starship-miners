@@ -1850,6 +1850,9 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
             }
         }
     }
+    if (weap.name === 'Autopistol' || weap.name === 'Tourelles auto') {
+        brideDef = 1;
+    }
     return brideDef;
 }
 

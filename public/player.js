@@ -410,6 +410,11 @@ function playerSkillsUTChanges() {
             if (Object.keys(unit.weapon2).length >= 3) {
                 unit.weapon2.rof = Math.ceil(unit.weapon2.rof*(defComp+7)/7);
             }
+            if (unit.weapon3 != undefined) {
+                if (Object.keys(unit.weapon3).length >= 3) {
+                    unit.weapon3.rof = Math.ceil(unit.weapon3.rof*(defComp+7)/7);
+                }
+            }
         }
         if (playerInfos.comp.def >= 1) {
             if (unit.cat === 'buildings' || unit.cat === 'devices' || unit.kind === 'zero-defense' || unit.name.includes('Caserne') || unit.skills.includes('garde') || unit.skills.includes('cage')) {
@@ -420,6 +425,9 @@ function playerSkillsUTChanges() {
                             w1CostBonus = unit.weapon.cost-2;
                         }
                         unit.weapon.cost = unit.weapon.cost-w1CostBonus;
+                        if (playerInfos.comp.def >= 3) {
+                            unit.weapon.kit = false;
+                        }
                     }
                     if (Object.keys(unit.weapon2).length >= 3) {
                         let w2CostBonus = playerInfos.comp.def-1;
