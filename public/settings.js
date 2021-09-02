@@ -171,6 +171,7 @@ let prodVM = 1.33 // prod/1.33
 let gangsBonus = false;
 let sondeCount = 'cy';
 let homeCount = 'cy';
+let apoCount = 400;
 // ALIENS
 let isFFW = false;
 let pointDeMire = 1830; // tileId

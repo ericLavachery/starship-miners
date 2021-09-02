@@ -102,7 +102,7 @@ function nextTurn() {
             if (playerInfos.mapTurn > bat.creaTurn+9 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !batType.skills.includes('healhide') && !larveHIDE) {
                 tagDelete(bat,'invisible');
             }
-            if (playerInfos.mapTurn > bat.creaTurn+2 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !batType.skills.includes('healhide') && !larveHIDE && bat.tags.includes('veil')) {
+            if (playerInfos.mapTurn > bat.creaTurn+2 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !batType.skills.includes('healhide') && !larveHIDE && bat.tags.includes('follow')) {
                 tagDelete(bat,'invisible');
             }
         }

@@ -226,6 +226,8 @@ function gangNavig() {
         $('#gangInfos').append('<button type="button" title="Nouvelle zone" class="boutonCiel iconButtons" onclick="generateNewMap()"><i class="far fa-map"></i></button>');
         $('#gangInfos').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonCiel iconButtons" onclick="mapReset()"><i class="fas fa-skull-crossbones"></i></button>');
         $('#gangInfos').append('<button type="button" title="Supprimer tous les aliens" class="boutonCiel iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
+        $('#gangInfos').append('<br>');
+        $('#gangInfos').append('<button type="button" title="Mettre un bastion de résistants" class="boutonCiel iconButtons" onclick="baseDeResistants()"><i class="fas fa-city"></i></button>');
     }
     $('#gangInfos').append('<div class="shSpace"></div>');
     $('#gangInfos').append('<span class="butSpace"></span>');

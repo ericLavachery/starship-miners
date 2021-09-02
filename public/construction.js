@@ -1119,7 +1119,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             }
             if (startTag != undefined) {
                 if (startTag === 'veil') {
-                    newBat.tags = ['invisible','veil'];
+                    newBat.tags = ['invisible','follow'];
                 } else {
                     newBat.tags = [startTag];
                 }

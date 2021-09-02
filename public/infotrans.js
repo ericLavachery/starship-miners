@@ -216,7 +216,7 @@ function checkUnderId(myBat,myBatType) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" && bat.tileId == myBat.tileId) {
             let batType = getBatType(bat);
-            if (batType.cat != 'buildings' && batType.cat != 'devices') {
+            if (batType.cat != 'buildings' && batType.cat != 'devices' && batType.moveCost < 90) {
                 if (myBatType.transMaxSize >= batType.size) {
                     if (!batType.skills.includes('tracked') || !tracking) {
                         let batWeight = calcVolume(bat,batType);

@@ -610,6 +610,23 @@ function eggDropTile(eggName,theArea) {
             }
         });
     }
+    // BASTION
+    if (area === 'bastion') {
+        let bastion = getBatByName('Bastion de résistants');
+        targetTile = bastion.tileId;
+        let shufZone = _.shuffle(zone);
+        let distance;
+        shufZone.forEach(function(tile) {
+            if (theTile < 0) {
+                distance = calcDistance(tile.id,targetTile);
+                if (distance >= 5 && distance <= 8) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        theTile = tile.id;
+                    }
+                }
+            }
+        });
+    }
     // GUARD
     if (area === 'guard') {
         let shufAliens = _.shuffle(aliens);
@@ -1305,6 +1322,8 @@ function eggSpawn(bat,fromEgg) {
                         putEggCat(bat,conselUnit.kind);
                         if (bat.type === 'Oeuf voilé') {
                             putBat(dropTile,0,0,'invisible');
+                        } else if (bat.type === 'Cocon' && playerInfos.mapTurn < 20) {
+                            putBat(dropTile,0,0,'follow');
                         } else {
                             putBat(dropTile,0,0);
                         }

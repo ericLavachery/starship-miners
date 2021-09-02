@@ -938,6 +938,24 @@
         "fabTime":70
     },
     {
+        "id":261,
+        "name":"Résistants",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":[],
+        "compReq":{},
+        "costs":{"Fer":81,"Soufre":27,"Plomb":27,"Aluminium":54,"Carbone":54,"Scrap":54,"Végétaux":135,"Chlore":10,"Tissus":5},
+        "fabTime":30
+    },
+    {
+        "id":263,
+        "name":"Retranchement",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":[],
+        "compReq":{},
+        "costs":{"Fer":300,"Scrap":60,"Carbone":60,"Aluminium":60,"Végétaux":110,"Drogues":16,"Chlore":12,"Zinc":12,"Tissus":6},
+        "fabTime":30
+    },
+    {
         "id":1,
         "name":"Scouts",
         "levels":{"rednecks":99,"blades":99,"bulbos":13,"drogmulojs":13,"tiradores":99,"detruas":9,"brasier":99},
@@ -1944,6 +1962,13 @@
         "bldReq":["Atelier"],
         "costs":{"Explosifs":9,"Scrap":9,"Végétaux":18,"Plomb":3,"Titane":3,"Azote":3,"Cuivre":6},
         "fabTime":35
+    },
+    {
+        "id":262,
+        "name":"Bastion de résistants",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Fer":84,"Carbone":126,"Aluminium":84,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
+        "fabTime":30
     },
     {
         "id":253,
