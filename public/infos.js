@@ -418,25 +418,27 @@ function batInfos(bat,batType,pop) {
     if (!pop) {
         $('#'+bodyPlace).append('<hr>');
         let demText;
-        if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || batType.cat === 'buildings' || batType.skills.includes('okdel')) {
-            if (batType.skills.includes('recupcit')) {
-                if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
-                    demText = '(récupérer citoyens et ressources)';
+        if (!bat.tags.includes('nomove')) {
+            if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || batType.cat === 'buildings' || batType.skills.includes('okdel')) {
+                if (batType.skills.includes('recupcit')) {
+                    if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
+                        demText = '(récupérer citoyens et ressources)';
+                    } else {
+                        demText = '(récupérer les citoyens)';
+                    }
                 } else {
-                    demText = '(récupérer les citoyens)';
+                    if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
+                        demText = '(récupérer des ressources)';
+                    }
                 }
-            } else {
-                if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
-                    demText = '(récupérer des ressources)';
+                if (batType.skills.includes('okdel')) {
+                    demText = '(détruire)';
                 }
+                let resRecup = getResRecup(bat,batType);
+                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+demText+' '+toCoolString(resRecup)+'" class="boutonRouge skillButtons" onclick="dismantle('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Démanteler</h4></span>');
             }
-            if (batType.skills.includes('okdel')) {
-                demText = '(détruire)';
-            }
-            let resRecup = getResRecup(bat,batType);
-            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+demText+' '+toCoolString(resRecup)+'" class="boutonRouge skillButtons" onclick="dismantle('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Démanteler</h4></span>');
         }
-        if (playerInfos.pseudo === 'Test' || playerInfos.mapTurn === 0) {
+        if (playerInfos.pseudo === 'Test') {
             $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Supprimer le bataillon (triche!)" class="boutonCiel skillButtons" onclick="removeBat('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
         }
     }

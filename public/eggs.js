@@ -1,4 +1,5 @@
 function checkStartingAliens() {
+    // Ruches
     let numRuches;
     if (zone[0].mapDiff >= 8) {
         dropEgg('Colonie','nedge');
@@ -39,6 +40,7 @@ function checkStartingAliens() {
             i++
         }
     }
+    // Flaques
     let numVomi = Math.floor((zone[0].mapDiff+2)*rand.rand(8,20)/14);
     let ii = 1;
     while (ii <= numVomi) {
@@ -50,12 +52,19 @@ function checkStartingAliens() {
         if (ii > 50) {break;}
         ii++
     }
+    // Veilleurs
     let numSent = Math.ceil((zone[0].mapDiff+zone[0].mapDiff)*rand.rand(8,20)/12);
     ii = 1;
     while (ii <= numSent) {
         dropEgg('Veilleurs','none');
         if (ii > 50) {break;}
         ii++
+    }
+    // Encounters
+    if (zone[0].mapDiff >= 2) {
+        if (rand.rand(1,3) === 1) {
+            encounter();
+        }
     }
 };
 
@@ -1008,6 +1017,9 @@ function cocoonSpawn(bat) {
     let eggLife = 2;
     console.log('eggTurn='+eggTurn);
     let eggLevel = zone[0].mapDiff+Math.floor((playerInfos.mapTurn+25)/50)-1;
+    if (playerInfos.mapTurn < 20) {
+        eggLevel = eggLevel-1;
+    }
     let eggCat = checkputEggKind(bat);
     if (eggCat === '') {
         eggCat = newEggCat();
@@ -1119,7 +1131,11 @@ function cocoonSpawn(bat) {
                     }
                     checkSpawnType(conselUnit);
                     putEggCat(bat,conselUnit.kind);
-                    putBat(dropTile,0,0);
+                    if (playerInfos.mapTurn < 20) {
+                        putBat(dropTile,0,0,'follow');
+                    } else {
+                        putBat(dropTile,0,0);
+                    }
                 }
             }
             if (i > 36) {break;}
@@ -1322,8 +1338,6 @@ function eggSpawn(bat,fromEgg) {
                         putEggCat(bat,conselUnit.kind);
                         if (bat.type === 'Oeuf voilé') {
                             putBat(dropTile,0,0,'invisible');
-                        } else if (bat.type === 'Cocon' && playerInfos.mapTurn < 20) {
-                            putBat(dropTile,0,0,'follow');
                         } else {
                             putBat(dropTile,0,0);
                         }

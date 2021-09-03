@@ -1120,6 +1120,8 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             if (startTag != undefined) {
                 if (startTag === 'veil') {
                     newBat.tags = ['invisible','follow'];
+                } else if (startTag === 'fortifguet') {
+                    newBat.tags = ['guet','fortif'];
                 } else {
                     newBat.tags = [startTag];
                 }
@@ -1706,24 +1708,6 @@ function putRoad() {
     // saveMap();
     showMap(zone,false);
     showBatInfos(selectedBat);
-};
-
-function nearWhat(myBat,myBatType) {
-    let myCrew = myBatType.squads*myBatType.squadSize*myBatType.crew;
-    let near = {};
-    near.caserne = false;
-    bataillons.forEach(function(bat) {
-        if (bat.loc === "zone") {
-            if (bat.type.includes('Caserne')) {
-                if (myCrew >= 12 && myBatType.cat === 'infantry') {
-                    if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
-                        near.caserne = true;
-                    }
-                }
-            }
-        }
-    });
-    return near;
 };
 
 function putInfra(infraName) {

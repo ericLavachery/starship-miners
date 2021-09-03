@@ -48,7 +48,7 @@ function clickSelect(tileId) {
             if (bat.tileId === tileId && bat.loc === "zone") {
                 if (!goMove) {
                     showBatInfos(bat);
-                    if (selectedBat.id == bat.id && selectedBatType.moveCost < 99) {
+                    if (selectedBat.id == bat.id && selectedBatType.moveCost < 99 && !selectedBat.tags.includes('nomove')) {
                         if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'e-jetpack') {
                             jump = true;
                         }

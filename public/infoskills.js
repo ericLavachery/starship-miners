@@ -12,6 +12,9 @@ function skillsInfos(bat,batType) {
     let terrain = getTerrain(bat);
     let inMelee = batInMelee(bat,batType);
     let near = nearWhat(bat,batType);
+    if (near.control) {
+        tagDelete(bat,'nomove');
+    }
     let freeConsTile = false;
     let hasW1 = checkHasWeapon(1,batType,bat.eq);
     let hasW2 = checkHasWeapon(2,batType,bat.eq);
