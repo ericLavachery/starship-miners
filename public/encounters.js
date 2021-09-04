@@ -21,6 +21,18 @@ function encounter() {
     }
 };
 
+function putBastionAliens(cocon) {
+    dropEgg('Ruche','encounter');
+    dropEgg('Ruche','encounter');
+    if (cocon) {
+        dropEgg('Cocon','encounter');
+    }
+    let numVeil = rand.rand(1,3);
+    for (var i = 0; i < numVeil; i++){
+        dropEgg('Veilleurs','encounter');
+    }
+}
+
 function baseLabo() {
     console.log('BASE DE RECHECRCHE');
     let centreTileId = checkEncounterTile();
@@ -52,6 +64,9 @@ function putLaboUnits(centreTileId) {
     putBat(centreTileId,0,rand.rand(50,175),'',false);
     playerOccupiedTiles.push(centreTileId);
     let bastion = getBatByTileId(centreTileId);
+    if (bastion.fuzz < 5) {
+        bastion.fuzz = 5;
+    }
     // GENERATEUR
     dropTile = checkDropSafe(centreTileId);
     conselUnit = getBatTypeById(172);
@@ -233,6 +248,9 @@ function putHLLUnits(centreTileId) {
         playerOccupiedTiles.push(dropTile);
     }
     let bastion = getBatByTileId(centreTileId);
+    if (bastion.fuzz < 5) {
+        bastion.fuzz = 5;
+    }
     // INFIRMIERS (dans le bastion)
     if (rand.rand(1,3) === 1) {
         dropTile = checkDropSafe(centreTileId);
@@ -435,20 +453,6 @@ function baseDeResistants() {
     }
 };
 
-function putBastionAliens(cocon) {
-    dropEgg('Ruche','encounter');
-    if (cocon) {
-        dropEgg('Cocon','encounter');
-    }
-    if (zone[0].mapDiff >= rand.rand(5,15)) {
-        dropEgg('Ruche','encounter');
-    }
-    let numVeil = rand.rand(1,3);
-    for (var i = 0; i < numVeil; i++){
-        dropEgg('Veilleurs','encounter');
-    }
-}
-
 function encounterAmmos(tech) {
     if (tech >= 5) {
         if (conselAmmos[0].includes('sm-')) {
@@ -496,6 +500,9 @@ function putBastionUnits(centreTileId) {
     putBat(centreTileId,0,rand.rand(50,175),'',false);
     playerOccupiedTiles.push(centreTileId);
     let bastion = getBatByTileId(centreTileId);
+    if (bastion.fuzz < 5) {
+        bastion.fuzz = 5;
+    }
     // TRANSPORT
     if (zone[0].mapDiff >= rand.rand(3,15)) {
         numUnits = 1;

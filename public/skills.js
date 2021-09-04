@@ -226,8 +226,8 @@ function camoOut() {
     if (selectedBat.tags.includes('camo')) {
         tagIndex = selectedBat.tags.indexOf('camo');
         selectedBat.tags.splice(tagIndex,1);
+        selectedBat.fuzz = selectedBatType.fuzz;
     }
-    selectedBat.fuzz = selectedBatType.fuzz;
     selectedBat.camoAP = -1;
     selectedBatArrayUpdate();
     showBataillon(selectedBat);
@@ -240,8 +240,8 @@ function camoStop(bat) {
     if (bat.tags.includes('camo')) {
         tagIndex = bat.tags.indexOf('camo');
         bat.tags.splice(tagIndex,1);
+        bat.fuzz = batType.fuzz;
     }
-    bat.fuzz = batType.fuzz;
     bat.camoAP = -1;
 };
 

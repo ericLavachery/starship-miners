@@ -1409,7 +1409,7 @@ function missionResults(onlyLanders,sCount,hCount) {
                     }
                 }
             }
-            balance = balance+resResult;
+            balance = balance+Math.round(resResult*res.equiv);
             if (resResult != 0) {
                 resColour = 'gf';
                 if (resResult < 0) {
