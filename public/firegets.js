@@ -339,6 +339,9 @@ function batDeath(bat,count) {
     let tileId = bat.tileId;
     let batType = getBatType(bat);
     if (bat.team == 'player') {
+        if (bat.tags.includes('nomove')) {
+            removeNoMoves(bat);
+        }
         let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
         bataillons.splice(batIndex,1);
         if (count && !batType.skills.includes('nodeathcount')) {

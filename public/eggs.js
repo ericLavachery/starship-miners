@@ -61,7 +61,7 @@ function checkStartingAliens() {
         ii++
     }
     // Encounters
-    if (zone[0].mapDiff >= 2) {
+    if (zone[0].mapDiff >= 2 && zone[0].planet === 'Dom') {
         if (rand.rand(1,3) === 1) {
             encounter();
         }
@@ -619,10 +619,9 @@ function eggDropTile(eggName,theArea) {
             }
         });
     }
-    // BASTION
-    if (area === 'bastion') {
-        let bastion = getBatByName('Bastion de résistants');
-        targetTile = bastion.tileId;
+    // ENCOUNTER
+    if (area === 'encounter') {
+        targetTile = encounterTileId;
         let shufZone = _.shuffle(zone);
         let distance;
         shufZone.forEach(function(tile) {

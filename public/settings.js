@@ -60,6 +60,7 @@ let ruinRarity = 6; // default 8
 let ruinsCompBase = 6; // 4 sur 300
 let ruinsResBase = 50; // 33%
 let coffreTileId = -1;
+let encounterTileId = -1;
 let ruinsCitBase = 100; // def 50
 let ruinsCrimChance = 15; // 1/15 criminels au lieu de citoyens
 let ruinsEmpty = true;

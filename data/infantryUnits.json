@@ -180,7 +180,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","fouille","camo","brigands","penitbat"],
+        "skills":["fortif","fouille","maycamo","brigands","penitbat"],
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -3016,7 +3016,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"fmag",
-            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
+            "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
         },
         "equip":["aucun","e-flash","e-ranger","chargeur2","silencieux2","e-camo","permakirin","theeye","waterproof"],
         "log3eq":"chargeur2",
@@ -4693,7 +4693,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar_x3",
-            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["aucun","chobham","iso"],
         "equip":["aucun","e-flash","e-ranger","gilet","lunette2","chargeur2","waterproof","detector"],
@@ -5299,7 +5299,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["kevlar","acier","combo","kapton","wendium","titane","nano","swing","adamantite","aegis","battlesuit"],
         "equip":["aucun","e-flash","e-ranger","chargeur1","silencieux1","chargeur2","lunette2","e-jetpack","e-camo","theeye","helper","waterproof"],

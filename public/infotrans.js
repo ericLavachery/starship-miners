@@ -120,6 +120,8 @@ function unloadInfos(myBat,myBatUnitType) {
                     let mayOut = checkMayOut(batType);
                     if (myBatUnitType.skills.includes('transorbital') && (batType.id === 126 || batType.id === 225)) {
                         $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer des citoyens d\'un vaisseau" class="boutonGris skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris skillButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
+                    } else if (bat.tags.includes('nomove')) {
+                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer ce bataillon" class="boutonGris skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris skillButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
                     } else if (!mayOut) {
                         $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer ce bataillon sur cette planète" class="boutonGris skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris skillButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
                     } else {
@@ -216,7 +218,7 @@ function checkUnderId(myBat,myBatType) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" && bat.tileId == myBat.tileId) {
             let batType = getBatType(bat);
-            if (batType.cat != 'buildings' && batType.cat != 'devices' && batType.moveCost < 90) {
+            if (batType.cat != 'buildings' && batType.cat != 'devices' && batType.moveCost < 90 && !bat.tags.includes('nomove')) {
                 if (myBatType.transMaxSize >= batType.size) {
                     if (!batType.skills.includes('tracked') || !tracking) {
                         let batWeight = calcVolume(bat,batType);

@@ -1122,6 +1122,8 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                     newBat.tags = ['invisible','follow'];
                 } else if (startTag === 'fortifguet') {
                     newBat.tags = ['guet','fortif'];
+                } else if (startTag === 'fgnomove') {
+                    newBat.tags = ['guet','fortif','nomove'];
                 } else {
                     newBat.tags = [startTag];
                 }
