@@ -1016,9 +1016,6 @@ function cocoonSpawn(bat) {
     let eggLife = 2;
     console.log('eggTurn='+eggTurn);
     let eggLevel = zone[0].mapDiff+Math.floor((playerInfos.mapTurn+25)/50)-1;
-    if (playerInfos.mapTurn < 20) {
-        eggLevel = eggLevel-1;
-    }
     let eggCat = checkputEggKind(bat);
     if (eggCat === '') {
         eggCat = newEggCat();

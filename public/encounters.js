@@ -3,13 +3,13 @@ function encounter() {
     if (encDice === 0 || encDice === 1 || encDice === 2 || encDice === 3) {
         baseDeResistants();
     } else if (encDice === 4 || encDice === 5 || encDice === 6) {
-        horsLaLoi();
+        bastionDeBrigands();
     } else if (encDice === 7) {
         // Robots
     } else if (encDice === 8) {
         baseLabo();
     } else if (encDice === 9 || encDice === 10) {
-        // Colons
+        campDeColons();
     } else if (encDice === 11 || encDice === 12) {
         // Industrie
     } else if (encDice === 13) {
@@ -30,6 +30,135 @@ function putBastionAliens(cocon) {
     let numVeil = rand.rand(1,3);
     for (var i = 0; i < numVeil; i++){
         dropEgg('Veilleurs','encounter');
+    }
+}
+
+function campDeColons() {
+    console.log('CAMP DE COLONS');
+    let centreTileId = checkEncounterTile();
+    if (centreTileId >= 0) {
+        putColonUnits(centreTileId);
+        bastionRes(centreTileId);
+        bastionRes(centreTileId);
+        putBastionAliens(true);
+    } else {
+        console.log('No good tile!');
+    }
+};
+
+function putColonUnits(centreTileId) {
+    zone[centreTileId].rd = true;
+    addRoad(centreTileId);
+    let dropTile;
+    let numUnits = 1;
+    let numWeap = 0;
+    // COMPTOIR
+    conselUnit = getBatTypeById(157);
+    conselPut = false;
+    conselTriche = true;
+    conselAmmos = ['sm-perfo','ac-standard','acier','w2-ggun'];
+    putBat(centreTileId,0,rand.rand(50,175),'nomove',false);
+    playerOccupiedTiles.push(centreTileId);
+    // Forêt et Fruits !!!
+    let tile = getTileById(centreTileId);
+    if (tile.terrain != 'F' && tile.terrain != 'B' && tile.terrain != 'S') {
+        tile.terrain = 'S';
+        tile.seed = 1;
+    }
+    tile.rq = 1;
+    tile.rs = {};
+    tile.rs['Fruits'] = rand.rand(180,500);
+    let bastion = getBatByTileId(centreTileId);
+    if (bastion.fuzz < 5) {
+        bastion.fuzz = 5;
+    }
+    // SONDE GEOTHERMIQUE
+    dropTile = checkDropSafe(centreTileId);
+    conselUnit = getBatTypeById(209);
+    conselPut = false;
+    conselTriche = true;
+    if (rand.rand(1,2) === 1) {
+        conselAmmos = ['perfo','xxx','bugium','w1-gun'];
+        numWeap++;
+    } else {
+        conselAmmos = ['perfo','xxx','acier','psol'];
+    }
+    putBat(dropTile,0,rand.rand(25,100),'nomove',false);
+    playerOccupiedTiles.push(dropTile);
+    // CANTINE
+    dropTile = checkDropSafe(centreTileId);
+    conselUnit = getBatTypeById(216);
+    conselPut = false;
+    conselTriche = true;
+    conselAmmos = ['sm-perfo','xxx','bugium','w1-gun'];
+    putBat(dropTile,0,rand.rand(25,100),'nomove',false);
+    playerOccupiedTiles.push(dropTile);
+    // BAR
+    if (rand.rand(1,2) === 1) {
+        dropTile = checkDropSafe(centreTileId);
+        conselUnit = getBatTypeById(215);
+        conselPut = false;
+        conselTriche = true;
+        conselAmmos = ['perfo','molotov-feu','bugium','w2-molo'];
+        numWeap++;
+        putBat(dropTile,0,rand.rand(25,100),'nomove',false);
+        playerOccupiedTiles.push(dropTile);
+    }
+    // POSTE RADIO
+    if (rand.rand(1,3) === 1) {
+        dropTile = checkDropSafe(centreTileId);
+        conselUnit = getBatTypeById(194);
+        conselPut = false;
+        conselTriche = true;
+        if (rand.rand(1,numWeap) === 1) {
+            conselAmmos = ['perfo','xxx','bugium','w1-gun'];
+            numWeap++;
+        } else {
+            conselAmmos = ['perfo','xxx','bugium','psol'];
+        }
+        putBat(dropTile,0,rand.rand(25,100),'nomove',false);
+        playerOccupiedTiles.push(dropTile);
+    }
+    // INFIRMIERS (dans le comptoir)
+    if (rand.rand(1,2) === 1) {
+        dropTile = checkDropSafe(centreTileId);
+        conselUnit = getBatTypeById(148);
+        conselPut = false;
+        conselAmmos = ['sm-perfo','xxx','aucune','aucun'];
+        conselTriche = true;
+        putBat(dropTile,0,rand.rand(25,100),'nomove',false);
+        let infirm = getBatByTileId(dropTile);
+        loadBat(infirm.id,bastion.id);
+        playerOccupiedTiles.push(dropTile);
+    }
+    // SAPEURS
+    let minSapeurs = 1-Math.floor(numWeap/3);
+    let maxSapeurs = 3-Math.floor(numWeap/2);
+    numUnits = rand.rand(minSapeurs,maxSapeurs);
+    for (var i = 0; i < numUnits; i++){
+        dropTile = checkDropSafe(centreTileId);
+        let thisTile = getTileById(dropTile);
+        thisTile.infra = 'Palissades';
+        conselUnit = getBatTypeById(112);
+        conselPut = false;
+        conselAmmos = ['perfo','lame','scrap','aucun'];
+        conselTriche = true;
+        putBat(dropTile,0,rand.rand(25,100),'fgnomove',false);
+        playerOccupiedTiles.push(dropTile);
+        numWeap++;
+    }
+    // BARBELES
+    if (rand.rand(1,Math.floor(numWeap/2)+1) === 1) {
+        numUnits = rand.rand(2,4);
+        for (var i = 0; i < numUnits; i++){
+            dropTile = checkDropAny(centreTileId);
+            conselUnit = getBatTypeById(168);
+            conselPut = false;
+            conselTriche = true;
+            conselAmmos = ['barb','xxx','aucun','aucun'];
+            putBat(dropTile,0,0,'nomove',false);
+            playerOccupiedTiles.push(dropTile);
+        }
     }
 }
 
@@ -122,7 +251,7 @@ function putLaboUnits(centreTileId) {
     // BARBELES
     numUnits = rand.rand(4,7);
     for (var i = 0; i < numUnits; i++){
-        dropTile = checkDrop(centreTileId);
+        dropTile = checkDropAny(centreTileId);
         conselUnit = getBatTypeById(169);
         conselPut = false;
         conselTriche = true;
@@ -158,7 +287,7 @@ function tooLate() {
     }
 };
 
-function horsLaLoi() {
+function bastionDeBrigands() {
     console.log('HORS LA LOI');
     let centreTileId = checkEncounterTile();
     if (centreTileId >= 0) {
@@ -392,7 +521,7 @@ function putHLLUnits(centreTileId) {
     if (playerInfos.gang === 'detruas' || (rand.rand(1,3) === 1 && (playerInfos.gang === 'bulbos' || playerInfos.gang === 'rednecks'))) {
         numUnits = rand.rand(1,2);
         for (var i = 0; i < numUnits; i++){
-            dropTile = checkDrop(centreTileId);
+            dropTile = checkDropAny(centreTileId);
             conselUnit = getBatTypeById(43);
             conselAmmos = ['mine','suicide','aucun','aucun'];
             conselPut = false;
@@ -669,7 +798,7 @@ function putBastionUnits(centreTileId) {
         let maxMines = Math.round(zone[0].mapDiff/3)+1
         numUnits = rand.rand(1,maxMines);
         for (var i = 0; i < numUnits; i++){
-            dropTile = checkDrop(centreTileId);
+            dropTile = checkDropAny(centreTileId);
             conselUnit = getBatTypeById(43);
             conselPut = false;
             conselAmmos = ['mine','suicide','aucun','aucun'];

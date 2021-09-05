@@ -2649,7 +2649,8 @@
             "ammo":["standard"]
         },
         "protection":["aucun","bugium","acier","titane","swag","bonibo","iso","adamantite"],
-        "equip":["aucun","w1-gun","w2-ggun","w2-autopistol"],
+        "equip":["aucun","w1-gun","w2-ggun","w2-autopistol","psol"],
+        "log3eq":"psol",
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
