@@ -1184,7 +1184,7 @@ function getLanderRange(landerBatType) {
         if (landerBatType != undefined) {
             if (Object.keys(landerBatType).length >= 1) {
                 if (landerBatType.name === 'Trolley') {
-                    landerRange = 0;
+                    landerRange = 1;
                 }
             }
         }

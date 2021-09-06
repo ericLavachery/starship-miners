@@ -62,7 +62,7 @@ function checkStartingAliens() {
     }
     // Encounters
     if (zone[0].mapDiff >= 2 && zone[0].planet === 'Dom') {
-        if (rand.rand(1,3) === 1) {
+        if (rand.rand(1,2) === 1) {
             encounter();
         }
     }
