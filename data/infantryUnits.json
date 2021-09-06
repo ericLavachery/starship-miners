@@ -4637,8 +4637,8 @@
             "maxAmmo":16,
             "ravitBld":"Atelier"
         },
-        "protection":["kevlar","combo","kapton","wendium","titane","nano","swing","adamantite"],
-        "equip":["aucun","e-flash","e-ranger","e-medic","e-mecano","chargeur1","w2-gaz","theeye","helper","detector"],
+        "protection":["aucune","kevlar","combo","kapton","wendium","titane","nano","swing","adamantite"],
+        "equip":["aucun","e-flash","e-medic","e-mecano","chargeur1","w2-gaz","theeye","helper","detector"],
         "log3eq":"e-mecano",
         "moveCost":2,
         "maxFlood":3,

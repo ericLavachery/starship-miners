@@ -4,14 +4,12 @@ function encounter() {
         baseDeResistants();
     } else if (encDice === 4 || encDice === 5 || encDice === 6) {
         bastionDeBrigands();
-    } else if (encDice === 7) {
-        // Robots
-    } else if (encDice === 8) {
+    } else if (encDice === 7 || encDice === 8) {
         baseLabo();
     } else if (encDice === 9 || encDice === 10) {
         campDeColons();
     } else if (encDice === 11 || encDice === 12) {
-        // Industrie
+        zoneIndustrielle();
     } else if (encDice === 13) {
         // Piège alien
     } else if (encDice === 14 || encDice === 15) {
@@ -33,6 +31,24 @@ function putBastionAliens(cocon) {
     }
 }
 
+function zoneIndustrielle() {
+    console.log('ZONE INDUSTRIELLE');
+    let centreTileId = checkEncounterTile();
+    if (centreTileId >= 0) {
+        putIndusUnits(centreTileId);
+        bastionRes(centreTileId);
+        bastionRes(centreTileId);
+        bastionRes(centreTileId);
+        putBastionAliens(true);
+    } else {
+        console.log('No good tile!');
+    }
+};
+
+function putIndusUnits(centreTileId) {
+
+};
+
 function campDeColons() {
     console.log('CAMP DE COLONS');
     let centreTileId = checkEncounterTile();
@@ -52,6 +68,7 @@ function putColonUnits(centreTileId) {
     let dropTile;
     let numUnits = 1;
     let numWeap = 0;
+    let thisUnit = {};
     // COMPTOIR
     conselUnit = getBatTypeById(157);
     conselPut = false;
@@ -69,6 +86,8 @@ function putColonUnits(centreTileId) {
     tile.rs = {};
     tile.rs['Fruits'] = rand.rand(180,500);
     let bastion = getBatByTileId(centreTileId);
+    bastion.damage = rand.rand(1,50);
+    bastion.squadsLeft = rand.rand(3,6);
     if (bastion.fuzz < 5) {
         bastion.fuzz = 5;
     }
@@ -77,14 +96,21 @@ function putColonUnits(centreTileId) {
     conselUnit = getBatTypeById(209);
     conselPut = false;
     conselTriche = true;
-    if (rand.rand(1,2) === 1) {
+    let sondeArme = rand.rand(1,3);
+    if (sondeArme === 1) {
         conselAmmos = ['perfo','xxx','bugium','w1-gun'];
+        numWeap++;
+    } else if (sondeArme === 2) {
+        conselAmmos = ['perfo','tungsten','bugium','w2-ggun'];
         numWeap++;
     } else {
         conselAmmos = ['perfo','xxx','acier','psol'];
     }
     putBat(dropTile,0,rand.rand(25,100),'nomove',false);
     playerOccupiedTiles.push(dropTile);
+    thisUnit = getBatByTileId(dropTile);
+    thisUnit.damage = rand.rand(1,75);
+    thisUnit.squadsLeft = rand.rand(3,6);
     // CANTINE
     dropTile = checkDropSafe(centreTileId);
     conselUnit = getBatTypeById(216);
@@ -93,6 +119,9 @@ function putColonUnits(centreTileId) {
     conselAmmos = ['sm-perfo','xxx','bugium','w1-gun'];
     putBat(dropTile,0,rand.rand(25,100),'nomove',false);
     playerOccupiedTiles.push(dropTile);
+    thisUnit = getBatByTileId(dropTile);
+    thisUnit.damage = rand.rand(1,50);
+    thisUnit.squadsLeft = rand.rand(3,6);
     // BAR
     if (rand.rand(1,2) === 1) {
         dropTile = checkDropSafe(centreTileId);
@@ -103,6 +132,9 @@ function putColonUnits(centreTileId) {
         numWeap++;
         putBat(dropTile,0,rand.rand(25,100),'nomove',false);
         playerOccupiedTiles.push(dropTile);
+        thisUnit = getBatByTileId(dropTile);
+        thisUnit.damage = rand.rand(1,50);
+        thisUnit.squadsLeft = rand.rand(3,6);
     }
     // POSTE RADIO
     if (rand.rand(1,3) === 1) {
@@ -118,6 +150,9 @@ function putColonUnits(centreTileId) {
         }
         putBat(dropTile,0,rand.rand(25,100),'nomove',false);
         playerOccupiedTiles.push(dropTile);
+        thisUnit = getBatByTileId(dropTile);
+        thisUnit.damage = rand.rand(1,50);
+        thisUnit.squadsLeft = rand.rand(3,6);
     }
     // INFIRMIERS (dans le comptoir)
     if (rand.rand(1,2) === 1) {
@@ -145,6 +180,9 @@ function putColonUnits(centreTileId) {
         conselTriche = true;
         putBat(dropTile,0,rand.rand(25,100),'fgnomove',false);
         playerOccupiedTiles.push(dropTile);
+        thisUnit = getBatByTileId(dropTile);
+        thisUnit.damage = rand.rand(1,10);
+        thisUnit.squadsLeft = rand.rand(4,6);
         numWeap++;
     }
     // BARBELES
@@ -158,6 +196,9 @@ function putColonUnits(centreTileId) {
             conselAmmos = ['barb','xxx','aucun','aucun'];
             putBat(dropTile,0,0,'nomove',false);
             playerOccupiedTiles.push(dropTile);
+            thisUnit = getBatByTileId(dropTile);
+            thisUnit.damage = rand.rand(1,10);
+            thisUnit.squadsLeft = rand.rand(3,6);
         }
     }
 }
@@ -181,6 +222,7 @@ function putLaboUnits(centreTileId) {
     let dropTile;
     let numUnits = 1;
     let autopis = false;
+    let thisUnit = {};
     // LABORATOIRE
     conselUnit = getBatTypeById(206);
     conselPut = false;
@@ -190,9 +232,11 @@ function putLaboUnits(centreTileId) {
         conselAmmos[3] = 'w2-autopistol';
         autopis = true;
     }
-    putBat(centreTileId,0,rand.rand(50,175),'',false);
+    putBat(centreTileId,0,rand.rand(50,175),'nomove',false);
     playerOccupiedTiles.push(centreTileId);
     let bastion = getBatByTileId(centreTileId);
+    bastion.damage = rand.rand(1,75);
+    bastion.squadsLeft = rand.rand(3,6);
     if (bastion.fuzz < 5) {
         bastion.fuzz = 5;
     }
@@ -201,23 +245,41 @@ function putLaboUnits(centreTileId) {
     conselUnit = getBatTypeById(172);
     conselPut = false;
     conselTriche = true;
-    conselAmmos = ['xxx','xxx','acier','psol'];
+    conselAmmos = ['xxx','xxx','aucun','psol'];
     if (rand.rand(1,5) === 1) {
         conselAmmos[3] = 'w2-autopistol';
         autopis = true;
     }
-    putBat(dropTile,0,rand.rand(25,100),'',false);
+    putBat(dropTile,0,rand.rand(25,100),'nomove',false);
     playerOccupiedTiles.push(dropTile);
+    thisUnit = getBatByTileId(dropTile);
+    thisUnit.damage = rand.rand(1,50);
+    thisUnit.squadsLeft = rand.rand(3,5);
     // CHERCHEURS (dans le labo)
-    dropTile = checkDropSafe(centreTileId);
-    conselUnit = getBatTypeById(260);
-    conselPut = false;
-    conselTriche = true;
-    conselAmmos = ['lame-scrap','xxx','aucune','aucun'];
-    putBat(dropTile,0,rand.rand(15,40),'',false);
-    let cherch = getBatByTileId(dropTile);
-    loadBat(cherch.id,bastion.id);
-    playerOccupiedTiles.push(dropTile);
+    let sciDice = rand.rand(1,3);
+    if (sciDice === 1) {
+        // CHERCHEURS
+        dropTile = checkDropSafe(centreTileId);
+        conselUnit = getBatTypeById(260);
+        conselPut = false;
+        conselTriche = true;
+        conselAmmos = ['lame-scrap','xxx','aucune','aucun'];
+        putBat(dropTile,0,rand.rand(15,40),'nomove',false);
+        let cherch = getBatByTileId(dropTile);
+        loadBat(cherch.id,bastion.id);
+        playerOccupiedTiles.push(dropTile);
+    } else if (sciDice === 2) {
+        // RIGGERS
+        dropTile = checkDropSafe(centreTileId);
+        conselUnit = getBatTypeById(156);
+        conselPut = false;
+        conselTriche = true;
+        conselAmmos = ['lame','xxx','aucune','aucun'];
+        putBat(dropTile,0,rand.rand(15,40),'nomove',false);
+        let cherch = getBatByTileId(dropTile);
+        loadBat(cherch.id,bastion.id);
+        playerOccupiedTiles.push(dropTile);
+    }
     // DROIDES
     if (rand.rand(1,3) === 1 || !autopis) {
         numUnits = rand.rand(1,2);
@@ -232,8 +294,11 @@ function putLaboUnits(centreTileId) {
             if (rand.rand(1,2) === 1) {
                 conselAmmos[3] = 'lunette2';
             }
-            putBat(dropTile,0,0,'fortifguet',false);
+            putBat(dropTile,0,0,'fgnomove',false);
             playerOccupiedTiles.push(dropTile);
+            thisUnit = getBatByTileId(dropTile);
+            thisUnit.damage = rand.rand(1,10);
+            thisUnit.squadsLeft = rand.rand(3,6);
         }
     }
     // GUNBOTS
@@ -245,8 +310,11 @@ function putLaboUnits(centreTileId) {
         conselPut = false;
         conselTriche = true;
         conselAmmos = ['perfo','marquage','chobham','lunette'];
-        putBat(dropTile,0,0,'fortifguet',false);
+        putBat(dropTile,0,0,'fgnomove',false);
         playerOccupiedTiles.push(dropTile);
+        thisUnit = getBatByTileId(dropTile);
+        thisUnit.damage = rand.rand(1,10);
+        thisUnit.squadsLeft = rand.rand(3,6);
     }
     // BARBELES
     numUnits = rand.rand(4,7);
@@ -256,8 +324,11 @@ function putLaboUnits(centreTileId) {
         conselPut = false;
         conselTriche = true;
         conselAmmos = ['barb-taser','xxx','acier','aucun'];
-        putBat(dropTile,0,0,'',false);
+        putBat(dropTile,0,0,'nomove',false);
         playerOccupiedTiles.push(dropTile);
+        thisUnit = getBatByTileId(dropTile);
+        thisUnit.damage = rand.rand(1,10);
+        thisUnit.squadsLeft = rand.rand(3,6);
     }
 }
 
@@ -273,6 +344,8 @@ function tooLate() {
         putBat(centreTileId,0,0,'nomove',false);
         playerOccupiedTiles.push(centreTileId);
         let bastion = getBatByTileId(centreTileId);
+        bastion.damage = rand.rand(1,50);
+        bastion.squadsLeft = rand.rand(2,5);
         bastion.tags.push('camo');
         bastion.fuzz = -2;
         bastionRes(centreTileId);
@@ -309,6 +382,7 @@ function putHLLUnits(centreTileId) {
     let numUnits = 1;
     let totalUnits = 1;
     let bldBonus = false;
+    let thisUnit = {};
     let unitIndex;
     if (zone[0].mapDiff >= rand.rand(5,8)) {
         if (playerInfos.gang != 'blades') {
@@ -346,6 +420,9 @@ function putHLLUnits(centreTileId) {
         conselTriche = true;
         putBat(centreTileId,0,rand.rand(50,175),'nomove',false);
         playerOccupiedTiles.push(centreTileId);
+        thisUnit = getBatByTileId(centreTileId);
+        thisUnit.damage = rand.rand(1,50);
+        thisUnit.squadsLeft = rand.rand(3,6);
     }
     // BATIMENT BONUS
     if (bldBonus) {
@@ -375,6 +452,9 @@ function putHLLUnits(centreTileId) {
         conselTriche = true;
         putBat(dropTile,0,rand.rand(50,175),'nomove',false);
         playerOccupiedTiles.push(dropTile);
+        thisUnit = getBatByTileId(dropTile);
+        thisUnit.damage = rand.rand(1,75);
+        thisUnit.squadsLeft = rand.rand(3,5);
     }
     let bastion = getBatByTileId(centreTileId);
     if (bastion.fuzz < 5) {
@@ -403,18 +483,27 @@ function putHLLUnits(centreTileId) {
             conselUnit = getBatTypeById(145);
             conselAmmos = ['lame-poison','boulet-explosif','aucun','g2siege'];
             putBat(dropTile,0,rand.rand(25,100),'nomove',false);
+            thisUnit = getBatByTileId(dropTile);
+            thisUnit.damage = rand.rand(1,10);
+            thisUnit.squadsLeft = rand.rand(3,4);
         } else if (playerInfos.gang === 'drogmulojs') {
             // Mutants
             conselUnit = getBatTypeById(53);
             conselAmmos = ['pn-perfo','lame-tungsten','bugium','lunette1'];
             thisTile.infra = 'Palissades';
             putBat(dropTile,0,rand.rand(25,100),'fgnomove',false);
+            thisUnit = getBatByTileId(dropTile);
+            thisUnit.damage = rand.rand(1,10);
+            thisUnit.squadsLeft = rand.rand(5,7);
         } else if (playerInfos.gang === 'tiradores') {
             // Bandidos
             conselUnit = getBatTypeById(144);
             conselAmmos = ['perfo','perfo','scrap','silencieux2'];
             thisTile.infra = 'Palissades';
             putBat(dropTile,0,rand.rand(25,100),'fgnomove',false);
+            thisUnit = getBatByTileId(dropTile);
+            thisUnit.damage = rand.rand(1,10);
+            thisUnit.squadsLeft = rand.rand(3,6);
         }
         playerOccupiedTiles.push(dropTile);
     }
@@ -503,6 +592,9 @@ function putHLLUnits(centreTileId) {
         conselTriche = true;
         putBat(dropTile,0,rand.rand(25,100),'fgnomove',false);
         playerOccupiedTiles.push(dropTile);
+        thisUnit = getBatByTileId(dropTile);
+        thisUnit.damage = rand.rand(1,10);
+        thisUnit.squadsLeft = rand.rand(6,10);
     }
     // PIEGES
     if (playerInfos.gang === 'blades' || (rand.rand(1,2) === 1 && playerInfos.gang === 'brasier')) {
@@ -515,6 +607,9 @@ function putHLLUnits(centreTileId) {
             conselTriche = true;
             putBat(dropTile,0,0,'nomove',false);
             playerOccupiedTiles.push(dropTile);
+            thisUnit = getBatByTileId(dropTile);
+            thisUnit.damage = rand.rand(1,5);
+            thisUnit.squadsLeft = rand.rand(4,6);
         }
     }
     // CHAMPS DE MINES
@@ -528,6 +623,9 @@ function putHLLUnits(centreTileId) {
             conselTriche = true;
             putBat(dropTile,0,0,'nomove',false);
             playerOccupiedTiles.push(dropTile);
+            thisUnit = getBatByTileId(dropTile);
+            thisUnit.damage = rand.rand(1,10);
+            thisUnit.squadsLeft = rand.rand(4,6);
         }
     }
 }
@@ -621,6 +719,7 @@ function putBastionUnits(centreTileId) {
     let tech = rand.rand(Math.floor(zone[0].mapDiff/2),zone[0].mapDiff+3);
     let numUnits = 1;
     let totalUnits = 1;
+    let thisUnit = {};
     conselUnit = getBatTypeById(262);
     conselPut = false;
     conselAmmos = ['perfo','ac-standard','acier','aucun'];
@@ -629,6 +728,8 @@ function putBastionUnits(centreTileId) {
     putBat(centreTileId,0,rand.rand(50,175),'',false);
     playerOccupiedTiles.push(centreTileId);
     let bastion = getBatByTileId(centreTileId);
+    bastion.damage = rand.rand(1,75);
+    bastion.squadsLeft = rand.rand(3,6);
     if (bastion.fuzz < 5) {
         bastion.fuzz = 5;
     }
@@ -659,6 +760,9 @@ function putBastionUnits(centreTileId) {
         conselUnit = getBatTypeById(unitId);
         putBat(dropTile,0,rand.rand(25,100),'',false);
         playerOccupiedTiles.push(dropTile);
+        thisUnit = getBatByTileId(dropTile);
+        thisUnit.damage = rand.rand(1,10);
+        thisUnit.squadsLeft = rand.rand(3,4);
     }
     // AUTRE VEHICULE
     if (zone[0].mapDiff >= rand.rand(5,25)) {
@@ -695,6 +799,13 @@ function putBastionUnits(centreTileId) {
         conselUnit = getBatTypeById(unitId);
         putBat(dropTile,0,rand.rand(25,100),'',false);
         playerOccupiedTiles.push(dropTile);
+        thisUnit = getBatByTileId(dropTile);
+        thisUnit.damage = rand.rand(1,10);
+        if (unitId === 119) {
+            thisUnit.squadsLeft = rand.rand(1,2);
+        } else {
+            thisUnit.squadsLeft = rand.rand(3,4);
+        }
     }
     // RETRANCHEMENTS
     numUnits = rand.rand(0,2);
