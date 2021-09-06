@@ -13,7 +13,7 @@ function skillsInfos(bat,batType) {
     let inMelee = batInMelee(bat,batType);
     let near = nearWhat(bat,batType);
     if (near.control) {
-        tagDelete(bat,'nomove');
+        nomoveOut(bat);
     }
     let freeConsTile = false;
     let hasW1 = checkHasWeapon(1,batType,bat.eq);

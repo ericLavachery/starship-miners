@@ -1127,6 +1127,9 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 } else {
                     newBat.tags = [startTag];
                 }
+                if (newBat.tags.includes('nomove')) {
+                    newBat.tags.push('outsider');
+                }
             } else {
                 newBat.tags = [];
             }
@@ -1285,6 +1288,12 @@ function dismantle(batId) {
                 } else {
                     if (batType.skills.includes('brigands')) {
                         recupCitoyens(225,tileId,crew,xp);
+                    } else if (bat.tags.includes('outsider')) {
+                        if (rand.rand(1,2) === 1) {
+                            recupCitoyens(225,tileId,crew,xp);
+                        } else {
+                            recupCitoyens(126,tileId,crew,xp);
+                        }
                     } else {
                         recupCitoyens(126,tileId,crew,xp);
                     }

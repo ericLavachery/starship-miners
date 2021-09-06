@@ -147,6 +147,13 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="paramName">Attraction</span><span class="paramIcon"></span><span class="paramValue">'+batFuzz+'</span><br>');
     }
     // TAGS
+    if (bat.tags.includes('outsider')) {
+        let outsiderMessage = 'Outsider: Sans effet';
+        if (batType.crew >= 1 && !batType.skills.includes('brigands')) {
+            outsiderMessage = 'Outsider: Si ce bataillon est démantelé, il se peut que les citoyens récupérés deviennent des criminels';
+        }
+        $('#'+bodyPlace).append('<span class="paramName jaune" title="'+outsiderMessage+'">Outsider</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+    }
     if (bat.tags.includes('construction')) {
         $('#'+bodyPlace).append('<span class="paramName or">Opérationel</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
     }

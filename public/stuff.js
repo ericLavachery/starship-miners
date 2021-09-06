@@ -169,15 +169,26 @@ function nearWhat(myBat,myBatType) {
                     }
                 }
             }
-            if (!bat.tags.includes('nomove')) {
-                if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
-                    near.control = true;
-                }
+        }
+        if (!bat.tags.includes('nomove')) {
+            if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
+                near.control = true;
             }
         }
     });
     return near;
 };
+
+function nomoveOut(myBat) {
+    tagDelete(myBat,'nomove');
+    if (myBat.transIds != undefined) {
+        bataillons.forEach(function(bat) {
+            if (myBat.transIds.includes(bat.id)) {
+                tagDelete(bat,'nomove');
+            }
+        });
+    }
+}
 
 function blockMe(stop) {
     if (stop) {

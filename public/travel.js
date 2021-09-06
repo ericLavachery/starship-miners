@@ -187,6 +187,9 @@ function healEverything() {
         if (bat.tags.includes('zombie')) {
             gearTags.push('zombie');
         }
+        if (bat.tags.includes('outsider')) {
+            gearTags.push('outsider');
+        }
         if (bat.tags.includes('prodres')) {
             gearTags.push('prodres');
         }
