@@ -1076,7 +1076,7 @@
         "apdamage": 0.1,
         "aoe": "",
         "bldReq":["Laboratoire"],
-        "compReq":{"bal":2,"energ":1},
+        "compReq":{"bal":1,"energ":1},
         "deploy":{"Mercure":1,"Hydrogène":3,"Larvium":1},
         "batch":100,
         "noList": true
@@ -1183,7 +1183,7 @@
         "apdamage": 0.1,
         "aoe": "brochette",
         "bldReq":["Laboratoire"],
-        "compReq":{"bal":2,"energ":1},
+        "compReq":{"bal":1,"energ":1},
         "deploy":{"Mercure":1,"Hydrogène":3,"Larvium":1},
         "batch":100,
         "noList": true

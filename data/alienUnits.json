@@ -1677,9 +1677,9 @@
             "noFly":false,
             "isMelee":true,
             "rof":6,
-            "accuracy":26,
-            "power":14,
-            "armors":1,
+            "accuracy":24,
+            "power":13,
+            "armors":1.5,
             "aoe":"unit",
             "sound":"tongue",
             "ammo":["glue"]

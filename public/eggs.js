@@ -390,6 +390,7 @@ function eggsDrop() {
     }
     console.log('eggDice='+eggDice);
     let coqPerc = getCoqueChance();
+    let coqNum = 0;
     let coveredEggs = 0;
     if (numEggs >= 1) {
         let eggTypeDice;
@@ -404,8 +405,9 @@ function eggsDrop() {
                     invisibleChance = invisibleChance*2;
                 }
             }
-            if (eggTypeDice <= coqPerc) {
+            if (eggTypeDice <= coqPerc && coqNum < 2) {
                 dropEgg('Coque','nocenter');
+                coqNum++;
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             } else if (eggTypeDice <= coqPerc+invisibleChance) {
                 dropEgg('Oeuf voilé','any');

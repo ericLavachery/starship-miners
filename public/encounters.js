@@ -893,8 +893,10 @@ function putHLLUnits(centreTileId,hard) {
     }
     for (var i = 0; i < numUnits; i++){
         dropTile = checkDropSafe(centreTileId);
-        let thisTile = getTileById(dropTile);
-        thisTile.infra = 'Palissades';
+        if (hard) {
+            let thisTile = getTileById(dropTile);
+            thisTile.infra = 'Palissades';
+        }
         if (playerInfos.gang === 'bulbos') {
             // Détenus
             conselUnit = getBatTypeById(217);
@@ -1030,6 +1032,9 @@ function putHLLUnits(centreTileId,hard) {
     if (hard) {
         if (playerInfos.gang === 'detruas' || (rand.rand(1,3) === 1 && (playerInfos.gang === 'bulbos' || playerInfos.gang === 'rednecks'))) {
             numUnits = rand.rand(1,2);
+            if (playerInfos.gang === 'detruas') {
+                numUnits++;
+            }
             for (var i = 0; i < numUnits; i++){
                 dropTile = checkDropAny(centreTileId);
                 conselUnit = getBatTypeById(43);
