@@ -149,7 +149,7 @@ function batInfos(bat,batType,pop) {
     // TAGS
     if (bat.tags.includes('outsider')) {
         let outsiderMessage = 'Outsider: Sans effet';
-        if (batType.crew >= 1 && !batType.skills.includes('brigands')) {
+        if (batType.crew >= 1 && !batType.skills.includes('brigands') && !batType.skills.includes('nocrime')) {
             outsiderMessage = 'Outsider: Si ce bataillon est démantelé, il se peut que les citoyens récupérés deviennent des criminels';
         }
         $('#'+bodyPlace).append('<span class="paramName jaune" title="'+outsiderMessage+'">Outsider</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
@@ -429,9 +429,21 @@ function batInfos(bat,batType,pop) {
             if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || batType.cat === 'buildings' || batType.skills.includes('okdel')) {
                 if (batType.skills.includes('recupcit')) {
                     if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
-                        demText = '(récupérer citoyens et ressources)';
+                        if (batType.skills.includes('brigands')) {
+                            demText = '(récupérer les criminels et les ressources)';
+                        } else if (bat.tags.includes('outsider')) {
+                            demText = '(récupérer les criminels ou citoyens et les ressources)';
+                        } else {
+                            demText = '(récupérer les citoyens et les ressources)';
+                        }
                     } else {
-                        demText = '(récupérer les citoyens)';
+                        if (batType.skills.includes('brigands')) {
+                            demText = '(récupérer les criminels)';
+                        } else if (bat.tags.includes('outsider')) {
+                            demText = '(récupérer les criminels ou citoyens)';
+                        } else {
+                            demText = '(récupérer les citoyens)';
+                        }
                     }
                 } else {
                     if (batType.skills.includes('recupres') || batType.cat === 'buildings') {

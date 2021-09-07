@@ -1288,7 +1288,7 @@ function dismantle(batId) {
                 } else {
                     if (batType.skills.includes('brigands')) {
                         recupCitoyens(225,tileId,crew,xp);
-                    } else if (bat.tags.includes('outsider')) {
+                    } else if (bat.tags.includes('outsider') && !batType.skills.includes('nocrime')) {
                         if (rand.rand(1,2) === 1) {
                             recupCitoyens(225,tileId,crew,xp);
                         } else {
