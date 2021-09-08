@@ -61,9 +61,18 @@ function checkStartingAliens() {
         ii++
     }
     // Encounters
-    if (zone[0].mapDiff >= 2 && zone[0].planet === 'Dom') {
-        if (rand.rand(1,2) === 1) {
-            encounter();
+    if (zone[0].planet === 'Dom' || zone[0].planet === 'Sarak') {
+        if (zone[0].mapDiff >= 2) {
+            let encounterChance = 5;
+            if (zone[0].planet === 'Dom') {
+                encounterChance = encounterChance-2;
+            }
+            if (zone[0].mapDiff >= 5) {
+                encounterChance = encounterChance-1;
+            }
+            if (rand.rand(1,encounterChance) === 1) {
+                encounter();
+            }
         }
     }
 };
@@ -129,7 +138,7 @@ function checkMaxDroppedEggs() {
         maxEggDropTurn = Math.ceil(zone[0].mapDiff/2);
     }
     let maxDroppedEggs = Math.ceil((maxEggDropTurn+overLimit)*(zone[0].mapDiff+1.5)/7);
-    maxDroppedEggs = maxDroppedEggs+Math.round(playerInfos.fuzzTotal/50)-7;
+    maxDroppedEggs = maxDroppedEggs+Math.round(playerInfos.fuzzTotal/50)-8;
     if (maxDroppedEggs < 0) {
         maxDroppedEggs = 0;
     }
@@ -141,7 +150,10 @@ function checkMaxEggsInPlay() {
     if (playerInfos.mapTurn >= 35) {
         maxEggsInPlay++;
     }
-    maxEggsInPlay = maxEggsInPlay+Math.floor(playerInfos.fuzzTotal/200)-1;
+    maxEggsInPlay = maxEggsInPlay+Math.floor(playerInfos.fuzzTotal/200)-2;
+    if (maxEggsInPlay < 1) {
+        maxEggsInPlay = 1;
+    }
     return maxEggsInPlay;
 };
 
@@ -405,9 +417,13 @@ function eggsDrop() {
                     invisibleChance = invisibleChance*2;
                 }
             }
-            if (eggTypeDice <= coqPerc && coqNum < 2) {
-                dropEgg('Coque','nocenter');
-                coqNum++;
+            if (eggTypeDice <= coqPerc) {
+                if (coqNum < 2) {
+                    dropEgg('Coque','nocenter');
+                    coqNum++;
+                } else {
+                    dropEgg('Oeuf','encounter');
+                }
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             } else if (eggTypeDice <= coqPerc+invisibleChance) {
                 dropEgg('Oeuf voilé','any');
@@ -507,6 +523,9 @@ function eggDropTile(eggName,theArea) {
                 area = 'around';
             }
         }
+    }
+    if (area === 'encounter' && encounterTileId < 0) {
+        area = 'nedge';
     }
     // ANY
     if (area === 'any') {
@@ -1027,7 +1046,7 @@ function cocoonSpawn(bat) {
         let classes = [];
         console.log('eggLevel='+eggLevel);
         let saturation = false;
-        if (aliens.length >= 200 && playerInfos.mapTurn >= 100) {
+        if (playerInfos.alienSat >= coconSatLimit-1 && playerInfos.mapTurn >= 76) {
             saturation = true;
         }
         let spawnNum = 4;
@@ -1195,12 +1214,8 @@ function newEggCat() {
 
 function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
-    let saturation = false;
-    if (aliens.length >= 200) {
-        saturation = true;
-    }
     let overSaturation = false;
-    if (aliens.length >= 250) {
+    if (playerInfos.alienSat >= coconSatLimit-1 && playerInfos.mapTurn >= 76) {
         overSaturation = true;
     }
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
@@ -1305,8 +1320,10 @@ function eggSpawn(bat,fromEgg) {
             let dropTile = -1;
             alienUnits.forEach(function(unit) {
                 if (classes.includes(unit.class) && unit.kind.includes(eggCat)) {
-                    if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4 || unit.name === 'Punaises') {
-                        checkDiceMax = checkDiceMax+unit.rarity;
+                    if (unit.class != 'A' || unit.rarity != 2 || zone[0].mapDiff >= 7) {
+                        if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4 || unit.name === 'Punaises') {
+                            checkDiceMax = checkDiceMax+unit.rarity;
+                        }
                     }
                 }
             });
@@ -1319,10 +1336,12 @@ function eggSpawn(bat,fromEgg) {
                 raritySum = 0;
                 alienUnits.forEach(function(unit) {
                     if (classes.includes(unit.class) && unit.kind.includes(eggCat) && Object.keys(conselUnit).length <= 0) {
-                        if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4 || unit.name === 'Punaises') {
-                            raritySum = raritySum+unit.rarity;
-                            if (checkDice <= raritySum) {
-                                conselUnit = unit;
+                        if (unit.class != 'A' || unit.rarity != 2 || zone[0].mapDiff >= 7) {
+                            if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4 || unit.name === 'Punaises') {
+                                raritySum = raritySum+unit.rarity;
+                                if (checkDice <= raritySum) {
+                                    conselUnit = unit;
+                                }
                             }
                         }
                     }

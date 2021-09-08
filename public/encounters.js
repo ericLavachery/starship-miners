@@ -1,9 +1,15 @@
 function encounter() {
     let hard = false;
-    let encDice = rand.rand(2,28);
+    let encDice;
+    let encDiceMax = 28;
+    if (zone[0].mapDiff < 5) {
+        encDiceMax = encDiceMax-5;
+    }
     if (rand.rand(1,2) === 1) {
         hard = true;
-        encDice = rand.rand(0,24);
+        encDice = rand.rand(0,encDiceMax);
+    } else {
+        encDice = rand.rand(2,encDiceMax);
     }
     if (encDice === 0 || encDice === 1 || encDice === 2 || encDice === 3) {
         baseDeResistants(hard);
@@ -37,6 +43,96 @@ function putBastionAliens(hard) {
         dropEgg('Veilleurs','encounter');
     }
 }
+
+function madCitizens() {
+    console.log('CITOYENS ERRANTS');
+    let centreTileId = checkEncounterTile();
+    warning('Citoyens errants en vue!','',false,encounterTileId);
+    if (centreTileId >= 0) {
+        // CITOYENS
+        let dropTile;
+        let citDice = 5-Math.floor(zone[0].mapDiff/3);
+        let maxCit = Math.floor(zone[0].mapDiff/1.25)+4;
+        let minCit = Math.floor(zone[0].mapDiff/3)+1;
+        let numCit = rand.rand(minCit,maxCit)*6;
+        let citId = 126;
+        if (rand.rand(1,ruinsCrimChance) === 1) {
+            citId = 225;
+        }
+        let unitIndex = unitTypes.findIndex((obj => obj.id == citId));
+        conselUnit = unitTypes[unitIndex];
+        conselAmmos = ['lame-scrap','xxx','aucune','aucun'];
+        conselPut = false;
+        conselTriche = true;
+        putBat(centreTileId,numCit,0,'',false);
+        playerOccupiedTiles.push(centreTileId);
+        // CITOYENS
+        if (rand.rand(1,citDice) === 1) {
+            citId = 126;
+            if (zone[0].mapDiff < 5) {
+                if (rand.rand(1,ruinsCrimChance) === 1) {
+                    citId = 225;
+                }
+            }
+            numCit = rand.rand(minCit,maxCit)*6;
+            dropTile = checkDropSafe(centreTileId);
+            unitIndex = unitTypes.findIndex((obj => obj.id == citId));
+            conselUnit = unitTypes[unitIndex];
+            conselAmmos = ['lame-scrap','xxx','aucune','aucun'];
+            conselPut = false;
+            conselTriche = true;
+            putBat(dropTile,numCit,0,'',false);
+            playerOccupiedTiles.push(dropTile);
+        }
+        // CITOYENS
+        if (rand.rand(1,4) === 1 && zone[0].mapDiff >= 5) {
+            citId = 126;
+            numCit = rand.rand(minCit,maxCit)*6;
+            dropTile = checkDropSafe(centreTileId);
+            unitIndex = unitTypes.findIndex((obj => obj.id == citId));
+            conselUnit = unitTypes[unitIndex];
+            conselAmmos = ['lame-scrap','xxx','aucune','aucun'];
+            conselPut = false;
+            conselTriche = true;
+            putBat(dropTile,numCit,0,'',false);
+            playerOccupiedTiles.push(dropTile);
+        }
+        dropEgg('Veilleurs','encounter');
+    } else {
+        console.log('No good tile!');
+    }
+};
+
+function tooLate(hard) {
+    console.log('TROP TARD');
+    let centreTileId = checkEncounterTile();
+    warning('Restes d\'une base en vue!','',false,encounterTileId);
+    if (centreTileId >= 0) {
+        // Silo
+        conselUnit = getBatTypeById(158);
+        conselAmmos = ['xxx','xxx','aucun','aucun'];
+        conselPut = false;
+        conselTriche = true;
+        putBat(centreTileId,0,0,'nomove',false);
+        playerOccupiedTiles.push(centreTileId);
+        let bastion = getBatByTileId(centreTileId);
+        bastion.damage = rand.rand(1,50);
+        bastion.squadsLeft = rand.rand(2,5);
+        bastion.tags.push('camo');
+        bastion.fuzz = -2;
+        bastionRes(centreTileId);
+        if (hard) {
+            if (rand.rand(1,4) === 1) {
+                pactole(centreTileId,true);
+            } else {
+                bastionRes(centreTileId);
+            }
+        }
+        putBastionAliens(hard);
+    } else {
+        console.log('No good tile!');
+    }
+};
 
 function zoneIndustrielle(hard) {
     console.log('ZONE INDUSTRIELLE');
@@ -675,37 +771,6 @@ function putLaboUnits(centreTileId,hard) {
     }
 }
 
-function tooLate(hard) {
-    console.log('TROP TARD');
-    let centreTileId = checkEncounterTile();
-    warning('Restes d\'une base en vue!','',false,encounterTileId);
-    if (centreTileId >= 0) {
-        // Silo
-        conselUnit = getBatTypeById(158);
-        conselAmmos = ['xxx','xxx','aucun','aucun'];
-        conselPut = false;
-        conselTriche = true;
-        putBat(centreTileId,0,0,'nomove',false);
-        playerOccupiedTiles.push(centreTileId);
-        let bastion = getBatByTileId(centreTileId);
-        bastion.damage = rand.rand(1,50);
-        bastion.squadsLeft = rand.rand(2,5);
-        bastion.tags.push('camo');
-        bastion.fuzz = -2;
-        bastionRes(centreTileId);
-        if (hard) {
-            if (rand.rand(1,4) === 1) {
-                pactole(centreTileId,true);
-            } else {
-                bastionRes(centreTileId);
-            }
-        }
-        putBastionAliens(hard);
-    } else {
-        console.log('No good tile!');
-    }
-};
-
 function bastionDeBrigands(hard) {
     console.log('HORS LA LOI');
     let centreTileId = checkEncounterTile();
@@ -1050,43 +1115,6 @@ function putHLLUnits(centreTileId,hard) {
     }
 }
 
-function madCitizens() {
-    console.log('CITOYENS ERRANTS');
-    let centreTileId = checkEncounterTile();
-    warning('Citoyens errants en vue!','',false,encounterTileId);
-    if (centreTileId >= 0) {
-        // CITOYENS
-        let dropTile;
-        let numCit = rand.rand(1,6)*6;
-        let citId = 126;
-        if (rand.rand(1,ruinsCrimChance) === 1) {
-            citId = 225;
-        }
-        let unitIndex = unitTypes.findIndex((obj => obj.id == citId));
-        conselUnit = unitTypes[unitIndex];
-        conselAmmos = ['lame-scrap','xxx','aucune','aucun'];
-        conselPut = false;
-        conselTriche = true;
-        putBat(centreTileId,numCit,0,'',false);
-        playerOccupiedTiles.push(centreTileId);
-        // CITOYENS
-        if (rand.rand(1,4) === 1) {
-            numCit = rand.rand(1,6)*6;
-            dropTile = checkDropSafe(centreTileId);
-            unitIndex = unitTypes.findIndex((obj => obj.id == citId));
-            conselUnit = unitTypes[unitIndex];
-            conselAmmos = ['lame-scrap','xxx','aucune','aucun'];
-            conselPut = false;
-            conselTriche = true;
-            putBat(dropTile,numCit,0,'',false);
-            playerOccupiedTiles.push(dropTile);
-        }
-        dropEgg('Veilleurs','encounter');
-    } else {
-        console.log('No good tile!');
-    }
-};
-
 function baseDeResistants(hard) {
     console.log('BASTION DE RESISTANTS');
     let centreTileId = checkEncounterTile();
@@ -1103,37 +1131,6 @@ function baseDeResistants(hard) {
         console.log('No good tile!');
     }
 };
-
-function encounterAmmos(tech) {
-    if (tech >= 5) {
-        if (conselAmmos[0].includes('sm-')) {
-            conselAmmos[0] = 'sm-tungsten';
-        } else if (conselAmmos[0].includes('ac-')) {
-            conselAmmos[0] = 'ac-explosive';
-        } else if (conselAmmos[0].includes('pn-')) {
-            conselAmmos[0] = 'pn-tungsten';
-        } else if (conselAmmos[0].includes('fleche')) {
-            conselAmmos[0] = 'fleche-tungsten';
-        } else if (conselAmmos[0].includes('lame')) {
-            conselAmmos[0] = 'lame-tungsten';
-        } else if (conselAmmos[0] === 'perfo') {
-            conselAmmos[0] = 'tungsten';
-        }
-        if (conselAmmos[1].includes('sm-')) {
-            conselAmmos[1] = 'sm-tungsten';
-        } else if (conselAmmos[1].includes('ac-')) {
-            conselAmmos[1] = 'ac-explosive';
-        } else if (conselAmmos[1].includes('pn-')) {
-            conselAmmos[1] = 'pn-tungsten';
-        } else if (conselAmmos[1].includes('fleche')) {
-            conselAmmos[1] = 'fleche-tungsten';
-        } else if (conselAmmos[1].includes('lame')) {
-            conselAmmos[1] = 'lame-tungsten';
-        } else if (conselAmmos[1] === 'perfo') {
-            conselAmmos[1] = 'tungsten';
-        }
-    }
-}
 
 function putBastionUnits(centreTileId,hard) {
     zone[centreTileId].rd = true;
@@ -1404,6 +1401,37 @@ function putBastionUnits(centreTileId,hard) {
             playerOccupiedTiles.push(dropTile);
             thisUnit = getBatByTileId(dropTile);
             thisUnit.squadsLeft = rand.rand(4,6);
+        }
+    }
+}
+
+function encounterAmmos(tech) {
+    if (tech >= 5) {
+        if (conselAmmos[0].includes('sm-')) {
+            conselAmmos[0] = 'sm-tungsten';
+        } else if (conselAmmos[0].includes('ac-')) {
+            conselAmmos[0] = 'ac-explosive';
+        } else if (conselAmmos[0].includes('pn-')) {
+            conselAmmos[0] = 'pn-tungsten';
+        } else if (conselAmmos[0].includes('fleche')) {
+            conselAmmos[0] = 'fleche-tungsten';
+        } else if (conselAmmos[0].includes('lame')) {
+            conselAmmos[0] = 'lame-tungsten';
+        } else if (conselAmmos[0] === 'perfo') {
+            conselAmmos[0] = 'tungsten';
+        }
+        if (conselAmmos[1].includes('sm-')) {
+            conselAmmos[1] = 'sm-tungsten';
+        } else if (conselAmmos[1].includes('ac-')) {
+            conselAmmos[1] = 'ac-explosive';
+        } else if (conselAmmos[1].includes('pn-')) {
+            conselAmmos[1] = 'pn-tungsten';
+        } else if (conselAmmos[1].includes('fleche')) {
+            conselAmmos[1] = 'fleche-tungsten';
+        } else if (conselAmmos[1].includes('lame')) {
+            conselAmmos[1] = 'lame-tungsten';
+        } else if (conselAmmos[1] === 'perfo') {
+            conselAmmos[1] = 'tungsten';
         }
     }
 }

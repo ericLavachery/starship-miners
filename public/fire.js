@@ -154,7 +154,7 @@ function combat(melee) {
             if (targetBatType.skills.includes('guerrilla')) {
                 minimumFireAP = minFireAP-7;
             }
-            if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('after')) {
+            if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('after') || targetBat.eq.includes('w2-auto')) {
                 minimumFireAP = -999;
             }
             if ((defAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap') {
@@ -910,7 +910,9 @@ function attack(melee) {
     // creuseur
     let catOK = false;
     if (targetBatType.cat == 'buildings' || targetBatType.cat == 'vehicles') {
-        catOK = true;
+        if (targetBatType.size >= 10) {
+            catOK = true;
+        }
     }
     let trouOK = false;
     if (selectedWeap.ammo.includes('troueur') && totalDamage >= targetBat.armor*1.5) {
