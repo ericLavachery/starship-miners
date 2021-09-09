@@ -1232,7 +1232,7 @@ function skillsInfos(bat,batType) {
                 }
                 trapType = getBatTypeByName('Champ de mines');
                 trapCostOK = checkCost(trapType.costs);
-                apCost = Math.round(bat.ap*1.5);
+                apCost = Math.round(bat.ap/1.1);
                 apReq = Math.round(bat.ap/1.5);
                 if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');

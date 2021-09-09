@@ -293,7 +293,7 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
         resHere = minRes;
     }
     if (resHere > maxRes) {
-        resHere = maxRes;
+        resHere = Math.round((resHere-maxRes)/5)+maxRes;
     }
     let batRate = getMiningRate(bat,fullRate);
     let multiExtractAdj = 1;

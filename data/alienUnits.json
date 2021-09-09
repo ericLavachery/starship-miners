@@ -991,7 +991,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"bite9",
-            "ammo":["creuseur"]
+            "ammo":["none"]
         },
         "weapon2":{
             "name":"Rostre",
@@ -1048,7 +1048,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"bigbite",
-            "ammo":["creuseur"]
+            "ammo":["none"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -2025,7 +2025,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"bite",
-            "ammo":["creuseur"]
+            "ammo":["none"]
         },
         "weapon2":{
             "name":"Toile",

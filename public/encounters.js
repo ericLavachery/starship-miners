@@ -182,7 +182,7 @@ function putIndusUnits(centreTileId,hard) {
     if (hard) {
         bastion.squadsLeft = rand.rand(4,6);
     } else {
-        bastion.squadsLeft = rand.rand(1,3);
+        bastion.squadsLeft = rand.rand(2,3);
     }
     if (bastion.fuzz < 5) {
         bastion.fuzz = 5;
@@ -214,7 +214,7 @@ function putIndusUnits(centreTileId,hard) {
         if (hard) {
             thisUnit.squadsLeft = rand.rand(4,6);
         } else {
-            thisUnit.squadsLeft = rand.rand(1,3);
+            thisUnit.squadsLeft = rand.rand(2,3);
         }
     }
     // POMPE
@@ -244,7 +244,7 @@ function putIndusUnits(centreTileId,hard) {
             if (hard) {
                 thisUnit.squadsLeft = rand.rand(4,6);
             } else {
-                thisUnit.squadsLeft = rand.rand(1,3);
+                thisUnit.squadsLeft = rand.rand(2,3);
             }
         }
     }
@@ -282,7 +282,7 @@ function putIndusUnits(centreTileId,hard) {
     if (hard) {
         laMine.squadsLeft = rand.rand(4,6);
     } else {
-        laMine.squadsLeft = rand.rand(1,3);
+        laMine.squadsLeft = rand.rand(2,3);
     }
     // MINE 2
     if (rand.rand(1,2) === 1 && hard) {
@@ -316,7 +316,7 @@ function putIndusUnits(centreTileId,hard) {
         if (hard) {
             thisUnit.squadsLeft = rand.rand(4,6);
         } else {
-            thisUnit.squadsLeft = rand.rand(1,3);
+            thisUnit.squadsLeft = rand.rand(2,3);
         }
     }
     // GENERATEUR
@@ -365,7 +365,7 @@ function putIndusUnits(centreTileId,hard) {
             if (hard) {
                 thisUnit.squadsLeft = rand.rand(4,6);
             } else {
-                thisUnit.squadsLeft = rand.rand(1,3);
+                thisUnit.squadsLeft = rand.rand(2,3);
             }
         }
     }
@@ -488,7 +488,7 @@ function putColonUnits(centreTileId,hard) {
     if (hard) {
         bastion.squadsLeft = rand.rand(4,6);
     } else {
-        bastion.squadsLeft = rand.rand(1,3);
+        bastion.squadsLeft = rand.rand(2,3);
     }
     if (bastion.fuzz < 5) {
         bastion.fuzz = 5;
@@ -530,7 +530,7 @@ function putColonUnits(centreTileId,hard) {
     if (hard) {
         thisUnit.squadsLeft = rand.rand(3,6);
     } else {
-        thisUnit.squadsLeft = rand.rand(1,3);
+        thisUnit.squadsLeft = rand.rand(2,3);
     }
     // BAR
     if (rand.rand(1,2) === 1 && hard) {
@@ -661,7 +661,7 @@ function putLaboUnits(centreTileId,hard) {
     if (hard) {
         bastion.squadsLeft = rand.rand(4,6);
     } else {
-        bastion.squadsLeft = rand.rand(1,3);
+        bastion.squadsLeft = rand.rand(2,3);
     }
     if (bastion.fuzz < 5) {
         bastion.fuzz = 5;
@@ -686,7 +686,7 @@ function putLaboUnits(centreTileId,hard) {
     if (hard) {
         thisUnit.squadsLeft = rand.rand(3,5);
     } else {
-        thisUnit.squadsLeft = rand.rand(1,3);
+        thisUnit.squadsLeft = rand.rand(2,3);
     }
     // CHERCHEURS (dans le labo)
     let sciDice = rand.rand(1,3);
@@ -1160,7 +1160,7 @@ function putBastionUnits(centreTileId,hard) {
     if (hard) {
         bastion.squadsLeft = rand.rand(4,6);
     } else {
-        bastion.squadsLeft = rand.rand(1,2);
+        bastion.squadsLeft = rand.rand(2,3);
     }
     if (bastion.fuzz < 5) {
         bastion.fuzz = 5;
@@ -1265,7 +1265,7 @@ function putBastionUnits(centreTileId,hard) {
         if (hard) {
             thisUnit.squadsLeft = rand.rand(4,6);
         } else {
-            thisUnit.squadsLeft = rand.rand(1,3);
+            thisUnit.squadsLeft = rand.rand(2,3);
         }
     }
     // SAPEURS
@@ -1325,7 +1325,7 @@ function putBastionUnits(centreTileId,hard) {
         if (hard) {
             thisUnit.squadsLeft = rand.rand(4,6);
         } else {
-            thisUnit.squadsLeft = rand.rand(1,3);
+            thisUnit.squadsLeft = rand.rand(2,3);
         }
     }
     // MINEURS
@@ -1377,7 +1377,7 @@ function putBastionUnits(centreTileId,hard) {
         if (hard) {
             thisUnit.squadsLeft = rand.rand(5,7);
         } else {
-            thisUnit.squadsLeft = rand.rand(1,3);
+            thisUnit.squadsLeft = rand.rand(2,4);
             thisUnit.tags.push('aU');
             thisUnit.tags.push('aU');
             thisUnit.tags.push('aU');

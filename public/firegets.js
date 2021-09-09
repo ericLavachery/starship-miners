@@ -502,7 +502,7 @@ function transDestroy(deadId,tileId) {
     let crashEscapeTile = -1;
     crashBats.forEach(function(bat) {
         crashEscapeTile = -1;
-        if (rand.rand(1,3+playerInfos.comp.train) != 1) {
+        if (rand.rand(1,3+playerInfos.comp.train+playerInfos.comp.log) != 1) {
             crashEscapeTile = getCrashEscapeTile(tileId);
         }
         if (crashEscapeTile >= 0) {
@@ -511,9 +511,12 @@ function transDestroy(deadId,tileId) {
             bat.oldTileId = crashEscapeTile;
             savedBats++;
         } else {
+            let batType = getBatType(bat);
             batIndex = bataillons.findIndex((obj => obj.id == bat.id));
             bataillons.splice(batIndex,1);
-            playerInfos.unitsLost = playerInfos.unitsLost+1;
+            if (!batType.skills.includes('nodeathcount')) {
+                playerInfos.unitsLost = playerInfos.unitsLost+1;
+            }
         }
     });
     if (savedBats >= 1) {
@@ -555,9 +558,13 @@ function calcDamage(weapon,power,armor,defBat) {
     // creuseur
     if (defBat.tags.includes('trou')) {
         if (weapon.ammo.includes('troueur')) {
-            armorModifier = 0;
+            if (armorModifier > 0.15) {
+                armorModifier = 0.15;
+            }
         } else if (weapon.ammo.includes('creuseur')) {
-            armorModifier = 0.15;
+            if (armorModifier > 0.33) {
+                armorModifier = 0.33;
+            }
         }
     }
     let modifiedArmor = Math.round(armor*armorModifier);
