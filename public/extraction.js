@@ -117,13 +117,13 @@ function getTerrainRes(terrain,tile) {
     res = getResByName('Végétaux');
     if (terrain.name === 'F') {
         srs.Végétaux = 25+((7-tile.seed)*25);
-        srs.Végétaux = Math.round(srs.Végétaux*zone[0].ensol/120);
+        srs.Végétaux = Math.round(srs.Végétaux*zone[0].ensol/150);
     } else if (terrain.name === 'B') {
         srs.Végétaux = 250+((7-tile.seed)*65);
-        srs.Végétaux = Math.round(srs.Végétaux*(zone[0].ensol+100)/220);
+        srs.Végétaux = Math.round(srs.Végétaux*(zone[0].ensol+100)/250);
     } else if (terrain.veg >= 0.5) {
         srs.Végétaux = (Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*15)-15+(tile.seed*5);
-        srs.Végétaux = Math.round(srs.Végétaux*zone[0].ensol/120);
+        srs.Végétaux = Math.round(srs.Végétaux*zone[0].ensol/150);
         if (terrain.name === 'S') {
             if (tile.seed === 1) {
                 srs.Végétaux = srs.Végétaux+77;
@@ -196,40 +196,46 @@ function getTerrainRes(terrain,tile) {
     return srs;
 };
 
-function getMiningRate(bat,fullRate) {
+function getMiningRate(bat,fullRate,noMining) {
     let batType = getBatType(bat);
     let miningAdj = 1;
-    if (batType.weapon2.name === 'Foreuse' || batType.weapon2.name === 'Pioche') {
-        if (bat.ammo2 === 'lame') {
-            miningAdj = 1;
-        } else if (bat.ammo2 === 'lame-tungsten') {
-            miningAdj = 1.2;
-        } else if (bat.ammo2 === 'lame-carbone') {
-            miningAdj = 1.3;
-        } else if (bat.ammo2 === 'lame-plasma') {
-            miningAdj = 1.5;
+    if (!noMining) {
+        if (batType.weapon2.name === 'Foreuse' || batType.weapon2.name === 'Pioche') {
+            if (bat.ammo2 === 'lame') {
+                miningAdj = 1;
+            } else if (bat.ammo2 === 'lame-tungsten') {
+                miningAdj = 1.2;
+            } else if (bat.ammo2 === 'lame-carbone') {
+                miningAdj = 1.3;
+            } else if (bat.ammo2 === 'lame-plasma') {
+                miningAdj = 1.5;
+            }
+        } else if (batType.weapon.name === 'Foreuse' || batType.weapon.name === 'Pioche') {
+            if (bat.ammo === 'lame') {
+                miningAdj = 1;
+            } else if (bat.ammo === 'lame-tungsten') {
+                miningAdj = 1.2;
+            } else if (bat.ammo === 'lame-carbone') {
+                miningAdj = 1.3;
+            } else if (bat.ammo === 'lame-plasma') {
+                miningAdj = 1.6;
+            }
         }
-    } else if (batType.weapon.name === 'Foreuse' || batType.weapon.name === 'Pioche') {
-        if (bat.ammo === 'lame') {
-            miningAdj = 1;
-        } else if (bat.ammo === 'lame-tungsten') {
-            miningAdj = 1.2;
-        } else if (bat.ammo === 'lame-carbone') {
-            miningAdj = 1.3;
-        } else if (bat.ammo === 'lame-plasma') {
+        if (bat.eq === 'tungextract') {
+            miningAdj = 1.35;
+        } else if (bat.eq === 'plasmaextract') {
+            miningAdj = 1.7;
+        } else if (bat.eq === 'monoextract') {
+            miningAdj = 2.2;
+        } else if (bat.eq === 'autoextract') {
+            miningAdj = 1.7;
+        } else if (bat.eq === 'hydroextract') {
             miningAdj = 1.6;
         }
-    }
-    if (bat.eq === 'tungextract') {
-        miningAdj = 1.35;
-    } else if (bat.eq === 'plasmaextract') {
-        miningAdj = 1.7;
-    } else if (bat.eq === 'monoextract') {
-        miningAdj = 2.2;
-    } else if (bat.eq === 'autoextract') {
-        miningAdj = 1.7;
-    } else if (bat.eq === 'hydroextract') {
-        miningAdj = 1.6;
+    } else {
+        if (bat.eq === 'autoextract') {
+            miningAdj = 1.7;
+        }
     }
     if (bat.tags.includes('camo')) {
         miningAdj = miningAdj/2;
@@ -295,7 +301,11 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     if (resHere > maxRes) {
         resHere = Math.round((resHere-maxRes)/5)+maxRes;
     }
-    let batRate = getMiningRate(bat,fullRate);
+    let noMining = false;
+    if (res.bld === 'Comptoir' || res.bld === 'Pompe') {
+        noMining = true;
+    }
+    let batRate = getMiningRate(bat,fullRate,noMining);
     let multiExtractAdj = 1;
     if (!forInfos) {
         if (bat.extracted.length >= 2) {
@@ -383,7 +393,7 @@ function chooseRes(again) {
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName or">RESSOURCES à extraire</span><br>');
-    let rate = getMiningRate(selectedBat,true);
+    let rate = getMiningRate(selectedBat,true,false);
     let allRes = getAllRes(selectedBat);
     console.log('allRes');
     console.log(allRes);

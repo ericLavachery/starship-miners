@@ -3225,6 +3225,7 @@
             "range":0,
             "isMelee":true,
             "isShort":true,
+            "noGrip":true,
             "rof":20,
             "accuracy":18,
             "dca":0.75,

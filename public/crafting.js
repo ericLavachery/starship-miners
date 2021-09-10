@@ -376,7 +376,7 @@ function solarProd(bat,batType,time,sim) {
                 } else if (tile.terrain === 'F') {
                     energyProd = rand.rand(22,53);
                 }
-                energyProd = Math.ceil(energyProd*zone[0].ensol/100);
+                energyProd = Math.ceil(energyProd*zone[0].ensol/150);
             }
             energyProd = energyCreation(energyProd);
             // resAdd('Energie',energyProd);

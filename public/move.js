@@ -454,6 +454,7 @@ function terrainAccess(batId,targetTileId) {
         let unitTile = getTileById(bat.tileId);
         if (unitTile.rd) {
             terVeg = 0;
+            terFlood = 0;
         }
     }
     if (zone[targetTileId].rd) {

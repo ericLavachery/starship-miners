@@ -447,7 +447,7 @@
     {
         "id":49,
         "name":"Rambos",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":9,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":10,"detruas":99,"brasier":99},
         "bldReq":["Camp d'entraînement","Arsenal"],
         "costs":{"Fer":120,"Scrap":120,"Carbone":60,"Aluminium":60,"Tungstène":60,"Végétaux":80,"Soufre":30,"Plomb":30,"Drogues":60,"Or":60,"Chlore":10,"Tissus":5},
         "fabTime":30
@@ -619,7 +619,7 @@
     {
         "id":77,
         "name":"Exobios",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":9,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":10,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Laboratoire","Prisons"],
         "compReq":{"gen":1},
         "compPass":["drogmulojs"],
@@ -659,7 +659,7 @@
     {
         "id":82,
         "name":"Droïdes",
-        "levels":{"rednecks":99,"blades":99,"bulbos":6,"drogmulojs":99,"tiradores":11,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":6,"drogmulojs":99,"tiradores":9,"detruas":99,"brasier":99},
         "bldReq":["Chaîne de montage","Armurerie","Laboratoire"],
         "compReq":{"robo":1},
         "compPass":["tiradores"],
@@ -1459,7 +1459,7 @@
     {
         "id":94,
         "name":"Scraptruck",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":10,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":9,"tiradores":99,"detruas":99,"brasier":99},
         "bldEquiv":["Décharge"],
         "bldReq":["Armurerie","Centre de tri","Garage"],
         "costs":{"Fer":99,"Scrap":414,"Carbone":135,"Aluminium":108,"Moteurs":63,"Tungstène":81,"Cuivre":18,"Batteries":45,"Compo2":152,"Compo3":74,"Huile":18,"Eau":120,"Silicium":15,"Bore":36},
@@ -1488,7 +1488,7 @@
     {
         "id":100,
         "name":"Spears",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":10,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":11,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Chaîne de montage"],
         "costs":{"Fer":200,"Scrap":180,"Carbone":160,"Aluminium":60,"Moteurs":55,"Titane":60,"Tungstène":40,"Cuivre":35,"Batteries":20,"Compo2":120,"Huile":10,"Nickel":80,"Mendium":40,"Azote":80,"Explosifs":20,"Fuel":40},
         "deploy":{"Fuel":95},

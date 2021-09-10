@@ -5,8 +5,8 @@ function generateVM() {
     createVM(mapSize);
     washReports();
     // zoneReport(zone,false);
-    let ensolFactor = rand.rand(25,35);
-    let ensolBonus = rand.rand(0,80);
+    let ensolFactor = rand.rand(28,32);
+    let ensolBonus = rand.rand(20,60);
     zone[0].ensol = Math.round(100*ensolFactor/10)+ensolBonus;
     writeMapStyles();
     showMap(zone,false);
@@ -1632,7 +1632,7 @@ function zoneReport(myZone,quiet) {
             if (percF >= 40) {
                 if (rand.rand(1,5) >= 3) {
                     myZone[0].snd = 'jungle';
-                    sndEnsolBonus = 200;
+                    sndEnsolBonus = 230;
                 } else {
                     myZone[0].snd = 'rainforest';
                     sndEnsolBonus = 100;
@@ -1647,7 +1647,7 @@ function zoneReport(myZone,quiet) {
                     sndEnsolBonus = 150;
                 } else {
                     myZone[0].snd = 'birds';
-                    sndEnsolBonus = 115;
+                    sndEnsolBonus = 125;
                 }
             } else if (percG+percB >= 75) {
                 if (rand.rand(1,2) === 1) {
@@ -1687,8 +1687,8 @@ function zoneReport(myZone,quiet) {
     if (myZone[0].ensol === undefined) {
         let ensolFactor = rand.rand(25,35);
         let ensolBonus = rand.rand(0,80);
-        myZone[0].ensol = Math.round(percP*ensolFactor/10)+ensolBonus+sndEnsolBonus-100;
-        if (myZone[0].ensol < 50) {
+        myZone[0].ensol = Math.round((Math.round((percP+75)*ensolFactor/10)+ensolBonus)*sndEnsolBonus/125);
+        if (myZone[0].ensol < 50 && myZone[0].planet != 'Sarak') {
             myZone[0].ensol = 40+rand.rand(0,10);
         }
         if (playerInfos.comp.det >= 2 && !quiet) {

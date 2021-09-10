@@ -336,6 +336,12 @@ function calcRamasseCost(bat,batType,transBatType) {
     if (transBatType.skills.includes('hardembark')) {
         ramasseCost = ramasseCost+4;
     }
+    if (transBatType.skills.includes('ouvert')) {
+        ramasseCost = ramasseCost-4;
+    }
+    if (ramasseCost < 0) {
+        ramasseCost = 0;
+    }
     return ramasseCost;
 }
 
