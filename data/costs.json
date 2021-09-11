@@ -1312,8 +1312,8 @@
         "levels":{"rednecks":6,"blades":6,"bulbos":6,"drogmulojs":7,"tiradores":6,"detruas":7,"brasier":7},
         "bldReq":["Garage"],
         "compReq":{"trans":1},
-        "costs":{"Fer":60,"Scrap":624,"Carbone":120,"Moteurs":60,"Batteries":12,"Compo2":120},
-        "deploy":{"Fuel":65},
+        "costs":{"Fer":60,"Scrap":624,"Carbone":120,"Moteurs":60,"Batteries":12,"Compo2":120,"Drogues":5,"Tissus":5,"Chlore":5,"Zinc":5,"Silicium":5},
+        "deploy":{"Fuel":65,"Chlore":5,"Zinc":10,"Tissus":5},
         "fabTime":50,
         "inRuin":2
     },
@@ -1694,7 +1694,7 @@
         "bldReq":["Garage"],
         "compReq":{"cam":1},
         "compPass":["blades"],
-        "costs":{"Fer":48,"Scrap":128,"Carbone":64,"Bois":32,"Moteurs":16,"Cuivre":24,"Electros":32,"Batteries":36,"Compo2":32,"Huile":10,"Végétaux":144,"Drogues":5,"Tissus":5,"Chlore":5,"Végétaux":25,"Zinc":5,"Silicium":5},
+        "costs":{"Fer":48,"Scrap":128,"Carbone":64,"Bois":32,"Moteurs":16,"Cuivre":24,"Electros":32,"Batteries":36,"Compo2":32,"Huile":10,"Végétaux":144,"Drogues":5,"Tissus":5,"Chlore":5,"Zinc":5,"Silicium":5},
         "deploy":{"Energie":105,"Chlore":5,"Zinc":10,"Tissus":5},
         "fabTime":30,
         "inRuin":2

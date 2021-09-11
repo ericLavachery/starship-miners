@@ -252,9 +252,9 @@ function bfconst(cat,triche,upgrade,retour) {
             $('#conUnitList').append('<br>');
         }
     }
-    if (!retour) {
-        $("#conUnitList").animate({scrollTop:0},"fast");
-    }
+    // if (!retour) {
+    //     $("#conUnitList").animate({scrollTop:0},"fast");
+    // }
     commandes();
 };
 

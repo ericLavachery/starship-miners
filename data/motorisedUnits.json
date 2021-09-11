@@ -102,7 +102,7 @@
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","carrousel1","g2motor","snorkel","e-mecano"],
         "log3eq":"snorkel",
         "moveCost":2,
@@ -159,7 +159,7 @@
             "maxAmmo":32,
             "ravitBld":"Générateur"
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","g2motor","chenilles","snorkel","e-mecano"],
         "log3eq":"snorkel",
         "moveCost":4,
@@ -215,7 +215,7 @@
             "sound":"belier",
             "ammo":["standard","belier-spike"]
         },
-        "protection":["aucun","scrap","kanchan","chobham","rhodu","iso","swag","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","g2motor","lunette1","snorkel","e-flash","theeye","e-mecano"],
         "log3eq":"snorkel",
         "moveCost":2,
@@ -273,7 +273,7 @@
             "maxAmmo":45,
             "ravitBld":"Atelier"
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","g2motor","snorkel","e-flash"],
         "log3eq":"snorkel",
         "moveCost":2,
@@ -331,7 +331,7 @@
             "sound":"harvest",
             "ammo":["lame","lame-tungsten","lame-carbone"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","carrousel1","g2motor","snorkel","e-flash"],
         "log3eq":"carrousel1",
         "moveCost":2,
@@ -389,7 +389,7 @@
             "maxAmmo":28,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","carrousel2","longtom2","g2motor","snorkel"],
         "log3eq":"longtom2",
         "moveCost":3,
@@ -564,7 +564,7 @@
             "sound":"mit_heavy2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","lunette2","chargeur2","carrousel1","longtom1","g2motor","snorkel","e-flash","e-mecano"],
         "log3eq":"longtom1",
         "moveCost":2,
@@ -627,7 +627,7 @@
             "maxAmmo":44,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","carrousel","longtom1","g2motor"],
         "log3eq":"longtom1",
         "moveCost":6,
@@ -688,7 +688,7 @@
             "sound":"belier",
             "ammo":["standard"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","g2motor"],
         "log3eq":"snorkel",
         "moveCost":7,
@@ -741,7 +741,7 @@
             "sound":"calibre_antichar",
             "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","lunette2","chargeur1","chargeur2","g2motor","e-mecano","e-medic"],
         "log3eq":"chargeur",
         "moveCost":5,
@@ -804,7 +804,7 @@
             "sound":"belier",
             "ammo":["standard","belier-spike"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","g2motor","chenilles","snorkel","e-flash","e-mecano","g2siege"],
         "log3eq":"snorkel",
         "moveCost":2,
@@ -866,7 +866,7 @@
             "sound":"belier",
             "ammo":["standard","belier-spike"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","g2motor","e-flash","theeye","waterproof","e-mecano"],
         "log3eq":"g2motor",
         "moveCost":3,
@@ -928,7 +928,7 @@
             "maxAmmo":12,
             "ravitBld":"Arsenal"
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","carrousel1","longtom1","g2motor","snorkel"],
         "log3eq":"snorkel",
         "moveCost":3,
@@ -1052,7 +1052,7 @@
             "sound":"belier",
             "ammo":["standard","belier-spike"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","lunette1","chargeur1","silencieux1","g2motor","snorkel","e-flash","waterproof"],
         "log3eq":"snorkel",
         "moveCost":2,
@@ -1173,7 +1173,7 @@
             "maxAmmo":6,
             "ravitBld":"Arsenal"
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","g2motor","snorkel","lunette1","detector"],
         "log3eq":"detector",
         "moveCost":3,
@@ -1452,7 +1452,7 @@
             "sound":"belier",
             "ammo":["standard","belier-spike"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","adamantite"],
         "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","belier","e-flash"],
         "log3eq":"snorkel",
         "moveCost":3,
@@ -1578,7 +1578,7 @@
             "sound":"belier",
             "ammo":["standard","belier-spike"]
         },
-        "protection":["aucun","scrap","kanchan","chobham","rhodu","iso","swag","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","g2motor","chenilles","snorkel","belier","e-flash"],
         "log3eq":"chenilles",
         "moveCost":4,
@@ -1755,7 +1755,7 @@
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","carrousel1","chargeur2","g2motor","snorkel","e-flash","e-mecano"],
         "log3eq":"snorkel",
         "moveCost":4,
@@ -2074,7 +2074,7 @@
             "sound":"cradle",
             "ammo":["boulet"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","w1-ggun","w2-brol"],
         "log3eq":"",
         "moveCost":10,
@@ -2142,7 +2142,7 @@
             "sound":"mit_heavy3",
             "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","adamantite"],
         "equip":["aucun","carrousel1","longtom1","g2motor","snorkel"],
         "log3eq":"g2motor",
         "moveCost":3,
@@ -2165,7 +2165,7 @@
         "squadSize":3,
         "crew":2,
         "hp":90,
-        "armor":7,
+        "armor":6,
         "size":30,
         "volume":0.9,
         "stealth":0,
@@ -2199,18 +2199,20 @@
             "sound":"belier",
             "ammo":["standard","belier-spike"]
         },
-        "protection":["aucun","scrap","kanchan","chobham","rhodu","iso","swag","adamantite"],
-        "equip":["aucun","g2motor","chenilles","snorkel","belier","e-flash","e-mecano","chargeur1"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "equip":["aucun","g2motor","chenilles","snorkel","belier","e-flash","e-mecano","e-medic","chargeur1"],
         "log3eq":"chenilles",
         "moveCost":2,
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["transport","fret","hardmove","dumper","light","crewsave","recupcit","recupres","ouvert"],
-        "mecanoCost":13,
+        "skills":["transport","fret","hardmove","dumper","light","crewsave","recupcit","recupres","ouvert","badmecano","badmedic","dealer","starka","kirin"],
+        "mediCost":12,
+        "mecanoCost":16,
         "transMaxSize":9,
         "transUnits":1000,
         "transRes":750,
+        "maxDrug":12,
         "fuzz":2,
         "deathFx":"planeexploair1",
         "mvSnd":"truck"
@@ -2328,7 +2330,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fouille","fortif","guerrilla","fret","transport","selfbadmecano","hscarpmove","dumper","extraction","light","crewsave","recupcit","recupres"],
+        "skills":["fouille","fortif","guerrilla","fret","transport","selfbadmecano","hscarpmove","dumper","extraction","light","crewsave","recupcit","recupres","ouvert"],
         "mecanoCost":16,
         "mining":{
             "level":2,
@@ -2399,7 +2401,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fouille","fortif","guerrilla","tirailleur","defense","fret","transport","selfbadmecano","hscarpmove","dumper","extraction","light","crewsave","trapap","recupcit","recupres"],
+        "skills":["fouille","fortif","guerrilla","tirailleur","defense","fret","transport","selfbadmecano","hscarpmove","dumper","extraction","light","crewsave","trapap","recupcit","recupres","ouvert"],
         "mecanoCost":16,
         "mining":{
             "level":1,
@@ -2582,7 +2584,7 @@
             "sound":"belier",
             "ammo":["standard","belier-spike"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","g2motor","snorkel","e-flash","e-mecano"],
         "log3eq":"snorkel",
         "moveCost":4,
@@ -2642,7 +2644,7 @@
             "sound":"belier",
             "ammo":["standard","belier-spike"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","carrousel1","g2motor","e-flash","waterproof"],
         "log3eq":"g2motor",
         "moveCost":3,
@@ -2896,7 +2898,7 @@
             "sound":"belier",
             "ammo":["standard","belier-spike"]
         },
-        "protection":["aucun","scrap","kanchan","chobham","rhodu","iso","swag","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","g2motor","chenilles","snorkel","belier","e-flash","e-mecano"],
         "log3eq":"chenilles",
         "moveCost":2,
@@ -2959,7 +2961,7 @@
             "sound":"belier",
             "ammo":["standard","belier-spike"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","lunette1","chargeur1","g2motor","snorkel","e-flash","chenilles"],
         "log3eq":"chenilles",
         "moveCost":2,
@@ -2967,7 +2969,7 @@
         "maxScarp":2,
         "maxVeg":3,
         "skills":["fortif","transport","fret","maycamo","selfbadmecano","hardmove","dumper","light","badcrewsave","recupcit","recupres"],
-        "mecanoCost":22,
+        "mecanoCost":16,
         "transMaxSize":9,
         "transUnits":900,
         "transRes":300,
@@ -3019,7 +3021,7 @@
             "sound":"harvest",
             "ammo":["lame","lame-tungsten","lame-carbone"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","e-flash","e-mecano","g2tools"],
         "log3eq":"chenilles",
         "moveCost":3,
@@ -3083,7 +3085,7 @@
             "sound":"calibre_pierce_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
-        "protection":["aucun","scrap","kanchan","chobham","rhodu","iso","swag","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","lunette2","chargeur2","g2motor","chenilles","theeye","e-mecano"],
         "log3eq":"chenilles",
         "moveCost":2,
@@ -3369,7 +3371,7 @@
             "sound":"mit_light1",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","carrousel1","longtom1","g2motor","snorkel"],
         "log3eq":"longtom1",
         "moveCost":3,
@@ -3428,7 +3430,7 @@
             "maxAmmo":18,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","g2motor"],
         "log3eq":"",
         "moveCost":2,
@@ -3487,7 +3489,7 @@
             "maxAmmo":6,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","g2motor"],
         "log3eq":"",
         "moveCost":1,
@@ -3544,7 +3546,7 @@
             "maxAmmo":6,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","chargeur1","g2motor"],
         "log3eq":"",
         "moveCost":1,
@@ -3599,7 +3601,7 @@
             "maxAmmo":32,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","chargeur2","g2motor"],
         "log3eq":"",
         "moveCost":2,
@@ -4127,7 +4129,7 @@
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","swag","bonibo","adamantite"],
         "equip":["aucun","chargeur1","chargeur2","g2motor"],
         "log3eq":"g2motor",
         "moveCost":2,
@@ -4186,7 +4188,7 @@
             "sound":"belier",
             "ammo":["standard","belier-spike"]
         },
-        "protection":["aucun","scrap","acier","bugium","titane","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
+        "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","iso","swag","bonibo","adamantite"],
         "equip":["aucun","carrousel1","g2motor","snorkel","e-flash"],
         "log3eq":"snorkel",
         "moveCost":2,

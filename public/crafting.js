@@ -248,6 +248,10 @@ function showCraftCost(craft,number) {
     console.log(craftFactor);
     craftFactor = adjCraftFactor(craft,craftFactor);
     console.log(craftFactor);
+    let sonde = getBatTypeByName('Impacteur');
+    if (!playerInfos.bldVM.includes('Aérodocks')) {
+        sonde = getBatTypeByName('Sonde');
+    }
     Object.entries(craft.cost).map(entry => {
         let key = entry[0];
         let value = entry[1];
@@ -256,7 +260,20 @@ function showCraftCost(craft,number) {
         let resColor = 'vert';
         if (playerInfos.mapTurn >= 3) {
             if (playerInfos.endRes[key] != undefined) {
-                if (playerInfos.endRes[key]-playerInfos.startRes[key] < value) {
+                let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
+                if (sondeCount === 'cy') {
+                    if (sonde.costs[key] != undefined) {
+                        resResult = resResult-sonde.costs[key];
+                    }
+                }
+                if (homeCount === 'cy') {
+                    if (Object.keys(playerInfos.weekRes).length >= 1) {
+                        if (playerInfos.weekRes[key] != undefined) {
+                            resResult = resResult+playerInfos.weekRes[key];
+                        }
+                    }
+                }
+                if (resResult < value) {
                     resColor = 'or';
                 }
             }

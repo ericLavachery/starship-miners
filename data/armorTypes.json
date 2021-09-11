@@ -294,6 +294,17 @@
         "costs":{"Scrap":3,"Carbone":9,"Titane":3,"Hydrogène":4,"Azote":3,"Wingium":2}
     },
     {
+        "name": "bulk",
+        "cat":"armor",
+        "armor": 2,
+        "ap": -3,
+        "skills": ["resistall"],
+        "bldReq":["Arsenal"],
+        "compReq":{"mat":1,"ca":2},
+        "factor":"thp",
+        "costs":{"Scrap":9,"Bois":6,"Carbone":9,"Titane":9,"Nickel":3,"Silicium":3,"Mendium":6}
+    },
+    {
         "name": "iso",
         "cat":"armor",
         "armor": 1,
