@@ -1019,7 +1019,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","selfbadmedic","fastguet","maycamo","strong"],
+        "skills":["fouille","fortif","selfbadmedic","fastguet","maycamo","strong","souschef"],
         "mediCost":6,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
@@ -1430,7 +1430,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","ranger","camo","embuscade","baddef","selfbadmedic","dealer","octiron"],
+        "skills":["fouille","fortif","ranger","camo","embuscade","baddef","selfbadmedic","dealer","octiron","souschef"],
         "mediCost":9,
         "maxDrug":6,
         "fuzz":-1,
@@ -1832,7 +1832,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","undead","camo","clone","nodeathcount"],
+        "skills":["fouille","fortif","undead","camo","clone","nodeathcount","lowmed"],
         "fuzz":-1
     },
     {
@@ -2795,7 +2795,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","fly","jetpack","longshot","inflammable","baddef","oknitro"],
+        "skills":["fouille","fortif","fly","jetpack","longshot","inflammable","baddef","oknitro","souschef"],
         "mediCost":14,
         "fuzz":2.5,
         "deathFx":"human2"
@@ -3300,7 +3300,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fouille","fortif","guerrilla","tirailleur","selfbadmedic","maycamo","moto","oknitro","defense","trapfosse","fret","fastempty","fortifw2"],
+        "skills":["fouille","fortif","guerrilla","tirailleur","selfbadmedic","maycamo","moto","oknitro","defense","trapfosse","fret","fastempty","fortifw2","souschef"],
         "mediCost":15,
         "transRes":56,
         "maxSkill":4,
@@ -3857,7 +3857,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","guerrilla","fastguet","maycamo","baddef","selfbadmedic"],
+        "skills":["fouille","fortif","guerrilla","fastguet","maycamo","baddef","selfbadmedic","souschef"],
         "mediCost":9,
         "fuzz":1.5,
         "deathFx":"195954__minian89__death-blood-splatter"
@@ -4868,7 +4868,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","undead","maycamo"],
+        "skills":["fouille","fortif","undead","maycamo","souschef"],
         "mediCost":10,
         "fuzz":2,
         "deathFx":"516766__gentlemanwalrus__death-rattle"

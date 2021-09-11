@@ -197,7 +197,9 @@ function healEverything() {
         bat.squadsLeft = batType.squads;
         bat.damage = 0;
         if (bat.soins != undefined) {
-            bat.soins = 0;
+            if (!batType.skills.includes('clone')) {
+                bat.soins = 0;
+            }
         }
         if (bat.autoLoad != undefined) {
             if (bat.autoLoad.length >= 1) {

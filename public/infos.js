@@ -69,10 +69,18 @@ function batInfos(bat,batType,pop) {
         }
     }
     $('#'+bodyPlace).append('<div class="shSpace"></div>');
-    if (bat.chief != undefined) {
-        if (bat.chief != '') {
-            let grade = getGrade(bat,batType);
-            $('#'+bodyPlace).append('<span class="constName rose">'+grade+' '+bat.chief+'</span><br>');
+    if (!batType.skills.includes('clone') && !batType.skills.includes('robot') && batType.crew >= 1) {
+        let grade = getGrade(bat,batType);
+        if (bat.chief != undefined) {
+            if (bat.chief != '') {
+                $('#'+bodyPlace).append('<span class="constName rose">'+grade+' '+bat.chief+'</span><br>');
+                $('#'+bodyPlace).append('<div class="shSpace"></div>');
+            } else {
+                $('#'+bodyPlace).append('<span class="constName rose">'+grade+'</span><br>');
+                $('#'+bodyPlace).append('<div class="shSpace"></div>');
+            }
+        } else {
+            $('#'+bodyPlace).append('<span class="constName rose">'+grade+'</span><br>');
             $('#'+bodyPlace).append('<div class="shSpace"></div>');
         }
     }
@@ -822,6 +830,14 @@ function getGrade(bat,batType) {
             grade = 'Général';
         } else {
             grade = 'Colonel';
+        }
+    } else if (batType.skills.includes('souschef')) {
+        if (bat.vet >= 2) {
+            grade = 'Lieutenant';
+        } else if (bat.vet >= 1) {
+            grade = 'Sergent';
+        } else {
+            grade = 'Caporal';
         }
     } else {
         if (batType.name === 'Adeptes') {

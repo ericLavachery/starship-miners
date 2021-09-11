@@ -508,17 +508,22 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
 };
 
 function addHealFlag(bat) {
+    let batType = getBatType(bat);
+    let healCost = 1;
+    if (batType.skills.includes('lowmed')) {
+        healCost = 2;
+    }
     if (bat.id === selectedBat.id) {
         if (selectedBat.soins != undefined) {
-            selectedBat.soins = selectedBat.soins+1;
+            selectedBat.soins = selectedBat.soins+healCost;
         } else {
-            selectedBat.soins = 1;
+            selectedBat.soins = healCost;
         }
     } else {
         if (bat.soins != undefined) {
-            bat.soins = bat.soins+1;
+            bat.soins = bat.soins+healCost;
         } else {
-            bat.soins = 1;
+            bat.soins = healCost;
         }
     }
 };

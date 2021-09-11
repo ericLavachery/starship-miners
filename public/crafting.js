@@ -333,15 +333,27 @@ function geoProd(bat,batType) {
                 magmaHere = tile.rs.Magma;
             }
         }
-        let energyProd = magmaHere+40;
+        let energyProd = Math.ceil(magmaHere/4*3)+140;
         energyProd = energyCreation(energyProd);
-        energyProd = Math.ceil(energyProd/100);
-        resAddToBld('Energons',energyProd,bat,batType);
-        if (!playerInfos.onShip) {
-            if (minedThisTurn['Energons'] === undefined) {
-                minedThisTurn['Energons'] = energyProd;
-            } else {
-                minedThisTurn['Energons'] = minedThisTurn['Energons']+energyProd;
+        if (magmaHere > 60) {
+            energyProd = Math.ceil(energyProd/100);
+            resAddToBld('Energons',energyProd,bat,batType);
+            if (!playerInfos.onShip) {
+                if (minedThisTurn['Energons'] === undefined) {
+                    minedThisTurn['Energons'] = energyProd;
+                } else {
+                    minedThisTurn['Energons'] = minedThisTurn['Energons']+energyProd;
+                }
+            }
+        } else {
+            energyProd = Math.ceil(energyProd/10);
+            resAddToBld('Energie',energyProd,bat,batType);
+            if (!playerInfos.onShip) {
+                if (minedThisTurn['Energie'] === undefined) {
+                    minedThisTurn['Energie'] = energyProd;
+                } else {
+                    minedThisTurn['Energie'] = minedThisTurn['Energie']+energyProd;
+                }
             }
         }
         console.log('prod = Energons:'+energyProd);

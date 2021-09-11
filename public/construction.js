@@ -1175,7 +1175,17 @@ function putBat(tileId,citoyens,xp,startTag,show) {
 
 function checkXPBonus(myBatType) {
     let batNewXP = 0;
-    if (myBatType.skills.includes('robot')) {
+    if (myBatType.skills.includes('clone')) {
+        if (playerInfos.comp.med === 1) {
+            batNewXP = batNewXP+levelXP[1];
+        }
+        if (playerInfos.comp.med === 2) {
+            batNewXP = batNewXP+Math.ceil(levelXP[2]*3/4);
+        }
+        if (playerInfos.comp.med === 3) {
+            batNewXP = batNewXP+levelXP[2];
+        }
+    } else if (myBatType.skills.includes('robot')) {
         if (playerInfos.comp.ind === 1) {
             batNewXP = batNewXP+levelXP[1];
         }

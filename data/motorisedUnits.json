@@ -1060,7 +1060,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["fortif","guerrilla","camo","landmine","routes","selfbadmecano","emoteur","defense","light","badcrewsave","recupcit","recupres","caterp","kzin"],
-        "mecanoCost":12,
+        "mecanoCost":10,
         "maxSkill":12,
         "fuzz":3,
         "deathFx":"planeexploair1",
