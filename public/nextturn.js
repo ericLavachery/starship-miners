@@ -382,7 +382,7 @@ function nextTurnEnd() {
                     });
                 }
             }
-            levelUp(bat);
+            levelUp(bat,batType);
             // Motorised noStuck
             noStuck = false;
             if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !bat.tags.includes('action') && bat.apLeft < 0 && !bat.tags.includes('ravit') && !bat.tags.includes('construction') && bat.oldTileId === bat.tileId) {
@@ -815,6 +815,8 @@ function tagsUpdate(bat) {
         bat.tags.push('noemb');
     }
     tagDelete(bat,'embuscade');
+    tagDelete(bat,'gogogo');
+    tagDelete(bat,'command');
     tagDelete(bat,'noBis1');
     tagDelete(bat,'noBis2');
     tagDelete(bat,'action');
@@ -1237,21 +1239,6 @@ function tagDelete(bat,tag) {
     if (bat.tags.includes(tag)) {
         tagIndex = bat.tags.indexOf(tag);
         bat.tags.splice(tagIndex,1);
-    }
-};
-
-function levelUp(bat) {
-    bat.xp = bat.xp.toFixedNumber(2);
-    if (bat.xp >= levelXP[4]) {
-        bat.vet = 4;
-    } else if (bat.xp >= levelXP[3]) {
-        bat.vet = 3;
-    } else if (bat.xp >= levelXP[2]) {
-        bat.vet = 2;
-    } else if (bat.xp >= levelXP[1]) {
-        bat.vet = 1;
-    } else {
-        bat.vet = 0;
     }
 };
 

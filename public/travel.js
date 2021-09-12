@@ -190,6 +190,15 @@ function healEverything() {
         if (bat.tags.includes('outsider')) {
             gearTags.push('outsider');
         }
+        if (bat.tags.includes('schef')) {
+            gearTags.push('schef');
+        }
+        if (bat.tags.includes('vet')) {
+            gearTags.push('vet');
+        }
+        if (bat.tags.includes('hero')) {
+            gearTags.push('hero');
+        }
         if (bat.tags.includes('prodres')) {
             gearTags.push('prodres');
         }

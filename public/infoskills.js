@@ -366,32 +366,6 @@ function skillsInfos(bat,batType) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de bol ou de PA" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-dice-six"></i> <span class="small">'+apCost+'</span></button>&nbsp; Lucky shot</'+balise+'></span>');
         }
     }
-    // PRIERE
-    if (batType.skills.includes('prayer') && !playerInfos.onShip) {
-        balise = 'h4';
-        boutonNope = 'boutonGris';
-        colorNope = 'gf';
-        if (bat.tags.includes('prayer')) {
-            balise = 'h3';
-            boutonNope = 'boutonOK';
-            colorNope = 'cy';
-        }
-        apCost = 7;
-        if (bat.apLeft >= apCost && !bat.tags.includes('prayer') && !bat.tags.includes('spirit') && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Prier" class="boutonVert skillButtons" onclick="gloireASatan()"><i class="fas fa-hamsa"></i> <span class="small">'+apCost+'</span></button>&nbsp; Prière</'+balise+'></span>');
-        } else {
-            if (inMelee) {
-                skillMessage = "Vous ne pouvez pas prier en mêlée";
-            } else if (bat.tags.includes('prayer')) {
-                skillMessage = "Encore sous l'effet de la prière";
-            } else if (bat.tags.includes('spirit')) {
-                skillMessage = "Aucun signe des Dieux";
-            } else {
-                skillMessage = "Pas assez de PA";
-            }
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-hamsa"></i> <span class="small">'+apCost+'</span></button>&nbsp; Prière</'+balise+'></span>');
-        }
-    }
     // FOG
     if (batType.skills.includes('fog') && !playerInfos.onShip) {
         balise = 'h4';
@@ -694,6 +668,52 @@ function skillsInfos(bat,batType) {
             }
         }
     }
+    // COMMANDE
+    let commandOK = false;
+    console.log('COMMAND');
+    console.log(near);
+    if (!playerInfos.onShip && near.schef) {
+        if (!batType.skills.includes('brigands') && !bat.tags.includes('outsider')) {
+            commandOK = true;
+        }
+        if (batType.name === 'Résistants') {
+            commandOK = true;
+        }
+    }
+    console.log('commandOK: '+commandOK);
+    if (commandOK && !bat.tags.includes('gogogo') && !bat.tags.includes('schef') && !batType.skills.includes('leader') && !batType.skills.includes('prayer')) {
+        let leSousChef = checkCommand(bat);
+        console.log(leSousChef);
+        if (leSousChef.ok) {
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+'+leSousChef.pa+' PA (-1 PA pour le bataillon de '+leSousChef.bat.type+')" class="boutonVert skillButtons" onclick="goCommand('+leSousChef.bat.id+','+leSousChef.pa+')"><i class="far fa-hand-point-right"></i> <span class="small">0</span></button>&nbsp; Commande</h4></span>');
+        }
+    }
+    // PRIERE
+    if (batType.skills.includes('prayer') && !playerInfos.onShip) {
+        balise = 'h4';
+        boutonNope = 'boutonGris';
+        colorNope = 'gf';
+        if (bat.tags.includes('prayer')) {
+            balise = 'h3';
+            boutonNope = 'boutonOK';
+            colorNope = 'cy';
+        }
+        apCost = 7;
+        if (bat.apLeft >= apCost && !bat.tags.includes('prayer') && !bat.tags.includes('spirit') && !inMelee) {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Prier" class="boutonVert skillButtons" onclick="gloireASatan()"><i class="fas fa-hamsa"></i> <span class="small">'+apCost+'</span></button>&nbsp; Prière</'+balise+'></span>');
+        } else {
+            if (inMelee) {
+                skillMessage = "Vous ne pouvez pas prier en mêlée";
+            } else if (bat.tags.includes('prayer')) {
+                skillMessage = "Encore sous l'effet de la prière";
+            } else if (bat.tags.includes('spirit')) {
+                skillMessage = "Aucun signe des Dieux";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-hamsa"></i> <span class="small">'+apCost+'</span></button>&nbsp; Prière</'+balise+'></span>');
+        }
+    }
     // TREUIL
     if (!playerInfos.onShip && bat.apLeft <= 0 && !bat.tags.includes('construction')) {
         if (batType.cat === 'vehicles' && batType.moveCost < 90 && !batType.skills.includes('cyber') && !batType.skills.includes('robot')) {
@@ -711,7 +731,7 @@ function skillsInfos(bat,batType) {
         let drugBldOK = false;
         let drugBldVMOK = false;
         let drugCostsOK = false;
-        if (batType.cat === 'infantry') {
+        if (batType.cat === 'infantry' && !batType.skills.includes('clone')) {
             // STARKA
             if (allDrugs.includes('starka') || bat.tags.includes('starka')) {
                 drug = getDrugByName('starka');

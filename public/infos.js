@@ -29,7 +29,7 @@ function batInfos(bat,batType,pop) {
     if (!pop) {
         conWindowOut();
     }
-    levelUp(bat);
+    levelUp(bat,batType);
     let tagColor = 'cy';
     let batPic = getBatPic(bat,batType);
     let tile = getTile(bat);
@@ -71,16 +71,27 @@ function batInfos(bat,batType,pop) {
     $('#'+bodyPlace).append('<div class="shSpace"></div>');
     if (!batType.skills.includes('clone') && !batType.skills.includes('robot') && batType.crew >= 1) {
         let grade = getGrade(bat,batType);
+        let gradeColor = 'rose';
+        if (bat.tags.includes('schef') || batType.skills.includes('leader')) {
+            gradeColor = 'or';
+        }
+        let vetStatus = '';
+        if (bat.tags.includes('hero')) {
+            vetStatus = ' <span class="rouge">(Héro)</span>';
+        }
+        if (bat.tags.includes('vet')) {
+            vetStatus = ' (Vétéran)';
+        }
         if (bat.chief != undefined) {
             if (bat.chief != '') {
-                $('#'+bodyPlace).append('<span class="constName rose">'+grade+' '+bat.chief+'</span><br>');
+                $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+' '+bat.chief+vetStatus+'</span><br>');
                 $('#'+bodyPlace).append('<div class="shSpace"></div>');
             } else {
-                $('#'+bodyPlace).append('<span class="constName rose">'+grade+'</span><br>');
+                $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+vetStatus+'</span><br>');
                 $('#'+bodyPlace).append('<div class="shSpace"></div>');
             }
         } else {
-            $('#'+bodyPlace).append('<span class="constName rose">'+grade+'</span><br>');
+            $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+vetStatus+'</span><br>');
             $('#'+bodyPlace).append('<div class="shSpace"></div>');
         }
     }
@@ -821,44 +832,6 @@ function renameChief(batId) {
             }
         }
     }, 1000); // How long do you want the delay to be (in milliseconds)?
-};
-
-function getGrade(bat,batType) {
-    let grade = 'Caporal';
-    if (batType.skills.includes('leader')) {
-        if (bat.vet >= 4) {
-            grade = 'Général';
-        } else {
-            grade = 'Colonel';
-        }
-    } else if (batType.skills.includes('souschef')) {
-        if (bat.vet >= 2) {
-            grade = 'Lieutenant';
-        } else if (bat.vet >= 1) {
-            grade = 'Sergent';
-        } else {
-            grade = 'Caporal';
-        }
-    } else {
-        if (batType.name === 'Adeptes') {
-            if (bat.vet >= 2) {
-                grade = 'Disciple';
-            } else {
-                grade = 'Adepte';
-            }
-        } else if (batType.name === 'Gurus') {
-            grade = 'Guide';
-        } else {
-            if (bat.vet >= 4) {
-                grade = 'Lieutenant';
-            } else if (bat.vet >= 2) {
-                grade = 'Sergent';
-            } else {
-                grade = 'Caporal';
-            }
-        }
-    }
-    return grade;
 };
 
 function defCenter(tileId) {

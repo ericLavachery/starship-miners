@@ -28,6 +28,65 @@ function fortification() {
     showBatInfos(selectedBat);
 };
 
+function checkCommand(myBat) {
+    // array 0=ok? 1=treuilBat 2=PA
+    let leSousChef = {};
+    leSousChef.ok = false;
+    leSousChef.bat = {};
+    leSousChef.pa = 0;
+    let myBatType = getBatType(myBat);
+    let bestEffect = 0;
+    bataillons.forEach(function(bat) {
+        if (bat.tileId != myBat.tileId && !bat.tags.includes('command')) {
+            let batType = getBatType(bat);
+            let distOK = false;
+            let thisEffect = 0;
+            if (batType.skills.includes('leader')) {
+                if (playerInfos.bldList.includes('Poste radio')) {
+                    distOK = true;
+                    thisEffect = 100+bat.apLeft;
+                } else {
+                    let distance = calcDistance(bat.tileId,myBat.tileId);
+                    if (distance <= 1) {
+                        distOK = true;
+                        thisEffect = 200+bat.apLeft;
+                    }
+                }
+            } else if (bat.tags.includes('schef')) {
+                let distance = calcDistance(bat.tileId,myBat.tileId);
+                if (distance <= 1) {
+                    distOK = true;
+                    thisEffect = 300+bat.apLeft;
+                }
+            }
+            if (distOK) {
+                if (thisEffect > bestEffect) {
+                    bestEffect = thisEffect;
+                    leSousChef.ok = true;
+                    leSousChef.bat = bat;
+                }
+            }
+        }
+    });
+    leSousChef.pa = 2;
+    if (playerInfos.comp.ordre >= 2) {
+        leSousChef.pa = 3;
+    }
+    return leSousChef;
+};
+
+function goCommand(chefBatId,gainPA) {
+    selectedBat.apLeft = selectedBat.apLeft+gainPA;
+    selectedBat.tags.push('gogogo');
+    let chefBat = getBatById(chefBatId);
+    chefBat.apLeft = chefBat.apLeft-1;
+    chefBat.tags.push('command');
+    doneAction(chefBat);
+    doneAction(selectedBat);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
 function checkTreuil(myBat) {
     // array 0=ok? 1=treuilBat 2=PA
     let leTreuil = {};

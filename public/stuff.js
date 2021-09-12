@@ -156,11 +156,121 @@ function targetBatArrayUpdate() {
     }
 };
 
+function levelUp(bat,batType) {
+    bat.xp = bat.xp.toFixedNumber(2);
+    if (bat.xp >= levelXP[4]) {
+        bat.vet = 4;
+    } else if (bat.xp >= levelXP[3]) {
+        bat.vet = 3;
+    } else if (bat.xp >= levelXP[2]) {
+        bat.vet = 2;
+    } else if (bat.xp >= levelXP[1]) {
+        bat.vet = 1;
+    } else {
+        bat.vet = 0;
+    }
+    if (!bat.tags.includes('vet') && !bat.tags.includes('schef') && !bat.tags.includes('hero')) {
+        let grade = getGrade(bat,batType);
+        if (grade === 'Lieutenant') {
+            if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('garde') && batType.crew >= 1) || batType.skills.includes('souschef')) {
+                heroUp(bat,batType,grade);
+            }
+        }
+        if (grade === 'Général') {
+            heroUp(bat,batType,grade);
+        }
+    }
+};
+
+function heroUp(bat,batType,grade) {
+    let mayChef = false;
+    if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('penitbat') && !batType.skills.includes('brigands') && !batType.skills.includes('garde') && batType.crew >= 1 && !bat.tags.includes('outsider')) || batType.skills.includes('souschef')) {
+        mayChef = true;
+    }
+    let mayHero = false;
+    if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('garde') && batType.crew >= 1) || batType.skills.includes('souschef')) {
+        mayHero = true;
+    }
+    if (grade === 'Lieutenant') {
+        let chefNum = getChefNum();
+        if (chefNum === 0 && mayChef) {
+            bat.tags.push('schef');
+        } else if (chefNum === 1 && mayHero) {
+            bat.tags.push('hero');
+        } else {
+            if (rand.rand(1,chefNum) === 1 && mayChef) {
+                bat.tags.push('schef');
+            } else if (rand.rand(1,3) === 1 && mayHero) {
+                bat.tags.push('hero');
+            } else {
+                bat.tags.push('vet');
+            }
+        }
+    } else if (grade === 'Général') {
+        if (rand.rand(1,3) === 1) {
+            bat.tags.push('hero');
+        } else {
+            bat.tags.push('vet');
+        }
+    }
+};
+
+function getChefNum() {
+    let chefNum = 0;
+    bataillons.forEach(function(bat) {
+        if (bat.tags.includes('schef')) {
+            chefNum++;
+        }
+    });
+    return chefNum;
+};
+
+function getGrade(bat,batType) {
+    let grade = 'Caporal';
+    if (batType.skills.includes('leader')) {
+        if (bat.vet >= 4) {
+            grade = 'Général';
+        } else {
+            grade = 'Colonel';
+        }
+    } else if (batType.skills.includes('souschef')) {
+        if (bat.vet >= 3) {
+            grade = 'Lieutenant';
+        } else if (bat.vet >= 2) {
+            grade = 'Sergent';
+        } else {
+            grade = 'Caporal';
+        }
+    } else {
+        if (batType.name === 'Adeptes') {
+            if (bat.vet >= 2) {
+                grade = 'Disciple';
+            } else {
+                grade = 'Adepte';
+            }
+        } else if (batType.name === 'Gurus') {
+            grade = 'Guide';
+        } else {
+            if (bat.vet >= 4) {
+                grade = 'Lieutenant';
+            } else if (bat.vet >= 2) {
+                grade = 'Sergent';
+            } else {
+                grade = 'Caporal';
+            }
+        }
+    }
+    return grade;
+};
+
 function nearWhat(myBat,myBatType) {
     let myCrew = myBatType.squads*myBatType.squadSize*myBatType.crew;
     let near = {};
     near.caserne = false;
+    near.control = false;
+    near.schef = false;
     bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
         if (bat.loc === "zone") {
             if (bat.type.includes('Caserne')) {
                 if (myCrew >= 12 && myBatType.cat === 'infantry') {
@@ -170,9 +280,19 @@ function nearWhat(myBat,myBatType) {
                 }
             }
         }
-        if (!bat.tags.includes('nomove')) {
-            if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
+        if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
+            if (!bat.tags.includes('nomove')) {
                 near.control = true;
+            }
+            if (!bat.tags.includes('command')) {
+                if (bat.tags.includes('schef') || batType.skills.includes('leader')) {
+                    near.schef = true;
+                }
+            }
+        }
+        if (batType.skills.includes('leader') && !bat.tags.includes('command')) {
+            if (playerInfos.bldList.includes('Poste radio')) {
+                near.schef = true;
             }
         }
     });
