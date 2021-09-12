@@ -817,6 +817,19 @@ function tagsUpdate(bat) {
     tagDelete(bat,'embuscade');
     tagDelete(bat,'gogogo');
     tagDelete(bat,'command');
+    tagDelete(bat,'hsp');
+    if (rand.rand(1,4) === 1) {
+        tagDelete(bat,'rush');
+    }
+    tagDelete(bat,'rage');
+    if (rand.rand(1,4) === 1) {
+        tagDelete(bat,'norage');
+    }
+    tagDelete(bat,'kill');
+    if (rand.rand(1,5) === 1) {
+        tagDelete(bat,'nokill');
+    }
+    tagDelete(bat,'tornade');
     tagDelete(bat,'noBis1');
     tagDelete(bat,'noBis2');
     tagDelete(bat,'action');

@@ -347,7 +347,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","fouille","berserk","undead","nofear","brigands","maycamo","penitbat"],
+        "skills":["fortif","fouille","berserk","nofear","brigands","maycamo","penitbat"],
         "fuzz":1.5,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -1539,7 +1539,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","camo","guerrilla","tirailleur","selfbadmedic","ranger","noblub","uprank"],
+        "skills":["fouille","fortif","camo","guerrilla","tirailleur","selfbadmedic","ranger","noblub","uprank","herorage"],
         "mediCost":9,
         "fuzz":-1,
         "deathFx":"162157__mediapaja2009__agony"
@@ -2272,7 +2272,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","inflammable","maycamo","selfbadmedic","strong"],
+        "skills":["fouille","fortif","inflammable","maycamo","selfbadmedic","strong","herotornade"],
         "mediCost":6,
         "fuzz":0,
         "deathFx":"219149__musability__female-wilhelm-scream-audacity"
@@ -3746,7 +3746,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","selfmedic","leader","survivor","luckyshot","defense","fastguet","ranger","guerrilla","maycamo","cible","fo"],
+        "skills":["fouille","fortif","selfmedic","leader","survivor","luckyshot","defense","fastguet","ranger","guerrilla","maycamo","cible","fo","herokill"],
         "mediCost":5,
         "fuzz":1.5,
         "deathFx":"162157__mediapaja2009__agony"
@@ -4026,7 +4026,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","mutant","ranger","berserk","defense","noblub","slowreg","resistacide","strong","brigands"],
+        "skills":["fouille","fortif","mutant","ranger","berserk","defense","noblub","slowreg","resistacide","strong","brigands","herorage"],
         "fuzz":2,
         "deathFx":"137036__pyrocamancer__beast-death"
     },
@@ -5366,7 +5366,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","selfbadmedic","guerrilla","tirailleur","fastguet","cyber","maycamo","berserk","ranger","nostun","resistacide","baddef","oknitro","brigands"],
+        "skills":["fouille","fortif","selfbadmedic","guerrilla","tirailleur","fastguet","cyber","maycamo","berserk","ranger","nostun","resistacide","baddef","oknitro","brigands","herorush"],
         "mediCost":12,
         "fuzz":1.5,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
@@ -5420,7 +5420,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","selfmedic","meleehelp","guerrilla","tirailleur","cyber","noblub","camo","berserk","undead","ranger","nostun","resistacide","oknitro","sentinelle","escape","fret","fastempty"],
+        "skills":["fouille","fortif","selfmedic","meleehelp","guerrilla","tirailleur","cyber","noblub","camo","berserk","undead","ranger","nostun","resistacide","oknitro","sentinelle","escape","fret","fastempty","herorush","herosalvo"],
         "mediCost":10,
         "transRes":96,
         "fuzz":0,
@@ -5579,7 +5579,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","maycamo","clone","undead","nodeathcount"],
+        "skills":["fouille","fortif","maycamo","clone","nodeathcount"],
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -5633,7 +5633,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","maycamo","clone","undead","strong","slowreg"],
+        "skills":["fouille","fortif","maycamo","clone","strong","slowreg"],
         "fuzz":1.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     },

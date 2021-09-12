@@ -545,7 +545,9 @@ function calcDamage(weapon,power,armor,defBat) {
     // fortif armor
     let defBatType = getBatType(defBat);
     if (defBat.tags.includes('fortif')) {
-        if (defBatType.skills.includes('bigfortif')) {
+        if (defBat.tags.includes('hero') && defBatType.skills.includes('herodeff')) {
+            armor = armor+2;
+        } else if (defBatType.skills.includes('bigfortif')) {
             armor = armor+2;
         } else if (armor < 3 && !defBatType.skills.includes('baddef')) {
             armor = armor+1;
@@ -1229,8 +1231,22 @@ function weaponAdj(weapon,bat,wn) {
     }
     // bonus vet
     thisWeapon.rof = Math.floor(weapon.rof*(bat.vet+vetBonus.rof)/vetBonus.rof);
+    // hero rof
+    if (bat.tags.includes('hero') && batType.skills.includes('herorof')) {
+        thisWeapon.rof = Math.round(thisWeapon.rof*1.205);
+    }
     thisWeapon.name = weapon.name;
     thisWeapon.cost = weapon.cost;
+    // hero wcost
+    if (bat.tags.includes('hero') && batType.skills.includes('herowc')) {
+        if (thisWeapon.cost >= 6) {
+            thisWeapon.cost = thisWeapon.cost-3;
+        } else if (thisWeapon.cost >= 5) {
+            thisWeapon.cost = thisWeapon.cost-2;
+        } else if (thisWeapon.cost >= 2) {
+            thisWeapon.cost = thisWeapon.cost-1;
+        }
+    }
     thisWeapon.range = weapon.range;
     thisWeapon.power = weapon.power;
     thisWeapon.accuracy = weapon.accuracy;
@@ -1649,6 +1665,18 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.range = thisWeapon.range+2;
         }
     }
+    // hero range
+    if (bat.tags.includes('hero') && batType.skills.includes('herorange')) {
+        if (!thisWeapon.isMelee && ((!thisWeapon.isShort && thisWeapon.range >= 1) || thisWeapon.range >= 2 || (thisWeapon.elevation >= 1 && thisWeapon.range >= 1))) {
+            thisWeapon.range = thisWeapon.range+1;
+        }
+    }
+    // hero rage
+    if (bat.tags.includes('rage')) {
+        if (thisWeapon.isMelee) {
+            thisWeapon.power = thisWeapon.power+Math.round(Math.sqrt(thisWeapon.power)*1.42);
+        }
+    }
     // Forêt (range)
     let overInfra = false;
     if (infra === 'Miradors' || infra === 'Murailles' || infra === 'Remparts') {
@@ -1728,7 +1756,7 @@ function calcShotDice(bat,luckyshot) {
         } else if (luckDice <= luckCheck[0]) {
             $('#report').append('<span class="report cy">Lucky shot!</span><br>');
             return 50;
-        } else if (luckDice <= luckCheck[1]) {
+        } else if (luckDice <= luckCheck[1] || bat.tags.includes('kill')) {
             return 75;
         } else if (luckDice <= luckCheck[2]) {
             return 85;

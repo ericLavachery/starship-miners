@@ -135,6 +135,40 @@ function goTreuil(treuilBatId,gainPA) {
     showBatInfos(selectedBat);
 };
 
+function rush(rushAP) {
+    selectedBat.apLeft = selectedBat.apLeft+rushAP;
+    selectedBat.tags.push('rush');
+    doneAction(selectedBat);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
+function rage() {
+    selectedBat.tags.push('rage');
+    selectedBat.tags.push('norage');
+    doneAction(selectedBat);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
+function instaKill() {
+    selectedBat.tags.push('kill');
+    selectedBat.tags.push('nokill');
+    selectedBat.tags.push('nokill');
+    selectedBat.tags.push('nokill');
+    doneAction(selectedBat);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
+function tornade() {
+    selectedBat.tags.push('tornade');
+    selectedBat.tags.push('notorn');
+    doneAction(selectedBat);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
 function prodToggle() {
     selectMode();
     console.log('PROD TOGGLE');

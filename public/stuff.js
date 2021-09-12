@@ -172,7 +172,7 @@ function levelUp(bat,batType) {
     if (!bat.tags.includes('vet') && !bat.tags.includes('schef') && !bat.tags.includes('hero')) {
         let grade = getGrade(bat,batType);
         if (grade === 'Lieutenant') {
-            if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('garde') && batType.crew >= 1) || batType.skills.includes('souschef')) {
+            if ((batType.cat != 'buildings' && batType.cat != 'devices' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('garde') && batType.crew >= 1) || batType.skills.includes('souschef')) {
                 heroUp(bat,batType,grade);
             }
         }
@@ -188,7 +188,7 @@ function heroUp(bat,batType,grade) {
         mayChef = true;
     }
     let mayHero = false;
-    if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('garde') && batType.crew >= 1) || batType.skills.includes('souschef')) {
+    if ((batType.cat != 'buildings' && batType.cat != 'devices' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('garde') && batType.crew >= 1) || batType.skills.includes('souschef')) {
         mayHero = true;
     }
     if (grade === 'Lieutenant') {

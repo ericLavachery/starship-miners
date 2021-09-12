@@ -124,7 +124,9 @@ function batInfos(bat,batType,pop) {
     }
     let armure = bat.armor;
     if (bat.tags.includes('fortif')) {
-        if (batType.skills.includes('bigfortif')) {
+        if (defBat.tags.includes('hero') && defBatType.skills.includes('herodeff')) {
+            armure = armure+2;
+        } else if (batType.skills.includes('bigfortif')) {
             armure = armure+2;
         } else if (armure < 2) {
             armure = armure+1;

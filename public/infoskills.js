@@ -366,6 +366,18 @@ function skillsInfos(bat,batType) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de bol ou de PA" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-dice-six"></i> <span class="small">'+apCost+'</span></button>&nbsp; Lucky shot</'+balise+'></span>');
         }
     }
+    // INSTAKILL
+    if (bat.tags.includes('hero') && batType.skills.includes('herokill') && !bat.tags.includes('nokill')) {
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Uniquement avec une arme de précision!" class="boutonJaune skillButtons" onclick="instaKill()"><i class="fas fa-skull-crossbones"></i> <span class="small">0</span></button>&nbsp; Instakill</h4></span>');
+    }
+    // RAGE
+    if (bat.tags.includes('hero') && batType.skills.includes('herorage') && !bat.tags.includes('norage')) {
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Bonus de puissance aux armes de mêlée" class="boutonJaune skillButtons" onclick="rage()"><i class="fas fa-hippo"></i> <span class="small">0</span></button>&nbsp; Rage</h4></span>');
+    }
+    // TORNADE
+    if (bat.tags.includes('hero') && batType.skills.includes('herotornade') && !bat.tags.includes('notorn')) {
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Salves infinies" class="boutonJaune skillButtons" onclick="tornade()"><i class="ra ra-player-teleport rpg"></i> <span class="small">0</span></button>&nbsp; Tornade</h4></span>');
+    }
     // FOG
     if (batType.skills.includes('fog') && !playerInfos.onShip) {
         balise = 'h4';
@@ -722,6 +734,14 @@ function skillsInfos(bat,batType) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+'+leTreuil.pa+' PA (-4 PA pour le bataillon de '+leTreuil.bat.type+')" class="boutonVert skillButtons" onclick="goTreuil('+leTreuil.bat.id+','+leTreuil.pa+')"><i class="fas fa-anchor"></i> <span class="small">0</span></button>&nbsp; Treuil</h4></span>');
             }
         }
+    }
+    // RUSH
+    if (bat.tags.includes('hero') && batType.skills.includes('herorush') && !bat.tags.includes('rush')) {
+        let rushAP = bat.ap;
+        if (bat.apLeft < 0) {
+            rushAP = bat.ap-Math.round(bat.apLeft/2);
+        }
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+'+rushAP+' PA" class="boutonVert skillButtons" onclick="rush('+rushAP+')"><i class="fas fa-running"></i> <span class="small">0</span></button>&nbsp; Rush</h4></span>');
     }
     // DROGUES
     if (!playerInfos.onShip) {

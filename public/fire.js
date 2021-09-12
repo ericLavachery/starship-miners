@@ -122,6 +122,9 @@ function combat(melee) {
     if (targetBatType.skills.includes('gooddef') || targetBat.eq.includes('w2-auto')) {
         negSalvo = -6;
     }
+    if (targetBat.tags.includes('hero') && (targetBatType.skills.includes('herodef') || targetBatType.skills.includes('herodeff'))) {
+        negSalvo = negSalvo-3;
+    }
     if (distance <= 3 && targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef && targetBat.salvoLeft > negSalvo) {
         if ((!targetWeap.noFly || (!selectedBatType.skills.includes('fly') && selectedBat.eq != 'e-jetpack')) && (!targetWeap.noGround || selectedBatType.skills.includes('fly') || selectedBatType.skills.includes('sauteur'))) {
             riposte = true;
@@ -358,6 +361,10 @@ function attack(melee) {
     if (selectedWeap.ammo.includes('autodestruction') || selectedBatType.skills.includes('undead') || selectedBat.tags.includes('zombie')) {
         shots = selectedWeap.rof*selectedBatType.squads;
     }
+    // hero fanatic
+    if (selectedBat.tags.includes('hero') && selectedBatType.skills.includes('herofana')) {
+        shots = selectedWeap.rof*selectedBatType.squads;
+    }
     // Attack %
     let attFactor = 100;
     // SCIES (noGrip)
@@ -475,9 +482,18 @@ function attack(melee) {
     console.log('shots='+shots);
     // ESCAPE
     escaped = false;
-    if (targetBatType.skills.includes('escape') && selectedBat.fuzz >= -1 && !selectedBat.tags.includes('embuscade') && !selectedWeap.ammo.includes('laser')) {
+    let hasEscape = false;
+    let escapeSpeed = targetBatType.speed-2;
+    if (targetBatType.skills.includes('escape')) {
+        hasEscape = true;
+    }
+    if (targetBatType.skills.includes('heroescape') && targetBat.tags.includes('hero')) {
+        hasEscape = true;
+        escapeSpeed = targetBat.vet;
+    }
+    if (hasEscape && selectedBat.fuzz >= -1 && !selectedBat.tags.includes('embuscade') && !selectedWeap.ammo.includes('laser')) {
         if ((tile.terrain != 'W' && tile.terrain != 'R') || targetBatType.skills.includes('fly')) {
-            let escapeChance = Math.round((targetBatType.speed-2)*selectedWeap.cost*escapeValue);
+            let escapeChance = Math.round(escapeSpeed*selectedWeap.cost*escapeValue);
             if (selectedWeap.aoe != 'unit' && !targetBatType.skills.includes('fly')) {
                 escapeChance = Math.round(escapeChance/3);
             }
@@ -1062,11 +1078,24 @@ function attack(melee) {
         }
     }
     targetBat.apLeft = targetBat.apLeft-apDamage;
-    totalDamage = totalDamage+targetBat.damage;
+    let allDamage = totalDamage+targetBat.damage;
     let squadHP = (targetBatType.squadSize*targetBatType.hp);
     console.log('Squad HP : '+squadHP);
-    let squadsOut = Math.floor(totalDamage/squadHP);
+    let squadsOut = Math.floor(allDamage/squadHP);
     targetBat.squadsLeft = targetBat.squadsLeft-squadsOut;
+    targetBat.damage = allDamage-(squadsOut*squadHP);
+    // instakill
+    if (!targetBatType.skills.includes('nokill')) {
+        if (selectedBat.tags.includes('kill') && selectedWeap.isPrec && totalDamage >= 30) {
+            if (targetBatType.class === 'C' || targetBatType.class === 'B' || targetBatType.name === 'Veilleurs' || targetBatType.name === 'Vomissure' || targetBatType.name === 'Flaque') {
+                targetBat.squadsLeft = 0;
+            } else if (targetBatType.class === 'A' || targetBatType.class === 'S') {
+                if (rand.rand(1,6) <= targetBatType.rarity) {
+                    targetBat.squadsLeft = 0;
+                }
+            }
+        }
+    }
     // survivor
     if (targetBat.squadsLeft <= 0) {
         if ((targetBatType.skills.includes('survivor') || targetBat.eq === 'permakirin' || targetBat.logeq === 'permakirin') && !targetBat.tags.includes('lucky')) {
@@ -1093,7 +1122,6 @@ function attack(melee) {
             $('#report').append('<span class="report"> (reste '+unitsLeft+' '+targetBatName+')<br></span>');
         }
     }
-    targetBat.damage = totalDamage-(squadsOut*squadHP);
     if (targetBat.camoAP >= 1) {
         camoStop(targetBat);
     }
@@ -1101,7 +1129,13 @@ function attack(melee) {
     targetBatArrayUpdate();
     // remove ap & salvo
     selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
-    selectedBat.salvoLeft = selectedBat.salvoLeft-1;
+    if (selectedBat.tags.includes('tornade')) {
+        // salves infinies
+    } else if (selectedBat.tags.includes('hero') && selectedBatType.skills.includes('herosalvo') && !selectedBat.tags.includes('hsp') && rand.rand(1,2) === 1) {
+        selectedBat.tags.push('hsp');
+    } else {
+        selectedBat.salvoLeft = selectedBat.salvoLeft-1;
+    }
     // add xp & remove life :)
     if (targetBat.squadsLeft <= 0) {
         defAlive = false;
@@ -1266,7 +1300,12 @@ function defense(melee) {
     }
     console.log('brideDef='+brideDef);
     let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);
+    // undead
     if (targetBatType.skills.includes('undead') || targetBat.tags.includes('zombie')) {
+        shots = Math.round(targetWeap.rof*targetBatType.squads*brideDef);
+    }
+    // hero fanatic
+    if (targetBat.tags.includes('hero') && targetBatType.skills.includes('herofana')) {
         shots = Math.round(targetWeap.rof*targetBatType.squads*brideDef);
     }
     // SCIES (noGrip)
@@ -1276,9 +1315,18 @@ function defense(melee) {
     }
     // ESCAPE
     escaped = false;
-    if (selectedBatType.skills.includes('escape') && targetBat.fuzz >= -1 && !targetBat.tags.includes('embuscade') && !targetWeap.ammo.includes('laser')) {
+    let hasEscape = false;
+    let escapeSpeed = selectedBatType.speed-2;
+    if (selectedBatType.skills.includes('escape')) {
+        hasEscape = true;
+    }
+    if (selectedBatType.skills.includes('heroescape') && selectedBat.tags.includes('hero')) {
+        hasEscape = true;
+        escapeSpeed = selectedBat.vet;
+    }
+    if (hasEscape && targetBat.fuzz >= -1 && !targetBat.tags.includes('embuscade') && !targetWeap.ammo.includes('laser')) {
         if ((tile.terrain != 'W' && tile.terrain != 'R') || selectedBatType.skills.includes('fly')) {
-            let escapeChance = Math.round((selectedBatType.speed-2)*targetWeap.cost*escapeValue);
+            let escapeChance = Math.round(escapeSpeed*targetWeap.cost*escapeValue);
             if (targetWeap.aoe != 'unit' && !selectedBatType.skills.includes('fly')) {
                 escapeChance = Math.round(escapeChance/3);
             }
@@ -1742,12 +1790,12 @@ function defense(melee) {
     }
     selectedBat.apLeft = selectedBat.apLeft-apDamage;
     console.log('Previous Damage : '+selectedBat.damage);
-    totalDamage = totalDamage+selectedBat.damage;
+    let allDamage = totalDamage+selectedBat.damage;
     let squadHP = (selectedBatType.squadSize*selectedBatType.hp);
     console.log('Squad HP : '+squadHP);
-    let squadsOut = Math.floor(totalDamage/squadHP);
+    let squadsOut = Math.floor(allDamage/squadHP);
     selectedBat.squadsLeft = selectedBat.squadsLeft-squadsOut;
-    selectedBat.damage = totalDamage-(squadsOut*squadHP);
+    selectedBat.damage = allDamage-(squadsOut*squadHP);
     // survivor
     console.log('Squads left: '+selectedBat.squadsLeft);
     if (selectedBat.squadsLeft <= 0) {
