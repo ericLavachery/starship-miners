@@ -153,9 +153,13 @@ function rage() {
 
 function instaKill() {
     selectedBat.tags.push('kill');
-    selectedBat.tags.push('nokill');
-    selectedBat.tags.push('nokill');
-    selectedBat.tags.push('nokill');
+    if (selectedBatType.skills.includes('herominik')) {
+        selectedBat.tags.push('zerokill');
+    } else {
+        selectedBat.tags.push('nokill');
+        selectedBat.tags.push('nokill');
+        selectedBat.tags.push('nokill');
+    }
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);

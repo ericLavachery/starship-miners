@@ -122,7 +122,7 @@ function combat(melee) {
     if (targetBatType.skills.includes('gooddef') || targetBat.eq.includes('w2-auto')) {
         negSalvo = -6;
     }
-    if (targetBat.tags.includes('hero') && (targetBatType.skills.includes('herodef') || targetBatType.skills.includes('herodeff'))) {
+    if (targetBat.tags.includes('hero') && targetBatType.skills.includes('herorip')) {
         negSalvo = negSalvo-3;
     }
     if (distance <= 3 && targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef && targetBat.salvoLeft > negSalvo) {
@@ -362,7 +362,7 @@ function attack(melee) {
         shots = selectedWeap.rof*selectedBatType.squads;
     }
     // hero fanatic
-    if (selectedBat.tags.includes('hero') && selectedBatType.skills.includes('herofana')) {
+    if ((selectedBat.tags.includes('hero') || selectedBat.tags.includes('vet')) && selectedBatType.skills.includes('herofana')) {
         shots = selectedWeap.rof*selectedBatType.squads;
     }
     // Attack %
@@ -1129,10 +1129,14 @@ function attack(melee) {
     targetBatArrayUpdate();
     // remove ap & salvo
     selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
+    let heroSalveDice = rand.rand(1,2);
     if (selectedBat.tags.includes('tornade')) {
         // salves infinies
-    } else if (selectedBat.tags.includes('hero') && selectedBatType.skills.includes('herosalvo') && !selectedBat.tags.includes('hsp') && rand.rand(1,2) === 1) {
+    } else if (selectedBat.tags.includes('hero') && selectedBatType.skills.includes('herosalvo') && !selectedBat.tags.includes('hsp')) {
         selectedBat.tags.push('hsp');
+        if (rand.rand(1,2) === 1 && !selectedBat.tags.includes('rage') && !selectedBat.tags.includes('rush')) {
+            selectedBat.salvoLeft = selectedBat.salvoLeft-1;
+        }
     } else {
         selectedBat.salvoLeft = selectedBat.salvoLeft-1;
     }
@@ -1305,7 +1309,7 @@ function defense(melee) {
         shots = Math.round(targetWeap.rof*targetBatType.squads*brideDef);
     }
     // hero fanatic
-    if (targetBat.tags.includes('hero') && targetBatType.skills.includes('herofana')) {
+    if ((targetBat.tags.includes('hero') || targetBat.tags.includes('vet')) && targetBatType.skills.includes('herofana')) {
         shots = Math.round(targetWeap.rof*targetBatType.squads*brideDef);
     }
     // SCIES (noGrip)

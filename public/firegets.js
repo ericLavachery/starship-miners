@@ -545,7 +545,7 @@ function calcDamage(weapon,power,armor,defBat) {
     // fortif armor
     let defBatType = getBatType(defBat);
     if (defBat.tags.includes('fortif')) {
-        if (defBat.tags.includes('hero') && defBatType.skills.includes('herodeff')) {
+        if ((defBat.tags.includes('hero') || defBat.tags.includes('vet')) && defBatType.skills.includes('herofortif')) {
             armor = armor+2;
         } else if (defBatType.skills.includes('bigfortif')) {
             armor = armor+2;
@@ -682,6 +682,9 @@ function getCover(bat,withFortif,forAOE) {
                 }
             }
             if (batType.skills.includes('bigfortif')) {
+                cover = cover+2;
+            }
+            if ((bat.tags.includes('hero') || bat.tags.includes('vet')) && batType.skills.includes('herofortif')) {
                 cover = cover+2;
             }
         }
@@ -1238,7 +1241,7 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.name = weapon.name;
     thisWeapon.cost = weapon.cost;
     // hero wcost
-    if (bat.tags.includes('hero') && batType.skills.includes('herowc')) {
+    if ((bat.tags.includes('hero') || bat.tags.includes('vet')) && batType.skills.includes('herowc')) {
         if (thisWeapon.cost >= 6) {
             thisWeapon.cost = thisWeapon.cost-3;
         } else if (thisWeapon.cost >= 5) {
@@ -1710,6 +1713,12 @@ function weaponAdj(weapon,bat,wn) {
     }
     if (bat.tags.includes('fogged') && thisWeapon.range > 1) {
         thisWeapon.range = 1;
+    }
+    // hero tornade cost
+    if (bat.tags.includes('tornade')) {
+        if (thisWeapon.cost < 1) {
+            thisWeapon.cost = 1;
+        }
     }
     // Deluge Cost
     if (thisWeapon.ammo === 'missile-deluge') {

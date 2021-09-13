@@ -367,7 +367,7 @@ function skillsInfos(bat,batType) {
         }
     }
     // INSTAKILL
-    if (bat.tags.includes('hero') && batType.skills.includes('herokill') && !bat.tags.includes('nokill')) {
+    if (bat.tags.includes('hero') && (batType.skills.includes('herokill') || batType.skills.includes('herominik')) && !bat.tags.includes('nokill') && !bat.tags.includes('zerokill')) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Uniquement avec une arme de précision!" class="boutonJaune skillButtons" onclick="instaKill()"><i class="fas fa-skull-crossbones"></i> <span class="small">0</span></button>&nbsp; Instakill</h4></span>');
     }
     // RAGE
