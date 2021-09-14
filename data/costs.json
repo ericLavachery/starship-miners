@@ -483,7 +483,7 @@
     {
         "id":53,
         "name":"Mutants",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":6,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":17,"bulbos":99,"drogmulojs":6,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"gen":1},
         "compPass":["drogmulojs"],
@@ -639,7 +639,7 @@
     {
         "id":249,
         "name":"Mosquitos",
-        "levels":{"rednecks":99,"blades":17,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":13,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Centre de recherches"],
         "compReq":{"gen":1},
         "compHardReq":{"energ":1},

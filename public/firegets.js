@@ -1576,7 +1576,7 @@ function weaponAdj(weapon,bat,wn) {
     // sila drug
     if (bat.tags.includes('sila')) {
         if (thisWeapon.isMelee) {
-            thisWeapon.power = thisWeapon.power+5;
+            thisWeapon.power = thisWeapon.power+4;
         } else if (thisWeapon.isBow) {
             thisWeapon.accuracy = thisWeapon.accuracy+3;
             thisWeapon.power = thisWeapon.power+1;

@@ -815,6 +815,9 @@ function tagsUpdate(bat) {
         bat.tags.push('noemb');
     }
     tagDelete(bat,'embuscade');
+    if (rand.rand(1,5) === 1) {
+        tagDelete(bat,'lasso');
+    }
     tagDelete(bat,'gogogo');
     tagDelete(bat,'command');
     tagDelete(bat,'hsp');
@@ -877,7 +880,7 @@ function tagsUpdate(bat) {
             tagIndex = bat.tags.indexOf('sila');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('sila')) {
-                drugDown(bat,false,false);
+                drugDown(bat,true,false);
             }
         }
     }

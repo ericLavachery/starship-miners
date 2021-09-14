@@ -175,6 +175,11 @@ function bfconst(cat,triche,upgrade,retour) {
                         bldOK = false;
                     }
                 }
+                if (unit.skills.includes('leader')) {
+                    if (maxLeaders()) {
+                        bldOK = false;
+                    }
+                }
             }
             costOK = checkUnitCost(unit,true,true);
             unitMergedCosts = mergedUnitCosts(unit);

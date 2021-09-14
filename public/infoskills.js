@@ -367,16 +367,16 @@ function skillsInfos(bat,batType) {
         }
     }
     // INSTAKILL
-    if (bat.tags.includes('hero') && (batType.skills.includes('herokill') || batType.skills.includes('herominik')) && !bat.tags.includes('nokill') && !bat.tags.includes('zerokill')) {
+    if (bat.tags.includes('hero') && (batType.skills.includes('herokill') || batType.skills.includes('herominik')) && !bat.tags.includes('nokill') && !bat.tags.includes('zerokill') && !playerInfos.onShip) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Uniquement avec une arme de précision!" class="boutonJaune skillButtons" onclick="instaKill()"><i class="fas fa-skull-crossbones"></i> <span class="small">0</span></button>&nbsp; Instakill</h4></span>');
     }
-    // RAGE
-    if (bat.tags.includes('hero') && batType.skills.includes('herorage') && !bat.tags.includes('norage')) {
-        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Bonus de puissance aux armes de mêlée" class="boutonJaune skillButtons" onclick="rage()"><i class="fas fa-hippo"></i> <span class="small">0</span></button>&nbsp; Rage</h4></span>');
-    }
     // TORNADE
-    if (bat.tags.includes('hero') && batType.skills.includes('herotornade') && !bat.tags.includes('notorn')) {
+    if (bat.tags.includes('hero') && batType.skills.includes('herotornade') && !bat.tags.includes('notorn') && !playerInfos.onShip) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Salves infinies" class="boutonJaune skillButtons" onclick="tornade()"><i class="ra ra-player-teleport rpg"></i> <span class="small">0</span></button>&nbsp; Tornade</h4></span>');
+    }
+    // DIVERSION
+    if (bat.tags.includes('hero') && batType.skills.includes('herolasso') && !bat.tags.includes('lasso') && !playerInfos.onShip) {
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Attire tous aliens dans un rayon de 4 cases" class="boutonJaune skillButtons" onclick="diversion()"><i class="ra ra-aware rpg"></i> <span class="small">2</span></button>&nbsp; Diversion</h4></span>');
     }
     // FOG
     if (batType.skills.includes('fog') && !playerInfos.onShip) {
@@ -736,12 +736,20 @@ function skillsInfos(bat,batType) {
         }
     }
     // RUSH
-    if (bat.tags.includes('hero') && batType.skills.includes('herorush') && !bat.tags.includes('rush')) {
+    if (bat.tags.includes('hero') && batType.skills.includes('herorush') && !bat.tags.includes('rush') && !playerInfos.onShip) {
         let rushAP = bat.ap;
         if (bat.apLeft < 0) {
             rushAP = bat.ap-Math.round(bat.apLeft/2);
         }
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+'+rushAP+' PA" class="boutonVert skillButtons" onclick="rush('+rushAP+')"><i class="fas fa-running"></i> <span class="small">0</span></button>&nbsp; Rush</h4></span>');
+    }
+    // RAGE
+    if (bat.tags.includes('hero') && batType.skills.includes('herorage') && !bat.tags.includes('norage') && !playerInfos.onShip) {
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Bonus de puissance aux armes de mêlée" class="boutonVert skillButtons" onclick="rage()"><i class="ra ra-muscle-up rpg"></i> <span class="small">0</span></button>&nbsp; Rage</h4></span>');
+    }
+    // DOXEY
+    if (!playerInfos.onShip && near.doxey && batType.cat === 'infantry' && !batType.skills.includes('clone')) {
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Elixir du docteur Doxey" class="boutonVert skillButtons" onclick="goDoxey()"><i class="ra ra-flask rpg"></i> <span class="small">0</span></button>&nbsp; Doxey</h4></span>');
     }
     // DROGUES
     if (!playerInfos.onShip) {
@@ -942,7 +950,7 @@ function skillsInfos(bat,batType) {
                 }
                 apCost = drug.apCost;
                 if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('sila') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+5 puissance aux armes de mêlée '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+4 puissance aux armes de mêlée '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
                 } else {
                     if (bat.tags.includes('sila')) {
                         skillMessage = "Déjà sous l'effet de cette drogue";

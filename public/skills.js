@@ -135,6 +135,108 @@ function goTreuil(treuilBatId,gainPA) {
     showBatInfos(selectedBat);
 };
 
+function goDoxey() {
+    let doxeyBatId = -1;
+    bataillons.forEach(function(bat) {
+        if (bat.tags.includes('hero') && !bat.tags.includes('potion')) {
+            let batType = getBatType(bat);
+            if (batType.skills.includes('heropotion')) {
+                let distance = calcDistance(selectedBat.tileId,bat.tileId);
+                if (distance <= 1) {
+                    doxeyBatId = bat.id;
+                }
+            }
+        }
+    });
+    if (doxeyBatId >= 0) {
+        let doxeyBat = getBatById(doxeyBatId);
+        doxeyBat.tags.push('potion');
+        doneAction(doxeyBat);
+        let medComp = playerInfos.comp.med;
+        let newAP = selectedBat.ap+(medComp*2)-6;
+        if (newAP > selectedBat.apLeft) {
+            selectedBat.apLeft = newAP;
+        }
+        let newSquads = Math.ceil(selectedBatType.squads/9*(medComp+6));
+        if (newSquads > selectedBat.squadsLeft) {
+            selectedBat.squadsLeft = selectedBatType.squads;
+        }
+        selectedBat.damage = 0;
+        tagDelete(selectedBat,'stun');
+        tagDelete(selectedBat,'poison');
+        tagDelete(selectedBat,'poison');
+        if (medComp >= 1) {
+            tagDelete(selectedBat,'venin');
+            tagDelete(selectedBat,'maladie');
+            tagDelete(selectedBat,'poison');
+            tagDelete(selectedBat,'poison');
+        } else if (medComp >= 2) {
+            tagDelete(selectedBat,'parasite');
+            tagDelete(selectedBat,'necro');
+            tagDelete(selectedBat,'poison');
+            tagDelete(selectedBat,'poison');
+        } else if (medComp === 3) {
+            tagDelete(selectedBat,'poison');
+            tagDelete(selectedBat,'poison');
+            tagDelete(selectedBat,'poison');
+            tagDelete(selectedBat,'poison');
+        }
+        doneAction(selectedBat);
+        selectedBatArrayUpdate();
+        showMap(zone,true);
+        showBatInfos(selectedBat);
+    }
+};
+
+function diversion() {
+    aliens.forEach(function(alien) {
+        let alienType = getBatType(alien);
+        if (alienType.moveCost < 90) {
+            let distance = calcDistance(selectedBat.tileId,alien.tileId);
+            if (distance <= 4) {
+                alien.aplLeft = alien.aplLeft-Math.round(alienType.moveCost*1.5);
+                let lassoTileId = getLassoTile(alien.tileId,selectedBat.tileId);
+                if (lassoTileId >= 0) {
+                    alien.tileId = lassoTileId;
+                    tagDelete(alien,'invisible');
+                }
+            }
+        }
+    });
+    selectedBat.apLeft = selectedBat.apLeft-2;
+    selectedBat.tags.push('lasso');
+    selectedBat.tags.push('lasso');
+    doneAction(selectedBat);
+    camoOut();
+    selectedBatArrayUpdate();
+    showMap(zone,false);
+    showBatInfos(selectedBat);
+};
+
+function getLassoTile(alienTileId,targetTileId) {
+    playerOccupiedTileList();
+    alienOccupiedTileList();
+    let lassoTileId = -1;
+    let nearest = 100;
+    let shufZone = _.shuffle(zone);
+    shufZone.forEach(function(tile) {
+        if (isAdjacent(alienTileId,tile.id)) {
+            if (tile.id != alienTileId) {
+                if (!playerOccupiedTiles.includes(tile.id)) {
+                    if (!alienOccupiedTiles.includes(tile.id)) {
+                        let distance = calcDistance(tile.id,targetTileId);
+                        if (distance < nearest) {
+                            nearest = distance;
+                            lassoTileId = tile.id;
+                        }
+                    }
+                }
+            }
+        }
+    });
+    return lassoTileId;
+};
+
 function rush(rushAP) {
     selectedBat.apLeft = selectedBat.apLeft+rushAP;
     selectedBat.tags.push('rush');
