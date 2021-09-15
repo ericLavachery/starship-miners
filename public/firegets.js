@@ -1765,7 +1765,7 @@ function calcShotDice(bat,luckyshot) {
         } else if (luckDice <= luckCheck[0]) {
             $('#report').append('<span class="report cy">Lucky shot!</span><br>');
             return 50;
-        } else if (luckDice <= luckCheck[1] || bat.tags.includes('kill')) {
+        } else if (luckDice <= luckCheck[1] || bat.tags.includes('kill') || bat.tags.includes('rage')) {
             return 75;
         } else if (luckDice <= luckCheck[2]) {
             return 85;

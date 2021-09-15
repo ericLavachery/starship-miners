@@ -1455,7 +1455,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["grip","venin","tail","ponte","minaccu","fear","resistpoison","resistblast","resistfeu","sentinelle"],
+        "skills":["grip","venin","tail","ponte","minaccu","fear","resistpoison","resistblast","resistfeu","sentinelle","noaploss"],
         "deathFx":"185366__anwul__monster",
         "spawnFx":"spawn-androk",
         "fxPriority":4,
