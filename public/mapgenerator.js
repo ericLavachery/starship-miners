@@ -20,7 +20,7 @@ function createVM(size) {
     let i = 0;
     let x = 1;
     let y = 1;
-    let thisTerrain = "P";
+    let thisTerrain = "X";
     while (i < size*size) {
         newTile = {};
         newTile.id = i;

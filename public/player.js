@@ -393,8 +393,8 @@ function playerSkillsUTChanges() {
         }
         if (playerInfos.comp.def >= 2 && unit.skills.includes('garde')) {
             unit.hp = unit.hp+defComp;
+            unit.armor = unit.armor+playerInfos.comp.def-1;
             if (playerInfos.comp.def >= 3) {
-                unit.armor = unit.armor+2;
                 if (Object.keys(unit.weapon).length >= 3) {
                     unit.weapon.rof = Math.ceil(unit.weapon.rof*1.5);
                 }
@@ -593,6 +593,7 @@ function playerSkillsUTChanges() {
             }
         }
     });
+    console.log(unitTypes);
 };
 
 function playerSkillsATChanges() {

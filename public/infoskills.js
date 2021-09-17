@@ -785,7 +785,7 @@ function skillsInfos(bat,batType) {
                 let starkaPA = getStarkaBonus(bat);
                 let moveDistance = calcDistance(bat.tileId,bat.oldTileId);
                 console.log('moveDistance='+moveDistance);
-                if (!bat.tags.includes('starka') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK && moveDistance <= 2) {
+                if (!bat.tags.includes('starka') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK && moveDistance <= 2 && starkaPA >= 1) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+starkaPA+' PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
                 } else {
                     if (bat.tags.includes('starka')) {
@@ -798,6 +798,8 @@ function skillsInfos(bat,batType) {
                         skillMessage = "Vous n'avez pas le bâtiment requis (dans la  zone): "+drug.bldReq[0];
                     } else if (!drugCostsOK) {
                         skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                    } else if (starkaPA < 1) {
+                        skillMessage = "Vous vous êtes déjà au maximum de PA";
                     } else {
                         skillMessage = "Vous vous êtes déjà trop déplacé ce tour-ci";
                     }

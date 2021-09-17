@@ -990,7 +990,7 @@ function anyAlienInRange(myBat,weapon) {
         if (bat.loc === "zone") {
             if (isInRange(myBat,bat.tileId,weapon) || checkGuidage(weapon,bat)) {
                 batType = getBatType(bat);
-                if (weapon.ammo.includes('marquage') && bat.tags.includes('fluo')) {
+                if (weapon.ammo.includes('marquage') && weapon.name != 'Fragger' && bat.tags.includes('fluo')) {
                     // Déjà marqué
                 } else {
                     if (weapon.noFly && batType.skills.includes('fly')) {
@@ -1398,7 +1398,7 @@ function weaponAdj(weapon,bat,wn) {
             }
             thisWeapon.accuracy = thisWeapon.accuracy+8;
         }
-        if (bat.eq === 'silencieux1' || bat.logeq === 'silencieux1') {
+        if (bat.eq === 'silencieux1' || bat.logeq === 'silencieux1' || bat.eq.includes('kit-chouf')) {
             thisWeapon.noise = thisWeapon.noise-1;
         }
     } else if (thisWeapon.num === 2) {
@@ -1437,7 +1437,7 @@ function weaponAdj(weapon,bat,wn) {
             }
             thisWeapon.accuracy = thisWeapon.accuracy+8;
         }
-        if (bat.eq === 'silencieux2' || bat.logeq === 'silencieux2') {
+        if (bat.eq === 'silencieux2' || bat.logeq === 'silencieux2' || bat.eq.includes('kit-chouf')) {
             thisWeapon.noise = thisWeapon.noise-1;
         }
     }

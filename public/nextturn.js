@@ -139,13 +139,13 @@ function alienTurnEnd() {
             let batType = getBatType(bat);
             if (batType.skills.includes('lurk') || batType.skills.includes('dive')) {
                 let tile = getTile(bat);
-                if (batType.skills.includes('lurk')) {
+                if (batType.skills.includes('lurk') && bat.salvoLeft >= 1) {
                     if (tile.terrain === 'F') {
                         if (!bat.tags.includes('invisible')) {
                             bat.tags.push('invisible');
                         }
                     } else {
-                        if (bat.tags.includes('invisible')) {
+                        if (bat.tags.includes('invisible') && !bat.tags.includes('follow')) {
                             tagDelete(bat,'invisible');
                         }
                     }

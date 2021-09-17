@@ -681,11 +681,15 @@ function eggDropTile(eggName,theArea) {
     }
     // A COUVERT
     if (area === 'acouvert') {
+        let bestCover = 0;
         let shufAliens = _.shuffle(aliens);
         shufAliens.forEach(function(bat) {
             if (bat.loc === "zone") {
                 if (bat.type === 'Volcan' || bat.type === 'Ruche') {
-                    targetTile = bat.tileId;
+                    if (bat.squadsLeft > bestCover) {
+                        targetTile = bat.tileId;
+                        bestCover = bat.squadsLeft;
+                    }
                 }
             }
         });

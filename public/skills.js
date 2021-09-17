@@ -70,7 +70,7 @@ function checkCommand(myBat) {
     });
     leSousChef.pa = 2;
     if (playerInfos.comp.ordre >= 2) {
-        leSousChef.pa = 3;
+        leSousChef.pa = leSousChef.pa+playerInfos.comp.ordre-1;
     }
     return leSousChef;
 };
@@ -602,13 +602,17 @@ function getNitroBonus(bat) {
 function getStarkaBonus(bat) {
     let batType = getBatType(bat);
     let batAPLeft = bat.apLeft;
-    let batAP = getAP(bat,batType);
-    let medBonus = Math.floor(playerInfos.comp.med*playerInfos.comp.med/2);
-    batAPLeft = batAPLeft+batAP+medBonus;
-    if (batAPLeft >= batAP+2+medBonus) {
-        batAPLeft = batAP+2+medBonus;
+    if (bat.apLeft < 0) {
+        batAPLeft = Math.round(bat.apLeft/3);
     }
-    let starkaBonus = batAPLeft-bat.apLeft;
+    let batAP = getAP(bat,batType);
+    let medBonus = Math.floor((playerInfos.comp.med+1)*(playerInfos.comp.med+1)/2);
+    batAPLeft = Math.round(batAPLeft+(batAP*2/3)+medBonus);
+    let maxAP = Math.round(batAP+(medBonus/2));
+    if (batAPLeft >= maxAP) {
+        batAPLeft = maxAP;
+    }
+    let starkaBonus = batAPLeft-Math.round(bat.apLeft);
     return starkaBonus;
 };
 

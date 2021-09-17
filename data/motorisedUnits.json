@@ -1059,7 +1059,7 @@
         "maxFlood":2,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","guerrilla","camo","landmine","routes","selfbadmecano","emoteur","defense","light","badcrewsave","recupcit","recupres","caterp","kzin"],
+        "skills":["fortif","guerrilla","camo","longshot","landmine","routes","selfbadmecano","emoteur","defense","light","badcrewsave","recupcit","recupres","caterp","kzin"],
         "mecanoCost":10,
         "maxSkill":12,
         "fuzz":3,
