@@ -1731,7 +1731,6 @@ function putRoad() {
     camoOut();
     selectedBatArrayUpdate();
     tile.rd = true;
-    // saveMap();
     showMap(zone,false);
     showBatInfos(selectedBat);
 };

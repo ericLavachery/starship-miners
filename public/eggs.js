@@ -400,6 +400,9 @@ function eggsDrop() {
             numEggs++;
         }
     }
+    if (aliens.length >= 200 && numEggs >= 1) {
+        numEggs = 1;
+    }
     console.log('eggDice='+eggDice);
     let coqPerc = getCoqueChance();
     let coqNum = 0;

@@ -203,7 +203,7 @@ let colonyTiles = [];
 let spawnType = {};
 let eggsNum = 0;
 let aliensNum = 0;
-let coconSatLimit = 6;
+let coconSatLimit = 10;
 // CONSTRUCTION
 let conselUnit = {};
 let conselAmmos = ['xxx','xxx','xxx','xxx'];
