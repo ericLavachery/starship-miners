@@ -1778,11 +1778,15 @@ function updateBldList() {
         playerInfos.bldVM = [];
     }
     hasScraptruck = false;
+    playerInfos.sci = 0;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || playerInfos.onShip) {
             batType = getBatType(bat);
             if (batType.name === 'Scraptrucks') {
                 hasScraptruck = true;
+            }
+            if (bat.type === 'Chercheurs') {
+                playerInfos.sci++;
             }
             if (batType.cat === 'buildings' && !batType.skills.includes('nolist') && !bat.tags.includes('construction')) {
                 if (!playerInfos.bldList.includes(batType.name)) {

@@ -621,7 +621,7 @@
     {
         "id":73,
         "result":"Nourriture",
-        "cost":{"Fruits":9,"Végétaux":18,"Energie":2},
+        "cost":{"Fruits":9,"Végétaux":15,"Energie":2},
         "compReq":{"tri":1},
         "bldReq":["Cantine"],
         "batch":3
@@ -645,7 +645,7 @@
     {
         "id":76,
         "result":"Nourriture",
-        "cost":{"Végétaux":36,"Swarmine":2,"Zinc":1,"Eau":3,"Energie":3},
+        "cost":{"Végétaux":18,"Swarmine":2,"Zinc":1,"Eau":3,"Energie":3},
         "compReq":{"ca":2},
         "bldReq":["Laboratoire"],
         "batch":9

@@ -22,6 +22,9 @@ function calcBatFuzz(bat) {
     if (batFuzz >= 6) {
         batFuzz = batFuzz+batFuzz-3;
     }
+    if (bat.eq === 'isophon' || bat.logeq === 'isophon') {
+        batFuzz = batFuzz-3;
+    }
     if (batFuzz < 0) {
         batFuzz = 0;
     }

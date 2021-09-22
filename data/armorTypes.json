@@ -1028,6 +1028,16 @@
         "costs":{"Scrap":4,"Carbone":8,"Zinc":4,"Nickel":4}
     },
     {
+        "name": "isophon",
+        "cat":"equip",
+        "skills": [],
+        "info": "Isolation phonique",
+        "bldReq":["Chaîne de montage"],
+        "compReq":{"const":1},
+        "factor":"thp",
+        "costs":{"Scrap":6,"Végétaux":6,"Bois":6}
+    },
+    {
         "name": "tungextract",
         "cat":"equip",
         "skills": [],

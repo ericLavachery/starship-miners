@@ -1102,7 +1102,7 @@ function cocoonSpawn(bat) {
                 spawnNum = satMin;
             }
             console.log('spawnNum: '+spawnNum);
-            if (eggLevel >= 6) {
+            if (eggLevel >= 5) {
                 classes.push('B');
                 classes.push('C');
             } else {

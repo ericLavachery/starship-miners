@@ -32,9 +32,17 @@ function encounter() {
 
 function putBastionAliens(hard) {
     dropEgg('Ruche','encounter');
+    if (zone[0].mapDiff >= 3) {
+        dropEgg('Ruche','encounter');
+    }
     if (hard) {
         dropEgg('Ruche','encounter');
         dropEgg('Cocon','encounter');
+        if (zone[0].mapDiff >= 5 || rand.rand(1,3) === 1) {
+            dropEgg('Ruche','encounter');
+        } else {
+            dropEgg('Cocon','encounter');
+        }
     } else {
         dropEgg('Veilleurs','encounter');
     }
