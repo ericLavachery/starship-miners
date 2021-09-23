@@ -13,13 +13,15 @@ function commandes() {
             if (batList.length >= 1) {
                 if (Object.keys(selectedBat).length >= 1) {
                     $('#batloop').append('<button type="button" title="Passer au bataillon suivant (et ne plus s\'occuper de celui-ci ce tour-ci)" class="boutonGris iconButtons" onclick="nextBat(true,false)" onmousedown="clicSound()"><i class="fas fa-thumbs-up"></i></button>');
-                    $('#batloop').append('<button type="button" title="Passer au bataillon suivant (et s\'occuper de celui-ci plus tard)" class="boutonGris iconButtons" onclick="nextBat(false,false)" onmousedown="clicSound()"><i class="fas fa-share"></i></button>');
-                    $('#batloop').append('<button type="button" title="Passer au bataillon suivant (et ne plus s\'occuper de celui-ci du tout)" class="boutonGris iconButtons" onclick="nextBat(true,true)" onmousedown="clicSound()"><i class="fas fa-trash-alt"></i></button>');
+                    $('#batloop').append('<button type="button" title="Passer au bataillon suivant (et s\'occuper de celui-ci à la fin du tour)" class="boutonGris iconButtons" onclick="nextBat(false,false)" onmousedown="clicSound()"><i class="fas fa-share"></i></button>');
+                    $('#batloop').append('<button type="button" title="Mettre ce bataillon hors alerte (le sortir de la liste)" class="boutonGris iconButtons" onclick="nextBat(true,true)" onmousedown="clicSound()"><i class="far fa-bell-slash"></i></button>');
                 } else {
                     $('#batloop').append('<button type="button" title="Passer au bataillon suivant" class="boutonGris iconButtons" onclick="nextBat(true)" onmousedown="clicSound()"><i class="fas fa-chevron-circle-right"></i></button>');
+                    $('#batloop').append('<button type="button" title="Mettre tous les bataillons en alerte et re-créer la liste" class="boutonVert iconButtons" onclick="alertAllBats()" onmousedown="clicSound()"><i class="fas fa-undo-alt"></i> <i class="far fa-bell"></i></button>');
                 }
             } else {
                 $('#batloop').append('<button type="button" title="Liste de bataillons vide : Cliquer pour re-créer" class="boutonVert iconButtons" onclick="createBatList()" onmousedown="clicSound()"><i class="fas fa-undo-alt"></i> <i class="fas fa-chevron-circle-right"></i></button>');
+                $('#batloop').append('<button type="button" title="Mettre tous les bataillons en alerte et re-créer la liste" class="boutonVert iconButtons" onclick="alertAllBats()" onmousedown="clicSound()"><i class="fas fa-undo-alt"></i> <i class="far fa-bell"></i></button>');
             }
             if (nextTurnOK) {
                 if (batList.length >= 1) {

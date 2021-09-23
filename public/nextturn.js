@@ -1315,6 +1315,16 @@ function emptyBatList() {
     // console.log(batList);
 };
 
+function alertAllBats() {
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (!batType.skills.includes('nolist')) {
+            tagDelete(bat,'nolist');
+        }
+    });
+    createBatList();
+};
+
 function createBatList() {
     let allBatList = bataillons.slice();
     let zoneBatList = _.filter(allBatList, function(bat) {
