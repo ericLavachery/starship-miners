@@ -103,9 +103,7 @@ function landingList() {
                 playRoom(zone[0].snd,true);
                 // playBackMusic();
             }
-            if (zone[0].planet === 'Horst') {
-                createStormsLists(true);
-            }
+            createStormsLists(true);
             checkUndark();
             if (zone[0].mapDiff < Math.floor(playerInfos.allTurns/apoCount)+1) {
                 zone[0].mapDiff = Math.floor(playerInfos.allTurns/apoCount)+1;
