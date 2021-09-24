@@ -29,7 +29,6 @@ function fortification() {
 };
 
 function checkCommand(myBat) {
-    // array 0=ok? 1=treuilBat 2=PA
     let leSousChef = {};
     leSousChef.ok = false;
     leSousChef.bat = {};
@@ -47,14 +46,14 @@ function checkCommand(myBat) {
                     thisEffect = 100+bat.apLeft;
                 } else {
                     let distance = calcDistance(bat.tileId,myBat.tileId);
-                    if (distance <= 1) {
+                    if (distance <= 3) {
                         distOK = true;
                         thisEffect = 200+bat.apLeft;
                     }
                 }
             } else if (bat.tags.includes('schef')) {
                 let distance = calcDistance(bat.tileId,myBat.tileId);
-                if (distance <= 1) {
+                if (distance <= 3) {
                     distOK = true;
                     thisEffect = 300+bat.apLeft;
                 }
@@ -575,7 +574,6 @@ function goDrug(apCost,drugName) {
         }
         payCost(drug.costs);
         doneAction(ravitBat);
-        tagDelete(selectedBat,'guet');
         doneAction(selectedBat);
         selectedBatArrayUpdate();
         showBatInfos(selectedBat);

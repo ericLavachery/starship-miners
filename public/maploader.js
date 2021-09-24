@@ -30,6 +30,7 @@ function showMap(wmap,justMoved) {
     let tPic = 'P_001';
     allZoneRes = [];
     allCheckedZoneRes = [];
+    viewBorders = [];
     if (modeSonde) {
         playerInfos.showedTiles = [1830];
     }
@@ -46,6 +47,9 @@ function showMap(wmap,justMoved) {
                 let planetName = getPlanetNameById(tile.pid);
                 tile.planet = planetName;
             }
+        }
+        if (tile.x === minX || tile.x === maxX || tile.y === minY || tile.y === maxY) {
+            viewBorders.push(tile.id);
         }
         if ((modeSonde || modeLanding) && landerLandingOK(tile) && !playerInfos.showedTiles.includes(tile.id)) {
             playerInfos.showedTiles.push(tile.id);

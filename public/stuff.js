@@ -288,13 +288,16 @@ function nearWhat(myBat,myBatType) {
             if (!bat.tags.includes('nomove')) {
                 near.control = true;
             }
-            if (!bat.tags.includes('command')) {
-                if (bat.tags.includes('schef') || batType.skills.includes('leader')) {
-                    near.schef = true;
-                }
-            }
             if (bat.tags.includes('hero') && batType.skills.includes('heropotion') && !bat.tags.includes('potion')) {
                 near.doxey = true;
+            }
+        }
+        if (!bat.tags.includes('command')) {
+            if (bat.tags.includes('schef') || batType.skills.includes('leader')) {
+                let distance = calcDistance(bat.tileId,myBat.tileId);
+                if (distance <= 3) {
+                    near.schef = true;
+                }
             }
         }
         if (batType.skills.includes('leader') && !bat.tags.includes('command')) {

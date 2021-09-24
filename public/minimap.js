@@ -72,12 +72,8 @@ function minimap() {
         } else if (miniDots === 'coffres' && tousLesCoffres.includes(tile.id)) {
             $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
         } else {
-            if ((tile.id === selectedTile || tile.id === selectedBat.tileId) && (miniDots === 'units' || miniDots === 'eggs')) {
-                if (tile.id === selectedBat.tileId) {
-                    $('#themmap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
-                } else {
-                    $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
-                }
+            if (tile.id === selectedBat.tileId && (miniDots === 'units' || miniDots === 'eggs')) {
+                $('#themmap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
             } else {
                 if (visibleEggs.includes(tile.id) && miniDots === 'eggs' && alienView) {
                     $('#themmap').append('<span class="mini mEgg" onclick="centerFromMinimap('+tile.id+')"></span>');
@@ -98,16 +94,20 @@ function minimap() {
                                 if (oneResTileIds.includes(tile.id) && miniDots === 'oneres') {
                                     $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
                                 } else {
-                                    if (zone[0].dark) {
-                                        if (undarkNow.includes(tile.id)) {
-                                            $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
-                                        } else if (playerInfos.undarkOnce.includes(tile.id)) {
-                                            $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
-                                        } else {
-                                            $('#themmap').append('<span class="mini mDark" onclick="centerFromMinimap('+tile.id+')"></span>');
-                                        }
+                                    if (viewBorders.includes(tile.id)) {
+                                        $('#themmap').append('<span class="mini mBord" onclick="centerFromMinimap('+tile.id+')"></span>');
                                     } else {
-                                        $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                        if (zone[0].dark) {
+                                            if (undarkNow.includes(tile.id)) {
+                                                $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                            } else if (playerInfos.undarkOnce.includes(tile.id)) {
+                                                $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                            } else {
+                                                $('#themmap').append('<span class="mini mDark" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                            }
+                                        } else {
+                                            $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                        }
                                     }
                                 }
                             }
