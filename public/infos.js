@@ -76,8 +76,11 @@ function batInfos(bat,batType,pop) {
             gradeColor = 'or';
         }
         let vetStatus = '';
+        if (bat.tags.includes('schef') || batType.skills.includes('leader')) {
+            vetStatus = ' <span class="rouge">(Chef)</span>';
+        }
         if (bat.tags.includes('hero')) {
-            vetStatus = ' <span class="rouge">(Héro)</span>';
+            vetStatus = ' <span class="rouge">(Héros)</span>';
         }
         if (bat.tags.includes('vet')) {
             vetStatus = ' (Vétéran)';

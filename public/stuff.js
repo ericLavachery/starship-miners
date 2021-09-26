@@ -160,6 +160,7 @@ function targetBatArrayUpdate() {
 };
 
 function levelUp(bat,batType) {
+    let oldGrade = getGrade(bat,batType);
     bat.xp = bat.xp.toFixedNumber(2);
     if (bat.xp >= levelXP[4]) {
         bat.vet = 4;
@@ -174,13 +175,20 @@ function levelUp(bat,batType) {
     }
     if (!bat.tags.includes('vet') && !bat.tags.includes('schef') && !bat.tags.includes('hero')) {
         let grade = getGrade(bat,batType);
-        if (grade === 'Lieutenant') {
-            if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && batType.crew >= 1) || batType.skills.includes('souschef')) {
+        if (grade != oldGrade) {
+            if (grade === 'Lieutenant') {
+                if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && batType.crew >= 1) || batType.skills.includes('souschef')) {
+                    heroUp(bat,batType,grade);
+                }
+            }
+            if (grade === 'Sergent' && rand.rand(1,3) === 1) {
+                if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && batType.crew >= 1) || batType.skills.includes('souschef')) {
+                    heroUp(bat,batType,grade);
+                }
+            }
+            if (grade === 'Général') {
                 heroUp(bat,batType,grade);
             }
-        }
-        if (grade === 'Général') {
-            heroUp(bat,batType,grade);
         }
     }
 };
@@ -194,8 +202,16 @@ function heroUp(bat,batType,grade) {
     if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('garde') && batType.crew >= 1) || batType.skills.includes('souschef')) {
         mayHero = true;
     }
-    if (grade === 'Lieutenant') {
-        let chefNum = getChefNum();
+    let chefNum = getChefNum();
+    if (grade === 'Sergent') {
+        if (chefNum === 0 && mayChef) {
+            bat.tags.push('schef');
+        } else {
+            if (rand.rand(1,chefNum*2) === 1 && mayChef) {
+                bat.tags.push('schef');
+            }
+        }
+    } else if (grade === 'Lieutenant') {
         if (chefNum === 0 && mayChef) {
             bat.tags.push('schef');
         } else if (chefNum === 1 && mayHero) {
@@ -256,7 +272,7 @@ function getGrade(bat,batType) {
         } else {
             if (bat.vet >= 4) {
                 grade = 'Lieutenant';
-            } else if (bat.vet >= 2) {
+            } else if (bat.vet >= 3) {
                 grade = 'Sergent';
             } else {
                 grade = 'Caporal';

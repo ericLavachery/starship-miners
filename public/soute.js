@@ -308,6 +308,19 @@ function batListElement(bat,batType,idOfLander) {
         army = army+'a<span class="rose" title="Armée">'+bat.army+'</span>';
     }
     $('#be'+bat.id).append('<span class="listRes gff" title="XP">('+bxp+vetIcon+army+')</span>');
+    let vetStatus = '';
+    if (bat.tags.includes('schef') || batType.skills.includes('leader')) {
+        vetStatus = '<span class="rouge">(Chef)</span>';
+    }
+    if (bat.tags.includes('hero')) {
+        vetStatus = '<span class="rouge">(Héros)</span>';
+    }
+    if (bat.tags.includes('vet')) {
+        vetStatus = '(Vétéran)';
+    }
+    if (vetStatus != '') {
+        $('#be'+bat.id).append('<span class="listRes gff">'+vetStatus+'</span>');
+    }
     $('#be'+bat.id).append('<br>');
     let prt = bat.prt;
     if (prt.includes('aucun')) {

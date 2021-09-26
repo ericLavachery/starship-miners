@@ -278,7 +278,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":3,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire","Atelier"],
         "compReq":{"gen":1},
-        "costs":{"Explosifs":30,"Creatite":100,"Azote":90,"Mercure":30,"Drogues":10,"Végétaux":30},
+        "costs":{"Explosifs":30,"Creatite":100,"Calcium":50,"Azote":90,"Mercure":30,"Drogues":10,"Végétaux":30},
         "fabTime":30
     },
     {
@@ -924,7 +924,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":5,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire"],
         "compReq":{"gen":1},
-        "costs":{"Fer":60,"Scrap":60,"Creatite":144,"Azote":126,"Mercure":42,"Drogues":15},
+        "costs":{"Fer":60,"Scrap":60,"Creatite":144,"Calcium":72,"Azote":126,"Mercure":42,"Drogues":15},
         "fabTime":40
     },
     {
@@ -933,7 +933,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":12,"drogmulojs":11,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"gen":1},
-        "costs":{"Fer":60,"Scrap":120,"Carbone":60,"Plomb":60,"Bois":60,"Aluminium":60,"Tungstène":60,"Bugium":84,"Creatite":144,"Mendium":20,"Azote":180,"Mercure":60,"Drogues":20},
+        "costs":{"Fer":60,"Scrap":120,"Carbone":60,"Plomb":60,"Bois":60,"Aluminium":60,"Tungstène":60,"Bugium":84,"Creatite":144,"Calcium":72,"Azote":180,"Mercure":60,"Drogues":20},
         "fabTime":70
     },
     {
@@ -958,7 +958,7 @@
         "id":1,
         "name":"Scouts",
         "levels":{"rednecks":99,"blades":99,"bulbos":13,"drogmulojs":13,"tiradores":99,"detruas":9,"brasier":99},
-        "bldReq":["Armurie","Garage"],
+        "bldReq":["Armurerie","Garage"],
         "compReq":{"tank":1},
         "costs":{"Fer":220,"Scrap":215,"Carbone":75,"Aluminium":150,"Moteurs":45,"Tungstène":90,"Cuivre":15,"Batteries":25,"Compo2":60,"Cobalt":30,"Hélium":60,"Explosifs":10,"Fuel":40},
         "deploy":{"Fuel":70},

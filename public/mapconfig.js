@@ -1,30 +1,30 @@
-function areaMove(direction) {
+function areaMove(direction,cases) {
     let x = 0;
     let y = 0;
     switch(direction) {
         case 'n':
-        x = Number(xOffset)-3;
+        x = Number(xOffset)-cases;
         if (x < 0) {
             x = 0;
         }
         y = Number(yOffset);
         break;
         case 's':
-        x = Number(xOffset)+3;
+        x = Number(xOffset)+cases;
         if (x > 60-numVTiles) {
             x = 60-numVTiles;
         }
         y = Number(yOffset);
         break;
         case 'e':
-        y = Number(yOffset)+3;
+        y = Number(yOffset)+cases;
         if (y > 60-numHTiles) {
             y = 60-numHTiles;
         }
         x = Number(xOffset);
         break;
         case 'w':
-        y = Number(yOffset)-3;
+        y = Number(yOffset)-cases;
         if (y < 0) {
             y = 0;
         }
