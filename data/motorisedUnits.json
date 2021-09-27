@@ -4056,7 +4056,7 @@
             "rof":9,
             "accuracy":12,
             "power":30,
-            "armors":0.5,
+            "armors":0.35,
             "aoe":"unit",
             "sound":"saw",
             "ammo":["lame","lame-tungsten","lame-carbone","lame-plasma"]

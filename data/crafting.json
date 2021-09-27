@@ -774,10 +774,18 @@
         "batch":15
     },
     {
+        "id":129,
+        "result":"Cuivre",
+        "cost":{"Or":12,"Aluminium":6},
+        "compReq":{"mat":1},
+        "bldReq":["Atelier"],
+        "batch":15
+    },
+    {
         "id":37,
         "result":"Cuivre",
         "cost":{"Blendium":10,"Hélium":5,"Azote":5,"Energie":2},
-        "compReq":{"tri":2,"ca":1,"mat":1},
+        "compReq":{"tri":2,"ca":2,"mat":1},
         "bldReq":["Recyclab"],
         "batch":15
     },

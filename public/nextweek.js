@@ -1,19 +1,22 @@
-function events(afterMission,sim) {
+function events(afterMission,time,sim) {
     checkReserve();
     updateBldList();
     resetWeekRes();
-    let time = 21;
+    // let time = 21;
     if (afterMission) {
         time = Math.ceil(playerInfos.mapTurn/3)*3;
     }
-    if (sim) {
-        time = 65;
-    }
+    // if (sim) {
+    //     time = 65;
+    // }
     eventCitoyens(time,sim);
     eventProduction(afterMission,time,sim);
     eventBouffe(time,sim);
     eventCrime(time,sim);
     eventAliens(time,sim);
+    if (!sim) {
+        repos(time);
+    }
     console.log('RES BALANCE');
     console.log(playerInfos.weekRes);
     showResBallance();
@@ -39,6 +42,31 @@ function events(afterMission,sim) {
         playerInfos.showedTiles = [];
     }
 };
+
+function repos(time) {
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        let necroHeal = time*3;
+        if (playerInfos.bldList.includes('Hôpital')) {
+            necroHeal = time*12;
+        }
+        if (rand.rand(1,100) <= necroHeal) {
+            tagDelete(bat,'necro');
+        }
+        if (bat.soins != undefined) {
+            if (!batType.skills.includes('clone')) {
+                if (playerInfos.bldList.includes('Hôpital')) {
+                    bat.soins = bat.soins-(time*3);
+                } else {
+                    bat.soins = bat.soins-time;
+                }
+                if (bat.soins < 0) {
+                    bat.soins = 0;
+                }
+            }
+        }
+    });
+}
 
 function eventProduction(afterMission,time,sim) {
     let mesCitoyens = calcTotalCitoyens();

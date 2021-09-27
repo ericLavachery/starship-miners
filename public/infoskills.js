@@ -1053,7 +1053,7 @@ function skillsInfos(bat,batType) {
                 }
             }
         }
-        if ((batType.cat === 'vehicles' && !batType.skills.includes('emoteur')) || batType.skills.includes('oknitro')) {
+        if (batType.cat === 'vehicles' || batType.skills.includes('oknitro')) {
             // NITRO
             if (allDrugs.includes('nitro') || bat.tags.includes('nitro')) {
                 drug = getDrugByName('nitro');

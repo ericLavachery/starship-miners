@@ -80,9 +80,9 @@ function souteMenu() {
             $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`support`)">Support &nbsp;&nbsp;</span>');
         }
         if (souteFilter === 'cyberobots') {
-            $('#menu_soute').append('<span class="menuTab cy">Cyber & Robots &nbsp;&nbsp;</span>');
+            $('#menu_soute').append('<span class="menuTab cy">Cyber &nbsp;&nbsp;</span>');
         } else {
-            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`cyberobots`)">Cyber & Robots &nbsp;&nbsp;</span>');
+            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`cyberobots`)">Cyber &nbsp;&nbsp;</span>');
         }
         if (souteFilter === 'vehicles') {
             $('#menu_soute').append('<span class="menuTab cy">Véhicules &nbsp;&nbsp;</span>');
@@ -90,9 +90,14 @@ function souteMenu() {
             $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`vehicles`)">Véhicules &nbsp;&nbsp;</span>');
         }
         if (souteFilter === 'prefabs') {
-            $('#menu_soute').append('<span class="menuTab cy">Bâtiments</span>');
+            $('#menu_soute').append('<span class="menuTab cy">Bâtiments &nbsp;&nbsp;</span>');
         } else {
-            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`prefabs`)">Bâtiments</span>');
+            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`prefabs`)">Bâtiments &nbsp;&nbsp;</span>');
+        }
+        if (souteFilter === 'army') {
+            $('#menu_soute').append('<span class="menuTab cy">Armées</span>');
+        } else {
+            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`army`)">Armées</span>');
         }
     }
 };
@@ -197,6 +202,9 @@ function souteList() {
         souteBatList('devices','','prefab','robot',landersIds,-1);
         souteBatList('buildings','','prefab','robot',landersIds,-1);
     }
+    if (souteFilter === 'army') {
+        souteArmyList(landersIds,-1);
+    }
 };
 
 function landerList() {
@@ -261,6 +269,45 @@ function souteBatList(cat,partKind,skill,noSkill,landersIds,idOfLander) {
     });
 };
 
+function souteArmyList(landersIds,idOfLander) {
+    let showMe = true;
+    let colId = 'list_soute';
+    if (idOfLander >= 0) {
+        colId = 'list_lander';
+    }
+    let sortedBats = bataillons.slice();
+    sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'id'),'type'),'army');
+    sortedBats = sortedBats.reverse();
+    sortedBats.forEach(function(bat) {
+        let batType = getBatType(bat);
+        showMe = false;
+        if (idOfLander >= 0) {
+            if (bat.loc === 'trans' && bat.locId === idOfLander) {
+                showMe = true;
+            }
+        } else {
+            if (bat.loc === 'zone' || !landersIds.includes(bat.locId)) {
+                showMe = true;
+            }
+        }
+        if (batType.skills.includes('transorbital')) {
+            showMe = false;
+        }
+        if (batType.id === 126 || batType.id === 225) {
+            showMe = false;
+        }
+        if (batType.cat === 'devices' || batType.cat === 'buildings') {
+            showMe = false;
+        }
+        if (showMe) {
+            if (bat.loc === 'zone' && idOfLander < 0) {
+                loadBat(bat.id,souteId);
+            }
+            batListElement(bat,batType,idOfLander);
+        }
+    });
+};
+
 function batListElement(bat,batType,idOfLander) {
     let colId = 'list_soute';
     if (idOfLander >= 0) {
@@ -320,6 +367,9 @@ function batListElement(bat,batType,idOfLander) {
     }
     if (vetStatus != '') {
         $('#be'+bat.id).append('<span class="listRes gff">'+vetStatus+'</span>');
+    }
+    if (bat.soins >= 11 || bat.tags.includes('necro')) {
+        $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i></span>');
     }
     $('#be'+bat.id).append('<br>');
     let prt = bat.prt;

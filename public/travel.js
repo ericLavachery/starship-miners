@@ -93,7 +93,7 @@ function landingList() {
             playRoom('station',true);
             checkSelectedLanderId();
             healEverything();
-            events(true,false);
+            events(true,0,false);
             miniOut();
         } else {
             if (zone[0].snd === undefined) {
@@ -200,14 +200,17 @@ function healEverything() {
         if (bat.tags.includes('prodres')) {
             gearTags.push('prodres');
         }
+        if (bat.tags.includes('necro')) {
+            gearTags.push('necro');
+        }
         bat.tags = gearTags;
         bat.squadsLeft = batType.squads;
         bat.damage = 0;
-        if (bat.soins != undefined) {
-            if (!batType.skills.includes('clone')) {
-                bat.soins = 0;
-            }
-        }
+        // if (bat.soins != undefined) {
+        //     if (!batType.skills.includes('clone')) {
+        //         bat.soins = 0;
+        //     }
+        // }
         if (bat.autoLoad != undefined) {
             if (bat.autoLoad.length >= 1) {
                 bat.autoLoad = [];
