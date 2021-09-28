@@ -741,6 +741,9 @@ function showTileInfos(tileId) {
         // Coordonnées
         $('#tileInfos').append('<span class="paramName">Coordonnées</span><span class="paramIcon"><i class="fas fa-map-marker-alt"></i></span><span class="paramValue">'+tile.y+'&lrhar;'+tile.x+'</span><br>');
         $('#tileInfos').append('<span class="paramName">Id</span><span class="paramIcon"></span><span class="paramValue">#'+tile.id+'</span><br>');
+        // Heat
+        let tileEnergy = getTileEnergy(tile);
+        $('#tileInfos').append('<span class="paramName sky" title="Chaleur du sous-sol (pour les sondes géothermiques)">Energie</span><span class="paramIcon"></span><span class="paramValue sky">'+tileEnergy+'</span><br>');
         // RESSOURCES
         if (playerInfos.comp.det >= 2 || !modeSonde) {
             if (tile.rs !== undefined) {

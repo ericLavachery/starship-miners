@@ -507,6 +507,70 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
     return numTargets;
 };
 
+function deathStress() {
+    bataillons.forEach(function(bat) {
+        addStressFlag(bat,'death');
+    });
+};
+
+function addStressFlag(bat,emoType) {
+    let batType = getBatType(bat);
+    if (batType.crew >= 1 && !batType.skills.includes('robot') && !bat.tags.includes('zombie')) {
+        let stressCost = 0;
+        if (emoType === 'death') {
+            let stressChance = 6;
+            if (batType.skills.includes('lowstress')) {
+                stressChance = Math.ceil(stressChance/2);
+            }
+            if (rand.rand(1,100) <= stressChance) {
+                stressCost = 10;
+            }
+        } else if (emoType === 'fear') {
+            stressCost = 2;
+            if (batType.skills.includes('lowstress')) {
+                stressCost = Math.ceil(stressCost/2);
+            }
+        } else if (emoType === 'turn') {
+            let stressChance = zone[0].mapDiff*2;
+            if (zone[0].planet === 'Sarak' || zone[0].planet === 'Gehenna') {
+                stressChance = stressChance*2;
+            }
+            if (zone[0].planet === 'Horst') {
+                stressChance = Math.ceil(stressChance*1.5);
+            }
+            if (batType.skills.includes('lowstress') || bat.tags.includes('schef')) {
+                stressChance = Math.ceil(stressChance/1.5);
+            }
+            if (rand.rand(1,100) <= stressChance) {
+                stressCost = 1;
+            }
+        }
+        if (stressCost >= 1) {
+            if (bat.id === selectedBat.id) {
+                if (selectedBat.emo != undefined) {
+                    selectedBat.emo = selectedBat.emo+stressCost;
+                } else {
+                    selectedBat.emo = stressCost;
+                }
+                // selectedBatArrayUpdate();
+            } else if (bat.id === targetBat.id) {
+                if (bat.emo != undefined) {
+                    bat.emo = bat.emo+stressCost;
+                } else {
+                    bat.emo = stressCost;
+                }
+                // targetBatArrayUpdate();
+            } else {
+                if (bat.emo != undefined) {
+                    bat.emo = bat.emo+stressCost;
+                } else {
+                    bat.emo = stressCost;
+                }
+            }
+        }
+    }
+};
+
 function addHealFlag(bat) {
     let batType = getBatType(bat);
     let healCost = 1;

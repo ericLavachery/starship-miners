@@ -421,6 +421,12 @@ function batDeathEffect(bat,quiet,title,body) {
         newAlienKilled(bat.type,bat.tileId);
     }
     if (bat.team != 'aliens') {
+        let batType = getBatType(bat);
+        if (batType.crew >= 1 && !batType.skills.includes('robot') && !batType.skills.includes('clone')) {
+            deathStress();
+        }
+    }
+    if (bat.team != 'aliens') {
         $('#unitInfos').empty();
         $("#unitInfos").css("display","none");
     }

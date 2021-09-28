@@ -1265,22 +1265,22 @@ function fearFactor(myBat,blob) {
             if (bat.loc === "zone") {
                 distance = calcDistance(myBat.tileId,bat.tileId);
                 if (distance === 0) {
-                    // batIndex = unitTypes.findIndex((obj => obj.id == bat.typeId));
-                    // batType = unitTypes[batIndex];
                     batType = getBatType(bat);
                     if (batType.moveCost < 99) {
                         if (blob) {
                             fearChance = 100;
                         } else {
-                            if (batType.skills.includes('berserk') || batType.skills.includes('mutant') || batType.skills.includes('robot') || batType.skills.includes('nofear') || bat.tags.includes('zombie') || bat.tags.includes('drunk')) {
+                            addStressFlag(bat,'fear');
+                            if (bat.tags.includes('bliss') || batType.skills.includes('robot') || batType.skills.includes('nofear') || bat.tags.includes('zombie') || bat.tags.includes('drunk')) {
                                 fearChance = 0;
                             } else {
-                                fearChance = Math.round(75-(batType.size*2.5)-(bat.vet*12)+(batType.stealth*2));
+                                fearChance = Math.round(75-(batType.size*2.5)-(bat.vet*12));
                             }
                         }
                         // console.log('fearChance='+fearChance);
                         if (rand.rand(1,100) <= fearChance) {
                             getAway(bat,myBat.tileId,blob);
+                            addStressFlag(bat,'fear');
                         } else {
                             // console.log('noFear');
                         }

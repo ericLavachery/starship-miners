@@ -301,10 +301,37 @@ function showCraftCompReqs(craft) {
     return craftCompReqs;
 };
 
+function getTileHeat(tile) {
+    let tileHeat = tile.seed+10;
+    if (tile.seed >= 7) {
+        tileHeat = tile.seed+4;
+    }
+    let zoneHeat = zone[0].seed+10;
+    if (zone[0].seed >= 7) {
+        zoneHeat = zone[0].seed+4;
+    }
+    tileHeat = Math.round((zoneHeat+zoneHeat+tileHeat)/3);
+    return tileHeat;
+};
+
+function getTileEnergy(tile) {
+    let magmaHere = 0;
+    if (tile.rs != undefined) {
+        if (tile.rs.Magma >= 1) {
+            magmaHere = tile.rs.Magma;
+        }
+    }
+    let tileHeat = getTileHeat(tile);
+    let energyProd = Math.ceil(magmaHere/4*3)+(tileHeat*10);
+    energyProd = Math.ceil(energyProd/10);
+    return energyProd;
+};
+
 function geoProd(bat,batType) {
     console.log('UPKEEP');
     console.log(batType.name);
     let tile = getTileById(bat.tileId);
+    let tileHeat = getTileHeat(tile);
     let upkeepPaid = true;
     if (batType.upkeep != undefined) {
         Object.entries(batType.upkeep).map(entry => {
@@ -333,9 +360,9 @@ function geoProd(bat,batType) {
                 magmaHere = tile.rs.Magma;
             }
         }
-        let energyProd = Math.ceil(magmaHere/4*3)+140;
+        let energyProd = Math.ceil(magmaHere/4*3)+(tileHeat*10);
         energyProd = energyCreation(energyProd);
-        if (magmaHere > 60) {
+        if (energyProd >= 200) {
             energyProd = Math.ceil(energyProd/100);
             resAddToBld('Energons',energyProd,bat,batType);
             if (!playerInfos.onShip) {

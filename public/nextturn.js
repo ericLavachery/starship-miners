@@ -202,6 +202,11 @@ function nextTurnEnd() {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
+            if (bat.squadsLeft <= 1 && batType.squads >= 3) {
+                addStressFlag(bat,'fear');
+            } else {
+                addStressFlag(bat,'turn');
+            }
             if (batType.name === 'Scraptrucks') {
                 hasScraptruck = true;
             }
