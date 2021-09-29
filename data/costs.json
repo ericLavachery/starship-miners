@@ -2086,8 +2086,8 @@
     {
         "id":3,
         "name":"Atelier",
-        "upkeep":{"Végétaux":4,"Energie":0.5},
-        "prod":{"Tissus":1,"Scrap":2},
+        "upkeep":{"Bois":4,"Végétaux":4,"Energie":0.5},
+        "prod":{"Compo1":3,"Tissus":1,"Scrap":2},
         "bldUp":"Chaîne de montage",
         "costs":{"Compo1":225,"Eau":36,"Hydrocarbure":75,"Fuel":25,"Huile":50,"Scrap":200,"Aluminium":50,"Fer":50,"Bois":100,"Végétaux":100,"Zinc":50,"Energie":200},
         "fabTime":50

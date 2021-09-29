@@ -613,6 +613,9 @@ function calcDamage(weapon,power,armor,defBat) {
     if (calculatedDmg < 1 && weapon.name.includes('plasma')) {
         calculatedDmg = 1;
     }
+    if (calculatedDmg < 4 && weapon.name.includes('BFG')) {
+        calculatedDmg = rand.rand(3,4);
+    }
     return calculatedDmg;
 };
 

@@ -13,7 +13,7 @@
         "size":18,
         "stealth":5,
         "speed":4,
-        "ap":17,
+        "ap":19,
         "maxSalvo":1,
         "weapon":{
             "name":"Mitrailleuse légère",
@@ -45,10 +45,10 @@
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","iso","swag","adamantite"],
-        "equip":["aucun","lunette1","chargeur1","carrousel2","longtom2","g2motor","chenilles","snorkel","e-mecano"],
+        "equip":["aucun","lunette1","chargeur1","carrousel2","longtom2","g2motor","chenilles","e-mecano"],
         "log3eq":"chenilles",
         "moveCost":2,
-        "maxFlood":1,
+        "maxFlood":3,
         "maxScarp":2,
         "maxVeg":3,
         "skills":["forftif","guerrilla","tirailleur","maycamo","flash","badcrewsave","recupcit","recupres","kzin"],
