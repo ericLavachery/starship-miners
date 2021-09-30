@@ -1253,44 +1253,6 @@ function alienBonus() {
     });
 };
 
-function fearFactor(myBat,blob) {
-    let myBatType = getBatType(myBat);
-    if (myBatType.skills.includes('fear') || blob) {
-        // console.log('FEAR');
-        let distance;
-        let fearChance;
-        let batIndex;
-        let batType;
-        bataillons.forEach(function(bat) {
-            if (bat.loc === "zone") {
-                distance = calcDistance(myBat.tileId,bat.tileId);
-                if (distance === 0) {
-                    batType = getBatType(bat);
-                    if (batType.moveCost < 99) {
-                        if (blob) {
-                            fearChance = 100;
-                        } else {
-                            addStressFlag(bat,'fear');
-                            if (bat.tags.includes('bliss') || batType.skills.includes('robot') || batType.skills.includes('nofear') || bat.tags.includes('zombie') || bat.tags.includes('drunk')) {
-                                fearChance = 0;
-                            } else {
-                                fearChance = Math.round(75-(batType.size*2.5)-(bat.vet*12));
-                            }
-                        }
-                        // console.log('fearChance='+fearChance);
-                        if (rand.rand(1,100) <= fearChance) {
-                            getAway(bat,myBat.tileId,blob);
-                            addStressFlag(bat,'fear');
-                        } else {
-                            // console.log('noFear');
-                        }
-                    }
-                }
-            }
-        });
-    }
-};
-
 function infraDestruction() {
     if (selectedBat.apLeft >= 4 && rand.rand(1,2) === 1) {
         let tile = getTile(selectedBat);
@@ -1331,6 +1293,44 @@ function infraDestruction() {
                 selectedBatArrayUpdate();
             }
         }
+    }
+};
+
+function fearFactor(myBat,blob) {
+    let myBatType = getBatType(myBat);
+    if (myBatType.skills.includes('fear') || blob) {
+        // console.log('FEAR');
+        let distance;
+        let fearChance;
+        let batIndex;
+        let batType;
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                distance = calcDistance(myBat.tileId,bat.tileId);
+                if (distance === 0) {
+                    batType = getBatType(bat);
+                    if (batType.moveCost < 99) {
+                        if (blob) {
+                            fearChance = 100;
+                        } else {
+                            addStressFlag(bat,'fear');
+                            if (bat.tags.includes('bliss') || batType.skills.includes('robot') || batType.skills.includes('nofear') || bat.tags.includes('zombie') || bat.tags.includes('drunk')) {
+                                fearChance = 0;
+                            } else {
+                                fearChance = Math.round(75-(batType.size*2.5)-(bat.vet*12));
+                            }
+                        }
+                        // console.log('fearChance='+fearChance);
+                        if (rand.rand(1,100) <= fearChance) {
+                            getAway(bat,myBat.tileId,blob);
+                            addStressFlag(bat,'fear');
+                        } else {
+                            // console.log('noFear');
+                        }
+                    }
+                }
+            }
+        });
     }
 };
 

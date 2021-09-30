@@ -282,6 +282,51 @@ function getGrade(bat,batType) {
     return grade;
 };
 
+function nearbyAliens(myBat) {
+    let nearby = {};
+    nearby.one = false;
+    nearby.two = false;
+    let oneTileAway = [];
+    let twoTilesAway = [];
+    oneTileAway.push(myBat.tileId+1);
+    oneTileAway.push(myBat.tileId-1);
+    oneTileAway.push(myBat.tileId+mapSize);
+    oneTileAway.push(myBat.tileId-mapSize);
+    twoTilesAway.push(myBat.tileId+1);
+    twoTilesAway.push(myBat.tileId-1);
+    twoTilesAway.push(myBat.tileId+mapSize);
+    twoTilesAway.push(myBat.tileId-mapSize);
+    twoTilesAway.push(myBat.tileId+mapSize+1);
+    twoTilesAway.push(myBat.tileId+mapSize-1);
+    twoTilesAway.push(myBat.tileId-mapSize+1);
+    twoTilesAway.push(myBat.tileId-mapSize-1);
+    twoTilesAway.push(myBat.tileId-2);
+    twoTilesAway.push(myBat.tileId+2);
+    twoTilesAway.push(myBat.tileId+mapSize+mapSize);
+    twoTilesAway.push(myBat.tileId+mapSize+mapSize);
+    twoTilesAway.push(myBat.tileId+mapSize-2);
+    twoTilesAway.push(myBat.tileId+mapSize+2);
+    twoTilesAway.push(myBat.tileId-mapSize-2);
+    twoTilesAway.push(myBat.tileId-mapSize+2);
+    twoTilesAway.push(myBat.tileId+mapSize+mapSize-2);
+    twoTilesAway.push(myBat.tileId+mapSize+mapSize+2);
+    twoTilesAway.push(myBat.tileId-mapSize-mapSize-2);
+    twoTilesAway.push(myBat.tileId-mapSize-mapSize+2);
+    twoTilesAway.push(myBat.tileId+mapSize+mapSize-1);
+    twoTilesAway.push(myBat.tileId+mapSize+mapSize+1);
+    twoTilesAway.push(myBat.tileId-mapSize-mapSize-1);
+    twoTilesAway.push(myBat.tileId-mapSize-mapSize+1);
+    const foundOne = oneTileAway.some(r=> alienOccupiedTiles.indexOf(r) >= 0);
+    if (foundOne) {
+        nearby.one = true;
+    }
+    const foundTwo = twoTilesAway.some(r=> alienOccupiedTiles.indexOf(r) >= 0);
+    if (foundTwo) {
+        nearby.two = true;
+    }
+    return nearby;
+};
+
 function nearWhat(myBat,myBatType) {
     let myCrew = myBatType.squads*myBatType.squadSize*myBatType.crew;
     let near = {};

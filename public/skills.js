@@ -737,8 +737,10 @@ function clickMine(clicTileId,poseurTileId) {
             }
         });
         let tile = getTileById(clicTileId);
-        if (tile.infra != undefined && tile.infra != 'Débris') {
-            batHere = true;
+        if (!conselUnit.skills.includes('oninfra')) {
+            if (tile.infra != undefined && tile.infra != 'Débris') {
+                batHere = true;
+            }
         }
         if (!batHere) {
             putBat(clicTileId,0,0);
@@ -756,7 +758,7 @@ function clickMine(clicTileId,poseurTileId) {
     }
 };
 
-function checkFreeConsTile(bat) {
+function checkFreeConsTile(bat,infraOK) {
     let freeTile = false;
     let distance;
     alienOccupiedTileList();
@@ -764,7 +766,7 @@ function checkFreeConsTile(bat) {
     zone.forEach(function(tile) {
         distance = calcDistance(tile.id,bat.tileId);
         if (distance <= 1) {
-            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && (tile.infra === undefined || tile.infra === 'Débris')) {
+            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && (tile.infra === undefined || tile.infra === 'Débris' || infraOK)) {
                 freeTile = true;
             }
         }

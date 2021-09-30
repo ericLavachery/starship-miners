@@ -560,6 +560,7 @@ function nextTurnEnd() {
             }
         }
     });
+    alienOccupiedTileList();
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             if (bat.autoLoad != undefined) {
@@ -575,6 +576,14 @@ function nextTurnEnd() {
                 }
             }
         }
+        // STRESS
+        if (bat.loc === "zone") {
+            if (bat.emo != undefined) {
+                if (bat.emo >= 11) {
+                    checkStressEffect(bat);
+                }
+            }
+        }
     });
     killBatList();
     console.log('MINED THIS TURN');
@@ -586,7 +595,6 @@ function nextTurnEnd() {
     turnInfo();
     saveGame();
     createBatList();
-    alienOccupiedTileList();
     if (showMini) {
         unitsView(); // minimap radar
     }

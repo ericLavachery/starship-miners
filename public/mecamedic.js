@@ -507,6 +507,95 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
     return numTargets;
 };
 
+function checkStressEffect(bat) {
+    let stress = bat.emo-10;
+    let stressCheck = rand.rand(0,stress);
+    let distress = Math.round(stress/2)+stressCheck;
+    if (bat.tags.includes('terror')) {
+        distress = 300;
+    }
+    let fromTileId = -1;
+    if (distress >= 1) {
+        let nearby = nearbyAliens(bat);
+        if (nearby.one) {
+            distress = distress*3;
+        } else if (!nearby.two) {
+            distress = Math.floor(distress/3);
+        }
+        if (distress >= stressLevels[3] && !bat.tags.includes('terror')) {
+            // Terror
+            if (nearby.two) {
+                bat.emo = bat.emo+1;
+            }
+            bat.tags.push('terror');
+            fromTileId = getNearestAlienTile(bat.tileId);
+            if (fromTileId >= 0) {
+                getAway(bat,fromTileId,false);
+                warning('Stress',bat.type+' sont terrorisés et ont pris la fuite!',false,bat.tileId);
+            } else {
+                goFreeze(bat);
+                warning('Stress',bat.type+' sont terrorisés!',false,bat.tileId);
+            }
+        } else if (distress >= stressLevels[2]) {
+            // Fear
+            if (nearby.two) {
+                bat.emo = bat.emo+1;
+            }
+            fromTileId = getNearestAlienTile(bat.tileId);
+            if (fromTileId >= 0) {
+                getAway(bat,fromTileId,false);
+                warning('Stress',bat.type+' sont affolés et ont pris la fuite!',false,bat.tileId);
+            } else {
+                goFreeze(bat);
+                warning('Stress',bat.type+' sont affolés!',false,bat.tileId);
+            }
+        } else if (distress >= stressLevels[1]) {
+            // Freeze
+            if (nearby.two) {
+                bat.emo = bat.emo+1;
+            }
+            goFreeze(bat);
+            warning('Stress',bat.type+' sont atterrés!',false,bat.tileId);
+        } else if (distress >= stressLevels[0] && nearby.two) {
+            // Stress
+            bat.emo = bat.emo+1;
+            warning('Stress',bat.type+' sont apeurés',false,bat.tileId);
+        }
+    }
+};
+
+function getNearestAlienTile(batTileId) {
+    let nearestAlienTile = -1;
+    let shortDistance = 999;
+    aliens.forEach(function(alien) {
+        if (alien.loc === "zone") {
+            let distance = calcDistance(batTileId,alien.tileId);
+            if (distance <= 4) {
+                if (distance < shortDistance) {
+                    nearestAlienTile = alien.tileId;
+                    shortDistance = distance;
+                }
+            }
+        }
+    });
+    return nearestAlienTile;
+};
+
+function goFreeze(bat) {
+    let batType = getBatType(bat);
+    if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
+        if (!bat.tags.includes('camo')) {
+            bat.tags.push('camo');
+        }
+        if (rand.rand(1,3) != 1) {
+            bat.fuzz = -2;
+        }
+    }
+    if (bat.apLeft >= 1) {
+        bat.apLeft = Math.round(bat.apLeft/2);
+    }
+};
+
 function deathStress() {
     bataillons.forEach(function(bat) {
         addStressFlag(bat,'death');
@@ -523,7 +612,7 @@ function addStressFlag(bat,emoType) {
                 stressChance = Math.ceil(stressChance/2);
             }
             if (rand.rand(1,100) <= stressChance) {
-                stressCost = 10;
+                stressCost = 11;
             }
         } else if (emoType === 'fear') {
             stressCost = 2;
