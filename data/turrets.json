@@ -1130,7 +1130,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako","noaploss","nostation","okdel"],
+        "skills":["nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1173,7 +1173,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako","noaploss","nostation","okdel"],
+        "skills":["nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1216,7 +1216,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["nodeathcount","notarget","bigblub","nolist","norepair","clicput","infrako","noaploss","nostation","okdel"],
+        "skills":["nodeathcount","notarget","bigblub","nolist","norepair","clicput","infrako","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
         "deathFx":"zapsplat_explosion_fireball_43738"
     },
@@ -1271,7 +1271,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput","infrako","noaploss","nostation","bigblub"],
+        "skills":["after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput","infrako","noaploss","nostation","bigblub","oninfra"],
         "fuzz":-2,
         "deathFx":"none"
     },

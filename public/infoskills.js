@@ -1172,7 +1172,7 @@ function skillsInfos(bat,batType) {
     if (!playerInfos.onShip) {
         // POSE PIEGES
         if (batType.skills.includes('trapfosse')) {
-            freeConsTile = checkFreeConsTile(bat,false);
+            freeConsTile = checkFreeConsTile(bat,batType);
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
                 balise = 'h4';
@@ -1204,7 +1204,7 @@ function skillsInfos(bat,batType) {
             }
         }
         if (batType.skills.includes('trapap') || bat.eq === 'kit-sentinelle') {
-            freeConsTile = checkFreeConsTile(bat,true);
+            freeConsTile = checkFreeConsTile(bat,batType);
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
                 balise = 'h4';
@@ -1236,7 +1236,7 @@ function skillsInfos(bat,batType) {
             }
         }
         if (batType.skills.includes('trapdard')) {
-            freeConsTile = checkFreeConsTile(bat,true);
+            freeConsTile = checkFreeConsTile(bat,batType);
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
                 balise = 'h4';
@@ -1269,7 +1269,7 @@ function skillsInfos(bat,batType) {
         }
         // POSE CHAMP DE MINES
         if (batType.skills.includes('landmine')) {
-            freeConsTile = checkFreeConsTile(bat,false);
+            freeConsTile = checkFreeConsTile(bat,batType);
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
                 balise = 'h4';
@@ -1302,7 +1302,7 @@ function skillsInfos(bat,batType) {
         }
         // POSE DYNAMITE
         if (batType.skills.includes('dynamite')) {
-            freeConsTile = checkFreeConsTile(bat,false);
+            freeConsTile = checkFreeConsTile(bat,batType);
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
                 balise = 'h4';
@@ -1335,7 +1335,7 @@ function skillsInfos(bat,batType) {
         }
         // POSE BARBELES
         if (batType.skills.includes('constructeur')) {
-            freeConsTile = checkFreeConsTile(bat,false);
+            freeConsTile = checkFreeConsTile(bat,batType);
             if (freeConsTile) {
                 let barbLeft = calcRavit(bat);
                 balise = 'h4';
@@ -1390,7 +1390,7 @@ function skillsInfos(bat,batType) {
         }
         // POSE COFFRES
         if (batType.skills.includes('conscont')) {
-            freeConsTile = checkFreeConsTile(bat,true);
+            freeConsTile = checkFreeConsTile(bat,batType);
             if (freeConsTile) {
                 balise = 'h4';
                 boutonNope = 'boutonGris';

@@ -368,7 +368,7 @@ function batListElement(bat,batType,idOfLander) {
     if (vetStatus != '') {
         $('#be'+bat.id).append('<span class="listRes gff">'+vetStatus+'</span>');
     }
-    if (bat.soins >= 11 || bat.tags.includes('necro')) {
+    if (bat.soins >= 11 || bat.emo >= 11 || bat.tags.includes('necro')) {
         $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i></span>');
     }
     $('#be'+bat.id).append('<br>');

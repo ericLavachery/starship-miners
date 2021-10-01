@@ -2,21 +2,17 @@ function events(afterMission,time,sim) {
     checkReserve();
     updateBldList();
     resetWeekRes();
-    // let time = 21;
     if (afterMission) {
         time = Math.ceil(playerInfos.mapTurn/3)*3;
     }
-    // if (sim) {
-    //     time = 65;
-    // }
-    eventCitoyens(time,sim);
-    eventProduction(afterMission,time,sim);
-    eventBouffe(time,sim);
-    eventCrime(time,sim);
-    eventAliens(time,sim);
     if (!sim) {
         repos(time);
     }
+    eventCitoyens(time,sim);
+    eventProduction(afterMission,time,sim); // remove 'return' tag !!!
+    eventBouffe(time,sim);
+    eventCrime(time,sim);
+    eventAliens(time,sim);
     console.log('RES BALANCE');
     console.log(playerInfos.weekRes);
     showResBallance();
@@ -44,24 +40,48 @@ function events(afterMission,time,sim) {
 };
 
 function repos(time) {
+    let woundHeal = 2;
+    let stressHeal = 3;
+    let necroHeal = 2;
+    if (playerInfos.bldList.includes('Salle de sport')) {
+        stressHeal = stressHeal+3;
+    }
+    if (playerInfos.bldList.includes('Bar')) {
+        stressHeal = stressHeal+1;
+    }
+    if (playerInfos.bldList.includes('Cabines')) {
+        stressHeal = stressHeal+1;
+    }
+    if (playerInfos.bldList.includes('Jardin')) {
+        stressHeal = stressHeal+3;
+    }
+    if (playerInfos.bldList.includes('Hôpital')) {
+        stressHeal = stressHeal+7;
+        woundHeal = woundHeal+10;
+        necroHeal = 100;
+    } else if (playerInfos.bldList.includes('Infirmerie')) {
+        stressHeal = stressHeal+2;
+        woundHeal = woundHeal+2;
+        necroHeal = necroHeal+2;
+    }
     bataillons.forEach(function(bat) {
-        let batType = getBatType(bat);
-        let necroHeal = time*3;
-        if (playerInfos.bldList.includes('Hôpital')) {
-            necroHeal = time*12;
-        }
-        if (rand.rand(1,100) <= necroHeal) {
-            tagDelete(bat,'necro');
-        }
-        if (bat.soins != undefined) {
-            if (!batType.skills.includes('clone')) {
-                if (playerInfos.bldList.includes('Hôpital')) {
-                    bat.soins = bat.soins-(time*3);
-                } else {
-                    bat.soins = bat.soins-time;
+        if (!bat.tags.includes('return')) {
+            let batType = getBatType(bat);
+            if (rand.rand(1,100) <= necroHeal*time) {
+                tagDelete(bat,'necro');
+            }
+            if (bat.soins != undefined) {
+                if (!batType.skills.includes('clone') && !bat.tags.includes('necro')) {
+                    bat.soins = bat.soins-Math.round(time*woundHeal/7);
+                    if (bat.soins < 0) {
+                        bat.soins = 0;
+                    }
                 }
-                if (bat.soins < 0) {
-                    bat.soins = 0;
+            }
+            if (bat.emo != undefined) {
+                bat.emo = bat.emo-Math.round(time*stressHeal/36);
+                if (bat.emo < 0) {
+                    bat.emo = 0;
                 }
             }
         }

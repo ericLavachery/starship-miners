@@ -3020,13 +3020,13 @@
             "sound":"fmag",
             "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
         },
-        "equip":["aucun","e-flash","e-ranger","chargeur2","silencieux2","e-camo","permakirin","theeye","waterproof"],
+        "equip":["aucun","e-flash","e-ranger","chargeur2","silencieux2","e-camo","e-medic","permakirin","theeye","waterproof"],
         "log3eq":"chargeur2",
         "moveCost":4,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","camo","selfmedic","baddef","strong","cible","bgun","herominik"],
+        "skills":["fouille","fortif","camo","selfbadmedic","baddef","strong","cible","bgun","herominik"],
         "mediCost":7,
         "fuzz":-1,
         "deathFx":"162157__mediapaja2009__agony"

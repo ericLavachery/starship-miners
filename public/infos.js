@@ -250,6 +250,16 @@ function batInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramName jaune">Inflammable</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
         }
     }
+    if (bat.emo >= 1) {
+        let stress = bat.emo-10;
+        if (bat.tags.includes('terror')) {
+            $('#'+bodyPlace).append('<span class="paramName or">Stress</span><span class="paramIcon"></span><span class="paramValue or" title="Ce bataillon va fuir dès que des aliens sont proches et ne voudra plus les attaquer">Terrorisé!</span><br>');
+        } else if (stress >= 1) {
+            $('#'+bodyPlace).append('<span class="paramName jaune">Stress</span><span class="paramIcon"></span><span class="paramValue jaune">'+stress+'</span><br>');
+        } else if (playerInfos.onShip) {
+            $('#'+bodyPlace).append('<span class="paramName">Stress</span><span class="paramIcon"></span><span class="paramValue">'+stress+'</span><br>');
+        }
+    }
     let hurt = isHurt(bat);
     if (hurt) {
         if (batType.cat === 'infantry' || batType.skills.includes('cyber')) {
@@ -261,16 +271,6 @@ function batInfos(bat,batType,pop) {
     if (bat.soins >= 11) {
         let effSoins = checkEffSoins(bat);
         $('#'+bodyPlace).append('<span class="paramName jaune">Efficacité soins</span><span class="paramIcon"></span><span class="paramValue jaune">'+effSoins+'%</span><br>');
-    }
-    if (bat.emo >= 1) {
-        let stress = bat.emo-10;
-        if (bat.tags.includes('terror')) {
-            $('#'+bodyPlace).append('<span class="paramName or">Stress</span><span class="paramIcon"></span><span class="paramValue or" title="Ce bataillon va fuir dès que des aliens sont proches et ne voudra plus les attaquer">Terrorisé!</span><br>');
-        } else if (stress >= 1) {
-            $('#'+bodyPlace).append('<span class="paramName jaune">Stress</span><span class="paramIcon"></span><span class="paramValue jaune">'+stress+'</span><br>');
-        } else if (playerInfos.onShip) {
-            $('#'+bodyPlace).append('<span class="paramName">Stress</span><span class="paramIcon"></span><span class="paramValue">'+stress+'</span><br>');
-        }
     }
     if (bat.tags.includes('blub')) {
         $('#'+bodyPlace).append('<span class="paramName or">Noyade</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
