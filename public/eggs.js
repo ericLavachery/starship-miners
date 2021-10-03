@@ -1117,7 +1117,9 @@ function cocoonSpawn(bat) {
         let dropTile = -1;
         alienUnits.forEach(function(unit) {
             if (classes.includes(unit.class) && unit.kind.includes(eggCat) && unit.class != 'S') {
-                checkDiceMax = checkDiceMax+unit.rarity;
+                if (unit.class != 'A' || unit.rarity != 2 || eggLevel >= 10) {
+                    checkDiceMax = checkDiceMax+unit.rarity;
+                }
             }
         });
         let i = 1;
@@ -1135,9 +1137,11 @@ function cocoonSpawn(bat) {
                 raritySum = 0;
                 alienUnits.forEach(function(unit) {
                     if (classes.includes(unit.class) && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat) && unit.class != 'S') {
-                        raritySum = raritySum+unit.rarity;
-                        if (checkDice <= raritySum) {
-                            conselUnit = unit;
+                        if (unit.class != 'A' || unit.rarity != 2 || eggLevel >= 10) {
+                            raritySum = raritySum+unit.rarity;
+                            if (checkDice <= raritySum) {
+                                conselUnit = unit;
+                            }
                         }
                     }
                 });

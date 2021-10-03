@@ -620,7 +620,7 @@ function addStressFlag(bat,emoType) {
                 stressCost = Math.ceil(stressCost/2);
             }
         } else if (emoType === 'turn') {
-            let stressChance = zone[0].mapDiff/1.5;
+            let stressChance = (zone[0].mapDiff/1.5)+Math.round(aliens.length/50)-1;
             if (zone[0].planet === 'Sarak' || zone[0].planet === 'Gehenna') {
                 stressChance = stressChance*2;
             }

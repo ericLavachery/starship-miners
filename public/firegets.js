@@ -1543,7 +1543,11 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.sound = 'electricity';
     }
     if (thisWeapon.ammo === 'lame-plasma') {
-        thisWeapon.sound = 'plasblade';
+        if (thisWeapon.name.includes('Foreuse')) {
+            thisWeapon.sound = 'plasmasaw';
+        } else {
+            thisWeapon.sound = 'plasblade';
+        }
     }
     if (thisWeapon.range === 0 && ammo.range > 1) {
         thisWeapon.range = 1;

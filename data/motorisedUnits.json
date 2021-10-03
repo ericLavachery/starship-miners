@@ -20,7 +20,7 @@
             "cost":2,
             "range":1,
             "elevation":1,
-            "rof":24,
+            "rof":18,
             "accuracy":19,
             "dca":1,
             "power":9,
@@ -32,8 +32,7 @@
         "weapon2":{
             "name":"Mortier léger",
             "cost":3,
-            "range":2,
-            "elevation":1,
+            "range":3,
             "noFly":true,
             "rof":6,
             "accuracy":12,
