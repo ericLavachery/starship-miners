@@ -153,7 +153,7 @@
             "power":30,
             "armors":0.35,
             "aoe":"unit",
-            "sound":"bfg",
+            "sound":"raygun",
             "ammo":["bfg","bfg-g2"],
             "maxAmmo":32,
             "ravitBld":"Générateur"

@@ -574,7 +574,7 @@ function checkSpecialEquip(equip,batType) {
     let nope = false;
     if (equip.name.includes('chargeur')) {
         if (Object.keys(batType.weapon).length >= 3) {
-            if (batType.weapon.name.includes('plasma') || batType.weapon.name.includes('laser')) {
+            if (batType.weapon.name.includes('plasma') || batType.weapon.name.includes('laser') || batType.weapon.name.includes('BFG')) {
                 if (equip.name === 'chargeur' || equip.name === 'chargeur1') {
                     if (!playerInfos.bldList.includes('Centre de recherches')) {
                         nope = true;
@@ -584,7 +584,7 @@ function checkSpecialEquip(equip,batType) {
         }
         if (!nope) {
             if (Object.keys(batType.weapon2).length >= 3) {
-                if (batType.weapon2.name.includes('plasma') || batType.weapon2.name.includes('laser')) {
+                if (batType.weapon2.name.includes('plasma') || batType.weapon2.name.includes('laser') || batType.weapon2.name.includes('BFG')) {
                     if (equip.name === 'chargeur' || equip.name === 'chargeur1') {
                         if (!playerInfos.bldList.includes('Centre de recherches')) {
                             nope = true;

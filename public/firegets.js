@@ -887,6 +887,14 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
     if (bat.eq === 'theeye') {
         speed = speed-25;
     }
+    // initmelee
+    if (batType.skills.includes('initmelee') && distance === 0) {
+        if (batType.weapon.range >= 1 && !attacking) {
+            speed = speed-120;
+        } else {
+            speed = speed-60;
+        }
+    }
     // camo
     if ((bat.fuzz <= -2 || bat.tags.includes('invisible') || batType.skills.includes('invisible')) && attacking) {
         speed = speed-50;

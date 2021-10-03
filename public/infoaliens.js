@@ -135,11 +135,18 @@ function showEnemyBatInfos(bat) {
     if (compCA >= 2) {
         if (batType.skills.includes('baddef')) {
             $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">Faible</span><br>');
+        } else {
+            $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">Normale</span><br>');
         }
     }
     if (compCA >= 2) {
         if (batType.skills.includes('sentinelle')) {
-            $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">Forte</span><br>');
+            $('#unitInfos').append('<span class="paramName">Initiative</span><span class="paramIcon"></span><span class="paramValue">Rapide</span><br>');
+        }
+    }
+    if (compCA >= 2) {
+        if (batType.skills.includes('initmelee')) {
+            $('#unitInfos').append('<span class="paramName">Initiative</span><span class="paramIcon"></span><span class="paramValue">Rapide en mêlée</span><br>');
         }
     }
     if (compCA >= 3) {

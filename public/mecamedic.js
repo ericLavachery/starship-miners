@@ -607,9 +607,11 @@ function addStressFlag(bat,emoType) {
     if (batType.crew >= 1 && !batType.skills.includes('robot') && !bat.tags.includes('zombie')) {
         let stressCost = 0;
         if (emoType === 'death') {
-            let stressChance = 6;
+            let stressChance = 20000/playerInfos.allCits;
             if (batType.skills.includes('lowstress')) {
-                stressChance = Math.ceil(stressChance/2);
+                stressChance = Math.round(stressChance/2);
+            } else {
+                stressChance = Math.ceil(stressChance);
             }
             if (rand.rand(1,100) <= stressChance) {
                 stressCost = 11;
