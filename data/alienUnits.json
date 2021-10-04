@@ -662,7 +662,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["grip","venin","eatpoison","okwater","resistelec","resistall","sentinelle"],
+        "skills":["grip","venin","eatpoison","okwater","resistelec","resistall","sentinelle","noaploss"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":7,"Swarmine":7,"Mephitis":2},
         "killXP":5,

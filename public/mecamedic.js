@@ -7,7 +7,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     if (cat != 'infantry') {
         denom = 'Réparations';
     }
-    washReports();
+    washReports(false);
     if (!inBld) {
         $('#report').append('<span class="report or">'+selectedBat.type+' ('+denom+')</span><br>');
     } else {
@@ -583,6 +583,7 @@ function getNearestAlienTile(batTileId) {
 
 function goFreeze(bat) {
     let batType = getBatType(bat);
+    let tile = getTile(bat);
     if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
         if (!bat.tags.includes('camo')) {
             bat.tags.push('camo');
@@ -608,13 +609,16 @@ function addStressFlag(bat,emoType) {
         let stressCost = 0;
         if (emoType === 'death') {
             let stressChance = 20000/playerInfos.allCits;
+            if (bat.emo != undefined) {
+                stressChance = stressChance*(20+bat.emo)/20;
+            }
             if (batType.skills.includes('lowstress')) {
                 stressChance = Math.round(stressChance/2);
             } else {
                 stressChance = Math.ceil(stressChance);
             }
             if (rand.rand(1,100) <= stressChance) {
-                stressCost = 11;
+                stressCost = 6;
             }
         } else if (emoType === 'fear') {
             stressCost = 2;
@@ -713,9 +717,11 @@ function checkRepairBat(tileId) {
             if (bat.tileId === tileId || bat.tileId === tileId+1 || bat.tileId === tileId-1 || bat.tileId === tileId+mapSize || bat.tileId === tileId-mapSize || bat.tileId === tileId+mapSize+1 || bat.tileId === tileId-mapSize+1 || bat.tileId === tileId+mapSize-1 || bat.tileId === tileId-mapSize-1) {
                 console.log(bat);
                 batType = getBatType(bat);
-                if (batType.skills.includes('repair') && bat.apLeft >= Math.round(batType.mecanoCost/2) && batType.mecanoCost < bestRepairCost) {
-                    bestRepairCost = batType.mecanoCost;
-                    bestRepairBat = bat;
+                if (batType.cat != 'buildings' && batType.cat != 'devices') {
+                    if (batType.skills.includes('repair') && bat.apLeft >= Math.round(batType.mecanoCost/2) && batType.mecanoCost < bestRepairCost) {
+                        bestRepairCost = batType.mecanoCost;
+                        bestRepairBat = bat;
+                    }
                 }
             }
         }
@@ -743,7 +749,7 @@ function diagRepair(repairBatId) {
     }
     // selectedBat.apLeft = selectedBat.apLeft-3;
     let newBatUnits = batUnits+selectedBatType.squadSize;
-    washReports();
+    washReports(false);
     $('#report').append('<span class="report or">'+selectedBat.type+' (Réparations)</span><br>');
     if (selectedBat.squadsLeft > oldSquadsLeft) {
         $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">section reconstruite (<span class="cy">'+newBatUnits+'</span>)</span><br>');
@@ -814,12 +820,14 @@ function bestMedicInBld(bldBat) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "trans" && bat.locId === bldBat.id) {
             let batType = getBatType(bat);
-            if (batType.skills.includes('medic')) {
-                maxMeds = 10*bat.apLeft/batType.mediCost;
-                if (maxMeds > bestMaxMeds) {
-                    bestMaxMeds = maxMeds;
-                    if (maxMeds >= 1) {
-                        medicBat = bat;
+            if (batType.cat != 'buildings' && batType.cat != 'devices') {
+                if (batType.skills.includes('medic')) {
+                    maxMeds = 10*bat.apLeft/batType.mediCost;
+                    if (maxMeds > bestMaxMeds) {
+                        bestMaxMeds = maxMeds;
+                        if (maxMeds >= 1) {
+                            medicBat = bat;
+                        }
                     }
                 }
             }
@@ -835,12 +843,14 @@ function bestMecanoInBld(bldBat) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "trans" && bat.locId === bldBat.id) {
             let batType = getBatType(bat);
-            if (batType.skills.includes('mecano')) {
-                maxMeds = 10*bat.apLeft/batType.mecanoCost;
-                if (maxMeds > bestMaxMeds) {
-                    bestMaxMeds = maxMeds;
-                    if (maxMeds >= 1) {
-                        medicBat = bat;
+            if (batType.cat != 'buildings' && batType.cat != 'devices') {
+                if (batType.skills.includes('mecano')) {
+                    maxMeds = 10*bat.apLeft/batType.mecanoCost;
+                    if (maxMeds > bestMaxMeds) {
+                        bestMaxMeds = maxMeds;
+                        if (maxMeds >= 1) {
+                            medicBat = bat;
+                        }
                     }
                 }
             }

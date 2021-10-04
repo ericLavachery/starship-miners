@@ -3,7 +3,7 @@ function generateVM() {
     savePlayerInfos();
     filterParams();
     createVM(mapSize);
-    washReports();
+    washReports(true);
     // zoneReport(zone,false);
     let ensolFactor = rand.rand(28,32);
     let ensolBonus = rand.rand(20,60);
@@ -62,7 +62,7 @@ function generateNewMap() {
     filterMap(zone);
     addRivers(zone);
     addRes(zone);
-    washReports();
+    washReports(true);
     zone[1830].terrain = 'P';
     zone[1830].seed = 1;
     zoneReport(zone,false);

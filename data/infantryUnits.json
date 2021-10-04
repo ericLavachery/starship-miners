@@ -3388,7 +3388,7 @@
             "name":"BFG (ray)",
             "cost":4,
             "range":3,
-            "rof":4,
+            "rof":6,
             "accuracy":30,
             "power":20,
             "armors":0.5,

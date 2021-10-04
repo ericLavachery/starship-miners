@@ -174,7 +174,7 @@ let gangsBonus = false;
 let sondeCount = 'cy';
 let homeCount = 'cy';
 let apoCount = 450;
-let stressLevels = [4,9,15,100]; // stress,freeze,fear,terror
+let stressLevels = [5,15,35,100]; // stress,freeze,fear,terror
 // ALIENS
 let isFFW = false;
 let pointDeMire = 1830; // tileId

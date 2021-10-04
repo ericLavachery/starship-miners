@@ -391,8 +391,10 @@ function blockMe(stop) {
     }
 };
 
-function washReports() {
-    $('#warnings').empty();
+function washReports(warningsAlso) {
+    if (warningsAlso) {
+        $('#warnings').empty();
+    }
     $('#report').empty();
 };
 
@@ -404,7 +406,7 @@ function warning(title,body,noHand,tileId) {
         }
     }
     if (!noHand) {
-        $('#warnings').append('<i class="far fa-hand-paper wash" onclick="washReports()" title="Cacher l\'alerte"></i>');
+        $('#warnings').append('<i class="far fa-hand-paper wash" onclick="washReports(true)" title="Cacher l\'alerte"></i>');
     }
 };
 

@@ -171,7 +171,7 @@ function batSelect(bat,roger) {
     batDebarq = {};
     nextTurnOK = true;
     $('html,body').scrollTop(0);
-    washReports();
+    washReports(false);
     tileUnselect();
     tileUntarget();
     if (bat.tags.includes('nolist')) {
