@@ -1225,6 +1225,10 @@ function newEggCat() {
 
 function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
+    let swampMap = false;
+    if (zone[0].ps+zone[0].pw >= 40) {
+        swampMap = true;
+    }
     let overSaturation = false;
     if (playerInfos.alienSat >= coconSatLimit-1 && playerInfos.mapTurn >= 76) {
         overSaturation = true;
@@ -1333,7 +1337,17 @@ function eggSpawn(bat,fromEgg) {
                 if (classes.includes(unit.class) && unit.kind.includes(eggCat)) {
                     if (unit.class != 'A' || unit.rarity != 2 || zone[0].mapDiff >= 7) {
                         if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4 || unit.name === 'Punaises') {
-                            checkDiceMax = checkDiceMax+unit.rarity;
+                            if (swampMap && zone[0].mapDiff >= 4 && unit.kind === 'spider') {
+                                if (unit.name === 'Surfeuses') {
+                                    checkDiceMax = checkDiceMax+(unit.rarity*4);
+                                } else if (unit.name === 'Nerveuses' || unit.name === 'Cracheuses' || unit.name === 'Torches') {
+                                    // nothing
+                                } else {
+                                    checkDiceMax = checkDiceMax+unit.rarity;
+                                }
+                            } else {
+                                checkDiceMax = checkDiceMax+unit.rarity;
+                            }
                         }
                     }
                 }
@@ -1349,7 +1363,17 @@ function eggSpawn(bat,fromEgg) {
                     if (classes.includes(unit.class) && unit.kind.includes(eggCat) && Object.keys(conselUnit).length <= 0) {
                         if (unit.class != 'A' || unit.rarity != 2 || zone[0].mapDiff >= 7) {
                             if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4 || unit.name === 'Punaises') {
-                                raritySum = raritySum+unit.rarity;
+                                if (swampMap && zone[0].mapDiff >= 4 && unit.kind === 'spider') {
+                                    if (unit.name === 'Surfeuses') {
+                                        raritySum = raritySum+(unit.rarity*4);
+                                    } else if (unit.name === 'Nerveuses' || unit.name === 'Cracheuses' || unit.name === 'Torches') {
+                                        // nothing
+                                    } else {
+                                        raritySum = raritySum+unit.rarity;
+                                    }
+                                } else {
+                                    raritySum = raritySum+unit.rarity;
+                                }
                                 if (checkDice <= raritySum) {
                                     conselUnit = unit;
                                 }

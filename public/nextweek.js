@@ -180,12 +180,12 @@ function eventProduction(afterMission,time,sim) {
         let crimBat = {};
         let citBatId = -1;
         let citBat = {};
-        let educChance = Math.ceil((playerInfos.comp.ordre+1)*(playerInfos.comp.ordre+1)*5.6)+9;
-        if (rand.rand(1,100) <= educChance) {
-            let educMax = Math.round(time*rand.rand(17,25)/21*15/21/6)*6;
-            if (educMax >= mesCitoyens.crim-12) {
-                educMax = mesCitoyens.crim-12;
-            }
+        let educMax = time*rand.rand(12,30);
+        educMax = Math.round(educMax*(playerInfos.comp.ordre+2)*(playerInfos.comp.ordre+2)*Math.sqrt(mesCitoyens.crim)/3000);
+        if (educMax >= mesCitoyens.crim-12) {
+            educMax = mesCitoyens.crim-12;
+        }
+        if (educMax >= 1) {
             bataillons.forEach(function(bat) {
                 if (bat.loc === 'trans' && bat.locId === souteId) {
                     if (bat.typeId === 225) {
@@ -207,7 +207,7 @@ function eventProduction(afterMission,time,sim) {
                         crimBat.citoyens = crimBat.citoyens-educMax;
                         citBat.citoyens = citBat.citoyens+educMax;
                     }
-                    warning('Camp de rééducation',educMax+' criminels réhabilités.',true);
+                    warning('Camp de rééducation',educMax+' criminels réhabilités.<br>',true);
                 }
             }
         }
@@ -450,6 +450,7 @@ function calcCrimeRate(mesCitoyens) {
     let population = mesCitoyens.crim+mesCitoyens.cit;
     crimeRate.crim = Math.ceil(mesCitoyens.crim*100/population);
     crimeRate.penib = 0;
+    crimeRate.lits = 0;
     crimeRate.fo = 0;
     crimeRate.total = 0;
     // facteur: +population
@@ -457,7 +458,6 @@ function calcCrimeRate(mesCitoyens) {
     crimeRate.penib = crimeRate.penib+Math.round(overPop/250);
     // +1 par point playerInfos.vitals (25 pts)
     crimeRate.penib = crimeRate.penib+playerInfos.vitals;
-    let lits = 0;
     let bldIds = [];
     // Unités: (electroguards-2 gurus-2 dealers-1 marshalls-1)
     let maxAntiCrimeUnits = Math.round(Math.sqrt(population)/7.5);
@@ -473,13 +473,13 @@ function calcCrimeRate(mesCitoyens) {
             penitBatCrims = penitBatCrims+(batType.squads*batType.crew*batType.squadSize);
         }
         if (batType.name === 'Dortoirs') {
-            lits = lits+500;
+            crimeRate.lits = crimeRate.lits+500;
         }
         if (batType.name === 'Cabines') {
-            lits = lits+250;
+            crimeRate.lits = crimeRate.lits+350;
         }
         if (batType.name === 'Appartements') {
-            lits = lits+50;
+            crimeRate.lits = crimeRate.lits+75;
         }
         if (batType.crime != undefined || bat.eq === 'camkit') {
             let countMe = false;
@@ -516,8 +516,8 @@ function calcCrimeRate(mesCitoyens) {
         crimeRate.fo = crimeRate.fo-3;
     }
     // +5 par dortoir manquant
-    if (population > lits) {
-        crimeRate.penib = crimeRate.penib+Math.round((population-lits)/100);
+    if (population > crimeRate.lits) {
+        crimeRate.penib = crimeRate.penib+Math.floor((population-crimeRate.lits)/100);
     }
     if (crimeRate.penib < 0) {
         crimeRate.penib = 0;

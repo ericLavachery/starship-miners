@@ -1812,7 +1812,8 @@
         "compPass":["blades","bulbos","brasier"],
         "compHardReq":{"energ":1},
         "costs":{"Compo1":150,"Compo2":150,"Compo3":90,"Eau":18,"Carbone":72,"Titane":36,"Tungstène":108,"Aluminium":18,"Bois":18,"Rhodium":36,"Silicium":18,"Bore":36,"Electros":72,"Batteries":108},
-        "fabTime":55
+        "fabTime":55,
+        "slots":0
     },
     {
         "id":125,
@@ -1822,7 +1823,8 @@
         "compHardReq":{"explo":1},
         "costs":{"Compo1":80,"Compo2":400,"Compo3":435,"Eau":48,"Végétaux":150,"Scrap":60,"Carbone":42,"Titane":18,"Tungstène":36,"Fer":204},
         "fabTime":70,
-        "inRuin":2
+        "inRuin":2,
+        "slots":0
     },
     {
         "id":127,
@@ -1832,7 +1834,8 @@
         "compHardReq":{"pyro":1},
         "costs":{"Compo1":70,"Compo2":390,"Compo3":405,"Eau":36,"Végétaux":150,"Scrap":72,"Carbone":24,"Titane":48,"Tungstène":72,"Aluminium":48,"Fer":216,"Rhodium":36},
         "fabTime":70,
-        "inRuin":2
+        "inRuin":2,
+        "slots":0
     },
     {
         "id":178,
@@ -1842,7 +1845,8 @@
         "compHardReq":{"bal":1},
         "costs":{"Compo1":70,"Compo2":390,"Compo3":405,"Eau":48,"Végétaux":150,"Scrap":84,"Carbone":36,"Tungstène":72,"Aluminium":120,"Fer":240},
         "fabTime":70,
-        "inRuin":2
+        "inRuin":2,
+        "slots":0
     },
     {
         "id":129,
@@ -1967,7 +1971,8 @@
         "name":"Bastion de résistants",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Fer":84,"Carbone":126,"Aluminium":84,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
-        "fabTime":30
+        "fabTime":30,
+        "slots":0
     },
     {
         "id":253,
@@ -1975,7 +1980,8 @@
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":8,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Fer":84,"Carbone":126,"Aluminium":84,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
-        "fabTime":30
+        "fabTime":30,
+        "slots":0
     },
     {
         "id":254,
@@ -1983,7 +1989,8 @@
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":96,"Scrap":192,"Fer":192,"Bois":192,"Aluminium":96,"Carbone":96,"Titane":48,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":200,"Zinc":16,"Silicium":64},
-        "fabTime":30
+        "fabTime":30,
+        "slots":0
     },
     {
         "id":255,
@@ -1991,7 +1998,8 @@
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Fer":84,"Carbone":126,"Aluminium":84,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
-        "fabTime":30
+        "fabTime":30,
+        "slots":0
     },
     {
         "id":256,
@@ -1999,7 +2007,8 @@
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":8,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":96,"Scrap":192,"Fer":144,"Carbone":48,"Bois":48,"Tungstène":24,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":100,"Zinc":30,"Silicium":30},
-        "fabTime":30
+        "fabTime":30,
+        "slots":0
     },
     {
         "id":257,
@@ -2007,7 +2016,8 @@
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":8,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":90,"Scrap":180,"Fer":90,"Carbone":135,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
-        "fabTime":30
+        "fabTime":30,
+        "slots":0
     },
     {
         "id":258,
@@ -2015,7 +2025,8 @@
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":168,"Fer":126,"Carbone":42,"Bois":42,"Tungstène":21,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
-        "fabTime":30
+        "fabTime":30,
+        "slots":0
     },
     {
         "id":259,
@@ -2023,14 +2034,16 @@
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":8},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Aluminium":42,"Carbone":84,"Titane":42,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
-        "fabTime":30
+        "fabTime":30,
+        "slots":0
     },
     {
         "id":9,
         "name":"Mine",
         "prod":{"Scrap":1},
         "costs":{"Compo1":115,"Eau":100,"Carbone":25,"Aluminium":40,"Fer":50,"Soufre":25,"Bois":100,"Potassium":25,"Moteurs":16,"Batteries":8,"Energie":160},
-        "fabTime":30
+        "fabTime":30,
+        "slots":0
     },
     {
         "id":123,
@@ -2038,7 +2051,8 @@
         "upkeep":{"Eau":3,"Energie":6},
         "prod":{"Oxygène":3},
         "costs":{"Compo1":75,"Scrap":100,"Fer":50,"Moteurs":12,"Batteries":6,"Energie":120},
-        "fabTime":20
+        "fabTime":20,
+        "slots":0
     },
     {
         "id":124,
@@ -2046,14 +2060,16 @@
         "upkeep":{"Hydrocarbure":5.3},
         "prod":{"Fuel":3,"Scrap":1},
         "costs":{"Compo1":115,"Eau":200,"Carbone":15,"Aluminium":40,"Fer":50,"Phosphore":15,"Hydrogène":15,"Moteurs":20,"Batteries":10,"Energie":200},
-        "fabTime":45
+        "fabTime":45,
+        "slots":0
     },
     {
         "id":157,
         "name":"Comptoir",
         "prod":{"Scrap":2},
         "costs":{"Compo1":115,"Eau":36,"Fer":50,"Moteurs":10,"Batteries":5,"Energie":100},
-        "fabTime":20
+        "fabTime":20,
+        "slots":0
     },
     {
         "id":29,
@@ -2061,19 +2077,23 @@
         "upkeep":{"Soufre":1.1,"Potassium":0.8,"Carbone":0.8},
         "prod":{"Explosifs":0.5},
         "costs":{"Compo1":170,"Compo2":55,"Eau":12,"Végétaux":150},
-        "fabTime":25
+        "fabTime":25,
+        "slots":1
     },
     {
         "id":158,
         "name":"Silo",
         "costs":{"Compo1":200,"Végétaux":150},
-        "fabTime":20
+        "fabTime":20,
+        "slots":0
     },
     {
         "id":164,
         "name":"Réserve",
+        "compReq":{"log":2},
         "costs":{"Compo1":455,"Compo2":145,"Eau":18,"Batteries":50},
-        "fabTime":70
+        "fabTime":70,
+        "slots":0
     },
     {
         "id":197,
@@ -2081,7 +2101,8 @@
         "upkeep":{"Hydrocarbure":3.5},
         "prod":{"Fuel":2,"Scrap":1},
         "costs":{"Compo1":115,"Eau":12,"Hydrocarbure":50,"Fuel":50,"Huile":25,"Scrap":100,"Aluminium":25,"Fer":25,"Energie":120},
-        "fabTime":35
+        "fabTime":35,
+        "slots":1
     },
     {
         "id":3,
@@ -2090,7 +2111,8 @@
         "prod":{"Compo1":3,"Tissus":1,"Scrap":2},
         "bldUp":"Chaîne de montage",
         "costs":{"Compo1":225,"Eau":36,"Hydrocarbure":75,"Fuel":25,"Huile":50,"Scrap":200,"Aluminium":50,"Fer":50,"Bois":100,"Végétaux":100,"Zinc":50,"Energie":200},
-        "fabTime":50
+        "fabTime":50,
+        "slots":1
     },
     {
         "id":198,
@@ -2101,7 +2123,8 @@
         "upkeep":{"Energie":8,"Hydrocarbure":6.5,"Aluminium":1.5},
         "prod":{"Moteurs":1,"Fuel":4,"Scrap":4},
         "costs":{"Compo1":315,"Compo2":135,"Compo3":70,"Eau":450,"Energie":600,"Hydrocarbure":450,"Fuel":450,"Huile":500,"Scrap":2000,"Titane":150,"Aluminium":300,"Fer":600,"Zinc":300,"Azote":500,"Electros":200,"Batteries":140},
-        "fabTime":200
+        "fabTime":200,
+        "slots":2
     },
     {
         "id":199,
@@ -2111,15 +2134,18 @@
         "upkeep":{"Energie":24,"Hydrocarbure":12,"Aluminium":2.5,"Carbone":0.7,"Zinc":0.7,"Nickel":0.5},
         "prod":{"Moteurs":2,"Fuel":8,"Batteries":1,"Scrap":8},
         "costs":{"Compo1":435,"Compo2":315,"Compo3":270,"Eau":450,"Energie":1200,"Hydrocarbure":900,"Fuel":900,"Huile":500,"Scrap":2000,"Titane":225,"Aluminium":300,"Fer":600,"Platine":300,"Zinc":300,"Azote":1500,"Electros":500,"Batteries":300},
-        "fabTime":450
+        "fabTime":450,
+        "slots":4
     },
     {
         "id":193,
         "name":"Aérodocks",
+        "compReq":{"aero":1},
         "upkeep":{"Energie":4,"Aluminium":1},
         "prod":{"Scrap":2},
         "costs":{"Compo1":285,"Compo2":165,"Compo3":110,"Eau":180,"Energie":600,"Hydrocarbure":600,"Fuel":800,"Huile":500,"Titane":600,"Aluminium":600,"Cobalt":300,"Cuivre":600,"Platine":300,"Plutonium":150,"Hélium":300,"Electros":450,"Batteries":300},
-        "fabTime":240
+        "fabTime":240,
+        "slots":2
     },
     {
         "id":170,
@@ -2128,7 +2154,8 @@
         "upkeep":{"Fer":0.7,"Soufre":1.4,"Plomb":1.4},
         "prod":{"Munitions":1,"Scrap":1},
         "costs":{"Compo1":195,"Compo2":30,"Eau":36,"Hydrocarbure":50,"Fuel":25,"Huile":25,"Scrap":150,"Fer":100,"Potassium":50,"Hydrogène":50,"Energie":200},
-        "fabTime":60
+        "fabTime":60,
+        "slots":1
     },
     {
         "id":171,
@@ -2139,7 +2166,8 @@
         "upkeep":{"Energie":8,"Fer":1.3,"Soufre":3.6,"Plomb":2.6,"Potassium":1.1,"Carbone":1.1},
         "prod":{"Munitions":2,"Explosifs":0.75,"Scrap":3},
         "costs":{"Compo1":285,"Compo2":165,"Compo3":110,"Eau":300,"Energie":600,"Hydrocarbure":300,"Fuel":500,"Huile":500,"Scrap":1500,"Titane":500,"Tungstène":1500,"Fer":2000,"Potassium":1500,"Hydrogène":500,"Azote":500,"Electros":150,"Batteries":140},
-        "fabTime":200
+        "fabTime":200,
+        "slots":2
     },
     {
         "id":192,
@@ -2149,7 +2177,8 @@
         "upkeep":{"Energie":24,"Fer":2.4,"Soufre":4.8,"Plomb":4.8,"Carbone":0.3,"Hydrogène":0.6,"Azote":0.6,"Oxygène":0.3},
         "prod":{"Munitions":4,"Explosifs":1.5,"Scrap":8},
         "costs":{"Compo1":390,"Compo2":360,"Compo3":360,"Eau":540,"Energie":1200,"Hydrocarbure":600,"Fuel":1000,"Huile":500,"Scrap":1500,"Titane":1500,"Tungstène":3000,"Fer":3000,"Potassium":2000,"Platine":300,"Plutonium":500,"Hydrogène":1500,"Azote":1500,"Electros":500,"Batteries":300},
-        "fabTime":500
+        "fabTime":500,
+        "slots":4
     },
     {
         "id":150,
@@ -2157,7 +2186,8 @@
         "bldUp":"Hôpital",
         "costs":{"Compo1":115,"Eau":24,"Drogues":50,"Tissus":50,"Aluminium":30,"Calcium":25,"Or":10,"Silicium":25,"Oxygène":25,"Chlore":50,"Energie":40},
         "fabTime":20,
-        "crime":-3
+        "crime":-3,
+        "slots":1
     },
     {
         "id":202,
@@ -2168,7 +2198,8 @@
         "prod":{"Drogues":3,"Scrap":2},
         "costs":{"Compo1":225,"Compo2":150,"Eau":48,"Energie":400,"Drogues":200,"Mendium":200,"Tissus":500,"Titane":150,"Aluminium":120,"Calcium":500,"Or":150,"Silicium":200,"Oxygène":1000,"Chlore":500,"Electros":500,"Batteries":100},
         "fabTime":150,
-        "crime":-6
+        "crime":-6,
+        "slots":2
     },
     {
         "id":194,
@@ -2176,7 +2207,8 @@
         "bldUp":"Centre de com",
         "upkeep":{"Energie":2},
         "costs":{"Compo1":130,"Compo2":20,"Eau":12,"Energie":60,"Cuivre":50,"Electros":15,"Batteries":10},
-        "fabTime":25
+        "fabTime":25,
+        "slots":1
     },
     {
         "id":195,
@@ -2187,7 +2219,8 @@
         "upkeep":{"Energie":7},
         "prod":{"Scrap":1},
         "costs":{"Compo1":240,"Compo2":135,"Compo3":90,"Eau":36,"Energie":400,"Cobalt":750,"Cuivre":3000,"Platine":500,"Silicium":750,"Oxygène":300,"Hélium":500,"Electros":600,"Batteries":100},
-        "fabTime":150
+        "fabTime":150,
+        "slots":2
     },
     {
         "id":196,
@@ -2197,7 +2230,8 @@
         "upkeep":{"Energie":16},
         "prod":{"Scrap":3},
         "costs":{"Compo1":165,"Compo2":435,"Compo3":290,"Eau":90,"Energie":1200,"Cobalt":1500,"Cuivre":7000,"Platine":1500,"Silicium":1000,"Oxygène":600,"Hélium":1500,"Electros":800,"Batteries":300},
-        "fabTime":350
+        "fabTime":350,
+        "slots":3
     },
     {
         "id":203,
@@ -2205,7 +2239,8 @@
         "bldUp":"Centre de tri",
         "prod":{"Scrap":2},
         "costs":{"Compo1":175,"Eau":18,"Fer":50},
-        "fabTime":20
+        "fabTime":20,
+        "slots":1
     },
     {
         "id":204,
@@ -2215,7 +2250,8 @@
         "bldCost":"Décharge",
         "upkeep":{"Energie":3,"Eau":2,"Scrap":25},
         "costs":{"Compo1":305,"Compo2":70,"Eau":2000,"Fer":500,"Energie":400,"Bore":500,"Chlore":250,"Electros":50,"Batteries":100},
-        "fabTime":75
+        "fabTime":75,
+        "slots":2
     },
     {
         "id":205,
@@ -2224,7 +2260,8 @@
         "bldCost":"Centre de tri",
         "upkeep":{"Energie":8,"Eau":4,"Scrap":50},
         "costs":{"Compo1":380,"Compo2":220,"Compo3":150,"Eau":5000,"Fer":750,"Energie":1200,"Platine":500,"Bore":2000,"Chlore":1000,"Argon":750,"Electros":250,"Batteries":180},
-        "fabTime":350
+        "fabTime":350,
+        "slots":3
     },
     {
         "id":206,
@@ -2233,7 +2270,8 @@
         "upkeep":{"Energie":3,"Eau":2,"Végétaux":3.5,"Huile":1.5},
         "prod":{"Drogues":2,"Scrap":1},
         "costs":{"Compo1":225,"Compo2":75,"Eau":200,"Energie":300,"Huile":50,"Carbone":50,"Phosphore":50,"Calcium":100,"Or":50,"Silicium":150,"Zinc":150,"Bore":25,"Chlore":50,"Electros":50,"Batteries":50},
-        "fabTime":75
+        "fabTime":75,
+        "slots":1
     },
     {
         "id":207,
@@ -2243,7 +2281,8 @@
         "upkeep":{"Energie":12,"Eau":7,"Végétaux":6,"Huile":2.5,"Cuivre":1,"Carbone":1,"Cobalt":0.5},
         "prod":{"Drogues":4,"Electros":1,"Scrap":5},
         "costs":{"Compo1":310,"Compo2":280,"Compo3":290,"Eau":1500,"Energie":2400,"Huile":1500,"Carbone":2000,"Phosphore":1500,"Calcium":1000,"Or":1500,"Platine":1500,"Silicium":750,"Zinc":1500,"Bore":1500,"Chlore":2000,"Argon":2000,"Hélium":750,"Electros":1000,"Batteries":300},
-        "fabTime":600
+        "fabTime":600,
+        "slots":3
     },
     {
         "id":172,
@@ -2251,21 +2290,25 @@
         "upkeep":{"Fuel":1},
         "prod":{"Energie":9},
         "costs":{"Compo1":125,"Eau":6,"Scrap":100,"Carbone":50,"Tungstène":35,"Moteurs":75,"Nickel":20,"Silicium":50,"Batteries":20},
-        "fabTime":25
+        "fabTime":25,
+        "slots":0
     },
     {
         "id":210,
         "name":"Crameur",
         "costs":{"Compo1":285,"Compo2":90,"Compo3":75,"Eau":2500,"Carbone":1000,"Tungstène":500,"Nickel":500,"Argon":300,"Batteries":150},
-        "fabTime":120
+        "fabTime":120,
+        "slots":1
     },
     {
         "id":208,
         "name":"Centrale solaire",
         "bldEquiv":["Générateur","Centrale SMR"],
+        "compReq":{"energ":1},
         "upkeep":{"Eau":4},
         "costs":{"Compo1":435,"Compo2":315,"Compo3":270,"Eau":3000,"Aluminium":1500,"Rhodium":1000,"Cobalt":1500,"Cuivre":600,"Platine":300,"Mercure":750,"Silicium":1000,"Argon":600,"Electros":200,"Batteries":450},
-        "fabTime":350
+        "fabTime":350,
+        "slots":2
     },
     {
         "id":209,
@@ -2273,17 +2316,20 @@
         "bldEquiv":["Générateur","Centrale SMR"],
         "upkeep":{"Eau":5},
         "costs":{"Compo1":260,"Compo2":40,"Eau":75,"Hydrogène":15,"Oxygène":15,"Fer":35,"Tungstène":35,"Nickel":20,"Cuivre":100,"Azote":50,"Electros":25,"Batteries":50,"Energie":120},
-        "fabTime":65
+        "fabTime":65,
+        "slots":0
     },
     {
         "id":211,
         "name":"Centrale nucléaire",
         "bldEquiv":["Générateur","Centrale SMR"],
         "bldReq":["Générateur"],
+        "compReq":{"energ":1},
         "upkeep":{"Plutonium":7,"Eau":20},
         "prod":{"Energie":230},
         "costs":{"Compo1":345,"Compo2":405,"Compo3":450,"Eau":6000,"Energie":4000,"Carbone":5000,"Titane":1500,"Plomb":2000,"Nickel":1000,"Cuivre":800,"Bore":1500,"Plutonium":1500,"Electros":400,"Batteries":900},
-        "fabTime":600
+        "fabTime":600,
+        "slots":3
     },
     {
         "id":212,
@@ -2293,7 +2339,8 @@
         "upkeep":{"Uranium":2,"Eau":3},
         "prod":{"Energie":55},
         "costs":{"Compo1":205,"Compo2":245,"Compo3":270,"Eau":1000,"Energie":1600,"Carbone":1500,"Titane":300,"Plomb":300,"Nickel":300,"Cuivre":250,"Platine":375,"Bore":375,"Uranium":250,"Hydrogène":500,"Electros":125,"Batteries":350},
-        "fabTime":300
+        "fabTime":300,
+        "slots":2
     },
     {
         "id":174,
@@ -2303,7 +2350,8 @@
         "bldReq":["Centrale SMR"],
         "upkeep":{"Energie":50},
         "costs":{"Compo1":180,"Compo2":270,"Compo3":165,"Eau":36,"Energie":5000,"Carbone":1000,"Titane":300,"Potassium":2000,"Cuivre":500,"Platine":400,"Mercure":600,"Plutonium":1000,"Uranium":500,"Oxygène":1000,"Azote":1800,"Electros":400,"Batteries":400},
-        "fabTime":70
+        "fabTime":70,
+        "slots":0
     },
     {
         "id":175,
@@ -2313,7 +2361,8 @@
         "bldReq":["Centrale SMR"],
         "upkeep":{"Energie":80},
         "costs":{"Compo1":210,"Compo2":540,"Compo3":360,"Eau":60,"Energie":25000,"Carbone":2000,"Titane":600,"Potassium":5000,"Rhodium":1500,"Cuivre":1000,"Platine":1200,"Mercure":1500,"Bore":3000,"Plutonium":2000,"Uranium":1000,"Oxygène":1000,"Azote":3000,"Electros":500,"Batteries":1000},
-        "fabTime":200
+        "fabTime":200,
+        "slots":0
     },
     {
         "id":200,
@@ -2322,14 +2371,16 @@
         "bldReq":["Dôme"],
         "upkeep":{"Energie":20},
         "costs":{"Compo1":60,"Compo2":165,"Compo3":110,"Eau":12,"Energie":2500,"Carbone":400,"Titane":150,"Rhodium":500,"Cuivre":150,"Platine":200,"Bore":1000,"Plutonium":500,"Uranium":250,"Oxygène":250,"Azote":900,"Electros":200,"Batteries":200},
-        "fabTime":35
+        "fabTime":35,
+        "slots":0
     },
     {
         "id":215,
         "name":"Bar",
         "costs":{"Compo1":115,"Eau":50,"Huile":15,"Carbone":25,"Fruits":50},
         "fabTime":15,
-        "crime":-2
+        "crime":-2,
+        "slots":1
     },
     {
         "id":216,
@@ -2338,14 +2389,16 @@
         "prod":{"Nourriture":4},
         "costs":{"Compo1":195,"Compo2":30,"Eau":300,"Carbone":100,"Nourriture":200,"Fruits":50,"Batteries":30,"Energie":120},
         "fabTime":25,
-        "crime":-3
+        "crime":-3,
+        "slots":1
     },
     {
         "id":224,
         "name":"Prisons",
         "costs":{"Compo1":120,"Compo2":30,"Eau":50,"Fer":150},
         "fabTime":35,
-        "crime":-5
+        "crime":-5,
+        "slots":1
     },
     {
         "id":226,
@@ -2353,7 +2406,8 @@
         "bldReq":["Soute","Salle de sport"],
         "compReq":{"ordre":2},
         "costs":{"Eau":100,"Drogues":200,"Scrap":300,"Calcium":50,"Or":200,"Zinc":200,"Bore":200,"Chlore":50},
-        "fabTime":200
+        "fabTime":200,
+        "slots":1
     },
     {
         "id":227,
@@ -2361,7 +2415,8 @@
         "upkeep":{"Energie":1,"Eau":10},
         "costs":{"Compo1":210,"Compo2":15,"Eau":150,"Energie":60,"Aluminium":15,"Fer":100,"Plomb":25,"Végétaux":100,"Calcium":25,"Chlore":25},
         "fabTime":50,
-        "crime":-2
+        "crime":-2,
+        "slots":1
     },
     {
         "id":201,
@@ -2369,7 +2424,8 @@
         "upkeep":{"Energie":6,"Soufre":10,"Plomb":10,"Fer":10,"Bois":10},
         "prod":{"Scrap":5},
         "costs":{"Compo1":285,"Compo2":165,"Compo3":55,"Eau":300,"Energie":200,"Aluminium":120,"Fer":1200,"Bois":1200,"Munitions":1200,"Explosifs":300,"Végétaux":1200,"Calcium":150,"Or":30,"Drogues":150,"Chlore":150,"Batteries":80},
-        "fabTime":250
+        "fabTime":250,
+        "slots":3
     },
     {
         "id":232,
@@ -2377,7 +2433,8 @@
         "bldReq":["Soute"],
         "costs":{"Eau":300,"Scrap":300,"Tissus":300,"Fer":200,"Bois":100,"Batteries":10},
         "fabTime":25,
-        "crime":1
+        "crime":1,
+        "slots":1
     },
     {
         "id":233,
@@ -2385,7 +2442,8 @@
         "bldReq":["Soute"],
         "costs":{"Eau":300,"Scrap":150,"Tissus":600,"Carbone":150,"Fer":200,"Bois":200,"Batteries":20},
         "fabTime":50,
-        "crime":-1
+        "crime":-1,
+        "slots":1
     },
     {
         "id":234,
@@ -2393,7 +2451,8 @@
         "bldReq":["Soute"],
         "costs":{"Eau":300,"Tissus":1000,"Carbone":300,"Bois":300,"Cuivre":200,"Electros":25,"Batteries":50},
         "fabTime":75,
-        "crime":3
+        "crime":3,
+        "slots":1
     },
     {
         "id":235,
@@ -2402,7 +2461,8 @@
         "bldUp":"Passerelle",
         "bldReq":["Station"],
         "costs":{},
-        "fabTime":25
+        "fabTime":25,
+        "slots":0
     },
     {
         "id":236,
@@ -2411,7 +2471,8 @@
         "bldCost":"Poste de pilotage",
         "bldReq":["Soute"],
         "costs":{"Energie":2500,"Cobalt":1500,"Cuivre":7000,"Platine":1500,"Silicium":1000,"Oxygène":600,"Hélium":1500,"Electros":800,"Batteries":300},
-        "fabTime":125
+        "fabTime":125,
+        "slots":0
     },
     {
         "id":231,
@@ -2432,7 +2493,8 @@
         "name":"Soute",
         "bldReq":["Station"],
         "costs":{},
-        "fabTime":25
+        "fabTime":25,
+        "slots":0
     },
     {
         "id":228,
@@ -2442,7 +2504,8 @@
         "upkeep":{"Azote":1,"Potassium":1},
         "prod":{"Fruits":6,"Végétaux":6},
         "costs":{"Compo1":200,"Scrap":150,"Silicium":150,"Eau":750,"Azote":100,"Phosphore":75,"Potassium":150,"Chlore":50,"Végétaux":750,"Energie":100,"Batteries":25},
-        "fabTime":100
+        "fabTime":100,
+        "slots":1
     },
     {
         "id":229,
@@ -2454,6 +2517,7 @@
         "prod":{"Fruits":20,"Végétaux":20},
         "costs":{"Compo1":300,"Scrap":200,"Silicium":200,"Eau":2500,"Azote":300,"Phosphore":250,"Potassium":450,"Chlore":150,"Végétaux":2500,"Energie":200,"Batteries":50},
         "fabTime":200,
+        "slots":2,
         "crime":-4
     }
 ]

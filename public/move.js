@@ -271,7 +271,11 @@ function moveSelectedBat(tileId,free,jump) {
     }
     if (selectedBat.tags.includes('camo') || selectedBat.fuzz <= -2) {
         if (selectedBatType.skills.includes('fly') || (selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('emoteur') && !selectedBatType.skills.includes('robot')) || selectedBatType.skills.includes('moto') || selectedBatType.skills.includes('maycamo') || !selectedBatType.skills.includes('camo') || selectedBat.eq === 'e-jetpack') {
-            camoOut();
+            if (selectedBat.eq === 'kit-chouf' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitch') {
+                camouflage(0);
+            } else {
+                camoOut();
+            }
         } else {
             camouflage(0);
         }

@@ -534,25 +534,25 @@ function triProd(bat,batType,time,sim) {
             let resFactor = 0;
             if (res.ctri != undefined) {
                 if (batType.name === 'Recyclab') {
-                    resFactor = res.ctri*2;
+                    resFactor = Math.ceil(res.ctri*2.5);
                 } else {
                     resFactor = res.ctri;
                 }
             } else {
                 if (res.rlab != undefined) {
                     if (batType.name === 'Recyclab') {
-                        resFactor = res.rlab*2;
+                        resFactor = Math.ceil(res.rlab*2.5);
                     }
                 }
             }
             if (resFactor >= 1) {
-                let resNum = Math.round(resFactor/40*time);
+                let resNum = Math.round(resFactor/30*time);
                 console.log(res.name);
                 console.log('resNum: '+resNum);
                 if (resNum >= 3) {
                     resProd = resNum;
                 } else {
-                    let resChance = Math.round(100*resFactor/40*time/3);
+                    let resChance = Math.round(100*resFactor/30*time/3);
                     console.log('resChance: '+resChance+'%');
                     if (rand.rand(1,100) <= resChance) {
                         resProd = 3;

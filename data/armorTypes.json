@@ -216,6 +216,17 @@
         "costs":{"Aluminium":9,"Titane":9}
     },
     {
+        "name": "tisal",
+        "cat":"armor",
+        "armor": 4,
+        "ap": -1,
+        "skills": ["resistelec"],
+        "bldReq":["Armurerie"],
+        "compReq":{"mat":2,"energ":1},
+        "factor":"thp",
+        "costs":{"Carbone":2,"Titane":9,"Salite":9}
+    },
+    {
         "name": "nano",
         "cat":"armor",
         "armor": 4,
@@ -241,8 +252,8 @@
         "name": "adamantite",
         "cat":"armor",
         "armor": 5,
-        "ap": -1,
-        "skills": [],
+        "ap": -2,
+        "skills": ["resistall"],
         "bldReq":["Arsenal"],
         "compReq":{"mat":3},
         "factor":"thp",
@@ -311,7 +322,7 @@
         "ap": -1,
         "skills": ["resistelec"],
         "bldReq":["Laboratoire"],
-        "compReq":{"mat":2,"energ":1},
+        "compReq":{"mat":2,"energ":1,"ca":2},
         "factor":"thp",
         "costs":{"Bois":6,"Tissus":6,"Silicium":6,"Larvium":4,"Wingium":4}
     },

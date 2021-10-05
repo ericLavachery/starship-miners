@@ -200,10 +200,15 @@ function viewPop() {
             if (crimeRate.penib >= 10) {
                 penibColour = 'or';
             }
+            let bedColour = 'neutre';
+            if (population >= crimeRate.lits+100) {
+                bedColour = 'or';
+            }
             $("#batloop").css("display","block");
             $('#batloop').empty();
             $('#batloop').append('Population: <span class="'+popColour+'">'+population+'</span><br>');
             $('#batloop').append('(<span class="" title="Citoyens">'+mesCitoyens.cit+'</span> &middot; <span class="" title="Criminels">'+mesCitoyens.crim+'</span>)<br>');
+            $('#batloop').append('Lits: <span class="'+bedColour+'">'+crimeRate.lits+'</span><br>');
             $('#batloop').append('Criminels: <span class="neutre">'+crimeRate.crim+'</span>%<br>');
             $('#batloop').append('Pénibilité: <span class="'+penibColour+'">'+crimeRate.penib+'</span>%<br>');
             $('#batloop').append('Forces de l\'ordre: <span class="neutre">'+crimeRate.fo+'</span><br>');

@@ -222,7 +222,10 @@ function skillsInfos(bat,batType) {
                 }
             } else {
                 if ((batType.skills.includes('maycamo') || !batType.skills.includes('camo')) && !tile.ruins && tile.infra != 'Terriers') {
-                    if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || bat.eq === 'kit-chouf' || bat.eq === 'kit-guetteur' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
+                    if (bat.eq === 'kit-chouf' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
+                        apCost = Math.floor(bat.ap/2.5);
+                        apReq = 2;
+                    } else if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || bat.eq === 'kit-guetteur') {
                         apCost = Math.floor(bat.ap/2);
                         apReq = 3;
                     } else {

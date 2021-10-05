@@ -327,7 +327,10 @@ function editSonde() {
     $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`sondeDanger`,`sonde`)" title="Présence Alien"></select>');
     $('#theZone').empty().append('<option value="">Pr.Alien</option>');
     let prAMin = Math.floor(playerInfos.allTurns/apoCount)+1;
-    let prAMax = Math.floor(playerInfos.allTurns/250)+3;
+    let prAMax = Math.floor(playerInfos.allTurns/apoCount*1.25)+2;
+    if (prAMax >= 10) {
+        prAMax = 10;
+    }
     let i = 0;
     while (i <= 15) {
         if (i >= prAMin || i === 10) {
