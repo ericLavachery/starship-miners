@@ -1092,7 +1092,7 @@
             "power":21,
             "aoe":"unit",
             "sound":"balista",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -1394,7 +1394,7 @@
             "sound":"mark",
             "ammo":["marquage"]
         },
-        "protection":["aucun","chobham","tisal","iso","nano","swing"],
+        "protection":["aucun","chobham","tisal","iso","nano","duneg","swing"],
         "equip":["aucun","g2motor","chargeur1","e-flash","detector","e-mecano"],
         "log3eq":"detector",
         "moveCost":1,
@@ -1679,7 +1679,7 @@
             "power":21,
             "aoe":"unit",
             "sound":"balista",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "weapon2":{
             "name":"Moissonneuse",
@@ -2375,7 +2375,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -4061,7 +4061,7 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-plasma"]
         },
         "weapon2":{},
-        "protection":["aucun","chobham","tisal","iso","nano","swing"],
+        "protection":["aucun","chobham","tisal","iso","nano","duneg","swing"],
         "equip":["aucun","g2motor","e-flash","g2ai","g2tools"],
         "log3eq":"",
         "moveCost":2,
@@ -4290,7 +4290,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "weapon2":{
             "name":"Boutoir",

@@ -1422,11 +1422,26 @@
         "powermult": 1.33,
         "armors": 0.75,
         "accuracy": 2,
-        "apdamage": 0.05,
+        "apdamage": 0,
         "aoe": "",
         "bldReq":["Centre de recherches"],
         "compReq":{"det":3,"ca":3},
         "deploy":{"Carbone":4,"Cuivre":1,"Tungstène":2,"Electros":1},
+        "batch":100
+    },
+    {
+        "name": "fleche-plastanium",
+        "range": 1.4,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1.33,
+        "armors": 0.35,
+        "accuracy": 1.5,
+        "apdamage": 0.05,
+        "aoe": "",
+        "bldReq":["Laboratoire"],
+        "compReq":{"bal":2,"energ":1},
+        "deploy":{"Carbone":4,"Rhodium":1,"Tungstène":2,"Plastanium":3},
         "batch":100
     },
     {
@@ -1548,6 +1563,22 @@
         "batch":12
     },
     {
+        "name": "lame-adamantite",
+        "range": 1,
+        "rof": 1.25,
+        "power": 0,
+        "powermult": 1.25,
+        "armors": 0.35,
+        "accuracy": 1.25,
+        "apdamage": 0,
+        "aoe": "",
+        "bldReq":["Arsenal"],
+        "compReq":{"mat":1},
+        "costs":{"Aluminium":2,"Carbone":1,"Cobalt":1,"Silicium":1,"Adamantium":4},
+        "deploy":{"Huile":2,"Argon":2},
+        "batch":12
+    },
+    {
         "name": "lame-adamantium",
         "range": 1,
         "rof": 1.5,
@@ -1559,7 +1590,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"mat":3},
-        "costs":{"Adamantium":6},
+        "costs":{"Adamantium":6,"Argon":1},
         "deploy":{},
         "batch":12
     },
