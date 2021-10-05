@@ -302,25 +302,31 @@ function editSonde() {
     } else {
         $('#thePlanet').append('<option value="1">Dom</option>');
     }
-    if (2 === playerInfos.sondePlanet) {
-        $('#thePlanet').append('<option value="2" selected>Sarak</option>');
-    } else {
-        $('#thePlanet').append('<option value="2">Sarak</option>');
+    if (playerInfos.comp.vsp >= 1) {
+        if (2 === playerInfos.sondePlanet) {
+            $('#thePlanet').append('<option value="2" selected>Sarak</option>');
+        } else {
+            $('#thePlanet').append('<option value="2">Sarak</option>');
+        }
     }
-    if (3 === playerInfos.sondePlanet) {
-        $('#thePlanet').append('<option value="3" selected>Gehenna</option>');
-    } else {
-        $('#thePlanet').append('<option value="3">Gehenna</option>');
+    if (playerInfos.bldList.includes('Centre de recherches')) {
+        if (3 === playerInfos.sondePlanet) {
+            $('#thePlanet').append('<option value="3" selected>Gehenna</option>');
+        } else {
+            $('#thePlanet').append('<option value="3">Gehenna</option>');
+        }
     }
-    if (4 === playerInfos.sondePlanet) {
-        $('#thePlanet').append('<option value="4" selected>Kzin</option>');
-    } else {
-        $('#thePlanet').append('<option value="4">Kzin</option>');
-    }
-    if (5 === playerInfos.sondePlanet) {
-        $('#thePlanet').append('<option value="5" selected>Horst</option>');
-    } else {
-        $('#thePlanet').append('<option value="5">Horst</option>');
+    if (playerInfos.comp.vsp >= 1 && playerInfos.bldList.includes('Centre de com')) {
+        if (4 === playerInfos.sondePlanet) {
+            $('#thePlanet').append('<option value="4" selected>Kzin</option>');
+        } else {
+            $('#thePlanet').append('<option value="4">Kzin</option>');
+        }
+        if (5 === playerInfos.sondePlanet) {
+            $('#thePlanet').append('<option value="5" selected>Horst</option>');
+        } else {
+            $('#thePlanet').append('<option value="5">Horst</option>');
+        }
     }
     $('#conUnitList').append('<span class="butSpace"></span>');
     // PRESENCE ALIEN
@@ -600,6 +606,10 @@ function showZonePreview() {
     $('#thenavig').append('<span class="constIcon"><i class="fas fa-times-circle klik" onclick="miniOut()"></i></span><br>');
     let allResQHere = {};
     let allResHere = [];
+    let ccom = false;
+    if (playerInfos.bldList.includes('Centre de com')) {
+        ccom = true;
+    }
     zonePrev.forEach(function(tile) {
         if (tile.y === 1) {
             $('#themmap').append('<br>');
@@ -638,7 +648,28 @@ function showZonePreview() {
         } else if (infraHere) {
             $('#themmap').append('<span class="mini mInfra" title="Infrastructure"></span>');
         } else {
-            $('#themmap').append('<span class="mini m'+tile.terrain+'"></span>');
+            if (zonePrev[0].planet === 'Sarak') {
+                let distance = calcDistance(tile.id,1830);
+                if (distance <= playerInfos.comp.det) {
+                    $('#themmap').append('<span class="mini m'+tile.terrain+'"></span>');
+                } else {
+                    if (ccom) {
+                        if (tile.terrain === 'W' || tile.terrain === 'R') {
+                            $('#themmap').append('<span class="mini mDarkWater"></span>');
+                        } else {
+                            if (playerInfos.comp.det >= 3 && tile.terrain === 'M') {
+                                $('#themmap').append('<span class="mini mDarkMount"></span>');
+                            } else {
+                                $('#themmap').append('<span class="mini mDark"></span>');
+                            }
+                        }
+                    } else {
+                        $('#themmap').append('<span class="mini mDark"></span>');
+                    }
+                }
+            } else {
+                $('#themmap').append('<span class="mini m'+tile.terrain+'"></span>');
+            }
         }
     });
     $('#themmap').append('<br>');

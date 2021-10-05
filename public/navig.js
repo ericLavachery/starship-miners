@@ -99,7 +99,7 @@ function commandes() {
                     if (hasSonde) {
                         $('#commandz').append('<button type="button" title="Envoyer une sonde (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+')" class="boutonBrun iconButtons" onclick="goSonde(false)" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
                     }
-                    if (hasImpacteur) {
+                    if (hasImpacteur && planetName != 'Horst' && planetName != 'Kzin') {
                         $('#commandz').append('<button type="button" title="Envoyer un impacteur (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+')" class="boutonNoir iconButtons" onclick="goSonde(true)" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
                     }
                 }

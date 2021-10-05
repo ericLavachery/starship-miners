@@ -53,6 +53,10 @@ function minimap() {
             }
         });
     }
+    let ccom = false;
+    if (playerInfos.bldList.includes('Centre de com') || playerInfos.bldVM.includes('Centre de com')) {
+        ccom = true;
+    }
     let alienView;
     zone.forEach(function(tile) {
         if (zone[0].dark) {
@@ -98,12 +102,29 @@ function minimap() {
                                         $('#themmap').append('<span class="mini mBord" onclick="centerFromMinimap('+tile.id+')"></span>');
                                     } else {
                                         if (zone[0].dark) {
-                                            if (undarkNow.includes(tile.id)) {
-                                                $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
-                                            } else if (playerInfos.undarkOnce.includes(tile.id)) {
+                                            let distance = calcDistance(tile.id,1830);
+                                            if (distance <= playerInfos.comp.det) {
                                                 $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
                                             } else {
-                                                $('#themmap').append('<span class="mini mDark" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                                if (undarkNow.includes(tile.id)) {
+                                                    $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                                } else if (playerInfos.undarkOnce.includes(tile.id)) {
+                                                    $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                                } else {
+                                                    if (ccom) {
+                                                        if (tile.terrain === 'W' || tile.terrain === 'R') {
+                                                            $('#themmap').append('<span class="mini mDarkWater" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                                        } else {
+                                                            if (playerInfos.comp.det >= 3 && tile.terrain === 'M') {
+                                                                $('#themmap').append('<span class="mini mDarkMount" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                                            } else {
+                                                                $('#themmap').append('<span class="mini mDark" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                                            }
+                                                        }
+                                                    } else {
+                                                        $('#themmap').append('<span class="mini mDark" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                                    }
+                                                }
                                             }
                                         } else {
                                             $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');

@@ -77,6 +77,12 @@
     animation: pointsBlink .5s infinite;  /* IE 10+, Fx 29+ */
 }
 .mDark {
+    background-color: #181818;
+}
+.mDarkWater {
+    background-color: #30484a;
+}
+.mDarkMount {
     background-color: #000000;
 }
 .mBord {
