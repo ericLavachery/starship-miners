@@ -192,6 +192,7 @@ function saveGame() {
     saveAliens();
     savePlayerInfos();
     saveMap();
+    testConnect(pseudo);
     commandes();
 };
 

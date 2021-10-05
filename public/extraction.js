@@ -585,6 +585,12 @@ function showTileRes(theTileRes) {
             tileRes = tileRes.replace(/\d*/g,"");
         }
     }
+    // DERRICK
+    resTypes.forEach(function(res) {
+        if (res.bld === 'Derrick') {
+            tileRes = tileRes.replace(res.name,'<span class="gris">'+res.name+'</span>');
+        }
+    });
     // RES FLAGS
     playerInfos.resFlags.forEach(function(flag) {
         tileRes = tileRes.replace(flag,'<span class="jaune">'+flag+'</span>');

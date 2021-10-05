@@ -37,7 +37,7 @@ function commandes() {
             $('#commandz').append('<hr>');
         }
         if (!playerInfos.onShip || modeSonde) {
-            $('#commandz').append('<button type="button" title="Ressources présentes dans la zone" class="boutonGris iconButtons" onclick="voirRessources()" onmousedown="clicSound()"><i class="far fa-gem"></i></button>');
+            $('#commandz').append('<button type="button" title="Ressources présentes dans la zone" class="boutonGris iconButtons" onclick="resView()" onmousedown="clicSound()"><i class="far fa-gem"></i></button>');
         }
         if (!modeSonde) {
             if (playerInfos.onShip) {

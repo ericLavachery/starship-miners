@@ -44,6 +44,8 @@ function minimap() {
         } else {
             $('#thenavig').append('<button type="button" title="Montrer la ressource recherchée" class="boutonGris miniButtons" onclick="oneResView()"><i class="far fa-gem"></i></button><br>');
         }
+    } else {
+        $('#thenavig').append('<button type="button" title="Montrer les ressources" class="boutonGris miniButtons" onclick="oneResView()"><i class="far fa-gem"></i></button><br>');
     }
     let tousLesCoffres = [];
     if (miniDots === 'coffres') {
@@ -103,7 +105,7 @@ function minimap() {
                                     } else {
                                         if (zone[0].dark) {
                                             let distance = calcDistance(tile.id,1830);
-                                            if (distance <= playerInfos.comp.det) {
+                                            if (distance <= playerInfos.comp.det+1) {
                                                 $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
                                             } else {
                                                 if (undarkNow.includes(tile.id)) {
@@ -191,6 +193,12 @@ function ruinsView() {
 };
 
 function oneResView() {
+    miniDots = 'oneres';
+    minimap();
+    voirRessources();
+};
+
+function resView() {
     miniDots = 'oneres';
     minimap();
     voirRessources();

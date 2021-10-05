@@ -1226,7 +1226,11 @@ function newEggCat() {
 function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
     let swampMap = false;
-    if (zone[0].ps+zone[0].pw >= 40) {
+    let eggTerrain = getTerrain(bat);
+    if (eggTerrain.name === 'W' || eggTerrain.name === 'S') {
+        swampMap = true;
+    }
+    if (zone[0].ps+zone[0].pw >= 60) {
         swampMap = true;
     }
     let overSaturation = false;

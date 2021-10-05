@@ -318,14 +318,14 @@ function editSonde() {
     }
     if (playerInfos.comp.vsp >= 1 && playerInfos.bldList.includes('Centre de com')) {
         if (4 === playerInfos.sondePlanet) {
-            $('#thePlanet').append('<option value="4" selected>Kzin</option>');
+            $('#thePlanet').append('<option value="4" title="Vous aurez besoin d\'une Sonde (Un Impacteur ne suffit pas)" selected>Kzin</option>');
         } else {
-            $('#thePlanet').append('<option value="4">Kzin</option>');
+            $('#thePlanet').append('<option value="4" title="Vous aurez besoin d\'une Sonde (Un Impacteur ne suffit pas)">Kzin</option>');
         }
         if (5 === playerInfos.sondePlanet) {
-            $('#thePlanet').append('<option value="5" selected>Horst</option>');
+            $('#thePlanet').append('<option value="5" title="Vous aurez besoin d\'une Sonde (Un Impacteur ne suffit pas)" selected>Horst</option>');
         } else {
-            $('#thePlanet').append('<option value="5">Horst</option>');
+            $('#thePlanet').append('<option value="5" title="Vous aurez besoin d\'une Sonde (Un Impacteur ne suffit pas)">Horst</option>');
         }
     }
     $('#conUnitList').append('<span class="butSpace"></span>');
@@ -650,7 +650,7 @@ function showZonePreview() {
         } else {
             if (zonePrev[0].planet === 'Sarak') {
                 let distance = calcDistance(tile.id,1830);
-                if (distance <= playerInfos.comp.det) {
+                if (distance <= playerInfos.comp.det+1) {
                     $('#themmap').append('<span class="mini m'+tile.terrain+'"></span>');
                 } else {
                     if (ccom) {
