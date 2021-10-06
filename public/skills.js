@@ -536,9 +536,14 @@ function goDrug(apCost,drugName) {
                 selectedBat.salvoLeft = selectedBat.salvoLeft+1;
                 console.log('blaze bonus');
             }
+            // bliss instant bonus
+            if (drug.name === 'bliss') {
+                selectedBat.apLeft = selectedBat.apLeft-3;
+            }
             // octiron instant bonus
             if (drug.name === 'octiron') {
                 selectedBat.apLeft = selectedBat.apLeft+2;
+                selectedBat.emo = selectedBat.emo-(playerInfos.comp.med*2)-3;
                 if (playerInfos.comp.med >= 3) {
                     selectedBat.damage = 0;
                     let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;

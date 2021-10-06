@@ -91,11 +91,17 @@ function reEquip(batId,noRefresh) {
             $('#conAmmoList').append('<span class="constName or">Equipement</span><br>');
             myBatType.equip.forEach(function(equip) {
                 batEquip = getEquipByName(equip);
+                let showEq = true;
+                if (batEquip.name === 'e-flash') {
+                    if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
+                        showEq = false;
+                    }
+                }
                 compReqOK = checkCompReq(batEquip);
                 if (checkSpecialEquip(batEquip,myBatType)) {
                     compReqOK = false;
                 }
-                if (compReqOK || conselTriche) {
+                if ((compReqOK && showEq) || conselTriche) {
                     if (myNewGear[3] == equip || (myNewGear[3] === 'xxx' && listNum === 1) || (playerInfos.comp.log === 3 && myBatType.log3eq === equip && compReqOK) || (playerInfos.comp.energ >= 2 && myBatType.log3eq === equip && equip.includes('psol') && compReqOK)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {

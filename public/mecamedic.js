@@ -515,7 +515,7 @@ function checkStressEffect(bat) {
         distress = 300;
     }
     let fromTileId = -1;
-    if (distress >= 1) {
+    if (distress >= 1 && !bat.tags.includes('bliss')) {
         let nearby = nearbyAliens(bat);
         if (nearby.one) {
             distress = distress*3;

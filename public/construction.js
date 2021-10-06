@@ -412,11 +412,17 @@ function conSelect(unitId,player,noRefresh) {
             conselUnit.equip.forEach(function(equip) {
                 equipIndex = armorTypes.findIndex((obj => obj.name == equip));
                 batEquip = armorTypes[equipIndex];
+                let showEq = true;
+                if (batEquip.name === 'e-flash') {
+                    if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
+                        showEq = false;
+                    }
+                }
                 compReqOK = checkCompReq(batEquip);
                 if (checkSpecialEquip(batEquip,conselUnit)) {
                     compReqOK = false;
                 }
-                if (compReqOK || conselTriche) {
+                if ((compReqOK && showEq) || conselTriche) {
                     if (conselAmmos[3] == equip || (conselAmmos[3] === 'xxx' && listNum === 1) || (playerInfos.comp.log === 3 && conselUnit.log3eq === equip && compReqOK) || (playerInfos.comp.energ >= 2 && conselUnit.log3eq === equip && equip.includes('psol') && compReqOK)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {

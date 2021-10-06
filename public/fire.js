@@ -491,7 +491,7 @@ function attack(melee) {
         hasEscape = true;
         escapeSpeed = targetBat.vet;
     }
-    if (hasEscape && selectedBat.fuzz >= -1 && !selectedBat.tags.includes('embuscade') && !selectedWeap.ammo.includes('laser')) {
+    if (hasEscape && (selectedBat.fuzz >= -1 || selectedWeap.isMelee || selectedWeap.isBow) && !selectedWeap.ammo.includes('laser')) {
         if ((tile.terrain != 'W' && tile.terrain != 'R') || targetBatType.skills.includes('fly')) {
             let escapeChance = Math.round(escapeSpeed*selectedWeap.cost*escapeValue);
             if (selectedWeap.aoe != 'unit' && !targetBatType.skills.includes('fly')) {
@@ -1334,7 +1334,7 @@ function defense(melee) {
         hasEscape = true;
         escapeSpeed = selectedBat.vet;
     }
-    if (hasEscape && targetBat.fuzz >= -1 && !targetBat.tags.includes('embuscade') && !targetWeap.ammo.includes('laser')) {
+    if (hasEscape && (targetBat.fuzz >= -1 || targetWeap.isMelee || targetWeap.isBow) && targetWeap.ammo.includes('laser')) {
         if ((tile.terrain != 'W' && tile.terrain != 'R') || selectedBatType.skills.includes('fly')) {
             let escapeChance = Math.round(escapeSpeed*targetWeap.cost*escapeValue);
             if (targetWeap.aoe != 'unit' && !selectedBatType.skills.includes('fly')) {

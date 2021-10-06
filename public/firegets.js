@@ -1723,7 +1723,7 @@ function weaponAdj(weapon,bat,wn) {
     }
     if (zone[0].dark && thisWeapon.range > vision) {
         let vue = vision;
-        if (batType.skills.includes('flash') || bat.eq === 'e-flash' || bat.logeq === 'e-flash' || bat.eq.includes('kit-') || playerInfos.comp.log === 3) {
+        if (batType.skills.includes('flash') || bat.eq === 'e-flash' || bat.logeq === 'e-flash' || bat.eq.includes('kit-') || playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
             if (!bat.tags.includes('camo')) {
                 vue = 3;
             }

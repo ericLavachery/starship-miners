@@ -395,6 +395,9 @@ function batInfos(bat,batType,pop) {
     if (bat.logeq != '') {
         $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">'+bat.logeq+'</span><br>');
     }
+    if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
+        $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">e-flash</span><br>');
+    }
     // WEAPONS & SKILLS
     if (!pop) {
         if (!isStacked()) {
