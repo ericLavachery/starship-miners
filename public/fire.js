@@ -441,6 +441,11 @@ function attack(melee) {
         selectedWeap.power = Math.round(selectedWeap.power*(8+playerInfos.comp.train)/5);
         attFactor = Math.round(attFactor*(8+playerInfos.comp.train)/10);
     }
+    // double attaque
+    if (selectedBat.tags.includes('datt') && !selectedWeap.isPrec && !selectedWeap.isBow && !selectedWeap.noBis && !selectedWeap.noDatt) {
+        shots = Math.round(shots*1.5);
+        attFactor = Math.round(attFactor*1.5);
+    }
     // Attack %
     $('#report').append('<span class="report jaune">Attaque '+attFactor+'%<br></span>');
     // chargeur

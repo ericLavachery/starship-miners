@@ -49,7 +49,7 @@ body {
 #takeof2 {
     display: none;
 }
-h1,h2,h3,h4,h5 {
+h1,h2,h3,h4,h5,h6 {
     font-size: 18px;
     /* font-weight: bold; */
     display: inline;
@@ -87,6 +87,11 @@ h5 {
     -moz-animation: hBlink .5s infinite;  /* Fx 5+ */
     -o-animation: hBlink .5s infinite;  /* Opera 12+ */
     animation: hBlink .5s infinite;  /* IE 10+, Fx 29+ */
+}
+h6 {
+    color: #d5cabd;
+    margin: 0;
+    padding: 0px 0px 5px 0px;
 }
 @-webkit-keyframes hBlink {
   0%, 49% {

@@ -454,6 +454,18 @@ function tirCible() {
     showBatInfos(selectedBat);
 };
 
+function fury() {
+    selectMode();
+    console.log('DOUBLE ATTAQUE');
+    if (!selectedBat.tags.includes('datt')) {
+        selectedBat.tags.push('datt');
+    }
+    tagDelete(selectedBat,'guet');
+    selectedBat.apLeft = selectedBat.apLeft-4;
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
 function luckyShot() {
     selectMode();
     console.log('LUCKY SHOT');

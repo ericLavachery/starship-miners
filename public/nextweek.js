@@ -41,7 +41,7 @@ function events(afterMission,time,sim) {
 
 function repos(time) {
     let woundHeal = 2;
-    let stressHeal = 3;
+    let stressHeal = 3+playerInfos.comp.med;
     let necroHeal = 2;
     if (playerInfos.bldList.includes('Salle de sport')) {
         stressHeal = stressHeal+3;
@@ -56,13 +56,13 @@ function repos(time) {
         stressHeal = stressHeal+3;
     }
     if (playerInfos.bldList.includes('Hôpital')) {
-        stressHeal = stressHeal+7;
-        woundHeal = woundHeal+10;
+        stressHeal = stressHeal+7+playerInfos.comp.med;
+        woundHeal = woundHeal+10+(playerInfos.comp.med*2);
         necroHeal = 100;
     } else if (playerInfos.bldList.includes('Infirmerie')) {
-        stressHeal = stressHeal+2;
-        woundHeal = woundHeal+2;
-        necroHeal = necroHeal+2;
+        stressHeal = stressHeal+2+playerInfos.comp.med;
+        woundHeal = woundHeal+2+playerInfos.comp.med;
+        necroHeal = necroHeal+2+playerInfos.comp.med;
     }
     bataillons.forEach(function(bat) {
         if (!bat.tags.includes('return')) {

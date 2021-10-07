@@ -148,6 +148,10 @@ function isHit(accuracy,minAccu,aoe,size,stealth,cover,speed,shotDice) {
     if (selectedBat.tags.includes('vise') && selectedWeap.isPrec) {
         prec = Math.round(prec*(playerInfos.comp.train+5)/2.5);
     }
+    // double attaque
+    if (selectedBat.tags.includes('datt') && !selectedWeap.isPrec && !selectedWeap.isBow && !selectedWeap.noBis && !selectedWeap.noDatt) {
+        prec = Math.round(prec/2);
+    }
     let dice = rand.rand(1,shotDice);
     let hitChance = Math.round(Math.sqrt(size)*prec);
     // aoe : more chance than normal to hit small creatures
@@ -1316,6 +1320,11 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.noBis = false;
     } else {
         thisWeapon.noBis = weapon.noBis;
+    }
+    if (weapon.noDatt === undefined) {
+        thisWeapon.noDatt = false;
+    } else {
+        thisWeapon.noDatt = weapon.noDatt;
     }
     if (weapon.noMelee === undefined) {
         thisWeapon.noMelee = false;

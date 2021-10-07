@@ -276,7 +276,7 @@ function skillsInfos(bat,batType) {
     // EMBUSCADE
     if (batType.skills.includes('embuscade') && !playerInfos.onShip) {
         apCost = 2;
-        if (batType.weapon2.rof >= 1 && batType.weapon.cost > batType.weapon2.rof) {
+        if (batType.weapon2.rof >= 1 && batType.weapon.cost > batType.weapon2.cost) {
             apReq = 2+batType.weapon2.cost;
         } else {
             apReq = 2+batType.weapon.cost;
@@ -301,50 +301,113 @@ function skillsInfos(bat,batType) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</'+balise+'></span>');
         }
     }
+    // DOUBLE ATTAQUE
+    if (!playerInfos.onShip) {
+        if (batType.skills.includes('datt') || bat.eq.includes('crimekit')) {
+            let weapOK = true;
+            apCost = 6;
+            if (!batType.weapon.isPrec && !batType.weapon.isBow && !batType.weapon.noBis && !batType.weapon.noDatt) {
+                if (batType.weapon2.rof >= 1) {
+                    if (!batType.weapon2.isPrec && !batType.weapon2.isBow && !batType.weapon.noBis && !batType.weapon.noDatt) {
+                        if (batType.weapon.cost > batType.weapon2.cost) {
+                            apReq = apCost+batType.weapon2.cost;
+                        } else {
+                            apReq = apCost+batType.weapon.cost;
+                        }
+                    } else {
+                        apReq = apCost+batType.weapon.cost;
+                    }
+                } else {
+                    apReq = apCost+batType.weapon.cost;
+                }
+            } else {
+                if (batType.weapon2.rof >= 1) {
+                    if (!batType.weapon2.isPrec && !batType.weapon2.isBow && !batType.weapon.noBis && !batType.weapon.noDatt) {
+                        apReq = apCost+batType.weapon2.cost;
+                    } else {
+                        weapOK = false;
+                    }
+                } else {
+                    weapOK = false;
+                }
+            }
+            if (weapOK) {
+                balise = 'h4';
+                boutonNope = 'boutonGris';
+                colorNope = 'gf';
+                if (bat.tags.includes('datt')) {
+                    balise = 'h3';
+                    boutonNope = 'boutonOK';
+                    colorNope = 'cy';
+                }
+                if (bat.apLeft >= apReq && !bat.tags.includes('datt') && bat.apLeft >= apCost+cheapWeapCost) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Cadence 150% / Précision 50%" class="boutonJaune skillButtons" onclick="fury()"><i class="ra ra-fire rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Double attaque</'+balise+'></span>');
+                } else {
+                    if (bat.tags.includes('datt')) {
+                        skillMessage = "Déjà activé";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="ra ra-fire rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Double attaque</'+balise+'></span>');
+                }
+            }
+        }
+    }
     // TIR CIBLE
     if (!playerInfos.onShip) {
         if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai')) || (batType.skills.includes('w2cible') && (bat.eq === 'w2-pgun' || bat.eq === 'w2-flaser' || bat.eq === 'w2-laser'))) {
+            let weapOK = true;
             apCost = 4;
             if (batType.weapon.isPrec) {
                 if (batType.weapon2.rof >= 1) {
                     if (batType.weapon2.isPrec) {
-                        if (batType.weapon.cost > batType.weapon2.rof) {
-                            apReq = 4+batType.weapon2.cost;
+                        if (batType.weapon.cost > batType.weapon2.cost) {
+                            apReq = apCost+batType.weapon2.cost;
                         } else {
-                            apReq = 4+batType.weapon.cost;
+                            apReq = apCost+batType.weapon.cost;
                         }
                     } else {
-                        apReq = 4+batType.weapon.cost;
+                        apReq = apCost+batType.weapon.cost;
                     }
                 } else {
-                    apReq = 4+batType.weapon.cost;
+                    apReq = apCost+batType.weapon.cost;
                 }
             } else {
-                apReq = 4+batType.weapon2.cost;
-            }
-            balise = 'h4';
-            boutonNope = 'boutonGris';
-            colorNope = 'gf';
-            if (bat.tags.includes('vise')) {
-                balise = 'h3';
-                boutonNope = 'boutonOK';
-                colorNope = 'cy';
-            }
-            let tcPrec = Math.round(100*(5+playerInfos.comp.train)/2.5);
-            let tcROF = Math.round(100*(8+playerInfos.comp.train)/10);
-            let tcPower = Math.round(100*(8+playerInfos.comp.train)/5);
-            let tcInfo = '+'+tcPrec+'% précision, '+tcROF+'% cadence, '+tcPower+'% puissance ('+apCost+' PA + coût de l\'arme)';
-            if (bat.apLeft >= apReq && !bat.tags.includes('vise') && bat.apLeft >= apCost+cheapWeapCost && !inMelee) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+tcInfo+'" class="boutonJaune skillButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
-            } else {
-                if (bat.tags.includes('vise')) {
-                    skillMessage = "Déjà activé";
-                } else if (inMelee) {
-                    skillMessage = "Impossible en mêlée";
+                if (batType.weapon2.rof >= 1) {
+                    if (batType.weapon2.isPrec) {
+                        apReq = apCost+batType.weapon2.cost;
+                    } else {
+                        weapOK = false;
+                    }
                 } else {
-                    skillMessage = "Pas assez de PA";
+                    weapOK = false;
                 }
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
+            }
+            if (weapOK) {
+                balise = 'h4';
+                boutonNope = 'boutonGris';
+                colorNope = 'gf';
+                if (bat.tags.includes('vise')) {
+                    balise = 'h3';
+                    boutonNope = 'boutonOK';
+                    colorNope = 'cy';
+                }
+                let tcPrec = Math.round(100*(5+playerInfos.comp.train)/2.5);
+                let tcROF = Math.round(100*(8+playerInfos.comp.train)/10);
+                let tcPower = Math.round(100*(8+playerInfos.comp.train)/5);
+                let tcInfo = '+'+tcPrec+'% précision, '+tcROF+'% cadence, '+tcPower+'% puissance ('+apCost+' PA + coût de l\'arme)';
+                if (bat.apLeft >= apReq && !bat.tags.includes('vise') && bat.apLeft >= apCost+cheapWeapCost && !inMelee) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+tcInfo+'" class="boutonJaune skillButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
+                } else {
+                    if (bat.tags.includes('vise')) {
+                        skillMessage = "Déjà activé";
+                    } else if (inMelee) {
+                        skillMessage = "Impossible en mêlée";
+                    } else {
+                        skillMessage = "Pas assez de PA";
+                    }
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
+                }
             }
         }
     }

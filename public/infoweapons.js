@@ -58,8 +58,16 @@ function weaponsInfos(bat,batType,pop) {
             baseAmmo = thisWeapon.maxAmmo;
             ammoLeft = calcAmmos(bat,baseAmmo);
             balise = 'h4';
+            let leBouton = 'boutonJaune';
+            let colBouton = 'blanc';
             if (thisWeapon.num === selectedWeap.num) {
-                balise = 'h1';
+                balise = 'h3';
+                leBouton = 'boutonOK';
+                colBouton = 'cy';
+            } else if (selectedWeap.num != undefined) {
+                balise = 'h6';
+                leBouton = 'boutonGris';
+                colBouton = 'gf';
             }
             noBisOK = true;
             if (thisWeapon.noBis && bat.tags.includes('noBis1')) {
@@ -82,7 +90,7 @@ function weaponsInfos(bat,batType,pop) {
                 if (pop) {
                     $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span><br>');
                 } else {
-                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonJaune skillButtons" onclick="fireMode(`w1`)"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
+                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="'+leBouton+' skillButtons '+colBouton+'" onclick="fireMode(`w1`)"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
                 }
             } else {
                 // tir impossible
@@ -119,9 +127,9 @@ function weaponsInfos(bat,batType,pop) {
                 }
             }
             if (bat.salvoLeft >= 1) {
-                $('#'+bodyPlace).append('<span class="paramName cy">Salves</span><span class="paramIcon"></span><span class="paramValue cy">'+resteSalves+'/'+maxSalves+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue>'+resteSalves+'/'+maxSalves+'</span><br>');
             } else {
-                $('#'+bodyPlace).append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+resteSalves+'/'+maxSalves+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName or">Salves</span><span class="paramIcon"></span><span class="paramValue or">'+resteSalves+'/'+maxSalves+'</span><br>');
             }
             if (pop) {
                 $('#'+bodyPlace).append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.cost+'</span><br>');
@@ -233,8 +241,29 @@ function weaponsInfos(bat,batType,pop) {
                 $('#'+bodyPlace).append('<span class="paramName" title="Chance de rester furtif après avoir attaqué">Tir furtif</span><span class="paramIcon"></span><span class="paramValue">'+tirFurtif+'%</span><br>');
             }
             if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai')) || (batType.skills.includes('w2cible') && (bat.eq === 'w2-pgun' || bat.eq === 'w2-flaser' || bat.eq === 'w2-laser'))) {
-                if (thisWeapon.isPrec) {
-                    $('#'+bodyPlace).append('<span class="paramName">Tir ciblé</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+                if (bat.tags.includes('vise')) {
+                    if (thisWeapon.isPrec) {
+                        $('#'+bodyPlace).append('<span class="paramName cy">Tir ciblé</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+                    } else {
+                        $('#'+bodyPlace).append('<span class="paramName or">Tir ciblé</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
+                    }
+                } else {
+                    if (thisWeapon.isPrec) {
+                        $('#'+bodyPlace).append('<span class="paramName">Tir ciblé</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+                    }
+                }
+            }
+            if (batType.skills.includes('datt')) {
+                if (bat.tags.includes('datt')) {
+                    if (!thisWeapon.isPrec && !thisWeapon.isBow && !thisWeapon.noBis && !thisWeapon.noDatt) {
+                        $('#'+bodyPlace).append('<span class="paramName cy">Double attaque</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+                    } else {
+                        $('#'+bodyPlace).append('<span class="paramName or">Double attaque</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
+                    }
+                } else {
+                    if (!thisWeapon.isPrec && !thisWeapon.isBow && !thisWeapon.noBis && !thisWeapon.noDatt) {
+                        $('#'+bodyPlace).append('<span class="paramName">Double attaque</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+                    }
                 }
             }
         }
@@ -259,8 +288,16 @@ function weaponsInfos(bat,batType,pop) {
             baseAmmo = thisWeapon.maxAmmo;
             ammoLeft = calcAmmos(bat,baseAmmo);
             balise = 'h4';
+            let leBouton = 'boutonJaune';
+            let colBouton = 'blanc';
             if (thisWeapon.num === selectedWeap.num) {
-                balise = 'h1';
+                balise = 'h3';
+                leBouton = 'boutonOK';
+                colBouton = 'cy';
+            } else if (selectedWeap.num != undefined) {
+                balise = 'h6';
+                leBouton = 'boutonGris';
+                colBouton = 'gf';
             }
             noBisOK = true;
             if (thisWeapon.noBis && bat.tags.includes('noBis2')) {
@@ -283,7 +320,7 @@ function weaponsInfos(bat,batType,pop) {
                 if (pop) {
                     $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span><br>');
                 } else {
-                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="boutonJaune skillButtons" onclick="fireMode(`w2`)"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
+                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="'+leBouton+' skillButtons '+colBouton+'" onclick="fireMode(`w2`)"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
                 }
             } else {
                 // tir impossible
@@ -320,9 +357,9 @@ function weaponsInfos(bat,batType,pop) {
                 }
             }
             if (bat.salvoLeft >= 1) {
-                $('#'+bodyPlace).append('<span class="paramName cy">Salves</span><span class="paramIcon"></span><span class="paramValue cy">'+resteSalves+'/'+maxSalves+'</span><br>');
-            } else {
                 $('#'+bodyPlace).append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+resteSalves+'/'+maxSalves+'</span><br>');
+            } else {
+                $('#'+bodyPlace).append('<span class="paramName or">Salves</span><span class="paramIcon"></span><span class="paramValue or">'+resteSalves+'/'+maxSalves+'</span><br>');
             }
             if (pop) {
                 $('#'+bodyPlace).append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.cost+'</span><br>');
@@ -434,8 +471,29 @@ function weaponsInfos(bat,batType,pop) {
                 $('#'+bodyPlace).append('<span class="paramName" title="Chance de rester furtif après avoir attaqué">Tir furtif</span><span class="paramIcon"></span><span class="paramValue">'+tirFurtif+'%</span><br>');
             }
             if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai')) || (batType.skills.includes('w2cible') && (bat.eq === 'w2-pgun' || bat.eq === 'w2-flaser' || bat.eq === 'w2-laser'))) {
-                if (thisWeapon.isPrec) {
-                    $('#'+bodyPlace).append('<span class="paramName">Tir ciblé</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+                if (bat.tags.includes('vise')) {
+                    if (thisWeapon.isPrec) {
+                        $('#'+bodyPlace).append('<span class="paramName cy">Tir ciblé</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+                    } else {
+                        $('#'+bodyPlace).append('<span class="paramName or">Tir ciblé</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
+                    }
+                } else {
+                    if (thisWeapon.isPrec) {
+                        $('#'+bodyPlace).append('<span class="paramName">Tir ciblé</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+                    }
+                }
+            }
+            if (batType.skills.includes('datt')) {
+                if (bat.tags.includes('datt')) {
+                    if (!thisWeapon.isPrec && !thisWeapon.isBow && !thisWeapon.noBis && !thisWeapon.noDatt) {
+                        $('#'+bodyPlace).append('<span class="paramName cy">Double attaque</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+                    } else {
+                        $('#'+bodyPlace).append('<span class="paramName or">Double attaque</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
+                    }
+                } else {
+                    if (!thisWeapon.isPrec && !thisWeapon.isBow && !thisWeapon.noBis && !thisWeapon.noDatt) {
+                        $('#'+bodyPlace).append('<span class="paramName">Double attaque</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+                    }
                 }
             }
         }
