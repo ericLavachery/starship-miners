@@ -1312,7 +1312,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","camo","uprank","cible","herosalvo"],
+        "skills":["fouille","fortif","camo","uprank","cible","herosalvo"],
         "mediCost":10,
         "fuzz":-1,
         "deathFx":"human1"
@@ -2862,7 +2862,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","embuscade","camo","guerrilla","datt","ranger","fastguet","selfbadmedic","survivor","noblub","baddef","trapdard","brigands","cible","herokill","heroescape","lowstress"],
+        "skills":["fouille","fortif","embuscade","camo","guerrilla","ranger","fastguet","selfbadmedic","survivor","noblub","baddef","trapdard","brigands","cible","herokill","heroescape","lowstress"],
         "mediCost":8,
         "maxSkill":4,
         "fuzz":-1,
@@ -3036,7 +3036,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","camo","selfbadmedic","baddef","strong","cible","bgun","herominik"],
+        "skills":["fouille","fortif","camo","selfbadmedic","baddef","strong","cible","bgun","herominik"],
         "mediCost":7,
         "fuzz":-1,
         "deathFx":"162157__mediapaja2009__agony"
@@ -3154,7 +3154,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","camo","medic","fly","jetpack","longshot","inflammable","dealer","starka","kirin","octiron","oknitro","cible","heropotion"],
+        "skills":["fouille","fortif","camo","medic","fly","jetpack","longshot","inflammable","dealer","starka","kirin","octiron","oknitro","cible","heropotion"],
         "mediCost":5,
         "maxDrug":20,
         "fuzz":-1,
@@ -3761,7 +3761,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","selfmedic","leader","survivor","luckyshot","defense","fastguet","ranger","guerrilla","maycamo","cible","fo","herokill"],
+        "skills":["fouille","fortif","selfmedic","leader","survivor","luckyshot","defense","fastguet","ranger","guerrilla","maycamo","cible","fo","herokill"],
         "mediCost":5,
         "fuzz":1.5,
         "deathFx":"162157__mediapaja2009__agony"
@@ -5279,7 +5279,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","selfmedic","leader","fly","jetpack","longshot","survivor","inflammable","maycamo","oknitro","cible","herokill"],
+        "skills":["fouille","fortif","selfmedic","leader","fly","jetpack","longshot","survivor","inflammable","maycamo","oknitro","cible","herokill"],
         "mediCost":14,
         "fuzz":2,
         "deathFx":"162157__mediapaja2009__agony"

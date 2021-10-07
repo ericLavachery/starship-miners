@@ -126,8 +126,8 @@ function weaponsInfos(bat,batType,pop) {
                     }
                 }
             }
-            if (bat.salvoLeft >= 1) {
-                $('#'+bodyPlace).append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue>'+resteSalves+'/'+maxSalves+'</span><br>');
+            if (resteSalves >= 1) {
+                $('#'+bodyPlace).append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+resteSalves+'/'+maxSalves+'</span><br>');
             } else {
                 $('#'+bodyPlace).append('<span class="paramName or">Salves</span><span class="paramIcon"></span><span class="paramValue or">'+resteSalves+'/'+maxSalves+'</span><br>');
             }
@@ -356,7 +356,7 @@ function weaponsInfos(bat,batType,pop) {
                     }
                 }
             }
-            if (bat.salvoLeft >= 1) {
+            if (resteSalves >= 1) {
                 $('#'+bodyPlace).append('<span class="paramName">Salves</span><span class="paramIcon"></span><span class="paramValue">'+resteSalves+'/'+maxSalves+'</span><br>');
             } else {
                 $('#'+bodyPlace).append('<span class="paramName or">Salves</span><span class="paramIcon"></span><span class="paramValue or">'+resteSalves+'/'+maxSalves+'</span><br>');

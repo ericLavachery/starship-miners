@@ -621,7 +621,7 @@ function getStarkaBonus(bat) {
         batAPLeft = Math.round(bat.apLeft/3);
     }
     let batAP = getAP(bat,batType);
-    let medBonus = Math.floor((playerInfos.comp.med+1)*(playerInfos.comp.med+1)/2);
+    let medBonus = Math.floor((playerInfos.comp.exo+1.5)*(playerInfos.comp.med+1)/2);
     batAPLeft = Math.round(batAPLeft+(batAP*2/3)+medBonus);
     let maxAP = Math.round(batAP+(medBonus/2));
     if (batAPLeft >= maxAP) {
