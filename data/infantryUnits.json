@@ -571,7 +571,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","fastguet","resistelec","resistacide","bigblub","gooddef","fo","kzin","herorip","lowstress"],
+        "skills":["fouille","fortif","datt","fastguet","resistelec","resistacide","bigblub","gooddef","fo","kzin","herorip","lowstress","detrange"],
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -4724,7 +4724,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","cyber","hardmove","kzin","herosalvo","herofortif"],
+        "skills":["fouille","fortif","datt","cyber","hardmove","kzin","herosalvo","herofortif","detrange"],
         "fuzz":2.5,
         "deathFx":"144469__psychedelic-hands__robot-death"
     },
@@ -4826,12 +4826,12 @@
         },
         "protection":["kevlar","combo","kapton","wendium","titane","tisal","nano","duneg","swing","adamantite"],
         "equip":["aucun","e-flash","gilet","theeye","waterproof","detector","e-medic","chargeur1"],
-        "log3eq":"gilet",
+        "log3eq":"detector",
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","fly","jetpack","longshot","inflammable","cyber","selfbadmedic","escape","oknitro","fastguet","guerrilla","herorush","herowc"],
+        "skills":["fouille","fortif","datt","fly","jetpack","longshot","inflammable","cyber","selfbadmedic","escape","oknitro","fastguet","guerrilla","herorush","herowc","detrange"],
         "mediCost":12,
         "fuzz":3,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
@@ -5505,7 +5505,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","robot","baddef","light","aicible","aifouille","aicamo"],
+        "skills":["fortif","robot","baddef","light","aicible","aifouille","aicamo","detrange"],
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
     },

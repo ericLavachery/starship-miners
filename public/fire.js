@@ -586,9 +586,10 @@ function attack(melee) {
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
-            shotResult = blast(brochette,selectedBatType,aoeShots,selectedWeap,targetBat,targetBatType,shotDice);
+            // shotResult = blast(brochette,selectedBatType,aoeShots,selectedWeap,targetBat,targetBatType,shotDice);
+            shotResult = blast(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType,shotDice,brochette,aoeShots);
         } else {
-            shotResult = shot(selectedWeap,selectedBatType,targetBat,targetBatType,shotDice);
+            shotResult = shot(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType,shotDice);
         }
         totalDamage = totalDamage+shotResult.damage;
         totalHits = totalHits+shotResult.hits;
@@ -1463,9 +1464,10 @@ function defense(melee) {
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
-            shotResult = blast(brochette,targetBatType,aoeShots,targetWeap,selectedBat,selectedBatType,shotDice);
+            // shotResult = blast(brochette,targetBatType,aoeShots,targetWeap,selectedBat,selectedBatType,shotDice);
+            shotResult = blast(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType,shotDice,brochette,aoeShots);
         } else {
-            shotResult = shot(targetWeap,targetBatType,selectedBat,selectedBatType,shotDice);
+            shotResult = shot(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType,shotDice);
         }
         totalDamage = totalDamage+shotResult.damage;
         totalHits = totalHits+shotResult.hits;

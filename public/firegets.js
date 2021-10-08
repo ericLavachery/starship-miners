@@ -123,18 +123,18 @@ function checkTargetBatType() {
     }
 };
 
-function isHit(accuracy,minAccu,aoe,size,stealth,cover,speed,shotDice) {
+function isHit(accuracy,minAccu,weapon,attBat,attBatType,defBat,defBatType,stealth,cover,speed,shotDice) {
     let prec = accuracy;
     let megaPrec = 0;
-    if (size <= 4 && prec > 35 && aoe == 'unit') {
+    if (defBatType.size <= 4 && prec > 35 && weapon.aoe == 'unit') {
         megaPrec = Math.sqrt(prec-35);
     }
     let overPrec = 0;
-    if (size <= 4 && prec > 30 && aoe == 'unit') {
+    if (defBatType.size <= 4 && prec > 30 && weapon.aoe == 'unit') {
         overPrec = prec-30;
         prec = prec+overPrec;
     }
-    if (aoe == 'unit' || aoe == 'brochette' || speed < 0) {
+    if (weapon.aoe == 'unit' || weapon.aoe == 'brochette' || speed < 0) {
         prec = Math.round(prec-(stealth/(2+overPrec))-(speed/(1+overPrec)));
     }
     prec = Math.round(prec-(cover*coverFactor*2/(2+megaPrec)));
@@ -145,23 +145,34 @@ function isHit(accuracy,minAccu,aoe,size,stealth,cover,speed,shotDice) {
         prec = minAccu;
     }
     // tir ciblé
-    if (selectedBat.tags.includes('vise') && selectedWeap.isPrec) {
+    if (attBat.tags.includes('vise') && weapon.isPrec) {
         prec = Math.round(prec*(playerInfos.comp.train+5)/2.5);
     }
     // double attaque
-    if (selectedBat.tags.includes('datt') && !selectedWeap.isPrec && !selectedWeap.isBow && !selectedWeap.noBis && !selectedWeap.noDatt) {
-        prec = Math.round(prec/2);
+    if (attBat.tags.includes('datt') && !weapon.isPrec && !weapon.isBow && !weapon.noBis && !weapon.noDatt) {
+        let dattSize = Math.round(Math.sqrt(defBatType.size));
+        if (dattSize > 5) {
+            dattSize = 5;
+        }
+        prec = Math.round(prec*dattSize/5);
     }
     let dice = rand.rand(1,shotDice);
-    let hitChance = Math.round(Math.sqrt(size)*prec);
+    let hitChance = Math.round(Math.sqrt(defBatType.size)*prec);
     // aoe : more chance than normal to hit small creatures
-    if (aoe != 'unit' && aoe != 'brochette' && size < 10) {
+    if (weapon.aoe != 'unit' && weapon.aoe != 'brochette' && defBatType.size < 10) {
         hitChance = Math.round(Math.sqrt(10)*prec);
     }
     // bonus général
-    hitChance = hitChance+hitBase;
-    if (hitChance < size) {
-        hitChance = size;
+    if (attBat.tags.includes('datt')) {
+        hitChance = hitChance+Math.floor(hitBase/2);
+        if (hitChance < Math.ceil(defBatType.size/2)) {
+            hitChance = Math.ceil(defBatType.size/2);
+        }
+    } else {
+        hitChance = hitChance+hitBase;
+        if (hitChance < defBatType.size) {
+            hitChance = defBatType.size;
+        }
     }
     if (hitChance > 89) {
         hitChance = Math.floor(Math.sqrt(hitChance-89)+89);
@@ -183,41 +194,41 @@ function combatReport() {
     report = '';
 };
 
-function shot(weapon,attBatType,bat,batType,shotDice) {
+function shot(weapon,attBat,attBatType,defBat,defBatType,shotDice) {
     // returns damage
     let result = {damage:0,hits:0};
-    let cover = getCover(bat,true,false);
+    let cover = getCover(defBat,true,false);
     if (weapon.isMelee || weapon.noShield || attBatType.skills.includes('halfcover')) {
         cover = Math.round(cover/2);
     }
-    let stealth = getStealth(bat);
+    let stealth = getStealth(defBat);
     // skupiac drug
-    let batSpeed = batType.speed;
-    if (bat.tags.includes('skupiac')) {
-        batSpeed = batSpeed+3;
+    let defBatSpeed = defBatType.speed;
+    if (defBat.tags.includes('skupiac')) {
+        defBatSpeed = defBatSpeed+3;
     }
     // Pièges
     if (weapon.name.includes('Dart') || weapon.name.includes('Pieu') || weapon.name.includes('Barbelés') || weapon.name === 'Explosifs' || weapon.name === 'Explosion') {
         stealth = 0;
-        if (batType.skills.includes('invisible') || batType.skills.includes('hide')) {
-            batSpeed = 0;
+        if (defBatType.skills.includes('invisible') || defBatType.skills.includes('hide')) {
+            defBatSpeed = 0;
         }
     }
     let weapAccu = weapon.accuracy;
     // melee on melee
     if ((weapon.isMelee || (weapon.noShield && weapon.range === 0)) && attBatType.cat != 'aliens') {
-        if (batType.weapon.isMelee) {
+        if (defBatType.weapon.isMelee) {
             weapAccu = weapAccu+3;
         } else {
             weapAccu = weapAccu-3;
         }
     }
     // fly
-    if (batType.skills.includes('fly')) {
+    if (defBatType.skills.includes('fly')) {
         weapAccu = Math.round(weapAccu*weapon.dca);
     }
     // marquage
-    if (bat.tags.includes('fluo')) {
+    if (defBat.tags.includes('fluo')) {
         weapAccu = weapAccu+15;
     }
     // alien Hit Bonus
@@ -229,15 +240,15 @@ function shot(weapon,attBatType,bat,batType,shotDice) {
     if (attBatType.skills.includes('minaccu')) {
         minAccu = Math.ceil(weapon.accuracy/2);
     }
-    if (isHit(weapAccu,minAccu,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
+    if (isHit(weapAccu,minAccu,weapon,attBat,attBatType,defBat,defBatType,stealth,cover,defBatSpeed,shotDice)) {
         if (weapon.power >= 1) {
-            result.damage = calcDamage(weapon,weapon.power,bat.armor,bat);
+            result.damage = calcDamage(weapon,weapon.power,defBat.armor,defBat);
         } else {
             result.damage = 0;
         }
         result.hits = 1;
-        if (result.damage > batType.hp) {
-            result.damage = batType.hp;
+        if (result.damage > defBatType.hp) {
+            result.damage = defBatType.hp;
         }
         if (result.damage < 0) {
             result.damage = 0;
@@ -247,7 +258,7 @@ function shot(weapon,attBatType,bat,batType,shotDice) {
     return result;
 };
 
-function blast(brochette,attBatType,aoeShots,weapon,bat,batType,shotDice) {
+function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoeShots) {
     // returns damage
     // console.log('aoeShots = '+aoeShots);
     let result = {damage:0,hits:0};
@@ -258,37 +269,37 @@ function blast(brochette,attBatType,aoeShots,weapon,bat,batType,shotDice) {
     if (brochette) {
         forAOE = false;
     }
-    let cover = getCover(bat,true,forAOE);
+    let cover = getCover(defBat,true,forAOE);
     if (weapon.isMelee || weapon.noShield || attBatType.skills.includes('halfcover')) {
         cover = Math.round(cover/2);
     }
-    let stealth = getStealth(bat);
+    let stealth = getStealth(defBat);
     if (!brochette) {
         stealth = Math.round(stealth/2);
     }
     // skupiac drug
-    let batSpeed = batType.speed;
-    if (bat.tags.includes('skupiac')) {
-        batSpeed = batSpeed+3;
+    let defBatSpeed = defBatType.speed;
+    if (defBat.tags.includes('skupiac')) {
+        defBatSpeed = defBatSpeed+3;
     }
     // Pièges
     if (weapon.name.includes('Dart') || weapon.name.includes('Pieu') || weapon.name.includes('Barbelés') || weapon.name === 'Explosifs' || weapon.name === 'Explosion') {
         stealth = 0;
-        if (batType.skills.includes('invisible') || batType.skills.includes('hide')) {
-            batSpeed = 0;
+        if (defBatType.skills.includes('invisible') || defBatType.skills.includes('hide')) {
+            defBatSpeed = 0;
         }
     }
     let weapAccu = weapon.accuracy;
     // melee on melee
     if ((weapon.isMelee || (weapon.noShield && weapon.range === 0)) && attBatType.cat != 'aliens') {
-        if (batType.weapon.isMelee) {
+        if (defBatType.weapon.isMelee) {
             weapAccu = weapAccu+3;
         } else {
             weapAccu = weapAccu-3;
         }
     }
     // fly
-    if (batType.skills.includes('fly')) {
+    if (defBatType.skills.includes('fly')) {
         weapAccu = Math.round(weapAccu*weapon.dca);
     }
     // alien Hit Bonus
@@ -303,15 +314,15 @@ function blast(brochette,attBatType,aoeShots,weapon,bat,batType,shotDice) {
     let ii = 1;
     while (ii <= aoeShots) {
         // console.log('power'+power);
-        if (isHit(weapAccu,minAccu,weapon.aoe,batType.size,stealth,cover,batSpeed,shotDice)) {
+        if (isHit(weapAccu,minAccu,weapon,attBat,attBatType,defBat,defBatType,stealth,cover,defBatSpeed,shotDice)) {
             if (weapon.power >= 1) {
-                newDamage = calcDamage(weapon,power,bat.armor,bat);
+                newDamage = calcDamage(weapon,power,defBat.armor,defBat);
             } else {
                 newDamage = 0;
             }
             result.hits = result.hits+1;
-            if (newDamage > batType.hp) {
-                newDamage = batType.hp;
+            if (newDamage > defBatType.hp) {
+                newDamage = defBatType.hp;
             }
             if (newDamage < 0) {
                 newDamage = 0;
@@ -625,23 +636,25 @@ function calcDamage(weapon,power,armor,defBat) {
 
 function checkRicochet(defBat,defBatType,attWeap) {
     let rico = false;
-    if (defBatType.skills.includes('ricochet') || defBat.tags.includes('ricochet')) {
-        if (!attWeap.ammo.includes('feu') && !attWeap.ammo.includes('napalm') && !attWeap.ammo.includes('fire') && !attWeap.ammo.includes('pyratol') && !attWeap.ammo.includes('lf-') && !attWeap.ammo.includes('lt-') && !attWeap.ammo.includes('molotov') && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.name.includes('plasma')) {
-            if (!attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco')) {
-                if (!attWeap.ammo.includes('mono')) {
-                    if (!attWeap.isMelee && !attWeap.noShield && attWeap.armors > 0) {
-                        let minimumPower = defBat.armor*2;
-                        if (minimumPower < 18) {
-                            if (defBat.armor >= 8) {
-                                minimumPower = 20;
-                            } else {
-                                minimumPower = 18;
+    if (attWeap.name != undefined) {
+        if (defBatType.skills.includes('ricochet') || defBat.tags.includes('ricochet')) {
+            if (!attWeap.ammo.includes('feu') && !attWeap.ammo.includes('napalm') && !attWeap.ammo.includes('fire') && !attWeap.ammo.includes('pyratol') && !attWeap.ammo.includes('lf-') && !attWeap.ammo.includes('lt-') && !attWeap.ammo.includes('molotov') && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.name.includes('plasma')) {
+                if (!attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco')) {
+                    if (!attWeap.ammo.includes('mono')) {
+                        if (!attWeap.isMelee && !attWeap.noShield && attWeap.armors > 0) {
+                            let minimumPower = defBat.armor*2;
+                            if (minimumPower < 18) {
+                                if (defBat.armor >= 8) {
+                                    minimumPower = 20;
+                                } else {
+                                    minimumPower = 18;
+                                }
                             }
-                        }
-                        let powerBonus = Math.ceil((playerInfos.comp.train+(playerInfos.comp.ca/2))/1.75)+2;
-                        let calcPower = Math.round((attWeap.power+powerBonus)/attWeap.armors);
-                        if (calcPower < minimumPower) {
-                            rico = true;
+                            let powerBonus = Math.ceil((playerInfos.comp.train+(playerInfos.comp.ca/2))/1.75)+2;
+                            let calcPower = Math.round((attWeap.power+powerBonus)/attWeap.armors);
+                            if (calcPower < minimumPower) {
+                                rico = true;
+                            }
                         }
                     }
                 }
@@ -1389,6 +1402,11 @@ function weaponAdj(weapon,bat,wn) {
     }
     // Equip adj
     if (thisWeapon.num === 1) {
+        if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes') {
+            if (bat.eq  === 'detector' || bat.logeq  === 'detector' || bat.eq  === 'g2ai' || bat.logeq  === 'g2ai') {
+                thisWeapon.range = thisWeapon.range+1;
+            }
+        }
         if (bat.eq === 'longtom' || bat.eq === 'longtom1' || bat.logeq === 'longtom' || bat.logeq === 'longtom1') {
             thisWeapon.range = thisWeapon.range+1;
         }
@@ -1428,6 +1446,11 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.noise = thisWeapon.noise-1;
         }
     } else if (thisWeapon.num === 2) {
+        if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes') {
+            if (bat.eq  === 'detector' || bat.logeq  === 'detector' || bat.eq  === 'g2ai' || bat.logeq  === 'g2ai') {
+                thisWeapon.range = thisWeapon.range+1;
+            }
+        }
         if (bat.eq === 'longtom' || bat.eq === 'longtom2' || bat.logeq === 'longtom' || bat.logeq === 'longtom2') {
             thisWeapon.range = thisWeapon.range+1;
         }
