@@ -170,6 +170,7 @@ function checkAlienFlyTarget(weapon,bat) {
     } else {
         isTarget = true;
     }
+    return isTarget;
 };
 
 function shootTarget(recul,melee) {
@@ -202,7 +203,7 @@ function shootTarget(recul,melee) {
 };
 
 function checkPDM() {
-    // peut-être des targets différents selon les types d'aliens?
+    // des targets différents selon les types d'aliens?
     pointDeMire = -1;
     let batType;
     let lePlusProche = 100;
