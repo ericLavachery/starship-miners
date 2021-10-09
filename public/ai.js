@@ -140,13 +140,21 @@ function chooseTarget() {
 function checkAlienFlyTarget(weapon,bat) {
     let batType = getBatType(bat);
     if (weapon.noFly) {
-        if (batType.skills.includes('fly') && bat.tags.includes('camo')) {
+        if (batType.skills.includes('fly') && (bat.tags.includes('camo') || bat.tags.includes('fortif'))) {
             return true;
-        } else if (batType.skills.includes('fly') && bat.apLeft > -5 && !batType.skills.includes('jetpack')) {
-            return false;
-        } else {
-            if ((batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') && bat.apLeft > 0) {
+        } else if (batType.skills.includes('fly') && bat.apLeft >= -6 && !batType.skills.includes('jetpack')) {
+            if (selectedBat.tileId != selectedBat.oldTileId) {
                 return false;
+            } else {
+                return true;
+            }
+        } else {
+            if ((batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') && bat.apLeft >= -1) {
+                if (selectedBat.tileId != selectedBat.oldTileId) {
+                    return false;
+                } else {
+                    return true;
+                }
             } else {
                 return true;
             }
@@ -356,7 +364,7 @@ function targetLogic(bat) {
         tFuzz = averageDamage;
     }
     if (bat.fuzz <= -2) {
-        tFuzz = tFuzz-2;
+        tFuzz = tFuzz-5;
     }
     return Math.round(tFuzz);
 };
@@ -1150,7 +1158,6 @@ function isAlienInMelee(tileId) {
 };
 
 function isCamoBlock() {
-    // console.log('isCamoBlock?');
     let alienAdjTiles = [];
     alienAdjTiles.push(selectedBat.tileId-1);
     alienAdjTiles.push(selectedBat.tileId+1);
@@ -1165,7 +1172,6 @@ function isCamoBlock() {
     alienMeleeTiles.push(selectedBat.tileId+1);
     alienMeleeTiles.push(selectedBat.tileId-mapSize);
     alienMeleeTiles.push(selectedBat.tileId+mapSize);
-    // console.log(alienAdjTiles);
     let camoBlocks = 0;
     let meleeBlocks = 0;
     let allBlocks = 0;
@@ -1198,10 +1204,6 @@ function isCamoBlock() {
             });
         }
     });
-    // console.log('camoGroup: '+camoGroup);
-    // console.log('camoBlocks: '+camoBlocks);
-    // console.log('meleeBlocks: '+meleeBlocks);
-    // console.log('allBlocks: '+allBlocks);
     let blocked = false;
     if (camoBlocks >= 2 && meleeBlocks >= 1 && allBlocks >= 3) {
         blocked = true;

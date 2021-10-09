@@ -126,7 +126,8 @@ function combat(melee) {
         negSalvo = negSalvo-3;
     }
     if (distance <= 3 && targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef && targetBat.salvoLeft > negSalvo) {
-        if ((!targetWeap.noFly || (!selectedBatType.skills.includes('fly') && selectedBat.eq != 'e-jetpack')) && (!targetWeap.noGround || selectedBatType.skills.includes('fly') || selectedBatType.skills.includes('sauteur'))) {
+        let realmOK = checkRealm();
+        if (realmOK) {
             riposte = true;
             let aspeed = calcSpeed(selectedBat,selectedWeap,targetWeap,distance,true);
             let dspeed = calcSpeed(targetBat,targetWeap,selectedWeap,distance,false);

@@ -634,6 +634,22 @@ function calcDamage(weapon,power,armor,defBat) {
     return calculatedDmg;
 };
 
+function checkRealm() {
+    let realmOK = false;
+    if ((!targetWeap.noFly || (!selectedBatType.skills.includes('fly') && selectedBat.eq != 'e-jetpack')) && (!targetWeap.noGround || selectedBatType.skills.includes('fly') || selectedBatType.skills.includes('sauteur'))) {
+        realmOK = true;
+    }
+    if (selectedWeap.range === 0) {
+        if (selectedWeap.isMelee || selectedWeap.isShort) {
+            realmOK = true;
+        }
+    }
+    if (selectedBat.tags.includes('camo') || selectedBat.tags.includes('fortif')) {
+        realmOK = true;
+    }
+    return realmOK;
+}
+
 function checkRicochet(defBat,defBatType,attWeap) {
     let rico = false;
     if (attWeap.name != undefined) {
