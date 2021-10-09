@@ -138,29 +138,37 @@ function chooseTarget() {
 };
 
 function checkAlienFlyTarget(weapon,bat) {
+    let isTarget = false;
     let batType = getBatType(bat);
     if (weapon.noFly) {
-        if (batType.skills.includes('fly') && (bat.tags.includes('camo') || bat.tags.includes('fortif'))) {
-            return true;
-        } else if (batType.skills.includes('fly') && bat.apLeft >= -6 && !batType.skills.includes('jetpack')) {
-            if (selectedBat.tileId != selectedBat.oldTileId || bat.tileId != bat.oldTileId) {
-                return false;
-            } else {
-                return true;
+        let isFlying = false;
+        if (batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') {
+            if (bat.apLeft >= -1) {
+                isFlying = true;
             }
-        } else {
-            if ((batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') && bat.apLeft >= -1) {
-                if (selectedBat.tileId != selectedBat.oldTileId || bat.tileId != bat.oldTileId) {
-                    return false;
-                } else {
-                    return true;
-                }
-            } else {
-                return true;
+        } else if (batType.skills.includes('fly')) {
+            if (bat.apLeft >= -6) {
+                isFlying = true;
             }
         }
+        if (bat.tags.includes('camo') || bat.tags.includes('fortif')) {
+            isTarget = true;
+        } else if (isFlying) {
+            if (selectedBat.tileId === selectedBat.oldTileId && bat.tileId === bat.oldTileId && selectedBat.creaTurn != playerInfos.mapTurn) {
+                let distance = calcDistance(selectedBat.tileId,bat.tileId);
+                if (distance === 0) {
+                    isTarget = true;
+                } else {
+                    isTarget = false;
+                }
+            } else {
+                isTarget = false;
+            }
+        } else {
+            isTarget = true;
+        }
     } else {
-        return true;
+        isTarget = true;
     }
 };
 
