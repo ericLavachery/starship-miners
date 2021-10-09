@@ -517,6 +517,11 @@ function checkStressEffect(bat) {
     let fromTileId = -1;
     if (distress >= 1 && !bat.tags.includes('bliss')) {
         let nearby = nearbyAliens(bat);
+        let batType = getBatType(bat);
+        let isChef = false;
+        if (bat.tags.includes('schef') || batType.skills.includes('leader') || batType.skills.includes('prayer')) {
+            isChef = true;
+        }
         if (nearby.one) {
             distress = distress*3;
         } else if (!nearby.two) {
@@ -556,7 +561,7 @@ function checkStressEffect(bat) {
             }
             goFreeze(bat);
             warning('Stress',bat.type+' sont atterrés!',false,bat.tileId);
-        } else if (distress >= stressLevels[0] && nearby.two) {
+        } else if (distress >= stressLevels[0] && nearby.two && !isChef) {
             // Stress
             bat.emo = bat.emo+1;
             warning('Stress',bat.type+' sont apeurés',false,bat.tileId);

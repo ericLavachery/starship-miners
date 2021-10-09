@@ -4547,7 +4547,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","badmecano","badmedic","cyber","maycamo","unemun","roborepair","herosalvo"],
+        "skills":["fouille","fortif","badmecano","badmedic","cyber","maycamo","unemun","roborepair","herosalvo"],
         "mediCost":4,
         "mecanoCost":6,
         "fuzz":1,

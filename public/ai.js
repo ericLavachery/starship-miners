@@ -143,14 +143,14 @@ function checkAlienFlyTarget(weapon,bat) {
         if (batType.skills.includes('fly') && (bat.tags.includes('camo') || bat.tags.includes('fortif'))) {
             return true;
         } else if (batType.skills.includes('fly') && bat.apLeft >= -6 && !batType.skills.includes('jetpack')) {
-            if (selectedBat.tileId != selectedBat.oldTileId) {
+            if (selectedBat.tileId != selectedBat.oldTileId || bat.tileId != bat.oldTileId) {
                 return false;
             } else {
                 return true;
             }
         } else {
             if ((batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') && bat.apLeft >= -1) {
-                if (selectedBat.tileId != selectedBat.oldTileId) {
+                if (selectedBat.tileId != selectedBat.oldTileId || bat.tileId != bat.oldTileId) {
                     return false;
                 } else {
                     return true;
