@@ -670,7 +670,7 @@
             "kit":true,
             "noDef":true,
             "noise":1,
-            "rof":5,
+            "rof":10,
             "accuracy":35,
             "power":0,
             "aoe":"unit",

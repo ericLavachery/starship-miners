@@ -2400,7 +2400,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fouille","fortif","guerrilla","tirailleur","defense","fret","transport","selfbadmecano","hscarpmove","dumper","extraction","light","crewsave","trapap","recupcit","recupres","ouvert"],
+        "skills":["fouille","fortif","guerrilla","defense","fret","transport","selfbadmecano","hscarpmove","dumper","extraction","light","crewsave","trapap","recupcit","recupres","ouvert"],
         "mecanoCost":16,
         "mining":{
             "level":1,
