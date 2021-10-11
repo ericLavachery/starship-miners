@@ -499,6 +499,10 @@ function batInfos(bat,batType,pop) {
         if (playerInfos.pseudo === 'Test') {
             $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Supprimer le bataillon (triche!)" class="boutonCiel skillButtons" onclick="removeBat('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
         }
+        let resLoaded = checkResLoad(bat);
+        if (resLoaded >= 1) {
+            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter toutes les ressources" class="boutonRouge skillButtons" onclick="fretThrow()"><i class="fas fa-truck-loading"></i></button>&nbsp; Vider</h4></span>');
+        }
     }
 
     // "moveCost": 3,

@@ -74,7 +74,7 @@ function skillsInfos(bat,batType) {
             }
             $('#unitInfos').append('<span class="blockTitle"><h3><button type="button" title="Ne pas inclure ce lander dans la prochaine mission" class="boutonOK bigButtons gf"><i class="fas fa-bed"></i></button>&nbsp; Rester</h3></span>');
         } else {
-            $('#unitInfos').append('<span class="blockTitle"><h3><button type="button" title="Inclure ce lander dans la prochaine mission" class="boutonOK bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h3></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h3><button type="button" title="Ce lander sera inclu dans la prochaine mission" class="boutonOK bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployé</h3></span>');
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ne pas inclure ce lander dans la prochaine mission" class="boutonRouge bigButtons" onclick="landerUnDeploy('+bat.id+')"><i class="fas fa-bed"></i></button>&nbsp; Rester</h4></span>');
         }
     }
