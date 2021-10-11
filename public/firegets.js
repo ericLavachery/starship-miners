@@ -194,7 +194,36 @@ function combatReport() {
     report = '';
 };
 
-function shot(weapon,attBat,attBatType,defBat,defBatType,shotDice) {
+function calcPrecRangeAdj(weapon,attBat,attBatType,defBat,defBatType) {
+    let accurange = 0;
+    let distance = calcDistance(attBat.tileId,defBat.tileId);
+    if (distance === 0) {
+        if (attBatType.cat != 'aliens') {
+            if (weapon.range === 0) {
+                if (weapon.isMelee || weapon.noShield) {
+                    if (!defBatType.weapon.isMelee) {
+                        accurange = accurange-3;
+                    }
+                }
+            } else {
+                if (weapon.isShort && weapon.range >= 1) {
+                    accurange = accurange+5;
+                }
+            }
+        }
+    } else if (distance >= 2 && weapon.range >= 3) {
+        if (weapon.aoe === 'unit' || weapon.aoe === 'brochette') {
+            let idealDist = weapon.range*3/2;
+            accurange = accurange+Math.round((idealDist-distance)*4);
+            if (weapon.aoe === 'brochette') {
+                accurange = Math.round(accurange/2);
+            }
+        }
+    }
+    return accurange;
+};
+
+function shot(weapon,attBat,attBatType,defBat,defBatType,shotDice,accurange) {
     // returns damage
     let result = {damage:0,hits:0};
     let cover = getCover(defBat,true,false);
@@ -214,15 +243,7 @@ function shot(weapon,attBat,attBatType,defBat,defBatType,shotDice) {
             defBatSpeed = 0;
         }
     }
-    let weapAccu = weapon.accuracy;
-    // melee on melee
-    if ((weapon.isMelee || (weapon.noShield && weapon.range === 0)) && attBatType.cat != 'aliens') {
-        if (defBatType.weapon.isMelee) {
-            weapAccu = weapAccu+3;
-        } else {
-            weapAccu = weapAccu-3;
-        }
-    }
+    let weapAccu = weapon.accuracy+accurange;
     // fly
     if (defBatType.skills.includes('fly')) {
         weapAccu = Math.round(weapAccu*weapon.dca);
@@ -231,10 +252,6 @@ function shot(weapon,attBat,attBatType,defBat,defBatType,shotDice) {
     if (defBat.tags.includes('fluo')) {
         weapAccu = weapAccu+15;
     }
-    // alien Hit Bonus
-    // if (attBatType.cat === 'aliens') {
-    //     weapAccu = weapAccu+alienHitBase;
-    // }
     // minaccu
     let minAccu = 0;
     if (attBatType.skills.includes('minaccu')) {
@@ -258,7 +275,7 @@ function shot(weapon,attBat,attBatType,defBat,defBatType,shotDice) {
     return result;
 };
 
-function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoeShots) {
+function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoeShots,accurange) {
     // returns damage
     // console.log('aoeShots = '+aoeShots);
     let result = {damage:0,hits:0};
@@ -289,23 +306,11 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
             defBatSpeed = 0;
         }
     }
-    let weapAccu = weapon.accuracy;
-    // melee on melee
-    if ((weapon.isMelee || (weapon.noShield && weapon.range === 0)) && attBatType.cat != 'aliens') {
-        if (defBatType.weapon.isMelee) {
-            weapAccu = weapAccu+3;
-        } else {
-            weapAccu = weapAccu-3;
-        }
-    }
+    let weapAccu = weapon.accuracy+accurange;
     // fly
     if (defBatType.skills.includes('fly')) {
         weapAccu = Math.round(weapAccu*weapon.dca);
     }
-    // alien Hit Bonus
-    // if (attBatType.cat === 'aliens') {
-    //     weapAccu = weapAccu+alienHitBase;
-    // }
     // minaccu
     let minAccu = 0;
     if (attBatType.skills.includes('minaccu')) {

@@ -578,19 +578,21 @@ function attack(melee) {
             selectedWeap.power = selectedWeap.power+Math.round(weapPriorPower/5)+10;
         }
     }
+    // prec/range adj
+    let accurange = calcPrecRangeAdj(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType);
     // isShort range 0
-    if (selectedWeap.isShort && selectedWeap.range >= 1 && melee) {
-        selectedWeap.accuracy = selectedWeap.accuracy+5;
-    }
+    // if (selectedWeap.isShort && selectedWeap.range >= 1 && melee) {
+    //     selectedWeap.accuracy = selectedWeap.accuracy+5;
+    // }
     toHit = 999;
     console.log('shots='+shots);
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
             // shotResult = blast(brochette,selectedBatType,aoeShots,selectedWeap,targetBat,targetBatType,shotDice);
-            shotResult = blast(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType,shotDice,brochette,aoeShots);
+            shotResult = blast(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType,shotDice,brochette,aoeShots,accurange);
         } else {
-            shotResult = shot(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType,shotDice);
+            shotResult = shot(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType,shotDice,accurange);
         }
         totalDamage = totalDamage+shotResult.damage;
         totalHits = totalHits+shotResult.hits;
@@ -1457,18 +1459,20 @@ function defense(melee) {
             targetWeap.power = targetWeap.power+Math.round(weapPriorPower/5)+10;
         }
     }
+    // prec/range adj
+    let accurange = calcPrecRangeAdj(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType);
     // isShort range 0
-    if (targetWeap.isShort && targetWeap.range >= 1 && melee) {
-        targetWeap.accuracy = targetWeap.accuracy+5;
-    }
+    // if (targetWeap.isShort && targetWeap.range >= 1 && melee) {
+    //     targetWeap.accuracy = targetWeap.accuracy+5;
+    // }
     toHit = 999;
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
             // shotResult = blast(brochette,targetBatType,aoeShots,targetWeap,selectedBat,selectedBatType,shotDice);
-            shotResult = blast(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType,shotDice,brochette,aoeShots);
+            shotResult = blast(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType,shotDice,brochette,aoeShots,accurange);
         } else {
-            shotResult = shot(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType,shotDice);
+            shotResult = shot(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType,shotDice,accurange);
         }
         totalDamage = totalDamage+shotResult.damage;
         totalHits = totalHits+shotResult.hits;
