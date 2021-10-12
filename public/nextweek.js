@@ -484,7 +484,7 @@ function calcCrimeRate(mesCitoyens) {
         if (batType.crime != undefined || bat.eq === 'camkit') {
             let countMe = false;
             if (batType.cat === 'buildings') {
-                if (batType.name === 'Prisons' || batType.name === 'Cabines' || batType.crime >= 1) {
+                if (batType.name === 'Prisons' || batType.name === 'Cabines' || (batType.crime >= 1 && bat.eq != 'confort')) {
                     countMe = true;
                 } else {
                     if (!bldIds.includes(batType.id)) {

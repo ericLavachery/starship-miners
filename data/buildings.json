@@ -3411,7 +3411,7 @@
         "weapon":{},
         "weapon2":{},
         "protection":["aucun"],
-        "equip":["aucun"],
+        "equip":["aucun","confort"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,

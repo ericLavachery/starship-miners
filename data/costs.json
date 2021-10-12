@@ -2431,7 +2431,7 @@
         "id":232,
         "name":"Dortoirs",
         "bldReq":["Soute"],
-        "costs":{"Eau":300,"Scrap":300,"Tissus":300,"Fer":200,"Bois":100,"Batteries":10},
+        "costs":{"Eau":250,"Scrap":500,"Tissus":250,"Compo1":250,"Bois":250,"Batteries":10},
         "fabTime":25,
         "crime":1,
         "slots":1
@@ -2440,7 +2440,7 @@
         "id":233,
         "name":"Cabines",
         "bldReq":["Soute"],
-        "costs":{"Eau":300,"Scrap":150,"Tissus":600,"Carbone":150,"Fer":200,"Bois":200,"Batteries":20},
+        "costs":{"Eau":350,"Scrap":175,"Tissus":700,"Carbone":175,"Compo1":350,"Bois":350,"Batteries":35},
         "fabTime":50,
         "crime":-1,
         "slots":1
@@ -2449,7 +2449,7 @@
         "id":234,
         "name":"Appartements",
         "bldReq":["Soute"],
-        "costs":{"Eau":300,"Tissus":1000,"Carbone":300,"Bois":300,"Cuivre":200,"Electros":25,"Batteries":50},
+        "costs":{"Eau":375,"Tissus":750,"Carbone":300,"Compo1":375,"Bois":300,"Cuivre":200,"Electros":25,"Batteries":75},
         "fabTime":75,
         "crime":3,
         "slots":1
@@ -2502,7 +2502,7 @@
         "bldUp":"Jardin",
         "bldReq":["Soute"],
         "upkeep":{"Azote":1,"Potassium":1},
-        "prod":{"Fruits":6,"Végétaux":6},
+        "prod":{"Fruits":3,"Végétaux":6},
         "costs":{"Compo1":200,"Scrap":150,"Silicium":150,"Eau":750,"Azote":100,"Phosphore":75,"Potassium":150,"Chlore":50,"Végétaux":750,"Energie":100,"Batteries":25},
         "fabTime":100,
         "slots":1
@@ -2514,7 +2514,7 @@
         "bldCost":"Serres hydroponiques",
         "bldReq":["Soute"],
         "upkeep":{"Azote":2,"Phosphore":2,"Potassium":3},
-        "prod":{"Fruits":20,"Végétaux":20},
+        "prod":{"Fruits":10,"Végétaux":20},
         "costs":{"Compo1":300,"Scrap":200,"Silicium":200,"Eau":2500,"Azote":300,"Phosphore":250,"Potassium":450,"Chlore":150,"Végétaux":2500,"Energie":200,"Batteries":50},
         "fabTime":200,
         "slots":2,

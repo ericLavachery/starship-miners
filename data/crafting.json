@@ -734,7 +734,7 @@
     {
         "id":34,
         "result":"Aluminium",
-        "cost":{"Wingium":5,"Bugium":15,"Energie":2},
+        "cost":{"Wingium":3,"Bugium":12,"Energie":2},
         "compReq":{"tri":2,"ca":2,"mat":1},
         "bldReq":["Recyclab"],
         "batch":15
@@ -752,7 +752,7 @@
     {
         "id":35,
         "result":"Calcium",
-        "cost":{"Mephitis":5,"Chlore":15,"Energie":2},
+        "cost":{"Mephitis":3,"Chlore":12,"Energie":2},
         "compReq":{"tri":2,"ca":1},
         "bldReq":["Recyclab"],
         "batch":15
@@ -760,7 +760,7 @@
     {
         "id":36,
         "result":"Carbone",
-        "cost":{"Mendium":10,"Oxygène":10},
+        "cost":{"Mendium":5,"Bois":25},
         "compReq":{"tri":2,"ca":2},
         "bldReq":["Recyclab"],
         "batch":15
@@ -768,7 +768,7 @@
     {
         "id":100,
         "result":"Chlore",
-        "cost":{"Larvium":10,"Creatite":5,"Energie":5},
+        "cost":{"Larvium":5,"Creatite":5,"Energie":5},
         "compReq":{"tri":2,"ca":1},
         "bldReq":["Recyclab"],
         "batch":15
@@ -785,7 +785,7 @@
     {
         "id":37,
         "result":"Cuivre",
-        "cost":{"Blendium":10,"Hélium":5,"Azote":5,"Energie":2},
+        "cost":{"Blendium":5,"Hélium":5,"Azote":5,"Energie":2},
         "compReq":{"tri":2,"ca":2,"mat":1},
         "bldReq":["Recyclab"],
         "batch":15
@@ -793,7 +793,7 @@
     {
         "id":38,
         "result":"Fer",
-        "cost":{"Bugium":15,"Azote":5,"Energie":1},
+        "cost":{"Bugium":12,"Azote":3,"Energie":1},
         "compReq":{"tri":1,"ca":1},
         "bldReq":["Recyclab"],
         "batch":15
@@ -867,7 +867,7 @@
     {
         "id":39,
         "result":"Mercure",
-        "cost":{"Octiron":5,"Creatite":15,"Energie":5},
+        "cost":{"Octiron":5,"Creatite":10,"Energie":5},
         "compReq":{"tri":3,"ca":1},
         "bldReq":["Recyclab"],
         "batch":15
@@ -875,7 +875,7 @@
     {
         "id":40,
         "result":"Or",
-        "cost":{"Germium":15,"Creatite":10,"Energie":5},
+        "cost":{"Germium":10,"Creatite":10,"Energie":5},
         "compReq":{"tri":3,"ca":3,"mat":1},
         "bldReq":["Recyclab"],
         "batch":15
@@ -891,7 +891,7 @@
     {
         "id":41,
         "result":"Phosphore",
-        "cost":{"Aranium":15,"Chlore":5,"Energie":2},
+        "cost":{"Aranium":10,"Chlore":5,"Energie":2},
         "compReq":{"tri":3,"ca":2},
         "bldReq":["Recyclab"],
         "batch":15
@@ -953,7 +953,7 @@
     {
         "id":44,
         "result":"Potassium",
-        "cost":{"Slime":10,"Chlore":10,"Energie":3},
+        "cost":{"Slime":5,"Chlore":10,"Energie":3},
         "compReq":{"tri":1,"ca":2},
         "bldReq":["Recyclab"],
         "batch":15
@@ -977,7 +977,7 @@
     {
         "id":47,
         "result":"Soufre",
-        "cost":{"Pyrus":5,"Oxygène":10},
+        "cost":{"Pyrus":5,"Oxygène":5},
         "compReq":{"tri":1,"ca":1},
         "bldReq":["Recyclab"],
         "batch":15,
@@ -1027,7 +1027,7 @@
     {
         "id":51,
         "result":"Zinc",
-        "cost":{"Mendium":10,"Chlore":10,"Energie":3},
+        "cost":{"Mendium":10,"Chlore":5,"Energie":3},
         "compReq":{"tri":2,"ca":3},
         "bldReq":["Recyclab"],
         "batch":15

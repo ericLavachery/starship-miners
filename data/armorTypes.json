@@ -1136,6 +1136,17 @@
         "deploy":{}
     },
     {
+        "name": "confort",
+        "cat":"equip",
+        "skills": [],
+        "info": "Confort augmenté",
+        "bldReq":[],
+        "compReq":{"const":2},
+        "factor":"one",
+        "costs":{"Tissus":750,"Batteries":40,"Electros":25,"Bois":250,"Compo1":250,"Eau":250},
+        "deploy":{}
+    },
+    {
         "name": "w1-gun",
         "cat":"equip",
         "skills": [],

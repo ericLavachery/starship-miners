@@ -105,8 +105,12 @@ function landingList() {
             }
             createStormsLists(true);
             checkUndark();
-            if (zone[0].mapDiff < Math.floor(playerInfos.allTurns/apoCount)+1) {
-                zone[0].mapDiff = Math.floor(playerInfos.allTurns/apoCount)+1;
+            let minDiff = Math.floor(playerInfos.allTurns/apoCount)+1;
+            console.log('minDiff='+minDiff);
+            if (zone[0].mapDiff < minDiff) {
+                zone[0].mapDiff = minDiff;
+                saveMap();
+                console.log('done!');
             }
             showMap(zone,true);
             isReloaded = false;
