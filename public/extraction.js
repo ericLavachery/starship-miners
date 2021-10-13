@@ -249,7 +249,7 @@ function getMiningRate(bat,fullRate,noMining) {
             bataillons.forEach(function(inBat) {
                 if (inBat.loc === "trans" && inBat.locId === bat.id) {
                     if (inBat.type === 'Mineurs') {
-                        if (inBat.apLeft >= 10 && inBat.squadsLeft >= 6) {
+                        if (inBat.apLeft >= 7 && inBat.squadsLeft >= 6) {
                             helpInside = true;
                         }
                     }
@@ -258,7 +258,7 @@ function getMiningRate(bat,fullRate,noMining) {
         }
     }
     if (helpInside) {
-        miningAdj = miningAdj*1.34;
+        miningAdj = miningAdj*1.5;
     }
     if (fullRate) {
         let batAP = getBatAP(bat,batType);

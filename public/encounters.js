@@ -904,7 +904,7 @@ function putHLLUnits(centreTileId,hard) {
         playerOccupiedTiles.push(dropTile);
         thisUnit = getBatByTileId(dropTile);
         thisUnit.damage = rand.rand(1,75);
-        if (unitId === 178) {
+        if (conselUnit.id === 178) {
             thisUnit.squadsLeft = rand.rand(3,4);
         } else {
             thisUnit.squadsLeft = rand.rand(2,3);
