@@ -613,8 +613,7 @@
         "weapon2":{
             "name":"Canon laser",
             "cost":6,
-            "range":5,
-            "elevation":1,
+            "range":6,
             "isPrec":true,
             "noMelee":true,
             "rof":12,

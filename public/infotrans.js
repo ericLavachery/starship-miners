@@ -1,6 +1,6 @@
-function transInfos(bat,batType) {
+function transInfos(bat,batType,isCharged) {
     // console.log('transInfos');
-    let isCharged = checkCharged(bat,'trans');
+    // let isCharged = checkCharged(bat,'trans');
     let underId = checkUnderId(bat,batType);
     let transId = checkTransportId(bat,batType);
     let apCost = 3;
@@ -389,6 +389,7 @@ function embarquement(transId,discardRes) {
     doneAction(transBat);
     tagDelete(selectedBat,'guet');
     camoOut();
+    stopAutoLoad();
     selectedBatArrayUpdate();
     showBataillon(transBat);
     batSelect(transBat);

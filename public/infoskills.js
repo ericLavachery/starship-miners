@@ -1826,6 +1826,7 @@ function skillsInfos(bat,batType) {
     }
     if (!inSoute && batType.name != 'Soute') {
         // DEBARQUER
+        $('#unitInfos').append('<a name="letransport"></a>');
         unloadInfos(bat,batType);
         // DECONSTRUIRE VERS LANDER (si à côté)
         if (!playerInfos.onShip) {

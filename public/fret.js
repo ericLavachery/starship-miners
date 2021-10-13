@@ -265,6 +265,9 @@ function resMaxLoad(batId,addAutoLoad) {
 
 function autoResLoad(toBat,fromBat) {
     let toBatType = getBatType(toBat);
+    if (toBatType.cat === 'buildings' || toBatType.cat === 'devices') {
+
+    }
     if (Object.keys(fromBat).length >= 1) {
         let resSpace = checkResSpace(toBat);
         let resLoad = checkResLoad(fromBat);
@@ -277,7 +280,7 @@ function autoResLoad(toBat,fromBat) {
             //         resOK = false;
             //     }
             // }
-            if (resOK) {
+            if (value >= 1 && resOK) {
                 resSpace = checkResSpace(toBat);
                 if (resSpace >= value) {
                     if (toBat.transRes[key] === undefined) {

@@ -31,6 +31,10 @@ function calcBatFuzz(bat) {
     return batFuzz;
 };
 
+function scrollToBottom() {
+    $("#unitInfos").animate({ scrollTop: $('#unitInfos').prop("scrollHeight")},250);
+};
+
 const mergeObjects = (obj1,obj2) => {
    for(key in obj1){
       if(obj2[key]){

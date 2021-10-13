@@ -69,32 +69,56 @@ function batInfos(bat,batType,pop) {
         }
     }
     $('#'+bodyPlace).append('<div class="shSpace"></div>');
-    if (!batType.skills.includes('clone') && !batType.skills.includes('robot') && batType.crew >= 1) {
-        let grade = getGrade(bat,batType);
-        let gradeColor = 'rose';
-        if (bat.tags.includes('schef') || batType.skills.includes('leader')) {
-            gradeColor = 'or';
+    let grade = '';
+    if (batType.skills.includes('robot')) {
+        grade = 'Robot';
+    } else if (batType.skills.includes('clone')) {
+        grade = 'Clone';
+    } else if (batType.crew === 0) {
+        grade = batType.name;
+    } else {
+        grade = getGrade(bat,batType);
+    }
+    let gradeColor = 'rose';
+    if (bat.tags.includes('schef') || batType.skills.includes('leader')) {
+        gradeColor = 'sky';
+    }
+    let vetStatus = '';
+    if (bat.tags.includes('schef') || batType.skills.includes('leader')) {
+        vetStatus = ' <span class="rouge">(Chef)</span>';
+    }
+    if (bat.tags.includes('hero')) {
+        vetStatus = ' <span class="rouge">(Héros)</span>';
+    }
+    if (bat.tags.includes('vet')) {
+        vetStatus = ' (Vétéran)';
+    }
+    let armyNum = ' <span class="gff">(a<span class="neutre">'+bat.army+'</span>)</span>';
+    if (bat.army === 0) {
+        armyNum = '';
+    }
+    let isCharged = checkCharged(bat,'trans');
+    let chargeIcon = '';
+    if (isCharged) {
+        chargeIcon = ' &nbsp;<i class="fas fa-truck marine" onclick="scrollToBottom()"></i>';
+    }
+    let fretIcon = '';
+    if (batType.transRes >= 1) {
+        if (Object.keys(bat.transRes).length >= 1) {
+            fretIcon = ' &nbsp;<i class="fas fa-truck-loading caca" onclick="scrollToBottom()"></i>';
         }
-        let vetStatus = '';
-        if (bat.tags.includes('schef') || batType.skills.includes('leader')) {
-            vetStatus = ' <span class="rouge">(Chef)</span>';
-        }
-        if (bat.tags.includes('hero')) {
-            vetStatus = ' <span class="rouge">(Héros)</span>';
-        }
-        if (bat.tags.includes('vet')) {
-            vetStatus = ' (Vétéran)';
-        }
+    }
+    if ((grade != batType.name && grade != 'Caporal') || vetStatus != '' || armyNum != '' || chargeIcon != '' || fretIcon != '') {
         if (bat.chief != undefined) {
             if (bat.chief != '') {
-                $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+' '+bat.chief+vetStatus+'</span><br>');
+                $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+' '+bat.chief+vetStatus+armyNum+fretIcon+chargeIcon+'</span><br>');
                 $('#'+bodyPlace).append('<div class="shSpace"></div>');
             } else {
-                $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+vetStatus+'</span><br>');
+                $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+vetStatus+armyNum+fretIcon+chargeIcon+'</span><br>');
                 $('#'+bodyPlace).append('<div class="shSpace"></div>');
             }
         } else {
-            $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+vetStatus+'</span><br>');
+            $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+vetStatus+armyNum+fretIcon+chargeIcon+'</span><br>');
             $('#'+bodyPlace).append('<div class="shSpace"></div>');
         }
     }
@@ -408,7 +432,7 @@ function batInfos(bat,batType,pop) {
             }
         } else {
             if (!playerInfos.onShip || batType.id === 126 || batType.id === 225) {
-                transInfos(bat,batType);
+                transInfos(bat,batType,isCharged);
             }
             if (!playerInfos.onShip) {
                 defabInfos(bat,batType);
@@ -441,6 +465,9 @@ function batInfos(bat,batType,pop) {
     }
     // RESSOURCES transportées
     // console.log('HERE');
+    if (!pop) {
+        $('#'+bodyPlace).append('<span id="lefret"></span>');
+    }
     if (batType.transRes >= 1 && !inSoute) {
         // console.log('btres');
         if (Object.keys(bat.transRes).length >= 1) {

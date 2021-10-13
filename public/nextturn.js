@@ -275,7 +275,7 @@ function nextTurnEnd() {
                 }
             }
             updateBatProperties(bat,batType);
-            if (bat.autoLoad != undefined) {
+            if (bat.autoLoad != undefined && bat.loc === 'zone') {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
@@ -315,7 +315,7 @@ function nextTurnEnd() {
                 }
             }
             // AUTOLOAD
-            if (bat.autoLoad != undefined) {
+            if (bat.autoLoad != undefined && bat.loc === 'zone') {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
@@ -375,7 +375,7 @@ function nextTurnEnd() {
                 console.log('AUTO-UNLOAD'+bat.type);
                 autoUnload(bat);
             }
-            if (bat.autoLoad != undefined) {
+            if (bat.autoLoad != undefined && bat.loc === 'zone') {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
@@ -545,7 +545,7 @@ function nextTurnEnd() {
     });
     // LOAD AUTOMATION X2
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone" || bat.loc === "trans") {
+        if (bat.loc === "zone") {
             if (bat.autoLoad != undefined) {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
@@ -562,7 +562,7 @@ function nextTurnEnd() {
     });
     alienOccupiedTileList();
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone" || bat.loc === "trans") {
+        if (bat.loc === "zone") {
             if (bat.autoLoad != undefined) {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {

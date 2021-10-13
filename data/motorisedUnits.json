@@ -4312,7 +4312,7 @@
         "equip":["aucun","g2motor","chenilles","snorkel","belier","arbalourde","e-mecano","e-medic"],
         "log3eq":"chenilles",
         "moveCost":2,
-        "maxFlood":0,
+        "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
         "skills":["guerrilla","transport","fret","hardmove","dumper","emoteur","camo","selfbadmecano","badmedic","dealer","starka","kirin","octiron","light","accu","badcrewsave","recupcit","recupres","kzin","nochef"],
