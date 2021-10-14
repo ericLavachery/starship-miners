@@ -283,13 +283,7 @@ function attack(melee) {
     // Dans l'eau
     let terrain = getTerrain(targetBat);
     let tile = getTile(targetBat);
-    let onGround = true;
-    if (targetBatType.skills.includes('fly') || tile.rd) {
-        onGround = false;
-    }
-    if (bonusInfra(targetBatType,tile.infra)) {
-        onGround = false;
-    }
+    let onGround = isOnGround(targetBat,targetBatType,tile);
     let wetness = getWetness(terrain,onGround);
     if (wetness >= 1) {
         if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov')) {
@@ -1235,13 +1229,7 @@ function defense(melee) {
     // Dans l'eau
     let terrain = getTerrain(selectedBat);
     let tile = getTile(selectedBat);
-    let onGround = true;
-    if (selectedBatType.skills.includes('fly') || tile.rd) {
-        onGround = false;
-    }
-    if (bonusInfra(selectedBatType,tile.infra)) {
-        onGround = false;
-    }
+    let onGround = isOnGround(selectedBat,selectedBatType,tile);
     let wetness = getWetness(terrain,onGround);
     if (wetness >= 1) {
         if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov')) {

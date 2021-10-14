@@ -2052,6 +2052,20 @@ function checkDisease(giveBatType,damage,haveBat,haveBatType,terrain) {
     return getIt;
 };
 
+function isOnGround(bat,batType,tile) {
+    let onGround = true;
+    if (batType.skills.includes('fly') || batType.skills.includes('jetpack') || bat.eq === 'e-jetpack' || bat.logeq === 'e-jetpack') {
+        onGround = false;
+    }
+    if (tile.rd || tile.ruins) {
+        onGround = false;
+    }
+    if (bonusInfra(batType,tile.infra)) {
+        onGround = false;
+    }
+    return onGround;
+};
+
 function getWetness(terrain,onGround) {
     let wetness = 0;
     if (onGround) {
@@ -2077,4 +2091,4 @@ function getWetness(terrain,onGround) {
         }
     }
     return wetness;
-}
+};

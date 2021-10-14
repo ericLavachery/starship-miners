@@ -310,6 +310,10 @@ function getTileHeat(tile) {
     if (zone[0].seed >= 7) {
         zoneHeat = zone[0].seed+4;
     }
+    if (zone[0].planet === 'Horst') {
+        zoneHeat = zoneHeat*3;
+        tileHeat = tileHeat*5;
+    }
     tileHeat = Math.round((zoneHeat+zoneHeat+tileHeat)/3);
     return tileHeat;
 };
