@@ -959,7 +959,7 @@
         "name":"Scouts",
         "levels":{"rednecks":99,"blades":99,"bulbos":13,"drogmulojs":13,"tiradores":99,"detruas":9,"brasier":99},
         "bldReq":["Armurerie","Garage"],
-        "compReq":{"tank":1},
+        "compReq":{"tank":1,"explo":1},
         "costs":{"Fer":220,"Scrap":215,"Carbone":75,"Aluminium":150,"Moteurs":45,"Tungstène":90,"Cuivre":15,"Batteries":25,"Compo2":60,"Cobalt":30,"Hélium":60,"Explosifs":10,"Fuel":40},
         "deploy":{"Fuel":70},
         "fabTime":60,
@@ -1172,7 +1172,7 @@
         "levels":{"rednecks":13,"blades":10,"bulbos":10,"drogmulojs":11,"tiradores":13,"detruas":10,"brasier":14},
         "bldReq":["Armurerie","Atelier"],
         "compReq":{"trans":2},
-        "costs":{"Fer":60,"Scrap":120,"Carbone":90,"Aluminium":60,"Moteurs":40,"Tungstène":15,"Cuivre":15,"Batteries":30,"Compo2":120,"Hélium":75,"Chlore":75,"Huile":10},
+        "costs":{"Fer":60,"Scrap":120,"Carbone":90,"Bois":60,"Silicium":60,"Wingium":60,"Aluminium":60,"Moteurs":40,"Tungstène":15,"Cuivre":15,"Batteries":30,"Compo2":120,"Hélium":75,"Chlore":75,"Huile":10},
         "deploy":{"Fuel":60},
         "fabTime":45,
         "inRuin":2

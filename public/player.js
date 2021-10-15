@@ -439,6 +439,19 @@ function playerSkillsUTChanges() {
                 }
             }
         }
+        // BALISTIQUE
+        if (playerInfos.comp.bal === 3 && playerInfos.comp.arti === 1) {
+            if (Object.keys(unit.weapon).length >= 3) {
+                if (unit.weapon.isArt) {
+                    unit.weapon.range = Math.ceil(unit.weapon.range*1.2);
+                }
+            }
+            if (Object.keys(unit.weapon2).length >= 3) {
+                if (unit.weapon2.isArt) {
+                    unit.weapon2.range = Math.ceil(unit.weapon2.range*1.2);
+                }
+            }
+        }
         // ENERGIE
         let energComp = playerInfos.comp.energ;
         if (energComp >= 3) {

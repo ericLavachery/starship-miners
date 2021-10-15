@@ -2153,6 +2153,7 @@
             "noMelee":true,
             "noFly":true,
             "noDatt":true,
+            "isArt":true,
             "rof":4,
             "accuracy":13,
             "power":14,
@@ -4968,6 +4969,7 @@
             "cost":5,
             "range":5,
             "noGround":true,
+            "isArt":true,
             "rof":3,
             "accuracy":36,
             "power":20,
@@ -5538,10 +5540,11 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-taser"]
         },
         "weapon2":{
-            "name":"RPG",
+            "name":"Roquettes",
             "cost":6,
             "range":2,
             "elevation":1,
+            "noDef":true,
             "noDatt":true,
             "rof":8,
             "accuracy":12,
@@ -5549,7 +5552,7 @@
             "power":22,
             "aoe":"squad",
             "sound":"rpg",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium","obus-deluge"],
+            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },

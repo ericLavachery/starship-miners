@@ -829,6 +829,16 @@
         "costs":{"Scrap":2,"Tissus":2}
     },
     {
+        "name": "w2-lgren",
+        "cat":"equip",
+        "skills": [],
+        "info": "Lance grenades",
+        "bldReq":["Armurerie"],
+        "compReq":{"log":1,"explo":2},
+        "factor":"crew",
+        "costs":{"Scrap":12,"Fer":12,"Aluminium":24}
+    },
+    {
         "name": "w2-belier",
         "cat":"equip",
         "skills": [],
