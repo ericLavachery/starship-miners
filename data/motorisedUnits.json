@@ -3662,6 +3662,7 @@
             "name":"Canon laser",
             "cost":5,
             "range":5,
+            "isPrec":true,
             "rof":3,
             "accuracy":40,
             "power":17,

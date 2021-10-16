@@ -154,7 +154,7 @@ function checkAlienFlyTarget(weapon,bat) {
         if (bat.tags.includes('camo') || bat.tags.includes('fortif')) {
             isTarget = true;
         } else if (isFlying) {
-            if (selectedBat.tileId === selectedBat.oldTileId && bat.tileId === bat.oldTileId && selectedBat.creaTurn != playerInfos.mapTurn) {
+            if (selectedBat.tileId === selectedBat.oldTileId && bat.tileId === bat.oldTileId && selectedBat.creaTurn < playerInfos.mapTurn) {
                 let distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance === 0) {
                     isTarget = true;

@@ -1605,6 +1605,11 @@ function weaponAdj(weapon,bat,wn) {
     let ammoIndex = ammoTypes.findIndex((obj => obj.name == myAmmo));
     let ammo = ammoTypes[ammoIndex];
     thisWeapon.ammo = myAmmo;
+    if (playerInfos.comp.pyro === 3) {
+        if (thisWeapon.ammo.includes('feu') || thisWeapon.ammo.includes('incendiaire') || thisWeapon.ammo.includes('napalm') || thisWeapon.ammo.includes('fire') || thisWeapon.ammo.includes('pyratol') || thisWeapon.ammo.includes('lf-') || thisWeapon.ammo.includes('lt-') || thisWeapon.ammo.includes('molotov')) {
+            thisWeapon.armors = thisWeapon.armors*0.8;
+        }
+    }
     if (thisWeapon.ammo === 'lame-taser') {
         thisWeapon.sound = 'electricity';
     }

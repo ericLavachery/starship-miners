@@ -440,15 +440,30 @@ function playerSkillsUTChanges() {
             }
         }
         // BALISTIQUE
-        if (playerInfos.comp.bal === 3 && playerInfos.comp.arti === 1) {
+        if (playerInfos.comp.bal === 3) {
+            if (playerInfos.comp.arti === 1) {
+                if (Object.keys(unit.weapon).length >= 3) {
+                    if (unit.weapon.isArt) {
+                        unit.weapon.range = Math.ceil(unit.weapon.range*1.2);
+                    }
+                }
+                if (Object.keys(unit.weapon2).length >= 3) {
+                    if (unit.weapon2.isArt) {
+                        unit.weapon2.range = Math.ceil(unit.weapon2.range*1.2);
+                    }
+                }
+            }
+        }
+        // EXPLOSIFS
+        if (playerInfos.comp.explo === 3) {
             if (Object.keys(unit.weapon).length >= 3) {
-                if (unit.weapon.isArt) {
-                    unit.weapon.range = Math.ceil(unit.weapon.range*1.2);
+                if (unit.weapon.ammo.includes('obus') || unit.weapon.ammo.includes('missile') || unit.weapon.ammo.includes('missile-sunburst') || unit.weapon.ammo.includes('missile-vanguard') || unit.weapon.ammo.includes('dynamite') || unit.weapon.ammo.includes('grenade') || unit.weapon.ammo.includes('boulet')) {
+                    unit.weapon.power = Math.round(unit.weapon.power*1.1)+1;
                 }
             }
             if (Object.keys(unit.weapon2).length >= 3) {
-                if (unit.weapon2.isArt) {
-                    unit.weapon2.range = Math.ceil(unit.weapon2.range*1.2);
+                if (unit.weapon2.ammo.includes('obus') || unit.weapon2.ammo.includes('missile') || unit.weapon2.ammo.includes('missile-sunburst') || unit.weapon2.ammo.includes('missile-vanguard') || unit.weapon2.ammo.includes('dynamite') || unit.weapon2.ammo.includes('grenade') || unit.weapon2.ammo.includes('boulet')) {
+                    unit.weapon2.power = Math.round(unit.weapon2.power*1.1)+1;
                 }
             }
         }
