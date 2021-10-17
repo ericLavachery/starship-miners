@@ -181,7 +181,7 @@ function eventProduction(afterMission,time,sim) {
         let citBatId = -1;
         let citBat = {};
         let educMax = time*rand.rand(12,30);
-        educMax = Math.round(educMax*(playerInfos.comp.ordre+2)*(playerInfos.comp.ordre+2)*Math.sqrt(mesCitoyens.crim)/3000);
+        educMax = Math.round(educMax*(playerInfos.comp.ordre+2)*(playerInfos.comp.ordre+2)*Math.sqrt(mesCitoyens.crim)/9000);
         if (educMax >= mesCitoyens.crim-12) {
             educMax = mesCitoyens.crim-12;
         }

@@ -2049,7 +2049,7 @@
     },
     {
         "name": "obus-fleche",
-        "range": 1.1,
+        "range": 1.2,
         "rof": 1,
         "power": 0,
         "powermult": 1.25,
@@ -2278,7 +2278,7 @@
     },
     {
         "name": "missile-fleche",
-        "range": 1.1,
+        "range": 1.2,
         "rof": 1,
         "power": 0,
         "powermult": 1.25,

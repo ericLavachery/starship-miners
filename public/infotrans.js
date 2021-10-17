@@ -117,6 +117,10 @@ function unloadInfos(myBat,myBatUnitType) {
                     } else if (batAPLeft < 7) {
                         butCol = 'boutonGris';
                     }
+                    let ready = true;
+                    if (batType.skills.includes('prefab') && bat.apLeft <= 0) {
+                        ready = false;
+                    }
                     let mayOut = checkMayOut(batType);
                     if (myBatUnitType.skills.includes('transorbital') && (batType.id === 126 || batType.id === 225)) {
                         $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer des citoyens d\'un vaisseau" class="boutonGris skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris skillButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
@@ -124,6 +128,8 @@ function unloadInfos(myBat,myBatUnitType) {
                         $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer ce bataillon" class="boutonGris skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris skillButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
                     } else if (!mayOut) {
                         $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer ce bataillon sur cette planète" class="boutonGris skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris skillButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
+                    } else if (!ready) {
+                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas reconstruire un bâtiment qui n\'a plus de PA" class="boutonGris skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris skillButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
                     } else {
                         $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA '+moreInfos+'" class="'+butCol+' skillButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="32" class="dunit" onclick="batDetail('+bat.id+')" title="Détail du bataillon">&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
                     }
@@ -474,7 +480,11 @@ function clickDebarq(tileId) {
         batUnselect();
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
             if (!playerInfos.onShip) {
-                batDebarq.apLeft = batDebarq.ap-Math.round(batDebarqType.fabTime*batDebarq.ap/20);
+                let apCost = Math.round(batDebarqType.fabTime*batDebarq.ap/20);
+                if (batDebarqType.cat === 'devices') {
+                    apCost = Math.ceil(apCost/3);
+                }
+                batDebarq.apLeft = batDebarq.ap-apCost;
                 if (batDebarq.apLeft < 0-Math.round(batDebarqType.ap*1.5)) {
                     batDebarq.apLeft = 0-Math.round(batDebarqType.ap*1.5);
                 }

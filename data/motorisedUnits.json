@@ -35,6 +35,7 @@
             "range":3,
             "noDef":true,
             "noDatt":true,
+            "isArt":true,
             "rof":6,
             "accuracy":12,
             "dca":0.5,

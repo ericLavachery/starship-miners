@@ -50,6 +50,11 @@ function deconstruction(prefabId) {
         if (!playerInfos.onShip) {
             let apCost = prefabCost(selectedBatType,prefabBatType,false);
             selectedBat.apLeft = selectedBat.apLeft-apCost;
+            if (prefabBatType.cat === 'buildings') {
+                prefabBat.apLeft = 0-Math.round(prefabBat.ap*2)-2;
+            } else {
+                prefabBat.apLeft = 0-Math.round(prefabBat.ap/2);
+            }
         }
         loadBat(prefabBat.id,landerBat.id);
         // tagDelete(prefabBat,'mining');
@@ -69,6 +74,13 @@ function autoDeconstruction(prefabId) {
     let tileId = prefabBat.tileId;
     let landerBat = findTheLander();
     if (Object.keys(landerBat).length >= 1) {
+        if (!playerInfos.onShip) {
+            if (prefabBatType.cat === 'buildings') {
+                prefabBat.apLeft = 0-Math.round(prefabBat.ap*2)-2;
+            } else {
+                prefabBat.apLeft = 0-Math.round(prefabBat.ap/2);
+            }
+        }
         loadBat(prefabBat.id,landerBat.id);
         // tagDelete(prefabBat,'mining');
         // prefabBat.extracted = [];
@@ -119,6 +131,9 @@ function refabInfos(myBat,myBatUnitType) {
                     if (batType.fabTime >= 35 && !batType.skills.includes('clicput')) {
                         depliOK = false;
                     }
+                }
+                if (bat.apLeft <= 0) {
+                    depliOK = false;
                 }
                 if (batType.skills.includes('prefab') && depliOK) {
                     apCost = prefabCost(myBatUnitType,batType,false);

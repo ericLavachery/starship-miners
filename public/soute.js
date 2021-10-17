@@ -394,6 +394,15 @@ function batListElement(bat,batType,idOfLander) {
     }
     if (bat.id === selectedBat.id) {
         $('#be'+bat.id).append('<hr class="cyff">');
+        if (bat.locId === souteId) {
+            let enoughRes = checkCost(deployCosts);
+            let deployInfo = checkPlaceLander(bat,batType,slId);
+            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit' && bat.type != 'Chercheurs') {
+                $('#be'+bat.id).append('<span class="listRes marine klik" title="Charger le bataillon dans le lander" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></span>&nbsp;');
+            }
+        } else {
+            $('#be'+bat.id).append('<span class="listRes marine klik" title="Renvoyer le bataillon dans la soute" onclick="batUndeploy('+bat.id+')"><i class="fas fa-sign-out-alt fa-flip-horizontal"></i></span>&nbsp;');
+        }
         showCostsDetail(deployCosts,bat);
     }
 };

@@ -582,16 +582,16 @@ function showAmmoInfo(ammoName) {
     }
     if (ammo.aoe != '') {
         if (ammo.aoe == 'unit') {
-            ammoInfo = ammoInfo+'Unité ';
+            ammoInfo = ammoInfo+'AOE Unité ';
         }
         if (ammo.aoe == 'brochette') {
-            ammoInfo = ammoInfo+'Unités ';
+            ammoInfo = ammoInfo+'AOE Unité(s) ';
         }
         if (ammo.aoe == 'squad') {
-            ammoInfo = ammoInfo+'Escouade ';
+            ammoInfo = ammoInfo+'AOE Escouade ';
         }
         if (ammo.aoe == 'bat') {
-            ammoInfo = ammoInfo+'Bataillon ';
+            ammoInfo = ammoInfo+'AOE Bataillon ';
         }
     }
     if (ammo.info != undefined) {

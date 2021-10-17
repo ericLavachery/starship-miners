@@ -3399,7 +3399,7 @@
         "weapon":{
             "name":"BFG (ray)",
             "cost":4,
-            "range":3,
+            "range":4,
             "noDatt":true,
             "rof":6,
             "accuracy":30,
@@ -4311,7 +4311,7 @@
         "skills":["ranger","ravitaillement","robot","fret","dumper","aifouille","autotrans","w2mecano"],
         "maxSkill":19,
         "mecanoCost":17,
-        "transRes":320,
+        "transRes":640,
         "fuzz":2,
         "deathFx":"505751__thehorriblejoke__computer-breaking-sound"
     },
@@ -5551,6 +5551,7 @@
             "elevation":1,
             "noDef":true,
             "noDatt":true,
+            "isArt":true,
             "rof":8,
             "accuracy":12,
             "dca":0.5,
