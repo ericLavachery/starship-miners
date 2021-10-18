@@ -316,7 +316,7 @@ function batListElement(bat,batType,idOfLander) {
     let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
     let enoughRes = checkCost(deployCosts);
     let deployInfo = checkPlaceLander(bat,batType,slId);
-    if (!enoughRes || !deployInfo[0] || !deployInfo[1] || !deployInfo[2]) {
+    if (!enoughRes || !deployInfo[0] || !deployInfo[1] || !deployInfo[2] || bat.eq === 'camkit' || bat.type === 'Chercheurs') {
         if (bat.id === selectedBat.id) {
             blockType = 'souteBlockCheck';
         } else {
@@ -334,7 +334,23 @@ function batListElement(bat,batType,idOfLander) {
         selId = souteId;
     }
     let batPic = getBatPic(bat,batType);
-    $('#'+colId).append('<div class="'+blockType+'" onclick="batSouteSelect('+selId+')"><table><tr><td><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48"></td><td id="be'+bat.id+'"></td></tr></table></div>');
+    let lynx = 'none';
+    if (bat.id === selectedBat.id) {
+        if (bat.locId === souteId) {
+            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit' && bat.type != 'Chercheurs') {
+                lynx = 'deploy';
+            }
+        } else {
+            lynx = 'undeploy';
+        }
+    }
+    if (lynx === 'deploy') {
+        $('#'+colId).append('<div class="'+blockType+'" onclick="batSouteSelect('+selId+')"><table><tr><td><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" title="Charger le bataillon dans le lander" onclick="batDeploy('+bat.id+')"></td><td id="be'+bat.id+'"></td></tr></table></div>');
+    } else if (lynx === 'undeploy') {
+        $('#'+colId).append('<div class="'+blockType+'" onclick="batSouteSelect('+selId+')"><table><tr><td><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" title="Renvoyer le bataillon dans la soute" onclick="batUndeploy('+bat.id+')"></td><td id="be'+bat.id+'"></td></tr></table></div>');
+    } else {
+        $('#'+colId).append('<div class="'+blockType+'" onclick="batSouteSelect('+selId+')"><table><tr><td><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48"></td><td id="be'+bat.id+'"></td></tr></table></div>');
+    }
     $('#be'+bat.id).append('<span class="listRes klik">'+batType.name+'</span>');
     let batVolume = calcVolume(bat,batType);
     if (bat.chief != undefined) {
@@ -394,13 +410,9 @@ function batListElement(bat,batType,idOfLander) {
     }
     if (bat.id === selectedBat.id) {
         $('#be'+bat.id).append('<hr class="cyff">');
-        if (bat.locId === souteId) {
-            let enoughRes = checkCost(deployCosts);
-            let deployInfo = checkPlaceLander(bat,batType,slId);
-            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit' && bat.type != 'Chercheurs') {
-                $('#be'+bat.id).append('<span class="listRes marine klik" title="Charger le bataillon dans le lander" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></span>&nbsp;');
-            }
-        } else {
+        if (lynx === 'deploy') {
+            $('#be'+bat.id).append('<span class="listRes marine klik" title="Charger le bataillon dans le lander" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></span>&nbsp;');
+        } else if (lynx === 'undeploy') {
             $('#be'+bat.id).append('<span class="listRes marine klik" title="Renvoyer le bataillon dans la soute" onclick="batUndeploy('+bat.id+')"><i class="fas fa-sign-out-alt fa-flip-horizontal"></i></span>&nbsp;');
         }
         showCostsDetail(deployCosts,bat);

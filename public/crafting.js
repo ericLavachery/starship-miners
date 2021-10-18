@@ -471,7 +471,7 @@ function solarPanel(bat,batType,sim) {
     let upkeepPaid = true;
     if (!zone[0].dark && bat.fuzz > -2) {
         let energyProd = rand.rand(6,8);
-        if (tile.terrain === 'P') {
+        if (tile.terrain === 'P' || tile.terrain === 'M') {
             energyProd = rand.rand(9,12);
         } else if (tile.terrain === 'F') {
             energyProd = rand.rand(4,5);

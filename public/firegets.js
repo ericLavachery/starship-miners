@@ -1769,7 +1769,7 @@ function weaponAdj(weapon,bat,wn) {
     if (infra === 'Miradors' || infra === 'Murailles' || infra === 'Remparts') {
         overInfra = true;
     }
-    if (tile.terrain == 'F' && !overInfra && batType.cat != 'buildings' && !batType.skills.includes('transorbital')) {
+    if (tile.terrain == 'F' && !overInfra && batType.cat != 'buildings' && batType.cat != 'devices' && !batType.skills.includes('transorbital')) {
         if (checkDeepForest(tile)) {
             if (thisWeapon.range >= 2) {
                 if (thisWeapon.range >= 3) {
