@@ -111,11 +111,11 @@ function loadRes(retour) {
                                             if (isAuto) {
                                                 $('#conUnitList').append('<span class="loadIcon jaune klik" onclick="stopThisAutoLoad('+bat.id+')" title="Stopper cette automation! (Supprime une boucle!)"><i class="fas fa-robot"></i></span>');
                                             } else {
-                                                $('#conUnitList').append('<span class="loadIcon rouge klik" onclick="resMaxLoad('+bat.id+',true)" title="Automatiser: Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+') à chaque tour (ATTENTION: Boucle!!!)"><i class="fas fa-robot"></i></span>');
+                                                $('#conUnitList').append('<span class="loadIcon rouge klik" onclick="resMaxLoad('+bat.id+',true)" title="Automatiser: Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+') à chaque tour (ATTENTION: Boucle!!!)"><i class="fas fa-robot"></i></span><span class="loadIcon gf" title="L\'automation décharge vers ce bataillon"><i class="fas fa-sign-out-alt"></i></span>');
                                             }
                                         } else {
                                             if (isAuto) {
-                                                $('#conUnitList').append('<span class="loadIcon bleu klik" onclick="stopThisAutoLoad('+bat.id+')" title="Stopper cette automation!"><i class="fas fa-robot"></i></span>');
+                                                $('#conUnitList').append('<span class="loadIcon bleu klik" onclick="stopThisAutoLoad('+bat.id+')" title="Stopper cette automation!"><i class="fas fa-robot"></i></span><span class="loadIcon gf" title="L\'automation charge depuis ce bataillon"><i class="fas fa-sign-in-alt fa-flip-horizontal"></i></span>');
                                             } else {
                                                 $('#conUnitList').append('<span class="loadIcon vert klik" onclick="resMaxLoad('+bat.id+',true)" title="Automatiser: Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+') à chaque tour"><i class="fas fa-robot"></i></span>');
                                             }
