@@ -214,10 +214,7 @@ function batInfos(bat,batType,pop) {
         }
     }
     if (bat.tags.includes('embuscade')) {
-        let embushBonus = 200;
-        if (selectedBatType.cat != 'aliens') {
-            embushBonus = 200+(playerInfos.comp.train*50)+(playerInfos.comp.cam*20);
-        }
+        let embushBonus = Math.round(100*calcEmbushBonus(batType));
         $('#'+bodyPlace).append('<span class="paramName cy">Embuscade</span><span class="paramIcon"></span><span class="paramValue cy">'+embushBonus+'%</span><br>');
     }
     if (pop) {
@@ -233,7 +230,7 @@ function batInfos(bat,batType,pop) {
         if (bat.oldTileId === bat.tileId) {
             $('#'+bodyPlace).append('<span class="paramName cy">Tirailleur</span><span class="paramIcon"></span><span class="paramValue cy">'+guerBonus+'%</span><br>');
         } else {
-            guerBonus = Math.round(100*(1.5+(playerInfos.comp.train/5)+(playerInfos.comp.cam/10)));
+            guerBonus = Math.round(100*calcTiraBonus(batType));
             $('#'+bodyPlace).append('<span class="paramName cy">Tirailleur</span><span class="paramIcon"></span><span class="paramValue cy">'+guerBonus+'%</span><br>');
         }
     }
@@ -605,7 +602,11 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue" title="Permet au véhicule de rester furtif même en mouvement">Moteur silencieux</span>'+sepa;
     }
     if (batType.skills.includes('strong')) {
-        allSkills = allSkills+'<span class="paramValue" title="Moins de perte de PA avec les armures lourdes">Strong</span>'+sepa;
+        if (batType.skills.includes('mutant')) {
+            allSkills = allSkills+'<span class="paramValue" title="Moins de perte de PA avec les armures lourdes">Strong</span>'+sepa;
+        } else {
+            allSkills = allSkills+'<span class="paramValue" title="Moins de perte de PA avec les armures lourdes (à condition d\'avoir une Salle de sport)">Strong</span>'+sepa;
+        }
     }
     if (batType.skills.includes('fly')) {
         allSkills = allSkills+'<span class="paramValue">Volant</span>'+sepa;

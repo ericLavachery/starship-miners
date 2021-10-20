@@ -415,10 +415,7 @@ function attack(melee) {
     // embuscade (bonus ROF)
     if (activeTurn === 'player') {
         if (selectedBat.tags.includes('embuscade')) {
-            let embushBonus = 2;
-            if (selectedBatType.cat != 'aliens') {
-                embushBonus = embushBonus+(playerInfos.comp.train/2)+(playerInfos.comp.cam/5);
-            }
+            let embushBonus = calcEmbushBonus(selectedBatType);
             shots = Math.floor(shots*embushBonus);
             attFactor = Math.round(attFactor*embushBonus);
             console.log('bonus ROF embuscade');
@@ -426,18 +423,16 @@ function attack(melee) {
     }
     // guerrilla
     if (selectedBatType.skills.includes('tirailleur') && selectedBat.oldTileId != selectedBat.tileId) {
-        let guerBonus = 1.5;
-        if (selectedBatType.cat != 'aliens') {
-            guerBonus = guerBonus+(playerInfos.comp.train/5)+(playerInfos.comp.cam/10);
-        }
+        let guerBonus = calcTiraBonus(selectedBatType);
         shots = Math.round(shots*guerBonus);
         attFactor = Math.round(attFactor*guerBonus);
     }
     // tir ciblé
     if (selectedBat.tags.includes('vise') && selectedWeap.isPrec) {
-        shots = Math.round(shots*(8+playerInfos.comp.train)/10);
-        selectedWeap.power = Math.round(selectedWeap.power*(8+playerInfos.comp.train)/5);
-        attFactor = Math.round(attFactor*(8+playerInfos.comp.train)/10);
+        let tcBonus = calcCibleBonus(selectedBatType);
+        shots = Math.round(shots*tcBonus.rof);
+        selectedWeap.power = Math.round(selectedWeap.power*tcBonus.pow);
+        attFactor = Math.round(attFactor*tcBonus.rof);
     }
     // double attaque
     if (selectedBat.tags.includes('datt') && !selectedWeap.isPrec && !selectedWeap.isBow && !selectedWeap.noBis && !selectedWeap.noDatt) {

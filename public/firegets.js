@@ -146,7 +146,8 @@ function isHit(accuracy,minAccu,weapon,attBat,attBatType,defBat,defBatType,steal
     }
     // tir ciblé
     if (attBat.tags.includes('vise') && weapon.isPrec) {
-        prec = Math.round(prec*(playerInfos.comp.train+5)/2.5);
+        let tcBonus = calcCibleBonus(attBatType);
+        prec = Math.round(prec*tcBonus.prec);
     }
     // double attaque
     if (attBat.tags.includes('datt') && !weapon.isPrec && !weapon.isBow && !weapon.noBis && !weapon.noDatt) {
@@ -1988,6 +1989,42 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
     }
     return brideDef;
 }
+
+function calcEmbushBonus(batType) {
+    let embushBonus = 1.8;
+    if (batType.cat != 'aliens') {
+        embushBonus = embushBonus+(playerInfos.comp.train/5)+(playerInfos.comp.cam/2);
+        if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
+            embushBonus = embushBonus+0.3;
+        }
+    }
+    return embushBonus;
+};
+
+function calcTiraBonus(batType) {
+    let tiraBonus = 1.4;
+    if (batType.cat != 'aliens') {
+        tiraBonus = tiraBonus+(playerInfos.comp.train/10)+(playerInfos.comp.cam/10);
+        if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
+            tiraBonus = tiraBonus+0.2;
+        }
+    } else {
+        tiraBonus = tiraBonus+0.1;
+    }
+    return tiraBonus;
+};
+
+function calcCibleBonus(batType) {
+    let tcBonus = {};
+    let trainComp = playerInfos.comp.train;
+    if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
+        trainComp = trainComp+0.5;
+    }
+    tcBonus.prec = (5+trainComp)/2.5;
+    tcBonus.rof = (7.5+trainComp)/10;
+    tcBonus.pow = (7.5+trainComp)/5;
+    return tcBonus;
+};
 
 function mirDestruction(weap,bat,batType,tile,teamOnMir) {
     let power = (weap.power*1.5/(weap.armors*2))-2;

@@ -418,7 +418,7 @@ function getBatGearStuff(armorName,equipName,batType) {
             gearStuff[1] = baseAP+batArmor.ap+2;
         } else if (equipName === 'helper' && (batArmor.ap < -1 || batType.ap < 13)) {
             gearStuff[1] = baseAP+batArmor.ap+1;
-        } else if (batType.skills.includes('strong') && batArmor.ap < -1) {
+        } else if (batType.skills.includes('strong') && (batType.skills.includes('mutant') || playerInfos.bldVM.includes('Salle de sport')) && batArmor.ap < -1) {
             gearStuff[1] = baseAP+batArmor.ap+1;
         } else if (batType.moveCost === 99) {
             gearStuff[1] = baseAP;

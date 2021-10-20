@@ -392,10 +392,8 @@ function skillsInfos(bat,batType) {
                     boutonNope = 'boutonOK';
                     colorNope = 'cy';
                 }
-                let tcPrec = Math.round(100*(5+playerInfos.comp.train)/2.5);
-                let tcROF = Math.round(100*(8+playerInfos.comp.train)/10);
-                let tcPower = Math.round(100*(8+playerInfos.comp.train)/5);
-                let tcInfo = '+'+tcPrec+'% précision, '+tcROF+'% cadence, '+tcPower+'% puissance ('+apCost+' PA + coût de l\'arme)';
+                let tcBonus = calcCibleBonus(batType);
+                let tcInfo = '+'+tcBonus.prec+'% précision, '+tcBonus.rof+'% cadence, '+tcBonus.pow+'% puissance ('+apCost+' PA + coût de l\'arme)';
                 if (bat.apLeft >= apReq && !bat.tags.includes('vise') && !inMelee) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+tcInfo+'" class="boutonJaune skillButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
                 } else {
