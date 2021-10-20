@@ -81,7 +81,7 @@ function skillsInfos(bat,batType) {
     // RAVITAILLEMENT DROGUES
     let anyRavit = checkRavitDrug(bat);
     if (anyRavit && bat.tags.includes('dU') && batType.skills.includes('dealer') && !playerInfos.onShip) {
-        let apCost = Math.round(bat.ap/3);
+        let apCost = Math.round(batType.ap/3);
         if (bat.apLeft >= 2) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de drogues" class="boutonVert skillButtons" onclick="goRavitDrug('+apCost+')"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp;  Approvisionnement</h4></span>');
         } else {
@@ -103,7 +103,7 @@ function skillsInfos(bat,batType) {
         if (playerInfos.comp.log >= 3) {
             ravitFactor = ravitFactor*2;
         }
-        let apCost = Math.round(Math.sqrt(ravitVolume[1])*bat.ap/ravitFactor);
+        let apCost = Math.round(Math.sqrt(ravitVolume[1])*batType.ap/ravitFactor);
         if (bat.apLeft >= 4) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de munitions" class="boutonCaca skillButtons" onclick="goRavit()"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ravitaillement</h4></span>');
         } else {
@@ -114,7 +114,7 @@ function skillsInfos(bat,batType) {
     // STOCKS
     let anyStock = checkStock(bat);
     if (anyStock && bat.tags.includes('sU') && !playerInfos.onShip) {
-        let apCost = Math.round(bat.ap*1.5);
+        let apCost = Math.round(batType.ap*1.5);
         if (bat.apLeft >= 4) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de ravitaillements" class="boutonCaca skillButtons" onclick="goStock('+apCost+')"><i class="fas fa-cubes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réapprovisionnement</h4></span>');
         } else {
@@ -136,10 +136,10 @@ function skillsInfos(bat,batType) {
         if (batType.skills.includes('fastguet')) {
             apReq = 3;
         } else if (batType.skills.includes('baddef')) {
-            apReq = bat.ap-5;
+            apReq = batType.ap-5;
             apCost = 5;
         } else {
-            apReq = bat.ap-3;
+            apReq = batType.ap-3;
         }
         let bouton = 'boutonBrun';
         if (bat.tags.includes('mining')) {
@@ -168,11 +168,11 @@ function skillsInfos(bat,batType) {
             boutonNope = 'boutonOK';
             colorNope = 'cy';
         }
-        apCost = bat.ap;
+        apCost = batType.ap;
         if (batType.skills.includes('baddef') || batType.skills.includes('tirailleur')) {
-            apCost = bat.ap+3;
+            apCost = batType.ap+3;
         }
-        apReq = bat.ap-3;
+        apReq = batType.ap-3;
         let bouton = 'boutonBrun';
         if (bat.tags.includes('mining')) {
             bouton = 'boutonGris';
@@ -194,27 +194,27 @@ function skillsInfos(bat,batType) {
         if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || (batType.skills.includes('aicamo') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) {
             if (batType.cat == 'buildings') {
                 if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
-                    apCost = Math.floor(bat.ap*3.5);
-                    apReq = Math.floor(bat.ap/1.5);
+                    apCost = Math.floor(batType.ap*3.5);
+                    apReq = Math.floor(batType.ap/1.5);
                     if (inMelee) {
                         camoufOK = false;
                     }
                 } else {
-                    apCost = Math.floor(bat.ap*2);
-                    apReq = Math.floor(bat.ap/1.5);
+                    apCost = Math.floor(batType.ap*2);
+                    apReq = Math.floor(batType.ap/1.5);
                     if (inMelee) {
                         camoufOK = false;
                     }
                 }
             } else if (batType.cat == 'vehicles' || batType.skills.includes('machine') || batType.cat == 'devices') {
                 if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
-                    apCost = Math.floor(bat.ap*Math.sqrt(batType.size)/1.8);
-                    apReq = Math.floor(bat.ap/1.5);
+                    apCost = Math.floor(batType.ap*Math.sqrt(batType.size)/1.8);
+                    apReq = Math.floor(batType.ap/1.5);
                     if (inMelee) {
                         camoufOK = false;
                     }
                 } else {
-                    apCost = Math.floor(bat.ap/2);
+                    apCost = Math.floor(batType.ap/2);
                     apReq = 3;
                     if (inMelee) {
                         camoufOK = false;
@@ -223,23 +223,23 @@ function skillsInfos(bat,batType) {
             } else {
                 if ((batType.skills.includes('maycamo') || !batType.skills.includes('camo')) && !tile.ruins && tile.infra != 'Terriers') {
                     if (bat.eq === 'kit-chouf' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
-                        apCost = Math.floor(bat.ap/2.5);
+                        apCost = Math.floor(batType.ap/2.5);
                         apReq = 2;
                     } else if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || bat.eq === 'kit-guetteur') {
-                        apCost = Math.floor(bat.ap/2);
+                        apCost = Math.floor(batType.ap/2);
                         apReq = 3;
                     } else {
-                        apCost = Math.floor(bat.ap*Math.sqrt(batType.size)/1.8);
-                        apReq = Math.floor(bat.ap/2);
+                        apCost = Math.floor(batType.ap*Math.sqrt(batType.size)/1.8);
+                        apReq = Math.floor(batType.ap/2);
                         if (inMelee) {
                             camoufOK = false;
                         }
                     }
                 } else {
-                    apCost = Math.floor(bat.ap/3);
+                    apCost = Math.floor(batType.ap/3);
                     apReq = 1;
                     if (playerInfos.comp.cam >= 1) {
-                        apCost = Math.floor(bat.ap/(playerInfos.comp.cam+3));
+                        apCost = Math.floor(batType.ap/(playerInfos.comp.cam+3));
                         apReq = 0;
                     }
                 }
@@ -393,7 +393,10 @@ function skillsInfos(bat,batType) {
                     colorNope = 'cy';
                 }
                 let tcBonus = calcCibleBonus(batType);
-                let tcInfo = '+'+tcBonus.prec+'% précision, '+tcBonus.rof+'% cadence, '+tcBonus.pow+'% puissance ('+apCost+' PA + coût de l\'arme)';
+                let tcPrec = Math.round(100*tcBonus.prec);
+                let tcRof = Math.round(100*tcBonus.rof);
+                let tcPow = Math.round(100*tcBonus.pow);
+                let tcInfo = '+'+tcPrec+'% précision, '+tcRof+'% cadence, '+tcPow+'% puissance ('+apCost+' PA + coût de l\'arme)';
                 if (bat.apLeft >= apReq && !bat.tags.includes('vise') && !inMelee) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+tcInfo+'" class="boutonJaune skillButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
                 } else {
@@ -1265,8 +1268,8 @@ function skillsInfos(bat,batType) {
                 }
                 trapType = getBatTypeByName('Fosses');
                 trapCostOK = checkCost(trapType.costs);
-                apCost = Math.round(bat.ap*1.5);
-                apReq = Math.round(bat.ap/1.5);
+                apCost = Math.round(batType.ap*1.5);
+                apReq = Math.round(batType.ap/1.5);
                 if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-fosse`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fosses</'+balise+'></span>');
                 } else {
@@ -1297,8 +1300,8 @@ function skillsInfos(bat,batType) {
                 }
                 trapType = getBatTypeByName('Pièges');
                 trapCostOK = checkCost(trapType.costs);
-                apCost = Math.round(bat.ap*1.25);
-                apReq = Math.round(bat.ap/1.5);
+                apCost = Math.round(batType.ap*1.25);
+                apReq = Math.round(batType.ap/1.5);
                 if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-ap`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Pièges</'+balise+'></span>');
                 } else {
@@ -1329,8 +1332,8 @@ function skillsInfos(bat,batType) {
                 }
                 trapType = getBatTypeByName('Dardières');
                 trapCostOK = checkCost(trapType.costs);
-                apCost = Math.round(bat.ap*1.25);
-                apReq = Math.round(bat.ap/1.5);
+                apCost = Math.round(batType.ap*1.25);
+                apReq = Math.round(batType.ap/1.5);
                 if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`trap-dard`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dardières</'+balise+'></span>');
                 } else {
@@ -1362,8 +1365,8 @@ function skillsInfos(bat,batType) {
                 }
                 trapType = getBatTypeByName('Champ de mines');
                 trapCostOK = checkCost(trapType.costs);
-                apCost = Math.round(bat.ap/1.1);
-                apReq = Math.round(bat.ap/1.5);
+                apCost = Math.round(batType.ap/1.1);
+                apReq = Math.round(batType.ap/1.5);
                 if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');
                 } else {
@@ -1395,8 +1398,8 @@ function skillsInfos(bat,batType) {
                 }
                 trapType = getBatTypeByName('Explosifs');
                 trapCostOK = checkCost(trapType.costs);
-                apCost = Math.round(bat.ap);
-                apReq = Math.round(bat.ap/1.5);
+                apCost = Math.round(batType.ap);
+                apReq = Math.round(batType.ap/1.5);
                 if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer des explosifs '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`dynamite`)"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Explosifs</'+balise+'></span>');
                 } else {
@@ -1483,7 +1486,7 @@ function skillsInfos(bat,batType) {
                 trapType = getBatTypeByName('Coffres');
                 trapCostOK = checkCost(trapType.costs);
                 apCost = 8;
-                apReq = Math.ceil(bat.ap/2);
+                apReq = Math.ceil(batType.ap/2);
                 if (bat.apLeft >= apReq && !inMelee && trapCostOK) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Construire des coffres '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`coffre`)"><i class="fas fa-box-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Coffres</'+balise+'></span>');
                 } else {
@@ -1766,7 +1769,7 @@ function skillsInfos(bat,batType) {
         }
     }
     if (equipOK) {
-        apCost = Math.round(bat.ap*1.5);
+        apCost = Math.round(batType.ap*1.5);
         apReq = 5;
         if ((bat.apLeft >= apReq || playerInfos.onShip) && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Changer de munitions, équipement ou armure" class="boutonNoir skillButtons" onclick="reEquip('+bat.id+',false,false)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Rééquiper</h4></span>');
@@ -1785,10 +1788,10 @@ function skillsInfos(bat,batType) {
             apReq = 5;
             apCost = Math.round(1250/bat.squadsLeft/batType.squadSize/batType.crew);
             if (batType.cat === 'infantry' && !batType.skills.includes('moto') && !batType.skills.includes('fly')) {
-                apCost = Math.floor(apCost/bat.ap*11);
+                apCost = Math.floor(apCost/batType.ap*11);
             }
-            if (apCost > bat.ap*1.5 || batType.skills.includes('moto') || batType.skills.includes('fly')) {
-                apCost = Math.round(bat.ap*1.5);
+            if (apCost > batType.ap*1.5 || batType.skills.includes('moto') || batType.skills.includes('fly')) {
+                apCost = Math.round(batType.ap*1.5);
             }
             if (bat.apLeft >= apReq && !inMelee) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Fouiller les ruines" class="boutonCaca skillButtons" onclick="searchRuins('+apCost+')"><i class="fas fa-search"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fouille</h4></span>');

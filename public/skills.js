@@ -19,7 +19,7 @@ function fortification() {
     if (!selectedBat.tags.includes('fortif')) {
         selectedBat.tags.push('fortif');
     }
-    selectedBat.apLeft = selectedBat.apLeft-selectedBat.ap;
+    selectedBat.apLeft = selectedBat.apLeft-selectedBatType.ap;
     if (selectedBatType.skills.includes('baddef') || selectedBatType.skills.includes('tirailleur')) {
         selectedBat.apLeft = selectedBat.apLeft-3;
     }

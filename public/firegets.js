@@ -634,7 +634,7 @@ function calcDamage(weapon,power,armor,defBat) {
     if (calculatedDmg < 1 && weapon.name.includes('plasma')) {
         calculatedDmg = 1;
     }
-    if (calculatedDmg < 4 && weapon.name.includes('BFG')) {
+    if (calculatedDmg < 4 && (weapon.name.includes('BFG') || weapon.ammo.includes('-sunburst') || weapon.ammo.includes('-fleche'))) {
         calculatedDmg = rand.rand(3,4);
     }
     return calculatedDmg;
@@ -2021,7 +2021,7 @@ function calcCibleBonus(batType) {
         trainComp = trainComp+0.5;
     }
     tcBonus.prec = (5+trainComp)/2.5;
-    tcBonus.rof = (7.5+trainComp)/10;
+    tcBonus.rof = (15+trainComp)/20;
     tcBonus.pow = (7.5+trainComp)/5;
     return tcBonus;
 };
