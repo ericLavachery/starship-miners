@@ -207,7 +207,7 @@ function getMiningRate(bat,fullRate,noMining) {
                 miningAdj = 1.2;
             } else if (bat.ammo2 === 'lame-carbone') {
                 miningAdj = 1.3;
-            } else if (bat.ammo2 === 'lame-plasma') {
+            } else if (bat.ammo2 === 'lame-plasma' || bat.ammo2 === 'lame-fplasma' || bat.ammo2 === 'lame-adamantium') {
                 miningAdj = 1.5;
             }
         } else if (batType.weapon.name === 'Foreuse' || batType.weapon.name === 'Pioche') {
@@ -217,7 +217,7 @@ function getMiningRate(bat,fullRate,noMining) {
                 miningAdj = 1.2;
             } else if (bat.ammo === 'lame-carbone') {
                 miningAdj = 1.3;
-            } else if (bat.ammo === 'lame-plasma') {
+            } else if (bat.ammo === 'lame-plasma' || bat.ammo === 'lame-fplasma' || bat.ammo === 'lame-adamantium') {
                 miningAdj = 1.6;
             }
         }

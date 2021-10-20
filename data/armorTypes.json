@@ -66,7 +66,7 @@
         "bldReq":[],
         "bldVMReq":["Infirmerie"],
         "compReq":{"med":1},
-        "costs":{"Drogues":1,"Hélium":1,"Bore":2,"Octiron":4}
+        "costs":{"Drogues":1,"Hélium":1,"Bore":2,"Octiron":5}
     },
     {
         "name": "bliss",
@@ -616,7 +616,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"med":2,"ca":4,"gen":1},
         "factor":"thp",
-        "costs":{"Drogues":12,"Octiron":12,"Mendium":9,"Creatite":12,"Or":6},
+        "costs":{"Drogues":12,"Octiron":16,"Mendium":9,"Creatite":12,"Or":6},
         "deploy":{"Drogues":2,"Mendium":3,"Creatite":2,"Or":2}
     },
     {

@@ -1614,11 +1614,13 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.sound = 'electricity';
     }
     if (thisWeapon.ammo === 'lame-plasma') {
-        if (thisWeapon.name.includes('Foreuse')) {
-            thisWeapon.sound = 'plasmasaw';
-        } else {
-            thisWeapon.sound = 'plasblade';
+        thisWeapon.sound = 'plasblade';
+        if (thisWeapon.cost < 2) {
+            thisWeapon.cost = 2;
         }
+    }
+    if (thisWeapon.ammo === 'lame-fplasma') {
+        thisWeapon.sound = 'plasmasaw';
     }
     if (thisWeapon.range === 0 && ammo.range > 1) {
         thisWeapon.range = 1;

@@ -4089,7 +4089,7 @@
             "armors":0.35,
             "aoe":"unit",
             "sound":"saw",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-plasma"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-fplasma","lame-adamantium"]
         },
         "weapon2":{},
         "protection":["aucun","chobham","tisal","iso","nano","duneg","swing"],
