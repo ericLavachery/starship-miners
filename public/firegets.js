@@ -318,10 +318,14 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
         minAccu = Math.ceil(weapon.accuracy/2);
     }
     // spread damage reductor
-    let squadReductor = 2.6/Math.sqrt(defBat.armor);
-    if (squadReductor > 0.85) {
-        squadReductor > 0.85;
+    let squadReductor = 0.85;
+    if (defBat.armor >= 1) {
+        squadReductor = 2.6/Math.sqrt(defBat.armor);
+        if (squadReductor > 0.85) {
+            squadReductor > 0.85;
+        }
     }
+    console.log('squadReductor='+squadReductor);
     let ii = 1;
     while (ii <= aoeShots) {
         // console.log('power'+power);
