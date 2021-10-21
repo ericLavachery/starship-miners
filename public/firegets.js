@@ -317,6 +317,11 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
     if (attBatType.skills.includes('minaccu')) {
         minAccu = Math.ceil(weapon.accuracy/2);
     }
+    // spread damage reductor
+    let squadReductor = 2.6/Math.sqrt(defBat.armor);
+    if (squadReductor > 0.85) {
+        squadReductor > 0.85;
+    }
     let ii = 1;
     while (ii <= aoeShots) {
         // console.log('power'+power);
@@ -338,7 +343,7 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
         if (ii > 100) {break;}
         oldPower = power;
         if (!brochette) {
-            power = Math.floor(power*0.8);
+            power = Math.floor(power*squadReductor);
         } else {
             power = Math.floor(power*0.5);
         }
@@ -634,7 +639,7 @@ function calcDamage(weapon,power,armor,defBat) {
     if (calculatedDmg < 1 && weapon.name.includes('plasma')) {
         calculatedDmg = 1;
     }
-    if (calculatedDmg < 4 && (weapon.name.includes('BFG') || weapon.ammo.includes('-sunburst') || weapon.ammo.includes('-fleche'))) {
+    if (calculatedDmg < 4 && weapon.name.includes('BFG')) {
         calculatedDmg = rand.rand(3,4);
     }
     return calculatedDmg;

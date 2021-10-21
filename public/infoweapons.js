@@ -141,7 +141,7 @@ function weaponsInfos(bat,batType,pop) {
             }
             let elev = '';
             if (thisWeapon.elevation >= 1) {
-                elev = ' (e'+thisWeapon.elevation+')';
+                elev = ' <span class="gff">('+batType.weapon.range+'e'+thisWeapon.elevation+')</span>';
             }
             $('#'+bodyPlace).append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
@@ -371,7 +371,7 @@ function weaponsInfos(bat,batType,pop) {
             }
             let elev = '';
             if (thisWeapon.elevation >= 1) {
-                elev = ' (e'+thisWeapon.elevation+')';
+                elev = ' <span class="gff">('+batType.weapon2.range+'e'+thisWeapon.elevation+')</span>';
             }
             $('#'+bodyPlace).append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;

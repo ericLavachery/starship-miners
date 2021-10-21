@@ -525,11 +525,11 @@ function attack(melee) {
             if (selectedWeap.ammo.includes('gaz')) {
                 shieldValue = Math.ceil(shieldValue/2);
             }
-            if (selectedWeap.ammo.includes('bfg') || selectedWeap.ammo.includes('laser') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('suicide')) {
+            if (selectedWeap.ammo.includes('bfg') || selectedWeap.ammo.includes('laser') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('obus-fleche') || selectedWeap.ammo.includes('missile-fleche')) {
                 shieldValue = Math.ceil(shieldValue/3);
             }
-            if (selectedWeap.isMelee || selectedWeap.noShield || selectedWeap.ammo.includes('adamantium') || selectedWeap.ammo.includes('-fleche') || selectedWeap.ammo.includes('-sunburst')) {
-                shieldValue = Math.ceil(shieldValue/6);
+            if (selectedWeap.isMelee || selectedWeap.noShield || selectedWeap.ammo.includes('adamantium') || selectedWeap.ammo.includes('-sunburst')) {
+                shieldValue = Math.ceil(shieldValue/5);
             }
             shots = Math.ceil(shots/shieldValue);
             $('#report').append('<span class="report rose">Bouclier activé<br></span>');

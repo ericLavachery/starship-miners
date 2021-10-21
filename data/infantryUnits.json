@@ -3399,7 +3399,7 @@
         "weapon":{
             "name":"BFG (ray)",
             "cost":4,
-            "range":4,
+            "range":3,
             "noDatt":true,
             "rof":6,
             "accuracy":30,
@@ -5482,6 +5482,7 @@
             "noise":2,
             "rof":10,
             "accuracy":25,
+            "dca":1.2,
             "power":10,
             "armors":0.5,
             "aoe":"unit",

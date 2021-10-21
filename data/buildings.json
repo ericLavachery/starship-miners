@@ -1627,7 +1627,7 @@
             "isArt":true,
             "kit":true,
             "rof":5,
-            "accuracy":18,
+            "accuracy":15,
             "power":40,
             "aoe":"squad",
             "sound":"miss",
