@@ -643,8 +643,17 @@ function calcDamage(weapon,power,armor,defBat) {
     if (calculatedDmg < 1 && weapon.name.includes('plasma')) {
         calculatedDmg = 1;
     }
-    if (calculatedDmg < 4 && weapon.name.includes('BFG')) {
-        calculatedDmg = rand.rand(3,4);
+    if (weapon.name.includes('BFG')) {
+        if (calculatedDmg < 4) {
+            calculatedDmg = rand.rand(3,4);
+        }
+    }
+    if (defBatType.cat === 'aliens') {
+        if (weapon.ammo === 'suicide') {
+            if (calculatedDmg < 10) {
+                calculatedDmg = rand.rand(8,12);
+            }
+        }
     }
     return calculatedDmg;
 };

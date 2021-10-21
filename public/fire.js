@@ -811,9 +811,12 @@ function attack(melee) {
         let eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1)*2.5)));
         if (targetBatType.skills.includes('turnprotect')) {
             eggProt = eggProt+playerInfos.mapTurn-15;
-            if (eggProt > 100) {eggProt = 100;}
-            if (eggProt < 0) {eggProt = 0;}
         }
+        if (selectedWeap.ammo === 'suicide') {
+            eggProt = Math.round(eggProt/1.75);
+        }
+        if (eggProt > 100) {eggProt = 100;}
+        if (eggProt < 0) {eggProt = 0;}
         totalDamage = Math.round(totalDamage*(100-eggProt)/100);
         if (playerInfos.comp.ca >= 2) {
             $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
@@ -1105,7 +1108,7 @@ function attack(melee) {
     }
     // survivor
     if (targetBat.squadsLeft <= 0) {
-        if ((targetBatType.skills.includes('survivor') || targetBat.eq === 'permakirin' || targetBat.logeq === 'permakirin' || selectedBat.vet === 4) && !targetBat.tags.includes('lucky')) {
+        if ((targetBatType.skills.includes('survivor') || targetBat.eq === 'permakirin' || targetBat.logeq === 'permakirin' || targetBat.vet === 4) && !targetBat.tags.includes('lucky')) {
             targetBat.squadsLeft = 1;
             targetBat.apLeft = targetBat.ap;
             targetBat.tags.push('lucky');
@@ -1681,9 +1684,12 @@ function defense(melee) {
         let eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1)*2.5)));
         if (selectedBatType.skills.includes('turnprotect')) {
             eggProt = eggProt+playerInfos.mapTurn-15;
-            if (eggProt > 100) {eggProt = 100;}
-            if (eggProt < 0) {eggProt = 0;}
         }
+        if (targetWeap.ammo === 'suicide') {
+            eggProt = Math.round(eggProt/1.75);
+        }
+        if (eggProt > 100) {eggProt = 100;}
+        if (eggProt < 0) {eggProt = 0;}
         totalDamage = Math.round(totalDamage*(100-eggProt)/100);
         if (playerInfos.comp.ca >= 2) {
             $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
