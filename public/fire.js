@@ -522,14 +522,12 @@ function attack(melee) {
         }
         if (targetBat.tags.includes('shield')) {
             let shieldValue = rand.rand(6,14);
-            if (selectedWeap.ammo.includes('gaz')) {
-                shieldValue = Math.ceil(shieldValue/2);
-            }
-            if (selectedWeap.ammo.includes('bfg') || selectedWeap.ammo.includes('laser') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('obus-fleche') || selectedWeap.ammo.includes('missile-fleche')) {
-                shieldValue = Math.ceil(shieldValue/3);
-            }
-            if (selectedWeap.isMelee || selectedWeap.noShield || selectedWeap.ammo.includes('adamantium') || selectedWeap.ammo.includes('-sunburst')) {
+            if (selectedWeap.noShield) {
                 shieldValue = Math.ceil(shieldValue/5);
+            } else if (selectedWeap.halfShield) {
+                shieldValue = Math.ceil(shieldValue/3);
+            } else if (selectedWeap.ammo.includes('gaz')) {
+                shieldValue = Math.ceil(shieldValue/2);
             }
             shots = Math.ceil(shots/shieldValue);
             $('#report').append('<span class="report rose">Bouclier activé<br></span>');
@@ -649,10 +647,10 @@ function attack(melee) {
         apDamage = apDamage+webDamage;
     }
     // inflammable
-    if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('pyratol') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov') || selectedWeap.ammo.includes('laser')) {
+    if (selectedWeap.isFire || selectedWeap.isHot) {
         if (targetBatType.skills.includes('inflammable') || targetBat.tags.includes('inflammable') || targetBat.eq === 'e-jetpack') {
             let infactor = 2;
-            if (selectedWeap.ammo.includes('laser') || selectedWeap.ammo === 'incendiaire' || selectedWeap.ammo === 'ac-incendiaire' || selectedWeap.ammo === 'sm-incendiaire' || selectedWeap.ammo === 'fleche-incendiaire') {
+            if (selectedWeap.isHot) {
                 infactor = 1.5;
             }
             if (targetBat.tags.includes('resistfeu') && targetBatType.cat != 'aliens') {
@@ -678,7 +676,7 @@ function attack(melee) {
         }
     }
     // résistance au feu
-    if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('pyratol') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov') || selectedWeap.ammo.includes('laser')) {
+    if (selectedWeap.isFire || selectedWeap.isHot) {
         if (targetBatType.skills.includes('resistfeu') || targetBat.tags.includes('resistfeu')) {
             if (targetBatType.cat === 'aliens') {
                 totalDamage = Math.round(totalDamage/3);
@@ -696,7 +694,7 @@ function attack(melee) {
     }
     // résistance électricité
     if (targetBatType.skills.includes('resistelec') || targetBat.tags.includes('resistelec')) {
-        if (selectedWeap.ammo.includes('electric') || selectedWeap.ammo.includes('taser')) {
+        if (selectedWeap.isElec) {
             totalDamage = Math.round(totalDamage/2);
             apDamage = Math.round(apDamage/4);
             if (playerInfos.comp.ca >= 2) {
@@ -707,41 +705,45 @@ function attack(melee) {
     }
     // résistance blast
     if (targetBatType.skills.includes('resistblast') || targetBat.tags.includes('resistblast')) {
-        if (selectedWeap.ammo.includes('nanite') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('dynamite') || selectedWeap.ammo.includes('bombe') || selectedWeap.ammo.includes('explosif') || selectedWeap.ammo.includes('explosive') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('grenade') || selectedWeap.ammo.includes('disco')) {
-            if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm')) {
-                if (selectedWeap.ammo.includes('explosive')) {
-                    totalDamage = Math.round(totalDamage/1.34);
-                    apDamage = Math.round(apDamage/1.34);
-                    if (playerInfos.comp.ca >= 2) {
-                        $('#report').append('<span class="report rose">Résistance au secousses 25%<br></span>');
-                    }
-                } else {
-                    totalDamage = Math.round(totalDamage/2);
-                    apDamage = Math.round(apDamage/2);
-                    if (playerInfos.comp.ca >= 2) {
-                        $('#report').append('<span class="report rose">Résistance au secousses 50%<br></span>');
-                    }
+        if (selectedWeap.isBlast || selectedWeap.isExplo) {
+            if (selectedWeap.isExplo) {
+                totalDamage = Math.round(totalDamage/1.34);
+                apDamage = Math.round(apDamage/1.34);
+                if (playerInfos.comp.ca >= 2) {
+                    $('#report').append('<span class="report rose">Résistance au secousses 25%<br></span>');
                 }
-                console.log('résistance au blast!');
+            } else {
+                totalDamage = Math.round(totalDamage/2);
+                apDamage = Math.round(apDamage/2);
+                if (playerInfos.comp.ca >= 2) {
+                    $('#report').append('<span class="report rose">Résistance au secousses 50%<br></span>');
+                }
             }
+            console.log('résistance au blast!');
         }
     }
     // sensibilité blast
+    console.log('isBlast='+selectedWeap.isBlast);
     if (targetBatType.skills.includes('reactblast') || targetBat.tags.includes('reactblast')) {
-        if (selectedWeap.ammo.includes('nanite') || selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('mine') || selectedWeap.ammo.includes('autodestruction') || selectedWeap.ammo.includes('dynamite') || selectedWeap.ammo.includes('bombe') || selectedWeap.ammo.includes('explosif') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('grenade') || selectedWeap.ammo.includes('disco')) {
-            if (!selectedWeap.ammo.includes('gaz') && !selectedWeap.ammo.includes('incendiaire') && !selectedWeap.ammo.includes('napalm')) {
-                totalDamage = Math.round(totalDamage*1.5);
-                apDamage = Math.round(apDamage*1.5);
-                if (playerInfos.comp.ca >= 3) {
-                    $('#report').append('<span class="report rose">Sensibilité au secousses<br></span>');
-                }
-                console.log('sensibilité au blast!');
+        if (selectedWeap.isBlast) {
+            totalDamage = Math.round(totalDamage*1.5);
+            apDamage = Math.round(apDamage*1.5);
+            if (playerInfos.comp.ca >= 3) {
+                $('#report').append('<span class="report rose">Sensibilité au secousses<br></span>');
             }
+            console.log('sensibilité au blast!');
+        } else if (selectedWeap.isExplo) {
+            totalDamage = Math.round(totalDamage*1.25);
+            apDamage = Math.round(apDamage*1.25);
+            if (playerInfos.comp.ca >= 3) {
+                $('#report').append('<span class="report rose">Sensibilité au secousses<br></span>');
+            }
+            console.log('sensibilité au blast!');
         }
     }
     // résistance poison (gaz)
     if (targetBatType.skills.includes('resistpoison') || targetBatType.skills.includes('eatpoison') || targetBat.tags.includes('resistpoison')) {
-        if (selectedWeap.ammo.includes('gaz')) {
+        if (selectedWeap.isGas) {
             if (targetBatType.skills.includes('eatpoison')) {
                 totalDamage = 0;
                 apDamage = 0;
@@ -763,7 +765,7 @@ function attack(melee) {
     }
     // sensibilité poison (gaz)
     if (targetBatType.skills.includes('reactpoison') || targetBat.tags.includes('reactpoison')) {
-        if (selectedWeap.ammo.includes('gaz')) {
+        if (selectedWeap.isGas) {
             totalDamage = Math.round(totalDamage*2);
             apDamage = Math.round(apDamage*2);
             if (playerInfos.comp.ca >= 3) {
@@ -773,7 +775,7 @@ function attack(melee) {
         }
     }
     // résistance acide
-    if (selectedWeap.name.includes('acide') || selectedWeap.ammo.includes('ruche')) {
+    if (selectedWeap.isAcid) {
         if (targetBatType.skills.includes('resistacide') || targetBat.tags.includes('resistacide')) {
             totalDamage = Math.round(totalDamage/1.5);
             apDamage = Math.round(apDamage/1.5);
@@ -1522,10 +1524,10 @@ function defense(melee) {
         }
     }
     // inflammable
-    if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('pyratol') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov') || targetWeap.ammo.includes('laser')) {
+    if (targetWeap.isFire || targetWeap.isHot) {
         if (selectedBatType.skills.includes('inflammable') || selectedBat.tags.includes('inflammable') || selectedBat.eq === 'e-jetpack') {
             let infactor = 2;
-            if (targetWeap.ammo.includes('laser') || targetWeap.ammo === 'incendiaire' || targetWeap.ammo === 'ac-incendiaire' || targetWeap.ammo === 'sm-incendiaire' || targetWeap.ammo === 'fleche-incendiaire') {
+            if (targetWeap.isHot) {
                 infactor = 1.5;
             }
             if (selectedBat.tags.includes('resistfeu') && selectedBatType.cat != 'aliens') {
@@ -1551,7 +1553,7 @@ function defense(melee) {
         }
     }
     // résistance au feu
-    if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('pyratol') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov') || targetWeap.ammo.includes('laser')) {
+    if (targetWeap.isFire || targetWeap.isHot) {
         if (selectedBatType.skills.includes('resistfeu') || selectedBat.tags.includes('resistfeu')) {
             if (selectedBatType.cat === 'aliens') {
                 totalDamage = Math.round(totalDamage/3);
@@ -1569,7 +1571,7 @@ function defense(melee) {
     }
     // résistance électricité
     if (selectedBatType.skills.includes('resistelec') || selectedBat.tags.includes('resistelec')) {
-        if (targetWeap.ammo.includes('electric') || targetWeap.ammo.includes('taser')) {
+        if (targetWeap.isElec) {
             totalDamage = Math.round(totalDamage/2);
             apDamage = Math.round(apDamage/4);
             if (playerInfos.comp.ca >= 2) {
@@ -1580,41 +1582,44 @@ function defense(melee) {
     }
     // résistance blast
     if (selectedBatType.skills.includes('resistblast') || selectedBat.tags.includes('resistblast')) {
-        if (targetWeap.ammo.includes('nanite') || targetWeap.ammo.includes('suicide') || targetWeap.ammo.includes('mine') || targetWeap.ammo.includes('autodestruction') || targetWeap.ammo.includes('dynamite') || targetWeap.ammo.includes('bombe') || targetWeap.ammo.includes('explosif') || targetWeap.ammo.includes('explosive') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('grenade') || targetWeap.ammo.includes('disco')) {
-            if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm')) {
-                if (targetWeap.ammo.includes('explosive')) {
-                    totalDamage = Math.round(totalDamage/1.34);
-                    apDamage = Math.round(apDamage/1.34);
-                    if (playerInfos.comp.ca >= 2) {
-                        $('#report').append('<span class="report rose">Résistance aux secousses 25%<br></span>');
-                    }
-                } else {
-                    totalDamage = Math.round(totalDamage/2);
-                    apDamage = Math.round(apDamage/2);
-                    if (playerInfos.comp.ca >= 2) {
-                        $('#report').append('<span class="report rose">Résistance aux secousses 50%<br></span>');
-                    }
+        if (targetWeap.isBlast || targetWeap.isExplo) {
+            if (targetWeap.isExplo) {
+                totalDamage = Math.round(totalDamage/1.34);
+                apDamage = Math.round(apDamage/1.34);
+                if (playerInfos.comp.ca >= 2) {
+                    $('#report').append('<span class="report rose">Résistance aux secousses 25%<br></span>');
                 }
-                console.log('résistance au blast!');
+            } else {
+                totalDamage = Math.round(totalDamage/2);
+                apDamage = Math.round(apDamage/2);
+                if (playerInfos.comp.ca >= 2) {
+                    $('#report').append('<span class="report rose">Résistance aux secousses 50%<br></span>');
+                }
             }
+            console.log('résistance au blast!');
         }
     }
     // sensibilité blast
     if (selectedBatType.skills.includes('reactblast') || selectedBat.tags.includes('reactblast')) {
-        if (targetWeap.ammo.includes('nanite') || targetWeap.ammo.includes('suicide') || targetWeap.ammo.includes('mine') || targetWeap.ammo.includes('autodestruction') || targetWeap.ammo.includes('dynamite') || targetWeap.ammo.includes('bombe') || targetWeap.ammo.includes('explosif') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('grenade') || targetWeap.ammo.includes('disco')) {
-            if (!targetWeap.ammo.includes('gaz') && !targetWeap.ammo.includes('incendiaire') && !targetWeap.ammo.includes('napalm')) {
-                totalDamage = Math.round(totalDamage*1.5);
-                apDamage = Math.round(apDamage*1.5);
-                if (playerInfos.comp.ca >= 3) {
-                    $('#report').append('<span class="report rose">Sensibilité aux secousses<br></span>');
-                }
-                console.log('sensibilité au blast!');
+        if (targetWeap.isBlast) {
+            totalDamage = Math.round(totalDamage*1.5);
+            apDamage = Math.round(apDamage*1.5);
+            if (playerInfos.comp.ca >= 3) {
+                $('#report').append('<span class="report rose">Sensibilité aux secousses<br></span>');
             }
+            console.log('sensibilité au blast!');
+        } else if (targetWeap.isExplo) {
+            totalDamage = Math.round(totalDamage*1.25);
+            apDamage = Math.round(apDamage*1.25);
+            if (playerInfos.comp.ca >= 3) {
+                $('#report').append('<span class="report rose">Sensibilité aux secousses<br></span>');
+            }
+            console.log('sensibilité au blast!');
         }
     }
     // résistance poison (gaz)
     if (selectedBatType.skills.includes('resistpoison') || selectedBatType.skills.includes('eatpoison') || selectedBat.tags.includes('resistpoison')) {
-        if (targetWeap.ammo.includes('gaz')) {
+        if (targetWeap.isGas) {
             if (selectedBatType.skills.includes('eatpoison')) {
                 totalDamage = 0;
                 apDamage = 0;
@@ -1636,7 +1641,7 @@ function defense(melee) {
     }
     // sensibilité poison (gaz)
     if (selectedBatType.skills.includes('reactpoison') || selectedBat.tags.includes('reactpoison')) {
-        if (targetWeap.ammo.includes('gaz')) {
+        if (targetWeap.isGas) {
             totalDamage = Math.round(totalDamage*2);
             apDamage = Math.round(apDamage*2);
             if (playerInfos.comp.ca >= 3) {
@@ -1646,7 +1651,7 @@ function defense(melee) {
         }
     }
     // résistance acide
-    if (targetWeap.name.includes('acide') || targetWeap.ammo.includes('ruche')) {
+    if (targetWeap.isAcid) {
         if (selectedBatType.skills.includes('resistacide') || selectedBat.tags.includes('resistacide')) {
             totalDamage = Math.round(totalDamage/1.5);
             apDamage = Math.round(apDamage/1.5);

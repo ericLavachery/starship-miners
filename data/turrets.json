@@ -1023,7 +1023,7 @@
             "noFly":true,
             "noShield":true,
             "rof":6,
-            "accuracy":14,
+            "accuracy":22,
             "power":4,
             "aoe":"bat",
             "sound":"rainbow",

@@ -322,7 +322,7 @@ function skillsInfos(bat,batType) {
                 }
             } else {
                 if (batType.weapon2.rof >= 1) {
-                    if (!batType.weapon2.isPrec && !batType.weapon2.isBow && !batType.weapon.noBis && !batType.weapon.noDatt) {
+                    if (!batType.weapon2.isPrec && !batType.weapon2.isBow && !batType.weapon2.noBis && !batType.weapon2.noDatt) {
                         apReq = apCost+batType.weapon2.cost;
                     } else {
                         weapOK = false;

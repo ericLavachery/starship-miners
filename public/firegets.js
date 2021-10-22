@@ -320,9 +320,15 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
     // spread damage reductor
     let squadReductor = 0.85;
     if (defBat.armor >= 1) {
-        squadReductor = 2.6/Math.sqrt(defBat.armor);
+        let adjArmor = defBat.armor;
+        if (weapon.isGas) {
+            adjArmor = Math.floor(adjArmor/2);
+        } else if (defBatType.skills.includes('ricochet') && !brochette && !weapon.isFire && !weapon.isGas) {
+            adjArmor = Math.floor((adjArmor+30)/2);
+        }
+        squadReductor = 2.6/Math.sqrt(adjArmor);
         if (squadReductor > 0.85) {
-            squadReductor > 0.85;
+            squadReductor = 0.85;
         }
     }
     console.log('squadReductor='+squadReductor);
@@ -1312,7 +1318,11 @@ function weaponAdj(weapon,bat,wn) {
     if (bat.tags.includes('hero') && batType.skills.includes('herorof')) {
         thisWeapon.rof = Math.round(thisWeapon.rof*1.205);
     }
-    thisWeapon.name = weapon.name;
+    if (Object.keys(weapon).length >= 1) {
+        thisWeapon.name = weapon.name;
+    } else {
+        thisWeapon.name = 'None';
+    }
     thisWeapon.cost = weapon.cost;
     // hero wcost
     if ((bat.tags.includes('hero') || bat.tags.includes('vet')) && batType.skills.includes('herowc')) {
@@ -1840,6 +1850,58 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.cost = weapon.cost+2;
         thisWeapon.noDef = true;
     }
+    // Type d'attaques
+    if (thisWeapon.ammo.includes('feu') || thisWeapon.ammo.includes('incendiaire') || thisWeapon.ammo.includes('napalm') || thisWeapon.ammo.includes('fire') || thisWeapon.ammo.includes('pyratol') || thisWeapon.ammo.includes('lf-') || thisWeapon.ammo.includes('lt-') || thisWeapon.ammo.includes('molotov') || thisWeapon.ammo.includes('laser')) {
+        if (thisWeapon.ammo.includes('laser') || thisWeapon.ammo === 'incendiaire' || thisWeapon.ammo === 'ac-incendiaire' || thisWeapon.ammo === 'sm-incendiaire' || thisWeapon.ammo === 'fleche-incendiaire') {
+            thisWeapon.isHot = true;
+            thisWeapon.isFire = false;
+        } else {
+            thisWeapon.isHot = false;
+            thisWeapon.isFire = true;
+        }
+    } else {
+        thisWeapon.isHot = false;
+        thisWeapon.isFire = false;
+    }
+    if (thisWeapon.ammo.includes('electric') || thisWeapon.ammo.includes('taser')) {
+        thisWeapon.isElec = true;
+    } else {
+        thisWeapon.isElec = false;
+    }
+    if (thisWeapon.ammo.includes('nanite') || thisWeapon.ammo === 'suicide' || thisWeapon.ammo.includes('mine') || thisWeapon.ammo.includes('autodestruction') || thisWeapon.ammo.includes('dynamite') || thisWeapon.ammo.includes('bombe') || thisWeapon.ammo.includes('explosif') || thisWeapon.ammo.includes('obus') || thisWeapon.ammo.includes('missile') || thisWeapon.ammo.includes('grenade') || thisWeapon.ammo.includes('disco')) {
+        if (!thisWeapon.ammo.includes('gaz') && !thisWeapon.ammo.includes('incendiaire') && !thisWeapon.ammo.includes('napalm')) {
+            thisWeapon.isBlast = true;
+        } else {
+            thisWeapon.isBlast = false;
+        }
+    } else {
+        thisWeapon.isBlast = false;
+    }
+    if (thisWeapon.ammo.includes('explosive')) {
+        thisWeapon.isExplo = true;
+    } else {
+        thisWeapon.isExplo = false;
+    }
+    if (thisWeapon.ammo.includes('gaz')) {
+        thisWeapon.isGas = true;
+    } else {
+        thisWeapon.isGas = false;
+    }
+    if (thisWeapon.name.includes('acide') || thisWeapon.ammo.includes('ruche')) {
+        thisWeapon.isAcid = true;
+    } else {
+        thisWeapon.isAcid = false;
+    }
+    if (thisWeapon.isMelee || thisWeapon.noShield || thisWeapon.ammo.includes('adamantium') || thisWeapon.ammo.includes('-sunburst')) {
+        thisWeapon.noShield = true;
+        thisWeapon.halfShield = false;
+    } else if (thisWeapon.ammo.includes('bfg') || thisWeapon.ammo.includes('laser') || thisWeapon.ammo.includes('autodestruction') || thisWeapon.ammo.includes('mine') || thisWeapon.ammo.includes('suicide') || thisWeapon.ammo.includes('obus-fleche') || thisWeapon.ammo.includes('missile-fleche')) {
+        thisWeapon.halfShield = true;
+        thisWeapon.noShield = false;
+    } else {
+        thisWeapon.noShield = false;
+        thisWeapon.halfShield = false;
+    }
     // console.log(thisWeapon);
     return thisWeapon;
 };
@@ -2056,7 +2118,7 @@ function mirDestruction(weap,bat,batType,tile,teamOnMir) {
         power = 0;
     }
     let damage = Math.round(weap.rof*power*bat.squadsLeft);
-    if (weap.ammo.includes('feu') || weap.ammo.includes('napalm') || weap.ammo.includes('fire') || weap.ammo.includes('pyratol') || weap.ammo.includes('lf-') || weap.ammo.includes('molotov') || weap.ammo.includes('nanite') || weap.ammo.includes('suicide') || weap.ammo.includes('mine') || weap.ammo.includes('autodestruction') || weap.ammo.includes('dynamite') || weap.ammo.includes('bombe') || weap.ammo.includes('explosif') || weap.ammo.includes('obus') || weap.ammo.includes('missile') || weap.ammo.includes('glair') || weap.ammo.includes('ruche') || weap.ammo.includes('bfg')) {
+    if (weap.ammo.includes('feu') || weap.ammo.includes('napalm') || weap.ammo.includes('fire') || weap.ammo.includes('pyratol') || weap.ammo.includes('lf-') || weap.ammo.includes('molotov') || weap.ammo.includes('nanite') || weap.ammo === 'suicide' || weap.ammo.includes('mine') || weap.ammo.includes('autodestruction') || weap.ammo.includes('dynamite') || weap.ammo.includes('bombe') || weap.ammo.includes('explosif') || weap.ammo.includes('obus') || weap.ammo.includes('missile') || weap.ammo.includes('glair') || weap.ammo.includes('ruche') || weap.ammo.includes('bfg')) {
         if (batType.cat === 'aliens') {
             damage = damage*3;
         } else {
