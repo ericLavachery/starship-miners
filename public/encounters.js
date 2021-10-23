@@ -244,7 +244,7 @@ function putIndusUnits(centreTileId,hard) {
             numUnits++;
             // Eau !!!
             tile = getTileById(dropTile);
-            if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'S') {
+            if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'S' && tile.terrain != 'L') {
                 tile.terrain = 'S';
                 tile.seed = rand.rand(1,6);
             }
@@ -271,7 +271,7 @@ function putIndusUnits(centreTileId,hard) {
     numUnits++;
     // Ressources !!!
     tile = getTileById(dropTile);
-    if (tile.terrain === 'R' || tile.terrain === 'W') {
+    if (tile.terrain === 'R' || tile.terrain === 'W' || tile.terrain === 'L') {
         tile.terrain = 'H';
         tile.seed = rand.rand(1,12);
     }
@@ -308,7 +308,7 @@ function putIndusUnits(centreTileId,hard) {
         numUnits++;
         // Ressources !!!
         tile = getTileById(dropTile);
-        if (tile.terrain === 'R' || tile.terrain === 'W') {
+        if (tile.terrain === 'R' || tile.terrain === 'W' || tile.terrain === 'L') {
             tile.terrain = 'H';
             tile.seed = rand.rand(1,12);
         }
@@ -360,7 +360,7 @@ function putIndusUnits(centreTileId,hard) {
             numUnits++;
             // Hydrocarbure !!!
             tile = getTileById(dropTile);
-            if (tile.terrain === 'R' || tile.terrain === 'W') {
+            if (tile.terrain === 'R' || tile.terrain === 'W' || tile.terrain === 'L') {
                 tile.terrain = 'P';
                 tile.seed = rand.rand(1,6);
             }
@@ -1596,7 +1596,7 @@ function checkEncounterTile() {
         if (centreTileId < 0) {
             if ((tile.x === 55 && tile.y >= 6 && tile.y <= 55) || (tile.x === 6 && tile.y >= 6 && tile.y <= 55) || (tile.y === 6 && tile.x >= 6 && tile.x <= 55) || (tile.y === 55 && tile.x >= 6 && tile.x <= 55)) {
                 if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
-                    if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'S') {
+                    if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'S' && tile.terrain != 'L') {
                         centreTileId = tile.id;
                     }
                 }
@@ -1608,7 +1608,7 @@ function checkEncounterTile() {
             if (centreTileId < 0) {
                 if ((tile.x === 54 && tile.y >= 6 && tile.y <= 55) || (tile.x === 7 && tile.y >= 6 && tile.y <= 55) || (tile.y === 7 && tile.x >= 6 && tile.x <= 55) || (tile.y === 54 && tile.x >= 6 && tile.x <= 55)) {
                     if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
-                        if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'S') {
+                        if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'S' && tile.terrain != 'L') {
                             centreTileId = tile.id;
                         }
                     }
@@ -1621,7 +1621,7 @@ function checkEncounterTile() {
             if (centreTileId < 0) {
                 if ((tile.x === 55 && tile.y >= 6 && tile.y <= 55) || (tile.x === 6 && tile.y >= 6 && tile.y <= 55) || (tile.y === 6 && tile.x >= 6 && tile.x <= 55) || (tile.y === 55 && tile.x >= 6 && tile.x <= 55)) {
                     if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
-                        if (tile.terrain != 'W' && tile.terrain != 'R') {
+                        if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
                             centreTileId = tile.id;
                         }
                     }
@@ -1634,7 +1634,7 @@ function checkEncounterTile() {
             if (centreTileId < 0) {
                 if ((tile.x === 54 && tile.y >= 6 && tile.y <= 55) || (tile.x === 7 && tile.y >= 6 && tile.y <= 55) || (tile.y === 7 && tile.x >= 6 && tile.x <= 55) || (tile.y === 54 && tile.x >= 6 && tile.x <= 55)) {
                     if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
-                        if (tile.terrain != 'W' && tile.terrain != 'R') {
+                        if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
                             centreTileId = tile.id;
                         }
                     }

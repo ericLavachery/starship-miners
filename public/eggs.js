@@ -413,7 +413,7 @@ function eggsDrop() {
         while (i <= numEggs) {
             eggTypeDice = rand.rand(1,100);
             invisibleChance = Math.floor(zone[0].mapDiff*1.5)-8;
-            if (invisibleChance < 0) {
+            if (invisibleChance < 0 || !zoneInfos.ieggs) {
                 invisibleChance = 0;
             } else {
                 if (i > 1) {
@@ -563,7 +563,7 @@ function eggDropTile(eggName,theArea) {
             if (theTile < 0) {
                 if ((tile.x === 55 && tile.y >= 6 && tile.y <= 55) || (tile.x === 6 && tile.y >= 6 && tile.y <= 55) || (tile.y === 6 && tile.x >= 6 && tile.x <= 55) || (tile.y === 55 && tile.x >= 6 && tile.x <= 55)) {
                     if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
-                        if (tile.terrain != 'F' && tile.terrain != 'W' && tile.terrain != 'R') {
+                        if (tile.terrain != 'F' && tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
                             theTile = tile.id;
                         }
                     }
@@ -904,7 +904,7 @@ function veilSpawn(bat) {
         kind = 'bug';
     } else if (terName === 'F') {
         kind = 'spider';
-    } else if (terName === 'W' || terName === 'R') {
+    } else if (terName === 'W' || terName === 'R' || terName === 'L') {
         kind = 'larve';
     } else if (terName === 'B') {
         kind = 'swarm';
@@ -1227,7 +1227,7 @@ function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
     let swampMap = false;
     let eggTerrain = getTerrain(bat);
-    if (eggTerrain.name === 'W' || eggTerrain.name === 'S') {
+    if (eggTerrain.name === 'W' || eggTerrain.name === 'S' || eggTerrain === 'L') {
         swampMap = true;
     }
     if (zone[0].ps+zone[0].pw >= 60) {
@@ -1446,7 +1446,7 @@ function checkputEggKind(bat) {
         } else if (terName === 'F') {
             bat.tags.push('spider');
             return 'spider';
-        } else if (terName === 'R' || terName === 'W') {
+        } else if (terName === 'R' || terName === 'W' || terName === 'L') {
             bat.tags.push('larve');
             return 'larve';
         } else if (terName === 'B') {

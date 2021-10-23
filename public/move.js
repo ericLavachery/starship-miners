@@ -239,7 +239,7 @@ function moveSelectedBat(tileId,free,jump) {
     // remove tags
     if (selectedBat.tags.includes('blub')) {
         let terrain = getTerrainById(tileId);
-        if (terrain.name != 'W' && terrain.name != 'R') {
+        if (terrain.name != 'R' && terrain.name != 'L') {
             tagIndex = selectedBat.tags.indexOf('blub');
             selectedBat.tags.splice(tagIndex,1);
         }
@@ -450,7 +450,7 @@ function terrainAccess(batId,targetTileId) {
     let batType = getBatType(bat);
     let terrain = getTerrainById(targetTileId);
     let terFlood = terrain.flood;
-    if (terFlood === 3 && zone[targetTileId].seed >= 4) {
+    if (terrain.name === 'R' && zone[targetTileId].seed >= 4) {
         terFlood = 0;
     }
     let terVeg = terrain.veg;

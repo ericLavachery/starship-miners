@@ -497,7 +497,7 @@ function checkPossibleMoves() {
             if (!tile.rd && tile.terrain === 'R' && tile.seed < 4 && selectedBatType.maxFlood < 3) {
                 batHere = true;
             }
-            if (!tile.rd && tile.terrain === 'W' && selectedBatType.maxFlood < 2) {
+            if (!tile.rd && (tile.terrain === 'W' || tile.terrain === 'L') && selectedBatType.maxFlood < 2) {
                 batHere = true;
             }
             if (!batHere) {
@@ -540,7 +540,7 @@ function checkPossibleJumps() {
                     batHere = true;
                 }
             }
-            if (tile.terrain === 'M' || tile.terrain === 'R' || tile.terrain === 'W') {
+            if (tile.terrain === 'M' || tile.terrain === 'R' || tile.terrain === 'W' || tile.terrain === 'L') {
                 if (selectedBatType.skills.includes('fouisseur')) {
                     batHere = true;
                 }
@@ -630,7 +630,7 @@ function uncheckBadMoves() {
         shufZone.forEach(function(tile) {
             if (isAdjacent(selectedBat.tileId,tile.id)) {
                 if (possibleMoves.length >= 3) {
-                    if (tile.terrain == 'S' || tile.terrain == 'W' || tile.terrain == 'R') {
+                    if (tile.terrain === 'S' || tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'R') {
                         delPossibleMove(tile.id);
                     }
                 }
@@ -642,7 +642,7 @@ function uncheckBadMoves() {
         shufZone.forEach(function(tile) {
             if (isAdjacent(selectedBat.tileId,tile.id)) {
                 if (possibleMoves.length >= 2) {
-                    if (tile.terrain != 'S' && tile.terrain != 'W' && tile.terrain != 'R') {
+                    if (tile.terrain != 'S' && tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
                         delPossibleMove(tile.id);
                     }
                 }
@@ -688,7 +688,7 @@ function uncheckBadJumps() {
     if (possibleMoves.length >= 2 && !selectedBatType.skills.includes('hover')) {
         shufZone.forEach(function(tile) {
             if (possibleMoves.length > 1) {
-                if (tile.terrain == 'S' || tile.terrain == 'W' || tile.terrain == 'R') {
+                if (tile.terrain === 'S' || tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'R') {
                     delPossibleMove(tile.id);
                 }
             }
@@ -911,7 +911,7 @@ function moveToPDM() {
         }
         if (selectedBatType.skills.includes('fouisseur') && rand.rand(1,3) === 1 && (selectedBat.apLeft >= 4 || selectedBatType.skills.includes('invisible'))) {
             let tile = getTile(selectedBat);
-            if (tile.terrain != 'M' && tile.terrain != 'R' && tile.terrain != 'W') {
+            if (tile.terrain != 'M' && tile.terrain != 'R' && tile.terrain != 'W' && tile.terrain != 'L') {
                 jump = true;
             }
         }
@@ -1281,7 +1281,7 @@ function infraDestruction() {
                 }
             }
         }
-        if (tile.rd && (tile.terrain === 'W' || tile.terrain === 'R')) {
+        if (tile.rd && (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain === 'L')) {
             destroySize = 15;
         }
         if (destroySize < 999) {
@@ -1292,7 +1292,7 @@ function infraDestruction() {
             if (alienSize >= destroySize) {
                 let destroyCost = Math.ceil(selectedBat.ap*destroySize/alienSize*2);
                 selectedBat.apLeft = selectedBat.apLeft-destroyCost;
-                if (tile.rd && (tile.terrain === 'W' || tile.terrain === 'R')) {
+                if (tile.rd && (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain === 'L')) {
                     warning('Destruction',selectedBat.type+' a détruit le Pont',false,tile.id);
                     tile.rd = false;
                 } else {

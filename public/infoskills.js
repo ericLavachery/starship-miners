@@ -1510,7 +1510,7 @@ function skillsInfos(bat,batType) {
             let roadCosts = getRoadCosts(tile);
             let roadCostsOK = checkCost(roadCosts);
             let roadName = 'Route';
-            if (tile.terrain === 'W' || tile.terrain === 'R') {
+            if (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain == 'L') {
                 roadName = 'Pont';
             }
             let workForceOK = true;
@@ -1538,7 +1538,7 @@ function skillsInfos(bat,batType) {
     }
     // INFRASTRUCTURE
     if ((batType.skills.includes('constructeur') || near.caserne) && !playerInfos.onShip) {
-        if (tile.terrain != 'W' && tile.terrain != 'R') {
+        if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
             if (batType.mecanoCost != undefined) {
                 apReq = batType.mecanoCost;
             } else {

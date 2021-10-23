@@ -1971,6 +1971,19 @@
         "ap":18,
         "maxSalvo":1,
         "weapon":{
+            "name":"Mandibules",
+            "cost":2,
+            "range":0,
+            "noFly":true,
+            "isMelee":true,
+            "rof":12,
+            "accuracy":12,
+            "power":4,
+            "aoe":"unit",
+            "sound":"cric2",
+            "ammo":["none"]
+        },
+        "weapon2":{
             "name":"Décharge électrique",
             "cost":3,
             "range":0,
@@ -1983,8 +1996,7 @@
             "sound":"electricity",
             "ammo":["electric"]
         },
-        "weapon2":{},
-        "w2chance":0,
+        "w2chance":3,
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,

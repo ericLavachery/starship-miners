@@ -109,7 +109,7 @@ function landerLandingOK(tile) {
     let distance = calcDistanceSquare(tile.id,1830);
     if (distance <= landerRange) {
         tileOK = true;
-        if (tile.terrain === 'R') {
+        if (tile.terrain === 'R' || tile.terrain === 'L') {
             tileOK = false;
         }
         if (playerInfos.comp.vsp < 4) {

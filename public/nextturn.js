@@ -151,7 +151,7 @@ function alienTurnEnd() {
                     }
                 }
                 if (batType.skills.includes('dive')) {
-                    if (tile.terrain === 'R' || tile.terrain === 'W' || tile.terrain === 'S') {
+                    if (tile.terrain === 'R' || tile.terrain === 'W' || tile.terrain === 'S' || tile.terrain === 'L') {
                         if (!bat.tags.includes('invisible')) {
                             bat.tags.push('invisible');
                         }
@@ -673,6 +673,7 @@ function turnInfo() {
     if (playerInfos.mapAdjDiff < 1) {
         playerInfos.mapAdjDiff = 1;
     }
+    checkZoneType();
     // foggedTiles
     let distance;
     foggedTiles = [];
@@ -811,9 +812,6 @@ function calcUnitResist() {
         unitResist = unitResist+0.8;
     }
     unitResist = Math.round(unitResist);
-    if (unitResist >= 1) {
-        unitResist++;
-    }
     return unitResist;
 };
 
@@ -961,7 +959,7 @@ function blub(bat,batType) {
     let terrain = getTerrain(bat);
     if (bat.tags.includes('blub')) {
         let tile = getTile(bat);
-        if ((terrain.name != 'W' && terrain.name != 'R') || tile.rd) {
+        if ((terrain.name != 'L' && terrain.name != 'R') || tile.rd) {
             tagDelete(bat,'blub');
         } else {
             let totalDamage = bat.damage+rand.rand((Math.round(blubDamage/3)),blubDamage);
@@ -982,9 +980,9 @@ function blub(bat,batType) {
             checkDeath(bat,batType);
         }
     } else {
-        if (terrain.name === 'W' || terrain.name === 'R') {
+        if (terrain.name === 'L' || terrain.name === 'R') {
             let tile = getTile(bat);
-            if ((tile.seed <= 3 || terrain.name === 'W') && !tile.rd) {
+            if ((tile.seed <= 3 || terrain.name === 'L') && !tile.rd) {
                 if (bat.eq != 'waterproof' && bat.logeq != 'waterproof') {
                     if ((!batType.skills.includes('fly') && !batType.skills.includes('hover') && !batType.skills.includes('noblub')) || batType.skills.includes('jetpack')) {
                         bat.tags.push('blub');
@@ -1014,7 +1012,7 @@ function tagsEffect(bat,batType) {
     }
     // UNITRESIST
     let resistance = false;
-    if (rand.rand(1,12) <= unitResist && bat.cat != 'aliens') {
+    if (rand.rand(1,16) <= unitResist && bat.cat === 'infantry') {
         resistance = true;
     }
     // REGENERATION & KIRIN DRUG

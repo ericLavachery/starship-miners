@@ -458,7 +458,7 @@ function batDeathEffect(bat,quiet,title,body) {
     }
     if (bat.team != 'aliens') {
         let batType = getBatType(bat);
-        if (batType.crew >= 1 && !batType.skills.includes('robot') && !batType.skills.includes('clone') && !batType.skills.includes('brigands') && !bat.tags.includes('outsider')) {
+        if (batType.crew >= 1 && !batType.skills.includes('robot') && !batType.skills.includes('clone') && !batType.skills.includes('brigands') && !bat.tags.includes('outsider') && batType.name != 'Citoyens' && batType.name != 'Criminels') {
             deathStress();
         }
     }
@@ -726,7 +726,7 @@ function getCover(bat,withFortif,forAOE) {
     } else {
         cover = terrain.cover;
         if (bat.eq === 'waterproof' || bat.logeq === 'waterproof' || batType.skills.includes('noblub')) {
-            if (terrain.name === 'W' || terrain.name === 'R') {
+            if (terrain.name === 'W' || terrain.name === 'R' || terrain.name === 'L') {
                 cover = 3;
             }
         }
@@ -749,7 +749,7 @@ function getCover(bat,withFortif,forAOE) {
                 cover = Math.ceil((terrain.fortifcover+terrain.cover)/2);
             }
             if (bat.eq === 'waterproof' || bat.logeq === 'waterproof' || batType.skills.includes('noblub')) {
-                if (terrain.name === 'W' || terrain.name === 'R') {
+                if (terrain.name === 'W' || terrain.name === 'R' || terrain.name === 'L') {
                     cover = 3;
                 }
             }
@@ -1818,7 +1818,7 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     // Water (range)
-    if (thisWeapon.range >= 2 && (tile.terrain == 'W' || tile.terrain == 'R') && !batType.skills.includes('fly') && !batType.skills.includes('hover') && batType.cat != 'buildings' && !batType.skills.includes('transorbital')) {
+    if (thisWeapon.range >= 2 && (tile.terrain == 'W' || tile.terrain == 'L' || tile.terrain == 'R') && !batType.skills.includes('fly') && !batType.skills.includes('hover') && batType.cat != 'buildings' && !batType.skills.includes('transorbital')) {
         thisWeapon.range = thisWeapon.range-1;
     }
     if (zone[0].dark && thisWeapon.range > vision) {
@@ -2204,7 +2204,7 @@ function isOnGround(bat,batType,tile) {
 function getWetness(terrain,onGround) {
     let wetness = 0;
     if (onGround) {
-        if (terrain.name === 'W' || terrain.name === 'R') {
+        if (terrain.name === 'W' || terrain.name === 'R' || terrain.name == 'L') {
             wetness = wetness+3;
         } else {
             if (zone[0].snd === 'rainforest' || zone[0].snd === 'thunderstart' || zone[0].snd === 'swamp' || zone[0].snd === 'uhuwind') {

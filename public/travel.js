@@ -658,7 +658,7 @@ function showZonePreview() {
                     $('#themmap').append('<span class="mini m'+tile.terrain+'"></span>');
                 } else {
                     if (ccom) {
-                        if (tile.terrain === 'W' || tile.terrain === 'R') {
+                        if (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain === 'L') {
                             $('#themmap').append('<span class="mini mDarkWater"></span>');
                         } else {
                             if (playerInfos.comp.det >= 3 && tile.terrain === 'M') {

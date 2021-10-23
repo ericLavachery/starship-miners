@@ -254,7 +254,7 @@ function ruinsAliensInfo(unit,tile) {
                 alienInfo.ok = true;
             }
         } else {
-            if (tile.terrain === 'S' || tile.terrain === 'W') {
+            if (tile.terrain === 'S' || tile.terrain === 'W' || tile.terrain === 'L') {
                 alienInfo.ok = true;
             } else {
                 alienInfo.ok = false;
@@ -444,7 +444,7 @@ function checkDropSafe(layBatTileId) {
     let shufZone = _.shuffle(zone);
     shufZone.forEach(function(tile) {
         if (isAdjacent(layBatTileId,tile.id)) {
-            if (tile.rd && tile.terrain != 'W' && tile.terrain != 'R') {
+            if (tile.rd && tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
                 batHere = false;
                 bataillons.forEach(function(bat) {
                     if (bat.loc === "zone" && bat.tileId === tile.id) {
@@ -491,7 +491,7 @@ function checkDropSafe(layBatTileId) {
     if (possibleDrops.length < 1) {
         shufZone.forEach(function(tile) {
             if (isAdjacent(layBatTileId,tile.id)) {
-                if (tile.terrain != 'W' && tile.terrain != 'R') {
+                if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
                     batHere = false;
                     bataillons.forEach(function(bat) {
                         if (bat.loc === "zone" && bat.tileId === tile.id) {
@@ -515,7 +515,7 @@ function checkDropSafe(layBatTileId) {
     if (possibleDrops.length < 1) {
         let distance;
         shufZone.forEach(function(tile) {
-            if (tile.terrain != 'W' && tile.terrain != 'R') {
+            if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
                 distance = calcDistance(layBatTileId,tile.id);
                 if (distance <= 3 && distance >=2) {
                     batHere = false;

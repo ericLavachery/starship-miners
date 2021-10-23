@@ -934,7 +934,7 @@
         "skills": [],
         "info": "Cadence+ Portée+",
         "bldReq":["Chaîne de montage"],
-        "compReq":{"const":2,"mat":2,"ca":2},
+        "compReq":{"const":2,"mat":2},
         "factor":"rofpow",
         "costs":{"Carbone":60,"Azote":15,"Titane":15,"Aranium":30}
     },

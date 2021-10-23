@@ -842,7 +842,7 @@ function clickConstruct(tileId,free) {
                 batHere = true;
                 message = 'Pas de construction de bâtiment sur une case occupée par une infrastructure';
             }
-            if (tile.terrain === 'W' || tile.terrain === 'R') {
+            if (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain === 'L') {
                 if (!conselUnit.skills.includes('noblub')) {
                     batHere = true;
                     message = 'Cette unité ne peut pas être construite dans l\'eau';
@@ -1687,7 +1687,7 @@ function deleteAlien(batId) {
 
 function getRoadCosts(tile) {
     let roadCosts = {};
-    if (tile.terrain === 'W' || tile.terrain === 'R') {
+    if (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain === 'L') {
         roadCosts['Scrap'] = 50;
         roadCosts['Compo1'] = 150;
         if (playerInfos.comp.const >= 1) {

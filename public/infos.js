@@ -737,7 +737,7 @@ function showTileInfos(tileId) {
             if (tile.terrain === 'S') {
                 eggType = capitalizeFirstLetter(zone[0].sKind);
             }
-            if (tile.terrain === 'W') {
+            if (tile.terrain === 'W' || tile.terrain == 'L') {
                 eggType = 'Larve';
             }
             if (tile.terrain === 'R') {
@@ -754,7 +754,7 @@ function showTileInfos(tileId) {
         }
         if (tile.rd != undefined) {
             if (tile.rd) {
-                if (tile.terrain === 'W' || tile.terrain === 'W') {
+                if (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain == 'L') {
                     $('#tileInfos').append('<span class="paramName cy">Pont</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue cy">Oui</span><br>');
                 } else {
                     $('#tileInfos').append('<span class="paramName cy">Route</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue cy">Oui</span><br>');
@@ -787,7 +787,7 @@ function showTileInfos(tileId) {
         $('#tileInfos').append('<span class="paramName">Innondation</span><span class="paramIcon">'+fIcon+'</span><span class="paramValue">'+terrain.flood+'</span><br>');
         // Coordonnées
         $('#tileInfos').append('<span class="paramName">Coordonnées</span><span class="paramIcon"><i class="fas fa-map-marker-alt"></i></span><span class="paramValue">'+tile.y+'&lrhar;'+tile.x+'</span><br>');
-        $('#tileInfos').append('<span class="paramName">Id</span><span class="paramIcon"></span><span class="paramValue">#'+tile.id+'</span><br>');
+        $('#tileInfos').append('<span class="paramName">Id</span><span class="paramIcon"></span><span class="paramValue">#'+tile.id+' ('+tile.seed+')</span><br>');
         // Heat
         let tileEnergy = getTileEnergy(tile);
         $('#tileInfos').append('<span class="paramName sky" title="Chaleur du sous-sol (pour les sondes géothermiques)">Energie</span><span class="paramIcon"></span><span class="paramValue sky">'+tileEnergy+'</span><br>');
@@ -836,12 +836,12 @@ function showTileInfos(tileId) {
                 });
             }
             if (zone[0].planet === 'Gehenna') {
-                if (terrain.name === 'W' || terrain.name === 'S' || terrain.name === 'R') {
+                if (terrain.name === 'W' || terrain.name === 'S' || terrain.name === 'R' || terrain.name == 'L') {
                     $('#tileInfos').append('<span class="paramName sky">Eau</span><span class="paramIcon"></span><span class="paramValue sky">0<span class="gf"> (poison)</span></span><br>');
                 }
             } else if (zone[0].seed === 2) {
                 if (zone[0].gKind === 'spider' || zone[0].pKind === 'spider' || zone[0].sKind === 'spider') {
-                    if (terrain.name === 'W' || terrain.name === 'S') {
+                    if (terrain.name === 'W' || terrain.name === 'S' || terrain.name == 'L') {
                         if (playerInfos.comp.ca >= 2 || !modeSonde) {
                             $('#tileInfos').append('<span class="paramName sky">Eau</span><span class="paramIcon"></span><span class="paramValue sky">0<span class="gf"> (poison)</span></span><br>');
                         }

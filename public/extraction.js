@@ -143,20 +143,25 @@ function getTerrainRes(terrain,tile) {
     if (terrain.name === 'R' && tile.seed >= 4) {
         srs.Eau = 290+((7-tile.seed)*45);
     } else if (terrain.name === 'R') {
-        srs.Eau = 550+((7-tile.seed)*75);
-    } else if (terrain.name === 'W') {
+        srs.Eau = 650+((7-tile.seed)*50);
+    } else if (terrain.name === 'W' || terrain.name === 'L') {
         if (playerInfos.comp.ca >= 2 || !modeSonde) {
             if (zone[0].seed != 2) {
-                srs.Eau = 400+(tile.seed*75);
+                srs.Eau = 400+(tile.seed*35);
             } else {
                 if (zone[0].gKind != 'spider' && zone[0].pKind != 'spider' && zone[0].sKind != 'spider') {
-                    srs.Eau = 400+(tile.seed*75);
+                    srs.Eau = 400+(tile.seed*35);
                 } else if (playerInfos.bldVM.includes('Recyclab') || playerInfos.bldList.includes('Recyclab')) {
-                    srs.Eau = 400+(tile.seed*75);
+                    srs.Eau = 400+(tile.seed*35);
                 }
             }
         }  else {
-            srs.Eau = 400+(tile.seed*75);
+            srs.Eau = 400+(tile.seed*35);
+        }
+        if (srs.Eau != undefined) {
+            if (terrain.name === 'L') {
+                srs.Eau = srs.Eau+75+(tile.seed*25);
+            }
         }
     } else if (terrain.name === 'S') {
         if (playerInfos.comp.ca >= 2 || !modeSonde) {

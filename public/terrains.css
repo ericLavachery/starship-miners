@@ -130,6 +130,9 @@
 .mW {
     background-color: #49796f;
 }
+.mL {
+    background-color: #357c6d;
+}
 .mR {
     background-color: #60a6ab;
 }
@@ -450,7 +453,6 @@
     background-color: #3697ac;
     background-image: url(/static/img/sntiles/W_004.png);
     background-position: center;
-
 }
 .terW5 {
     background-color: #3697ac;
@@ -460,6 +462,36 @@
 .terW6 {
     background-color: #3697ac;
     background-image: url(/static/img/sntiles/W_006.png);
+    background-position: center;
+}
+.terL1 {
+    background-color: #3697ac;
+    background-image: url(/static/img/sntiles/L_001.png);
+    background-position: center;
+}
+.terL2 {
+    background-color: #3697ac;
+    background-image: url(/static/img/sntiles/L_002.png);
+    background-position: center;
+}
+.terL3 {
+    background-color: #3697ac;
+    background-image: url(/static/img/sntiles/L_003.png);
+    background-position: center;
+}
+.terL4 {
+    background-color: #3697ac;
+    background-image: url(/static/img/sntiles/L_004.png);
+    background-position: center;
+}
+.terL5 {
+    background-color: #3697ac;
+    background-image: url(/static/img/sntiles/L_005.png);
+    background-position: center;
+}
+.terL {
+    background-color: #3697ac;
+    background-image: url(/static/img/sntiles/L_006.png);
     background-position: center;
 }
 .terR1 {

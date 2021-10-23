@@ -62,6 +62,7 @@ function generateNewMap() {
     filterMap(zone);
     addRivers(zone);
     addRes(zone);
+    deepWaters(zone);
     washReports(true);
     zone[1830].terrain = 'P';
     zone[1830].seed = 1;
@@ -745,7 +746,7 @@ function addRes(zone) {
     shufZone.forEach(function(tile) {
         if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
             terrain = getTileTerrain(tile.id);
-            if (terrain.name === 'S' || terrain.name === 'W' || terrain.name === 'F') {
+            if (terrain.name === 'S' || terrain.name === 'W' || terrain.name === 'F' || terrain.name == 'L') {
                 numBadTer++;
             }
             minChance = terrain.minChance;
@@ -960,7 +961,7 @@ function addRes(zone) {
     if (playerInfos.sondeDanger >= 1 && ruinChance >= 1) {
         zone.forEach(function(tile) {
             if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
-                if (tile.rq === undefined && tile.terrain != 'W' && tile.terrain != 'R') {
+                if (tile.rq === undefined && tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
                     if (rand.rand(1,1500) <= ruinChance) {
                         tile.ruins = true;
                         tile.rd = true;
@@ -1381,14 +1382,14 @@ function makeRoad(startTileId,generalDir) {
     let nextTileId = startTileId;
     let oldTileId = startTileId;
     let bridge = false;
-    if (zone[nextTileId].terrain === 'W' || zone[nextTileId].terrain === 'R') {
+    if (zone[nextTileId].terrain === 'W' || zone[nextTileId].terrain === 'R' || zone[nextTileId].terrain === 'L') {
         bridge = true;
     }
     let i = 1
     while (i <= longueur) {
         oldTileId = nextTileId;
         bridge = false;
-        if (zone[oldTileId].terrain === 'W' || zone[oldTileId].terrain === 'R') {
+        if (zone[oldTileId].terrain === 'W' || zone[oldTileId].terrain === 'R' || zone[oldTileId].terrain === 'L') {
             bridge = true;
         }
         dirDice = rand.rand(1,4);
@@ -1428,7 +1429,7 @@ function makeRoad(startTileId,generalDir) {
         if (zone[nextTileId].x >= 60 || zone[nextTileId].y >= 60 || zone[nextTileId].x <= 1 || zone[nextTileId].y <= 1 || zone[nextTileId].rd || anyRoadAround(nextTileId,oldTileId)) {
             i = 500;
         }
-        if (zone[nextTileId].terrain === 'W' || zone[nextTileId].terrain === 'R') {
+        if (zone[nextTileId].terrain === 'W' || zone[nextTileId].terrain === 'R' || zone[nextTileId].terrain === 'L') {
             if (bridge) {
                 i = 500;
                 zone[oldTileId].rd = false;
@@ -1554,7 +1555,7 @@ function zoneReport(myZone,quiet) {
         if (terName === 'S') {
             percS++;
         }
-        if (terName === 'W') {
+        if (terName === 'W' || terName === 'L') {
             percW++;
         }
         if (terName === 'R') {
@@ -1796,4 +1797,80 @@ function atomsColors(myZone) {
             }
         }
     });
+};
+
+function deepWaters(zone) {
+    zone.forEach(function(tile) {
+        if (tile.terrain === 'R' && tile.seed >= 7) {
+            tile.seed = rand.rand(1,3);
+        }
+        if (tile.terrain === 'L' || tile.terrain === 'W') {
+            if (tile.seed >= 7) {
+                tile.seed = rand.rand(1,6);
+            }
+        }
+        if (tile.terrain === 'W') {
+            if (checkDeep(tile)) {
+                tile.terrain = 'L';
+            }
+        }
+    });
+};
+
+function checkDeep(tile) {
+    let nearTileId;
+    nearTileId = tile.id+1;
+    if (nearTileId >= 0 && nearTileId <= 3599) {
+        if (zone[nearTileId].terrain != 'R' && zone[nearTileId].terrain != 'L' && zone[nearTileId].terrain != 'W') {
+            if (rand.rand(1,8) != 1) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+    nearTileId = tile.id-1;
+    if (nearTileId >= 0 && nearTileId <= 3599) {
+        if (zone[nearTileId].terrain != 'R' && zone[nearTileId].terrain != 'L' && zone[nearTileId].terrain != 'W') {
+            if (rand.rand(1,8) != 1) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+    nearTileId = tile.id+mapSize;
+    if (nearTileId >= 0 && nearTileId <= 3599) {
+        if (zone[nearTileId].terrain != 'R' && zone[nearTileId].terrain != 'L' && zone[nearTileId].terrain != 'W') {
+            if (rand.rand(1,8) != 1) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+    nearTileId = tile.id-mapSize;
+    if (nearTileId >= 0 && nearTileId <= 3599) {
+        if (zone[nearTileId].terrain != 'R' && zone[nearTileId].terrain != 'L' && zone[nearTileId].terrain != 'W') {
+            if (rand.rand(1,8) != 1) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+    return true;
+}
+
+function checkZoneType() {
+    // oeufs voilés
+    zoneInfos.ieggs = false;
+    let sead = zone[1].seed;
+    if (sead > 6) {
+        sead = sead-6;
+    }
+    let ieggsLevel = (Math.ceil(zone[0].mapDiff/3)*2)+sead;
+    if (ieggsLevel >= 9) {
+        zoneInfos.ieggs = true;
+    }
 };
