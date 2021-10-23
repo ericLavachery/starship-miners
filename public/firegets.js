@@ -318,20 +318,24 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
         minAccu = Math.ceil(weapon.accuracy/2);
     }
     // spread damage reductor
-    let squadReductor = 0.85;
+    let squadReductor = 0.9;
     if (defBat.armor >= 1) {
         let adjArmor = defBat.armor;
         if (weapon.isGas) {
             adjArmor = Math.floor(adjArmor/2);
-        } else if (defBatType.skills.includes('ricochet') && !brochette && !weapon.isFire && !weapon.isGas) {
+        } else if (defBatType.skills.includes('ricochet') && !brochette && !weapon.isFire) {
             adjArmor = Math.floor((adjArmor+30)/2);
         }
-        squadReductor = 2.6/Math.sqrt(adjArmor);
-        if (squadReductor > 0.85) {
-            squadReductor = 0.85;
+        if (adjArmor >= 10) {
+            squadReductor = 2.55/Math.sqrt(adjArmor);
+        } else {
+            squadReductor = 0.91-(adjArmor/120);
+        }
+        if (squadReductor > 0.9) {
+            squadReductor = 0.9;
         }
     }
-    console.log('squadReductor='+squadReductor);
+    console.log('!!!!!!!!!!!!!!!!!!!!!squadReductor='+squadReductor);
     let ii = 1;
     while (ii <= aoeShots) {
         // console.log('power'+power);
