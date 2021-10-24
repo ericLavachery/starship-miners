@@ -13,16 +13,13 @@ function guet() {
     showBatInfos(selectedBat);
 };
 
-function fortification() {
+function fortification(apCost) {
     selectMode();
     console.log('FORTIFICATION');
     if (!selectedBat.tags.includes('fortif')) {
         selectedBat.tags.push('fortif');
     }
-    selectedBat.apLeft = selectedBat.apLeft-selectedBatType.ap;
-    if (selectedBatType.skills.includes('baddef') || selectedBatType.skills.includes('tirailleur')) {
-        selectedBat.apLeft = selectedBat.apLeft-3;
-    }
+    selectedBat.apLeft = selectedBat.apLeft-apCost;
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -443,25 +440,39 @@ function camoStop(bat) {
     bat.camoAP = -1;
 };
 
-function tirCible() {
+function tirCible(apCost) {
     selectMode();
     console.log('TIR CIBLE');
     if (!selectedBat.tags.includes('vise')) {
         selectedBat.tags.push('vise');
     }
-    selectedBat.apLeft = selectedBat.apLeft-4;
+    selectedBat.apLeft = selectedBat.apLeft-apCost;
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
 
-function fury() {
+function calcCibleBonus(batType) {
+    let tcBonus = {};
+    tcBonus.ap = 6-playerInfos.comp.train;
+    let trainComp = playerInfos.comp.train;
+    if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
+        trainComp = trainComp+0.5;
+        tcBonus.ap = tcBonus.ap-1;
+    }
+    tcBonus.prec = (7+trainComp)/3.75;
+    tcBonus.rof = (15+trainComp)/20;
+    tcBonus.pow = (9.5+trainComp)/6.666;
+    return tcBonus;
+};
+
+function fury(apCost) {
     selectMode();
     console.log('DOUBLE ATTAQUE');
     if (!selectedBat.tags.includes('datt')) {
         selectedBat.tags.push('datt');
     }
     tagDelete(selectedBat,'guet');
-    selectedBat.apLeft = selectedBat.apLeft-4;
+    selectedBat.apLeft = selectedBat.apLeft-apCost;
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
@@ -476,15 +487,39 @@ function luckyShot() {
     showBatInfos(selectedBat);
 };
 
-function ambush() {
+function ambush(apCost) {
     selectMode();
     console.log('EMBUSCADE');
     if (!selectedBat.tags.includes('embuscade')) {
         selectedBat.tags.push('embuscade');
     }
-    selectedBat.apLeft = selectedBat.apLeft-2;
+    selectedBat.apLeft = selectedBat.apLeft-apCost;
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
+};
+
+function calcEmbushBonus(batType) {
+    let embushBonus = 1.8;
+    if (batType.cat != 'aliens') {
+        embushBonus = embushBonus+(playerInfos.comp.train/5)+(playerInfos.comp.cam/2);
+        if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
+            embushBonus = embushBonus+0.3;
+        }
+    }
+    return embushBonus;
+};
+
+function calcTiraBonus(batType) {
+    let tiraBonus = 1.4;
+    if (batType.cat != 'aliens') {
+        tiraBonus = tiraBonus+(playerInfos.comp.train/10)+(playerInfos.comp.cam/10);
+        if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
+            tiraBonus = tiraBonus+0.2;
+        }
+    } else {
+        tiraBonus = tiraBonus+0.1;
+    }
+    return tiraBonus;
 };
 
 function armyAssign(batId,army) {

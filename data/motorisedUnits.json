@@ -486,14 +486,15 @@
             "cost":4,
             "range":3,
             "elevation":1,
-            "isPrec":true,
             "noBis":true,
             "rof":8,
             "accuracy":30,
             "power":12,
             "aoe":"brochette",
             "sound":"laser_canon_x2",
-            "ammo":["laser","laser-g2"]
+            "ammo":["laser","laser-g2"],
+            "maxAmmo":18,
+            "ravitBld":"Générateur"
         },
         "weapon2":{
             "name":"Bélier",
@@ -3662,14 +3663,15 @@
             "name":"Canon laser",
             "cost":5,
             "range":5,
-            "isPrec":true,
             "rof":3,
             "accuracy":40,
-            "power":17,
+            "power":16,
             "armors":0.75,
             "aoe":"brochette",
             "sound":"laser_canon_x1",
-            "ammo":["laser","laser-g2"]
+            "ammo":["laser","laser-g2"],
+            "maxAmmo":16,
+            "ravitBld":"Générateur"
         },
         "weapon2":{},
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],

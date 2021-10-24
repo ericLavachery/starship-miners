@@ -132,14 +132,16 @@ function skillsInfos(bat,batType) {
             boutonNope = 'boutonOK';
             colorNope = 'cy';
         }
-        apCost = 3;
+        apCost = 5-playerInfos.comp.def;
+        apReq = batType.ap-2-playerInfos.comp.def;
+        if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
+            apCost = apCost-1;
+            apReq = apReq-1;
+        }
         if (batType.skills.includes('fastguet')) {
-            apReq = 3;
+            apReq = apCost;
         } else if (batType.skills.includes('baddef')) {
-            apReq = batType.ap-5;
-            apCost = 5;
-        } else {
-            apReq = batType.ap-3;
+            apCost = apCost+2;
         }
         let bouton = 'boutonBrun';
         if (bat.tags.includes('mining')) {
@@ -168,17 +170,28 @@ function skillsInfos(bat,batType) {
             boutonNope = 'boutonOK';
             colorNope = 'cy';
         }
-        apCost = batType.ap;
-        if (batType.skills.includes('baddef') || batType.skills.includes('tirailleur')) {
-            apCost = batType.ap+3;
+        apCost = batType.ap-playerInfos.comp.def+3;
+        apReq = batType.ap-(playerInfos.comp.def*2)-4;
+        if (playerInfos.comp.def === 3) {
+            apCost = apCost-1;
+            apReq = apReq-2;
         }
-        apReq = batType.ap-3;
+        if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
+            apCost = apCost-1;
+            apReq = apReq-2;
+        }
+        if (batType.skills.includes('baddef') || batType.skills.includes('tirailleur')) {
+            apCost = apCost+3;
+        }
+        if (apReq < Math.round(bat.ap/2)) {
+            apReq = Math.round(bat.ap/2);
+        }
         let bouton = 'boutonBrun';
         if (bat.tags.includes('mining')) {
             bouton = 'boutonGris';
         }
         if (bat.apLeft >= apReq && !bat.tags.includes('fortif') && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Se fortifier (bonus couverture)" class="'+bouton+' skillButtons" onclick="fortification()"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Se fortifier (bonus couverture)" class="'+bouton+' skillButtons" onclick="fortification('+apCost+')"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Vous ne pouvez pas vous fortifier en mêlée";
@@ -275,11 +288,15 @@ function skillsInfos(bat,batType) {
     }
     // EMBUSCADE
     if (batType.skills.includes('embuscade') && !playerInfos.onShip) {
-        apCost = 2;
+        apCost = 4-(playerInfos.comp.train/2.1)-(playerInfos.comp.cam/1.9);
+        if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
+            apCost = apCost-0.6;
+        }
+        apCost = Math.round(apCost);
         if (batType.weapon2.rof >= 1 && batType.weapon.cost > batType.weapon2.cost) {
-            apReq = 2+batType.weapon2.cost;
+            apReq = apCost+batType.weapon2.cost;
         } else {
-            apReq = 2+batType.weapon.cost;
+            apReq = apCost+batType.weapon.cost;
         }
         balise = 'h4';
         boutonNope = 'boutonGris';
@@ -290,7 +307,7 @@ function skillsInfos(bat,batType) {
             colorNope = 'cy';
         }
         if (bat.apLeft >= apReq && bat.fuzz <= -2 && bat.apLeft >= apCost+cheapWeapCost && !bat.tags.includes('noemb') && !bat.tags.includes('embuscade')) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Embuscade (Initiative + Cadence de tir x2)" class="boutonJaune skillButtons" onclick="ambush()"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Embuscade (Initiative + Cadence de tir x2)" class="boutonJaune skillButtons" onclick="ambush('+apCost+')"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</'+balise+'></span>');
         } else {
             skillMessage = "Pas assez de PA";
             if (bat.tags.includes('noemb')) {
@@ -305,7 +322,10 @@ function skillsInfos(bat,batType) {
     if (!playerInfos.onShip) {
         if (batType.skills.includes('datt') || bat.eq.includes('crimekit')) {
             let weapOK = true;
-            apCost = 6;
+            apCost = 7-playerInfos.comp.train;
+            if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
+                apCost = apCost-1;
+            }
             if (!batType.weapon.isPrec && !batType.weapon.isBow && !batType.weapon.noBis && !batType.weapon.noDatt) {
                 if (batType.weapon2.rof >= 1) {
                     if (!batType.weapon2.isPrec && !batType.weapon2.isBow && !batType.weapon.noBis && !batType.weapon.noDatt) {
@@ -341,7 +361,7 @@ function skillsInfos(bat,batType) {
                     colorNope = 'cy';
                 }
                 if (bat.apLeft >= apReq && !bat.tags.includes('datt')) {
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Cadence 150% / Précision 50%" class="boutonJaune skillButtons" onclick="fury()"><i class="ra ra-fire rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Double attaque</'+balise+'></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Cadence 150% / Précision 50%" class="boutonJaune skillButtons" onclick="fury('+apCost+')"><i class="ra ra-fire rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Double attaque</'+balise+'></span>');
                 } else {
                     if (bat.tags.includes('datt')) {
                         skillMessage = "Déjà activé";
@@ -356,8 +376,9 @@ function skillsInfos(bat,batType) {
     // TIR CIBLE
     if (!playerInfos.onShip) {
         if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai')) || (batType.skills.includes('w2cible') && (bat.eq === 'w2-pgun' || bat.eq === 'w2-flaser' || bat.eq === 'w2-laser'))) {
+            let tcBonus = calcCibleBonus(batType);
+            apCost = tcBonus.ap;
             let weapOK = true;
-            apCost = 4;
             if (batType.weapon.isPrec) {
                 if (batType.weapon2.rof >= 1) {
                     if (batType.weapon2.isPrec) {
@@ -392,13 +413,12 @@ function skillsInfos(bat,batType) {
                     boutonNope = 'boutonOK';
                     colorNope = 'cy';
                 }
-                let tcBonus = calcCibleBonus(batType);
                 let tcPrec = Math.round(100*tcBonus.prec);
                 let tcRof = Math.round(100*tcBonus.rof);
                 let tcPow = Math.round(100*tcBonus.pow);
                 let tcInfo = '+'+tcPrec+'% précision, '+tcRof+'% cadence, '+tcPow+'% puissance ('+apCost+' PA + coût de l\'arme)';
                 if (bat.apLeft >= apReq && !bat.tags.includes('vise') && !inMelee) {
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+tcInfo+'" class="boutonJaune skillButtons" onclick="tirCible()"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+tcInfo+'" class="boutonJaune skillButtons" onclick="tirCible('+apCost+')"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
                 } else {
                     if (bat.tags.includes('vise')) {
                         skillMessage = "Déjà activé";
