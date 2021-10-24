@@ -1621,7 +1621,7 @@
         "weapon2":{
             "name":"Missiles squash",
             "cost":7,
-            "range":8,
+            "range":9,
             "noBis":true,
             "noMelee":true,
             "noFly":true,

@@ -922,7 +922,7 @@
         "weapon2":{
             "name":"Missiles squash",
             "cost":6,
-            "range":7,
+            "range":8,
             "noMelee":true,
             "noFly":true,
             "noDef":true,
@@ -1167,7 +1167,7 @@
         "weapon2":{
             "name":"Missiles squash",
             "cost":8,
-            "range":7,
+            "range":8,
             "noMelee":true,
             "noFly":true,
             "noDef":true,
@@ -1228,7 +1228,7 @@
         "weapon2":{
             "name":"Missiles sunburst",
             "cost":5,
-            "range":9,
+            "range":10,
             "noMelee":true,
             "noDef":true,
             "isArt":true,
