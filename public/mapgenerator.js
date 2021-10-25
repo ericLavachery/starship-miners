@@ -1865,6 +1865,7 @@ function checkDeep(tile) {
 function checkZoneType() {
     // oeufs voilés
     zoneInfos.ieggs = false;
+    zoneInfos.ieggsBonus = -50;
     let sead = zone[1].seed;
     if (sead > 6) {
         sead = sead-6;
@@ -1872,5 +1873,10 @@ function checkZoneType() {
     let ieggsLevel = (Math.ceil(zone[0].mapDiff/3)*2)+sead;
     if (ieggsLevel >= 9) {
         zoneInfos.ieggs = true;
+        if (zone[2].seed === 4 && zone[0].pb >= 30) {
+            zoneInfos.ieggsBonus = 20;
+        } else {
+            zoneInfos.ieggsBonus = 0;
+        }
     }
 };

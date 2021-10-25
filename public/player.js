@@ -1614,6 +1614,9 @@ function gangLevelView() {
         let compCost = comp.lvlCosts[nextComp];
         let colour = 'neutre';
         let costColour = 'gff';
+        if (compCost >= 2) {
+            costColour = 'gf';
+        }
         if (comp.maxLevel < nextComp) {
             compCost = 0;
             colour = 'cy';
@@ -1710,6 +1713,9 @@ function gangLevelUp(retour) {
         let compCost = comp.lvlCosts[nextComp];
         let colour = 'neutre';
         let costColour = 'rose';
+        if (compCost >= 2) {
+            costColour = 'rouge';
+        }
         if (comp.maxLevel < nextComp) {
             compCost = 0;
             colour = 'cy';

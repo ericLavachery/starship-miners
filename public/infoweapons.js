@@ -53,6 +53,17 @@ function weaponsInfos(bat,batType,pop) {
             if (inMelee && thisWeapon.noMelee) {
                 noFireMelee = true;
             }
+            let grisee = false;
+            if (bat.tags.includes('datt')) {
+                if (thisWeapon.isPrec || thisWeapon.isBow || thisWeapon.noBis || thisWeapon.noDatt) {
+                    grisee = true;
+                }
+            }
+            if (bat.tags.includes('vise')) {
+                if (!thisWeapon.isPrec) {
+                    grisee = true;
+                }
+            }
             // console.log('tileId='+bat.tileId);
             anyTarget = anyAlienInRange(bat,thisWeapon);
             baseAmmo = thisWeapon.maxAmmo;
@@ -64,7 +75,7 @@ function weaponsInfos(bat,batType,pop) {
                 balise = 'h3';
                 leBouton = 'boutonOK';
                 colBouton = 'cy';
-            } else if (selectedWeap.num != undefined) {
+            } else if (selectedWeap.num != undefined || grisee) {
                 balise = 'h6';
                 leBouton = 'boutonGris';
                 colBouton = 'gf';
@@ -284,6 +295,17 @@ function weaponsInfos(bat,batType,pop) {
             if (inMelee && thisWeapon.noMelee) {
                 noFireMelee = true;
             }
+            let grisee = false;
+            if (bat.tags.includes('datt')) {
+                if (thisWeapon.isPrec || thisWeapon.isBow || thisWeapon.noBis || thisWeapon.noDatt) {
+                    grisee = true;
+                }
+            }
+            if (bat.tags.includes('vise')) {
+                if (!thisWeapon.isPrec) {
+                    grisee = true;
+                }
+            }
             anyTarget = anyAlienInRange(bat,thisWeapon);
             baseAmmo = thisWeapon.maxAmmo;
             ammoLeft = calcAmmos(bat,baseAmmo);
@@ -294,7 +316,7 @@ function weaponsInfos(bat,batType,pop) {
                 balise = 'h3';
                 leBouton = 'boutonOK';
                 colBouton = 'cy';
-            } else if (selectedWeap.num != undefined) {
+            } else if (selectedWeap.num != undefined || grisee) {
                 balise = 'h6';
                 leBouton = 'boutonGris';
                 colBouton = 'gf';

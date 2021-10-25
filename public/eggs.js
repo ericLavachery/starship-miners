@@ -1240,7 +1240,7 @@ function eggSpawn(bat,fromEgg) {
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     let eggModTurn = eggTurn+zone[0].mapDiff-3;
     let eggLife = eggLifeStart+Math.floor(zone[0].mapDiff*eggLifeFactor)+bat.squadsLeft-6;
-    if (bat.type === 'Coque') {
+    if (bat.type === 'Coque' || bat.type === 'Oeuf voilé') {
         eggModTurn = eggTurn+zone[0].mapDiff-3;
         eggLife = coqLifeStart+Math.floor(zone[0].mapDiff*coqLifeFactor)+bat.squadsLeft-6;
     }
@@ -1392,7 +1392,7 @@ function eggSpawn(bat,fromEgg) {
                     if (dropTile >= 0) {
                         checkSpawnType(conselUnit);
                         putEggCat(bat,conselUnit.kind);
-                        if (bat.type === 'Oeuf voilé') {
+                        if (bat.type === 'Oeuf voilé' && bat.tags.includes('invisible')) {
                             putBat(dropTile,0,0,'invisible');
                         } else {
                             putBat(dropTile,0,0);

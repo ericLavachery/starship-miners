@@ -338,6 +338,7 @@ function nearWhat(myBat,myBatType) {
     near.control = false;
     near.schef = false;
     near.doxey = false;
+    near.loader = false;
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         if (bat.loc === "zone") {
@@ -355,6 +356,13 @@ function nearWhat(myBat,myBatType) {
             }
             if (bat.tags.includes('hero') && batType.skills.includes('heropotion') && !bat.tags.includes('potion')) {
                 near.doxey = true;
+            }
+            if (bat.autoLoad != undefined) {
+                if (Array.isArray(bat.autoLoad)) {
+                    if (bat.autoLoad.includes(myBat.id)) {
+                        near.loader = true;
+                    }
+                }
             }
         }
         if (!bat.tags.includes('command')) {

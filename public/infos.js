@@ -69,6 +69,7 @@ function batInfos(bat,batType,pop) {
         }
     }
     $('#'+bodyPlace).append('<div class="shSpace"></div>');
+    let near = nearWhat(bat,batType);
     let grade = '';
     if (batType.skills.includes('robot')) {
         grade = 'Robot';
@@ -105,7 +106,11 @@ function batInfos(bat,batType,pop) {
     let fretIcon = '';
     if (batType.transRes >= 1) {
         if (Object.keys(bat.transRes).length >= 1) {
-            fretIcon = ' &nbsp;<i class="fas fa-truck-loading caca" onclick="scrollToBottom()"></i>';
+            if (near.loader) {
+                fretIcon = ' &nbsp;<i class="fas fa-truck-loading caca" onclick="scrollToBottom()"></i>';
+            } else {
+                fretIcon = ' &nbsp;<i class="fas fa-truck-loading rouge" onclick="scrollToBottom()"></i>';
+            }
         }
     }
     if ((grade != batType.name && grade != 'Caporal') || vetStatus != '' || armyNum != '' || chargeIcon != '' || fretIcon != '') {
@@ -425,7 +430,7 @@ function batInfos(bat,batType,pop) {
             if (!bat.tags.includes('terror')) {
                 weaponsInfos(bat,batType,pop);
                 $('#'+bodyPlace).append('<div class="shSpace"></div>');
-                skillsInfos(bat,batType);
+                skillsInfos(bat,batType,near);
             }
         } else {
             if (!playerInfos.onShip || batType.id === 126 || batType.id === 225) {

@@ -1,4 +1,6 @@
-function skillsInfos(bat,batType) {
+function skillsInfos(bat,batType,near) {
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!NEAR');
+    console.log(near);
     let skillMessage;
     let numTargets = 0;
     let apCost;
@@ -11,7 +13,6 @@ function skillsInfos(bat,batType) {
     let tile = getTile(bat);
     let terrain = getTerrain(bat);
     let inMelee = batInMelee(bat,batType);
-    let near = nearWhat(bat,batType);
     if (near.control) {
         nomoveOut(bat);
     }
