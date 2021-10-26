@@ -106,10 +106,10 @@ function batInfos(bat,batType,pop) {
     let fretIcon = '';
     if (batType.transRes >= 1) {
         if (Object.keys(bat.transRes).length >= 1) {
-            if (near.loader) {
-                fretIcon = ' &nbsp;<i class="fas fa-truck-loading caca" onclick="scrollToBottom()"></i>';
-            } else {
+            if (!near.loader && batType.moveCost > 90) {
                 fretIcon = ' &nbsp;<i class="fas fa-truck-loading rouge" onclick="scrollToBottom()"></i>';
+            } else {
+                fretIcon = ' &nbsp;<i class="fas fa-truck-loading caca" onclick="scrollToBottom()"></i>';
             }
         }
     }
