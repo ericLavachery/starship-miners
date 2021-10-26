@@ -1288,7 +1288,7 @@ function addRes(zone) {
     oilChance = Math.round(oilChance/oilRes.planets[zone[0].planet]);
     let oilHere = false;
     let fruName = 'Fruits';
-    let fruChance = (rand.rand(2,6)*15); // plus bas = plus de chances
+    let fruChance = (rand.rand(2,6)*20); // plus bas = plus de chances
     let fruRes = getResByName('Fruits');
     fruChance = Math.round(fruChance/fruRes.planets[zone[0].planet]);
     let fruHere = false;

@@ -436,8 +436,8 @@ function attack(melee) {
     }
     // double attaque
     if (selectedBat.tags.includes('datt') && !selectedWeap.isPrec && !selectedWeap.isBow && !selectedWeap.noBis && !selectedWeap.noDatt) {
-        shots = Math.round(shots*1.5);
-        attFactor = Math.round(attFactor*1.5);
+        shots = Math.round(shots*1.65);
+        attFactor = Math.round(attFactor*1.65);
     }
     // Attack %
     $('#report').append('<span class="report jaune">Attaque '+attFactor+'%<br></span>');

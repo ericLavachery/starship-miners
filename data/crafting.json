@@ -103,7 +103,7 @@
     {
         "id":12,
         "result":"Compo2",
-        "cost":{"Fer":3,"Carbone":2},
+        "cost":{"Fer":3,"Carbone":1},
         "compReq":{"const":1},
         "bldReq":["Atelier"],
         "batch":2,

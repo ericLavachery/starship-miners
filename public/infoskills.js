@@ -362,7 +362,7 @@ function skillsInfos(bat,batType,near) {
                     colorNope = 'cy';
                 }
                 if (bat.apLeft >= apReq && !bat.tags.includes('datt')) {
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Cadence 150% / Précision 50%" class="boutonJaune skillButtons" onclick="fury('+apCost+')"><i class="ra ra-fire rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Double attaque</'+balise+'></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Cadence 165% / Précision 50%" class="boutonJaune skillButtons" onclick="fury('+apCost+')"><i class="ra ra-fire rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Double attaque</'+balise+'></span>');
                 } else {
                     if (bat.tags.includes('datt')) {
                         skillMessage = "Déjà activé";
