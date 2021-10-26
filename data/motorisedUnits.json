@@ -1836,7 +1836,7 @@
             "noDef":true,
             "noise":1,
             "rof":6,
-            "accuracy":12,
+            "accuracy":13,
             "power":18,
             "aoe":"brochette",
             "sound":"dynamite",

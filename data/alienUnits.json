@@ -793,7 +793,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capbld","fear","reactpoison","reactblast","destructeur","ricochet","resistall"],
+        "skills":["capbld","fear","reactpoison","destructeur","ricochet","resistall"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":46},
         "killXP":15,
@@ -1056,7 +1056,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["resistfeu","destructeur","sentinelle","reactblast"],
+        "skills":["resistfeu","destructeur","sentinelle"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":8},
         "killXP":3
