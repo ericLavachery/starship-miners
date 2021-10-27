@@ -839,8 +839,8 @@ function attack(melee) {
     $('#report').append('<span class="report vert bd">Dégâts: '+totalDamage+'<br></span>');
     // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
     if (tile.infra != undefined) {
-        if (tile.infra === 'Miradors') {
-            mirDestruction(selectedWeap,selectedBat,selectedBatType,tile,targetBat.team);
+        if (tile.infra === 'Miradors' || tile.infra === 'Palissades') {
+            mirDestruction(selectedWeap,selectedBat,selectedBatType,tile,targetBat.team,tile.infra);
         }
     }
     // agrippeur
@@ -1711,8 +1711,8 @@ function defense(melee) {
     $('#report').append('<span class="report vert bd">Dégâts: '+totalDamage+'<br></span>');
     // POST DAMAGE EFFECTS ----------------------------------------------------------------------------------------------------------
     if (tile.infra != undefined) {
-        if (tile.infra === 'Miradors') {
-            mirDestruction(targetWeap,targetBat,targetBatType,tile,selectedBat.team);
+        if (tile.infra === 'Miradors' || tile.infra === 'Palissades') {
+            mirDestruction(targetWeap,targetBat,targetBatType,tile,selectedBat.team,tile.infra);
         }
     }
     // poison

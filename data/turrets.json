@@ -345,7 +345,7 @@
             "noMelee":true,
             "isArt":true,
             "kit":true,
-            "rof":4,
+            "rof":6,
             "accuracy":14,
             "power":33,
             "aoe":"squad",

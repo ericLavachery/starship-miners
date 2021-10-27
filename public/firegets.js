@@ -2081,7 +2081,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
     return brideDef;
 }
 
-function mirDestruction(weap,bat,batType,tile,teamOnMir) {
+function mirDestruction(weap,bat,batType,tile,teamOnMir,infraName) {
     let power = (weap.power*1.5/(weap.armors*2))-2;
     if (power < 0) {
         power = 0;
@@ -2107,9 +2107,16 @@ function mirDestruction(weap,bat,batType,tile,teamOnMir) {
     }
     console.log('MirDamage='+damage);
     let breakChance = Math.floor(damage/20);
+    if (infraName === 'Palissades') {
+        if (damage >= 400) {
+            breakChance = Math.floor(damage/80);
+        } else {
+            breakChance = 0;
+        }
+    }
     console.log('breakChance='+breakChance);
     if (rand.rand(1,100) <= breakChance) {
-        warning('Destruction',bat.type+' a détruit les Miradors');
+        warning('Destruction',bat.type+' a détruit les '+infraName);
         tile.infra = 'Débris';
         if (teamOnMir === 'player') {
             if (selectedBat.team === 'player') {
