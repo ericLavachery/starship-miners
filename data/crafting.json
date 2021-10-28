@@ -1121,7 +1121,7 @@
     {
         "id":95,
         "result":"Energie",
-        "cost":{"Soufre":150},
+        "cost":{"Soufre":200},
         "compReq":{},
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],

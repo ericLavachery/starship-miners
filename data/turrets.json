@@ -877,7 +877,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","prefab","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","infrako"],
+        "skills":["fouille","noguet","prefab","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","infrako"],
         "mecanoCost":12,
         "fuzz":6,
         "deathFx":"explo1"

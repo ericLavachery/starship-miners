@@ -3338,7 +3338,7 @@
         "pic":"camp",
         "cat":"buildings",
         "kind":"zero-support",
-        "sort":5,
+        "sort":50,
         "squads":6,
         "squadSize":1,
         "crew":6,

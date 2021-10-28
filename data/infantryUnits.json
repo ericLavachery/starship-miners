@@ -3405,7 +3405,6 @@
             "rof":6,
             "accuracy":30,
             "power":20,
-            "armors":0.5,
             "aoe":"unit",
             "sound":"bfg_ray",
             "ammo":["bfg","bfg-g2"]

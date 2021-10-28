@@ -2325,7 +2325,7 @@
         "bldEquiv":["Générateur","Centrale SMR"],
         "bldReq":["Générateur"],
         "compReq":{"energ":1},
-        "upkeep":{"Plutonium":7,"Eau":20},
+        "upkeep":{"Plutonium":6,"Eau":20},
         "prod":{"Energie":230},
         "costs":{"Compo1":345,"Compo2":405,"Compo3":450,"Eau":6000,"Energie":4000,"Carbone":5000,"Titane":1500,"Plomb":2000,"Nickel":1000,"Cuivre":800,"Bore":1500,"Plutonium":1500,"Electros":400,"Batteries":900},
         "fabTime":600,

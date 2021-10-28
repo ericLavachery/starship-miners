@@ -78,8 +78,8 @@ function craftWindow(retour) {
             $('#conUnitList').append('<hr>');
         }
     });
-    if (playerInfos.bldList.includes('Crameur')) {
-        let energyFactor = 50;
+    if (playerInfos.bldList.includes('Crameur') || playerInfos.bldList.includes('Centrale nucléaire')) {
+        let energyFactor = 100;
         let dispoRes = 0;
         let neededRes = 0;
         let iHave = getDispoRes('Energie');
@@ -87,20 +87,28 @@ function craftWindow(retour) {
         // sortedResTypes.reverse();
         sortedResTypes.forEach(function(res) {
             if (res.energie > 0) {
-                dispoRes = getDispoRes(res.name);
-                neededRes = res.energie*energyFactor/10;
-                neededRes = cramPower(res,neededRes);
-                if (dispoRes >= neededRes) {
-                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                    $('#conUnitList').append('<span class="craftsList cy klik" onclick="doEnergyCraft(`'+res.name+'`,'+neededRes+','+energyFactor+')">'+energyFactor+' Energie <span class="brunf">('+iHave+')</span></span><br>');
-                    $('#conUnitList').append('<span class="craftsList gf">'+res.name+':<span class="bleu">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
-                } else {
-                    $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-                    $('#conUnitList').append('<span class="craftsList gf">'+energyFactor+' Energie</span><br>');
-                    $('#conUnitList').append('<span class="craftsList gf">'+res.name+':<span class="rouge">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
+                let cramBld = 'Crameur';
+                if (res.cramBld != undefined) {
+                    if (res.cramBld === 'Centrale nucléaire') {
+                        cramBld = 'Centrale nucléaire';
+                    }
                 }
-                $('#conUnitList').append('<span class="craftsList bleu">Crameur</span><br>');
-                $('#conUnitList').append('<hr>');
+                if (playerInfos.bldList.includes(cramBld)) {
+                    dispoRes = getDispoRes(res.name);
+                    neededRes = res.energie*energyFactor/10;
+                    neededRes = cramPower(res,neededRes);
+                    if (dispoRes >= neededRes) {
+                        $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                        $('#conUnitList').append('<span class="craftsList cy klik" onclick="doEnergyCraft(`'+res.name+'`,'+neededRes+','+energyFactor+')">'+energyFactor+' Energie <span class="brunf">('+iHave+')</span></span><br>');
+                        $('#conUnitList').append('<span class="craftsList gf">'+res.name+':<span class="bleu">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
+                    } else {
+                        $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                        $('#conUnitList').append('<span class="craftsList gf">'+energyFactor+' Energie</span><br>');
+                        $('#conUnitList').append('<span class="craftsList gf">'+res.name+':<span class="rouge">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
+                    }
+                    $('#conUnitList').append('<span class="craftsList bleu">'+cramBld+'</span><br>');
+                    $('#conUnitList').append('<hr>');
+                }
             }
         });
     }

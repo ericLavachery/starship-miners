@@ -11,6 +11,7 @@ function guet() {
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
+    showMap(zone,false);
 };
 
 function fortification(apCost) {
@@ -23,6 +24,7 @@ function fortification(apCost) {
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
+    showMap(zone,false);
 };
 
 function checkCommand(myBat) {
