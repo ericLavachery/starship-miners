@@ -7,26 +7,32 @@ function encounter() {
     }
     if (rand.rand(1,2) === 1) {
         hard = true;
+        playerInfos.fndCits = playerInfos.fndCits+3;
         encDice = rand.rand(0,encDiceMax);
     } else {
         encDice = rand.rand(2,encDiceMax);
     }
     if (encDice === 0 || encDice === 1 || encDice === 2 || encDice === 3) {
         baseDeResistants(hard);
+        playerInfos.fndCits = playerInfos.fndCits+3;
     } else if (encDice === 4 || encDice === 5 || encDice === 6) {
         bastionDeBrigands(hard);
+        playerInfos.fndCits = playerInfos.fndCits+2;
     } else if (encDice === 7 || encDice === 8) {
         baseLabo(hard);
+        playerInfos.fndCits = playerInfos.fndCits+3;
     } else if (encDice === 9 || encDice === 10) {
         campDeColons(hard);
+        playerInfos.fndCits = playerInfos.fndCits+3;
     } else if (encDice === 11 || encDice === 12) {
         zoneIndustrielle(hard);
+        playerInfos.fndCits = playerInfos.fndCits+3;
     } else if (encDice === 13) {
         // Piège alien
     } else if (encDice === 14 || encDice === 15) {
         tooLate(hard);
     } else {
-        madCitizens();
+        madCitizens(hard);
     }
 };
 
@@ -52,14 +58,17 @@ function putBastionAliens(hard) {
     }
 }
 
-function madCitizens() {
+function madCitizens(hard) {
     console.log('CITOYENS ERRANTS');
     let centreTileId = checkEncounterTile();
     warning('Citoyens errants en vue!','',false,encounterTileId);
     if (centreTileId >= 0) {
         // CITOYENS
         let dropTile;
-        let citDice = 5-Math.floor(zone[0].mapDiff/3);
+        let citDice = 6-Math.floor(zone[0].mapDiff/3);
+        if (hard) {
+            citDice = citDice-2;
+        }
         let maxCit = Math.floor(zone[0].mapDiff/1.25)+4;
         let minCit = Math.floor(zone[0].mapDiff/3)+1;
         let numCit = rand.rand(minCit,maxCit)*6;
@@ -93,7 +102,7 @@ function madCitizens() {
             playerOccupiedTiles.push(dropTile);
         }
         // CITOYENS
-        if (rand.rand(1,4) === 1 && zone[0].mapDiff >= 5) {
+        if (rand.rand(1,citDice) === 1 && zone[0].mapDiff >= 5) {
             citId = 126;
             numCit = rand.rand(minCit,maxCit)*6;
             dropTile = checkDropSafe(centreTileId);
@@ -105,7 +114,9 @@ function madCitizens() {
             putBat(dropTile,numCit,0,'',false);
             playerOccupiedTiles.push(dropTile);
         }
-        dropEgg('Veilleurs','encounter');
+        if (hard) {
+            dropEgg('Veilleurs','encounter');
+        }
     } else {
         console.log('No good tile!');
     }

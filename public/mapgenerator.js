@@ -1881,4 +1881,6 @@ function checkZoneType() {
             zoneInfos.ieggsBonus = 0;
         }
     }
+    console.log('ZONE TYPE');
+    console.log(zoneInfos);
 };

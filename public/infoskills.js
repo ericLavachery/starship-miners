@@ -1,6 +1,4 @@
 function skillsInfos(bat,batType,near) {
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!NEAR');
-    console.log(near);
     let skillMessage;
     let numTargets = 0;
     let apCost;
@@ -133,9 +131,15 @@ function skillsInfos(bat,batType,near) {
             boutonNope = 'boutonOK';
             colorNope = 'cy';
         }
-        apCost = 5-playerInfos.comp.def;
-        apReq = batType.ap-2-playerInfos.comp.def;
-        if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
+        let okTrain = true;
+        let defComp = playerInfos.comp.def;
+        if (batType.skills.includes('robot') && bat.eq != 'g2ai' && bat.logeq != 'g2ai') {
+            okTrain = false;
+            defComp = 0;
+        }
+        apCost = 5-defComp;
+        apReq = batType.ap-2-defComp;
+        if (playerInfos.bldVM.includes('Camp d\'entraînement') && okTrain) {
             apCost = apCost-1;
             apReq = apReq-1;
         }
@@ -150,7 +154,7 @@ function skillsInfos(bat,batType,near) {
         }
         if (bat.apLeft >= apReq && !bat.tags.includes('guet') && !batType.skills.includes('sentinelle') && bat.eq != 'detector' && bat.logeq != 'detector' && bat.eq != 'g2ai' && bat.logeq != 'g2ai' && !batType.skills.includes('initiative') && !batType.skills.includes('after')) {
             // assez d'ap
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Faire le guet (pas de malus à la riposte)" class="'+bouton+' skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apCost+'</span></button>&nbsp; Guet</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Faire le guet ('+apReq+' PA requis)" class="'+bouton+' skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apCost+'</span></button>&nbsp; Guet</'+balise+'></span>');
         } else {
             if (batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
                 skillMessage = "Sentinelle";
@@ -171,13 +175,19 @@ function skillsInfos(bat,batType,near) {
             boutonNope = 'boutonOK';
             colorNope = 'cy';
         }
-        apCost = batType.ap-playerInfos.comp.def+3;
-        apReq = batType.ap-(playerInfos.comp.def*2)-4;
-        if (playerInfos.comp.def === 3) {
+        let okTrain = true;
+        let defComp = playerInfos.comp.def;
+        if (batType.skills.includes('robot') && bat.eq != 'g2ai' && bat.logeq != 'g2ai') {
+            okTrain = false;
+            defComp = 0;
+        }
+        apCost = batType.ap-defComp+3;
+        apReq = batType.ap-(defComp*2)-4;
+        if (defComp === 3) {
             apCost = apCost-1;
             apReq = apReq-2;
         }
-        if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
+        if (playerInfos.bldVM.includes('Camp d\'entraînement') && okTrain) {
             apCost = apCost-1;
             apReq = apReq-2;
         }
@@ -192,7 +202,7 @@ function skillsInfos(bat,batType,near) {
             bouton = 'boutonGris';
         }
         if (bat.apLeft >= apReq && !bat.tags.includes('fortif') && !inMelee) {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Se fortifier (bonus couverture)" class="'+bouton+' skillButtons" onclick="fortification('+apCost+')"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Se fortifier ('+apReq+' PA requis)" class="'+bouton+' skillButtons" onclick="fortification('+apCost+')"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Vous ne pouvez pas vous fortifier en mêlée";
@@ -271,7 +281,7 @@ function skillsInfos(bat,batType,near) {
                 bouton = 'boutonGris';
             }
             if (bat.apLeft >= apReq && bat.fuzz >= -1 && camoufOK) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Mode furtif" class="'+bouton+' skillButtons" onclick="camouflage('+apCost+')"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Mode furtif ('+apReq+' PA requis)" class="'+bouton+' skillButtons" onclick="camouflage('+apCost+')"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
             } else if (bat.fuzz <= -2) {
                 $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Sortir du mode furtif" class="'+boutonNope+' skillButtons '+colorNope+'" onclick="camoOut()"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mode furtif</'+balise+'></span>');
             } else {
@@ -323,10 +333,15 @@ function skillsInfos(bat,batType,near) {
     if (!playerInfos.onShip) {
         if (batType.skills.includes('datt') || bat.eq.includes('crimekit')) {
             let weapOK = true;
-            apCost = 7-playerInfos.comp.train;
-            if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
-                apCost = apCost-1;
+            let trainComp = playerInfos.comp.train;
+            if (batType.skills.includes('robot') && bat.eq != 'g2ai' && bat.logeq != 'g2ai') {
+                trainComp = 0;
+            } else {
+                if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
+                    apCost = apCost-1;
+                }
             }
+            apCost = 7-trainComp;
             if (!batType.weapon.isPrec && !batType.weapon.isBow && !batType.weapon.noBis && !batType.weapon.noDatt) {
                 if (batType.weapon2.rof >= 1) {
                     if (!batType.weapon2.isPrec && !batType.weapon2.isBow && !batType.weapon.noBis && !batType.weapon.noDatt) {

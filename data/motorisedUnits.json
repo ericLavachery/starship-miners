@@ -1189,7 +1189,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","selfbadmecano","sentinelle","defense","flash","recupcit","recupres","caterp","kzin","nochef"],
+        "skills":["fortif","selfbadmecano","sentinelle","defense","longshot","flash","recupcit","recupres","caterp","kzin","nochef"],
         "mecanoCost":20,
         "fuzz":3,
         "deathFx":"planeexploair1",

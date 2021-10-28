@@ -321,6 +321,11 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
     let squadReductor = 0.9;
     if (defBat.armor >= 1) {
         let adjArmor = defBat.armor;
+        if (defBatType.cat === 'infantry') {
+            adjArmor = adjArmor*3;
+        } else if (defBatType.cat === 'vehicles') {
+            adjArmor = adjArmor+6;
+        }
         if (weapon.isGas) {
             adjArmor = Math.floor(adjArmor/2);
         } else if (defBatType.skills.includes('ricochet') && !brochette && !weapon.isFire) {

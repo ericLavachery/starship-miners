@@ -1735,10 +1735,24 @@ function putRoad() {
     tagDelete(selectedBat,'guet');
     doneAction(selectedBat);
     camoOut();
+    if (selectedBatType.skills.includes('infrahelp')) {
+        selectedBat.apLeft = selectedBat.apLeft-apCost;
+        putRoadsAround();
+    } else {
+        tile.rd = true;
+    }
     selectedBatArrayUpdate();
-    tile.rd = true;
     showMap(zone,false);
     showBatInfos(selectedBat);
+};
+
+function putRoadsAround() {
+    zone.forEach(function(tile) {
+        let distance = calcDistance(selectedBat.tileId,tile.id);
+        if (distance <= 1) {
+            tile.rd = true;
+        }
+    });
 };
 
 function putInfra(infraName) {

@@ -1578,7 +1578,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","crewsave","transport","routes","producteur","upkeep","updisable","upgrade","prodres","longshot","ravitaillement","ravitprod","fret","dumper","selfrepair","reeq","prefab"],
+        "skills":["fouille","recupcit","crewsave","transport","routes","producteur","upkeep","updisable","upgrade","prodres","longshot","ravitaillement","ravitprod","fret","dumper","selfrepair","reeq","prefab","infrahelp"],
         "mecanoCost":10,
         "transMaxSize":50,
         "transUnits":1500,
@@ -1633,7 +1633,7 @@
             "power":40,
             "aoe":"squad",
             "sound":"miss",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium","missile-deluge"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium","missile-deluge","infrahelp"],
             "maxAmmo":6,
             "ravitBld":"Arsenal"
         },
@@ -3352,7 +3352,7 @@
         "weapon":{
             "name":"Fusil semi-auto",
             "cost":3,
-            "range":2,
+            "range":3,
             "noBis":false,
             "kit":true,
             "noise":2,
@@ -3366,7 +3366,7 @@
         "weapon2":{
             "name":"Fusil antichar",
             "cost":6,
-            "range":4,
+            "range":5,
             "noBis":true,
             "kit":true,
             "rof":6,

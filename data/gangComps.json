@@ -101,7 +101,7 @@
         "fullName":"Entraînement",
         "levels":{"rednecks":5,"blades":0,"bulbos":5,"drogmulojs":5,"tiradores":5,"detruas":5,"brasier":5},
         "maxLevel":2,
-        "lvlCosts":[0,1,1]
+        "lvlCosts":[0,1,2]
     },
     {
         "id":14,
