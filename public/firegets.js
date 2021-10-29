@@ -2110,11 +2110,25 @@ function mirDestruction(weap,bat,batType,tile,teamOnMir,infraName) {
     if (batType.size >= 25) {
         damage = Math.round(damage*Math.sqrt(batType.size)/5);
     }
+    if (batType.skills.includes('destructeur')) {
+        damage = Math.round(damage*1.5);
+    }
+    if (weap.aoe === 'squad') {
+        damage = Math.round(damage*2);
+    } else if (weap.aoe === 'bat') {
+        damage = Math.round(damage*4);
+    }
     console.log('MirDamage='+damage);
     let breakChance = Math.floor(damage/20);
     if (infraName === 'Palissades') {
         if (damage >= 400) {
             breakChance = Math.floor(damage/80);
+        } else {
+            breakChance = 0;
+        }
+    } else if (infraName === 'Remparts') {
+        if (damage >= 1600) {
+            breakChance = Math.floor(damage/320);
         } else {
             breakChance = 0;
         }

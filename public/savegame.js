@@ -285,6 +285,7 @@ function resetPlayerInfos() {
     playerInfos.fndComps = 0;
     playerInfos.fndUnits = 0;
     playerInfos.fndCits = 0;
+    playerInfos.crafts = 0;
     playerInfos.sondeMaps = 0;
     playerInfos.eggPause = false;
     playerInfos.droppedEggs = 0;

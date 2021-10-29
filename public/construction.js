@@ -1688,7 +1688,6 @@ function deleteAlien(batId) {
 function getRoadCosts(tile) {
     let roadCosts = {};
     if (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain === 'L') {
-        roadCosts['Scrap'] = 50;
         roadCosts['Compo1'] = 150;
         if (playerInfos.comp.const >= 1) {
             roadCosts['Compo1'] = 100;

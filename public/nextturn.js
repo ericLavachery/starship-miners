@@ -181,6 +181,7 @@ function nextTurnEnd() {
     medicalTransports = [];
     let transBat = {};
     playerInfos.bldList = [];
+    craftReset(1);
     landers = [];
     minedThisTurn = {};
     let ravitNum;

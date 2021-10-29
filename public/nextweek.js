@@ -4,6 +4,8 @@ function events(afterMission,time,sim) {
     resetWeekRes();
     if (afterMission) {
         time = Math.ceil(playerInfos.mapTurn/3)*3;
+    } else {
+        craftReset(time);
     }
     if (!sim) {
         repos(time);

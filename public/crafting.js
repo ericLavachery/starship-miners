@@ -3,6 +3,7 @@ function craftWindow(retour) {
     batUnselect();
     updateBldList();
     findLanders();
+    let maxCrafts = getMaxCrafts();
     if (playerInfos.mapTurn >= 3) {
         calcEndRes(false);
     }
@@ -15,9 +16,8 @@ function craftWindow(retour) {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="blockTitle"><h1>Crafting</h1></span>');
+    $('#conUnitList').append('<span class="blockTitle"><h1>Crafting <span class="vert">('+playerInfos.crafts+'/'+maxCrafts+')</span></h1></span>');
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
-
     let creationNum;
     let craftCostsList;
     let craftCompReqs;
@@ -26,6 +26,7 @@ function craftWindow(retour) {
     let costOK = false;
     let bldOK = false;
     let oldCraft = false;
+    console.log('maxCrafts='+maxCrafts);
     crafting.forEach(function(craft) {
         craftOK = false;
         if (craft.creaNum === undefined) {
@@ -94,8 +95,9 @@ function craftWindow(retour) {
                     }
                 }
                 if (playerInfos.bldList.includes(cramBld)) {
+                    energyFactor = Math.round(60/Math.sqrt(res.energie))*5;
                     dispoRes = getDispoRes(res.name);
-                    neededRes = res.energie*energyFactor/10;
+                    neededRes = res.energie*energyFactor/eCrafting;
                     neededRes = cramPower(res,neededRes);
                     if (dispoRes >= neededRes) {
                         $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
@@ -164,6 +166,37 @@ function checkCraftCost(craftId,number) {
     return craftResOK;
 };
 
+function craftReset(time) {
+    let craftsPerTurn = baseCrafts*(playerInfos.comp.ind+3)/3;
+    if (playerInfos.bldList.includes('Usine')) {
+        craftsPerTurn = (craftsPerTurn+2)*1.5;
+    } else if (playerInfos.bldList.includes('Chaîne de montage')) {
+        craftsPerTurn = (caftsPerTurn+1)*1.25;
+    } else if (!playerInfos.bldList.includes('Atelier')) {
+        craftsPerTurn = craftsPerTurn/1.5;
+    }
+    playerInfos.crafts = playerInfos.crafts-Math.ceil(time*craftsPerTurn);
+    if (playerInfos.crafts < 0) {
+        playerInfos.crafts = 0;
+    }
+}
+
+function getMaxCrafts() {
+    let craftsPerTurn = baseCrafts*(playerInfos.comp.ind+3)/3;
+    if (playerInfos.bldList.includes('Usine')) {
+        craftsPerTurn = (craftsPerTurn+2)*1.5;
+    } else if (playerInfos.bldList.includes('Chaîne de montage')) {
+        craftsPerTurn = (craftsPerTurn+1)*1.25;
+    } else if (!playerInfos.bldList.includes('Atelier')) {
+        craftsPerTurn = craftsPerTurn/1.5;
+    }
+    let maxCrafts = Math.ceil(craftsPerTurn*3);
+    if (playerInfos.onShip) {
+        maxCrafts = maxCrafts*3;
+    }
+    return maxCrafts;
+}
+
 function doCraft(craftId,number) {
     let craftIndex = crafting.findIndex((obj => obj.id == craftId));
     let craft = crafting[craftIndex];
@@ -179,6 +212,7 @@ function doCraft(craftId,number) {
     if (playerInfos.mapTurn >= 3) {
         // calcEndRes(false);
     }
+    playerInfos.crafts = playerInfos.crafts+1;
     craftWindow(true);
 };
 
@@ -244,6 +278,7 @@ function adjCraftFactor(craft,craftFactor) {
 function doEnergyCraft(resName,neededRes,energyCreated) {
     resSub(resName,neededRes);
     resAdd('Energie',energyCreated);
+    playerInfos.crafts = playerInfos.crafts+1;
     craftWindow(true);
 };
 
@@ -251,11 +286,11 @@ function showCraftCost(craft,number) {
     let craftCostsList = ' ';
     let dispoRes;
     let craftFactor = number/craft.batch;
-    console.log(craft.result);
-    console.log(craft.cost);
-    console.log(craftFactor);
+    // console.log(craft.result);
+    // console.log(craft.cost);
+    // console.log(craftFactor);
     craftFactor = adjCraftFactor(craft,craftFactor);
-    console.log(craftFactor);
+    // console.log(craftFactor);
     let sonde = getBatTypeByName('Impacteur');
     if (!playerInfos.bldVM.includes('Aérodocks')) {
         sonde = getBatTypeByName('Sonde');

@@ -73,7 +73,8 @@
         "cost":{"Carbone":5,"Energie":1},
         "compReq":{"const":1,"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":4
+        "batch":4,
+        "creaNum":100
     },
     {
         "id":59,
@@ -81,7 +82,8 @@
         "cost":{"Carbone":3,"Scrap":2,"Energie":1},
         "compReq":{"const":1,"tri":1,"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":4
+        "batch":4,
+        "creaNum":100
     },
     {
         "id":60,
@@ -89,7 +91,8 @@
         "cost":{"Carbone":3,"Azote":1,"Energie":1},
         "compReq":{"const":1,"ind":3},
         "bldReq":["Usine"],
-        "batch":4
+        "batch":4,
+        "creaNum":100
     },
     {
         "id":7,
@@ -124,7 +127,8 @@
         "cost":{"Fer":2,"Carbone":4,"Energie":1},
         "compReq":{"const":2,"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":4
+        "batch":4,
+        "creaNum":100
     },
     {
         "id":17,
@@ -132,7 +136,8 @@
         "cost":{"Fer":2,"Carbone":2,"Scrap":2,"Energie":1},
         "compReq":{"const":2,"tri":2,"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":4
+        "batch":4,
+        "creaNum":100
     },
     {
         "id":61,
@@ -140,7 +145,8 @@
         "cost":{"Fer":2,"Carbone":1,"Azote":1,"Oxygène":1,"Energie":1},
         "compReq":{"const":1,"ind":3},
         "bldReq":["Usine"],
-        "batch":5
+        "batch":5,
+        "creaNum":100
     },
     {
         "id":109,
@@ -177,7 +183,8 @@
         "cost":{"Fer":2,"Silicium":4,"Titane":2,"Energie":2},
         "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":4
+        "batch":4,
+        "creaNum":100
     },
     {
         "id":14,
@@ -185,7 +192,8 @@
         "cost":{"Fer":2,"Carbone":4,"Titane":2,"Energie":2},
         "compReq":{"const":1,"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":4
+        "batch":4,
+        "creaNum":100
     },
     {
         "id":18,
@@ -193,7 +201,8 @@
         "cost":{"Scrap":4,"Carbone":2,"Titane":2,"Energie":2},
         "compReq":{"const":2,"tri":3,"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":4
+        "batch":4,
+        "creaNum":100
     },
     {
         "id":15,
@@ -201,7 +210,8 @@
         "cost":{"Aluminium":2,"Carbone":2,"Tungstène":2,"Energie":2},
         "compReq":{"const":2,"ind":2},
         "bldReq":["Usine"],
-        "batch":4
+        "batch":4,
+        "creaNum":100
     },
     {
         "id":62,
@@ -209,7 +219,8 @@
         "cost":{"Aluminium":1,"Carbone":2,"Tungstène":2,"Azote":1,"Energie":2},
         "compReq":{"const":2,"ind":3},
         "bldReq":["Usine"],
-        "batch":5
+        "batch":5,
+        "creaNum":100
     },
     {
         "id":91,
@@ -265,7 +276,8 @@
         "cost":{"Cuivre":7,"Carbone":3,"Cobalt":2,"Energie":2},
         "compReq":{"ind":3},
         "bldReq":["Usine"],
-        "batch":6
+        "batch":6,
+        "creaNum":100
     },
     {
         "id":2,
@@ -313,7 +325,8 @@
         "cost":{"Carbone":3,"Azote":3,"Hydrogène":3,"Energie":4},
         "compReq":{"ind":3},
         "bldReq":["Usine"],
-        "batch":5
+        "batch":5,
+        "creaNum":100
     },
     {
         "id":70,
@@ -387,12 +400,31 @@
         "batch":10
     },
     {
+        "id":5,
+        "result":"Fuel",
+        "cost":{"Hydrocarbure":18},
+        "compReq":{"ind":1},
+        "bldReq":["Chaîne de montage"],
+        "batch":10,
+        "creaNum":100
+    },
+    {
         "id":22,
         "result":"Fuel",
         "cost":{"Carbone":12,"Hydrogène":4},
         "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":10
+        "batch":10,
+        "creaNum":100
+    },
+    {
+        "id":63,
+        "result":"Fuel",
+        "cost":{"Hydrocarbure":16},
+        "compReq":{"ind":2},
+        "bldReq":["Usine"],
+        "batch":10,
+        "creaNum":100
     },
     {
         "id":23,
@@ -400,7 +432,8 @@
         "cost":{"Végétaux":30,"Hydrogène":3},
         "compReq":{"exo":1,"ind":2},
         "bldReq":["Usine"],
-        "batch":10
+        "batch":10,
+        "creaNum":100
     },
     {
         "id":107,
@@ -449,7 +482,8 @@
         "cost":{"Fer":17,"Soufre":34,"Plomb":34},
         "compReq":{},
         "bldReq":["Arsenal"],
-        "batch":20
+        "batch":20,
+        "creaNum":100
     },
     {
         "id":31,
@@ -457,7 +491,8 @@
         "cost":{"Fer":7,"Soufre":14,"Plomb":14},
         "compReq":{"ind":1},
         "bldReq":["Usine d'armement"],
-        "batch":10
+        "batch":10,
+        "creaNum":100
     },
     {
         "id":4,
@@ -492,7 +527,8 @@
         "cost":{"Hydrogène":3,"Hydrocarbure":1},
         "compReq":{"explo":3},
         "bldReq":["Arsenal"],
-        "batch":2
+        "batch":2,
+        "creaNum":100
     },
     {
         "id":26,
@@ -500,7 +536,8 @@
         "cost":{"Carbone":1,"Hydrogène":2,"Azote":2,"Oxygène":1,"Energie":1},
         "compReq":{"explo":3,"ind":1},
         "bldReq":["Usine d'armement"],
-        "batch":4
+        "batch":4,
+        "creaNum":100
     },
     {
         "id":106,
@@ -536,7 +573,8 @@
         "cost":{"Végétaux":15,"Energie":2},
         "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":3
+        "batch":3,
+        "creaNum":100
     },
     {
         "id":67,
@@ -544,7 +582,8 @@
         "cost":{"Carbone":2,"Azote":1,"Hydrogène":1,"Energie":2},
         "compReq":{"ind":2},
         "bldReq":["Usine"],
-        "batch":4
+        "batch":4,
+        "creaNum":100
     },
     {
         "id":33,
@@ -608,7 +647,7 @@
         "compReq":{},
         "bldReq":[],
         "batch":1,
-        "creaNum":20
+        "creaNum":50
     },
     {
         "id":71,
@@ -616,7 +655,8 @@
         "cost":{"Fruits":5,"Végétaux":10,"Energie":1},
         "compReq":{},
         "bldReq":["Cantine"],
-        "batch":1
+        "batch":1,
+        "creaNum":100
     },
     {
         "id":73,
@@ -624,7 +664,8 @@
         "cost":{"Fruits":9,"Végétaux":15,"Energie":2},
         "compReq":{"tri":1},
         "bldReq":["Cantine"],
-        "batch":3
+        "batch":3,
+        "creaNum":200
     },
     {
         "id":74,
@@ -632,7 +673,8 @@
         "cost":{"Fruits":6,"Larvium":3,"Energie":2},
         "compReq":{"ca":1},
         "bldReq":["Cantine"],
-        "batch":6
+        "batch":6,
+        "creaNum":100
     },
     {
         "id":75,
@@ -640,7 +682,8 @@
         "cost":{"Végétaux":18,"Larvium":3,"Eau":3,"Energie":2},
         "compReq":{"ca":2,"tri":1},
         "bldReq":["Laboratoire"],
-        "batch":9
+        "batch":9,
+        "creaNum":100
     },
     {
         "id":76,
@@ -648,7 +691,8 @@
         "cost":{"Végétaux":18,"Swarmine":2,"Zinc":1,"Eau":3,"Energie":3},
         "compReq":{"ca":2},
         "bldReq":["Laboratoire"],
-        "batch":9
+        "batch":9,
+        "creaNum":100
     },
     {
         "id":77,
@@ -656,7 +700,8 @@
         "cost":{"Fruits":6,"Huile":2,"Bugium":6,"Potassium":1,"Phosphore":1,"Energie":4},
         "compReq":{"ca":3},
         "bldReq":["Laboratoire"],
-        "batch":12
+        "batch":12,
+        "creaNum":100
     },
     {
         "id":78,
@@ -664,7 +709,8 @@
         "cost":{"Fruits":3,"Creatite":2,"Chlore":1},
         "compReq":{"ca":4,"gen":1},
         "bldReq":["Centre de recherches"],
-        "batch":12
+        "batch":12,
+        "creaNum":100
     },
     {
         "id":79,
@@ -672,64 +718,8 @@
         "cost":{"Végétaux":12,"Huile":1,"Aranium":4,"Chlore":1,"Zinc":1,"Energie":2},
         "compReq":{"ca":5,"exo":1},
         "bldReq":["Centre de recherches"],
-        "batch":12
-    },
-    {
-        "id":80,
-        "result":"Scrap",
-        "cost":{"Fer":2,"Carbone":2,"Végétaux":4},
-        "compReq":{"mat":1,"const":1},
-        "bldReq":["Atelier"],
-        "batch":3,
-        "creaNum":20,
-        "deg":true
-    },
-    {
-        "id":81,
-        "result":"Scrap",
-        "cost":{"Fer":2,"Carbone":2,"Végétaux":2,"Energie":1},
-        "compReq":{"mat":2,"const":2,"ind":1},
-        "bldReq":["Chaîne de montage"],
-        "batch":4,
-        "deg":true
-    },
-    {
-        "id":82,
-        "result":"Scrap",
-        "cost":{"Compo1":2},
-        "compReq":{"tri":1},
-        "bldReq":["Décharge","Atelier"],
-        "batch":1,
-        "creaNum":20,
-        "deg":true
-    },
-    {
-        "id":83,
-        "result":"Scrap",
-        "cost":{"Compo2":3,"Energie":1},
-        "compReq":{"tri":1,"const":1},
-        "bldReq":["Décharge","Atelier"],
-        "batch":2,
-        "creaNum":20,
-        "deg":true
-    },
-    {
-        "id":84,
-        "result":"Scrap",
-        "cost":{"Compo3":4,"Energie":2},
-        "compReq":{"tri":2,"const":1,"ind":1},
-        "bldReq":["Décharge","Chaîne de montage"],
-        "batch":3,
-        "deg":true
-    },
-    {
-        "id":63,
-        "result":"Scrap",
-        "cost":{"Bugium":3,"Swarmine":2,"Larvium":1,"Aranium":1,"Energie":2},
-        "compReq":{"ca":1,"ind":3,"tri":1},
-        "bldReq":["Recyclab"],
-        "batch":7,
-        "deg":true
+        "batch":12,
+        "creaNum":100
     },
     {
         "id":34,
@@ -1033,21 +1023,13 @@
         "batch":15
     },
     {
-        "id":5,
-        "result":"Transorb",
-        "cost":{"Electros":200,"Bore":500,"Carbone":1000,"Nickel":500,"Titane":500,"Compo3":500,"Energie":200},
-        "compReq":{"energ":2,"mat":3,"ind":2},
-        "bldReq":["Laboratoire","Usine","Soute"],
-        "batch":1,
-        "creaNum":1
-    },
-    {
         "id":124,
         "result":"Energons",
         "cost":{"Energie":11},
         "compReq":{},
         "bldReq":["Centrale SMR"],
-        "batch":1
+        "batch":1,
+        "creaNum":100
     },
     {
         "id":125,
@@ -1059,9 +1041,18 @@
         "creaNum":100
     },
     {
+        "id":80,
+        "result":"Energie",
+        "cost":{"Energons":1},
+        "compReq":{},
+        "bldReq":["Centrale SMR"],
+        "batch":10,
+        "creaNum":1000
+    },
+    {
         "id":94,
         "result":"Energie",
-        "cost":{"Bois":100},
+        "cost":{"Bois":125},
         "compReq":{},
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
@@ -1071,7 +1062,7 @@
     {
         "id":126,
         "result":"Energie",
-        "cost":{"Végétaux":300},
+        "cost":{"Végétaux":400},
         "compReq":{},
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
@@ -1081,7 +1072,7 @@
     {
         "id":99,
         "result":"Energie",
-        "cost":{"Tissus":150},
+        "cost":{"Tissus":200},
         "compReq":{},
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
@@ -1091,7 +1082,7 @@
     {
         "id":96,
         "result":"Energie",
-        "cost":{"Hydrocarbure":40},
+        "cost":{"Hydrocarbure":50},
         "compReq":{},
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
@@ -1101,7 +1092,7 @@
     {
         "id":98,
         "result":"Energie",
-        "cost":{"Fuel":20},
+        "cost":{"Fuel":25},
         "compReq":{},
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
@@ -1111,7 +1102,7 @@
     {
         "id":97,
         "result":"Energie",
-        "cost":{"Huile":20},
+        "cost":{"Huile":25},
         "compReq":{},
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
@@ -1121,7 +1112,7 @@
     {
         "id":95,
         "result":"Energie",
-        "cost":{"Soufre":200},
+        "cost":{"Soufre":250},
         "compReq":{},
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],

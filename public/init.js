@@ -161,6 +161,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.fndCits === undefined) {
         playerInfos.fndCits = 0;
     }
+    if (playerInfos.crafts === undefined) {
+        playerInfos.crafts = 0;
+    }
     if (playerInfos.volFx === undefined) {
         playerInfos.volFx = 0.6;
     }

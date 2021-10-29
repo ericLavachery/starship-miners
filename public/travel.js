@@ -16,6 +16,7 @@ function startMission() {
     loadZone(playerInfos.missionZone);
     // var modeLanding = true
     playerInfos.onShip = false;
+    playerInfos.crafts = 0;
     inSoute = false;
     modeLanding = true;
     // en mode landing: fenêtre avec les landers qui sont dans batsInSpace
@@ -43,6 +44,7 @@ function stopMission() {
     // charger la zone STATION
     loadZone(0);
     playerInfos.onShip = true;
+    playerInfos.crafts = 0;
     playerInfos.missionZone = -1;
     inSoute = false;
     modeLanding = true;

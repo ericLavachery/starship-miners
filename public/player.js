@@ -620,6 +620,7 @@ function playerSkillsUTChanges() {
                 unit.mediCost = 2;
             }
         }
+        unit.fabTime = Math.ceil(unit.fabTime);
     });
     console.log(unitTypes);
 };
@@ -1251,8 +1252,8 @@ function calcStartRes() {
             } else {
                 unitCosts = getAllCosts(bat,true,true);
             }
-            console.log(batType.name);
-            console.log(unitCosts);
+            // console.log(batType.name);
+            // console.log(unitCosts);
             if (unitCosts != undefined) {
                 if (Object.keys(unitCosts).length >= 1) {
                     mergeObjects(allCosts,unitCosts);
@@ -1260,8 +1261,8 @@ function calcStartRes() {
             }
         }
     });
-    console.log('TOTAL');
-    console.log(allCosts);
+    // console.log('TOTAL');
+    // console.log(allCosts);
     Object.entries(allCosts).map(entry => {
         let key = entry[0];
         let value = entry[1];
@@ -1305,17 +1306,17 @@ function calcEndRes(onlyLanders) {
     playerInfos.endRes['Citoyens'] = 0;
     let allCosts = {};
     let unitCosts;
-    console.log('LANDERS');
-    console.log(landers);
+    // console.log('LANDERS');
+    // console.log(landers);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             let batType = getBatType(bat);
-            console.log(batType.name);
+            // console.log(batType.name);
             let countThis = true;
             if (onlyLanders) {
                 if (!batType.skills.includes('transorbital')) {
-                    console.log(bat.loc);
-                    console.log(bat.locId);
+                    // console.log(bat.loc);
+                    // console.log(bat.locId);
                     if (bat.loc != "trans") {
                         countThis = false;
                     } else {
@@ -1325,7 +1326,7 @@ function calcEndRes(onlyLanders) {
                     }
                 }
             }
-            console.log(countThis);
+            // console.log(countThis);
             if (countThis) {
                 if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
                     playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+bat.citoyens;
@@ -1338,8 +1339,8 @@ function calcEndRes(onlyLanders) {
                 }
                 if ((!batType.skills.includes('transorbital') && batType.cat != 'buildings' && batType.cat != 'devices') || batType.skills.includes('prefab')) {
                     unitCosts = getAllCosts(bat,false,true);
-                    console.log(batType.name);
-                    console.log(unitCosts);
+                    // console.log(batType.name);
+                    // console.log(unitCosts);
                     if (unitCosts != undefined) {
                         if (Object.keys(unitCosts).length >= 1) {
                             mergeObjects(allCosts,unitCosts);
@@ -1349,8 +1350,8 @@ function calcEndRes(onlyLanders) {
             }
         }
     });
-    console.log('TOTAL');
-    console.log(allCosts);
+    // console.log('TOTAL');
+    // console.log(allCosts);
     Object.entries(allCosts).map(entry => {
         let key = entry[0];
         let value = entry[1];

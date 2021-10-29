@@ -70,7 +70,73 @@ seconde arme tir à 1+1 (accuracy 10) noFly
     "bldReq":["Centrale solaire","Soute"],
     "batch":50,
     "creaNum":500
-}
+},
+{
+    "id":80,
+    "result":"Scrap",
+    "cost":{"Fer":2,"Carbone":2,"Végétaux":4},
+    "compReq":{"mat":1,"const":1},
+    "bldReq":["Atelier"],
+    "batch":3,
+    "creaNum":20,
+    "deg":true
+},
+{
+    "id":81,
+    "result":"Scrap",
+    "cost":{"Fer":2,"Carbone":2,"Végétaux":2,"Energie":1},
+    "compReq":{"mat":2,"const":2,"ind":1},
+    "bldReq":["Chaîne de montage"],
+    "batch":4,
+    "deg":true
+},
+{
+    "id":82,
+    "result":"Scrap",
+    "cost":{"Compo1":2},
+    "compReq":{"tri":1},
+    "bldReq":["Décharge","Atelier"],
+    "batch":1,
+    "creaNum":20,
+    "deg":true
+},
+{
+    "id":83,
+    "result":"Scrap",
+    "cost":{"Compo2":3,"Energie":1},
+    "compReq":{"tri":1,"const":1},
+    "bldReq":["Décharge","Atelier"],
+    "batch":2,
+    "creaNum":20,
+    "deg":true
+},
+{
+    "id":84,
+    "result":"Scrap",
+    "cost":{"Compo3":4,"Energie":2},
+    "compReq":{"tri":2,"const":1,"ind":1},
+    "bldReq":["Décharge","Chaîne de montage"],
+    "batch":3,
+    "deg":true
+},
+{
+    "id":63,
+    "result":"Scrap",
+    "cost":{"Bugium":3,"Swarmine":2,"Larvium":1,"Aranium":1,"Energie":2},
+    "compReq":{"ca":1,"ind":3,"tri":1},
+    "bldReq":["Recyclab"],
+    "batch":7,
+    "deg":true
+},
+{
+    "id":5,
+    "result":"Transorb",
+    "cost":{"Electros":200,"Bore":500,"Carbone":1000,"Nickel":500,"Titane":500,"Compo3":500,"Energie":200},
+    "compReq":{"energ":2,"mat":3,"ind":2},
+    "bldReq":["Laboratoire","Usine","Soute"],
+    "batch":1,
+    "creaNum":1
+},
 
 Scrap
 Plomb
