@@ -561,11 +561,29 @@
     {
         "id":116,
         "result":"Tissus",
-        "cost":{"Végétaux":6,"Aranium":2,"Azote":1,"Energie":1},
+        "cost":{"Carbone":3,"Aranium":3,"Azote":1,"Energie":1},
         "compReq":{"ca":3},
         "bldReq":["Atelier"],
         "batch":2,
         "creaNum":20
+    },
+    {
+        "id":82,
+        "result":"Tissus",
+        "cost":{"Scrap":9,"Energie":2},
+        "compReq":{"tri":1},
+        "bldReq":["Centre de tri"],
+        "batch":2,
+        "creaNum":50
+    },
+    {
+        "id":81,
+        "result":"Tissus",
+        "cost":{"Carbone":3,"Larvium":3,"Energie":2},
+        "compReq":{"ca":2},
+        "bldReq":["Chaîne de montage"],
+        "batch":2,
+        "creaNum":100
     },
     {
         "id":66,
