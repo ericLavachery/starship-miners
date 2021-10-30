@@ -174,7 +174,7 @@ function craftReset(time) {
     if (playerInfos.bldList.includes('Usine')) {
         craftsPerTurn = (craftsPerTurn+2)*1.5;
     } else if (playerInfos.bldList.includes('Chaîne de montage')) {
-        craftsPerTurn = (caftsPerTurn+1)*1.25;
+        craftsPerTurn = (craftsPerTurn+1)*1.25;
     } else if (!playerInfos.bldList.includes('Atelier')) {
         craftsPerTurn = craftsPerTurn/1.5;
     }
