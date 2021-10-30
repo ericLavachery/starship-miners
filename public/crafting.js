@@ -45,6 +45,9 @@ function craftWindow(retour) {
                 }
             }
         }
+        if (playerInfos.crafts >= maxCrafts) {
+            craftOK = false;
+        }
         oldCraft = checkOldCraft(craft);
         let iHave = getDispoRes(craft.result);
         let craftCol = 'cy';
@@ -99,7 +102,7 @@ function craftWindow(retour) {
                     dispoRes = getDispoRes(res.name);
                     neededRes = res.energie*energyFactor/eCrafting;
                     neededRes = cramPower(res,neededRes);
-                    if (dispoRes >= neededRes) {
+                    if (dispoRes >= neededRes && playerInfos.crafts < maxCrafts) {
                         $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                         $('#conUnitList').append('<span class="craftsList cy klik" onclick="doEnergyCraft(`'+res.name+'`,'+neededRes+','+energyFactor+')">'+energyFactor+' Energie <span class="brunf">('+iHave+')</span></span><br>');
                         $('#conUnitList').append('<span class="craftsList gf">'+res.name+':<span class="bleu">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
