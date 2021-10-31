@@ -556,13 +556,13 @@
         "compOut":{"ind":1},
         "bldOut":["Chaîne de montage"],
         "batch":2,
-        "creaNum":20
+        "creaNum":50
     },
     {
-        "id":116,
+        "id":81,
         "result":"Tissus",
-        "cost":{"Carbone":3,"Aranium":3,"Azote":1,"Energie":1},
-        "compReq":{"ca":3},
+        "cost":{"Carbone":3,"Larvium":3,"Mendium":1,"Chlore":2,"Energie":2},
+        "compReq":{"ca":2},
         "bldReq":["Atelier"],
         "batch":2,
         "creaNum":20
@@ -570,35 +570,35 @@
     {
         "id":82,
         "result":"Tissus",
-        "cost":{"Scrap":9,"Energie":2},
+        "cost":{"Scrap":9,"Chlore":2,"Energie":3},
         "compReq":{"tri":1},
-        "bldReq":["Centre de tri"],
+        "bldReq":["Recyclab"],
         "batch":2,
         "creaNum":50
-    },
-    {
-        "id":81,
-        "result":"Tissus",
-        "cost":{"Carbone":3,"Larvium":3,"Energie":2},
-        "compReq":{"ca":2},
-        "bldReq":["Chaîne de montage"],
-        "batch":2,
-        "creaNum":100
     },
     {
         "id":66,
         "result":"Tissus",
         "cost":{"Végétaux":15,"Energie":2},
-        "compReq":{"ind":1},
+        "compReq":{},
         "bldReq":["Chaîne de montage"],
         "batch":3,
+        "creaNum":100
+    },
+    {
+        "id":116,
+        "result":"Tissus",
+        "cost":{"Carbone":3,"Aranium":3,"Azote":1,"Energie":1},
+        "compReq":{"ca":3},
+        "bldReq":["Chaîne de montage"],
+        "batch":2,
         "creaNum":100
     },
     {
         "id":67,
         "result":"Tissus",
         "cost":{"Carbone":2,"Azote":1,"Hydrogène":1,"Energie":2},
-        "compReq":{"ind":2},
+        "compReq":{"ind":1},
         "bldReq":["Usine"],
         "batch":4,
         "creaNum":100
@@ -1068,46 +1068,6 @@
         "creaNum":1000
     },
     {
-        "id":94,
-        "result":"Energie",
-        "cost":{"Bois":125},
-        "compReq":{},
-        "bldReq":["Atelier"],
-        "bldOut":["Crameur"],
-        "batch":50,
-        "creaNum":15
-    },
-    {
-        "id":126,
-        "result":"Energie",
-        "cost":{"Végétaux":400},
-        "compReq":{},
-        "bldReq":["Atelier"],
-        "bldOut":["Crameur"],
-        "batch":50,
-        "creaNum":15
-    },
-    {
-        "id":99,
-        "result":"Energie",
-        "cost":{"Tissus":200},
-        "compReq":{},
-        "bldReq":["Atelier"],
-        "bldOut":["Crameur"],
-        "batch":50,
-        "creaNum":15
-    },
-    {
-        "id":96,
-        "result":"Energie",
-        "cost":{"Hydrocarbure":50},
-        "compReq":{},
-        "bldReq":["Atelier"],
-        "bldOut":["Crameur"],
-        "batch":50,
-        "creaNum":15
-    },
-    {
         "id":98,
         "result":"Energie",
         "cost":{"Fuel":25},
@@ -1115,7 +1075,7 @@
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
         "batch":50,
-        "creaNum":15
+        "creaNum":100
     },
     {
         "id":97,
@@ -1125,7 +1085,37 @@
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
         "batch":50,
-        "creaNum":15
+        "creaNum":100
+    },
+    {
+        "id":96,
+        "result":"Energie",
+        "cost":{"Hydrocarbure":50},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "bldOut":["Crameur"],
+        "batch":50,
+        "creaNum":75
+    },
+    {
+        "id":94,
+        "result":"Energie",
+        "cost":{"Bois":125},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "bldOut":["Crameur"],
+        "batch":50,
+        "creaNum":50
+    },
+    {
+        "id":99,
+        "result":"Energie",
+        "cost":{"Tissus":200},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "bldOut":["Crameur"],
+        "batch":50,
+        "creaNum":20
     },
     {
         "id":95,
@@ -1135,6 +1125,16 @@
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
         "batch":50,
-        "creaNum":15
+        "creaNum":20
+    },
+    {
+        "id":126,
+        "result":"Energie",
+        "cost":{"Végétaux":400},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "bldOut":["Crameur"],
+        "batch":50,
+        "creaNum":20
     }
 ]

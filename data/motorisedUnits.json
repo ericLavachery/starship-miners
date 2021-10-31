@@ -602,7 +602,7 @@
         "weapon":{
             "name":"Obusier",
             "cost":4,
-            "range":6,
+            "range":7,
             "elevation":1,
             "noMelee":true,
             "noFly":true,

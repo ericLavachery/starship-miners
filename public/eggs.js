@@ -185,7 +185,7 @@ function checkEggsDrop() {
     if (dropChance < 0) {
         dropChance = 0;
     }
-    if (aliens.length >= maxAliens) {
+    if (aliens.length >= maxAliens-50) {
         dropChance = 0;
         dropMessage = 'Nombre max d\'aliens en jeu atteint: '+maxAliens;
     }
@@ -860,11 +860,11 @@ function spawns() {
                 alienSpawn(bat,'Firebugs');
             } else if (bat.type === 'Mantes' && aliens.length < maxAliens && aliensNums.fourmis < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Fourmis');
-            } else if (bat.type === 'Scarabs' && aliens.length < maxAliens && aliensNums.bugs < maxPonte*2) {
+            } else if (bat.type === 'Scarabs' && aliens.length < maxAliens-50 && aliensNums.bugs < maxPonte*2) {
                 alienSpawn(bat,'Bugs');
-            } else if (bat.type === 'Androks' && aliens.length < maxAliens && aliensNums.scorpions < Math.round(maxPonte*1.5)) {
+            } else if (bat.type === 'Androks' && aliens.length < maxAliens-50 && aliensNums.scorpions < Math.round(maxPonte*1.5)) {
                 alienSpawn(bat,'Scorpions');
-            } else if (bat.type === 'Veilleurs' && aliens.length < maxAliens && bat.squadsLeft >= 3) {
+            } else if (bat.type === 'Veilleurs' && aliens.length < maxAliens-50 && bat.squadsLeft >= 3) {
                 let lifeTurn = playerInfos.mapTurn-bat.creaTurn;
                 if (lifeTurn === 1 && landingNoise >= 2) {
                     veilSpawn(bat);
@@ -885,10 +885,10 @@ function spawns() {
                     } else {
                         alienSpawn(bat,'Cafards');
                     }
-                } else if (aliens.length < maxAliens && aliensNums.cafards < maxPonte*3) {
+                } else if (aliens.length < maxAliens-50 && aliensNums.cafards < maxPonte*3) {
                     alienSpawn(bat,'Cafards');
                 }
-            } else if (bat.type === 'Glaireuses' && aliens.length < maxAliens && aliensNums.gluantes < maxPonte) {
+            } else if (bat.type === 'Glaireuses' && aliens.length < maxAliens-50 && aliensNums.gluantes < maxPonte) {
                 alienSpawn(bat,'Gluantes');
             } else if (bat.type === 'Cocon') {
                 cocoonSpawn(bat);
@@ -1379,7 +1379,9 @@ function eggSpawn(bat,fromEgg) {
                                     raritySum = raritySum+unit.rarity;
                                 }
                                 if (checkDice <= raritySum) {
-                                    conselUnit = unit;
+                                    if (aliens.length < maxAliens-50 || unit.class != 'C') {
+                                        conselUnit = unit;
+                                    }
                                 }
                             }
                         }

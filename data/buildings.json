@@ -1544,7 +1544,7 @@
         "weapon2":{
             "name":"Obusier",
             "cost":6,
-            "range":5,
+            "range":6,
             "noFly":true,
             "noBis":true,
             "noMelee":true,

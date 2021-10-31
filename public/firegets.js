@@ -1497,7 +1497,7 @@ function weaponAdj(weapon,bat,wn) {
             }
         }
         if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.logeq === 'lunette' || bat.logeq === 'lunette1') {
-            if (playerInfos.comp.train < 1) {
+            if (playerInfos.comp.train < 1 && thisWeapon.cost > 1) {
                 thisWeapon.cost = thisWeapon.cost+1;
             }
         }
@@ -1541,7 +1541,7 @@ function weaponAdj(weapon,bat,wn) {
             }
         }
         if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.logeq === 'lunette' || bat.logeq === 'lunette2') {
-            if (playerInfos.comp.train < 1) {
+            if (playerInfos.comp.train < 1 && thisWeapon.cost > 1) {
                 thisWeapon.cost = thisWeapon.cost+1;
             }
         }

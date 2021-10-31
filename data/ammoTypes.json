@@ -2012,11 +2012,11 @@
     {
         "name": "boulet-nanite",
         "range": 1,
-        "rof": 1,
+        "rof": 1.25,
         "power": 0,
-        "powermult": 1.25,
-        "armors": 0.8,
-        "accuracy": 1.25,
+        "powermult": 1.4,
+        "armors": 0.7,
+        "accuracy": 1.75,
         "apdamage": 0,
         "aoe": "bat",
         "bldReq":["Laboratoire"],
@@ -2148,11 +2148,11 @@
     {
         "name": "obus-nanite",
         "range": 1,
-        "rof": 1,
+        "rof": 1.25,
         "power": 0,
-        "powermult": 1.33,
-        "armors": 0.8,
-        "accuracy": 1.5,
+        "powermult": 1.4,
+        "armors": 0.7,
+        "accuracy": 1.75,
         "apdamage": 0,
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
@@ -2233,7 +2233,7 @@
         "info": "PasseBouclier",
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2,"explo":1,"arti":1},
-        "deploy":{"Carbone":1,"Aluminium":2,"Tungstène":2,"Rhodium":1,"Uranium":3,"Explosifs":2,"Fuel":1,"Electros":1,"Batteries":1},
+        "deploy":{"Carbone":1,"Aluminium":2,"Tungstène":2,"Rhodium":1,"Uranium":3,"Explosifs":2,"Fuel":1,"Electros":2,"Batteries":1},
         "batch":100
     },
     {
@@ -2248,7 +2248,7 @@
         "aoe": "bat",
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"explo":3,"arti":1},
-        "deploy":{"Fer":2,"Aluminium":2,"Titane":1,"Nickel":1,"Plutonium":1,"Explosifs":3,"Fuel":2,"Electros":2,"Batteries":1},
+        "deploy":{"Fer":2,"Aluminium":2,"Titane":1,"Nickel":1,"Plutonium":1,"Explosifs":3,"Fuel":2,"Electros":3,"Batteries":1},
         "batch":100
     },
     {
@@ -2263,7 +2263,7 @@
         "aoe": "bat",
         "bldReq":["Usine d'armement","Centre de recherches"],
         "compReq":{"bal":2,"explo":3,"pyro":3,"arti":1},
-        "deploy":{"Fer":3,"Aluminium":3,"Titane":1,"Nickel":1,"Plutonium":1,"Explosifs":9,"Phosphore":9,"Electros":2,"Batteries":1},
+        "deploy":{"Fer":3,"Aluminium":3,"Titane":1,"Nickel":1,"Plutonium":1,"Explosifs":9,"Phosphore":9,"Electros":3,"Batteries":1},
         "batch":100
     },
     {
@@ -2278,7 +2278,7 @@
         "aoe": "squad",
         "bldReq":["Arsenal"],
         "compReq":{"bal":1,"explo":1,"arti":1},
-        "deploy":{"Fer":2,"Aluminium":2,"Nickel":1,"Explosifs":3,"Fuel":1,"Electros":1,"Batteries":1},
+        "deploy":{"Fer":2,"Aluminium":2,"Nickel":1,"Explosifs":3,"Fuel":1,"Electros":2,"Batteries":1},
         "batch":100
     },
     {
@@ -2293,7 +2293,7 @@
         "aoe": "brochette",
         "bldReq":["Arsenal"],
         "compReq":{"bal":1,"explo":1,"arti":1},
-        "deploy":{"Fer":1,"Plomb":1,"Aluminium":1,"Tungstène":2,"Nickel":1,"Explosifs":1,"Fuel":1,"Electros":1,"Batteries":1},
+        "deploy":{"Fer":1,"Plomb":1,"Aluminium":1,"Tungstène":2,"Nickel":1,"Explosifs":1,"Fuel":1,"Electros":2,"Batteries":1},
         "batch":100
     },
     {
@@ -2308,7 +2308,7 @@
         "aoe": "squad",
         "bldReq":["Arsenal"],
         "compReq":{"bal":1,"explo":2,"arti":1},
-        "deploy":{"Carbone":1,"Fer":1,"Cuivre":2,"Aluminium":2,"Titane":1,"Nickel":1,"Azote":1,"Explosifs":4,"Fuel":1,"Electros":1,"Batteries":1},
+        "deploy":{"Carbone":1,"Fer":1,"Cuivre":2,"Aluminium":2,"Titane":1,"Nickel":1,"Azote":1,"Explosifs":4,"Fuel":1,"Electros":2,"Batteries":1},
         "batch":100
     },
     {
@@ -2323,7 +2323,7 @@
         "aoe": "squad",
         "bldReq":["Arsenal","Centre de recherches"],
         "compReq":{"bal":1,"explo":2,"energ":2,"arti":1},
-        "deploy":{"Carbone":1,"Fer":1,"Cuivre":2,"Uridium":1,"Aluminium":2,"Nickel":1,"Azote":1,"Explosifs":4,"Fuel":1,"Electros":1,"Batteries":1,"Germium":1},
+        "deploy":{"Carbone":1,"Fer":1,"Cuivre":2,"Uridium":1,"Aluminium":2,"Nickel":1,"Azote":1,"Explosifs":4,"Fuel":1,"Electros":2,"Batteries":1,"Germium":1},
         "batch":100
     },
     {
@@ -2339,7 +2339,7 @@
         "info": "PasseBouclier",
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":3,"explo":1,"arti":1},
-        "deploy":{"Carbone":1,"Fer":1,"Aluminium":2,"Rhodium":1,"Uranium":3,"Explosifs":2,"Fuel":1,"Electros":1,"Batteries":1},
+        "deploy":{"Carbone":1,"Fer":1,"Aluminium":2,"Rhodium":1,"Uranium":3,"Explosifs":2,"Fuel":1,"Electros":2,"Batteries":1},
         "batch":100
     },
     {
@@ -2355,7 +2355,7 @@
         "info": "Incendiaire",
         "bldReq":["Arsenal"],
         "compReq":{"bal":1,"pyro":1,"arti":1},
-        "deploy":{"Aluminium":4,"Nickel":1,"Phosphore":5,"Explosifs":2,"Fuel":1,"Electros":1,"Batteries":1},
+        "deploy":{"Aluminium":4,"Nickel":1,"Phosphore":5,"Explosifs":2,"Fuel":1,"Electros":2,"Batteries":1},
         "batch":100
     },
     {
@@ -2371,22 +2371,22 @@
         "info": "Incendiaire",
         "bldReq":["Arsenal"],
         "compReq":{"bal":1,"pyro":2,"arti":1},
-        "deploy":{"Aluminium":3,"Nickel":1,"Phosphore":2,"Explosifs":2,"Potassium":1,"Fuel":3,"Huile":1,"Electros":1,"Batteries":1,"Larvium":1},
+        "deploy":{"Aluminium":3,"Nickel":1,"Phosphore":2,"Explosifs":2,"Potassium":1,"Fuel":3,"Huile":1,"Electros":2,"Batteries":1,"Larvium":1},
         "batch":100
     },
     {
         "name": "missile-nanite",
         "range": 1,
-        "rof": 1,
+        "rof": 1.25,
         "power": 0,
-        "powermult": 1.33,
-        "armors": 0.85,
-        "accuracy": 1.5,
+        "powermult": 1.4,
+        "armors": 0.7,
+        "accuracy": 1.75,
         "apdamage": 0,
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"bal":1,"explo":3,"arti":1},
-        "deploy":{"Carbone":1,"Cuivre":2,"Aluminium":3,"Titane":1,"Nickel":1,"Nanite":3,"Azote":1,"Explosifs":2,"Potassium":1,"Fuel":1,"Electros":1,"Batteries":1},
+        "deploy":{"Carbone":1,"Cuivre":2,"Aluminium":3,"Titane":1,"Nickel":1,"Nanite":3,"Azote":1,"Explosifs":2,"Potassium":1,"Fuel":1,"Electros":2,"Batteries":1},
         "batch":100
     },
     {
@@ -2401,7 +2401,7 @@
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"bal":1,"explo":1,"exo":1,"ca":3,"arti":1},
-        "deploy":{"Carbone":2,"Aluminium":2,"Nickel":1,"Oxygène":2,"Explosifs":1,"Fuel":1,"Chlore":6,"Végétaux":3,"Electros":1,"Batteries":1},
+        "deploy":{"Carbone":2,"Aluminium":2,"Nickel":1,"Oxygène":2,"Explosifs":1,"Fuel":1,"Chlore":6,"Végétaux":3,"Electros":2,"Batteries":1},
         "batch":100
     },
     {
@@ -2416,7 +2416,7 @@
         "aoe": "squad",
         "bldReq":["Usine d'armement","Laboratoire"],
         "compReq":{"bal":2,"explo":1,"det":3,"arti":1},
-        "deploy":{"Fer":2,"Aluminium":2,"Titane":1,"Nickel":1,"Hélium":1,"Explosifs":3,"Fuel":1,"Electros":2,"Batteries":1},
+        "deploy":{"Fer":2,"Aluminium":2,"Titane":1,"Nickel":1,"Hélium":1,"Explosifs":3,"Fuel":1,"Electros":3,"Batteries":1},
         "batch":100
     },
     {
@@ -2431,7 +2431,7 @@
         "aoe": "squad",
         "bldReq":["Usine d'armement","Centre de recherches"],
         "compReq":{"bal":2,"explo":2,"energ":1,"arti":1},
-        "deploy":{"Carbone":1,"Plastanium":2,"Aluminium":2,"Tungstène":1,"Titane":1,"Nickel":1,"Explosifs":3,"Fuel":1,"Electros":2,"Batteries":1,"Wingium":1},
+        "deploy":{"Carbone":1,"Plastanium":2,"Aluminium":2,"Tungstène":1,"Titane":1,"Nickel":1,"Explosifs":3,"Fuel":1,"Electros":3,"Batteries":1,"Wingium":1},
         "batch":100
     },
     {
@@ -2446,7 +2446,7 @@
         "aoe": "squad",
         "bldReq":["Usine d'armement","Centre de recherches"],
         "compReq":{"bal":2,"explo":2,"det":4,"arti":1},
-        "deploy":{"Fer":1,"Aluminium":3,"Titane":1,"Nickel":1,"Hélium":1,"Explosifs":3,"Fuel":1,"Electros":3,"Batteries":1},
+        "deploy":{"Fer":1,"Aluminium":3,"Titane":1,"Nickel":1,"Hélium":1,"Explosifs":3,"Fuel":1,"Electros":5,"Batteries":1},
         "batch":100
     },
     {
@@ -2496,11 +2496,11 @@
     {
         "name": "grenade-nanite",
         "range": 1,
-        "rof": 1,
+        "rof": 1.25,
         "power": 0,
         "powermult": 1.45,
-        "armors": 0.8,
-        "accuracy": 1.5,
+        "armors": 0.7,
+        "accuracy": 1.75,
         "apdamage": 0,
         "aoe": "squad",
         "bldReq":["Arsenal","Laboratoire"],
