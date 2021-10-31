@@ -663,7 +663,6 @@ function nextTile(myTileIndex,size) {
         }
         checkTileTerrain = zone[checkTileIndex].terrain;
     }
-
     // define next tile
     let diceMax = 16;
     if (checkTileTerrain != "X") {
@@ -732,6 +731,9 @@ function addRes(zone) {
     let redNum = 0;
     if (zone[0].planet != 'Dom') {
         mythicMin = mythicMin+Math.floor(playerInfos.sondeDanger/3);
+        if (mythicMin < 2) {
+            mythicMin = 2;
+        }
         mythicMax = mythicMax+Math.floor(playerInfos.sondeDanger/2);
         baseMin = baseMin+Math.floor(playerInfos.sondeDanger*2.5);
         redMin = redMin+Math.floor(playerInfos.sondeDanger*1.5);

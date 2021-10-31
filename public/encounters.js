@@ -38,7 +38,7 @@ function encounter() {
 
 function putBastionAliens(hard) {
     dropEgg('Ruche','encounter');
-    if (zone[0].mapDiff >= 3) {
+    if (zone[0].mapDiff >= 3 && zone[0].planet != 'Sarak') {
         dropEgg('Ruche','encounter');
     }
     if (hard) {
@@ -53,6 +53,9 @@ function putBastionAliens(hard) {
         dropEgg('Veilleurs','encounter');
     }
     let numVeil = rand.rand(1,3);
+    if (zone[0].planet === 'Sarak') {
+        numVeil = 1;
+    }
     for (var i = 0; i < numVeil; i++){
         dropEgg('Veilleurs','encounter');
     }

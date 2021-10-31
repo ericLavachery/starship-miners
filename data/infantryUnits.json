@@ -5272,7 +5272,6 @@
             "rof":4,
             "accuracy":50,
             "power":16,
-            "armors":0.75,
             "aoe":"brochette",
             "sound":"laser_canon_x1",
             "ammo":["laser","laser-g2"],
@@ -5563,7 +5562,7 @@
             "aoe":"squad",
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
-            "maxAmmo":12,
+            "maxAmmo":7,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","chobham","iso","tisal","nano","duneg","swing"],

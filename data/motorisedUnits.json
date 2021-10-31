@@ -43,7 +43,7 @@
             "aoe":"squad",
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium"],
-            "maxAmmo":12,
+            "maxAmmo":9,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
@@ -3437,8 +3437,7 @@
             "isPrec":true,
             "rof":12,
             "accuracy":50,
-            "power":17,
-            "armors":0.75,
+            "power":20,
             "aoe":"brochette",
             "sound":"laser_canon_x1",
             "ammo":["laser","laser-g2"]
@@ -3666,7 +3665,6 @@
             "rof":3,
             "accuracy":40,
             "power":16,
-            "armors":0.75,
             "aoe":"brochette",
             "sound":"laser_canon_x1",
             "ammo":["laser","laser-g2"],
@@ -4035,7 +4033,7 @@
             "aoe":"squad",
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium"],
-            "maxAmmo":18,
+            "maxAmmo":12,
             "ravitBld":"Poudrière"
         },
         "weapon2":{

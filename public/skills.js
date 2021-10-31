@@ -338,6 +338,10 @@ function calcCamo(bat) {
     if (batType.size > 3) {
         camChance = Math.ceil(camChance/Math.sqrt(Math.sqrt(batType.size))*1.31);
     }
+    // sarak
+    if (zone[0].planet === 'Sarak') {
+        camChance = camChance+25;
+    }
     // max
     if (batType.skills.includes('underground') || batType.cat === 'buildings') {
         camChance = camChance+65;
