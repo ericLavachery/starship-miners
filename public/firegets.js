@@ -390,8 +390,10 @@ function batDeath(bat,count) {
         }
         let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
         bataillons.splice(batIndex,1);
-        if (count && !batType.skills.includes('nodeathcount')) {
-            playerInfos.unitsLost = playerInfos.unitsLost+1;
+        if (count) {
+            if (!batType.skills.includes('nodeathcount')) {
+                playerInfos.unitsLost = playerInfos.unitsLost+1;
+            }
             transDestroy(deadId,tileId);
             saveCrew(batType,deadId,tileId);
             playMusic('rip',false);

@@ -1771,7 +1771,7 @@ function putInfra(infraName) {
     }
     let apCost = Math.round(Math.sqrt(mecanoSkill)*infra.fabTime/1.7);
     if (selectedBatType.skills.includes('infraconst')) {
-        apCost = Math.ceil(apCost/2);
+        apCost = Math.ceil(apCost/3);
     }
     console.log('apCost:'+apCost);
     selectedBat.apLeft = selectedBat.apLeft-apCost;

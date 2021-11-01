@@ -185,7 +185,7 @@ function checkEggsDrop() {
     if (dropChance < 0) {
         dropChance = 0;
     }
-    if (aliens.length >= maxAliens-50) {
+    if (aliens.length >= maxAliens-25) {
         dropChance = 0;
         dropMessage = 'Nombre max d\'aliens en jeu atteint: '+maxAliens;
     }

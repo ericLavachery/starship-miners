@@ -332,7 +332,7 @@ function playerSkillsUTChanges() {
         }
         if (playerInfos.comp.const >= 1) {
             if (unit.cat === 'buildings' || unit.cat === 'devices') {
-                unit.fabTime = unit.fabTime*(playerInfos.comp.const+3)/3;
+                unit.fabTime = unit.fabTime/(playerInfos.comp.const+3)*3;
             }
         }
         if (playerInfos.comp.const >= 1 && unit.cat === 'buildings') {
@@ -366,7 +366,7 @@ function playerSkillsUTChanges() {
             } else {
                 unit.hp = unit.hp+Math.round(unit.hp/15*playerInfos.comp.ind);
             }
-            unit.fabTime = unit.fabTime*(playerInfos.comp.ind+3)/3;
+            unit.fabTime = unit.fabTime/(playerInfos.comp.ind+3)*3;
         }
         // DEFENSE
         let defComp = playerInfos.comp.def-1;
@@ -556,7 +556,7 @@ function playerSkillsUTChanges() {
         // ENTRAINEMENT
         if (playerInfos.comp.train >= 1) {
             if (unit.cat === 'infantry') {
-                unit.fabTime = unit.fabTime*(playerInfos.comp.train+3)/3;
+                unit.fabTime = unit.fabTime/(playerInfos.comp.train+3)*3;
             }
         }
         if (playerInfos.comp.train >= 1) {
