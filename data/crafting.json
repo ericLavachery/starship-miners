@@ -126,6 +126,15 @@
         "creaNum":50
     },
     {
+        "id":130,
+        "result":"Compo2",
+        "cost":{"Fer":10,"Energie":1},
+        "compReq":{"ind":1},
+        "bldReq":["Chaîne de montage"],
+        "batch":4,
+        "creaNum":100
+    },
+    {
         "id":13,
         "result":"Compo2",
         "cost":{"Fer":2,"Carbone":4,"Energie":1},
@@ -142,6 +151,15 @@
         "bldReq":["Chaîne de montage"],
         "batch":4,
         "creaNum":100
+    },
+    {
+        "id":131,
+        "result":"Compo2",
+        "cost":{"Fer":8,"Energie":1},
+        "compReq":{"ind":2},
+        "bldReq":["Usine"],
+        "batch":4,
+        "creaNum":200
     },
     {
         "id":61,
@@ -754,6 +772,24 @@
         "bldReq":["Centre de recherches"],
         "batch":12,
         "creaNum":180
+    },
+    {
+        "id":83,
+        "result":"Nourriture",
+        "cost":{"Fruits":8,"Végétaux":16,"Energie":3},
+        "compReq":{"ind":1},
+        "bldReq":["Chaîne de montage"],
+        "batch":2,
+        "creaNum":240
+    },
+    {
+        "id":84,
+        "result":"Nourriture",
+        "cost":{"Fruits":10,"Végétaux":20,"Energie":5},
+        "compReq":{"ind":2},
+        "bldReq":["Usine"],
+        "batch":3,
+        "creaNum":360
     },
     {
         "id":34,

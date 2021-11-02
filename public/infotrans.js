@@ -27,7 +27,7 @@ function transInfos(bat,batType,isCharged) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Pas d\'embarquement si votre bataillon a lui-même un bataillon embarqué" class="boutonRouge skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
         }
     } else {
-        // Le bataillon en dessous ne peut pas embarquer le  bataillon actif
+        // Le bataillon en dessous ne peut pas embarquer le bataillon actif
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ce bataillon n\'a pas les moyens de vous embarquer" class="boutonGris skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
     }
     if (underId >= 0) {
@@ -424,7 +424,7 @@ function clickDebarq(tileId) {
             if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
                 ownBatHere = true;
                 message = 'Vous ne pouvez pas mettre un bâtiment dans un autre bâtiment.';
-            } else if (batDebarq.apLeft < 1) {
+            } else if (batDebarq.apLeft < 1 && !batType.skills.includes('transorbital')) {
                 ownBatHere = true;
                 message = 'Il ne vous reste pas assez de PA.';
             } else if (!batType.skills.includes('transport')) {

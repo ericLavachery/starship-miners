@@ -98,7 +98,7 @@ function craftWindow(retour) {
                     }
                 }
                 if (playerInfos.bldList.includes(cramBld)) {
-                    energyFactor = Math.round(75/Math.sqrt(res.energie))*5;
+                    energyFactor = Math.round(50/Math.sqrt(res.energie))*5;
                     dispoRes = getDispoRes(res.name);
                     neededRes = res.energie*energyFactor/eCrafting;
                     neededRes = cramPower(res,neededRes);

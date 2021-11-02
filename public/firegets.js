@@ -1185,8 +1185,10 @@ function fireInfos(bat) {
                 isMelee = true;
                 if (checkFlyTarget(selectedWeap,alienType)) {
                     if (!alien.tags.includes('fluo') || !selectedWeap.ammo.includes('marquage')) {
-                        cursorSwitch('#',tile.id,'fire');
-                        $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                        if (!zone[0].dark || (zone[0].dark && undarkNow.includes(tile.id))) {
+                            cursorSwitch('#',tile.id,'fire');
+                            $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                        }
                     }
                 }
             }
@@ -1202,8 +1204,10 @@ function fireInfos(bat) {
                     alienType = getBatType(alien);
                     if (checkFlyTarget(selectedWeap,alienType) && ((!alienType.skills.includes('invisible') && !alien.tags.includes('invisible')) || sideBySideTiles(selectedBat.tileId,tile.id,false))) {
                         if (!alien.tags.includes('fluo') || !selectedWeap.ammo.includes('marquage')) {
-                            cursorSwitch('#',tile.id,'fire');
-                            $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                            if (!zone[0].dark || (zone[0].dark && undarkNow.includes(tile.id))) {
+                                cursorSwitch('#',tile.id,'fire');
+                                $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                            }
                         }
                     }
                 }
@@ -1756,9 +1760,7 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     let highGround = 0;
-    let vision = 1;
     if (tile.terrain == 'M') {
-        vision = 3;
         if (infra != '') {
             highGround = 2;
         } else {
@@ -1767,22 +1769,17 @@ function weaponAdj(weapon,bat,wn) {
     } else if (tile.terrain == 'H') {
         if (infra != '') {
             highGround = 2;
-            vision = 3;
         } else {
             highGround = 1;
-            vision = 2;
         }
     } else {
         if (infra != '') {
             highGround = 1;
-            vision = 2;
         } else {
             highGround = 0;
-            vision = 1;
         }
     }
     if (infra === 'Miradors' || infra === 'Murailles') {
-        vision = 3;
         if (!thisWeapon.isMelee && ((!thisWeapon.isShort && thisWeapon.range >= 1) || thisWeapon.range >= 2 || (thisWeapon.elevation >= 1 && thisWeapon.range >= 1))) {
             thisWeapon.range = thisWeapon.range+1;
         }
@@ -1833,16 +1830,11 @@ function weaponAdj(weapon,bat,wn) {
     if (thisWeapon.range >= 2 && (tile.terrain == 'W' || tile.terrain == 'L' || tile.terrain == 'R') && !batType.skills.includes('fly') && !batType.skills.includes('hover') && batType.cat != 'buildings' && !batType.skills.includes('transorbital')) {
         thisWeapon.range = thisWeapon.range-1;
     }
-    if (zone[0].dark && thisWeapon.range > vision) {
-        let vue = vision;
-        if (batType.skills.includes('flash') || bat.eq === 'e-flash' || bat.logeq === 'e-flash' || bat.eq.includes('kit-') || playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
-            if (!bat.tags.includes('camo')) {
-                vue = 3;
-            }
-        }
-        if (thisWeapon.range > vue) {
-            thisWeapon.range = vue;
-        }
+    if (zone[0].dark) {
+        let vue = calcVue(bat,batType);
+        // if (thisWeapon.range > vue && !thisWeapon.isArt && !thisWeapon.ammo.includes('homing')) {
+        //     thisWeapon.range = vue;
+        // }
     }
     if (bat.tags.includes('fogged') && thisWeapon.range > 1) {
         thisWeapon.range = 1;

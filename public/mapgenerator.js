@@ -271,12 +271,21 @@ function filterParams() {
             if (filterBase.name === 'FloodP1') {
                 filterBase = mapFilters[6];
             }
+            if (filterBase.name === 'ScarpFlood') {
+                filterBase = mapFilters[18];
+            }
+            if (filterBase.name === 'VegFlood') {
+                filterBase = mapFilters[11];
+            }
             // HORST: moins de végétaux
             if (filterBase.name === 'VegP2') {
                 filterBase = mapFilters[1];
             }
             if (filterBase.name === 'VegP1') {
                 filterBase = mapFilters[2];
+            }
+            if (filterBase.name === 'ScarpVeg') {
+                filterBase = mapFilters[19];
             }
         }
         if (playerInfos.sondePlanet === 4) {
@@ -285,11 +294,14 @@ function filterParams() {
                 filterBase = mapFilters[0];
             }
             if (filterBase.name === 'ScarpM1') {
-                filterBase = mapFilters[2];
+                filterBase = mapFilters[18];
             }
             // KZIN: moins d'innondations
             if (filterBase.name === 'FloodP2') {
                 filterBase = mapFilters[11];
+            }
+            if (filterBase.name === 'VegFlood') {
+                filterBase = mapFilters[18];
             }
         }
         maxTileCheck = rand.rand(4,5);

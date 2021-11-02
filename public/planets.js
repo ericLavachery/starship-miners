@@ -185,6 +185,57 @@ function createStormsLists(rebuild,init) {
     console.log(playerInfos.stList);
 };
 
+function calcVue(bat,batType) {
+    let hauteur = 1;
+    terrain = getTerrain(bat);
+    if (terrain.scarp >= 2) {
+        hauteur = terrain.scarp;
+    }
+    tile = getTile(bat);
+    if (tile.infra != undefined) {
+        if (tile.infra != 'Débris' && tile.infra != 'Terriers') {
+            if (tile.infra === 'Miradors') {
+                hauteur = hauteur+2;
+            } else {
+                hauteur = hauteur+1;
+            }
+        }
+    }
+    if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
+        hauteur = 5;
+    }
+    if (bat.eq === 'e-jetpack') {
+        hauteur = 4;
+    }
+    let vue = 0;
+    if (batType.crew >=1 || batType.skills.includes('robot') || batType.skills.includes('clone')) {
+        vue = 1;
+    }
+    if (batType.skills.includes('light')) {
+        if (!bat.tags.includes('camo')) {
+            vue = 2;
+        }
+    }
+    if (batType.skills.includes('flash') || bat.eq === 'e-flash' || bat.logeq === 'e-flash' || bat.eq.includes('kit-') || playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
+        if (!bat.tags.includes('camo')) {
+            if (hauteur < 2) {
+                hauteur = 2;
+            }
+            vue = 3;
+        }
+    }
+    if (batType.skills.includes('vision')) {
+        if (hauteur < 3) {
+            hauteur = 3;
+        }
+        vue = 3;
+    }
+    if (vue > hauteur) {
+        vue = hauteur;
+    }
+    return vue;
+};
+
 function checkUndark() {
     if (zone[0].dark) {
         let noBat = {};
@@ -215,50 +266,13 @@ function undarkAround(bat,center) {
     let terrain = {};
     let tile = {};
     let vue = 0;
-    let hauteur = 1;
-    if (batType.crew >=1 || batType.skills.includes('robot') || batType.skills.includes('clone')) {
-        vue = 1;
-    }
     if (center) {
         batTileId = 1830;
         terrain = getTerrainById(1830);
     } else {
-        if (batType.skills.includes('light')) {
-            if (!bat.tags.includes('camo')) {
-                vue = 2;
-            }
-        }
-        if (batType.skills.includes('flash') || bat.eq === 'e-flash' || bat.logeq === 'e-flash' || bat.eq.includes('kit-') || playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
-            if (!bat.tags.includes('camo')) {
-                hauteur = 2;
-                vue = 3;
-            }
-        }
-        if (batType.skills.includes('vision')) {
-            vue = 3;
-            hauteur = 3;
-        }
-        terrain = getTerrain(bat);
-        if (terrain.scarp >= 2) {
-            hauteur = terrain.scarp;
-        }
-        tile = getTile(bat);
-        if (tile.infra != undefined) {
-            if (tile.infra != 'Débris' && tile.infra != 'Terriers') {
-                if (tile.infra === 'Miradors') {
-                    hauteur = hauteur+2;
-                } else {
-                    hauteur = hauteur+1;
-                }
-            }
-        }
-        if (batType.skills.includes('fly') || bat.eq === 'e-jetpack') {
-            hauteur = 3;
-        }
-        if (vue < hauteur) {
-            vue = hauteur;
-        }
+        vue = calcVue(bat,batType);
     }
+    console.log('UNDARK AROUND: '+vue);
     let thisTile = batTileId;
     unDark(thisTile);
     if (vue >= 1 || center) {

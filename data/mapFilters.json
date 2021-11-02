@@ -1,5 +1,6 @@
 [
     {
+        "id": 0,
         "name": "Normal",
         "M": "M",
         "H": "H",
@@ -12,6 +13,7 @@
         "spSeed": 10
     },
     {
+        "id": 1,
         "name": "VegM2",
         "M": "M",
         "H": "H",
@@ -24,6 +26,7 @@
         "spSeed": 12
     },
     {
+        "id": 2,
         "name": "VegM1",
         "M": "M",
         "H": "H",
@@ -36,6 +39,7 @@
         "spSeed": 12
     },
     {
+        "id": 3,
         "name": "VegP1",
         "M": "M",
         "H": "H",
@@ -48,6 +52,7 @@
         "spSeed": 5
     },
     {
+        "id": 4,
         "name": "VegP2",
         "M": "M",
         "H": "H",
@@ -60,6 +65,7 @@
         "spSeed": 3
     },
     {
+        "id": 5,
         "name": "FloodM2",
         "M": "M",
         "H": "H",
@@ -72,6 +78,7 @@
         "spSeed": 10
     },
     {
+        "id": 6,
         "name": "FloodM1",
         "M": "M",
         "H": "H",
@@ -84,6 +91,7 @@
         "spSeed": 10
     },
     {
+        "id": 7,
         "name": "FloodP1",
         "M": "M",
         "H": "H",
@@ -96,6 +104,7 @@
         "spSeed": 6
     },
     {
+        "id": 8,
         "name": "FloodP2",
         "M": "M",
         "H": "H",
@@ -108,6 +117,7 @@
         "spSeed": 4
     },
     {
+        "id": 9,
         "name": "ScarpM2",
         "M": "P",
         "H": "G",
@@ -120,6 +130,7 @@
         "spSeed": 6
     },
     {
+        "id": 10,
         "name": "ScarpM1",
         "M": "H",
         "H": "P",
@@ -132,6 +143,7 @@
         "spSeed": 8
     },
     {
+        "id": 11,
         "name": "ScarpP1",
         "M": "M",
         "H": "M",
@@ -144,6 +156,7 @@
         "spSeed": 10
     },
     {
+        "id": 12,
         "name": "ScarpP2",
         "M": "M",
         "H": "M",
@@ -153,6 +166,97 @@
         "F": "F",
         "S": "P",
         "W": "W",
+        "spSeed": 10
+    },
+    {
+        "id": 13,
+        "name": "ScarpFlood",
+        "M": "H",
+        "H": "M",
+        "P": "M",
+        "G": "W",
+        "B": "S",
+        "F": "S",
+        "S": "W",
+        "W": "L",
+        "spSeed": 10
+    },
+    {
+        "id": 14,
+        "name": "VegFlood",
+        "M": "H",
+        "H": "F",
+        "P": "B",
+        "G": "S",
+        "B": "B",
+        "F": "F",
+        "S": "W",
+        "W": "W",
+        "spSeed": 10
+    },
+    {
+        "id": 15,
+        "name": "ScarpVeg",
+        "M": "M",
+        "H": "F",
+        "P": "F",
+        "G": "F",
+        "B": "B",
+        "F": "M",
+        "S": "B",
+        "W": "H",
+        "spSeed": 10
+    },
+    {
+        "id": 16,
+        "name": "BushLake",
+        "M": "L",
+        "H": "H",
+        "P": "B",
+        "G": "B",
+        "B": "B",
+        "F": "F",
+        "S": "L",
+        "W": "L",
+        "spSeed": 10
+    },
+    {
+        "id": 17,
+        "name": "BushHills",
+        "M": "H",
+        "H": "H",
+        "P": "B",
+        "G": "B",
+        "B": "B",
+        "F": "F",
+        "S": "F",
+        "W": "W",
+        "spSeed": 10
+    },
+    {
+        "id": 18,
+        "name": "Western",
+        "M": "M",
+        "H": "H",
+        "P": "P",
+        "G": "P",
+        "B": "P",
+        "F": "M",
+        "S": "B",
+        "W": "S",
+        "spSeed": 3
+    },
+    {
+        "id": 19,
+        "name": "Desert",
+        "M": "H",
+        "H": "P",
+        "P": "P",
+        "G": "P",
+        "B": "P",
+        "F": "P",
+        "S": "P",
+        "W": "B",
         "spSeed": 10
     }
 ]
