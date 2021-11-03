@@ -615,7 +615,13 @@ function turnInfo() {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
             if (bat.type == 'Oeuf' || bat.type == 'Coque' || bat.type === 'Cocon') {
-                numberOfEggs++;
+                let isVisible = true;
+                if (zone[0].dark && !undarkNow.includes(bat.tileId)) {
+                    isVisible = checkEggInDark(bat.tileId);
+                }
+                if (isVisible) {
+                    numberOfEggs++;
+                }
                 if (bat.type != 'Cocon') {
                     realNumberOfEggs++;
                 }
@@ -664,6 +670,11 @@ function turnInfo() {
             }
             if (batType.skills.includes('transorbital') && bat.eq != 'siland') {
                 landingNoise = landingNoise+Math.floor(batType.hp/75*batType.fuzz*batType.fuzz/25)+2;
+            }
+            if (zone[0].dark && !bat.tags.includes('camo')) {
+                if (batType.skills.includes('phare') || batType.skills.includes('bigflash') || bat.eq === 'e-phare' || bat.logeq === 'e-phare') {
+                    unDarkVision(bat,batType);
+                }
             }
         }
     });

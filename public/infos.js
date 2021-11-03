@@ -366,14 +366,14 @@ function batInfos(bat,batType,pop) {
             transBase = Math.round(transBase*bonusTransRetour);
         }
         if (transBase < 1000000) {
-            $('#'+bodyPlace).append('<span class="paramName cy">Transport</span><span class="paramIcon"></span><span class="paramValue cy">'+transLeft+'/'+transBase+'</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName marine">Transport</span><span class="paramIcon"></span><span class="paramValue marine">'+transLeft+'/'+transBase+'</span><br>');
         } else {
-            $('#'+bodyPlace).append('<span class="paramName cy">Transport</span><span class="paramIcon"></span><span class="paramValue cy">'+transLeft+'/</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName marine">Transport</span><span class="paramIcon"></span><span class="paramValue marine">'+transLeft+'/</span><br>');
         }
     }
     if (batType.transRes >= 1) {
         let restSpace = checkResSpace(bat);
-        if (restSpace < 1) {tagColor = 'or';} else {tagColor = 'cy';}
+        if (restSpace < 1) {tagColor = 'or';} else {tagColor = 'caca';}
         if (resMax < 1000000) {
             $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/'+resMax+'</span><br>');
         } else {

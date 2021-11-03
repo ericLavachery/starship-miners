@@ -621,7 +621,7 @@
             "sound":"mit_light1",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
-        "equip":["aucun","kit-garde","e-ranger","e-jetpack","camkit"],
+        "equip":["aucun","kit-garde","e-ranger","e-jetpack","camkit","e-phare"],
         "log3eq":"",
         "moveCost":3,
         "maxFlood":3,
@@ -677,7 +677,7 @@
             "sound":"mark",
             "ammo":["marquage"]
         },
-        "equip":["aucun","e-flash","e-camo","kit-chouf","e-ranger","e-jetpack","lunette1","chargeur1","silencieux1","camkit"],
+        "equip":["aucun","e-flash","e-camo","kit-chouf","e-ranger","e-jetpack","lunette1","chargeur1","silencieux1","camkit","e-phare"],
         "log3eq":"e-ranger",
         "moveCost":3,
         "maxFlood":3,
@@ -733,7 +733,7 @@
             "maxAmmo":14,
             "ravitBld":"Poudrière"
         },
-        "equip":["aucun","e-flash","e-camo","kit-guetteur","e-ranger","e-jetpack","chargeur1","silencieux1","camkit"],
+        "equip":["aucun","e-flash","e-camo","kit-guetteur","e-ranger","e-jetpack","chargeur1","silencieux1","camkit","e-phare"],
         "log3eq":"e-flash",
         "moveCost":3,
         "maxFlood":3,
@@ -791,7 +791,7 @@
             "maxAmmo":12,
             "ravitBld":"Atelier"
         },
-        "equip":["aucun","e-flash","kit-pompiste","e-ranger","e-jetpack","camkit"],
+        "equip":["aucun","e-flash","kit-pompiste","e-ranger","e-jetpack","camkit","e-phare"],
         "log3eq":"",
         "moveCost":3,
         "maxFlood":3,
@@ -848,7 +848,7 @@
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
-        "equip":["aucun","kit-artilleur","e-ranger","e-jetpack","camkit"],
+        "equip":["aucun","kit-artilleur","e-ranger","e-jetpack","camkit","e-phare"],
         "log3eq":"",
         "moveCost":3,
         "maxFlood":3,
@@ -909,7 +909,7 @@
             "sound":"bow",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
-        "equip":["aucun","kit-sentinelle","e-ranger","e-jetpack","e-medic","camkit"],
+        "equip":["aucun","kit-sentinelle","e-ranger","e-jetpack","e-medic","camkit","e-phare"],
         "log3eq":"e-medic",
         "moveCost":3,
         "maxFlood":3,

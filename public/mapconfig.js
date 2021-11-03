@@ -170,10 +170,21 @@ function findEgg() {
     let myEgg = {};
     let sortedAliens = _.sortBy(aliens,'tileId');
     sortedAliens.forEach(function(bat) {
-        if (bat.loc === "zone" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0 && !bat.tags.includes('invisible')) {
+        if (bat.loc === "zone") {
             if (bat.type.includes('Oeuf') || bat.type.includes('Coque') || bat.type === 'Cocon') {
-                eggsToShow = eggsToShow+1;
-                myEgg = bat;
+                if (!shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
+                    let isVisible = true;
+                    if (bat.tags.includes('invisible')) {
+                        isVisible = false;
+                    }
+                    if (zone[0].dark && !undarkNow.includes(bat.tileId)) {
+                        isVisible = checkEggInDark(bat.tileId);
+                    }
+                    if (isVisible) {
+                        eggsToShow = eggsToShow+1;
+                        myEgg = bat;
+                    }
+                }
             }
         }
     });
@@ -181,10 +192,21 @@ function findEgg() {
         shownEggs = [];
         myEgg = {};
         sortedAliens.forEach(function(bat) {
-            if (bat.loc === "zone" && !shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0 && !bat.tags.includes('invisible')) {
+            if (bat.loc === "zone") {
                 if (bat.type.includes('Oeuf') || bat.type.includes('Coque') || bat.type === 'Cocon') {
-                    eggsToShow = eggsToShow+1;
-                    myEgg = bat;
+                    if (!shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
+                        let isVisible = true;
+                        if (bat.tags.includes('invisible')) {
+                            isVisible = false;
+                        }
+                        if (zone[0].dark && !undarkNow.includes(bat.tileId)) {
+                            isVisible = checkEggInDark(bat.tileId);
+                        }
+                        if (isVisible) {
+                            eggsToShow = eggsToShow+1;
+                            myEgg = bat;
+                        }
+                    }
                 }
             }
         });
@@ -194,4 +216,27 @@ function findEgg() {
         centerMapTo(myEgg.tileId);
     }
     commandes();
+};
+
+function checkEggInDark(tileId) {
+    let tile = getTileById(tileId);
+    let isVisible = true;
+    if (playerInfos.comp.det === 0) {
+        isVisible = false;
+    } else if (playerInfos.comp.det === 1) {
+        if (tile.seed > 1) {
+            isVisible = false;
+        }
+    } else if (playerInfos.comp.det === 2) {
+        if (tile.seed > 2) {
+            isVisible = false;
+        }
+    } else if (playerInfos.comp.det === 3) {
+        if (tile.seed > 4) {
+            isVisible = false;
+        }
+    } else if (playerInfos.comp.det >= 4) {
+        isVisible = true;
+    }
+    return isVisible;
 };

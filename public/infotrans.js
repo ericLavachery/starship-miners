@@ -188,6 +188,9 @@ function calcVolume(bat,batType) {
         if (bat.eq === 'kit-pompiste') {
             batVolume = Math.ceil(batVolume*1.22);
         }
+        if (bat.eq === 'e-phare' && batType.cat === 'infantry') {
+            batVolume = Math.ceil(batVolume*1.75);
+        }
         return batVolume;
     }
 };

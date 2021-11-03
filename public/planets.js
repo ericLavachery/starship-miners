@@ -229,7 +229,7 @@ function calcVue(bat,batType) {
             vue = 3;
         }
     }
-    if (batType.skills.includes('vision')) {
+    if (batType.skills.includes('phare') || batType.skills.includes('bigflash') || bat.eq === 'e-phare' || bat.logeq === 'e-phare') {
         if (hauteur < 3) {
             hauteur = 3;
         }
@@ -393,4 +393,47 @@ function unDark(tileId) {
             playerInfos.undarkOnce.push(tileId);
         }
     }
+};
+
+function unDarkVision(bat,batType) {
+    let lumDistance = 3;
+    if (playerInfos.comp.energ >= 1) {
+        lumDistance++;
+    }
+    let hasPhare = false;
+    if (bat.eq === 'e-phare' || bat.logeq === 'e-phare') {
+        if (batType.cat != 'infantry') {
+            hasPhare = true;
+        } else {
+            let batTile = getTile(bat);
+            if (batTile.terrain === 'M') {
+                hasPhare = true;
+            }
+            if (batTile.infra != undefined) {
+                if (batTile.infra === 'Miradors' || batTile.infra === 'Murailles') {
+                    hasPhare = true;
+                }
+            }
+        }
+    }
+    if (batType.skills.includes('phare') || hasPhare) {
+        lumDistance++;
+        if (playerInfos.comp.energ >= 2 && playerInfos.comp.det >= 2) {
+            lumDistance++;
+        }
+        if (playerInfos.comp.energ >= 3 && playerInfos.comp.det >= 4) {
+            lumDistance++;
+        }
+    }
+    zone.forEach(function(tile) {
+        if (!undarkNow.includes(tile.id)) {
+            let distance = calcDistance(bat.tileId,tile.id);
+            if (distance <= lumDistance) {
+                undarkNow.push(tile.id);
+                if (!playerInfos.undarkOnce.includes(tile.id)) {
+                    playerInfos.undarkOnce.push(tile.id);
+                }
+            }
+        }
+    });
 };

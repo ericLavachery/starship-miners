@@ -1769,7 +1769,7 @@ function putInfra(infraName) {
             mecanoSkill = 11;
         }
     }
-    let apCost = Math.round(Math.sqrt(mecanoSkill)*infra.fabTime/1.7);
+    let apCost = Math.round(Math.sqrt(mecanoSkill)*infra.fabTime/1.7/(playerInfos.comp.const+3)*3);
     if (selectedBatType.skills.includes('infraconst')) {
         apCost = Math.ceil(apCost/3);
     }

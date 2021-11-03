@@ -859,7 +859,7 @@
         "bldReq":["Caserne Brasier","Usine d'armement","Cabines"],
         "compHardReq":{"energ":1},
         "unitCost":"Slings",
-        "costs":{"Fer":90,"Scrap":60,"Carbone":120,"Tungstène":120,"Rhodium":60,"Silicium":30,"Electros":90,"Batteries":120,"Moteurs":60,"Nickel":60,"Fuel":60,"Soufre":30,"Plomb":30,"Drogues":80,"Or":60,"Chlore":20,"Zinc":20,"Tissus":40},
+        "costs":{"Fer":90,"Scrap":60,"Carbone":120,"Tungstène":120,"Rhodium":120,"Silicium":30,"Electros":90,"Batteries":120,"Moteurs":60,"Nickel":60,"Fuel":60,"Soufre":30,"Plomb":30,"Drogues":80,"Or":60,"Chlore":20,"Zinc":20,"Tissus":40},
         "deploy":{"Fuel":50,"Drogues":6,"Chlore":6,"Zinc":12,"Tissus":6},
         "fabTime":80
     },
@@ -1036,7 +1036,7 @@
         "levels":{"rednecks":99,"blades":11,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Centre de recherches","Garage"],
         "compReq":{"energ":1,"mat":1},
-        "costs":{"Fer":48,"Scrap":120,"Carbone":216,"Compo2":72,"Titane":48,"Azote":48,"Mendium":60,"Tungstène":144,"Rhodium":48,"Silicium":24,"Electros":96,"Batteries":144,"Moteurs":45,"Cuivre":48,"Huile":12,"Energie":350},
+        "costs":{"Fer":48,"Scrap":120,"Carbone":216,"Compo2":72,"Titane":72,"Azote":48,"Mendium":60,"Tungstène":144,"Rhodium":108,"Silicium":24,"Electros":96,"Batteries":144,"Moteurs":45,"Cuivre":48,"Huile":12,"Energie":350},
         "deploy":{"Energie":350},
         "fabTime":100
     },
@@ -1533,7 +1533,7 @@
         "bldReq":["Usine d'armement","Aérodocks","QG"],
         "compReq":{"aero":1},
         "compHardReq":{"explo":1,"energ":1},
-        "costs":{"Carbone":960,"Aluminium":1040,"Moteurs":144,"Titane":2400,"Tungstène":160,"Silicium":40,"Cuivre":224,"Electros":672,"Batteries":410,"Nickel":40,"Cobalt":30,"Hélium":60},
+        "costs":{"Carbone":960,"Aluminium":1040,"Moteurs":144,"Titane":2400,"Tungstène":160,"Rhodium":240,"Silicium":40,"Cuivre":224,"Electros":672,"Batteries":410,"Nickel":40,"Cobalt":30,"Hélium":60},
         "deploy":{"Plutonium":2000,"Plutonium":75},
         "fabTime":240
     },
@@ -1575,7 +1575,7 @@
         "levels":{"rednecks":99,"blades":18,"bulbos":17,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":18},
         "bldReq":["Usine d'armement","Aérodocks","Centre de com"],
         "compReq":{"aero":1,"energ":1},
-        "costs":{"Fer":30,"Carbone":250,"Aluminium":120,"Moteurs":60,"Titane":300,"Tungstène":105,"Rhodium":25,"Silicium":25,"Cuivre":90,"Electros":270,"Batteries":215,"Nickel":45,"Silicium":15,"Huile":45,"Mendium":30,"Cobalt":30,"Hélium":60},
+        "costs":{"Fer":30,"Carbone":250,"Aluminium":120,"Moteurs":60,"Titane":360,"Tungstène":105,"Rhodium":100,"Silicium":25,"Cuivre":90,"Electros":270,"Batteries":215,"Nickel":45,"Silicium":15,"Huile":45,"Mendium":30,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":180,"Energie":100,"Huile":25},
         "fabTime":100
     },
@@ -1774,7 +1774,7 @@
         "levels":{"rednecks":20,"blades":20,"bulbos":20,"drogmulojs":20,"tiradores":20,"detruas":20,"brasier":20},
         "bldReq":["Soute","Usine d'armement","Usine"],
         "compReq":{"vsp":2,"energ":2},
-        "costs":{"Eau":500,"Energie":5000,"Huile":250,"Tissus":150,"Carbone":500,"Titane":9400,"Aluminium":2700,"Calcium":30,"Rhodium":500,"Nickel":1100,"Cuivre":6400,"Or":1600,"Silicium":1000,"Bore":1350,"Plutonium":1100,"Oxygène":1000,"Hydrogène":1600,"Azote":1000,"Chlore":100,"Electros":900,"Batteries":525,"Transorb":3},
+        "costs":{"Eau":500,"Energie":5000,"Huile":250,"Tissus":150,"Carbone":500,"Titane":9400,"Aluminium":2700,"Calcium":30,"Rhodium":700,"Nickel":1100,"Cuivre":6400,"Or":1600,"Silicium":1000,"Bore":1350,"Plutonium":1100,"Oxygène":1000,"Hydrogène":1600,"Azote":1000,"Chlore":100,"Electros":900,"Batteries":525,"Transorb":3},
         "deploy":{"Energie":500,"Huile":25,"Tissus":60,"Chlore":30,"Plutonium":270,"Hydrogène":90}
     },
     {
@@ -1811,7 +1811,7 @@
         "compReq":{"energ":3},
         "compPass":["blades","bulbos","brasier"],
         "compHardReq":{"energ":1},
-        "costs":{"Compo1":150,"Compo2":150,"Compo3":90,"Eau":18,"Carbone":72,"Titane":36,"Tungstène":108,"Aluminium":18,"Bois":18,"Rhodium":36,"Silicium":18,"Bore":36,"Electros":72,"Batteries":108},
+        "costs":{"Compo1":150,"Compo2":150,"Compo3":90,"Eau":18,"Carbone":72,"Titane":72,"Tungstène":108,"Aluminium":18,"Bois":18,"Rhodium":144,"Silicium":18,"Bore":36,"Electros":72,"Batteries":108,"Energie":54},
         "fabTime":55,
         "slots":0
     },

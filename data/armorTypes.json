@@ -652,6 +652,17 @@
         "deploy":{"Energie":12}
     },
     {
+        "name": "e-phare",
+        "cat":"equip",
+        "skills": [],
+        "info": "Vision++",
+        "bldReq":["Chaîne de montage"],
+        "compReq":{"log":1,"energ":1},
+        "factor":"one",
+        "costs":{"Cobalt":18,"Hélium":36,"Batteries":18},
+        "deploy":{"Energie":54}
+    },
+    {
         "name": "crimekitch",
         "cat":"equip",
         "skills": [],
@@ -1314,7 +1325,7 @@
         "bldReq":[],
         "compReq":{"def":2,"energ":1},
         "factor":"rofpow",
-        "costs":{"Carbone":4,"Tungstène":8,"Silicium":2,"Rhodium":4,"Electros":4,"Batteries":8}
+        "costs":{"Carbone":4,"Tungstène":8,"Silicium":2,"Rhodium":12,"Electros":4,"Batteries":8}
     },
     {
         "name": "w2-rain",

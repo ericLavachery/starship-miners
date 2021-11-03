@@ -495,6 +495,9 @@ function calcMoveCost(targetTileId,diag) {
     if (selectedBat.eq === 'kit-artilleur' || selectedBat.eq === 'kit-guetteur') {
         baseMoveCost = 5;
     }
+    if (selectedBat.eq === 'e-phare' && selectedBatType.cat === 'infantry') {
+        baseMoveCost = 7;
+    }
     if (selectedBat.eq === 'kit-pompiste') {
         baseMoveCost = 4;
     }
