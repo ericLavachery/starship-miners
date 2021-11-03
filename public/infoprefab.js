@@ -123,7 +123,10 @@ function refabInfos(myBat,myBatUnitType) {
         let balise = 'h4';
         let apCost;
         let landerBat = findTheLander();
-        bataillons.forEach(function(bat) {
+        let sortedBats = bataillons.slice();
+        sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'id'),'type'),'army');
+        sortedBats.reverse();
+        sortedBats.forEach(function(bat) {
             if (bat.loc === "trans" && bat.locId == landerBat.id) {
                 batType = getBatType(bat);
                 let depliOK = true;

@@ -1710,11 +1710,11 @@ function getRoadCosts(tile) {
     return roadCosts;
 };
 
-function putRoad() {
+function putRoad(apCost) {
     console.log('PUTROAD');
     let tile = getTile(selectedBat);
     let terrain = getTileTerrain(selectedBat.tileId);
-    let apCost = Math.round(selectedBatType.mecanoCost*terrain.roadBuild*roadAPCost/40);
+    // let apCost = Math.round(selectedBatType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3);
     if (tile.infra != undefined && tile.infra != 'Débris') {
         apCost = Math.round(apCost/2);
     }

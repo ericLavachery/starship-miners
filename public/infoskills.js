@@ -434,7 +434,7 @@ function skillsInfos(bat,batType,near) {
                 let tcPow = Math.round(100*tcBonus.pow);
                 let tcInfo = '+'+tcPrec+'% précision, '+tcRof+'% cadence, '+tcPow+'% puissance ('+apCost+' PA + coût de l\'arme)';
                 if (bat.apLeft >= apReq && !bat.tags.includes('vise') && !inMelee) {
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+tcInfo+'" class="boutonJaune skillButtons" onclick="tirCible('+apCost+')"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+tcInfo+'" class="boutonJaune skillButtons" onclick="tirCible('+apCost+')"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bullseye</'+balise+'></span>');
                 } else {
                     if (bat.tags.includes('vise')) {
                         skillMessage = "Déjà activé";
@@ -443,7 +443,7 @@ function skillsInfos(bat,batType,near) {
                     } else {
                         skillMessage = "Pas assez de PA";
                     }
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Tir ciblé</'+balise+'></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bullseye</'+balise+'></span>');
                 }
             }
         }
@@ -1541,7 +1541,7 @@ function skillsInfos(bat,batType,near) {
     // ROUTES / PONTS
     if (batType.skills.includes('routes') && !playerInfos.onShip) {
         if (!tile.rd) {
-            apCost = Math.round(batType.mecanoCost*terrain.roadBuild*roadAPCost/40);
+            apCost = Math.round(batType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3);
             apReq = Math.ceil(apCost/10);
             let roadCosts = getRoadCosts(tile);
             let roadCostsOK = checkCost(roadCosts);
@@ -1557,7 +1557,7 @@ function skillsInfos(bat,batType,near) {
                 }
             }
             if (bat.apLeft >= apReq && !inMelee && roadCostsOK && workForceOK) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction ('+roadName+') '+displayCosts(roadCosts)+'" class="boutonGris skillButtons" onclick="putRoad()"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+roadName+'</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction ('+roadName+') '+displayCosts(roadCosts)+'" class="boutonGris skillButtons" onclick="putRoad('+apCost+')"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+roadName+'</h4></span>');
             } else {
                 if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";

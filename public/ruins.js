@@ -127,6 +127,9 @@ function checkRuinsCit(tile) {
         numRuins = 50;
     }
     let citChance = Math.round(ruinsCitBase/Math.sqrt(numRuins+8));
+    if (zone[0].dark) {
+        citChance = citChance+10;
+    }
     let citDice = 86+Math.ceil(playerInfos.fndCits*citChance/2);
     console.log('citChance: '+citChance);
     console.log('citDice: '+citDice);
@@ -151,6 +154,9 @@ function putRuinsCit(tile) {
         terFactor = terFactor+((badTer-25)/25*0.5);
     }
     let ncFactor = Math.round((Math.sqrt(numRuins)+0.75)*terFactor);
+    if (zone[0].dark) {
+        ncFactor = ncFactor+1;
+    }
     let numCit = rand.rand(1,ncFactor)*6;
     playerInfos.allCits = playerInfos.allCits+numCit;
     let restCit = numCit;

@@ -252,7 +252,11 @@ function tileSelect(bat) {
     if (mode === 'move') {
         $('#'+tile.id).append('<span class="selTile"><img src="/static/img/moving.png"></span>');
     } else {
-        $('#'+tile.id).append('<span class="selTile"><img src="/static/img/selected.png"></span>');
+        if (zone[0].dark) {
+            $('#'+tile.id).append('<span class="selTile"><img src="/static/img/selected-dark.gif"></span>');
+        } else {
+            $('#'+tile.id).append('<span class="selTile"><img src="/static/img/selected.gif"></span>');
+        }
     }
     // $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');
 };
