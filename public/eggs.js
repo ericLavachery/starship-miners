@@ -479,12 +479,12 @@ function dropEgg(alienUnit,theArea) {
         }
         if (alienUnit.includes('Oeuf') || alienUnit === 'Coque' || alienUnit === 'Cocon') {
             eggDropCount = eggDropCount+1;
-            if (alienUnit === 'Oeuf' || alienUnit === 'Coque' || alienUnit === 'Cocon') {
-                eggsNum++;
-            }
-            if (alienUnit === 'Oeuf voilé' && playerInfos.comp.det >= 3) {
-                eggsNum++;
-            }
+            // if (alienUnit === 'Oeuf' || alienUnit === 'Coque' || alienUnit === 'Cocon') {
+            //     eggsNum++;
+            // }
+            // if (alienUnit === 'Oeuf voilé' && playerInfos.comp.det >= 3) {
+            //     eggsNum++;
+            // }
         }
         if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) >= 1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;

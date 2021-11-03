@@ -1098,7 +1098,11 @@ function anyAlienInRange(myBat,weapon) {
                                     inRange = true;
                                 }
                             } else {
-                                inRange = true;
+                                if (zone[0].dark && !undarkNow.includes(bat.tileId)) {
+                                    // Alien dans l'ombre
+                                } else {
+                                    inRange = true;
+                                }
                             }
                         }
                     }

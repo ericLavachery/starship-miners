@@ -114,6 +114,14 @@ function landingList() {
                 saveMap();
                 console.log('done!');
             }
+            let presAlienDice = rand.rand(1,12);
+            if (presAlienDice === 1) {
+                zone[0].mapDiff = zone[0].mapDiff+2;
+            } else if (presAlienDice <= 3) {
+                zone[0].mapDiff = zone[0].mapDiff+1;
+            } else if (presAlienDice === 12 && zone[0].mapDiff >= 2) {
+                zone[0].mapDiff = zone[0].mapDiff-1;
+            }
             showMap(zone,true);
             isReloaded = false;
         }
