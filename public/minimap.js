@@ -111,7 +111,15 @@ function minimap() {
                                                 if (undarkNow.includes(tile.id)) {
                                                     $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
                                                 } else if (playerInfos.undarkOnce.includes(tile.id)) {
-                                                    $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                                    if (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain === 'L') {
+                                                        $('#themmap').append('<span class="mini mDarkWater" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                                    } else {
+                                                        if (tile.terrain === 'M') {
+                                                            $('#themmap').append('<span class="mini mDarkMount" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                                        } else {
+                                                            $('#themmap').append('<span class="mini mDark" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                                        }
+                                                    }
                                                 } else {
                                                     if (ccom) {
                                                         if (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain === 'L') {

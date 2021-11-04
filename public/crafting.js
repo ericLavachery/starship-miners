@@ -185,11 +185,11 @@ function craftReset(time) {
 }
 
 function getMaxCrafts() {
-    let craftsPerTurn = baseCrafts*(playerInfos.comp.ind+3)/3;
+    let craftsPerTurn = baseCrafts*(playerInfos.comp.ind+2)/2;
     if (playerInfos.bldList.includes('Usine')) {
-        craftsPerTurn = (craftsPerTurn+2)*1.5;
+        craftsPerTurn = (craftsPerTurn+2)*1.75;
     } else if (playerInfos.bldList.includes('Chaîne de montage')) {
-        craftsPerTurn = (craftsPerTurn+1)*1.25;
+        craftsPerTurn = (craftsPerTurn+1)*1.35;
     } else if (!playerInfos.bldList.includes('Atelier')) {
         craftsPerTurn = craftsPerTurn/1.5;
     }
