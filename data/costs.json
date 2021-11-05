@@ -2349,7 +2349,7 @@
         "bldEquiv":[],
         "bldReq":["Centrale SMR"],
         "upkeep":{"Energie":50},
-        "costs":{"Compo1":180,"Compo2":270,"Compo3":165,"Eau":36,"Energie":5000,"Carbone":1000,"Titane":300,"Potassium":2000,"Cuivre":500,"Platine":400,"Mercure":600,"Plutonium":1000,"Uranium":500,"Oxygène":1000,"Azote":1800,"Electros":400,"Batteries":400},
+        "costs":{"Compo1":180,"Compo2":270,"Compo3":165,"Eau":36,"Energie":5000,"Carbone":1000,"Titane":300,"Potassium":2000,"Cuivre":500,"Platine":400,"Mercure":600,"Plutonium":1000,"Uranium":500,"Uridium":50,"Oxygène":1000,"Azote":1800,"Electros":400,"Batteries":400},
         "fabTime":70,
         "slots":0
     },
@@ -2360,7 +2360,7 @@
         "bldEquiv":["Champ de force"],
         "bldReq":["Centrale SMR"],
         "upkeep":{"Energie":80},
-        "costs":{"Compo1":210,"Compo2":540,"Compo3":360,"Eau":60,"Energie":25000,"Carbone":2000,"Titane":600,"Potassium":5000,"Rhodium":1500,"Cuivre":1000,"Platine":1200,"Mercure":1500,"Bore":3000,"Plutonium":2000,"Uranium":1000,"Oxygène":1000,"Azote":3000,"Electros":500,"Batteries":1000},
+        "costs":{"Compo1":210,"Compo2":540,"Compo3":360,"Eau":60,"Energie":25000,"Carbone":2000,"Titane":600,"Potassium":5000,"Rhodium":3000,"Cuivre":1000,"Platine":1200,"Mercure":1500,"Bore":3000,"Plutonium":2000,"Uranium":1000,"Uridium":200,"Oxygène":1000,"Azote":3000,"Electros":500,"Batteries":1000},
         "fabTime":200,
         "slots":0
     },
@@ -2421,7 +2421,7 @@
     {
         "id":201,
         "name":"Camp d'entraînement",
-        "upkeep":{"Energie":6,"Soufre":10,"Plomb":10,"Fer":10,"Bois":10},
+        "upkeep":{"Energie":5,"Munitions":5,"Fer":5,"Bois":10},
         "prod":{"Scrap":5},
         "costs":{"Compo1":285,"Compo2":165,"Compo3":55,"Eau":300,"Energie":200,"Aluminium":120,"Fer":1200,"Bois":1200,"Munitions":1200,"Explosifs":300,"Végétaux":1200,"Calcium":150,"Or":30,"Drogues":150,"Chlore":150,"Batteries":80},
         "fabTime":250,

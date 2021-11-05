@@ -734,12 +734,12 @@ function upkeepAndProd(bat,batType,time,sim) {
                         message = message+key+':<span class="vert">+'+fullProd+'</span><br>';
                         if (!playerInfos.onShip) {
                             if (minedThisTurn[key] === undefined) {
-                                minedThisTurn[key] = value;
+                                minedThisTurn[key] = fullProd;
                             } else {
-                                minedThisTurn[key] = minedThisTurn[key]+value;
+                                minedThisTurn[key] = minedThisTurn[key]+fullProd;
                             }
                         }
-                        console.log('prod = '+key+':'+value);
+                        console.log('prod = '+key+':'+fullProd);
                     }
                 });
             }

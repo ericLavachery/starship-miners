@@ -1790,6 +1790,9 @@ function weaponAdj(weapon,bat,wn) {
         if (infra === 'Miradors' && thisWeapon.elevation === 3 && tile.terrain == 'M') {
             thisWeapon.range = thisWeapon.range+1;
         }
+        if (infra === 'Miradors' && thisWeapon.elevation >= 2 && thisWeapon.ammo.includes('salite')) {
+            thisWeapon.range = thisWeapon.range+1;
+        }
     }
     if (highGround === 1) {
         if (thisWeapon.elevation >= 1) {
@@ -1819,7 +1822,7 @@ function weaponAdj(weapon,bat,wn) {
     if (infra === 'Miradors' || infra === 'Murailles' || infra === 'Remparts') {
         overInfra = true;
     }
-    if (tile.terrain == 'F' && !overInfra && batType.cat != 'buildings' && batType.cat != 'devices' && !batType.skills.includes('transorbital')) {
+    if (tile.terrain == 'F' && !overInfra && batType.cat != 'buildings' && batType.cat != 'devices' && !batType.skills.includes('transorbital') && !batType.skills.includes('fly') && !bat.eq != 'e-jetpack' && !bat.logeq != 'e-jetpack') {
         if (checkDeepForest(tile)) {
             if (thisWeapon.range >= 2) {
                 if (thisWeapon.range >= 3) {
