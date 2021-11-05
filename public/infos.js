@@ -131,17 +131,35 @@ function batInfos(bat,batType,pop) {
     // AP
     let ap = getBatAP(bat,batType);
     let hourglass = 'start';
-    if (bat.apLeft <= 0) {
-        hourglass = 'end';
-    } else if (bat.apLeft < ap) {
-        hourglass = 'half';
+    if (bat.apLeft < ap/6*5) {
+        if (batType.skills.includes('guerrilla')) {
+            if (bat.apLeft < -4) {
+                hourglass = 'end or';
+            } else {
+                hourglass = 'half jaune';
+            }
+        } else {
+            if (bat.apLeft <= 0) {
+                hourglass = 'end or';
+            } else {
+                hourglass = 'half jaune';
+            }
+        }
     }
     let roundApLeft = Math.floor(bat.apLeft);
     $('#'+bodyPlace).append('<span class="paramName">Points d\'action</span><span class="paramIcon"><i class="fas fa-hourglass-'+hourglass+'"></i></span><span class="paramValue">'+roundApLeft+'/'+ap+'</span><br>');
     // SQUADS
-    $('#'+bodyPlace).append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.squadsLeft+'/'+batType.squads+'</span><br>');
+    let iconCol = 'gff';
+    if (bat.squadsLeft < batType.squads) {
+        iconCol = 'or';
+    }
+    $('#'+bodyPlace).append('<span class="paramName">Escouades</span><span class="paramIcon '+iconCol+'"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.squadsLeft+'/'+batType.squads+'</span><br>');
     let squadHP = batType.squadSize*batType.hp;
-    $('#'+bodyPlace).append('<span class="paramName">Dégâts</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.damage+'/'+squadHP+'</span><br>');
+    iconCol = 'gff';
+    if (bat.squadsLeft < batType.squads || bat.damage >= 1) {
+        iconCol = 'or';
+    }
+    $('#'+bodyPlace).append('<span class="paramName">Dégâts</span><span class="paramIcon '+iconCol+'"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.damage+'/'+squadHP+'</span><br>');
     if (pop) {
         $('#'+bodyPlace).append('<span class="paramName">Unités/Escouade</span><span class="paramIcon"></span><span class="paramValue">'+batType.squadSize+'</span><br>');
     }
@@ -286,14 +304,14 @@ function batInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramName">Stress</span><span class="paramIcon"></span><span class="paramValue">'+stress+'</span><br>');
         }
     }
-    let hurt = isHurt(bat);
-    if (hurt) {
-        if (batType.cat === 'infantry' || batType.skills.includes('cyber')) {
-            $('#'+bodyPlace).append('<span class="paramName or">Blessé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
-        } else {
-            $('#'+bodyPlace).append('<span class="paramName or">Endommagé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
-        }
-    }
+    // let hurt = isHurt(bat);
+    // if (hurt) {
+    //     if (batType.cat === 'infantry' || batType.skills.includes('cyber')) {
+    //         $('#'+bodyPlace).append('<span class="paramName or">Blessé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    //     } else {
+    //         $('#'+bodyPlace).append('<span class="paramName or">Endommagé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    //     }
+    // }
     if (bat.soins >= 11) {
         let effSoins = checkEffSoins(bat);
         $('#'+bodyPlace).append('<span class="paramName jaune">Efficacité soins</span><span class="paramIcon"></span><span class="paramValue jaune">'+effSoins+'%</span><br>');
