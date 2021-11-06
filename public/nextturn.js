@@ -296,17 +296,17 @@ function nextTurnEnd() {
             batType = getBatType(bat);
             if (bat.loc === "zone") {
                 if (batType.skills.includes('upkeep') || batType.skills.includes('prodres') || batType.skills.includes('upnodis')) {
-                    if (!bat.tags.includes('construction')) {
+                    if (!bat.tags.includes('construction') && bat.apLeft >= 10) {
                         upkeepAndProd(bat,batType,1,false);
                     }
                 }
-                if (batType.skills.includes('geo') && bat.tags.includes('prodres')) {
+                if (batType.skills.includes('geo') && bat.tags.includes('prodres') && bat.apLeft >= 0) {
                     geoProd(bat,batType);
                 }
-                if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
+                if (batType.skills.includes('solar') && bat.tags.includes('prodres') && bat.apLeft >= 0) {
                     solarProd(bat,batType,1,false);
                 }
-                if (batType.skills.includes('transcrap') && bat.tags.includes('prodres')) {
+                if (batType.skills.includes('transcrap') && bat.tags.includes('prodres') && bat.apLeft >= 10) {
                     triProd(bat,batType,1,false);
                 }
                 if (!playerInfos.onShip) {
@@ -686,6 +686,7 @@ function turnInfo() {
         playerInfos.mapAdjDiff = 1;
     }
     checkZoneType();
+    undarkList();
     // foggedTiles
     let distance;
     foggedTiles = [];

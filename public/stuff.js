@@ -465,20 +465,59 @@ function hasUnit(unitName) {
     return youHaveIt;
 }
 
-function maxLeaders() {
-    let numLeaders = 0;
-    let isMax = false;
-    bataillons.forEach(function(bat) {
-        let batType = getBatType(bat);
-        if (batType.skills.includes('leader')) {
-            numLeaders++;
+function maxUnits(unit) {
+    let isMax;
+    let numOf = {};
+    if (unit.name === 'Chercheurs') {
+        if (playerInfos.onShip) {
+            let maxSci = 1;
+            if (playerInfos.bldVM.includes('Centre de recherches')) {
+                maxSci = 3;
+            } else if (playerInfos.bldVM.includes('Laboratoire')) {
+                maxSci = 2;
+            }
+            if (playerInfos.sci >= maxSci) {
+                isMax = true;
+            }
+        } else {
+            isMax = true;
         }
-    });
-    if (numLeaders >= Math.round(playerInfos.gLevel/4.1)) {
-        isMax = true;
+    }
+    if (unit.skills.includes('leader') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3')) {
+        numOf.leader = 0;
+        numOf[unit.name] = 0;
+        bataillons.forEach(function(bat) {
+            let batType = getBatType(bat);
+            if (batType.skills.includes('leader')) {
+                numOf.leader++;
+            }
+            if (bat.type === unit.name) {
+                numOf[unit.name]++;
+            }
+        });
+    }
+    if (unit.skills.includes('leader')) {
+        if (numOf.leader >= Math.round(playerInfos.gLevel/4.1)) {
+            isMax = true;
+        }
+    }
+    if (unit.skills.includes('max1')) {
+        if (numOf[unit.name] >= 1) {
+            isMax = true;
+        }
+    }
+    if (unit.skills.includes('max2')) {
+        if (numOf[unit.name] >= 2) {
+            isMax = true;
+        }
+    }
+    if (unit.skills.includes('max3')) {
+        if (numOf[unit.name] >= 3) {
+            isMax = true;
+        }
     }
     return isMax;
-}
+};
 
 function getSoute() {
     let soute = {};

@@ -160,25 +160,8 @@ function bfconst(cat,triche,upgrade,retour) {
             bldOK = false;
             if ((playerInfos.bldList.includes(unit.bldReq[0]) || unit.bldReq[0] === undefined) && (playerInfos.bldList.includes(unit.bldReq[1]) || unit.bldReq[1] === undefined) && (playerInfos.bldList.includes(unit.bldReq[2]) || unit.bldReq[2] === undefined)) {
                 bldOK = true;
-                if (unit.name === 'Chercheurs') {
-                    if (playerInfos.onShip) {
-                        let maxSci = 1;
-                        if (playerInfos.bldVM.includes('Centre de recherches')) {
-                            maxSci = 3;
-                        } else if (playerInfos.bldVM.includes('Laboratoire')) {
-                            maxSci = 2;
-                        }
-                        if (playerInfos.sci >= maxSci) {
-                            bldOK = false;
-                        }
-                    } else {
-                        bldOK = false;
-                    }
-                }
-                if (unit.skills.includes('leader')) {
-                    if (maxLeaders()) {
-                        bldOK = false;
-                    }
+                if (maxUnits(unit)) {
+                    bldOK = false;
                 }
             }
             costOK = checkUnitCost(unit,true,true);

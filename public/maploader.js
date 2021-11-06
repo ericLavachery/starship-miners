@@ -61,7 +61,7 @@ function showMap(wmap,justMoved) {
             tPic = tile.terrain+'_00'+tile.seed;
         }
         if (zone[0].dark) {
-            if (playerInfos.undarkOnce.includes(tile.id)) {
+            if (zone[0].undarkOnce.includes(tile.id) || zone[0].undarkAll) {
                 terclass = 'ter'+tile.terrain+tile.seed;
             } else {
                 terclass = 'terFog';
@@ -158,7 +158,7 @@ function showRes(tileId) {
     let mapIndicators = '';
     let res = '';
     let view = true;
-    if (zone[0].dark && !playerInfos.undarkOnce.includes(tile.id)) {
+    if (zone[0].dark && !zone[0].undarkOnce.includes(tile.id) && !zone[0].undarkAll) {
         view = false;
     }
     if (modeSonde && playerInfos.comp.det < 1) {

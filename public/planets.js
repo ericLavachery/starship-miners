@@ -185,6 +185,29 @@ function createStormsLists(rebuild,init) {
     console.log(playerInfos.stList);
 };
 
+function undarkList() {
+    console.log('UNDARK LIST');
+    if (zone[0].dark) {
+        if (zone[0].undarkOnce === undefined) {
+            console.log('undark undefined');
+            if (playerInfos.undarkOnce.length >= 1) {
+                zone[0].undarkOnce = playerInfos.undarkOnce;
+            } else {
+                zone[0].undarkOnce = [];
+            }
+        }
+        if (zone[0].undarkOnce.length >= 3600 || zone[0].undarkAll) {
+            zone[0].undarkOnce = [];
+            zone[0].undarkAll = true;
+        } else {
+            zone[0].undarkAll = false;
+        }
+    } else {
+        zone[0].undarkOnce = [];
+        zone[0].undarkAll = true;
+    }
+};
+
 function calcVue(bat,batType) {
     let hauteur = 1;
     terrain = getTerrain(bat);
@@ -389,8 +412,14 @@ function unDark(tileId) {
         if (!undarkNow.includes(tileId)) {
             undarkNow.push(tileId);
         }
-        if (!playerInfos.undarkOnce.includes(tileId)) {
-            playerInfos.undarkOnce.push(tileId);
+        if (!zone[0].undarkOnce.includes(tileId) && !zone[0].undarkAll) {
+            zone[0].undarkOnce.push(tileId);
+        }
+        if (zone[0].undarkOnce.length >= 3600 || zone[0].undarkAll) {
+            zone[0].undarkOnce = [];
+            zone[0].undarkAll = true;
+        } else {
+            zone[0].undarkAll = false;
         }
     }
 };
@@ -430,8 +459,8 @@ function unDarkVision(bat,batType) {
             let distance = calcDistance(bat.tileId,tile.id);
             if (distance <= lumDistance) {
                 undarkNow.push(tile.id);
-                if (!playerInfos.undarkOnce.includes(tile.id)) {
-                    playerInfos.undarkOnce.push(tile.id);
+                if (!zone[0].undarkOnce.includes(tile.id) && !zone[0].undarkAll) {
+                    zone[0].undarkOnce.push(tile.id);
                 }
             }
         }

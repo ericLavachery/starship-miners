@@ -110,7 +110,7 @@ function minimap() {
                                             } else {
                                                 if (undarkNow.includes(tile.id)) {
                                                     $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
-                                                } else if (playerInfos.undarkOnce.includes(tile.id)) {
+                                                } else if (zone[0].undarkOnce.includes(tile.id) || zone[0].undarkAll) {
                                                     if (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain === 'L') {
                                                         $('#themmap').append('<span class="mini mDarkWater" onclick="centerFromMinimap('+tile.id+')"></span>');
                                                     } else {

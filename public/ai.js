@@ -16,7 +16,6 @@ function alienMoveLoop() {
     }
     if (alienActif) {
         checkPDM();
-        tileUntarget();
         targetBat = {};
         targetBatType = {};
         targetWeap = {};

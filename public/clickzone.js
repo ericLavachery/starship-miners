@@ -173,7 +173,6 @@ function batSelect(bat,roger) {
     $('html,body').scrollTop(0);
     washReports(false);
     tileUnselect();
-    tileUntarget();
     if (bat.tags.includes('nolist')) {
         tagDelete(bat,'nolist');
     }
@@ -216,7 +215,6 @@ function batUnselect() {
     deleteMoveInfos();
     // remove selection on old selected unit
     tileUnselect();
-    tileUntarget();
     selectedBat = {};
     selectedBatType = {};
     selectedWeap = {};
@@ -234,7 +232,7 @@ function tileUnselect() {
         let tileIndex = zone.findIndex((obj => obj.id == selectedBat.tileId));
         let tile = zone[tileIndex];
         let terclass = 'ter'+tile.terrain+tile.seed;
-        if (zone[0].dark && !playerInfos.undarkOnce.includes(tile.id)) {
+        if (zone[0].dark && !zone[0].undarkOnce.includes(tile.id) && !zone[0].undarkAll) {
             terclass = 'terFog';
         }
         $('.selTile').remove();
@@ -246,7 +244,7 @@ function tileSelect(bat) {
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
     terclass = 'ter'+tile.terrain+tile.seed;
-    if (zone[0].dark && !playerInfos.undarkOnce.includes(tile.id)) {
+    if (zone[0].dark && !zone[0].undarkOnce.includes(tile.id) && !zone[0].undarkAll) {
         terclass = 'terFog';
     }
     if (mode === 'move') {
@@ -261,24 +259,11 @@ function tileSelect(bat) {
     // $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');
 };
 
-function tileUntarget() {
-    // let terclass;
-    // zone.forEach(function(tile) {
-    //     if ($('#'+tile.id).hasClass("terTarget")) {
-    //         terclass = 'ter'+tile.terrain+tile.seed;
-    //         if (zone[0].dark && !playerInfos.undarkOnce.includes(tile.id)) {
-    //             terclass = 'terFog';
-    //         }
-    //         $('#'+tile.id).removeClass('terTarget').addClass(terclass);
-    //     }
-    // });
-};
-
 function tileTarget(bat) {
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];
     terclass = 'ter'+tile.terrain+tile.seed;
-    if (zone[0].dark && !playerInfos.undarkOnce.includes(tile.id)) {
+    if (zone[0].dark && !zone[0].undarkOnce.includes(tile.id) && !zone[0].undarkAll) {
         terclass = 'terFog';
     }
     $('#'+tile.id).append('<span class="selTile"><img src="/static/img/targeted.png"></span>');

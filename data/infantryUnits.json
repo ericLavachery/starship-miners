@@ -1255,7 +1255,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","medic","necrocure","dealer","starka","kirin","octiron","prayer","survivor","luckyshot","nochef","lowstress"],
+        "skills":["fouille","fortif","medic","necrocure","dealer","starka","kirin","octiron","prayer","survivor","luckyshot","nochef","lowstress","max3"],
         "mediCost":7,
         "maxDrug":18,
         "fuzz":0,

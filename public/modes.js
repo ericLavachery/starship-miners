@@ -33,7 +33,6 @@ function fireMode(weapon) {
         weaponSelect(weapon);
         fireInfos(selectedBat);
         showBatInfos(selectedBat);
-        tileUntarget();
         $('#report').empty('');
         // console.log(selectedWeap);
     }

@@ -726,7 +726,7 @@ function showTileInfos(tileId) {
     let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
     let terrain = terrainTypes[terrainIndex];
     let view = true;
-    if (zone[0].dark && !playerInfos.undarkOnce.includes(selectedTile)) {
+    if (zone[0].dark && !zone[0].undarkOnce.includes(selectedTile) && !zone[0].undarkAll) {
         view = false;
     }
     if (view) {

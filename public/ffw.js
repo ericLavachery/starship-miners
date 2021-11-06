@@ -27,7 +27,6 @@ function nextAlien() {
         batSelect(alienList[0]);
         showEnemyBatInfos(selectedBat);
         showTileInfos(selectedBat.tileId);
-        tileUntarget();
         alienWeaponSelect();
         // selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
         // selectedWeap = weaponAdj(selectedWeap,selectedBat,'w1');
@@ -52,14 +51,12 @@ function ffw() {
         stopForFight = false;
         $('#report').empty('');
         tileUnselect();
-        tileUntarget();
         selectedBat = JSON.parse(JSON.stringify(bat));
         console.log(selectedBat);
         // draw new selected unit
         tileSelect(bat);
         checkSelectedBatType();
         // let's go
-        tileUntarget();
         alienWeaponSelect();
         // selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon));
         // selectedWeap = weaponAdj(selectedWeap,selectedBat,'w1');
