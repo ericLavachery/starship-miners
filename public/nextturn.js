@@ -87,6 +87,9 @@ function nextTurn() {
             if (bat.tags.includes('guide') && batType.skills.includes('nolaser')) {
                 tagDelete(bat,'guide');
             }
+            if (bat.tags.includes('fluo') && (batType.skills.includes('hide') || batType.skills.includes('nolaser'))) {
+                tagDelete(bat,'fluo');
+            }
             if (batType.skills.includes('regmode') && bat.squadsLeft <= Math.floor(batType.squads/2)) {
                 // shield stays
             } else {

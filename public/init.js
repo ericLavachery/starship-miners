@@ -191,6 +191,7 @@ socket.on('savedMap-Load', function(sm) {
         zone = savedMap;
         checkUndark();
         writeMapStyles();
+        atomsColors(zone);
         xOffset = 31-Math.round(numVTiles/2);
         yOffset = 31-Math.round(numHTiles/2);
         showMap(zone,false);

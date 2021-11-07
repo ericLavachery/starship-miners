@@ -115,9 +115,9 @@ function landingList() {
                 console.log('done!');
             }
             let presAlienDice = rand.rand(1,12);
-            if (presAlienDice === 1) {
+            if (presAlienDice === 1 && zone[0].mapDiff <= 7) {
                 zone[0].mapDiff = zone[0].mapDiff+2;
-            } else if (presAlienDice <= 3) {
+            } else if (presAlienDice <= 3 && zone[0].mapDiff <= 8) {
                 zone[0].mapDiff = zone[0].mapDiff+1;
             } else if (presAlienDice === 12 && zone[0].mapDiff >= 2) {
                 zone[0].mapDiff = zone[0].mapDiff-1;

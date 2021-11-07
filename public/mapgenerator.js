@@ -1773,12 +1773,12 @@ function atomsColors(myZone) {
                     let key = entry[0];
                     let value = entry[1];
                     res = getResByName(key);
-                    rarityFactor = 45-res.rarity;
-                    if (rarityFactor <= 10) {
+                    rarityFactor = 45-Math.ceil(res.rarity*(res.batch+3)/7);
+                    if (rarityFactor <= 15) {
                         rarityFactor = 15;
                     }
                     tileTotalRes = tileTotalRes+Math.round(value*rarityFactor/18);
-                    if (res.rarity <= 16) {
+                    if (res.rarity <= 16 || res.batch <= 2) {
                         rareRes = rareRes+2;
                     } else if (res.rarity <= 25) {
                         rareRes++;
@@ -1798,13 +1798,13 @@ function atomsColors(myZone) {
                         tile.rq = 2;
                     }
                 } else if (tileNumRes >= 2) {
-                    if (tileTotalRes >= 500 || (rareRes >= 1 && tileTotalRes >= 350) || (rareRes >= 2 && tileTotalRes >= 250)) {
+                    if (tileTotalRes >= 700 || (rareRes >= 1 && tileTotalRes >= 300) || (rareRes >= 2 && tileTotalRes >= 250)) {
                         tile.rq = 2;
                     } else {
                         tile.rq = 1;
                     }
                 } else {
-                    if (tileTotalRes >= 500 || (rareRes >= 2 && tileTotalRes >= 100)) {
+                    if (tileTotalRes >= 850 || (rareRes >= 1 && tileTotalRes >= 400)) {
                         tile.rq = 2;
                     } else {
                         tile.rq = 1;

@@ -1420,7 +1420,7 @@
             "accuracy":35,
             "power":0,
             "aoe":"unit",
-            "sound":"mark",
+            "sound":"paint",
             "ammo":["marquage"]
         },
         "protection":["aucun","chobham","tisal","iso","nano","duneg","swing"],
@@ -3247,7 +3247,7 @@
         "squadSize":3,
         "crew":3,
         "hp":57,
-        "armor":10,
+        "armor":12,
         "size":21,
         "stealth":5,
         "speed":2,

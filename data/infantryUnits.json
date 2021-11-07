@@ -674,7 +674,7 @@
             "accuracy":35,
             "power":0,
             "aoe":"unit",
-            "sound":"mark",
+            "sound":"paint",
             "ammo":["marquage"]
         },
         "equip":["aucun","e-flash","e-camo","kit-chouf","e-ranger","e-jetpack","lunette1","chargeur1","silencieux1","camkit","e-phare"],
@@ -5505,7 +5505,7 @@
             "accuracy":35,
             "power":0,
             "aoe":"unit",
-            "sound":"mark",
+            "sound":"paint",
             "ammo":["marquage"]
         },
         "protection":["aucun","chobham","iso","tisal","nano","duneg","swing"],

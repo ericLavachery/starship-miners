@@ -409,14 +409,14 @@ h6 {
     position: absolute;
     margin-left: -3px;
     margin-top: -3px;
-    z-index: -9;
+    z-index: -8;
 }
 .dark {
     position: absolute;
     /* margin-right: -3px; */
     margin-left: -3px;
     margin-top: -3px;
-    z-index: -7;
+    z-index: -9;
 }
 .targ {
     position: absolute;

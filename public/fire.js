@@ -45,7 +45,7 @@ function clickFire(tileId) {
                 guidageOK = checkGuidage(selectedWeap,targetBat);
             }
             if (isInRange(selectedBat,tileId,selectedWeap) || guidageOK) {
-                if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && ((!targetBatType.skills.includes('invisible') && !targetBat.tags.includes('invisible')) || guidageOK || sideBySideTiles(selectedBat.tileId,tileId,false))) {
+                if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && ((!targetBatType.skills.includes('invisible') && !targetBat.tags.includes('invisible')) || guidageOK || targetBat.tags.includes('fluo') || sideBySideTiles(selectedBat.tileId,tileId,false))) {
                     // console.log(targetBat);
                     tagDelete(targetBat,'invisible');
                     tileTarget(targetBat);

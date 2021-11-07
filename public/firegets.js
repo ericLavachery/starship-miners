@@ -1095,7 +1095,7 @@ function anyAlienInRange(myBat,weapon) {
                             if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
                                 // Alien invisible
                                 distance = calcDistance(myBat.tileId,bat.tileId)
-                                if (distance === 0 || guidageOK) {
+                                if (distance === 0 || guidageOK || bat.tags.includes('fluo')) {
                                     inRange = true;
                                 }
                             } else {
@@ -1207,7 +1207,7 @@ function fireInfos(bat) {
                 guideTarget = checkGuidage(selectedWeap,alien);
                 if (isInRange(selectedBat,tile.id,selectedWeap) || guideTarget) {
                     alienType = getBatType(alien);
-                    if (checkFlyTarget(selectedWeap,alienType) && ((!alienType.skills.includes('invisible') && !alien.tags.includes('invisible')) || guideTarget || sideBySideTiles(selectedBat.tileId,tile.id,false))) {
+                    if (checkFlyTarget(selectedWeap,alienType) && ((!alienType.skills.includes('invisible') && !alien.tags.includes('invisible')) || guideTarget || alien.tags.includes('fluo') || sideBySideTiles(selectedBat.tileId,tile.id,false))) {
                         if (!alien.tags.includes('fluo') || !selectedWeap.ammo.includes('marquage')) {
                             if (!zone[0].dark || (zone[0].dark && undarkNow.includes(tile.id))) {
                                 cursorSwitch('#',tile.id,'fire');
