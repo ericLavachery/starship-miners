@@ -1034,6 +1034,7 @@ function alienMorph(bat,newBatName,reset) {
     let unitIndex = alienUnits.findIndex((obj => obj.name == newBatName));
     conselUnit = alienUnits[unitIndex];
     conselAmmos = ['xxx','xxx','xxx','xxx'];
+    checkSpawnType(conselUnit);
     putBat(putTile,0,0,kindTag);
     // Turn & Tags
     batIndex = aliens.findIndex((obj => obj.tileId == putTile));

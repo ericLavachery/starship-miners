@@ -324,7 +324,7 @@
         "bldReq":["Arsenal"],
         "compReq":{"mat":1,"ca":2},
         "factor":"thp",
-        "costs":{"Scrap":9,"Bois":6,"Carbone":9,"Titane":9,"Nickel":3,"Silicium":3,"Mendium":6}
+        "costs":{"Scrap":9,"Bois":6,"Carbone":9,"Titane":6,"Nickel":3,"Silicium":3,"Mendium":6}
     },
     {
         "name": "iso",

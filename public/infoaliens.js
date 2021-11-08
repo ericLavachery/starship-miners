@@ -61,7 +61,7 @@ function showEnemyBatInfos(bat) {
     }
     if (compCA >= 1) {
         if (Object.keys(batType.weapon).length >= 1) {
-            if (batType.skills.includes('venin') || batType.weapon.ammo.includes('poison') || btweap2ammo.includes('poison') || batType.weapon.ammo.includes('toxine') || btweap2ammo.includes('toxine')) {
+            if (batType.skills.includes('venin') || batType.weapon.ammo.includes('venom') || batType.weapon.ammo.includes('poison') || btweap2ammo.includes('poison') || batType.weapon.ammo.includes('toxine') || btweap2ammo.includes('toxine')) {
                 $('#unitInfos').append('<span class="paramName">Venimeux</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
             }
         }

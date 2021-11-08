@@ -239,7 +239,7 @@ function spawnSound() {
         });
         setTimeout(function (){
             sound.play();
-        }, 8000); // How long do you want the delay to be (in milliseconds)?
+        }, 6000); // How long do you want the delay to be (in milliseconds)?
     }
 };
 
