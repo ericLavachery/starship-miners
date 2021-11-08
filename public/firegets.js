@@ -960,7 +960,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
         }
     }
     if (bat.eq === 'theeye') {
-        speed = speed-25;
+        speed = speed-50;
     }
     // initmelee
     if (batType.skills.includes('initmelee') && distance === 0) {
@@ -1481,6 +1481,9 @@ function weaponAdj(weapon,bat,wn) {
         if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes') {
             if (bat.eq  === 'detector' || bat.logeq  === 'detector' || bat.eq  === 'g2ai' || bat.logeq  === 'g2ai') {
                 thisWeapon.range = thisWeapon.range+1;
+                if (thisWeapon.elevation === 1) {
+                    thisWeapon.elevation = 2;
+                }
             }
         }
         if (bat.eq === 'longtom' || bat.eq === 'longtom1' || bat.logeq === 'longtom' || bat.logeq === 'longtom1') {
@@ -1525,6 +1528,9 @@ function weaponAdj(weapon,bat,wn) {
         if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes') {
             if (bat.eq  === 'detector' || bat.logeq  === 'detector' || bat.eq  === 'g2ai' || bat.logeq  === 'g2ai') {
                 thisWeapon.range = thisWeapon.range+1;
+                if (thisWeapon.elevation === 1) {
+                    thisWeapon.elevation = 2;
+                }
             }
         }
         if (bat.eq === 'longtom' || bat.eq === 'longtom2' || bat.logeq === 'longtom' || bat.logeq === 'longtom2') {
@@ -1574,7 +1580,7 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     if (bat.eq === 'theeye') {
-        thisWeapon.accuracy = thisWeapon.accuracy+4;
+        thisWeapon.accuracy = thisWeapon.accuracy+6;
         if (thisWeapon.cost >= 2) {
             thisWeapon.cost = thisWeapon.cost-1;
         }
@@ -2089,7 +2095,14 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
 }
 
 function mirDestruction(weap,bat,batType,tile,teamOnMir,infraName) {
-    let power = (weap.power*1.5/(weap.armors*2))-2;
+    let armours = weap.armors;
+    if (weap.ammo.includes('electric')) {
+        armours = 1;
+    }
+    if (armours < 0.2) {
+        armours = 0.2;
+    }
+    let power = (weap.power*1.5/(armours*2))-2;
     if (power < 0) {
         power = 0;
     }

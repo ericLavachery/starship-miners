@@ -571,7 +571,7 @@
         "name": "detector",
         "cat":"equip",
         "skills": [],
-        "info": "Initiative++",
+        "info": "Initiative++ (Portée+)",
         "bldReq":["Laboratoire"],
         "compReq":{"det":3},
         "factor":"crew",

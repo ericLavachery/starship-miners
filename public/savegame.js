@@ -112,21 +112,13 @@ function saveAliensForReturn(zoneNum) {
         bat.creaTurn = 0;
         if (batType.moveCost >= 90) {
             if (batType.name === 'Coque') {
-                if (rand.rand(1,100) <= 20) {
-                    alienMorph(bat,'Volcan',false);
-                } else {
-                    deadAliensList.push(bat.id);
-                }
+                deadAliensList.push(bat.id);
             }
             if (batType.name === 'Cocon') {
                 deadAliensList.push(bat.id);
             }
             if (batType.name === 'Oeuf voilé' || batType.name === 'Oeuf') {
-                if (rand.rand(1,100) <= 20) {
-                    alienMorph(bat,'Flaque',false);
-                } else {
-                    deadAliensList.push(bat.id);
-                }
+                deadAliensList.push(bat.id);
             }
             if (batType.name === 'Vomissure') {
                 deadAliensList.push(bat.id);
@@ -137,8 +129,8 @@ function saveAliensForReturn(zoneNum) {
             if (batType.name === 'Volcan' && rand.rand(1,100) <= 75) {
                 deadAliensList.push(bat.id);
             }
-            if (batType.name === 'Flaque' && rand.rand(1,100) <= 10) {
-                alienMorph(bat,'Oeuf',false);
+            if (batType.name === 'Flaque') {
+                alienMorph(bat,'Vomissure',false);
             }
         } else {
             deadAliensList.push(bat.id);

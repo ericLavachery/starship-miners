@@ -347,15 +347,23 @@ function showBataillon(bat) {
         }
     }
     let uClass = 'pUnits';
-    if (bat.fuzz <= -2) {
-        if (bat.tags.includes('fortif')) {
+    if (batType.cat === 'buildings') {
+        if (bat.fuzz <= -2) {
             uClass = 'pUnitsCamoFortif';
         } else {
-            uClass = 'pUnitsCamo';
+            uClass = 'pUnitsFortif';
         }
     } else {
-        if (bat.tags.includes('fortif')) {
-            uClass = 'pUnitsFortif';
+        if (bat.fuzz <= -2) {
+            if (bat.tags.includes('fortif')) {
+                uClass = 'pUnitsCamoFortif';
+            } else {
+                uClass = 'pUnitsCamo';
+            }
+        } else {
+            if (bat.tags.includes('fortif')) {
+                uClass = 'pUnitsFortif';
+            }
         }
     }
     if (!modeSonde) {

@@ -300,7 +300,7 @@ function undarkAround(bat,center) {
     } else {
         vue = calcVue(bat,batType);
     }
-    console.log('UNDARK AROUND: '+vue);
+    // console.log('UNDARK AROUND: '+vue);
     let thisTile = batTileId;
     unDark(thisTile);
     if (vue >= 1 || center) {

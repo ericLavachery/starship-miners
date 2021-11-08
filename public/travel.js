@@ -316,21 +316,21 @@ function editSonde() {
     } else {
         $('#thePlanet').append('<option value="1">Dom</option>');
     }
-    if (playerInfos.comp.vsp >= 1) {
+    if (playerInfos.comp.vsp >= 1 && playerInfos.sondeDanger >= 4) {
         if (2 === playerInfos.sondePlanet) {
             $('#thePlanet').append('<option value="2" selected>Sarak</option>');
         } else {
             $('#thePlanet').append('<option value="2">Sarak</option>');
         }
     }
-    if (playerInfos.bldList.includes('Centre de recherches')) {
+    if (playerInfos.bldList.includes('Centre de recherches') && playerInfos.sondeDanger >= 4) {
         if (3 === playerInfos.sondePlanet) {
             $('#thePlanet').append('<option value="3" selected>Gehenna</option>');
         } else {
             $('#thePlanet').append('<option value="3">Gehenna</option>');
         }
     }
-    if (playerInfos.comp.vsp >= 1 && playerInfos.bldList.includes('Centre de com')) {
+    if (playerInfos.comp.vsp >= 1 && playerInfos.bldList.includes('Centre de com') && playerInfos.sondeDanger >= 4) {
         if (4 === playerInfos.sondePlanet) {
             $('#thePlanet').append('<option value="4" title="Vous aurez besoin d\'une Sonde (Un Impacteur ne suffit pas)" selected>Kzin</option>');
         } else {
