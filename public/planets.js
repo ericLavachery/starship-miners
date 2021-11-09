@@ -2,7 +2,7 @@ function planetEffects(bat,batType) {
     // Gehenna
     if (zone[0].planet === 'Gehenna') {
         if (batType.cat === 'infantry') {
-            if (playerInfos.comp.scaph < 1) {
+            if (playerInfos.comp.scaph < 1 || batType.squads > bat.squadsLeft) {
                 let medDice = (playerInfos.comp.med*2)+6;
                 let terrain = getTerrain(bat);
                 if (bat.loc === "zone") {

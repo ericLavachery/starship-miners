@@ -30,16 +30,22 @@ function calcRavitVolume(bat) {
     let w1maxAmmo = batType.weapon.maxAmmo;
     let w2maxAmmo = batType.weapon2.maxAmmo;
     if (batType.weapon.maxAmmo < 99) {
-        if (bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq.includes('carrousel') || bat.logeq.includes('carrousel') || bat.eq === 'crimekitgi') {
+        if (playerInfos.bldList.includes('Usine d\'armement')) {
+            w1maxAmmo = Math.round(w1maxAmmo*1.5);
+        } else if (playerInfos.bldList.includes('Arsenal')) {
+            w1maxAmmo = Math.round(w1maxAmmo*1.25);
+        }
+        if (bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq === 'crimekitgi') {
             w1maxAmmo = Math.floor(w1maxAmmo*1.5);
             if (w1maxAmmo < 16) {
                 w1maxAmmo = 16;
             }
         }
-        if (playerInfos.bldList.includes('Usine d\'armement')) {
-            w1maxAmmo = Math.round(w1maxAmmo*1.5);
-        } else if (playerInfos.bldList.includes('Arsenal')) {
-            w1maxAmmo = Math.round(w1maxAmmo*1.25);
+        if (bat.eq.includes('carrousel') || bat.logeq.includes('carrousel')) {
+            w1maxAmmo = Math.floor(w1maxAmmo*1.35);
+            if (w1maxAmmo < 16) {
+                w1maxAmmo = 16;
+            }
         }
         if (bat.ammo.includes('obus') || bat.ammo.includes('boulet')) {
             ammoVolume = 2*batType.weapon.power;

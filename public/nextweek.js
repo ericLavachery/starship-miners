@@ -4,7 +4,8 @@ function events(afterMission,time,sim) {
     resetWeekRes();
     if (afterMission) {
         time = Math.ceil(playerInfos.mapTurn/3)*3;
-    } else {
+    }
+    if (!afterMission && !sim) {
         craftReset(time);
     }
     if (!sim) {
@@ -258,7 +259,13 @@ function eventBouffe(time,sim) {
     bouffeCost['Eau'] = Math.round(toutMesCitoyens*time*2/274/recycleFactor*8);
     bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time*2/936/recycleFactor*8);
     bouffeCost['Energie'] = Math.round(toutMesCitoyens*time*2/1408/energyFactor*8);
+    console.log('CONSO !!!!!!!!!!!!!!!!!!!!!!!!!!');
+    console.log('time='+time);
+    console.log('energyFactor='+energyFactor);
+    console.log(mesCitoyens);
+    console.log(bouffeCost);
     let plantesProd = 0;
+    let bldHeat = 0;
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         // Serres 1 emplacement
@@ -278,9 +285,10 @@ function eventBouffe(time,sim) {
             }
         }
         if (batType.cat === 'buildings') {
-            bouffeCost['Energie'] = bouffeCost['Energie']+Math.round(batType.hp/28);
+            bldHeat = bldHeat+batType.hp;
         }
     });
+    bouffeCost['Energie'] = bouffeCost['Energie']+Math.round(bldHeat/28/65*time);
     if (plantesProd >= 1) {
         warning('Serres et Jardins','Oxygène:<span class="vert">+'+plantesProd+'</span><br>(Déduit de la consommation)<br>',true);
         if (bouffeCost['Oxygène'] > plantesProd) {
@@ -289,8 +297,6 @@ function eventBouffe(time,sim) {
             bouffeCost['Oxygène'] = 0;
         }
     }
-    console.log(mesCitoyens);
-    console.log(bouffeCost);
     playerInfos.vitals = Math.floor(playerInfos.vitals/3);
     let dispoFood = getDispoRes('Nourriture');
     let costFood = bouffeCost['Nourriture'];
@@ -352,6 +358,7 @@ function eventBouffe(time,sim) {
     warning('Consommation','Eau: <span class="rose">-'+costWater+'</span><br>'+messageWater,true);
     warning('Consommation','Oxygène: <span class="rose">-'+costAir+'</span><br>'+messageAir,true);
     warning('Consommation','Energie: <span class="rose">-'+costHeat+'</span><br>'+messageHeat+'<br>',true);
+    console.log(bouffeCost);
     modWeekMulti(bouffeCost);
     if (!sim) {
         payMaxCost(bouffeCost);

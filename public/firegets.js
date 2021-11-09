@@ -1585,6 +1585,11 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.cost = thisWeapon.cost-1;
         }
     }
+    if (playerInfos.bldList.includes('Usine d\'armement')) {
+        thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.5);
+    } else if (playerInfos.bldList.includes('Arsenal')) {
+        thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.25);
+    }
     if ((bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq === 'crimekitgi') && thisWeapon.maxAmmo < 99) {
         thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
         if (thisWeapon.maxAmmo < 16) {
@@ -1596,11 +1601,6 @@ function weaponAdj(weapon,bat,wn) {
         if (thisWeapon.maxAmmo < 16) {
             thisWeapon.maxAmmo = 16;
         }
-    }
-    if (playerInfos.bldList.includes('Usine d\'armement')) {
-        thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.5);
-    } else if (playerInfos.bldList.includes('Arsenal')) {
-        thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.25);
     }
     if (bat.eq === 'arcpoulie' || bat.logeq === 'arcpoulie') {
         if (thisWeapon.name.includes('Arc')) {

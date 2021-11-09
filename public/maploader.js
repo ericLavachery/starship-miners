@@ -252,6 +252,9 @@ function getBatPic(bat,batType) {
     if (batType.skills.includes('kitimage') && bat.eq.includes('kit-')) {
         batPic = batPic+'2'
     }
+    if (batType.skills.includes('garde') && bat.eq === 'e-phare') {
+        batPic = 'phare';
+    }
     return batPic;
 };
 
