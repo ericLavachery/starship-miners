@@ -4228,7 +4228,7 @@
         "size":4,
         "volume":1.2,
         "stealth":0,
-        "ap":14,
+        "ap":16,
         "maxSalvo":1,
         "weapon":{
             "name":"Mitrailleuse",
@@ -4264,7 +4264,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","datt","robot","sentinelle","badmecano","hscarpmove","undead","survivor","resistfeu","light","aifouille","roborepair"],
+        "skills":["fortif","datt","robot","sentinelle","badmecano","undead","survivor","resistfeu","light","aifouille","roborepair"],
         "mecanoCost":8,
         "fuzz":2,
         "deathFx":"144469__psychedelic-hands__robot-death"
