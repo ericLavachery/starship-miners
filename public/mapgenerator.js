@@ -27,6 +27,8 @@ function createVM(size) {
         if (newTile.id === 0) {
             newTile.number = nextZoneNum;
             newTile.dark = false;
+            newTile.undarkAll = true;
+            newTile.undarkOnce = [];
             newTile.mapDiff = 0;
             newTile.pKind = '';
             newTile.gKind = '';
@@ -95,8 +97,12 @@ function createMap(size) {
             newTile.number = nextZoneNum;
             if (planetName === 'Sarak') {
                 newTile.dark = true;
+                newTile.undarkAll = false;
+                newTile.undarkOnce = [];
             } else {
                 newTile.dark = false;
+                newTile.undarkAll = true;
+                newTile.undarkOnce = [];
             }
             newTile.mapDiff = playerInfos.sondeDanger;
             newTile.pKind = checkMapKind('P');

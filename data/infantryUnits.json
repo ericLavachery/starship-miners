@@ -1314,7 +1314,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","camo","uprank","cible","herosalvo"],
         "mediCost":10,
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"human1"
     },
     {
@@ -1436,7 +1436,7 @@
         "skills":["fouille","fortif","datt","ranger","camo","embuscade","baddef","selfbadmedic","dealer","octiron","souschef","herosalvo"],
         "mediCost":9,
         "maxDrug":6,
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
@@ -1545,7 +1545,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","camo","guerrilla","tirailleur","datt","selfbadmedic","ranger","noblub","uprank","herorage","herofana"],
         "mediCost":9,
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
     },
     {
@@ -1604,7 +1604,7 @@
         "skills":["fouille","fortif","camo","guerrilla","embuscade","datt","selfbadmedic","ranger","fastguet","noblub","trapap","heroescape"],
         "mediCost":6,
         "maxSkill":4,
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"219149__musability__female-wilhelm-scream-audacity"
     },
     {
@@ -2755,7 +2755,7 @@
         "skills":["fouille","fortif","datt","medic","camo","dealer","kirin","octiron","sila","starka","ranger","heropotion"],
         "mediCost":8,
         "maxDrug":18,
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"human1"
     },
     {
@@ -2868,7 +2868,7 @@
         "skills":["fouille","fortif","embuscade","camo","guerrilla","ranger","fastguet","selfbadmedic","survivor","noblub","baddef","trapdard","brigands","cible","herokill","heroescape","lowstress"],
         "mediCost":8,
         "maxSkill":4,
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"219149__musability__female-wilhelm-scream-audacity"
     },
     {
@@ -2926,7 +2926,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","camo","ranger","fastguet","guerrilla","datt","embuscade","selfbadmedic","baddef","herosalvo"],
         "mediCost":9,
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"219149__musability__female-wilhelm-scream-audacity"
     },
     {
@@ -3041,7 +3041,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","camo","selfbadmedic","baddef","strong","cible","bgun","herominik"],
         "mediCost":7,
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
     },
     {
@@ -3160,7 +3160,7 @@
         "skills":["fouille","fortif","camo","medic","fly","jetpack","longshot","inflammable","dealer","starka","kirin","octiron","oknitro","cible","heropotion"],
         "mediCost":5,
         "maxDrug":20,
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"human2"
     },
     {
@@ -3258,7 +3258,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","fortif","datt","camo","regeneration","ranger","mutant","nofear","guerrilla","tirailleur","baddef","fastguet","resistpoison","noblub","nochef","herorage","herosalvo","lowstress"],
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"137036__pyrocamancer__beast-death"
     },
     {
@@ -3377,7 +3377,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","datt","camo","selfmedic","embuscade","berserk","nofear","fly","jetpack","longshot","inflammable","baddef","oknitro","herorage","herofana","herosalvo"],
         "mediCost":12,
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
     },
     {
@@ -3822,7 +3822,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","datt","embuscade","camo","ranger","selfmedic","survivor","leader","defense","guerrilla","tirailleur","baddef","fastguet","heroescape","herorange"],
         "mediCost":7,
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"human3"
     },
     {
@@ -3932,7 +3932,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","fortif","camo","regeneration","embuscade","mutant","ranger","fastguet","guerrilla","baddef","brigands","heroescape","lowstress"],
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"137036__pyrocamancer__beast-death"
     },
     {
@@ -5232,7 +5232,7 @@
         "skills":["fouille","fortif","datt","camo","guerrilla","tirailleur","fastguet","selfbadmedic","baddef","dealer","octiron","heroescape","herolasso"],
         "mediCost":8,
         "maxDrug":6,
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"human2"
     },
     {
@@ -5344,7 +5344,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","datt","selfmedic","leader","survivor","camo","defense","guerrilla","embuscade","herokill"],
         "mediCost":5,
-        "fuzz":-1,
+        "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
     },
     {

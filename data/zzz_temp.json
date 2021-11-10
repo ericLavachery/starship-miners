@@ -29,6 +29,64 @@ autre son
 rof 1/2
 seconde arme tir à 1+1 (accuracy 10) noFly
 
+
+
+// function checkFlyTarget(weapon,batType) {
+//     if (weapon.noFly && batType.skills.includes('fly')) {
+//         return false;
+//     } else {
+//         if (weapon.noGround && !batType.skills.includes('fly') && !batType.skills.includes('sauteur')) {
+//             return false;
+//         } else {
+//             return true;
+//         }
+//     }
+// };
+
+
+// function anyAlienInRange(myBat,weapon) {
+//     let tileId = myBat.tileId;
+//     let distance;
+//     let inRange = false;
+//     let batIndex;
+//     let batType;
+//     aliens.forEach(function(bat) {
+//         if (bat.loc === "zone") {
+//             let guidageOK = checkGuidage(weapon,bat);
+//             if (isInRange(myBat,bat.tileId,weapon) || guidageOK) {
+//                 batType = getBatType(bat);
+//                 if (weapon.ammo.includes('marquage') && weapon.name != 'Fragger' && bat.tags.includes('fluo')) {
+//                     // Déjà marqué
+//                 } else {
+//                     if (weapon.noFly && batType.skills.includes('fly')) {
+//                         // Fly hors portée
+//                     } else {
+//                         if (weapon.noGround && !batType.skills.includes('fly') && !batType.skills.includes('sauteur')) {
+//                             // Ground hors portée
+//                         } else {
+//                             if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
+//                                 // Alien invisible
+//                                 distance = calcDistance(myBat.tileId,bat.tileId)
+//                                 if (distance === 0 || guidageOK || bat.tags.includes('fluo')) {
+//                                     inRange = true;
+//                                 }
+//                             } else {
+//                                 if (zone[0].dark && !undarkNow.includes(bat.tileId)) {
+//                                     // Alien dans l'ombre
+//                                 } else {
+//                                     inRange = true;
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     });
+//     return inRange;
+// };
+
+
 {
     "id":64,
     "result":"Energie",

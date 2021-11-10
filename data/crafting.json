@@ -570,6 +570,24 @@
         "creaNum":80
     },
     {
+        "id":132,
+        "result":"Explosifs",
+        "cost":{"Soufre":8,"Potassium":8,"Carbone":8},
+        "compReq":{"ind":1},
+        "bldReq":["Arsenal"],
+        "batch":6,
+        "creaNum":120
+    },
+    {
+        "id":133,
+        "result":"Explosifs",
+        "cost":{"Soufre":7,"Potassium":7,"Carbone":7},
+        "compReq":{"ind":2},
+        "bldReq":["Usine d'armement"],
+        "batch":6,
+        "creaNum":160
+    },
+    {
         "id":26,
         "result":"Explosifs",
         "cost":{"Carbone":1,"Hydrogène":2,"Azote":2,"Oxygène":1,"Energie":1},

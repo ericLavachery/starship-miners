@@ -457,7 +457,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 3,
-        "planets":{"Dom":0,"Sarak":1,"Gehenna":1,"Kzin":0,"Horst":1}
+        "planets":{"Dom":0,"Sarak":0.7,"Gehenna":1.5,"Kzin":0,"Horst":1}
     },
     {
         "id": 34,
@@ -470,7 +470,7 @@
         "energie": 0.5,
         "cramBld": "Centrale nucléaire",
         "equiv": 3,
-        "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":1,"Horst":1}
+        "planets":{"Dom":0,"Sarak":0,"Gehenna":0.2,"Kzin":1,"Horst":1}
     },
     {
         "id": 35,
@@ -482,7 +482,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 3,
-        "planets":{"Dom":0,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0}
+        "planets":{"Dom":0,"Sarak":0.5,"Gehenna":1,"Kzin":1,"Horst":0}
     },
     {
         "id": 36,
@@ -494,7 +494,7 @@
         "batch": 4,
         "energie": 1,
         "equiv": 3,
-        "planets":{"Dom":0,"Sarak":1,"Gehenna":1,"Kzin":2,"Horst":0}
+        "planets":{"Dom":0,"Sarak":1,"Gehenna":0.7,"Kzin":2,"Horst":0}
     },
     {
         "id": 37,

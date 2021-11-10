@@ -1086,24 +1086,21 @@ function anyAlienInRange(myBat,weapon) {
                 if (weapon.ammo.includes('marquage') && weapon.name != 'Fragger' && bat.tags.includes('fluo')) {
                     // Déjà marqué
                 } else {
-                    if (weapon.noFly && batType.skills.includes('fly')) {
-                        // Fly hors portée
+                    let realmOK = checkFlyTarget(weapon,batType);
+                    if (!realmOK) {
+                        // Fly/Ground hors portée
                     } else {
-                        if (weapon.noGround && !batType.skills.includes('fly') && !batType.skills.includes('sauteur')) {
-                            // Ground hors portée
+                        if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
+                            // Alien invisible
+                            distance = calcDistance(myBat.tileId,bat.tileId)
+                            if (distance === 0 || guidageOK || bat.tags.includes('fluo')) {
+                                inRange = true;
+                            }
                         } else {
-                            if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
-                                // Alien invisible
-                                distance = calcDistance(myBat.tileId,bat.tileId)
-                                if (distance === 0 || guidageOK || bat.tags.includes('fluo')) {
-                                    inRange = true;
-                                }
+                            if (zone[0].dark && !undarkNow.includes(bat.tileId)) {
+                                // Alien dans l'ombre
                             } else {
-                                if (zone[0].dark && !undarkNow.includes(bat.tileId)) {
-                                    // Alien dans l'ombre
-                                } else {
-                                    inRange = true;
-                                }
+                                inRange = true;
                             }
                         }
                     }
@@ -1142,15 +1139,21 @@ function calcOffsets(myTileId,tileId) {
 };
 
 function checkFlyTarget(weapon,batType) {
-    if (weapon.noFly && batType.skills.includes('fly')) {
-        return false;
+    let targetOK = true;
+    if (batType.skills.includes('fly')) {
+        if (weapon.isMelee) {
+            targetOK = false;
+        } else if (weapon.range === 0 && weapon.isShort) {
+            targetOK = false;
+        } else if (weapon.noFly) {
+            targetOK = false;
+        }
     } else {
-        if (weapon.noGround && !batType.skills.includes('fly') && !batType.skills.includes('sauteur')) {
-            return false;
-        } else {
-            return true;
+        if (weapon.noGround && !batType.skills.includes('sauteur')) {
+            targetOK = false;
         }
     }
+    return targetOK;
 };
 
 function isOnInfra(bat) {
