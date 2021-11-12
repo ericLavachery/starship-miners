@@ -1228,14 +1228,6 @@ function newEggCat() {
 
 function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
-    let swampMap = false;
-    let eggTerrain = getTerrain(bat);
-    if (eggTerrain.name === 'W' || eggTerrain.name === 'S' || eggTerrain === 'L') {
-        swampMap = true;
-    }
-    if (zone[0].ps+zone[0].pw >= 60) {
-        swampMap = true;
-    }
     let overSaturation = false;
     if (playerInfos.alienSat >= coconSatLimit-1 && playerInfos.mapTurn >= 76) {
         overSaturation = true;
@@ -1321,10 +1313,13 @@ function eggSpawn(bat,fromEgg) {
             let minTurnB = 33-Math.round(zone[0].mapDiff*3);
             let minTurnA = 66-Math.round(zone[0].mapDiff*5);
             classes.push('C');
-            if (eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB && zone[0].mapDiff >= 3) {
+            if ((eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB && zone[0].mapDiff >= 3) || zoneInfos.cb) {
                 classes.push('B');
                 if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA && (zone[0].mapDiff >= 6 || overSaturation)) {
                     classes.push('A');
+                    if (zoneInfos.as) {
+                        classes.push('S');
+                    }
                     if (eggModTurn >= 20 && playerInfos.mapTurn >= minTurnA && fromEgg) {
                         const index = classes.indexOf('C');
                         if (index > -1) {
@@ -1344,17 +1339,8 @@ function eggSpawn(bat,fromEgg) {
                 if (classes.includes(unit.class) && unit.kind.includes(eggCat)) {
                     if (unit.class != 'A' || unit.rarity != 2 || zone[0].mapDiff >= 7) {
                         if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4 || unit.name === 'Punaises') {
-                            if (swampMap && zone[0].mapDiff >= 4 && unit.kind === 'spider') {
-                                if (unit.name === 'Surfeuses') {
-                                    checkDiceMax = checkDiceMax+(unit.rarity*4);
-                                } else if (unit.name === 'Nerveuses' || unit.name === 'Cracheuses' || unit.name === 'Torches') {
-                                    // nothing
-                                } else {
-                                    checkDiceMax = checkDiceMax+unit.rarity;
-                                }
-                            } else {
-                                checkDiceMax = checkDiceMax+unit.rarity;
-                            }
+                            let ztRarity = checkRarityByZoneType(unit);
+                            checkDiceMax = checkDiceMax+ztRarity;
                         }
                     }
                 }
@@ -1370,17 +1356,8 @@ function eggSpawn(bat,fromEgg) {
                     if (classes.includes(unit.class) && unit.kind.includes(eggCat) && Object.keys(conselUnit).length <= 0) {
                         if (unit.class != 'A' || unit.rarity != 2 || zone[0].mapDiff >= 7) {
                             if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4 || unit.name === 'Punaises') {
-                                if (swampMap && zone[0].mapDiff >= 4 && unit.kind === 'spider') {
-                                    if (unit.name === 'Surfeuses') {
-                                        raritySum = raritySum+(unit.rarity*4);
-                                    } else if (unit.name === 'Nerveuses' || unit.name === 'Cracheuses' || unit.name === 'Torches') {
-                                        // nothing
-                                    } else {
-                                        raritySum = raritySum+unit.rarity;
-                                    }
-                                } else {
-                                    raritySum = raritySum+unit.rarity;
-                                }
+                                let ztRarity = checkRarityByZoneType(unit);
+                                raritySum = raritySum+ztRarity;
                                 if (checkDice <= raritySum) {
                                     if (aliens.length < maxAliens-50 || unit.class != 'C') {
                                         conselUnit = unit;
@@ -1434,39 +1411,43 @@ function getEggKind(bat) {
 };
 
 function checkputEggKind(bat) {
-    let dice = rand.rand(1,2);
+    let eggKind = '';
     if (bat.tags.includes('bug')) {
-        return 'bug';
+        eggKind = 'bug';
     } else if (bat.tags.includes('larve')) {
-        return 'larve';
+        eggKind = 'larve';
     } else if (bat.tags.includes('spider')) {
-        return 'spider';
+        eggKind = 'spider';
     } else if (bat.tags.includes('swarm')) {
-        return 'swarm';
+        eggKind = 'swarm';
     } else {
-        let terName = getTileTerrainName(bat.tileId);
-        if (terName === 'M' || terName === 'H') {
-            bat.tags.push('bug');
-            return 'bug';
-        } else if (terName === 'F') {
-            bat.tags.push('spider');
-            return 'spider';
-        } else if (terName === 'R' || terName === 'W' || terName === 'L') {
-            bat.tags.push('larve');
-            return 'larve';
-        } else if (terName === 'B') {
-            bat.tags.push('swarm');
-            return 'swarm';
-        } else if (terName === 'P') {
-            return zoneInfos.pKind;
-        } else if (terName === 'G') {
-            return zoneInfos.gKind;
-        } else if (terName === 'S') {
-            return zoneInfos.sKind;
-        } else {
-            return '';
+        eggKind = checkEggKindByZoneType();
+        if (eggKind === '') {
+            let terName = getTileTerrainName(bat.tileId);
+            if (terName === 'M' || terName === 'H') {
+                bat.tags.push('bug');
+                eggKind = 'bug';
+            } else if (terName === 'F') {
+                bat.tags.push('spider');
+                eggKind = 'spider';
+            } else if (terName === 'R' || terName === 'W' || terName === 'L') {
+                bat.tags.push('larve');
+                eggKind = 'larve';
+            } else if (terName === 'B') {
+                bat.tags.push('swarm');
+                eggKind = 'swarm';
+            } else if (terName === 'P') {
+                eggKind = zoneInfos.pKind;
+            } else if (terName === 'G') {
+                eggKind = zoneInfos.gKind;
+            } else if (terName === 'S') {
+                eggKind = zoneInfos.sKind;
+            } else {
+                eggKind = '';
+            }
         }
     }
+    return eggKind;
 };
 
 function checkDrop(layBatTileId) {

@@ -1901,6 +1901,141 @@ function checkZoneType() {
             zoneInfos.ieggsBonus = 0;
         }
     }
+    // swamp map
+    let swampMap = false;
+    if (zone[0].ps+zone[0].pw >= 60) {
+        swampMap = true;
+    }
+    // special zones
+    zoneInfos.type = 'normal';
+    zoneInfos.cb = false; // if true add class b to class c
+    zoneInfos.as = false; // if true add class s to class a
+    if (swampMap && zone[0].mapDiff >= 5 && zone[3].seed === 1 && zone[4].seed <= 2) {
+        zoneInfos.type = 'leech';
+        zoneInfos.cb = true;
+    } else if (zone[0].ps+zone[0].pw >= 30 && zone[0].mapDiff >= 2 && zone[3].seed === 2 && zone[4].seed <= 3) {
+        zoneInfos.type = 'flies';
+    } else if (zone[0].ps+zone[0].pw <= 10 && zone[0].mapDiff >= 4 && zone[3].seed === 3 && zone[4].seed <= 2) {
+        zoneInfos.type = 'ants';
+        zoneInfos.cb = true;
+    } else if (zone[0].pb >= 25 && zone[0].mapDiff >= 2 && zone[3].seed === 4 && zone[4].seed <= 3) {
+        zoneInfos.type = 'roaches';
+        zoneInfos.as = true;
+    } else if (zone[0].pf >= 25 && zone[0].mapDiff >= 7 && zone[3].seed === 5 && zone[4].seed === 1) {
+        zoneInfos.type = 'spinne';
+        zoneInfos.cb = true;
+        zoneInfos.as = true;
+    } else if (zone[0].pm >= 25 && zone[0].mapDiff >= 5 && zone[3].seed === 6 && zone[4].seed <= 2) {
+        zoneInfos.type = 'bigbugs';
+        zoneInfos.as = true;
+    }
+    // Test
+    // zoneInfos.type = 'leech';
+    // zoneInfos.cb = true;
+    zoneInfos.surf = false;
+    if (zoneInfos.type === 'normal') {
+        // surf zone
+        if (swampMap && zone[0].mapDiff >= 4 && zone[2].seed <= 4) {
+            zoneInfos.surf = true;
+        }
+    }
     console.log('ZONE TYPE');
     console.log(zoneInfos);
+};
+
+function checkRarityByZoneType(unit) {
+    let ztRarity = unit.rarity;
+    if (zoneInfos.type === 'leech') {
+        if (unit.name === 'Sangsues') {
+            ztRarity = 25;
+        } else if (unit.name === 'Megagrubz') {
+            ztRarity = 6;
+        } else {
+            ztRarity = 0;
+        }
+    }
+    if (zoneInfos.type === 'flies') {
+        if (unit.name === 'Asticots') {
+            ztRarity = 24;
+        } else if (unit.name === 'Lombrics') {
+            ztRarity = 10;
+        } else {
+            ztRarity = 0;
+        }
+    }
+    if (zoneInfos.type === 'ants') {
+        if (unit.name === 'Fourmis') {
+            ztRarity = 32;
+        } else if (unit.name === 'Mantes') {
+            ztRarity = 8;
+        } else {
+            ztRarity = 0;
+        }
+    }
+    if (zoneInfos.type === 'roaches') {
+        if (unit.name === 'Cafards') {
+            ztRarity = 25;
+        } else if (unit.name === 'Blattes') {
+            ztRarity = 9;
+        } else if (unit.name === 'Homards') {
+            ztRarity = 7;
+        } else {
+            ztRarity = 0;
+        }
+    }
+    if (zoneInfos.type === 'spinne') {
+        if (unit.name === 'Sournoises') {
+            ztRarity = 22;
+        } else if (unit.name === 'Torches') {
+            ztRarity = 8;
+        } else if (unit.name === 'Uberspinne') {
+            ztRarity = 5;
+        } else {
+            ztRarity = 0;
+        }
+    }
+    if (zoneInfos.type === 'bigbugs') {
+        if (unit.name === 'Escarbots') {
+            ztRarity = 17;
+        } else if (unit.name === 'Broyeurs') {
+            ztRarity = 13;
+        } else if (unit.name === 'Overbugs') {
+            ztRarity = 5;
+        } else {
+            ztRarity = 0;
+        }
+    }
+    if (zoneInfos.surf) {
+        if (unit.kind === 'spider') {
+            if (unit.name === 'Surfeuses') {
+                ztRarity = ztRarity*4;
+            } else if (unit.name === 'Nerveuses' || unit.name === 'Cracheuses' || unit.name === 'Torches') {
+                ztRarity = 0;
+            }
+        }
+    }
+    return ztRarity;
+};
+
+function checkEggKindByZoneType() {
+    let eggKind = '';
+    if (zoneInfos.type === 'leech') {
+        eggKind = 'larve';
+    }
+    if (zoneInfos.type === 'flies') {
+        eggKind = 'larve';
+    }
+    if (zoneInfos.type === 'ants') {
+        eggKind = 'swarm';
+    }
+    if (zoneInfos.type === 'roaches') {
+        eggKind = 'swarm';
+    }
+    if (zoneInfos.type === 'spinne') {
+        eggKind = 'spider';
+    }
+    if (zoneInfos.type === 'bigbugs') {
+        eggKind = 'bug';
+    }
+    return eggKind;
 };

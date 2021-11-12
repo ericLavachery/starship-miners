@@ -149,7 +149,7 @@ function checkRavit(myBat) {
     return anyRavit;
 };
 
-function goRavit() {
+function goRavit(apCost) {
     if (selectedBat.tags.includes('aU')) {
         // console.log('RAVIT');
         // console.log(selectedBat);
@@ -222,19 +222,10 @@ function goRavit() {
                 i++;
             }
             let numRav = Math.round(numAmmo*singleAmmoVolume);
-            let ravitFactor = 3;
-            if (selectedBatType.skills.includes('fly') && !selectedBatType.skills.includes('jetpack')) {
-                ravitFactor = 1;
-            }
-            if (selectedBat.eq.includes('carrousel') || selectedBat.logeq.includes('carrousel')) {
-                ravitFactor = ravitFactor*1.5;
-            }
-            if (playerInfos.comp.log >= 3) {
-                ravitFactor = ravitFactor*2;
-            }
-            let apCost = Math.round(Math.sqrt(numRav)*selectedBat.ap/ravitFactor);
             selectedBat.apLeft = selectedBat.apLeft-apCost;
-            selectedBat.salvoLeft = 0;
+            if (playerInfos.comp.log < 3) {
+                selectedBat.salvoLeft = 0;
+            }
             selectedBat.tags.push('ravit');
             if (biggestRavit < 999) {
                 i = 1;
