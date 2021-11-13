@@ -725,6 +725,12 @@ function showZonePreview() {
             showInfo = showInfo+', Eau=OK';
         }
     }
+    console.log('showInfo');
+    console.log(showInfo);
+    let spType = getZoneType(zonePrev);
+    if (spType != 'normal') {
+        showInfo = changeEggKindsByZoneType(showInfo,spType);
+    }
     $('#zoneDetail').append('<span class="ListRes">'+showInfo+'<br></span><br>');
     $('#zoneDetail').append('<span class="ListRes vert">Ressources présentes<br></span><br>');
     if (playerInfos.comp.det >= 3) {
@@ -736,6 +742,54 @@ function showZonePreview() {
     }
 };
 
+function changeEggKindsByZoneType(showInfo,spType) {
+    if (spType === 'leech') {
+        showInfo = showInfo.replace(/bugs/g,'larves');
+        showInfo = showInfo.replace(/spiders/g,'larves');
+        showInfo = showInfo.replace(/swarms/g,'larves');
+        showInfo = showInfo+', <span class="jaune">Sangsues!</span>';
+    }
+    if (spType === 'flies') {
+        showInfo = showInfo.replace(/bugs/g,'larves');
+        showInfo = showInfo.replace(/spiders/g,'larves');
+        showInfo = showInfo.replace(/swarms/g,'larves');
+        showInfo = showInfo+', <span class="jaune">Moucherons!</span>';
+    }
+    if (spType === 'ants') {
+        showInfo = showInfo.replace(/bugs/g,'swarms');
+        showInfo = showInfo.replace(/spiders/g,'swarms');
+        showInfo = showInfo.replace(/larves/g,'swarms');
+        showInfo = showInfo+', <span class="jaune">Fourmis!</span>';
+    }
+    if (spType === 'roaches') {
+        showInfo = showInfo.replace(/bugs/g,'swarms');
+        showInfo = showInfo.replace(/spiders/g,'swarms');
+        showInfo = showInfo.replace(/larves/g,'swarms');
+        showInfo = showInfo+', <span class="jaune">Cafards!</span>';
+    }
+    if (spType === 'spinne') {
+        showInfo = showInfo.replace(/bugs/g,'spiders');
+        showInfo = showInfo.replace(/larves/g,'spiders');
+        showInfo = showInfo.replace(/swarms/g,'spiders');
+        showInfo = showInfo+', <span class="jaune">Sournoises!</span>';
+    }
+    if (spType === 'bigbugs') {
+        showInfo = showInfo.replace(/spiders/g,'bugs');
+        showInfo = showInfo.replace(/larves/g,'bugs');
+        showInfo = showInfo.replace(/swarms/g,'bugs');
+        showInfo = showInfo+', <span class="jaune">Broyeurs!</span>';
+    }
+    return showInfo;
+};
+
+function getZoneType(myZone) {
+    let spType = 'normal';
+    if (zonePrev[0].type != undefined) {
+        spType = zonePrev[0].type;
+    }
+    return spType;
+};
+
 function isRaining(myZone) {
     let rain = false;
     if (myZone[0].snd === 'rainforest' || myZone[0].snd === 'thunderstart' || myZone[0].snd === 'swamp' || myZone[0].snd === 'uhuwind') {
@@ -744,4 +798,4 @@ function isRaining(myZone) {
         rain = true;
     }
     return rain;
-}
+};

@@ -1023,34 +1023,40 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             let gearStuff = getBatGearStuff(armorName,equipName,conselUnit);
             newBat.armor = gearStuff[0];
             newBat.ap = gearStuff[1];
-            if (conselTriche || playerInfos.onShip) {
-                newBat.apLeft = newBat.ap;
-                newBat.oldapLeft = newBat.ap;
+            if (conselUnit.cat === 'aliens') {
+                newBat.apLeft = Math.floor(newBat.ap/3);
+                newBat.oldapLeft = Math.floor(newBat.ap/3);
                 newBat.salvoLeft = conselUnit.maxSalvo;
             } else {
-                if (conselUnit.fabTime >= 1) {
-                    if (conselUnit.skills.includes('clicput')) {
-                        newBat.apLeft = 0;
-                        newBat.oldapLeft = 0;
-                        newBat.salvoLeft = 0;
-                    } else {
-                        let constFactor = 15;
-                        if (conselUnit.skills.includes('domeconst')) {
-                            newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*10);
-                            newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*10);
-                        } else if (conselUnit.skills.includes('longconst')) {
-                            newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
-                            newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
-                        } else {
-                            newBat.apLeft = conselUnit.ap-Math.round(conselUnit.fabTime*conselUnit.ap/constFactor);
-                            newBat.oldapLeft = conselUnit.ap-Math.round(conselUnit.fabTime*conselUnit.ap/constFactor);
-                        }
-                        newBat.salvoLeft = conselUnit.maxSalvo;
-                    }
-                } else {
+                if (conselTriche || playerInfos.onShip) {
                     newBat.apLeft = newBat.ap;
                     newBat.oldapLeft = newBat.ap;
                     newBat.salvoLeft = conselUnit.maxSalvo;
+                } else {
+                    if (conselUnit.fabTime >= 1) {
+                        if (conselUnit.skills.includes('clicput')) {
+                            newBat.apLeft = 0;
+                            newBat.oldapLeft = 0;
+                            newBat.salvoLeft = 0;
+                        } else {
+                            let constFactor = 15;
+                            if (conselUnit.skills.includes('domeconst')) {
+                                newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*10);
+                                newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*10);
+                            } else if (conselUnit.skills.includes('longconst')) {
+                                newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
+                                newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
+                            } else {
+                                newBat.apLeft = conselUnit.ap-Math.round(conselUnit.fabTime*conselUnit.ap/constFactor);
+                                newBat.oldapLeft = conselUnit.ap-Math.round(conselUnit.fabTime*conselUnit.ap/constFactor);
+                            }
+                            newBat.salvoLeft = conselUnit.maxSalvo;
+                        }
+                    } else {
+                        newBat.apLeft = newBat.ap;
+                        newBat.oldapLeft = newBat.ap;
+                        newBat.salvoLeft = conselUnit.maxSalvo;
+                    }
                 }
             }
             // Munitions

@@ -1908,32 +1908,41 @@ function checkZoneType() {
     }
     // special zones
     zoneInfos.type = 'normal';
+    zone[0].type = 'normal';
     zoneInfos.cb = false; // if true add class b to class c
     zoneInfos.as = false; // if true add class s to class a
-    if (swampMap && zone[0].mapDiff >= 5 && zone[3].seed === 1 && zone[4].seed <= 2) {
-        zoneInfos.type = 'leech';
-        zoneInfos.cb = true;
-    } else if (zone[0].ps+zone[0].pw >= 30 && zone[0].mapDiff >= 2 && zone[3].seed === 2 && zone[4].seed <= 3) {
-        zoneInfos.type = 'flies';
-    } else if (zone[0].ps+zone[0].pw <= 10 && zone[0].mapDiff >= 4 && zone[3].seed === 3 && zone[4].seed <= 2) {
-        zoneInfos.type = 'ants';
-        zoneInfos.cb = true;
-    } else if (zone[0].pb >= 25 && zone[0].mapDiff >= 2 && zone[3].seed === 4 && zone[4].seed <= 3) {
-        zoneInfos.type = 'roaches';
-        zoneInfos.as = true;
-    } else if (zone[0].pf >= 25 && zone[0].mapDiff >= 7 && zone[3].seed === 5 && zone[4].seed === 1) {
-        zoneInfos.type = 'spinne';
-        zoneInfos.cb = true;
-        zoneInfos.as = true;
-    } else if (zone[0].pm >= 25 && zone[0].mapDiff >= 5 && zone[3].seed === 6 && zone[4].seed <= 2) {
-        zoneInfos.type = 'bigbugs';
-        zoneInfos.as = true;
+    if (zone[0].terrain != 'V') {
+        if (swampMap && zone[0].mapDiff >= 5 && zone[3].seed === 1 && zone[4].seed <= 2) {
+            zoneInfos.type = 'leech';
+            zone[0].type = 'leech';
+            zoneInfos.cb = true;
+        } else if (zone[0].ps+zone[0].pw >= 30 && zone[0].mapDiff >= 2 && zone[3].seed === 2 && zone[4].seed <= 3) {
+            zoneInfos.type = 'flies';
+            zone[0].type = 'flies';
+        } else if (zone[0].ps+zone[0].pw <= 10 && zone[0].mapDiff >= 4 && zone[3].seed === 3 && zone[4].seed <= 2) {
+            zoneInfos.type = 'ants';
+            zone[0].type = 'ants';
+            zoneInfos.cb = true;
+        } else if (zone[0].pb >= 25 && zone[0].mapDiff >= 2 && zone[3].seed === 4 && zone[4].seed <= 3) {
+            zoneInfos.type = 'roaches';
+            zone[0].type = 'roaches';
+            zoneInfos.as = true;
+        } else if (zone[0].pf >= 25 && zone[0].mapDiff >= 7 && zone[3].seed === 5 && zone[4].seed === 1) {
+            zoneInfos.type = 'spinne';
+            zone[0].type = 'spinne';
+            zoneInfos.cb = true;
+            zoneInfos.as = true;
+        } else if (zone[0].pm >= 25 && zone[0].mapDiff >= 5 && zone[3].seed === 6 && zone[4].seed <= 2) {
+            zoneInfos.type = 'bigbugs';
+            zone[0].type = 'bigbugs';
+            zoneInfos.as = true;
+        }
     }
     // Test
     // zoneInfos.type = 'leech';
     // zoneInfos.cb = true;
     zoneInfos.surf = false;
-    if (zoneInfos.type === 'normal') {
+    if (zoneInfos.type === 'normal' && zone[0].terrain != 'V') {
         // surf zone
         if (swampMap && zone[0].mapDiff >= 4 && zone[2].seed <= 4) {
             zoneInfos.surf = true;
@@ -1996,9 +2005,9 @@ function checkRarityByZoneType(unit) {
     }
     if (zoneInfos.type === 'bigbugs') {
         if (unit.name === 'Escarbots') {
-            ztRarity = 17;
+            ztRarity = 15;
         } else if (unit.name === 'Broyeurs') {
-            ztRarity = 13;
+            ztRarity = 15;
         } else if (unit.name === 'Overbugs') {
             ztRarity = 5;
         } else {

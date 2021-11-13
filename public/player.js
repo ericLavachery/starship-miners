@@ -1398,6 +1398,7 @@ function missionResults(onlyLanders,sCount,hCount) {
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<br>');
     let balance = 0;
+    let minedTotal = 0;
     let citDiff = playerInfos.endRes['Citoyens']-playerInfos.startRes['Citoyens'];
     let resColour = 'gf';
     if (citDiff < 0) {
@@ -1439,6 +1440,7 @@ function missionResults(onlyLanders,sCount,hCount) {
                     }
                 }
             }
+            minedTotal = minedTotal+Math.round(minedRes*res.equiv);
             balance = balance+Math.round(resResult*res.equiv);
             if (resResult != 0) {
                 resColour = 'gf';
@@ -1461,6 +1463,7 @@ function missionResults(onlyLanders,sCount,hCount) {
         if (key != 'Citoyens') {
             let res = getResByName(key);
             let resIcon = getResIcon(res);
+            let minedRes = getMinedRes(res.name);
             let resCol = '';
             if (playerInfos.resFlags.includes(res.name)) {
                 resCol = ' jaune';
@@ -1480,7 +1483,11 @@ function missionResults(onlyLanders,sCount,hCount) {
             }
             if (resResult === 0) {
                 let resColour = 'gf';
-                $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');
+                if (minedRes <= 0) {
+                    $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');
+                } else {
+                    $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="'+resColour+'">'+resResult+'</span> +('+minedRes+')</span><br>');
+                }
             }
         }
     });
@@ -1491,7 +1498,7 @@ function missionResults(onlyLanders,sCount,hCount) {
     } else if (balance > 0) {
         resColour = 'cy';
     }
-    $('#conUnitList').append('<span class="paramName vert">Total</span><span class="paramIcon"></span><span class="paramValue '+resColour+'">'+balance+'</span><br>');
+    $('#conUnitList').append('<span class="paramName vert">Total</span><span class="paramIcon"></span><span class="paramValue '+resColour+'">'+balance+'</span> +('+minedTotal+')<br>');
     $("#conUnitList").animate({scrollTop:0},"fast");
     commandes();
 };
