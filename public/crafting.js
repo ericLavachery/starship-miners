@@ -348,11 +348,11 @@ function showCraftCompReqs(craft) {
 };
 
 function getTileHeat(tile) {
-    let tileHeat = tile.seed+10;
+    let tileHeat = (tile.seed*2)+7;
     if (tile.seed >= 7) {
         tileHeat = tile.seed+4;
     }
-    let zoneHeat = zone[0].seed+10;
+    let zoneHeat = Math.ceil((zone[0].seed+1)*(zone[0].seed+1)/1.6)+1;
     if (zone[0].seed >= 7) {
         zoneHeat = zone[0].seed+4;
     }

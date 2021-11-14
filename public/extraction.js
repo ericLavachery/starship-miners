@@ -96,6 +96,7 @@ function getAllRes(bat) {
 
 function getTerrainRes(terrain,tile) {
     let srs = {};
+    let potable = checkPotable(zone,tile.id);
     // Bois
     let res = getResByName('Bois');
     if (terrain.name === 'F') {
@@ -146,14 +147,8 @@ function getTerrainRes(terrain,tile) {
         srs.Eau = 650+((7-tile.seed)*50);
     } else if (terrain.name === 'W' || terrain.name === 'L') {
         if (playerInfos.comp.ca >= 2 || !modeSonde) {
-            if (zone[0].seed != 2) {
+            if (potable) {
                 srs.Eau = 400+(tile.seed*35);
-            } else {
-                if (zone[0].gKind != 'spider' && zone[0].pKind != 'spider' && zone[0].sKind != 'spider') {
-                    srs.Eau = 400+(tile.seed*35);
-                } else if (playerInfos.bldVM.includes('Recyclab') || playerInfos.bldList.includes('Recyclab')) {
-                    srs.Eau = 400+(tile.seed*35);
-                }
             }
         }  else {
             srs.Eau = 400+(tile.seed*35);
@@ -165,28 +160,16 @@ function getTerrainRes(terrain,tile) {
         }
     } else if (terrain.name === 'S') {
         if (playerInfos.comp.ca >= 2 || !modeSonde) {
-            if (zone[0].seed != 2) {
+            if (potable) {
                 srs.Eau = 100+(tile.seed*35);
-            } else {
-                if (zone[0].gKind != 'spider' && zone[0].pKind != 'spider' && zone[0].sKind != 'spider') {
-                    srs.Eau = 100+(tile.seed*35);
-                } else if (playerInfos.bldVM.includes('Recyclab') || playerInfos.bldList.includes('Recyclab')) {
-                    srs.Eau = 100+(tile.seed*35);
-                }
             }
         }  else {
             srs.Eau = 100+(tile.seed*35);
         }
     } else if (playerInfos.comp.ext >= 1 && terrain.veg >= 1) {
         if (playerInfos.comp.ca >= 2 || !modeSonde) {
-            if (zone[0].seed != 2) {
+            if (potable) {
                 srs.Eau = Math.round((playerInfos.comp.ext*10)+(tile.seed*5));
-            } else {
-                if (zone[0].gKind != 'spider' && zone[0].pKind != 'spider' && zone[0].sKind != 'spider') {
-                    srs.Eau = Math.round((playerInfos.comp.ext*10)+(tile.seed*5));
-                } else if (playerInfos.bldVM.includes('Recyclab') || playerInfos.bldList.includes('Recyclab')) {
-                    srs.Eau = Math.round((playerInfos.comp.ext*10)+(tile.seed*5));
-                }
             }
         }  else {
             srs.Eau = Math.round((playerInfos.comp.ext*10)+(tile.seed*5));
@@ -200,6 +183,28 @@ function getTerrainRes(terrain,tile) {
     }
     return srs;
 };
+
+function checkPotable(myZone,tileId) {
+    let myTerrain = 'P';
+    if (tileId >= 0) {
+        let tile = getTileById(tileId);
+        myTerrain = tile.terrain;
+    }
+    let potable = true;
+    if (myZone[7].seed <= 3) {
+        if (myZone[0].gKind === 'spider' || myZone[0].pKind === 'spider' || myZone[0].sKind === 'spider') {
+            if (!playerInfos.bldVM.includes('Recyclab') && !playerInfos.bldList.includes('Recyclab')) {
+                if (myTerrain != 'R') {
+                    potable = false;
+                }
+            }
+        }
+    }
+    if (myZone[0].planet === 'Gehenna') {
+        potable = false;
+    }
+    return potable;
+}
 
 function getMiningRate(bat,fullRate,noMining) {
     let batType = getBatType(bat);

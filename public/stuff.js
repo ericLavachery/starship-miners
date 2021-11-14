@@ -223,14 +223,14 @@ function heroUp(bat,batType,grade) {
         } else {
             if (rand.rand(1,chefNum+1) === 1 && mayChef) {
                 bat.tags.push('schef');
-            } else if (rand.rand(1,3) === 1 && mayHero) {
+            } else if (rand.rand(1,2) === 1 && mayHero) {
                 bat.tags.push('hero');
             } else {
                 bat.tags.push('vet');
             }
         }
     } else if (grade === 'Général') {
-        if (rand.rand(1,3) === 1) {
+        if (rand.rand(1,2) === 1) {
             bat.tags.push('hero');
         } else {
             bat.tags.push('vet');

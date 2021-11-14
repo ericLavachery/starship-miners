@@ -1910,18 +1910,18 @@
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
-            "name":"RPG",
+            "name":"Roquettes",
             "cost":6,
-            "range":2,
+            "range":4,
             "noBis":true,
             "kit":true,
             "rof":6,
-            "accuracy":12,
+            "accuracy":14,
             "dca":0.5,
-            "power":18,
+            "power":24,
             "aoe":"squad",
             "sound":"rpg",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium"],
+            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
             "maxAmmo":12,
             "ravitBld":"Poudrière"
         },

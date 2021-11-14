@@ -727,6 +727,7 @@ function showTileInfos(tileId) {
     let tile = zone[tileIndex];
     let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
     let terrain = terrainTypes[terrainIndex];
+    let potable = checkPotable(zone,tile.id);
     let view = true;
     if (zone[0].dark && !zone[0].undarkOnce.includes(selectedTile) && !zone[0].undarkAll) {
         view = false;
@@ -869,13 +870,9 @@ function showTileInfos(tileId) {
                 if (terrain.name === 'W' || terrain.name === 'S' || terrain.name === 'R' || terrain.name == 'L') {
                     $('#tileInfos').append('<span class="paramName sky">Eau</span><span class="paramIcon"></span><span class="paramValue sky">0<span class="gf"> (poison)</span></span><br>');
                 }
-            } else if (zone[0].seed === 2) {
-                if (zone[0].gKind === 'spider' || zone[0].pKind === 'spider' || zone[0].sKind === 'spider') {
-                    if (terrain.name === 'W' || terrain.name === 'S' || terrain.name == 'L') {
-                        if (playerInfos.comp.ca >= 2 || !modeSonde) {
-                            $('#tileInfos').append('<span class="paramName sky">Eau</span><span class="paramIcon"></span><span class="paramValue sky">0<span class="gf"> (poison)</span></span><br>');
-                        }
-                    }
+            } else if (!potable) {
+                if (playerInfos.comp.ca >= 2 || !modeSonde) {
+                    $('#tileInfos').append('<span class="paramName sky">Eau</span><span class="paramIcon"></span><span class="paramValue sky">0<span class="gf"> (poison)</span></span><br>');
                 }
             }
         }

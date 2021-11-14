@@ -3,7 +3,7 @@ function events(afterMission,time,sim) {
     updateBldList();
     resetWeekRes();
     if (afterMission) {
-        time = Math.ceil(playerInfos.mapTurn/3)*3;
+        time = playerInfos.mapTurn+playerInfos.travTurns;
     }
     if (!afterMission && !sim) {
         craftReset(time);

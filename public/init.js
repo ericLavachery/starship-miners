@@ -125,6 +125,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.crime === undefined) {
         playerInfos.crime = 0;
     }
+    if (playerInfos.travTurns === undefined) {
+        playerInfos.travTurns = 8;
+    }
     if (playerInfos.missionZone === undefined) {
         playerInfos.missionZone = -1;
     }

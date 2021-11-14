@@ -1725,14 +1725,9 @@ function zoneReport(myZone,quiet) {
             warning('Pluie','Non',true);
         }
         if (playerInfos.comp.ca >= 2) {
-            if (myZone[0].planet === 'Gehenna') {
+            let potable = checkPotable(myZone,-1);
+            if (!potable) {
                 warning('Eau','Empoisonnée<br>',true);
-            } else if (myZone[0].seed === 2) {
-                if (myZone[0].gKind === 'spider' || myZone[0].pKind === 'spider' || myZone[0].sKind === 'spider') {
-                    warning('Eau','Empoisonnée<br>',true);
-                } else {
-                    warning('Eau','OK<br>',true);
-                }
             } else {
                 warning('Eau','OK<br>',true);
             }

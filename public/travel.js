@@ -16,6 +16,7 @@ function startMission() {
     loadZone(playerInfos.missionZone);
     // var modeLanding = true
     playerInfos.onShip = false;
+    playerInfos.travTurns = 0;
     playerInfos.crafts = 0;
     inSoute = false;
     modeLanding = true;
@@ -76,6 +77,9 @@ function landingList() {
     if (slId >= 0) {
         let landerBat = getSpaceBatById(slId);
         let landerBatType = getBatType(landerBat);
+        if (landerBatType.hySpeed > playerInfos.travTurns) {
+            playerInfos.travTurns = landerBatType.hySpeed;
+        }
         $('#conUnitList').append('<div class="souteBlock"><table><tr><td><img src="/static/img/units/'+landerBatType.cat+'/'+landerBatType.pic+'.png" width="48"></td><td id="be'+landerBat.id+'"></td></tr></table></div>');
         $('#be'+landerBat.id).append('<span class="listRes">'+landerBatType.name+'</span>');
         if (landerBat.chief != undefined) {
@@ -713,17 +717,23 @@ function showZonePreview() {
         showInfo = showInfo+', Pluie=Non';
     }
     if (playerInfos.comp.ca >= 2) {
-        if (zonePrev[0].planet === 'Gehenna') {
+        let potable = checkPotable(zonePrev,-1);
+        if (!potable) {
             showInfo = showInfo+', Eau=Poison';
-        } else if (zonePrev[0].seed === 2) {
-            if (zonePrev[0].gKind === 'spider' || zonePrev[0].pKind === 'spider' || zonePrev[0].sKind === 'spider') {
-                showInfo = showInfo+', Eau=Poison';
-            } else {
-                showInfo = showInfo+', Eau=OK';
-            }
         } else {
             showInfo = showInfo+', Eau=OK';
         }
+        // if (zonePrev[0].planet === 'Gehenna') {
+        //     showInfo = showInfo+', Eau=Poison';
+        // } else if (zonePrev[0].seed === 2) {
+        //     if (zonePrev[0].gKind === 'spider' || zonePrev[0].pKind === 'spider' || zonePrev[0].sKind === 'spider') {
+        //         showInfo = showInfo+', Eau=Poison';
+        //     } else {
+        //         showInfo = showInfo+', Eau=OK';
+        //     }
+        // } else {
+        //     showInfo = showInfo+', Eau=OK';
+        // }
     }
     console.log('showInfo');
     console.log(showInfo);
