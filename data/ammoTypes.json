@@ -289,7 +289,7 @@
         "info": "Paralysie",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"exo":2,"ca":4},
-        "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":2},
+        "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":2,"Atium":2},
         "batch":100
     },
     {
@@ -425,7 +425,7 @@
         "info": "Paralysie",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"exo":2,"ca":4},
-        "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":2},
+        "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":2,"Atium":2},
         "batch":100
     },
     {
@@ -667,7 +667,7 @@
         "info": "Paralysie",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"exo":2,"ca":4},
-        "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":2},
+        "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":2,"Atium":2},
         "batch":100
     },
     {
@@ -874,7 +874,7 @@
         "info": "Paralysie",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"exo":2,"ca":4},
-        "deploy":{"Tungstène":4,"Or":3,"Bossium":4,"Oxygène":1},
+        "deploy":{"Tungstène":4,"Or":3,"Bossium":4,"Atium":4,"Oxygène":1},
         "batch":200
     },
     {
@@ -1363,7 +1363,7 @@
         "aoe": "",
         "info": "Poison++",
         "bldReq":["Laboratoire"],
-        "compReq":{"exo":2},
+        "compReq":{"exo":1},
         "deploy":{"Bois":5,"Fer":3,"Atium":4,"Huile":1},
         "batch":100
     },
@@ -1395,7 +1395,7 @@
         "info": "Poison+++",
         "bldReq":["Centre de recherches"],
         "compReq":{"exo":2,"ca":4},
-        "deploy":{"Carbone":4,"Fer":1,"Titane":2,"Mephitis":3,"Huile":2,"Argon":3},
+        "deploy":{"Carbone":4,"Fer":1,"Titane":2,"Mephitis":9,"Atium":3,"Huile":2,"Argon":3},
         "batch":100
     },
     {
@@ -1411,7 +1411,7 @@
         "info": "Paralysie",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":2,"ca":4},
-        "deploy":{"Carbone":4,"Or":2,"Tungstène":2,"Bossium":3},
+        "deploy":{"Carbone":4,"Or":2,"Tungstène":2,"Bossium":3,"Atium":3},
         "batch":100
     },
     {
@@ -1607,7 +1607,7 @@
         "aoe": "",
         "info": "Poison++",
         "bldReq":["Laboratoire"],
-        "compReq":{"exo":2,"mat":1},
+        "compReq":{"exo":1,"mat":1},
         "costs":{"Fer":4,"Cobalt":1,"Silicium":1},
         "deploy":{"Atium":4,"Huile":1},
         "batch":12
@@ -1753,7 +1753,7 @@
         "aoe": "",
         "info": "Poison++ (Lame adamantium)",
         "bldReq":["Arsenal","Laboratoire"],
-        "compReq":{"exo":2,"mat":3},
+        "compReq":{"exo":1,"mat":3},
         "costs":{"Adamantium":6,"Argon":1},
         "deploy":{"Atium":4,"Huile":1},
         "batch":12
@@ -2172,7 +2172,7 @@
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"explo":1,"exo":1,"ca":3},
-        "deploy":{"Carbone":2,"Scrap":2,"Fer":1,"Oxygène":2,"Chlore":6,"Végétaux":3,"Explosifs":1},
+        "deploy":{"Carbone":2,"Scrap":2,"Fer":1,"Oxygène":2,"Chlore":6,"Atium":3,"Végétaux":3,"Explosifs":1},
         "batch":100
     },
     {
@@ -2401,7 +2401,7 @@
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"bal":1,"explo":1,"exo":1,"ca":3,"arti":1},
-        "deploy":{"Carbone":2,"Aluminium":2,"Nickel":1,"Oxygène":2,"Explosifs":1,"Fuel":1,"Chlore":6,"Végétaux":3,"Electros":2,"Batteries":1},
+        "deploy":{"Carbone":2,"Aluminium":2,"Nickel":1,"Oxygène":2,"Explosifs":1,"Fuel":1,"Chlore":6,"Atium":3,"Végétaux":3,"Electros":2,"Batteries":1},
         "batch":100
     },
     {
@@ -2520,7 +2520,7 @@
         "aoe": "squad",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":1,"ca":3},
-        "deploy":{"Carbone":1,"Scrap":3,"Fer":1,"Aluminium":1,"Hydrocarbure":2,"Chlore":4,"Végétaux":2,"Explosifs":1},
+        "deploy":{"Carbone":1,"Scrap":3,"Fer":1,"Aluminium":1,"Hydrocarbure":2,"Chlore":4,"Atium":2,"Végétaux":2,"Explosifs":1},
         "batch":100
     },
     {
@@ -2579,7 +2579,7 @@
         "aoe": "bat",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":1,"ca":3},
-        "deploy":{"Carbone":5,"Scrap":5,"Plutonium":3,"Huile":3,"Phosphore":6,"Hydrocarbure":4,"Chlore":12},
+        "deploy":{"Carbone":5,"Scrap":5,"Plutonium":3,"Atium":3,"Huile":3,"Phosphore":6,"Hydrocarbure":4,"Chlore":12},
         "batch":100
     },
     {
@@ -2594,7 +2594,7 @@
         "aoe": "bat",
         "bldReq":["Centre de recherches"],
         "compReq":{"exo":2,"ca":4},
-        "deploy":{"Carbone":5,"Scrap":5,"Phosphore":6,"Oxygène":4,"Chlore":12,"Huile":3,"Uridium":5,"Germium":1},
+        "deploy":{"Carbone":5,"Scrap":5,"Phosphore":6,"Oxygène":4,"Chlore":12,"Huile":3,"Uridium":5,"Germium":3},
         "batch":100
     },
     {

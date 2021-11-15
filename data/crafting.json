@@ -712,6 +712,15 @@
         "id":69,
         "result":"Drogues",
         "cost":{"Végétaux":30,"Huile":7,"Or":1},
+        "compReq":{"exo":3},
+        "bldReq":["Centre de recherches"],
+        "batch":20,
+        "creaNum":120
+    },
+    {
+        "id":134,
+        "result":"Drogues",
+        "cost":{"Octiron":10,"Huile":5,"Atium":1},
         "compReq":{"exo":2},
         "bldReq":["Centre de recherches"],
         "batch":20,

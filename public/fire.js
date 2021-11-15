@@ -1114,6 +1114,10 @@ function attack(melee) {
                 if (rand.rand(1,6) <= targetBatType.rarity) {
                     targetBat.squadsLeft = 0;
                 }
+            } else {
+                if (rand.rand(1,6) <= 3) {
+                    targetBat.squadsLeft = 0;
+                }
             }
         }
     }

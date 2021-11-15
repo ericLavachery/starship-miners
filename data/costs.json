@@ -497,7 +497,7 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"gen":1},
         "compPass":["drogmulojs","blades"],
-        "costs":{"Swarmine":134,"Mendium":48,"Blendium":24,"Azote":102,"Calcium":34,"Zinc":60,"Drogues":24},
+        "costs":{"Swarmine":134,"Mendium":48,"Blendium":24,"Azote":102,"Calcium":34,"Zinc":60,"Drogues":24,"Octiron":48},
         "fabTime":45
     },
     {
@@ -1959,7 +1959,7 @@
         "name":"Dardières",
         "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Atelier"],
-        "costs":{"Végétaux":36,"Fer":6,"Bois":18,"Scrap":9,"Titane":9,"Argon":6,"Mephitis":12,"Huile":9},
+        "costs":{"Végétaux":36,"Fer":6,"Bois":18,"Scrap":9,"Titane":9,"Argon":6,"Mephitis":36,"Atium":12,"Huile":9},
         "fabTime":35
     },
     {
@@ -2188,7 +2188,7 @@
         "bldCost":"Arsenal",
         "upkeep":{"Energie":24,"Fer":2.4,"Soufre":4.8,"Plomb":4.8,"Carbone":0.3,"Hydrogène":0.6,"Azote":0.6,"Oxygène":0.3},
         "prod":{"Munitions":4,"Explosifs":1.5,"Scrap":8},
-        "costs":{"Compo1":390,"Compo2":360,"Compo3":360,"Eau":540,"Energie":1200,"Hydrocarbure":600,"Fuel":1000,"Huile":500,"Scrap":1500,"Titane":1500,"Tungstène":3000,"Fer":3000,"Potassium":2000,"Platine":300,"Plutonium":500,"Hydrogène":1500,"Azote":1500,"Electros":500,"Batteries":300},
+        "costs":{"Compo1":390,"Compo2":360,"Compo3":360,"Eau":540,"Energie":1200,"Hydrocarbure":600,"Fuel":1000,"Huile":500,"Scrap":1500,"Titane":1500,"Tungstène":3000,"Fer":3000,"Potassium":2000,"Platine":300,"Plutonium":500,"Hydrogène":1500,"Azote":1500,"Egidium":100,"Wingium":200,"Electros":500,"Batteries":300},
         "fabTime":500,
         "slots":4
     },
@@ -2208,7 +2208,7 @@
         "bldCost":"Infirmerie",
         "upkeep":{"Energie":5,"Végétaux":5,"Huile":2},
         "prod":{"Drogues":3,"Scrap":2},
-        "costs":{"Compo1":225,"Compo2":150,"Eau":48,"Energie":400,"Drogues":200,"Mendium":200,"Tissus":500,"Titane":150,"Aluminium":120,"Calcium":500,"Or":150,"Silicium":200,"Oxygène":1000,"Chlore":500,"Electros":500,"Batteries":100},
+        "costs":{"Compo1":225,"Compo2":150,"Eau":48,"Energie":400,"Drogues":200,"Mendium":200,"Tissus":500,"Titane":150,"Aluminium":120,"Calcium":500,"Or":150,"Octiron":250,"Silicium":200,"Oxygène":1000,"Chlore":500,"Electros":500,"Batteries":100},
         "fabTime":150,
         "crime":-6,
         "slots":2
@@ -2292,7 +2292,7 @@
         "bldCost":"Laboratoire",
         "upkeep":{"Energie":12,"Eau":7,"Végétaux":6,"Huile":2.5,"Cuivre":1,"Carbone":1,"Cobalt":0.5},
         "prod":{"Drogues":4,"Electros":1,"Scrap":5},
-        "costs":{"Compo1":310,"Compo2":280,"Compo3":290,"Eau":1500,"Energie":2400,"Huile":1500,"Carbone":2000,"Phosphore":1500,"Calcium":1000,"Or":1500,"Platine":1500,"Silicium":750,"Zinc":1500,"Bore":1500,"Chlore":2000,"Argon":2000,"Hélium":750,"Electros":1000,"Batteries":300},
+        "costs":{"Compo1":310,"Compo2":280,"Compo3":290,"Eau":1500,"Energie":2400,"Huile":1500,"Carbone":2000,"Phosphore":1500,"Calcium":1000,"Or":1500,"Platine":1500,"Silicium":750,"Zinc":1500,"Bore":1500,"Chlore":2000,"Argon":2000,"Hélium":750,"Atium":250,"Germium":150,"Mephitis":150,"Bossium":75,"Electros":1000,"Batteries":300},
         "fabTime":600,
         "slots":3
     },
