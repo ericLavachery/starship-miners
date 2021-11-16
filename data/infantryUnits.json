@@ -175,7 +175,7 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
         },
         "protection":["aucune","scrap","kevlar","wendium","tisal","nano","duneg","swing"],
-        "equip":["aucun","e-flash","e-ranger","e-camo","lunette1","chargeur1","silencieux1","crimekitch"],
+        "equip":["aucun","e-flash","e-ranger","e-camo","lunette1","chargeur1","silencieux1","crimekitlu"],
         "log3eq":"silencieux1",
         "moveCost":3,
         "maxFlood":3,

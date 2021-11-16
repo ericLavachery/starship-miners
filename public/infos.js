@@ -30,6 +30,9 @@ function batInfos(bat,batType,pop) {
         conWindowOut();
     }
     levelUp(bat,batType);
+    if (batType.skills.includes('transorbital')) {
+        checkModules(bat,batType);
+    }
     let tagColor = 'cy';
     let batPic = getBatPic(bat,batType);
     let tile = getTile(bat);
@@ -193,7 +196,7 @@ function batInfos(bat,batType,pop) {
     }
     let stealth = getStealth(bat);
     let camChance = calcCamo(bat);
-    if (batType.skills.includes('camo') || batType.skills.includes('maycamo') || batType.skills.includes('aicamo') || tile.ruins || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1)) {
+    if (batType.skills.includes('camo') || batType.skills.includes('maycamo') || batType.skills.includes('aicamo') || tile.ruins || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu' || bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1)) {
         $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+' ('+camChance+'%)</span><br>');
     } else {
         $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');

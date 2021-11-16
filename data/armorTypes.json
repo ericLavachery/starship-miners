@@ -673,6 +673,16 @@
         "costs":{"Blendium":6,"Tissus":12,"Scrap":6,"Carbone":6,"Fer":3}
     },
     {
+        "name": "crimekitlu",
+        "cat":"equip",
+        "skills": [],
+        "info": "Camouflage+ Déplacement+ Précision++ Elévation+",
+        "bldReq":["Atelier"],
+        "compReq":{"log":1,"ordre":2},
+        "factor":"crew",
+        "costs":{"Blendium":6,"Tissus":12,"Scrap":3,"Silicium":6,"Carbone":6}
+    },
+    {
         "name": "crimekitgi",
         "cat":"equip",
         "skills": [],

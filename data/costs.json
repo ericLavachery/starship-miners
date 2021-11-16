@@ -764,7 +764,7 @@
         "bldReq":["Chaîne de montage","Usine d'armement","Centre de recherches"],
         "compReq":{"cyber":1},
         "compHardReq":{"pyro":1,"ind":1},
-        "costs":{"Fer":300,"Scrap":180,"Carbone":90,"Tungstène":60,"Moteurs":120,"Titane":270,"Electros":180,"Batteries":180,"Cuivre":75,"Silicium":75},
+        "costs":{"Fer":360,"Scrap":180,"Carbone":90,"Tungstène":60,"Moteurs":120,"Titane":360,"Electros":180,"Batteries":180,"Cuivre":75,"Silicium":75},
         "deploy":{"Energie":360},
         "fabTime":115
     },

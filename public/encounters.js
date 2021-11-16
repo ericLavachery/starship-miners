@@ -992,8 +992,8 @@ function putHLLUnits(centreTileId,hard) {
                 if (rand.rand(1,4) === 1) {
                     conselAmmos[3] = 'e-camo';
                 }
-                if (rand.rand(1,3) === 1) {
-                    conselAmmos[3] = 'crimekitch';
+                if (rand.rand(1,2) === 1) {
+                    conselAmmos[3] = 'crimekitlu';
                 }
             } else {
                 conselAmmos = ['standard','lame','scrap','aucun'];
@@ -1023,7 +1023,7 @@ function putHLLUnits(centreTileId,hard) {
             conselUnit = getBatTypeById(219);
             if (hard) {
                 conselAmmos = ['fleche-poison','fleche-poison','scrap','e-camo'];
-                if (rand.rand(1,3) === 1) {
+                if (rand.rand(1,2) === 1) {
                     conselAmmos[3] = 'crimekitgi';
                 }
             } else {
@@ -1037,7 +1037,7 @@ function putHLLUnits(centreTileId,hard) {
                 if (rand.rand(1,2) === 1) {
                     conselAmmos[0] = 'torche-feugre';
                 }
-                if (rand.rand(1,3) === 1) {
+                if (rand.rand(1,2) === 1) {
                     conselAmmos[3] = 'crimekitch';
                 }
             } else {
@@ -1062,7 +1062,7 @@ function putHLLUnits(centreTileId,hard) {
             conselUnit = getBatTypeById(218);
             if (hard) {
                 conselAmmos = ['perfo','lame-poison','scrap','e-ranger'];
-                if (rand.rand(1,3) === 1) {
+                if (rand.rand(1,2) === 1) {
                     conselAmmos[3] = 'crimekitch';
                 }
             } else {
@@ -1079,7 +1079,7 @@ function putHLLUnits(centreTileId,hard) {
                 if (rand.rand(1,2) === 1) {
                     conselAmmos[3] = 'chargeur1';
                 }
-                if (rand.rand(1,4) === 1) {
+                if (rand.rand(1,3) === 1) {
                     conselAmmos[3] = 'crimekitch';
                 }
             } else {

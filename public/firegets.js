@@ -867,7 +867,7 @@ function getStealth(bat) {
     if (bat.tags.includes('drunk')) {
         batStealth = batStealth-4;
     }
-    if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
+    if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu') {
         if (batType.skills.includes('camo')) {
             batStealth = batStealth+5;
         } else {
@@ -1518,7 +1518,7 @@ function weaponAdj(weapon,bat,wn) {
                 thisWeapon.cost = thisWeapon.cost+1;
             }
         }
-        if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.logeq === 'lunette' || bat.logeq === 'lunette1' || bat.eq.includes('kit-chouf') || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
+        if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.logeq === 'lunette' || bat.logeq === 'lunette1' || bat.eq === 'crimekitlu' || bat.eq.includes('kit-chouf') || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
             if (thisWeapon.elevation <= 1) {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }

@@ -80,7 +80,7 @@ function skillsInfos(bat,batType,near) {
     // RAVITAILLEMENT DROGUES
     let anyRavit = checkRavitDrug(bat);
     if (anyRavit && bat.tags.includes('dU') && batType.skills.includes('dealer') && !playerInfos.onShip) {
-        let apCost = Math.round(batType.ap/3*6/(playerInfos.comp.log+5));
+        let apCost = Math.round(batType.ap/3*7/(playerInfos.comp.log+5));
         if (bat.apLeft >= 2) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de drogues" class="boutonVert skillButtons" onclick="goRavitDrug('+apCost+')"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp;  Approvisionnement</h4></span>');
         } else {
@@ -102,7 +102,7 @@ function skillsInfos(bat,batType,near) {
         if (playerInfos.comp.log >= 3) {
             ravitFactor = ravitFactor*2;
         }
-        let apCost = Math.round(Math.sqrt(ravitVolume[1])*batType.ap/ravitFactor*6/(playerInfos.comp.log+5));
+        let apCost = Math.round(Math.sqrt(ravitVolume[1])*batType.ap/ravitFactor*7/(playerInfos.comp.log+5));
         if (bat.apLeft >= 4) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de munitions" class="boutonCaca skillButtons" onclick="goRavit('+apCost+')"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ravitaillement</h4></span>');
         } else {
@@ -215,7 +215,7 @@ function skillsInfos(bat,batType,near) {
     // CAMOUFLAGE
     let camoufOK = true;
     if (!playerInfos.onShip) {
-        if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || (batType.skills.includes('aicamo') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) {
+        if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu' || (batType.skills.includes('aicamo') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) {
             if (batType.cat == 'buildings') {
                 if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
                     apCost = Math.floor(batType.ap*3.5);
@@ -246,7 +246,7 @@ function skillsInfos(bat,batType,near) {
                 }
             } else {
                 if ((batType.skills.includes('maycamo') || !batType.skills.includes('camo')) && !tile.ruins && tile.infra != 'Terriers') {
-                    if (bat.eq === 'kit-chouf' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch') {
+                    if (bat.eq === 'kit-chouf' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu') {
                         apCost = Math.floor(batType.ap/2.5);
                         apReq = 2;
                     } else if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || bat.eq === 'kit-guetteur') {
