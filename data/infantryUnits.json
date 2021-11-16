@@ -1758,7 +1758,7 @@
             "rof":15,
             "accuracy":22,
             "power":7,
-            "armors":0.3,
+            "armors":0.4,
             "aoe":"unit",
             "sound":"saw",
             "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
@@ -3011,7 +3011,7 @@
             "rof":12,
             "accuracy":20,
             "power":7,
-            "armors":0.3,
+            "armors":0.4,
             "aoe":"unit",
             "sound":"saw",
             "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
@@ -4342,7 +4342,7 @@
             "rof":15,
             "accuracy":25,
             "power":7,
-            "armors":0.3,
+            "armors":0.4,
             "aoe":"unit",
             "sound":"saw",
             "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
@@ -4777,7 +4777,7 @@
         },
         "protection":["kevlar","combo","kapton","wendium","titane","tisal","nano","duneg","swing","adamantite"],
         "equip":["aucun","e-flash","lunette2","chargeur2","theeye","waterproof","detector"],
-        "log3eq":"waterproof",
+        "log3eq":"chargeur2",
         "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,

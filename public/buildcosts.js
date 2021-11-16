@@ -390,6 +390,9 @@ function getDeployCosts(unit,ammo,weapNum,type) {
                     }
                 }
             }
+            if (ammo.name.includes('lame') && (unit.weapon.aoe === 'squad' || unit.weapon.aoe === 'bat')) {
+                deployFactor = deployFactor*6;
+            }
         } else {
             deployFactor = Math.ceil(unit.squads*unit.weapon2.rof*unit.weapon2.power/5*deploySalvos);
             if (!unit.weapon2.noBis) {
@@ -400,6 +403,9 @@ function getDeployCosts(unit,ammo,weapNum,type) {
                         deployFactor = deployFactor*(unit.maxSalvo-1);
                     }
                 }
+            }
+            if (ammo.name.includes('lame') && (unit.weapon2.aoe === 'squad' || unit.weapon2.aoe === 'bat')) {
+                deployFactor = deployFactor*6;
             }
         }
         if (ammo.deploy != undefined) {

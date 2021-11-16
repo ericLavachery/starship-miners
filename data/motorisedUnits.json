@@ -330,7 +330,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"harvest",
-            "ammo":["lame","lame-tungsten","lame-carbone"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","swag","bonibo","adamantite"],
         "equip":["aucun","carrousel1","g2motor","snorkel","e-flash"],
@@ -1666,7 +1666,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"harvest",
-            "ammo":["lame","lame-tungsten","lame-carbone"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
         "equip":["aucun","lunette1","chargeur1","g2motor","e-flash","theeye","waterproof","e-mecano"],
@@ -1723,7 +1723,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"harvest",
-            "ammo":["lame","lame-tungsten","lame-carbone"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
         "equip":["aucun","g2motor","e-flash","theeye","waterproof","e-mecano","g2siege"],
@@ -3046,7 +3046,7 @@
             "power":12,
             "aoe":"squad",
             "sound":"harvest",
-            "ammo":["lame","lame-tungsten","lame-carbone"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","swag","bonibo","adamantite"],
         "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","e-flash","e-mecano","g2tools"],

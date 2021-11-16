@@ -1584,6 +1584,11 @@ function weaponAdj(weapon,bat,wn) {
     }
     if (bat.eq === 'theeye') {
         thisWeapon.accuracy = thisWeapon.accuracy+6;
+        if (thisWeapon.range >= 2) {
+            thisWeapon.range = thisWeapon.range+1;
+        } else if (thisWeapon.elevation === 1 || thisWeapon.elevation === 2) {
+            thisWeapon.elevation = thisWeapon.elevation+1;
+        }
         if (thisWeapon.cost >= 2) {
             thisWeapon.cost = thisWeapon.cost-1;
         }
@@ -2000,7 +2005,7 @@ function chargeurAdj(bat,shots,weap) {
     if (weap.name.includes('Revolver') || weap.name.includes('Blaster') || weap.name.includes('pompe') || weap.name.includes('Blister pistol')) {
         mult = 1.7;
     }
-    if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('ulfat') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || (weap.name.includes('Blister') && !weap.name.includes('pistol'))) {
+    if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('ulfat') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || weap.name.includes('BFG') || (weap.name.includes('Blister') && !weap.name.includes('pistol'))) {
         mult = 1.33;
     }
     if (bat.eq.includes('kit-chouf')) {

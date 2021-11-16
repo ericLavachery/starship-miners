@@ -320,7 +320,7 @@
             "subTypes":[]
         },
         "transMaxSize":65,
-        "transUnits":32000,
+        "transUnits":36000,
         "transRes":80000,
         "fuzz":5,
         "hySpeed":7,
@@ -391,7 +391,7 @@
             "subTypes":[]
         },
         "transMaxSize":100,
-        "transUnits":50000,
+        "transUnits":54000,
         "transRes":100000,
         "fuzz":5,
         "hySpeed":8,

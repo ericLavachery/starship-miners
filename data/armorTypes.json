@@ -602,11 +602,11 @@
         "name": "theeye",
         "cat":"equip",
         "skills": [],
-        "info": "Précision+ Initiative+",
+        "info": "Précision+ Initiative+ (Portée+)",
         "bldReq":["Laboratoire"],
-        "compReq":{"mat":1,"det":3,"cyber":1},
+        "compReq":{"mat":3,"det":3,"cyber":1},
         "factor":"crew",
-        "costs":{"Hélium":2,"Titane":2,"Electros":6,"Silicium":6,"Bossium":6}
+        "costs":{"Hélium":2,"Titane":2,"Electros":3,"Silicium":6,"Bossium":6,"Plastanium":3}
     },
     {
         "name": "permakirin",
