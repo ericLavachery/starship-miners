@@ -196,7 +196,7 @@ function batInfos(bat,batType,pop) {
     }
     let stealth = getStealth(bat);
     let camChance = calcCamo(bat);
-    if (batType.skills.includes('camo') || batType.skills.includes('maycamo') || batType.skills.includes('aicamo') || tile.ruins || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu' || bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1)) {
+    if (batType.skills.includes('camo') || batType.skills.includes('maycamo') || (batType.skills.includes('aicamo') && playerInfos.comp.cam >= 1) || tile.ruins || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu' || bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1)) {
         $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+' ('+camChance+'%)</span><br>');
     } else {
         $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
@@ -315,9 +315,16 @@ function batInfos(bat,batType,pop) {
     //         $('#'+bodyPlace).append('<span class="paramName or">Endommagé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     //     }
     // }
-    if (bat.soins >= 11) {
-        let effSoins = checkEffSoins(bat);
-        $('#'+bodyPlace).append('<span class="paramName jaune">Efficacité soins</span><span class="paramIcon"></span><span class="paramValue jaune">'+effSoins+'%</span><br>');
+    if (batType.cat === 'vehicles') {
+        if (bat.soins >= 11) {
+            let apLoss = checkVehiclesAPSoins(bat,batType);
+            $('#'+bodyPlace).append('<span class="paramName jaune">Usure</span><span class="paramIcon"></span><span class="paramValue jaune">-'+apLoss+' PA</span><br>');
+        }
+    } else if (batType.cat === 'infantry') {
+        if (bat.soins >= 11) {
+            let effSoins = checkEffSoins(bat);
+            $('#'+bodyPlace).append('<span class="paramName jaune">Efficacité soins</span><span class="paramIcon"></span><span class="paramValue jaune">'+effSoins+'%</span><br>');
+        }
     }
     if (bat.tags.includes('blub')) {
         $('#'+bodyPlace).append('<span class="paramName or">Noyade</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');

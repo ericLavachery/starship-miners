@@ -596,7 +596,7 @@ function goDrug(apCost,drugName) {
             // octiron instant bonus
             if (drug.name === 'octiron') {
                 selectedBat.apLeft = selectedBat.apLeft+5;
-                selectedBat.emo = selectedBat.emo-(playerInfos.comp.med*3)-3;
+                // selectedBat.emo = selectedBat.emo-(playerInfos.comp.med*3)-3;
                 if (playerInfos.comp.med >= 3) {
                     selectedBat.damage = 0;
                     let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;

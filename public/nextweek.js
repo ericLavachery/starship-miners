@@ -74,7 +74,7 @@ function repos(time) {
                 tagDelete(bat,'necro');
             }
             if (bat.soins != undefined) {
-                if (!batType.skills.includes('clone') && !bat.tags.includes('necro')) {
+                if (batType.cat === 'infantry' && !batType.skills.includes('clone') && !bat.tags.includes('necro')) {
                     bat.soins = bat.soins-Math.round(time*woundHeal/7);
                     if (bat.soins < 0) {
                         bat.soins = 0;

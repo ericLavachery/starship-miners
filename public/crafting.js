@@ -45,7 +45,7 @@ function craftWindow(retour) {
                 }
             }
         }
-        if (playerInfos.crafts >= maxCrafts) {
+        if (playerInfos.crafts >= maxCrafts && !craft.deg) {
             craftOK = false;
         }
         oldCraft = checkOldCraft(craft);
@@ -215,7 +215,9 @@ function doCraft(craftId,number) {
     if (playerInfos.mapTurn >= 3) {
         // calcEndRes(false);
     }
-    playerInfos.crafts = playerInfos.crafts+1;
+    if (!craft.deg) {
+        playerInfos.crafts = playerInfos.crafts+1;
+    }
     craftWindow(true);
 };
 

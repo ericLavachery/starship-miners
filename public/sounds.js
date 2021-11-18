@@ -276,7 +276,7 @@ function playRoom(piste,interrupt) {
     if (piste != 'any') {
         track = piste;
     }
-    let roomVol = playerInfos.volFx+0.4;
+    let roomVol = playerInfos.volFx+0.1;
     if (roomVol > 1) {
         roomVol = 1;
     }

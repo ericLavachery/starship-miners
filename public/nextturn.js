@@ -468,6 +468,14 @@ function nextTurnEnd() {
             if (bat.tags.includes('prayer')) {
                 bat.apLeft = bat.apLeft-3;
             }
+            // véhicules usés
+            if (batType.cat === 'vehicles') {
+                if (bat.soins != undefined) {
+                    if (bat.soins >= 11) {
+                        bat.apLeft = bat.apLeft-checkVehiclesAPSoins(bat,batType);
+                    }
+                }
+            }
             if (landerTileId >= 0) {
                 if (!batType.skills.includes('robot') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
                     let distFromLander = calcDistance(bat.tileId,landerTileId);

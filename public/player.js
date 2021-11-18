@@ -631,17 +631,17 @@ function playerSkillsATChanges() {
         if (infra.cat === 'infra') {
             if (playerInfos.comp.const >= 1) {
                 if (infra.costs['Compo1'] != undefined) {
-                    infra.costs['Compo1'] = Math.ceil(infra.costs['Compo1']/9*6);
+                    infra.costs['Compo1'] = Math.ceil(infra.costs['Compo1']/2);
                 }
             }
             if (playerInfos.comp.const >= 2) {
                 if (infra.costs['Compo2'] != undefined) {
-                    infra.costs['Compo2'] = Math.ceil(infra.costs['Compo2']/9*6);
+                    infra.costs['Compo2'] = Math.ceil(infra.costs['Compo2']/2);
                 }
             }
             if (playerInfos.comp.const >= 3) {
                 if (infra.costs['Compo3'] != undefined) {
-                    infra.costs['Compo3'] = Math.ceil(infra.costs['Compo3']/9*6);
+                    infra.costs['Compo3'] = Math.ceil(infra.costs['Compo3']/2);
                 }
             }
         }

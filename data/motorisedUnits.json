@@ -2957,7 +2957,7 @@
         "volume":0.85,
         "stealth":0,
         "speed":3,
-        "ap":16,
+        "ap":17,
         "maxSalvo":2,
         "weapon":{
             "name":"Mitrailleuse",
@@ -2989,13 +2989,13 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","swag","bonibo","adamantite"],
-        "equip":["aucun","lunette1","chargeur1","g2motor","snorkel","e-flash","chenilles"],
+        "equip":["aucun","lunette1","chargeur1","g2motor","snorkel","e-flash","chenilles","e-mecano"],
         "log3eq":"chenilles",
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["fortif","longshot","transport","fret","maycamo","selfbadmecano","hardmove","dumper","light","badcrewsave","recupcit","recupres","nochef"],
+        "skills":["fortif","longshot","transport","fret","maycamo","badmecano","hardmove","guerrilla","dumper","light","badcrewsave","recupcit","recupres","nochef"],
         "mecanoCost":16,
         "transMaxSize":9,
         "transUnits":900,
@@ -3665,7 +3665,7 @@
             "accuracy":40,
             "power":16,
             "aoe":"brochette",
-            "sound":"laser_canon_x1",
+            "sound":"laser_canon",
             "ammo":["laser","laser-g2"],
             "maxAmmo":16,
             "ravitBld":"Générateur"

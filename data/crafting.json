@@ -873,8 +873,7 @@
         "cost":{"Or":12,"Aluminium":6},
         "compReq":{"mat":1},
         "bldReq":["Atelier"],
-        "batch":15,
-        "deg":true
+        "batch":15
     },
     {
         "id":37,
@@ -955,8 +954,7 @@
         "cost":{"Plastanium":1},
         "compReq":{"energ":1},
         "bldReq":["Laboratoire"],
-        "batch":3,
-        "deg":true
+        "batch":3
     },
     {
         "id":39,
@@ -1014,8 +1012,7 @@
         "bldReq":[],
         "compOut":{"energ":1},
         "bldOut":["Laboratoire"],
-        "batch":2,
-        "deg":true
+        "batch":2
     },
     {
         "id":101,
@@ -1023,8 +1020,7 @@
         "cost":{"Uranium":2},
         "compReq":{"energ":1},
         "bldReq":["Laboratoire"],
-        "batch":2,
-        "deg":true
+        "batch":2
     },
     {
         "id":102,
@@ -1032,8 +1028,7 @@
         "cost":{"Timonium":1},
         "compReq":{"energ":2},
         "bldReq":["Laboratoire"],
-        "batch":2,
-        "deg":true
+        "batch":2
     },
     {
         "id":103,
@@ -1041,8 +1036,7 @@
         "cost":{"Uridium":1},
         "compReq":{"energ":2},
         "bldReq":["Centre de recherches"],
-        "batch":3,
-        "deg":true
+        "batch":3
     },
     {
         "id":44,
@@ -1074,8 +1068,7 @@
         "cost":{"Pyrus":5,"Oxygène":5},
         "compReq":{"tri":1,"ca":1},
         "bldReq":["Recyclab"],
-        "batch":15,
-        "deg":true
+        "batch":15
     },
     {
         "id":128,
@@ -1115,8 +1108,7 @@
         "cost":{"Uridium":1},
         "compReq":{"energ":2},
         "bldReq":["Centre de recherches"],
-        "batch":2,
-        "deg":true
+        "batch":2
     },
     {
         "id":51,

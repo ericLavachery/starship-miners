@@ -723,17 +723,21 @@ function showZonePreview() {
         } else {
             showInfo = showInfo+', Eau=OK';
         }
-        // if (zonePrev[0].planet === 'Gehenna') {
-        //     showInfo = showInfo+', Eau=Poison';
-        // } else if (zonePrev[0].seed === 2) {
-        //     if (zonePrev[0].gKind === 'spider' || zonePrev[0].pKind === 'spider' || zonePrev[0].sKind === 'spider') {
-        //         showInfo = showInfo+', Eau=Poison';
-        //     } else {
-        //         showInfo = showInfo+', Eau=OK';
-        //     }
-        // } else {
-        //     showInfo = showInfo+', Eau=OK';
-        // }
+    }
+    if (showInfo.includes('Dom')) {
+        showInfo = showInfo.replace(/Dom/g,'<span class="cy">Dom</span>');
+    }
+    if (showInfo.includes('Sarak')) {
+        showInfo = showInfo.replace(/Sarak/g,'<span class="cy">Sarak</span>');
+    }
+    if (showInfo.includes('Gehenna')) {
+        showInfo = showInfo.replace(/Gehenna/g,'<span class="cy">Gehenna</span>');
+    }
+    if (showInfo.includes('Kzin')) {
+        showInfo = showInfo.replace(/Kzin/g,'<span class="cy">Kzin</span>');
+    }
+    if (showInfo.includes('Horst')) {
+        showInfo = showInfo.replace(/Horst/g,'<span class="cy">Horst</span>');
     }
     console.log('showInfo');
     console.log(showInfo);

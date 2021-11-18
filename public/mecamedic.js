@@ -66,8 +66,10 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                         if (fail > minFailSoins) {
                             fail = minFailSoins;
                         }
-                        if (batType.skills.includes('cyber')) {
+                        if (batType.cat != 'infantry') {
                             fail = 0;
+                        } else if (batType.skills.includes('cyber')) {
+                            fail = Math.round(fail/3);
                         }
                         if (medDice <= fail && catOK) {
                             catOK = false;
@@ -218,6 +220,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
                                         bat.apLeft = bat.apLeft-medicPatientAP;
                                     }
+                                    addRepairFlag(bat);
                                     doneAction(bat);
                                 } else if (bat.squadsLeft < batType.squads && deep) {
                                     if (bat.id === selectedBat.id) {
@@ -278,6 +281,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
                                         bat.apLeft = bat.apLeft-medicPatientAP;
                                     }
+                                    addRepairFlag(bat);
                                     doneAction(bat);
                                 } else if (bat.squadsLeft === batType.squads && bat.damage === 0 && bat.tags.includes('trou') && deep) {
                                     tagDelete(bat,'trou');
@@ -290,6 +294,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                     if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
                                         bat.apLeft = bat.apLeft-medicPatientAP;
                                     }
+                                    addRepairFlag(bat);
                                     doneAction(bat);
                                 }
                             }
@@ -313,8 +318,10 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
             if (fail > minFailSoins) {
                 fail = minFailSoins;
             }
-            if (selectedBatType.skills.includes('cyber')) {
+            if (selectedBatType.cat != 'infantry') {
                 fail = 0;
+            } else if (selectedBatType.skills.includes('cyber')) {
+                fail = Math.round(fail/3);
             }
             if (medDice <= fail && catOK) {
                 catOK = false;
@@ -377,6 +384,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                 selectedBat.damage = 0
                 totalAPCost = totalAPCost+apCost;
                 $('#report').append('<span class="report cy">'+selectedBat.type+'<br></span><span class="report">dégâts réparés<br>');
+                addRepairFlag(bat);
                 showBataillon(selectedBat);
             } else if (selectedBat.squadsLeft < selectedBatType.squads && deep) {
                 oldSquadsLeft = selectedBat.squadsLeft;
@@ -405,11 +413,13 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                 } else {
                     $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">dégâts réparés<br></span>');
                 }
+                addRepairFlag(bat);
                 showBataillon(selectedBat);
             } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('trou') && deep) {
                 tagDelete(selectedBat,'trou');
                 totalAPCost = totalAPCost+apCost;
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">trous bouchés<br></span>');
+                addRepairFlag(bat);
             }
         }
     }
@@ -515,7 +525,7 @@ function checkStressEffect(bat) {
         distress = 300;
     }
     let fromTileId = -1;
-    if (distress >= 1 && !bat.tags.includes('bliss')) {
+    if (distress >= 1 && !bat.tags.includes('bliss') && !bat.tags.includes('octiron')) {
         let nearby = nearbyAliens(bat);
         let batType = getBatType(bat);
         let isChef = false;
@@ -692,6 +702,25 @@ function addHealFlag(bat) {
             bat.soins = bat.soins+healCost;
         } else {
             bat.soins = healCost;
+        }
+    }
+};
+
+function addRepairFlag(bat) {
+    let batType = getBatType(bat);
+    if (batType.cat === 'vehicles') {
+        if (bat.id === selectedBat.id) {
+            if (selectedBat.soins != undefined) {
+                selectedBat.soins = selectedBat.soins+1;
+            } else {
+                selectedBat.soins = 1;
+            }
+        } else {
+            if (bat.soins != undefined) {
+                bat.soins = bat.soins+1;
+            } else {
+                bat.soins = 1;
+            }
         }
     }
 };
@@ -874,10 +903,18 @@ function checkEffSoins(bat) {
         failDice = 0;
     }
     if (batType.skills.includes('cyber')) {
-        fail = 0;
+        fail = Math.round(fail/3);
     }
     let effSoins = 100-Math.round(failDice*100/75);
     return effSoins;
+};
+
+function checkVehiclesAPSoins(bat,batType) {
+    let apLoss = 0;
+    if (batType.cat === 'vehicles') {
+        apLoss = Math.floor(batType.ap*(bat.soins-6)/100);
+    }
+    return apLoss;
 };
 
 function checkMecanoSkill(bat,batType) {

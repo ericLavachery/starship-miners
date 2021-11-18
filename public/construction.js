@@ -1679,21 +1679,21 @@ function getRoadCosts(tile) {
     if (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain === 'L') {
         roadCosts['Compo1'] = 150;
         if (playerInfos.comp.const >= 1) {
-            roadCosts['Compo1'] = 100;
+            roadCosts['Compo1'] = 75;
         }
         roadCosts['Compo2'] = 50;
         if (playerInfos.comp.const >= 2) {
-            roadCosts['Compo2'] = 33;
+            roadCosts['Compo2'] = 25;
         }
     } else if (tile.terrain === 'M' || tile.terrain === 'S' || tile.terrain === 'H') {
         roadCosts['Compo1'] = 20;
         if (playerInfos.comp.const >= 1) {
-            roadCosts['Compo1'] = 14;
+            roadCosts['Compo1'] = 10;
         }
     } else {
         roadCosts['Compo1'] = 8;
         if (playerInfos.comp.const >= 1) {
-            roadCosts['Compo1'] = 5;
+            roadCosts['Compo1'] = 4;
         }
     }
     return roadCosts;
@@ -1703,7 +1703,6 @@ function putRoad(apCost) {
     console.log('PUTROAD');
     let tile = getTile(selectedBat);
     let terrain = getTileTerrain(selectedBat.tileId);
-    // let apCost = Math.round(selectedBatType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3);
     if (tile.infra != undefined && tile.infra != 'Débris') {
         apCost = Math.round(apCost/2);
     }
