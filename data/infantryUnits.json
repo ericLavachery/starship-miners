@@ -3024,7 +3024,7 @@
             "noMelee":true,
             "isPrec":true,
             "noise":2,
-            "rof":8,
+            "rof":6,
             "accuracy":20,
             "dca":0.7,
             "power":16,

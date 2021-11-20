@@ -2,26 +2,35 @@ function planetEffects(bat,batType) {
     // Gehenna
     if (zone[0].planet === 'Gehenna') {
         if (batType.cat === 'infantry') {
-            if (playerInfos.comp.scaph < 1 || batType.squads > bat.squadsLeft) {
+            if (playerInfos.comp.scaph < 1 || batType.squads > bat.squadsLeft || bat.damage >= 1) {
                 let medDice = (playerInfos.comp.med*2)+6;
+                if (playerInfos.comp.scaph < 1 || batType.squads > bat.squadsLeft) {
+                    medDice = medDice-2;
+                }
                 let terrain = getTerrain(bat);
                 if (bat.loc === "zone") {
-                    medDice = medDice-(terrain.veg*2);
+                    medDice = medDice-(terrain.veg*3);
                 } else if (bat.loc === "trans") {
                     let transBat = getBatById(bat.locId);
                     let transBatType = getBatType(transBat);
                     if (transBatType.cat === 'buildings' || transBatType.skills.includes('transorbital')) {
-                        medDice = medDice-terrain.veg+12;
+                        medDice = medDice-terrain.veg+6;
                     } else {
-                        medDice = medDice-terrain.veg+4;
+                        medDice = medDice-terrain.veg;
                     }
                 }
                 medDice = Math.round(medDice);
                 if (medDice < 1) {
                     medDice = 1;
                 }
-                if (rand.rand(1,medDice) === 1) {
+                let medRoll = rand.rand(1,medDice);
+                if (medRoll === 1) {
                     bat.tags.push('poison');
+                    bat.tags.push('poison');
+                    warning('Poison',batType.name+' empoisonnés par les spores',false,bat.tileId);
+                } else if (medRoll === 2) {
+                    bat.tags.push('poison');
+                    warning('Poison',batType.name+' empoisonnés par les spores',false,bat.tileId);
                 }
             }
         }

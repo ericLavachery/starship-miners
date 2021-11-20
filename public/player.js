@@ -641,7 +641,7 @@ function playerSkillsATChanges() {
             }
             if (playerInfos.comp.const >= 3) {
                 if (infra.costs['Compo3'] != undefined) {
-                    infra.costs['Compo3'] = Math.ceil(infra.costs['Compo3']/2);
+                    infra.costs['Compo3'] = Math.ceil(infra.costs['Compo3']/9*6);
                 }
             }
         }

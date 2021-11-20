@@ -993,6 +993,9 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 if (conselUnit.log3eq != undefined) {
                     if (conselUnit.log3eq != '') {
                         let logEquip = getEquipByName(conselUnit.log3eq);
+                        if (logEquip.name === 'g2ai') {
+                            myBat.ok = '';
+                        }
                         let compReqOK = checkCompReq(logEquip);
                         if (checkSpecialEquip(logEquip,conselUnit)) {
                             compReqOK = false;
@@ -1006,6 +1009,9 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 if (conselUnit.log3eq != undefined) {
                     if (conselUnit.log3eq.includes('psol')) {
                         let logEquip = getEquipByName(conselUnit.log3eq);
+                        if (logEquip.name === 'g2ai') {
+                            myBat.ok = '';
+                        }
                         let compReqOK = checkCompReq(logEquip);
                         if (compReqOK) {
                             newBat.logeq = logEquip.name;
@@ -1024,8 +1030,8 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             newBat.armor = gearStuff[0];
             newBat.ap = gearStuff[1];
             if (conselUnit.cat === 'aliens') {
-                newBat.apLeft = Math.floor(newBat.ap/3);
-                newBat.oldapLeft = Math.floor(newBat.ap/3);
+                newBat.apLeft = Math.floor(newBat.ap/1.5);
+                newBat.oldapLeft = Math.floor(newBat.ap/1.5);
                 newBat.salvoLeft = conselUnit.maxSalvo;
             } else {
                 if (conselTriche || playerInfos.onShip) {

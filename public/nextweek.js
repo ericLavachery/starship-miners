@@ -388,7 +388,7 @@ function showResBallance() {
                 balMessage = balMessage+key+':<span class="rose">'+value+'</span><br>';
             }
         });
-        warning('Ballance',balMessage+'<br>',true);
+        warning('Ballance',balMessage+'<br>',false);
     }
 };
 

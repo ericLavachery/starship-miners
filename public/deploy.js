@@ -308,6 +308,9 @@ function doReEquip(batId) {
     }
     if (myNewGear[2] != myGear[2]) {
         let batEquip = getEquipByName(myNewGear[2]);
+        if (batEquip.name === 'g2ai') {
+            myBat.ok = '';
+        }
         flatCosts = getCosts(myBatType,batEquip,0,'equip');
         mergeObjects(totalCosts,flatCosts);
         if (!playerInfos.onShip) {
@@ -354,6 +357,9 @@ function doReEquip(batId) {
             if (myBatType.log3eq != undefined) {
                 if (myBatType.log3eq != '') {
                     let logEquip = getEquipByName(myBatType.log3eq);
+                    if (logEquip.name === 'g2ai') {
+                        myBat.ok = '';
+                    }
                     let compReqOK = checkCompReq(logEquip);
                     if (checkSpecialEquip(logEquip,myBatType)) {
                         compReqOK = false;
@@ -367,6 +373,9 @@ function doReEquip(batId) {
             if (myBatType.log3eq != undefined) {
                 if (myBatType.log3eq.includes('psol')) {
                     let logEquip = getEquipByName(myBatType.log3eq);
+                    if (logEquip.name === 'g2ai') {
+                        myBat.ok = '';
+                    }
                     let compReqOK = checkCompReq(logEquip);
                     if (compReqOK) {
                         myBat.logeq = logEquip.name;

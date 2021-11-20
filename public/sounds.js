@@ -90,15 +90,20 @@ function warnSound(theSound) {
 function okSound(roger) {
     let okFile;
     let randNum;
-    if (selectedBat.ok != undefined) {
+    if (selectedBat.ok != undefined && selectedBat.ok != '') {
         okFile = selectedBat.ok;
     } else {
         okFile = 'ok';
         randNum = rand.rand(1,28);
         if (selectedBatType.skills.includes('robot')) {
             if (selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
-                okFile = 'rok';
-                randNum = rand.rand(1,2);
+                if (selectedBatType.name === 'Thunderbots' || selectedBatType.name === 'T-Skeltons') {
+                    okFile = 'rok';
+                    randNum = 2;
+                } else {
+                    okFile = 'rok';
+                    randNum = 1;
+                }
             } else {
                 okFile = 'beep';
                 randNum = rand.rand(1,3);
