@@ -384,7 +384,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                 selectedBat.damage = 0
                 totalAPCost = totalAPCost+apCost;
                 $('#report').append('<span class="report cy">'+selectedBat.type+'<br></span><span class="report">dégâts réparés<br>');
-                addRepairFlag(bat);
+                addRepairFlag(selectedBat);
                 showBataillon(selectedBat);
             } else if (selectedBat.squadsLeft < selectedBatType.squads && deep) {
                 oldSquadsLeft = selectedBat.squadsLeft;
@@ -413,13 +413,13 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                 } else {
                     $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">dégâts réparés<br></span>');
                 }
-                addRepairFlag(bat);
+                addRepairFlag(selectedBat);
                 showBataillon(selectedBat);
             } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('trou') && deep) {
                 tagDelete(selectedBat,'trou');
                 totalAPCost = totalAPCost+apCost;
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">trous bouchés<br></span>');
-                addRepairFlag(bat);
+                addRepairFlag(selectedBat);
             }
         }
     }

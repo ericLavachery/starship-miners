@@ -1113,10 +1113,20 @@ function attack(melee) {
             } else if (targetBatType.class === 'A' || targetBatType.class === 'S') {
                 if (rand.rand(1,6) <= targetBatType.rarity) {
                     targetBat.squadsLeft = 0;
+                    if (selectedBat.tags.includes('hero') && selectedBatType.skills.includes('herominik')) {
+                        selectedBat.tags.push('zerokill');
+                    } else {
+                        selectedBat.tags.push('nokill');
+                    }
                 }
             } else {
                 if (rand.rand(1,6) <= 3) {
                     targetBat.squadsLeft = 0;
+                    if (selectedBat.tags.includes('hero') && selectedBatType.skills.includes('herominik')) {
+                        selectedBat.tags.push('zerokill');
+                    } else {
+                        selectedBat.tags.push('nokill');
+                    }
                 }
             }
         }

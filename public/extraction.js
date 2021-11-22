@@ -253,23 +253,30 @@ function getMiningRate(bat,fullRate,noMining) {
     if (bat.eq === 'g2tools' || bat.logeq === 'g2tools') {
         miningAdj = miningAdj*1.2;
     }
-    let helpInside = false;
-    if (batType.name === 'Comptoir' || batType.name === 'Mine') {
+    let helpInside = 1;
+    if (batType.name === 'Comptoir' || batType.name === 'Mine' || batType.name === 'Derrick') {
         if (bat.transIds.length >= 1) {
             bataillons.forEach(function(inBat) {
                 if (inBat.loc === "trans" && inBat.locId === bat.id) {
                     if (inBat.type === 'Mineurs') {
                         if (inBat.apLeft >= 7 && inBat.squadsLeft >= 6) {
-                            helpInside = true;
+                            if (helpInside < 1.5) {
+                                helpInside = 1.5;
+                            }
+                        }
+                    }
+                    if (inBat.type === 'Sapeurs') {
+                        if (inBat.apLeft >= 7 && inBat.squadsLeft >= 6) {
+                            if (helpInside < 1.2) {
+                                helpInside = 1.2;
+                            }
                         }
                     }
                 }
             });
         }
     }
-    if (helpInside) {
-        miningAdj = miningAdj*1.5;
-    }
+    miningAdj = miningAdj*helpInside;
     if (fullRate) {
         let batAP = getBatAP(bat,batType);
         return Math.ceil(batType.mining.rate*batAP/batType.ap*bat.squadsLeft/batType.squads*miningAdj);

@@ -120,6 +120,7 @@ let selectedWeap = {};
 let targetBat = {};
 let targetBatType = {};
 let targetWeap = {};
+let batHasTarget = false;
 let baseLanderRange = 4;
 let nextExplosion = 1;
 let pansolFactor = 100; // divisé par 160

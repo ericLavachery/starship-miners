@@ -317,7 +317,7 @@ function skillsInfos(bat,batType,near) {
             boutonNope = 'boutonOK';
             colorNope = 'cy';
         }
-        if (bat.apLeft >= apReq && bat.fuzz <= -2 && bat.apLeft >= apCost+cheapWeapCost && !bat.tags.includes('noemb') && !bat.tags.includes('embuscade')) {
+        if (bat.apLeft >= apReq && bat.fuzz <= -2 && bat.apLeft >= apCost+cheapWeapCost && !bat.tags.includes('noemb') && !bat.tags.includes('embuscade') && batHasTarget) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Embuscade (Initiative + Cadence de tir x2)" class="boutonJaune skillButtons" onclick="ambush('+apCost+')"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</'+balise+'></span>');
         } else {
             skillMessage = "Pas assez de PA";
@@ -325,6 +325,10 @@ function skillsInfos(bat,batType,near) {
                 skillMessage = "Vous devez bouger ou attendre avant de pouvoir refaire une embuscade";
             } else if (bat.fuzz > -2) {
                 skillMessage = "Vous n'êtes pas en mode furtif";
+            } else if (bat.tags.includes('embuscade')) {
+                skillMessage = "Vous êtes déjà en mode embuscade";
+            } else if (!batHasTarget) {
+                skillMessage = "Pas de cible";
             }
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="ra ra-hood rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embuscade</'+balise+'></span>');
         }
@@ -376,11 +380,13 @@ function skillsInfos(bat,batType,near) {
                     boutonNope = 'boutonOK';
                     colorNope = 'cy';
                 }
-                if (bat.apLeft >= apReq && !bat.tags.includes('datt')) {
+                if (bat.apLeft >= apReq && !bat.tags.includes('datt') && batHasTarget) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Cadence 165% / Précision 50%" class="boutonJaune skillButtons" onclick="fury('+apCost+')"><i class="ra ra-fire rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Double attaque</'+balise+'></span>');
                 } else {
                     if (bat.tags.includes('datt')) {
                         skillMessage = "Déjà activé";
+                    } else if (!batHasTarget) {
+                        skillMessage = "Pas de cible";
                     } else {
                         skillMessage = "Pas assez de PA";
                     }
@@ -433,13 +439,15 @@ function skillsInfos(bat,batType,near) {
                 let tcRof = Math.round(100*tcBonus.rof);
                 let tcPow = Math.round(100*tcBonus.pow);
                 let tcInfo = '+'+tcPrec+'% précision, '+tcRof+'% cadence, '+tcPow+'% puissance ('+apCost+' PA + coût de l\'arme)';
-                if (bat.apLeft >= apReq && !bat.tags.includes('vise') && !inMelee) {
+                if (bat.apLeft >= apReq && !bat.tags.includes('vise') && !inMelee && batHasTarget) {
                     $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+tcInfo+'" class="boutonJaune skillButtons" onclick="tirCible('+apCost+')"><i class="fas fa-crosshairs"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bullseye</'+balise+'></span>');
                 } else {
                     if (bat.tags.includes('vise')) {
                         skillMessage = "Déjà activé";
                     } else if (inMelee) {
                         skillMessage = "Impossible en mêlée";
+                    } else if (!batHasTarget) {
+                        skillMessage = "Pas de cible";
                     } else {
                         skillMessage = "Pas assez de PA";
                     }
@@ -463,18 +471,27 @@ function skillsInfos(bat,batType,near) {
             boutonNope = 'boutonOK';
             colorNope = 'cy';
         }
-        if (bat.apLeft >= apReq && !bat.tags.includes('luckyshot') && !bat.tags.includes('lucky') && bat.apLeft >= cheapWeapCost) {
+        if (bat.apLeft >= apReq && !bat.tags.includes('luckyshot') && !bat.tags.includes('lucky') && bat.apLeft >= cheapWeapCost && batHasTarget) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lucky shot automatique sur cette attaque" class="boutonJaune skillButtons" onclick="luckyShot()"><i class="fas fa-dice-six"></i> <span class="small">0</span></button>&nbsp; Lucky shot</'+balise+'></span>');
         } else {
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Pas assez de bol ou de PA" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-dice-six"></i> <span class="small">'+apCost+'</span></button>&nbsp; Lucky shot</'+balise+'></span>');
+            if (bat.tags.includes('luckyshot')) {
+                skillMessage = "Déjà activé";
+            } else if (bat.tags.includes('lucky')) {
+                skillMessage = "Pas assez de bol";
+            } else if (!batHasTarget) {
+                skillMessage = "Pas de cible";
+            } else {
+                skillMessage = "Pas assez de PA";
+            }
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-dice-six"></i> <span class="small">'+apCost+'</span></button>&nbsp; Lucky shot</'+balise+'></span>');
         }
     }
     // INSTAKILL
-    if (bat.tags.includes('hero') && (batType.skills.includes('herokill') || batType.skills.includes('herominik')) && !bat.tags.includes('nokill') && !bat.tags.includes('zerokill') && !playerInfos.onShip) {
+    if (bat.tags.includes('hero') && (batType.skills.includes('herokill') || batType.skills.includes('herominik')) && !bat.tags.includes('nokill') && !bat.tags.includes('zerokill') && batHasTarget && !playerInfos.onShip) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Uniquement avec une arme de précision!" class="boutonJaune skillButtons" onclick="instaKill()"><i class="fas fa-skull-crossbones"></i> <span class="small">0</span></button>&nbsp; Instakill</h4></span>');
     }
     // TORNADE
-    if (bat.tags.includes('hero') && batType.skills.includes('herotornade') && !bat.tags.includes('notorn') && !playerInfos.onShip) {
+    if (bat.tags.includes('hero') && batType.skills.includes('herotornade') && !bat.tags.includes('notorn') && batHasTarget && !playerInfos.onShip) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Salves infinies" class="boutonJaune skillButtons" onclick="tornade()"><i class="ra ra-player-teleport rpg"></i> <span class="small">0</span></button>&nbsp; Tornade</h4></span>');
     }
     // DIVERSION
@@ -1150,7 +1167,7 @@ function skillsInfos(bat,batType,near) {
                 apCost = drug.apCost;
                 if (drugCompOK) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('blaze') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+6 PA & +1 salve '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</'+balise+'></span>');
+                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+3 PA & +1 salve '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Blaze</'+balise+'></span>');
                     } else {
                         if (bat.tags.includes('blaze')) {
                             skillMessage = "Déjà sous l'effet de cette drogue";

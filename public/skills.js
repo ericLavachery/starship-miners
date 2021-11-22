@@ -163,21 +163,28 @@ function goDoxey() {
         tagDelete(selectedBat,'stun');
         tagDelete(selectedBat,'poison');
         tagDelete(selectedBat,'poison');
+        selectedBat.emo = selectedBat.emo-2;
         if (medComp >= 1) {
             tagDelete(selectedBat,'venin');
             tagDelete(selectedBat,'maladie');
             tagDelete(selectedBat,'poison');
             tagDelete(selectedBat,'poison');
+            selectedBat.emo = selectedBat.emo-2;
         } else if (medComp >= 2) {
             tagDelete(selectedBat,'parasite');
             tagDelete(selectedBat,'necro');
             tagDelete(selectedBat,'poison');
             tagDelete(selectedBat,'poison');
+            selectedBat.emo = selectedBat.emo-3;
         } else if (medComp === 3) {
             tagDelete(selectedBat,'poison');
             tagDelete(selectedBat,'poison');
             tagDelete(selectedBat,'poison');
             tagDelete(selectedBat,'poison');
+            selectedBat.emo = selectedBat.emo-3;
+        }
+        if (selectedBat.emo < 0) {
+            selectedBat.emo = 0;
         }
         doneAction(selectedBat);
         selectedBatArrayUpdate();
@@ -254,9 +261,10 @@ function rage() {
 function instaKill() {
     selectedBat.tags.push('kill');
     if (selectedBatType.skills.includes('herominik')) {
-        selectedBat.tags.push('zerokill');
-    } else {
         selectedBat.tags.push('nokill');
+        selectedBat.tags.push('nokill');
+        selectedBat.tags.push('nokill');
+    } else {
         selectedBat.tags.push('nokill');
         selectedBat.tags.push('nokill');
     }
@@ -596,6 +604,7 @@ function goDrug(apCost,drugName) {
             // octiron instant bonus
             if (drug.name === 'octiron') {
                 selectedBat.apLeft = selectedBat.apLeft+5;
+                tagDelete(selectedBat,'lucky');
                 // selectedBat.emo = selectedBat.emo-(playerInfos.comp.med*3)-3;
                 if (playerInfos.comp.med >= 3) {
                     selectedBat.damage = 0;

@@ -8,6 +8,7 @@ function weaponsInfos(bat,batType,pop) {
     let thisWeapon = {};
     let showW1 = true;
     let anyTarget = false;
+    batHasTarget = false;
     let inMelee = batInMelee(bat,batType);
     let noFireMelee = false;
     let noBisOK = true;
@@ -66,6 +67,9 @@ function weaponsInfos(bat,batType,pop) {
             }
             // console.log('tileId='+bat.tileId);
             anyTarget = anyAlienInRange(bat,thisWeapon);
+            if (anyTarget) {
+                batHasTarget = true;
+            }
             baseAmmo = thisWeapon.maxAmmo;
             ammoLeft = calcAmmos(bat,baseAmmo);
             balise = 'h4';
@@ -308,6 +312,9 @@ function weaponsInfos(bat,batType,pop) {
                 }
             }
             anyTarget = anyAlienInRange(bat,thisWeapon);
+            if (anyTarget) {
+                batHasTarget = true;
+            }
             baseAmmo = thisWeapon.maxAmmo;
             ammoLeft = calcAmmos(bat,baseAmmo);
             balise = 'h4';

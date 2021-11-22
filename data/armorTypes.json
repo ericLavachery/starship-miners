@@ -57,7 +57,7 @@
         "bldReq":["Infirmerie"],
         "bldVMReq":["Laboratoire"],
         "compReq":{"ca":2,"med":1},
-        "costs":{"Drogues":1,"Végétaux":1,"Or":1,"Mendium":3}
+        "costs":{"Drogues":1,"Végétaux":1,"Or":1,"Mendium":5}
     },
     {
         "name": "octiron",
@@ -66,7 +66,7 @@
         "bldReq":[],
         "bldVMReq":["Infirmerie"],
         "compReq":{"med":1},
-        "costs":{"Drogues":1,"Hélium":2,"Bore":2,"Octiron":15}
+        "costs":{"Drogues":2,"Hélium":2,"Bore":2,"Octiron":20}
     },
     {
         "name": "bliss",
@@ -75,7 +75,7 @@
         "bldReq":[],
         "bldVMReq":["Bar"],
         "compReq":{"ca":1,"exo":2},
-        "costs":{"Drogues":1,"Mercure":2,"Bore":2,"Larvium":6}
+        "costs":{"Drogues":1,"Mercure":2,"Bore":2,"Larvium":8}
     },
     {
         "name": "skupiac",
@@ -84,7 +84,7 @@
         "bldReq":["Bar"],
         "bldVMReq":["Laboratoire"],
         "compReq":{"ca":2,"exo":2},
-        "costs":{"Drogues":2,"Mercure":1,"Or":1,"Aranium":8}
+        "costs":{"Drogues":2,"Mercure":1,"Or":1,"Aranium":12}
     },
     {
         "name": "blaze",
@@ -93,7 +93,7 @@
         "bldReq":["Bar"],
         "bldVMReq":["Centre de recherches"],
         "compReq":{"ca":3,"exo":3},
-        "costs":{"Drogues":3,"Mercure":2,"Hélium":3,"Bore":6,"Wingium":6}
+        "costs":{"Drogues":3,"Mercure":2,"Hélium":3,"Bore":6,"Wingium":9}
     },
     {
         "name": "sila",
@@ -102,7 +102,7 @@
         "bldReq":[],
         "bldVMReq":["Laboratoire"],
         "compReq":{"ca":1,"exo":1},
-        "costs":{"Drogues":1,"Zinc":1,"Creatite":3,"Bugium":9}
+        "costs":{"Drogues":1,"Zinc":1,"Creatite":3,"Bugium":12}
     },
     {
         "name": "nitro",
@@ -111,7 +111,7 @@
         "bldReq":[],
         "bldVMReq":["Garage"],
         "compReq":{"energ":1},
-        "costs":{"Huile":1,"Hydrogène":2,"Azote":2,"Slime":2}
+        "costs":{"Huile":1,"Hydrogène":2,"Azote":2,"Slime":5}
     },
     {
         "name": "aucune",

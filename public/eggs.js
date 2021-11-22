@@ -1278,7 +1278,7 @@ function eggSpawn(bat,fromEgg) {
             }
         }
     } else {
-        let spawnChance = Math.round(eggTurn*15/bat.squadsLeft*6*Math.sqrt(presAlien)*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
+        let spawnChance = Math.round(eggTurn*25/bat.squadsLeft*6*Math.sqrt(presAlien)*Math.sqrt(Math.sqrt(playerInfos.mapTurn)));
         if (!fromEgg) {
             spawnChance = 100-(eggTurn*5);
             if (spawnChance < 25) {
@@ -1291,7 +1291,7 @@ function eggSpawn(bat,fromEgg) {
             if (adjEggTurn > 13) {
                 adjEggTurn = 13;
             }
-            let maxSpawn = Math.round(((adjEggTurn*1.5)+(3-(bat.squadsLeft/2))+(zone[0].mapDiff*1.5))/5);
+            let maxSpawn = Math.round(((adjEggTurn*1.5)+(3-(bat.squadsLeft/2))+(zone[0].mapDiff*1.5))/5/Math.sqrt(eggsNum)*2.5);
             if (maxSpawn < 1 || !fromEgg) {
                 maxSpawn = 1;
                 if (fromEgg) {

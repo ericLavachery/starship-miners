@@ -893,7 +893,7 @@ function tagsUpdate(bat) {
             }
         }
     }
-    if (rand.rand(1,5) === 1) {
+    if (rand.rand(1,3) === 1) {
         if (bat.tags.includes('octiron')) {
             tagIndex = bat.tags.indexOf('octiron');
             bat.tags.splice(tagIndex,1);
@@ -1023,7 +1023,7 @@ function tagsEffect(bat,batType) {
     let squadsOut;
     // BLAZE DRUG
     if (bat.tags.includes('blaze')) {
-        bat.apLeft = bat.apLeft+6;
+        bat.apLeft = bat.apLeft+3;
         bat.salvoLeft = bat.salvoLeft+1;
     }
     // OCTIRON DRUG
