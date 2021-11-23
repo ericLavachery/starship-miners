@@ -107,7 +107,7 @@ function showEnemyBatInfos(bat) {
         }
     }
     if (compCA >= 2) {
-        if (batType.skills.includes('fear')) {
+        if (batType.skills.includes('fear') || batType.skills.includes('terror') || batType.skills.includes('dread')) {
             $('#unitInfos').append('<span class="paramName">Répulsion</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
         }
     }

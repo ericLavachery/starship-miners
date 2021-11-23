@@ -1308,7 +1308,7 @@ function infraDestruction() {
 
 function fearFactor(myBat,blob) {
     let myBatType = getBatType(myBat);
-    if (myBatType.skills.includes('fear') || blob) {
+    if (myBatType.skills.includes('fear') || myBatType.skills.includes('terror') || myBatType.skills.includes('dread') || blob) {
         // console.log('FEAR');
         let distance;
         let fearChance;
@@ -1317,18 +1317,35 @@ function fearFactor(myBat,blob) {
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone") {
                 distance = calcDistance(myBat.tileId,bat.tileId);
-                if (distance === 0) {
+                if (distance === 0 || (myBatType.skills.includes('terror') && distance <= 3)) {
                     batType = getBatType(bat);
                     if (batType.moveCost < 99) {
                         if (blob) {
                             fearChance = 100;
                         } else {
-                            addStressFlag(bat,'fear');
-                            if (bat.tags.includes('bliss') || batType.skills.includes('robot') || batType.skills.includes('nofear') || bat.tags.includes('zombie') || bat.tags.includes('drunk')) {
-                                fearChance = 0;
-                            } else {
-                                fearChance = Math.round(75-(batType.size*2.5)-(bat.vet*12));
+                            let batLevel = bat.vet;
+                            if (bat.vet === 4) {
+                                batLevel = 5;
                             }
+                            if (batType.skills.includes('robot') || bat.tags.includes('zombie')) {
+                                fearChance = 0;
+                            } else if (bat.tags.includes('bliss') || batType.skills.includes('nofear') || bat.tags.includes('drunk')) {
+                                fearChance = 0;
+                                if (!myBatType.skills.includes('dread') && batLevel <= 3) {
+                                    addStressFlag(bat,'fear');
+                                }
+                            } else if (myBatType.skills.includes('dread')) {
+                                fearChance = Math.round(65-(batType.size*3)-(batLevel*10));
+                            } else if (myBatType.skills.includes('terror')) {
+                                fearChance = Math.round(75-(batType.size*1)-(batLevel*8));
+                                addStressFlag(bat,'fear');
+                            } else {
+                                fearChance = Math.round(75-(batType.size*2.5)-(batLevel*10));
+                                if (batLevel <= 3) {
+                                    addStressFlag(bat,'fear');
+                                }
+                            }
+                            fearChance = Math.ceil(fearChance*(myBat.squadsLeft+2)/(myBatType.squads+2));
                         }
                         // console.log('fearChance='+fearChance);
                         if (rand.rand(1,100) <= fearChance) {
