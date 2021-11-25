@@ -1,7 +1,7 @@
 function planetEffects(bat,batType) {
     // Gehenna
     if (zone[0].planet === 'Gehenna') {
-        if (batType.cat === 'infantry') {
+        if (batType.cat === 'infantry' && batType.name != 'Citoyens' && batType.name != 'Criminels') {
             if (playerInfos.comp.scaph < 1 || batType.squads > bat.squadsLeft || bat.damage >= 1) {
                 let medDice = (playerInfos.comp.med*2)+6;
                 if (playerInfos.comp.scaph < 1 || batType.squads > bat.squadsLeft) {

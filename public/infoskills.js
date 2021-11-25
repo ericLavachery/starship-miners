@@ -995,7 +995,7 @@ function skillsInfos(bat,batType,near) {
                 apCost = drug.apCost;
                 if (drugCompOK) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('octiron') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+5 PA / protection poisons et maladies / réduit le stress '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
+                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+4 PA / protection poisons et maladies / réduit le stress '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
                     } else {
                         if (bat.tags.includes('octiron')) {
                             skillMessage = "Déjà sous l'effet de cette drogue";
@@ -1259,7 +1259,7 @@ function skillsInfos(bat,batType,near) {
                     apCost = drug.apCost;
                     if (drugCompOK) {
                         if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('octiron') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Réduit le stress '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
+                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+4 PA / réduit le stress '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>&nbsp; Octiron</'+balise+'></span>');
                         } else {
                             if (bat.tags.includes('octiron')) {
                                 skillMessage = "Déjà sous l'effet de cette drogue";

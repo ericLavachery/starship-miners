@@ -1032,9 +1032,7 @@ function tagsEffect(bat,batType) {
     }
     // OCTIRON DRUG
     if (bat.tags.includes('octiron')) {
-        if (batType.cat === 'infantry') {
-            bat.apLeft = bat.apLeft+5;
-        }
+        bat.apLeft = bat.apLeft+4;
     }
     // BLISS DRUG
     if (bat.tags.includes('bliss')) {

@@ -333,6 +333,11 @@ function nearbyAliens(myBat) {
 
 function nearWhat(myBat,myBatType) {
     let myCrew = myBatType.squads*myBatType.squadSize*myBatType.crew;
+    let myCat = myBatType.cat;
+    if (myBat.eq === 'g2ai' || myBat.logeq === 'g2ai') {
+        myCrew = myBatType.squads*myBatType.squadSize*1;
+        myCat = 'infantry';
+    }
     let near = {};
     near.caserne = false;
     near.control = false;
@@ -343,7 +348,7 @@ function nearWhat(myBat,myBatType) {
         let batType = getBatType(bat);
         if (bat.loc === "zone") {
             if (batType.skills.includes('infrahelp')) {
-                if (myCrew >= 12 && myBatType.cat === 'infantry') {
+                if (myCrew >= 12 && myCat === 'infantry') {
                     if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
                         near.caserne = true;
                     }

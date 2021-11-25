@@ -604,8 +604,8 @@ function goDrug(apCost,drugName) {
             // octiron instant bonus
             if (drug.name === 'octiron') {
                 tagDelete(selectedBat,'lucky');
+                selectedBat.apLeft = selectedBat.apLeft+4;
                 if (selectedBatType.cat === 'infantry') {
-                    selectedBat.apLeft = selectedBat.apLeft+5;
                     if (playerInfos.comp.med >= 3) {
                         selectedBat.damage = 0;
                         let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;
