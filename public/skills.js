@@ -603,14 +603,15 @@ function goDrug(apCost,drugName) {
             }
             // octiron instant bonus
             if (drug.name === 'octiron') {
-                selectedBat.apLeft = selectedBat.apLeft+5;
                 tagDelete(selectedBat,'lucky');
-                // selectedBat.emo = selectedBat.emo-(playerInfos.comp.med*3)-3;
-                if (playerInfos.comp.med >= 3) {
-                    selectedBat.damage = 0;
-                    let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;
-                    if (lostSquads >= 2) {
-                        selectedBat.squadsLeft = selectedBat.squadsLeft+1;
+                if (selectedBatType.cat === 'infantry') {
+                    selectedBat.apLeft = selectedBat.apLeft+5;
+                    if (playerInfos.comp.med >= 3) {
+                        selectedBat.damage = 0;
+                        let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;
+                        if (lostSquads >= 2) {
+                            selectedBat.squadsLeft = selectedBat.squadsLeft+1;
+                        }
                     }
                 }
                 console.log('octiron bonus');

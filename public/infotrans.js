@@ -271,7 +271,7 @@ function checkTransportId(myBat,myBatType) {
 
 function calcTransUnitsLeft(myBat,myBatType) {
     let myBatTransUnitsLeft = myBatType.transUnits;
-    if (myBat.eq === 'megatrans') {
+    if (myBat.eq === 'megatrans' || myBat.logeq === 'megatrans') {
         myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*1.25);
     }
     if (myBatType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {

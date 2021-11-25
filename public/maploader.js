@@ -262,6 +262,7 @@ function showAlien(bat) {
     let batType = getBatType(bat);
     let batShowedName = nomVisible(batType.name);
     let batPic = batType.pic;
+    bat.apLeft = bat.apLeft.toFixedNumber(1);
     if (playerInfos.comp.ca >= 1) {
         if (batType.name === 'Coque' || batType.name === 'Oeuf voilé' || batType.name === 'Oeuf' || batType.name === 'Vomissure') {
             if (bat.tags.includes('morph')) {
@@ -280,7 +281,17 @@ function showAlien(bat) {
     let degNum = getDamageBar(bat);
     let myKind = getEggKind(bat);
     // console.log('myKind='+myKind);
-    let tagz = ' '+myKind;
+    let tagz = ' ';
+    if (batType.class === 'X') {
+        tagz = tagz+myKind;
+    }
+    if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) {
+        tagz = tagz+' ('+bat.apLeft+' PA)';
+    }
+    if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 3) {
+        let ripNum = getRipNum(bat,batType);
+        tagz = tagz+' ('+ripNum+' rip)';
+    }
     if (bat.tags.includes('shield')) {
         tagz = tagz+' (bouclier)';
     }

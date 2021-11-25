@@ -375,7 +375,7 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batType.size+'</span><br>');
     }
     // AUTOSKILLS
-    if (batType.skills.includes('ravitaillement') && bat.eq != 'megafret') {
+    if (batType.skills.includes('ravitaillement')) {
         let ravitNum = calcRavit(bat);
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
         if (batType.skills.includes('stockmed')) {
@@ -387,7 +387,7 @@ function batInfos(bat,batType,pop) {
     if (batType.transUnits >= 1) {
         let transLeft = calcTransUnitsLeft(bat,batType);
         let transBase = batType.transUnits;
-        if (bat.eq === 'megatrans') {
+        if (bat.eq === 'megatrans' || bat.logeq === 'megatrans') {
             transBase = Math.round(transBase*1.25);
         }
         if (batType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {

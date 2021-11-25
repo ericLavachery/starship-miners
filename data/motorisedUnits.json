@@ -2237,7 +2237,7 @@
         "skills":["transport","fret","hardmove","dumper","light","crewsave","recupcit","recupres","ouvert","badmecano","badmedic","dealer","starka","kirin","nochef"],
         "mediCost":12,
         "mecanoCost":16,
-        "transMaxSize":9,
+        "transMaxSize":11,
         "transUnits":1000,
         "transRes":750,
         "maxDrug":12,
@@ -2997,7 +2997,7 @@
         "maxVeg":3,
         "skills":["fortif","longshot","transport","fret","maycamo","badmecano","hardmove","guerrilla","dumper","light","badcrewsave","recupcit","recupres","nochef"],
         "mecanoCost":10,
-        "transMaxSize":9,
+        "transMaxSize":11,
         "transUnits":900,
         "transRes":300,
         "fuzz":2.5,
@@ -3338,7 +3338,7 @@
             "power":18,
             "aoe":"bat",
             "sound":"bomb_mini_x1",
-            "ammo":["grenade","grenade-incendiaire","grenade-nanite"],
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":3,
             "ravitBld":"Poudrière"
         },
@@ -3512,7 +3512,7 @@
             "power":18,
             "aoe":"bat",
             "sound":"bomb_mini_x3",
-            "ammo":["grenade","grenade-incendiaire","grenade-nanite"],
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":6,
             "ravitBld":"Poudrière"
         },
@@ -3569,7 +3569,7 @@
             "power":18,
             "aoe":"bat",
             "sound":"bomb_mini_x3",
-            "ammo":["grenade","grenade-incendiaire","grenade-nanite"],
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":6,
             "ravitBld":"Poudrière"
         },
@@ -3919,7 +3919,7 @@
             "power":13,
             "aoe":"squad",
             "sound":"grenade",
-            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire","grenade-nanite"],
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":9,
             "ravitBld":"Poudrière"
         },

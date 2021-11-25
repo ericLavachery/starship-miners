@@ -994,7 +994,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                     if (conselUnit.log3eq != '') {
                         let logEquip = getEquipByName(conselUnit.log3eq);
                         if (logEquip.name === 'g2ai') {
-                            myBat.ok = '';
+                            newBat.ok = '';
                         }
                         let compReqOK = checkCompReq(logEquip);
                         if (checkSpecialEquip(logEquip,conselUnit)) {
@@ -1010,7 +1010,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                     if (conselUnit.log3eq.includes('psol')) {
                         let logEquip = getEquipByName(conselUnit.log3eq);
                         if (logEquip.name === 'g2ai') {
-                            myBat.ok = '';
+                            newBat.ok = '';
                         }
                         let compReqOK = checkCompReq(logEquip);
                         if (compReqOK) {

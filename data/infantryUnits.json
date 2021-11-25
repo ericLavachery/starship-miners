@@ -2325,7 +2325,7 @@
             "power":13,
             "aoe":"squad",
             "sound":"grenade",
-            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire","grenade-nanite"],
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":6,
             "ravitBld":"Poudrière"
         },
@@ -2384,7 +2384,7 @@
             "power":13,
             "aoe":"squad",
             "sound":"grenade",
-            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire","grenade-nanite"],
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":6,
             "ravitBld":"Poudrière"
         },
@@ -2913,7 +2913,7 @@
             "power":13,
             "aoe":"squad",
             "sound":"grenade",
-            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire","grenade-nanite"],
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
@@ -3402,7 +3402,7 @@
             "cost":4,
             "range":3,
             "noDatt":true,
-            "rof":6,
+            "rof":4,
             "accuracy":30,
             "power":20,
             "aoe":"unit",
@@ -4146,7 +4146,7 @@
             "power":13,
             "aoe":"squad",
             "sound":"grenade",
-            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire","grenade-nanite"],
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":12,
             "ravitBld":"Poudrière"
         },
@@ -4700,7 +4700,7 @@
             "cost":4,
             "range":0,
             "elevation":1,
-            "rof":9,
+            "rof":12,
             "accuracy":18,
             "power":15,
             "aoe":"squad",
@@ -5714,7 +5714,7 @@
             "power":13,
             "aoe":"squad",
             "sound":"grenade",
-            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-incendiaire","grenade-nanite"],
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":6,
             "ravitBld":"Poudrière"
         },

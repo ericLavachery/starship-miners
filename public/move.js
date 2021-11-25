@@ -105,20 +105,25 @@ function putTagAction(bat) {
 
 function doneAction(bat) {
     if (bat.cat != 'aliens') {
-        if (bat.id === selectedBat.id) {
-            if (!selectedBat.tags.includes('action')) {
-                selectedBat.tags.push('action');
-            }
-            selectedBat.oldTileId = selectedBat.tileId;
-            selectedBat.oldapLeft = selectedBat.apLeft;
-            selectedBatArrayUpdate();
-        } else {
-            if (!bat.tags.includes('action')) {
-                bat.tags.push('action');
-            }
-            bat.oldTileId = bat.tileId;
-            bat.oldapLeft = bat.apLeft;
+        if (!bat.tags.includes('action')) {
+            bat.tags.push('action');
         }
+        bat.oldTileId = bat.tileId;
+        bat.oldapLeft = bat.apLeft;
+        // if (bat.id === selectedBat.id) {
+        //     if (!selectedBat.tags.includes('action')) {
+        //         selectedBat.tags.push('action');
+        //     }
+        //     selectedBat.oldTileId = selectedBat.tileId;
+        //     selectedBat.oldapLeft = selectedBat.apLeft;
+        //     selectedBatArrayUpdate();
+        // } else {
+        //     if (!bat.tags.includes('action')) {
+        //         bat.tags.push('action');
+        //     }
+        //     bat.oldTileId = bat.tileId;
+        //     bat.oldapLeft = bat.apLeft;
+        // }
     }
 };
 

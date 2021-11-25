@@ -651,7 +651,7 @@ function calcDamage(weapon,power,armor,defBat) {
     }
     // bliss drug
     let dmgReduct = 0;
-    if (defBat.tags.includes('bliss')) {
+    if (defBat.tags.includes('bliss') && defBatType.cat === 'infantry') {
         dmgReduct = 3;
     }
     let calculatedDmg = powerDice-modifiedArmor-dmgReduct;
@@ -2245,3 +2245,23 @@ function getWetness(terrain,onGround) {
     }
     return wetness;
 };
+
+function getRipNum(bat,batType) {
+    let ripNum = 4+bat.salvoLeft;
+    if (batType.skills.includes('guerrilla') || batType.skills.includes('baddef')) {
+        ripNum = ripNum-1;
+    }
+    if (batType.skills.includes('onedef')) {
+        ripNum = ripNum-3;
+    }
+    if (batType.skills.includes('gooddef') || bat.eq.includes('w2-auto')) {
+        ripNum = ripNum+2;
+    }
+    if (bat.tags.includes('hero') && batType.skills.includes('herorip')) {
+        ripNum = ripNum+3;
+    }
+    if (ripNum < 0) {
+        ripNum = 0;
+    }
+    return ripNum;
+}

@@ -2529,13 +2529,13 @@
         "rof": 1,
         "power": 2,
         "powermult": 1.45,
-        "armors": 0.25,
+        "armors": 0.15,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "brochette",
         "bldReq":["Armurerie"],
-        "compReq":{"explo":1},
-        "deploy":{"Scrap":1,"Fer":2,"Huile":1,"Explosifs":3},
+        "compReq":{"explo":2},
+        "deploy":{"Scrap":1,"Fer":2,"Huile":1,"Explosifs":4},
         "batch":100
     },
     {

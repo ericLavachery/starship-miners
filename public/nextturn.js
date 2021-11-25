@@ -258,7 +258,7 @@ function nextTurnEnd() {
             if (!medicalTransports.includes(bat.locId) && bat.loc === "trans" && batType.skills.includes('medic')) {
                 medicalTransports.push(bat.locId);
             }
-            if (!medicalTransports.includes(bat.id) && batType.transUnits >= 1 && batType.skills.includes('medic') && bat.eq != 'megafret' && bat.eq != 'megatrans') {
+            if (!medicalTransports.includes(bat.id) && batType.transUnits >= 1 && batType.skills.includes('medic')) {
                 medicalTransports.push(bat.id);
             }
             if (bat.loc === "trans") {
@@ -886,15 +886,15 @@ function tagsUpdate(bat) {
         tagDelete(bat,'stun');
     }
     if (bat.tags.includes('drunk')) {
-        if (rand.rand(1,5) === 1) {
+        if (rand.rand(1,3) === 1) {
             tagDelete(bat,'drunk');
             if (!bat.tags.includes('drunk')) {
                 warning('Burp...',bat.type+' a la gueule de bois.',false,bat.tileId);
             }
         }
     }
-    if (rand.rand(1,3) === 1) {
-        if (bat.tags.includes('octiron')) {
+    if (bat.tags.includes('octiron')) {
+        if (rand.rand(1,4) === 1) {
             tagIndex = bat.tags.indexOf('octiron');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('octiron')) {
@@ -902,8 +902,8 @@ function tagsUpdate(bat) {
             }
         }
     }
-    if (rand.rand(1,5) === 1) {
-        if (bat.tags.includes('kirin')) {
+    if (bat.tags.includes('kirin')) {
+        if (rand.rand(1,5) === 1) {
             tagIndex = bat.tags.indexOf('kirin');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('kirin')) {
@@ -911,8 +911,8 @@ function tagsUpdate(bat) {
             }
         }
     }
-    if (rand.rand(1,5) === 1) {
-        if (bat.tags.includes('sila')) {
+    if (bat.tags.includes('sila')) {
+        if (rand.rand(1,5) === 1) {
             tagIndex = bat.tags.indexOf('sila');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('sila')) {
@@ -920,8 +920,8 @@ function tagsUpdate(bat) {
             }
         }
     }
-    if (rand.rand(1,5) === 1) {
-        if (bat.tags.includes('bliss')) {
+    if (bat.tags.includes('bliss')) {
+        if (rand.rand(1,5) === 1) {
             tagIndex = bat.tags.indexOf('bliss');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('bliss')) {
@@ -929,8 +929,8 @@ function tagsUpdate(bat) {
             }
         }
     }
-    if (rand.rand(1,3) === 1) {
-        if (bat.tags.includes('blaze')) {
+    if (bat.tags.includes('blaze')) {
+        if (rand.rand(1,3) === 1) {
             tagIndex = bat.tags.indexOf('blaze');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('blaze')) {
@@ -938,8 +938,8 @@ function tagsUpdate(bat) {
             }
         }
     }
-    if (rand.rand(1,5) === 1) {
-        if (bat.tags.includes('skupiac')) {
+    if (bat.tags.includes('skupiac')) {
+        if (rand.rand(1,5) === 1) {
             tagIndex = bat.tags.indexOf('skupiac');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('skupiac')) {
@@ -973,8 +973,12 @@ function drugDown(bat,fatigue,addict) {
             bat.apLeft = 3;
         }
     }
-    if (rand.rand(1,toxChance) === 1 && addict) {
-        bat.tags.push('tox');
+    if (addict) {
+        if (bat.emo != undefined) {
+            bat.emo = bat.emo+1;
+        } else {
+            bat.emo = 1;
+        }
     }
 };
 
@@ -1028,7 +1032,9 @@ function tagsEffect(bat,batType) {
     }
     // OCTIRON DRUG
     if (bat.tags.includes('octiron')) {
-        bat.apLeft = bat.apLeft+5;
+        if (batType.cat === 'infantry') {
+            bat.apLeft = bat.apLeft+5;
+        }
     }
     // BLISS DRUG
     if (bat.tags.includes('bliss')) {
