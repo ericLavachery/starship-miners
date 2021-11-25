@@ -385,7 +385,12 @@ function batListElement(bat,batType,idOfLander) {
         $('#be'+bat.id).append('<span class="listRes gff">'+vetStatus+'</span>');
     }
     if (bat.soins >= 11 || bat.emo >= 11 || bat.tags.includes('necro')) {
-        $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i></span>');
+        if (batType.cat === 'vehicles' && bat.soins >= 11) {
+            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-wrench"></i></span>');
+        }
+        if (batType.cat != 'vehicles' || bat.emo >= 11) {
+            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i></span>');
+        }
     }
     $('#be'+bat.id).append('<br>');
     let prt = bat.prt;

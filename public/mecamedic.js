@@ -883,10 +883,42 @@ function checkEffSoins(bat) {
 
 function checkVehiclesAPSoins(bat,batType) {
     let apLoss = 0;
-    if (batType.cat === 'vehicles') {
-        apLoss = Math.floor(batType.ap*(bat.soins-6)/100);
+    if (batType.cat === 'vehicles' && bat.soins >= 11) {
+        apLoss = Math.ceil(batType.ap*(bat.soins-6)/100);
+        if (apLoss < 1) {
+            apLoss = 1;
+        }
     }
     return apLoss;
+};
+
+function getMaintenanceCosts(bat,batType) {
+    let maintCosts = {};
+    let state = (bat.soins*2)-7;
+    if (state > 85) {
+        state = 85;
+    }
+    Object.entries(batType.costs).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        let thatCost = Math.floor(value*state/100);
+        if (thatCost >= 1) {
+            maintCosts[key] = thatCost;
+        }
+    });
+    return maintCosts;
+};
+
+function maintenance() {
+    let maintCosts = getMaintenanceCosts(selectedBat,selectedBatType);
+    let maintOK = checkCost(maintCosts);
+    if (maintOK) {
+        payCost(maintCosts);
+        selectedBat.soins = 0;
+        selectedBatArrayUpdate();
+        goSoute();
+        showBatInfos(selectedBat);
+    }
 };
 
 function checkMecanoSkill(bat,batType) {
