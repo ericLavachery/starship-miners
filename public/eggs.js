@@ -141,8 +141,9 @@ function checkMaxDroppedEggs() {
     }
     let maxDroppedEggs = Math.ceil((maxEggDropTurn+overLimit)*(zone[0].mapDiff+1.5)/7);
     maxDroppedEggs = maxDroppedEggs+Math.round(playerInfos.fuzzTotal/50)-8;
-    if (maxDroppedEggs < 0) {
-        maxDroppedEggs = 0;
+    let absoluteMinMax = Math.floor((playerInfos.mapTurn-5)/5)+1;
+    if (maxDroppedEggs < absoluteMinMax) {
+        maxDroppedEggs = absoluteMinMax;
     }
     return maxDroppedEggs;
 };
@@ -208,7 +209,7 @@ function checkEggsDrop() {
         dropMessage = 'Champ de force';
     }
     console.log('dropChance='+dropChance);
-    if (playerInfos.pseudo === 'Xxxxx') {
+    if (playerInfos.pseudo === 'Payall') {
         warning('Oeufs','Check '+dropChance+'% '+dropMessage);
     }
     if (zone[0].mapDiff >= 1 || playerInfos.mapTurn >= 25) {
@@ -221,7 +222,7 @@ function checkEggsDrop() {
             dropEgg('Cocon','any');
             satDrop = true;
             playerInfos.alienSat = 0;
-            if (playerInfos.pseudo === 'Xxxxx') {
+            if (playerInfos.pseudo === 'Payall') {
                 warning('Cocon de saturation','200+ aliens.');
             }
         }
@@ -232,11 +233,11 @@ function checkEggsDrop() {
             if (rand.rand(1,eggPauseDice) === 1) {
                 playerInfos.eggPause = false;
                 console.log('END PAUSE! 1/'+eggPauseDice);
-                if (playerInfos.pseudo === 'Xxxxx') {
+                if (playerInfos.pseudo === 'Payall') {
                     warning('Fin de la pause','Check 1/'+eggPauseDice+' réussi.');
                 }
             } else {
-                if (playerInfos.pseudo === 'Xxxxx') {
+                if (playerInfos.pseudo === 'Payall') {
                     warning('La pause continue','Check 1/'+eggPauseDice+' raté.');
                 }
             }
@@ -364,7 +365,7 @@ function eggsDrop() {
         if (rand.rand(1,100) <= eggPausePerc) {
             playerInfos.eggPause = true;
             console.log('PAUSE! '+eggPausePerc+'%');
-            if (playerInfos.pseudo === 'Xxxxx') {
+            if (playerInfos.pseudo === 'Payall') {
                 warning('Nouvelle pause','Check '+eggPausePerc+'% réussi après la chute de 0 oeuf ('+noEggDrop+'%)');
             }
         }
@@ -491,7 +492,7 @@ function dropEgg(alienUnit,theArea) {
         if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) >= 1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;
             console.log('PAUSE! '+playerInfos.eggsKilled+' eggs killed');
-            if (playerInfos.pseudo === 'Xxxxx') {
+            if (playerInfos.pseudo === 'Payall') {
                 warning('Nouvelle pause',playerInfos.eggsKilled+' oeufs tués.');
             }
         }
