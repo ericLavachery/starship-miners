@@ -12,7 +12,7 @@ function transInfos(bat,batType,isCharged) {
         apCost = embarqCost[0];
         if (!isCharged) {
             // Le bataillon actif n'a pas de bataillon embarqué
-            let resLoad = checkResLoad(selectedBat);
+            let resLoad = checkResLoad(bat);
             if (resLoad >= 1 && transBatType.skills.includes('transorbital')) {
                 // Le bataillon actif transporte des ressources
                 // Embarquement dans un Lander (Jeter les ressources ou ne pas embarquer)
@@ -253,7 +253,7 @@ function checkTransportId(myBat,myBatType) {
     let myBatWeight = calcVolume(myBat,myBatType);
     let tracking;
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone" && bat.tileId == myBat.tileId) {
+        if (bat.loc === "zone" && bat.tileId === myBat.tileId) {
             batType = getBatType(bat);
             if (batType.transMaxSize >= myBatType.size) {
                 tracking = checkTracking(bat);
@@ -406,6 +406,78 @@ function embarquement(transId,discardRes) {
     showTileInfos(selectedBat.tileId);
     selectMode();
 };
+
+function jumpInTrans() {
+    if (Object.keys(selectedBat).length >= 1) {
+        let isCharged = checkCharged(selectedBat,'trans');
+        if (!isCharged && selectedBat.apLeft > 0) {
+            let resLoad = checkResLoad(selectedBat);
+            let selectedBatVolume = calcVolume(selectedBat,selectedBatType);
+            let bestTrans = 0;
+            let transId = -1;
+            bataillons.forEach(function(bat) {
+                if (bat.loc === "zone" && selectedBat.id != bat.iId) {
+                    let batType = getBatType(bat);
+                    if (resLoad <= 0 || !batType.skills.includes('transorbital')) {
+                        if (batType.transUnits >= 1 && batType.transMaxSize >= selectedBatType.size) {
+                            let distance = calcDistance(selectedBat.tileId,bat.tileId);
+                            if (distance <= 1) {
+                                let tracking = checkTracking(bat);
+                                if (!selectedBatType.skills.includes('tracked') || !tracking) {
+                                    let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
+                                    if (selectedBatVolume <= batTransUnitsLeft) {
+                                        let thisTrans = getTransScore(bat,batType,selectedBat,selectedBatVolume,batTransUnitsLeft);
+                                        if (thisTrans > bestTrans) {
+                                            transId = bat.id;
+                                            bestTrans = thisTrans;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            if (transId >= 0) {
+                let transBat = getBatById(transId);
+                let transBatType = getBatType(transBat);
+                let embarqCost = calcEmbarqCost(batType,transBatType);
+                let apCost = embarqCost[0]+2;
+                transBat.apLeft = transBat.apLeft-embarqCost[1];
+                selectedBat.apLeft = selectedBat.apLeft-apCost;
+                loadBat(selectedBat.id,transBat.id);
+                doneAction(transBat);
+                tagDelete(selectedBat,'guet');
+                camoOut();
+                stopAutoLoad();
+                selectedBatArrayUpdate();
+                showMap(zone,true);
+                showBataillon(transBat);
+                batSelect(transBat);
+                showBatInfos(selectedBat);
+                showTileInfos(selectedBat.tileId);
+                selectMode();
+            }
+        }
+    }
+}
+
+function getTransScore(bat,batType,myBat,selectedBatVolume,batTransUnitsLeft) {
+    let score = Math.round(batTransUnitsLeft/100);
+    if (selectedBatVolume+180 <= batTransUnitsLeft) {
+        score = score+10;
+    }
+    if (selectedBatVolume+50 > batTransUnitsLeft && batType.moveCost < 90) {
+        score = score+((55+selectedBatVolume-batTransUnitsLeft)*10);
+    }
+    if (bat.army === myBat.army) {
+        score = score+1000;
+    }
+    if (batType.skills.includes('transorbital')) {
+        score = score+10000;
+    }
+    return score;
+}
 
 function debarquement(debId) {
     let debBat = getBatById(debId);

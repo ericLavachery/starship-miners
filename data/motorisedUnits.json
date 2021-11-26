@@ -3497,7 +3497,7 @@
             "power":15,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"plasma_fusil",
+            "sound":"plasma_x2",
             "ammo":["cn-proto-plasma","cn-plasma","cn-impact","cn-grapeshot","cn-plastanium","cn-uridium","cn-nanite"]
         },
         "weapon2":{

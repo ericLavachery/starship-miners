@@ -634,7 +634,7 @@
             "accuracy":30,
             "power":12,
             "aoe":"unit",
-            "sound":"plasma_fusil",
+            "sound":"plasma_x1",
             "ammo":["proto-plasma","plasma","impact","grapeshot","plastanium","uridium","nanite"]
         },
         "weapon2":{

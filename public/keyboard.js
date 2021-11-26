@@ -18,5 +18,9 @@ $(document).keypress(function(e) {
     if (e.which == 102) {
         nextBat(true,false);
     }
+    // embarq
+    if (e.which == 101) {
+        jumpInTrans();
+    }
     // alert('You pressed '+e.which);
 });
