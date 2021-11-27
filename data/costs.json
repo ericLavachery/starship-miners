@@ -932,6 +932,15 @@
         "fabTime":40
     },
     {
+        "id":264,
+        "name":"Klones",
+        "levels":{"rednecks":99,"blades":11,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Laboratoire"],
+        "compReq":{"gen":1},
+        "costs":{"Aluminium":60,"Scrap":60,"Carbone":60,"Creatite":144,"Calcium":72,"Azote":126,"Mercure":42,"Drogues":15},
+        "fabTime":40
+    },
+    {
         "id":163,
         "name":"Warclones",
         "levels":{"rednecks":99,"blades":99,"bulbos":13,"drogmulojs":11,"tiradores":99,"detruas":99,"brasier":99},

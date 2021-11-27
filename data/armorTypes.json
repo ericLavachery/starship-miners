@@ -850,6 +850,16 @@
         "costs":{"Scrap":2,"Tissus":2}
     },
     {
+        "name": "w2-pneu",
+        "cat":"equip",
+        "skills": [],
+        "info": "Fusil pneu",
+        "bldReq":["Armurerie"],
+        "compReq":{"log":1,"bal":2},
+        "factor":"crew",
+        "costs":{"Scrap":10,"Carbone":10,"Aluminium":10}
+    },
+    {
         "name": "w2-lgren",
         "cat":"equip",
         "skills": [],

@@ -1022,7 +1022,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","datt","selfbadmedic","fastguet","maycamo","strong","souschef","herofortif","herorip"],
         "mediCost":6,
-        "fuzz":0,
+        "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
     {
@@ -1195,7 +1195,7 @@
         "skills":["fouille","fortif","medic","dealer","starka","octiron","uprank","herorange","lowstress"],
         "mediCost":8,
         "maxDrug":12,
-        "fuzz":0,
+        "fuzz":0.5,
         "deathFx":"human1"
     },
     {
@@ -1258,7 +1258,7 @@
         "skills":["fouille","fortif","medic","necrocure","dealer","starka","kirin","octiron","prayer","survivor","luckyshot","nochef","lowstress","max3"],
         "mediCost":7,
         "maxDrug":18,
-        "fuzz":0,
+        "fuzz":0.5,
         "deathFx":"162157__mediapaja2009__agony"
     },
     {
@@ -1943,7 +1943,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","selfbadmedic","guerrilla","tirailleur","datt","ranger","maycamo","noblub","baddef","fastguet","uprank","heroescape"],
         "mediCost":9,
-        "fuzz":0,
+        "fuzz":0.5,
         "deathFx":"162157__mediapaja2009__agony"
     },
     {
@@ -1999,7 +1999,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","datt","inflammable","maycamo","selfbadmedic","uprank","herosalvo"],
         "mediCost":9,
-        "fuzz":0,
+        "fuzz":1,
         "deathFx":"human1"
     },
     {
@@ -2283,7 +2283,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","datt","inflammable","maycamo","selfbadmedic","strong","herotornade"],
         "mediCost":6,
-        "fuzz":0,
+        "fuzz":0.5,
         "deathFx":"219149__musability__female-wilhelm-scream-audacity"
     },
     {
@@ -2398,7 +2398,7 @@
         "skills":["fouille","fortif","datt","ravitaillement","maycamo","fastempty","fret","recupcit","conscont","nochef"],
         "maxSkill":9,
         "transRes":72,
-        "fuzz":0,
+        "fuzz":0.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
     {
@@ -2587,7 +2587,7 @@
         "skills":["fouille","fortif","datt","camo","landmine","herosalvo"],
         "mediCost":10,
         "maxSkill":4,
-        "fuzz":0,
+        "fuzz":1,
         "deathFx":"human3"
     },
     {
@@ -3377,7 +3377,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","datt","camo","selfmedic","embuscade","berserk","nofear","fly","jetpack","longshot","inflammable","baddef","oknitro","herorage","herofana","herosalvo"],
         "mediCost":12,
-        "fuzz":0,
+        "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
     {
@@ -5064,7 +5064,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","maycamo","guerrilla","tirailleur","datt","baddef","fastguet","selfbadmedic","heroescape"],
         "mediCost":10,
-        "fuzz":0,
+        "fuzz":1,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
@@ -5124,7 +5124,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","datt","maycamo","selfbadmedic","uprank","herosalvo"],
         "mediCost":9,
-        "fuzz":0,
+        "fuzz":0.5,
         "deathFx":"human1"
     },
     {
@@ -5345,7 +5345,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","datt","selfmedic","leader","survivor","camo","defense","guerrilla","embuscade","herokill"],
         "mediCost":5,
-        "fuzz":0,
+        "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
     {
@@ -5634,6 +5634,63 @@
         "maxVeg":3,
         "skills":["fouille","fortif","datt","clone","nodeathcount","lowstress"],
         "fuzz":1,
+        "deathFx":"13797__sweetneo85__wilhelm"
+    },
+    {
+        "id":264,
+        "name":"Klones",
+        "pic":"klone",
+        "cat":"infantry",
+        "kind":"zero-genetique",
+        "squads":6,
+        "squadSize":10,
+        "crew":1,
+        "hp":5,
+        "armor":0,
+        "size":3,
+        "volume":0.9,
+        "stealth":6,
+        "speed":0,
+        "ap":14,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Hache",
+            "cost":2,
+            "range":0,
+            "isMelee":true,
+            "isShort":true,
+            "rof":10,
+            "accuracy":19,
+            "dca":0.85,
+            "power":6,
+            "armors":0.75,
+            "aoe":"unit",
+            "sound":"axe_x2",
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+        },
+        "weapon2":{
+            "name":"Fusil pneu",
+            "cost":3,
+            "range":1,
+            "elevation":1,
+            "kit":true,
+            "noise":1,
+            "rof":15,
+            "accuracy":27,
+            "power":7,
+            "armors":1.2,
+            "aoe":"unit",
+            "sound":"fpneu_x3",
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze","pn-flechette"]
+        },
+        "equip":["aucun","e-flash","e-camo","w2-pneu"],
+        "log3eq":"chargeur2",
+        "moveCost":3,
+        "maxFlood":3,
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["fouille","fortif","maycamo","datt","clone","nodeathcount","lowstress","kitimage"],
+        "fuzz":0,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
     {

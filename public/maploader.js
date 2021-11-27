@@ -249,7 +249,7 @@ function showRes(tileId) {
 
 function getBatPic(bat,batType) {
     let batPic = batType.pic;
-    if (batType.skills.includes('kitimage') && bat.eq.includes('kit-')) {
+    if (batType.skills.includes('kitimage') && (bat.eq.includes('kit-') || bat.eq.includes('w2-'))) {
         batPic = batPic+'2'
     }
     if (batType.skills.includes('garde') && bat.eq === 'e-phare') {
