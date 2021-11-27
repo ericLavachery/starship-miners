@@ -641,7 +641,6 @@
             "name":"Canon laser",
             "cost":6,
             "range":6,
-            "noMelee":true,
             "rof":12,
             "accuracy":50,
             "power":16,

@@ -262,12 +262,18 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
             }
         });
     }
-    if (true) {
+    if (selectedBatType.cat === cat || (selectedBatType.cat === 'devices' && cat === 'buildings') || (selectedBatType.cat === 'devices' && cat === 'vehicles')) {
+        catOK = true;
+    } else if (cat === 'any') {
+        catOK = true;
+    } else {
+        catOK = false;
+    }
+    if (catOK) {
         // SELF
         batUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
         if (cat === 'infantry') {
             // MEDIC (SELF)
-            catOK = true;
             if (selectedBat.tags.includes('necro') && playerInfos.comp.med < 3 && !selectedBatType.skills.includes('necrocure') && catOK) {
                 catOK = false;
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">soins inefficaces<br></span>');

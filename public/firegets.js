@@ -145,12 +145,12 @@ function isHit(accuracy,minAccu,weapon,attBat,attBatType,defBat,defBatType,steal
         prec = minAccu;
     }
     // tir ciblé
-    if (attBat.tags.includes('vise') && weapon.isPrec) {
+    if (attBat.tags.includes('vise') && weapon.isPrec && attBat.id === selectedBat.id) {
         let tcBonus = calcCibleBonus(attBatType);
         prec = Math.round(prec*tcBonus.prec);
     }
     // double attaque
-    if (attBat.tags.includes('datt') && !weapon.isPrec && !weapon.isBow && !weapon.noBis && !weapon.noDatt) {
+    if (attBat.tags.includes('datt') && !weapon.isPrec && !weapon.isBow && !weapon.noBis && !weapon.noDatt && attBat.id === selectedBat.id) {
         let dattSize = Math.round(Math.sqrt(defBatType.size));
         if (dattSize > 5) {
             dattSize = 5;
@@ -164,7 +164,7 @@ function isHit(accuracy,minAccu,weapon,attBat,attBatType,defBat,defBatType,steal
         hitChance = Math.round(Math.sqrt(10)*prec);
     }
     // bonus général
-    if (attBat.tags.includes('datt')) {
+    if (attBat.tags.includes('datt') && attBat.id === selectedBat.id) {
         hitChance = hitChance+Math.floor(hitBase/2);
         if (hitChance < Math.ceil(defBatType.size/2)) {
             hitChance = Math.ceil(defBatType.size/2);
