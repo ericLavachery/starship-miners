@@ -347,37 +347,38 @@ function batOffsets(tileId) {
 };
 
 function batUnstack() {
-    // return selectedBat to start position if stacked on another unit
+    // return selectedBat to start position if stacked on another unit (or embark)
     let stack = false;
     let ownTransHere = false;
     let transId = -1;
     let myBatWeight = calcVolume(selectedBat,selectedBatType);
+    let isCharged = checkCharged(selectedBat,'trans');
     bataillons.forEach(function(bat) {
         if (bat.tileId === selectedBat.tileId && bat.loc === "zone" && bat.id != selectedBat.id) {
             stack = true;
-            let batType = getBatType(bat);
-            if (batType.transMaxSize >= selectedBatType.size) {
-                let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
-                if (myBatWeight <= batTransUnitsLeft) {
-                    ownTransHere = true;
-                    transId = bat.id;
+            if (!isCharged) {
+                let batType = getBatType(bat);
+                if (batType.transMaxSize >= selectedBatType.size) {
+                    let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
+                    if (myBatWeight <= batTransUnitsLeft) {
+                        ownTransHere = true;
+                        transId = bat.id;
+                    }
                 }
             }
         }
     });
     if (stack) {
         if (ownTransHere) {
-            embarquement(transId,false);
+            let resLoad = checkResLoad(selectedBat);
+            let transBat = getBatById(transId);
+            let transBatType = getBatType(transBat);
+            if (resLoad >= 1 && transBatType.skills.includes('transorbital')) {
+                embarquement(transId,true);
+            } else {
+                embarquement(transId,false);
+            }
         } else {
-            // if (selectedBat.salvoLeft < selectedBatType.maxSalvo) {
-            //     // le bataillon a tiré ce tour ci : pénalité
-            //     if (!playerInfos.onShip) {
-            //         selectedBat.apLeft = 0-selectedUnit.ap;
-            //     }
-            // } else {
-            //     // le bataillon n'a pas tiré ce tour ci : regagne ses AP
-            //     selectedBat.apLeft = selectedBat.oldapLeft;
-            // }
             selectedBat.apLeft = selectedBat.oldapLeft;
             moveSelectedBat(selectedBat.oldTileId,true,false);
             console.log('unstack');

@@ -407,12 +407,12 @@ function batInfos(bat,batType,pop) {
         } else {
             $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/</span><br>');
         }
-        if (batType.cat != 'buildings' && batType.cat != 'devices' && !batType.skills.includes('transorbital')) {
-            let nearLander = nearAnyLander(bat);
-            if (resMax > restSpace && nearLander) {
-                $('#'+bodyPlace).append('<span class="paramName or">Embarquement Lander</span><span class="paramIcon"></span><span class="paramValue or">Impossible</span><br>');
-            }
-        }
+        // if (batType.cat != 'buildings' && batType.cat != 'devices' && !batType.skills.includes('transorbital')) {
+        //     let nearLander = nearAnyLander(bat);
+        //     if (resMax > restSpace && nearLander) {
+        //         $('#'+bodyPlace).append('<span class="paramName or">Embarquement Lander</span><span class="paramIcon"></span><span class="paramValue or">Impossible</span><br>');
+        //     }
+        // }
     }
     if (batType.skills.includes('reserve') || batType.skills.includes('transorbital')) {
         $('#'+bodyPlace).append('<span class="paramName cy">Réserve</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');

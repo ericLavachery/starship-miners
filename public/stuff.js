@@ -344,6 +344,7 @@ function nearWhat(myBat,myBatType) {
     near.schef = false;
     near.doxey = false;
     near.loader = false;
+    near.lander = false;
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         if (bat.loc === "zone") {
@@ -352,6 +353,13 @@ function nearWhat(myBat,myBatType) {
                     if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
                         near.caserne = true;
                     }
+                }
+            }
+        }
+        if (bat.loc === "zone" && bat.id != myBat.id) {
+            if (batType.skills.includes('transorbital')) {
+                if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
+                    near.lander = true;
                 }
             }
         }

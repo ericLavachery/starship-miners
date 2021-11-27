@@ -14,10 +14,9 @@ function transInfos(bat,batType,isCharged) {
             // Le bataillon actif n'a pas de bataillon embarqué
             let resLoad = checkResLoad(bat);
             if (resLoad >= 1 && transBatType.skills.includes('transorbital')) {
-                // Le bataillon actif transporte des ressources
-                // Embarquement dans un Lander (Jeter les ressources ou ne pas embarquer)
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer et jeter les ressources (Pas d\'embarquement si votre bataillon a des ressources embarquées)" class="boutonRouge skillButtons" onclick="embarquement('+transId+',true)"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer et jeter</h4></span>');
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ne pas embarquer (Pas d\'embarquement si votre bataillon a des ressources embarquées)" class="boutonRouge skillButtons" onclick="noEmbarq()"><i class="fas fa-truck"></i> <span class="small">0</span></button>&nbsp; Ne pas embarquer</h4></span>');
+                // Le bataillon actif transporte des ressources et veut embarquer dans un lander
+                // Embarquement dans un Lander (avec les ressources)
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer dans '+transBat.type+'" class="boutonMarine skillButtons" onclick="embarquement('+transId+',true)"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
             } else {
                 // Embarquement OK (Soit pas de ressources, soit pas dans un Lander)
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer dans '+transBat.type+'" class="boutonMarine skillButtons" onclick="embarquement('+transId+',false)"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
@@ -74,6 +73,9 @@ function unloadInfos(myBat,myBatUnitType) {
     if (myBat.transIds != undefined) {
         if (myBat.transIds.length >= 1) {
             $('#unitInfos').append('<hr>');
+            if (!myBatUnitType.skills.includes('transorbital') && nearAnyLander(myBat)) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transférer tous les bataillons dans le lander" class="boutonMarine bigButtons" onclick="unloadInLander()"><i class="fas fa-truck"></i> <i class="fas fa-arrow-right"></i> <i class="fas fa-space-shuttle"></i></button></h4></span>');
+            }
             let apCost = 0;
             let sortedBats = bataillons.slice();
             sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'id'),'type'),'army');
@@ -137,6 +139,38 @@ function unloadInfos(myBat,myBatUnitType) {
             });
         }
     }
+};
+
+function unloadInLander() {
+    let landerId = -1;
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (bat.loc === "zone" && bat.id != selectedBat.id) {
+            if (batType.skills.includes('transorbital')) {
+                if (selectedBat.tileId === bat.tileId+1 || selectedBat.tileId === bat.tileId-1 || selectedBat.tileId === bat.tileId-mapSize || selectedBat.tileId === bat.tileId-mapSize+1 || selectedBat.tileId === bat.tileId-mapSize-1 || selectedBat.tileId === bat.tileId+mapSize || selectedBat.tileId === bat.tileId+mapSize+1 || selectedBat.tileId === bat.tileId+mapSize-1) {
+                    landerId = bat.id;
+                }
+            }
+        }
+    });
+    if (landerId >= 0) {
+        landerBat = getBatById(landerId);
+        landerBatType = getBatType(landerBat);
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "trans" && bat.locId === selectedBat.id) {
+                batType = getBatType(bat);
+                if (batType.moveCost < 90) {
+                    let embarqCost = calcEmbarqCost(batType,landerBatType);
+                    let apCost = embarqCost[0]+3;
+                    bat.apLeft = bat.apLeft-apCost;
+                    loadBat(bat.id,landerId,selectedBat.id);
+                }
+            }
+        });
+    }
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+    showMap(zone,false);
 };
 
 function checkMayOut(batType) {
@@ -383,7 +417,7 @@ function ramassage(underId) {
     showTileInfos(selectedBat.tileId);
 };
 
-function embarquement(transId,discardRes) {
+function embarquement(transId,withRes) {
     let transBat = getBatById(transId);
     let transBatType = getBatType(transBat);
     if (!playerInfos.onShip) {
@@ -391,8 +425,8 @@ function embarquement(transId,discardRes) {
         transBat.apLeft = transBat.apLeft-embarqCost[1];
         selectedBat.apLeft = selectedBat.apLeft-embarqCost[0];
     }
-    if (discardRes) {
-        selectedBat.transRes = {};
+    if (withRes) {
+        resTransfert(transBat);
     }
     loadBat(selectedBat.id,transBat.id);
     doneAction(transBat);
@@ -405,6 +439,21 @@ function embarquement(transId,discardRes) {
     showBatInfos(selectedBat);
     showTileInfos(selectedBat.tileId);
     selectMode();
+};
+
+function resTransfert(transBat) {
+    Object.entries(selectedBat.transRes).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        if (value >= 1) {
+            if (transBat.transRes[key] === undefined) {
+                transBat.transRes[key] = value;
+            } else {
+                transBat.transRes[key] = transBat.transRes[key]+value;
+            }
+        }
+        delete selectedBat.transRes[key];
+    });
 };
 
 function jumpInTrans() {
