@@ -3145,7 +3145,7 @@
             "isPrec":true,
             "rof":12,
             "accuracy":50,
-            "power":9,
+            "power":8,
             "aoe":"unit",
             "sound":"laser_fusil",
             "ammo":["laser","laser-g2"]

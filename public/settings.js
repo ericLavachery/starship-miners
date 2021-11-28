@@ -175,7 +175,7 @@ let prodVM = 1.333 // prod/1.33
 let gangsBonus = false;
 let sondeCount = 'cy';
 let homeCount = 'cy';
-let apoCount = 500;
+let apoCount = 435;
 let stressLevels = [5,15,35,100]; // stress,freeze,fear,terror
 // ALIENS
 let isFFW = false;
