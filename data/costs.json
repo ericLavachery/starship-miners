@@ -2406,7 +2406,7 @@
     {
         "id":200,
         "name":"Pilône",
-        "levels":{"rednecks":18,"blades":18,"bulbos":18,"drogmulojs":18,"tiradores":18,"detruas":18,"brasier":18},
+        "levels":{"rednecks":13,"blades":13,"bulbos":13,"drogmulojs":13,"tiradores":13,"detruas":13,"brasier":13},
         "bldReq":["Dôme"],
         "upkeep":{"Energie":20},
         "costs":{"Compo1":60,"Compo2":165,"Compo3":110,"Eau":12,"Energie":2500,"Carbone":400,"Titane":150,"Rhodium":500,"Cuivre":150,"Platine":200,"Bore":1000,"Plutonium":500,"Uranium":250,"Oxygène":250,"Azote":900,"Electros":200,"Batteries":200},

@@ -482,12 +482,6 @@ function dropEgg(alienUnit,theArea) {
         }
         if (alienUnit.includes('Oeuf') || alienUnit === 'Coque' || alienUnit === 'Cocon') {
             eggDropCount = eggDropCount+1;
-            // if (alienUnit === 'Oeuf' || alienUnit === 'Coque' || alienUnit === 'Cocon') {
-            //     eggsNum++;
-            // }
-            // if (alienUnit === 'Oeuf voilé' && playerInfos.comp.det >= 3) {
-            //     eggsNum++;
-            // }
         }
         if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) >= 1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;
@@ -507,12 +501,122 @@ function hasAlien(unitName) {
         }
     });
     return youHaveIt;
-}
+};
+
+function checkPiloneTiles() {
+    let piloneTiles = [];
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'zone') {
+            if (bat.type === 'Pilône') {
+                let thisTile = bat.tileId;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-1;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+1;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-1-mapSize;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+1-mapSize;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-1+mapSize;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+1+mapSize;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-mapSize-2;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-mapSize-1;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-mapSize;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-mapSize+1;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-mapSize+2;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+mapSize-2;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+mapSize-1;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+mapSize;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+mapSize+1;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+mapSize+2;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+2;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize+2;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+2;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-2;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-2;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize-2;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-mapSize-mapSize-3;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-mapSize-mapSize-2;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-mapSize-mapSize-1;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-mapSize-mapSize;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-mapSize-mapSize+1;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-mapSize-mapSize+2;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-mapSize-mapSize+3;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+mapSize+mapSize-3;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+mapSize+mapSize-2;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+mapSize+mapSize-1;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+mapSize+mapSize;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+mapSize+mapSize+1;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+mapSize+mapSize+2;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+mapSize+mapSize+3;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+mapSize-3;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize-3;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-3;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-3;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-mapSize-3;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+mapSize+3;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+mapSize+3;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId+3;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize+3;
+                piloneTiles.push(thisTile);
+                thisTile = bat.tileId-mapSize-mapSize+3;
+                piloneTiles.push(thisTile);
+            }
+        }
+    });
+    return piloneTiles;
+};
 
 function eggDropTile(eggName,theArea) {
     let theTile = -1;
     let area = 'any';
     let targetTile = -1;
+    let piloneTiles = checkPiloneTiles();
     if (theArea != 'none') {
         area = theArea;
     } else {
@@ -539,7 +643,7 @@ function eggDropTile(eggName,theArea) {
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
                 if (tile.x >= 2 && tile.x <= 59 && tile.y >= 2 && tile.y <= 59) {
-                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
                 }
@@ -591,7 +695,7 @@ function eggDropTile(eggName,theArea) {
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
                 if (tile.x < 15 || tile.x > 45 || tile.y < 15 || tile.y > 45) {
-                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
                 }
@@ -705,7 +809,7 @@ function eggDropTile(eggName,theArea) {
             if (theTile < 0) {
                 distance = calcDistance(tile.id,targetTile);
                 if (distance === 2 || distance === 3) {
-                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
                 }
@@ -716,6 +820,18 @@ function eggDropTile(eggName,theArea) {
                 if (theTile < 0) {
                     distance = calcDistance(tile.id,targetTile);
                     if (distance === 4 || distance === 5) {
+                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                            theTile = tile.id;
+                        }
+                    }
+                }
+            });
+        }
+        if (theTile < 0) {
+            shufZone.forEach(function(tile) {
+                if (theTile < 0) {
+                    distance = calcDistance(tile.id,targetTile);
+                    if (distance === 2 || distance === 3 || distance === 4 || distance === 5) {
                         if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                             theTile = tile.id;
                         }
