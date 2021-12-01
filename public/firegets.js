@@ -623,7 +623,8 @@ function calcDamage(weapon,power,armor,defBat) {
             }
         }
     }
-    let modifiedArmor = Math.round(armor*armorModifier);
+    // let modifiedArmor = Math.round(armor*armorModifier);
+    let modifiedArmor = getModifiedArmor(armor,armorModifier);
     let powerDice;
     if (power >= 3) {
         let powerDiceMin = Math.round(power/2.5);
@@ -674,6 +675,55 @@ function calcDamage(weapon,power,armor,defBat) {
         }
     }
     return calculatedDmg;
+};
+
+function getModifiedArmor(armor,armorModifier) {
+    let armorRest = armor;
+    let adjMod = armorModifier;
+    let modifiedArmor = 0;
+    if (armorRest >= 10 && adjMod < 1) {
+        modifiedArmor = modifiedArmor+(10*adjMod);
+        armorRest = armorRest-10;
+        adjMod = adjMod+armorModifier;
+        if (adjMod > 1) {
+            adjMod = 1;
+        }
+        if (armorRest >= 10 && adjMod < 1) {
+            modifiedArmor = modifiedArmor+(10*adjMod);
+            armorRest = armorRest-10;
+            adjMod = adjMod+armorModifier;
+            if (adjMod > 1) {
+                adjMod = 1;
+            }
+            if (armorRest >= 10 && adjMod < 1) {
+                modifiedArmor = modifiedArmor+(10*adjMod);
+                armorRest = armorRest-10;
+                adjMod = adjMod+armorModifier;
+                if (adjMod > 1) {
+                    adjMod = 1;
+                }
+                if (armorRest >= 10 && adjMod < 1) {
+                    modifiedArmor = modifiedArmor+(10*adjMod);
+                    armorRest = armorRest-10;
+                    adjMod = adjMod+armorModifier;
+                    if (adjMod > 1) {
+                        adjMod = 1;
+                    }
+                } else {
+                    modifiedArmor = modifiedArmor+(armorRest*adjMod);
+                }
+            } else {
+                modifiedArmor = modifiedArmor+(armorRest*adjMod);
+            }
+        } else {
+            modifiedArmor = modifiedArmor+(armorRest*adjMod);
+        }
+    } else {
+        modifiedArmor = modifiedArmor+(armorRest*adjMod);
+    }
+    modifiedArmor = Math.round(modifiedArmor);
+    console.log('Modified Armor = '+modifiedArmor);
+    return modifiedArmor;
 };
 
 function checkRealm() {

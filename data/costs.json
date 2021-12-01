@@ -918,7 +918,7 @@
         "compReq":{"robo":1},
         "compHardReq":{"explo":1,"bal":2},
         "costs":{"Fer":84,"Bois":48,"Carbone":24,"Moteurs":120,"Titane":270,"Tungstène":60,"Electros":96,"Batteries":96,"Cuivre":58,"Silicium":72},
-        "deploy":{"Energie":120},
+        "deploy":{"Energie":120,"Electros":16,"Batteries":8},
         "fabTime":70,
         "inRuin":1
     },
@@ -929,15 +929,6 @@
         "bldReq":["Laboratoire"],
         "compReq":{"gen":1},
         "costs":{"Fer":60,"Scrap":60,"Creatite":144,"Calcium":72,"Azote":126,"Mercure":42,"Drogues":15},
-        "fabTime":40
-    },
-    {
-        "id":264,
-        "name":"Klones",
-        "levels":{"rednecks":99,"blades":11,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Laboratoire"],
-        "compReq":{"gen":1},
-        "costs":{"Aluminium":60,"Scrap":60,"Carbone":60,"Creatite":144,"Calcium":72,"Azote":126,"Mercure":42,"Drogues":15},
         "fabTime":40
     },
     {
@@ -975,7 +966,7 @@
         "bldReq":["Armurerie","Garage"],
         "compReq":{"tank":1,"explo":1,"bal":2},
         "costs":{"Fer":220,"Scrap":215,"Carbone":75,"Aluminium":150,"Moteurs":45,"Tungstène":90,"Cuivre":15,"Batteries":25,"Compo2":60,"Cobalt":30,"Hélium":60,"Explosifs":10,"Fuel":40},
-        "deploy":{"Fuel":70},
+        "deploy":{"Fuel":70,"Electros":8,"Batteries":4},
         "fabTime":60,
         "inRuin":2
     },
@@ -2257,7 +2248,7 @@
         "bldCost":"Poste radio",
         "upkeep":{"Energie":7},
         "prod":{"Scrap":1},
-        "costs":{"Compo1":240,"Compo2":135,"Compo3":90,"Eau":36,"Energie":400,"Cobalt":750,"Cuivre":3000,"Platine":500,"Silicium":750,"Oxygène":300,"Hélium":500,"Electros":600,"Batteries":100},
+        "costs":{"Compo1":240,"Compo2":135,"Compo3":90,"Eau":36,"Energie":400,"Cobalt":750,"Cuivre":3000,"Platine":500,"Silicium":750,"Oxygène":300,"Hélium":500,"Electros":600,"Batteries":150},
         "fabTime":150,
         "slots":2
     },

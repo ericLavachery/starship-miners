@@ -881,7 +881,7 @@ function checkEffSoins(bat) {
         failDice = 0;
     }
     if (batType.skills.includes('cyber')) {
-        fail = Math.round(fail/3);
+        failDice = Math.round(failDice/3);
     }
     let effSoins = 100-Math.round(failDice*100/75);
     return effSoins;

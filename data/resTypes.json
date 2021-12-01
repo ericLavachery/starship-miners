@@ -552,7 +552,7 @@
         "level": 3,
         "rarity": 10,
         "cat": "blue-sky",
-        "batch": 8,
+        "batch": 6,
         "energie": 45,
         "equiv": 2,
         "planets":{"Dom":1,"Sarak":2,"Gehenna":0,"Kzin":0,"Horst":0}
@@ -564,10 +564,10 @@
         "level": 3,
         "rarity": 8,
         "cat": "blue-sky",
-        "batch": 7,
+        "batch": 6,
         "energie": -1,
         "equiv": 2,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":3,"Kzin":0,"Horst":0}
+        "planets":{"Dom":0.5,"Sarak":1,"Gehenna":3,"Kzin":0,"Horst":0}
     },
     {
         "id": 44,
