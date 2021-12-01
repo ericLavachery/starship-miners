@@ -516,14 +516,6 @@ function nextTurnEnd() {
                     checkDeath(bat,batType);
                 }
             }
-            // fin clones
-            // if (batType.skills.includes('clone')) {
-            //     if (bat.xp >= 150) {
-            //         batDeathEffect(bat,true,'Bataillon détruit',bat.type+' expiré.');
-            //         bat.squadsLeft = 0;
-            //         checkDeath(bat,batType);
-            //     }
-            // }
             // fin coffres
             if (batType.name === 'Coffres' && bat.tags.includes('go')) {
                 resSpace = checkResSpace(bat);

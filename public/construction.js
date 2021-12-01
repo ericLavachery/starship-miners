@@ -178,7 +178,7 @@ function bfconst(cat,triche,upgrade,retour) {
             // console.log(unitMergedCosts);
             // console.log(costOK);
             let unitCits = unit.squads*unit.crew*unit.squadSize;
-            if (unit.skills.includes('clone')) {
+            if (unit.skills.includes('clone') || unit.skills.includes('dog')) {
                 unitCits = 0;
             }
             let citAlert = '';

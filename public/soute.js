@@ -928,7 +928,7 @@ function missionResUnit(unitId) {
     moveResCost(unit.costs,souteId,slId,1);
     moveResCost(unit.deploy,souteId,slId,1);
     let reqCit = unit.squads*unit.squadSize*unit.crew;
-    if (unit.skills.includes('clone')) {
+    if (unit.skills.includes('clone') || unit.skills.includes('dog')) {
         reqCit = 0;
     }
     let citId = 126;

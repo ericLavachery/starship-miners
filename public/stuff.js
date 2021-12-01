@@ -883,25 +883,25 @@ function getSpaceBatById(batId) {
 
 function killBatList() {
     bataillons.slice().reverse().forEach(function(bat,index,object) {
-      if (deadBatsList.includes(bat.id)) {
-        bataillons.splice(object.length-1-index,1);
-      }
+        if (deadBatsList.includes(bat.id)) {
+            bataillons.splice(object.length-1-index,1);
+        }
     });
 };
 
 function killAlienList() {
     aliens.slice().reverse().forEach(function(bat,index,object) {
-      if (deadAliensList.includes(bat.id)) {
-        aliens.splice(object.length-1-index,1);
-      }
+        if (deadAliensList.includes(bat.id)) {
+            aliens.splice(object.length-1-index,1);
+        }
     });
     deadAliensList = [];
 };
 
 function killSpaceBatList() {
     batsInSpace.slice().reverse().forEach(function(bat,index,object) {
-      if (deadBatsList.includes(bat.id)) {
-        batsInSpace.splice(object.length-1-index,1);
-      }
+        if (deadBatsList.includes(bat.id)) {
+            batsInSpace.splice(object.length-1-index,1);
+        }
     });
 };

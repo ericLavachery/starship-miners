@@ -76,7 +76,7 @@ function batInfos(bat,batType,pop) {
     let grade = '';
     if (batType.skills.includes('robot')) {
         grade = 'Robot';
-    } else if (batType.skills.includes('clone')) {
+    } else if (batType.skills.includes('clone') || batType.skills.includes('dog')) {
         grade = 'Clone';
     } else if (batType.crew === 0) {
         grade = batType.name;

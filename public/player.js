@@ -1165,7 +1165,7 @@ function fillLanderWithUnit(fillUnitId) {
     addCost(fillUnit.costs,1);
     addCost(fillUnit.deploy,1);
     let reqCit = fillUnit.squads*fillUnit.squadSize*fillUnit.crew;
-    if (fillUnit.skills.includes('clone')) {
+    if (fillUnit.skills.includes('clone') || fillUnit.skills.includes('dog')) {
         reqCit = 0;
     }
     let citId = 126;
@@ -1242,7 +1242,7 @@ function calcStartRes() {
                 playerInfos.startRes['Citoyens'] = playerInfos.startRes['Citoyens']+bat.citoyens;
             } else {
                 let unitCits = batType.squads*batType.crew*batType.squadSize;
-                if (batType.skills.includes('clone')) {
+                if (batType.skills.includes('clone') || batType.skills.includes('dog')) {
                     unitCits = 0;
                 }
                 playerInfos.startRes['Citoyens'] = playerInfos.startRes['Citoyens']+unitCits;
@@ -1332,7 +1332,7 @@ function calcEndRes(onlyLanders) {
                     playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+bat.citoyens;
                 } else {
                     let unitCits = batType.squads*batType.crew*batType.squadSize;
-                    if (batType.skills.includes('clone')) {
+                    if (batType.skills.includes('clone') || batType.skills.includes('dog')) {
                         unitCits = 0;
                     }
                     playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+unitCits;

@@ -393,10 +393,10 @@ function batDeath(bat,count) {
         if (count) {
             if (!batType.skills.includes('nodeathcount')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
+                playMusic('rip',false);
             }
             transDestroy(deadId,tileId);
             saveCrew(batType,deadId,tileId);
-            playMusic('rip',false);
         }
         batIndex = batList.findIndex((obj => obj.id == bat.id));
         batList.splice(batIndex,1);
@@ -470,7 +470,8 @@ function batDeathEffect(bat,quiet,title,body) {
     }
     if (bat.team != 'aliens') {
         let batType = getBatType(bat);
-        if (batType.crew >= 1 && !batType.skills.includes('robot') && !batType.skills.includes('clone') && !batType.skills.includes('brigands') && !bat.tags.includes('outsider') && batType.name != 'Citoyens' && batType.name != 'Criminels') {
+        addBodies(bat,batType,0);
+        if (batType.crew >= 1 && !batType.skills.includes('robot') && !batType.skills.includes('clone') || !batType.skills.includes('dog') && !batType.skills.includes('brigands') && !bat.tags.includes('outsider') && batType.name != 'Citoyens' && batType.name != 'Criminels') {
             deathStress();
         }
     }
@@ -478,6 +479,24 @@ function batDeathEffect(bat,quiet,title,body) {
         $('#unitInfos').empty();
         $("#unitInfos").css("display","none");
     }
+};
+
+function addBodies(bat,batType,cits) {
+    let unitCits = 0;
+    if (cits >= 1) {
+        unitCits = cits;
+    } else {
+        unitCits = batType.squads*batType.crew*batType.squadSize;
+        if (batType.skills.includes('clone') || batType.skills.includes('dog')) {
+            unitCits = 0;
+        }
+        if (batType.id === 126 || batType.id === 225) {
+            unitCits = batType.citoyens;
+        }
+    }
+    let bodyFactor = 50+(playerInfos.comp.gen*20)+(playerInfos.comp.med*5);
+    let bodyRecup = Math.ceil(unitCits*bodyFactor/100);
+    resAdd('Corps',bodyRecup);
 };
 
 function newAlienKilled(batType,tileId) {
@@ -555,10 +574,7 @@ function transDestroy(deadId,tileId) {
     });
     let crashEscapeTile = -1;
     crashBats.forEach(function(bat) {
-        crashEscapeTile = -1;
-        if (rand.rand(1,3+playerInfos.comp.train+playerInfos.comp.log) != 1) {
-            crashEscapeTile = getCrashEscapeTile(tileId);
-        }
+        crashEscapeTile = getCrashEscapeTile(tileId);
         if (crashEscapeTile >= 0) {
             bat.loc = 'zone';
             bat.tileId = crashEscapeTile;
@@ -566,6 +582,8 @@ function transDestroy(deadId,tileId) {
             savedBats++;
         } else {
             let batType = getBatType(bat);
+            addBodies(bat,batType,0);
+            warning('RIP',batType.name+' sont morts dans l\'accident');
             batIndex = bataillons.findIndex((obj => obj.id == bat.id));
             bataillons.splice(batIndex,1);
             if (!batType.skills.includes('nodeathcount')) {
@@ -591,6 +609,16 @@ function getCrashEscapeTile(tileId) {
             }
         }
     });
+    if (escTile < 0) {
+        shufZone.forEach(function(tile) {
+            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                distance = calcDistance(tile.id,tileId);
+                if (distance <= 2) {
+                    escTile = tile.id;
+                }
+            }
+        });
+    }
     return escTile;
 };
 

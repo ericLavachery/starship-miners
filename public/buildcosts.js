@@ -18,8 +18,6 @@ function voirReserve() {
     let dispoRes;
     let minedRes;
     let resIcon;
-    // let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'rarity'),'cat'),'name');
-    // sortedResTypes.reverse();
     let sortedResTypes = _.sortBy(resTypes,'name');
     sortedResTypes.forEach(function(res) {
         dispoRes = getDispoRes(res.name);
@@ -31,20 +29,19 @@ function voirReserve() {
         } else if (res.cat === 'alien') {
             resCol = ' gff';
         }
-        if (dispoRes >= 1) {
-            if (playerInfos.onShip && (!inSoute || souteTab != 'rez')) {
-                $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Taguer cette ressource ('+res.name+')" onclick="tagRes('+res.id+')">&uHar;&dHar;</span>');
-            } else if (playerInfos.onShip && inSoute && souteTab === 'rez' && res.cat != 'alien' && dispoRes >= 50) {
-                $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',50)">50 >>></span>');
-            } else if (res.cat === 'alien' || minedRes <= 0) {
-                $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span>');
-            } else {
-                $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span>');
-            }
-            playerInfos.reserve[res.name] = dispoRes;
-        } else {
-            playerInfos.reserve[res.name] = 0;
+        if (dispoRes < 0) {
+            dispoRes = 0;
         }
+        if (playerInfos.onShip && (!inSoute || souteTab != 'rez')) {
+            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Taguer cette ressource ('+res.name+')" onclick="tagRes('+res.id+')">&uHar;&dHar;</span>');
+        } else if (playerInfos.onShip && inSoute && souteTab === 'rez' && res.cat != 'alien' && dispoRes >= 50) {
+            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',50)">50 >>></span>');
+        } else if (res.cat === 'alien' || minedRes <= 0) {
+            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span>');
+        } else {
+            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span>');
+        }
+        playerInfos.reserve[res.name] = dispoRes;
     });
     $('#conUnitList').append('<br><br>');
     $("#conUnitList").animate({scrollTop:0},"fast");
@@ -563,7 +560,6 @@ function checkUnitCost(batType,withDeploy) {
             let key = entry[0];
             let value = entry[1];
             let dispoRes = getDispoRes(key);
-            // console.log(key+' '+dispoRes+'/'+value);
             if (dispoRes < value) {
                 enoughRes = false;
             }
@@ -573,30 +569,13 @@ function checkUnitCost(batType,withDeploy) {
     if (!enoughCit) {
         enoughRes = false;
     }
-    // let reqCit = batType.squads*batType.squadSize*batType.crew;
-    // if (batType.skills.includes('clone')) {
-    //     reqCit = 0;
-    // }
-    // if (reqCit >= 1) {
-    //     let dispoCrim = getDispoCrim();
-    //     let dispoCit = getDispoCit();
-    //     if (batType.skills.includes('brigands')) {
-    //         if (reqCit > dispoCrim+dispoCit) {
-    //             enoughRes = false;
-    //         }
-    //     } else {
-    //         if (reqCit > dispoCit) {
-    //             enoughRes = false;
-    //         }
-    //     }
-    // }
     return enoughRes;
 };
 
 function checkCitCost(batType) {
     let enoughCit = true;
     let reqCit = batType.squads*batType.squadSize*batType.crew;
-    if (batType.skills.includes('clone')) {
+    if (batType.skills.includes('clone') || batType.skills.includes('dog')) {
         reqCit = 0;
     }
     if (reqCit >= 1) {
@@ -635,7 +614,7 @@ function payUnitCost(batType) {
     if (conselUpgrade === 'inf') {
         reqCit = 0;
     }
-    if (batType.skills.includes('clone')) {
+    if (batType.skills.includes('clone') || batType.skills.includes('dog')) {
         reqCit = 0;
     }
     console.log('reqCit='+reqCit);

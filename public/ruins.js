@@ -599,7 +599,13 @@ function checkRuinsRes(tile) {
                 thatResChance = 0;
                 thatResNum = 0;
                 resFactor = res.rarity+Math.round(zone[0].mapDiff*3);
-                if (res.name == 'Nourriture') {
+                if (res.name === 'Corps') {
+                    if (ruinsEmpty) {
+                        thatResChance = Math.ceil(resFactor*3*res.batch/3);
+                    } else {
+                        thatResChance = Math.ceil(resFactor*1*res.batch/3);
+                    }
+                } else if (res.name == 'Nourriture') {
                     if (ruinsEmpty) {
                         thatResChance = Math.ceil(resFactor*res.batch/3);
                     } else {
@@ -742,7 +748,7 @@ function checkRuinsUnit(tile) {
         if (foundUnitId >= 0) {
             let batType = getBatTypeById(foundUnitId);
             let unitCits = batType.squads*batType.crew*batType.squadSize;
-            if (!batType.skills.includes('clone')) {
+            if (!batType.skills.includes('clone') && !batType.skills.includes('dog')) {
                 playerInfos.allCits = playerInfos.allCits+unitCits;
             }
             conselTriche = true;

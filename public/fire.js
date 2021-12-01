@@ -1139,7 +1139,7 @@ function attack(melee) {
             targetBat.tags.push('lucky');
             $('#report').append('<span class="report rose">Survivant!<br></span>');
         } else {
-            if (zombifiedTiles.includes(targetBat.tileId) && !targetBat.tags.includes('zombie') && targetBatType.cat === 'infantry' && !targetBatType.skills.includes('clone') && !targetBatType.skills.includes('cyber')) {
+            if (zombifiedTiles.includes(targetBat.tileId) && !targetBat.tags.includes('zombie') && targetBatType.cat === 'infantry' && !targetBatType.skills.includes('clone') && !targetBatType.skills.includes('dog') && !targetBatType.skills.includes('cyber')) {
                 targetBat.squadsLeft = targetBatType.squads;
                 targetBat.damage = 0;
                 targetBat.xp = 150;
@@ -1854,7 +1854,7 @@ function defense(melee) {
             selectedBat.tags.push('lucky');
             $('#report').append('<span class="report rose">Survivant!<br></span>');
         } else {
-            if (zombifiedTiles.includes(selectedBat.tileId) && !selectedBat.tags.includes('zombie') && selectedBatType.cat === 'infantry' && !selectedBatType.skills.includes('clone') && !selectedBatType.skills.includes('cyber')) {
+            if (zombifiedTiles.includes(selectedBat.tileId) && !selectedBat.tags.includes('zombie') && selectedBatType.cat === 'infantry' && !selectedBatType.skills.includes('clone') && !selectedBatType.skills.includes('dog') && !selectedBatType.skills.includes('cyber')) {
                 console.log('undead');
                 selectedBat.squadsLeft = selectedBatType.squads;
                 selectedBat.damage = 0;

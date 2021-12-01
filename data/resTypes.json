@@ -291,6 +291,18 @@
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":3}
     },
     {
+        "id": 69,
+        "name": "Corps",
+        "bld": "Scrap",
+        "level": 1,
+        "rarity": 20,
+        "cat": "zero",
+        "batch": 3,
+        "energie": -1,
+        "equiv": 1,
+        "planets":{"Dom":1,"Sarak":0.5,"Gehenna":0.3,"Kzin":0.2,"Horst":0.1}
+    },
+    {
         "id": 21,
         "name": "Eau",
         "bld": "Pompe",
