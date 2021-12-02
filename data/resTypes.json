@@ -862,6 +862,17 @@
         "ctri": 5
     },
     {
+        "id": 76,
+        "name": "Viande",
+        "bld": "",
+        "level": 4,
+        "rarity": 25,
+        "cat": "transfo",
+        "batch": 4,
+        "energie": -1,
+        "equiv": 1
+    },
+    {
         "id": 65,
         "name": "Transorb",
         "bld": "",

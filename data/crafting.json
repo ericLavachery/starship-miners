@@ -729,101 +729,146 @@
     {
         "id":72,
         "result":"Nourriture",
-        "cost":{"Fruits":8},
+        "cost":{"Fruits":40},
         "compReq":{},
         "bldReq":[],
-        "batch":1,
+        "batch":5,
         "creaNum":50
     },
     {
         "id":71,
         "result":"Nourriture",
-        "cost":{"Fruits":5,"Végétaux":10,"Energie":1},
+        "cost":{"Fruits":25,"Végétaux":25,"Energie":2},
         "compReq":{},
         "bldReq":["Cantine"],
-        "batch":1,
+        "batch":5,
+        "creaNum":100
+    },
+    {
+        "id":135,
+        "result":"Nourriture",
+        "cost":{"Viande":15,"Végétaux":25,"Energie":2},
+        "compReq":{},
+        "bldReq":["Cantine"],
+        "batch":5,
+        "creaNum":100
+    },
+    {
+        "id":136,
+        "result":"Nourriture",
+        "cost":{"Fruits":10,"Viande":5,"Energie":2},
+        "compReq":{},
+        "bldReq":["Cantine"],
+        "batch":5,
         "creaNum":100
     },
     {
         "id":73,
         "result":"Nourriture",
-        "cost":{"Fruits":9,"Végétaux":15,"Energie":2},
+        "cost":{"Fruits":8,"Viande":4,"Végétaux":5,"Energie":1},
         "compReq":{"tri":1},
         "bldReq":["Cantine"],
-        "batch":3,
-        "creaNum":180
-    },
-    {
-        "id":74,
-        "result":"Nourriture",
-        "cost":{"Fruits":6,"Larvium":3,"Energie":2},
-        "compReq":{"ca":1},
-        "bldReq":["Cantine"],
-        "batch":6,
-        "creaNum":90
-    },
-    {
-        "id":75,
-        "result":"Nourriture",
-        "cost":{"Végétaux":18,"Larvium":3,"Eau":3,"Energie":2},
-        "compReq":{"ca":2,"tri":1},
-        "bldReq":["Laboratoire"],
-        "batch":9,
-        "creaNum":90
-    },
-    {
-        "id":76,
-        "result":"Nourriture",
-        "cost":{"Végétaux":18,"Swarmine":2,"Zinc":1,"Eau":3,"Energie":3},
-        "compReq":{"ca":2},
-        "bldReq":["Laboratoire"],
-        "batch":9,
-        "creaNum":90
-    },
-    {
-        "id":77,
-        "result":"Nourriture",
-        "cost":{"Fruits":6,"Huile":2,"Bugium":6,"Potassium":1,"Phosphore":1,"Energie":4},
-        "compReq":{"ca":3},
-        "bldReq":["Laboratoire"],
-        "batch":12,
-        "creaNum":120
-    },
-    {
-        "id":78,
-        "result":"Nourriture",
-        "cost":{"Fruits":3,"Creatite":2,"Chlore":1},
-        "compReq":{"ca":4,"gen":1},
-        "bldReq":["Centre de recherches"],
-        "batch":12,
-        "creaNum":180
-    },
-    {
-        "id":79,
-        "result":"Nourriture",
-        "cost":{"Végétaux":12,"Huile":1,"Aranium":4,"Chlore":1,"Zinc":1,"Energie":2},
-        "compReq":{"ca":5,"exo":1},
-        "bldReq":["Centre de recherches"],
-        "batch":12,
-        "creaNum":180
+        "batch":5,
+        "creaNum":100
     },
     {
         "id":83,
         "result":"Nourriture",
-        "cost":{"Fruits":8,"Végétaux":16,"Energie":3},
+        "cost":{"Fruits":6,"Viande":3,"Végétaux":5,"Energie":3},
         "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
-        "batch":2,
-        "creaNum":240
+        "batch":5,
+        "creaNum":250
     },
     {
         "id":84,
         "result":"Nourriture",
-        "cost":{"Fruits":10,"Végétaux":20,"Energie":5},
+        "cost":{"Fruits":5,"Viande":2,"Végétaux":5,"Energie":4},
         "compReq":{"ind":2},
         "bldReq":["Usine"],
-        "batch":3,
-        "creaNum":360
+        "batch":5,
+        "creaNum":350
+    },
+    {
+        "id":137,
+        "result":"Viande",
+        "cost":{"Corps":5,"Energie":10},
+        "compReq":{},
+        "bldReq":["Cantine"],
+        "batch":10,
+        "creaNum":50
+    },
+    {
+        "id":138,
+        "result":"Viande",
+        "cost":{"Corps":3,"Chlore":3},
+        "compReq":{},
+        "bldReq":["Laboratoire"],
+        "batch":10,
+        "creaNum":100
+    },
+    {
+        "id":139,
+        "result":"Viande",
+        "cost":{"Corps":10,"Octiron":1,"Energie":15},
+        "compReq":{},
+        "bldReq":["Laboratoire"],
+        "batch":50,
+        "creaNum":100
+    },
+    {
+        "id":74,
+        "result":"Viande",
+        "cost":{"Larvium":5,"Energie":3},
+        "compReq":{"ca":1},
+        "bldReq":["Cantine"],
+        "batch":10,
+        "creaNum":100
+    },
+    {
+        "id":75,
+        "result":"Viande",
+        "cost":{"Larvium":6,"Huile":1,"Eau":6,"Energie":4},
+        "compReq":{"ca":2},
+        "bldReq":["Laboratoire"],
+        "batch":20,
+        "creaNum":150
+    },
+    {
+        "id":76,
+        "result":"Viande",
+        "cost":{"Swarmine":15,"Drogues":5,"Eau":10,"Energie":10},
+        "compReq":{"ca":2},
+        "bldReq":["Laboratoire"],
+        "batch":20,
+        "creaNum":150
+    },
+    {
+        "id":77,
+        "result":"Viande",
+        "cost":{"Bugium":20,"Zinc":1,"Potassium":1,"Huile":2,"Energie":8},
+        "compReq":{"ca":3},
+        "bldReq":["Laboratoire"],
+        "batch":20,
+        "creaNum":150
+    },
+    {
+        "id":78,
+        "result":"Viande",
+        "cost":{"Drogues":1,"Creatite":4,"Chlore":2},
+        "compReq":{"ca":4,"gen":1},
+        "bldReq":["Centre de recherches"],
+        "batch":20,
+        "creaNum":200
+    },
+    {
+        "id":79,
+        "result":"Viande",
+        "cost":{"Huile":1,"Aranium":6,"Chlore":1,"Drogues":1,"Energie":2},
+        "compReq":{"ca":5,"exo":1},
+        "bldReq":["Centre de recherches"],
+        "batch":20,
+        "creaNum":200
     },
     {
         "id":34,

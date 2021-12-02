@@ -490,7 +490,7 @@
             "accuracy":30,
             "power":12,
             "aoe":"brochette",
-            "sound":"laser_canon_x2",
+            "sound":"laser_minicanon_x2",
             "ammo":["laser","laser-g2"],
             "maxAmmo":18,
             "ravitBld":"Générateur"
@@ -3722,7 +3722,7 @@
             "accuracy":30,
             "power":12,
             "aoe":"brochette",
-            "sound":"laser_canon_x2",
+            "sound":"laser_minicanon_x2",
             "ammo":["laser","laser-g2"],
             "maxAmmo":16,
             "ravitBld":"Générateur"

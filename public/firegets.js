@@ -495,6 +495,9 @@ function addBodies(bat,batType,cits) {
         }
     }
     let bodyFactor = 50+(playerInfos.comp.gen*20)+(playerInfos.comp.med*5);
+    if (playerInfos.gang === 'brasier') {
+        bodyFactor = bodyFactor+20;
+    }
     let bodyRecup = Math.ceil(unitCits*bodyFactor/100);
     resAdd('Corps',bodyRecup);
 };

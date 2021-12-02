@@ -539,7 +539,7 @@ function checkStressEffect(bat) {
         } else if (distress >= stressLevels[0] && nearby.two && !isChef) {
             // Stress
             bat.emo = bat.emo+1;
-            warning('Stress',bat.type+' sont apeurés',false,bat.tileId);
+            warning('Stress',bat.type+' sont stressés',false,bat.tileId);
         }
     }
 };
