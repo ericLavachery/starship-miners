@@ -703,7 +703,6 @@ function batFullInfos(bat,batType) {
     }
     $('#popbody').append('<span class="paramValue">'+allSkills+'</span>');
     $('#popbody').append('<div class="shSpace"></div>');
-
     // MINING
     if (batType.skills.includes('extraction')) {
         $('#popbody').append('<div class="shSpace"></div>');
@@ -716,6 +715,18 @@ function batFullInfos(bat,batType) {
         }
         $('#popbody').append('<div class="shSpace"></div>');
     }
+    // COSTS
+    $('#popbody').append('<div class="shSpace"></div>');
+    $('#popbody').append('<span class="blockTitle"><h4>Coûts</h4></span><br>');
+    let costString = '';
+    if (batType.costs != undefined) {
+        costString = displayCosts(batType.costs);
+    }
+    costString = costString.replace('{','');
+    costString = costString.replace('}','');
+    $('#popbody').append('<span class="paramValue">'+costString+'</span>');
+    $('#popbody').append('<div class="shSpace"></div>');
+    $('#popbody').append('<div class="shSpace"></div>');
 };
 
 function nomVisible(name) {

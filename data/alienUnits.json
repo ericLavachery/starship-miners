@@ -477,7 +477,7 @@
             "isMelee":false,
             "rof":6,
             "accuracy":28,
-            "power":25,
+            "power":30,
             "aoe":"squad",
             "sound":"squishbig",
             "ammo":["glair"]
@@ -1537,7 +1537,7 @@
             "elevation":2,
             "noFly":false,
             "isMelee":false,
-            "rof":6,
+            "rof":9,
             "accuracy":20,
             "power":30,
             "aoe":"squad",
@@ -1893,8 +1893,8 @@
             "noFly":false,
             "isMelee":false,
             "rof":8,
-            "accuracy":30,
-            "power":25,
+            "accuracy":24,
+            "power":30,
             "aoe":"squad",
             "sound":"squishbig",
             "ammo":["glair"]

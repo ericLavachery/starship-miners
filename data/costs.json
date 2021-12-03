@@ -1563,7 +1563,7 @@
         "compReq":{"aero":1},
         "compHardReq":{"energ":1},
         "costs":{"Carbone":196,"Aluminium":358,"Moteurs":90,"Titane":742,"Bore":91,"Cuivre":130,"Electros":406,"Batteries":247,"Nickel":56,"Cobalt":65,"Hélium":60,"Mercure":42,"Hydrogène":42,"Fuel":70},
-        "deploy":{"Fuel":430},
+        "deploy":{"Fuel":430,"Electros":10,"Batteries":5},
         "fabTime":130
     },
     {
@@ -1574,7 +1574,7 @@
         "compReq":{"aero":1},
         "compPass":["tiradores"],
         "costs":{"Fer":28,"Scrap":28,"Carbone":224,"Aluminium":288,"Moteurs":90,"Titane":616,"Tungstène":28,"Cuivre":110,"Electros":224,"Batteries":202,"Cobalt":30,"Hélium":60,"Plomb":42,"Soufre":42,"Fuel":70},
-        "deploy":{"Fuel":390},
+        "deploy":{"Fuel":390,"Electros":10,"Batteries":5},
         "fabTime":100
     },
     {
