@@ -421,7 +421,7 @@ function attack(melee) {
             console.log('bonus ROF embuscade');
         }
     }
-    // guerrilla
+    // tirailleur
     if (selectedBatType.skills.includes('tirailleur') && selectedBat.oldTileId != selectedBat.tileId) {
         let guerBonus = calcTiraBonus(selectedBatType);
         shots = Math.round(shots*guerBonus);
@@ -1397,15 +1397,15 @@ function defense(melee) {
             defFactor = Math.round(defFactor*1.25);
         }
     }
-    // guerrilla
-    if (selectedBatType.skills.includes('tirailleur') && selectedBat.oldTileId != selectedBat.tileId) {
-        let guerrillaDef = 10+terrain.cover+(selectedBatType.stealth/5);
-        if (selectedBatType.cat != 'aliens') {
-            guerrillaDef = guerrillaDef+(playerInfos.comp.train*2)+(playerInfos.comp.cam/2);
-        }
-        shots = Math.round(shots*9/guerrillaDef);
-        defFactor = Math.round(defFactor*9/guerrillaDef);
-    }
+    // tirailleur
+    // if (selectedBatType.skills.includes('tirailleur') && selectedBat.oldTileId != selectedBat.tileId) {
+    //     let guerrillaDef = 10+terrain.cover+(selectedBatType.stealth/5);
+    //     if (selectedBatType.cat != 'aliens') {
+    //         guerrillaDef = guerrillaDef+(playerInfos.comp.train*2)+(playerInfos.comp.cam/2);
+    //     }
+    //     shots = Math.round(shots*9/guerrillaDef);
+    //     defFactor = Math.round(defFactor*9/guerrillaDef);
+    // }
     // Defense %
     $('#report').append('<span class="report jaune">Défense '+defFactor+'%<br></span>');
     // chargeur

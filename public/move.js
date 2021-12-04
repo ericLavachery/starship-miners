@@ -27,9 +27,6 @@ function clickMove(tileId) {
     }
     if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'e-jetpack') {
         jump = true;
-        // if (!ownTransHere) {
-        //     stackOK = false;
-        // }
         distance = calcJumpDistance(selectedBat.tileId,tileId);
         let jmc = selectedBatType.moveCost;
         if (selectedBat.eq === 'e-jetpack') {
@@ -39,11 +36,6 @@ function clickMove(tileId) {
             moveOK = true;
         }
     }
-    // if (hasShot()) {
-    //     if (!ownTransHere) {
-    //         stackOK = false;
-    //     }
-    // }
     if (moveOK) {
         if (!stackOK && ownBatHere) {
             warning('Mouvement illégal:','Pas de mouvement par dessus une unité si vous avez déjà attaqué (ou utilisé une habileté).<br>Le dernier mouvement n\'a pas été éxécuté.');
@@ -173,10 +165,10 @@ function moveInfos(bat,jump) {
                 jmc = 2;
             }
             if (selectedBat.team != 'aliens' && zone[0].planet === 'Kzin') {
-                jmc = jmc*2;
+                jmc = jmc*1.5;
             }
             if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry') {
-                jmc = jmc*2;
+                jmc = jmc*1.5;
             }
             if (Math.floor(distance) <= Math.ceil(selectedBat.apLeft/jmc)) {
                 if (tile.y == myTileY && tile.x == myTileX) {
@@ -235,6 +227,12 @@ function moveSelectedBat(tileId,free,jump) {
             let jmc = selectedBatType.moveCost;
             if (selectedBat.eq === 'e-jetpack') {
                 jmc = 2;
+            }
+            if (selectedBat.team != 'aliens' && zone[0].planet === 'Kzin') {
+                jmc = jmc*1.5;
+            }
+            if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry') {
+                jmc = jmc*1.5;
             }
             apLost = Math.round(distance*jmc);
         }
@@ -560,10 +558,14 @@ function calcMoveCost(targetTileId,diag) {
         moveCost = moveCost*1.42;
     }
     if (selectedBat.team != 'aliens' && zone[0].planet === 'Kzin') {
-        moveCost = moveCost*2;
+        if (selectedBatType.cat === 'vehicles') {
+            moveCost = moveCost*1.5;
+        } else {
+            moveCost = moveCost*2;
+        }
     }
     if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry') {
-        moveCost = moveCost*2;
+        moveCost = moveCost*1.5;
     }
     if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst') {
         if (playerInfos.stList.includes(targetTileId) || playerInfos.stList.includes(selectedBat.tileId)) {

@@ -288,7 +288,7 @@
         "equiv": 1.5,
         "pter": [2,"M"],
         "rlab": 1,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":3}
+        "planets":{"Dom":1,"Sarak":1.5,"Gehenna":1,"Kzin":1.5,"Horst":3}
     },
     {
         "id": 69,
@@ -299,8 +299,7 @@
         "cat": "zero",
         "batch": 3,
         "energie": -1,
-        "equiv": 1,
-        "planets":{"Dom":1,"Sarak":0.5,"Gehenna":0.3,"Kzin":0.2,"Horst":0.1}
+        "equiv": 1
     },
     {
         "id": 21,

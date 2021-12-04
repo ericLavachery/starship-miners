@@ -2158,7 +2158,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
             brideDef = brideDef/1.5;
         }
     }
-    // guerrilla
+    // tirailleur
     if (brideDef < 1) {
         if (batType.skills.includes('tirailleur') && bat.oldTileId != bat.tileId) {
             let gmin = 0.75;

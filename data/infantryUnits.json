@@ -4692,7 +4692,7 @@
         "hp":25,
         "armor":10,
         "size":11,
-        "volume":1,
+        "volume":0.85,
         "stealth":0,
         "ap":20,
         "maxSalvo":2,

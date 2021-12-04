@@ -1981,7 +1981,13 @@ function skillsInfos(bat,batType,near) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-truck-loading"></i> <span class="small">'+apCost+'</span></button>&nbsp; Chargement</'+balise+'></span>');
         }
     }
+    let unloadOK = false;
     if (!inSoute && batType.name != 'Soute') {
+        if (playerInfos.onShip || playerInfos.mapTurn >= 1) {
+            unloadOK = true;
+        }
+    }
+    if (unloadOK) {
         // DEBARQUER
         $('#unitInfos').append('<a name="letransport"></a>');
         unloadInfos(bat,batType);

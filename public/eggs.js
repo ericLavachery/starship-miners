@@ -1,14 +1,14 @@
 function checkStartingAliens() {
     // Ruches
     let numRuches;
-    if (zone[0].mapDiff >= 8) {
+    if (zone[0].mapDiff >= 8 && !zone[0].visit) {
         dropEgg('Colonie','nedge');
         let coloBat = getAlienByName('Colonie');
-        alienSpawn(coloBat,'Vomissure');
-        alienSpawn(coloBat,'Vomissure');
+        alienSpawn(coloBat,'Vomissure','bmorph');
+        alienSpawn(coloBat,'Vomissure','bmorph');
         if (zone[0].mapDiff >= 9) {
-            alienSpawn(coloBat,'Vomissure');
-            alienSpawn(coloBat,'Vomissure');
+            alienSpawn(coloBat,'Vomissure','bmorph');
+            alienSpawn(coloBat,'Vomissure','bmorph');
             alienSpawn(coloBat,'Ruche');
             dropEgg('Volcan','guard');
             if (rand.rand(1,2) === 1) {
@@ -47,7 +47,11 @@ function checkStartingAliens() {
         if (rand.rand(1,4) === 1) {
             dropEgg('Flaque','any');
         } else {
-            dropEgg('Flaque','nocenter');
+            if (rand.rand(1,6) === 1 && zone[0].mapDiff >= 7) {
+                dropEgg('Ruche','nocenter');
+            } else {
+                dropEgg('Flaque','nocenter');
+            }
         }
         if (ii > 50) {break;}
         ii++
@@ -937,7 +941,7 @@ function spawns() {
                     alienSpawn(bat,'Torches');
                 }
             } else if (bat.type === 'Colonie' && rand.rand(1,3) === 1) {
-                alienSpawn(bat,'Vomissure');
+                alienSpawn(bat,'Vomissure','bmorph');
             } else if (transList.includes('Asticots') && bat.type === 'Asticots' && !bat.tags.includes('morph')) {
                 bat.tags.push('morph');
                 if (playerInfos.comp.det >= 2 && playerInfos.comp.ca >= 2 && !warnAsticots) {

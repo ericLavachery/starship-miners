@@ -4162,7 +4162,7 @@
             "level":3,
             "rate":15,
             "multi":true,
-            "types":["Mine"],
+            "types":["Mine","Derrick"],
             "subTypes":["Pompe","Comptoir","Scrap"]
         },
         "transRes":150,
