@@ -4160,7 +4160,7 @@
         "mecanoCost":12,
         "mining":{
             "level":3,
-            "rate":15,
+            "rate":18,
             "multi":true,
             "types":["Mine","Derrick"],
             "subTypes":["Pompe","Comptoir","Scrap"]
