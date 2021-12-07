@@ -1040,7 +1040,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
             }
         }
     }
-    if (bat.eq === 'theeye') {
+    if (bat.eq === 'theeye' || bat.logeq === 'theeye') {
         speed = speed-50;
     }
     // initmelee
@@ -1663,7 +1663,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.noBis = false;
         }
     }
-    if (bat.eq === 'theeye') {
+    if (bat.eq === 'theeye' || bat.logeq === 'theeye') {
         thisWeapon.accuracy = thisWeapon.accuracy+6;
         if (thisWeapon.range >= 2) {
             thisWeapon.range = thisWeapon.range+1;
@@ -1812,7 +1812,7 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     // helper
-    if (bat.eq === 'helper' && thisWeapon.isMelee) {
+    if ((bat.eq === 'helper' || bat.logeq === 'helper') && thisWeapon.isMelee) {
         thisWeapon.power = thisWeapon.power+3;
     }
     // sila drug

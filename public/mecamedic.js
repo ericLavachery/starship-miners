@@ -945,7 +945,7 @@ function checkMecanoSkill(bat,batType) {
         } else {
             myMecanoSkill = 'selfbadmecano';
         }
-    } else if (batType.skills.includes('w2mecano') && bat.eq === 'e-mecano') {
+    } else if (batType.skills.includes('w2mecano') && (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano')) {
         myMecanoSkill = 'badmecano';
     } else {
         if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano') {

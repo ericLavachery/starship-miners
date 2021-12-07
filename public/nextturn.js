@@ -1036,7 +1036,7 @@ function tagsEffect(bat,batType) {
         resistance = true;
     }
     // REGENERATION & KIRIN DRUG
-    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || bat.eq === 'permakirin' || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal') || resistance) {
+    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || bat.eq === 'permakirin' || bat.logeq === 'permakirin' || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal') || resistance) {
         let regOK = true;
         if (batType.cat === 'aliens') {
             if (batType.skills.includes('reactpoison') && bat.tags.includes('poison')) {

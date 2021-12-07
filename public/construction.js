@@ -405,8 +405,9 @@ function conSelect(unitId,player,noRefresh) {
                 if (checkSpecialEquip(batEquip,conselUnit)) {
                     compReqOK = false;
                 }
+                let bonusEqOK = checkBonusEq(conselUnit,equip);
                 if ((compReqOK && showEq) || conselTriche) {
-                    if (conselAmmos[3] == equip || (conselAmmos[3] === 'xxx' && listNum === 1) || (playerInfos.comp.log === 3 && conselUnit.log3eq === equip && compReqOK) || (playerInfos.comp.energ >= 2 && conselUnit.log3eq === equip && equip.includes('psol') && compReqOK)) {
+                    if (conselAmmos[3] == equip || (conselAmmos[3] === 'xxx' && listNum === 1) || (bonusEqOK && compReqOK)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
@@ -444,7 +445,7 @@ function conSelect(unitId,player,noRefresh) {
                     if (!compReqOK) {
                         prodSign = '';
                     }
-                    if ((playerInfos.comp.log === 3 && conselUnit.log3eq === equip && compReqOK) || (playerInfos.comp.energ >= 2 && conselUnit.log3eq === equip && equip.includes('psol') && compReqOK)) {
+                    if (bonusEqOK && compReqOK) {
                         $('#conAmmoList').append('<span class="constName" title="'+showEquipInfo(equip,conselUnit,true)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else if ((bldReqOK && costsOK) || conselTriche) {
                         $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip,conselUnit,true)+' '+displayCosts(flatCosts)+'" onclick="selectEquip(`'+equip+'`,`'+unitId+'`)">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
@@ -989,36 +990,50 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             newBat.eq = equipName;
             // log3eq
             newBat.logeq = '';
-            if (playerInfos.comp.log === 3) {
-                if (conselUnit.log3eq != undefined) {
-                    if (conselUnit.log3eq != '') {
-                        let logEquip = getEquipByName(conselUnit.log3eq);
-                        if (logEquip.name === 'g2ai') {
-                            newBat.ok = '';
-                        }
-                        let compReqOK = checkCompReq(logEquip);
-                        if (checkSpecialEquip(logEquip,conselUnit)) {
-                            compReqOK = false;
-                        }
-                        if (compReqOK) {
-                            newBat.logeq = logEquip.name;
-                        }
+            if (conselUnit.log3eq != undefined) {
+                if (conselUnit.log3eq != '') {
+                    let logEquip = getEquipByName(conselUnit.log3eq);
+                    let compReqOK = checkCompReq(logEquip);
+                    if (checkSpecialEquip(logEquip,conselUnit)) {
+                        compReqOK = false;
                     }
-                }
-            } else if (playerInfos.comp.energ >= 2) {
-                if (conselUnit.log3eq != undefined) {
-                    if (conselUnit.log3eq.includes('psol')) {
-                        let logEquip = getEquipByName(conselUnit.log3eq);
+                    let bonusEqOK = checkBonusEq(conselUnit,logEquip.name);
+                    if (compReqOK && bonusEqOK) {
                         if (logEquip.name === 'g2ai') {
                             newBat.ok = '';
                         }
-                        let compReqOK = checkCompReq(logEquip);
-                        if (compReqOK) {
-                            newBat.logeq = logEquip.name;
-                        }
+                        newBat.logeq = logEquip.name;
                     }
                 }
             }
+            // if (playerInfos.comp.log === 3) {
+            //     if (conselUnit.log3eq != undefined) {
+            //         if (conselUnit.log3eq != '') {
+            //             let logEquip = getEquipByName(conselUnit.log3eq);
+            //             if (logEquip.name === 'g2ai') {
+            //                 newBat.ok = '';
+            //             }
+            //             let compReqOK = checkCompReq(logEquip);
+            //             if (checkSpecialEquip(logEquip,conselUnit)) {
+            //                 compReqOK = false;
+            //             }
+            //             let bonusEqOK = checkBonusEq(conselUnit,equipName);
+            //             if (compReqOK) {
+            //                 newBat.logeq = logEquip.name;
+            //             }
+            //         }
+            //     }
+            // } else if (playerInfos.comp.energ >= 2) {
+            //     if (conselUnit.log3eq != undefined) {
+            //         if (conselUnit.log3eq.includes('psol')) {
+            //             let logEquip = getEquipByName(conselUnit.log3eq);
+            //             let compReqOK = checkCompReq(logEquip);
+            //             if (compReqOK) {
+            //                 newBat.logeq = logEquip.name;
+            //             }
+            //         }
+            //     }
+            // }
             // Armor
             let armorName = conselAmmos[2];
             if (armorName === 'xxx') {

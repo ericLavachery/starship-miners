@@ -104,8 +104,9 @@ function reEquip(batId,noRefresh) {
                 if (checkSpecialEquip(batEquip,myBatType)) {
                     compReqOK = false;
                 }
+                let bonusEqOK = checkBonusEq(myBatType,equip);
                 if ((compReqOK && showEq) || conselTriche) {
-                    if (myNewGear[3] == equip || (myNewGear[3] === 'xxx' && listNum === 1) || (playerInfos.comp.log === 3 && myBatType.log3eq === equip && compReqOK) || (playerInfos.comp.energ >= 2 && myBatType.log3eq === equip && equip.includes('psol') && compReqOK)) {
+                    if (myNewGear[3] == equip || (myNewGear[3] === 'xxx' && listNum === 1) || (bonusEqOK && compReqOK)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
@@ -143,7 +144,7 @@ function reEquip(batId,noRefresh) {
                     if (!compReqOK) {
                         prodSign = '';
                     }
-                    if ((playerInfos.comp.log === 3 && myBatType.log3eq === equip && compReqOK) || (playerInfos.comp.energ >= 2 && myBatType.log3eq === equip && equip.includes('psol') && compReqOK)) {
+                    if (bonusEqOK && compReqOK) {
                         $('#conAmmoList').append('<span class="constName" title="'+showEquipInfo(equip,myBatType,true)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else if ((bldReqOK && costsOK) || conselTriche) {
                         $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip,myBatType,true)+' '+displayCosts(flatCosts)+'" onclick="deployEquip(`'+equip+'`,`'+myBat.id+'`)">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
@@ -255,6 +256,29 @@ function reEquip(batId,noRefresh) {
     $('#conAmmoList').append('<br>');
     $('#conAmmoList').append('<span class="blockTitle"><h4><button type="button" title="Faire les changements dans les munitions, armures et équipements" class="boutonCaca iconButtons" onclick="doReEquip(`'+myBat.id+'`)"><i class="ra ra-rifle rpg"></i> &nbsp;<span class="notsosmall">Rééquiper</span></button></h4></span><br>');
     $('#conAmmoList').append('<br>');
+};
+
+function checkBonusEq(unit,equipName) {
+    let equip = getEquipByName(equipName);
+    let bonusEqOK = false;
+    if (unit.log3eq === equipName) {
+        if (playerInfos.comp.log === 3) {
+            bonusEqOK = true;
+        }
+        if (playerInfos.comp.energ >= 2 && equipName.includes('psol')) {
+            bonusEqOK = true;
+        }
+        if (!equipName.includes('w2-') && !equipName.includes('w1-') && !equipName.includes('sci-') && !equipName.includes('kit-')) {
+            if (equip.autoComp.length === 2) {
+                let autoCompName = equip.autoComp[0];
+                let autoCompLevel = equip.autoComp[1];
+                if (playerInfos.comp[autoCompName] >= autoCompLevel) {
+                    bonusEqOK = true;
+                }
+            }
+        }
+    }
+    return bonusEqOK;
 };
 
 function checkHasWeapon(num,batType,eq) {

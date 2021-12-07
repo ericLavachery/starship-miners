@@ -266,7 +266,7 @@ function batInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramName cy">Drogue</span><span class="paramIcon"></span><span class="paramValue cy">'+myDrugs.toString()+'</span><br>');
         }
     }
-    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || bat.eq === 'permakirin') {
+    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || bat.eq === 'permakirin' || bat.logeq === 'permakirin') {
         let regenType = 'lente';
         if (bat.tags.includes('kirin') || batType.skills.includes('regeneration')) {
             regenType = 'rapide';
