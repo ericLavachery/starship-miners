@@ -19,7 +19,7 @@
         "id":3,
         "name":"aero",
         "fullName":"Aéronautique",
-        "levels":{"rednecks":13,"blades":13,"bulbos":12,"drogmulojs":13,"tiradores":10,"detruas":99,"brasier":13},
+        "levels":{"rednecks":12,"blades":11,"bulbos":12,"drogmulojs":12,"tiradores":10,"detruas":99,"brasier":12},
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
@@ -35,7 +35,7 @@
         "id":5,
         "name":"cyber",
         "fullName":"Cybernétique",
-        "levels":{"rednecks":13,"blades":11,"bulbos":3,"drogmulojs":12,"tiradores":13,"detruas":12,"brasier":10},
+        "levels":{"rednecks":12,"blades":11,"bulbos":3,"drogmulojs":12,"tiradores":12,"detruas":13,"brasier":8},
         "maxLevel":1,
         "lvlCosts":[0,2]
     },
@@ -51,7 +51,7 @@
         "id":7,
         "name":"tele",
         "fullName":"Téléportation",
-        "levels":{"rednecks":18,"blades":15,"bulbos":14,"drogmulojs":16,"tiradores":16,"detruas":15,"brasier":16},
+        "levels":{"rednecks":18,"blades":15,"bulbos":13,"drogmulojs":16,"tiradores":16,"detruas":15,"brasier":16},
         "maxLevel":3,
         "lvlCosts":[0,2,1,1]
     },

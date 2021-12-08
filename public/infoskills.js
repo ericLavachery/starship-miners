@@ -298,7 +298,7 @@ function skillsInfos(bat,batType,near) {
         }
     }
     // EMBUSCADE
-    if (batType.skills.includes('embuscade') && !playerInfos.onShip) {
+    if (batType.skills.includes('embuscade') && !playerInfos.onShip && !bat.tags.includes('datt')) {
         apCost = 4-(playerInfos.comp.train/2.1)-(playerInfos.comp.cam/1.9);
         if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
             apCost = apCost-0.6;
@@ -334,8 +334,12 @@ function skillsInfos(bat,batType,near) {
         }
     }
     // DOUBLE ATTAQUE
-    if (!playerInfos.onShip) {
+    if (!playerInfos.onShip && !bat.tags.includes('embuscade')) {
         if (batType.skills.includes('datt') || bat.eq.includes('crimekit')) {
+            let isTir = false;
+            if (batType.skills.includes('tirailleur') && bat.oldTileId != bat.tileId) {
+                isTir = true;
+            }
             let weapOK = true;
             let trainComp = playerInfos.comp.train;
             if (batType.skills.includes('robot') && bat.eq != 'g2ai' && bat.logeq != 'g2ai') {
@@ -371,7 +375,7 @@ function skillsInfos(bat,batType,near) {
                     weapOK = false;
                 }
             }
-            if (weapOK && bat.apLeft >= apCost+cheapWeapCost) {
+            if (weapOK && bat.apLeft >= apCost+cheapWeapCost && !isTir) {
                 balise = 'h4';
                 boutonNope = 'boutonGris';
                 colorNope = 'gf';

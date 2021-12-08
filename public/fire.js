@@ -422,7 +422,7 @@ function attack(melee) {
         }
     }
     // tirailleur
-    if (selectedBatType.skills.includes('tirailleur') && selectedBat.oldTileId != selectedBat.tileId) {
+    if (selectedBatType.skills.includes('tirailleur') && selectedBat.oldTileId != selectedBat.tileId && !selectedBat.tags.includes('datt')) {
         let guerBonus = calcTiraBonus(selectedBatType);
         shots = Math.round(shots*guerBonus);
         attFactor = Math.round(attFactor*guerBonus);
@@ -526,11 +526,11 @@ function attack(melee) {
         if (targetBat.tags.includes('shield')) {
             let shieldValue = rand.rand(6,14);
             if (selectedWeap.noShield) {
-                shieldValue = Math.ceil(shieldValue/5);
+                shieldValue = shieldValue/6;
             } else if (selectedWeap.halfShield) {
-                shieldValue = Math.ceil(shieldValue/3);
+                shieldValue = shieldValue/3;
             } else if (selectedWeap.ammo.includes('gaz')) {
-                shieldValue = Math.ceil(shieldValue/2);
+                shieldValue = shieldValue/2;
             }
             shots = Math.ceil(shots/shieldValue);
             $('#report').append('<span class="report rose">Bouclier activé<br></span>');
@@ -1397,15 +1397,6 @@ function defense(melee) {
             defFactor = Math.round(defFactor*1.25);
         }
     }
-    // tirailleur
-    // if (selectedBatType.skills.includes('tirailleur') && selectedBat.oldTileId != selectedBat.tileId) {
-    //     let guerrillaDef = 10+terrain.cover+(selectedBatType.stealth/5);
-    //     if (selectedBatType.cat != 'aliens') {
-    //         guerrillaDef = guerrillaDef+(playerInfos.comp.train*2)+(playerInfos.comp.cam/2);
-    //     }
-    //     shots = Math.round(shots*9/guerrillaDef);
-    //     defFactor = Math.round(defFactor*9/guerrillaDef);
-    // }
     // Defense %
     $('#report').append('<span class="report jaune">Défense '+defFactor+'%<br></span>');
     // chargeur
