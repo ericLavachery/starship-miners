@@ -943,12 +943,30 @@
         "inRuin":1
     },
     {
+        "id":264,
+        "name":"Wardogs",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Chenil"],
+        "compReq":{"train":1},
+        "costs":{},
+        "fabTime":40
+    },
+    {
+        "id":266,
+        "name":"Klogs",
+        "levels":{"rednecks":99,"blades":11,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Laboratoire"],
+        "compReq":{"gen":1},
+        "costs":{"Creatite":180,"Calcium":90,"Azote":90,"Mercure":45,"Drogues":15},
+        "fabTime":50
+    },
+    {
         "id":138,
         "name":"Clones",
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":5,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire"],
         "compReq":{"gen":1},
-        "costs":{"Fer":60,"Scrap":60,"Creatite":144,"Calcium":72,"Azote":126,"Mercure":42,"Drogues":15},
+        "costs":{"Fer":60,"Scrap":60,"Creatite":144,"Calcium":72,"Azote":120,"Mercure":40,"Drogues":15},
         "fabTime":40
     },
     {

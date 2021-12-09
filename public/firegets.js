@@ -60,7 +60,7 @@ function deluge(weap,tileId,onlyAround) {
 };
 
 function delugeDamage(weap,bat,batType) {
-    console.log(batType.name);
+    // console.log(batType.name);
     let numUnits = 60;
     if (bat.team === 'aliens') {
         let batHP = batType.hp-3.5;
@@ -71,13 +71,13 @@ function delugeDamage(weap,bat,batType) {
     } else {
         numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
     }
-    console.log('numUnits='+numUnits);
+    // console.log('numUnits='+numUnits);
     let baseDmg = Math.ceil((weap.power+15)*numUnits/75);
     // let stormDmg = rand.rand(10*baseDmg,14*baseDmg);
     let stormDmg = 12*baseDmg;
-    console.log('stormDmg='+stormDmg);
+    // console.log('stormDmg='+stormDmg);
     stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor+1));
-    console.log('stormDmg(a)='+stormDmg);
+    // console.log('stormDmg(a)='+stormDmg);
     if (batType.skills.includes('resistfeu') || bat.tags.includes('resistfeu')) {
         if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
             stormDmg = Math.ceil(stormDmg/1.25);
@@ -97,7 +97,7 @@ function delugeDamage(weap,bat,batType) {
     } else if (batType.skills.includes('reactblast') || bat.tags.includes('reactblast')) {
         stormDmg = Math.ceil(stormDmg*2);
     }
-    console.log('stormDmg(T)='+stormDmg);
+    // console.log('stormDmg(T)='+stormDmg);
     let totalDamage = bat.damage+stormDmg;
     let squadHP = batType.squadSize*batType.hp;
     let squadsOut = Math.floor(totalDamage/squadHP);
@@ -181,7 +181,7 @@ function isHit(accuracy,minAccu,weapon,attBat,attBatType,defBat,defBatType,steal
     if (toHit === 999) {
         toHit = hitChance;
         $('#report').append('<span class="report">Précision '+prec+' >> '+hitChance+'%</span><br><span class="report">Dégâts: </span>');
-        console.log('hitChance '+hitChance);
+        // console.log('hitChance '+hitChance);
     }
     if (dice > hitChance) {
         return false;
@@ -341,7 +341,7 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
         }
         squadReductor = squadReductor.toFixedNumber(2);
     }
-    console.log('!!!!!!!!!!!!!!!!!!!!!squadReductor='+squadReductor);
+    // console.log('!!!!!!!!!!!!!!!!!!!!!squadReductor='+squadReductor);
     let ii = 1;
     while (ii <= aoeShots) {
         // console.log('power'+power);
@@ -753,7 +753,7 @@ function getModifiedArmor(armor,armorModifier) {
         modifiedArmor = modifiedArmor+(armorRest*adjMod);
     }
     modifiedArmor = Math.round(modifiedArmor);
-    console.log('Modified Armor = '+modifiedArmor);
+    // console.log('Modified Armor = '+modifiedArmor);
     return modifiedArmor;
 };
 
@@ -1015,7 +1015,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
     } else {
         if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai') && !attacking) {
             speed = speed-watchInitBonus-stealth;
-            console.log('bonus guet');
+            // console.log('bonus guet');
         }
         if (batType.skills.includes('defense') && !attacking) {
             speed = speed-10;
@@ -1028,15 +1028,15 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
         }
         if (batType.skills.includes('initiative')) {
             speed = speed-200;
-            console.log('bonus initiative');
+            // console.log('bonus initiative');
         }
         if (batType.skills.includes('after')) {
             if (attacking) {
                 speed = speed-999;
-                console.log('bonus initiative');
+                // console.log('bonus initiative');
             } else {
                 speed = speed+999;
-                console.log('malus initiative');
+                // console.log('malus initiative');
             }
         }
     }
@@ -2227,7 +2227,7 @@ function mirDestruction(weap,bat,batType,tile,teamOnMir,infraName) {
     } else if (weap.aoe === 'bat') {
         damage = Math.round(damage*4);
     }
-    console.log('MirDamage='+damage);
+    // console.log('MirDamage='+damage);
     let breakChance = Math.floor(damage/20);
     if (infraName === 'Palissades') {
         if (damage >= 400) {
@@ -2242,7 +2242,7 @@ function mirDestruction(weap,bat,batType,tile,teamOnMir,infraName) {
             breakChance = 0;
         }
     }
-    console.log('breakChance='+breakChance);
+    // console.log('breakChance='+breakChance);
     if (rand.rand(1,100) <= breakChance) {
         warning('Destruction',bat.type+' a détruit les '+infraName);
         tile.infra = 'Débris';
