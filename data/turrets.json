@@ -668,7 +668,7 @@
     {
         "id":125,
         "name":"Casemates",
-        "pic":"bunker2",
+        "pic":"casemate",
         "cat":"buildings",
         "kind":"zero-defense",
         "sort":45,
@@ -726,7 +726,7 @@
     {
         "id":127,
         "name":"Blockhaus",
-        "pic":"bunker1",
+        "pic":"blockhaus",
         "cat":"buildings",
         "kind":"zero-defense",
         "sort":55,
@@ -784,7 +784,7 @@
     {
         "id":178,
         "name":"Bunkers",
-        "pic":"thebunk",
+        "pic":"bunker",
         "cat":"buildings",
         "kind":"zero-defense",
         "sort":55,
@@ -842,7 +842,7 @@
     {
         "id":129,
         "name":"Squash",
-        "pic":"minimiss",
+        "pic":"squash",
         "cat":"devices",
         "kind":"zero-artillerie",
         "sort":75,
@@ -1066,7 +1066,7 @@
     {
         "id":239,
         "name":"Coffres",
-        "pic":"chest",
+        "pic":"coffre",
         "cat":"devices",
         "kind":"zero-trans-fret",
         "sort":1,
@@ -1416,7 +1416,7 @@
     {
         "id":43,
         "name":"Champ de mines",
-        "pic":"landmine2",
+        "pic":"minechamp",
         "cat":"devices",
         "kind":"zero-defense",
         "sort":0,
@@ -1468,7 +1468,7 @@
     {
         "id":45,
         "name":"Explosifs",
-        "pic":"dynamite",
+        "pic":"mineexplo",
         "cat":"devices",
         "kind":"zero-defense",
         "sort":0,

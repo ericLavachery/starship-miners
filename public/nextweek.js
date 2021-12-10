@@ -119,6 +119,9 @@ function eventProduction(afterMission,time,sim) {
                     }
                 }
             }
+            if (batType.skills.includes('dogprod') && bat.tags.includes('prodres')) {
+                chenilProd(bat,batType,time,sim);
+            }
             if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
                 solarProd(bat,batType,time,sim);
             }
@@ -564,6 +567,73 @@ function calcCrimeRate(mesCitoyens) {
     console.log('crimeRate.total='+crimeRate.total);
     return crimeRate;
 };
+
+function chenilProd(bat,batType,time,sim) {
+    if (playerInfos.onShip && playerInfos.gang === 'rednecks') {
+        console.log('UPKEEP');
+        console.log(batType.name);
+        let upkeepPaid = true;
+        let message = '';
+        if (batType.upkeep != undefined) {
+            Object.entries(batType.upkeep).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                let conso = Math.ceil(value*time)+120;
+                let dispoRes = getDispoRes(key);
+                if (dispoRes < conso) {
+                    upkeepPaid = false;
+                    message = message+key+':<span class="rose">pénurie!</span><br>';
+                }
+            });
+            if (upkeepPaid) {
+                Object.entries(batType.upkeep).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    let conso = Math.ceil(value*time);
+                    modWeekRes(key,0-conso);
+                    if (!sim) {
+                        resSub(key,conso);
+                    }
+                    message = message+key+':<span class="rose">-'+conso+'</span><br>';
+                    console.log('upkeep = '+key+':'+conso);
+                });
+            } else {
+                if (!sim) {
+                    upkeepNotPaid(bat,batType);
+                }
+            }
+        }
+        console.log('upkeepPaid='+upkeepPaid);
+        if (upkeepPaid) {
+            let dogChance = Math.ceil(time/2);
+            dogChance = Math.ceil(dogChance*(playerInfos.comp.med+12)/12*(playerInfos.comp.ordre+12)/12);
+            console.log('dogChance='+dogChance);
+            if (rand.rand(1,100) <= dogChance) {
+                console.log('DOOOOOOOOOOOOGS');
+                modWeekRes('Viande',-120);
+                if (!sim) {
+                    resSub('Viande',120);
+                }
+                message = message+'Viande:<span class="rose">-120</span><br>';
+                if (!sim) {
+                    putDog();
+                }
+            }
+        }
+        warning(batType.name,message,true);
+    }
+}
+
+function putDog() {
+    let unitIndex = unitTypes.findIndex((obj => obj.id === 264));
+    conselUnit = unitTypes[unitIndex];
+    conselAmmos = ['dents','xxx','aucune','aucun'];
+    conselPut = false;
+    conselTriche = true;
+    putBat(1537,0,0,'',false);
+    let bat = getBatByTypeIdAndTileId(264,1537);
+    loadBat(bat.id,souteId);
+}
 
 function eventAliens(afterMission,time,sim) {
     // Montée de la présence alien
