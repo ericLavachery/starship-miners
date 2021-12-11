@@ -3032,7 +3032,7 @@
         "powermult": 1,
         "armors": 0.25,
         "accuracy": 1,
-        "apdamage": 0.1,
+        "apdamage": 0.15,
         "aoe": "",
         "noList": true
     },

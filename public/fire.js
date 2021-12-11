@@ -125,7 +125,7 @@ function combat(melee) {
     if (targetBat.tags.includes('hero') && targetBatType.skills.includes('herorip')) {
         negSalvo = negSalvo-3;
     }
-    if (distance <= 3 && targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef && targetBat.salvoLeft > negSalvo) {
+    if ((distance <= 3 || targetBatType.skills.includes('smartrip')) && targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef && targetBat.salvoLeft > negSalvo) {
         let realmOK = checkRealm();
         if (realmOK) {
             riposte = true;

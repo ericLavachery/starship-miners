@@ -1336,7 +1336,15 @@ function weaponSelect(weapon) {
 };
 
 function weaponSelectRiposte(distance) {
-    if (targetBatType.skills.includes('fortifw2') && targetBat.tags.includes('fortif')) {
+    if (targetBatType.skills.includes('smartrip')) {
+        if (distance > targetBatType.weapon.range) {
+            targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon2));
+            targetWeap = weaponAdj(targetWeap,targetBat,'w2');
+        } else {
+            targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon));
+            targetWeap = weaponAdj(targetWeap,targetBat,'w1');
+        }
+    } else if (targetBatType.skills.includes('fortifw2') && targetBat.tags.includes('fortif')) {
         targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon2));
         targetWeap = weaponAdj(targetWeap,targetBat,'w2');
         if (targetBatType.name === 'Chevaliers') {
