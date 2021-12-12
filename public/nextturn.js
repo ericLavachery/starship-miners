@@ -1017,6 +1017,14 @@ function tagsEffect(bat,batType) {
     let totalDamage;
     let squadHP;
     let squadsOut;
+    // MUD
+    if (bat.tags.includes('mud')) {
+        if (batType.skills.includes('ranger') || bat.eq === 'e-ranger' || bat.logeq === 'e-ranger') {
+            bat.apLeft = 0-Math.round(bat.ap*2/3)+rand.rand(0,bat.ap);
+        } else {
+            bat.apLeft = 0-bat.ap;
+        }
+    }
     // BLAZE DRUG
     if (bat.tags.includes('blaze')) {
         bat.apLeft = bat.apLeft+3;

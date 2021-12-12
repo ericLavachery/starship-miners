@@ -278,7 +278,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":3,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire","Atelier"],
         "compReq":{"gen":1},
-        "costs":{"Explosifs":30,"Creatite":100,"Calcium":50,"Azote":90,"Mercure":30,"Drogues":10,"Végétaux":30},
+        "costs":{"Creatite":100,"Calcium":50,"Azote":90,"Mercure":30,"Drogues":10,"Végétaux":30,"Explosifs":30,"Fer":12,"Plomb":4,"Titane":4,"Azote":6,"Cuivre":6,"Electros":1},
         "fabTime":30
     },
     {

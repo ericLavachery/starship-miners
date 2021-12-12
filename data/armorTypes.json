@@ -883,6 +883,16 @@
         "costs":{"Scrap":2,"Tissus":2}
     },
     {
+        "name":"w2-goodbye",
+        "cat":"equip",
+        "skills":[],
+        "info":"Ceinture d'explosifs",
+        "bldReq":["Armurerie"],
+        "compReq":{"log":1,"explo":2},
+        "factor":"one",
+        "costs":{"Explosifs":30,"Fer":12,"Plomb":4,"Titane":4,"Azote":6,"Cuivre":6,"Electros":1}
+    },
+    {
         "name":"w2-pneu",
         "cat":"equip",
         "skills":[],
@@ -1015,7 +1025,7 @@
         "skills":[],
         "info":"PA+",
         "bldReq":["Chaîne de montage"],
-        "compReq":{"trans":1,"energ":1},
+        "compReq":{"trans":2,"energ":1},
         "autoComp":["trans",3],
         "factor":"thp",
         "costs":{"Cuivre":3,"Moteurs":6,"Nickel":3,"Electros":6,"Batteries":3},

@@ -896,7 +896,7 @@ function skillsInfos(bat,batType,near) {
         let drugBldOK = false;
         let drugBldVMOK = false;
         let drugCostsOK = false;
-        if (batType.cat === 'infantry' && !batType.skills.includes('clone')) {
+        if (batType.cat === 'infantry') {
             // STARKA
             if (allDrugs.includes('starka') || bat.tags.includes('starka')) {
                 drug = getDrugByName('starka');
@@ -946,45 +946,47 @@ function skillsInfos(bat,batType,near) {
                 }
             }
             // KIRIN
-            if (allDrugs.includes('kirin') || bat.tags.includes('kirin')) {
-                drug = getDrugByName('kirin');
-                drugCompOK = checkCompReq(drug);
-                drugBldOK = true;
-                if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
-                    drugBldOK = false;
-                }
-                drugBldVMOK = true;
-                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
-                    drugBldVMOK = false;
-                }
-                drugCostsOK = checkCost(drug.costs);
-                balise = 'h4';
-                boutonNope = 'boutonGris';
-                colorNope = 'gf';
-                if (bat.tags.includes('kirin')) {
-                    balise = 'h3';
-                    boutonNope = 'boutonOK';
-                    colorNope = 'cy';
-                }
-                apCost = drug.apCost;
-                if (drugCompOK) {
-                    if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('kirin') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Régénération rapide '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
-                    } else {
-                        if (bat.tags.includes('kirin')) {
-                            skillMessage = "Déjà sous l'effet de cette drogue";
-                        } else if (!drugCompOK) {
-                            skillMessage = "Vous n'avez pas les compétences requises";
-                        } else if (!drugBldVMOK) {
-                            skillMessage = "Vous n'avez pas le bâtiment requis (sur la station ou dans la  zone): "+drug.bldVMReq[0];
-                        } else if (!drugBldOK) {
-                            skillMessage = "Vous n'avez pas le bâtiment requis (dans la  zone): "+drug.bldReq[0];
-                        } else if (!drugCostsOK) {
-                            skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+            if (!batType.skills.includes('clone')) {
+                if (allDrugs.includes('kirin') || bat.tags.includes('kirin')) {
+                    drug = getDrugByName('kirin');
+                    drugCompOK = checkCompReq(drug);
+                    drugBldOK = true;
+                    if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                        drugBldOK = false;
+                    }
+                    drugBldVMOK = true;
+                    if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                        drugBldVMOK = false;
+                    }
+                    drugCostsOK = checkCost(drug.costs);
+                    balise = 'h4';
+                    boutonNope = 'boutonGris';
+                    colorNope = 'gf';
+                    if (bat.tags.includes('kirin')) {
+                        balise = 'h3';
+                        boutonNope = 'boutonOK';
+                        colorNope = 'cy';
+                    }
+                    apCost = drug.apCost;
+                    if (drugCompOK) {
+                        if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('kirin') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
+                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Régénération rapide '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
                         } else {
-                            skillMessage = "Pas assez de PA";
+                            if (bat.tags.includes('kirin')) {
+                                skillMessage = "Déjà sous l'effet de cette drogue";
+                            } else if (!drugCompOK) {
+                                skillMessage = "Vous n'avez pas les compétences requises";
+                            } else if (!drugBldVMOK) {
+                                skillMessage = "Vous n'avez pas le bâtiment requis (sur la station ou dans la  zone): "+drug.bldVMReq[0];
+                            } else if (!drugBldOK) {
+                                skillMessage = "Vous n'avez pas le bâtiment requis (dans la  zone): "+drug.bldReq[0];
+                            } else if (!drugCostsOK) {
+                                skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                            } else {
+                                skillMessage = "Pas assez de PA";
+                            }
+                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
                         }
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Kirin</'+balise+'></span>');
                     }
                 }
             }

@@ -32,6 +32,12 @@ function clickMove(tileId) {
         if (selectedBat.eq === 'e-jetpack') {
             jmc = 2;
         }
+        if (selectedBat.team != 'aliens' && zone[0].planet === 'Kzin') {
+            jmc = jmc*1.5;
+        }
+        if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry') {
+            jmc = jmc*1.5;
+        }
         if (Math.floor(distance) <= Math.ceil(selectedBat.apLeft/jmc) && selectedBat.tileId != tileId) {
             moveOK = true;
         }
@@ -102,20 +108,6 @@ function doneAction(bat) {
         }
         bat.oldTileId = bat.tileId;
         bat.oldapLeft = bat.apLeft;
-        // if (bat.id === selectedBat.id) {
-        //     if (!selectedBat.tags.includes('action')) {
-        //         selectedBat.tags.push('action');
-        //     }
-        //     selectedBat.oldTileId = selectedBat.tileId;
-        //     selectedBat.oldapLeft = selectedBat.apLeft;
-        //     selectedBatArrayUpdate();
-        // } else {
-        //     if (!bat.tags.includes('action')) {
-        //         bat.tags.push('action');
-        //     }
-        //     bat.oldTileId = bat.tileId;
-        //     bat.oldapLeft = bat.apLeft;
-        // }
     }
 };
 
@@ -272,6 +264,10 @@ function moveSelectedBat(tileId,free,jump) {
         tagIndex = selectedBat.tags.indexOf('fortif');
         selectedBat.tags.splice(tagIndex,1);
     }
+    if (selectedBat.tags.includes('mud')) {
+        tagIndex = selectedBat.tags.indexOf('mud');
+        selectedBat.tags.splice(tagIndex,1);
+    }
     if (selectedBat.tags.includes('camo') || selectedBat.fuzz <= -2) {
         if (selectedBatType.skills.includes('fly') || (selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('emoteur') && !selectedBatType.skills.includes('robot')) || selectedBatType.skills.includes('moto') || selectedBatType.skills.includes('maycamo') || !selectedBatType.skills.includes('camo') || selectedBat.eq === 'e-jetpack') {
             if (selectedBat.eq === 'kit-chouf' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitlu') {
@@ -287,8 +283,6 @@ function moveSelectedBat(tileId,free,jump) {
         undarkAround(selectedBat,false);
     }
     tileSelect(selectedBat);
-    showBataillon(selectedBat);
-    showBatInfos(selectedBat);
     if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst') {
         if (playerInfos.stList.includes(tileId)) {
             stormDamage(selectedBat,selectedBatType,true,true);
@@ -296,6 +290,31 @@ function moveSelectedBat(tileId,free,jump) {
             stormDamage(selectedBat,selectedBatType,false,true);
         }
     }
+    if (zone[0].planet === 'Dom') {
+        if (!selectedBatType.skills.includes('fly') && selectedBat.eq != 'e-jetpack') {
+            let tile = getTileById(tileId);
+            if (tile.terrain != 'M' && tile.terrain != 'F') {
+                let mudChance = 4;
+                if (tile.terrain === 'P') {
+                    mudChance = 12;
+                } else if (tile.terrain === 'G') {
+                    mudChance = 7;
+                }
+                mudChance = Math.ceil(mudChance*tile.seed/2);
+                mudChance = Math.ceil(mudChance*7/(selectedBat.vet+6));
+                mudChance = Math.ceil(mudChance*10/(playerInfos.comp.det+8));
+                if (rand.rand(1,100) <= mudChance) {
+                    if (!selectedBat.tags.includes('mud')) {
+                        selectedBat.tags.push('mud');
+                    }
+                    selectedBat.apLeft = 0-selectedBat.ap;
+                    warning('Sables mouvants','Bataillon immobilisé!')
+                }
+            }
+        }
+    }
+    showBataillon(selectedBat);
+    showBatInfos(selectedBat);
     // update arrays
     selectedBatArrayUpdate();
     if (activeTurn === 'player') {

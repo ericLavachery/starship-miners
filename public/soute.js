@@ -512,6 +512,11 @@ function loadBat(batId,transBatId,oldTransBatId) {
     bat.tileId = transBat.tileId;
     bat.extracted = [];
     tagDelete(bat,'mining');
+    tagDelete(bat,'mud');
+    tagDelete(bat,'blub');
+    tagDelete(bat,'guet');
+    tagDelete(bat,'fortif');
+    tagDelete(bat,'camo');
     if (!transBat.transIds.includes(bat.id)) {
         transBat.transIds.push(bat.id);
     }

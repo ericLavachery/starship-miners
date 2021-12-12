@@ -533,7 +533,7 @@ function attack(melee) {
             } else if (selectedWeap.halfShield) {
                 shieldValue = shieldValue/3;
             } else if (selectedWeap.ammo.includes('gaz')) {
-                shieldValue = shieldValue/2;
+                shieldValue = shieldValue/4;
             }
             shots = Math.ceil(shots/shieldValue);
             $('#report').append('<span class="report rose">Bouclier activé<br></span>');
@@ -694,9 +694,9 @@ function attack(melee) {
                     $('#report').append('<span class="report rose">Résistance au feu 67%<br></span>');
                 }
             } else {
-                totalDamage = Math.round(totalDamage/1.5);
-                apDamage = Math.round(apDamage/1.5);
-                $('#report').append('<span class="report rose">Résistance au feu 33%<br></span>');
+                totalDamage = Math.round(totalDamage/1.67);
+                apDamage = Math.round(apDamage/1.67);
+                $('#report').append('<span class="report rose">Résistance au feu 40%<br></span>');
             }
             // console.log('résistance au feu!');
         }
@@ -1593,9 +1593,9 @@ function defense(melee) {
                     $('#report').append('<span class="report rose">Résistance au feu 67%<br></span>');
                 }
             } else {
-                totalDamage = Math.round(totalDamage/1.5);
-                apDamage = Math.round(apDamage/1.5);
-                $('#report').append('<span class="report rose">Résistance au feu 33%<br></span>');
+                totalDamage = Math.round(totalDamage/1.67);
+                apDamage = Math.round(apDamage/1.67);
+                $('#report').append('<span class="report rose">Résistance au feu 40%<br></span>');
             }
             // console.log('résistance au feu!');
         }

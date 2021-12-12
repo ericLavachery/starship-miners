@@ -2,7 +2,7 @@
     {
         "id":0,
         "name":"Bugs",
-        "pic":"brownbug",
+        "pic":"bug",
         "cat":"aliens",
         "kind":"bug",
         "class":"C",
@@ -101,7 +101,7 @@
     {
         "id":19,
         "name":"Libellules",
-        "pic":"libellule4",
+        "pic":"libellule",
         "cat":"aliens",
         "kind":"larve",
         "class":"A",
@@ -146,7 +146,7 @@
     {
         "id":14,
         "name":"Larves",
-        "pic":"ver2",
+        "pic":"larve",
         "cat":"aliens",
         "kind":"larve",
         "class":"C",
@@ -203,7 +203,7 @@
     {
         "id":1,
         "name":"Wurms",
-        "pic":"ver3",
+        "pic":"wurm",
         "cat":"aliens",
         "kind":"larve",
         "class":"B",
@@ -260,7 +260,7 @@
     {
         "id":38,
         "name":"Fantômes",
-        "pic":"worm",
+        "pic":"fantome",
         "cat":"aliens",
         "kind":"larve",
         "class":"A",
@@ -319,7 +319,7 @@
     {
         "id":41,
         "name":"Ombres",
-        "pic":"worm",
+        "pic":"fantome",
         "cat":"aliens",
         "kind":"larve",
         "class":"B",
@@ -364,7 +364,7 @@
     {
         "id":2,
         "name":"Mantes",
-        "pic":"wtf",
+        "pic":"mante",
         "cat":"aliens",
         "kind":"swarm",
         "class":"A",
@@ -409,7 +409,7 @@
     {
         "id":3,
         "name":"Cracheuses",
-        "pic":"greenspider",
+        "pic":"cracheuse",
         "cat":"aliens",
         "kind":"spider",
         "class":"C",
@@ -453,7 +453,7 @@
     {
         "id":4,
         "name":"Glaireuses",
-        "pic":"bigspider",
+        "pic":"glaireuse",
         "cat":"aliens",
         "kind":"spider",
         "class":"A",
@@ -499,7 +499,7 @@
     {
         "id":5,
         "name":"Punaises",
-        "pic":"fatants",
+        "pic":"punaise",
         "cat":"aliens",
         "kind":"bug",
         "class":"C",
@@ -586,7 +586,7 @@
     {
         "id":7,
         "name":"Fourmis",
-        "pic":"redants",
+        "pic":"fourmi",
         "cat":"aliens",
         "kind":"swarm",
         "class":"B",
@@ -629,7 +629,7 @@
     {
         "id":8,
         "name":"Skolos",
-        "pic":"1000",
+        "pic":"skolo",
         "cat":"aliens",
         "kind":"swarm",
         "class":"B",
@@ -685,7 +685,7 @@
     {
         "id":9,
         "name":"Asticots",
-        "pic":"maggots",
+        "pic":"asticot",
         "cat":"aliens",
         "kind":"larve",
         "class":"C",
@@ -729,7 +729,7 @@
     {
         "id":40,
         "name":"Vers",
-        "pic":"maggots",
+        "pic":"asticot",
         "cat":"aliens",
         "kind":"larve",
         "class":"C",
@@ -773,7 +773,7 @@
     {
         "id":10,
         "name":"Broyeurs",
-        "pic":"mandy",
+        "pic":"broyeur",
         "cat":"aliens",
         "kind":"bug",
         "class":"B",
@@ -816,7 +816,7 @@
     {
         "id":11,
         "name":"Veuves",
-        "pic":"sdemon",
+        "pic":"veuve",
         "cat":"aliens",
         "kind":"spider",
         "class":"A",
@@ -876,7 +876,7 @@
     {
         "id":12,
         "name":"Scarabs",
-        "pic":"bscarab",
+        "pic":"scarab",
         "cat":"aliens",
         "kind":"bug",
         "class":"A",
@@ -937,7 +937,7 @@
     {
         "id":13,
         "name":"Moucherons",
-        "pic":"wasp",
+        "pic":"moucheron",
         "cat":"aliens",
         "kind":"larve",
         "class":"B",
@@ -980,7 +980,7 @@
     {
         "id":15,
         "name":"Chancres",
-        "pic":"bluebug",
+        "pic":"chancre",
         "cat":"aliens",
         "kind":"bug",
         "class":"B",
@@ -1080,7 +1080,7 @@
     {
         "id":18,
         "name":"Gluantes",
-        "pic":"spiderz",
+        "pic":"gluante",
         "cat":"aliens",
         "kind":"spider",
         "class":"C",
@@ -1137,7 +1137,7 @@
     {
         "id":53,
         "name":"Nerveuses",
-        "pic":"gold",
+        "pic":"nerveuse",
         "cat":"aliens",
         "kind":"spider",
         "class":"C",
@@ -1182,7 +1182,7 @@
     {
         "id":20,
         "name":"Mygales",
-        "pic":"migale",
+        "pic":"mygale",
         "cat":"aliens",
         "kind":"spider",
         "class":"A",
@@ -1240,7 +1240,7 @@
     {
         "id":21,
         "name":"Faucheux",
-        "pic":"redspider",
+        "pic":"faucheux",
         "cat":"aliens",
         "kind":"spider",
         "class":"B",
@@ -1295,7 +1295,7 @@
     {
         "id":22,
         "name":"Cafards",
-        "pic":"crust",
+        "pic":"cafard",
         "cat":"aliens",
         "kind":"swarm",
         "class":"C",
@@ -1339,7 +1339,7 @@
     {
         "id":52,
         "name":"Blattes",
-        "pic":"crust",
+        "pic":"cafard",
         "cat":"aliens",
         "kind":"swarm",
         "class":"C",
@@ -1393,7 +1393,7 @@
     {
         "id":23,
         "name":"Scorpions",
-        "pic":"skorp",
+        "pic":"scorpion",
         "cat":"aliens",
         "kind":"swarm",
         "class":"C",
@@ -1436,7 +1436,7 @@
     {
         "id":24,
         "name":"Androks",
-        "pic":"megascorp",
+        "pic":"androk",
         "cat":"aliens",
         "kind":"swarm",
         "class":"A",
@@ -1528,7 +1528,7 @@
     {
         "id":25,
         "name":"Dragons",
-        "pic":"bugboss",
+        "pic":"dragon",
         "cat":"aliens",
         "kind":"bug",
         "class":"A",
@@ -1557,13 +1557,26 @@
             "sound":"bugboss",
             "ammo":["napalm"]
         },
-        "weapon2":{},
+        "weapon2":{
+            "name":"Boule de feu",
+            "cost":5,
+            "range":5,
+            "elevation":2,
+            "noFly":false,
+            "isMelee":false,
+            "rof":9,
+            "accuracy":16,
+            "power":20,
+            "aoe":"squad",
+            "sound":"bugboss",
+            "ammo":["napalm"]
+        },
         "w2chance":0,
         "moveCost":5,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capbld","bugboost","ponte","resistfeu","resistall","ricochet","noaploss","initmelee","dread"],
+        "skills":["capbld","bugboost","ponte","resistfeu","resistall","ricochet","noaploss","initmelee","dread","smartrip"],
         "deathFx":"185366__anwul__monster",
         "spawnFx":"spawn-dragon",
         "fxPriority":8,
@@ -1574,7 +1587,7 @@
     {
         "id":26,
         "name":"Lucioles",
-        "pic":"willo",
+        "pic":"luciole",
         "cat":"aliens",
         "kind":"larve",
         "class":"B",
@@ -1616,7 +1629,7 @@
     {
         "id":28,
         "name":"Necros",
-        "pic":"minibug",
+        "pic":"necro",
         "cat":"aliens",
         "kind":"swarm",
         "class":"C",
@@ -1671,7 +1684,7 @@
     {
         "id":29,
         "name":"Ojos",
-        "pic":"yeuz",
+        "pic":"ojos",
         "cat":"aliens",
         "kind":"swarm",
         "class":"B",
@@ -1784,7 +1797,7 @@
     {
         "id":31,
         "name":"Grabbers",
-        "pic":"wingbug",
+        "pic":"grabber",
         "cat":"aliens",
         "kind":"bug",
         "class":"C",
@@ -1871,7 +1884,7 @@
     {
         "id":33,
         "name":"Megagrubz",
-        "pic":"ver",
+        "pic":"megagrub",
         "cat":"aliens",
         "kind":"larve",
         "class":"A",
@@ -1928,7 +1941,7 @@
     {
         "id":34,
         "name":"Bourdons",
-        "pic":"bee",
+        "pic":"bourdon",
         "cat":"aliens",
         "kind":"swarm",
         "class":"B",
@@ -1971,7 +1984,7 @@
     {
         "id":35,
         "name":"Surfeuses",
-        "pic":"waterspider",
+        "pic":"surfeuse",
         "cat":"aliens",
         "kind":"spider",
         "class":"C",
@@ -2025,7 +2038,7 @@
     {
         "id":43,
         "name":"Sournoises",
-        "pic":"fat",
+        "pic":"sournoise",
         "cat":"aliens",
         "kind":"spider",
         "class":"B",
@@ -2082,7 +2095,7 @@
     {
         "id":243,
         "name":"Torches",
-        "pic":"chaudes",
+        "pic":"torche",
         "cat":"aliens",
         "kind":"spider",
         "class":"B",
@@ -2139,7 +2152,7 @@
     {
         "id":48,
         "name":"Homards",
-        "pic":"homarmatuer",
+        "pic":"homard",
         "cat":"aliens",
         "kind":"swarm",
         "class":"S",
@@ -2185,7 +2198,7 @@
     {
         "id":49,
         "name":"Liches",
-        "pic":"worm",
+        "pic":"fantome",
         "cat":"aliens",
         "kind":"larve",
         "class":"S",
@@ -2244,7 +2257,7 @@
     {
         "id":47,
         "name":"Uberspinne",
-        "pic":"burp",
+        "pic":"uberspinne",
         "cat":"aliens",
         "kind":"spider",
         "class":"S",
@@ -2290,7 +2303,7 @@
     {
         "id":46,
         "name":"Overbugs",
-        "pic":"uberbug",
+        "pic":"overbug",
         "cat":"aliens",
         "kind":"bug",
         "class":"S",
@@ -2368,7 +2381,7 @@
     {
         "id":27,
         "name":"Vomissure",
-        "pic":"flak",
+        "pic":"vomissure",
         "cat":"aliens",
         "kind":"egg2",
         "class":"X",
@@ -2399,7 +2412,7 @@
     {
         "id":45,
         "name":"Flaque",
-        "pic":"flaques",
+        "pic":"flaque",
         "cat":"aliens",
         "kind":"egg2",
         "class":"X",
@@ -2522,7 +2535,7 @@
     {
         "id":44,
         "name":"Veilleurs",
-        "pic":"sentinelles",
+        "pic":"veilleur",
         "cat":"aliens",
         "kind":"egg2",
         "class":"X",
@@ -2581,7 +2594,7 @@
     {
         "id":17,
         "name":"Ruche",
-        "pic":"grulb",
+        "pic":"ruche",
         "cat":"aliens",
         "kind":"egg",
         "class":"X",
@@ -2699,7 +2712,7 @@
     {
         "id":37,
         "name":"Volcan",
-        "pic":"raptor",
+        "pic":"volcan",
         "cat":"aliens",
         "kind":"egg2",
         "class":"X",

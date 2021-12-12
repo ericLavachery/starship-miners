@@ -175,22 +175,29 @@ function unloadInLander() {
 
 function checkMayOut(batType) {
     let mayOut = true;
-    if (zone[0].planet === 'Kzin' && playerInfos.comp.scaph < 2) {
-        mayOut = false;
-        if (batType.cat === 'buildings') {
-            mayOut = true;
-        }
-        if (batType.cat === 'devices' && batType.crew === 0) {
-            mayOut = true;
-        }
-        if (batType.cat === 'vehicles') {
-            if (batType.skills.includes('kzin') || batType.skills.includes('transorbital') || batType.skills.includes('robot')) {
+    if (zone[0].planet === 'Kzin') {
+        if (playerInfos.comp.scaph < 2) {
+            mayOut = false;
+            if (batType.cat === 'buildings') {
                 mayOut = true;
             }
-        }
-        if (batType.cat === 'infantry') {
-            if (batType.skills.includes('kzin') || batType.skills.includes('mutant')) {
+            if (batType.cat === 'devices' && batType.crew === 0) {
                 mayOut = true;
+            }
+            if (batType.cat === 'vehicles') {
+                if (batType.skills.includes('kzin') || batType.skills.includes('transorbital') || batType.skills.includes('robot')) {
+                    mayOut = true;
+                }
+            }
+            if (batType.cat === 'infantry') {
+                if (batType.skills.includes('kzin') || batType.skills.includes('mutant')) {
+                    mayOut = true;
+                }
+            }
+        }
+        if (batType.skills.includes('fly')) {
+            if (!batType.skills.includes('jetpack') && bat.eq != 'e-jetpack' && bat.eq != 'g2motor' && bat.logeq != 'g2motor') {
+                mayOut = false;
             }
         }
     }
