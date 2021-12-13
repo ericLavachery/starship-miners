@@ -883,7 +883,7 @@
             "kit":true,
             "rof":6,
             "accuracy":13,
-            "power":65,
+            "power":47,
             "aoe":"bat",
             "sound":"miss",
             "ammo":["missile-vanguard","missile-deluge"],

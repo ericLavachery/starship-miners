@@ -803,6 +803,41 @@ function checkRicochet(defBat,defBatType,attWeap) {
     return rico;
 };
 
+function applyShield() {
+    let shieldValue = 1;
+    let shieldChance = 0;
+    if (targetBatType.skills.includes('shield')) {
+        shieldChance = 67;
+    } else {
+        if (targetBatType.kind === 'bug' && bugSHIELD) {
+            shieldChance = 22;
+        }
+        if (targetBatType.kind === 'egg' && eggSHIELD) {
+            shieldChance = 33;
+        }
+    }
+    if (activeTurn === 'player' && shieldChance >= 1 && !selectedWeap.ammo.includes('marquage')) {
+        if (rand.rand(1,100) <= shieldChance && !targetBat.tags.includes('shield')) {
+            targetBat.tags.push('shield');
+        }
+        if (targetBat.tags.includes('shield') || playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall') {
+            shieldValue = rand.rand(6,14);
+            if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall') {
+                shieldValue = 10;
+            }
+            if (selectedWeap.noShield) {
+                shieldValue = shieldValue/6;
+            } else if (selectedWeap.minShield) {
+                shieldValue = shieldValue/3;
+            } else if (selectedWeap.lowShield) {
+                shieldValue = shieldValue/1.75;
+            }
+            $('#report').append('<span class="report rose">Bouclier activé<br></span>');
+        }
+    }
+    return shieldValue;
+};
+
 function getCover(bat,withFortif,forAOE) {
     let cover;
     let batType = getBatType(bat);
@@ -2014,13 +2049,20 @@ function weaponAdj(weapon,bat,wn) {
     }
     if (thisWeapon.isMelee || thisWeapon.noShield || thisWeapon.ammo.includes('adamantium') || thisWeapon.ammo.includes('-sunburst')) {
         thisWeapon.noShield = true;
-        thisWeapon.halfShield = false;
-    } else if (thisWeapon.ammo.includes('bfg') || thisWeapon.ammo.includes('laser') || thisWeapon.ammo.includes('autodestruction') || thisWeapon.ammo.includes('mine') || thisWeapon.ammo.includes('suicide') || thisWeapon.ammo.includes('obus-fleche') || thisWeapon.ammo.includes('missile-fleche')) {
-        thisWeapon.halfShield = true;
+        thisWeapon.minShield = false;
+        thisWeapon.lowShield = false;
+    } else if (thisWeapon.ammo.includes('bfg') || thisWeapon.ammo.includes('laser') || thisWeapon.ammo.includes('autodestruction') || thisWeapon.ammo.includes('mine') || thisWeapon.ammo.includes('suicide') || thisWeapon.ammo.includes('obus-fleche') || thisWeapon.ammo.includes('missile-fleche') || thisWeapon.ammo.includes('gaz')) {
         thisWeapon.noShield = false;
+        thisWeapon.minShield = true;
+        thisWeapon.lowShield = false;
+    } else if (thisWeapon.aoe === 'bat') {
+        thisWeapon.noShield = false;
+        thisWeapon.minShield = false;
+        thisWeapon.lowShield = true;
     } else {
         thisWeapon.noShield = false;
-        thisWeapon.halfShield = false;
+        thisWeapon.minShield = false;
+        thisWeapon.lowShield = false;
     }
     // console.log(thisWeapon);
     return thisWeapon;

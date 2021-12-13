@@ -511,34 +511,8 @@ function attack(melee) {
         }
     }
     // SHIELD
-    let shieldChance = 0;
-    if (targetBatType.skills.includes('shield')) {
-        shieldChance = 67;
-    } else {
-        if (targetBatType.kind === 'bug' && bugSHIELD) {
-            shieldChance = 22;
-        }
-        if (targetBatType.kind === 'egg' && eggSHIELD) {
-            shieldChance = 33;
-        }
-    }
-    if (activeTurn === 'player' && shieldChance >= 1 && !selectedWeap.ammo.includes('marquage')) {
-        if (rand.rand(1,100) <= shieldChance && !targetBat.tags.includes('shield')) {
-            targetBat.tags.push('shield');
-        }
-        if (targetBat.tags.includes('shield')) {
-            let shieldValue = rand.rand(6,14);
-            if (selectedWeap.noShield) {
-                shieldValue = shieldValue/6;
-            } else if (selectedWeap.halfShield) {
-                shieldValue = shieldValue/3;
-            } else if (selectedWeap.ammo.includes('gaz')) {
-                shieldValue = shieldValue/4;
-            }
-            shots = Math.ceil(shots/shieldValue);
-            $('#report').append('<span class="report rose">Bouclier activé<br></span>');
-        }
-    }
+    let shieldValue = applyShield();
+    shots = Math.ceil(shots/shieldValue);
     let totalDamage = 0;
     let apDamage = 0;
     let shotResult = {damage:0,hits:0};

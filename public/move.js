@@ -290,7 +290,7 @@ function moveSelectedBat(tileId,free,jump) {
             stormDamage(selectedBat,selectedBatType,false,true);
         }
     }
-    if (zone[0].planet === 'Dom') {
+    if (zone[0].planet === 'Kzin') {
         if (!selectedBatType.skills.includes('fly') && selectedBat.eq != 'e-jetpack') {
             let tile = getTileById(tileId);
             if (tile.terrain != 'M' && tile.terrain != 'F') {
