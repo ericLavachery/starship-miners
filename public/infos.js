@@ -329,6 +329,9 @@ function batInfos(bat,batType,pop) {
     if (bat.tags.includes('blub')) {
         $('#'+bodyPlace).append('<span class="paramName or">Noyade</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
+    if (bat.tags.includes('mud')) {
+        $('#'+bodyPlace).append('<span class="paramName or">Immobilisé</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    }
     if (bat.tags.includes('poison')) {
         $('#'+bodyPlace).append('<span class="paramName or">Poison</span><span class="paramIcon"></span><span class="paramValue or">'+allTags.poison+'</span><br>');
     }
@@ -558,10 +561,14 @@ function batInfos(bat,batType,pop) {
         if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall') {
             $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Supprimer le bataillon (triche!)" class="boutonCiel skillButtons" onclick="removeBat('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
         }
-        let resLoaded = checkResLoad(bat);
-        if (resLoaded >= 1) {
-            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter toutes les ressources" class="boutonRouge skillButtons" onclick="fretThrow()"><i class="fas fa-truck-loading"></i></button>&nbsp; Vider</h4></span>');
+        if (batType.transRes >= 1) {
+            if (Object.keys(bat.transRes).length >= 1) {
+                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter toutes les ressources" class="boutonRouge skillButtons" onclick="fretThrow()"><i class="fas fa-truck-loading"></i></button>&nbsp; Vider</h4></span>');
+            }
         }
+        // let resLoaded = checkResLoad(bat);
+        // if (resLoaded >= 1) {
+        // }
     }
 
     // "moveCost": 3,

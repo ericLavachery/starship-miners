@@ -147,7 +147,7 @@ function refabInfos(myBat,myBatUnitType) {
                                 balise = 'h1';
                             }
                         }
-                        let mayOut = checkMayOut(batType);
+                        let mayOut = checkMayOut(batType,true,bat);
                         if (mayOut) {
                             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Reconstruire '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') ('+bat.eq+'/'+batType.logeq+')" class="boutonGris skillButtons" onclick="reconstruction('+bat.id+','+apCost+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</'+balise+'></span>');
                         } else {

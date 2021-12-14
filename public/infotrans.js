@@ -123,7 +123,7 @@ function unloadInfos(myBat,myBatUnitType) {
                     if (batType.skills.includes('prefab') && bat.apLeft <= 0) {
                         ready = false;
                     }
-                    let mayOut = checkMayOut(batType);
+                    let mayOut = checkMayOut(batType,true,bat);
                     if (myBatUnitType.skills.includes('transorbital') && (batType.id === 126 || batType.id === 225)) {
                         $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer des citoyens d\'un vaisseau" class="boutonGris skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris skillButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+'</'+balise+'></span>');
                     } else if (bat.tags.includes('nomove')) {
@@ -173,7 +173,7 @@ function unloadInLander() {
     showMap(zone,false);
 };
 
-function checkMayOut(batType) {
+function checkMayOut(batType,isBat,bat) {
     let mayOut = true;
     if (zone[0].planet === 'Kzin') {
         if (playerInfos.comp.scaph < 2) {
@@ -196,8 +196,12 @@ function checkMayOut(batType) {
             }
         }
         if (batType.skills.includes('fly')) {
-            if (!batType.skills.includes('jetpack') && bat.eq != 'e-jetpack' && bat.eq != 'g2motor' && bat.logeq != 'g2motor') {
-                mayOut = false;
+            if (!batType.skills.includes('jetpack')) {
+                if (!isBat) {
+                    mayOut = false;
+                } else if (bat.eq != 'e-jetpack' && bat.eq != 'g2motor' && bat.logeq != 'g2motor') {
+                    mayOut = false;
+                }
             }
         }
     }

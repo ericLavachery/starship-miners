@@ -64,7 +64,7 @@ function bfconst(cat,triche,upgrade,retour) {
     let unitMergedCosts;
     sortedUnitsList.forEach(function(unit) {
         // console.log(unit.name);
-        mayOut = checkMayOut(unit);
+        mayOut = checkMayOut(unit,false);
         prodOK = true;
         if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
             prodOK = false;

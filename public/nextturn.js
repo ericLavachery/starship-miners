@@ -1020,9 +1020,9 @@ function tagsEffect(bat,batType) {
     // MUD
     if (bat.tags.includes('mud')) {
         if (batType.skills.includes('ranger') || bat.eq === 'e-ranger' || bat.logeq === 'e-ranger') {
-            bat.apLeft = 0-Math.round(bat.ap*2/3)+rand.rand(0,bat.ap);
+            bat.apLeft = 0-Math.round(bat.ap/2)-1+rand.rand(0,bat.ap);
         } else {
-            bat.apLeft = 0-bat.ap;
+            bat.apLeft = 0-Math.round(bat.ap/2)-1;
         }
     }
     // BLAZE DRUG

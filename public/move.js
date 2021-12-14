@@ -293,21 +293,21 @@ function moveSelectedBat(tileId,free,jump) {
     if (zone[0].planet === 'Kzin') {
         if (!selectedBatType.skills.includes('fly') && selectedBat.eq != 'e-jetpack') {
             let tile = getTileById(tileId);
-            if (tile.terrain != 'M' && tile.terrain != 'F') {
-                let mudChance = 4;
+            if (tile.terrain != 'M' && tile.terrain != 'F' && !tile.rd) {
+                let mudChance = 1;
                 if (tile.terrain === 'P') {
-                    mudChance = 12;
+                    mudChance = 10;
                 } else if (tile.terrain === 'G') {
-                    mudChance = 7;
+                    mudChance = 3;
                 }
-                mudChance = Math.ceil(mudChance*tile.seed/2);
+                mudChance = Math.ceil(mudChance*tile.seed/3);
                 mudChance = Math.ceil(mudChance*7/(selectedBat.vet+6));
                 mudChance = Math.ceil(mudChance*10/(playerInfos.comp.det+8));
                 if (rand.rand(1,100) <= mudChance) {
                     if (!selectedBat.tags.includes('mud')) {
                         selectedBat.tags.push('mud');
                     }
-                    selectedBat.apLeft = 0-selectedBat.ap;
+                    selectedBat.apLeft = 0-Math.round(selectedBat.ap/2)-1;
                     warning('Sables mouvants','Bataillon immobilisé!')
                 }
             }
