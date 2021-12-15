@@ -1239,8 +1239,7 @@ function alienBonus() {
     let batType;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
-            batIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
-            batType = alienUnits[batIndex];
+            batType = getBatType(bat);
             if (batType.skills.includes('bugboost')) {
                 bugROF = 1.5;
             }

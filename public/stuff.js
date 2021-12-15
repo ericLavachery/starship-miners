@@ -896,6 +896,7 @@ function killAlienList() {
         }
     });
     deadAliensList = [];
+    alienBonus();
 };
 
 function killSpaceBatList() {

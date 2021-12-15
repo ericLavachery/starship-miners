@@ -402,7 +402,7 @@ function batDeath(bat,count) {
         batList.splice(batIndex,1);
     } else if (bat.team == 'aliens') {
         if (count) {
-            if (bat.type.includes('Oeuf') || bat.type === 'Coque' || bat.type === 'Ruche' || bat.type === 'Cocon') {
+            if (bat.type.includes('Oeuf') || bat.type === 'Coque' || bat.type === 'Ruche' || bat.type === 'Cocon' || bat.type === 'Volcan' || bat.type === 'Colonie') {
                 playerInfos.eggsKilled = playerInfos.eggsKilled+1;
                 if (bat.type === 'Coque' || bat.type === 'Oeuf' || bat.type === 'Cocon') {
                     eggsNum = eggsNum-1;
@@ -423,6 +423,7 @@ function batDeath(bat,count) {
         }
         let batIndex = aliens.findIndex((obj => obj.id == bat.id));
         aliens.splice(batIndex,1);
+        alienBonus();
     } else if (bat.team == 'locals') {
         let batIndex = locals.findIndex((obj => obj.id == bat.id));
         locals.splice(batIndex,1);

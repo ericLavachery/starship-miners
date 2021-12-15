@@ -29,7 +29,40 @@ function calcRavitVolume(bat) {
     let ammoLeft;
     let w1maxAmmo = batType.weapon.maxAmmo;
     let w2maxAmmo = batType.weapon2.maxAmmo;
-    if (batType.weapon.maxAmmo < 99) {
+    if (batType.weapon2.maxAmmo < 99) {
+        if (playerInfos.bldList.includes('Usine d\'armement')) {
+            w2maxAmmo = Math.round(w2maxAmmo*1.5);
+        } else if (playerInfos.bldList.includes('Arsenal')) {
+            w2maxAmmo = Math.round(w2maxAmmo*1.25);
+        }
+        if (bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq === 'crimekitgi') {
+            w2maxAmmo = Math.floor(w2maxAmmo*1.5);
+            if (w2maxAmmo < 16) {
+                w2maxAmmo = 16;
+            }
+        }
+        if (bat.eq.includes('carrousel') || bat.logeq.includes('carrousel')) {
+            w2maxAmmo = Math.floor(w2maxAmmo*1.35);
+            if (w2maxAmmo < 16) {
+                w2maxAmmo = 16;
+            }
+        }
+        if (bat.ammo2.includes('obus') || bat.ammo2.includes('boulet')) {
+            ammoVolume = 2*batType.weapon2.power;
+        } else if (bat.ammo2.includes('lf-')) {
+            ammoVolume = 0.67*batType.weapon2.power;
+        } else if (bat.ammo2.includes('missile')) {
+            ammoVolume = 8*batType.weapon2.power;
+            ravitVolume[2] = 'missile';
+        } else if (batType.weapon2.ammo.includes('standard')) {
+            ammoVolume = 0.05*batType.weapon2.power;
+        } else {
+            ammoVolume = 0.4*batType.weapon2.power;
+        }
+        ravitVolume[0] = Math.ceil(batType.squads*batType.weapon2.rof*ammoVolume*w2maxAmmo/2000);
+        ammoLeft = calcAmmos(bat,w2maxAmmo);
+        ravitVolume[1] = ravitVolume[0]-Math.floor(ravitVolume[0]*ammoLeft/w2maxAmmo);
+    } else if (batType.weapon.maxAmmo < 99) {
         if (playerInfos.bldList.includes('Usine d\'armement')) {
             w1maxAmmo = Math.round(w1maxAmmo*1.5);
         } else if (playerInfos.bldList.includes('Arsenal')) {
@@ -62,33 +95,6 @@ function calcRavitVolume(bat) {
         ravitVolume[0] = Math.ceil(batType.squads*batType.weapon.rof*ammoVolume*w1maxAmmo/2000);
         ammoLeft = calcAmmos(bat,w1maxAmmo);
         ravitVolume[1] = ravitVolume[0]-Math.floor(ravitVolume[0]*ammoLeft/w1maxAmmo);
-    } else if (batType.weapon2.maxAmmo < 99) {
-        if (bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq.includes('carrousel') || bat.logeq.includes('carrousel') || bat.eq === 'crimekitgi') {
-            w2maxAmmo = Math.floor(w2maxAmmo*1.5);
-            if (w2maxAmmo < 16) {
-                w2maxAmmo = 16;
-            }
-        }
-        if (playerInfos.bldList.includes('Usine d\'armement')) {
-            w2maxAmmo = Math.round(w2maxAmmo*1.5);
-        } else if (playerInfos.bldList.includes('Arsenal')) {
-            w2maxAmmo = Math.round(w2maxAmmo*1.25);
-        }
-        if (bat.ammo2.includes('obus') || bat.ammo2.includes('boulet')) {
-            ammoVolume = 2*batType.weapon2.power;
-        } else if (bat.ammo2.includes('lf-')) {
-            ammoVolume = 0.67*batType.weapon2.power;
-        } else if (bat.ammo2.includes('missile')) {
-            ammoVolume = 8*batType.weapon2.power;
-            ravitVolume[2] = 'missile';
-        } else if (batType.weapon2.ammo.includes('standard')) {
-            ammoVolume = 0.05*batType.weapon2.power;
-        } else {
-            ammoVolume = 0.4*batType.weapon2.power;
-        }
-        ravitVolume[0] = Math.ceil(batType.squads*batType.weapon2.rof*ammoVolume*w2maxAmmo/2000);
-        ammoLeft = calcAmmos(bat,w2maxAmmo);
-        ravitVolume[1] = ravitVolume[0]-Math.floor(ravitVolume[0]*ammoLeft/w2maxAmmo);
     }
     return ravitVolume;
 };

@@ -2019,7 +2019,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","crewsave","transport","routes","producteur","upkeep","updisable","prodres","longshot","fret","dumper","selfbadrepair","medic","reeq","prefab","infrahelp","max1"],
+        "skills":["fouille","recupcit","crewsave","transport","ravitaillement","stock","routes","producteur","upkeep","updisable","prodres","longshot","fret","dumper","selfbadrepair","medic","reeq","prefab","infrahelp","max1"],
         "mecanoCost":10,
         "mediCost":7,
         "transMaxSize":35,

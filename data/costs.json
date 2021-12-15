@@ -279,7 +279,7 @@
         "bldReq":["Laboratoire","Atelier"],
         "compReq":{"gen":1},
         "costs":{"Creatite":100,"Calcium":50,"Azote":90,"Mercure":30,"Drogues":10,"Végétaux":30,"Explosifs":30,"Fer":12,"Plomb":4,"Titane":4,"Azote":6,"Cuivre":6,"Electros":1},
-        "fabTime":30
+        "fabTime":25
     },
     {
         "id":17,
@@ -927,7 +927,7 @@
         "compReq":{"robo":1},
         "costs":{"Scrap":90,"Carbone":90,"Moteurs":100,"Titane":240,"Electros":165,"Batteries":125,"Cuivre":72,"Silicium":90},
         "deploy":{"Energie":125},
-        "fabTime":65,
+        "fabTime":60,
         "inRuin":2
     },
     {
@@ -949,7 +949,7 @@
         "bldReq":["Chenil"],
         "compReq":{"train":1},
         "costs":{},
-        "fabTime":40
+        "fabTime":15
     },
     {
         "id":266,
@@ -958,7 +958,7 @@
         "bldReq":["Chenil","Laboratoire"],
         "compReq":{"gen":1},
         "costs":{"Creatite":180,"Calcium":90,"Azote":90,"Mercure":45,"Drogues":15},
-        "fabTime":50
+        "fabTime":25
     },
     {
         "id":138,
@@ -967,7 +967,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"gen":1},
         "costs":{"Fer":60,"Scrap":60,"Creatite":144,"Calcium":72,"Azote":120,"Mercure":40,"Drogues":15},
-        "fabTime":40
+        "fabTime":25
     },
     {
         "id":163,
@@ -976,7 +976,7 @@
         "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"gen":1},
         "costs":{"Fer":60,"Scrap":120,"Carbone":60,"Plomb":60,"Bois":60,"Aluminium":60,"Tungstène":60,"Bugium":84,"Creatite":144,"Calcium":72,"Azote":180,"Mercure":60,"Drogues":20},
-        "fabTime":70
+        "fabTime":40
     },
     {
         "id":261,

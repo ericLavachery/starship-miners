@@ -205,9 +205,6 @@ let stopForFight = false;
 let alienTypesList = [];
 let colonyTiles = [];
 let spawnType = {};
-let eggsNum = 0;
-let aliensNum = 0;
-let coconSatLimit = 10;
 // CONSTRUCTION
 let conselUnit = {};
 let conselAmmos = ['xxx','xxx','xxx','xxx'];
@@ -219,6 +216,10 @@ let myNewGear = ['xxx','xxx','xxx','xxx'];
 // INVASION
 let zoneInfos = {};
 let maxAliens = 250;
+let eggsNum = 0;
+let aliensNum = 0;
+let coconSatLimit = 10;
+let coconLevel = 1;
 let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;
 let cumDrop = 5; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
 let dropMod = 4; //

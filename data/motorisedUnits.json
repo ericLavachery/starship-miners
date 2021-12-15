@@ -613,7 +613,7 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
-            "maxAmmo":44,
+            "maxAmmo":40,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -628,7 +628,7 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-fleche","obus-uridium","obus-nanite"],
-            "maxAmmo":44,
+            "maxAmmo":40,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","swag","bonibo","adamantite"],
@@ -674,7 +674,7 @@
             "aoe":"bat",
             "sound":"miss",
             "ammo":["missile-vanguard","missile-deluge"],
-            "maxAmmo":24,
+            "maxAmmo":20,
             "ravitBld":"Arsenal"
         },
         "weapon2":{
@@ -932,7 +932,7 @@
             "aoe":"squad",
             "sound":"miss",
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium","missile-deluge"],
-            "maxAmmo":12,
+            "maxAmmo":14,
             "ravitBld":"Arsenal"
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","swag","bonibo","adamantite"],
@@ -3663,9 +3663,9 @@
             "cost":1,
             "range":2,
             "noShield":true,
-            "rof":48,
+            "rof":36,
             "accuracy":10,
-            "power":3,
+            "power":2,
             "aoe":"bat",
             "sound":"shriek",
             "ammo":["disco"]

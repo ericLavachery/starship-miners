@@ -5,7 +5,7 @@ function encounter() {
     if (zone[0].mapDiff < 5) {
         encDiceMax = encDiceMax-5;
     }
-    if (rand.rand(1,2) === 1) {
+    if (rand.rand(1,2) === 1 || zone[0].mapDiff >= 8) {
         hard = true;
         playerInfos.fndCits = playerInfos.fndCits+3;
         encDice = rand.rand(0,encDiceMax);
@@ -29,7 +29,8 @@ function encounter() {
         playerInfos.fndCits = playerInfos.fndCits+3;
     } else if (encDice === 13) {
         // Piège alien
-    } else if (encDice === 14 || encDice === 15) {
+        tooLate(hard);
+    } else if (encDice === 14 || encDice === 15 || encDice === 16 || encDice === 17) {
         tooLate(hard);
     } else {
         madCitizens(hard);
@@ -38,22 +39,24 @@ function encounter() {
 
 function putBastionAliens(hard) {
     dropEgg('Ruche','encounter');
-    if (zone[0].mapDiff >= 3 && zone[0].planet != 'Sarak') {
+    if (zone[0].mapDiff >= 3 && zone[0].mapDiff < 8 && zone[0].planet === 'Dom') {
         dropEgg('Ruche','encounter');
     }
     if (hard) {
-        dropEgg('Ruche','encounter');
         dropEgg('Cocon','encounter');
-        if (zone[0].mapDiff >= 5 || rand.rand(1,3) === 1) {
+        if (zone[0].mapDiff < 8) {
             dropEgg('Ruche','encounter');
-        } else {
-            dropEgg('Cocon','encounter');
+            if (zone[0].mapDiff >= 5 || rand.rand(1,3) === 1) {
+                dropEgg('Cocon','encounter');
+            } else {
+                dropEgg('Ruche','encounter');
+            }
         }
     } else {
         dropEgg('Veilleurs','encounter');
     }
     let numVeil = rand.rand(1,3);
-    if (zone[0].planet === 'Sarak') {
+    if (zone[0].planet != 'Dom') {
         numVeil = 1;
     }
     for (var i = 0; i < numVeil; i++){
