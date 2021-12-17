@@ -526,7 +526,7 @@ function checkPossibleJumps() {
             }
         }
     } else {
-        maxDistance = Math.round(selectedBat.apLeft/selectedBatType.moveCost/1.2);
+        maxDistance = Math.round(selectedBat.apLeft/selectedBatType.moveCost/1.1/moveTuning);
     }
     zone.forEach(function(tile) {
         distance = calcDistance(selectedBat.tileId,tile.id);
@@ -990,7 +990,7 @@ function moveAlienBat(tileId,jump) {
             moveCost = calcMoveCost(tileId,false);
         }
     }
-    let apLost = moveCost;
+    let apLost = moveCost.toFixedNumber(1);
     selectedBat.apLeft = selectedBat.apLeft-apLost;
     // move
     selectedBat.tileId = tileId;

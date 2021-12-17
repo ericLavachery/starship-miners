@@ -1488,10 +1488,19 @@ function recupRes(bat,batType) {
                 let key = entry[0];
                 let value = entry[1];
                 if (value >= 1) {
-                    if (coffre.transRes[key] === undefined) {
-                        coffre.transRes[key] = value;
+                    let res = getResByName(key);
+                    if (res.cat === 'alien') {
+                        if (playerInfos.alienRes[key] === undefined) {
+                            playerInfos.alienRes[key] = value;
+                        } else {
+                            playerInfos.alienRes[key] = playerInfos.alienRes[key]+value;
+                        }
                     } else {
-                        coffre.transRes[key] = coffre.transRes[key]+value;
+                        if (coffre.transRes[key] === undefined) {
+                            coffre.transRes[key] = value;
+                        } else {
+                            coffre.transRes[key] = coffre.transRes[key]+value;
+                        }
                     }
                 }
             });

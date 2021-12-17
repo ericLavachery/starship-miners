@@ -149,7 +149,7 @@ function batInfos(bat,batType,pop) {
             }
         }
     }
-    let roundApLeft = Math.floor(bat.apLeft);
+    let roundApLeft = bat.apLeft.toFixedNumber(1);
     $('#'+bodyPlace).append('<span class="paramName">Points d\'action</span><span class="paramIcon"><i class="fas fa-hourglass-'+hourglass+'"></i></span><span class="paramValue">'+roundApLeft+'/'+ap+'</span><br>');
     // SQUADS
     let iconCol = 'gff';

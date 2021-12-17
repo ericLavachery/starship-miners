@@ -445,7 +445,7 @@
         "compReq":{"bal":1,"log":1},
         "autoComp":["bal",3],
         "factor":"crew",
-        "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":3},
+        "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":6},
         "deploy":{"Végétaux":9}
     },
     {
@@ -457,7 +457,7 @@
         "compReq":{"bal":1,"log":1},
         "autoComp":["bal",3],
         "factor":"crew",
-        "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":3},
+        "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":6},
         "deploy":{"Végétaux":9}
     },
     {
@@ -469,7 +469,7 @@
         "compReq":{"bal":1,"log":1},
         "autoComp":["bal",3],
         "factor":"crew",
-        "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":3},
+        "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":6},
         "deploy":{"Végétaux":9}
     },
     {
@@ -571,7 +571,7 @@
         "compReq":{"train":1,"log":2},
         "autoComp":["train",2],
         "factor":"crew",
-        "costs":{"Blendium":6,"Tissus":12},
+        "costs":{"Blendium":12,"Tissus":12},
         "deploy":{"Végétaux":12}
     },
     {
@@ -699,7 +699,7 @@
         "compReq":{"log":1,"ordre":2},
         "autoComp":[],
         "factor":"crew",
-        "costs":{"Blendium":6,"Tissus":12,"Scrap":6,"Carbone":6,"Fer":3}
+        "costs":{"Blendium":12,"Tissus":12,"Scrap":6,"Carbone":6,"Fer":3}
     },
     {
         "name":"crimekitlu",
@@ -710,7 +710,7 @@
         "compReq":{"log":1,"ordre":2},
         "autoComp":[],
         "factor":"crew",
-        "costs":{"Blendium":6,"Tissus":12,"Scrap":3,"Silicium":6,"Carbone":6}
+        "costs":{"Blendium":12,"Tissus":12,"Scrap":3,"Silicium":6,"Carbone":6}
     },
     {
         "name":"crimekitgi",
@@ -721,7 +721,7 @@
         "compReq":{"log":1,"ordre":2},
         "autoComp":[],
         "factor":"crew",
-        "costs":{"Blendium":6,"Tissus":15,"Scrap":6,"Carbone":6,"Fer":3}
+        "costs":{"Blendium":12,"Tissus":15,"Scrap":6,"Carbone":6,"Fer":3}
     },
     {
         "name":"crimekitto",
@@ -786,7 +786,7 @@
         "bldReq":["Atelier"],
         "compReq":{"def":1},
         "factor":"crew",
-        "costs":{"Carbone":36,"Scrap":6,"Aluminium":12,"Tissus":12,"Blendium":6,"Titane":6,"Silicium":6},
+        "costs":{"Carbone":36,"Scrap":6,"Aluminium":12,"Tissus":12,"Blendium":12,"Titane":6,"Silicium":6},
         "deploy":{"Végétaux":12}
     },
     {

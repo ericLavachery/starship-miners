@@ -108,10 +108,12 @@ let vetBonus = {
     ap: 1,
     stealth: 1.4
 }
-let levelXP = [0,50,150,450,1000];
+let levelXP = [0,50,150,400,800];
 let gangLevelCit = [0,1000,1400,1800,2200,2600,3000,3400,3800,4200,4600,5000,5400,5800,6200,6600,7000,7400,7800,8200,8600,9000,9400];
 let myCompPoints = 0;
 // ACTIONS
+let moveTuning = 1.2; // moveCost x moveTuning
+let moveKzin = 0.85;
 let isReloaded = true;
 let mode = "select";
 let selectedBat = {};
