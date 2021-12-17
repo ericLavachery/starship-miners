@@ -1,6 +1,9 @@
 function medic(cat,cost,around,deep,inBld,medicBatId) {
     console.log('MEDIC SKILL');
     console.log(selectedBatType);
+    console.log(cat);
+    console.log('around='+around);
+    console.log('deep='+deep);
     let medicBat = {};
     let medicBatType = {};
     let denom = 'Soins';
@@ -269,6 +272,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     } else {
         catOK = false;
     }
+    console.log(catOK);
     if (catOK) {
         // SELF
         batUnits = selectedBat.squadsLeft*selectedBatType.squadSize;

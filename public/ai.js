@@ -184,7 +184,7 @@ function shootTarget(recul,melee) {
             isFFW = false;
         }
         if (selectedBatType.name === 'Torches') {
-            if (selectedBat.tileId != selectedBat.oldTileId || selectedBat.squadsLeft >= 3) {
+            if (selectedBat.tileId != selectedBat.oldTileId || selectedBat.squadsLeft >= 4) {
                 alienSelectBaseWeapon();
             }
         }

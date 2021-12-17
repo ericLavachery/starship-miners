@@ -49,8 +49,8 @@ function calcRavitVolume(bat) {
         }
         if (bat.ammo2.includes('obus') || bat.ammo2.includes('boulet')) {
             ammoVolume = 2*batType.weapon2.power;
-        } else if (bat.ammo2.includes('lf-')) {
-            ammoVolume = 0.67*batType.weapon2.power;
+        } else if (bat.ammo2.includes('lf-') || bat.ammo2.includes('bfg') || bat.ammo2.includes('laser') || batType.weapon2.ammo.includes('plasma') || batType.weapon2.ammo.includes('cn-plasma')) {
+            ammoVolume = 1*batType.weapon2.power;
         } else if (bat.ammo2.includes('missile')) {
             ammoVolume = 8*batType.weapon2.power;
             ravitVolume[2] = 'missile';
@@ -82,8 +82,8 @@ function calcRavitVolume(bat) {
         }
         if (bat.ammo.includes('obus') || bat.ammo.includes('boulet')) {
             ammoVolume = 2*batType.weapon.power;
-        } else if (bat.ammo.includes('lf-')) {
-            ammoVolume = 0.67*batType.weapon.power;
+        } else if (bat.ammo.includes('lf-') || bat.ammo.includes('bfg') || bat.ammo.includes('laser') || batType.weapon.ammo.includes('plasma') || batType.weapon.ammo.includes('cn-plasma')) {
+            ammoVolume = 1*batType.weapon.power;
         } else if (bat.ammo.includes('missile')) {
             ammoVolume = 8*batType.weapon.power;
             ravitVolume[2] = 'missile';

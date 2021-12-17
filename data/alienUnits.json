@@ -189,7 +189,7 @@
             "sound":"roar2",
             "ammo":["none"]
         },
-        "w2chance":4,
+        "w2chance":1,
         "moveCost":6,
         "maxFlood":3,
         "maxScarp":3,
@@ -198,7 +198,7 @@
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":1,"Larvium":10,"Mendium":5},
         "killXP":3,
-        "flavText":"Les larves se dirrigent de préférence vers vos bâtiments et ignorent vos autres unités éloignées. Elles se transforment en wurms au bout d'un moment."
+        "flavText":"Les larves se dirrigent de préférence vers vos bâtiments et ignorent vos autres unités éloignées. Leur attaque de queue n'est pas possible tant qu'elles se déplacent. Elles se transforment en wurms au bout d'un moment."
     },
     {
         "id":1,
@@ -246,7 +246,7 @@
             "sound":"roar",
             "ammo":["none"]
         },
-        "w2chance":5,
+        "w2chance":1,
         "moveCost":7,
         "maxFlood":3,
         "maxScarp":3,
@@ -2138,7 +2138,7 @@
             "sound":"explo1",
             "ammo":["suicide"]
         },
-        "w2chance":3,
+        "w2chance":1,
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,

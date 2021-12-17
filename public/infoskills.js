@@ -758,7 +758,7 @@ function skillsInfos(bat,batType,near) {
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
             if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment" class="boutonBleu skillButtons" onclick="medic(`all`,'+baseskillCost+',false,false)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment" class="boutonBleu skillButtons" onclick="medic(`buildings`,'+baseskillCost+',false,false)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
             } else {
                 if (numTargets <= 0) {
                     skillMessage = "Ce bâtiment n'a pas subit de dégâts";
@@ -777,7 +777,7 @@ function skillsInfos(bat,batType,near) {
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
             if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment" class="boutonBleu skillButtons" onclick="medic(`all`,'+baseskillCost+',false,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment" class="boutonBleu skillButtons" onclick="medic(`buildings`,'+baseskillCost+',false,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
             } else {
                 if (numTargets <= 0) {
                     skillMessage = "Ce bâtiment n'a pas subit de dégâts";
