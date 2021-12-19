@@ -258,14 +258,22 @@ function rage() {
     showBatInfos(selectedBat);
 };
 
+function fougue() {
+    selectedBat.salvoLeft = selectedBat.salvoLeft+1;
+    selectedBat.tags.push('nofougue');
+    selectedBat.tags.push('nofougue');
+    selectedBat.tags.push('nofougue');
+    doneAction(selectedBat);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
 function instaKill() {
     selectedBat.tags.push('kill');
     if (selectedBatType.skills.includes('herominik')) {
         selectedBat.tags.push('nokill');
         selectedBat.tags.push('nokill');
-        selectedBat.tags.push('nokill');
     } else {
-        selectedBat.tags.push('nokill');
         selectedBat.tags.push('nokill');
     }
     doneAction(selectedBat);
@@ -275,6 +283,7 @@ function instaKill() {
 
 function tornade() {
     selectedBat.tags.push('tornade');
+    selectedBat.tags.push('notorn');
     selectedBat.tags.push('notorn');
     doneAction(selectedBat);
     selectedBatArrayUpdate();

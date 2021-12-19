@@ -857,11 +857,15 @@ function tagsUpdate(bat) {
     if (rand.rand(1,4) === 1) {
         tagDelete(bat,'norage');
     }
+    tagDelete(bat,'nofougue');
     tagDelete(bat,'kill');
-    if (rand.rand(1,5) === 1) {
+    if (rand.rand(1,3) === 1) {
         tagDelete(bat,'nokill');
     }
     tagDelete(bat,'tornade');
+    if (rand.rand(1,5) === 1) {
+        tagDelete(bat,'notorn');
+    }
     tagDelete(bat,'noBis1');
     tagDelete(bat,'noBis2');
     tagDelete(bat,'action');

@@ -494,6 +494,10 @@ function skillsInfos(bat,batType,near) {
     if (bat.tags.includes('hero') && (batType.skills.includes('herokill') || batType.skills.includes('herominik')) && !bat.tags.includes('nokill') && !bat.tags.includes('zerokill') && batHasTarget && !playerInfos.onShip) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Uniquement avec une arme de précision!" class="boutonJaune skillButtons" onclick="instaKill()"><i class="fas fa-skull-crossbones"></i> <span class="small">0</span></button>&nbsp; Instakill</h4></span>');
     }
+    // FOUGUE
+    if (bat.tags.includes('hero') && batType.skills.includes('herosalvo') && !bat.tags.includes('nofougue') && batHasTarget && !playerInfos.onShip) {
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Une salve supplémentaire" class="boutonVert skillButtons" onclick="fougue()"><i class="ra ra-player-teleport rpg"></i> <span class="small">0</span></button>&nbsp; Fougue</h4></span>');
+    }
     // TORNADE
     if (bat.tags.includes('hero') && batType.skills.includes('herotornade') && !bat.tags.includes('notorn') && batHasTarget && !playerInfos.onShip) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Salves infinies" class="boutonJaune skillButtons" onclick="tornade()"><i class="ra ra-player-teleport rpg"></i> <span class="small">0</span></button>&nbsp; Tornade</h4></span>');
@@ -1253,7 +1257,7 @@ function skillsInfos(bat,batType,near) {
                     }
                 }
             }
-            if (batType.crew >= 1 && !batType.skills.includes('clone')) {
+            if (batType.crew >= 1 && !batType.skills.includes('clone') && batType.cat != 'infantry') {
                 // OCTIRON (véhicules)
                 if (allDrugs.includes('octiron') || bat.tags.includes('octiron')) {
                     drug = getDrugByName('octiron');

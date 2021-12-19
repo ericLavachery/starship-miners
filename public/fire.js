@@ -795,12 +795,12 @@ function attack(melee) {
     if (targetBatType.skills.includes('eggprotect')) {
         let eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1)*2.5)));
         if (targetBatType.skills.includes('turnprotect')) {
-            eggProt = Math.round(eggProt*2/3)+playerInfos.mapTurn;
+            eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.33));
         }
         if (selectedWeap.ammo === 'suicide') {
-            eggProt = Math.round(eggProt/1.75);
+            eggProt = Math.round(eggProt/1.5);
         }
-        if (eggProt > 100) {eggProt = 100;}
+        if (eggProt > 95) {eggProt = 95;}
         if (eggProt < 0) {eggProt = 0;}
         totalDamage = Math.round(totalDamage*(100-eggProt)/100);
         if (playerInfos.comp.ca >= 2) {
@@ -1088,23 +1088,31 @@ function attack(melee) {
     // instakill
     if (!targetBatType.skills.includes('nokill')) {
         if (selectedBat.tags.includes('kill') && selectedWeap.isPrec && totalDamage >= 30) {
-            if (targetBatType.class === 'C' || targetBatType.class === 'B' || targetBatType.name === 'Veilleurs' || targetBatType.name === 'Vomissure' || targetBatType.name === 'Flaque') {
+            if (targetBatType.class === 'C' || targetBatType.class === 'B' || targetBatType.cat === 'egg3') {
                 targetBat.squadsLeft = 0;
             } else if (targetBatType.class === 'A' || targetBatType.class === 'S') {
                 if (rand.rand(1,6) <= targetBatType.rarity) {
+                    targetBat.squadsLeft = 0;
+                    if ((selectedBat.tags.includes('hero') && selectedBatType.skills.includes('herominik')) || targetBatType.class === 'S') {
+                        selectedBat.tags.push('zerokill');
+                    } else {
+                        selectedBat.tags.push('nokill');
+                        selectedBat.tags.push('nokill');
+                    }
+                }
+            } else if (targetBatType.cat === 'egg2') {
+                if (rand.rand(1,6) <= 4) {
+                    targetBat.squadsLeft = 0;
+                    selectedBat.tags.push('nokill');
+                    selectedBat.tags.push('nokill');
+                }
+            } else {
+                if (rand.rand(1,6) <= 2) {
                     targetBat.squadsLeft = 0;
                     if (selectedBat.tags.includes('hero') && selectedBatType.skills.includes('herominik')) {
                         selectedBat.tags.push('zerokill');
                     } else {
                         selectedBat.tags.push('nokill');
-                    }
-                }
-            } else {
-                if (rand.rand(1,6) <= 3) {
-                    targetBat.squadsLeft = 0;
-                    if (selectedBat.tags.includes('hero') && selectedBatType.skills.includes('herominik')) {
-                        selectedBat.tags.push('zerokill');
-                    } else {
                         selectedBat.tags.push('nokill');
                     }
                 }
@@ -1147,11 +1155,6 @@ function attack(melee) {
     let heroSalveDice = rand.rand(1,2);
     if (selectedBat.tags.includes('tornade')) {
         // salves infinies
-    } else if (selectedBat.tags.includes('hero') && selectedBatType.skills.includes('herosalvo') && !selectedBat.tags.includes('hsp')) {
-        selectedBat.tags.push('hsp');
-        if (rand.rand(1,2) === 1 && !selectedBat.tags.includes('rage') && !selectedBat.tags.includes('rush')) {
-            selectedBat.salvoLeft = selectedBat.salvoLeft-1;
-        }
     } else {
         selectedBat.salvoLeft = selectedBat.salvoLeft-1;
     }
@@ -1693,12 +1696,12 @@ function defense(melee) {
     if (selectedBatType.skills.includes('eggprotect')) {
         let eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1)*2.5)));
         if (selectedBatType.skills.includes('turnprotect')) {
-            eggProt = Math.round(eggProt*2/3)+playerInfos.mapTurn;
+            eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.33));
         }
         if (targetWeap.ammo === 'suicide') {
-            eggProt = Math.round(eggProt/1.75);
+            eggProt = Math.round(eggProt/1.5);
         }
-        if (eggProt > 100) {eggProt = 100;}
+        if (eggProt > 95) {eggProt = 95;}
         if (eggProt < 0) {eggProt = 0;}
         totalDamage = Math.round(totalDamage*(100-eggProt)/100);
         if (playerInfos.comp.ca >= 2) {
