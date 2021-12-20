@@ -18,7 +18,7 @@ function nextTurn() {
             warning('Cocon en approche','Le nombre d\'aliens en jeu est trop élevé.');
         }
     }
-    if (Math.floor(playerInfos.mapTurn/25) > playerInfos.cocons) {
+    if (Math.floor(playerInfos.mapTurn/20) > playerInfos.cocons) {
         if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 1) {
             warning('Cocon en approche','La prochaine chutte d\'oeufs sera accompagnée d\'un cocon.');
         }

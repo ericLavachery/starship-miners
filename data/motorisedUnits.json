@@ -3512,6 +3512,7 @@
             "name":"Canon",
             "cost":4,
             "range":2,
+            "elevation":1,
             "noFly":true,
             "rof":8,
             "accuracy":16,
@@ -4031,7 +4032,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","guerrilla","tirailleur","fly","longshot","escape","light","recupcit","recupres"],
+        "skills":["noguet","baddef","guerrilla","tirailleur","fly","longshot","escape","light","recupcit","recupres"],
         "fuzz":4,
         "deathFx":"SmallExplosion_05",
         "mvSnd":"saucer"
@@ -4267,7 +4268,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","longshot","guerrilla","tirailleur","sentinelle","escape","flash","recupcit","recupres","kzin"],
+        "skills":["noguet","baddef","fly","longshot","guerrilla","tirailleur","escape","flash","recupcit","recupres","kzin"],
         "fuzz":5,
         "deathFx":"vehicleexplo3",
         "mvSnd":"saucer"
@@ -4324,7 +4325,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fly","longshot","guerrilla","tirailleur","escape","flash","recupcit","recupres","kzin"],
+        "skills":["noguet","baddef","fly","longshot","guerrilla","tirailleur","escape","flash","recupcit","recupres","kzin"],
         "fuzz":5,
         "deathFx":"vehicleexplo3",
         "mvSnd":"saucer"
@@ -4347,16 +4348,16 @@
         "ap":30,
         "maxSalvo":2,
         "weapon":{
-            "name":"Canon laser",
-            "cost":4,
-            "range":5,
-            "isPrec":true,
-            "rof":12,
-            "accuracy":50,
-            "power":20,
-            "aoe":"brochette",
-            "sound":"laser_canon_x1",
-            "ammo":["laser","laser-g2"]
+            "name":"Shriek",
+            "cost":1,
+            "range":2,
+            "noShield":true,
+            "rof":36,
+            "accuracy":10,
+            "power":2,
+            "aoe":"bat",
+            "sound":"shriek",
+            "ammo":["disco"]
         },
         "weapon2":{
             "name":"Bombes",
@@ -4380,7 +4381,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fly","longshot","gooddef","strong","baddef","flash","recupcit","recupres","kzin"],
+        "skills":["noguet","fly","longshot","strong","baddef","flash","recupcit","recupres","kzin"],
         "fuzz":7,
         "deathFx":"vehicleexplo3",
         "mvSnd":"saucer"
@@ -4435,7 +4436,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fly","longshot","gooddef","strong","baddef","flash","recupcit","recupres","kzin"],
+        "skills":["noguet","fly","longshot","strong","baddef","flash","recupcit","recupres","kzin"],
         "fuzz":7,
         "deathFx":"vehicleexplo3",
         "mvSnd":"saucer"

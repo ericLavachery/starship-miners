@@ -297,7 +297,7 @@ function checkEggsDrop() {
     if (eggDropCount >= 1 || satDrop) {
         eggSound();
         playMusic('horns',true);
-        if (Math.floor(playerInfos.mapTurn/25) > playerInfos.cocons && !satDrop && rand.rand(1,100) <= playerInfos.mapTurn*2) {
+        if (Math.floor(playerInfos.mapTurn/20) > playerInfos.cocons && !satDrop && rand.rand(1,100) <= playerInfos.mapTurn*2) {
             if (coconLevel >= 9) {
                 dropEgg('Cocon','nedge');
             } else {
