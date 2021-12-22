@@ -811,7 +811,7 @@ function applyShield() {
         shieldChance = 67;
     } else {
         if (targetBatType.kind === 'bug' && bugSHIELD) {
-            shieldChance = 22;
+            shieldChance = 33;
         }
         if ((targetBatType.kind === 'egg' || targetBatType.kind === 'egg2') && eggSHIELD) {
             shieldChance = 33;
@@ -1604,6 +1604,11 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.dca = weapon.dca;
     }
+    if (weapon.hide === undefined) {
+        thisWeapon.hide = false;
+    } else {
+        thisWeapon.hide = weapon.hide;
+    }
     // Equip adj
     if (thisWeapon.num === 1) {
         if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes') {
@@ -1649,8 +1654,9 @@ function weaponAdj(weapon,bat,wn) {
             }
             thisWeapon.accuracy = thisWeapon.accuracy+8;
         }
-        if (bat.eq === 'silencieux1' || bat.logeq === 'silencieux1' || bat.eq.includes('kit-chouf')) {
+        if (bat.eq === 'silencieux' || bat.logeq === 'silencieux' || bat.eq === 'silencieux1' || bat.logeq === 'silencieux1' || bat.eq.includes('kit-chouf')) {
             thisWeapon.noise = thisWeapon.noise-1;
+            thisWeapon.hide = true;
         }
     } else if (thisWeapon.num === 2) {
         if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes') {
@@ -1696,8 +1702,9 @@ function weaponAdj(weapon,bat,wn) {
             }
             thisWeapon.accuracy = thisWeapon.accuracy+8;
         }
-        if (bat.eq === 'silencieux2' || bat.logeq === 'silencieux2' || bat.eq.includes('kit-chouf')) {
+        if (bat.eq === 'silencieux' || bat.logeq === 'silencieux' || bat.eq === 'silencieux2' || bat.logeq === 'silencieux2' || bat.eq.includes('kit-chouf')) {
             thisWeapon.noise = thisWeapon.noise-1;
+            thisWeapon.hide = true;
         }
     }
     if (bat.eq === 'g2siege' || bat.logeq === 'g2siege') {
@@ -1740,6 +1747,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.name = 'Arc à poulies';
             thisWeapon.range = 2;
             thisWeapon.elevation = 1;
+            thisWeapon.hide = false;
             thisWeapon.power = 8;
             if (playerInfos.comp.train < 1) {
                 thisWeapon.cost = 4;
@@ -1752,6 +1760,7 @@ function weaponAdj(weapon,bat,wn) {
         if (thisWeapon.name.includes('Arbalète')) {
             thisWeapon.name = 'Arbalète lourde';
             thisWeapon.elevation = 1;
+            thisWeapon.hide = false;
             thisWeapon.power = 9;
             thisWeapon.armors = 0.8;
             if (playerInfos.comp.train < 1) {
@@ -2077,6 +2086,22 @@ function checkDeepForest(tile) {
         }
     }
     return deepForest;
+};
+
+function calcTirFurtif(weap,bat) {
+    let tirFurtif = 0;
+    if (bat.fuzz <= -2) {
+        if (weap.noise < 2) {
+            tirFurtif = calcCamo(bat);
+            if (weap.noise > 0) {
+                tirFurtif = Math.round(tirFurtif/1.65);
+            } else {
+                tirFurtif = Math.round(tirFurtif/1.15);
+            }
+        }
+    }
+    console.log('tirFurtif='+tirFurtif);
+    return tirFurtif;
 };
 
 function calcShotDice(bat,luckyshot) {

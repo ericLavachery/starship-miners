@@ -401,6 +401,7 @@ function goSonde(impacteur) {
     conOut();
     batUnselect();
     playerInfos.undarkOnce = [];
+    playerInfos.allTurns = playerInfos.allTurns+6;
     removeSonde(impacteur);
     saveCurrentZoneAs(0);
     modeSonde = true;

@@ -109,6 +109,7 @@ function combat(melee) {
         ammoLeft = calcAmmos(targetBat,baseAmmo);
     }
     // riposte?
+    let stayHidden = false;
     let riposte = false;
     let initiative = true;
     let minimumFireAP;
@@ -141,6 +142,14 @@ function combat(melee) {
             if (dspeed < aspeed) {
                 initiative = false;
             }
+        }
+    }
+    if (activeTurn === 'player') {
+        if (rand.rand(1,100) <= calcTirFurtif(selectedWeap,selectedBat)) {
+            if (selectedWeap.hide && distance >= 2 && selectedBat.fuzz <= -2) {
+                riposte = false;
+            }
+            stayHidden = true;
         }
     }
     if (riposte) {
@@ -242,26 +251,14 @@ function combat(melee) {
             }, 2000); // How long do you want the delay to be (in milliseconds)?
         }
     }
-    if (activeTurn == 'player') {
-        if (rand.rand(1,100) > calcTirFurtif(selectedWeap,selectedBat)) {
+    if (activeTurn === 'player') {
+        if (!stayHidden) {
             camoOut();
         }
+        // if (rand.rand(1,100) > calcTirFurtif(selectedWeap,selectedBat)) {
+        //     camoOut();
+        // }
     }
-};
-
-function calcTirFurtif(weap,bat) {
-    let tirFurtif = 0;
-    if (bat.fuzz <= -2) {
-        if (weap.noise < 2) {
-            tirFurtif = calcCamo(bat);
-            if (weap.noise > 0) {
-                tirFurtif = Math.round(tirFurtif/1.65);
-            } else {
-                tirFurtif = Math.round(tirFurtif/1.15);
-            }
-        }
-    }
-    return tirFurtif;
 };
 
 function attack(melee) {

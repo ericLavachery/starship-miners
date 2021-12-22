@@ -57,8 +57,7 @@ function createVM(size) {
 function generateNewMap() {
     zone = [];
     playerInfos.sondeMaps = playerInfos.sondeMaps+1;
-    playerInfos.allTurns = playerInfos.allTurns+2;
-    // savePlayerInfos();
+    playerInfos.allTurns = playerInfos.allTurns+1;
     filterParams();
     createMap(mapSize);
     filterMap(zone);

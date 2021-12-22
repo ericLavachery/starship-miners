@@ -510,11 +510,13 @@ function batInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<div class="shSpace"></div>');
             $('#'+bodyPlace).append('<span class="blockTitle"><h3>Ressources</h3></span><br>');
             let transportedRes = JSON.stringify(bat.transRes);
+            transportedRes = "<nobr>"+transportedRes;
             transportedRes = transportedRes.replace(/"/g,"");
             transportedRes = transportedRes.replace(/{/g,"");
             transportedRes = transportedRes.replace(/}/g,"");
-            transportedRes = transportedRes.replace(/,/g," &nbsp;&horbar;&nbsp; ");
+            transportedRes = transportedRes.replace(/,/g,"</nobr> &nbsp;&horbar;&nbsp; <nobr>");
             transportedRes = transportedRes.replace(/:/g," ");
+            transportedRes = transportedRes+"</nobr>";
             let resLoaded = checkResLoad(bat);
             let showTotal = '<span class="cy">'+resLoaded+'</span>/'+resMax;
             $('#'+bodyPlace).append('<span class="paramValue">'+transportedRes+' &nbsp;('+showTotal+')</span><br>');

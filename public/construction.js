@@ -76,6 +76,8 @@ function bfconst(cat,triche,upgrade,retour) {
         if (playerInfos.onShip && unit.skills.includes('nostation')) {
             prodOK = false;
         }
+        let pDistOK = checkPiloneDistance(unit,triche);
+        let pNumOK = checkPiloneNumber(unit,triche);
         if (!triche) {
             if (catz.includes(unit.cat) && unit.fabTime >= 1) {
                 prodHere = true;
@@ -210,8 +212,16 @@ function bfconst(cat,triche,upgrade,retour) {
                 deco = ' udl';
             }
             if ((bldOK && costOK) || triche) {
-                color = catColor(unit);
-                $('#conUnitList').append('<span class="constName klik '+color+deco+'" title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
+                if (pDistOK && pNumOK) {
+                    color = catColor(unit);
+                    $('#conUnitList').append('<span class="constName klik '+color+deco+'" title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
+                } else if (!pNumOK) {
+                    color = 'gff';
+                    $('#conUnitList').append('<span class="constName '+color+deco+'" title="Vous devez avoir 4 Pilônes pour construire un Dôme">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
+                } else if (!pDistOK) {
+                    color = 'gff';
+                    $('#conUnitList').append('<span class="constName '+color+deco+'" title="Vous ne pouvez pas construire un Pilône ou un Dôme à moins de 25 cases d\'un Pilône existant">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
+                }
             } else {
                 color = 'gff';
                 $('#conUnitList').append('<span class="constName '+color+deco+'" title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
@@ -1062,8 +1072,8 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                         } else {
                             let constFactor = 15;
                             if (conselUnit.skills.includes('domeconst')) {
-                                newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*10);
-                                newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*10);
+                                newBat.apLeft = conselUnit.ap-(Math.round((conselUnit.fabTime+200)*conselUnit.ap/constFactor)*3);
+                                newBat.oldapLeft = conselUnit.ap-(Math.round((conselUnit.fabTime+200)*conselUnit.ap/constFactor)*3);
                             } else if (conselUnit.skills.includes('longconst')) {
                                 newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
                                 newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
@@ -1879,4 +1889,42 @@ function checkNearWorkforce(myBat) {
         }
     });
     return workForceId;
+};
+
+function checkPiloneDistance(unit,triche) {
+    let pDistOK = true;
+    if (!triche) {
+        let tileId = selectedBat.tileId;
+        if (unit.name === 'Pilône' || unit.name === 'Dôme') {
+            bataillons.forEach(function(bat) {
+                if (bat.loc === "zone") {
+                    if (bat.type === 'Pilône') {
+                        let distance = calcDistance(bat.tileId,tileId);
+                        if (distance < 25) {
+                            pDistOK = false;
+                        }
+                    }
+                }
+            });
+        }
+    }
+    return pDistOK;
+};
+
+function checkPiloneNumber(unit,triche) {
+    let pNumOK = true;
+    if (unit.name === 'Dôme') {
+        let pNum = 0;
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                if (bat.type === 'Pilône' && bat.apLeft >= 1) {
+                    pNum++;
+                }
+            }
+        });
+        if (pNum < 4) {
+            pNumOK = false;
+        }
+    }
+    return pNumOK;
 };

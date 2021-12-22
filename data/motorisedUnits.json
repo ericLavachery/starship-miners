@@ -3528,6 +3528,7 @@
             "cost":4,
             "range":2,
             "elevation":2,
+            "noise":2,
             "noDef":true,
             "rof":9,
             "accuracy":50,
@@ -3537,8 +3538,8 @@
             "ammo":["guidage"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","adamantite"],
-        "equip":["aucun","carrousel1","g2motor","snorkel","e-mecano"],
-        "log3eq":"snorkel",
+        "equip":["aucun","carrousel1","g2motor","snorkel","e-mecano","silencieux2"],
+        "log3eq":"silencieux2",
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,

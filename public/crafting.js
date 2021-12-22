@@ -60,7 +60,7 @@ function craftWindow(retour) {
                 $('#conUnitList').append('<span class="craftsList '+craftCol+' klik" title="'+toNiceString(craft.bldReq)+'" onclick="doCraft('+craft.id+','+creationNum+')">'+creationNum+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
             } else {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-                $('#conUnitList').append('<span class="craftsList gf" title="'+toNiceString(craft.bldReq)+'">'+creationNum+' '+craft.result+'</span><br>');
+                $('#conUnitList').append('<span class="craftsList gf" title="'+toNiceString(craft.bldReq)+'">'+creationNum+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
             }
             craftCostsList = showCraftCost(craft,creationNum);
             $('#conUnitList').append('<span class="craftsList">'+craftCostsList+'</span><br>');
