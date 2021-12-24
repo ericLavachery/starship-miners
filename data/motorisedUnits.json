@@ -4372,7 +4372,7 @@
             "aoe":"bat",
             "sound":"bombing",
             "ammo":["obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-deluge"],
-            "maxAmmo":18,
+            "maxAmmo":9,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","swag","bonibo","adamantite"],
@@ -4427,7 +4427,7 @@
             "aoe":"unit",
             "sound":"mit_minigun",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"],
-            "maxAmmo":32,
+            "maxAmmo":28,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","swag","bonibo","adamantite"],

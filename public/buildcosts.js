@@ -44,7 +44,7 @@ function voirReserve() {
         playerInfos.reserve[res.name] = dispoRes;
     });
     $('#conUnitList').append('<br><br>');
-    $("#conUnitList").animate({scrollTop:0},"fast");
+    // $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
 function tagRes(resId) {

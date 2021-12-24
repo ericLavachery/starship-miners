@@ -395,13 +395,14 @@ function stopSonde() {
 function goSonde(impacteur) {
     if (impacteur) {
         impact = true;
+        playerInfos.allTurns = playerInfos.allTurns+8;
     } else {
         impact = false;
+        playerInfos.allTurns = playerInfos.allTurns+4;
     }
     conOut();
     batUnselect();
     playerInfos.undarkOnce = [];
-    playerInfos.allTurns = playerInfos.allTurns+6;
     removeSonde(impacteur);
     saveCurrentZoneAs(0);
     modeSonde = true;
