@@ -1141,7 +1141,8 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"explo":3,"energ":1},
         "deploy":{"Platine":1,"Hydrogène":2,"Nanite":6,"Azote":1,"Aranium":1},
-        "batch":100
+        "batch":100,
+        "sound":{"plasma_pistol":"plasma_pistol_n","plasma_x1":"plasma_x1n","plasma_x2":"plasma_x2n"}
     },
     {
         "name": "uridium",
@@ -1666,7 +1667,8 @@
         "compReq":{"energ":1},
         "costs":{"Fer":3,"Cuivre":3,"Carbone":1,"Batteries":1},
         "deploy":{"Energie":12},
-        "batch":12
+        "batch":12,
+        "sound":{"lame":"lame_taser","axe_x2":"axe_taser"}
     },
     {
         "name": "lame-mono",
@@ -1682,7 +1684,8 @@
         "compReq":{"mat":4},
         "costs":{"Rhodium":6},
         "deploy":{"Rhodium":0.2},
-        "batch":12
+        "batch":12,
+        "sound":{"lame":"lame_mono","axe_x2":"lame_mono"}
     },
     {
         "name": "lame-plasma",
@@ -1698,7 +1701,8 @@
         "compReq":{"energ":2},
         "costs":{"Fer":3,"Carbone":1,"Titane":3,"Platine":3,"Batteries":1,"Larvium":1},
         "deploy":{"Energie":10},
-        "batch":12
+        "batch":12,
+        "sound":{"lame":"plasblade","axe_x2":"plasblade"}
     },
     {
         "name": "lame-fplasma",
@@ -1714,7 +1718,8 @@
         "compReq":{"energ":2},
         "costs":{"Fer":5,"Carbone":1,"Titane":4,"Platine":4,"Batteries":2,"Larvium":2},
         "deploy":{"Energie":4},
-        "batch":24
+        "batch":24,
+        "sound":{"saw":"plasmasaw"}
     },
     {
         "name": "lame-adamantite",
@@ -2499,7 +2504,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"explo":1,"pyro":1},
         "deploy":{"Fer":2,"Oxygène":4,"Azote":2,"Potassium":1,"Chlore":2,"Explosifs":1},
-        "batch":100
+        "batch":100,
+        "sound":{"mortier":"flashbang","grenade":"flashbang","tromblon":"flashbang","tromblon_long":"flashbang"}
     },
     {
         "name": "grenade-incendiaire",

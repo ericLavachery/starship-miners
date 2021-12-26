@@ -4255,7 +4255,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-taser","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
         },
         "protection":["aucun","chobham","iso","tisal","nano","duneg","swing"],
         "equip":["aucun","e-flash","e-ranger","lunette1","chargeur1","g2motor","waterproof","g2ai"],

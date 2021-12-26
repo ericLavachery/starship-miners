@@ -664,7 +664,7 @@ function turnInfo() {
         }
         if (bat.loc === "zone") {
             let batType = getBatType(bat);
-            if (bat.apLeft >= 1) {
+            if (bat.apLeft >= 1 && !bat.tags.includes('construction')) {
                 if (batType.skills.includes('cfo')) {
                     domeProtect = true;
                 }

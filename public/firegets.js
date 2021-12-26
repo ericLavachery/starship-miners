@@ -1814,23 +1814,13 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.armors = thisWeapon.armors*0.8;
         }
     }
-    if (thisWeapon.ammo === 'lame-taser') {
-        thisWeapon.sound = 'electricity';
-    }
-    if (thisWeapon.ammo === 'grenade-flashbang') {
-        if (thisWeapon.name.includes('renade') || thisWeapon.name.includes('LG')) {
-            thisWeapon.sound = 'flashbang';
+    // SOUND
+    if (ammo.sound != undefined) {
+        if (ammo.sound[thisWeapon.sound] != undefined) {
+            thisWeapon.sound = ammo.sound[thisWeapon.sound];
         }
     }
-    if (thisWeapon.ammo === 'lame-plasma') {
-        thisWeapon.sound = 'plasblade';
-        if (thisWeapon.cost < 2) {
-            thisWeapon.cost = 2;
-        }
-    }
-    if (thisWeapon.ammo === 'lame-fplasma') {
-        thisWeapon.sound = 'plasmasaw';
-    }
+    // ammo range
     if (thisWeapon.range === 0 && ammo.range > 1) {
         thisWeapon.range = 1;
     } else {
@@ -1993,9 +1983,6 @@ function weaponAdj(weapon,bat,wn) {
     }
     if (zone[0].dark) {
         let vue = calcVue(bat,batType);
-        // if (thisWeapon.range > vue && !thisWeapon.isArt && !thisWeapon.ammo.includes('homing')) {
-        //     thisWeapon.range = vue;
-        // }
     }
     if (bat.tags.includes('fogged') && thisWeapon.range > 1) {
         thisWeapon.range = 1;
