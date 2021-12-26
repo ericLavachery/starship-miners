@@ -373,7 +373,7 @@ function playerSkillsUTChanges() {
         if (playerInfos.comp.def === 3) {
             defComp++;
         }
-        if (playerInfos.comp.def >= 1 && (unit.kind === 'zero-defense' || unit.name.includes('Caserne') || unit.skills.includes('cage')) && !unit.skills.includes('dome')) {
+        if (playerInfos.comp.def >= 1 && (unit.kind === 'zero-defense' || unit.name.includes('Caserne') || unit.skills.includes('cage')) && !unit.skills.includes('dome') && !unit.skills.includes('pilone') && !unit.skills.includes('cfo')) {
             if (unit.compReq === undefined && unit.compHardReq === undefined) {
                 unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.def);
                 if (unit.levels[playerInfos.gang] < 1) {

@@ -970,8 +970,8 @@
         "aoe": "squad",
         "info": "Incendiaire",
         "bldReq":["Usine d'armement","Laboratoire"],
-        "compReq":{"bal":2,"explo":2,"pyro":2},
-        "deploy":{"Fer":2,"Plutonium":2,"Aluminium":1,"Phosphore":2,"Nanite":3},
+        "compReq":{"bal":2,"explo":3,"pyro":2},
+        "deploy":{"Fer":2,"Plutonium":2,"Aluminium":1,"Phosphore":2,"Nanite":5},
         "batch":100
     },
     {
@@ -1139,8 +1139,8 @@
         "apdamage": 0.03,
         "aoe": "squad",
         "bldReq":["Centre de recherches"],
-        "compReq":{"explo":2,"energ":1},
-        "deploy":{"Platine":1,"Hydrogène":2,"Nanite":3,"Azote":1,"Aranium":1},
+        "compReq":{"explo":3,"energ":1},
+        "deploy":{"Platine":1,"Hydrogène":2,"Nanite":6,"Azote":1,"Aranium":1},
         "batch":100
     },
     {
@@ -1246,8 +1246,8 @@
         "apdamage": 0.02,
         "aoe": "squad",
         "bldReq":["Centre de recherches"],
-        "compReq":{"explo":2,"energ":1},
-        "deploy":{"Platine":1,"Hydrogène":2,"Nanite":3,"Azote":1,"Aranium":1},
+        "compReq":{"explo":3,"energ":1},
+        "deploy":{"Platine":1,"Hydrogène":2,"Nanite":6,"Azote":1,"Aranium":1},
         "batch":100
     },
     {
@@ -2774,7 +2774,7 @@
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
         "compReq":{"explo":2,"pyro":2},
-        "deploy":{"Hydrocarbure":3,"Oxygène":3,"Nanite":3},
+        "deploy":{"Hydrocarbure":3,"Oxygène":3,"Nanite":4},
         "batch":100
     },
     {
@@ -2864,7 +2864,7 @@
         "aoe": "bat",
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
-        "compReq":{"pyro":3},
+        "compReq":{"pyro":3,"explo":2},
         "deploy":{"Soufre":2,"Nanite":2,"Oxygène":2,"Potassium":2,"Fuel":2,"Huile":2,"Végétaux":2,"Tissus":1},
         "batch":100
     },

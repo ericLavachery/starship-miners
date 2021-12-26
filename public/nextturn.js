@@ -655,12 +655,26 @@ function turnInfo() {
     hasScraptruck = false;
     landingNoise = 0;
     playerInfos.sci = 0;
+    let nPil = 0;
+    let nDom = 0;
+    domeProtect = false;
     bataillons.forEach(function(bat) {
         if (bat.type === 'Chercheurs') {
             playerInfos.sci++;
         }
         if (bat.loc === "zone") {
             let batType = getBatType(bat);
+            if (bat.apLeft >= 1) {
+                if (batType.skills.includes('cfo')) {
+                    domeProtect = true;
+                }
+                if (batType.skills.includes('dome')) {
+                    nDom++;
+                }
+                if (batType.skills.includes('pilone')) {
+                    nPil++;
+                }
+            }
             batFuzz = calcBatFuzz(bat);
             fuzzTotal = fuzzTotal+batFuzz;
             if (bat.type === 'Fog' && bat.tags.includes('fog')) {
@@ -682,6 +696,9 @@ function turnInfo() {
             }
         }
     });
+    if (nDom >= 1 && nPil >= 4) {
+        domeProtect = true;
+    }
     console.log('landingNoise = '+landingNoise);
     playerInfos.fuzzTotal = fuzzTotal;
     let bonusDiff = Math.floor((fuzzTotal+rand.rand(0,fuzzDiv)-(fuzzDiv/2))/fuzzDiv);
@@ -717,7 +734,11 @@ function turnInfo() {
         $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
         $('#tour').append('Présence Alien <span class="or">'+zone[0].mapDiff+'</span><br>');
         if (playerInfos.bldList.includes('Champ de force')) {
-            $('#tour').append('<span class="cy">Champ de force</span><br>');
+            if (domeProtect) {
+                $('#tour').append('<span class="cy">Dôme actif</span><br>');
+            } else {
+                $('#tour').append('<span class="or">Dôme inactif</span><br>');
+            }
         }
         $('#tour').append('Morts <span class="or">'+playerInfos.unitsLost+'</span> / '+playerInfos.aliensKilled+' / <span class="cy">'+playerInfos.eggsKilled+'</span>');
     }

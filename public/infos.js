@@ -231,12 +231,20 @@ function batInfos(bat,batType,pop) {
     if (bat.tags.includes('construction')) {
         $('#'+bodyPlace).append('<span class="paramName or">Opérationel</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
     }
-    if (playerInfos.bldList.includes('Champ de force')) {
-        if (bat.type === 'Champ de force') {
-            let endFF = bat.creaTurn+25;
-            $('#'+bodyPlace).append('<span class="paramName cy">Dôme</span><span class="paramIcon"></span><span class="paramValue cy">Fin tour '+endFF+'</span><br>');
-        } else if (bat.type === 'Dôme') {
-            $('#'+bodyPlace).append('<span class="paramName cy">Dôme</span><span class="paramIcon"></span><span class="paramValue cy">Permanent</span><br>');
+    if (playerInfos.bldList.includes('Champ de force') || domeProtect) {
+        if (domeProtect) {
+            if (bat.type === 'Champ de force') {
+                let endFF = bat.creaTurn+25;
+                $('#'+bodyPlace).append('<span class="paramName cy">Dôme</span><span class="paramIcon"></span><span class="paramValue cy">Fin tour '+endFF+'</span><br>');
+            } else if (bat.type === 'Dôme') {
+                $('#'+bodyPlace).append('<span class="paramName cy">Dôme</span><span class="paramIcon"></span><span class="paramValue cy">Permanent</span><br>');
+            }
+        } else {
+            if (bat.type === 'Champ de force') {
+                $('#'+bodyPlace).append('<span class="paramName jaune">Dôme</span><span class="paramIcon"></span><span class="paramValue jaune">En construction</span><br>');
+            } else if (bat.type === 'Dôme') {
+                $('#'+bodyPlace).append('<span class="paramName jaune">Dôme</span><span class="paramIcon"></span><span class="paramValue jaune">En construction</span><br>');
+            }
         }
     }
     if (bat.tags.includes('embuscade')) {

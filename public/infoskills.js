@@ -822,23 +822,25 @@ function skillsInfos(bat,batType,near) {
         }
     }
     // COMMANDE
-    let commandOK = false;
-    console.log('COMMAND');
-    console.log(near);
-    if (!playerInfos.onShip && near.schef) {
-        if (!batType.skills.includes('brigands') && !bat.tags.includes('outsider')) {
-            commandOK = true;
+    if (!batType.skills.includes('dome') && !batType.skills.includes('pilone') && !batType.skills.includes('cfo')) {
+        let commandOK = false;
+        console.log('COMMAND');
+        console.log(near);
+        if (!playerInfos.onShip && near.schef) {
+            if (!batType.skills.includes('brigands') && !bat.tags.includes('outsider')) {
+                commandOK = true;
+            }
+            if (batType.name === 'Résistants') {
+                commandOK = true;
+            }
         }
-        if (batType.name === 'Résistants') {
-            commandOK = true;
-        }
-    }
-    console.log('commandOK: '+commandOK);
-    if (commandOK && !bat.tags.includes('gogogo') && !bat.tags.includes('schef') && !batType.skills.includes('leader') && !batType.skills.includes('prayer')) {
-        let leSousChef = checkCommand(bat);
-        console.log(leSousChef);
-        if (leSousChef.ok) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+'+leSousChef.pa+' PA (-1 PA pour le bataillon de '+leSousChef.bat.type+')" class="boutonVert skillButtons" onclick="goCommand('+leSousChef.bat.id+','+leSousChef.pa+')"><i class="far fa-hand-point-right"></i> <span class="small">0</span></button>&nbsp; Commande</h4></span>');
+        console.log('commandOK: '+commandOK);
+        if (commandOK && !bat.tags.includes('gogogo') && !bat.tags.includes('schef') && !batType.skills.includes('leader') && !batType.skills.includes('prayer')) {
+            let leSousChef = checkCommand(bat);
+            console.log(leSousChef);
+            if (leSousChef.ok) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+'+leSousChef.pa+' PA (-1 PA pour le bataillon de '+leSousChef.bat.type+')" class="boutonVert skillButtons" onclick="goCommand('+leSousChef.bat.id+','+leSousChef.pa+')"><i class="far fa-hand-point-right"></i> <span class="small">0</span></button>&nbsp; Commande</h4></span>');
+            }
         }
     }
     // PRIERE
@@ -1257,7 +1259,7 @@ function skillsInfos(bat,batType,near) {
                     }
                 }
             }
-            if (batType.crew >= 1 && !batType.skills.includes('clone') && batType.cat != 'infantry') {
+            if (batType.crew >= 1 && !batType.skills.includes('clone') && batType.cat != 'infantry' && !batType.skills.includes('dome') && !batType.skills.includes('pilone') && !batType.skills.includes('cfo')) {
                 // OCTIRON (véhicules)
                 if (allDrugs.includes('octiron') || bat.tags.includes('octiron')) {
                     drug = getDrugByName('octiron');

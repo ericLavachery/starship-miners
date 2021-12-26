@@ -153,6 +153,9 @@ function checkMaxDroppedEggs() {
     if (maxDroppedEggs < absoluteMinMax) {
         maxDroppedEggs = absoluteMinMax;
     }
+    if (playerInfos.bldList.includes('Champ de force')) {
+        maxDroppedEggs = maxDroppedEggs+Math.round(playerInfos.mapTurn/1.5);
+    }
     return maxDroppedEggs;
 };
 
@@ -236,100 +239,102 @@ function checkEggsDrop() {
         dropChance = 0;
         dropMessage = 'Nombre d\'oeufs tombés atteint: '+playerInfos.droppedEggs+'/'+maxDroppedEggs;
     }
-    if (playerInfos.bldList.includes('Champ de force')) {
+    if (domeProtect) {
         dropChance = 0;
-        dropMessage = 'Champ de force';
+        dropMessage = 'Dôme actif';
     }
     console.log('dropChance='+dropChance);
     if (playerInfos.pseudo === 'Payall') {
         warning('Oeufs','Check '+dropChance+'% '+dropMessage);
     }
-    let crysalide = checkCrysalide();
-    let alienArtillery = checkAlienArtillery();
-    if (zone[0].mapDiff >= 1 || playerInfos.mapTurn >= 25) {
-        let dropCheckDice = rand.rand(1,100);
-        console.log('dropCheckDice='+dropCheckDice);
-        if (dropCheckDice <= dropChance) {
-            drop = true;
-            eggsDrop();
-        } else if (playerInfos.alienSat >= coconSatLimit) {
-            dropEgg('Cocon','any');
-            satDrop = true;
-            playerInfos.alienSat = 0;
-            if (playerInfos.pseudo === 'Payall') {
-                warning('Cocon de saturation','200+ aliens.');
-            }
-        } else if (crysalide) {
-            // cocon avec alien class S !!!
-            dropEgg('Cocon','edge');
-            dropEgg('Oeuf','guard');
-            let crysEggs = Math.floor((200-aliens.length)/50*zone[0].mapDiff/8*zone[0].mapDiff/8);
-            if (crysEggs >= 1) {
-                let i = 1;
-                while (i <= crysEggs) {
-                    dropEgg('Oeuf','nocenter');
-                    if (i > 4) {break;}
-                    i++
-                }
-            }
-            satDrop = true;
-            playerInfos.alienSat = 0;
-        }
-    }
-    if (drop || playerInfos.eggPause) {
-        playerInfos.mapDrop = 0;
-        if (playerInfos.eggPause) {
-            if (rand.rand(1,eggPauseDice) === 1) {
-                playerInfos.eggPause = false;
-                console.log('END PAUSE! 1/'+eggPauseDice);
+    if (!domeProtect) {
+        let crysalide = checkCrysalide();
+        let alienArtillery = checkAlienArtillery();
+        if (zone[0].mapDiff >= 1 || playerInfos.mapTurn >= 25) {
+            let dropCheckDice = rand.rand(1,100);
+            console.log('dropCheckDice='+dropCheckDice);
+            if (dropCheckDice <= dropChance) {
+                drop = true;
+                eggsDrop();
+            } else if (playerInfos.alienSat >= coconSatLimit) {
+                dropEgg('Cocon','any');
+                satDrop = true;
+                playerInfos.alienSat = 0;
                 if (playerInfos.pseudo === 'Payall') {
-                    warning('Fin de la pause','Check 1/'+eggPauseDice+' réussi.');
+                    warning('Cocon de saturation','200+ aliens.');
                 }
-            } else {
-                if (playerInfos.pseudo === 'Payall') {
-                    warning('La pause continue','Check 1/'+eggPauseDice+' raté.');
+            } else if (crysalide) {
+                // cocon avec alien class S !!!
+                dropEgg('Cocon','edge');
+                dropEgg('Oeuf','guard');
+                let crysEggs = Math.floor((200-aliens.length)/50*zone[0].mapDiff/8*zone[0].mapDiff/8);
+                if (crysEggs >= 1) {
+                    let i = 1;
+                    while (i <= crysEggs) {
+                        dropEgg('Oeuf','nocenter');
+                        if (i > 4) {break;}
+                        i++
+                    }
                 }
+                satDrop = true;
+                playerInfos.alienSat = 0;
             }
         }
-    } else {
-        playerInfos.mapDrop = playerInfos.mapDrop+1;
-    }
-    if (eggDropCount >= 1 || satDrop) {
-        eggSound();
-        playMusic('horns',true);
-        if (Math.floor(playerInfos.mapTurn/20) > playerInfos.cocons && !satDrop && rand.rand(1,100) <= playerInfos.mapTurn*2) {
-            if (coconLevel >= 9) {
-                dropEgg('Cocon','nedge');
-            } else {
-                dropEgg('Cocon','target');
+        if (drop || playerInfos.eggPause) {
+            playerInfos.mapDrop = 0;
+            if (playerInfos.eggPause) {
+                if (rand.rand(1,eggPauseDice) === 1) {
+                    playerInfos.eggPause = false;
+                    console.log('END PAUSE! 1/'+eggPauseDice);
+                    if (playerInfos.pseudo === 'Payall') {
+                        warning('Fin de la pause','Check 1/'+eggPauseDice+' réussi.');
+                    }
+                } else {
+                    if (playerInfos.pseudo === 'Payall') {
+                        warning('La pause continue','Check 1/'+eggPauseDice+' raté.');
+                    }
+                }
             }
-            if (playerInfos.comp.det >= 1) {
-                warning('Cocon','Un Cocon est tombé!');
-            }
-            playerInfos.droppedEggs = playerInfos.droppedEggs+1;
-            let doubleCocon = playerInfos.mapTurn+((zone[0].mapDiff-1)*7);
-            if (doubleCocon >= 50) {
-                dropEgg('Oeuf','nedge');
-                playerInfos.droppedEggs = playerInfos.droppedEggs+1;
-            }
-            if (doubleCocon >= 100) {
-                dropEgg('Cocon','nedge');
-                playerInfos.droppedEggs = playerInfos.droppedEggs+1;
+        } else {
+            playerInfos.mapDrop = playerInfos.mapDrop+1;
+        }
+        if (eggDropCount >= 1 || satDrop) {
+            eggSound();
+            playMusic('horns',true);
+            if (Math.floor(playerInfos.mapTurn/20) > playerInfos.cocons && !satDrop && rand.rand(1,100) <= playerInfos.mapTurn*2) {
+                if (coconLevel >= 9) {
+                    dropEgg('Cocon','nedge');
+                } else {
+                    dropEgg('Cocon','target');
+                }
                 if (playerInfos.comp.det >= 1) {
                     warning('Cocon','Un Cocon est tombé!');
                 }
-            }
-            if (doubleCocon >= 200) {
-                dropEgg('Cocon','nedge');
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
-                if (playerInfos.comp.det >= 1) {
-                    warning('Cocon','Un Cocon est tombé!');
+                let doubleCocon = playerInfos.mapTurn+((zone[0].mapDiff-1)*7);
+                if (doubleCocon >= 50) {
+                    dropEgg('Oeuf','nedge');
+                    playerInfos.droppedEggs = playerInfos.droppedEggs+1;
                 }
+                if (doubleCocon >= 100) {
+                    dropEgg('Cocon','nedge');
+                    playerInfos.droppedEggs = playerInfos.droppedEggs+1;
+                    if (playerInfos.comp.det >= 1) {
+                        warning('Cocon','Un Cocon est tombé!');
+                    }
+                }
+                if (doubleCocon >= 200) {
+                    dropEgg('Cocon','nedge');
+                    playerInfos.droppedEggs = playerInfos.droppedEggs+1;
+                    if (playerInfos.comp.det >= 1) {
+                        warning('Cocon','Un Cocon est tombé!');
+                    }
+                }
+                playerInfos.cocons = playerInfos.cocons+1;
             }
-            playerInfos.cocons = playerInfos.cocons+1;
+        } else {
+            // playMusic('noEgg',false);
         }
-    } else {
-        // playMusic('noEgg',false);
     }
     if (playerInfos.mapTurn >= 15) {
         let adjFuzz = playerInfos.fuzzTotal-150;

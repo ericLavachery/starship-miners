@@ -2416,7 +2416,7 @@
         "levels":{"rednecks":14,"blades":14,"bulbos":14,"drogmulojs":14,"tiradores":14,"detruas":14,"brasier":14},
         "bldEquiv":[],
         "bldReq":["Centrale SMR"],
-        "upkeep":{"Energie":50},
+        "upkeep":{"Energie":60,"Plutonium":15,"Eau":60},
         "costs":{"Compo1":180,"Compo2":270,"Compo3":165,"Eau":36,"Energie":5000,"Carbone":1000,"Titane":300,"Potassium":2000,"Cuivre":500,"Platine":400,"Mercure":600,"Plutonium":1000,"Uranium":500,"Uridium":50,"Oxygène":1000,"Azote":1800,"Electros":400,"Batteries":400},
         "fabTime":70,
         "slots":0
@@ -2427,7 +2427,7 @@
         "levels":{"rednecks":19,"blades":19,"bulbos":19,"drogmulojs":19,"tiradores":19,"detruas":19,"brasier":19},
         "bldEquiv":["Champ de force"],
         "bldReq":["Centrale SMR"],
-        "upkeep":{"Energie":80},
+        "upkeep":{"Energie":80,"Plutonium":20,"Eau":80},
         "costs":{"Compo1":210,"Compo2":540,"Compo3":360,"Eau":60,"Energie":25000,"Carbone":2000,"Titane":600,"Potassium":5000,"Rhodium":3000,"Cuivre":1000,"Platine":1200,"Mercure":1500,"Bore":3000,"Plutonium":2000,"Uranium":1000,"Uridium":200,"Oxygène":1000,"Azote":3000,"Electros":500,"Batteries":1000},
         "fabTime":100,
         "slots":0

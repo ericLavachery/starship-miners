@@ -1149,7 +1149,6 @@ function attack(melee) {
     targetBatArrayUpdate();
     // remove ap & salvo
     selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
-    let heroSalveDice = rand.rand(1,2);
     if (selectedBat.tags.includes('tornade')) {
         // salves infinies
     } else {

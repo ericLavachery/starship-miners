@@ -231,6 +231,7 @@ let coqLifeStart = 7; //
 let coqLifeFactor = 0.5; //
 let noEggs = 15; // % pour un eggDrop sans oeufs
 let eggPause = false;
+let domeProtect = false;
 let pauseCount = 15; // pause tous les 15 oeufs tués
 let eggPauseBase = -15;
 let eggPauseMin = 7; // 1 chance sur 12: fin de pause (+compte des oeufs)
