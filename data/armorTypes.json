@@ -609,6 +609,17 @@
         "costs":{"Cuivre":6,"Electros":18,"Silicium":6,"Cobalt":12}
     },
     {
+        "name":"e-control",
+        "cat":"equip",
+        "skills":[],
+        "info":"Contrôle des robots",
+        "bldReq":["QG"],
+        "compReq":{"det":3,"log":2,"robo":1},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Cobalt":50,"Cuivre":100,"Platine":25,"Silicium":50,"Hélium":25,"Electros":50,"Batteries":15}
+    },
+    {
         "name":"helper",
         "cat":"equip",
         "skills":[],

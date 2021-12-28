@@ -525,6 +525,7 @@ function loadBat(batId,transBatId,oldTransBatId) {
     tagDelete(bat,'guet');
     tagDelete(bat,'fortif');
     tagDelete(bat,'camo');
+    bat.fuzz = batType.fuzz;
     if (!transBat.transIds.includes(bat.id)) {
         transBat.transIds.push(bat.id);
     }

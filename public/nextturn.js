@@ -20,7 +20,7 @@ function nextTurn() {
     }
     if (Math.floor(playerInfos.mapTurn/20) > playerInfos.cocons) {
         if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 1) {
-            warning('Cocon en approche','La prochaine chutte d\'oeufs sera accompagnée d\'un cocon.');
+            warning('Cocon en approche','La prochaine chute d\'oeufs pourrait être accompagnée d\'un cocon.');
         }
     }
     activeTurn = 'aliens';
@@ -183,7 +183,6 @@ function nextTurnEnd() {
     let boostedTeams = [];
     let prayedTeams = [];
     medicalTransports = [];
-    let transBat = {};
     playerInfos.bldList = [];
     craftReset(1);
     landers = [];
@@ -263,20 +262,25 @@ function nextTurnEnd() {
                 medicalTransports.push(bat.id);
             }
             if (bat.loc === "trans") {
-                transBat = getBatById(bat.locId);
-                bat.tileId = transBat.tileId;
-                bat.oldTileId = transBat.oldTileId;
-            }
-            // TRANS DANS TRANS
-            if (bat.loc === 'trans') {
                 let motherBat = getBatById(bat.locId);
-                if (motherBat.loc === 'trans') {
-                    let grandMotherBat = getBatById(motherBat.locId);
-                    console.log('MATRIOCHKA!');
+                if (Object.keys(motherBat).length >= 1) {
+                    if (motherBat.loc === 'trans') {
+                        let grandMotherBat = getBatById(motherBat.locId);
+                        console.log('MATRIOCHKA!');
+                        console.log(bat);
+                        console.log(motherBat);
+                        console.log(grandMotherBat);
+                        loadBat(bat.id,grandMotherBat.id,motherBat.id);
+                    } else {
+                        bat.tileId = motherBat.tileId;
+                        bat.oldTileId = motherBat.oldTileId;
+                    }
+                } else {
+                    console.log('ETHERBAT!');
                     console.log(bat);
-                    console.log(motherBat);
-                    console.log(grandMotherBat);
-                    loadBat(bat.id,grandMotherBat.id,motherBat.id);
+                    bat.loc = "zone";
+                    bat.tileId = 1829;
+                    bat.oldTileId = 1829;
                 }
             }
             updateBatProperties(bat,batType);
@@ -650,8 +654,15 @@ function turnInfo() {
         }
     }
     let fuzzTotal = 0;
-    foggersTiles = [];
-    zombifiersTiles = [];
+    let foggersTiles = [];
+    let zombifiersTiles = [];
+    let roboControlers = [];
+    let controlRange = 3;
+    if (playerInfos.bldList.includes('Centre de com')) {
+        controlRange = 12;
+    } else if (playerInfos.bldList.includes('Poste radio')) {
+        controlRange = 6;
+    }
     hasScraptruck = false;
     landingNoise = 0;
     playerInfos.sci = 0;
@@ -679,6 +690,9 @@ function turnInfo() {
             fuzzTotal = fuzzTotal+batFuzz;
             if (bat.type === 'Fog' && bat.tags.includes('fog')) {
                 foggersTiles.push(bat.tileId);
+            }
+            if (bat.eq === 'e-control' || bat.logeq === 'e-control' || batType.skills.includes('control')) {
+                roboControlers.push(bat.tileId);
             }
             if (bat.type === 'Necrotrucks') {
                 zombifiersTiles.push(bat.tileId);
@@ -712,22 +726,39 @@ function turnInfo() {
     let distance;
     foggedTiles = [];
     zombifiedTiles = [];
+    roboTiles = [];
     zone.forEach(function(tile) {
         foggersTiles.forEach(function(foggTile) {
-            distance = calcDistance(tile.id,foggTile);
-            if (distance <= fogRange) {
-                foggedTiles.push(tile.id);
+            if (!foggedTiles.includes(tile.id)) {
+                distance = calcDistance(tile.id,foggTile);
+                if (distance <= fogRange) {
+                    foggedTiles.push(tile.id);
+                }
             }
         });
         zombifiersTiles.forEach(function(zombTile) {
-            distance = calcDistance(tile.id,zombTile);
-            if (distance <= zombRange) {
-                zombifiedTiles.push(tile.id);
+            if (!zombifiedTiles.includes(tile.id)) {
+                distance = calcDistance(tile.id,zombTile);
+                if (distance <= zombRange) {
+                    zombifiedTiles.push(tile.id);
+                }
+            }
+        });
+        roboControlers.forEach(function(controlTile) {
+            if (!roboTiles.includes(tile.id)) {
+                distance = calcDistance(tile.id,controlTile);
+                if (distance <= controlRange) {
+                    roboTiles.push(tile.id);
+                }
             }
         });
     });
+    console.log('Robot Control Tiles');
+    console.log(roboTiles);
     console.log('Zombified Tiles');
     console.log(zombifiedTiles);
+    console.log('Fogged Tiles');
+    console.log(foggedTiles);
     centerMap();
     if (!playerInfos.onShip) {
         $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');

@@ -1239,12 +1239,14 @@ function cocoonSpawn(bat) {
             }
             let satMin = 5-Math.floor(ana/4)+zone[0].mapDiff+Math.round(playerInfos.mapTurn/4);
             console.log('satMin: '+satMin);
-            spawnNum = zone[0].mapDiff+(rand.rand(1,4));
+            spawnNum = Math.round(coconLevel*1.75);
             if (spawnNum < satMin) {
                 spawnNum = satMin;
             }
             console.log('spawnNum: '+spawnNum);
-            if (coconLevel >= 5) {
+            if (coconLevel >= 7) {
+                classes.push('B');
+            } else if (coconLevel >= 5) {
                 classes.push('B');
                 classes.push('C');
             } else {

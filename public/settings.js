@@ -98,10 +98,6 @@ let playerOccupiedTiles = [];
 let visibleAliens = [];
 let visibleEggs = [];
 let prepaBld = {};
-// let vetAccuracy = 4; // plus grand = moins de bonus (3 = x2.3) (2 = x3)
-// let vetInitiative = 10; // plus grand = mieux (retire max vetInitiative*vet)
-// let vetAP = 1; // 1 = +1 ap par niveau
-// let vetStealth = 2; // 2 = +2 stealth par niveau (si 5+ de base)
 let vetBonus = {
     rof: 6,
     initiative: 10,
@@ -161,11 +157,11 @@ let medicalTransports = [];
 let medicPatientAP = 3;
 let landers = [];
 let fogRange = 5;
-let foggersTiles = [];
 let foggedTiles = [];
 let zombRange = 5;
-let zombifiersTiles = [];
 let zombifiedTiles = [];
+let roboRange = false;
+let roboTiles = [];
 let startLander = 5;
 let deploySalvos = 4; // on part de 7
 let deployTuning = 6; // on part de 7 - PAS utilisé !!!

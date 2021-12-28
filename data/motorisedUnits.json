@@ -1017,7 +1017,7 @@
     {
         "id":44,
         "name":"Spenders",
-        "pic":"spender",
+        "pic":"spender2",
         "cat":"vehicles",
         "kind":"bulbos",
         "squads":5,
@@ -1037,7 +1037,7 @@
             "noise":2,
             "rof":21,
             "accuracy":26,
-            "dca":1.5,
+            "dca":1,
             "power":9,
             "aoe":"unit",
             "sound":"mit_pneu",
@@ -3107,7 +3107,7 @@
     {
         "id":101,
         "name":"Genius",
-        "pic":"genius",
+        "pic":"genius2",
         "cat":"vehicles",
         "kind":"zero-tanks",
         "squads":5,
@@ -3121,17 +3121,17 @@
         "ap":14,
         "maxSalvo":2,
         "weapon":{
-            "name":"Mitrailleuse légère",
+            "name":"Mitrailleuse",
             "cost":3,
             "range":2,
             "rof":18,
-            "accuracy":16,
-            "dca":2,
-            "power":9,
-            "armors":0.8,
+            "accuracy":18,
+            "dca":1.15,
+            "power":11,
+            "armors":0.7,
             "aoe":"unit",
-            "sound":"mit_light2",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "sound":"mit_mid",
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -3150,7 +3150,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
-        "equip":["aucun","lunette1","chargeur1","g2motor","snorkel","belier","e-flash","waterproof"],
+        "equip":["aucun","lunette1","chargeur1","g2motor","snorkel","belier","e-flash","waterproof","e-control"],
         "log3eq":"lunette1",
         "moveCost":2,
         "maxFlood":2,
@@ -3538,7 +3538,7 @@
             "ammo":["guidage"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","adamantite"],
-        "equip":["aucun","carrousel1","g2motor","snorkel","e-mecano","silencieux2"],
+        "equip":["aucun","carrousel1","g2motor","snorkel","e-mecano","silencieux2","e-control"],
         "log3eq":"silencieux2",
         "moveCost":2,
         "maxFlood":1,

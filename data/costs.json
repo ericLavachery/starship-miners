@@ -678,7 +678,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":17,"drogmulojs":99,"tiradores":14,"detruas":99,"brasier":99},
         "bldReq":["Usine","Arsenal","Centre de recherches"],
         "compReq":{"robo":1,"ind":1},
-        "costs":{"Fer":124,"Scrap":42,"Carbone":72,"Moteurs":145,"Tungstène":61,"Titane":415,"Electros":210,"Batteries":210,"Cuivre":100,"Silicium":84,"Cobalt":42,"Nickel":42},
+        "costs":{"Fer":124,"Scrap":42,"Carbone":84,"Moteurs":168,"Tungstène":63,"Titane":420,"Electros":315,"Batteries":210,"Cuivre":210,"Silicium":126,"Cobalt":84,"Nickel":42},
         "deploy":{"Plutonium":14,"Huile":9},
         "fabTime":115,
         "inRuin":1

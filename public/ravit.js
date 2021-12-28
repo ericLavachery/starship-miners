@@ -144,7 +144,7 @@ function checkRavit(myBat) {
                 if (batType.skills.includes('ravitaillement') && !batType.skills.includes('stockmed') && ravitTypeOK) {
                     if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
                         ravitLeft = calcRavit(bat);
-                        if (ravitLeft >= 1 && (ravitVolume[0] <= batType.maxSkill || ravitVolume[0] <= 12 || batType.maxSkill >= 18 || (ravitVolume[0] <= 18 && (myBat.eq === 'gilet' || myBat.logeq === 'gilet' || myBat.eq === 'crimekitgi'))) && (ravitVolume[2] != 'missile' || batType.skills.includes('stock'))) {
+                        if (ravitLeft >= 1 && (ravitVolume[0] <= batType.maxSkill || ravitVolume[0] <= 12 || batType.maxSkill >= 18 || (ravitVolume[0] <= 18 && (myBat.eq === 'gilet' || myBat.logeq === 'gilet' || myBat.eq === 'crimekitgi'))) && (ravitVolume[2] != 'missile' || batType.skills.includes('stock') || batType.name === 'Usine d\'armement')) {
                             anyRavit = true;
                         }
                     }

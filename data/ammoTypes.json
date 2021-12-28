@@ -2110,7 +2110,7 @@
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"explo":1,"exo":1,"ca":3},
-        "deploy":{"Carbone":2,"Scrap":2,"Fer":1,"Oxygène":2,"Chlore":6,"Atium":3,"Végétaux":3,"Explosifs":1},
+        "deploy":{"Carbone":2,"Scrap":2,"Fer":1,"Oxygène":2,"Chlore":6,"Atium":6,"Végétaux":3,"Explosifs":1},
         "batch":100
     },
     {
@@ -2339,7 +2339,7 @@
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"bal":1,"explo":1,"exo":1,"ca":3,"arti":1},
-        "deploy":{"Carbone":2,"Aluminium":2,"Nickel":1,"Oxygène":2,"Explosifs":1,"Fuel":1,"Chlore":6,"Atium":3,"Végétaux":3,"Electros":2,"Batteries":1},
+        "deploy":{"Carbone":2,"Aluminium":2,"Nickel":1,"Oxygène":2,"Explosifs":1,"Fuel":1,"Chlore":6,"Atium":6,"Végétaux":3,"Electros":2,"Batteries":1},
         "batch":100
     },
     {
@@ -2550,7 +2550,7 @@
         "aoe": "squad",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":1,"ca":3},
-        "deploy":{"Carbone":1,"Scrap":3,"Fer":1,"Aluminium":1,"Hydrocarbure":2,"Chlore":4,"Atium":2,"Végétaux":2,"Explosifs":1},
+        "deploy":{"Carbone":1,"Scrap":3,"Fer":1,"Aluminium":1,"Hydrocarbure":2,"Chlore":4,"Atium":4,"Végétaux":2,"Explosifs":1},
         "batch":100
     },
     {

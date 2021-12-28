@@ -4210,7 +4210,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","datt","sentinelle","robot","unemun","aifouille"],
+        "skills":["fortif","datt","sentinelle","robot","crange","unemun","aifouille"],
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
     },
@@ -4264,7 +4264,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","datt","robot","sentinelle","mecano","undead","survivor","resistfeu","light","aifouille","roborepair"],
+        "skills":["fortif","datt","robot","crange","sentinelle","mecano","undead","survivor","resistfeu","light","aifouille","roborepair"],
         "mecanoCost":10,
         "fuzz":2,
         "deathFx":"144469__psychedelic-hands__robot-death"
@@ -4429,7 +4429,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["camo","datt","robot","nodeathcount"],
+        "skills":["camo","datt","robot","crange","nodeathcount"],
         "fuzz":0,
         "deathFx":"505751__thehorriblejoke__computer-breaking-sound"
     },
@@ -5630,7 +5630,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","robot","baddef","light","aicible","aifouille","aicamo","detrange"],
+        "skills":["fortif","robot","crange","baddef","light","aicible","aifouille","aicamo","detrange"],
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
     },
@@ -5688,7 +5688,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","datt","robot","light","bgun","aifouille","detrange"],
+        "skills":["fortif","datt","robot","crange","light","bgun","aifouille","detrange"],
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
     },
