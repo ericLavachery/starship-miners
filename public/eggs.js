@@ -153,7 +153,7 @@ function checkMaxDroppedEggs() {
     if (maxDroppedEggs < absoluteMinMax) {
         maxDroppedEggs = absoluteMinMax;
     }
-    if (playerInfos.bldList.includes('Champ de force')) {
+    if (hasUnit('Dôme')) {
         maxDroppedEggs = maxDroppedEggs+Math.round(playerInfos.mapTurn/1.5);
     }
     return maxDroppedEggs;
@@ -1181,6 +1181,14 @@ function alienMorph(bat,newBatName,reset) {
     // Turn & Tags
     batIndex = aliens.findIndex((obj => obj.tileId == putTile));
     let newAlien = aliens[batIndex];
+};
+
+function getCoconLevel() {
+    let cl = zone[0].mapDiff+Math.floor(playerInfos.mapTurn/35)-1;
+    if (hasUnit('Dôme') && playerInfos.mapTurn >= 35 && cl < 9) {
+        cl = 9;
+    }
+    return cl;
 };
 
 function cocoonSpawn(bat) {

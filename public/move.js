@@ -23,7 +23,12 @@ function clickMove(tileId) {
     let moveOK = false;
     let stackOK = true;
     if (isAdjacent(selectedBat.tileId,tileId)) {
-        moveOK = true;
+        if (roboAccess(tileId)) {
+            moveOK = true;
+        } else {
+            moveOK = false;
+            warning('Mouvement impossible','Cette endroit est hors de la zone de contrôle');
+        }
     }
     if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'e-jetpack') {
         jump = true;
@@ -85,6 +90,46 @@ function clickMove(tileId) {
     }
 };
 
+function roboAccess(tileId) {
+    let access = true;
+    if (selectedBatType.skills.includes('crange') && roboRange) {
+        if (!roboTiles.includes(tileId)) {
+            access = false;
+        }
+    }
+    return access;
+};
+
+function getRoboTiles() {
+    if (selectedBat.eq === 'e-control' || selectedBat.logeq === 'e-control') {
+        let roboControlers = [];
+        let controlRange = 3;
+        if (playerInfos.bldList.includes('Centre de com')) {
+            controlRange = 12;
+        } else if (playerInfos.bldList.includes('Poste radio')) {
+            controlRange = 6;
+        }
+        bataillons.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                let batType = getBatType(bat);
+                if (bat.eq === 'e-control' || bat.logeq === 'e-control' || batType.skills.includes('control')) {
+                    roboControlers.push(bat.tileId);
+                }
+            }
+        });
+        zone.forEach(function(tile) {
+            roboControlers.forEach(function(controlTile) {
+                if (!roboTiles.includes(tile.id)) {
+                    distance = calcDistance(tile.id,controlTile);
+                    if (distance <= controlRange) {
+                        roboTiles.push(tile.id);
+                    }
+                }
+            });
+        });
+    }
+};
+
 function tagAction() {
     if (!selectedBat.tags.includes('action')) {
         selectedBat.tags.push('action');
@@ -133,7 +178,7 @@ function moveInfos(bat,jump) {
                         if (batType.skills.includes('guerrilla')) {
                             moveLeft = selectedBat.apLeft+4;
                         }
-                        if (moveLeft > 0 && terrainAccess(selectedBat.id,tile.id)) {
+                        if (moveLeft > 0 && terrainAccess(selectedBat.id,tile.id) && roboAccess(tile.id)) {
                             if (!alienOccupiedTiles.includes(tile.id)) {
                                 cursorSwitch('#',tile.id,'move');
                             } else {
@@ -336,6 +381,7 @@ function moveSelectedBat(tileId,free,jump) {
             showMap(zone,true);
         }
     }
+    getRoboTiles();
 };
 
 function isMapViewBorder(tileId) {

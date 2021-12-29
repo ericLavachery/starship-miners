@@ -9,7 +9,7 @@ function nextTurn() {
     // stopMe = true;
     blockMe(true);
     $('#warnings').empty();
-    coconLevel = zone[0].mapDiff+Math.floor(playerInfos.mapTurn/35)-1;
+    coconLevel = getCoconLevel();
     if (aliens.length >= 200) {
         playerInfos.alienSat = playerInfos.alienSat+1;
     }
@@ -1089,7 +1089,7 @@ function tagsEffect(bat,batType) {
         bat.salvoLeft = bat.salvoLeft+1;
     }
     // OCTIRON DRUG
-    if (bat.tags.includes('octiron')) {
+    if (bat.tags.includes('octiron') && bat.emo < 11) {
         bat.apLeft = bat.apLeft+4;
     }
     // BLISS DRUG
