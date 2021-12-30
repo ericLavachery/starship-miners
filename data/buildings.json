@@ -1312,20 +1312,20 @@
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
-            "name":"Cradle",
-            "cost":5,
-            "range":0,
+            "name":"Roquettes",
+            "cost":6,
+            "range":5,
             "noBis":true,
-            "noShield":true,
-            "noFly":true,
             "kit":true,
-            "rof":5,
-            "accuracy":15,
-            "power":20,
-            "armors":0.5,
-            "aoe":"brochette",
-            "sound":"cradle",
-            "ammo":["boulet"]
+            "rof":10,
+            "accuracy":14,
+            "dca":0.5,
+            "power":24,
+            "aoe":"squad",
+            "sound":"rpg",
+            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
+            "maxAmmo":32,
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Tourelles auto",
@@ -1340,7 +1340,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
-        "equip":["aucun","w1-ggun","w2-brol","w2-autogun","psol2","isophon"],
+        "equip":["aucun","w1-ggun","w2-arti","w2-autogun","psol2","isophon"],
         "log3eq":"psol2",
         "moveCost":99,
         "maxFlood":-1,
@@ -1912,7 +1912,7 @@
         "weapon2":{
             "name":"Roquettes",
             "cost":6,
-            "range":4,
+            "range":5,
             "noBis":true,
             "kit":true,
             "rof":6,
@@ -1987,7 +1987,7 @@
         "weapon2":{
             "name":"Roquettes",
             "cost":6,
-            "range":4,
+            "range":5,
             "noBis":true,
             "kit":true,
             "rof":10,

@@ -2172,7 +2172,8 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2,"explo":1,"arti":1},
         "deploy":{"Carbone":1,"Aluminium":2,"Tungstène":2,"Rhodium":1,"Uranium":3,"Explosifs":2,"Fuel":1,"Electros":2,"Batteries":1},
-        "batch":100
+        "batch":100,
+        "sound":{"miss":"miss_sun"}
     },
     {
         "name": "missile-vanguard",
@@ -2232,7 +2233,8 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":1,"explo":1,"arti":1},
         "deploy":{"Fer":1,"Plomb":1,"Aluminium":1,"Tungstène":2,"Nickel":1,"Explosifs":1,"Fuel":1,"Electros":2,"Batteries":1},
-        "batch":100
+        "batch":100,
+        "sound":{"miss":"miss_sun"}
     },
     {
         "name": "missile-heat",
@@ -2278,7 +2280,8 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":3,"explo":1,"arti":1},
         "deploy":{"Carbone":1,"Fer":1,"Aluminium":2,"Rhodium":1,"Uranium":3,"Explosifs":2,"Fuel":1,"Electros":2,"Batteries":1},
-        "batch":100
+        "batch":100,
+        "sound":{"miss":"miss_sun"}
     },
     {
         "name": "missile-incendiaire",

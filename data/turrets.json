@@ -857,7 +857,7 @@
         "maxSalvo":2,
         "weapon":{
             "name":"Missiles squash",
-            "cost":7,
+            "cost":8,
             "range":9,
             "noMelee":true,
             "noFly":true,
@@ -874,7 +874,7 @@
         },
         "weapon2":{
             "name":"Missiles Vanguard",
-            "cost":9,
+            "cost":10,
             "range":12,
             "noMelee":true,
             "noFly":true,

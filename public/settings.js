@@ -217,7 +217,10 @@ let maxAliens = 250;
 let eggsNum = 0;
 let aliensNum = 0;
 let coconSatLimit = 10;
-let coconLevel = 1;
+let coconStats = {};
+coconStats.level = 1;
+coconStats.turns = 25;
+coconStats.dome = false;
 let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;
 let cumDrop = 5; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
 let dropMod = 4; //

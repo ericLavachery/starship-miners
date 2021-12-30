@@ -864,6 +864,16 @@
         "costs":{"Fer":60,"Aluminium":60,"Titane":60,"Silicium":12,"Rhodium":30,"Electros":15}
     },
     {
+        "name":"w2-sunburst",
+        "cat":"equip",
+        "skills":[],
+        "info":"Missiles Sunburst",
+        "bldReq":["Usine d'armement"],
+        "compReq":{"bal":3,"mat":2,"explo":2,"arti":1},
+        "factor":"rofpow",
+        "costs":{"Fer":60,"Aluminium":60,"Titane":60,"Silicium":12,"Rhodium":30,"Electros":15}
+    },
+    {
         "name":"w2-gaz",
         "cat":"equip",
         "skills":[],

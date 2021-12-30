@@ -153,8 +153,17 @@ function checkMaxDroppedEggs() {
     if (maxDroppedEggs < absoluteMinMax) {
         maxDroppedEggs = absoluteMinMax;
     }
-    if (hasUnit('Dôme')) {
-        maxDroppedEggs = maxDroppedEggs+Math.round(playerInfos.mapTurn/1.5);
+    if (coconStats.dome) {
+        overLimit = playerInfos.mapTurn-30;
+        if (overLimit < 0) {
+            overLimit = 0;
+        }
+        maxDroppedEggs = maxDroppedEggs+Math.round(playerInfos.mapTurn/1.5)+overLimit;
+        overLimit = playerInfos.mapTurn-40;
+        if (overLimit < 0) {
+            overLimit = 0;
+        }
+        maxDroppedEggs = maxDroppedEggs+overLimit;
     }
     return maxDroppedEggs;
 };
@@ -174,11 +183,14 @@ function checkMaxEggsInPlay() {
 function checkCrysalide() {
     let crysalide = false;
     if (playerInfos.mapTurn >= 20) {
-        let crysChance = coconLevel-4;
+        let crysChance = coconStats.level-4;
         if (crysChance < 1) {
             crysChance = 0;
         } else {
             crysChance = crysChance+1;
+            if (coconStats.dome) {
+                crysChance = crysChance+3;
+            }
             let crysDice = 1000+(aliens.length*10);
             if (rand.rand(1,crysDice) <= crysChance) {
                 crysalide = true;
@@ -301,8 +313,8 @@ function checkEggsDrop() {
         if (eggDropCount >= 1 || satDrop) {
             eggSound();
             playMusic('horns',true);
-            if (Math.floor(playerInfos.mapTurn/20) > playerInfos.cocons && !satDrop && rand.rand(1,100) <= playerInfos.mapTurn*2) {
-                if (coconLevel >= 9) {
+            if (Math.floor(playerInfos.mapTurn/coconStats.turns) > playerInfos.cocons && !satDrop && rand.rand(1,100) <= playerInfos.mapTurn*2) {
+                if (coconStats.level >= 9) {
                     dropEgg('Cocon','nedge');
                 } else {
                     dropEgg('Cocon','target');
@@ -1183,12 +1195,22 @@ function alienMorph(bat,newBatName,reset) {
     let newAlien = aliens[batIndex];
 };
 
-function getCoconLevel() {
-    let cl = zone[0].mapDiff+Math.floor(playerInfos.mapTurn/35)-1;
-    if (hasUnit('Dôme') && playerInfos.mapTurn >= 35 && cl < 9) {
-        cl = 9;
+function setCoconStats() {
+    coconStats.level = zone[0].mapDiff+Math.floor(playerInfos.mapTurn/35)-1;
+    coconStats.turns = 25-zone[0].mapDiff;
+    if (hasUnit('Dôme')) {
+        coconStats.dome = true;
+        if (playerInfos.mapTurn >= 35 && coconStats.level < 9) {
+            coconStats.level = 9;
+        }
+        if (coconStats.turns > 10) {
+            coconStats.turns = 10;
+        }
+    } else {
+        coconStats.dome = false;
     }
-    return cl;
+    console.log('COCON STATS');
+    console.log(coconStats);
 };
 
 function cocoonSpawn(bat) {
@@ -1203,7 +1225,7 @@ function cocoonSpawn(bat) {
     console.log('eggCat: '+eggCat);
     if (eggTurn < 3) {
         let classes = [];
-        console.log('coconLevel='+coconLevel);
+        console.log('coconStats.level='+coconStats.level);
         let saturation = false;
         if (aliens.length >= maxAliens-50 && playerInfos.mapTurn >= 55) {
             saturation = true;
@@ -1211,24 +1233,24 @@ function cocoonSpawn(bat) {
         let spawnNum = 4;
         if (eggTurn === 2) {
             spawnNum = 6+Math.floor(playerInfos.mapTurn/50);
-            if (coconLevel >= 12) {
+            if (coconStats.level >= 12) {
                 classes.push('A');
                 spawnNum = spawnNum+3;
-            } else if (coconLevel >= 10) {
+            } else if (coconStats.level >= 10) {
                 classes.push('A');
                 spawnNum = spawnNum+1;
-            } else if (coconLevel >= 8) {
+            } else if (coconStats.level >= 8) {
                 classes.push('A');
                 if (!saturation) {
                     classes.push('B');
                 }
-            } else if (coconLevel >= 6) {
+            } else if (coconStats.level >= 6) {
                 classes.push('A');
                 classes.push('B');
                 if (!saturation) {
                     classes.push('C');
                 }
-            } else if (coconLevel >= 4) {
+            } else if (coconStats.level >= 4) {
                 classes.push('B');
                 classes.push('C');
                 if (saturation) {
@@ -1247,14 +1269,14 @@ function cocoonSpawn(bat) {
             }
             let satMin = 5-Math.floor(ana/4)+zone[0].mapDiff+Math.round(playerInfos.mapTurn/4);
             console.log('satMin: '+satMin);
-            spawnNum = Math.round(coconLevel*1.75);
+            spawnNum = Math.round(coconStats.level*1.75);
             if (spawnNum < satMin) {
                 spawnNum = satMin;
             }
             console.log('spawnNum: '+spawnNum);
-            if (coconLevel >= 7) {
+            if (coconStats.level >= 7) {
                 classes.push('B');
-            } else if (coconLevel >= 5) {
+            } else if (coconStats.level >= 5) {
                 classes.push('B');
                 classes.push('C');
             } else {
@@ -1269,7 +1291,7 @@ function cocoonSpawn(bat) {
         let dropTile = -1;
         alienUnits.forEach(function(unit) {
             if (classes.includes(unit.class) && unit.kind.includes(eggCat) && unit.class != 'S') {
-                if (unit.class != 'A' || unit.rarity != 2 || coconLevel >= 10) {
+                if (unit.class != 'A' || unit.rarity != 2 || coconStats.level >= 10) {
                     checkDiceMax = checkDiceMax+unit.rarity;
                 }
             }
@@ -1289,7 +1311,7 @@ function cocoonSpawn(bat) {
                 raritySum = 0;
                 alienUnits.forEach(function(unit) {
                     if (classes.includes(unit.class) && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat) && unit.class != 'S') {
-                        if (unit.class != 'A' || unit.rarity != 2 || coconLevel >= 10) {
+                        if (unit.class != 'A' || unit.rarity != 2 || coconStats.level >= 10) {
                             raritySum = raritySum+unit.rarity;
                             if (checkDice <= raritySum) {
                                 conselUnit = unit;
@@ -1325,41 +1347,41 @@ function cocoonSpawn(bat) {
     // TRANFORMATION EN CLASSE A (ou S) !
     if (eggTurn >= eggLife) {
         if (eggCat === 'bug') {
-            if (coconLevel >= 9 || bat.tags.includes('crys')) {
+            if (coconStats.level >= 9 || bat.tags.includes('crys')) {
                 alienMorph(bat,'Overbugs',false);
-            } else if (coconLevel >= 6) {
+            } else if (coconStats.level >= 6) {
                 alienMorph(bat,'Dragons',false);
-            } else if (coconLevel >= 4) {
+            } else if (coconStats.level >= 4) {
                 alienMorph(bat,'Scarabs',false);
             } else {
                 alienMorph(bat,'Broyeurs',false);
             }
         } else if (eggCat === 'swarm') {
-            if (coconLevel >= 9 || bat.tags.includes('crys')) {
+            if (coconStats.level >= 9 || bat.tags.includes('crys')) {
                 alienMorph(bat,'Homards',false);
-            } else if (coconLevel >= 6) {
+            } else if (coconStats.level >= 6) {
                 alienMorph(bat,'Mantes',false);
-            } else if (coconLevel >= 4) {
+            } else if (coconStats.level >= 4) {
                 alienMorph(bat,'Galéodes',false);
             } else {
                 alienMorph(bat,'Ojos',false);
             }
         } else if (eggCat === 'larve') {
-            if (coconLevel >= 9 || bat.tags.includes('crys')) {
+            if (coconStats.level >= 9 || bat.tags.includes('crys')) {
                 alienMorph(bat,'Liches',false);
-            } else if (coconLevel >= 6) {
+            } else if (coconStats.level >= 6) {
                 alienMorph(bat,'Megagrubz',false);
-            } else if (coconLevel >= 4) {
+            } else if (coconStats.level >= 4) {
                 alienMorph(bat,'Libellules',false);
             } else {
                 alienMorph(bat,'Wurms',false);
             }
         } else if (eggCat === 'spider') {
-            if (coconLevel >= 9 || bat.tags.includes('crys')) {
+            if (coconStats.level >= 9 || bat.tags.includes('crys')) {
                 alienMorph(bat,'Uberspinne',false);
-            } else if (coconLevel >= 6) {
+            } else if (coconStats.level >= 6) {
                 alienMorph(bat,'Glaireuses',false);
-            } else if (coconLevel >= 3) {
+            } else if (coconStats.level >= 3) {
                 alienMorph(bat,'Mygales',false);
             } else {
                 alienMorph(bat,'Faucheux',false);
@@ -1390,10 +1412,12 @@ function eggSpawn(bat,fromEgg) {
         overSaturation = true;
     }
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
-    let eggModTurn = eggTurn+zone[0].mapDiff-3;
+    let eggModTurn = eggTurn+Math.ceil((zone[0].mapDiff*1.6)-5.4);
+    if (coconStats.dome) {
+        eggModTurn = eggModTurn+3;
+    }
     let eggLife = eggLifeStart+Math.floor(zone[0].mapDiff*eggLifeFactor)+bat.squadsLeft-6;
     if (bat.type === 'Coque' || bat.type === 'Oeuf voilé') {
-        eggModTurn = eggTurn+zone[0].mapDiff-3;
         eggLife = coqLifeStart+Math.floor(zone[0].mapDiff*coqLifeFactor)+bat.squadsLeft-6;
     }
     let presAlien = zone[0].mapDiff;
@@ -1472,12 +1496,12 @@ function eggSpawn(bat,fromEgg) {
             classes.push('C');
             if ((eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB && zone[0].mapDiff >= 3) || zoneInfos.cb) {
                 classes.push('B');
-                if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA && (zone[0].mapDiff >= 6 || overSaturation)) {
+                if (eggModTurn >= 14 && playerInfos.mapTurn >= minTurnA && (zone[0].mapDiff >= 6 || overSaturation)) {
                     classes.push('A');
                     if (zoneInfos.as) {
                         classes.push('S');
                     }
-                    if (eggModTurn >= 20 && playerInfos.mapTurn >= minTurnA && fromEgg) {
+                    if (eggModTurn >= 21 && playerInfos.mapTurn >= minTurnA && fromEgg) {
                         const index = classes.indexOf('C');
                         if (index > -1) {
                             classes.splice(index,1);
