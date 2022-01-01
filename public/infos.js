@@ -746,8 +746,13 @@ function batFullInfos(bat,batType) {
     $('#popbody').append('<div class="shSpace"></div>');
 };
 
-function nomVisible(name) {
-    let nv = name;
+function nomVisible(bat) {
+    let nv = bat.type;
+    if (bat.type === 'Cocon' && playerInfos.comp.ca >= 4) {
+        if (bat.tags.includes('crys') || coconStats.level >= 9) {
+            nv = 'Crysalide';
+        }
+    }
     if (nv === 'Vers' && playerInfos.comp.ca < 2) {
         nv = 'Asticots';
     }

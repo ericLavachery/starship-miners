@@ -260,7 +260,7 @@ function getBatPic(bat,batType) {
 
 function showAlien(bat) {
     let batType = getBatType(bat);
-    let batShowedName = nomVisible(batType.name);
+    let batShowedName = nomVisible(bat);
     let batPic = batType.pic;
     bat.apLeft = bat.apLeft.toFixedNumber(1);
     if (playerInfos.comp.ca >= 1) {
@@ -319,6 +319,9 @@ function showAlien(bat) {
     }
     if (bat.tags.includes('fogged')) {
         tagz = tagz+' (fog)';
+    }
+    if (bat.tags.includes('scion') && playerInfos.comp.ca >= 3) {
+        tagz = tagz+' (prégnant)';
     }
     if ((zone[0].dark && !undarkNow.includes(bat.tileId)) || batType.skills.includes('invisible')) {
         $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);

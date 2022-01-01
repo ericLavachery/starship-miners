@@ -232,7 +232,7 @@ function skillsInfos(bat,batType,near) {
                 }
             } else if (batType.cat == 'vehicles' || batType.skills.includes('machine') || batType.cat == 'devices') {
                 if (batType.skills.includes('maycamo') && !tile.ruins && tile.infra != 'Terriers') {
-                    apCost = Math.floor(batType.ap*Math.sqrt(batType.size)/1.8);
+                    apCost = Math.floor(batType.ap*Math.sqrt(batType.size-3)/4);
                     apReq = Math.floor(batType.ap/1.5);
                     if (inMelee) {
                         camoufOK = false;
@@ -253,7 +253,7 @@ function skillsInfos(bat,batType,near) {
                         apCost = Math.floor(batType.ap/2);
                         apReq = 3;
                     } else {
-                        apCost = Math.floor(batType.ap*Math.sqrt(batType.size)/1.8);
+                        apCost = Math.floor(batType.ap*Math.sqrt(batType.size)/4);
                         apReq = Math.floor(batType.ap/2);
                         if (inMelee) {
                             camoufOK = false;

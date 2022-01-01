@@ -69,8 +69,8 @@ function clickFire(tileId) {
 
 function combat(melee) {
     console.log('START COMBAT');
-    let selectedBatName = nomVisible(selectedBat.type);
-    let targetBatName = nomVisible(targetBat.type);
+    let selectedBatName = nomVisible(selectedBat);
+    let targetBatName = nomVisible(targetBat);
     tagDelete(selectedBat,'mining');
     if (!targetBat.eq.includes('w2-auto')) {
         tagDelete(targetBat,'mining');
@@ -264,8 +264,8 @@ function combat(melee) {
 function attack(melee) {
     // console.log('Attaque ->');
     // console.log(selectedWeap);
-    let selectedBatName = nomVisible(selectedBat.type);
-    let targetBatName = nomVisible(targetBat.type);
+    let selectedBatName = nomVisible(selectedBat);
+    let targetBatName = nomVisible(targetBat);
     minesExploded = 0;
     let xpFactor = Math.round(12/selectedBatType.maxSalvo/10);
     xpFactor = xpFactor.toFixedNumber(2);
@@ -1220,8 +1220,8 @@ function attack(melee) {
 function defense(melee) {
     // console.log('Défense ->');
     // console.log(targetWeap);
-    let selectedBatName = nomVisible(selectedBat.type);
-    let targetBatName = nomVisible(targetBat.type);
+    let selectedBatName = nomVisible(selectedBat);
+    let targetBatName = nomVisible(targetBat);
     let xpFactor = Math.round(12/selectedBatType.maxSalvo/10);
     xpFactor = xpFactor.toFixedNumber(2);
     if (selectedBatType.maxSalvo >= 5) {

@@ -450,6 +450,7 @@ function batDeathEffect(bat,quiet,title,body) {
             setTimeout(function (){
                 $('#b'+bat.tileId).empty();
                 $('#b'+bat.tileId).append(resHere);
+                showMap(zone,false);
             }, 1500); // How long do you want the delay to be (in milliseconds)?
         } else {
             $('#b'+bat.tileId).empty();
@@ -475,6 +476,12 @@ function batDeathEffect(bat,quiet,title,body) {
         if (batType.crew >= 1 && !batType.skills.includes('robot') && !batType.skills.includes('clone') || !batType.skills.includes('dog') && !batType.skills.includes('brigands') && !bat.tags.includes('outsider') && batType.name != 'Citoyens' && batType.name != 'Criminels') {
             deathStress();
         }
+    }
+    if (bat.team === 'aliens' && bat.tags.includes('scion')) {
+        let unitIndex = alienUnits.findIndex((obj => obj.name === 'Scions'));
+        conselUnit = alienUnits[unitIndex];
+        conselAmmos = ['xxx','xxx','xxx','xxx'];
+        putBat(bat.tileId,0,0);
     }
     if (bat.team != 'aliens') {
         $('#unitInfos').empty();

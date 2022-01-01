@@ -138,7 +138,7 @@ function checkRavit(myBat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
                 ravitTypeOK = false;
-                if (bldRav === batType.name || batType.bldEquiv.includes(bldRav) || !batType.skills.includes('ravitprod')) {
+                if (bldRav === batType.name || batType.bldEquiv.includes(bldRav) || !batType.skills.includes('ravitprod') || batType.skills.includes('ravitall')) {
                     ravitTypeOK = true;
                 }
                 if (batType.skills.includes('ravitaillement') && !batType.skills.includes('stockmed') && ravitTypeOK) {
@@ -182,7 +182,7 @@ function goRavit(apCost) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
                 ravitTypeOK = false;
-                if (bldReq === batType.name || batType.bldEquiv.includes(bldReq) || !batType.skills.includes('ravitprod')) {
+                if (bldReq === batType.name || batType.bldEquiv.includes(bldReq) || !batType.skills.includes('ravitprod') || batType.skills.includes('ravitall')) {
                     ravitTypeOK = true;
                 }
                 if (batType.skills.includes('ravitaillement') && ravitTypeOK) {

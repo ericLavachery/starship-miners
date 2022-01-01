@@ -256,7 +256,7 @@ function checkEggsDrop() {
         dropMessage = 'Dôme actif';
     }
     console.log('dropChance='+dropChance);
-    if (playerInfos.pseudo === 'Payall') {
+    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Bob') {
         warning('Oeufs','Check '+dropChance+'% '+dropMessage);
     }
     if (!domeProtect) {
@@ -272,7 +272,7 @@ function checkEggsDrop() {
                 dropEgg('Cocon','any');
                 satDrop = true;
                 playerInfos.alienSat = 0;
-                if (playerInfos.pseudo === 'Payall') {
+                if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Bob') {
                     warning('Cocon de saturation','200+ aliens.');
                 }
             } else if (crysalide) {
@@ -298,11 +298,11 @@ function checkEggsDrop() {
                 if (rand.rand(1,eggPauseDice) === 1) {
                     playerInfos.eggPause = false;
                     console.log('END PAUSE! 1/'+eggPauseDice);
-                    if (playerInfos.pseudo === 'Payall') {
+                    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Bob') {
                         warning('Fin de la pause','Check 1/'+eggPauseDice+' réussi.');
                     }
                 } else {
-                    if (playerInfos.pseudo === 'Payall') {
+                    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Bob') {
                         warning('La pause continue','Check 1/'+eggPauseDice+' raté.');
                     }
                 }
@@ -394,10 +394,10 @@ function eggsDrop() {
     }
     if (eggDice <= noEggDrop) {
         numEggs = 0;
-        if (rand.rand(1,100) <= eggPausePerc) {
+        if (rand.rand(1,100) <= eggPausePerc && !coconStats.dome) {
             playerInfos.eggPause = true;
             console.log('PAUSE! '+eggPausePerc+'%');
-            if (playerInfos.pseudo === 'Payall') {
+            if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Bob') {
                 warning('Nouvelle pause','Check '+eggPausePerc+'% réussi après la chute de 0 oeuf ('+noEggDrop+'%)');
             }
         }
@@ -517,10 +517,10 @@ function dropEgg(alienUnit,theArea) {
         if (alienUnit.includes('Oeuf') || alienUnit === 'Coque' || alienUnit === 'Cocon') {
             eggDropCount = eggDropCount+1;
         }
-        if (playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) >= 1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
+        if (!coconStats.dome && playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) >= 1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;
             console.log('PAUSE! '+playerInfos.eggsKilled+' eggs killed');
-            if (playerInfos.pseudo === 'Payall') {
+            if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Bob') {
                 warning('Nouvelle pause',playerInfos.eggsKilled+' oeufs tués.');
             }
         }
@@ -944,6 +944,7 @@ function spawns() {
     if (fantMorph < 7) {fantMorph = 7;}
     let wurmMorph = Math.round((13-zone[0].mapDiff)/Math.sqrt(zone[0].mapDiff)*5);
     if (wurmMorph < 7) {wurmMorph = 7;}
+    let scionMorph = fantMorph;
     let libMorph = fantMorph;
     let libGenMorph = 0;
     let libGenMax = 14-zone[0].mapDiff;
@@ -1003,6 +1004,8 @@ function spawns() {
                 alienMorph(bat,'Libellules',false);
             } else if (fantMorph <= 25 && rand.rand(1,fantMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Ombres') {
                 alienMorph(bat,'Fantômes',false);
+            } else if (scionMorph <= 20 && rand.rand(1,scionMorph) === 1 && bat.type === 'Wurms' && !bat.tags.includes('scion')) {
+                bat.tags.push('scion');
             } else if (rand.rand(1,vomiToRuche) === 1 && playerInfos.mapTurn >= Math.ceil(vomiToRuche/1.5) && bat.type === 'Vomissure' && !bat.tags.includes('morph')) {
                 bat.tags.push('morph');
                 if (playerInfos.comp.det >= 1 && playerInfos.comp.ca >= 1) {
@@ -1020,6 +1023,9 @@ function spawns() {
                 alienSpawn(bat,'Bugs');
             } else if (bat.type === 'Androks' && aliens.length < maxAliens-50 && aliensNums.scorpions < Math.round(maxPonte*1.5)) {
                 alienSpawn(bat,'Scorpions');
+            } else if (bat.type === 'Homards' && aliens.length < maxAliens-50 && aliensNums.cafards < maxPonte*3) {
+                alienSpawn(bat,'Cafards');
+                alienSpawn(bat,'Cafards');
             } else if (bat.type === 'Veilleurs' && aliens.length < maxAliens-50 && bat.squadsLeft >= 3) {
                 let lifeTurn = playerInfos.mapTurn-bat.creaTurn;
                 if (lifeTurn === 1 && landingNoise >= 2) {

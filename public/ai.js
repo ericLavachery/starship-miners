@@ -513,17 +513,11 @@ function checkPossibleJumps() {
     let maxDistance;
     if (selectedBatType.skills.includes('fouisseur') || selectedBatType.skills.includes('sauteur')) {
         if (selectedBatType.skills.includes('errant')) {
-            maxDistance = 8;
-        } else if (selectedBatType.skills.includes('anycap') || selectedBat.tags.includes('follow')) {
-            maxDistance = 6;
+            maxDistance = 9;
+        } else if (selectedBatType.skills.includes('sauteur')) {
+            maxDistance = 5;
         } else {
-            if (selectedBatType.skills.includes('sauteur')) {
-                maxDistance = 4;
-            } else if (larveHIDE) {
-                maxDistance = 7;
-            } else {
-                maxDistance = 5;
-            }
+            maxDistance = 7;
         }
     } else {
         maxDistance = Math.round(selectedBat.apLeft/selectedBatType.moveCost/1.1/moveTuning);

@@ -4,7 +4,7 @@ function showEnemyBatInfos(bat) {
     let alienUnitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
     let batType = alienUnits[alienUnitIndex];
     let unitsLeft = bat.squadsLeft*batType.squadSize;
-    let batShowedName = nomVisible(batType.name);
+    let batShowedName = nomVisible(bat);
     let compCA = playerInfos.comp.ca;
     if (playerInfos.knownAliens.includes(batType.name)) {
         if (batType.name != 'Vers' && batType.name != 'Blattes') {

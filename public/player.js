@@ -592,11 +592,11 @@ function playerSkillsUTChanges() {
         // CAMOUFLAGE
         if (playerInfos.comp.cam >= 1 && unit.skills.includes('maycamo') && unit.cat === 'infantry') {
             unit.skills.push('camo');
-        }
-        if (playerInfos.comp.cam >= 2 && unit.skills.includes('maycamo') && (unit.cat === 'vehicles' || unit.cat === 'devices')) {
+        } else if (playerInfos.comp.cam >= 1 && unit.skills.includes('maycamo') && unit.cat === 'vehicles' && unit.size < 20) {
             unit.skills.push('camo');
-        }
-        if (playerInfos.comp.cam >= 3 && unit.skills.includes('maycamo') && unit.cat === 'buildings') {
+        } else if (playerInfos.comp.cam >= 2 && unit.skills.includes('maycamo') && (unit.cat === 'vehicles' || unit.cat === 'devices')) {
+            unit.skills.push('camo');
+        } else if (playerInfos.comp.cam >= 3 && unit.skills.includes('maycamo') && unit.cat === 'buildings') {
             unit.skills.push('camo');
         }
         if (playerInfos.comp.cam >= 1) {

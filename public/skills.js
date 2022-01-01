@@ -423,6 +423,12 @@ function longCamo(bat) {
     console.log('Camouflage en fin de tour');
     let batType = getBatType(bat);
     let camChance = calcCamo(bat);
+    if (camChance < 85) {
+        camChance = Math.round(camChance*1.5);
+        if (camChance > 85) {
+            camChance = 85;
+        }
+    }
     let camOK = false;
     let camDice = rand.rand(1,100);
     console.log('camChance '+camChance);
@@ -550,6 +556,13 @@ function armyAssign(batId,army) {
     // let index = bataillons.findIndex((obj => obj.id == batId));
     // let bat = bataillons[index];
     selectedBat.army = army;
+    if (selectedBatType.skills.includes('transport')) {
+        bataillons.forEach(function(bat) {
+            if (bat.loc === 'trans' && bat.locId == selectedBat.id) {
+                bat.army = army;
+            }
+        });
+    }
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
     if (inSoute) {
