@@ -1578,7 +1578,7 @@
     {
         "id":132,
         "name":"Raves",
-        "levels":{"rednecks":99,"blades":99,"bulbos":17,"drogmulojs":19,"tiradores":99,"detruas":16,"brasier":18},
+        "levels":{"rednecks":99,"blades":99,"bulbos":17,"drogmulojs":99,"tiradores":99,"detruas":16,"brasier":99},
         "bldReq":["Arsenal","QG","Chaîne de montage"],
         "compReq":{"arti":1,"bal":2},
         "costs":{"Fer":288,"Scrap":120,"Carbone":120,"Aluminium":216,"Moteurs":45,"Tungstène":228,"Silicium":18,"Cuivre":33,"Electros":80,"Batteries":139,"Compo2":96,"Compo3":72,"Végétaux":180,"Blendium":180,"Huile":10,"Mendium":36,"Azote":72,"Cobalt":30,"Hélium":60},
@@ -1684,7 +1684,7 @@
     {
         "id":113,
         "name":"Cigognes",
-        "levels":{"rednecks":16,"blades":99,"bulbos":99,"drogmulojs":19,"tiradores":18,"detruas":99,"brasier":99},
+        "levels":{"rednecks":16,"blades":99,"bulbos":99,"drogmulojs":18,"tiradores":18,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Aérodocks","Centre de com"],
         "compReq":{"aero":1},
         "costs":{"Fer":135,"Scrap":15,"Carbone":210,"Aluminium":120,"Moteurs":60,"Titane":330,"Tungstène":60,"Cuivre":90,"Electros":210,"Batteries":180,"Silicium":15,"Huile":45,"Mendium":30},
@@ -1736,7 +1736,7 @@
     {
         "id":110,
         "name":"Wyverns",
-        "levels":{"rednecks":99,"blades":99,"bulbos":19,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":19,"drogmulojs":19,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Usine d'armement","Aérodocks","QG"],
         "compReq":{"aero":1},
         "compHardReq":{"explo":1,"energ":1},
@@ -1872,13 +1872,23 @@
         "deploy":{"Eau":50,"Nourriture":50,"Oxygène":50,"Energie":200,"Huile":5,"Chlore":15,"Drogues":15,"Tissus":15,"Zinc":15,"Uranium":100,"Hydrogène":35}
     },
     {
+        "id":270,
+        "name":"Tour de guet",
+        "levels":{"rednecks":11,"blades":11,"bulbos":11,"drogmulojs":11,"tiradores":11,"detruas":11,"brasier":11},
+        "bldReq":["Laboratoire","Poste radio"],
+        "compReq":{"det":2,"energ":1,"ordre":1},
+        "costs":{"Compo1":100,"Compo2":50,"Eau":54,"Carbone":72,"Silicium":18,"Electros":18,"Batteries":18,"Energie":18},
+        "fabTime":25,
+        "slots":0
+    },
+    {
         "id":137,
         "name":"Tour de garde",
         "levels":{"rednecks":17,"blades":16,"bulbos":13,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":15},
         "bldReq":["Usine d'armement","Centre de recherches","Chaîne de montage"],
         "compReq":{"energ":3},
         "compPass":["blades","bulbos","brasier"],
-        "compHardReq":{"energ":1},
+        "compHardReq":{"det":3,"energ":1},
         "costs":{"Compo1":150,"Compo2":150,"Compo3":90,"Eau":18,"Carbone":72,"Titane":72,"Tungstène":108,"Aluminium":18,"Bois":18,"Rhodium":144,"Silicium":18,"Bore":36,"Electros":72,"Batteries":108,"Energie":54},
         "fabTime":55,
         "slots":0

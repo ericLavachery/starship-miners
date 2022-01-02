@@ -1656,7 +1656,9 @@ function weaponAdj(weapon,bat,wn) {
             }
         }
         if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.logeq === 'lunette' || bat.logeq === 'lunette1' || bat.eq === 'crimekitlu' || bat.eq.includes('kit-chouf') || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
-            if (thisWeapon.elevation <= 1) {
+            if (batType.skills.includes('lurange')) {
+                thisWeapon.range = Math.ceil(thisWeapon.range*1.5);
+            } else if (thisWeapon.elevation <= 1) {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
             thisWeapon.accuracy = thisWeapon.accuracy+8;
@@ -1704,7 +1706,9 @@ function weaponAdj(weapon,bat,wn) {
             }
         }
         if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.logeq === 'lunette' || bat.logeq === 'lunette2' || bat.eq.includes('kit-chouf')) {
-            if (thisWeapon.elevation <= 1) {
+            if (batType.skills.includes('lurange')) {
+                thisWeapon.range = Math.ceil(thisWeapon.range*1.5);
+            } else if (thisWeapon.elevation <= 1) {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
             thisWeapon.accuracy = thisWeapon.accuracy+8;

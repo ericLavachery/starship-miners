@@ -884,6 +884,16 @@
         "costs":{"Carbone":4,"Scrap":8,"Aluminium":8,"Titane":4}
     },
     {
+        "name":"w2-guidage",
+        "cat":"equip",
+        "skills":[],
+        "info":"Guidage laser",
+        "bldReq":["Centre de com"],
+        "compReq":{"arti":1,"bal":2},
+        "factor":"one",
+        "costs":{"Carbone":72,"Silicium":24,"Electros":48,"Batteries":24}
+    },
+    {
         "name":"w2-tromblon",
         "cat":"equip",
         "skills":[],
