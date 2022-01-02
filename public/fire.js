@@ -322,6 +322,18 @@ function attack(melee) {
                 }
             }
         }
+        if (selectedWeap.ammo.includes('plastanium')) {
+            if (wetness >= 2) {
+                if (selectedWeap.aoe === 'unit') {
+                    selectedWeap.aoe = 'brochette';
+                } else if (selectedWeap.aoe === 'brochette') {
+                    selectedWeap.aoe = 'squad';
+                } else {
+                    selectedWeap.aoe = 'bat';
+                }
+            }
+            selectedWeap.power = Math.round(selectedWeap.power*(1+(wetness/4)));
+        }
     }
     // AOE Shots
     let aoeShots = 1;
@@ -719,6 +731,14 @@ function attack(melee) {
                 $('#report').append('<span class="report rose">Sensibilité au secousses<br></span>');
             }
             // console.log('sensibilité au blast!');
+        }
+    }
+    // toxine veuve résistance robots et véhicules
+    if (selectedWeap.ammo.includes('toxine')) {
+        if (targetBatType.cat != 'infantry') {
+            totalDamage = 0;
+            apDamage = 0;
+            $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
         }
     }
     // résistance poison (gaz)
@@ -1273,6 +1293,18 @@ function defense(melee) {
                 }
             }
         }
+        if (targetWeap.ammo.includes('plastanium')) {
+            if (wetness >= 2) {
+                if (targetWeap.aoe === 'unit') {
+                    targetWeap.aoe = 'brochette';
+                } else if (targetWeap.aoe === 'brochette') {
+                    targetWeap.aoe = 'squad';
+                } else {
+                    targetWeap.aoe = 'bat';
+                }
+            }
+            targetWeap.power = Math.round(targetWeap.power*(1+(wetness/4)));
+        }
     }
     let aoeShots = 1;
     if (targetWeap.aoe == "bat") {
@@ -1619,6 +1651,14 @@ function defense(melee) {
                 $('#report').append('<span class="report rose">Sensibilité aux secousses<br></span>');
             }
             // console.log('sensibilité au blast!');
+        }
+    }
+    // toxine veuve résistance robots et véhicules
+    if (targetWeap.ammo.includes('toxine')) {
+        if (selectedBatType.cat != 'infantry') {
+            totalDamage = 0;
+            apDamage = 0;
+            $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
         }
     }
     // résistance poison (gaz)

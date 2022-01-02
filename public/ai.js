@@ -374,6 +374,14 @@ function targetLogic(bat) {
     if (bat.fuzz <= -2) {
         tFuzz = tFuzz-5;
     }
+    if (batType.cat != 'infantry') {
+        if (selectedWeap.ammo.includes('toxine')) {
+            tFuzz = -100;
+        }
+        if (selectedWeap.ammo.includes('poison')) {
+            tFuzz = tFuzz-10;
+        }
+    }
     return Math.round(tFuzz);
 };
 
