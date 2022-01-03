@@ -813,6 +813,9 @@ function attack(melee) {
         let eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1)*2.5)));
         if (targetBatType.skills.includes('turnprotect')) {
             eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.33));
+            if (targetBat.tags.includes('morph')) {
+                eggProt = Math.round(eggProt/1.1875);
+            }
         }
         if (selectedWeap.ammo === 'suicide') {
             eggProt = Math.round(eggProt/1.5);
@@ -1733,6 +1736,9 @@ function defense(melee) {
         let eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1)*2.5)));
         if (selectedBatType.skills.includes('turnprotect')) {
             eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.33));
+            if (selectedBat.tags.includes('morph')) {
+                eggProt = Math.round(eggProt/1.1875);
+            }
         }
         if (targetWeap.ammo === 'suicide') {
             eggProt = Math.round(eggProt/1.5);

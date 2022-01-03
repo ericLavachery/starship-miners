@@ -39,6 +39,7 @@ function encounter() {
 
 function putBastionAliens(hard) {
     dropEgg('Ruche','encounter');
+    coconStats.volc = true;
     if (zone[0].mapDiff >= 3 && zone[0].mapDiff < 8 && zone[0].planet === 'Dom') {
         dropEgg('Ruche','encounter');
     }

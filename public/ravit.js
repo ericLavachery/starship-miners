@@ -47,7 +47,9 @@ function calcRavitVolume(bat) {
                 w2maxAmmo = 16;
             }
         }
-        if (bat.ammo2.includes('obus') || bat.ammo2.includes('boulet')) {
+        if (batType.weapon2.name === 'Bombes') {
+            ammoVolume = 1.5*batType.weapon2.power;
+        } else if (bat.ammo2.includes('obus') || bat.ammo2.includes('boulet')) {
             ammoVolume = 2*batType.weapon2.power;
         } else if (bat.ammo2.includes('lf-') || bat.ammo2.includes('bfg') || bat.ammo2.includes('laser') || batType.weapon2.ammo.includes('plasma') || batType.weapon2.ammo.includes('cn-plasma')) {
             ammoVolume = 1*batType.weapon2.power;
@@ -80,7 +82,9 @@ function calcRavitVolume(bat) {
                 w1maxAmmo = 16;
             }
         }
-        if (bat.ammo.includes('obus') || bat.ammo.includes('boulet')) {
+        if (batType.weapon.name === 'Bombes') {
+            ammoVolume = 1.5*batType.weapon2.power;
+        } else if (bat.ammo.includes('obus') || bat.ammo.includes('boulet')) {
             ammoVolume = 2*batType.weapon.power;
         } else if (bat.ammo.includes('lf-') || bat.ammo.includes('bfg') || bat.ammo.includes('laser') || batType.weapon.ammo.includes('plasma') || batType.weapon.ammo.includes('cn-plasma')) {
             ammoVolume = 1*batType.weapon.power;

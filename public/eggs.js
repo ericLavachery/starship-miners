@@ -3,6 +3,7 @@ function checkStartingAliens() {
     let numRuches;
     if (zone[0].mapDiff >= 8 && !zone[0].visit) {
         dropEgg('Colonie','nedge');
+        coconStats.colo = true;
         let coloBat = getAlienByName('Colonie');
         alienSpawn(coloBat,'Vomissure','bmorph');
         alienSpawn(coloBat,'Vomissure','bmorph');
@@ -10,6 +11,7 @@ function checkStartingAliens() {
             alienSpawn(coloBat,'Vomissure','bmorph');
             alienSpawn(coloBat,'Vomissure','bmorph');
             alienSpawn(coloBat,'Ruche');
+            coconStats.volc = true;
             dropEgg('Volcan','guard');
             if (rand.rand(1,2) === 1) {
                 dropEgg('Volcan','guard');
@@ -33,8 +35,10 @@ function checkStartingAliens() {
         while (i <= numRuches) {
             if (rand.rand(1,4) === 1) {
                 dropEgg('Ruche','any');
+                coconStats.volc = true;
             } else {
                 dropEgg('Ruche','nocenter');
+                coconStats.volc = true;
             }
             if (i > 20) {break;}
             i++
@@ -49,6 +53,7 @@ function checkStartingAliens() {
         } else {
             if (rand.rand(1,6) === 1 && zone[0].mapDiff >= 7) {
                 dropEgg('Ruche','nocenter');
+                coconStats.volc = true;
             } else {
                 dropEgg('Flaque','nocenter');
             }
@@ -471,7 +476,7 @@ function eggsDrop() {
                 }
             } else {
                 if (rand.rand(1,zone[0].mapDiff+2) >= 4 && coqPerc >= 30 && playerInfos.mapTurn >= 30 && coveredEggs <= Math.ceil(zone[0].mapDiff/3)) {
-                    if (hasAlien('Ruche') || hasAlien('Volcan')) {
+                    if (coconStats.volc) {
                         dropEgg('Oeuf','acouvert');
                         coveredEggs++;
                     } else {
@@ -1013,6 +1018,7 @@ function spawns() {
                 }
             } else if (bat.type === 'Vomissure' && bat.tags.includes('morph')) {
                 alienMorph(bat,'Ruche',true);
+                coconStats.volc = true;
             } else if (bat.type === 'Vomissure' && bat.tags.includes('bmorph')) {
                 bat.tags.push('morph');
             } else if (bat.type === 'Dragons' && aliens.length < maxAliens && aliensNums.firebugs < Math.round(maxPonte/1.5)) {
@@ -1215,6 +1221,16 @@ function setCoconStats() {
     } else {
         coconStats.dome = false;
     }
+    if (hasAlien('Volcan') || hasAlien('Ruche')) {
+        coconStats.volc = true;
+    } else {
+        coconStats.volc = false;
+    }
+    if (hasAlien('Colonie')) {
+        coconStats.colo = true;
+    } else {
+        coconStats.colo = false;
+    }
     console.log('COCON STATS');
     console.log(coconStats);
 };
@@ -1394,6 +1410,7 @@ function cocoonSpawn(bat) {
             }
         } else {
             alienMorph(bat,'Volcan',false);
+            coconStats.volc = true;
         }
     }
 };
@@ -1439,8 +1456,15 @@ function eggSpawn(bat,fromEgg) {
                     unveilAliens(bat);
                 }
                 alienMorph(bat,'Ruche',false);
+                coconStats.volc = true;
             } else {
-                alienMorph(bat,'Volcan',false);
+                if (coconStats.dome && !coconStats.colo) {
+                    alienMorph(bat,'Colonie',false);
+                    coconStats.colo = true;
+                } else {
+                    alienMorph(bat,'Volcan',false);
+                    coconStats.volc = true;
+                }
             }
         } else {
             bat.tags.push('morph');
