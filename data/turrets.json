@@ -627,7 +627,7 @@
         "ap":18,
         "maxSalvo":2,
         "weapon":{
-            "name":"Marquage",
+            "name":"Pointage",
             "cost":1,
             "range":4,
             "noDef":true,

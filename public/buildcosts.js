@@ -885,7 +885,9 @@ function getDispoCrim() {
 };
 
 function checkAllCosts(unit,ammoNames,withDeploy,withFlat) {
-    let costsOK = true;
+    let costStatus = {};
+    costStatus.ok = true;
+    costStatus.string = '';
     let allCosts = calcAllCosts(unit,ammoNames,withDeploy,withFlat);
     let dispoRes;
     if (allCosts != undefined) {
@@ -895,12 +897,14 @@ function checkAllCosts(unit,ammoNames,withDeploy,withFlat) {
                 let value = entry[1];
                 dispoRes = getDispoRes(key);
                 if (dispoRes < value) {
-                    costsOK = false;
+                    costStatus.ok = false;
+                    costStatus.string = costStatus.string+'('+key+': '+dispoRes+' < '+value+') '
+                    console.log(costStatus.string);
                 }
             });
         }
     }
-    return costsOK;
+    return costStatus;
 };
 
 function getAllCosts(bat,withDeploy,withFlat) {

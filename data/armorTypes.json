@@ -695,7 +695,7 @@
         "skills":[],
         "info":"Vision++",
         "bldReq":["Chaîne de montage"],
-        "compReq":{"energ":1,"log":1},
+        "compReq":{"energ":1,"log":1,"det":1},
         "autoComp":[],
         "factor":"one",
         "costs":{"Cobalt":18,"Hélium":36,"Batteries":18},

@@ -45,7 +45,8 @@ function clickFire(tileId) {
                 guidageOK = checkGuidage(selectedWeap,targetBat);
             }
             if (isInRange(selectedBat,tileId,selectedWeap) || guidageOK) {
-                if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && ((!targetBatType.skills.includes('invisible') && !targetBat.tags.includes('invisible')) || guidageOK || targetBat.tags.includes('fluo') || sideBySideTiles(selectedBat.tileId,tileId,false))) {
+                let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,targetBat,targetBatType,guidageOK);
+                if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && hiddenOK) {
                     // console.log(targetBat);
                     tagDelete(targetBat,'invisible');
                     tileTarget(targetBat);
@@ -501,7 +502,7 @@ function attack(melee) {
         hasEscape = true;
         escapeSpeed = targetBat.vet*2;
     }
-    if (hasEscape && !selectedWeap.ammo.includes('laser')) {
+    if (hasEscape && !selectedWeap.noEsc) {
         if ((tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') || targetBatType.skills.includes('fly')) {
             let escapeChance = Math.round(escapeSpeed*selectedWeap.cost*escapeValue);
             if (selectedWeap.aoe != 'unit' && !targetBatType.skills.includes('fly')) {
@@ -1379,7 +1380,7 @@ function defense(melee) {
     }
     // console.log('ESCAPE');
     // console.log(hasEscape);
-    if (hasEscape && !targetWeap.ammo.includes('laser')) {
+    if (hasEscape && !targetWeap.noEsc) {
         if ((tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') || selectedBatType.skills.includes('fly')) {
             let escapeChance = Math.round(escapeSpeed*targetWeap.cost*escapeValue);
             if (targetWeap.aoe != 'unit' && !selectedBatType.skills.includes('fly')) {

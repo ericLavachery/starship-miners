@@ -920,13 +920,14 @@ function putBat(tileId,citoyens,xp,startTag,show) {
     }
     if (Object.keys(conselUnit).length >= 1) {
         conselNeat();
-        let costsOK = false;
+        let costStatus = {};
         if (conselUnit.cat != 'aliens') {
-            costsOK = checkAllCosts(conselUnit,conselAmmos,true,true);
+            costStatus = checkAllCosts(conselUnit,conselAmmos,true,true);
         } else {
-            costsOK = true;
+            costStatus.ok = true;
+            costStatus.string = '';
         }
-        if (costsOK || conselTriche || conselUpgrade != '') {
+        if (costStatus.ok || conselTriche || conselUpgrade != '') {
             // PAY COSTS !!!
             if (conselUnit.cat != 'aliens') {
                 if (!conselTriche || playerInfos.pseudo === 'Payall') {
@@ -1016,34 +1017,6 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                     }
                 }
             }
-            // if (playerInfos.comp.log === 3) {
-            //     if (conselUnit.log3eq != undefined) {
-            //         if (conselUnit.log3eq != '') {
-            //             let logEquip = getEquipByName(conselUnit.log3eq);
-            //             if (logEquip.name === 'g2ai') {
-            //                 newBat.ok = '';
-            //             }
-            //             let compReqOK = checkCompReq(logEquip);
-            //             if (checkSpecialEquip(logEquip,conselUnit)) {
-            //                 compReqOK = false;
-            //             }
-            //             let bonusEqOK = checkBonusEq(conselUnit,equipName);
-            //             if (compReqOK) {
-            //                 newBat.logeq = logEquip.name;
-            //             }
-            //         }
-            //     }
-            // } else if (playerInfos.comp.energ >= 2) {
-            //     if (conselUnit.log3eq != undefined) {
-            //         if (conselUnit.log3eq.includes('psol')) {
-            //             let logEquip = getEquipByName(conselUnit.log3eq);
-            //             let compReqOK = checkCompReq(logEquip);
-            //             if (compReqOK) {
-            //                 newBat.logeq = logEquip.name;
-            //             }
-            //         }
-            //     }
-            // }
             // Armor
             let armorName = conselAmmos[2];
             if (armorName === 'xxx') {
@@ -1195,7 +1168,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             let apCost = prefabCost(selectedBatType,conselUnit,true);
             selectedBat.apLeft = selectedBat.apLeft+apCost;
             selectedBatArrayUpdate();
-            warning('Construction annulée:','Vous n\'avez pas les ressources nécessaires');
+            warning('Construction annulée:','Vous n\'avez pas les ressources nécessaires.'+costStatus.string);
             console.log('not enough resources !');
         }
     } else {

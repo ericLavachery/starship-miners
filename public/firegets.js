@@ -1207,6 +1207,7 @@ function anyAlienInRange(myBat,weapon) {
             let guidageOK = checkGuidage(weapon,bat);
             if (isInRange(myBat,bat.tileId,weapon) || guidageOK) {
                 batType = getBatType(bat);
+                console.log(batType.name);
                 if (weapon.ammo.includes('marquage') && weapon.name != 'Fragger' && bat.tags.includes('fluo')) {
                     // Déjà marqué
                 } else {
@@ -1214,12 +1215,9 @@ function anyAlienInRange(myBat,weapon) {
                     if (!realmOK) {
                         // Fly/Ground hors portée
                     } else {
-                        if (batType.skills.includes('invisible') || bat.tags.includes('invisible')) {
+                        let hiddenOK = checkInvisibleTarget(myBat,weapon,bat,batType,guidageOK);
+                        if (!hiddenOK) {
                             // Alien invisible
-                            distance = calcDistance(myBat.tileId,bat.tileId)
-                            if (distance === 0 || guidageOK || bat.tags.includes('fluo')) {
-                                inRange = true;
-                            }
                         } else {
                             if (zone[0].dark && !undarkNow.includes(bat.tileId)) {
                                 // Alien dans l'ombre
@@ -1280,6 +1278,21 @@ function checkFlyTarget(weapon,batType) {
     return targetOK;
 };
 
+function checkInvisibleTarget(bat,weap,alien,alienType,guideTarget) {
+    let hiddenOK = true;
+    if (alienType.skills.includes('invisible') || alien.tags.includes('invisible')) {
+        if (!guideTarget && !alien.tags.includes('fluo')) {
+            if (weap.name != 'Pointage' || alien.damage === 0) {
+                let zeroRange = sideBySideTiles(bat.tileId,alien.tileId,false);
+                if (!zeroRange) {
+                    hiddenOK = false;
+                }
+            }
+        }
+    }
+    return hiddenOK;
+};
+
 function isOnInfra(bat) {
     let onInfra = false;
     let tile = getTile(bat);
@@ -1316,10 +1329,14 @@ function fireInfos(bat) {
             if (sideBySideTiles(selectedBat.tileId,tile.id,true) && !batType.skills.includes('longshot') && !onInfra) {
                 isMelee = true;
                 if (checkFlyTarget(selectedWeap,alienType)) {
-                    if (!alien.tags.includes('fluo') || !selectedWeap.ammo.includes('marquage')) {
-                        if (!zone[0].dark || (zone[0].dark && undarkNow.includes(tile.id))) {
-                            cursorSwitch('#',tile.id,'fire');
-                            $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                    guideTarget = checkGuidage(selectedWeap,alien);
+                    let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,alien,alienType,guideTarget);
+                    if (hiddenOK) {
+                        if (!alien.tags.includes('fluo') || !selectedWeap.ammo.includes('marquage') || selectedWeap.name === 'Fragger') {
+                            if (!zone[0].dark || (zone[0].dark && undarkNow.includes(tile.id))) {
+                                cursorSwitch('#',tile.id,'fire');
+                                $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                            }
                         }
                     }
                 }
@@ -1334,8 +1351,9 @@ function fireInfos(bat) {
                 guideTarget = checkGuidage(selectedWeap,alien);
                 if (isInRange(selectedBat,tile.id,selectedWeap) || guideTarget) {
                     alienType = getBatType(alien);
-                    if (checkFlyTarget(selectedWeap,alienType) && ((!alienType.skills.includes('invisible') && !alien.tags.includes('invisible')) || guideTarget || alien.tags.includes('fluo') || sideBySideTiles(selectedBat.tileId,tile.id,false))) {
-                        if (!alien.tags.includes('fluo') || !selectedWeap.ammo.includes('marquage')) {
+                    let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,alien,alienType,guideTarget);
+                    if (checkFlyTarget(selectedWeap,alienType) && hiddenOK) {
+                        if (!alien.tags.includes('fluo') || !selectedWeap.ammo.includes('marquage') || selectedWeap.name === 'Fragger') {
                             if (!zone[0].dark || (zone[0].dark && undarkNow.includes(tile.id))) {
                                 cursorSwitch('#',tile.id,'fire');
                                 $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
@@ -2071,6 +2089,11 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.noShield = false;
         thisWeapon.minShield = false;
         thisWeapon.lowShield = false;
+    }
+    if (thisWeapon.ammo.includes('laser') && thisWeapon.name != 'Canon laser') {
+        thisWeapon.noEsc = true;
+    } else {
+        thisWeapon.noEsc = false;
     }
     // console.log(thisWeapon);
     return thisWeapon;

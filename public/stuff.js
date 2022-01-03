@@ -1,4 +1,14 @@
-// STUFF
+function canIHit(bat,weap,alien,batInMelee) {
+    let iCanHit = false;
+    let alienType = getBatType(alien);
+    let guideTarget = checkGuidage(weap,alien);
+    let inRange = isInRange(bat,alien.tileId,weap);
+    let realmOK = checkFlyTarget(weap,alienType);
+    let hiddenOK = checkInvisibleTarget(bat,weap,alien,alienType,guideTarget);
+
+    return iCanHit;
+};
+
 function calcBatFuzz(bat) {
     let batFuzz = bat.fuzz+2;
     if (bat.eq === 'w2-lcomet') {

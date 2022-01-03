@@ -1876,7 +1876,7 @@
         "name":"Tour de guet",
         "levels":{"rednecks":11,"blades":11,"bulbos":11,"drogmulojs":11,"tiradores":11,"detruas":11,"brasier":11},
         "bldReq":["Laboratoire","Poste radio"],
-        "compReq":{"det":2,"energ":1,"ordre":1},
+        "compReq":{"det":3,"energ":1},
         "costs":{"Compo1":100,"Compo2":50,"Eau":54,"Carbone":72,"Silicium":18,"Electros":18,"Batteries":18,"Energie":18},
         "fabTime":25,
         "slots":0
@@ -1888,7 +1888,7 @@
         "bldReq":["Usine d'armement","Centre de recherches","Chaîne de montage"],
         "compReq":{"energ":3},
         "compPass":["blades","bulbos","brasier"],
-        "compHardReq":{"det":3,"energ":1},
+        "compHardReq":{"det":1,"energ":1},
         "costs":{"Compo1":150,"Compo2":150,"Compo3":90,"Eau":18,"Carbone":72,"Titane":72,"Tungstène":108,"Aluminium":18,"Bois":18,"Rhodium":144,"Silicium":18,"Bore":36,"Electros":72,"Batteries":108,"Energie":54},
         "fabTime":55,
         "slots":0
