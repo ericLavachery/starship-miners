@@ -73,8 +73,8 @@ function delugeDamage(weap,bat,batType) {
     }
     // console.log('numUnits='+numUnits);
     let baseDmg = Math.ceil((weap.power+15)*numUnits/75);
-    // let stormDmg = rand.rand(10*baseDmg,14*baseDmg);
-    let stormDmg = 12*baseDmg;
+    let stormDmg = rand.rand(10*baseDmg,16*baseDmg);
+    // let stormDmg = 13*baseDmg;
     // console.log('stormDmg='+stormDmg);
     stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor+1));
     // console.log('stormDmg(a)='+stormDmg);
@@ -2049,7 +2049,7 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.isElec = false;
     }
-    if (thisWeapon.ammo.includes('nanite') || thisWeapon.ammo === 'suicide' || thisWeapon.ammo.includes('mine') || thisWeapon.ammo.includes('autodestruction') || thisWeapon.ammo.includes('dynamite') || thisWeapon.ammo.includes('bombe') || thisWeapon.ammo.includes('explosif') || thisWeapon.ammo.includes('obus') || thisWeapon.ammo.includes('missile') || thisWeapon.ammo.includes('grenade') || thisWeapon.ammo.includes('disco')) {
+    if (thisWeapon.ammo.includes('nanite') || thisWeapon.ammo === 'suicide' || thisWeapon.ammo.includes('mine') || thisWeapon.ammo.includes('autodes') || thisWeapon.ammo.includes('dynamite') || thisWeapon.ammo.includes('bombe') || thisWeapon.ammo.includes('explosif') || thisWeapon.ammo.includes('obus') || thisWeapon.ammo.includes('missile') || thisWeapon.ammo.includes('grenade') || thisWeapon.ammo.includes('disco')) {
         if (!thisWeapon.ammo.includes('gaz') && !thisWeapon.ammo.includes('incendiaire') && !thisWeapon.ammo.includes('napalm')) {
             thisWeapon.isBlast = true;
         } else {
@@ -2077,7 +2077,7 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.noShield = true;
         thisWeapon.minShield = false;
         thisWeapon.lowShield = false;
-    } else if (thisWeapon.ammo.includes('bfg') || thisWeapon.ammo.includes('laser') || thisWeapon.ammo.includes('autodestruction') || thisWeapon.ammo.includes('mine') || thisWeapon.ammo.includes('suicide') || thisWeapon.ammo.includes('obus-fleche') || thisWeapon.ammo.includes('missile-fleche') || thisWeapon.ammo.includes('gaz')) {
+    } else if (thisWeapon.ammo.includes('bfg') || thisWeapon.ammo.includes('laser') || thisWeapon.ammo.includes('autodes') || thisWeapon.ammo.includes('mine') || thisWeapon.ammo.includes('suicide') || thisWeapon.ammo.includes('obus-fleche') || thisWeapon.ammo.includes('missile-fleche') || thisWeapon.ammo.includes('gaz')) {
         thisWeapon.noShield = false;
         thisWeapon.minShield = true;
         thisWeapon.lowShield = false;
@@ -2298,7 +2298,7 @@ function mirDestruction(weap,bat,batType,tile,teamOnMir,infraName) {
         power = 0;
     }
     let damage = Math.round(weap.rof*power*bat.squadsLeft);
-    if (weap.ammo.includes('feu') || weap.ammo.includes('napalm') || weap.ammo.includes('fire') || weap.ammo.includes('pyratol') || weap.ammo.includes('lf-') || weap.ammo.includes('molotov') || weap.ammo.includes('nanite') || weap.ammo === 'suicide' || weap.ammo.includes('mine') || weap.ammo.includes('autodestruction') || weap.ammo.includes('dynamite') || weap.ammo.includes('bombe') || weap.ammo.includes('explosif') || weap.ammo.includes('obus') || weap.ammo.includes('missile') || weap.ammo.includes('glair') || weap.ammo.includes('ruche') || weap.ammo.includes('bfg')) {
+    if (weap.ammo.includes('feu') || weap.ammo.includes('napalm') || weap.ammo.includes('fire') || weap.ammo.includes('pyratol') || weap.ammo.includes('lf-') || weap.ammo.includes('molotov') || weap.ammo.includes('nanite') || weap.ammo === 'suicide' || weap.ammo.includes('mine') || weap.ammo.includes('autodes') || weap.ammo.includes('dynamite') || weap.ammo.includes('bombe') || weap.ammo.includes('explosif') || weap.ammo.includes('obus') || weap.ammo.includes('missile') || weap.ammo.includes('glair') || weap.ammo.includes('ruche') || weap.ammo.includes('bfg')) {
         if (batType.cat === 'aliens') {
             damage = damage*3;
         } else {

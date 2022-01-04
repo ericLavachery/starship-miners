@@ -1826,9 +1826,9 @@
             "rof":24,
             "accuracy":12,
             "power":28,
-            "aoe":"bat",
+            "aoe":"squad",
             "sound":"belt",
-            "ammo":["autodestruction"]
+            "ammo":["autodes","autodes-incendiaire","autodes-napalm","autodes-gaz","autodes-nanite","autodes-uridium","autodes-deluge"]
         },
         "protection":["aucune","scrap","kevlar"],
         "equip":["aucun","e-flash","e-ranger","e-jetpack","e-camo"],
@@ -4409,7 +4409,7 @@
             "ammo":["lame-scrap","lame","lame-tungsten","lame-carbone","lame-mono"]
         },
         "weapon2":{
-            "name":"Autodestruction",
+            "name":"Ceinture goodbye",
             "cost":0,
             "range":0,
             "noDef":true,
@@ -4417,10 +4417,10 @@
             "noDatt":true,
             "rof":32,
             "accuracy":12,
-            "power":16,
+            "power":24,
             "aoe":"squad",
             "sound":"belt",
-            "ammo":["autodestruction"]
+            "ammo":["autodes","autodes-incendiaire","autodes-napalm","autodes-gaz","autodes-nanite","autodes-uridium","autodes-deluge"]
         },
         "protection":["aucun","chobham","iso","tisal","nano","duneg","swing"],
         "equip":["aucun","e-flash","e-camo","e-ranger","g2motor","waterproof","detector"],
@@ -5732,10 +5732,10 @@
             "kit":true,
             "rof":20,
             "accuracy":12,
-            "power":28,
-            "aoe":"bat",
+            "power":24,
+            "aoe":"squad",
             "sound":"belt",
-            "ammo":["autodestruction"]
+            "ammo":["autodes","autodes-incendiaire","autodes-napalm","autodes-gaz","autodes-nanite","autodes-uridium","autodes-deluge"]
         },
         "equip":["aucun","w2-goodbye"],
         "log3eq":"",

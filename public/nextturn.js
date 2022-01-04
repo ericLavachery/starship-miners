@@ -645,7 +645,7 @@ function turnInfo() {
     eggsNum = numberOfEggs;
     aliensNum = numberOfAliens;
     let maxEggsForPause = 8+zone[0].mapDiff;
-    if (realNumberOfEggs >= maxEggsForPause) {
+    if (realNumberOfEggs >= maxEggsForPause && !coconStats.dome) {
         playerInfos.eggPause = true;
         console.log('PAUSE! 10+ eggs');
         if (playerInfos.pseudo === 'Xxxxx') {

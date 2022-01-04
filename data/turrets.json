@@ -1057,7 +1057,7 @@
             "noFly":true,
             "noMelee":true,
             "isArt":true,
-            "rof":9,
+            "rof":12,
             "accuracy":14,
             "power":33,
             "aoe":"squad",

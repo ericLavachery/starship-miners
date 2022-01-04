@@ -151,7 +151,7 @@
         "cat":"aliens",
         "kind":"larve",
         "class":"A",
-        "rarity":1,
+        "rarity":0,
         "squads":6,
         "squadSize":8,
         "crew":0,
@@ -1963,7 +1963,7 @@
         "class":"A",
         "rarity":2,
         "squads":4,
-        "squadSize":2,
+        "squadSize":3,
         "crew":0,
         "hp":1200,
         "armor":13,
@@ -1978,9 +1978,9 @@
             "range":0,
             "noFly":true,
             "isMelee":true,
-            "rof":4,
+            "rof":6,
             "accuracy":20,
-            "power":40,
+            "power":60,
             "aoe":"brochette",
             "sound":"growl1",
             "ammo":["none"]
@@ -1991,7 +1991,7 @@
             "range":5,
             "noFly":false,
             "isMelee":false,
-            "rof":8,
+            "rof":9,
             "accuracy":24,
             "power":30,
             "aoe":"squad",
@@ -2009,7 +2009,7 @@
         "fxPriority":2,
         "killRes":{"Bugium":31,"Larvium":48,"Mendium":72,"Bossium":29,"Creatite":6,"Slime":21},
         "killXP":35,
-        "flavText":"Les megagrubz pondent des larves."
+        "flavText":"Les megagrubz pondent des vomissures."
     },
     {
         "id":34,

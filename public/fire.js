@@ -333,7 +333,7 @@ function attack(melee) {
                     selectedWeap.aoe = 'bat';
                 }
             }
-            selectedWeap.power = Math.round(selectedWeap.power*(1+(wetness/4)));
+            selectedWeap.power = Math.round(selectedWeap.power*(1+(wetness/2)));
         }
     }
     // AOE Shots
@@ -365,8 +365,8 @@ function attack(melee) {
     }
     // rof*squadsLeft loop
     let shots = selectedWeap.rof*selectedBat.squadsLeft;
-    // autodestruction or undead
-    if (selectedWeap.ammo.includes('autodestruction') || selectedBatType.skills.includes('undead') || selectedBat.tags.includes('zombie')) {
+    // autodes or undead
+    if (selectedWeap.ammo.includes('autodes') || selectedBatType.skills.includes('undead') || selectedBat.tags.includes('zombie')) {
         shots = selectedWeap.rof*selectedBatType.squads;
     }
     // hero fanatic
@@ -1200,7 +1200,7 @@ function attack(melee) {
             showAlien(targetBat);
         }
     }
-    if (selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('autodestruction')) {
+    if (selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('autodes')) {
         attAlive = false;
         batDeath(selectedBat,true);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBatName+') détruit<br></span>');
@@ -1307,7 +1307,7 @@ function defense(melee) {
                     targetWeap.aoe = 'bat';
                 }
             }
-            targetWeap.power = Math.round(targetWeap.power*(1+(wetness/4)));
+            targetWeap.power = Math.round(targetWeap.power*(1+(wetness/2)));
         }
     }
     let aoeShots = 1;
