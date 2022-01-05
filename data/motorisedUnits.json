@@ -678,7 +678,7 @@
             "ravitBld":"Arsenal"
         },
         "weapon2":{
-            "name":"Missiles sunburst",
+            "name":"Missiles Sunburst",
             "cost":5,
             "range":10,
             "noMelee":true,
@@ -920,7 +920,7 @@
             "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-plastanium"]
         },
         "weapon2":{
-            "name":"Missiles squash",
+            "name":"Missiles Thunder",
             "cost":6,
             "range":8,
             "noMelee":true,
@@ -1165,7 +1165,7 @@
             "ammo":["cn-proto-plasma","cn-plasma","cn-impact","cn-grapeshot","cn-plastanium","cn-uridium","cn-nanite"]
         },
         "weapon2":{
-            "name":"Missiles squash",
+            "name":"Missiles Squash",
             "cost":8,
             "range":8,
             "noMelee":true,
@@ -1226,7 +1226,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
-            "name":"Missiles sunburst",
+            "name":"Missiles Sunburst",
             "cost":5,
             "range":10,
             "noMelee":true,

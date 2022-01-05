@@ -457,12 +457,12 @@ function playerSkillsUTChanges() {
         // EXPLOSIFS
         if (playerInfos.comp.explo === 3) {
             if (Object.keys(unit.weapon).length >= 3) {
-                if (unit.weapon.ammo.includes('obus') || unit.weapon.ammo.includes('missile') || unit.weapon.ammo.includes('missile-sunburst') || unit.weapon.ammo.includes('missile-vanguard') || unit.weapon.ammo.includes('dynamite') || unit.weapon.ammo.includes('grenade') || unit.weapon.ammo.includes('boulet')) {
+                if (unit.weapon.ammo.includes('obus') || unit.weapon.ammo.includes('missile') || unit.weapon.ammo.includes('missile-sunburst') || unit.weapon.ammo.includes('missile-vanguard') || unit.weapon.ammo.includes('missile-wildfire') || unit.weapon.ammo.includes('dynamite') || unit.weapon.ammo.includes('grenade') || unit.weapon.ammo.includes('boulet')) {
                     unit.weapon.power = Math.round(unit.weapon.power*1.1)+1;
                 }
             }
             if (Object.keys(unit.weapon2).length >= 3) {
-                if (unit.weapon2.ammo.includes('obus') || unit.weapon2.ammo.includes('missile') || unit.weapon2.ammo.includes('missile-sunburst') || unit.weapon2.ammo.includes('missile-vanguard') || unit.weapon2.ammo.includes('dynamite') || unit.weapon2.ammo.includes('grenade') || unit.weapon2.ammo.includes('boulet')) {
+                if (unit.weapon2.ammo.includes('obus') || unit.weapon2.ammo.includes('missile') || unit.weapon2.ammo.includes('missile-sunburst') || unit.weapon2.ammo.includes('missile-vanguard') || unit.weapon2.ammo.includes('missile-wildfire') || unit.weapon2.ammo.includes('dynamite') || unit.weapon2.ammo.includes('grenade') || unit.weapon2.ammo.includes('boulet')) {
                     unit.weapon2.power = Math.round(unit.weapon2.power*1.1)+1;
                 }
             }
@@ -562,28 +562,32 @@ function playerSkillsUTChanges() {
         if (playerInfos.comp.train >= 1) {
             if (unit.cat != 'buildings' && unit.cat != 'devices' && (unit.kind != 'zero-artillerie' || unit.name === 'Raves') && unit.kind != 'zero-defense' && !unit.name.includes('Caserne') && !unit.skills.includes('garde') && !unit.skills.includes('cage') && !unit.skills.includes('robot')) {
                 if (Object.keys(unit.weapon).length >= 3) {
-                    if (playerInfos.comp.train >= 2) {
-                        if (unit.weapon.cost >= 6) {
-                            unit.weapon.cost = unit.weapon.cost-2;
+                    if (!unit.weapon.name.includes('Missiles')) {
+                        if (playerInfos.comp.train >= 2) {
+                            if (unit.weapon.cost >= 6) {
+                                unit.weapon.cost = unit.weapon.cost-2;
+                            } else {
+                                unit.weapon.cost = unit.weapon.cost-1;
+                            }
                         } else {
-                            unit.weapon.cost = unit.weapon.cost-1;
-                        }
-                    } else {
-                        if (unit.weapon.cost >= 4) {
-                            unit.weapon.cost = unit.weapon.cost-1;
+                            if (unit.weapon.cost >= 4) {
+                                unit.weapon.cost = unit.weapon.cost-1;
+                            }
                         }
                     }
                 }
                 if (Object.keys(unit.weapon2).length >= 3) {
-                    if (playerInfos.comp.train >= 2) {
-                        if (unit.weapon2.cost >= 6) {
-                            unit.weapon2.cost = unit.weapon2.cost-2;
+                    if (!unit.weapon2.name.includes('Missiles')) {
+                        if (playerInfos.comp.train >= 2) {
+                            if (unit.weapon2.cost >= 6) {
+                                unit.weapon2.cost = unit.weapon2.cost-2;
+                            } else {
+                                unit.weapon2.cost = unit.weapon2.cost-1;
+                            }
                         } else {
-                            unit.weapon2.cost = unit.weapon2.cost-1;
-                        }
-                    } else {
-                        if (unit.weapon2.cost >= 4) {
-                            unit.weapon2.cost = unit.weapon2.cost-1;
+                            if (unit.weapon2.cost >= 4) {
+                                unit.weapon2.cost = unit.weapon2.cost-1;
+                            }
                         }
                     }
                 }
@@ -618,6 +622,29 @@ function playerSkillsUTChanges() {
             }
             if (unit.mediCost < 2) {
                 unit.mediCost = 2;
+            }
+        }
+        // GANGS
+        if (playerInfos.gang === 'brasier') {
+            if (unit.name === 'Bigman') {
+                unit.weapon2.power = unit.weapon2.power+4;
+            }
+            if (unit.name === 'Mechas') {
+                unit.weapon.power = unit.weapon.power+3;
+            }
+        } else {
+            if (unit.name === 'Drumfires') {
+                unit.weapon.power = unit.weapon.power-5;
+            }
+            if (unit.name === 'Blockhaus') {
+                unit.weapon2.power = unit.weapon2.power-1;
+            }
+            if (unit.name === 'Salamandres') {
+                unit.weapon.power = unit.weapon.power-1;
+            }
+            if (unit.name === 'Firestorms') {
+                unit.weapon.power = unit.weapon.power-1;
+                unit.weapon2.power = unit.weapon2.power-1;
             }
         }
         unit.fabTime = Math.ceil(unit.fabTime);

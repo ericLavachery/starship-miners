@@ -285,7 +285,7 @@ function attack(melee) {
     let wetness = getWetness(terrain,onGround);
     if (wetness >= 1) {
         if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov')) {
-            if (!selectedWeap.ammo.includes('pyratol')) {
+            if (!selectedWeap.ammo.includes('pyratol') && !selectedWeap.ammo.includes('hellfire')) {
                 if (selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('fireshells')) {
                     selectedWeap.power = Math.round(selectedWeap.power*0.9);
                 } else {
@@ -1259,7 +1259,7 @@ function defense(melee) {
     let wetness = getWetness(terrain,onGround);
     if (wetness >= 1) {
         if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov')) {
-            if (!targetWeap.ammo.includes('pyratol')) {
+            if (!targetWeap.ammo.includes('pyratol') && !targetWeap.ammo.includes('hellfire')) {
                 if (targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('fireshells')) {
                     targetWeap.power = Math.round(targetWeap.power*0.9);
                 } else {

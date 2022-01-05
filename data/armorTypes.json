@@ -859,7 +859,17 @@
         "skills":[],
         "info":"Missiles Vanguard",
         "bldReq":["Usine d'armement"],
-        "compReq":{"bal":2,"explo":3,"arti":1,"def":3},
+        "compReq":{"arti":1,"explo":3,"bal":2,"def":3},
+        "factor":"rofpow",
+        "costs":{"Fer":60,"Aluminium":60,"Titane":60,"Silicium":12,"Rhodium":30,"Electros":15}
+    },
+    {
+        "name":"w2-thunder",
+        "cat":"equip",
+        "skills":[],
+        "info":"Missiles Thunder",
+        "bldReq":["Usine d'armement"],
+        "compReq":{"arti":1,"explo":3,"bal":2,"def":2},
         "factor":"rofpow",
         "costs":{"Fer":60,"Aluminium":60,"Titane":60,"Silicium":12,"Rhodium":30,"Electros":15}
     },
@@ -869,7 +879,7 @@
         "skills":[],
         "info":"Missiles Sunburst",
         "bldReq":["Usine d'armement"],
-        "compReq":{"bal":3,"mat":2,"explo":2,"arti":1},
+        "compReq":{"arti":1,"explo":2,"bal":3,"mat":2},
         "factor":"rofpow",
         "costs":{"Fer":60,"Aluminium":60,"Titane":60,"Silicium":12,"Rhodium":30,"Electros":15}
     },

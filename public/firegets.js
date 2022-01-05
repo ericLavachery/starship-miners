@@ -1369,8 +1369,12 @@ function fireInfos(bat) {
 function checkGuidage(weapon,alien) {
     let guideTarget = false;
     if (alien.tags.includes('guide')) {
-        if (weapon.ammo.includes('missile') && !weapon.name.includes('Comet')) {
-            guideTarget = true;
+        if (weapon.ammo.includes('missile')) {
+            if (!weapon.name.includes('Comet') && !weapon.name.includes('Squash')) {
+                guideTarget = true;
+                // if (!weapon.name.includes('Wildfire') || playerInfos.gang === 'brasier') {
+                // }
+            }
         }
     }
     return guideTarget;
@@ -2024,11 +2028,11 @@ function weaponAdj(weapon,bat,wn) {
     }
     // Deluge Cost
     if (thisWeapon.ammo === 'missile-deluge') {
-        thisWeapon.cost = weapon.cost+2;
+        thisWeapon.cost = weapon.cost+1;
         thisWeapon.noDef = true;
     }
     if (thisWeapon.ammo === 'obus-deluge') {
-        thisWeapon.cost = weapon.cost+2;
+        thisWeapon.cost = weapon.cost+1;
         thisWeapon.noDef = true;
     }
     // Type d'attaques

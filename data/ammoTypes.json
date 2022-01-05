@@ -2283,6 +2283,38 @@
         "batch":100
     },
     {
+        "name": "missile-wildfire",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1.25,
+        "armors": 1.2,
+        "accuracy": 1.5,
+        "apdamage": 0,
+        "aoe": "bat",
+        "info": "Incendiaire",
+        "bldReq":["Arsenal"],
+        "compReq":{"bal":1,"pyro":2,"arti":1},
+        "deploy":{"Aluminium":3,"Nickel":1,"Phosphore":2,"Explosifs":2,"Potassium":1,"Fuel":3,"Huile":1,"Electros":2,"Batteries":1,"Larvium":1},
+        "batch":100
+    },
+    {
+        "name": "missile-hellfire",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1.5,
+        "armors": 0.9,
+        "accuracy": 1.5,
+        "apdamage": 0,
+        "aoe": "bat",
+        "info": "Incendiaire",
+        "bldReq":["Usine d'armement","Laboratoire"],
+        "compReq":{"bal":1,"explo":1,"pyro":3,"arti":1},
+        "deploy":{"Aluminium":3,"Nickel":1,"Explosifs":3,"Oxygène":1,"Fuel":3,"Huile":1,"Electros":2,"Batteries":1,"Pyratol":3},
+        "batch":100
+    },
+    {
         "name": "missile-deluge",
         "range": 1,
         "rof": 1,
