@@ -46,7 +46,7 @@ let resources = [];
 let minedThisTurn = {};
 let fretTuning = 2; // multiplie tous les Frets des unités : def 1
 let landerFretTuning = 1.25; // multiplie tous les Frets des landers : def 1
-let mineRateDiv = 200; // divise le mining rate : def 200 (before: 125)
+let mineRateDiv = 180; // divise le mining rate : def 200 (before: 125)
 let resFoundDiv = 8; // default 9
 let resBatchDiv = 16;
 let permaRes = false;
@@ -223,6 +223,7 @@ coconStats.turns = 25;
 coconStats.dome = false;
 coconStats.volc = false;
 coconStats.colo = false;
+coconStats.nextColo = false;
 let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;
 let cumDrop = 5; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
 let dropMod = 4; //

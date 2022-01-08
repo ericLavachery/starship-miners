@@ -672,18 +672,25 @@
     {
         "id":54,
         "result":"Drogues",
-        "cost":{"Végétaux":40,"Huile":17,"Zinc":6},
+        "cost":{"Végétaux":60,"Huile":18,"Zinc":7},
         "compReq":{},
         "bldReq":["Laboratoire"],
-        "compOut":{"exo":1},
-        "bldOut":["Laboratoire"],
         "batch":20,
         "creaNum":40
     },
     {
+        "id":64,
+        "result":"Drogues",
+        "cost":{"Végétaux":45,"Huile":12,"Zinc":4},
+        "compReq":{},
+        "bldReq":["Centre de recherches"],
+        "batch":20,
+        "creaNum":120
+    },
+    {
         "id":56,
         "result":"Drogues",
-        "cost":{"Végétaux":40,"Huile":17},
+        "cost":{"Végétaux":50,"Huile":14,"Or":2},
         "compReq":{"exo":1},
         "bldReq":["Laboratoire"],
         "batch":20,
@@ -695,18 +702,8 @@
         "cost":{"Végétaux":40,"Huile":10,"Or":2},
         "compReq":{"exo":2},
         "bldReq":["Laboratoire"],
-        "bldOut":["Centre de recherches"],
         "batch":20,
         "creaNum":40
-    },
-    {
-        "id":64,
-        "result":"Drogues",
-        "cost":{"Végétaux":35,"Huile":9,"Mercure":1},
-        "compReq":{},
-        "bldReq":["Centre de recherches"],
-        "batch":20,
-        "creaNum":120
     },
     {
         "id":69,
@@ -720,7 +717,7 @@
     {
         "id":134,
         "result":"Drogues",
-        "cost":{"Octiron":10,"Huile":5,"Atium":1},
+        "cost":{"Octiron":8,"Huile":5,"Atium":1},
         "compReq":{"exo":2},
         "bldReq":["Centre de recherches"],
         "batch":20,

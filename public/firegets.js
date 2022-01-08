@@ -1680,7 +1680,7 @@ function weaponAdj(weapon,bat,wn) {
         if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.logeq === 'lunette' || bat.logeq === 'lunette1' || bat.eq === 'crimekitlu' || bat.eq.includes('kit-chouf') || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
             if (batType.skills.includes('lurange')) {
                 thisWeapon.range = Math.ceil(thisWeapon.range*1.5);
-            } else if (thisWeapon.elevation <= 1) {
+            } else {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
             thisWeapon.accuracy = thisWeapon.accuracy+8;
@@ -1730,7 +1730,7 @@ function weaponAdj(weapon,bat,wn) {
         if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.logeq === 'lunette' || bat.logeq === 'lunette2' || bat.eq.includes('kit-chouf')) {
             if (batType.skills.includes('lurange')) {
                 thisWeapon.range = Math.ceil(thisWeapon.range*1.5);
-            } else if (thisWeapon.elevation <= 1) {
+            } else {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
             thisWeapon.accuracy = thisWeapon.accuracy+8;
@@ -1964,23 +1964,18 @@ function weaponAdj(weapon,bat,wn) {
         if (!thisWeapon.isMelee && ((!thisWeapon.isShort && thisWeapon.range >= 1) || thisWeapon.range >= 2 || (thisWeapon.elevation >= 1 && thisWeapon.range >= 1))) {
             thisWeapon.range = thisWeapon.range+1;
         }
-        if (infra === 'Miradors' && thisWeapon.elevation === 3 && tile.terrain == 'M') {
-            thisWeapon.range = thisWeapon.range+1;
-        }
         if (infra === 'Miradors' && thisWeapon.elevation >= 2 && thisWeapon.ammo.includes('salite')) {
             thisWeapon.range = thisWeapon.range+1;
         }
     }
     if (highGround === 1) {
-        if (thisWeapon.elevation >= 1) {
+        if (thisWeapon.elevation >= 3) {
+            thisWeapon.range = thisWeapon.range+2;
+        } else if (thisWeapon.elevation >= 1) {
             thisWeapon.range = thisWeapon.range+1;
         }
     } else if (highGround === 2) {
-        if (thisWeapon.elevation === 1) {
-            thisWeapon.range = thisWeapon.range+1;
-        } else if (thisWeapon.elevation >= 2) {
-            thisWeapon.range = thisWeapon.range+2;
-        }
+        thisWeapon.range = thisWeapon.range+thisWeapon.elevation;
     }
     // hero range
     if (bat.tags.includes('hero') && batType.skills.includes('herorange')) {

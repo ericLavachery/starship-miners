@@ -62,7 +62,7 @@ function checkStartingAliens() {
         ii++
     }
     // Veilleurs
-    let numSent = Math.ceil((zone[0].mapDiff+zone[0].mapDiff)*rand.rand(8,20)/12);
+    let numSent = Math.floor((zone[0].mapDiff+zone[0].mapDiff)*rand.rand(8,20)/12);
     ii = 1;
     while (ii <= numSent) {
         dropEgg('Veilleurs','none');
@@ -1008,7 +1008,7 @@ function spawns() {
                 if (libMorph <= 20) {
                     libGenMorph++;
                 }
-            } else if (rand.rand(1,wurmMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Larves') {
+            } else if (wurmMorph <= 40 && rand.rand(1,wurmMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Larves') {
                 alienMorph(bat,'Wurms',false);
             } else if (libMorph <= 30 && (rand.rand(1,libMorph) === 1 || libGenMorph >= libGenMax) && bat.squadsLeft >= 3 && bat.type === 'Lombrics') {
                 alienMorph(bat,'Libellules',false);
@@ -1041,8 +1041,12 @@ function spawns() {
                 let lifeTurn = playerInfos.mapTurn-bat.creaTurn;
                 if (lifeTurn === 1 && landingNoise >= 2) {
                     veilSpawn(bat);
-                    veilSpawn(bat);
-                    veilSpawn(bat);
+                    if (zone[0].mapDiff >= 2) {
+                        veilSpawn(bat);
+                    }
+                    if (zone[0].mapDiff >= 3) {
+                        veilSpawn(bat);
+                    }
                 }
                 if (!bat.tags.includes('invisible')) {
                     if (rand.rand(1,3) === 1) {
@@ -1257,7 +1261,7 @@ function alienMorph(bat,newBatName,reset) {
 
 function setCoconStats() {
     coconStats.level = zone[0].mapDiff+Math.floor(playerInfos.mapTurn/35)-1;
-    coconStats.turns = 25-zone[0].mapDiff;
+    coconStats.turns = 30-Math.floor(zone[0].mapDiff*1.5);
     if (hasUnit('Dôme')) {
         coconStats.dome = true;
         if (playerInfos.mapTurn >= 35 && coconStats.level < 9) {
@@ -1278,6 +1282,23 @@ function setCoconStats() {
         coconStats.colo = true;
     } else {
         coconStats.colo = false;
+    }
+    if (!coconStats.colo && coconStats.dome) {
+        coconStats.nextColo = false;
+        aliens.forEach(function(bat) {
+            if (bat.loc === "zone" && bat.type === 'Coque' && bat.tags.includes('colo')) {
+                coconStats.nextColo = true;
+            }
+        });
+        if (!coconStats.nextColo) {
+            let sortedAliens = _.sortBy(aliens,'creaTurn');
+            sortedAliens.forEach(function(bat) {
+                if (bat.loc === "zone" && bat.type === 'Coque' && !bat.tags.includes('colo') && !coconStats.nextColo) {
+                    bat.tags.push('colo');
+                    coconStats.nextColo = true;
+                }
+            });
+        }
     }
     console.log('COCON STATS');
     console.log(coconStats);
@@ -1490,6 +1511,9 @@ function eggSpawn(bat,fromEgg) {
     let eggLife = eggLifeStart+Math.floor(zone[0].mapDiff*eggLifeFactor)+bat.squadsLeft-6;
     if (bat.type === 'Coque' || bat.type === 'Oeuf voilé') {
         eggLife = coqLifeStart+Math.floor(zone[0].mapDiff*coqLifeFactor)+bat.squadsLeft-6;
+        if (bat.tags.includes('colo')) {
+            eggLife = eggLife-4;
+        }
     }
     let presAlien = zone[0].mapDiff;
     if (presAlien < 1) {
@@ -1506,7 +1530,7 @@ function eggSpawn(bat,fromEgg) {
                 alienMorph(bat,'Ruche',false);
                 coconStats.volc = true;
             } else {
-                if (coconStats.dome && !coconStats.colo) {
+                if (coconStats.dome && !coconStats.colo && bat.tags.includes('colo')) {
                     alienMorph(bat,'Colonie',false);
                     coconStats.colo = true;
                 } else {
@@ -1550,7 +1574,7 @@ function eggSpawn(bat,fromEgg) {
             if (adjEggTurn > 13) {
                 adjEggTurn = 13;
             }
-            let maxSpawn = Math.round(((adjEggTurn*1.5)+(3-(bat.squadsLeft/2))+(zone[0].mapDiff*1.5))/5/Math.sqrt(eggsNum)*2.5);
+            let maxSpawn = Math.round(((adjEggTurn*1.5)+(3-(bat.squadsLeft/2))+(zone[0].mapDiff*1.5))/2.1/Math.sqrt(eggsNum+2));
             if (maxSpawn < 1 || !fromEgg) {
                 maxSpawn = 1;
                 if (fromEgg) {

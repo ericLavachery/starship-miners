@@ -617,11 +617,19 @@ function turnInfo() {
     console.log('TURN INFO');
     let numberOfEggs = 0;
     let numberOfAliens = 0;
+    let numClassA = 0;
+    let numClassS = 0;
     let realNumberOfEggs = 0;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
-            if (bat.type == 'Oeuf' || bat.type == 'Coque' || bat.type === 'Cocon') {
+            if (batType.class === 'A') {
+                numClassA++;
+            }
+            if (batType.class === 'S') {
+                numClassS++;
+            }
+            if (bat.type == 'Oeuf' || bat.type == 'Coque' || bat.type === 'Cocon' || bat.type === 'Colonie') {
                 let isVisible = true;
                 if (zone[0].dark && !undarkNow.includes(bat.tileId)) {
                     isVisible = checkEggInDark(bat.tileId);
@@ -652,6 +660,7 @@ function turnInfo() {
             warning('Nouvelle pause',maxEggsForPause+' oeufs ou plus en jeu.');
         }
     }
+    let numHumans = 0;
     let fuzzTotal = 0;
     let foggersTiles = [];
     let zombifiersTiles = [];
@@ -669,11 +678,14 @@ function turnInfo() {
     let nDom = 0;
     domeProtect = false;
     bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (!batType.skills.includes('nodeathcount')) {
+            numHumans++;
+        }
         if (bat.type === 'Chercheurs') {
             playerInfos.sci++;
         }
         if (bat.loc === "zone") {
-            let batType = getBatType(bat);
             if (bat.apLeft >= 1 && !bat.tags.includes('construction')) {
                 if (batType.skills.includes('cfo')) {
                     domeProtect = true;
@@ -753,6 +765,11 @@ function turnInfo() {
             }
         });
     });
+    console.log('ALIENS: '+aliens.length);
+    console.log('eggs: '+realNumberOfEggs);
+    console.log('class S: '+numClassS);
+    console.log('class A: '+numClassA);
+    console.log('HUMAINS: '+numHumans);
     console.log('Robot Control Tiles');
     console.log(roboTiles);
     console.log('Zombified Tiles');

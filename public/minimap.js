@@ -156,8 +156,8 @@ function minimap() {
     });
     $('#themmap').append('<br>');
     if (checkRes) {
-        console.log('Ressources présentes');
-        console.log(allZoneRes);
+        // console.log('Ressources présentes');
+        // console.log(allZoneRes);
     }
 };
 

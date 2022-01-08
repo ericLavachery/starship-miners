@@ -372,15 +372,35 @@ function targetLogic(bat) {
         tFuzz = averageDamage;
     }
     if (bat.fuzz <= -2) {
-        tFuzz = tFuzz-5;
+        tFuzz = Math.round(tFuzz/2);
     }
     if (batType.cat != 'infantry') {
         if (selectedWeap.ammo.includes('toxine')) {
-            tFuzz = -100;
+            tFuzz = -95;
         }
         if (selectedWeap.ammo.includes('poison')) {
-            tFuzz = tFuzz-10;
+            tFuzz = Math.round(tFuzz/2);
         }
+        if (selectedBatType.skills.includes('infkill')) {
+            tFuzz = Math.round(tFuzz/3);
+        }
+        if (selectedBatType.skills.includes('capmen')) {
+            tFuzz = Math.round(tFuzz/2);
+        }
+    }
+    if (batType.hp <= 20) {
+        if (selectedWeap.power >= 25 && selectedWeap.accuracy <= 14 && selectedWeap.aoe != 'squad' && selectedWeap.aoe != 'bat') {
+            tFuzz = Math.round(tFuzz/2);
+        }
+    }
+    if (bat.eq === 'repel' || bat.logeq === 'repel') {
+        let repelChance = (playerInfos.comp.exo*6)+(playerInfos.comp.ca*12)+(playerInfos.comp.gen*4)+10;
+        if (rand.rand(1,100) <= repelChance) {
+            tFuzz = -95;
+        }
+    }
+    if (tFuzz < -95) {
+        tFuzz = -95;
     }
     return Math.round(tFuzz);
 };

@@ -643,6 +643,18 @@
         "costs":{"Hélium":2,"Titane":2,"Electros":3,"Silicium":6,"Bossium":6,"Plastanium":3}
     },
     {
+        "name":"repel",
+        "cat":"equip",
+        "skills":[],
+        "info":"Eloigne les aliens",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"exo":2,"ca":3},
+        "autoComp":["exo",3],
+        "factor":"thp",
+        "costs":{"Drogues":12,"Octiron":32,"Mendium":9,"Creatite":12,"Or":6},
+        "deploy":{"Drogues":2,"Mendium":3,"Creatite":2,"Or":2}
+    },
+    {
         "name":"permakirin",
         "cat":"equip",
         "skills":[],
@@ -1766,7 +1778,7 @@
             "Aluminium":1500,
             "Cuivre":350,
             "Scrap":10000,
-            "Bore":25,
+            "Bore":50,
             "Calcium":300,
             "Chlore":1250,
             "Mercure":25,

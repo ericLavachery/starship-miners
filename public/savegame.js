@@ -290,6 +290,7 @@ function resetPlayerInfos() {
     playerInfos.eggsKilled = 0;
     playerInfos.alienSat = 0;
     playerInfos.unitsLost = 0;
+    playerInfos.okFill = false;
     playerInfos.fuzzTotal = 0;
     playerInfos.pauseSeed = rand.rand(1,8);
     playerInfos.res = {};

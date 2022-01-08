@@ -57,28 +57,37 @@ function soundVolume(vol,source) {
     commandes();
 };
 
+function checkMyVol(theVol) {
+    if (theVol < 0.1) {theVol = 0.1;}
+    if (theVol > 1) {theVol = 1;}
+    theVol = theVol.toFixedNumber(1);
+    return theVol;
+};
+
 function eggSound() {
+    let myVol = checkMyVol(playerInfos.volFx);
     var sound = new Howl({
         src: ['/static/sounds/fx/egg-fall.mp3'],
-        volume: playerInfos.volFx
+        volume: myVol
     });
     sound.play();
 };
 
 function clicSound() {
     // playMove(false);
+    let myVol = checkMyVol(playerInfos.volFx-0.2);
     clicSnd = new Howl({
         src: ['/static/sounds/fx/clic.mp3'],
-        volume: 0.4
+        volume: myVol
     });
     clicSnd.play();
 };
 
 function warnSound(theSound) {
     // playMove(false);
-    let myVol = 0.8;
+    let myVol = checkMyVol(playerInfos.volFx+0.2);
     if (theSound === 'takeoff') {
-        myVol = 1;
+        myVol = checkMyVol(playerInfos.volFx+0.3);
     }
     clicSnd = new Howl({
         src: ['/static/sounds/fx/'+theSound+'.mp3'],
@@ -125,26 +134,28 @@ function okSound(roger) {
         }
     }
     selectedBatArrayUpdate();
+    let myVol = checkMyVol(playerInfos.volFx-0.3);
     if (selectedBat.an || !okFile.includes('ok') || roger) {
         okSnd = new Howl({
             src: ['/static/sounds/moves/'+okFile+'.mp3'],
-            volume: 0.2
+            volume: myVol
         });
     } else {
         // let nbr = rand.rand(1,5);
         let nbr = 4;
         okSnd = new Howl({
             src: ['/static/sounds/moves/radio'+nbr+'.mp3'],
-            volume: 0.2
+            volume: myVol
         });
     }
     okSnd.play();
 };
 
 function playOK(bat) {
+    let myVol = checkMyVol(playerInfos.volFx-0.3);
     okSnd = new Howl({
         src: ['/static/sounds/moves/'+bat.ok+'.mp3'],
-        volume: 0.3
+        volume: myVol
     });
     okSnd.play();
 };
@@ -158,7 +169,7 @@ function shotSound(weapon,bat) {
         soundDir = 'humans';
     }
     if (!isFFW) {
-        console.log(weapon);
+        // console.log(weapon);
         var sound = new Howl({
             src: ['/static/sounds/'+soundDir+'/'+weapon.sound+'.mp3'],
             volume: playerInfos.volFx,
@@ -168,11 +179,11 @@ function shotSound(weapon,bat) {
                 if (soundDuration < 100) {
                     soundDuration = 100;
                 }
-                console.log('soundDuration='+soundDuration);
+                // console.log('soundDuration='+soundDuration);
             },
         });
         sound.play();
-        console.log(sound);
+        // console.log(sound);
     }
 };
 
@@ -238,9 +249,10 @@ function checkSpawnType(alienType) {
 function spawnSound() {
     if (Object.keys(spawnType).length >= 1) {
         let spawnSound = spawnType.spawnFx;
+        let myVol = checkMyVol(playerInfos.volFx-0.1);
         var sound = new Howl({
             src: ['/static/sounds/fx/'+spawnSound+'.mp3'],
-            volume: playerInfos.volFx
+            volume: myVol
         });
         setTimeout(function (){
             sound.play();
@@ -281,21 +293,13 @@ function playRoom(piste,interrupt) {
     if (piste != 'any') {
         track = piste;
     }
-    let roomVol = playerInfos.volFx+0.1;
-    if (roomVol > 1) {
-        roomVol = 1;
-    }
-    if (roomVol < 0.1) {
-        roomVol = 0.1;
-    }
-    roomVol = roomVol.toFixedNumber(1);
-    console.log('roomVol='+roomVol);
+    let myVol = checkMyVol(playerInfos.volFx+0.1);
     if (!theRoom.playing() || interrupt) {
         theRoom.stop();
         theRoom = new Howl({
             src: ['/static/sounds/rooms/'+track+'.mp3'],
             preload: true,
-            volume: roomVol,
+            volume: myVol,
             loop: true
         });
         theRoom.play();
@@ -308,10 +312,7 @@ function playRoom(piste,interrupt) {
 function playMove(play) {
     let isLoop = true;
     let track = 'none';
-    let moveVol = playerInfos.volFx+0.1;
-    if (moveVol > 1) {moveVol = 1;}
-    if (moveVol < 0.1) {moveVol = 0.1;}
-    moveVol = moveVol.toFixedNumber(1);
+    let myVol = checkMyVol(playerInfos.volFx+0.1);
     if (!play) {
         theMove.stop();
         // theMove.fade(moveVol,0,2000);
@@ -340,7 +341,7 @@ function playMove(play) {
                 theMove = new Howl({
                     src: ['/static/sounds/moves/'+track+'.mp3'],
                     preload: true,
-                    volume: moveVol,
+                    volume: myVol,
                     loop: isLoop
                 });
                 theMove.play();
@@ -357,15 +358,7 @@ function playFx(piste,stop) {
     if (piste != 'any') {
         track = piste;
     }
-    let roomVol = playerInfos.volFx-0.4;
-    if (roomVol > 1) {
-        roomVol = 1;
-    }
-    if (roomVol < 0.1) {
-        roomVol = 0.1;
-    }
-    roomVol = roomVol.toFixedNumber(1);
-    console.log('roomVol='+roomVol);
+    let myVol = checkMyVol(playerInfos.volFx-0.4);
     if (stop) {
         theWork.stop();
     } else {
@@ -374,7 +367,7 @@ function playFx(piste,stop) {
             theWork = new Howl({
                 src: ['/static/sounds/rooms/'+track+'.mp3'],
                 preload: true,
-                volume: roomVol,
+                volume: myVol,
                 loop: true
             });
             theWork.play();

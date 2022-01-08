@@ -3,30 +3,34 @@ function startMission() {
     $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
-    saveGame();
-    playerInfos.undarkOnce = [];
-    batUnselect();
-    // créer db batsInSpace, avec les landers marqués deploy=true et toutes les unités qui sont dedans
-    createBatsInSpace();
-    // virer ces landers et ces unités de la bd bataillons
-    removeDeployedBats();
-    // sauvegarder la zone STATION
-    saveCurrentZoneAs(0);
-    // charger la zone playerInfos.missionZone
-    loadZone(playerInfos.missionZone);
-    // var modeLanding = true
-    playerInfos.onShip = false;
-    playerInfos.travTurns = 0;
-    playerInfos.crafts = 0;
-    inSoute = false;
-    modeLanding = true;
-    // en mode landing: fenêtre avec les landers qui sont dans batsInSpace
-    // choisir un lander et le placer sur la carte (en fonction des restriction .comp.vsp)
-    // une fois placé, mettre le lander et toutes les unités qui sont dedans dans la db bataillons (sur le tileId choisi)
-    // idem avec tous les landers
-    // quand plus rien dans batsInSpace: modeLanding = false
-    landingList();
-    // la mission commence
+    if (playerInfos.okFill) {
+        saveGame();
+        playerInfos.undarkOnce = [];
+        batUnselect();
+        // créer db batsInSpace, avec les landers marqués deploy=true et toutes les unités qui sont dedans
+        createBatsInSpace();
+        // virer ces landers et ces unités de la bd bataillons
+        removeDeployedBats();
+        // sauvegarder la zone STATION
+        saveCurrentZoneAs(0);
+        // charger la zone playerInfos.missionZone
+        loadZone(playerInfos.missionZone);
+        // var modeLanding = true
+        playerInfos.onShip = false;
+        playerInfos.travTurns = 0;
+        playerInfos.crafts = 0;
+        inSoute = false;
+        modeLanding = true;
+        // en mode landing: fenêtre avec les landers qui sont dans batsInSpace
+        // choisir un lander et le placer sur la carte (en fonction des restriction .comp.vsp)
+        // une fois placé, mettre le lander et toutes les unités qui sont dedans dans la db bataillons (sur le tileId choisi)
+        // idem avec tous les landers
+        // quand plus rien dans batsInSpace: modeLanding = false
+        landingList();
+        // la mission commence
+    } else {
+        warning('Ressources','Vous ne voulez pas partir sans ressources...')
+    }
 };
 
 function stopMission() {
@@ -45,6 +49,7 @@ function stopMission() {
     // charger la zone STATION
     loadZone(0);
     playerInfos.onShip = true;
+    playerInfos.okFill = false;
     playerInfos.crafts = 0;
     playerInfos.missionZone = -1;
     inSoute = false;

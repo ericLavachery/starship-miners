@@ -664,6 +664,7 @@ function emptyLanderRes() {
     let landerBat = getBatById(slId);
     moveResCost(landerBat.transRes,slId,souteId,1);
     prepaBld = {};
+    playerInfos.okFill = false;
     goSoute();
 };
 
@@ -917,6 +918,7 @@ function missionResInfra(infraName,road) {
     }  else {
         prepaBld[infra.name] = prepaBld[infra.name]+number;
     }
+    playerInfos.okFill = true;
     goSoute();
     console.log(prepaBld);
 };
@@ -955,6 +957,7 @@ function missionResUnit(unitId) {
     }  else {
         prepaBld[unit.name] = prepaBld[unit.name]+1;
     }
+    playerInfos.okFill = true;
     goSoute();
 };
 
@@ -963,6 +966,7 @@ function missionResSingle(resId,number) {
     let costs = {};
     costs[res.name] = number;
     moveResCost(costs,souteId,slId,1);
+    playerInfos.okFill = true;
     goSoute();
 };
 

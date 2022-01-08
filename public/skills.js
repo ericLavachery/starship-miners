@@ -490,7 +490,7 @@ function calcCibleBonus(batType) {
     }
     tcBonus.prec = (7+trainComp)/3.75;
     tcBonus.rof = (15+trainComp)/20;
-    tcBonus.pow = (9.5+trainComp)/6.666;
+    tcBonus.pow = (7.5+trainComp+playerInfos.comp.ca)/6.666;
     return tcBonus;
 };
 

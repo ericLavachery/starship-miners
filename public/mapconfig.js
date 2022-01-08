@@ -171,7 +171,7 @@ function findEgg() {
     let sortedAliens = _.sortBy(aliens,'tileId');
     sortedAliens.forEach(function(bat) {
         if (bat.loc === "zone") {
-            if (bat.type.includes('Oeuf') || bat.type.includes('Coque') || bat.type === 'Cocon') {
+            if (bat.type.includes('Oeuf') || bat.type.includes('Coque') || bat.type === 'Cocon' || bat.type === 'Colonie') {
                 if (!shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
                     let isVisible = true;
                     if (bat.tags.includes('invisible')) {
@@ -193,7 +193,7 @@ function findEgg() {
         myEgg = {};
         sortedAliens.forEach(function(bat) {
             if (bat.loc === "zone") {
-                if (bat.type.includes('Oeuf') || bat.type.includes('Coque') || bat.type === 'Cocon') {
+                if (bat.type.includes('Oeuf') || bat.type.includes('Coque') || bat.type === 'Cocon' || bat.type === 'Colonie') {
                     if (!shownEggs.includes(bat.id) && Object.keys(myEgg).length <= 0) {
                         let isVisible = true;
                         if (bat.tags.includes('invisible')) {

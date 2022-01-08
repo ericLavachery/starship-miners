@@ -46,7 +46,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
-        "equip":["aucun","lunette1","chargeur1","carrousel2","g2motor","chenilles","e-mecano"],
+        "equip":["aucun","lunette1","chargeur1","carrousel2","g2motor","chenilles","e-mecano","repel"],
         "log3eq":"chenilles",
         "moveCost":2,
         "maxFlood":3,
@@ -452,7 +452,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
-        "equip":["aucun","chargeur1","g2motor","snorkel","e-flash","theeye","e-mecano","w2-belier"],
+        "equip":["aucun","chargeur1","g2motor","snorkel","e-flash","theeye","e-mecano","w2-belier","repel"],
         "log3eq":"chargeur1",
         "moveCost":2,
         "maxFlood":1,
@@ -512,7 +512,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","adamantite"],
-        "equip":["aucun","g2motor","snorkel","e-flash","theeye","e-mecano"],
+        "equip":["aucun","g2motor","snorkel","e-flash","theeye","e-mecano","repel"],
         "log3eq":"g2motor",
         "moveCost":2,
         "maxFlood":1,
@@ -682,6 +682,7 @@
             "cost":5,
             "range":10,
             "noMelee":true,
+            "noFly":true,
             "noDef":true,
             "isArt":true,
             "kit":true,
@@ -998,7 +999,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
-        "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","e-flash","w2-belier"],
+        "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","e-flash","w2-belier","repel"],
         "log3eq":"chenilles",
         "moveCost":3,
         "maxFlood":0,
@@ -1120,7 +1121,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
-        "equip":["aucun","g2motor","chenilles","snorkel","belier","e-flash","e-mecano","g2siege"],
+        "equip":["aucun","g2motor","chenilles","snorkel","belier","e-flash","e-mecano","g2siege","repel"],
         "log3eq":"chenilles",
         "moveCost":2,
         "maxFlood":0,
@@ -1230,6 +1231,7 @@
             "cost":5,
             "range":10,
             "noMelee":true,
+            "noFly":true,
             "noDef":true,
             "isArt":true,
             "rof":12,
@@ -1902,7 +1904,7 @@
             "ravitBld":"Atelier"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
-        "equip":["aucun","gilet","chargeur1","g2motor","e-flash","theeye","e-mecano","lanceur2"],
+        "equip":["aucun","gilet","chargeur1","g2motor","e-flash","theeye","e-mecano","lanceur2","repel"],
         "log3eq":"gilet",
         "moveCost":2,
         "maxFlood":3,
@@ -1964,7 +1966,7 @@
             "ravitBld":"Atelier"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
-        "equip":["aucun","chargeur1","gilet","g2motor","e-flash","theeye","e-mecano"],
+        "equip":["aucun","chargeur1","gilet","g2motor","e-flash","theeye","e-mecano","repel"],
         "log3eq":"gilet",
         "moveCost":2,
         "maxFlood":3,
@@ -2611,7 +2613,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
-        "equip":["aucun","g2motor","belier","silencieux1","e-flash","waterproof","e-mecano"],
+        "equip":["aucun","g2motor","belier","silencieux1","e-flash","waterproof","e-mecano","repel"],
         "log3eq":"g2motor",
         "moveCost":3,
         "maxFlood":3,
@@ -3037,7 +3039,7 @@
             "ravitBld":"Atelier"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
-        "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","e-flash","theeye","e-mecano"],
+        "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","e-flash","theeye","e-mecano","repel"],
         "log3eq":"chenilles",
         "moveCost":2,
         "maxFlood":0,
@@ -3093,7 +3095,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","adamantite"],
-        "equip":["aucun","lunette1","chargeur1","carrousel2","g2motor","snorkel","e-flash","waterproof","chenilles"],
+        "equip":["aucun","lunette1","chargeur1","carrousel2","g2motor","snorkel","e-flash","waterproof","chenilles","repel"],
         "log3eq":"snorkel",
         "moveCost":2,
         "maxFlood":2,
@@ -3223,8 +3225,6 @@
         "deathFx":"planeexploair3",
         "mvSnd":"tank"
     },
-
-
     {
         "id":118,
         "name":"Stakhanov",
@@ -3479,7 +3479,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
-        "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","e-flash","w2-belier","e-treuil"],
+        "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","e-flash","w2-belier","e-treuil","repel"],
         "log3eq":"e-treuil",
         "moveCost":2,
         "maxFlood":1,
@@ -3528,7 +3528,7 @@
             "name":"Guidage laser",
             "cost":4,
             "range":2,
-            "elevation":2,
+            "elevation":3,
             "noise":2,
             "noDef":true,
             "rof":9,
@@ -3833,7 +3833,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
-        "equip":["aucun","g2motor","chenilles","snorkel","belier","arbalourde","e-mecano","e-medic"],
+        "equip":["aucun","g2motor","chenilles","snorkel","belier","arbalourde","e-mecano","e-medic","repel"],
         "log3eq":"chenilles",
         "moveCost":2,
         "maxFlood":1,
@@ -4077,7 +4077,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fly","ravitaillement","longshot","mecano","repair","fret","dealer","nitro","baddef","flash","dumper","recupcit","recupres","kzin","nochef"],
+        "skills":["noguet","fly","ravitaillement","longshot","mecano","repair","fret","dealer","nitro","octiron","baddef","flash","dumper","recupcit","recupres","kzin","nochef"],
         "mecanoCost":6,
         "transRes":300,
         "maxSkill":60,
@@ -4124,7 +4124,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","fly","ravitaillement","longshot","mecano","repair","fret","dealer","nitro","baddef","light","dumper","recupcit","recupres","kzin","nochef"],
+        "skills":["noguet","fly","ravitaillement","longshot","mecano","repair","fret","dealer","nitro","octiron","baddef","light","dumper","recupcit","recupres","kzin","nochef"],
         "mecanoCost":5,
         "transRes":300,
         "maxSkill":60,
@@ -4212,7 +4212,7 @@
         "maxDrug":27,
         "transMaxSize":18,
         "transUnits":950,
-        "transRes":900,
+        "transRes":800,
         "fuzz":4.5,
         "deathFx":"vehicleexplo3",
         "mvSnd":"saucer"
