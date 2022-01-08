@@ -553,6 +553,7 @@ function showAmmo(ammo,redux) {
     ammoView = ammoView.replace('molotov-','');
     ammoView = ammoView.replace('fireshells-','');
     ammoView = ammoView.replace('gaz-','');
+    ammoView = ammoView.replace('web-','');
     ammoView = ammoView.replace('autodes','bombe');
     ammoView = ammoView.replace('monomolecular','mono');
     if (redux) {

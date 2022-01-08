@@ -3287,10 +3287,10 @@
             "rof":4,
             "accuracy":24,
             "dca":1.5,
-            "power":0,
+            "power":2,
             "aoe":"unit",
             "sound":"bolas",
-            "ammo":["web"]
+            "ammo":["web-standard","web-spike","web-taser"]
         },
         "weapon2":{
             "name":"Lance",
@@ -3797,21 +3797,20 @@
             "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
         },
         "weapon2":{
-            "name":"Filet électrique",
+            "name":"Filet",
             "cost":4,
             "range":0,
             "isShort":true,
             "noDef":true,
             "noBis":true,
             "noShield":true,
-            "rof":8,
-            "accuracy":30,
+            "rof":12,
+            "accuracy":28,
             "dca":0.75,
-            "power":5,
-            "armors":0,
+            "power":3,
             "aoe":"unit",
-            "sound":"electricity",
-            "ammo":["webtaser"]
+            "sound":"filet",
+            "ammo":["web-standard","web-spike","web-taser"]
         },
         "protection":["kevlar","combo","kapton","wendium","titane","tisal","nano","duneg","swing","adamantite","battlesuit"],
         "equip":["aucun","e-flash","lunette1","chargeur1","silencieux1","e-jetpack","e-camo","permakirin","theeye","helper","e-medic","repel"],

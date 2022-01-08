@@ -3,7 +3,7 @@ function canIHit(bat,weap,alien,batInMelee) {
     let alienType = getBatType(alien);
     let guideTarget = checkGuidage(weap,alien);
     let inRange = isInRange(bat,alien.tileId,weap);
-    let realmOK = checkFlyTarget(weap,alienType);
+    let realmOK = checkFlyTarget(weap,alien,alienType);
     let hiddenOK = checkInvisibleTarget(bat,weap,alien,alienType,guideTarget);
 
     return iCanHit;

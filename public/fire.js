@@ -20,7 +20,7 @@ function clickFire(tileId) {
         if (isMelee) {
             // en mêlée : choix limité de cibles
             if (sideBySideTiles(selectedBat.tileId,tileId,true)) {
-                if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType)) {
+                if (alienBatHere && checkFlyTarget(selectedWeap,targetBat,targetBatType)) {
                     // console.log(targetBat);
                     tagDelete(targetBat,'invisible');
                     tileTarget(targetBat);
@@ -46,7 +46,7 @@ function clickFire(tileId) {
             }
             if (isInRange(selectedBat,tileId,selectedWeap) || guidageOK) {
                 let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,targetBat,targetBatType,guidageOK);
-                if (alienBatHere && checkFlyTarget(selectedWeap,targetBatType) && hiddenOK) {
+                if (alienBatHere && checkFlyTarget(selectedWeap,targetBat,targetBatType) && hiddenOK) {
                     // console.log(targetBat);
                     tagDelete(targetBat,'invisible');
                     tileTarget(targetBat);
