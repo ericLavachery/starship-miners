@@ -221,7 +221,7 @@ function checkRuinsAliens(tile) {
         shufAliens.forEach(function(unit) {
             if (alienTypeId < 0) {
                 let alienInfo = ruinsAliensInfo(unit,tile);
-                if (alienInfo.ok && alienLevels >= alienInfo.kxp) {
+                if (alienInfo.ok && alienLevels >= alienInfo.kxp && zone[0].mapDiff >= Math.ceil(alienInfo.kxp/2)) {
                     alienTypeId = unit.id;
                     console.log(unit.name);
                     console.log(alienInfo);

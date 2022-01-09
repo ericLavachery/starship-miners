@@ -46,28 +46,32 @@ function checkStartingAliens() {
     }
     // Flaques
     let numVomi = Math.floor((zone[0].mapDiff+2)*rand.rand(8,20)/14);
-    let ii = 1;
-    while (ii <= numVomi) {
-        if (rand.rand(1,4) === 1) {
-            dropEgg('Flaque','any');
-        } else {
-            if (rand.rand(1,6) === 1 && zone[0].mapDiff >= 7) {
-                dropEgg('Ruche','nocenter');
-                coconStats.volc = true;
+    if (!zone[0].visit) {
+        let ii = 1;
+        while (ii <= numVomi) {
+            if (rand.rand(1,4) === 1) {
+                dropEgg('Flaque','any');
             } else {
-                dropEgg('Flaque','nocenter');
+                if (rand.rand(1,6) === 1 && zone[0].mapDiff >= 7) {
+                    dropEgg('Ruche','nocenter');
+                    coconStats.volc = true;
+                } else {
+                    dropEgg('Flaque','nocenter');
+                }
             }
+            if (ii > 50) {break;}
+            ii++
         }
-        if (ii > 50) {break;}
-        ii++
     }
     // Veilleurs
     let numSent = Math.floor((zone[0].mapDiff+zone[0].mapDiff)*rand.rand(8,20)/12);
-    ii = 1;
-    while (ii <= numSent) {
-        dropEgg('Veilleurs','none');
-        if (ii > 50) {break;}
-        ii++
+    if (!zone[0].visit) {
+        let ii = 1;
+        while (ii <= numSent) {
+            dropEgg('Veilleurs','none');
+            if (ii > 50) {break;}
+            ii++
+        }
     }
     // Encounters
     if (!zone[0].visit) {

@@ -91,10 +91,7 @@ function saveMapForReturn() {
     let zoneNum = zone[0].number;
     // savePlayerInfos();
     zone[0].visit = true;
-    if (playerInfos.mapTurn < 50) {
-        zone[0].mapDiff = zone[0].mapDiff+1;
-    }
-    if (playerInfos.mapTurn >= 75) {
+    if (playerInfos.mapTurn < 50 && rand.rand(1,2) === 1) {
         zone[0].mapDiff = zone[0].mapDiff+1;
     }
     atomsColors(zone);

@@ -596,7 +596,7 @@
         "skills":["ricochet","guerrilla","tirailleur","baddef"],
         "deathFx":"76973__michel88__piggrunt1",
         "killRes":{"Bugium":7},
-        "killXP":5,
+        "killXP":4,
         "flavText":"Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },
     {
@@ -1350,7 +1350,7 @@
         "skills":["grip","heal","minaccu","resistall","initmelee","smartrip"],
         "deathFx":"76974__michel88__piggrunt2",
         "killRes":{"Bugium":3,"Aranium":18,"Mendium":9},
-        "killXP":5
+        "killXP":12
     },
     {
         "id":22,
@@ -2522,7 +2522,7 @@
         "maxVeg":-1,
         "skills":["inflammable","noaploss","morph","xpplus"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"Bugium":2,"Creatite":3,"Bossium":2},
+        "killRes":{"Bugium":2,"Creatite":16,"Bossium":2},
         "killXP":5
     },
     {
@@ -2673,7 +2673,7 @@
         "maxVeg":-1,
         "skills":["hide","eggprotect","reactblast","xpplus","baddef"],
         "deathFx":"zapsplat_explosion_fireball_43738",
-        "killRes":{"Bugium":2,"Blendium":9,"Slime":6},
+        "killRes":{"Bugium":2,"Blendium":9,"Slime":6,"Creatite":6},
         "killXP":10,
         "flavText":"Les veilleurs pondent des aliens lorsque vous les approchez. Ces aliens sont invisibles pendant quelques tours."
     },
@@ -2847,7 +2847,7 @@
         "maxVeg":-1,
         "skills":["slowreg","resistfeu","reactpoison","nolaser","baddef","eggprotect","noaploss","xpfeast"],
         "deathFx":"zapsplat_explosion_fireball_43738",
-        "killRes":{"Bugium":12,"Mendium":8,"Pyrus":26},
+        "killRes":{"Bugium":12,"Mendium":8,"Pyrus":26,"Creatite":6},
         "killXP":35,
         "flavText":"Les volcans pondent des torches de temps en temps."
     }

@@ -810,7 +810,7 @@ function skillsInfos(bat,batType,near) {
     }
     // ENTRETIEN
     if (playerInfos.onShip) {
-        if (bat.soins >= 11) {
+        if (bat.soins >= 11 && batType.cat === 'vehicles') {
             let apLoss = checkVehiclesAPSoins(bat,batType);
             let maintCosts = getMaintenanceCosts(bat,batType);
             let maintOK = checkCost(maintCosts);

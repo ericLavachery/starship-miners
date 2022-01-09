@@ -1486,7 +1486,7 @@
         "name":"Technobass",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":13,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Centre de recherches","Garage"],
-        "costs":{"Fer":180,"Scrap":672,"Carbone":228,"Moteurs":54,"Cuivre":48,"Electros":84,"Batteries":118,"Compo2":96,"Cobalt":30,"Hélium":60},
+        "costs":{"Fer":180,"Scrap":672,"Carbone":228,"Moteurs":54,"Cuivre":48,"Electros":84,"Batteries":118,"Compo2":96,"Compo3":96,"Mendium":96,"Azote":48,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":70},
         "fabTime":90
     },

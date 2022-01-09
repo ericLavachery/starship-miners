@@ -1744,7 +1744,7 @@
         "weapon2":{
             "name":"Rainbow gun",
             "cost":6,
-            "range":3,
+            "range":4,
             "noShield":true,
             "noDef":true,
             "noFly":true,
@@ -2264,7 +2264,7 @@
         "weapon2":{
             "name":"Rainbow gun",
             "cost":6,
-            "range":3,
+            "range":4,
             "noShield":true,
             "noDef":true,
             "noBis":true,
