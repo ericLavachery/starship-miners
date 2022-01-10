@@ -234,6 +234,8 @@ function newGame() {
     playerInfos.zoneDB = [];
     playerInfos.resFlags = [];
     playerInfos.notes = [];
+    playerInfos.sciRech = 0;
+    playerInfos.sci = 0;
     resetReserve();
     resetStartRes();
     resetEndRes();

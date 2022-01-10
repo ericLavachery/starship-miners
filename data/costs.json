@@ -287,6 +287,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":3,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
         "costs":{"Fer":60,"Scrap":60,"Bois":60,"Végétaux":60},
+        "costs":{"Scrap":112,"Carbone":56,"Aluminium":168,"Titane":28,"Tungstène":56,"Batteries":18,"Bugium":86,"Mendium":28,"Creatite":86,"Azote":120,"Calcium":40,"Drogues":28},
         "fabTime":15
     },
     {

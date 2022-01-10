@@ -637,7 +637,7 @@ function calcMoveCost(targetTileId,diag) {
         }
     }
     if (selectedBat.tags.includes('camo')) {
-        moveCost = moveCost+0.8;
+        moveCost = moveCost+0.3;
     }
     if (tile.ruins) {
         moveCost = moveCost+1;

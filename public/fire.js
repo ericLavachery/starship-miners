@@ -449,6 +449,11 @@ function attack(melee) {
         shots = Math.round(shots*1.65);
         attFactor = Math.round(attFactor*1.65);
     }
+    // sleeping alien
+    if (selectedBatType.skills.includes('sleep') && selectedBat.tags.includes('invisible')) {
+        shots = Math.round(shots/2);
+        attFactor = Math.round(attFactor/2);
+    }
     // Attack %
     $('#report').append('<span class="report jaune">Attaque '+attFactor+'%<br></span>');
     // chargeur
@@ -1413,6 +1418,11 @@ function defense(melee) {
             shots = Math.round(shots*1.25);
             defFactor = Math.round(defFactor*1.25);
         }
+    }
+    // sleeping alien
+    if (targetBatType.skills.includes('sleep') && targetBat.tags.includes('invisible')) {
+        shots = Math.round(shots/2);
+        defFactor = Math.round(defFactor/2);
     }
     // Defense %
     $('#report').append('<span class="report jaune">Défense '+defFactor+'%<br></span>');

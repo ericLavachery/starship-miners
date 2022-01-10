@@ -2671,7 +2671,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["hide","eggprotect","reactblast","xpplus","baddef"],
+        "skills":["hide","eggprotect","reactblast","xpplus","baddef","sleep"],
         "deathFx":"zapsplat_explosion_fireball_43738",
         "killRes":{"Bugium":2,"Blendium":9,"Slime":6,"Creatite":6},
         "killXP":10,

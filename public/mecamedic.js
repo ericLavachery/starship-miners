@@ -513,7 +513,7 @@ function checkStressEffect(bat) {
             }
             bat.tags.push('terror');
             fromTileId = getNearestAlienTile(bat.tileId);
-            if (fromTileId >= 0) {
+            if (fromTileId >= 0 && batType.moveCost < 90) {
                 getAway(bat,fromTileId,false);
                 warning('Stress',bat.type+' sont terrorisés et ont pris la fuite!',false,bat.tileId);
             } else {
@@ -526,7 +526,7 @@ function checkStressEffect(bat) {
                 bat.emo = bat.emo+1;
             }
             fromTileId = getNearestAlienTile(bat.tileId);
-            if (fromTileId >= 0) {
+            if (fromTileId >= 0 && batType.moveCost < 90) {
                 getAway(bat,fromTileId,false);
                 warning('Stress',bat.type+' sont affolés et ont pris la fuite!',false,bat.tileId);
             } else {
