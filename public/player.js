@@ -676,7 +676,7 @@ function playerSkillsATChanges() {
 };
 
 function maxGangCompCosts() {
-    let maxComp = [8,0];
+    let maxComp = [10,0];
     maxComp[0] = maxComp[0]+playerInfos.gLevel;
     if (playerInfos.gang === 'rednecks') {
         if (playerInfos.gLevel >= 3) {
