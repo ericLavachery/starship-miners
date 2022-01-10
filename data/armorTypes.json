@@ -3,7 +3,7 @@
         "name":"Miradors",
         "cat":"infra",
         "fabTime":9,
-        "levels":{"rednecks":5,"blades":5,"bulbos":4,"drogmulojs":6,"tiradores":7,"detruas":7,"brasier":5},
+        "levels":{"rednecks":5,"blades":5,"bulbos":4,"drogmulojs":5,"tiradores":7,"detruas":7,"brasier":5},
         "costs":{"Compo1":85}
     },
     {
@@ -17,7 +17,7 @@
         "name":"Remparts",
         "cat":"infra",
         "fabTime":18,
-        "levels":{"rednecks":7,"blades":7,"bulbos":6,"drogmulojs":8,"tiradores":6,"detruas":6,"brasier":7},
+        "levels":{"rednecks":7,"blades":7,"bulbos":6,"drogmulojs":7,"tiradores":6,"detruas":6,"brasier":7},
         "costs":{"Compo1":50,"Compo2":150}
     },
     {
@@ -40,6 +40,15 @@
         "fabTime":6,
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{}
+    },
+    {
+        "name":"moloko",
+        "cat":"drogue",
+        "apCost":6,
+        "bldReq":["Bar"],
+        "bldVMReq":["Bar"],
+        "compReq":{},
+        "costs":{"Drogues":2}
     },
     {
         "name":"starka",
@@ -75,7 +84,7 @@
         "bldReq":[],
         "bldVMReq":["Bar"],
         "compReq":{"ca":1,"exo":2},
-        "costs":{"Drogues":1,"Mercure":2,"Bore":2,"Larvium":8}
+        "costs":{"Drogues":1,"Bore":2,"Larvium":8}
     },
     {
         "name":"skupiac",
@@ -932,6 +941,16 @@
         "info":"Grenades",
         "bldReq":["Armurerie"],
         "compReq":{"log":1,"explo":2},
+        "factor":"crew",
+        "costs":{"Scrap":2,"Tissus":2}
+    },
+    {
+        "name":"w2-cocktail",
+        "cat":"equip",
+        "skills":[],
+        "info":"Molotov",
+        "bldReq":["Atelier"],
+        "compReq":{"log":1,"pyro":1},
         "factor":"crew",
         "costs":{"Scrap":2,"Tissus":2}
     },

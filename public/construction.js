@@ -1137,6 +1137,56 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             } else {
                 newBat.tags = [];
             }
+            if (conselUnit.skills.includes('genhab')) {
+                let genDice = 0;
+                if (playerInfos.comp.gen >= 1) {
+                    genDice = rand.rand(1,6);
+                    if (genDice === 1) {
+                        newBat.tags.push('genblind');
+                    } else if (genDice === 2) {
+                        newBat.tags.push('genslow');
+                    } else if (genDice === 3) {
+                        newBat.tags.push('genwater');
+                    } else if (genDice === 4) {
+                        newBat.tags.push('genreg');
+                    } else if (genDice === 5) {
+                        newBat.tags.push('genstrong');
+                    } else if (genDice === 6) {
+                        newBat.tags.push('genfast');
+                    }
+                    genDice = rand.rand(1,8);
+                    if (genDice === 1 && !newBat.tags.includes('genblind')) {
+                        newBat.tags.push('genblind');
+                    } else if (genDice === 2 && !newBat.tags.includes('genslow') && !newBat.tags.includes('genfast')) {
+                        newBat.tags.push('genslow');
+                    } else if (genDice === 3 && !newBat.tags.includes('genwater')) {
+                        newBat.tags.push('genwater');
+                    } else if (genDice === 4 && !newBat.tags.includes('genreg')) {
+                        newBat.tags.push('genreg');
+                    } else if (genDice === 5 && !newBat.tags.includes('genstrong')) {
+                        newBat.tags.push('genstrong');
+                    } else if (genDice === 6 && !newBat.tags.includes('genslow') && !newBat.tags.includes('genfast')) {
+                        newBat.tags.push('genfast');
+                    }
+                } else {
+                    genDice = rand.rand(1,3);
+                    if (genDice === 1) {
+                        newBat.tags.push('genblind');
+                    } else if (genDice === 2) {
+                        newBat.tags.push('genslow');
+                    } else if (genDice === 3) {
+                        newBat.tags.push('genwater');
+                    }
+                    genDice = rand.rand(1,4);
+                    if (genDice === 1 && !newBat.tags.includes('genblind')) {
+                        newBat.tags.push('genblind');
+                    } else if (genDice === 2 && !newBat.tags.includes('genslow')) {
+                        newBat.tags.push('genslow');
+                    } else if (genDice === 3 && !newBat.tags.includes('genwater')) {
+                        newBat.tags.push('genwater');
+                    }
+                }
+            }
             let gearTags = getBatGearTags(armorName,equipName,conselUnit);
             newBat.tags.push.apply(newBat.tags,gearTags);
             if (!conselTriche && conselUnit.cat != 'aliens' && !playerInfos.onShip) {

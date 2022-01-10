@@ -439,7 +439,7 @@ function geoProd(bat,batType) {
     }
 };
 
-function solarProd(bat,batType,time,sim) {
+function solarProd(bat,batType,time,sim,quiet) {
     console.log('UPKEEP');
     console.log(batType.name);
     let tile = getTileById(bat.tileId);
@@ -507,7 +507,9 @@ function solarProd(bat,batType,time,sim) {
             console.log('prod = Energie:'+energyProd);
         }
         if (playerInfos.onShip) {
-            warning(batType.name,message,true);
+            if (!quiet) {
+                warning(batType.name,message,true);
+            }
         }
     }
 };
@@ -546,7 +548,7 @@ function solarPanel(bat,batType,sim) {
     }
 };
 
-function triProd(bat,batType,time,sim) {
+function triProd(bat,batType,time,sim,quiet) {
     console.log('UPKEEP');
     console.log(batType.name);
     let upkeepPaid = true;
@@ -635,11 +637,14 @@ function triProd(bat,batType,time,sim) {
         });
     }
     if (playerInfos.onShip) {
+        if (!quiet) {
+
+        }
         warning(batType.name,message,true);
     }
 };
 
-function upkeepAndProd(bat,batType,time,sim) {
+function upkeepAndProd(bat,batType,time,sim,quiet) {
     console.log('UPKEEP');
     console.log(batType.name);
     let upkeepPaid = true;
@@ -752,7 +757,9 @@ function upkeepAndProd(bat,batType,time,sim) {
         }
     }
     if (playerInfos.onShip) {
-        warning(batType.name,message,true);
+        if (!quiet) {
+            warning(batType.name,message,true);
+        }
     }
 };
 

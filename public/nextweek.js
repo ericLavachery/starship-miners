@@ -1,4 +1,5 @@
-function events(afterMission,time,sim) {
+function events(afterMission,time,sim,quiet) {
+    console.log('EVENTS: afterMission='+afterMission+' time='+time+' sim='+sim+' quiet='+quiet);
     checkReserve();
     updateBldList();
     resetWeekRes();
@@ -11,14 +12,14 @@ function events(afterMission,time,sim) {
     if (!sim) {
         repos(time);
     }
-    eventCitoyens(time,sim);
-    eventProduction(afterMission,time,sim); // remove 'return' tag !!!
-    eventBouffe(time,sim);
-    eventCrime(time,sim);
-    eventAliens(time,sim);
+    eventCitoyens(time,sim,quiet);
+    eventProduction(afterMission,time,sim,quiet); // remove 'return' tag !!!
+    eventBouffe(time,sim,quiet);
+    eventCrime(time,sim,quiet);
+    eventAliens(time,sim,quiet);
     console.log('RES BALANCE');
     console.log(playerInfos.weekRes);
-    showResBallance();
+    showResBallance(quiet);
     if (!sim) {
         playerInfos.allTurns = playerInfos.allTurns+time;
         playerInfos.mapTurn = 0;
@@ -91,7 +92,7 @@ function repos(time) {
     });
 }
 
-function eventProduction(afterMission,time,sim) {
+function eventProduction(afterMission,time,sim,quiet) {
     let mesCitoyens = calcTotalCitoyens();
     let population = mesCitoyens.crim+mesCitoyens.cit;
     let science = 0;
@@ -107,7 +108,9 @@ function eventProduction(afterMission,time,sim) {
     if (!sim) {
         resAdd('Scrap',scrapNum);
     }
-    warning('Poubelles','Scrap:<span class="vert">+'+scrapNum+'</span><br>',true);
+    if (!quiet) {
+        warning('Poubelles','Scrap:<span class="vert">+'+scrapNum+'</span><br>',true);
+    }
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || (bat.loc === "trans" && bat.locId === souteId && !bat.tags.includes('return'))) {
             batType = getBatType(bat);
@@ -115,18 +118,18 @@ function eventProduction(afterMission,time,sim) {
             if (!playerInfos.onShip || !batType.skills.includes('nostatprod')) {
                 if (batType.skills.includes('upkeep') || batType.skills.includes('prodres') || batType.skills.includes('upnodis')) {
                     if (!bat.tags.includes('construction') || playerInfos.onShip) {
-                        upkeepAndProd(bat,batType,time,sim);
+                        upkeepAndProd(bat,batType,time,sim,quiet);
                     }
                 }
             }
             if (batType.skills.includes('dogprod') && bat.tags.includes('prodres')) {
-                chenilProd(bat,batType,time,sim);
+                chenilProd(bat,batType,time,sim,quiet);
             }
             if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
-                solarProd(bat,batType,time,sim);
+                solarProd(bat,batType,time,sim,quiet);
             }
             if (batType.skills.includes('transcrap') && bat.tags.includes('prodres')) {
-                triProd(bat,batType,time,sim);
+                triProd(bat,batType,time,sim,quiet);
             }
             // RECHERCHE
             if (!sim) {
@@ -213,7 +216,9 @@ function eventProduction(afterMission,time,sim) {
                         crimBat.citoyens = crimBat.citoyens-educMax;
                         citBat.citoyens = citBat.citoyens+educMax;
                     }
-                    warning('Camp de rééducation',educMax+' criminels réhabilités.<br>',true);
+                    if (!quiet) {
+                        warning('Camp de rééducation',educMax+' criminels réhabilités.<br>',true);
+                    }
                 }
             }
         }
@@ -249,7 +254,7 @@ function rechercheSci(bat,time) {
     }
 };
 
-function eventBouffe(time,sim) {
+function eventBouffe(time,sim,quiet) {
     let mesCitoyens = calcTotalCitoyens();
     let toutMesCitoyens = mesCitoyens.cit+mesCitoyens.crim;
     let bouffeCost = {};
@@ -293,7 +298,9 @@ function eventBouffe(time,sim) {
     });
     bouffeCost['Energie'] = bouffeCost['Energie']+Math.round(bldHeat/28/65*time);
     if (plantesProd >= 1) {
-        warning('Serres et Jardins','Oxygène:<span class="vert">+'+plantesProd+'</span><br>(Déduit de la consommation)<br>',true);
+        if (!quiet) {
+            warning('Serres et Jardins','Oxygène:<span class="vert">+'+plantesProd+'</span><br>(Déduit de la consommation)<br>',true);
+        }
         if (bouffeCost['Oxygène'] > plantesProd) {
             bouffeCost['Oxygène'] = bouffeCost['Oxygène']-plantesProd;
         } else {
@@ -357,10 +364,12 @@ function eventBouffe(time,sim) {
         }
         messageHeat = '<span class="hrouge">Carence</span>';
     }
-    warning('Consommation','Nourriture: <span class="rose">-'+costFood+'</span><br>'+messageFood,true);
-    warning('Consommation','Eau: <span class="rose">-'+costWater+'</span><br>'+messageWater,true);
-    warning('Consommation','Oxygène: <span class="rose">-'+costAir+'</span><br>'+messageAir,true);
-    warning('Consommation','Energie: <span class="rose">-'+costHeat+'</span><br>'+messageHeat+'<br>',true);
+    if (!quiet) {
+        warning('Consommation','Nourriture: <span class="rose">-'+costFood+'</span><br>'+messageFood,true);
+        warning('Consommation','Eau: <span class="rose">-'+costWater+'</span><br>'+messageWater,true);
+        warning('Consommation','Oxygène: <span class="rose">-'+costAir+'</span><br>'+messageAir,true);
+        warning('Consommation','Energie: <span class="rose">-'+costHeat+'</span><br>'+messageHeat+'<br>',true);
+    }
     console.log(bouffeCost);
     modWeekMulti(bouffeCost);
     if (!sim) {
@@ -368,7 +377,7 @@ function eventBouffe(time,sim) {
     }
 };
 
-function showResBallance() {
+function showResBallance(quiet) {
     if (playerInfos.weekRes != undefined) {
         let sortedWeekRes = [];
         for (var resName in playerInfos.weekRes) {
@@ -391,11 +400,13 @@ function showResBallance() {
                 balMessage = balMessage+key+':<span class="rose">'+value+'</span><br>';
             }
         });
-        warning('Ballance',balMessage+'<br>',false);
+        if (!quiet) {
+            warning('Ballance',balMessage+'<br>',false);
+        }
     }
 };
 
-function eventCitoyens(time,sim) {
+function eventCitoyens(time,sim,quiet) {
     let newCitsNumber = Math.floor(time*rand.rand(10,20)/42)*6;
     let citId = 126;
     let citName = 'Citoyens';
@@ -407,7 +418,9 @@ function eventCitoyens(time,sim) {
         bonusCit(citId,souteId,newCitsNumber);
         playerInfos.allCits = playerInfos.allCits+newCitsNumber;
     }
-    warning('Nouveaux citoyens','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont débarqué dans la station.<br>',true);
+    if (!quiet) {
+        warning('Nouveaux citoyens','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont débarqué dans la station.<br>',true);
+    }
 };
 
 function bonusCit(citId,toId,number) {
@@ -445,14 +458,16 @@ function calcTotalCitoyens() {
     return mesCitoyens;
 };
 
-function eventCrime(time,sim) {
+function eventCrime(time,sim,quiet) {
     // Crimes et vols en fonction du taux de criminalité
     let mesCitoyens = calcTotalCitoyens();
     let population = mesCitoyens.crim+mesCitoyens.cit;
     let crimeRate = calcCrimeRate(mesCitoyens);
     if (!sim) {
         // EFFETS !!! CRIMES !!!
-        warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total+'%',false)
+        if (!quiet) {
+            warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total+'%',false)
+        }
     }
 };
 
@@ -568,7 +583,7 @@ function calcCrimeRate(mesCitoyens) {
     return crimeRate;
 };
 
-function chenilProd(bat,batType,time,sim) {
+function chenilProd(bat,batType,time,sim,quiet) {
     if (playerInfos.onShip && playerInfos.gang === 'rednecks') {
         console.log('UPKEEP');
         console.log(batType.name);
@@ -620,7 +635,9 @@ function chenilProd(bat,batType,time,sim) {
                 }
             }
         }
-        warning(batType.name,message,true);
+        if (!quiet) {
+            warning(batType.name,message,true);
+        }
     }
 }
 
@@ -635,6 +652,6 @@ function putDog() {
     loadBat(bat.id,souteId);
 }
 
-function eventAliens(afterMission,time,sim) {
+function eventAliens(afterMission,time,sim,quiet) {
     // Montée de la présence alien
 };

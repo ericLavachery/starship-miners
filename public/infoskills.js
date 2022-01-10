@@ -1039,6 +1039,51 @@ function skillsInfos(bat,batType,near) {
                     }
                 }
             }
+            // MOLOKO
+            if (allDrugs.includes('moloko') || bat.tags.includes('moloko')) {
+                drug = getDrugByName('moloko');
+                drugCompOK = checkCompReq(drug);
+                drugBldOK = true;
+                if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                    drugBldOK = false;
+                }
+                drugBldVMOK = true;
+                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                    drugBldVMOK = false;
+                }
+                drugCostsOK = checkCost(drug.costs);
+                balise = 'h4';
+                boutonNope = 'boutonGris';
+                colorNope = 'gf';
+                if (bat.tags.includes('moloko')) {
+                    balise = 'h3';
+                    boutonNope = 'boutonOK';
+                    colorNope = 'cy';
+                }
+                apCost = drug.apCost;
+                if (drugCompOK) {
+                    if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('moloko') && !bat.tags.includes('bliss') && !batType.skills.includes('nofear') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
+                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Immunisé à la peur / -2 PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`moloko`)"><i class="fas fa-wine-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp; Moloko</'+balise+'></span>');
+                    } else {
+                        if (bat.tags.includes('moloko')) {
+                            skillMessage = "Déjà bourré";
+                        } else if (bat.tags.includes('bliss') || batType.skills.includes('nofear')) {
+                            skillMessage = "Déjà immunisé à la peur";
+                        } else if (!drugCompOK) {
+                            skillMessage = "Vous n'avez pas les compétences requises";
+                        } else if (!drugBldVMOK) {
+                            skillMessage = "Vous n'avez pas le bâtiment requis (sur la station ou dans la  zone): "+drug.bldVMReq[0];
+                        } else if (!drugBldOK) {
+                            skillMessage = "Vous n'avez pas le bâtiment requis (dans la  zone): "+drug.bldReq[0];
+                        } else if (!drugCostsOK) {
+                            skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                        } else {
+                            skillMessage = "Pas assez de PA";
+                        }
+                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Moloko</'+balise+'></span>');
+                    }
+                }
+            }
             // BLISS
             if (allDrugs.includes('bliss') || bat.tags.includes('bliss')) {
                 drug = getDrugByName('bliss');
@@ -1063,7 +1108,7 @@ function skillsInfos(bat,batType,near) {
                 apCost = drug.apCost;
                 if (drugCompOK) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('bliss') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Dégâts reçus réduits / immunisé à la peur / réduit le stress / -3 PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
+                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Dégâts reçus réduits / immunisé à la peur / réduit le stress / -1 PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
                     } else {
                         if (bat.tags.includes('bliss')) {
                             skillMessage = "Déjà sous l'effet de cette drogue";
@@ -1303,6 +1348,53 @@ function skillsInfos(bat,batType,near) {
                         }
                     }
                 }
+                // MOLOKO (véhicules)
+                if (batType.cat === 'vehicles') {
+                    if (allDrugs.includes('moloko') || bat.tags.includes('moloko')) {
+                        drug = getDrugByName('moloko');
+                        drugCompOK = checkCompReq(drug);
+                        drugBldOK = true;
+                        if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                            drugBldOK = false;
+                        }
+                        drugBldVMOK = true;
+                        if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                            drugBldVMOK = false;
+                        }
+                        drugCostsOK = checkCost(drug.costs);
+                        balise = 'h4';
+                        boutonNope = 'boutonGris';
+                        colorNope = 'gf';
+                        if (bat.tags.includes('moloko')) {
+                            balise = 'h3';
+                            boutonNope = 'boutonOK';
+                            colorNope = 'cy';
+                        }
+                        apCost = drug.apCost;
+                        if (drugCompOK) {
+                            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('moloko') && !bat.tags.includes('bliss') && !batType.skills.includes('nofear') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
+                                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Immunisé à la peur / -2 PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`moloko`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Moloko</'+balise+'></span>');
+                            } else {
+                                if (bat.tags.includes('moloko')) {
+                                    skillMessage = "Déjà bourré";
+                                } else if (bat.tags.includes('bliss') || batType.skills.includes('nofear')) {
+                                    skillMessage = "Déjà immunisé à la peur";
+                                } else if (!drugCompOK) {
+                                    skillMessage = "Vous n'avez pas les compétences requises";
+                                } else if (!drugBldVMOK) {
+                                    skillMessage = "Vous n'avez pas le bâtiment requis (sur la station ou dans la  zone): "+drug.bldVMReq[0];
+                                } else if (!drugBldOK) {
+                                    skillMessage = "Vous n'avez pas le bâtiment requis (dans la  zone): "+drug.bldReq[0];
+                                } else if (!drugCostsOK) {
+                                    skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                                } else {
+                                    skillMessage = "Pas assez de PA";
+                                }
+                                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Moloko</'+balise+'></span>');
+                            }
+                        }
+                    }
+                }
                 // BLISS (véhicules)
                 if (allDrugs.includes('bliss') || bat.tags.includes('bliss')) {
                     drug = getDrugByName('bliss');
@@ -1327,7 +1419,7 @@ function skillsInfos(bat,batType,near) {
                     apCost = drug.apCost;
                     if (drugCompOK) {
                         if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('bliss') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Immunisé à la peur / réduit le stress / -3 PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
+                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Immunisé à la peur / réduit le stress / -1 PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="fas fa-wine-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
                         } else {
                             if (bat.tags.includes('bliss')) {
                                 skillMessage = "Déjà sous l'effet de cette drogue";

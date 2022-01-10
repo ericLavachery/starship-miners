@@ -712,6 +712,9 @@ function checkDrugs(myBat) {
             batType = getBatType(bat);
             if (batType.skills.includes('dealer')) {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1 && calcRavitDrug(bat) >= 1) {
+                    if (batType.skills.includes('moloko')) {
+                        allDrugs.push('moloko');
+                    }
                     if (batType.skills.includes('bliss')) {
                         allDrugs.push('bliss');
                     }

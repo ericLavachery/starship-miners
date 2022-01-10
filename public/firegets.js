@@ -988,7 +988,7 @@ function getStealth(bat) {
     if (tile.infra === 'Miradors' && playerInfos.comp.cam >= 1) {
         batStealth = batStealth+4;
     }
-    if (bat.tags.includes('drunk')) {
+    if (bat.tags.includes('moloko')) {
         batStealth = batStealth-4;
     }
     if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu') {
@@ -1833,6 +1833,13 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.noDef = true;
             thisWeapon.noAtt = true;
         }
+    }
+    // GENHAB
+    if (thisWeapon.isMelee && bat.tags.includes('genstrong')) {
+        thisWeapon.power = thisWeapon.power+4;
+    }
+    if (bat.tags.includes('genblind')) {
+        thisWeapon.accuracy = thisWeapon.accuracy-5;
     }
     // bonus ammo
     let myAmmo = bat.ammo;

@@ -560,6 +560,13 @@ function terrainAccess(batId,targetTileId) {
             access = true;
         }
     }
+    if (bat.tags.includes('genwater')) {
+        if (terrain.name === 'W' || (terrain.name === 'S' && playerInfos.comp.scaph < 1) || terrain.name === 'L' || terrain.name === 'R') {
+            if (!zone[targetTileId].rd) {
+                access = false;
+            }
+        }
+    }
     return access;
 };
 
@@ -582,6 +589,12 @@ function calcMoveCost(targetTileId,diag) {
     }
     if (selectedBat.eq === 'w2-canon') {
         baseMoveCost = 9;
+    }
+    if (selectedBat.tags.includes('genslow')) {
+        baseMoveCost = baseMoveCost+1;
+    }
+    if (selectedBat.tags.includes('genfast')) {
+        baseMoveCost = baseMoveCost-1;
     }
     let moveCost;
     if (tile.rd && !selectedBatType.skills.includes('hover')) {

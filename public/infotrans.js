@@ -211,6 +211,13 @@ function checkMayOut(batType,isBat,bat) {
             }
         }
     }
+    if (isBat) {
+        if (bat.tags.includes('genwater') && playerInfos.comp.scaph < 1) {
+            if (isRaining(zone)) {
+                mayOut = false;
+            }
+        }
+    }
     return mayOut;
 };
 

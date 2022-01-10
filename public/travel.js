@@ -5,6 +5,7 @@ function startMission() {
     $("#tileInfos").css("display","none");
     if (playerInfos.okFill) {
         saveGame();
+        events(false,65,true,true);
         playerInfos.undarkOnce = [];
         batUnselect();
         // créer db batsInSpace, avec les landers marqués deploy=true et toutes les unités qui sont dedans
@@ -207,6 +208,24 @@ function healEverything() {
         }
         if (bat.tags.includes('zombie')) {
             gearTags.push('zombie');
+        }
+        if (bat.tags.includes('genslow')) {
+            gearTags.push('genslow');
+        }
+        if (bat.tags.includes('genfast')) {
+            gearTags.push('genfast');
+        }
+        if (bat.tags.includes('genblind')) {
+            gearTags.push('genblind');
+        }
+        if (bat.tags.includes('genstrong')) {
+            gearTags.push('genstrong');
+        }
+        if (bat.tags.includes('genwater')) {
+            gearTags.push('genwater');
+        }
+        if (bat.tags.includes('genreg')) {
+            gearTags.push('genreg');
         }
         if (bat.tags.includes('outsider')) {
             gearTags.push('outsider');

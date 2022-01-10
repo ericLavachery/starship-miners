@@ -134,7 +134,7 @@ function okSound(roger) {
         }
     }
     selectedBatArrayUpdate();
-    let myVol = checkMyVol(playerInfos.volFx-0.3);
+    let myVol = checkMyVol(playerInfos.volFx-0.4);
     if (selectedBat.an || !okFile.includes('ok') || roger) {
         okSnd = new Howl({
             src: ['/static/sounds/moves/'+okFile+'.mp3'],
@@ -152,7 +152,7 @@ function okSound(roger) {
 };
 
 function playOK(bat) {
-    let myVol = checkMyVol(playerInfos.volFx-0.3);
+    let myVol = checkMyVol(playerInfos.volFx-0.4);
     okSnd = new Howl({
         src: ['/static/sounds/moves/'+bat.ok+'.mp3'],
         volume: myVol

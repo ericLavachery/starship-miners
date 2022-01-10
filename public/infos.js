@@ -274,12 +274,28 @@ function batInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramName cy">Drogue</span><span class="paramIcon"></span><span class="paramValue cy">'+myDrugs.toString()+'</span><br>');
         }
     }
-    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || bat.eq === 'permakirin' || bat.logeq === 'permakirin') {
+    if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || bat.tags.includes('slowreg') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || bat.eq === 'permakirin' || bat.logeq === 'permakirin') {
         let regenType = 'lente';
-        if (bat.tags.includes('kirin') || batType.skills.includes('regeneration')) {
+        if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || batType.skills.includes('regeneration')) {
             regenType = 'rapide';
         }
         $('#'+bodyPlace).append('<span class="paramName cy">Régénération</span><span class="paramIcon"></span><span class="paramValue cy">'+regenType+'</span><br>');
+    }
+    // GENHAB
+    if (bat.tags.includes('genstrong')) {
+        $('#'+bodyPlace).append('<span class="paramName cy">Hulk</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    }
+    if (bat.tags.includes('genblind')) {
+        $('#'+bodyPlace).append('<span class="paramName jaune">Myope</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+    }
+    if (bat.tags.includes('genfast')) {
+        $('#'+bodyPlace).append('<span class="paramName cy">Rapide</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    }
+    if (bat.tags.includes('genslow')) {
+        $('#'+bodyPlace).append('<span class="paramName jaune">lent</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+    }
+    if (bat.tags.includes('genwater')) {
+        $('#'+bodyPlace).append('<span class="paramName or" title="Allergique à l\'eau">Allergique</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
     if (bat.tags.includes('zombie')) {
         $('#'+bodyPlace).append('<span class="paramName or">Zombie</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
@@ -296,7 +312,7 @@ function batInfos(bat,batType,pop) {
     if (bat.tags.includes('resistall') || batType.skills.includes('resistall')) {
         $('#'+bodyPlace).append('<span class="paramName cy">Résistance globale</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
-    if (bat.tags.includes('drunk')) {
+    if (bat.tags.includes('moloko')) {
         $('#'+bodyPlace).append('<span class="paramName jaune">Saoul</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
     }
     // BAD TAGS

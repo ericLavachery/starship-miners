@@ -229,7 +229,7 @@ function nextTurnEnd() {
                 landers.push(bat);
             }
             if (bat.loc === "zone") {
-                if (batType.name === 'Bar') {
+                if (batType.name === 'Bar' && playerInfos.gang === 'drogmulojs') {
                     barIds.push(bat.id);
                 }
                 if (batType.name === "Camp d'entraînement") {
@@ -304,17 +304,17 @@ function nextTurnEnd() {
             if (bat.loc === "zone") {
                 if (batType.skills.includes('upkeep') || batType.skills.includes('prodres') || batType.skills.includes('upnodis')) {
                     if (!bat.tags.includes('construction') && bat.apLeft >= 10) {
-                        upkeepAndProd(bat,batType,1,false);
+                        upkeepAndProd(bat,batType,1,false,false);
                     }
                 }
                 if (batType.skills.includes('geo') && bat.tags.includes('prodres') && bat.apLeft >= 0) {
                     geoProd(bat,batType);
                 }
                 if (batType.skills.includes('solar') && bat.tags.includes('prodres') && bat.apLeft >= 0) {
-                    solarProd(bat,batType,1,false);
+                    solarProd(bat,batType,1,false,false);
                 }
                 if (batType.skills.includes('transcrap') && bat.tags.includes('prodres') && bat.apLeft >= 10) {
-                    triProd(bat,batType,1,false);
+                    triProd(bat,batType,1,false,false);
                 }
                 if (!playerInfos.onShip) {
                     if (bat.eq.includes('psol') || bat.eq.includes('psol')) {
@@ -336,9 +336,9 @@ function nextTurnEnd() {
                 }
             }
             // BAR
-            if (batType.cat === 'infantry' && bat.loc === "trans" && barIds.includes(bat.locId) && !bat.tags.includes('drunk')) {
-                bat.tags.push('drunk');
-                bat.tags.push('drunk');
+            if (batType.cat === 'infantry' && bat.loc === "trans" && barIds.includes(bat.locId) && !bat.tags.includes('moloko')) {
+                bat.tags.push('moloko');
+                bat.tags.push('moloko');
             }
             // CAMP ENTRAINEMENT
             if (playerInfos.bldList.includes('Camp d\'entraînement')) {
@@ -951,10 +951,10 @@ function tagsUpdate(bat) {
     if (rand.rand(1,3) <= 2) {
         tagDelete(bat,'stun');
     }
-    if (bat.tags.includes('drunk')) {
-        if (rand.rand(1,3) === 1) {
-            tagDelete(bat,'drunk');
-            if (!bat.tags.includes('drunk')) {
+    if (bat.tags.includes('moloko')) {
+        if (rand.rand(1,5) === 1) {
+            tagDelete(bat,'moloko');
+            if (!bat.tags.includes('moloko')) {
                 warning('Burp...',bat.type+' a la gueule de bois.',false,bat.tileId);
             }
         }
@@ -1111,6 +1111,10 @@ function tagsEffect(bat,batType) {
     }
     // BLISS DRUG
     if (bat.tags.includes('bliss')) {
+        bat.apLeft = bat.apLeft-1;
+    }
+    // MOLOKO DRUG
+    if (bat.tags.includes('moloko')) {
         bat.apLeft = bat.apLeft-2;
     }
     // UNITRESIST
@@ -1119,7 +1123,7 @@ function tagsEffect(bat,batType) {
         resistance = true;
     }
     // REGENERATION & KIRIN DRUG
-    if (bat.tags.includes('kirin') || bat.tags.includes('slowreg') || bat.eq === 'permakirin' || bat.logeq === 'permakirin' || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal') || resistance) {
+    if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || bat.tags.includes('slowreg') || bat.eq === 'permakirin' || bat.logeq === 'permakirin' || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal') || resistance) {
         let regOK = true;
         if (batType.cat === 'aliens') {
             if (batType.skills.includes('reactpoison') && bat.tags.includes('poison')) {
@@ -1142,7 +1146,7 @@ function tagsEffect(bat,batType) {
                 regen = batHP;
             } else if (batType.skills.includes('fastreg')) {
                 regen = Math.round(batHP/2);
-            } else if (bat.tags.includes('kirin') || batType.skills.includes('regeneration') || bat.tags.includes('regeneration')) {
+            } else if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || batType.skills.includes('regeneration') || bat.tags.includes('regeneration')) {
                 regen = Math.round(batHP*regenPower/100);
             } else {
                 regen = Math.round(batHP*slowregPower/100);

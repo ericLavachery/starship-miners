@@ -2491,7 +2491,7 @@
         "maxVeg":-1,
         "skills":["inflammable","noaploss","morph","xpplus"],
         "deathFx":"bombwaterexplo",
-        "killRes":{"Creatite":4},
+        "killRes":{"Creatite":8},
         "killXP":5,
         "flavText":"Les vomissures se transforment en ruches au bout d'un moment."
     },

@@ -749,6 +749,7 @@ function eggDropTile(eggName,theArea) {
     if (area === 'target') {
         let shufBats = _.shuffle(bataillons);
         let bestFuzz = -3;
+        let notThisTile = -1;
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone") {
                 if (bat.fuzz+rand.rand(0,2) > bestFuzz) {
@@ -758,10 +759,9 @@ function eggDropTile(eggName,theArea) {
             }
         });
         let shufZone = _.shuffle(zone);
-        let distance;
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
-                distance = calcDistance(tile.id,targetTile);
+                let distance = calcDistance(tile.id,targetTile);
                 if (distance > 8 && distance < 13) {
                     if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                         theTile = tile.id;
@@ -769,6 +769,39 @@ function eggDropTile(eggName,theArea) {
                 }
             }
         });
+        shufBats.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                let batType = getBatType(bat);
+                if (batType.cat === 'buildings') {
+                    let distance = calcDistance(bat.tileId,theTile);
+                    if (distance < 5) {
+                        notThisTile = theTile;
+                        theTile = -1;
+                    }
+                }
+            }
+        });
+        if (notThisTile != -1) {
+            bestFuzz = -3;
+            shufBats.forEach(function(bat) {
+                if (bat.loc === "zone") {
+                    if (bat.fuzz+rand.rand(0,2) > bestFuzz && bat.tileId != notThisTile) {
+                        targetTile = bat.tileId;
+                        bestFuzz = bat.fuzz;
+                    }
+                }
+            });
+            shufZone.forEach(function(tile) {
+                if (theTile < 0) {
+                    let distance = calcDistance(tile.id,targetTile);
+                    if (distance > 10 && distance < 15) {
+                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                            theTile = tile.id;
+                        }
+                    }
+                }
+            });
+        }
     }
     // AROUND
     if (area === 'around') {
