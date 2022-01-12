@@ -3259,7 +3259,7 @@
         "weapon":{
             "name":"Mitrailleuse pneu",
             "cost":5,
-            "range":2,
+            "range":1,
             "elevation":1,
             "noise":2,
             "rof":32,

@@ -940,7 +940,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             }
             // TURNS on STATION
             if (playerInfos.onShip) {
-                playerInfos.allTurns = playerInfos.allTurns+Math.ceil(conselUnit.fabTime/20);
+                playerInfos.allTurns = playerInfos.allTurns+Math.floor(conselUnit.fabTime/20);
             }
             let tile = getTileById(tileId);
             console.log(conselUnit);
