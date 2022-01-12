@@ -286,8 +286,7 @@
         "name":"Bugmen",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":3,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
-        "costs":{"Fer":60,"Scrap":60,"Bois":60,"Végétaux":60},
-        "costs":{"Scrap":112,"Carbone":56,"Aluminium":168,"Titane":28,"Tungstène":56,"Batteries":18,"Bugium":86,"Mendium":28,"Creatite":86,"Azote":120,"Calcium":40,"Drogues":28},
+        "costs":{"Fer":54,"Bois":108,"Végétaux":54,"Bugium":54,"Mendium":9,"Wingium":9,"Azote":80,"Calcium":27,"Drogues":18},
         "fabTime":15
     },
     {
@@ -497,7 +496,8 @@
         "compReq":{"gen":1},
         "compHardReq":{"bal":2},
         "compPass":["drogmulojs"],
-        "costs":{"Scrap":112,"Carbone":56,"Aluminium":168,"Titane":28,"Tungstène":56,"Batteries":18,"Bugium":86,"Mendium":28,"Creatite":86,"Azote":120,"Calcium":40,"Drogues":28},
+        "costs":{"Scrap":112,"Carbone":56,"Aluminium":168,"Titane":28,"Tungstène":56,"Moteurs":7,"Bugium":86,"Mendium":28,"Creatite":86,"Azote":120,"Calcium":40,"Drogues":28},
+        "deploy":{"Fuel":7},
         "fabTime":70
     },
     {
@@ -2482,7 +2482,7 @@
     {
         "id":216,
         "name":"Cantine",
-        "upkeep":{"Fruits":12,"Végétaux":12,"Energie":2},
+        "upkeep":{"Fruits":9,"Végétaux":12,"Energie":2},
         "prod":{"Nourriture":4},
         "costs":{"Compo1":195,"Compo2":30,"Eau":300,"Carbone":100,"Nourriture":200,"Fruits":50,"Batteries":30,"Energie":120},
         "fabTime":25,
@@ -2563,21 +2563,9 @@
     {
         "id":235,
         "name":"Poste de pilotage",
-        "bldEquiv":["Poste radio"],
-        "bldUp":"Passerelle",
         "bldReq":["Station"],
         "costs":{},
-        "fabTime":25,
-        "slots":0
-    },
-    {
-        "id":236,
-        "name":"Passerelle",
-        "bldEquiv":["Poste radio","Centre de com","QG"],
-        "bldCost":"Poste de pilotage",
-        "bldReq":["Soute"],
-        "costs":{"Energie":2500,"Cobalt":1500,"Cuivre":7000,"Platine":1500,"Silicium":1000,"Oxygène":600,"Hélium":1500,"Electros":800,"Batteries":300},
-        "fabTime":125,
+        "fabTime":200,
         "slots":0
     },
     {
@@ -2599,7 +2587,7 @@
         "name":"Soute",
         "bldReq":["Station"],
         "costs":{},
-        "fabTime":25,
+        "fabTime":200,
         "slots":0
     },
     {
@@ -2625,5 +2613,99 @@
         "fabTime":200,
         "slots":2,
         "crime":-4
+    },
+    {
+        "id":274,
+        "name":"Station météo",
+        "bldReq":["Station"],
+        "costs":{"Compo1":200,"Compo2":100,"Compo3":35,"Carbone":200,"Titane":75,"Tungstène":75,"Aluminium":200,"Cobalt":150,"Nickel":100,"Cuivre":300,"Platine":100,"Silicium":150,"Oxygène":150,"Hélium":250,"Moteurs":100,"Electros":200,"Batteries":75},
+        "fabTime":200,
+        "slots":0
+    },
+    {
+        "id":275,
+        "name":"Passerelle de com",
+        "bldReq":["Station"],
+        "costs":{"Compo1":180,"Compo2":80,"Cobalt":150,"Cuivre":200,"Platine":50,"Silicium":100,"Hélium":100,"Electros":150,"Batteries":50},
+        "fabTime":200,
+        "slots":0,
+        "crime":-2
+    },
+    {
+        "id":276,
+        "name":"Unités cryogéniques",
+        "bldReq":["Station"],
+        "costs":{"Compo2":150,"Compo3":100,"Eau":750,"Carbone":150,"Tissus":75,"Calcium":250,"Or":250,"Mercure":150,"Cuivre":150,"Oxygène":750,"Argon":150,"Zinc":150,"Bore":150,"Drogues":200,"Chlore":200,"Electros":100,"Batteries":150},
+        "fabTime":200,
+        "slots":0
+    },
+    {
+        "id":277,
+        "name":"Salle de conférence",
+        "bldReq":["Station"],
+        "costs":{"Compo1":200,"Compo2":100,"Carbone":100,"Tissus":100,"Fer":300,"Bois":300,"Electros":25},
+        "fabTime":200,
+        "slots":0,
+        "crime":-1
+    },
+    {
+        "id":278,
+        "name":"Ascenseur",
+        "bldReq":["Station"],
+        "costs":{"Compo2":100,"Compo3":50,"Carbone":250,"Huile":75,"Aluminium":500,"Plomb":300,"Cuivre":100,"Hydrogène":150,"Moteurs":150,"Electros":100,"Batteries":15},
+        "fabTime":200,
+        "slots":0,
+        "crime":-1
+    },
+    {
+        "id":279,
+        "name":"Bureaux",
+        "bldReq":["Station"],
+        "costs":{"Compo1":250,"Tissus":100,"Fer":150,"Bois":200,"Cuivre":50,"Silicium":25,"Electros":100,"Batteries":25},
+        "fabTime":200,
+        "slots":0,
+        "crime":-1
+    },
+    {
+        "id":280,
+        "name":"Salle de contrôle",
+        "bldReq":["Station"],
+        "costs":{"Compo1":150,"Compo2":75,"Carbone":150,"Cuivre":200,"Platine":25,"Silicium":75,"Electros":100,"Batteries":50},
+        "fabTime":200,
+        "slots":0
+    },
+    {
+        "id":281,
+        "name":"Salle de jeux",
+        "bldReq":["Station"],
+        "costs":{"Compo1":150,"Compo2":75,"Huile":25,"Carbone":100,"Fer":150,"Potassium":50,"Cobalt":100,"Nickel":50,"Cuivre":150,"Silicium":75,"Argon":50,"Moteurs":50,"Electros":150,"Batteries":25},
+        "fabTime":200,
+        "slots":0,
+        "crime":-4
+    },
+    {
+        "id":282,
+        "name":"Chapelle",
+        "bldReq":["Station"],
+        "costs":{"Compo1":200,"Compo2":100,"Compo3":100,"Fuel":300,"Huile":100,"Tissus":250,"Titane":150,"Tungstène":250,"Fer":250,"Soufre":300,"Phosphore":300,"Potassium":100,"Rhodium":25,"Or":100,"Platine":100},
+        "fabTime":200,
+        "slots":0,
+        "crime":-4
+    },
+    {
+        "id":273,
+        "name":"Structure",
+        "bldReq":["Station"],
+        "costs":{"Compo1":100,"Compo2":200,"Fer":200,"Carbone":75,"Aluminium":75,"Zinc":50,"Silicium":25},
+        "fabTime":200,
+        "slots":0
+    },
+    {
+        "id":236,
+        "name":"Isolation",
+        "bldReq":["Station"],
+        "costs":{"Compo1":100,"Bois":100,"Bore":100,"Carbone":100,"Calcium":75,"Silicium":50},
+        "fabTime":200,
+        "slots":0
     }
 ]

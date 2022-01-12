@@ -18,7 +18,7 @@ function nextTurn() {
         }
     }
     if (Math.floor(playerInfos.mapTurn/coconStats.turns) > playerInfos.cocons) {
-        if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 1) {
+        if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) {
             warning('Cocon en approche','La prochaine chute d\'oeufs pourrait être accompagnée d\'un cocon.');
         }
     }
@@ -788,7 +788,29 @@ function turnInfo() {
                 $('#tour').append('<span class="or">Dôme inactif</span><br>');
             }
         }
-        $('#tour').append('Morts <span class="or">'+playerInfos.unitsLost+'</span> / '+playerInfos.aliensKilled+' / <span class="cy">'+playerInfos.eggsKilled+'</span>');
+        if ((playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) || playerInfos.pseudo === 'Bob') {
+            let allCoconTurns = [];
+            let turn = 0;
+            while (turn <= 300) {
+                turn = turn+coconStats.turns;
+                allCoconTurns.push(turn);
+                if (turn > 300) {break;}
+            }
+            let turnCol = 'neutre';
+            if (Math.floor(playerInfos.mapTurn/coconStats.turns) > playerInfos.cocons) {
+                turnCol = 'wblynk';
+            }
+            let maxDroppedEggs = checkMaxDroppedEggs();
+            let maxEggsInPlay = checkMaxEggsInPlay();
+            if (playerInfos.droppedEggs < maxDroppedEggs+1 && realNumberOfEggs < maxEggsInPlay) {
+                $('#tour').append('<span class="wblynk" title="Oeuf(s) en approche">Oeufs en approche</span><br>');
+            } else {
+                $('#tour').append('<span class="neutre" title="Aucun oeuf en approche">Aucun oeuf en vue</span><br>');
+                turnCol = 'neutre';
+            }
+            $('#tour').append('<span class="'+turnCol+'" title="Pas de cocon avant le tour '+allCoconTurns[playerInfos.cocons]+'">Cocon tour '+allCoconTurns[playerInfos.cocons]+'</span><br>');
+        }
+        $('#tour').append('Morts <span class="or" title="Bataillons perdus">'+playerInfos.unitsLost+'</span> / <span class="neutre" title="Aliens tués">'+playerInfos.aliensKilled+'</span> / <span class="cy" title="Oeufs détruits">'+playerInfos.eggsKilled+'</span>');
     }
     // feedZoneDB();
     // feedZoneDBwith(zone);

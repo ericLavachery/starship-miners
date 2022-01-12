@@ -265,7 +265,7 @@ function checkEggsDrop() {
         dropMessage = 'Dôme actif';
     }
     console.log('dropChance='+dropChance);
-    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Bob') {
+    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Xxxxx') {
         warning('Oeufs','Check '+dropChance+'% '+dropMessage);
     }
     if (!domeProtect) {
@@ -281,7 +281,7 @@ function checkEggsDrop() {
                 dropEgg('Cocon','any');
                 satDrop = true;
                 playerInfos.alienSat = 0;
-                if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Bob') {
+                if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Xxxxx') {
                     warning('Cocon de saturation','200+ aliens.');
                 }
             } else if (crysalide) {
@@ -307,11 +307,11 @@ function checkEggsDrop() {
                 if (rand.rand(1,eggPauseDice) === 1) {
                     playerInfos.eggPause = false;
                     console.log('END PAUSE! 1/'+eggPauseDice);
-                    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Bob') {
+                    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Xxxxx') {
                         warning('Fin de la pause','Check 1/'+eggPauseDice+' réussi.');
                     }
                 } else {
-                    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Bob') {
+                    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Xxxxx') {
                         warning('La pause continue','Check 1/'+eggPauseDice+' raté.');
                     }
                 }
@@ -406,7 +406,7 @@ function eggsDrop() {
         if (rand.rand(1,100) <= eggPausePerc && !coconStats.dome) {
             playerInfos.eggPause = true;
             console.log('PAUSE! '+eggPausePerc+'%');
-            if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Bob') {
+            if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Xxxxx') {
                 warning('Nouvelle pause','Check '+eggPausePerc+'% réussi après la chute de 0 oeuf ('+noEggDrop+'%)');
             }
         }
@@ -529,7 +529,7 @@ function dropEgg(alienUnit,theArea) {
         if (!coconStats.dome && playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) >= 1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;
             console.log('PAUSE! '+playerInfos.eggsKilled+' eggs killed');
-            if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Bob') {
+            if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Xxxxx') {
                 warning('Nouvelle pause',playerInfos.eggsKilled+' oeufs tués.');
             }
         }
@@ -1298,7 +1298,7 @@ function alienMorph(bat,newBatName,reset) {
 
 function setCoconStats() {
     coconStats.level = zone[0].mapDiff+Math.floor(playerInfos.mapTurn/35)-1;
-    coconStats.turns = 30-Math.floor(zone[0].mapDiff*1.5);
+    coconStats.turns = 31-Math.floor((zone[0].mapDiff*1.25)+(playerInfos.fuzzTotal/150));
     if (hasUnit('Dôme')) {
         coconStats.dome = true;
         if (playerInfos.mapTurn >= 35 && coconStats.level < 9) {

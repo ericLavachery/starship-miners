@@ -1373,7 +1373,7 @@ function skillsInfos(bat,batType,near) {
                         apCost = drug.apCost;
                         if (drugCompOK) {
                             if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('moloko') && !bat.tags.includes('bliss') && !batType.skills.includes('nofear') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Immunisé à la peur / -2 PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`moloko`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Moloko</'+balise+'></span>');
+                                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Immunisé à la peur / -2 PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`moloko`)"><i class="fas fa-wine-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp; Moloko</'+balise+'></span>');
                             } else {
                                 if (bat.tags.includes('moloko')) {
                                     skillMessage = "Déjà bourré";
@@ -1419,7 +1419,7 @@ function skillsInfos(bat,batType,near) {
                     apCost = drug.apCost;
                     if (drugCompOK) {
                         if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('bliss') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Immunisé à la peur / réduit le stress / -1 PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="fas fa-wine-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
+                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Immunisé à la peur / réduit le stress / -1 PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Bliss</'+balise+'></span>');
                         } else {
                             if (bat.tags.includes('bliss')) {
                                 skillMessage = "Déjà sous l'effet de cette drogue";

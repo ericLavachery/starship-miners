@@ -1715,15 +1715,17 @@ function zoneReport(myZone,quiet) {
         if (myZone[0].ensol < 50 && myZone[0].planet != 'Sarak') {
             myZone[0].ensol = 40+rand.rand(0,10);
         }
-        if (playerInfos.comp.det >= 2 && !quiet) {
+        if (playerInfos.comp.det >= 2 && playerInfos.bldVM.includes('Station météo') && !quiet) {
             warning('Ensoleillement',myZone[0].ensol,true);
         }
     }
     if (!quiet) {
-        if (rain) {
-            warning('Pluie','Oui',true);
-        } else {
-            warning('Pluie','Non',true);
+        if (playerInfos.bldVM.includes('Station météo')) {
+            if (rain) {
+                warning('Pluie','Oui',true);
+            } else {
+                warning('Pluie','Non',true);
+            }
         }
         if (playerInfos.comp.ca >= 2) {
             let potable = checkPotable(myZone,-1);

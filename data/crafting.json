@@ -7,7 +7,8 @@
         "bldReq":[],
         "bldOut":["Atelier"],
         "batch":1,
-        "creaNum":50
+        "creaNum":50,
+        "bg":"#1b1510"
     },
     {
         "id":87,
@@ -17,7 +18,8 @@
         "bldReq":[],
         "bldOut":["Atelier"],
         "batch":1,
-        "creaNum":50
+        "creaNum":50,
+        "bg":"#1b1510"
     },
     {
         "id":11,
@@ -27,7 +29,8 @@
         "bldReq":[],
         "bldOut":["Atelier"],
         "batch":1,
-        "creaNum":50
+        "creaNum":50,
+        "bg":"#1b1510"
     },
     {
         "id":93,
@@ -37,7 +40,8 @@
         "bldReq":[],
         "bldOut":["Atelier"],
         "batch":1,
-        "creaNum":50
+        "creaNum":50,
+        "bg":"#1b1510"
     },
     {
         "id":6,
@@ -46,7 +50,8 @@
         "compReq":{},
         "bldReq":["Atelier"],
         "batch":1,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#1b1510"
     },
     {
         "id":9,
@@ -55,7 +60,8 @@
         "compReq":{},
         "bldReq":["Atelier"],
         "batch":1,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#1b1510"
     },
     {
         "id":10,
@@ -64,7 +70,8 @@
         "compReq":{},
         "bldReq":["Atelier"],
         "batch":1,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#1b1510"
     },
     {
         "id":117,
@@ -73,7 +80,8 @@
         "compReq":{"ca":2},
         "bldReq":["Atelier"],
         "batch":5,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#1b1510"
     },
     {
         "id":16,
@@ -82,7 +90,8 @@
         "compReq":{"const":1,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":4,
-        "creaNum":200
+        "creaNum":200,
+        "bg":"#1b1510"
     },
     {
         "id":59,
@@ -91,7 +100,8 @@
         "compReq":{"const":1,"tri":1,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":4,
-        "creaNum":200
+        "creaNum":200,
+        "bg":"#1b1510"
     },
     {
         "id":60,
@@ -100,7 +110,8 @@
         "compReq":{"const":1,"ind":3},
         "bldReq":["Usine"],
         "batch":4,
-        "creaNum":400
+        "creaNum":400,
+        "bg":"#1b1510"
     },
     {
         "id":7,
@@ -109,7 +120,8 @@
         "compReq":{},
         "bldReq":["Atelier"],
         "batch":1,
-        "creaNum":80
+        "creaNum":80,
+        "bg":"#1b1510"
     },
     {
         "id":12,
@@ -118,7 +130,8 @@
         "compReq":{"const":1},
         "bldReq":["Atelier"],
         "batch":2,
-        "creaNum":80
+        "creaNum":80,
+        "bg":"#1b1510"
     },
     {
         "id":123,
@@ -127,7 +140,8 @@
         "compReq":{"ca":3},
         "bldReq":["Atelier"],
         "batch":20,
-        "creaNum":80
+        "creaNum":80,
+        "bg":"#1b1510"
     },
     {
         "id":130,
@@ -136,7 +150,8 @@
         "compReq":{},
         "bldReq":["Chaîne de montage"],
         "batch":4,
-        "creaNum":150
+        "creaNum":150,
+        "bg":"#1b1510"
     },
     {
         "id":13,
@@ -145,7 +160,8 @@
         "compReq":{"const":2,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":4,
-        "creaNum":150
+        "creaNum":150,
+        "bg":"#1b1510"
     },
     {
         "id":17,
@@ -154,7 +170,8 @@
         "compReq":{"const":2,"tri":2,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":4,
-        "creaNum":150
+        "creaNum":150,
+        "bg":"#1b1510"
     },
     {
         "id":131,
@@ -163,7 +180,8 @@
         "compReq":{"ind":2},
         "bldReq":["Usine"],
         "batch":4,
-        "creaNum":300
+        "creaNum":300,
+        "bg":"#1b1510"
     },
     {
         "id":61,
@@ -172,7 +190,8 @@
         "compReq":{"const":1,"ind":3},
         "bldReq":["Usine"],
         "batch":5,
-        "creaNum":400
+        "creaNum":400,
+        "bg":"#1b1510"
     },
     {
         "id":109,
@@ -183,7 +202,8 @@
         "compOut":{"ind":1},
         "bldOut":["Chaîne de montage"],
         "batch":4,
-        "creaNum":50
+        "creaNum":50,
+        "bg":"#1b1510"
     },
     {
         "id":121,
@@ -194,7 +214,8 @@
         "compOut":{"const":1,"ind":1},
         "bldOut":["Chaîne de montage"],
         "batch":4,
-        "creaNum":50
+        "creaNum":50,
+        "bg":"#1b1510"
     },
     {
         "id":122,
@@ -203,7 +224,8 @@
         "compReq":{"ca":3},
         "bldReq":["Atelier"],
         "batch":25,
-        "creaNum":50
+        "creaNum":50,
+        "bg":"#1b1510"
     },
     {
         "id":8,
@@ -212,7 +234,8 @@
         "compReq":{},
         "bldReq":["Chaîne de montage"],
         "batch":4,
-        "creaNum":80
+        "creaNum":80,
+        "bg":"#1b1510"
     },
     {
         "id":14,
@@ -221,7 +244,8 @@
         "compReq":{"const":1,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":4,
-        "creaNum":120
+        "creaNum":120,
+        "bg":"#1b1510"
     },
     {
         "id":18,
@@ -230,7 +254,8 @@
         "compReq":{"const":2,"tri":3,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":4,
-        "creaNum":150
+        "creaNum":150,
+        "bg":"#1b1510"
     },
     {
         "id":15,
@@ -239,7 +264,8 @@
         "compReq":{"const":2,"ind":2},
         "bldReq":["Usine"],
         "batch":4,
-        "creaNum":250
+        "creaNum":250,
+        "bg":"#1b1510"
     },
     {
         "id":62,
@@ -248,7 +274,8 @@
         "compReq":{"const":2,"ind":3},
         "bldReq":["Usine"],
         "batch":5,
-        "creaNum":300
+        "creaNum":300,
+        "bg":"#1b1510"
     },
     {
         "id":91,
@@ -258,7 +285,8 @@
         "bldReq":[],
         "batch":1,
         "creaNum":50,
-        "deg":true
+        "deg":true,
+        "bg":"#1b1510"
     },
     {
         "id":92,
@@ -268,7 +296,8 @@
         "bldReq":[],
         "batch":1,
         "creaNum":50,
-        "deg":true
+        "deg":true,
+        "bg":"#1b1510"
     },
     {
         "id":57,
@@ -277,7 +306,8 @@
         "compReq":{},
         "bldReq":["Atelier"],
         "batch":1,
-        "creaNum":15
+        "creaNum":15,
+        "bg":"#094949"
     },
     {
         "id":0,
@@ -287,7 +317,8 @@
         "bldReq":["Chaîne de montage"],
         "compOut":{"ind":2},
         "batch":1,
-        "creaNum":50
+        "creaNum":50,
+        "bg":"#094949"
     },
     {
         "id":58,
@@ -298,7 +329,8 @@
         "compOut":{"ind":3},
         "bldOut":["Usine"],
         "batch":3,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#094949"
     },
     {
         "id":1,
@@ -307,7 +339,8 @@
         "compReq":{"ind":3},
         "bldReq":["Usine"],
         "batch":6,
-        "creaNum":150
+        "creaNum":150,
+        "bg":"#094949"
     },
     {
         "id":2,
@@ -318,7 +351,8 @@
         "compOut":{"energ":1},
         "bldOut":["Atelier"],
         "batch":1,
-        "creaNum":15
+        "creaNum":15,
+        "bg":"#094949"
     },
     {
         "id":115,
@@ -327,7 +361,8 @@
         "compReq":{"energ":1},
         "bldReq":["Atelier"],
         "batch":1,
-        "creaNum":25
+        "creaNum":25,
+        "bg":"#094949"
     },
     {
         "id":127,
@@ -338,7 +373,8 @@
         "compOut":{"ind":2},
         "bldOut":["Chaîne de montage"],
         "batch":5,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#094949"
     },
     {
         "id":19,
@@ -349,7 +385,8 @@
         "compOut":{"ind":3},
         "bldOut":["Usine"],
         "batch":5,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#094949"
     },
     {
         "id":20,
@@ -358,7 +395,8 @@
         "compReq":{"ind":3},
         "bldReq":["Usine"],
         "batch":5,
-        "creaNum":150
+        "creaNum":150,
+        "bg":"#094949"
     },
     {
         "id":70,
@@ -367,7 +405,8 @@
         "compReq":{},
         "bldReq":["Atelier"],
         "batch":8,
-        "creaNum":16
+        "creaNum":16,
+        "bg":"#2a2810"
     },
     {
         "id":111,
@@ -376,7 +415,8 @@
         "compReq":{},
         "bldReq":["Garage"],
         "batch":10,
-        "creaNum":20
+        "creaNum":20,
+        "bg":"#2a2810"
     },
     {
         "id":112,
@@ -387,7 +427,8 @@
         "compOut":{"ind":2},
         "bldOut":["Usine"],
         "batch":12,
-        "creaNum":120
+        "creaNum":120,
+        "bg":"#2a2810"
     },
     {
         "id":113,
@@ -396,7 +437,8 @@
         "compReq":{"ind":2},
         "bldReq":["Usine"],
         "batch":15,
-        "creaNum":180
+        "creaNum":180,
+        "bg":"#2a2810"
     },
     {
         "id":114,
@@ -405,7 +447,8 @@
         "compReq":{"ind":3},
         "bldReq":["Usine"],
         "batch":15,
-        "creaNum":180
+        "creaNum":180,
+        "bg":"#2a2810"
     },
     {
         "id":3,
@@ -414,7 +457,8 @@
         "compReq":{},
         "bldReq":["Atelier"],
         "batch":10,
-        "creaNum":80
+        "creaNum":80,
+        "bg":"#2a2810"
     },
     {
         "id":21,
@@ -423,7 +467,8 @@
         "compReq":{"pyro":3},
         "bldReq":["Atelier"],
         "batch":10,
-        "creaNum":120
+        "creaNum":120,
+        "bg":"#2a2810"
     },
     {
         "id":118,
@@ -432,7 +477,8 @@
         "compReq":{"ca":3},
         "bldReq":["Atelier"],
         "batch":10,
-        "creaNum":80
+        "creaNum":80,
+        "bg":"#2a2810"
     },
     {
         "id":5,
@@ -441,7 +487,8 @@
         "compReq":{},
         "bldReq":["Chaîne de montage"],
         "batch":10,
-        "creaNum":160
+        "creaNum":160,
+        "bg":"#2a2810"
     },
     {
         "id":22,
@@ -450,7 +497,8 @@
         "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":10,
-        "creaNum":200
+        "creaNum":200,
+        "bg":"#2a2810"
     },
     {
         "id":63,
@@ -459,7 +507,8 @@
         "compReq":{"ind":2},
         "bldReq":["Usine"],
         "batch":10,
-        "creaNum":300
+        "creaNum":300,
+        "bg":"#2a2810"
     },
     {
         "id":23,
@@ -468,7 +517,8 @@
         "compReq":{"exo":1,"ind":2},
         "bldReq":["Usine"],
         "batch":10,
-        "creaNum":300
+        "creaNum":300,
+        "bg":"#2a2810"
     },
     {
         "id":107,
@@ -477,7 +527,8 @@
         "compReq":{"pyro":3},
         "bldReq":["Chaîne de montage"],
         "batch":10,
-        "creaNum":200
+        "creaNum":200,
+        "bg":"#2a2810"
     },
     {
         "id":28,
@@ -486,7 +537,8 @@
         "compReq":{},
         "bldReq":["Atelier"],
         "batch":10,
-        "creaNum":40
+        "creaNum":40,
+        "bg":"#000000"
     },
     {
         "id":29,
@@ -495,7 +547,8 @@
         "compReq":{},
         "bldReq":["Armurerie"],
         "batch":10,
-        "creaNum":80
+        "creaNum":80,
+        "bg":"#000000"
     },
     {
         "id":32,
@@ -504,7 +557,8 @@
         "compReq":{"tri":1},
         "bldReq":["Armurerie"],
         "batch":10,
-        "creaNum":80
+        "creaNum":80,
+        "bg":"#000000"
     },
     {
         "id":119,
@@ -513,7 +567,8 @@
         "compReq":{"ca":2},
         "bldReq":["Armurerie"],
         "batch":10,
-        "creaNum":80
+        "creaNum":80,
+        "bg":"#000000"
     },
     {
         "id":30,
@@ -522,7 +577,8 @@
         "compReq":{},
         "bldReq":["Arsenal"],
         "batch":20,
-        "creaNum":160
+        "creaNum":160,
+        "bg":"#000000"
     },
     {
         "id":31,
@@ -531,7 +587,8 @@
         "compReq":{"ind":1},
         "bldReq":["Usine d'armement"],
         "batch":10,
-        "creaNum":320
+        "creaNum":320,
+        "bg":"#000000"
     },
     {
         "id":4,
@@ -540,7 +597,8 @@
         "compReq":{},
         "bldReq":["Atelier"],
         "batch":2,
-        "creaNum":20
+        "creaNum":20,
+        "bg":"#000000"
     },
     {
         "id":24,
@@ -549,7 +607,8 @@
         "compReq":{"explo":1},
         "bldReq":["Armurerie"],
         "batch":2,
-        "creaNum":20
+        "creaNum":20,
+        "bg":"#000000"
     },
     {
         "id":25,
@@ -558,7 +617,8 @@
         "compReq":{"explo":2},
         "bldReq":["Armurerie"],
         "batch":2,
-        "creaNum":20
+        "creaNum":20,
+        "bg":"#000000"
     },
     {
         "id":27,
@@ -567,7 +627,8 @@
         "compReq":{"explo":3},
         "bldReq":["Arsenal"],
         "batch":2,
-        "creaNum":80
+        "creaNum":80,
+        "bg":"#000000"
     },
     {
         "id":132,
@@ -576,7 +637,8 @@
         "compReq":{"ind":1},
         "bldReq":["Arsenal"],
         "batch":6,
-        "creaNum":120
+        "creaNum":120,
+        "bg":"#000000"
     },
     {
         "id":133,
@@ -585,7 +647,8 @@
         "compReq":{"ind":2},
         "bldReq":["Usine d'armement"],
         "batch":6,
-        "creaNum":160
+        "creaNum":160,
+        "bg":"#000000"
     },
     {
         "id":26,
@@ -594,7 +657,8 @@
         "compReq":{"explo":3,"ind":1},
         "bldReq":["Usine d'armement"],
         "batch":4,
-        "creaNum":160
+        "creaNum":160,
+        "bg":"#000000"
     },
     {
         "id":106,
@@ -602,7 +666,8 @@
         "cost":{"Nanite":1,"Carbone":2},
         "compReq":{"explo":3},
         "bldReq":["Armurerie"],
-        "batch":3
+        "batch":3,
+        "bg":"#000000"
     },
     {
         "id":65,
@@ -613,7 +678,8 @@
         "compOut":{"ind":1},
         "bldOut":["Chaîne de montage"],
         "batch":2,
-        "creaNum":50
+        "creaNum":50,
+        "bg":"#2e1c2d"
     },
     {
         "id":81,
@@ -622,7 +688,8 @@
         "compReq":{"ca":2},
         "bldReq":["Atelier"],
         "batch":2,
-        "creaNum":20
+        "creaNum":20,
+        "bg":"#2e1c2d"
     },
     {
         "id":82,
@@ -631,7 +698,8 @@
         "compReq":{"tri":1},
         "bldReq":["Recyclab"],
         "batch":2,
-        "creaNum":50
+        "creaNum":50,
+        "bg":"#2e1c2d"
     },
     {
         "id":66,
@@ -640,7 +708,8 @@
         "compReq":{},
         "bldReq":["Chaîne de montage"],
         "batch":3,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#2e1c2d"
     },
     {
         "id":116,
@@ -649,7 +718,8 @@
         "compReq":{"ca":3},
         "bldReq":["Chaîne de montage"],
         "batch":2,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#2e1c2d"
     },
     {
         "id":67,
@@ -658,7 +728,8 @@
         "compReq":{"ind":1},
         "bldReq":["Usine"],
         "batch":4,
-        "creaNum":200
+        "creaNum":200,
+        "bg":"#2e1c2d"
     },
     {
         "id":33,
@@ -667,7 +738,8 @@
         "compReq":{},
         "bldReq":["Infirmerie"],
         "batch":20,
-        "creaNum":20
+        "creaNum":20,
+        "bg":"#2e1c2d"
     },
     {
         "id":54,
@@ -676,7 +748,8 @@
         "compReq":{},
         "bldReq":["Laboratoire"],
         "batch":20,
-        "creaNum":40
+        "creaNum":40,
+        "bg":"#2e1c2d"
     },
     {
         "id":64,
@@ -685,7 +758,8 @@
         "compReq":{},
         "bldReq":["Centre de recherches"],
         "batch":20,
-        "creaNum":120
+        "creaNum":120,
+        "bg":"#2e1c2d"
     },
     {
         "id":56,
@@ -694,7 +768,8 @@
         "compReq":{"exo":1},
         "bldReq":["Laboratoire"],
         "batch":20,
-        "creaNum":40
+        "creaNum":40,
+        "bg":"#2e1c2d"
     },
     {
         "id":68,
@@ -703,7 +778,8 @@
         "compReq":{"exo":2},
         "bldReq":["Laboratoire"],
         "batch":20,
-        "creaNum":40
+        "creaNum":40,
+        "bg":"#2e1c2d"
     },
     {
         "id":69,
@@ -712,7 +788,8 @@
         "compReq":{"exo":3},
         "bldReq":["Centre de recherches"],
         "batch":20,
-        "creaNum":120
+        "creaNum":120,
+        "bg":"#2e1c2d"
     },
     {
         "id":134,
@@ -721,7 +798,8 @@
         "compReq":{"exo":2},
         "bldReq":["Centre de recherches"],
         "batch":20,
-        "creaNum":120
+        "creaNum":120,
+        "bg":"#2e1c2d"
     },
     {
         "id":72,
@@ -730,7 +808,8 @@
         "compReq":{},
         "bldReq":[],
         "batch":5,
-        "creaNum":50
+        "creaNum":50,
+        "bg":"#182a16"
     },
     {
         "id":71,
@@ -739,7 +818,8 @@
         "compReq":{},
         "bldReq":["Cantine"],
         "batch":5,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#182a16"
     },
     {
         "id":135,
@@ -748,7 +828,8 @@
         "compReq":{},
         "bldReq":["Cantine"],
         "batch":5,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#182a16"
     },
     {
         "id":136,
@@ -757,7 +838,8 @@
         "compReq":{},
         "bldReq":["Cantine"],
         "batch":5,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#182a16"
     },
     {
         "id":73,
@@ -766,7 +848,8 @@
         "compReq":{"tri":1},
         "bldReq":["Cantine"],
         "batch":5,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#182a16"
     },
     {
         "id":83,
@@ -775,7 +858,8 @@
         "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":5,
-        "creaNum":250
+        "creaNum":250,
+        "bg":"#182a16"
     },
     {
         "id":84,
@@ -784,34 +868,38 @@
         "compReq":{"ind":2},
         "bldReq":["Usine"],
         "batch":5,
-        "creaNum":350
+        "creaNum":350,
+        "bg":"#182a16"
     },
     {
         "id":137,
         "result":"Viande",
-        "cost":{"Corps":5,"Energie":10},
+        "cost":{"Corps":4,"Energie":10},
         "compReq":{},
         "bldReq":["Cantine"],
         "batch":10,
-        "creaNum":50
+        "creaNum":50,
+        "bg":"#182a16"
     },
     {
         "id":138,
         "result":"Viande",
-        "cost":{"Corps":3,"Chlore":3},
+        "cost":{"Corps":2,"Chlore":2},
         "compReq":{},
         "bldReq":["Laboratoire"],
         "batch":10,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#182a16"
     },
     {
         "id":139,
         "result":"Viande",
-        "cost":{"Corps":10,"Octiron":1,"Energie":15},
+        "cost":{"Corps":7,"Octiron":1,"Energie":15},
         "compReq":{},
         "bldReq":["Laboratoire"],
         "batch":50,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#182a16"
     },
     {
         "id":74,
@@ -819,8 +907,9 @@
         "cost":{"Larvium":5,"Energie":3},
         "compReq":{"ca":1},
         "bldReq":["Cantine"],
-        "batch":10,
-        "creaNum":100
+        "batch":12,
+        "creaNum":100,
+        "bg":"#182a16"
     },
     {
         "id":75,
@@ -828,17 +917,19 @@
         "cost":{"Larvium":6,"Huile":1,"Eau":6,"Energie":4},
         "compReq":{"ca":2},
         "bldReq":["Laboratoire"],
-        "batch":20,
-        "creaNum":150
+        "batch":25,
+        "creaNum":150,
+        "bg":"#182a16"
     },
     {
         "id":76,
         "result":"Viande",
-        "cost":{"Swarmine":15,"Drogues":5,"Eau":10,"Energie":10},
+        "cost":{"Swarmine":12,"Drogues":5,"Eau":10,"Energie":10},
         "compReq":{"ca":2},
         "bldReq":["Laboratoire"],
-        "batch":20,
-        "creaNum":150
+        "batch":25,
+        "creaNum":150,
+        "bg":"#182a16"
     },
     {
         "id":77,
@@ -846,8 +937,9 @@
         "cost":{"Bugium":20,"Zinc":1,"Potassium":1,"Huile":2,"Energie":8},
         "compReq":{"ca":3},
         "bldReq":["Laboratoire"],
-        "batch":20,
-        "creaNum":150
+        "batch":25,
+        "creaNum":150,
+        "bg":"#182a16"
     },
     {
         "id":78,
@@ -855,8 +947,9 @@
         "cost":{"Drogues":1,"Creatite":4,"Chlore":2},
         "compReq":{"ca":4,"gen":1},
         "bldReq":["Centre de recherches"],
-        "batch":20,
-        "creaNum":200
+        "batch":25,
+        "creaNum":200,
+        "bg":"#182a16"
     },
     {
         "id":79,
@@ -864,8 +957,9 @@
         "cost":{"Huile":1,"Aranium":6,"Chlore":1,"Drogues":1,"Energie":2},
         "compReq":{"ca":5,"exo":1},
         "bldReq":["Centre de recherches"],
-        "batch":20,
-        "creaNum":200
+        "batch":25,
+        "creaNum":200,
+        "bg":"#182a16"
     },
     {
         "id":34,
@@ -873,7 +967,8 @@
         "cost":{"Wingium":3,"Bugium":12,"Energie":2},
         "compReq":{"tri":2,"ca":2,"mat":1},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":108,
@@ -883,7 +978,8 @@
         "bldReq":[],
         "batch":5,
         "creaNum":20,
-        "deg":true
+        "deg":true,
+        "bg":"#200808"
     },
     {
         "id":35,
@@ -891,7 +987,8 @@
         "cost":{"Mephitis":3,"Chlore":12,"Energie":2},
         "compReq":{"tri":2,"ca":1},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":36,
@@ -899,7 +996,8 @@
         "cost":{"Mendium":5,"Bois":25},
         "compReq":{"tri":2,"ca":2},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":100,
@@ -907,7 +1005,8 @@
         "cost":{"Larvium":5,"Creatite":5,"Energie":5},
         "compReq":{"tri":2,"ca":1},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":129,
@@ -915,7 +1014,8 @@
         "cost":{"Or":12,"Aluminium":6},
         "compReq":{"mat":1},
         "bldReq":["Atelier"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":37,
@@ -923,7 +1023,19 @@
         "cost":{"Blendium":5,"Hélium":5,"Azote":5,"Energie":2},
         "compReq":{"tri":2,"ca":2,"mat":1},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
+    },
+    {
+        "id":140,
+        "result":"Fer",
+        "cost":{"Compo2":5},
+        "compReq":{},
+        "bldReq":[],
+        "batch":5,
+        "creaNum":20,
+        "deg":true,
+        "bg":"#200808"
     },
     {
         "id":38,
@@ -931,7 +1043,8 @@
         "cost":{"Bugium":12,"Azote":3,"Energie":1},
         "compReq":{"tri":1,"ca":1},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":53,
@@ -939,7 +1052,8 @@
         "cost":{"Slime":5,"Végétaux":25,"Energie":2},
         "compReq":{"ca":3},
         "bldReq":["Recyclab"],
-        "batch":10
+        "batch":10,
+        "bg":"#200808"
     },
     {
         "id":55,
@@ -948,7 +1062,8 @@
         "compReq":{"tri":1},
         "bldReq":["Atelier"],
         "batch":4,
-        "creaNum":20
+        "creaNum":20,
+        "bg":"#200808"
     },
     {
         "id":120,
@@ -956,7 +1071,8 @@
         "cost":{"Hydrocarbure":12,"Energie":2},
         "compReq":{"ind":1},
         "bldReq":["Usine"],
-        "batch":4
+        "batch":4,
+        "bg":"#200808"
     },
     {
         "id":52,
@@ -964,7 +1080,8 @@
         "cost":{"Larvium":10,"Végétaux":15,"Energie":1},
         "compReq":{"tri":1,"ca":2},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":88,
@@ -972,7 +1089,8 @@
         "cost":{"Hydrocarbure":30,"Nickel":1},
         "compReq":{},
         "bldReq":["Atelier"],
-        "batch":5
+        "batch":5,
+        "bg":"#200808"
     },
     {
         "id":89,
@@ -980,7 +1098,8 @@
         "cost":{"Eau":20,"Energie":60},
         "compReq":{"ind":1},
         "bldReq":["Usine"],
-        "batch":5
+        "batch":5,
+        "bg":"#200808"
     },
     {
         "id":90,
@@ -988,7 +1107,8 @@
         "cost":{"Eau":10,"Energie":5,"Aranium":3},
         "compReq":{"tri":1,"ind":2,"ca":2},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":5,
+        "bg":"#200808"
     },
     {
         "id":105,
@@ -996,7 +1116,8 @@
         "cost":{"Plastanium":1},
         "compReq":{"energ":1},
         "bldReq":["Laboratoire"],
-        "batch":3
+        "batch":3,
+        "bg":"#200808"
     },
     {
         "id":39,
@@ -1004,7 +1125,8 @@
         "cost":{"Octiron":5,"Creatite":10,"Energie":5},
         "compReq":{"tri":3,"ca":1},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":40,
@@ -1012,7 +1134,8 @@
         "cost":{"Germium":10,"Creatite":10,"Energie":5},
         "compReq":{"tri":3,"ca":3,"mat":1},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":110,
@@ -1020,7 +1143,8 @@
         "cost":{"Eau":5,"Energie":15},
         "compReq":{"tri":2},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":5,
+        "bg":"#200808"
     },
     {
         "id":41,
@@ -1028,7 +1152,8 @@
         "cost":{"Aranium":10,"Chlore":5,"Energie":2},
         "compReq":{"tri":3,"ca":2},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":42,
@@ -1036,7 +1161,8 @@
         "cost":{"Swarmine":15,"Azote":5,"Energie":1},
         "compReq":{"tri":1,"ca":1},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":43,
@@ -1044,7 +1170,8 @@
         "cost":{"Blendium":10,"Hydrogène":10,"Energie":10},
         "compReq":{"tri":3,"ca":3,"mat":1},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":5,
+        "bg":"#200808"
     },
     {
         "id":85,
@@ -1054,7 +1181,8 @@
         "bldReq":[],
         "compOut":{"energ":1},
         "bldOut":["Laboratoire"],
-        "batch":2
+        "batch":2,
+        "bg":"#200808"
     },
     {
         "id":101,
@@ -1062,7 +1190,8 @@
         "cost":{"Uranium":2},
         "compReq":{"energ":1},
         "bldReq":["Laboratoire"],
-        "batch":2
+        "batch":2,
+        "bg":"#200808"
     },
     {
         "id":102,
@@ -1070,7 +1199,8 @@
         "cost":{"Timonium":1},
         "compReq":{"energ":2},
         "bldReq":["Laboratoire"],
-        "batch":2
+        "batch":2,
+        "bg":"#200808"
     },
     {
         "id":103,
@@ -1078,7 +1208,8 @@
         "cost":{"Uridium":1},
         "compReq":{"energ":2},
         "bldReq":["Centre de recherches"],
-        "batch":3
+        "batch":3,
+        "bg":"#200808"
     },
     {
         "id":44,
@@ -1086,7 +1217,8 @@
         "cost":{"Slime":5,"Chlore":10,"Energie":3},
         "compReq":{"tri":1,"ca":2},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":45,
@@ -1094,7 +1226,8 @@
         "cost":{"Pyrus":10,"Bossium":1,"Energie":2},
         "compReq":{"tri":4,"ca":3},
         "bldReq":["Recyclab"],
-        "batch":10
+        "batch":10,
+        "bg":"#200808"
     },
     {
         "id":46,
@@ -1102,7 +1235,8 @@
         "cost":{"Egidium":5,"Argon":5,"Energie":15},
         "compReq":{"tri":4,"ca":2,"mat":4},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":5,
+        "bg":"#200808"
     },
     {
         "id":47,
@@ -1110,7 +1244,8 @@
         "cost":{"Pyrus":5,"Oxygène":5},
         "compReq":{"tri":1,"ca":1},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":128,
@@ -1118,7 +1253,8 @@
         "cost":{"Wingium":10,"Creatite":5,"Carbone":10},
         "compReq":{"tri":2,"ca":2},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":48,
@@ -1126,7 +1262,8 @@
         "cost":{"Wingium":10,"Bossium":5,"Energie":5},
         "compReq":{"tri":4,"ca":3,"mat":2},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":49,
@@ -1134,7 +1271,8 @@
         "cost":{"Swarmine":15,"Hélium":5,"Energie":10},
         "compReq":{"tri":3,"ca":2,"mat":1},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":50,
@@ -1142,7 +1280,8 @@
         "cost":{"Blendium":15,"Argon":5,"Energie":15},
         "compReq":{"tri":4,"ca":3,"mat":1},
         "bldReq":["Recyclab"],
-        "batch":5
+        "batch":5,
+        "bg":"#200808"
     },
     {
         "id":104,
@@ -1150,7 +1289,8 @@
         "cost":{"Uridium":1},
         "compReq":{"energ":2},
         "bldReq":["Centre de recherches"],
-        "batch":2
+        "batch":2,
+        "bg":"#200808"
     },
     {
         "id":51,
@@ -1158,7 +1298,8 @@
         "cost":{"Mendium":10,"Chlore":5,"Energie":3},
         "compReq":{"tri":2,"ca":3},
         "bldReq":["Recyclab"],
-        "batch":15
+        "batch":15,
+        "bg":"#200808"
     },
     {
         "id":124,
@@ -1167,7 +1308,8 @@
         "compReq":{},
         "bldReq":["Centrale SMR"],
         "batch":1,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#002442"
     },
     {
         "id":125,
@@ -1176,7 +1318,8 @@
         "compReq":{},
         "bldReq":["Générateur"],
         "batch":10,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#002442"
     },
     {
         "id":80,
@@ -1185,7 +1328,8 @@
         "compReq":{},
         "bldReq":["Centrale SMR"],
         "batch":10,
-        "creaNum":1000
+        "creaNum":1000,
+        "bg":"#002442"
     },
     {
         "id":98,
@@ -1195,7 +1339,8 @@
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
         "batch":50,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#002442"
     },
     {
         "id":97,
@@ -1205,7 +1350,8 @@
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
         "batch":50,
-        "creaNum":100
+        "creaNum":100,
+        "bg":"#002442"
     },
     {
         "id":96,
@@ -1215,7 +1361,8 @@
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
         "batch":50,
-        "creaNum":75
+        "creaNum":75,
+        "bg":"#002442"
     },
     {
         "id":94,
@@ -1225,7 +1372,8 @@
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
         "batch":50,
-        "creaNum":50
+        "creaNum":50,
+        "bg":"#002442"
     },
     {
         "id":99,
@@ -1235,7 +1383,8 @@
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
         "batch":50,
-        "creaNum":20
+        "creaNum":20,
+        "bg":"#002442"
     },
     {
         "id":95,
@@ -1245,7 +1394,8 @@
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
         "batch":50,
-        "creaNum":20
+        "creaNum":20,
+        "bg":"#002442"
     },
     {
         "id":126,
@@ -1255,6 +1405,7 @@
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],
         "batch":50,
-        "creaNum":20
+        "creaNum":20,
+        "bg":"#002442"
     }
 ]

@@ -93,7 +93,7 @@ function repos(time) {
 }
 
 function eventProduction(afterMission,time,sim,quiet) {
-    let mesCitoyens = calcTotalCitoyens();
+    let mesCitoyens = calcTotalCitoyens(false);
     let population = mesCitoyens.crim+mesCitoyens.cit;
     let science = 0;
     let triFactor = playerInfos.comp.tri;
@@ -255,7 +255,7 @@ function rechercheSci(bat,time) {
 };
 
 function eventBouffe(time,sim,quiet) {
-    let mesCitoyens = calcTotalCitoyens();
+    let mesCitoyens = calcTotalCitoyens(true);
     let toutMesCitoyens = mesCitoyens.cit+mesCitoyens.crim;
     let bouffeCost = {};
     let recycleFactor = playerInfos.comp.tri+8;
@@ -263,10 +263,13 @@ function eventBouffe(time,sim,quiet) {
         recycleFactor = recycleFactor+4;
     }
     let energyFactor = playerInfos.comp.tri+8;
-    bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/291);
+    let numIso = checkNumUnits('Isolation');
+    let isoFactor = 1+((26-numIso)/13);
+    bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/537);
     bouffeCost['Eau'] = Math.round(toutMesCitoyens*time*2/274/recycleFactor*8);
     bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time*2/936/recycleFactor*8);
-    bouffeCost['Energie'] = Math.round(toutMesCitoyens*time*2/1408/energyFactor*8);
+    bouffeCost['Energie'] = Math.round(Math.sqrt(toutMesCitoyens)*50*time*2/1408/energyFactor*8*isoFactor);
+    // bouffeCost['Energie'] = Math.round(toutMesCitoyens*time*2/1408/energyFactor*8);
     console.log('CONSO !!!!!!!!!!!!!!!!!!!!!!!!!!');
     console.log('time='+time);
     console.log('energyFactor='+energyFactor);
@@ -296,7 +299,7 @@ function eventBouffe(time,sim,quiet) {
             bldHeat = bldHeat+batType.hp;
         }
     });
-    bouffeCost['Energie'] = bouffeCost['Energie']+Math.round(bldHeat/28/65*time);
+    bouffeCost['Energie'] = bouffeCost['Energie']+Math.round(bldHeat/52/65*time*isoFactor);
     if (plantesProd >= 1) {
         if (!quiet) {
             warning('Serres et Jardins','Oxygène:<span class="vert">+'+plantesProd+'</span><br>(Déduit de la consommation)<br>',true);
@@ -436,15 +439,24 @@ function bonusCit(citId,toId,number) {
     toBat.transIds.push(newCitBat.id);
 };
 
-function calcTotalCitoyens() {
+function calcTotalCitoyens(cryoOut) {
+    if (cryoOut) {
+        if (playerInfos.bldVM.includes('Unités cryogéniques')) {
+            cryoOut = true;
+        } else {
+            cryoOut = false;
+        }
+    } else {
+        cryoOut = false;
+    }
     let mesCitoyens = {};
     mesCitoyens.cit = 0;
     mesCitoyens.crim = 0;
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
-        if (batType.name === 'Citoyens') {
+        if (batType.name === 'Citoyens' && !cryoOut) {
             mesCitoyens.cit = mesCitoyens.cit+bat.citoyens;
-        } else if (batType.name === 'Criminels') {
+        } else if (batType.name === 'Criminels' && !cryoOut) {
             mesCitoyens.crim = mesCitoyens.crim+bat.citoyens;
         } else {
             let unitCits = batType.squads*batType.crew*batType.squadSize;
@@ -460,7 +472,7 @@ function calcTotalCitoyens() {
 
 function eventCrime(time,sim,quiet) {
     // Crimes et vols en fonction du taux de criminalité
-    let mesCitoyens = calcTotalCitoyens();
+    let mesCitoyens = calcTotalCitoyens(false);
     let population = mesCitoyens.crim+mesCitoyens.cit;
     let crimeRate = calcCrimeRate(mesCitoyens);
     if (!sim) {
@@ -476,7 +488,7 @@ function calcCrimeRate(mesCitoyens) {
     // facteur: +criminels%
     let population = mesCitoyens.crim+mesCitoyens.cit;
     crimeRate.crim = Math.ceil(mesCitoyens.crim*100/population);
-    crimeRate.penib = 0;
+    crimeRate.penib = 17;
     crimeRate.lits = 0;
     crimeRate.fo = 0;
     crimeRate.total = 0;
@@ -511,7 +523,7 @@ function calcCrimeRate(mesCitoyens) {
         if (batType.crime != undefined || bat.eq === 'camkit') {
             let countMe = false;
             if (batType.cat === 'buildings') {
-                if (batType.name === 'Prisons' || batType.name === 'Cabines' || (batType.crime >= 1 && bat.eq != 'confort')) {
+                if (batType.name === 'Prisons' || batType.name === 'Cabines' || batType.name === 'Ascenceur' || (batType.crime >= 1 && bat.eq != 'confort')) {
                     countMe = true;
                 } else {
                     if (!bldIds.includes(batType.id)) {
@@ -528,20 +540,25 @@ function calcCrimeRate(mesCitoyens) {
                 }
             }
             if (countMe) {
-                if (bat.eq === 'camkit') {
+                if (bat.eq === 'camkit' && playerInfos.bldVM.includes('Salle de contrôle')) {
                     crimeRate.fo = crimeRate.fo-1;
                 } else if (batType.skills.includes('fo')) {
                     crimeRate.fo = crimeRate.fo+batType.crime;
                 } else {
                     crimeRate.penib = crimeRate.penib+batType.crime;
+                    console.log(batType.name+' '+batType.crime+' total='+crimeRate.penib);
                 }
             }
         }
     });
     // centre de com
-    if (playerInfos.bldList.includes('Centre de com')) {
-        crimeRate.fo = crimeRate.fo-3;
+    if (playerInfos.bldList.includes('Salle de contrôle')) {
+        crimeRate.fo = crimeRate.fo-1;
     }
+    // structure
+    let numStructures = checkNumUnits('Structure');
+    console.log('Structure='+numStructures);
+    crimeRate.penib = crimeRate.penib-Math.round(numStructures/10);
     // +5 par dortoir manquant
     if (population > crimeRate.lits) {
         crimeRate.penib = crimeRate.penib+Math.floor((population-crimeRate.lits)/100);

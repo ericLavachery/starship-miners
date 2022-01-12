@@ -488,6 +488,16 @@ function hasUnit(unitName) {
     return youHaveIt;
 }
 
+function checkNumUnits(unitName) {
+    let numUnits = 0;
+    bataillons.forEach(function(bat) {
+        if (bat.type === unitName) {
+            numUnits++;
+        }
+    });
+    return numUnits;
+}
+
 function maxUnits(unit) {
     let isMax;
     let numOf = {};

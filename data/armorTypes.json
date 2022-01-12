@@ -782,7 +782,7 @@
         "cat":"equip",
         "skills":[],
         "info":"Criminalité- (ne peut plus être déployé)",
-        "bldReq":["Centre de com"],
+        "bldReq":["Salle de contrôle"],
         "compReq":{"det":3,"ordre":2},
         "autoComp":[],
         "factor":"one",

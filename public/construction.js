@@ -1586,6 +1586,15 @@ function getResRecup(bat,batType) {
             Object.entries(batType.costs).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
+                if (playerInfos.comp.const >= 1 && key === 'Compo1') {
+                    value = Math.floor(value*9/6);
+                }
+                if (playerInfos.comp.const >= 2 && key === 'Compo2') {
+                    value = Math.floor(value*9/6);
+                }
+                if (playerInfos.comp.const >= 3 && key === 'Compo3') {
+                    value = Math.floor(value*9/6);
+                }
                 if (key != 'Transorb') {
                     value = Math.ceil(value/100*recupFactor);
                 }

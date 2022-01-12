@@ -609,6 +609,9 @@ function getZoneInfo(zoneNumber) {
 };
 
 function toZoneString(zoneInfo) {
+    if (!playerInfos.bldVM.includes('Station météo')) {
+        delete zoneInfo.ensol;
+    }
     let newString = toCoolString(zoneInfo);
     console.log(newString);
     newString = newString.replace("true","Oui");
@@ -737,10 +740,12 @@ function showZonePreview() {
         showInfo = showInfo.replace(/}/g,'');
     }
     let rain = isRaining(zonePrev);
-    if (rain) {
-        showInfo = showInfo+', Pluie=Oui';
-    }  else {
-        showInfo = showInfo+', Pluie=Non';
+    if (playerInfos.bldVM.includes('Station météo')) {
+        if (rain) {
+            showInfo = showInfo+', Pluie=Oui';
+        }  else {
+            showInfo = showInfo+', Pluie=Non';
+        }
     }
     if (playerInfos.comp.ca >= 2) {
         let potable = checkPotable(zonePrev,-1);

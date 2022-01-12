@@ -188,7 +188,7 @@ function commandes() {
 function viewPop() {
     if (playerInfos.onShip && !modeSonde && !inSoute) {
         if (bataillons.length >= 1) {
-            let mesCitoyens = calcTotalCitoyens();
+            let mesCitoyens = calcTotalCitoyens(false);
             let population = mesCitoyens.crim+mesCitoyens.cit;
             let crimeRate = calcCrimeRate(mesCitoyens);
             let popColour = 'cy';

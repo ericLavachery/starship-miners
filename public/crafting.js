@@ -55,31 +55,32 @@ function craftWindow(retour) {
             craftCol = 'sky';
         }
         if ((compReqOK || playerInfos.pseudo === 'Test') && !oldCraft) {
+            $('#conUnitList').append('<div class="craftsBlock" style="background-color:'+craft.bg+';" id="crf'+craft.id+'"></div>');
             if (craftOK) {
-                $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                $('#conUnitList').append('<span class="craftsList '+craftCol+' klik" title="'+toNiceString(craft.bldReq)+'" onclick="doCraft('+craft.id+','+creationNum+')">'+creationNum+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
+                $('#crf'+craft.id).append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                $('#crf'+craft.id).append('<span class="craftsList '+craftCol+' klik" title="'+toNiceString(craft.bldReq)+'" onclick="doCraft('+craft.id+','+creationNum+')">'+creationNum+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
             } else {
-                $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-                $('#conUnitList').append('<span class="craftsList gf" title="'+toNiceString(craft.bldReq)+'">'+creationNum+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
+                $('#crf'+craft.id).append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                $('#crf'+craft.id).append('<span class="craftsList gf" title="'+toNiceString(craft.bldReq)+'">'+creationNum+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
             }
             craftCostsList = showCraftCost(craft,creationNum);
-            $('#conUnitList').append('<span class="craftsList">'+craftCostsList+'</span><br>');
+            $('#crf'+craft.id).append('<span class="craftsList">'+craftCostsList+'</span><br>');
             if (craft.bldReq.length >= 1) {
                 if (bldOK) {
-                    $('#conUnitList').append('<span class="craftsList bleu">'+toNiceString(craft.bldReq)+'</span><br>');
+                    $('#crf'+craft.id).append('<span class="craftsList bleu">'+toNiceString(craft.bldReq)+'</span><br>');
                 } else {
-                    $('#conUnitList').append('<span class="craftsList rouge">'+toNiceString(craft.bldReq)+'</span><br>');
+                    $('#crf'+craft.id).append('<span class="craftsList rouge">'+toNiceString(craft.bldReq)+'</span><br>');
                 }
             }
             if (Object.keys(craft.compReq).length >= 1) {
                 craftCompReqs = showCraftCompReqs(craft);
                 if (compReqOK) {
-                    $('#conUnitList').append('<span class="craftsList bleu">'+craftCompReqs+'</span><br>');
+                    $('#crf'+craft.id).append('<span class="craftsList bleu">'+craftCompReqs+'</span><br>');
                 } else {
-                    $('#conUnitList').append('<span class="craftsList rouge">'+craftCompReqs+'</span><br>');
+                    $('#crf'+craft.id).append('<span class="craftsList rouge">'+craftCompReqs+'</span><br>');
                 }
             }
-            $('#conUnitList').append('<hr>');
+            $('#crf'+craft.id).append('<hr class="craft">');
         }
     });
     if (playerInfos.bldList.includes('Crameur') || playerInfos.bldList.includes('Centrale nucléaire')) {
@@ -102,17 +103,18 @@ function craftWindow(retour) {
                     dispoRes = getDispoRes(res.name);
                     neededRes = res.energie*energyFactor/eCrafting;
                     neededRes = cramPower(res,neededRes);
+                    $('#conUnitList').append('<div class="craftsBlock" id="cram'+res.id+'"></div>');
                     if (dispoRes >= neededRes && playerInfos.crafts < maxCrafts) {
-                        $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                        $('#conUnitList').append('<span class="craftsList cy klik" onclick="doEnergyCraft(`'+res.name+'`,'+neededRes+','+energyFactor+')">'+energyFactor+' Energie <span class="brunf">('+iHave+')</span></span><br>');
-                        $('#conUnitList').append('<span class="craftsList gf">'+res.name+':<span class="bleu">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
+                        $('#cram'+res.id).append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                        $('#cram'+res.id).append('<span class="craftsList cy klik" onclick="doEnergyCraft(`'+res.name+'`,'+neededRes+','+energyFactor+')">'+energyFactor+' Energie <span class="brunf">('+iHave+')</span></span><br>');
+                        $('#cram'+res.id).append('<span class="craftsList gf">'+res.name+':<span class="bleu">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
                     } else {
-                        $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-                        $('#conUnitList').append('<span class="craftsList gf">'+energyFactor+' Energie</span><br>');
-                        $('#conUnitList').append('<span class="craftsList gf">'+res.name+':<span class="rouge">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
+                        $('#cram'+res.id).append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                        $('#cram'+res.id).append('<span class="craftsList gf">'+energyFactor+' Energie</span><br>');
+                        $('#cram'+res.id).append('<span class="craftsList gf">'+res.name+':<span class="rouge">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
                     }
-                    $('#conUnitList').append('<span class="craftsList bleu">'+cramBld+'</span><br>');
-                    $('#conUnitList').append('<hr>');
+                    $('#cram'+res.id).append('<span class="craftsList bleu">'+cramBld+'</span><br>');
+                    $('#cram'+res.id).append('<hr class="craft">');
                 }
             }
         });
