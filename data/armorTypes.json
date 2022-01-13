@@ -794,7 +794,7 @@
         "skills":[],
         "info":"Canon à essence / Résistance feu",
         "bldReq":["Atelier"],
-        "compReq":{"def":1,"pyro":2},
+        "compReq":{"def":1,"pyro":1},
         "factor":"crew",
         "costs":{"Carbone":6,"Scrap":24,"Aluminium":24,"Moteurs":2,"Nickel":6},
         "deploy":{"Energie":12,"Fuel":48}
