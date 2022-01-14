@@ -44,8 +44,8 @@
         "name":"robo",
         "fullName":"Robotique",
         "levels":{"rednecks":99,"blades":99,"bulbos":6,"drogmulojs":99,"tiradores":6,"detruas":6,"brasier":99},
-        "maxLevel":1,
-        "lvlCosts":[0,2]
+        "maxLevel":2,
+        "lvlCosts":[0,2,1]
     },
     {
         "id":7,
@@ -100,8 +100,8 @@
         "name":"train",
         "fullName":"Entraînement",
         "levels":{"rednecks":5,"blades":0,"bulbos":5,"drogmulojs":5,"tiradores":5,"detruas":5,"brasier":5},
-        "maxLevel":2,
-        "lvlCosts":[0,1,2]
+        "maxLevel":3,
+        "lvlCosts":[0,1,1,2]
     },
     {
         "id":14,

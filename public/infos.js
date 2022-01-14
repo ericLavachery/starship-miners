@@ -553,7 +553,8 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<hr>');
         let demText;
         if (!bat.tags.includes('nomove')) {
-            if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || batType.cat === 'buildings' || batType.skills.includes('okdel')) {
+            let okKill = checkOkKill(batType);
+            if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || (batType.skills.includes('recupcorps') && okKill) || batType.cat === 'buildings' || batType.skills.includes('okdel')) {
                 if (batType.skills.includes('recupcit')) {
                     if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
                         if (batType.skills.includes('brigands')) {
@@ -575,6 +576,8 @@ function batInfos(bat,batType,pop) {
                 } else {
                     if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
                         demText = '(récupérer des ressources)';
+                    } else if (batType.skills.includes('recupcorps')) {
+                        demText = '(récupérer des corps)';
                     }
                 }
                 if (batType.skills.includes('okdel')) {

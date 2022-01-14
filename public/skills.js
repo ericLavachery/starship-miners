@@ -490,7 +490,7 @@ function calcCibleBonus(batType) {
     }
     tcBonus.prec = (7+trainComp)/3.75;
     tcBonus.rof = (15+trainComp)/20;
-    tcBonus.pow = (7.5+trainComp+playerInfos.comp.ca)/6.666;
+    tcBonus.pow = (7+trainComp+playerInfos.comp.ca)/6.666;
     return tcBonus;
 };
 
@@ -530,7 +530,7 @@ function ambush(apCost) {
 function calcEmbushBonus(batType) {
     let embushBonus = 1.8;
     if (batType.cat != 'aliens') {
-        embushBonus = embushBonus+(playerInfos.comp.train/5)+(playerInfos.comp.cam/2);
+        embushBonus = embushBonus+(playerInfos.comp.train/6)+(playerInfos.comp.cam/2);
         if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
             embushBonus = embushBonus+0.3;
         }
@@ -539,14 +539,14 @@ function calcEmbushBonus(batType) {
 };
 
 function calcTiraBonus(batType) {
-    let tiraBonus = 1.4;
+    let tiraBonus = 1.35;
     if (batType.cat != 'aliens') {
         tiraBonus = tiraBonus+(playerInfos.comp.train/10)+(playerInfos.comp.cam/10);
         if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
             tiraBonus = tiraBonus+0.2;
         }
     } else {
-        tiraBonus = tiraBonus+0.1;
+        tiraBonus = tiraBonus+0.15;
     }
     return tiraBonus;
 };

@@ -1273,7 +1273,10 @@ function checkXPBonus(myBatType) {
             batNewXP = batNewXP+levelXP[1];
         }
         if (playerInfos.comp.train === 2) {
-            batNewXP = batNewXP+Math.ceil(levelXP[2]*3/4);
+            batNewXP = batNewXP+Math.ceil(levelXP[2]*2/3);
+        }
+        if (playerInfos.comp.train === 2) {
+            batNewXP = batNewXP+Math.ceil(levelXP[3]/2);
         }
     }
     return batNewXP;
@@ -1344,6 +1347,9 @@ function dismantle(batId) {
             let tileId = bat.tileId;
             if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
                 recupRes(bat,batType);
+            }
+            if (batType.skills.includes('recupcorps')) {
+                recupBodies(bat,batType);
             }
             let crew = batType.squads*batType.squadSize*batType.crew;
             let xp = getXp(bat);
@@ -1516,6 +1522,42 @@ function getRecup(costs) {
     return recup;
 };
 
+function checkOkKill(batType) {
+    let okKill = false;
+    if (playerInfos.gang === 'brasier') {
+        if (batType.name === 'Criminels' || batType.skills.includes('brigands')) {
+            okKill = true;
+        }
+    } else if (playerInfos.gang === 'drogmulojs') {
+        okKill = true;
+    }
+    return okKill;
+}
+
+function recupBodies(bat,batType) {
+    let coffre = {};
+    if (playerInfos.onShip) {
+        coffre = getBatById(souteId);
+    } else {
+        coffreTileId = -1;
+        conselTriche = true;
+        putBatAround(bat.tileId,false,'near',239,0);
+        coffre = getBatByTileId(coffreTileId);
+    }
+    let numBodies = 0;
+    if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
+        numBodies = bat.citoyens;
+    } else {
+        numBodies = batType.crew*batType.squads*batType.squadSize;
+    }
+    if (coffre.transRes['Corps'] === undefined) {
+        coffre.transRes['Corps'] = numBodies;
+    } else {
+        coffre.transRes['Corps'] = coffre.transRes['Corps']+numBodies;
+    }
+    coffreTileId = -1;
+};
+
 function recupRes(bat,batType) {
     let coffre = {};
     if (playerInfos.onShip) {
@@ -1560,6 +1602,13 @@ function recupRes(bat,batType) {
 
 function getResRecup(bat,batType) {
     let resRecup = {};
+    if (batType.skills.includes('recupcorps')) {
+        if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
+            resRecup['Corps'] = bat.citoyens;
+        } else {
+            resRecup['Corps'] = batType.crew*batType.squads*batType.squadSize;
+        }
+    }
     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
         let recupFactor = 95;
         let bldFactor = 0;

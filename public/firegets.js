@@ -552,7 +552,7 @@ function saveCrew(deadBatType,deadId,tileId) {
     if (deadBatType.skills.includes('crewsave')) {
         salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/6*rand.rand(4+Math.floor(playerInfos.comp.train/2),6));
     } else if (deadBatType.skills.includes('badcrewsave') || deadBatType.cat === 'buildings') {
-        salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/6*rand.rand(0+playerInfos.comp.train,4));
+        salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/6*rand.rand(playerInfos.comp.train,4));
     }
     if (salvableCits >= 1) {
         if (salvableCits > 72) {
@@ -1115,7 +1115,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
         }
     }
     if (bat.team === 'player') {
-        speed = speed-(playerInfos.comp.train*5);
+        speed = speed-(playerInfos.comp.train*5)+5;
     } else {
         speed = speed-alienInitiative;
     }
@@ -1835,8 +1835,10 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     // GENHAB
-    if (thisWeapon.isMelee && bat.tags.includes('genstrong')) {
-        thisWeapon.power = thisWeapon.power+4;
+    if (bat.tags.includes('genstrong')) {
+        if (thisWeapon.isMelee || thisWeapon.name.includes('Javelot')) {
+            thisWeapon.power = thisWeapon.power+4;
+        }
     }
     if (bat.tags.includes('genblind')) {
         thisWeapon.accuracy = thisWeapon.accuracy-5;
@@ -1859,12 +1861,6 @@ function weaponAdj(weapon,bat,wn) {
         if (ammo.sound[thisWeapon.sound] != undefined) {
             thisWeapon.sound = ammo.sound[thisWeapon.sound];
         }
-    }
-    // ammo range
-    if (thisWeapon.range === 0 && ammo.range > 1) {
-        thisWeapon.range = 1;
-    } else {
-        thisWeapon.range = Math.ceil(thisWeapon.range*ammo.range);
     }
     // spiderRG
     if (!thisWeapon.isMelee && spiderRG && batType.kind === 'spider') {
@@ -1900,7 +1896,7 @@ function weaponAdj(weapon,bat,wn) {
     }
     // sila drug
     if (bat.tags.includes('sila')) {
-        if (thisWeapon.isMelee) {
+        if (thisWeapon.isMelee || thisWeapon.name.includes('Javelot')) {
             thisWeapon.power = thisWeapon.power+4;
         } else if (thisWeapon.isBow) {
             thisWeapon.accuracy = thisWeapon.accuracy+3;
@@ -1984,16 +1980,13 @@ function weaponAdj(weapon,bat,wn) {
     } else if (highGround === 2) {
         thisWeapon.range = thisWeapon.range+thisWeapon.elevation;
     }
-    // hero range
-    if (bat.tags.includes('hero') && batType.skills.includes('herorange')) {
-        if (!thisWeapon.isMelee && ((!thisWeapon.isShort && thisWeapon.range >= 1) || thisWeapon.range >= 2 || (thisWeapon.elevation >= 1 && thisWeapon.range >= 1))) {
+    // additional ranges
+    if (!thisWeapon.isMelee && ((!thisWeapon.isShort && thisWeapon.range >= 1) || thisWeapon.range >= 2 || (thisWeapon.elevation >= 1 && thisWeapon.range >= 1))) {
+        // ammo range
+        thisWeapon.range = Math.ceil(thisWeapon.range*ammo.range);
+        // hero range
+        if (bat.tags.includes('hero') && batType.skills.includes('herorange')) {
             thisWeapon.range = thisWeapon.range+1;
-        }
-    }
-    // hero rage
-    if (bat.tags.includes('rage')) {
-        if (thisWeapon.isMelee) {
-            thisWeapon.power = thisWeapon.power+Math.round(Math.sqrt(thisWeapon.power)*1.42);
         }
     }
     // Forêt (range)
@@ -2016,11 +2009,18 @@ function weaponAdj(weapon,bat,wn) {
     if (thisWeapon.range >= 2 && (tile.terrain == 'W' || tile.terrain == 'L' || tile.terrain == 'R') && !batType.skills.includes('fly') && !batType.skills.includes('hover') && batType.cat != 'buildings' && !batType.skills.includes('transorbital')) {
         thisWeapon.range = thisWeapon.range-1;
     }
+    // vue
     if (zone[0].dark) {
         let vue = calcVue(bat,batType);
     }
     if (bat.tags.includes('fogged') && thisWeapon.range > 1) {
         thisWeapon.range = 1;
+    }
+    // hero rage
+    if (bat.tags.includes('rage')) {
+        if (thisWeapon.isMelee || thisWeapon.name.includes('Javelot')) {
+            thisWeapon.power = thisWeapon.power+Math.round(Math.sqrt(thisWeapon.power)*1.42);
+        }
     }
     // hero tornade cost
     if (bat.tags.includes('tornade')) {
@@ -2139,6 +2139,8 @@ function calcShotDice(bat,luckyshot) {
         if (playerInfos.comp.train === 1) {
             luckDice = luckDice-2;
         } else if (playerInfos.comp.train === 2) {
+            luckDice = luckDice-3;
+        } else if (playerInfos.comp.train === 3) {
             luckDice = luckDice-5;
         }
     }
@@ -2271,8 +2273,8 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
                 gmax = 0.85;
             }
             if (batType.cat != 'aliens') {
-                gmin = gmin+(playerInfos.comp.train/4);
-                gmax = gmax+(playerInfos.comp.train/4);
+                gmin = gmin+(playerInfos.comp.train/5);
+                gmax = gmax+(playerInfos.comp.train/5);
             }
             if (brideDef < gmax) {
                 brideDef = brideDef*1.25;

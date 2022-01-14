@@ -38,7 +38,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","fret","fastempty","varsquad","nodeathcount","nochef"],
+        "skills":["fouille","fortif","fret","fastempty","varsquad","nodeathcount","nochef","recupcorps"],
         "transRes":72,
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
@@ -126,7 +126,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","fret","fastempty","varsquad","nodeathcount","nochef"],
+        "skills":["fouille","fortif","fret","fastempty","varsquad","nodeathcount","nochef","recupcorps"],
         "transRes":72,
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
@@ -285,7 +285,7 @@
             "aoe":"unit",
             "sound":"bow",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze"],
-            "maxAmmo":14
+            "maxAmmo":12
         },
         "protection":["aucune","scrap","kevlar","wendium","tisal","nano","duneg","swing"],
         "equip":["aucun","e-flash","e-ranger","e-camo","gilet","crimekitgi"],
@@ -515,7 +515,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","fouille","brigands","berserk","datt","guerrilla","tirailleur","penitbat","herolasso","lowstress"],
+        "skills":["fortif","fouille","brigands","berserk","datt","guerrilla","tirailleur","penitbat","herolasso","lowstress","recupcorps"],
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -1883,29 +1883,26 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
         },
         "weapon2":{
-            "name":"Molotov",
-            "cost":6,
-            "range":0,
-            "noFly":true,
-            "noDef":true,
-            "noDatt":true,
-            "kit":true,
+            "name":"Javelots (lancé)",
+            "cost":4,
+            "range":1,
+            "isBow":true,
+            "noise":0,
             "rof":9,
-            "accuracy":11,
+            "accuracy":16,
             "power":8,
-            "aoe":"squad",
-            "sound":"molotov",
-            "ammo":["molotov-feu","molotov-slime","molotov-pyratol"],
-            "maxAmmo":6,
-            "ravitBld":"Atelier"
+            "aoe":"unit",
+            "sound":"bow",
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze"],
+            "maxAmmo":12
         },
-        "equip":["aucun","e-flash","w2-cocktail","e-camo","permakirin","theeye","helper"],
+        "equip":["aucun","e-flash","e-camo","permakirin","theeye","helper"],
         "log3eq":"e-camo",
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fortif","ranger","berserk","datt","undead","genhab","camo","guerrilla","embuscade","herorage"],
+        "skills":["fortif","fastguet","ranger","berserk","datt","undead","genhab","camo","guerrilla","embuscade","herorage"],
         "fuzz":0,
         "deathFx":"137036__pyrocamancer__beast-death"
     },

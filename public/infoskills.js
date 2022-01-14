@@ -299,7 +299,7 @@ function skillsInfos(bat,batType,near) {
     }
     // EMBUSCADE
     if (batType.skills.includes('embuscade') && !playerInfos.onShip && !bat.tags.includes('datt')) {
-        apCost = 4-(playerInfos.comp.train/2.1)-(playerInfos.comp.cam/1.9);
+        apCost = 4-(playerInfos.comp.train/3.1)-(playerInfos.comp.cam/1.9);
         if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
             apCost = apCost-0.6;
         }

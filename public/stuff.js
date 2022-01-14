@@ -504,10 +504,13 @@ function maxUnits(unit) {
     if (unit.name === 'Chercheurs') {
         if (playerInfos.onShip) {
             let maxSci = 1;
+            if (playerInfos.gang === 'bulbos') {
+                maxSci = maxSci+1;
+            }
             if (playerInfos.bldVM.includes('Centre de recherches')) {
-                maxSci = 3;
+                maxSci = maxSci+2;
             } else if (playerInfos.bldVM.includes('Laboratoire')) {
-                maxSci = 2;
+                maxSci = maxSci+1;
             }
             if (playerInfos.sci >= maxSci) {
                 isMax = true;

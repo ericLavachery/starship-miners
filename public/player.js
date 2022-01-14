@@ -556,14 +556,14 @@ function playerSkillsUTChanges() {
         // ENTRAINEMENT
         if (playerInfos.comp.train >= 1) {
             if (unit.cat === 'infantry') {
-                unit.fabTime = unit.fabTime/(playerInfos.comp.train+3)*3;
+                unit.fabTime = unit.fabTime/(playerInfos.comp.train+4)*4;
             }
         }
         if (playerInfos.comp.train >= 1) {
             if (unit.cat != 'buildings' && unit.cat != 'devices' && (unit.kind != 'zero-artillerie' || unit.name === 'Raves') && unit.kind != 'zero-defense' && !unit.name.includes('Caserne') && !unit.skills.includes('garde') && !unit.skills.includes('cage') && !unit.skills.includes('robot')) {
                 if (Object.keys(unit.weapon).length >= 3) {
                     if (!unit.weapon.name.includes('Missiles')) {
-                        if (playerInfos.comp.train >= 2) {
+                        if (playerInfos.comp.train >= 3) {
                             if (unit.weapon.cost >= 6) {
                                 unit.weapon.cost = unit.weapon.cost-2;
                             } else {
@@ -578,7 +578,7 @@ function playerSkillsUTChanges() {
                 }
                 if (Object.keys(unit.weapon2).length >= 3) {
                     if (!unit.weapon2.name.includes('Missiles')) {
-                        if (playerInfos.comp.train >= 2) {
+                        if (playerInfos.comp.train >= 3) {
                             if (unit.weapon2.cost >= 6) {
                                 unit.weapon2.cost = unit.weapon2.cost-2;
                             } else {

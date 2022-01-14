@@ -1352,7 +1352,9 @@ function defense(melee) {
     let defFactor = Math.round(100*brideDef);
     // bigDef
     if (targetWeap.bigDef && selectedBatType.size >= 4) {
-        targetWeap.power = Math.ceil(targetWeap.power+Math.sqrt(selectedBatType.size));
+        if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBat.eq === 'detector' || targetBat.logeq === 'detector' || targetBat.eq === 'g2ai' || targetBat.logeq === 'g2ai' || targetBatType.skills.includes('initiative')) {
+            targetWeap.power = Math.ceil(targetWeap.power+Math.sqrt(selectedBatType.size));
+        }
     }
     // console.log('brideDef='+brideDef);
     let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);

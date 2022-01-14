@@ -589,7 +589,7 @@
         "skills":[],
         "info":"Vol",
         "bldReq":["Chaîne de montage"],
-        "compReq":{"log":2,"train":1,"aero":1},
+        "compReq":{"log":2,"train":2,"aero":1},
         "autoComp":[],
         "factor":"crew",
         "costs":{"Nickel":12,"Aluminium":18,"Moteurs":12,"Electros":12},
