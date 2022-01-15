@@ -577,7 +577,11 @@ function batInfos(bat,batType,pop) {
                     if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
                         demText = '(récupérer des ressources)';
                     } else if (batType.skills.includes('recupcorps')) {
-                        demText = '(récupérer des corps)';
+                        if (batType.skills.includes('dog')) {
+                            demText = '(récupérer de la viande)';
+                        } else {
+                            demText = '(récupérer des corps)';
+                        }
                     }
                 }
                 if (batType.skills.includes('okdel')) {

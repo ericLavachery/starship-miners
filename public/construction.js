@@ -1530,6 +1530,8 @@ function checkOkKill(batType) {
         }
     } else if (playerInfos.gang === 'drogmulojs') {
         okKill = true;
+    } else if (batType.skills.includes('dog')) {
+        okKill = true;
     }
     return okKill;
 }
@@ -1548,12 +1550,21 @@ function recupBodies(bat,batType) {
     if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
         numBodies = bat.citoyens;
     } else {
-        numBodies = batType.crew*batType.squads*batType.squadSize;
+        numBodies = Math.ceil(batType.crew*batType.squads*batType.squadSize*batType.size/3);
     }
-    if (coffre.transRes['Corps'] === undefined) {
-        coffre.transRes['Corps'] = numBodies;
+    if (batType.skills.includes('dog')) {
+        numBodies = numBodies*5;
+        if (coffre.transRes['Viande'] === undefined) {
+            coffre.transRes['Viande'] = numBodies;
+        } else {
+            coffre.transRes['Viande'] = coffre.transRes['Viande']+numBodies;
+        }
     } else {
-        coffre.transRes['Corps'] = coffre.transRes['Corps']+numBodies;
+        if (coffre.transRes['Corps'] === undefined) {
+            coffre.transRes['Corps'] = numBodies;
+        } else {
+            coffre.transRes['Corps'] = coffre.transRes['Corps']+numBodies;
+        }
     }
     coffreTileId = -1;
 };
@@ -1606,7 +1617,11 @@ function getResRecup(bat,batType) {
         if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
             resRecup['Corps'] = bat.citoyens;
         } else {
-            resRecup['Corps'] = batType.crew*batType.squads*batType.squadSize;
+            if (batType.skills.includes('dog')) {
+                resRecup['Viande'] = Math.ceil(batType.crew*batType.squads*batType.squadSize*batType.size/3)*5;
+            } else {
+                resRecup['Corps'] = Math.ceil(batType.crew*batType.squads*batType.squadSize*batType.size/3);
+            }
         }
     }
     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {

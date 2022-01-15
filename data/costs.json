@@ -552,7 +552,7 @@
     {
         "id":246,
         "name":"Tromblons",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":7,"tiradores":99,"detruas":5,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":5,"brasier":99},
         "bldReq":["Armurerie"],
         "compReq":{"def":1},
         "costs":{"Fer":300,"Scrap":60,"Carbone":60,"Végétaux":110,"Chlore":10,"Tissus":5},
@@ -1407,7 +1407,7 @@
     {
         "id":177,
         "name":"Scroungers",
-        "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":7,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Centre de tri","Garage"],
         "costs":{"Fer":27,"Scrap":441,"Carbone":126,"Bois":90,"Moteurs":36,"Batteries":9,"Compo2":28,"Huile":10,"Eau":96,"Silicium":12},
         "deploy":{"Fuel":55},
@@ -1462,7 +1462,7 @@
     {
         "id":92,
         "name":"Shelltrucks",
-        "levels":{"rednecks":9,"blades":12,"bulbos":11,"drogmulojs":9,"tiradores":10,"detruas":99,"brasier":9},
+        "levels":{"rednecks":9,"blades":12,"bulbos":11,"drogmulojs":10,"tiradores":10,"detruas":99,"brasier":9},
         "bldEquiv":["Poudrière"],
         "bldReq":["Armurerie","Garage"],
         "costs":{"Fer":60,"Scrap":444,"Carbone":120,"Aluminium":48,"Moteurs":60,"Cuivre":24,"Batteries":12,"Compo2":168,"Huile":10},
@@ -1568,7 +1568,7 @@
     {
         "id":121,
         "name":"Milkmen",
-        "levels":{"rednecks":7,"blades":9,"bulbos":7,"drogmulojs":6,"tiradores":7,"detruas":4,"brasier":4},
+        "levels":{"rednecks":7,"blades":9,"bulbos":7,"drogmulojs":8,"tiradores":7,"detruas":4,"brasier":4},
         "bldReq":["Armurerie","Garage"],
         "costs":{"Fer":14,"Scrap":207,"Carbone":36,"Moteurs":32,"Batteries":9,"Compo2":28,"Silicium":9,"Huile":9},
         "deploy":{"Fuel":35},
@@ -1634,7 +1634,7 @@
     {
         "id":140,
         "name":"Tacots",
-        "levels":{"rednecks":4,"blades":4,"bulbos":5,"drogmulojs":4,"tiradores":5,"detruas":5,"brasier":5},
+        "levels":{"rednecks":4,"blades":4,"bulbos":4,"drogmulojs":4,"tiradores":4,"detruas":5,"brasier":4},
         "bldReq":[],
         "costs":{"Fer":16,"Scrap":224,"Carbone":32,"Moteurs":16,"Batteries":8},
         "deploy":{"Fuel":30},
@@ -1644,7 +1644,7 @@
     {
         "id":182,
         "name":"Spycars",
-        "levels":{"rednecks":13,"blades":5,"bulbos":6,"drogmulojs":6,"tiradores":99,"detruas":13,"brasier":11},
+        "levels":{"rednecks":13,"blades":5,"bulbos":7,"drogmulojs":7,"tiradores":99,"detruas":13,"brasier":11},
         "bldReq":["Garage"],
         "compReq":{"cam":1},
         "compPass":["blades","drogmulojs"],
@@ -1656,7 +1656,7 @@
     {
         "id":141,
         "name":"Jeeps",
-        "levels":{"rednecks":8,"blades":7,"bulbos":8,"drogmulojs":8,"tiradores":8,"detruas":9,"brasier":7},
+        "levels":{"rednecks":8,"blades":8,"bulbos":8,"drogmulojs":8,"tiradores":8,"detruas":9,"brasier":8},
         "bldReq":["Garage"],
         "costs":{"Fer":80,"Scrap":240,"Carbone":96,"Moteurs":32,"Tungstène":48,"Cuivre":16,"Batteries":16,"Compo2":80,"Huile":10},
         "deploy":{"Fuel":60},
@@ -2027,7 +2027,7 @@
     {
         "id":185,
         "name":"Fosses",
-        "levels":{"rednecks":8,"blades":1,"bulbos":99,"drogmulojs":10,"tiradores":11,"detruas":9,"brasier":8},
+        "levels":{"rednecks":8,"blades":1,"bulbos":99,"drogmulojs":9,"tiradores":11,"detruas":9,"brasier":7},
         "bldReq":["Atelier"],
         "costs":{"Végétaux":36,"Fer":12,"Bois":36,"Tungstène":12,"Huile":4,"Calcium":12},
         "fabTime":60
@@ -2485,7 +2485,7 @@
         "name":"Cantine",
         "upkeep":{"Fruits":9,"Végétaux":12,"Energie":2},
         "prod":{"Nourriture":4},
-        "costs":{"Compo1":195,"Compo2":30,"Eau":300,"Carbone":100,"Nourriture":200,"Fruits":50,"Batteries":30,"Energie":120},
+        "costs":{"Compo1":195,"Compo2":30,"Eau":300,"Carbone":100,"Fer":50,"Batteries":30,"Energie":120},
         "fabTime":25,
         "crime":-3,
         "slots":1

@@ -11,6 +11,7 @@ function skillsInfos(bat,batType,near) {
     let tile = getTile(bat);
     let terrain = getTerrain(bat);
     let inMelee = batInMelee(bat,batType);
+    let apReqGuet = 0;
     if (near.control) {
         nomoveOut(bat);
     }
@@ -148,6 +149,7 @@ function skillsInfos(bat,batType,near) {
         } else if (batType.skills.includes('baddef')) {
             apCost = apCost+2;
         }
+        apReqGuet = apReq;
         let bouton = 'boutonBrun';
         if (bat.tags.includes('mining')) {
             bouton = 'boutonGris';
@@ -196,6 +198,9 @@ function skillsInfos(bat,batType,near) {
         }
         if (apReq < Math.round(bat.ap/2)) {
             apReq = Math.round(bat.ap/2);
+        }
+        if (apReq < apReqGuet) {
+            apReq = apReqGuet;
         }
         let bouton = 'boutonBrun';
         if (bat.tags.includes('mining')) {

@@ -216,14 +216,9 @@ function checkAlienArtillery() {
     return alienArtillery;
 };
 
-function checkEggsDrop() {
-    console.log('check egg drop');
-    eggDropCount = 0;
-    let drop = false;
-    let satDrop = false;
-    let eggPauseDice = calcEggPause(false);
+function getDropChance(turn) {
     let adjMapDrop = playerInfos.mapDrop;
-    let adjMapTurn = playerInfos.mapTurn+landingNoise-13+zone[0].mapDiff;
+    let adjMapTurn = turn+landingNoise-13+zone[0].mapDiff;
     if (adjMapTurn <= 0) {
         adjMapTurn = 0;
         adjMapDrop = 0;
@@ -236,6 +231,23 @@ function checkEggsDrop() {
     console.log('mapAdjDiff'+playerInfos.mapAdjDiff);
     console.log('dropTurn'+dropTurn);
     let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapAdjDiff)*dropMod);
+    return dropChance;
+};
+
+function checkEggsDrop() {
+    console.log('check egg drop');
+    eggDropCount = 0;
+    let drop = false;
+    let satDrop = false;
+    let eggPauseDice = calcEggPause(false);
+    // let adjMapDrop = playerInfos.mapDrop;
+    // let adjMapTurn = playerInfos.mapTurn+landingNoise-13+zone[0].mapDiff;
+    // if (adjMapTurn <= 0) {
+    //     adjMapTurn = 0;
+    //     adjMapDrop = 0;
+    // }
+    // let dropTurn = Math.floor(((adjMapDrop*cumDrop)+adjMapTurn)/(cumDrop+1));
+    let dropChance = getDropChance(playerInfos.mapTurn);
     let maxEggsInPlay = checkMaxEggsInPlay();
     console.log('maxEggsInPlay = '+maxEggsInPlay);
     let maxDroppedEggs = checkMaxDroppedEggs();

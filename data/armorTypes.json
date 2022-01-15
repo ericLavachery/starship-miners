@@ -31,7 +31,7 @@
         "name":"Terriers",
         "cat":"infra",
         "fabTime":18,
-        "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":9},
+        "levels":{"rednecks":99,"blades":6,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":9},
         "costs":{"Compo1":75,"Compo2":25,"Végétaux":75}
     },
     {
@@ -910,7 +910,7 @@
         "skills":[],
         "info":"Rainbow gun",
         "bldReq":["Laboratoire"],
-        "compReq":{"exo":1,"ca":1},
+        "compReq":{"exo":2,"ca":3},
         "factor":"crew",
         "costs":{"Carbone":4,"Scrap":8,"Aluminium":8,"Titane":4}
     },

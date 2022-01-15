@@ -1685,15 +1685,7 @@ function zoneReport(myZone,quiet) {
                 myZone[0].snd = 'howlwind';
                 sndEnsolBonus = 75;
             } else {
-                if (rand.rand(1,2) === 1) {
-                    if (rand.rand(1,2) === 1) {
-                        myZone[0].snd = 'birds';
-                        sndEnsolBonus = 100;
-                    } else {
-                        myZone[0].snd = 'howlwind';
-                        sndEnsolBonus = 75;
-                    }
-                } else {
+                if (rand.rand(1,3) === 1) {
                     if (rand.rand(1,2) === 1) {
                         myZone[0].snd = 'thunderstart';
                         sndEnsolBonus = 35;
@@ -1702,6 +1694,19 @@ function zoneReport(myZone,quiet) {
                         myZone[0].snd = 'thunderfull';
                         sndEnsolBonus = 20;
                         rain = true;
+                    }
+                } else {
+                    if (rand.rand(1,2) === 1) {
+                        if (rand.rand(1,2) === 1) {
+                            myZone[0].snd = 'crickets';
+                            sndEnsolBonus = 100;
+                        } else {
+                            myZone[0].snd = 'birds';
+                            sndEnsolBonus = 100;
+                        }
+                    } else {
+                        myZone[0].snd = 'howlwind';
+                        sndEnsolBonus = 75;
                     }
                 }
             }

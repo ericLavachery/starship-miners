@@ -802,7 +802,10 @@ function turnInfo() {
             }
             let maxDroppedEggs = checkMaxDroppedEggs();
             let maxEggsInPlay = checkMaxEggsInPlay();
-            if (playerInfos.droppedEggs < maxDroppedEggs+1 && realNumberOfEggs < maxEggsInPlay) {
+            // dropchance
+            let dropChance = getDropChance(playerInfos.mapTurn);
+            // pause
+            if (playerInfos.droppedEggs < maxDroppedEggs+1 && realNumberOfEggs < maxEggsInPlay && dropChance >= 10 && !playerInfos.eggPause) {
                 $('#tour').append('<span class="wblynk" title="Oeuf(s) en approche">Oeufs en approche</span><br>');
             } else {
                 $('#tour').append('<span class="neutre" title="Aucun oeuf en approche">Aucun oeuf en vue</span><br>');

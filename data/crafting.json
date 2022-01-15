@@ -1212,6 +1212,15 @@
         "bg":"#200808"
     },
     {
+        "id":141,
+        "result":"Potassium",
+        "cost":{"Bois":60,"Eau":60},
+        "compReq":{},
+        "bldReq":["Atelier"],
+        "batch":15,
+        "bg":"#200808"
+    },
+    {
         "id":44,
         "result":"Potassium",
         "cost":{"Slime":5,"Chlore":10,"Energie":3},
