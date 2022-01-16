@@ -1662,4 +1662,102 @@ function checkEncounterTile() {
     }
     encounterTileId = centreTileId;
     return centreTileId;
-}
+};
+
+function letsHunt(multi) {
+    let huntType = {};
+    if (zone[0].hunt === undefined) {
+        huntType = getHuntType();
+    } else {
+        huntType = zone[0].hunt;
+    }
+    if (multi) {
+        let i = 1;
+        while (i <= huntType.max) {
+            if (rand.rand(1,100) <= huntType.chance) {
+                dropEgg(huntType.game,'none');
+                if (rand.rand(1,2) === 1) {
+                    let gameBat = getAlienByName(huntType.game);
+                    alienSpawn(gameBat,huntType.game);
+                    if (rand.rand(1,2) === 1) {
+                        alienSpawn(gameBat,huntType.game);
+                    }
+                }
+            }
+            if (i > 50) {break;}
+            i++
+        }
+    } else {
+        if (rand.rand(1,100) <= huntType.chance) {
+            dropEgg(huntType.game,'none');
+            if (rand.rand(1,2) === 1) {
+                let gameBat = getAlienByName(huntType.game);
+                alienSpawn(gameBat,huntType.game);
+            }
+        }
+    }
+};
+
+function getHuntType() {
+    let huntType = {};
+    huntType.game = 'Rats';
+    huntType.chance = 10;
+    huntType.max = 7;
+    let huntDice = rand.rand(1,12);
+    if (zone[0].pw+zone[0].ps+zone[0].pr > 50) {
+        huntType.chance = 20;
+        huntType.max = Math.round(zone[0].pw/2);
+        if (huntDice === 1) {
+            huntType.game = 'Meatballs';
+        } else if (huntDice === 2) {
+            huntType.game = 'Rats';
+        } else if (huntDice >= 5) {
+            huntType.game = 'Crocos';
+        } else {
+            huntType.game = 'Tritons';
+        }
+    } else if (zone[0].pb+zone[0].pf > 50) {
+        huntType.chance = 15;
+        huntType.max = Math.round(zone[0].pf/3);
+        if (huntDice === 1) {
+            huntType.game = 'Crocos';
+        } else if (huntDice === 2 || huntDice === 3) {
+            huntType.game = 'Meatballs';
+        } else if (huntDice >= 10) {
+            huntType.game = 'Tritons';
+        } else {
+            huntType.game = 'Rats';
+        }
+    } else if (zone[0].pp+zone[0].pg > 50) {
+        huntType.chance = 7;
+        huntType.max = Math.round(zone[0].pg/2);
+        if (huntDice === 1) {
+            huntType.game = 'Crocos';
+        } else if (huntDice === 2) {
+            huntType.game = 'Tritons';
+        } else if (huntDice >= 6) {
+            huntType.game = 'Meatballs';
+        } else {
+            huntType.game = 'Rats';
+        }
+    } else {
+        huntType.chance = 10;
+        huntType.max = 7;
+        if (huntDice === 1 || huntDice === 2) {
+            huntType.game = 'Crocos';
+        } else if (huntDice === 3 || huntDice === 4) {
+            huntType.game = 'Tritons';
+        } else if (huntDice >= 9) {
+            huntType.game = 'Meatballs';
+        } else {
+            huntType.game = 'Rats';
+        }
+    }
+    if (huntType.max < 7) {
+        huntType.max = 7;
+    }
+    if (zone[0].hunt === undefined) {
+        zone[0].hunt = huntType;
+    }
+    return huntType;
+};

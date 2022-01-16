@@ -254,7 +254,7 @@ function checkRuinsAliens(tile) {
 
 function ruinsAliensInfo(unit,tile) {
     let alienInfo = {};
-    if (unit.class != 'A' && unit.class != 'S' && unit.class != 'X') {
+    if (unit.class != 'A' && unit.class != 'S' && unit.class != 'X' && unit.class != 'G') {
         if (unit.name != 'Asticots' && unit.name != 'Vers' && unit.name != 'Sangsues') {
             if (unit.skills.includes('fouisseur') || unit.size <= 15) {
                 alienInfo.ok = true;
@@ -601,9 +601,9 @@ function checkRuinsRes(tile) {
                 resFactor = res.rarity+Math.round(zone[0].mapDiff*3);
                 if (res.name === 'Corps') {
                     if (ruinsEmpty) {
-                        thatResChance = Math.ceil(resFactor*7*res.batch/3);
+                        thatResChance = Math.ceil(resFactor*5*res.batch/3);
                     } else {
-                        thatResChance = Math.ceil(resFactor*4*res.batch/3);
+                        thatResChance = Math.ceil(resFactor*3*res.batch/3);
                     }
                 } else if (res.name == 'Nourriture') {
                     if (ruinsEmpty) {

@@ -30,6 +30,10 @@ function nextTurn() {
     batUnselect();
     if (playerInfos.mapTurn === 0) {
         checkStartingAliens();
+    } else if (aliens.length < 50) {
+        if (rand.rand(1,7) === 1) {
+            letsHunt(false);
+        }
     }
     // récup des aliens
     deadAliensList = [];
@@ -108,6 +112,20 @@ function nextTurn() {
             if (playerInfos.mapTurn > bat.creaTurn+2 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !batType.skills.includes('healhide') && !larveHIDE && bat.tags.includes('follow')) {
                 tagDelete(bat,'invisible');
             }
+            if (batType.kind === 'game') {
+                if (playerInfos.mapTurn > bat.creaTurn+1) {
+                    tagDelete(bat,'invisible');
+                }
+                if (aliens.length >= 100 && rand.rand(1,5) === 1) {
+                    bat.squadsLeft = 0;
+                    checkDeath(bat,batType);
+                }
+                let tile = getTile(bat);
+                if (tile.x === 1 || tile.x === 60 || tile.y === 1 || tile.y === 60) {
+                    bat.squadsLeft = 0;
+                    checkDeath(bat,batType);
+                }
+            }
         }
     });
     killAlienList();
@@ -140,28 +158,31 @@ function alienTurnEnd() {
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             let batType = getBatType(bat);
-            if (batType.skills.includes('lurk') || batType.skills.includes('dive')) {
+            if (batType.skills.includes('lurk') || batType.skills.includes('dive') || batType.skills.includes('creep')) {
                 let tile = getTile(bat);
+                let hideTerrains = [];
                 if (batType.skills.includes('lurk') && bat.salvoLeft >= 1) {
-                    if (tile.terrain === 'F') {
-                        if (!bat.tags.includes('invisible')) {
-                            bat.tags.push('invisible');
-                        }
-                    } else {
-                        if (bat.tags.includes('invisible') && !bat.tags.includes('follow')) {
-                            tagDelete(bat,'invisible');
-                        }
-                    }
+                    hideTerrains.push('F');
                 }
                 if (batType.skills.includes('dive')) {
-                    if (tile.terrain === 'R' || tile.terrain === 'W' || tile.terrain === 'S' || tile.terrain === 'L') {
-                        if (!bat.tags.includes('invisible')) {
-                            bat.tags.push('invisible');
-                        }
-                    } else {
-                        if (bat.tags.includes('invisible')) {
-                            tagDelete(bat,'invisible');
-                        }
+                    hideTerrains.push('R');
+                    hideTerrains.push('L');
+                    hideTerrains.push('W');
+                    hideTerrains.push('S');
+                }
+                if (batType.skills.includes('creep') && bat.salvoLeft >= 1) {
+                    hideTerrains.push('F');
+                    hideTerrains.push('B');
+                    hideTerrains.push('M');
+                    hideTerrains.push('S');
+                }
+                if (hideTerrains.includes(tile.terrain)) {
+                    if (!bat.tags.includes('invisible')) {
+                        bat.tags.push('invisible');
+                    }
+                } else {
+                    if (bat.tags.includes('invisible') && !bat.tags.includes('follow')) {
+                        tagDelete(bat,'invisible');
                     }
                 }
             }
@@ -1375,6 +1396,8 @@ function checkDeath(bat,batType) {
                 playMusic('rip',false);
             }
             deadBatsList.push(bat.id);
+        } else if (batType.kind == 'game') {
+            deadAliensList.push(bat.id);
         } else if (bat.team == 'aliens') {
             if (bat.type.includes('Oeuf') || bat.type === 'Coque' || bat.type === 'Ruche' || bat.type === 'Cocon') {
                 playerInfos.eggsKilled = playerInfos.eggsKilled+1;

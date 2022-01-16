@@ -73,6 +73,9 @@ function chooseTarget() {
     if (rand.rand(1,sheep) === 1) {
         noThanks = true;
     }
+    if (selectedBatType.skills.includes('gamecap') && selectedBatType.squads >= selectedBat.squadsLeft*2) {
+        noThanks = true;
+    }
     let inPlace = false;
     let alienInMelee = isAlienInMelee(selectedBat.tileId);
     let range = selectedWeap.range;
@@ -207,8 +210,32 @@ function checkPDM() {
     let batType;
     let lePlusProche = 100;
     let shufBats = _.shuffle(bataillons);
-    // cherche un cible préférée
-    if (selectedBatType.skills.includes('errant')) {
+    // cherche une cible préférée
+    if (selectedBatType.skills.includes('nocap') || selectedBatType.skills.includes('gamecap')) {
+        let shufZone = _.shuffle(zone);
+        shufZone.forEach(function(tile) {
+            if (pointDeMire < 0) {
+                if (selectedBatType.squads < selectedBat.squadsLeft*2 || selectedBatType.skills.includes('nocap')) {
+                    let distance = calcDistance(selectedBat.tileId,tile.id);
+                    if (distance <= 3) {
+                        pointDeMire = tile.id;
+                    }
+                }
+            }
+        });
+        if (pointDeMire < 0 && selectedBatType.skills.includes('gamecap')) {
+            let nearBorderDist = 999;
+            shufZone.forEach(function(tile) {
+                if (tile.x === 1 || tile.x === 60 || tile.y === 1 || tile.y === 60) {
+                    let distance = calcDistance(selectedBat.tileId,tile.id);
+                    if (distance < nearBorderDist) {
+                        nearBorderDist = distance;
+                        pointDeMire = tile.id;
+                    }
+                }
+            });
+        }
+    } else if (selectedBatType.skills.includes('errant')) {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && bat.fuzz >= 0 && pointDeMire < 0) {
                 batType = getBatType(bat);
@@ -434,34 +461,36 @@ function isBldLike(bat,batType) {
 
 function anyCloseTarget() {
     newPointDeMire = -1;
-    let distance;
-    let lePlusProche = 100;
-    let minFuzz = calcMinFuzz();
-    let bestLogic = -99;
-    let tLogic;
-    let shufBats = _.shuffle(bataillons);
-    shufBats.forEach(function(bat) {
-        if (checkAlienFlyTarget(selectedWeap,bat)) {
-            if (bat.loc === "zone") {
-                if (!isSurrounded(bat)) {
-                    batType = getBatType(bat);
-                    let bldLike = isBldLike(bat,batType);
-                    if ((bat.fuzz >= minFuzz.unit && !bldLike) || (bat.fuzz >= minFuzz.bld && bldLike)) {
-                        if ((!batType.skills.includes('fly') && bat.eq != 'e-jetpack') || !selectedWeap.noFly) {
-                            distance = calcDistance(selectedBat.tileId,bat.tileId);
-                            if (distance <= closeTargetRange) {
-                                tLogic = targetLogic(bat);
-                                if (tLogic > bestLogic) {
-                                    bestLogic = tLogic;
-                                    newPointDeMire = bat.tileId;
+    if (!selectedBatType.skills.includes('gamecap') || selectedBatType.squads < selectedBat.squadsLeft*2) {
+        let distance;
+        let lePlusProche = 100;
+        let minFuzz = calcMinFuzz();
+        let bestLogic = -99;
+        let tLogic;
+        let shufBats = _.shuffle(bataillons);
+        shufBats.forEach(function(bat) {
+            if (checkAlienFlyTarget(selectedWeap,bat)) {
+                if (bat.loc === "zone") {
+                    if (!isSurrounded(bat)) {
+                        batType = getBatType(bat);
+                        let bldLike = isBldLike(bat,batType);
+                        if ((bat.fuzz >= minFuzz.unit && !bldLike) || (bat.fuzz >= minFuzz.bld && bldLike)) {
+                            if ((!batType.skills.includes('fly') && bat.eq != 'e-jetpack') || !selectedWeap.noFly) {
+                                distance = calcDistance(selectedBat.tileId,bat.tileId);
+                                if (distance <= closeTargetRange) {
+                                    tLogic = targetLogic(bat);
+                                    if (tLogic > bestLogic) {
+                                        bestLogic = tLogic;
+                                        newPointDeMire = bat.tileId;
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-        }
-    });
+        });
+    }
     if (newPointDeMire >= 0) {
         pointDeMire = newPointDeMire;
         // console.log('new PDM: '+pointDeMire);
@@ -470,27 +499,29 @@ function anyCloseTarget() {
 
 function anyFarTarget() {
     newPointDeMire = -1;
-    let distance;
-    let bestLogic = -99;
-    let tLogic;
-    let minFuzz = -1;
-    let batType;
-    let shufBats = _.shuffle(bataillons);
-    shufBats.forEach(function(bat) {
-        if (bat.loc === "zone" && bat.fuzz >= minFuzz) {
-            if (checkAlienFlyTarget(selectedWeap,bat)) {
-                distance = calcDistance(selectedBat.tileId,bat.tileId);
-                distance = distance-(bat.fuzz*2);
-                if (distance <= 11) {
-                    tLogic = targetLogic(bat);
-                    if (tLogic > bestLogic) {
-                        bestLogic = tLogic;
-                        newPointDeMire = bat.tileId;
+    if (!selectedBatType.skills.includes('gamecap') || selectedBatType.squads < selectedBat.squadsLeft*2) {
+        let distance;
+        let bestLogic = -99;
+        let tLogic;
+        let minFuzz = -1;
+        let batType;
+        let shufBats = _.shuffle(bataillons);
+        shufBats.forEach(function(bat) {
+            if (bat.loc === "zone" && bat.fuzz >= minFuzz) {
+                if (checkAlienFlyTarget(selectedWeap,bat)) {
+                    distance = calcDistance(selectedBat.tileId,bat.tileId);
+                    distance = distance-(bat.fuzz*2);
+                    if (distance <= 11) {
+                        tLogic = targetLogic(bat);
+                        if (tLogic > bestLogic) {
+                            bestLogic = tLogic;
+                            newPointDeMire = bat.tileId;
+                        }
                     }
                 }
             }
-        }
-    });
+        });
+    }
     if (newPointDeMire > 0) {
         pointDeMire = newPointDeMire;
         // console.log('new PDM: '+pointDeMire);
@@ -946,7 +977,9 @@ function moveToPDM() {
             uncheckShortJumps();
         } else {
             checkPossibleMoves();
-            if (selectedBatType.skills.includes('capbld') || selectedBatType.skills.includes('capfar')) {
+            if (selectedBatType.skills.includes('gamecap') && selectedBatType.squads >= selectedBat.squadsLeft*2) {
+                // only go to PDM
+            } else if (selectedBatType.skills.includes('capbld') || selectedBatType.skills.includes('capfar')) {
                 checkAimMoves();
             } else {
                 checkGoodMoves();

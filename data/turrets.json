@@ -1300,7 +1300,7 @@
         "maxVeg":-1,
         "skills":["noguet","nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"xplode"
     },
     {
         "id":168,
@@ -1343,7 +1343,7 @@
         "maxVeg":-1,
         "skills":["noguet","nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako","bigprot","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"xplode"
     },
     {
         "id":169,
@@ -1386,7 +1386,7 @@
         "maxVeg":-1,
         "skills":["noguet","nodeathcount","notarget","bigblub","nolist","norepair","clicput","bigprot","infrako","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"xplode"
     },
     {
         "id":185,
@@ -1597,7 +1597,7 @@
         "maxVeg":-1,
         "skills":["after","nonumname","nodeathcount","notarget","halfcover","noblub","nolist","norepair","nobld","clicput","infrako","noaploss","nostation","okdel"],
         "fuzz":-2,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"xplode"
     },
     {
         "id":45,
@@ -1649,6 +1649,6 @@
         "maxVeg":-1,
         "skills":["after","nonumname","nodeathcount","notarget","halfcover","bigblub","nolist","norepair","nobld","clicput","infrako","noaploss","nostation","okdel"],
         "fuzz":-2,
-        "deathFx":"zapsplat_explosion_fireball_43738"
+        "deathFx":"xplode"
     }
 ]

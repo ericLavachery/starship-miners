@@ -735,6 +735,17 @@
         "equiv": 1.5
     },
     {
+        "id": 77,
+        "name": "Gibier",
+        "bld": "",
+        "level": 4,
+        "rarity": 5,
+        "cat": "alien",
+        "batch": 5,
+        "energie": -1,
+        "equiv": 3
+    },
+    {
         "id": 60,
         "name": "Energie",
         "bld": "",
@@ -869,7 +880,7 @@
         "cat": "transfo",
         "batch": 4,
         "energie": -1,
-        "equiv": 1
+        "equiv": 3
     },
     {
         "id": 65,

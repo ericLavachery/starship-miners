@@ -94,6 +94,8 @@ function checkStartingAliens() {
             }
         }
     }
+    // Gibier
+    letsHunt(true);
 };
 
 function getColonyTiles() {
@@ -519,6 +521,7 @@ function getCoqueChance() {
 
 function dropEgg(alienUnit,theArea) {
     console.log('dropping egg...');
+    let alienType = getBatTypeByName(alienUnit);
     let unitIndex = alienUnits.findIndex((obj => obj.name === alienUnit));
     conselUnit = alienUnits[unitIndex];
     conselAmmos = ['xxx','xxx','xxx','xxx'];
@@ -675,7 +678,15 @@ function eggDropTile(eggName,theArea) {
     if (theArea != 'none') {
         area = theArea;
     } else {
-        if (eggName.includes('Ruche') || eggName.includes('Vomissure') || eggName.includes('Flaque')) {
+        if (eggName === 'Crocos') {
+            area = 'water';
+        } else if (eggName === 'Meatballs') {
+            area = 'nocenter';
+        } else if (eggName === 'Tritons') {
+            area = 'nocenter';
+        } else if (eggName === 'Rats') {
+            area = 'nocenter';
+        } else if (eggName.includes('Ruche') || eggName.includes('Vomissure') || eggName.includes('Flaque')) {
             area = 'nocenter';
         } else if (eggName.includes('Cocon')) {
             area = 'target';
@@ -737,6 +748,32 @@ function eggDropTile(eggName,theArea) {
                 if (theTile < 0) {
                     if ((tile.x === 55 && tile.y >= 6 && tile.y <= 55) || (tile.x === 6 && tile.y >= 6 && tile.y <= 55) || (tile.y === 6 && tile.x >= 6 && tile.x <= 55) || (tile.y === 55 && tile.x >= 6 && tile.x <= 55)) {
                         if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                            theTile = tile.id;
+                        }
+                    }
+                }
+            });
+        }
+    }
+    // WATER
+    if (area === 'water') {
+        let shufZone = _.shuffle(zone);
+        shufZone.forEach(function(tile) {
+            if (theTile < 0) {
+                if (tile.x < 15 || tile.x > 45 || tile.y < 15 || tile.y > 45) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                        if (tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'S') {
+                            theTile = tile.id;
+                        }
+                    }
+                }
+            }
+        });
+        if (theTile < 0) {
+            shufZone.forEach(function(tile) {
+                if (theTile < 0) {
+                    if (tile.x < 15 || tile.x > 45 || tile.y < 15 || tile.y > 45) {
+                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
                             theTile = tile.id;
                         }
                     }

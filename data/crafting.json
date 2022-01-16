@@ -872,6 +872,26 @@
         "bg":"#182a16"
     },
     {
+        "id":142,
+        "result":"Viande",
+        "cost":{"Gibier":11},
+        "compReq":{},
+        "bldReq":[],
+        "batch":10,
+        "creaNum":30,
+        "bg":"#182a16"
+    },
+    {
+        "id":143,
+        "result":"Viande",
+        "cost":{"Gibier":10},
+        "compReq":{},
+        "bldReq":["Cantine"],
+        "batch":10,
+        "creaNum":100,
+        "bg":"#182a16"
+    },
+    {
         "id":137,
         "result":"Viande",
         "cost":{"Corps":4,"Energie":10},
@@ -955,7 +975,7 @@
         "id":79,
         "result":"Viande",
         "cost":{"Huile":1,"Aranium":6,"Chlore":1,"Drogues":1,"Energie":2},
-        "compReq":{"ca":5,"exo":1},
+        "compReq":{"ca":4,"exo":1},
         "bldReq":["Centre de recherches"],
         "batch":25,
         "creaNum":200,
