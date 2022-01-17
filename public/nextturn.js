@@ -31,7 +31,7 @@ function nextTurn() {
     if (playerInfos.mapTurn === 0) {
         checkStartingAliens();
     } else if (aliens.length < 50) {
-        if (rand.rand(1,7) === 1) {
+        if (rand.rand(1,5) === 1) {
             letsHunt(false);
         }
     }

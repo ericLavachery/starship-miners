@@ -679,13 +679,13 @@ function eggDropTile(eggName,theArea) {
         area = theArea;
     } else {
         if (eggName === 'Crocos') {
-            area = 'water';
+            area = 'waterhunt';
         } else if (eggName === 'Meatballs') {
-            area = 'nocenter';
+            area = 'hunt';
         } else if (eggName === 'Tritons') {
-            area = 'nocenter';
+            area = 'hunt';
         } else if (eggName === 'Rats') {
-            area = 'nocenter';
+            area = 'hunt';
         } else if (eggName.includes('Ruche') || eggName.includes('Vomissure') || eggName.includes('Flaque')) {
             area = 'nocenter';
         } else if (eggName.includes('Cocon')) {
@@ -755,14 +755,48 @@ function eggDropTile(eggName,theArea) {
             });
         }
     }
-    // WATER
-    if (area === 'water') {
+    // HUNT
+    if (area === 'hunt') {
+        console.log('HUNT');
         let shufZone = _.shuffle(zone);
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
-                if (tile.x < 15 || tile.x > 45 || tile.y < 15 || tile.y > 45) {
-                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
-                        if (tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'S') {
+                if (tile.x < 18 || tile.x > 42 || tile.y < 18 || tile.y > 42) {
+                    let okTile = true;
+                    alienOccupiedTiles.forEach(function(tileId) {
+                        if (okTile) {
+                            let distance = calcDistance(tileId,tile.id);
+                            if (distance < 7) {
+                                okTile = false;
+                            }
+                        }
+                    });
+                    if (okTile && !alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                        theTile = tile.id;
+                    }
+                }
+            }
+        });
+        console.log(theTile);
+    }
+    // WATERHUNT
+    if (area === 'waterhunt') {
+        console.log('WATERHUNT');
+        let shufZone = _.shuffle(zone);
+        shufZone.forEach(function(tile) {
+            if (theTile < 0) {
+                if (tile.x < 18 || tile.x > 42 || tile.y < 18 || tile.y > 42) {
+                    if (tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'S') {
+                        let okTile = true;
+                        alienOccupiedTiles.forEach(function(tileId) {
+                            if (okTile) {
+                                let distance = calcDistance(tileId,tile.id);
+                                if (distance < 7) {
+                                    okTile = false;
+                                }
+                            }
+                        });
+                        if (okTile && !alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
                             theTile = tile.id;
                         }
                     }
@@ -772,14 +806,24 @@ function eggDropTile(eggName,theArea) {
         if (theTile < 0) {
             shufZone.forEach(function(tile) {
                 if (theTile < 0) {
-                    if (tile.x < 15 || tile.x > 45 || tile.y < 15 || tile.y > 45) {
-                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                    if (tile.x < 18 || tile.x > 42 || tile.y < 18 || tile.y > 42) {
+                        let okTile = true;
+                        alienOccupiedTiles.forEach(function(tileId) {
+                            if (okTile) {
+                                let distance = calcDistance(tileId,tile.id);
+                                if (distance < 7) {
+                                    okTile = false;
+                                }
+                            }
+                        });
+                        if (okTile && !alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
                             theTile = tile.id;
                         }
                     }
                 }
             });
         }
+        console.log(theTile);
     }
     // NOCENTER
     if (area === 'nocenter') {

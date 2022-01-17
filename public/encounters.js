@@ -1690,7 +1690,7 @@ function letsHunt(multi) {
     } else {
         if (rand.rand(1,100) <= huntType.chance) {
             dropEgg(huntType.game,'none');
-            if (rand.rand(1,2) === 1) {
+            if (rand.rand(1,3) === 1) {
                 let gameBat = getAlienByName(huntType.game);
                 alienSpawn(gameBat,huntType.game);
             }
@@ -1704,7 +1704,7 @@ function getHuntType() {
     huntType.chance = 10;
     huntType.max = 7;
     let huntDice = rand.rand(1,12);
-    if (zone[0].pw+zone[0].ps+zone[0].pr > 50) {
+    if (zone[0].pw+zone[0].ps+zone[0].pr >= 30) {
         huntType.chance = 20;
         huntType.max = Math.round(zone[0].pw/2);
         if (huntDice === 1) {
@@ -1716,7 +1716,7 @@ function getHuntType() {
         } else {
             huntType.game = 'Tritons';
         }
-    } else if (zone[0].pb+zone[0].pf > 50) {
+    } else if (zone[0].pb+zone[0].pf >= 50) {
         huntType.chance = 15;
         huntType.max = Math.round(zone[0].pf/3);
         if (huntDice === 1) {
@@ -1728,7 +1728,7 @@ function getHuntType() {
         } else {
             huntType.game = 'Rats';
         }
-    } else if (zone[0].pp+zone[0].pg > 50) {
+    } else if (zone[0].pp+zone[0].pg >= 50) {
         huntType.chance = 7;
         huntType.max = Math.round(zone[0].pg/2);
         if (huntDice === 1) {
@@ -1743,11 +1743,12 @@ function getHuntType() {
     } else {
         huntType.chance = 10;
         huntType.max = 7;
-        if (huntDice === 1 || huntDice === 2) {
+        let water = Math.round((zone[0].pw+zone[0].ps+zone[0].pr)/5);
+        if (huntDice <= water) {
             huntType.game = 'Crocos';
-        } else if (huntDice === 3 || huntDice === 4) {
+        } else if (huntDice === 12) {
             huntType.game = 'Tritons';
-        } else if (huntDice >= 9) {
+        } else if (huntDice >= 8) {
             huntType.game = 'Meatballs';
         } else {
             huntType.game = 'Rats';
