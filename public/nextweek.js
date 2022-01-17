@@ -477,6 +477,7 @@ function eventCrime(time,sim,quiet) {
     let crimeRate = calcCrimeRate(mesCitoyens);
     if (!sim) {
         // EFFETS !!! CRIMES !!!
+        playerInfos.crime = crimeRate.total;
         if (!quiet) {
             warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total+'%',false)
         }

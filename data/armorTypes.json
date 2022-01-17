@@ -1205,7 +1205,7 @@
         "skills":[],
         "info":"Augmente la capacité des cabines",
         "bldReq":["Soute"],
-        "compReq":{"log":1,"trans":2},
+        "compReq":{"log":1,"trans":1},
         "autoComp":[],
         "factor":"thp",
         "costs":{"Scrap":6,"Tissus":6,"Fer":4,"Bois":2,"Batteries":1}

@@ -84,7 +84,9 @@ function minimap() {
                 if (visibleEggs.includes(tile.id) && miniDots === 'eggs' && alienView) {
                     $('#themmap').append('<span class="mini mEgg" onclick="centerFromMinimap('+tile.id+')"></span>');
                 } else {
-                    if (visibleAliens.includes(tile.id) && miniDots === 'units' && alienView) {
+                    if (visibleHunts.includes(tile.id) && miniDots === 'units' && alienView) {
+                        $('#themmap').append('<span class="mini mHunt" onclick="centerFromMinimap('+tile.id+')"></span>');
+                    } else if (visibleAliens.includes(tile.id) && miniDots === 'units' && alienView) {
                         if (visibleEggs.includes(tile.id) && alienView) {
                             $('#themmap').append('<span class="mini mEgg" onclick="centerFromMinimap('+tile.id+')"></span>');
                         } else {
@@ -169,16 +171,21 @@ function updateAliensNum() {
 function checkVisibleAliens() {
     visibleAliens = [];
     visibleEggs = [];
+    visibleHunts = [];
     aliensNum = 0;
     let alienType;
     aliens.forEach(function(alien) {
         if (alien.loc === "zone") {
             alienType = getBatType(alien);
             if ((!alien.tags.includes('invisible') && !alienType.skills.includes('invisible')) || playerInfos.comp.det >= 4) {
-                visibleAliens.push(alien.tileId);
-                aliensNum++;
-                if (alienType.skills.includes('isegg') && !alien.tags.includes('invisible') && !alienType.skills.includes('invisible')) {
-                    visibleEggs.push(alien.tileId);
+                if (alienType.kind === 'game') {
+                    visibleHunts.push(alien.tileId);
+                } else {
+                    visibleAliens.push(alien.tileId);
+                    aliensNum++;
+                    if (alienType.skills.includes('isegg') && !alien.tags.includes('invisible') && !alienType.skills.includes('invisible')) {
+                        visibleEggs.push(alien.tileId);
+                    }
                 }
             }
         }

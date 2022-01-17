@@ -499,6 +499,15 @@ hr.craft {
     position: absolute;
     /* margin: 1px 1px 1px 1px; */
 }
+.gUnits {
+    background-color: rgba(148, 251, 236, 0.3);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(148, 251, 248, 0.5);
+    border-radius: 8px;
+    position: absolute;
+    /* margin: 1px 1px 1px 1px; */
+}
 .iUnits {
     /* background-color: rgba(255, 254, 177, 0.3); */
     /* border-style: solid; */

@@ -96,6 +96,7 @@ let alienList = [];
 let alienOccupiedTiles = [];
 let playerOccupiedTiles = [];
 let visibleAliens = [];
+let visibleHunts = [];
 let visibleEggs = [];
 let prepaBld = {};
 let vetBonus = {

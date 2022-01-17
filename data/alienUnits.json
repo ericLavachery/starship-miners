@@ -2875,7 +2875,7 @@
             "range":0,
             "noFly":true,
             "isMelee":true,
-            "rof":8,
+            "rof":12,
             "accuracy":18,
             "power":18,
             "armors":0.75,
@@ -2902,9 +2902,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["gamecap"],
+        "skills":["gamecap","regeneration","initmelee","ricoface","resistall"],
         "deathFx":"death2",
-        "killRes":{"Gibier":700},
+        "killRes":{"Gibier":500},
         "killXP":5
     },
     {
@@ -2947,7 +2947,7 @@
         "maxVeg":3,
         "skills":["gamecap","dive","hover","infkill","noaploss"],
         "deathFx":"death2",
-        "killRes":{"Gibier":350},
+        "killRes":{"Gibier":250},
         "killXP":3
     },
     {
@@ -2989,7 +2989,7 @@
         "maxVeg":3,
         "skills":["gamecap","creep","maladie","sentinelle"],
         "deathFx":"death1",
-        "killRes":{"Gibier":225},
+        "killRes":{"Gibier":150},
         "killXP":2
     },
     {
@@ -3031,7 +3031,7 @@
         "maxVeg":3,
         "skills":["gamecap","dive","creep","okwater","tirailleur","escape","sentinelle"],
         "deathFx":"death1",
-        "killRes":{"Gibier":110},
+        "killRes":{"Gibier":70},
         "killXP":2
     }
 ]

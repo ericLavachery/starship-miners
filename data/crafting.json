@@ -696,7 +696,7 @@
         "result":"Tissus",
         "cost":{"Scrap":9,"Chlore":2,"Energie":3},
         "compReq":{"tri":1},
-        "bldReq":["Recyclab"],
+        "bldReq":["Centre de tri"],
         "batch":2,
         "creaNum":50,
         "bg":"#2e1c2d"
@@ -1062,7 +1062,7 @@
         "result":"Fer",
         "cost":{"Bugium":12,"Azote":3,"Energie":1},
         "compReq":{"tri":1,"ca":1},
-        "bldReq":["Recyclab"],
+        "bldReq":["Centre de tri"],
         "batch":15,
         "bg":"#200808"
     },
@@ -1099,7 +1099,7 @@
         "result":"Hydrocarbure",
         "cost":{"Larvium":10,"Végétaux":15,"Energie":1},
         "compReq":{"tri":1,"ca":2},
-        "bldReq":["Recyclab"],
+        "bldReq":["Centre de tri"],
         "batch":15,
         "bg":"#200808"
     },
@@ -1126,7 +1126,7 @@
         "result":"Hydrogène",
         "cost":{"Eau":10,"Energie":5,"Aranium":3},
         "compReq":{"tri":1,"ind":2,"ca":2},
-        "bldReq":["Recyclab"],
+        "bldReq":["Centre de tri"],
         "batch":5,
         "bg":"#200808"
     },
@@ -1161,8 +1161,8 @@
         "id":110,
         "result":"Oxygène",
         "cost":{"Eau":5,"Energie":15},
-        "compReq":{"tri":2},
-        "bldReq":["Recyclab"],
+        "compReq":{"tri":1},
+        "bldReq":["Centre de tri"],
         "batch":5,
         "bg":"#200808"
     },
@@ -1180,7 +1180,7 @@
         "result":"Plomb",
         "cost":{"Swarmine":15,"Azote":5,"Energie":1},
         "compReq":{"tri":1,"ca":1},
-        "bldReq":["Recyclab"],
+        "bldReq":["Centre de tri"],
         "batch":15,
         "bg":"#200808"
     },
@@ -1245,14 +1245,14 @@
         "result":"Potassium",
         "cost":{"Slime":5,"Chlore":10,"Energie":3},
         "compReq":{"tri":1,"ca":2},
-        "bldReq":["Recyclab"],
+        "bldReq":["Centre de tri"],
         "batch":15,
         "bg":"#200808"
     },
     {
         "id":45,
         "result":"Pyratol",
-        "cost":{"Pyrus":10,"Bossium":1,"Energie":2},
+        "cost":{"Pyrus":5,"Bossium":1,"Energie":2},
         "compReq":{"tri":4,"ca":3},
         "bldReq":["Recyclab"],
         "batch":10,
@@ -1272,7 +1272,7 @@
         "result":"Soufre",
         "cost":{"Pyrus":5,"Oxygène":5},
         "compReq":{"tri":1,"ca":1},
-        "bldReq":["Recyclab"],
+        "bldReq":["Centre de tri"],
         "batch":15,
         "bg":"#200808"
     },

@@ -2394,7 +2394,7 @@
             "rof":36,
             "accuracy":19,
             "power":8,
-            "armors":0.85,
+            "armors":0.8,
             "aoe":"unit",
             "sound":"calibre_pierce_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
@@ -2995,7 +2995,7 @@
             "rof":63,
             "accuracy":19,
             "power":8,
-            "armors":0.85,
+            "armors":0.8,
             "aoe":"unit",
             "sound":"calibre_pierce_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]

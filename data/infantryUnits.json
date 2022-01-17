@@ -323,7 +323,7 @@
             "rof":9,
             "accuracy":19,
             "power":8,
-            "armors":0.85,
+            "armors":0.8,
             "aoe":"unit",
             "sound":"calibre_pierce_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
@@ -1722,7 +1722,7 @@
         },
         "protection":["aucune","scrap","kevlar","wendium","tisal","nano","duneg","swing","adamantite","battlesuit"],
         "equip":["aucun","e-flash","chargeur2","silencieux2","e-jetpack","e-camo","permakirin","theeye","helper","waterproof","e-medic","g2tools","repel"],
-        "log3eq":"waterproof",
+        "log3eq":"silencieux2",
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -2685,7 +2685,7 @@
             "rof":9,
             "accuracy":19,
             "power":8,
-            "armors":0.85,
+            "armors":0.8,
             "aoe":"unit",
             "sound":"calibre_pierce_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
@@ -3281,7 +3281,7 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
         },
         "equip":["aucun","e-flash","e-ranger","e-camo","lunette1","chargeur1","silencieux1","e-jetpack","waterproof","crimekitch"],
-        "log3eq":"waterproof",
+        "log3eq":"lunette1",
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -5115,7 +5115,7 @@
             "rof":12,
             "accuracy":19,
             "power":8,
-            "armors":0.85,
+            "armors":0.8,
             "aoe":"unit",
             "sound":"calibre_pierce_x2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]

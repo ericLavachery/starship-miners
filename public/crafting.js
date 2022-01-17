@@ -232,6 +232,8 @@ function adjCraftFactor(craft,craftFactor) {
         noFactor = true;
     }
     if (!noFactor) {
+        // CORRUPTION
+        craftFactor = craftFactor*(100+playerInfos.crime)/100;
         // INDUSTRIE
         if (playerInfos.comp.ind >= 1 && playerInfos.bldList.includes('Atelier')) {
             let indusLevel = playerInfos.comp.ind;

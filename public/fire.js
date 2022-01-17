@@ -163,7 +163,7 @@ function combat(melee) {
                 soundBat = selectedBat;
                 shotSound(soundWeap,soundBat);
             }
-            attack(melee);
+            attack(melee,true);
             minimumFireAP = minFireAP;
             if (targetBatType.skills.includes('guerrilla')) {
                 minimumFireAP = minFireAP-7;
@@ -172,7 +172,7 @@ function combat(melee) {
                 minimumFireAP = -999;
             }
             if ((defAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap') {
-                defense(melee);
+                defense(melee,false);
                 if (!isFFW) {
                     soundWeap = targetWeap;
                     soundBat = targetBat;
@@ -201,7 +201,7 @@ function combat(melee) {
                 minimumFireAP = -999;
             }
             if (targetBat.apLeft > minimumFireAP) {
-                defense(melee);
+                defense(melee,true);
                 if (!isFFW) {
                     soundWeap = targetWeap;
                     soundBat = targetBat;
@@ -217,7 +217,7 @@ function combat(melee) {
                     minimumFireAP = -999;
                 }
                 if (selectedBat.apLeft > minimumFireAP) {
-                    attack(melee);
+                    attack(melee,false);
                     if (!isFFW) {
                         soundWeap = selectedWeap;
                         soundBat = selectedBat;
@@ -245,7 +245,11 @@ function combat(melee) {
         if (!isFFW) {
             shotSound(selectedWeap,selectedBat);
         }
-        attack(melee);
+        if (rand.rand(1,2) === 1) {
+            attack(melee,true);
+        } else {
+            attack(melee,false);
+        }
         if (!isFFW) {
             setTimeout(function (){
                 if (activeTurn == 'player') {blockMe(false);}
@@ -262,7 +266,7 @@ function combat(melee) {
     }
 };
 
-function attack(melee) {
+function attack(melee,init) {
     // console.log('Attaque ->');
     // console.log(selectedWeap);
     let selectedBatName = nomVisible(selectedBat);
@@ -804,7 +808,7 @@ function attack(melee) {
         }
     }
     // ricochet
-    let rico = checkRicochet(targetBat,targetBatType,selectedWeap);
+    let rico = checkRicochet(targetBat,targetBatType,selectedWeap,init);
     if (rico) {
         totalDamage = 0;
         apDamage =0;
@@ -1246,7 +1250,7 @@ function attack(melee) {
     }
 };
 
-function defense(melee) {
+function defense(melee,init) {
     // console.log('Défense ->');
     // console.log(targetWeap);
     let selectedBatName = nomVisible(selectedBat);
@@ -1734,7 +1738,7 @@ function defense(melee) {
         }
     }
     // ricochet
-    let rico = checkRicochet(selectedBat,selectedBatType,targetWeap);
+    let rico = checkRicochet(selectedBat,selectedBatType,targetWeap,true);
     if (rico) {
         totalDamage = 0;
         apDamage =0;

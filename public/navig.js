@@ -188,6 +188,8 @@ function commandes() {
 function viewPop() {
     if (playerInfos.onShip && !modeSonde && !inSoute) {
         if (bataillons.length >= 1) {
+            let doomsday = (playerInfos.allTurns/apoCount)+1;
+            doomsday = doomsday.toFixedNumber(2);
             let mesCitoyens = calcTotalCitoyens(false);
             let population = mesCitoyens.crim+mesCitoyens.cit;
             let crimeRate = calcCrimeRate(mesCitoyens);
@@ -213,6 +215,7 @@ function viewPop() {
             $('#batloop').append('Pénibilité: <span class="'+penibColour+'">'+crimeRate.penib+'</span>%<br>');
             $('#batloop').append('Forces de l\'ordre: <span class="neutre">'+crimeRate.fo+'</span><br>');
             $('#batloop').append('Criminalité: <span class="'+crimColour+'">'+crimeRate.total+'</span>%<br>');
+            $('#batloop').append('<span class="jaune">Doomclock: '+doomsday+'</span><br>');
             $('#batloop').append('<button type="button" title="Simuler 3 semaines (1 mission)" class="boutonVert iconButtons" onclick="events(false,65,true,false)"><i class="far fa-clock"></i></button>');
             $('#batloop').append('<button type="button" title="Attendre 3 jours" class="boutonRouge iconButtons" onclick="events(false,9,false,false)"><i class="far fa-clock"></i></button>');
             $('#batloop').append('<button type="button" title="Attendre 1 semaine" class="boutonRouge iconButtons" onclick="events(false,21,false,false)"><i class="far fa-clock"></i></button>');
