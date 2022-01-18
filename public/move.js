@@ -533,7 +533,7 @@ function terrainAccess(batId,targetTileId) {
         terFlood = 0;
     }
     let terVeg = terrain.veg;
-    if (batType.skills.includes('routes')) {
+    if (batType.skills.includes('routes') || bat.eq === 'e-road') {
         let unitTile = getTileById(bat.tileId);
         if (unitTile.rd) {
             terVeg = 0;

@@ -723,6 +723,17 @@
         "deploy":{"Energie":54}
     },
     {
+        "name":"e-road",
+        "cat":"equip",
+        "skills":[],
+        "info":"Construire des routes",
+        "bldReq":["Atelier"],
+        "compReq":{"log":2,"const":1,"trans":1},
+        "autoComp":["const",3],
+        "factor":"one",
+        "costs":{"Bois":30,"Fer":15}
+    },
+    {
         "name":"crimekitch",
         "cat":"equip",
         "skills":[],

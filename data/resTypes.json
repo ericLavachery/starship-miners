@@ -295,9 +295,9 @@
         "name": "Corps",
         "bld": "Scrap",
         "level": 1,
-        "rarity": 20,
+        "rarity": 25,
         "cat": "zero",
-        "batch": 3,
+        "batch": 2,
         "energie": -1,
         "equiv": 1
     },

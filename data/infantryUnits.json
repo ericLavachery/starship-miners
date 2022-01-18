@@ -509,13 +509,14 @@
             "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "protection":["aucune","scrap","kevlar","wendium","tisal","nano","duneg","swing"],
-        "equip":["aucun","e-flash","e-ranger","chargeur2","crimekitto"],
+        "equip":["aucun","e-flash","e-ranger","chargeur2","crimekitto","e-road"],
         "log3eq":"",
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fortif","fouille","brigands","berserk","datt","guerrilla","tirailleur","penitbat","herolasso","lowstress","recupcorps"],
+        "mecanoCost":14,
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -2460,13 +2461,14 @@
             "ravitBld":"Poudrière"
         },
         "protection":["aucune","scrap","kevlar","wendium","tisal","nano","duneg","swing","adamantite","battlesuit"],
-        "equip":["aucun","e-flash","e-ranger","e-camo","w2-grenade","e-jetpack","lunette1","chargeur1","silencieux1","theeye","waterproof","repel"],
+        "equip":["aucun","e-flash","e-ranger","e-camo","w2-grenade","e-jetpack","lunette1","chargeur1","silencieux1","theeye","waterproof","repel","e-road"],
         "log3eq":"chargeur1",
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","fortif","datt","ravitaillement","maycamo","fastempty","fret","recupcit","conscont","nochef"],
+        "mecanoCost":12,
         "maxSkill":9,
         "transRes":72,
         "fuzz":0.5,
@@ -2517,7 +2519,7 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-fplasma","lame-adamantium"]
         },
         "protection":["aucune","scrap","kevlar","wendium","tisal","nano","duneg","swing","adamantite","battlesuit"],
-        "equip":["aucun","e-flash","e-ranger","waterproof","lunette1","chargeur1","g2tools","repel"],
+        "equip":["aucun","e-flash","e-ranger","waterproof","lunette1","chargeur1","g2tools","repel","e-road"],
         "log3eq":"waterproof",
         "moveCost":3,
         "maxFlood":3,
@@ -2525,6 +2527,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","datt","extraction","selfbadmedic","dynamite","fret","recupcit","conscont","nochef"],
         "mediCost":10,
+        "mecanoCost":12,
         "mining":{
             "level":3,
             "rate":17,
@@ -2585,7 +2588,7 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-plasma","lame-adamantium"]
         },
         "protection":["aucune","scrap","kevlar","wendium","tisal","nano","duneg","swing","adamantite","battlesuit"],
-        "equip":["aucun","e-flash","lunette1","chargeur1","silencieux1","e-jetpack","e-camo","e-medic","permakirin","theeye","waterproof","g2tools","repel"],
+        "equip":["aucun","e-flash","lunette1","chargeur1","silencieux1","e-jetpack","e-camo","e-medic","permakirin","theeye","waterproof","g2tools","repel","e-road"],
         "log3eq":"waterproof",
         "moveCost":3,
         "maxFlood":3,
@@ -2596,7 +2599,7 @@
         "mecanoCost":11,
         "mining":{
             "level":2,
-            "rate":10,
+            "rate":11,
             "multi":false,
             "types":["Comptoir","Scrap","Mine"],
             "subTypes":["Pompe"]
@@ -4569,7 +4572,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","chobham","iso"],
-        "equip":["aucun","e-flash","e-ranger","gilet","detector","w2-autopistol","repel"],
+        "equip":["aucun","e-flash","e-ranger","gilet","detector","w2-autopistol","repel","e-road"],
         "log3eq":"e-ranger",
         "moveCost":3,
         "maxFlood":3,

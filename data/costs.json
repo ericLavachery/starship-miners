@@ -2146,8 +2146,8 @@
     {
         "id":123,
         "name":"Pompe",
-        "upkeep":{"Eau":3,"Energie":6},
-        "prod":{"Oxygène":3},
+        "upkeep":{"Eau":4,"Energie":6},
+        "prod":{"Oxygène":4},
         "costs":{"Compo1":75,"Scrap":100,"Fer":50,"Moteurs":12,"Batteries":6,"Energie":120},
         "fabTime":20,
         "slots":0

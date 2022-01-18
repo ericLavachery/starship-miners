@@ -1768,9 +1768,12 @@ function skillsInfos(bat,batType,near) {
         }
     }
     // ROUTES / PONTS
-    if (batType.skills.includes('routes') && !playerInfos.onShip) {
+    if ((batType.skills.includes('routes') || bat.eq === 'e-road') && !playerInfos.onShip) {
         if (!tile.rd) {
             apCost = Math.round(batType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3);
+            if (batType.skills.includes('routes') && bat.eq === 'e-road') {
+                apCost = Math.round(apCost/1.5);
+            }
             apReq = Math.ceil(apCost/10);
             let roadCosts = getRoadCosts(tile);
             let roadCostsOK = checkCost(roadCosts);

@@ -895,6 +895,9 @@ function getAP(bat,batType) {
     if (bat.eq === 'e-ranger' || bat.eq === 'gilet' || bat.logeq === 'e-ranger' || bat.logeq === 'gilet') {
         newAP = newAP-1;
     }
+    if (bat.eq === 'e-road' && batType.cat === 'infantry') {
+        newAP = newAP-1;
+    }
     if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.moveCost < 90) {
         newAP = newAP+Math.floor((batType.moveCost+1.5)*(playerInfos.comp.trans-1.25)/2.6);
     }
