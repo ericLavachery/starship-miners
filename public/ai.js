@@ -6,7 +6,7 @@ function alienMoveLoop() {
     defAlive = true;
     alienOccupiedTileList();
     playerOccupiedTileList();
-    if (selectedBatType.moveCost < 99 && !selectedBat.tags.includes('freeze')) {
+    if (selectedBatType.moveCost < 99 && !selectedBat.tags.includes('freeze') && !selectedBat.tags.includes('stun')) {
         isCamoBlock();
     }
     let alienActif = true;

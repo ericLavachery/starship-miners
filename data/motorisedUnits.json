@@ -746,7 +746,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","swag","bonibo","adamantite"],
         "equip":["aucun","lunette2","chargeur1","chargeur2","g2motor","e-mecano","e-medic","e-phare","e-road"],
@@ -2416,14 +2416,14 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
-        "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","belier","e-flash","theeye","e-mecano","g2tools","e-road"],
-        "log3eq":"chenilles",
+        "equip":["aucun","chargeur1","g2motor","snorkel","belier","e-flash","theeye","e-mecano","g2tools","e-road"],
+        "log3eq":"snorkel",
         "moveCost":3,
-        "maxFlood":0,
+        "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fouille","fortif","guerrilla","maycamo","fret","transport","selfbadmecano","hscarpmove","dumper","extraction","light","crewsave","recupcit","recupres","ouvert"],
-        "mecanoCost":16,
+        "skills":["fouille","fortif","guerrilla","maycamo","fret","transport","selfbadmecano","dumper","extraction","light","crewsave","recupcit","recupres","ouvert","caterp"],
+        "mecanoCost":9,
         "mining":{
             "level":2,
             "rate":32,
@@ -2448,7 +2448,7 @@
         "squadSize":3,
         "crew":13,
         "hp":60,
-        "armor":8,
+        "armor":7,
         "size":24,
         "volume":1.2,
         "stealth":4,
@@ -2487,14 +2487,14 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","swag","adamantite"],
-        "equip":["aucun","arcpoulie","g2motor","snorkel","e-flash","theeye","e-mecano","chenilles","g2tools","e-road"],
-        "log3eq":"chenilles",
+        "equip":["aucun","arcpoulie","g2motor","snorkel","e-flash","theeye","e-mecano","g2tools","e-road"],
+        "log3eq":"snorkel",
         "moveCost":3,
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fouille","fortif","guerrilla","maycamo","defense","fret","transport","selfbadmecano","hscarpmove","dumper","extraction","light","crewsave","trapap","recupcit","recupres","ouvert"],
-        "mecanoCost":16,
+        "skills":["fouille","fortif","guerrilla","maycamo","defense","fret","transport","selfbadmecano","dumper","extraction","light","crewsave","trapap","recupcit","recupres","ouvert","caterp"],
+        "mecanoCost":9,
         "mining":{
             "level":1,
             "rate":25,
@@ -3276,7 +3276,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_hunt",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -3347,7 +3347,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_hunt",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Boutoir",

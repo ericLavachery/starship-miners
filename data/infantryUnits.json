@@ -2546,7 +2546,7 @@
         "pic":"sapeur",
         "cat":"infantry",
         "kind":"zero-construction",
-        "sort":2,
+        "sort":20,
         "squads":6,
         "squadSize":8,
         "crew":1,
@@ -2571,7 +2571,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_hunt",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Pioche",
@@ -4801,7 +4801,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar_x3",
-            "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["aucun","chobham","iso"],
         "equip":["aucun","e-flash","e-ranger","gilet","lunette2","chargeur2","waterproof","detector"],
@@ -5108,7 +5108,7 @@
         "armor":0,
         "size":3,
         "volume":0.9,
-        "stealth":12,
+        "stealth":11,
         "ap":14,
         "maxSalvo":1,
         "weapon":{
@@ -5145,7 +5145,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","maycamo","guerrilla","tirailleur","datt","baddef","fastguet","selfbadmedic","heroescape"],
+        "skills":["fouille","fortif","camo","guerrilla","tirailleur","datt","baddef","fastguet","selfbadmedic","heroescape"],
         "mediCost":10,
         "fuzz":1,
         "deathFx":"195954__minian89__death-blood-splatter"
@@ -5477,7 +5477,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["kevlar","acier","combo","kapton","wendium","titane","tisal","nano","duneg","swing","adamantite","aegis","battlesuit"],
         "equip":["aucun","e-flash","e-ranger","chargeur1","silencieux1","chargeur2","lunette2","e-jetpack","e-camo","theeye","helper","waterproof","repel"],

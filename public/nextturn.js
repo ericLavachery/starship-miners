@@ -100,7 +100,7 @@ function nextTurn() {
                 tagDelete(bat,'shield');
             }
             tagDelete(bat,'nez');
-            if (rand.rand(1,3) <= 2) {
+            if (rand.rand(1,3) != 1) {
                 tagDelete(bat,'stun');
             }
             if (rand.rand(1,3) === 1) {

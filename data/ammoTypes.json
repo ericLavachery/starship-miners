@@ -198,7 +198,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2},
+        "compReq":{"bal":2,"mat":1},
         "deploy":{"Munitions":1,"Titane":2},
         "batch":100
     },
@@ -380,6 +380,21 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":1},
         "deploy":{"Munitions":1,"Tungstène":2},
+        "batch":100
+    },
+    {
+        "name": "ac-titanium",
+        "range": 1.1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1,
+        "armors": 0.5,
+        "accuracy": 1.25,
+        "apdamage": 0,
+        "aoe": "",
+        "bldReq":["Armurerie"],
+        "compReq":{"bal":1},
+        "deploy":{"Munitions":1,"Titane":2},
         "batch":100
     },
     {
@@ -798,7 +813,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2},
+        "compReq":{"bal":2,"mat":1},
         "deploy":{"Aluminium":2,"Plomb":2,"Titane":4,"Oxygène":1},
         "batch":200
     },

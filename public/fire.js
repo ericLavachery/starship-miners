@@ -1090,9 +1090,11 @@ function attack(melee,init) {
         $('#report').append('<span class="report rose">Escape!<br></span>');
     }
     // Stun
-    if (selectedWeap.ammo.includes('poraz') || selectedWeap.ammo.includes('disco') || selectedWeap.ammo === 'gaz') {
-        targetBat.tags.push('stun');
-        $('#report').append('<span class="report rose">Stun<br></span>');
+    if (!targetBat.tags.includes('stun')) {
+        if (selectedWeap.ammo.includes('poraz') || selectedWeap.ammo.includes('disco') || selectedWeap.ammo === 'gaz' || selectedWeap.ammo === 'autodes-gaz' || selectedWeap.ammo.includes('gaz-')) {
+            targetBat.tags.push('stun');
+            $('#report').append('<span class="report rose">Stun<br></span>');
+        }
     }
     if (targetBatType.skills.includes('noaploss')) {
         apDamage = Math.round(apDamage/5);
@@ -1866,9 +1868,11 @@ function defense(melee,init) {
         $('#report').append('<span class="report rose">Escape!<br></span>');
     }
     // Stun
-    if (targetWeap.ammo.includes('poraz') || targetWeap.ammo.includes('disco') || targetWeap.ammo === 'gaz') {
-        selectedBat.tags.push('stun');
-        $('#report').append('<span class="report rose">Stun<br></span>');
+    if (!selectedBat.tags.includes('stun')) {
+        if (targetWeap.ammo.includes('poraz') || targetWeap.ammo.includes('disco') || targetWeap.ammo === 'gaz' || targetWeap.ammo === 'autodes-gaz' || targetWeap.ammo.includes('gaz-')) {
+            selectedBat.tags.push('stun');
+            $('#report').append('<span class="report rose">Stun<br></span>');
+        }
     }
     if (selectedBatType.skills.includes('noaploss')) {
         apDamage = Math.round(apDamage/5);

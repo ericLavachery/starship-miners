@@ -37,7 +37,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["aucun","bugium","acier","titane","bulk"],
         "equip":["aucun"],
@@ -542,7 +542,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_hunt",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Dynamite",
@@ -703,14 +703,14 @@
             "isPrec":true,
             "kit":true,
             "noise":2,
-            "rof":10,
+            "rof":8,
             "accuracy":27,
             "dca":1.25,
             "power":7,
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Lance-flammes",
@@ -806,7 +806,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "weapon3":{
             "name":"Autopistol",
@@ -1115,7 +1115,7 @@
         "pic":"atelier",
         "cat":"buildings",
         "kind":"zero-production",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":8,
@@ -1140,7 +1140,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Dynamite",
@@ -1196,7 +1196,7 @@
         "pic":"atelier2",
         "cat":"buildings",
         "kind":"zero-production",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":10,
@@ -1221,7 +1221,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Cradle",
@@ -1273,7 +1273,7 @@
         "pic":"atelier3",
         "cat":"buildings",
         "kind":"zero-production",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":15,
@@ -1348,7 +1348,7 @@
         "pic":"aerodock",
         "cat":"buildings",
         "kind":"zero-production",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":10,
@@ -1373,7 +1373,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Flak canon",
@@ -1425,7 +1425,7 @@
         "pic":"armurerie",
         "cat":"buildings",
         "kind":"zero-production",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":8,
@@ -1501,7 +1501,7 @@
         "pic":"arsenal",
         "cat":"buildings",
         "kind":"zero-production",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":10,
@@ -1577,7 +1577,7 @@
         "pic":"arsenal2",
         "cat":"buildings",
         "kind":"zero-production",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":15,
@@ -1716,7 +1716,7 @@
         "pic":"hopital",
         "cat":"buildings",
         "kind":"zero-medecine",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":8,
@@ -1741,7 +1741,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Rainbow gun",
@@ -1815,14 +1815,14 @@
             "isPrec":true,
             "kit":true,
             "noise":2,
-            "rof":3,
+            "rof":6,
             "accuracy":27,
             "dca":1.25,
             "power":7,
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{},
         "weapon3":{
@@ -1859,7 +1859,7 @@
         "pic":"radio2",
         "cat":"buildings",
         "kind":"zero-coms",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":6,
@@ -1884,7 +1884,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Roquettes",
@@ -1936,7 +1936,7 @@
         "pic":"radio4",
         "cat":"buildings",
         "kind":"zero-coms",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":15,
@@ -2085,7 +2085,7 @@
         "pic":"decharge2",
         "cat":"buildings",
         "kind":"zero-recyclage",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":9,
@@ -2097,20 +2097,20 @@
         "ap":16,
         "maxSalvo":2,
         "weapon":{
-            "name":"Fusil à verrou",
+            "name":"Carabine",
             "cost":4,
-            "range":2,
-            "noDatt":true,
+            "range":3,
+            "isPrec":true,
             "kit":true,
             "noise":2,
-            "rof":18,
-            "accuracy":22,
+            "rof":14,
+            "accuracy":27,
             "dca":1.25,
             "power":7,
             "armors":1.1,
             "aoe":"unit",
-            "sound":"calibre_hunt",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "sound":"calibre_carabine",
+            "ammo":["standard","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Lance grenade",
@@ -2162,7 +2162,7 @@
         "pic":"decharge3",
         "cat":"buildings",
         "kind":"zero-recyclage",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":12,
@@ -2187,7 +2187,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Canon laser",
@@ -2238,7 +2238,7 @@
         "pic":"labo",
         "cat":"buildings",
         "kind":"zero-science",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":6,
@@ -2317,7 +2317,7 @@
         "pic":"labo2",
         "cat":"buildings",
         "kind":"zero-science",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":12,
@@ -2470,7 +2470,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "weapon3":{
             "name":"Autopistol",
@@ -2505,7 +2505,7 @@
         "pic":"centralesol",
         "cat":"buildings",
         "kind":"zero-energie",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":6,
@@ -2576,7 +2576,7 @@
         "pic":"centralegeo",
         "cat":"buildings",
         "kind":"zero-energie",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":4,
@@ -2601,7 +2601,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Mitrailleuse",
@@ -2651,7 +2651,7 @@
         "pic":"centralenuc2",
         "cat":"buildings",
         "kind":"zero-energie",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":20,
@@ -2722,7 +2722,7 @@
         "pic":"centralesmr2",
         "cat":"buildings",
         "kind":"zero-energie",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":6,
@@ -2793,7 +2793,7 @@
         "pic":"domecf",
         "cat":"buildings",
         "kind":"zero-defense",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":6,
@@ -2867,7 +2867,7 @@
         "pic":"dome",
         "cat":"buildings",
         "kind":"zero-defense",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":10,
@@ -2941,7 +2941,7 @@
         "pic":"domep",
         "cat":"buildings",
         "kind":"zero-defense",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":2,
@@ -3212,7 +3212,7 @@
         "pic":"prison",
         "cat":"buildings",
         "kind":"zero-support",
-        "sort":5,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":5,
@@ -3364,7 +3364,7 @@
         "pic":"camp",
         "cat":"buildings",
         "kind":"zero-support",
-        "sort":50,
+        "sort":15,
         "squads":6,
         "squadSize":1,
         "crew":10,
@@ -3400,7 +3400,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "weapon3":{
             "name":"Tourelles auto",
