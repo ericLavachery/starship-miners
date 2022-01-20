@@ -59,6 +59,17 @@ function clickSelect(tileId) {
                     ownBatHere = true;
                 }
             }
+            if (playerInfos.onShip) {
+                if (bat.vmt === tileId && bat.loc != "zone") {
+                    let batType = getBatType(bat);
+                    if (batType.skills.includes('prefab') && !batType.skills.includes('noshow')) {
+                        if (!goMove) {
+                            showBatPrefab(bat);
+                            ownBatHere = true;
+                        }
+                    }
+                }
+            }
         });
         if (!goMove) {
             let batStack = 0;

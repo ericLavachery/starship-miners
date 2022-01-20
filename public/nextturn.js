@@ -827,7 +827,11 @@ function turnInfo() {
             let dropChance = getDropChance(playerInfos.mapTurn);
             // pause
             if (playerInfos.droppedEggs < maxDroppedEggs+1 && realNumberOfEggs < maxEggsInPlay && dropChance >= 10 && !playerInfos.eggPause) {
-                $('#tour').append('<span class="wblynk" title="Oeuf(s) en approche">Oeufs en approche</span><br>');
+                if (allCoconTurns[playerInfos.cocons] <= playerInfos.mapTurn) {
+                    $('#tour').append('<span class="wblynk" title="Oeuf(s) en approche">Cocon en approche</span><br>');
+                } else {
+                    $('#tour').append('<span class="wblynk" title="Oeuf(s) en approche">Oeufs en approche</span><br>');
+                }
             } else {
                 $('#tour').append('<span class="neutre" title="Aucun oeuf en approche">Aucun oeuf en vue</span><br>');
                 turnCol = 'neutre';
@@ -836,6 +840,7 @@ function turnInfo() {
         }
         $('#tour').append('Morts <span class="or" title="Bataillons perdus">'+playerInfos.unitsLost+'</span> / <span class="neutre" title="Aliens tués">'+playerInfos.aliensKilled+'</span> / <span class="cy" title="Oeufs détruits">'+playerInfos.eggsKilled+'</span>');
     }
+    checkVMTileIds();
     // feedZoneDB();
     // feedZoneDBwith(zone);
 };

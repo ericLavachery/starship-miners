@@ -103,6 +103,7 @@ function landingList() {
         calcStartRes();
         if (playerInfos.onShip) {
             playRoom('station',true);
+            checkVMTileIds();
             checkSelectedLanderId();
             healEverything();
             events(true,0,false);

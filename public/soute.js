@@ -1060,3 +1060,52 @@ function moveResCost(costs,fromId,toId,number) {
         });
     }
 };
+
+function checkVMTileIds() {
+    if (playerInfos.onShip) {
+        let allTiles = [];
+        zone.forEach(function(tile) {
+            if (tile.y >= 25 && tile.y <= 37 && tile.x >= 27 && tile.x <= 35) {
+                allTiles.push(tile.id);
+            }
+        });
+        let occupiedVMTiles = [];
+        bataillons.forEach(function(bat) {
+            if (bat.loc === 'zone') {
+                occupiedVMTiles.push(bat.tileId);
+                bat.vmt = bat.tileId;
+            } else {
+                let batType = getBatType(bat);
+                if (batType.skills.includes('prefab') && !batType.skills.includes('noshow')) {
+                    if (bat.vmt != undefined) {
+                        if (bat.vmt >= 0) {
+                            if (occupiedVMTiles.includes(bat.vmt)) {
+                                bat.vmt = -1;
+                            } else {
+                                occupiedVMTiles.push(bat.vmt);
+                            }
+                        } else {
+                            bat.vmt = -1;
+                        }
+                    } else {
+                        bat.vmt = -1;
+                    }
+                }
+            }
+        });
+        let freeTiles = allTiles.filter(function(el) {
+            return !occupiedVMTiles.includes(el);
+        });
+        bataillons.forEach(function(bat) {
+            if (bat.vmt != undefined) {
+                if (bat.vmt === -1) {
+                    let batType = getBatType(bat);
+                    if (batType.skills.includes('prefab') && !batType.skills.includes('noshow')) {
+                        bat.vmt = freeTiles[0];
+                        freeTiles.shift();
+                    }
+                }
+            }
+        });
+    }
+};

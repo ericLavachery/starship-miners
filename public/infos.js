@@ -8,6 +8,32 @@ function showBatInfos(bat) {
     }
 };
 
+function showBatPrefab(bat) {
+    $("#unitInfos").css("display","block");
+    let batType = getBatType(bat);
+    let headPlace = 'unitInfos';
+    let bodyPlace = 'unitInfos';
+    $('#'+bodyPlace).empty();
+    conWindowOut();
+    let batPic = getBatPic(bat,batType);
+    let unitsLeft = bat.squadsLeft*batType.squadSize;
+    if (batType.skills.includes('nonumname')) {
+        $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonCiel skillButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+'</h3></span>');
+    } else {
+        $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3></span>');
+    }
+    $('#'+bodyPlace).append('<span class="constName jaune">Accès par la soute</span><br>');
+    $('#'+bodyPlace).append('<button type="button" title="Aller dans la soute" class="boutonGris iconButtons" onclick="goSoutePrefab('+bat.id+')" onmousedown="clicSound()"><i class="fas fa-warehouse"></i></button>');
+    $("#unitInfos").animate({scrollTop:0},"fast");
+};
+
+function goSoutePrefab(batId) {
+    souteFilter = 'prefabs';
+    souteTab = 'unitz';
+    goSoute();
+    batSouteSelect(batId);
+};
+
 function batDetail(batId) {
     modal.style.display = "block";
     let bat = getBatById(batId);

@@ -3755,11 +3755,11 @@
         "squadSize":4,
         "crew":1,
         "hp":30,
-        "armor":4,
+        "armor":5,
         "size":14,
         "volume":1,
         "stealth":3,
-        "ap":14,
+        "ap":15,
         "maxSalvo":2,
         "weapon":{
             "name":"Pistolet automatique",

@@ -79,6 +79,16 @@ function showMap(wmap,justMoved) {
                     }
                     showBataillon(bat);
                 }
+                if (playerInfos.onShip) {
+                    if (bat.vmt != undefined) {
+                        if (bat.vmt === tile.id && bat.loc != "zone") {
+                            let batType = getBatType(bat);
+                            if (batType.skills.includes('prefab') && !batType.skills.includes('noshow')) {
+                                showPrefab(bat);
+                            }
+                        }
+                    }
+                }
             });
             aliens.forEach(function(alien) {
                 if (alien.tileId === tile.id && alien.loc === "zone") {
@@ -144,6 +154,19 @@ function redrawTile(tileId,drawSelectedBat) {
             if (drawSelectedBat || bat.id != selectedBat.id) {
                 showBataillon(bat);
                 batHere = true;
+            }
+        }
+        if (playerInfos.onShip) {
+            if (bat.vmt != undefined) {
+                if (bat.vmt === tileId && bat.loc != "zone") {
+                    let batType = getBatType(bat);
+                    if (batType.skills.includes('prefab') && !batType.skills.includes('noshow')) {
+                        if (drawSelectedBat || bat.id != selectedBat.id) {
+                            showPrefab(bat);
+                            batHere = true;
+                        }
+                    }
+                }
             }
         }
     });
@@ -392,6 +415,56 @@ function showBataillon(bat) {
         $('#b'+bat.tileId).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
     } else {
         $('#b'+bat.tileId).append('<div class="'+uClass+'"></div><div class="degInfos"></div><div class="batInfos"></div>'+resHere);
+    }
+};
+
+function showPrefab(bat) {
+    let batType = getBatType(bat);
+    let nomComplet = bat.type;
+    if (bat.chief != undefined) {
+        if (bat.chief != '') {
+            let grade = getGrade(bat,batType);
+            nomComplet = nomComplet+' ('+grade+' '+bat.chief+')';
+        }
+    }
+    let batPic = getBatPic(bat,batType);
+    let batCat = batType.cat;
+    let unitsLeft = bat.squadsLeft*batType.squadSize;
+    $('#b'+bat.vmt).empty();
+    let resHere = showRes(bat.vmt);
+    let degNum = getDamageBar(bat);
+    let activityBar = 'nope';
+    if (bat.tags.includes('mining')) {
+        activityBar = 'mining';
+    } else {
+        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
+            activityBar = 'guet';
+        }
+    }
+    let uClass = 'pUnits';
+    if (batType.cat === 'buildings') {
+        if (bat.fuzz <= -2) {
+            uClass = 'pUnitsCamoFortif';
+        } else {
+            uClass = 'pUnitsFortif';
+        }
+    } else {
+        if (bat.fuzz <= -2) {
+            if (bat.tags.includes('fortif')) {
+                uClass = 'pUnitsCamoFortif';
+            } else {
+                uClass = 'pUnitsCamo';
+            }
+        } else {
+            if (bat.tags.includes('fortif')) {
+                uClass = 'pUnitsFortif';
+            }
+        }
+    }
+    if (!modeSonde) {
+        $('#b'+bat.vmt).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
+    } else {
+        $('#b'+bat.vmt).append('<div class="'+uClass+'"></div><div class="degInfos"></div><div class="batInfos"></div>'+resHere);
     }
 };
 

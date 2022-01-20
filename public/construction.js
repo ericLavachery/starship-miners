@@ -975,6 +975,9 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             newBat.locId = 0;
             newBat.tileId = tileId;
             newBat.oldTileId = tileId;
+            if (conselUnit.skills.includes('prefab') && !conselUnit.skills.includes('noshow')) {
+                newBat.vmt = tileId;
+            }
             if (citoyens >= 1) {
                 newBat.citoyens = citoyens;
                 newBat.squadsLeft = Math.ceil(citoyens/conselUnit.squadSize);

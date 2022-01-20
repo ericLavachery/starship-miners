@@ -281,6 +281,9 @@ function moveSelectedBat(tileId,free,jump) {
         selectedBat.apLeft = selectedBat.apLeft-apLost;
     }
     selectedBat.tileId = tileId;
+    // if (playerInfos.onShip && selectedBatType.skills.includes('prefab')) {
+    //     selectedBat.vmt = tileId;
+    // }
     // remove tags
     if (selectedBat.tags.includes('blub')) {
         let terrain = getTerrainById(tileId);
@@ -567,6 +570,9 @@ function terrainAccess(batId,targetTileId) {
             }
         }
     }
+    if (playerInfos.onShip) {
+        access = true;
+    }
     return access;
 };
 
@@ -664,6 +670,9 @@ function calcMoveCost(targetTileId,diag) {
     }
     moveCost = moveCost*moveTuning;
     moveCost = moveCost.toFixedNumber(1);
+    // if (playerInfos.onShip) {
+    //     moveCost = 0;
+    // }
     return moveCost;
 };
 
