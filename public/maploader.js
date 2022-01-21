@@ -184,7 +184,7 @@ function showRes(tileId) {
     if (zone[0].dark && !zone[0].undarkOnce.includes(tile.id) && !zone[0].undarkAll) {
         view = false;
     }
-    if (modeSonde && playerInfos.comp.det < 1) {
+    if (modeSonde && playerInfos.comp.det < 0) {
         view = false;
     }
     if (tile.rq != undefined && view) {

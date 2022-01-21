@@ -781,7 +781,7 @@ function showZonePreview() {
     $('#zoneDetail').append('<span class="ListRes vert">Ressources présentes<br></span><br>');
     if (playerInfos.comp.det >= 3) {
         $('#zoneDetail').append('<span class="ListRes">'+toCoolString(allResQHere,true)+'<br></span><br>');
-    } else if (playerInfos.comp.det >= 1) {
+    } else if (playerInfos.comp.det >= 0) {
         $('#zoneDetail').append('<span class="ListRes">'+toNiceString(allResHere)+'<br></span><br>');
     } else {
         $('#zoneDetail').append('<span class="ListRes">Compétence de détection insuffisante...<br></span><br>');

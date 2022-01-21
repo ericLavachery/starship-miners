@@ -97,20 +97,23 @@ function commandes() {
                 if (playerInfos.sondePlanet > 0 && playerInfos.sondeDanger > 0) {
                     let planetName = getPlanetNameById(playerInfos.sondePlanet);
                     if (hasSonde) {
-                        $('#commandz').append('<button type="button" title="Envoyer une sonde (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+')" class="boutonBrun iconButtons" onclick="goSonde(false)" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
+                        let maxMaps = getMaxMaps(false);
+                        $('#commandz').append('<button type="button" title="Envoyer une sonde (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+') ('+maxMaps+' zones)" class="boutonBrun iconButtons" onclick="goSonde(false)" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
                     }
                     if (hasImpacteur && planetName != 'Horst' && planetName != 'Kzin') {
-                        $('#commandz').append('<button type="button" title="Envoyer un impacteur (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+')" class="boutonNoir iconButtons" onclick="goSonde(true)" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
+                        let maxMaps = getMaxMaps(true);
+                        $('#commandz').append('<button type="button" title="Envoyer un impacteur (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+') ('+maxMaps+' zones)" class="boutonNoir iconButtons" onclick="goSonde(true)" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
                     }
                 }
             }
         } else {
             $('#commandz').append('<hr>');
             $('#commandz').append('<button type="button" title="Poser la sonde" class="boutonRouge iconButtons" onclick="stopSonde()" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
-            let maxMaps = (playerInfos.comp.vsp+2)*maxMapsParDet;
-            if (impact) {
-                maxMaps = Math.ceil((playerInfos.comp.vsp+0.35)*maxMapsParDet/1.2);
-            }
+            let maxMaps = getMaxMaps(impact);
+            // let maxMaps = (playerInfos.comp.vsp+2)*maxMapsParDet;
+            // if (impact) {
+            //     maxMaps = Math.ceil((playerInfos.comp.vsp+0.35)*maxMapsParDet/1.2);
+            // }
             let nextMapNumber = playerInfos.sondeMaps+1;
             if (playerInfos.sondeMaps < maxMaps) {
                 $('#commandz').append('<button type="button" title="Voir une autre zone ('+nextMapNumber+'/'+maxMaps+')" class="boutonBrun iconButtons"><i class="fas fa-map" onclick="generateNewMap()" onmousedown="clicSound()"></i></button>');
@@ -183,6 +186,14 @@ function commandes() {
     if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Woklup' || playerInfos.pseudo === 'Bob') {
         gangNavig();
     }
+};
+
+function getMaxMaps(impact) {
+    let maxMaps = (playerInfos.comp.vsp+2)*maxMapsParDet;
+    if (impact) {
+        maxMaps = Math.ceil((playerInfos.comp.vsp+0.35)*maxMapsParDet/1.2);
+    }
+    return maxMaps;
 };
 
 function viewPop() {

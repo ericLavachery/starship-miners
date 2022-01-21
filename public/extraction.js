@@ -544,7 +544,7 @@ function voirRessources() {
             }
         }
     });
-    if (!modeSonde || playerInfos.comp.det >= 1) {
+    if (!modeSonde || playerInfos.comp.det >= 0) {
         let tileRes;
         let blockType;
         let filteredZone = _.filter(visMap,function(tile) {
@@ -590,7 +590,7 @@ function voirRessources() {
 
 function showTileRes(theTileRes) {
     let tileRes = JSON.stringify(theTileRes);
-    if (playerInfos.comp.det < 2 && modeSonde) {
+    if (playerInfos.comp.det < 1 && modeSonde) {
         tileRes = '';
     } else {
         tileRes = tileRes.replace(/"/g,"");
