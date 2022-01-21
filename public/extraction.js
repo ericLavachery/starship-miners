@@ -703,7 +703,9 @@ function toggleMarkedView() {
 };
 
 function markMap(tileId) {
+    console.log('MARK MAP '+tileId);
     let index;
+    selectedTile = tileId;
     if (showAllRes) {
         myTileX = zone[tileId].x;
         myTileY = zone[tileId].y;
@@ -731,7 +733,6 @@ function markMap(tileId) {
         }
         showMap(zone,true);
     }
-    selectedTile = tileId;
     if (showMini) {
         minimap();
     }

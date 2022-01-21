@@ -1211,6 +1211,11 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 newBat.tags.push('invisible');
             }
             if (newBat.team === 'player') {
+                if (playerInfos.onShip) {
+                    if (conselUnit.cat === 'infantry' && !conselUnit.skills.includes('clone') && !conselUnit.skills.includes('dog') && conselUnit.name != 'Citoyens' && conselUnit.name != 'Criminels') {
+                        newBat.tags.push('survivor');
+                    }
+                }
                 bataillons.push(newBat);
                 if (newBat.type === 'Chercheurs') {
                     playerInfos.sci++;

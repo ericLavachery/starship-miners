@@ -188,13 +188,18 @@ function showRes(tileId) {
         view = false;
     }
     if (tile.rq != undefined && view) {
-        if (playerInfos.comp.det >= 3 || !modeSonde) {
+        if (playerInfos.comp.det >= 1 || !modeSonde) {
             res = JSON.stringify(tile.rs);
             res = res.replace(/"/g,"");
             res = res.replace(/{/g,"");
             res = res.replace(/}/g,"");
             res = res.replace(/,/g," &nbsp;&horbar;&nbsp; ");
             res = res.replace(/:/g," ");
+            if (playerInfos.comp.det >= 3 || !modeSonde) {
+                // tout voir
+            } else {
+                res = res.replace(/\d+/g,"");
+            }
         }
         if (tile.tileName !== undefined && tile.tileName != '') {
             res = res+' ('+tile.tileName+')'

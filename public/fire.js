@@ -1153,10 +1153,11 @@ function attack(melee,init) {
     }
     // survivor
     if (targetBat.squadsLeft <= 0) {
-        if ((targetBatType.skills.includes('survivor') || targetBat.eq === 'permakirin' || targetBat.logeq === 'permakirin' || targetBat.vet === 4) && !targetBat.tags.includes('lucky')) {
+        if ((targetBatType.skills.includes('survivor') || targetBat.eq === 'permakirin' || targetBat.logeq === 'permakirin' || targetBat.vet === 4 || targetBat.tags.includes('survivor')) && !targetBat.tags.includes('lucky')) {
             targetBat.squadsLeft = 1;
             targetBat.apLeft = targetBat.ap;
             targetBat.tags.push('lucky');
+            tagDelete(targetBat,'survivor');
             $('#report').append('<span class="report rose">Survivant!<br></span>');
         } else {
             if (zombifiedTiles.includes(targetBat.tileId) && !targetBat.tags.includes('zombie') && targetBatType.cat === 'infantry' && !targetBatType.skills.includes('clone') && !targetBatType.skills.includes('dog') && !targetBatType.skills.includes('cyber')) {
@@ -1893,10 +1894,11 @@ function defense(melee,init) {
     // console.log('Squads left: '+selectedBat.squadsLeft);
     if (selectedBat.squadsLeft <= 0) {
         // console.log('dead');
-        if (!selectedBat.tags.includes('lucky') && (selectedBatType.skills.includes('survivor') || selectedBat.eq === 'permakirin' || selectedBat.logeq === 'permakirin' || selectedBat.vet === 4)) {
+        if (!selectedBat.tags.includes('lucky') && (selectedBatType.skills.includes('survivor') || selectedBat.eq === 'permakirin' || selectedBat.logeq === 'permakirin' || selectedBat.vet === 4 || selectedBat.tags.includes('survivor'))) {
             selectedBat.squadsLeft = 1;
             selectedBat.apLeft = selectedBat.ap;
             selectedBat.tags.push('lucky');
+            tagDelete(selectedBat,'survivor');
             $('#report').append('<span class="report rose">Survivant!<br></span>');
         } else {
             if (zombifiedTiles.includes(selectedBat.tileId) && !selectedBat.tags.includes('zombie') && selectedBatType.cat === 'infantry' && !selectedBatType.skills.includes('clone') && !selectedBatType.skills.includes('dog') && !selectedBatType.skills.includes('cyber')) {
