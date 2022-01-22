@@ -972,10 +972,66 @@ function bonusInfra(batType,infraName) {
 };
 
 function getStealth(bat) {
-    let cover = getCover(bat,false,false);
     let batType = getBatType(bat);
     let tile = getTile(bat);
+    let terrain = getTerrain(bat);
     let batStealth = batType.stealth;
+    if (tile.infra === 'Terriers' && batType.size < 9 && batType.cat != 'aliens') {
+        batStealth = batStealth+5;
+    }
+    if (tile.ruins) {
+        batStealth = batStealth+4;
+    }
+    if (batType.cat != 'aliens') {
+        if (isOnInfra(bat)) {
+            if (playerInfos.comp.cam >= 1) {
+                batStealth = batStealth+4;
+            } else {
+                batStealth = batStealth+2;
+            }
+        }
+    }
+    if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu') {
+        if (batType.skills.includes('camo')) {
+            batStealth = batStealth+3;
+        } else {
+            batStealth = batStealth+2;
+        }
+    }
+    let terBonus = (terrain.veg*2);
+    if (batType.cat === 'aliens') {
+        if (batType.skills.includes('hover')) {
+            terBonus = terBonus+(terrain.flood*2);
+            terBonus = terBonus+terrain.fishcover;
+        } else if (!batType.skills.includes('okwater')) {
+            terBonus = terBonus+terrain.aliencover;
+        } else {
+            terBonus = terBonus+(terrain.flood*2);
+            terBonus = terBonus+terrain.cover;
+        }
+    } else {
+        terBonus = terBonus+(terrain.flood*2);
+        if (terrain.name === 'R' || terrain.name === 'W' || terrain.name === 'L' || terrain.name === 'S') {
+            if (bat.eq === 'waterproof' || bat.logeq === 'waterproof' || batType.skills.includes('noblub')) {
+                terBonus = terBonus+terrain.fishcover;
+            } else {
+                terBonus = terBonus+terrain.cover;
+            }
+        } else {
+            terBonus = terBonus+terrain.cover;
+        }
+    }
+    if (tile.ruins) {
+        terBonus = (terBonus/3)+9;
+    } else if (isOnInfra(bat)) {
+        terBonus = (terBonus/1.5)+4;
+    }
+    let terFactor = terBonus+14;
+    if (terFactor < 1) {
+        terFactor = 1;
+    }
+    batStealth = batStealth*terFactor/19;
+    batStealth = batStealth+(terBonus*3/batType.size)-5;
     if (playerInfos.bldList.includes('QG')) {
         batStealth = batStealth+4;
     } else if (playerInfos.bldList.includes('Centre de com')) {
@@ -983,55 +1039,17 @@ function getStealth(bat) {
     } else if (playerInfos.bldList.includes('Poste radio')) {
         batStealth = batStealth+2;
     }
-    if (tile.infra === 'Terriers' && batType.size < 9) {
-        batStealth = batStealth+5;
-    }
-    if (tile.ruins) {
-        batStealth = batStealth+4;
-    }
-    if (tile.infra === 'Miradors' && playerInfos.comp.cam >= 1) {
-        batStealth = batStealth+4;
-    }
-    if (bat.tags.includes('moloko')) {
-        batStealth = batStealth-4;
-    }
-    if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu') {
-        if (batType.skills.includes('camo')) {
-            batStealth = batStealth+5;
-        } else {
-            batStealth = batStealth+3;
-        }
-    }
-    let stealthBonus = 0;
-    if (cover >= 4) {
-        stealthBonus = Math.round((Math.sqrt(cover)-1.7)*(batStealth-5)/2);
-        if (stealthBonus > 4) {
-            stealthBonus = 4;
-        }
-        if (stealthBonus < 0) {
-            stealthBonus = 0;
-        }
-    }
-    let vetStealth = Math.round(bat.vet*vetBonus.stealth);
-    let maxStealth = batStealth;
-    let coverAdj = Math.round((cover+3)*1.8);
-    if (tile.ruins) {
-        coverAdj = coverAdj+4;
-    }
-    if (tile.infra === 'Terriers' && batType.size < 9) {
-        coverAdj = coverAdj+5;
-    }
-    if (coverAdj < 2) {
-        coverAdj = 2;
-    }
-    if (batStealth > coverAdj) {
-        maxStealth = coverAdj;
+    let vetStealth = bat.vet*vetBonus.stealth;
+    batStealth = batStealth+vetStealth;
+    if (batStealth < 0) {
+        batStealth = 0;
     }
     // Starka drug
-    if (bat.tags.includes('starka')) {
-        maxStealth = Math.floor(maxStealth/2);
+    if (bat.tags.includes('starka') || bat.tags.includes('moloko')) {
+        batStealth = batStealth/1.5;
     }
-    return maxStealth+stealthBonus+vetStealth;
+    batStealth = Math.round(batStealth);
+    return batStealth;
 };
 
 function calcSpeed(bat,weap,opweap,distance,attacking) {

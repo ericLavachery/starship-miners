@@ -578,7 +578,7 @@
         "info":"Camouflage++",
         "bldReq":["Atelier"],
         "compReq":{"train":1,"log":2},
-        "autoComp":["train",2],
+        "autoComp":["cam",1],
         "factor":"crew",
         "costs":{"Blendium":12,"Tissus":12},
         "deploy":{"Végétaux":12}

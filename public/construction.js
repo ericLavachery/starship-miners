@@ -1283,7 +1283,7 @@ function checkXPBonus(myBatType) {
         if (playerInfos.comp.train === 2) {
             batNewXP = batNewXP+Math.ceil(levelXP[2]*2/3);
         }
-        if (playerInfos.comp.train === 2) {
+        if (playerInfos.comp.train === 3) {
             batNewXP = batNewXP+Math.ceil(levelXP[3]/2);
         }
     }

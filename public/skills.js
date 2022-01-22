@@ -332,48 +332,37 @@ function gloireASatan() {
 function calcCamo(bat) {
     let batType = getBatType(bat);
     let stealth = getStealth(bat);
-    // underground
-    if (batType.skills.includes('underground')) {
-        stealth = stealth+10;
-    }
+    let tile = getTile(bat);
     if (stealth < 3) {
         stealth = 3;
     }
-    let terrain = getTerrain(bat);
-    if (terrain.veg >= 1) {
-        stealth = stealth+terrain.veg+terrain.veg+2;
-    }
-    if (terrain.scarp >= 2) {
-        stealth = stealth+terrain.scarp+terrain.scarp;
-    }
-    let camChance = Math.round(Math.sqrt(stealth)*(playerInfos.comp.ca+16))+(stealth*2)-35;
-    let minChance = Math.round((terrain.veg+terrain.scarp)*8);
-    if (camChance < minChance) {
-        camChance = minChance;
-    }
-    // size
-    if (batType.size > 3) {
-        camChance = Math.ceil(camChance/Math.sqrt(Math.sqrt(batType.size))*1.31);
-    }
+    let camChance = Math.round(Math.sqrt(stealth)*16)+(stealth*2)-40+(playerInfos.comp.ca*2);
     // sarak
     if (zone[0].planet === 'Sarak') {
         camChance = camChance+25;
     }
     // max
-    if (batType.skills.includes('underground') || batType.cat === 'buildings') {
-        camChance = camChance+65;
+    if (batType.skills.includes('underground') || batType.cat === 'buildings' || (tile.infra === 'Terriers' && batType.size < 9 && batType.cat != 'aliens')) {
+        camChance = camChance+75;
+        if (tile.infra === 'Terriers' && batType.size < 9 && batType.cat != 'aliens') {
+            camChance = camChance+10;
+        }
         if (camChance > 100) {
             camChance = 100;
         }
     } else {
         if (camChance > stealthMaxChance) {
-            camChance = stealthMaxChance;
+            camChance = stealthMaxChance+((camChance-stealthMaxChance)/10);
+            if (camChance > 98) {
+                camChance = 98;
+            }
         }
     }
     // min
     if (camChance < (batType.stealth-6)*3) {
         camChance = (batType.stealth-6)*3;
     }
+    camChance = Math.floor(camChance);
     return camChance;
 };
 

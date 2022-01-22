@@ -239,7 +239,7 @@ function skillsInfos(bat,batType,near) {
                         camoufOK = false;
                     }
                 }
-            } else if (batType.cat == 'vehicles' || batType.skills.includes('machine') || batType.cat == 'devices') {
+            } else if (batType.cat == 'vehicles' || batType.skills.includes('machine') || batType.skills.includes('moto') || batType.cat == 'devices') {
                 if (batType.skills.includes('maycamo') && !ruinHide) {
                     apCost = Math.floor(batType.ap*Math.sqrt(batType.size-3)/4);
                     apReq = Math.floor(batType.ap/1.5);
@@ -269,12 +269,16 @@ function skillsInfos(bat,batType,near) {
                         }
                     }
                 } else {
-                    apCost = Math.floor(batType.ap/3);
-                    apReq = 1;
-                    if (playerInfos.comp.cam >= 1) {
-                        apCost = Math.floor(batType.ap/(playerInfos.comp.cam+3));
-                        apReq = 0;
+                    apCost = Math.round(batType.ap/3);
+                    if (batType.skills.includes('camo')) {
+                        apReq = 1;
+                    } else {
+                        apReq = 2;
                     }
+                }
+                if (playerInfos.comp.cam >= 1) {
+                    apCost = Math.floor(apCost*3/(playerInfos.comp.cam+3));
+                    apReq = apReq-1;
                 }
             }
             balise = 'h4';
