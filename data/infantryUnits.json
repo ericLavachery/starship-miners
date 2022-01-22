@@ -3273,6 +3273,7 @@
             "name":"Tronçonneuse",
             "cost":3,
             "range":0,
+            "isMelee":true,
             "isShort":true,
             "noShield":true,
             "rof":8,
@@ -3289,7 +3290,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","slowreg","mutant","maycamo","strong","brigands","souschef","herosalvo","lowstress"],
+        "skills":["fouille","fortif","datt","slowreg","mutant","genhab2","maycamo","strong","brigands","souschef","herosalvo","lowstress"],
         "fuzz":2,
         "deathFx":"137036__pyrocamancer__beast-death"
     },
@@ -4065,7 +4066,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","mutant","berserk","defense","brigands","herosalvo","lowstress"],
+        "skills":["fouille","fortif","datt","mutant","genhab2","berserk","defense","brigands","herosalvo","lowstress"],
         "fuzz":2,
         "deathFx":"137036__pyrocamancer__beast-death"
     },
@@ -4120,7 +4121,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","mutant","nofear","ranger","berserk","defense","noblub","slowreg","resistacide","strong","brigands","herorage","lowstress"],
+        "skills":["fouille","fortif","datt","mutant","genhab2","nofear","ranger","berserk","defense","noblub","slowreg","resistacide","strong","brigands","herorage","lowstress"],
         "fuzz":2,
         "deathFx":"137036__pyrocamancer__beast-death"
     },
@@ -4177,7 +4178,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","fly","longshot","mutant","escape","guerrilla","tirailleur","maycamo","herowc","herolasso"],
+        "skills":["fouille","fortif","datt","fly","longshot","mutant","genhab3","escape","guerrilla","tirailleur","maycamo","herowc","herolasso"],
         "mediCost":15,
         "fuzz":1,
         "deathFx":"137036__pyrocamancer__beast-death"
@@ -4236,7 +4237,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","fly","longshot","mutant","escape","guerrilla","tirailleur","herolasso"],
+        "skills":["fouille","fortif","datt","fly","longshot","mutant","genhab3","escape","guerrilla","tirailleur","herolasso"],
         "mediCost":15,
         "fuzz":3,
         "deathFx":"137036__pyrocamancer__beast-death"
@@ -5870,7 +5871,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["dog","lowstress","noblub","escape","ranger","genhab","guerrilla","tirailleur","recupcorps"],
+        "skills":["dog","lowstress","noblub","escape","ranger","genhab2","guerrilla","tirailleur","recupcorps"],
         "fuzz":1,
         "deathFx":"dog_death"
     },

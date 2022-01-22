@@ -43,6 +43,12 @@ function clickMove(tileId) {
         if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry') {
             jmc = jmc*1.5*moveKzin;
         }
+        if (selectedBat.tags.includes('genfast')) {
+            jmc = jmc/1.33;
+        }
+        if (selectedBat.tags.includes('genslow')) {
+            jmc = jmc*1.33;
+        }
         jmc = jmc*moveTuning;
         if (Math.floor(distance) <= Math.floor(selectedBat.apLeft/jmc) && selectedBat.tileId != tileId) {
             moveOK = true;
@@ -208,6 +214,12 @@ function moveInfos(bat,jump) {
             if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry') {
                 jmc = jmc*1.5*moveKzin;
             }
+            if (selectedBat.tags.includes('genfast')) {
+                jmc = jmc/1.33;
+            }
+            if (selectedBat.tags.includes('genslow')) {
+                jmc = jmc*1.33;
+            }
             jmc = jmc*moveTuning;
             if (Math.floor(distance) <= Math.floor(selectedBat.apLeft/jmc)) {
                 if (tile.y == myTileY && tile.x == myTileX) {
@@ -274,6 +286,12 @@ function moveSelectedBat(tileId,free,jump) {
             if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry') {
                 jmc = jmc*1.5*moveKzin;
             }
+            if (selectedBat.tags.includes('genfast')) {
+                jmc = jmc/1.33;
+            }
+            if (selectedBat.tags.includes('genslow')) {
+                jmc = jmc*1.33;
+            }
             jmc = jmc*moveTuning;
             apLost = distance*jmc;
             apLost = apLost.toFixedNumber(1);
@@ -281,9 +299,6 @@ function moveSelectedBat(tileId,free,jump) {
         selectedBat.apLeft = selectedBat.apLeft-apLost;
     }
     selectedBat.tileId = tileId;
-    // if (playerInfos.onShip && selectedBatType.skills.includes('prefab')) {
-    //     selectedBat.vmt = tileId;
-    // }
     // remove tags
     if (selectedBat.tags.includes('blub')) {
         let terrain = getTerrainById(tileId);
@@ -597,10 +612,18 @@ function calcMoveCost(targetTileId,diag) {
         baseMoveCost = 9;
     }
     if (selectedBat.tags.includes('genslow')) {
-        baseMoveCost = baseMoveCost+1;
+        if (selectedBatType.moveCost >= 3) {
+            baseMoveCost = baseMoveCost+1;
+        } else {
+            baseMoveCost = baseMoveCost+0.5;
+        }
     }
     if (selectedBat.tags.includes('genfast')) {
-        baseMoveCost = baseMoveCost-1;
+        if (selectedBatType.moveCost >= 3) {
+            baseMoveCost = baseMoveCost-1;
+        } else {
+            baseMoveCost = baseMoveCost-0.5;
+        }
     }
     let moveCost;
     if (tile.rd && !selectedBatType.skills.includes('hover')) {

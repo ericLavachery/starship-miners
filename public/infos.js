@@ -318,7 +318,7 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="paramName cy">Rapide</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
     if (bat.tags.includes('genslow')) {
-        $('#'+bodyPlace).append('<span class="paramName jaune">lent</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName jaune">Lent</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
     }
     if (bat.tags.includes('genwater')) {
         $('#'+bodyPlace).append('<span class="paramName or" title="Allergique à l\'eau">Allergique</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
