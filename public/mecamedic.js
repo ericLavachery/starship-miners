@@ -548,6 +548,105 @@ function checkStressEffect(bat) {
     }
 };
 
+function getAway(myBat,fromTileId,blob) {
+    // console.log('getAway');
+    // console.log(bat);
+    let myBatType = getBatType(myBat);
+    let distFromTile;
+    let distFromSelf;
+    let getAwayTile = -1;
+    let inBld = false;
+    let transBatId = -1;
+    let apCost = 0;
+    alienOccupiedTileList();
+    playerOccupiedTileList();
+    let shufBats = _.shuffle(bataillons);
+    shufBats.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (batType.skills.includes('transport') && batType.cat === 'buildings' && getAwayTile < 0) {
+            if (myBatType.size <= batType.transMaxSize) {
+                distFromTile = calcDistance(fromTileId,bat.tileId);
+                distFromSelf = calcDistance(myBat.tileId,bat.tileId);
+                if (distFromSelf <= 2 && distFromTile >= 1) {
+                    let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
+                    let tracking = checkTracking(bat);
+                    if (!myBatType.skills.includes('tracked') || !tracking) {
+                        let myBatWeight = calcVolume(myBat,myBatType);
+                        if (myBatWeight <= batTransUnitsLeft) {
+                            getAwayTile = bat.tileId;
+                            apCost = (distFromSelf*5)+2;
+                            inBld = true;
+                            transBatId = bat.id;
+                        }
+                    }
+                }
+            }
+        }
+    });
+    let shufZone = _.shuffle(zone);
+    if (getAwayTile < 0) {
+        shufZone.forEach(function(tile) {
+            distFromTile = calcDistance(fromTileId,tile.id);
+            distFromSelf = calcDistance(myBat.tileId,tile.id);
+            if (distFromSelf === 1 && distFromTile >= 1 && !playerOccupiedTiles.includes(tile.id) && !alienOccupiedTiles.includes(tile.id) && getAwayTile < 0) {
+                getAwayTile = tile.id;
+                apCost = 5;
+            }
+        });
+    }
+    if (getAwayTile < 0) {
+        shufZone.forEach(function(tile) {
+            distFromTile = calcDistance(fromTileId,tile.id);
+            distFromSelf = calcDistance(myBat.tileId,tile.id);
+            if (distFromSelf === 2 && distFromTile >= 1 && !playerOccupiedTiles.includes(tile.id) && !alienOccupiedTiles.includes(tile.id) && getAwayTile < 0) {
+                getAwayTile = tile.id;
+                apCost = 10;
+            }
+        });
+    }
+    if (getAwayTile >= 0) {
+        let resHere = showRes(myBat.tileId);
+        $('#b'+myBat.tileId).empty().append(resHere);
+        myBat.tileId = getAwayTile;
+        myBat.apLeft = myBat.apLeft-apCost;
+        tagDelete(myBat,'guet');
+        tagDelete(myBat,'fortif');
+        if (myBat.tags.includes('camo') && !blob) {
+            myBat.fuzz = -1;
+            tagDelete(myBat,'camo');
+        }
+        if (!inBld) {
+            showBataillon(myBat);
+        } else if (transBatId >= 0) {
+            loadBat(myBat.id,transBatId);
+        }
+        if (!blob) {
+            warning('Répulsion',myBat.type+' a pris la fuite...',false,getAwayTile);
+        } else {
+            warning('Vomissure',myBat.type+' a dû fuir pour ne pas être digéré par la vomissure de l\'oeuf.',false,getAwayTile);
+        }
+    } else {
+        if (!blob) {
+            myBat.apLeft = 0-Math.round(myBat.ap/4*3);
+            tagDelete(myBat,'guet');
+            tagDelete(myBat,'fortif');
+            if (myBat.tags.includes('camo')) {
+                myBat.fuzz = -1;
+            }
+            tagDelete(myBat,'camo');
+            if (!myBat.tags.includes('stun')) {
+                myBat.tags.push('stun');
+            }
+            warning('Répulsion',myBat.type+' paralysé de peur...',false,myBat.tileId);
+        } else {
+            let batIndex = bataillons.findIndex((obj => obj.id == myBat.id));
+            bataillons.splice(batIndex,1);
+            batDeathEffect(myBat,true,'Bataillon digéré',myBat.type+' englouti par la vomissure...',false,myBat.tileId);
+        }
+    }
+    playerOccupiedTileList();
+};
+
 function getNearestAlienTile(batTileId) {
     let nearestAlienTile = -1;
     let shortDistance = 999;
@@ -634,25 +733,6 @@ function addStressFlag(bat,emoType) {
             } else {
                 bat.emo = stressCost;
             }
-            // if (bat.id === selectedBat.id) {
-            //     if (selectedBat.emo != undefined) {
-            //         selectedBat.emo = selectedBat.emo+stressCost;
-            //     } else {
-            //         selectedBat.emo = stressCost;
-            //     }
-            // } else if (bat.id === targetBat.id) {
-            //     if (bat.emo != undefined) {
-            //         bat.emo = bat.emo+stressCost;
-            //     } else {
-            //         bat.emo = stressCost;
-            //     }
-            // } else {
-            //     if (bat.emo != undefined) {
-            //         bat.emo = bat.emo+stressCost;
-            //     } else {
-            //         bat.emo = stressCost;
-            //     }
-            // }
         }
     }
 };
@@ -668,19 +748,6 @@ function addHealFlag(bat) {
     } else {
         bat.soins = healCost;
     }
-    // if (bat.id === selectedBat.id) {
-    //     if (selectedBat.soins != undefined) {
-    //         selectedBat.soins = selectedBat.soins+healCost;
-    //     } else {
-    //         selectedBat.soins = healCost;
-    //     }
-    // } else {
-    //     if (bat.soins != undefined) {
-    //         bat.soins = bat.soins+healCost;
-    //     } else {
-    //         bat.soins = healCost;
-    //     }
-    // }
 };
 
 function addRepairFlag(bat) {
@@ -691,19 +758,6 @@ function addRepairFlag(bat) {
         } else {
             bat.soins = 1;
         }
-        // if (bat.id === selectedBat.id) {
-        //     if (selectedBat.soins != undefined) {
-        //         selectedBat.soins = selectedBat.soins+1;
-        //     } else {
-        //         selectedBat.soins = 1;
-        //     }
-        // } else {
-        //     if (bat.soins != undefined) {
-        //         bat.soins = bat.soins+1;
-        //     } else {
-        //         bat.soins = 1;
-        //     }
-        // }
     }
 };
 

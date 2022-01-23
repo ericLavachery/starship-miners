@@ -108,6 +108,7 @@ function landingList() {
             healEverything();
             events(true,0,false);
             miniOut();
+            saveGame();
         } else {
             if (zone[0].snd === undefined) {
                 playRoom('crickets',true);

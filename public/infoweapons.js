@@ -56,7 +56,7 @@ function weaponsInfos(bat,batType,pop) {
             }
             let grisee = false;
             if (bat.tags.includes('datt')) {
-                if (thisWeapon.isPrec || thisWeapon.isBow || thisWeapon.noBis || thisWeapon.noDatt) {
+                if (thisWeapon.isPrec || thisWeapon.isBow || thisWeapon.noDatt) {
                     grisee = true;
                 }
             }
@@ -271,13 +271,13 @@ function weaponsInfos(bat,batType,pop) {
             }
             if (batType.skills.includes('datt')) {
                 if (bat.tags.includes('datt')) {
-                    if (!thisWeapon.isPrec && !thisWeapon.isBow && !thisWeapon.noBis && !thisWeapon.noDatt) {
+                    if (!thisWeapon.isPrec && !thisWeapon.isBow && !thisWeapon.noDatt) {
                         $('#'+bodyPlace).append('<span class="paramName cy">Double attaque</span><span class="paramIcon cy"><i class="ra ra-fire rpg"></i></span><span class="paramValue cy">Oui</span><br>');
                     } else {
                         $('#'+bodyPlace).append('<span class="paramName or">Double attaque</span><span class="paramIcon or"><i class="ra ra-fire rpg"></i></span><span class="paramValue or">Non</span><br>');
                     }
                 } else {
-                    if (!thisWeapon.isPrec && !thisWeapon.isBow && !thisWeapon.noBis && !thisWeapon.noDatt) {
+                    if (!thisWeapon.isPrec && !thisWeapon.isBow && !thisWeapon.noDatt) {
                         $('#'+bodyPlace).append('<span class="paramName">Double attaque</span><span class="paramIcon gf"><i class="ra ra-fire rpg"></i></span><span class="paramValue">Oui</span><br>');
                     }
                 }
@@ -302,7 +302,7 @@ function weaponsInfos(bat,batType,pop) {
             }
             let grisee = false;
             if (bat.tags.includes('datt')) {
-                if (thisWeapon.isPrec || thisWeapon.isBow || thisWeapon.noBis || thisWeapon.noDatt) {
+                if (thisWeapon.isPrec || thisWeapon.isBow || thisWeapon.noDatt) {
                     grisee = true;
                 }
             }
@@ -516,13 +516,13 @@ function weaponsInfos(bat,batType,pop) {
             }
             if (batType.skills.includes('datt')) {
                 if (bat.tags.includes('datt')) {
-                    if (!thisWeapon.isPrec && !thisWeapon.isBow && !thisWeapon.noBis && !thisWeapon.noDatt) {
+                    if (!thisWeapon.isPrec && !thisWeapon.isBow && !thisWeapon.noDatt) {
                         $('#'+bodyPlace).append('<span class="paramName cy">Double attaque</span><span class="paramIcon cy"><i class="ra ra-fire rpg"></i></span><span class="paramValue cy">Oui</span><br>');
                     } else {
                         $('#'+bodyPlace).append('<span class="paramName or">Double attaque</span><span class="paramIcon or"><i class="ra ra-fire rpg"></i></span><span class="paramValue or">Non</span><br>');
                     }
                 } else {
-                    if (!thisWeapon.isPrec && !thisWeapon.isBow && !thisWeapon.noBis && !thisWeapon.noDatt) {
+                    if (!thisWeapon.isPrec && !thisWeapon.isBow && !thisWeapon.noDatt) {
                         $('#'+bodyPlace).append('<span class="paramName">Double attaque</span><span class="paramIcon gf"><i class="ra ra-fire rpg"></i></span><span class="paramValue">Oui</span><br>');
                     }
                 }

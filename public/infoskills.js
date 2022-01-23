@@ -154,7 +154,7 @@ function skillsInfos(bat,batType,near) {
         if (bat.tags.includes('mining')) {
             bouton = 'boutonGris';
         }
-        if (bat.apLeft >= apReq && !bat.tags.includes('guet') && !batType.skills.includes('sentinelle') && bat.eq != 'detector' && bat.logeq != 'detector' && bat.eq != 'g2ai' && bat.logeq != 'g2ai' && !batType.skills.includes('initiative') && !batType.skills.includes('after')) {
+        if ((bat.apLeft >= apReq || bat.apLeft >= bat.ap-2) && !bat.tags.includes('guet') && !batType.skills.includes('sentinelle') && bat.eq != 'detector' && bat.logeq != 'detector' && bat.eq != 'g2ai' && bat.logeq != 'g2ai' && !batType.skills.includes('initiative') && !batType.skills.includes('after')) {
             // assez d'ap
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Faire le guet ('+apReq+' PA requis)" class="'+bouton+' skillButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apCost+'</span></button>&nbsp; Guet</'+balise+'></span>');
         } else {
@@ -206,7 +206,7 @@ function skillsInfos(bat,batType,near) {
         if (bat.tags.includes('mining')) {
             bouton = 'boutonGris';
         }
-        if (bat.apLeft >= apReq && !bat.tags.includes('fortif') && !inMelee) {
+        if ((bat.apLeft >= apReq || bat.apLeft >= bat.ap-2) && !bat.tags.includes('fortif') && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Se fortifier ('+apReq+' PA requis)" class="'+bouton+' skillButtons" onclick="fortification('+apCost+')"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fortification</'+balise+'></span>');
         } else {
             if (inMelee) {
@@ -378,13 +378,13 @@ function skillsInfos(bat,batType,near) {
                 trainComp = 0;
             } else {
                 if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
-                    apCost = apCost-1;
+                    trainComp = trainComp+1;
                 }
             }
             apCost = 7-trainComp;
-            if (!batType.weapon.isPrec && !batType.weapon.isBow && !batType.weapon.noBis && !batType.weapon.noDatt) {
+            if (!batType.weapon.isPrec && !batType.weapon.isBow && !batType.weapon.noDatt) {
                 if (batType.weapon2.rof >= 1) {
-                    if (!batType.weapon2.isPrec && !batType.weapon2.isBow && !batType.weapon.noBis && !batType.weapon.noDatt) {
+                    if (!batType.weapon2.isPrec && !batType.weapon2.isBow && !batType.weapon.noDatt) {
                         if (batType.weapon.cost > batType.weapon2.cost) {
                             apReq = apCost+batType.weapon2.cost;
                         } else {
@@ -398,7 +398,7 @@ function skillsInfos(bat,batType,near) {
                 }
             } else {
                 if (batType.weapon2.rof >= 1) {
-                    if (!batType.weapon2.isPrec && !batType.weapon2.isBow && !batType.weapon2.noBis && !batType.weapon2.noDatt) {
+                    if (!batType.weapon2.isPrec && !batType.weapon2.isBow && !batType.weapon2.noDatt) {
                         apReq = apCost+batType.weapon2.cost;
                     } else {
                         weapOK = false;
@@ -2082,6 +2082,9 @@ function skillsInfos(bat,batType,near) {
         if ((batType.skills.includes('fouille') || (batType.skills.includes('aifouille') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai' || playerInfos.bldList.includes('Centre de com')))) && tile.ruins && tile.sh >= 1) {
             apReq = Math.round(5*7/(playerInfos.comp.tri+6));
             apCost = Math.round(1250/bat.squadsLeft/batType.squadSize/batType.crew);
+            if (batType.skills.includes('scav')) {
+                apCost = Math.round(apCost/1.5);
+            }
             if (batType.cat === 'infantry' && !batType.skills.includes('moto') && !batType.skills.includes('fly')) {
                 apCost = Math.floor(apCost/batType.ap*11);
             }

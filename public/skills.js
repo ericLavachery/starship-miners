@@ -51,7 +51,7 @@ function checkSecretPass(bat) {
                             secretPass.exit = tile.id;
                             secretPass.ok = true;
                             let realDistance = calcDistance(tile.id,bat.tileId);
-                            secretPass.ap = 1+Math.round(realDistance*mvCost*moveTuning);
+                            secretPass.ap = 1+Math.round(realDistance*mvCost*moveTuning*1.1);
                         }
                     }
                 }
