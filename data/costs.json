@@ -1429,7 +1429,7 @@
     {
         "id":128,
         "name":"Looters",
-        "levels":{"rednecks":8,"blades":4,"bulbos":6,"drogmulojs":5,"tiradores":9,"detruas":8,"brasier":7},
+        "levels":{"rednecks":8,"blades":4,"bulbos":6,"drogmulojs":5,"tiradores":8,"detruas":8,"brasier":7},
         "bldReq":["Garage","Atelier"],
         "compReq":{"cam":1},
         "compPass":["blades"],

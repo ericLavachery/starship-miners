@@ -27,6 +27,62 @@ function fortification(apCost) {
     showMap(zone,false);
 };
 
+function checkSecretPass(bat) {
+    let batType = getBatType(bat);
+    let mvCost = batType.moveCost;
+    if (batType.skills.includes('jetpack') || batType.skills.includes('fly') || bat.eq === 'e-jetpack') {
+        mvCost = 4;
+    }
+    let secretPass = {};
+    secretPass.ok = false;
+    secretPass.ap = 99;
+    secretPass.exit = -1;
+    let numExits = 0;
+    alienOccupiedTileList();
+    playerOccupiedTileList();
+    zone.forEach(function(tile) {
+        if (tile.infra != undefined) {
+            if (tile.infra === 'Terriers') {
+                if (playerInfos.showedTiles.includes(tile.id)) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        let distance = calcDistanceSquare(tile.id,bat.tileId);
+                        if (distance <= 4) {
+                            numExits++;
+                            secretPass.exit = tile.id;
+                            secretPass.ok = true;
+                            let realDistance = calcDistance(tile.id,bat.tileId);
+                            secretPass.ap = 1+Math.round(realDistance*mvCost*moveTuning);
+                        }
+                    }
+                }
+            }
+        }
+    });
+    if (numExits != 1) {
+        secretPass.ok = false;
+        secretPass.ap = 99;
+        secretPass.exit = -1;
+    }
+    return secretPass;
+};
+
+function goSecretPass() {
+    let secretPass = checkSecretPass(selectedBat);
+    console.log('SECRET PASSAGE');
+    console.log(secretPass);
+    if (secretPass.ok && secretPass.exit >= 0) {
+        selectedBat.apLeft = selectedBat.apLeft-secretPass.ap;
+        moveSelectedBat(secretPass.exit,true,true);
+        selectedBat.fuzz = -2;
+        if (!selectedBat.tags.includes('camo')) {
+            selectedBat.tags.push('camo');
+        }
+        showBataillon(selectedBat);
+        showBatInfos(selectedBat);
+        selectedBatArrayUpdate();
+    }
+};
+
 function checkCommand(myBat) {
     let leSousChef = {};
     leSousChef.ok = false;

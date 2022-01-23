@@ -450,7 +450,9 @@ function batDeathEffect(bat,quiet,title,body) {
             setTimeout(function (){
                 $('#b'+bat.tileId).empty();
                 $('#b'+bat.tileId).append(resHere);
-                showMap(zone,false);
+                if (bat.tags.includes('scion')) {
+                    showMap(zone,false);
+                }
             }, 1500); // How long do you want the delay to be (in milliseconds)?
         } else {
             $('#b'+bat.tileId).empty();

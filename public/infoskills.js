@@ -310,6 +310,25 @@ function skillsInfos(bat,batType,near) {
             }
         }
     }
+    // PASSAGE SECRET
+    if (batType.size <= 9 && batType.cat === 'infantry') {
+        if (tile.infra === 'Terriers') {
+            let secretPass = checkSecretPass(bat);
+            if (secretPass.ok) {
+                apReq = 2;
+                if (playerInfos.comp.cam >= 1) {
+                    apReq = apReq-1-Math.floor(playerInfos.comp.cam/2);
+                }
+                apCost = secretPass.ap;
+                if (bat.apLeft >= apReq) {
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Passage secret (aller au terrier indiqué)" class="boutonJaune skillButtons" onclick="goSecretPass()"><i class="fas fa-door-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Evasion</'+balise+'></span>');
+                } else {
+                    skillMessage = "Pas assez de PA";
+                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-door-open"></i> <span class="small">'+apCost+'</span></button>&nbsp; Evasion</'+balise+'></span>');
+                }
+            }
+        }
+    }
     // EMBUSCADE
     if (batType.skills.includes('embuscade') && !playerInfos.onShip && !bat.tags.includes('datt')) {
         apCost = 4-(playerInfos.comp.train/3.1)-(playerInfos.comp.cam/1.9);

@@ -31,7 +31,7 @@
         "name":"Terriers",
         "cat":"infra",
         "fabTime":18,
-        "levels":{"rednecks":99,"blades":6,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":9},
+        "levels":{"rednecks":7,"blades":6,"bulbos":12,"drogmulojs":9,"tiradores":9,"detruas":8,"brasier":9},
         "costs":{"Compo1":75,"Compo2":25,"Végétaux":75}
     },
     {
