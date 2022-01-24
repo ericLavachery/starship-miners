@@ -494,8 +494,8 @@
         "levels":{"rednecks":99,"blades":17,"bulbos":99,"drogmulojs":6,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"gen":1},
-        "compHardReq":{"bal":2},
         "compPass":["drogmulojs"],
+        "compHardReq":{"bal":2},
         "costs":{"Scrap":112,"Carbone":56,"Aluminium":168,"Titane":28,"Tungstène":56,"Moteurs":7,"Bugium":86,"Mendium":28,"Creatite":86,"Azote":120,"Calcium":40,"Drogues":28},
         "deploy":{"Fuel":7},
         "fabTime":70
@@ -503,10 +503,11 @@
     {
         "id":160,
         "name":"Wolverines",
-        "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":7,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Centre de recherches"],
+        "levels":{"rednecks":99,"blades":9,"bulbos":99,"drogmulojs":7,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Laboratoire"],
         "compReq":{"gen":1},
-        "compPass":["drogmulojs","blades"],
+        "compPass":["drogmulojs"],
+        "compHardReq":{"ca":2},
         "costs":{"Swarmine":134,"Mendium":48,"Blendium":48,"Azote":102,"Calcium":34,"Zinc":60,"Drogues":24,"Octiron":48},
         "fabTime":45
     },
@@ -625,14 +626,14 @@
         "bldReq":["Camp d'entraînement","Centre de recherches","Prisons"],
         "compReq":{"gen":1},
         "compPass":["drogmulojs"],
-        "compHardReq":{"bal":1},
+        "compHardReq":{"bal":1,"ca":3},
         "costs":{"Carbone":81,"Aluminium":162,"Slime":76,"Mendium":113,"Blendium":113,"Bossium":76,"Azote":171,"Calcium":57,"Fer":122,"Soufre":122,"Plomb":122,"Drogues":45},
         "fabTime":90
     },
     {
         "id":77,
         "name":"Exobios",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":10,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":11,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Laboratoire","Prisons"],
         "compReq":{"gen":1},
         "compPass":["drogmulojs"],
@@ -643,14 +644,14 @@
     {
         "id":176,
         "name":"Exobrutes",
-        "levels":{"rednecks":99,"blades":9,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire","Prisons"],
         "compReq":{"gen":1},
         "costs":{"Fer":48,"Bois":96,"Aluminium":48,"Bugium":200,"Bossium":15,"Creatite":214,"Azote":258,"Calcium":86,"Drogues":60},
         "fabTime":55
     },
     {
-        "id":249,
+        "id":78,
         "name":"Mosquitos",
         "levels":{"rednecks":99,"blades":13,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Centre de recherches"],
@@ -660,9 +661,9 @@
         "fabTime":60
     },
     {
-        "id":78,
+        "id":249,
         "name":"Bees",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":12,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":10,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Centre de recherches"],
         "compReq":{"gen":1},
         "compPass":["drogmulojs"],
@@ -1137,7 +1138,7 @@
     {
         "id":38,
         "name":"Wartrucks",
-        "levels":{"rednecks":99,"blades":9,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Garage","Atelier"],
         "costs":{"Fer":140,"Scrap":564,"Carbone":156,"Bois":96,"Moteurs":78,"Tungstène":224,"Cuivre":22,"Batteries":22,"Compo2":192,"Compo3":72,"Silicium":10,"Huile":30},
         "deploy":{"Fuel":140,"Energie":80,"Huile":20},
@@ -1223,7 +1224,7 @@
     {
         "id":131,
         "name":"Frogs",
-        "levels":{"rednecks":13,"blades":10,"bulbos":10,"drogmulojs":11,"tiradores":13,"detruas":10,"brasier":14},
+        "levels":{"rednecks":13,"blades":9,"bulbos":10,"drogmulojs":11,"tiradores":13,"detruas":10,"brasier":14},
         "bldReq":["Armurerie","Atelier"],
         "compReq":{"trans":2},
         "costs":{"Fer":60,"Scrap":120,"Carbone":90,"Bois":60,"Silicium":60,"Wingium":60,"Aluminium":60,"Moteurs":40,"Tungstène":15,"Cuivre":15,"Batteries":30,"Compo2":120,"Hélium":75,"Chlore":75,"Huile":10},
@@ -1568,7 +1569,7 @@
     {
         "id":121,
         "name":"Milkmen",
-        "levels":{"rednecks":7,"blades":9,"bulbos":7,"drogmulojs":8,"tiradores":7,"detruas":4,"brasier":4},
+        "levels":{"rednecks":7,"blades":8,"bulbos":7,"drogmulojs":8,"tiradores":7,"detruas":4,"brasier":4},
         "bldReq":["Armurerie","Garage"],
         "costs":{"Fer":14,"Scrap":207,"Carbone":36,"Moteurs":32,"Batteries":9,"Compo2":28,"Silicium":9,"Huile":9},
         "deploy":{"Fuel":35},
@@ -2362,6 +2363,14 @@
         "slots":3
     },
     {
+        "id":283,
+        "name":"Cryogénérateur",
+        "upkeep":{"Energie":12},
+        "costs":{"Compo1":200,"Eau":18,"Hélium":300,"Carbone":50,"Fer":50,"Titane":25,"Moteurs":10,"Cuivre":25,"Electros":10,"Batteries":10},
+        "fabTime":75,
+        "slots":1
+    },
+    {
         "id":206,
         "name":"Laboratoire",
         "bldUp":"Centre de recherches",
@@ -2636,7 +2645,8 @@
         "id":276,
         "name":"Unités cryogéniques",
         "bldReq":["Station"],
-        "costs":{"Compo2":150,"Compo3":100,"Eau":750,"Carbone":150,"Tissus":75,"Calcium":250,"Or":250,"Mercure":150,"Cuivre":150,"Oxygène":750,"Argon":150,"Zinc":150,"Bore":150,"Drogues":200,"Chlore":200,"Electros":100,"Batteries":150},
+        "upkeep":{"Energie":1},
+        "costs":{"Compo2":150,"Compo3":100,"Eau":750,"Carbone":150,"Tissus":75,"Calcium":250,"Or":250,"Mercure":150,"Cuivre":150,"Oxygène":750,"Hélium":500,"Argon":150,"Zinc":150,"Bore":150,"Drogues":200,"Chlore":200,"Electros":100,"Batteries":150},
         "fabTime":1,
         "slots":0
     },

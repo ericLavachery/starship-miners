@@ -519,7 +519,7 @@ function maxUnits(unit) {
             isMax = true;
         }
     }
-    if (unit.skills.includes('leader') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3')) {
+    if (unit.skills.includes('leader') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre')) {
         numOf.leader = 0;
         numOf[unit.name] = 0;
         bataillons.forEach(function(bat) {
@@ -549,6 +549,11 @@ function maxUnits(unit) {
     }
     if (unit.skills.includes('max3')) {
         if (numOf[unit.name] >= 3) {
+            isMax = true;
+        }
+    }
+    if (unit.skills.includes('maxordre')) {
+        if (numOf[unit.name] >= playerInfos.comp.ordre) {
             isMax = true;
         }
     }

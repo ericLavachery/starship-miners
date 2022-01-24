@@ -441,10 +441,12 @@ function bonusCit(citId,toId,number) {
 
 function calcTotalCitoyens(cryoOut) {
     if (cryoOut) {
-        if (playerInfos.bldVM.includes('Unités cryogéniques')) {
-            cryoOut = true;
-        } else {
-            cryoOut = false;
+        cryoOut = false;
+        let cryoBat = getBatByName('Unités cryogéniques');
+        if (Object.keys(cryoBat).length >= 1) {
+            if (!cryoBat.tags.includes('construction')) {
+                cryoOut = true;
+            }
         }
     } else {
         cryoOut = false;

@@ -2233,6 +2233,50 @@
         "deathFx":"S_Explosion02"
     },
     {
+        "id":283,
+        "name":"Cryogénérateur",
+        "pic":"cryogen",
+        "cat":"buildings",
+        "kind":"zero-extraction",
+        "sort":5,
+        "squads":6,
+        "squadSize":1,
+        "crew":3,
+        "hp":130,
+        "armor":6,
+        "size":75,
+        "stealth":12,
+        "speed":-5,
+        "ap":12,
+        "maxSalvo":1,
+        "weapon":{},
+        "weapon2":{},
+        "weapon3":{
+            "name":"Autopistol",
+            "cost":1,
+            "range":3,
+            "rof":18,
+            "accuracy":30,
+            "power":8,
+            "armors":0.5,
+            "aoe":"unit",
+            "sound":"autopistol",
+            "ammo":["standard"]
+        },
+        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "equip":["aucun","w2-autopistol","psol","isophon"],
+        "log3eq":"psol",
+        "moveCost":99,
+        "maxFlood":-1,
+        "maxScarp":-1,
+        "maxVeg":-1,
+        "skills":["fouille","recupcit","crewsave","routes","cryogen","fret","dumper","prefab","noshow"],
+        "mecanoCost":12,
+        "transRes":500,
+        "fuzz":1,
+        "deathFx":"S_Explosion02"
+    },
+    {
         "id":206,
         "name":"Laboratoire",
         "pic":"labo",
@@ -3257,7 +3301,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","crewsave","transport","routes","producteur","fret","dumper","selfbadrepair","badmedic","cible","longshot","fo","prefab","bigflash","max3"],
+        "skills":["fouille","recupcit","crewsave","transport","routes","producteur","fret","dumper","selfbadrepair","badmedic","cible","longshot","fo","prefab","bigflash","maxordre"],
         "mecanoCost":10,
         "mediCost":12,
         "transMaxSize":9,
@@ -3757,7 +3801,8 @@
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
-        "maxVeg":-1
+        "maxVeg":-1,
+        "skills":["recupcit"]
     },
     {
         "id":276,
@@ -3777,7 +3822,8 @@
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
-        "maxVeg":-1
+        "maxVeg":-1,
+        "skills":["recupcit","prodres","upkeep","updisable"]
     },
     {
         "id":277,
@@ -3857,7 +3903,8 @@
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
-        "maxVeg":-1
+        "maxVeg":-1,
+        "skills":["recupcit"]
     },
     {
         "id":281,

@@ -443,6 +443,86 @@ function geoProd(bat,batType) {
     }
 };
 
+function gasProd(bat,batType) {
+    console.log('UPKEEP');
+    console.log(batType.name);
+    let tile = getTileById(bat.tileId);
+    let upkeepPaid = true;
+    if (!playerInfos.onShip && zone[0].planet != 'Horst') {
+        if (batType.upkeep != undefined) {
+            Object.entries(batType.upkeep).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                let conso = value;
+                let dispoRes = getDispoRes(key);
+                if (dispoRes < conso) {
+                    upkeepPaid = false;
+                }
+            });
+            if (upkeepPaid) {
+                Object.entries(batType.upkeep).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    let conso = value;
+                    resSub(key,conso);
+                });
+            } else {
+                upkeepNotPaid(bat,batType);
+            }
+        }
+        if (upkeepPaid) {
+            let planetAir = {};
+            if (zone[0].planet === 'Dom') {
+                planetAir['Oxygène'] = 3;
+                planetAir['Argon'] = 0.1;
+                planetAir['Azote'] = 6;
+            }
+            if (zone[0].planet === 'Sarak') {
+                planetAir['Oxygène'] = 3;
+                planetAir['Argon'] = 0.6;
+                planetAir['Azote'] = 5;
+                planetAir['Hélium'] = 0.5;
+            }
+            if (zone[0].planet === 'Gehenna') {
+                planetAir['Oxygène'] = 2;
+                planetAir['Azote'] = 4;
+                planetAir['Chlore'] = 3;
+                planetAir['Hélium'] = 1;
+            }
+            if (zone[0].planet === 'Kzin') {
+                planetAir['Oxygène'] = 1;
+                planetAir['Argon'] = 2;
+                planetAir['Azote'] = 3;
+                planetAir['Hélium'] = 4;
+            }
+            Object.entries(planetAir).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                let fullProd = value;
+                if (fullProd < 1) {
+                    let prodChance = Math.floor(100*fullProd);
+                    if (rand.rand(1,100) <= prodChance) {
+                        fullProd = 1;
+                    } else {
+                        fullProd = 0;
+                    }
+                } else {
+                    fullProd = Math.round(fullProd);
+                }
+                if (fullProd >= 1) {
+                    resAddToBld(key,fullProd,bat,batType);
+                    if (minedThisTurn[key] === undefined) {
+                        minedThisTurn[key] = fullProd;
+                    } else {
+                        minedThisTurn[key] = minedThisTurn[key]+fullProd;
+                    }
+                    console.log('prod = '+key+':'+fullProd);
+                }
+            });
+        }
+    }
+};
+
 function solarProd(bat,batType,time,sim,quiet) {
     console.log('UPKEEP');
     console.log(batType.name);
@@ -466,7 +546,9 @@ function solarProd(bat,batType,time,sim,quiet) {
                     let key = entry[0];
                     let value = entry[1];
                     let conso = value*time;
-                    modWeekRes(key,0-conso);
+                    if (playerInfos.onShip) {
+                        modWeekRes(key,0-conso);
+                    }
                     if (!sim) {
                         resSub(key,conso);
                     }
@@ -492,7 +574,9 @@ function solarProd(bat,batType,time,sim,quiet) {
             }
             energyProd = energyCreation(energyProd);
             // resAdd('Energie',energyProd);
-            modWeekRes('Energie',energyProd);
+            if (playerInfos.onShip) {
+                modWeekRes('Energie',energyProd);
+            }
             if (!sim) {
                 if (playerInfos.onShip) {
                     resAdd('Energie',energyProd);
@@ -573,7 +657,9 @@ function triProd(bat,batType,time,sim,quiet) {
                 let key = entry[0];
                 let value = entry[1];
                 let conso = value*time;
-                modWeekRes(key,0-conso);
+                if (playerInfos.onShip) {
+                    modWeekRes(key,0-conso);
+                }
                 if (!sim) {
                     resSub(key,conso);
                 }
@@ -620,7 +706,9 @@ function triProd(bat,batType,time,sim,quiet) {
             if (resProd >= 1) {
                 resProd = scrapRecup(resProd);
                 // resAdd(res.name,resProd);
-                modWeekRes(res.name,resProd);
+                if (playerInfos.onShip) {
+                    modWeekRes(res.name,resProd);
+                }
                 if (!sim) {
                     if (playerInfos.onShip) {
                         resAdd(res.name,resProd);
@@ -642,9 +730,8 @@ function triProd(bat,batType,time,sim,quiet) {
     }
     if (playerInfos.onShip) {
         if (!quiet) {
-
+            warning(batType.name,message,true);
         }
-        warning(batType.name,message,true);
     }
 };
 
@@ -687,7 +774,9 @@ function upkeepAndProd(bat,batType,time,sim,quiet) {
                     } else {
                         conso = Math.ceil(conso);
                     }
-                    modWeekRes(key,0-conso);
+                    if (playerInfos.onShip) {
+                        modWeekRes(key,0-conso);
+                    }
                     if (!sim) {
                         resSub(key,conso);
                     }
@@ -734,7 +823,9 @@ function upkeepAndProd(bat,batType,time,sim,quiet) {
                             }
                         }
                         // resAdd(key,fullProd);
-                        modWeekRes(key,fullProd);
+                        if (playerInfos.onShip) {
+                            modWeekRes(key,fullProd);
+                        }
                         if (!sim) {
                             if (playerInfos.onShip) {
                                 resAdd(key,fullProd);

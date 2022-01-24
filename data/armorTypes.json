@@ -580,7 +580,7 @@
         "compReq":{"train":1,"log":2},
         "autoComp":["cam",1],
         "factor":"crew",
-        "costs":{"Blendium":12,"Tissus":12},
+        "costs":{"Blendium":8,"Tissus":12},
         "deploy":{"Végétaux":12}
     },
     {
@@ -742,7 +742,7 @@
         "compReq":{"log":1,"ordre":2},
         "autoComp":[],
         "factor":"crew",
-        "costs":{"Blendium":12,"Tissus":12,"Scrap":6,"Carbone":6,"Fer":3}
+        "costs":{"Blendium":8,"Tissus":12,"Scrap":6,"Carbone":6,"Fer":3}
     },
     {
         "name":"crimekitlu",
@@ -753,7 +753,7 @@
         "compReq":{"log":1,"ordre":2},
         "autoComp":[],
         "factor":"crew",
-        "costs":{"Blendium":12,"Tissus":12,"Scrap":3,"Silicium":6,"Carbone":6}
+        "costs":{"Blendium":8,"Tissus":12,"Scrap":3,"Silicium":6,"Carbone":6}
     },
     {
         "name":"crimekitgi",
@@ -764,7 +764,7 @@
         "compReq":{"log":1,"ordre":2},
         "autoComp":[],
         "factor":"crew",
-        "costs":{"Blendium":12,"Tissus":15,"Scrap":6,"Carbone":6,"Fer":3}
+        "costs":{"Blendium":8,"Tissus":15,"Scrap":6,"Carbone":6,"Fer":3}
     },
     {
         "name":"crimekitto",

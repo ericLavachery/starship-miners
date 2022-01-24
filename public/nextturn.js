@@ -334,6 +334,9 @@ function nextTurnEnd() {
                 if (batType.skills.includes('solar') && bat.tags.includes('prodres') && bat.apLeft >= 0) {
                     solarProd(bat,batType,1,false,false);
                 }
+                if (batType.skills.includes('cryogen') && bat.tags.includes('prodres') && bat.apLeft >= 0) {
+                    gasProd(bat,batType);
+                }
                 if (batType.skills.includes('transcrap') && bat.tags.includes('prodres') && bat.apLeft >= 10) {
                     triProd(bat,batType,1,false,false);
                 }

@@ -1521,7 +1521,7 @@ function skillsInfos(bat,batType,near) {
         apCost = 0;
         $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Coûts: '+upkeepCosts+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Activé</'+balise+'></span>');
     } else {
-        if (batType.skills.includes('prodres') || batType.skills.includes('geo') || batType.skills.includes('solar') || batType.skills.includes('dogprod') || batType.skills.includes('transcrap')) {
+        if (batType.skills.includes('prodres') || batType.skills.includes('geo') || batType.skills.includes('solar') || batType.skills.includes('dogprod') || batType.skills.includes('transcrap') || batType.skills.includes('cryogen') || batType.skills.includes('cryocit')) {
             balise = 'h1';
             boutonNope = 'boutonGris';
             colorNope = 'gf';
