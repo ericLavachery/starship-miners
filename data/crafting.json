@@ -560,9 +560,49 @@
         "bg":"#2a2810"
     },
     {
+        "id":5,
+        "result":"Fuel",
+        "cost":{"Hydrocarbure":18},
+        "compReq":{},
+        "bldReq":["Chaîne de montage"],
+        "batch":10,
+        "creaNum":160,
+        "bg":"#2a2810"
+    },
+    {
+        "id":154,
+        "result":"Fuel",
+        "cost":{"Hydrocarbure":17},
+        "compReq":{"ind":1},
+        "bldReq":["Chaîne de montage"],
+        "batch":10,
+        "creaNum":200,
+        "bg":"#2a2810"
+    },
+    {
+        "id":63,
+        "result":"Fuel",
+        "cost":{"Hydrocarbure":16},
+        "compReq":{"ind":1},
+        "bldReq":["Usine"],
+        "batch":10,
+        "creaNum":300,
+        "bg":"#2a2810"
+    },
+    {
+        "id":155,
+        "result":"Fuel",
+        "cost":{"Hydrocarbure":15},
+        "compReq":{"ind":2},
+        "bldReq":["Usine"],
+        "batch":10,
+        "creaNum":500,
+        "bg":"#2a2810"
+    },
+    {
         "id":21,
         "result":"Fuel",
-        "cost":{"Hydrocarbure":10,"Huile":4},
+        "cost":{"Hydrocarbure":10,"Huile":3},
         "compReq":{"pyro":3},
         "bldReq":["Atelier"],
         "batch":10,
@@ -580,16 +620,6 @@
         "bg":"#2a2810"
     },
     {
-        "id":5,
-        "result":"Fuel",
-        "cost":{"Hydrocarbure":18},
-        "compReq":{},
-        "bldReq":["Chaîne de montage"],
-        "batch":10,
-        "creaNum":160,
-        "bg":"#2a2810"
-    },
-    {
         "id":22,
         "result":"Fuel",
         "cost":{"Carbone":12,"Hydrogène":4},
@@ -600,33 +630,34 @@
         "bg":"#2a2810"
     },
     {
-        "id":63,
+        "id":23,
         "result":"Fuel",
-        "cost":{"Hydrocarbure":16},
-        "compReq":{"ind":2},
-        "bldReq":["Usine"],
+        "cost":{"Végétaux":75},
+        "compReq":{"tri":3},
+        "bldReq":["Recyclab"],
         "batch":10,
-        "creaNum":300,
+        "creaNum":100,
         "bg":"#2a2810"
     },
     {
-        "id":23,
+        "id":153,
         "result":"Fuel",
-        "cost":{"Végétaux":30,"Hydrogène":3},
-        "compReq":{"exo":1,"ind":2},
-        "bldReq":["Usine"],
+        "cost":{"Végétaux":75},
+        "compReq":{"tri":1},
+        "gangReq":["brasier"],
+        "bldReq":["Laboratoire"],
         "batch":10,
-        "creaNum":300,
+        "creaNum":160,
         "bg":"#2a2810"
     },
     {
         "id":107,
         "result":"Fuel",
-        "cost":{"Pyratol":2,"Eau":8},
+        "cost":{"Pyrus":2,"Eau":8},
         "compReq":{"pyro":3},
-        "bldReq":["Chaîne de montage"],
+        "bldReq":["Laboratoire"],
         "batch":10,
-        "creaNum":200,
+        "creaNum":160,
         "bg":"#2a2810"
     },
     {

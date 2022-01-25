@@ -176,6 +176,9 @@ let sondeCount = 'cy';
 let homeCount = 'cy';
 let apoCount = 435;
 let stressLevels = [5,15,35,100]; // stress,freeze,fear,terror
+let teleCost = {};
+teleCost['Energie'] = 50;
+teleCost['Plastanium'] = 10;
 // ALIENS
 let isFFW = false;
 let pointDeMire = 1830; // tileId

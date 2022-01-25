@@ -2488,11 +2488,11 @@
     {
         "id":284,
         "name":"Télépod",
-        "levels":{"rednecks":13,"blades":13,"bulbos":13,"drogmulojs":13,"tiradores":13,"detruas":13,"brasier":13},
+        "levels":{"rednecks":13,"blades":13,"bulbos":11,"drogmulojs":12,"tiradores":13,"detruas":13,"brasier":13},
         "bldReq":["Centrale SMR"],
         "compReq":{"tele":1},
-        "costs":{"Compo1":455,"Compo2":145,"Eau":18,"Batteries":50},
-        "fabTime":100,
+        "costs":{"Compo1":455,"Compo2":145,"Eau":18,"Végétaux":150,"Blendium":50,"Carbone":150,"Platine":200,"Titane":100,"Plastanium":75,"Cuivre":150,"Electros":300,"Batteries":150,"Energie":750},
+        "fabTime":55,
         "slots":0
     },
     {

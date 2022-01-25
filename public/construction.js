@@ -707,17 +707,22 @@ function checkUnitCompReq(unit,forGangList) {
     return compReqOK;
 };
 
-function checkCompReq(batEquip) {
+function checkCompReq(stuff) {
     let compReqOK = true;
-    if (batEquip.compReq != undefined) {
-        if (Object.keys(batEquip.compReq).length >= 1) {
-            Object.entries(batEquip.compReq).map(entry => {
+    if (stuff.compReq != undefined) {
+        if (Object.keys(stuff.compReq).length >= 1) {
+            Object.entries(stuff.compReq).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
                 if (playerInfos.comp[key] < value) {
                     compReqOK = false;
                 }
             });
+        }
+    }
+    if (stuff.gangReq != undefined) {
+        if (!stuff.gangReq.includes(playerInfos.gang)) {
+            compReqOK = false;
         }
     }
     return compReqOK;

@@ -560,6 +560,43 @@ function debarquement(debId) {
     showBatInfos(selectedBat);
 };
 
+function checkBatTeleport(podBat,teleBat,tileId) {
+    let teleStats = {};
+    teleStats.ok = false;
+    teleStats.message = '';
+    if (playerInfos.comp.tele >= 2) {
+        let inBat = getBatByTypeIdAndTileId(284,tileId);
+        let inBatType = getBatType(inBat);
+        let podBatType = getBatType(podBat);
+        let teleBatType = getBatType(teleBat);
+        if (podBatType.skills.includes('teleport')) {
+            if (inBatType.skills.includes('teleport')) {
+                if (teleBatType.cat === 'infantry' || teleBatType.skills.includes('robot')) {
+                    if (teleBatType.size <= 5) {
+                        let teleCostOK = checkCost(teleCost);
+                        if (teleCostOK) {
+                            teleStats.ok = true;
+                        } else {
+                            teleStats.message = "Vous n'avez pas les ressources pour téléporter ce bataillon";
+                        }
+                    } else {
+                        teleStats.message = "Vous ne pouvez pas téléporter ce type de bataillon";
+                    }
+                } else {
+                    teleStats.message = "Vous ne pouvez pas téléporter ce type de bataillon";
+                }
+            } else {
+                teleStats.message = "Vous ne pouvez pas téléporter vers de ce bâtiment";
+            }
+        } else {
+            teleStats.message = "Vous ne pouvez pas téléporter à partir de ce bâtiment";
+        }
+    } else {
+        teleStats.message = "Vous n'avez pas les compétence pour téléporter des bataillons'";
+    }
+    return teleStats;
+};
+
 function clickDebarq(tileId) {
     let tileOK = false;
     let ownBatHere = false;
@@ -593,12 +630,22 @@ function clickDebarq(tileId) {
         }
     });
     let distance = calcDistance(selectedBat.tileId,tileId);
-    if ((distance <= 1 || playerInfos.onShip) && !ownBatHere && (terrainAccess(batDebarq.id,tileId) || batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') && !alienOccupiedTiles.includes(tileId)) {
+    let teleStats = {};
+    teleStats.ok = false;
+    teleStats.message = '';
+    if (distance > 1) {
+        teleStats = checkBatTeleport(selectedBat,batDebarq,tileId);
+    }
+    if ((distance <= 1 || playerInfos.onShip || teleStats.ok) && !ownBatHere && ((terrainAccess(batDebarq.id,tileId || teleStats.ok)) || batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') && !alienOccupiedTiles.includes(tileId)) {
         tileOK = true;
     } else {
         batDebarq = {};
         showBatInfos(selectedBat);
-        warning('Débarquement avorté','Vous ne pouvez pas débarquer ce bataillon à cet endroit. '+message);
+        if (teleStats.message != '') {
+            warning('Téléportation avortée',teleStats.message);
+        } else {
+            warning('Débarquement avorté','Vous ne pouvez pas débarquer ce bataillon à cet endroit. '+message+teleStats.message);
+        }
     }
     if (tileOK) {
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
@@ -649,6 +696,9 @@ function clickDebarq(tileId) {
         moveInfos(selectedBat,false);
         showBatInfos(selectedBat);
         showTileInfos(selectedBat.tileId);
+        if (teleStats.ok) {
+            payCost(teleCost);
+        }
         batDebarq = {};
     }
 };

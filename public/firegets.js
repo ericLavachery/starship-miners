@@ -1688,9 +1688,7 @@ function weaponAdj(weapon,bat,wn) {
                 thisWeapon.noise = thisWeapon.noise+1;
             }
             if (!batType.skills.includes('fly') && bat.eq != 'e-jetpack' && bat.logeq != 'e-jetpack') {
-                if (thisWeapon.range === 0) {
-                    thisWeapon.range = 1;
-                }
+                thisWeapon.range = thisWeapon.range+1;
                 thisWeapon.elevation = thisWeapon.elevation+1;
             } else {
                 thisWeapon.range = 2;
@@ -1738,9 +1736,7 @@ function weaponAdj(weapon,bat,wn) {
                 thisWeapon.noise = thisWeapon.noise+1;
             }
             if (!batType.skills.includes('fly') && bat.eq != 'e-jetpack' && bat.logeq != 'e-jetpack') {
-                if (thisWeapon.range === 0) {
-                    thisWeapon.range = 1;
-                }
+                thisWeapon.range = thisWeapon.range+1;
                 thisWeapon.elevation = thisWeapon.elevation+1;
             } else {
                 thisWeapon.range = 2;

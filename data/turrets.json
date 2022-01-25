@@ -380,7 +380,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","transorbital","ravitaillement","stock","transport","longshot","extraction","survivor","mecano","repair","medic","fret","bastion","dumper","routes","phare","producteur","accu","recupcit","recupres","noblub","reeq","lowstress","infrahelp","control"],
+        "skills":["fouille","transorbital","ravitaillement","stock","transport","longshot","extraction","survivor","mecano","repair","medic","fret","bastion","dumper","routes","phare","producteur","accu","recupcit","recupres","noblub","reeq","lowstress","infrahelp","control","teleport"],
         "mediCost":5,
         "mecanoCost":5,
         "mining":{
@@ -564,7 +564,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","bastion","dumper","routes","phare","gooddef","producteur","accu","recupcit","recupres","noblub","reeq","lowstress","infrahelp","control"],
+        "skills":["fouille","transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","bastion","dumper","routes","phare","gooddef","producteur","accu","recupcit","recupres","noblub","reeq","lowstress","infrahelp","control","teleport"],
         "mediCost":6,
         "mecanoCost":6,
         "transMaxSize":55,

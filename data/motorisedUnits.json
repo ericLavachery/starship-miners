@@ -1959,7 +1959,7 @@
             "noDef":true,
             "noise":1,
             "rof":12,
-            "accuracy":12,
+            "accuracy":13,
             "power":8,
             "aoe":"squad",
             "sound":"grenade",

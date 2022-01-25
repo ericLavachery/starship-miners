@@ -26,6 +26,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.vmRes === undefined) {
         playerInfos.vmRes = {};
     }
+    if (playerInfos.teleRes === undefined) {
+        playerInfos.teleRes = {};
+    }
     if (playerInfos.reserve === undefined) {
         playerInfos.reserve = {};
     }

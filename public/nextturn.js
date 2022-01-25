@@ -309,7 +309,7 @@ function nextTurnEnd() {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
                         if (Object.keys(fromBat).length >= 1) {
-                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
+                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1 || checkResTeleport(bat,fromBat)) {
                                 autoResLoad(bat,fromBat);
                             }
                         }
@@ -352,7 +352,7 @@ function nextTurnEnd() {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
                         if (Object.keys(fromBat).length >= 1) {
-                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
+                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1 || checkResTeleport(bat,fromBat)) {
                                 autoResLoad(bat,fromBat);
                             }
                         }
@@ -412,7 +412,7 @@ function nextTurnEnd() {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
                         if (Object.keys(fromBat).length >= 1) {
-                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
+                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1 || checkResTeleport(bat,fromBat)) {
                                 autoResLoad(bat,fromBat);
                             }
                         }
@@ -583,7 +583,7 @@ function nextTurnEnd() {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
                         if (Object.keys(fromBat).length >= 1) {
-                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
+                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1 || checkResTeleport(bat,fromBat)) {
                                 autoResLoad(bat,fromBat);
                             }
                         }
@@ -600,7 +600,7 @@ function nextTurnEnd() {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
                         if (Object.keys(fromBat).length >= 1) {
-                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1) {
+                            if (calcDistance(bat.tileId,fromBat.tileId) <= 1 || checkResTeleport(bat,fromBat)) {
                                 autoResLoad(bat,fromBat);
                             }
                         }

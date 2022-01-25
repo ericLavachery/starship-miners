@@ -66,7 +66,11 @@ function loadRes(retour) {
                 batType = getBatType(bat);
                 if (batType.skills.includes('fret')) {
                     distance = calcDistance(bat.tileId,selectedBat.tileId);
-                    if (distance <= 1 || selectedBatType.name === 'Soute') {
+                    let teleOK = false;
+                    if (distance > 1) {
+                        teleOK = checkResTeleport(selectedBat,bat);
+                    }
+                    if (distance <= 1 || selectedBatType.name === 'Soute' || teleOK) {
                         let seeMe = true;
                         if (batType.skills.includes('transorbital') && !seeLandersFret && !playerInfos.onShip) {
                             seeMe = false;
@@ -129,11 +133,6 @@ function loadRes(retour) {
                                         let value = entry[1];
                                         res = getResByName(key);
                                         resOK = true;
-                                        // if (key === 'Energie') {
-                                        //     if (!selectedBatType.skills.includes('accu')) {
-                                        //         resOK = false;
-                                        //     }
-                                        // }
                                         if (resOK) {
                                             if (restSpace >= value) {
                                                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle"></i></span>');
@@ -160,6 +159,20 @@ function loadRes(retour) {
     if (!retour) {
         $("#conUnitList").animate({scrollTop:0},"fast");
     }
+};
+
+function checkResTeleport(inBat,outBat) {
+    // console.log('CHECK TELEPORT');
+    let teleOK = false;
+    if (playerInfos.comp.tele >= 1) {
+        let inBatType = getBatType(inBat);
+        let outBatType = getBatType(outBat);
+        if (inBatType.skills.includes('teleport') && outBatType.skills.includes('teleport')) {
+            teleOK = true;
+        }
+    }
+    // console.log(teleOK);
+    return teleOK;
 };
 
 function seeAllTrans(seeAll) {
@@ -212,7 +225,7 @@ function resMaxLoad(batId,addAutoLoad) {
         let value = entry[1];
         let resOK = true;
         resSpace = checkResSpace(selectedBat);
-        if (value >= 1 && resOK) {
+        if (value >= 1 && resOK && resSpace >= 1) {
             if (resSpace >= value) {
                 if (selectedBat.transRes[key] === undefined) {
                     selectedBat.transRes[key] = value;
@@ -255,32 +268,30 @@ function resMaxLoad(batId,addAutoLoad) {
 
 function autoResLoad(toBat,fromBat) {
     let toBatType = getBatType(toBat);
-    if (toBatType.cat === 'buildings' || toBatType.cat === 'devices') {
-
-    }
     if (Object.keys(fromBat).length >= 1) {
         let resSpace = checkResSpace(toBat);
         let resLoad = checkResLoad(fromBat);
         Object.entries(fromBat.transRes).map(entry => {
             let key = entry[0];
             let value = entry[1];
-            let resOK = true;
-            if (value >= 1 && resOK) {
+            if (value >= 1) {
                 resSpace = checkResSpace(toBat);
-                if (resSpace >= value) {
-                    if (toBat.transRes[key] === undefined) {
-                        toBat.transRes[key] = value;
+                if (resSpace >= 1) {
+                    if (resSpace >= value) {
+                        if (toBat.transRes[key] === undefined) {
+                            toBat.transRes[key] = value;
+                        } else {
+                            toBat.transRes[key] = toBat.transRes[key]+value;
+                        }
+                        delete fromBat.transRes[key];
                     } else {
-                        toBat.transRes[key] = toBat.transRes[key]+value;
+                        if (toBat.transRes[key] === undefined) {
+                            toBat.transRes[key] = resSpace;
+                        } else {
+                            toBat.transRes[key] = toBat.transRes[key]+resSpace;
+                        }
+                        fromBat.transRes[key] = fromBat.transRes[key]-resSpace;
                     }
-                    delete fromBat.transRes[key];
-                } else {
-                    if (toBat.transRes[key] === undefined) {
-                        toBat.transRes[key] = resSpace;
-                    } else {
-                        toBat.transRes[key] = toBat.transRes[key]+resSpace;
-                    }
-                    fromBat.transRes[key] = fromBat.transRes[key]-resSpace;
                 }
             }
         });

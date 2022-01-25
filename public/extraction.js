@@ -350,9 +350,6 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
             } else {
                 resRate = Math.ceil(resRate/3);
             }
-            if (gangsBonus && playerInfos.gang === 'brasier' && res.name === 'Hydrocarbure') {
-                resRate = Math.ceil(resRate*1.5);
-            }
         } else {
             resRate = 0;
         }
@@ -366,12 +363,6 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
         } else if (res.level >= 3) {
             resRate = Math.ceil(resRate/2);
         }
-    }
-    if (gangsBonus && playerInfos.gang === 'rednecks' && res.bld != 'Comptoir') {
-        resRate = Math.ceil(resRate*1.05);
-    }
-    if (gangsBonus && playerInfos.gang === 'blades' && res.bld === 'Comptoir') {
-        resRate = Math.ceil(resRate*1.1);
     }
     if (value <= 0) {
         resRate = 0;
