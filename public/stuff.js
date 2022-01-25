@@ -505,7 +505,9 @@ function maxUnits(unit) {
         if (playerInfos.onShip) {
             let maxSci = 1;
             if (playerInfos.gang === 'bulbos') {
-                maxSci = maxSci+1;
+                maxSci = maxSci+Math.floor(playerInfos.comp.det/2.5);
+            } else {
+                maxSci = maxSci+Math.floor(playerInfos.comp.det/5);
             }
             if (playerInfos.bldVM.includes('Centre de recherches')) {
                 maxSci = maxSci+2;

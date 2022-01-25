@@ -516,6 +516,13 @@ function calcCrimeRate(mesCitoyens) {
         }
         if (batType.name === 'Dortoirs') {
             crimeRate.lits = crimeRate.lits+500;
+            if (bat.eq === 'mezzanine') {
+                crimeRate.lits = crimeRate.lits+350;
+                crimeRate.penib = crimeRate.penib+1;
+            }
+            if (bat.eq === 'confort') {
+                crimeRate.penib = crimeRate.penib-1;
+            }
         }
         if (batType.name === 'Cabines') {
             crimeRate.lits = crimeRate.lits+350;
@@ -526,7 +533,7 @@ function calcCrimeRate(mesCitoyens) {
         if (batType.crime != undefined || bat.eq === 'camkit') {
             let countMe = false;
             if (batType.cat === 'buildings') {
-                if (batType.name === 'Prisons' || batType.name === 'Cabines' || batType.name === 'Ascenceur' || (batType.crime >= 1 && bat.eq != 'confort')) {
+                if (batType.name === 'Prisons' || batType.name === 'Cabines' || batType.name === 'Ascenceur' || batType.crime >= 1) {
                     countMe = true;
                 } else {
                     if (!bldIds.includes(batType.id)) {

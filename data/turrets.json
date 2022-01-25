@@ -52,7 +52,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","transorbital","ravitaillement","stock","transport","longshot","mecano","badmedic","fret","bastion","dumper","routes","phare","producteur","accu","recupcit","recupres","noblub","reeq"],
+        "skills":["fouille","transorbital","ravitaillement","stock","transport","longshot","mecano","badmedic","fret","bastion","dumper","routes","phare","producteur","accu","recupcit","recupres","noblub","reeq","infrahelp"],
         "mediCost":9,
         "mecanoCost":9,
         "transMaxSize":30,

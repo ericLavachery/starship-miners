@@ -420,7 +420,7 @@ function geoProd(bat,batType) {
         energyProd = energyCreation(energyProd);
         if (energyProd >= 200) {
             energyProd = Math.ceil(energyProd/100);
-            resAddToBld('Energons',energyProd,bat,batType);
+            resAddToBld('Energons',energyProd,bat,batType,false);
             if (!playerInfos.onShip) {
                 if (minedThisTurn['Energons'] === undefined) {
                     minedThisTurn['Energons'] = energyProd;
@@ -430,7 +430,7 @@ function geoProd(bat,batType) {
             }
         } else {
             energyProd = Math.ceil(energyProd/10);
-            resAddToBld('Energie',energyProd,bat,batType);
+            resAddToBld('Energie',energyProd,bat,batType,false);
             if (!playerInfos.onShip) {
                 if (minedThisTurn['Energie'] === undefined) {
                     minedThisTurn['Energie'] = energyProd;
@@ -510,7 +510,7 @@ function gasProd(bat,batType) {
                     fullProd = Math.round(fullProd);
                 }
                 if (fullProd >= 1) {
-                    resAddToBld(key,fullProd,bat,batType);
+                    resAddToBld(key,fullProd,bat,batType,false);
                     if (minedThisTurn[key] === undefined) {
                         minedThisTurn[key] = fullProd;
                     } else {
@@ -581,7 +581,7 @@ function solarProd(bat,batType,time,sim,quiet) {
                 if (playerInfos.onShip) {
                     resAdd('Energie',energyProd);
                 } else {
-                    resAddToBld('Energie',energyProd,bat,batType);
+                    resAddToBld('Energie',energyProd,bat,batType,false);
                 }
             }
             message = message+'Energie:<span class="vert">+'+energyProd+'</span><br>';
@@ -623,7 +623,7 @@ function solarPanel(bat,batType,sim) {
         if (playerInfos.onShip) {
             resAdd('Energie',energyProd);
         } else {
-            resAddToBld('Energie',energyProd,bat,batType);
+            resAddToBld('Energie',energyProd,bat,batType,false);
         }
         if (!playerInfos.onShip) {
             if (minedThisTurn['Energie'] === undefined) {
@@ -713,7 +713,7 @@ function triProd(bat,batType,time,sim,quiet) {
                     if (playerInfos.onShip) {
                         resAdd(res.name,resProd);
                     } else {
-                        resAddToBld(res.name,resProd,bat,batType);
+                        resAddToBld(res.name,resProd,bat,batType,false);
                     }
                 }
                 message = message+res.name+':<span class="vert">+'+resProd+'</span><br>';
@@ -830,7 +830,7 @@ function upkeepAndProd(bat,batType,time,sim,quiet) {
                             if (playerInfos.onShip) {
                                 resAdd(key,fullProd);
                             } else {
-                                resAddToBld(key,fullProd,bat,batType);
+                                resAddToBld(key,fullProd,bat,batType,false);
                             }
                         }
                         message = message+key+':<span class="vert">+'+fullProd+'</span><br>';

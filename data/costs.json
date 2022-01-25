@@ -2283,6 +2283,7 @@
         "id":150,
         "name":"Infirmerie",
         "bldUp":"Hôpital",
+        "compReq":{"med":1},
         "costs":{"Compo1":115,"Eau":24,"Drogues":50,"Tissus":50,"Aluminium":30,"Calcium":25,"Or":10,"Silicium":25,"Oxygène":25,"Chlore":50,"Energie":40},
         "fabTime":20,
         "crime":-3,
@@ -2304,7 +2305,7 @@
         "id":194,
         "name":"Poste radio",
         "bldUp":"Centre de com",
-        "upkeep":{"Energie":2},
+        "upkeep":{"Energie":1},
         "costs":{"Compo1":130,"Compo2":20,"Eau":12,"Energie":60,"Cuivre":50,"Electros":15,"Batteries":10},
         "fabTime":25,
         "slots":1
@@ -2315,6 +2316,7 @@
         "bldEquiv":["Poste radio"],
         "bldUp":"QG",
         "bldCost":"Poste radio",
+        "compReq":{"det":1},
         "upkeep":{"Energie":7},
         "prod":{"Scrap":1},
         "costs":{"Compo1":240,"Compo2":135,"Compo3":90,"Eau":36,"Energie":400,"Cobalt":750,"Cuivre":3000,"Platine":500,"Silicium":750,"Oxygène":300,"Hélium":500,"Electros":600,"Batteries":150},
@@ -2357,6 +2359,7 @@
         "name":"Recyclab",
         "bldEquiv":["Décharge","Centre de tri"],
         "bldCost":"Centre de tri",
+        "compReq":{"tri":1},
         "upkeep":{"Energie":8,"Eau":4,"Scrap":50},
         "costs":{"Compo1":380,"Compo2":220,"Compo3":150,"Eau":5000,"Fer":750,"Energie":1200,"Platine":500,"Bore":2000,"Chlore":1000,"Argon":750,"Electros":250,"Batteries":180},
         "fabTime":350,
@@ -2366,7 +2369,7 @@
         "id":283,
         "name":"Cryogénérateur",
         "upkeep":{"Energie":12},
-        "costs":{"Compo1":200,"Eau":18,"Hélium":300,"Carbone":50,"Fer":50,"Titane":25,"Moteurs":10,"Cuivre":25,"Electros":10,"Batteries":10},
+        "costs":{"Compo1":200,"Eau":18,"Hélium":300,"Carbone":75,"Fer":75,"Titane":35,"Moteurs":10,"Cuivre":25,"Electros":35,"Batteries":10},
         "fabTime":75,
         "slots":1
     },
@@ -2385,6 +2388,7 @@
         "name":"Centre de recherches",
         "bldEquiv":["Laboratoire"],
         "bldCost":"Laboratoire",
+        "compReq":{"det":1,"ca":1},
         "upkeep":{"Energie":12,"Eau":7,"Végétaux":6,"Huile":2.5,"Cuivre":1,"Carbone":1,"Cobalt":0.5},
         "prod":{"Drogues":4,"Electros":1,"Scrap":5},
         "costs":{"Compo1":310,"Compo2":280,"Compo3":290,"Eau":1500,"Energie":2400,"Huile":1500,"Carbone":2000,"Phosphore":1500,"Calcium":1000,"Or":1500,"Platine":1500,"Silicium":750,"Zinc":1500,"Bore":1500,"Chlore":2000,"Argon":2000,"Hélium":750,"Atium":250,"Germium":150,"Mephitis":150,"Bossium":75,"Electros":1000,"Batteries":300},
@@ -2482,6 +2486,16 @@
         "slots":0
     },
     {
+        "id":284,
+        "name":"Télépod",
+        "levels":{"rednecks":13,"blades":13,"bulbos":13,"drogmulojs":13,"tiradores":13,"detruas":13,"brasier":13},
+        "bldReq":["Centrale SMR"],
+        "compReq":{"tele":1},
+        "costs":{"Compo1":455,"Compo2":145,"Eau":18,"Batteries":50},
+        "fabTime":100,
+        "slots":0
+    },
+    {
         "id":215,
         "name":"Bar",
         "costs":{"Compo1":115,"Eau":50,"Huile":15,"Carbone":25,"Fruits":50},
@@ -2537,7 +2551,7 @@
     {
         "id":201,
         "name":"Camp d'entraînement",
-        "upkeep":{"Energie":5,"Munitions":5,"Fer":5,"Bois":10},
+        "upkeep":{"Energie":1,"Munitions":5,"Fer":5,"Bois":10},
         "prod":{"Scrap":5},
         "costs":{"Compo1":285,"Compo2":165,"Compo3":55,"Eau":300,"Energie":200,"Aluminium":120,"Fer":1200,"Bois":1200,"Munitions":1200,"Explosifs":300,"Végétaux":1200,"Calcium":150,"Or":30,"Drogues":150,"Chlore":150,"Batteries":80},
         "fabTime":250,
@@ -2556,7 +2570,7 @@
         "id":233,
         "name":"Cabines",
         "bldReq":["Soute"],
-        "costs":{"Eau":350,"Scrap":175,"Tissus":700,"Carbone":175,"Compo1":350,"Bois":350,"Batteries":35},
+        "costs":{"Eau":350,"Scrap":175,"Tissus":350,"Carbone":175,"Compo1":350,"Bois":350,"Batteries":35},
         "fabTime":50,
         "crime":-1,
         "slots":1
@@ -2565,7 +2579,7 @@
         "id":234,
         "name":"Appartements",
         "bldReq":["Soute"],
-        "costs":{"Eau":375,"Tissus":750,"Carbone":300,"Compo1":375,"Bois":300,"Cuivre":200,"Electros":25,"Batteries":75},
+        "costs":{"Eau":375,"Tissus":375,"Carbone":300,"Compo1":375,"Bois":300,"Cuivre":200,"Electros":25,"Batteries":75},
         "fabTime":75,
         "crime":3,
         "slots":1

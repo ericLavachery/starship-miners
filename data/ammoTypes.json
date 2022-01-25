@@ -2827,7 +2827,7 @@
         "apdamage": 0,
         "aoe": "squad",
         "info": "Incendiaire",
-        "deploy":{"Scrap":3,"Fuel":7},
+        "deploy":{"Scrap":3,"Fuel":2},
         "batch":100
     },
     {
@@ -2843,7 +2843,7 @@
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
         "compReq":{"pyro":2,"ca":2},
-        "deploy":{"Scrap":3,"Fuel":5,"Slime":3,"Phosphore":2,"Huile":2},
+        "deploy":{"Scrap":3,"Fuel":2,"Slime":3,"Phosphore":2,"Huile":2},
         "batch":100
     },
     {
@@ -2859,7 +2859,7 @@
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
         "compReq":{"pyro":3},
-        "deploy":{"Scrap":3,"Fuel":6,"Pyratol":3,"Potassium":1,"Huile":1},
+        "deploy":{"Scrap":3,"Fuel":2,"Pyratol":3,"Potassium":1,"Huile":1},
         "batch":100
     },
     {
@@ -2874,7 +2874,7 @@
         "aoe": "squad",
         "info": "Incendiaire",
         "compReq":{"pyro":1},
-        "deploy":{"Fuel":8},
+        "deploy":{"Fuel":4},
         "batch":100
     },
     {
@@ -2890,7 +2890,7 @@
         "info": "Incendiaire",
         "bldReq":["Atelier"],
         "compReq":{"pyro":1,"ca":1},
-        "deploy":{"Fuel":7,"Potassium":2,"Larvium":2},
+        "deploy":{"Fuel":3,"Potassium":2,"Larvium":2},
         "batch":100
     },
     {
@@ -2906,7 +2906,7 @@
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
         "compReq":{"pyro":2,"ca":2},
-        "deploy":{"Fuel":6,"Huile":3,"Slime":3},
+        "deploy":{"Fuel":3,"Huile":3,"Slime":3},
         "batch":100
     },
     {
@@ -2922,7 +2922,7 @@
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
         "compReq":{"pyro":3},
-        "deploy":{"Fuel":7,"Potassium":2,"Pyratol":2},
+        "deploy":{"Fuel":3,"Potassium":2,"Pyratol":2},
         "batch":100
     },
     {
@@ -2938,7 +2938,7 @@
         "info": "Incendiaire",
         "bldReq":["Centre de recherches"],
         "compReq":{"pyro":3},
-        "deploy":{"Fuel":6,"Huile":2,"Phosphore":2,"Uridium":2,"Germium":1},
+        "deploy":{"Fuel":3,"Huile":2,"Phosphore":2,"Uridium":2,"Germium":1},
         "batch":100
     },
     {

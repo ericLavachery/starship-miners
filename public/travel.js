@@ -6,6 +6,8 @@ function startMission() {
     if (playerInfos.okFill) {
         saveGame();
         events(false,65,true,true);
+        // noter les ressouces de la station
+        updateVMRes();
         playerInfos.undarkOnce = [];
         batUnselect();
         // créer db batsInSpace, avec les landers marqués deploy=true et toutes les unités qui sont dedans
@@ -32,6 +34,22 @@ function startMission() {
     } else {
         warning('Ressources','Vous ne voulez pas partir sans ressources...')
     }
+};
+
+function updateVMRes() {
+    let souteBat = getBatById(souteId);
+    playerInfos.vmRes = {};
+    Object.entries(souteBat.transRes).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        if (value >= 1) {
+            if (playerInfos.vmRes[key] === undefined) {
+                playerInfos.vmRes[key] = value;
+            } else {
+                playerInfos.vmRes[key] = playerInfos.vmRes[key]+value;
+            }
+        }
+    });
 };
 
 function stopMission() {

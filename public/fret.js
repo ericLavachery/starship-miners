@@ -187,11 +187,6 @@ function resAllLoad(batId) {
         let key = entry[0];
         let value = entry[1];
         let resOK = true;
-        // if (key === 'Energie') {
-        //     if (!selectedBatType.skills.includes('accu')) {
-        //         resOK = false;
-        //     }
-        // }
         if (value >= 1 && resOK) {
             if (selectedBat.transRes[key] === undefined) {
                 selectedBat.transRes[key] = value;
@@ -216,11 +211,6 @@ function resMaxLoad(batId,addAutoLoad) {
         let key = entry[0];
         let value = entry[1];
         let resOK = true;
-        // if (key === 'Energie') {
-        //     if (!selectedBatType.skills.includes('accu')) {
-        //         resOK = false;
-        //     }
-        // }
         resSpace = checkResSpace(selectedBat);
         if (value >= 1 && resOK) {
             if (resSpace >= value) {
@@ -275,11 +265,6 @@ function autoResLoad(toBat,fromBat) {
             let key = entry[0];
             let value = entry[1];
             let resOK = true;
-            // if (key === 'Energie') {
-            //     if (!toBatType.skills.includes('accu')) {
-            //         resOK = false;
-            //     }
-            // }
             if (value >= 1 && resOK) {
                 resSpace = checkResSpace(toBat);
                 if (resSpace >= value) {

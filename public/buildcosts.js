@@ -9,7 +9,9 @@ function voirReserve() {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName or" id="gentils">RESERVE</span><br>');
+    $('#conUnitList').append('<span class="constName or" id="gentils">RESERVE (ZONE)</span><br>');
+    $('#conUnitList').append('<span class="constName"><span class="jaune klik" onclick="voirReserve()">Zone</span> &nbsp;|&nbsp; <span class="jaune klik" onclick="voirReserveStation()">Station</span></span><br>');
+    $('#conUnitList').append('<br>');
     findLanders();
     let dispoCit = getDispoCit();
     $('#conUnitList').append('<span class="paramResName">Citoyens</span><span class="paramIcon"></span><span class="paramResValue cy">'+dispoCit+'</span><br>');
@@ -42,6 +44,48 @@ function voirReserve() {
             $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span>');
         }
         playerInfos.reserve[res.name] = dispoRes;
+    });
+    $('#conUnitList').append('<br><br>');
+    // $("#conUnitList").animate({scrollTop:0},"fast");
+};
+
+function voirReserveStation() {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","800px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
+    $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="constName or" id="gentils">RESERVE (STATION)</span><br>');
+    $('#conUnitList').append('<span class="constName"><span class="jaune klik" onclick="voirReserve()">Zone</span> &nbsp;|&nbsp; <span class="jaune klik" onclick="voirReserve()">Station</span></span><br>');
+    $('#conUnitList').append('<br>');
+    findLanders();
+    let dispoRes;
+    let minedRes;
+    let resIcon;
+    let sortedResTypes = _.sortBy(resTypes,'name');
+    sortedResTypes.forEach(function(res) {
+        dispoRes = getDispoResStation(res.name);
+        minedRes = getMinedRes(res.name);
+        resIcon = getResIcon(res);
+        let resCol = '';
+        if (playerInfos.resFlags.includes(res.name)) {
+            resCol = ' jaune';
+        } else if (res.cat === 'alien') {
+            resCol = ' gff';
+        }
+        if (dispoRes < 0) {
+            dispoRes = 0;
+        }
+        if (res.cat === 'alien' || minedRes <= 0) {
+            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span>');
+        } else {
+            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span>');
+        }
     });
     $('#conUnitList').append('<br><br>');
     // $("#conUnitList").animate({scrollTop:0},"fast");
@@ -732,10 +776,10 @@ function resAdd(resName,number) {
     }
 };
 
-function resAddToBld(resName,number,bat,batType) {
+function resAddToBld(resName,number,bat,batType,over) {
     let res = getResByName(resName);
     let resSpace = checkResSpace(bat);
-    if (resSpace >= 1) {
+    if (resSpace >= 1 || over) {
         if (bat.transRes[resName] === undefined) {
             bat.transRes[resName] = number;
         } else {
@@ -812,6 +856,17 @@ function getDispoRes(resName) {
             dispoRes = dispoRes+bat.transRes[resName];
         }
     });
+    if (playerInfos.alienRes[resName] >= 1) {
+        dispoRes = playerInfos.alienRes[resName];
+    }
+    return dispoRes;
+};
+
+function getDispoResStation(resName) {
+    let dispoRes = 0;
+    if (playerInfos.vmRes[resName] >= 1) {
+        dispoRes = playerInfos.vmRes[resName];
+    }
     if (playerInfos.alienRes[resName] >= 1) {
         dispoRes = playerInfos.alienRes[resName];
     }

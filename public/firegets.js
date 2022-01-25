@@ -497,7 +497,7 @@ function addBodies(bat,batType,cits) {
         unitCits = cits;
     } else {
         unitCits = batType.squads*batType.crew*batType.squadSize;
-        if (batType.skills.includes('clone') || batType.skills.includes('dog')) {
+        if (batType.skills.includes('clone') || batType.skills.includes('dog') || bat.tags.includes('nomove')) {
             unitCits = 0;
         }
         if (batType.id === 126 || batType.id === 225) {

@@ -62,7 +62,7 @@
     {
         "name":"kirin",
         "cat":"drogue",
-        "apCost":3,
+        "apCost":2,
         "bldReq":["Infirmerie"],
         "bldVMReq":["Laboratoire"],
         "compReq":{"ca":2,"med":1},
@@ -89,7 +89,7 @@
     {
         "name":"skupiac",
         "cat":"drogue",
-        "apCost":3,
+        "apCost":1,
         "bldReq":["Bar"],
         "bldVMReq":["Laboratoire"],
         "compReq":{"ca":2,"exo":2},
@@ -98,7 +98,7 @@
     {
         "name":"blaze",
         "cat":"drogue",
-        "apCost":3,
+        "apCost":2,
         "bldReq":["Bar"],
         "bldVMReq":["Centre de recherches"],
         "compReq":{"ca":3,"exo":3},
@@ -107,7 +107,7 @@
     {
         "name":"sila",
         "cat":"drogue",
-        "apCost":3,
+        "apCost":2,
         "bldReq":[],
         "bldVMReq":["Laboratoire"],
         "compReq":{"ca":1,"exo":1},
@@ -808,7 +808,7 @@
         "compReq":{"def":1,"pyro":1},
         "factor":"crew",
         "costs":{"Carbone":6,"Scrap":24,"Aluminium":24,"Moteurs":2,"Nickel":6},
-        "deploy":{"Energie":12,"Fuel":48}
+        "deploy":{"Energie":3,"Fuel":12}
     },
     {
         "name":"kit-garde",
@@ -1335,7 +1335,19 @@
         "compReq":{"const":2},
         "autoComp":[],
         "factor":"one",
-        "costs":{"Tissus":750,"Batteries":40,"Electros":25,"Bois":250,"Compo1":250,"Eau":250},
+        "costs":{"Tissus":250,"Batteries":40,"Electros":25,"Bois":250,"Compo1":250,"Eau":250},
+        "deploy":{}
+    },
+    {
+        "name":"mezzanine",
+        "cat":"equip",
+        "skills":[],
+        "info":"Capacité augmentée",
+        "bldReq":[],
+        "compReq":{"const":1},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Scrap":250,"Tissus":175,"Compo1":50,"Bois":250},
         "deploy":{}
     },
     {
