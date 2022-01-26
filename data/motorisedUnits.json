@@ -2908,7 +2908,7 @@
         "kind":"drogmulojs",
         "squads":3,
         "squadSize":3,
-        "crew":4,
+        "crew":5,
         "hp":105,
         "armor":12,
         "size":33,

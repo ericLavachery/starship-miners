@@ -153,6 +153,37 @@ function loadRes(retour) {
                 }
             }
         });
+        let teleCostOK = checkCost(teleStationCost);
+        if (selectedBatType.skills.includes('teleport')) {
+            $('#conUnitList').append('<hr>');
+            $('#conUnitList').append('<span class="unitPic"><img src="/static/img/units/buildings/station.png" width="48"></span><br>');
+            $('#conUnitList').append('<span class="constName cy">Station <span class="gf"> &mdash; (Téléportation)</span></span><br>');
+            if (playerInfos.comp.tele >= 2 && teleCostOK) {
+                Object.entries(playerInfos.vmRes).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    if (value >= 1 && key != undefined) {
+                        res = getResByName(key);
+                        if (restSpace >= value) {
+                            $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle"></i></span>');
+                        } else {
+                            $('#conUnitList').append('<span class="constIcon"><i class="far fa-times-circle or"></i></span>');
+                        }
+                        if (value > 100 && restSpace >= 100) {
+                            $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="teleportStationRes('+value+','+value+','+res.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span> | <span class="klik" onclick="teleportStationRes('+value+',100,'+res.id+')" title="Charger 100 '+res.name+'">100</span></span><br>');
+                        } else {
+                            $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="teleportStationRes('+value+','+value+','+res.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span></span><br>');
+                        }
+                    }
+                });
+            } else {
+                if (playerInfos.comp.tele < 2) {
+                    $('#conUnitList').append('<span class="constName jaune">Compétences insuffisantes</span><br>');
+                } else if (!teleCostOK) {
+                    $('#conUnitList').append('<span class="constName jaune">Ressources insuffisantes</span><br>');
+                }
+            }
+        }
     }
     $('#conUnitList').append('<hr>');
     $('#conUnitList').append('<br>');
@@ -185,11 +216,15 @@ function seeLandersTrans(see) {
     loadRes(false);
 };
 
-function payFretAP() {
+function payFretAP(teleport) {
     if (playerInfos.comp.trans < 3) {
         if (!selectedBat.tags.includes('chrg')) {
             selectedBat.tags.push('chrg');
             selectedBat.apLeft = selectedBat.apLeft-3+playerInfos.comp.trans;
+            if (teleport) {
+                selectedBat.apLeft = selectedBat.apLeft-5;
+                payCost(teleStationCost);
+            }
         }
     }
 };
@@ -211,7 +246,7 @@ function resAllLoad(batId) {
     });
     doneAction(bat);
     doneAction(selectedBat);
-    payFretAP();
+    payFretAP(false);
     selectedBatArrayUpdate();
     loadRes(false);
 };
@@ -261,7 +296,7 @@ function resMaxLoad(batId,addAutoLoad) {
     }
     doneAction(bat);
     doneAction(selectedBat);
-    payFretAP();
+    payFretAP(false);
     selectedBatArrayUpdate();
     loadRes(false);
 };
@@ -345,6 +380,45 @@ function isResToLoad(myBat) {
     return resToLoad;
 };
 
+function teleportStationRes(value,pickValue,resId) {
+    let res = getResById(resId);
+    let restSpace = checkResSpace(selectedBat);
+    if (restSpace < 0) {restSpace = 0;}
+    if (restSpace >= value && pickValue === value) {
+        if (selectedBat.transRes[res.name] === undefined) {
+            selectedBat.transRes[res.name] = value;
+        } else {
+            selectedBat.transRes[res.name] = selectedBat.transRes[res.name]+value;
+        }
+        playerInfos.vmRes[res.name] = 0;
+        if (playerInfos.teleRes[res.name] === undefined) {
+            playerInfos.teleRes[res.name] = value;
+        } else {
+            playerInfos.teleRes[res.name] = playerInfos.teleRes[res.name]+value;
+        }
+    } else {
+        let maxTransfert = restSpace;
+        if (pickValue < maxTransfert) {
+            maxTransfert = pickValue;
+        }
+        if (selectedBat.transRes[res.name] === undefined) {
+            selectedBat.transRes[res.name] = maxTransfert;
+        } else {
+            selectedBat.transRes[res.name] = selectedBat.transRes[res.name]+maxTransfert;
+        }
+        playerInfos.vmRes[res.name] = playerInfos.vmRes[res.name]-maxTransfert;
+        if (playerInfos.teleRes[res.name] === undefined) {
+            playerInfos.teleRes[res.name] = maxTransfert;
+        } else {
+            playerInfos.teleRes[res.name] = playerInfos.teleRes[res.name]+maxTransfert;
+        }
+    }
+    doneAction(selectedBat);
+    payFretAP(true);
+    selectedBatArrayUpdate();
+    loadRes(false);
+};
+
 function resSelectLoad(value,pickValue,resId,batId) {
     let res = getResById(resId);
     let bat = getBatById(batId);
@@ -371,7 +445,7 @@ function resSelectLoad(value,pickValue,resId,batId) {
     }
     doneAction(bat);
     doneAction(selectedBat);
-    payFretAP();
+    payFretAP(false);
     selectedBatArrayUpdate();
     loadRes(false);
 };

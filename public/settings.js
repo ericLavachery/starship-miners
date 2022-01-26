@@ -178,7 +178,12 @@ let apoCount = 435;
 let stressLevels = [5,15,35,100]; // stress,freeze,fear,terror
 let teleCost = {};
 teleCost['Energie'] = 50;
-teleCost['Plastanium'] = 10;
+teleCost['Argon'] = 10;
+teleCost['Bossium'] = 2;
+let teleStationCost = {};
+teleStationCost['Energie'] = 250;
+teleStationCost['Argon'] = 50;
+teleStationCost['Bossium'] = 10;
 // ALIENS
 let isFFW = false;
 let pointDeMire = 1830; // tileId

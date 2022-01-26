@@ -592,7 +592,7 @@ function checkBatTeleport(podBat,teleBat,tileId) {
             teleStats.message = "Vous ne pouvez pas téléporter à partir de ce bâtiment";
         }
     } else {
-        teleStats.message = "Vous n'avez pas les compétence pour téléporter des bataillons'";
+        teleStats.message = "Vous n'avez pas les compétences pour téléporter des bataillons'";
     }
     return teleStats;
 };

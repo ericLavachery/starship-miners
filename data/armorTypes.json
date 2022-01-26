@@ -1588,9 +1588,8 @@
         "skills":[],
         "info":"Recherche: Téléportation",
         "bldReq":["Centre de recherches"],
-        "compReq":{"tele":1},
         "factor":"one",
-        "costs":{"Silicium":100,"Cuivre":100,"Cobalt":100,"Bore":200,"Electros":100,"Batteries":200,"Energie":2000}
+        "costs":{"Carbone":150,"Platine":150,"Titane":100,"Plutonium":200,"Cuivre":150,"Electros":300,"Batteries":150,"Energie":1500}
     },
     {
         "name":"sci-vsp",
