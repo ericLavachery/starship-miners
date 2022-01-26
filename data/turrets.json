@@ -169,7 +169,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans","siland"],
+        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans","siland","respod","lifepod"],
         "log3eq":"megatrans",
         "moveCost":99,
         "maxFlood":-1,
@@ -229,7 +229,7 @@
             "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans","siland"],
+        "equip":["aucun","landerwkit","w2-lmit","megafret","megatrans","siland","respod","lifepod"],
         "log3eq":"megatrans",
         "moveCost":99,
         "maxFlood":-1,
@@ -303,7 +303,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-arti","megafret","megatrans","siland"],
+        "equip":["aucun","landerwkit","w2-arti","megafret","megatrans","siland","respod","lifepod"],
         "log3eq":"megatrans",
         "moveCost":99,
         "maxFlood":-1,
@@ -374,7 +374,7 @@
             "ravitBld":"Arsenal"
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lcomet","megafret","megatrans","siland"],
+        "equip":["aucun","landerwkit","w2-lcomet","megafret","megatrans","siland","lifepod"],
         "log3eq":"megatrans",
         "moveCost":99,
         "maxFlood":-1,
@@ -495,7 +495,7 @@
             "ravitBld":"Arsenal"
         },
         "protection":["aucun"],
-        "equip":["aucun","landerwkit","w2-lcomet","megatrans","siland"],
+        "equip":["aucun","landerwkit","w2-lcomet","megatrans","siland","respod","lifepod"],
         "log3eq":"",
         "moveCost":99,
         "maxFlood":-1,
@@ -558,13 +558,13 @@
             "ravitBld":"Arsenal"
         },
         "protection":["aucun"],
-        "equip": ["aucun","w2-lcomet","megatrans","siland"],
+        "equip": ["aucun","w2-lcomet","megatrans","siland","respod","lifepod"],
         "log3eq":"megatrans",
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","bastion","dumper","routes","phare","gooddef","producteur","accu","recupcit","recupres","noblub","reeq","lowstress","infrahelp","control","teleport"],
+        "skills":["fouille","transorbital","ravitaillement","stock","transport","longshot","survivor","mecano","medic","fret","bastion","dumper","routes","phare","gooddef","producteur","accu","recupcit","recupres","noblub","reeq","lowstress","infrahelp","control"],
         "mediCost":6,
         "mecanoCost":6,
         "transMaxSize":55,

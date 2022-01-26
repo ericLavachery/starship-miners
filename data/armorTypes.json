@@ -629,6 +629,54 @@
         "costs":{"Cobalt":50,"Cuivre":100,"Platine":25,"Silicium":50,"Hélium":25,"Electros":50,"Batteries":15}
     },
     {
+        "name":"lifepod",
+        "cat":"equip",
+        "skills":[],
+        "info":"Téléportation de bataillons",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"tele":2},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30},
+        "deploy":{"Plutonium":25,"Energie":100,"Argon":15,"Bossium":3}
+    },
+    {
+        "name":"e-lifepod",
+        "cat":"equip",
+        "skills":[],
+        "info":"Téléportation de bataillons",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"tele":3},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Carbone":75,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Cobalt":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":500,"Bossium":100},
+        "deploy":{"Plutonium":75,"Energie":300,"Argon":30,"Bossium":6}
+    },
+    {
+        "name":"respod",
+        "cat":"equip",
+        "skills":[],
+        "info":"Téléportation de ressources",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"tele":2},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500},
+        "deploy":{"Plutonium":25,"Energie":100}
+    },
+    {
+        "name":"e-respod",
+        "cat":"equip",
+        "skills":[],
+        "info":"Téléportation de ressources",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"tele":3},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Cobalt":100,"Electros":200,"Batteries":200,"Energie":500},
+        "deploy":{"Plutonium":50,"Energie":200}
+    },
+    {
         "name":"helper",
         "cat":"equip",
         "skills":[],

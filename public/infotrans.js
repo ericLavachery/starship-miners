@@ -563,36 +563,44 @@ function debarquement(debId) {
 function checkBatTeleport(podBat,teleBat,tileId) {
     let teleStats = {};
     teleStats.ok = false;
+    teleStats.tag = false;
     teleStats.message = '';
     if (playerInfos.comp.tele >= 2) {
-        let inBat = getBatByTypeIdAndTileId(284,tileId);
-        let inBatType = getBatType(inBat);
-        let podBatType = getBatType(podBat);
-        let teleBatType = getBatType(teleBat);
-        if (podBatType.skills.includes('teleport')) {
-            if (inBatType.skills.includes('teleport')) {
-                if (teleBatType.cat === 'infantry' || teleBatType.skills.includes('robot')) {
-                    if (teleBatType.size <= 5) {
-                        let teleCostOK = checkCost(teleCost);
-                        if (teleCostOK) {
-                            teleStats.ok = true;
+        if (!podBat.tags.includes('podcd')) {
+            let inBat = getBatByTileId(tileId);
+            let inBatType = getBatType(inBat);
+            let podBatType = getBatType(podBat);
+            let teleBatType = getBatType(teleBat);
+            if (podBat.eq === 'lifepod' || podBat.eq === 'e-lifepod') {
+                if (inBat.eq === 'lifepod' || inBat.eq === 'e-lifepod') {
+                    if (teleBatType.cat === 'infantry' || teleBatType.skills.includes('robot')) {
+                        if (teleBatType.size <= 5) {
+                            let teleCostOK = checkCost(teleCost);
+                            if (teleCostOK) {
+                                teleStats.ok = true;
+                                if (podBat.eq === 'e-lifepod') {
+                                    teleStats.tag = true;
+                                }
+                            } else {
+                                teleStats.message = "Vous n'avez pas les ressources pour téléporter ce bataillon";
+                            }
                         } else {
-                            teleStats.message = "Vous n'avez pas les ressources pour téléporter ce bataillon";
+                            teleStats.message = "Vous ne pouvez pas téléporter ce type de bataillon";
                         }
                     } else {
                         teleStats.message = "Vous ne pouvez pas téléporter ce type de bataillon";
                     }
                 } else {
-                    teleStats.message = "Vous ne pouvez pas téléporter ce type de bataillon";
+                    teleStats.message = "Vous ne pouvez pas téléporter vers de ce bâtiment";
                 }
             } else {
-                teleStats.message = "Vous ne pouvez pas téléporter vers de ce bâtiment";
+                teleStats.message = "Vous ne pouvez pas téléporter à partir de ce bâtiment";
             }
         } else {
-            teleStats.message = "Vous ne pouvez pas téléporter à partir de ce bâtiment";
+            teleStats.message = "Vous avez déjà téléporté un bataillon ce tour-ci";
         }
     } else {
-        teleStats.message = "Vous n'avez pas les compétences pour téléporter des bataillons'";
+        teleStats.message = "Vous n'avez pas les compétences pour téléporter des bataillons";
     }
     return teleStats;
 };
@@ -671,6 +679,12 @@ function clickDebarq(tileId) {
         }
         console.log('oldTileId='+selectedBat.tileId);
         doneAction(selectedBat);
+        if (teleStats.ok) {
+            payCost(teleCost);
+            if (teleStats.tag && !selectedBat.tags.includes('podcd')) {
+                selectedBat.tags.push('podcd');
+            }
+        }
         selectedBatArrayUpdate();
         batUnselect();
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
@@ -696,9 +710,6 @@ function clickDebarq(tileId) {
         moveInfos(selectedBat,false);
         showBatInfos(selectedBat);
         showTileInfos(selectedBat.tileId);
-        if (teleStats.ok) {
-            payCost(teleCost);
-        }
         batDebarq = {};
     }
 };

@@ -198,7 +198,7 @@ function checkResTeleport(inBat,outBat) {
     if (playerInfos.comp.tele >= 1) {
         let inBatType = getBatType(inBat);
         let outBatType = getBatType(outBat);
-        if (inBatType.skills.includes('teleport') && outBatType.skills.includes('teleport')) {
+        if ((inBatType.skills.includes('teleport') || inBat.eq === 'e-respod' || inBat.eq === 'respod') && (outBatType.skills.includes('teleport') || outBat.eq === 'e-respod' || outBat.eq === 'respod')) {
             teleOK = true;
         }
     }

@@ -900,7 +900,7 @@ function getAP(bat,batType) {
     if (bat.eq === 'helper' || bat.logeq === 'helper') {
         newAP = newAP+1;
     }
-    if (bat.eq === 'e-ranger' || bat.eq === 'gilet' || bat.logeq === 'e-ranger' || bat.logeq === 'gilet') {
+    if (bat.eq === 'e-ranger' || bat.eq === 'gilet' || bat.logeq === 'e-ranger' || bat.logeq === 'gilet' || bat.eq === 'e-lifepod') {
         newAP = newAP-1;
     }
     if (bat.eq === 'e-road' && batType.cat === 'infantry') {
@@ -959,6 +959,7 @@ function calcUnitResist() {
 };
 
 function tagsUpdate(bat) {
+    tagDelete(bat,'podcd');
     tagDelete(bat,'chrg');
     tagDelete(bat,'vise');
     tagDelete(bat,'datt');

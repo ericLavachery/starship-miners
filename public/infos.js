@@ -273,6 +273,15 @@ function batInfos(bat,batType,pop) {
             }
         }
     }
+    if (playerInfos.comp.tele >= 2) {
+        if (bat.eq === 'lifepod' || bat.eq === 'e-lifepod') {
+            if (bat.eq === 'lifepod' || (!bat.tags.includes('podcd') && playerInfos.comp.tele >= 3)) {
+                $('#'+bodyPlace).append('<span class="paramName cy">Lifepod</span><span class="paramIcon"></span><span class="paramValue cy">Actif</span><br>');
+            } else {
+                $('#'+bodyPlace).append('<span class="paramName jaune">Lifepod</span><span class="paramIcon"></span><span class="paramValue jaune">Inactif</span><br>');
+            }
+        }
+    }
     if (bat.tags.includes('embuscade')) {
         let embushBonus = Math.round(100*calcEmbushBonus(batType));
         $('#'+bodyPlace).append('<span class="paramName cy">Embuscade</span><span class="paramIcon"></span><span class="paramValue cy">'+embushBonus+'%</span><br>');

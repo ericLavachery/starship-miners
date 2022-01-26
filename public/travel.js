@@ -39,6 +39,7 @@ function startMission() {
 function updateVMRes() {
     let souteBat = getBatById(souteId);
     playerInfos.vmRes = {};
+    playerInfos.teleRes = {};
     Object.entries(souteBat.transRes).map(entry => {
         let key = entry[0];
         let value = entry[1];
@@ -124,6 +125,8 @@ function landingList() {
             checkVMTileIds();
             checkSelectedLanderId();
             healEverything();
+            payCost(playerInfos.teleRes);
+            playerInfos.teleRes = {};
             events(true,0,false);
             miniOut();
             saveGame();
@@ -145,9 +148,7 @@ function landingList() {
                 console.log('done!');
             }
             let presAlienDice = rand.rand(1,12);
-            if (presAlienDice === 1 && zone[0].mapDiff <= 7 && zone[0].mapDiff >= 5) {
-                zone[0].mapDiff = zone[0].mapDiff+2;
-            } else if (presAlienDice <= 3 && zone[0].mapDiff <= 8 && zone[0].mapDiff >= 2) {
+            if (presAlienDice <= 2 && zone[0].mapDiff <= 8 && zone[0].mapDiff >= 2) {
                 zone[0].mapDiff = zone[0].mapDiff+1;
             } else if (presAlienDice >= 11 && zone[0].mapDiff >= 2) {
                 zone[0].mapDiff = zone[0].mapDiff-1;
