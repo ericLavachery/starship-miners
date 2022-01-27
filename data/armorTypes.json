@@ -629,6 +629,30 @@
         "costs":{"Cobalt":50,"Cuivre":100,"Platine":25,"Silicium":50,"Hélium":25,"Electros":50,"Batteries":15}
     },
     {
+        "name":"w1-lifepod",
+        "cat":"equip",
+        "skills":[],
+        "info":"Arme 1 + Téléportation de bataillons",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"tele":2,"def":1,"bal":2},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30},
+        "deploy":{"Plutonium":25,"Energie":100,"Argon":15,"Bossium":3}
+    },
+    {
+        "name":"w2-lifepod",
+        "cat":"equip",
+        "skills":[],
+        "info":"Arme 2 + Téléportation de bataillons",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"tele":2,"def":2,"bal":2,"energ":1},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30},
+        "deploy":{"Plutonium":25,"Energie":100,"Argon":15,"Bossium":3}
+    },
+    {
         "name":"lifepod",
         "cat":"equip",
         "skills":[],
@@ -1419,6 +1443,16 @@
         "costs":{"Carbone":4,"Scrap":6,"Fer":8,"Silicium":4}
     },
     {
+        "name":"w1-pgun",
+        "cat":"equip",
+        "skills":[],
+        "info":"Arme 1",
+        "bldReq":[],
+        "compReq":{"def":2,"bal":2},
+        "factor":"crew",
+        "costs":{"Carbone":4,"Scrap":6,"Aluminium":8,"Silicium":4}
+    },
+    {
         "name":"w1-plasma",
         "cat":"equip",
         "skills":[],
@@ -1526,7 +1560,17 @@
         "bldReq":[],
         "compReq":{"def":2,"bal":2},
         "factor":"crew",
-        "costs":{"Carbone":4,"Scrap":6,"Fer":8,"Silicium":4}
+        "costs":{"Carbone":4,"Scrap":6,"Aluminium":8,"Silicium":4}
+    },
+    {
+        "name":"w2-cmag",
+        "cat":"equip",
+        "skills":[],
+        "info":"Arme 2",
+        "bldReq":[],
+        "compReq":{"def":2,"bal":2,"energ":1},
+        "factor":"crew",
+        "costs":{"Carbone":4,"Titane":12,"Tungstène":8,"Silicium":4,"Electros":6}
     },
     {
         "name":"w2-flaser",

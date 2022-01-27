@@ -571,10 +571,10 @@ function checkBatTeleport(podBat,teleBat,tileId) {
             let inBatType = getBatType(inBat);
             let podBatType = getBatType(podBat);
             let teleBatType = getBatType(teleBat);
-            if (podBat.eq === 'lifepod' || podBat.eq === 'e-lifepod') {
-                if (inBat.eq === 'lifepod' || inBat.eq === 'e-lifepod') {
+            if (podBat.eq === 'lifepod' || podBat.eq === 'e-lifepod' || podBat.eq === 'w1-lifepod' || podBat.eq === 'w2-lifepod') {
+                if (inBat.eq === 'lifepod' || inBat.eq === 'e-lifepod' || inBat.eq === 'w1-lifepod' || inBat.eq === 'w2-lifepod') {
                     if (teleBatType.cat === 'infantry' || teleBatType.skills.includes('robot')) {
-                        if (teleBatType.size <= 5) {
+                        if (teleBatType.size <= 9) {
                             let teleCostOK = checkCost(teleCost);
                             if (teleCostOK) {
                                 teleStats.ok = true;

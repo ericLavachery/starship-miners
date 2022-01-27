@@ -274,8 +274,8 @@ function batInfos(bat,batType,pop) {
         }
     }
     if (playerInfos.comp.tele >= 2) {
-        if (bat.eq === 'lifepod' || bat.eq === 'e-lifepod') {
-            if (bat.eq === 'lifepod' || (!bat.tags.includes('podcd') && playerInfos.comp.tele >= 3)) {
+        if (bat.eq === 'lifepod' || bat.eq === 'e-lifepod' || bat.eq === 'w1-lifepod' || bat.eq === 'w2-lifepod') {
+            if (bat.eq === 'lifepod' || bat.eq === 'w1-lifepod' || bat.eq === 'w2-lifepod' || (!bat.tags.includes('podcd') && playerInfos.comp.tele >= 3)) {
                 $('#'+bodyPlace).append('<span class="paramName cy">Lifepod</span><span class="paramIcon"></span><span class="paramValue cy">Actif</span><br>');
             } else {
                 $('#'+bodyPlace).append('<span class="paramName jaune">Lifepod</span><span class="paramIcon"></span><span class="paramValue jaune">Inactif</span><br>');

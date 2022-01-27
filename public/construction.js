@@ -1525,21 +1525,21 @@ function recupCitoyens(unitId,tileId,citoyens,xp) {
     }
 };
 
-function getRecup(costs) {
+function getRecup(costs,equip) {
     // récup de n'importe quels coûts
     let recup = {};
     let recupFactor = 95;
     let bldFactor = 0;
     if (playerInfos.bldList.includes('Décharge')) {
-        bldFactor = bldFactor+2;
-    }
-    if (playerInfos.comp.tri >= 1) {
         bldFactor = bldFactor+1;
     }
     if (hasScraptruck || playerInfos.onShip) {
         bldFactor = bldFactor+1;
     }
-    recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+4)/12);
+    if (equip) {
+        bldFactor = bldFactor+1.5;
+    }
+    recupFactor = Math.round(recupFactor*(bldFactor+(playerInfos.comp.tri*1.25)+0.5)/9);
     if (costs != undefined) {
         Object.entries(costs).map(entry => {
             let key = entry[0];
@@ -1656,13 +1656,13 @@ function getResRecup(bat,batType) {
         }
     }
     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
-        let recupFactor = 95;
+        let recupFactor = 90;
         let bldFactor = 0;
         let index;
         let batArmor;
         let batEquip;
         if (playerInfos.bldList.includes('Décharge')) {
-            bldFactor = bldFactor+2;
+            bldFactor = bldFactor+1;
         }
         if (playerInfos.comp.tri >= 1) {
             bldFactor = bldFactor+1;
@@ -1670,7 +1670,7 @@ function getResRecup(bat,batType) {
         if (hasScraptruck || playerInfos.onShip) {
             bldFactor = bldFactor+1;
         }
-        recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+4)/12);
+        recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+1)/8);
         if (batType.skills.includes('recupfull') && recupFactor < 70) {
             recupFactor = 70;
         }
@@ -1738,13 +1738,14 @@ function getResRecup(bat,batType) {
                 });
             }
         }
-        // EQUIP 100%
+        // EQUIP x%
         if (!bat.eq.includes('aucun') && bat.eq != undefined) {
             batEquip = getBatEquip(bat);
             if (batEquip.costs != undefined) {
                 Object.entries(batEquip.costs).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
+                    value = Math.floor(value/100*recupFactor);
                     if (value >= 1) {
                         if (resRecup[key] === undefined) {
                             resRecup[key] = value;
@@ -1774,15 +1775,12 @@ function recupInfraRes(tile,infra) {
     let bldFactor = 0;
     let index;
     if (playerInfos.bldList.includes('Décharge')) {
-        bldFactor = bldFactor+2;
-    }
-    if (playerInfos.comp.tri >= 1) {
         bldFactor = bldFactor+1;
     }
-    recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+4)/6);
     if (hasScraptruck) {
-        recupFactor = Math.ceil(recupFactor*1.15);
+        bldFactor = bldFactor+1;
     }
+    recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+playerInfos.comp.const)/9);
     let totalRes = 0;
     if (infra.costs != undefined) {
         Object.entries(infra.costs).map(entry => {

@@ -326,7 +326,7 @@ function doReEquip(batId) {
         if (!myGear[3].includes('aucun')) {
             let oldBatArmor = getEquipByName(myGear[3]);
             flatCosts = getCosts(myBatType,oldBatArmor,0,'equip');
-            recup = getRecup(flatCosts);
+            recup = getRecup(flatCosts,true);
             mergeObjects(totalRecup,recup);
         }
     }
@@ -344,7 +344,7 @@ function doReEquip(batId) {
         if (!myGear[2].includes('aucun')) {
             let oldBatEquip = getEquipByName(myGear[2]);
             flatCosts = getCosts(myBatType,oldBatEquip,0,'equip');
-            recup = getRecup(flatCosts);
+            recup = getRecup(flatCosts,true);
             mergeObjects(totalRecup,recup);
         }
     }
