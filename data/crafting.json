@@ -1515,7 +1515,7 @@
     {
         "id":96,
         "result":"Energie",
-        "cost":{"Hydrocarbure":50},
+        "cost":{"Hydrocarbure":65},
         "compReq":{},
         "bldReq":["Atelier"],
         "bldOut":["Crameur"],

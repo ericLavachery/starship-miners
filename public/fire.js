@@ -455,8 +455,8 @@ function attack(melee,init) {
     }
     // sleeping alien
     if (selectedBatType.skills.includes('sleep') && selectedBat.tags.includes('invisible')) {
-        shots = Math.round(shots/2);
-        attFactor = Math.round(attFactor/2);
+        shots = Math.round(shots/1.5);
+        attFactor = Math.round(attFactor/1.5);
     }
     // Attack %
     $('#report').append('<span class="report jaune">Attaque '+attFactor+'%<br></span>');
@@ -1428,11 +1428,6 @@ function defense(melee,init) {
             defFactor = Math.round(defFactor*1.25);
         }
     }
-    // sleeping alien
-    if (targetBatType.skills.includes('sleep') && targetBat.tags.includes('invisible')) {
-        shots = Math.round(shots/2);
-        defFactor = Math.round(defFactor/2);
-    }
     // Defense %
     $('#report').append('<span class="report jaune">Défense '+defFactor+'%<br></span>');
     // chargeur
@@ -1944,9 +1939,7 @@ function defense(melee,init) {
         }
     }
     // remove ap
-    if (!targetBatType.skills.includes('guerrilla')) {
-        targetBat.apLeft = targetBat.apLeft-1;
-    }
+    targetBat.apLeft = targetBat.apLeft-apCostRiposte(targetBat,targetBatType,targetWeap);
     if (targetBat.salvoLeft >= 1) {
         targetBat.salvoLeft = 0;
     } else {

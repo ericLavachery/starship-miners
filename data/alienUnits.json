@@ -2135,7 +2135,7 @@
             "rof":16,
             "accuracy":16,
             "power":7,
-            "armors":0.5,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"bite",
             "ammo":["none"]
@@ -2159,7 +2159,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouisseur","anycap","maladie","hide","venin","guerrilla","tirailleur"],
+        "skills":["fouisseur","anycap","maladie","hide","venin","guerrilla","tirailleur","infkill"],
         "deathFx":"death1",
         "killRes":{"Bugium":2,"Aranium":9,"Mephitis":2,"Germium":5,"Slime":3,"Blendium":4},
         "killXP":6,

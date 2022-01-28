@@ -491,7 +491,7 @@
     {
         "id":53,
         "name":"Mutants",
-        "levels":{"rednecks":99,"blades":17,"bulbos":99,"drogmulojs":6,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":17,"bulbos":99,"drogmulojs":8,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"gen":1},
         "compPass":["drogmulojs"],
@@ -503,7 +503,7 @@
     {
         "id":160,
         "name":"Wolverines",
-        "levels":{"rednecks":99,"blades":9,"bulbos":99,"drogmulojs":7,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":9,"bulbos":99,"drogmulojs":6,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire"],
         "compReq":{"gen":1},
         "compPass":["drogmulojs"],
@@ -634,7 +634,7 @@
         "id":77,
         "name":"Exobios",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":11,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Arsenal","Laboratoire","Prisons"],
+        "bldReq":["Arsenal","Centre de recherches","Prisons"],
         "compReq":{"gen":1},
         "compPass":["drogmulojs"],
         "compHardReq":{"explo":1},
@@ -664,7 +664,7 @@
         "id":249,
         "name":"Bees",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":10,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Centre de recherches"],
+        "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"gen":1},
         "compPass":["drogmulojs"],
         "costs":{"Carbone":16,"Tungstène":16,"Scrap":16,"Fer":32,"Aranium":90,"Larvium":115,"Wingium":174,"Azote":174,"Calcium":77,"Drogues":40},
@@ -808,7 +808,7 @@
     {
         "id":89,
         "name":"Spectres",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":8,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":7,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Laboratoire"],
         "compHardReq":{"exo":1,"ca":1},
         "costs":{"Fer":36,"Scrap":72,"Carbone":18,"Aluminium":72,"Titane":18},
@@ -2648,7 +2648,7 @@
     },
     {
         "id":275,
-        "name":"Passerelle de com",
+        "name":"Vidéotéléphonie",
         "bldReq":["Station"],
         "costs":{"Compo1":180,"Compo2":80,"Cobalt":150,"Cuivre":200,"Platine":50,"Silicium":100,"Hélium":100,"Electros":150,"Batteries":50},
         "fabTime":1,

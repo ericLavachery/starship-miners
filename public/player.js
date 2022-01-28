@@ -1572,7 +1572,7 @@ function addStartPack() {
     addFreeBat(2010,'Sonde');
     addFreeBat(2011,'Sonde');
     addFreeBat(1894,'Station météo');
-    addFreeBat(1835,'Passerelle de com');
+    addFreeBat(1835,'Vidéotéléphonie');
     addFreeBat(1953,'Unités cryogéniques');
     addFreeBat(1713,'Salle de conférence');
     addFreeBat(1645,'Ascenceur');

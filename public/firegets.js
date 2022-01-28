@@ -2207,6 +2207,22 @@ function calcShotDice(bat,luckyshot) {
     }
 };
 
+function apCostRiposte(bat,batType,weap) {
+    let apCost = 1;
+    if (batType.skills.includes('guerrilla')) {
+        apCost = 0;
+    } else {
+        if (weap.cost <= 1) {
+            apCost = 0;
+        } else if (weap.cost === 2) {
+            apCost = 1;
+        } else {
+            apCost = 2;
+        }
+    }
+    return apCost;
+};
+
 function chargeurAdj(bat,shots,weap) {
     let newShots = shots;
     let mult = 1.5;
@@ -2355,14 +2371,14 @@ function mirDestruction(weap,bat,batType,tile,teamOnMir,infraName) {
     // console.log('MirDamage='+damage);
     let breakChance = Math.floor(damage/20);
     if (infraName === 'Palissades') {
-        if (damage >= 400) {
-            breakChance = Math.floor(damage/80);
+        if (damage >= 600) {
+            breakChance = Math.floor(damage/120);
         } else {
             breakChance = 0;
         }
     } else if (infraName === 'Remparts') {
-        if (damage >= 1600) {
-            breakChance = Math.floor(damage/320);
+        if (damage >= 1800) {
+            breakChance = Math.floor(damage/360);
         } else {
             breakChance = 0;
         }

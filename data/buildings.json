@@ -3879,7 +3879,7 @@
     },
     {
         "id":275,
-        "name":"Passerelle de com",
+        "name":"Vidéotéléphonie",
         "pic":"passerelle",
         "cat":"buildings",
         "kind":"zero-vm",

@@ -812,7 +812,7 @@ function turnInfo() {
                 $('#tour').append('<span class="or">Dôme inactif</span><br>');
             }
         }
-        if ((playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) || playerInfos.pseudo === 'Bob') {
+        if ((playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) || playerInfos.bldList.includes('Centre de com') || playerInfos.pseudo === 'Bob') {
             let allCoconTurns = [];
             let turn = 0;
             while (turn <= 300) {
@@ -839,7 +839,9 @@ function turnInfo() {
                 $('#tour').append('<span class="neutre" title="Aucun oeuf en approche">Aucun oeuf en vue</span><br>');
                 turnCol = 'neutre';
             }
-            $('#tour').append('<span class="'+turnCol+'" title="Pas de cocon avant le tour '+allCoconTurns[playerInfos.cocons]+'">Cocon tour '+allCoconTurns[playerInfos.cocons]+'</span><br>');
+            if ((playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) || playerInfos.pseudo === 'Bob') {
+                $('#tour').append('<span class="'+turnCol+'" title="Pas de cocon avant le tour '+allCoconTurns[playerInfos.cocons]+'">Cocon tour '+allCoconTurns[playerInfos.cocons]+'</span><br>');
+            }
         }
         $('#tour').append('Morts <span class="or" title="Bataillons perdus">'+playerInfos.unitsLost+'</span> / <span class="neutre" title="Aliens tués">'+playerInfos.aliensKilled+'</span> / <span class="cy" title="Oeufs détruits">'+playerInfos.eggsKilled+'</span>');
     }
