@@ -348,13 +348,13 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
             if (bat.eq === 'g2tools' || bat.logeq === 'g2tools') {
                 resRate = Math.ceil(resRate/1.5);
             } else {
-                resRate = Math.ceil(resRate/3);
+                resRate = Math.ceil(resRate/2.5);
             }
         } else {
             resRate = 0;
         }
         if (batType.mining.level === 1 && (res.bld === 'Mine' || res.bld === 'Derrick')) {
-            resRate = Math.ceil(resRate/2);
+            resRate = Math.ceil(resRate/1.5);
         }
     }
     if (batType.mining.types[0] != res.bld) {

@@ -2083,7 +2083,7 @@ function skillsInfos(bat,batType,near) {
             apReq = Math.round(5*7/(playerInfos.comp.tri+6));
             apCost = Math.round(1250/bat.squadsLeft/batType.squadSize/batType.crew);
             if (batType.skills.includes('scav')) {
-                apCost = Math.round(apCost/1.5);
+                apCost = Math.round(apCost/1.75);
             }
             if (batType.cat === 'infantry' && !batType.skills.includes('moto') && !batType.skills.includes('fly')) {
                 apCost = Math.floor(apCost/batType.ap*11);

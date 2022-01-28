@@ -321,7 +321,7 @@
         "rarity": 85,
         "cat": "white",
         "batch": 10,
-        "energie": 7,
+        "energie": 8,
         "equiv": 1,
         "pter": [1.5,"P"],
         "planets":{"Dom":1,"Sarak":0.7,"Gehenna":1,"Kzin":1,"Horst":0.5}

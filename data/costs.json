@@ -278,7 +278,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":5,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire","Atelier"],
         "compReq":{"gen":1},
-        "costs":{"Creatite":100,"Calcium":50,"Azote":90,"Mercure":15,"Drogues":20,"Végétaux":30,"Explosifs":30,"Fer":12,"Plomb":4,"Titane":4,"Azote":6,"Cuivre":6,"Electros":1},
+        "costs":{"Creatite":100,"Calcium":50,"Azote":35,"Mercure":15,"Drogues":20,"Végétaux":30,"Explosifs":30,"Fer":12,"Plomb":4,"Titane":4,"Cuivre":6,"Electros":1},
         "fabTime":25
     },
     {
@@ -286,7 +286,7 @@
         "name":"Bugmen",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":3,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
-        "costs":{"Fer":54,"Bois":108,"Végétaux":54,"Bugium":54,"Mendium":9,"Wingium":9,"Azote":80,"Calcium":27,"Drogues":18},
+        "costs":{"Fer":54,"Bois":108,"Végétaux":54,"Bugium":54,"Mendium":9,"Wingium":9,"Azote":54,"Calcium":27,"Drogues":18},
         "fabTime":15
     },
     {
@@ -977,7 +977,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":7,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire"],
         "compReq":{"gen":1},
-        "costs":{"Fer":60,"Scrap":60,"Creatite":144,"Calcium":72,"Azote":120,"Mercure":20,"Drogues":30},
+        "costs":{"Fer":60,"Scrap":60,"Creatite":144,"Calcium":72,"Azote":60,"Mercure":20,"Drogues":30},
         "fabTime":25
     },
     {
@@ -986,7 +986,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":13,"drogmulojs":12,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"gen":1},
-        "costs":{"Fer":60,"Scrap":120,"Carbone":60,"Plomb":60,"Bois":60,"Aluminium":60,"Tungstène":60,"Bugium":84,"Creatite":144,"Calcium":72,"Azote":180,"Mercure":30,"Drogues":40},
+        "costs":{"Fer":60,"Scrap":120,"Carbone":60,"Plomb":60,"Bois":60,"Aluminium":60,"Tungstène":60,"Bugium":84,"Creatite":144,"Calcium":72,"Azote":90,"Mercure":30,"Drogues":40},
         "fabTime":40
     },
     {
@@ -1649,7 +1649,7 @@
         "bldReq":["Garage"],
         "compReq":{"cam":1},
         "compPass":["blades","drogmulojs"],
-        "costs":{"Fer":48,"Scrap":128,"Carbone":64,"Bois":32,"Moteurs":16,"Cuivre":24,"Electros":32,"Batteries":36,"Compo2":32,"Huile":10,"Végétaux":144,"Drogues":5,"Tissus":5,"Chlore":5,"Zinc":5,"Silicium":5},
+        "costs":{"Fer":48,"Scrap":128,"Carbone":64,"Bois":32,"Moteurs":16,"Cuivre":24,"Electros":32,"Batteries":36,"Compo2":32,"Huile":10,"Végétaux":144,"Blendium":32,"Drogues":5,"Tissus":5,"Chlore":5,"Zinc":5,"Silicium":5},
         "deploy":{"Energie":105,"Chlore":5,"Zinc":10,"Tissus":5},
         "fabTime":30,
         "inRuin":2
@@ -2283,7 +2283,6 @@
         "id":150,
         "name":"Infirmerie",
         "bldUp":"Hôpital",
-        "compReq":{"med":1},
         "costs":{"Compo1":115,"Eau":24,"Drogues":50,"Tissus":50,"Aluminium":30,"Calcium":25,"Or":10,"Silicium":25,"Oxygène":25,"Chlore":50,"Energie":40},
         "fabTime":20,
         "crime":-3,

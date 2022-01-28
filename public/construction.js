@@ -775,6 +775,9 @@ function doUpgrade() {
         let myBatXP = selectedBat.xp;
         let myBatId = selectedBat.id;
         let myBatTileId = selectedBat.tileId;
+        if (selectedBat.vmt != undefined) {
+            myBatTileId = selectedBat.vmt;
+        }
         removeBat(selectedBat.id);
         putBat(myBatTileId,0,myBatXP);
     }

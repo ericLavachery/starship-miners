@@ -473,27 +473,27 @@ function gasProd(bat,batType) {
         if (upkeepPaid) {
             let planetAir = {};
             if (zone[0].planet === 'Dom') {
-                planetAir['Oxygène'] = 3;
-                planetAir['Argon'] = 0.1;
-                planetAir['Azote'] = 6;
+                planetAir['Oxygène'] = 4;
+                planetAir['Argon'] = 0.2;
+                planetAir['Azote'] = 10;
             }
             if (zone[0].planet === 'Sarak') {
-                planetAir['Oxygène'] = 3;
-                planetAir['Argon'] = 0.6;
-                planetAir['Azote'] = 5;
+                planetAir['Oxygène'] = 4;
+                planetAir['Argon'] = 1;
+                planetAir['Azote'] = 9;
                 planetAir['Hélium'] = 0.5;
             }
             if (zone[0].planet === 'Gehenna') {
-                planetAir['Oxygène'] = 2;
-                planetAir['Azote'] = 4;
-                planetAir['Chlore'] = 3;
-                planetAir['Hélium'] = 1;
+                planetAir['Oxygène'] = 3;
+                planetAir['Azote'] = 5;
+                planetAir['Chlore'] = 5;
+                planetAir['Hélium'] = 2;
             }
             if (zone[0].planet === 'Kzin') {
                 planetAir['Oxygène'] = 1;
-                planetAir['Argon'] = 2;
-                planetAir['Azote'] = 3;
-                planetAir['Hélium'] = 4;
+                planetAir['Argon'] = 3;
+                planetAir['Azote'] = 4;
+                planetAir['Hélium'] = 6;
             }
             Object.entries(planetAir).map(entry => {
                 let key = entry[0];
