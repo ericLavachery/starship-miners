@@ -493,7 +493,7 @@ function eggsDrop() {
                     warning('Oeuf voilé','Un Oeuf voilé est tombé!');
                 }
             } else {
-                if (rand.rand(1,zone[0].mapDiff+2) >= 4 && coqPerc >= 30 && playerInfos.mapTurn >= 30 && coveredEggs <= Math.ceil(zone[0].mapDiff/3)) {
+                if (rand.rand(1,zone[0].mapDiff+2) >= 4 && playerInfos.mapTurn*2 > aliens.length && playerInfos.mapTurn >= 30 && coveredEggs <= Math.ceil(zone[0].mapDiff/3)) {
                     if (coconStats.volc) {
                         dropEgg('Oeuf','acouvert');
                         coveredEggs++;

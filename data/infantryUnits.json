@@ -3265,7 +3265,7 @@
             "range":1,
             "elevation":1,
             "noise":2,
-            "rof":28,
+            "rof":32,
             "accuracy":25,
             "power":7,
             "aoe":"unit",

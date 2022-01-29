@@ -1922,6 +1922,17 @@ function putRoadsAround() {
     });
 };
 
+function checkRoadsAround(bat) {
+    let roadsOK = true;
+    zone.forEach(function(tile) {
+        let distance = calcDistance(bat.tileId,tile.id);
+        if (distance <= 1 && tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L' && !tile.rd) {
+            roadsOK = false;
+        }
+    });
+    return roadsOK;
+}
+
 function putInfra(infraName) {
     console.log('INFRASTRUCTURE');
     let tile = getTile(selectedBat);

@@ -94,21 +94,44 @@ function getAllRes(bat) {
     return allRes;
 };
 
+function getVegFactor() {
+    let vf = {};
+    vf.wood = 100;
+    let seedWood = zone[19].seed;
+    if (seedWood >= 7) {
+        seedWood = seedWood-6;
+    }
+    vf.wood = vf.wood*(seedWood+8)/10;
+    vf.wood = vf.wood*(zone[0].ensol+200)/350;
+    if (zone[0].pf >= 35) {
+        vf.wood = vf.wood*zone[0].pf/35;
+    }
+    vf.veg = 100;
+    let seedVeg = zone[23].seed;
+    if (seedVeg >= 7) {
+        seedVeg = seedVeg-6;
+    }
+    vf.veg = vf.veg*(seedVeg+8)/10;
+    vf.veg = vf.veg*(zone[0].ensol+100)/250;
+    if (zone[0].pb+zone[0].pf >= 50) {
+        vf.veg = vf.veg*(zone[0].pb+zone[0].pf)/50;
+    }
+    return vf;
+};
+
 function getTerrainRes(terrain,tile) {
     let srs = {};
     let potable = checkPotable(zone,tile.id);
+    let vf = getVegFactor();
     // Bois
     let res = getResByName('Bois');
     if (terrain.name === 'F') {
         srs.Bois = 250+(tile.seed*65);
-        if (zone[0].pf >= 35) {
-            srs.Bois = Math.round(srs.Bois*zone[0].pf/35);
-        }
     } else if (terrain.name === 'B') {
         srs.Bois = 25+(tile.seed*25);
     }
     if (srs.Bois != undefined) {
-        srs.Bois = Math.round(srs.Bois*(zone[0].ensol+150)/270);
+        srs.Bois = srs.Bois*vf.wood/100;
         srs.Bois = Math.round(srs.Bois*res.planets[zone[0].planet]);
         if (srs.Bois <= 0) {
             delete srs.Bois;
@@ -118,13 +141,10 @@ function getTerrainRes(terrain,tile) {
     res = getResByName('Végétaux');
     if (terrain.name === 'F') {
         srs.Végétaux = 25+((7-tile.seed)*25);
-        srs.Végétaux = Math.round(srs.Végétaux*zone[0].ensol/150);
     } else if (terrain.name === 'B') {
         srs.Végétaux = 250+((7-tile.seed)*65);
-        srs.Végétaux = Math.round(srs.Végétaux*(zone[0].ensol+100)/250);
     } else if (terrain.veg >= 0.5) {
-        srs.Végétaux = (Math.round((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*15)-15+(tile.seed*5);
-        srs.Végétaux = Math.round(srs.Végétaux*zone[0].ensol/150);
+        srs.Végétaux = (((terrain.veg+0.5)*(terrain.veg+0.5)*(terrain.veg+0.5))*15)-15+(tile.seed*5);
         if (terrain.name === 'S') {
             if (tile.seed === 1) {
                 srs.Végétaux = srs.Végétaux+77;
@@ -134,6 +154,7 @@ function getTerrainRes(terrain,tile) {
         }
     }
     if (srs.Végétaux != undefined) {
+        srs.Végétaux = srs.Végétaux*vf.veg/100;
         srs.Végétaux = Math.round(srs.Végétaux*res.planets[zone[0].planet]);
         if (srs.Végétaux <= 0) {
             delete srs.Végétaux;

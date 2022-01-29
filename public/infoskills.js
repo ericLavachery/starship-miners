@@ -1709,7 +1709,7 @@ function skillsInfos(bat,batType,near) {
             }
         }
         // POSE BARBELES
-        if (batType.skills.includes('constructeur')) {
+        if (batType.skills.includes('constructeur') && !batType.skills.includes('transorbital')) {
             freeConsTile = checkFreeConsTile(bat,batType);
             if (freeConsTile) {
                 let barbLeft = calcRavit(bat);
@@ -1796,7 +1796,11 @@ function skillsInfos(bat,batType,near) {
     }
     // ROUTES / PONTS
     if ((batType.skills.includes('routes') || bat.eq === 'e-road') && !playerInfos.onShip) {
-        if (!tile.rd) {
+        let roadsOK = true;
+        if (batType.skills.includes('infrahelp')) {
+            roadsOK = checkRoadsAround(bat);
+        }
+        if (!tile.rd || !roadsOK) {
             apCost = Math.round(batType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3);
             if (batType.skills.includes('routes') && bat.eq === 'e-road') {
                 apCost = Math.round(apCost/1.5);
@@ -1832,7 +1836,7 @@ function skillsInfos(bat,batType,near) {
         }
     }
     // INFRASTRUCTURE
-    if ((batType.skills.includes('constructeur') || near.caserne) && !playerInfos.onShip) {
+    if (((batType.skills.includes('constructeur') && !batType.skills.includes('transorbital')) || near.caserne) && !playerInfos.onShip) {
         if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
             if (batType.mecanoCost != undefined) {
                 apReq = batType.mecanoCost;
@@ -2139,14 +2143,19 @@ function skillsInfos(bat,batType,near) {
                 let isLoaded = checkCharged(bat,'load');
                 let isCharged = checkCharged(bat,'trans');
                 if (!isLoaded && !isCharged) {
-                    let landerBat = findTheLander();
-                    if (Object.keys(landerBat).length >= 1) {
-                        let landerDistance = calcDistance(landerBat.tileId,bat.tileId);
-                        if (landerDistance <= 1 || playerInfos.onShip) {
-                            let apCost = Math.round(6*batType.fabTime/30);
-                            $('#unitInfos').append('<hr>');
-                            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine skillButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
-                        }
+                    // let landerBat = findTheLander();
+                    // if (Object.keys(landerBat).length >= 1) {
+                    //     let landerDistance = calcDistance(landerBat.tileId,bat.tileId);
+                    //     if (landerDistance <= 1 || playerInfos.onShip) {
+                    //         let apCost = Math.round(6*batType.fabTime/30);
+                    //         $('#unitInfos').append('<hr>');
+                    //         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine skillButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
+                    //     }
+                    // }
+                    if (near.lander) {
+                        let apCost = Math.round(6*batType.fabTime/30);
+                        $('#unitInfos').append('<hr>');
+                        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine skillButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
                     }
                 }
             }

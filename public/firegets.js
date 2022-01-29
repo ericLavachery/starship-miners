@@ -1705,7 +1705,11 @@ function weaponAdj(weapon,bat,wn) {
             } else {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
-            thisWeapon.accuracy = thisWeapon.accuracy+8;
+            let accuBonus = Math.round((weapon.accuracy-9)/2);
+            if (accuBonus > 8) {
+                accuBonus = 8;
+            }
+            thisWeapon.accuracy = thisWeapon.accuracy+accuBonus;
         }
         if (bat.eq === 'silencieux' || bat.logeq === 'silencieux' || bat.eq === 'silencieux1' || bat.logeq === 'silencieux1' || bat.eq.includes('kit-chouf')) {
             thisWeapon.noise = thisWeapon.noise-1;
@@ -1753,7 +1757,11 @@ function weaponAdj(weapon,bat,wn) {
             } else {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
-            thisWeapon.accuracy = thisWeapon.accuracy+8;
+            let accuBonus = Math.round((weapon.accuracy-9)/2);
+            if (accuBonus > 8) {
+                accuBonus = 8;
+            }
+            thisWeapon.accuracy = thisWeapon.accuracy+accuBonus;
         }
         if (bat.eq === 'silencieux' || bat.logeq === 'silencieux' || bat.eq === 'silencieux2' || bat.logeq === 'silencieux2' || bat.eq.includes('kit-chouf')) {
             thisWeapon.noise = thisWeapon.noise-1;
