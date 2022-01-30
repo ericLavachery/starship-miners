@@ -513,6 +513,9 @@ function eggsDrop() {
 
 function getCoqueChance() {
     let coqPerc = coqueChance;
+    if (zone[0].mapDiff < 4) {
+        coqPerc = coqPerc+(zone[0].mapDiff*5)-20;
+    }
     if (playerInfos.mapTurn > aliens.length) {
         coqPerc = coqPerc+13;
     }

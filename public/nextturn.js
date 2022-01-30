@@ -521,6 +521,9 @@ function nextTurnEnd() {
             if (batType.skills.includes('notarget') && bat.fuzz > -2) {
                 bat.fuzz = -2;
             }
+            if (bat.fuzz <= -2 && !batType.skills.includes('notarget') && !bat.tags.includes('camo')) {
+                bat.fuzz = batType.fuzz;
+            }
             planetEffects(bat,batType);
             tagsEffect(bat,batType);
             tagsUpdate(bat);
@@ -703,6 +706,9 @@ function turnInfo() {
     domeProtect = false;
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
+        if (bat.fuzz <= -2 && !batType.skills.includes('notarget') && !bat.tags.includes('camo')) {
+            bat.fuzz = batType.fuzz;
+        }
         if (!batType.skills.includes('nodeathcount')) {
             numHumans++;
         }

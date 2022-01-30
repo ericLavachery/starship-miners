@@ -1,3 +1,39 @@
+function seveso(tileId,fromMissile) {
+    console.log('SEVESO tile '+tileId);
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            let batType = getBatType(bat);
+            if (!batType.skills.includes('resistpoison') && !batType.skills.includes('eatpoison')) {
+                if (bat.tileId != tileId) {
+                    let distance = calcDistance(bat.tileId,tileId);
+                    if (distance <= 1) {
+                        bat.tags.push('poison');
+                        if (fromMissile) {
+                            bat.tags.push('poison');
+                        }
+                    }
+                }
+            }
+        }
+    });
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            let batType = getBatType(bat);
+            if (!bat.tags.includes('zombie') && batType.cat === 'infantry' && (!batType.skills.includes('mutant') || playerInfos.comp.ca < 3)) {
+                if (bat.tileId != tileId) {
+                    let distance = calcDistance(bat.tileId,tileId);
+                    if (distance <= 1) {
+                        bat.tags.push('poison');
+                        if (fromMissile) {
+                            bat.tags.push('poison');
+                        }
+                    }
+                }
+            }
+        }
+    });
+};
+
 function deluge(weap,tileId,onlyAround) {
     console.log('DELUGE tile '+tileId);
     deadBatsList = [];

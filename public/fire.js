@@ -984,22 +984,28 @@ function attack(melee,init) {
         $('#report').append('<span class="report rose">Venin<br></span>');
     }
     // poison
-    if (totalDamage >= 7+(playerInfos.comp.ca*2) || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
-        if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium') || selectedWeap.ammo.includes('trap')) {
+    let minDamage = 7;
+    if (targetBatType.cat === 'aliens') {
+        minDamage = minDamage+4-(playerInfos.comp.ca*2);
+    } else {
+        minDamage = minDamage+(playerInfos.comp.ca*2);
+    }
+    if (totalDamage >= minDamage || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
+        if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium') || selectedWeap.ammo.includes('trap') || selectedWeap.ammo.includes('gaz')) {
             if (!targetBatType.skills.includes('resistpoison') && !targetBatType.skills.includes('eatpoison') && !targetBat.tags.includes('zombie')) {
-                if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || targetBatType.cat == 'aliens') {
+                if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || targetBatType.cat === 'aliens') {
                     targetBat.tags.push('poison');
-                    if (selectedWeap.ammo.includes('atium')) {
+                    if (selectedWeap.ammo === 'gaz') {
+                        targetBat.tags.push('poison');
+                    } else if (selectedWeap.ammo.includes('atium') || selectedWeap.ammo === 'gaz-pluto' || selectedWeap.ammo === 'grenade-gaz') {
                         targetBat.tags.push('poison');
                         targetBat.tags.push('poison');
-                    }
-                    if (selectedWeap.ammo.includes('trap')) {
-                        targetBat.tags.push('poison');
-                    }
-                    if (selectedWeap.ammo.includes('trap-suicide')) {
+                    } else if (selectedWeap.ammo.includes('trap-suicide') || selectedWeap.ammo.includes('-gaz') || selectedWeap.ammo.includes('gaz-uridium')) {
                         targetBat.tags.push('poison');
                         targetBat.tags.push('poison');
                         targetBat.tags.push('poison');
+                        targetBat.tags.push('poison');
+                    } else if (selectedWeap.ammo.includes('trap')) {
                         targetBat.tags.push('poison');
                     }
                     // console.log('Poison!');
@@ -1251,6 +1257,13 @@ function attack(melee,init) {
     if (selectedWeap.ammo.includes('-deluge')) {
         deluge(selectedWeap,delugeTileId,false);
     }
+    if (selectedWeap.ammo.includes('-gaz') && selectedWeap.ammo != 'grenade-gaz') {
+        let fromMissile = false;
+        if (selectedWeap.ammo === 'missile-gaz') {
+            fromMissile = true;
+        }
+        seveso(delugeTileId,fromMissile);
+    }
 };
 
 function defense(melee,init) {
@@ -1264,6 +1277,7 @@ function defense(melee,init) {
         xpFactor = 0.2;
     }
     $('#report').append('<span class="report or">'+targetBatName+' ('+targetWeap.name+')</span><br>');
+    let delugeTileId = selectedBat.tileId;
     // Dans l'eau
     let terrain = getTerrain(selectedBat);
     let tile = getTile(selectedBat);
@@ -1781,16 +1795,28 @@ function defense(melee,init) {
         }
     }
     // poison
-    if (totalDamage >= 7+(playerInfos.comp.ca*2) || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
-        if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium') || targetWeap.ammo.includes('trap')) {
+    let minDamage = 7;
+    if (selectedBatType.cat === 'aliens') {
+        minDamage = minDamage+4-(playerInfos.comp.ca*2);
+    } else {
+        minDamage = minDamage+(playerInfos.comp.ca*2);
+    }
+    if (totalDamage >= minDamage || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
+        if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium') || targetWeap.ammo.includes('trap') || targetWeap.ammo.includes('gaz')) {
             if (!selectedBatType.skills.includes('resistpoison') && !selectedBatType.skills.includes('eatpoison') && !selectedBat.tags.includes('zombie')) {
-                if ((selectedBatType.cat == 'infantry' && (!selectedBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || selectedBatType.cat == 'aliens') {
+                if ((selectedBatType.cat == 'infantry' && (!selectedBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || selectedBatType.cat === 'aliens') {
                     selectedBat.tags.push('poison');
-                    if (targetWeap.ammo.includes('atium')) {
+                    if (targetWeap.ammo === 'gaz') {
+                        selectedBat.tags.push('poison');
+                    } else if (targetWeap.ammo.includes('atium') || targetWeap.ammo === 'gaz-pluto' || targetWeap.ammo === 'grenade-gaz') {
                         selectedBat.tags.push('poison');
                         selectedBat.tags.push('poison');
-                    }
-                    if (targetWeap.ammo.includes('trap')) {
+                    } else if (targetWeap.ammo.includes('trap-suicide') || targetWeap.ammo.includes('-gaz') || targetWeap.ammo.includes('gaz-uridium')) {
+                        selectedBat.tags.push('poison');
+                        selectedBat.tags.push('poison');
+                        selectedBat.tags.push('poison');
+                        selectedBat.tags.push('poison');
+                    } else if (targetWeap.ammo.includes('trap')) {
                         selectedBat.tags.push('poison');
                     }
                     // console.log('Poison!');
@@ -1962,4 +1988,11 @@ function defense(melee,init) {
     // doneAction(targetBat);
     targetBatArrayUpdate();
     escaped = false;
+    if (targetWeap.ammo.includes('-gaz') && targetWeap.ammo != 'grenade-gaz') {
+        let fromMissile = false;
+        if (targetWeap.ammo === 'missile-gaz') {
+            fromMissile = true;
+        }
+        seveso(delugeTileId,fromMissile);
+    }
 };

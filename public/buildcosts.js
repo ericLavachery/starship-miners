@@ -64,8 +64,8 @@ function voirReserveStation() {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName or" id="gentils">RESERVE (STATION)</span><br>');
-    $('#conUnitList').append('<span class="constName"><span class="jaune klik" onclick="voirReserve()">Zone</span> &nbsp;|&nbsp; <span class="jaune klik" onclick="voirReserve()">Station</span></span><br>');
+    $('#conUnitList').append('<span class="constName cy" id="gentils">RESERVE (STATION)</span><br>');
+    $('#conUnitList').append('<span class="constName"><span class="jaune klik" onclick="voirReserve()">Zone</span> &nbsp;|&nbsp; <span class="jaune klik" onclick="voirReserveStation()">Station</span></span><br>');
     $('#conUnitList').append('<br>');
     findLanders();
     let dispoRes;
@@ -440,6 +440,9 @@ function getDeployCosts(unit,ammo,weapNum,type) {
             }
         } else {
             deployFactor = Math.ceil(unit.squads*unit.weapon2.rof*unit.weapon2.power/5*deploySalvos);
+            if (unit.weapon2.range < 2) {
+                deployFactor = Math.ceil(deployFactor/1.65);
+            }
             if (!unit.weapon2.noBis) {
                 if (unit.maxSalvo >= 2) {
                     if (unit.ap/unit.weapon2.cost >= unit.maxSalvo) {
@@ -450,7 +453,7 @@ function getDeployCosts(unit,ammo,weapNum,type) {
                 }
             }
             if (ammo.name.includes('lame') && (unit.weapon2.aoe === 'squad' || unit.weapon2.aoe === 'bat')) {
-                deployFactor = deployFactor*6;
+                deployFactor = deployFactor*9;
             }
         }
         if (ammo.deploy != undefined) {

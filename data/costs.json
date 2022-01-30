@@ -728,7 +728,7 @@
     {
         "id":85,
         "name":"Bigman",
-        "levels":{"rednecks":99,"blades":11,"bulbos":5,"drogmulojs":14,"tiradores":99,"detruas":99,"brasier":11},
+        "levels":{"rednecks":99,"blades":11,"bulbos":5,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":11},
         "bldReq":["Chaîne de montage","Laboratoire"],
         "compReq":{"cyber":1},
         "compPass":["brasier"],
@@ -763,7 +763,7 @@
     {
         "id":156,
         "name":"Riggers",
-        "levels":{"rednecks":15,"blades":16,"bulbos":9,"drogmulojs":17,"tiradores":16,"detruas":99,"brasier":12},
+        "levels":{"rednecks":12,"blades":16,"bulbos":9,"drogmulojs":14,"tiradores":16,"detruas":99,"brasier":12},
         "bldReq":["Atelier","Centre de recherches"],
         "compReq":{"cyber":1},
         "compPass":["rednecks"],
@@ -900,7 +900,7 @@
     {
         "id":135,
         "name":"Runners",
-        "levels":{"rednecks":12,"blades":99,"bulbos":99,"drogmulojs":12,"tiradores":99,"detruas":9,"brasier":99},
+        "levels":{"rednecks":13,"blades":99,"bulbos":99,"drogmulojs":12,"tiradores":99,"detruas":9,"brasier":99},
         "bldReq":["Armurerie","Centre de recherches"],
         "compReq":{"cyber":1},
         "compPass":["detruas"],
@@ -1352,19 +1352,6 @@
         "inRuin":3
     },
     {
-        "id":244,
-        "name":"Factotruck",
-        "levels":{"rednecks":16,"blades":17,"bulbos":16,"drogmulojs":16,"tiradores":16,"detruas":16,"brasier":17},
-        "bldReq":["Soute","Usine"],
-        "bldEquiv":["Atelier","Chaîne de montage"],
-        "compReq":{"ind":3},
-        "upkeep":{"Energie":24},
-        "prod":{"Scrap":8},
-        "costs":{"Compo1":435,"Compo2":630,"Compo3":270,"Eau":90,"Energie":750,"Hydrocarbure":600,"Fuel":900,"Huile":250,"Carbone":400,"Scrap":600,"Titane":200,"Aluminium":200,"Moteurs":150,"Fer":500,"Platine":75,"Zinc":300,"Azote":400,"Electros":350,"Batteries":250},
-        "deploy":{"Fuel":160,"Huile":40,"Eau":160,"Silicium":20},
-        "fabTime":300
-    },
-    {
         "id":79,
         "name":"The Void",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":19,"brasier":99},
@@ -1550,6 +1537,7 @@
         "levels":{"rednecks":15,"blades":18,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":17},
         "bldReq":["Centre de recherches","Usine"],
         "compReq":{"ext":3},
+        "compPass":["rednecks"],
         "costs":{"Fer":129,"Scrap":111,"Carbone":159,"Aluminium":18,"Moteurs":90,"Cuivre":53,"Electros":156,"Batteries":88,"Compo2":284,"Huile":36,"Cobalt":30,"Hélium":60,"Eau":584,"Silicium":80,"Zinc":33},
         "deploy":{"Fuel":115,"Energie":60,"Huile":15,"Eau":320,"Silicium":40},
         "fabTime":130,
@@ -2147,7 +2135,7 @@
     {
         "id":123,
         "name":"Pompe",
-        "upkeep":{"Eau":4,"Energie":6},
+        "upkeep":{"Eau":4,"Energie":4},
         "prod":{"Oxygène":4},
         "costs":{"Compo1":75,"Scrap":100,"Fer":50,"Moteurs":12,"Batteries":6,"Energie":120},
         "fabTime":20,
@@ -2367,7 +2355,7 @@
     {
         "id":283,
         "name":"Cryogénérateur",
-        "upkeep":{"Energie":12},
+        "upkeep":{"Energie":4},
         "costs":{"Compo1":200,"Eau":18,"Hélium":300,"Carbone":75,"Fer":75,"Titane":35,"Moteurs":10,"Cuivre":25,"Electros":35,"Batteries":10},
         "fabTime":75,
         "slots":1
