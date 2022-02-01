@@ -919,7 +919,14 @@ function skillsInfos(bat,batType,near) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="+'+rushAP+' PA" class="boutonVert skillButtons" onclick="rush('+rushAP+')"><i class="fas fa-running"></i> <span class="small">0</span></button>&nbsp; Rush</h4></span>');
     }
     // RAGE
-    if (bat.tags.includes('hero') && batType.skills.includes('herorage') && !bat.tags.includes('norage') && !playerInfos.onShip) {
+    let rageOK = false;
+    if (bat.tags.includes('hero') && batType.skills.includes('herorage')) {
+        rageOK = true;
+    }
+    if (batType.skills.includes('rage')) {
+        rageOK = true;
+    }
+    if (rageOK && !bat.tags.includes('norage') && !playerInfos.onShip) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Bonus de puissance aux armes de mêlée" class="boutonVert skillButtons" onclick="rage()"><i class="ra ra-muscle-up rpg"></i> <span class="small">0</span></button>&nbsp; Rage</h4></span>');
     }
     // DOXEY

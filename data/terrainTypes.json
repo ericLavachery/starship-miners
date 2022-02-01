@@ -18,7 +18,7 @@
         "fortifcover":4,
         "aliencover":0,
         "fishcover":0,
-        "minChance":75,
+        "minChance":1000,
         "roadBuild":3,
         "color":"#000000"
     },
@@ -41,7 +41,7 @@
         "fortifcover":4,
         "aliencover":0,
         "fishcover":0,
-        "minChance":75,
+        "minChance":1000,
         "roadBuild":3,
         "color":"#4d4e48"
     },
@@ -64,7 +64,7 @@
         "fortifcover":11,
         "aliencover":8,
         "fishcover":4,
-        "minChance":12,
+        "minChance":15,
         "roadBuild":7,
         "color":"#382d1d"
     },
@@ -87,7 +87,7 @@
         "fortifcover":7,
         "aliencover":4,
         "fishcover":1,
-        "minChance":18,
+        "minChance":23,
         "roadBuild":5,
         "color":"#55492c"
     },
@@ -110,7 +110,7 @@
         "fortifcover":4,
         "aliencover":0,
         "fishcover":0,
-        "minChance":75,
+        "minChance":50,
         "roadBuild":3,
         "color":"#9c8d4b"
     },
@@ -133,7 +133,7 @@
         "fortifcover":5,
         "aliencover":1,
         "fishcover":1,
-        "minChance":125,
+        "minChance":90,
         "roadBuild":3,
         "color":"#80a72c"
     },
@@ -156,7 +156,7 @@
         "fortifcover":7,
         "aliencover":5,
         "fishcover":2,
-        "minChance":125,
+        "minChance":90,
         "roadBuild":3,
         "color":"#6f6e13"
     },
@@ -179,7 +179,7 @@
         "fortifcover":8,
         "aliencover":6,
         "fishcover":2,
-        "minChance":150,
+        "minChance":90,
         "roadBuild":4,
         "color":"#1b632f"
     },
@@ -202,7 +202,7 @@
         "fortifcover":5,
         "aliencover":-3,
         "fishcover":3,
-        "minChance":100,
+        "minChance":65,
         "roadBuild":5,
         "color":"#566878"
     },

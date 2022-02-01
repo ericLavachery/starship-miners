@@ -3311,8 +3311,8 @@
         "size":3,
         "volume":0.9,
         "stealth":16,
-        "speed":1,
-        "ap":16,
+        "speed":5,
+        "ap":17,
         "maxSalvo":1,
         "weapon":{
             "name":"Ergots",
@@ -3322,7 +3322,7 @@
             "isShort":true,
             "noGrip":true,
             "rof":20,
-            "accuracy":18,
+            "accuracy":22,
             "dca":0.75,
             "power":7,
             "aoe":"unit",
@@ -3337,7 +3337,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","camo","regeneration","ranger","mutant","nofear","guerrilla","tirailleur","baddef","fastguet","resistpoison","noblub","nochef","herorage","herosalvo","lowstress"],
+        "skills":["fouille","fortif","datt","camo","regeneration","rage","ranger","mutant","nofear","guerrilla","tirailleur","baddef","fastguet","resistpoison","noblub","nochef","herosalvo","lowstress"],
         "fuzz":0,
         "deathFx":"137036__pyrocamancer__beast-death"
     },

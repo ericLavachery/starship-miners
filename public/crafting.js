@@ -538,7 +538,7 @@ function solarProd(bat,batType,time,sim,quiet) {
                 let dispoRes = getDispoRes(key);
                 if (dispoRes < conso) {
                     upkeepPaid = false;
-                    message = message+key+':<span class="rose">pénurie!</span><br>';
+                    message = message+key+':<span class="hrouge">pénurie!</span><br>';
                 }
             });
             if (upkeepPaid) {
@@ -651,7 +651,7 @@ function triProd(bat,batType,time,sim,quiet) {
             let dispoRes = getDispoRes(key);
             if (dispoRes < conso) {
                 upkeepPaid = false;
-                message = message+key+':<span class="rose">pénurie!</span><br>';
+                message = message+key+':<span class="hrouge">pénurie!</span><br>';
             }
         });
         if (upkeepPaid) {
@@ -763,7 +763,7 @@ function upkeepAndProd(bat,batType,time,sim,quiet) {
                 let dispoRes = getDispoRes(key);
                 if (dispoRes < conso) {
                     upkeepPaid = false;
-                    message = message+key+':<span class="rose">pénurie!</span><br>';
+                    message = message+key+':<span class="hrouge">pénurie!</span><br>';
                 }
             });
             if (upkeepPaid) {

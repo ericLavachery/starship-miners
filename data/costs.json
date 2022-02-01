@@ -2705,6 +2705,14 @@
         "crime":-4
     },
     {
+        "id":244,
+        "name":"Stocks",
+        "bldReq":["Station"],
+        "costs":{"Compo1":455,"Compo2":145},
+        "fabTime":1,
+        "slots":0
+    },
+    {
         "id":273,
         "name":"Structure",
         "bldReq":["Station"],

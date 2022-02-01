@@ -17,11 +17,15 @@ function showBatPrefab(bat) {
     conWindowOut();
     let batPic = getBatPic(bat,batType);
     let unitsLeft = bat.squadsLeft*batType.squadSize;
-    if (batType.skills.includes('nonumname')) {
-        $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonCiel skillButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+'</h3></span>');
-    } else {
-        $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3></span>');
+    if (bat.citoyens >= 1) {
+        unitsLeft = bat.citoyens;
     }
+    if (batType.squads === 6 && batType.squadSize === 1 && (batType.cat === 'buildings' || batType.cat === 'devices' || batType.skills.includes('transorbital'))) {
+        unitsLeft = '';
+    } else if (batType.skills.includes('nonumname')) {
+        unitsLeft = '';
+    }
+    $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3></span>');
     $('#'+bodyPlace).append('<span class="constName jaune">Accès par la soute</span><br>');
     $('#'+bodyPlace).append('<button type="button" title="Aller dans la soute" class="boutonGris iconButtons" onclick="goSoutePrefab('+bat.id+')" onmousedown="clicSound()"><i class="fas fa-warehouse"></i></button>');
     $("#unitInfos").animate({scrollTop:0},"fast");
@@ -66,11 +70,13 @@ function batInfos(bat,batType,pop) {
         moveInsideBats(bat);
     }
     let unitsLeft = bat.squadsLeft*batType.squadSize;
-    if (batType.squads === 6 && batType.squadSize === 1 && (batType.cat === 'buildings' || batType.cat === 'devices')) {
-        unitsLeft = '';
-    }
     if (bat.citoyens >= 1) {
         unitsLeft = bat.citoyens;
+    }
+    if (batType.squads === 6 && batType.squadSize === 1 && (batType.cat === 'buildings' || batType.cat === 'devices' || batType.skills.includes('transorbital'))) {
+        unitsLeft = '';
+    } else if (batType.skills.includes('nonumname')) {
+        unitsLeft = '';
     }
     let resMax = batType.transRes;
     if (bat.citoyens >= 1) {
@@ -85,17 +91,9 @@ function batInfos(bat,batType,pop) {
     }
     if (pop) {
         $('#'+headPlace).append('<img src="/static/img/units/'+batType.cat+'/'+batPic+'.png">&nbsp;');
-        if (batType.skills.includes('nonumname')) {
-            $('#'+headPlace).append('<span class="blockTitle"><h2>'+batType.name+'</h2></span>');
-        } else {
-            $('#'+headPlace).append('<span class="blockTitle"><h2>'+unitsLeft+' '+batType.name+'</h2></span>');
-        }
+        $('#'+headPlace).append('<span class="blockTitle"><h2>'+unitsLeft+' '+batType.name+'</h2></span>');
     } else {
-        if (batType.skills.includes('nonumname')) {
-            $('#'+headPlace).append('<span class="blockTitle"><h3><button type="button" title="Détail du bataillon" class="boutonCiel skillButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+'</h3> '+vetIcon+'</span>');
-        } else {
-            $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3> '+vetIcon+'</span>');
-        }
+        $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3> '+vetIcon+'</span>');
     }
     $('#'+bodyPlace).append('<div class="shSpace"></div>');
     let near = nearWhat(bat,batType);
@@ -583,7 +581,7 @@ function batInfos(bat,batType,pop) {
     if (!pop) {
         $('#'+bodyPlace).append('<hr>');
         let demText;
-        if (!bat.tags.includes('nomove')) {
+        if (!bat.tags.includes('nomove') && !batType.skills.includes('nodelete')) {
             let okKill = checkOkKill(batType);
             if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || (batType.skills.includes('recupcorps') && okKill) || batType.cat === 'buildings' || batType.skills.includes('okdel')) {
                 if (batType.skills.includes('recupcit')) {
@@ -625,7 +623,7 @@ function batInfos(bat,batType,pop) {
         if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Xxxxx') {
             $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Supprimer le bataillon (triche!)" class="boutonCiel skillButtons" onclick="removeBat('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
         }
-        if (batType.transRes >= 1) {
+        if (batType.transRes >= 1 && batType.name != 'Soute' && batType.name != 'Stocks') {
             if (Object.keys(bat.transRes).length >= 1) {
                 $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter toutes les ressources" class="boutonRouge skillButtons" onclick="fretThrow()"><i class="fas fa-truck-loading"></i></button>&nbsp; Vider</h4></span>');
             }

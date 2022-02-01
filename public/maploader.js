@@ -385,6 +385,13 @@ function showBataillon(bat) {
     let batPic = getBatPic(bat,batType);
     let batCat = batType.cat;
     let unitsLeft = bat.squadsLeft*batType.squadSize;
+    if (batType.squads === 6 && batType.squadSize === 1 && (batType.cat === 'buildings' || batType.cat === 'devices' || batType.skills.includes('transorbital'))) {
+        unitsLeft = '';
+    } else if (batType.skills.includes('nonumname')) {
+        unitsLeft = '';
+    } else if (bat.citoyens >= 1) {
+        unitsLeft = '';
+    }
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
     let degNum = getDamageBar(bat);
@@ -435,6 +442,13 @@ function showPrefab(bat) {
     let batPic = getBatPic(bat,batType);
     let batCat = batType.cat;
     let unitsLeft = bat.squadsLeft*batType.squadSize;
+    if (batType.squads === 6 && batType.squadSize === 1 && (batType.cat === 'buildings' || batType.cat === 'devices' || batType.skills.includes('transorbital'))) {
+        unitsLeft = '';
+    } else if (batType.skills.includes('nonumname')) {
+        unitsLeft = '';
+    } else if (bat.citoyens >= 1) {
+        unitsLeft = '';
+    }
     $('#b'+bat.vmt).empty();
     let resHere = showRes(bat.vmt);
     let degNum = getDamageBar(bat);

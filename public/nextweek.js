@@ -111,68 +111,90 @@ function eventProduction(afterMission,time,sim,quiet) {
     if (!quiet) {
         warning('Poubelles','Scrap:<span class="vert">+'+scrapNum+'</span><br>',true);
     }
+    // tags before
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone" || (bat.loc === "trans" && bat.locId === souteId && !bat.tags.includes('return'))) {
+        if ((bat.loc === "zone" || bat.loc === "trans") && !bat.tags.includes('return')) {
             batType = getBatType(bat);
-            // PRODUCTION
-            if (!playerInfos.onShip || !batType.skills.includes('nostatprod')) {
-                if (batType.skills.includes('upkeep') || batType.skills.includes('prodres') || batType.skills.includes('upnodis')) {
-                    if (!bat.tags.includes('construction') || playerInfos.onShip) {
-                        upkeepAndProd(bat,batType,time,sim,quiet);
+            if (batType.skills.includes('before')) {
+                // PRODUCTION
+                if (!playerInfos.onShip || !batType.skills.includes('nostatprod')) {
+                    if (batType.skills.includes('upkeep') || batType.skills.includes('prodres') || batType.skills.includes('upnodis')) {
+                        if (!bat.tags.includes('construction') || playerInfos.onShip) {
+                            upkeepAndProd(bat,batType,time,sim,quiet);
+                        }
                     }
                 }
-            }
-            if (batType.skills.includes('dogprod') && bat.tags.includes('prodres')) {
-                chenilProd(bat,batType,time,sim,quiet);
-            }
-            if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
-                solarProd(bat,batType,time,sim,quiet);
-            }
-            if (batType.skills.includes('transcrap') && bat.tags.includes('prodres')) {
-                triProd(bat,batType,time,sim,quiet);
-            }
-            // RECHERCHE
-            if (!sim) {
-                if (bat.type === 'Chercheurs') {
-                    rechercheSci(bat,time);
+                if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
+                    solarProd(bat,batType,time,sim,quiet);
                 }
             }
-            // ENTRAINEMENT
-            if (!afterMission && !sim) {
-                if (playerInfos.bldList.includes('Camp d\'entraînement')) {
-                    let trained = false;
-                    if (batType.cat === 'infantry') {
-                        trained = true;
-                    } else if (batType.cat === 'vehicles') {
-                        if (batType.size <= 15) {
-                            if (batType.skills.includes('robot')) {
-                                if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+        }
+    });
+    // others
+    bataillons.forEach(function(bat) {
+        if ((bat.loc === "zone" || bat.loc === "trans") && !bat.tags.includes('return')) {
+            batType = getBatType(bat);
+            if (!batType.skills.includes('before')) {
+                // PRODUCTION
+                if (!playerInfos.onShip || !batType.skills.includes('nostatprod')) {
+                    if (batType.skills.includes('upkeep') || batType.skills.includes('prodres') || batType.skills.includes('upnodis')) {
+                        if (!bat.tags.includes('construction') || playerInfos.onShip) {
+                            upkeepAndProd(bat,batType,time,sim,quiet);
+                        }
+                    }
+                }
+                if (batType.skills.includes('dogprod') && bat.tags.includes('prodres')) {
+                    chenilProd(bat,batType,time,sim,quiet);
+                }
+                if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
+                    solarProd(bat,batType,time,sim,quiet);
+                }
+                if (batType.skills.includes('transcrap') && bat.tags.includes('prodres')) {
+                    triProd(bat,batType,time,sim,quiet);
+                }
+                // RECHERCHE
+                if (!sim) {
+                    if (bat.type === 'Chercheurs') {
+                        rechercheSci(bat,time);
+                    }
+                }
+                // ENTRAINEMENT
+                if (!afterMission && !sim) {
+                    if (playerInfos.bldList.includes('Camp d\'entraînement')) {
+                        let trained = false;
+                        if (batType.cat === 'infantry') {
+                            trained = true;
+                        } else if (batType.cat === 'vehicles') {
+                            if (batType.size <= 15) {
+                                if (batType.skills.includes('robot')) {
+                                    if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                                        trained = true;
+                                    }
+                                } else if (batType.skills.includes('cyber')) {
                                     trained = true;
                                 }
-                            } else if (batType.skills.includes('cyber')) {
-                                trained = true;
                             }
                         }
-                    }
-                    if (trained) {
-                        bat.xp = bat.xp+(time/4);
-                        bat.xp = bat.xp.toFixedNumber(2);
-                    }
-                }
-                if (playerInfos.bldList.includes('Salle de sport')) {
-                    let trained = false;
-                    if (batType.cat === 'infantry') {
-                        trained = true;
-                    } else if (batType.cat === 'vehicles') {
-                        if (batType.size <= 15) {
-                            if (batType.skills.includes('cyber')) {
-                                trained = true;
-                            }
+                        if (trained) {
+                            bat.xp = bat.xp+(time/4);
+                            bat.xp = bat.xp.toFixedNumber(2);
                         }
                     }
-                    if (trained) {
-                        bat.xp = bat.xp+(time/14);
-                        bat.xp = bat.xp.toFixedNumber(2);
+                    if (playerInfos.bldList.includes('Salle de sport')) {
+                        let trained = false;
+                        if (batType.cat === 'infantry') {
+                            trained = true;
+                        } else if (batType.cat === 'vehicles') {
+                            if (batType.size <= 15) {
+                                if (batType.skills.includes('cyber')) {
+                                    trained = true;
+                                }
+                            }
+                        }
+                        if (trained) {
+                            bat.xp = bat.xp+(time/14);
+                            bat.xp = bat.xp.toFixedNumber(2);
+                        }
                     }
                 }
             }
@@ -410,7 +432,7 @@ function showResBallance(quiet) {
 };
 
 function eventCitoyens(time,sim,quiet) {
-    let newCitsNumber = Math.floor(time*rand.rand(10,20)/42)*6;
+    let newCitsNumber = Math.floor(time*rand.rand(10,20)/10);
     let citId = 126;
     let citName = 'Citoyens';
     if (rand.rand(1,100) <= ruinsCrimChance) {
@@ -624,7 +646,7 @@ function chenilProd(bat,batType,time,sim,quiet) {
                 let dispoRes = getDispoRes(key);
                 if (dispoRes < conso) {
                     upkeepPaid = false;
-                    message = message+key+':<span class="rose">pénurie!</span><br>';
+                    message = message+key+':<span class="hrouge">pénurie!</span><br>';
                 }
             });
             if (upkeepPaid) {

@@ -18,7 +18,7 @@ function loadRes(retour) {
     $('#conUnitList').append('<span class="constName cy"><img src="/static/img/units/'+selectedBatType.cat+'/'+selectedBatPic+'.png">&nbsp;');
     $('#conUnitList').append('<h1>'+selectedBat.type.toUpperCase()+'</h1><br>');
     $('#conUnitList').append('<span class="constName cy">Charger</span> <span class="cy">(max '+restSpace+')</span><br>');
-    if (!playerInfos.onShip || selectedBatType.name === 'Soute') {
+    if (!playerInfos.onShip || selectedBatType.name === 'Soute' || selectedBatType.name === 'Stocks') {
         if (seeAllFret) {
             $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-eye-slash"></i></span>');
             $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="seeAllTrans(false)" title="Ne voir que les bataillons contenant des ressources">Ne voir que le fret</span></span><br>');

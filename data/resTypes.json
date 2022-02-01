@@ -187,7 +187,7 @@
         "energie": -1,
         "equiv": 1.5,
         "rlab": 5,
-        "planets":{"Dom":1,"Sarak":1.5,"Gehenna":0.7,"Kzin":2,"Horst":1}
+        "planets":{"Dom":1,"Sarak":2,"Gehenna":0.7,"Kzin":2,"Horst":1}
     },
     {
         "id": 14,
@@ -348,7 +348,7 @@
         "batch": 5,
         "energie": -1,
         "equiv": 1,
-        "planets":{"Dom":1,"Sarak":0.2,"Gehenna":0,"Kzin":0.7,"Horst":0}
+        "planets":{"Dom":1,"Sarak":0.7,"Gehenna":0,"Kzin":0.7,"Horst":0}
     },
     {
         "id": 24,
@@ -373,7 +373,7 @@
         "energie": 10,
         "equiv": 0.7,
         "ctri": 20,
-        "planets":{"Dom":1,"Sarak":0.8,"Gehenna":0,"Kzin":1,"Horst":0.7}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.7}
     },
     {
         "id": 26,
