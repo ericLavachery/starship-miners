@@ -1669,7 +1669,7 @@
         "cat":"equip",
         "skills":[],
         "info":"Recherche: Camouflage",
-        "bldReq":["Centre de recherches"],
+        "bldReq":["Laboratoire"],
         "compReq":{"cam":1},
         "factor":"one",
         "costs":{"Blendium":200,"Tissus":200,"Végétaux":200}
@@ -1738,7 +1738,7 @@
         "cat":"equip",
         "skills":[],
         "info":"Recherche: Industrie",
-        "bldReq":["Usine"],
+        "bldReq":["Chaîne de montage"],
         "compReq":{},
         "factor":"one",
         "costs":{"Eau":100,"Energie":200,"Hydrocarbure":100,"Fuel":100,"Huile":100,"Scrap":200,"Titane":20,"Aluminium":30,"Fer":60,"Platine":30,"Zinc":30,"Azote":150,"Moteurs":50,"Electros":50,"Batteries":50}
@@ -1758,7 +1758,7 @@
         "cat":"equip",
         "skills":[],
         "info":"Recherche: Energie",
-        "bldReq":["Centre de recherches"],
+        "bldReq":["Laboratoire"],
         "compReq":{},
         "factor":"one",
         "costs":{"Compo3":50,"Eau":300,"Energie":200,"Carbone":250,"Titane":75,"Plomb":100,"Nickel":100,"Cuivre":80,"Bore":150,"Plutonium":75,"Moteurs":20,"Electros":20,"Batteries":50}

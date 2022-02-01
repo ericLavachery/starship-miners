@@ -242,13 +242,6 @@ function checkEggsDrop() {
     let drop = false;
     let satDrop = false;
     let eggPauseDice = calcEggPause(false);
-    // let adjMapDrop = playerInfos.mapDrop;
-    // let adjMapTurn = playerInfos.mapTurn+landingNoise-13+zone[0].mapDiff;
-    // if (adjMapTurn <= 0) {
-    //     adjMapTurn = 0;
-    //     adjMapDrop = 0;
-    // }
-    // let dropTurn = Math.floor(((adjMapDrop*cumDrop)+adjMapTurn)/(cumDrop+1));
     let dropChance = getDropChance(playerInfos.mapTurn);
     let maxEggsInPlay = checkMaxEggsInPlay();
     console.log('maxEggsInPlay = '+maxEggsInPlay);
@@ -336,7 +329,7 @@ function checkEggsDrop() {
         if (eggDropCount >= 1 || satDrop) {
             eggSound();
             playMusic('horns',true);
-            if (Math.floor(playerInfos.mapTurn/coconStats.turns) > playerInfos.cocons && !satDrop && rand.rand(1,100) <= playerInfos.mapTurn*2) {
+            if (Math.floor(playerInfos.mapTurn/coconStats.turns) > playerInfos.cocons && !satDrop) {
                 if (coconStats.level >= 9) {
                     dropEgg('Cocon','nedge');
                 } else {

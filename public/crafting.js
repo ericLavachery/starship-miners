@@ -602,8 +602,8 @@ function solarProd(bat,batType,time,sim,quiet) {
     }
 };
 
-function solarPanel(bat,batType,sim) {
-    console.log('psol prod');
+function solarPanel(bat,batType) {
+    console.log('********** psol prod **********');
     console.log(batType.name);
     let tile = getTileById(bat.tileId);
     let upkeepPaid = true;
@@ -619,7 +619,9 @@ function solarPanel(bat,batType,sim) {
             energyProd = Math.round(energyProd/2);
         }
         energyProd = energyCreation(energyProd);
-        // resAdd('Energie',energyProd);
+        if (energyProd < 1) {
+            energyProd = 1;
+        }
         if (playerInfos.onShip) {
             resAdd('Energie',energyProd);
         } else {
@@ -632,7 +634,7 @@ function solarPanel(bat,batType,sim) {
                 minedThisTurn['Energie'] = minedThisTurn['Energie']+energyProd;
             }
         }
-        console.log('prod = Energie:'+energyProd);
+        console.log('psol ('+bat.type+') = Energie:'+energyProd);
     }
 };
 

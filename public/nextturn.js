@@ -341,7 +341,7 @@ function nextTurnEnd() {
                     triProd(bat,batType,1,false,false);
                 }
                 if (!playerInfos.onShip) {
-                    if (bat.eq.includes('psol') || bat.eq.includes('psol')) {
+                    if (bat.eq.includes('psol') || bat.logeq.includes('psol')) {
                         solarPanel(bat,batType);
                     }
                 }

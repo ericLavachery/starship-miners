@@ -1695,6 +1695,8 @@ function getResRecup(bat,batType) {
                 }
                 if (key != 'Transorb') {
                     value = Math.ceil(value/100*recupFactor);
+                } else {
+                    value = 0;
                 }
                 if (value >= 1) {
                     if (resRecup[key] === undefined) {

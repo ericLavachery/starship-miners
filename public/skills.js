@@ -728,7 +728,7 @@ function getNitroBonus(bat) {
     if (batAPLeft < transBonus-1 && !bat.tags.includes('construction')) {
         batAPLeft = transBonus-1;
     }
-    let nitroBonus = batAPLeft-Math.round(bat.apLeft);
+    let nitroBonus = Math.round(batAPLeft-bat.apLeft);
     return nitroBonus;
 };
 

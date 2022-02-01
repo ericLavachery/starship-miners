@@ -504,12 +504,12 @@ function maxUnits(unit) {
     if (unit.name === 'Chercheurs') {
         if (playerInfos.onShip) {
             let maxSci = 1;
-            if (playerInfos.gang === 'bulbos') {
-                maxSci = maxSci+Math.floor(playerInfos.comp.det/2.5);
-            } else {
-                maxSci = maxSci+Math.floor(playerInfos.comp.det/5);
-            }
             if (playerInfos.bldVM.includes('Centre de recherches')) {
+                if (playerInfos.gang === 'bulbos') {
+                    maxSci = maxSci+Math.floor(playerInfos.comp.det/2.5);
+                } else {
+                    maxSci = maxSci+Math.floor(playerInfos.comp.det/5);
+                }
                 maxSci = maxSci+2;
             } else if (playerInfos.bldVM.includes('Laboratoire')) {
                 maxSci = maxSci+1;
@@ -852,6 +852,15 @@ function getPlanetNameById(pid) {
     } else {
         return 'Dom';
     }
+};
+
+function getRescueByName(rescueName) {
+    let rescue = {};
+    let index = sauvetages.findIndex((obj => obj.name == rescueName));
+    if (index > -1) {
+        rescue = armorTypes[index];
+    }
+    return rescue;
 };
 
 function tileNaming(tile,withUnit,fromTileId) {

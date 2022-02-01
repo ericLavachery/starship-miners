@@ -1190,7 +1190,7 @@
         "maxVeg":3,
         "skills":["venin","inflammable","longshot","capmen","lurk"],
         "deathFx":"death1",
-        "killRes":{"Aranium":3,"Slime":1},
+        "killRes":{"Aranium":3,"Slime":1,"Blendium":1},
         "killXP":2,
         "flavText":"Les gluantes chassent vos infanteries en priorité, même celles qui sont très éloignées. Elles injectent leur venin lorsque vous êtes immobilisé ou épuisé. Elles sont furtives en forêt."
     },
