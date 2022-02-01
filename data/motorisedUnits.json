@@ -267,7 +267,7 @@
             "rof":18,
             "accuracy":22,
             "dca":1,
-            "power":17,
+            "power":18,
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
