@@ -31,7 +31,7 @@ function makeRescueDB() {
     sauvetages.push(newRescue);
     // ---------------------------------------------------------------------
     newRescue.name = "Cybercontainer";
-    newRescue.txt = "Votre navette de secours à découvert un cybercontainer spatial qui dérivent dans l'espace.";
+    newRescue.txt = "Votre navette de secours à découvert un cybercontainer spatial qui dérive dans l'espace.";
     newRescue.nav = true;
     newRescue.rarity = 15;
     newRescue.bat = ["Droïdes",1,4];
@@ -217,7 +217,7 @@ function makeRescueDB() {
     newRescue.bat = ["Chercheurs",1,3];
     newRescue.map = -1;
 	// +x en recherches
-	// +1 En vsp
+	// +1 en vsp
     sauvetages.push(newRescue);
     // ---------------------------------------------------------------------
     newRescue.name = "Abordage";

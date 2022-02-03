@@ -2,6 +2,51 @@ function checkRescue() {
 
 };
 
+// A FAIRE
+// newRescue.event = "Epidémie";
+// newRescue.map = -1;
+// blocs lander
+
+function rescueComp() {
+    let rescue = getRescueByName(rescueName);
+    if (rescue.comp != undefined) {
+        if (rescue.comp[0]) {
+            checkRescueComp();
+        }
+        if (rescue.comp[1] >= 1) {
+            playerInfos.sciRech = playerInfos.sciRech+rescue.comp[1];
+            warning('<span class="rose">Recherche</span>','<span class="vio">Points de recherche +'+rescue.comp[1]+'</span><br>',true);
+        }
+        if (rescue.comp[2] != '') {
+            let foundComp = getCompByName(rescue.comp[2]);
+            let compOK = isFoundCompOK(foundComp);
+            if (compOK) {
+                playerInfos.comp[foundComp.name] = playerInfos.comp[foundComp.name]+1;
+                warning('<span class="rose">Compétence trouvée</span>','<span class="vio">'+foundComp.fullName+' +1 (maintenant au niveau '+playerInfos.comp[foundComp.name]+')</span><br>',true);
+            }
+        }
+    }
+};
+
+function checkRescueComp() {
+    let foundComp = {};
+    let compOK = false;
+    let i = 1;
+    while (i <= 5) {
+        foundComp = randomComp(7,28);
+        compOK = isFoundCompOK(foundComp);
+        if (compOK) {
+            break;
+        }
+        if (i > 6) {break;}
+        i++
+    }
+    if (compOK) {
+        playerInfos.comp[foundComp.name] = playerInfos.comp[foundComp.name]+1;
+        warning('<span class="rose">Compétence trouvée</span>','<span class="vio">'+foundComp.fullName+' +1 (maintenant au niveau '+playerInfos.comp[foundComp.name]+')</span><br>',true);
+    }
+}
+
 function rescueUnits(rescueName) {
     ruinsEmpty = true;
     let rescue = getRescueByName(rescueName);
@@ -39,7 +84,7 @@ function rescueUnits(rescueName) {
         let numberOfBats = rand.rand(rescue.bat[1],rescue.bat[2]);
         let i = 1;
         while (i <= numberOfBats) {
-            addRescueBat(rescue.bat[0]);
+            addRescueBat(rescue.bat[0],rescue.bat[3]);
             if (i > 10) {break;}
             i++
         }
@@ -51,9 +96,41 @@ function rescueUnits(rescueName) {
             warning('<span class="rose">Nouveau bataillon</span>','<span class="vio">'+rescue.bat[0]+'</span><br>',true);
         }
     }
+    if (rescue.bat2 != undefined) {
+        let numberOfBats = rand.rand(rescue.bat2[1],rescue.bat2[2]);
+        let i = 1;
+        while (i <= numberOfBats) {
+            addRescueBat(rescue.bat2[0],rescue.bat2[3]);
+            if (i > 10) {break;}
+            i++
+        }
+        if (numberOfBats >= 2) {
+            ruinsEmpty = false;
+            warning('<span class="rose">Nouveaux bataillons</span>','<span class="vio">'+numberOfBats+' &times; '+rescue.bat2[0]+'</span><br>',true);
+        } else if (numberOfBats >= 1) {
+            ruinsEmpty = false;
+            warning('<span class="rose">Nouveau bataillon</span>','<span class="vio">'+rescue.bat2[0]+'</span><br>',true);
+        }
+    }
+    if (rescue.bat3 != undefined) {
+        let numberOfBats = rand.rand(rescue.bat3[1],rescue.bat3[2]);
+        let i = 1;
+        while (i <= numberOfBats) {
+            addRescueBat(rescue.bat3[0],rescue.bat3[3]);
+            if (i > 10) {break;}
+            i++
+        }
+        if (numberOfBats >= 2) {
+            ruinsEmpty = false;
+            warning('<span class="rose">Nouveaux bataillons</span>','<span class="vio">'+numberOfBats+' &times; '+rescue.bat3[0]+'</span><br>',true);
+        } else if (numberOfBats >= 1) {
+            ruinsEmpty = false;
+            warning('<span class="rose">Nouveau bataillon</span>','<span class="vio">'+rescue.bat3[0]+'</span><br>',true);
+        }
+    }
 };
 
-function addRescueBat(unitName) {
+function addRescueBat(unitName,soins) {
     let unitIndex = unitTypes.findIndex((obj => obj.name === unitName));
     conselUnit = unitTypes[unitIndex];
     conselPut = false;
@@ -62,6 +139,7 @@ function addRescueBat(unitName) {
     let typeId = conselUnit.id;
     putBat(1463,0,0);
     let newBat = getBatByTypeIdAndTileId(typeId,1463);
+    newBat.soins = soins;
     loadBat(newBat.id,souteId);
 }
 
@@ -79,22 +157,185 @@ function rescueRes(rescueName) {
             recupEquipRes(equip);
         });
     }
-    if (rescue.res != undefined) {
+    if (rescue.resRuin != undefined) {
         let i = 1;
-        while (i <= rescue.res[0]) {
-            checkRescueRes(rescue.res[1]);
+        while (i <= rescue.resRuin[0]) {
+            checkRescueRes(rescue.resRuin[1]);
             if (i > 50) {break;}
             i++
         }
     }
+    if (rescue.resBase != undefined) {
+        let resMax = 0;
+        let i = 1;
+        while (i <= rescue.resBase[0]) {
+            resMax = resMax+rand.rand(rescue.resBase[1],rescue.resBase[2]);
+            if (i > 50) {break;}
+            i++
+        }
+        checkRescueBaseRes(resMax);
+    }
+    if (rescue.resAlien != undefined) {
+        let resMax = 0;
+        let i = 1;
+        while (i <= rescue.resAlien[0]) {
+            resMax = resMax+rand.rand(rescue.resAlien[1],rescue.resAlien[2]);
+            if (i > 50) {break;}
+            i++
+        }
+        checkRescueAlienRes(resMax,rescue.resAlien[3]);
+    }
+    if (rescue.scrap != undefined) {
+        let numScrap = rand.rand(rescue.scrap[0],rescue.scrap[1]);
+        if (numScrap >= 1) {
+            let coffre = getBatById(souteId);
+            if (coffre.transRes['Scrap'] === undefined) {
+                coffre.transRes['Scrap'] = numScrap;
+            } else {
+                coffre.transRes['Scrap'] = coffre.transRes['Scrap']+numScrap;
+            }
+        }
+    }
     if (rescue.orb != undefined) {
         let numOrbs = rand.rand(rescue.orb[0],rescue.orb[1]);
-        let coffre = getBatById(souteId);
-        if (coffre.transRes['Transorb'] === undefined) {
-            coffre.transRes['Transorb'] = numOrbs;
-        } else {
-            coffre.transRes['Transorb'] = coffre.transRes['Transorb']+numOrbs;
+        if (numOrbs >= 1) {
+            let coffre = getBatById(souteId);
+            if (coffre.transRes['Transorb'] === undefined) {
+                coffre.transRes['Transorb'] = numOrbs;
+            } else {
+                coffre.transRes['Transorb'] = coffre.transRes['Transorb']+numOrbs;
+            }
         }
+    }
+};
+
+function checkRescueAlienRes(maxRes,rare) {
+    console.log('Check Ressources Alien');
+    let coffre = getBatById(souteId);
+    let totalRes = 0;
+    let thatResNum = 0;
+    let resFactor;
+    thatResNum = 10*(playerInfos.comp.ca+5)/7*rand.rand(8,13)*maxRes/666;
+    thatResNum = Math.ceil(thatResNum*150/rescueRateDiv);
+    console.log('!GET : Creatite '+thatResNum);
+    if (coffre.transRes['Creatite'] === undefined) {
+        coffre.transRes['Creatite'] = thatResNum;
+    } else {
+        coffre.transRes['Creatite'] = coffre.transRes['Creatite']+thatResNum;
+    }
+    totalRes = totalRes+thatResNum;
+    let shufRes = _.shuffle(resTypes);
+    shufRes.forEach(function(res) {
+        if (totalRes < maxRes) {
+            if (res.cat === 'alien' && res.name != 'Gibier') {
+                let resFactor = res.rarity;
+                let resOK = true;
+                if (rare && resFactor > 30 && res.name != 'Creatite') {
+                    resOK = false;
+                }
+                if (resOK) {
+                    thatResNum = resFactor*res.batch*(playerInfos.comp.ca+5)/7*rand.rand(1,20)*maxRes/20000;
+                    thatResNum = Math.ceil(thatResNum*150/rescueRateDiv);
+                    if (thatResNum >= 5) {
+                        console.log('!GET : '+res.name+' '+thatResNum);
+                        if (coffre.transRes[res.name] === undefined) {
+                            coffre.transRes[res.name] = thatResNum;
+                        } else {
+                            coffre.transRes[res.name] = coffre.transRes[res.name]+thatResNum;
+                        }
+                        totalRes = totalRes+thatResNum;
+                    }
+                }
+            }
+        }
+    });
+    if (totalRes < maxRes) {
+        shufRes.forEach(function(res) {
+            if (totalRes < maxRes) {
+                if (res.cat === 'alien' && res.name != 'Gibier') {
+                    let resFactor = res.rarity;
+                    if (rare) {
+                        resFactor = 50;
+                    }
+                    thatResNum = resFactor*res.batch*(playerInfos.comp.ca+5)/7*rand.rand(1,20)*maxRes/20000;
+                    thatResNum = Math.ceil(thatResNum*150/rescueRateDiv);
+                    if (thatResNum >= 5) {
+                        console.log('!GET : '+res.name+' '+thatResNum);
+                        if (coffre.transRes[res.name] === undefined) {
+                            coffre.transRes[res.name] = thatResNum;
+                        } else {
+                            coffre.transRes[res.name] = coffre.transRes[res.name]+thatResNum;
+                        }
+                        totalRes = totalRes+thatResNum;
+                    }
+                }
+            }
+        });
+    }
+};
+
+function checkRescueBaseRes(maxRes) {
+    console.log('Check Ressources de Base');
+    let coffre = getBatById(souteId);
+    let totalRes = 0;
+    let thatResNum = 0;
+    let resFactor;
+    let shufRes = _.shuffle(resTypes);
+    shufRes.forEach(function(res) {
+        if (totalRes < maxRes) {
+            if (res.name != 'Magma' && res.cat != 'alien' && res.name != 'Fruits' && res.name != 'Végétaux' && res.name != 'Bois') {
+                thatResNum = 0;
+                if (res.name === 'Oxygène') {
+                    resFactor = 40;
+                } else if (res.name === 'Scrap') {
+                    resFactor = 150;
+                } else if (res.rarity >= 36) {
+                    resFactor = res.rarity;
+                } else {
+                    resFactor = 0;
+                }
+                thatResNum = resFactor*res.batch*rand.rand(1,20)*maxRes/60000;
+                thatResNum = Math.ceil(thatResNum*150/rescueRateDiv);
+                if (thatResNum >= 20) {
+                    console.log('!GET : '+res.name+' '+thatResNum);
+                    if (coffre.transRes[res.name] === undefined) {
+                        coffre.transRes[res.name] = thatResNum;
+                    } else {
+                        coffre.transRes[res.name] = coffre.transRes[res.name]+thatResNum;
+                    }
+                    totalRes = totalRes+thatResNum;
+                }
+            }
+        }
+    });
+    if (totalRes < maxRes) {
+        shufRes.forEach(function(res) {
+            if (totalRes < maxRes) {
+                if (res.name != 'Magma' && res.cat != 'alien' && res.name != 'Fruits' && res.name != 'Végétaux' && res.name != 'Bois') {
+                    thatResNum = 0;
+                    if (res.name === 'Oxygène') {
+                        resFactor = 40;
+                    } else if (res.name === 'Scrap') {
+                        resFactor = 150;
+                    } else if (res.rarity >= 36) {
+                        resFactor = res.rarity;
+                    } else {
+                        resFactor = 0;
+                    }
+                    thatResNum = resFactor*res.batch*rand.rand(1,20)*maxRes/20000;
+                    thatResNum = Math.ceil(thatResNum*150/rescueRateDiv);
+                    if (thatResNum >= 20) {
+                        console.log('!GET : '+res.name+' '+thatResNum);
+                        if (coffre.transRes[res.name] === undefined) {
+                            coffre.transRes[res.name] = thatResNum;
+                        } else {
+                            coffre.transRes[res.name] = coffre.transRes[res.name]+thatResNum;
+                        }
+                        totalRes = totalRes+thatResNum;
+                    }
+                }
+            }
+        });
     }
 };
 
@@ -238,19 +479,21 @@ function recupUnitRes(batType) {
         Object.entries(resRecup).map(entry => {
             let key = entry[0];
             let value = entry[1];
-            if (value >= 1) {
-                let res = getResByName(key);
-                if (res.cat === 'alien') {
-                    if (playerInfos.alienRes[key] === undefined) {
-                        playerInfos.alienRes[key] = value;
+            if (key != 'Végétaux') {
+                if (value >= 1) {
+                    let res = getResByName(key);
+                    if (res.cat === 'alien') {
+                        if (playerInfos.alienRes[key] === undefined) {
+                            playerInfos.alienRes[key] = value;
+                        } else {
+                            playerInfos.alienRes[key] = playerInfos.alienRes[key]+value;
+                        }
                     } else {
-                        playerInfos.alienRes[key] = playerInfos.alienRes[key]+value;
-                    }
-                } else {
-                    if (coffre.transRes[key] === undefined) {
-                        coffre.transRes[key] = value;
-                    } else {
-                        coffre.transRes[key] = coffre.transRes[key]+value;
+                        if (coffre.transRes[key] === undefined) {
+                            coffre.transRes[key] = value;
+                        } else {
+                            coffre.transRes[key] = coffre.transRes[key]+value;
+                        }
                     }
                 }
             }

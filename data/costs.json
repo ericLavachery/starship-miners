@@ -2357,7 +2357,7 @@
         "name":"Cryogénérateur",
         "upkeep":{"Energie":4},
         "costs":{"Compo1":200,"Eau":18,"Hélium":300,"Carbone":75,"Fer":75,"Titane":35,"Moteurs":10,"Cuivre":25,"Electros":35,"Batteries":10},
-        "fabTime":75,
+        "fabTime":45,
         "slots":1
     },
     {

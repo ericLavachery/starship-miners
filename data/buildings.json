@@ -2281,8 +2281,8 @@
             "ammo":["standard"]
         },
         "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
-        "equip":["aucun","w2-autopistol","psol","isophon"],
-        "log3eq":"psol",
+        "equip":["aucun","w2-autopistol","psol","g2cryo","isophon"],
+        "log3eq":"g2cryo",
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,

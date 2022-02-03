@@ -267,8 +267,20 @@ function healEverything() {
             gearTags.push('necro');
         }
         bat.tags = gearTags;
-        bat.squadsLeft = batType.squads;
+        let healCost = 0;
+        if (bat.damage > 0) {
+            healCost = 1;
+        }
         bat.damage = 0;
+        healCost = healCost+batType.squads-bat.squadsLeft;
+        bat.squadsLeft = batType.squads;
+        if (healCost >= 1) {
+            if (bat.soins != undefined) {
+                bat.soins = bat.soins+healCost;
+            } else {
+                bat.soins = healCost;
+            }
+        }
         if (bat.autoLoad != undefined) {
             if (bat.autoLoad.length >= 1) {
                 bat.autoLoad = [];

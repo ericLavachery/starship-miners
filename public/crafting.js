@@ -499,6 +499,9 @@ function gasProd(bat,batType) {
                 let key = entry[0];
                 let value = entry[1];
                 let fullProd = value;
+                if (bat.eq === 'g2cryo' || bat.logeq === 'g2cryo') {
+                    fullProd = fullProd*2;
+                }
                 if (fullProd < 1) {
                     let prodChance = Math.floor(100*fullProd);
                     if (rand.rand(1,100) <= prodChance) {

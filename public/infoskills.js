@@ -67,10 +67,14 @@ function skillsInfos(bat,batType,near) {
             costString = displayCosts(deployCosts);
         }
         if (!bat.tags.includes('deploy')) {
-            if (enoughRes) {
+            if (enoughRes && bat.soins < 30) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Inclure ce lander dans la prochaine mission '+costString+'" class="boutonRouge bigButtons" onclick="landerDeploy('+bat.id+')"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
             } else {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ressources insuffisantes pour inclure ce lander dans la prochaine mission '+costString+'" class="boutonGris bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
+                if (bat.soins >= 30) {
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Lander trop endommagé, ne peut pas partir" class="boutonGris bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
+                } else {
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ressources insuffisantes pour inclure ce lander dans la prochaine mission '+costString+'" class="boutonGris bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
+                }
             }
             $('#unitInfos').append('<span class="blockTitle"><h3><button type="button" title="Ne pas inclure ce lander dans la prochaine mission" class="boutonOK bigButtons gf"><i class="fas fa-bed"></i></button>&nbsp; Rester</h3></span>');
         } else {
