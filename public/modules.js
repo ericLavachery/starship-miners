@@ -58,4 +58,8 @@ function fillModules(bat,batType) {
     if (bat.modules.pli === undefined) {
         bat.modules.pli = 0;
     }
+    // treuil
+    if (bat.modules.pli === undefined) {
+        bat.modules.pli = 0;
+    }
 };

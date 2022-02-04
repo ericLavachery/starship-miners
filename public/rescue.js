@@ -7,6 +7,8 @@ function checkRescue() {
 // newRescue.map = -1;
 // blocs lander
 
+// Effets DETECTION et VSP
+
 function rescueComp() {
     let rescue = getRescueByName(rescueName);
     if (rescue.comp != undefined) {
@@ -139,7 +141,11 @@ function addRescueBat(unitName,soins) {
     let typeId = conselUnit.id;
     putBat(1463,0,0);
     let newBat = getBatByTypeIdAndTileId(typeId,1463);
-    newBat.soins = soins;
+    if (soins >= 25) {
+        newBat.soins = rand.rand(15,soins);
+    } else if (soins >= 1) {
+        newBat.soins = rand.rand(0,soins);
+    }
     loadBat(newBat.id,souteId);
 }
 

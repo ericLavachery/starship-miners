@@ -959,14 +959,14 @@ function checkVehiclesAPSoins(bat,batType) {
 function getMaintenanceCosts(bat,batType) {
     let maintCosts = {};
     let state = (bat.soins*2)-7;
-    if (state > 85) {
-        state = 85;
+    if (state > 50) {
+        state = 50+Math.round((state-50)/5);
     }
     Object.entries(batType.costs).map(entry => {
         let key = entry[0];
         let value = entry[1];
         let thatCost = Math.floor(value*state/100);
-        if (thatCost >= 1) {
+        if (thatCost >= 1 && key != 'Transorb') {
             maintCosts[key] = thatCost;
         }
     });
