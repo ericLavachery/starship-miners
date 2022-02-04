@@ -66,11 +66,15 @@ function skillsInfos(bat,batType,near) {
         if (deployCosts != undefined) {
             costString = displayCosts(deployCosts);
         }
+        let batSoins = bat.soins;
+        if (bat.soins === undefined) {
+            batSoins = 0;
+        }
         if (!bat.tags.includes('deploy')) {
-            if (enoughRes && bat.soins < 30) {
+            if (enoughRes && batSoins < 30) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Inclure ce lander dans la prochaine mission '+costString+'" class="boutonRouge bigButtons" onclick="landerDeploy('+bat.id+')"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
             } else {
-                if (bat.soins >= 30) {
+                if (batSoins >= 30) {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Lander trop endommagé, ne peut pas partir" class="boutonGris bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
                 } else {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ressources insuffisantes pour inclure ce lander dans la prochaine mission '+costString+'" class="boutonGris bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
