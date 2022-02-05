@@ -700,8 +700,17 @@ function calcDamage(weapon,power,armor,defBat) {
             }
         }
     }
-    // let modifiedArmor = Math.round(armor*armorModifier);
-    let modifiedArmor = getModifiedArmor(armor,armorModifier);
+    let modifiedArmor = Math.round(armor*armorModifier);
+    let izmel = false;
+    if (weapon.isMelee) {
+        izmel = true;
+    } else if (weapon.isShort && weapon.range === 0) {
+        izmel = false;
+    }
+    if (!izmel) {
+        modifiedArmor = getModifiedArmor(armor,armorModifier);
+    }
+    console.log('Modified Armor = '+modifiedArmor);
     let powerDice;
     if (power >= 3) {
         let powerDiceMin = Math.round(power/2.5);
@@ -799,7 +808,6 @@ function getModifiedArmor(armor,armorModifier) {
         modifiedArmor = modifiedArmor+(armorRest*adjMod);
     }
     modifiedArmor = Math.round(modifiedArmor);
-    // console.log('Modified Armor = '+modifiedArmor);
     return modifiedArmor;
 };
 

@@ -172,7 +172,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "protection":["aucune","scrap","kevlar","kapton","wendium","tisal","nano","duneg","swing"],
         "equip":["aucun","e-flash","e-ranger","e-camo","lunette1","chargeur1","silencieux1","crimekitlu"],
@@ -228,7 +228,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-poraz","lame-t-poraz","lame-mono","lame-taser","lame-adamantite","lame-adamantium"]
         },
         "protection":["aucune","scrap","kevlar","kapton","wendium","tisal","nano","duneg","swing"],
         "equip":["aucun","e-flash","e-ranger","e-camo","chargeur1","crimekitch"],
@@ -339,7 +339,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "protection":["aucune","scrap","bugium","kevlar","acier","combo","kapton","wendium","tisal","nano","duneg","swing"],
         "equip":["aucun","e-flash","e-camo","chargeur1","crimekitch"],
@@ -452,7 +452,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "protection":["aucune","scrap","bugium","kevlar","acier","combo","kapton","wendium","tisal","nano","duneg","swing"],
         "equip":["aucun","e-flash","e-ranger","e-camo","chargeur1","crimekitch"],
@@ -607,7 +607,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{
             "name":"Mitrailleuse légère",
@@ -894,7 +894,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-taser","lame-mono","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-a-atium","lame-poraz","lame-t-poraz","lame-taser","lame-mono","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{
             "name":"Scorpion",
@@ -1017,7 +1017,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "equip":["aucun","e-flash","e-ranger","e-camo","lunette1","chargeur1","e-jetpack","permakirin","theeye","helper","waterproof"],
         "log3eq":"chargeur1",
@@ -1434,7 +1434,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "protection":["aucune","scrap","kevlar","kapton","wendium","tisal","nano","duneg","swing","adamantite","battlesuit"],
         "equip":["aucun","e-flash","lunette1","chargeur1","silencieux1","e-camo","theeye","helper","waterproof","e-medic","repel"],
@@ -1531,7 +1531,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-poraz","lame-t-poraz","lame-taser","lame-plasma","lame-mono","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{
             "name":"Arbalète légère",
@@ -1602,7 +1602,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-poraz","lame-t-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "protection":["aucune","scrap","kevlar","kapton","wendium","tisal","nano","duneg","swing","adamantite","battlesuit"],
         "equip":["aucun","e-flash","arcpoulie","e-camo","permakirin","theeye","helper","repel"],
@@ -1647,7 +1647,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-a-atium","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{
             "name":"Arbalète",
@@ -1706,7 +1706,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-taser","lame-mono","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{
             "name":"Revolver",
@@ -1828,7 +1828,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{
             "name":"Ceinture goodbye",
@@ -1884,7 +1884,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{
             "name":"Javelots (lancé)",
@@ -1948,7 +1948,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "equip":["aucun","e-flash","e-ranger","e-camo","chargeur1","e-jetpack","theeye","helper","waterproof"],
         "log3eq":"chargeur1",
@@ -2652,7 +2652,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "protection":["aucune","scrap","bugium","kevlar","kapton","wendium","combo","titane","tisal","nano","duneg","swing","adamantite","battlesuit"],
         "equip":["aucun","e-flash","e-ranger","lunette1","chargeur1","e-camo","theeye","helper","waterproof","e-medic","repel"],
@@ -2709,7 +2709,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-poraz","lame-t-poraz","lame-taser","lame-mono","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "equip":["aucun","e-flash","e-ranger","chargeur1","e-jetpack","e-camo","e-medic","permakirin","theeye","helper","waterproof","repel"],
         "log3eq":"chargeur1",
@@ -2764,7 +2764,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-taser","lame-mono","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "equip":["aucun","e-flash","e-ranger","e-medic","chargeur1","snorkel","theeye","crimekitch","repel"],
         "log3eq":"snorkel",
@@ -2820,7 +2820,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-poraz","lame-t-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "protection":["aucune","scrap","kevlar","kapton","wendium","tisal","nano","duneg","swing","adamantite","battlesuit"],
         "equip":["aucun","e-flash","e-medic","arcpoulie","e-camo","permakirin","waterproof","repel"],
@@ -2875,7 +2875,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "protection":["aucune","scrap","bugium","kevlar","kapton","wendium","combo","titane","tisal","nano","duneg","swing","adamantite"],
         "equip":["aucun","e-flash","chargeur1","theeye","waterproof","e-medic","repel"],
@@ -2917,7 +2917,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-poraz","lame-t-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{
             "name":"Arbalète",
@@ -3049,7 +3049,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "protection":["aucune","scrap","bugium","kevlar","kapton","wendium","combo","titane","tisal","nano","duneg","swing","adamantite","battlesuit"],
         "equip":["aucun","e-flash","e-camo","lunette1","chargeur1","theeye","helper","waterproof","repel"],
@@ -3327,7 +3327,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["ergot","lame-tungsten","lame-carbone","lame-adamantite","lame-adamantium"]
+            "ammo":["ergot","lame-tungsten","lame-carbone","lame-titane","lame-mono","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{},
         "protection":["aucune","scrap","kevlar","kapton","wendium","tisal","nano","duneg","swing","adamantite","battlesuit"],
@@ -3386,7 +3386,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"moto_impact",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-a-atium","lame-poraz","lame-mono","lame-taser","lame-adamantite","lame-adamantium"]
         },
         "equip":["aucun","e-flash","e-ranger","e-camo","snorkel","e-medic","permakirin","theeye","repel"],
         "log3eq":"snorkel",
@@ -3446,7 +3446,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-poraz","lame-t-poraz","lame-taser","lame-mono","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "protection":["aucune","scrap","bugium","kevlar","combo","kapton","wendium","titane","tisal","nano","duneg","swing","adamantite"],
         "equip":["aucun","e-flash","lunette1","chargeur1","silencieux1","e-camo","permakirin","theeye","waterproof","e-medic","repel"],
@@ -4045,7 +4045,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{
             "name":"RPG",
@@ -4104,7 +4104,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-poraz","lame-t-poraz","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{
             "name":"Javelots",
@@ -4341,7 +4341,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "protection":["aucun","chobham","iso","tisal","nano","duneg","swing"],
         "equip":["aucun","e-flash","e-ranger","lunette1","chargeur1","g2motor","waterproof","g2ai"],
@@ -5597,7 +5597,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "protection":["aucune","chobham","iso"],
         "equip":["aucun","e-flash","e-camo","lunette1","chargeur1","theeye","waterproof","crimekitch","detector","e-medic","repel"],
@@ -5638,7 +5638,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"lame",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-tpoison","lame-atium","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium","lame-apoison","lame-aatium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-poraz","lame-t-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{
             "name":"Pistolet laser",

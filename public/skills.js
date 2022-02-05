@@ -309,7 +309,7 @@ function rush(rushAP) {
 function rage() {
     selectedBat.tags.push('rage');
     selectedBat.tags.push('norage');
-    doneAction(selectedBat);
+    // doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
@@ -319,7 +319,7 @@ function fougue() {
     selectedBat.tags.push('nofougue');
     selectedBat.tags.push('nofougue');
     selectedBat.tags.push('nofougue');
-    doneAction(selectedBat);
+    // doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };

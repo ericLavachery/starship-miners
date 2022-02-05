@@ -1024,7 +1024,7 @@
     {
         "id":137,
         "result":"Viande",
-        "cost":{"Corps":5,"Energie":10},
+        "cost":{"Corps":10,"Energie":15},
         "compReq":{},
         "bldReq":["Cantine"],
         "batch":10,
@@ -1034,7 +1034,7 @@
     {
         "id":138,
         "result":"Viande",
-        "cost":{"Corps":3,"Chlore":2},
+        "cost":{"Corps":6,"Chlore":2},
         "compReq":{},
         "bldReq":["Laboratoire"],
         "batch":10,
@@ -1044,10 +1044,10 @@
     {
         "id":139,
         "result":"Viande",
-        "cost":{"Corps":10,"Octiron":1,"Energie":15},
+        "cost":{"Corps":8,"Octiron":1,"Energie":5},
         "compReq":{},
         "bldReq":["Laboratoire"],
-        "batch":50,
+        "batch":20,
         "creaNum":100,
         "bg":"#182a16"
     },
