@@ -620,7 +620,11 @@ function attack(melee,init) {
         let webDamage = totalHits;
         webDamage = Math.ceil(webDamage*18/Math.sqrt(targetBatType.hp)/(targetBatType.size+7));
         if (selectedWeap.ammo.includes('glair')) {
-            webDamage = webDamage+Math.round(totalHits/3);
+            if (targetBatType.cat === 'buildings') {
+                webDamage = webDamage+Math.round(totalHits/10);
+            } else {
+                webDamage = webDamage+Math.round(totalHits/3);
+            }
         }
         if (targetBatType.cat != 'aliens') {
             webDamage = Math.ceil(webDamage/(playerInfos.comp.ca+4)*6);
@@ -1567,6 +1571,11 @@ function defense(melee,init) {
         webDamage = Math.ceil(webDamage*18/Math.sqrt(selectedBatType.hp)/(selectedBatType.size+7));
         if (targetWeap.ammo.includes('glair')) {
             webDamage = webDamage+Math.round(totalHits/3);
+            if (selectedBatType.cat === 'buildings') {
+                webDamage = webDamage+Math.round(totalHits/10);
+            } else {
+                webDamage = webDamage+Math.round(totalHits/3);
+            }
         }
         if (selectedBatType.cat != 'aliens') {
             webDamage = Math.ceil(webDamage/(playerInfos.comp.ca+4)*6);

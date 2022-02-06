@@ -77,6 +77,7 @@ function gangUnitsList(gangName) {
     sortedGangUnits.forEach(function(unit) {
         let color = catColor(unit);
         let lvlcol = 'cy';
+        let compcol = 'gf';
         if (playerInfos.gLevel < unit.level) {
             lvlcol = 'gf';
         }
@@ -85,7 +86,8 @@ function gangUnitsList(gangName) {
             compNeed = toCoolString(unit.compReq);
             let compReqOK = checkUnitCompReq(unit,true);
             if (!compReqOK) {
-                lvlcol = 'gf';
+                lvlcol = 'gff';
+                compcol = 'gff';
             }
         }
         let bldNeed = '';
@@ -99,7 +101,7 @@ function gangUnitsList(gangName) {
                 lvlcol = 'gf';
             }
         }
-        $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+bldNeed+'" onclick="unitDetail('+unit.id+')">'+unit.name+'</span><span class="paramLevelValue '+lvlcol+'">'+unit.level+'</span><span class="paramValue gf">'+compNeed+'</span><br>');
+        $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+bldNeed+'" onclick="unitDetail('+unit.id+')">'+unit.name+'</span><span class="paramLevelValue '+lvlcol+'">'+unit.level+'</span><span class="paramValue '+compcol+'">'+compNeed+'</span><br>');
     });
     $('#conUnitList').append('<br><br>');
     $("#conUnitList").animate({scrollTop:0},"fast");

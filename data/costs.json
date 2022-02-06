@@ -1877,7 +1877,7 @@
         "bldReq":["Laboratoire","Poste radio"],
         "compReq":{"det":3,"energ":1},
         "costs":{"Compo1":100,"Compo2":50,"Eau":54,"Carbone":72,"Silicium":18,"Electros":18,"Batteries":18,"Energie":18},
-        "fabTime":25,
+        "fabTime":35,
         "slots":0
     },
     {
@@ -1889,7 +1889,7 @@
         "compPass":["blades","bulbos","brasier"],
         "compHardReq":{"det":1,"energ":1},
         "costs":{"Compo1":150,"Compo2":150,"Compo3":90,"Eau":18,"Carbone":72,"Titane":72,"Tungstène":108,"Aluminium":18,"Bois":18,"Rhodium":144,"Silicium":18,"Bore":36,"Electros":72,"Batteries":108,"Energie":54},
-        "fabTime":55,
+        "fabTime":135,
         "slots":0
     },
     {
@@ -1899,18 +1899,18 @@
         "bldReq":["Arsenal","Chaîne de montage"],
         "compHardReq":{"explo":1},
         "costs":{"Compo1":80,"Compo2":400,"Compo3":435,"Eau":48,"Végétaux":150,"Scrap":60,"Carbone":42,"Titane":18,"Tungstène":36,"Fer":204},
-        "fabTime":70,
+        "fabTime":175,
         "inRuin":2,
         "slots":0
     },
     {
         "id":127,
         "name":"Blockhaus",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":12,"tiradores":99,"detruas":99,"brasier":12},
-        "bldReq":["Usine d'armement","Chaîne de montage"],
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":12},
+        "bldReq":["Arsenal","Chaîne de montage"],
         "compHardReq":{"pyro":1},
-        "costs":{"Compo1":70,"Compo2":390,"Compo3":405,"Eau":36,"Végétaux":150,"Scrap":72,"Carbone":24,"Titane":48,"Tungstène":72,"Aluminium":48,"Fer":216,"Rhodium":36},
-        "fabTime":70,
+        "costs":{"Compo1":70,"Compo2":390,"Compo3":405,"Eau":36,"Végétaux":150,"Scrap":72,"Tungstène":72,"Aluminium":48,"Fer":216},
+        "fabTime":175,
         "inRuin":2,
         "slots":0
     },
@@ -1921,7 +1921,18 @@
         "bldReq":["Arsenal","Chaîne de montage"],
         "compHardReq":{"bal":1},
         "costs":{"Compo1":70,"Compo2":390,"Compo3":405,"Eau":48,"Végétaux":150,"Scrap":84,"Carbone":36,"Tungstène":72,"Aluminium":120,"Fer":240},
-        "fabTime":70,
+        "fabTime":175,
+        "inRuin":2,
+        "slots":0
+    },
+    {
+        "id":285,
+        "name":"Tourelles",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":12,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Arsenal","Chaîne de montage"],
+        "compHardReq":{"bal":1,"pyro":1},
+        "costs":{"Compo1":120,"Compo2":280,"Compo3":290,"Eau":48,"Scrap":120,"Tungstène":120,"Aluminium":120,"Fer":360},
+        "fabTime":135,
         "inRuin":2,
         "slots":0
     },

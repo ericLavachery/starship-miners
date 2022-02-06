@@ -1535,6 +1535,16 @@
         "costs":{"Scrap":10,"Fer":70,"Carbone":20,"Titane":10,"Tungstène":20}
     },
     {
+        "name":"w2-blister",
+        "cat":"equip",
+        "skills":[],
+        "info":"Arme 2",
+        "bldReq":["Usine d'armement"],
+        "compReq":{"def":2,"bal":2,"pyro":2},
+        "factor":"rofpow",
+        "costs":{"Aluminium":40,"Titane":40,"Carbone":20,"Rhodium":30}
+    },
+    {
         "name":"w2-mortier",
         "cat":"equip",
         "skills":[],

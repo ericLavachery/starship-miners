@@ -740,7 +740,7 @@
             "name":"Fusil antichar",
             "cost":5,
             "range":5,
-            "rof":12,
+            "rof":16,
             "accuracy":25,
             "power":15,
             "armors":0.5,

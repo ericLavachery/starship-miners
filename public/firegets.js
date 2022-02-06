@@ -702,10 +702,12 @@ function calcDamage(weapon,power,armor,defBat) {
     }
     let modifiedArmor = Math.round(armor*armorModifier);
     let izmel = false;
-    if (weapon.isMelee) {
+    if (weapon.isAcid) {
+        izmel = true;
+    } else if (weapon.isMelee) {
         izmel = true;
     } else if (weapon.isShort && weapon.range === 0) {
-        izmel = false;
+        izmel = true;
     }
     if (!izmel) {
         modifiedArmor = getModifiedArmor(armor,armorModifier);
@@ -1350,7 +1352,7 @@ function checkInvisibleTarget(bat,weap,alien,alienType,guideTarget) {
     let hiddenOK = true;
     if (alienType.skills.includes('invisible') || alien.tags.includes('invisible')) {
         if (!guideTarget && !alien.tags.includes('fluo')) {
-            if (weap.name != 'Pointage' || alien.damage === 0) {
+            if (weap.name != 'Pointage' || (alien.damage === 0 && alienType.skills.includes('invisible'))) {
                 let zeroRange = sideBySideTiles(bat.tileId,alien.tileId,false);
                 if (!zeroRange) {
                     hiddenOK = false;
@@ -1913,7 +1915,11 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     if (bat.tags.includes('genblind')) {
-        thisWeapon.accuracy = thisWeapon.accuracy-5;
+        if (thisWeapon.range === 0 || thisWeapon.aoe === 'squad' || thisWeapon.aoe === 'bat') {
+            thisWeapon.accuracy = Math.ceil(thisWeapon.accuracy*0.85);
+        } else {
+            thisWeapon.accuracy = Math.ceil(thisWeapon.accuracy*0.75);
+        }
     }
     // bonus ammo
     let myAmmo = bat.ammo;

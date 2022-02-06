@@ -8,18 +8,30 @@ function defabInfos(bat,batType) {
         let prefabBatName = prefabBat.type;
         let isLoaded = checkCharged(prefabBat,'load');
         let isCharged = checkCharged(prefabBat,'trans');
-        if (!isLoaded && !isCharged) {
-            if (batType.skills.includes('constructeur') && Object.keys(landerBat).length >= 1) {
-                let apCost = prefabCost(batType,prefabBatType,false);
-                let depliOK = true;
-                if (selectedBatType.cat === 'infantry') {
-                    if (prefabBatType.fabTime >= 35 && !prefabBatType.skills.includes('clicput')) {
-                        depliOK = false;
-                    }
+        if (batType.skills.includes('constructeur') && Object.keys(landerBat).length >= 1) {
+            let apCost = prefabCost(batType,prefabBatType,false);
+            let depliOK = true;
+            if (selectedBatType.cat === 'infantry') {
+                if (prefabBatType.fabTime >= 35 && !prefabBatType.skills.includes('clicput')) {
+                    depliOK = false;
                 }
-                if (depliOK) {
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire '+prefabBatName+'" class="boutonGris skillButtons" onclick="deconstruction('+prefabId+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
+            }
+            let damageOK = true;
+            if (prefabBat.squadsLeft*1.4 < prefabBatType.squads) {
+                damageOK = false;
+            }
+            if (depliOK && !isLoaded && !isCharged && damageOK) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire '+prefabBatName+'" class="boutonGris skillButtons" onclick="deconstruction('+prefabId+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
+            } else {
+                let koMessage = "Une infanterie ne peut pas déconstruire ce bâtiment";
+                if (!damageOK) {
+                    koMessage = "Ce bâtiment est trop endommagé pour être déconstruit";
+                } else if (isCharged) {
+                    koMessage = "Vous ne pouvez pas déconstruire un bâtiment si il y a un bataillon dedans";
+                } else if (isLoaded) {
+                    koMessage = "Vous ne pouvez pas déconstruire un bâtiment si il y a un autre bâtiment dedans";
                 }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+koMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
             }
         }
     }
