@@ -1415,7 +1415,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","crewsave","transport","routes","producteur","upkeep","prodres","upnodis","longshot","fret","dumper","cible","reeq","prefab"],
+        "skills":["fouille","recupcit","crewsave","transport","routes","producteur","longshot","fret","dumper","cible","reeq","prefab"],
         "mecanoCost":10,
         "transMaxSize":50,
         "transUnits":3000,

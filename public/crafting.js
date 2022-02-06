@@ -695,7 +695,7 @@ function triProd(bat,batType,time,sim,quiet) {
                 }
             }
             if (resFactor >= 1) {
-                let resNum = Math.round(resFactor/30*time);
+                let resNum = Math.round(resFactor/22*time);
                 console.log(res.name);
                 console.log('resNum: '+resNum);
                 if (resNum >= 3) {
@@ -910,6 +910,7 @@ function scrapCreation(scrapCreated) {
 function scrapRecup(resCreated) {
     let triComp = playerInfos.comp.tri;
     resCreated = Math.ceil(resCreated*(triComp+2)/2*rand.rand(2,6)/4);
+    // resCreated = Math.ceil(resCreated*(triComp+2)/2);
     return resCreated;
 };
 

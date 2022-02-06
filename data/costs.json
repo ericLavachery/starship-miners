@@ -2239,8 +2239,6 @@
         "id":193,
         "name":"Aérodocks",
         "compReq":{"aero":1},
-        "upkeep":{"Energie":4,"Aluminium":1},
-        "prod":{"Scrap":2},
         "costs":{"Compo1":285,"Compo2":165,"Compo3":110,"Eau":180,"Energie":600,"Hydrocarbure":600,"Fuel":800,"Huile":500,"Titane":600,"Aluminium":600,"Cobalt":300,"Cuivre":600,"Platine":300,"Plutonium":150,"Hélium":300,"Electros":350,"Batteries":300},
         "fabTime":240,
         "slots":2

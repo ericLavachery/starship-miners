@@ -20,12 +20,18 @@ function defabInfos(bat,batType) {
             if (prefabBat.squadsLeft*1.4 < prefabBatType.squads) {
                 damageOK = false;
             }
-            if (depliOK && !isLoaded && !isCharged && damageOK) {
+            let apOK = true;
+            if (prefabBat.apLeft < 0) {
+                apOK = false;
+            }
+            if (depliOK && !isLoaded && !isCharged && damageOK && apOK) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire '+prefabBatName+'" class="boutonGris skillButtons" onclick="deconstruction('+prefabId+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
             } else {
                 let koMessage = "Une infanterie ne peut pas déconstruire ce bâtiment";
                 if (!damageOK) {
                     koMessage = "Ce bâtiment est trop endommagé pour être déconstruit";
+                } else if (!apOK) {
+                    koMessage = "Vous ne pouvez pas déconstruire un bâtiment qui est en PA négatifs";
                 } else if (isCharged) {
                     koMessage = "Vous ne pouvez pas déconstruire un bâtiment si il y a un bataillon dedans";
                 } else if (isLoaded) {
