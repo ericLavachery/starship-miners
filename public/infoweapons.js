@@ -536,6 +536,7 @@ function showAmmo(ammo,redux) {
     ammoView = ammoView.replace('dynamite-','');
     ammoView = ammoView.replace('bombe-','');
     ammoView = ammoView.replace('obus-','');
+    ammoView = ammoView.replace('hypo-','');
     ammoView = ammoView.replace('boulet-','');
     ammoView = ammoView.replace('belier-','');
     ammoView = ammoView.replace('ac-','');

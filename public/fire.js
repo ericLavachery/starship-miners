@@ -994,6 +994,9 @@ function attack(melee,init) {
     } else {
         minDamage = minDamage+(playerInfos.comp.ca*2);
     }
+    if (selectedWeap.ammo.includes('hypo-')) {
+        minDamage = 1;
+    }
     if (totalDamage >= minDamage || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium') || selectedWeap.ammo.includes('trap') || selectedWeap.ammo.includes('gaz')) {
             if (!targetBatType.skills.includes('resistpoison') && !targetBatType.skills.includes('eatpoison') && !targetBat.tags.includes('zombie')) {
@@ -1011,6 +1014,13 @@ function attack(melee,init) {
                         targetBat.tags.push('poison');
                     } else if (selectedWeap.ammo.includes('trap')) {
                         targetBat.tags.push('poison');
+                    }
+                    if (selectedWeap.ammo.includes('hypo-') && targetBatType.size >= 7) {
+                        targetBat.tags.push('poison');
+                        targetBat.tags.push('poison');
+                        if (selectedWeap.ammo.includes('atium')) {
+                            targetBat.tags.push('poison');
+                        }
                     }
                     // console.log('Poison!');
                     let allTags = _.countBy(targetBat.tags);
@@ -1040,7 +1050,7 @@ function attack(melee,init) {
         }
     }
     // shinda
-    if (totalDamage >= 5 || (totalDamage >= 1 && rand.rand(1,2) === 1)) {
+    if (totalDamage >= 10 || (totalDamage >= 1 && rand.rand(1,2) === 1) || (totalDamage >= 1 && selectedWeap.ammo.includes('hypo'))) {
         if (selectedWeap.ammo.includes('shinda')) {
             if (targetBatType.skills.includes('mutant') || targetBatType.cat == 'aliens') {
                 targetBat.tags.push('shinda');
@@ -1050,7 +1060,7 @@ function attack(melee,init) {
         }
     }
     // freeze
-    if (totalDamage >= 50 || totalDamage >= Math.round(targetBatType.hp*targetBatType.squadSize/2)) {
+    if (totalDamage >= 50 || totalDamage >= Math.round(targetBatType.hp*targetBatType.squadSize/2) || (totalDamage >= 1 && selectedWeap.ammo.includes('hypo-'))) {
         if (selectedWeap.ammo.includes('freeze')) {
             if (targetBatType.skills.includes('mutant') || targetBatType.cat == 'aliens') {
                 if (!targetBat.tags.includes('freeze')) {
@@ -1060,6 +1070,10 @@ function attack(melee,init) {
                 } else {
                     targetBat.tags.push('freeze');
                     targetBat.tags.push('stun');
+                }
+                if (selectedWeap.ammo === 'hypo-freeze') {
+                    targetBat.tags.push('freeze');
+                    targetBat.tags.push('freeze');
                 }
                 // console.log('Bossium Freeze!');
                 $('#report').append('<span class="report rose">Freeze<br></span>');
@@ -1810,6 +1824,9 @@ function defense(melee,init) {
     } else {
         minDamage = minDamage+(playerInfos.comp.ca*2);
     }
+    if (targetWeap.ammo.includes('hypo-')) {
+        minDamage = 1;
+    }
     if (totalDamage >= minDamage || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium') || targetWeap.ammo.includes('trap') || targetWeap.ammo.includes('gaz')) {
             if (!selectedBatType.skills.includes('resistpoison') && !selectedBatType.skills.includes('eatpoison') && !selectedBat.tags.includes('zombie')) {
@@ -1828,6 +1845,13 @@ function defense(melee,init) {
                     } else if (targetWeap.ammo.includes('trap')) {
                         selectedBat.tags.push('poison');
                     }
+                    if (targetWeap.ammo.includes('hypo-') && selectedBatType.size >= 7) {
+                        selectedBat.tags.push('poison');
+                        selectedBat.tags.push('poison');
+                        if (targetWeap.ammo.includes('atium')) {
+                            selectedBat.tags.push('poison');
+                        }
+                    }
                     // console.log('Poison!');
                     let allTags = _.countBy(selectedBat.tags);
                     $('#report').append('<span class="report rose">Poison ('+allTags.poison+')<br></span>');
@@ -1839,7 +1863,7 @@ function defense(melee,init) {
         }
     }
     // shinda
-    if (totalDamage >= 5 || (totalDamage >= 1 && rand.rand(1,2) === 1)) {
+    if (totalDamage >= 10 || (totalDamage >= 1 && rand.rand(1,2) === 1) || (totalDamage >= 1 && targetWeap.ammo.includes('hypo'))) {
         if (targetWeap.ammo.includes('shinda')) {
             if (selectedBatType.skills.includes('mutant') || selectedBatType.cat == 'aliens') {
                 selectedBat.tags.push('shinda');
@@ -1849,7 +1873,7 @@ function defense(melee,init) {
         }
     }
     // freeze
-    if (totalDamage >= 50 || totalDamage >= Math.round(selectedBatType.hp*selectedBatType.squadSize/2)) {
+    if (totalDamage >= 50 || totalDamage >= Math.round(selectedBatType.hp*selectedBatType.squadSize/2) || (totalDamage >= 1 && targetWeap.ammo.includes('hypo-'))) {
         if (targetWeap.ammo.includes('freeze')) {
             if (selectedBatType.skills.includes('mutant') || selectedBatType.cat == 'aliens') {
                 if (!selectedBat.tags.includes('freeze')) {
@@ -1859,6 +1883,10 @@ function defense(melee,init) {
                 } else {
                     selectedBat.tags.push('freeze');
                     selectedBat.tags.push('stun');
+                }
+                if (targetWeap.ammo === 'hypo-freeze') {
+                    selectedBat.tags.push('freeze');
+                    selectedBat.tags.push('freeze');
                 }
                 // console.log('Bossium Freeze!');
                 $('#report').append('<span class="report rose">Freeze<br></span>');

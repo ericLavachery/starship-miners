@@ -125,7 +125,7 @@
         "fullName":"Industrie",
         "levels":{"rednecks":5,"blades":5,"bulbos":0,"drogmulojs":5,"tiradores":0,"detruas":5,"brasier":5},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,1]
+        "lvlCosts":[0,1,1,2]
     },
     {
         "id":17,

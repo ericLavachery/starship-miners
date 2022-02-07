@@ -87,6 +87,10 @@ function craftWindow(retour) {
         let energyFactor = 100;
         let dispoRes = 0;
         let neededRes = 0;
+        let indus = playerInfos.comp.ind;
+        if (playerInfos.comp.ind === 3) {
+            indus = 4;
+        }
         let iHave = getDispoRes('Energie');
         let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'rarity'),'cat'),'energie');
         // sortedResTypes.reverse();
@@ -99,7 +103,7 @@ function craftWindow(retour) {
                     }
                 }
                 if (playerInfos.bldList.includes(cramBld)) {
-                    energyFactor = Math.round(50/Math.sqrt(res.energie))*5;
+                    energyFactor = Math.round(50/Math.sqrt(res.energie)*(indus+6)/6)*5;
                     dispoRes = getDispoRes(res.name);
                     neededRes = res.energie*energyFactor/eCrafting;
                     neededRes = cramPower(res,neededRes);
@@ -238,7 +242,12 @@ function adjCraftFactor(craft,craftFactor) {
         if (playerInfos.comp.ind >= 1 && playerInfos.bldList.includes('Atelier')) {
             let indusLevel = playerInfos.comp.ind;
             if (playerInfos.bldList.includes('Usine')) {
-                indusLevel = indusLevel+3;
+                indusLevel = indusLevel+2;
+                if (playerInfos.comp.ind >= 3) {
+                    indusLevel = indusLevel+2;
+                } else if (playerInfos.comp.ind >= 1) {
+                    indusLevel = indusLevel+1;
+                }
             } else if (playerInfos.bldList.includes('Chaîne de montage')) {
                 indusLevel = indusLevel+1;
             }

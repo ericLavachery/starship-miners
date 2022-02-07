@@ -1290,10 +1290,10 @@ function checkXPBonus(myBatType) {
             batNewXP = batNewXP+levelXP[1];
         }
         if (playerInfos.comp.ind === 2) {
-            batNewXP = batNewXP+Math.ceil(levelXP[2]*3/4);
+            batNewXP = batNewXP+levelXP[2];
         }
         if (playerInfos.comp.ind === 3) {
-            batNewXP = batNewXP+levelXP[2];
+            batNewXP = batNewXP+levelXP[3];
         }
     } else if (myBatType.cat === 'buildings' || myBatType.cat === 'devices' || myBatType.kind === 'zero-defense' || myBatType.skills.includes('garde') || myBatType.skills.includes('cage')) {
         if (playerInfos.comp.def === 2) {

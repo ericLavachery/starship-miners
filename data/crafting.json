@@ -104,6 +104,16 @@
         "bg":"#1b1510"
     },
     {
+        "id":156,
+        "result":"Compo1",
+        "cost":{"Carbone":5,"Azote":1,"Energie":2},
+        "compReq":{"const":1,"ind":1},
+        "bldReq":["Usine"],
+        "batch":4,
+        "creaNum":300,
+        "bg":"#1b1510"
+    },
+    {
         "id":60,
         "result":"Compo1",
         "cost":{"Carbone":3,"Azote":1,"Energie":2},
@@ -260,7 +270,7 @@
     {
         "id":15,
         "result":"Compo3",
-        "cost":{"Aluminium":2,"Carbone":2,"Tungstène":2,"Energie":3},
+        "cost":{"Aluminium":2,"Carbone":2,"Tungstène":1,"Titane":1,"Energie":3},
         "compReq":{"const":2,"ind":2},
         "bldReq":["Usine"],
         "batch":4,
@@ -454,11 +464,11 @@
     {
         "id":20,
         "result":"Batteries",
-        "cost":{"Carbone":12,"Azote":6,"Hydrogène":9,"Energie":6},
+        "cost":{"Carbone":12,"Azote":6,"Hydrogène":6,"Energie":6},
         "compReq":{"ind":3,"mat":2},
         "bldReq":["Usine"],
         "batch":15,
-        "creaNum":150,
+        "creaNum":200,
         "bg":"#094949"
     },
     {
@@ -535,8 +545,8 @@
         "cost":{"Aluminium":17,"Silicium":2,"Cuivre":1,"Energie":6},
         "compReq":{"ind":3},
         "bldReq":["Usine"],
-        "batch":18,
-        "creaNum":180,
+        "batch":20,
+        "creaNum":200,
         "bg":"#2a2810"
     },
     {
@@ -545,8 +555,8 @@
         "cost":{"Aluminium":12,"Carbone":4,"Azote":2,"Energie":4},
         "compReq":{"ind":3,"mat":2},
         "bldReq":["Usine"],
-        "batch":18,
-        "creaNum":180,
+        "batch":20,
+        "creaNum":200,
         "bg":"#2a2810"
     },
     {
@@ -593,7 +603,7 @@
         "id":155,
         "result":"Fuel",
         "cost":{"Hydrocarbure":15},
-        "compReq":{"ind":2},
+        "compReq":{"ind":3},
         "bldReq":["Usine"],
         "batch":10,
         "creaNum":500,
@@ -721,6 +731,16 @@
         "bg":"#000000"
     },
     {
+        "id":157,
+        "result":"Munitions",
+        "cost":{"Fer":6,"Soufre":12,"Plomb":12},
+        "compReq":{"ind":3},
+        "bldReq":["Usine d'armement"],
+        "batch":10,
+        "creaNum":500,
+        "bg":"#000000"
+    },
+    {
         "id":4,
         "result":"Explosifs",
         "cost":{"Soufre":3,"Potassium":3,"Carbone":3},
@@ -788,6 +808,16 @@
         "bldReq":["Usine d'armement"],
         "batch":4,
         "creaNum":160,
+        "bg":"#000000"
+    },
+    {
+        "id":158,
+        "result":"Explosifs",
+        "cost":{"Carbone":3,"Hydrogène":5,"Azote":4,"Oxygène":2,"Energie":2},
+        "compReq":{"explo":3,"ind":3},
+        "bldReq":["Usine d'armement"],
+        "batch":12,
+        "creaNum":240,
         "bg":"#000000"
     },
     {
@@ -862,6 +892,16 @@
         "bg":"#2e1c2d"
     },
     {
+        "id":159,
+        "result":"Tissus",
+        "cost":{"Carbone":5,"Azote":2,"Hydrogène":2,"Energie":5},
+        "compReq":{"ind":1},
+        "bldReq":["Usine"],
+        "batch":12,
+        "creaNum":360,
+        "bg":"#2e1c2d"
+    },
+    {
         "id":33,
         "result":"Drogues",
         "cost":{"Végétaux":60,"Huile":24,"Zinc":10},
@@ -932,6 +972,16 @@
         "bg":"#2e1c2d"
     },
     {
+        "id":160,
+        "result":"Drogues",
+        "cost":{"Octiron":6,"Huile":4,"Atium":1},
+        "compReq":{"exo":2,"ind":3},
+        "bldReq":["Centre de recherches"],
+        "batch":20,
+        "creaNum":200,
+        "bg":"#2e1c2d"
+    },
+    {
         "id":72,
         "result":"Nourriture",
         "cost":{"Fruits":40},
@@ -999,6 +1049,16 @@
         "bldReq":["Usine"],
         "batch":5,
         "creaNum":350,
+        "bg":"#182a16"
+    },
+    {
+        "id":161,
+        "result":"Nourriture",
+        "cost":{"Fruits":5,"Viande":2,"Végétaux":4,"Energie":4},
+        "compReq":{"ind":3},
+        "bldReq":["Usine"],
+        "batch":6,
+        "creaNum":600,
         "bg":"#182a16"
     },
     {
@@ -1200,7 +1260,7 @@
         "id":53,
         "result":"Huile",
         "cost":{"Slime":5,"Végétaux":25,"Energie":2},
-        "compReq":{"ca":3},
+        "compReq":{"tri":1,"ca":3},
         "bldReq":["Recyclab"],
         "batch":10,
         "bg":"#200808"
@@ -1219,9 +1279,10 @@
         "id":120,
         "result":"Huile",
         "cost":{"Hydrocarbure":12,"Energie":2},
-        "compReq":{"ind":1},
+        "compReq":{"ind":3},
         "bldReq":["Usine"],
         "batch":4,
+        "creaNum":100,
         "bg":"#200808"
     },
     {
