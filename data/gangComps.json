@@ -12,8 +12,8 @@
         "name":"tank",
         "fullName":"Blindés",
         "levels":{"rednecks":10,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":9,"brasier":10},
-        "maxLevel":1,
-        "lvlCosts":[0,2]
+        "maxLevel":2,
+        "lvlCosts":[0,1,1]
     },
     {
         "id":3,
@@ -28,8 +28,8 @@
         "name":"gen",
         "fullName":"Génétique",
         "levels":{"rednecks":99,"blades":9,"bulbos":8,"drogmulojs":3,"tiradores":99,"detruas":99,"brasier":99},
-        "maxLevel":1,
-        "lvlCosts":[0,2]
+        "maxLevel":2,
+        "lvlCosts":[0,1,1]
     },
     {
         "id":5,

@@ -540,7 +540,7 @@ function addBodies(bat,batType,cits) {
             unitCits = batType.citoyens;
         }
     }
-    let bodyFactor = 50+(playerInfos.comp.gen*20)+(playerInfos.comp.med*5);
+    let bodyFactor = 50+(playerInfos.comp.gen*10)+(playerInfos.comp.med*5);
     if (playerInfos.gang === 'brasier') {
         bodyFactor = bodyFactor+20;
     }

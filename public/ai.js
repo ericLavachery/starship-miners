@@ -421,7 +421,7 @@ function targetLogic(bat) {
         }
     }
     if (bat.eq === 'repel' || bat.logeq === 'repel') {
-        let repelChance = (playerInfos.comp.exo*6)+(playerInfos.comp.ca*12)+(playerInfos.comp.gen*4)+10;
+        let repelChance = (playerInfos.comp.exo*6)+(playerInfos.comp.ca*12)+(playerInfos.comp.gen*2)+10;
         if (rand.rand(1,100) <= repelChance) {
             tFuzz = -95;
         }

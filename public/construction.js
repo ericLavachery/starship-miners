@@ -1153,7 +1153,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 let goodChance = 0;
                 let nullDice = 0;
                 if (playerInfos.comp.gen >= 1) {
-                    goodChance = 20+(playerInfos.comp.ca*14)+(playerInfos.comp.med*2);
+                    goodChance = (playerInfos.comp.ca*10)+(playerInfos.comp.med*2)+(playerInfos.comp.gen*20);
                     nullDice = 2-Math.round(goodChance/50);
                     if (rand.rand(1,100) <= goodChance) {
                         genDice = rand.rand(4,6);
