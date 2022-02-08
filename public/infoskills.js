@@ -1853,14 +1853,7 @@ function skillsInfos(bat,batType,near) {
     // INFRASTRUCTURE
     if (((batType.skills.includes('constructeur') && !batType.skills.includes('transorbital')) || near.caserne) && !playerInfos.onShip) {
         if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
-            if (batType.mecanoCost != undefined) {
-                apReq = batType.mecanoCost;
-            } else {
-                apReq = 5;
-            }
-            if (apReq > 5) {
-                apReq = 5;
-            }
+            apReq = getConstAPReq(bat,batType);
             let infra;
             let infraCostOK;
             let defaultMessage;
@@ -1987,7 +1980,7 @@ function skillsInfos(bat,batType,near) {
             if (tile.infra === 'Miradors' || tile.infra === 'Palissades' || tile.infra === 'Remparts' || tile.infra === 'Murailles') {
                 let infra = getInfraByName(tile.infra);
                 apCost = Math.round(Math.sqrt(batType.mecanoCost)*infra.fabTime/5.1);
-                apReq = 5;
+                apReq = getConstAPReq(bat,batType);
                 if (bat.apLeft >= apReq && !inMelee) {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+tile.infra+'" class="boutonGris skillButtons" onclick="demolition('+apCost+')"><i class="far fa-trash-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Démolition</h4></span>');
                 } else {
@@ -2043,7 +2036,7 @@ function skillsInfos(bat,batType,near) {
         if (isReloaded || playerInfos.mapTurn != 0 || playerInfos.onShip) {
             // CONSTRUCTION BATIMENTS
             if (batType.skills.includes('constructeur')) {
-                apReq = 5;
+                apReq = getConstAPReq(bat,batType);
                 if (bat.apLeft >= apReq && !inMelee) {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (bâtiments)" class="boutonNoir bigButtons" onclick="bfconst(`buildings`,false,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Construction</h4></span>');
                 } else {
@@ -2057,7 +2050,7 @@ function skillsInfos(bat,batType,near) {
             }
             // CONSTRUCTION UNITES
             if (batType.skills.includes('producteur')) {
-                apReq = 5;
+                apReq = getConstAPReq(bat,batType);
                 if (bat.apLeft >= apReq && !inMelee) {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Production (unités)" class="boutonNoir bigButtons" onclick="bfconst(`units`,false,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
                 } else {
@@ -2084,7 +2077,7 @@ function skillsInfos(bat,batType,near) {
     }
     if (equipOK) {
         apCost = Math.round(batType.ap*1.5);
-        apReq = 5;
+        apReq = getConstAPReq(bat,batType);
         if ((bat.apLeft >= apReq || playerInfos.onShip) && !inMelee) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Changer de munitions, équipement ou armure" class="boutonNoir skillButtons" onclick="reEquip('+bat.id+',false,false)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Rééquiper</h4></span>');
         } else {
@@ -2158,15 +2151,6 @@ function skillsInfos(bat,batType,near) {
                 let isLoaded = checkCharged(bat,'load');
                 let isCharged = checkCharged(bat,'trans');
                 if (!isLoaded && !isCharged) {
-                    // let landerBat = findTheLander();
-                    // if (Object.keys(landerBat).length >= 1) {
-                    //     let landerDistance = calcDistance(landerBat.tileId,bat.tileId);
-                    //     if (landerDistance <= 1 || playerInfos.onShip) {
-                    //         let apCost = Math.round(6*batType.fabTime/30);
-                    //         $('#unitInfos').append('<hr>');
-                    //         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine skillButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
-                    //     }
-                    // }
                     if (near.lander) {
                         let apCost = Math.round(6*batType.fabTime/30);
                         $('#unitInfos').append('<hr>');

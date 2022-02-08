@@ -743,20 +743,31 @@ function addHealFlag(bat) {
     if (batType.skills.includes('lowmed')) {
         healCost = 2;
     }
-    if (bat.soins != undefined) {
-        bat.soins = bat.soins+healCost;
-    } else {
-        bat.soins = healCost;
+    if (rand.rand(1,4) <= playerInfos.comp.med) {
+        healCost = healCost-1;
+    }
+    if (healCost >= 1) {
+        if (bat.soins != undefined) {
+            bat.soins = bat.soins+healCost;
+        } else {
+            bat.soins = healCost;
+        }
     }
 };
 
 function addRepairFlag(bat) {
     let batType = getBatType(bat);
-    if (batType.cat === 'vehicles') {
-        if (bat.soins != undefined) {
-            bat.soins = bat.soins+1;
-        } else {
-            bat.soins = 1;
+    let healCost = 1;
+    if (rand.rand(1,4) <= playerInfos.comp.ind) {
+        healCost = healCost-1;
+    }
+    if (healCost >= 1) {
+        if (batType.cat === 'vehicles') {
+            if (bat.soins != undefined) {
+                bat.soins = bat.soins+healCost;
+            } else {
+                bat.soins = healCost;
+            }
         }
     }
 };

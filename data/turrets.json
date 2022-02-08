@@ -634,11 +634,12 @@
             "noDef":true,
             "noise":1,
             "rof":12,
-            "accuracy":35,
-            "power":0,
+            "accuracy":30,
+            "power":2,
+            "armors":0.2,
             "aoe":"unit",
             "sound":"paint",
-            "ammo":["marquage"]
+            "ammo":["marquage-stop"]
         },
         "weapon2":{
             "name":"Guidage laser",

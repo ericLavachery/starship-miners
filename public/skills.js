@@ -346,6 +346,18 @@ function tornade() {
     showBatInfos(selectedBat);
 };
 
+function getConstAPReq(bat,batType) {
+    let meca = 16;
+    if (batType.mecanoCost != undefined) {
+        meca = batType.mecanoCost;
+    }
+    let apReq = 4+Math.floor(meca/4)-playerInfos.comp.const;
+    if (apReq > 6) {
+        apReq = 6
+    }
+    return apReq;
+};
+
 function prodToggle() {
     selectMode();
     console.log('PROD TOGGLE');
