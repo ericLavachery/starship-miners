@@ -234,7 +234,9 @@ function combatReport() {
 function calcPrecRangeAdj(weapon,attBat,attBatType,defBat,defBatType) {
     let accurange = 0;
     let distance = calcDistance(attBat.tileId,defBat.tileId);
-    if (distance === 0) {
+    if (weapon.name.includes('Techno')) {
+        accurange = accurange-((distance-1)*6);
+    } else if (distance === 0) {
         if (attBatType.cat != 'aliens') {
             if (weapon.range === 0) {
                 if (weapon.isMelee || weapon.noShield) {
@@ -1174,7 +1176,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
         speed = speed-15;
     }
     if (weap.ammo.includes('disco')) {
-        speed = speed-20;
+        speed = speed-100;
     }
     if (bat.team === 'player') {
         if ((bat.apLeft < 0 && !batType.skills.includes('guerrilla')) || bat.apLeft > 0) {

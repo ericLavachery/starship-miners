@@ -855,7 +855,7 @@
             "accuracy":18,
             "power":8,
             "aoe":"unit",
-            "sound":"bow",
+            "sound":"jav",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze"]
         },
         "weapon2":{
@@ -2913,15 +2913,15 @@
         "ap":13,
         "maxSalvo":2,
         "weapon":{
-            "name":"Disco death",
+            "name":"Techno death",
             "cost":1,
-            "range":1,
+            "range":3,
             "noShield":true,
             "rof":36,
             "accuracy":12,
-            "power":0,
+            "power":1,
             "aoe":"bat",
-            "sound":"sono",
+            "sound":"sono2",
             "ammo":["disco"]
         },
         "weapon2":{
@@ -2933,7 +2933,7 @@
             "power":8,
             "armors":0.8,
             "aoe":"unit",
-            "sound":"calibre_pierce_x2",
+            "sound":"calibre_pierce_multi",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","swag","bonibo","adamantite"],
@@ -2943,7 +2943,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["fortif","undead","gooddef","bigflash","brigands","crewsave","flash","recupcit","recupres","lowstress","dealer","moloko","bliss","sila","blaze","kirin","octiron","skupiac","starka","resistacide"],
+        "skills":["fortif","undead","gooddef","longshot","bigflash","brigands","crewsave","flash","recupcit","recupres","lowstress","dealer","moloko","bliss","sila","blaze","kirin","octiron","skupiac","starka","resistacide"],
         "mecanoCost":14,
         "maxDrug":36,
         "fuzz":5,

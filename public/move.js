@@ -10,7 +10,11 @@ function clickMove(tileId) {
         if (bat.tileId === tileId && bat.loc === "zone") {
             ownBatHere = true;
             batType = getBatType(bat);
-            if (batType.transMaxSize >= selectedBatType.size) {
+            let maxSize = batType.transMaxSize;
+            if (bat.eq === 'garage' || bat.logeq === 'garage') {
+                maxSize = maxSize*3;
+            }
+            if (maxSize >= selectedBatType.size) {
                 batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
                 if (myBatWeight <= batTransUnitsLeft) {
                     ownTransHere = true;
@@ -449,7 +453,11 @@ function batUnstack() {
             stack = true;
             if (!isCharged) {
                 let batType = getBatType(bat);
-                if (batType.transMaxSize >= selectedBatType.size) {
+                let maxSize = batType.transMaxSize;
+                if (bat.eq === 'garage' || bat.logeq === 'garage') {
+                    maxSize = maxSize*3;
+                }
+                if (maxSize >= selectedBatType.size) {
                     let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
                     if (myBatWeight <= batTransUnitsLeft) {
                         ownTransHere = true;

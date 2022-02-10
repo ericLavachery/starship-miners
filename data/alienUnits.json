@@ -2098,7 +2098,7 @@
             "sound":"electricity",
             "ammo":["electric"]
         },
-        "w2chance":2,
+        "w2chance":0,
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -2106,7 +2106,8 @@
         "skills":["hover","resistelec"],
         "deathFx":"death1",
         "killRes":{"Aranium":4},
-        "killXP":2
+        "killXP":2,
+        "flavText":"Les surfeuses utilisent leur décharge électrique quand elles sont dans l'eau."
     },
     {
         "id":43,

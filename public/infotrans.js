@@ -313,7 +313,11 @@ function checkTransportId(myBat,myBatType) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" && bat.tileId === myBat.tileId) {
             batType = getBatType(bat);
-            if (batType.transMaxSize >= myBatType.size) {
+            let maxSize = batType.transMaxSize;
+            if (bat.eq === 'garage' || bat.logeq === 'garage') {
+                maxSize = maxSize*3;
+            }
+            if (maxSize >= myBatType.size) {
                 tracking = checkTracking(bat);
                 if (!myBatType.skills.includes('tracked') || !tracking) {
                     batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
@@ -329,6 +333,9 @@ function checkTransportId(myBat,myBatType) {
 
 function calcTransUnitsLeft(myBat,myBatType) {
     let myBatTransUnitsLeft = myBatType.transUnits;
+    if (myBat.eq === 'garage' || myBat.logeq === 'garage') {
+        myBatTransUnitsLeft = myBatTransUnitsLeft*2;
+    }
     if (myBat.eq === 'megatrans' || myBat.logeq === 'megatrans') {
         myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*1.25);
     }
@@ -492,7 +499,11 @@ function jumpInTrans() {
                 if (bat.loc === "zone" && selectedBat.id != bat.iId) {
                     let batType = getBatType(bat);
                     if (resLoad <= 0 || !batType.skills.includes('transorbital')) {
-                        if (batType.transUnits >= 1 && batType.transMaxSize >= selectedBatType.size) {
+                        let maxSize = batType.transMaxSize;
+                        if (bat.eq === 'garage' || bat.logeq === 'garage') {
+                            maxSize = maxSize*3;
+                        }
+                        if (batType.transUnits >= 1 && maxSize >= selectedBatType.size) {
                             let distance = calcDistance(selectedBat.tileId,bat.tileId);
                             if (distance <= 1) {
                                 let tracking = checkTracking(bat);
@@ -624,9 +635,13 @@ function clickDebarq(tileId) {
                 ownBatHere = true;
                 message = 'Le bataillon de destination ne peut pas acceuillir de troupes.';
             } else {
-                if (batType.transMaxSize < batDebarqType.size) {
+                let maxSize = batType.transMaxSize;
+                if (bat.eq === 'garage' || bat.logeq === 'garage') {
+                    maxSize = maxSize*3;
+                }
+                if (maxSize < batDebarqType.size) {
                     ownBatHere = true;
-                    message = 'Le taille de votre bataillon ('+batDebarqType.size+') est trop élevée pour le bataillon de destination ('+batType.transMaxSize+').';
+                    message = 'Le taille de votre bataillon ('+batDebarqType.size+') est trop élevée pour le bataillon de destination ('+maxSize+').';
                 } else {
                     let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
                     if (myBatWeight > batTransUnitsLeft) {

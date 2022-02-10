@@ -553,6 +553,9 @@ function checkResSpace(bat) {
     if (bat.eq === 'megafret') {
         resMax = Math.round(resMax*1.2);
     }
+    if (bat.eq === 'garage' || bat.logeq === 'garage') {
+        resMax = resMax*2;
+    }
     if (bat.citoyens > 0) {
         resMax = bat.citoyens;
     }

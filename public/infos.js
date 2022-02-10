@@ -85,6 +85,9 @@ function batInfos(bat,batType,pop) {
     if (bat.eq === 'megafret') {
         resMax = Math.round(resMax*1.2);
     }
+    if (bat.eq === 'garage' || bat.logeq === 'garage') {
+        resMax = resMax*2;
+    }
     let vetIcon = '';
     if (bat.vet >= 1) {
         vetIcon = '<img src="/static/img/vet'+bat.vet+'.png" width="15">';
@@ -446,6 +449,9 @@ function batInfos(bat,batType,pop) {
         if (bat.eq === 'megatrans' || bat.logeq === 'megatrans') {
             transBase = Math.round(transBase*1.25);
         }
+        if (bat.eq === 'garage' || bat.logeq === 'garage') {
+            transBase = transBase*2;
+        }
         if (batType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
             transBase = Math.round(transBase*bonusTransRetour);
         }
@@ -463,12 +469,6 @@ function batInfos(bat,batType,pop) {
         } else {
             $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/</span><br>');
         }
-        // if (batType.cat != 'buildings' && batType.cat != 'devices' && !batType.skills.includes('transorbital')) {
-        //     let nearLander = nearAnyLander(bat);
-        //     if (resMax > restSpace && nearLander) {
-        //         $('#'+bodyPlace).append('<span class="paramName or">Embarquement Lander</span><span class="paramIcon"></span><span class="paramValue or">Impossible</span><br>');
-        //     }
-        // }
     }
     if (batType.skills.includes('reserve') || batType.skills.includes('transorbital')) {
         $('#'+bodyPlace).append('<span class="paramName cy">Réserve</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');

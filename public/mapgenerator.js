@@ -1288,7 +1288,7 @@ function addRes(zone) {
     // MAGMA
     if (rand.rand(1,magmaZone) === 1) {
         let magName = 'Magma';
-        let magChance = rand.rand(1,4)*100;
+        let magChance = rand.rand(1,5)*50;
         shufZone.forEach(function(tile) {
             if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
                 terrain = getTileTerrain(tile.id);
@@ -1296,7 +1296,7 @@ function addRes(zone) {
                     if (rand.rand(1,magChance) === 1) {
                         tile.rq = 1;
                         tile.rs = {};
-                        tile.rs[magName] = rand.rand(250,450);
+                        tile.rs[magName] = rand.rand(250,600-magChance);
                     }
                 }
             }

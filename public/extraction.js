@@ -39,10 +39,18 @@ function mining(bat) {
                         if (bat.extracted.includes(res.name)) {
                             let resMiningRate = getResMiningRate(bat,res,value,false,false);
                             let adjustedRMR = resMiningRate;
-                            if (playerInfos.comp.tri >= 1 && res.name === 'Scrap') {
-                                adjustedRMR = Math.round(resMiningRate/100*(101+(((playerInfos.comp.tri*playerInfos.comp.tri)+3)*2)));
+                            if (res.name === 'Scrap') {
+                                if (playerInfos.comp.tri >= 1) {
+                                    adjustedRMR = Math.round(resMiningRate/100*(101+(((playerInfos.comp.tri*playerInfos.comp.tri)+3)*2)));
+                                }
                             } else if (playerInfos.comp.ext >= 1) {
-                                adjustedRMR = Math.round(resMiningRate/100*(101+(((playerInfos.comp.ext*playerInfos.comp.ext)+3)*2)));
+                                if (playerInfos.comp.ext === 1) {
+                                    adjustedRMR = getResMiningRate(bat,res,value+15,false,false);
+                                } else if (playerInfos.comp.ext === 2) {
+                                    adjustedRMR = getResMiningRate(bat,res,value+35,false,false);
+                                } else if (playerInfos.comp.ext === 3) {
+                                    adjustedRMR = getResMiningRate(bat,res,value+80,false,false);
+                                }
                             }
                             // console.log(res.name+' : '+resMiningRate);
                             if (bestDumper.transRes[res.name] === undefined) {
@@ -323,9 +331,9 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     if (res.name === 'Scrap') {
         minRes = Math.round(minRes*1.5);
     }
-    if (playerInfos.comp.ext >= 1) {
-        minRes = Math.round(minRes*(extComp+5)/5);
-    }
+    // if (playerInfos.comp.ext >= 1) {
+    //     minRes = Math.round(minRes*(extComp+5)/5);
+    // }
     let maxRes = maxResForRate;
     if (res.name === 'Scrap' || res.name === 'Végétaux' || res.name === 'Bois' || res.name === 'Eau') {
         maxRes = Math.round(maxRes*1.25);
@@ -399,6 +407,13 @@ function getAllMiningRates(bat,batType) {
     sortedRes.forEach(function(res) {
         if (res.bld != '') {
             let resRate = getResMiningRate(bat,res,250,true,true);
+            if (playerInfos.comp.ext === 1) {
+                resRate = getResMiningRate(selectedBat,res,265,true,false);
+            } else if (playerInfos.comp.ext === 2) {
+                resRate = getResMiningRate(selectedBat,res,285,true,false);
+            } else if (playerInfos.comp.ext === 3) {
+                resRate = getResMiningRate(selectedBat,res,330,true,false);
+            }
             if (resRate >= 1) {
                 allMiningRates[res.name] = resRate;
             }
@@ -439,10 +454,18 @@ function chooseRes(again) {
         if (selectedBatType.mining.types.includes(res.bld) || selectedBatType.mining.subTypes.includes(res.bld)) {
             let resMiningRate = getResMiningRate(selectedBat,res,value,true,false);
             let adjustedRMR = resMiningRate;
-            if (playerInfos.comp.tri >= 1 && res.name === 'Scrap') {
-                adjustedRMR = Math.round(resMiningRate/100*(101+(((playerInfos.comp.tri*playerInfos.comp.tri)+3)*2)));
+            if (res.name === 'Scrap') {
+                if (playerInfos.comp.tri >= 1) {
+                    adjustedRMR = Math.round(resMiningRate/100*(101+(((playerInfos.comp.tri*playerInfos.comp.tri)+3)*2)));
+                }
             } else if (playerInfos.comp.ext >= 1) {
-                adjustedRMR = Math.round(resMiningRate/100*(101+(((playerInfos.comp.ext*playerInfos.comp.ext)+3)*2)));
+                if (playerInfos.comp.ext === 1) {
+                    adjustedRMR = getResMiningRate(selectedBat,res,value+15,true,false);
+                } else if (playerInfos.comp.ext === 2) {
+                    adjustedRMR = getResMiningRate(selectedBat,res,value+35,true,false);
+                } else if (playerInfos.comp.ext === 3) {
+                    adjustedRMR = getResMiningRate(selectedBat,res,value+80,true,false);
+                }
             }
             if (selectedBat.extracted.includes(res.name)) {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
@@ -450,7 +473,11 @@ function chooseRes(again) {
             } else {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
             }
-            $('#conUnitList').append('<span class="constName'+resCol+' klik" onclick="resSelect('+res.id+')">'+res.name+' : '+adjustedRMR+' <span class="gff">+('+minedRes+')</span></span><br>');
+            if (adjustedRMR >= 1) {
+                $('#conUnitList').append('<span class="constName'+resCol+' klik" onclick="resSelect('+res.id+')">'+res.name+' : '+adjustedRMR+' <span class="gff">+('+minedRes+')</span></span><br>');
+            } else {
+                $('#conUnitList').append('<span class="constName'+resCol+'">'+res.name+' : '+adjustedRMR+' <span class="gff">+('+minedRes+')</span></span><br>');
+            }
         }
     });
     $('#conUnitList').append('<span class="constName">Total de ressources : <span class="cy">'+totalExRes+'</span></span><br>');

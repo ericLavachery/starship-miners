@@ -840,10 +840,10 @@ function clickConstruct(tileId,free) {
         });
         if (conselUnit.cat === 'buildings') {
             let tile = getTileById(tileId);
-            if (tile.infra != undefined && tile.infra != 'Débris') {
-                batHere = true;
-                message = 'Pas de construction de bâtiment sur une case occupée par une infrastructure';
-            }
+            // if (tile.infra != undefined && tile.infra != 'Débris') {
+            //     batHere = true;
+            //     message = 'Pas de construction de bâtiment sur une case occupée par une infrastructure';
+            // }
             if (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain === 'L') {
                 if (!conselUnit.skills.includes('noblub')) {
                     batHere = true;
@@ -1255,10 +1255,10 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 // console.log(aliens);
                 showAlien(newBat);
             }
-            if (tile.infra === 'Débris') {
-                if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices') {
-                    delete tile.infra;
-                }
+            if (conselUnit.cat === 'buildings') {
+                delete tile.infra;
+            } else if (conselUnit.cat === 'devices' && tile.infra === 'Débris') {
+                delete tile.infra;
             }
         } else {
             let apCost = prefabCost(selectedBatType,conselUnit,true);

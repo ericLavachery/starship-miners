@@ -1317,6 +1317,17 @@
         "costs":{"Scrap":4,"Carbone":8,"Zinc":4,"Nickel":4}
     },
     {
+        "name":"garage",
+        "cat":"equip",
+        "skills":[],
+        "info":"Espace++",
+        "bldReq":[],
+        "compReq":{"const":1},
+        "autoComp":["const",3],
+        "factor":"one",
+        "costs":{"Compo1":200,"Compo2":50}
+    },
+    {
         "name":"isophon",
         "cat":"equip",
         "skills":[],

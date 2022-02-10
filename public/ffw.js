@@ -98,6 +98,12 @@ function alienWeaponSelect() {
     if (selectedBatType.name === 'Torches' && selectedBat.tags.includes('invisible')) {
         weapUsed = 1;
     }
+    if (selectedBatType.name === 'Surfeuses') {
+        let tile = getTile(selectedBat);
+        if (tile.terrain === 'S' || tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'R') {
+            weapUsed = 2;
+        }
+    }
     if (weapUsed === 2) {
         selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon2));
         selectedWeap = weaponAdj(selectedWeap,selectedBat,'w2');

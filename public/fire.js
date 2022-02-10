@@ -569,10 +569,6 @@ function attack(melee,init) {
     }
     // prec/range adj
     let accurange = calcPrecRangeAdj(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType);
-    // isShort range 0
-    // if (selectedWeap.isShort && selectedWeap.range >= 1 && melee) {
-    //     selectedWeap.accuracy = selectedWeap.accuracy+5;
-    // }
     toHit = 999;
     // console.log('shots='+shots);
     let i = 1;
@@ -1538,10 +1534,6 @@ function defense(melee,init) {
     }
     // prec/range adj
     let accurange = calcPrecRangeAdj(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType);
-    // isShort range 0
-    // if (targetWeap.isShort && targetWeap.range >= 1 && melee) {
-    //     targetWeap.accuracy = targetWeap.accuracy+5;
-    // }
     toHit = 999;
     let i = 1;
     while (i <= shots) {
