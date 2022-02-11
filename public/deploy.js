@@ -86,6 +86,7 @@ function reEquip(batId,noRefresh) {
     let batEquip;
     let weapName;
     let equipNotes;
+    let bonusEqName = getBonusEq(myBatType);
     listNum = 1;
     // EQUIP ---------------------------------------------
     if (myBatType.equip != undefined) {
@@ -104,9 +105,9 @@ function reEquip(batId,noRefresh) {
                 if (checkSpecialEquip(batEquip,myBatType)) {
                     compReqOK = false;
                 }
-                let bonusEqOK = checkBonusEq(myBatType,equip);
+                // let bonusEqOK = checkBonusEq(myBatType,equip);
                 if ((compReqOK && showEq) || conselTriche) {
-                    if (myNewGear[3] == equip || (myNewGear[3] === 'xxx' && listNum === 1) || (bonusEqOK && compReqOK)) {
+                    if (myNewGear[3] == equip || (myNewGear[3] === 'xxx' && listNum === 1) || (bonusEqName === equip)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
@@ -144,7 +145,7 @@ function reEquip(batId,noRefresh) {
                     if (!compReqOK) {
                         prodSign = '';
                     }
-                    if (bonusEqOK && compReqOK) {
+                    if (bonusEqName === equip) {
                         $('#conAmmoList').append('<span class="constName" title="'+showEquipInfo(equip,myBatType,true)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else if ((bldReqOK && costsOK) || conselTriche) {
                         $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip,myBatType,true)+' '+displayCosts(flatCosts)+'" onclick="deployEquip(`'+equip+'`,`'+myBat.id+'`)">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
@@ -281,6 +282,41 @@ function checkBonusEq(unit,equipName) {
     return bonusEqOK;
 };
 
+function getBonusEq(unit) {
+    console.log("CHECK BONUS EQ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    let bonusEqName = '';
+    if (unit.log3eq != undefined) {
+        console.log(unit.log3eq);
+        if (unit.log3eq.length >= 1) {
+            unit.log3eq.forEach(function(equipName) {
+                if (bonusEqName === '') {
+                    let equip = getEquipByName(equipName);
+                    console.log(equip);
+                    let compReqOK = checkCompReq(equip);
+                    if (checkSpecialEquip(equip,unit)) {
+                        compReqOK = false;
+                    }
+                    console.log('compReqOK='+compReqOK);
+                    if (compReqOK) {
+                        if (playerInfos.comp.log === 3) {
+                            console.log('log3');
+                            bonusEqName = equipName;
+                        } else if (equip.autoComp.length === 2) {
+                            let autoCompName = equip.autoComp[0];
+                            let autoCompLevel = equip.autoComp[1];
+                            if (playerInfos.comp[autoCompName] >= autoCompLevel) {
+                                bonusEqName = equipName;
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+    console.log('bonusEqName='+bonusEqName);
+    return bonusEqName;
+};
+
 function checkHasWeapon(num,batType,eq) {
     let hasWeapon = false;
     if (num === 1) {
@@ -376,37 +412,40 @@ function doReEquip(batId) {
         myBat.ammo2 = myNewGear[1];
         myBat.prt = myNewGear[2];
         myBat.eq = myNewGear[3];
-        myBat.logeq = '';
-        if (playerInfos.comp.log === 3) {
-            if (myBatType.log3eq != undefined) {
-                if (myBatType.log3eq != '') {
-                    let logEquip = getEquipByName(myBatType.log3eq);
-                    if (logEquip.name === 'g2ai') {
-                        myBat.ok = '';
-                    }
-                    let compReqOK = checkCompReq(logEquip);
-                    if (checkSpecialEquip(logEquip,myBatType)) {
-                        compReqOK = false;
-                    }
-                    if (compReqOK) {
-                        myBat.logeq = logEquip.name;
-                    }
-                }
-            }
-        } else if (playerInfos.comp.energ >= 2) {
-            if (myBatType.log3eq != undefined) {
-                if (myBatType.log3eq.includes('psol')) {
-                    let logEquip = getEquipByName(myBatType.log3eq);
-                    if (logEquip.name === 'g2ai') {
-                        myBat.ok = '';
-                    }
-                    let compReqOK = checkCompReq(logEquip);
-                    if (compReqOK) {
-                        myBat.logeq = logEquip.name;
-                    }
-                }
-            }
+        myBat.logeq = getBonusEq(myBatType);
+        if (myBat.logeq === 'g2ai') {
+            myBat.ok = '';
         }
+        // if (playerInfos.comp.log === 3) {
+        //     if (myBatType.log3eq != undefined) {
+        //         if (myBatType.log3eq != '') {
+        //             let logEquip = getEquipByName(myBatType.log3eq);
+        //             if (logEquip.name === 'g2ai') {
+        //                 myBat.ok = '';
+        //             }
+        //             let compReqOK = checkCompReq(logEquip);
+        //             if (checkSpecialEquip(logEquip,myBatType)) {
+        //                 compReqOK = false;
+        //             }
+        //             if (compReqOK) {
+        //                 myBat.logeq = logEquip.name;
+        //             }
+        //         }
+        //     }
+        // } else if (playerInfos.comp.energ >= 2) {
+        //     if (myBatType.log3eq != undefined) {
+        //         if (myBatType.log3eq.includes('psol')) {
+        //             let logEquip = getEquipByName(myBatType.log3eq);
+        //             if (logEquip.name === 'g2ai') {
+        //                 myBat.ok = '';
+        //             }
+        //             let compReqOK = checkCompReq(logEquip);
+        //             if (compReqOK) {
+        //                 myBat.logeq = logEquip.name;
+        //             }
+        //         }
+        //     }
+        // }
         let oldGearTags = getBatGearTags(myGear[2],myGear[3],myBatType);
         myBat.tags = myBat.tags.filter(function(el) {
             return !oldGearTags.includes(el);

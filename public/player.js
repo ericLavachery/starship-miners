@@ -425,7 +425,7 @@ function playerSkillsUTChanges() {
                             w1CostBonus = unit.weapon.cost-2;
                         }
                         unit.weapon.cost = unit.weapon.cost-w1CostBonus;
-                        if (playerInfos.comp.def >= 3) {
+                        if (playerInfos.comp.def >= 2) {
                             unit.weapon.kit = false;
                         }
                     }
@@ -435,6 +435,9 @@ function playerSkillsUTChanges() {
                             w2CostBonus = unit.weapon2.cost-2;
                         }
                         unit.weapon2.cost = unit.weapon2.cost-w2CostBonus;
+                        if (playerInfos.comp.def >= 3) {
+                            unit.weapon2.kit = false;
+                        }
                     }
                 }
             }
@@ -532,13 +535,12 @@ function playerSkillsUTChanges() {
         }
         // LOGISTIQUE
         if (playerInfos.comp.log >= 2 && unit.cat === 'buildings') {
-            let logTransBonus = Math.round((playerInfos.comp.log-0.5)/1.25);
             if (unit.transRes >= 50) {
-                unit.transRes = Math.round(unit.transRes*logTransBonus);
+                unit.transRes = Math.round(unit.transRes*1.2);
             }
             if (unit.transUnits >= 50) {
-                unit.transUnits = Math.round(unit.transUnits*logTransBonus);
-                unit.transMaxSize = Math.round(unit.transMaxSize*playerInfos.comp.log);
+                unit.transUnits = Math.round(unit.transUnits*1.2);
+                unit.transMaxSize = Math.round(unit.transMaxSize*1.5);
             }
         }
         if (playerInfos.comp.log >= 2) {

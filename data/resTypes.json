@@ -55,9 +55,9 @@
         "name": "Silicium",
         "bld": "Mine",
         "level": 1,
-        "rarity": 22,
+        "rarity": 30,
         "cat": "white",
-        "batch": 4,
+        "batch": 5,
         "energie": -1,
         "equiv": 1,
         "rlab": 15

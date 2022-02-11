@@ -341,7 +341,7 @@ function nextTurnEnd() {
                     triProd(bat,batType,1,false,false);
                 }
                 if (!playerInfos.onShip) {
-                    if (bat.eq.includes('psol') || bat.logeq.includes('psol')) {
+                    if (bat.eq.includes('psol') || bat.logeq.includes('psol') || bat.eq.includes('garage') || bat.logeq.includes('garage')) {
                         solarPanel(bat,batType);
                     }
                 }
@@ -883,7 +883,7 @@ function getBatAP(bat,batType) {
 
 function getAP(bat,batType) {
     let newAP = bat.ap;
-    if (bat.eq === 'belier' || bat.eq === 'snorkel' || (bat.eq === 'chenilles' && batType.maxFlood >= 1 && batType.maxScarp >= 2) || bat.logeq === 'belier' || bat.logeq === 'snorkel' || (bat.logeq === 'chenilles' && batType.maxFlood >= 1 && batType.maxScarp >= 2)) {
+    if (bat.eq === 'belier' || bat.eq === 'snorkel' || (bat.eq === 'chenilles' && batType.maxFlood >= 1 && batType.maxScarp >= 2)) {
         newAP = Math.round(newAP*0.9);
     }
     if (playerInfos.bldList.includes('QG')) {
@@ -908,7 +908,7 @@ function getAP(bat,batType) {
     if (bat.eq === 'helper' || bat.logeq === 'helper') {
         newAP = newAP+1;
     }
-    if (bat.eq === 'e-ranger' || bat.eq === 'gilet' || bat.logeq === 'e-ranger' || bat.logeq === 'gilet' || bat.eq === 'e-lifepod') {
+    if (bat.eq === 'e-ranger' || bat.eq === 'gilet' || bat.eq === 'e-lifepod') {
         newAP = newAP-1;
     }
     if (bat.eq === 'e-road' && batType.cat === 'infantry') {

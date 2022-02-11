@@ -452,7 +452,7 @@
         "info":"Silencieux Camouflage+",
         "bldReq":["Atelier"],
         "compReq":{"bal":1,"log":1},
-        "autoComp":["bal",3],
+        "autoComp":["log",2],
         "factor":"crew",
         "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":6},
         "deploy":{"Végétaux":9}
@@ -464,7 +464,7 @@
         "info":"Silencieux Camouflage+",
         "bldReq":["Atelier"],
         "compReq":{"bal":1,"log":1},
-        "autoComp":["bal",3],
+        "autoComp":["log",2],
         "factor":"crew",
         "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":6},
         "deploy":{"Végétaux":9}
@@ -476,7 +476,7 @@
         "info":"Silencieux Camouflage+",
         "bldReq":["Atelier"],
         "compReq":{"bal":1,"log":1},
-        "autoComp":["bal",3],
+        "autoComp":["log",2],
         "factor":"crew",
         "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":6},
         "deploy":{"Végétaux":9}
@@ -1317,17 +1317,6 @@
         "costs":{"Scrap":4,"Carbone":8,"Zinc":4,"Nickel":4}
     },
     {
-        "name":"garage",
-        "cat":"equip",
-        "skills":[],
-        "info":"Espace++",
-        "bldReq":[],
-        "compReq":{"const":1},
-        "autoComp":["const",3],
-        "factor":"one",
-        "costs":{"Compo1":200,"Compo2":50}
-    },
-    {
         "name":"isophon",
         "cat":"equip",
         "skills":[],
@@ -1420,6 +1409,17 @@
         "factor":"one",
         "costs":{"Silicium":100,"Carbone":50,"Hydrogène":50,"Oxygène":25,"Batteries":15},
         "deploy":{}
+    },
+    {
+        "name":"garage",
+        "cat":"equip",
+        "skills":[],
+        "info":"Espace++ (Panneaux solaires)",
+        "bldReq":[],
+        "compReq":{"const":1},
+        "autoComp":["const",3],
+        "factor":"one",
+        "costs":{"Compo1":200,"Compo2":50}
     },
     {
         "name":"confort",
