@@ -11,7 +11,7 @@ function clickMove(tileId) {
             ownBatHere = true;
             batType = getBatType(bat);
             let maxSize = batType.transMaxSize;
-            if (bat.eq === 'garage' || bat.logeq === 'garage') {
+            if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
                 maxSize = maxSize*3;
             }
             if (maxSize >= selectedBatType.size) {
@@ -454,7 +454,7 @@ function batUnstack() {
             if (!isCharged) {
                 let batType = getBatType(bat);
                 let maxSize = batType.transMaxSize;
-                if (bat.eq === 'garage' || bat.logeq === 'garage') {
+                if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
                     maxSize = maxSize*3;
                 }
                 if (maxSize >= selectedBatType.size) {

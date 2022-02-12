@@ -1317,24 +1317,13 @@
         "costs":{"Scrap":4,"Carbone":8,"Zinc":4,"Nickel":4}
     },
     {
-        "name":"isophon",
-        "cat":"equip",
-        "skills":[],
-        "info":"Isolation phonique",
-        "bldReq":["Chaîne de montage"],
-        "compReq":{"const":1},
-        "autoComp":["const",3],
-        "factor":"thp",
-        "costs":{"Scrap":6,"Végétaux":6,"Bois":6}
-    },
-    {
         "name":"tungextract",
         "cat":"equip",
         "skills":[],
         "info":"Extraction+",
         "bldReq":[],
         "compReq":{"ind":1},
-        "autoComp":[],
+        "autoComp":["ext",2],
         "factor":"one",
         "costs":{"Tungstène":60,"Titane":20}
     },
@@ -1345,7 +1334,7 @@
         "info":"Extraction++",
         "bldReq":[],
         "compReq":{"ind":1,"energ":2},
-        "autoComp":[],
+        "autoComp":["ext",3],
         "factor":"one",
         "costs":{"Carbone":15,"Titane":45,"Platine":45,"Cuivre":30,"Moteurs":15,"Electros":30,"Batteries":60},
         "deploy":{"Energie":240}
@@ -1357,7 +1346,7 @@
         "info":"Extraction+++",
         "bldReq":[],
         "compReq":{"ind":2,"mat":4},
-        "autoComp":[],
+        "autoComp":["ext",3],
         "factor":"one",
         "costs":{"Carbone":10,"Titane":40,"Rhodium":40,"Cuivre":40,"Moteurs":15,"Electros":40,"Batteries":30},
         "deploy":{"Energie":120}
@@ -1369,7 +1358,7 @@
         "info":"Extraction++",
         "bldReq":[],
         "compReq":{"log":2,"ind":2},
-        "autoComp":[],
+        "autoComp":["ext",3],
         "factor":"one",
         "costs":{"Carbone":20,"Titane":30,"Silicium":15,"Cuivre":60,"Moteurs":30,"Electros":60,"Batteries":40},
         "deploy":{"Energie":160}
@@ -1381,10 +1370,22 @@
         "info":"Extraction++",
         "bldReq":[],
         "compReq":{"ind":2,"energ":1},
-        "autoComp":[],
+        "autoComp":["ext",3],
         "factor":"one",
         "costs":{"Carbone":45,"Titane":45,"Cuivre":30,"Moteurs":5,"Electros":30,"Batteries":30},
         "deploy":{"Energie":120,"Hydrogène":80,"Aluminium":20}
+    },
+    {
+        "name":"prodboost",
+        "cat":"equip",
+        "skills":[],
+        "info":"Production++",
+        "bldReq":[],
+        "compReq":{"ind":2},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Carbone":30,"Fer":30,"Titane":15,"Silicium":10,"Cuivre":30,"Moteurs":30,"Electros":30,"Batteries":30},
+        "deploy":{}
     },
     {
         "name":"psol",
@@ -1411,15 +1412,37 @@
         "deploy":{}
     },
     {
+        "name":"isophon",
+        "cat":"equip",
+        "skills":[],
+        "info":"Isolation phonique",
+        "bldReq":["Chaîne de montage"],
+        "compReq":{"const":1},
+        "autoComp":["const",3],
+        "factor":"thp",
+        "costs":{"Silicium":1,"Scrap":2,"Végétaux":2,"Bois":2}
+    },
+    {
         "name":"garage",
         "cat":"equip",
         "skills":[],
-        "info":"Espace++ (Panneaux solaires)",
+        "info":"Espace++",
         "bldReq":[],
         "compReq":{"const":1},
         "autoComp":["const",3],
         "factor":"one",
         "costs":{"Compo1":200,"Compo2":50}
+    },
+    {
+        "name":"bldkit",
+        "cat":"equip",
+        "skills":[],
+        "info":"Espace++ Panneaux Isolation (Extraction+)",
+        "bldReq":[],
+        "compReq":{"const":2,"energ":1,"log":2,"ind":1},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Compo1":200,"Compo2":50,"Scrap":60,"Végétaux":60,"Bois":60,"Tungstène":60,"Electros":30,"Batteries":30,"Silicium":80,"Carbone":25,"Hydrogène":25,"Oxygène":12,"Batteries":8}
     },
     {
         "name":"confort",

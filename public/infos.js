@@ -85,7 +85,7 @@ function batInfos(bat,batType,pop) {
     if (bat.eq === 'megafret') {
         resMax = Math.round(resMax*1.2);
     }
-    if (bat.eq === 'garage' || bat.logeq === 'garage') {
+    if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
         resMax = resMax*2;
     }
     let vetIcon = '';
@@ -449,7 +449,7 @@ function batInfos(bat,batType,pop) {
         if (bat.eq === 'megatrans' || bat.logeq === 'megatrans') {
             transBase = Math.round(transBase*1.25);
         }
-        if (bat.eq === 'garage' || bat.logeq === 'garage') {
+        if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
             transBase = transBase*2;
         }
         if (batType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {

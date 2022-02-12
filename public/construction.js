@@ -417,7 +417,6 @@ function conSelect(unitId,player,noRefresh) {
                 if (checkSpecialEquip(batEquip,conselUnit)) {
                     compReqOK = false;
                 }
-                // let bonusEqOK = checkBonusEq(conselUnit,equip);
                 if ((compReqOK && showEq) || conselTriche) {
                     if (conselAmmos[3] == equip || (conselAmmos[3] === 'xxx' && listNum === 1) || (bonusEqName === equip)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
@@ -1017,22 +1016,6 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             if (newBat.logeq === 'g2ai') {
                 newBat.ok = '';
             }
-            // if (conselUnit.log3eq != undefined) {
-            //     if (conselUnit.log3eq != '') {
-            //         let logEquip = getEquipByName(conselUnit.log3eq);
-            //         let compReqOK = checkCompReq(logEquip);
-            //         if (checkSpecialEquip(logEquip,conselUnit)) {
-            //             compReqOK = false;
-            //         }
-            //         let bonusEqOK = checkBonusEq(conselUnit,logEquip.name);
-            //         if (compReqOK && bonusEqOK) {
-            //             if (logEquip.name === 'g2ai') {
-            //                 newBat.ok = '';
-            //             }
-            //             newBat.logeq = logEquip.name;
-            //         }
-            //     }
-            // }
             // Armor
             let armorName = conselAmmos[2];
             if (armorName === 'xxx') {

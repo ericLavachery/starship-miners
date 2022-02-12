@@ -615,55 +615,42 @@ function solarProd(bat,batType,time,sim,quiet) {
 };
 
 function solarPanel(bat,batType) {
-    let hasPsol = false;
-    if (bat.eq.includes('psol') || bat.logeq.includes('psol')) {
-        hasPsol = true;
-    }
-    if (bat.eq.includes('garage') || bat.logeq.includes('garage')) {
-        if (playerInfos.comp.energ >= 1) {
-            if (batType.equip.includes('psol') || batType.equip.includes('psol2')) {
-                hasPsol = true;
-            }
+    console.log('********** psol prod **********');
+    console.log(batType.name);
+    let tile = getTileById(bat.tileId);
+    let upkeepPaid = true;
+    if (!zone[0].dark && bat.fuzz > -2) {
+        let energyProd = rand.rand(6,8);
+        if (tile.terrain === 'P' || tile.terrain === 'M') {
+            energyProd = rand.rand(9,12);
+        } else if (tile.terrain === 'F') {
+            energyProd = rand.rand(4,5);
         }
-    }
-    if (hasPsol) {
-        console.log('********** psol prod **********');
-        console.log(batType.name);
-        let tile = getTileById(bat.tileId);
-        let upkeepPaid = true;
-        if (!zone[0].dark && bat.fuzz > -2) {
-            let energyProd = rand.rand(6,8);
-            if (tile.terrain === 'P' || tile.terrain === 'M') {
-                energyProd = rand.rand(9,12);
-            } else if (tile.terrain === 'F') {
-                energyProd = rand.rand(4,5);
-            }
-            energyProd = Math.floor(energyProd*zone[0].ensol/pansolFactor);
-            if (bat.eq === 'psol' || bat.logeq === 'psol') {
+        energyProd = Math.floor(energyProd*zone[0].ensol/pansolFactor);
+        if (bat.eq === 'psol' || bat.logeq === 'psol') {
+            energyProd = Math.round(energyProd/2);
+        } else if (bat.eq === 'bldkit' || bat.logeq === 'bldkit') {
+            if (!batType.equip.includes('psol2')) {
                 energyProd = Math.round(energyProd/2);
-            } else if (bat.eq === 'garage' || bat.logeq === 'garage') {
-                if (!batType.equip.includes('psol2')) {
-                    energyProd = Math.round(energyProd/2);
-                }
             }
-            energyProd = energyCreation(energyProd);
-            if (energyProd < 1) {
-                energyProd = 1;
-            }
-            if (playerInfos.onShip) {
-                resAdd('Energie',energyProd);
-            } else {
-                resAddToBld('Energie',energyProd,bat,batType,false);
-            }
-            if (!playerInfos.onShip) {
-                if (minedThisTurn['Energie'] === undefined) {
-                    minedThisTurn['Energie'] = energyProd;
-                } else {
-                    minedThisTurn['Energie'] = minedThisTurn['Energie']+energyProd;
-                }
-            }
-            console.log('psol ('+bat.type+') = Energie:'+energyProd);
         }
+        energyProd = energyCreation(energyProd);
+        if (energyProd < 1) {
+            energyProd = 1;
+        }
+        if (playerInfos.onShip) {
+            resAdd('Energie',energyProd);
+        } else {
+            resAddToBld('Energie',energyProd,bat,batType,false);
+        }
+        if (!playerInfos.onShip) {
+            if (minedThisTurn['Energie'] === undefined) {
+                minedThisTurn['Energie'] = energyProd;
+            } else {
+                minedThisTurn['Energie'] = minedThisTurn['Energie']+energyProd;
+            }
+        }
+        console.log('psol ('+bat.type+') = Energie:'+energyProd);
     }
 };
 
@@ -784,6 +771,9 @@ function upkeepAndProd(bat,batType,time,sim,quiet) {
                 let key = entry[0];
                 let value = entry[1];
                 let conso = value*time;
+                if (bat.eq === 'prodboost') {
+                    conso = Math.round(conso*1.5);
+                }
                 if (playerInfos.onShip) {
                     conso = Math.ceil(conso/upkeepVM);
                 } else {
@@ -800,6 +790,9 @@ function upkeepAndProd(bat,batType,time,sim,quiet) {
                     let key = entry[0];
                     let value = entry[1];
                     let conso = value*time;
+                    if (bat.eq === 'prodboost') {
+                        conso = Math.round(conso*1.5);
+                    }
                     if (playerInfos.onShip) {
                         conso = Math.ceil(conso/upkeepVM);
                     } else {
@@ -828,6 +821,9 @@ function upkeepAndProd(bat,batType,time,sim,quiet) {
                     let key = entry[0];
                     let value = entry[1];
                     let fullProd = value*time;
+                    if (bat.eq === 'prodboost') {
+                        fullProd = fullProd*2;
+                    }
                     if (playerInfos.onShip) {
                         fullProd = Math.ceil(fullProd/prodVM);
                     } else {

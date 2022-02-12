@@ -535,12 +535,22 @@ function playerSkillsUTChanges() {
         }
         // LOGISTIQUE
         if (playerInfos.comp.log >= 2 && unit.cat === 'buildings') {
-            if (unit.transRes >= 50) {
-                unit.transRes = Math.round(unit.transRes*1.2);
-            }
-            if (unit.transUnits >= 50) {
-                unit.transUnits = Math.round(unit.transUnits*1.2);
-                unit.transMaxSize = Math.round(unit.transMaxSize*1.5);
+            if (playerInfos.comp.log === 2) {
+                if (unit.transRes >= 50) {
+                    unit.transRes = Math.round(unit.transRes*1.2);
+                }
+                if (unit.transUnits >= 50) {
+                    unit.transUnits = Math.round(unit.transUnits*1.2);
+                    unit.transMaxSize = Math.round(unit.transMaxSize*1.5);
+                }
+            } else if (playerInfos.comp.log === 3) {
+                if (unit.transRes >= 50) {
+                    unit.transRes = Math.round(unit.transRes*2);
+                }
+                if (unit.transUnits >= 50) {
+                    unit.transUnits = Math.round(unit.transUnits*2);
+                    unit.transMaxSize = Math.round(unit.transMaxSize*3);
+                }
             }
         }
         if (playerInfos.comp.log >= 2) {

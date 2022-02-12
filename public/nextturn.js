@@ -341,7 +341,7 @@ function nextTurnEnd() {
                     triProd(bat,batType,1,false,false);
                 }
                 if (!playerInfos.onShip) {
-                    if (bat.eq.includes('psol') || bat.logeq.includes('psol') || bat.eq.includes('garage') || bat.logeq.includes('garage')) {
+                    if (bat.eq.includes('psol') || bat.logeq.includes('psol') || bat.eq.includes('bldkit') || bat.logeq.includes('bldkit')) {
                         solarPanel(bat,batType);
                     }
                 }

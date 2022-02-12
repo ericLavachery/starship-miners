@@ -260,19 +260,19 @@ function getMiningRate(bat,fullRate,noMining) {
                 miningAdj = 1.6;
             }
         }
-        if (bat.eq === 'tungextract') {
-            miningAdj = 1.35;
-        } else if (bat.eq === 'plasmaextract') {
+        if (bat.eq === 'plasmaextract' || bat.logeq === 'plasmaextract') {
             miningAdj = 1.7;
-        } else if (bat.eq === 'monoextract') {
+        } else if (bat.eq === 'monoextract' || bat.logeq === 'monoextract') {
             miningAdj = 2.2;
-        } else if (bat.eq === 'autoextract') {
+        } else if (bat.eq === 'autoextract' || bat.logeq === 'autoextract') {
             miningAdj = 1.7;
-        } else if (bat.eq === 'hydroextract') {
+        } else if (bat.eq === 'hydroextract' || bat.logeq === 'hydroextract') {
             miningAdj = 1.6;
+        } else if (bat.eq === 'tungextract' || bat.logeq === 'tungextract' || bat.eq === 'bldkit') {
+            miningAdj = 1.35;
         }
     } else {
-        if (bat.eq === 'autoextract') {
+        if (bat.eq === 'autoextract' || bat.logeq === 'autoextract') {
             miningAdj = 1.7;
         }
     }

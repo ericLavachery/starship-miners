@@ -2515,7 +2515,7 @@
     {
         "id":216,
         "name":"Cantine",
-        "upkeep":{"Fruits":9,"Végétaux":12,"Energie":2},
+        "upkeep":{"Fruits":8,"Végétaux":12,"Energie":2},
         "prod":{"Nourriture":4},
         "costs":{"Compo1":195,"Compo2":30,"Eau":300,"Carbone":100,"Fer":50,"Batteries":30,"Energie":120},
         "fabTime":25,

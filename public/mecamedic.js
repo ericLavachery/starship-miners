@@ -565,7 +565,7 @@ function getAway(myBat,fromTileId,blob) {
         let batType = getBatType(bat);
         if (batType.skills.includes('transport') && batType.cat === 'buildings' && getAwayTile < 0) {
             let maxSize = batType.transMaxSize;
-            if (bat.eq === 'garage' || bat.logeq === 'garage') {
+            if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
                 maxSize = maxSize*3;
             }
             if (myBatType.size <= maxSize) {

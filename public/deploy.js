@@ -105,7 +105,6 @@ function reEquip(batId,noRefresh) {
                 if (checkSpecialEquip(batEquip,myBatType)) {
                     compReqOK = false;
                 }
-                // let bonusEqOK = checkBonusEq(myBatType,equip);
                 if ((compReqOK && showEq) || conselTriche) {
                     if (myNewGear[3] == equip || (myNewGear[3] === 'xxx' && listNum === 1) || (bonusEqName === equip)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
@@ -259,49 +258,23 @@ function reEquip(batId,noRefresh) {
     $('#conAmmoList').append('<br>');
 };
 
-function checkBonusEq(unit,equipName) {
-    let equip = getEquipByName(equipName);
-    let bonusEqOK = false;
-    if (unit.log3eq === equipName) {
-        if (playerInfos.comp.log === 3) {
-            bonusEqOK = true;
-        }
-        if (playerInfos.comp.energ >= 2 && equipName.includes('psol')) {
-            bonusEqOK = true;
-        }
-        if (!equipName.includes('w2-') && !equipName.includes('w1-') && !equipName.includes('sci-') && !equipName.includes('kit-')) {
-            if (equip.autoComp.length === 2) {
-                let autoCompName = equip.autoComp[0];
-                let autoCompLevel = equip.autoComp[1];
-                if (playerInfos.comp[autoCompName] >= autoCompLevel) {
-                    bonusEqOK = true;
-                }
-            }
-        }
-    }
-    return bonusEqOK;
-};
-
 function getBonusEq(unit) {
     console.log("CHECK BONUS EQ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     let bonusEqName = '';
-    if (unit.log3eq != undefined) {
-        console.log(unit.log3eq);
-        if (unit.log3eq.length >= 1) {
-            unit.log3eq.forEach(function(equipName) {
+    if (unit.autoEq != undefined) {
+        console.log(unit.autoEq);
+        if (unit.autoEq.length >= 1) {
+            unit.autoEq.forEach(function(equipName) {
                 if (bonusEqName === '') {
                     let equip = getEquipByName(equipName);
-                    console.log(equip);
+                    // console.log(equip);
                     let compReqOK = checkCompReq(equip);
                     if (checkSpecialEquip(equip,unit)) {
                         compReqOK = false;
                     }
                     console.log('compReqOK='+compReqOK);
                     if (compReqOK) {
-                        if (playerInfos.comp.log === 3) {
-                            console.log('log3');
-                            bonusEqName = equipName;
-                        } else if (equip.autoComp.length === 2) {
+                        if (equip.autoComp.length === 2) {
                             let autoCompName = equip.autoComp[0];
                             let autoCompLevel = equip.autoComp[1];
                             if (playerInfos.comp[autoCompName] >= autoCompLevel) {
@@ -311,6 +284,36 @@ function getBonusEq(unit) {
                     }
                 }
             });
+        }
+    }
+    if (bonusEqName === '') {
+        if (unit.log3eq != undefined) {
+            console.log(unit.log3eq);
+            if (unit.log3eq.length >= 1) {
+                unit.log3eq.forEach(function(equipName) {
+                    if (bonusEqName === '') {
+                        let equip = getEquipByName(equipName);
+                        // console.log(equip);
+                        let compReqOK = checkCompReq(equip);
+                        if (checkSpecialEquip(equip,unit)) {
+                            compReqOK = false;
+                        }
+                        console.log('compReqOK='+compReqOK);
+                        if (compReqOK) {
+                            if (playerInfos.comp.log === 3 && equipName != 'garage') {
+                                // console.log('log3');
+                                bonusEqName = equipName;
+                            } else if (equip.autoComp.length === 2) {
+                                let autoCompName = equip.autoComp[0];
+                                let autoCompLevel = equip.autoComp[1];
+                                if (playerInfos.comp[autoCompName] >= autoCompLevel) {
+                                    bonusEqName = equipName;
+                                }
+                            }
+                        }
+                    }
+                });
+            }
         }
     }
     console.log('bonusEqName='+bonusEqName);
@@ -416,36 +419,6 @@ function doReEquip(batId) {
         if (myBat.logeq === 'g2ai') {
             myBat.ok = '';
         }
-        // if (playerInfos.comp.log === 3) {
-        //     if (myBatType.log3eq != undefined) {
-        //         if (myBatType.log3eq != '') {
-        //             let logEquip = getEquipByName(myBatType.log3eq);
-        //             if (logEquip.name === 'g2ai') {
-        //                 myBat.ok = '';
-        //             }
-        //             let compReqOK = checkCompReq(logEquip);
-        //             if (checkSpecialEquip(logEquip,myBatType)) {
-        //                 compReqOK = false;
-        //             }
-        //             if (compReqOK) {
-        //                 myBat.logeq = logEquip.name;
-        //             }
-        //         }
-        //     }
-        // } else if (playerInfos.comp.energ >= 2) {
-        //     if (myBatType.log3eq != undefined) {
-        //         if (myBatType.log3eq.includes('psol')) {
-        //             let logEquip = getEquipByName(myBatType.log3eq);
-        //             if (logEquip.name === 'g2ai') {
-        //                 myBat.ok = '';
-        //             }
-        //             let compReqOK = checkCompReq(logEquip);
-        //             if (compReqOK) {
-        //                 myBat.logeq = logEquip.name;
-        //             }
-        //         }
-        //     }
-        // }
         let oldGearTags = getBatGearTags(myGear[2],myGear[3],myBatType);
         myBat.tags = myBat.tags.filter(function(el) {
             return !oldGearTags.includes(el);
