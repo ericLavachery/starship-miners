@@ -11,6 +11,10 @@ function canIHit(bat,weap,alien,batInMelee) {
 
 function calcBatFuzz(bat) {
     let batFuzz = bat.fuzz+2;
+    if (bat.fuzz === undefined) {
+        batFuzz = 4;
+        bat.fuzz = 1.5;
+    }
     if (bat.eq === 'w2-lcomet') {
         batFuzz = batFuzz+3.5;
     }

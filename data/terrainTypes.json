@@ -179,7 +179,7 @@
         "fortifcover":8,
         "aliencover":6,
         "fishcover":2,
-        "minChance":90,
+        "minChance":50,
         "roadBuild":4,
         "color":"#1b632f"
     },
@@ -202,7 +202,7 @@
         "fortifcover":5,
         "aliencover":-3,
         "fishcover":3,
-        "minChance":65,
+        "minChance":50,
         "roadBuild":5,
         "color":"#566878"
     },

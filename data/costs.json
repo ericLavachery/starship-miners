@@ -1398,7 +1398,7 @@
         "levels":{"rednecks":9,"blades":99,"bulbos":9,"drogmulojs":5,"tiradores":9,"detruas":10,"brasier":9},
         "bldReq":["Armurerie","Centre de tri","Garage"],
         "compHardReq":{"tri":1},
-        "costs":{"Fer":99,"Scrap":423,"Carbone":108,"Moteurs":36,"Batteries":9,"Compo2":28,"Huile":10,"Eau":96,"Silicium":12},
+        "costs":{"Fer":180,"Scrap":423,"Carbone":108,"Moteurs":36,"Batteries":14,"Compo2":28,"Huile":10,"Eau":96,"Silicium":12},
         "deploy":{"Fuel":55},
         "fabTime":45,
         "inRuin":2
@@ -1408,7 +1408,7 @@
         "name":"Scroungers",
         "levels":{"rednecks":99,"blades":7,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Centre de tri","Garage"],
-        "costs":{"Fer":27,"Scrap":441,"Carbone":126,"Bois":90,"Moteurs":36,"Batteries":9,"Compo2":28,"Huile":10,"Eau":96,"Silicium":12},
+        "costs":{"Fer":117,"Scrap":441,"Carbone":126,"Bois":90,"Moteurs":36,"Batteries":14,"Compo2":28,"Huile":10,"Eau":96,"Silicium":12},
         "deploy":{"Fuel":55},
         "fabTime":45
     },

@@ -561,7 +561,7 @@ function getDeployCosts(unit,ammo,weapNum,type) {
 function getBldDeployFactor(unit) {
     let dfac = 1/(((playerInfos.comp.tri+4)*(playerInfos.comp.const+1)*1)+1);
     if (unit.skills.includes('ground')) {
-        dfac = 1/(((playerInfos.comp.tri+6)*(playerInfos.comp.const+3)*0.056)+1);
+        dfac = 1/(((playerInfos.comp.tri+6)*(playerInfos.comp.const+3)*0.112)+1);
     }
     return dfac;
 };

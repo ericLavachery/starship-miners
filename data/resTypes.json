@@ -149,7 +149,7 @@
         "batch": 4,
         "energie": 20,
         "equiv": 1,
-        "pter": [3,"P","H"]
+        "pter": [3,"P","H","F"]
     },
     {
         "id": 11,
@@ -262,6 +262,7 @@
         "batch": 2,
         "energie": -1,
         "equiv": 1.5,
+        "pter": [2,"F","B"],
         "ctri": 3
     },
     {
@@ -286,7 +287,7 @@
         "batch": 2,
         "energie": -1,
         "equiv": 1.5,
-        "pter": [2,"M"],
+        "pter": [3,"F"],
         "rlab": 1,
         "planets":{"Dom":1,"Sarak":1.5,"Gehenna":1,"Kzin":1.5,"Horst":3}
     },

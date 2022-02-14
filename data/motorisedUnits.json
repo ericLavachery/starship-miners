@@ -2303,7 +2303,7 @@
         "name":"Scavengers",
         "pic":"scavenger",
         "cat":"vehicles",
-        "kind":"zero-recyclage",
+        "kind":"zero-extraction",
         "squads":3,
         "squadSize":3,
         "crew":8,
@@ -2355,10 +2355,10 @@
         "mecanoCost":9,
         "mining":{
             "level":2,
-            "rate":32,
+            "rate":20,
             "multi":false,
             "types":["Scrap"],
-            "subTypes":["Pompe","Comptoir"]
+            "subTypes":["Pompe","Comptoir","Mine"]
         },
         "transMaxSize":9,
         "transUnits":250,
@@ -2372,7 +2372,7 @@
         "name":"Scroungers",
         "pic":"scrounger",
         "cat":"vehicles",
-        "kind":"zero-recyclage",
+        "kind":"zero-extraction",
         "squads":3,
         "squadSize":3,
         "crew":13,
@@ -2426,7 +2426,7 @@
         "skills":["fouille","scav","fortif","guerrilla","tirailleur","datt","maycamo","defense","fret","transport","selfbadmecano","dumper","extraction","light","crewsave","trapap","recupcit","recupres","ouvert","caterp"],
         "mecanoCost":9,
         "mining":{
-            "level":1,
+            "level":2,
             "rate":25,
             "multi":false,
             "types":["Comptoir","Scrap"],
