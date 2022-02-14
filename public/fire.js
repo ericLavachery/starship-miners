@@ -612,7 +612,7 @@ function attack(melee,init) {
         // console.log('AP Damage : '+apDamage);
     }
     // web
-    if (selectedWeap.ammo.includes('web') || selectedWeap.ammo.includes('trap') || selectedWeap.ammo.includes('glair') || selectedWeap.ammo.includes('flashbang')) {
+    if (selectedWeap.apWeb) {
         let webDamage = totalHits;
         webDamage = Math.ceil(webDamage*18/Math.sqrt(targetBatType.hp)/(targetBatType.size+7));
         if (selectedWeap.ammo.includes('glair')) {
@@ -621,6 +621,8 @@ function attack(melee,init) {
             } else {
                 webDamage = webDamage+Math.round(totalHits/3);
             }
+        } else if (selectedWeap.ammo.includes('marquage-stop')) {
+            webDamage = Math.ceil(totalHits/1.2/Math.sqrt(targetBatType.hp+10));
         }
         if (targetBatType.cat != 'aliens') {
             webDamage = Math.ceil(webDamage/(playerInfos.comp.ca+4)*6);
@@ -1572,7 +1574,7 @@ function defense(melee,init) {
         // console.log('AP Damage : '+apDamage);
     }
     // web
-    if (targetWeap.ammo.includes('web') || targetWeap.ammo.includes('trap') || targetWeap.ammo.includes('glair') || targetWeap.ammo.includes('flashbang')) {
+    if (targetWeap.apWeb) {
         let webDamage = totalHits;
         webDamage = Math.ceil(webDamage*18/Math.sqrt(selectedBatType.hp)/(selectedBatType.size+7));
         if (targetWeap.ammo.includes('glair')) {
@@ -1582,6 +1584,8 @@ function defense(melee,init) {
             } else {
                 webDamage = webDamage+Math.round(totalHits/3);
             }
+        } else if (targetWeap.ammo.includes('marquage-stop')) {
+            webDamage = Math.ceil(totalHits/1.2/Math.sqrt(selectedBatType.hp+10));
         }
         if (selectedBatType.cat != 'aliens') {
             webDamage = Math.ceil(webDamage/(playerInfos.comp.ca+4)*6);

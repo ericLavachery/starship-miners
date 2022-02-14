@@ -33,7 +33,8 @@
         "powermult": 1,
         "armors": 1,
         "accuracy": 1,
-        "apdamage": 0.15,
+        "apdamage": 0,
+        "apweb": true,
         "aoe": "",
         "info": "Marquage",
         "noList": true
@@ -47,6 +48,7 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
+        "apweb": true,
         "aoe": "",
         "info": "Entrave",
         "noList": true
@@ -60,6 +62,7 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
+        "apweb": true,
         "aoe": "",
         "info": "Entrave",
         "noList": true
@@ -73,6 +76,7 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
+        "apweb": true,
         "aoe": "",
         "info": "Entrave",
         "bldReq":["Atelier"],
@@ -90,6 +94,7 @@
         "armors": 0,
         "accuracy": 1.33,
         "apdamage": 0.03,
+        "apweb": true,
         "aoe": "",
         "info": "Entrave",
         "bldReq":["Générateur"],
@@ -2063,6 +2068,7 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
+        "apweb": true,
         "aoe": "",
         "noList": true
     },
@@ -2075,6 +2081,7 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
+        "apweb": true,
         "aoe": "",
         "noList": true
     },
@@ -2847,6 +2854,7 @@
         "armors": 0.75,
         "accuracy": 0.8,
         "apdamage": 0,
+        "apweb": true,
         "aoe": "squad",
         "bldReq":["Armurerie"],
         "compReq":{"explo":1,"pyro":1},
@@ -2866,7 +2874,7 @@
         "aoe": "squad",
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
-        "compReq":{"pyro":1},
+        "compReq":{"pyro":2},
         "deploy":{"Scrap":4,"Fer":1,"Aluminium":2,"Phosphore":4,"Explosifs":1},
         "batch":100
     },
@@ -3302,6 +3310,7 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0.1,
+        "apweb": true,
         "aoe": "",
         "noList": true
     },

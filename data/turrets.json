@@ -385,7 +385,7 @@
         "mecanoCost":5,
         "mining":{
             "level":4,
-            "rate":50,
+            "rate":40,
             "multi":true,
             "types":["Mine","Derrick","Pompe","Comptoir","Scrap"],
             "subTypes":[]
@@ -636,7 +636,7 @@
             "rof":12,
             "accuracy":30,
             "power":2,
-            "armors":0.2,
+            "armors":0.5,
             "aoe":"unit",
             "sound":"paint",
             "ammo":["marquage-stop"]

@@ -1281,7 +1281,7 @@ function anyAlienInRange(myBat,weapon) {
             if (isInRange(myBat,bat.tileId,weapon) || guidageOK) {
                 batType = getBatType(bat);
                 console.log(batType.name);
-                if (weapon.ammo.includes('marquage') && weapon.name != 'Fragger' && bat.tags.includes('fluo')) {
+                if (weapon.ammo.includes('marquage') && weapon.name != 'Fragger' && weapon.name != 'Pointage' && bat.tags.includes('fluo')) {
                     // Déjà marqué
                 } else {
                     let realmOK = checkFlyTarget(weapon,bat,batType);
@@ -1405,10 +1405,14 @@ function fireInfos(bat) {
                     guideTarget = checkGuidage(selectedWeap,alien);
                     let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,alien,alienType,guideTarget);
                     if (hiddenOK) {
-                        if (!alien.tags.includes('fluo') || !selectedWeap.ammo.includes('marquage') || selectedWeap.name === 'Fragger') {
+                        if (!alien.tags.includes('fluo') || !selectedWeap.ammo.includes('marquage') || selectedWeap.name === 'Fragger' || selectedWeap.name === 'Pointage') {
                             if (!zone[0].dark || (zone[0].dark && undarkNow.includes(tile.id))) {
                                 cursorSwitch('#',tile.id,'fire');
-                                $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                                if (selectedWeap.name != 'Pointage' || !alien.tags.includes('fluo')) {
+                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                                } else {
+                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget2.png"></div>');
+                                }
                             }
                         }
                     }
@@ -1426,10 +1430,14 @@ function fireInfos(bat) {
                     alienType = getBatType(alien);
                     let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,alien,alienType,guideTarget);
                     if (checkFlyTarget(selectedWeap,alien,alienType) && hiddenOK) {
-                        if (!alien.tags.includes('fluo') || !selectedWeap.ammo.includes('marquage') || selectedWeap.name === 'Fragger') {
+                        if (!alien.tags.includes('fluo') || !selectedWeap.ammo.includes('marquage') || selectedWeap.name === 'Fragger' || selectedWeap.name === 'Pointage') {
                             if (!zone[0].dark || (zone[0].dark && undarkNow.includes(tile.id))) {
                                 cursorSwitch('#',tile.id,'fire');
-                                $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                                if (selectedWeap.name != 'Pointage' || !alien.tags.includes('fluo')) {
+                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                                } else {
+                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget2.png"></div>');
+                                }
                             }
                         }
                     }
@@ -1932,6 +1940,11 @@ function weaponAdj(weapon,bat,wn) {
     let ammoIndex = ammoTypes.findIndex((obj => obj.name == myAmmo));
     let ammo = ammoTypes[ammoIndex];
     thisWeapon.ammo = myAmmo;
+    if (ammo.apweb) {
+        thisWeapon.apWeb = true;
+    } else {
+        thisWeapon.apWeb = false;
+    }
     if (playerInfos.comp.pyro === 3) {
         if (thisWeapon.ammo.includes('feu') || thisWeapon.ammo.includes('incendiaire') || thisWeapon.ammo.includes('napalm') || thisWeapon.ammo.includes('fire') || thisWeapon.ammo.includes('pyratol') || thisWeapon.ammo.includes('lf-') || thisWeapon.ammo.includes('lt-') || thisWeapon.ammo.includes('molotov')) {
             thisWeapon.armors = thisWeapon.armors*0.8;
