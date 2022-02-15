@@ -760,7 +760,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "deploy":{"Aluminium":2,"Plomb":4,"Oxygène":1},
+        "deploy":{"Fer":2,"Plomb":4,"Oxygène":1},
         "batch":200
     },
     {
@@ -802,7 +802,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":1},
-        "deploy":{"Aluminium":2,"Plomb":2,"Tungstène":4,"Oxygène":1},
+        "deploy":{"Fer":2,"Plomb":2,"Tungstène":4,"Oxygène":1},
         "batch":200
     },
     {
@@ -817,7 +817,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
-        "deploy":{"Aluminium":4,"Uranium":4,"Oxygène":1},
+        "deploy":{"Fer":4,"Uranium":4,"Oxygène":1},
         "batch":200
     },
     {
@@ -832,7 +832,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"mat":1},
-        "deploy":{"Aluminium":2,"Plomb":2,"Titane":4,"Oxygène":1},
+        "deploy":{"Fer":2,"Plomb":2,"Titane":4,"Oxygène":1},
         "batch":200
     },
     {
@@ -846,7 +846,7 @@
         "apdamage": 0,
         "aoe": "",
         "compReq":{"bal":1},
-        "deploy":{"Aluminium":2,"Plomb":6,"Oxygène":1},
+        "deploy":{"Fer":2,"Plomb":6,"Oxygène":1},
         "batch":200
     },
     {
@@ -907,7 +907,7 @@
         "aoe": "",
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2},
-        "deploy":{"Aluminium":2,"Plomb":2,"Timonium":4,"Uranium":2,"Oxygène":1},
+        "deploy":{"Fer":2,"Plomb":2,"Timonium":4,"Uranium":2,"Oxygène":1},
         "batch":200
     },
     {
@@ -923,7 +923,7 @@
         "info": "PasseBouclier",
         "bldReq":["Usine d'armement"],
         "compReq":{"mat":3,"bal":2},
-        "deploy":{"Aluminium":2,"Plomb":2,"Adamantium":4,"Oxygène":1},
+        "deploy":{"Fer":2,"Plomb":2,"Adamantium":4,"Oxygène":1},
         "batch":200
     },
     {
@@ -938,7 +938,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
-        "deploy":{"Aluminium":2,"Plomb":2,"Salite":4,"Oxygène":1},
+        "deploy":{"Fer":2,"Plomb":2,"Salite":4,"Oxygène":1},
         "batch":200
     },
     {
@@ -969,7 +969,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":3},
-        "deploy":{"Aluminium":2,"Plomb":1,"Tungstène":3,"Oxygène":1},
+        "deploy":{"Fer":2,"Plomb":1,"Tungstène":3,"Oxygène":1},
         "batch":100
     },
     {
