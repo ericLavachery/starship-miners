@@ -141,7 +141,7 @@
         "deathFx":"death2",
         "spawnFx":"spawn-lib",
         "fxPriority":4,
-        "killRes":{"Larvium":16,"Bugium":13,"Bossium":15,"Mendium":12,"Wingium":31},
+        "killRes":{"Larvium":16,"Bugium":13,"Bossium":15,"Mendium":12,"Wingium":45},
         "killXP":25
     },
     {
@@ -200,7 +200,7 @@
         "deathFx":"death2",
         "spawnFx":"spawn-lib",
         "fxPriority":4,
-        "killRes":{"Larvium":16,"Bugium":13,"Bossium":15,"Mendium":12,"Wingium":31},
+        "killRes":{"Larvium":16,"Bugium":13,"Bossium":15,"Mendium":12,"Wingium":50},
         "killXP":25
     },
     {
@@ -1034,7 +1034,7 @@
         "maxVeg":3,
         "skills":["fly","capfar","inflammable","escape","baddef","infkill"],
         "deathFx":"death1",
-        "killRes":{"Larvium":2,"Wingium":2,"Mephitis":1},
+        "killRes":{"Larvium":2,"Wingium":3,"Mephitis":1},
         "killXP":4
     },
     {
@@ -1235,7 +1235,7 @@
         "maxVeg":3,
         "skills":["guerrilla","tirailleur","escape","maladie","anycap","infkill"],
         "deathFx":"death1",
-        "killRes":{"Aranium":4,"Bugium":1,"Germium":2,"Wingium":1},
+        "killRes":{"Aranium":4,"Bugium":1,"Germium":2,"Wingium":2},
         "killXP":5,
         "flavText":"Les nerveuses chassent vos unités, même celles qui sont très éloignées."
     },
@@ -1696,7 +1696,7 @@
         "maxVeg":3,
         "skills":["fly","capfar","inflammable","resistelec"],
         "deathFx":"death1",
-        "killRes":{"Bugium":1,"Larvium":2,"Wingium":3},
+        "killRes":{"Bugium":1,"Larvium":2,"Wingium":4},
         "killXP":5
     },
     {
@@ -1907,7 +1907,7 @@
         "maxVeg":3,
         "skills":["sauteur","grip","inflammable","baddef"],
         "deathFx":"death1",
-        "killRes":{"Bugium":2,"Wingium":1},
+        "killRes":{"Bugium":2,"Wingium":2},
         "killXP":3
     },
     {
@@ -2051,7 +2051,7 @@
         "maxVeg":3,
         "skills":["fly","capfar","grip","venom","inflammable","reactpoison"],
         "deathFx":"death1",
-        "killRes":{"Bugium":2,"Swarmine":5,"Wingium":10},
+        "killRes":{"Bugium":2,"Swarmine":5,"Wingium":14},
         "killXP":6
     },
     {

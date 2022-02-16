@@ -25,7 +25,7 @@ function commandes() {
             }
             if (nextTurnOK) {
                 if (batList.length >= 1) {
-                    $('#commandz').append('<button type="button" title="Passer au tour suivant (attention: vous ne vous êtes pas occupé de tout vos bataillons!)" class="boutonNoir iconButtons" onclick="emptyBatList()" onmousedown="warnSound(`error`)"><i class="fas fa-exclamation-triangle"></i></button>');
+                    $('#commandz').append('<button type="button" title="Passer au tour suivant (attention: vous ne vous êtes pas occupé de tout vos bataillons!)" class="boutonNoir iconButtons jaune" onclick="emptyBatList()" onmousedown="warnSound(`error`)"><i class="fas fa-spider"></i></button>');
                 } else {
                     $('#commandz').append('<button type="button" title="Passer au tour suivant" class="boutonMauve iconButtons" onclick="nextTurn()" onmousedown="clicSound()"><i class="fas fa-spider"></i></button>');
                 }
@@ -135,7 +135,7 @@ function commandes() {
             } else {
                 $('#commandz').append('<hr>');
                 $('#commandz').append('<button type="button" title="Rapport de mission (estimation)" class="boutonRose iconButtons" onclick="missionResults(false)" onmousedown="clicSound()"><i class="fas fa-balance-scale"></i></button>');
-                $('#commandz').append('<button type="button" title="Rentrer à la station" class="boutonNoir iconButtons" onclick="showStartLander()" onmousedown="warnSound(`nope`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
+                $('#commandz').append('<button type="button" title="Rentrer à la station" class="boutonNoir iconButtons jaune" onclick="showStartLander()" onmousedown="warnSound(`nope`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
                 $('#commandz').append('<button type="button" title="Rentrer à la station" class="boutonRouge iconButtons" onclick="stopMission()" onmousedown="warnSound(`takeoff`)" id="takeof2"><i class="fas fa-space-shuttle"></i></button>');
             }
         }

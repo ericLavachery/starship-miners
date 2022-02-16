@@ -722,7 +722,7 @@ function skillsInfos(bat,batType,near) {
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
             if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer les véhicules adjacents" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Rafistolage</h4></span>');
             } else {
                 if (inMelee) {
                     skillMessage = "Pas de réparations en mêlée";
@@ -743,7 +743,7 @@ function skillsInfos(bat,batType,near) {
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
             if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Retaper le véhicule" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',false,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Retaper le véhicule" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',false,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Rafistolage</h4></span>');
             } else {
                 if (numTargets <= 0) {
                     skillMessage = "Ce véhicule n'a pas subit de dégâts";

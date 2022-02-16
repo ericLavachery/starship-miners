@@ -476,7 +476,7 @@
         "weapon":{
             "name":"Blister pistol",
             "cost":2,
-            "range":2,
+            "range":3,
             "isShort":true,
             "rof":24,
             "accuracy":22,
@@ -1295,6 +1295,7 @@
             "name":"Fusil semi-auto",
             "cost":3,
             "range":2,
+            "elevation":1,
             "kit":true,
             "noise":2,
             "rof":40,
