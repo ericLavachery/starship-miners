@@ -638,7 +638,7 @@
             "power":2,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"paint",
+            "sound":"paint_flash",
             "ammo":["marquage-stop"]
         },
         "weapon2":{

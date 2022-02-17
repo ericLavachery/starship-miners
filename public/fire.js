@@ -511,7 +511,7 @@ function attack(melee,init) {
         hasEscape = true;
         escapeSpeed = targetBat.vet*2;
     }
-    if (hasEscape && !selectedWeap.noEsc) {
+    if (hasEscape && !selectedWeap.noEsc && !targetBat.tags.includes('stun')) {
         if ((tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') || targetBatType.skills.includes('fly')) {
             let escapeChance = Math.round(escapeSpeed*selectedWeap.cost*escapeValue);
             if (selectedWeap.aoe != 'unit' && !targetBatType.skills.includes('fly')) {
@@ -1424,7 +1424,7 @@ function defense(melee,init) {
     }
     // console.log('ESCAPE');
     // console.log(hasEscape);
-    if (hasEscape && !targetWeap.noEsc) {
+    if (hasEscape && !targetWeap.noEsc && !selectedBat.tags.includes('stun')) {
         if ((tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') || selectedBatType.skills.includes('fly')) {
             let escapeChance = Math.round(escapeSpeed*targetWeap.cost*escapeValue);
             if (targetWeap.aoe != 'unit' && !selectedBatType.skills.includes('fly')) {

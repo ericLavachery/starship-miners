@@ -11,36 +11,36 @@ function minimap() {
     $('#thenavig').append('<span class="constIcon"><i class="fas fa-times-circle klik" onclick="miniOut()"></i></span><br>');
     if (!modeSonde) {
         if (miniDots === 'units') {
-            $('#thenavig').append('<button type="button" title="Montrer les unités" class="boutonRose miniButtons" onclick="unitsView()"><i class="fas fa-bug"></i></button><br>');
+            $('#thenavig').append('<button type="button" title="Montrer les unités" class="boutonMauve miniButtons" onclick="unitsView()"><i class="fas fa-bug"></i></button><br>');
         } else {
             $('#thenavig').append('<button type="button" title="Montrer les unités" class="boutonGris miniButtons" onclick="unitsView()"><i class="fas fa-bug"></i></button><br>');
         }
         if (miniDots === 'eggs') {
-            $('#thenavig').append('<button type="button" title="Montrer les oeufs" class="boutonRose miniButtons" onclick="eggsView()"><i class="fas fa-meteor"></i></button><br>');
+            $('#thenavig').append('<button type="button" title="Montrer les oeufs" class="boutonMauve miniButtons" onclick="eggsView()"><i class="fas fa-meteor"></i></button><br>');
         } else {
             $('#thenavig').append('<button type="button" title="Montrer les oeufs" class="boutonGris miniButtons" onclick="eggsView()"><i class="fas fa-meteor"></i></button><br>');
         }
     }
     if (miniDots === 'points') {
-        $('#thenavig').append('<button type="button" title="Montrer les repaires" class="boutonRose miniButtons" onclick="dotsView()"><i class="fas fa-map-pin"></i></button><br>');
+        $('#thenavig').append('<button type="button" title="Montrer les repaires" class="boutonMauve miniButtons" onclick="dotsView()"><i class="fas fa-map-pin"></i></button><br>');
     } else {
         $('#thenavig').append('<button type="button" title="Montrer les repaires" class="boutonGris miniButtons" onclick="dotsView()"><i class="fas fa-map-pin"></i></button><br>');
     }
     if (miniDots === 'ruins') {
-        $('#thenavig').append('<button type="button" title="Montrer les ruines non fouillées" class="boutonRose miniButtons" onclick="ruinsView()"><i class="fas fa-city"></i></button><br>');
+        $('#thenavig').append('<button type="button" title="Montrer les ruines non fouillées" class="boutonMauve miniButtons" onclick="ruinsView()"><i class="fas fa-city"></i></button><br>');
     } else {
         $('#thenavig').append('<button type="button" title="Montrer les ruines non fouillées" class="boutonGris miniButtons" onclick="ruinsView()"><i class="fas fa-city"></i></button><br>');
     }
     if (!modeSonde) {
         if (miniDots === 'coffres') {
-            $('#thenavig').append('<button type="button" title="Montrer les coffres" class="boutonRose miniButtons" onclick="coffresView()"><i class="fas fa-box-open"></i></button><br>');
+            $('#thenavig').append('<button type="button" title="Montrer les coffres" class="boutonMauve miniButtons" onclick="coffresView()"><i class="fas fa-box-open"></i></button><br>');
         } else {
             $('#thenavig').append('<button type="button" title="Montrer les coffres" class="boutonGris miniButtons" onclick="coffresView()"><i class="fas fa-box-open"></i></button><br>');
         }
     }
     if (showOneRes != 'Toutes') {
         if (miniDots === 'oneres') {
-            $('#thenavig').append('<button type="button" title="Montrer la ressource recherchée" class="boutonRose miniButtons" onclick="oneResView()"><i class="far fa-gem"></i></button><br>');
+            $('#thenavig').append('<button type="button" title="Montrer la ressource recherchée" class="boutonMauve miniButtons" onclick="oneResView()"><i class="far fa-gem"></i></button><br>');
         } else {
             $('#thenavig').append('<button type="button" title="Montrer la ressource recherchée" class="boutonGris miniButtons" onclick="oneResView()"><i class="far fa-gem"></i></button><br>');
         }

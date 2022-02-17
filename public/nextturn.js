@@ -12,16 +12,16 @@ function nextTurn() {
     if (aliens.length >= 200) {
         playerInfos.alienSat = playerInfos.alienSat+1;
     }
-    if (playerInfos.alienSat === coconSatLimit-1) {
+    if (playerInfos.alienSat >= coconSatLimit-1) {
         if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) {
             warning('Cocon en approche','Le nombre d\'aliens en jeu est trop élevé.');
         }
     }
-    if (Math.floor(playerInfos.mapTurn/coconStats.turns) > playerInfos.cocons) {
-        if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) {
-            warning('Cocon en approche','La prochaine chute d\'oeufs pourrait être accompagnée d\'un cocon.');
-        }
-    }
+    // if (Math.floor(playerInfos.mapTurn/coconStats.turns) > playerInfos.cocons) {
+    //     if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) {
+    //         warning('Cocon en approche','La prochaine chute d\'oeufs pourrait être accompagnée d\'un cocon.');
+    //     }
+    // }
     activeTurn = 'aliens';
     $('#unitInfos').empty();
     $("#unitInfos").css("display","none");
@@ -818,7 +818,7 @@ function turnInfo() {
                 $('#tour').append('<span class="or">Dôme inactif</span><br>');
             }
         }
-        if ((playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) || playerInfos.bldList.includes('Centre de com') || playerInfos.pseudo === 'Bob') {
+        if ((playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) || playerInfos.bldList.includes('Centre de com')) {
             let allCoconTurns = [];
             let turn = 0;
             while (turn <= 300) {
@@ -836,7 +836,7 @@ function turnInfo() {
             let dropChance = getDropChance(playerInfos.mapTurn);
             // pause
             if (playerInfos.droppedEggs < maxDroppedEggs+1 && realNumberOfEggs < maxEggsInPlay && dropChance >= 10 && !playerInfos.eggPause) {
-                if (allCoconTurns[playerInfos.cocons] <= playerInfos.mapTurn) {
+                if (allCoconTurns[playerInfos.cocons] <= playerInfos.mapTurn || playerInfos.alienSat >= coconSatLimit-1) {
                     $('#tour').append('<span class="wblynk" title="Oeuf(s) en approche">Cocon en approche</span><br>');
                 } else {
                     $('#tour').append('<span class="wblynk" title="Oeuf(s) en approche">Oeufs en approche</span><br>');
@@ -845,7 +845,7 @@ function turnInfo() {
                 $('#tour').append('<span class="neutre" title="Aucun oeuf en approche">Aucun oeuf en vue</span><br>');
                 turnCol = 'neutre';
             }
-            if ((playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) || playerInfos.pseudo === 'Bob') {
+            if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) {
                 $('#tour').append('<span class="'+turnCol+'" title="Pas de cocon avant le tour '+allCoconTurns[playerInfos.cocons]+'">Cocon tour '+allCoconTurns[playerInfos.cocons]+'</span><br>');
             }
         }
