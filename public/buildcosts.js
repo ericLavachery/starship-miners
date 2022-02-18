@@ -425,7 +425,9 @@ function getDeployCosts(unit,ammo,weapNum,type) {
     if (type === 'ammo') {
         // AMMOs
         if (weapNum === 1) {
-            deployFactor = Math.ceil(unit.squads*unit.weapon.rof*unit.weapon.power/5*deploySalvos);
+            let pauer = unit.weapon.power;
+            if (pauer < 2) {pauer = 2;}
+            deployFactor = Math.ceil(unit.squads*unit.weapon.rof*pauer/5*deploySalvos);
             let weapRange = unit.weapon.range+(unit.weapon.elevation/2);
             if (unit.moveCost > 90) {
                 if (weapRange < 5) {
@@ -445,7 +447,9 @@ function getDeployCosts(unit,ammo,weapNum,type) {
                 deployFactor = deployFactor*6;
             }
         } else {
-            deployFactor = Math.ceil(unit.squads*unit.weapon2.rof*unit.weapon2.power/5*deploySalvos);
+            let pauer = unit.weapon2.power;
+            if (pauer < 2) {pauer = 2;}
+            deployFactor = Math.ceil(unit.squads*unit.weapon2.rof*pauer/5*deploySalvos);
             let weapRange = unit.weapon2.range+(unit.weapon2.elevation/2);
             if (unit.moveCost > 90) {
                 if (weapRange < 5) {

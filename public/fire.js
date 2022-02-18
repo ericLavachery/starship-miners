@@ -570,7 +570,7 @@ function attack(melee,init) {
     // prec/range adj
     let accurange = calcPrecRangeAdj(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType);
     toHit = 999;
-    // console.log('shots='+shots);
+    console.log('!!!!!!!!!!!!! shots='+shots);
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {

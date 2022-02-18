@@ -633,13 +633,13 @@
             "elevation":2,
             "noDef":true,
             "noise":1,
-            "rof":12,
+            "rof":36,
             "accuracy":30,
-            "power":2,
+            "power":0,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"paint_flash",
-            "ammo":["marquage-stop"]
+            "sound":"paint",
+            "ammo":["marquage","marquage-spike","marquage-stop"]
         },
         "weapon2":{
             "name":"Guidage laser",
