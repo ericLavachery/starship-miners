@@ -370,6 +370,9 @@ function conSelect(unitId,player,noRefresh) {
                     if (batArmor.skills.includes('resistall')) {
                         armorSkills = armorSkills+' resistall';
                     }
+                    if (batArmor.skills.includes('soap')) {
+                        armorSkills = armorSkills+' resistgrip';
+                    }
                     flatCosts = getCosts(conselUnit,batArmor,0,'equip');
                     deployCosts = getDeployCosts(conselUnit,batArmor,0,'equip');
                     mergeObjects(flatCosts,deployCosts);

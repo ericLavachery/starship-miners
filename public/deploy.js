@@ -61,6 +61,9 @@ function reEquip(batId,noRefresh) {
                     if (batArmor.skills.includes('resistelec')) {
                         armorSkills = armorSkills+' resistelec';
                     }
+                    if (batArmor.skills.includes('soap')) {
+                        armorSkills = armorSkills+' resistgrip';
+                    }
                     flatCosts = getCosts(myBatType,batArmor,0,'equip');
                     deployCosts = getDeployCosts(myBatType,batArmor,0,'equip');
                     mergeObjects(flatCosts,deployCosts);

@@ -1121,6 +1121,11 @@ function attack(melee,init) {
     if (targetBatType.skills.includes('noaploss')) {
         apDamage = Math.round(apDamage/5);
     }
+    if (targetBat.prt != undefined) {
+        if (targetBat.prt === 'swing' || targetBat.prt === 'soap') {
+            apDamage = Math.round(apDamage/3);
+        }
+    }
     // ---------------------------------------------------------------------------------------------------------------------------
     if (apDamage >= 1) {
         $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
@@ -1931,6 +1936,11 @@ function defense(melee,init) {
     }
     if (selectedBatType.skills.includes('noaploss')) {
         apDamage = Math.round(apDamage/5);
+    }
+    if (selectedBat.prt != undefined) {
+        if (selectedBat.prt === 'swing' || selectedBat.prt === 'soap') {
+            apDamage = Math.round(apDamage/3);
+        }
     }
     // ---------------------------------------------------------------------------------------------------------------------------
     if (apDamage >= 1) {
