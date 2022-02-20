@@ -48,6 +48,7 @@ function batDetail(batId) {
 };
 
 function batInfos(bat,batType,pop) {
+    decButHere = false;
     let headPlace = 'unitInfos';
     let bodyPlace = 'unitInfos';
     if (pop) {
@@ -578,7 +579,7 @@ function batInfos(bat,batType,pop) {
     $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Nommer le commandant de ce bataillon" class="boutonGris skillButtons" onclick="renameChief('+bat.id+')"><i class="fas fa-user-alt"></i></button>&nbsp; Commandant</h4></span>');
 
     // DISMANTLE
-    if (!pop) {
+    if (!pop && !decButHere) {
         $('#'+bodyPlace).append('<hr>');
         let demText;
         if (!bat.tags.includes('nomove') && !batType.skills.includes('nodelete')) {

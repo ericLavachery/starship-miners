@@ -2152,6 +2152,7 @@ function skillsInfos(bat,batType,near) {
                 let isCharged = checkCharged(bat,'trans');
                 if (!isLoaded && !isCharged) {
                     if (near.lander) {
+                        decButHere = true;
                         let apCost = Math.round(6*batType.fabTime/30);
                         $('#unitInfos').append('<hr>');
                         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine skillButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');

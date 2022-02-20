@@ -892,7 +892,7 @@ function attack(melee,init) {
                     gripDiv = gripDiv+0.5;
                 }
                 if (targetBatType.weapon.noGrip || targetBatType.weapon2.noGrip) {
-                    gripDiv = gripDiv+1;
+                    gripDiv = gripDiv+2;
                 }
                 if (targetWeap.isShort) {
                     gripDiv = gripDiv+0.75;
@@ -901,7 +901,7 @@ function attack(melee,init) {
                     gripDiv = gripDiv+1;
                 }
                 if (targetWeap.noGrip) {
-                    gripDiv = gripDiv+3;
+                    gripDiv = gripDiv+5;
                 }
             } else {
                 gripDiv = gripDiv-0.75;

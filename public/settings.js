@@ -113,6 +113,7 @@ let myCompPoints = 0;
 let moveTuning = 1.2; // moveCost x moveTuning
 let moveKzin = 0.85;
 let isReloaded = true;
+let decButHere = false;
 let mode = "select";
 let selectedBat = {};
 let selectedBatType = {};

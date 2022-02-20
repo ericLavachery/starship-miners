@@ -9,6 +9,7 @@ function defabInfos(bat,batType) {
         let isLoaded = checkCharged(prefabBat,'load');
         let isCharged = checkCharged(prefabBat,'trans');
         if (batType.skills.includes('constructeur') && Object.keys(landerBat).length >= 1) {
+            decButHere = true;
             let apCost = prefabCost(batType,prefabBatType,false);
             let depliOK = true;
             if (selectedBatType.cat === 'infantry') {

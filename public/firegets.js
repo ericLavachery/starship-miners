@@ -1408,7 +1408,7 @@ function fireInfos(bat) {
                         if (!alien.tags.includes('fluo') || selectedWeap.ammo != 'marquage') {
                             if (!zone[0].dark || (zone[0].dark && undarkNow.includes(tile.id))) {
                                 cursorSwitch('#',tile.id,'fire');
-                                if (selectedWeap.ammo === 'marquage' || !alien.tags.includes('fluo')) {
+                                if (!alien.tags.includes('fluo')) {
                                     $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
                                 } else {
                                     $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget2.png"></div>');
@@ -1433,7 +1433,7 @@ function fireInfos(bat) {
                         if (!alien.tags.includes('fluo') || selectedWeap.ammo != 'marquage') {
                             if (!zone[0].dark || (zone[0].dark && undarkNow.includes(tile.id))) {
                                 cursorSwitch('#',tile.id,'fire');
-                                if (selectedWeap.ammo === 'marquage' || !alien.tags.includes('fluo')) {
+                                if (!alien.tags.includes('fluo')) {
                                     $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
                                 } else {
                                     $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget2.png"></div>');
