@@ -640,6 +640,13 @@ function playerSkillsUTChanges() {
             }
         }
         if (unit.mediCost < 90) {
+            if (playerInfos.comp.med >= 2) {
+                if (unit.name === 'Infirmiers') {
+                    // changer le nom en "Médecins"
+                    unit.name = 'Médecins';
+                    unit.mediCost = 5;
+                }
+            }
             if (playerInfos.comp.med === 2) {
                 unit.mediCost = unit.mediCost-1;
             }

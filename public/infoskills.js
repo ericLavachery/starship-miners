@@ -2032,7 +2032,7 @@ function skillsInfos(bat,batType,near) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
         }
     }
-    if (!inSoute) {
+    if (!inSoute && !bat.tags.includes('nomove')) {
         if (isReloaded || playerInfos.mapTurn != 0 || playerInfos.onShip) {
             // CONSTRUCTION BATIMENTS
             if (batType.skills.includes('constructeur')) {

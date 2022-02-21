@@ -2255,7 +2255,7 @@
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"explo":1,"exo":1,"ca":3},
-        "costs":{"Oxygène":2,"Chlore":6,"Atium":3,"Mephitis":3,"Végétaux":3},
+        "costs":{"Oxygène":2,"Chlore":6,"Atium":3,"Mephitis":1,"Végétaux":3},
         "batch":50
     },
     {
@@ -2332,7 +2332,7 @@
     },
     {
         "name": "obus-tungsten",
-        "range": 1,
+        "range": 1.1,
         "rof": 1,
         "power": 0,
         "powermult": 1.2,
@@ -2341,7 +2341,7 @@
         "apdamage": 0,
         "aoe": "brochette",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":1,"explo":1},
+        "compReq":{"bal":2,"explo":1},
         "deploy":{"Fer":3,"Plomb":1,"Tungstène":2,"Explosifs":1},
         "batch":100
     },
@@ -2450,7 +2450,7 @@
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"explo":1,"exo":1,"ca":3},
-        "deploy":{"Carbone":2,"Scrap":2,"Fer":1,"Oxygène":2,"Chlore":6,"Atium":3,"Mephitis":3,"Végétaux":3,"Explosifs":1},
+        "deploy":{"Carbone":2,"Scrap":2,"Fer":1,"Oxygène":2,"Chlore":6,"Atium":3,"Mephitis":1,"Végétaux":3,"Explosifs":1},
         "batch":100
     },
     {
@@ -2594,7 +2594,7 @@
     },
     {
         "name": "missile-tungsten",
-        "range": 1,
+        "range": 1.1,
         "rof": 1,
         "power": 0,
         "powermult": 1.2,
@@ -2603,7 +2603,7 @@
         "apdamage": 0,
         "aoe": "brochette",
         "bldReq":["Arsenal"],
-        "compReq":{"bal":1,"explo":1,"arti":1},
+        "compReq":{"bal":2,"explo":1,"arti":1},
         "deploy":{"Fer":1,"Plomb":1,"Aluminium":1,"Tungstène":2,"Nickel":1,"Explosifs":1,"Fuel":1,"Electros":2,"Batteries":1},
         "batch":100,
         "sound":{"miss":"miss_sun"}
@@ -2714,7 +2714,7 @@
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"bal":1,"explo":1,"exo":1,"ca":3,"arti":1},
-        "deploy":{"Carbone":2,"Aluminium":2,"Nickel":1,"Oxygène":2,"Explosifs":1,"Fuel":1,"Chlore":6,"Atium":3,"Mephitis":3,"Végétaux":3,"Electros":2,"Batteries":1},
+        "deploy":{"Carbone":2,"Aluminium":2,"Nickel":1,"Oxygène":2,"Explosifs":1,"Fuel":1,"Chlore":6,"Atium":3,"Mephitis":1,"Végétaux":3,"Electros":2,"Batteries":1},
         "batch":100
     },
     {
@@ -2926,7 +2926,7 @@
         "aoe": "squad",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":1,"ca":3},
-        "deploy":{"Carbone":1,"Scrap":3,"Fer":1,"Aluminium":1,"Hydrocarbure":2,"Chlore":4,"Atium":2,"Mephitis":4,"Végétaux":2,"Explosifs":1},
+        "deploy":{"Carbone":1,"Scrap":3,"Fer":1,"Aluminium":1,"Hydrocarbure":2,"Chlore":4,"Atium":3,"Mephitis":1,"Végétaux":2,"Explosifs":1},
         "batch":100
     },
     {
@@ -2985,7 +2985,7 @@
         "aoe": "",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":1,"ca":3},
-        "deploy":{"Carbone":5,"Scrap":5,"Plutonium":3,"Atium":1,"Mephitis":2,"Huile":3,"Phosphore":6,"Hydrocarbure":4,"Chlore":12},
+        "deploy":{"Carbone":5,"Scrap":5,"Plutonium":3,"Atium":1,"Mephitis":1,"Huile":3,"Phosphore":6,"Hydrocarbure":4,"Chlore":12},
         "batch":100
     },
     {

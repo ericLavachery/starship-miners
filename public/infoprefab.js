@@ -8,7 +8,7 @@ function defabInfos(bat,batType) {
         let prefabBatName = prefabBat.type;
         let isLoaded = checkCharged(prefabBat,'load');
         let isCharged = checkCharged(prefabBat,'trans');
-        if (batType.skills.includes('constructeur') && Object.keys(landerBat).length >= 1) {
+        if (batType.skills.includes('constructeur') && !bat.tags.includes('nomove') && Object.keys(landerBat).length >= 1) {
             decButHere = true;
             let apCost = prefabCost(batType,prefabBatType,false);
             let depliOK = true;
@@ -138,7 +138,7 @@ function recupPrefabFret(bat,batType,tileId,autoDec,landerBat) {
 };
 
 function refabInfos(myBat,myBatUnitType) {
-    if (myBatUnitType.skills.includes('constructeur')) {
+    if (myBatUnitType.skills.includes('constructeur') && !myBat.tags.includes('nomove')) {
         let balise = 'h4';
         let apCost;
         let landerBat = findTheLander();

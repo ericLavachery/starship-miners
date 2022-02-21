@@ -652,7 +652,6 @@ function nextTile(myTileIndex,size) {
         // console.log('first line, not first tile');
         tileCheck = 1;
     }
-
     // définir le terrain du tile à vérifier
     let checkTileTerrain = "P";
     let checkTileIndex = 0;
@@ -742,9 +741,9 @@ function addRes(zone) {
     let mythicMin = Math.floor(playerInfos.sondeDanger/2)-4;
     let mythicMax = playerInfos.sondeDanger-2;
     let mythicNum = 0;
-    let baseMin = 17+(playerInfos.sondeDanger*3);
+    let baseMin = 24+(playerInfos.sondeDanger*3);
     let baseNum = 0;
-    let redMin = Math.floor(playerInfos.sondeDanger/1.42)+5;
+    let redMin = Math.floor(playerInfos.sondeDanger)+8;
     let redNum = 0;
     if (zone[0].planet != 'Dom') {
         mythicMin = mythicMin+Math.floor(playerInfos.sondeDanger/3);
@@ -903,6 +902,9 @@ function addRes(zone) {
     let resBatch;
     resTypes.forEach(function(res) {
         resRarity = res.rarity;
+        if (res.name === 'Scrap') {
+            resRarity = Math.ceil(resRarity*ruinRarity/8);
+        }
         resBatch = res.batch;
         if (res.planets != undefined) {
             let planetName = zone[0].planet;
@@ -976,8 +978,8 @@ function addRes(zone) {
         ruinChance = 15;
     }
     if (zone[0].planet === 'Dom') {
-        if (ruinChance < 3) {
-            ruinChance = 3;
+        if (ruinChance < 5) {
+            ruinChance = 5;
         }
     } else {
         if (ruinChance < 0) {
@@ -1013,7 +1015,7 @@ function addRes(zone) {
     if (playerInfos.sondeDanger < 1) {
         mapResBatchDiv = Math.round(mapResBatchDiv*1.75);
     } else {
-        mapResBatchDiv = Math.round(mapResBatchDiv*(ruinChance+26)/35);
+        mapResBatchDiv = Math.round(mapResBatchDiv*(ruinChance+20)/30);
     }
     zone.forEach(function(tile) {
         if (tile.rq >= 1) {
@@ -1512,7 +1514,7 @@ function checkAdjRes(adjTile) {
         if (zone[adjTile].rq === undefined) {
             let terrain = getTileTerrain(adjTile);
             if (rand.rand(1,Math.ceil((terrain.minChance+200)/100)) === 1) {
-                if (rand.rand(1,3) === 1) {
+                if (rand.rand(1,4) === 1) {
                     zone[adjTile].rq = 1;
                 } else {
                     zone[adjTile].rq = 2;

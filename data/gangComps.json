@@ -35,9 +35,9 @@
         "id":5,
         "name":"cyber",
         "fullName":"Cybernétique",
-        "levels":{"rednecks":12,"blades":11,"bulbos":3,"drogmulojs":12,"tiradores":12,"detruas":13,"brasier":8},
-        "maxLevel":1,
-        "lvlCosts":[0,2]
+        "levels":{"rednecks":12,"blades":11,"bulbos":3,"drogmulojs":12,"tiradores":12,"detruas":12,"brasier":8},
+        "maxLevel":2,
+        "lvlCosts":[0,1,1]
     },
     {
         "id":6,

@@ -189,7 +189,7 @@
         "bldReq":["Armurerie"],
         "compReq":{"mat":1,"ca":3},
         "factor":"thp",
-        "costs":{"Carbone":9,"Mendium":3,"Bossium":3,"Rhodium":6}
+        "costs":{"Carbone":9,"Mendium":4,"Bossium":1,"Rhodium":6}
     },
     {
         "name":"duneg",
@@ -377,7 +377,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"mat":2,"pyro":1,"ca":2},
         "factor":"thp",
-        "costs":{"Carbone":6,"Bossium":3,"Nickel":6,"Azote":3,"Bore":6}
+        "costs":{"Carbone":6,"Bossium":2,"Nickel":6,"Azote":3,"Bore":6}
     },
     {
         "name":"rhodu",

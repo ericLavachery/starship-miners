@@ -952,8 +952,8 @@
         "weapon2":{
             "name":"Fusil antichar",
             "cost":6,
-            "range":3,
-            "elevation":2,
+            "range":4,
+            "elevation":1,
             "rof":8,
             "accuracy":25,
             "power":15,
