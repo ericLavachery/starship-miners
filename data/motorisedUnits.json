@@ -2918,7 +2918,7 @@
             "range":3,
             "noShield":true,
             "rof":36,
-            "accuracy":12,
+            "accuracy":10,
             "power":1,
             "aoe":"bat",
             "sound":"sono2",

@@ -231,12 +231,19 @@ function combatReport() {
     report = '';
 };
 
+function calcShotsRangeAdj(weapon,attBat,attBatType,defBat,defBatType) {
+    let shotsPerc = 100;
+    let distance = calcDistance(attBat.tileId,defBat.tileId);
+    if (weapon.name.includes('Techno')) {
+        shotsPerc = shotsPerc-(distance*25);
+    }
+    return shotsPerc;
+};
+
 function calcPrecRangeAdj(weapon,attBat,attBatType,defBat,defBatType) {
     let accurange = 0;
     let distance = calcDistance(attBat.tileId,defBat.tileId);
-    if (weapon.name.includes('Techno')) {
-        accurange = accurange-((distance-1)*6);
-    } else if (distance === 0) {
+    if (distance === 0) {
         if (attBatType.cat != 'aliens') {
             if (weapon.range === 0) {
                 if (weapon.isMelee || weapon.noShield) {

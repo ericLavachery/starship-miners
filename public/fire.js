@@ -436,7 +436,7 @@ function attack(melee,init) {
         }
     }
     // tirailleur
-    if (selectedBatType.skills.includes('tirailleur') && selectedBat.oldTileId != selectedBat.tileId && !selectedBat.tags.includes('datt')) {
+    if (selectedBatType.skills.includes('tirailleur') && selectedBat.oldTileId != selectedBat.tileId && !selectedBat.tags.includes('datt') && !selectedWeap.isArt) {
         let guerBonus = calcTiraBonus(selectedBatType);
         shots = Math.round(shots*guerBonus);
         attFactor = Math.round(attFactor*guerBonus);
@@ -647,7 +647,9 @@ function attack(melee,init) {
     // disco
     if (selectedWeap.ammo.includes('disco')) {
         let webDamage = totalHits;
-        webDamage = Math.ceil(webDamage*18/Math.sqrt(targetBatType.hp)/10);
+        let distFactor = calcShotsRangeAdj(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType);
+        webDamage = webDamage*distFactor/100;
+        webDamage = Math.ceil(webDamage*2/Math.sqrt(targetBatType.hp));
         apDamage = apDamage+webDamage;
     }
     // inflammable
@@ -1064,10 +1066,8 @@ function attack(melee,init) {
                 if (!targetBat.tags.includes('freeze')) {
                     targetBat.tags.push('freeze');
                     targetBat.tags.push('freeze');
-                    targetBat.tags.push('stun');
                 } else {
                     targetBat.tags.push('freeze');
-                    targetBat.tags.push('stun');
                 }
                 if (selectedWeap.ammo === 'hypo-freeze') {
                     targetBat.tags.push('freeze');
@@ -1113,9 +1113,11 @@ function attack(melee,init) {
     }
     // Stun
     if (!targetBat.tags.includes('stun')) {
-        if (selectedWeap.ammo.includes('poraz') || selectedWeap.ammo.includes('disco') || selectedWeap.ammo === 'gaz' || selectedWeap.ammo === 'autodes-gaz' || selectedWeap.ammo.includes('gaz-')) {
-            targetBat.tags.push('stun');
-            $('#report').append('<span class="report rose">Stun<br></span>');
+        if (selectedWeap.ammo.includes('poraz') || selectedWeap.ammo.includes('disco') || selectedWeap.ammo === 'gaz' || selectedWeap.ammo === 'autodes-gaz' || selectedWeap.ammo.includes('gaz-') || selectedWeap.ammo.includes('freeze')) {
+            if (totalDamage >= 10 || selectedWeap.ammo.includes('disco')) {
+                targetBat.tags.push('stun');
+                $('#report').append('<span class="report rose">Stun<br></span>');
+            }
         }
     }
     if (targetBatType.skills.includes('noaploss')) {
@@ -1605,7 +1607,9 @@ function defense(melee,init) {
     // disco
     if (targetWeap.ammo.includes('disco')) {
         let webDamage = totalHits;
-        webDamage = Math.ceil(webDamage*18/Math.sqrt(selectedBatType.hp)/10);
+        let distFactor = calcShotsRangeAdj(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType);
+        webDamage = webDamage*distFactor/100;
+        webDamage = Math.ceil(webDamage*2/Math.sqrt(selectedBatType.hp));
         apDamage = apDamage+webDamage;
     }
     // berserk (bonus damage des opposants)
@@ -1880,10 +1884,8 @@ function defense(melee,init) {
                 if (!selectedBat.tags.includes('freeze')) {
                     selectedBat.tags.push('freeze');
                     selectedBat.tags.push('freeze');
-                    selectedBat.tags.push('stun');
                 } else {
                     selectedBat.tags.push('freeze');
-                    selectedBat.tags.push('stun');
                 }
                 if (targetWeap.ammo === 'hypo-freeze') {
                     selectedBat.tags.push('freeze');
@@ -1929,9 +1931,11 @@ function defense(melee,init) {
     }
     // Stun
     if (!selectedBat.tags.includes('stun')) {
-        if (targetWeap.ammo.includes('poraz') || targetWeap.ammo.includes('disco') || targetWeap.ammo === 'gaz' || targetWeap.ammo === 'autodes-gaz' || targetWeap.ammo.includes('gaz-')) {
-            selectedBat.tags.push('stun');
-            $('#report').append('<span class="report rose">Stun<br></span>');
+        if (targetWeap.ammo.includes('poraz') || targetWeap.ammo.includes('disco') || targetWeap.ammo === 'gaz' || targetWeap.ammo === 'autodes-gaz' || targetWeap.ammo.includes('gaz-') || targetWeap.ammo.includes('freeze')) {
+            if (totalDamage >= 10 || targetWeap.ammo.includes('disco')) {
+                selectedBat.tags.push('stun');
+                $('#report').append('<span class="report rose">Stun<br></span>');
+            }
         }
     }
     if (selectedBatType.skills.includes('noaploss')) {

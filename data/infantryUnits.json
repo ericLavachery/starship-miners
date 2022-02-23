@@ -3802,7 +3802,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","ranger","camo","selfmedic","leader","fastguet","survivor","undead","defense","herorange"],
+        "skills":["fouille","fortif","datt","ranger","guerrilla","tirailleur","camo","selfmedic","leader","fastguet","survivor","undead","defense","herorange"],
         "mediCost":7,
         "fuzz":2,
         "deathFx":"human2"
@@ -4086,7 +4086,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","mutant","genhab2","berserk","noaploss","resistall","defense","brigands","herosalvo","lowstress"],
+        "skills":["fouille","fortif","datt","mutant","genhab2","berserk","undead","survivor","noaploss","resistall","defense","brigands","herosalvo","lowstress"],
         "fuzz":2,
         "deathFx":"137036__pyrocamancer__beast-death"
     },
@@ -4142,7 +4142,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","mutant","genhab2","nofear","noaploss","resistall","ranger","berserk","defense","noblub","slowreg","resistacide","strong","brigands","herorage","lowstress"],
+        "skills":["fouille","fortif","datt","mutant","genhab2","nofear","noaploss","resistall","ranger","berserk","undead","survivor","defense","noblub","slowreg","strong","brigands","herorage","lowstress"],
         "fuzz":2,
         "deathFx":"137036__pyrocamancer__beast-death"
     },

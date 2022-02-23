@@ -73,7 +73,7 @@ function chooseTarget() {
     if (rand.rand(1,sheep) === 1) {
         noThanks = true;
     }
-    if (selectedBatType.skills.includes('gamecap') && selectedBatType.squads >= selectedBat.squadsLeft*2) {
+    if (selectedBatType.skills.includes('flee') && selectedBatType.squads >= selectedBat.squadsLeft*2) {
         noThanks = true;
     }
     let inPlace = false;
@@ -211,19 +211,19 @@ function checkPDM() {
     let lePlusProche = 100;
     let shufBats = _.shuffle(bataillons);
     // cherche une cible préférée
-    if (selectedBatType.skills.includes('nocap') || selectedBatType.skills.includes('gamecap')) {
+    if (selectedBatType.skills.includes('nocap') || selectedBatType.skills.includes('gamecap') || selectedBatType.skills.includes('flee')) {
         let shufZone = _.shuffle(zone);
-        shufZone.forEach(function(tile) {
-            if (pointDeMire < 0) {
-                if (selectedBatType.squads < selectedBat.squadsLeft*2 || selectedBatType.skills.includes('nocap')) {
+        if (!selectedBatType.skills.includes('flee') || selectedBatType.squads < selectedBat.squadsLeft*2) {
+            shufZone.forEach(function(tile) {
+                if (pointDeMire < 0) {
                     let distance = calcDistance(selectedBat.tileId,tile.id);
                     if (distance <= 3) {
                         pointDeMire = tile.id;
                     }
                 }
-            }
-        });
-        if (pointDeMire < 0 && selectedBatType.skills.includes('gamecap')) {
+            });
+        }
+        if (pointDeMire < 0 && selectedBatType.skills.includes('flee')) {
             let nearBorderDist = 999;
             shufZone.forEach(function(tile) {
                 if (tile.x === 1 || tile.x === 60 || tile.y === 1 || tile.y === 60) {
@@ -461,7 +461,7 @@ function isBldLike(bat,batType) {
 
 function anyCloseTarget() {
     newPointDeMire = -1;
-    if (!selectedBatType.skills.includes('gamecap') || selectedBatType.squads < selectedBat.squadsLeft*2) {
+    if (!selectedBatType.skills.includes('flee') || selectedBatType.squads < selectedBat.squadsLeft*2) {
         let distance;
         let lePlusProche = 100;
         let minFuzz = calcMinFuzz();
@@ -499,7 +499,7 @@ function anyCloseTarget() {
 
 function anyFarTarget() {
     newPointDeMire = -1;
-    if (!selectedBatType.skills.includes('gamecap') || selectedBatType.squads < selectedBat.squadsLeft*2) {
+    if (!selectedBatType.skills.includes('flee') || selectedBatType.squads < selectedBat.squadsLeft*2) {
         let distance;
         let bestLogic = -99;
         let tLogic;
@@ -977,7 +977,7 @@ function moveToPDM() {
             uncheckShortJumps();
         } else {
             checkPossibleMoves();
-            if (selectedBatType.skills.includes('gamecap') && selectedBatType.squads >= selectedBat.squadsLeft*2) {
+            if (selectedBatType.skills.includes('flee') && selectedBatType.squads >= selectedBat.squadsLeft*2) {
                 // only go to PDM
             } else if (selectedBatType.skills.includes('capbld') || selectedBatType.skills.includes('capfar')) {
                 checkAimMoves();
