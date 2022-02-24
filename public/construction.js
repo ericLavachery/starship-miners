@@ -32,7 +32,7 @@ function bfconst(cat,triche,upgrade,retour) {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     let color = '';
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<br><span class="constName neutre" id="gentils">Citoyens disponibles: <span class="gff">'+dispoCit+'</span> &ndash; <span class="brunf">'+dispoCrim+'</span></span><br>');
     let lastKind = '';
     let showkind = '';
@@ -812,13 +812,13 @@ function clickUpgrade(tileId) {
             putBat(tileId,0,myBatXP);
         }
     } else {
-        conselReset();
+        conselReset(true);
         $('#unitInfos').empty();
         $("#unitInfos").css("display","none");
         selectMode();
         batUnstack();
         batUnselect();
-        conOut();
+        conOut(true);
     }
 };
 
@@ -885,10 +885,10 @@ function clickConstruct(tileId,free) {
                 bfconst(conselCat,conselTriche,conselUpgrade,true);
                 $('#conAmmoList').empty();
             } else {
-                conOut();
+                conOut(true);
             }
         } else {
-            conOut();
+            conOut(true);
             $('#unitInfos').empty();
             $("#unitInfos").css("display","none");
             selectMode();
@@ -1261,7 +1261,11 @@ function putBat(tileId,citoyens,xp,startTag,show) {
     } else {
         console.log('no conselUnit !');
     }
-    conselReset();
+    if (conselTriche) {
+        conselReset(false);
+    } else {
+        conselReset(true);
+    }
 };
 
 function checkXPBonus(myBatType) {
@@ -1307,23 +1311,23 @@ function checkXPBonus(myBatType) {
     return batNewXP;
 };
 
-function conOut() {
+function conOut(changeMode) {
     if (myCompPoints <= 0) {
         $('#conUnitList').empty();
         $('#conAmmoList').empty();
         $('#conUnitList').css("height","300px");
-        conselReset();
+        conselReset(changeMode);
         showResOpen = false;
         $("#conUnitList").css("display","none");
         $("#conAmmoList").css("display","none");
-        selectMode();
+        // selectMode();
         if (Object.keys(selectedBat).length >= 1) {
             showBatInfos(selectedBat);
         }
     }
 };
 
-function conselReset() {
+function conselReset(changeMode) {
     conselUnit = {};
     conselAmmos = ['xxx','xxx','xxx','xxx'];
     // conselCat = '';
@@ -1331,7 +1335,9 @@ function conselReset() {
     conselTriche = false;
     conselPut = false;
     conselCosts = {};
-    selectMode();
+    if (changeMode) {
+        selectMode();
+    }
 }
 
 // $("#minimap").css("display","block");

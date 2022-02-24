@@ -371,7 +371,7 @@ function voirZones() {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName or" id="gentils">CHARGER UNE ZONE</span><br>');
     $('#conUnitList').append('<br>');
     zoneFiles.forEach(function(zoneId) {

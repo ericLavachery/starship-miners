@@ -366,7 +366,7 @@ function editSonde() {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE DESTINATION POUR PROCHAINE LA SONDE</span><br>');
     $('#conUnitList').append('<br>');
     // PLANET
@@ -457,7 +457,7 @@ function goSonde(impacteur) {
         impact = false;
         playerInfos.allTurns = playerInfos.allTurns+4;
     }
-    conOut();
+    conOut(true);
     batUnselect();
     playerInfos.undarkOnce = [];
     removeSonde(impacteur);
@@ -501,7 +501,7 @@ function pickZone() {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE ZONE POUR VOTRE PROCHAINE MISSION</span><br>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<div id="zoneDetail"></div>');

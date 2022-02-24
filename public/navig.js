@@ -250,6 +250,7 @@ function gangNavig() {
         $('#gangInfos').append('<button type="button" title="Supprimer tous les aliens" class="boutonCiel iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
         $('#gangInfos').append('<br>');
         $('#gangInfos').append('<button type="button" title="Mettre un bastion de résistants" class="boutonCiel iconButtons" onclick="encounter()"><i class="fas fa-city"></i></button>');
+        $('#gangInfos').append('<button type="button" title="Supprime le stress de tous les bataillons" class="boutonCiel iconButtons" onclick="coolManCool()"><i class="fas fa-heart"></i></button>');
     }
     $('#gangInfos').append('<div class="shSpace"></div>');
     $('#gangInfos').append('<span class="butSpace"></span>');

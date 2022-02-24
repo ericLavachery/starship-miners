@@ -15,7 +15,7 @@ function craftWindow(retour) {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="blockTitle"><h1>Crafting <span class="vert">('+playerInfos.crafts+'/'+maxCrafts+')</span></h1></span>');
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     let creationNum;

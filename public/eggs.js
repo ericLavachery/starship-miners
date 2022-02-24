@@ -1515,7 +1515,7 @@ function cocoonSpawn(bat) {
         });
         let i = 1;
         while (i <= spawnNum) {
-            conselReset();
+            conselReset(true);
             if (classes.includes('S')) {
                 alienUnits.forEach(function(unit) {
                     if (unit.class === 'S' && Object.keys(conselUnit).length <= 0 && unit.kind.includes(eggCat)) {
@@ -1758,7 +1758,7 @@ function eggSpawn(bat,fromEgg) {
             console.log('checkDiceMax='+checkDiceMax);
             let i = 1;
             while (i <= spawnNum) {
-                conselReset();
+                conselReset(true);
                 gotIt = false;
                 checkDice = rand.rand(1,checkDiceMax);
                 console.log('checkDice='+checkDice);

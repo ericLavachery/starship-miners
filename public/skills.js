@@ -832,7 +832,7 @@ function checkBatDrugs(bat) {
 
 function dropStuff(apCost,mineType) {
     selectMode();
-    conOut();
+    conOut(true);
     let unitIndex;
     let skillUsed = true;
     if (mineType === 'champ') {
@@ -896,7 +896,7 @@ function clickMine(clicTileId,poseurTileId) {
             putBat(clicTileId,0,0);
             showBatInfos(selectedBat);
         } else {
-            conselReset();
+            conselReset(true);
             $('#unitInfos').empty();
             $("#unitInfos").css("display","none");
             selectMode();

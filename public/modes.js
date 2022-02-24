@@ -7,7 +7,7 @@ function selectMode() {
     if (selectedBat.id >= 0) {
         tileSelect(selectedBat);
     }
-    // selectedWeap = {};
+    selectedWeap = {};
 };
 
 function moveMode() {
@@ -20,7 +20,7 @@ function moveMode() {
         $('.selTile').remove();
         tileSelect(selectedBat);
     }
-    // selectedWeap = {};
+    selectedWeap = {};
 };
 
 function fireMode(weapon) {

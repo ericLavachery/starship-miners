@@ -949,3 +949,10 @@ function killSpaceBatList() {
         }
     });
 };
+
+function coolManCool() {
+    // triche: supprime le stress des bataillons
+    bataillons.forEach(function(bat) {
+        bat.emo = 0;
+    });
+};

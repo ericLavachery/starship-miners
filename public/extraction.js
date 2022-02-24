@@ -435,7 +435,7 @@ function chooseRes(again) {
     $('#unitInfos').empty();
     $("#unitInfos").css("display","none");
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName or">RESSOURCES à extraire</span><br>');
     let rate = getMiningRate(selectedBat,true,false);
     let allRes = getAllRes(selectedBat);
@@ -518,7 +518,7 @@ function voirRessources() {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     // $('#conUnitList').append('<button type="button" title="Effacer tous les marqueurs" class="boutonGris miniButtons" onclick="showedTilesReset(true)"><i class="fas fa-eraser"></i></button><span class="butSpace"></span>');
     let visMap = [];
     if (showAllRes) {

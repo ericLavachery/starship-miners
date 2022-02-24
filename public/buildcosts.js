@@ -8,7 +8,7 @@ function voirReserve() {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     if (!playerInfos.onShip) {
         $('#conUnitList').append('<span class="constName or" id="gentils">RESERVE (ZONE)</span><br>');
         $('#conUnitList').append('<span class="constName"><span class="jaune klik" onclick="voirReserve()">Zone</span> &nbsp;|&nbsp; <span class="jaune klik" onclick="voirReserveStation()">Station</span></span><br>');
@@ -63,7 +63,7 @@ function voirReserveStation() {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName cy" id="gentils">RESERVE (STATION)</span><br>');
     $('#conUnitList').append('<span class="constName"><span class="jaune klik" onclick="voirReserve()">Zone</span> &nbsp;|&nbsp; <span class="jaune klik" onclick="voirReserveStation()">Station</span></span><br>');
     $('#conUnitList').append('<br>');

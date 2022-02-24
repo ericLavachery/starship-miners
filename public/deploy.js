@@ -15,7 +15,7 @@ function reEquip(batId,noRefresh) {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conAmmoList').empty();
-    $('#conAmmoList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conAmmoList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conAmmoList').append('<br><h3>'+myBatType.name+'</h3><br>');
     $('#conAmmoList').append('<br>');
     let batArmor;
@@ -438,7 +438,7 @@ function doReEquip(batId) {
     if (batNewXP > myBat.xp) {
         myBat.xp = batNewXP;
     }
-    conOut();
+    conOut(true);
     myNewGear = ['xxx','xxx','xxx','xxx'];
     showBatInfos(myBat);
     if (inSoute) {

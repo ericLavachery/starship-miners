@@ -14,7 +14,7 @@ function loadRes(retour) {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName cy"><img src="/static/img/units/'+selectedBatType.cat+'/'+selectedBatPic+'.png">&nbsp;');
     $('#conUnitList').append('<h1>'+selectedBat.type.toUpperCase()+'</h1><br>');
     $('#conUnitList').append('<span class="constName cy">Charger</span> <span class="cy">(max '+restSpace+')</span><br>');

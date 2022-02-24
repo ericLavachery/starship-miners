@@ -7,7 +7,7 @@ function gangEdit() {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="blockTitle"><h3>Player Infos</h3></span>');
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     // sondeDanger (mapDiff)
@@ -201,7 +201,7 @@ function changePlayerInfo(dropMenuId,infoName,from) {
     if (infoName === 'gang' && from === 'gangChoice') {
         playerInfos.gangDef = true;
         // savePlayerInfos();
-        conOut();
+        conOut(true);
         commandes();
     } else {
         if (from === 'sonde') {
@@ -1023,7 +1023,7 @@ function landerFill() {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName or">REMPLIR LE LANDER</span><br>');
     findLanders();
     let lastKind = '';
@@ -1443,7 +1443,7 @@ function missionResults(onlyLanders,sCount,hCount) {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     calcEndRes(onlyLanders);
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName or">RAPPORT DE MISSION</span><br>');
     $('#conUnitList').append('<br>');
     if (sondeCount === 'cy') {
@@ -1732,7 +1732,7 @@ function gangLevelView() {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="ListRes or">COMPETENCES</span><br>');
     $('#conUnitList').append('<span class="ListRes">Gang: '+playerInfos.gang+'</span><br>');
     $('#conUnitList').append('<span class="ListRes">Expérience: '+playerInfos.allCits+'</span><br>');
@@ -1827,7 +1827,7 @@ function gangLevelUp(retour) {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     if (myCompPoints <= 0 && retour) {
-        $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut()"><i class="fas fa-times-circle"></i></span>');
+        $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
         $('#conUnitList').append('<span class="ListRes cy">VOUS AVEZ DEPENSE TOUS VOS POINTS</span><br>');
         playerInfos.gLevel++;
         commandes();

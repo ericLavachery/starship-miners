@@ -145,7 +145,7 @@ function nextTurn() {
         alienSounds(1);
     }
     killAlienList();
-    conselReset();
+    conselReset(true);
     spawnType = {};
     if (aliens.length >= 1) {
         alienTurn();

@@ -1851,7 +1851,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","undead","camo","clone","nodeathcount","lowmed","recupcorps"],
+        "skills":["fouille","fortif","datt","camo","clone","nodeathcount","lowmed","recupcorps"],
         "fuzz":-1
     },
     {
@@ -5345,7 +5345,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","undead","maycamo","herorange"],
+        "skills":["fouille","fortif","datt","maycamo","herorange"],
         "mediCost":10,
         "fuzz":2,
         "deathFx":"516766__gentlemanwalrus__death-rattle"
