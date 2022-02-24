@@ -700,7 +700,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":8},
         "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"cyber":1},
-        "costs":{"Corps":48,"Scrap":48,"Carbone":24,"Aluminium":24,"Titane":24,"Moteurs":24,"Electros":16,"Batteries":12,"Cuivre":12,"Silicium":12},
+        "costs":{"Corps":48,"Scrap":48,"Carbone":24,"Aluminium":24,"Titane":72,"Moteurs":24,"Electros":16,"Batteries":12,"Cuivre":12,"Silicium":12},
         "deploy":{"Fuel":36},
         "fabTime":45
     },

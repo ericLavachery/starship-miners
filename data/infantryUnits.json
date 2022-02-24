@@ -4398,7 +4398,7 @@
         "kind":"zero-cybernetique",
         "squads":6,
         "squadSize":8,
-        "crew":1,
+        "crew":0,
         "hp":4,
         "armor":0,
         "size":3,
@@ -4444,7 +4444,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","nochef","cyber"],
+        "skills":["fouille","fortif","datt","nochef","robot"],
         "fuzz":1,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
