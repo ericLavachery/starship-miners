@@ -26,7 +26,7 @@ function alienMoveLoop() {
         // console.log('!!! Start Loop !!!');
         let iter = 1;
         while (iter <= 20) {
-            // console.log('loop '+iter+' || ap:'+selectedBat.apLeft+' salvo:'+selectedBat.salvoLeft);
+            console.log('loop '+iter+' || ap:'+selectedBat.apLeft+' salvo:'+selectedBat.salvoLeft);
             if (selectedBat.apLeft >= 1 && selectedBat.salvoLeft >= 1) {
                 if (attAlive && defAlive) {
                     chooseTarget();
