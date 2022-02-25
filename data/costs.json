@@ -1538,7 +1538,7 @@
         "name":"Flaktanks",
         "levels":{"rednecks":17,"blades":99,"bulbos":16,"drogmulojs":16,"tiradores":17,"detruas":15,"brasier":16},
         "bldReq":["Arsenal","Chaîne de montage","Poste radio"],
-        "compReq":{"tank":2},
+        "compReq":{"tank":1},
         "compHardReq":{"explo":1},
         "costs":{"Fer":189,"Scrap":349,"Carbone":270,"Aluminium":198,"Moteurs":75,"Titane":54,"Tungstène":162,"Cuivre":36,"Electros":18,"Batteries":37,"Compo2":216,"Compo3":81,"Huile":10,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":100},
@@ -1601,7 +1601,7 @@
     {
         "id":134,
         "name":"Taupes",
-        "levels":{"rednecks":99,"blades":16,"bulbos":13,"drogmulojs":99,"tiradores":16,"detruas":99,"brasier":17},
+        "levels":{"rednecks":17,"blades":16,"bulbos":13,"drogmulojs":17,"tiradores":16,"detruas":99,"brasier":17},
         "bldReq":["Centre de recherches","Usine"],
         "compReq":{"robo":1},
         "compPass":["blades","brasier"],
@@ -1842,7 +1842,7 @@
         "levels":{"rednecks":16,"blades":16,"bulbos":16,"drogmulojs":16,"tiradores":16,"detruas":16,"brasier":16},
         "bldReq":["Soute","Usine"],
         "bldCost":"Minotaur",
-        "compReq":{"vsp":1},
+        "compReq":{"vsp":2},
         "costs":{"Eau":6000,"Energie":7000,"Huile":575,"Scrap":1000,"Tissus":250,"Carbone":500,"Titane":7500,"Aluminium":10300,"Calcium":30,"Rhodium":500,"Nickel":1100,"Cuivre":6500,"Or":1500,"Silicium":800,"Bore":1550,"Plutonium":1150,"Oxygène":3000,"Hydrogène":2350,"Azote":1250,"Chlore":100,"Electros":850,"Batteries":675},
         "deploy":{"Energie":950,"Huile":60,"Tissus":60,"Chlore":30,"Plutonium":350,"Hydrogène":100}
     },

@@ -73,7 +73,7 @@
         "energie": -1,
         "equiv": 1,
         "ctri": 10,
-        "planets":{"Dom":1,"Sarak":2,"Gehenna":1,"Kzin":1,"Horst":1}
+        "planets":{"Dom":1,"Sarak":2,"Gehenna":1.5,"Kzin":1,"Horst":1}
     },
     {
         "id": 5,
@@ -225,7 +225,7 @@
         "energie": 1,
         "cramBld": "Centrale nucléaire",
         "equiv": 1,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":2,"Horst":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1.2,"Kzin":2,"Horst":1}
     },
     {
         "id": 17,
@@ -238,7 +238,7 @@
         "energie": 1,
         "cramBld": "Centrale nucléaire",
         "equiv": 1,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":2,"Horst":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1.2,"Kzin":2,"Horst":1}
     },
     {
         "id": 18,

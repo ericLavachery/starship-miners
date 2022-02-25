@@ -703,7 +703,7 @@ function checkUnitCompReq(unit,forGangList) {
         }
     }
     // Taupes/Blades
-    if (unit.name === 'Taupes' && (playerInfos.gang === 'blades' || playerInfos.gang === 'brasier')) {
+    if (unit.name === 'Taupes' && (playerInfos.gang === 'blades' || playerInfos.gang === 'brasier' || playerInfos.gang === 'drogmulojs' || playerInfos.gang === 'rednecks')) {
         if (playerInfos.comp.aero < 1 || playerInfos.comp.cyber < 1) {
             compReqOK = false;
         }
