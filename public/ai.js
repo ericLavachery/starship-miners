@@ -1383,7 +1383,7 @@ function fearFactor(myBat,blob) {
                             }
                             if (batType.skills.includes('robot') || bat.tags.includes('zombie')) {
                                 fearChance = 0;
-                            } else if (bat.tags.includes('bliss') || batType.skills.includes('nofear') || bat.tags.includes('moloko')) {
+                            } else if (bat.tags.includes('bliss') || batType.skills.includes('nofear') || bat.tags.includes('moloko') || bat.tags.includes('zealot')) {
                                 fearChance = 0;
                                 if (!myBatType.skills.includes('dread') && batLevel <= 3) {
                                     addStressFlag(bat,'fear');

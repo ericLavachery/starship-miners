@@ -494,7 +494,7 @@ function checkStressEffect(bat) {
         distress = 300;
     }
     let fromTileId = -1;
-    if (distress >= 1 && !bat.tags.includes('bliss') && !bat.tags.includes('octiron')) {
+    if (distress >= 1 && !bat.tags.includes('bliss') && !bat.tags.includes('octiron') && !bat.tags.includes('zealot')) {
         let nearby = nearbyAliens(bat);
         let batType = getBatType(bat);
         let isChef = false;

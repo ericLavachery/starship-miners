@@ -3,9 +3,9 @@ function planetEffects(bat,batType) {
     if (zone[0].planet === 'Gehenna') {
         if (batType.cat === 'infantry' && batType.name != 'Citoyens' && batType.name != 'Criminels') {
             if (playerInfos.comp.scaph < 1 || batType.squads > bat.squadsLeft || bat.damage >= 1) {
-                let medDice = (playerInfos.comp.med*2)+6;
+                let medDice = (playerInfos.comp.med*2)+12;
                 if (playerInfos.comp.scaph < 1 || batType.squads > bat.squadsLeft) {
-                    medDice = medDice-2;
+                    medDice = medDice-6;
                 }
                 let terrain = getTerrain(bat);
                 if (bat.loc === "zone") {
@@ -14,9 +14,12 @@ function planetEffects(bat,batType) {
                     let transBat = getBatById(bat.locId);
                     let transBatType = getBatType(transBat);
                     if (transBatType.cat === 'buildings' || transBatType.skills.includes('transorbital')) {
-                        medDice = medDice-terrain.veg+6;
+                        medDice = medDice-terrain.veg+10;
                     } else {
-                        medDice = medDice-terrain.veg;
+                        medDice = medDice-terrain.veg+4;
+                    }
+                    if (transBatType.squads > transBat.squadsLeft) {
+                        medDice = medDice-4
                     }
                 }
                 medDice = Math.round(medDice);

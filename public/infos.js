@@ -101,6 +101,13 @@ function batInfos(bat,batType,pop) {
     }
     $('#'+bodyPlace).append('<div class="shSpace"></div>');
     let near = nearWhat(bat,batType);
+    if (batType.moveCost < 90) {
+        if (near.cleric) {
+            if (!bat.tags.includes('zealot')) {
+                bat.tags.push('zealot');
+            }
+        }
+    }
     let grade = '';
     if (batType.skills.includes('robot')) {
         grade = 'Robot';
@@ -352,6 +359,9 @@ function batInfos(bat,batType,pop) {
     if (bat.tags.includes('moloko')) {
         $('#'+bodyPlace).append('<span class="paramName jaune">Saoul</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
     }
+    if (bat.tags.includes('zealot')) {
+        $('#'+bodyPlace).append('<span class="paramName jaune">Fanatique</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+    }
     // BAD TAGS
     if (bat.tags.includes('inflammable') || bat.eq === 'e-jetpack' || batType.skills.includes('inflammable')) {
         if (!bat.tags.includes('resistfeu')) {
@@ -363,8 +373,8 @@ function batInfos(bat,batType,pop) {
         if (bat.tags.includes('terror')) {
             $('#'+bodyPlace).append('<span class="paramName or">Stress</span><span class="paramIcon"></span><span class="paramValue or" title="Ce bataillon va fuir dès que des aliens sont proches et ne voudra plus les attaquer">Terrorisé!</span><br>');
         } else if (stress >= 1) {
-            if (bat.tags.includes('octiron') || bat.tags.includes('bliss')) {
-                $('#'+bodyPlace).append('<span class="paramName jaune">Stress</span><span class="paramIcon"></span><span class="paramValue jaune" title="Stress sous contrôle (Drogue)">('+stress+')</span><br>');
+            if (bat.tags.includes('octiron') || bat.tags.includes('bliss') || bat.tags.includes('zealot')) {
+                $('#'+bodyPlace).append('<span class="paramName jaune">Stress</span><span class="paramIcon"></span><span class="paramValue jaune" title="Stress sous contrôle">('+stress+')</span><br>');
             } else {
                 $('#'+bodyPlace).append('<span class="paramName jaune">Stress</span><span class="paramIcon"></span><span class="paramValue jaune">'+stress+'</span><br>');
             }

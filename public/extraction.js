@@ -781,11 +781,12 @@ function markMap(tileId) {
 function addAlienRes(bat) {
     let batType = getBatType(bat);
     let killRes = 0;
+    let caComp = (playerInfos.comp.ca+3)*(playerInfos.comp.ca+3)/25;
     if (Object.keys(batType.killRes).length >= 1) {
         for (var prop in batType.killRes) {
             if (Object.prototype.hasOwnProperty.call(batType.killRes,prop)) {
                 killRes = batType.killRes[prop];
-                killRes = Math.ceil(killRes*(playerInfos.comp.ca+8)/10);
+                killRes = killRes*caComp;
                 killRes = Math.ceil(killRes*alienResFactor/10);
                 if (playerInfos.alienRes[prop] >=1) {
                     playerInfos.alienRes[prop] = playerInfos.alienRes[prop]+killRes;

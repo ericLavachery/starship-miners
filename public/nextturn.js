@@ -17,11 +17,6 @@ function nextTurn() {
             warning('Cocon en approche','Le nombre d\'aliens en jeu est trop élevé.');
         }
     }
-    // if (Math.floor(playerInfos.mapTurn/coconStats.turns) > playerInfos.cocons) {
-    //     if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) {
-    //         warning('Cocon en approche','La prochaine chute d\'oeufs pourrait être accompagnée d\'un cocon.');
-    //     }
-    // }
     activeTurn = 'aliens';
     $('#unitInfos').empty();
     $("#unitInfos").css("display","none");
@@ -202,6 +197,7 @@ function nextTurnEnd() {
     deadBatsList = [];
     let boostedTeams = [];
     let prayedTeams = [];
+    let clericTiles = [];
     medicalTransports = [];
     playerInfos.bldList = [];
     craftReset(1);
@@ -268,6 +264,18 @@ function nextTurnEnd() {
                         }
                     });
                 }
+            }
+            if (batType.skills.includes('cleric')) {
+                let cTile = bat.tileId;
+                if (!clericTiles.includes(cTile)) {clericTiles.push(cTile);}
+                if (!clericTiles.includes(cTile+1)) {clericTiles.push(cTile+1);}
+                if (!clericTiles.includes(cTile-1)) {clericTiles.push(cTile-1);}
+                if (!clericTiles.includes(cTile+mapSize)) {clericTiles.push(cTile+mapSize);}
+                if (!clericTiles.includes(cTile-mapSize)) {clericTiles.push(cTile-mapSize);}
+                if (!clericTiles.includes(cTile+mapSize+1)) {clericTiles.push(cTile+mapSize+1);}
+                if (!clericTiles.includes(cTile+mapSize-1)) {clericTiles.push(cTile+mapSize-1);}
+                if (!clericTiles.includes(cTile-mapSize+1)) {clericTiles.push(cTile-mapSize+1);}
+                if (!clericTiles.includes(cTile-mapSize-1)) {clericTiles.push(cTile-mapSize-1);}
             }
             if (batType.skills.includes('leader') && !boostedTeams.includes(batType.kind)) {
                 boostedTeams.push(batType.kind);
@@ -529,6 +537,13 @@ function nextTurnEnd() {
             tagsUpdate(bat);
             if (bat.loc === "zone") {
                 blub(bat,batType);
+            }
+            if (batType.moveCost < 90) {
+                if (clericTiles.includes(bat.tileId)) {
+                    if (!bat.tags.includes('zealot')) {
+                        bat.tags.push('zealot');
+                    }
+                }
             }
             bat.xp = bat.xp.toFixedNumber(2);
             if (bat.tags.includes('zombie')) {
@@ -1014,6 +1029,7 @@ function tagsUpdate(bat) {
     if (rand.rand(1,4) === 1) {
         tagDelete(bat,'prayer');
     }
+    tagDelete(bat,'zealot');
     if (rand.rand(1,3) <= 2) {
         tagDelete(bat,'stun');
     }

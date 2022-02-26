@@ -359,6 +359,7 @@ function nearWhat(myBat,myBatType) {
     near.doxey = false;
     near.loader = false;
     near.lander = false;
+    near.cleric = false;
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         if (bat.loc === "zone") {
@@ -383,6 +384,9 @@ function nearWhat(myBat,myBatType) {
             }
             if (bat.tags.includes('hero') && batType.skills.includes('heropotion') && !bat.tags.includes('potion')) {
                 near.doxey = true;
+            }
+            if (batType.skills.includes('cleric')) {
+                near.cleric = true;
             }
             if (bat.autoLoad != undefined) {
                 if (Array.isArray(bat.autoLoad)) {

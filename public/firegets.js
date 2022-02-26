@@ -751,6 +751,8 @@ function calcDamage(weapon,power,armor,defBat) {
     let dmgReduct = 0;
     if (defBat.tags.includes('bliss') && defBatType.cat === 'infantry') {
         dmgReduct = 3;
+    } else if (defBat.tags.includes('zealot') && defBatType.cat === 'infantry') {
+        dmgReduct = 1;
     }
     let calculatedDmg = powerDice-modifiedArmor-dmgReduct;
     if (calculatedDmg < 0) {
