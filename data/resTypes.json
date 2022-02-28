@@ -222,7 +222,7 @@
         "rarity": 20,
         "cat": "white",
         "batch": 3,
-        "energie": 1,
+        "energie": 0.75,
         "cramBld": "Centrale nucléaire",
         "equiv": 1,
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1.2,"Kzin":2,"Horst":1}
@@ -235,7 +235,7 @@
         "rarity": 17,
         "cat": "white",
         "batch": 3,
-        "energie": 1,
+        "energie": 0.75,
         "cramBld": "Centrale nucléaire",
         "equiv": 1,
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1.2,"Kzin":2,"Horst":1}
@@ -479,7 +479,7 @@
         "rarity": 7,
         "cat": "sky",
         "batch": 3,
-        "energie": 0.5,
+        "energie": 0.33,
         "cramBld": "Centrale nucléaire",
         "equiv": 3,
         "planets":{"Dom":0,"Sarak":0,"Gehenna":0.3,"Kzin":1,"Horst":1}
@@ -504,7 +504,7 @@
         "rarity": 6,
         "cat": "blue-sky",
         "batch": 4,
-        "energie": 1,
+        "energie": 0.75,
         "equiv": 3,
         "planets":{"Dom":0,"Sarak":1,"Gehenna":0.7,"Kzin":2,"Horst":0}
     },
@@ -516,7 +516,7 @@
         "rarity": 6,
         "cat": "sky",
         "batch": 2,
-        "energie": 0.67,
+        "energie": 0.4,
         "cramBld": "Centrale nucléaire",
         "equiv": 3,
         "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":0.5,"Horst":1}
@@ -553,7 +553,7 @@
         "rarity": 8,
         "cat": "blue-sky",
         "batch": 3,
-        "energie": 2,
+        "energie": 0.67,
         "equiv": 2,
         "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":0,"Horst":2}
     },
@@ -732,7 +732,7 @@
         "rarity": 5,
         "cat": "alien",
         "batch": 5,
-        "energie": 1.5,
+        "energie": 1,
         "equiv": 1.5
     },
     {

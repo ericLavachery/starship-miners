@@ -334,7 +334,7 @@
     {
         "name": "salite",
         "range": 1.4,
-        "rof": 1.2,
+        "rof": 1.3,
         "power": 0,
         "powermult": 1,
         "armors": 0.5,
@@ -375,7 +375,7 @@
         "info": "Paralysie",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"exo":2,"ca":4},
-        "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":2,"Germium":2},
+        "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":1,"Germium":2},
         "batch":100
     },
     {
@@ -526,16 +526,16 @@
         "info": "Paralysie",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"exo":2,"ca":4},
-        "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":2,"Germium":2},
+        "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":1,"Germium":2},
         "batch":100
     },
     {
         "name": "ac-salite",
         "range": 1.4,
-        "rof": 1.2,
+        "rof": 1.3,
         "power": 0,
         "powermult": 1,
-        "armors": 0.6,
+        "armors": 0.5,
         "accuracy": 1.6,
         "apdamage": 0,
         "aoe": "",
@@ -727,10 +727,10 @@
     {
         "name": "sm-salite",
         "range": 1.4,
-        "rof": 1.2,
+        "rof": 1.3,
         "power": 0,
         "powermult": 1,
-        "armors": 0.7,
+        "armors": 0.65,
         "accuracy": 1.4,
         "apdamage": 0,
         "aoe": "",
@@ -768,7 +768,7 @@
         "info": "Paralysie",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"exo":2,"ca":4},
-        "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":2,"Germium":2},
+        "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":1,"Germium":2},
         "batch":100
     },
     {
@@ -950,10 +950,10 @@
     {
         "name": "pn-salite",
         "range": 1.4,
-        "rof": 1.2,
+        "rof": 1.3,
         "power": 0,
         "powermult": 1,
-        "armors": 0.6,
+        "armors": 0.5,
         "accuracy": 1.6,
         "apdamage": 0,
         "aoe": "",
@@ -975,7 +975,7 @@
         "info": "Paralysie",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"exo":2,"ca":4},
-        "deploy":{"Tungstène":4,"Or":3,"Bossium":4,"Germium":4,"Oxygène":1},
+        "deploy":{"Tungstène":4,"Or":3,"Bossium":2,"Germium":4,"Oxygène":1},
         "batch":200
     },
     {
@@ -1081,7 +1081,7 @@
         "rof": 1.2,
         "power": 0,
         "powermult": 1,
-        "armors": 0.85,
+        "armors": 0.75,
         "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "brochette",
@@ -1497,7 +1497,7 @@
         "info": "Poison+++",
         "bldReq":["Centre de recherches"],
         "compReq":{"exo":2,"ca":4},
-        "deploy":{"Carbone":4,"Fer":1,"Titane":2,"Mephitis":9,"Huile":2,"Argon":3},
+        "deploy":{"Carbone":4,"Fer":1,"Titane":2,"Mephitis":4,"Huile":2,"Argon":3},
         "batch":100
     },
     {
@@ -1513,7 +1513,7 @@
         "info": "Paralysie",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":2,"ca":4},
-        "deploy":{"Carbone":4,"Or":2,"Tungstène":2,"Bossium":3,"Germium":3},
+        "deploy":{"Carbone":4,"Or":2,"Tungstène":2,"Bossium":1,"Germium":3},
         "batch":100
     },
     {
@@ -1605,7 +1605,7 @@
         "info": "Poison+++",
         "bldReq":["Centre de recherches"],
         "compReq":{"exo":2,"ca":4},
-        "deploy":{"Carbone":2,"Titane":1,"Mephitis":12,"Huile":3,"Argon":3},
+        "deploy":{"Carbone":2,"Titane":1,"Mephitis":6,"Huile":3,"Argon":3},
         "batch":100
     },
     {
@@ -1621,7 +1621,7 @@
         "info": "Paralysie",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":2,"ca":4},
-        "deploy":{"Carbone":2,"Titane":1,"Or":2,"Bossium":5,"Germium":3},
+        "deploy":{"Carbone":2,"Titane":1,"Or":2,"Bossium":2,"Germium":3},
         "batch":100
     },
     {

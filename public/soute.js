@@ -887,23 +887,50 @@ function missionRes() {
             }
         }
     });
-    // PACKS DE RESSOURCES
-    $('#fillList').append('<br><span class="constName or">PACKS DE RESSOURCES</span><br>');
-    armorTypes.forEach(function(pack) {
-        if (pack.name.includes('respack-')) {
-            if (prepaBld[pack.name] === undefined) {
-                showPrep = '';
-            } else {
-                showPrep = '('+prepaBld[pack.name]+')';
-            }
-            costsOK = checkCost(pack.costs);
-            if (!costsOK) {
-                $('#fillList').append('<span class="constName gff">&cross; '+pack.info+' <span class="ciel">'+showPrep+'</span></span><br>');
-            } else {
-                $('#fillList').append('<span class="constName klik cyf" onclick="missionResInfra(`'+pack.name+'`,false,1)">&check; '+pack.info+' <span class="ciel">'+showPrep+'</span></span><br>');
+    // PACKS UPKEEP
+    $('#fillList').append('<br><span class="constName or">PACKS UPKEEP (10 Tours)</span><br>');
+    unitTypes.forEach(function(unit) {
+        if (unit.skills.includes('prefab')) {
+            if (unit.upkeep != undefined) {
+                if (prepaBld[unit.name] === undefined) {
+                    showPrep = '';
+                } else {
+                    showPrep = '('+prepaBld[unit.name]+')';
+                }
+                let upCosts = {};
+                Object.entries(unit.upkeep).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    let upValue = Math.ceil(value)*10;
+                    upCosts[key] = upValue;
+                });
+                costString = displayCosts(upCosts);
+                costsOK = checkCost(upCosts);
+                if (!costsOK) {
+                    $('#fillList').append('<span class="constName gff" title="'+costString+'">&cross; '+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+                } else {
+                    $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResUpkeep(`'+unit.name+'`,10)">&check; '+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+                }
             }
         }
     });
+    // PACKS DE RESSOURCES
+    // $('#fillList').append('<br><span class="constName or">PACKS DE RESSOURCES</span><br>');
+    // armorTypes.forEach(function(pack) {
+    //     if (pack.name.includes('respack-')) {
+    //         if (prepaBld[pack.name] === undefined) {
+    //             showPrep = '';
+    //         } else {
+    //             showPrep = '('+prepaBld[pack.name]+')';
+    //         }
+    //         costsOK = checkCost(pack.costs);
+    //         if (!costsOK) {
+    //             $('#fillList').append('<span class="constName gff">&cross; '+pack.info+' <span class="ciel">'+showPrep+'</span></span><br>');
+    //         } else {
+    //             $('#fillList').append('<span class="constName klik cyf" onclick="missionResInfra(`'+pack.name+'`,false,1)">&check; '+pack.info+' <span class="ciel">'+showPrep+'</span></span><br>');
+    //         }
+    //     }
+    // });
     $('#fillList').append('<br>');
 };
 
@@ -947,6 +974,27 @@ function missionResInfra(infraName,road,number) {
         prepaBld[infra.name] = number;
     }  else {
         prepaBld[infra.name] = prepaBld[infra.name]+number;
+    }
+    playerInfos.okFill = true;
+    goSoute();
+    console.log(prepaBld);
+};
+
+function missionResUpkeep(unitName,number) {
+    let unit = getBatTypeByName(unitName);
+    console.log(unit);
+    let upCosts = {};
+    Object.entries(unit.upkeep).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        let upValue = Math.ceil(value);
+        upCosts[key] = upValue;
+    });
+    moveResCost(upCosts,souteId,slId,number);
+    if (prepaBld[unit.name] === undefined) {
+        prepaBld[unit.name] = number;
+    }  else {
+        prepaBld[unit.name] = prepaBld[unit.name]+number;
     }
     playerInfos.okFill = true;
     goSoute();

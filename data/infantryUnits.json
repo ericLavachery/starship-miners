@@ -1647,7 +1647,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-a-atium","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-c-poison","lame-atium","lame-c-atium","lame-a-atium","lame-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{
             "name":"Arbalète",
@@ -1884,7 +1884,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-c-poison","lame-atium","lame-c-atium","lame-a-atium","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{
             "name":"Javelots (lancé)",
@@ -3387,7 +3387,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"moto_impact",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-a-atium","lame-poraz","lame-mono","lame-taser","lame-adamantite","lame-adamantium"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-poison","lame-c-poison","lame-atium","lame-c-atium","lame-a-atium","lame-poraz","lame-mono","lame-taser","lame-adamantite","lame-adamantium"]
         },
         "equip":["aucun","e-flash","e-ranger","e-camo","snorkel","e-medic","permakirin","theeye","repel"],
         "log3eq":["snorkel"],
@@ -4394,7 +4394,7 @@
         "id":268,
         "name":"Lémures",
         "pic":"zombody",
-        "cat":"infantry",
+        "cat":"vehicles",
         "kind":"zero-cybernetique",
         "squads":6,
         "squadSize":8,

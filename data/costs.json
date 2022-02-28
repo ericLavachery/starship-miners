@@ -2168,6 +2168,14 @@
         "slots":0
     },
     {
+        "id":283,
+        "name":"Atmopompe",
+        "upkeep":{"Energie":4},
+        "costs":{"Compo1":200,"Eau":18,"Hélium":300,"Carbone":75,"Fer":75,"Titane":35,"Moteurs":10,"Cuivre":25,"Electros":35,"Batteries":10},
+        "fabTime":45,
+        "slots":1
+    },
+    {
         "id":124,
         "name":"Derrick",
         "upkeep":{"Hydrocarbure":5.3},
@@ -2375,14 +2383,6 @@
         "costs":{"Compo1":380,"Compo2":220,"Compo3":150,"Eau":5000,"Fer":750,"Energie":1200,"Platine":500,"Bore":2000,"Chlore":1000,"Argon":750,"Electros":250,"Batteries":180},
         "fabTime":350,
         "slots":3
-    },
-    {
-        "id":283,
-        "name":"Cryogénérateur",
-        "upkeep":{"Energie":4},
-        "costs":{"Compo1":200,"Eau":18,"Hélium":300,"Carbone":75,"Fer":75,"Titane":35,"Moteurs":10,"Cuivre":25,"Electros":35,"Batteries":10},
-        "fabTime":45,
-        "slots":1
     },
     {
         "id":206,

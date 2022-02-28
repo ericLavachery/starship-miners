@@ -1916,51 +1916,6 @@
         "costs":{"Chlore":100,"Zinc":150,"Huile":170,"Titane":25,"Silicium":40}
     },
     {
-        "name":"respack-ammo1",
-        "info":"Munitions 1 (1650r)",
-        "costs":{"Munitions":360,"Fer":80,"Plomb":80,"Tungstène":190,"Uranium":80,"Phosphore":190,"Hydrogène":80,"Aluminium":80}
-    },
-    {
-        "name":"respack-ammo2",
-        "info":"Munitions 2 (2290r)",
-        "costs":{"Munitions":360,"Fer":80,"Plomb":80,"Tungstène":270,"Uranium":120,"Phosphore":190,"Hydrogène":80,"Aluminium":120,"Or":80,"Bossium":80,"Adamantium":80,"Dunium":80,"Salite":80,"Timonium":80}
-    },
-    {
-        "name":"respack-weapons1",
-        "info":"Armes 1 (1640r)",
-        "costs":{"Fer":450,"Scrap":300,"Carbone":100,"Bois":30,"Aluminium":100,"Tungstène":100,"Huile":30,"Silicium":30,"Phosphore":90,"Hydrogène":90,"Plomb":120,"Soufre":200}
-    },
-    {
-        "name":"respack-weapons2",
-        "info":"Armes 2 (1930r)",
-        "costs":{"Fer":450,"Scrap":300,"Carbone":100,"Bois":30,"Aluminium":100,"Titane":80,"Tungstène":100,"Rhodium":30,"Bore":30,"Huile":30,"Silicium":30,"Cuivre":30,"Electros":30,"Batteries":30,"Phosphore":90,"Hydrogène":90,"Uranium":60,"Bossium":30,"Plomb":120,"Soufre":200}
-    },
-    {
-        "name":"respack-explo1",
-        "info":"Explosifs 1 (1000r)",
-        "costs":{"Fer":140,"Scrap":120,"Carbone":100,"Bois":30,"Aluminium":90,"Tungstène":70,"Huile":30,"Silicium":30,"Explosifs":90,"Phosphore":60,"Potassium":60,"Plomb":60,"Fuel":120}
-    },
-    {
-        "name":"respack-explo2",
-        "info":"Explosifs 2 (1200r)",
-        "costs":{"Fer":140,"Scrap":120,"Carbone":100,"Bois":30,"Aluminium":90,"Titane":50,"Tungstène":70,"Rhodium":30,"Huile":30,"Silicium":20,"Electros":20,"Batteries":20,"Explosifs":90,"Hélium":30,"Azote":30,"Cuivre":30,"Phosphore":60,"Potassium":60,"Plomb":60,"Fuel":120}
-    },
-    {
-        "name":"respack-fleches1",
-        "info":"Flèches et poisons 1 (700r)",
-        "costs":{"Bois":200,"Fer":120,"Carbone":90,"Tungstène":40,"Huile":100,"Calcium":90,"Phosphore":60}
-    },
-    {
-        "name":"respack-fleches2",
-        "info":"Flèches et poisons 2 (890r)",
-        "costs":{"Bois":200,"Fer":120,"Carbone":90,"Tungstène":40,"Titane":40,"Huile":100,"Calcium":90,"Argon":40,"Mephitis":60,"Germium":60,"Or":40,"Phosphore":60,"Rhodium":30,"Bossium":30,"Cuivre":20,"Electros":20}
-    },
-    {
-        "name":"respack-bld1",
-        "info":"Bâtiments 1 (2180r)",
-        "costs":{"Compo1":450,"Compo2":110,"Eau":200,"Carbone":50,"Aluminium":100,"Fer":200,"Soufre":50,"Bois":100,"Potassium":50,"Scrap":200,"Phosphore":30,"Hydrogène":50,"Végétaux":150,"Fuel":100,"Zinc":50,"Huile":50,"Potassium":100,"Tissus":25,"Calcium":25,"Or":15,"Silicium":25,"Oxygène":25,"Chlore":75}
-    },
-    {
         "name":"startpack",
         "info":"Pack de départ",
         "res":{

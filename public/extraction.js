@@ -786,7 +786,9 @@ function addAlienRes(bat) {
         for (var prop in batType.killRes) {
             if (Object.prototype.hasOwnProperty.call(batType.killRes,prop)) {
                 killRes = batType.killRes[prop];
-                killRes = killRes*caComp;
+                if (prop != 'Gibier') {
+                    killRes = killRes*caComp;
+                }
                 killRes = Math.ceil(killRes*alienResFactor/10);
                 if (playerInfos.alienRes[prop] >=1) {
                     playerInfos.alienRes[prop] = playerInfos.alienRes[prop]+killRes;
