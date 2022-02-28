@@ -313,7 +313,7 @@ function batListElement(bat,batType,idOfLander) {
     if (idOfLander >= 0) {
         colId = 'list_lander';
     }
-    let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
+    let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq,bat.logeq]);
     let enoughRes = checkCost(deployCosts);
     let deployInfo = checkPlaceLander(bat,batType,slId);
     if (!enoughRes || !deployInfo[0] || !deployInfo[1] || !deployInfo[2] || bat.eq === 'camkit' || bat.type === 'Chercheurs') {
@@ -444,7 +444,7 @@ function batSouteSelect(batId) {
 function batDeploy(batId) {
     let bat = getBatById(batId);
     let batType = getBatType(bat);
-    let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
+    let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq,bat.logeq]);
     let enoughRes = checkCost(deployCosts);
     if (enoughRes) {
         payCost(deployCosts);
@@ -460,7 +460,7 @@ function batDeploy(batId) {
 function batUndeploy(batId) {
     let bat = getBatById(batId);
     let batType = getBatType(bat);
-    let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
+    let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq,bat.logeq]);
     addCost(deployCosts,1);
     loadBat(bat.id,souteId,slId);
     goSoute();
@@ -571,6 +571,12 @@ function getAllDeployCosts(unit,ammoNames) {
     // Equip
     if (ammoNames[3] != 'xxx') {
         let batEquip = getEquipByName(ammoNames[3]);
+        deployCosts = getDeployCosts(unit,batEquip,0,'equip');
+        mergeObjects(totalCosts,deployCosts);
+    }
+    // Equip 2 (logeq)
+    if (ammoNames[4] != 'xxx') {
+        let batEquip = getEquipByName(ammoNames[4]);
         deployCosts = getDeployCosts(unit,batEquip,0,'equip');
         mergeObjects(totalCosts,deployCosts);
     }

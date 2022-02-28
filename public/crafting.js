@@ -452,6 +452,20 @@ function geoProd(bat,batType) {
     }
 };
 
+function getGeoProd(tile) {
+    let magmaHere = 0;
+    let tileHeat = getTileHeat(tile);
+    if (tile.rs != undefined) {
+        if (tile.rs.Magma >= 1) {
+            magmaHere = tile.rs.Magma;
+        }
+    }
+    let energyProd = Math.ceil(magmaHere/4*3)+(tileHeat*10);
+    energyProd = energyCreation(energyProd);
+    energyProd = Math.ceil(energyProd/10);
+    return energyProd;
+};
+
 function gasProd(bat,batType) {
     console.log('UPKEEP');
     console.log(batType.name);
@@ -480,30 +494,7 @@ function gasProd(bat,batType) {
             }
         }
         if (upkeepPaid) {
-            let planetAir = {};
-            if (zone[0].planet === 'Dom') {
-                planetAir['Oxygène'] = 4;
-                planetAir['Argon'] = 0.2;
-                planetAir['Azote'] = 10;
-            }
-            if (zone[0].planet === 'Sarak') {
-                planetAir['Oxygène'] = 4;
-                planetAir['Argon'] = 1;
-                planetAir['Azote'] = 9;
-                planetAir['Hélium'] = 0.5;
-            }
-            if (zone[0].planet === 'Gehenna') {
-                planetAir['Oxygène'] = 3;
-                planetAir['Azote'] = 5;
-                planetAir['Chlore'] = 5;
-                planetAir['Hélium'] = 2;
-            }
-            if (zone[0].planet === 'Kzin') {
-                planetAir['Oxygène'] = 1;
-                planetAir['Argon'] = 3;
-                planetAir['Azote'] = 4;
-                planetAir['Hélium'] = 6;
-            }
+            let planetAir = getAtmo(false);
             Object.entries(planetAir).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
@@ -533,6 +524,46 @@ function gasProd(bat,batType) {
             });
         }
     }
+};
+
+function getAtmo(g2) {
+    let planetAir = {};
+    let mult = 1;
+    if (g2) {
+        mult = 2;
+    }
+    if (zone[0].planet === 'Dom') {
+        planetAir['Oxygène'] = 4*mult;
+        planetAir['Argon'] = 0.2*mult;
+        planetAir['Azote'] = 10*mult;
+    }
+    if (zone[0].planet === 'Sarak') {
+        planetAir['Oxygène'] = 4*mult;
+        planetAir['Argon'] = 1*mult;
+        planetAir['Azote'] = 9*mult;
+        planetAir['Hélium'] = 0.5*mult;
+    }
+    if (zone[0].planet === 'Gehenna') {
+        planetAir['Oxygène'] = 3*mult;
+        planetAir['Azote'] = 4*mult;
+        planetAir['Chlore'] = 5*mult;
+        planetAir['Hélium'] = 1*mult;
+        planetAir['Atium'] = 2*mult;
+    }
+    if (zone[0].planet === 'Kzin') {
+        planetAir['Oxygène'] = 1*mult;
+        planetAir['Argon'] = 3*mult;
+        planetAir['Azote'] = 4*mult;
+        planetAir['Hélium'] = 6*mult;
+    }
+    if (zone[0].planet === 'Horst') {
+        planetAir['Oxygène'] = 3*mult;
+        planetAir['Argon'] = 1*mult;
+        planetAir['Azote'] = 9*mult;
+        planetAir['Hélium'] = 1*mult;
+        planetAir['Phosphore'] = 1*mult;
+    }
+    return planetAir;
 };
 
 function solarProd(bat,batType,time,sim,quiet) {
@@ -612,6 +643,21 @@ function solarProd(bat,batType,time,sim,quiet) {
             }
         }
     }
+};
+
+function getSolarProd(tile) {
+    let energyProd = 60;
+    if (!playerInfos.onShip) {
+        energyProd = 60;
+        if (tile.terrain === 'P') {
+            energyProd = 75;
+        } else if (tile.terrain === 'F') {
+            energyProd = 37;
+        }
+        energyProd = Math.ceil(energyProd*zone[0].ensol/150);
+    }
+    energyProd = energyCreation(energyProd);
+    return energyProd;
 };
 
 function solarPanel(bat,batType) {

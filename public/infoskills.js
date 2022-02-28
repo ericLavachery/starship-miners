@@ -34,7 +34,7 @@ function skillsInfos(bat,batType,near) {
     // DEPLOIEMENT
     if (playerInfos.onShip && inSoute && batType.name != 'Soute' && !batType.skills.includes('transorbital')) {
         if (bat.locId === souteId) {
-            let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq]);
+            let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq,bat.logeq]);
             let enoughRes = checkCost(deployCosts);
             let deployInfo = checkPlaceLander(bat,batType,slId);
             if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit' && bat.type != 'Chercheurs') {
@@ -1549,11 +1549,30 @@ function skillsInfos(bat,batType,near) {
             if (batType.upkeep != undefined) {
                 upkeepCosts = toCoolString(batType.upkeep);
             }
+            let theProd = '{aucune}';
+            if (batType.prod != undefined) {
+                theProd = toCoolString(batType.prod);
+            } else {
+                if (batType.skills.includes('cryogen')) {
+                    let g2 = false;
+                    if (bat.eq === 'g2cryo' || bat.logeq === 'g2cryo') {
+                        g2 = true;
+                    }
+                    let atmo = getAtmo(g2);
+                    theProd = toCoolString(atmo);
+                } else if (batType.skills.includes('solar')) {
+                    let solarProd = getSolarProd(tile);
+                    theProd = '{Energie='+solarProd+'}';
+                } else if (batType.skills.includes('geo')) {
+                    let geoProd = getGeoProd(tile);
+                    theProd = '{Energie='+geoProd+'}';
+                }
+            }
             apCost = 0;
             if (!bat.tags.includes('prodres')) {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lancer la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Désactivé</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Lancer la production '+theProd+' / Coûts: '+upkeepCosts+'" class="boutonGris skillButtons" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Désactivé</'+balise+'></span>');
             } else {
-                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter la production '+toCoolString(batType.prod)+' / Coûts: '+upkeepCosts+'" class="'+boutonNope+' skillButtons '+colorNope+'" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Activé</'+balise+'></span>');
+                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Arrêter la production '+theProd+' / Coûts: '+upkeepCosts+'" class="'+boutonNope+' skillButtons '+colorNope+'" onclick="prodToggle()"><i class="fas fa-industry"></i> <span class="small">'+apCost+'</span></button>&nbsp; Activé</'+balise+'></span>');
             }
         }
     }
