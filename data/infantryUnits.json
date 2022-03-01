@@ -1897,7 +1897,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"jav",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze"],
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-freeze"],
             "maxAmmo":12
         },
         "equip":["aucun","e-flash","e-camo","permakirin","theeye","helper"],

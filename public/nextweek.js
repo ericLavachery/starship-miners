@@ -259,9 +259,13 @@ function rechercheSci(bat,time) {
         console.log(rechCompOK);
         if (rechCompOK) {
             let findChance = Math.round(time*3.9);
-            if (rand.rand(1,10000) <= findChance+playerInfos.sciRech) {
+            if (rand.rand(1,10000) <= findChance+playerInfos.sciRech || (rechCompName === 'scaph' && playerInfos.sciRech >= 1500)) {
                 playerInfos.comp[rechCompName] = playerInfos.comp[rechCompName]+1;
-                playerInfos.sciRech = 0;
+                if (rechCompName === 'scaph') {
+                    playerInfos.sciRech = Math.floor(playerInfos.sciRech/2);
+                } else {
+                    playerInfos.sciRech = 0;
+                }
                 bat.eq = 'aucun';
                 warning('<span class="cy">RECHERCHE: Eureka!</span>','<span class="gfbleu">Vos chercheurs ont mis au point une compétence.<br>'+rechComp.fullName+' +1 (maintenant au niveau '+playerInfos.comp[rechComp.name]+')<br>Vous devez leur acheter du nouveau matériel (équipement) pour qu\'ils puissent continuer à travailler.</span><br>',true);
             } else {
