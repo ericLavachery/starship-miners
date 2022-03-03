@@ -178,7 +178,7 @@
         "skills":[],
         "bldReq":["Armurerie"],
         "factor":"thp",
-        "costs":{"Scrap":6,"Fer":12}
+        "costs":{"Scrap":2,"Fer":12}
     },
     {
         "name":"combo",

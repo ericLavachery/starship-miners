@@ -114,6 +114,17 @@ function toCoolString(myObject,nocro) {
     return newString;
 };
 
+function orderObjectByKey(unordered) {
+    const ordered = Object.keys(unordered).sort().reduce(
+        (obj,key) => {
+            obj[key] = unordered[key];
+            return obj;
+        },
+        {}
+    );
+    return ordered;
+}
+
 function onlyFirstLetter(string) {
     return string.charAt(0).toLowerCase();
 };

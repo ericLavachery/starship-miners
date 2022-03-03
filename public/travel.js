@@ -6,7 +6,7 @@ function startMission() {
     if (playerInfos.okFill) {
         saveGame();
         events(false,65,true,true);
-        // noter les ressouces de la station
+        // noter les ressources de la station
         updateVMRes();
         playerInfos.undarkOnce = [];
         batUnselect();
@@ -696,6 +696,8 @@ function showZonePreview() {
     $('#thenavig').append('<span class="constIcon"><i class="fas fa-times-circle klik" onclick="miniOut()"></i></span><br>');
     let allResQHere = {};
     let allResHere = [];
+    let centreResQHere = {};
+    let centreResHere = [];
     let ccom = false;
     if (playerInfos.bldList.includes('Centre de com')) {
         ccom = true;
@@ -705,14 +707,30 @@ function showZonePreview() {
             $('#themmap').append('<br>');
         }
         if (tile.rq != undefined) {
+            let isCentre = false;
+            let distance = calcDistance(1830,tile.id);
+            if (distance <= 9) {
+                isCentre = true;
+            }
             Object.entries(tile.rs).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
-                if (playerInfos.comp.det < 3) {
-                    if (!allResHere.includes(key)) {
-                        allResHere.push(key);
+                if (isCentre) {
+                    if (!centreResHere.includes(key)) {
+                        centreResHere.push(key);
                     }
-                } else {
+                }
+                if (!allResHere.includes(key)) {
+                    allResHere.push(key);
+                }
+                if (playerInfos.comp.det >= 3) {
+                    if (isCentre) {
+                        if (centreResQHere[key] === undefined) {
+                            centreResQHere[key] = value;
+                        } else {
+                            centreResQHere[key] = centreResQHere[key]+value;
+                        }
+                    }
                     if (allResQHere[key] === undefined) {
                         allResQHere[key] = value;
                     } else {
@@ -810,11 +828,52 @@ function showZonePreview() {
         showInfo = changeEggKindsByZoneType(showInfo,spType);
     }
     $('#zoneDetail').append('<span class="ListRes">'+showInfo+'<br></span><br>');
-    $('#zoneDetail').append('<span class="ListRes vert">Ressources présentes<br></span><br>');
+    // Ressources manquantes
+    let allMissingRes = [];
+    let centreMissingRes = [];
+    resTypes.forEach(function(res) {
+        if (res.cat != 'zero' && res.cat != 'alien' && res.cat != 'transfo') {
+            if (!centreResHere.includes(res.name)) {
+                centreMissingRes.push(res.name);
+            }
+            if (!allResHere.includes(res.name)) {
+                allMissingRes.push(res.name);
+            }
+        }
+    });
+    $('#zoneDetail').append('<span class="ListRes vert">Ressources au centre de la zone<br></span><br>');
     if (playerInfos.comp.det >= 3) {
-        $('#zoneDetail').append('<span class="ListRes">'+toCoolString(allResQHere,true)+'<br></span><br>');
+        let theRez = orderObjectByKey(centreResQHere);
+        $('#zoneDetail').append('<span class="ListRes vert">Présentes<br></span>');
+        $('#zoneDetail').append('<span class="ListRes ciel">'+toCoolString(theRez,true)+'<br></span>');
+        let theNoRez = centreMissingRes.sort();
+        $('#zoneDetail').append('<span class="ListRes vert">Non présentes<br></span>');
+        $('#zoneDetail').append('<span class="ListRes jaune">'+toNiceString(theNoRez)+'<br></span><br>');
     } else if (playerInfos.comp.det >= 0) {
-        $('#zoneDetail').append('<span class="ListRes">'+toNiceString(allResHere)+'<br></span><br>');
+        let theRez = centreResHere.sort();
+        $('#zoneDetail').append('<span class="ListRes vert">Présentes<br></span>');
+        $('#zoneDetail').append('<span class="ListRes ciel">'+toNiceString(theRez)+'<br></span>');
+        let theNoRez = centreMissingRes.sort();
+        $('#zoneDetail').append('<span class="ListRes vert">Non présentes<br></span>');
+        $('#zoneDetail').append('<span class="ListRes jaune">'+toNiceString(theNoRez)+'<br></span><br>');
+    } else {
+        $('#zoneDetail').append('<span class="ListRes">Compétence de détection insuffisante...<br></span><br>');
+    }
+    $('#zoneDetail').append('<span class="ListRes vert">Toutes les ressources<br></span><br>');
+    if (playerInfos.comp.det >= 3) {
+        let theRez = orderObjectByKey(allResQHere);
+        $('#zoneDetail').append('<span class="ListRes vert">Présentes<br></span>');
+        $('#zoneDetail').append('<span class="ListRes ciel">'+toCoolString(theRez,true)+'<br></span>');
+        let theNoRez = allMissingRes.sort();
+        $('#zoneDetail').append('<span class="ListRes vert">Non présentes<br></span>');
+        $('#zoneDetail').append('<span class="ListRes jaune">'+toNiceString(theNoRez)+'<br></span><br>');
+    } else if (playerInfos.comp.det >= 0) {
+        let theRez = allResHere.sort();
+        $('#zoneDetail').append('<span class="ListRes vert">Présentes<br></span>');
+        $('#zoneDetail').append('<span class="ListRes ciel">'+toNiceString(theRez)+'<br></span>');
+        let theNoRez = allMissingRes.sort();
+        $('#zoneDetail').append('<span class="ListRes vert">Non présentes<br></span>');
+        $('#zoneDetail').append('<span class="ListRes jaune">'+toNiceString(theNoRez)+'<br></span><br>');
     } else {
         $('#zoneDetail').append('<span class="ListRes">Compétence de détection insuffisante...<br></span><br>');
     }
