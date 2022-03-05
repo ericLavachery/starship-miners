@@ -172,7 +172,7 @@ function checkTreuil(myBat) {
         }
     });
     if (playerInfos.comp.trans === 3) {
-        leTreuil.pa = leTreuil.pa+1;
+        leTreuil.pa = leTreuil.pa+2;
     }
     return leTreuil;
 };

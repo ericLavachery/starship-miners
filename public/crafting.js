@@ -545,10 +545,10 @@ function getAtmo(g2) {
     }
     if (zone[0].planet === 'Gehenna') {
         planetAir['Oxygène'] = 3*mult;
-        planetAir['Azote'] = 4*mult;
-        planetAir['Chlore'] = 5*mult;
+        planetAir['Azote'] = 3*mult;
+        planetAir['Chlore'] = 4*mult;
         planetAir['Hélium'] = 1*mult;
-        planetAir['Atium'] = 2*mult;
+        planetAir['Atium'] = 4*mult;
     }
     if (zone[0].planet === 'Kzin') {
         planetAir['Oxygène'] = 1*mult;
@@ -938,17 +938,17 @@ function upkeepNotPaid(bat,batType) {
             bat.tags.push('construction');
         }
     } else {
-        if (batType.skills.includes('updisable')) {
-            if (bat.tags.includes('construction')) {
-                let allTags = _.countBy(bat.tags);
-                if (allTags.construction === 1) {
-                    bat.tags.push('construction');
-                }
-            } else {
-                bat.tags.push('construction');
-                bat.tags.push('construction');
-            }
-        }
+        // if (batType.skills.includes('updisable')) {
+        //     if (bat.tags.includes('construction')) {
+        //         let allTags = _.countBy(bat.tags);
+        //         if (allTags.construction === 1) {
+        //             bat.tags.push('construction');
+        //         }
+        //     } else {
+        //         bat.tags.push('construction');
+        //         bat.tags.push('construction');
+        //     }
+        // }
     }
 };
 

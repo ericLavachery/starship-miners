@@ -47,6 +47,7 @@ function minimap() {
     } else {
         $('#thenavig').append('<button type="button" title="Montrer les ressources" class="boutonGris miniButtons" onclick="oneResView()"><i class="far fa-gem"></i></button><br>');
     }
+    $('#thenavig').append('<button type="button" title="Afficher la liste des bataillons" class="boutonGris miniButtons" onclick="voirBataillons()"><i class="fas fa-user-astronaut"></i></button><br>');
     let tousLesCoffres = [];
     if (miniDots === 'coffres') {
         bataillons.forEach(function(bat) {

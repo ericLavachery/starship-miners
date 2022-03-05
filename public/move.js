@@ -633,6 +633,9 @@ function calcMoveCost(targetTileId,diag) {
             baseMoveCost = baseMoveCost-0.5;
         }
     }
+    if (playerInfos.comp.trans === 3 && selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('robot') && !selectedBatType.skills.includes('cyber') && selectedBatType.moveCost < 90) {
+        baseMoveCost = baseMoveCost*0.9;
+    }
     let moveCost;
     if (tile.rd && !selectedBatType.skills.includes('hover')) {
         moveCost = baseMoveCost+terrain.roadmc;

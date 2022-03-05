@@ -1,3 +1,54 @@
+function voirBataillons() {
+    showResOpen = true;
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","800px");
+    $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
+    $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="shSpace"></span><br>');
+    $('#conUnitList').append('<span class="blockTitle"><h3>Bataillons</h3></span>');
+    $('#conUnitList').append('<br><span class="shSpace"></span><br>');
+    let sortedBatList = _.sortBy(_.sortBy(bataillons,'id'),'type');
+    sortedBatList.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (!batType.skills.includes('nolist')) {
+            let batColor = 'ciel';
+            if (batType.cat === 'buildings' || batType.cat === 'devices') {
+                batColor = 'bleu';
+            }
+            if (bat.loc != 'zone') {
+                batColor = 'brun';
+            }
+            $('#conUnitList').append('<span class="ListRes '+batColor+' klik" onclick="warnLink('+bat.tileId+')">'+bat.type+'</span>&nbsp;&nbsp;');
+            if (bat.vet >= 1) {
+                $('#conUnitList').append('<img src="/static/img/vet'+bat.vet+'.png" width="10">&nbsp;&nbsp;');
+            }
+            if (bat.damage >= 1 || bat.squadsLeft < batType.squads) {
+                $('#conUnitList').append('<span class="ListRes" title="Blessé"><i class="ra ra-bleeding-hearts"></i></span>&nbsp;&nbsp;');
+            }
+            if (bat.tags.includes('parasite') || bat.tags.includes('venin') || bat.tags.includes('poison') || bat.tags.includes('necro')) {
+                $('#conUnitList').append('<span class="ListRes" title="Empoisonné"><i class="fas fa-skull-crossbones"></i></span>&nbsp;&nbsp;');
+            }
+            if (bat.tags.includes('maladie')) {
+                $('#conUnitList').append('<span class="ListRes" title="Malade"><i class="fas fa-thermometer"></i></span>&nbsp;&nbsp;');
+            }
+            if (bat.emo >= 11) {
+                if (bat.tags.includes('bliss') || bat.tags.includes('octiron') || bat.tags.includes('fanatic')) {
+                    $('#conUnitList').append('<span class="ListRes gff" title="Stressé (mais traité)"><i class="fas fa-ghost"></i></span>&nbsp;&nbsp;');
+                } else {
+                    $('#conUnitList').append('<span class="ListRes" title="Stressé"><i class="fas fa-ghost"></i></span>&nbsp;&nbsp;');
+                }
+            }
+            $('#conUnitList').append('<br>');
+        }
+    });
+    // $("#conUnitList").animate({scrollTop:0},"fast");
+};
+
 function gangEdit() {
     selectMode();
     $("#conUnitList").css("display","block");
@@ -522,15 +573,12 @@ function playerSkillsUTChanges() {
             }
         }
         if (playerInfos.comp.trans >= 1 && unit.cat === 'vehicles') {
-            let transComp = playerInfos.comp.trans;
-            if (playerInfos.comp.trans === 3) {
-                transComp = transComp+1;
-            }
+            let transComp = ((playerInfos.comp.trans+1)*(playerInfos.comp.trans+1))-1;
             if (unit.transRes >= 50) {
-                unit.transRes = Math.round(unit.transRes*(transComp+10)/10);
+                unit.transRes = Math.round(unit.transRes*(transComp+30)/30);
             }
             if (unit.transUnits >= 50) {
-                unit.transUnits = Math.round(unit.transUnits*(transComp+10)/10);
+                unit.transUnits = Math.round(unit.transUnits*(transComp+30)/30);
             }
         }
         // LOGISTIQUE

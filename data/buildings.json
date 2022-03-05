@@ -3886,7 +3886,8 @@
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
-        "maxVeg":-1
+        "maxVeg":-1,
+        "skills":["recupcit"]
     },
     {
         "id":275,

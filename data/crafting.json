@@ -1248,6 +1248,15 @@
         "bg":"#200808"
     },
     {
+        "id":163,
+        "result":"Eau",
+        "cost":{"Oxygène":5,"Hydrogène":10,"Energie":1},
+        "compReq":{"ind":1,"explo":1},
+        "bldReq":["Crameur"],
+        "batch":15,
+        "bg":"#200808"
+    },
+    {
         "id":140,
         "result":"Fer",
         "cost":{"Compo2":5},
