@@ -88,6 +88,9 @@ function batInfos(bat,batType,pop) {
     }
     if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
         resMax = resMax*2;
+        if (resMax < 5000) {
+            resMax = 5000;
+        }
     }
     let vetIcon = '';
     if (bat.vet >= 1) {

@@ -1,39 +1,149 @@
+function encounterCheck() {
+    if (!zone[0].visit) {
+        if (zone[0].mapDiff >= 2) {
+            let encounterChance = playerInfos.enc;
+            if (zone[0].planet === 'Dom') {
+                if (zone[0].mapDiff >= 4) {
+                    encounterChance = encounterChance-20;
+                }
+            }
+            if (zone[0].planet === 'Sarak') {
+                encounterChance = encounterChance-10;
+                if (zone[0].mapDiff >= 5) {
+                    encounterChance = encounterChance-20;
+                }
+            }
+            if (zone[0].planet === 'Horst') {
+                encounterChance = encounterChance+40;
+                if (encounterChance < 90) {
+                    encounterChance = 90;
+                }
+            }
+            if (zone[0].planet === 'Kzin') {
+                encounterChance = encounterChance+20;
+                if (encounterChance < 70) {
+                    encounterChance = 70;
+                }
+            }
+            if (zone[0].planet === 'Gehenna') {
+                encounterChance = encounterChance+10;
+                if (encounterChance < 60) {
+                    encounterChance = 60;
+                }
+            }
+            if (rand.rand(1,encounterChance) <= 30) {
+                encounter();
+            } else {
+                playerInfos.encz.push('xx');
+                if (zone[0].planet === 'Sarak' || zone[0].planet === 'Dom') {
+                    playerInfos.enc = playerInfos.enc-10;
+                }
+            }
+        }
+    }
+};
+
+function encBaseAdj(hard,baseType) {
+    if (playerInfos.enc < 25) {
+        playerInfos.enc = 25;
+    }
+    if (hard) {
+        playerInfos.enc = playerInfos.enc+18;
+    } else {
+        playerInfos.enc = playerInfos.enc+12;
+    }
+    playerInfos.encz.push(baseType);
+};
+
 function encounter() {
     let hard = false;
-    let encDice;
+    let encDiceMin = 2;
     let encDiceMax = 28;
-    if (zone[0].mapDiff < 5) {
-        encDiceMax = encDiceMax-5;
-    }
     if (rand.rand(1,2) === 1 || zone[0].mapDiff >= 8) {
         hard = true;
         playerInfos.fndCits = playerInfos.fndCits+3;
-        encDice = rand.rand(0,encDiceMax);
-    } else {
-        encDice = rand.rand(2,encDiceMax);
+        encDiceMin = 0;
     }
-    if (encDice === 0 || encDice === 1 || encDice === 2 || encDice === 3) {
+    encDiceMax = encDiceMax-5+Math.round(playerInfos.enc/10);
+    checkEncDice(encDiceMin,encDiceMax,hard);
+};
+
+function checkEncDice(encDiceMin,encDiceMax,hard) {
+    let encDice = rand.rand(encDiceMin,encDiceMax);
+    if (encDice === 1 || encDice === 2) {
         baseDeResistants(hard);
         playerInfos.fndCits = playerInfos.fndCits+3;
-    } else if (encDice === 4 || encDice === 5 || encDice === 6) {
+        encBaseAdj(hard,'br');
+    } else if ((encDice === 0 || encDice === 3) && !playerInfos.encz.includes('br')) {
+        baseDeResistants(hard);
+        playerInfos.fndCits = playerInfos.fndCits+3;
+        encBaseAdj(hard,'br');
+    } else if (encDice === 4) {
         bastionDeBrigands(hard);
         playerInfos.fndCits = playerInfos.fndCits+2;
-    } else if (encDice === 7 || encDice === 8) {
+        encBaseAdj(hard,'bb');
+    } else if ((encDice === 5 || encDice === 6) && !playerInfos.encz.includes('bb')) {
+        bastionDeBrigands(hard);
+        playerInfos.fndCits = playerInfos.fndCits+2;
+        encBaseAdj(hard,'bb');
+    } else if (encDice === 7) {
         baseLabo(hard);
         playerInfos.fndCits = playerInfos.fndCits+3;
-    } else if (encDice === 9 || encDice === 10) {
+        encBaseAdj(hard,'bs');
+    } else if (encDice === 8 && !playerInfos.encz.includes('bs')) {
+        baseLabo(hard);
+        playerInfos.fndCits = playerInfos.fndCits+3;
+        encBaseAdj(hard,'bs');
+    } else if (encDice === 9) {
         campDeColons(hard);
         playerInfos.fndCits = playerInfos.fndCits+3;
-    } else if (encDice === 11 || encDice === 12) {
+        encBaseAdj(hard,'cc');
+    } else if (encDice === 10 && !playerInfos.encz.includes('cc')) {
+        campDeColons(hard);
+        playerInfos.fndCits = playerInfos.fndCits+3;
+        encBaseAdj(hard,'cc');
+    } else if (encDice === 11) {
         zoneIndustrielle(hard);
         playerInfos.fndCits = playerInfos.fndCits+3;
+        encBaseAdj(hard,'zi');
+    } else if (encDice === 12 && !playerInfos.encz.includes('zi')) {
+        zoneIndustrielle(hard);
+        playerInfos.fndCits = playerInfos.fndCits+3;
+        encBaseAdj(hard,'zi');
     } else if (encDice === 13) {
         // Piège alien
         tooLate(hard);
+        playerInfos.enc = playerInfos.enc-10;
+        playerInfos.encz.push('pa');
     } else if (encDice === 14 || encDice === 15 || encDice === 16 || encDice === 17) {
         tooLate(hard);
+        playerInfos.enc = playerInfos.enc-10;
+        playerInfos.encz.push('rb');
     } else {
-        madCitizens(hard);
+        if (rand.rand(1,50) > playerInfos.enc && !playerInfos.encz.includes('br')) {
+            baseDeResistants(hard);
+            playerInfos.fndCits = playerInfos.fndCits+3;
+            encBaseAdj(hard,'br');
+        } else if (rand.rand(1,50) > playerInfos.enc && !playerInfos.encz.includes('bb')) {
+            bastionDeBrigands(hard);
+            playerInfos.fndCits = playerInfos.fndCits+2;
+            encBaseAdj(hard,'bb');
+        } else if (rand.rand(1,50) > playerInfos.enc && !playerInfos.encz.includes('cc')) {
+            campDeColons(hard);
+            playerInfos.fndCits = playerInfos.fndCits+3;
+            encBaseAdj(hard,'cc');
+        } else if (rand.rand(1,50) > playerInfos.enc && !playerInfos.encz.includes('bs')) {
+            baseLabo(hard);
+            playerInfos.fndCits = playerInfos.fndCits+3;
+            encBaseAdj(hard,'bs');
+        } else if (rand.rand(1,50) > playerInfos.enc && !playerInfos.encz.includes('zi')) {
+            zoneIndustrielle(hard);
+            playerInfos.fndCits = playerInfos.fndCits+3;
+            encBaseAdj(hard,'zi');
+        } else {
+            madCitizens(hard);
+            playerInfos.encz.push('ce');
+        }
     }
 };
 
@@ -647,7 +757,7 @@ function putColonUnits(centreTileId,hard) {
 function baseLabo(hard) {
     console.log('BASE DE RECHECRCHE');
     let centreTileId = checkEncounterTile();
-    warning('Centre scientifique en vue!','',false,encounterTileId);
+    warning('Base scientifique en vue!','',false,encounterTileId);
     if (centreTileId >= 0) {
         putLaboUnits(centreTileId,hard);
         bastionRes(centreTileId);

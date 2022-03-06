@@ -74,26 +74,7 @@ function checkStartingAliens() {
         }
     }
     // Encounters
-    if (!zone[0].visit) {
-        if (zone[0].mapDiff >= 2) {
-            let encounterChance = 6;
-            if (zone[0].planet === 'Sarak') {
-                encounterChance = encounterChance-1;
-            }
-            if (zone[0].planet === 'Horst') {
-                encounterChance = encounterChance+4;
-            }
-            if (zone[0].planet === 'Kzin') {
-                encounterChance = encounterChance+2;
-            }
-            if (zone[0].mapDiff >= 5) {
-                encounterChance = encounterChance-2;
-            }
-            if (rand.rand(1,encounterChance) <= 2) {
-                encounter();
-            }
-        }
-    }
+    encounterCheck();
     // Gibier
     letsHunt(true);
 };

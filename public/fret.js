@@ -555,6 +555,9 @@ function checkResSpace(bat) {
     }
     if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
         resMax = resMax*2;
+        if (resMax < 5000) {
+            resMax = 5000;
+        }
     }
     if (bat.citoyens > 0) {
         resMax = bat.citoyens;

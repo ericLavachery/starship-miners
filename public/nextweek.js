@@ -439,7 +439,7 @@ function eventCitoyens(time,sim,quiet) {
     let newCitsNumber = Math.floor(time*rand.rand(10,20)/10);
     let citId = 126;
     let citName = 'Citoyens';
-    if (rand.rand(1,100) <= ruinsCrimChance) {
+    if (rand.rand(1,ruinsCrimChance) === 1) {
         citId = 225;
         citName = 'Criminels';
     }

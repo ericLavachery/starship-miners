@@ -559,11 +559,13 @@ function terrainAccess(batId,targetTileId) {
         terFlood = 0;
     }
     let terVeg = terrain.veg;
+    let terScarp = terrain.scarp;
     if (batType.skills.includes('routes') || bat.eq === 'e-road') {
         let unitTile = getTileById(bat.tileId);
         if (unitTile.rd) {
             terVeg = 0;
             terFlood = 0;
+            terScarp = 0;
         }
     }
     if (zone[targetTileId].rd) {
@@ -578,7 +580,7 @@ function terrainAccess(batId,targetTileId) {
     if (batMaxScarp < 2 && (bat.eq === 'chenilles' || bat.logeq === 'chenilles')) {
         batMaxScarp = 2;
     }
-    if (batMaxFlood >= terFlood && batMaxScarp >= terrain.scarp && batMaxVeg >= terVeg) {
+    if (batMaxFlood >= terFlood && batMaxScarp >= terScarp && batMaxVeg >= terVeg) {
         access = true;
     }
     if (bat.eq === 'snorkel' || bat.logeq === 'snorkel') {

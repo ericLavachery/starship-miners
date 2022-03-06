@@ -233,6 +233,8 @@ function newGame() {
     playerInfos.notes = [];
     playerInfos.sciRech = 0;
     playerInfos.sci = 0;
+    playerInfos.enc = 65;
+    playerInfos.encz = [];
     resetReserve();
     resetStartRes();
     resetEndRes();
@@ -251,6 +253,9 @@ function mapReset() {
     saveAliens();
     resetPlayerInfos();
     playerInfos.showedTiles = [1830];
+    playerInfos.enc = 65;
+    playerInfos.encz = [];
+    playerInfos.mapTurn = 1;
     resetReserve();
     resetStartRes();
     resetEndRes();

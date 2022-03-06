@@ -590,7 +590,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","maycamo","extraction","underground","fret","recupcit","crewsave","dumper","transport","routes","prodres","longshot","nostatprod","prefab","noshow","ground"],
+        "skills":["fouille","maycamo","extraction","exhelp","underground","fret","recupcit","crewsave","dumper","transport","routes","prodres","longshot","nostatprod","prefab","noshow","ground"],
         "mecanoCost":8,
         "mediCost":8,
         "mining":{
@@ -802,7 +802,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","cible","extraction","fret","recupcit","crewsave","dumper","transport","inflammable","routes","producteur","prodres","upkeep","noblub","longshot","nostatprod","prefab","noshow","ground"],
+        "skills":["fouille","cible","extraction","exhelp","fret","recupcit","crewsave","dumper","transport","inflammable","routes","producteur","prodres","upkeep","noblub","longshot","nostatprod","prefab","noshow","ground"],
         "mecanoCost":12,
         "mediCost":12,
         "mining":{
@@ -885,7 +885,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","extraction","fret","recupcit","crewsave","dumper","transport","routes","prodres","longshot","nostatprod","prefab","noshow"],
+        "skills":["fouille","extraction","exhelp","fret","recupcit","crewsave","dumper","transport","routes","prodres","longshot","nostatprod","prefab","noshow"],
         "mecanoCost":8,
         "mediCost":8,
         "mining":{
@@ -1352,7 +1352,7 @@
         "weapon2":{
             "name":"Roquettes",
             "cost":6,
-            "range":5,
+            "range":6,
             "noBis":true,
             "kit":true,
             "rof":10,
@@ -1948,7 +1948,7 @@
         "weapon2":{
             "name":"Roquettes",
             "cost":6,
-            "range":5,
+            "range":6,
             "noBis":true,
             "kit":true,
             "rof":6,
@@ -2023,7 +2023,7 @@
         "weapon2":{
             "name":"Roquettes",
             "cost":6,
-            "range":5,
+            "range":7,
             "kit":true,
             "rof":10,
             "accuracy":14,

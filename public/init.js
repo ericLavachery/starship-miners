@@ -170,6 +170,12 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.fndCits === undefined) {
         playerInfos.fndCits = 0;
     }
+    if (playerInfos.enc === undefined) {
+        playerInfos.enc = 65;
+    }
+    if (playerInfos.encz === undefined) {
+        playerInfos.encz = [];
+    }
     if (playerInfos.crafts === undefined) {
         playerInfos.crafts = 0;
     }

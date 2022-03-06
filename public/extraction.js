@@ -283,7 +283,7 @@ function getMiningRate(bat,fullRate,noMining) {
         miningAdj = miningAdj*1.2;
     }
     let helpInside = 1;
-    if (batType.name === 'Comptoir' || batType.name === 'Mine' || batType.name === 'Derrick') {
+    if (batType.skills.includes('exhelp')) {
         if (bat.transIds.length >= 1) {
             bataillons.forEach(function(inBat) {
                 if (inBat.loc === "trans" && inBat.locId === bat.id) {
