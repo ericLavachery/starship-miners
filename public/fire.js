@@ -1018,7 +1018,10 @@ function attack(melee,init) {
                     if (selectedWeap.ammo.includes('hypo-') && targetBatType.size >= 7) {
                         targetBat.tags.push('poison');
                         targetBat.tags.push('poison');
+                        targetBat.tags.push('poison');
                         if (selectedWeap.ammo.includes('atium')) {
+                            targetBat.tags.push('poison');
+                            targetBat.tags.push('poison');
                             targetBat.tags.push('poison');
                         }
                     }
@@ -1070,6 +1073,7 @@ function attack(melee,init) {
                     targetBat.tags.push('freeze');
                 }
                 if (selectedWeap.ammo === 'hypo-freeze') {
+                    targetBat.tags.push('freeze');
                     targetBat.tags.push('freeze');
                     targetBat.tags.push('freeze');
                 }
@@ -1853,7 +1857,10 @@ function defense(melee,init) {
                     if (targetWeap.ammo.includes('hypo-') && selectedBatType.size >= 7) {
                         selectedBat.tags.push('poison');
                         selectedBat.tags.push('poison');
+                        selectedBat.tags.push('poison');
                         if (targetWeap.ammo.includes('atium')) {
+                            selectedBat.tags.push('poison');
+                            selectedBat.tags.push('poison');
                             selectedBat.tags.push('poison');
                         }
                     }
@@ -1888,6 +1895,7 @@ function defense(melee,init) {
                     selectedBat.tags.push('freeze');
                 }
                 if (targetWeap.ammo === 'hypo-freeze') {
+                    selectedBat.tags.push('freeze');
                     selectedBat.tags.push('freeze');
                     selectedBat.tags.push('freeze');
                 }

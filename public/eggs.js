@@ -1611,7 +1611,7 @@ function eggSpawn(bat,fromEgg) {
         overSaturation = true;
     }
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
-    let eggModTurn = eggTurn+Math.ceil((zone[0].mapDiff*1.6)-5.4);
+    let eggModTurn = eggTurn+Math.ceil((zone[0].mapDiff*2)-6);
     if (coconStats.dome) {
         eggModTurn = eggModTurn+3;
     }
