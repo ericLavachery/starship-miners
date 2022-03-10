@@ -248,28 +248,27 @@ function eventProduction(afterMission,time,sim,quiet) {
 };
 
 function rechercheSci(bat,time) {
-    warning('<span class="cy">RECHERCHE:</span>','<span class="gfbleu">Points de recherche: '+playerInfos.sciRech+'.</span><br>',true);
+    if (bat.sciRech === undefined) {
+        bat.sciRech = playerInfos.sciRech+rand.rand(0,300);
+    }
     if (bat.eq.includes('sci-')) {
         console.log('RECHERCHE');
         let rechCompName = bat.eq.replace('sci-','');
         console.log(rechCompName);
         let rechComp = getCompByName(rechCompName);
+        warning('<span class="cy">RECHERCHE: ('+rechComp.fullName+')</span>','<span class="gfbleu">Points de recherche: '+bat.sciRech+'.</span><br>',true);
         console.log(rechComp);
         let rechCompOK = isFoundCompOK(rechComp);
         console.log(rechCompOK);
         if (rechCompOK) {
-            let findChance = Math.round(time*3.9);
-            if (rand.rand(1,10000) <= findChance+playerInfos.sciRech || (rechCompName === 'scaph' && playerInfos.sciRech >= 1500)) {
+            let findChance = Math.round(time*rand.rand(14,18)/4);
+            if (rand.rand(1,10000) <= findChance+bat.sciRech || (rechCompName === 'scaph' && bat.sciRech >= 500)) {
                 playerInfos.comp[rechCompName] = playerInfos.comp[rechCompName]+1;
-                if (rechCompName === 'scaph') {
-                    playerInfos.sciRech = Math.floor(playerInfos.sciRech/2);
-                } else {
-                    playerInfos.sciRech = 0;
-                }
+                bat.sciRech = 0;
                 bat.eq = 'aucun';
                 warning('<span class="cy">RECHERCHE: Eureka!</span>','<span class="gfbleu">Vos chercheurs ont mis au point une compétence.<br>'+rechComp.fullName+' +1 (maintenant au niveau '+playerInfos.comp[rechComp.name]+')<br>Vous devez leur acheter du nouveau matériel (équipement) pour qu\'ils puissent continuer à travailler.</span><br>',true);
             } else {
-                playerInfos.sciRech = playerInfos.sciRech+findChance;
+                bat.sciRech = bat.sciRech+findChance;
             }
         } else {
             bat.eq = 'aucun';

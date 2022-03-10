@@ -16,7 +16,8 @@ function rescueComp() {
             checkRescueComp();
         }
         if (rescue.comp[1] >= 1) {
-            playerInfos.sciRech = playerInfos.sciRech+rescue.comp[1];
+            let sciBat = getBatByName('Chercheurs');
+            sciBat.sciRech = sciBat.sciRech+rescue.comp[1];
             warning('<span class="rose">Recherche</span>','<span class="vio">Points de recherche +'+rescue.comp[1]+'</span><br>',true);
         }
         if (rescue.comp[2] != '') {

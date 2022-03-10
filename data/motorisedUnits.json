@@ -3561,7 +3561,7 @@
             "types":["Mine","Derrick"],
             "subTypes":["Pompe","Comptoir","Scrap"]
         },
-        "transRes":150,
+        "transRes":450,
         "fuzz":2,
         "deathFx":"505751__thehorriblejoke__computer-breaking-sound",
         "mvSnd":"emotor"
