@@ -180,7 +180,7 @@
         "id":154,
         "name":"Adeptes",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":4},
-        "bldReq":["Derrick","Infirmerie"],
+        "bldReq":["Chapelle","Infirmerie"],
         "unitUp":"Gurus",
         "costs":{"Zinc":25,"Chlore":25,"Carbone":10,"Aluminium":10,"Titane":16,"Fer":20,"Scrap":20,"Bois":20,"Silicium":12,"Drogues":47,"Tissus":30},
         "deploy":{"Drogues":9,"Chlore":9,"Zinc":18,"Tissus":9},
@@ -190,7 +190,7 @@
         "id":155,
         "name":"Gurus",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":7},
-        "bldReq":["Poste radio","Infirmerie","Appartements"],
+        "bldReq":["Chapelle","Infirmerie","Appartements"],
         "unitCost":"Adeptes",
         "costs":{"Zinc":28,"Chlore":28,"Carbone":10,"Aluminium":10,"Titane":17,"Scrap":40,"Silicium":18,"Drogues":75,"Or":20,"Batteries":3,"Electros":3,"Fuel":60,"Tissus":60},
         "deploy":{"Energie":10,"Drogues":10,"Chlore":10,"Zinc":20,"Tissus":10},
@@ -278,7 +278,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":5,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire","Atelier"],
         "compReq":{"gen":1},
-        "costs":{"Creatite":100,"Calcium":50,"Azote":35,"Mercure":15,"Drogues":20,"Végétaux":30,"Explosifs":30,"Fer":12,"Plomb":4,"Titane":4,"Cuivre":6,"Electros":1},
+        "costs":{"Creatite":75,"Corps":10,"Calcium":45,"Azote":45,"Mercure":15,"Drogues":20,"Végétaux":30,"Explosifs":30,"Fer":12,"Plomb":4,"Titane":4,"Cuivre":6,"Electros":1},
         "fabTime":25
     },
     {
@@ -971,7 +971,7 @@
         "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Chenil","Laboratoire"],
         "compReq":{"gen":1},
-        "costs":{"Creatite":180,"Calcium":90,"Azote":90,"Mercure":45,"Drogues":15},
+        "costs":{"Creatite":180,"Gibier":36,"Calcium":90,"Azote":90,"Mercure":36,"Drogues":72},
         "fabTime":25
     },
     {
@@ -980,7 +980,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":7,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire"],
         "compReq":{"gen":1},
-        "costs":{"Fer":60,"Scrap":60,"Creatite":144,"Calcium":72,"Azote":60,"Mercure":20,"Drogues":30},
+        "costs":{"Fer":60,"Scrap":60,"Creatite":120,"Corps":15,"Calcium":60,"Azote":60,"Mercure":20,"Drogues":30},
         "fabTime":25
     },
     {
@@ -989,7 +989,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":13,"drogmulojs":12,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"gen":1},
-        "costs":{"Fer":60,"Scrap":120,"Carbone":60,"Plomb":60,"Bois":60,"Aluminium":60,"Tungstène":60,"Bugium":84,"Creatite":144,"Calcium":72,"Azote":90,"Mercure":30,"Drogues":40},
+        "costs":{"Fer":60,"Scrap":120,"Carbone":60,"Plomb":60,"Bois":60,"Aluminium":60,"Tungstène":60,"Bugium":84,"Creatite":180,"Corps":20,"Calcium":90,"Azote":90,"Mercure":30,"Drogues":60},
         "fabTime":40
     },
     {
@@ -998,7 +998,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":15,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"gen":1},
-        "costs":{"Fer":60,"Scrap":120,"Carbone":30,"Plomb":60,"Bois":60,"Silicium":30,"Bugium":84,"Creatite":144,"Calcium":72,"Azote":90,"Mercure":30,"Drogues":40},
+        "costs":{"Fer":60,"Scrap":120,"Carbone":30,"Plomb":60,"Bois":60,"Silicium":30,"Bugium":84,"Creatite":180,"Corps":20,"Calcium":90,"Azote":90,"Mercure":30,"Drogues":60},
         "fabTime":40
     },
     {

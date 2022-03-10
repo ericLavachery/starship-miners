@@ -199,7 +199,9 @@
             "power":8,
             "aoe":"brochette",
             "sound":"blister_x4",
-            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
+            "maxAmmo":36,
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Bélier",

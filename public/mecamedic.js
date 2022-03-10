@@ -743,11 +743,15 @@ function addStressFlag(bat,emoType) {
 
 function addHealFlag(bat) {
     let batType = getBatType(bat);
+    let medComp = playerInfos.comp.med;
+    if (playerInfos.comp.med >= 3) {
+        medComp = medComp+1;
+    }
     let healCost = 1;
     if (batType.skills.includes('lowmed')) {
         healCost = 2;
     }
-    if (rand.rand(1,4) <= playerInfos.comp.med) {
+    if (rand.rand(1,7) <= medComp) {
         healCost = healCost-1;
     }
     if (healCost >= 1) {
@@ -761,8 +765,12 @@ function addHealFlag(bat) {
 
 function addRepairFlag(bat) {
     let batType = getBatType(bat);
+    let indComp = playerInfos.comp.ind;
+    if (playerInfos.comp.ind >= 3) {
+        indComp = medComp+1;
+    }
     let healCost = 1;
-    if (rand.rand(1,4) <= playerInfos.comp.ind) {
+    if (rand.rand(1,7) <= indComp) {
         healCost = healCost-1;
     }
     if (healCost >= 1) {

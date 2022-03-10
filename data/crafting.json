@@ -1098,7 +1098,7 @@
         "cost":{"Corps":10,"Energie":15},
         "compReq":{},
         "bldReq":["Cantine"],
-        "batch":10,
+        "batch":5,
         "creaNum":50,
         "bg":"#182a16"
     },
@@ -1108,7 +1108,7 @@
         "cost":{"Corps":6,"Chlore":2},
         "compReq":{},
         "bldReq":["Laboratoire"],
-        "batch":10,
+        "batch":5,
         "creaNum":100,
         "bg":"#182a16"
     },
@@ -1118,7 +1118,7 @@
         "cost":{"Corps":8,"Octiron":1,"Energie":5},
         "compReq":{},
         "bldReq":["Laboratoire"],
-        "batch":20,
+        "batch":10,
         "creaNum":100,
         "bg":"#182a16"
     },
@@ -1128,8 +1128,8 @@
         "cost":{"Larvium":5,"Energie":3},
         "compReq":{"ca":1},
         "bldReq":["Cantine"],
-        "batch":12,
-        "creaNum":100,
+        "batch":6,
+        "creaNum":120,
         "bg":"#182a16"
     },
     {
@@ -1138,8 +1138,8 @@
         "cost":{"Larvium":6,"Huile":1,"Eau":6,"Energie":4},
         "compReq":{"ca":2},
         "bldReq":["Laboratoire"],
-        "batch":25,
-        "creaNum":150,
+        "batch":12,
+        "creaNum":120,
         "bg":"#182a16"
     },
     {
@@ -1148,8 +1148,8 @@
         "cost":{"Swarmine":12,"Drogues":5,"Eau":10,"Energie":10},
         "compReq":{"ca":2},
         "bldReq":["Laboratoire"],
-        "batch":25,
-        "creaNum":150,
+        "batch":12,
+        "creaNum":120,
         "bg":"#182a16"
     },
     {
@@ -1158,8 +1158,8 @@
         "cost":{"Bugium":20,"Zinc":1,"Potassium":1,"Huile":2,"Energie":8},
         "compReq":{"ca":3},
         "bldReq":["Laboratoire"],
-        "batch":25,
-        "creaNum":150,
+        "batch":12,
+        "creaNum":120,
         "bg":"#182a16"
     },
     {
@@ -1168,8 +1168,8 @@
         "cost":{"Drogues":1,"Creatite":4,"Chlore":2},
         "compReq":{"ca":4,"gen":1},
         "bldReq":["Centre de recherches"],
-        "batch":25,
-        "creaNum":200,
+        "batch":12,
+        "creaNum":180,
         "bg":"#182a16"
     },
     {
@@ -1178,8 +1178,8 @@
         "cost":{"Huile":1,"Aranium":6,"Chlore":1,"Drogues":1,"Energie":2},
         "compReq":{"ca":4,"exo":1},
         "bldReq":["Centre de recherches"],
-        "batch":25,
-        "creaNum":200,
+        "batch":12,
+        "creaNum":180,
         "bg":"#182a16"
     },
     {
