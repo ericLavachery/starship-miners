@@ -361,23 +361,10 @@ function doReEquip(batId) {
     let deployCosts = {};
     let totalRecup = {};
     let recup = {};
+    let equipChanged = false;
     if (myNewGear[3] != myGear[3]) {
-        let batArmor = getEquipByName(myNewGear[3]);
-        flatCosts = getCosts(myBatType,batArmor,0,'equip');
-        mergeObjects(totalCosts,flatCosts);
-        if (!playerInfos.onShip) {
-            deployCosts = getDeployCosts(myBatType,batArmor,0,'equip');
-            mergeObjects(totalCosts,deployCosts);
-        }
-        if (!myGear[3].includes('aucun')) {
-            let oldBatArmor = getEquipByName(myGear[3]);
-            flatCosts = getCosts(myBatType,oldBatArmor,0,'equip');
-            recup = getRecup(flatCosts,true);
-            mergeObjects(totalRecup,recup);
-        }
-    }
-    if (myNewGear[2] != myGear[2]) {
-        let batEquip = getEquipByName(myNewGear[2]);
+        equipChanged = true;
+        let batEquip = getEquipByName(myNewGear[3]);
         if (batEquip.name === 'g2ai') {
             myBat.ok = '';
         }
@@ -387,9 +374,24 @@ function doReEquip(batId) {
             deployCosts = getDeployCosts(myBatType,batEquip,0,'equip');
             mergeObjects(totalCosts,deployCosts);
         }
-        if (!myGear[2].includes('aucun')) {
-            let oldBatEquip = getEquipByName(myGear[2]);
+        if (!myGear[3].includes('aucun')) {
+            let oldBatEquip = getEquipByName(myGear[3]);
             flatCosts = getCosts(myBatType,oldBatEquip,0,'equip');
+            recup = getRecup(flatCosts,true);
+            mergeObjects(totalRecup,recup);
+        }
+    }
+    if (myNewGear[2] != myGear[2]) {
+        let batArmor = getEquipByName(myNewGear[2]);
+        flatCosts = getCosts(myBatType,batArmor,0,'equip');
+        mergeObjects(totalCosts,flatCosts);
+        if (!playerInfos.onShip) {
+            deployCosts = getDeployCosts(myBatType,batArmor,0,'equip');
+            mergeObjects(totalCosts,deployCosts);
+        }
+        if (!myGear[2].includes('aucun')) {
+            let oldBatArmor = getEquipByName(myGear[2]);
+            flatCosts = getCosts(myBatType,oldBatArmor,0,'equip');
             recup = getRecup(flatCosts,true);
             mergeObjects(totalRecup,recup);
         }
@@ -436,6 +438,11 @@ function doReEquip(batId) {
         addCost(totalRecup,1);
         if (!playerInfos.onShip) {
             myBat.apLeft = myBat.apLeft-myBat.ap;
+        }
+        if (equipChanged) {
+            if (myBat.eq.includes('sci-') || myBat.eq === 'gang-lore') {
+                myBat.sciRech = 0;
+            }
         }
     }
     let batNewXP = checkXPBonus(myBatType);

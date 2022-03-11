@@ -5,7 +5,8 @@
         "fullName":"Artillerie",
         "levels":{"rednecks":12,"blades":99,"bulbos":12,"drogmulojs":12,"tiradores":99,"detruas":6,"brasier":12},
         "maxLevel":1,
-        "lvlCosts":[0,2]
+        "lvlCosts":[0,2],
+        "rechCost":2
     },
     {
         "id":2,
@@ -13,7 +14,8 @@
         "fullName":"Blindés",
         "levels":{"rednecks":10,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":9,"brasier":10},
         "maxLevel":2,
-        "lvlCosts":[0,1,1]
+        "lvlCosts":[0,1,1],
+        "rechCost":2
     },
     {
         "id":3,
@@ -21,7 +23,8 @@
         "fullName":"Aéronautique",
         "levels":{"rednecks":12,"blades":11,"bulbos":12,"drogmulojs":12,"tiradores":10,"detruas":99,"brasier":12},
         "maxLevel":1,
-        "lvlCosts":[0,2]
+        "lvlCosts":[0,2],
+        "rechCost":2
     },
     {
         "id":4,
@@ -29,7 +32,8 @@
         "fullName":"Génétique",
         "levels":{"rednecks":99,"blades":9,"bulbos":8,"drogmulojs":3,"tiradores":99,"detruas":99,"brasier":99},
         "maxLevel":2,
-        "lvlCosts":[0,1,1]
+        "lvlCosts":[0,1,1],
+        "rechCost":2
     },
     {
         "id":5,
@@ -37,7 +41,8 @@
         "fullName":"Cybernétique",
         "levels":{"rednecks":12,"blades":11,"bulbos":3,"drogmulojs":12,"tiradores":12,"detruas":12,"brasier":8},
         "maxLevel":2,
-        "lvlCosts":[0,1,1]
+        "lvlCosts":[0,1,1],
+        "rechCost":2
     },
     {
         "id":6,
@@ -45,7 +50,8 @@
         "fullName":"Robotique",
         "levels":{"rednecks":99,"blades":99,"bulbos":6,"drogmulojs":99,"tiradores":6,"detruas":6,"brasier":99},
         "maxLevel":2,
-        "lvlCosts":[0,2,1]
+        "lvlCosts":[0,2,1],
+        "rechCost":2
     },
     {
         "id":7,
@@ -53,7 +59,8 @@
         "fullName":"Téléportation",
         "levels":{"rednecks":10,"blades":10,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":10,"brasier":10},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,1]
+        "lvlCosts":[0,1,1,1],
+        "rechCost":1.5
     },
     {
         "id":8,
@@ -61,7 +68,8 @@
         "fullName":"Vols spaciaux",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":4,
-        "lvlCosts":[0,1,1,1,1]
+        "lvlCosts":[0,1,1,1,1],
+        "rechCost":0.75
     },
     {
         "id":9,
@@ -69,7 +77,8 @@
         "fullName":"Scaphandres",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,1]
+        "lvlCosts":[0,1,1,1],
+        "rechCost":0.5
     },
     {
         "id":10,
@@ -77,7 +86,8 @@
         "fullName":"Détection",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":5,
-        "lvlCosts":[0,1,1,1,1,2]
+        "lvlCosts":[0,1,1,1,1,2],
+        "rechCost":1
     },
     {
         "id":11,
@@ -85,7 +95,8 @@
         "fullName":"Médecine",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,2]
+        "lvlCosts":[0,1,1,2],
+        "rechCost":1
     },
     {
         "id":12,
@@ -93,7 +104,8 @@
         "fullName":"Maintien de l'ordre",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,1]
+        "lvlCosts":[0,1,1,1],
+        "rechCost":0.85
     },
     {
         "id":13,
@@ -101,7 +113,8 @@
         "fullName":"Entraînement",
         "levels":{"rednecks":5,"blades":0,"bulbos":5,"drogmulojs":5,"tiradores":5,"detruas":5,"brasier":5},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,2]
+        "lvlCosts":[0,1,1,2],
+        "rechCost":1.25
     },
     {
         "id":14,
@@ -109,7 +122,8 @@
         "fullName":"Camouflage",
         "levels":{"rednecks":6,"blades":0,"bulbos":6,"drogmulojs":6,"tiradores":6,"detruas":6,"brasier":6},
         "maxLevel":3,
-        "lvlCosts":[0,2,1,1]
+        "lvlCosts":[0,2,1,1],
+        "rechCost":0.85
     },
     {
         "id":15,
@@ -117,7 +131,8 @@
         "fullName":"Recyclage",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":4,
-        "lvlCosts":[0,1,1,1,1]
+        "lvlCosts":[0,1,1,1,1],
+        "rechCost":1
     },
     {
         "id":16,
@@ -125,7 +140,8 @@
         "fullName":"Industrie",
         "levels":{"rednecks":5,"blades":5,"bulbos":0,"drogmulojs":5,"tiradores":0,"detruas":5,"brasier":5},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,2]
+        "lvlCosts":[0,1,1,2],
+        "rechCost":1.25
     },
     {
         "id":17,
@@ -133,7 +149,8 @@
         "fullName":"Construction",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,1]
+        "lvlCosts":[0,1,1,1],
+        "rechCost":1.25
     },
     {
         "id":18,
@@ -141,7 +158,8 @@
         "fullName":"Energie",
         "levels":{"rednecks":7,"blades":7,"bulbos":1,"drogmulojs":7,"tiradores":7,"detruas":7,"brasier":7},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,2]
+        "lvlCosts":[0,1,1,2],
+        "rechCost":1
     },
     {
         "id":19,
@@ -149,7 +167,8 @@
         "fullName":"Extraction",
         "levels":{"rednecks":0,"blades":5,"bulbos":5,"drogmulojs":5,"tiradores":5,"detruas":0,"brasier":5},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,2]
+        "lvlCosts":[0,1,1,2],
+        "rechCost":1
     },
     {
         "id":20,
@@ -157,7 +176,8 @@
         "fullName":"Transports",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,2]
+        "lvlCosts":[0,1,1,2],
+        "rechCost":0.85
     },
     {
         "id":21,
@@ -165,7 +185,8 @@
         "fullName":"Logistique",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,2]
+        "lvlCosts":[0,1,1,2],
+        "rechCost":1
     },
     {
         "id":22,
@@ -173,7 +194,8 @@
         "fullName":"Balistique",
         "levels":{"rednecks":0,"blades":5,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,1]
+        "lvlCosts":[0,1,1,1],
+        "rechCost":1
     },
     {
         "id":23,
@@ -181,7 +203,8 @@
         "fullName":"Explosifs",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,1]
+        "lvlCosts":[0,1,1,1],
+        "rechCost":1
     },
     {
         "id":24,
@@ -189,7 +212,8 @@
         "fullName":"Pyrotechnie",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,1]
+        "lvlCosts":[0,1,1,1],
+        "rechCost":1
     },
     {
         "id":25,
@@ -197,7 +221,8 @@
         "fullName":"Connaissance alien",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":5,
-        "lvlCosts":[0,1,1,1,1,1]
+        "lvlCosts":[0,1,1,1,1,1],
+        "rechCost":0.85
     },
     {
         "id":26,
@@ -205,7 +230,8 @@
         "fullName":"Exochimie",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,1]
+        "lvlCosts":[0,1,1,1],
+        "rechCost":0.85
     },
     {
         "id":27,
@@ -213,7 +239,8 @@
         "fullName":"Matériaux",
         "levels":{"rednecks":5,"blades":5,"bulbos":5,"drogmulojs":5,"tiradores":5,"detruas":5,"brasier":5},
         "maxLevel":4,
-        "lvlCosts":[0,1,1,1,1]
+        "lvlCosts":[0,1,1,1,1],
+        "rechCost":1.25
     },
     {
         "id":28,
@@ -221,6 +248,7 @@
         "fullName":"Défenses",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,2]
+        "lvlCosts":[0,1,1,2],
+        "rechCost":1.25
     }
 ]
