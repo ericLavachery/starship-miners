@@ -8,6 +8,7 @@ function checkRescue() {
 // blocs lander
 
 // Effets DETECTION et VSP
+// "Votre navette de secours n'a pas réussi à sauver gnagnagna"
 
 function rescueComp() {
     let rescue = getRescueByName(rescueName);

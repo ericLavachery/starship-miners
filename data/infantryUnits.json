@@ -3997,7 +3997,7 @@
             "range":1,
             "isShort":true,
             "rof":9,
-            "accuracy":28,
+            "accuracy":20,
             "dca":1.25,
             "power":6,
             "aoe":"brochette",

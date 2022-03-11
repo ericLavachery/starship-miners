@@ -57,7 +57,10 @@ function createVM(size) {
 function generateNewMap() {
     zone = [];
     playerInfos.sondeMaps = playerInfos.sondeMaps+1;
-    playerInfos.allTurns = playerInfos.allTurns+1;
+    let fastChance = Math.round(playerInfos.comp.vsp*playerInfos.comp.vsp*6);
+    if (rand.rand(1,100) > fastChance) {
+        playerInfos.allTurns = playerInfos.allTurns+1;
+    }
     filterParams();
     createMap(mapSize);
     filterMap(zone);

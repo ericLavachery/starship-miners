@@ -1804,7 +1804,7 @@
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":["Soute"],
         "costs":{"Eau":250,"Energie":3000,"Huile":75,"Scrap":750,"Tissus":25,"Carbone":75,"Titane":350,"Aluminium":2000,"Calcium":30,"Nickel":150,"Cuivre":300,"Or":50,"Silicium":50,"Bore":50,"Plutonium":100,"Oxygène":250,"Hydrogène":450,"Azote":100,"Chlore":50,"Electros":125,"Batteries":100,"Transorb":1},
-        "deploy":{"Energie":150,"Huile":5,"Tissus":25,"Chlore":15,"Plutonium":40,"Hydrogène":10}
+        "deploy":{"Energie":150,"Huile":5,"Tissus":25,"Chlore":15,"Plutonium":40,"Hydrogène":20}
     },
     {
         "id":7,
@@ -1813,7 +1813,7 @@
         "bldReq":["Soute"],
         "bldUp":"Shuttle",
         "costs":{"Eau":2500,"Energie":3000,"Huile":100,"Scrap":550,"Tissus":50,"Carbone":100,"Titane":1500,"Aluminium":3100,"Calcium":30,"Nickel":400,"Cuivre":600,"Or":150,"Silicium":100,"Bore":150,"Plutonium":200,"Oxygène":500,"Hydrogène":800,"Azote":200,"Chlore":100,"Electros":350,"Batteries":200,"Transorb":2},
-        "deploy":{"Energie":300,"Huile":10,"Tissus":60,"Chlore":30,"Plutonium":75,"Hydrogène":20}
+        "deploy":{"Energie":300,"Huile":10,"Tissus":60,"Chlore":30,"Plutonium":75,"Hydrogène":40}
     },
     {
         "id":165,
@@ -1823,7 +1823,7 @@
         "bldUp":"Dropship",
         "bldCost":"Lander",
         "costs":{"Eau":1000,"Energie":4000,"Huile":175,"Scrap":600,"Tissus":50,"Carbone":150,"Titane":1650,"Aluminium":3900,"Calcium":30,"Nickel":550,"Cuivre":800,"Or":200,"Silicium":150,"Bore":250,"Plutonium":750,"Oxygène":600,"Hydrogène":1050,"Azote":250,"Chlore":100,"Electros":400,"Batteries":250},
-        "deploy":{"Energie":400,"Huile":17,"Tissus":60,"Chlore":30,"Plutonium":150,"Hydrogène":45}
+        "deploy":{"Energie":400,"Huile":17,"Tissus":60,"Chlore":30,"Plutonium":150,"Hydrogène":90}
     },
     {
         "id":103,
@@ -1833,7 +1833,7 @@
         "bldUp":"Minotaur",
         "bldCost":"Shuttle",
         "costs":{"Eau":2000,"Energie":5000,"Huile":275,"Scrap":750,"Tissus":100,"Carbone":300,"Titane":2200,"Aluminium":5400,"Calcium":30,"Rhodium":150,"Nickel":750,"Cuivre":3500,"Or":700,"Silicium":400,"Bore":500,"Plutonium":800,"Oxygène":1250,"Hydrogène":1350,"Azote":600,"Chlore":100,"Electros":650,"Batteries":375,"Transorb":1},
-        "deploy":{"Energie":500,"Huile":30,"Tissus":60,"Chlore":30,"Plutonium":200,"Hydrogène":60}
+        "deploy":{"Energie":500,"Huile":30,"Tissus":60,"Chlore":30,"Plutonium":200,"Hydrogène":120}
     },
     {
         "id":105,
@@ -1844,7 +1844,7 @@
         "bldCost":"Dropship",
         "compReq":{"vsp":1},
         "costs":{"Eau":4000,"Energie":6000,"Huile":375,"Scrap":1000,"Tissus":150,"Carbone":300,"Titane":3700,"Aluminium":8700,"Calcium":30,"Rhodium":350,"Nickel":950,"Cuivre":4000,"Or":1050,"Silicium":650,"Bore":750,"Plutonium":1100,"Oxygène":1700,"Hydrogène":1700,"Azote":850,"Chlore":100,"Electros":750,"Batteries":500},
-        "deploy":{"Energie":600,"Huile":40,"Tissus":60,"Chlore":30,"Plutonium":270,"Hydrogène":90}
+        "deploy":{"Energie":600,"Huile":40,"Tissus":60,"Chlore":30,"Plutonium":270,"Hydrogène":180}
     },
     {
         "id":104,
@@ -1854,7 +1854,7 @@
         "bldCost":"Minotaur",
         "compReq":{"vsp":2},
         "costs":{"Eau":6000,"Energie":7000,"Huile":575,"Scrap":1000,"Tissus":250,"Carbone":500,"Titane":7500,"Aluminium":10300,"Calcium":30,"Rhodium":500,"Nickel":1100,"Cuivre":6500,"Or":1500,"Silicium":800,"Bore":1550,"Plutonium":1150,"Oxygène":3000,"Hydrogène":2350,"Azote":1250,"Chlore":100,"Electros":850,"Batteries":675},
-        "deploy":{"Energie":950,"Huile":60,"Tissus":60,"Chlore":30,"Plutonium":350,"Hydrogène":100}
+        "deploy":{"Energie":950,"Huile":60,"Tissus":60,"Chlore":30,"Plutonium":350,"Hydrogène":200}
     },
     {
         "id":108,
@@ -1864,7 +1864,7 @@
         "bldUp":"Liberator",
         "compReq":{"vsp":2},
         "costs":{"Eau":1000,"Energie":2000,"Huile":50,"Scrap":300,"Tissus":30,"Carbone":100,"Titane":1200,"Aluminium":1300,"Rhodium":200,"Nickel":1000,"Cuivre":1200,"Platine":600,"Silicium":200,"Bore":1300,"Uranium":600,"Oxygène":100,"Hydrogène":700,"Azote":200,"Chlore":25,"Electros":600,"Batteries":225,"Transorb":1},
-        "deploy":{"Energie":200,"Huile":5,"Chlore":15,"Uranium":150,"Hydrogène":60}
+        "deploy":{"Energie":200,"Huile":5,"Chlore":15,"Uranium":150,"Hydrogène":120}
     },
     {
         "id":109,
@@ -1875,7 +1875,7 @@
         "bldCost":"Thundership",
         "compReq":{"vsp":3},
         "costs":{"Eau":2000,"Energie":4000,"Huile":125,"Scrap":500,"Tissus":80,"Carbone":150,"Titane":3600,"Aluminium":2200,"Calcium":30,"Rhodium":375,"Nickel":850,"Cuivre":2500,"Platine":1100,"Silicium":300,"Bore":1300,"Uranium":1000,"Oxygène":400,"Hydrogène":950,"Azote":300,"Chlore":100,"Electros":700,"Batteries":300,"Transorb":1},
-        "deploy":{"Energie":400,"Huile":12,"Tissus":60,"Chlore":30,"Uranium":250,"Hydrogène":90}
+        "deploy":{"Energie":400,"Huile":12,"Tissus":60,"Chlore":30,"Uranium":250,"Hydrogène":180}
     },
     {
         "id":106,
@@ -1883,9 +1883,9 @@
         "levels":{"rednecks":19,"blades":19,"bulbos":19,"drogmulojs":19,"tiradores":19,"detruas":19,"brasier":19},
         "bldReq":["Soute","Usine d'armement","Usine"],
         "bldCost":"Liberator",
-        "compReq":{"def":2,"energ":2},
+        "compReq":{"def":2,"energ":2,"vsp":3},
         "costs":{"Eau":5000,"Energie":5000,"Huile":250,"Scrap":750,"Tissus":150,"Carbone":350,"Titane":7000,"Aluminium":2700,"Calcium":30,"Rhodium":700,"Nickel":1100,"Cuivre":5000,"Platine":1600,"Silicium":500,"Bore":1350,"Plutonium":1100,"Oxygène":1000,"Hydrogène":1600,"Azote":750,"Chlore":100,"Electros":900,"Batteries":525,"Transorb":1},
-        "deploy":{"Energie":500,"Huile":25,"Tissus":60,"Chlore":30,"Plutonium":270,"Hydrogène":90}
+        "deploy":{"Energie":500,"Huile":25,"Tissus":60,"Chlore":30,"Uranium":270,"Hydrogène":180}
     },
     {
         "id":251,

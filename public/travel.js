@@ -452,10 +452,10 @@ function stopSonde() {
 function goSonde(impacteur) {
     if (impacteur) {
         impact = true;
-        playerInfos.allTurns = playerInfos.allTurns+8;
+        playerInfos.allTurns = playerInfos.allTurns+Math.floor(8/(playerInfos.comp.vsp+1)*2);
     } else {
         impact = false;
-        playerInfos.allTurns = playerInfos.allTurns+4;
+        playerInfos.allTurns = playerInfos.allTurns+Math.floor(4/(playerInfos.comp.vsp+4)*5);
     }
     conOut(true);
     batUnselect();
