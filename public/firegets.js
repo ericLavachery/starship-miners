@@ -559,6 +559,9 @@ function addBodies(bat,batType,cits) {
 
 function newAlienKilled(batType,tileId) {
     playerInfos.knownAliens.push(batType.name);
+    if (batType.class === 'A' || batType.class === 'S') {
+        playerInfos.gangXP = playerInfos.gangXP+batType.killXP;
+    }
     let xpBonus = batType.killXP;
     xpBonus = Math.floor(xpBonus*(playerInfos.comp.train+2)/4);
     if (xpBonus >= 1) {

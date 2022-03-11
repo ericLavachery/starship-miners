@@ -1911,6 +1911,16 @@
         "costs":{"Bugium":200,"Swarmine":100,"Larvium":100,"Aranium":100,"Mendium":50,"Creatite":100,"Slime":50,"Germium":25,"Wingium":25,"Blendium":25,"Mephitis":25,"Pyrus":15,"Egidium":15,"Bossium":15}
     },
     {
+        "name":"gang-lore",
+        "cat":"equip",
+        "skills":[],
+        "info":"Recherche: Gang",
+        "bldReq":["Caserne"],
+        "compReq":{},
+        "factor":"one",
+        "costs":{}
+    },
+    {
         "name":"respack-soins1",
         "info":"Soins 1 (535r)",
         "costs":{"Chlore":100,"Zinc":150,"Huile":170,"Titane":25,"Silicium":40}

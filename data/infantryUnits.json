@@ -75,7 +75,7 @@
         },
         "weapon2":{},
         "protection":["aucune"],
-        "equip":["sci-vsp","sci-scaph","sci-det","sci-exo","sci-ca","sci-med","sci-energ","sci-tele","sci-tri","sci-mat","sci-ind","sci-const","sci-ext","sci-trans","sci-log","sci-bal","sci-explo","sci-pyro","sci-cam","sci-train","sci-def"],
+        "equip":["sci-vsp","sci-scaph","sci-det","sci-exo","sci-ca","sci-med","sci-energ","sci-tele","sci-tri","sci-mat","sci-ind","sci-const","sci-ext","sci-trans","sci-log","sci-bal","sci-explo","sci-pyro","sci-cam","sci-train","sci-def","gang-lore"],
         "log3eq":[],
         "moveCost":3,
         "maxFlood":3,

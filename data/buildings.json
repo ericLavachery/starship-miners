@@ -3732,10 +3732,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":[],
+        "skills":["isvsp"],
         "mecanoCost":10,
-        "transMaxSize":9,
-        "transUnits":1500,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -3764,10 +3762,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":[],
+        "skills":["isvsp"],
         "mecanoCost":10,
-        "transMaxSize":9,
-        "transUnits":1500,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },

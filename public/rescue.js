@@ -6,6 +6,7 @@ function checkRescue() {
 // newRescue.event = "Epidémie";
 // newRescue.map = -1;
 // blocs lander
+// gangXP !!!
 
 // Effets DETECTION et VSP
 // "Votre navette de secours n'a pas réussi à sauver gnagnagna"

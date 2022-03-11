@@ -600,7 +600,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["transport","fret","medic","badmecano","accu","recupcit","recupres","rescue","max1"],
+        "skills":["transport","fret","medic","badmecano","accu","recupcit","recupres","rescue","max1","isvsp"],
         "mediCost":8,
         "mecanoCost":12,
         "transMaxSize":20,

@@ -6,6 +6,10 @@ function events(afterMission,time,sim,quiet) {
     if (afterMission) {
         time = playerInfos.mapTurn+playerInfos.travTurns;
     }
+    if (afterMission && !sim) {
+        let missionXP = Math.ceil(Math.sqrt(playerInfos.mapTurn)*27);
+        playerInfos.gangXP = playerInfos.gangXP+missionXP;
+    }
     if (!afterMission && !sim) {
         craftReset(time);
     }
@@ -274,6 +278,8 @@ function rechercheSci(bat,time) {
             bat.eq = 'aucun';
             warning('<span class="cy">RECHERCHE: Matériel obsolète!</span>','<span class="gfbleu">Vous devez acheter du nouveau matériel (équipement) pour que vos chercheurs puissent travailler.</span><br>',true);
         }
+    } else if (bat.eq === 'gang-lore') {
+        playerInfos.gangXP = playerInfos.gangXP+Math.round(time/3);
     } else {
         warning('<span class="cy">RECHERCHE: Chercheurs sans matériel!</span>','<span class="gfbleu">Vous devez leur acheter du matériel (équipement) pour qu\'ils puissent travailler.</span><br>',true);
     }

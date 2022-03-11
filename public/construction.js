@@ -377,10 +377,11 @@ function conSelect(unitId,player,noRefresh) {
                     deployCosts = getDeployCosts(conselUnit,batArmor,0,'equip');
                     mergeObjects(flatCosts,deployCosts);
                     costsOK = checkCost(flatCosts);
-                    bldReqOK = false;
-                    if (playerInfos.bldList.includes(batArmor.bldReq[0]) || batArmor.bldReq[0] === undefined || conselUnit.name === batArmor.bldReq[0]) {
-                        bldReqOK = true;
-                    }
+                    bldReqOK = verifBldReq(conselUnit,batArmor.bldReq);
+                    // bldReqOK = false;
+                    // if (playerInfos.bldList.includes(batArmor.bldReq[0]) || batArmor.bldReq[0] === undefined || conselUnit.name === batArmor.bldReq[0]) {
+                    //     bldReqOK = true;
+                    // }
                     prodSign = ' <span class="ciel">&raquo;</span>';
                     if (!compReqOK) {
                         prodSign = '';
@@ -451,10 +452,11 @@ function conSelect(unitId,player,noRefresh) {
                     // console.log('merge');
                     // console.log(flatCosts);
                     costsOK = checkCost(flatCosts);
-                    bldReqOK = false;
-                    if ((playerInfos.bldList.includes(batEquip.bldReq[0]) || batEquip.bldReq[0] === undefined || conselUnit.name === batEquip.bldReq[0]) && (playerInfos.bldList.includes(batEquip.bldReq[1]) || batEquip.bldReq[1] === undefined || conselUnit.name === batEquip.bldReq[1])) {
-                        bldReqOK = true;
-                    }
+                    bldReqOK = verifBldReq(conselUnit,batEquip.bldReq);
+                    // bldReqOK = false;
+                    // if ((playerInfos.bldList.includes(batEquip.bldReq[0]) || batEquip.bldReq[0] === undefined || conselUnit.name === batEquip.bldReq[0]) && (playerInfos.bldList.includes(batEquip.bldReq[1]) || batEquip.bldReq[1] === undefined || conselUnit.name === batEquip.bldReq[1])) {
+                    //     bldReqOK = true;
+                    // }
                     prodSign = ' <span class="ciel">&raquo;</span>';
                     if (!compReqOK) {
                         prodSign = '';
@@ -494,19 +496,20 @@ function conSelect(unitId,player,noRefresh) {
                         flatCosts = getCosts(conselUnit,batAmmo,1,'ammo');
                         mergeObjects(deployCosts,flatCosts);
                         costsOK = checkCost(deployCosts);
-                        bldReqOK = false;
-                        if (batAmmo.bldReq instanceof Array) {
-                            if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
-                                bldReqOK = true;
-                            }
-                            if (playerInfos.bldList.includes('Poudrière') && playerInfos.bldList.includes('Armurerie')) {
-                                if ((playerInfos.bldVM.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldVM.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
-                                    bldReqOK = true;
-                                }
-                            }
-                        } else {
-                            bldReqOK = true;
-                        }
+                        bldReqOK = verifBldReq(conselUnit,batAmmo.bldReq);
+                        // bldReqOK = false;
+                        // if (batAmmo.bldReq instanceof Array) {
+                        //     if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
+                        //         bldReqOK = true;
+                        //     }
+                        //     if (playerInfos.bldList.includes('Poudrière') && playerInfos.bldList.includes('Armurerie')) {
+                        //         if ((playerInfos.bldVM.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldVM.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
+                        //             bldReqOK = true;
+                        //         }
+                        //     }
+                        // } else {
+                        //     bldReqOK = true;
+                        // }
                         prodSign = ' <span class="ciel">&raquo;</span>';
                         if (!compReqOK) {
                             prodSign = '';
@@ -543,19 +546,20 @@ function conSelect(unitId,player,noRefresh) {
                         flatCosts = getCosts(conselUnit,batAmmo,2,'ammo');
                         mergeObjects(deployCosts,flatCosts);
                         costsOK = checkCost(deployCosts);
-                        bldReqOK = false;
-                        if (batAmmo.bldReq instanceof Array) {
-                            if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
-                                bldReqOK = true;
-                            }
-                            if (playerInfos.bldList.includes('Poudrière') && playerInfos.bldList.includes('Armurerie')) {
-                                if ((playerInfos.bldVM.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldVM.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
-                                    bldReqOK = true;
-                                }
-                            }
-                        } else {
-                            bldReqOK = true;
-                        }
+                        bldReqOK = verifBldReq(conselUnit,batAmmo.bldReq);
+                        // bldReqOK = false;
+                        // if (batAmmo.bldReq instanceof Array) {
+                        //     if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
+                        //         bldReqOK = true;
+                        //     }
+                        //     if (playerInfos.bldList.includes('Poudrière') && playerInfos.bldList.includes('Armurerie')) {
+                        //         if ((playerInfos.bldVM.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldVM.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
+                        //             bldReqOK = true;
+                        //         }
+                        //     }
+                        // } else {
+                        //     bldReqOK = true;
+                        // }
                         prodSign = ' <span class="ciel">&raquo;</span>';
                         if (!compReqOK) {
                             prodSign = '';

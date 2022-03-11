@@ -122,6 +122,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.allCits === undefined) {
         playerInfos.allCits = 2200;
     }
+    if (playerInfos.gangXP === undefined) {
+        playerInfos.gangXP = playerInfos.allCits;
+    }
     if (playerInfos.allTurns === undefined) {
         playerInfos.allTurns = (playerInfos.gLevel-4)*80;
     }

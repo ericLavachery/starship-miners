@@ -68,10 +68,11 @@ function reEquip(batId,noRefresh) {
                     deployCosts = getDeployCosts(myBatType,batArmor,0,'equip');
                     mergeObjects(flatCosts,deployCosts);
                     costsOK = checkCost(flatCosts);
-                    bldReqOK = false;
-                    if (playerInfos.bldList.includes(batArmor.bldReq[0]) || batArmor.bldReq[0] === undefined || myBatType.name === batArmor.bldReq[0]) {
-                        bldReqOK = true;
-                    }
+                    bldReqOK = verifBldReq(myBatType,batArmor.bldReq);
+                    // bldReqOK = false;
+                    // if (playerInfos.bldList.includes(batArmor.bldReq[0]) || batArmor.bldReq[0] === undefined || myBatType.name === batArmor.bldReq[0]) {
+                    //     bldReqOK = true;
+                    // }
                     prodSign = ' <span class="ciel">&raquo;</span>';
                     if (!compReqOK) {
                         prodSign = '';
@@ -139,10 +140,11 @@ function reEquip(batId,noRefresh) {
                     // console.log('merge');
                     // console.log(flatCosts);
                     costsOK = checkCost(flatCosts);
-                    bldReqOK = false;
-                    if ((playerInfos.bldList.includes(batEquip.bldReq[0]) || batEquip.bldReq[0] === undefined || myBatType.name === batEquip.bldReq[0]) && (playerInfos.bldList.includes(batEquip.bldReq[1]) || batEquip.bldReq[1] === undefined || myBatType.name === batEquip.bldReq[1])) {
-                        bldReqOK = true;
-                    }
+                    bldReqOK = verifBldReq(myBatType,batEquip.bldReq);
+                    // bldReqOK = false;
+                    // if ((playerInfos.bldList.includes(batEquip.bldReq[0]) || batEquip.bldReq[0] === undefined || myBatType.name === batEquip.bldReq[0]) && (playerInfos.bldList.includes(batEquip.bldReq[1]) || batEquip.bldReq[1] === undefined || myBatType.name === batEquip.bldReq[1])) {
+                    //     bldReqOK = true;
+                    // }
                     prodSign = ' <span class="ciel">&raquo;</span>';
                     if (!compReqOK) {
                         prodSign = '';
@@ -180,19 +182,20 @@ function reEquip(batId,noRefresh) {
                         flatCosts = getCosts(myBatType,batAmmo,1,'ammo');
                         mergeObjects(deployCosts,flatCosts);
                         costsOK = checkCost(deployCosts);
-                        bldReqOK = false;
-                        if (batAmmo.bldReq instanceof Array) {
-                            if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || myBatType.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || myBatType.name === batAmmo.bldReq[1])) {
-                                bldReqOK = true;
-                            }
-                            if (playerInfos.bldList.includes('Poudrière') && playerInfos.bldList.includes('Armurerie')) {
-                                if ((playerInfos.bldVM.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldVM.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
-                                    bldReqOK = true;
-                                }
-                            }
-                        } else {
-                            bldReqOK = true;
-                        }
+                        bldReqOK = verifBldReq(myBatType,batAmmo.bldReq);
+                        // bldReqOK = false;
+                        // if (batAmmo.bldReq instanceof Array) {
+                        //     if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || myBatType.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || myBatType.name === batAmmo.bldReq[1])) {
+                        //         bldReqOK = true;
+                        //     }
+                        //     if (playerInfos.bldList.includes('Poudrière') && playerInfos.bldList.includes('Armurerie')) {
+                        //         if ((playerInfos.bldVM.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || myBatType.name === batAmmo.bldReq[0]) && (playerInfos.bldVM.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || myBatType.name === batAmmo.bldReq[1])) {
+                        //             bldReqOK = true;
+                        //         }
+                        //     }
+                        // } else {
+                        //     bldReqOK = true;
+                        // }
                         prodSign = ' <span class="ciel">&raquo;</span>';
                         if (!compReqOK) {
                             prodSign = '';
@@ -228,19 +231,20 @@ function reEquip(batId,noRefresh) {
                         flatCosts = getCosts(myBatType,batAmmo,2,'ammo');
                         mergeObjects(deployCosts,flatCosts);
                         costsOK = checkCost(deployCosts);
-                        bldReqOK = false;
-                        if (batAmmo.bldReq instanceof Array) {
-                            if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || myBatType.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || myBatType.name === batAmmo.bldReq[1])) {
-                                bldReqOK = true;
-                            }
-                            if (playerInfos.bldList.includes('Poudrière') && playerInfos.bldList.includes('Armurerie')) {
-                                if ((playerInfos.bldVM.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldVM.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
-                                    bldReqOK = true;
-                                }
-                            }
-                        } else {
-                            bldReqOK = true;
-                        }
+                        bldReqOK = verifBldReq(myBatType,batAmmo.bldReq);
+                        // bldReqOK = false;
+                        // if (batAmmo.bldReq instanceof Array) {
+                        //     if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || myBatType.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || myBatType.name === batAmmo.bldReq[1])) {
+                        //         bldReqOK = true;
+                        //     }
+                        //     if (playerInfos.bldList.includes('Poudrière') && playerInfos.bldList.includes('Armurerie')) {
+                        //         if ((playerInfos.bldVM.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || myBatType.name === batAmmo.bldReq[0]) && (playerInfos.bldVM.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || myBatType.name === batAmmo.bldReq[1])) {
+                        //             bldReqOK = true;
+                        //         }
+                        //     }
+                        // } else {
+                        //     bldReqOK = true;
+                        // }
                         prodSign = ' <span class="ciel">&raquo;</span>';
                         if (!compReqOK) {
                             prodSign = '';
@@ -510,6 +514,35 @@ function getBatGearTags(armorName,equipName,batType) {
         }
     }
     return gearTags;
+};
+
+function verifBldReq(unit,bldReq) {
+    let bldReqOK = false;
+    console.log('VERIF BLDREQ');
+    console.log(unit);
+    console.log(bldReq);
+    if (bldReq instanceof Array) {
+        if (bldReq[0] === 'Caserne') {
+            bldReq[0] = 'Caserne '+capitalizeFirstLetter(playerInfos.gang);
+        }
+        if (bldReq[1] === 'Caserne') {
+            bldReq[1] = 'Caserne '+capitalizeFirstLetter(playerInfos.gang);
+        }
+        if (bldReq[2] === 'Caserne') {
+            bldReq[2] = 'Caserne '+capitalizeFirstLetter(playerInfos.gang);
+        }
+        console.log(bldReq);
+        if (playerInfos.bldList.includes(bldReq[0]) || bldReq[0] === undefined || unit.name === bldReq[0]) {
+            if (playerInfos.bldList.includes(bldReq[1]) || bldReq[1] === undefined || unit.name === bldReq[1]) {
+                if (playerInfos.bldList.includes(bldReq[2]) || bldReq[2] === undefined || unit.name === bldReq[2]) {
+                    bldReqOK = true;
+                }
+            }
+        }
+    } else {
+        bldReqOK = true;
+    }
+    return bldReqOK;
 };
 
 function deployAmmo(ammo,weapon,batId) {

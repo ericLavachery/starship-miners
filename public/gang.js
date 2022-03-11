@@ -13,7 +13,7 @@ function gangUnitsList(gangName) {
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName or">'+gangName.toUpperCase()+'</span><br>');
-    $('#conUnitList').append('<span class="constName">'+playerInfos.allCits+' / '+getNextLevelPop()+'</span><br>');
+    $('#conUnitList').append('<span class="constName">'+playerInfos.gangXP+' / '+getNextLevelPop()+'</span><br>');
     $('#conUnitList').append('<br>');
     let gangUnits = [];
     unitTypes.forEach(function(unit) {

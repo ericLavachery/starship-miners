@@ -370,51 +370,55 @@ function playerSkillsUTChanges() {
             unit.transRes = Math.round(unit.transRes*landerFretTuning);
         }
         // VOLS SPACIAUX
-        if (unit.skills.includes('transorbital')) {
-            unit.hySpeed = Math.ceil(unit.hySpeed/(playerInfos.comp.vsp+4)*5);
-            if (playerInfos.comp.vsp >= 3) {
-                let vspDiv = (playerInfos.comp.vsp+4)*(playerInfos.comp.vsp+4);
-                if (unit.deploy['Energie'] != undefined) {
-                    unit.deploy['Energie'] = Math.ceil(unit.deploy['Energie']*35/vspDiv);
-                }
-                if (unit.deploy['Plutonium'] != undefined) {
-                    unit.deploy['Plutonium'] = Math.ceil(unit.deploy['Plutonium']*35/vspDiv);
-                }
-                if (unit.deploy['Uranium'] != undefined) {
-                    unit.deploy['Uranium'] = Math.ceil(unit.deploy['Uranium']*35/vspDiv);
-                }
-                if (unit.deploy['Hydrogène'] != undefined) {
-                    unit.deploy['Hydrogène'] = Math.ceil(unit.deploy['Hydrogène']*35/vspDiv);
-                }
+        if (unit.skills.includes('transorbital') || unit.skills.includes('isvsp')) {
+            if (unit.hySpeed != undefined) {
+                unit.hySpeed = Math.ceil(unit.hySpeed/(playerInfos.comp.vsp+4)*5);
             }
             if (playerInfos.comp.vsp >= 3) {
+                let vspDiv = (playerInfos.comp.vsp+4)*(playerInfos.comp.vsp+4);
+                if (unit.deploy != undefined) {
+                    if (unit.deploy['Energie'] != undefined) {
+                        unit.deploy['Energie'] = Math.ceil(unit.deploy['Energie']*35/vspDiv);
+                    }
+                    if (unit.deploy['Plutonium'] != undefined) {
+                        unit.deploy['Plutonium'] = Math.ceil(unit.deploy['Plutonium']*35/vspDiv);
+                    }
+                    if (unit.deploy['Uranium'] != undefined) {
+                        unit.deploy['Uranium'] = Math.ceil(unit.deploy['Uranium']*35/vspDiv);
+                    }
+                    if (unit.deploy['Hydrogène'] != undefined) {
+                        unit.deploy['Hydrogène'] = Math.ceil(unit.deploy['Hydrogène']*35/vspDiv);
+                    }
+                }
+            }
+            if (playerInfos.comp.vsp >= 2) {
                 let vspDiv = (playerInfos.comp.vsp+8)*(playerInfos.comp.vsp+8);
                 if (unit.costs['Energie'] != undefined) {
-                    unit.costs['Energie'] = Math.ceil(unit.costs['Energie']*100/vspDiv);
+                    unit.costs['Energie'] = Math.ceil(unit.costs['Energie']*90/vspDiv);
                 }
                 if (unit.costs['Titane'] != undefined) {
-                    unit.costs['Titane'] = Math.ceil(unit.costs['Titane']*100/vspDiv);
+                    unit.costs['Titane'] = Math.ceil(unit.costs['Titane']*90/vspDiv);
                 }
                 if (unit.costs['Aluminium'] != undefined) {
-                    unit.costs['Aluminium'] = Math.ceil(unit.costs['Aluminium']*100/vspDiv);
+                    unit.costs['Aluminium'] = Math.ceil(unit.costs['Aluminium']*90/vspDiv);
                 }
                 if (unit.costs['Rhodium'] != undefined) {
-                    unit.costs['Rhodium'] = Math.ceil(unit.costs['Rhodium']*100/vspDiv);
+                    unit.costs['Rhodium'] = Math.ceil(unit.costs['Rhodium']*90/vspDiv);
                 }
                 if (unit.costs['Nickel'] != undefined) {
-                    unit.costs['Nickel'] = Math.ceil(unit.costs['Nickel']*100/vspDiv);
+                    unit.costs['Nickel'] = Math.ceil(unit.costs['Nickel']*90/vspDiv);
                 }
                 if (unit.costs['Cuivre'] != undefined) {
-                    unit.costs['Cuivre'] = Math.ceil(unit.costs['Cuivre']*100/vspDiv);
+                    unit.costs['Cuivre'] = Math.ceil(unit.costs['Cuivre']*90/vspDiv);
                 }
                 if (unit.costs['Or'] != undefined) {
-                    unit.costs['Or'] = Math.ceil(unit.costs['Or']*100/vspDiv);
+                    unit.costs['Or'] = Math.ceil(unit.costs['Or']*90/vspDiv);
                 }
                 if (unit.costs['Electros'] != undefined) {
-                    unit.costs['Electros'] = Math.ceil(unit.costs['Electros']*100/vspDiv);
+                    unit.costs['Electros'] = Math.ceil(unit.costs['Electros']*90/vspDiv);
                 }
                 if (unit.costs['Batteries'] != undefined) {
-                    unit.costs['Batteries'] = Math.ceil(unit.costs['Batteries']*100/vspDiv);
+                    unit.costs['Batteries'] = Math.ceil(unit.costs['Batteries']*90/vspDiv);
                 }
             }
         }
@@ -1832,7 +1836,7 @@ function gangLevelView() {
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="ListRes or">COMPETENCES</span><br>');
     $('#conUnitList').append('<span class="ListRes">Gang: '+playerInfos.gang+'</span><br>');
-    $('#conUnitList').append('<span class="ListRes">Expérience: '+playerInfos.allCits+'</span><br>');
+    $('#conUnitList').append('<span class="ListRes">Expérience: '+playerInfos.gangXP+'</span><br>');
     $('#conUnitList').append('<span class="ListRes">Niveau de gang: '+playerInfos.gLevel+'</span><br>');
     $('#conUnitList').append('<br>');
     gangComps.forEach(function(comp) {
@@ -1862,7 +1866,7 @@ function checkGangLevel() {
     let level = 0;
     gangLevelCit.forEach(function(levelCit) {
         if (nextGangLevel < 0) {
-            if (levelCit <= playerInfos.allCits) {
+            if (levelCit <= playerInfos.gangXP) {
                 if (level > playerInfos.gLevel) {
                     nextGangLevel = level;
                 }
@@ -1877,7 +1881,7 @@ function getNextLevelPop() {
     let nextLevelPop = -1;
     gangLevelCit.forEach(function(levelCit) {
         if (nextLevelPop < 0) {
-            if (levelCit > playerInfos.allCits) {
+            if (levelCit > playerInfos.gangXP) {
                 nextLevelPop = levelCit;
             }
         }

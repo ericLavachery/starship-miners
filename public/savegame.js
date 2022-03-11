@@ -221,6 +221,7 @@ function newGame() {
     playerInfos.gangDef = false;
     playerInfos.gLevel = -1;
     playerInfos.allCits = 2200;
+    playerInfos.gangXP = 2200;
     playerInfos.missionZone = -1;
     playerInfos.sondeDanger = -1;
     playerInfos.sondePlanet = -1;
