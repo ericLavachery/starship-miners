@@ -232,24 +232,38 @@ function viewPop() {
 
 function gangNavig() {
     $('#gangInfos').empty();
-    $('#gangInfos').append('<button type="button" title="Construire gratuitement" class="boutonCiel iconButtons" onclick="bfconst(`all`,true,false,false)"><i class="fa fa-hammer"></i></button>');
-    $('#gangInfos').append('<button type="button" title="Remplir le lander" class="boutonCiel iconButtons" onclick="landerFill()"><i class="fas fa-dolly"></i></button>');
-    $('#gangInfos').append('<button type="button" title="Editer le Gang" class="boutonCiel iconButtons" onclick="gangEdit()"><i class="fas fa-users-cog"></i></button>');
-    $('#gangInfos').append('<br>');
-    $('#gangInfos').append('<button type="button" title="Ajouter un peu de chaque ressource" class="boutonCiel iconButtons" onclick="allResAdd(10)"><i class="fas fa-cart-plus"></i></button>');
-    $('#gangInfos').append('<button type="button" title="Charger une zone sauvegardée" class="boutonCiel iconButtons" onclick="voirZones()"><i class="fas fa-folder-open"></i></button>');
-    $('#gangInfos').append('<button type="button" title="Remettre les compétences à zéro" class="boutonCiel iconButtons" onclick="compReset()"><i class="fas fa-award"></i></button>');
-    if (!modeSonde && !playerInfos.onShip) {
-        $('#gangInfos').append('<hr>');
-        $('#gangInfos').append('<button type="button" title="Nouvelle zone" class="boutonCiel iconButtons" onclick="generateNewMap()"><i class="far fa-map"></i></button>');
-        $('#gangInfos').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonCiel iconButtons" onclick="mapReset()"><i class="fas fa-skull-crossbones"></i></button>');
-        $('#gangInfos').append('<button type="button" title="Supprimer tous les aliens" class="boutonCiel iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
+    if (!allowCheat) {
+        $('#gangInfos').append('<button type="button" title="Activer le mode triche" class="boutonCiel iconButtons" onclick="toggleCheat()"><i class="fas fa-poo"></i></button>');
+    } else {
+        $('#gangInfos').append('<button type="button" title="Construire gratuitement" class="boutonCiel iconButtons" onclick="bfconst(`all`,true,false,false)"><i class="fa fa-hammer"></i></button>');
+        $('#gangInfos').append('<button type="button" title="Remplir le lander" class="boutonCiel iconButtons" onclick="landerFill()"><i class="fas fa-dolly"></i></button>');
+        $('#gangInfos').append('<button type="button" title="Editer le Gang" class="boutonCiel iconButtons" onclick="gangEdit()"><i class="fas fa-users-cog"></i></button>');
         $('#gangInfos').append('<br>');
-        $('#gangInfos').append('<button type="button" title="Check rencontres" class="boutonCiel iconButtons" onclick="encounterCheck()"><i class="fas fa-city"></i></button>');
-        $('#gangInfos').append('<button type="button" title="Supprime le stress de tous les bataillons" class="boutonCiel iconButtons" onclick="coolManCool()"><i class="fas fa-heart"></i></button>');
+        $('#gangInfos').append('<button type="button" title="Ajouter un peu de chaque ressource" class="boutonCiel iconButtons" onclick="allResAdd(10)"><i class="fas fa-cart-plus"></i></button>');
+        $('#gangInfos').append('<button type="button" title="Charger une zone sauvegardée" class="boutonCiel iconButtons" onclick="voirZones()"><i class="fas fa-folder-open"></i></button>');
+        $('#gangInfos').append('<button type="button" title="Remettre les compétences à zéro" class="boutonCiel iconButtons" onclick="compReset()"><i class="fas fa-award"></i></button>');
+        if (!modeSonde && !playerInfos.onShip) {
+            $('#gangInfos').append('<hr>');
+            $('#gangInfos').append('<button type="button" title="Nouvelle zone" class="boutonCiel iconButtons" onclick="generateNewMap()"><i class="far fa-map"></i></button>');
+            $('#gangInfos').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonCiel iconButtons" onclick="mapReset()"><i class="fas fa-skull-crossbones"></i></button>');
+            $('#gangInfos').append('<button type="button" title="Supprimer tous les aliens" class="boutonCiel iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
+            $('#gangInfos').append('<br>');
+            $('#gangInfos').append('<button type="button" title="Check rencontres" class="boutonCiel iconButtons" onclick="encounterCheck()"><i class="fas fa-city"></i></button>');
+            $('#gangInfos').append('<button type="button" title="Supprime le stress de tous les bataillons" class="boutonCiel iconButtons" onclick="coolManCool()"><i class="fas fa-heart"></i></button>');
+            $('#gangInfos').append('<button type="button" title="Désactiver le mode triche" class="boutonCiel iconButtons" onclick="toggleCheat()"><i class="fas fa-poo"></i></button>');
+        }
     }
     $('#gangInfos').append('<div class="shSpace"></div>');
     $('#gangInfos').append('<span class="butSpace"></span>');
     $('#gangInfos').append(capitalizeFirstLetter(playerInfos.gang));
     $('#gangInfos').append(' '+playerInfos.gLevel+'<br>');
+};
+
+function toggleCheat() {
+    if (allowCheat) {
+        allowCheat = false;
+    } else {
+        allowCheat = true;
+    }
+    commandes();
 };

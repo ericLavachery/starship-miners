@@ -444,7 +444,7 @@ function eggsDrop() {
         let i = 1;
         while (i <= numEggs) {
             eggTypeDice = rand.rand(1,100);
-            invisibleChance = Math.floor(zone[0].mapDiff*1.5)-8;
+            invisibleChance = Math.floor(zone[0].mapDiff*1.5)-8+zoneInfos.ieggsBonus;
             if (invisibleChance < 0 || !zoneInfos.ieggs) {
                 invisibleChance = 0;
             } else {
