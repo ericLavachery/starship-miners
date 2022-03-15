@@ -426,10 +426,12 @@ function nearWhat(myBat,myBatType) {
 
 function nomoveOut(myBat) {
     tagDelete(myBat,'nomove');
+    playerInfos.gangXP = playerInfos.gangXP+5;
     if (myBat.transIds != undefined) {
         bataillons.forEach(function(bat) {
             if (myBat.transIds.includes(bat.id)) {
                 tagDelete(bat,'nomove');
+                playerInfos.gangXP = playerInfos.gangXP+5;
             }
         });
     }

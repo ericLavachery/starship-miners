@@ -249,8 +249,20 @@ function calcVolume(bat,batType) {
         if (bat.eq === 'e-phare' && batType.cat === 'infantry') {
             batVolume = Math.ceil(batVolume*1.75);
         }
-        return batVolume;
     }
+    return batVolume;
+};
+
+function calcVolumeByType(batType,cit) {
+    let batVolume;
+    if (Object.keys(batType).length >= 1) {
+        if (cit >= 1 && batType.skills.includes('varsquad')) {
+            batVolume = Math.round(cit*2.4);
+        } else {
+            batVolume = Math.round(batType.size*batType.squadSize*batType.squads/4*Math.sqrt(batType.size+13)*batType.volume);
+        }
+    }
+    return batVolume;
 };
 
 function calcUnitVolume(batType) {

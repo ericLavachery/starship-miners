@@ -64,6 +64,7 @@ let ruinsCompBase = 6; // 4 sur 300
 let ruinsResBase = 50; // 33%
 let coffreTileId = -1;
 let encounterTileId = -1;
+let lastNeiTileId = -1;
 let ruinsCitBase = 50; // def 50
 let ruinsCrimChance = 7; // 1/7 criminels au lieu de citoyens (15%)
 let ruinsEmpty = true;

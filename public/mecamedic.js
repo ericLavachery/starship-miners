@@ -749,7 +749,7 @@ function addHealFlag(bat) {
     }
     let healCost = 1;
     if (batType.skills.includes('lowmed')) {
-        healCost = 2;
+        healCost = 3;
     }
     if (rand.rand(1,7) <= medComp) {
         healCost = healCost-1;

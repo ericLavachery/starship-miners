@@ -12,7 +12,7 @@ function skillsInfos(bat,batType,near) {
     let terrain = getTerrain(bat);
     let inMelee = batInMelee(bat,batType);
     let apReqGuet = 0;
-    if (near.control) {
+    if (near.control && bat.tags.includes('nomove')) {
         nomoveOut(bat);
     }
     let freeConsTile = false;

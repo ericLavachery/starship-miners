@@ -266,7 +266,7 @@ function rechercheSci(bat,time) {
         console.log(rechCompOK);
         if (rechCompOK) {
             let findChance = Math.round(time*rand.rand(14,18)/4/rechComp.rechCost);
-            let findLimit = Math.round(4000*rechComp.rechCost*rechComp.rechCost);
+            let findLimit = Math.round(2000*rechComp.rechCost);
             if (rand.rand(1,10000) <= findChance+bat.sciRech || bat.sciRech >= findLimit) {
                 playerInfos.comp[rechCompName] = playerInfos.comp[rechCompName]+1;
                 bat.sciRech = 0;

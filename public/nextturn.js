@@ -635,6 +635,7 @@ function nextTurnEnd() {
             }
         }
     });
+    neighbours();
     killBatList();
     console.log('MINED THIS TURN');
     console.log(minedThisTurn);
@@ -1211,7 +1212,7 @@ function tagsEffect(bat,batType) {
             if (batType.skills.includes('reactpoison') && bat.tags.includes('poison')) {
                 regOK = false;
             }
-            if (batType.skills.includes('reactpoison') && bat.tags.includes('shinda')) {
+            if (bat.tags.includes('shinda')) {
                 regOK = false;
             }
         } else if (bat.tags.includes('necro') || bat.tags.includes('venin')) {
@@ -1329,17 +1330,21 @@ function tagsEffect(bat,batType) {
         }
         // SHINDA
         if (bat.tags.includes('shinda')) {
-            let shindaDamage = Math.round(Math.sqrt(batType.hp)*14);
-            if (batType.skills.includes('reactpoison') || bat.tags.includes('reactpoison')) {
-                shindaDamage = shindaDamage*3;
-            }
-            let totalDamage = bat.damage+rand.rand((Math.round(shindaDamage/2)),Math.round(shindaDamage*1.5));
-            squadHP = batType.squadSize*batType.hp;
-            squadsOut = Math.floor(totalDamage/squadHP);
-            bat.squadsLeft = bat.squadsLeft-squadsOut;
-            bat.damage = totalDamage-(squadsOut*squadHP);
-            if (bat.squadsLeft <= 0) {
-                batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par la toxine.');
+            if (batType.skills.includes('resistpoison') && rand.rand(1,10) === 1) {
+                tagDelete(bat,'shinda');
+            } else {
+                let shindaDamage = Math.round(Math.sqrt(batType.hp)*30);
+                if (batType.skills.includes('reactpoison') || bat.tags.includes('reactpoison')) {
+                    shindaDamage = shindaDamage*3;
+                }
+                let totalDamage = bat.damage+rand.rand((Math.round(shindaDamage/2)),Math.round(shindaDamage*1.5));
+                squadHP = batType.squadSize*batType.hp;
+                squadsOut = Math.floor(totalDamage/squadHP);
+                bat.squadsLeft = bat.squadsLeft-squadsOut;
+                bat.damage = totalDamage-(squadsOut*squadHP);
+                if (bat.squadsLeft <= 0) {
+                    batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le shinda.');
+                }
             }
         }
         // BLAZE

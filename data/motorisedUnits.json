@@ -1670,7 +1670,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","soap","swag","bonibo","adamantite"],
-        "equip":["aucun","g2motor","chenilles","snorkel","belier","e-flash","e-lifepod"],
+        "equip":["aucun","g2motor","chenilles","snorkel","belier","e-flash","e-road","e-lifepod"],
         "log3eq":["chenilles"],
         "moveCost":4,
         "maxFlood":0,
