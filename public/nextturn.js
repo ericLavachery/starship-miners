@@ -658,6 +658,7 @@ function nextTurnEnd() {
 
 function turnInfo() {
     console.log('TURN INFO');
+    checkNeiTurn();
     let numberOfEggs = 0;
     let numberOfAliens = 0;
     let numClassA = 0;
@@ -863,6 +864,11 @@ function turnInfo() {
             }
             if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) {
                 $('#tour').append('<span class="'+turnCol+'" title="Pas de cocon avant le tour '+allCoconTurns[playerInfos.cocons]+'">Cocon tour '+allCoconTurns[playerInfos.cocons]+'</span><br>');
+            }
+        }
+        if ((playerInfos.comp.det >= 3 && playerInfos.bldList.includes('Centre de com')) || playerInfos.comp.det >= 4) {
+            if (playerInfos.vz-5-playerInfos.pauseSeed <= playerInfos.mapTurn) {
+                $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche">Survivants</span><br>');
             }
         }
         $('#tour').append('Morts <span class="or" title="Bataillons perdus">'+playerInfos.unitsLost+'</span> / <span class="neutre" title="Aliens tués">'+playerInfos.aliensKilled+'</span> / <span class="cy" title="Oeufs détruits">'+playerInfos.eggsKilled+'</span>');

@@ -138,7 +138,7 @@ function recupPrefabFret(bat,batType,tileId,autoDec,landerBat) {
 };
 
 function refabInfos(myBat,myBatUnitType) {
-    if (myBatUnitType.skills.includes('constructeur') && !myBat.tags.includes('nomove')) {
+    if (myBatUnitType.skills.includes('constructeur') && !myBat.tags.includes('nomove') && !myBat.tags.includes('outsider')) {
         let balise = 'h4';
         let apCost;
         let landerBat = findTheLander();

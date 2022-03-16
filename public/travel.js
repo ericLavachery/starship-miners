@@ -22,6 +22,7 @@ function startMission() {
         playerInfos.onShip = false;
         playerInfos.travTurns = 0;
         playerInfos.crafts = 0;
+        playerInfos.vz = 0;
         inSoute = false;
         modeLanding = true;
         // en mode landing: fenêtre avec les landers qui sont dans batsInSpace
@@ -71,6 +72,7 @@ function stopMission() {
     playerInfos.onShip = true;
     playerInfos.okFill = false;
     playerInfos.crafts = 0;
+    playerInfos.vz = 999;
     playerInfos.missionZone = -1;
     inSoute = false;
     modeLanding = true;
@@ -249,7 +251,9 @@ function healEverything() {
             gearTags.push('genreg');
         }
         if (bat.tags.includes('outsider')) {
-            gearTags.push('outsider');
+            if (!batType.skills.includes('constructeur')) {
+                gearTags.push('outsider');
+            }
         }
         if (bat.tags.includes('schef')) {
             gearTags.push('schef');

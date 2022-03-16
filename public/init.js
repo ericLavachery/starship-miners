@@ -173,6 +173,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.fndCits === undefined) {
         playerInfos.fndCits = 0;
     }
+    if (playerInfos.vz === undefined) {
+        playerInfos.vz = 0;
+    }
     if (playerInfos.enc === undefined) {
         playerInfos.enc = 65;
     }

@@ -1002,6 +1002,16 @@
         "fabTime":40
     },
     {
+        "id":287,
+        "name":"Survivants",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":[],
+        "compReq":{},
+        "costs":{"Fer":72,"Scrap":48,"Végétaux":72,"Chlore":10,"Tissus":5},
+        "fabTime":30,
+        "inRuin":2
+    },
+    {
         "id":261,
         "name":"Résistants",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},

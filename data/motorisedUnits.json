@@ -1368,7 +1368,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","swag","adamantite"],
-        "equip":["aucun","lunette1","chargeur1","g2motor","e-flash","e-mecano","w2-lgren","e-lifepod","e-respod"],
+        "equip":["aucun","lunette1","chargeur1","g2motor","e-flash","e-mecano","w2-lgren","e-lifepod","e-respod","e-road"],
         "log3eq":["g2motor"],
         "moveCost":2,
         "maxFlood":3,
@@ -3736,7 +3736,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","soap","swag","adamantite"],
-        "equip":["aucun","g2motor","chenilles","snorkel","e-flash","belier","e-mecano"],
+        "equip":["aucun","g2motor","chenilles","snorkel","e-flash","belier","e-mecano","e-road"],
         "log3eq":["chenilles"],
         "moveCost":2,
         "maxFlood":0,
@@ -3801,7 +3801,7 @@
             "ravitBld":"Atelier"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","soap","swag","adamantite"],
-        "equip":["aucun","g2motor","chenilles","snorkel","arbalourde","w2-gaz","e-mecano","e-medic","repel"],
+        "equip":["aucun","g2motor","chenilles","snorkel","arbalourde","w2-gaz","e-mecano","e-medic","repel","e-road"],
         "log3eq":["chenilles"],
         "moveCost":2,
         "maxFlood":1,
@@ -3864,7 +3864,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","soap","swag","adamantite"],
-        "equip":["aucun","g2motor","e-flash","waterproof","e-mecano"],
+        "equip":["aucun","g2motor","e-flash","waterproof","e-mecano","e-road"],
         "log3eq":["g2motor"],
         "moveCost":2,
         "maxFlood":3,
