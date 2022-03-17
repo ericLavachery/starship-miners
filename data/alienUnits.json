@@ -137,7 +137,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","errant","escape","fear","minaccu","noaploss","fastreg","flee"],
+        "skills":["fly","errant","escape","fear","minaccu","noaploss","fastreg"],
         "deathFx":"death2",
         "spawnFx":"spawn-lib",
         "fxPriority":4,

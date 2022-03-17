@@ -2532,7 +2532,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","extraction","selfbadmedic","dynamite","fret","recupcit","conscont","nochef"],
+        "skills":["fouille","fortif","datt","extraction","selfbadmedic","dynamite","fret","conscont","nochef"],
         "mediCost":10,
         "mecanoCost":12,
         "mining":{
@@ -6086,6 +6086,7 @@
         "hp":5,
         "armor":0,
         "size":3,
+        "volume":0.8,
         "stealth":7,
         "ap":14,
         "maxSalvo":1,

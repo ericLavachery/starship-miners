@@ -327,10 +327,13 @@ function putNeighbourIn(neiBatType,transBat,cit) {
 
 function checkPietonId(transBat) {
     let inHosto = false;
+    let inVeh = true;
     if (transBat != undefined) {
         if (transBat.name === 'Hostos') {
             inHosto = true;
         }
+    } else {
+        inVeh = false;
     }
     let pietonBatTypeId = -1;
     let pietonDice = rand.rand(1,26);
@@ -361,8 +364,14 @@ function checkPietonId(transBat) {
     } else if (pietonDice <= 21 && inHosto) {
         let bt = getBatTypeByName('Infirmiers');
         pietonBatTypeId = bt.id;
-    } else {
+    } else if (pietonDice <= 21) {
         let bt = getBatTypeByName('Citoyens');
+        pietonBatTypeId = bt.id;
+    } else if (pietonDice <= 26 && inVeh) {
+        let bt = getBatTypeByName('Citoyens');
+        pietonBatTypeId = bt.id;
+    } else {
+        let bt = getBatTypeByName('Survivants');
         pietonBatTypeId = bt.id;
     }
     return pietonBatTypeId;

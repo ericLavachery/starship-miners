@@ -279,9 +279,6 @@ function getMiningRate(bat,fullRate,noMining) {
     if (bat.tags.includes('camo')) {
         miningAdj = miningAdj/2;
     }
-    if (bat.eq === 'g2tools' || bat.logeq === 'g2tools') {
-        miningAdj = miningAdj*1.2;
-    }
     let helpInside = 1;
     if (batType.skills.includes('exhelp')) {
         if (bat.transIds.length >= 1) {
@@ -306,11 +303,15 @@ function getMiningRate(bat,fullRate,noMining) {
         }
     }
     miningAdj = miningAdj*helpInside;
+    let batMining = batType.mining.rate;
+    if (bat.eq === 'g2tools' || bat.logeq === 'g2tools') {
+        batMining = batMining+5;
+    }
     if (fullRate) {
         let batAP = getBatAP(bat,batType);
-        return Math.ceil(batType.mining.rate*batAP/batType.ap*bat.squadsLeft/batType.squads*miningAdj);
+        return Math.ceil(batMining*batAP/batType.ap*bat.squadsLeft/batType.squads*miningAdj);
     } else {
-        return Math.ceil(batType.mining.rate*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads*miningAdj);
+        return Math.ceil(batMining*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads*miningAdj);
     }
 };
 

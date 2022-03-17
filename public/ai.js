@@ -213,7 +213,7 @@ function checkPDM() {
     // cherche une cible préférée
     if (selectedBatType.skills.includes('nocap') || selectedBatType.skills.includes('gamecap') || selectedBatType.skills.includes('flee')) {
         let shufZone = _.shuffle(zone);
-        if (!selectedBatType.skills.includes('flee') || selectedBatType.squads < selectedBat.squadsLeft*2) {
+        if (selectedBatType.skills.includes('nocap') || selectedBatType.skills.includes('gamecap') || (selectedBatType.skills.includes('flee') && selectedBatType.squads >= selectedBat.squadsLeft*2)) {
             shufZone.forEach(function(tile) {
                 if (pointDeMire < 0) {
                     let distance = calcDistance(selectedBat.tileId,tile.id);
