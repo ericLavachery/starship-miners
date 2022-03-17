@@ -211,9 +211,13 @@ function checkPDM() {
     let lePlusProche = 100;
     let shufBats = _.shuffle(bataillons);
     // cherche une cible préférée
-    if (selectedBatType.skills.includes('nocap') || selectedBatType.skills.includes('gamecap') || selectedBatType.skills.includes('flee')) {
+    let isFleeing = false;
+    if (selectedBatType.skills.includes('flee') && selectedBatType.squads >= selectedBat.squadsLeft*2) {
+        isFleeing = true;
+    }
+    if (selectedBatType.skills.includes('nocap') || selectedBatType.skills.includes('gamecap') || isFleeing) {
         let shufZone = _.shuffle(zone);
-        if (selectedBatType.skills.includes('nocap') || selectedBatType.skills.includes('gamecap') || (selectedBatType.skills.includes('flee') && selectedBatType.squads >= selectedBat.squadsLeft*2)) {
+        if (selectedBatType.skills.includes('nocap') || selectedBatType.skills.includes('gamecap')) {
             shufZone.forEach(function(tile) {
                 if (pointDeMire < 0) {
                     let distance = calcDistance(selectedBat.tileId,tile.id);
@@ -223,7 +227,7 @@ function checkPDM() {
                 }
             });
         }
-        if (pointDeMire < 0 && selectedBatType.skills.includes('flee')) {
+        if (pointDeMire < 0 || isFleeing) {
             let nearBorderDist = 999;
             shufZone.forEach(function(tile) {
                 if (tile.x === 1 || tile.x === 60 || tile.y === 1 || tile.y === 60) {

@@ -1781,7 +1781,7 @@
         "stealth":0,
         "speed":-5,
         "ap":32,
-        "maxSalvo":1,
+        "maxSalvo":2,
         "weapon":{
             "name":"Carabine",
             "cost":4,
@@ -1806,6 +1806,7 @@
             "elevation":1,
             "noShield":true,
             "noDef":true,
+            "noBis":true,
             "noFly":true,
             "isArt":true,
             "kit":true,

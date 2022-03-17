@@ -344,7 +344,7 @@
         "bldReq":["Arsenal"],
         "compReq":{"mat":1,"ca":2},
         "factor":"thp",
-        "costs":{"Scrap":9,"Bois":6,"Carbone":9,"Titane":6,"Nickel":3,"Silicium":3,"Mendium":6}
+        "costs":{"Scrap":9,"Bois":6,"Carbone":9,"Titane":6,"Nickel":3,"Silicium":3,"Mendium":3}
     },
     {
         "name":"iso",
@@ -366,7 +366,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"mat":2,"ca":3},
         "factor":"thp",
-        "costs":{"Carbone":6,"Nickel":9,"Titane":3,"Azote":3,"Mendium":6}
+        "costs":{"Carbone":6,"Nickel":9,"Titane":3,"Azote":3,"Mendium":3}
     },
     {
         "name":"bonibo",
