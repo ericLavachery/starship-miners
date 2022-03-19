@@ -164,15 +164,17 @@ function loadRes(retour) {
                     let value = entry[1];
                     if (value >= 1 && key != undefined) {
                         res = getResByName(key);
-                        if (restSpace >= value) {
-                            $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle"></i></span>');
-                        } else {
-                            $('#conUnitList').append('<span class="constIcon"><i class="far fa-times-circle or"></i></span>');
-                        }
-                        if (value > 100 && restSpace >= 100) {
-                            $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="teleportStationRes('+value+','+value+','+res.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span> | <span class="klik" onclick="teleportStationRes('+value+',100,'+res.id+')" title="Charger 100 '+res.name+'">100</span></span><br>');
-                        } else {
-                            $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="teleportStationRes('+value+','+value+','+res.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span></span><br>');
+                        if (res.cat != 'alien') {
+                            if (restSpace >= value) {
+                                $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle"></i></span>');
+                            } else {
+                                $('#conUnitList').append('<span class="constIcon"><i class="far fa-times-circle or"></i></span>');
+                            }
+                            if (value > 100 && restSpace >= 100) {
+                                $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="teleportStationRes('+value+','+value+','+res.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span> | <span class="klik" onclick="teleportStationRes('+value+',100,'+res.id+')" title="Charger 100 '+res.name+'">100</span></span><br>');
+                            } else {
+                                $('#conUnitList').append('<span class="constName">'+res.name+' : <span class="klik" onclick="teleportStationRes('+value+','+value+','+res.id+')" title="Charger le maximum de '+res.name+'">'+value+'</span></span><br>');
+                            }
                         }
                     }
                 });
@@ -217,14 +219,14 @@ function seeLandersTrans(see) {
 };
 
 function payFretAP(teleport) {
-    if (playerInfos.comp.trans < 3) {
-        if (!selectedBat.tags.includes('chrg')) {
-            selectedBat.tags.push('chrg');
+    if (!selectedBat.tags.includes('chrg')) {
+        selectedBat.tags.push('chrg');
+        if (playerInfos.comp.trans < 3) {
             selectedBat.apLeft = selectedBat.apLeft-3+playerInfos.comp.trans;
-            if (teleport) {
-                selectedBat.apLeft = selectedBat.apLeft-5;
-                payCost(teleStationCost);
-            }
+        }
+        if (teleport) {
+            selectedBat.apLeft = selectedBat.apLeft-5;
+            payCost(teleStationCost);
         }
     }
 };

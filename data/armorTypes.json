@@ -567,9 +567,9 @@
         "bldReq":["Infirmerie"],
         "compReq":{"med":1,"log":1},
         "autoComp":["med",3],
-        "factor":"crew",
+        "factor":"one",
         "costs":{"Titane":2,"Or":2},
-        "deploy":{"Drogues":2,"Chlore":2,"Tissus":3,"Zinc":3}
+        "deploy":{"Drogues":20,"Chlore":10,"Tissus":10,"Zinc":10}
     },
     {
         "name":"gilet",

@@ -825,17 +825,18 @@ function missionRes() {
                 if (!costsOK) {
                     $('#fillList').append('<span class="constName gff" title="'+costString+'">&cross; '+infra.name+' <span class="ciel">'+showPrep+'</span></span><br>');
                 } else {
-                    $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResInfra(`'+infra.name+'`,false,1)">&check; '+infra.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+                    $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResInfra(`'+infra.name+'`,``,1)">&check; '+infra.name+' <span class="ciel">'+showPrep+'</span></span><br>');
                 }
             }
         }
     });
+    // ROUTES
     if (prepaBld['Route'] === undefined) {
         showPrep = '';
     } else {
         showPrep = '('+prepaBld['Route']+')';
     }
-    let routeProps = makeInfraProps('Route',true);
+    let routeProps = makeInfraProps('Route','road');
     costsOK = checkCost(routeProps.costs);
     costString = '';
     if (routeProps.costs != undefined) {
@@ -844,14 +845,14 @@ function missionRes() {
     if (!costsOK) {
         $('#fillList').append('<span class="constName gff" title="'+costString+'">&cross; Route <span class="ciel">'+showPrep+'</span></span><br>');
     } else {
-        $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResInfra(`Route`,true,1)">&check; Route <span class="ciel">'+showPrep+'</span></span><br>');
+        $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResInfra(`Route`,`road`,1)">&check; Route <span class="ciel">'+showPrep+'</span></span><br>');
     }
     if (prepaBld['Pont'] === undefined) {
         showPrep = '';
     } else {
         showPrep = '('+prepaBld['Pont']+')';
     }
-    let pontProps = makeInfraProps('Pont',true);
+    let pontProps = makeInfraProps('Pont','road');
     costsOK = checkCost(pontProps.costs);
     costString = '';
     if (pontProps.costs != undefined) {
@@ -860,7 +861,43 @@ function missionRes() {
     if (!costsOK) {
         $('#fillList').append('<span class="constName gff" title="'+costString+'">&cross; Pont <span class="ciel">'+showPrep+'</span></span><br>');
     } else {
-        $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResInfra(`Pont`,true,1)">&check; Pont <span class="ciel">'+showPrep+'</span></span><br>');
+        $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResInfra(`Pont`,`road`,1)">&check; Pont <span class="ciel">'+showPrep+'</span></span><br>');
+    }
+    // TELEPORT
+    if (playerInfos.comp.tele >= 2) {
+        $('#fillList').append('<br><span class="constName or">TELEPORTATION</span><br>');
+        if (prepaBld['ResPort'] === undefined) {
+            showPrep = '';
+        } else {
+            showPrep = '('+prepaBld['ResPort']+')';
+        }
+        let resportProps = makeInfraProps('ResPort','teleport');
+        costsOK = checkCost(resportProps.costs);
+        costString = '';
+        if (resportProps.costs != undefined) {
+            costString = displayCosts(resportProps.costs);
+        }
+        if (!costsOK) {
+            $('#fillList').append('<span class="constName gff" title="'+costString+'">&cross; Ressources (station &rarr; pod) <span class="ciel">'+showPrep+'</span></span><br>');
+        } else {
+            $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResInfra(`ResPort`,`teleport`,1)">&check; Ressources (station &rarr; pod) <span class="ciel">'+showPrep+'</span></span><br>');
+        }
+        if (prepaBld['LifePort'] === undefined) {
+            showPrep = '';
+        } else {
+            showPrep = '('+prepaBld['LifePort']+')';
+        }
+        let lifeportProps = makeInfraProps('LifePort','teleport');
+        costsOK = checkCost(lifeportProps.costs);
+        costString = '';
+        if (lifeportProps.costs != undefined) {
+            costString = displayCosts(lifeportProps.costs);
+        }
+        if (!costsOK) {
+            $('#fillList').append('<span class="constName gff" title="'+costString+'">&cross; Bataillons (pod &rarr; pod) <span class="ciel">'+showPrep+'</span></span><br>');
+        } else {
+            $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResInfra(`LifePort`,`teleport`,1)">&check; Bataillons (pod &rarr; pod) <span class="ciel">'+showPrep+'</span></span><br>');
+        }
     }
     // DROGUES
     $('#fillList').append('<br><span class="constName or">DROGUES</span><br>');
@@ -884,10 +921,10 @@ function missionRes() {
                         if (!costsOK) {
                             $('#fillList').append('<span class="constName gff" title="'+costString+'">&cross; 5 '+drug.name+' <span class="ciel">'+showPrep+'</span></span><br>');
                         } else {
-                            $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResInfra(`'+drug.name+'`,false,5)">&check; 5 '+drug.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+                            $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResInfra(`'+drug.name+'`,``,5)">&check; 5 '+drug.name+' <span class="ciel">'+showPrep+'</span></span><br>');
                         }
                     } else {
-                        $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResInfra(`'+drug.name+'`,false,10)">&check; 10 '+drug.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+                        $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResInfra(`'+drug.name+'`,``,10)">&check; 10 '+drug.name+' <span class="ciel">'+showPrep+'</span></span><br>');
                     }
                 }
             }
@@ -933,16 +970,25 @@ function missionRes() {
     //         if (!costsOK) {
     //             $('#fillList').append('<span class="constName gff">&cross; '+pack.info+' <span class="ciel">'+showPrep+'</span></span><br>');
     //         } else {
-    //             $('#fillList').append('<span class="constName klik cyf" onclick="missionResInfra(`'+pack.name+'`,false,1)">&check; '+pack.info+' <span class="ciel">'+showPrep+'</span></span><br>');
+    //             $('#fillList').append('<span class="constName klik cyf" onclick="missionResInfra(`'+pack.name+'`,``,1)">&check; '+pack.info+' <span class="ciel">'+showPrep+'</span></span><br>');
     //         }
     //     }
     // });
     $('#fillList').append('<br>');
 };
 
-function makeInfraProps(infraName,road) {
+function makeInfraProps(infraName,special) {
     let infra = {};
-    if (road) {
+    if (special === 'teleport') {
+        infra = {};
+        infra.name = infraName;
+        infra.costs = {};
+        if (infra.name === 'ResPort') {
+            infra.costs = teleStationCost;
+        } else if (infra.name === 'LifePort') {
+            infra.costs = teleCost;
+        }
+    } else if (special === 'road') {
         infra = {};
         infra.name = infraName;
         infra.costs = {};
@@ -968,13 +1014,9 @@ function makeInfraProps(infraName,road) {
     return infra;
 };
 
-function missionResInfra(infraName,road,number) {
-    let infra = makeInfraProps(infraName,road)
+function missionResInfra(infraName,special,number) {
+    let infra = makeInfraProps(infraName,special);
     console.log(infra);
-    // let number = 1;
-    // if (infra.cat === 'drogue') {
-    //     number = 10;
-    // }
     moveResCost(infra.costs,souteId,slId,number);
     if (prepaBld[infra.name] === undefined) {
         prepaBld[infra.name] = number;

@@ -115,8 +115,11 @@ function eventProduction(afterMission,time,sim,quiet) {
     if (!quiet) {
         warning('Poubelles','Scrap:<span class="vert">+'+scrapNum+'</span><br>',true);
     }
+    let sortedBats = bataillons.slice();
+    sortedBats = _.sortBy(sortedBats,'type');
+    sortedBats.reverse();
     // tags before
-    bataillons.forEach(function(bat) {
+    sortedBats.forEach(function(bat) {
         if ((bat.loc === "zone" || bat.loc === "trans") && !bat.tags.includes('return')) {
             batType = getBatType(bat);
             if (batType.skills.includes('before')) {
@@ -135,7 +138,7 @@ function eventProduction(afterMission,time,sim,quiet) {
         }
     });
     // others
-    bataillons.forEach(function(bat) {
+    sortedBats.forEach(function(bat) {
         if ((bat.loc === "zone" || bat.loc === "trans") && !bat.tags.includes('return')) {
             batType = getBatType(bat);
             if (!batType.skills.includes('before')) {

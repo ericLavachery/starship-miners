@@ -463,6 +463,26 @@ function ramassage(underId) {
 function embarquement(transId,withRes) {
     let transBat = getBatById(transId);
     let transBatType = getBatType(transBat);
+    // --------------------------------------
+    // console.log('LETS MOTHERFUCKERSSSSSSSSSSSSSSSSSSSSSSSSSSSSS');
+    let oldTransBat;
+    let armyTransOK = false;
+    if (playerInfos.mapTurn <= 5 && transBat.army === selectedBat.army && transBat.army >= 1) {
+        findLanders();
+        let nearestLanderBatId = -1;
+        landers.forEach(function(landerBat) {
+            let distance = calcDistance(landerBat.tileId,selectedBat.tileId);
+            if (distance <= 1) {
+                nearestLanderBatId = landerBat.id;
+            }
+        });
+        if (nearestLanderBatId >= 0) {
+            oldTransBat = getBatById(nearestLanderBatId);
+            // console.log(oldTransBat);
+            armyTransOK = true;
+        }
+    }
+    // --------------------------------------
     if (!playerInfos.onShip) {
         let embarqCost = calcEmbarqCost(selectedBatType,transBatType);
         transBat.apLeft = transBat.apLeft-embarqCost[1];
@@ -482,6 +502,38 @@ function embarquement(transId,withRes) {
     showBatInfos(selectedBat);
     showTileInfos(selectedBat.tileId);
     selectMode();
+    // --------------------------------------
+    if (armyTransOK) {
+        embarqArmy(transBat,transBatType,oldTransBat)
+    }
+};
+
+function embarqArmy(transBat,transBatType,oldTransBat) {
+    // console.log('In!');
+    let transOK = false;
+    let maxSize = transBatType.transMaxSize;
+    if (transBat.eq === 'garage' || transBat.logeq === 'garage' || transBat.eq === 'bldkit') {
+        maxSize = maxSize*3;
+    }
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "trans" && bat.locId == oldTransBat.id && bat.army === transBat.army) {
+            let batType = getBatType(bat);
+            let batWeight = calcVolume(bat,batType);
+            // console.log(bat);
+            if (maxSize >= batType.size) {
+                let transUnitsLeft = calcTransUnitsLeft(transBat,transBatType);
+                if (batWeight <= transUnitsLeft) {
+                    loadBat(bat.id,transBat.id);
+                    transOK = true;
+                }
+            }
+        }
+    });
+    if (transOK) {
+        showBatInfos(selectedBat);
+        showTileInfos(selectedBat.tileId);
+        selectMode();
+    }
 };
 
 function resTransfert(transBat) {
