@@ -202,10 +202,10 @@ function checkMayOut(batType,isBat,bat) {
             }
         }
         if (batType.skills.includes('fly')) {
-            if (!batType.skills.includes('jetpack')) {
+            if (batType.cat != 'infantry') {
                 if (!isBat) {
                     mayOut = false;
-                } else if (bat.eq != 'e-jetpack' && bat.eq != 'g2motor' && bat.logeq != 'g2motor') {
+                } else if (bat.eq != 'g2motor' && bat.logeq != 'g2motor' && bat.eq != 'e-stab' && bat.logeq != 'e-stab' && !batType.skills.includes('stab')) {
                     mayOut = false;
                 }
             }
@@ -463,26 +463,7 @@ function ramassage(underId) {
 function embarquement(transId,withRes) {
     let transBat = getBatById(transId);
     let transBatType = getBatType(transBat);
-    // --------------------------------------
-    // console.log('LETS MOTHERFUCKERSSSSSSSSSSSSSSSSSSSSSSSSSSSSS');
-    let oldTransBat;
-    let armyTransOK = false;
-    if (playerInfos.mapTurn <= 5 && transBat.army === selectedBat.army && transBat.army >= 1) {
-        findLanders();
-        let nearestLanderBatId = -1;
-        landers.forEach(function(landerBat) {
-            let distance = calcDistance(landerBat.tileId,selectedBat.tileId);
-            if (distance <= 1) {
-                nearestLanderBatId = landerBat.id;
-            }
-        });
-        if (nearestLanderBatId >= 0) {
-            oldTransBat = getBatById(nearestLanderBatId);
-            // console.log(oldTransBat);
-            armyTransOK = true;
-        }
-    }
-    // --------------------------------------
+    let ea = checkEmbarqArmy(transBat,transBatType,selectedBat);
     if (!playerInfos.onShip) {
         let embarqCost = calcEmbarqCost(selectedBatType,transBatType);
         transBat.apLeft = transBat.apLeft-embarqCost[1];
@@ -503,13 +484,33 @@ function embarquement(transId,withRes) {
     showTileInfos(selectedBat.tileId);
     selectMode();
     // --------------------------------------
-    if (armyTransOK) {
-        embarqArmy(transBat,transBatType,oldTransBat)
+    if (ea.ok) {
+        embarqArmy(transBat,transBatType,ea.oldTransBat);
     }
 };
 
+function checkEmbarqArmy(transBat,transBatType,firstBat) {
+    let ea = {};
+    ea.ok = false;
+    ea.oldTransBat = {};
+    if (playerInfos.mapTurn <= 5 && transBat.army === firstBat.army && transBat.army >= 1 && !transBatType.skills.includes('transorbital') && !playerInfos.onShip) {
+        findLanders();
+        let nearestLanderBatId = -1;
+        landers.forEach(function(landerBat) {
+            let distance = calcDistance(landerBat.tileId,firstBat.tileId);
+            if (distance <= 1) {
+                nearestLanderBatId = landerBat.id;
+            }
+        });
+        if (nearestLanderBatId >= 0) {
+            ea.oldTransBat = getBatById(nearestLanderBatId);
+            ea.ok = true;
+        }
+    }
+    return ea;
+};
+
 function embarqArmy(transBat,transBatType,oldTransBat) {
-    // console.log('In!');
     let transOK = false;
     let maxSize = transBatType.transMaxSize;
     if (transBat.eq === 'garage' || transBat.logeq === 'garage' || transBat.eq === 'bldkit') {
@@ -519,10 +520,11 @@ function embarqArmy(transBat,transBatType,oldTransBat) {
         if (bat.loc === "trans" && bat.locId == oldTransBat.id && bat.army === transBat.army) {
             let batType = getBatType(bat);
             let batWeight = calcVolume(bat,batType);
-            // console.log(bat);
             if (maxSize >= batType.size) {
                 let transUnitsLeft = calcTransUnitsLeft(transBat,transBatType);
                 if (batWeight <= transUnitsLeft) {
+                    let embarqCost = calcEmbarqCost(batType,transBatType);
+                    bat.apLeft = bat.apLeft-embarqCost[0]-2;
                     loadBat(bat.id,transBat.id);
                     transOK = true;
                 }

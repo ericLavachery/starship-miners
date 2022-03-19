@@ -1420,10 +1420,14 @@ function fireInfos(bat) {
                         if (!alien.tags.includes('fluo') || selectedWeap.ammo != 'marquage') {
                             if (!zone[0].dark || (zone[0].dark && undarkNow.includes(tile.id))) {
                                 cursorSwitch('#',tile.id,'fire');
-                                if (!alien.tags.includes('fluo')) {
-                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                                if (alien.tags.includes('shield')) {
+                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstargetShield.png"></div>');
+                                } else if (alien.tags.includes('stun')) {
+                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstargetStun.png"></div>');
+                                } else if (alien.tags.includes('fluo')) {
+                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstargetFluo.png"></div>');
                                 } else {
-                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget2.png"></div>');
+                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
                                 }
                             }
                         }
@@ -1445,10 +1449,14 @@ function fireInfos(bat) {
                         if (!alien.tags.includes('fluo') || selectedWeap.ammo != 'marquage') {
                             if (!zone[0].dark || (zone[0].dark && undarkNow.includes(tile.id))) {
                                 cursorSwitch('#',tile.id,'fire');
-                                if (!alien.tags.includes('fluo')) {
-                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
+                                if (alien.tags.includes('shield')) {
+                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstargetShield.png"></div>');
+                                } else if (alien.tags.includes('stun')) {
+                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstargetStun.png"></div>');
+                                } else if (alien.tags.includes('fluo')) {
+                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstargetFluo.png"></div>');
                                 } else {
-                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget2.png"></div>');
+                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
                                 }
                             }
                         }

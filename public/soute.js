@@ -20,6 +20,7 @@ function goSoute() {
         voirReserve();
     }
     commandes();
+    viewPop();
     console.log('slId='+slId);
 };
 

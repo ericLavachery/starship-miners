@@ -1210,6 +1210,18 @@
         "deploy":{"Hydrogène":3,"Huile":1}
     },
     {
+        "name":"e-stab",
+        "cat":"equip",
+        "skills":[],
+        "info":"Stabilisateur",
+        "bldReq":["Chaîne de montage"],
+        "compReq":{"trans":1,"scaph":2},
+        "autoComp":["trans",3],
+        "factor":"thp",
+        "costs":{"Cuivre":3,"Moteurs":4,"Silicium":1,"Electros":5,"Batteries":2},
+        "deploy":{"Hydrogène":1,"Huile":1}
+    },
+    {
         "name":"e-treuil",
         "cat":"equip",
         "skills":[],

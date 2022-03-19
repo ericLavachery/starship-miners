@@ -151,6 +151,8 @@ function checkAlienFlyTarget(weapon,bat) {
         } else if (batType.skills.includes('fly')) {
             if (bat.apLeft >= -6) {
                 isFlying = true;
+            } else if ((bat.eq === 'e-stab' || bat.logeq === 'e-stab') && bat.apLeft >= -15) {
+                isFlying = true;
             }
         }
         if (bat.tags.includes('camo') || bat.tags.includes('fortif')) {
@@ -971,8 +973,14 @@ function moveToPDM() {
                 jump = true;
             }
         }
+        if (selectedBat.tags.includes('stun')) {
+            jump = false;
+        }
         if (selectedBatType.skills.includes('fly')) {
             jump = true;
+        }
+        if (selectedBat.tags.includes('freeze')) {
+            jump = false;
         }
         if (jump) {
             checkPossibleJumps();

@@ -217,7 +217,7 @@ socket.on('savedMap-Load', function(sm) {
         yOffset = 31-Math.round(numHTiles/2);
         showMap(zone,false);
     } else {
-        generateNewMap();
+        generateNewMap(true);
     }
     if (zone[0].mapDiff === undefined) {
         zone[0].mapDiff = 2;

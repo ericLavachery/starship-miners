@@ -1,6 +1,7 @@
 function generateVM() {
     zone = [];
     savePlayerInfos();
+    checkFilter();
     filterParams();
     createVM(mapSize);
     washReports(true);
@@ -54,12 +55,21 @@ function createVM(size) {
     }
 };
 
-function generateNewMap() {
+function regionChange() {
+    playerInfos.sondeMaps = playerInfos.sondeMaps+3;
+    playerInfos.allTurns = playerInfos.allTurns+5;
+    generateNewMap(true);
+};
+
+function generateNewMap(filterCheck) {
     zone = [];
     playerInfos.sondeMaps = playerInfos.sondeMaps+1;
     let fastChance = Math.round(playerInfos.comp.vsp*playerInfos.comp.vsp*6);
     if (rand.rand(1,100) > fastChance) {
         playerInfos.allTurns = playerInfos.allTurns+1;
+    }
+    if (filterCheck) {
+        checkFilter();
     }
     filterParams();
     createMap(mapSize);
@@ -75,6 +85,7 @@ function generateNewMap() {
     showMap(zone,false);
     minimap();
     commandes();
+    ruinsView();
 };
 
 function createMap(size) {
@@ -262,8 +273,8 @@ function filterMap(map) {
     });
 };
 
-function filterParams() {
-    if (filterVariance) {
+function checkFilter() {
+    if (filterVariance && playerInfos.sondeDanger >= 2) {
         let diceMax = mapFilters.length+baseFilterChance-2;
         let fdice = rand.rand(0,diceMax);
         if (fdice > mapFilters.length-1) {
@@ -312,7 +323,6 @@ function filterParams() {
                 filterBase = mapFilters[18];
             }
         }
-        maxTileCheck = rand.rand(4,5);
     } else {
         mapFilters.forEach(function(filter) {
             if (filter.name == mapFilterDefault) {
@@ -320,6 +330,10 @@ function filterParams() {
             }
         });
     }
+};
+
+function filterParams() {
+    maxTileCheck = rand.rand(4,5);
     if (filterBase.spSeed != specialSeed) {
         specialSeed = filterBase.spSeed;
     }
@@ -912,8 +926,13 @@ function addRes(zone) {
         if (res.planets != undefined) {
             let planetName = zone[0].planet;
             let planetFactor = res.planets[planetName];
+            if (planetFactor >= 1 && zone[0].planet != 'Dom') {
+                resRarity = resRarity+2;
+            }
             resRarity = Math.ceil(resRarity*planetFactor);
             resBatch = Math.ceil(resBatch*Math.sqrt(planetFactor));
+        } else if (zone[0].planet != 'Dom') {
+            resRarity = resRarity+2;
         }
         if (playerInfos.sondeDanger < 1) {
             resRarity = resRarity-rand.rand(15,20);

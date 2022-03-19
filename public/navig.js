@@ -89,20 +89,22 @@ function commandes() {
     // $('#commandz').append('<br>');
     if (activeTurn == 'player') {
         if (!modeSonde) {
-            let hasSonde = hasUnit('Sonde');
-            let hasImpacteur = hasUnit('Impacteur');
-            if (hasSonde || hasImpacteur) {
-                $('#commandz').append('<hr>');
-                $('#commandz').append('<button type="button" title="Régler une sonde (destination)" class="boutonBrun iconButtons" onclick="editSonde()" onmousedown="clicSound()"><i class="fas fa-keyboard"></i></button>');
-                if (playerInfos.sondePlanet > 0 && playerInfos.sondeDanger > 0) {
-                    let planetName = getPlanetNameById(playerInfos.sondePlanet);
-                    if (hasSonde) {
-                        let maxMaps = getMaxMaps(false);
-                        $('#commandz').append('<button type="button" title="Envoyer une sonde (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+') ('+maxMaps+' zones)" class="boutonBrun iconButtons" onclick="goSonde(false)" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
-                    }
-                    if (hasImpacteur && planetName != 'Horst' && planetName != 'Kzin') {
-                        let maxMaps = getMaxMaps(true);
-                        $('#commandz').append('<button type="button" title="Envoyer un impacteur (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+') ('+maxMaps+' zones)" class="boutonNoir iconButtons" onclick="goSonde(true)" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
+            if (!inSoute) {
+                let hasSonde = hasUnit('Sonde');
+                let hasImpacteur = hasUnit('Impacteur');
+                if (hasSonde || hasImpacteur) {
+                    $('#commandz').append('<hr>');
+                    $('#commandz').append('<button type="button" title="Régler une sonde (destination)" class="boutonBrun iconButtons" onclick="editSonde()" onmousedown="clicSound()"><i class="fas fa-keyboard"></i></button>');
+                    if (playerInfos.sondePlanet > 0 && playerInfos.sondeDanger > 0) {
+                        let planetName = getPlanetNameById(playerInfos.sondePlanet);
+                        if (hasSonde) {
+                            let maxMaps = getMaxMaps(false);
+                            $('#commandz').append('<button type="button" title="Envoyer une sonde (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+') ('+maxMaps+' zones)" class="boutonBrun iconButtons" onclick="goSonde(false)" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
+                        }
+                        if (hasImpacteur && planetName != 'Horst' && planetName != 'Kzin') {
+                            let maxMaps = getMaxMaps(true);
+                            $('#commandz').append('<button type="button" title="Envoyer un impacteur (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+') ('+maxMaps+' zones)" class="boutonNoir iconButtons" onclick="goSonde(true)" onmousedown="clicSound()"><i class="fas fa-rocket"></i></button>');
+                        }
                     }
                 }
             }
@@ -112,7 +114,11 @@ function commandes() {
             let maxMaps = getMaxMaps(impact);
             let nextMapNumber = playerInfos.sondeMaps+1;
             if (playerInfos.sondeMaps < maxMaps) {
-                $('#commandz').append('<button type="button" title="Voir une autre zone ('+nextMapNumber+'/'+maxMaps+')" class="boutonBrun iconButtons"><i class="fas fa-map" onclick="generateNewMap()" onmousedown="clicSound()"></i></button>');
+                $('#commandz').append('<button type="button" title="Voir une autre zone ('+nextMapNumber+'/'+maxMaps+')" class="boutonBrun iconButtons"><i class="fas fa-map" onclick="generateNewMap(false)" onmousedown="clicSound()"></i></button>');
+                if (playerInfos.comp.vsp >= 4 && playerInfos.sondeMaps+3 < maxMaps && !impact) {
+                    let mapNumberAfterChange = nextMapNumber+3;
+                    $('#commandz').append('<button type="button" title="Changer de région ('+mapNumberAfterChange+'/'+maxMaps+')" class="boutonBrun iconButtons"><i class="fas fa-globe" onclick="regionChange()" onmousedown="clicSound()"></i></button>');
+                }
             } else {
                 $('#commandz').append('<button type="button" title="Maximum de cartes atteint" class="boutonGris iconButtons"><i class="fas fa-map"></i></button>');
             }
@@ -193,7 +199,7 @@ function getMaxMaps(impact) {
 };
 
 function viewPop() {
-    if (playerInfos.onShip && !modeSonde && !inSoute) {
+    if (playerInfos.onShip && !modeSonde) {
         if (bataillons.length >= 1) {
             let doomsday = (playerInfos.allTurns/apoCount)+1;
             doomsday = doomsday.toFixedNumber(2);
@@ -223,9 +229,11 @@ function viewPop() {
             $('#batloop').append('Forces de l\'ordre: <span class="neutre">'+crimeRate.fo+'</span><br>');
             $('#batloop').append('Criminalité: <span class="'+crimColour+'">'+crimeRate.total+'</span>%<br>');
             $('#batloop').append('<span class="jaune">Doomclock: '+doomsday+'</span><br>');
-            $('#batloop').append('<button type="button" title="Simuler 3 semaines (1 mission)" class="boutonVert iconButtons" onclick="events(false,65,true,false)"><i class="far fa-clock"></i></button>');
-            $('#batloop').append('<button type="button" title="Attendre 3 jours" class="boutonRouge iconButtons" onclick="events(false,9,false,false)"><i class="far fa-clock"></i></button>');
-            $('#batloop').append('<button type="button" title="Attendre 1 semaine" class="boutonRouge iconButtons" onclick="events(false,21,false,false)"><i class="far fa-clock"></i></button>');
+            if (!inSoute) {
+                $('#batloop').append('<button type="button" title="Simuler 3 semaines (1 mission)" class="boutonVert iconButtons" onclick="events(false,65,true,false)"><i class="far fa-clock"></i></button>');
+                $('#batloop').append('<button type="button" title="Attendre 3 jours" class="boutonRouge iconButtons" onclick="events(false,9,false,false)"><i class="far fa-clock"></i></button>');
+                $('#batloop').append('<button type="button" title="Attendre 1 semaine" class="boutonRouge iconButtons" onclick="events(false,21,false,false)"><i class="far fa-clock"></i></button>');
+            }
         }
     }
 };
@@ -245,7 +253,7 @@ function gangNavig() {
         $('#gangInfos').append('<button type="button" title="Charger une zone sauvegardée" class="boutonCiel iconButtons" onclick="voirZones()"><i class="fas fa-folder-open"></i></button>');
         $('#gangInfos').append('<button type="button" title="Remettre les compétences à zéro" class="boutonCiel iconButtons" onclick="compReset()"><i class="fas fa-award"></i></button>');
         if (!modeSonde && !playerInfos.onShip) {
-            $('#gangInfos').append('<button type="button" title="Nouvelle zone" class="boutonCiel iconButtons" onclick="generateNewMap()"><i class="far fa-map"></i></button>');
+            $('#gangInfos').append('<button type="button" title="Nouvelle zone" class="boutonCiel iconButtons" onclick="generateNewMap(true)"><i class="far fa-map"></i></button>');
             $('#gangInfos').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonCiel iconButtons" onclick="mapReset()"><i class="fas fa-skull-crossbones"></i></button>');
             $('#gangInfos').append('<button type="button" title="Supprimer tous les aliens" class="boutonCiel iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
             $('#gangInfos').append('<br>');
