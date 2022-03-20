@@ -420,6 +420,18 @@ function nearWhat(myBat,myBatType) {
                 near.schef = true;
             }
         }
+        if (playerInfos.comp.tele >= 1 && !near.loader) {
+            if (bat.autoLoad != undefined) {
+                if (Array.isArray(bat.autoLoad)) {
+                    if (bat.autoLoad.includes(myBat.id)) {
+                        let teleOK = checkResTeleport(bat,myBat);
+                        if (teleOK) {
+                            near.loader = true;
+                        }
+                    }
+                }
+            }
+        }
     });
     return near;
 };

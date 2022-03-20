@@ -181,9 +181,9 @@ function showRes(tileId) {
     let mapIndicators = '';
     let res = '';
     let view = true;
-    if (zone[0].dark && !zone[0].undarkOnce.includes(tile.id) && !zone[0].undarkAll) {
-        view = false;
-    }
+    // if (zone[0].dark && !zone[0].undarkOnce.includes(tile.id) && !zone[0].undarkAll) {
+    //     view = false;
+    // }
     if (modeSonde && playerInfos.comp.det < 0) {
         view = false;
     }
@@ -256,13 +256,13 @@ function showRes(tileId) {
     }
     if (zone[0].dark) {
         if (undarkNow.includes(tile.id)) {
-            mapIndicators = mapIndicators+'<div class="dark"><img src="/static/img/dark.png"></div>';
+            // mapIndicators = mapIndicators+'<div class="dark"><img src="/static/img/dark.png"></div>';
         } else {
-            mapIndicators = mapIndicators+'<div class="dark"><img src="/static/img/vdark.png"></div>';
+            mapIndicators = mapIndicators+'<div class="dark"><img src="/static/img/dark.png"></div>';
         }
     } else {
         if (foggedTiles.includes(tile.id)) {
-            mapIndicators = mapIndicators+'<div class="dark"><img src="/static/img/fdark.png"></div>';
+            mapIndicators = mapIndicators+'<div class="dark"><img src="/static/img/darkf.png"></div>';
         }
     }
     if (zone[0].planet === 'Horst') {

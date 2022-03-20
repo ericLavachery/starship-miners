@@ -5439,7 +5439,7 @@
             "aoe":"squad",
             "sound":"canon_flak_x3",
             "ammo":["obus","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":36,
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -5454,7 +5454,7 @@
             "aoe":"squad",
             "sound":"canon_flak_x3",
             "ammo":["obus","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":36,
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","gilet","e-camo","carrousel","longtom1","theeye","helper"],

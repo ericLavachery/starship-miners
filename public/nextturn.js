@@ -1001,9 +1001,7 @@ function tagsUpdate(bat) {
         bat.tags.push('noemb');
     }
     tagDelete(bat,'embuscade');
-    if (rand.rand(1,5) === 1) {
-        tagDelete(bat,'lasso');
-    }
+    tagDelete(bat,'lasso');
     tagDelete(bat,'gogogo');
     tagDelete(bat,'command');
     tagDelete(bat,'hsp');
@@ -1254,7 +1252,7 @@ function tagsEffect(bat,batType) {
         }
     }
     // MALADIE
-    if (bat.tags.includes('maladie')) {
+    if (bat.tags.includes('maladie') || bat.tags.includes('shinda')) {
         if (bat.tags.includes('skupiac') || bat.tags.includes('octiron') || bat.tags.includes('zombie')) {
             tagDelete(bat,'maladie');
         } else {

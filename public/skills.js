@@ -267,6 +267,7 @@ function diversion() {
     selectedBat.apLeft = selectedBat.apLeft-2;
     selectedBat.tags.push('lasso');
     selectedBat.tags.push('lasso');
+    selectedBat.tags.push('lasso');
     doneAction(selectedBat);
     camoOut();
     selectedBatArrayUpdate();
