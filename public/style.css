@@ -5,6 +5,9 @@ body {
     background-image: url(/static/img/rayures.jpg);
     background-repeat: no-repeat;
 }
+/* #zone_map {
+    filter: url(#fluffy) saturate(85%) contrast(140%);
+} */
 .woodBlock {
     background-color: black;
     font-size: 13px;
@@ -126,24 +129,31 @@ h6 {
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }
-.mapSize {
-    margin: 10px 0 0 13px;
+.mapCenter {
+    margin: 2px 0 0 10px;
     color: #d5cabd;
-    font-size: 24px;
+    font-size: 20px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }
-.markErase {
-    margin: 10px 0 0 15px;
+.mapSize {
+    margin: 5px 0 0 13px;
+    color: #d5cabd;
+    font-size: 20px;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
+}
+.togClouds {
+    margin: 4px 0 0 11px;
     color: #d5cabd;
     font-size: 17px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }
-.mapCenter {
-    margin: 5px 0 0 10px;
+.markErase {
+    margin: 3px 0 0 13px;
     color: #d5cabd;
-    font-size: 24px;
+    font-size: 17px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }

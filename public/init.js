@@ -17,6 +17,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.onShip === undefined) {
         playerInfos.onShip = true;
     }
+    if (playerInfos.clouds === undefined) {
+        playerInfos.clouds = true;
+    }
     if (playerInfos.comp === undefined) {
         playerInfos.comp = resetComp();
     }

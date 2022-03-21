@@ -14,10 +14,28 @@ function getMapInfos() {
     console.log('pKind='+zoneInfos.pKind+' gKind='+zoneInfos.gKind+' sKind='+zoneInfos.sKind);
 };
 
+function toggleClouds() {
+    if (playerInfos.clouds) {
+        playerInfos.clouds = false;
+    } else {
+        playerInfos.clouds = true;
+    }
+    showMap(zone,false);
+};
+
 // Dessine la carte
 function showMap(wmap,justMoved) {
     // reset
     $('#zone_map').empty();
+    if (!playerInfos.onShip && playerInfos.clouds) {
+        if (zone[0].dark) {
+            $('#zone_map').css("filter","url(#dark) contrast(110%)");
+        } else {
+            $('#zone_map').css("filter","url(#fluffy) saturate(85%) contrast(140%)");
+        }
+    } else {
+        $('#zone_map').css("filter","");
+    }
     // fill
     let terClass = getTerrainFilter(wmap[0]);
     let minX = xOffset+1;

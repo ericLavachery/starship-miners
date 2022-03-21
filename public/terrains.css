@@ -578,7 +578,7 @@
     left: -4px;
     display: inline-block;
     z-index: 1;
-    filter: sepia(35%) grayscale(35%) brightness(55%) contrast(140%);
+    filter: grayscale(65%) brightness(60%) contrast(155%);
 }
 .terPicGrav {
     position: absolute;
