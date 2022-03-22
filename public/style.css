@@ -130,30 +130,30 @@ h6 {
     -webkit-text-stroke-color: #000000;
 }
 .mapCenter {
-    margin: 2px 0 0 10px;
+    margin: 0 0 0 7px;
     color: #d5cabd;
-    font-size: 20px;
+    font-size: 27px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }
 .mapSize {
-    margin: 5px 0 0 13px;
+    margin: 6px 0 0 14px;
     color: #d5cabd;
-    font-size: 20px;
+    font-size: 18px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }
 .togClouds {
-    margin: 4px 0 0 11px;
+    margin: 4px 0 0 12px;
     color: #d5cabd;
-    font-size: 17px;
+    font-size: 16px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }
 .markErase {
-    margin: 3px 0 0 13px;
+    margin: 1px 0 0 14px;
     color: #d5cabd;
-    font-size: 17px;
+    font-size: 16px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }

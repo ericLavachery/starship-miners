@@ -641,19 +641,19 @@ function calcMoveCost(targetTileId,diag) {
     let moveCost;
     if (tile.rd && !selectedBatType.skills.includes('hover')) {
         moveCost = baseMoveCost+terrain.roadmc;
-        if (selectedBatType.skills.includes('ranger') || selectedBat.eq === 'kit-sentinelle' || selectedBat.eq === 'e-ranger' || selectedBat.logeq === 'e-ranger' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitlu' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitto') {
-            if (terrain.roadmc > terrain.rangermc) {
-                if (terrain.rangermc >= 2) {
-                    moveCost = baseMoveCost+terrain.rangermc-0.5;
-                } else {
-                    moveCost = baseMoveCost+terrain.rangermc;
-                }
-            }
-        }
+        // if (selectedBatType.skills.includes('ranger') || selectedBat.eq === 'kit-sentinelle' || selectedBat.eq === 'e-ranger' || selectedBat.logeq === 'e-ranger' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitlu' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitto') {
+        //     if (terrain.roadmc > terrain.rangermc) {
+        //         if (terrain.rangermc >= 2) {
+        //             moveCost = baseMoveCost+terrain.rangermc-0.5;
+        //         } else {
+        //             moveCost = baseMoveCost+terrain.rangermc;
+        //         }
+        //     }
+        // }
         if (baseMoveCost >= 4 && selectedBat.team != 'aliens') {
             moveCost = moveCost-((baseMoveCost-3)/2);
         }
-        if (moveCost === 1) {
+        if (moveCost <= 1) {
             moveCost = 1.5;
         }
     } else if (selectedBat.team == 'aliens' && !selectedBatType.skills.includes('hover') && !selectedBatType.skills.includes('okwater')) {
