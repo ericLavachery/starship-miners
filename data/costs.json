@@ -282,15 +282,6 @@
         "fabTime":15
     },
     {
-        "id":16,
-        "name":"Kamiclones",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":5,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Laboratoire","Atelier"],
-        "compReq":{"gen":1},
-        "costs":{"Creatite":75,"Corps":10,"Calcium":45,"Azote":45,"Mercure":15,"Drogues":20,"Végétaux":30,"Explosifs":30,"Fer":12,"Plomb":4,"Titane":4,"Cuivre":6,"Electros":1},
-        "fabTime":25
-    },
-    {
         "id":272,
         "name":"Bugmen",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":3,"tiradores":99,"detruas":99,"brasier":99},
@@ -998,6 +989,15 @@
         "fabTime":25
     },
     {
+        "id":16,
+        "name":"Kamiclones",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":5,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Laboratoire","Atelier"],
+        "compReq":{"gen":1},
+        "costs":{"Creatite":75,"Corps":10,"Calcium":45,"Azote":45,"Mercure":15,"Drogues":20,"Blendium":15,"Végétaux":30,"Explosifs":30,"Fer":12,"Plomb":4,"Titane":4,"Cuivre":6,"Electros":1},
+        "fabTime":25
+    },
+    {
         "id":138,
         "name":"Clones",
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":7,"tiradores":99,"detruas":99,"brasier":99},
@@ -1012,7 +1012,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":13,"drogmulojs":12,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"gen":1},
-        "costs":{"Fer":60,"Scrap":120,"Carbone":60,"Plomb":60,"Bois":60,"Aluminium":60,"Tungstène":60,"Bugium":84,"Creatite":180,"Corps":20,"Calcium":90,"Azote":90,"Mercure":30,"Drogues":60},
+        "costs":{"Fer":60,"Scrap":120,"Carbone":60,"Plomb":60,"Bois":60,"Aluminium":60,"Tungstène":60,"Bugium":60,"Creatite":180,"Bossium":6,"Corps":20,"Calcium":90,"Azote":90,"Mercure":30,"Drogues":60},
         "fabTime":40
     },
     {
@@ -1021,7 +1021,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":15,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"gen":2},
-        "costs":{"Fer":60,"Scrap":120,"Carbone":30,"Plomb":60,"Bois":60,"Silicium":30,"Bugium":84,"Creatite":180,"Corps":20,"Calcium":90,"Azote":90,"Mercure":30,"Drogues":60},
+        "costs":{"Fer":60,"Scrap":120,"Carbone":30,"Plomb":60,"Bois":60,"Silicium":30,"Bugium":84,"Creatite":180,"Bossium":20,"Corps":20,"Calcium":90,"Azote":90,"Mercure":30,"Drogues":60},
         "fabTime":40
     },
     {

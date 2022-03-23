@@ -712,6 +712,13 @@ function calcDamage(weapon,power,armor,defBat) {
             }
         }
     }
+    if (defBat.tags.includes('jelly')) {
+        if (defBatType.skills.includes('nojello')) {
+            armor = Math.round(armor*3/4);
+        } else {
+            armor = Math.round(armor/2);
+        }
+    }
     let modifiedArmor = Math.round(armor*armorModifier);
     let izmel = false;
     if (weapon.isAcid) {
@@ -845,31 +852,33 @@ function checkRealm() {
 
 function checkRicochet(defBat,defBatType,attWeap,init) {
     let rico = false;
-    if (attWeap.name != undefined) {
-        if (defBatType.skills.includes('ricochet') || defBat.tags.includes('ricochet') || (defBatType.skills.includes('ricoface') && !init)) {
-            if (!attWeap.isFire && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield) {
-                let defArmor = defBat.armor;
-                if (defBatType.skills.includes('ricoface')) {
-                    defArmor = defArmor+10;
-                }
-                if (attWeap.armors > 0) {
-                    let minimumPower = defArmor*2;
-                    if (minimumPower < 18) {
-                        if (defArmor >= 8) {
-                            minimumPower = 20;
-                        } else {
-                            minimumPower = 18;
+    if (!defBat.tags.includes('jelly')) {
+        if (attWeap.name != undefined) {
+            if (defBatType.skills.includes('ricochet') || defBat.tags.includes('ricochet') || (defBatType.skills.includes('ricoface') && !init)) {
+                if (!attWeap.isFire && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield) {
+                    let defArmor = defBat.armor;
+                    if (defBatType.skills.includes('ricoface')) {
+                        defArmor = defArmor+10;
+                    }
+                    if (attWeap.armors > 0) {
+                        let minimumPower = defArmor*2;
+                        if (minimumPower < 18) {
+                            if (defArmor >= 8) {
+                                minimumPower = 20;
+                            } else {
+                                minimumPower = 18;
+                            }
                         }
-                    }
-                    let powerBonus = Math.ceil((playerInfos.comp.train+(playerInfos.comp.ca/2))/1.75)+2;
-                    let aoeBonus = 0;
-                    if (attWeap.aoe === 'squad' || attWeap.aoe === 'bat') {
-                        aoeBonus = (attWeap.power-13)/3;
-                        powerBonus = 0;
-                    }
-                    let calcPower = Math.round((attWeap.power+powerBonus+aoeBonus)/attWeap.armors);
-                    if (calcPower < minimumPower) {
-                        rico = true;
+                        let powerBonus = Math.ceil((playerInfos.comp.train+(playerInfos.comp.ca/2))/1.75)+2;
+                        let aoeBonus = 0;
+                        if (attWeap.aoe === 'squad' || attWeap.aoe === 'bat') {
+                            aoeBonus = (attWeap.power-13)/3;
+                            powerBonus = 0;
+                        }
+                        let calcPower = Math.round((attWeap.power+powerBonus+aoeBonus)/attWeap.armors);
+                        if (calcPower < minimumPower) {
+                            rico = true;
+                        }
                     }
                 }
             }
@@ -1473,8 +1482,6 @@ function checkGuidage(weapon,alien) {
         if (weapon.ammo.includes('missile')) {
             if (!weapon.name.includes('Comet') && !weapon.name.includes('Squash')) {
                 guideTarget = true;
-                // if (!weapon.name.includes('Wildfire') || playerInfos.gang === 'brasier') {
-                // }
             }
         }
     }

@@ -2454,6 +2454,21 @@
         "batch":100
     },
     {
+        "name": "obus-jello",
+        "range": 1,
+        "rof": 0.5,
+        "power": 0,
+        "powermult": 0.3,
+        "armors": 0,
+        "accuracy": 2,
+        "apdamage": 0,
+        "aoe": "bat",
+        "bldReq":["Arsenal","Laboratoire"],
+        "compReq":{"explo":1,"exo":1,"ca":4},
+        "deploy":{"Carbone":2,"Scrap":2,"Fer":1,"Argon":2,"Azote":8,"Plastanium":2,"Végétaux":4,"Explosifs":1},
+        "batch":100
+    },
+    {
         "name": "obus-heatseeker",
         "range": 1.2,
         "rof": 1,
@@ -2718,6 +2733,21 @@
         "batch":100
     },
     {
+        "name": "missile-jello",
+        "range": 1,
+        "rof": 0.5,
+        "power": 0,
+        "powermult": 0.3,
+        "armors": 0,
+        "accuracy": 2,
+        "apdamage": 0,
+        "aoe": "bat",
+        "bldReq":["Arsenal","Laboratoire"],
+        "compReq":{"bal":1,"explo":1,"exo":1,"ca":4,"arti":1},
+        "deploy":{"Carbone":2,"Aluminium":2,"Nickel":1,"Explosifs":1,"Fuel":1,"Argon":2,"Azote":8,"Plastanium":2,"Végétaux":4,"Electros":2,"Batteries":1},
+        "batch":100
+    },
+    {
         "name": "missile-heatseeker",
         "range": 1.2,
         "rof": 1,
@@ -2930,6 +2960,21 @@
         "batch":100
     },
     {
+        "name": "grenade-jello",
+        "range": 1,
+        "rof": 0.4,
+        "power": 0,
+        "powermult": 0.35,
+        "armors": 0,
+        "accuracy": 1.5,
+        "apdamage": 0,
+        "aoe": "squad",
+        "bldReq":["Laboratoire"],
+        "compReq":{"exo":1,"ca":4},
+        "deploy":{"Carbone":1,"Scrap":3,"Fer":1,"Aluminium":1,"Argon":2,"Azote":8,"Plastanium":2,"Végétaux":4,"Explosifs":1},
+        "batch":100
+    },
+    {
         "name": "grenade-antichar",
         "range": 1,
         "rof": 1,
@@ -2984,7 +3029,7 @@
         "apdamage": 0.07,
         "aoe": "",
         "bldReq":["Laboratoire"],
-        "compReq":{"exo":1,"ca":3},
+        "compReq":{"exo":2,"ca":3},
         "deploy":{"Carbone":5,"Scrap":5,"Plutonium":3,"Atium":1,"Mephitis":1,"Huile":3,"Phosphore":6,"Hydrocarbure":4,"Chlore":12},
         "batch":100
     },
@@ -3002,6 +3047,21 @@
         "compReq":{"exo":2,"ca":4},
         "deploy":{"Carbone":5,"Scrap":5,"Phosphore":6,"Oxygène":4,"Chlore":12,"Huile":3,"Uridium":5,"Germium":3},
         "batch":100
+    },
+    {
+        "name": "gaz-jello",
+        "range": 1,
+        "rof": 0.5,
+        "power": 0,
+        "powermult": 1,
+        "armors": 0,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "compReq":{"exo":1,"ca":4},
+        "deploy":{"Carbone":5,"Scrap":5,"Plastanium":4,"Argon":4,"Azote":12,"Végétaux":8},
+        "batch":100,
+        "noList": true
     },
     {
         "name": "molotov-feu",

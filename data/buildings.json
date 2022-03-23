@@ -305,7 +305,7 @@
             "power":5,
             "aoe":"bat",
             "sound":"rainbow",
-            "ammo":["gaz","gaz-pluto","gaz-uridium"],
+            "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],
             "maxAmmo":36,
             "ravitBld":"Atelier"
         },
@@ -434,7 +434,7 @@
             "power":20,
             "aoe":"squad",
             "sound":"mortier",
-            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":36,
             "ravitBld":"Poudrière"
         },
@@ -651,8 +651,8 @@
             "power":13,
             "aoe":"squad",
             "sound":"mortier",
-            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":36,
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-jello","grenade-antichar","grenade-incendiaire","grenade-nanite"],
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "weapon3":{
@@ -946,7 +946,7 @@
             "power":13,
             "aoe":"squad",
             "sound":"mortier",
-            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-jello","grenade-antichar","grenade-incendiaire","grenade-nanite"],
             "maxAmmo":36,
             "ravitBld":"Poudrière"
         },
@@ -1361,8 +1361,8 @@
             "power":24,
             "aoe":"squad",
             "sound":"rpg",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
-            "maxAmmo":32,
+            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
+            "maxAmmo":36,
             "ravitBld":"Poudrière"
         },
         "weapon3":{
@@ -1441,8 +1441,8 @@
             "power":16,
             "aoe":"squad",
             "sound":"bomb_mini_x3",
-            "ammo":["obus-scrap","obus","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":32,
+            "ammo":["obus-scrap","obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
+            "maxAmmo":36,
             "ravitBld":"Poudrière"
         },
         "weapon3":{
@@ -1516,7 +1516,7 @@
             "aoe":"squad",
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium"],
-            "maxAmmo":12,
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "weapon3":{
@@ -1593,8 +1593,8 @@
             "power":33,
             "aoe":"squad",
             "sound":"obusier",
-            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
-            "maxAmmo":30,
+            "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
+            "maxAmmo":36,
             "ravitBld":"Poudrière"
         },
         "weapon3":{
@@ -1670,8 +1670,8 @@
             "power":40,
             "aoe":"squad",
             "sound":"miss",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium","missile-deluge"],
-            "maxAmmo":6,
+            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-jello","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium","missile-deluge"],
+            "maxAmmo":9,
             "ravitBld":"Arsenal"
         },
         "weapon3":{
@@ -1815,8 +1815,8 @@
             "power":4,
             "aoe":"bat",
             "sound":"rainbow",
-            "ammo":["gaz","gaz-pluto","gaz-uridium"],
-            "maxAmmo":16,
+            "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],
+            "maxAmmo":24,
             "ravitBld":"Atelier"
         },
         "weapon3":{
@@ -1958,8 +1958,8 @@
             "power":24,
             "aoe":"squad",
             "sound":"rpg",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
-            "maxAmmo":12,
+            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "weapon3":{
@@ -2032,8 +2032,8 @@
             "power":24,
             "aoe":"squad",
             "sound":"rpg",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
-            "maxAmmo":32,
+            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
+            "maxAmmo":36,
             "ravitBld":"Poudrière"
         },
         "weapon3":{
@@ -2110,7 +2110,7 @@
             "aoe":"brochette",
             "sound":"dynamite",
             "ammo":["dynamite","dynamite-nitrate","dynamite-nanite"],
-            "maxAmmo":9,
+            "maxAmmo":16,
             "ravitBld":"Atelier"
         },
         "weapon3":{
@@ -2188,8 +2188,8 @@
             "power":13,
             "aoe":"squad",
             "sound":"mortier",
-            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":12,
+            "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-jello","grenade-antichar","grenade-incendiaire","grenade-nanite"],
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "weapon3":{
@@ -2346,8 +2346,8 @@
             "power":4,
             "aoe":"bat",
             "sound":"rainbow",
-            "ammo":["gaz","gaz-pluto","gaz-uridium"],
-            "maxAmmo":16,
+            "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],
+            "maxAmmo":24,
             "ravitBld":"Atelier"
         },
         "weapon3":{
@@ -2420,7 +2420,7 @@
             "aoe":"brochette",
             "sound":"laser_canon_x1",
             "ammo":["laser","laser-g2"],
-            "maxAmmo":18,
+            "maxAmmo":36,
             "ravitBld":"Générateur"
         },
         "weapon3":{
@@ -3129,7 +3129,7 @@
             "noBis":true,
             "isPrec":true,
             "kit":true,
-            "noise":2,
+            "noise":1,
             "rof":6,
             "accuracy":25,
             "dca":0.7,
@@ -3199,7 +3199,7 @@
             "aoe":"squad",
             "sound":"molotov",
             "ammo":["molotov-feu"],
-            "maxAmmo":12,
+            "maxAmmo":16,
             "ravitBld":"Atelier"
         },
         "weapon3":{

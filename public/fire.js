@@ -547,7 +547,7 @@ function attack(melee,init) {
         shotDice = calcShotDice(selectedBat,true);
         tagDelete(selectedBat,'luckyshot');
     } else if (targetBat.tags.includes('stun')) {
-        shotDice = 50;
+        shotDice = 65;
     } else {
         shotDice = calcShotDice(selectedBat,false);
     }
@@ -997,6 +997,9 @@ function attack(melee,init) {
     if (selectedWeap.ammo.includes('hypo-')) {
         minDamage = 1;
     }
+    if (selectedWeap.ammo.includes('gaz')) {
+        minDamage = 0;
+    }
     if (totalDamage >= minDamage || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium') || selectedWeap.ammo.includes('trap') || selectedWeap.ammo.includes('gaz')) {
             if (!targetBatType.skills.includes('resistpoison') && !targetBatType.skills.includes('eatpoison') && !targetBat.tags.includes('zombie')) {
@@ -1117,11 +1120,20 @@ function attack(melee,init) {
     }
     // Stun
     if (!targetBat.tags.includes('stun')) {
-        if (selectedWeap.ammo.includes('poraz') || selectedWeap.ammo.includes('disco') || selectedWeap.ammo === 'gaz' || selectedWeap.ammo === 'autodes-gaz' || selectedWeap.ammo.includes('gaz-') || selectedWeap.ammo.includes('freeze')) {
-            if (totalDamage >= 10 || selectedWeap.ammo.includes('disco')) {
-                targetBat.tags.push('stun');
-                $('#report').append('<span class="report rose">Stun<br></span>');
+        if (!selectedWeap.ammo.includes('jello')) {
+            if (selectedWeap.ammo.includes('poraz') || selectedWeap.ammo.includes('disco') || selectedWeap.ammo === 'gaz' || selectedWeap.ammo === 'autodes-gaz' || selectedWeap.ammo.includes('gaz-') || selectedWeap.ammo.includes('freeze')) {
+                if (totalDamage >= 10 || selectedWeap.ammo.includes('disco')) {
+                    targetBat.tags.push('stun');
+                    $('#report').append('<span class="report rose">Stun<br></span>');
+                }
             }
+        }
+    }
+    // jello
+    if (selectedWeap.ammo.includes('jello')) {
+        if (!targetBat.tags.includes('jello')) {
+            targetBat.tags.push('jello');
+            $('#report').append('<span class="report rose">Jello<br></span>');
         }
     }
     if (targetBatType.skills.includes('noaploss')) {
@@ -1526,7 +1538,7 @@ function defense(melee,init) {
     }
     let shotDice = 100;
     if (selectedBat.tags.includes('stun')) {
-        shotDice = 50;
+        shotDice = 65;
     } else {
         shotDice = calcShotDice(targetBat,false);
     }
@@ -1836,6 +1848,9 @@ function defense(melee,init) {
     if (targetWeap.ammo.includes('hypo-')) {
         minDamage = 1;
     }
+    if (targetWeap.ammo.includes('gaz')) {
+        minDamage = 0;
+    }
     if (totalDamage >= minDamage || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
         if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium') || targetWeap.ammo.includes('trap') || targetWeap.ammo.includes('gaz')) {
             if (!selectedBatType.skills.includes('resistpoison') && !selectedBatType.skills.includes('eatpoison') && !selectedBat.tags.includes('zombie')) {
@@ -1939,11 +1954,20 @@ function defense(melee,init) {
     }
     // Stun
     if (!selectedBat.tags.includes('stun')) {
-        if (targetWeap.ammo.includes('poraz') || targetWeap.ammo.includes('disco') || targetWeap.ammo === 'gaz' || targetWeap.ammo === 'autodes-gaz' || targetWeap.ammo.includes('gaz-') || targetWeap.ammo.includes('freeze')) {
-            if (totalDamage >= 10 || targetWeap.ammo.includes('disco')) {
-                selectedBat.tags.push('stun');
-                $('#report').append('<span class="report rose">Stun<br></span>');
+        if (!targetWeap.ammo.includes('jello')) {
+            if (targetWeap.ammo.includes('poraz') || targetWeap.ammo.includes('disco') || targetWeap.ammo === 'gaz' || targetWeap.ammo === 'autodes-gaz' || targetWeap.ammo.includes('gaz-') || targetWeap.ammo.includes('freeze')) {
+                if (totalDamage >= 10 || targetWeap.ammo.includes('disco')) {
+                    selectedBat.tags.push('stun');
+                    $('#report').append('<span class="report rose">Stun<br></span>');
+                }
             }
+        }
+    }
+    // jello
+    if (targetWeap.ammo.includes('jello')) {
+        if (!selectedBat.tags.includes('jello')) {
+            selectedBat.tags.push('jello');
+            $('#report').append('<span class="report rose">Jello<br></span>');
         }
     }
     if (selectedBatType.skills.includes('noaploss')) {

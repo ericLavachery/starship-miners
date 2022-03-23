@@ -363,6 +363,9 @@ function showAlien(bat) {
     if (bat.tags.includes('stun')) {
         tagz = tagz+' (stun)';
     }
+    if (bat.tags.includes('jelly')) {
+        tagz = tagz+' (jelly)';
+    }
     if (bat.tags.includes('freeze')) {
         tagz = tagz+' (freeze)';
     }

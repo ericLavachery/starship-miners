@@ -98,6 +98,13 @@ function nextTurn() {
             if (rand.rand(1,3) != 1) {
                 tagDelete(bat,'stun');
             }
+            tagDelete(bat,'jelly');
+            if (bat.tags.includes('jello')) {
+                tagDelete(bat,'jello');
+                bat.tags.push('jelly');
+                bat.tags.push('jelly');
+                bat.tags.push('jelly');
+            }
             if (rand.rand(1,3) === 1) {
                 tagDelete(bat,'freeze');
             }
