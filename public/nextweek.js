@@ -7,7 +7,7 @@ function events(afterMission,time,sim,quiet) {
         time = playerInfos.mapTurn+playerInfos.travTurns;
     }
     if (afterMission && !sim) {
-        let missionXP = Math.ceil(Math.sqrt(playerInfos.mapTurn)*27);
+        let missionXP = Math.ceil(Math.sqrt(playerInfos.mapTurn)*25);
         playerInfos.gangXP = playerInfos.gangXP+missionXP;
     }
     if (!afterMission && !sim) {

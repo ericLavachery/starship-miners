@@ -36,9 +36,9 @@ let ammoTypes = [];
 let mapFilters = [];
 let filterEffect = 10;
 let mapFilterDefault = "Normal"; // Normal!
-let terSeedVariance = true;
 let filterVariance = true; // true!
-let baseFilterChance = 3; // minimum 1 !!!
+let terSeedVariance = true;
+let baseFilterChance = 1; // minimum 1 !!! (1 = autant de chances pour chaque filtre)
 let filterBase = {};
 let zone = [];
 let zonePrev = [];

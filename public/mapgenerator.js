@@ -200,7 +200,7 @@ function nextSeed(ter,ls,as,d1s,d2s) {
         newSeed = rand.rand(1,6);
         return rotateSeed(newSeed,ls,as,d1s,d2s,ter);
     } else {
-        if (rand.rand(1,specialSeed*2) == 1) {
+        if (rand.rand(1,specialSeed*2) === 1) {
             newSeed = rand.rand(4,6);
             return rotateSeed(newSeed,ls,as,d1s,d2s,ter);
         } else {
@@ -236,6 +236,12 @@ function filterMap(map) {
     // change map
     let mapIndex;
     let newTerrain;
+    if (filterBase.power != undefined) {
+        filterEffect = filterBase.power;
+    } else {
+        filterEffect = 10;
+    }
+    console.log('filterEffect = '+filterEffect);
     let swap = true;
     map.forEach(function(tile) {
         newTerrain = filterBase[tile.terrain];
@@ -255,6 +261,9 @@ function filterMap(map) {
                 if (tile.terrain === 'H' || tile.terrain === 'M') {
                     if (tile.seed <= 6) {
                         tile.terrain = newTerrain;
+                    } else {
+                        tile.terrain = newTerrain;
+                        tile.seed = tile.seed-6;
                     }
                 } else {
                     if (rand.rand(1,filterEffect) > 1) {
