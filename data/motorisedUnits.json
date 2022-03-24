@@ -1167,7 +1167,7 @@
             "ammo":["cn-proto-plasma","cn-plasma","cn-impact","cn-grapeshot","cn-plastanium","cn-uridium","cn-nanite"]
         },
         "weapon2":{
-            "name":"Missiles Squash",
+            "name":"Missiles Thunder",
             "cost":8,
             "range":8,
             "noMelee":true,

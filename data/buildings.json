@@ -1657,7 +1657,7 @@
             "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
         },
         "weapon2":{
-            "name":"Missiles Thunder",
+            "name":"Missiles Squash",
             "cost":7,
             "range":9,
             "noMelee":true,

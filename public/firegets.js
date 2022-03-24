@@ -1480,7 +1480,7 @@ function checkGuidage(weapon,alien) {
     let guideTarget = false;
     if (alien.tags.includes('guide')) {
         if (weapon.ammo.includes('missile')) {
-            if (!weapon.name.includes('Comet') && !weapon.name.includes('Squash')) {
+            if (!weapon.name.includes('Comet') && !weapon.name.includes('Thunder')) {
                 guideTarget = true;
             }
         }
@@ -1602,7 +1602,7 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.rof = Math.floor(weapon.rof*(bat.vet+vetBonus.rof)/vetBonus.rof);
     // hero rof
     if (bat.tags.includes('hero') && batType.skills.includes('herorof')) {
-        thisWeapon.rof = Math.round(thisWeapon.rof*1.205);
+        thisWeapon.rof = Math.round(thisWeapon.rof*1.25);
     }
     if (Object.keys(weapon).length >= 1) {
         thisWeapon.name = weapon.name;
