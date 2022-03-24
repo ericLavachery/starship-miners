@@ -81,7 +81,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["recherche","noguet","mecano","nochef"],
+        "skills":["recherche","noguet","mecano","nochef","nodeploy"],
         "mecanoCost":6,
         "transRes":60,
         "fuzz":1,

@@ -2652,15 +2652,15 @@
         "id":231,
         "name":"Sonde",
         "bldReq":["Soute"],
-        "costs":{"Scrap":250,"Carbone":50,"Titane":100,"Aluminium":250,"Cobalt":100,"Platine":40,"Nickel":40,"Cuivre":75,"Silicium":75,"Hélium":75,"Bore":15,"Electros":75,"Batteries":40,"Energie":200,"Plutonium":30,"Hydrogène":15},
+        "costs":{"Scrap":500,"Carbone":300,"Azote":150,"Titane":250,"Aluminium":500,"Cobalt":150,"Platine":100,"Nickel":150,"Cuivre":200,"Silicium":200,"Hélium":150,"Bore":75,"Electros":200,"Batteries":200,"Energie":750,"Huile":50,"Plutonium":75,"Hydrogène":50},
         "fabTime":150
     },
     {
         "id":250,
         "name":"Impacteur",
         "bldReq":["Soute","Aérodocks"],
-        "costs":{"Scrap":250,"Carbone":75,"Titane":50,"Aluminium":125,"Cobalt":50,"Platine":25,"Nickel":25,"Cuivre":50,"Silicium":35,"Hélium":35,"Bore":15,"Electros":40,"Batteries":20,"Plutonium":30,"Hydrogène":15},
-        "fabTime":75
+        "costs":{"Scrap":350,"Carbone":200,"Azote":100,"Titane":125,"Aluminium":250,"Cobalt":75,"Platine":75,"Nickel":75,"Cuivre":100,"Silicium":100,"Hélium":75,"Bore":50,"Electros":100,"Batteries":100,"Energie":500,"Huile":30,"Plutonium":50,"Hydrogène":30},
+        "fabTime":100
     },
     {
         "id":230,

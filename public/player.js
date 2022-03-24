@@ -369,6 +369,7 @@ function playerSkillsUTChanges() {
         if (unit.skills.includes('transorbital')) {
             unit.transRes = Math.round(unit.transRes*landerFretTuning);
         }
+        let repairBonus = false;
         // VOLS SPACIAUX
         if (unit.skills.includes('transorbital') || unit.skills.includes('isvsp')) {
             if (unit.hySpeed != undefined) {
@@ -423,6 +424,27 @@ function playerSkillsUTChanges() {
             }
         }
         // CONSTRUCTION
+        if (unit.mecanoCost < 90) {
+            if (unit.skills.includes('repair')) {
+                repairBonus = true;
+            }
+            if (unit.skills.includes('selfrepair') || unit.skills.includes('selfbadrepair')) {
+                if (!unit.skills.includes('mecano') && !unit.skills.includes('badmecano')) {
+                    repairBonus = true;
+                }
+            }
+            if (repairBonus) {
+                if (playerInfos.comp.const === 2) {
+                    unit.mecanoCost = unit.mecanoCost-1;
+                }
+                if (playerInfos.comp.const === 3) {
+                    unit.mecanoCost = unit.mecanoCost-2;
+                }
+                if (unit.mecanoCost < 2) {
+                    unit.mecanoCost = 2;
+                }
+            }
+        }
         if (unit.mecanoCost < 90) {
             if (playerInfos.comp.const === 2) {
                 unit.mecanoCost = unit.mecanoCost-1;
@@ -615,6 +637,21 @@ function playerSkillsUTChanges() {
             }
         }
         // TRANSPORTS
+        if (unit.mecanoCost < 90) {
+            if (!repairBonus) {
+                if (unit.skills.includes('mecano') || unit.skills.includes('badmecano') || unit.skills.includes('selfmecano') || unit.skills.includes('selfbadmecano')) {
+                    if (playerInfos.comp.trans === 2) {
+                        unit.mecanoCost = unit.mecanoCost-1;
+                    }
+                    if (playerInfos.comp.trans === 3) {
+                        unit.mecanoCost = unit.mecanoCost-2;
+                    }
+                    if (unit.mecanoCost < 2) {
+                        unit.mecanoCost = 2;
+                    }
+                }
+            }
+        }
         if (playerInfos.comp.trans >= 1) {
             if (unit.kind === 'zero-transports' || unit.kind === 'zero-trans-fret') {
                 if (unit.compReq === undefined && unit.compHardReq === undefined) {
@@ -1696,8 +1733,8 @@ function addStartPack() {
     addFreeBat(1707,'Dortoirs');
     addFreeBat(1767,'Dortoirs');
     addFreeBat(1827,'Dortoirs');
-    addFreeBat(1647,'Impacteur');
-    addFreeBat(1648,'Impacteur');
+    addFreeBat(1647,'Sonde');
+    addFreeBat(1648,'Sonde');
     addFreeBat(1649,'Sonde');
     addFreeBat(1650,'Sonde');
     addFreeBat(1651,'Sonde');
@@ -1706,6 +1743,16 @@ function addStartPack() {
     addFreeBat(2009,'Sonde');
     addFreeBat(2010,'Sonde');
     addFreeBat(2011,'Sonde');
+    addFreeBat(2067,'Sonde');
+    addFreeBat(2068,'Sonde');
+    addFreeBat(2069,'Sonde');
+    addFreeBat(2070,'Sonde');
+    addFreeBat(2071,'Sonde');
+    addFreeBat(1587,'Impacteur');
+    addFreeBat(1588,'Impacteur');
+    addFreeBat(1589,'Impacteur');
+    addFreeBat(1590,'Impacteur');
+    addFreeBat(1591,'Impacteur');
     addFreeBat(1894,'Station météo');
     addFreeBat(1835,'Vidéotéléphonie');
     addFreeBat(1953,'Unités cryogéniques');
