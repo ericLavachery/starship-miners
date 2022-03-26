@@ -81,9 +81,9 @@ function souteMenu() {
             $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`support`)">Support &nbsp;&nbsp;</span>');
         }
         if (souteFilter === 'cyberobots') {
-            $('#menu_soute').append('<span class="menuTab cy">Cyber &nbsp;&nbsp;</span>');
+            $('#menu_soute').append('<span class="menuTab cy">Spécial &nbsp;&nbsp;</span>');
         } else {
-            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`cyberobots`)">Cyber &nbsp;&nbsp;</span>');
+            $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`cyberobots`)">Spécial &nbsp;&nbsp;</span>');
         }
         if (souteFilter === 'vehicles') {
             $('#menu_soute').append('<span class="menuTab cy">Véhicules &nbsp;&nbsp;</span>');
@@ -184,13 +184,15 @@ function souteList() {
     let landersIds = getStationLandersIds();
     if (souteFilter === 'all' || souteFilter === 'infantry') {
         souteBatList('infantry',playerInfos.gang,'','robot',landersIds,-1);
-        souteBatList('infantry','','clone','',landersIds,-1);
+        // souteBatList('infantry','','clone','',landersIds,-1);
         souteBatList('infantry','','mutant','',landersIds,-1);
     }
     if (souteFilter === 'all' || souteFilter === 'support') {
         souteBatList('infantry','zero-','','robot',landersIds,-1);
     }
     if (souteFilter === 'all' || souteFilter === 'cyberobots') {
+        souteBatList('infantry','','clone','',landersIds,-1);
+        souteBatList('infantry','','dog','',landersIds,-1);
         souteBatList('infantry','','cyber','',landersIds,-1);
         souteBatList('vehicles','','cyber','',landersIds,-1);
         souteBatList('vehicles','','robot','',landersIds,-1);
@@ -217,6 +219,7 @@ function landerList() {
     let landersIds = getStationLandersIds();
     souteBatList('infantry',playerInfos.gang,'','robot',landersIds,slId);
     souteBatList('infantry','','clone','',landersIds,slId);
+    souteBatList('infantry','','dog','',landersIds,slId);
     souteBatList('infantry','','mutant','',landersIds,slId);
     souteBatList('infantry','zero-','','robot',landersIds,slId);
     souteBatList('infantry','','cyber','',landersIds,slId);
@@ -248,7 +251,7 @@ function souteBatList(cat,partKind,skill,noSkill,landersIds,idOfLander) {
                 showMe = true;
             }
         }
-        if (batType.skills.includes(noSkill) || (noSkill === 'robot' && (batType.skills.includes('cyber') || batType.skills.includes('mutant') || batType.skills.includes('clone')))) {
+        if (batType.skills.includes(noSkill) || (noSkill === 'robot' && (batType.skills.includes('cyber') || batType.skills.includes('mutant') || batType.skills.includes('dog') || batType.skills.includes('clone')))) {
             showMe = false;
         }
         if (batType.skills.includes('transorbital')) {
@@ -393,6 +396,19 @@ function batListElement(bat,batType,idOfLander) {
             $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i></span>');
         } else if (bat.emo >= 1) {
             $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i></span>');
+        }
+    } else if (batType.skills.includes('clone')) {
+        if (bat.tags.includes('necro')) {
+            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i></span>');
+        } else if (bat.emo >= 11) {
+            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i></span>');
+        } else if (bat.emo >= 1) {
+            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i></span>');
+        }
+        if (bat.soins >= 11) {
+            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-heart"></i></span>');
+        } else if (bat.soins >= 1) {
+            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="far fa-heart"></i></span>');
         }
     } else {
         if (bat.soins >= 11 || bat.emo >= 11 || bat.tags.includes('necro')) {

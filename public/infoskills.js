@@ -1743,7 +1743,7 @@ function skillsInfos(bat,batType,near) {
             }
         }
         // POSE BARBELES
-        if (batType.skills.includes('constructeur') && !batType.skills.includes('transorbital')) {
+        if (batType.skills.includes('barbs')) {
             freeConsTile = checkFreeConsTile(bat,batType);
             if (freeConsTile) {
                 let barbLeft = calcRavit(bat);
@@ -1870,7 +1870,7 @@ function skillsInfos(bat,batType,near) {
         }
     }
     // INFRASTRUCTURE
-    if (((batType.skills.includes('constructeur') && !batType.skills.includes('transorbital')) || near.caserne) && !playerInfos.onShip) {
+    if ((batType.skills.includes('infraz') || near.caserne) && !playerInfos.onShip) {
         if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
             apReq = getConstAPReq(bat,batType);
             let infra;

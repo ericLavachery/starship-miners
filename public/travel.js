@@ -74,6 +74,7 @@ function stopMission() {
     playerInfos.crafts = 0;
     playerInfos.vz = 999;
     playerInfos.missionZone = -1;
+    playerInfos.nmi = playerInfos.nmi+1;
     inSoute = false;
     modeLanding = true;
     landingList();

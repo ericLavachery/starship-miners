@@ -7,7 +7,7 @@ function events(afterMission,time,sim,quiet) {
         time = playerInfos.mapTurn+playerInfos.travTurns;
     }
     if (afterMission && !sim) {
-        let missionXP = Math.ceil(Math.sqrt(playerInfos.mapTurn)*25);
+        let missionXP = calcTurnXP(playerInfos.mapTurn);
         playerInfos.gangXP = playerInfos.gangXP+missionXP;
     }
     if (!afterMission && !sim) {
@@ -45,6 +45,11 @@ function events(afterMission,time,sim,quiet) {
         playerInfos.undarkOnce = [];
         playerInfos.showedTiles = [];
     }
+};
+
+function calcTurnXP(turns) {
+    let xp = Math.ceil(Math.sqrt(turns)*25);
+    return xp;
 };
 
 function repos(time) {

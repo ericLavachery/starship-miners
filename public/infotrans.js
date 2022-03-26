@@ -72,7 +72,7 @@ function unloadInfos(myBat,myBatUnitType) {
     let batAPLeft = 0;
     if (myBat.transIds != undefined) {
         if (myBat.transIds.length >= 1) {
-            $('#unitInfos').append('<hr>');
+            $('#unitInfos').append('<hr id="transBats">');
             if (!myBatUnitType.skills.includes('transorbital') && nearAnyLander(myBat)) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transférer tous les bataillons dans le lander" class="boutonMarine bigButtons" onclick="unloadInLander()"><i class="fas fa-truck"></i> <i class="fas fa-arrow-right"></i> <i class="fas fa-space-shuttle"></i></button></h4></span>');
             }

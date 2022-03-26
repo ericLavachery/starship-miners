@@ -142,7 +142,7 @@ function batInfos(bat,batType,pop) {
     let isCharged = checkCharged(bat,'trans');
     let chargeIcon = '';
     if (isCharged) {
-        chargeIcon = ' &nbsp;<i class="fas fa-truck marine" onclick="scrollToBottom()"></i>';
+        chargeIcon = ' &nbsp;<i class="fas fa-truck marine" onclick="scrollToAnchor(`transBats`)"></i>';
     }
     let fretIcon = '';
     if (batType.transRes >= 1) {

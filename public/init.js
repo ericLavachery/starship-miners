@@ -146,6 +146,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.zoneDB === undefined) {
         playerInfos.zoneDB = [];
     }
+    if (playerInfos.nmi === undefined) {
+        playerInfos.nmi = playerInfos.zoneDB.length;
+    }
     if (playerInfos.rescueDB === undefined) {
         playerInfos.rescueDB = [];
     }

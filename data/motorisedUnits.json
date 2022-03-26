@@ -2035,7 +2035,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","mecano","repair","constructeur","routes","noblub","light","crewsave","fret","extraction","dumper","recupcit","recupres","caterp","reeq","nochef"],
+        "skills":["noguet","mecano","repair","constructeur","barbs","infraz","routes","noblub","light","crewsave","fret","extraction","dumper","recupcit","recupres","caterp","reeq","nochef"],
         "mecanoCost":6,
         "mining":{
             "level":2,
@@ -2103,7 +2103,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["noguet","mecano","repair","constructeur","routes","noblub","resistacide","resistelec","dealer","nitro","light","crewsave","fret","extraction","dumper","recupcit","recupres","caterp","kzin","reeq","nochef"],
+        "skills":["noguet","mecano","repair","constructeur","barbs","infraz","routes","noblub","resistacide","resistelec","dealer","nitro","light","crewsave","fret","extraction","dumper","recupcit","recupres","caterp","kzin","reeq","nochef"],
         "mecanoCost":4,
         "mining":{
             "level":2,
@@ -3811,7 +3811,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["guerrilla","transport","fret","dumper","emoteur","camo","selfbadmecano","badmedic","dealer","starka","kirin","octiron","light","accu","badcrewsave","recupcit","recupres","kzin","nochef"],
+        "skills":["guerrilla","transport","fret","dumper","emoteur","camo","selfbadmecano","badmedic","dealer","starka","kirin","octiron","sila","light","accu","badcrewsave","recupcit","recupres","kzin","nochef"],
         "mecanoCost":11,
         "mediCost":8,
         "transMaxSize":4,

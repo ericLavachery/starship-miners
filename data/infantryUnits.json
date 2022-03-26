@@ -2547,7 +2547,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","extraction","selfbadmedic","camo","ranger","fret","conscont","constructeur","routes","repair","nochef"],
+        "skills":["fouille","fortif","datt","extraction","selfbadmedic","camo","ranger","fret","conscont","constructeur","infraz","routes","repair","nochef"],
         "mediCost":9,
         "mecanoCost":11,
         "mining":{
@@ -2558,7 +2558,6 @@
             "subTypes":["Pompe"]
         },
         "transRes":48,
-        "maxSkill":2,
         "fuzz":0,
         "deathFx":"human3"
     },
@@ -4280,7 +4279,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","mecano","repair","constructeur","routes","infraconst","cyber","fret","noblub","resistall","fastempty","dumper","kzin","reeq","nochef"],
+        "skills":["fouille","fortif","datt","mecano","repair","constructeur","barbs","routes","infraz","infraconst","cyber","fret","noblub","resistall","fastempty","dumper","kzin","reeq","nochef"],
         "mecanoCost":5,
         "maxSkill":8,
         "transRes":180,
@@ -4521,6 +4520,7 @@
         "hp":8,
         "armor":3,
         "size":3,
+        "volume":0.9,
         "stealth":14,
         "speed":5,
         "ap":18,
@@ -5901,7 +5901,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","camo","clone","nodeathcount","lowmed","recupcorps"],
+        "skills":["fouille","fortif","datt","camo","clone","nodeathcount","lowmed","lowstress","recupcorps"],
         "fuzz":-1
     },
     {

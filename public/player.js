@@ -1432,6 +1432,7 @@ function calcStartRes() {
     // toutes les valeurs en ressources des équipements (cost + deploy)
     // toutes les valeurs en ressources des munitions (cost + deploy)
     playerInfos.startRes['Citoyens'] = 0;
+    playerInfos.startRes['Lore'] = playerInfos.gangXP;
     let allCosts = {};
     let unitCosts;
     bataillons.forEach(function(bat) {
@@ -1503,6 +1504,7 @@ function calcEndRes(onlyLanders) {
     // toutes les valeurs en ressources des équipements (cost + deploy)
     // toutes les valeurs en ressources des munitions (cost + deploy)
     playerInfos.endRes['Citoyens'] = 0;
+    playerInfos.endRes['Lore'] = playerInfos.gangXP+calcTurnXP(playerInfos.mapTurn);
     let allCosts = {};
     let unitCosts;
     // console.log('LANDERS');
@@ -1599,12 +1601,14 @@ function missionResults(onlyLanders,sCount,hCount) {
     let balance = 0;
     let minedTotal = 0;
     let citDiff = playerInfos.endRes['Citoyens']-playerInfos.startRes['Citoyens'];
+    let xpDiff = playerInfos.endRes['Lore']-playerInfos.startRes['Lore'];
     let resColour = 'gf';
     if (citDiff < 0) {
         resColour = 'or';
     } else if (citDiff > 0) {
         resColour = 'cy';
     }
+    $('#conUnitList').append('<span class="paramResName">Expérience</span><span class="paramIcon"></span><span class="paramResValue cy">'+xpDiff+'</span><br>');
     $('#conUnitList').append('<span class="paramResName">Citoyens</span><span class="paramIcon"></span><span class="paramResValue '+resColour+'">'+citDiff+'</span><br>');
     $('#conUnitList').append('<hr>');
     let sonde = getBatTypeByName('Impacteur');
@@ -1614,7 +1618,7 @@ function missionResults(onlyLanders,sCount,hCount) {
     Object.entries(playerInfos.endRes).map(entry => {
         let key = entry[0];
         let value = entry[1];
-        if (key != 'Citoyens') {
+        if (key != 'Citoyens' && key != 'Lore') {
             // console.log(key);
             let res = getResByName(key);
             // console.log(res.name);
@@ -1659,7 +1663,7 @@ function missionResults(onlyLanders,sCount,hCount) {
     Object.entries(playerInfos.endRes).map(entry => {
         let key = entry[0];
         let value = entry[1];
-        if (key != 'Citoyens') {
+        if (key != 'Citoyens' && key != 'Lore') {
             let res = getResByName(key);
             let resIcon = getResIcon(res);
             let minedRes = getMinedRes(res.name);

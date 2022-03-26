@@ -697,7 +697,7 @@
     {
         "id":86,
         "name":"Cyborgs",
-        "levels":{"rednecks":99,"blades":14,"bulbos":3,"drogmulojs":15,"tiradores":99,"detruas":99,"brasier":10},
+        "levels":{"rednecks":99,"blades":14,"bulbos":3,"drogmulojs":12,"tiradores":99,"detruas":99,"brasier":10},
         "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"energ":1},
         "compPass":["bulbos"],
@@ -719,7 +719,7 @@
     {
         "id":135,
         "name":"Runners",
-        "levels":{"rednecks":13,"blades":99,"bulbos":99,"drogmulojs":12,"tiradores":99,"detruas":9,"brasier":99},
+        "levels":{"rednecks":13,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":9,"brasier":99},
         "bldReq":["Armurerie","Centre de recherches"],
         "compReq":{"cyber":1},
         "compPass":["detruas"],
@@ -741,7 +741,7 @@
     {
         "id":180,
         "name":"Legs",
-        "levels":{"rednecks":99,"blades":12,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":18},
+        "levels":{"rednecks":99,"blades":12,"bulbos":99,"drogmulojs":15,"tiradores":99,"detruas":99,"brasier":18},
         "bldReq":["Laboratoire","Atelier"],
         "compReq":{"cyber":1,"energ":1,"train":1},
         "costs":{"Scrap":32,"Carbone":96,"Aluminium":64,"Moteurs":32,"Tungstène":32,"Titane":113,"Electros":48,"Batteries":48,"Cuivre":51,"Silicium":32,"Végétaux":160,"Blendium":64,"Cobalt":64,"Oxygène":64,"Drogues":15,"Chlore":15,"Zinc":15,"Tissus":7},

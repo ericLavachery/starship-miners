@@ -49,6 +49,11 @@ function scrollToBottom() {
     $("#unitInfos").animate({ scrollTop: $('#unitInfos').prop("scrollHeight")},250);
 };
 
+function scrollToAnchor(anch) {
+    document.location.hash = "#"+anch;
+    $('html,body').scrollTop(0);
+};
+
 const mergeObjects = (obj1,obj2) => {
    for(key in obj1){
       if(obj2[key]){
