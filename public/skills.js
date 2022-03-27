@@ -254,7 +254,7 @@ function diversion() {
         let alienType = getBatType(alien);
         if (alienType.moveCost < 90) {
             let distance = calcDistance(selectedBat.tileId,alien.tileId);
-            if (distance <= 4) {
+            if (distance <= 5) {
                 alien.aplLeft = alien.aplLeft-Math.round(alienType.moveCost*1.5);
                 let lassoTileId = getLassoTile(alien.tileId,selectedBat.tileId);
                 if (lassoTileId >= 0) {

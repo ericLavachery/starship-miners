@@ -209,6 +209,16 @@ function levelUp(bat,batType) {
     }
     if (!bat.tags.includes('vet') && !bat.tags.includes('schef') && !bat.tags.includes('hero')) {
         let grade = getGrade(bat,batType);
+        if (playerInfos.comp.ordre === 3) {
+            if (grade === 'Lieutenant') {
+                if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && batType.crew >= 1) || batType.skills.includes('souschef')) {
+                    heroUp(bat,batType,grade);
+                }
+            }
+            if (grade === 'Général') {
+                heroUp(bat,batType,grade);
+            }
+        }
         if (grade != oldGrade) {
             if (grade === 'Lieutenant') {
                 if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && batType.crew >= 1) || batType.skills.includes('souschef')) {
@@ -255,6 +265,8 @@ function heroUp(bat,batType,grade) {
                 bat.tags.push('schef');
             } else if (rand.rand(1,5) <= 2 && mayHero) {
                 bat.tags.push('hero');
+            } else if (rand.rand(1,2) === 1 && mayChef && playerInfos.comp.ordre >= 2) {
+                bat.tags.push('schef');
             } else {
                 bat.tags.push('vet');
             }
@@ -280,16 +292,20 @@ function getChefNum() {
 
 function getGrade(bat,batType) {
     let grade = 'Caporal';
+    let bonusLead = 0;
+    if (playerInfos.comp.ordre === 3) {
+        bonusLead = 1;
+    }
     if (batType.skills.includes('leader')) {
-        if (bat.vet >= 4) {
+        if (bat.vet >= 4-bonusLead) {
             grade = 'Général';
         } else {
             grade = 'Colonel';
         }
     } else if (batType.skills.includes('souschef')) {
-        if (bat.vet >= 3) {
+        if (bat.vet >= 3-bonusLead) {
             grade = 'Lieutenant';
-        } else if (bat.vet >= 2) {
+        } else if (bat.vet >= 2-bonusLead) {
             grade = 'Sergent';
         } else {
             grade = 'Caporal';
@@ -304,9 +320,9 @@ function getGrade(bat,batType) {
         } else if (batType.name === 'Gurus') {
             grade = 'Guide';
         } else {
-            if (bat.vet >= 4) {
+            if (bat.vet >= 4-bonusLead) {
                 grade = 'Lieutenant';
-            } else if (bat.vet >= 3) {
+            } else if (bat.vet >= 3-bonusLead) {
                 grade = 'Sergent';
             } else {
                 grade = 'Caporal';

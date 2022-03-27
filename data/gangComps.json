@@ -101,7 +101,7 @@
     {
         "id":12,
         "name":"ordre",
-        "fullName":"Maintien de l'ordre",
+        "fullName":"Leadership",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,1],
