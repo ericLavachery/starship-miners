@@ -109,6 +109,9 @@ function calcRavit(bat) {
     let batType = getBatType(bat);
     let ravitLeft = 0;
     ravitLeft = batType.maxSkill;
+    if (batType.skills.includes('stock')) {
+        ravitLeft = 999;
+    }
     if (ravitLeft < 999) {
         if (bat.tags.includes('sU')) {
             let allTags = _.countBy(bat.tags);
@@ -134,22 +137,34 @@ function checkRavit(myBat) {
         bldRav = 'Armurerie';
     }
     if (playerInfos.bldList.includes(bldReq) || bldReq === '') {
-        let batType;
-        let ravitLeft;
         let ravitVolume = calcRavitVolume(myBat);
         let ravitTypeOK = false;
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
-                batType = getBatType(bat);
+                let batType = getBatType(bat);
                 ravitTypeOK = false;
                 if (bldRav === batType.name || batType.bldEquiv.includes(bldRav) || !batType.skills.includes('ravitprod') || batType.skills.includes('ravitall')) {
                     ravitTypeOK = true;
                 }
                 if (batType.skills.includes('ravitaillement') && !batType.skills.includes('stockmed') && ravitTypeOK) {
                     if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
-                        ravitLeft = calcRavit(bat);
-                        if (ravitLeft >= 1 && (ravitVolume[0] <= batType.maxSkill || ravitVolume[0] <= 12 || batType.maxSkill >= 18 || (ravitVolume[0] <= 18 && (myBat.eq === 'gilet' || myBat.logeq === 'gilet' || myBat.eq === 'crimekitgi'))) && (ravitVolume[2] != 'missile' || batType.skills.includes('stock') || batType.name === 'Usine d\'armement')) {
-                            anyRavit = true;
+                        let ravitLeft = calcRavit(bat);
+                        let ravitVolOK = false;
+                        if (batType.skills.includes('stock')) {
+                            ravitVolOK = true;
+                        }
+                        if (ravitVolume[0] <= batType.maxSkill || ravitVolume[0] <= 12 || batType.maxSkill >= 18) {
+                            ravitVolOK = true;
+                        }
+                        if (ravitVolume[0] <= 18 && (myBat.eq === 'gilet' || myBat.logeq === 'gilet' || myBat.eq === 'crimekitgi')) {
+                            ravitVolOK = true;
+                        }
+                        if (ravitLeft >= 1) {
+                            if (ravitVolOK) {
+                                if (ravitVolume[2] != 'missile' || batType.skills.includes('stock') || batType.name === 'Usine d\'armement') {
+                                    anyRavit = true;
+                                }
+                            }
                         }
                     }
                 }
@@ -337,7 +352,11 @@ function goRavitDrug(apCost) {
                 i++;
             }
             ravitBatType = getBatType(ravitBat);
-            if (ravitBatType.maxSkill < 999 && !ravitBatType.skills.includes('stockmed')) {
+            let maxSkill = batType.maxSkill;
+            if (ravitBatType.skills.includes('stock')) {
+                maxSkill = 999;
+            }
+            if (maxSkill < 999 && !ravitBatType.skills.includes('stockmed')) {
                 ravitBat.tags.push('sU');
                 ravitBat.tags.push('sU');
             }

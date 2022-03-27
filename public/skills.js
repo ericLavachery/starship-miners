@@ -731,6 +731,9 @@ function goDrug(apCost,drugName) {
 function getNitroBonus(bat) {
     let batType = getBatType(bat);
     let batAPLeft = bat.apLeft;
+    if (bat.apLeft < 0 && !bat.tags.includes('construction')) {
+        batAPLeft = Math.round(bat.apLeft/2);
+    }
     let batAP = getAP(bat,batType);
     let transBonus = Math.floor(playerInfos.comp.trans*playerInfos.comp.trans/3)*2;
     let baseBonus = Math.round(batAP/2)+transBonus;
@@ -738,8 +741,8 @@ function getNitroBonus(bat) {
     if (batAPLeft >= batAP+3+transBonus) {
         batAPLeft = batAP+3+transBonus;
     }
-    if (batAPLeft < transBonus-1 && !bat.tags.includes('construction')) {
-        batAPLeft = transBonus-1;
+    if (batAPLeft < transBonus-4 && !bat.tags.includes('construction')) {
+        batAPLeft = transBonus-4;
     }
     let nitroBonus = Math.round(batAPLeft-bat.apLeft);
     return nitroBonus;
@@ -752,8 +755,8 @@ function getStarkaBonus(bat) {
         batAPLeft = Math.round(bat.apLeft/2);
     }
     let batAP = getAP(bat,batType);
-    let medBonus = Math.floor((playerInfos.comp.exo+1.5)*(playerInfos.comp.med+1)/2);
-    batAPLeft = Math.round(batAPLeft+(batAP*2/3)+medBonus);
+    let medBonus = Math.floor((playerInfos.comp.exo+1.5)*(playerInfos.comp.med+1)/3);
+    batAPLeft = Math.round(batAPLeft+(batAP/1.75)+medBonus);
     let maxAP = Math.round(batAP+(medBonus/2));
     if (batAPLeft >= maxAP) {
         batAPLeft = maxAP;

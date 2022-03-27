@@ -99,6 +99,7 @@ function skillsInfos(bat,batType,near) {
     }
     // RAVITAILLEMENT
     anyRavit = checkRavit(bat);
+    console.log('RAVIT: '+anyRavit);
     if (anyRavit && bat.tags.includes('aU') && !playerInfos.onShip) {
         let ravitVolume = calcRavitVolume(bat);
         let ravitFactor = 3;
