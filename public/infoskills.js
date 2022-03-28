@@ -1242,7 +1242,7 @@ function skillsInfos(bat,batType,near) {
                 apCost = drug.apCost;
                 if (drugCompOK) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('skupiac') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Concentration: +6 précision / +3 défense / guérit les maladies '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</'+balise+'></span>');
+                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+6 précision / +3 défense / guérit les maladies '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>&nbsp; Skupiac</'+balise+'></span>');
                     } else {
                         if (bat.tags.includes('skupiac')) {
                             skillMessage = "Déjà sous l'effet de cette drogue";
@@ -1832,7 +1832,7 @@ function skillsInfos(bat,batType,near) {
     // ROUTES / PONTS
     if ((batType.skills.includes('routes') || bat.eq === 'e-road') && !playerInfos.onShip) {
         let roadsOK = true;
-        if (batType.skills.includes('infrahelp')) {
+        if (batType.skills.includes('infrahelp') || bat.eq === 'e-infra' || bat.logeq === 'e-infra') {
             roadsOK = checkRoadsAround(bat);
         }
         if (!tile.rd || !roadsOK) {

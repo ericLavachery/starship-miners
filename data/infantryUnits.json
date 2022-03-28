@@ -4279,7 +4279,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","mecano","repair","constructeur","barbs","routes","infraz","infraconst","cyber","fret","noblub","resistall","fastempty","dumper","kzin","reeq","nochef"],
+        "skills":["fouille","fortif","datt","mecano","repair","constructeur","barbs","routes","infraz","infast","cyber","fret","noblub","resistall","fastempty","dumper","kzin","reeq","nochef"],
         "mecanoCost":5,
         "maxSkill":8,
         "transRes":180,
@@ -4601,7 +4601,6 @@
             "cost":6,
             "range":2,
             "elevation":2,
-            "noMelee":true,
             "noShield":true,
             "noDef":true,
             "noBis":true,
@@ -5225,10 +5224,10 @@
             "noDatt":true,
             "rof":32,
             "accuracy":12,
-            "power":24,
+            "power":27,
             "aoe":"squad",
             "sound":"belt",
-            "ammo":["autodes","autodes-incendiaire","autodes-napalm","autodes-gaz","autodes-nanite","autodes-uridium","autodes-deluge"]
+            "ammo":["autodes","autodes-incendiaire","autodes-napalm","autodes-gaz","autodes-jello","autodes-nanite","autodes-uridium","autodes-deluge"]
         },
         "protection":["aucun","chobham","iso","tisal","nano","duneg","soap","swing"],
         "equip":["aucun","e-flash","e-camo","e-ranger","g2motor","waterproof","detector"],
@@ -5793,10 +5792,10 @@
             "kit":true,
             "rof":20,
             "accuracy":12,
-            "power":24,
+            "power":27,
             "aoe":"squad",
             "sound":"belt",
-            "ammo":["autodes","autodes-incendiaire","autodes-napalm","autodes-gaz","autodes-nanite","autodes-uridium","autodes-deluge"]
+            "ammo":["autodes","autodes-incendiaire","autodes-napalm","autodes-gaz","autodes-jello","autodes-nanite","autodes-uridium","autodes-deluge"]
         },
         "equip":["aucun","w2-goodbye"],
         "log3eq":[],
@@ -5889,10 +5888,10 @@
             "noDatt":true,
             "rof":24,
             "accuracy":12,
-            "power":28,
+            "power":32,
             "aoe":"squad",
             "sound":"belt",
-            "ammo":["autodes","autodes-incendiaire","autodes-napalm","autodes-gaz","autodes-nanite","autodes-uridium","autodes-deluge"]
+            "ammo":["autodes","autodes-incendiaire","autodes-napalm","autodes-gaz","autodes-jello","autodes-nanite","autodes-uridium","autodes-deluge"]
         },
         "protection":["aucune","scrap","kevlar"],
         "equip":["aucun","e-flash","e-ranger","e-jetpack","e-camo","repel"],

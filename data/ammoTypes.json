@@ -2259,6 +2259,21 @@
         "batch":50
     },
     {
+        "name": "autodes-jello",
+        "range": 1,
+        "rof": 0.5,
+        "power": 0,
+        "powermult": 0.3,
+        "armors": 0,
+        "accuracy": 2,
+        "apdamage": 0,
+        "aoe": "bat",
+        "bldReq":["Arsenal","Laboratoire"],
+        "compReq":{"explo":1,"exo":1,"ca":4},
+        "costs":{"Argon":2,"Azote":8,"Plastanium":2,"Végétaux":4},
+        "batch":50
+    },
+    {
         "name": "dynamite",
         "range": 1,
         "rof": 1,

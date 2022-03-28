@@ -426,6 +426,7 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
 
 function batDeath(bat,count) {
     console.log('DEATH');
+    console.log(bat);
     let deadId = bat.id;
     let tileId = bat.tileId;
     let batType = getBatType(bat);

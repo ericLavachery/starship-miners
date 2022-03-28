@@ -1461,11 +1461,23 @@
         "cat":"equip",
         "skills":[],
         "info":"Espace++ Panneaux Isolation (Extraction+)",
-        "bldReq":[],
+        "bldReq":["Usine"],
         "compReq":{"const":2,"energ":1,"log":2,"ind":1},
-        "autoComp":["Usine"],
+        "autoComp":[],
         "factor":"one",
         "costs":{"Compo1":200,"Compo2":50,"Scrap":60,"Végétaux":60,"Bois":60,"Tungstène":60,"Electros":30,"Batteries":30,"Silicium":80,"Carbone":25,"Hydrogène":25,"Oxygène":12,"Batteries":8}
+    },
+    {
+        "name":"e-infra",
+        "cat":"equip",
+        "skills":[],
+        "info":"Fortifications",
+        "bldReq":["Chaîne de montage"],
+        "compReq":{"const":1,"def":2,"log":2},
+        "autoComp":["def",3],
+        "factor":"one",
+        "costs":{"Fer":100,"Scrap":100,"Carbone":20,"Moteurs":20,"Eau":50,"Zinc":25,"Cuivre":20},
+        "deploy":{"Energie":50,"Huile":10}
     },
     {
         "name":"confort",

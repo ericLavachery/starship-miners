@@ -1905,7 +1905,7 @@ function putRoad(apCost) {
     tagDelete(selectedBat,'guet');
     doneAction(selectedBat);
     camoOut();
-    if (selectedBatType.skills.includes('infrahelp')) {
+    if (selectedBatType.skills.includes('infrahelp') || selectedBat.eq === 'e-infra' || selectedBat.logeq === 'e-infra') {
         selectedBat.apLeft = selectedBat.apLeft-apCost;
         putRoadsAround();
     } else {
@@ -1952,7 +1952,7 @@ function putInfra(infraName) {
         }
     }
     let apCost = Math.round(Math.sqrt(mecanoSkill)*infra.fabTime/1.7/(playerInfos.comp.const+3)*3);
-    if (selectedBatType.skills.includes('infraconst')) {
+    if (selectedBatType.skills.includes('infast')) {
         apCost = Math.ceil(apCost/3);
     }
     console.log('apCost:'+apCost);

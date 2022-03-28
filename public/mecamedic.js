@@ -989,6 +989,9 @@ function getMaintenanceCosts(bat,batType) {
         let key = entry[0];
         let value = entry[1];
         let thatCost = Math.floor(value*state/100);
+        if (key === 'Moteurs') {
+            thatCost = Math.ceil(thatCost*2);
+        }
         if (thatCost >= 1 && key != 'Transorb') {
             maintCosts[key] = thatCost;
         }

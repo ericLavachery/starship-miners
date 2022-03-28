@@ -869,8 +869,9 @@ function turnInfo() {
                 $('#tour').append('<span class="neutre" title="Aucun oeuf en approche">Aucun oeuf en vue</span><br>');
                 turnCol = 'neutre';
             }
-            if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) {
-                $('#tour').append('<span class="'+turnCol+'" title="Pas de cocon avant le tour '+allCoconTurns[playerInfos.cocons]+'">Cocon tour '+allCoconTurns[playerInfos.cocons]+'</span><br>');
+            if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2 && allCoconTurns[playerInfos.cocons]-10 <= playerInfos.mapTurn) {
+                let approxTurn = Math.round(allCoconTurns[playerInfos.cocons]/5)*5;
+                $('#tour').append('<span class="'+turnCol+'" title="Cocon prévu aux alentours du tour '+approxTurn+'">Cocon en approche</span><br>');
             }
         }
         if ((playerInfos.comp.det >= 3 && playerInfos.bldList.includes('Centre de com')) || playerInfos.comp.det >= 4) {

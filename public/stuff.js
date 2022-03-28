@@ -395,7 +395,7 @@ function nearWhat(myBat,myBatType) {
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         if (bat.loc === "zone") {
-            if (batType.skills.includes('infrahelp')) {
+            if (batType.skills.includes('infrahelp') || bat.eq === 'e-infra' || bat.logeq === 'e-infra') {
                 if (myCrew >= 12 && myCat === 'infantry') {
                     if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
                         near.caserne = true;

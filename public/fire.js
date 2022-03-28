@@ -171,7 +171,7 @@ function combat(melee) {
             if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('after') || targetBat.eq.includes('w2-auto')) {
                 minimumFireAP = -999;
             }
-            if ((defAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap') {
+            if ((defAlive && attAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap') {
                 defense(melee,false);
                 if (!isFFW) {
                     soundWeap = targetWeap;
@@ -208,7 +208,7 @@ function combat(melee) {
                     shotSound(soundWeap,soundBat);
                 }
             }
-            if (attAlive) {
+            if (attAlive && defAlive) {
                 minimumFireAP = minFireAP;
                 if (selectedBatType.skills.includes('guerrilla')) {
                     minimumFireAP = minFireAP-7;
@@ -1131,8 +1131,14 @@ function attack(melee,init) {
     }
     // jello
     if (selectedWeap.ammo.includes('jello')) {
-        if (!targetBat.tags.includes('jello')) {
+        if (selectedWeap.ammo.includes('autodes')) {
             targetBat.tags.push('jello');
+            targetBat.tags.push('jelly');
+            $('#report').append('<span class="report rose">Jelly<br></span>');
+        } else {
+            if (!targetBat.tags.includes('jello')) {
+                targetBat.tags.push('jello');
+            }
             $('#report').append('<span class="report rose">Jello<br></span>');
         }
     }
@@ -1965,8 +1971,14 @@ function defense(melee,init) {
     }
     // jello
     if (targetWeap.ammo.includes('jello')) {
-        if (!selectedBat.tags.includes('jello')) {
+        if (targetWeap.ammo.includes('autodes')) {
             selectedBat.tags.push('jello');
+            selectedBat.tags.push('jelly');
+            $('#report').append('<span class="report rose">Jelly<br></span>');
+        } else {
+            if (!selectedBat.tags.includes('jello')) {
+                selectedBat.tags.push('jello');
+            }
             $('#report').append('<span class="report rose">Jello<br></span>');
         }
     }
