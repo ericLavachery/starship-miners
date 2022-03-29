@@ -19,6 +19,7 @@ function alienMoveLoop() {
         targetBat = {};
         targetBatType = {};
         targetWeap = {};
+        fouissage();
         fearFactor(selectedBat,false);
         infraDestruction();
         checkPossibleMoves();
@@ -309,6 +310,21 @@ function checkPDM() {
         if (pointDeMire < 0) {
             // se rabat sur une autre cible
             shufBats.forEach(function(bat) {
+                if (bat.loc === "zone" && bat.fuzz >= 3) {
+                    batType = getBatType(bat);
+                    if (!batType.skills.includes('fly')) {
+                        distance = calcDistance(selectedBat.tileId,bat.tileId);
+                        if (distance < lePlusProche) {
+                            pointDeMire = bat.tileId;
+                            lePlusProche = distance;
+                        }
+                    }
+                }
+            });
+        }
+        if (pointDeMire < 0) {
+            // se rabat sur une autre cible
+            shufBats.forEach(function(bat) {
                 if (bat.loc === "zone" && bat.fuzz >= 1) {
                     batType = getBatType(bat);
                     if (!batType.skills.includes('fly')) {
@@ -324,7 +340,7 @@ function checkPDM() {
         if (pointDeMire < 0) {
             // se rabat sur une autre cible
             shufBats.forEach(function(bat) {
-                if (bat.loc === "zone" && bat.fuzz == 0) {
+                if (bat.loc === "zone" && bat.fuzz === 0) {
                     batType = getBatType(bat);
                     if (!batType.skills.includes('fly')) {
                         distance = calcDistance(selectedBat.tileId,bat.tileId);
@@ -576,7 +592,7 @@ function checkPossibleJumps() {
     let batHere = false;
     let distance;
     let maxDistance;
-    if (selectedBatType.skills.includes('fouisseur') || selectedBatType.skills.includes('sauteur')) {
+    if (selectedBatType.skills.includes('sauteur') || selectedBatType.skills.includes('vault')) {
         if (selectedBatType.skills.includes('errant')) {
             maxDistance = 9;
         } else if (selectedBatType.skills.includes('sauteur')) {
@@ -598,11 +614,11 @@ function checkPossibleJumps() {
                     batHere = true;
                 }
             }
-            if (tile.terrain === 'M' || tile.terrain === 'R' || tile.terrain === 'W' || tile.terrain === 'L') {
-                if (selectedBatType.skills.includes('fouisseur')) {
-                    batHere = true;
-                }
-            }
+            // if (tile.terrain === 'M' || tile.terrain === 'R' || tile.terrain === 'W' || tile.terrain === 'L') {
+            //     if (selectedBatType.skills.includes('fouisseur')) {
+            //         batHere = true;
+            //     }
+            // }
             if (!batHere) {
                 possibleMoves.push(tile.id);
             }
@@ -967,12 +983,15 @@ function moveToPDM() {
         if (selectedBatType.skills.includes('sauteur') && rand.rand(1,3) === 1 && (selectedBat.apLeft >= 4 || selectedBatType.skills.includes('invisible'))) {
             jump = true;
         }
-        if (selectedBatType.skills.includes('fouisseur') && rand.rand(1,3) === 1 && (selectedBat.apLeft >= 4 || selectedBatType.skills.includes('invisible'))) {
-            let tile = getTile(selectedBat);
-            if (tile.terrain != 'M' && tile.terrain != 'R' && tile.terrain != 'W' && tile.terrain != 'L') {
-                jump = true;
-            }
+        if (selectedBatType.skills.includes('vault') && rand.rand(1,3) === 1) {
+            jump = true;
         }
+        // if (selectedBatType.skills.includes('fouisseur') && rand.rand(1,3) === 1 && selectedBat.apLeft >= 4) {
+        //     let tile = getTile(selectedBat);
+        //     if (tile.terrain != 'M' && tile.terrain != 'R' && tile.terrain != 'W' && tile.terrain != 'L') {
+        //         jump = true;
+        //     }
+        // }
         if (selectedBat.tags.includes('stun')) {
             jump = false;
         }
@@ -1043,13 +1062,12 @@ function moveAlienBat(tileId,jump) {
     // remove ap
     let moveCost;
     if (jump) {
-        if (selectedBatType.skills.includes('fouisseur') && !selectedBatType.skills.includes('errant')) {
-            // moveCost = selectedBat.apLeft+8;
-            moveCost = selectedBat.apLeft;
-            selectedBat.salvoLeft = 0;
-        } else {
-            moveCost = selectedBat.apLeft-2;
-        }
+        // if (selectedBatType.skills.includes('fouisseur') && !selectedBatType.skills.includes('errant')) {
+        //     moveCost = selectedBat.apLeft;
+        //     selectedBat.salvoLeft = 0;
+        // } else {
+        // }
+        moveCost = selectedBat.apLeft-2;
     } else {
         if (isDiag(selectedBat.tileId,tileId)) {
             moveCost = calcMoveCost(tileId,true);

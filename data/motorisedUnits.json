@@ -885,7 +885,7 @@
         "mecanoCost":12,
         "transMaxSize":18,
         "transUnits":700,
-        "fuzz":4,
+        "fuzz":3.5,
         "deathFx":"planeexploair3",
         "mvSnd":"tank"
     },
@@ -3254,7 +3254,7 @@
             "subTypes":[]
         },
         "transRes":2000,
-        "fuzz":4.5,
+        "fuzz":3.5,
         "deathFx":"planeexploair3",
         "mvSnd":"truck"
     },
@@ -3326,7 +3326,7 @@
             "subTypes":[]
         },
         "transRes":1200,
-        "fuzz":4,
+        "fuzz":3,
         "deathFx":"planeexploair1",
         "mvSnd":"truck"
     },
@@ -4009,7 +4009,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["noguet","baddef","guerrilla","tirailleur","fly","longshot","escape","light","recupcit","recupres"],
-        "fuzz":4,
+        "fuzz":3.5,
         "deathFx":"SmallExplosion_05",
         "mvSnd":"saucer"
     },
