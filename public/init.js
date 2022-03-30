@@ -284,6 +284,9 @@ socket.on('savedMap-Load', function(sm) {
             thisBatType = getBatType(bat);
             if (thisBatType.sort === undefined) {
                 bat.sort = bat.range*10;
+                if (thisBatType.transUnits >= 10 && thisBatType.cat === 'vehicles') {
+                    bat.sort = bat.sort+50;
+                }
             } else {
                 bat.sort = thisBatType.sort;
             }

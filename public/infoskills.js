@@ -537,7 +537,7 @@ function skillsInfos(bat,batType,near) {
     }
     // FOUGUE
     if (bat.tags.includes('hero') && batType.skills.includes('herosalvo') && !bat.tags.includes('nofougue') && batHasTarget && !playerInfos.onShip) {
-        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Une salve supplémentaire" class="boutonVert skillButtons" onclick="fougue()"><i class="ra ra-player-teleport rpg"></i> <span class="small">0</span></button>&nbsp; Fougue</h4></span>');
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Une salve supplémentaire" class="boutonVert skillButtons" onclick="fougue()"><i class="ra ra-player-teleport rpg"></i> <span class="small">0</span></button>&nbsp; Bravoure</h4></span>');
     }
     // TORNADE
     if (bat.tags.includes('hero') && batType.skills.includes('herotornade') && !bat.tags.includes('notorn') && batHasTarget && !playerInfos.onShip) {

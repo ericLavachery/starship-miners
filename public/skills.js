@@ -46,7 +46,7 @@ function checkSecretPass(bat) {
                 if (playerInfos.showedTiles.includes(tile.id)) {
                     if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                         let distance = calcDistanceSquare(tile.id,bat.tileId);
-                        if (distance <= 4) {
+                        if (distance <= 7) {
                             numExits++;
                             secretPass.exit = tile.id;
                             secretPass.ok = true;

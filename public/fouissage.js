@@ -9,11 +9,33 @@ function fouissage() {
                 if (endGalId >= 0) {
                     let distance = calcDistance(selectedBat.tileId,endGalId);
                     selectedBat.apLeft = selectedBat.apLeft-Math.round(distance*1.5);
-                    selectedBat.tileId = endGalId;
+                    selectedBat.tileId = checkOutTile(endGalId);
+                    tileSelect(selectedBat);
+                    showAlien(selectedBat);
+                    selectedBatArrayUpdate();
                 }
             }
         }
     }
+};
+
+function checkOutTile(endGalId) {
+    let outTileId = endGalId;
+    let bestDistance = 100;
+    let shufZone = _.shuffle(zone);
+    shufZone.forEach(function(tile) {
+        let distance = calcDistance(tile.id,endGalId);
+        if (distance <= 1 && tile.id != endGalId) {
+            if (!playerOccupiedTiles.includes(tile.id) && !alienOccupiedTiles.includes(tile.id)) {
+                let pdmDistance = calcDistance(pointDeMire,tile.id);
+                if (pdmDistance < bestDistance) {
+                    bestDistance = pdmDistance;
+                    outTileId = tile.id;
+                }
+            }
+        }
+    });
+    return outTileId;
 };
 
 function checkStartGal() {
@@ -32,12 +54,10 @@ function checkStartGal() {
             shufZone.forEach(function(tile) {
                 if (tile.infra != undefined) {
                     if (tile.infra === 'Terriers') {
-                        if (tile.terrain != 'R' && tile.terrain != 'W' && tile.terrain != 'L') {
-                            if (!playerOccupiedTiles.includes(tile.id)) {
-                                let distance = calcDistance(selectedBat.tileId,tile.id);
-                                if (distance <= 4) {
-                                    jumpOK = true;
-                                }
+                        if (!playerOccupiedTiles.includes(tile.id)) {
+                            let distance = calcDistance(selectedBat.tileId,tile.id);
+                            if (distance <= 4) {
+                                jumpOK = true;
                             }
                         }
                     }
@@ -45,10 +65,12 @@ function checkStartGal() {
             });
         }
         // rien à 4 cases, creuse
-        if (!jumpOK && rand.rand(1,3) != 1 && selectedBat.apLeft >= 4) {
-            if (batTile.terrain != 'R' && batTile.terrain != 'W' && batTile.terrain != 'L') {
-                putTerrier(batTile);
-                jumpOK = true;
+        if (!jumpOK && rand.rand(1,2) === 1 && selectedBat.apLeft >= 4) {
+            if (batTile.terrain != 'R' && batTile.terrain != 'W' && batTile.terrain != 'L' && batTile.terrain != 'M') {
+                if (batTile.ruins === undefined) {
+                    putTerrier(batTile);
+                    jumpOK = true;
+                }
             }
         }
     }
@@ -63,13 +85,14 @@ function findEndGal() {
     shufZone.forEach(function(tile) {
         if (tile.infra != undefined) {
             if (tile.infra === 'Terriers') {
-                if (tile.terrain != 'R' && tile.terrain != 'W' && tile.terrain != 'L') {
-                    if (!playerOccupiedTiles.includes(tile.id) && !alienOccupiedTiles.includes(tile.id)) {
-                        let distance = calcDistance(selectedBat.tileId,tile.id);
-                        if (distance <= 9) {
-                            let pdmDistance = calcDistance(pointDeMire,tile.id);
-                            if (pdmDistance < bestDistance) {
-                                bestDistance = pdmDistance;
+                if (!playerOccupiedTiles.includes(tile.id) && !alienOccupiedTiles.includes(tile.id)) {
+                    let distance = calcDistance(selectedBat.tileId,tile.id);
+                    if (distance <= 9) {
+                        let pdmTerDist = calcDistance(pointDeMire,tile.id);
+                        let pdmBatDist = calcDistance(pointDeMire,selectedBat.tileId);
+                        if (pdmBatDist-3 > pdmTerDist) {
+                            if (pdmTerDist < bestDistance) {
+                                bestDistance = pdmTerDist;
                                 endGalId = tile.id;
                             }
                         }
@@ -81,13 +104,15 @@ function findEndGal() {
     if (endGalId < 0) {
         shufZone.forEach(function(tile) {
             if (!playerOccupiedTiles.includes(tile.id) && !alienOccupiedTiles.includes(tile.id)) {
-                if (tile.terrain != 'R' && tile.terrain != 'W' && tile.terrain != 'L') {
-                    let distance = calcDistance(selectedBat.tileId,tile.id);
-                    if (distance <= 7) {
-                        let pdmDistance = calcDistance(pointDeMire,tile.id);
-                        if (pdmDistance < bestDistance) {
-                            bestDistance = pdmDistance;
-                            endGalId = tile.id;
+                if (tile.terrain != 'R' && tile.terrain != 'W' && tile.terrain != 'L' && tile.terrain != 'M') {
+                    if (tile.ruins === undefined) {
+                        let distance = calcDistance(selectedBat.tileId,tile.id);
+                        if (distance <= 7) {
+                            let pdmDistance = calcDistance(pointDeMire,tile.id);
+                            if (pdmDistance < bestDistance) {
+                                bestDistance = pdmDistance;
+                                endGalId = tile.id;
+                            }
                         }
                     }
                 }

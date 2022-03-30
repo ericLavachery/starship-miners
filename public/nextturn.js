@@ -1342,12 +1342,17 @@ function tagsEffect(bat,batType) {
         }
         // SHINDA
         if (bat.tags.includes('shinda')) {
-            if (batType.skills.includes('resistpoison') && rand.rand(1,10) === 1) {
+            if (batType.skills.includes('nokill') && rand.rand(1,3) === 1) {
+                tagDelete(bat,'shinda');
+            } else if (batType.skills.includes('resistpoison') && rand.rand(1,8) === 1) {
                 tagDelete(bat,'shinda');
             } else {
                 let shindaDamage = Math.round(Math.sqrt(batType.hp)*30);
                 if (batType.skills.includes('reactpoison') || bat.tags.includes('reactpoison')) {
                     shindaDamage = shindaDamage*3;
+                }
+                if (batType.moveCost >= 90) {
+                    shindaDamage = Math.ceil(shindaDamage/2);
                 }
                 let totalDamage = bat.damage+rand.rand((Math.round(shindaDamage/2)),Math.round(shindaDamage*1.5));
                 squadHP = batType.squadSize*batType.hp;
