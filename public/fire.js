@@ -1301,8 +1301,7 @@ function attack(melee,init) {
     escaped = false;
     if (selectedWeap.ammo.includes('-deluge')) {
         deluge(selectedWeap,delugeTileId,false);
-    }
-    if (selectedWeap.ammo.includes('-gaz') && selectedWeap.ammo != 'grenade-gaz') {
+    } else if (selectedWeap.ammo.includes('-gaz') && selectedWeap.ammo != 'grenade-gaz') {
         let fromMissile = false;
         if (selectedWeap.ammo === 'missile-gaz') {
             fromMissile = true;

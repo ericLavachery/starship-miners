@@ -897,7 +897,7 @@ function applyShield() {
         if (targetBatType.kind === 'bug' && bugSHIELD) {
             shieldChance = 33;
         }
-        if ((targetBatType.kind === 'egg' || targetBatType.kind === 'egg2') && eggSHIELD) {
+        if ((targetBatType.kind === 'egg' || targetBatType.kind === 'egg2') && eggSHIELD && targetBatType.name != 'Colonie') {
             shieldChance = 33;
         }
     }
