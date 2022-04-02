@@ -29,7 +29,33 @@ autre son
 rof 1/2
 seconde arme tir à 1+1 (accuracy 10) noFly
 
+<svg id="svgfilters" aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter id="dark" x="0%" y="0%" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.005" result="fluffyNoise" numOctaves="5" />
+            <feColorMatrix in="fluffyNoise" type="matrix" values=".07 .07 .07 0 0 .07 .07 .07 0 0 .07 .07 .07 0 0 0 0 0 .25 0"/>
+            <feComposite operator="in" in2="SourceGraphic" result="monoFluffyNoise"/>
+            <feBlend in="SourceGraphic" in2="monoFluffyNoise" mode="screen" />
+        </filter>
+        <filter id="fluffy" x="0%" y="0%" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.008" result="fluffyNoise" numOctaves="5" />
+            <feColorMatrix in="fluffyNoise" type="matrix" values="0 .2 .2 .2 0 0 .2 .2 .2 0 0 .2 .2 0 0 0 0 0 .7 0"/>
+            <feComposite operator="in" in2="SourceGraphic" result="monoFluffyNoise"/>
+            <feBlend in="SourceGraphic" in2="monoFluffyNoise" mode="screen" />
+        </filter>
+    </defs>
+</svg>
 
+start of showMap()
+if (!playerInfos.onShip && playerInfos.clouds) {
+    if (zone[0].dark) {
+        $('#zone_map').css("filter","url(#dark) contrast(110%)");
+    } else {
+        $('#zone_map').css("filter","url(#fluffy) saturate(85%) contrast(140%)");
+    }
+} else {
+    $('#zone_map').css("filter","");
+}
 
 // function checkFlyTarget(weapon,batType) {
 //     if (weapon.noFly && batType.skills.includes('fly')) {

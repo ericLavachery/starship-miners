@@ -14,30 +14,10 @@ function getMapInfos() {
     console.log('pKind='+zoneInfos.pKind+' gKind='+zoneInfos.gKind+' sKind='+zoneInfos.sKind);
 };
 
-function toggleClouds() {
-    if (playerInfos.clouds) {
-        playerInfos.clouds = false;
-    } else {
-        playerInfos.clouds = true;
-    }
-    showMap(zone,false);
-};
-
 // Dessine la carte
 function showMap(wmap,justMoved) {
     // reset
     $('#zone_map').empty();
-    // $('#cadreMap').append('<img id="cloudz" src="/static/img/cloudz1.png">');
-    // $('#zone_map').append('<div id="couldz"><img src="/static/img/cloudz1.png"></div>');
-    if (!playerInfos.onShip && playerInfos.clouds) {
-        if (zone[0].dark) {
-            $('#zone_map').css("filter","url(#dark) contrast(110%)");
-        } else {
-            $('#zone_map').css("filter","url(#fluffy) saturate(85%) contrast(140%)");
-        }
-    } else {
-        $('#zone_map').css("filter","");
-    }
     // fill
     let terClass = getTerrainFilter(wmap[0]);
     let minX = xOffset+1;
@@ -122,7 +102,32 @@ function showMap(wmap,justMoved) {
         alienOccupiedTileList();
         playerOccupiedTileList();
     }
+    mapEffect();
     // console.log(zone);
+};
+
+function toggleMapEffect() {
+    if (playerInfos.clouds) {
+        playerInfos.clouds = false;
+    } else {
+        playerInfos.clouds = true;
+    }
+    showMap(zone,false);
+};
+
+function mapEffect() {
+    $('#zone_effect').empty();
+    if (!playerInfos.onShip && playerInfos.clouds) {
+        $('#zone_effect').append('<span onmouseover="mapEffectOut()"><img src="/static/img/cloudz1.png"></span>');
+    }
+};
+
+function mapEffectOut() {
+    $("#zone_effect").css("display","none");
+};
+
+function mapEffectIn() {
+    $("#zone_effect").css("display","block");
 };
 
 function showLanderLandingTiles() {

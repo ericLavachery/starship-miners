@@ -5,17 +5,22 @@ body {
     background-image: url(/static/img/rayures.jpg);
     background-repeat: no-repeat;
 }
-/* #zone_map {
+#zone_map {
     position: absolute;
-    margin-left: 0px;
-    margin-top: 0px;
-} */
+    z-index: 1;
+    /* margin-left: 0px; */
+    /* margin-top: 0px; */
+}
+#zone_effect {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    /* margin-left: 0px; */
+    /* margin-top: 0px; */
+}
 #cadreMap {
     padding: 0 0 0 0;
     margin: 0 0 0 4px;
-}
-#cloudz {
-    z-index: 5000;
 }
 .woodBlock {
     background-color: black;

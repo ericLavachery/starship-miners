@@ -715,7 +715,7 @@ function calcDamage(weapon,power,armor,defBat) {
     }
     if (defBat.tags.includes('jelly')) {
         if (defBatType.skills.includes('nojello')) {
-            armor = Math.round(armor*3/4);
+            armor = Math.round(armor/1.5);
         } else {
             armor = Math.round(armor/2);
         }
@@ -2103,16 +2103,20 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.range = thisWeapon.range+thisWeapon.elevation;
     }
     // additional ranges
-    if (!thisWeapon.isMelee && ((!thisWeapon.isShort && thisWeapon.range >= 1) || thisWeapon.range >= 2 || thisWeapon.ammo.includes('lf-') || thisWeapon.ammo.includes('lt-') || (thisWeapon.elevation >= 1 && thisWeapon.range >= 1))) {
-        // ammo range
-        if (thisWeapon.range === 0 && ammo.range > 1) {
-            thisWeapon.range = 1;
-        } else {
-            thisWeapon.range = Math.ceil(thisWeapon.range*ammo.range);
-        }
-        // hero range
-        if (bat.tags.includes('hero') && batType.skills.includes('herorange')) {
-            thisWeapon.range = thisWeapon.range+1;
+    if (!thisWeapon.isMelee) {
+        if (!thisWeapon.name.includes('ombes')) {
+            if ((!thisWeapon.isShort && thisWeapon.range >= 1) || thisWeapon.range >= 2 || thisWeapon.ammo.includes('lf-') || thisWeapon.ammo.includes('lt-') || (thisWeapon.elevation >= 1 && thisWeapon.range >= 1)) {
+                // ammo range
+                if (thisWeapon.range === 0 && ammo.range > 1) {
+                    thisWeapon.range = 1;
+                } else {
+                    thisWeapon.range = Math.ceil(thisWeapon.range*ammo.range);
+                }
+                // hero range
+                if (bat.tags.includes('hero') && batType.skills.includes('herorange')) {
+                    thisWeapon.range = thisWeapon.range+1;
+                }
+            }
         }
     }
     // Forêt (range)

@@ -337,7 +337,7 @@ function attack(melee,init) {
                     selectedWeap.aoe = 'bat';
                 }
             }
-            selectedWeap.power = Math.round(selectedWeap.power*(1+(wetness/2)));
+            selectedWeap.power = Math.round(selectedWeap.power*(1+(wetness/3)));
         }
     }
     // AOE Shots
@@ -1377,7 +1377,7 @@ function defense(melee,init) {
                     targetWeap.aoe = 'bat';
                 }
             }
-            targetWeap.power = Math.round(targetWeap.power*(1+(wetness/2)));
+            targetWeap.power = Math.round(targetWeap.power*(1+(wetness/3)));
         }
     }
     let aoeShots = 1;

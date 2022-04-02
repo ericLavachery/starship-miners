@@ -2588,8 +2588,8 @@
         "aoe": "bat",
         "info": "Incendiaire",
         "bldReq":["Usine d'armement","Laboratoire"],
-        "compReq":{"bal":1,"explo":1,"pyro":3,"arti":1},
-        "deploy":{"Aluminium":3,"Nickel":1,"Explosifs":3,"Oxygène":1,"Fuel":3,"Huile":1,"Electros":2,"Batteries":1,"Pyratol":3},
+        "compReq":{"bal":1,"explo":2,"pyro":3,"arti":1},
+        "deploy":{"Aluminium":3,"Nickel":1,"Explosifs":3,"Oxygène":2,"Fuel":3,"Huile":1,"Electros":2,"Batteries":1,"Pyratol":3},
         "batch":100
     },
     {

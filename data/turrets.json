@@ -1083,7 +1083,7 @@
         },
         "weapon2":{
             "name":"Missiles Thunder",
-            "cost":9,
+            "cost":10,
             "range":9,
             "noMelee":true,
             "noFly":true,
