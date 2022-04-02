@@ -6,8 +6,17 @@ body {
     background-repeat: no-repeat;
 }
 /* #zone_map {
-    filter: url(#fluffy) saturate(85%) contrast(140%);
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 0px;
 } */
+#cadreMap {
+    padding: 0 0 0 0;
+    margin: 0 0 0 4px;
+}
+#cloudz {
+    z-index: 5000;
+}
 .woodBlock {
     background-color: black;
     font-size: 13px;
@@ -169,13 +178,6 @@ h6 {
     cursor: pointer;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
-}
-#cadreMap {
-    /* background-color: #0d0e11; */
-    /* padding: 3px 10px 10px 10px; */
-    padding: 0 0 0 0;
-    margin: 0 0 0 4px;
-    /* border-radius: 9px; */
 }
 #miniMapCol {
     display: none;
@@ -626,7 +628,7 @@ hr.craft {
     display: inline-grid;
     /* grid-template-columns: 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px 72px; */
     /* grid-template-rows: 72px 72px 72px 72px 72px 72px 72px 72px 72px; */
-    background-image: url(/static/img/dawn-fog-big-dark2.jpg);
+    /* background-image: url(/static/img/dawn-fog-big-dark2.jpg); */
 }
 .grid-item {
     /* border: 1px solid rgba(0, 0, 0, 0.6); */

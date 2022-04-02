@@ -27,6 +27,8 @@ function toggleClouds() {
 function showMap(wmap,justMoved) {
     // reset
     $('#zone_map').empty();
+    // $('#cadreMap').append('<img id="cloudz" src="/static/img/cloudz1.png">');
+    // $('#zone_map').append('<div id="couldz"><img src="/static/img/cloudz1.png"></div>');
     if (!playerInfos.onShip && playerInfos.clouds) {
         if (zone[0].dark) {
             $('#zone_map').css("filter","url(#dark) contrast(110%)");

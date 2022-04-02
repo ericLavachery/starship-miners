@@ -227,8 +227,8 @@
     {
         "name":"soap",
         "cat":"armor",
-        "armor":2,
-        "ap":-1,
+        "armor":1,
+        "ap":0,
         "skills":["soap"],
         "bldReq":["Laboratoire"],
         "compReq":{"mat":1,"ca":4},

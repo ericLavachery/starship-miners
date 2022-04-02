@@ -48,8 +48,24 @@ function checkStartGal() {
                 jumpOK = true;
             }
         }
-        // rien en dessous, cherche à 4 cases
+        // rien en dessous, cherche à 2 cases
         if (!jumpOK) {
+            let shufZone = _.shuffle(zone);
+            shufZone.forEach(function(tile) {
+                if (tile.infra != undefined) {
+                    if (tile.infra === 'Terriers') {
+                        if (!playerOccupiedTiles.includes(tile.id)) {
+                            let distance = calcDistance(selectedBat.tileId,tile.id);
+                            if (distance <= 2) {
+                                jumpOK = true;
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        // rien à 2 cases, cherche à 4 cases
+        if (!jumpOK && rand.rand(1,2) === 1 && selectedBat.apLeft >= 4) {
             let shufZone = _.shuffle(zone);
             shufZone.forEach(function(tile) {
                 if (tile.infra != undefined) {

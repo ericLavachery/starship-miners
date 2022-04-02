@@ -1989,6 +1989,16 @@ function updateBldList() {
             if (bat.type === 'Chercheurs') {
                 playerInfos.sci++;
             }
+            if (bat.type === 'Sonde' || bat.type === 'Impacteur') {
+                if (!playerInfos.bldList.includes(batType.name)) {
+                    playerInfos.bldList.push(batType.name);
+                }
+                if (playerInfos.onShip) {
+                    if (!playerInfos.bldVM.includes(batType.name)) {
+                        playerInfos.bldVM.push(batType.name);
+                    }
+                }
+            }
             if (batType.cat === 'buildings' && !batType.skills.includes('nolist') && !bat.tags.includes('construction')) {
                 if (!playerInfos.bldList.includes(batType.name)) {
                     playerInfos.bldList.push(batType.name);
