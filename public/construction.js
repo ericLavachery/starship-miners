@@ -1910,6 +1910,9 @@ function putRoad(apCost) {
         putRoadsAround();
     } else {
         tile.rd = true;
+        if (tile.qs != undefined) {
+            delete tile.qs;
+        }
     }
     selectedBatArrayUpdate();
     showMap(zone,false);
@@ -1921,6 +1924,9 @@ function putRoadsAround() {
         let distance = calcDistance(selectedBat.tileId,tile.id);
         if (distance <= 1 && tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
             tile.rd = true;
+            if (tile.qs != undefined) {
+                delete tile.qs;
+            }
         }
     });
 };

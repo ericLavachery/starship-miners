@@ -236,6 +236,8 @@ function showRes(tileId) {
         }
         if (tile.rd) {
             mapIndicators = mapIndicators+'<i class="fas fa-shoe-prints fa-rotate-270 road"></i>';
+        } else if (tile.qs) {
+            mapIndicators = mapIndicators+'<i class="fas fa-water road"></i>';
         }
         if (tile.tileName !== undefined && tile.tileName != '') {
             mapIndicators = mapIndicators+'<i class="fas fa-map-marker-alt inficon"></i>';

@@ -964,12 +964,14 @@ function energyCreation(energyCreated) {
 function scrapCreation(scrapCreated) {
     let triComp = playerInfos.comp.tri;
     if (playerInfos.bldList.includes('Recyclab')) {
-        triComp = triComp+4;
+        triComp = triComp+3;
     } else if (playerInfos.bldList.includes('Centre de tri')) {
-        triComp = triComp+2;
+        triComp = triComp+1.5;
     }
     if (!playerInfos.bldList.includes('Décharge')) {
         triComp = triComp-1.5;
+    } else if (playerInfos.onShip || hasScraptruck) {
+        triComp = triComp+1;
     }
     scrapCreated = Math.ceil(scrapCreated*(triComp+3)/3);
     return scrapCreated;

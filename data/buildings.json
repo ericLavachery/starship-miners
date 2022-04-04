@@ -1457,7 +1457,7 @@
             "ammo":["standard"]
         },
         "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
-        "equip":["aucun","bldkit","w1-gun","w2-arti","w2-autogun","psol2","isophon","garage","e-infra"],
+        "equip":["aucun","bldkit","w1-gun","w2-autogun","psol2","isophon","garage","e-infra"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
         "maxFlood":-1,

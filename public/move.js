@@ -363,18 +363,26 @@ function moveSelectedBat(tileId,free,jump) {
         }
     }
     if (zone[0].planet === 'Kzin') {
-        if (!selectedBatType.skills.includes('fly') && selectedBat.eq != 'e-jetpack') {
+        if (!selectedBatType.skills.includes('fly') && selectedBat.eq != 'e-jetpack' && selectedBatType.moveCost < 90 && (!selectedBatType.skills.includes('oknitro') || selectedBatType.skills.includes('moto'))) {
             let tile = getTileById(tileId);
-            if (tile.terrain != 'M' && tile.terrain != 'F' && tile.terrain != 'H' && !tile.rd) {
-                let mudChance = 1;
-                if (tile.terrain === 'P' || tile.terrain === 'S') {
+            if (!tile.rd) {
+                let mudChance = 0;
+                if (tile.terrain === 'S') {
+                    mudChance = 13;
+                } else if (tile.terrain === 'P') {
                     mudChance = 10;
                 } else if (tile.terrain === 'G') {
-                    mudChance = 3;
+                    mudChance = 7;
+                } else if (tile.terrain === 'B') {
+                    mudChance = 5.5;
                 }
-                mudChance = mudChance*tile.seed/3;
-                mudChance = mudChance*7/(selectedBat.vet+6);
-                mudChance = Math.ceil(mudChance*10/(playerInfos.comp.det+8));
+                mudChance = (mudChance*tile.seed/2)-15;
+                if (mudChance <= 0) {
+                    mudChance = 0;
+                } else {
+                    mudChance = mudChance*7/(selectedBat.vet+6);
+                    mudChance = Math.ceil(mudChance*8/(playerInfos.comp.det+6));
+                }
                 if (rand.rand(1,100) <= mudChance) {
                     if (!selectedBat.tags.includes('mud')) {
                         selectedBat.tags.push('mud');
@@ -385,7 +393,8 @@ function moveSelectedBat(tileId,free,jump) {
                     } else {
                         selectedBat.apLeft = selectedBat.apLeft-2;
                     }
-                    warning('Sables mouvants','Bataillon immobilisé! ('+mudChance+'%)')
+                    tile.qs = true;
+                    warning('Sables mouvants','Bataillon immobilisé!')
                 }
             }
         }

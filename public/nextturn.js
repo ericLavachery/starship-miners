@@ -1188,11 +1188,17 @@ function tagsEffect(bat,batType) {
     let squadsOut;
     // MUD
     if (bat.tags.includes('mud')) {
-        bat.apLeft = bat.apLeft-bat.ap;
-        if (batType.skills.includes('ranger') || batType.skills.includes('caterp') || bat.eq === 'e-ranger' || bat.logeq === 'e-ranger') {
-            bat.apLeft = bat.apLeft+rand.rand(0,bat.ap);
-        } else if (bat.eq === 'chenilles' || bat.logeq === 'chenilles') {
-            bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3*2));
+        if (batType.moveCost < 90) {
+            bat.apLeft = bat.apLeft-bat.ap;
+            if (batType.skills.includes('ranger') || batType.skills.includes('caterp') || bat.eq === 'e-ranger' || bat.logeq === 'e-ranger') {
+                bat.apLeft = bat.apLeft+rand.rand(0,bat.ap);
+            } else if (bat.eq === 'chenilles' || bat.logeq === 'chenilles') {
+                bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3*2));
+            } else {
+                bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/2));
+            }
+        } else {
+            tagDelete(bat,'mud');
         }
     }
     // BLAZE DRUG
