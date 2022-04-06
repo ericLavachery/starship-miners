@@ -1590,7 +1590,6 @@ function ammoFired(batId) {
 
 function weaponAdj(weapon,bat,wn) {
     let batType = getBatType(bat);
-    // bonus veterancy
     let thisWeapon = {};
     if (wn == 'w2') {
         thisWeapon.num = 2;
@@ -1600,10 +1599,10 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.num = 1;
     }
     // bonus vet
-    thisWeapon.rof = Math.floor(weapon.rof*(bat.vet+vetBonus.rof)/vetBonus.rof);
+    thisWeapon.rof = weapon.rof*(bat.vet+vetBonus.rof)/vetBonus.rof;
     // hero rof
     if (bat.tags.includes('hero') && batType.skills.includes('herorof')) {
-        thisWeapon.rof = Math.round(thisWeapon.rof*1.25);
+        thisWeapon.rof = thisWeapon.rof*1.25;
     }
     if (Object.keys(weapon).length >= 1) {
         thisWeapon.name = weapon.name;
@@ -1747,6 +1746,10 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.hide = weapon.hide;
     }
+    // tuning
+    if (batType.cat != 'aliens' && thisWeapon.isMelee) {
+        thisWeapon.rof = thisWeapon.rof*meleeROF;
+    }
     // Equip adj
     if (thisWeapon.num === 1) {
         if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes') {
@@ -1856,7 +1859,7 @@ function weaponAdj(weapon,bat,wn) {
     if (bat.eq === 'g2siege' || bat.logeq === 'g2siege') {
         if (thisWeapon.name.includes('Baliste') || thisWeapon.name.includes('Catapulte')) {
             thisWeapon.range = thisWeapon.range+1;
-            thisWeapon.rof = Math.round(thisWeapon.rof*1.4);
+            thisWeapon.rof = thisWeapon.rof*1.4;
             thisWeapon.noBis = false;
         }
     }
@@ -1918,7 +1921,7 @@ function weaponAdj(weapon,bat,wn) {
     }
     if (bat.eq === 'belier' || bat.logeq === 'belier') {
         if (thisWeapon.name === 'Boutoir') {
-            thisWeapon.rof = Math.round(thisWeapon.rof*1.5);
+            thisWeapon.rof = thisWeapon.rof*1.5;
             thisWeapon.power = Math.round(thisWeapon.power*1.26);
             thisWeapon.accuracy = thisWeapon.accuracy+2;
             thisWeapon.name = 'Bélier';
@@ -1927,7 +1930,7 @@ function weaponAdj(weapon,bat,wn) {
     if (bat.eq === 'crimekitgi') {
         if (thisWeapon.num === 1) {
             thisWeapon.power = thisWeapon.power+1;
-            thisWeapon.rof = Math.round(thisWeapon.rof*1.33);
+            thisWeapon.rof = thisWeapon.rof*1.33;
         }
     }
     if (bat.eq === 'kit-lightning') {
@@ -2004,12 +2007,12 @@ function weaponAdj(weapon,bat,wn) {
     }
     if (ammo.accuracy < 1 || thisWeapon.isMelee || thisWeapon.aoe != 'unit' || ammo.name.includes('web') || ammo.name.includes('marquage')) {
         thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
-        thisWeapon.rof = Math.round(thisWeapon.rof*ammo.rof);
+        thisWeapon.rof = thisWeapon.rof*ammo.rof;
     } else {
         if (thisWeapon.accuracy >= 32) {
             thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
         } else {
-            thisWeapon.rof = Math.round(thisWeapon.rof*ammo.rof);
+            thisWeapon.rof = thisWeapon.rof*ammo.rof;
         }
     }
     // helper
@@ -2038,7 +2041,7 @@ function weaponAdj(weapon,bat,wn) {
     }
     // eatpoison & frenzy
     if (batType.skills.includes('eatpoison') && bat.tags.includes('regeneration')) {
-        thisWeapon.rof = Math.round(thisWeapon.rof*2);
+        thisWeapon.rof = thisWeapon.rof*2;
     }
     // skills
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
@@ -2152,6 +2155,8 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.power = thisWeapon.power+Math.round(Math.sqrt(thisWeapon.power)*1.42);
         }
     }
+    // ROF round
+    thisWeapon.rof = Math.round(thisWeapon.rof);
     // hero tornade cost
     if (bat.tags.includes('tornade')) {
         if (thisWeapon.cost < 1) {

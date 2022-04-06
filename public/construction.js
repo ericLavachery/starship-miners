@@ -1915,6 +1915,7 @@ function putRoad(apCost) {
         }
     }
     selectedBatArrayUpdate();
+    moveMode();
     showMap(zone,false);
     showBatInfos(selectedBat);
 };
