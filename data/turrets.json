@@ -639,7 +639,6 @@
             "cost":1,
             "range":4,
             "elevation":2,
-            "noDef":true,
             "noise":1,
             "rof":36,
             "accuracy":30,

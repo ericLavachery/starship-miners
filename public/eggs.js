@@ -214,6 +214,9 @@ function getDropChance(turn) {
     console.log('mapAdjDiff'+playerInfos.mapAdjDiff);
     console.log('dropTurn'+dropTurn);
     let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapAdjDiff)*dropMod);
+    if (dropChance < 10) {
+        dropChance = 0;
+    }
     return dropChance;
 };
 
@@ -839,19 +842,21 @@ function eggDropTile(eggName,theArea) {
                 }
             }
         });
-        shufBats.forEach(function(bat) {
-            if (bat.loc === "zone") {
-                let batType = getBatType(bat);
-                if (batType.cat === 'buildings') {
-                    let distance = calcDistance(bat.tileId,theTile);
-                    if (distance < 5) {
-                        notThisTile = theTile;
-                        theTile = -1;
+        if (theTile < 0) {
+            shufBats.forEach(function(bat) {
+                if (bat.loc === "zone") {
+                    let batType = getBatType(bat);
+                    if (batType.cat === 'buildings') {
+                        let distance = calcDistance(bat.tileId,theTile);
+                        if (distance < 5) {
+                            notThisTile = theTile;
+                            theTile = -1;
+                        }
                     }
                 }
-            }
-        });
-        if (notThisTile != -1) {
+            });
+        }
+        if (notThisTile != -1 || theTile < 0) {
             bestFuzz = -3;
             shufBats.forEach(function(bat) {
                 if (bat.loc === "zone") {

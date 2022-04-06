@@ -79,8 +79,8 @@ function mining(bat) {
         if (bat.extracted != undefined) {
             if (bat.extracted.length >= 1 && !bat.tags.includes('guet') && !bat.tags.includes('fortif') && bat.apLeft >= 2 && bat.loc === 'zone') {
                 let batType = getBatType(bat);
-                if (batType.kind === 'zero-extraction') {
-                    warning('Extraction stoppée',bat.type+': Se tourne les pouces',false,bat.tileId);
+                if (batType.kind === 'zero-extraction' || batType.skills.includes('transorbital')) {
+                    warning('Extraction stoppée',bat.type+': Ne travaille pas',false,bat.tileId);
                 }
             }
         }
