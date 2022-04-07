@@ -450,7 +450,9 @@ function showResBallance(quiet) {
 };
 
 function eventCitoyens(time,sim,quiet) {
-    let newCitsNumber = Math.floor(time*rand.rand(10,20)/10);
+    let citNeed = getCitNeed();
+    console.log('$$$$$$$$$$$$$$$$$$$$$ citNeed = '+citNeed);
+    let newCitsNumber = Math.floor(time*citNeed*rand.rand(10,20)/10);
     let citId = 126;
     let citName = 'Citoyens';
     if (rand.rand(1,ruinsCrimChance) === 1) {
@@ -464,6 +466,13 @@ function eventCitoyens(time,sim,quiet) {
     if (!quiet) {
         warning('Nouveaux citoyens','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont débarqué dans la station.<br>',true);
     }
+};
+
+function getCitNeed() {
+    let citNeed = 1;
+    let mesCitoyens = calcTotalCitoyens(true);
+    citNeed = citNeed*playerInfos.allCits/mesCitoyens.real;
+    return citNeed;
 };
 
 function bonusCit(citId,toId,number) {
@@ -494,18 +503,28 @@ function calcTotalCitoyens(cryoOut) {
     let mesCitoyens = {};
     mesCitoyens.cit = 0;
     mesCitoyens.crim = 0;
+    mesCitoyens.real = 0;
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
-        if (batType.name === 'Citoyens' && !cryoOut) {
-            mesCitoyens.cit = mesCitoyens.cit+bat.citoyens;
-        } else if (batType.name === 'Criminels' && !cryoOut) {
-            mesCitoyens.crim = mesCitoyens.crim+bat.citoyens;
+        if (batType.name === 'Citoyens') {
+            if (!cryoOut) {
+                mesCitoyens.cit = mesCitoyens.cit+bat.citoyens;
+            }
+            mesCitoyens.real = mesCitoyens.real+bat.citoyens;
+        } else if (batType.name === 'Criminels') {
+            if (!cryoOut) {
+                mesCitoyens.crim = mesCitoyens.crim+bat.citoyens;
+            }
+            mesCitoyens.real = mesCitoyens.real+bat.citoyens;
         } else {
             let unitCits = batType.squads*batType.crew*batType.squadSize;
             if (batType.skills.includes('brigands')) {
                 mesCitoyens.crim = mesCitoyens.crim+unitCits;
             } else {
                 mesCitoyens.cit = mesCitoyens.cit+unitCits;
+            }
+            if (!batType.skills.includes('dog') && !batType.skills.includes('clone')) {
+                mesCitoyens.real = mesCitoyens.real+unitCits;
             }
         }
     });

@@ -226,13 +226,15 @@ function goDoxey() {
             tagDelete(selectedBat,'poison');
             tagDelete(selectedBat,'poison');
             selectedBat.emo = selectedBat.emo-2;
-        } else if (medComp >= 2) {
+        }
+        if (medComp >= 2) {
             tagDelete(selectedBat,'parasite');
             tagDelete(selectedBat,'necro');
             tagDelete(selectedBat,'poison');
             tagDelete(selectedBat,'poison');
             selectedBat.emo = selectedBat.emo-3;
-        } else if (medComp === 3) {
+        }
+        if (medComp === 3) {
             tagDelete(selectedBat,'poison');
             tagDelete(selectedBat,'poison');
             tagDelete(selectedBat,'poison');

@@ -1789,7 +1789,9 @@ function weaponAdj(weapon,bat,wn) {
         }
         if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.logeq === 'lunette' || bat.logeq === 'lunette1' || bat.eq === 'crimekitlu' || bat.eq.includes('kit-chouf') || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
             if (batType.skills.includes('lurange')) {
-                thisWeapon.range = Math.ceil(thisWeapon.range*1.5);
+                let tgr = getTGuetRange();
+                thisWeapon.range = thisWeapon.range+tgr.range;
+                thisWeapon.elevation = thisWeapon.elevation+tgr.elev;
             } else {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
@@ -1841,7 +1843,9 @@ function weaponAdj(weapon,bat,wn) {
         }
         if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.logeq === 'lunette' || bat.logeq === 'lunette2' || bat.eq.includes('kit-chouf')) {
             if (batType.skills.includes('lurange')) {
-                thisWeapon.range = Math.ceil(thisWeapon.range*1.5);
+                let tgr = getTGuetRange();
+                thisWeapon.range = thisWeapon.range+tgr.range;
+                thisWeapon.elevation = thisWeapon.elevation+tgr.elev;
             } else {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
@@ -2238,6 +2242,25 @@ function weaponAdj(weapon,bat,wn) {
     }
     // console.log(thisWeapon);
     return thisWeapon;
+};
+
+function getTGuetRange() {
+    let tgr = {};
+    tgr.range = 1;
+    tgr.elev = 0
+    if (playerInfos.comp.det === 3) {
+        tgr.range = 2;
+    } else if (playerInfos.comp.det === 4) {
+        tgr.range = 3;
+    } else if (playerInfos.comp.det === 5) {
+        tgr.range = 5;
+    }
+    if (playerInfos.comp.bal === 2) {
+        tgr.elev = 1;
+    } else if (playerInfos.comp.bal === 3) {
+        tgr.elev = 2;
+    }
+    return tgr;
 };
 
 function checkDeepForest(tile) {

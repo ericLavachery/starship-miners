@@ -1936,7 +1936,7 @@
         "name":"Tour de guet",
         "levels":{"rednecks":11,"blades":11,"bulbos":11,"drogmulojs":11,"tiradores":11,"detruas":11,"brasier":11},
         "bldReq":["Laboratoire","Poste radio"],
-        "compReq":{"det":3,"energ":1},
+        "compReq":{"det":2,"energ":1},
         "costs":{"Compo1":100,"Compo2":50,"Eau":54,"Carbone":72,"Silicium":18,"Electros":18,"Batteries":18,"Energie":18},
         "fabTime":35,
         "slots":0

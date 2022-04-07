@@ -665,6 +665,8 @@ function nextTurnEnd() {
 
 function turnInfo() {
     console.log('TURN INFO');
+    // let citNeed = getCitNeed();
+    // console.log('citNeed = '+citNeed);
     checkNeiTurn();
     let numberOfEggs = 0;
     let numberOfAliens = 0;
@@ -876,6 +878,9 @@ function turnInfo() {
         }
         if ((playerInfos.comp.det >= 3 && playerInfos.bldList.includes('Centre de com')) || playerInfos.comp.det >= 4) {
             if (playerInfos.vz-5-playerInfos.pauseSeed <= playerInfos.mapTurn) {
+                if (playerInfos.vz-5-playerInfos.pauseSeed === playerInfos.mapTurn) {
+                    warning('Convoi en approche','Attirés par le bruit, des survivants sont en route vers votre Lander.');
+                }
                 $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche">Survivants</span><br>');
             }
         }
@@ -1060,6 +1065,9 @@ function tagsUpdate(bat) {
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('octiron')) {
                 drugDown(bat,false,false);
+                if (bat.emo >= 11) {
+                    warning('Stress',bat.type+' est n\'est plus sous l\'effet de l\'Octiron.',false,bat.tileId);
+                }
             }
         }
     }
@@ -1068,7 +1076,7 @@ function tagsUpdate(bat) {
             tagIndex = bat.tags.indexOf('kirin');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('kirin')) {
-                drugDown(bat,true,false);
+                drugDown(bat,false,false);
             }
         }
     }
@@ -1087,6 +1095,9 @@ function tagsUpdate(bat) {
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('bliss')) {
                 drugDown(bat,false,true);
+                if (bat.emo >= 11) {
+                    warning('Stress',bat.type+' est n\'est plus sous l\'effet du Bliss.',false,bat.tileId);
+                }
             }
         }
     }
@@ -1134,7 +1145,7 @@ function drugDown(bat,fatigue,addict) {
             bat.apLeft = 3;
         }
     }
-    if (addict) {
+    if (addict && rand.rand(1,3) === 1) {
         if (bat.emo != undefined) {
             bat.emo = bat.emo+1;
         } else {
