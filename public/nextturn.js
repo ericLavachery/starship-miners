@@ -1052,7 +1052,7 @@ function tagsUpdate(bat) {
         tagDelete(bat,'stun');
     }
     if (bat.tags.includes('moloko')) {
-        if (rand.rand(1,5) === 1) {
+        if (rand.rand(1,4) === 1) {
             tagDelete(bat,'moloko');
             if (!bat.tags.includes('moloko')) {
                 warning('Burp...',bat.type+' a la gueule de bois.',false,bat.tileId);
@@ -1060,7 +1060,7 @@ function tagsUpdate(bat) {
         }
     }
     if (bat.tags.includes('octiron')) {
-        if (rand.rand(1,4) === 1) {
+        if (rand.rand(1,5) === 1) {
             tagIndex = bat.tags.indexOf('octiron');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('octiron')) {
@@ -1072,7 +1072,7 @@ function tagsUpdate(bat) {
         }
     }
     if (bat.tags.includes('kirin')) {
-        if (rand.rand(1,5) === 1) {
+        if (rand.rand(1,4) === 1) {
             tagIndex = bat.tags.indexOf('kirin');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('kirin')) {
@@ -1081,7 +1081,7 @@ function tagsUpdate(bat) {
         }
     }
     if (bat.tags.includes('sila')) {
-        if (rand.rand(1,5) === 1) {
+        if (rand.rand(1,4) === 1) {
             tagIndex = bat.tags.indexOf('sila');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('sila')) {
@@ -1111,7 +1111,7 @@ function tagsUpdate(bat) {
         }
     }
     if (bat.tags.includes('skupiac')) {
-        if (rand.rand(1,5) === 1) {
+        if (rand.rand(1,6) === 1) {
             tagIndex = bat.tags.indexOf('skupiac');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('skupiac')) {
@@ -1124,11 +1124,15 @@ function tagsUpdate(bat) {
         bat.tags.splice(tagIndex,1);
         tagIndex = bat.tags.indexOf('starka');
         bat.tags.splice(tagIndex,1);
+        tagIndex = bat.tags.indexOf('starka');
+        bat.tags.splice(tagIndex,1);
         if (!bat.tags.includes('starka')) {
             drugDown(bat,false,false);
         }
     }
     if (bat.tags.includes('nitro')) {
+        tagIndex = bat.tags.indexOf('nitro');
+        bat.tags.splice(tagIndex,1);
         tagIndex = bat.tags.indexOf('nitro');
         bat.tags.splice(tagIndex,1);
         tagIndex = bat.tags.indexOf('nitro');

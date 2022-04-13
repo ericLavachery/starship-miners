@@ -231,7 +231,7 @@ function showRes(tileId) {
         }
     }
     if (view) {
-        if (tile.rd || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
+        if (tile.rd || tile.qs || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
             mapIndicators = mapIndicators+'<div class="mapInfos" title="'+res+'">';
         }
         if (tile.rd) {

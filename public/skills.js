@@ -673,6 +673,7 @@ function goDrug(apCost,drugName) {
         if (!selectedBat.tags.includes(drug.name)) {
             selectedBat.tags.push(drug.name);
             selectedBat.tags.push(drug.name);
+            selectedBat.tags.push(drug.name);
             // blaze instant bonus
             if (drug.name === 'blaze') {
                 selectedBat.apLeft = selectedBat.apLeft+6;

@@ -498,7 +498,7 @@
         "skills":[],
         "info":"Portée+ Elévation+",
         "bldReq":["Arsenal"],
-        "compReq":{"bal":2,"log":2},
+        "compReq":{"bal":2,"log":1},
         "autoComp":["bal",3],
         "factor":"crew",
         "costs":{"Scrap":12,"Fer":12,"Aluminium":24}
@@ -509,10 +509,21 @@
         "skills":[],
         "info":"Portée+ Elévation+",
         "bldReq":["Arsenal"],
-        "compReq":{"bal":2,"log":2},
+        "compReq":{"bal":2,"log":1},
         "autoComp":["bal",3],
         "factor":"crew",
         "costs":{"Scrap":12,"Fer":12,"Aluminium":24}
+    },
+    {
+        "name":"lgkit",
+        "cat":"equip",
+        "skills":[],
+        "info":"Chargeur & Lance grenade",
+        "bldReq":["Arsenal"],
+        "compReq":{"bal":2,"log":2},
+        "autoComp":["bal",3],
+        "factor":"crew",
+        "costs":{"Scrap":15,"Fer":15,"Aluminium":24,"Carbone":5}
     },
     {
         "name":"arcpoulie",
@@ -623,7 +634,7 @@
         "skills":[],
         "info":"IA seconde génération",
         "bldReq":["Centre de recherches"],
-        "compReq":{"det":4,"ind":1,"robo":1},
+        "compReq":{"det":4,"ind":1},
         "autoComp":["det",5],
         "factor":"crew",
         "costs":{"Cuivre":6,"Electros":18,"Silicium":6,"Cobalt":12}

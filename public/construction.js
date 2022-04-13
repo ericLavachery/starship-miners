@@ -615,7 +615,7 @@ function checkSpecialEquip(equip,batType) {
             }
         }
     }
-    if (equip.name === 'lanceur2') {
+    if (equip.name === 'lanceur2' || equip.name === 'lgkit') {
         if (Object.keys(batType.weapon2).length >= 3) {
             if (batType.weapon2.name.includes('olotov')) {
                 if (playerInfos.comp.pyro < 2) {

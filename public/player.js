@@ -37,10 +37,11 @@ function voirBataillons() {
                 $('#conUnitList').append('<span class="ListRes" title="Malade"><i class="fas fa-thermometer"></i></span>&nbsp;&nbsp;');
             }
             if (bat.emo >= 11) {
+                let stress = bat.emo-10;
                 if (bat.tags.includes('bliss') || bat.tags.includes('octiron') || bat.tags.includes('fanatic')) {
-                    $('#conUnitList').append('<span class="ListRes gff" title="Stressé (mais traité)"><i class="fas fa-ghost"></i></span>&nbsp;&nbsp;');
+                    $('#conUnitList').append('<span class="ListRes gff" title="Stress '+stress+' (traité)"><i class="fas fa-ghost"></i></span>&nbsp;&nbsp;');
                 } else {
-                    $('#conUnitList').append('<span class="ListRes" title="Stressé"><i class="fas fa-ghost"></i></span>&nbsp;&nbsp;');
+                    $('#conUnitList').append('<span class="ListRes" title="Stress '+stress+'"><i class="fas fa-ghost"></i></span>&nbsp;&nbsp;');
                 }
             }
             $('#conUnitList').append('<br>');

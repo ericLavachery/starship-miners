@@ -707,16 +707,6 @@
         "fabTime":55
     },
     {
-        "id":268,
-        "name":"Lémures",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":8},
-        "bldReq":["Armurerie","Laboratoire"],
-        "compReq":{"cyber":1},
-        "costs":{"Corps":48,"Scrap":48,"Carbone":24,"Aluminium":24,"Titane":72,"Moteurs":24,"Electros":16,"Batteries":12,"Cuivre":12,"Silicium":12},
-        "deploy":{"Fuel":36},
-        "fabTime":45
-    },
-    {
         "id":135,
         "name":"Runners",
         "levels":{"rednecks":13,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":9,"brasier":99},
@@ -805,6 +795,16 @@
         "costs":{"Scrap":120,"Carbone":72,"Aluminium":144,"Moteurs":60,"Titane":96,"Tungstène":72,"Electros":80,"Batteries":32,"Cuivre":43,"Silicium":24,"Nickel":48,"Fuel":48,"Energie":96,"Chlore":10,"Tissus":5},
         "deploy":{"Fuel":80,"Energie":25,"Drogues":3,"Tissus":2},
         "fabTime":80
+    },
+    {
+        "id":268,
+        "name":"Lémures",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":8},
+        "bldReq":["Armurerie","Laboratoire"],
+        "compReq":{"cyber":1},
+        "costs":{"Corps":48,"Scrap":48,"Carbone":24,"Aluminium":24,"Titane":72,"Moteurs":24,"Electros":16,"Batteries":12,"Cuivre":12,"Silicium":12},
+        "deploy":{"Fuel":36},
+        "fabTime":45
     },
     {
         "id":82,

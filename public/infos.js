@@ -61,6 +61,7 @@ function batInfos(bat,batType,pop) {
         conWindowOut();
     }
     levelUp(bat,batType);
+    doRegroup(bat,batType);
     if (batType.skills.includes('transorbital')) {
         checkModules(bat,batType);
     }

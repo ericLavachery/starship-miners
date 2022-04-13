@@ -272,25 +272,42 @@ function healEverything() {
             gearTags.push('necro');
         }
         bat.tags = gearTags;
-        let healCost = 0;
-        if (bat.damage > 0) {
-            healCost = 1;
-        }
-        bat.damage = 0;
-        healCost = healCost+batType.squads-bat.squadsLeft;
-        bat.squadsLeft = batType.squads;
-        if (healCost >= 1) {
-            if (bat.soins != undefined) {
-                bat.soins = bat.soins+healCost;
-            } else {
-                bat.soins = healCost;
+        // SOINS -------------------------------------------
+        if (batType.skills.includes('norepair')) {
+            bat.damage = 0;
+        } else {
+            let healCost = 0;
+            if (bat.damage > 0) {
+                healCost = 1;
+            }
+            bat.damage = 0;
+            healCost = healCost+batType.squads-bat.squadsLeft;
+            if (batType.skills.includes('lowmed')) {
+                healCost = healCost*3;
+            }
+            bat.squadsLeft = batType.squads;
+            if (healCost >= 1) {
+                if (bat.soins != undefined) {
+                    bat.soins = bat.soins+healCost;
+                } else {
+                    bat.soins = healCost;
+                }
+            }
+            if (batType.skills.includes('clone')) {
+                if (bat.soins != undefined) {
+                    bat.soins = bat.soins+3;
+                } else {
+                    bat.soins = 3;
+                }
             }
         }
+        // AUTOLOAD -------------------------------------------
         if (bat.autoLoad != undefined) {
             if (bat.autoLoad.length >= 1) {
                 bat.autoLoad = [];
             }
         }
+        // AP -------------------------------------------
         bat.apLeft = bat.ap;
         bat.oldapLeft = bat.ap;
         bat.salvoLeft = batType.maxSalvo;

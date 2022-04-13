@@ -974,6 +974,59 @@ function getSpaceBatById(batId) {
     return bat;
 };
 
+function doRegroup(transBat,transBatType) {
+    let numBats = 0;
+    let numSquads = 0;
+    let mostSquads = 0;
+    let masterBatId = -1;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "trans" && bat.locId === transBat.id) {
+            let batType = getBatType(bat);
+            if (batType.skills.includes('regroup') && bat.squadsLeft < batType.squads) {
+                numBats++;
+                numSquads = numSquads+bat.squadsLeft;
+                if (mostSquads < bat.squadsLeft) {
+                    mostSquads = bat.squadsLeft;
+                    masterBatId = bat.id;
+                }
+            }
+        }
+    });
+    if (numBats >= 2) {
+        let masterBat = getBatById(masterBatId);
+        let masterBatType = getBatType(masterBat);
+        let squadsKill = 0;
+        masterBat.damage = 0;
+        if (numSquads <= masterBatType.squads) {
+            squadsKill = numSquads-masterBat.squadsLeft;
+            masterBat.squadsLeft = numSquads;
+        } else {
+            squadsKill = masterBatType.squads-masterBat.squadsLeft;
+            masterBat.squadsLeft = masterBatType.squads;
+        }
+        if (squadsKill >= 1) {
+            deadBatsList = [];
+            bataillons.forEach(function(bat) {
+                if (bat.loc === "trans" && bat.locId === transBat.id) {
+                    if (squadsKill >= 1) {
+                        let batType = getBatType(bat);
+                        if (batType.skills.includes('regroup') && bat.squadsLeft < batType.squads) {
+                            if (bat.squadsLeft <= squadsKill) {
+                                squadsKill = squadsKill-bat.squadsLeft;
+                                deadBatsList.push(bat.id);
+                            } else {
+                                squadsKill = 0;
+                                bat.squadsLeft = bat.squadsLeft-squadsKill;
+                            }
+                        }
+                    }
+                }
+            });
+            killBatList();
+        }
+    }
+};
+
 function killBatList() {
     bataillons.slice().reverse().forEach(function(bat,index,object) {
         if (deadBatsList.includes(bat.id)) {

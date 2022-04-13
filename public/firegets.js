@@ -1754,16 +1754,16 @@ function weaponAdj(weapon,bat,wn) {
     if (thisWeapon.num === 1) {
         if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes') {
             if (bat.eq  === 'detector' || bat.logeq  === 'detector' || bat.eq  === 'g2ai' || bat.logeq  === 'g2ai') {
-                thisWeapon.range = thisWeapon.range+1;
-                if (thisWeapon.elevation === 1) {
+                if (thisWeapon.elevation === 1 && thisWeapon.range >= 2) {
                     thisWeapon.elevation = 2;
                 }
+                thisWeapon.range = thisWeapon.range+1;
             }
         }
         if (bat.eq === 'longtom' || bat.eq === 'longtom1' || bat.logeq === 'longtom' || bat.logeq === 'longtom1') {
             thisWeapon.range = thisWeapon.range+1;
         }
-        if (bat.eq === 'chargeur' || bat.eq === 'chargeur1' || bat.logeq === 'chargeur' || bat.logeq === 'chargeur1') {
+        if (bat.eq === 'chargeur' || bat.eq === 'chargeur1' || bat.logeq === 'chargeur' || bat.logeq === 'chargeur1' || bat.eq === 'lgkit' || bat.logeq === 'lgkit') {
             if (thisWeapon.cost < 6 && playerInfos.comp.train < 1) {
                 thisWeapon.accuracy = thisWeapon.accuracy-1;
                 if (thisWeapon.cost >= 3) {
@@ -1808,10 +1808,10 @@ function weaponAdj(weapon,bat,wn) {
     } else if (thisWeapon.num === 2) {
         if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes') {
             if (bat.eq  === 'detector' || bat.logeq  === 'detector' || bat.eq  === 'g2ai' || bat.logeq  === 'g2ai') {
-                thisWeapon.range = thisWeapon.range+1;
-                if (thisWeapon.elevation === 1) {
+                if (thisWeapon.elevation === 1 && thisWeapon.range >= 2) {
                     thisWeapon.elevation = 2;
                 }
+                thisWeapon.range = thisWeapon.range+1;
             }
         }
         if (bat.eq === 'longtom' || bat.eq === 'longtom2' || bat.logeq === 'longtom' || bat.logeq === 'longtom2') {
@@ -1825,7 +1825,7 @@ function weaponAdj(weapon,bat,wn) {
                 }
             }
         }
-        if (bat.eq === 'lanceur2' || bat.logeq === 'lanceur2' || bat.eq === 'crimekitgi') {
+        if (bat.eq === 'lanceur2' || bat.logeq === 'lanceur2' || bat.eq === 'crimekitgi' || bat.eq === 'lgkit' || bat.logeq === 'lgkit') {
             if (!batType.skills.includes('camo')) {
                 thisWeapon.noise = thisWeapon.noise+1;
             }
@@ -2376,9 +2376,9 @@ function chargeurAdj(bat,shots,weap) {
     if (bat.eq.includes('kit-chouf')) {
         mult = 2;
     }
-    if (bat.eq.includes('chargeur') || bat.logeq.includes('chargeur') || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
+    if (bat.eq.includes('chargeur') || bat.logeq.includes('chargeur') || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit') {
         if (weap.num === 1) {
-            if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.logeq === 'chargeur1' || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
+            if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.logeq === 'chargeur1' || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit') {
                 newShots = Math.round(newShots*mult);
             }
         } else {
