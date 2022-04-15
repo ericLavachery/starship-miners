@@ -395,6 +395,8 @@ function moveSelectedBat(tileId,free,jump) {
                     }
                     tile.qs = true;
                     warning('Sables mouvants','Bataillon immobilisé!')
+                } else if (playerInfos.comp.det >= 4 && mudChance >= 1) {
+                    tile.qs = true;
                 }
             }
         }

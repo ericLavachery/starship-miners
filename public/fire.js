@@ -574,7 +574,6 @@ function attack(melee,init) {
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
-            // shotResult = blast(brochette,selectedBatType,aoeShots,selectedWeap,targetBat,targetBatType,shotDice);
             shotResult = blast(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType,shotDice,brochette,aoeShots,accurange);
         } else {
             shotResult = shot(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType,shotDice,accurange);
@@ -1568,7 +1567,6 @@ function defense(melee,init) {
     let i = 1;
     while (i <= shots) {
         if (aoeShots >= 2) {
-            // shotResult = blast(brochette,targetBatType,aoeShots,targetWeap,selectedBat,selectedBatType,shotDice);
             shotResult = blast(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType,shotDice,brochette,aoeShots,accurange);
         } else {
             shotResult = shot(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType,shotDice,accurange);

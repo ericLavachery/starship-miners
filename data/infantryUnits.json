@@ -6185,7 +6185,7 @@
             "maxAmmo":6,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucune","scrap","kevlar","kapton","wendium","tisal","nano","duneg","soap","swing","adamantite"],
+        "protection":["aucune","scrap","kevlar","kapton","wendium","tisal","nano","duneg","soap","swing","adamantite","battlesuit"],
         "equip":["aucun","e-flash","gilet","lunette1","silencieux1","chargeur1","lanceur2","lgkit","e-camo","theeye","waterproof","e-medic","repel"],
         "log3eq":["silencieux1"],
         "moveCost":3,

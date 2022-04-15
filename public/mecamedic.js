@@ -709,22 +709,22 @@ function addStressFlag(bat,emoType) {
             }
         } else if (emoType === 'fear') {
             stressCost = 2;
-            if (batType.skills.includes('lowstress')) {
+            if (batType.skills.includes('lowstress') || bat.vet >= 4) {
                 stressCost = Math.ceil(stressCost/2);
             }
         } else if (emoType === 'turn') {
-            let stressChance = Math.round(aliens.length/50)+3;
+            let stressChance = Math.round(Math.sqrt(aliens.length)/2);
             if (zone[0].planet === 'Sarak' || zone[0].planet === 'Gehenna') {
                 stressChance = stressChance*2;
             }
             if (zone[0].planet === 'Horst') {
                 stressChance = stressChance*1.5;
             }
-            if (batType.skills.includes('lowstress') || bat.tags.includes('schef')) {
+            if (batType.skills.includes('lowstress') || bat.tags.includes('schef') || bat.vet >= 4) {
                 stressChance = stressChance/2;
             }
             if (bat.emo != undefined) {
-                stressChance = stressChance*(20+bat.emo)/20;
+                stressChance = stressChance*(30+bat.emo)/30;
             }
             stressChance = Math.round(stressChance);
             if (rand.rand(1,100) <= stressChance) {

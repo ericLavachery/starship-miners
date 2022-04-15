@@ -170,9 +170,9 @@ function isHit(accuracy,minAccu,weapon,attBat,attBatType,defBat,defBatType,steal
         overPrec = prec-30;
         prec = prec+overPrec;
     }
-    if (weapon.aoe == 'unit' || weapon.aoe == 'brochette' || speed < 0) {
-        prec = Math.round(prec-(stealth/(2+overPrec))-(speed/(1+overPrec)));
-    }
+    // if (weapon.aoe === 'unit' || weapon.aoe === 'brochette' || speed < 0) {
+    // }
+    prec = Math.round(prec-(stealth/(2+overPrec))-(speed/(1+overPrec)));
     prec = Math.round(prec-(cover*coverFactor*2/(2+megaPrec)));
     if (prec < minPrec) {
         prec = minPrec;
@@ -333,12 +333,18 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
         forAOE = false;
     }
     let cover = getCover(defBat,true,forAOE);
-    if (weapon.isMelee || weapon.noShield || attBatType.skills.includes('halfcover')) {
-        cover = Math.round(cover/2);
+    if (cover >= 1) {
+        if (weapon.isMelee || weapon.noShield || attBatType.skills.includes('halfcover')) {
+            cover = Math.round(cover/2);
+        }
     }
     let stealth = getStealth(defBat);
-    if (!brochette) {
-        stealth = Math.round(stealth/2);
+    if (stealth >= 1) {
+        if (weapon.aoe === 'bat') {
+            stealth = 0;
+        } else if (weapon.aoe === 'squad') {
+            stealth = Math.round(stealth/3);
+        }
     }
     // skupiac drug
     let defBatSpeed = defBatType.speed;
@@ -408,12 +414,16 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
         if (ii > 100) {break;}
         oldPower = power;
         if (!brochette) {
-            power = Math.floor(power*squadReductor);
+            power = Math.round(power*squadReductor);
         } else {
-            power = Math.floor(power*0.5);
+            power = Math.round(power*0.5);
         }
         if (power >= oldPower) {
-            power = power-1;
+            if (weapon.aoe === 'bat') {
+                power = power-0.5;
+            } else {
+                power = power-1;
+            }
         }
         if (power < 3) {
             break;
