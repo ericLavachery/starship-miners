@@ -15,8 +15,12 @@ function clickMove(tileId) {
                 maxSize = maxSize*3;
             }
             if (maxSize >= selectedBatType.size) {
+                let myBatVolume = myBatWeight;
+                if (batType.skills.includes('transveh') && selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('robot') && !selectedBatType.skills.includes('cyber')) {
+                    myBatVolume = Math.round(myBatVolume/2);
+                }
                 batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
-                if (myBatWeight <= batTransUnitsLeft) {
+                if (myBatVolume <= batTransUnitsLeft) {
                     ownTransHere = true;
                 }
             }
@@ -469,8 +473,12 @@ function batUnstack() {
                     maxSize = maxSize*3;
                 }
                 if (maxSize >= selectedBatType.size) {
+                    let myBatVolume = myBatWeight;
+                    if (batType.skills.includes('transveh') && selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('robot') && !selectedBatType.skills.includes('cyber')) {
+                        myBatVolume = Math.round(myBatVolume/2);
+                    }
                     let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
-                    if (myBatWeight <= batTransUnitsLeft) {
+                    if (myBatVolume <= batTransUnitsLeft) {
                         ownTransHere = true;
                         transId = bat.id;
                     }

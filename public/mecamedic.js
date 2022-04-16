@@ -65,17 +65,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                 catOK = false;
                                 $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">soins inefficaces<br></span>');
                             }
-                            let medDice = rand.rand(1,75);
-                            let fail = bat.soins-10;
-                            if (fail > minFailSoins) {
-                                fail = minFailSoins;
-                            }
-                            if (batType.cat != 'infantry') {
-                                fail = 0;
-                            } else if (batType.skills.includes('cyber')) {
-                                fail = Math.round(fail/3);
-                            }
-                            if (medDice <= fail && catOK) {
+                            let medDice = rand.rand(1,100);
+                            let effSoins = checkEffSoins(bat);
+                            if (medDice > effSoins && catOK) {
                                 catOK = false;
                                 totalAPCost = totalAPCost+apCost;
                                 $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">soins inefficaces<br></span>');
@@ -282,17 +274,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                 catOK = false;
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">soins inefficaces<br></span>');
             }
-            let medDice = rand.rand(1,75);
-            let fail = selectedBat.soins-10;
-            if (fail > minFailSoins) {
-                fail = minFailSoins;
-            }
-            if (selectedBatType.cat != 'infantry') {
-                fail = 0;
-            } else if (selectedBatType.skills.includes('cyber')) {
-                fail = Math.round(fail/3);
-            }
-            if (medDice <= fail && catOK) {
+            let medDice = rand.rand(1,100);
+            let effSoins = checkEffSoins(selectedBat);
+            if (medDice > effSoins && catOK) {
                 catOK = false;
                 totalAPCost = totalAPCost+apCost;
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">soins inefficaces<br></span>');
@@ -955,16 +939,18 @@ function bestMecanoInBld(bldBat) {
 function checkEffSoins(bat) {
     let batType = getBatType(bat);
     let failDice = bat.soins-10;
-    if (failDice > minFailSoins) {
-        failDice = minFailSoins;
-    }
     if (failDice < 0) {
         failDice = 0;
     }
-    if (batType.skills.includes('cyber')) {
+    if (batType.cat != 'infantry') {
+        failDice = 0;
+    } else if (batType.skills.includes('cyber')) {
         failDice = Math.round(failDice/3);
     }
     let effSoins = 100-Math.round(failDice*100/75);
+    if (effSoins < 50) {
+        effSoins = 0;
+    }
     return effSoins;
 };
 

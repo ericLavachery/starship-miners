@@ -1927,10 +1927,10 @@ function skillsInfos(bat,batType,near) {
                     $('#infraButtons').append('<button type="button" title="Palissades: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Pa</span></button>');
                 }
             }
-            if (tile.infra != 'Remparts' && playerInfos.comp.const >= 1 && playerInfos.comp.def >= 1) {
+            if (tile.infra != 'Remparts' && playerInfos.comp.def >= 1) {
                 infra = getInfraByName('Remparts');
                 infraCostOK = checkCost(infra.costs);
-                if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
+                if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.const) {
                     prodOK = false;
                 } else {
                     prodOK = true;
@@ -1948,10 +1948,10 @@ function skillsInfos(bat,batType,near) {
                     $('#infraButtons').append('<button type="button" title="Remparts: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Re</span></button>');
                 }
             }
-            if (tile.infra != 'Murailles' && playerInfos.comp.const >= 3 && playerInfos.comp.def >= 2) {
+            if (tile.infra != 'Murailles' && playerInfos.comp.def >= 3 && playerInfos.comp.const >= 1) {
                 infra = getInfraByName('Murailles');
                 infraCostOK = checkCost(infra.costs);
-                if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def) {
+                if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
                     prodOK = false;
                 } else {
                     prodOK = true;

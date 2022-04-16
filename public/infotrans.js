@@ -333,7 +333,11 @@ function checkTransportId(myBat,myBatType) {
                 tracking = checkTracking(bat);
                 if (!myBatType.skills.includes('tracked') || !tracking) {
                     batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
-                    if (myBatWeight <= batTransUnitsLeft) {
+                    let myBatVolume = myBatWeight;
+                    if (batType.skills.includes('transveh') && myBatType.cat === 'vehicles' && !myBatType.skills.includes('robot') && !myBatType.skills.includes('cyber')) {
+                        myBatVolume = Math.round(myBatVolume/2);
+                    }
+                    if (myBatVolume <= batTransUnitsLeft) {
                         transId = bat.id;
                     }
                 }
@@ -360,6 +364,9 @@ function calcTransUnitsLeft(myBat,myBatType) {
         if (bat.loc === "trans" && bat.locId == myBat.id) {
             let batType = getBatType(bat);
             let batWeight = calcVolume(bat,batType);
+            if (myBatType.skills.includes('transveh') && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber')) {
+                batWeight = Math.round(batWeight/2);
+            }
             myBatTransUnitsLeft = myBatTransUnitsLeft-batWeight;
         }
     });
@@ -433,13 +440,26 @@ function calcRamasseCost(bat,batType,transBatType) {
 
 function calcEmbarqCost(batType,transBatType) {
     let embarqCost = [0,0];
-    embarqCost[0] = embarqCost[0]+3-playerInfos.comp.trans;
+    let transComp = playerInfos.comp.trans;
+    if (playerInfos.comp.trans >= 3) {
+        transComp++;
+    }
+    embarqCost[0] = embarqCost[0]+7-transComp;
+    if (transBatType.cat === 'buildings') {
+        embarqCost[0] = 3-playerInfos.comp.log;
+    }
     if (batType.skills.includes('tracked') && transBatType.transMaxSize < 25) {
-        embarqCost[1] = embarqCost[1]+4-playerInfos.comp.log;
+        embarqCost[1] = embarqCost[1]+12-(playerInfos.comp.log*2);
+    } else {
+        if (transBatType.skills.includes('ouvert')) {
+            embarqCost[0] = embarqCost[0]-2;
+        }
+    }
+    if (transBatType.skills.includes('fly')) {
+        embarqCost[0] = embarqCost[0]+2;
     }
     if (transBatType.skills.includes('hardembark')) {
-        embarqCost[0] = embarqCost[0]+3;
-        embarqCost[1] = embarqCost[1]+3;
+        embarqCost[0] = embarqCost[0]+2;
     }
     return embarqCost;
 }
@@ -522,6 +542,9 @@ function embarqArmy(transBat,transBatType,oldTransBat) {
             let batWeight = calcVolume(bat,batType);
             if (maxSize >= batType.size) {
                 let transUnitsLeft = calcTransUnitsLeft(transBat,transBatType);
+                if (transBatType.skills.includes('transveh') && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber')) {
+                    batWeight = Math.round(batWeight/2);
+                }
                 if (batWeight <= transUnitsLeft) {
                     let embarqCost = calcEmbarqCost(batType,transBatType);
                     bat.apLeft = bat.apLeft-embarqCost[0]-2;
@@ -710,7 +733,11 @@ function clickDebarq(tileId) {
                     message = 'Le taille de votre bataillon ('+batDebarqType.size+') est trop élevée pour le bataillon de destination ('+maxSize+').';
                 } else {
                     let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
-                    if (myBatWeight > batTransUnitsLeft) {
+                    let myBatVolume = myBatWeight;
+                    if (batType.skills.includes('transveh') && batDebarqType.cat === 'vehicles' && !batDebarqType.skills.includes('robot') && !batDebarqType.skills.includes('cyber')) {
+                        myBatVolume = Math.round(myBatVolume/2);
+                    }
+                    if (myBatVolume > batTransUnitsLeft) {
                         ownBatHere = true;
                         message = 'Il n\'y a plus assez de place dans le bataillon de destination.';
                     }

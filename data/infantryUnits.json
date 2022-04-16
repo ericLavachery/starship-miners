@@ -5967,7 +5967,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","clone","lowmed","nodeathcount","lowstress","recupcorps"],
+        "skills":["fortif","datt","clone","lowmed","nodeathcount","lowstress","recupcorps"],
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
