@@ -470,6 +470,70 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
     return numTargets;
 };
 
+function deathStress() {
+    bataillons.forEach(function(bat) {
+        addStressFlag(bat,'death');
+    });
+};
+
+function addStressFlag(bat,emoType) {
+    let batType = getBatType(bat);
+    if (batType.crew >= 1 && !batType.skills.includes('robot') && !bat.tags.includes('zombie')) {
+        let stressCost = 0;
+        if (emoType === 'death') {
+            let stressChance = 20000/playerInfos.allCits;
+            if (bat.emo != undefined) {
+                stressChance = stressChance*(20+bat.emo)/20;
+            }
+            if (batType.skills.includes('lowstress')) {
+                stressChance = Math.round(stressChance/2);
+            } else {
+                stressChance = Math.ceil(stressChance);
+            }
+            if (rand.rand(1,100) <= stressChance) {
+                stressCost = 6;
+            }
+        } else if (emoType === 'fear') {
+            stressCost = 2;
+            if (batType.skills.includes('lowstress') || bat.vet >= 4) {
+                stressCost = Math.ceil(stressCost/2);
+            }
+        } else if (emoType === 'turn') {
+            let stressChance = Math.round(Math.sqrt(aliens.length)/2);
+            if (zone[0].planet === 'Sarak' || zone[0].planet === 'Gehenna') {
+                stressChance = stressChance*2;
+            }
+            if (zone[0].planet === 'Horst') {
+                stressChance = stressChance*1.5;
+            }
+            if (batType.skills.includes('lowstress') || bat.tags.includes('schef') || bat.vet >= 4) {
+                stressChance = stressChance/2;
+            }
+            if (bat.emo != undefined) {
+                stressChance = stressChance*(30+bat.emo)/30;
+            }
+            if (bat.loc === 'trans') {
+                let transBat = getBatById(bat.locId);
+                let transBatType = getBatType(transBat);
+                if (transBatType.cat === 'buildings') {
+                    stressChance = stressChance/3;
+                }
+            }
+            stressChance = Math.round(stressChance);
+            if (rand.rand(1,100) <= stressChance) {
+                stressCost = 1;
+            }
+        }
+        if (stressCost >= 1) {
+            if (bat.emo != undefined) {
+                bat.emo = bat.emo+stressCost;
+            } else {
+                bat.emo = stressCost;
+            }
+        }
+    }
+};
+
 function checkStressEffect(bat) {
     let stress = bat.emo-10;
     let stressCheck = rand.rand(0,stress);
@@ -665,63 +729,6 @@ function goFreeze(bat) {
     }
     if (bat.apLeft >= 1) {
         bat.apLeft = Math.round(bat.apLeft/2);
-    }
-};
-
-function deathStress() {
-    bataillons.forEach(function(bat) {
-        addStressFlag(bat,'death');
-    });
-};
-
-function addStressFlag(bat,emoType) {
-    let batType = getBatType(bat);
-    if (batType.crew >= 1 && !batType.skills.includes('robot') && !bat.tags.includes('zombie')) {
-        let stressCost = 0;
-        if (emoType === 'death') {
-            let stressChance = 20000/playerInfos.allCits;
-            if (bat.emo != undefined) {
-                stressChance = stressChance*(20+bat.emo)/20;
-            }
-            if (batType.skills.includes('lowstress')) {
-                stressChance = Math.round(stressChance/2);
-            } else {
-                stressChance = Math.ceil(stressChance);
-            }
-            if (rand.rand(1,100) <= stressChance) {
-                stressCost = 6;
-            }
-        } else if (emoType === 'fear') {
-            stressCost = 2;
-            if (batType.skills.includes('lowstress') || bat.vet >= 4) {
-                stressCost = Math.ceil(stressCost/2);
-            }
-        } else if (emoType === 'turn') {
-            let stressChance = Math.round(Math.sqrt(aliens.length)/2);
-            if (zone[0].planet === 'Sarak' || zone[0].planet === 'Gehenna') {
-                stressChance = stressChance*2;
-            }
-            if (zone[0].planet === 'Horst') {
-                stressChance = stressChance*1.5;
-            }
-            if (batType.skills.includes('lowstress') || bat.tags.includes('schef') || bat.vet >= 4) {
-                stressChance = stressChance/2;
-            }
-            if (bat.emo != undefined) {
-                stressChance = stressChance*(30+bat.emo)/30;
-            }
-            stressChance = Math.round(stressChance);
-            if (rand.rand(1,100) <= stressChance) {
-                stressCost = 1;
-            }
-        }
-        if (stressCost >= 1) {
-            if (bat.emo != undefined) {
-                bat.emo = bat.emo+stressCost;
-            } else {
-                bat.emo = stressCost;
-            }
-        }
     }
 };
 

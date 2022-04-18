@@ -1134,7 +1134,7 @@ function attack(melee,init) {
     }
     // jello
     if (selectedWeap.ammo.includes('jello')) {
-        if (selectedWeap.ammo.includes('autodes')) {
+        if (selectedWeap.ammo.includes('autodes') || selectedWeap.ammo.includes('missile')) {
             targetBat.tags.push('jello');
             targetBat.tags.push('jelly');
             $('#report').append('<span class="report rose">Jelly<br></span>');
@@ -1976,7 +1976,7 @@ function defense(melee,init) {
     }
     // jello
     if (targetWeap.ammo.includes('jello')) {
-        if (targetWeap.ammo.includes('autodes')) {
+        if (targetWeap.ammo.includes('autodes') || targetWeap.ammo.includes('missile')) {
             selectedBat.tags.push('jello');
             selectedBat.tags.push('jelly');
             $('#report').append('<span class="report rose">Jelly<br></span>');

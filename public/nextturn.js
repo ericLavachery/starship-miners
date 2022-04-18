@@ -230,7 +230,8 @@ function nextTurnEnd() {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             if (bat.squadsLeft <= 1 && batType.squads >= 3) {
-                addStressFlag(bat,'fear');
+                addStressFlag(bat,'turn');
+                addStressFlag(bat,'turn');
             } else {
                 addStressFlag(bat,'turn');
             }
@@ -882,6 +883,11 @@ function turnInfo() {
                     warning('Convoi en approche','Attirés par le bruit, des survivants sont en route vers votre Lander.');
                 }
                 $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche">Survivants</span><br>');
+            }
+        }
+        if (playerInfos.mapTurn === 10 && playerInfos.vz < 90) {
+            if (playerInfos.comp.det >= 4 && playerInfos.bldList.includes('Centre de com')) {
+                warning('Survivants','Notre centre de communication à détecté un convoi de survivants.');
             }
         }
         $('#tour').append('Morts <span class="or" title="Bataillons perdus">'+playerInfos.unitsLost+'</span> / <span class="neutre" title="Aliens tués">'+playerInfos.aliensKilled+'</span> / <span class="cy" title="Oeufs détruits">'+playerInfos.eggsKilled+'</span>');
