@@ -82,6 +82,16 @@ function checkNeiTurn() {
             theCheck = 999;
         }
         playerInfos.vz = theCheck;
+        let card = rand.rand(1,4);
+        if (card === 1) {
+            playerInfos.vc = 'nord';
+        } else if (card === 2) {
+            playerInfos.vc = 'sud';
+        } else if (card === 3) {
+            playerInfos.vc = 'ouest';
+        } else {
+            playerInfos.vc = 'est';
+        }
     }
 };
 
@@ -489,6 +499,33 @@ function checkNeighbourGear(neiBatType) {
     return gear;
 };
 
+function isCardinalOK(tile) {
+    let cardOK = true;
+    if (playerInfos.vc != undefined) {
+        if (playerInfos.vc === 'nord') {
+            if (tile.x >= 5) {
+                cardOK = false;
+            }
+        }
+        if (playerInfos.vc === 'sud') {
+            if (tile.x <= 56) {
+                cardOK = false;
+            }
+        }
+        if (playerInfos.vc === 'ouest') {
+            if (tile.y >= 5) {
+                cardOK = false;
+            }
+        }
+        if (playerInfos.vc === 'est') {
+            if (tile.y <= 56) {
+                cardOK = false;
+            }
+        }
+    }
+    return cardOK;
+};
+
 function placeNeighbours(nearTileId,koTerrains) {
     // un tile en bord de carte pour un voisin
     // nearTileId = tile d'un autre voisin tiré avant
@@ -500,12 +537,14 @@ function placeNeighbours(nearTileId,koTerrains) {
         if (vTileId < 0) {
             if (nearTileId >= 0) {
                 if (tile.x <= 2 || tile.x >= 59 || tile.y <= 2 || tile.y >= 59) {
-                    if (tile.terrain != 'W' && tile.terrain != 'L' && tile.terrain != 'R') {
-                        if (!koTerrains.includes(tile.terrain) || tile.rd) {
-                            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
-                                let distance = calcDistance(nearTileId,tile.id);
-                                if (distance <= 1) {
-                                    vTileId = tile.id;
+                    if (isCardinalOK(tile)) {
+                        if (tile.terrain != 'W' && tile.terrain != 'L' && tile.terrain != 'R') {
+                            if (!koTerrains.includes(tile.terrain) || tile.rd) {
+                                if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                                    let distance = calcDistance(nearTileId,tile.id);
+                                    if (distance <= 1) {
+                                        vTileId = tile.id;
+                                    }
                                 }
                             }
                         }
@@ -513,10 +552,12 @@ function placeNeighbours(nearTileId,koTerrains) {
                 }
             } else {
                 if (tile.x === 1 || tile.x === 60 || tile.y === 1 || tile.y === 60) {
-                    if (tile.terrain != 'W' && tile.terrain != 'L' && tile.terrain != 'R') {
-                        if (!koTerrains.includes(tile.terrain) || tile.rd) {
-                            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
-                                vTileId = tile.id;
+                    if (isCardinalOK(tile)) {
+                        if (tile.terrain != 'W' && tile.terrain != 'L' && tile.terrain != 'R') {
+                            if (!koTerrains.includes(tile.terrain) || tile.rd) {
+                                if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                                    vTileId = tile.id;
+                                }
                             }
                         }
                     }
@@ -529,20 +570,24 @@ function placeNeighbours(nearTileId,koTerrains) {
             if (vTileId < 0) {
                 if (nearTileId >= 0) {
                     if (tile.x <= 2 || tile.x >= 59 || tile.y <= 2 || tile.y >= 59) {
-                        if (!koTerrains.includes(tile.terrain) || tile.rd) {
-                            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
-                                let distance = calcDistance(nearTileId,tile.id);
-                                if (distance <= 3) {
-                                    vTileId = tile.id;
+                        if (isCardinalOK(tile)) {
+                            if (!koTerrains.includes(tile.terrain) || tile.rd) {
+                                if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                                    let distance = calcDistance(nearTileId,tile.id);
+                                    if (distance <= 3) {
+                                        vTileId = tile.id;
+                                    }
                                 }
                             }
                         }
                     }
                 } else {
                     if (tile.x === 1 || tile.x === 60 || tile.y === 1 || tile.y === 60) {
-                        if (!koTerrains.includes(tile.terrain) || tile.rd) {
-                            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
-                                vTileId = tile.id;
+                        if (isCardinalOK(tile)) {
+                            if (!koTerrains.includes(tile.terrain) || tile.rd) {
+                                if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                                    vTileId = tile.id;
+                                }
                             }
                         }
                     }

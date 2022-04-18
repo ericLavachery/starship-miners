@@ -877,17 +877,28 @@ function turnInfo() {
                 $('#tour').append('<span class="'+turnCol+'" title="Cocon prévu aux alentours du tour '+approxTurn+'">Cocon en approche</span><br>');
             }
         }
+        let sconvNear = false;
         if ((playerInfos.comp.det >= 3 && playerInfos.bldList.includes('Centre de com')) || playerInfos.comp.det >= 4) {
             if (playerInfos.vz-5-playerInfos.pauseSeed <= playerInfos.mapTurn) {
                 if (playerInfos.vz-5-playerInfos.pauseSeed === playerInfos.mapTurn) {
                     warning('Convoi en approche','Attirés par le bruit, des survivants sont en route vers votre Lander.');
                 }
-                $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche">Survivants</span><br>');
+                if (playerInfos.comp.det >= 4 && playerInfos.bldList.includes('Centre de com')) {
+                    $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (moins de 15 tours) ('+playerInfos.vc+')">Survivants</span><br>');
+                } else {
+                    $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (moins de 15 tours)">Survivants</span><br>');
+                }
+                sconvNear = true;
             }
         }
-        if (playerInfos.mapTurn === 10 && playerInfos.vz < 90) {
-            if (playerInfos.comp.det >= 4 && playerInfos.bldList.includes('Centre de com')) {
-                warning('Survivants','Notre centre de communication à détecté un convoi de survivants.');
+        if (playerInfos.comp.det >= 4 && playerInfos.bldList.includes('Centre de com')) {
+            if (playerInfos.vz < 90) {
+                if (playerInfos.mapTurn >= 10 && !sconvNear) {
+                    $('#tour').append('<span class="neutre" title="Convoi de survivants en approche (plus de 15 tours)">Survivants</span><br>');
+                }
+                if (playerInfos.mapTurn === 10) {
+                    warning('Survivants','Notre centre de communication à détecté un convoi de survivants.');
+                }
             }
         }
         $('#tour').append('Morts <span class="or" title="Bataillons perdus">'+playerInfos.unitsLost+'</span> / <span class="neutre" title="Aliens tués">'+playerInfos.aliensKilled+'</span> / <span class="cy" title="Oeufs détruits">'+playerInfos.eggsKilled+'</span>');
@@ -1071,7 +1082,7 @@ function tagsUpdate(bat) {
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('octiron')) {
                 drugDown(bat,false,false);
-                if (bat.emo >= 11) {
+                if (bat.emo >= 11 && playerInfos.comp.ordre >= 2) {
                     warning('Stress',bat.type+' est n\'est plus sous l\'effet de l\'Octiron.',false,bat.tileId);
                 }
             }
@@ -1101,7 +1112,7 @@ function tagsUpdate(bat) {
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('bliss')) {
                 drugDown(bat,false,true);
-                if (bat.emo >= 11) {
+                if (bat.emo >= 11 && playerInfos.comp.ordre >= 2) {
                     warning('Stress',bat.type+' est n\'est plus sous l\'effet du Bliss.',false,bat.tileId);
                 }
             }

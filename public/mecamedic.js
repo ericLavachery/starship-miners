@@ -530,6 +530,9 @@ function addStressFlag(bat,emoType) {
             } else {
                 bat.emo = stressCost;
             }
+            if (bat.emo >= 10 && playerInfos.comp.ordre >= 2) {
+                warning('Stress',bat.type+' commencent à stresser',false,bat.tileId);
+            }
         }
     }
 };

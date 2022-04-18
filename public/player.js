@@ -796,6 +796,19 @@ function playerSkillsUTChanges() {
                 unit.mediCost = 2;
             }
         }
+        // DETECTION
+        if (playerInfos.comp.det >= 3) {
+            if (Object.keys(unit.weapon).length >= 3) {
+                if (unit.weapon.name.includes('Marquage')) {
+                    unit.weapon.name = 'Pointage';
+                }
+            }
+            if (Object.keys(unit.weapon2).length >= 3) {
+                if (unit.weapon2.name.includes('Marquage')) {
+                    unit.weapon2.name = 'Pointage';
+                }
+            }
+        }
         // GANGS
         if (playerInfos.gang === 'brasier') {
             if (unit.name === 'Bigman') {
