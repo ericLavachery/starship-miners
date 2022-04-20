@@ -878,12 +878,12 @@ function turnInfo() {
             }
         }
         let sconvNear = false;
-        if ((playerInfos.comp.det >= 3 && playerInfos.bldList.includes('Centre de com')) || playerInfos.comp.det >= 4) {
+        if ((playerInfos.comp.det >= 1 && playerInfos.bldList.includes('Centre de com')) || (playerInfos.comp.det >= 3 && playerInfos.bldList.includes('Poste radio'))) {
             if (playerInfos.vz-5-playerInfos.pauseSeed <= playerInfos.mapTurn) {
                 if (playerInfos.vz-5-playerInfos.pauseSeed === playerInfos.mapTurn) {
                     warning('Convoi en approche','Attirés par le bruit, des survivants sont en route vers votre Lander.');
                 }
-                if (playerInfos.comp.det >= 4 && playerInfos.bldList.includes('Centre de com')) {
+                if (playerInfos.comp.det >= 3 && playerInfos.bldList.includes('Centre de com')) {
                     $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (moins de 15 tours) ('+playerInfos.vc+')">Survivants</span><br>');
                 } else {
                     $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (moins de 15 tours)">Survivants</span><br>');
@@ -891,7 +891,7 @@ function turnInfo() {
                 sconvNear = true;
             }
         }
-        if (playerInfos.comp.det >= 4 && playerInfos.bldList.includes('Centre de com')) {
+        if (playerInfos.comp.det >= 3 && playerInfos.bldList.includes('Centre de com')) {
             if (playerInfos.vz < 90) {
                 if (playerInfos.mapTurn >= 10 && !sconvNear) {
                     $('#tour').append('<span class="neutre" title="Convoi de survivants en approche (plus de 15 tours)">Survivants</span><br>');

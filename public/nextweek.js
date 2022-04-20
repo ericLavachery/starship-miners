@@ -665,6 +665,9 @@ function calcCrimeRate(mesCitoyens) {
         mOrdre = 10;
     }
     crimeRate.total = Math.round(crimeRate.total/mOrdre*6);
+    if (crimeRate.total < 0) {
+        crimeRate.total = 0;
+    }
     console.log('crimeRate.total='+crimeRate.total);
     return crimeRate;
 };

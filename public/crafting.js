@@ -237,6 +237,9 @@ function adjCraftFactor(craft,craftFactor) {
     }
     if (!noFactor) {
         // CORRUPTION
+        if (true) {
+
+        }
         craftFactor = craftFactor*(100+playerInfos.crime)/100;
         // INDUSTRIE
         if (playerInfos.comp.ind >= 1 && playerInfos.bldList.includes('Atelier')) {

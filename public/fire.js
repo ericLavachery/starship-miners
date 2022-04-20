@@ -825,15 +825,15 @@ function attack(melee,init) {
     if (targetBatType.skills.includes('eggprotect')) {
         let eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1)*2.5)));
         if (targetBatType.skills.includes('turnprotect')) {
-            eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.33));
+            eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.75));
             if (targetBat.tags.includes('morph')) {
-                eggProt = Math.round(eggProt/1.1875);
+                eggProt = Math.round(eggProt/1.2);
             }
         }
         if (selectedWeap.ammo === 'suicide') {
             eggProt = Math.round(eggProt/1.5);
         }
-        if (eggProt > 95) {eggProt = 95;}
+        if (eggProt > 100) {eggProt = 100;}
         if (eggProt < 0) {eggProt = 0;}
         totalDamage = Math.round(totalDamage*(100-eggProt)/100);
         if (playerInfos.comp.ca >= 2) {
@@ -1815,15 +1815,15 @@ function defense(melee,init) {
     if (selectedBatType.skills.includes('eggprotect')) {
         let eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1)*2.5)));
         if (selectedBatType.skills.includes('turnprotect')) {
-            eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.33));
+            eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.75));
             if (selectedBat.tags.includes('morph')) {
-                eggProt = Math.round(eggProt/1.1875);
+                eggProt = Math.round(eggProt/1.2);
             }
         }
         if (targetWeap.ammo === 'suicide') {
             eggProt = Math.round(eggProt/1.5);
         }
-        if (eggProt > 95) {eggProt = 95;}
+        if (eggProt > 100) {eggProt = 100;}
         if (eggProt < 0) {eggProt = 0;}
         totalDamage = Math.round(totalDamage*(100-eggProt)/100);
         if (playerInfos.comp.ca >= 2) {

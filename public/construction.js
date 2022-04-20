@@ -18,6 +18,7 @@ function bfconst(cat,triche,upgrade,retour) {
     checkReserve();
     let dispoCrim = getDispoCrim();
     let dispoCit = getDispoCit();
+    let yh = youHave();
     updateBldList();
     $("#conUnitList").css("display","block");
     if (!playerInfos.onShip) {
@@ -204,27 +205,33 @@ function bfconst(cat,triche,upgrade,retour) {
                 // console.log('citAlert='+citAlert);
             }
             let citColour = 'gff';
+            let citName = 'Citoyens';
             if (unit.skills.includes('brigands')) {
                 citColour = 'brunf';
+                citName = 'Criminels';
             }
             let deco = '';
             if (playerInfos.bldList.includes(unit.name)) {
                 deco = ' udl';
             }
+            let yhPrint = '';
+            if (yh[unit.name] >= 1) {
+                yhPrint = ' <span title="#">('+yh[unit.name]+')</span>';
+            }
             if ((bldOK && costOK) || triche) {
                 if (pDistOK && pNumOK) {
                     color = catColor(unit);
-                    $('#conUnitList').append('<span class="constName klik '+color+deco+'" title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'" onclick="conSelect('+unit.id+',`player`,false)">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
+                    $('#conUnitList').append('<span class="constName klik '+color+deco+'" onclick="conSelect('+unit.id+',`player`,false)"><span title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+')</span>'+yhPrint+prodSign+'</span><br>');
                 } else if (!pNumOK) {
                     color = 'gff';
-                    $('#conUnitList').append('<span class="constName '+color+deco+'" title="Vous devez avoir 4 Pilônes pour construire un Dôme">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Vous devez avoir 4 Pilônes pour construire un Dôme">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+')</span>'+yhPrint+prodSign+'</span><br>');
                 } else if (!pDistOK) {
                     color = 'gff';
-                    $('#conUnitList').append('<span class="constName '+color+deco+'" title="Vous ne pouvez pas construire un Pilône ou un Dôme à moins de 25 cases d\'un Pilône existant">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Vous ne pouvez pas construire un Pilône ou un Dôme à moins de 25 cases d\'un Pilône existant">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+')</span>'+yhPrint+prodSign+'</span><br>');
                 }
             } else {
                 color = 'gff';
-                $('#conUnitList').append('<span class="constName '+color+deco+'" title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+' <span class="'+citColour+'">('+unitCits+')</span>'+prodSign+'</span><br>');
+                $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+')</span>'+yhPrint+prodSign+'</span><br>');
             }
             lastKind = unit.kind;
         }
@@ -254,6 +261,35 @@ function bfconst(cat,triche,upgrade,retour) {
     //     $("#conUnitList").animate({scrollTop:0},"fast");
     // }
     commandes();
+};
+
+function youHave() {
+    let yh = {};
+    let sortedBats = bataillons.slice();
+    sortedBats = _.sortBy(sortedBats,'type');
+    sortedBats.forEach(function(bat) {
+        if (yh[bat.type] === undefined) {
+            yh[bat.type] = 1;
+        } else {
+            yh[bat.type] = yh[bat.type]+1;
+        }
+        if (bat.type === 'Infirmiers') {
+            if (yh['Médecins'] === undefined) {
+                yh['Médecins'] = 1;
+            } else {
+                yh['Médecins'] = yh['Médecins']+1;
+            }
+            if (playerInfos.comp.med >= 2) {
+                bat.type = 'Médecins';
+            }
+        }
+    });
+    unitTypes.forEach(function(unit) {
+        if (yh[unit.name] === undefined) {
+            yh[unit.name] = 0;
+        }
+    });
+    return yh;
 };
 
 function displayCosts(costs) {
@@ -497,19 +533,6 @@ function conSelect(unitId,player,noRefresh) {
                         mergeObjects(deployCosts,flatCosts);
                         costsOK = checkCost(deployCosts);
                         bldReqOK = verifBldReq(conselUnit,batAmmo.bldReq);
-                        // bldReqOK = false;
-                        // if (batAmmo.bldReq instanceof Array) {
-                        //     if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
-                        //         bldReqOK = true;
-                        //     }
-                        //     if (playerInfos.bldList.includes('Poudrière') && playerInfos.bldList.includes('Armurerie')) {
-                        //         if ((playerInfos.bldVM.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldVM.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
-                        //             bldReqOK = true;
-                        //         }
-                        //     }
-                        // } else {
-                        //     bldReqOK = true;
-                        // }
                         prodSign = ' <span class="ciel">&raquo;</span>';
                         if (!compReqOK) {
                             prodSign = '';
@@ -547,19 +570,6 @@ function conSelect(unitId,player,noRefresh) {
                         mergeObjects(deployCosts,flatCosts);
                         costsOK = checkCost(deployCosts);
                         bldReqOK = verifBldReq(conselUnit,batAmmo.bldReq);
-                        // bldReqOK = false;
-                        // if (batAmmo.bldReq instanceof Array) {
-                        //     if ((playerInfos.bldList.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldList.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
-                        //         bldReqOK = true;
-                        //     }
-                        //     if (playerInfos.bldList.includes('Poudrière') && playerInfos.bldList.includes('Armurerie')) {
-                        //         if ((playerInfos.bldVM.includes(batAmmo.bldReq[0]) || batAmmo.bldReq[0] === undefined || conselUnit.name === batAmmo.bldReq[0]) && (playerInfos.bldVM.includes(batAmmo.bldReq[1]) || batAmmo.bldReq[1] === undefined || conselUnit.name === batAmmo.bldReq[1])) {
-                        //             bldReqOK = true;
-                        //         }
-                        //     }
-                        // } else {
-                        //     bldReqOK = true;
-                        // }
                         prodSign = ' <span class="ciel">&raquo;</span>';
                         if (!compReqOK) {
                             prodSign = '';
@@ -1708,6 +1718,10 @@ function getResRecup(bat,batType) {
                     totalRes = totalRes+value;
                 }
             });
+        }
+        // TRANSORB
+        if (batType.skills.includes('transorbital') || batType.skills.includes('isvsp')) {
+            resRecup['Transorb'] = batType.toNum;
         }
         // BAT DEPLOY x/2%
         if (batType.deploy != undefined) {

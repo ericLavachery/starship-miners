@@ -388,6 +388,7 @@ function batListElement(bat,batType,idOfLander) {
     if (vetStatus != '') {
         $('#be'+bat.id).append('<span class="listRes gff">'+vetStatus+'</span>');
     }
+    let effSoins = checkEffSoins(bat);
     if (batType.cat === 'vehicles') {
         if (bat.soins >= 11) {
             $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-wrench"></i></span>');
@@ -405,7 +406,9 @@ function batListElement(bat,batType,idOfLander) {
         } else if (bat.emo >= 1) {
             $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i></span>');
         }
-        if (bat.soins >= 11) {
+        if (effSoins < 50) {
+            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-skull-crossbones"></i></span>');
+        } else if (effSoins <= 75) {
             $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-heart"></i></span>');
         } else if (bat.soins >= 1) {
             $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="far fa-heart"></i></span>');
