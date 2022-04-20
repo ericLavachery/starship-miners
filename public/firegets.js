@@ -2621,6 +2621,25 @@ function getWetness(terrain,onGround) {
     return wetness;
 };
 
+function getEggProtect(eggBat,eggBatType,weap) {
+    let eggProt = 0;
+    if (eggBatType.skills.includes('eggprotect')) {
+        eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1.25)*3)));
+        if (eggBatType.skills.includes('turnprotect')) {
+            eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.75));
+            if (eggBat.tags.includes('morph')) {
+                eggProt = Math.round(eggProt/1.2);
+            }
+        }
+        if (weap.ammo === 'suicide') {
+            eggProt = Math.round(eggProt/1.5);
+        }
+    }
+    if (eggProt > 100) {eggProt = 100;}
+    if (eggProt < 0) {eggProt = 0;}
+    return eggProt;
+};
+
 function getRipNum(bat,batType) {
     let ripNum = 4+bat.salvoLeft;
     if (batType.skills.includes('guerrilla') || batType.skills.includes('baddef')) {

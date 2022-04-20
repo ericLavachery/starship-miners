@@ -42,7 +42,7 @@
             "aoe":"squad",
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium"],
-            "maxAmmo":9,
+            "maxAmmo":8,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","soap","swag","adamantite"],
@@ -86,7 +86,7 @@
             "aoe":"squad",
             "sound":"canon_mid_multi",
             "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":27,
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -156,7 +156,7 @@
             "aoe":"unit",
             "sound":"raygun",
             "ammo":["bfg","bfg-g2"],
-            "maxAmmo":24,
+            "maxAmmo":20,
             "ravitBld":"Générateur"
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","soap","swag","bonibo","adamantite"],
@@ -199,7 +199,7 @@
             "aoe":"brochette",
             "sound":"blister_x4",
             "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
-            "maxAmmo":36,
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -272,7 +272,7 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
-            "maxAmmo":45,
+            "maxAmmo":24,
             "ravitBld":"Atelier"
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","soap","swag","bonibo","adamantite"],
@@ -389,7 +389,7 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
-            "maxAmmo":28,
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","soap","swag","bonibo","adamantite"],
@@ -493,7 +493,7 @@
             "aoe":"brochette",
             "sound":"laser_minicanon_x2",
             "ammo":["laser","laser-g2"],
-            "maxAmmo":18,
+            "maxAmmo":15,
             "ravitBld":"Générateur"
         },
         "weapon2":{
@@ -614,7 +614,7 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
-            "maxAmmo":40,
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -629,7 +629,7 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-fleche","obus-uridium","obus-nanite"],
-            "maxAmmo":40,
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","soap","swag","bonibo","adamantite"],
@@ -675,7 +675,7 @@
             "aoe":"bat",
             "sound":"miss",
             "ammo":["missile-vanguard","missile-deluge"],
-            "maxAmmo":20,
+            "maxAmmo":16,
             "ravitBld":"Arsenal"
         },
         "weapon2":{
@@ -693,7 +693,7 @@
             "aoe":"brochette",
             "sound":"miss",
             "ammo":["missile-sunburst"],
-            "maxAmmo":20,
+            "maxAmmo":16,
             "ravitBld":"Arsenal"
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","soap","swag","bonibo","adamantite"],
@@ -794,7 +794,7 @@
             "aoe":"brochette",
             "sound":"catapult",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
-            "maxAmmo":24,
+            "maxAmmo":20,
             "ravitBld":"Atelier"
         },
         "weapon2":{
@@ -935,7 +935,7 @@
             "aoe":"squad",
             "sound":"miss",
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-jello","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium","missile-deluge"],
-            "maxAmmo":14,
+            "maxAmmo":12,
             "ravitBld":"Arsenal"
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","soap","swag","bonibo","adamantite"],
@@ -1300,7 +1300,7 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
-            "maxAmmo":16,
+            "maxAmmo":13,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","soap","swag","adamantite"],
@@ -1364,7 +1364,7 @@
             "aoe":"squad",
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-jello","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":16,
+            "maxAmmo":13,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","swag","adamantite"],
@@ -1829,7 +1829,7 @@
             "aoe":"squad",
             "sound":"canon_mid_x2",
             "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":30,
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -1966,7 +1966,7 @@
             "aoe":"squad",
             "sound":"grenade",
             "ammo":["fireball","fireglue","fireslime","fireblast"],
-            "maxAmmo":16,
+            "maxAmmo":13,
             "ravitBld":"Atelier"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","soap","swag","adamantite"],
@@ -2147,7 +2147,7 @@
             "aoe":"squad",
             "sound":"canon_void2_x2",
             "ammo":["obus-scrap","obus","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
-            "maxAmmo":32,
+            "maxAmmo":28,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -2667,7 +2667,7 @@
             "aoe":"squad",
             "sound":"canon_big_x2",
             "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":32,
+            "maxAmmo":28,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -2993,7 +2993,7 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
-            "maxAmmo":20,
+            "maxAmmo":16,
             "ravitBld":"Atelier"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","soap","swag","adamantite"],
@@ -3049,7 +3049,7 @@
             "aoe":"squad",
             "sound":"canon_auto_x6",
             "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":16,
+            "maxAmmo":13,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","soap","adamantite"],
@@ -3491,7 +3491,7 @@
             "aoe":"squad",
             "sound":"canon_mid_x2",
             "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":24,
+            "maxAmmo":18,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -3605,7 +3605,7 @@
             "aoe":"brochette",
             "sound":"blister_canon_x4",
             "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
-            "maxAmmo":36,
+            "maxAmmo":32,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -3662,7 +3662,7 @@
             "aoe":"squad",
             "sound":"canon_mid_x2",
             "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":24,
+            "maxAmmo":18,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -4090,7 +4090,7 @@
             "aoe":"squad",
             "sound":"canon_auto_x6",
             "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":16,
+            "maxAmmo":12,
             "ravitBld":"Poudrière"
         },
         "weapon2":{},
@@ -4178,7 +4178,7 @@
         },
         "weapon2":{},
         "protection":["aucun","scrap","kanchan","chobham","rhodu","tisal","iso","soap","swag","adamantite"],
-        "equip":["aucun","chargeur1","g2motor","e-flash","e-lifepod","e-stab"],
+        "equip":["aucun","chargeur1","g2motor","e-flash","e-medic","e-lifepod","e-stab"],
         "log3eq":["chargeur1"],
         "moveCost":1.5,
         "maxFlood":3,
@@ -4405,7 +4405,7 @@
             "aoe":"unit",
             "sound":"mit_minigun",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"],
-            "maxAmmo":28,
+            "maxAmmo":20,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","scrap","acier","bugium","titane","bulk","kanchan","chobham","rhodu","tisal","iso","soap","swag","bonibo","adamantite"],

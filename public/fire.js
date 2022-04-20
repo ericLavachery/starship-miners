@@ -823,23 +823,11 @@ function attack(melee,init) {
     }
     // resistance oeufs
     if (targetBatType.skills.includes('eggprotect')) {
-        let eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1)*2.5)));
-        if (targetBatType.skills.includes('turnprotect')) {
-            eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.75));
-            if (targetBat.tags.includes('morph')) {
-                eggProt = Math.round(eggProt/1.2);
-            }
-        }
-        if (selectedWeap.ammo === 'suicide') {
-            eggProt = Math.round(eggProt/1.5);
-        }
-        if (eggProt > 100) {eggProt = 100;}
-        if (eggProt < 0) {eggProt = 0;}
+        let eggProt = getEggProtect(targetBat,targetBatType,selectedWeap);
         totalDamage = Math.round(totalDamage*(100-eggProt)/100);
         if (playerInfos.comp.ca >= 2) {
             $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
         }
-        // console.log('résistance dégâts!');
     }
     // munitions limitées
     console.log('maxAmmo'+selectedWeap.maxAmmo);
@@ -1813,18 +1801,7 @@ function defense(melee,init) {
     }
     // resistance oeufs
     if (selectedBatType.skills.includes('eggprotect')) {
-        let eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1)*2.5)));
-        if (selectedBatType.skills.includes('turnprotect')) {
-            eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.75));
-            if (selectedBat.tags.includes('morph')) {
-                eggProt = Math.round(eggProt/1.2);
-            }
-        }
-        if (targetWeap.ammo === 'suicide') {
-            eggProt = Math.round(eggProt/1.5);
-        }
-        if (eggProt > 100) {eggProt = 100;}
-        if (eggProt < 0) {eggProt = 0;}
+        let eggProt = getEggProtect(selectedBat,selectedBatType,targetWeap);
         totalDamage = Math.round(totalDamage*(100-eggProt)/100);
         if (playerInfos.comp.ca >= 2) {
             $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');

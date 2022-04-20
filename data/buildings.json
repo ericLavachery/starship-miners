@@ -239,7 +239,7 @@
             "aoe":"brochette",
             "sound":"plasma_canon",
             "ammo":["cn-proto-plasma","cn-plasma","cn-impact","cn-grapeshot","cn-plastanium","cn-uridium","cn-nanite"],
-            "maxAmmo":36,
+            "maxAmmo":30,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
@@ -369,7 +369,7 @@
             "aoe":"squad",
             "sound":"canon_auto_x6",
             "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":36,
+            "maxAmmo":30,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
@@ -654,7 +654,7 @@
             "aoe":"squad",
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-jello","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":24,
+            "maxAmmo":18,
             "ravitBld":"Poudrière"
         },
         "weapon3":{
@@ -780,9 +780,7 @@
             "power":12,
             "aoe":"squad",
             "sound":"flamme",
-            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
-            "maxAmmo":36,
-            "ravitBld":"Atelier"
+            "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"]
         },
         "weapon3":{
             "name":"Autopistol",
@@ -951,7 +949,7 @@
             "aoe":"squad",
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-jello","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":36,
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
@@ -2916,7 +2914,7 @@
             "aoe":"squad",
             "sound":"mortier",
             "ammo":["obus","obus-scrap","obus-heat","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":36,
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "weapon3":{

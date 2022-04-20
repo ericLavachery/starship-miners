@@ -397,6 +397,9 @@ function conSelect(unitId,player,noRefresh) {
                     if (batArmor.skills.includes('slowreg')) {
                         armorSkills = armorSkills+' slowreg';
                     }
+                    if (batArmor.skills.includes('regeneration')) {
+                        armorSkills = armorSkills+' regeneration';
+                    }
                     if (batArmor.skills.includes('resistacide')) {
                         armorSkills = armorSkills+' resistacide';
                     }

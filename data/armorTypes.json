@@ -306,7 +306,7 @@
         "cat":"armor",
         "armor":4,
         "ap":2,
-        "skills":["slowreg"],
+        "skills":["regeneration"],
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":2,"med":2,"cyber":1,"ind":1},
         "factor":"thp",

@@ -49,6 +49,9 @@ function reEquip(batId,noRefresh) {
                     if (batArmor.skills.includes('slowreg')) {
                         armorSkills = armorSkills+' slowreg';
                     }
+                    if (batArmor.skills.includes('regeneration')) {
+                        armorSkills = armorSkills+' regeneration';
+                    }
                     if (batArmor.skills.includes('resistacide')) {
                         armorSkills = armorSkills+' resistacide';
                     }
@@ -496,8 +499,13 @@ function getBatGearTags(armorName,equipName,batType) {
     let batArmor = getEquipByName(armorName);
     let batEquip = getEquipByName(equipName);
     if (batArmor.skills.includes('slowreg')) {
-        if (!batType.skills.includes('slowReg') && !batType.skills.includes('regeneration')) {
+        if (!batType.skills.includes('slowreg') && !batType.skills.includes('regeneration')) {
             gearTags.push('slowreg');
+        }
+    }
+    if (batArmor.skills.includes('regeneration')) {
+        if (!batType.skills.includes('regeneration')) {
+            gearTags.push('regeneration');
         }
     }
     if (batArmor.skills.includes('resistfeu') || batEquip.name === 'kit-pompiste' || batEquip.name === 'crimekitto') {

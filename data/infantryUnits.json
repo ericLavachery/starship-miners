@@ -287,7 +287,7 @@
             "aoe":"unit",
             "sound":"jav",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze"],
-            "maxAmmo":12
+            "maxAmmo":10
         },
         "protection":["aucune","scrap","kevlar","kapton","wendium","tisal","nano","duneg","soap","swing"],
         "equip":["aucun","e-flash","e-ranger","e-camo","gilet","crimekitgi"],
@@ -569,7 +569,7 @@
             "aoe":"brochette",
             "sound":"lightning",
             "ammo":["electricity"],
-            "maxAmmo":12,
+            "maxAmmo":15,
             "ravitBld":"Générateur"
         },
         "protection":["aucune","chobham","battlesuit"],
@@ -740,7 +740,7 @@
             "aoe":"brochette",
             "sound":"plasma_mcanon",
             "ammo":["cn-proto-plasma","cn-plasma","cn-impact","cn-grapeshot","cn-plastanium","cn-uridium","cn-nanite"],
-            "maxAmmo":14,
+            "maxAmmo":12,
             "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","e-camo","kit-guetteur","e-ranger","e-jetpack","chargeur1","silencieux1","camkit","e-phare","repel"],
@@ -798,7 +798,7 @@
             "aoe":"squad",
             "sound":"hose",
             "ammo":["fuel"],
-            "maxAmmo":12,
+            "maxAmmo":10,
             "ravitBld":"Atelier"
         },
         "equip":["aucun","e-flash","kit-pompiste","e-ranger","e-jetpack","camkit","e-phare","repel"],
@@ -855,7 +855,7 @@
             "aoe":"squad",
             "sound":"canon_small",
             "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-plastanium"],
-            "maxAmmo":16,
+            "maxAmmo":10,
             "ravitBld":"Poudrière"
         },
         "equip":["aucun","kit-artilleur","e-ranger","e-jetpack","camkit","e-phare","repel"],
@@ -1846,7 +1846,7 @@
             "aoe":"unit",
             "sound":"jav",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-freeze"],
-            "maxAmmo":12
+            "maxAmmo":10
         },
         "equip":["aucun","e-flash","e-camo","permakirin","theeye","helper"],
         "log3eq":["e-camo"],
@@ -2010,7 +2010,7 @@
             "aoe":"squad",
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyratol"],
-            "maxAmmo":12,
+            "maxAmmo":10,
             "ravitBld":"Atelier"
         },
         "equip":["aucun","e-flash","e-ranger","gilet","e-camo","lunette1","chargeur1","silencieux1","lanceur2","e-jetpack","theeye","helper","waterproof","repel"],
@@ -2109,7 +2109,7 @@
             "aoe":"unit",
             "sound":"mit_minigun",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"],
-            "maxAmmo":28,
+            "maxAmmo":20,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -2125,7 +2125,7 @@
             "aoe":"unit",
             "sound":"mit_minigun",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"],
-            "maxAmmo":28,
+            "maxAmmo":20,
             "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","e-ranger","e-medic","gilet","e-camo","lunette","chargeur","w2-2ch","theeye","helper","waterproof","repel"],
@@ -2185,7 +2185,7 @@
             "aoe":"squad",
             "sound":"mortier",
             "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":16,
+            "maxAmmo":12,
             "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","e-ranger","gilet","e-camo","silencieux1","longtom2","theeye","helper","repel"],
@@ -2242,7 +2242,7 @@
             "aoe":"squad",
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium","obus-deluge"],
-            "maxAmmo":12,
+            "maxAmmo":10,
             "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","e-ranger","gilet","lunette1","chargeur1","theeye","waterproof","e-medic","repel"],
@@ -2283,7 +2283,7 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
-            "maxAmmo":16,
+            "maxAmmo":13,
             "ravitBld":"Atelier"
         },
         "weapon2":{
@@ -2944,7 +2944,7 @@
             "aoe":"squad",
             "sound":"grenade",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-jello","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":16,
+            "maxAmmo":13,
             "ravitBld":"Poudrière"
         },
         "protection":["aucune","scrap","kevlar","kapton","wendium","tisal","nano","duneg","soap","swing","adamantite","battlesuit"],
@@ -3119,7 +3119,7 @@
             "aoe":"squad",
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-jello","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":8,
+            "maxAmmo":10,
             "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","e-ranger","gilet","chargeur1","snorkel","e-mecano","e-medic","theeye","repel"],
@@ -3512,7 +3512,7 @@
             "aoe":"squad",
             "sound":"canon_small_x2",
             "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-incendiaire","obus-napalm","obus-plastanium"],
-            "maxAmmo":16,
+            "maxAmmo":13,
             "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","chargeur1","w2-canon","e-camo","permakirin","theeye","helper","e-medic"],
@@ -3554,7 +3554,7 @@
             "aoe":"squad",
             "sound":"tromblon",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-jello","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":36,
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -3571,7 +3571,7 @@
             "aoe":"squad",
             "sound":"tromblon_long",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-jello","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":36,
+            "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","chargeur1","w2-tromblon","e-camo","permakirin","theeye","helper","e-medic"],
@@ -3613,7 +3613,7 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
-            "maxAmmo":24,
+            "maxAmmo":18,
             "ravitBld":"Atelier"
         },
         "weapon2":{
@@ -3744,7 +3744,7 @@
             "aoe":"bat",
             "sound":"rainbow",
             "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],
-            "maxAmmo":12,
+            "maxAmmo":10,
             "ravitBld":"Atelier"
         },
         "protection":["kevlar","acier","combo","kapton","wendium","titane","tisal","nano","duneg","soap","swing","adamantite","aegis","battlesuit"],
@@ -3915,7 +3915,7 @@
             "aoe":"squad",
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-jello","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":12,
+            "maxAmmo":10,
             "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","e-ranger","gilet","e-camo","chargeur1","theeye","helper","waterproof","repel"],
@@ -4030,7 +4030,7 @@
             "aoe":"squad",
             "sound":"rpg",
             "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium"],
-            "maxAmmo":12,
+            "maxAmmo":10,
             "ravitBld":"Poudrière"
         },
         "protection":["aucune","scrap","bugium","kevlar","kapton","wendium","titane","tisal","nano","soap","swing","adamantite","battlesuit"],
@@ -4087,7 +4087,7 @@
             "aoe":"unit",
             "sound":"jav",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze"],
-            "maxAmmo":14
+            "maxAmmo":12
         },
         "protection":["aucune","scrap","bugium","kevlar","kapton","titane","tisal","nano","soap","swing","adamantite","battlesuit"],
         "equip":["aucun","e-flash","e-jetpack","gilet"],
@@ -4143,7 +4143,7 @@
             "aoe":"squad",
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyratol"],
-            "maxAmmo":12,
+            "maxAmmo":10,
             "ravitBld":"Atelier"
         },
         "protection":["aucune","scrap","kevlar","kapton","wendium","tisal","nano","duneg","soap","swing"],
@@ -4203,7 +4203,7 @@
             "aoe":"squad",
             "sound":"grenade",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-jello","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":12,
+            "maxAmmo":10,
             "ravitBld":"Poudrière"
         },
         "protection":["aucune","scrap","kevlar","kapton","wendium","tisal","nano","duneg","soap","swing"],
@@ -4262,7 +4262,7 @@
             "aoe":"unit",
             "sound":"flamme",
             "ammo":["lt-o2","lt-nanite","lt-plastanium"],
-            "maxAmmo":24,
+            "maxAmmo":20,
             "ravitBld":"Atelier"
         },
         "weapon3":{
@@ -4389,7 +4389,7 @@
             "aoe":"squad",
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-jello","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":16,
+            "maxAmmo":13,
             "ravitBld":"Poudrière"
         },
         "protection":["aucune","chobham","iso"],
@@ -4564,7 +4564,7 @@
             "aoe":"bat",
             "sound":"rainbow",
             "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],
-            "maxAmmo":16,
+            "maxAmmo":10,
             "ravitBld":"Atelier"
         },
         "protection":["aucune","kevlar","combo","kapton","wendium","titane","tisal","nano","duneg","soap","swing","adamantite"],
@@ -4787,7 +4787,7 @@
             "aoe":"squad",
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
-            "maxAmmo":12,
+            "maxAmmo":10,
             "ravitBld":"Atelier"
         },
         "protection":["kevlar","combo","kapton","wendium","titane","tisal","nano","duneg","soap","swing","adamantite"],
@@ -4847,7 +4847,7 @@
             "aoe":"squad",
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyratol"],
-            "maxAmmo":10,
+            "maxAmmo":8,
             "ravitBld":"Atelier"
         },
         "equip":["aucun","e-flash","gilet","chargeur1","lanceur2","lgkit","theeye","helper","waterproof","detector","g2ai"],
@@ -5295,7 +5295,7 @@
             "aoe":"bat",
             "sound":"rainbow",
             "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],
-            "maxAmmo":16,
+            "maxAmmo":12,
             "ravitBld":"Atelier"
         },
         "equip":["aucun","e-flash","e-ranger","gilet","e-camo","chargeur1","e-jetpack","permakirin","theeye","helper","waterproof","e-medic","repel"],
@@ -5338,7 +5338,7 @@
             "aoe":"squad",
             "sound":"canon_big_x2",
             "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
-            "maxAmmo":20,
+            "maxAmmo":16,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -5393,7 +5393,7 @@
             "aoe":"squad",
             "sound":"canon_flak_x3",
             "ammo":["obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":24,
+            "maxAmmo":18,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -5408,7 +5408,7 @@
             "aoe":"squad",
             "sound":"canon_flak_x3",
             "ammo":["obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
-            "maxAmmo":24,
+            "maxAmmo":18,
             "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","gilet","e-camo","carrousel","longtom1","theeye","helper"],
@@ -5462,7 +5462,7 @@
             "aoe":"squad",
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyratol"],
-            "maxAmmo":16,
+            "maxAmmo":12,
             "ravitBld":"Atelier"
         },
         "equip":["aucun","e-flash","e-ranger","gilet","e-camo","chargeur1","lanceur2","lgkit","e-medic","theeye","helper","waterproof","repel"],
@@ -5523,7 +5523,7 @@
             "aoe":"squad",
             "sound":"grenade",
             "ammo":["fireball","fireglue","fireslime","fireblast"],
-            "maxAmmo":12,
+            "maxAmmo":15,
             "ravitBld":"Atelier"
         },
         "equip":["aucun","e-flash","e-ranger","gilet","e-camo","lunette1","chargeur1","silencieux1","lanceur2","lgkit","e-jetpack","theeye","helper","waterproof","repel"],
@@ -5564,7 +5564,7 @@
             "aoe":"unit",
             "sound":"flamme",
             "ammo":["lt-o2","lt-nanite","lt-plastanium"],
-            "maxAmmo":18,
+            "maxAmmo":13,
             "ravitBld":"Atelier"
         },
         "weapon2":{
@@ -5875,7 +5875,7 @@
         "volume":0.9,
         "stealth":9,
         "speed":1,
-        "ap":15,
+        "ap":12,
         "maxSalvo":1,
         "weapon":{
             "name":"Lame",
@@ -6017,7 +6017,7 @@
             "aoe":"squad",
             "sound":"mortier",
             "ammo":["grenade","grenade-flashbang","grenade-gaz","grenade-jello","grenade-antichar","grenade-incendiaire","grenade-nanite"],
-            "maxAmmo":12,
+            "maxAmmo":10,
             "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","e-ranger","lunette1","chargeur1","e-jetpack","waterproof","gilet"],
