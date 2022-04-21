@@ -1060,3 +1060,31 @@ function checkMedicSkill(bat,batType) {
     }
     return myMedicSkill;
 };
+
+function checkMedTrans(bat,batType) {
+    let medicTrans = false;
+    if (batType.transUnits >= 1) {
+        let isMedic = false;
+        if (batType.skills.includes('medic')) {
+            isMedic = true;
+        }
+        if (batType.skills.includes('badmedic') && playerInfos.comp.med >= 3) {
+            if (bat.eq === 'e-medic' || bat.logeq === 'e-medic') {
+                isMedic = true;
+            }
+        }
+        if (batType.skills.includes('medtrans')) {
+            medicTrans = true;
+        } else if (isMedic) {
+            bataillons.forEach(function(inBat) {
+                if (inBat.loc === "trans" && inBat.locId === bat.id) {
+                    let inBatType = getBatType(inBat);
+                    if (inBatType.skills.includes('realmed')) {
+                        medicTrans = true;
+                    }
+                }
+            });
+        }
+    }
+    return medicTrans;
+};

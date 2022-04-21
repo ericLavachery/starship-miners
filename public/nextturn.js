@@ -291,10 +291,18 @@ function nextTurnEnd() {
             if (bat.tags.includes('prayer') && !prayedTeams.includes(batType.kind)) {
                 prayedTeams.push(batType.kind);
             }
-            if (!medicalTransports.includes(bat.locId) && bat.loc === "trans" && batType.skills.includes('medic')) {
-                medicalTransports.push(bat.locId);
+            if (!medicalTransports.includes(bat.locId) && bat.loc === "trans" && batType.skills.includes('realmed')) {
+                let theTrans = getBatById(bat.locId);
+                let theTransType = getBatType(theTrans);
+                if (theTransType.skills.includes('medic')) {
+                    medicalTransports.push(bat.locId);
+                } else if (theTransType.skills.includes('badmedic') && playerInfos.comp.med >= 3) {
+                    if (theTrans.eq === 'e-medic' || theTrans.logeq === 'e-medic') {
+                        medicalTransports.push(bat.locId);
+                    }
+                }
             }
-            if (!medicalTransports.includes(bat.id) && batType.transUnits >= 1 && batType.skills.includes('medic')) {
+            if (!medicalTransports.includes(bat.id) && batType.transUnits >= 1 && batType.skills.includes('medtrans')) {
                 medicalTransports.push(bat.id);
             }
             if (bat.loc === "trans") {

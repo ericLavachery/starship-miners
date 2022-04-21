@@ -2293,7 +2293,14 @@ function calcTirFurtif(weap,bat) {
             } else {
                 tirFurtif = Math.round(tirFurtif/1.15);
             }
+            let batType = getBatType(bat);
+            if (batType.cat === 'buildings' || batType.cat === 'devices') {
+                tirFurtif = Math.round(tirFurtif*1.33);
+            }
         }
+    }
+    if (tirFurtif >= stealthMaxChance) {
+        tirFurtif = stealthMaxChance;
     }
     console.log('tirFurtif='+tirFurtif);
     return tirFurtif;
@@ -2624,9 +2631,9 @@ function getWetness(terrain,onGround) {
 function getEggProtect(eggBat,eggBatType,weap) {
     let eggProt = 0;
     if (eggBatType.skills.includes('eggprotect')) {
-        eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1.25)*3)));
+        eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1.25)*3.5)));
         if (eggBatType.skills.includes('turnprotect')) {
-            eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.75));
+            eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.65));
             if (eggBat.tags.includes('morph')) {
                 eggProt = Math.round(eggProt/1.2);
             }

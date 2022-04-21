@@ -611,15 +611,13 @@ function calcTiraBonus(batType) {
     return tiraBonus;
 };
 
-function armyAssign(batId,army) {
-    // le faire avec selectedBat puis arrayUpdate
-    // let index = bataillons.findIndex((obj => obj.id == batId));
-    // let bat = bataillons[index];
-    selectedBat.army = army;
+function armyAssign(dropMenuId) {
+    let army = document.getElementById(dropMenuId).value;
+    selectedBat.army = +army;
     if (selectedBatType.skills.includes('transport')) {
         bataillons.forEach(function(bat) {
             if (bat.loc === 'trans' && bat.locId == selectedBat.id) {
-                bat.army = army;
+                bat.army = +army;
             }
         });
     }

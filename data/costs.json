@@ -1004,7 +1004,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"gen":1},
         "costs":{"Fer":60,"Scrap":60,"Creatite":90,"Corps":15,"Calcium":60,"Azote":45,"Mercure":15,"Drogues":30},
-        "fabTime":25
+        "fabTime":35
     },
     {
         "id":163,
@@ -1013,7 +1013,7 @@
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"gen":1},
         "costs":{"Fer":60,"Scrap":120,"Carbone":60,"Plomb":60,"Bois":60,"Aluminium":60,"Tungstène":60,"Bugium":60,"Creatite":180,"Bossium":30,"Corps":20,"Calcium":90,"Azote":90,"Mercure":30,"Drogues":120},
-        "fabTime":40
+        "fabTime":60
     },
     {
         "id":286,
@@ -1022,7 +1022,7 @@
         "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"gen":2},
         "costs":{"Fer":60,"Scrap":120,"Carbone":30,"Plomb":60,"Bois":60,"Silicium":30,"Bugium":84,"Creatite":180,"Bossium":60,"Corps":30,"Calcium":90,"Azote":90,"Mercure":30,"Drogues":180},
-        "fabTime":40
+        "fabTime":75
     },
     {
         "id":287,

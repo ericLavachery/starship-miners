@@ -470,8 +470,13 @@ function batInfos(bat,batType,pop) {
         if (batType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
             transBase = Math.round(transBase*bonusTransRetour);
         }
+        let medicTrans = checkMedTrans(bat,batType);
+        let mtPrint = '';
+        if (medicTrans) {
+            mtPrint = ' &nbsp<i class="fas fa-briefcase-medical neutre"></i>';
+        }
         if (transBase < 1000000) {
-            $('#'+bodyPlace).append('<span class="paramName marine">Transport</span><span class="paramIcon"></span><span class="paramValue marine">'+transLeft+'/'+transBase+'</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName marine">Transport</span><span class="paramIcon"></span><span class="paramValue marine">'+transLeft+'/'+transBase+mtPrint+'</span><br>');
         } else {
             $('#'+bodyPlace).append('<span class="paramName marine">Transport</span><span class="paramIcon"></span><span class="paramValue marine">'+transLeft+'/</span><br>');
         }
@@ -548,22 +553,17 @@ function batInfos(bat,batType,pop) {
     // ARMIES
     if (!pop) {
         $('#'+bodyPlace).append('<div class="shSpace"></div>');
-        $('#'+bodyPlace).append('<span class="blockTitle"><h3>Armée</h3></span><br>');
+        $('#'+bodyPlace).append('<span class="blockTitle"><h3>Armée</h3></span>');
+        $('#'+bodyPlace).append('<select class="boutonGris" id="theArmies" onchange="armyAssign(`theArmies`)"></select>');
         let army = 0;
-        let armycol = "";
-        if (army === bat.army) {
-            armycol = " cy";
-        }
-        $('#'+bodyPlace).append('<span class="army klik'+armycol+'" onclick="armyAssign('+bat.id+','+army+')">'+army+'</span>');
-        while (army <= 12) {
-            army++
-            if (army === bat.army) {
-                armycol = " cy";
+        while (army <= 20) {
+            if (bat.army === army) {
+                $('#theArmies').append('<option value="'+army+'" selected>Armée '+army+'</option>');
             } else {
-                armycol = "";
+                $('#theArmies').append('<option value="'+army+'">Armée '+army+'</option>');
             }
-            $('#'+bodyPlace).append('<span class="army">&Star;<span class="klik'+armycol+'" onclick="armyAssign('+bat.id+','+army+')">'+army+'</span></span>');
-            if (army > 12) {break;}
+            if (army >= 20) {break;}
+            army++
         }
     }
     // RESSOURCES transportées
