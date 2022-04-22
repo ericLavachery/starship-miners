@@ -473,10 +473,10 @@ function batInfos(bat,batType,pop) {
         let medicTrans = checkMedTrans(bat,batType);
         let mtPrint = '';
         if (medicTrans) {
-            mtPrint = ' &nbsp<i class="fas fa-briefcase-medical neutre"></i>';
+            mtPrint = '<i class="fas fa-briefcase-medical neutre"></i> &nbsp';
         }
         if (transBase < 1000000) {
-            $('#'+bodyPlace).append('<span class="paramName marine">Transport</span><span class="paramIcon"></span><span class="paramValue marine">'+transLeft+'/'+transBase+mtPrint+'</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName marine">'+mtPrint+'Transport</span><span class="paramIcon"></span><span class="paramValue marine">'+transLeft+'/'+transBase+'</span><br>');
         } else {
             $('#'+bodyPlace).append('<span class="paramName marine">Transport</span><span class="paramIcon"></span><span class="paramValue marine">'+transLeft+'/</span><br>');
         }
