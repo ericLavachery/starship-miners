@@ -2090,6 +2090,9 @@ function skillsInfos(bat,batType,near) {
         if (bat.loc === 'zone' || bat.locId === souteId) {
             equipOK = true;
         }
+        if (batType.skills.includes('transorbital') && bat.tags.includes('deploy')) {
+            equipOK = false;
+        }
     } else {
         if (checkNearConstructor(bat)) {
             equipOK = true;

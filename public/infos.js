@@ -1015,10 +1015,10 @@ function renameChief(batId) {
             if (newName.length <= 24) {
                 bat.chief = newName;
                 showBataillon(bat);
-                showBatInfos(bat);
                 if (inSoute) {
                     goSoute();
                 }
+                showBatInfos(bat);
             } else {
                 // message d'erreur
             }

@@ -454,10 +454,10 @@ function doReEquip(batId) {
     }
     conOut(true);
     myNewGear = ['xxx','xxx','xxx','xxx'];
-    showBatInfos(myBat);
     if (inSoute) {
         goSoute();
     }
+    showBatInfos(myBat);
 };
 
 function getBatGearStuff(armorName,equipName,batType) {

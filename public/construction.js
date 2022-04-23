@@ -809,6 +809,7 @@ function doUpgrade() {
         removeBat(selectedBat.id);
         putBat(myBatTileId,0,myBatXP);
     }
+    $("#unitInfos").css("display","none");
     if (inSoute) {
         goSoute();
     }

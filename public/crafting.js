@@ -175,15 +175,21 @@ function checkCraftCost(craftId,number) {
     return craftResOK;
 };
 
-function craftReset(time) {
+function getCraftsPerTurn() {
     let craftsPerTurn = baseCrafts*(playerInfos.comp.ind+3)/3;
     if (playerInfos.bldList.includes('Usine')) {
-        craftsPerTurn = (craftsPerTurn+2)*1.5;
+        craftsPerTurn = (craftsPerTurn+1)*1.5;
     } else if (playerInfos.bldList.includes('Chaîne de montage')) {
-        craftsPerTurn = (craftsPerTurn+1)*1.25;
+        craftsPerTurn = (craftsPerTurn+0.5)*1.25;
     } else if (!playerInfos.bldList.includes('Atelier')) {
         craftsPerTurn = craftsPerTurn/1.5;
     }
+    craftsPerTurn = craftsPerTurn.toFixedNumber(2);
+    return craftsPerTurn;
+};
+
+function craftReset(time) {
+    let craftsPerTurn = getCraftsPerTurn();
     playerInfos.crafts = playerInfos.crafts-Math.ceil(time*craftsPerTurn);
     if (playerInfos.crafts < 0) {
         playerInfos.crafts = 0;
@@ -191,14 +197,7 @@ function craftReset(time) {
 }
 
 function getMaxCrafts() {
-    let craftsPerTurn = baseCrafts*(playerInfos.comp.ind+2)/2;
-    if (playerInfos.bldList.includes('Usine')) {
-        craftsPerTurn = (craftsPerTurn+2)*1.75;
-    } else if (playerInfos.bldList.includes('Chaîne de montage')) {
-        craftsPerTurn = (craftsPerTurn+1)*1.35;
-    } else if (!playerInfos.bldList.includes('Atelier')) {
-        craftsPerTurn = craftsPerTurn/1.5;
-    }
+    let craftsPerTurn = getCraftsPerTurn();
     let maxCrafts = Math.ceil(craftsPerTurn*3);
     if (playerInfos.onShip) {
         maxCrafts = maxCrafts*3;

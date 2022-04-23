@@ -157,8 +157,8 @@ function landerSelection(landerId) {
     slId = landerId;
     let landerBat = getBatById(slId);
     batSelect(landerBat);
-    showBatInfos(selectedBat);
     goSoute();
+    showBatInfos(selectedBat);
 };
 
 function checkSelectedLanderId() {
@@ -514,11 +514,11 @@ function landerDeploy(landerId) {
     } else {
         console.log('not enough res');
     }
-    showBatInfos(landerBat);
     commandes();
     if (inSoute) {
         goSoute();
     }
+    showBatInfos(landerBat);
 };
 
 function landerUnDeploy(landerId) {
@@ -527,11 +527,11 @@ function landerUnDeploy(landerId) {
     let deployCosts = calcLanderDeploy(landerBatType);
     addCost(deployCosts,1);
     tagDelete(landerBat,'deploy');
-    showBatInfos(landerBat);
     commandes();
     if (inSoute) {
         goSoute();
     }
+    showBatInfos(landerBat);
 };
 
 function loadBat(batId,transBatId,oldTransBatId) {

@@ -69,8 +69,14 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                             let effSoins = checkEffSoins(bat);
                             if (medDice > effSoins && catOK) {
                                 catOK = false;
-                                totalAPCost = totalAPCost+apCost;
-                                $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">soins inefficaces<br></span>');
+                                if (batType.cat === 'infantry') {
+                                    if (bat.tags.includes('poison') || bat.tags.includes('venin') || bat.damage > 0 || bat.squadsLeft < batType.squads || bat.tags.includes('parasite') || bat.tags.includes('maladie')) {
+                                        if (effSoins > 0) {
+                                            totalAPCost = totalAPCost+apCost;
+                                            $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">soins inefficaces<br></span>');
+                                        }
+                                    }
+                                }
                             }
                             if (catOK && !batType.skills.includes('norepair')) {
                                 console.log('catOK');

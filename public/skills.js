@@ -622,10 +622,10 @@ function armyAssign(dropMenuId) {
         });
     }
     selectedBatArrayUpdate();
-    showBatInfos(selectedBat);
     if (inSoute) {
         goSoute();
     }
+    showBatInfos(selectedBat);
 };
 
 function goDrug(apCost,drugName) {
