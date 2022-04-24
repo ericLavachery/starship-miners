@@ -1054,7 +1054,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"molotov",
-            "ammo":["molotov-feu","molotov-slime","molotov-pyratol"],
+            "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-pyratol"],
             "maxAmmo":24,
             "ravitBld":"Atelier"
         },
@@ -1567,7 +1567,7 @@
         "size":100,
         "stealth":0,
         "speed":-5,
-        "ap":16,
+        "ap":24,
         "maxSalvo":2,
         "weapon":{
             "name":"Mitrailleuse lourde",
@@ -1585,7 +1585,7 @@
         },
         "weapon2":{
             "name":"Missiles Squash",
-            "cost":7,
+            "cost":10,
             "range":9,
             "noMelee":true,
             "noFly":true,
@@ -3127,7 +3127,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"molotov",
-            "ammo":["molotov-feu"],
+            "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-pyratol"],
             "maxAmmo":16,
             "ravitBld":"Atelier"
         },

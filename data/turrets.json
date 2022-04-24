@@ -466,7 +466,7 @@
         "stealth":0,
         "speed":-5,
         "ap":16,
-        "maxSalvo":2,
+        "maxSalvo":3,
         "weapon":{
             "name":"Carabine",
             "cost":4,

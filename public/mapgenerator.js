@@ -940,6 +940,10 @@ function addRes(zone) {
             }
             resRarity = Math.ceil(resRarity*planetFactor);
             resBatch = Math.ceil(resBatch*Math.sqrt(planetFactor));
+            if (planetFactor === 0 && playerInfos.sondeDanger >= 8) {
+                resRarity = 0.5;
+                resBatch = Math.ceil(resBatch*0.2);
+            }
         } else if (zone[0].planet != 'Dom') {
             resRarity = resRarity+2;
         }

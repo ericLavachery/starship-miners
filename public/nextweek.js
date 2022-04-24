@@ -593,8 +593,8 @@ function calcCrimeRate(mesCitoyens) {
         }
         if (batType.crime != undefined || bat.eq === 'camkit') {
             let countMe = false;
-            if (batType.cat === 'buildings') {
-                if (batType.name === 'Prisons' || batType.name === 'Cabines' || batType.name === 'Ascenceur' || batType.crime >= 1) {
+            if (batType.cat === 'buildings' || batType.name === 'Technobass') {
+                if (batType.name === 'Prisons' || batType.name === 'Cabines' || batType.name === 'Technobass' || batType.name === 'Ascenceur' || batType.crime >= 1) {
                     countMe = true;
                 } else {
                     if (!bldIds.includes(batType.id)) {

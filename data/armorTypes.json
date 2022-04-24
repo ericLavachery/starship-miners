@@ -283,7 +283,7 @@
         "name":"adamantite",
         "cat":"armor",
         "armor":5,
-        "ap":-2,
+        "ap":-1,
         "skills":["resistall"],
         "bldReq":["Arsenal"],
         "compReq":{"mat":3},
@@ -293,7 +293,7 @@
     {
         "name":"aegis",
         "cat":"armor",
-        "armor":7,
+        "armor":9,
         "ap":-3,
         "skills":["resistall"],
         "bldReq":["Centre de recherches"],

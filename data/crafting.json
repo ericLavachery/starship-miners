@@ -663,7 +663,7 @@
     {
         "id":107,
         "result":"Fuel",
-        "cost":{"Pyrus":2,"Eau":8},
+        "cost":{"Pyrus":2,"Eau":8,"Végétaux":2},
         "compReq":{"pyro":3},
         "bldReq":["Laboratoire"],
         "batch":10,
@@ -1463,8 +1463,8 @@
     {
         "id":45,
         "result":"Pyratol",
-        "cost":{"Pyrus":5,"Bossium":1,"Energie":2},
-        "compReq":{"tri":4,"ca":3},
+        "cost":{"Pyrus":5,"Bossium":1,"Végétaux":5},
+        "compReq":{"tri":2,"ca":3},
         "bldReq":["Recyclab"],
         "batch":10,
         "bg":"#200808"
@@ -1481,7 +1481,7 @@
     {
         "id":47,
         "result":"Soufre",
-        "cost":{"Pyrus":5,"Oxygène":5},
+        "cost":{"Pyrus":2,"Oxygène":5,"Végétaux":2},
         "compReq":{"tri":1,"ca":1},
         "bldReq":["Centre de tri"],
         "batch":15,

@@ -2946,7 +2946,7 @@
         "maxFlood":0,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["fortif","undead","gooddef","longshot","bigflash","brigands","crewsave","flash","recupcit","recupres","lowstress","dealer","moloko","bliss","sila","blaze","kirin","octiron","skupiac","starka","resistacide"],
+        "skills":["fortif","undead","gooddef","longshot","bigflash","brigands","crewsave","flash","recupcit","recupres","lowstress","dealer","moloko","bliss","sila","blaze","kirin","octiron","skupiac","starka","resistacide","max3"],
         "mecanoCost":14,
         "maxDrug":36,
         "fuzz":5,
