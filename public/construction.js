@@ -1383,7 +1383,7 @@ function removeBat(batId) {
 };
 
 function dismantle(batId) {
-    saveGame();
+    // saveGame();
     selectMode();
     let bat = getBatById(batId);
     let batType = getBatType(bat);
@@ -1435,6 +1435,9 @@ function dismantle(batId) {
         }
     } else {
         alert("Vous ne pouvez pas démanteler ce bâtiment.");
+    }
+    if (inSoute) {
+        goSoute();
     }
 };
 

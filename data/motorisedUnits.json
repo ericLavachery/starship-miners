@@ -3151,7 +3151,6 @@
             "noGround":true,
             "rof":9,
             "accuracy":36,
-            "dca":3,
             "power":20,
             "aoe":"squad",
             "sound":"bomb_mini_x3",
@@ -3160,7 +3159,7 @@
             "ravitBld":"Poudrière"
         },
         "weapon2":{
-            "name":"Flak canon (ground)",
+            "name":"Flak canon (sol)",
             "cost":3,
             "range":1,
             "elevation":1,
@@ -3168,7 +3167,6 @@
             "noFly":true,
             "rof":9,
             "accuracy":9,
-            "dca":3,
             "power":20,
             "aoe":"squad",
             "sound":"bomb_mini_x3",
