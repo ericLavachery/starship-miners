@@ -698,6 +698,10 @@ function attack(melee,init) {
         }
     }
     // résistance électricité
+    if (targetBat.type.includes('Barbelés') && selectedWeap.isElec) {
+        totalDamage = Math.round(totalDamage/10);
+        apDamage = Math.round(apDamage/10);
+    }
     if (targetBatType.skills.includes('resistelec') || targetBat.tags.includes('resistelec')) {
         if (selectedWeap.isElec) {
             totalDamage = Math.round(totalDamage/2);
@@ -1677,6 +1681,10 @@ function defense(melee,init) {
         }
     }
     // résistance électricité
+    if (selectedBat.type.includes('Barbelés') && targetWeap.isElec) {
+        totalDamage = Math.round(totalDamage/10);
+        apDamage = Math.round(apDamage/10);
+    }
     if (selectedBatType.skills.includes('resistelec') || selectedBat.tags.includes('resistelec')) {
         if (targetWeap.isElec) {
             totalDamage = Math.round(totalDamage/2);

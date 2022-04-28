@@ -486,7 +486,7 @@
         "name": "ac-timonium",
         "range": 1,
         "rof": 1,
-        "power": 9,
+        "power": 10,
         "powermult": 1,
         "armors": 0.15,
         "accuracy": 1,

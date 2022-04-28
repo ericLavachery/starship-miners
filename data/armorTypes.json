@@ -380,6 +380,17 @@
         "costs":{"Carbone":6,"Bossium":2,"Nickel":6,"Azote":3,"Bore":6}
     },
     {
+        "name":"autorep",
+        "cat":"armor",
+        "armor":2,
+        "ap":-1,
+        "skills":["resistall","autorepair"],
+        "bldReq":["Centre de recherches"],
+        "compReq":{"mat":4,"ca":3},
+        "factor":"thp",
+        "costs":{"Carbone":9,"Azote":3,"Dunium":6,"Wingium":3,"Mendium":6}
+    },
+    {
         "name":"rhodu",
         "cat":"armor",
         "armor":3,
@@ -388,7 +399,7 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":3,"ind":3},
         "factor":"thp",
-        "costs":{"Carbone":9,"Azote":3,"Dunium":6,"Rhodium":6}
+        "costs":{"Carbone":9,"Azote":3,"Dunium":6,"Rhodium":4}
     },
     {
         "name":"lunette",

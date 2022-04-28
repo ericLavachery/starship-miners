@@ -1270,6 +1270,15 @@ function tagsEffect(bat,batType) {
     if (rand.rand(1,16) <= unitResist && bat.cat === 'infantry') {
         resistance = true;
     }
+    // AUTOREPAIR
+    if (bat.tags.includes('autorep')) {
+        if (bat.damage >= 1) {
+            bat.damage = bat.damage-50;
+            if (bat.damage < 0) {
+                bat.damage = 0;
+            }
+        }
+    }
     // REGENERATION & KIRIN DRUG
     if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || bat.tags.includes('slowreg') || bat.eq === 'permakirin' || bat.logeq === 'permakirin' || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal') || resistance) {
         let regOK = true;

@@ -40,7 +40,7 @@
             "sound":"calibre_antichar",
             "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep"],
         "equip":["aucun"],
         "log3eq":[],
         "moveCost":99,
@@ -100,7 +100,7 @@
             "sound":"calibre_sniper",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w2-pgun","e-medic","lifepod","garage"],
         "log3eq":["garage"],
         "moveCost":99,
@@ -178,7 +178,7 @@
             "sound":"axe_x2",
             "ammo":["lame-carbone"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","e-medic","g2siege","lifepod","garage"],
         "log3eq":["garage"],
         "moveCost":99,
@@ -242,7 +242,7 @@
             "maxAmmo":30,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w2-cplasma","e-medic","e-control","lifepod","garage"],
         "log3eq":["e-control"],
         "moveCost":99,
@@ -309,7 +309,7 @@
             "maxAmmo":36,
             "ravitBld":"Atelier"
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w2-rain","e-medic","lifepod","garage"],
         "log3eq":["garage"],
         "moveCost":99,
@@ -372,7 +372,7 @@
             "maxAmmo":30,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w2-acanon","e-medic","e-control","lifepod","garage"],
         "log3eq":["garage"],
         "moveCost":99,
@@ -438,7 +438,7 @@
             "maxAmmo":36,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w2-mortier","e-medic","e-control","lifepod","garage"],
         "log3eq":["garage"],
         "moveCost":99,
@@ -501,7 +501,7 @@
             "sound":"laser_fusil",
             "ammo":["laser","laser-g2"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w2-flaser","e-medic","lifepod","garage"],
         "log3eq":["garage"],
         "moveCost":99,
@@ -582,7 +582,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-dyna","w2-autopistol","tungextract","plasmaextract","monoextract","e-medic","psol","isophon","respod","garage","e-infra"],
         "log3eq":["garage","psol"],
         "autoEq":["monoextract","plasmaextract","tungextract"],
@@ -669,7 +669,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-explo","w2-autopistol","psol","isophon","respod","garage","e-infra"],
         "log3eq":["garage","psol"],
         "moveCost":99,
@@ -722,7 +722,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w2-autopistol","psol","g2cryo","isophon"],
         "log3eq":["g2cryo"],
         "moveCost":99,
@@ -794,7 +794,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-fire","w2-autopistol","hydroextract","e-medic","psol","isophon","respod","garage","e-infra"],
         "log3eq":["garage","psol"],
         "autoEq":["hydroextract"],
@@ -877,7 +877,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-ggun","w2-autopistol","autoextract","e-medic","psol","isophon","respod","garage","e-infra"],
         "log3eq":["garage","psol"],
         "autoEq":["autoextract"],
@@ -952,7 +952,7 @@
             "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w1-gun","w2-explo","respod","garage","e-infra"],
         "log3eq":["garage"],
         "moveCost":99,
@@ -998,7 +998,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w2-autopistol","psol","garage","e-infra"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1070,7 +1070,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-molo","w2-autopistol","psol","isophon","garage","prodboost","e-infra"],
         "log3eq":["garage","psol"],
         "moveCost":99,
@@ -1150,7 +1150,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-dyna","w2-autopistol","e-medic","psol","isophon","garage","prodboost","e-infra"],
         "log3eq":["garage","psol"],
         "moveCost":99,
@@ -1229,7 +1229,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-brol","w2-autopistol","psol2","isophon","respod","garage","prodboost"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
@@ -1305,7 +1305,7 @@
             "sound":"autogun",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-ggun","w2-arti","w2-autogun","psol2","isophon","respod","garage","prodboost"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
@@ -1372,7 +1372,7 @@
             "maxAmmo":36,
             "ravitBld":"Poudrière"
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","psol2","isophon","garage","e-infra"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
@@ -1446,7 +1446,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-ggun","w2-explo","w2-autopistol","e-medic","psol","isophon","garage","prodboost","e-infra"],
         "log3eq":["garage","psol"],
         "moveCost":99,
@@ -1524,7 +1524,7 @@
             "sound":"autogun",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w2-arti","w2-autogun","psol2","isophon","respod","garage","prodboost"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
@@ -1601,7 +1601,7 @@
             "sound":"autogun",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w2-arti","w2-autogun","psol2","isophon","respod","garage","prodboost"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
@@ -1662,7 +1662,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-autopistol","psol","isophon","lifepod","garage","e-infra"],
         "log3eq":["garage","psol"],
         "moveCost":99,
@@ -1746,7 +1746,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-rain","w2-autopistol","psol2","isophon","lifepod","garage","prodboost","e-infra"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
@@ -1811,7 +1811,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-autopistol","e-medic","psol","isophon","garage"],
         "log3eq":["garage","psol"],
         "moveCost":99,
@@ -1889,7 +1889,7 @@
             "sound":"autogun",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-arti","w2-autogun","e-medic","psol2","isophon","garage","e-infra"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
@@ -1963,7 +1963,7 @@
             "sound":"autogun",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-ggun","w2-arti","w2-autogun","psol2","isophon","lifepod","garage"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
@@ -2040,7 +2040,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-dyna","w2-autopistol","psol","isophon","garage","e-infra"],
         "log3eq":["garage","psol"],
         "moveCost":99,
@@ -2121,7 +2121,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-explo","w2-autopistol","psol2","isophon","respod","garage","e-infra"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
@@ -2200,7 +2200,7 @@
             "sound":"autogun",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-cmag","w2-autogun","psol2","isophon","respod","garage","e-infra"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
@@ -2279,7 +2279,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-rain","w2-autopistol","psol","isophon","e-control","respod","garage","prodboost","e-infra"],
         "log3eq":["garage","psol"],
         "moveCost":99,
@@ -2352,7 +2352,7 @@
             "sound":"autogun",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-plasma","w2-laser","w2-autogun","psol2","isophon","e-control","respod","garage","prodboost","e-infra"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
@@ -2399,7 +2399,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w2-autopistol","psol","isophon"],
         "log3eq":["psol"],
         "moveCost":99,
@@ -2469,7 +2469,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-ggun","w2-ggun","w2-autopistol","psol2","isophon","garage","e-infra"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
@@ -2542,7 +2542,7 @@
             "sound":"autogun",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-ggun","w2-autogun","isophon","respod","garage","e-infra"],
         "log3eq":["garage"],
         "moveCost":99,
@@ -2619,7 +2619,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-ggun","w2-autopistol","psol","isophon","respod","garage","e-infra"],
         "log3eq":["garage","psol"],
         "moveCost":99,
@@ -2692,7 +2692,7 @@
             "sound":"autogun",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-ggun","w2-autogun","isophon","respod","garage","e-infra"],
         "log3eq":["garage"],
         "moveCost":99,
@@ -2765,7 +2765,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-ggun","w2-autopistol","isophon","respod","garage","e-infra"],
         "log3eq":["garage"],
         "moveCost":99,
@@ -2841,7 +2841,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-explo","w2-autopistol","garage"],
         "log3eq":["garage"],
         "moveCost":99,
@@ -2917,7 +2917,7 @@
             "sound":"autogun",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-explo","w2-autogun","garage","e-infra"],
         "log3eq":["garage"],
         "moveCost":99,
@@ -2992,7 +2992,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-explo","w2-autopistol","isophon","garage","e-infra"],
         "log3eq":["garage"],
         "moveCost":99,
@@ -3056,7 +3056,7 @@
             "sound":"fmag",
             "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-pgun","w2-cmag","psol2","lifepod","w1-lifepod","w2-lifepod","isophon","garage","e-infra"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
@@ -3131,7 +3131,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-molo","w2-autopistol","e-medic","psol","isophon","garage"],
         "log3eq":["garage","psol"],
         "moveCost":99,
@@ -3193,7 +3193,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-autopistol","psol","e-medic","isophon","garage","prodboost"],
         "log3eq":["garage","psol"],
         "moveCost":99,
@@ -3254,7 +3254,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-autopistol","e-medic","psol","isophon","garage"],
         "log3eq":["garage","psol"],
         "moveCost":99,
@@ -3315,7 +3315,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-ggun","w2-autopistol","psol","isophon","garage"],
         "log3eq":["garage","psol"],
         "moveCost":99,
@@ -3350,7 +3350,7 @@
         "maxSalvo":1,
         "weapon":{},
         "weapon2":{},
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun"],
         "moveCost":99,
         "maxFlood":-1,
@@ -3407,7 +3407,7 @@
             "sound":"autopistol",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","bldkit","w1-gun","w2-autopistol","e-medic","psol","isophon","garage"],
         "log3eq":["garage","psol"],
         "moveCost":99,
@@ -3480,7 +3480,7 @@
             "sound":"autogun",
             "ammo":["standard"]
         },
-        "protection":["aucun","bugium","acier","titane","bulk","swag","bonibo","tisal","iso","adamantite"],
+        "protection":["aucun","bugium","acier","titane","bulk","autorep","swag","bonibo","tisal","iso","adamantite"],
         "equip":["aucun","w1-ggun","w2-ggun","w2-autogun","isophon","e-control","lifepod","garage"],
         "log3eq":["garage"],
         "moveCost":99,

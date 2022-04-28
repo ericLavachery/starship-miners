@@ -508,6 +508,11 @@ function getBatGearTags(armorName,equipName,batType) {
             gearTags.push('regeneration');
         }
     }
+    if (batArmor.skills.includes('autorepair')) {
+        if (!batType.skills.includes('autorep')) {
+            gearTags.push('autorep');
+        }
+    }
     if (batArmor.skills.includes('resistfeu') || batEquip.name === 'kit-pompiste' || batEquip.name === 'crimekitto') {
         if (!batType.skills.includes('resistfeu')) {
             gearTags.push('resistfeu');

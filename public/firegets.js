@@ -1762,7 +1762,7 @@ function weaponAdj(weapon,bat,wn) {
     }
     // Equip adj
     if (thisWeapon.num === 1) {
-        if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes') {
+        if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes' && !thisWeapon.isMelee) {
             if (bat.eq  === 'detector' || bat.logeq  === 'detector' || bat.eq  === 'g2ai' || bat.logeq  === 'g2ai') {
                 if (thisWeapon.elevation === 1 && thisWeapon.range >= 2) {
                     thisWeapon.elevation = 2;
@@ -1816,7 +1816,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.hide = true;
         }
     } else if (thisWeapon.num === 2) {
-        if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes') {
+        if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes' && !thisWeapon.isMelee) {
             if (bat.eq  === 'detector' || bat.logeq  === 'detector' || bat.eq  === 'g2ai' || bat.logeq  === 'g2ai') {
                 if (thisWeapon.elevation === 1 && thisWeapon.range >= 2) {
                     thisWeapon.elevation = 2;

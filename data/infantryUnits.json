@@ -544,7 +544,7 @@
         "weapon":{
             "name":"Electrospear",
             "cost":2,
-            "range":0,
+            "range":1,
             "isMelee":true,
             "bigDef":true,
             "rof":12,
@@ -3713,17 +3713,17 @@
         "ap":14,
         "maxSalvo":2,
         "weapon":{
-            "name":"Fusil mitrailleur",
-            "cost":4,
+            "name":"Blaster",
+            "cost":3,
             "range":1,
             "elevation":1,
-            "rof":18,
+            "rof":6,
             "accuracy":17,
-            "power":8,
-            "armors":0.8,
+            "power":10,
+            "armors":0.7,
             "aoe":"unit",
-            "sound":"mit_light2",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "sound":"calibre_heavy_x1",
+            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
         },
         "weapon2":{
             "name":"Rainbow gun",
