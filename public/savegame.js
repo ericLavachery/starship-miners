@@ -4,6 +4,12 @@ function savePlayerInfos() {
     socket.emit('save-playerInfos', playerInfos);
 };
 
+function savePlayerLog() {
+    playerInfos.numHTiles = numHTiles;
+    playerInfos.numVTiles = numVTiles;
+    socket.emit('save-playerLog', playerInfos);
+};
+
 function saveMap() {
     // showedTilesReset();
     socket.emit('save-map',zone);

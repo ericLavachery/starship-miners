@@ -485,6 +485,9 @@ function batDeath(bat,count) {
         locals.splice(batIndex,1);
     }
     alienOccupiedTileList();
+    if (showMini && activeTurn == 'player') {
+        unitsView();
+    }
 };
 
 function batDeathEffect(bat,quiet,title,body) {
@@ -1538,6 +1541,9 @@ function weaponSelectRiposte(distance) {
         targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon3));
         targetWeap = weaponAdj(targetWeap,targetBat,'w3');
     } else if (targetBatType.skills.includes('w3melee') && distance === 0) {
+        targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon3));
+        targetWeap = weaponAdj(targetWeap,targetBat,'w3');
+    } else if (targetBatType.skills.includes('w3range') && distance <= targetBatType.weapon3.range) {
         targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon3));
         targetWeap = weaponAdj(targetWeap,targetBat,'w3');
     } else {

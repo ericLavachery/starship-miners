@@ -67,6 +67,8 @@ function stopMission() {
     removeDeployedBats();
     // sauvegarder la zone pour un retour
     saveMapForReturn();
+    // log save
+    savePlayerLog();
     // charger la zone STATION
     loadZone(0);
     playerInfos.onShip = true;

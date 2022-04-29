@@ -2,7 +2,7 @@ const app = require('express')();
 const server = require('http').createServer(app);
 server.timeout = 10000;
 const io = require('socket.io').listen(server,{cookie:false});
-const ent = require('ent'); // Permet de bloquer les caractères HTML (sécurité équivalente à htmlentities en PHP)
+const ent = require('ent');
 const fs = require('fs');
 const express = require('express');
 const isJSON = require('./public/share.js');
@@ -482,7 +482,7 @@ io.sockets.on('connection', function (socket, pseudo) {
         });
     });
 
-    // Save Aliens ass !!!
+    // Save Aliens as !!!
     socket.on('save-aliens-as', function(aliens) {
         let json = JSON.stringify(aliens[0]);
         let filename = socket.pseudo+'-aliens'+aliens[1]+'.json'
@@ -492,7 +492,7 @@ io.sockets.on('connection', function (socket, pseudo) {
         });
     });
 
-    // Save Bataillons ass !!!
+    // Save Bataillons as !!!
     socket.on('save-bataillons-as', function(bataillons) {
         let json = JSON.stringify(bataillons[0]);
         let filename = socket.pseudo+'-bataillons'+bataillons[1]+'.json'
@@ -537,6 +537,20 @@ io.sockets.on('connection', function (socket, pseudo) {
         let json = JSON.stringify(playerInfos);
         let filename = socket.pseudo+'-playerInfos.json'
         fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
+            if (err) throw err;
+            console.log('Player infos saved to '+filename+' on turn '+playerInfos.mapTurn);
+        });
+    });
+
+    // Save playerInfos Log
+    socket.on('save-playerLog', function(playerInfos) {
+        let json = JSON.stringify(playerInfos);
+        var dir = './data/players/'+socket.pseudo;
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
+        }
+        let filename = socket.pseudo+'-playerLog-'+playerInfos.gangXP+'.json';
+        fs.writeFile('./data/players/'+socket.pseudo+'/'+filename, json, 'utf8', (err) => {
             if (err) throw err;
             console.log('Player infos saved to '+filename+' on turn '+playerInfos.mapTurn);
         });

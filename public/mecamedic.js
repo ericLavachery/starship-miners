@@ -413,19 +413,22 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
     let batHPLeft;
     let fullBat;
     if (!around) {
-        if (!myBat.tags.includes('necro') || playerInfos.comp.med >= 3 || myBatType.skills.includes('necrocure')) {
-            if ((deep || playerInfos.comp.med >= 2) && myBat.tags.includes('venin')) {
-                numTargets = numTargets+1;
-            } else if (deep) {
-                if (myBat.damage > 0 || myBat.squadsLeft < myBatType.squads || myBat.tags.includes('poison') || myBat.tags.includes('venin') || myBat.tags.includes('maladie') || myBat.tags.includes('parasite') || myBat.tags.includes('trou')) {
+        let effSoins = checkEffSoins(myBat);
+        if (effSoins >= 50) {
+            if (!myBat.tags.includes('necro') || playerInfos.comp.med >= 3 || myBatType.skills.includes('necrocure')) {
+                if ((deep || playerInfos.comp.med >= 2) && myBat.tags.includes('venin')) {
                     numTargets = numTargets+1;
-                }
-            } else {
-                if (myBat.damage > 0 || myBat.tags.includes('poison')) {
-                    if (cat === 'infantry') {
+                } else if (deep) {
+                    if (myBat.damage > 0 || myBat.squadsLeft < myBatType.squads || myBat.tags.includes('poison') || myBat.tags.includes('venin') || myBat.tags.includes('maladie') || myBat.tags.includes('parasite') || myBat.tags.includes('trou')) {
                         numTargets = numTargets+1;
-                    } else if (myBat.squadsLeft === myBatType.squads) {
-                        numTargets = numTargets+1;
+                    }
+                } else {
+                    if (myBat.damage > 0 || myBat.tags.includes('poison')) {
+                        if (cat === 'infantry') {
+                            numTargets = numTargets+1;
+                        } else if (myBat.squadsLeft === myBatType.squads) {
+                            numTargets = numTargets+1;
+                        }
                     }
                 }
             }
@@ -456,7 +459,8 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
                     if (bat.tags.includes('necro') && playerInfos.comp.med < 3 && !myBatType.skills.includes('necrocure')) {
                         catOK = false;
                     }
-                    if (catOK && !batType.skills.includes('norepair')) {
+                    let effSoins = checkEffSoins(bat);
+                    if (catOK && !batType.skills.includes('norepair') && effSoins >= 50) {
                         if (deep) {
                             if ((bat.damage > 0 && !fullBat) || (bat.squadsLeft < batType.squads && !fullBat) || bat.tags.includes('poison') || bat.tags.includes('venin') || bat.tags.includes('maladie') || bat.tags.includes('parasite') || bat.tags.includes('trou')) {
                                 numTargets = numTargets+1;
@@ -954,7 +958,10 @@ function bestMecanoInBld(bldBat) {
 
 function checkEffSoins(bat) {
     let batType = getBatType(bat);
-    let failDice = bat.soins-10;
+    let failDice = 0;
+    if (bat.soins != undefined) {
+        failDice = bat.soins-10;
+    }
     if (failDice < 0) {
         failDice = 0;
     }

@@ -1358,8 +1358,6 @@ function conselReset(changeMode) {
     }
 }
 
-// $("#minimap").css("display","block");
-
 function conWindowOut() {
     if (myCompPoints <= 0) {
         $('#conUnitList').empty();

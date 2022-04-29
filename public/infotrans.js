@@ -807,6 +807,9 @@ function clickDebarq(tileId) {
                 if (batDebarq.apLeft < 0-Math.round(batDebarqType.ap*1.5)) {
                     batDebarq.apLeft = 0-Math.round(batDebarqType.ap*1.5);
                 }
+                if (batDebarq.apLeft > 1) {
+                    batDebarq.apLeft = 1;
+                }
             }
         }
         showBataillon(batDebarq);

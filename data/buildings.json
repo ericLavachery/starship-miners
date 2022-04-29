@@ -2333,7 +2333,7 @@
             "kit":true,
             "rof":6,
             "accuracy":50,
-            "power":20,
+            "power":25,
             "aoe":"brochette",
             "sound":"laser_canon_x1",
             "ammo":["laser","laser-g2"],

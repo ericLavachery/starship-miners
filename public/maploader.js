@@ -103,6 +103,9 @@ function showMap(wmap,justMoved) {
         playerOccupiedTileList();
     }
     mapEffect();
+    // if (showMini && activeTurn == 'player') {
+    //     unitsView();
+    // }
     // console.log(zone);
 };
 
