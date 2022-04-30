@@ -113,6 +113,7 @@ let gangLevelCit = [0,1000,1400,1800,2200,2600,3000,3400,3800,4200,4600,5000,540
 let myCompPoints = 0;
 // ACTIONS
 let allowCheat = false;
+let allowDSE = true;
 let moveTuning = 1.2; // moveCost x moveTuning
 let moveKzin = 0.85;
 let isReloaded = true;

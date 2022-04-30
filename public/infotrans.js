@@ -11,15 +11,20 @@ function transInfos(bat,batType,isCharged) {
         let embarqCost = calcEmbarqCost(batType,transBatType);
         apCost = embarqCost[0];
         if (!isCharged) {
-            // Le bataillon actif n'a pas de bataillon embarqué
-            let resLoad = checkResLoad(bat);
-            if (resLoad >= 1 && transBatType.skills.includes('transorbital')) {
-                // Le bataillon actif transporte des ressources et veut embarquer dans un lander
-                // Embarquement dans un Lander (avec les ressources)
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer dans '+transBat.type+'" class="boutonMarine skillButtons" onclick="embarquement('+transId+',true)"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
+            if (bat.tags.includes('deb') && bat.salvoLeft < 1 && transBatType.cat === 'vehicles' && !transBatType.skills.includes('transorbital')) {
+                // Le bataillon actif fait un aller-tir-retour dans un véhicule
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Pas d\'embarquement si votre bataillon sort d\'un véhicule et a attaqué ce tour-ci" class="boutonRouge skillButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
             } else {
-                // Embarquement OK (Soit pas de ressources, soit pas dans un Lander)
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer dans '+transBat.type+'" class="boutonMarine skillButtons" onclick="embarquement('+transId+',false)"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
+                // Le bataillon actif n'a pas de bataillon embarqué
+                let resLoad = checkResLoad(bat);
+                if (resLoad >= 1 && transBatType.skills.includes('transorbital')) {
+                    // Le bataillon actif transporte des ressources et veut embarquer dans un lander
+                    // Embarquement dans un Lander (avec les ressources)
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer dans '+transBat.type+'" class="boutonMarine skillButtons" onclick="embarquement('+transId+',true)"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
+                } else {
+                    // Embarquement OK (Soit pas de ressources, soit pas dans un Lander)
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Embarquer dans '+transBat.type+'" class="boutonMarine skillButtons" onclick="embarquement('+transId+',false)"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
+                }
             }
         } else {
             // Le bataillon actif a un bataillon embarqué
@@ -582,58 +587,60 @@ function resTransfert(transBat) {
 
 function jumpInTrans() {
     if (Object.keys(selectedBat).length >= 1) {
-        let isCharged = checkCharged(selectedBat,'trans');
-        if (!isCharged && selectedBat.apLeft > 0) {
-            let resLoad = checkResLoad(selectedBat);
-            let selectedBatVolume = calcVolume(selectedBat,selectedBatType);
-            let bestTrans = 0;
-            let transId = -1;
-            bataillons.forEach(function(bat) {
-                if (bat.loc === "zone" && selectedBat.id != bat.iId) {
-                    let batType = getBatType(bat);
-                    if (resLoad <= 0 || !batType.skills.includes('transorbital')) {
-                        let maxSize = batType.transMaxSize;
-                        if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
-                            maxSize = maxSize*3;
-                        }
-                        if (batType.transUnits >= 1 && maxSize >= selectedBatType.size) {
-                            let distance = calcDistance(selectedBat.tileId,bat.tileId);
-                            if (distance <= 1) {
-                                let tracking = checkTracking(bat);
-                                if (!selectedBatType.skills.includes('tracked') || !tracking) {
-                                    let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
-                                    if (selectedBatVolume <= batTransUnitsLeft) {
-                                        let thisTrans = getTransScore(bat,batType,selectedBat,selectedBatVolume,batTransUnitsLeft);
-                                        if (thisTrans > bestTrans) {
-                                            transId = bat.id;
-                                            bestTrans = thisTrans;
+        if (!selectedBat.tags.includes('deb') || selectedBat.salvoLeft >= 1) {
+            let isCharged = checkCharged(selectedBat,'trans');
+            if (!isCharged && selectedBat.apLeft > 0) {
+                let resLoad = checkResLoad(selectedBat);
+                let selectedBatVolume = calcVolume(selectedBat,selectedBatType);
+                let bestTrans = 0;
+                let transId = -1;
+                bataillons.forEach(function(bat) {
+                    if (bat.loc === "zone" && selectedBat.id != bat.iId) {
+                        let batType = getBatType(bat);
+                        if (resLoad <= 0 || !batType.skills.includes('transorbital')) {
+                            let maxSize = batType.transMaxSize;
+                            if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
+                                maxSize = maxSize*3;
+                            }
+                            if (batType.transUnits >= 1 && maxSize >= selectedBatType.size) {
+                                let distance = calcDistance(selectedBat.tileId,bat.tileId);
+                                if (distance <= 1) {
+                                    let tracking = checkTracking(bat);
+                                    if (!selectedBatType.skills.includes('tracked') || !tracking) {
+                                        let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
+                                        if (selectedBatVolume <= batTransUnitsLeft) {
+                                            let thisTrans = getTransScore(bat,batType,selectedBat,selectedBatVolume,batTransUnitsLeft);
+                                            if (thisTrans > bestTrans) {
+                                                transId = bat.id;
+                                                bestTrans = thisTrans;
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     }
+                });
+                if (transId >= 0) {
+                    let transBat = getBatById(transId);
+                    let transBatType = getBatType(transBat);
+                    let embarqCost = calcEmbarqCost(batType,transBatType);
+                    let apCost = embarqCost[0]+2;
+                    transBat.apLeft = transBat.apLeft-embarqCost[1];
+                    selectedBat.apLeft = selectedBat.apLeft-apCost;
+                    loadBat(selectedBat.id,transBat.id);
+                    doneAction(transBat);
+                    tagDelete(selectedBat,'guet');
+                    camoOut();
+                    stopAutoLoad();
+                    selectedBatArrayUpdate();
+                    showMap(zone,true);
+                    showBataillon(transBat);
+                    batSelect(transBat);
+                    showBatInfos(selectedBat);
+                    showTileInfos(selectedBat.tileId);
+                    selectMode();
                 }
-            });
-            if (transId >= 0) {
-                let transBat = getBatById(transId);
-                let transBatType = getBatType(transBat);
-                let embarqCost = calcEmbarqCost(batType,transBatType);
-                let apCost = embarqCost[0]+2;
-                transBat.apLeft = transBat.apLeft-embarqCost[1];
-                selectedBat.apLeft = selectedBat.apLeft-apCost;
-                loadBat(selectedBat.id,transBat.id);
-                doneAction(transBat);
-                tagDelete(selectedBat,'guet');
-                camoOut();
-                stopAutoLoad();
-                selectedBatArrayUpdate();
-                showMap(zone,true);
-                showBataillon(transBat);
-                batSelect(transBat);
-                showBatInfos(selectedBat);
-                showTileInfos(selectedBat.tileId);
-                selectMode();
             }
         }
     }
@@ -714,6 +721,12 @@ function clickDebarq(tileId) {
     let ownBatHere = false;
     let message = '';
     let batDebarqType = getBatType(batDebarq);
+    let transBat = getBatById(batDebarq.locId);
+    let transBatType = getBatType(transBat);
+    let fromVeh = false;
+    if (transBatType.cat === 'vehicles' && !transBatType.skills.includes('transorbital')) {
+        fromVeh = true;
+    }
     let myBatWeight = calcVolume(batDebarq,batDebarqType);
     bataillons.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
@@ -788,6 +801,9 @@ function clickDebarq(tileId) {
             batDebarq.oldTileId = selectedBat.tileId;
         } else {
             batDebarq.oldTileId = tileId;
+        }
+        if (!allowDSE) {
+            batDebarq.tags.push('deb');
         }
         console.log('oldTileId='+selectedBat.tileId);
         doneAction(selectedBat);

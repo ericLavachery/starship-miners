@@ -1035,6 +1035,7 @@ function calcUnitResist() {
 
 function tagsUpdate(bat) {
     tagDelete(bat,'podcd');
+    tagDelete(bat,'deb');
     tagDelete(bat,'chrg');
     tagDelete(bat,'vise');
     tagDelete(bat,'datt');
