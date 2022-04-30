@@ -409,7 +409,10 @@ function eggsDrop() {
         numEggs = 1;
     }
     if (numEggs >= 1) {
-        let eggBonusChance = Math.round(playerInfos.mapTurn*2.5)-50+(playerInfos.mapAdjDiff*5)+((maxDroppedEggs-playerInfos.droppedEggs)*10);
+        let eggBonusChance = Math.ceil(playerInfos.mapTurn*2.5)-50+(playerInfos.mapAdjDiff*5)+((maxDroppedEggs-playerInfos.droppedEggs)*10);
+        if (coconStats.dome) {
+            eggBonusChance = Math.ceil(eggBonusChance*1.5)+100;
+        }
         console.log('eggBonusChance='+eggBonusChance);
         if (eggBonusChance >= 100) {
             numEggs++;
@@ -495,6 +498,9 @@ function getCoqueChance() {
     }
     if (playerInfos.mapTurn > aliens.length) {
         coqPerc = coqPerc+13;
+    }
+    if (coconStats.dome) {
+        coqPerc = coqPerc+17;
     }
     return coqPerc;
 }
@@ -1355,20 +1361,51 @@ function alienMorph(bat,newBatName,reset) {
     let putTile = bat.tileId;
     let eTags = bat.tags;
     let eCreaTurn = bat.creaTurn;
-    let kindTag = getEggKind(bat);
+    let morphTags = getMorphTags(bat);
     // delete bat
     deadAliensList.push(bat.id);
-    // let batIndex = aliens.findIndex((obj => obj.id == bat.id));
-    // aliens.splice(batIndex,1);
     // put new
-    let unitIndex = alienUnits.findIndex((obj => obj.name == newBatName));
+    let unitIndex = alienUnits.findIndex((obj => obj.name === newBatName));
     conselUnit = alienUnits[unitIndex];
     conselAmmos = ['xxx','xxx','xxx','xxx'];
     checkSpawnType(conselUnit);
-    putBat(putTile,0,0,kindTag);
+    putBat(putTile,0,0,morphTags);
     // Turn & Tags
-    batIndex = aliens.findIndex((obj => obj.tileId == putTile));
-    let newAlien = aliens[batIndex];
+    // batIndex = aliens.findIndex((obj => obj.tileId === putTile));
+    // let newAlien = aliens[batIndex];
+};
+
+function getMorphTags(bat) {
+    let morphTags = bat.tags;
+    if (morphTags.includes('scion')) {
+        tagIndex = morphTags.indexOf('scion');
+        morphTags.splice(tagIndex,1);
+    }
+    if (morphTags.includes('morph')) {
+        tagIndex = morphTags.indexOf('morph');
+        morphTags.splice(tagIndex,1);
+    }
+    if (morphTags.includes('fluo')) {
+        tagIndex = morphTags.indexOf('fluo');
+        morphTags.splice(tagIndex,1);
+    }
+    if (morphTags.includes('guide')) {
+        tagIndex = morphTags.indexOf('guide');
+        morphTags.splice(tagIndex,1);
+    }
+    if (morphTags.includes('jello')) {
+        tagIndex = morphTags.indexOf('jello');
+        morphTags.splice(tagIndex,1);
+    }
+    if (morphTags.includes('jelly')) {
+        tagIndex = morphTags.indexOf('jelly');
+        morphTags.splice(tagIndex,1);
+    }
+    if (morphTags.includes('invisible')) {
+        tagIndex = morphTags.indexOf('invisible');
+        morphTags.splice(tagIndex,1);
+    }
+    return morphTags;
 };
 
 function setCoconStats() {

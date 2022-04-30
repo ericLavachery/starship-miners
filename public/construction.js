@@ -1142,17 +1142,27 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 newBat.transRes = {};
             }
             if (startTag != undefined) {
-                if (startTag === 'veil') {
-                    newBat.tags = ['invisible','follow'];
-                } else if (startTag === 'fortifguet') {
-                    newBat.tags = ['guet','fortif'];
-                } else if (startTag === 'fgnomove') {
-                    newBat.tags = ['guet','fortif','nomove'];
+                if (conselUnit.cat === 'aliens') {
+                    if (Array.isArray(startTag)) {
+                        newBat.tags = startTag;
+                    } else if (startTag === 'veil') {
+                        newBat.tags = ['invisible','follow'];
+                    } else {
+                        newBat.tags = [startTag];
+                    }
                 } else {
-                    newBat.tags = [startTag];
-                }
-                if (newBat.tags.includes('nomove')) {
-                    newBat.tags.push('outsider');
+                    if (startTag === 'veil') {
+                        newBat.tags = ['invisible','follow'];
+                    } else if (startTag === 'fortifguet') {
+                        newBat.tags = ['guet','fortif'];
+                    } else if (startTag === 'fgnomove') {
+                        newBat.tags = ['guet','fortif','nomove'];
+                    } else {
+                        newBat.tags = [startTag];
+                    }
+                    if (newBat.tags.includes('nomove')) {
+                        newBat.tags.push('outsider');
+                    }
                 }
             } else {
                 newBat.tags = [];

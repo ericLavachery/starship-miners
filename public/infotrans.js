@@ -81,20 +81,22 @@ function unloadInfos(myBat,myBatUnitType) {
                 if (bat.loc === "trans" && bat.locId == myBat.id) {
                     batType = getBatType(bat);
                     let damageIcon = '';
-                    if (bat.damage >= 1 || bat.squadsLeft < batType.squads) {
-                        damageIcon = ' <i class="ra ra-bleeding-hearts"></i>'
+                    if (bat.squadsLeft < batType.squads) {
+                        damageIcon = '<i class="ra ra-bleeding-hearts blor"></i>';
+                    } else if (bat.damage >= 1) {
+                        damageIcon = '<i class="ra ra-bleeding-hearts"></i>';
                     }
                     let poisonIcon = '';
                     if (bat.tags.includes('parasite') || bat.tags.includes('venin') || bat.tags.includes('poison')) {
-                        poisonIcon = ' <i class="fas fa-skull-crossbones"></i>'
+                        poisonIcon = '<i class="fas fa-skull-crossbones"></i>';
                     }
                     let maladieIcon = '';
                     if (bat.tags.includes('maladie')) {
-                        maladieIcon = ' <i class="fas fa-thermometer"></i>'
+                        maladieIcon = '<i class="fas fa-thermometer"></i>';
                     }
                     let drugIcon = '';
                     if (bat.tags.includes('blaze')) {
-                        drugIcon = ' <i class="ra ra-lightning-bolt"></i>'
+                        drugIcon = '<i class="ra ra-lightning-bolt"></i>';
                     }
                     let moreInfos = '';
                     if (bat.chief != undefined) {

@@ -66,6 +66,7 @@ function rescueUnits(rescueName) {
         }
         let citId = 126;
         let citName = 'Citoyens';
+        newCitsNumber = Math.ceil(newCitsNumber*playerInfos.cNeed);
         bonusCit(citId,souteId,newCitsNumber);
         playerInfos.allCits = playerInfos.allCits+newCitsNumber;
         warning('<span class="rose">Nouveaux citoyens</span>','<span class="vio">'+newCitsNumber+' '+citName+'</span><br>',true);
@@ -81,6 +82,7 @@ function rescueUnits(rescueName) {
         }
         let citId = 225;
         let citName = 'Criminels';
+        newCitsNumber = Math.ceil(newCitsNumber*playerInfos.cNeed);
         bonusCit(citId,souteId,newCitsNumber);
         playerInfos.allCits = playerInfos.allCits+newCitsNumber;
         warning('<span class="rose">Nouveaux citoyens</span>','<span class="vio">'+newCitsNumber+' '+citName+'</span><br>',true);

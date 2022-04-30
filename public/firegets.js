@@ -2641,12 +2641,15 @@ function getEggProtect(eggBat,eggBatType,weap) {
         if (eggBatType.skills.includes('turnprotect')) {
             eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.65));
             if (eggBat.tags.includes('morph')) {
-                eggProt = Math.round(eggProt/1.2);
+                eggProt = Math.round(eggProt/1.1);
             }
         }
-        if (weap.ammo === 'suicide') {
+        if (weap.ammo === 'suicide' && eggProt < 110) {
             eggProt = Math.round(eggProt/1.5);
         }
+    }
+    if (coconStats.dome) {
+        eggProt = eggProt+10;
     }
     if (eggProt > 100) {eggProt = 100;}
     if (eggProt < 0) {eggProt = 0;}

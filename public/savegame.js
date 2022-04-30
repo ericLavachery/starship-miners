@@ -1,6 +1,9 @@
 function savePlayerInfos() {
     playerInfos.numHTiles = numHTiles;
     playerInfos.numVTiles = numVTiles;
+    let theDate = new Date().toISOString().slice(0,19).replace('T', ' ');
+    theDate = theDate.substring(0,10);
+    playerInfos.date = theDate;
     socket.emit('save-playerInfos', playerInfos);
 };
 

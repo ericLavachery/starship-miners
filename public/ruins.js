@@ -130,6 +130,7 @@ function checkRuinsCit(tile) {
         numRuins = 50;
     }
     let citChance = Math.round(ruinsCitBase/Math.sqrt(numRuins+8));
+    citChance = Math.ceil(citChance*playerInfos.cNeed);
     if (zone[0].dark) {
         citChance = citChance+10;
     }
