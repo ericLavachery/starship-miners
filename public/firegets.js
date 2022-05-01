@@ -2042,7 +2042,7 @@ function weaponAdj(weapon,bat,wn) {
     // sila drug
     if (bat.tags.includes('sila')) {
         if (thisWeapon.isMelee || thisWeapon.name.includes('Javelot')) {
-            thisWeapon.power = thisWeapon.power+4;
+            thisWeapon.power = thisWeapon.power+3;
         } else if (thisWeapon.isBow) {
             thisWeapon.accuracy = thisWeapon.accuracy+3;
             thisWeapon.power = thisWeapon.power+1;
@@ -2648,7 +2648,7 @@ function getEggProtect(eggBat,eggBatType,weap) {
             eggProt = Math.round(eggProt/1.5);
         }
     }
-    if (coconStats.dome) {
+    if (coconStats.dome && eggBatType.name != 'Colonie') {
         eggProt = eggProt+10;
     }
     if (eggProt > 100) {eggProt = 100;}

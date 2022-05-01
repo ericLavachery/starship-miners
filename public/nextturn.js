@@ -51,6 +51,16 @@ function nextTurn() {
             if (!alienTypesList.includes(batType.name)) {
                 alienTypesList.push(batType.name);
             }
+            if (bat.type === 'Colonie') {
+                if (!bat.tags.includes('slowreg')) {
+                    if (playerInfos.mapTurn-bat.creaTurn >= 10) {
+                        bat.tags.push('slowreg');
+                    }
+                    if (playerInfos.mapTurn < 3) {
+                        bat.tags.push('slowreg');
+                    }
+                }
+            }
             if (!bat.tags.includes('invisible')) {
                 hasHide = false;
                 if (batType.skills.includes('hide')) {
@@ -1387,14 +1397,14 @@ function tagsEffect(bat,batType) {
     if (!medicalTransports.includes(bat.locId) || bat.loc != 'trans') {
         // PARASITE
         if (bat.tags.includes('parasite')) {
-            let parasiteDamage = Math.round(rand.rand((Math.round(parasiteDamage/3)),parasiteDamage)*batType.squads*batType.squadSize/60);
+            let parasiteDeg = Math.round(rand.rand((Math.round(parasiteDamage/3)),parasiteDamage)*batType.squads*batType.squadSize/60);
             if (bat.tags.includes('octiron')) {
-                parasiteDamage = Math.round(parasiteDamage/10);
+                parasiteDeg = Math.round(parasiteDeg/10);
             }
             if (playerInfos.comp.med >= 3) {
-                parasiteDamage = Math.round(parasiteDamage/2);
+                parasiteDeg = Math.round(parasiteDeg/2);
             }
-            let totalDamage = bat.damage+parasiteDamage;
+            let totalDamage = bat.damage+parasiteDeg;
             squadHP = batType.squadSize*batType.hp;
             squadsOut = Math.floor(totalDamage/squadHP);
             bat.squadsLeft = bat.squadsLeft-squadsOut;

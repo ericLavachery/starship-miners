@@ -1199,7 +1199,7 @@ function skillsInfos(bat,batType,near) {
                 apCost = drug.apCost;
                 if (drugCompOK) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('sila') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+4 puissance aux armes de mêlée '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
+                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+3 puissance aux armes de mêlée '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sila</'+balise+'></span>');
                     } else {
                         if (bat.tags.includes('sila')) {
                             skillMessage = "Déjà sous l'effet de cette drogue";

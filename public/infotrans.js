@@ -470,6 +470,12 @@ function calcEmbarqCost(batType,transBatType) {
     if (transBatType.skills.includes('hardembark')) {
         embarqCost[0] = embarqCost[0]+2;
     }
+    if (!allowDSE && transBatType.cat != 'buildings') {
+        embarqCost[0] = embarqCost[0]-2;
+        if (embarqCost[0] < 1) {
+            embarqCost[0] = 1;
+        }
+    }
     return embarqCost;
 }
 
@@ -802,10 +808,11 @@ function clickDebarq(tileId) {
         } else {
             batDebarq.oldTileId = tileId;
         }
-        if (!allowDSE) {
+        if (!allowDSE && fromVeh) {
             batDebarq.tags.push('deb');
         }
         console.log('oldTileId='+selectedBat.tileId);
+        doneAction(transBat);
         doneAction(selectedBat);
         if (teleStats.ok) {
             payCost(teleCost);

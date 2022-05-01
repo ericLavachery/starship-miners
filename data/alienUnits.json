@@ -2790,11 +2790,11 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","minaccu","regmode","eggshield","eggprotect","slowreg","noaploss","nolaser","survivor","xpfeast","nokill","smartrip","nojello"],
+        "skills":["isegg","ponte","minaccu","regmode","eggshield","eggprotect","noaploss","nolaser","survivor","xpfeast","nokill","smartrip","nojello"],
         "deathFx":"xplode",
         "killRes":{"Bugium":36,"Creatite":24,"Mendium":30,"Egidium":94,"Bossium":73,"Pyrus":108},
         "killXP":100,
-        "flavText":"Les colonies protègent tous les oeufs avec leur bouclier, et augmente la portée de tir des ruches."
+        "flavText":"Les colonies protègent tous les oeufs avec leur bouclier, et augmente la portée de tir des ruches à proximité."
     },
     {
         "id":37,
